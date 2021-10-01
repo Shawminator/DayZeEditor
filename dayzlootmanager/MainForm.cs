@@ -46,12 +46,7 @@ namespace DayZeEditor
         private void MainForm_Load(object sender, EventArgs e)
         {
             var culture = CultureInfo.GetCultureInfo("en-GB");
-
-            // this may fail sometimes: (see Drachenkatze's comment below)
-            // var culture = new CultureInfo("en-US");
-            //Culture for any thread
             CultureInfo.DefaultThreadCurrentCulture = culture;
-            //Culture for UI in any thread
             CultureInfo.DefaultThreadCurrentUICulture = culture;
 
             if (File.Exists(ProjectsJson))
