@@ -90,10 +90,14 @@ namespace DayZeEditor
             }
             else
             {
-                Projects = new ProjectList();
-                Projects.AvailableTemplates = new System.ComponentModel.BindingList<MissionTemplate>();
-                MissionTemplate mt = new MissionTemplate();
-                mt.m_DisplayName = "Get from Ftp";
+                Projects = new ProjectList
+                {
+                    AvailableTemplates = new System.ComponentModel.BindingList<MissionTemplate>()
+                };
+                MissionTemplate mt = new MissionTemplate
+                {
+                    m_DisplayName = "Get from Ftp"
+                };
                 Projects.AvailableTemplates.Add(mt);
                 Projects.SaveProject();
                 TypeManButton.Visible = false;
@@ -208,12 +212,14 @@ namespace DayZeEditor
             else
             {
                 closemdichildren();
-                _TM = new ProjectPanel();
-                _TM.MdiParent = this;
-                _TM.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right;
-                _TM.Location = new System.Drawing.Point(30, 0);
-                _TM.Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61);
-                _TM.projects = Projects;
+                _TM = new ProjectPanel
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    projects = Projects
+                };
                 _TM.Show();
             }
             timer1.Start();
@@ -230,12 +236,14 @@ namespace DayZeEditor
             else
             {
                 closemdichildren();
-                _TM = new Economy_Manager();
-                _TM.MdiParent = this;
-                _TM.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right;
-                _TM.Location = new System.Drawing.Point(30, 0);
-                _TM.Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61);
-                _TM.currentproject = Projects.getActiveProject();
+                _TM = new Economy_Manager
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+                };
                 _TM.Show();
             }
             timer1.Start();
@@ -252,12 +260,14 @@ namespace DayZeEditor
             else
             {
                 closemdichildren();
-                _TM = new DRJonesTrader_Manager();
-                _TM.MdiParent = this;
-                _TM.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right;
-                _TM.Location = new System.Drawing.Point(30, 0);
-                _TM.Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61);
-                _TM.currentproject = Projects.getActiveProject();
+                _TM = new DRJonesTrader_Manager
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+                };
                 _TM.Show();
                 Console.WriteLine("loading Dr Jones Trader manager....");
             }
@@ -275,12 +285,14 @@ namespace DayZeEditor
             else
             {
                 closemdichildren();
-                _TM = new ExpansionSettings();
-                _TM.MdiParent = this;
-                _TM.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right;
-                _TM.Location = new System.Drawing.Point(30, 0);
-                _TM.Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61);
-                _TM.currentproject = Projects.getActiveProject();
+                _TM = new ExpansionSettings
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+                };
                 _TM.Show();
             }
             timer1.Start();
@@ -297,12 +309,14 @@ namespace DayZeEditor
             else
             {
                 closemdichildren();
-                _TM = new ExpansionMarket();
-                _TM.MdiParent = this;
-                _TM.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right;
-                _TM.Location = new System.Drawing.Point(30, 0);
-                _TM.Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61);
-                _TM.currentproject = Projects.getActiveProject();
+                _TM = new ExpansionMarket
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+                };
                 _TM.Show();
             }
             timer1.Start();
