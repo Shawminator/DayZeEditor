@@ -1,0 +1,444 @@
+// ------------------------------------------------------ Trader Markers -------------------------------------------------------
+
+// Green Mountain:
+
+<TraderMarker> 			0 									// Trader ID
+<TraderMarkerPosition>	3699.27,    402.13,     5967.91 	// Coordinate X, 	Coordinate Y, 	Coordinate Z
+<TraderMarkerSafezone>	80									// Safezone Radius
+
+<TraderMarker> 			1
+<TraderMarkerPosition>	3691.41,    402.074,    5998.47
+<TraderMarkerSafezone>	80
+
+<TraderMarker> 			2
+<TraderMarkerPosition>	3708.71,    403.153,    5974.79
+<TraderMarkerSafezone>	80
+
+<TraderMarker> 			3
+<TraderMarkerPosition>	3707.46,    403.153,    5973.3
+<TraderMarkerSafezone>	80
+
+<TraderMarker> 			4
+<TraderMarkerPosition>	3703.56,	402.345,	6009.53
+<TraderMarkerSafezone>	30
+
+<TraderMarker> 			5
+<TraderMarkerPosition>	3723.84,	402.012,	5990.04
+<TraderMarkerSafezone>	30
+<VehicleSpawn>			3719.71,	402.012,	5994.85		// Vehicle Spawnpoint for Trader; 	Coordinate X, 	Coordinate Y, 	Coordinate Z (optional)
+<VehicleSpawnOri>		-42,		0,			0			// Vehicle Spawnpoint Orientation; 	Yaw, 			Pitch, 			Roll	 	 (optional)
+
+// Kumyrna:
+
+<TraderMarker> 			0
+<TraderMarkerPosition>	8354.06,    293.143,    5995.87
+<TraderMarkerSafezone>	80
+
+<TraderMarker> 			1
+<TraderMarkerPosition>	8357.55,    293.143,    5995.26
+<TraderMarkerSafezone>	80
+
+<TraderMarker> 			2
+<TraderMarkerPosition>	8359.22,    292.034,    5973.69
+<TraderMarkerSafezone>	80
+
+<TraderMarker> 			3
+<TraderMarkerPosition>	8354.61,    292.034,    5967.63
+<TraderMarkerSafezone>	80
+
+<TraderMarker> 			4
+<TraderMarkerPosition>	8370.48,	293.277,	5994.52
+<TraderMarkerSafezone>	30
+
+<TraderMarker> 			5
+<TraderMarkerPosition>	8365.63,	292.012,	5977.71
+<TraderMarkerSafezone>	80
+<VehicleSpawn>			8365.18,	292.017,	5987.68
+<VehicleSpawnOri>		-90,		0,			0
+
+
+// ------------------------------------------------------ Objects to Spawn ------------------------------------------------------
+	
+// Green Mountain:
+
+<Object> 			SurvivorF_Irena						// Classname
+<ObjectPosition>	3699.27,    402.13,     5967.91		// Coordinate X, 	Coordinate Y, 	Coordinate Z
+<ObjectOrientation>	-13.234265, 0,			0			// Yaw, 			Pitch, 			Roll
+//<ObjectAttachment>	NPC_DUMMY						// Add this if you are using an non Character Object for an Trader (like Vending Machines, etc.). It is needed to make the User Action for the Trading Menu work.
+<ObjectAttachment>	BoxCerealCrunchin					// Add an Item to the Traders Inventory;
+<ObjectAttachment>	SurgicalGloves_White
+<ObjectAttachment>	Bandana_Polkapattern
+<ObjectAttachment>	MiniDress_PinkChecker
+<ObjectAttachment>	DressShoes_White
+
+<Object> 			SurvivorF_Keiko
+<ObjectPosition>	3691.41,    402.074,    5998.47
+<ObjectOrientation>	158.253525, 0,			0
+<ObjectAttachment>	Wrench
+<ObjectAttachment>	SledgeHammer
+<ObjectAttachment>	WorkingGloves_Brown
+<ObjectAttachment>	ConstructionHelmet_White
+<ObjectAttachment>	Shirt_BlueCheck
+<ObjectAttachment>	CanvasPants_Blue
+<ObjectAttachment>	WorkingBoots_Grey
+
+<Object> 			SurvivorM_Seth
+<ObjectPosition>	3708.71,    403.153,    5974.79
+<ObjectOrientation>	-51.969990, 0,			0
+<ObjectAttachment>	FirefighterAxe
+<ObjectAttachment>	SVD
+<ObjectAttachment>	PSO1Optic
+<ObjectAttachment>	M4A1
+<ObjectAttachment>	M4_RISHndgrd
+<ObjectAttachment>	Universallight
+<ObjectAttachment>	M4_OEBttstck
+<ObjectAttachment>	M68Optic
+<ObjectAttachment>	M4_Suppressor
+<ObjectAttachment>	OMNOGloves_Gray
+<ObjectAttachment>	MilitaryBeret_CDF
+<ObjectAttachment>	PlateCarrierVest
+<ObjectAttachment>	TTsKOJacket_Camo
+<ObjectAttachment>	TTSKOPants
+<ObjectAttachment>	MilitaryBoots_Black
+<ObjectAttachment>	AliceBag_Camo
+
+<Object> 			SurvivorM_Taiki
+<ObjectPosition>	3707.46,    403.153,    5973.3
+<ObjectOrientation>	-65.823410, 0,			0
+<ObjectAttachment>	Mag_STANAG_30Rnd
+<ObjectAttachment>	SportGlasses_Orange
+<ObjectAttachment>	BaseballCap_Camo
+<ObjectAttachment>	TacticalShirt_Olive
+<ObjectAttachment>	SmershVest
+<ObjectAttachment>	BDUPants
+<ObjectAttachment>	TTSKOBoots
+<ObjectAttachment>	AssaultBag_Ttsko
+
+<Object> 			SurvivorF_Frida
+<ObjectPosition>	3703.56,	402.345,	6009.53
+<ObjectOrientation>	174.787735, 0,			0
+<ObjectAttachment>	ThickFramesGlasses
+<ObjectAttachment>	WomanSuit_Black
+<ObjectAttachment>	SlacksPants_Black
+<ObjectAttachment>	DressShoes_Black
+
+<Object> 			SurvivorM_Peter
+<ObjectPosition>	3724.33,	402.012,	5989.19
+<ObjectOrientation>	-43.954433, 0,			0
+<ObjectAttachment>	LugWrench
+<ObjectAttachment>	WorkingGloves_Black
+<ObjectAttachment>	ReflexVest
+<ObjectAttachment>	JumpsuitJacket_Blue
+<ObjectAttachment>	JumpsuitPants_Blue
+<ObjectAttachment>	HikingBootsLow_Blue
+
+<Object>			Land_FuelStation_Build
+<ObjectPosition>	3693.1,		403.612,	5998.32
+<ObjectOrientation>	-23.000992, 0,			0
+ 
+<Object>			Land_Lunapark_Shooting_Gallery
+<ObjectPosition>	3707.49,	403.612,	5974.74
+<ObjectOrientation>	39.997997,	0,			0
+ 
+<Object>			Land_Container_1Moh
+<ObjectPosition>	3727.55,	403.012,	5987.47
+<ObjectOrientation>	39.997997,	0,			0
+
+<Object>			Land_Mil_GuardShed
+<ObjectPosition>	3724.84,	402.412,	5989.04
+<ObjectOrientation>	141.382217,	0,			0
+ 
+<Object>			Land_Misc_Toilet_Mobile
+<ObjectPosition>	3692.58,	403.212,	5981.05
+<ObjectOrientation>	-110.997856,0,			0
+ 
+<Object>			Land_Misc_Toilet_Mobile
+<ObjectPosition>	3692.02,	403.212,	5982.48
+<ObjectOrientation>	-114.999535,0,			0
+
+<Object>			Land_City_Stand_Grocery
+<ObjectPosition>	3700.53,	403.812,	5965.38
+<ObjectOrientation>	165.998734,	0,			0
+ 
+<Object>			Land_Power_Pole_Conc1_Amp
+<ObjectPosition>	3706.73,	404.112,	5985.33
+<ObjectOrientation>	-110.997856,0,			0
+ 
+<Object>			Land_Power_Pole_Wood1_Lamp_Amp
+<ObjectPosition>	3703.2,		404.712,	5971.11
+<ObjectOrientation>	-73.996033,	0,			0
+ 
+<Object>			Land_Container_1Moh
+<ObjectPosition>	3690.93,	403.212,	5987.15
+<ObjectOrientation>	163.000824,	0,			0
+ 
+<Object>			Land_Container_1Aoh
+<ObjectPosition>	3689.09,	403.212,	5993.05
+<ObjectOrientation>	161.999741,	0,			0
+ 
+<Object>			Land_Container_1Bo
+<ObjectPosition>	3690.43,	405.812,	5987.31
+<ObjectOrientation>	161.999741,	0,			0
+ 
+<Object>			Land_Container_1Bo
+<ObjectPosition>	3710.64,	403.196,	5963.35
+<ObjectOrientation>	-108.001251,	0,			0
+
+<Object>			Land_RoadCone
+<ObjectPosition>	3718.82,	402.012,	5998.82
+<ObjectOrientation>	0,			0,			0
+
+<Object>			Land_RoadCone
+<ObjectPosition>	3715.69,	402.012,	5996.23
+<ObjectOrientation>	-22.0017,	0,			0
+
+<Object>			Land_Misc_Well_Pump_Blue
+<ObjectPosition>	3693.56,	402.312,	6010.05
+<ObjectOrientation>	0,			0,			0
+
+<Object>			BarrelHoles_Red
+<ObjectPosition>	3698.21,	402.012,	6003.26
+<ObjectOrientation>	0,			0,			0
+
+// Kumyrna:
+
+<Object> 			SurvivorM_Niki
+<ObjectPosition>	8354.06,    293.143,    5995.87
+<ObjectOrientation>	-169.334961,0,			0
+<ObjectAttachment>	WaterBottle
+<ObjectAttachment>	SurgicalGloves_Green
+<ObjectAttachment>	MedicalScrubsHat_White
+<ObjectAttachment>	SurgicalMask
+<ObjectAttachment>	MedicalScrubsShirt_White
+<ObjectAttachment>	MedicalScrubsPants_Blue
+<ObjectAttachment>	NBCBootsGray
+
+<Object> 			SurvivorF_Maria
+<ObjectPosition>	8357.55,    293.143,    5995.26
+<ObjectOrientation>	-170.312988,0,			0
+<ObjectAttachment>	Screwdriver
+<ObjectAttachment>	Shovel
+<ObjectAttachment>	WorkingGloves_Yellow
+<ObjectAttachment>	ConstructionHelmet_Yellow
+<ObjectAttachment>	Shirt_RedCheck
+<ObjectAttachment>	CanvasPants_Beige
+<ObjectAttachment>	WorkingBoots_Yellow
+
+<Object> 			SurvivorM_Hassan
+<ObjectPosition>	8359.22,    292.034,    5973.69
+<ObjectOrientation>	-89.158005,	0,			0
+<ObjectAttachment>	FirefighterAxe
+<ObjectAttachment>	AKM
+<ObjectAttachment>	AK_WoodHndgrd
+<ObjectAttachment>	AK_FoldingBttstck
+<ObjectAttachment>	KobraOptic
+<ObjectAttachment>	SVD
+<ObjectAttachment>	PSO1Optic
+<ObjectAttachment>	TacticalGoggles
+<ObjectAttachment>	TacticalGloves_Green
+<ObjectAttachment>	GorkaHelmet
+<ObjectAttachment>	BandanaMask_CamoPattern
+<ObjectAttachment>	UKAssVest_Camo
+<ObjectAttachment>	GorkaEJacket_Summer
+<ObjectAttachment>	GorkaPants_Summer
+<ObjectAttachment>	MilitaryBoots_Black
+<ObjectAttachment>	AliceBag_Camo
+
+<Object> 			SurvivorM_Elias
+<ObjectPosition>	8354.61,    292.034,    5967.63
+<ObjectOrientation>	-22.091135,	0,			0
+<ObjectAttachment>	AmmoBox_9x19_25rnd
+<ObjectAttachment>	NailedBaseballBat
+<ObjectAttachment>	MP5K
+<ObjectAttachment>	MP5_RailHndgrd
+<ObjectAttachment>	Universallight
+<ObjectAttachment>	MP5k_StockBttstck
+<ObjectAttachment>	M68Optic
+<ObjectAttachment>	MP5_Compensator
+<ObjectAttachment>	OMNOGloves_Gray
+<ObjectAttachment>	BallisticHelmet_Green
+<ObjectAttachment>	BandanaMask_CamoPattern
+<ObjectAttachment>	HighCapacityVest_Olive
+<ObjectAttachment>	USMCJacket_Woodland
+<ObjectAttachment>	USMCPants_Woodland
+<ObjectAttachment>	TTSKOBoots
+<ObjectAttachment>	MilitaryBoots_Black
+
+<Object> 			SurvivorM_Taiki
+<ObjectPosition>	8370.48,	293.277,	5994.52
+<ObjectOrientation>	-112.26684,	0,			0
+<ObjectAttachment>	AviatorGlasses
+<ObjectAttachment>	ZmijovkaCap_Blue
+<ObjectAttachment>	Hoodie_GraffitiTiles
+<ObjectAttachment>	Jeans_BlueDark
+<ObjectAttachment>	Sneakers_White
+
+<Object> 			SurvivorM_Jose
+<ObjectPosition>	8365.63,	292.012,	5977.71
+<ObjectOrientation>	-22.091135,	0,			0
+<ObjectAttachment>	LugWrench
+<ObjectAttachment>	WorkingGloves_Black
+<ObjectAttachment>	ReflexVest
+<ObjectAttachment>	JumpsuitJacket_Blue
+<ObjectAttachment>	JumpsuitPants_Blue
+<ObjectAttachment>	HikingBootsLow_Blue
+ 
+<Object>			Land_Mil_Tent_Big2_2
+<ObjectPosition>	8356.92,	294.012,	5971.17
+<ObjectOrientation>	103.001228,	0,			0
+ 
+<Object>			Land_Wreck_Uaz
+<ObjectPosition>	8371.49,	292.807,	5980.68
+<ObjectOrientation>	0,			0,			0
+ 
+<Object>			Land_Misc_Toilet_Mobile
+<ObjectPosition>	8347.7,		293.211,	5979.25
+<ObjectOrientation>	-165.001785,0,			0
+ 
+<Object>			Land_Misc_Toilet_Mobile
+<ObjectPosition>	8349.27,	293.207,	5979.12
+<ObjectOrientation>	-159.998718,0,			0
+ 
+<Object>			Land_Container_1Bo
+<ObjectPosition>	8376.06,	293.318,	5987.46
+<ObjectOrientation>	-82.011284,	0,			0
+ 
+<Object>			Land_Container_1Aoh
+<ObjectPosition>	8374.53,	293.213,	5983.12
+<ObjectOrientation>	13.001471,	0,			0
+ 
+<Object>			Land_Container_1Bo
+<ObjectPosition>	8374.43,	293.211,	5977.06
+<ObjectOrientation>	2.998344,	0,			0
+ 
+<Object>			Land_Container_1Moh
+<ObjectPosition>	8374.03,	293.212,	5970.79
+<ObjectOrientation>	2.998344,	0,			0
+ 
+<Object>			Land_Wreck_Ikarus
+<ObjectPosition>	8370.19,	292.809,	5965.63
+<ObjectOrientation>	72.998840,	0,			0
+ 
+<Object>			Land_Wreck_V3S
+<ObjectPosition>	8363.38,	292.811,	5964.22
+<ObjectOrientation>	7.001019,	0,			0
+ 
+<Object>			Land_Container_1Moh
+<ObjectPosition>	8358.54,	293.112,	5963.1
+<ObjectOrientation>	99.006409,	0,			0
+ 
+<Object>			Land_Container_1Moh
+<ObjectPosition>	8352.48,	293.112,	5964.58
+<ObjectOrientation>	99.006409,	0,			0
+ 
+<Object>			Land_Container_1Moh
+<ObjectPosition>	8342.33,	293.102,	5985.8
+<ObjectOrientation>	-168.001495,0,			0
+ 
+<Object>			Land_Wall_Gate_Camp
+<ObjectPosition>	8342.3,		293.502,	5991.47
+<ObjectOrientation>	106.003967,	0,			0
+ 
+<Object>			Land_Wreck_Ikarus
+<ObjectPosition>	8343.51,	293.272,	6000.51
+<ObjectOrientation>	-168.001495,0,			0
+ 
+<Object>			Land_Container_1Moh
+<ObjectPosition>	8346.16,	293.272,	6007.02
+<ObjectOrientation>	-85.995506,	0,			0
+ 
+<Object>			Land_Container_1Moh
+<ObjectPosition>	8349.87,	293.301,	6009.2
+<ObjectOrientation>	-85.995506,	0,			0
+ 
+<Object>			Land_Container_1Bo
+<ObjectPosition>	8356.16,	293.309,	6009.94
+<ObjectOrientation>	-109.004036,0,			0
+ 
+<Object>			Land_Wreck_V3S
+<ObjectPosition>	8362.74,	293.15,		6010.63
+<ObjectOrientation>	-83.991722,	0,			0
+ 
+<Object>			Land_Wreck_Volha_Blue
+<ObjectPosition>	8365.16,	292.921,	6007.63
+<ObjectOrientation>	5.000144,	0,			0
+ 
+<Object>			Land_Container_1Moh
+<ObjectPosition>	8368.21,	293.361,	6009.55
+<ObjectOrientation>	-15.999864,	0,			0
+ 
+<Object>			Land_Container_1Bo
+<ObjectPosition>	8371.36,	293.316,	6003.86
+<ObjectOrientation>	-43.998638,	0,			0
+ 
+<Object>			Land_Wreck_Uaz
+<ObjectPosition>	8364.77,	292.706,	6013.2
+<ObjectOrientation>	154.001068,	0,			0
+ 
+<Object>			Land_Wreck_Ikarus
+<ObjectPosition>	8373.89,	293.149,	5996.24
+<ObjectOrientation>	-11.998495,	0,			0
+ 
+<Object>			Land_Wreck_S1023_Blue
+<ObjectPosition>	8375.5,		293.081,	5990.16
+<ObjectOrientation>	-96.008263,	0,			0
+ 
+<Object>			Land_Wreck_Caravan_MGreen
+<ObjectPosition>	8367.78,	294.009,	5994.61
+<ObjectOrientation>	97.988716,	0,			0
+ 
+<Object>			Land_Mil_GuardShed
+<ObjectPosition>	8365.84,	292.511,	5977.22
+<ObjectOrientation>	-172.998962,0,			0
+ 
+<Object>			Land_Power_Pole_Conc1_Amp
+<ObjectPosition>	8373.4,		294.856,	5989.17
+<ObjectOrientation>	-161.999741,0,			0
+ 
+<Object>			Land_Power_Pole_Conc1_Amp
+<ObjectPosition>	8350.29,	294.81,		5978.7
+<ObjectOrientation>	141.999985,	0,			0
+ 
+<Object>			Land_Power_Pole_Wood1_Amp
+<ObjectPosition>	8366.61,	294.807,	5975.68
+<ObjectOrientation>	173.998581,	0,			0
+ 
+<Object>			Land_Lunapark_Shooting_Gallery
+<ObjectPosition>	8356.13,	293.602,	5994.67
+<ObjectOrientation>	-79.998199,	0,			0
+
+<Object>			Land_RoadCone
+<ObjectPosition>	8364.66,	292.005,	5985.83
+<ObjectOrientation>	0,			0,			0
+
+<Object>			Land_RoadCone
+<ObjectPosition>	8364.7,		292.027,	5989.5
+<ObjectOrientation>	18,			0,			0
+
+<Object>			Land_RoadCone
+<ObjectPosition>	8360.74,	292.002,	5985.77
+<ObjectOrientation>	5,			0,			0
+
+<Object>			Land_RoadCone
+<ObjectPosition>	8360.69,	292.027,	5989.47
+<ObjectOrientation>	-30,		0,			0
+
+<Object>			Land_RoadCone
+<ObjectPosition>	8370.35,	292.091,	5989.57
+<ObjectOrientation>	-64.0013,	0,			0
+
+<Object>			Land_RoadCone
+<ObjectPosition>	8370.29,	292.006,	5985.86
+<ObjectOrientation>	-64.0013,	0,			0
+
+<Object>			Land_Misc_Well_Pump_Blue
+<ObjectPosition>	8345.61,	292.302,	5985.93
+<ObjectOrientation>	0,			0,			0
+
+<Object>			BarrelHoles_Red
+<ObjectPosition>	8353.61,	292.006,	5982.2
+<ObjectOrientation>	0,			0,			0
+
+
+//<OpenFile> FileName.txt								// Links to another File; Must be right above <FileEnd>!
+<FileEnd>												// This has to be on the End of this File and is very importand!

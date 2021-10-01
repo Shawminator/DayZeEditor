@@ -1,0 +1,8 @@
+<BuySellTimer> 				0.3		// Time in Seconds that the Player has to wait untill he can buy or sell a new Item (bigger Values may reduce Server-Crashes/Errors and Server-Performance).
+<StatUpdateTimer> 			1.0		// Time in Seconds on how often the Player/Trader Stats gets updated in Safezones (bigger Value may improve Server-Performance).
+<FireBarrelUpdateTimer> 	5.0		// Time in Seconds on how often Fire Barrels gets updated in Safezones (bigger Value may improve Server-Performance but could make it possible for Players to extinguish the Fire and take Stuff out of it).
+<ZombieCleanupTimer> 		30.0	// Time in Seconds Interval of Zombie Cleanup in Safezones (smaller Values can cause bad Server-Performance).
+<VehicleCleanupTimer> 		15.0	// Time in Minutes Interval of Vehicle Cleanup in Vehicle Buy-/Sellzones. After 3 Cleanups the Vehicle will get unlocked (1 Cleanup gets also called on every Serverstart). Set to 0 to disable.
+<SafezoneTimeout> 			30.0	// Time in Seconds that the Player still gets secured after he left the Safezone.
+
+<FileEnd>							// This has to be on the End of this File and is very importand!

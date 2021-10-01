@@ -1,0 +1,132 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Serialization;
+
+namespace DayZeLib
+{
+    public class economycoreconfig
+    {
+        public economycore economycore { get; set; }
+        public string Filename { get; set; }
+        public economycoreconfig(string filename)
+        {
+            Filename = filename;
+            var mySerializer = new XmlSerializer(typeof(economycore));
+            // To read the file, create a FileStream.
+            using (var myFileStream = new FileStream(filename, FileMode.Open))
+            {
+                // Call the Deserialize method and cast to the object type.
+                economycore = (economycore)mySerializer.Deserialize(myFileStream);
+            }
+
+        }
+        public bool SaveEconomycore()
+        {
+            var serializer = new XmlSerializer(typeof(economycore));
+            var ns = new XmlSerializerNamespaces();
+            ns.Add("", "");
+            var sw = new StringWriter();
+            sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
+            var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true });
+            serializer.Serialize(xmlWriter, economycore, ns);
+            Console.WriteLine(sw.ToString());
+            File.WriteAllText(Filename, sw.ToString());
+            return true;
+        }
+        public void AddCe(string path, string filename, string type)
+        {
+            file newfile = new file();
+            string _path = path.Replace("\\", "/");
+            switch (type)
+            {
+                case "types":
+                    newfile.name = filename;
+                    newfile.type = "types";
+                    break;
+                default:
+                    break;
+            }
+            if (economycore.ce.Any(x => x.folder == path))
+            {
+                economycore.ce.FirstOrDefault(x => x.folder == path).file.Add(newfile);
+            }
+            else
+            {
+                ce newce = new ce();
+                newce.folder = path;
+                newce.file = new BindingList<file>();
+                newce.file.Add(newfile);
+                if (economycore.ce == null)
+                {
+                    economycore.ce = new BindingList<ce>();
+                }
+                economycore.ce.Add(newce);
+            }
+        }
+        public ce getfolder(string path)
+        {
+            return economycore.ce.FirstOrDefault(x => x.folder == path);
+        }
+        public void RemoveCe(string modname, out string Folderpath, out string filename, out bool deletedirectory)
+        {
+            ce ce = economycore.findFile(modname);
+            Folderpath = ce.folder;
+            file file = ce.getfile(modname);
+            filename = file.name;
+            ce.removefile(file);
+            deletedirectory = false;
+            if (ce.file.Count == 0)
+            {
+                economycore.ce.Remove(ce);
+                deletedirectory = true;
+            }
+        }
+    }
+
+    public class eventscofig
+    {
+        public events events { get; set; }
+        public string Filename { get; set; }
+        public bool isDirty = false;
+        public eventscofig(string filename)
+        {
+            Filename = filename;
+            var mySerializer = new XmlSerializer(typeof(events));
+            // To read the file, create a FileStream.
+            using (var myFileStream = new FileStream(filename, FileMode.Open))
+            {
+                try
+                {
+                    // Call the Deserialize method and cast to the object type.
+                    events = (events)mySerializer.Deserialize(myFileStream);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message + "\n" + filename + "\n" + ex.InnerException.Message);
+                }
+            }
+        }
+
+        public void SaveTyes(string saveTime)
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
+            File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
+            var serializer = new XmlSerializer(typeof(events));
+            var ns = new XmlSerializerNamespaces();
+            ns.Add("", "");
+            var sw = new StringWriter();
+            sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
+            var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true, });
+            serializer.Serialize(xmlWriter, events, ns);
+            Console.WriteLine(sw.ToString());
+            File.WriteAllText(Filename, sw.ToString());
+        }
+    }
+}
