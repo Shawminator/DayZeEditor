@@ -282,6 +282,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="Maps\ChernarusPlus_Map.png.xyz">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

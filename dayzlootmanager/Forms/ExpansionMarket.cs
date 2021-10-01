@@ -900,7 +900,6 @@ namespace DayZeEditor
             {
                 case 0:
                     Cursor.Current = Cursors.WaitCursor;
-                    int index = listBox7.SelectedIndex;
                     marketsettings.AddnewSpawn(0);
                     listBox7.SelectedIndex = listBox7.Items.Count - 1;
                     SpawnPositions sp = marketsettings.getSpawnbyindex(0, listBox7.Items.Count - 1);
@@ -911,14 +910,12 @@ namespace DayZeEditor
                     Cursor.Current = Cursors.Default;
                     break;
                 case 1:
-                    index = listBox8.SelectedIndex;
                     marketsettings.AddnewSpawn(1);
                     marketsettings.isDirty = true;
                     listBox8.SelectedIndex = listBox8.Items.Count - 1;
 
                     break;
                 case 2:
-                    index = listBox9.SelectedIndex;
                     marketsettings.AddnewSpawn(2);
                     marketsettings.isDirty = true;
                     listBox9.SelectedIndex = listBox9.Items.Count - 1;
@@ -1109,8 +1106,7 @@ namespace DayZeEditor
         }
         private void pictureBox2_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            MouseEventArgs mouseEventArgs = e as MouseEventArgs;
-            if (mouseEventArgs != null)
+            if (e is MouseEventArgs mouseEventArgs)
             {
                 float scalevalue = scale2 * 0.05f;
                 float mapsize = currentproject.MapSize;
@@ -1154,61 +1150,15 @@ namespace DayZeEditor
         private void Poppulatetreeview()
         {
             treeView1.Nodes.Clear();
-            //Get items from Category 
             MytreeNode tn = new MytreeNode(currentTrader.TraderName)
             {
                 Tag = "Parent"
             };
-            List<TradersItem> titemstoremove = new List<TradersItem>();
-            List<TradersItem> titemstoadd = new List<TradersItem>();
-            //foreach(TradersItem tiem in currentTrader.ListItems)
-            //{
-            //    if (tiem.ClassName == "expansion_flag_yellow")
-            //    {
-            //        string stop = "";
-            //    }
-            //    //marketItem mitem = MarketCats.getitemfromcategory(tiem.ClassName.Replace("#STR_EXPANSION_MARKET_CATEGORY_", ""));
-            //    //if (mitem == null)
-            //    //{
-            //    //    MessageBox.Show(tiem.ClassName + " is not in the itemlist, it will be removed from this trader.\nplease create a market item for this and add to you desired trader.");
-            //    //    titemstoremove.Add(tiem);
-            //    //    continue;
-            //    //}
-            //    //if(mitem.Variants.Count > 0)
-            //    //{
-            //    //    foreach(string varient in mitem.Variants)
-            //    //    {
-            //    //        if(!currentTrader.ListItems.Any(x => x.ClassName == varient))
-            //    //        {
-            //    //            TradersItem newitem = new TradersItem();
-            //    //            newitem.ClassName = varient;
-            //    //            newitem.buysell = tiem.buysell;
-            //    //            titemstoadd.Add(newitem);
-            //    //        }
-            //    //        TradersItem ti = currentTrader.ListItems.FirstOrDefault(x => x.ClassName == varient);
-            //    //    }
-            //    //}
-            //}
-
-            //foreach (TradersItem ti in titemstoadd)
-            //{
-            //    if (!currentTrader.ListItems.Any(x => x.ClassName == ti.ClassName))
-            //    {
-            //        currentTrader.ListItems.Add(ti);
-            //        currentTrader.isDirty = true;
-            //    }
-            //}
             foreach (TradersItem name in currentTrader.ListItems)
             {
                 if (name.buysell != canBuyCansell.Attchment)
                 {
                     marketItem mitem = MarketCats.getitemfromcategory(name.ClassName.Replace("#STR_EXPANSION_MARKET_CATEGORY_", ""));
-                    //if (mitem == null)
-                    //{
-                    //    MessageBox.Show(name.ClassName + " is not in the itemlist, it will be removed from this trader.\nplease create a market item for this and add to you desired trader.");
-                    //    titemstoremove.Add(name);
-                    //    continue;
-                    //}
                     Categories cat = MarketCats.GetCat(mitem);
                     if (cat == null)
                     {
@@ -1709,12 +1659,14 @@ namespace DayZeEditor
         }
         private void darkButton1_Click(object sender, EventArgs e)
         {
-            AddItemfromTypes form = new AddItemfromTypes();
-            form.vanillatypes = vanillatypes;
-            form.ModTypes = ModTypes;
-            form.currentproject = currentproject;
-            form.UseMultiple = true;
-            form.isCategoryitem = false;
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseMultiple = true,
+                isCategoryitem = false
+            };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -1757,12 +1709,14 @@ namespace DayZeEditor
         }
         private void darkButton9_Click(object sender, EventArgs e)
         {
-            AddItemfromTypes form = new AddItemfromTypes();
-            form.vanillatypes = vanillatypes;
-            form.ModTypes = ModTypes;
-            form.currentproject = currentproject;
-            form.UseMultiple = false;
-            form.isCategoryitem = true;
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseMultiple = false,
+                isCategoryitem = true
+            };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -1860,26 +1814,30 @@ namespace DayZeEditor
             }
 
 
-            AddItemfromTypes form = new AddItemfromTypes();
-            form.vanillatypes = vanillatypes;
-            form.ModTypes = ModTypes;
-            form.currentproject = currentproject;
-            form.UseMultiple = false;
-            form.isCategoryitem = true;
-            form.usedtypes = UsedTypes;
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseMultiple = false,
+                isCategoryitem = true,
+                usedtypes = UsedTypes
+            };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    marketItem NewContainer = new marketItem();
-                    NewContainer.ClassName = l.ToLower();
-                    NewContainer.MaxPriceThreshold = 0;
-                    NewContainer.MinPriceThreshold = 0;
-                    NewContainer.MaxStockThreshold = 0;
-                    NewContainer.MinStockThreshold = 0;
-                    NewContainer.PurchaseType = 0;
+                    marketItem NewContainer = new marketItem
+                    {
+                        ClassName = l.ToLower(),
+                        MaxPriceThreshold = 0,
+                        MinPriceThreshold = 0,
+                        MaxStockThreshold = 0,
+                        MinStockThreshold = 0,
+                        PurchaseType = 0
+                    };
                     currentCat.Items.Add(NewContainer);
                     currentCat.isDirty = true;
                 }
@@ -1899,13 +1857,15 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    marketItem NewContainer = new marketItem();
-                    NewContainer.ClassName = l.ToLower();
-                    NewContainer.MaxPriceThreshold = 0;
-                    NewContainer.MinPriceThreshold = 0;
-                    NewContainer.MaxStockThreshold = 0;
-                    NewContainer.MinStockThreshold = 0;
-                    NewContainer.PurchaseType = 0;
+                    marketItem NewContainer = new marketItem
+                    {
+                        ClassName = l.ToLower(),
+                        MaxPriceThreshold = 0,
+                        MinPriceThreshold = 0,
+                        MaxStockThreshold = 0,
+                        MinStockThreshold = 0,
+                        PurchaseType = 0
+                    };
                     currentCat.Items.Add(NewContainer);
                     currentCat.isDirty = true;
                 }
@@ -1998,13 +1958,15 @@ namespace DayZeEditor
 
             foreach (type type in newlist)
             {
-                marketItem newitem = new marketItem();
-                newitem.ClassName = type.name.ToLower();
-                newitem.MaxPriceThreshold = currentitem.MaxPriceThreshold;
-                newitem.MinPriceThreshold = currentitem.MinPriceThreshold;
-                newitem.MaxStockThreshold = currentitem.MaxStockThreshold;
-                newitem.MinStockThreshold = currentitem.MinStockThreshold;
-                newitem.PurchaseType = currentitem.PurchaseType;
+                marketItem newitem = new marketItem
+                {
+                    ClassName = type.name.ToLower(),
+                    MaxPriceThreshold = currentitem.MaxPriceThreshold,
+                    MinPriceThreshold = currentitem.MinPriceThreshold,
+                    MaxStockThreshold = currentitem.MaxStockThreshold,
+                    MinStockThreshold = currentitem.MinStockThreshold,
+                    PurchaseType = currentitem.PurchaseType
+                };
                 if (!varients.Any(x => x.ClassName == newitem.ClassName))
                 {
                     varients.Add(newitem);
@@ -2178,27 +2140,27 @@ namespace DayZeEditor
         #endregion Market Categories
 
         #region TraderZones
-        public int Scale = 1;
+        public int TraderZoneMapScale = 1;
         private void trackBar2_MouseUp(object sender, MouseEventArgs e)
         {
-            Scale = trackBar2.Value;
+            TraderZoneMapScale = trackBar2.Value;
             SetScale();
         }
         private void SetScale()
         {
-            float scalevalue = Scale * 0.05f;
+            float scalevalue = TraderZoneMapScale * 0.05f;
             float mapsize = currentproject.MapSize;
             int newsize = (int)(mapsize * scalevalue);
             pictureBox1.Size = new Size(newsize, newsize);
         }
         private void DrawAll(object sender, PaintEventArgs e)
         {
-            float scalevalue = Scale * 0.05f;
+            float scalevalue = TraderZoneMapScale * 0.05f;
             foreach (Zones zones in Zones.ZoneList)
             {
                 int centerX = (int)(Math.Round(zones.Position[0], 0) * scalevalue);
                 int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(zones.Position[2], 0) * scalevalue);
-                int radius = ((int)zones.Radius / (currentproject.MapSize / 512)) * Scale;
+                int radius = ((int)zones.Radius / (currentproject.MapSize / 512)) * TraderZoneMapScale;
                 Point center = new Point(centerX, centerY);
                 Pen pen = new Pen(Color.Red);
                 if (currentZone.m_ZoneName == zones.m_ZoneName)
@@ -2213,7 +2175,7 @@ namespace DayZeEditor
             if (mouseEventArgs != null)
             {
                 Cursor.Current = Cursors.WaitCursor;
-                float scalevalue = Scale * 0.05f;
+                float scalevalue = TraderZoneMapScale * 0.05f;
                 float mapsize = currentproject.MapSize;
                 int newsize = (int)(mapsize * scalevalue);
                 numericUpDown1.Value = (decimal)(mouseEventArgs.X / scalevalue);

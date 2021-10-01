@@ -253,23 +253,31 @@ namespace DayZeEditor
         private void PopulateTreeView()
         {
             treeView1.Nodes.Clear();
-            TreeNode root = new TreeNode(Path.GetFileName(filename));
-            root.Tag = "Parent";
+            TreeNode root = new TreeNode(Path.GetFileName(filename))
+            {
+                Tag = "Parent"
+            };
             //Set Vanilla Treenode types
-            TreeNode vanilla = new TreeNode("Vanilla Types");
-            vanilla.Tag = "VanillaTypes";
-            foreach(type type in vanillatypes.types.type)
+            TreeNode vanilla = new TreeNode("Vanilla Types")
+            {
+                Tag = "VanillaTypes"
+            };
+            foreach (type type in vanillatypes.types.type)
             {
                 string cat = "other";
                 if (type.category != null)
                     cat = type.category.name;
-                TreeNode typenode = new TreeNode(type.name);
-                typenode.Tag = type;
-                if(!vanilla.Nodes.ContainsKey(cat))
+                TreeNode typenode = new TreeNode(type.name)
                 {
-                    TreeNode newcatnode = new TreeNode(cat);
-                    newcatnode.Name = cat;
-                    newcatnode.Tag = cat;
+                    Tag = type
+                };
+                if (!vanilla.Nodes.ContainsKey(cat))
+                {
+                    TreeNode newcatnode = new TreeNode(cat)
+                    {
+                        Name = cat,
+                        Tag = cat
+                    };
                     vanilla.Nodes.Add(newcatnode);
                 }
                 vanilla.Nodes[cat].Nodes.Add(typenode);
@@ -280,20 +288,26 @@ namespace DayZeEditor
             {
                 foreach (TypesFile tf in ModTypes)
                 {
-                    TreeNode ModTypes = new TreeNode(tf.modname);
-                    ModTypes.Tag = tf.modname;
+                    TreeNode ModTypes = new TreeNode(tf.modname)
+                    {
+                        Tag = tf.modname
+                    };
                     foreach (type type in tf.types.type)
                     {
                         string cat = "other";
                         if (type.category != null)
                             cat = type.category.name;
-                        TreeNode typenode = new TreeNode(type.name);
-                        typenode.Tag = type;
+                        TreeNode typenode = new TreeNode(type.name)
+                        {
+                            Tag = type
+                        };
                         if (!ModTypes.Nodes.ContainsKey(cat))
                         {
-                            TreeNode newcatnode = new TreeNode(cat);
-                            newcatnode.Name = cat;
-                            newcatnode.Tag = cat;
+                            TreeNode newcatnode = new TreeNode(cat)
+                            {
+                                Name = cat,
+                                Tag = cat
+                            };
                             ModTypes.Nodes.Add(newcatnode);
                         }
                         ModTypes.Nodes[cat].Nodes.Add(typenode);
@@ -423,11 +437,8 @@ namespace DayZeEditor
             {
                 if (MessageBox.Show("This Will Remove The types file from the Project, Are you sure you want to do this?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    string foflderpath;
-                    string filename;
-                    bool deletedirectory;
                     string Modname = currentTypesFile.modname;
-                    currentproject.EconomyCore.RemoveCe(Modname, out foflderpath, out filename, out deletedirectory);
+                    currentproject.EconomyCore.RemoveCe(Modname, out string foflderpath, out string filename, out bool deletedirectory);
                     File.Delete(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\" + foflderpath + "\\" + filename);
                     if (deletedirectory)
                         Directory.Delete(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\" + foflderpath, true);
@@ -472,8 +483,10 @@ namespace DayZeEditor
         }
         private void AddtypesTSMI_Click(object sender, EventArgs e)
         {
-            AddNewTypes form = new AddNewTypes();
-            form.currentproject = currentproject;
+            AddNewTypes form = new AddNewTypes
+            {
+                currentproject = currentproject
+            };
             if (currentcollection == "Parent")
             {
                 form.newlocation = true;   

@@ -1,0 +1,4 @@
+﻿[*.{cs,vb}]
+
+# IDE0075: Simplify conditional expression
+dotnet_style_prefer_simplified_boolean_expressions = false

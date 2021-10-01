@@ -1206,7 +1206,7 @@ namespace DayZeEditor
         #endregion Airdropsettings
 
         #region basebuildingsettings
-        public int Scale = 1;
+        public int BaseBuildingMapscale = 1;
 
         private void Setupbasebuildingsettings()
         {
@@ -1464,20 +1464,20 @@ namespace DayZeEditor
         }
         private void trackBar2_MouseUp(object sender, MouseEventArgs e)
         {
-            Scale = trackBar2.Value;
+            BaseBuildingMapscale = trackBar2.Value;
             SetsBBcale();
 
         }
         private void SetsBBcale()
         {
-            float scalevalue = Scale * 0.05f;
+            float scalevalue = BaseBuildingMapscale * 0.05f;
             float mapsize = currentproject.MapSize;
             int newsize = (int)(mapsize * scalevalue);
             pictureBox1.Size = new Size(newsize, newsize);
         }
         private void DrawAll(object sender, PaintEventArgs e)
         {
-            float scalevalue = Scale * 0.05f;
+            float scalevalue = BaseBuildingMapscale * 0.05f;
             foreach (NoBuildZones zones in BaseBuildingSettings.Zones)
             {
                 int centerX = (int)(Math.Round(zones.Center[0], 0) * scalevalue);
@@ -1599,7 +1599,7 @@ namespace DayZeEditor
             var mouseEventArgs = e as MouseEventArgs;
             if (mouseEventArgs != null)
             {
-                float scalevalue = Scale * 0.05f;
+                float scalevalue = BaseBuildingMapscale * 0.05f;
                 float mapsize = currentproject.MapSize;
                 int newsize = (int)(mapsize * scalevalue);
                 if (currentZone == null) { return; }

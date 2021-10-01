@@ -176,7 +176,7 @@ namespace DayZeEditor
                         session.Open(sessionOptions);
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                     MessageBox.Show("Please check connection info.....");
                     return;
