@@ -21,16 +21,16 @@ namespace DayZeLib
         [Description("The player will be able to create a territory to protect his base.")]
         Create_Territory = 1,
         [Description("The player will be able to create a territory to protect his base but he won't be able to customize his flag from the flag menu")]
-       Create_Territory_No_Custom_Flags = 2,
+        Create_Territory_No_Custom_Flags = 2,
     }
     public enum DismantleFlagMode
     {
         [Description("Only territory members can dismantle the flag pole.")]
-        Disabled = -1,
+        OnlyMembers = -1,
         [Description("You can dismantle the flag pole with your hands.")]
-        Create_Territory = 0,
+        Dismantle_With_Hands = 0,
         [Description("You need tools to dismantle the flag pole.")]
-        Create_Territory_No_Custom_Flags = 1,
+        Dismantle_With_Tools = 1,
     }
     public class BaseBuildingSettings
     {

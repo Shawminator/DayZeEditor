@@ -136,7 +136,7 @@ namespace DayZeLib
                 List<marketItem> itemslist = marketCats.GetCatFromFileName(cat).Items.ToList();
                 foreach (marketItem item in itemslist)
                 {
-                    TradersItem ti = new TradersItem() { ClassName = item.ClassName.ToLower(), buysell = canBuyCansell.CanBuyAndsell, CatName = cat};
+                    TradersItem ti = new TradersItem() { ClassName = item.ClassName, buysell = canBuyCansell.CanBuyAndsell, CatName = cat};
                     if(!initialList.Any(x => x.ClassName == ti.ClassName))
                         initialList.Add(ti);
                 }

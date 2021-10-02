@@ -330,7 +330,6 @@ namespace DayZeEditor
             }
             setzoneprices();
         }
-
         private void setMAxStockForAllItemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Set your max Stock... ", "Max Stock", "");
@@ -2454,7 +2453,6 @@ namespace DayZeEditor
             trackBar3.Value = num;
             pcontroll = false;
         }
-
         private void SetStock(int num, string classname, marketItem i)
         {
             int Stocknum = (int)((float)i.MaxStockThreshold / 100 * num);
@@ -2476,7 +2474,6 @@ namespace DayZeEditor
             if (!currentZone.StockItems.Any(x => x.Classname == si.Classname))
                 currentZone.StockItems.Add(si);
         }
-
         public bool IsWithinCircle(PointF pC, PointF pP, Single fRadius)
         {
             return Distance(pC, pP) <= fRadius;
@@ -2802,8 +2799,6 @@ namespace DayZeEditor
             listBox14.Refresh();
             tradermaps.isDirty = true;
         }
-
-
 
         #endregion tradermaps
 

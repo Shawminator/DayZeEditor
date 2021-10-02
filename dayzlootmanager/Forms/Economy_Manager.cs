@@ -1215,8 +1215,17 @@ namespace DayZeEditor
             eventsfile.isDirty = true;
             EventsLB.Refresh();
         }
+
         #endregion events
 
-
+        private void darkButton9_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach(type type in vanillatypes.types.type)
+            {
+                sb.Append(type.name + ", " + type.category.ToString() + Environment.NewLine);
+            }
+            File.WriteAllText("Classnames.txt", sb.ToString());
+        }
     }
 }
