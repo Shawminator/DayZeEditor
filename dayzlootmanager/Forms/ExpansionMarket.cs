@@ -281,6 +281,23 @@ namespace DayZeEditor
             }
             setzoneprices();
         }
+        private void setMinMaxStockForItemsWith0ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Categories cats in MarketCats.CatList)
+            {
+                foreach (marketItem item in cats.Items)
+                {
+                    if (item.MaxStockThreshold == 0 || item.MinStockThreshold == 0)
+                    {
+                        item.MaxStockThreshold = 100;
+                        item.MinStockThreshold = 1;
+                    }
+
+                }
+                cats.isDirty = true;
+            }
+            setzoneprices();
+        }
         private void syncMaxToMinPricesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             foreach (Categories cats in MarketCats.CatList)
@@ -294,6 +311,26 @@ namespace DayZeEditor
             }
             setzoneprices();
         }
+        private void setPricesForItemWithZeroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Set your Max Price... ", "max Price", "");
+            if (UserAnswer == "") return;
+            int value = Convert.ToInt32(UserAnswer);
+            foreach (Categories cats in MarketCats.CatList)
+            {
+                foreach (marketItem item in cats.Items)
+                {
+                    if (item.MaxPriceThreshold == 0)
+                        item.MaxPriceThreshold = value;
+                    if (item.MinPriceThreshold == 0)
+                        item.MinPriceThreshold = (int)((float)value * 0.5f);
+
+                }
+                cats.isDirty = true;
+            }
+            setzoneprices();
+        }
+
         private void setMAxStockForAllItemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Set your max Stock... ", "Max Stock", "");
@@ -364,6 +401,23 @@ namespace DayZeEditor
             }
             currentCat.isDirty = true;
             setzoneprices();
+        }
+        private void setPriceForItemsWithZeroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Set your Max Price... ", "max Price", "");
+            if (UserAnswer == "") return;
+            int value = Convert.ToInt32(UserAnswer);
+            foreach (marketItem item in currentCat.Items)
+            {
+                if (item.MaxPriceThreshold == 0)
+                    item.MaxPriceThreshold = value;
+                if (item.MinPriceThreshold == 0)
+                    item.MinPriceThreshold = (int)((float)value * 0.5f);
+
+            }
+            currentCat.isDirty = true;
+            setzoneprices();
+
         }
         private void setMinPriceForSelectedCategoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1974,9 +2028,11 @@ namespace DayZeEditor
             }
 
             varients.Remove(currentitem);
-            Variants vform = new Variants();
-            vform.ListOfpossibleVariants = varients;
-            vform.CurrentItem = currentitem;
+            Variants vform = new Variants
+            {
+                ListOfpossibleVariants = varients,
+                CurrentItem = currentitem
+            };
             if (vform.ShowDialog() == DialogResult.OK)
             {
                 List<marketItem> varientlist = vform.returneditems;
@@ -2115,11 +2171,12 @@ namespace DayZeEditor
         }
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            List<marketItem> items = new List<marketItem>();
-            items = listBox4.SelectedItems.Cast<marketItem>().ToList();
-            CategoryList cl = new CategoryList();
-            cl.MarketCats = MarketCats;
-            cl.marketitems = items;
+            List<marketItem> items = listBox4.SelectedItems.Cast<marketItem>().ToList();
+            CategoryList cl = new CategoryList
+            {
+                MarketCats = MarketCats,
+                marketitems = items
+            };
             cl.ShowDialog();
         }
         private void darkButton25_Click(object sender, EventArgs e)
@@ -2171,8 +2228,7 @@ namespace DayZeEditor
         }
         private void pictureBox1_DoubleClick(object sender, EventArgs e)
         {
-            var mouseEventArgs = e as MouseEventArgs;
-            if (mouseEventArgs != null)
+            if (e is MouseEventArgs mouseEventArgs)
             {
                 Cursor.Current = Cursors.WaitCursor;
                 float scalevalue = TraderZoneMapScale * 0.05f;
@@ -2315,10 +2371,12 @@ namespace DayZeEditor
                         Categories cat = MarketCats.GetCatFromDisplayName(ti.ClassName);
                         marketItem i = MarketCats.getitemfromcategory(ti.ClassName);
                         int Stocknum = (int)((float)i.MaxStockThreshold / 100 * num);
-                        StockItem si = new StockItem();
-                        si.Classname = ti.ClassName;
-                        si.StockValue = Stocknum;
-                        si.StockCheker = Stocknum;
+                        StockItem si = new StockItem
+                        {
+                            Classname = ti.ClassName,
+                            StockValue = Stocknum,
+                            StockCheker = Stocknum
+                        };
                         float initialvalue = Helper.PowCurveCalc((float)i.MinStockThreshold, (float)i.MaxStockThreshold, i.MaxStockThreshold - si.StockCheker, i.MinPriceThreshold, i.MaxPriceThreshold, 6.0f);
                         si.ZoneBuyPrice = (int)(initialvalue * (zone.BuyPricePercent / 100));
 
@@ -2400,10 +2458,12 @@ namespace DayZeEditor
         private void SetStock(int num, string classname, marketItem i)
         {
             int Stocknum = (int)((float)i.MaxStockThreshold / 100 * num);
-            StockItem si = new StockItem();
-            si.Classname = classname;
-            si.StockValue = Stocknum;
-            si.StockCheker = Stocknum;
+            StockItem si = new StockItem
+            {
+                Classname = classname,
+                StockValue = Stocknum,
+                StockCheker = Stocknum
+            };
             float initialvalue = Helper.PowCurveCalc((float)i.MinStockThreshold, (float)i.MaxStockThreshold, i.MaxStockThreshold - si.StockCheker, i.MinPriceThreshold, i.MaxPriceThreshold, 6.0f);
             si.ZoneBuyPrice = (int)(initialvalue * (currentZone.BuyPricePercent / 100));
 
@@ -2487,10 +2547,12 @@ namespace DayZeEditor
                         Categories cat = MarketCats.GetCatFromDisplayName(ti.ClassName);
                         marketItem i = MarketCats.getitemfromcategory(ti.ClassName);
                         int Stocknum = (int)((float)i.MaxStockThreshold / 100 * num);
-                        StockItem si = new StockItem();
-                        si.Classname = ti.ClassName;
-                        si.StockValue = Stocknum;
-                        si.StockCheker = Stocknum;
+                        StockItem si = new StockItem
+                        {
+                            Classname = ti.ClassName,
+                            StockValue = Stocknum,
+                            StockCheker = Stocknum
+                        };
                         float initialvalue = Helper.PowCurveCalc((float)i.MinStockThreshold, (float)i.MaxStockThreshold, i.MaxStockThreshold - si.StockCheker, i.MinPriceThreshold, i.MaxPriceThreshold, 6.0f);
                         si.ZoneBuyPrice = (int)(initialvalue * (currentZone.BuyPricePercent / 100));
 
@@ -2590,12 +2652,14 @@ namespace DayZeEditor
             if (sender is Panel)
             {
                 Panel p = sender as Panel;
-                ttpShow = new ToolTip();
-                ttpShow.AutoPopDelay = 2000;
-                ttpShow.InitialDelay = 1000;
-                ttpShow.ReshowDelay = 500;
-                ttpShow.IsBalloon = true;
-                if(hastrader)
+                ttpShow = new ToolTip
+                {
+                    AutoPopDelay = 2000,
+                    InitialDelay = 1000,
+                    ReshowDelay = 500,
+                    IsBalloon = true
+                };
+                if (hastrader)
                     ttpShow.Show("NPC attched to existing trader", p, p.Width, p.Height / 10, 5000);
                 else
                     ttpShow.Show("No Trader of this Name,\nClick cross to assign to exiting trader", p, p.Width, p.Height / 10, 5000);
@@ -2625,24 +2689,28 @@ namespace DayZeEditor
                 MessageBox.Show("Please create some trader zones..");
                 return;
             }
-            NewTraderMapForm NTM = new NewTraderMapForm();
-            NTM.Zones = Zones;
-            NTM.TraderMaps = tradermaps;
-            NTM.Traders = Traders;
-            if(NTM.ShowDialog() == DialogResult.OK)
+            NewTraderMapForm NTM = new NewTraderMapForm
+            {
+                Zones = Zones,
+                TraderMaps = tradermaps,
+                Traders = Traders
+            };
+            if (NTM.ShowDialog() == DialogResult.OK)
             {
                 if (NTM.NPC == "")
                 {
                     MessageBox.Show(" No NPC was selected...");
                     return;
                 }
-                Tradermap newtradermap = new Tradermap();
-                newtradermap.Filename = tradermapsPath + "\\" + NTM.SelectedZone.m_ZoneName + ".map";
-                newtradermap.NPCName = NTM.NPC;
-                newtradermap.NPCTrade = NTM.selectedTrader.TraderName;
-                newtradermap.position = new Vec3() {X = NTM.SelectedZone.Position[0], Y = NTM.SelectedZone.Position[1], Z = NTM.SelectedZone.Position[2] };
-                newtradermap.roattions = new Vec3(){ X = 0, Y = 0, Z = 0 };
-                newtradermap.Attachments = new BindingList<string>();
+                Tradermap newtradermap = new Tradermap
+                {
+                    Filename = tradermapsPath + "\\" + NTM.SelectedZone.m_ZoneName + ".map",
+                    NPCName = NTM.NPC,
+                    NPCTrade = NTM.selectedTrader.TraderName,
+                    position = new Vec3() { X = NTM.SelectedZone.Position[0], Y = NTM.SelectedZone.Position[1], Z = NTM.SelectedZone.Position[2] },
+                    roattions = new Vec3() { X = 0, Y = 0, Z = 0 },
+                    Attachments = new BindingList<string>()
+                };
                 tradermaps.maps.Add(newtradermap);
                 tradermaps.isDirty = true;
                 setTraderzonelist();
@@ -2694,13 +2762,15 @@ namespace DayZeEditor
         }
         private void darkButton24_Click(object sender, EventArgs e)
         {
-            AddItemfromTypes form = new AddItemfromTypes();
-            form.vanillatypes = vanillatypes;
-            form.ModTypes = ModTypes;
-            form.currentproject = currentproject;
-            form.UseMultiple = false;
-            form.LowerCase = false;
-            form.isCategoryitem = false;
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseMultiple = false,
+                LowerCase = false,
+                isCategoryitem = false
+            };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {

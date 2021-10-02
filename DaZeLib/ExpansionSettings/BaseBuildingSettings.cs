@@ -14,9 +14,27 @@ namespace DayZeLib
         [Description("Expansion Builds, Tents and Fences")]
         Expansion_basebuilding_Tents_Fences = 3
     }
+    public enum FlagMenuMode
+    {
+        [Description("he player will not be able to create a territory")]
+        Disabled = 0,
+        [Description("The player will be able to create a territory to protect his base.")]
+        Create_Territory = 1,
+        [Description("The player will be able to create a territory to protect his base but he won't be able to customize his flag from the flag menu")]
+       Create_Territory_No_Custom_Flags = 2,
+    }
+    public enum DismantleFlagMode
+    {
+        [Description("Only territory members can dismantle the flag pole.")]
+        Disabled = -1,
+        [Description("You can dismantle the flag pole with your hands.")]
+        Create_Territory = 0,
+        [Description("You need tools to dismantle the flag pole.")]
+        Create_Territory_No_Custom_Flags = 1,
+    }
     public class BaseBuildingSettings
     {
-        public int m_Version { get; set; }  // Current Version is 2
+        public int m_Version { get; set; }  // Current Version is 3
         public int CanBuildAnywhere { get; set; }
         public int AllowBuildingWithoutATerritory { get; set; }
         public BindingList<string> DeployableOutsideATerritory { get; set; }
@@ -24,11 +42,9 @@ namespace DayZeLib
         public int CanCraftVanillaBasebuilding { get; set; }
         public int CanCraftExpansionBasebuilding { get; set; }
         public int DestroyFlagOnDismantle { get; set; }
-        public int DismantleFlagRequireTools { get; set; }
         public int DismantleOutsideTerritory { get; set; }
         public int DismantleInsideTerritory { get; set; }
         public int DismantleAnywhere { get; set; }
-        public int CanAttachCodelock { get; set; }
         public int CodelockActionsAnywhere { get; set; }
         public int CodeLockLength { get; set; }
         public int DoDamageWhenEnterWrongCodeLock { get; set; }
@@ -37,11 +53,13 @@ namespace DayZeLib
         public int CanCraftTerritoryFlagKit { get; set; }
         public int SimpleTerritory { get; set; }
         public int AutomaticFlagOnCreation { get; set; }
-        public int EnableFlagMenu { get; set; }
         public int GetTerritoryFlagKitAfterBuild { get; set; }
         public string BuildZoneRequiredCustomMessage { get; set; }
         public BindingList<NoBuildZones> Zones { get; set; }
         public int ZonesAreNoBuildZones { get; set; }
+        public int CodelockAttachMode { get; set; }
+        public int DismantleFlagMode { get; set; }
+        public int FlagMenuMode { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }

@@ -845,8 +845,10 @@ namespace DayZeEditor
         }
         public TreeNode returntreenode(List<LootPart> partlist, string name, bool ignoredisabled = false)
         {
-            TreeNode tn = new TreeNode(name);
-            tn.Tag = name;
+            TreeNode tn = new TreeNode(name)
+            {
+                Tag = name
+            };
             foreach (LootPart lp in partlist)
             {
                 TreeNode partnod = new TreeNode(lp.name);
@@ -1004,13 +1006,15 @@ namespace DayZeEditor
         }
         private void darkButton8_Click(object sender, EventArgs e)
         {
-            AddItemfromTypes form = new AddItemfromTypes();
-            form.vanillatypes = vanillatypes;
-            form.ModTypes = ModTypes;
-            form.currentproject = currentproject;
-            form.UseMultiple = false;
-            form.isCategoryitem = false;
-            form.LowerCase = false;
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseMultiple = false,
+                isCategoryitem = false,
+                LowerCase = false
+            };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -1033,13 +1037,15 @@ namespace DayZeEditor
         }
         private void darkButton9_Click(object sender, EventArgs e)
         {
-            AddItemfromTypes form = new AddItemfromTypes();
-            form.vanillatypes = vanillatypes;
-            form.ModTypes = ModTypes;
-            form.currentproject = currentproject;
-            form.UseMultiple = false;
-            form.isCategoryitem = false;
-            form.LowerCase = false;
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseMultiple = false,
+                isCategoryitem = false,
+                LowerCase = false
+            };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -1211,17 +1217,19 @@ namespace DayZeEditor
         private void Setupbasebuildingsettings()
         {
             useraction = false;
-            comboBox4.DataSource = Enum.GetValues(typeof(canattacchcodelock));
+            CodelockAttachModeCB.DataSource = Enum.GetValues(typeof(canattacchcodelock));
+            FlagMenuModeComboBox.DataSource = Enum.GetValues(typeof(FlagMenuMode));
+            DismantleFlagModeComboBox.DataSource = Enum.GetValues(typeof(DismantleFlagMode));
             CanBuildAnywhereCB.Checked = BaseBuildingSettings.CanBuildAnywhere == 1 ? true : false;
             AllowBuildingWithoutATerritoryCB.Checked = BaseBuildingSettings.AllowBuildingWithoutATerritory == 1 ? true : false;
             CanCraftVanillaBasebuildingCB.Checked = BaseBuildingSettings.CanCraftVanillaBasebuilding == 1 ? true : false;
             CanCraftExpansionBasebuildingCB.Checked = BaseBuildingSettings.CanCraftExpansionBasebuilding == 1 ? true : false;
             DestroyFlagOnDismantleCB.Checked = BaseBuildingSettings.DestroyFlagOnDismantle == 1 ? true : false;
-            DismantleFlagRequireToolsCB.Checked = BaseBuildingSettings.DismantleFlagRequireTools == 1 ? true : false;
+            DismantleFlagModeComboBox.SelectedItem = (DismantleFlagMode)BaseBuildingSettings.DismantleFlagMode;
             DismantleOutsideTerritoryCB.Checked = BaseBuildingSettings.DismantleOutsideTerritory == 1 ? true : false;
             DismantleInsideTerritoryCB.Checked = BaseBuildingSettings.DismantleInsideTerritory == 1 ? true : false;
             DismantleAnywhereCB.Checked = BaseBuildingSettings.DismantleAnywhere == 1 ? true : false;
-            comboBox4.SelectedItem = (canattacchcodelock)BaseBuildingSettings.CanAttachCodelock;
+            CodelockAttachModeCB.SelectedItem = (canattacchcodelock)BaseBuildingSettings.CodelockAttachMode;
             CodelockActionsAnywhereCB.Checked = BaseBuildingSettings.CodelockActionsAnywhere == 1 ? true : false;
             CodeLockLengthNUD.Value = BaseBuildingSettings.CodeLockLength;
             DoDamageWhenEnterWrongCodeLockCB.Checked = BaseBuildingSettings.DoDamageWhenEnterWrongCodeLock == 1 ? true : false;
@@ -1230,7 +1238,7 @@ namespace DayZeEditor
             CanCraftTerritoryFlagKitCB.Checked = BaseBuildingSettings.CanCraftTerritoryFlagKit == 1 ? true : false;
             SimpleTerritoryCB.Checked = BaseBuildingSettings.SimpleTerritory == 1 ? true : false;
             AutomaticFlagOnCreationCB.Checked = BaseBuildingSettings.AutomaticFlagOnCreation == 1 ? true : false;
-            EnableFlagMenuCB.Checked = BaseBuildingSettings.EnableFlagMenu == 1 ? true : false;
+            FlagMenuModeComboBox.SelectedItem = (FlagMenuMode)BaseBuildingSettings.FlagMenuMode;
             GetTerritoryFlagKitAfterBuildCB.Checked = BaseBuildingSettings.GetTerritoryFlagKitAfterBuild == 1 ? true : false;
             textBox2.Text = BaseBuildingSettings.BuildZoneRequiredCustomMessage;
             ZonesAreNoBuildZonesCB.Checked = BaseBuildingSettings.ZonesAreNoBuildZones == 1 ? true : false;
@@ -1270,12 +1278,6 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             BaseBuildingSettings.CanBuildAnywhere = CanBuildAnywhereCB.Checked == true ? 1 : 0;
-            BaseBuildingSettings.isDirty = true;
-        }
-        private void EnableFlagMenuCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            BaseBuildingSettings.EnableFlagMenu = EnableFlagMenuCB.Checked == true ? 1 : 0;
             BaseBuildingSettings.isDirty = true;
         }
         private void AutomaticFlagOnCreationCB_CheckedChanged(object sender, EventArgs e)
@@ -1320,12 +1322,6 @@ namespace DayZeEditor
             BaseBuildingSettings.DestroyFlagOnDismantle = DestroyFlagOnDismantleCB.Checked == true ? 1 : 0;
             BaseBuildingSettings.isDirty = true;
         }
-        private void DismantleFlagRequireToolsCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            BaseBuildingSettings.DismantleFlagRequireTools = DismantleFlagRequireToolsCB.Checked == true ? 1 : 0;
-            BaseBuildingSettings.isDirty = true;
-        }
         private void DismantleAnywhereCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -1341,8 +1337,8 @@ namespace DayZeEditor
         private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            canattacchcodelock cacl = (canattacchcodelock)comboBox4.SelectedItem;
-            BaseBuildingSettings.CanAttachCodelock = (int)cacl;
+            canattacchcodelock cacl = (canattacchcodelock)CodelockAttachModeCB.SelectedItem;
+            BaseBuildingSettings.CodelockAttachMode = (int)cacl;
             BaseBuildingSettings.isDirty = true;
         }
         private void CodelockActionsAnywhereCB_CheckedChanged(object sender, EventArgs e)
@@ -1394,13 +1390,15 @@ namespace DayZeEditor
         }
         private void darkButton12_Click(object sender, EventArgs e)
         {
-            AddItemfromTypes form = new AddItemfromTypes();
-            form.vanillatypes = vanillatypes;
-            form.ModTypes = ModTypes;
-            form.currentproject = currentproject;
-            form.UseMultiple = false;
-            form.isCategoryitem = false;
-            form.LowerCase = false;
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseMultiple = false,
+                isCategoryitem = false,
+                LowerCase = false
+            };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -1417,13 +1415,15 @@ namespace DayZeEditor
         }
         private void darkButton3_Click(object sender, EventArgs e)
         {
-            AddItemfromTypes form = new AddItemfromTypes();
-            form.vanillatypes = vanillatypes;
-            form.ModTypes = ModTypes;
-            form.currentproject = currentproject;
-            form.UseMultiple = false;
-            form.isCategoryitem = false;
-            form.LowerCase = false;
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseMultiple = false,
+                isCategoryitem = false,
+                LowerCase = false
+            };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -1485,8 +1485,10 @@ namespace DayZeEditor
 
                 int radius = (int)(zones.Radius * scalevalue);
                 Point center = new Point(centerX, centerY);
-                Pen pen = new Pen(Color.Red);
-                pen.Width = 4;
+                Pen pen = new Pen(Color.Red)
+                {
+                    Width = 4
+                };
                 if (currentZone.Name == zones.Name)
                     pen.Color = Color.LimeGreen;
                 else
@@ -1503,13 +1505,15 @@ namespace DayZeEditor
         }
         private void darkButton15_Click(object sender, EventArgs e)
         {
-            AddItemfromTypes form = new AddItemfromTypes();
-            form.vanillatypes = vanillatypes;
-            form.ModTypes = ModTypes;
-            form.currentproject = currentproject;
-            form.UseMultiple = false;
-            form.isCategoryitem = false;
-            form.LowerCase = false;
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseMultiple = false,
+                isCategoryitem = false,
+                LowerCase = false
+            };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -1640,6 +1644,20 @@ namespace DayZeEditor
                 default:
                     break;
             }
+        }
+        private void FlagMenuModeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            FlagMenuMode cacl = (FlagMenuMode)FlagMenuModeComboBox.SelectedItem;
+            BaseBuildingSettings.FlagMenuMode = (int)cacl;
+            BaseBuildingSettings.isDirty = true;
+        }
+        private void DismantleFlagModeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            DismantleFlagMode cacl = (DismantleFlagMode)DismantleFlagModeComboBox.SelectedItem;
+            BaseBuildingSettings.DismantleFlagMode = (int)cacl;
+            BaseBuildingSettings.isDirty = true;
         }
         #endregion basebuildingsettings
 
@@ -4642,6 +4660,8 @@ namespace DayZeEditor
             VehicleSettings.MasterKeyPairingMode = (int)cacl;
             VehicleSettings.isDirty = true;
         }
+
+
 
         #endregion VehicleSettings
 
