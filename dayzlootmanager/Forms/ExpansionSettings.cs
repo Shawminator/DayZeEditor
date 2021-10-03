@@ -4629,7 +4629,7 @@ namespace DayZeEditor
         {
             if (!useraction) { return; }
             CheckBox cb = sender as CheckBox;
-            VehicleSettings.SetIntValue(cb.Name.Substring(0, cb.Name.Length - 3), cb.Checked == true ? 1 : 0);
+            VehicleSettings.SetIntValue(cb.Name.Substring(0, cb.Name.Length - 2), cb.Checked == true ? 1 : 0);
             VehicleSettings.isDirty = true;
         }
         private void VehicleSyncComboBox_SelectedIndexChanged(object sender, EventArgs e)
