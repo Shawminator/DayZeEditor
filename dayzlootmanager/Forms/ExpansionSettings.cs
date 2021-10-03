@@ -818,7 +818,6 @@ namespace DayZeEditor
         private void SetupAirdropsettings()
         {
             populate();
-            PopulateTreeView();
             setupairdropZombies();
         }
         private void setupairdropZombies()
@@ -846,11 +845,6 @@ namespace DayZeEditor
                     listBox5.Items.Add(type.name);
                 }
             }
-        }
-        private void PopulateTreeView()
-        {
-            treeView1.Nodes.Clear();
-
         }
         public TreeNode returntreenode(List<LootPart> partlist, string name, bool ignoredisabled = false)
         {

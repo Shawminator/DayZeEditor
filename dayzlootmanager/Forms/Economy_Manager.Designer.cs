@@ -328,7 +328,7 @@ namespace DayZeEditor
             this.tabControl1.Location = new System.Drawing.Point(3, 8);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(460, 478);
+            this.tabControl1.Size = new System.Drawing.Size(454, 478);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 6;
             // 
@@ -339,7 +339,7 @@ namespace DayZeEditor
             this.Collection.Controls.Add(this.groupBox8);
             this.Collection.Location = new System.Drawing.Point(4, 5);
             this.Collection.Name = "Collection";
-            this.Collection.Size = new System.Drawing.Size(452, 469);
+            this.Collection.Size = new System.Drawing.Size(446, 469);
             this.Collection.TabIndex = 1;
             this.Collection.Text = "tabPage2";
             // 
@@ -626,7 +626,7 @@ namespace DayZeEditor
             this.LootParts.Location = new System.Drawing.Point(4, 5);
             this.LootParts.Name = "LootParts";
             this.LootParts.Padding = new System.Windows.Forms.Padding(3);
-            this.LootParts.Size = new System.Drawing.Size(452, 469);
+            this.LootParts.Size = new System.Drawing.Size(446, 469);
             this.LootParts.TabIndex = 0;
             this.LootParts.Text = "tabPage1";
             // 
@@ -1651,7 +1651,7 @@ namespace DayZeEditor
             this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(40, 25);
+            this.toolStripButton3.Size = new System.Drawing.Size(100, 24);
             this.toolStripButton3.Text = "Types";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
@@ -1672,7 +1672,7 @@ namespace DayZeEditor
             this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
             this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(128, 25);
+            this.toolStripButton5.Size = new System.Drawing.Size(130, 24);
             this.toolStripButton5.Text = "Economycore preview";
             this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
@@ -1686,6 +1686,7 @@ namespace DayZeEditor
             // 
             // toolStripButton6
             // 
+            this.toolStripButton6.AutoSize = false;
             this.toolStripButton6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripButton6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));

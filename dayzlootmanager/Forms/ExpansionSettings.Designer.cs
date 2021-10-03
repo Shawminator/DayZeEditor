@@ -64,7 +64,6 @@ namespace DayZeEditor
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Loot = new System.Windows.Forms.TabPage();
-            this.treeView1 = new System.Windows.Forms.TreeView();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.numericUpDown12 = new System.Windows.Forms.NumericUpDown();
             this.darkLabel12 = new DarkUI.Controls.DarkLabel();
@@ -221,6 +220,8 @@ namespace DayZeEditor
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.darkLabel129 = new DarkUI.Controls.DarkLabel();
+            this.FlagMenuModeComboBox = new System.Windows.Forms.ComboBox();
             this.darkButton12 = new DarkUI.Controls.DarkButton();
             this.darkButton11 = new DarkUI.Controls.DarkButton();
             this.darkButton3 = new DarkUI.Controls.DarkButton();
@@ -246,6 +247,8 @@ namespace DayZeEditor
             this.DoDamageWhenEnterWrongCodeLockCB = new System.Windows.Forms.CheckBox();
             this.RememberCodeCB = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.darkLabel157 = new DarkUI.Controls.DarkLabel();
+            this.DismantleFlagModeComboBox = new System.Windows.Forms.ComboBox();
             this.CanCraftVanillaBasebuildingCB = new System.Windows.Forms.CheckBox();
             this.CanCraftExpansionBasebuildingCB = new System.Windows.Forms.CheckBox();
             this.CanCraftTerritoryFlagKitCB = new System.Windows.Forms.CheckBox();
@@ -825,10 +828,6 @@ namespace DayZeEditor
             this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
-            this.darkLabel129 = new DarkUI.Controls.DarkLabel();
-            this.FlagMenuModeComboBox = new System.Windows.Forms.ComboBox();
-            this.darkLabel157 = new DarkUI.Controls.DarkLabel();
-            this.DismantleFlagModeComboBox = new System.Windows.Forms.ComboBox();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -1443,7 +1442,6 @@ namespace DayZeEditor
             // 
             this.Loot.AutoScroll = true;
             this.Loot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.Loot.Controls.Add(this.treeView1);
             this.Loot.Controls.Add(this.textBox1);
             this.Loot.Controls.Add(this.numericUpDown12);
             this.Loot.Controls.Add(this.darkLabel12);
@@ -1461,18 +1459,6 @@ namespace DayZeEditor
             this.Loot.Size = new System.Drawing.Size(693, 477);
             this.Loot.TabIndex = 0;
             this.Loot.Text = "Loot";
-            // 
-            // treeView1
-            // 
-            this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.treeView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.treeView1.ForeColor = System.Drawing.SystemColors.Control;
-            this.treeView1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.treeView1.Location = new System.Drawing.Point(208, 109);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(260, 0);
-            this.treeView1.TabIndex = 96;
             // 
             // textBox1
             // 
@@ -1518,9 +1504,9 @@ namespace DayZeEditor
             this.groupBox2.Controls.Add(this.darkButton10);
             this.groupBox2.Controls.Add(this.listBox4);
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.groupBox2.Location = new System.Drawing.Point(475, 7);
+            this.groupBox2.Location = new System.Drawing.Point(209, 100);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(260, 196);
+            this.groupBox2.Size = new System.Drawing.Size(260, 340);
             this.groupBox2.TabIndex = 92;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Attachments";
@@ -1553,14 +1539,14 @@ namespace DayZeEditor
             this.listBox4.FormattingEnabled = true;
             this.listBox4.Location = new System.Drawing.Point(6, 19);
             this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(120, 173);
+            this.listBox4.Size = new System.Drawing.Size(120, 316);
             this.listBox4.TabIndex = 0;
             this.listBox4.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
             // darkButton8
             // 
             this.darkButton8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton8.Location = new System.Drawing.Point(207, 342);
+            this.darkButton8.Location = new System.Drawing.Point(207, 446);
             this.darkButton8.Name = "darkButton8";
             this.darkButton8.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton8.Size = new System.Drawing.Size(261, 23);
@@ -1571,7 +1557,7 @@ namespace DayZeEditor
             // darkButton2
             // 
             this.darkButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton2.Location = new System.Drawing.Point(9, 342);
+            this.darkButton2.Location = new System.Drawing.Point(9, 446);
             this.darkButton2.Name = "darkButton2";
             this.darkButton2.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton2.Size = new System.Drawing.Size(194, 23);
@@ -1628,7 +1614,7 @@ namespace DayZeEditor
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(9, 7);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(194, 277);
+            this.listBox1.Size = new System.Drawing.Size(194, 433);
             this.listBox1.TabIndex = 0;
             this.listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
@@ -3513,6 +3499,25 @@ namespace DayZeEditor
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Territory";
             // 
+            // darkLabel129
+            // 
+            this.darkLabel129.AutoSize = true;
+            this.darkLabel129.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel129.Location = new System.Drawing.Point(15, 82);
+            this.darkLabel129.Name = "darkLabel129";
+            this.darkLabel129.Size = new System.Drawing.Size(87, 13);
+            this.darkLabel129.TabIndex = 97;
+            this.darkLabel129.Text = "Flag Menu Mode";
+            // 
+            // FlagMenuModeComboBox
+            // 
+            this.FlagMenuModeComboBox.FormattingEnabled = true;
+            this.FlagMenuModeComboBox.Location = new System.Drawing.Point(17, 98);
+            this.FlagMenuModeComboBox.Name = "FlagMenuModeComboBox";
+            this.FlagMenuModeComboBox.Size = new System.Drawing.Size(180, 21);
+            this.FlagMenuModeComboBox.TabIndex = 96;
+            this.FlagMenuModeComboBox.SelectedIndexChanged += new System.EventHandler(this.FlagMenuModeComboBox_SelectedIndexChanged);
+            // 
             // darkButton12
             // 
             this.darkButton12.Location = new System.Drawing.Point(17, 336);
@@ -3814,6 +3819,25 @@ namespace DayZeEditor
             this.groupBox4.TabIndex = 20;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Craft / Dismantle";
+            // 
+            // darkLabel157
+            // 
+            this.darkLabel157.AutoSize = true;
+            this.darkLabel157.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel157.Location = new System.Drawing.Point(13, 112);
+            this.darkLabel157.Name = "darkLabel157";
+            this.darkLabel157.Size = new System.Drawing.Size(106, 13);
+            this.darkLabel157.TabIndex = 20;
+            this.darkLabel157.Text = "Dismantle Flag Mode";
+            // 
+            // DismantleFlagModeComboBox
+            // 
+            this.DismantleFlagModeComboBox.FormattingEnabled = true;
+            this.DismantleFlagModeComboBox.Location = new System.Drawing.Point(15, 128);
+            this.DismantleFlagModeComboBox.Name = "DismantleFlagModeComboBox";
+            this.DismantleFlagModeComboBox.Size = new System.Drawing.Size(261, 21);
+            this.DismantleFlagModeComboBox.TabIndex = 19;
+            this.DismantleFlagModeComboBox.SelectedIndexChanged += new System.EventHandler(this.DismantleFlagModeComboBox_SelectedIndexChanged);
             // 
             // CanCraftVanillaBasebuildingCB
             // 
@@ -4243,7 +4267,7 @@ namespace DayZeEditor
             this.toolStripButton8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton8.Name = "toolStripButton8";
-            this.toolStripButton8.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton8.Size = new System.Drawing.Size(100, 24);
             this.toolStripButton8.Text = "General Settings";
             this.toolStripButton8.Click += new System.EventHandler(this.toolStripButton8_Click);
             // 
@@ -4263,7 +4287,7 @@ namespace DayZeEditor
             this.toolStripButton7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton7.Size = new System.Drawing.Size(100, 24);
             this.toolStripButton7.Text = "Build Zones";
             this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
             // 
@@ -10284,7 +10308,7 @@ namespace DayZeEditor
             this.toolStripButton15.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton15.Image")));
             this.toolStripButton15.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton15.Name = "toolStripButton15";
-            this.toolStripButton15.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton15.Size = new System.Drawing.Size(100, 24);
             this.toolStripButton15.Text = "Starting Clothing";
             this.toolStripButton15.Click += new System.EventHandler(this.toolStripButton15_Click);
             // 
@@ -10297,7 +10321,7 @@ namespace DayZeEditor
             this.toolStripButton16.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton16.Image")));
             this.toolStripButton16.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton16.Name = "toolStripButton16";
-            this.toolStripButton16.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton16.Size = new System.Drawing.Size(100, 24);
             this.toolStripButton16.Text = "Starting Gear";
             this.toolStripButton16.Click += new System.EventHandler(this.toolStripButton16_Click);
             // 
@@ -10310,7 +10334,7 @@ namespace DayZeEditor
             this.toolStripButton17.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton17.Image")));
             this.toolStripButton17.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton17.Name = "toolStripButton17";
-            this.toolStripButton17.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton17.Size = new System.Drawing.Size(100, 24);
             this.toolStripButton17.Text = "Spawns";
             this.toolStripButton17.Click += new System.EventHandler(this.toolStripButton17_Click);
             // 
@@ -11268,44 +11292,6 @@ namespace DayZeEditor
             this.toolStripButton14.Text = "Vehicle Settings";
             this.toolStripButton14.Click += new System.EventHandler(this.toolStripButton14_Click);
             // 
-            // darkLabel129
-            // 
-            this.darkLabel129.AutoSize = true;
-            this.darkLabel129.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel129.Location = new System.Drawing.Point(15, 82);
-            this.darkLabel129.Name = "darkLabel129";
-            this.darkLabel129.Size = new System.Drawing.Size(87, 13);
-            this.darkLabel129.TabIndex = 97;
-            this.darkLabel129.Text = "Flag Menu Mode";
-            // 
-            // FlagMenuModeComboBox
-            // 
-            this.FlagMenuModeComboBox.FormattingEnabled = true;
-            this.FlagMenuModeComboBox.Location = new System.Drawing.Point(17, 98);
-            this.FlagMenuModeComboBox.Name = "FlagMenuModeComboBox";
-            this.FlagMenuModeComboBox.Size = new System.Drawing.Size(180, 21);
-            this.FlagMenuModeComboBox.TabIndex = 96;
-            this.FlagMenuModeComboBox.SelectedIndexChanged += new System.EventHandler(this.FlagMenuModeComboBox_SelectedIndexChanged);
-            // 
-            // darkLabel157
-            // 
-            this.darkLabel157.AutoSize = true;
-            this.darkLabel157.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel157.Location = new System.Drawing.Point(13, 112);
-            this.darkLabel157.Name = "darkLabel157";
-            this.darkLabel157.Size = new System.Drawing.Size(106, 13);
-            this.darkLabel157.TabIndex = 20;
-            this.darkLabel157.Text = "Dismantle Flag Mode";
-            // 
-            // DismantleFlagModeComboBox
-            // 
-            this.DismantleFlagModeComboBox.FormattingEnabled = true;
-            this.DismantleFlagModeComboBox.Location = new System.Drawing.Point(15, 128);
-            this.DismantleFlagModeComboBox.Name = "DismantleFlagModeComboBox";
-            this.DismantleFlagModeComboBox.Size = new System.Drawing.Size(261, 21);
-            this.DismantleFlagModeComboBox.TabIndex = 19;
-            this.DismantleFlagModeComboBox.SelectedIndexChanged += new System.EventHandler(this.DismantleFlagModeComboBox_SelectedIndexChanged);
-            // 
             // ExpansionSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -11652,7 +11638,6 @@ namespace DayZeEditor
         private System.Windows.Forms.NumericUpDown numericUpDown12;
         private DarkUI.Controls.DarkLabel darkLabel12;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.ListBox listBox5;
         private DarkUI.Controls.DarkLabel darkLabel25;
         private DarkUI.Controls.DarkLabel darkLabel24;

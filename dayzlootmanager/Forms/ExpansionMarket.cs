@@ -436,7 +436,6 @@ namespace DayZeEditor
             //backup existing folders if there and existing market settings.
             BackupMarketFiles();
             marketsettings = new MarketSettings(MarketSettingsPath);
-
             MarketCats = new MarketCategories(CatPath);
             Traders = new TradersList(TradersPath, MarketCats);
             Zones = new TraderZones(ZonesPath);
@@ -448,7 +447,7 @@ namespace DayZeEditor
         private void BackupMarketFiles()
         {
             string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
-            string backupdir = currentproject.projectFullName + "\\profile\\ExpansionMod\\MarketBackup\\" + SaveTime;
+            string backupdir = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\MarketBackup\\" + SaveTime;
             Directory.CreateDirectory(backupdir);
             if (File.Exists(MarketSettingsPath))
                 File.Move(MarketSettingsPath, backupdir + "\\" + Path.GetFileName(MarketSettingsPath));
