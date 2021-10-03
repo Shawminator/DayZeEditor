@@ -24,8 +24,16 @@ namespace DayZeEditor
         public TypesFile Expansiontypes;
         public List<TypesFile> ModTypes;
         public string Projectname;
+        private bool _useraction = false;
+        public bool useraction
+        {
+            get { return _useraction; }
+            set
+            { 
+                _useraction = value; 
+            }
+        }
 
-        bool useraction = false;
         public string AirdropsettingPath;
         public string BaseBUildignsettingsPath;
         public string BookSettingsPath;
@@ -432,6 +440,7 @@ namespace DayZeEditor
             SpawnSettings.Filename = SpawnSettingsPath;
             SpawnSettings.SetStartingWeapons();
             LoadSpawnsettings();
+            SpawnSettings.isDirty = false;
 
             TerritorySettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\TerritorySettings.json";
             if (!File.Exists(TerritorySettingsPath))

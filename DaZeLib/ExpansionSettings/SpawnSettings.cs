@@ -21,7 +21,16 @@ namespace DayZeLib
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
-        public bool isDirty { get; set; }
+        public bool isDirty
+        {
+            get { return _isdirty; }
+            set
+            {
+                _isdirty = value;
+            }
+        }
+        [JsonIgnore]
+        private bool _isdirty = false;
 
         public void SetStartingWeapons()
         {
