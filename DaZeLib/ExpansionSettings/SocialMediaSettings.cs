@@ -18,6 +18,12 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty { get; set; }
 
+        public SocialMediaSettings()
+        {
+            m_Version = 0;
+            isDirty = true;
+        }
+
         public void SetStringValue(string mytype, string myString)
         {
             GetType().GetProperty(mytype).SetValue(this, myString, null);

@@ -55,6 +55,16 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty { get; set; }
 
+        public RaidSettings()
+        {
+            m_Version = 0;
+            ExplosiveDamageWhitelist = new BindingList<string>();
+            SafeRaidTools = new BindingList<string>();
+            BarbedWireRaidTools = new BindingList<string>();
+            LockRaidTools = new BindingList<string>();
+            isDirty = true;
+        }
+
         public void SetIntValue(string mytype, int myvalue)
         {
             GetType().GetProperty(mytype).SetValue(this, myvalue, null);

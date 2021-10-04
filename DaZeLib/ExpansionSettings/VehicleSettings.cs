@@ -79,6 +79,15 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty { get; set; }
 
+        public VehicleSettings()
+        {
+            m_Version = 6;
+            PickLockTools = new BindingList<string>();
+            ChangeLockTools = new BindingList<string>();
+            VehiclesConfig = new BindingList<VConfigs>();
+            isDirty = true;
+        }
+
         public void SetIntValue(string mytype, int myvalue)
         {
             GetType().GetProperty(mytype).SetValue(this, myvalue, null);

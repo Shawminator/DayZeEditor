@@ -22,6 +22,12 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty { get; set; }
 
+        public PartySettings()
+        {
+            m_Version = 2;
+            isDirty = true;
+        }
+
         public void SetIntValue(string mytype, int myvalue)
         {
             GetType().GetProperty(mytype).SetValue(this, myvalue, null);

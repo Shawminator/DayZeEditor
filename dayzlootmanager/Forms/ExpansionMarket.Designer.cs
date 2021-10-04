@@ -205,6 +205,7 @@ namespace DayZeEditor
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.darkButton32 = new DarkUI.Controls.DarkButton();
             this.darkButton20 = new DarkUI.Controls.DarkButton();
             this.darkButton21 = new DarkUI.Controls.DarkButton();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
@@ -527,7 +528,7 @@ namespace DayZeEditor
             this.setMinMaxStockForItemsWith0ToolStripMenuItem});
             this.itemsToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.itemsToolStripMenuItem.Name = "itemsToolStripMenuItem";
-            this.itemsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.itemsToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.itemsToolStripMenuItem.Text = "All Items";
             // 
             // setMinStockForAllItemsToolStripMenuItem
@@ -595,7 +596,7 @@ namespace DayZeEditor
             this.setPriceForItemsWithZeroToolStripMenuItem});
             this.categoriesToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.categoriesToolStripMenuItem.Name = "categoriesToolStripMenuItem";
-            this.categoriesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.categoriesToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.categoriesToolStripMenuItem.Text = "Selected Category";
             // 
             // setMaxStockForSelectedCategoryToolStripMenuItem
@@ -650,7 +651,7 @@ namespace DayZeEditor
             this.testToolStripMenuItem});
             this.selectedItemsToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.selectedItemsToolStripMenuItem.Name = "selectedItemsToolStripMenuItem";
-            this.selectedItemsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.selectedItemsToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.selectedItemsToolStripMenuItem.Text = "Selected Items";
             // 
             // testToolStripMenuItem
@@ -670,7 +671,7 @@ namespace DayZeEditor
             this.deleteAllStockForAllZonesToolStripMenuItem});
             this.allZonesToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.allZonesToolStripMenuItem.Name = "allZonesToolStripMenuItem";
-            this.allZonesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.allZonesToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.allZonesToolStripMenuItem.Text = "AllZones";
             // 
             // setStockValueForAllItemsInAllZonesToolStripMenuItem
@@ -700,7 +701,7 @@ namespace DayZeEditor
             this.findMissingItemsAndSetStockToolStripMenuItem});
             this.selectedZoneToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.selectedZoneToolStripMenuItem.Name = "selectedZoneToolStripMenuItem";
-            this.selectedZoneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.selectedZoneToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.selectedZoneToolStripMenuItem.Text = "Selected Zone";
             // 
             // deleteStockForSelectedZoneToolStripMenuItem
@@ -737,7 +738,7 @@ namespace DayZeEditor
             this.createNewMarketToolStripMenuItem});
             this.expansionMarketToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.expansionMarketToolStripMenuItem.Name = "expansionMarketToolStripMenuItem";
-            this.expansionMarketToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.expansionMarketToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.expansionMarketToolStripMenuItem.Text = "Expansion Market";
             // 
             // createNewMarketToolStripMenuItem
@@ -745,7 +746,7 @@ namespace DayZeEditor
             this.createNewMarketToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.createNewMarketToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.createNewMarketToolStripMenuItem.Name = "createNewMarketToolStripMenuItem";
-            this.createNewMarketToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createNewMarketToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.createNewMarketToolStripMenuItem.Text = "Create New Market";
             this.createNewMarketToolStripMenuItem.Click += new System.EventHandler(this.createNewMarketToolStripMenuItem_Click);
             // 
@@ -2577,6 +2578,7 @@ namespace DayZeEditor
             // tabPage8
             // 
             this.tabPage8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage8.Controls.Add(this.darkButton32);
             this.tabPage8.Controls.Add(this.darkButton20);
             this.tabPage8.Controls.Add(this.darkButton21);
             this.tabPage8.Controls.Add(this.groupBox11);
@@ -2589,6 +2591,16 @@ namespace DayZeEditor
             this.tabPage8.Size = new System.Drawing.Size(1062, 617);
             this.tabPage8.TabIndex = 4;
             this.tabPage8.Text = "Trader Maps";
+            // 
+            // darkButton32
+            // 
+            this.darkButton32.Location = new System.Drawing.Point(413, 11);
+            this.darkButton32.Name = "darkButton32";
+            this.darkButton32.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton32.Size = new System.Drawing.Size(598, 23);
+            this.darkButton32.TabIndex = 96;
+            this.darkButton32.Text = "Reload to pick up Zone changes";
+            this.darkButton32.Click += new System.EventHandler(this.darkButton32_Click);
             // 
             // darkButton20
             // 
@@ -2636,9 +2648,9 @@ namespace DayZeEditor
             this.groupBox11.Controls.Add(this.textBox14);
             this.groupBox11.Controls.Add(this.label4);
             this.groupBox11.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox11.Location = new System.Drawing.Point(413, 11);
+            this.groupBox11.Location = new System.Drawing.Point(413, 40);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(598, 540);
+            this.groupBox11.Size = new System.Drawing.Size(598, 563);
             this.groupBox11.TabIndex = 53;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Tradermap Info";
@@ -2656,7 +2668,7 @@ namespace DayZeEditor
             // darkButton23
             // 
             this.darkButton23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton23.Location = new System.Drawing.Point(203, 293);
+            this.darkButton23.Location = new System.Drawing.Point(202, 293);
             this.darkButton23.Name = "darkButton23";
             this.darkButton23.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton23.Size = new System.Drawing.Size(109, 23);
@@ -2667,7 +2679,7 @@ namespace DayZeEditor
             // darkButton24
             // 
             this.darkButton24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton24.Location = new System.Drawing.Point(88, 293);
+            this.darkButton24.Location = new System.Drawing.Point(87, 293);
             this.darkButton24.Name = "darkButton24";
             this.darkButton24.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton24.Size = new System.Drawing.Size(109, 23);
@@ -2682,7 +2694,7 @@ namespace DayZeEditor
             this.groupBox12.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox12.Location = new System.Drawing.Point(328, 101);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(264, 433);
+            this.groupBox12.Size = new System.Drawing.Size(264, 456);
             this.groupBox12.TabIndex = 92;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "TraderList";
@@ -2691,7 +2703,7 @@ namespace DayZeEditor
             // darkButton22
             // 
             this.darkButton22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton22.Location = new System.Drawing.Point(8, 404);
+            this.darkButton22.Location = new System.Drawing.Point(8, 427);
             this.darkButton22.Name = "darkButton22";
             this.darkButton22.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton22.Size = new System.Drawing.Size(248, 23);
@@ -2709,7 +2721,7 @@ namespace DayZeEditor
             this.listBox16.FormattingEnabled = true;
             this.listBox16.Location = new System.Drawing.Point(8, 19);
             this.listBox16.Name = "listBox16";
-            this.listBox16.Size = new System.Drawing.Size(250, 381);
+            this.listBox16.Size = new System.Drawing.Size(250, 394);
             this.listBox16.TabIndex = 0;
             this.listBox16.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
@@ -3000,7 +3012,7 @@ namespace DayZeEditor
             this.listBox13.FormattingEnabled = true;
             this.listBox13.Location = new System.Drawing.Point(17, 27);
             this.listBox13.Name = "listBox13";
-            this.listBox13.Size = new System.Drawing.Size(142, 563);
+            this.listBox13.Size = new System.Drawing.Size(142, 576);
             this.listBox13.TabIndex = 49;
             this.listBox13.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.listBox13.SelectedIndexChanged += new System.EventHandler(this.listBox13_SelectedIndexChanged);
@@ -4793,5 +4805,6 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripMenuItem setPriceForItemsWithZeroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setPricesForItemWithZeroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setMinMaxStockForItemsWith0ToolStripMenuItem;
+        private DarkUI.Controls.DarkButton darkButton32;
     }
 }

@@ -48,6 +48,13 @@ namespace DayZeLib
         public string Filename { get; set; }
         [JsonIgnore]
         public bool isDirty { get; set; }
+
+        public MapSettings()
+        {
+            m_Version = 2;
+            ServerMarkers = new BindingList<ServerMarkers>();
+            isDirty = true;
+        }
     }
     public class ServerMarkers
     {

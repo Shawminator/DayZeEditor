@@ -2798,7 +2798,22 @@ namespace DayZeEditor
             listBox14.Refresh();
             tradermaps.isDirty = true;
         }
-
+        private void darkButton32_Click(object sender, EventArgs e)
+        {
+            foreach (Zones zone in Zones.ZoneList)
+            {
+                foreach (Tradermap tm in tradermaps.maps)
+                {
+                    PointF pC = new PointF(zone.Position[0], zone.Position[2]);
+                    PointF pP = new PointF(tm.position.X, tm.position.Z);
+                    if (IsWithinCircle(pC, pP, zone.Radius))
+                    {
+                        tm.Filename = Path.GetDirectoryName(tm.Filename) + "\\" + zone.m_ZoneName + ".map";
+                    }
+                }
+            }
+            setTraderzonelist();
+        }
         #endregion tradermaps
 
         private void toolStripButton9_Click(object sender, EventArgs e)

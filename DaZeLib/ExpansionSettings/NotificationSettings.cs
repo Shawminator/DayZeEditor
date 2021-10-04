@@ -57,6 +57,12 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty { get; set; }
 
+        public NotificationSettings()
+        {
+            m_Version = 2;
+            isDirty = true;
+        }
+
         public void SetIntValue(string mytype, int myvalue)
         {
             GetType().GetProperty(mytype).SetValue(this, myvalue, null);

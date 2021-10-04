@@ -25,6 +25,12 @@ namespace DayZeLib
         [JsonIgnore]
         public BindingList<MissionSettingFiles> MissionSettingFiles { get; set; }
 
+        public MissionSettings()
+        {
+            m_Version = 1;
+            Missions = new BindingList<Missions>();
+            isDirty = true;
+        }
         public void LoadIndividualMissions(string v)
         {
             MissionSettingFiles = new BindingList<MissionSettingFiles>();

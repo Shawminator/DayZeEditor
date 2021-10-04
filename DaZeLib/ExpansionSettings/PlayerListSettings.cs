@@ -12,5 +12,11 @@ namespace DayZeLib
         public string Filename { get; set; }
         [JsonIgnore]
         public bool isDirty { get; set; }
+
+        public PlayerListSettings()
+        {
+            m_Version = 0;
+            isDirty = true;
+        }
     }
 }

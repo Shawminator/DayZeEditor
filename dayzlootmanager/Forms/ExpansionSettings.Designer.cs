@@ -7103,10 +7103,10 @@ namespace DayZeEditor
             this.darkLabel94.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.darkLabel94.Location = new System.Drawing.Point(6, 16);
             this.darkLabel94.Name = "darkLabel94";
-            this.darkLabel94.Size = new System.Drawing.Size(244, 39);
+            this.darkLabel94.Size = new System.Drawing.Size(250, 39);
             this.darkLabel94.TabIndex = 120;
             this.darkLabel94.Text = "NOTE:- Only for Chernarus Map\r\nDo not enable any if using any other map.\r\nEdit li" +
-    "st of item manully if you wish to change them.";
+    "st of item manually if you wish to change them.";
             // 
             // BuildingIvysCB
             // 
@@ -7214,6 +7214,7 @@ namespace DayZeEditor
             // EnableGeneratorsCB
             // 
             this.EnableGeneratorsCB.AutoSize = true;
+            this.EnableGeneratorsCB.Enabled = false;
             this.EnableGeneratorsCB.Location = new System.Drawing.Point(22, 58);
             this.EnableGeneratorsCB.Name = "EnableGeneratorsCB";
             this.EnableGeneratorsCB.Size = new System.Drawing.Size(114, 17);
@@ -7510,7 +7511,7 @@ namespace DayZeEditor
             // UnlimitedStaminaCB
             // 
             this.UnlimitedStaminaCB.AutoSize = true;
-            this.UnlimitedStaminaCB.Location = new System.Drawing.Point(22, 275);
+            this.UnlimitedStaminaCB.Location = new System.Drawing.Point(21, 213);
             this.UnlimitedStaminaCB.Name = "UnlimitedStaminaCB";
             this.UnlimitedStaminaCB.Size = new System.Drawing.Size(110, 17);
             this.UnlimitedStaminaCB.TabIndex = 112;
@@ -7521,7 +7522,7 @@ namespace DayZeEditor
             // EnableAutoRunCB
             // 
             this.EnableAutoRunCB.AutoSize = true;
-            this.EnableAutoRunCB.Location = new System.Drawing.Point(22, 252);
+            this.EnableAutoRunCB.Location = new System.Drawing.Point(21, 190);
             this.EnableAutoRunCB.Name = "EnableAutoRunCB";
             this.EnableAutoRunCB.Size = new System.Drawing.Size(107, 17);
             this.EnableAutoRunCB.TabIndex = 111;

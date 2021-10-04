@@ -34,20 +34,23 @@ namespace DayZeEditor
             this.darkToolStrip21 = new DarkUI.Controls.DarkToolStrip2();
             this.SaveFileButton = new System.Windows.Forms.ToolStripButton();
             this.darkLabel1 = new DarkUI.Controls.DarkLabel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.ProjectTypeComboBox = new System.Windows.Forms.ComboBox();
             this.darkLabel2 = new DarkUI.Controls.DarkLabel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.ProjectFolderTB = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.darkButton5 = new DarkUI.Controls.DarkButton();
             this.darkButton1 = new DarkUI.Controls.DarkButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.darkLabel8 = new DarkUI.Controls.DarkLabel();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.darkLabel6 = new DarkUI.Controls.DarkLabel();
+            this.ProjectMissionFolderTB = new System.Windows.Forms.TextBox();
             this.darkLabel5 = new DarkUI.Controls.DarkLabel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.ProjectNameTB = new System.Windows.Forms.TextBox();
             this.darkButton2 = new DarkUI.Controls.DarkButton();
+            this.darkLabel12 = new DarkUI.Controls.DarkLabel();
+            this.ProjectProfileTB = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
@@ -150,47 +153,50 @@ namespace DayZeEditor
             // 
             this.darkLabel1.AutoSize = true;
             this.darkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel1.Location = new System.Drawing.Point(17, 55);
+            this.darkLabel1.Location = new System.Drawing.Point(14, 80);
             this.darkLabel1.Name = "darkLabel1";
-            this.darkLabel1.Size = new System.Drawing.Size(75, 13);
+            this.darkLabel1.Size = new System.Drawing.Size(95, 13);
             this.darkLabel1.TabIndex = 47;
-            this.darkLabel1.Text = "Select Mission";
+            this.darkLabel1.Text = "Select Setup Type";
             // 
-            // comboBox1
+            // ProjectTypeComboBox
             // 
-            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.comboBox1.ForeColor = System.Drawing.SystemColors.Control;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(124, 51);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(614, 21);
-            this.comboBox1.TabIndex = 48;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.ProjectTypeComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ProjectTypeComboBox.ForeColor = System.Drawing.SystemColors.Control;
+            this.ProjectTypeComboBox.FormattingEnabled = true;
+            this.ProjectTypeComboBox.Items.AddRange(new object[] {
+            "Manaul Setup",
+            "Get from FTP"});
+            this.ProjectTypeComboBox.Location = new System.Drawing.Point(124, 77);
+            this.ProjectTypeComboBox.Name = "ProjectTypeComboBox";
+            this.ProjectTypeComboBox.Size = new System.Drawing.Size(614, 21);
+            this.ProjectTypeComboBox.TabIndex = 48;
+            this.ProjectTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.ProjectTypeComboBox_SelectedIndexChanged);
             // 
             // darkLabel2
             // 
             this.darkLabel2.AutoSize = true;
             this.darkLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel2.Location = new System.Drawing.Point(17, 109);
+            this.darkLabel2.Location = new System.Drawing.Point(13, 54);
             this.darkLabel2.Name = "darkLabel2";
             this.darkLabel2.Size = new System.Drawing.Size(105, 13);
             this.darkLabel2.TabIndex = 49;
             this.darkLabel2.Text = "Select Project Folder";
             // 
-            // textBox1
+            // ProjectFolderTB
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.textBox1.ForeColor = System.Drawing.SystemColors.Control;
-            this.textBox1.Location = new System.Drawing.Point(124, 104);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(587, 20);
-            this.textBox1.TabIndex = 50;
+            this.ProjectFolderTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ProjectFolderTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ProjectFolderTB.Location = new System.Drawing.Point(124, 51);
+            this.ProjectFolderTB.Name = "ProjectFolderTB";
+            this.ProjectFolderTB.Size = new System.Drawing.Size(587, 20);
+            this.ProjectFolderTB.TabIndex = 50;
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(717, 103);
+            this.button1.Location = new System.Drawing.Point(717, 50);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(21, 21);
             this.button1.TabIndex = 51;
@@ -245,72 +251,106 @@ namespace DayZeEditor
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.darkLabel8);
-            this.groupBox2.Controls.Add(this.textBox4);
+            this.groupBox2.Controls.Add(this.darkLabel6);
+            this.groupBox2.Controls.Add(this.ProjectMissionFolderTB);
             this.groupBox2.Controls.Add(this.darkLabel5);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.ProjectNameTB);
             this.groupBox2.Controls.Add(this.darkButton2);
-            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.darkLabel12);
+            this.groupBox2.Controls.Add(this.ProjectTypeComboBox);
+            this.groupBox2.Controls.Add(this.ProjectProfileTB);
             this.groupBox2.Controls.Add(this.darkLabel1);
+            this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.darkLabel2);
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.ProjectFolderTB);
             this.groupBox2.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox2.Location = new System.Drawing.Point(226, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(5);
-            this.groupBox2.Size = new System.Drawing.Size(767, 228);
+            this.groupBox2.Size = new System.Drawing.Size(767, 193);
             this.groupBox2.TabIndex = 54;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Create New";
             // 
-            // darkLabel8
+            // darkLabel6
             // 
-            this.darkLabel8.AutoSize = true;
-            this.darkLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel8.Location = new System.Drawing.Point(17, 83);
-            this.darkLabel8.Name = "darkLabel8";
-            this.darkLabel8.Size = new System.Drawing.Size(67, 13);
-            this.darkLabel8.TabIndex = 55;
-            this.darkLabel8.Text = "Profile Name";
+            this.darkLabel6.AutoSize = true;
+            this.darkLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel6.Location = new System.Drawing.Point(14, 131);
+            this.darkLabel6.Name = "darkLabel6";
+            this.darkLabel6.Size = new System.Drawing.Size(106, 13);
+            this.darkLabel6.TabIndex = 74;
+            this.darkLabel6.Text = "Mission Folder to use";
             // 
-            // textBox4
+            // ProjectMissionFolderTB
             // 
-            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.textBox4.ForeColor = System.Drawing.SystemColors.Control;
-            this.textBox4.Location = new System.Drawing.Point(124, 78);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(614, 20);
-            this.textBox4.TabIndex = 56;
+            this.ProjectMissionFolderTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ProjectMissionFolderTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ProjectMissionFolderTB.Location = new System.Drawing.Point(124, 130);
+            this.ProjectMissionFolderTB.Name = "ProjectMissionFolderTB";
+            this.ProjectMissionFolderTB.Size = new System.Drawing.Size(587, 20);
+            this.ProjectMissionFolderTB.TabIndex = 75;
             // 
             // darkLabel5
             // 
             this.darkLabel5.AutoSize = true;
             this.darkLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel5.Location = new System.Drawing.Point(17, 30);
+            this.darkLabel5.Location = new System.Drawing.Point(14, 28);
             this.darkLabel5.Name = "darkLabel5";
             this.darkLabel5.Size = new System.Drawing.Size(71, 13);
             this.darkLabel5.TabIndex = 53;
             this.darkLabel5.Text = "Project Name";
             // 
-            // textBox2
+            // ProjectNameTB
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.textBox2.ForeColor = System.Drawing.SystemColors.Control;
-            this.textBox2.Location = new System.Drawing.Point(124, 25);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(614, 20);
-            this.textBox2.TabIndex = 54;
+            this.ProjectNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ProjectNameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ProjectNameTB.Location = new System.Drawing.Point(124, 25);
+            this.ProjectNameTB.Name = "ProjectNameTB";
+            this.ProjectNameTB.Size = new System.Drawing.Size(614, 20);
+            this.ProjectNameTB.TabIndex = 54;
             // 
             // darkButton2
             // 
-            this.darkButton2.Location = new System.Drawing.Point(173, 130);
+            this.darkButton2.Location = new System.Drawing.Point(360, 156);
             this.darkButton2.Name = "darkButton2";
             this.darkButton2.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton2.Size = new System.Drawing.Size(378, 23);
             this.darkButton2.TabIndex = 52;
             this.darkButton2.Text = "Create Project";
             this.darkButton2.Click += new System.EventHandler(this.darkButton2_Click);
+            // 
+            // darkLabel12
+            // 
+            this.darkLabel12.AutoSize = true;
+            this.darkLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel12.Location = new System.Drawing.Point(14, 105);
+            this.darkLabel12.Name = "darkLabel12";
+            this.darkLabel12.Size = new System.Drawing.Size(99, 13);
+            this.darkLabel12.TabIndex = 68;
+            this.darkLabel12.Text = "Profile Folder Name";
+            // 
+            // ProjectProfileTB
+            // 
+            this.ProjectProfileTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ProjectProfileTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ProjectProfileTB.Location = new System.Drawing.Point(124, 104);
+            this.ProjectProfileTB.Name = "ProjectProfileTB";
+            this.ProjectProfileTB.Size = new System.Drawing.Size(614, 20);
+            this.ProjectProfileTB.TabIndex = 69;
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button3.Location = new System.Drawing.Point(717, 129);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(21, 21);
+            this.button3.TabIndex = 67;
+            this.button3.Text = "+";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // groupBox3
             // 
@@ -320,7 +360,7 @@ namespace DayZeEditor
             this.groupBox3.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox3.Location = new System.Drawing.Point(6, 240);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(308, 104);
+            this.groupBox3.Size = new System.Drawing.Size(214, 146);
             this.groupBox3.TabIndex = 55;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Edit Current Project";
@@ -333,7 +373,7 @@ namespace DayZeEditor
             this.groupBox5.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox5.Location = new System.Drawing.Point(6, 52);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(291, 42);
+            this.groupBox5.Size = new System.Drawing.Size(198, 84);
             this.groupBox5.TabIndex = 59;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Traders";
@@ -341,7 +381,7 @@ namespace DayZeEditor
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(179, 16);
+            this.radioButton3.Location = new System.Drawing.Point(6, 62);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(101, 17);
             this.radioButton3.TabIndex = 2;
@@ -353,7 +393,7 @@ namespace DayZeEditor
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(63, 16);
+            this.radioButton2.Location = new System.Drawing.Point(6, 39);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(110, 17);
             this.radioButton2.TabIndex = 1;
@@ -870,16 +910,16 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkToolStrip2 darkToolStrip21;
         private System.Windows.Forms.ToolStripButton SaveFileButton;
         private DarkUI.Controls.DarkLabel darkLabel1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox ProjectTypeComboBox;
         private DarkUI.Controls.DarkLabel darkLabel2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox ProjectFolderTB;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.GroupBox groupBox1;
         private DarkUI.Controls.DarkButton darkButton1;
         private System.Windows.Forms.GroupBox groupBox2;
         private DarkUI.Controls.DarkLabel darkLabel5;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox ProjectNameTB;
         private DarkUI.Controls.DarkButton darkButton2;
         private System.Windows.Forms.GroupBox groupBox3;
         private DarkUI.Controls.DarkLabel darkLabel4;
@@ -889,8 +929,6 @@ namespace DayZeEditor
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
-        private DarkUI.Controls.DarkLabel darkLabel8;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -936,5 +974,10 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripMenuItem downloadFolderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteFIleToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem deleteFolderToolStripMenuItem1;
+        private DarkUI.Controls.DarkLabel darkLabel12;
+        private System.Windows.Forms.TextBox ProjectProfileTB;
+        private System.Windows.Forms.Button button3;
+        private DarkUI.Controls.DarkLabel darkLabel6;
+        private System.Windows.Forms.TextBox ProjectMissionFolderTB;
     }
 }

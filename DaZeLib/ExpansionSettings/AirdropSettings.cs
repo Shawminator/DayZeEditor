@@ -28,6 +28,13 @@ namespace DayZeLib
         public string Filename { get; set; }
         [JsonIgnore]
         public bool isDirty { get; set; }
+
+        public AirdropsettingsJson()
+        {
+            m_Version = 0;
+            Containers = new BindingList<AirdropContainers>();
+            isDirty = true;
+        }
     }
     public class AirdropContainers
     {

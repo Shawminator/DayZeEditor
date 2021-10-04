@@ -54,6 +54,12 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty { get; set; }
 
+        public GeneralSettings()
+        {
+            m_Version = 3;
+            Mapping = new CustomMapping();
+            isDirty = true;
+        }
         public int getIntValue(string mytype)
         {
             return (int)GetType().GetProperty(mytype).GetValue(this);
@@ -71,6 +77,11 @@ namespace DayZeLib
         public BindingList<string> Interiors { get; set; }
         public int BuildingIvys { get; set; }
 
+        public CustomMapping()
+        {
+            Mapping = new BindingList<string>();
+            Interiors = new BindingList<string>();
+        }
         public void SetIntValue(string mytype, int myvalue)
         {
             GetType().GetProperty(mytype).SetValue(this, myvalue, null);

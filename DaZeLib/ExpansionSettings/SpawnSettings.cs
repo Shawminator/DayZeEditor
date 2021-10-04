@@ -32,11 +32,21 @@ namespace DayZeLib
         [JsonIgnore]
         private bool _isdirty = false;
 
+        public SpawnSettings()
+        {
+            m_Version = 2;
+            StartingClothing = new StartingClothing();
+            SpawnLocations = new BindingList<SpawnLocations>();
+            StartingGear = new StartingGear();
+            isDirty = true;
+        }
+
         public void SetStartingWeapons()
         {
-            if (StartingGear.PrimaryWeapon.ClassName == null)
+
+            if (StartingGear.PrimaryWeapon != null && StartingGear.PrimaryWeapon.ClassName == null)
                 StartingGear.PrimaryWeapon = null;
-            if (StartingGear.SecondaryWeapon.ClassName == null)
+            if (StartingGear.SecondaryWeapon != null && StartingGear.SecondaryWeapon.ClassName == null)
                 StartingGear.SecondaryWeapon = null;
         }
     }
@@ -55,12 +65,35 @@ namespace DayZeLib
         public BindingList<string> Shoes { get; set; }
         public BindingList<string> Armbands { get; set; }
         public BindingList<string> Backpacks { get; set; }
+
+        public StartingClothing()
+        {
+            EnableCustomClothing = 0;
+            SetRandomHealth = 0;
+            Headgear = new BindingList<string>();
+            Glasses = new BindingList<string>();
+            Masks = new BindingList<string>();
+            Tops = new BindingList<string>();
+            Vests = new BindingList<string>();
+            Gloves = new BindingList<string>();
+            Pants = new BindingList<string>();
+            Belts = new BindingList<string>();
+            Shoes = new BindingList<string>();
+            Armbands = new BindingList<string>();
+            Backpacks = new BindingList<string>();
+        }
     }
     public class SpawnLocations
     {
         public string Name { get; set; }
         public BindingList<float[]> Positions { get; set; }
 
+        public SpawnLocations()
+        {
+            Name = "New SpawnLocation";
+            Positions = new BindingList<float[]>();
+
+        }
         public override string ToString()
         {
             return Name;
@@ -83,6 +116,16 @@ namespace DayZeLib
         public BindingList<Gear> VestGear { get; set; }
         public Gear PrimaryWeapon { get; set; }
         public Gear SecondaryWeapon { get; set; }
+
+        public StartingGear()
+        {
+            UpperGear = new BindingList<Gear>();
+            PantsGear = new BindingList<Gear>();
+            BackpackGear = new BindingList<Gear>();
+            VestGear = new BindingList<Gear>();
+            PrimaryWeapon = null;
+            SecondaryWeapon = null;
+        }
     }
     public class Gear : EmptyGear
     {

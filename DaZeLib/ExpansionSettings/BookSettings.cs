@@ -30,6 +30,16 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty { get; set; }
 
+        public BookSettings()
+        {
+            m_Version = 2;
+            RuleCategories = new BindingList<Rulecats>();
+            SettingCategories = new BindingList<SettingCategories>();
+            Links = new BindingList<Links>();
+            Descriptions = new BindingList<Descript>();
+            CraftingCategories = new BindingList<CraftingCategories>();
+            isDirty = true;
+        }
         public void RenameRules()
         {
             for(int i = 0; i < RuleCategories.Count; i++)

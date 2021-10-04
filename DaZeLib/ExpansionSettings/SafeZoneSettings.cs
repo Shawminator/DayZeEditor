@@ -25,6 +25,13 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty { get; set; }
 
+        public SafeZoneSettings()
+        {
+            m_Version = 4;
+            CircleZones = new BindingList<CircleZones>();
+            PolygonZones = new BindingList<PolygonZones>();
+            isDirty = true;
+        }
         public void SetCircleNames()
         {
             int i = 0;

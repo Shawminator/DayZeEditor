@@ -44,12 +44,23 @@ namespace DayZeLib
 
         public MarketSettings()
         {
+            m_Version = 7;
+            MarketAmmoBoxes = new BindingList<AmmoBoxesMarket>();
+            CurrencyIcon = "DayZExpansion/Market/GUI/icons/coinstack2_64x64.edds";
+            NetworkCategories = new BindingList<string[]>();
+            MarketAmmoBoxes = new BindingList<AmmoBoxesMarket>();
+            MarketVIPs = new BindingList<string[]>();
+            LandSpawnPositions = new BindingList<SpawnPositions>();
+            AirSpawnPositions = new BindingList<SpawnPositions>();
+            WaterSpawnPositions = new BindingList<SpawnPositions>();
+            MarketMenuColors = new MarketMenuColours();
+            isDirty = true;
 
         }
         public MarketSettings(string name)
         {
             Filename = name;
-            m_Version = 3;
+            m_Version = 7;
             MarketSystemEnabled = 0;
             CurrencyIcon = "DayZExpansion/Market/GUI/icons/coinstack2_64x64.edds";
             ATMSystemEnabled = 0;
@@ -66,7 +77,7 @@ namespace DayZeLib
             AirSpawnPositions = new BindingList<SpawnPositions>();
             WaterSpawnPositions = new BindingList<SpawnPositions>();
             MarketMenuColors = new MarketMenuColours();
-
+            isDirty = true;
         }
         public void setspawnnames()
         {

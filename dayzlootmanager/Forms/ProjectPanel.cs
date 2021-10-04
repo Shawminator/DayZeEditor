@@ -77,10 +77,6 @@ namespace DayZeEditor
                 TextBox tb = this.FTPPasswordTB.Control as TextBox;
                 tb.PasswordChar = '*';
             }
-
-            comboBox1.DisplayMember = "Name";
-            comboBox1.ValueMember = "Value";
-            comboBox1.DataSource = projects.AvailableTemplates;
             LoadProjectstoList();
             getActiveProject();
             LoadFileExplorer();
@@ -114,49 +110,56 @@ namespace DayZeEditor
             FolderBrowserDialog fb = new FolderBrowserDialog();
             if (fb.ShowDialog() == DialogResult.OK)
             {
-                textBox1.Text = fb.SelectedPath;
+                ProjectFolderTB.Text = fb.SelectedPath;
             }
             else
-                textBox1.Text = "";
+                ProjectFolderTB.Text = "";
         }
         private void darkButton2_Click(object sender, EventArgs e)
         {
-            string pathname = textBox1.Text;
-            string profilename = textBox2.Text;
-            if(pathname == "" || profilename == "")
+            string ProjectFolder = ProjectFolderTB.Text;
+            string ProjectName = ProjectNameTB.Text;
+            if(ProjectFolder == "" || ProjectName == "")
             {
                 MessageBox.Show("Please select both a Project name and a directory where to save it.");
                 return;
             }
-            string profilePath = pathname + "\\" + profilename;
-            MissionTemplate mp = (MissionTemplate)comboBox1.SelectedItem;
+            string ProjectPath = ProjectFolder + "\\" + ProjectName;
+            Directory.CreateDirectory(ProjectPath);
 
-            if (mp.m_DisplayName != "Get from Ftp")
+
+            string projecttype = ProjectTypeComboBox.GetItemText(ProjectTypeComboBox.SelectedItem);
+            if (projecttype != "Get from FTP")
             {
+                if (ProjectProfileTB.Text == "" || ProjectMissionFolderTB.Text == "")
+                {
+                    MessageBox.Show("Please select both a Profile name and a mpmission folder.");
+                    return;
+                }
+                string missionsfolder = ProjectMissionFolderTB.Text;
+                string profilefolder = ProjectProfileTB.Text;
+                string mpmissionpath = Path.GetFileName(missionsfolder);
+                string PmissionFolder = ProjectPath + "\\mpmissions\\" + Path.GetFileName(missionsfolder);
+                string Pprofilefolder = ProjectPath + "\\" + profilefolder;
+               
+                Directory.CreateDirectory(PmissionFolder);
+                Directory.CreateDirectory(Pprofilefolder);
+                Directory.CreateDirectory(Pprofilefolder + "\\ExpansionMod");
 
-                string templatepath = Application.StartupPath + mp.m_TemplatePath;
+                Helper.CopyFilesRecursively(missionsfolder, PmissionFolder);
 
-                Directory.CreateDirectory(profilePath);
-                Helper.CopyFilesRecursively(templatepath, profilePath);
+
                 Project project = new Project();
-                project.AddNames(profilename, profilePath);
-                project.MapSize = mp.m_Mapsize;
-                project.mpmissionpath = mp.m_mpmissionName;
-                project.MapPath = "\\Maps\\" + mp.m_DisplayName.Split(' ')[0] + "_Map.png";
-                if (textBox4.Text == "")
-                    project.ProfilePath = "profile";
-                else
-                {
-                    project.ProfilePath = textBox4.Text;
-                    Directory.Move(project.projectFullName + "\\" + "profile", project.projectFullName + "\\" + project.ProfilePath);
-                }
-                if (templatepath.Contains("Expansion"))
-                {
+                project.AddNames(ProjectName, ProjectPath);
+                project.MapSize = Getmapsizefrommissionpath(mpmissionpath);
+                project.mpmissionpath = mpmissionpath;
+                project.MapPath = "\\Maps\\" + mpmissionpath.Split('.')[1] + "_Map.png";
+                project.ProfilePath = profilefolder;
+                if (mpmissionpath.Contains("Expansion"))
                     project.isExpansion = true;
-                }
                 projects.addtoprojects(project);
                 LoadProjectstoList();
-                SetActiveProject(profilename);
+                SetActiveProject(ProjectName);
             }
             else
             {
@@ -164,6 +167,11 @@ namespace DayZeEditor
                 {
                     if (session == null || !session.Opened)
                     {
+                        if(FTPHostNameTB.Text == "" || FTPHostNameTB.Text == null)
+                        {
+                            MessageBox.Show("Please fill in FTP Connection info in the FTP Tab....");
+                            return;
+                        }
                         SessionOptions sessionOptions = new SessionOptions
                         {
                             Protocol = Protocol.Ftp,
@@ -194,14 +202,13 @@ namespace DayZeEditor
                     string mpmissionpath = Path.GetFileName(mpmissiondirectory);
                     string profile = Path.GetFileName(profiledir);
 
-                    Directory.CreateDirectory(profilePath);
-                    Directory.CreateDirectory(profilePath + "\\" + profile);
-                    Directory.CreateDirectory(profilePath +  "\\mpmissions\\" + mpmissionpath);
-                    session.GetFilesToDirectory(profiledir, profilePath + "\\" + profile);
-                    session.GetFilesToDirectory(mpmissiondirectory, profilePath + "\\mpmissions\\" + mpmissionpath);
+                    Directory.CreateDirectory(ProjectPath + "\\" + profile);
+                    Directory.CreateDirectory(ProjectPath +  "\\mpmissions\\" + mpmissionpath);
+                    session.GetFilesToDirectory(profiledir, ProjectPath + "\\" + profile);
+                    session.GetFilesToDirectory(mpmissiondirectory, ProjectPath + "\\mpmissions\\" + mpmissionpath);
 
                     Project project = new Project();
-                    project.AddNames(profilename, profilePath);
+                    project.AddNames(ProjectName, ProjectPath);
                     project.MapSize = Getmapsizefrommissionpath(mpmissionpath);
                     project.mpmissionpath = mpmissionpath;
                     project.MapPath = "\\Maps\\" + mpmissionpath.Split('.')[1] + "_Map.png";
@@ -210,7 +217,7 @@ namespace DayZeEditor
                         project.isExpansion = true;
                     projects.addtoprojects(project);
                     LoadProjectstoList();
-                    SetActiveProject(profilename);
+                    SetActiveProject(ProjectName);
                     load.Abort();
                 }
             }
@@ -245,16 +252,24 @@ namespace DayZeEditor
                     return 0;
             }
         }
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void ProjectTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MissionTemplate mt = comboBox1.SelectedItem as MissionTemplate;
-            if (mt.m_DisplayName == "Get from Ftp")
+            string projecttype = ProjectTypeComboBox.GetItemText(ProjectTypeComboBox.SelectedItem);
+            if (projecttype == "Get from FTP")
             {
-                textBox4.Visible = false;
+                darkLabel12.Visible = false;
+                darkLabel6.Visible = false;
+                ProjectProfileTB.Visible = false;
+                ProjectMissionFolderTB.Visible = false;
+                 button3.Visible = false;
             }
             else
             {
-                textBox4.Visible = true;
+                darkLabel12.Visible = true;
+                darkLabel6.Visible = true;
+                ProjectProfileTB.Visible = true;
+                ProjectMissionFolderTB.Visible = true;
+                button3.Visible = true;
             }
         }
         private void darkButton1_Click(object sender, EventArgs e)
@@ -652,6 +667,35 @@ namespace DayZeEditor
             DisplayFTPLayout(CurrentRemoteDirectory);
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            FolderBrowserDialog fb = new FolderBrowserDialog();
+            if (fb.ShowDialog() == DialogResult.OK)
+            {
+                ProjectProfileTB.Text = fb.SelectedPath;
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            FolderBrowserDialog fb = new FolderBrowserDialog();
+            if (fb.ShowDialog() == DialogResult.OK)
+            {
+                ProjectMissionFolderTB.Text = fb.SelectedPath;
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+            FolderBrowserDialog fb = new FolderBrowserDialog();
+            if (fb.ShowDialog() == DialogResult.OK)
+            {
+                ProjectFolderTB.Text = fb.SelectedPath;
+            }
+        }
 
     }
 }

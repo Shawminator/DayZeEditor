@@ -11,6 +11,7 @@ using DarkUI.Forms;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Globalization;
+using DayZeLib;
 
 namespace DayZeEditor
 {
@@ -85,15 +86,7 @@ namespace DayZeEditor
             }
             else
             {
-                Projects = new ProjectList
-                {
-                    AvailableTemplates = new System.ComponentModel.BindingList<MissionTemplate>()
-                };
-                MissionTemplate mt = new MissionTemplate
-                {
-                    m_DisplayName = "Get from Ftp"
-                };
-                Projects.AvailableTemplates.Add(mt);
+                Projects = new ProjectList{};
                 Projects.SaveProject();
                 TypeManButton.Visible = false;
                 TraderManButton.Visible = false;
@@ -325,6 +318,10 @@ namespace DayZeEditor
                 ShowWindow(handle, SW_HIDE);
         }
 
-
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            MapData data = new MapData(Application.StartupPath + "//Maps//map_output.txt");
+            data.CreateNewData();
+        }
     }
 }

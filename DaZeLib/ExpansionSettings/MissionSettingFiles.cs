@@ -35,6 +35,14 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty { get; set; }
 
+        public MissionSettingFiles()
+        {
+            DropLocation = new DropLocation();
+            Loot = new BindingList<Empty>();
+            Infected = new BindingList<Empty>();
+            isDirty = true;
+        }
+
         public void SetIntValue(string mytype, int myvalue)
         {
             if (mytype == "MissionMaxTime")

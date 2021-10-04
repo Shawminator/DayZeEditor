@@ -24,7 +24,7 @@ namespace DayZeEditor
     }
     public class ProjectList
     {
-        public BindingList<MissionTemplate> AvailableTemplates { get; set; }
+        //public BindingList<MissionTemplate> AvailableTemplates { get; set; }
         public string ActiveProject { get; set; }
         public List<Project> Projects { get; set; }
 
@@ -49,7 +49,6 @@ namespace DayZeEditor
             Directory.CreateDirectory(Application.StartupPath + "\\Project");
             File.WriteAllText(Application.StartupPath + "\\Project\\Projects.json", jsonString);
         }
-
         public void SetActiveProject(string profilename)
         {
             Project p = getprojectfromname(profilename);
@@ -60,7 +59,6 @@ namespace DayZeEditor
         {
             return getprojectfromname(ActiveProject);
         }
-
         internal void DeleteProject(string profilename)
         {
             Project p = getprojectfromname(profilename);
@@ -139,12 +137,6 @@ namespace DayZeEditor
                         SetmodTypes(path + "\\" + file.name);
                 }
             }
-
-
-            //foreach (string mod in Mods)
-            //{
-            //    SetmodTypes(mod);
-            //}
         }
         internal void removeMod(string modname)
         {

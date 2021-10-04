@@ -65,6 +65,15 @@ namespace DayZeLib
         public string Filename { get; set; }
         [JsonIgnore]
         public bool isDirty { get; set; }
+
+        public BaseBuildingSettings()
+        {
+            m_Version = 3;
+            DeployableInsideAEnemyTerritory = new BindingList<string>();
+            DeployableOutsideATerritory = new BindingList<string>();
+            Zones = new BindingList<NoBuildZones>();
+            isDirty = true;
+        }
     }
     public class NoBuildZones
     {

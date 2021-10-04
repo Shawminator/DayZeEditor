@@ -41,6 +41,7 @@ namespace DayZeEditor
         public string GeneralSettingsPath;
         public string LogsSettingsPath;
         public string MapSettingsPath;
+        public string MarketSettingsPath;
         public string MissionSettingsPath;
         public string NameTagsettingsPath;
         public string NotificationssettingsPath;
@@ -60,6 +61,7 @@ namespace DayZeEditor
         public GeneralSettings GeneralSettings;
         public LogSettings LogSettings;
         public MapSettings MapSettings;
+        public MarketSettings marketsettings;
         public MissionSettings MissionSettings;
         public NameTagsettings NameTagSettings;
         public NotificationSettings NotificationSettings;
@@ -311,156 +313,280 @@ namespace DayZeEditor
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
 
+            bool needtosave = false;
+
             AirdropsettingPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\settings\\AirdropSettings.json";
             if (!File.Exists(AirdropsettingPath))
+            {
                 AirdropsettingsJson = new AirdropsettingsJson();
+                needtosave = true;
+            }
             else
+            {
                 AirdropsettingsJson = JsonSerializer.Deserialize<AirdropsettingsJson>(File.ReadAllText(AirdropsettingPath));
+                AirdropsettingsJson.isDirty = false;
+            }
             AirdropsettingsJson.Filename = AirdropsettingPath;
             SetupAirdropsettings();
 
             BaseBUildignsettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\BaseBuildingSettings.json";
             if (!File.Exists(BaseBUildignsettingsPath))
+            {
                 BaseBuildingSettings = new BaseBuildingSettings();
+                needtosave = true;
+            }
             else
+            {
                 BaseBuildingSettings = JsonSerializer.Deserialize<BaseBuildingSettings>(File.ReadAllText(BaseBUildignsettingsPath));
+                BaseBuildingSettings.isDirty = false;
+            }
             BaseBuildingSettings.Filename = BaseBUildignsettingsPath;
             Setupbasebuildingsettings();
 
+
             BookSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\Booksettings.json";
             if (!File.Exists(BookSettingsPath))
+            {
                 BookSettings = new BookSettings();
+                needtosave = true;
+            }
             else
+            {
                 BookSettings = JsonSerializer.Deserialize<BookSettings>(File.ReadAllText(BookSettingsPath));
+                BookSettings.isDirty = false;
+            }
             BookSettings.Filename = BookSettingsPath;
             loadBookSettings();
 
             DebugSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\DebugSettings.json";
             if (!File.Exists(DebugSettingsPath))
+            {
                 DebugSettings = new DebugSettings();
+                needtosave = true;
+            }
             else
+            {
                 DebugSettings = JsonSerializer.Deserialize<DebugSettings>(File.ReadAllText(DebugSettingsPath));
+                DebugSettings.isDirty = false;
+            }
             DebugSettings.Filename = DebugSettingsPath;
             loaddebugsettings();
 
             GeneralSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\GeneralSettings.json";
             if (!File.Exists(GeneralSettingsPath))
+            {
                 GeneralSettings = new GeneralSettings();
+                needtosave = true;
+            }
             else
+            {
                 GeneralSettings = JsonSerializer.Deserialize<GeneralSettings>(File.ReadAllText(GeneralSettingsPath));
+                GeneralSettings.isDirty = false;
+            }
             GeneralSettings.Filename = GeneralSettingsPath;
             loadGeneralSettings();
 
             LogsSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\LogsSettings.json";
             if (!File.Exists(LogsSettingsPath))
+            {
                 LogSettings = new LogSettings();
+                needtosave = true;
+            }
             else
+            {
                 LogSettings = JsonSerializer.Deserialize<LogSettings>(File.ReadAllText(LogsSettingsPath));
+                LogSettings.isDirty = false;
+            }
             LogSettings.Filename = LogsSettingsPath;
             loadlogsettings();
 
             MapSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\mapSettings.json";
             if (!File.Exists(MapSettingsPath))
+            {
                 MapSettings = new MapSettings();
+                needtosave = true;
+            }
             else
+            {
                 MapSettings = JsonSerializer.Deserialize<MapSettings>(File.ReadAllText(MapSettingsPath));
+                MapSettings.isDirty = false;
+            }
             MapSettings.Filename = MapSettingsPath;
             loadmapsettings();
 
+            MarketSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Settings\\MarketSettings.json";
+            if (!File.Exists(MarketSettingsPath))
+            {
+                marketsettings = new MarketSettings();
+                marketsettings.Filename = MarketSettingsPath;
+                needtosave = true;
+            }
+
             MissionSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\MissionSettings.json";
             if (!File.Exists(MissionSettingsPath))
+            {
                 MissionSettings = new MissionSettings();
+                needtosave = true;
+            }
             else
+            {
                 MissionSettings = JsonSerializer.Deserialize<MissionSettings>(File.ReadAllText(MissionSettingsPath));
+                MissionSettings.isDirty = false;
+            }
             MissionSettings.Filename = MissionSettingsPath;
             MissionSettings.LoadIndividualMissions(currentproject.projectFullName + "\\" + currentproject.ProfilePath);
             loadMissionSettings();
 
             NameTagsettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\NameTagsSettings.json";
             if (!File.Exists(NameTagsettingsPath))
+            {
                 NameTagSettings = new NameTagsettings();
+                needtosave = true;
+            }
             else
+            {
                 NameTagSettings = JsonSerializer.Deserialize<NameTagsettings>(File.ReadAllText(NameTagsettingsPath));
+                NameTagSettings.isDirty = false;
+            }
             NameTagSettings.Filename = NameTagsettingsPath;
             LoadNameTagSettings();
 
             NotificationssettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\NotificationSettings.json";
             if (!File.Exists(NotificationssettingsPath))
+            {
                 NotificationSettings = new NotificationSettings();
+                needtosave = true;
+            }
             else
+            {
                 NotificationSettings = JsonSerializer.Deserialize<NotificationSettings>(File.ReadAllText(NotificationssettingsPath));
+                NotificationSettings.isDirty = false;
+            }
             NotificationSettings.Filename = NotificationssettingsPath;
             LoadNotificationSettings();
 
             PartySettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\PartySettings.json";
             if (!File.Exists(PartySettingsPath))
+            {
                 PartySettings = new PartySettings();
+                needtosave = true;
+            }
             else
+            {
                 PartySettings = JsonSerializer.Deserialize<PartySettings>(File.ReadAllText(PartySettingsPath));
+                PartySettings.isDirty = false;
+            }
             PartySettings.Filename = PartySettingsPath;
             loadpartysettings();
 
             PlayerListsettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\PlayerListSettings.json";
             if (!File.Exists(PlayerListsettingsPath))
+            {
                 PlayerListSettings = new PlayerListSettings();
+                needtosave = true;
+            }
             else
+            {
                 PlayerListSettings = JsonSerializer.Deserialize<PlayerListSettings>(File.ReadAllText(PlayerListsettingsPath));
+                PlayerListSettings.isDirty = false;
+            }
             PlayerListSettings.Filename = PlayerListsettingsPath;
             LoadPlayerListsettings();
 
             RaidSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\Raidsettings.json";
             if (!File.Exists(RaidSettingsPath))
+            {
                 RaidSettings = new RaidSettings();
+                needtosave = true;
+            }
             else
+            {
                 RaidSettings = JsonSerializer.Deserialize<RaidSettings>(File.ReadAllText(RaidSettingsPath));
+                RaidSettings.isDirty = false;
+            }
             RaidSettings.Filename = RaidSettingsPath;
             loadRaidSettings();
 
             SafeZoneSettingspath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\SafeZonesettings.json";
             if (!File.Exists(SafeZoneSettingspath))
+            {
                 SafeZoneSettings = new SafeZoneSettings();
+                needtosave = true;
+            }
             else
+            {
                 SafeZoneSettings = JsonSerializer.Deserialize<SafeZoneSettings>(File.ReadAllText(SafeZoneSettingspath));
+                SafeZoneSettings.isDirty = false;
+            }
             SafeZoneSettings.Filename = SafeZoneSettingspath;
             LoadSafeZonesettings();
 
             SocialMediaSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\SocialMediaSettings.json";
             if (!File.Exists(SocialMediaSettingsPath))
+            {
                 SocialMediaSettings = new SocialMediaSettings();
+                needtosave = true;
+            }
             else
+            {
                 SocialMediaSettings = JsonSerializer.Deserialize<SocialMediaSettings>(File.ReadAllText(SocialMediaSettingsPath));
+                SocialMediaSettings.isDirty = false;
+            }
             SocialMediaSettings.Filename = SocialMediaSettingsPath;
             LoadsocialMediaSettings();
 
             SpawnSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\SpawnSettings.json";
             if (!File.Exists(SpawnSettingsPath))
+            {
                 SpawnSettings = new SpawnSettings();
+                SpawnSettings.SetStartingWeapons();
+                needtosave = true;
+            }
             else
+            {
                 SpawnSettings = JsonSerializer.Deserialize<SpawnSettings>(File.ReadAllText(SpawnSettingsPath));
+                SpawnSettings.SetStartingWeapons();
+                SpawnSettings.isDirty = false;
+            }
             SpawnSettings.Filename = SpawnSettingsPath;
-            SpawnSettings.SetStartingWeapons();
             LoadSpawnsettings();
-            SpawnSettings.isDirty = false;
 
             TerritorySettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\TerritorySettings.json";
             if (!File.Exists(TerritorySettingsPath))
+            {
                 TerritorySettings = new TerritorySettings();
+                needtosave = true;
+            }
             else
+            {
                 TerritorySettings = JsonSerializer.Deserialize<TerritorySettings>(File.ReadAllText(TerritorySettingsPath));
+                TerritorySettings.isDirty = false;
+            }
             TerritorySettings.Filename = TerritorySettingsPath;
             LoadTerritorySettings();
 
             VehicleSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\VehicleSettings.json";
             if (!File.Exists(VehicleSettingsPath))
+            {
                 VehicleSettings = new VehicleSettings();
+                needtosave = true;
+            }
             else
+            {
                 VehicleSettings = JsonSerializer.Deserialize<VehicleSettings>(File.ReadAllText(VehicleSettingsPath));
+                VehicleSettings.isDirty = false;
+            }
             VehicleSettings.Filename = VehicleSettingsPath;
             LoadvehicleSettings();
 
             MapData = new MapData(Application.StartupPath + currentproject.MapPath + ".xyz");
             
             tabControl3.ItemSize = new Size(0, 1);
+
+            if(needtosave)
+            {
+                savefiles();
+            }
         }
 
         public ContainerTypes getContainertype(string container)
@@ -532,6 +658,13 @@ namespace DayZeEditor
         #region savefiles
         private void SaveFileButton_Click(object sender, EventArgs e)
         {
+            savefiles();
+        }
+        public void savefiles()
+        {
+            if (!Directory.Exists(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Settings"))
+                Directory.CreateDirectory(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Settings");
+
             List<string> midifiedfiles = new List<string>();
             string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
             if (AirdropsettingsJson.isDirty)
@@ -624,6 +757,19 @@ namespace DayZeEditor
                 }
                 File.WriteAllText(MapSettings.Filename, jsonString);
                 midifiedfiles.Add(Path.GetFileName(MapSettings.Filename));
+            }
+            if (marketsettings != null &&  marketsettings.isDirty)
+            {
+                marketsettings.isDirty = false;
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                string jsonString = JsonSerializer.Serialize(marketsettings, options);
+                if (File.Exists(marketsettings.Filename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(marketsettings.Filename) + "\\Backup\\" + SaveTime);
+                    File.Copy(marketsettings.Filename, Path.GetDirectoryName(marketsettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(marketsettings.Filename) + ".bak", true);
+                }
+                File.WriteAllText(marketsettings.Filename, jsonString);
+                midifiedfiles.Add(Path.GetFileName(marketsettings.Filename));
             }
             if (MissionSettings.isDirty)
             {
@@ -1957,6 +2103,7 @@ namespace DayZeEditor
         }
         private void LinkIconColour_Paint(object sender, PaintEventArgs e)
         {
+            if(currentLink == null) { return; }
             PictureBox pb = sender as PictureBox;
             Rectangle region;
             region = pb.ClientRectangle;

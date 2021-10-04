@@ -20,5 +20,11 @@ namespace DayZeLib
         public string Filename { get; set; }
         [JsonIgnore]
         public bool isDirty { get; set; }
+
+        public NameTagsettings()
+        {
+            m_Version = 0;
+            isDirty = true;
+        }
     }
 }

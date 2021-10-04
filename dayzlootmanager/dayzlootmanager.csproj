@@ -291,6 +291,18 @@
     <None Include="Maps\DeerIsle_Map.png.xyz">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Maps\Esseker_Map.png.xyz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Maps\Livonia_Map.png.xyz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Maps\NamalskMap.png.xyz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Maps\TakistanPlus_Map.png.xyz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -327,6 +339,9 @@
     </Content>
     <Content Include="Maps\DeerIsle_Map.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Maps\Esseker_Map.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Maps\Icons\Airdrop.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -387,9 +402,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="depositphotos_20788183_stock_illustration_cartoon_thief_running_with_a_Cw8_icon.ico" />
-    <Content Include="Project\Example Projects Templates.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="WinSCP.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -416,6 +428,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Project\" />
     <Folder Include="Templates\" />
   </ItemGroup>
   <ItemGroup>
