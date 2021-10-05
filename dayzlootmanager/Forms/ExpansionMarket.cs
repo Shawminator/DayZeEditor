@@ -114,6 +114,7 @@ namespace DayZeEditor
         }
         private void ExpansionMarket_Load(object sender, EventArgs e)
         {
+            bool needtosave = false;
             filename = currentproject.ProjectName;
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
@@ -129,16 +130,25 @@ namespace DayZeEditor
             if (!Directory.Exists(Path.GetDirectoryName(MarketSettingsPath)))
                 Directory.CreateDirectory(Path.GetDirectoryName(MarketSettingsPath));
             if (!File.Exists(MarketSettingsPath))
+            {
                 marketsettings = new MarketSettings(MarketSettingsPath);
+                needtosave = true;
+            }
             else
             {
                 marketsettings = JsonSerializer.Deserialize<MarketSettings>(File.ReadAllText(MarketSettingsPath));
+                marketsettings.isDirty = false;
+                if (marketsettings.m_Version != 7)
+                {
+                    MessageBox.Show("MarketSettings Version number not up to date, updating to latest version....");
+                    marketsettings.m_Version = 7;
+                    marketsettings.isDirty = true;
+                    needtosave = true;
+                }
                 Console.WriteLine("Serializing " + MarketSettingsPath);
             }
             marketsettings.Filename = MarketSettingsPath;
-
             marketsettings.setspawnnames();
-
 
             MarketCats = new MarketCategories(CatPath);
             Traders = new TradersList(TradersPath, MarketCats);
@@ -201,6 +211,11 @@ namespace DayZeEditor
             pictureBox2.Paint += new PaintEventHandler(DrawAllSpawns);
             trackBar4.Value = 1;
             SetSpawnscale();
+
+            if(needtosave)
+            {
+                saveMarketfiles();
+            }
         }
         private void SetupListBoxes()
         {
@@ -431,6 +446,20 @@ namespace DayZeEditor
             currentCat.isDirty = true;
             setzoneprices();
         }
+        private void setMinPricePercentageOfMaxToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Input precentage of Max Price ", "Min Price", "");
+            if (UserAnswer == "") return;
+            int value = Convert.ToInt32(UserAnswer);
+            foreach (marketItem item in currentCat.Items)
+            {
+                decimal num1 = (decimal)item.MaxPriceThreshold / 100;
+                decimal num2 = num1 * value;
+                item.MinPriceThreshold = (int)Math.Round(num2, MidpointRounding.AwayFromZero);
+            }
+            currentCat.isDirty = true;
+            setzoneprices();
+        }
         private void createNewMarketToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //backup existing folders if there and existing market settings.
@@ -465,9 +494,14 @@ namespace DayZeEditor
         #region Form Save function for all documents
         private void SaveFileButton_Click(object sender, EventArgs e)
         {
+            saveMarketfiles();
+        }
+
+        private void saveMarketfiles()
+        {
             List<string> midifiedfiles = new List<string>();
             string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
-            if(marketsettings.isDirty)
+            if (marketsettings.isDirty)
             {
                 marketsettings.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
@@ -480,7 +514,7 @@ namespace DayZeEditor
                 File.WriteAllText(marketsettings.Filename, jsonString);
                 midifiedfiles.Add(Path.GetFileName(marketsettings.Filename));
             }
-            if(tradermaps.isDirty)
+            if (tradermaps.isDirty)
             {
                 tradermaps.isDirty = false;
                 tradermaps.savefiles(SaveTime);
@@ -545,9 +579,9 @@ namespace DayZeEditor
                     message += l + ", ";
                     i++;
                 }
-                
+
             }
-            if(midifiedfiles.Count > 0)
+            if (midifiedfiles.Count > 0)
                 MessageBox.Show(message, "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             else
                 MessageBox.Show("No changes were made.", "Nothing Saved", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -1807,24 +1841,24 @@ namespace DayZeEditor
             {
                 removeitems.Add(item.ToString());
             }
+            StringBuilder sb = new StringBuilder();
             foreach (string removeitem in removeitems)
             {
-                if (MessageBox.Show("This Will Remove " + removeitem + " from this category and all Varients unless it has its own Item Entry, Are you sure you want to do this?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                sb.Append(removeitem + Environment.NewLine);
+            }
+            if (MessageBox.Show("This Will Remove The folowing Items\n" + sb.ToString() + "Are you really sure you want me to do this?, if it goes Pete Tong its not my fault. Understood?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                foreach (string removeitem in removeitems)
                 {
                     List<string> removedvarients = RemoveItem(removeitem);
                     currentCat.Items.Remove(currentCat.getitem(removeitem));
                     currentCat.isDirty = true;
-                    string message = "The Following Were Removed from both Trader and Market Categories\n" + removeitem + "\n";
-                    foreach (string l in removedvarients)
-                    {
-                        message += l + "\n";
-                    }
-                    MessageBox.Show(message, "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                    //if (listBox4.Items.Count == 0)
-                        listBox4.SelectedIndex = -1;
-                    //else
-                     //   listBox4.SelectedIndex = 0;
                 }
+                if (listBox4.Items.Count == 0)
+                    listBox4.SelectedIndex = -1;
+                else
+                   listBox4.SelectedIndex = 0;
+                MessageBox.Show("items removed", "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
         }
         private List<string> RemoveItem(string removeitem)
@@ -2842,7 +2876,5 @@ namespace DayZeEditor
                     break;
             }
         }
-
-
     }
 }

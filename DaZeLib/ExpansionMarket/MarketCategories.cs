@@ -18,6 +18,7 @@ namespace DayZeLib
 
         public MarketCategories()
         {
+
             CatList = new BindingList<Categories>();
         }
         public MarketCategories(string Path)
@@ -66,7 +67,7 @@ namespace DayZeLib
                 }
                 catch
                 {
-                    MessageBox.Show("there is AddingNewEventHandler error in the following file\n" + file.FullName); 
+                    MessageBox.Show("there is an error in the following file\n" + file.FullName); 
 
                 }
 

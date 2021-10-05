@@ -2432,6 +2432,7 @@ namespace DayZeEditor
         }
         private void BackGround_Paint(object sender, PaintEventArgs e)
         {
+            if(currentmapmapmarker == null) { return; }
             PictureBox pb = sender as PictureBox;
             Rectangle region;
             region = pb.ClientRectangle;
@@ -3608,26 +3609,30 @@ namespace DayZeEditor
             BackpacksLB.DisplayMember = "DisplayName";
             BackpacksLB.ValueMember = "Value";
             BackpacksLB.DataSource = SpawnSettings.StartingClothing.Backpacks;
-
+            useraction = false;
             EnableStartingGearCB.Checked = SpawnSettings.StartingGear.EnableStartingGear == 1 ? true : false;
             SetRandomHealthSGCB.Checked = SpawnSettings.StartingGear.SetRandomHealth == 1 ? true : false;
             ApplyEnergySourcesCB.Checked = SpawnSettings.StartingGear.ApplyEnergySources == 1 ? true : false;
-            
+
+            useraction = false;
             UseUpperGearCB.Checked = SpawnSettings.StartingGear.UseUpperGear == 1 ? true : false;
             UpperGearLB.DisplayMember = "DisplayName";
             UpperGearLB.ValueMember = "Value";
             UpperGearLB.DataSource = SpawnSettings.StartingGear.UpperGear;
 
+            useraction = false;
             UsePantsGearCB.Checked = SpawnSettings.StartingGear.UsePantsGear == 1 ? true : false;
             PantsGearLB.DisplayMember = "DisplayName";
             PantsGearLB.ValueMember = "Value";
             PantsGearLB.DataSource = SpawnSettings.StartingGear.PantsGear;
 
+            useraction = false;
             UseBackpackGearCB.Checked = SpawnSettings.StartingGear.UseBackpackGear == 1 ? true : false;
             BackpackGearLB.DisplayMember = "DisplayName";
             BackpackGearLB.ValueMember = "Value";
             BackpackGearLB.DataSource = SpawnSettings.StartingGear.BackpackGear;
 
+            useraction = false;
             UseVestGearCB.Checked = SpawnSettings.StartingGear.UseVestGear == 1 ? true : false;
             VestGearLB.DisplayMember = "DisplayName";
             VestGearLB.ValueMember = "Value";

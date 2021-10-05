@@ -51,6 +51,7 @@ namespace DayZeEditor
             this.setMaxPriceForSelectedCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setMinPriceForSelectedCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setPriceForItemsWithZeroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setMinPricePercentageOfMaxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectedItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.allZonesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -593,7 +594,8 @@ namespace DayZeEditor
             this.setMinStockForSelectedCategoryToolStripMenuItem,
             this.setMaxPriceForSelectedCategoryToolStripMenuItem,
             this.setMinPriceForSelectedCategoryToolStripMenuItem,
-            this.setPriceForItemsWithZeroToolStripMenuItem});
+            this.setPriceForItemsWithZeroToolStripMenuItem,
+            this.setMinPricePercentageOfMaxToolStripMenuItem});
             this.categoriesToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.categoriesToolStripMenuItem.Name = "categoriesToolStripMenuItem";
             this.categoriesToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
@@ -643,6 +645,15 @@ namespace DayZeEditor
             this.setPriceForItemsWithZeroToolStripMenuItem.Size = new System.Drawing.Size(264, 22);
             this.setPriceForItemsWithZeroToolStripMenuItem.Text = "Set Price for items with Zero";
             this.setPriceForItemsWithZeroToolStripMenuItem.Click += new System.EventHandler(this.setPriceForItemsWithZeroToolStripMenuItem_Click);
+            // 
+            // setMinPricePercentageOfMaxToolStripMenuItem
+            // 
+            this.setMinPricePercentageOfMaxToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.setMinPricePercentageOfMaxToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.setMinPricePercentageOfMaxToolStripMenuItem.Name = "setMinPricePercentageOfMaxToolStripMenuItem";
+            this.setMinPricePercentageOfMaxToolStripMenuItem.Size = new System.Drawing.Size(264, 22);
+            this.setMinPricePercentageOfMaxToolStripMenuItem.Text = "Set Min Price Percentage of max";
+            this.setMinPricePercentageOfMaxToolStripMenuItem.Click += new System.EventHandler(this.setMinPricePercentageOfMaxToolStripMenuItem_Click);
             // 
             // selectedItemsToolStripMenuItem
             // 
@@ -4806,5 +4817,6 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripMenuItem setPricesForItemWithZeroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setMinMaxStockForItemsWith0ToolStripMenuItem;
         private DarkUI.Controls.DarkButton darkButton32;
+        private System.Windows.Forms.ToolStripMenuItem setMinPricePercentageOfMaxToolStripMenuItem;
     }
 }

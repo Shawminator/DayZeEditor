@@ -38,6 +38,7 @@ namespace DayZeLib
             {
                 string path = v + "\\" + mission.MissionPath.Split(':')[1];
                 MissionSettingFiles msf = JsonSerializer.Deserialize<MissionSettingFiles>(File.ReadAllText(path));
+                msf.isDirty = false;
                 msf.Filename = path;
                 msf.MissionPath = mission.MissionPath;
                 MissionSettingFiles.Add(msf);

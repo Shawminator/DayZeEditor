@@ -117,7 +117,7 @@ namespace DayZeLib
 
         public Traders(string filename)
         {
-            m_Version = 5;
+            m_Version = 7;
             TraderName = filename;
             DisplayName = filename;
             Currencies = new BindingList<string>();
