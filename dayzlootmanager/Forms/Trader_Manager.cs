@@ -652,10 +652,6 @@ namespace DayZeEditor
             MarketCategories MarketCats = new MarketCategories();
             foreach (DRJonesCategories cat in drjonestraderconfig.m_categories)
             {
-                if(cat.m_Trader_Categorys == "Vehicles")
-                {
-                    string stop = "";
-                }
                 //check if cat has been created allready
                 Categories newcat = MarketCats.GetCatFromDisplayName(cat.m_Trader_Categorys);
                 if (newcat == null)
@@ -670,7 +666,7 @@ namespace DayZeEditor
                     marketItem newitem = new marketItem();
                     newitem.ClassName = item.m_Trader_ItemsClassnames.ToLower();
                     if (item.m_Trader_ItemsBuyValue == -1)
-                        newitem.MaxPriceThreshold = (int)((float)item.m_Trader_ItemsSellValue / 100 * 140);
+                        newitem.MaxPriceThreshold = (int)((float)item.m_Trader_ItemsSellValue);
                     else
                         newitem.MaxPriceThreshold = item.m_Trader_ItemsBuyValue;
                     int n;
@@ -682,7 +678,7 @@ namespace DayZeEditor
                         newitem.PurchaseType = 1;
                     else
                         newitem.PurchaseType = 0;
-                    newitem.MinPriceThreshold = (int)((float)newitem.MaxPriceThreshold / 100 * 65);
+                    newitem.MinPriceThreshold = newitem.MaxPriceThreshold;
                     newitem.MaxStockThreshold = 1;
                     newitem.MinStockThreshold = 1;
                     if (!checklist.Any(x => x.ClassName == newitem.ClassName))
@@ -768,7 +764,7 @@ namespace DayZeEditor
                     if (cat.Filename == "Exchange.json")
                         cat.Filename = savefolder.SelectedPath + "\\Market\\Exchange.json";
                     else
-                        cat.Filename = savefolder.SelectedPath + "\\Market\\" + ReplaceInvalidChars(cat.DisplayName) + ".json";
+                        cat.Filename = savefolder.SelectedPath + "\\Market\\" + ReplaceInvalidChars(cat.DisplayName.Replace(" ", "_")) + ".json";
                     var options = new JsonSerializerOptions();
                     options.WriteIndented = true;
                     options.Encoder =JavaScriptEncoder.UnsafeRelaxedJsonEscaping;

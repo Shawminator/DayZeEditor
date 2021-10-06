@@ -416,6 +416,16 @@ namespace DayZeEditor
             currentCat.isDirty = true;
             setzoneprices();
         }
+        private void exportItemsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (marketItem item in currentCat.Items)
+            {
+                sb.Append(item.ClassName + Environment.NewLine);
+
+            }
+            File.WriteAllText(currentCat.DisplayName + " Itemlist", sb.ToString());
+        }
         private void setPriceForItemsWithZeroToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Set your Max Price... ", "max Price", "");
@@ -456,6 +466,20 @@ namespace DayZeEditor
                 decimal num1 = (decimal)item.MaxPriceThreshold / 100;
                 decimal num2 = num1 * value;
                 item.MinPriceThreshold = (int)Math.Round(num2, MidpointRounding.AwayFromZero);
+            }
+            currentCat.isDirty = true;
+            setzoneprices();
+        }
+        private void setMaxPriceToPercentageOfMinToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("input perecentage min shoudl be to max ", "Min Price", "");
+            if (UserAnswer == "") return;
+            int value = Convert.ToInt32(UserAnswer);
+            foreach (marketItem item in currentCat.Items)
+            {
+                decimal num1 = (decimal)item.MinPriceThreshold / value;
+                decimal num2 = num1 * 100; ;
+                item.MaxPriceThreshold = (int)Math.Round(num2, MidpointRounding.AwayFromZero);
             }
             currentCat.isDirty = true;
             setzoneprices();
@@ -1984,7 +2008,7 @@ namespace DayZeEditor
         }
         private void darkButton7_Click(object sender, EventArgs e)
         {
-            string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Enter Name of New Category ", "Categories", "");
+            string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Enter Name of New Category\nPlease not that this is the filename, do not use spaces or special characters\nYou can change the display name once its been created ", "Categories", "");
             if(UserAnswer == "") return;
             MarketCats.CreateNewCat(UserAnswer);
             listBox5.SelectedIndex = -1;
@@ -1993,6 +2017,7 @@ namespace DayZeEditor
             else
                 listBox5.SelectedIndex = 0;
         }
+
         private void darkButton16_Click(object sender, EventArgs e)
         {
             string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("your search term ", "Variants", "");
@@ -2876,5 +2901,7 @@ namespace DayZeEditor
                     break;
             }
         }
+
+ 
     }
 }

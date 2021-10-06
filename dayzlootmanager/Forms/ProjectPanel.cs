@@ -196,26 +196,44 @@ namespace DayZeEditor
                 {
                     Thread load = new Thread(new ThreadStart(showLoading));
                     load.Start();
+                    if (ftpproject.Isconsole)
+                    {
+                        string mpmissiondirectory = ftpproject.MpMissionDirectory;
+                        string mpmissionpath = Path.GetFileName(mpmissiondirectory);
 
-                    string profiledir = ftpproject.ProfileDirecrtory;
-                    string mpmissiondirectory = ftpproject.MpMissionDirectory;
-                    string mpmissionpath = Path.GetFileName(mpmissiondirectory);
-                    string profile = Path.GetFileName(profiledir);
+                        Directory.CreateDirectory(ProjectPath + "\\mpmissions\\" + mpmissionpath);
+                        session.GetFilesToDirectory(mpmissiondirectory, ProjectPath + "\\mpmissions\\" + mpmissionpath);
 
-                    Directory.CreateDirectory(ProjectPath + "\\" + profile);
-                    Directory.CreateDirectory(ProjectPath +  "\\mpmissions\\" + mpmissionpath);
-                    session.GetFilesToDirectory(profiledir, ProjectPath + "\\" + profile);
-                    session.GetFilesToDirectory(mpmissiondirectory, ProjectPath + "\\mpmissions\\" + mpmissionpath);
+                        Project project = new Project();
+                        project.AddNames(ProjectName, ProjectPath);
+                        project.MapSize = Getmapsizefrommissionpath(mpmissionpath);
+                        project.mpmissionpath = mpmissionpath;
+                        project.MapPath = "\\Maps\\" + mpmissionpath.Split('.')[1] + "_Map.png";
+                        project.ProfilePath = "";
+                        projects.addtoprojects(project);
+                    }
+                    else
+                    {
+                        string profiledir = ftpproject.ProfileDirecrtory;
+                        string mpmissiondirectory = ftpproject.MpMissionDirectory;
+                        string mpmissionpath = Path.GetFileName(mpmissiondirectory);
+                        string profile = Path.GetFileName(profiledir);
 
-                    Project project = new Project();
-                    project.AddNames(ProjectName, ProjectPath);
-                    project.MapSize = Getmapsizefrommissionpath(mpmissionpath);
-                    project.mpmissionpath = mpmissionpath;
-                    project.MapPath = "\\Maps\\" + mpmissionpath.Split('.')[1] + "_Map.png";
-                    project.ProfilePath = profile;
-                    if (mpmissionpath.Contains("Expansion"))
-                        project.isExpansion = true;
-                    projects.addtoprojects(project);
+                        Directory.CreateDirectory(ProjectPath + "\\" + profile);
+                        Directory.CreateDirectory(ProjectPath + "\\mpmissions\\" + mpmissionpath);
+                        session.GetFilesToDirectory(profiledir, ProjectPath + "\\" + profile);
+                        session.GetFilesToDirectory(mpmissiondirectory, ProjectPath + "\\mpmissions\\" + mpmissionpath);
+
+                        Project project = new Project();
+                        project.AddNames(ProjectName, ProjectPath);
+                        project.MapSize = Getmapsizefrommissionpath(mpmissionpath);
+                        project.mpmissionpath = mpmissionpath;
+                        project.MapPath = "\\Maps\\" + mpmissionpath.Split('.')[1] + "_Map.png";
+                        project.ProfilePath = profile;
+                        if (mpmissionpath.Contains("Expansion"))
+                            project.isExpansion = true;
+                        projects.addtoprojects(project);
+                    }
                     LoadProjectstoList();
                     SetActiveProject(ProjectName);
                     load.Abort();

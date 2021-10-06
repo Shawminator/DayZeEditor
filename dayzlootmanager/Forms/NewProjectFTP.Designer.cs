@@ -38,6 +38,7 @@ namespace DayZeEditor
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.darkLabel1 = new DarkUI.Controls.DarkLabel();
             this.darkLabel2 = new DarkUI.Controls.DarkLabel();
             this.darkTextBox1 = new DarkUI.Controls.DarkTextBox();
@@ -45,7 +46,7 @@ namespace DayZeEditor
             this.darkButton1 = new DarkUI.Controls.DarkButton();
             this.darkButton2 = new DarkUI.Controls.DarkButton();
             this.darkButton3 = new DarkUI.Controls.DarkButton();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.IsConsoleCB = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -118,11 +119,18 @@ namespace DayZeEditor
             // 
             this.columnHeader1.Text = "Last Modified";
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "folder.png");
+            this.imageList1.Images.SetKeyName(1, "file.png");
+            // 
             // darkLabel1
             // 
             this.darkLabel1.AutoSize = true;
             this.darkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel1.Location = new System.Drawing.Point(404, 44);
+            this.darkLabel1.Location = new System.Drawing.Point(400, 85);
             this.darkLabel1.Name = "darkLabel1";
             this.darkLabel1.Size = new System.Drawing.Size(36, 13);
             this.darkLabel1.TabIndex = 102;
@@ -132,7 +140,7 @@ namespace DayZeEditor
             // 
             this.darkLabel2.AutoSize = true;
             this.darkLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel2.Location = new System.Drawing.Point(404, 71);
+            this.darkLabel2.Location = new System.Drawing.Point(400, 57);
             this.darkLabel2.Name = "darkLabel2";
             this.darkLabel2.Size = new System.Drawing.Size(55, 13);
             this.darkLabel2.TabIndex = 103;
@@ -143,7 +151,7 @@ namespace DayZeEditor
             this.darkTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
             this.darkTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.darkTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkTextBox1.Location = new System.Drawing.Point(479, 42);
+            this.darkTextBox1.Location = new System.Drawing.Point(475, 83);
             this.darkTextBox1.Name = "darkTextBox1";
             this.darkTextBox1.ReadOnly = true;
             this.darkTextBox1.Size = new System.Drawing.Size(288, 20);
@@ -155,7 +163,7 @@ namespace DayZeEditor
             this.darkTextBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
             this.darkTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.darkTextBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkTextBox2.Location = new System.Drawing.Point(479, 71);
+            this.darkTextBox2.Location = new System.Drawing.Point(475, 57);
             this.darkTextBox2.Name = "darkTextBox2";
             this.darkTextBox2.ReadOnly = true;
             this.darkTextBox2.Size = new System.Drawing.Size(288, 20);
@@ -164,7 +172,7 @@ namespace DayZeEditor
             // 
             // darkButton1
             // 
-            this.darkButton1.Location = new System.Drawing.Point(773, 42);
+            this.darkButton1.Location = new System.Drawing.Point(769, 83);
             this.darkButton1.Name = "darkButton1";
             this.darkButton1.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton1.Size = new System.Drawing.Size(22, 20);
@@ -174,7 +182,7 @@ namespace DayZeEditor
             // 
             // darkButton2
             // 
-            this.darkButton2.Location = new System.Drawing.Point(773, 71);
+            this.darkButton2.Location = new System.Drawing.Point(769, 57);
             this.darkButton2.Name = "darkButton2";
             this.darkButton2.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton2.Size = new System.Drawing.Size(22, 20);
@@ -192,18 +200,24 @@ namespace DayZeEditor
             this.darkButton3.TabIndex = 108;
             this.darkButton3.Text = "Continue";
             // 
-            // imageList1
+            // IsConsoleCB
             // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "folder.png");
-            this.imageList1.Images.SetKeyName(1, "file.png");
+            this.IsConsoleCB.AutoSize = true;
+            this.IsConsoleCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.IsConsoleCB.Location = new System.Drawing.Point(406, 34);
+            this.IsConsoleCB.Name = "IsConsoleCB";
+            this.IsConsoleCB.Size = new System.Drawing.Size(123, 17);
+            this.IsConsoleCB.TabIndex = 109;
+            this.IsConsoleCB.Text = "Console Dayz server";
+            this.IsConsoleCB.UseVisualStyleBackColor = true;
+            this.IsConsoleCB.CheckedChanged += new System.EventHandler(this.IsConsoleCB_CheckedChanged);
             // 
             // NewProjectFTP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.IsConsoleCB);
             this.Controls.Add(this.darkButton3);
             this.Controls.Add(this.darkButton2);
             this.Controls.Add(this.darkButton1);
@@ -242,5 +256,6 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton darkButton2;
         private DarkUI.Controls.DarkButton darkButton3;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.CheckBox IsConsoleCB;
     }
 }

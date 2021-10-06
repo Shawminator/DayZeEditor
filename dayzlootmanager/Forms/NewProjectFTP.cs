@@ -19,6 +19,7 @@ namespace DayZeEditor
         public string RemoteRoot { get; private set; }
         public string ProfileDirecrtory { get; private set; }
         public string MpMissionDirectory { get; private set; }
+        public bool Isconsole { get; set; }
 
         public NewProjectFTP()
         {
@@ -129,6 +130,20 @@ namespace DayZeEditor
         private void darkTextBox2_TextChanged(object sender, EventArgs e)
         {
             MpMissionDirectory = darkTextBox2.Text;
+        }
+
+        private void IsConsoleCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if(IsConsoleCB.Checked)
+            {
+                Isconsole = true;
+                darkTextBox1.Visible = false;
+            }
+            else
+            {
+                Isconsole = false;
+                darkTextBox1.Visible = true;
+            }
         }
     }
 }
