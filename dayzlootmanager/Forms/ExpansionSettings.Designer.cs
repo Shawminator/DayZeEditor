@@ -64,6 +64,7 @@ namespace DayZeEditor
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Loot = new System.Windows.Forms.TabPage();
+            this.darkButton52 = new DarkUI.Controls.DarkButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.numericUpDown12 = new System.Windows.Forms.NumericUpDown();
             this.darkLabel12 = new DarkUI.Controls.DarkLabel();
@@ -1442,6 +1443,7 @@ namespace DayZeEditor
             // 
             this.Loot.AutoScroll = true;
             this.Loot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.Loot.Controls.Add(this.darkButton52);
             this.Loot.Controls.Add(this.textBox1);
             this.Loot.Controls.Add(this.numericUpDown12);
             this.Loot.Controls.Add(this.darkLabel12);
@@ -1459,6 +1461,16 @@ namespace DayZeEditor
             this.Loot.Size = new System.Drawing.Size(693, 477);
             this.Loot.TabIndex = 0;
             this.Loot.Text = "Loot";
+            // 
+            // darkButton52
+            // 
+            this.darkButton52.Location = new System.Drawing.Point(501, 14);
+            this.darkButton52.Name = "darkButton52";
+            this.darkButton52.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton52.Size = new System.Drawing.Size(166, 23);
+            this.darkButton52.TabIndex = 96;
+            this.darkButton52.Text = "Set all to current chance";
+            this.darkButton52.Click += new System.EventHandler(this.darkButton52_Click);
             // 
             // textBox1
             // 
@@ -1500,6 +1512,8 @@ namespace DayZeEditor
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox2.Controls.Add(this.darkButton9);
             this.groupBox2.Controls.Add(this.darkButton10);
             this.groupBox2.Controls.Add(this.listBox4);
@@ -1533,6 +1547,8 @@ namespace DayZeEditor
             // 
             // listBox4
             // 
+            this.listBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.listBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.listBox4.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.listBox4.ForeColor = System.Drawing.SystemColors.Control;
@@ -1569,7 +1585,7 @@ namespace DayZeEditor
             // 
             this.darkLabel23.AutoSize = true;
             this.darkLabel23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel23.Location = new System.Drawing.Point(226, 68);
+            this.darkLabel23.Location = new System.Drawing.Point(354, 57);
             this.darkLabel23.Name = "darkLabel23";
             this.darkLabel23.Size = new System.Drawing.Size(40, 13);
             this.darkLabel23.TabIndex = 55;
@@ -1582,7 +1598,9 @@ namespace DayZeEditor
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(191, 45);
             this.trackBar1.TabIndex = 3;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
+            this.trackBar1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackBar1_MouseUp);
             // 
             // darkLabel22
             // 
@@ -4267,7 +4285,7 @@ namespace DayZeEditor
             this.toolStripButton8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton8.Name = "toolStripButton8";
-            this.toolStripButton8.Size = new System.Drawing.Size(100, 24);
+            this.toolStripButton8.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton8.Text = "General Settings";
             this.toolStripButton8.Click += new System.EventHandler(this.toolStripButton8_Click);
             // 
@@ -4287,7 +4305,7 @@ namespace DayZeEditor
             this.toolStripButton7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(100, 24);
+            this.toolStripButton7.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton7.Text = "Build Zones";
             this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
             // 
@@ -10309,7 +10327,7 @@ namespace DayZeEditor
             this.toolStripButton15.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton15.Image")));
             this.toolStripButton15.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton15.Name = "toolStripButton15";
-            this.toolStripButton15.Size = new System.Drawing.Size(100, 24);
+            this.toolStripButton15.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton15.Text = "Starting Clothing";
             this.toolStripButton15.Click += new System.EventHandler(this.toolStripButton15_Click);
             // 
@@ -10322,7 +10340,7 @@ namespace DayZeEditor
             this.toolStripButton16.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton16.Image")));
             this.toolStripButton16.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton16.Name = "toolStripButton16";
-            this.toolStripButton16.Size = new System.Drawing.Size(100, 24);
+            this.toolStripButton16.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton16.Text = "Starting Gear";
             this.toolStripButton16.Click += new System.EventHandler(this.toolStripButton16_Click);
             // 
@@ -10335,7 +10353,7 @@ namespace DayZeEditor
             this.toolStripButton17.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton17.Image")));
             this.toolStripButton17.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton17.Name = "toolStripButton17";
-            this.toolStripButton17.Size = new System.Drawing.Size(100, 24);
+            this.toolStripButton17.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton17.Text = "Spawns";
             this.toolStripButton17.Click += new System.EventHandler(this.toolStripButton17_Click);
             // 
@@ -12374,5 +12392,6 @@ namespace DayZeEditor
         private System.Windows.Forms.ComboBox FlagMenuModeComboBox;
         private DarkUI.Controls.DarkLabel darkLabel157;
         private System.Windows.Forms.ComboBox DismantleFlagModeComboBox;
+        private DarkUI.Controls.DarkButton darkButton52;
     }
 }

@@ -50,7 +50,10 @@ namespace DayZeLib
             Console.WriteLine(Files.Length.ToString() + " Found");
             foreach (FileInfo file in Files)
             {
-                file.MoveTo(TradermapsPath + "\\Backup\\" + saveTime + "\\" + file.Name + ".bak");
+                if (File.Exists(TradermapsPath + "\\Backup\\" + saveTime + "\\" + file.Name + ".bak"))
+                    file.MoveTo(TradermapsPath + "\\Backup\\" + saveTime + "\\" + file.Name + ".bak1");
+                else
+                    file.MoveTo(TradermapsPath + "\\Backup\\" + saveTime + "\\" + file.Name + ".bak");
             }
             List<string> mappaths = new List<string>();
             foreach (Tradermap map in maps)
@@ -97,6 +100,8 @@ namespace DayZeLib
         public Vec3 roattions { get; set; }
         public BindingList<string> Attachments { get; set; }
 
+        public bool IsInAZone = false;
+
         public Tradermap()
         {
 
@@ -104,6 +109,7 @@ namespace DayZeLib
         public Tradermap(string[] array)
         {
             Attachments = new BindingList<string>();
+            if (array[0].StartsWith("//")){ return; }
             string[] Part1 = array[0].Split('.');
             NPCName = Part1[0];
             NPCTrade = Part1[1];

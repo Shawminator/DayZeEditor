@@ -662,6 +662,8 @@ namespace DayZeEditor
                 List<DrjonesItems> dritems = drjonestraderconfig.getItems(cat.m_Trader_CategoryID);
                 foreach (DrjonesItems item in dritems)
                 {
+                    if (!CheckIfInTypes(item)) { continue; }
+
                     //create new item with default stock values of 1/1
                     marketItem newitem = new marketItem();
                     newitem.ClassName = item.m_Trader_ItemsClassnames.ToLower();
@@ -727,6 +729,7 @@ namespace DayZeEditor
                     foreach (TraderItems titems in tcats.ItemList)
                     {
                         marketItem mitem = MarketCats.getitemfromcategory(titems.m_Trader_ItemsClassnames.ToLower());
+                        if(mitem == null) { continue; }
                         TradersItem ti = new TradersItem();
                         ti.ClassName = mitem.ClassName;
                         if (titems.m_Trader_ItemsBuyValue == -1 && titems.m_Trader_ItemsSellValue > 0)
@@ -774,5 +777,37 @@ namespace DayZeEditor
             }
         }
 
+        private bool CheckIfInTypes(DrjonesItems item)
+        {
+            if (vanillatypes.types.type.Any(x => x.name.ToLower() == item.m_Trader_ItemsClassnames.ToLower()))
+                return true;
+            if (Expansiontypes != null && Expansiontypes.types.type.Any(x => x.name.ToLower() == item.m_Trader_ItemsClassnames.ToLower()))
+                return true;
+            foreach (TypesFile tf in ModTypes)
+            {
+                if (tf.types.type.Any(x => x.name.ToLower() == item.m_Trader_ItemsClassnames.ToLower()))
+                    return true;
+            }
+
+            return false;
+        }
+
+        private void exportClassnameAndBuyPriceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<string> list = new List<string>();
+            foreach (DRJonesCategories cat in drjonestraderconfig.m_categories)
+            {
+                List<DrjonesItems> dritems = drjonestraderconfig.getItems(cat.m_Trader_CategoryID);
+                foreach (DrjonesItems item in dritems)
+                {
+                    if (list.Any(x => x.Split(',')[0] == item.m_Trader_ItemsClassnames.ToLower())) { continue; }
+                    if(item.m_Trader_ItemsBuyValue == -1)
+                        list.Add(item.m_Trader_ItemsClassnames.ToLower() + "," + item.m_Trader_ItemsSellValue.ToString());
+                    else
+                        list.Add(item.m_Trader_ItemsClassnames.ToLower() + "," + item.m_Trader_ItemsBuyValue.ToString());
+                }
+            }
+            File.WriteAllText("PriceExport.txt", String.Join("\n", list.ToArray()));
+        }
     }
 }

@@ -32,10 +32,11 @@ namespace DayZeEditor
         {
             Projects = new List<Project>();
         }
-        public void addtoprojects(Project project)
+        public void addtoprojects(Project project, bool setactive = true)
         {
             Projects.Add(project);
-            ActiveProject = project.ProjectName;
+            if(setactive)
+                ActiveProject = project.ProjectName;
             SaveProject();
         }
         public Project getprojectfromname(string name)

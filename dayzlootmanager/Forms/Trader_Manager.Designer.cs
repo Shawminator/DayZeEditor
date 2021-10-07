@@ -99,6 +99,7 @@ namespace DayZeEditor
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.exportClassnameAndBuyPriceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -177,7 +178,8 @@ namespace DayZeEditor
             this.toolStripDropDownButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.convertToExpansionMarketToolStripMenuItem});
+            this.convertToExpansionMarketToolStripMenuItem,
+            this.exportClassnameAndBuyPriceToolStripMenuItem});
             this.toolStripDropDownButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -192,7 +194,7 @@ namespace DayZeEditor
             this.convertToExpansionMarketToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.convertToExpansionMarketToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.convertToExpansionMarketToolStripMenuItem.Name = "convertToExpansionMarketToolStripMenuItem";
-            this.convertToExpansionMarketToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
+            this.convertToExpansionMarketToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.convertToExpansionMarketToolStripMenuItem.Text = "Convert to Expansion Market";
             this.convertToExpansionMarketToolStripMenuItem.Click += new System.EventHandler(this.convertToExpansionMarketToolStripMenuItem_Click);
             // 
@@ -970,7 +972,7 @@ namespace DayZeEditor
             // 
             this.toolStripButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton1.ForeColor = System.Drawing.SystemColors.Control;
+            this.toolStripButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
@@ -990,7 +992,7 @@ namespace DayZeEditor
             // 
             this.toolStripButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton3.ForeColor = System.Drawing.SystemColors.Control;
+            this.toolStripButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
@@ -1010,13 +1012,22 @@ namespace DayZeEditor
             // 
             this.toolStripButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton4.ForeColor = System.Drawing.SystemColors.Control;
+            this.toolStripButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
             this.toolStripButton4.Size = new System.Drawing.Size(48, 25);
             this.toolStripButton4.Text = "Traders";
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
+            // 
+            // exportClassnameAndBuyPriceToolStripMenuItem
+            // 
+            this.exportClassnameAndBuyPriceToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.exportClassnameAndBuyPriceToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.exportClassnameAndBuyPriceToolStripMenuItem.Name = "exportClassnameAndBuyPriceToolStripMenuItem";
+            this.exportClassnameAndBuyPriceToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
+            this.exportClassnameAndBuyPriceToolStripMenuItem.Text = "Export classname and Buy Price";
+            this.exportClassnameAndBuyPriceToolStripMenuItem.Click += new System.EventHandler(this.exportClassnameAndBuyPriceToolStripMenuItem_Click);
             // 
             // DRJonesTrader_Manager
             // 
@@ -1143,5 +1154,6 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripMenuItem exportClassnameAndBuyPriceToolStripMenuItem;
     }
 }

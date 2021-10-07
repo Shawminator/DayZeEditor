@@ -153,7 +153,7 @@ namespace DayZeEditor
             // 
             this.darkLabel1.AutoSize = true;
             this.darkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel1.Location = new System.Drawing.Point(14, 80);
+            this.darkLabel1.Location = new System.Drawing.Point(10, 80);
             this.darkLabel1.Name = "darkLabel1";
             this.darkLabel1.Size = new System.Drawing.Size(95, 13);
             this.darkLabel1.TabIndex = 47;
@@ -165,7 +165,8 @@ namespace DayZeEditor
             this.ProjectTypeComboBox.ForeColor = System.Drawing.SystemColors.Control;
             this.ProjectTypeComboBox.FormattingEnabled = true;
             this.ProjectTypeComboBox.Items.AddRange(new object[] {
-            "Manaul Setup",
+            "Blank project",
+            "Exisitng mission files",
             "Get from FTP"});
             this.ProjectTypeComboBox.Location = new System.Drawing.Point(124, 77);
             this.ProjectTypeComboBox.Name = "ProjectTypeComboBox";
@@ -177,7 +178,7 @@ namespace DayZeEditor
             // 
             this.darkLabel2.AutoSize = true;
             this.darkLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel2.Location = new System.Drawing.Point(13, 54);
+            this.darkLabel2.Location = new System.Drawing.Point(9, 54);
             this.darkLabel2.Name = "darkLabel2";
             this.darkLabel2.Size = new System.Drawing.Size(105, 13);
             this.darkLabel2.TabIndex = 49;
@@ -277,7 +278,7 @@ namespace DayZeEditor
             // 
             this.darkLabel6.AutoSize = true;
             this.darkLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel6.Location = new System.Drawing.Point(14, 131);
+            this.darkLabel6.Location = new System.Drawing.Point(10, 131);
             this.darkLabel6.Name = "darkLabel6";
             this.darkLabel6.Size = new System.Drawing.Size(106, 13);
             this.darkLabel6.TabIndex = 74;
@@ -296,7 +297,7 @@ namespace DayZeEditor
             // 
             this.darkLabel5.AutoSize = true;
             this.darkLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel5.Location = new System.Drawing.Point(14, 28);
+            this.darkLabel5.Location = new System.Drawing.Point(10, 28);
             this.darkLabel5.Name = "darkLabel5";
             this.darkLabel5.Size = new System.Drawing.Size(71, 13);
             this.darkLabel5.TabIndex = 53;
@@ -325,7 +326,7 @@ namespace DayZeEditor
             // 
             this.darkLabel12.AutoSize = true;
             this.darkLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel12.Location = new System.Drawing.Point(14, 105);
+            this.darkLabel12.Location = new System.Drawing.Point(10, 105);
             this.darkLabel12.Name = "darkLabel12";
             this.darkLabel12.Size = new System.Drawing.Size(99, 13);
             this.darkLabel12.TabIndex = 68;

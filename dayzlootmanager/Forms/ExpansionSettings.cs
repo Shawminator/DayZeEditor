@@ -1084,12 +1084,7 @@ namespace DayZeEditor
         }
         private void trackBar1_ValueChanged(object sender, EventArgs e)
         {
-            darkLabel23.Text = ((float)trackBar1.Value / 10).ToString() + "%";
-            if (useraction)
-            {
-                CL.Chance = (float)trackBar1.Value / 1000;
-                AirdropsettingsJson.isDirty = true;
-            }
+            darkLabel23.Text = ((decimal)(trackBar1.Value) / 10).ToString() + "%";
         }
         private void darkButton4_Click(object sender, EventArgs e)
         {
@@ -1161,7 +1156,7 @@ namespace DayZeEditor
                 ModTypes = ModTypes,
                 currentproject = currentproject,
                 UseMultiple = false,
-                isCategoryitem = false,
+                isCategoryitem = true,
                 LowerCase = false
             };
             DialogResult result = form.ShowDialog();
@@ -4818,9 +4813,28 @@ namespace DayZeEditor
 
 
 
+
         #endregion VehicleSettings
 
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            darkLabel23.Text = ((decimal)(trackBar1.Value)/10).ToString() + "%";
+        }
 
+        private void trackBar1_MouseUp(object sender, MouseEventArgs e)
+        {
+            CL.Chance = (float)(((decimal)trackBar1.Value)/1000);
+            AirdropsettingsJson.isDirty = true;
+        }
+
+        private void darkButton52_Click(object sender, EventArgs e)
+        {
+            foreach(containerLoot cl in ADC.Loot)
+            {
+                cl.Chance = (float)(((decimal)trackBar1.Value) / 1000);
+            }
+            AirdropsettingsJson.isDirty = true;
+        }
     }
     public class NullToEmptyGearConverter : JsonConverter<Gear>
     {

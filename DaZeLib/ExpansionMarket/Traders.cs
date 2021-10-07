@@ -42,13 +42,34 @@ namespace DayZeLib
                     t.ConvertDictToList(marketCats);
                     Traderlist.Add(t);
                 }
-                catch
+                catch (Exception ex)
                 {
-                MessageBox.Show("there is An error in the following file\n" + file.FullName);
+                     MessageBox.Show("there is An error in the following file\n" + file.FullName);
 
                 }
             }
+            List<string> duplist = new List<string>();
+            StringBuilder sb = new StringBuilder();
+            sb.Append("The below files are duplicated, please manually fix");
+            bool printmessage = false;
+            foreach (Categories cat in marketCats.CatList)
+            {
+                foreach(marketItem item in cat.Items)
+                {
+                    if (duplist.Any(x => x.Split(',')[0] == item.ClassName))
+                    {
+                        printmessage = true;
+                        sb.Append(duplist.First(x => x.Split(',')[0] == item.ClassName) + "," + cat.DisplayName + Environment.NewLine);
+                    }                        
+                    duplist.Add(item.ClassName + "," + cat.DisplayName);
+                }
+            }
+            if(printmessage)
+            {
+                MessageBox.Show(sb.ToString());
+            }
         }
+
         public void RemoveItemFromTrader(string removeitem)
         {
             foreach (Traders t in Traderlist)
@@ -114,15 +135,26 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty = false;
 
-
+        public Traders()
+        {
+            m_Version = 7;
+            TraderName = "";
+            TraderIcon = "";
+            Currencies = new BindingList<string>();
+            Items = new Dictionary<string, int>();
+            ListItems = new BindingList<TradersItem>();
+            Categories = new BindingList<string>();
+        }
         public Traders(string filename)
         {
             m_Version = 7;
             TraderName = filename;
             DisplayName = filename;
+            TraderIcon = "Questionmark";
             Currencies = new BindingList<string>();
             Items = new Dictionary<string, int>();
             ListItems = new BindingList<TradersItem>();
+            Categories = new BindingList<string>();
         }
         public override string ToString()
         {
@@ -131,6 +163,8 @@ namespace DayZeLib
         public void ConvertDictToList(MarketCategories marketCats)
         {
             var initialList = new BindingList<TradersItem>();
+            if (Categories.Count == 1 && Categories[0] == null)
+                Categories = new BindingList<string>();
             foreach (string cat in Categories)
             {
                 List<marketItem> itemslist = marketCats.GetCatFromFileName(cat).Items.ToList();

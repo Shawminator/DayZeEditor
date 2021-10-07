@@ -127,9 +127,39 @@ namespace DayZeEditor
             string ProjectPath = ProjectFolder + "\\" + ProjectName;
             Directory.CreateDirectory(ProjectPath);
 
-
             string projecttype = ProjectTypeComboBox.GetItemText(ProjectTypeComboBox.SelectedItem);
-            if (projecttype != "Get from FTP")
+            if(projecttype == "Blank project")
+            {
+                if (ProjectProfileTB.Text == "" || ProjectMissionFolderTB.Text == "")
+                {
+                    MessageBox.Show("Please select both a Profile name and an exact mpmission name.");
+                    return;
+                }
+                string missionsfolder = ProjectMissionFolderTB.Text;
+                string profilefolder = ProjectProfileTB.Text;
+                string mpmissionpath = Path.GetFileName(missionsfolder);
+                string PmissionFolder = ProjectPath + "\\mpmissions\\" + Path.GetFileName(missionsfolder);
+                string Pprofilefolder = ProjectPath + "\\" + profilefolder;
+
+                Directory.CreateDirectory(PmissionFolder);
+                Directory.CreateDirectory(Pprofilefolder);
+
+                Project project = new Project();
+                project.AddNames(ProjectName, ProjectPath);
+                project.MapSize = Getmapsizefrommissionpath(mpmissionpath);
+                project.mpmissionpath = mpmissionpath;
+                project.MapPath = "\\Maps\\" + mpmissionpath.Split('.')[1] + "_Map.png";
+                project.ProfilePath = profilefolder;
+                if (mpmissionpath.Contains("Expansion"))
+                {
+                    Directory.CreateDirectory(Pprofilefolder + "\\ExpansionMod");
+                    project.isExpansion = true;
+                }
+                projects.addtoprojects(project, false);
+                LoadProjectstoList();
+                MessageBox.Show("Blank Project created, Please Close the editor and populate the missions files before trying to load this project...");
+            }
+            else if (projecttype == "Exisitng mission files")
             {
                 if (ProjectProfileTB.Text == "" || ProjectMissionFolderTB.Text == "")
                 {
@@ -144,8 +174,7 @@ namespace DayZeEditor
                
                 Directory.CreateDirectory(PmissionFolder);
                 Directory.CreateDirectory(Pprofilefolder);
-                Directory.CreateDirectory(Pprofilefolder + "\\ExpansionMod");
-
+               
                 Helper.CopyFilesRecursively(missionsfolder, PmissionFolder);
 
 
@@ -156,12 +185,15 @@ namespace DayZeEditor
                 project.MapPath = "\\Maps\\" + mpmissionpath.Split('.')[1] + "_Map.png";
                 project.ProfilePath = profilefolder;
                 if (mpmissionpath.Contains("Expansion"))
+                {
+                    Directory.CreateDirectory(Pprofilefolder + "\\ExpansionMod");
                     project.isExpansion = true;
+                }
                 projects.addtoprojects(project);
                 LoadProjectstoList();
                 SetActiveProject(ProjectName);
             }
-            else
+            else if (projecttype == "Get from FTP")
             {
                 try
                 {
@@ -279,19 +311,35 @@ namespace DayZeEditor
                 darkLabel6.Visible = false;
                 ProjectProfileTB.Visible = false;
                 ProjectMissionFolderTB.Visible = false;
-                 button3.Visible = false;
+                button3.Visible = false;
+                darkButton2.Location = new Point(360, 105);
             }
-            else
+            else if (projecttype == "Blank project")
             {
+                darkLabel6.Text = "Exact Name of mission";
+                button3.Visible = false;
                 darkLabel12.Visible = true;
                 darkLabel6.Visible = true;
                 ProjectProfileTB.Visible = true;
                 ProjectMissionFolderTB.Visible = true;
+                ProjectMissionFolderTB.Size = new Size(614, 20);
+                darkButton2.Location = new Point(360, 156);
+            }
+            else
+            {
+                darkLabel6.Text = "Mission Folder to use";
+                darkLabel12.Visible = true;
+                darkLabel6.Visible = true;
+                ProjectProfileTB.Visible = true;
+                ProjectMissionFolderTB.Visible = true;
+                ProjectMissionFolderTB.Size = new Size(587,20);
                 button3.Visible = true;
+                darkButton2.Location = new Point(360, 156);
             }
         }
         private void darkButton1_Click(object sender, EventArgs e)
         {
+            if(listBox1.SelectedItem == null) { return; }
             string profilename = listBox1.GetItemText(listBox1.SelectedItem);
             SetActiveProject(profilename);
         }

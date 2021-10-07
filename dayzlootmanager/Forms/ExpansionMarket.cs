@@ -26,6 +26,7 @@ namespace DayZeEditor
         public MarketCategories MarketCats;
         public MarketSettings marketsettings;
         public TraderModelMapping tradermaps;
+        public BindingList<Tradermap> NoZoneTraders;
         public string ZonesPath;
         public string TradersPath;
         public string CatPath;
@@ -163,9 +164,19 @@ namespace DayZeEditor
                     if (IsWithinCircle(pC, pP, zone.Radius))
                     {
                         tm.Filename = Path.GetDirectoryName(tm.Filename) + "\\" + zone.m_ZoneName + ".map";
+                        tm.IsInAZone = true;
                     }
+
                 }
             }
+            NoZoneTraders = new BindingList<Tradermap>();
+            foreach(Tradermap tm in tradermaps.maps)
+            {
+                if (!tm.IsInAZone)
+                    NoZoneTraders.Add(tm);
+            }
+
+
 
             Console.WriteLine("Setting Market Setting Variables");
             Loadsettings();
@@ -238,6 +249,10 @@ namespace DayZeEditor
             listBox5.DisplayMember = "Name";
             listBox5.ValueMember = "Value";
             listBox5.DataSource = MarketCats.CatList;
+
+            listBox18.DisplayMember = "Name";
+            listBox18.ValueMember = "Value";
+            listBox18.DataSource = NoZoneTraders;
         }
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -483,6 +498,18 @@ namespace DayZeEditor
             }
             currentCat.isDirty = true;
             setzoneprices();
+        }
+        private void getPriceFromListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<string> list = File.ReadAllLines("Priceexport.txt").ToList();
+            foreach (marketItem item in currentCat.Items)
+            {
+                if(list.Any(x => x.Split(',')[0] == item.ClassName))
+                {
+                    string price = list.First(x => x.Split(',')[0] == item.ClassName);
+                    item.MinPriceThreshold = Convert.ToInt32(price.Split(',')[1]);
+                }
+            }
         }
         private void createNewMarketToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1272,6 +1299,7 @@ namespace DayZeEditor
                     Categories cat = MarketCats.GetCat(mitem);
                     if (cat == null)
                     {
+                        Console.WriteLine(currentTrader.DisplayName + " has an Item that could not be found int the market files:- " + name.ClassName);
                         MessageBox.Show("Item could not be found :- " + name.ClassName);
                         continue;
                     }
@@ -1948,8 +1976,15 @@ namespace DayZeEditor
                         MinStockThreshold = 0,
                         PurchaseType = 0
                     };
-                    currentCat.Items.Add(NewContainer);
-                    currentCat.isDirty = true;
+                    if (!Checkifincat(NewContainer))
+                    {
+                        currentCat.Items.Add(NewContainer);
+                        currentCat.isDirty = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show(NewContainer.ClassName + " Allready exists.....");
+                    }
                 }
 
             }
@@ -1976,10 +2011,28 @@ namespace DayZeEditor
                         MinStockThreshold = 0,
                         PurchaseType = 0
                     };
-                    currentCat.Items.Add(NewContainer);
-                    currentCat.isDirty = true;
+                    if (!Checkifincat(NewContainer))
+                    {
+                        currentCat.Items.Add(NewContainer);
+                        currentCat.isDirty = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show(NewContainer.ClassName + " Allready exists.....");
+                    }
                 }
             }
+        }
+        private bool Checkifincat(marketItem item)
+        {
+            foreach(Categories cat in  MarketCats.CatList)
+            {
+                if(cat.Items.Any(x => x.ClassName == item.ClassName))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
         private void darkButton6_Click(object sender, EventArgs e)
         {
@@ -2684,6 +2737,28 @@ namespace DayZeEditor
             listBox15.DataSource = currentctradermap.Attachments;
             pcontroll = false;
         }
+        private void listBox18_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox14.SelectedItems.Count < 1) return;
+            currentctradermap = listBox18.SelectedItem as Tradermap;
+            if(currentctradermap == null) { return; }
+            pcontroll = true;
+            textBox14.Text = currentctradermap.Filename;
+            textBox15.Text = currentctradermap.NPCName;
+
+            SetNPCTrade();
+
+            numericUpDown14.Value = (decimal)currentctradermap.position.X;
+            numericUpDown15.Value = (decimal)currentctradermap.position.Y;
+            numericUpDown16.Value = (decimal)currentctradermap.position.Z;
+            numericUpDown17.Value = (decimal)currentctradermap.roattions.X;
+            numericUpDown18.Value = (decimal)currentctradermap.roattions.Y;
+            numericUpDown19.Value = (decimal)currentctradermap.roattions.Z;
+            listBox15.DisplayMember = "Name";
+            listBox15.ValueMember = "Value";
+            listBox15.DataSource = currentctradermap.Attachments;
+            pcontroll = false;
+        }
         public bool hastrader;
         private void SetNPCTrade()
         {
@@ -2778,6 +2853,14 @@ namespace DayZeEditor
             tradermaps.isDirty = true;
             setTraderzonelist();
         }
+        private void darkButton33_Click(object sender, EventArgs e)
+        {
+            Tradermap newNPCTrader = listBox18.SelectedItem as Tradermap;
+            tradermaps.maps.Remove(newNPCTrader);
+            tradermaps.isDirty = true;
+            NoZoneTraders.Remove(newNPCTrader);
+            setTraderzonelist();
+        }
         private void numericUpDown14_ValueChanged(object sender, EventArgs e)
         {
             if (pcontroll) return;
@@ -2868,6 +2951,7 @@ namespace DayZeEditor
                     if (IsWithinCircle(pC, pP, zone.Radius))
                     {
                         tm.Filename = Path.GetDirectoryName(tm.Filename) + "\\" + zone.m_ZoneName + ".map";
+                        tm.IsInAZone = true;
                     }
                 }
             }
@@ -2902,6 +2986,18 @@ namespace DayZeEditor
             }
         }
 
- 
+        private void darkButton34_Click(object sender, EventArgs e)
+        {
+            Tradermap newNPCTrader = listBox18.SelectedItem as Tradermap;
+            NoZoneTraders.Remove(newNPCTrader);
+            newNPCTrader.position = new Vec3()
+            {
+                X = currentZone.Position[0],
+                Y = currentZone.Position[1],
+                Z = currentZone.Position[2]
+            };
+            tradermaps.isDirty = true;
+            setTraderzonelist();
+        }
     }
 }
