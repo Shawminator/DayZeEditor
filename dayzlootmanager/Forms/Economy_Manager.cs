@@ -734,13 +734,20 @@ namespace DayZeEditor
         {
             if (isUserInteraction)
             {
-                currentlootpart.nominal = (int)numericUpDown1.Value;
-                currentlootpart.min = (int)numericUpDown2.Value;
-                currentlootpart.lifetime = (int)numericUpDown3.Value;
-                currentlootpart.restock = (int)numericUpDown4.Value;
-                currentlootpart.quantmin = (int)numericUpDown5.Value;
-                currentlootpart.quantmax = (int)numericUpDown6.Value;
-                currentlootpart.cost = (int)numericUpDown7.Value;
+                if (currentlootpart.nominal != null)
+                    currentlootpart.nominal = (int)numericUpDown1.Value;
+                if (currentlootpart.min != null)
+                    currentlootpart.min = (int)numericUpDown2.Value;
+                if (currentlootpart.lifetime != null)
+                    currentlootpart.lifetime = (int)numericUpDown3.Value;
+                if (currentlootpart.restock != null)
+                    currentlootpart.restock = (int)numericUpDown4.Value;
+                if (currentlootpart.quantmin != null)
+                    currentlootpart.quantmin = (int)numericUpDown5.Value;
+                if (currentlootpart.quantmax != null)
+                    currentlootpart.quantmax = (int)numericUpDown6.Value;
+                if (currentlootpart.cost != null)
+                    currentlootpart.cost = (int)numericUpDown7.Value;
                 currentTypesFile.isDirty = true;
             }
         }

@@ -318,10 +318,32 @@ namespace DayZeEditor
                 ShowWindow(handle, SW_HIDE);
         }
 
+        //        MapData data = new MapData(Application.StartupPath + "//Maps//map_output.txt");
+        //        data.CreateNewData();
+
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            MapData data = new MapData(Application.StartupPath + "//Maps//map_output.txt");
-            data.CreateNewData();
+            Lootchest _TM = Application.OpenForms["Lootchest"] as Lootchest;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new Lootchest
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+                };
+                _TM.Show();
+            }
+            timer1.Start();
         }
     }
 }

@@ -198,7 +198,7 @@ namespace DayZeLib
     }
     public class Categories
     {
-        public int m_Version { get; set; } //current version 4
+        public int m_Version { get; set; } //current version 7
         public string DisplayName { get; set; }
         public BindingList<marketItem> Items { get; set; }
 

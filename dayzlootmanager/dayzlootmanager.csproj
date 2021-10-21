@@ -111,6 +111,12 @@
     <Compile Include="Forms\Add new container.Designer.cs">
       <DependentUpon>Add new container.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AddfromPredefinedWeapons.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddfromPredefinedWeapons.Designer.cs">
+      <DependentUpon>AddfromPredefinedWeapons.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AddItemfromString.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +141,7 @@
     <Compile Include="Forms\CategoryList.Designer.cs">
       <DependentUpon>CategoryList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\darkform.cs" />
     <Compile Include="Forms\ExpansionSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +154,12 @@
     </Compile>
     <Compile Include="Forms\LoadingScreen.Designer.cs">
       <DependentUpon>LoadingScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Lootchest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Lootchest.Designer.cs">
+      <DependentUpon>Lootchest.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\NewProjectFTP.cs">
       <SubType>Form</SubType>
@@ -221,6 +234,9 @@
     <EmbeddedResource Include="Forms\Add new container.resx">
       <DependentUpon>Add new container.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddfromPredefinedWeapons.resx">
+      <DependentUpon>AddfromPredefinedWeapons.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddItemfromString.resx">
       <DependentUpon>AddItemfromString.cs</DependentUpon>
     </EmbeddedResource>
@@ -238,6 +254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoadingScreen.resx">
       <DependentUpon>LoadingScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Lootchest.resx">
+      <DependentUpon>Lootchest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NewProjectFTP.resx">
       <DependentUpon>NewProjectFTP.cs</DependentUpon>

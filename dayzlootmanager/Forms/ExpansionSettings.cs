@@ -3033,6 +3033,7 @@ namespace DayZeEditor
         {
             useraction = false;
             BaseBuildingRaidModeComboBox.DataSource = Enum.GetValues(typeof(BaseRaidMode));
+            BaseBuildingRaidModeComboBox.SelectedItem = (BaseRaidMode)RaidSettings.BaseBuildingRaidMode;
             ExplosionTimeNUD.Value = (decimal)RaidSettings.ExplosionTime;
             ExplosiveDamageWhitelistLB.DisplayMember = "DisplayName";
             ExplosiveDamageWhitelistLB.ValueMember = "Value";
@@ -3073,6 +3074,7 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             BaseRaidMode brm = (BaseRaidMode)BaseBuildingRaidModeComboBox.SelectedItem;
+            int br = (int)brm;
             RaidSettings.BaseBuildingRaidMode = (int)brm;
             RaidSettings.isDirty = true;
         }
@@ -3469,6 +3471,7 @@ namespace DayZeEditor
             newpzone.polygonSafeZoneName = "New polygon Zone";
             SafeZoneSettings.PolygonZones.Add(newpzone);
             SafeZoneSettings.SetPolygonNames();
+            listBox15.SelectedIndex = -1;
             listBox15.SelectedIndex = listBox15.Items.Count - 1;
             SafeZoneSettings.isDirty = true;
         }

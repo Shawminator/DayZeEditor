@@ -71,6 +71,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CJ187LootTable\LootChestTable.cs" />
     <Compile Include="DRJonesTrader\DrJonesAdmins.cs" />
     <Compile Include="DRJonesTrader\DrJonesTrader.cs" />
     <Compile Include="DRJonesTrader\DRJonesVariables.cs" />

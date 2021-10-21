@@ -2545,13 +2545,31 @@ namespace DayZeEditor
                     Categories cat = MarketCats.GetCatFromDisplayName(ti.ClassName);
                     marketItem i = MarketCats.getitemfromcategory(ti.ClassName);
                     SetStock(num, ti.ClassName, i);
-                    if(i.Variants.Count > 0)
+                    if (i.Variants.Count > 0)
                     {
                         foreach (string v in i.Variants)
                         {
-                            if (!t.ListItems.Any(x => x.ClassName == v))
+                            marketItem vi = MarketCats.getitemfromcategory(v);
+                            if (!currentZone.StockItems.Any(x => x.Classname == v))
                             {
-                                SetStock(num, v, i);
+                                if (vi == null)
+                                    SetStock(num, v, i);
+                                else
+                                    SetStock(num, v, vi);
+                            }
+                        }
+                    }
+                    if (i.SpawnAttachments.Count > 0)
+                    {
+                        foreach (string a in i.SpawnAttachments)
+                        {
+                            marketItem ai = MarketCats.getitemfromcategory(a);
+                            if (!currentZone.StockItems.Any(x => x.Classname == a))
+                            {
+                                if (ai == null)
+                                    SetStock(num, a, i);
+                                else
+                                    SetStock(num, a, ai);
                             }
                         }
                     }
@@ -2567,6 +2585,7 @@ namespace DayZeEditor
         private void SetStock(int num, string classname, marketItem i)
         {
             int Stocknum = (int)((float)i.MaxStockThreshold / 100 * num);
+            if (Stocknum == 0) Stocknum = 1;
             StockItem si = new StockItem
             {
                 Classname = classname,
@@ -2632,6 +2651,7 @@ namespace DayZeEditor
         }
         private void findMissingItemsAndSetStockToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            List<string> missingitems = new List<string>();
             List<Traders> ZoneTraders = new List<Traders>();
             foreach (Tradermap tm in tradermaps.maps)
             {
@@ -2649,29 +2669,40 @@ namespace DayZeEditor
             {
                 foreach (TradersItem ti in t.ListItems)
                 {
-                    if(ti.buysell == canBuyCansell.Attchment) { continue; }
-                    if(!currentZone.StockItems.Any(x => x.Classname == ti.ClassName))
+                    Categories cat = MarketCats.GetCatFromDisplayName(ti.ClassName);
+                    marketItem i = MarketCats.getitemfromcategory(ti.ClassName);
+                    if (!currentZone.StockItems.Any(x => x.Classname == ti.ClassName))
                     {
-                        Categories cat = MarketCats.GetCatFromDisplayName(ti.ClassName);
-                        marketItem i = MarketCats.getitemfromcategory(ti.ClassName);
-                        int Stocknum = (int)((float)i.MaxStockThreshold / 100 * num);
-                        StockItem si = new StockItem
+                        SetStock(num, ti.ClassName, i);
+                        missingitems.Add(i.ClassName);
+                    }
+                    if (i.Variants.Count > 0)
+                    {
+                        foreach (string v in i.Variants)
                         {
-                            Classname = ti.ClassName,
-                            StockValue = Stocknum,
-                            StockCheker = Stocknum
-                        };
-                        float initialvalue = Helper.PowCurveCalc((float)i.MinStockThreshold, (float)i.MaxStockThreshold, i.MaxStockThreshold - si.StockCheker, i.MinPriceThreshold, i.MaxPriceThreshold, 6.0f);
-                        si.ZoneBuyPrice = (int)(initialvalue * (currentZone.BuyPricePercent / 100));
-
-                        if (currentZone.SellPricePercent == -1)
-                            si.ZoneSellPrice = (int)(initialvalue * (marketsettings.SellPricePercent / 100));
-                        else
-                        {
-                            si.ZoneSellPrice = (int)(initialvalue * (currentZone.SellPricePercent / 100));
+                            marketItem vi = MarketCats.getitemfromcategory(v);
+                            if (!currentZone.StockItems.Any(x => x.Classname == v))
+                            {
+                                if (vi == null)
+                                    SetStock(num, v, i);
+                                else
+                                    SetStock(num, v, vi);
+                            }
                         }
-                        if (!currentZone.StockItems.Any(x => x.Classname == si.Classname))
-                            currentZone.StockItems.Add(si);
+                    }
+                    if (i.SpawnAttachments.Count > 0)
+                    {
+                        foreach (string a in i.SpawnAttachments)
+                        {
+                            marketItem ai = MarketCats.getitemfromcategory(a);
+                            if (!currentZone.StockItems.Any(x => x.Classname == a))
+                            {
+                                if (ai == null)
+                                    SetStock(num, a, i);
+                                else
+                                    SetStock(num, a, ai);
+                            }
+                        }
                     }
                 }
             }
@@ -2680,6 +2711,16 @@ namespace DayZeEditor
             pcontroll = true;
             trackBar3.Value = num;
             pcontroll = false;
+            if(missingitems.Count> 0)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append("The following items were added to the stock zone:-" + Environment.NewLine);
+                foreach(string s in missingitems)
+                {
+                    sb.Append(s + Environment.NewLine);
+                }
+                MessageBox.Show(sb.ToString());
+            }
         }
         #endregion TraderZones
 
