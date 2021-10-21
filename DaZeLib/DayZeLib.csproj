@@ -76,6 +76,7 @@
     <Compile Include="DRJonesTrader\DrJonesTrader.cs" />
     <Compile Include="DRJonesTrader\DRJonesVariables.cs" />
     <Compile Include="DRJonesTrader\DrJonesvehicleParts.cs" />
+    <Compile Include="Economy\cfgEffectArea.cs" />
     <Compile Include="Economy\economycoreconfig.cs" />
     <Compile Include="Economy\EventsXML.cs" />
     <Compile Include="Economy\Limitsdefinitions.cs" />

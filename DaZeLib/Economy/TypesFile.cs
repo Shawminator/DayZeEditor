@@ -20,18 +20,6 @@ namespace DayZeLib
         public List<string> TierValue;
         public string category;
 
-        public LootPart()
-        {
-            Index = -12345;
-            nominal = -12345;
-            lifetime = -12345;
-            restock = -12345;
-            min = -12345;
-            quantmin = -12345;
-            quantmax = -12345;
-            cost = -12345;
-
-        }
         public override string ToString()
         {
             return name.ToString();
@@ -48,10 +36,8 @@ namespace DayZeLib
         {
             Filename = filename;
             var mySerializer = new XmlSerializer(typeof(types));
-            // To read the file, create a FileStream.
             using (var myFileStream = new FileStream(filename, FileMode.Open))
             {
-                // Call the Deserialize method and cast to the object type.
                 try
                 {
                     types = (types)mySerializer.Deserialize(myFileStream);

@@ -179,6 +179,12 @@
     <Compile Include="Forms\PossibleAmmoBoxes.Designer.cs">
       <DependentUpon>PossibleAmmoBoxes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ToxicZone.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ToxicZone.Designer.cs">
+      <DependentUpon>ToxicZone.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TraderNPCs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -266,6 +272,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PossibleAmmoBoxes.resx">
       <DependentUpon>PossibleAmmoBoxes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ToxicZone.resx">
+      <DependentUpon>ToxicZone.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TraderNPCs.resx">
       <DependentUpon>TraderNPCs.cs</DependentUpon>
