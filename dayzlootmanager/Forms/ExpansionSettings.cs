@@ -3186,8 +3186,9 @@ namespace DayZeEditor
             FrameRateCheckSafeZoneInMsNUD.Value = (decimal)SafeZoneSettings.FrameRateCheckSafeZoneInMs;
             DisableVehicleDamageInSafeZoneCB.Checked = SafeZoneSettings.DisableVehicleDamageInSafeZone == 1 ? true : false;
             EnableForceSZCleanupCB.Checked = SafeZoneSettings.EnableForceSZCleanup == 1 ? true : false;
-            ForceSZCleanupIntervalNUD.Value = SafeZoneSettings.ForceSZCleanupInterval;
             ItemLifetimeInSafeZoneNUD.Value = (decimal)SafeZoneSettings.ItemLifetimeInSafeZone;
+            ActorsPerTickNUD.Value = SafeZoneSettings.ActorsPerTick;
+
 
             listBox14.DisplayMember = "DisplayName";
             listBox14.ValueMember = "Value";
@@ -3196,6 +3197,10 @@ namespace DayZeEditor
             listBox15.DisplayMember = "DisplayName";
             listBox15.ValueMember = "Value";
             listBox15.DataSource = SafeZoneSettings.PolygonZones;
+
+            ForceSZCleanup_ExcludedItemsLB.DisplayMember = "DisplayName";
+            ForceSZCleanup_ExcludedItemsLB.ValueMember = "Value";
+            ForceSZCleanup_ExcludedItemsLB.DataSource = SafeZoneSettings.ForceSZCleanup_ExcludedItems;
 
 
             pictureBox2.BackgroundImage = Image.FromFile(Application.StartupPath + currentproject.MapPath); // Map Size is 15360 x 15360, 0,0 bottom left, middle 7680 x 7680
@@ -3384,10 +3389,10 @@ namespace DayZeEditor
             SafeZoneSettings.FrameRateCheckSafeZoneInMs = (int)FrameRateCheckSafeZoneInMsNUD.Value;
             SafeZoneSettings.isDirty = true;
         }
-        private void ForceSZCleanupIntervalNUD_ValueChanged(object sender, EventArgs e)
+        private void ActorsPerTickNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            SafeZoneSettings.ForceSZCleanupInterval = (int)ForceSZCleanupIntervalNUD.Value;
+            SafeZoneSettings.ActorsPerTick = (int)ActorsPerTickNUD.Value;
             SafeZoneSettings.isDirty = true;
         }
         private void ItemLifetimeInSafeZoneNUD_ValueChanged(object sender, EventArgs e)
@@ -3498,6 +3503,29 @@ namespace DayZeEditor
             currentpolygonZones.SetPointnames();
             SafeZoneSettings.isDirty = true;
             pictureBox2.Invalidate();
+        }
+        private void darkButton54_Click(object sender, EventArgs e)
+        {
+            AddItemfromString form = new AddItemfromString();
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    if (!SafeZoneSettings.ForceSZCleanup_ExcludedItems.Contains(l))
+                    {
+                        SafeZoneSettings.ForceSZCleanup_ExcludedItems.Add(l);
+                        SafeZoneSettings.isDirty = true;
+                    }
+                }
+            }
+        }
+
+        private void darkButton53_Click(object sender, EventArgs e)
+        {
+            SafeZoneSettings.ForceSZCleanup_ExcludedItems.Remove(ForceSZCleanup_ExcludedItemsLB.GetItemText(ForceSZCleanup_ExcludedItemsLB.SelectedItem));
+            SafeZoneSettings.isDirty = true;
         }
         #endregion SafeZonesettings
 
@@ -4838,6 +4866,7 @@ namespace DayZeEditor
             }
             AirdropsettingsJson.isDirty = true;
         }
+
     }
     public class NullToEmptyGearConverter : JsonConverter<Gear>
     {

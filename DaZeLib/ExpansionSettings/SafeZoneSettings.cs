@@ -10,15 +10,16 @@ namespace DayZeLib
 {
     public class SafeZoneSettings
     {
-        public int m_Version { get; set; } //Currently Version 3
+        public int m_Version { get; set; } //Currently Version 6
         public int Enabled { get; set; }
         public float FrameRateCheckSafeZoneInMs { get; set; }
         public BindingList<CircleZones> CircleZones { get; set; }
         public BindingList<PolygonZones> PolygonZones { get; set; }
         public int DisableVehicleDamageInSafeZone { get; set; }
         public int EnableForceSZCleanup { get; set; }
-        public int ForceSZCleanupInterval { get; set; }
-        public float ItemLifetimeInSafeZone{get;set;}
+        public float ItemLifetimeInSafeZone { get; set; }
+        public BindingList<string> ForceSZCleanup_ExcludedItems { get; set; }
+        public int ActorsPerTick { get;set;}
 
         [JsonIgnore]
         public string Filename { get; set; }
@@ -27,7 +28,7 @@ namespace DayZeLib
 
         public SafeZoneSettings()
         {
-            m_Version = 4;
+            m_Version = 6;
             CircleZones = new BindingList<CircleZones>();
             PolygonZones = new BindingList<PolygonZones>();
             isDirty = true;

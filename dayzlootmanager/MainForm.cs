@@ -114,24 +114,7 @@ namespace DayZeEditor
                 }
                 else if (pb.Name == "Slidelabel")
                 {
-                    ToolStrip1.Visible = true;
-                    if (Projects.getActiveProject() != null)
-                    {
-                        TypeManButton.Visible = true;
-                        if (Projects.getActiveProject().usingDrJoneTrader)
-                            TraderManButton.Visible = true;
-                        else
-                            TraderManButton.Visible = false;
-                        if (Projects.getActiveProject().usingexpansionMarket)
-                            MarketButton.Visible = true;
-                        else
-                            MarketButton.Visible = false;
-                        if (Projects.getActiveProject().isExpansion)
-                            ExpansionSettingsButton.Visible = true;
-                        else
-                            ExpansionSettingsButton.Visible = false;
-
-                    }
+                    ShowButtons();
                     timer1.Start();
                 }
             }
@@ -140,31 +123,45 @@ namespace DayZeEditor
                 Panel p = sender as Panel;
                 if (p.Name == "SlidePanel")
                 {
-                    ToolStrip1.Visible = true;
-                    if (Projects.getActiveProject() != null)
-                    {
-                        TypeManButton.Visible = true;
-                        if (Projects.getActiveProject().usingDrJoneTrader)
-                            TraderManButton.Visible = true;
-                        else
-                            TraderManButton.Visible = false;
-                        if (Projects.getActiveProject().isExpansion)
-                        {
-                            ExpansionSettingsButton.Visible = true;
-                        }
-                        else
-                        {
-                            ExpansionSettingsButton.Visible = false;
-                        }
-                        if (Projects.getActiveProject().usingexpansionMarket)
-                            MarketButton.Visible = true;
-                        else
-                            MarketButton.Visible = false;
-                    }
+                    ShowButtons();
                     timer1.Start();
                 }
             }
         }
+
+        private void ShowButtons()
+        {
+            ToolStrip1.Visible = true;
+            if (Projects.getActiveProject() != null)
+            {
+                TypeManButton.Visible = true;
+                if (Projects.getActiveProject().usingDrJoneTrader)
+                    TraderManButton.Visible = true;
+                else
+                    TraderManButton.Visible = false;
+                if (Projects.getActiveProject().usingexpansionMarket)
+                    MarketButton.Visible = true;
+                else
+                    MarketButton.Visible = false;
+                if (Projects.getActiveProject().isExpansion)
+                    ExpansionSettingsButton.Visible = true;
+                else
+                    ExpansionSettingsButton.Visible = false;
+                if (Projects.getActiveProject().usingexpansionMarket)
+                    MarketButton.Visible = true;
+                else
+                    MarketButton.Visible = false;
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\CJ_LootChests\\LootChests_V103.json"))
+                    LootchestButton.Visible = true;
+                else
+                    LootchestButton.Visible = false;
+
+
+
+
+            }
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (hidden)

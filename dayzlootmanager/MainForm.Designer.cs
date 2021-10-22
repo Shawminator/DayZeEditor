@@ -46,7 +46,8 @@ namespace DayZeEditor
             this.TraderManButton = new System.Windows.Forms.ToolStripButton();
             this.ExpansionSettingsButton = new System.Windows.Forms.ToolStripButton();
             this.MarketButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.LootchestButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.HidePBox = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -54,7 +55,6 @@ namespace DayZeEditor
             this.darkStatusStrip1 = new DarkUI.Controls.DarkStatusStrip();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.SlidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Slidelabel)).BeginInit();
@@ -159,7 +159,7 @@ namespace DayZeEditor
             this.TraderManButton,
             this.ExpansionSettingsButton,
             this.MarketButton,
-            this.toolStripButton1,
+            this.LootchestButton,
             this.toolStripButton2});
             this.ToolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.ToolStrip1.Location = new System.Drawing.Point(26, 29);
@@ -226,16 +226,27 @@ namespace DayZeEditor
             this.MarketButton.Text = "Expansion Market";
             this.MarketButton.Click += new System.EventHandler(this.MarketButton_Click);
             // 
-            // toolStripButton1
+            // LootchestButton
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton1.ForeColor = System.Drawing.SystemColors.Control;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(103, 19);
-            this.toolStripButton1.Text = "Loot Chest Table";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.LootchestButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.LootchestButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.LootchestButton.Image = ((System.Drawing.Image)(resources.GetObject("LootchestButton.Image")));
+            this.LootchestButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.LootchestButton.Name = "LootchestButton";
+            this.LootchestButton.Size = new System.Drawing.Size(103, 19);
+            this.LootchestButton.Text = "Loot Chest Table";
+            this.LootchestButton.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton2.ForeColor = System.Drawing.SystemColors.Control;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(103, 19);
+            this.toolStripButton2.Text = "Toxic Zone";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // HidePBox
             // 
@@ -311,17 +322,6 @@ namespace DayZeEditor
             this.panel2.Size = new System.Drawing.Size(25, 25);
             this.panel2.TabIndex = 45;
             // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton2.ForeColor = System.Drawing.SystemColors.Control;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(103, 19);
-            this.toolStripButton2.Text = "Toxic Zone";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -375,7 +375,7 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.PictureBox Slidelabel;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton LootchestButton;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
     }
 }
