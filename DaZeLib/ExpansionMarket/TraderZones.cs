@@ -140,9 +140,9 @@ namespace DayZeLib
     {
         public string Classname { get; set; }
         public int StockValue { get; set; }
-        public int ZoneBuyPrice { get; set; }
-        public int ZoneSellPrice { get; set; }
-        public int StockCheker { get; set; }
+        //public int ZoneBuyPrice { get; set; }
+        //public int ZoneSellPrice { get; set; }
+        //public int StockCheker { get; set; }
 
         public override string ToString()
         {

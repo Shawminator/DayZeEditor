@@ -182,31 +182,31 @@ namespace DayZeEditor
             Loadsettings();
 
             SetupListBoxes();
-            foreach (Zones zone in Zones.ZoneList)
-            {
-                float zonebuypercentage = zone.BuyPricePercent;
+            //foreach (Zones zone in Zones.ZoneList)
+            //{
+            //    float zonebuypercentage = zone.BuyPricePercent;
 
-                foreach (StockItem item in zone.StockItems)
-                {
+            //    foreach (StockItem item in zone.StockItems)
+            //    {
 
-                    marketItem i = MarketCats.getitemfromcategory(item.Classname);
-                    if (i == null)
-                    {
-                        continue;
-                    }
-                    item.StockCheker = i.MaxStockThreshold;
-                    float initialvalue = Helper.PowCurveCalc((float)i.MinStockThreshold, (float)i.MaxStockThreshold, item.StockCheker, i.MaxPriceThreshold, i.MinPriceThreshold, 6.0f);
-                    item.ZoneBuyPrice = (int)(initialvalue * (zone.BuyPricePercent / 100));
+            //        marketItem i = MarketCats.getitemfromcategory(item.Classname);
+            //        if (i == null)
+            //        {
+            //            continue;
+            //        }
+            //        item.StockCheker = i.MaxStockThreshold;
+            //        float initialvalue = Helper.PowCurveCalc((float)i.MinStockThreshold, (float)i.MaxStockThreshold, item.StockCheker, i.MaxPriceThreshold, i.MinPriceThreshold, 6.0f);
+            //        item.ZoneBuyPrice = (int)(initialvalue * (zone.BuyPricePercent / 100));
                     
-                    if (zone.SellPricePercent == -1)
-                        item.ZoneSellPrice = (int)(initialvalue * (marketsettings.SellPricePercent / 100));
-                    else
-                    {
-                        item.ZoneSellPrice = (int)(initialvalue * (zone.SellPricePercent / 100));
-                    }
+            //        if (zone.SellPricePercent == -1)
+            //            item.ZoneSellPrice = (int)(initialvalue * (marketsettings.SellPricePercent / 100));
+            //        else
+            //        {
+            //            item.ZoneSellPrice = (int)(initialvalue * (zone.SellPricePercent / 100));
+            //        }
 
-                }
-            }
+            //    }
+            //}
             dataGridView1.Invalidate();
 
             data = new MapData(Application.StartupPath + currentproject.MapPath + ".xyz");
@@ -309,7 +309,7 @@ namespace DayZeEditor
                 }
                 cats.isDirty = true;
             }
-            setzoneprices();
+            //setzoneprices();
         }
         private void setMinMaxStockForItemsWith0ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -326,7 +326,7 @@ namespace DayZeEditor
                 }
                 cats.isDirty = true;
             }
-            setzoneprices();
+            //setzoneprices();
         }
         private void syncMaxToMinPricesToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -339,7 +339,7 @@ namespace DayZeEditor
                 }
                 cats.isDirty = true;
             }
-            setzoneprices();
+           // setzoneprices();
         }
         private void setPricesForItemWithZeroToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -358,7 +358,7 @@ namespace DayZeEditor
                 }
                 cats.isDirty = true;
             }
-            setzoneprices();
+            //setzoneprices();
         }
         private void setMAxStockForAllItemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -374,7 +374,7 @@ namespace DayZeEditor
                 }
                 cats.isDirty = true;
             }
-            setzoneprices();
+            //setzoneprices();
             dataGridView1.Invalidate();
         }
         private void setMinStockForAllItemsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -390,7 +390,7 @@ namespace DayZeEditor
                 }
                 cats.isDirty = true;
             }
-            setzoneprices();
+            //setzoneprices();
         }
         private void setMaxStockForSelectedCategoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -403,7 +403,7 @@ namespace DayZeEditor
 
             }
             currentCat.isDirty = true;
-            setzoneprices();
+            //setzoneprices();
         }
         private void setMinStockForSelectedCategoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -416,7 +416,7 @@ namespace DayZeEditor
 
             }
             currentCat.isDirty = true;
-            setzoneprices();
+            //setzoneprices();
         }
         private void setMaxPriceForSelectedCategoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -429,7 +429,7 @@ namespace DayZeEditor
 
             }
             currentCat.isDirty = true;
-            setzoneprices();
+            //setzoneprices();
         }
         private void exportItemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -455,7 +455,7 @@ namespace DayZeEditor
 
             }
             currentCat.isDirty = true;
-            setzoneprices();
+            //setzoneprices();
 
         }
         private void setMinPriceForSelectedCategoryToolStripMenuItem_Click(object sender, EventArgs e)
@@ -469,7 +469,7 @@ namespace DayZeEditor
 
             }
             currentCat.isDirty = true;
-            setzoneprices();
+            //setzoneprices();
         }
         private void setMinPricePercentageOfMaxToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -483,7 +483,7 @@ namespace DayZeEditor
                 item.MinPriceThreshold = (int)Math.Round(num2, MidpointRounding.AwayFromZero);
             }
             currentCat.isDirty = true;
-            setzoneprices();
+            //setzoneprices();
         }
         private void setMaxPriceToPercentageOfMinToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -497,7 +497,7 @@ namespace DayZeEditor
                 item.MaxPriceThreshold = (int)Math.Round(num2, MidpointRounding.AwayFromZero);
             }
             currentCat.isDirty = true;
-            setzoneprices();
+            //setzoneprices();
         }
         private void getPriceFromListToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -736,9 +736,9 @@ namespace DayZeEditor
             BindingSource source = new BindingSource(currentZone.StockItems, null);
             dataGridView1.DataSource = source;
             dataGridView1.Columns[0].ReadOnly = true;
-            dataGridView1.Columns[2].ReadOnly = true;
-            dataGridView1.Columns[3].ReadOnly = true;
-            dataGridView1.Columns[4].ReadOnly = true;
+            //dataGridView1.Columns[2].ReadOnly = true;
+           // dataGridView1.Columns[3].ReadOnly = true;
+            //dataGridView1.Columns[4].ReadOnly = true;
 
             darkLabel56.Text = "Zone Stock Count:- " + currentZone.StockItems.Count().ToString();
             pictureBox1.Invalidate();
@@ -1102,7 +1102,7 @@ namespace DayZeEditor
             if (action) return;
             marketsettings.SellPricePercent = (int)trackBar1.Value;
             marketsettings.isDirty = true;
-            setzoneprices();
+            //setzoneprices();
         }
         private void DrawAllSpawns(object sender, PaintEventArgs e)
         {
@@ -2384,7 +2384,7 @@ namespace DayZeEditor
             if (pcontroll) return;
             currentZone.BuyPricePercent = (float)numericUpDown5.Value;
             currentZone.isDirty = true;
-            setzoneprices();
+            //setzoneprices();
             //pictureBox1.Invalidate();
         }
         private void numericUpDown13_ValueChanged(object sender, EventArgs e)
@@ -2392,7 +2392,7 @@ namespace DayZeEditor
             if (pcontroll) return;
             currentZone.SellPricePercent = (float)numericUpDown13.Value;
             currentZone.isDirty = true;
-            setzoneprices();
+            //setzoneprices();
             //pictureBox1.Invalidate();
         }
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
@@ -2434,7 +2434,7 @@ namespace DayZeEditor
             DataGridViewColumn column = dataGridView1.Columns[e.ColumnIndex];
             if (column.Name == "StockCheker")
             {
-                setzoneprices();
+                //setzoneprices();
             }
             currentZone.isDirty = true;
         }
@@ -2468,17 +2468,17 @@ namespace DayZeEditor
                         {
                             Classname = ti.ClassName,
                             StockValue = Stocknum,
-                            StockCheker = Stocknum
+                            //StockCheker = Stocknum
                         };
-                        float initialvalue = Helper.PowCurveCalc((float)i.MinStockThreshold, (float)i.MaxStockThreshold, i.MaxStockThreshold - si.StockCheker, i.MinPriceThreshold, i.MaxPriceThreshold, 6.0f);
-                        si.ZoneBuyPrice = (int)(initialvalue * (zone.BuyPricePercent / 100));
+                        //float initialvalue = Helper.PowCurveCalc((float)i.MinStockThreshold, (float)i.MaxStockThreshold, i.MaxStockThreshold - si.StockCheker, i.MinPriceThreshold, i.MaxPriceThreshold, 6.0f);
+                        //si.ZoneBuyPrice = (int)(initialvalue * (zone.BuyPricePercent / 100));
 
-                        if (currentZone.SellPricePercent == -1)
-                            si.ZoneSellPrice = (int)(initialvalue * (marketsettings.SellPricePercent / 100));
-                        else
-                        {
-                            si.ZoneSellPrice = (int)(initialvalue * (zone.SellPricePercent / 100));
-                        }
+                        //if (currentZone.SellPricePercent == -1)
+                        //    si.ZoneSellPrice = (int)(initialvalue * (marketsettings.SellPricePercent / 100));
+                        //else
+                        //{
+                        //    si.ZoneSellPrice = (int)(initialvalue * (zone.SellPricePercent / 100));
+                        //}
                         if (!zone.StockItems.Any(x => x.Classname == si.Classname))
                             zone.StockItems.Add(si);
                     }
@@ -2487,7 +2487,7 @@ namespace DayZeEditor
                 zone.isDirty = true;
             }
             pcontroll = true;
-            trackBar3.Value = num;
+
             pcontroll = false;
         }
         private void deleteAllStockForAllZonesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2562,7 +2562,7 @@ namespace DayZeEditor
             currentZone.isDirty = true;
             dataGridView1.Invalidate();
             pcontroll = true;
-            trackBar3.Value = num;
+
             pcontroll = false;
         }
         private void SetStock(int num, string classname, marketItem i)
@@ -2573,17 +2573,17 @@ namespace DayZeEditor
             {
                 Classname = classname,
                 StockValue = Stocknum,
-                StockCheker = Stocknum
+               // StockCheker = Stocknum
             };
-            float initialvalue = Helper.PowCurveCalc((float)i.MinStockThreshold, (float)i.MaxStockThreshold, i.MaxStockThreshold - si.StockCheker, i.MinPriceThreshold, i.MaxPriceThreshold, 6.0f);
-            si.ZoneBuyPrice = (int)(initialvalue * (currentZone.BuyPricePercent / 100));
+            //float initialvalue = Helper.PowCurveCalc((float)i.MinStockThreshold, (float)i.MaxStockThreshold, i.MaxStockThreshold - si.StockCheker, i.MinPriceThreshold, i.MaxPriceThreshold, 6.0f);
+            //si.ZoneBuyPrice = (int)(initialvalue * (currentZone.BuyPricePercent / 100));
 
-            if (currentZone.SellPricePercent == -1)
-                si.ZoneSellPrice = (int)(initialvalue * (marketsettings.SellPricePercent / 100));
-            else
-            {
-                si.ZoneSellPrice = (int)(initialvalue * (currentZone.SellPricePercent / 100));
-            }
+            //if (currentZone.SellPricePercent == -1)
+            //    si.ZoneSellPrice = (int)(initialvalue * (marketsettings.SellPricePercent / 100));
+            //else
+            //{
+            //    si.ZoneSellPrice = (int)(initialvalue * (currentZone.SellPricePercent / 100));
+            //}
             if (!currentZone.StockItems.Any(x => x.Classname == si.Classname))
                 currentZone.StockItems.Add(si);
         }
@@ -2609,29 +2609,19 @@ namespace DayZeEditor
                 {
                     marketItem i = MarketCats.getitemfromcategory(item.Classname);
                     if(i == null) { continue; }
-                    float initialvalue = Helper.PowCurveCalc((float)i.MinStockThreshold, (float)i.MaxStockThreshold,  item.StockCheker, i.MaxPriceThreshold, i.MinPriceThreshold, 6.0f);
-                    item.ZoneBuyPrice = (int)(initialvalue * (zone.BuyPricePercent / 100));
-                    if (zone.SellPricePercent == -1)
-                        item.ZoneSellPrice = (int)(initialvalue * (marketsettings.SellPricePercent / 100));
-                    else
-                    {
-                       item.ZoneSellPrice = (int)(initialvalue * (zone.SellPricePercent / 100));
-                    }
+                    //float initialvalue = Helper.PowCurveCalc((float)i.MinStockThreshold, (float)i.MaxStockThreshold,  item.StockCheker, i.MaxPriceThreshold, i.MinPriceThreshold, 6.0f);
+                    //item.ZoneBuyPrice = (int)(initialvalue * (zone.BuyPricePercent / 100));
+                    //if (zone.SellPricePercent == -1)
+                    //    item.ZoneSellPrice = (int)(initialvalue * (marketsettings.SellPricePercent / 100));
+                    //else
+                    //{
+                    //   item.ZoneSellPrice = (int)(initialvalue * (zone.SellPricePercent / 100));
+                    //}
                 }
             }
             dataGridView1.Invalidate();
         }
-        private void trackBar3_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (pcontroll) { return; }
-            foreach (StockItem item in currentZone.StockItems)
-            {
-                marketItem i = MarketCats.getitemfromcategory(item.Classname);
-                int num = (int)((float)i.MaxStockThreshold / 100 * trackBar3.Value);
-                item.StockCheker = num;
-            }
-            setzoneprices();
-        }
+
         private void findMissingItemsAndSetStockToolStripMenuItem_Click(object sender, EventArgs e)
         {
             List<string> missingitems = new List<string>();
@@ -2692,7 +2682,7 @@ namespace DayZeEditor
             currentZone.isDirty = true;
             dataGridView1.Invalidate();
             pcontroll = true;
-            trackBar3.Value = num;
+
             pcontroll = false;
             if(missingitems.Count> 0)
             {
@@ -3023,11 +3013,9 @@ namespace DayZeEditor
             setTraderzonelist();
         }
 
-        private void tabPage3_Click(object sender, EventArgs e)
+        private void trackBar3_MouseUp(object sender, MouseEventArgs e)
         {
 
         }
-
-
     }
 }
