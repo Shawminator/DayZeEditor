@@ -167,12 +167,24 @@ namespace DayZeLib
                 Categories = new BindingList<string>();
             foreach (string cat in Categories)
             {
-                List<marketItem> itemslist = marketCats.GetCatFromFileName(cat).Items.ToList();
+                string[] results = cat.Split(':');
+                canBuyCansell cbs = canBuyCansell.CanBuyAndsell;
+                if(results.Length == 2)
+                {
+                    cbs = (canBuyCansell)Convert.ToInt32(results[1]);
+                }
+                List<marketItem> itemslist = marketCats.GetCatFromFileName(results[0]).Items.ToList();
                 foreach (marketItem item in itemslist)
                 {
-                    TradersItem ti = new TradersItem() { ClassName = item.ClassName, buysell = canBuyCansell.CanBuyAndsell, CatName = cat};
-                    if(!initialList.Any(x => x.ClassName == ti.ClassName))
+                    TradersItem ti = new TradersItem() { ClassName = item.ClassName.ToLower(), buysell = cbs, CatName = results[0]};
+                    if (item.SpawnAttachments.Count > 0)
+                        ti.HasAttachemnts = true;
+                    if (item.Variants.Count > 0)
+                        ti.HasVarients = true;
+
+                    if (!initialList.Any(x => x.ClassName == ti.ClassName))
                         initialList.Add(ti);
+
                 }
             }
             foreach (KeyValuePair<string, int> item in Items)
@@ -180,13 +192,17 @@ namespace DayZeLib
                 if(item.Value == 3) { continue; }
                 if(initialList.Any(x => x.ClassName == item.Key))
                 {
-                    TradersItem eti = initialList.First(x => x.ClassName == item.Key);
+                    TradersItem eti = initialList.First(x => x.ClassName == item.Key.ToLower());
                     eti.buysell = (canBuyCansell)item.Value;
                 }
                 else
                 {
+                    if(item.Key == "CarBattery")
+                    {
+                        string stop = "";
+                    }
                     string catname = marketCats.GetCatNameFromItemName(item.Key);
-                    TradersItem ti = new TradersItem() { ClassName = item.Key, buysell = (canBuyCansell)item.Value, CatName = catname };
+                    TradersItem ti = new TradersItem() { ClassName = item.Key.ToLower(), buysell = (canBuyCansell)item.Value, CatName = catname };
                     initialList.Add(ti);
                 }
                 
@@ -202,14 +218,21 @@ namespace DayZeLib
             Items = new Dictionary<string, int>();
             List<string> CatNames = new List<string>();
             List<string> tItems = new List<string>();
+            List<string> donetItems = new List<string>();
             List<string> cats = new List<string>();
+
+            //get list of category names so when can check if all items from that cat are included, if so we put the catname in the trader cat list
+            //any different buysell in that cat will be added seperatley to items list
+            //also add all item name to a list for easy access when checking the above
             foreach (TradersItem TI in ListItems)
             {
                 tItems.Add(TI.ClassName);
                 if (!CatNames.Contains(TI.CatName))
                     CatNames.Add(TI.CatName);
             }
-            tItems.Sort();
+            tItems.Sort();  //sorting for easier reading
+
+
             foreach (string catname in CatNames)
             {
                 List<marketItem> catitemlist = MarketCats.GetCatFromFileName(catname).Items.ToList();
@@ -220,11 +243,55 @@ namespace DayZeLib
                 }
                 if (Helper.ContainsAllItems(tItems, TIlist))
                 {
-                    cats.Add(catname);
+                    List<int> buysell = new List<int>();
+                    foreach(String Bitem in TIlist)
+                    {
+                        TradersItem ti = ListItems.First(x => x.ClassName == Bitem);
+                        buysell.Add((int)ti.buysell);
+                    }
+                    int maxRepeated = buysell.GroupBy(s => s).OrderByDescending(s => s.Count()).First().Key;
+                    canBuyCansell cbs = (canBuyCansell)maxRepeated;
+                    if (cbs == canBuyCansell.CanBuyAndsell)
+                        cats.Add(catname);
+                    else
+                        cats.Add(catname + ":" + ((int)cbs).ToString());
+                    foreach (string B2item in TIlist)
+                    {
+                        TradersItem ti = ListItems.First(x => x.ClassName == B2item);
+                        marketItem item = MarketCats.getitemfromcategory(ti.ClassName);
+                        foreach(string attach in item.SpawnAttachments)
+                        {
+                            if(!tItems.Contains(attach) && !Items.ContainsKey(attach))
+                            {
+                                bool additem = true;
+                                foreach(string name in tItems)
+                                {
+                                    marketItem vitem = MarketCats.getitemfromcategory(attach);
+                                    if(vitem != null && vitem.Variants.Contains(attach))
+                                    {
+                                        additem = false;
+                                        break;
+                                    }
+                                }
+                                if(additem)
+                                    Items.Add(attach, (int)canBuyCansell.Attchment);
+                            }
+                        }
+                        donetItems.Add(ti.ClassName);
+                        if(ti.buysell != cbs)
+                        {
+                            Items.Add(ti.ClassName, (int)ti.buysell);
+                        }
+                    }
                 }
             }
-            foreach (TradersItem TI in ListItems)
+            foreach(string item in donetItems)
             {
+                tItems.Remove(item);
+            }
+            foreach (string litem in tItems)
+            {
+                TradersItem TI = ListItems.First(x => x.ClassName == litem);
                 marketItem item = MarketCats.getitemfromcategory(TI.ClassName);
                 if(item.SpawnAttachments.Count > 0)
                 {
@@ -266,17 +333,17 @@ namespace DayZeLib
         public void AdditemtoTrader(string name, string Catname)
         {
             TradersItem ti = new TradersItem();
-            ti.ClassName = name;
+            ti.ClassName = name.ToLower();
             ti.buysell = canBuyCansell.CanBuyAndsell;
             ti.CatName = Catname;
-            if (!ListItems.Any(x => x.ClassName == ti.ClassName))
+            if (!ListItems.Any(x => x.ClassName.ToLower() == ti.ClassName.ToLower()))
             {
                 ListItems.Add(ti);
                 isDirty = true;
             }
             else
             {
-                TradersItem eti = ListItems.First(x => x.ClassName == ti.ClassName);
+                TradersItem eti = ListItems.First(x => x.ClassName.ToLower() == ti.ClassName.ToLower());
                 eti.buysell = ti.buysell;
 
             }
@@ -295,10 +362,11 @@ namespace DayZeLib
     public class TradersItem
     {
         public string ClassName { get; set; }
-        public canBuyCansell buysell { get; set; }  //Items: 0 = Can only buy, 1 = can buy and sell, 2 = can only sell
+        public canBuyCansell buysell { get; set; }  //Items: 0 = Can only buy, 1 = can buy and sell, 2 = can only sell, 3 is attachment, not visiable in trader
 
         public string CatName { get; set; }
-        public bool isvarient { get; set; }
+        public bool HasVarients { get; set; }
+        public bool HasAttachemnts { get; set; }
         public override string ToString()
         {
             return ClassName;

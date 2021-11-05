@@ -114,7 +114,7 @@ namespace DayZeLib
             }
         }
 
-        public void SaveTyes(string saveTime)
+        public void SaveEvent(string saveTime)
         {
             Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
             File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
@@ -127,6 +127,35 @@ namespace DayZeLib
             serializer.Serialize(xmlWriter, events, ns);
             Console.WriteLine(sw.ToString());
             File.WriteAllText(Filename, sw.ToString());
+        }
+        public override string ToString()
+        {
+            return Path.GetFileNameWithoutExtension(Filename);
+        }
+    }
+
+    public class globalsconfig
+    {
+        public variables events { get; set; }
+        public string Filename { get; set; }
+        public bool isDirty = false;
+        public globalsconfig(string filename)
+        {
+            Filename = filename;
+            var mySerializer = new XmlSerializer(typeof(variables));
+            // To read the file, create a FileStream.
+            using (var myFileStream = new FileStream(filename, FileMode.Open))
+            {
+                try
+                {
+                    // Call the Deserialize method and cast to the object type.
+                    events = (variables)mySerializer.Deserialize(myFileStream);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message + "\n" + filename + "\n" + ex.InnerException.Message);
+                }
+            }
         }
     }
 }

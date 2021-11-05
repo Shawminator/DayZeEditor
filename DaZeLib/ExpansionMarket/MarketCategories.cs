@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace DayZeLib
 {
     public class MarketCategories
     {
+        public int CurrentVersion = 7;
         public BindingList<Categories> CatList { get; set; }
         public string MarketCatsPath {get;set;}
 
@@ -35,39 +37,49 @@ namespace DayZeLib
             {
                 try
                 {
+                    bool savefile = false;
                     Console.WriteLine("serializing " + file.Name);
                     Categories cat = JsonSerializer.Deserialize<Categories>(File.ReadAllText(file.FullName));
+                    if(cat.Icon == null)
+                    {
+                        cat.Icon = "Deliver";
+                        savefile = true;
+                    }
+                    if(cat.Color == null)
+                    {
+                        cat.Color = "FBFCFEFF";
+                        savefile = true;
+                    }
+                    if (cat.m_Version != CurrentVersion)
+                    {
+                        cat.m_Version = CurrentVersion;
+                        savefile = true;
+                    }
                     foreach (marketItem item in cat.Items)
                     {
-                        if (item.ClassName.Any(char.IsUpper))
+                        if(item.ClassName != item.ClassName.ToLower())
                         {
                             item.ClassName = item.ClassName.ToLower();
-                            cat.isDirty = true;
+                            savefile = true;
                         }
-                        for (int i = 0; i < item.Variants.Count; i++)
-                        {
-                            if (item.Variants[i].Any(char.IsUpper))
-                            {
-                                item.Variants[i] = item.Variants[i].ToLower();
-                                cat.isDirty = true;
-                            }
-                        }
-                        for (int i = 0; i < item.SpawnAttachments.Count; i++)
-                        {
-                            if (item.SpawnAttachments[i].Any(char.IsUpper))
-                            {
-                                item.SpawnAttachments[i] = item.SpawnAttachments[i].ToLower();
-                                cat.isDirty = true;
-                            }
-                        }
+                        if (item.MaxPriceThreshold < item.MinPriceThreshold)
+                            MessageBox.Show(cat.DisplayName + Environment.NewLine + item.ClassName + " Has a max price lower than the min price." + Environment.NewLine + "Please fix......");
+                        if (item.MaxStockThreshold < item.MinStockThreshold)
+                            MessageBox.Show(cat.DisplayName + Environment.NewLine + item.ClassName + " Has a max stock lower than the min Stock." + Environment.NewLine + "Please fix......");
                     }
                     cat.Filename = file.FullName;
                     cat.Items = new BindingList<marketItem>(new BindingList<marketItem>(cat.Items.OrderBy(x => x.ClassName).ToList()));
                     CatList.Add(cat);
+                    if (savefile)
+                    {
+                        var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                        string jsonString = JsonSerializer.Serialize(cat, options);
+                        File.WriteAllText(cat.Filename, jsonString);
+                    }
                 }
-                catch
+                catch(Exception ex)
                 {
-                    MessageBox.Show("there is an error in the following file\n" + file.FullName); 
+                    MessageBox.Show("there is an error in the following file\n" + file.FullName + Environment.NewLine + ex.InnerException.Message); 
 
                 }
 
@@ -187,9 +199,9 @@ namespace DayZeLib
         {
             foreach (Categories cat in CatList)
             {
-                if (cat.Items.Any(x => x.ClassName == className))
+                if (cat.Items.Any(x => x.ClassName == className.ToLower()))
                     return Path.GetFileNameWithoutExtension(cat.Filename);
-                if(cat.Items.Any(x => x.Variants.Contains(className)))
+                if(cat.Items.Any(x => x.Variants.Contains(className.ToLower())))
                     return Path.GetFileNameWithoutExtension(cat.Filename);
             }
 
@@ -198,9 +210,12 @@ namespace DayZeLib
     }
     public class Categories
     {
-        public int m_Version { get; set; } //current version 4
+        public int m_Version { get; set; } //current version 7
         public string DisplayName { get; set; }
+        public string Icon { get; set; }
+        public string Color { get; set; }
         public BindingList<marketItem> Items { get; set; }
+
 
         [JsonIgnore]
         public string Filename { get; set; }
@@ -210,13 +225,13 @@ namespace DayZeLib
 
         public Categories(string filename)
         {
-            m_Version = 4;
+            m_Version = 7;
             DisplayName = filename;
             Items = new BindingList<marketItem>();
         }
         public Categories()
         {
-            m_Version = 4;
+            m_Version = 7;
             Items = new BindingList<marketItem>();
         }
         public override string ToString()
@@ -259,9 +274,10 @@ namespace DayZeLib
         public string ClassName { get; set; }
         public int MaxPriceThreshold { get; set; }
         public int MinPriceThreshold { get; set; }
+        public int SellPricePercent { get; set; } //Added in Version 7
         public int MaxStockThreshold { get; set; }
         public int MinStockThreshold { get; set; }
-        public int PurchaseType { get; set; } 
+        //public int PurchaseType { get; set; }  removed in Version 6
         public BindingList<string> SpawnAttachments { get; set; }
         public BindingList<string> Variants { get; set; }
 

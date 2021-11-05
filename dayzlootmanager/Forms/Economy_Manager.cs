@@ -20,7 +20,6 @@ namespace DayZeEditor
         public bool isUserInteraction = true;
         public Project currentproject { get; set; }
         public TypesFile vanillatypes;
-        public TypesFile Expansiontypes;
         public List<TypesFile> ModTypes;
         public TypesFile currentTypesFile;
         public type currentlootpart;
@@ -128,13 +127,14 @@ namespace DayZeEditor
                 }
             }
 
-
-            if (eventsfile.isDirty)
+            foreach (eventscofig eventconfig in currentproject.ModEventsList)
             {
-                eventsfile.SaveTyes(SaveTime);
-                eventsfile.isDirty = false;
-                midifiedfiles.Add(Path.GetFileName(eventsfile.Filename));
-
+                if (eventconfig.isDirty)
+                {
+                    eventconfig.SaveEvent(SaveTime);
+                    eventconfig.isDirty = false;
+                    midifiedfiles.Add(Path.GetFileName(eventconfig.Filename));
+                }
             }
             string message = "The Following Files were saved....\n";
             int i = 0;
@@ -1100,18 +1100,28 @@ namespace DayZeEditor
 
         #endregion types
         #region events
-        public eventscofig eventsfile;
+        public eventscofig currenteventsfile;
         private DynamicEvent CurrentEvent;
         private child CurrentChild;
         private void Loadevents()
         {
             isUserInteraction = false;
-            eventsfile = currentproject.eventfile;
+            EventsLIstLB.DisplayMember = "DisplayName";
+            EventsLIstLB.ValueMember = "Value";
+            EventsLIstLB.DataSource = currentproject.ModEventsList;
+            isUserInteraction = true;
+            
+        }
+        private void EventsLIstLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (EventsLIstLB.SelectedItem as eventscofig == currenteventsfile) { return; }
+            if (EventsLIstLB.SelectedIndex == -1) { return; }
+            currenteventsfile = EventsLIstLB.SelectedItem as eventscofig;
             positionComboBox.DataSource = Enum.GetValues(typeof(position));
             limitComboBox.DataSource = Enum.GetValues(typeof(limit));
             EventsLB.DisplayMember = "DisplayName";
             EventsLB.ValueMember = "Value";
-            EventsLB.DataSource = eventsfile.events.DynamicEvent;
+            EventsLB.DataSource = currenteventsfile.events.DynamicEvent;
             isUserInteraction = true;
         }
         private void EventsLB_SelectedIndexChanged(object sender, EventArgs e)
@@ -1168,71 +1178,63 @@ namespace DayZeEditor
             if (!isUserInteraction) { return; }
             NumericUpDown nud = sender as NumericUpDown;
             CurrentEvent.SetIntValue(nud.Name.Substring(0, nud.Name.Length - 3), (int)nud.Value);
-            eventsfile.isDirty = true;
+            currenteventsfile.isDirty = true;
         }
         private void EventsChildNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             NumericUpDown nud = sender as NumericUpDown;
             CurrentChild.SetIntValue(nud.Name.Substring(1, nud.Name.Length - 4), (int)nud.Value);
-            eventsfile.isDirty = true;
+            currenteventsfile.isDirty = true;
         }
         private void activeCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             CurrentEvent.active = activeCB.Checked == true ? 1 : 0;
-            eventsfile.isDirty = true;
+            currenteventsfile.isDirty = true;
         }
         private void deletableCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             CurrentEvent.flags.deletable = deletableCB.Checked == true ? 1 : 0;
-            eventsfile.isDirty = true;
+            currenteventsfile.isDirty = true;
         }
         private void init_randomCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             CurrentEvent.flags.init_random = init_randomCB.Checked == true ? 1 : 0;
-            eventsfile.isDirty = true;
+            currenteventsfile.isDirty = true;
         }
         private void remove_damagedCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             CurrentEvent.flags.remove_damaged = remove_damagedCB.Checked == true ? 1 : 0;
-            eventsfile.isDirty = true;
+            currenteventsfile.isDirty = true;
         }
         private void positionComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             position pos = (position)positionComboBox.SelectedItem;
             CurrentEvent.position = pos;
-            eventsfile.isDirty = true;
+            currenteventsfile.isDirty = true;
         }
         private void limitComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             limit lim = (limit)limitComboBox.SelectedItem;
             CurrentEvent.limit = lim;
-            eventsfile.isDirty = true;
+            currenteventsfile.isDirty = true;
         }
         private void nameTB_TextChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             CurrentEvent.name = nameTB.Text;
-            eventsfile.isDirty = true;
+            currenteventsfile.isDirty = true;
             EventsLB.Refresh();
         }
 
         #endregion events
 
-        private void darkButton9_Click(object sender, EventArgs e)
-        {
-            StringBuilder sb = new StringBuilder();
-            foreach(type type in vanillatypes.types.type)
-            {
-                sb.Append(type.name + ", " + type.category.ToString() + Environment.NewLine);
-            }
-            File.WriteAllText("Classnames.txt", sb.ToString());
-        }
+
     }
 }

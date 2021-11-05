@@ -1,4 +1,5 @@
 ﻿using DarkUI.Forms;
+using DayZeLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,8 +33,10 @@ namespace DayZeEditor
         }
         private void AddNewTypes_Load(object sender, EventArgs e)
         {
-            if(!newlocation)
+            comboBox1.DataSource = currentproject.limitfefinitions.lists.categories.category;
+            if (!newlocation)
             {
+                
                 darkButton1.Visible = false;
                 CustomFolderTB.Visible = false;
                 textBox3.Visible = false;
@@ -63,7 +66,28 @@ namespace DayZeEditor
 
         private void darkButton2_Click(object sender, EventArgs e)
         {
-             modtypes = richTextBox1.Lines.ToList();
+            if(tabControl1.SelectedIndex == 0)
+                modtypes = richTextBox1.Lines.ToList();
+            else
+            {
+                StringBuilder sb = new StringBuilder();
+                category c = comboBox1.SelectedItem as category;
+                foreach (string line in richTextBox2.Lines)
+                {
+                    sb.Append("<type name=\"" + line + "\">" + Environment.NewLine);
+                    sb.Append("<nominal>" + numericUpDown1.Value.ToString() + "</nominal>" + Environment.NewLine);
+                    sb.Append("<lifetime>" + numericUpDown3.Value.ToString() + "</lifetime>" + Environment.NewLine);
+                    sb.Append("<restock>" + numericUpDown4.Value.ToString() + "</restock>" + Environment.NewLine);
+                    sb.Append("<min>" + numericUpDown2.Value.ToString() + "</min>" + Environment.NewLine);
+                    sb.Append("<quantmin>" + numericUpDown5.Value.ToString() + "</quantmin>"  + Environment.NewLine);
+                    sb.Append("<quantmax>" + numericUpDown6.Value.ToString() + "</quantmax>"  + Environment.NewLine);
+                    sb.Append("<cost>" + numericUpDown7.Value.ToString() + "</cost>"  + Environment.NewLine);
+                    sb.Append("<flags count_in_cargo = \"0\" count_in_hoarder = \"0\" count_in_map = \"1\" count_in_player = \"0\" crafted = \"0\" deloot = \"0\"/>"  + Environment.NewLine);
+                    sb.Append("<category name=\"" + c.ToString() + "\"/>"  + Environment.NewLine);
+                    sb.Append("</type>");
+                }
+                modtypes = sb.ToString().Split(new string[] { Environment.NewLine }, StringSplitOptions.None).ToList();
+            }
         }
     }
 }

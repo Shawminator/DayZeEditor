@@ -676,10 +676,6 @@ namespace DayZeEditor
                     {
                         newitem.MaxPriceThreshold = newitem.MaxPriceThreshold / n;
                     }
-                    if (item.m_Trader_ItemsQuantity == "V" || item.m_Trader_ItemsQuantity == "VNK")
-                        newitem.PurchaseType = 1;
-                    else
-                        newitem.PurchaseType = 0;
                     newitem.MinPriceThreshold = newitem.MaxPriceThreshold;
                     newitem.MaxStockThreshold = 1;
                     newitem.MinStockThreshold = 1;
@@ -695,10 +691,10 @@ namespace DayZeEditor
             Categories newccat = new Categories();
             newccat.DisplayName = "#STR_EXPANSION_MARKET_CATEGORY_EXCHANGE";
             newccat.Filename = "Exchange.json";
-            newccat.Items.Add(new marketItem() { ClassName = "expansiongoldbar", MaxPriceThreshold = 10000, MinPriceThreshold = 10000, MaxStockThreshold = 1, MinStockThreshold = 1, PurchaseType = 0 });
-            newccat.Items.Add(new marketItem() { ClassName = "expansiongoldnugget", MaxPriceThreshold = 100, MinPriceThreshold = 100, MaxStockThreshold = 1, MinStockThreshold = 1, PurchaseType = 0 });
-            newccat.Items.Add(new marketItem() { ClassName = "expansionsilverbar", MaxPriceThreshold = 10, MinPriceThreshold = 10, MaxStockThreshold = 1, MinStockThreshold = 1, PurchaseType = 0 });
-            newccat.Items.Add(new marketItem() { ClassName = "expansionsilvernugget", MaxPriceThreshold = 1, MinPriceThreshold = 1, MaxStockThreshold = 1, MinStockThreshold = 1, PurchaseType = 0 });
+            newccat.Items.Add(new marketItem() { ClassName = "expansiongoldbar", MaxPriceThreshold = 10000, MinPriceThreshold = 10000, MaxStockThreshold = 1, MinStockThreshold = 1});
+            newccat.Items.Add(new marketItem() { ClassName = "expansiongoldnugget", MaxPriceThreshold = 100, MinPriceThreshold = 100, MaxStockThreshold = 1, MinStockThreshold = 1 });
+            newccat.Items.Add(new marketItem() { ClassName = "expansionsilverbar", MaxPriceThreshold = 10, MinPriceThreshold = 10, MaxStockThreshold = 1, MinStockThreshold = 1 });
+            newccat.Items.Add(new marketItem() { ClassName = "expansionsilvernugget", MaxPriceThreshold = 1, MinPriceThreshold = 1, MaxStockThreshold = 1, MinStockThreshold = 1 });
             MarketCats.CatList.Add(newccat);
             TradersList traders = new TradersList();
 

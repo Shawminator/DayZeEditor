@@ -4690,6 +4690,8 @@ namespace DayZeEditor
             VehiclesConfigLB.ValueMember = "Value";
             VehiclesConfigLB.DataSource = VehicleSettings.VehiclesConfig;
 
+            VehicleDropsRuinedDoorsCB.Checked = VehicleSettings.VehicleDropsRuinedDoors == 1 ? true : false;
+            ExplodingVehicleDropsAttachmentsCB.Checked = VehicleSettings.ExplodingVehicleDropsAttachments == 1 ? true : false;
 
             useraction = true;
         }
@@ -4844,7 +4846,6 @@ namespace DayZeEditor
 
 
 
-
         #endregion VehicleSettings
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -4866,6 +4867,8 @@ namespace DayZeEditor
             }
             AirdropsettingsJson.isDirty = true;
         }
+
+
 
     }
     public class NullToEmptyGearConverter : JsonConverter<Gear>

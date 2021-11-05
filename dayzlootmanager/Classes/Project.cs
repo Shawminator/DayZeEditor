@@ -86,7 +86,9 @@ namespace DayZeEditor
         public Limitsdefinitionsuser limitfefinitionsuser { get; set; }
 
         [JsonIgnore]
-        public eventscofig eventfile { get; set; }
+        public BindingList<eventscofig> ModEventsList { get; set; }
+        [JsonIgnore]
+        public globalsconfig gloabsconfig { get; set; }
 
         private TypesFile vanillaTypes;
         private BindingList<TypesFile> ModTypesList;
@@ -153,11 +155,28 @@ namespace DayZeEditor
         }
         internal void SetEvents()
         {
-            eventfile = new eventscofig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\db\\events.xml");
+            ModEventsList = new BindingList<eventscofig>();
+            ModEventsList.Add(new eventscofig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\db\\events.xml"));
+            foreach (ce mods in EconomyCore.economycore.ce)
+            {
+                string path = projectFullName + "\\mpmissions\\" + mpmissionpath + "\\" + mods.folder;
+                foreach (file file in mods.file)
+                {
+                    if (file.type == "events")
+                    {
+                        ModEventsList.Add(new eventscofig(path + "\\" + file.name));
+                    }
+                }
+            }
         }
         internal void setuserdefinitions()
         {
             limitfefinitionsuser  = new Limitsdefinitionsuser(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfglimitsdefinitionuser.xml");
+        }
+
+        internal void SetGlobals()
+        {
+            gloabsconfig = new globalsconfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\db\\globals.xml");
         }
     }
 

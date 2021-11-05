@@ -1260,6 +1260,7 @@ namespace DayZeEditor
                 pictureBox2.Invalidate();
             }
         }
+
         #endregion MarketSettings
 
         #region trader
@@ -1295,7 +1296,8 @@ namespace DayZeEditor
             {
                 if (name.buysell != canBuyCansell.Attchment)
                 {
-                    marketItem mitem = MarketCats.getitemfromcategory(name.ClassName.Replace("#STR_EXPANSION_MARKET_CATEGORY_", ""));
+                    marketItem mitem = MarketCats.getitemfromcategory(name.ClassName.ToLower().Replace("#STR_EXPANSION_MARKET_CATEGORY_", ""));
+
                     Categories cat = MarketCats.GetCat(mitem);
                     if (cat == null)
                     {
@@ -1721,6 +1723,8 @@ namespace DayZeEditor
             textBox12.Text = currentCat.m_Version.ToString();
             textBox11.Text = currentCat.Filename;
             textBox9.Text = currentCat.DisplayName;
+            IconTB.Text = currentCat.Icon;
+
             listBox4.DisplayMember = "Name";
             listBox4.ValueMember = "Value";
             listBox4.DataSource = currentCat.Items;
@@ -1736,9 +1740,9 @@ namespace DayZeEditor
                 currentitem.MaxPriceThreshold = 1;
             numericUpDown6.Value = currentitem.MaxPriceThreshold;
             numericUpDown7.Value = currentitem.MinPriceThreshold;
+            numericUpDown23.Value = currentitem.SellPricePercent;
             numericUpDown8.Value = currentitem.MaxStockThreshold;
             numericUpDown9.Value = currentitem.MinStockThreshold;
-            checkBox1.Checked = currentitem.PurchaseType == (1) ? true : false;
 
             listBox6.DisplayMember = "Name";
             listBox6.ValueMember = "Value";
@@ -1758,12 +1762,6 @@ namespace DayZeEditor
                 currentCat.isDirty = true;
                 listBox5.Refresh();
             }
-        }
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (action) return;
-            currentCat.isDirty = true;
-            currentitem.PurchaseType = checkBox1.Checked == true ? 1 : 0;
         }
         private void numericUpDown9_ValueChanged(object sender, EventArgs e)
         {
@@ -1973,8 +1971,7 @@ namespace DayZeEditor
                         MaxPriceThreshold = 0,
                         MinPriceThreshold = 0,
                         MaxStockThreshold = 0,
-                        MinStockThreshold = 0,
-                        PurchaseType = 0
+                        MinStockThreshold = 0
                     };
                     if (!Checkifincat(NewContainer))
                     {
@@ -2008,8 +2005,7 @@ namespace DayZeEditor
                         MaxPriceThreshold = 0,
                         MinPriceThreshold = 0,
                         MaxStockThreshold = 0,
-                        MinStockThreshold = 0,
-                        PurchaseType = 0
+                        MinStockThreshold = 0
                     };
                     if (!Checkifincat(NewContainer))
                     {
@@ -2070,7 +2066,6 @@ namespace DayZeEditor
             else
                 listBox5.SelectedIndex = 0;
         }
-
         private void darkButton16_Click(object sender, EventArgs e)
         {
             string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("your search term ", "Variants", "");
@@ -2128,8 +2123,7 @@ namespace DayZeEditor
                     MaxPriceThreshold = currentitem.MaxPriceThreshold,
                     MinPriceThreshold = currentitem.MinPriceThreshold,
                     MaxStockThreshold = currentitem.MaxStockThreshold,
-                    MinStockThreshold = currentitem.MinStockThreshold,
-                    PurchaseType = currentitem.PurchaseType
+                    MinStockThreshold = currentitem.MinStockThreshold
                 };
                 if (!varients.Any(x => x.ClassName == newitem.ClassName))
                 {
@@ -2174,75 +2168,6 @@ namespace DayZeEditor
                     }
                 }
             }
-            //if (currentitem.SpawnAttachments.Count == 0)
-            //{
-            //    foreach (marketItem v in varients)
-            //    {
-            //        if (!currentitem.Variants.Contains(v.ClassName))
-            //        {
-            //            currentitem.Variants.Add(v.ClassName);
-            //            currentCat.isDirty = true;
-            //        }
-            //        Categories cat = MarketCats.GetCat(v);
-            //        if (cat == null) continue;
-            //        if (currentitem.MaxPriceThreshold == v.MaxPriceThreshold && currentitem.MinPriceThreshold == v.MinPriceThreshold)
-            //        {
-
-            //            MarketCats.removeitemfromcat(v);
-            //            if (cat.Items.Count == 0)
-            //            {
-            //                MarketCats.RemoveCat(cat);
-            //            }
-            //        }
-            //        else
-            //        {
-            //            if (currentCat.DisplayName != cat.DisplayName)
-            //            {
-            //                MarketCats.removeitemfromcat(v);
-            //                currentCat.Items.Add(v);
-            //                currentCat.isDirty = true;
-            //                if (cat.Items.Count == 0)
-            //                {
-            //                    MarketCats.RemoveCat(cat);
-            //                }
-            //            }
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    foreach (marketItem v in varients)
-            //    {
-            //        foreach (string attachment in currentitem.SpawnAttachments)
-            //        {
-            //            string a = attachment.Substring(0, attachment.LastIndexOf('_')+1);
-            //            a += v.ClassName.Replace(UserAnswer, "");
-            //            //a += v.ClassName.Substring(v.ClassName.LastIndexOf('_'));
-            //            v.SpawnAttachments.Add(a);
-            //        }
-            //        if (!currentitem.Variants.Contains(v.ClassName))
-            //        {
-            //            currentitem.Variants.Add(v.ClassName);
-            //            currentCat.isDirty = true;
-            //        }
-            //        Categories cat = MarketCats.GetCat(v);
-            //        if(cat == null)
-            //        {
-            //            currentCat.Items.Add(v);
-            //        }
-            //        else if (currentCat.DisplayName != cat.DisplayName)
-            //        {
-            //            MarketCats.removeitemfromcat(v);
-            //            currentCat.Items.Add(v);
-            //            currentCat.isDirty = true;
-            //            if (cat.Items.Count == 0)
-            //            {
-            //                MarketCats.RemoveCat(cat);
-            //            }
-            //        }
-            //    }
-            //}
-
         }
         private void toolStripDropDownButton1_Click(object sender, EventArgs e)
         {
@@ -2298,11 +2223,69 @@ namespace DayZeEditor
                 MaxPriceThreshold = 0,
                 MinPriceThreshold = 0,
                 MaxStockThreshold = 0,
-                MinStockThreshold = 0,
-                PurchaseType = 0
+                MinStockThreshold = 0
             };
             currentCat.Items.Add(ni);
             currentCat.isDirty = true;
+        }
+
+        /// <summary>
+        /// Added New Fuctions for Version 6
+        /// Icon and Colour for Market Cat
+        /// Purchase Type removed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CategorycolourPB_Paint(object sender, PaintEventArgs e)
+        {
+            PictureBox pb = sender as PictureBox;
+            Rectangle region;
+            region = pb.ClientRectangle;
+            string col = currentCat.Color;
+            string col1 = "#" + col.Substring(6) + col.Remove(6, 2);
+            Color colour = ColorTranslator.FromHtml(col1);
+            using (Brush brush = new SolidBrush(colour))
+            {
+                e.Graphics.FillRectangle(brush, region);
+            }
+            e.Graphics.DrawRectangle(SystemPens.ControlText, region.Left, region.Top, region.Width - 1, region.Height - 1);
+        }
+        private void CategorycolourPB_Click(object sender, EventArgs e)
+        {
+            PictureBox pb = sender as PictureBox;
+            ColorPickerDialog cpick = new ColorPickerDialog
+            {
+                StartPosition = FormStartPosition.CenterParent
+            };
+            string col = currentCat.Color;
+            string col1 = "#" + col.Substring(6) + col.Remove(6, 2);
+            cpick.Color = ColorTranslator.FromHtml(col1);
+            if (cpick.ShowDialog() == DialogResult.OK)
+            {
+                currentCat.Color = (cpick.Color.Name.Substring(2) + cpick.Color.Name.Substring(0, 2)).ToUpper();
+                pb.Invalidate();
+                currentCat.isDirty = true;
+            }
+        }
+        private void IconTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!action)
+            {
+                currentCat.Icon = IconTB.Text;
+                currentCat.isDirty = true;
+            }
+        }
+        
+        /// <summary>
+        /// Added in version 7 item sell price percentage of buy value
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void numericUpDown23_ValueChanged(object sender, EventArgs e)
+        {
+            if (action) return;
+            currentCat.isDirty = true;
+            currentitem.SellPricePercent = (int)numericUpDown23.Value;
         }
         #endregion Market Categories
 
@@ -3026,7 +3009,6 @@ namespace DayZeEditor
                     break;
             }
         }
-
         private void darkButton34_Click(object sender, EventArgs e)
         {
             Tradermap newNPCTrader = listBox18.SelectedItem as Tradermap;
@@ -3040,5 +3022,12 @@ namespace DayZeEditor
             tradermaps.isDirty = true;
             setTraderzonelist();
         }
+
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

@@ -351,6 +351,7 @@ namespace DayZeEditor
             projects.getActiveProject().seteconomydefinitions();
             projects.getActiveProject().setuserdefinitions();
             projects.getActiveProject().SetEvents();
+            projects.getActiveProject().SetGlobals();
             projects.getActiveProject().setVanillaTypes();
             projects.getActiveProject().SetModListtypes();
             getActiveProject();

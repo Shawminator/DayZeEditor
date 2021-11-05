@@ -235,7 +235,7 @@ namespace DayZeEditor
             this.LootchestButton.Name = "LootchestButton";
             this.LootchestButton.Size = new System.Drawing.Size(103, 19);
             this.LootchestButton.Text = "Loot Chest Table";
-            this.LootchestButton.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.LootchestButton.Click += new System.EventHandler(this.Lootchest_Click);
             // 
             // toolStripButton2
             // 
@@ -246,7 +246,7 @@ namespace DayZeEditor
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(103, 19);
             this.toolStripButton2.Text = "Toxic Zone";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            this.toolStripButton2.Click += new System.EventHandler(this.ToxicZone_Click);
             // 
             // HidePBox
             // 

@@ -65,6 +65,7 @@ namespace DayZeEditor
                     Projects.getActiveProject().seteconomydefinitions();
                     Projects.getActiveProject().setuserdefinitions();
                     Projects.getActiveProject().SetEvents();
+                    Projects.getActiveProject().SetGlobals();
                     Projects.getActiveProject().setVanillaTypes();
                     Projects.getActiveProject().SetModListtypes();
                     Console.WriteLine(Projects.ActiveProject + " is the Current Active Project");
@@ -128,7 +129,14 @@ namespace DayZeEditor
                 }
             }
         }
-
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            var handle = GetConsoleWindow();
+            if (checkBox1.Checked)
+                ShowWindow(handle, SW_SHOW);
+            else
+                ShowWindow(handle, SW_HIDE);
+        }
         private void ShowButtons()
         {
             ToolStrip1.Visible = true;
@@ -161,7 +169,6 @@ namespace DayZeEditor
 
             }
         }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (hidden)
@@ -306,19 +313,7 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            var handle = GetConsoleWindow();
-            if (checkBox1.Checked)
-                ShowWindow(handle, SW_SHOW);
-            else
-                ShowWindow(handle, SW_HIDE);
-        }
-
-        //        MapData data = new MapData(Application.StartupPath + "//Maps//map_output.txt");
-        //        data.CreateNewData();
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void Lootchest_Click(object sender, EventArgs e)
         {
             Lootchest _TM = Application.OpenForms["Lootchest"] as Lootchest;
             if (_TM != null)
@@ -342,8 +337,7 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
-
-        private void toolStripButton2_Click(object sender, EventArgs e)
+        private void ToxicZone_Click(object sender, EventArgs e)
         {
             ToxicZone _TM = Application.OpenForms["ToxicZone"] as ToxicZone;
             if (_TM != null)
@@ -367,5 +361,12 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
+
+
+
+        //        MapData data = new MapData(Application.StartupPath + "//Maps//map_output.txt");
+        //        data.CreateNewData();
+
+
     }
 }

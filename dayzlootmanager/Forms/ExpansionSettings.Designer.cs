@@ -776,6 +776,8 @@ namespace DayZeEditor
             this.MasterKeyUsesNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel117 = new DarkUI.Controls.DarkLabel();
             this.groupBox41 = new System.Windows.Forms.GroupBox();
+            this.ExplodingVehicleDropsAttachmentsCB = new System.Windows.Forms.CheckBox();
+            this.VehicleDropsRuinedDoorsCB = new System.Windows.Forms.CheckBox();
             this.VehicleSyncComboBox = new System.Windows.Forms.ComboBox();
             this.darkLabel130 = new DarkUI.Controls.DarkLabel();
             this.EnableWindAerodynamicsCB = new System.Windows.Forms.CheckBox();
@@ -10520,9 +10522,9 @@ namespace DayZeEditor
             this.groupBox42.Controls.Add(this.MasterKeyUsesNUD);
             this.groupBox42.Controls.Add(this.darkLabel117);
             this.groupBox42.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox42.Location = new System.Drawing.Point(8, 377);
+            this.groupBox42.Location = new System.Drawing.Point(8, 398);
             this.groupBox42.Name = "groupBox42";
-            this.groupBox42.Size = new System.Drawing.Size(299, 247);
+            this.groupBox42.Size = new System.Drawing.Size(299, 226);
             this.groupBox42.TabIndex = 154;
             this.groupBox42.TabStop = false;
             this.groupBox42.Text = "Keys";
@@ -10633,6 +10635,8 @@ namespace DayZeEditor
             // 
             // groupBox41
             // 
+            this.groupBox41.Controls.Add(this.ExplodingVehicleDropsAttachmentsCB);
+            this.groupBox41.Controls.Add(this.VehicleDropsRuinedDoorsCB);
             this.groupBox41.Controls.Add(this.VehicleSyncComboBox);
             this.groupBox41.Controls.Add(this.darkLabel130);
             this.groupBox41.Controls.Add(this.EnableWindAerodynamicsCB);
@@ -10651,10 +10655,36 @@ namespace DayZeEditor
             this.groupBox41.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox41.Location = new System.Drawing.Point(8, 16);
             this.groupBox41.Name = "groupBox41";
-            this.groupBox41.Size = new System.Drawing.Size(299, 355);
+            this.groupBox41.Size = new System.Drawing.Size(299, 376);
             this.groupBox41.TabIndex = 153;
             this.groupBox41.TabStop = false;
             this.groupBox41.Text = "General";
+            // 
+            // ExplodingVehicleDropsAttachmentsCB
+            // 
+            this.ExplodingVehicleDropsAttachmentsCB.AutoSize = true;
+            this.ExplodingVehicleDropsAttachmentsCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ExplodingVehicleDropsAttachmentsCB.Location = new System.Drawing.Point(13, 349);
+            this.ExplodingVehicleDropsAttachmentsCB.Name = "ExplodingVehicleDropsAttachmentsCB";
+            this.ExplodingVehicleDropsAttachmentsCB.Size = new System.Drawing.Size(203, 17);
+            this.ExplodingVehicleDropsAttachmentsCB.TabIndex = 149;
+            this.ExplodingVehicleDropsAttachmentsCB.Tag = "RevvingOverMaxRPMRuinsEngineInstantly";
+            this.ExplodingVehicleDropsAttachmentsCB.Text = "Exploding Vehicle Drops Attachments";
+            this.ExplodingVehicleDropsAttachmentsCB.UseVisualStyleBackColor = true;
+            this.ExplodingVehicleDropsAttachmentsCB.CheckedChanged += new System.EventHandler(this.VehicleSettingsCB_CheckChanged);
+            // 
+            // VehicleDropsRuinedDoorsCB
+            // 
+            this.VehicleDropsRuinedDoorsCB.AutoSize = true;
+            this.VehicleDropsRuinedDoorsCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.VehicleDropsRuinedDoorsCB.Location = new System.Drawing.Point(13, 326);
+            this.VehicleDropsRuinedDoorsCB.Name = "VehicleDropsRuinedDoorsCB";
+            this.VehicleDropsRuinedDoorsCB.Size = new System.Drawing.Size(160, 17);
+            this.VehicleDropsRuinedDoorsCB.TabIndex = 148;
+            this.VehicleDropsRuinedDoorsCB.Tag = "RevvingOverMaxRPMRuinsEngineInstantly";
+            this.VehicleDropsRuinedDoorsCB.Text = "Vehicle Drops Ruined Doors";
+            this.VehicleDropsRuinedDoorsCB.UseVisualStyleBackColor = true;
+            this.VehicleDropsRuinedDoorsCB.CheckedChanged += new System.EventHandler(this.VehicleSettingsCB_CheckChanged);
             // 
             // VehicleSyncComboBox
             // 
@@ -10757,7 +10787,7 @@ namespace DayZeEditor
             // 
             this.RevvingOverMaxRPMRuinsEngineInstantlyCB.AutoSize = true;
             this.RevvingOverMaxRPMRuinsEngineInstantlyCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.RevvingOverMaxRPMRuinsEngineInstantlyCB.Location = new System.Drawing.Point(13, 263);
+            this.RevvingOverMaxRPMRuinsEngineInstantlyCB.Location = new System.Drawing.Point(13, 258);
             this.RevvingOverMaxRPMRuinsEngineInstantlyCB.Name = "RevvingOverMaxRPMRuinsEngineInstantlyCB";
             this.RevvingOverMaxRPMRuinsEngineInstantlyCB.Size = new System.Drawing.Size(247, 17);
             this.RevvingOverMaxRPMRuinsEngineInstantlyCB.TabIndex = 145;
@@ -10780,7 +10810,7 @@ namespace DayZeEditor
             // 
             this.darkLabel127.AutoSize = true;
             this.darkLabel127.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel127.Location = new System.Drawing.Point(18, 292);
+            this.darkLabel127.Location = new System.Drawing.Point(18, 283);
             this.darkLabel127.Name = "darkLabel127";
             this.darkLabel127.Size = new System.Drawing.Size(244, 13);
             this.darkLabel127.TabIndex = 144;
@@ -10789,7 +10819,7 @@ namespace DayZeEditor
             // PlacePlayerOnGroundOnReconnectInVehicleComboBox
             // 
             this.PlacePlayerOnGroundOnReconnectInVehicleComboBox.FormattingEnabled = true;
-            this.PlacePlayerOnGroundOnReconnectInVehicleComboBox.Location = new System.Drawing.Point(15, 308);
+            this.PlacePlayerOnGroundOnReconnectInVehicleComboBox.Location = new System.Drawing.Point(15, 299);
             this.PlacePlayerOnGroundOnReconnectInVehicleComboBox.Name = "PlacePlayerOnGroundOnReconnectInVehicleComboBox";
             this.PlacePlayerOnGroundOnReconnectInVehicleComboBox.Size = new System.Drawing.Size(258, 21);
             this.PlacePlayerOnGroundOnReconnectInVehicleComboBox.TabIndex = 143;
@@ -12453,5 +12483,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ListBox ForceSZCleanup_ExcludedItemsLB;
         private DarkUI.Controls.DarkButton darkButton53;
         private DarkUI.Controls.DarkButton darkButton54;
+        private System.Windows.Forms.CheckBox ExplodingVehicleDropsAttachmentsCB;
+        private System.Windows.Forms.CheckBox VehicleDropsRuinedDoorsCB;
     }
 }

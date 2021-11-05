@@ -78,9 +78,11 @@
     <Compile Include="DRJonesTrader\DrJonesTrader.cs" />
     <Compile Include="DRJonesTrader\DRJonesVariables.cs" />
     <Compile Include="DRJonesTrader\DrJonesvehicleParts.cs" />
+    <Compile Include="Economy\Bindinglist.cs" />
     <Compile Include="Economy\cfgEffectArea.cs" />
     <Compile Include="Economy\economycoreconfig.cs" />
     <Compile Include="Economy\EventsXML.cs" />
+    <Compile Include="Economy\variables.cs" />
     <Compile Include="Economy\Limitsdefinitions.cs" />
     <Compile Include="ExpansionMarket\MarketCategories.cs" />
     <Compile Include="ExpansionMarket\marketsettings.cs" />

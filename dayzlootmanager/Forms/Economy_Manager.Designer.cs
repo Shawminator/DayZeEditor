@@ -152,6 +152,9 @@ namespace DayZeEditor
             this.EconomyCoreTab = new System.Windows.Forms.TabPage();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.EventsTab = new System.Windows.Forms.TabPage();
+            this.tabControl7 = new System.Windows.Forms.TabControl();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.EventsLIstLB = new System.Windows.Forms.ListBox();
             this.tabControl5 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
@@ -236,6 +239,8 @@ namespace DayZeEditor
             this.TypesTab.SuspendLayout();
             this.EconomyCoreTab.SuspendLayout();
             this.EventsTab.SuspendLayout();
+            this.tabControl7.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.tabControl5.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -271,8 +276,8 @@ namespace DayZeEditor
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer1.Size = new System.Drawing.Size(780, 494);
-            this.splitContainer1.SplitterDistance = 278;
+            this.splitContainer1.Size = new System.Drawing.Size(1070, 494);
+            this.splitContainer1.SplitterDistance = 381;
             this.splitContainer1.SplitterWidth = 10;
             this.splitContainer1.TabIndex = 46;
             // 
@@ -287,7 +292,7 @@ namespace DayZeEditor
             this.tabControl2.Location = new System.Drawing.Point(8, 8);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(262, 478);
+            this.tabControl2.Size = new System.Drawing.Size(365, 478);
             this.tabControl2.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl2.TabIndex = 2;
             // 
@@ -298,7 +303,7 @@ namespace DayZeEditor
             this.tabPage3.Location = new System.Drawing.Point(4, 5);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(254, 469);
+            this.tabPage3.Size = new System.Drawing.Size(357, 469);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "tabPage3";
             // 
@@ -312,7 +317,7 @@ namespace DayZeEditor
             this.treeView1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.treeView1.Location = new System.Drawing.Point(6, 5);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(242, 457);
+            this.treeView1.Size = new System.Drawing.Size(345, 457);
             this.treeView1.TabIndex = 44;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
             // 
@@ -328,7 +333,7 @@ namespace DayZeEditor
             this.tabControl1.Location = new System.Drawing.Point(3, 8);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(447, 478);
+            this.tabControl1.Size = new System.Drawing.Size(604, 478);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 6;
             // 
@@ -339,7 +344,7 @@ namespace DayZeEditor
             this.Collection.Controls.Add(this.groupBox8);
             this.Collection.Location = new System.Drawing.Point(4, 5);
             this.Collection.Name = "Collection";
-            this.Collection.Size = new System.Drawing.Size(439, 469);
+            this.Collection.Size = new System.Drawing.Size(596, 469);
             this.Collection.TabIndex = 1;
             this.Collection.Text = "tabPage2";
             // 
@@ -626,7 +631,7 @@ namespace DayZeEditor
             this.LootParts.Location = new System.Drawing.Point(4, 5);
             this.LootParts.Name = "LootParts";
             this.LootParts.Padding = new System.Windows.Forms.Padding(3);
-            this.LootParts.Size = new System.Drawing.Size(439, 469);
+            this.LootParts.Size = new System.Drawing.Size(596, 469);
             this.LootParts.TabIndex = 0;
             this.LootParts.Text = "tabPage1";
             // 
@@ -1537,7 +1542,7 @@ namespace DayZeEditor
             // darkButton4
             // 
             this.darkButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.darkButton4.Location = new System.Drawing.Point(712, 12);
+            this.darkButton4.Location = new System.Drawing.Point(1002, 12);
             this.darkButton4.Name = "darkButton4";
             this.darkButton4.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton4.Size = new System.Drawing.Size(75, 23);
@@ -1559,7 +1564,7 @@ namespace DayZeEditor
             this.darkToolStrip21.Location = new System.Drawing.Point(0, 0);
             this.darkToolStrip21.Name = "darkToolStrip21";
             this.darkToolStrip21.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
-            this.darkToolStrip21.Size = new System.Drawing.Size(794, 45);
+            this.darkToolStrip21.Size = new System.Drawing.Size(1084, 45);
             this.darkToolStrip21.TabIndex = 48;
             this.darkToolStrip21.Text = "darkToolStrip21";
             // 
@@ -1639,7 +1644,7 @@ namespace DayZeEditor
             this.darkToolStrip22.Location = new System.Drawing.Point(0, 45);
             this.darkToolStrip22.Name = "darkToolStrip22";
             this.darkToolStrip22.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
-            this.darkToolStrip22.Size = new System.Drawing.Size(794, 28);
+            this.darkToolStrip22.Size = new System.Drawing.Size(1084, 28);
             this.darkToolStrip22.TabIndex = 49;
             this.darkToolStrip22.Text = "darkToolStrip22";
             // 
@@ -1705,7 +1710,7 @@ namespace DayZeEditor
             this.tabControl4.Location = new System.Drawing.Point(0, 73);
             this.tabControl4.Name = "tabControl4";
             this.tabControl4.SelectedIndex = 0;
-            this.tabControl4.Size = new System.Drawing.Size(794, 529);
+            this.tabControl4.Size = new System.Drawing.Size(1084, 529);
             this.tabControl4.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl4.TabIndex = 50;
             this.tabControl4.SelectedIndexChanged += new System.EventHandler(this.tabControl4_SelectedIndexChanged);
@@ -1717,7 +1722,7 @@ namespace DayZeEditor
             this.TypesTab.Location = new System.Drawing.Point(4, 25);
             this.TypesTab.Name = "TypesTab";
             this.TypesTab.Padding = new System.Windows.Forms.Padding(3);
-            this.TypesTab.Size = new System.Drawing.Size(786, 500);
+            this.TypesTab.Size = new System.Drawing.Size(1076, 500);
             this.TypesTab.TabIndex = 0;
             this.TypesTab.Text = "Types";
             // 
@@ -1728,7 +1733,7 @@ namespace DayZeEditor
             this.EconomyCoreTab.Location = new System.Drawing.Point(4, 25);
             this.EconomyCoreTab.Name = "EconomyCoreTab";
             this.EconomyCoreTab.Padding = new System.Windows.Forms.Padding(3);
-            this.EconomyCoreTab.Size = new System.Drawing.Size(786, 500);
+            this.EconomyCoreTab.Size = new System.Drawing.Size(1076, 500);
             this.EconomyCoreTab.TabIndex = 1;
             this.EconomyCoreTab.Text = "Economy Core";
             // 
@@ -1738,19 +1743,59 @@ namespace DayZeEditor
             this.webBrowser1.Location = new System.Drawing.Point(3, 3);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(780, 494);
+            this.webBrowser1.Size = new System.Drawing.Size(1070, 494);
             this.webBrowser1.TabIndex = 0;
             // 
             // EventsTab
             // 
             this.EventsTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.EventsTab.Controls.Add(this.tabControl7);
             this.EventsTab.Controls.Add(this.tabControl5);
             this.EventsTab.Controls.Add(this.tabControl6);
             this.EventsTab.Location = new System.Drawing.Point(4, 25);
             this.EventsTab.Name = "EventsTab";
-            this.EventsTab.Size = new System.Drawing.Size(786, 500);
+            this.EventsTab.Size = new System.Drawing.Size(1076, 500);
             this.EventsTab.TabIndex = 2;
             this.EventsTab.Text = "Events";
+            // 
+            // tabControl7
+            // 
+            this.tabControl7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.tabControl7.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
+            this.tabControl7.Controls.Add(this.tabPage4);
+            this.tabControl7.ItemSize = new System.Drawing.Size(0, 1);
+            this.tabControl7.Location = new System.Drawing.Point(3, 3);
+            this.tabControl7.Name = "tabControl7";
+            this.tabControl7.SelectedIndex = 0;
+            this.tabControl7.Size = new System.Drawing.Size(253, 494);
+            this.tabControl7.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.tabControl7.TabIndex = 55;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage4.Controls.Add(this.EventsLIstLB);
+            this.tabPage4.Location = new System.Drawing.Point(4, 5);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(245, 485);
+            this.tabPage4.TabIndex = 0;
+            this.tabPage4.Text = "tabPage4";
+            // 
+            // EventsLIstLB
+            // 
+            this.EventsLIstLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.EventsLIstLB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.EventsLIstLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.EventsLIstLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.EventsLIstLB.FormattingEnabled = true;
+            this.EventsLIstLB.Location = new System.Drawing.Point(3, 3);
+            this.EventsLIstLB.Name = "EventsLIstLB";
+            this.EventsLIstLB.Size = new System.Drawing.Size(239, 479);
+            this.EventsLIstLB.TabIndex = 50;
+            this.EventsLIstLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.EventsLIstLB.SelectedIndexChanged += new System.EventHandler(this.EventsLIstLB_SelectedIndexChanged);
             // 
             // tabControl5
             // 
@@ -1759,7 +1804,7 @@ namespace DayZeEditor
             this.tabControl5.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabControl5.Controls.Add(this.tabPage1);
             this.tabControl5.ItemSize = new System.Drawing.Size(0, 1);
-            this.tabControl5.Location = new System.Drawing.Point(276, 3);
+            this.tabControl5.Location = new System.Drawing.Point(535, 3);
             this.tabControl5.Name = "tabControl5";
             this.tabControl5.SelectedIndex = 0;
             this.tabControl5.Size = new System.Drawing.Size(503, 494);
@@ -2309,7 +2354,7 @@ namespace DayZeEditor
             this.tabControl6.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabControl6.Controls.Add(this.tabPage2);
             this.tabControl6.ItemSize = new System.Drawing.Size(0, 1);
-            this.tabControl6.Location = new System.Drawing.Point(3, 3);
+            this.tabControl6.Location = new System.Drawing.Point(262, 3);
             this.tabControl6.Name = "tabControl6";
             this.tabControl6.SelectedIndex = 0;
             this.tabControl6.Size = new System.Drawing.Size(267, 494);
@@ -2375,7 +2420,7 @@ namespace DayZeEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(794, 602);
+            this.ClientSize = new System.Drawing.Size(1084, 602);
             this.Controls.Add(this.tabControl4);
             this.Controls.Add(this.darkToolStrip22);
             this.Controls.Add(this.darkButton4);
@@ -2428,6 +2473,8 @@ namespace DayZeEditor
             this.TypesTab.ResumeLayout(false);
             this.EconomyCoreTab.ResumeLayout(false);
             this.EventsTab.ResumeLayout(false);
+            this.tabControl7.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
             this.tabControl5.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -2626,5 +2673,8 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton toolStripButton5;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton toolStripButton6;
+        private System.Windows.Forms.TabControl tabControl7;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.ListBox EventsLIstLB;
     }
 }
