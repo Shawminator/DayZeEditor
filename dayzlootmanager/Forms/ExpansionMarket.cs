@@ -1724,6 +1724,7 @@ namespace DayZeEditor
             textBox11.Text = currentCat.Filename;
             textBox9.Text = currentCat.DisplayName;
             IconTB.Text = currentCat.Icon;
+            InitStockPercentNUD.Value = (decimal)currentCat.InitStockPercent;
 
             listBox4.DisplayMember = "Name";
             listBox4.ValueMember = "Value";
@@ -1790,11 +1791,13 @@ namespace DayZeEditor
         }
         private void darkButton2_Click(object sender, EventArgs e)
         {
+            if (currentitem == null) { return; }
             currentitem.SpawnAttachments.Remove(listBox6.GetItemText(listBox6.SelectedItem));
             currentCat.isDirty = true;
         }
         private void darkButton1_Click(object sender, EventArgs e)
         {
+            if (currentitem == null) { return; }
             AddItemfromTypes form = new AddItemfromTypes
             {
                 vanillatypes = vanillatypes,
@@ -1826,6 +1829,7 @@ namespace DayZeEditor
 
         private void darkButton27_Click(object sender, EventArgs e)
         {
+            if(currentitem == null) { return; }
             AddItemfromString form = new AddItemfromString();
             DialogResult result = form.ShowDialog();
             if(result == DialogResult.OK)
@@ -1840,11 +1844,13 @@ namespace DayZeEditor
         }
         private void darkButton8_Click(object sender, EventArgs e)
         {
+            if (currentitem == null) { return; }
             currentitem.Variants.Remove(listBox11.GetItemText(listBox11.SelectedItem));
             currentCat.isDirty = true;
         }
         private void darkButton9_Click(object sender, EventArgs e)
         {
+            if (currentitem == null) { return; }
             AddItemfromTypes form = new AddItemfromTypes
             {
                 vanillatypes = vanillatypes,
@@ -1869,6 +1875,7 @@ namespace DayZeEditor
         }
         private void darkButton29_Click(object sender, EventArgs e)
         {
+            if (currentitem == null) { return; }
             AddItemfromString form = new AddItemfromString();
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -1886,6 +1893,7 @@ namespace DayZeEditor
         }
         private void darkButton3_Click(object sender, EventArgs e)
         {
+            if(currentCat == null) { return; }
             List<string> removeitems = new List<string>();
             foreach (var item in listBox4.SelectedItems)
             {
@@ -1931,6 +1939,7 @@ namespace DayZeEditor
         }
         private void darkButton4_Click(object sender, EventArgs e)
         {
+            if(currentCat == null) { return;  }
             Dictionary<string, bool> UsedTypes = new Dictionary<string, bool>();
             foreach(Categories mc in MarketCats.CatList)
             {
@@ -1992,6 +2001,7 @@ namespace DayZeEditor
         }
         private void darkButton28_Click(object sender, EventArgs e)
         {
+            if (currentCat == null) { return; }
             AddItemfromString form = new AddItemfromString();
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -2068,6 +2078,7 @@ namespace DayZeEditor
         }
         private void darkButton16_Click(object sender, EventArgs e)
         {
+            if (currentitem == null) { return; }
             string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("your search term ", "Variants", "");
             if (UserAnswer == "") return;
             List<marketItem> varients = MarketCats.searchforitems(UserAnswer);
@@ -2216,6 +2227,8 @@ namespace DayZeEditor
         }
         private void darkButton25_Click(object sender, EventArgs e)
         {
+            if (currentitem == null) { return; }
+            if(listBox11.SelectedItem == null) { return; }
             string newitem = listBox11.GetItemText(listBox11.SelectedItem);
             marketItem ni = new marketItem()
             {
@@ -2238,6 +2251,7 @@ namespace DayZeEditor
         /// <param name="e"></param>
         private void CategorycolourPB_Paint(object sender, PaintEventArgs e)
         {
+            if (currentCat == null) { return; }
             PictureBox pb = sender as PictureBox;
             Rectangle region;
             region = pb.ClientRectangle;
@@ -2252,12 +2266,17 @@ namespace DayZeEditor
         }
         private void CategorycolourPB_Click(object sender, EventArgs e)
         {
+            if(currentCat == null) { return; }
             PictureBox pb = sender as PictureBox;
             ColorPickerDialog cpick = new ColorPickerDialog
             {
                 StartPosition = FormStartPosition.CenterParent
             };
-            string col = currentCat.Color;
+            string col = "";
+            if (currentCat == null)
+                col = "FBFCFEFF";
+            else
+                col = currentCat.Color;
             string col1 = "#" + col.Substring(6) + col.Remove(6, 2);
             cpick.Color = ColorTranslator.FromHtml(col1);
             if (cpick.ShowDialog() == DialogResult.OK)
@@ -2287,6 +2306,17 @@ namespace DayZeEditor
             currentCat.isDirty = true;
             currentitem.SellPricePercent = (int)numericUpDown23.Value;
         }
+
+        /// <summary>
+        /// Added in version 9 for cat sell stock percent
+        /// </summary>
+        private void InitStockPercentNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (action) return;
+            currentCat.InitStockPercent = (float)InitStockPercentNUD.Value;
+            currentCat.isDirty = true;
+        }
+
         #endregion Market Categories
 
         #region TraderZones
@@ -3017,5 +3047,7 @@ namespace DayZeEditor
         {
 
         }
+
+
     }
 }

@@ -25,7 +25,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-
+        public string VersionNumber = "0.5.5";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -49,7 +49,7 @@ namespace DayZeEditor
             var culture = CultureInfo.GetCultureInfo("en-GB");
             CultureInfo.DefaultThreadCurrentCulture = culture;
             CultureInfo.DefaultThreadCurrentUICulture = culture;
-
+            TitleLabel.Text = "DayZeEditor " + VersionNumber;
             if (File.Exists(ProjectsJson))
             {
                 Projects = (JsonSerializer.Deserialize<ProjectList>(File.ReadAllText(ProjectsJson)));
@@ -68,6 +68,7 @@ namespace DayZeEditor
                     Projects.getActiveProject().SetGlobals();
                     Projects.getActiveProject().setVanillaTypes();
                     Projects.getActiveProject().SetModListtypes();
+                    Projects.getActiveProject().SetTotNomCount();
                     Console.WriteLine(Projects.ActiveProject + " is the Current Active Project");
                     Console.WriteLine("Project is running Expansion..... " + Projects.getActiveProject().isExpansion.ToString());
                     Console.WriteLine("Project is Running Dr Jones Trader...." + Projects.getActiveProject().usingDrJoneTrader.ToString());

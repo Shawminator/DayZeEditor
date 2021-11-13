@@ -354,6 +354,7 @@ namespace DayZeEditor
             projects.getActiveProject().SetGlobals();
             projects.getActiveProject().setVanillaTypes();
             projects.getActiveProject().SetModListtypes();
+            projects.getActiveProject().SetTotNomCount();
             getActiveProject();
         }
         private void SaveFileButton_Click(object sender, EventArgs e)

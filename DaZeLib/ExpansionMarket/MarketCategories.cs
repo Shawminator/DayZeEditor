@@ -14,7 +14,7 @@ namespace DayZeLib
 {
     public class MarketCategories
     {
-        public int CurrentVersion = 7;
+        public int CurrentVersion = 8;
         public BindingList<Categories> CatList { get; set; }
         public string MarketCatsPath {get;set;}
 
@@ -210,10 +210,11 @@ namespace DayZeLib
     }
     public class Categories
     {
-        public int m_Version { get; set; } //current version 7
+        public int m_Version { get; set; } //current version 8
         public string DisplayName { get; set; }
         public string Icon { get; set; }
         public string Color { get; set; }
+        public float InitStockPercent { get; set; }
         public BindingList<marketItem> Items { get; set; }
 
 
@@ -225,13 +226,19 @@ namespace DayZeLib
 
         public Categories(string filename)
         {
-            m_Version = 7;
+            m_Version = 8;
             DisplayName = filename;
+            Icon = "deliver";
+            Color = "FBFCFEFF";
+            InitStockPercent = 75.0f;
             Items = new BindingList<marketItem>();
         }
         public Categories()
         {
-            m_Version = 7;
+            m_Version = 8;
+            Icon = "deliver";
+            Color = "FBFCFEFF";
+            InitStockPercent = 75.0f;
             Items = new BindingList<marketItem>();
         }
         public override string ToString()

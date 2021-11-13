@@ -134,13 +134,14 @@ namespace DayZeEditor
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.darkButton4 = new DarkUI.Controls.DarkButton();
             this.darkToolStrip21 = new DarkUI.Controls.DarkToolStrip2();
             this.SaveFileButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
+            this.NomCountLabel = new System.Windows.Forms.ToolStripLabel();
             this.darkToolStrip22 = new DarkUI.Controls.DarkToolStrip2();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -204,6 +205,72 @@ namespace DayZeEditor
             this.DeleteTypesTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.AddTypesTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteSpecificTypeTSMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.TypesSummaryTab = new System.Windows.Forms.TabPage();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.darkButton4 = new DarkUI.Controls.DarkButton();
+            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.darkButton9 = new DarkUI.Controls.DarkButton();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.darkButton10 = new DarkUI.Controls.DarkButton();
+            this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.darkButton11 = new DarkUI.Controls.DarkButton();
+            this.listBox4 = new System.Windows.Forms.ListBox();
+            this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.tabControl8 = new System.Windows.Forms.TabControl();
+            this.SetdefinitionsTPSummary = new System.Windows.Forms.TabPage();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.checkBox10 = new System.Windows.Forms.CheckBox();
+            this.checkBox11 = new System.Windows.Forms.CheckBox();
+            this.checkBox12 = new System.Windows.Forms.CheckBox();
+            this.checkBox13 = new System.Windows.Forms.CheckBox();
+            this.checkBox18 = new System.Windows.Forms.CheckBox();
+            this.checkBox19 = new System.Windows.Forms.CheckBox();
+            this.checkBox20 = new System.Windows.Forms.CheckBox();
+            this.checkBox21 = new System.Windows.Forms.CheckBox();
+            this.checkBox22 = new System.Windows.Forms.CheckBox();
+            this.checkBox23 = new System.Windows.Forms.CheckBox();
+            this.checkBox24 = new System.Windows.Forms.CheckBox();
+            this.checkBox25 = new System.Windows.Forms.CheckBox();
+            this.checkBox26 = new System.Windows.Forms.CheckBox();
+            this.checkBox27 = new System.Windows.Forms.CheckBox();
+            this.UserdefinitionsTPSummary = new System.Windows.Forms.TabPage();
+            this.checkBox28 = new System.Windows.Forms.CheckBox();
+            this.checkBox29 = new System.Windows.Forms.CheckBox();
+            this.checkBox30 = new System.Windows.Forms.CheckBox();
+            this.checkBox31 = new System.Windows.Forms.CheckBox();
+            this.checkBox32 = new System.Windows.Forms.CheckBox();
+            this.checkBox33 = new System.Windows.Forms.CheckBox();
+            this.checkBox34 = new System.Windows.Forms.CheckBox();
+            this.checkBox35 = new System.Windows.Forms.CheckBox();
+            this.checkBox36 = new System.Windows.Forms.CheckBox();
+            this.checkBox37 = new System.Windows.Forms.CheckBox();
+            this.checkBox38 = new System.Windows.Forms.CheckBox();
+            this.checkBox39 = new System.Windows.Forms.CheckBox();
+            this.checkBox40 = new System.Windows.Forms.CheckBox();
+            this.checkBox41 = new System.Windows.Forms.CheckBox();
+            this.checkBox42 = new System.Windows.Forms.CheckBox();
+            this.groupBox19 = new System.Windows.Forms.GroupBox();
+            this.checkBox43 = new System.Windows.Forms.CheckBox();
+            this.checkBox44 = new System.Windows.Forms.CheckBox();
+            this.checkBox45 = new System.Windows.Forms.CheckBox();
+            this.checkBox46 = new System.Windows.Forms.CheckBox();
+            this.checkBox47 = new System.Windows.Forms.CheckBox();
+            this.checkBox48 = new System.Windows.Forms.CheckBox();
+            this.groupBox20 = new System.Windows.Forms.GroupBox();
+            this.darkButton12 = new DarkUI.Controls.DarkButton();
+            this.comboBox8 = new System.Windows.Forms.ComboBox();
+            this.darkButton13 = new DarkUI.Controls.DarkButton();
+            this.listBox5 = new System.Windows.Forms.ListBox();
+            this.treeView2 = new System.Windows.Forms.TreeView();
+            this.darkButton14 = new DarkUI.Controls.DarkButton();
+            this.darkButton15 = new DarkUI.Controls.DarkButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -261,6 +328,19 @@ namespace DayZeEditor
             this.tabControl6.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.TypesContextMenu.SuspendLayout();
+            this.TypesSummaryTab.SuspendLayout();
+            this.groupBox12.SuspendLayout();
+            this.groupBox13.SuspendLayout();
+            this.groupBox14.SuspendLayout();
+            this.groupBox15.SuspendLayout();
+            this.groupBox16.SuspendLayout();
+            this.groupBox17.SuspendLayout();
+            this.groupBox18.SuspendLayout();
+            this.tabControl8.SuspendLayout();
+            this.SetdefinitionsTPSummary.SuspendLayout();
+            this.UserdefinitionsTPSummary.SuspendLayout();
+            this.groupBox19.SuspendLayout();
+            this.groupBox20.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -276,7 +356,7 @@ namespace DayZeEditor
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer1.Size = new System.Drawing.Size(1070, 494);
+            this.splitContainer1.Size = new System.Drawing.Size(1070, 569);
             this.splitContainer1.SplitterDistance = 381;
             this.splitContainer1.SplitterWidth = 10;
             this.splitContainer1.TabIndex = 46;
@@ -292,7 +372,7 @@ namespace DayZeEditor
             this.tabControl2.Location = new System.Drawing.Point(8, 8);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(365, 478);
+            this.tabControl2.Size = new System.Drawing.Size(365, 553);
             this.tabControl2.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl2.TabIndex = 2;
             // 
@@ -303,7 +383,7 @@ namespace DayZeEditor
             this.tabPage3.Location = new System.Drawing.Point(4, 5);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(357, 469);
+            this.tabPage3.Size = new System.Drawing.Size(357, 544);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "tabPage3";
             // 
@@ -317,7 +397,7 @@ namespace DayZeEditor
             this.treeView1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.treeView1.Location = new System.Drawing.Point(6, 5);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(345, 457);
+            this.treeView1.Size = new System.Drawing.Size(345, 532);
             this.treeView1.TabIndex = 44;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
             // 
@@ -333,7 +413,7 @@ namespace DayZeEditor
             this.tabControl1.Location = new System.Drawing.Point(3, 8);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(604, 478);
+            this.tabControl1.Size = new System.Drawing.Size(580, 553);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 6;
             // 
@@ -344,7 +424,7 @@ namespace DayZeEditor
             this.Collection.Controls.Add(this.groupBox8);
             this.Collection.Location = new System.Drawing.Point(4, 5);
             this.Collection.Name = "Collection";
-            this.Collection.Size = new System.Drawing.Size(596, 469);
+            this.Collection.Size = new System.Drawing.Size(572, 469);
             this.Collection.TabIndex = 1;
             this.Collection.Text = "tabPage2";
             // 
@@ -631,7 +711,7 @@ namespace DayZeEditor
             this.LootParts.Location = new System.Drawing.Point(4, 5);
             this.LootParts.Name = "LootParts";
             this.LootParts.Padding = new System.Windows.Forms.Padding(3);
-            this.LootParts.Size = new System.Drawing.Size(596, 469);
+            this.LootParts.Size = new System.Drawing.Size(572, 544);
             this.LootParts.TabIndex = 0;
             this.LootParts.Text = "tabPage1";
             // 
@@ -1539,17 +1619,6 @@ namespace DayZeEditor
             this.label4.TabIndex = 1;
             this.label4.Text = "Nom Count :-";
             // 
-            // darkButton4
-            // 
-            this.darkButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.darkButton4.Location = new System.Drawing.Point(1002, 12);
-            this.darkButton4.Name = "darkButton4";
-            this.darkButton4.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton4.Size = new System.Drawing.Size(75, 23);
-            this.darkButton4.TabIndex = 47;
-            this.darkButton4.Text = "Info";
-            this.darkButton4.Click += new System.EventHandler(this.darkButton4_Click);
-            // 
             // darkToolStrip21
             // 
             this.darkToolStrip21.AutoSize = false;
@@ -1560,7 +1629,9 @@ namespace DayZeEditor
             this.toolStripButton4,
             this.toolStripTextBox1,
             this.toolStripButton1,
-            this.toolStripButton2});
+            this.toolStripButton2,
+            this.toolStripButton7,
+            this.NomCountLabel});
             this.darkToolStrip21.Location = new System.Drawing.Point(0, 0);
             this.darkToolStrip21.Name = "darkToolStrip21";
             this.darkToolStrip21.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
@@ -1630,6 +1701,29 @@ namespace DayZeEditor
             this.toolStripButton2.Visible = false;
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
+            // toolStripButton7
+            // 
+            this.toolStripButton7.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButton7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripButton7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton7.Image")));
+            this.toolStripButton7.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton7.Name = "toolStripButton7";
+            this.toolStripButton7.Size = new System.Drawing.Size(42, 42);
+            this.toolStripButton7.Text = "Info";
+            this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
+            // 
+            // NomCountLabel
+            // 
+            this.NomCountLabel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.NomCountLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.NomCountLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.NomCountLabel.Name = "NomCountLabel";
+            this.NomCountLabel.Size = new System.Drawing.Size(131, 42);
+            this.NomCountLabel.Text = "Total Nominal Count :- ";
+            // 
             // darkToolStrip22
             // 
             this.darkToolStrip22.AutoSize = false;
@@ -1637,6 +1731,8 @@ namespace DayZeEditor
             this.darkToolStrip22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.darkToolStrip22.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton3,
+            this.toolStripSeparator3,
+            this.toolStripButton8,
             this.toolStripSeparator1,
             this.toolStripButton5,
             this.toolStripSeparator2,
@@ -1706,11 +1802,12 @@ namespace DayZeEditor
             this.tabControl4.Controls.Add(this.TypesTab);
             this.tabControl4.Controls.Add(this.EconomyCoreTab);
             this.tabControl4.Controls.Add(this.EventsTab);
+            this.tabControl4.Controls.Add(this.TypesSummaryTab);
             this.tabControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl4.Location = new System.Drawing.Point(0, 73);
             this.tabControl4.Name = "tabControl4";
             this.tabControl4.SelectedIndex = 0;
-            this.tabControl4.Size = new System.Drawing.Size(1084, 529);
+            this.tabControl4.Size = new System.Drawing.Size(1084, 604);
             this.tabControl4.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl4.TabIndex = 50;
             this.tabControl4.SelectedIndexChanged += new System.EventHandler(this.tabControl4_SelectedIndexChanged);
@@ -1722,7 +1819,7 @@ namespace DayZeEditor
             this.TypesTab.Location = new System.Drawing.Point(4, 25);
             this.TypesTab.Name = "TypesTab";
             this.TypesTab.Padding = new System.Windows.Forms.Padding(3);
-            this.TypesTab.Size = new System.Drawing.Size(1076, 500);
+            this.TypesTab.Size = new System.Drawing.Size(1076, 575);
             this.TypesTab.TabIndex = 0;
             this.TypesTab.Text = "Types";
             // 
@@ -2416,14 +2513,768 @@ namespace DayZeEditor
             this.DeleteSpecificTypeTSMI.Text = "Delete Specific Type";
             this.DeleteSpecificTypeTSMI.Click += new System.EventHandler(this.DeleteSpecificTypeTSMI_Click);
             // 
+            // TypesSummaryTab
+            // 
+            this.TypesSummaryTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TypesSummaryTab.Controls.Add(this.treeView2);
+            this.TypesSummaryTab.Controls.Add(this.groupBox12);
+            this.TypesSummaryTab.ForeColor = System.Drawing.SystemColors.Control;
+            this.TypesSummaryTab.Location = new System.Drawing.Point(4, 25);
+            this.TypesSummaryTab.Name = "TypesSummaryTab";
+            this.TypesSummaryTab.Padding = new System.Windows.Forms.Padding(3);
+            this.TypesSummaryTab.Size = new System.Drawing.Size(1076, 575);
+            this.TypesSummaryTab.TabIndex = 3;
+            this.TypesSummaryTab.Text = "Types Summary";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripSeparator3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripSeparator3.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
+            // 
+            // toolStripButton8
+            // 
+            this.toolStripButton8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripButton8.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton8.Image")));
+            this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton8.Name = "toolStripButton8";
+            this.toolStripButton8.Size = new System.Drawing.Size(94, 25);
+            this.toolStripButton8.Text = "Types Summary";
+            this.toolStripButton8.Click += new System.EventHandler(this.toolStripButton8_Click);
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.darkButton15);
+            this.groupBox12.Controls.Add(this.darkButton14);
+            this.groupBox12.Controls.Add(this.groupBox18);
+            this.groupBox12.Controls.Add(this.groupBox13);
+            this.groupBox12.Controls.Add(this.groupBox14);
+            this.groupBox12.Controls.Add(this.groupBox16);
+            this.groupBox12.Controls.Add(this.groupBox19);
+            this.groupBox12.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox12.Location = new System.Drawing.Point(8, 6);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(478, 563);
+            this.groupBox12.TabIndex = 23;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "Filter";
+            // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.darkButton13);
+            this.groupBox13.Controls.Add(this.listBox5);
+            this.groupBox13.Controls.Add(this.groupBox20);
+            this.groupBox13.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox13.Location = new System.Drawing.Point(6, 227);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(462, 92);
+            this.groupBox13.TabIndex = 6;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "Info";
+            // 
+            // groupBox14
+            // 
+            this.groupBox14.Controls.Add(this.groupBox15);
+            this.groupBox14.Controls.Add(this.listBox3);
+            this.groupBox14.Controls.Add(this.darkButton9);
+            this.groupBox14.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox14.Location = new System.Drawing.Point(6, 442);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(462, 114);
+            this.groupBox14.TabIndex = 11;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "Tags";
+            // 
+            // groupBox15
+            // 
+            this.groupBox15.Controls.Add(this.comboBox6);
+            this.groupBox15.Controls.Add(this.darkButton4);
+            this.groupBox15.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox15.Location = new System.Drawing.Point(250, 8);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(202, 100);
+            this.groupBox15.TabIndex = 7;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "Add Tag";
+            // 
+            // comboBox6
+            // 
+            this.comboBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.comboBox6.ForeColor = System.Drawing.SystemColors.Control;
+            this.comboBox6.FormattingEnabled = true;
+            this.comboBox6.Location = new System.Drawing.Point(10, 25);
+            this.comboBox6.Name = "comboBox6";
+            this.comboBox6.Size = new System.Drawing.Size(176, 21);
+            this.comboBox6.TabIndex = 1;
+            // 
+            // darkButton4
+            // 
+            this.darkButton4.Location = new System.Drawing.Point(8, 52);
+            this.darkButton4.Name = "darkButton4";
+            this.darkButton4.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton4.Size = new System.Drawing.Size(178, 27);
+            this.darkButton4.TabIndex = 5;
+            this.darkButton4.Text = "Add Selected";
+            // 
+            // listBox3
+            // 
+            this.listBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.listBox3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.listBox3.ForeColor = System.Drawing.SystemColors.Control;
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.Location = new System.Drawing.Point(9, 19);
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Size = new System.Drawing.Size(235, 56);
+            this.listBox3.TabIndex = 6;
+            // 
+            // darkButton9
+            // 
+            this.darkButton9.Location = new System.Drawing.Point(9, 81);
+            this.darkButton9.Name = "darkButton9";
+            this.darkButton9.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton9.Size = new System.Drawing.Size(235, 27);
+            this.darkButton9.TabIndex = 4;
+            this.darkButton9.Text = "Remove tag";
+            // 
+            // groupBox16
+            // 
+            this.groupBox16.Controls.Add(this.groupBox17);
+            this.groupBox16.Controls.Add(this.darkButton11);
+            this.groupBox16.Controls.Add(this.listBox4);
+            this.groupBox16.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox16.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.groupBox16.Location = new System.Drawing.Point(6, 320);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Size = new System.Drawing.Size(462, 123);
+            this.groupBox16.TabIndex = 7;
+            this.groupBox16.TabStop = false;
+            this.groupBox16.Text = "Location Found";
+            // 
+            // groupBox17
+            // 
+            this.groupBox17.Controls.Add(this.darkButton10);
+            this.groupBox17.Controls.Add(this.comboBox7);
+            this.groupBox17.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox17.Location = new System.Drawing.Point(250, 17);
+            this.groupBox17.Name = "groupBox17";
+            this.groupBox17.Size = new System.Drawing.Size(202, 100);
+            this.groupBox17.TabIndex = 4;
+            this.groupBox17.TabStop = false;
+            this.groupBox17.Text = "Add Location";
+            // 
+            // darkButton10
+            // 
+            this.darkButton10.Location = new System.Drawing.Point(6, 50);
+            this.darkButton10.Name = "darkButton10";
+            this.darkButton10.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton10.Size = new System.Drawing.Size(178, 27);
+            this.darkButton10.TabIndex = 3;
+            this.darkButton10.Text = "Add Selected";
+            // 
+            // comboBox7
+            // 
+            this.comboBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.comboBox7.ForeColor = System.Drawing.SystemColors.Control;
+            this.comboBox7.FormattingEnabled = true;
+            this.comboBox7.Location = new System.Drawing.Point(6, 23);
+            this.comboBox7.Name = "comboBox7";
+            this.comboBox7.Size = new System.Drawing.Size(178, 21);
+            this.comboBox7.TabIndex = 1;
+            // 
+            // darkButton11
+            // 
+            this.darkButton11.Location = new System.Drawing.Point(9, 94);
+            this.darkButton11.Name = "darkButton11";
+            this.darkButton11.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton11.Size = new System.Drawing.Size(235, 23);
+            this.darkButton11.TabIndex = 2;
+            this.darkButton11.Text = "Remove Selected";
+            // 
+            // listBox4
+            // 
+            this.listBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.listBox4.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.listBox4.ForeColor = System.Drawing.SystemColors.Control;
+            this.listBox4.FormattingEnabled = true;
+            this.listBox4.Location = new System.Drawing.Point(9, 19);
+            this.listBox4.Name = "listBox4";
+            this.listBox4.Size = new System.Drawing.Size(235, 69);
+            this.listBox4.TabIndex = 0;
+            // 
+            // groupBox18
+            // 
+            this.groupBox18.Controls.Add(this.tabControl8);
+            this.groupBox18.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox18.Location = new System.Drawing.Point(6, 13);
+            this.groupBox18.Name = "groupBox18";
+            this.groupBox18.Size = new System.Drawing.Size(254, 208);
+            this.groupBox18.TabIndex = 10;
+            this.groupBox18.TabStop = false;
+            this.groupBox18.Text = "Tiers";
+            // 
+            // tabControl8
+            // 
+            this.tabControl8.Appearance = System.Windows.Forms.TabAppearance.Buttons;
+            this.tabControl8.Controls.Add(this.SetdefinitionsTPSummary);
+            this.tabControl8.Controls.Add(this.UserdefinitionsTPSummary);
+            this.tabControl8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl8.Location = new System.Drawing.Point(3, 16);
+            this.tabControl8.Name = "tabControl8";
+            this.tabControl8.SelectedIndex = 0;
+            this.tabControl8.Size = new System.Drawing.Size(248, 189);
+            this.tabControl8.TabIndex = 15;
+            // 
+            // SetdefinitionsTPSummary
+            // 
+            this.SetdefinitionsTPSummary.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SetdefinitionsTPSummary.Controls.Add(this.checkBox7);
+            this.SetdefinitionsTPSummary.Controls.Add(this.checkBox10);
+            this.SetdefinitionsTPSummary.Controls.Add(this.checkBox11);
+            this.SetdefinitionsTPSummary.Controls.Add(this.checkBox12);
+            this.SetdefinitionsTPSummary.Controls.Add(this.checkBox13);
+            this.SetdefinitionsTPSummary.Controls.Add(this.checkBox18);
+            this.SetdefinitionsTPSummary.Controls.Add(this.checkBox19);
+            this.SetdefinitionsTPSummary.Controls.Add(this.checkBox20);
+            this.SetdefinitionsTPSummary.Controls.Add(this.checkBox21);
+            this.SetdefinitionsTPSummary.Controls.Add(this.checkBox22);
+            this.SetdefinitionsTPSummary.Controls.Add(this.checkBox23);
+            this.SetdefinitionsTPSummary.Controls.Add(this.checkBox24);
+            this.SetdefinitionsTPSummary.Controls.Add(this.checkBox25);
+            this.SetdefinitionsTPSummary.Controls.Add(this.checkBox26);
+            this.SetdefinitionsTPSummary.Controls.Add(this.checkBox27);
+            this.SetdefinitionsTPSummary.Location = new System.Drawing.Point(4, 25);
+            this.SetdefinitionsTPSummary.Name = "SetdefinitionsTPSummary";
+            this.SetdefinitionsTPSummary.Padding = new System.Windows.Forms.Padding(3);
+            this.SetdefinitionsTPSummary.Size = new System.Drawing.Size(240, 160);
+            this.SetdefinitionsTPSummary.TabIndex = 0;
+            this.SetdefinitionsTPSummary.Text = "Set definitions";
+            // 
+            // checkBox7
+            // 
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Location = new System.Drawing.Point(7, 3);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(53, 17);
+            this.checkBox7.TabIndex = 0;
+            this.checkBox7.Tag = "Tier1";
+            this.checkBox7.Text = "Tier 1";
+            this.checkBox7.UseVisualStyleBackColor = true;
+            // 
+            // checkBox10
+            // 
+            this.checkBox10.AutoSize = true;
+            this.checkBox10.Location = new System.Drawing.Point(174, 3);
+            this.checkBox10.Name = "checkBox10";
+            this.checkBox10.Size = new System.Drawing.Size(59, 17);
+            this.checkBox10.TabIndex = 14;
+            this.checkBox10.Tag = "Tier15";
+            this.checkBox10.Text = "Tier 15";
+            this.checkBox10.UseVisualStyleBackColor = true;
+            // 
+            // checkBox11
+            // 
+            this.checkBox11.AutoSize = true;
+            this.checkBox11.Location = new System.Drawing.Point(7, 26);
+            this.checkBox11.Name = "checkBox11";
+            this.checkBox11.Size = new System.Drawing.Size(53, 17);
+            this.checkBox11.TabIndex = 1;
+            this.checkBox11.Tag = "Tier2";
+            this.checkBox11.Text = "Tier 2";
+            this.checkBox11.UseVisualStyleBackColor = true;
+            // 
+            // checkBox12
+            // 
+            this.checkBox12.AutoSize = true;
+            this.checkBox12.Location = new System.Drawing.Point(96, 141);
+            this.checkBox12.Name = "checkBox12";
+            this.checkBox12.Size = new System.Drawing.Size(59, 17);
+            this.checkBox12.TabIndex = 13;
+            this.checkBox12.Tag = "Tier14";
+            this.checkBox12.Text = "Tier 14";
+            this.checkBox12.UseVisualStyleBackColor = true;
+            // 
+            // checkBox13
+            // 
+            this.checkBox13.AutoSize = true;
+            this.checkBox13.Location = new System.Drawing.Point(7, 49);
+            this.checkBox13.Name = "checkBox13";
+            this.checkBox13.Size = new System.Drawing.Size(53, 17);
+            this.checkBox13.TabIndex = 2;
+            this.checkBox13.Tag = "Tier3";
+            this.checkBox13.Text = "Tier 3";
+            this.checkBox13.UseVisualStyleBackColor = true;
+            // 
+            // checkBox18
+            // 
+            this.checkBox18.AutoSize = true;
+            this.checkBox18.Location = new System.Drawing.Point(96, 118);
+            this.checkBox18.Name = "checkBox18";
+            this.checkBox18.Size = new System.Drawing.Size(59, 17);
+            this.checkBox18.TabIndex = 12;
+            this.checkBox18.Tag = "Tier13";
+            this.checkBox18.Text = "Tier 13";
+            this.checkBox18.UseVisualStyleBackColor = true;
+            // 
+            // checkBox19
+            // 
+            this.checkBox19.AutoSize = true;
+            this.checkBox19.Location = new System.Drawing.Point(7, 72);
+            this.checkBox19.Name = "checkBox19";
+            this.checkBox19.Size = new System.Drawing.Size(53, 17);
+            this.checkBox19.TabIndex = 3;
+            this.checkBox19.Tag = "Tier4";
+            this.checkBox19.Text = "Tier 4";
+            this.checkBox19.UseVisualStyleBackColor = true;
+            // 
+            // checkBox20
+            // 
+            this.checkBox20.AutoSize = true;
+            this.checkBox20.Location = new System.Drawing.Point(96, 95);
+            this.checkBox20.Name = "checkBox20";
+            this.checkBox20.Size = new System.Drawing.Size(59, 17);
+            this.checkBox20.TabIndex = 11;
+            this.checkBox20.Tag = "Tier12";
+            this.checkBox20.Text = "Tier 12";
+            this.checkBox20.UseVisualStyleBackColor = true;
+            // 
+            // checkBox21
+            // 
+            this.checkBox21.AutoSize = true;
+            this.checkBox21.Location = new System.Drawing.Point(7, 95);
+            this.checkBox21.Name = "checkBox21";
+            this.checkBox21.Size = new System.Drawing.Size(53, 17);
+            this.checkBox21.TabIndex = 4;
+            this.checkBox21.Tag = "Tier5";
+            this.checkBox21.Text = "Tier 5";
+            this.checkBox21.UseVisualStyleBackColor = true;
+            // 
+            // checkBox22
+            // 
+            this.checkBox22.AutoSize = true;
+            this.checkBox22.Location = new System.Drawing.Point(96, 72);
+            this.checkBox22.Name = "checkBox22";
+            this.checkBox22.Size = new System.Drawing.Size(59, 17);
+            this.checkBox22.TabIndex = 10;
+            this.checkBox22.Tag = "Tier11";
+            this.checkBox22.Text = "Tier 11";
+            this.checkBox22.UseVisualStyleBackColor = true;
+            // 
+            // checkBox23
+            // 
+            this.checkBox23.AutoSize = true;
+            this.checkBox23.Location = new System.Drawing.Point(7, 118);
+            this.checkBox23.Name = "checkBox23";
+            this.checkBox23.Size = new System.Drawing.Size(53, 17);
+            this.checkBox23.TabIndex = 5;
+            this.checkBox23.Tag = "Tier6";
+            this.checkBox23.Text = "Tier 6";
+            this.checkBox23.UseVisualStyleBackColor = true;
+            // 
+            // checkBox24
+            // 
+            this.checkBox24.AutoSize = true;
+            this.checkBox24.Location = new System.Drawing.Point(96, 49);
+            this.checkBox24.Name = "checkBox24";
+            this.checkBox24.Size = new System.Drawing.Size(59, 17);
+            this.checkBox24.TabIndex = 9;
+            this.checkBox24.Tag = "Tier10";
+            this.checkBox24.Text = "Tier 10";
+            this.checkBox24.UseVisualStyleBackColor = true;
+            // 
+            // checkBox25
+            // 
+            this.checkBox25.AutoSize = true;
+            this.checkBox25.Location = new System.Drawing.Point(7, 141);
+            this.checkBox25.Name = "checkBox25";
+            this.checkBox25.Size = new System.Drawing.Size(53, 17);
+            this.checkBox25.TabIndex = 6;
+            this.checkBox25.Tag = "Tier7";
+            this.checkBox25.Text = "Tier 7";
+            this.checkBox25.UseVisualStyleBackColor = true;
+            // 
+            // checkBox26
+            // 
+            this.checkBox26.AutoSize = true;
+            this.checkBox26.Location = new System.Drawing.Point(96, 26);
+            this.checkBox26.Name = "checkBox26";
+            this.checkBox26.Size = new System.Drawing.Size(53, 17);
+            this.checkBox26.TabIndex = 8;
+            this.checkBox26.Tag = "Tier9";
+            this.checkBox26.Text = "Tier 9";
+            this.checkBox26.UseVisualStyleBackColor = true;
+            // 
+            // checkBox27
+            // 
+            this.checkBox27.AutoSize = true;
+            this.checkBox27.Location = new System.Drawing.Point(96, 3);
+            this.checkBox27.Name = "checkBox27";
+            this.checkBox27.Size = new System.Drawing.Size(53, 17);
+            this.checkBox27.TabIndex = 7;
+            this.checkBox27.Tag = "Tier8";
+            this.checkBox27.Text = "Tier 8";
+            this.checkBox27.UseVisualStyleBackColor = true;
+            // 
+            // UserdefinitionsTPSummary
+            // 
+            this.UserdefinitionsTPSummary.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.UserdefinitionsTPSummary.Controls.Add(this.checkBox28);
+            this.UserdefinitionsTPSummary.Controls.Add(this.checkBox29);
+            this.UserdefinitionsTPSummary.Controls.Add(this.checkBox30);
+            this.UserdefinitionsTPSummary.Controls.Add(this.checkBox31);
+            this.UserdefinitionsTPSummary.Controls.Add(this.checkBox32);
+            this.UserdefinitionsTPSummary.Controls.Add(this.checkBox33);
+            this.UserdefinitionsTPSummary.Controls.Add(this.checkBox34);
+            this.UserdefinitionsTPSummary.Controls.Add(this.checkBox35);
+            this.UserdefinitionsTPSummary.Controls.Add(this.checkBox36);
+            this.UserdefinitionsTPSummary.Controls.Add(this.checkBox37);
+            this.UserdefinitionsTPSummary.Controls.Add(this.checkBox38);
+            this.UserdefinitionsTPSummary.Controls.Add(this.checkBox39);
+            this.UserdefinitionsTPSummary.Controls.Add(this.checkBox40);
+            this.UserdefinitionsTPSummary.Controls.Add(this.checkBox41);
+            this.UserdefinitionsTPSummary.Controls.Add(this.checkBox42);
+            this.UserdefinitionsTPSummary.Location = new System.Drawing.Point(4, 25);
+            this.UserdefinitionsTPSummary.Name = "UserdefinitionsTPSummary";
+            this.UserdefinitionsTPSummary.Padding = new System.Windows.Forms.Padding(3);
+            this.UserdefinitionsTPSummary.Size = new System.Drawing.Size(240, 160);
+            this.UserdefinitionsTPSummary.TabIndex = 1;
+            this.UserdefinitionsTPSummary.Text = "User Definitions";
+            // 
+            // checkBox28
+            // 
+            this.checkBox28.AutoSize = true;
+            this.checkBox28.Location = new System.Drawing.Point(7, 3);
+            this.checkBox28.Name = "checkBox28";
+            this.checkBox28.Size = new System.Drawing.Size(53, 17);
+            this.checkBox28.TabIndex = 15;
+            this.checkBox28.Tag = "Tier1";
+            this.checkBox28.Text = "Tier 1";
+            this.checkBox28.UseVisualStyleBackColor = true;
+            // 
+            // checkBox29
+            // 
+            this.checkBox29.AutoSize = true;
+            this.checkBox29.Location = new System.Drawing.Point(7, 26);
+            this.checkBox29.Name = "checkBox29";
+            this.checkBox29.Size = new System.Drawing.Size(59, 17);
+            this.checkBox29.TabIndex = 29;
+            this.checkBox29.Tag = "Tier15";
+            this.checkBox29.Text = "Tier 15";
+            this.checkBox29.UseVisualStyleBackColor = true;
+            // 
+            // checkBox30
+            // 
+            this.checkBox30.AutoSize = true;
+            this.checkBox30.Location = new System.Drawing.Point(7, 49);
+            this.checkBox30.Name = "checkBox30";
+            this.checkBox30.Size = new System.Drawing.Size(53, 17);
+            this.checkBox30.TabIndex = 16;
+            this.checkBox30.Tag = "Tier2";
+            this.checkBox30.Text = "Tier 2";
+            this.checkBox30.UseVisualStyleBackColor = true;
+            // 
+            // checkBox31
+            // 
+            this.checkBox31.AutoSize = true;
+            this.checkBox31.Location = new System.Drawing.Point(7, 72);
+            this.checkBox31.Name = "checkBox31";
+            this.checkBox31.Size = new System.Drawing.Size(59, 17);
+            this.checkBox31.TabIndex = 28;
+            this.checkBox31.Tag = "Tier14";
+            this.checkBox31.Text = "Tier 14";
+            this.checkBox31.UseVisualStyleBackColor = true;
+            // 
+            // checkBox32
+            // 
+            this.checkBox32.AutoSize = true;
+            this.checkBox32.Location = new System.Drawing.Point(7, 95);
+            this.checkBox32.Name = "checkBox32";
+            this.checkBox32.Size = new System.Drawing.Size(53, 17);
+            this.checkBox32.TabIndex = 17;
+            this.checkBox32.Tag = "Tier3";
+            this.checkBox32.Text = "Tier 3";
+            this.checkBox32.UseVisualStyleBackColor = true;
+            // 
+            // checkBox33
+            // 
+            this.checkBox33.AutoSize = true;
+            this.checkBox33.Location = new System.Drawing.Point(7, 118);
+            this.checkBox33.Name = "checkBox33";
+            this.checkBox33.Size = new System.Drawing.Size(59, 17);
+            this.checkBox33.TabIndex = 27;
+            this.checkBox33.Tag = "Tier13";
+            this.checkBox33.Text = "Tier 13";
+            this.checkBox33.UseVisualStyleBackColor = true;
+            // 
+            // checkBox34
+            // 
+            this.checkBox34.AutoSize = true;
+            this.checkBox34.Location = new System.Drawing.Point(7, 140);
+            this.checkBox34.Name = "checkBox34";
+            this.checkBox34.Size = new System.Drawing.Size(53, 17);
+            this.checkBox34.TabIndex = 18;
+            this.checkBox34.Tag = "Tier4";
+            this.checkBox34.Text = "Tier 4";
+            this.checkBox34.UseVisualStyleBackColor = true;
+            // 
+            // checkBox35
+            // 
+            this.checkBox35.AutoSize = true;
+            this.checkBox35.Location = new System.Drawing.Point(96, 3);
+            this.checkBox35.Name = "checkBox35";
+            this.checkBox35.Size = new System.Drawing.Size(59, 17);
+            this.checkBox35.TabIndex = 26;
+            this.checkBox35.Tag = "Tier12";
+            this.checkBox35.Text = "Tier 12";
+            this.checkBox35.UseVisualStyleBackColor = true;
+            // 
+            // checkBox36
+            // 
+            this.checkBox36.AutoSize = true;
+            this.checkBox36.Location = new System.Drawing.Point(96, 26);
+            this.checkBox36.Name = "checkBox36";
+            this.checkBox36.Size = new System.Drawing.Size(53, 17);
+            this.checkBox36.TabIndex = 19;
+            this.checkBox36.Tag = "Tier5";
+            this.checkBox36.Text = "Tier 5";
+            this.checkBox36.UseVisualStyleBackColor = true;
+            // 
+            // checkBox37
+            // 
+            this.checkBox37.AutoSize = true;
+            this.checkBox37.Location = new System.Drawing.Point(96, 49);
+            this.checkBox37.Name = "checkBox37";
+            this.checkBox37.Size = new System.Drawing.Size(59, 17);
+            this.checkBox37.TabIndex = 25;
+            this.checkBox37.Tag = "Tier11";
+            this.checkBox37.Text = "Tier 11";
+            this.checkBox37.UseVisualStyleBackColor = true;
+            // 
+            // checkBox38
+            // 
+            this.checkBox38.AutoSize = true;
+            this.checkBox38.Location = new System.Drawing.Point(96, 72);
+            this.checkBox38.Name = "checkBox38";
+            this.checkBox38.Size = new System.Drawing.Size(53, 17);
+            this.checkBox38.TabIndex = 20;
+            this.checkBox38.Tag = "Tier6";
+            this.checkBox38.Text = "Tier 6";
+            this.checkBox38.UseVisualStyleBackColor = true;
+            // 
+            // checkBox39
+            // 
+            this.checkBox39.AutoSize = true;
+            this.checkBox39.Location = new System.Drawing.Point(96, 95);
+            this.checkBox39.Name = "checkBox39";
+            this.checkBox39.Size = new System.Drawing.Size(59, 17);
+            this.checkBox39.TabIndex = 24;
+            this.checkBox39.Tag = "Tier10";
+            this.checkBox39.Text = "Tier 10";
+            this.checkBox39.UseVisualStyleBackColor = true;
+            // 
+            // checkBox40
+            // 
+            this.checkBox40.AutoSize = true;
+            this.checkBox40.Location = new System.Drawing.Point(96, 118);
+            this.checkBox40.Name = "checkBox40";
+            this.checkBox40.Size = new System.Drawing.Size(53, 17);
+            this.checkBox40.TabIndex = 21;
+            this.checkBox40.Tag = "Tier7";
+            this.checkBox40.Text = "Tier 7";
+            this.checkBox40.UseVisualStyleBackColor = true;
+            // 
+            // checkBox41
+            // 
+            this.checkBox41.AutoSize = true;
+            this.checkBox41.Location = new System.Drawing.Point(96, 140);
+            this.checkBox41.Name = "checkBox41";
+            this.checkBox41.Size = new System.Drawing.Size(53, 17);
+            this.checkBox41.TabIndex = 23;
+            this.checkBox41.Tag = "Tier9";
+            this.checkBox41.Text = "Tier 9";
+            this.checkBox41.UseVisualStyleBackColor = true;
+            // 
+            // checkBox42
+            // 
+            this.checkBox42.AutoSize = true;
+            this.checkBox42.Location = new System.Drawing.Point(181, 3);
+            this.checkBox42.Name = "checkBox42";
+            this.checkBox42.Size = new System.Drawing.Size(53, 17);
+            this.checkBox42.TabIndex = 22;
+            this.checkBox42.Tag = "Tier8";
+            this.checkBox42.Text = "Tier 8";
+            this.checkBox42.UseVisualStyleBackColor = true;
+            // 
+            // groupBox19
+            // 
+            this.groupBox19.Controls.Add(this.checkBox43);
+            this.groupBox19.Controls.Add(this.checkBox44);
+            this.groupBox19.Controls.Add(this.checkBox45);
+            this.groupBox19.Controls.Add(this.checkBox46);
+            this.groupBox19.Controls.Add(this.checkBox47);
+            this.groupBox19.Controls.Add(this.checkBox48);
+            this.groupBox19.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox19.Location = new System.Drawing.Point(266, 91);
+            this.groupBox19.Name = "groupBox19";
+            this.groupBox19.Size = new System.Drawing.Size(202, 130);
+            this.groupBox19.TabIndex = 8;
+            this.groupBox19.TabStop = false;
+            this.groupBox19.Text = "Flags";
+            // 
+            // checkBox43
+            // 
+            this.checkBox43.AutoSize = true;
+            this.checkBox43.Location = new System.Drawing.Point(8, 102);
+            this.checkBox43.Name = "checkBox43";
+            this.checkBox43.Size = new System.Drawing.Size(55, 17);
+            this.checkBox43.TabIndex = 5;
+            this.checkBox43.Text = "deloot";
+            this.checkBox43.UseVisualStyleBackColor = true;
+            // 
+            // checkBox44
+            // 
+            this.checkBox44.AutoSize = true;
+            this.checkBox44.Location = new System.Drawing.Point(8, 85);
+            this.checkBox44.Name = "checkBox44";
+            this.checkBox44.Size = new System.Drawing.Size(59, 17);
+            this.checkBox44.TabIndex = 4;
+            this.checkBox44.Text = "crafted";
+            this.checkBox44.UseVisualStyleBackColor = true;
+            // 
+            // checkBox45
+            // 
+            this.checkBox45.AutoSize = true;
+            this.checkBox45.Location = new System.Drawing.Point(8, 67);
+            this.checkBox45.Name = "checkBox45";
+            this.checkBox45.Size = new System.Drawing.Size(101, 17);
+            this.checkBox45.TabIndex = 3;
+            this.checkBox45.Text = "count_in_player";
+            this.checkBox45.UseVisualStyleBackColor = true;
+            // 
+            // checkBox46
+            // 
+            this.checkBox46.AutoSize = true;
+            this.checkBox46.Location = new System.Drawing.Point(8, 49);
+            this.checkBox46.Name = "checkBox46";
+            this.checkBox46.Size = new System.Drawing.Size(93, 17);
+            this.checkBox46.TabIndex = 2;
+            this.checkBox46.Text = "count_in_map";
+            this.checkBox46.UseVisualStyleBackColor = true;
+            // 
+            // checkBox47
+            // 
+            this.checkBox47.AutoSize = true;
+            this.checkBox47.Location = new System.Drawing.Point(8, 32);
+            this.checkBox47.Name = "checkBox47";
+            this.checkBox47.Size = new System.Drawing.Size(109, 17);
+            this.checkBox47.TabIndex = 1;
+            this.checkBox47.Text = "count_in_hoarder";
+            this.checkBox47.UseVisualStyleBackColor = true;
+            // 
+            // checkBox48
+            // 
+            this.checkBox48.AutoSize = true;
+            this.checkBox48.Location = new System.Drawing.Point(8, 14);
+            this.checkBox48.Name = "checkBox48";
+            this.checkBox48.Size = new System.Drawing.Size(100, 17);
+            this.checkBox48.TabIndex = 0;
+            this.checkBox48.Text = "count_in_cargo";
+            this.checkBox48.UseVisualStyleBackColor = true;
+            // 
+            // groupBox20
+            // 
+            this.groupBox20.Controls.Add(this.darkButton12);
+            this.groupBox20.Controls.Add(this.comboBox8);
+            this.groupBox20.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox20.Location = new System.Drawing.Point(250, 7);
+            this.groupBox20.Name = "groupBox20";
+            this.groupBox20.Size = new System.Drawing.Size(202, 80);
+            this.groupBox20.TabIndex = 24;
+            this.groupBox20.TabStop = false;
+            this.groupBox20.Text = "Add Category";
+            // 
+            // darkButton12
+            // 
+            this.darkButton12.Location = new System.Drawing.Point(6, 50);
+            this.darkButton12.Name = "darkButton12";
+            this.darkButton12.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton12.Size = new System.Drawing.Size(178, 19);
+            this.darkButton12.TabIndex = 3;
+            this.darkButton12.Text = "Add Selected";
+            // 
+            // comboBox8
+            // 
+            this.comboBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.comboBox8.ForeColor = System.Drawing.SystemColors.Control;
+            this.comboBox8.FormattingEnabled = true;
+            this.comboBox8.Location = new System.Drawing.Point(6, 23);
+            this.comboBox8.Name = "comboBox8";
+            this.comboBox8.Size = new System.Drawing.Size(178, 21);
+            this.comboBox8.TabIndex = 1;
+            // 
+            // darkButton13
+            // 
+            this.darkButton13.Location = new System.Drawing.Point(9, 63);
+            this.darkButton13.Name = "darkButton13";
+            this.darkButton13.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton13.Size = new System.Drawing.Size(235, 23);
+            this.darkButton13.TabIndex = 26;
+            this.darkButton13.Text = "Remove Selected";
+            // 
+            // listBox5
+            // 
+            this.listBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.listBox5.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.listBox5.ForeColor = System.Drawing.SystemColors.Control;
+            this.listBox5.FormattingEnabled = true;
+            this.listBox5.Location = new System.Drawing.Point(9, 14);
+            this.listBox5.Name = "listBox5";
+            this.listBox5.Size = new System.Drawing.Size(235, 43);
+            this.listBox5.TabIndex = 25;
+            // 
+            // treeView2
+            // 
+            this.treeView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.treeView2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.treeView2.ForeColor = System.Drawing.SystemColors.Control;
+            this.treeView2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.treeView2.Location = new System.Drawing.Point(492, 6);
+            this.treeView2.Name = "treeView2";
+            this.treeView2.Size = new System.Drawing.Size(345, 563);
+            this.treeView2.TabIndex = 45;
+            // 
+            // darkButton14
+            // 
+            this.darkButton14.Location = new System.Drawing.Point(266, 19);
+            this.darkButton14.Name = "darkButton14";
+            this.darkButton14.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton14.Size = new System.Drawing.Size(202, 27);
+            this.darkButton14.TabIndex = 12;
+            this.darkButton14.Text = "Get Summary";
+            this.darkButton14.Click += new System.EventHandler(this.darkButton14_Click);
+            // 
+            // darkButton15
+            // 
+            this.darkButton15.Location = new System.Drawing.Point(266, 54);
+            this.darkButton15.Name = "darkButton15";
+            this.darkButton15.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton15.Size = new System.Drawing.Size(202, 27);
+            this.darkButton15.TabIndex = 13;
+            this.darkButton15.Text = "Clear";
+            this.darkButton15.Click += new System.EventHandler(this.darkButton15_Click);
+            // 
             // Economy_Manager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1084, 602);
+            this.ClientSize = new System.Drawing.Size(1084, 677);
             this.Controls.Add(this.tabControl4);
             this.Controls.Add(this.darkToolStrip22);
-            this.Controls.Add(this.darkButton4);
             this.Controls.Add(this.darkToolStrip21);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Economy_Manager";
@@ -2498,6 +3349,22 @@ namespace DayZeEditor
             this.tabControl6.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.TypesContextMenu.ResumeLayout(false);
+            this.TypesSummaryTab.ResumeLayout(false);
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox16.ResumeLayout(false);
+            this.groupBox17.ResumeLayout(false);
+            this.groupBox18.ResumeLayout(false);
+            this.tabControl8.ResumeLayout(false);
+            this.SetdefinitionsTPSummary.ResumeLayout(false);
+            this.SetdefinitionsTPSummary.PerformLayout();
+            this.UserdefinitionsTPSummary.ResumeLayout(false);
+            this.UserdefinitionsTPSummary.PerformLayout();
+            this.groupBox19.ResumeLayout(false);
+            this.groupBox19.PerformLayout();
+            this.groupBox20.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2569,7 +3436,6 @@ namespace DayZeEditor
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private DarkUI.Controls.DarkButton darkButton4;
         private System.Windows.Forms.TextBox textBox1;
         private DarkUI.Controls.DarkToolStrip2 darkToolStrip21;
         private System.Windows.Forms.ToolStripButton SaveFileButton;
@@ -2676,5 +3542,73 @@ namespace DayZeEditor
         private System.Windows.Forms.TabControl tabControl7;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.ListBox EventsLIstLB;
+        private System.Windows.Forms.ToolStripButton toolStripButton7;
+        private System.Windows.Forms.ToolStripLabel NomCountLabel;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton toolStripButton8;
+        private System.Windows.Forms.TabPage TypesSummaryTab;
+        private System.Windows.Forms.TreeView treeView2;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.GroupBox groupBox18;
+        private System.Windows.Forms.TabControl tabControl8;
+        private System.Windows.Forms.TabPage SetdefinitionsTPSummary;
+        private System.Windows.Forms.CheckBox checkBox7;
+        private System.Windows.Forms.CheckBox checkBox10;
+        private System.Windows.Forms.CheckBox checkBox11;
+        private System.Windows.Forms.CheckBox checkBox12;
+        private System.Windows.Forms.CheckBox checkBox13;
+        private System.Windows.Forms.CheckBox checkBox18;
+        private System.Windows.Forms.CheckBox checkBox19;
+        private System.Windows.Forms.CheckBox checkBox20;
+        private System.Windows.Forms.CheckBox checkBox21;
+        private System.Windows.Forms.CheckBox checkBox22;
+        private System.Windows.Forms.CheckBox checkBox23;
+        private System.Windows.Forms.CheckBox checkBox24;
+        private System.Windows.Forms.CheckBox checkBox25;
+        private System.Windows.Forms.CheckBox checkBox26;
+        private System.Windows.Forms.CheckBox checkBox27;
+        private System.Windows.Forms.TabPage UserdefinitionsTPSummary;
+        private System.Windows.Forms.CheckBox checkBox28;
+        private System.Windows.Forms.CheckBox checkBox29;
+        private System.Windows.Forms.CheckBox checkBox30;
+        private System.Windows.Forms.CheckBox checkBox31;
+        private System.Windows.Forms.CheckBox checkBox32;
+        private System.Windows.Forms.CheckBox checkBox33;
+        private System.Windows.Forms.CheckBox checkBox34;
+        private System.Windows.Forms.CheckBox checkBox35;
+        private System.Windows.Forms.CheckBox checkBox36;
+        private System.Windows.Forms.CheckBox checkBox37;
+        private System.Windows.Forms.CheckBox checkBox38;
+        private System.Windows.Forms.CheckBox checkBox39;
+        private System.Windows.Forms.CheckBox checkBox40;
+        private System.Windows.Forms.CheckBox checkBox41;
+        private System.Windows.Forms.CheckBox checkBox42;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private DarkUI.Controls.DarkButton darkButton13;
+        private System.Windows.Forms.ListBox listBox5;
+        private System.Windows.Forms.GroupBox groupBox20;
+        private DarkUI.Controls.DarkButton darkButton12;
+        private System.Windows.Forms.ComboBox comboBox8;
+        private System.Windows.Forms.GroupBox groupBox14;
+        private System.Windows.Forms.GroupBox groupBox15;
+        private System.Windows.Forms.ComboBox comboBox6;
+        private DarkUI.Controls.DarkButton darkButton4;
+        private System.Windows.Forms.ListBox listBox3;
+        private DarkUI.Controls.DarkButton darkButton9;
+        private System.Windows.Forms.GroupBox groupBox16;
+        private System.Windows.Forms.GroupBox groupBox17;
+        private DarkUI.Controls.DarkButton darkButton10;
+        private System.Windows.Forms.ComboBox comboBox7;
+        private DarkUI.Controls.DarkButton darkButton11;
+        private System.Windows.Forms.ListBox listBox4;
+        private System.Windows.Forms.GroupBox groupBox19;
+        private System.Windows.Forms.CheckBox checkBox43;
+        private System.Windows.Forms.CheckBox checkBox44;
+        private System.Windows.Forms.CheckBox checkBox45;
+        private System.Windows.Forms.CheckBox checkBox46;
+        private System.Windows.Forms.CheckBox checkBox47;
+        private System.Windows.Forms.CheckBox checkBox48;
+        private DarkUI.Controls.DarkButton darkButton15;
+        private DarkUI.Controls.DarkButton darkButton14;
     }
 }

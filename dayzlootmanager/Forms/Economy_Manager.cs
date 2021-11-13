@@ -70,9 +70,16 @@ namespace DayZeEditor
             comboBox2.DataSource = currentproject.limitfefinitions.lists.usageflags.usage;
             comboBox4.DataSource = currentproject.limitfefinitions.lists.tags.tag;
 
+            comboBox8.DataSource = currentproject.limitfefinitions.lists.categories.category;
+            comboBox7.DataSource = currentproject.limitfefinitions.lists.usageflags.usage;
+            comboBox6.DataSource = currentproject.limitfefinitions.lists.tags.tag;
+
             PopulateTreeView();
             Loadevents();
             populateEconmyTreeview();
+
+            SetSummarytiers();
+            NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
             isUserInteraction = true;
         }
         private void populateEconmyTreeview()
@@ -176,6 +183,12 @@ namespace DayZeEditor
             if (tabControl3.SelectedIndex == 2)
                 toolStripButton6.Checked = true;
         }
+        private void toolStripButton8_Click(object sender, EventArgs e)
+        {
+            tabControl4.SelectedIndex = 3;
+            if (tabControl3.SelectedIndex== 3)
+                toolStripButton8.Checked = true;
+        }
         private void tabControl4_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (tabControl4.SelectedIndex)
@@ -183,29 +196,71 @@ namespace DayZeEditor
                 case 0:
                     toolStripButton5.Checked = false;
                     toolStripButton6.Checked = false;
+                    toolStripButton8.Checked = false;
                     break;
                 case 1:
                     toolStripButton3.Checked = false;
                     toolStripButton6.Checked = false;
+                    toolStripButton8.Checked = false;
                     break;
                 case 2:
                     toolStripButton3.Checked = false;
                     toolStripButton5.Checked = false;
+                    toolStripButton8.Checked = false;
+                    break;
+                case 3:
+                    toolStripButton3.Checked = false;
+                    toolStripButton5.Checked = false;
+                    toolStripButton6.Checked = false;
                     break;
                 default:
                     break;
             }
         }
         #region Types
+        public void SetSummarytiers()
+        {
+            List<CheckBox> checkboxesSummary = SetdefinitionsTPSummary.Controls.OfType<CheckBox>().ToList();
+            foreach (CheckBox cb in checkboxesSummary)
+            {
+                cb.Visible = false;
+            }
+            int index = 14;
+            foreach (value value in currentproject.limitfefinitions.lists.valueflags.value)
+            {
+                CheckBox cb = checkboxesSummary.First(x => x.Tag.ToString() == value.name);
+                cb.Tag = value.name;
+                cb.Checked = false;
+                cb.Visible = true;
+                cb.Text = value.name;
+                index--;
+            }
+            checkboxesSummary = UserdefinitionsTPSummary.Controls.OfType<CheckBox>().ToList();
+            checkboxesSummary = checkboxesSummary.OrderBy(x => x.Name).ToList();
+            foreach (CheckBox cb in checkboxesSummary)
+            {
+                cb.Visible = false;
+            }
+            index = 0;
+            foreach (user user in currentproject.limitfefinitionsuser.user_lists.valueflags.user)
+            {
+                CheckBox cb = checkboxesSummary[index];
+                cb.Tag = user.name;
+                cb.Visible = true;
+                cb.Checked = false;
+                cb.Text = user.name;
+                index++;
+            }
+        }
         public void setNumberofTiers()
         {
-
-
             List<CheckBox> checkboxes = SetdefinitionsTP.Controls.OfType<CheckBox>().ToList();
+            
             foreach (CheckBox cb in checkboxes)
             {
                 cb.Visible = false;
             }
+
             int index = 14;
             foreach (value value in currentproject.limitfefinitions.lists.valueflags.value)
             {
@@ -244,8 +299,7 @@ namespace DayZeEditor
             else
                 tabControl3.SelectedIndex = 0;
         }
-
-        private void darkButton4_Click(object sender, EventArgs e)
+        private void toolStripButton7_Click(object sender, EventArgs e)
         {
             Loot_Info f2 = new Loot_Info();
             f2.ShowDialog();
@@ -430,6 +484,8 @@ namespace DayZeEditor
             treeView1.Nodes.SetExpansionState(savedExpansionState);
             treeView1.EndUpdate();
             populateEconmyTreeview();
+            currentproject.SetTotNomCount();
+            NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
         }
         private void DeleteTypesTSMI_Click(object sender, EventArgs e)
         {
@@ -480,6 +536,8 @@ namespace DayZeEditor
                 treeView1.EndUpdate();
             }
             populateEconmyTreeview();
+            currentproject.SetTotNomCount();
+            NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
         }
         private void AddtypesTSMI_Click(object sender, EventArgs e)
         {
@@ -545,6 +603,8 @@ namespace DayZeEditor
                 }
             }
             populateEconmyTreeview();
+            currentproject.SetTotNomCount();
+            NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
         }
         private void PopulateLootPartInfo()
         {
@@ -1233,8 +1293,139 @@ namespace DayZeEditor
             EventsLB.Refresh();
         }
 
+
+
+
         #endregion events
 
+        private void darkButton15_Click(object sender, EventArgs e)
+        {
+            treeView2.Nodes.Clear();
+        }
 
+
+        public bool typeinfilterlist(type type, List<string> Queryitems)
+        {
+            if(type.name == "B95")
+            {
+                string stop = "";
+            }
+            bool istrue = false;
+            foreach (string filter in Queryitems)
+            {
+                string[] fsplit = filter.Split(',');
+                switch (fsplit[1])
+                {
+                    case "definintions":
+                        if (type.value != null)
+                        {
+                            istrue = false;
+                            foreach (value v in type.value)
+                            {
+                                if (v.name == fsplit[0])
+                                {
+                                    istrue = true;
+                                    break;
+                                }
+                            }
+                            if (istrue)
+                                break;
+                            return false;
+                        }
+                        return false;
+                }
+            }
+            if (istrue)
+                return true;
+            return false;
+        }
+        private void darkButton14_Click(object sender, EventArgs e)
+        {
+            List<string> Queryitems = new List<string>();
+            List<CheckBox> checkboxesSummary = SetdefinitionsTPSummary.Controls.OfType<CheckBox>().ToList();
+            foreach (CheckBox cb in checkboxesSummary)
+            {
+                if (cb.Visible == true && cb.Checked)
+                    Queryitems.Add(cb.Tag.ToString() + ",definintions");
+            }
+            string stop = "";
+
+
+
+
+
+
+
+
+            treeView2.Nodes.Clear();
+            TreeNode root = new TreeNode(Path.GetFileName(filename))
+            {
+                Tag = "Parent"
+            };
+            //Set Vanilla Treenode types
+            TreeNode vanilla = new TreeNode("Vanilla Types")
+            {
+                Tag = "VanillaTypes"
+            };
+            foreach (type type in vanillatypes.types.type)
+            {
+                if(!typeinfilterlist(type, Queryitems)) { continue; }
+                string cat = "other";
+                if (type.category != null)
+                    cat = type.category.name;
+                TreeNode typenode = new TreeNode(type.name)
+                {
+                    Tag = type
+                };
+                if (!vanilla.Nodes.ContainsKey(cat))
+                {
+                    TreeNode newcatnode = new TreeNode(cat)
+                    {
+                        Name = cat,
+                        Tag = cat
+                    };
+                    vanilla.Nodes.Add(newcatnode);
+                }
+                vanilla.Nodes[cat].Nodes.Add(typenode);
+            }
+            root.Nodes.Add(vanilla);
+
+            if (ModTypes.Count > 0)
+            {
+                foreach (TypesFile tf in ModTypes)
+                {
+                    TreeNode ModTypes = new TreeNode(tf.modname)
+                    {
+                        Tag = tf.modname
+                    };
+                    foreach (type type in tf.types.type)
+                    {
+                        if (!typeinfilterlist(type, Queryitems)) { continue; }
+                        string cat = "other";
+                        if (type.category != null)
+                            cat = type.category.name;
+                        TreeNode typenode = new TreeNode(type.name)
+                        {
+                            Tag = type
+                        };
+                        if (!ModTypes.Nodes.ContainsKey(cat))
+                        {
+                            TreeNode newcatnode = new TreeNode(cat)
+                            {
+                                Name = cat,
+                                Tag = cat
+                            };
+                            ModTypes.Nodes.Add(newcatnode);
+                        }
+                        ModTypes.Nodes[cat].Nodes.Add(typenode);
+                    }
+
+
+                    root.Nodes.Add(ModTypes);
+                }
+            }
+
+            treeView2.Nodes.Add(root);
+        }
     }
 }

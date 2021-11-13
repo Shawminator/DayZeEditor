@@ -90,6 +90,9 @@ namespace DayZeEditor
         [JsonIgnore]
         public globalsconfig gloabsconfig { get; set; }
 
+        [JsonIgnore]
+        public int TotalNomCount { get; set; }
+
         private TypesFile vanillaTypes;
         private BindingList<TypesFile> ModTypesList;
 
@@ -177,6 +180,24 @@ namespace DayZeEditor
         internal void SetGlobals()
         {
             gloabsconfig = new globalsconfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\db\\globals.xml");
+        }
+
+        internal void SetTotNomCount()
+        {
+            TotalNomCount = 0;
+            foreach(type _type in vanillaTypes.types.type)
+            {
+                if(_type.nominal != null)
+                    TotalNomCount += _type.nominal;
+            }
+            foreach(TypesFile tf in ModTypesList)
+            {
+                foreach(type _type in tf.types.type)
+                {
+                    if (_type.nominal != null)
+                        TotalNomCount += _type.nominal;
+                }
+            }
         }
     }
 
