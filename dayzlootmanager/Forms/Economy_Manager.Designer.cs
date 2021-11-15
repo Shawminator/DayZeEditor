@@ -144,6 +144,8 @@ namespace DayZeEditor
             this.NomCountLabel = new System.Windows.Forms.ToolStripLabel();
             this.darkToolStrip22 = new DarkUI.Controls.DarkToolStrip2();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -201,27 +203,11 @@ namespace DayZeEditor
             this.tabControl6 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.EventsLB = new System.Windows.Forms.ListBox();
-            this.TypesContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.DeleteTypesTSMI = new System.Windows.Forms.ToolStripMenuItem();
-            this.AddTypesTSMI = new System.Windows.Forms.ToolStripMenuItem();
-            this.DeleteSpecificTypeTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.TypesSummaryTab = new System.Windows.Forms.TabPage();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
+            this.treeView2 = new System.Windows.Forms.TreeView();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.groupBox15 = new System.Windows.Forms.GroupBox();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
-            this.darkButton4 = new DarkUI.Controls.DarkButton();
-            this.listBox3 = new System.Windows.Forms.ListBox();
-            this.darkButton9 = new DarkUI.Controls.DarkButton();
-            this.groupBox16 = new System.Windows.Forms.GroupBox();
-            this.groupBox17 = new System.Windows.Forms.GroupBox();
-            this.darkButton10 = new DarkUI.Controls.DarkButton();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
-            this.darkButton11 = new DarkUI.Controls.DarkButton();
-            this.listBox4 = new System.Windows.Forms.ListBox();
+            this.darkButton15 = new DarkUI.Controls.DarkButton();
+            this.darkButton14 = new DarkUI.Controls.DarkButton();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
             this.tabControl8 = new System.Windows.Forms.TabControl();
             this.SetdefinitionsTPSummary = new System.Windows.Forms.TabPage();
@@ -256,6 +242,24 @@ namespace DayZeEditor
             this.checkBox40 = new System.Windows.Forms.CheckBox();
             this.checkBox41 = new System.Windows.Forms.CheckBox();
             this.checkBox42 = new System.Windows.Forms.CheckBox();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.darkButton13 = new DarkUI.Controls.DarkButton();
+            this.listBox5 = new System.Windows.Forms.ListBox();
+            this.groupBox20 = new System.Windows.Forms.GroupBox();
+            this.darkButton12 = new DarkUI.Controls.DarkButton();
+            this.comboBox8 = new System.Windows.Forms.ComboBox();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.darkButton4 = new DarkUI.Controls.DarkButton();
+            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.darkButton9 = new DarkUI.Controls.DarkButton();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.darkButton10 = new DarkUI.Controls.DarkButton();
+            this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.darkButton11 = new DarkUI.Controls.DarkButton();
+            this.listBox4 = new System.Windows.Forms.ListBox();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
             this.checkBox43 = new System.Windows.Forms.CheckBox();
             this.checkBox44 = new System.Windows.Forms.CheckBox();
@@ -263,14 +267,10 @@ namespace DayZeEditor
             this.checkBox46 = new System.Windows.Forms.CheckBox();
             this.checkBox47 = new System.Windows.Forms.CheckBox();
             this.checkBox48 = new System.Windows.Forms.CheckBox();
-            this.groupBox20 = new System.Windows.Forms.GroupBox();
-            this.darkButton12 = new DarkUI.Controls.DarkButton();
-            this.comboBox8 = new System.Windows.Forms.ComboBox();
-            this.darkButton13 = new DarkUI.Controls.DarkButton();
-            this.listBox5 = new System.Windows.Forms.ListBox();
-            this.treeView2 = new System.Windows.Forms.TreeView();
-            this.darkButton14 = new DarkUI.Controls.DarkButton();
-            this.darkButton15 = new DarkUI.Controls.DarkButton();
+            this.TypesContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.DeleteTypesTSMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddTypesTSMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteSpecificTypeTSMI = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -327,20 +327,20 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.nominalNUD)).BeginInit();
             this.tabControl6.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.TypesContextMenu.SuspendLayout();
             this.TypesSummaryTab.SuspendLayout();
             this.groupBox12.SuspendLayout();
-            this.groupBox13.SuspendLayout();
-            this.groupBox14.SuspendLayout();
-            this.groupBox15.SuspendLayout();
-            this.groupBox16.SuspendLayout();
-            this.groupBox17.SuspendLayout();
             this.groupBox18.SuspendLayout();
             this.tabControl8.SuspendLayout();
             this.SetdefinitionsTPSummary.SuspendLayout();
             this.UserdefinitionsTPSummary.SuspendLayout();
-            this.groupBox19.SuspendLayout();
+            this.groupBox13.SuspendLayout();
             this.groupBox20.SuspendLayout();
+            this.groupBox14.SuspendLayout();
+            this.groupBox15.SuspendLayout();
+            this.groupBox16.SuspendLayout();
+            this.groupBox17.SuspendLayout();
+            this.groupBox19.SuspendLayout();
+            this.TypesContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -413,7 +413,7 @@ namespace DayZeEditor
             this.tabControl1.Location = new System.Drawing.Point(3, 8);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(580, 553);
+            this.tabControl1.Size = new System.Drawing.Size(556, 553);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 6;
             // 
@@ -424,7 +424,7 @@ namespace DayZeEditor
             this.Collection.Controls.Add(this.groupBox8);
             this.Collection.Location = new System.Drawing.Point(4, 5);
             this.Collection.Name = "Collection";
-            this.Collection.Size = new System.Drawing.Size(572, 469);
+            this.Collection.Size = new System.Drawing.Size(548, 544);
             this.Collection.TabIndex = 1;
             this.Collection.Text = "tabPage2";
             // 
@@ -711,7 +711,7 @@ namespace DayZeEditor
             this.LootParts.Location = new System.Drawing.Point(4, 5);
             this.LootParts.Name = "LootParts";
             this.LootParts.Padding = new System.Windows.Forms.Padding(3);
-            this.LootParts.Size = new System.Drawing.Size(572, 544);
+            this.LootParts.Size = new System.Drawing.Size(548, 544);
             this.LootParts.TabIndex = 0;
             this.LootParts.Text = "tabPage1";
             // 
@@ -1696,7 +1696,7 @@ namespace DayZeEditor
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(62, 42);
+            this.toolStripButton2.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton2.Text = "Find Next";
             this.toolStripButton2.Visible = false;
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
@@ -1755,6 +1755,28 @@ namespace DayZeEditor
             this.toolStripButton3.Size = new System.Drawing.Size(40, 25);
             this.toolStripButton3.Text = "Types";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripSeparator3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripSeparator3.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator3.Visible = false;
+            // 
+            // toolStripButton8
+            // 
+            this.toolStripButton8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripButton8.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton8.Image")));
+            this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton8.Name = "toolStripButton8";
+            this.toolStripButton8.Size = new System.Drawing.Size(94, 25);
+            this.toolStripButton8.Text = "Types Summary";
+            this.toolStripButton8.Visible = false;
+            this.toolStripButton8.Click += new System.EventHandler(this.toolStripButton8_Click);
             // 
             // toolStripSeparator1
             // 
@@ -1830,7 +1852,7 @@ namespace DayZeEditor
             this.EconomyCoreTab.Location = new System.Drawing.Point(4, 25);
             this.EconomyCoreTab.Name = "EconomyCoreTab";
             this.EconomyCoreTab.Padding = new System.Windows.Forms.Padding(3);
-            this.EconomyCoreTab.Size = new System.Drawing.Size(1076, 500);
+            this.EconomyCoreTab.Size = new System.Drawing.Size(1076, 575);
             this.EconomyCoreTab.TabIndex = 1;
             this.EconomyCoreTab.Text = "Economy Core";
             // 
@@ -1840,7 +1862,7 @@ namespace DayZeEditor
             this.webBrowser1.Location = new System.Drawing.Point(3, 3);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(1070, 494);
+            this.webBrowser1.Size = new System.Drawing.Size(1070, 569);
             this.webBrowser1.TabIndex = 0;
             // 
             // EventsTab
@@ -1851,7 +1873,7 @@ namespace DayZeEditor
             this.EventsTab.Controls.Add(this.tabControl6);
             this.EventsTab.Location = new System.Drawing.Point(4, 25);
             this.EventsTab.Name = "EventsTab";
-            this.EventsTab.Size = new System.Drawing.Size(1076, 500);
+            this.EventsTab.Size = new System.Drawing.Size(1076, 575);
             this.EventsTab.TabIndex = 2;
             this.EventsTab.Text = "Events";
             // 
@@ -2483,36 +2505,6 @@ namespace DayZeEditor
             this.EventsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.EventsLB.SelectedIndexChanged += new System.EventHandler(this.EventsLB_SelectedIndexChanged);
             // 
-            // TypesContextMenu
-            // 
-            this.TypesContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.DeleteTypesTSMI,
-            this.AddTypesTSMI,
-            this.DeleteSpecificTypeTSMI});
-            this.TypesContextMenu.Name = "TypesContextMenu";
-            this.TypesContextMenu.Size = new System.Drawing.Size(179, 70);
-            // 
-            // DeleteTypesTSMI
-            // 
-            this.DeleteTypesTSMI.Name = "DeleteTypesTSMI";
-            this.DeleteTypesTSMI.Size = new System.Drawing.Size(178, 22);
-            this.DeleteTypesTSMI.Text = "Delete Types";
-            this.DeleteTypesTSMI.Click += new System.EventHandler(this.DeleteTypesTSMI_Click);
-            // 
-            // AddTypesTSMI
-            // 
-            this.AddTypesTSMI.Name = "AddTypesTSMI";
-            this.AddTypesTSMI.Size = new System.Drawing.Size(178, 22);
-            this.AddTypesTSMI.Text = "Add New Types";
-            this.AddTypesTSMI.Click += new System.EventHandler(this.AddtypesTSMI_Click);
-            // 
-            // DeleteSpecificTypeTSMI
-            // 
-            this.DeleteSpecificTypeTSMI.Name = "DeleteSpecificTypeTSMI";
-            this.DeleteSpecificTypeTSMI.Size = new System.Drawing.Size(178, 22);
-            this.DeleteSpecificTypeTSMI.Text = "Delete Specific Type";
-            this.DeleteSpecificTypeTSMI.Click += new System.EventHandler(this.DeleteSpecificTypeTSMI_Click);
-            // 
             // TypesSummaryTab
             // 
             this.TypesSummaryTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
@@ -2526,25 +2518,18 @@ namespace DayZeEditor
             this.TypesSummaryTab.TabIndex = 3;
             this.TypesSummaryTab.Text = "Types Summary";
             // 
-            // toolStripSeparator3
+            // treeView2
             // 
-            this.toolStripSeparator3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.toolStripSeparator3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
-            this.toolStripSeparator3.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
-            // 
-            // toolStripButton8
-            // 
-            this.toolStripButton8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
-            this.toolStripButton8.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton8.Image")));
-            this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton8.Name = "toolStripButton8";
-            this.toolStripButton8.Size = new System.Drawing.Size(94, 25);
-            this.toolStripButton8.Text = "Types Summary";
-            this.toolStripButton8.Click += new System.EventHandler(this.toolStripButton8_Click);
+            this.treeView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.treeView2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.treeView2.ForeColor = System.Drawing.SystemColors.Control;
+            this.treeView2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.treeView2.Location = new System.Drawing.Point(492, 6);
+            this.treeView2.Name = "treeView2";
+            this.treeView2.Size = new System.Drawing.Size(345, 563);
+            this.treeView2.TabIndex = 45;
             // 
             // groupBox12
             // 
@@ -2563,147 +2548,25 @@ namespace DayZeEditor
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Filter";
             // 
-            // groupBox13
+            // darkButton15
             // 
-            this.groupBox13.Controls.Add(this.darkButton13);
-            this.groupBox13.Controls.Add(this.listBox5);
-            this.groupBox13.Controls.Add(this.groupBox20);
-            this.groupBox13.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox13.Location = new System.Drawing.Point(6, 227);
-            this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(462, 92);
-            this.groupBox13.TabIndex = 6;
-            this.groupBox13.TabStop = false;
-            this.groupBox13.Text = "Info";
+            this.darkButton15.Location = new System.Drawing.Point(266, 54);
+            this.darkButton15.Name = "darkButton15";
+            this.darkButton15.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton15.Size = new System.Drawing.Size(202, 27);
+            this.darkButton15.TabIndex = 13;
+            this.darkButton15.Text = "Clear";
+            this.darkButton15.Click += new System.EventHandler(this.darkButton15_Click);
             // 
-            // groupBox14
+            // darkButton14
             // 
-            this.groupBox14.Controls.Add(this.groupBox15);
-            this.groupBox14.Controls.Add(this.listBox3);
-            this.groupBox14.Controls.Add(this.darkButton9);
-            this.groupBox14.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox14.Location = new System.Drawing.Point(6, 442);
-            this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(462, 114);
-            this.groupBox14.TabIndex = 11;
-            this.groupBox14.TabStop = false;
-            this.groupBox14.Text = "Tags";
-            // 
-            // groupBox15
-            // 
-            this.groupBox15.Controls.Add(this.comboBox6);
-            this.groupBox15.Controls.Add(this.darkButton4);
-            this.groupBox15.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox15.Location = new System.Drawing.Point(250, 8);
-            this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(202, 100);
-            this.groupBox15.TabIndex = 7;
-            this.groupBox15.TabStop = false;
-            this.groupBox15.Text = "Add Tag";
-            // 
-            // comboBox6
-            // 
-            this.comboBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.comboBox6.ForeColor = System.Drawing.SystemColors.Control;
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(10, 25);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(176, 21);
-            this.comboBox6.TabIndex = 1;
-            // 
-            // darkButton4
-            // 
-            this.darkButton4.Location = new System.Drawing.Point(8, 52);
-            this.darkButton4.Name = "darkButton4";
-            this.darkButton4.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton4.Size = new System.Drawing.Size(178, 27);
-            this.darkButton4.TabIndex = 5;
-            this.darkButton4.Text = "Add Selected";
-            // 
-            // listBox3
-            // 
-            this.listBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.listBox3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.listBox3.ForeColor = System.Drawing.SystemColors.Control;
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(9, 19);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(235, 56);
-            this.listBox3.TabIndex = 6;
-            // 
-            // darkButton9
-            // 
-            this.darkButton9.Location = new System.Drawing.Point(9, 81);
-            this.darkButton9.Name = "darkButton9";
-            this.darkButton9.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton9.Size = new System.Drawing.Size(235, 27);
-            this.darkButton9.TabIndex = 4;
-            this.darkButton9.Text = "Remove tag";
-            // 
-            // groupBox16
-            // 
-            this.groupBox16.Controls.Add(this.groupBox17);
-            this.groupBox16.Controls.Add(this.darkButton11);
-            this.groupBox16.Controls.Add(this.listBox4);
-            this.groupBox16.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox16.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.groupBox16.Location = new System.Drawing.Point(6, 320);
-            this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(462, 123);
-            this.groupBox16.TabIndex = 7;
-            this.groupBox16.TabStop = false;
-            this.groupBox16.Text = "Location Found";
-            // 
-            // groupBox17
-            // 
-            this.groupBox17.Controls.Add(this.darkButton10);
-            this.groupBox17.Controls.Add(this.comboBox7);
-            this.groupBox17.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox17.Location = new System.Drawing.Point(250, 17);
-            this.groupBox17.Name = "groupBox17";
-            this.groupBox17.Size = new System.Drawing.Size(202, 100);
-            this.groupBox17.TabIndex = 4;
-            this.groupBox17.TabStop = false;
-            this.groupBox17.Text = "Add Location";
-            // 
-            // darkButton10
-            // 
-            this.darkButton10.Location = new System.Drawing.Point(6, 50);
-            this.darkButton10.Name = "darkButton10";
-            this.darkButton10.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton10.Size = new System.Drawing.Size(178, 27);
-            this.darkButton10.TabIndex = 3;
-            this.darkButton10.Text = "Add Selected";
-            // 
-            // comboBox7
-            // 
-            this.comboBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.comboBox7.ForeColor = System.Drawing.SystemColors.Control;
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(6, 23);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(178, 21);
-            this.comboBox7.TabIndex = 1;
-            // 
-            // darkButton11
-            // 
-            this.darkButton11.Location = new System.Drawing.Point(9, 94);
-            this.darkButton11.Name = "darkButton11";
-            this.darkButton11.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton11.Size = new System.Drawing.Size(235, 23);
-            this.darkButton11.TabIndex = 2;
-            this.darkButton11.Text = "Remove Selected";
-            // 
-            // listBox4
-            // 
-            this.listBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.listBox4.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.listBox4.ForeColor = System.Drawing.SystemColors.Control;
-            this.listBox4.FormattingEnabled = true;
-            this.listBox4.Location = new System.Drawing.Point(9, 19);
-            this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(235, 69);
-            this.listBox4.TabIndex = 0;
+            this.darkButton14.Location = new System.Drawing.Point(266, 19);
+            this.darkButton14.Name = "darkButton14";
+            this.darkButton14.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton14.Size = new System.Drawing.Size(202, 27);
+            this.darkButton14.TabIndex = 12;
+            this.darkButton14.Text = "Get Summary";
+            this.darkButton14.Click += new System.EventHandler(this.darkButton14_Click);
             // 
             // groupBox18
             // 
@@ -3108,6 +2971,202 @@ namespace DayZeEditor
             this.checkBox42.Text = "Tier 8";
             this.checkBox42.UseVisualStyleBackColor = true;
             // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.darkButton13);
+            this.groupBox13.Controls.Add(this.listBox5);
+            this.groupBox13.Controls.Add(this.groupBox20);
+            this.groupBox13.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox13.Location = new System.Drawing.Point(6, 227);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(462, 92);
+            this.groupBox13.TabIndex = 6;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "Info";
+            // 
+            // darkButton13
+            // 
+            this.darkButton13.Location = new System.Drawing.Point(9, 63);
+            this.darkButton13.Name = "darkButton13";
+            this.darkButton13.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton13.Size = new System.Drawing.Size(235, 23);
+            this.darkButton13.TabIndex = 26;
+            this.darkButton13.Text = "Remove Selected";
+            this.darkButton13.Click += new System.EventHandler(this.darkButton13_Click);
+            // 
+            // listBox5
+            // 
+            this.listBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.listBox5.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.listBox5.ForeColor = System.Drawing.SystemColors.Control;
+            this.listBox5.FormattingEnabled = true;
+            this.listBox5.Location = new System.Drawing.Point(9, 14);
+            this.listBox5.Name = "listBox5";
+            this.listBox5.Size = new System.Drawing.Size(235, 43);
+            this.listBox5.TabIndex = 25;
+            this.listBox5.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            // 
+            // groupBox20
+            // 
+            this.groupBox20.Controls.Add(this.darkButton12);
+            this.groupBox20.Controls.Add(this.comboBox8);
+            this.groupBox20.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox20.Location = new System.Drawing.Point(250, 7);
+            this.groupBox20.Name = "groupBox20";
+            this.groupBox20.Size = new System.Drawing.Size(202, 80);
+            this.groupBox20.TabIndex = 24;
+            this.groupBox20.TabStop = false;
+            this.groupBox20.Text = "Add Category";
+            // 
+            // darkButton12
+            // 
+            this.darkButton12.Location = new System.Drawing.Point(6, 50);
+            this.darkButton12.Name = "darkButton12";
+            this.darkButton12.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton12.Size = new System.Drawing.Size(178, 19);
+            this.darkButton12.TabIndex = 3;
+            this.darkButton12.Text = "Add Selected";
+            this.darkButton12.Click += new System.EventHandler(this.darkButton12_Click);
+            // 
+            // comboBox8
+            // 
+            this.comboBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.comboBox8.ForeColor = System.Drawing.SystemColors.Control;
+            this.comboBox8.FormattingEnabled = true;
+            this.comboBox8.Location = new System.Drawing.Point(6, 23);
+            this.comboBox8.Name = "comboBox8";
+            this.comboBox8.Size = new System.Drawing.Size(178, 21);
+            this.comboBox8.TabIndex = 1;
+            // 
+            // groupBox14
+            // 
+            this.groupBox14.Controls.Add(this.groupBox15);
+            this.groupBox14.Controls.Add(this.listBox3);
+            this.groupBox14.Controls.Add(this.darkButton9);
+            this.groupBox14.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox14.Location = new System.Drawing.Point(6, 442);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(462, 114);
+            this.groupBox14.TabIndex = 11;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "Tags";
+            // 
+            // groupBox15
+            // 
+            this.groupBox15.Controls.Add(this.comboBox6);
+            this.groupBox15.Controls.Add(this.darkButton4);
+            this.groupBox15.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox15.Location = new System.Drawing.Point(250, 8);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(202, 100);
+            this.groupBox15.TabIndex = 7;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "Add Tag";
+            // 
+            // comboBox6
+            // 
+            this.comboBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.comboBox6.ForeColor = System.Drawing.SystemColors.Control;
+            this.comboBox6.FormattingEnabled = true;
+            this.comboBox6.Location = new System.Drawing.Point(10, 25);
+            this.comboBox6.Name = "comboBox6";
+            this.comboBox6.Size = new System.Drawing.Size(176, 21);
+            this.comboBox6.TabIndex = 1;
+            // 
+            // darkButton4
+            // 
+            this.darkButton4.Location = new System.Drawing.Point(8, 52);
+            this.darkButton4.Name = "darkButton4";
+            this.darkButton4.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton4.Size = new System.Drawing.Size(178, 27);
+            this.darkButton4.TabIndex = 5;
+            this.darkButton4.Text = "Add Selected";
+            // 
+            // listBox3
+            // 
+            this.listBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.listBox3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.listBox3.ForeColor = System.Drawing.SystemColors.Control;
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.Location = new System.Drawing.Point(9, 19);
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Size = new System.Drawing.Size(235, 56);
+            this.listBox3.TabIndex = 6;
+            // 
+            // darkButton9
+            // 
+            this.darkButton9.Location = new System.Drawing.Point(9, 81);
+            this.darkButton9.Name = "darkButton9";
+            this.darkButton9.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton9.Size = new System.Drawing.Size(235, 27);
+            this.darkButton9.TabIndex = 4;
+            this.darkButton9.Text = "Remove tag";
+            // 
+            // groupBox16
+            // 
+            this.groupBox16.Controls.Add(this.groupBox17);
+            this.groupBox16.Controls.Add(this.darkButton11);
+            this.groupBox16.Controls.Add(this.listBox4);
+            this.groupBox16.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox16.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.groupBox16.Location = new System.Drawing.Point(6, 320);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Size = new System.Drawing.Size(462, 123);
+            this.groupBox16.TabIndex = 7;
+            this.groupBox16.TabStop = false;
+            this.groupBox16.Text = "Location Found";
+            // 
+            // groupBox17
+            // 
+            this.groupBox17.Controls.Add(this.darkButton10);
+            this.groupBox17.Controls.Add(this.comboBox7);
+            this.groupBox17.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox17.Location = new System.Drawing.Point(250, 17);
+            this.groupBox17.Name = "groupBox17";
+            this.groupBox17.Size = new System.Drawing.Size(202, 100);
+            this.groupBox17.TabIndex = 4;
+            this.groupBox17.TabStop = false;
+            this.groupBox17.Text = "Add Location";
+            // 
+            // darkButton10
+            // 
+            this.darkButton10.Location = new System.Drawing.Point(6, 50);
+            this.darkButton10.Name = "darkButton10";
+            this.darkButton10.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton10.Size = new System.Drawing.Size(178, 27);
+            this.darkButton10.TabIndex = 3;
+            this.darkButton10.Text = "Add Selected";
+            // 
+            // comboBox7
+            // 
+            this.comboBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.comboBox7.ForeColor = System.Drawing.SystemColors.Control;
+            this.comboBox7.FormattingEnabled = true;
+            this.comboBox7.Location = new System.Drawing.Point(6, 23);
+            this.comboBox7.Name = "comboBox7";
+            this.comboBox7.Size = new System.Drawing.Size(178, 21);
+            this.comboBox7.TabIndex = 1;
+            // 
+            // darkButton11
+            // 
+            this.darkButton11.Location = new System.Drawing.Point(9, 94);
+            this.darkButton11.Name = "darkButton11";
+            this.darkButton11.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton11.Size = new System.Drawing.Size(235, 23);
+            this.darkButton11.TabIndex = 2;
+            this.darkButton11.Text = "Remove Selected";
+            // 
+            // listBox4
+            // 
+            this.listBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.listBox4.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.listBox4.ForeColor = System.Drawing.SystemColors.Control;
+            this.listBox4.FormattingEnabled = true;
+            this.listBox4.Location = new System.Drawing.Point(9, 19);
+            this.listBox4.Name = "listBox4";
+            this.listBox4.Size = new System.Drawing.Size(235, 69);
+            this.listBox4.TabIndex = 0;
+            // 
             // groupBox19
             // 
             this.groupBox19.Controls.Add(this.checkBox43);
@@ -3184,89 +3243,35 @@ namespace DayZeEditor
             this.checkBox48.Text = "count_in_cargo";
             this.checkBox48.UseVisualStyleBackColor = true;
             // 
-            // groupBox20
+            // TypesContextMenu
             // 
-            this.groupBox20.Controls.Add(this.darkButton12);
-            this.groupBox20.Controls.Add(this.comboBox8);
-            this.groupBox20.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox20.Location = new System.Drawing.Point(250, 7);
-            this.groupBox20.Name = "groupBox20";
-            this.groupBox20.Size = new System.Drawing.Size(202, 80);
-            this.groupBox20.TabIndex = 24;
-            this.groupBox20.TabStop = false;
-            this.groupBox20.Text = "Add Category";
+            this.TypesContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.DeleteTypesTSMI,
+            this.AddTypesTSMI,
+            this.DeleteSpecificTypeTSMI});
+            this.TypesContextMenu.Name = "TypesContextMenu";
+            this.TypesContextMenu.Size = new System.Drawing.Size(179, 70);
             // 
-            // darkButton12
+            // DeleteTypesTSMI
             // 
-            this.darkButton12.Location = new System.Drawing.Point(6, 50);
-            this.darkButton12.Name = "darkButton12";
-            this.darkButton12.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton12.Size = new System.Drawing.Size(178, 19);
-            this.darkButton12.TabIndex = 3;
-            this.darkButton12.Text = "Add Selected";
+            this.DeleteTypesTSMI.Name = "DeleteTypesTSMI";
+            this.DeleteTypesTSMI.Size = new System.Drawing.Size(178, 22);
+            this.DeleteTypesTSMI.Text = "Delete Types";
+            this.DeleteTypesTSMI.Click += new System.EventHandler(this.DeleteTypesTSMI_Click);
             // 
-            // comboBox8
+            // AddTypesTSMI
             // 
-            this.comboBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.comboBox8.ForeColor = System.Drawing.SystemColors.Control;
-            this.comboBox8.FormattingEnabled = true;
-            this.comboBox8.Location = new System.Drawing.Point(6, 23);
-            this.comboBox8.Name = "comboBox8";
-            this.comboBox8.Size = new System.Drawing.Size(178, 21);
-            this.comboBox8.TabIndex = 1;
+            this.AddTypesTSMI.Name = "AddTypesTSMI";
+            this.AddTypesTSMI.Size = new System.Drawing.Size(178, 22);
+            this.AddTypesTSMI.Text = "Add New Types";
+            this.AddTypesTSMI.Click += new System.EventHandler(this.AddtypesTSMI_Click);
             // 
-            // darkButton13
+            // DeleteSpecificTypeTSMI
             // 
-            this.darkButton13.Location = new System.Drawing.Point(9, 63);
-            this.darkButton13.Name = "darkButton13";
-            this.darkButton13.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton13.Size = new System.Drawing.Size(235, 23);
-            this.darkButton13.TabIndex = 26;
-            this.darkButton13.Text = "Remove Selected";
-            // 
-            // listBox5
-            // 
-            this.listBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.listBox5.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.listBox5.ForeColor = System.Drawing.SystemColors.Control;
-            this.listBox5.FormattingEnabled = true;
-            this.listBox5.Location = new System.Drawing.Point(9, 14);
-            this.listBox5.Name = "listBox5";
-            this.listBox5.Size = new System.Drawing.Size(235, 43);
-            this.listBox5.TabIndex = 25;
-            // 
-            // treeView2
-            // 
-            this.treeView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.treeView2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.treeView2.ForeColor = System.Drawing.SystemColors.Control;
-            this.treeView2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.treeView2.Location = new System.Drawing.Point(492, 6);
-            this.treeView2.Name = "treeView2";
-            this.treeView2.Size = new System.Drawing.Size(345, 563);
-            this.treeView2.TabIndex = 45;
-            // 
-            // darkButton14
-            // 
-            this.darkButton14.Location = new System.Drawing.Point(266, 19);
-            this.darkButton14.Name = "darkButton14";
-            this.darkButton14.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton14.Size = new System.Drawing.Size(202, 27);
-            this.darkButton14.TabIndex = 12;
-            this.darkButton14.Text = "Get Summary";
-            this.darkButton14.Click += new System.EventHandler(this.darkButton14_Click);
-            // 
-            // darkButton15
-            // 
-            this.darkButton15.Location = new System.Drawing.Point(266, 54);
-            this.darkButton15.Name = "darkButton15";
-            this.darkButton15.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton15.Size = new System.Drawing.Size(202, 27);
-            this.darkButton15.TabIndex = 13;
-            this.darkButton15.Text = "Clear";
-            this.darkButton15.Click += new System.EventHandler(this.darkButton15_Click);
+            this.DeleteSpecificTypeTSMI.Name = "DeleteSpecificTypeTSMI";
+            this.DeleteSpecificTypeTSMI.Size = new System.Drawing.Size(178, 22);
+            this.DeleteSpecificTypeTSMI.Text = "Delete Specific Type";
+            this.DeleteSpecificTypeTSMI.Click += new System.EventHandler(this.DeleteSpecificTypeTSMI_Click);
             // 
             // Economy_Manager
             // 
@@ -3348,23 +3353,23 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.nominalNUD)).EndInit();
             this.tabControl6.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
-            this.TypesContextMenu.ResumeLayout(false);
             this.TypesSummaryTab.ResumeLayout(false);
             this.groupBox12.ResumeLayout(false);
-            this.groupBox13.ResumeLayout(false);
-            this.groupBox14.ResumeLayout(false);
-            this.groupBox15.ResumeLayout(false);
-            this.groupBox16.ResumeLayout(false);
-            this.groupBox17.ResumeLayout(false);
             this.groupBox18.ResumeLayout(false);
             this.tabControl8.ResumeLayout(false);
             this.SetdefinitionsTPSummary.ResumeLayout(false);
             this.SetdefinitionsTPSummary.PerformLayout();
             this.UserdefinitionsTPSummary.ResumeLayout(false);
             this.UserdefinitionsTPSummary.PerformLayout();
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox20.ResumeLayout(false);
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox16.ResumeLayout(false);
+            this.groupBox17.ResumeLayout(false);
             this.groupBox19.ResumeLayout(false);
             this.groupBox19.PerformLayout();
-            this.groupBox20.ResumeLayout(false);
+            this.TypesContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

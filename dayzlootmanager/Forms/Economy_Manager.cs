@@ -1306,10 +1306,11 @@ namespace DayZeEditor
 
         public bool typeinfilterlist(type type, List<string> Queryitems)
         {
-            if(type.name == "B95")
+            if(type.name == "AntiChemInjector")
             {
                 string stop = "";
             }
+
             bool istrue = false;
             foreach (string filter in Queryitems)
             {
@@ -1320,19 +1321,48 @@ namespace DayZeEditor
                         if (type.value != null)
                         {
                             istrue = false;
-                            foreach (value v in type.value)
+                            if (type.value.Count == 0)
                             {
-                                if (v.name == fsplit[0])
-                                {
-                                    istrue = true;
-                                    break;
-                                }
+
                             }
-                            if (istrue)
-                                break;
-                            return false;
+                            else
+                            {
+                                foreach (value v in type.value)
+                                {
+                                    if (v.name == fsplit[0])
+                                    {
+                                        istrue = true;
+                                        break;
+                                    }
+                                }
+                                if (istrue)
+                                    break;
+                                return false;
+                            }
                         }
                         return false;
+                    case "categories":
+                        if (fsplit[0] == "Other")
+                        {
+                            if (type.category == null)
+                                istrue = true;
+                            else
+                                return false;
+                            break;
+                        }
+                        else
+                        {
+                            if (type.category == null)
+                                return false;
+                            category c = currentproject.limitfefinitions.lists.categories.category.First(x => x.name == fsplit[0]);
+                            if (type.category == c)
+                            {
+                                istrue = true;
+                                break;
+                            }
+                            else
+                                return false;
+                        }
                 }
             }
             if (istrue)
@@ -1343,10 +1373,24 @@ namespace DayZeEditor
         {
             List<string> Queryitems = new List<string>();
             List<CheckBox> checkboxesSummary = SetdefinitionsTPSummary.Controls.OfType<CheckBox>().ToList();
+            //check Tiers
             foreach (CheckBox cb in checkboxesSummary)
             {
                 if (cb.Visible == true && cb.Checked)
                     Queryitems.Add(cb.Tag.ToString() + ",definintions");
+            }
+            //Check Categorys
+            if(listBox5.Items.Count > 0)
+            {
+                foreach (var item in listBox5.Items)
+                {
+                    category c = item as category;
+                    Queryitems.Add(c.name + ",categories");
+                }
+            }
+            else
+            {
+                Queryitems.Add("Other,categories");
             }
             string stop = "";
 
@@ -1426,6 +1470,21 @@ namespace DayZeEditor
             }
 
             treeView2.Nodes.Add(root);
+        }
+
+        private void darkButton12_Click(object sender, EventArgs e)
+        {
+            category c = comboBox8.SelectedItem as category;
+            if(!listBox5.Items.Contains(c))
+                listBox5.Items.Add(c);
+        }
+
+        private void darkButton13_Click(object sender, EventArgs e)
+        {
+            if (listBox5.SelectedItems.Count > 0)
+            {
+                
+                    }
         }
     }
 }
