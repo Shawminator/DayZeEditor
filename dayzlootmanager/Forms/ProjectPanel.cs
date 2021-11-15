@@ -284,6 +284,8 @@ namespace DayZeEditor
                 case "dayzOffline.chernarusplus":
                 case "Expansion.ChernarusPlus":
                 case "Expansion.ChernarusPlusGloom":
+                case "empty.banov":
+                case "Expansion.Banov":
                     return 15360;
                 case "ExpansionHard.namalsk":
                 case "ExpansionRegular.namalsk":

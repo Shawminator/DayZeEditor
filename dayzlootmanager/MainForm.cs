@@ -363,10 +363,16 @@ namespace DayZeEditor
             timer1.Start();
         }
 
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            MapData data = new MapData(Application.StartupPath + "//Maps//map_output.txt");
+
+           data.CreateNewData();
+        }
 
 
-        //        MapData data = new MapData(Application.StartupPath + "//Maps//map_output.txt");
-        //        data.CreateNewData();
+
+        //        
 
 
     }
