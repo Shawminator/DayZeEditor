@@ -91,6 +91,9 @@ namespace DayZeEditor
         public globalsconfig gloabsconfig { get; set; }
 
         [JsonIgnore]
+        public BindingList<Spawnabletypesconfig> spawnabletypesList { get; set; }
+
+        [JsonIgnore]
         public int TotalNomCount { get; set; }
 
         private TypesFile vanillaTypes;
@@ -131,6 +134,10 @@ namespace DayZeEditor
         {
             return ModTypesList.FirstOrDefault(x => x.modname == name);
         }
+        public eventscofig geteventbyname(string name)
+        {
+            return ModEventsList.FirstOrDefault(x => x.Filename == name);
+        }
         public void SetModListtypes()
         {
             ModTypesList = new BindingList<TypesFile>();
@@ -147,6 +154,10 @@ namespace DayZeEditor
         internal void removeMod(string modname)
         {
             ModTypesList.Remove(GetModTypebyname(modname));
+        }
+        internal void removeevent(string filename)
+        {
+            ModEventsList.Remove(geteventbyname(filename));
         }
         internal void seteconomycore()
         {
@@ -172,6 +183,23 @@ namespace DayZeEditor
                 }
             }
         }
+        internal void SetSpawnabletypes()
+        {
+            spawnabletypesList = new BindingList<Spawnabletypesconfig>();
+            spawnabletypesList.Add(new Spawnabletypesconfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgspawnabletypes.xml"));
+            foreach (ce mods in EconomyCore.economycore.ce)
+            {
+                string path = projectFullName + "\\mpmissions\\" + mpmissionpath + "\\" + mods.folder;
+                foreach (file file in mods.file)
+                {
+                    if (file.type == "spawnabletypes")
+                    {
+                        spawnabletypesList.Add(new Spawnabletypesconfig(path + "\\" + file.name));
+                    }
+                }
+            }
+        }
+
         internal void setuserdefinitions()
         {
             limitfefinitionsuser  = new Limitsdefinitionsuser(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfglimitsdefinitionuser.xml");
@@ -185,17 +213,38 @@ namespace DayZeEditor
         internal void SetTotNomCount()
         {
             TotalNomCount = 0;
+            List<type> typelistforcount = new List<type>();
             foreach(type _type in vanillaTypes.types.type)
             {
-                if(_type.nominal != null)
+                if (_type.nominal != null)
+                {
+                    if(typelistforcount.Any(x => x.name == _type.name))
+                    {
+                        type otype = typelistforcount.First(x => x.name == _type.name);
+
+                        TotalNomCount -= otype.nominal;
+                        typelistforcount.Remove(otype);
+                    }
                     TotalNomCount += _type.nominal;
+                    typelistforcount.Add(_type);
+                }
             }
             foreach(TypesFile tf in ModTypesList)
             {
                 foreach(type _type in tf.types.type)
                 {
                     if (_type.nominal != null)
+                    {
+                        if (typelistforcount.Any(x => x.name == _type.name))
+                        {
+                            type otype = typelistforcount.First(x => x.name == _type.name);
+
+                            TotalNomCount -= otype.nominal;
+                            typelistforcount.Remove(otype);
+                        }
                         TotalNomCount += _type.nominal;
+                        typelistforcount.Add(_type);
+                    }
                 }
             }
         }

@@ -54,6 +54,10 @@ namespace DayZeLib
         {
             GetType().GetProperty(mytype).SetValue(this, myvalue, null);
         }
+        public override string ToString()
+        {
+            return MissionName;
+        }
     }
     public class DropLocation
     {

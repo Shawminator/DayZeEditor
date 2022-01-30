@@ -54,7 +54,6 @@ namespace DayZeEditor
         public Zones currentZone;
 
         public Traders currentTrader;
-        public AmmoBoxesMarket ammoboxes;
 
         public MapData data;
 
@@ -121,10 +120,10 @@ namespace DayZeEditor
             ModTypes = currentproject.getModList();
 
             catids = new List<int>();
-            ZonesPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\TraderZones";
+            ZonesPath = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\traderzones";
             TradersPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Traders";
             CatPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Market";
-            MarketSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Settings\\MarketSettings.json";
+            MarketSettingsPath = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings\\MarketSettings.json";
             tradermapsPath = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\traders";
             numericUpDown1.Maximum = currentproject.MapSize;
             numericUpDown3.Maximum = currentproject.MapSize;
@@ -139,10 +138,10 @@ namespace DayZeEditor
             {
                 marketsettings = JsonSerializer.Deserialize<MarketSettings>(File.ReadAllText(MarketSettingsPath));
                 marketsettings.isDirty = false;
-                if (marketsettings.m_Version != 7)
+                if (marketsettings.m_Version != 8)
                 {
                     MessageBox.Show("MarketSettings Version number not up to date, updating to latest version....");
-                    marketsettings.m_Version = 7;
+                    marketsettings.m_Version = 8;
                     marketsettings.isDirty = true;
                     needtosave = true;
                 }
@@ -182,31 +181,6 @@ namespace DayZeEditor
             Loadsettings();
 
             SetupListBoxes();
-            //foreach (Zones zone in Zones.ZoneList)
-            //{
-            //    float zonebuypercentage = zone.BuyPricePercent;
-
-            //    foreach (StockItem item in zone.StockItems)
-            //    {
-
-            //        marketItem i = MarketCats.getitemfromcategory(item.Classname);
-            //        if (i == null)
-            //        {
-            //            continue;
-            //        }
-            //        item.StockCheker = i.MaxStockThreshold;
-            //        float initialvalue = Helper.PowCurveCalc((float)i.MinStockThreshold, (float)i.MaxStockThreshold, item.StockCheker, i.MaxPriceThreshold, i.MinPriceThreshold, 6.0f);
-            //        item.ZoneBuyPrice = (int)(initialvalue * (zone.BuyPricePercent / 100));
-                    
-            //        if (zone.SellPricePercent == -1)
-            //            item.ZoneSellPrice = (int)(initialvalue * (marketsettings.SellPricePercent / 100));
-            //        else
-            //        {
-            //            item.ZoneSellPrice = (int)(initialvalue * (zone.SellPricePercent / 100));
-            //        }
-
-            //    }
-            //}
             dataGridView1.Invalidate();
 
             data = new MapData(Application.StartupPath + currentproject.MapPath + ".xyz");
@@ -436,7 +410,7 @@ namespace DayZeEditor
             StringBuilder sb = new StringBuilder();
             foreach (marketItem item in currentCat.Items)
             {
-                sb.Append(item.ClassName + Environment.NewLine);
+                sb.Append(item.ClassName + "," + item.MinPriceThreshold.ToString() + Environment.NewLine);
 
             }
             File.WriteAllText(currentCat.DisplayName + " Itemlist", sb.ToString());
@@ -501,14 +475,20 @@ namespace DayZeEditor
         }
         private void getPriceFromListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            List<string> list = File.ReadAllLines("Priceexport.txt").ToList();
-            foreach (marketItem item in currentCat.Items)
+            OpenFileDialog openfile = new OpenFileDialog();
+            openfile.InitialDirectory = Application.StartupPath;
+            if (openfile.ShowDialog() == DialogResult.OK)
             {
-                if(list.Any(x => x.Split(',')[0] == item.ClassName))
+                List<string> list = File.ReadAllLines(openfile.FileName).ToList();
+                foreach (marketItem item in currentCat.Items)
                 {
-                    string price = list.First(x => x.Split(',')[0] == item.ClassName);
-                    item.MinPriceThreshold = Convert.ToInt32(price.Split(',')[1]);
+                    if (list.Any(x => x.Split(',')[0] == item.ClassName))
+                    {
+                        string price = list.First(x => x.Split(',')[0] == item.ClassName);
+                        item.MinPriceThreshold = Convert.ToInt32(price.Split(',')[1]);
+                    }
                 }
+                currentCat.isDirty = true;
             }
         }
         private void createNewMarketToolStripMenuItem_Click(object sender, EventArgs e)
@@ -695,10 +675,7 @@ namespace DayZeEditor
             listBox9.ValueMember = "Value";
             listBox9.DataSource = marketsettings.WaterSpawnPositions;
 
-            listBox12.DisplayMember = "Name";
-            listBox12.ValueMember = "Value";
-            listBox12.DataSource = marketsettings.MarketAmmoBoxes;
-            
+           
             listBox17.DisplayMember = "DisplayName";
             listBox17.ValueMember = "Value";
             listBox17.DataSource = marketsettings.LargeVehicles;
@@ -882,112 +859,6 @@ namespace DayZeEditor
             if (action) return;
             marketsettings.NetworkBatchSize = (int)NetworkBatchSizeNUD.Value;
             marketsettings.isDirty = true;
-        }
-        private void listBox12_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listBox12.SelectedItems.Count < 1) return;
-            ammoboxes = listBox12.SelectedItem as AmmoBoxesMarket;
-            textBox6.Text = ammoboxes.Ammo;
-            textBox13.Text = ammoboxes.AmmoBox;
-        }
-        private void darkButton17_Click(object sender, EventArgs e)
-        {
-            List<string> missingammo = new List<string>();
-            //check types files for any variants depending on search term
-            List<type> vtypesvariaNTS = vanillatypes.SerachTypes("ammo");
-            foreach (TypesFile tfile in ModTypes)
-            {
-                vtypesvariaNTS.AddRange(tfile.SerachTypes("ammo"));
-            }
-            for (int i = 0; i < vtypesvariaNTS.Count; i++)
-            {
-                if (vtypesvariaNTS[i].name.ToLower().Contains("ammobox"))
-                {
-                    vtypesvariaNTS.RemoveAt(i);
-                    i--;
-                }
-                else if (marketsettings.MarketAmmoBoxes.Any(x => x.Ammo == vtypesvariaNTS[i].name))
-                {
-                    vtypesvariaNTS.RemoveAt(i);
-                    i--;
-                }
-            }
-            List<type> vtypesvariaAmmoBoxes = vanillatypes.SerachTypes("ammobox");
-            foreach (TypesFile tfile in ModTypes)
-            {
-                vtypesvariaAmmoBoxes.AddRange(tfile.SerachTypes("ammobox"));
-            }
-            for (int i = 0; i < vtypesvariaNTS.Count; i++)
-            {
-                if(vtypesvariaNTS[i].name == "Ammo_12gaPellets")
-                {
-                    marketsettings.MarketAmmoBoxes.Add(new AmmoBoxesMarket() { Ammo = vtypesvariaNTS[i].name, AmmoBox = "AmmoBox_00buck_10rnd" });
-                    continue;
-                }
-
-
-
-                BindingList<string> possibleboxes = new BindingList<string>();
-                string[] namesplit = vtypesvariaNTS[i].name.Split('_');
-                foreach(type name in vtypesvariaAmmoBoxes)
-                {
-                    switch(namesplit.Length)
-                    {
-                        case 1:
-                            if (name.name.Contains(namesplit[0]))
-                            {
-                                possibleboxes.Add(name.name);
-                            }
-                            break;
-                        case 2:
-                            if (name.name.ToLower().Contains(namesplit[0].ToLower()) && name.name.ToLower().Contains(namesplit[1].ToLower()))
-                            {
-                                possibleboxes.Add(name.name);
-                            }
-                            break;
-                        case 3:
-                            if (name.name.Contains(namesplit[0]) && name.name.Contains(namesplit[1]) && name.name.Contains(namesplit[2]))
-                            {
-                                possibleboxes.Add(name.name);
-                            }
-                            break;
-                        case 4:
-                            if (name.name.Contains(namesplit[0]) && name.name.Contains(namesplit[1]) && name.name.Contains(namesplit[2]) && name.name.Contains(namesplit[3]))
-                            {
-                                possibleboxes.Add(name.name);
-                            }
-                            break;
-                        case 5:
-                            if (name.name.Contains(namesplit[0]) && name.name.Contains(namesplit[1]) && name.name.Contains(namesplit[2]) && name.name.Contains(namesplit[3]) && name.name.Contains(namesplit[4]))
-                            {
-                                possibleboxes.Add(name.name);
-                            }
-                            break;
-                    }
-                    
-                }
-
-                if(possibleboxes.Count > 1)
-                {
-                    PossibleAmmoBoxes pb = new PossibleAmmoBoxes
-                    {
-                        SetLabel = vtypesvariaNTS[i].name,
-                        ammoboxes = possibleboxes
-                    };
-                    if (pb.ShowDialog() == DialogResult.OK)
-                    {
-                        string ammobox = pb.chosenAmmoBox;
-                        marketsettings.MarketAmmoBoxes.Add(new AmmoBoxesMarket() {Ammo = vtypesvariaNTS[i].name , AmmoBox = ammobox});
-                        marketsettings.isDirty = true;
-                    }
-                }
-                else if (possibleboxes.Count == 1)
-                {
-                    string ammobox = possibleboxes[0];
-                    marketsettings.MarketAmmoBoxes.Add(new AmmoBoxesMarket() { Ammo = vtypesvariaNTS[i].name, AmmoBox = ammobox });
-                    marketsettings.isDirty = true;
-                }
-            }
         }
         private void MarketSytemeEnabedcheckBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -1744,6 +1615,7 @@ namespace DayZeEditor
             numericUpDown23.Value = currentitem.SellPricePercent;
             numericUpDown8.Value = currentitem.MaxStockThreshold;
             numericUpDown9.Value = currentitem.MinStockThreshold;
+            numericUpDown24.Value = currentitem.QuantityPercent;
 
             listBox6.DisplayMember = "Name";
             listBox6.ValueMember = "Value";
@@ -1769,6 +1641,12 @@ namespace DayZeEditor
             if (action) return;
             currentCat.isDirty = true;
             currentitem.MinStockThreshold = (int)numericUpDown9.Value;
+        }
+        private void numericUpDown24_ValueChanged(object sender, EventArgs e)
+        {
+            if (action) return;
+            currentCat.isDirty = true;
+            currentitem.QuantityPercent = (int)numericUpDown24.Value;
         }
         private void numericUpDown8_ValueChanged(object sender, EventArgs e)
         {
@@ -2746,6 +2624,7 @@ namespace DayZeEditor
         }
         private BindingList<Tradermap> GetTradersforzone()
         {
+            if(currentZone == null) { return null; }
             BindingList<Tradermap> ZoneTraders = new BindingList<Tradermap>();
             foreach (Tradermap tm in tradermaps.maps)
             {

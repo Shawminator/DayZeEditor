@@ -31,7 +31,7 @@ namespace DayZeLib
 
         public AirdropsettingsJson()
         {
-            m_Version = 0;
+            m_Version = 2;
             Containers = new BindingList<AirdropContainers>();
             isDirty = true;
         }
@@ -47,6 +47,18 @@ namespace DayZeLib
         public int InfectedCount { get; set; }
         public int SpawnInfectedForPlayerCalledDrops { get; set; }
 
+        public AirdropContainers()
+        {
+            Container = "ExpansionAirdropContainer";
+            Usage = 0;
+            Weight = 0;
+            Loot = new BindingList<containerLoot>();
+            Infected = new BindingList<string>();
+            ItemCount = 0;
+            InfectedCount = 0;
+            SpawnInfectedForPlayerCalledDrops = 0;
+        }
+
         public override string ToString()
         {
             return Container;
@@ -57,6 +69,7 @@ namespace DayZeLib
         public string Name { get; set; }
         public BindingList<string> Attachments { get; set; }
         public float Chance { get; set; }
+        public int QuantityPercent { get; set; }
         public BindingList<lootVarients> Variants { get; set; }
         public int Max { get; set; }
 
@@ -74,6 +87,10 @@ namespace DayZeLib
         public string Name { get; set; }
         public BindingList<string> Attachments { get; set; }
         public float Chance { get; set; }
+        public override string ToString()
+        {
+            return Name;
+        }
     }
     public enum ContainerTypes
     {

@@ -15,7 +15,7 @@ namespace DayZeLib
         public int MinMissions { get; set; }
         public int MaxMissions { get; set; }
         public int MinPlayersToStartMissions { get; set; }
-        public BindingList<Missions> Missions { get; set; }
+        //public BindingList<Missions> Missions { get; set; } removed in version 2
 
 
         [JsonIgnore]
@@ -27,20 +27,20 @@ namespace DayZeLib
 
         public MissionSettings()
         {
-            m_Version = 1;
-            Missions = new BindingList<Missions>();
+            m_Version = 2;
+            //Missions = new BindingList<Missions>();
             isDirty = true;
         }
-        public void LoadIndividualMissions(string v)
+        public void LoadIndividualMissions(string Missionpath)
         {
             MissionSettingFiles = new BindingList<MissionSettingFiles>();
-            foreach (Missions mission in Missions)
+            string path = Missionpath + "\\expansion\\missions";
+            foreach (var file in Directory.EnumerateFiles(path, "*.json"))
             {
-                string path = v + "\\" + mission.MissionPath.Split(':')[1];
-                MissionSettingFiles msf = JsonSerializer.Deserialize<MissionSettingFiles>(File.ReadAllText(path));
+                MissionSettingFiles msf = JsonSerializer.Deserialize<MissionSettingFiles>(File.ReadAllText(file));
                 msf.isDirty = false;
-                msf.Filename = path;
-                msf.MissionPath = mission.MissionPath;
+                msf.Filename = file;
+                msf.MissionPath = Missionpath;
                 MissionSettingFiles.Add(msf);
             }
         }

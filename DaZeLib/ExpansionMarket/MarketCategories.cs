@@ -14,7 +14,7 @@ namespace DayZeLib
 {
     public class MarketCategories
     {
-        public int CurrentVersion = 8;
+        public int CurrentVersion = 9;
         public BindingList<Categories> CatList { get; set; }
         public string MarketCatsPath {get;set;}
 
@@ -226,7 +226,7 @@ namespace DayZeLib
 
         public Categories(string filename)
         {
-            m_Version = 8;
+            m_Version = 9;
             DisplayName = filename;
             Icon = "deliver";
             Color = "FBFCFEFF";
@@ -235,7 +235,8 @@ namespace DayZeLib
         }
         public Categories()
         {
-            m_Version = 8;
+            m_Version = 9;
+            DisplayName = "";
             Icon = "deliver";
             Color = "FBFCFEFF";
             InitStockPercent = 75.0f;
@@ -285,6 +286,7 @@ namespace DayZeLib
         public int MaxStockThreshold { get; set; }
         public int MinStockThreshold { get; set; }
         //public int PurchaseType { get; set; }  removed in Version 6
+        public int QuantityPercent { get; set; }
         public BindingList<string> SpawnAttachments { get; set; }
         public BindingList<string> Variants { get; set; }
 
@@ -292,6 +294,8 @@ namespace DayZeLib
         {
             SpawnAttachments = new BindingList<string>();
             Variants = new BindingList<string>();
+            SellPricePercent = -1;
+            QuantityPercent = -1;
         }
         public override string ToString()
         {

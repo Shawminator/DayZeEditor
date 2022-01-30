@@ -281,6 +281,9 @@ namespace DayZeEditor
         {
             switch (mpmissionpath)
             {
+                case "dayzOffline.Iztek":
+                case "Expansion.Iztek":
+                    return 8192;
                 case "dayzOffline.chernarusplus":
                 case "Expansion.ChernarusPlus":
                 case "Expansion.ChernarusPlusGloom":

@@ -25,7 +25,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.5.5";
+        public string VersionNumber = "0.5.6";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -65,6 +65,7 @@ namespace DayZeEditor
                     Projects.getActiveProject().seteconomydefinitions();
                     Projects.getActiveProject().setuserdefinitions();
                     Projects.getActiveProject().SetEvents();
+                    Projects.getActiveProject().SetSpawnabletypes();
                     Projects.getActiveProject().SetGlobals();
                     Projects.getActiveProject().setVanillaTypes();
                     Projects.getActiveProject().SetModListtypes();
@@ -160,7 +161,7 @@ namespace DayZeEditor
                     MarketButton.Visible = true;
                 else
                     MarketButton.Visible = false;
-                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\CJ_LootChests\\LootChests_V103.json"))
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\CJ_LootChests\\LootChests_V104.json"))
                     LootchestButton.Visible = true;
                 else
                     LootchestButton.Visible = false;

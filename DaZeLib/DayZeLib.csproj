@@ -81,7 +81,10 @@
     <Compile Include="Economy\Bindinglist.cs" />
     <Compile Include="Economy\cfgEffectArea.cs" />
     <Compile Include="Economy\economycoreconfig.cs" />
+    <Compile Include="Economy\EventSpawnsXML.cs" />
     <Compile Include="Economy\EventsXML.cs" />
+    <Compile Include="Economy\GameplayJson.cs" />
+    <Compile Include="Economy\SpawnabletypesXML.cs" />
     <Compile Include="Economy\variables.cs" />
     <Compile Include="Economy\Limitsdefinitions.cs" />
     <Compile Include="ExpansionMarket\MarketCategories.cs" />

@@ -143,7 +143,7 @@ namespace DayZeEditor
             this.toolStripButton4.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(42, 42);
+            this.toolStripButton4.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton4.Text = "toolStripButton2";
             this.toolStripButton4.ToolTipText = "Open TraderConfig.txt";
             this.toolStripButton4.Visible = false;
@@ -766,6 +766,7 @@ namespace DayZeEditor
             // 
             this.SafePositionZNUD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.SafePositionZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SafePositionZNUD.DecimalPlaces = 2;
             this.SafePositionZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.SafePositionZNUD.Location = new System.Drawing.Point(878, 497);
             this.SafePositionZNUD.Maximum = new decimal(new int[] {
@@ -783,6 +784,7 @@ namespace DayZeEditor
             // 
             this.SafePositionXNUD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.SafePositionXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SafePositionXNUD.DecimalPlaces = 2;
             this.SafePositionXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.SafePositionXNUD.Location = new System.Drawing.Point(801, 497);
             this.SafePositionXNUD.Maximum = new decimal(new int[] {

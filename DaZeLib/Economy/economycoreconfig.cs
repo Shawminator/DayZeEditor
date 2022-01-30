@@ -50,6 +50,10 @@ namespace DayZeLib
                     newfile.name = filename;
                     newfile.type = "types";
                     break;
+                case "events":
+                    newfile.name = filename;
+                    newfile.type = "events";
+                    break;
                 default:
                     break;
             }
@@ -89,6 +93,58 @@ namespace DayZeLib
             }
         }
     }
+    public class Spawnabletypesconfig
+    {
+        public spawnabletypes spawnabletypes { get; set; }
+        public string Filename { get; set; }
+        public bool isDirty = false;
+
+        public Spawnabletypesconfig(string filename)
+        {
+            Filename = filename;
+            var mySerializer = new XmlSerializer(typeof(spawnabletypes));
+            StringBuilder sb = new StringBuilder();
+            List<string> filearray = File.ReadAllLines(Filename).ToList();
+            foreach (String line in filearray)
+            {
+                if(line.Contains("<!-- ---"))
+                {
+                    isDirty = true;
+                    continue;
+                }
+                sb.Append(line + Environment.NewLine);
+            }
+            using (Stream ms = Helper.GenerateStreamFromString(sb.ToString()))
+            {
+                try
+                {
+                    spawnabletypes = (spawnabletypes)mySerializer.Deserialize(ms);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message + "\n" + filename + "\n" + ex.InnerException.Message);
+                }
+            }
+        }
+        public void Savespawnabletypes(string saveTime)
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
+            File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
+            var serializer = new XmlSerializer(typeof(spawnabletypes));
+            var ns = new XmlSerializerNamespaces();
+            ns.Add("", "");
+            var sw = new StringWriter();
+            sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
+            var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true, });
+            serializer.Serialize(xmlWriter, spawnabletypes, ns);
+            Console.WriteLine(sw.ToString());
+            File.WriteAllText(Filename, sw.ToString());
+        }
+        public override string ToString()
+        {
+            return Path.GetFileNameWithoutExtension(Filename);
+        }
+    }
 
     public class eventscofig
     {
@@ -118,6 +174,18 @@ namespace DayZeLib
         {
             Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
             File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
+            var serializer = new XmlSerializer(typeof(events));
+            var ns = new XmlSerializerNamespaces();
+            ns.Add("", "");
+            var sw = new StringWriter();
+            sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
+            var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true, });
+            serializer.Serialize(xmlWriter, events, ns);
+            Console.WriteLine(sw.ToString());
+            File.WriteAllText(Filename, sw.ToString());
+        }
+        public void SaveEvent()
+        {
             var serializer = new XmlSerializer(typeof(events));
             var ns = new XmlSerializerNamespaces();
             ns.Add("", "");

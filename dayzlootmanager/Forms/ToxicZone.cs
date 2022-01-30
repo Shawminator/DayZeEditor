@@ -55,16 +55,23 @@ namespace DayZeEditor
             customCulture.NumberFormat.NumberDecimalSeparator = ".";
             customCulture.NumberFormat.NumberGroupSeparator = "";
             System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
+            try
+            {
 
-            Projectname = currentproject.ProjectName;
-            ToxicZonePath = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\cfgEffectArea.json";
-            ToxicZonesettings = JsonSerializer.Deserialize<cfgEffectArea>(File.ReadAllText(ToxicZonePath));
-            ToxicZonesettings.isDirty = false;
-            ToxicZonesettings.Filename = ToxicZonePath;
-            ToxicZonesettings.convertpositionstolist();
+                Projectname = currentproject.ProjectName;
+                ToxicZonePath = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\cfgEffectArea.json";
+                ToxicZonesettings = JsonSerializer.Deserialize<cfgEffectArea>(File.ReadAllText(ToxicZonePath));
+                ToxicZonesettings.isDirty = false;
+                ToxicZonesettings.Filename = ToxicZonePath;
+                ToxicZonesettings.convertpositionstolist();
 
 
-            loadToxicZonesettings();
+                loadToxicZonesettings();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString() + Environment.NewLine + ex.InnerException.Message.ToString());
+            }
         }
         private void loadToxicZonesettings()
         {
@@ -102,8 +109,8 @@ namespace DayZeEditor
             if (SafePositionsLB.SelectedItems.Count < 1) return;
             currentsafeposition = SafePositionsLB.SelectedItem as Position;
             useraction = false;
-            SafePositionXNUD.Value = currentsafeposition.X;
-            SafePositionZNUD.Value = currentsafeposition.Z;
+            SafePositionXNUD.Value = (decimal)currentsafeposition.X;
+            SafePositionZNUD.Value = (decimal)currentsafeposition.Z;
 
             useraction = true;
         }

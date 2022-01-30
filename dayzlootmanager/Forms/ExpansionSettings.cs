@@ -329,7 +329,7 @@ namespace DayZeEditor
             AirdropsettingsJson.Filename = AirdropsettingPath;
             SetupAirdropsettings();
 
-            BaseBUildignsettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\BaseBuildingSettings.json";
+            BaseBUildignsettingsPath = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings\\BaseBuildingSettings.json";
             if (!File.Exists(BaseBUildignsettingsPath))
             {
                 BaseBuildingSettings = new BaseBuildingSettings();
@@ -400,7 +400,7 @@ namespace DayZeEditor
             LogSettings.Filename = LogsSettingsPath;
             loadlogsettings();
 
-            MapSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\mapSettings.json";
+            MapSettingsPath = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings\\mapSettings.json";
             if (!File.Exists(MapSettingsPath))
             {
                 MapSettings = new MapSettings();
@@ -414,7 +414,7 @@ namespace DayZeEditor
             MapSettings.Filename = MapSettingsPath;
             loadmapsettings();
 
-            MarketSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Settings\\MarketSettings.json";
+            MarketSettingsPath = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings\\MarketSettings.json";
             if (!File.Exists(MarketSettingsPath))
             {
                 marketsettings = new MarketSettings();
@@ -434,7 +434,7 @@ namespace DayZeEditor
                 MissionSettings.isDirty = false;
             }
             MissionSettings.Filename = MissionSettingsPath;
-            MissionSettings.LoadIndividualMissions(currentproject.projectFullName + "\\" + currentproject.ProfilePath);
+            MissionSettings.LoadIndividualMissions(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath);
             loadMissionSettings();
 
             NameTagsettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\NameTagsSettings.json";
@@ -507,7 +507,7 @@ namespace DayZeEditor
             RaidSettings.Filename = RaidSettingsPath;
             loadRaidSettings();
 
-            SafeZoneSettingspath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\SafeZonesettings.json";
+            SafeZoneSettingspath = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings\\SafeZonesettings.json";
             if (!File.Exists(SafeZoneSettingspath))
             {
                 SafeZoneSettings = new SafeZoneSettings();
@@ -535,7 +535,7 @@ namespace DayZeEditor
             SocialMediaSettings.Filename = SocialMediaSettingsPath;
             LoadsocialMediaSettings();
 
-            SpawnSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\SpawnSettings.json";
+            SpawnSettingsPath = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings\\SpawnSettings.json";
             if (!File.Exists(SpawnSettingsPath))
             {
                 SpawnSettings = new SpawnSettings();
@@ -960,6 +960,7 @@ namespace DayZeEditor
         public AirdropContainers ADC;
         public containerLoot CL;
         private NoBuildZones currentZone;
+        public lootVarients LootVarients;
 
         private void SetupAirdropsettings()
         {
@@ -1074,6 +1075,27 @@ namespace DayZeEditor
             listBox4.DisplayMember = "DisplayName";
             listBox4.ValueMember = "Value";
             listBox4.DataSource = CL.Attachments;
+
+            listBox21.DataSource = null;
+            listBox22.DataSource = null;
+
+            if (CL.Variants.Count > 0)
+            {
+                listBox21.DisplayMember = "DisplayName";
+                listBox21.ValueMember = "Value";
+                listBox21.DataSource = CL.Variants;
+            }
+            useraction = true;
+        }
+        private void listBox21_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox21.SelectedItems.Count < 1) return;
+            LootVarients = listBox21.SelectedItem as lootVarients;
+            useraction = false;
+            listBox22.DisplayMember = "DisplayName";
+            listBox22.ValueMember = "Value";
+            listBox22.DataSource = LootVarients.Attachments;
+            VarientChanceTrackBar.Value = (int)(LootVarients.Chance * 1000);
             useraction = true;
         }
         private void darkButton2_Click(object sender, EventArgs e)
@@ -1081,10 +1103,6 @@ namespace DayZeEditor
             ADC.Loot.Remove(CL);
             AirdropsettingsJson.isDirty = true;
             populatelistbox();
-        }
-        private void trackBar1_ValueChanged(object sender, EventArgs e)
-        {
-            darkLabel23.Text = ((decimal)(trackBar1.Value) / 10).ToString() + "%";
         }
         private void darkButton4_Click(object sender, EventArgs e)
         {
@@ -1353,6 +1371,119 @@ namespace DayZeEditor
                 AirdropsettingsJson.isDirty = true;
             }
         }
+        private void trackBar1_ValueChanged(object sender, EventArgs e)
+        {
+            darkLabel23.Text = ((decimal)(trackBar1.Value) / 10).ToString() + "%";
+        }
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            darkLabel23.Text = ((decimal)(trackBar1.Value) / 10).ToString() + "%";
+        }
+
+        private void trackBar1_MouseUp(object sender, MouseEventArgs e)
+        {
+            CL.Chance = (float)(((decimal)trackBar1.Value) / 1000);
+            AirdropsettingsJson.isDirty = true;
+        }
+
+        private void darkButton52_Click(object sender, EventArgs e)
+        {
+            foreach (containerLoot cl in ADC.Loot)
+            {
+                cl.Chance = (float)(((decimal)trackBar1.Value) / 1000);
+            }
+            AirdropsettingsJson.isDirty = true;
+        }
+
+        private void VarientChanceTrackBar_ValueChanged(object sender, EventArgs e)
+        {
+            darkLabel159.Text = ((decimal)(VarientChanceTrackBar.Value) / 10).ToString() + "%";
+        }
+        private void VarientChanceTrackBar_Scroll(object sender, EventArgs e)
+        {
+            darkLabel159.Text = ((decimal)(VarientChanceTrackBar.Value) / 10).ToString() + "%";
+        }
+
+        private void VarientChanceTrackBar_MouseUp(object sender, MouseEventArgs e)
+        {
+            LootVarients.Chance = (float)(((decimal)VarientChanceTrackBar.Value) / 1000);
+            AirdropsettingsJson.isDirty = true;
+        }
+        private void darkButton55_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseMultiple = false,
+                isCategoryitem = true,
+                LowerCase = false
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    lootVarients newlootVarients = new lootVarients()
+                    {
+                        Name = l,
+                        Attachments = new BindingList<string>(),
+                        Chance = 0.5f,
+                    };
+                    CL.Variants.Add(newlootVarients);
+                    AirdropsettingsJson.isDirty = true;
+                }
+            }
+        }
+
+        private void darkButton56_Click(object sender, EventArgs e)
+        {
+            CL.Variants.Remove(LootVarients);
+            listBox22.DataSource = null;
+            listBox21.SelectedIndex = -1;
+            if (CL.Variants.Count > 0)
+            {
+                listBox21.SelectedIndex = 0;
+            }
+            AirdropsettingsJson.isDirty = true;
+        }
+
+        private void darkButton57_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseMultiple = false,
+                isCategoryitem = false,
+                LowerCase = false
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    if (!LootVarients.Attachments.Contains(l))
+                    {
+                        LootVarients.Attachments.Add(l);
+                        AirdropsettingsJson.isDirty = true;
+                    }
+                    else
+                        MessageBox.Show("Attachments Type allready in the Varients list.....");
+                }
+            }
+        }
+
+        private void darkButton58_Click(object sender, EventArgs e)
+        {
+            LootVarients.Attachments.Remove(listBox22.GetItemText(listBox22.SelectedItem));
+            AirdropsettingsJson.isDirty = true;
+
+        }
         #endregion Airdropsettings
 
         #region basebuildingsettings
@@ -1591,6 +1722,7 @@ namespace DayZeEditor
         {
 
             currentZone = listBox8.SelectedItem as NoBuildZones;
+            if(currentZone == null) { return; }
             useraction = false;
             textBox3.Text = currentZone.Name;
 
@@ -2255,26 +2387,34 @@ namespace DayZeEditor
             PictureBox pb = sender as PictureBox;
             Rectangle region;
             region = pb.ClientRectangle;
-            Color colour = Color.FromArgb(GeneralSettings.getIntValue(pb.Name.Substring(0, pb.Name.Length - 2)));
+            string col = GeneralSettings.getcolourfromcontrol(pb.Name);
+            string col1 = "#" + col.Substring(6) + col.Remove(6, 2);
+            Color colour = ColorTranslator.FromHtml(col1);
             using (Brush brush = new SolidBrush(colour))
             {
                 e.Graphics.FillRectangle(brush, region);
             }
             e.Graphics.DrawRectangle(SystemPens.ControlText, region.Left, region.Top, region.Width - 1, region.Height - 1);
         }
+
         private void SystemChatColorPB_Click(object sender, EventArgs e)
         {
             PictureBox pb = sender as PictureBox;
-            ColorPickerDialog cpick = new ColorPickerDialog();
-            cpick.StartPosition = FormStartPosition.CenterParent;
-            cpick.Color = Color.FromArgb(GeneralSettings.getIntValue(pb.Name.Substring(0, pb.Name.Length - 2)));
+            ColorPickerDialog cpick = new ColorPickerDialog
+            {
+                StartPosition = FormStartPosition.CenterParent
+            };
+            string col = GeneralSettings.getcolourfromcontrol(pb.Name);
+            string col1 = "#" + col.Substring(6) + col.Remove(6, 2);
+            cpick.Color = ColorTranslator.FromHtml(col1);
             if (cpick.ShowDialog() == DialogResult.OK)
             {
 
-                GeneralSettings.SetIntValue(pb.Name.Substring(0, pb.Name.Length - 2), cpick.Color.ToArgb());
+                GeneralSettings.setcolour(pb.Name, cpick.Color.Name.ToUpper());
                 pb.Invalidate();
                 GeneralSettings.isDirty = true;
             }
+
         }
         private void GeneralsettingsCB_CheckedChanged(object sender, EventArgs e)
         {
@@ -2705,7 +2845,7 @@ namespace DayZeEditor
         #endregion mapsettings
 
         #region MissionSettings
-        public Missions currentmission;
+        public MissionSettingFiles currentmission;
         public MissionSettingFiles currentmissionfile;
         private void loadMissionSettings()
         {
@@ -2718,17 +2858,15 @@ namespace DayZeEditor
             MinPlayersToStartMissionsNUD.Value = (decimal)MissionSettings.MinPlayersToStartMissions;
             MissionsLB.DisplayMember = "DisplayName";
             MissionsLB.ValueMember = "Value";
-            MissionsLB.DataSource = MissionSettings.Missions;
+            MissionsLB.DataSource = MissionSettings.MissionSettingFiles;
             useraction = true;
         }
         private void MissionsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (MissionsLB.SelectedItems.Count < 1) return;
-            currentmission = MissionsLB.SelectedItem as Missions;
-            currentmissionfile = MissionSettings.MissionSettingFiles.First(x => x.MissionPath == currentmission.MissionPath);
+            currentmissionfile = MissionsLB.SelectedItem as MissionSettingFiles;
             useraction = false;
-            MissionTypeTB.Text = currentmission.MissionType;
-            MissionPathTB.Text = currentmission.MissionPath;
+            MissionPathTB.Text = currentmissionfile.Filename;
             MissionNameTB.Text = currentmissionfile.MissionName;
             MIssionContainerTB.Text = currentmissionfile.Container;
             MissionEnabledCB.Checked = currentmissionfile.Enabled == 1 ? true : false;
@@ -2782,12 +2920,6 @@ namespace DayZeEditor
             currentmissionfile.SetFloatValue(nud.Tag as string, (float)nud.Value);
             currentmissionfile.isDirty = true;
         }
-        private void MissionTypeTB_TextChanged(object sender, EventArgs e)
-        {
-            if (!useraction) { return; }
-            currentmission.MissionType = MissionTypeTB.Text;
-            MissionSettings.isDirty = true;
-        }
         private void MissionPathTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
@@ -2834,39 +2966,39 @@ namespace DayZeEditor
         }
         private void darkButton40_Click(object sender, EventArgs e)
         {
-            Missions newmissions = new Missions();
-            newmissions.MissionType = "ExpansionMissionEventAirdrop";
-            newmissions.MissionPath = "$profile:ExpansionMod\\Missions\\Airdrop_Random_New.json";
-            MissionSettings.Missions.Add(newmissions);
-            MissionSettings.isDirty = true;
-            MissionSettingFiles newMSF = new MissionSettingFiles();
-            newMSF.MissionPath = newmissions.MissionPath;
-            currentmissionfile.Filename = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\" + newmissions.MissionPath.Split(':')[1];
-            newMSF.ItemCount = -1;
-            newMSF.InfectedCount = -1;
-            newMSF.Infected = new BindingList<Empty>();
-            newMSF.Loot = new BindingList<Empty>();
-            newMSF.DropLocation = new DropLocation() { Name = "New Drop Location", Radius = 100, x = currentproject.MapSize/2, z = currentproject.MapSize/2 };
-            newMSF.Container = "Random";
-            newMSF.Speed = 25.0f;
-            newMSF.Height = 450.0f;
-            newMSF.ShowNotification = 1;
-            newMSF.Reward = "";
-            newMSF.Objective = 0;
-            newMSF.Difficulty = 0;
-            newMSF.MissionName = "New Mission";
-            newMSF.MissionMaxTime = 1200;
-            newMSF.Weight = 500;
-            newMSF.Enabled = 1;
-            MissionSettings.MissionSettingFiles.Add(newMSF);
-            MissionsLB.SelectedIndex = -1;
-            MissionsLB.SelectedIndex = MissionsLB.Items.Count - 1;
+            //Missions newmissions = new Missions();
+            //newmissions.MissionType = "ExpansionMissionEventAirdrop";
+            //newmissions.MissionPath = "$profile:ExpansionMod\\Missions\\Airdrop_Random_New.json";
+            //MissionSettings.MissionSettingFiles.Add(newmissions);
+            //MissionSettings.isDirty = true;
+            //MissionSettingFiles newMSF = new MissionSettingFiles();
+            //newMSF.MissionPath = newmissions.MissionPath;
+            //currentmissionfile.Filename = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\" + newmissions.MissionPath.Split(':')[1];
+            //newMSF.ItemCount = -1;
+            //newMSF.InfectedCount = -1;
+            //newMSF.Infected = new BindingList<Empty>();
+            //newMSF.Loot = new BindingList<Empty>();
+            //newMSF.DropLocation = new DropLocation() { Name = "New Drop Location", Radius = 100, x = currentproject.MapSize/2, z = currentproject.MapSize/2 };
+            //newMSF.Container = "Random";
+            //newMSF.Speed = 25.0f;
+            //newMSF.Height = 450.0f;
+            //newMSF.ShowNotification = 1;
+            //newMSF.Reward = "";
+            //newMSF.Objective = 0;
+            //newMSF.Difficulty = 0;
+            //newMSF.MissionName = "New Mission";
+            //newMSF.MissionMaxTime = 1200;
+            //newMSF.Weight = 500;
+            //newMSF.Enabled = 1;
+            //MissionSettings.MissionSettingFiles.Add(newMSF);
+            //MissionsLB.SelectedIndex = -1;
+            //MissionsLB.SelectedIndex = MissionsLB.Items.Count - 1;
         }
 
         private void darkButton41_Click(object sender, EventArgs e)
         {
-            MissionSettings.Missions.Remove(currentmission);
-            MissionSettings.isDirty = true;
+            //MissionSettings.Missions.Remove(currentmission);
+            //MissionSettings.isDirty = true;
         }
         #endregion Missionsettings
 
@@ -4181,7 +4313,7 @@ namespace DayZeEditor
                 {
                     Gear newuppergear = new Gear();
                     newuppergear.ClassName = l;
-                    newuppergear.Quantity = 1;
+                    newuppergear.Quantity = -1;
                     newuppergear.Attachments = new BindingList<string>();
                     SpawnSettings.StartingGear.UpperGear.Add(newuppergear);
                     SpawnSettings.isDirty = true;
@@ -4254,7 +4386,7 @@ namespace DayZeEditor
                 {
                     Gear newgear = new Gear();
                     newgear.ClassName = l;
-                    newgear.Quantity = 1;
+                    newgear.Quantity = -1;
                     newgear.Attachments = new BindingList<string>();
                     SpawnSettings.StartingGear.PantsGear.Add(newgear);
                     SpawnSettings.isDirty = true;
@@ -4327,7 +4459,7 @@ namespace DayZeEditor
                 {
                     Gear newgear = new Gear();
                     newgear.ClassName = l;
-                    newgear.Quantity = 1;
+                    newgear.Quantity = -1;
                     newgear.Attachments = new BindingList<string>();
                     SpawnSettings.StartingGear.BackpackGear.Add(newgear);
                     SpawnSettings.isDirty = true;
@@ -4401,7 +4533,7 @@ namespace DayZeEditor
                 {
                     Gear newgear = new Gear();
                     newgear.ClassName = l;
-                    newgear.Quantity = 1;
+                    newgear.Quantity = -1;
                     newgear.Attachments = new BindingList<string>();
                     SpawnSettings.StartingGear.VestGear.Add(newgear);
                     SpawnSettings.isDirty = true;
@@ -4464,7 +4596,7 @@ namespace DayZeEditor
                 {
                     Gear newgear = new Gear();
                     newgear.ClassName = l;
-                    newgear.Quantity = 1;
+                    newgear.Quantity = -1;
                     newgear.Attachments = new BindingList<string>();
                     SpawnSettings.StartingGear.PrimaryWeapon = newgear;
                     SpawnSettings.isDirty = true;
@@ -4544,7 +4676,7 @@ namespace DayZeEditor
                 {
                     Gear newgear = new Gear();
                     newgear.ClassName = l;
-                    newgear.Quantity = 1;
+                    newgear.Quantity = -1;
                     newgear.Attachments = new BindingList<string>();
                     SpawnSettings.StartingGear.SecondaryWeapon = newgear;
                     SpawnSettings.isDirty = true;
@@ -4846,28 +4978,8 @@ namespace DayZeEditor
 
 
 
+
         #endregion VehicleSettings
-
-        private void trackBar1_Scroll(object sender, EventArgs e)
-        {
-            darkLabel23.Text = ((decimal)(trackBar1.Value)/10).ToString() + "%";
-        }
-
-        private void trackBar1_MouseUp(object sender, MouseEventArgs e)
-        {
-            CL.Chance = (float)(((decimal)trackBar1.Value)/1000);
-            AirdropsettingsJson.isDirty = true;
-        }
-
-        private void darkButton52_Click(object sender, EventArgs e)
-        {
-            foreach(containerLoot cl in ADC.Loot)
-            {
-                cl.Chance = (float)(((decimal)trackBar1.Value) / 1000);
-            }
-            AirdropsettingsJson.isDirty = true;
-        }
-
 
 
     }

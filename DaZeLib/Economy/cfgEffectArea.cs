@@ -11,7 +11,7 @@ namespace DayZeLib
     public class cfgEffectArea
     {
         public BindingList<Areas> Areas { get; set; }
-        public BindingList<int[]> SafePositions { get; set; }
+        public BindingList<float[]> SafePositions { get; set; }
 
         [JsonIgnore]
         public bool isDirty;
@@ -23,7 +23,7 @@ namespace DayZeLib
         public void convertpositionstolist()
         {
             if (SafePositions == null)
-                SafePositions = new BindingList<int[]>();
+                SafePositions = new BindingList<float[]>();
 
             _positions = new BindingList<Position>();
             for(int i = 0; i < SafePositions.Count; i++)
@@ -39,17 +39,17 @@ namespace DayZeLib
         }
         public void convertlisttopositions()
         {
-            SafePositions = new BindingList<int[]>();
+            SafePositions = new BindingList<float[]>();
             foreach (Position pos in _positions)
             {
-                SafePositions.Add(new int[] {pos.X, pos.Z });
+                SafePositions.Add(new float[] {pos.X, pos.Z });
             }
         }
     }
     public class Position
     {
-        public int X { get; set; }
-        public int Z { get; set; }
+        public float X { get; set; }
+        public float Z { get; set; }
         public string Name { get; set; }
         public override string ToString()
         {

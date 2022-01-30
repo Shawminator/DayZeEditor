@@ -21,7 +21,7 @@ namespace DayZeLib
     };
     public class GeneralSettings
     {
-        public int m_Version { get; set; } //currentversion 2
+        public int m_Version { get; set; } //currentversion 4
         public int PlayerLocationNotifier { get; set; }
         public int EnableGlobalChat { get; set; }
         public int EnablePartyChat { get; set; }
@@ -41,13 +41,7 @@ namespace DayZeLib
         public int UseDeathScreen { get; set; }
         public int UseDeathScreenStatistics { get; set; }
         public int UseNewsFeedInGameMenu { get; set; }
-        public int SystemChatColor { get; set; }
-        public int AdminChatColor { get; set; }
-        public int GlobalChatColor { get; set; }
-        public int DirectChatColor { get; set; }
-        public int TransportChatColor { get; set; }
-        public int PartyChatColor { get; set; }
-        public int TransmitterChatColor { get; set; }
+        public ChatColors ChatColors { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }
@@ -56,7 +50,7 @@ namespace DayZeLib
 
         public GeneralSettings()
         {
-            m_Version = 3;
+            m_Version = 4;
             Mapping = new CustomMapping();
             isDirty = true;
         }
@@ -68,6 +62,56 @@ namespace DayZeLib
         {
             GetType().GetProperty(mytype).SetValue(this, myvalue, null);
         }
+        public string getcolourfromcontrol(string name)
+        {
+            switch (name)
+            {
+                case "SystemChatColorPB":
+                    return ChatColors.SystemChatColor;
+                case "AdminChatColorPB":
+                    return ChatColors.AdminChatColor;
+                case "GlobalChatColorPB":
+                    return ChatColors.GlobalChatColor;
+                case "DirectChatColorPB":
+                    return ChatColors.DirectChatColor;
+                case "TransportChatColorPB":
+                    return ChatColors.TransportChatColor;
+                case "PartyChatColorPB":
+                    return ChatColors.PartyChatColor;
+                case "TransmitterChatColorPB":
+                    return ChatColors.TransmitterChatColor;
+            }
+            return "";
+        }
+        public void setcolour(string name, string Colour)
+        {
+            Colour = Colour.Substring(2) + Colour.Substring(0, 2);
+            switch (name)
+            {
+                case "SystemChatColorPB":
+                    ChatColors.SystemChatColor = Colour;
+                    break;
+                case "AdminChatColorPB":
+                    ChatColors.AdminChatColor = Colour;
+                    break;
+                case "GlobalChatColorPB":
+                    ChatColors.GlobalChatColor = Colour;
+                    break;
+                case "DirectChatColorPB":
+                    ChatColors.DirectChatColor = Colour;
+                    break;
+                case "TransportChatColorPB":
+                    ChatColors.TransportChatColor = Colour;
+                    break;
+                case "PartyChatColorPB":
+                    ChatColors.PartyChatColor = Colour;
+                    break;
+                case "TransmitterChatColorPB":
+                    ChatColors.TransmitterChatColor = Colour;
+                    break;
+            }
+        }
+
     }
     public class CustomMapping
     {
@@ -86,5 +130,16 @@ namespace DayZeLib
         {
             GetType().GetProperty(mytype).SetValue(this, myvalue, null);
         }
+    }
+    public class ChatColors
+    {
+        public string SystemChatColor { get; set; }
+        public string AdminChatColor { get; set; }
+        public string GlobalChatColor { get; set; }
+        public string DirectChatColor { get; set; }
+        public string TransportChatColor { get; set; }
+        public string PartyChatColor { get; set; }
+        public string TransmitterChatColor { get; set; }
+
     }
 }

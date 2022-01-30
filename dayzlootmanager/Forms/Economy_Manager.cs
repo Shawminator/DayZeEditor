@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -76,6 +77,7 @@ namespace DayZeEditor
 
             PopulateTreeView();
             Loadevents();
+            LoadSpawnableTypes();
             populateEconmyTreeview();
 
             SetSummarytiers();
@@ -143,6 +145,19 @@ namespace DayZeEditor
                     midifiedfiles.Add(Path.GetFileName(eventconfig.Filename));
                 }
             }
+
+            if (currentproject.spawnabletypesList != null)
+            {
+                foreach (Spawnabletypesconfig Spawnabletypesconfig in currentproject.spawnabletypesList)
+                {
+                    if (Spawnabletypesconfig.isDirty)
+                    {
+                        Spawnabletypesconfig.Savespawnabletypes(SaveTime);
+                        Spawnabletypesconfig.isDirty = false;
+                        midifiedfiles.Add(Path.GetFileName(Spawnabletypesconfig.Filename));
+                    }
+                }
+            }
             string message = "The Following Files were saved....\n";
             int i = 0;
             foreach (string l in midifiedfiles)
@@ -189,6 +204,13 @@ namespace DayZeEditor
             if (tabControl3.SelectedIndex== 3)
                 toolStripButton8.Checked = true;
         }
+
+        private void toolStripButton9_Click(object sender, EventArgs e)
+        {
+            tabControl4.SelectedIndex = 4;
+            if (tabControl3.SelectedIndex == 4)
+                toolStripButton8.Checked = true;
+        }
         private void tabControl4_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (tabControl4.SelectedIndex)
@@ -197,21 +219,31 @@ namespace DayZeEditor
                     toolStripButton5.Checked = false;
                     toolStripButton6.Checked = false;
                     toolStripButton8.Checked = false;
+                    toolStripButton9.Checked = false;
                     break;
                 case 1:
                     toolStripButton3.Checked = false;
                     toolStripButton6.Checked = false;
                     toolStripButton8.Checked = false;
+                    toolStripButton9.Checked = false;
                     break;
                 case 2:
                     toolStripButton3.Checked = false;
                     toolStripButton5.Checked = false;
                     toolStripButton8.Checked = false;
+                    toolStripButton9.Checked = false;
                     break;
                 case 3:
                     toolStripButton3.Checked = false;
                     toolStripButton5.Checked = false;
                     toolStripButton6.Checked = false;
+                    toolStripButton9.Checked = false;
+                    break;
+                case 4:
+                    toolStripButton3.Checked = false;
+                    toolStripButton5.Checked = false;
+                    toolStripButton6.Checked = false;
+                    toolStripButton8.Checked = false;
                     break;
                 default:
                     break;
@@ -225,7 +257,7 @@ namespace DayZeEditor
             {
                 cb.Visible = false;
             }
-            int index = 14;
+            int index = 15;
             foreach (value value in currentproject.limitfefinitions.lists.valueflags.value)
             {
                 CheckBox cb = checkboxesSummary.First(x => x.Tag.ToString() == value.name);
@@ -236,7 +268,7 @@ namespace DayZeEditor
                 index--;
             }
             checkboxesSummary = UserdefinitionsTPSummary.Controls.OfType<CheckBox>().ToList();
-            checkboxesSummary = checkboxesSummary.OrderBy(x => x.Name).ToList();
+            checkboxesSummary = checkboxesSummary.OrderBy(x => x.Tag.ToString()).ToList();
             foreach (CheckBox cb in checkboxesSummary)
             {
                 cb.Visible = false;
@@ -809,6 +841,8 @@ namespace DayZeEditor
                 if (currentlootpart.cost != null)
                     currentlootpart.cost = (int)numericUpDown7.Value;
                 currentTypesFile.isDirty = true;
+                currentproject.SetTotNomCount();
+                NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
             }
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -835,6 +869,7 @@ namespace DayZeEditor
                     currentlootpart.AddTier(tier);
                 else
                     currentlootpart.removetier(tier);
+                PopulateLootPartInfo();
                 currentTypesFile.isDirty = true;
             }
         }
@@ -845,18 +880,50 @@ namespace DayZeEditor
                 CheckBox cb = sender as CheckBox;
                 string tier = cb.Tag.ToString();
                 if (cb.Checked)
+                {
+                    if (currentlootpart.value == null)
+                        currentlootpart.value = new BindingList<value>();
+                    //lets check if the defined tier are set, if so we remove them
+                    if (currentlootpart.value.Count > 0)
+                    {
+                        int count = currentlootpart.value.Count;
+                        for (int i = 0; i < count; i++)
+                        {
+                            currentlootpart.removetier(currentlootpart.value[0].name);
+                        }
+                    }
                     currentlootpart.AdduserTier(tier);
+                }
                 else
                     currentlootpart.removeusertier(tier);
+                PopulateLootPartInfo();
                 currentTypesFile.isDirty = true;
             }
         }
         private void darkButton3_Click(object sender, EventArgs e)
         {
             List<type> loot = new List<type>();
-            if (FullTypes)
+
+            if(currentcollection == "Parent")
+            {
+                if(vanillatypes.types.type != null)
+                {
+                    loot = vanillatypes.types.type.ToList();
+                    editnommax(loot);
+                }
+                foreach(TypesFile tf in  ModTypes)
+                {
+                    if (tf.types.type != null)
+                    {
+                        loot = tf.types.type.ToList();
+                        editnommax(loot);
+                    }
+                }
+            }
+            else if (FullTypes)
             {
                 loot = currentTypesFile.types.type.ToList();
+                editnommax(loot);
             }
             else
             {
@@ -864,12 +931,19 @@ namespace DayZeEditor
                 if (currentcollection == "other")
                 {
                     loot = currentTypesFile.types.type.Where(x => x.category == null).ToList();
+                    editnommax(loot);
                 }
                 else
                 {
                     loot = currentTypesFile.types.type.Where(x => x.category != null && x.category.name == currentcollection).ToList();
+                    editnommax(loot);
                 }
             }
+            currentproject.SetTotNomCount();
+            NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
+        }
+        public void editnommax(List<type> loot)
+        {
             currentTypesFile.isDirty = true;
             Domultiplier(loot);
         }
@@ -1161,8 +1235,8 @@ namespace DayZeEditor
         #endregion types
         #region events
         public eventscofig currenteventsfile;
-        private DynamicEvent CurrentEvent;
-        private child CurrentChild;
+        private eventsEvent CurrentEvent;
+        private eventsEventChild CurrentChild;
         private void Loadevents()
         {
             isUserInteraction = false;
@@ -1176,23 +1250,24 @@ namespace DayZeEditor
         {
             if (EventsLIstLB.SelectedItem as eventscofig == currenteventsfile) { return; }
             if (EventsLIstLB.SelectedIndex == -1) { return; }
+            isUserInteraction = false;
             currenteventsfile = EventsLIstLB.SelectedItem as eventscofig;
             positionComboBox.DataSource = Enum.GetValues(typeof(position));
             limitComboBox.DataSource = Enum.GetValues(typeof(limit));
             EventsLB.DisplayMember = "DisplayName";
             EventsLB.ValueMember = "Value";
-            EventsLB.DataSource = currenteventsfile.events.DynamicEvent;
+            EventsLB.DataSource = currenteventsfile.events.@event;
             isUserInteraction = true;
         }
         private void EventsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (EventsLB.SelectedItem as DynamicEvent == CurrentEvent) { return; }
+            if (EventsLB.SelectedItem as eventsEvent == CurrentEvent) { return; }
             if (EventsLB.SelectedIndex == -1) { return; }
-            CurrentEvent = EventsLB.SelectedItem as DynamicEvent;
+            CurrentEvent = EventsLB.SelectedItem as eventsEvent;
 
             isUserInteraction = false;
             ClearChildren();
-            positionComboBox.SelectedItem = (position)CurrentEvent.position;
+            positionComboBox.SelectedItem = (position)CurrentEvent.position; 
             limitComboBox.SelectedItem = (limit)CurrentEvent.limit;
 
             nameTB.Text = CurrentEvent.name;
@@ -1210,7 +1285,7 @@ namespace DayZeEditor
             activeCB.Checked = CurrentEvent.active == 1 ? true : false;
             ChildrenLB.DisplayMember = "DisplayName";
             ChildrenLB.ValueMember = "Value";
-            ChildrenLB.DataSource = CurrentEvent.children.child;
+            ChildrenLB.DataSource = CurrentEvent.children;
 
             isUserInteraction = true;
         }
@@ -1221,9 +1296,9 @@ namespace DayZeEditor
         }
         private void ChildrenLB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ChildrenLB.SelectedItem as child == CurrentChild) { return; }
+            if (ChildrenLB.SelectedItem as eventsEventChild == CurrentChild) { return; }
             if (ChildrenLB.SelectedIndex == -1) { return; }
-            CurrentChild = ChildrenLB.SelectedItem as child;
+            CurrentChild = ChildrenLB.SelectedItem as eventsEventChild;
             isUserInteraction = false;
             ChildGB.Visible = true;
             ClootmaxNUD.Value = (int)CurrentChild.lootmax;
@@ -1292,77 +1367,282 @@ namespace DayZeEditor
             currenteventsfile.isDirty = true;
             EventsLB.Refresh();
         }
-
-
-
-
+        private void CtypeTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            CurrentChild.type = CtypeTB.Text;
+            currenteventsfile.isDirty = true;
+            EventsLB.Refresh();
+        }
+        private void darkButton16_Click(object sender, EventArgs e)
+        {
+            eventsEvent neweventEvent = new eventsEvent()
+            {
+                name = "NewEvent",
+                nominal = 0,
+                min = 0,
+                max = 0,
+                lifetime = 0,
+                restock = 0,
+                saferadius = 0,
+                distanceradius = 0,
+                cleanupradius = 0,
+                position = position.@fixed,
+                limit = limit.child,
+                active = 0,
+                flags = new eventsEventFlags(),
+                children = new BindingList<eventsEventChild>()
+            };
+            currenteventsfile.events.AddnewEvent(neweventEvent);
+            currenteventsfile.isDirty = true;
+        }
+        private void darkButton17_Click(object sender, EventArgs e)
+        {
+            currenteventsfile.events.RemoveEvent(CurrentEvent);
+            currenteventsfile.isDirty = true;
+        }
+        private void darkButton19_Click(object sender, EventArgs e)
+        {
+            eventsEventChild newventeventschild = new eventsEventChild()
+            {
+                type = "newChild",
+                lootmax = 0,
+                lootmin = 0,
+                max = 0,
+                min = 0
+            };
+            CurrentEvent.Addnechild(newventeventschild);
+            currenteventsfile.isDirty = true;
+        }
+        private void darkButton18_Click(object sender, EventArgs e)
+        {
+            CurrentEvent.Removechild(CurrentChild);
+            currenteventsfile.isDirty = true;
+        }
+        private void darkButton21_Click(object sender, EventArgs e)
+        {
+            AddNeweventFile form = new AddNeweventFile
+            {
+                currentproject = currentproject,
+                newlocation = true
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string path = form.CustomLocation;
+                string modname = form.TypesName;
+                Directory.CreateDirectory(path);
+                List<string> Eventfile = new List<string>();
+                Eventfile.Add("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
+                Eventfile.Add("<events>");
+                Eventfile.Add("</events>");
+                File.WriteAllLines(path + "\\" + modname + "_events.xml", Eventfile);
+                eventscofig test = new eventscofig(path + "\\" + modname + "_events.xml");
+                test.SaveEvent();
+                currentproject.EconomyCore.AddCe(path.Replace(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\", ""), modname + "_events.xml", "events");
+                currentproject.EconomyCore.SaveEconomycore();
+                currentproject.SetEvents();
+                populateEconmyTreeview();
+                Loadevents();
+            }
+        }
+        private void darkButton20_Click(object sender, EventArgs e)
+        {
+            string Modname = Path.GetFileNameWithoutExtension(currenteventsfile.Filename);
+            currentproject.EconomyCore.RemoveCe(Modname, out string foflderpath, out string filename, out bool deletedirectory);
+            File.Delete(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\" + foflderpath + "\\" + filename);
+            if (deletedirectory)
+                Directory.Delete(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\" + foflderpath, true);
+            currentproject.EconomyCore.SaveEconomycore();
+            currentproject.removeevent(currenteventsfile.Filename);
+            currentproject.SetEvents();
+            Loadevents();
+            populateEconmyTreeview();
+        }
         #endregion events
 
+        #region spawnabletypes
+        public Spawnabletypesconfig currentspawnabletypesfile;
+        public spawnabletypesType CurrentspawnabletypesType;
+        public object CurrentspawnabletypesTypetype;
+        private void LoadSpawnableTypes()
+        {
+            isUserInteraction = false;
+            SpawnabletypeslistLB.DisplayMember = "DisplayName";
+            SpawnabletypeslistLB.ValueMember = "Value";
+            SpawnabletypeslistLB.DataSource = currentproject.spawnabletypesList;
+            isUserInteraction = true;
+        }
+        private void SpawnabletypeslistLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (SpawnabletypeslistLB.SelectedItem as Spawnabletypesconfig == currentspawnabletypesfile) { return; }
+            if (SpawnabletypeslistLB.SelectedIndex == -1) { return; }
+            currentspawnabletypesfile = SpawnabletypeslistLB.SelectedItem as Spawnabletypesconfig;
+            if(currentspawnabletypesfile.spawnabletypes.damage != null)
+            {
+                DamageMinNUD.Value = currentspawnabletypesfile.spawnabletypes.damage.min;
+                DamageMaxNUD.Value = currentspawnabletypesfile.spawnabletypes.damage.max;
+                DamageMinNUD.Visible = true;
+                DamageMaxNUD.Visible = true;
+            }
+            else
+            {
+                DamageMinNUD.Visible = false;
+                DamageMaxNUD.Visible = false;
+            }
+
+            SpawnabletpesLB.DisplayMember = "DisplayName";
+            SpawnabletpesLB.ValueMember = "Value";
+            SpawnabletpesLB.DataSource = currentspawnabletypesfile.spawnabletypes.type;
+            isUserInteraction = true;
+        }
+        private void SpawnabletpesLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (SpawnabletpesLB.SelectedItem as spawnabletypesType == CurrentspawnabletypesType) { return; }
+            if (SpawnabletpesLB.SelectedIndex == -1) { return; }
+            CurrentspawnabletypesType = SpawnabletpesLB.SelectedItem as spawnabletypesType;
+
+            listBox6.DisplayMember = "DisplayName";
+            listBox6.ValueMember = "Value";
+            listBox6.DataSource = CurrentspawnabletypesType.Items;
+
+
+        }
+        private void listBox6_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox6.SelectedItem as object == CurrentspawnabletypesTypetype) { return; }
+            if (listBox6.SelectedIndex == -1) { return; }
+            CurrentspawnabletypesTypetype = listBox6.SelectedItem as object;
+            HoarderCB.Checked = false;
+            checkBox49.Checked = false;
+            checkBox50.Checked = false;
+            checkBox51.Checked = false;
+            if (CurrentspawnabletypesTypetype is spawnabletypesTypeHoarder)
+            {
+                HoarderCB.Checked = true;
+            }
+            else if (CurrentspawnabletypesTypetype is spawnabletypesTypeTag)
+            {
+                checkBox51.Checked = true;
+            }
+            else if (CurrentspawnabletypesTypetype is spawnabletypesTypeCargo)
+            {
+                checkBox49.Checked = true;
+            }
+            else if(CurrentspawnabletypesTypetype is spawnabletypesTypeAttachments)
+            {
+                checkBox50.Checked = true;
+            }
+        }
+        #endregion spawnabletypes
+
+
+        public bool FilterTiers = false;
+        public bool FilterCategories = false;
+        public bool FilterLocations = false;
+        public bool FilterTags = false;
+        public bool FilterFlags = false;
         private void darkButton15_Click(object sender, EventArgs e)
         {
             treeView2.Nodes.Clear();
         }
-
-
         public bool typeinfilterlist(type type, List<string> Queryitems)
         {
-            if(type.name == "AntiChemInjector")
-            {
-                string stop = "";
-            }
-
-            bool istrue = false;
+            bool istrue = true;
+            if (Queryitems.Count == 0) { return true; }
             foreach (string filter in Queryitems)
             {
                 string[] fsplit = filter.Split(',');
                 switch (fsplit[1])
                 {
                     case "definintions":
-                        if (type.value != null)
+                        if (type.value == null)
                         {
                             istrue = false;
-                            if (type.value.Count == 0)
-                            {
-
-                            }
-                            else
-                            {
-                                foreach (value v in type.value)
-                                {
-                                    if (v.name == fsplit[0])
-                                    {
-                                        istrue = true;
-                                        break;
-                                    }
-                                }
-                                if (istrue)
-                                    break;
-                                return false;
-                            }
-                        }
-                        return false;
-                    case "categories":
-                        if (fsplit[0] == "Other")
-                        {
-                            if (type.category == null)
-                                istrue = true;
-                            else
-                                return false;
                             break;
+                        }
+                        switch (fsplit[2])
+                        {
+                            case "0":
+                                string def = fsplit[0];
+                                if (!type.value.Any(x => x.name == def))
+                                        istrue = false;
+                                break;
+                            case "1":
+                                def = fsplit[0];
+                                if (!type.value.Any(x => x.user == def))
+                                     istrue = false;
+                                break;
+                        }
+                        break;
+                    case "categories":
+                        string cat = fsplit[0];
+                        string typecat = "";
+                        if (type.category == null)
+                            typecat = "Other";
+                        else
+                            typecat = type.category.name;
+                        if (typecat != cat)
+                            istrue = false;
+                        break;
+                    case "usage":
+                        string usage = fsplit[0];
+                        if(type.usage == null) 
+                        {
+                            istrue = false;
                         }
                         else
                         {
-                            if (type.category == null)
-                                return false;
-                            category c = currentproject.limitfefinitions.lists.categories.category.First(x => x.name == fsplit[0]);
-                            if (type.category == c)
-                            {
-                                istrue = true;
-                                break;
-                            }
-                            else
-                                return false;
+                            if (!type.usage.Any(x => x.name == usage))
+                                istrue = false;
                         }
+                        break;
+                    case "tags":
+                        string tag = fsplit[0];
+                        if (type.tag == null)
+                        {
+                            if (tag != "NULL")
+                                istrue = false;
+                        }
+                        else
+                        {
+                            if (!type.tag.Any(x => x.name == tag))
+                                istrue = false;
+                        }
+                        break;
+                    case "flags":
+                        {
+                            switch (fsplit[0])
+                            {
+                                case "deloot":
+                                    if (type.flags.deloot != 1)
+                                        istrue = false;
+                                    break;
+                                case "crafted":
+                                    if (type.flags.crafted != 1)
+                                        istrue = false;
+                                    break;
+                                case "count_in_player":
+                                    if (type.flags.count_in_player != 1)
+                                        istrue = false;
+                                    break;
+                                case "count_in_map":
+                                    if (type.flags.count_in_map != 1)
+                                        istrue = false;
+                                    break;
+                                case "count_in_hoarder":
+                                    if (type.flags.count_in_hoarder != 1)
+                                        istrue = false;
+                                    break;
+                                case "count_in_cargo":
+                                    if (type.flags.count_in_cargo != 1)
+                                        istrue = false;
+                                    break;
+                            }
+                        }
+                        
+                        break;
+
                 }
             }
             if (istrue)
@@ -1372,25 +1652,90 @@ namespace DayZeEditor
         private void darkButton14_Click(object sender, EventArgs e)
         {
             List<string> Queryitems = new List<string>();
-            List<CheckBox> checkboxesSummary = SetdefinitionsTPSummary.Controls.OfType<CheckBox>().ToList();
+            
             //check Tiers
-            foreach (CheckBox cb in checkboxesSummary)
+            //need to check if the fil;ter is for vanilla or user definitions
+            if (FilterTiers)
             {
-                if (cb.Visible == true && cb.Checked)
-                    Queryitems.Add(cb.Tag.ToString() + ",definintions");
-            }
-            //Check Categorys
-            if(listBox5.Items.Count > 0)
-            {
-                foreach (var item in listBox5.Items)
+                switch (tabControl8.SelectedIndex)
                 {
-                    category c = item as category;
-                    Queryitems.Add(c.name + ",categories");
+                    case 0:
+                        List<CheckBox> checkboxesSummary = SetdefinitionsTPSummary.Controls.OfType<CheckBox>().ToList();
+                        foreach (CheckBox cb in checkboxesSummary)
+                        {
+                            if (cb.Visible == true && cb.Checked)
+                                Queryitems.Add(cb.Tag.ToString() + ",definintions,0");
+                        }
+                        break;
+                    case 1:
+                        checkboxesSummary = UserdefinitionsTPSummary.Controls.OfType<CheckBox>().ToList();
+                        foreach (CheckBox cb in checkboxesSummary)
+                        {
+                            if (cb.Visible == true && cb.Checked)
+                                Queryitems.Add(cb.Tag.ToString() + ",definintions,1");
+                        }
+                        break;
                 }
             }
-            else
+            //Check Categorys
+            if (FilterCategories)
             {
-                Queryitems.Add("Other,categories");
+                if (listBox5.Items.Count > 0)
+                {
+                    foreach (var item in listBox5.Items)
+                    {
+                        category c = item as category;
+                        Queryitems.Add(c.name + ",categories");
+                    }
+                }
+                else
+                {
+                    Queryitems.Add("Other,categories");
+                }
+            }
+            // check locations (usage)
+            if(FilterLocations)
+            {
+                if(listBox4.Items.Count > 0)
+                {
+                    foreach (var item in listBox4.Items)
+                    {
+                        usage u = item as usage;
+                        Queryitems.Add(u.name + ",usage");
+                    }
+                }
+            }
+            //Check tag
+            if(FilterTags)
+            {
+                if(listBox3.Items.Count > 0)
+                {
+                    foreach (var item in listBox3.Items)
+                    {
+                        tag c = item as tag;
+                        Queryitems.Add(c.name + ",tags");
+                    }
+                }
+                else
+                {
+                    Queryitems.Add("NULL,tags");
+                }
+            }
+            //check flags
+            if(FilterFlags)
+            {
+                if(checkBox43.Checked)
+                    Queryitems.Add("deloot,flags");
+                if (checkBox44.Checked)
+                    Queryitems.Add("crafted,flags");
+                if (checkBox45.Checked)
+                    Queryitems.Add("count_in_player,flags");
+                if (checkBox46.Checked)
+                    Queryitems.Add("count_in_map,flags");
+                if (checkBox47.Checked)
+                    Queryitems.Add("count_in_hoarder,flags");
+                if (checkBox48.Checked)
+                    Queryitems.Add("count_in_cargo,flags");
             }
             string stop = "";
 
@@ -1400,7 +1745,7 @@ namespace DayZeEditor
 
 
 
-
+            int count = 0;
             treeView2.Nodes.Clear();
             TreeNode root = new TreeNode(Path.GetFileName(filename))
             {
@@ -1414,6 +1759,11 @@ namespace DayZeEditor
             foreach (type type in vanillatypes.types.type)
             {
                 if(!typeinfilterlist(type, Queryitems)) { continue; }
+                if(ZeroNomCB.Checked)
+                {
+                    if (type.nominal == 0)
+                        continue;
+                }
                 string cat = "other";
                 if (type.category != null)
                     cat = type.category.name;
@@ -1428,8 +1778,10 @@ namespace DayZeEditor
                         Name = cat,
                         Tag = cat
                     };
+                   
                     vanilla.Nodes.Add(newcatnode);
                 }
+                count++;
                 vanilla.Nodes[cat].Nodes.Add(typenode);
             }
             root.Nodes.Add(vanilla);
@@ -1445,6 +1797,11 @@ namespace DayZeEditor
                     foreach (type type in tf.types.type)
                     {
                         if (!typeinfilterlist(type, Queryitems)) { continue; }
+                        if (ZeroNomCB.Checked)
+                        {
+                            if (type.nominal == 0)
+                                continue;
+                        }
                         string cat = "other";
                         if (type.category != null)
                             cat = type.category.name;
@@ -1461,6 +1818,7 @@ namespace DayZeEditor
                             };
                             ModTypes.Nodes.Add(newcatnode);
                         }
+                        count++;
                         ModTypes.Nodes[cat].Nodes.Add(typenode);
                     }
 
@@ -1468,23 +1826,72 @@ namespace DayZeEditor
                     root.Nodes.Add(ModTypes);
                 }
             }
-
+            darkLabel6.Text = "Found Items :- " + count.ToString();
             treeView2.Nodes.Add(root);
         }
-
         private void darkButton12_Click(object sender, EventArgs e)
         {
             category c = comboBox8.SelectedItem as category;
             if(!listBox5.Items.Contains(c))
                 listBox5.Items.Add(c);
         }
-
         private void darkButton13_Click(object sender, EventArgs e)
         {
             if (listBox5.SelectedItems.Count > 0)
             {
-                
-                    }
+                category c = listBox5.SelectedItem as category;
+                listBox5.Items.Remove(c);
+            }
         }
+        private void darkButton10_Click(object sender, EventArgs e)
+        {
+            usage u = comboBox7.SelectedItem as usage;
+            if (!listBox4.Items.Contains(u))
+                listBox4.Items.Add(u);
+        }
+        private void darkButton11_Click(object sender, EventArgs e)
+        {
+            if (listBox4.SelectedItems.Count > 0)
+            {
+                usage u = listBox4.SelectedItem as usage;
+                listBox4.Items.Remove(u);
+            }
+        }
+        private void darkButton4_Click(object sender, EventArgs e)
+        {
+            tag t = comboBox6.SelectedItem as tag;
+            if (!listBox3.Items.Contains(t))
+                listBox3.Items.Add(t);
+        }
+        private void darkButton9_Click(object sender, EventArgs e)
+        {
+            if (listBox3.SelectedItems.Count > 0)
+            {
+                tag t = listBox3.SelectedItem as tag;
+                listBox3.Items.Remove(t);
+            }
+        }
+        private void checkBox69_CheckedChanged(object sender, EventArgs e)
+        {
+            FilterTiers = groupBox18.Enabled = checkBox69.Checked;
+        }
+        private void checkBox68_CheckedChanged(object sender, EventArgs e)
+        {
+            FilterCategories = groupBox13.Enabled = checkBox68.Checked;
+        }
+        private void checkBox67_CheckedChanged(object sender, EventArgs e)
+        {
+            FilterLocations = groupBox16.Enabled = checkBox67.Checked;
+        }
+        private void checkBox66_CheckedChanged(object sender, EventArgs e)
+        {
+            FilterTags = groupBox14.Enabled = checkBox66.Checked;
+        }
+        private void checkBox65_CheckedChanged(object sender, EventArgs e)
+        {
+            FilterFlags = groupBox19.Enabled = checkBox65.Checked;
+        }
+
+
     }
 }

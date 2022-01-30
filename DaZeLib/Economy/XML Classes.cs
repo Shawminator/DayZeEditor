@@ -344,6 +344,8 @@ namespace DayZeLib
         public void removeusertier(string tier)
         {
             value.Remove(value.First(X => X.user == tier));
+            if (value.Count == 0)
+                Usinguserdifinitions = false;
         }
     }
     [Serializable]

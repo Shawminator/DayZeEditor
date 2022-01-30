@@ -17,6 +17,7 @@ namespace DayZeEditor
         private void listBox_DrawItem(object sender, DrawItemEventArgs e)
         {
             ListBox lb = sender as ListBox;
+            if (lb.SelectedItem == null) return;
             e.DrawBackground();
             Brush myBrush = Brushes.Black;
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)

@@ -8,9 +8,36 @@ using System.Threading.Tasks;
 
 namespace DayZeLib
 {
+    public enum LootchestOpenable
+    {
+        KeyOnly,
+        KeyAndLockpick,
+        KeyAndLockPickAndTools
+
+    };
+    public class LootChestTools
+    {
+        public BindingList<LCTools> LCTools { get; set; }
+
+        [JsonIgnore]
+        public string Filename { get; set; }
+        [JsonIgnore]
+        public bool isDirty { get; set; }
+    }
+    public class LCTools
+    {
+        public string name { get; set; }
+        public int time { get; set; }
+        public int dmg { get; set; }
+
+        public override string ToString()
+        {
+            return name;
+        }
+    }
     public class LootChestTable
     {
-        public float LootRandomization { get; set; }
+        public int EnableDebug { get; set; }
         public BindingList<LootChestsLocations> LootChestsLocations { get; set; }
         public BindingList<LCPredefinedWeapons> LCPredefinedWeapons { get; set; }
         public BindingList<LootCategories> LootCategories { get; set; }
@@ -26,7 +53,9 @@ namespace DayZeLib
         public int number { get; set; }
         public BindingList<string> pos { get; set; }
         public string keyclass { get; set; }
+        public int openable { get; set; }
         public BindingList<string> chest { get; set; }
+        public float LootRandomization { get; set; }
         public BindingList<string> loot { get; set; }
 
 

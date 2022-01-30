@@ -29,89 +29,369 @@ namespace DayZeLib
         [Description("Parent")]
         parent
     };
-    public class events
+
+    // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
+    public partial class events
     {
-        [XmlElement("event")]
-        public BindingList<DynamicEvent> DynamicEvent { get; set; }
+        private BindingList<eventsEvent> eventField;
+        [System.Xml.Serialization.XmlElementAttribute("event")]
+        public BindingList<eventsEvent> @event
+        {
+            get
+            {
+                return this.eventField;
+            }
+            set
+            {
+                this.eventField = value;
+            }
+        }
+
+        public void AddnewEvent(eventsEvent neweventEvent)
+        {
+            @event.Add(neweventEvent);
+        }
+
+        public void RemoveEvent(eventsEvent currentEvent)
+        {
+            @event.Remove(currentEvent);
+        }
     }
-    [Serializable]
-    public class DynamicEvent
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class eventsEvent
     {
-        [XmlAttribute(AttributeName = "name")]
-        public string name { get; set; }
-        [XmlElement(ElementName = "nominal", IsNullable = false)]
-        public int nominal { get; set; }
-        [XmlElement(ElementName = "min", IsNullable = false)]
-        public int min { get; set; }
-        [XmlElement(ElementName = "max", IsNullable = false)]
-        public int max { get; set; }
-        [XmlElement(ElementName = "lifetime", IsNullable = false)]
-        public int lifetime { get; set; }
-        [XmlElement(ElementName = "restock", IsNullable = false)]
-        public int restock { get; set; }
-        [XmlElement(ElementName = "saferadius", IsNullable = false)]
-        public int saferadius { get; set; }
-        [XmlElement(ElementName = "distanceradius", IsNullable = false)]
-        public int distanceradius { get; set; }
-        [XmlElement(ElementName = "cleanupradius", IsNullable = false)]
-        public int cleanupradius { get; set; }
-        [XmlElement(ElementName = "flags")]
-        public eventflags flags { get; set; }
-        [XmlElement(ElementName = "position")]
-        public position position { get; set; }
-        [XmlElement(ElementName = "limit")]
-        public limit limit { get; set; }
-        [XmlElement(ElementName = "active", IsNullable = false)]
-        public int active { get; set; }
-        [XmlElement(ElementName = "children")]
-        public children children { get; set; }
+        private int nominalField;
+        private int minField;
+        private int maxField;
+        private int lifetimeField;
+        private int restockField;
+        private int saferadiusField;
+        private int distanceradiusField;
+        private int cleanupradiusField;
+        private eventsEventFlags flagsField;
+        private position positionField;
+        private limit limitField;
+        private int activeField;
+        private BindingList<eventsEventChild> childrenField;
+        private string nameField;
+
+
+        public int nominal
+        {
+            get
+            {
+                return this.nominalField;
+            }
+            set
+            {
+                this.nominalField = value;
+            }
+        }
+        public int min
+        {
+            get
+            {
+                return this.minField;
+            }
+            set
+            {
+                this.minField = value;
+            }
+        }
+        public int max
+        {
+            get
+            {
+                return this.maxField;
+            }
+            set
+            {
+                this.maxField = value;
+            }
+        }
+        public int lifetime
+        {
+            get
+            {
+                return this.lifetimeField;
+            }
+            set
+            {
+                this.lifetimeField = value;
+            }
+        }
+        public int restock
+        {
+            get
+            {
+                return this.restockField;
+            }
+            set
+            {
+                this.restockField = value;
+            }
+        }
+        public int saferadius
+        {
+            get
+            {
+                return this.saferadiusField;
+            }
+            set
+            {
+                this.saferadiusField = value;
+            }
+        }
+        public int distanceradius
+        {
+            get
+            {
+                return this.distanceradiusField;
+            }
+            set
+            {
+                this.distanceradiusField = value;
+            }
+        }
+        public int cleanupradius
+        {
+            get
+            {
+                return this.cleanupradiusField;
+            }
+            set
+            {
+                this.cleanupradiusField = value;
+            }
+        }
+        public eventsEventFlags flags
+        {
+            get
+            {
+                return this.flagsField;
+            }
+            set
+            {
+                this.flagsField = value;
+            }
+        }
+        public position position
+        {
+            get
+            {
+                return this.positionField;
+            }
+            set
+            {
+                this.positionField = value;
+            }
+        }
+        public limit limit
+        {
+            get
+            {
+                return this.limitField;
+            }
+            set
+            {
+                this.limitField = value;
+            }
+        }
+        public int active
+        {
+            get
+            {
+                return this.activeField;
+            }
+            set
+            {
+                this.activeField = value;
+            }
+        }
+        [System.Xml.Serialization.XmlArrayItemAttribute("child", IsNullable = false)]
+        public BindingList<eventsEventChild> children
+        {
+            get
+            {
+                return this.childrenField;
+            }
+            set
+            {
+                this.childrenField = value;
+            }
+        }
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string name
+        {
+            get
+            {
+                return this.nameField;
+            }
+            set
+            {
+                this.nameField = value;
+            }
+        }
+
+        public void SetIntValue(string mytype, int myvalue)
+        {
+            GetType().GetProperty(mytype).SetValue(this, myvalue, null);
+        }
 
         public override string ToString()
         {
             return name;
         }
 
+        public void Addnechild(eventsEventChild neweventeventschild)
+        {
+            children.Add(neweventeventschild);
+        }
+
+        public void Removechild(eventsEventChild currentChild)
+        {
+            children.Remove(currentChild);
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class eventsEventFlags
+    {
+        private int deletableField;
+        private int init_randomField;
+        private int remove_damagedField;
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int deletable
+        {
+            get
+            {
+                return this.deletableField;
+            }
+            set
+            {
+                this.deletableField = value;
+            }
+        }
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int init_random
+        {
+            get
+            {
+                return this.init_randomField;
+            }
+            set
+            {
+                this.init_randomField = value;
+            }
+        }
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int remove_damaged
+        {
+            get
+            {
+                return this.remove_damagedField;
+            }
+            set
+            {
+                this.remove_damagedField = value;
+            }
+        }
+
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class eventsEventChild
+    {
+        private int lootmaxField;
+        private int lootminField;
+        private int maxField;
+        private int minField;
+        private string typeField;
+
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int lootmax
+        {
+            get
+            {
+                return this.lootmaxField;
+            }
+            set
+            {
+                this.lootmaxField = value;
+            }
+        }
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int lootmin
+        {
+            get
+            {
+                return this.lootminField;
+            }
+            set
+            {
+                this.lootminField = value;
+            }
+        }
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int max
+        {
+            get
+            {
+                return this.maxField;
+            }
+            set
+            {
+                this.maxField = value;
+            }
+        }
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int min
+        {
+            get
+            {
+                return this.minField;
+            }
+            set
+            {
+                this.minField = value;
+            }
+        }
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string type
+        {
+            get
+            {
+                return this.typeField;
+            }
+            set
+            {
+                this.typeField = value;
+            }
+        }
+
         public void SetIntValue(string mytype, int myvalue)
         {
             GetType().GetProperty(mytype).SetValue(this, myvalue, null);
         }
-    }
-    public class eventflags
-    {
-        [XmlAttribute(AttributeName = "deletable")]
-        public int deletable { get; set; }
-        [XmlAttribute(AttributeName = "init_random")]
-        public int init_random { get; set; }
-        [XmlAttribute(AttributeName = "remove_damaged")]
-        public int remove_damaged { get; set; }
-
-    }
-
-    public class children
-    {
-        [XmlElement("child")]
-        public BindingList<child> child { get; set; }
-    }
-    public class child
-    {
-        [XmlAttribute(AttributeName = "lootmax")]
-        public int lootmax { get; set; }
-        [XmlAttribute(AttributeName = "lootmin")]
-        public int lootmin { get; set; }
-        [XmlAttribute(AttributeName = "max")]
-        public int max { get; set; }
-        [XmlAttribute(AttributeName = "min")]
-        public int min { get; set; }
-        [XmlAttribute(AttributeName = "type")]
-        public string type { get; set; }
-
         public override string ToString()
         {
             return type;
-        }
-        public void SetIntValue(string mytype, int myvalue)
-        {
-            GetType().GetProperty(mytype).SetValue(this, myvalue, null);
         }
     }
     #endregion events

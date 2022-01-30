@@ -12,10 +12,9 @@ namespace DayZeLib
 {
     public class MarketSettings
     {
-        public int m_Version { get; set; } //Current Version 7
+        public int m_Version { get; set; } //Current Version 8
         public int MarketSystemEnabled { get; set; }
         public BindingList<string[]> NetworkCategories { get; set; } //empty atm
-        public BindingList<AmmoBoxesMarket> MarketAmmoBoxes { get; set; }
         public string CurrencyIcon { get; set; }
         public int ATMSystemEnabled { get; set; }
         public int MaxDepositMoney { get; set; }
@@ -44,11 +43,9 @@ namespace DayZeLib
 
         public MarketSettings()
         {
-            m_Version = 7;
-            MarketAmmoBoxes = new BindingList<AmmoBoxesMarket>();
+            m_Version = 8;
             CurrencyIcon = "DayZExpansion/Market/GUI/icons/coinstack2_64x64.edds";
             NetworkCategories = new BindingList<string[]>();
-            MarketAmmoBoxes = new BindingList<AmmoBoxesMarket>();
             MarketVIPs = new BindingList<string[]>();
             LandSpawnPositions = new BindingList<SpawnPositions>();
             AirSpawnPositions = new BindingList<SpawnPositions>();
@@ -60,7 +57,7 @@ namespace DayZeLib
         public MarketSettings(string name)
         {
             Filename = name;
-            m_Version = 7;
+            m_Version = 8;
             MarketSystemEnabled = 0;
             CurrencyIcon = "DayZExpansion/Market/GUI/icons/coinstack2_64x64.edds";
             ATMSystemEnabled = 0;
@@ -71,7 +68,6 @@ namespace DayZeLib
             MaxPartyDepositMoney = 0;
             SellPricePercent = 50;
             NetworkCategories = new BindingList<string[]>();
-            MarketAmmoBoxes = new BindingList<AmmoBoxesMarket>();
             MarketVIPs = new BindingList<string[]>();
             LandSpawnPositions = new BindingList<SpawnPositions>();
             AirSpawnPositions = new BindingList<SpawnPositions>();
@@ -439,16 +435,6 @@ namespace DayZeLib
             ColorToggleCategoriesText = "C726518C";
             ColorCategoryCorners = "FBFCFEFF";
             ColorCategoryBackground = "222526FF";
-        }
-    }
-    public class AmmoBoxesMarket
-    {
-        public string Ammo { get;set;}
-        public string AmmoBox { get; set; }
-
-        public override string ToString()
-        {
-            return Ammo;
         }
     }
     public class SpawnPositions

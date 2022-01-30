@@ -12,6 +12,15 @@ namespace DayZeLib
 {
     public static class Helper
     {
+        public static Stream GenerateStreamFromString(string s)
+        {
+            var stream = new MemoryStream();
+            var writer = new StreamWriter(stream);
+            writer.Write(s);
+            writer.Flush();
+            stream.Position = 0;
+            return stream;
+        }
         public static int getNextint(IEnumerable<int> ints)
         {
             int counter = ints.Count() > 0 ? ints.First() : 0;
