@@ -84,6 +84,7 @@
     <Compile Include="Economy\EventSpawnsXML.cs" />
     <Compile Include="Economy\EventsXML.cs" />
     <Compile Include="Economy\GameplayJson.cs" />
+    <Compile Include="Economy\PlayerSpawnsXML.cs" />
     <Compile Include="Economy\SpawnabletypesXML.cs" />
     <Compile Include="Economy\variables.cs" />
     <Compile Include="Economy\Limitsdefinitions.cs" />
@@ -116,10 +117,12 @@
     <Compile Include="Economy\TypesFile.cs" />
     <Compile Include="Economy\XML Classes.cs" />
     <Compile Include="SpawnerBubaku\SpawnerBubaku.cs" />
+    <Compile Include="TraderPlus\TraderplusConfig.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

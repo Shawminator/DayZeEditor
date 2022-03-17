@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
@@ -211,6 +212,12 @@ namespace DayZeEditor
             if (tabControl3.SelectedIndex == 4)
                 toolStripButton8.Checked = true;
         }
+        private void toolStripButton10_Click(object sender, EventArgs e)
+        {
+            tabControl4.SelectedIndex = 5;
+            if (tabControl3.SelectedIndex == 5)
+                toolStripButton8.Checked = true;
+        }
         private void tabControl4_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (tabControl4.SelectedIndex)
@@ -220,30 +227,42 @@ namespace DayZeEditor
                     toolStripButton6.Checked = false;
                     toolStripButton8.Checked = false;
                     toolStripButton9.Checked = false;
+                    toolStripButton10.Checked = false;
                     break;
                 case 1:
                     toolStripButton3.Checked = false;
                     toolStripButton6.Checked = false;
                     toolStripButton8.Checked = false;
                     toolStripButton9.Checked = false;
+                    toolStripButton10.Checked = false;
                     break;
                 case 2:
                     toolStripButton3.Checked = false;
                     toolStripButton5.Checked = false;
                     toolStripButton8.Checked = false;
                     toolStripButton9.Checked = false;
+                    toolStripButton10.Checked = false;
                     break;
                 case 3:
                     toolStripButton3.Checked = false;
                     toolStripButton5.Checked = false;
                     toolStripButton6.Checked = false;
                     toolStripButton9.Checked = false;
+                    toolStripButton10.Checked = false;
                     break;
                 case 4:
                     toolStripButton3.Checked = false;
                     toolStripButton5.Checked = false;
                     toolStripButton6.Checked = false;
                     toolStripButton8.Checked = false;
+                    toolStripButton10.Checked = false;
+                    break;
+                case 5:
+                    toolStripButton3.Checked = false;
+                    toolStripButton6.Checked = false;
+                    toolStripButton8.Checked = false;
+                    toolStripButton9.Checked = false;
+                    toolStripButton5.Checked = false;
                     break;
                 default:
                     break;
@@ -571,6 +590,16 @@ namespace DayZeEditor
             currentproject.SetTotNomCount();
             NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
         }
+        private static string ReplaceCaseInsensitive(string input, string search, string replacement)
+        {
+            string result = Regex.Replace(
+                input,
+                Regex.Escape(search),
+                replacement.Replace("$", "$$"),
+                RegexOptions.IgnoreCase
+            );
+            return result;
+        }
         private void AddtypesTSMI_Click(object sender, EventArgs e)
         {
             AddNewTypes form = new AddNewTypes
@@ -599,7 +628,9 @@ namespace DayZeEditor
                     File.WriteAllLines(path + "\\" + modname + "_types.xml", modtypes);
                     TypesFile test = new TypesFile(path + "\\" + modname + "_types.xml");
                     test.SaveTyes();
-                    currentproject.EconomyCore.AddCe(path.Replace(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\", ""), modname + "_types.xml", "types");
+                    string pathreplacer = currentproject.projectFullName + @"\mpmissions\" + currentproject.mpmissionpath + @"\";
+                    string pathrep = ReplaceCaseInsensitive(path, pathreplacer, "");
+                    currentproject.EconomyCore.AddCe(pathrep, modname + "_types.xml", "types");
                     currentproject.EconomyCore.SaveEconomycore();
                     currentproject.SetModListtypes();
                     ModTypes = currentproject.getModList();
@@ -1892,6 +1923,9 @@ namespace DayZeEditor
             FilterFlags = groupBox19.Enabled = checkBox65.Checked;
         }
 
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
     }
 }

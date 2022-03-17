@@ -126,6 +126,7 @@ namespace DayZeEditor
             "CJ_LootChest_Wood_Green_Medics_Large"});
             this.LCPredefinedWeaponsLB.Location = new System.Drawing.Point(8, 33);
             this.LCPredefinedWeaponsLB.Name = "LCPredefinedWeaponsLB";
+            this.LCPredefinedWeaponsLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.LCPredefinedWeaponsLB.Size = new System.Drawing.Size(226, 381);
             this.LCPredefinedWeaponsLB.TabIndex = 95;
             this.LCPredefinedWeaponsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);

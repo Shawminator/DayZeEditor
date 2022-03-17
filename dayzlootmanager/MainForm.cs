@@ -25,13 +25,26 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.5.6";
+        public string VersionNumber = "0.5.7";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
 
-        public MainForm()
+        public SplashForm frm;
+        public event EventHandler LoadCompleted;
+        protected override void OnLoad(EventArgs e)
         {
+            base.OnLoad(e);
+            OnLoadCompleted(EventArgs.Empty);
+        }
+        protected virtual void OnLoadCompleted(EventArgs e)
+        {
+            LoadCompleted?.Invoke(this, e);
+        }
+        public MainForm(SplashForm form)
+        {
+            frm = form;
+
             InitializeComponent();
             Form_Controls.InitializeForm_Controls
             (
@@ -64,6 +77,7 @@ namespace DayZeEditor
                     Projects.getActiveProject().seteconomycore();
                     Projects.getActiveProject().seteconomydefinitions();
                     Projects.getActiveProject().setuserdefinitions();
+                    Projects.getActiveProject().setplayerspawns();
                     Projects.getActiveProject().SetEvents();
                     Projects.getActiveProject().SetSpawnabletypes();
                     Projects.getActiveProject().SetGlobals();
@@ -73,7 +87,8 @@ namespace DayZeEditor
                     Console.WriteLine(Projects.ActiveProject + " is the Current Active Project");
                     Console.WriteLine("Project is running Expansion..... " + Projects.getActiveProject().isExpansion.ToString());
                     Console.WriteLine("Project is Running Dr Jones Trader...." + Projects.getActiveProject().usingDrJoneTrader.ToString());
-                    Console.WriteLine("Project is Running Dr Expansion Market...." + Projects.getActiveProject().usingexpansionMarket.ToString());
+                    Console.WriteLine("Project is Running Expansion Market...." + Projects.getActiveProject().usingexpansionMarket.ToString());
+                    Console.WriteLine("Project is Running Trader Plus...." + Projects.getActiveProject().usingtraderplus.ToString());
                     Console.WriteLine("Project is Running the following Mods....");
                     toolStripStatusLabel1.Text = Projects.ActiveProject + " is the Current Active Project";
                 }
@@ -83,6 +98,7 @@ namespace DayZeEditor
                     TraderManButton.Visible = false;
                     ExpansionSettingsButton.Visible = false;
                     MarketButton.Visible = false;
+                    TraderPlusButton.Visible = false;
                     Console.WriteLine("No Active Project Found, Please Load a Project from the Projects panel.....");
                     toolStripStatusLabel1.Text = "No Active Project Found, Please Load a Project from the Projects panel.....";
                 }
@@ -153,6 +169,10 @@ namespace DayZeEditor
                     MarketButton.Visible = true;
                 else
                     MarketButton.Visible = false;
+                if (Projects.getActiveProject().usingtraderplus)
+                    TraderPlusButton.Visible = true;
+                else
+                    TraderPlusButton.Visible = false;
                 if (Projects.getActiveProject().isExpansion)
                     ExpansionSettingsButton.Visible = true;
                 else
@@ -267,6 +287,31 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
+        private void TraderPlusButton_Click(object sender, EventArgs e)
+        {
+            TraderPlus _TM = Application.OpenForms["TraderPlus"] as TraderPlus;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new TraderPlus
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+                };
+                _TM.Show();
+                Console.WriteLine("loading TraderPlus manager....");
+            }
+            timer1.Start();
+        }
         private void ExpansionSettingsButton_Click(object sender, EventArgs e)
         {
             ExpansionSettings _TM = Application.OpenForms["ExpansionSettings"] as ExpansionSettings;
@@ -370,6 +415,8 @@ namespace DayZeEditor
 
            data.CreateNewData();
         }
+
+
 
 
 

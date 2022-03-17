@@ -562,7 +562,7 @@ namespace DayZeEditor
             -2147483648});
             this.posZRNUD.Name = "posZRNUD";
             this.posZRNUD.Size = new System.Drawing.Size(106, 20);
-            this.posZRNUD.TabIndex = 129;
+            this.posZRNUD.TabIndex = 130;
             this.posZRNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.posZRNUD.ValueChanged += new System.EventHandler(this.pos_ValueChanged);
             // 
@@ -584,7 +584,7 @@ namespace DayZeEditor
             -2147483648});
             this.posYRNUD.Name = "posYRNUD";
             this.posYRNUD.Size = new System.Drawing.Size(106, 20);
-            this.posYRNUD.TabIndex = 128;
+            this.posYRNUD.TabIndex = 129;
             this.posYRNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.posYRNUD.ValueChanged += new System.EventHandler(this.pos_ValueChanged);
             // 
@@ -606,7 +606,7 @@ namespace DayZeEditor
             -2147483648});
             this.posXRNUD.Name = "posXRNUD";
             this.posXRNUD.Size = new System.Drawing.Size(106, 20);
-            this.posXRNUD.TabIndex = 130;
+            this.posXRNUD.TabIndex = 128;
             this.posXRNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.posXRNUD.ValueChanged += new System.EventHandler(this.pos_ValueChanged);
             // 
@@ -638,7 +638,7 @@ namespace DayZeEditor
             -2147483648});
             this.posZNUD.Name = "posZNUD";
             this.posZNUD.Size = new System.Drawing.Size(106, 20);
-            this.posZNUD.TabIndex = 125;
+            this.posZNUD.TabIndex = 126;
             this.posZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.posZNUD.ValueChanged += new System.EventHandler(this.pos_ValueChanged);
             // 
@@ -660,7 +660,7 @@ namespace DayZeEditor
             -2147483648});
             this.posYNUD.Name = "posYNUD";
             this.posYNUD.Size = new System.Drawing.Size(106, 20);
-            this.posYNUD.TabIndex = 124;
+            this.posYNUD.TabIndex = 125;
             this.posYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.posYNUD.ValueChanged += new System.EventHandler(this.pos_ValueChanged);
             // 
@@ -682,7 +682,7 @@ namespace DayZeEditor
             -2147483648});
             this.posXNUD.Name = "posXNUD";
             this.posXNUD.Size = new System.Drawing.Size(106, 20);
-            this.posXNUD.TabIndex = 126;
+            this.posXNUD.TabIndex = 124;
             this.posXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.posXNUD.ValueChanged += new System.EventHandler(this.pos_ValueChanged);
             // 

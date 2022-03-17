@@ -570,11 +570,14 @@ namespace DayZeEditor
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
-                string predefweapon = form.predefweapon;
-                if (!currentLootCategories.Loot.Any(XmlReadMode => XmlReadMode == predefweapon))
+                List<string> predefweapon = form.WeaponList;
+                foreach (string weapon in predefweapon)
                 {
-                    currentLootCategories.Loot.Add(predefweapon);
-                    LootChestTable.isDirty = true;
+                    if (!currentLootCategories.Loot.Any(x => x == weapon))
+                    {
+                        currentLootCategories.Loot.Add(weapon);
+                        LootChestTable.isDirty = true;
+                    }
                 }
             }
         }

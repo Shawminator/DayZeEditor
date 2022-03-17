@@ -16,6 +16,7 @@ namespace DayZeEditor
     public partial class TraderNPCs : DarkForm
     {
         public string selectedNPC { get; set; }
+        public bool isTraderplus { get; set; }
         public TraderNPCs()
         {
             InitializeComponent();
@@ -30,10 +31,20 @@ namespace DayZeEditor
 
         private void TraderNPCs_Load(object sender, EventArgs e)
         {
-            String[] npcs = File.ReadAllLines(Application.StartupPath + "\\traderNPCs\\NPCs.txt");
-            listBox1.DisplayMember = "Name";
-            listBox1.ValueMember = "Value";
-            listBox1.DataSource = npcs.ToList();
+            if (isTraderplus)
+            {
+                String[] npcs = File.ReadAllLines(Application.StartupPath + "\\traderNPCs\\TraderPlusNPCs.txt");
+                listBox1.DisplayMember = "Name";
+                listBox1.ValueMember = "Value";
+                listBox1.DataSource = npcs.ToList();
+            }
+            else
+            {
+                String[] npcs = File.ReadAllLines(Application.StartupPath + "\\traderNPCs\\NPCs.txt");
+                listBox1.DisplayMember = "Name";
+                listBox1.ValueMember = "Value";
+                listBox1.DataSource = npcs.ToList();
+            }
         }
         private void darkButton1_Click(object sender, EventArgs e)
         {

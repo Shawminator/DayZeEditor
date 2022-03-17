@@ -103,6 +103,7 @@ namespace DayZeEditor
             this.darkToolStrip23 = new DarkUI.Controls.DarkToolStrip2();
             this.ProjectTSB = new System.Windows.Forms.ToolStripButton();
             this.FTPTSB = new System.Windows.Forms.ToolStripButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.darkToolStrip21.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -361,20 +362,21 @@ namespace DayZeEditor
             this.groupBox3.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox3.Location = new System.Drawing.Point(6, 240);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(214, 146);
+            this.groupBox3.Size = new System.Drawing.Size(214, 173);
             this.groupBox3.TabIndex = 55;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Edit Current Project";
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.radioButton4);
             this.groupBox5.Controls.Add(this.radioButton3);
             this.groupBox5.Controls.Add(this.radioButton2);
             this.groupBox5.Controls.Add(this.radioButton1);
             this.groupBox5.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox5.Location = new System.Drawing.Point(6, 52);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(198, 84);
+            this.groupBox5.Size = new System.Drawing.Size(198, 115);
             this.groupBox5.TabIndex = 59;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Traders";
@@ -868,6 +870,18 @@ namespace DayZeEditor
             this.FTPTSB.Text = "FTP";
             this.FTPTSB.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(6, 85);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(79, 17);
+            this.radioButton4.TabIndex = 3;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Text = "Trader Plus";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.TraderRadioButton_CheckedChanged);
+            // 
             // ProjectPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -980,5 +994,6 @@ namespace DayZeEditor
         private System.Windows.Forms.Button button3;
         private DarkUI.Controls.DarkLabel darkLabel6;
         private System.Windows.Forms.TextBox ProjectMissionFolderTB;
+        private System.Windows.Forms.RadioButton radioButton4;
     }
 }

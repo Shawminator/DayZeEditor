@@ -2552,6 +2552,7 @@ namespace DayZeEditor
         private void listBox17_SelectedIndexChanged(object sender, EventArgs e)
         {
             currentmapmapmarker = listBox17.SelectedItem as ServerMarkers;
+            if(currentmapmapmarker == null ) { return; }
             useraction = false;
             comboBox1.SelectedValue = (MapMarkerVisibility)currentmapmapmarker.m_Visibility;
             comboBox3.SelectedIndex = comboBox3.FindStringExact(currentmapmapmarker.m_IconName);
@@ -2605,15 +2606,18 @@ namespace DayZeEditor
         private void darkButton32_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-            ServerMarkers newmarker = new ServerMarkers();
-            newmarker.m_UID = "New Marker";
-            newmarker.m_Color = -1;
-            newmarker.m_Text = "New Marker";
-            newmarker.m_IconName = comboBox3.Items[0].ToString();
-            newmarker.m_Is3D = 0;
-            newmarker.m_Visibility = 0;
-            newmarker.m_Position = new float[] { currentproject.MapSize / 2, MapData.gethieght(currentproject.MapSize / 2, currentproject.MapSize / 2), currentproject.MapSize / 2 };
+            ServerMarkers newmarker = new ServerMarkers()
+            {
+                m_UID = "New Marker",
+                m_Color = -1,
+                m_Text = "New Marker",
+                m_IconName = comboBox3.Items[0].ToString(),
+                m_Is3D = 0,
+                m_Visibility = 0,
+                m_Position = new float[] { currentproject.MapSize / 2, MapData.gethieght(currentproject.MapSize / 2, currentproject.MapSize / 2), currentproject.MapSize / 2 },
+            };
             MapSettings.ServerMarkers.Add(newmarker);
+            listBox17.SelectedIndex = -1;
             listBox17.SelectedIndex = listBox17.Items.Count - 1;
             Cursor.Current = Cursors.Default;
         }
@@ -2923,9 +2927,7 @@ namespace DayZeEditor
         private void MissionPathTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
-            currentmission.MissionPath = MissionPathTB.Text;
-            currentmissionfile.MissionPath = currentmission.MissionPath;
-            currentmissionfile.Filename = currentproject.projectFullName + "//" + currentproject.ProfilePath + "\\" + currentmissionfile.MissionPath.Split(':')[1];
+            currentmissionfile.Filename = MissionPathTB.Text;
             MissionSettings.isDirty = true;
         }
         private void MissionNameTB_TextChanged(object sender, EventArgs e)
@@ -2966,39 +2968,41 @@ namespace DayZeEditor
         }
         private void darkButton40_Click(object sender, EventArgs e)
         {
-            //Missions newmissions = new Missions();
-            //newmissions.MissionType = "ExpansionMissionEventAirdrop";
-            //newmissions.MissionPath = "$profile:ExpansionMod\\Missions\\Airdrop_Random_New.json";
-            //MissionSettings.MissionSettingFiles.Add(newmissions);
-            //MissionSettings.isDirty = true;
-            //MissionSettingFiles newMSF = new MissionSettingFiles();
-            //newMSF.MissionPath = newmissions.MissionPath;
-            //currentmissionfile.Filename = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\" + newmissions.MissionPath.Split(':')[1];
-            //newMSF.ItemCount = -1;
-            //newMSF.InfectedCount = -1;
-            //newMSF.Infected = new BindingList<Empty>();
-            //newMSF.Loot = new BindingList<Empty>();
-            //newMSF.DropLocation = new DropLocation() { Name = "New Drop Location", Radius = 100, x = currentproject.MapSize/2, z = currentproject.MapSize/2 };
-            //newMSF.Container = "Random";
-            //newMSF.Speed = 25.0f;
-            //newMSF.Height = 450.0f;
-            //newMSF.ShowNotification = 1;
-            //newMSF.Reward = "";
-            //newMSF.Objective = 0;
-            //newMSF.Difficulty = 0;
-            //newMSF.MissionName = "New Mission";
-            //newMSF.MissionMaxTime = 1200;
-            //newMSF.Weight = 500;
-            //newMSF.Enabled = 1;
-            //MissionSettings.MissionSettingFiles.Add(newMSF);
-            //MissionsLB.SelectedIndex = -1;
-            //MissionsLB.SelectedIndex = MissionsLB.Items.Count - 1;
+            MissionSettingFiles newmission = new MissionSettingFiles()
+            {
+                Filename = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\missions\\Airdrop_NewMission.json",
+                MissionName = "NewMission",
+                Enabled = 1,
+                ShowNotification = 1,
+                Weight = 0,
+                MissionMaxTime = 0,
+                Height = 0,
+                Speed = 0,
+                Container = "Random",
+                DropLocation = new DropLocation()
+                {
+                    Name = "New Drop Location",
+                    Radius = 100,
+                    x = currentproject.MapSize / 2,
+                    z = currentproject.MapSize / 2
+                },
+                Difficulty = 0,
+                Reward = "",
+                Loot = new BindingList<Empty>(),
+                Infected = new BindingList<Empty>(),
+                ItemCount = -1,
+                InfectedCount = -1
+            };
+            MissionSettings.MissionSettingFiles.Add(newmission);
+            MissionsLB.SelectedIndex = -1;
+            MissionsLB.SelectedIndex = MissionsLB.Items.Count - 1;
         }
 
         private void darkButton41_Click(object sender, EventArgs e)
         {
-            //MissionSettings.Missions.Remove(currentmission);
-            //MissionSettings.isDirty = true;
+            File.Delete(currentmissionfile.Filename);
+            MissionSettings.MissionSettingFiles.Remove(currentmissionfile);
+            MissionSettings.isDirty = true;
         }
         #endregion Missionsettings
 
@@ -3816,9 +3820,8 @@ namespace DayZeEditor
                 SecondaryWeaponAttachLB.DataSource = SpawnSettings.StartingGear.SecondaryWeapon.Attachments;
             }
 
-            EnableSpawnSelectionCB.Checked = SpawnSettings.EnableSpawnSelection == 1 ? true : false;
+            //EnableSpawnSelectionCB.Checked = SpawnSettings.EnableSpawnSelection == 1 ? true : false;
             SpawnOnTerritoryCB.Checked = SpawnSettings.SpawnOnTerritory == 1 ? true : false;
-            SpawnSelectionIDNUD.Value = (decimal)SpawnSettings.SpawnSelectionScreenMenuID;
             SpawnHealthValueNUD.Value = (decimal)SpawnSettings.SpawnHealthValue;
             SpawnEnergyValueNUD.Value = (decimal)SpawnSettings.SpawnEnergyValue;
             SpawnWaterValueNUD.Value = (decimal)SpawnSettings.SpawnWaterValue;
@@ -3971,18 +3974,18 @@ namespace DayZeEditor
             SpawnSettings.SpawnOnTerritory = SpawnOnTerritoryCB.Checked == true ? 1 : 0;
             SpawnSettings.isDirty = true;
         }
-        private void numericUpDown27_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            SpawnSettings.SpawnSelectionScreenMenuID = (int)SpawnSelectionIDNUD.Value;
-            SpawnSettings.isDirty = true;
-        }
-        private void EnableSpawnSelectionCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            SpawnSettings.EnableSpawnSelection = EnableSpawnSelectionCB.Checked == true ? 1 : 0;
-            SpawnSettings.isDirty = true;
-        }
+        //private void numericUpDown27_ValueChanged(object sender, EventArgs e)
+        //{
+        //    if (!useraction) return;
+        //    SpawnSettings.SpawnSelectionScreenMenuID = (int)SpawnSelectionIDNUD.Value;
+        //    SpawnSettings.isDirty = true;
+        //}
+        // private void EnableSpawnSelectionCB_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    if (!useraction) return;
+        //    SpawnSettings.EnableSpawnSelection = EnableSpawnSelectionCB.Checked == true ? 1 : 0;
+        //    SpawnSettings.isDirty = true;
+        //}
         private void EnableCustomClothingCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -4824,6 +4827,7 @@ namespace DayZeEditor
 
             VehicleDropsRuinedDoorsCB.Checked = VehicleSettings.VehicleDropsRuinedDoors == 1 ? true : false;
             ExplodingVehicleDropsAttachmentsCB.Checked = VehicleSettings.ExplodingVehicleDropsAttachments == 1 ? true : false;
+            ForcePilotSyncIntervalSecondsNUD.Value = (decimal)VehicleSettings.ForcePilotSyncIntervalSeconds;
 
             useraction = true;
         }

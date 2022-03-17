@@ -10,7 +10,7 @@ namespace DayZeLib
 {
     public class BookSettings
     {
-        public int m_Version { get; set; } //currently 2
+        public int m_Version { get; set; } //currently 3
         public int EnableStatusTab { get; set; }
         public int EnablePartyTab { get; set; }
         public int EnableServerInfoTab { get; set; }
@@ -32,7 +32,7 @@ namespace DayZeLib
 
         public BookSettings()
         {
-            m_Version = 2;
+            m_Version = 3;
             RuleCategories = new BindingList<Rulecats>();
             SettingCategories = new BindingList<SettingCategories>();
             Links = new BindingList<Links>();

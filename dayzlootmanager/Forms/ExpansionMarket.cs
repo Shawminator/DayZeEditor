@@ -138,10 +138,10 @@ namespace DayZeEditor
             {
                 marketsettings = JsonSerializer.Deserialize<MarketSettings>(File.ReadAllText(MarketSettingsPath));
                 marketsettings.isDirty = false;
-                if (marketsettings.m_Version != 8)
+                if (marketsettings.m_Version != 9)
                 {
                     MessageBox.Show("MarketSettings Version number not up to date, updating to latest version....");
-                    marketsettings.m_Version = 8;
+                    marketsettings.m_Version = 9;
                     marketsettings.isDirty = true;
                     needtosave = true;
                 }
@@ -679,6 +679,27 @@ namespace DayZeEditor
             listBox17.DisplayMember = "DisplayName";
             listBox17.ValueMember = "Value";
             listBox17.DataSource = marketsettings.LargeVehicles;
+
+            listBox12.DisplayMember = "DisplayName";
+            listBox12.ValueMember = "Value";
+            listBox12.DataSource = marketsettings.Currencies;
+
+            Categories cat = MarketCats.GetCatFromDisplayName("EXCHANGE");
+            listBox19.Items.Clear();
+            List<string> items = new List<string>();
+            foreach (marketItem item in cat.Items)
+            {
+                foreach (string vitem in item.Variants)
+                {
+                    if (!items.Contains(vitem))
+                        items.Add(vitem);
+                }
+                if (!items.Contains(item.ClassName))
+                    items.Add(item.ClassName);
+
+            }
+            items.Sort();
+            listBox19.Items.AddRange(items.ToArray());
 
             action = false;
         }
@@ -2111,10 +2132,12 @@ namespace DayZeEditor
             marketItem ni = new marketItem()
             {
                 ClassName = newitem,
-                MaxPriceThreshold = 0,
-                MinPriceThreshold = 0,
-                MaxStockThreshold = 0,
-                MinStockThreshold = 0
+                MaxPriceThreshold = currentitem.MaxPriceThreshold,
+                MinPriceThreshold = currentitem.MinPriceThreshold,
+                MaxStockThreshold = currentitem.MaxStockThreshold,
+                MinStockThreshold = currentitem.MinStockThreshold,
+                SellPricePercent = currentitem.SellPricePercent,
+                QuantityPercent = currentitem.QuantityPercent
             };
             currentCat.Items.Add(ni);
             currentCat.isDirty = true;
@@ -2928,5 +2951,39 @@ namespace DayZeEditor
         }
 
 
+
+        private void darkButton17_Click(object sender, EventArgs e)
+        {
+            string removeitem = listBox12.GetItemText(listBox12.SelectedItem);
+            marketsettings.Currencies.Remove(removeitem);
+            marketsettings.isDirty = true;
+        }
+
+        private void darkButton36_Click(object sender, EventArgs e)
+        {
+            foreach (var item in listBox19.SelectedItems)
+            {
+                string name = item.ToString();
+                marketsettings.Currencies.Add(name);
+                marketsettings.isDirty = true;
+            }
+            return;
+        }
+
+        private void chnageAttchmentsToLowerCaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (marketItem item in currentCat.Items)
+            {
+                for(int i = 0; i < item.SpawnAttachments.Count(); i++)
+                {
+                    item.SpawnAttachments[i] = item.SpawnAttachments[i].ToLower();
+                }
+                for(int J = 0; J < item.Variants.Count(); J++)
+                {
+                    item.Variants[J] = item.Variants[J].ToLower();
+                }
+            }
+            currentCat.isDirty = true;
+        }
     }
 }

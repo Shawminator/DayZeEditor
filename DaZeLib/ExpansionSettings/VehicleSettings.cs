@@ -45,7 +45,7 @@ namespace DayZeLib
     }
     public class VehicleSettings
     {
-        public int m_Version { get; set; } // current version 7
+        public int m_Version { get; set; } // current version 8
         public int VehicleSync { get; set; }
         public int VehicleRequireKeyToStart { get; set; }
         public int VehicleRequireAllDoors { get; set; }
@@ -74,6 +74,7 @@ namespace DayZeLib
         public int RevvingOverMaxRPMRuinsEngineInstantly { get; set; }
         public int VehicleDropsRuinedDoors { get; set; }
         public int ExplodingVehicleDropsAttachments { get; set; }
+        public float ForcePilotSyncIntervalSeconds { get; set; }
         public BindingList<VConfigs> VehiclesConfig { get; set; }
 
         [JsonIgnore]
@@ -83,7 +84,7 @@ namespace DayZeLib
 
         public VehicleSettings()
         {
-            m_Version = 7;
+            m_Version = 8;
             PickLockTools = new BindingList<string>();
             ChangeLockTools = new BindingList<string>();
             VehiclesConfig = new BindingList<VConfigs>();

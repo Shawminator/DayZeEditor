@@ -6,9 +6,9 @@ namespace DayZeLib
 {
     public class SpawnSettings
     {
-        public int m_Version { get; set; } //current version 2
+        public int m_Version { get; set; } //current version 3
         public StartingClothing StartingClothing { get; set; }
-        public int EnableSpawnSelection { get; set; }
+        //public int EnableSpawnSelection { get; set; } removed in version 3
         public int SpawnSelectionScreenMenuID { get; set; }
         public int SpawnOnTerritory { get; set; }
         public BindingList<SpawnLocations> SpawnLocations { get; set; }
@@ -34,7 +34,7 @@ namespace DayZeLib
 
         public SpawnSettings()
         {
-            m_Version = 2;
+            m_Version = 3;
             StartingClothing = new StartingClothing();
             SpawnLocations = new BindingList<SpawnLocations>();
             StartingGear = new StartingGear();

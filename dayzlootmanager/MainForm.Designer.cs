@@ -43,11 +43,13 @@ namespace DayZeEditor
             this.ToolStrip1 = new System.Windows.Forms.ToolStrip();
             this.ProjectsButton = new System.Windows.Forms.ToolStripButton();
             this.TypeManButton = new System.Windows.Forms.ToolStripButton();
+            this.TraderPlusButton = new System.Windows.Forms.ToolStripButton();
             this.TraderManButton = new System.Windows.Forms.ToolStripButton();
             this.ExpansionSettingsButton = new System.Windows.Forms.ToolStripButton();
             this.MarketButton = new System.Windows.Forms.ToolStripButton();
             this.LootchestButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.HidePBox = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -55,7 +57,6 @@ namespace DayZeEditor
             this.darkStatusStrip1 = new DarkUI.Controls.DarkStatusStrip();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.SlidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Slidelabel)).BeginInit();
@@ -157,6 +158,7 @@ namespace DayZeEditor
             this.ToolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ProjectsButton,
             this.TypeManButton,
+            this.TraderPlusButton,
             this.TraderManButton,
             this.ExpansionSettingsButton,
             this.MarketButton,
@@ -194,6 +196,17 @@ namespace DayZeEditor
             this.TypeManButton.Text = "Economy Manager";
             this.TypeManButton.Click += new System.EventHandler(this.EconomyManagerButton_Click);
             // 
+            // TraderPlusButton
+            // 
+            this.TraderPlusButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.TraderPlusButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.TraderPlusButton.Image = ((System.Drawing.Image)(resources.GetObject("TraderPlusButton.Image")));
+            this.TraderPlusButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TraderPlusButton.Name = "TraderPlusButton";
+            this.TraderPlusButton.Size = new System.Drawing.Size(103, 19);
+            this.TraderPlusButton.Text = "Trader Plus";
+            this.TraderPlusButton.Click += new System.EventHandler(this.TraderPlusButton_Click);
+            // 
             // TraderManButton
             // 
             this.TraderManButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -214,7 +227,6 @@ namespace DayZeEditor
             this.ExpansionSettingsButton.Name = "ExpansionSettingsButton";
             this.ExpansionSettingsButton.Size = new System.Drawing.Size(103, 19);
             this.ExpansionSettingsButton.Text = "Expansion Settings";
-            this.ExpansionSettingsButton.Visible = false;
             this.ExpansionSettingsButton.Click += new System.EventHandler(this.ExpansionSettingsButton_Click);
             // 
             // MarketButton
@@ -249,6 +261,17 @@ namespace DayZeEditor
             this.toolStripButton2.Size = new System.Drawing.Size(103, 19);
             this.toolStripButton2.Text = "Toxic Zone";
             this.toolStripButton2.Click += new System.EventHandler(this.ToxicZone_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(103, 24);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Visible = false;
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // HidePBox
             // 
@@ -324,17 +347,6 @@ namespace DayZeEditor
             this.panel2.Size = new System.Drawing.Size(25, 25);
             this.panel2.TabIndex = 45;
             // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(103, 24);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.Visible = false;
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -348,6 +360,7 @@ namespace DayZeEditor
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel1.ResumeLayout(false);
@@ -391,6 +404,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton LootchestButton;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton TraderPlusButton;
     }
 }
 

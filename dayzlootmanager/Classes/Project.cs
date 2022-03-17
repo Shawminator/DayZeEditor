@@ -74,6 +74,7 @@ namespace DayZeEditor
         public bool isExpansion { get; set; }
         public bool usingDrJoneTrader { get; set; }
         public bool usingexpansionMarket { get; set; }
+        public bool usingtraderplus { get; set; }
         public string MapPath { get; set; }
         public int MapSize { get; set; }
         public string mpmissionpath { get; set; }
@@ -84,7 +85,8 @@ namespace DayZeEditor
         public Limitsdefinitions limitfefinitions { get; set; }
         [JsonIgnore]
         public Limitsdefinitionsuser limitfefinitionsuser { get; set; }
-
+        [JsonIgnore]
+        public cfgplayerspawnpoints cfgplayerspawnpoints { get; set; }
         [JsonIgnore]
         public BindingList<eventscofig> ModEventsList { get; set; }
         [JsonIgnore]
@@ -204,7 +206,10 @@ namespace DayZeEditor
         {
             limitfefinitionsuser  = new Limitsdefinitionsuser(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfglimitsdefinitionuser.xml");
         }
-
+        internal void setplayerspawns()
+        {
+            cfgplayerspawnpoints = new cfgplayerspawnpoints(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgplayerspawnpoints.xml");
+        }
         internal void SetGlobals()
         {
             gloabsconfig = new globalsconfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\db\\globals.xml");

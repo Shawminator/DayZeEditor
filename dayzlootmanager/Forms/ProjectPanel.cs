@@ -93,6 +93,8 @@ namespace DayZeEditor
                 radioButton3.Checked = true;
             else if (ActiveProject != null && ActiveProject.usingexpansionMarket)
                 radioButton2.Checked = true;
+            else if (ActiveProject != null && ActiveProject.usingtraderplus)
+                radioButton4.Checked = true;
             else if (ActiveProject != null)
                 radioButton1.Checked = true;
             
@@ -303,6 +305,9 @@ namespace DayZeEditor
                 case "Expansion.DeerIsle":
                 case "empty.deerisle":
                     return 16384;
+                case "Expansion.Rostow":
+                case "Offline.rostow":
+                    return 14336;
                 default:
                     return 0;
             }
@@ -355,6 +360,7 @@ namespace DayZeEditor
             projects.getActiveProject().seteconomycore();
             projects.getActiveProject().seteconomydefinitions();
             projects.getActiveProject().setuserdefinitions();
+            projects.getActiveProject().setplayerspawns();
             projects.getActiveProject().SetEvents();
             projects.getActiveProject().SetGlobals();
             projects.getActiveProject().setVanillaTypes();
@@ -392,18 +398,20 @@ namespace DayZeEditor
             {
                 ActiveProject.usingDrJoneTrader = false;
                 ActiveProject.usingexpansionMarket = false;
-                // Do stuff 
+                ActiveProject.usingtraderplus = false;
             }
             else if (radioButton2.Checked)
             {
                 ActiveProject.usingexpansionMarket = true;
                 ActiveProject.usingDrJoneTrader = false;
+                ActiveProject.usingtraderplus = false;
                 // Do other stuff
             }
             else if (radioButton3.Checked)
             {
                 ActiveProject.usingDrJoneTrader = true;
                 ActiveProject.usingexpansionMarket = false;
+                ActiveProject.usingtraderplus = false;
 
                 if (!Directory.Exists(ActiveProject.projectFullName + "\\" + ActiveProject.ProfilePath + "\\Trader"))
                     Directory.CreateDirectory(ActiveProject.projectFullName + "\\" + ActiveProject.ProfilePath + "\\Trader");
@@ -414,6 +422,19 @@ namespace DayZeEditor
                     if (!File.Exists(ActiveProject.projectFullName + "\\" + ActiveProject.ProfilePath + "\\Trader\\" + file.Name))
                         File.Copy(file.FullName, ActiveProject.projectFullName + "\\" + ActiveProject.ProfilePath + "\\Trader\\" + file.Name);
                 }
+            }
+            else if (radioButton4.Checked)
+            {
+                ActiveProject.usingDrJoneTrader = false;
+                ActiveProject.usingexpansionMarket = false;
+                ActiveProject.usingtraderplus = true;
+
+                if (!Directory.Exists(ActiveProject.projectFullName + "\\" + ActiveProject.ProfilePath + "\\TraderPlus"))
+                    Directory.CreateDirectory(ActiveProject.projectFullName + "\\" + ActiveProject.ProfilePath + "\\TraderPlus");
+                if (!Directory.Exists(ActiveProject.projectFullName + "\\" + ActiveProject.ProfilePath + "\\TraderPlus\\TraderPlusConfig"))
+                    Directory.CreateDirectory(ActiveProject.projectFullName + "\\" + ActiveProject.ProfilePath + "\\TraderPlus\\TraderPlusConfig");
+                if (!Directory.Exists(ActiveProject.projectFullName + "\\" + ActiveProject.ProfilePath + "\\TraderPlus\\TraderPlusConfig"))
+                    Directory.CreateDirectory(ActiveProject.projectFullName + "\\" + ActiveProject.ProfilePath + "\\TraderPlus\\TraderPlusConfig");
             }
         }
 

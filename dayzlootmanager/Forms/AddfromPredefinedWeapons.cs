@@ -36,6 +36,7 @@ namespace DayZeEditor
         public BindingList<LCPredefinedWeapons> LCPredefinedWeapons { get; set; }
         public BindingList<LootCategories> LootCategories { get; set; }
         public string predefweapon { get; set; }
+        public List<string>WeaponList { get; set; }
         public bool ispredefinedweapon { get; set; }
         public bool isLootList { get; set; }
         public string titellabel { get; set; }
@@ -60,6 +61,7 @@ namespace DayZeEditor
                 LCPredefinedWeaponsLB.DisplayMember = "DisplayName";
                 LCPredefinedWeaponsLB.ValueMember = "Value";
                 LCPredefinedWeaponsLB.DataSource = LCPredefinedWeapons;
+                WeaponList = new List<string>();
             }
             else if(isLootList)
             {
@@ -71,15 +73,21 @@ namespace DayZeEditor
 
         private void darkButton1_Click(object sender, EventArgs e)
         {
-
+            if (ispredefinedweapon)
+            {
+                foreach (var item in LCPredefinedWeaponsLB.SelectedItems)
+                {
+                    LCPredefinedWeapons predefweaponclass = item as LCPredefinedWeapons;
+                    WeaponList.Add(predefweaponclass.defname);
+                }
+            }
         }
 
         private void LCPredefinedWeaponsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ispredefinedweapon)
             {
-                LCPredefinedWeapons predefweaponclass = LCPredefinedWeaponsLB.SelectedItem as LCPredefinedWeapons;
-                predefweapon = predefweaponclass.defname;
+                
             }
             else if (isLootList)
             {

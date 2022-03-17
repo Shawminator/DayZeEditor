@@ -10,9 +10,9 @@ namespace DayZeLib
         [Description("Expansion Builds and Tents")]
         Expansion_basebuilding_and_Tents = 1,
         [Description("Expansion builds and Fences")]
-        Expansion_basebuilding_and_Fences = 2,
+        Expansion_basebuilding_and_Fences = 3,
         [Description("Expansion Builds, Tents and Fences")]
-        Expansion_basebuilding_Tents_Fences = 3
+        Expansion_basebuilding_Tents_Fences = 2
     }
     public enum FlagMenuMode
     {
