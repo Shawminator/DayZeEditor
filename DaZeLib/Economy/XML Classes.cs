@@ -287,7 +287,9 @@ namespace DayZeLib
         public void removeusage(usage u)
         {
             if (usage == null) return;
-            usage.Remove(u);
+            usage usagetoremove = usage.FirstOrDefault(x => x.name == u.name);
+            if(usagetoremove != null)
+                usage.Remove(usagetoremove);
         }
         public void Addnewtag(tag t)
         {
@@ -301,7 +303,9 @@ namespace DayZeLib
         public void removetag(tag t)
         {
             if (tag == null) return;
-            tag.Remove(t);
+            tag tagtoremove = tag.FirstOrDefault(x => x.name == t.name);
+            if(tagtoremove != null)
+                tag.Remove(tagtoremove);
         }
         public void changecategory(category c)
         {
@@ -324,7 +328,11 @@ namespace DayZeLib
         }
         public void removetier(string tier)
         {
-            value.Remove(value.First(X => X.name == tier));
+            if (value == null) return;
+            if (value.Any(x=> x.name == tier))
+                value.Remove(value.First(X => X.name == tier));
+            if (value.Count == 0)
+                value = null;
         }
         public void AdduserTier(string tier)
         {
@@ -345,7 +353,16 @@ namespace DayZeLib
         {
             value.Remove(value.First(X => X.user == tier));
             if (value.Count == 0)
+            {
+                value = null;
                 Usinguserdifinitions = false;
+            }
+        }
+
+        public void removetiers()
+        {
+            if (value != null)
+                value = null;
         }
     }
     [Serializable]

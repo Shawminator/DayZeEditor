@@ -145,7 +145,6 @@ namespace DayZeLib
             return Path.GetFileNameWithoutExtension(Filename);
         }
     }
-
     public class eventscofig
     {
         public events events { get; set; }
@@ -201,7 +200,6 @@ namespace DayZeLib
             return Path.GetFileNameWithoutExtension(Filename);
         }
     }
-
     public class globalsconfig
     {
         public variables events { get; set; }
@@ -224,6 +222,48 @@ namespace DayZeLib
                     MessageBox.Show(ex.Message + "\n" + filename + "\n" + ex.InnerException.Message);
                 }
             }
+        }
+    }
+    public class cfgplayerspawnpoints
+    {
+        public playerspawnpoints playerspawnpoints { get; set; }
+        public string Filename { get; set; }
+        public bool isDirty { get; set; }
+        public cfgplayerspawnpoints(string filename)
+        {
+            Filename = filename;
+            var mySerializer = new XmlSerializer(typeof(playerspawnpoints));
+            // To read the file, create a FileStream.
+            using (var myFileStream = new FileStream(filename, FileMode.Open))
+            {
+                try
+                {
+                    // Call the Deserialize method and cast to the object type.
+                    playerspawnpoints = (playerspawnpoints)mySerializer.Deserialize(myFileStream);
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+        }
+        public void Savecfgplayerspawnpoints(string saveTime)
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
+            File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
+            var serializer = new XmlSerializer(typeof(playerspawnpoints));
+            var ns = new XmlSerializerNamespaces();
+            ns.Add("", "");
+            var sw = new StringWriter();
+            sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
+            var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true, });
+            serializer.Serialize(xmlWriter, playerspawnpoints, ns);
+            Console.WriteLine(sw.ToString());
+            File.WriteAllText(Filename, sw.ToString());
+        }
+        public override string ToString()
+        {
+            return Path.GetFileNameWithoutExtension(Filename);
         }
     }
 }

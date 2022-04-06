@@ -150,9 +150,9 @@ namespace DayZeEditor
                 project.AddNames(ProjectName, ProjectPath);
                 project.MapSize = Getmapsizefrommissionpath(mpmissionpath);
                 project.mpmissionpath = mpmissionpath;
-                project.MapPath = "\\Maps\\" + mpmissionpath.Split('.')[1] + "_Map.png";
+                project.MapPath = "\\Maps\\" + mpmissionpath.ToLower().Split('.')[1] + "_Map.png";
                 project.ProfilePath = profilefolder;
-                if (mpmissionpath.Contains("Expansion"))
+                if (mpmissionpath.ToLower().Contains("expansion"))
                 {
                     Directory.CreateDirectory(Pprofilefolder + "\\ExpansionMod");
                     project.isExpansion = true;
@@ -184,9 +184,9 @@ namespace DayZeEditor
                 project.AddNames(ProjectName, ProjectPath);
                 project.MapSize = Getmapsizefrommissionpath(mpmissionpath);
                 project.mpmissionpath = mpmissionpath;
-                project.MapPath = "\\Maps\\" + mpmissionpath.Split('.')[1] + "_Map.png";
+                project.MapPath = "\\Maps\\" + mpmissionpath.ToLower().Split('.')[1] + "_Map.png";
                 project.ProfilePath = profilefolder;
-                if (mpmissionpath.Contains("Expansion"))
+                if (mpmissionpath.ToLower().Contains("expansion"))
                 {
                     Directory.CreateDirectory(Pprofilefolder + "\\ExpansionMod");
                     project.isExpansion = true;
@@ -242,7 +242,7 @@ namespace DayZeEditor
                         project.AddNames(ProjectName, ProjectPath);
                         project.MapSize = Getmapsizefrommissionpath(mpmissionpath);
                         project.mpmissionpath = mpmissionpath;
-                        project.MapPath = "\\Maps\\" + mpmissionpath.Split('.')[1] + "_Map.png";
+                        project.MapPath = "\\Maps\\" + mpmissionpath.ToLower().Split('.')[1] + "_Map.png";
                         project.ProfilePath = "";
                         projects.addtoprojects(project);
                     }
@@ -262,9 +262,9 @@ namespace DayZeEditor
                         project.AddNames(ProjectName, ProjectPath);
                         project.MapSize = Getmapsizefrommissionpath(mpmissionpath);
                         project.mpmissionpath = mpmissionpath;
-                        project.MapPath = "\\Maps\\" + mpmissionpath.Split('.')[1] + "_Map.png";
+                        project.MapPath = "\\Maps\\" + mpmissionpath.ToLower().Split('.')[1] + "_Map.png";
                         project.ProfilePath = profile;
-                        if (mpmissionpath.Contains("Expansion"))
+                        if (mpmissionpath.ToLower().Contains("expansion"))
                             project.isExpansion = true;
                         projects.addtoprojects(project);
                     }
@@ -281,32 +281,32 @@ namespace DayZeEditor
         }
         private int Getmapsizefrommissionpath(string mpmissionpath)
         {
-            switch (mpmissionpath)
+            switch (mpmissionpath.ToLower())
             {
-                case "dayzOffline.Iztek":
-                case "Expansion.Iztek":
+                case "dayzoffline.iztek":
+                case "expansion.iztek":
                     return 8192;
-                case "dayzOffline.chernarusplus":
-                case "Expansion.ChernarusPlus":
-                case "Expansion.ChernarusPlusGloom":
+                case "dayzoffline.chernarusplus":
+                case "expansion.chernarusplus":
+                case "expansion.chernarusplusgloom":
                 case "empty.banov":
-                case "Expansion.Banov":
+                case "expansion.banov":
                     return 15360;
-                case "ExpansionHard.namalsk":
-                case "ExpansionRegular.namalsk":
-                case "dayzOffline.enoch":
-                case "Expansion.Enoch":
-                case "Expansion.EnochGloom":
-                case "Expansion.TakistanPlus":
+                case "expansionhard.namalsk":
+                case "expansionregular.namalsk":
+                case "dayzoffline.enoch":
+                case "expansion.enoch":
+                case "expansion.enochgloom":
+                case "expansion.takistanplus":
                 case "hardcore.namalsk":
                 case "regular.namalsk":
-                case "Expansion.Esseker":
+                case "expansion.esseker":
                     return 12800;
-                case "Expansion.DeerIsle":
+                case "expansion.deerisle":
                 case "empty.deerisle":
                     return 16384;
-                case "Expansion.Rostow":
-                case "Offline.rostow":
+                case "expansion.rostow":
+                case "offline.rostow":
                     return 14336;
                 default:
                     return 0;

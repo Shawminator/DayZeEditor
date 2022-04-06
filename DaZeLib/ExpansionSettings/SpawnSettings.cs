@@ -8,8 +8,8 @@ namespace DayZeLib
     {
         public int m_Version { get; set; } //current version 3
         public StartingClothing StartingClothing { get; set; }
-        //public int EnableSpawnSelection { get; set; } removed in version 3
-        public int SpawnSelectionScreenMenuID { get; set; }
+        public int EnableSpawnSelection { get; set; }
+        //public int SpawnSelectionScreenMenuID { get; set; } //removed in version 3
         public int SpawnOnTerritory { get; set; }
         public BindingList<SpawnLocations> SpawnLocations { get; set; }
         public StartingGear StartingGear { get; set; }

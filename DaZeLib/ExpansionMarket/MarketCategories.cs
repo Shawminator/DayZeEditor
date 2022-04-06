@@ -62,6 +62,22 @@ namespace DayZeLib
                             item.ClassName = item.ClassName.ToLower();
                             savefile = true;
                         }
+                        for (int i = 0; i < item.Variants.Count; i++)
+                        {
+                            if (item.Variants[i] != item.Variants[i].ToLower())
+                            {
+                                item.Variants[i] = item.Variants[i].ToLower();
+                                savefile = true;
+                            }
+                        }
+                        for (int j = 0; j < item.SpawnAttachments.Count; j++)
+                        {
+                            if (item.SpawnAttachments[j] != item.SpawnAttachments[j].ToLower())
+                            {
+                                item.SpawnAttachments[j] = item.SpawnAttachments[j].ToLower();
+                                savefile = true;
+                            }
+                        }
                         if (item.MaxPriceThreshold < item.MinPriceThreshold)
                             MessageBox.Show(cat.DisplayName + Environment.NewLine + item.ClassName + " Has a max price lower than the min price." + Environment.NewLine + "Please fix......");
                         if (item.MaxStockThreshold < item.MinStockThreshold)
@@ -172,7 +188,7 @@ namespace DayZeLib
         }
         public Categories GetCatFromFileName(string cat)
         {
-            return CatList.First(x => Path.GetFileNameWithoutExtension(x.Filename) == cat);
+            return CatList.First(x => Path.GetFileNameWithoutExtension(x.Filename.ToLower()) == cat.ToLower());
         }
         public bool isincludedinavarient(string item)
         {
@@ -249,8 +265,10 @@ namespace DayZeLib
         public marketItem getitem(string name)
         {
             if (Items.Any(x => x.ClassName.ToLower() == name))
+            {
                 return Items.First(x => x.ClassName.ToLower() == name);
-            else if (Items.Any(x =>x.Variants.Contains(name)))
+            }
+            else if (Items.Any(x => x.Variants.Contains(name)))
             {
                 return Items.First(x => x.Variants.Contains(name));
             }

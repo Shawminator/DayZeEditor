@@ -59,6 +59,8 @@ namespace DayZeEditor
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.darkLabel20 = new DarkUI.Controls.DarkLabel();
+            this.darkButton23 = new DarkUI.Controls.DarkButton();
             this.darkButton13 = new DarkUI.Controls.DarkButton();
             this.darkButton14 = new DarkUI.Controls.DarkButton();
             this.posZRNUD = new System.Windows.Forms.NumericUpDown();
@@ -132,6 +134,8 @@ namespace DayZeEditor
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.darkButton28 = new DarkUI.Controls.DarkButton();
+            this.darkButton24 = new DarkUI.Controls.DarkButton();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LootRandomizationNUD)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -233,7 +237,7 @@ namespace DayZeEditor
             this.LootChestsLocationsLB.FormattingEnabled = true;
             this.LootChestsLocationsLB.Location = new System.Drawing.Point(6, 55);
             this.LootChestsLocationsLB.Name = "LootChestsLocationsLB";
-            this.LootChestsLocationsLB.Size = new System.Drawing.Size(226, 355);
+            this.LootChestsLocationsLB.Size = new System.Drawing.Size(226, 446);
             this.LootChestsLocationsLB.TabIndex = 89;
             this.LootChestsLocationsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.LootChestsLocationsLB.SelectedIndexChanged += new System.EventHandler(this.LootChestsLocationsLB_SelectedIndexChanged);
@@ -252,6 +256,8 @@ namespace DayZeEditor
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox1.Controls.Add(this.darkButton28);
+            this.groupBox1.Controls.Add(this.darkButton24);
             this.groupBox1.Controls.Add(this.comboBox2);
             this.groupBox1.Controls.Add(this.darkLabel15);
             this.groupBox1.Controls.Add(this.darkButton3);
@@ -273,7 +279,7 @@ namespace DayZeEditor
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox1.Location = new System.Drawing.Point(238, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(365, 440);
+            this.groupBox1.Size = new System.Drawing.Size(365, 532);
             this.groupBox1.TabIndex = 91;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Loot chests";
@@ -363,7 +369,7 @@ namespace DayZeEditor
             this.lootLB.FormattingEnabled = true;
             this.lootLB.Location = new System.Drawing.Point(93, 211);
             this.lootLB.Name = "lootLB";
-            this.lootLB.Size = new System.Drawing.Size(229, 212);
+            this.lootLB.Size = new System.Drawing.Size(229, 277);
             this.lootLB.TabIndex = 122;
             this.lootLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
@@ -466,7 +472,7 @@ namespace DayZeEditor
             this.tabControl1.Location = new System.Drawing.Point(0, 73);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1009, 481);
+            this.tabControl1.Size = new System.Drawing.Size(1009, 573);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 92;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
@@ -484,7 +490,7 @@ namespace DayZeEditor
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1001, 452);
+            this.tabPage1.Size = new System.Drawing.Size(1001, 544);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             // 
@@ -503,8 +509,8 @@ namespace DayZeEditor
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.darkLabel20);
+            this.groupBox3.Controls.Add(this.darkButton23);
             this.groupBox3.Controls.Add(this.darkButton13);
             this.groupBox3.Controls.Add(this.darkButton14);
             this.groupBox3.Controls.Add(this.posZRNUD);
@@ -519,10 +525,30 @@ namespace DayZeEditor
             this.groupBox3.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox3.Location = new System.Drawing.Point(609, 6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(386, 356);
+            this.groupBox3.Size = new System.Drawing.Size(386, 440);
             this.groupBox3.TabIndex = 96;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Locations";
+            // 
+            // darkLabel20
+            // 
+            this.darkLabel20.AutoSize = true;
+            this.darkLabel20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel20.Location = new System.Drawing.Point(268, 57);
+            this.darkLabel20.Name = "darkLabel20";
+            this.darkLabel20.Size = new System.Drawing.Size(84, 13);
+            this.darkLabel20.TabIndex = 135;
+            this.darkLabel20.Text = "Location count: ";
+            // 
+            // darkButton23
+            // 
+            this.darkButton23.Location = new System.Drawing.Point(276, 17);
+            this.darkButton23.Name = "darkButton23";
+            this.darkButton23.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton23.Size = new System.Drawing.Size(104, 23);
+            this.darkButton23.TabIndex = 134;
+            this.darkButton23.Text = "Import from .map";
+            this.darkButton23.Click += new System.EventHandler(this.darkButton23_Click);
             // 
             // darkButton13
             // 
@@ -536,10 +562,10 @@ namespace DayZeEditor
             // 
             // darkButton14
             // 
-            this.darkButton14.Location = new System.Drawing.Point(128, 19);
+            this.darkButton14.Location = new System.Drawing.Point(122, 19);
             this.darkButton14.Name = "darkButton14";
             this.darkButton14.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton14.Size = new System.Drawing.Size(104, 23);
+            this.darkButton14.Size = new System.Drawing.Size(110, 23);
             this.darkButton14.TabIndex = 132;
             this.darkButton14.Text = "Remove";
             this.darkButton14.Click += new System.EventHandler(this.darkButton14_Click);
@@ -549,7 +575,7 @@ namespace DayZeEditor
             this.posZRNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.posZRNUD.DecimalPlaces = 6;
             this.posZRNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.posZRNUD.Location = new System.Drawing.Point(275, 330);
+            this.posZRNUD.Location = new System.Drawing.Point(276, 410);
             this.posZRNUD.Maximum = new decimal(new int[] {
             20000,
             0,
@@ -571,7 +597,7 @@ namespace DayZeEditor
             this.posYRNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.posYRNUD.DecimalPlaces = 6;
             this.posYRNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.posYRNUD.Location = new System.Drawing.Point(163, 330);
+            this.posYRNUD.Location = new System.Drawing.Point(164, 410);
             this.posYRNUD.Maximum = new decimal(new int[] {
             20000,
             0,
@@ -593,7 +619,7 @@ namespace DayZeEditor
             this.posXRNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.posXRNUD.DecimalPlaces = 6;
             this.posXRNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.posXRNUD.Location = new System.Drawing.Point(51, 330);
+            this.posXRNUD.Location = new System.Drawing.Point(52, 410);
             this.posXRNUD.Maximum = new decimal(new int[] {
             20000,
             0,
@@ -614,7 +640,7 @@ namespace DayZeEditor
             // 
             this.darkLabel12.AutoSize = true;
             this.darkLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel12.Location = new System.Drawing.Point(7, 333);
+            this.darkLabel12.Location = new System.Drawing.Point(8, 413);
             this.darkLabel12.Name = "darkLabel12";
             this.darkLabel12.Size = new System.Drawing.Size(44, 13);
             this.darkLabel12.TabIndex = 131;
@@ -625,7 +651,7 @@ namespace DayZeEditor
             this.posZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.posZNUD.DecimalPlaces = 6;
             this.posZNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.posZNUD.Location = new System.Drawing.Point(275, 304);
+            this.posZNUD.Location = new System.Drawing.Point(276, 384);
             this.posZNUD.Maximum = new decimal(new int[] {
             20000,
             0,
@@ -647,7 +673,7 @@ namespace DayZeEditor
             this.posYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.posYNUD.DecimalPlaces = 6;
             this.posYNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.posYNUD.Location = new System.Drawing.Point(163, 304);
+            this.posYNUD.Location = new System.Drawing.Point(164, 384);
             this.posYNUD.Maximum = new decimal(new int[] {
             20000,
             0,
@@ -669,7 +695,7 @@ namespace DayZeEditor
             this.posXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.posXNUD.DecimalPlaces = 6;
             this.posXNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.posXNUD.Location = new System.Drawing.Point(51, 304);
+            this.posXNUD.Location = new System.Drawing.Point(52, 384);
             this.posXNUD.Maximum = new decimal(new int[] {
             20000,
             0,
@@ -690,7 +716,7 @@ namespace DayZeEditor
             // 
             this.darkLabel67.AutoSize = true;
             this.darkLabel67.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel67.Location = new System.Drawing.Point(7, 307);
+            this.darkLabel67.Location = new System.Drawing.Point(8, 387);
             this.darkLabel67.Name = "darkLabel67";
             this.darkLabel67.Size = new System.Drawing.Size(38, 13);
             this.darkLabel67.TabIndex = 127;
@@ -704,9 +730,9 @@ namespace DayZeEditor
             this.posLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.posLB.ForeColor = System.Drawing.SystemColors.Control;
             this.posLB.FormattingEnabled = true;
-            this.posLB.Location = new System.Drawing.Point(6, 47);
+            this.posLB.Location = new System.Drawing.Point(6, 73);
             this.posLB.Name = "posLB";
-            this.posLB.Size = new System.Drawing.Size(374, 251);
+            this.posLB.Size = new System.Drawing.Size(374, 303);
             this.posLB.TabIndex = 123;
             this.posLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.posLB.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
@@ -714,7 +740,7 @@ namespace DayZeEditor
             // darkButton5
             // 
             this.darkButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton5.Location = new System.Drawing.Point(6, 423);
+            this.darkButton5.Location = new System.Drawing.Point(6, 515);
             this.darkButton5.Name = "darkButton5";
             this.darkButton5.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton5.Size = new System.Drawing.Size(110, 23);
@@ -725,7 +751,7 @@ namespace DayZeEditor
             // darkButton6
             // 
             this.darkButton6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton6.Location = new System.Drawing.Point(128, 423);
+            this.darkButton6.Location = new System.Drawing.Point(128, 515);
             this.darkButton6.Name = "darkButton6";
             this.darkButton6.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton6.Size = new System.Drawing.Size(104, 23);
@@ -1438,11 +1464,33 @@ namespace DayZeEditor
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
             // 
+            // darkButton28
+            // 
+            this.darkButton28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton28.Location = new System.Drawing.Point(214, 494);
+            this.darkButton28.Name = "darkButton28";
+            this.darkButton28.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton28.Size = new System.Drawing.Size(108, 23);
+            this.darkButton28.TabIndex = 131;
+            this.darkButton28.Text = "Add From Text";
+            this.darkButton28.Click += new System.EventHandler(this.darkButton28_Click);
+            // 
+            // darkButton24
+            // 
+            this.darkButton24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton24.Location = new System.Drawing.Point(93, 494);
+            this.darkButton24.Name = "darkButton24";
+            this.darkButton24.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton24.Size = new System.Drawing.Size(115, 23);
+            this.darkButton24.TabIndex = 130;
+            this.darkButton24.Text = "Add From Types";
+            this.darkButton24.Click += new System.EventHandler(this.darkButton24_Click);
+            // 
             // Lootchest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1009, 554);
+            this.ClientSize = new System.Drawing.Size(1009, 646);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.darkToolStrip23);
             this.Controls.Add(this.darkToolStrip21);
@@ -1592,5 +1640,9 @@ namespace DayZeEditor
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private DarkUI.Controls.DarkButton darkButton23;
+        private DarkUI.Controls.DarkLabel darkLabel20;
+        private DarkUI.Controls.DarkButton darkButton28;
+        private DarkUI.Controls.DarkButton darkButton24;
     }
 }

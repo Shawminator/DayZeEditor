@@ -1,0 +1,18 @@
+﻿Airdrop
+Arrow
+Boat
+Car
+Deliver
+Exclamationmark
+Fireplace
+Fishing
+Helicopter
+Home
+Mapmarker
+Questionmark
+Radiation
+Skull 1
+Skull 2
+Trader
+Bear
+Human Skull

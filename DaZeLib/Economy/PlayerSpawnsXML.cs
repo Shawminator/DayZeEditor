@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -73,7 +74,7 @@ namespace DayZeLib
 
         private playerspawnpointsFreshGenerator_params generator_paramsField;
 
-        private playerspawnpointsFreshPos[] generator_posbubblesField;
+        private BindingList<playerspawnpointsFreshPos> generator_posbubblesField;
 
         /// <remarks/>
         public playerspawnpointsFreshSpawn_params spawn_params
@@ -103,7 +104,7 @@ namespace DayZeLib
 
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("pos", IsNullable = false)]
-        public playerspawnpointsFreshPos[] generator_posbubbles
+        public BindingList<playerspawnpointsFreshPos> generator_posbubbles
         {
             get
             {
@@ -114,6 +115,7 @@ namespace DayZeLib
                 this.generator_posbubblesField = value;
             }
         }
+
     }
 
     /// <remarks/>
@@ -334,13 +336,13 @@ namespace DayZeLib
     public partial class playerspawnpointsFreshPos
     {
 
-        private ushort xField;
+        private float xField;
 
-        private ushort zField;
+        private float zField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public ushort x
+        public float x
         {
             get
             {
@@ -354,7 +356,7 @@ namespace DayZeLib
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public ushort z
+        public float z
         {
             get
             {
@@ -365,6 +367,11 @@ namespace DayZeLib
                 this.zField = value;
             }
         }
+
+        public override string ToString()
+        {
+            return "X:" + xField.ToString() + " , Z:" + zField.ToString();
+        }
     }
 
     /// <remarks/>
@@ -374,11 +381,11 @@ namespace DayZeLib
     public partial class playerspawnpointsHop
     {
 
-        private playerspawnpointsHopPos[] generator_posbubblesField;
+        private BindingList<playerspawnpointsHopPos> generator_posbubblesField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("pos", IsNullable = false)]
-        public playerspawnpointsHopPos[] generator_posbubbles
+        public BindingList<playerspawnpointsHopPos> generator_posbubbles
         {
             get
             {
@@ -398,13 +405,13 @@ namespace DayZeLib
     public partial class playerspawnpointsHopPos
     {
 
-        private ushort xField;
+        private float xField;
 
-        private ushort zField;
+        private float zField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public ushort x
+        public float x
         {
             get
             {
@@ -418,7 +425,7 @@ namespace DayZeLib
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public ushort z
+        public float z
         {
             get
             {
@@ -429,6 +436,11 @@ namespace DayZeLib
                 this.zField = value;
             }
         }
+
+        public override string ToString()
+        {
+            return "X:" + xField.ToString() + " , Z:" + zField.ToString();
+        }
     }
 
     /// <remarks/>
@@ -438,11 +450,11 @@ namespace DayZeLib
     public partial class playerspawnpointsTravel
     {
 
-        private playerspawnpointsTravelPos[] generator_posbubblesField;
+        private BindingList<playerspawnpointsTravelPos> generator_posbubblesField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("pos", IsNullable = false)]
-        public playerspawnpointsTravelPos[] generator_posbubbles
+        public BindingList<playerspawnpointsTravelPos> generator_posbubbles
         {
             get
             {
@@ -462,13 +474,13 @@ namespace DayZeLib
     public partial class playerspawnpointsTravelPos
     {
 
-        private decimal xField;
+        private float xField;
 
-        private decimal zField;
+        private float zField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public decimal x
+        public float x
         {
             get
             {
@@ -482,7 +494,7 @@ namespace DayZeLib
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public decimal z
+        public float z
         {
             get
             {
@@ -492,6 +504,11 @@ namespace DayZeLib
             {
                 this.zField = value;
             }
+        }
+
+        public override string ToString()
+        {
+            return "X:" + xField.ToString() + " , Z:" + zField.ToString();
         }
     }
 

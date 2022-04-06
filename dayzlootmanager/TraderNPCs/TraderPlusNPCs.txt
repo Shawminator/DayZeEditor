@@ -25,7 +25,7 @@ SurvivorF_Gabi
 SurvivorF_Helga
 SurvivorF_Irena
 SurvivorF_Judy
-SurvivorM_Keiko
+SurvivorF_Keiko
 SurvivorF_Eva
 SurvivorF_Naomi
 TraderPlusSign

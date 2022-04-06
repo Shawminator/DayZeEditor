@@ -2517,6 +2517,11 @@ namespace DayZeEditor
                 })
                 .OrderBy(item => item.value)
                 .ToList();
+            
+            String[] Icons = File.ReadAllLines(Application.StartupPath + "\\Maps\\Icons\\IconNames.txt");
+            comboBox3.DisplayMember = "Name";
+            comboBox3.ValueMember = "Value";
+            comboBox3.DataSource = Icons.ToList();
 
             listBox17.DisplayMember = "DisplayName";
             listBox17.ValueMember = "Value";
@@ -3820,7 +3825,7 @@ namespace DayZeEditor
                 SecondaryWeaponAttachLB.DataSource = SpawnSettings.StartingGear.SecondaryWeapon.Attachments;
             }
 
-            //EnableSpawnSelectionCB.Checked = SpawnSettings.EnableSpawnSelection == 1 ? true : false;
+            EnableSpawnSelectionCB.Checked = SpawnSettings.EnableSpawnSelection == 1 ? true : false;
             SpawnOnTerritoryCB.Checked = SpawnSettings.SpawnOnTerritory == 1 ? true : false;
             SpawnHealthValueNUD.Value = (decimal)SpawnSettings.SpawnHealthValue;
             SpawnEnergyValueNUD.Value = (decimal)SpawnSettings.SpawnEnergyValue;
@@ -3980,13 +3985,13 @@ namespace DayZeEditor
         //    SpawnSettings.SpawnSelectionScreenMenuID = (int)SpawnSelectionIDNUD.Value;
         //    SpawnSettings.isDirty = true;
         //}
-        // private void EnableSpawnSelectionCB_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    if (!useraction) return;
-        //    SpawnSettings.EnableSpawnSelection = EnableSpawnSelectionCB.Checked == true ? 1 : 0;
-        //    SpawnSettings.isDirty = true;
-        //}
-        private void EnableCustomClothingCB_CheckedChanged(object sender, EventArgs e)
+        private void EnableSpawnSelectionCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            SpawnSettings.EnableSpawnSelection = EnableSpawnSelectionCB.Checked == true ? 1 : 0;
+            SpawnSettings.isDirty = true;
+        }
+    private void EnableCustomClothingCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             SpawnSettings.StartingClothing.EnableCustomClothing = EnableCustomClothingCB.Checked == true ? 1 : 0;
@@ -4979,6 +4984,7 @@ namespace DayZeEditor
             VehicleSettings.MasterKeyPairingMode = (int)cacl;
             VehicleSettings.isDirty = true;
         }
+
 
 
 

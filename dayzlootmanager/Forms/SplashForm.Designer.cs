@@ -44,6 +44,7 @@ namespace DayZeEditor
             this.Name = "SplashForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SplashForm";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.SplashForm_Load);
             this.ResumeLayout(false);
 

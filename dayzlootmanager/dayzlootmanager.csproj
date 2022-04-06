@@ -147,7 +147,6 @@
     <Compile Include="Forms\CategoryList.Designer.cs">
       <DependentUpon>CategoryList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\darkform.cs" />
     <Compile Include="Forms\ExpansionSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +154,18 @@
       <DependentUpon>ExpansionSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\FormControls.cs" />
+    <Compile Include="Forms\HelicrashMissionsManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HelicrashMissionsManager.Designer.cs">
+      <DependentUpon>HelicrashMissionsManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\KOSZonemanager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\KOSZonemanager.Designer.cs">
+      <DependentUpon>KOSZonemanager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\LoadingScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -279,6 +290,12 @@
     <EmbeddedResource Include="Forms\ExpansionSettings.resx">
       <DependentUpon>ExpansionSettings.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HelicrashMissionsManager.resx">
+      <DependentUpon>HelicrashMissionsManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\KOSZonemanager.resx">
+      <DependentUpon>KOSZonemanager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoadingScreen.resx">
       <DependentUpon>LoadingScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -340,28 +357,28 @@
     <None Include="..\.editorconfig">
       <Link>.editorconfig</Link>
     </None>
-    <None Include="Maps\ChernarusPlus_Map.png.xyz">
+    <None Include="Maps\chernarusplus_Map.png.xyz">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Maps\DeerIsle_Map.png.xyz">
+    <None Include="Maps\deerisle_Map.png.xyz">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Maps\Esseker_Map.png.xyz">
+    <None Include="Maps\esseker_Map.png.xyz">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Maps\Livonia_Map.png.xyz">
+    <None Include="Maps\livonia_Map.png.xyz">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Maps\Banov_Map.png.xyz">
+    <None Include="Maps\banov_Map.png.xyz">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Maps\Namalsk_Map.png.xyz">
+    <None Include="Maps\namalsk_Map.png.xyz">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Maps\Rostow_Map.png.xyz">
+    <None Include="Maps\rostow_Map.png.xyz">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Maps\TakistanPlus_Map.png.xyz">
+    <None Include="Maps\takistanplus_Map.png.xyz">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
@@ -379,6 +396,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Downloads\treeviewms_src\TreeViewMS\TreeViewMS.csproj">
+      <Project>{7c2cce0a-a288-4869-a7b7-cc0d18af3b8c}</Project>
+      <Name>TreeViewMS</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\DarkUI-master\DarkUI-master\DarkUI\DarkUI.csproj">
       <Project>{f19472f5-8c44-4c51-a8a0-b9de5f555255}</Project>
       <Name>DarkUI</Name>
@@ -395,13 +416,10 @@
     <None Include="defaultss.xsl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Content Include="Maps\ChernarusPlus_Map.png">
+    <Content Include="Maps\chernarusplus_Map.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Maps\DeerIsle_Map.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Maps\Esseker_Map.png">
+    <Content Include="Maps\esseker_Map.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Maps\Icons\Airdrop.png">
@@ -410,7 +428,10 @@
     <Content Include="Maps\Icons\Arrow.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Maps\Banov_Map.png">
+    <Content Include="Maps\banov_Map.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Maps\Icons\Bear.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Maps\Icons\Boat.png">
@@ -437,6 +458,12 @@
     <Content Include="Maps\Icons\Home.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Maps\Icons\Human Skull.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Maps\Icons\IconNames.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Maps\Icons\Mapmarker.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -456,19 +483,22 @@
     <Content Include="Maps\Icons\Trader.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Maps\Iztek_Map.png">
+    <Content Include="Maps\iztek_Map.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Maps\Livonia_Map.png">
+    <Content Include="Maps\livonia_Map.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Maps\Namalsk_Map.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Maps\Rostow_Map.png">
+    <Content Include="Maps\deerisle_Map.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Maps\TakistanPlus_Map.png">
+    <Content Include="Maps\namalsk_Map.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Maps\rostow_Map.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Maps\takistanplus_Map.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="depositphotos_20788183_stock_illustration_cartoon_thief_running_with_a_Cw8_icon.ico" />

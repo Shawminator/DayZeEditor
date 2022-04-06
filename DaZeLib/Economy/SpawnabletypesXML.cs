@@ -96,7 +96,7 @@ namespace DayZeLib
     public partial class spawnabletypesType
     {
 
-        private object[] itemsField;
+        private BindingList<object> itemsField;
 
         private string nameField;
 
@@ -105,7 +105,7 @@ namespace DayZeLib
         [System.Xml.Serialization.XmlElementAttribute("cargo", typeof(spawnabletypesTypeCargo))]
         [System.Xml.Serialization.XmlElementAttribute("hoarder", typeof(spawnabletypesTypeHoarder))]
         [System.Xml.Serialization.XmlElementAttribute("tag", typeof(spawnabletypesTypeTag))]
-        public object[] Items
+        public BindingList<object> Items
         {
             get
             {

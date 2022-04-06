@@ -684,7 +684,7 @@ namespace DayZeEditor
             listBox12.ValueMember = "Value";
             listBox12.DataSource = marketsettings.Currencies;
 
-            Categories cat = MarketCats.GetCatFromDisplayName("EXCHANGE");
+            Categories cat = MarketCats.GetCatFromFileName("EXCHANGE");
             listBox19.Items.Clear();
             List<string> items = new List<string>();
             foreach (marketItem item in cat.Items)
@@ -1472,7 +1472,7 @@ namespace DayZeEditor
         {
             string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Enter Name of New Trader ", "Traders", "");
             Traders.AddNewTrader(UserAnswer);
-            List<string> currencies = MarketCats.GetCatFromDisplayName("EXCHANGE").getallItemsasString();
+            List<string> currencies = MarketCats.GetCatFromFileName("EXCHANGE").getallItemsasString();
             listBox2.SelectedIndex = -1;
             if (listBox2.Items.Count == 0)
                 listBox2.SelectedIndex = listBox2.Items.Count - 1;
@@ -1574,7 +1574,7 @@ namespace DayZeEditor
             AddFromCategoryListBox.Visible = true;
             AddFromCategoryListBox.Text = "Add Currency from Exchange";
             AddFromCategoryListBox.Tag = "AddExchange";
-            Categories cat = MarketCats.GetCatFromDisplayName("EXCHANGE");
+            Categories cat = MarketCats.GetCatFromFileName("EXCHANGE");
             listBox3.Items.Clear();
             List<string> items = new List<string>();
             foreach (marketItem item in cat.Items)

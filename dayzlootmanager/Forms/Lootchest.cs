@@ -85,7 +85,6 @@ namespace DayZeEditor
 
             loadlootchestsettings();
         }
-
         private void loadlootchestsettings()
         {
             var sortedListInstance = new BindingList<LCPredefinedWeapons>(LootChestTable.LCPredefinedWeapons.OrderBy(x => x.defname).ToList());
@@ -110,7 +109,6 @@ namespace DayZeEditor
             ToolsLB.ValueMember = "Value";
             ToolsLB.DataSource = LootChestTools.LCTools;
         }
-
         private void LootChestsLocationsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (LootChestsLocationsLB.SelectedItems.Count < 1) return;
@@ -136,9 +134,10 @@ namespace DayZeEditor
             posLB.ValueMember = "Value";
             posLB.DataSource = CurrentLootChestLocation.pos;
 
+            darkLabel20.Text = "Location count:" + CurrentLootChestLocation.pos.Count.ToString();
+
             useraction = true;
         }
-
         private void darkButton1_Click(object sender, EventArgs e)
         {
             AddfromPredefinedWeapons form = new AddfromPredefinedWeapons
@@ -157,7 +156,6 @@ namespace DayZeEditor
                 LootChestTable.isDirty = true;
             }
         }
-
         private void darkButton4_Click(object sender, EventArgs e)
         {
             AddfromPredefinedWeapons form = new AddfromPredefinedWeapons
@@ -176,19 +174,16 @@ namespace DayZeEditor
                 LootChestTable.isDirty = true;
             }
         }
-
         private void darkButton2_Click(object sender, EventArgs e)
         {
             CurrentLootChestLocation.chest.Remove(chestLB.GetItemText(chestLB.SelectedItem));
             LootChestTable.isDirty = true;
         }
-
         private void darkButton3_Click(object sender, EventArgs e)
         {
             CurrentLootChestLocation.loot.Remove(lootLB.GetItemText(lootLB.SelectedItem));
             LootChestTable.isDirty = true;
         }
-
         private void darkButton5_Click(object sender, EventArgs e)
         {
             LootChestTable.LootChestsLocations.Add(new LootChestsLocations()
@@ -204,7 +199,6 @@ namespace DayZeEditor
             LootChestsLocationsLB.SelectedIndex = -1;
             LootChestsLocationsLB.SelectedIndex = LootChestsLocationsLB.Items.Count - 1;
         }
-
         private void darkButton6_Click(object sender, EventArgs e)
         {
             if (LootChestsLocationsLB.SelectedItems.Count < 1) return;
@@ -230,7 +224,6 @@ namespace DayZeEditor
             SetweaponInfo();
             useraction = true;
         }
-
         private void SetweaponInfo()
         {
             defnameTB.Text = currentLCPredefinedWeapons.defname;
@@ -243,7 +236,6 @@ namespace DayZeEditor
             attachmentsLB.ValueMember = "Value";
             attachmentsLB.DataSource = currentLCPredefinedWeapons.attachments;
         }
-
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (posLB.SelectedItems.Count < 1) return;
@@ -260,7 +252,6 @@ namespace DayZeEditor
 
             useraction = true;
         }
-
         private void darkButton14_Click(object sender, EventArgs e)
         {
             if (posLB.SelectedItems.Count < 1) return;
@@ -277,15 +268,15 @@ namespace DayZeEditor
             {
                 posLB.SelectedIndex = index - 1;
             }
+            darkLabel20.Text = "Location count:" + CurrentLootChestLocation.pos.Count.ToString();
         }
-
         private void darkButton13_Click(object sender, EventArgs e)
         {
             CurrentLootChestLocation.pos.Add("0.000000 0.000000 0.000000|0.000000 0.000000 0.000000");
             posLB.SelectedIndex = -1;
             posLB.SelectedIndex = posLB.Items.Count - 1;
+            darkLabel20.Text = "Location count:" + CurrentLootChestLocation.pos.Count.ToString();
         }
-
         private void pos_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -294,7 +285,6 @@ namespace DayZeEditor
             CurrentLootChestLocation.pos[posLB.SelectedIndex] = currentposition;
             LootChestTable.isDirty = true;
         }
-
         private void darkButton15_Click(object sender, EventArgs e)
         {
             LootChestTable.LCPredefinedWeapons.Add(new LCPredefinedWeapons()
@@ -310,7 +300,6 @@ namespace DayZeEditor
             LCPredefinedWeaponsLB.SelectedIndex = -1;
             LCPredefinedWeaponsLB.SelectedIndex = LCPredefinedWeaponsLB.Items.Count - 1;
         }
-
         private void darkButton16_Click(object sender, EventArgs e)
         {
             if (LCPredefinedWeaponsLB.SelectedItems.Count < 1) return;
@@ -328,7 +317,6 @@ namespace DayZeEditor
                 LCPredefinedWeaponsLB.SelectedIndex = index - 1;
             }
         }
-
         private void darkButton8_Click(object sender, EventArgs e)
         {
             AddItemfromTypes form = new AddItemfromTypes
@@ -360,7 +348,6 @@ namespace DayZeEditor
                 }
             }
         }
-
         private void darkButton11_Click(object sender, EventArgs e)
         {
             AddItemfromTypes form = new AddItemfromTypes
@@ -384,7 +371,6 @@ namespace DayZeEditor
                 }
             }
         }
-
         private void darkButton10_Click(object sender, EventArgs e)
         {
             AddItemfromTypes form = new AddItemfromTypes
@@ -413,7 +399,6 @@ namespace DayZeEditor
                 }
             }
         }
-
         private void darkButton12_Click(object sender, EventArgs e)
         {
             AddItemfromTypes form = new AddItemfromTypes
@@ -437,7 +422,6 @@ namespace DayZeEditor
                 }
             }
         }
-
         private void opticbatteryCB_CheckedChanged(object sender, EventArgs e)
         {
             if(!useraction) { return; }
@@ -445,7 +429,6 @@ namespace DayZeEditor
             SetweaponInfo();
             LootChestTable.isDirty = true;
         }
-
         private void darkButton9_Click(object sender, EventArgs e)
         {
             if (attachmentsLB.SelectedItems.Count < 1) return;
@@ -467,7 +450,6 @@ namespace DayZeEditor
                 attachmentsLB.SelectedIndex = index - 1;
             }
         }
-
         private void LootCategoriesLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (LootCategoriesLB.SelectedItems.Count < 1) return;
@@ -484,14 +466,12 @@ namespace DayZeEditor
             useraction = true;
         }
 
-
         private void LootCatNameTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
             currentLootCategories.name = LootCatNameTB.Text;
             LootChestTable.isDirty = true;
         }
-
         private void darkButton18_Click(object sender, EventArgs e)
         {
             AddItemfromTypes form = new AddItemfromTypes
@@ -519,7 +499,6 @@ namespace DayZeEditor
                 }
             }
         }
-
         private void darkButton17_Click(object sender, EventArgs e)
         {
             currentLootCategories.Loot.Remove(LootCatLootLB.GetItemText(LootCatLootLB.SelectedItem));
@@ -528,35 +507,30 @@ namespace DayZeEditor
 
             LootChestTable.isDirty = true;
         }
-
         private void opticTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
             currentLCPredefinedWeapons.optic = opticTB.Text;
             LootChestTable.isDirty = true;
         }
-
         private void magazineTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
             currentLCPredefinedWeapons.magazine = magazineTB.Text;
             LootChestTable.isDirty = true;
         }
-
         private void weaponTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
             currentLCPredefinedWeapons.weapon = weaponTB.Text;
             LootChestTable.isDirty = true;
         }
-
         private void defnameTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
             currentLCPredefinedWeapons.defname = defnameTB.Text;
             LootChestTable.isDirty = true;
         }
-
         private void darkButton7_Click(object sender, EventArgs e)
         {
             AddfromPredefinedWeapons form = new AddfromPredefinedWeapons
@@ -581,35 +555,30 @@ namespace DayZeEditor
                 }
             }
         }
-
         private void keyclassTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
             CurrentLootChestLocation.keyclass = keyclassTB.Text;
             LootChestTable.isDirty = true;
         }
-
         private void numberNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
             CurrentLootChestLocation.number = (int)numberNUD.Value;
             LootChestTable.isDirty = true;
         }
-
         private void nameTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
             CurrentLootChestLocation.name = nameTB.Text;
             LootChestTable.isDirty = true;
         }
-
         private void LootRandomizationNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
             CurrentLootChestLocation.LootRandomization = (float)LootRandomizationNUD.Value;
             LootChestTable.isDirty = true;
         }
-
         private void SaveFileButton_Click(object sender, EventArgs e)
         {
             savefiles();
@@ -634,37 +603,30 @@ namespace DayZeEditor
             }
         }
 
-
-
-
         private void toolStripButton8_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 0;
             if (tabControl1.SelectedIndex == 0)
                 toolStripButton8.Checked = true;
         }
-
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 1;
             if (tabControl1.SelectedIndex == 1)
                 toolStripButton3.Checked = true;
         }
-
         private void toolStripButton7_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 2;
             if (tabControl1.SelectedIndex == 2)
                 toolStripButton7.Checked = true;
         }
-
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 3;
             if (tabControl1.SelectedIndex == 3)
                 toolStripButton1.Checked = true;
         }
-
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (tabControl1.SelectedIndex)
@@ -693,19 +655,16 @@ namespace DayZeEditor
                     break;
             }
         }
-
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
 
         }
-
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
             LootChestTable.EnableDebug = checkBox1.Checked == false ? 0 : 1;
             LootChestTable.isDirty = true;
         }
-
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -714,7 +673,6 @@ namespace DayZeEditor
             CurrentLootChestLocation.openable = (int)cacl;
             LootChestTable.isDirty = true;
         }
-
         private void darkButton19_Click(object sender, EventArgs e)
         {
             LootChestTable.LootCategories.Add(new LootCategories()
@@ -726,7 +684,6 @@ namespace DayZeEditor
             LCPredefinedWeaponsLB.SelectedIndex = -1;
             LCPredefinedWeaponsLB.SelectedIndex = LCPredefinedWeaponsLB.Items.Count - 1;
         }
-
         private void darkButton20_Click(object sender, EventArgs e)
         {
             if (LootCategoriesLB.SelectedItems.Count < 1) return;
@@ -744,7 +701,6 @@ namespace DayZeEditor
                 LootCategoriesLB.SelectedIndex = index - 1;
             }
         }
-
         private void listBox1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             if (ToolsLB.SelectedItems.Count < 1) return;
@@ -755,7 +711,6 @@ namespace DayZeEditor
             numericUpDown2.Value = (decimal)currentLootchestTool.dmg;
             useraction = true;
         }
-
         private void darkButton21_Click(object sender, EventArgs e)
         {
             LootChestTools.LCTools.Add(new LCTools()
@@ -768,7 +723,6 @@ namespace DayZeEditor
             ToolsLB.SelectedIndex = -1;
             ToolsLB.SelectedIndex = ToolsLB.Items.Count - 1;
         }
-
         private void darkButton22_Click(object sender, EventArgs e)
         {
             if (ToolsLB.SelectedItems.Count < 1) return;
@@ -815,20 +769,84 @@ namespace DayZeEditor
                 }
             }
         }
-
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
             currentLootchestTool.time = (int)numericUpDown1.Value;
             LootChestTools.isDirty = true;
         }
-
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
             currentLootchestTool.dmg = (int)numericUpDown2.Value;
             LootChestTools.isDirty = true;
         }
+        private void darkButton23_Click(object sender, EventArgs e)
+        {
+            string[] fileContent = new string[] { };
+            var filePath = string.Empty;
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    filePath = openFileDialog.FileName;
+                    var fileStream = openFileDialog.OpenFile();
+                    fileContent = File.ReadAllLines(filePath);
+                    CurrentLootChestLocation.pos.Clear();
+                    foreach (string line in fileContent)
+                    {
+                        string[] linesplit = line.Split('|');
+                        if(!linesplit[0] .Contains("CJ_LootChest")) { return; }
+                        CurrentLootChestLocation.pos.Add(linesplit[1] + "|" + linesplit[2]);
+                        posLB.SelectedIndex = -1;
+                        posLB.SelectedIndex = posLB.Items.Count - 1;
+                        posLB.Refresh();
+                    }
+                    darkLabel20.Text = "Location count:" + CurrentLootChestLocation.pos.Count.ToString();
+                }
+            }
+        }
 
+        private void darkButton24_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseMultiple = true,
+                isCategoryitem = true
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    CurrentLootChestLocation.loot.Add(l);
+                    LootChestTable.isDirty = true;
+                }
+
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+        }
+
+        private void darkButton28_Click(object sender, EventArgs e)
+        {
+            AddItemfromString form = new AddItemfromString();
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    CurrentLootChestLocation.loot.Add(l);
+                    LootChestTable.isDirty = true;
+                }
+            }
+        }
     }
 }

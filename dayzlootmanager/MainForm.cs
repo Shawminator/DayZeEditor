@@ -25,7 +25,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.5.7";
+        public string VersionNumber = "0.6.0";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -185,7 +185,16 @@ namespace DayZeEditor
                     LootchestButton.Visible = true;
                 else
                     LootchestButton.Visible = false;
-
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\HeliCrashMissions\\Helicrash.json"))
+                    HelicrashManagerButton.Visible = true;
+                else
+                    HelicrashManagerButton.Visible = false;
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KosZone\\KZConfig\\KosZoneConfig.json") &&
+                    File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KosZone\\KZConfig\\PurgeConfigV1.json") &&
+                    File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KosZone\\KZConfig\\RestartConfigV1.json"))
+                    KOSzoneManagerButton.Visible = true;
+                else
+                    KOSzoneManagerButton.Visible = false;
 
 
 
@@ -384,6 +393,57 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
+
+        private void HelicrashManagerButton_Click(object sender, EventArgs e)
+        {
+
+            HelicrashMissionsManager _TM = Application.OpenForms["HelicrashMissionsManager"] as HelicrashMissionsManager;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new HelicrashMissionsManager
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+                };
+                _TM.Show();
+            }
+            timer1.Start();
+        }
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            KOSZonemanager _TM = Application.OpenForms["KOSZone"] as KOSZonemanager;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new KOSZonemanager
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+                };
+                _TM.Show();
+                Console.WriteLine("loading KOSZone manager....");
+            }
+            timer1.Start();
+        }
         private void ToxicZone_Click(object sender, EventArgs e)
         {
             ToxicZone _TM = Application.OpenForms["ToxicZone"] as ToxicZone;
@@ -416,12 +476,10 @@ namespace DayZeEditor
            data.CreateNewData();
         }
 
-
-
-
-
-        //        
-
-
+        private void DiscordButton_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://discord.gg/5EHE49Kjsv");
+            timer1.Start();
+        }
     }
 }

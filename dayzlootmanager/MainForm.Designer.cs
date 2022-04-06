@@ -47,7 +47,9 @@ namespace DayZeEditor
             this.TraderManButton = new System.Windows.Forms.ToolStripButton();
             this.ExpansionSettingsButton = new System.Windows.Forms.ToolStripButton();
             this.MarketButton = new System.Windows.Forms.ToolStripButton();
+            this.HelicrashManagerButton = new System.Windows.Forms.ToolStripButton();
             this.LootchestButton = new System.Windows.Forms.ToolStripButton();
+            this.KOSzoneManagerButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.HidePBox = new System.Windows.Forms.PictureBox();
@@ -57,6 +59,7 @@ namespace DayZeEditor
             this.darkStatusStrip1 = new DarkUI.Controls.DarkStatusStrip();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.DiscordButton = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.SlidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Slidelabel)).BeginInit();
@@ -97,9 +100,9 @@ namespace DayZeEditor
             this.TitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.TitleLabel.Location = new System.Drawing.Point(5, 6);
             this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(74, 15);
+            this.TitleLabel.Size = new System.Drawing.Size(165, 15);
             this.TitleLabel.TabIndex = 6;
-            this.TitleLabel.Text = "DayZeEditor";
+            this.TitleLabel.Text = "DayZeEditor by Shawminator";
             // 
             // columnHeader1
             // 
@@ -156,13 +159,16 @@ namespace DayZeEditor
             this.ToolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.ToolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.ToolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.DiscordButton,
             this.ProjectsButton,
             this.TypeManButton,
             this.TraderPlusButton,
             this.TraderManButton,
             this.ExpansionSettingsButton,
             this.MarketButton,
+            this.HelicrashManagerButton,
             this.LootchestButton,
+            this.KOSzoneManagerButton,
             this.toolStripButton2,
             this.toolStripButton1});
             this.ToolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
@@ -194,6 +200,7 @@ namespace DayZeEditor
             this.TypeManButton.Name = "TypeManButton";
             this.TypeManButton.Size = new System.Drawing.Size(103, 19);
             this.TypeManButton.Text = "Economy Manager";
+            this.TypeManButton.Visible = false;
             this.TypeManButton.Click += new System.EventHandler(this.EconomyManagerButton_Click);
             // 
             // TraderPlusButton
@@ -205,6 +212,7 @@ namespace DayZeEditor
             this.TraderPlusButton.Name = "TraderPlusButton";
             this.TraderPlusButton.Size = new System.Drawing.Size(103, 19);
             this.TraderPlusButton.Text = "Trader Plus";
+            this.TraderPlusButton.Visible = false;
             this.TraderPlusButton.Click += new System.EventHandler(this.TraderPlusButton_Click);
             // 
             // TraderManButton
@@ -216,6 +224,7 @@ namespace DayZeEditor
             this.TraderManButton.Name = "TraderManButton";
             this.TraderManButton.Size = new System.Drawing.Size(103, 19);
             this.TraderManButton.Text = "Trader Manager";
+            this.TraderManButton.Visible = false;
             this.TraderManButton.Click += new System.EventHandler(this.TraderManButton_Click);
             // 
             // ExpansionSettingsButton
@@ -227,6 +236,7 @@ namespace DayZeEditor
             this.ExpansionSettingsButton.Name = "ExpansionSettingsButton";
             this.ExpansionSettingsButton.Size = new System.Drawing.Size(103, 19);
             this.ExpansionSettingsButton.Text = "Expansion Settings";
+            this.ExpansionSettingsButton.Visible = false;
             this.ExpansionSettingsButton.Click += new System.EventHandler(this.ExpansionSettingsButton_Click);
             // 
             // MarketButton
@@ -238,7 +248,20 @@ namespace DayZeEditor
             this.MarketButton.Name = "MarketButton";
             this.MarketButton.Size = new System.Drawing.Size(103, 19);
             this.MarketButton.Text = "Expansion Market";
+            this.MarketButton.Visible = false;
             this.MarketButton.Click += new System.EventHandler(this.MarketButton_Click);
+            // 
+            // HelicrashManagerButton
+            // 
+            this.HelicrashManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.HelicrashManagerButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.HelicrashManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("HelicrashManagerButton.Image")));
+            this.HelicrashManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.HelicrashManagerButton.Name = "HelicrashManagerButton";
+            this.HelicrashManagerButton.Size = new System.Drawing.Size(103, 19);
+            this.HelicrashManagerButton.Text = "HeliCrash Missions";
+            this.HelicrashManagerButton.Visible = false;
+            this.HelicrashManagerButton.Click += new System.EventHandler(this.HelicrashManagerButton_Click);
             // 
             // LootchestButton
             // 
@@ -249,7 +272,20 @@ namespace DayZeEditor
             this.LootchestButton.Name = "LootchestButton";
             this.LootchestButton.Size = new System.Drawing.Size(103, 19);
             this.LootchestButton.Text = "Loot Chest Table";
+            this.LootchestButton.Visible = false;
             this.LootchestButton.Click += new System.EventHandler(this.Lootchest_Click);
+            // 
+            // KOSzoneManagerButton
+            // 
+            this.KOSzoneManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.KOSzoneManagerButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.KOSzoneManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("KOSzoneManagerButton.Image")));
+            this.KOSzoneManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.KOSzoneManagerButton.Name = "KOSzoneManagerButton";
+            this.KOSzoneManagerButton.Size = new System.Drawing.Size(103, 19);
+            this.KOSzoneManagerButton.Text = "KOS Zone";
+            this.KOSzoneManagerButton.Visible = false;
+            this.KOSzoneManagerButton.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // toolStripButton2
             // 
@@ -260,6 +296,7 @@ namespace DayZeEditor
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(103, 19);
             this.toolStripButton2.Text = "Toxic Zone";
+            this.toolStripButton2.Visible = false;
             this.toolStripButton2.Click += new System.EventHandler(this.ToxicZone_Click);
             // 
             // toolStripButton1
@@ -347,6 +384,17 @@ namespace DayZeEditor
             this.panel2.Size = new System.Drawing.Size(25, 25);
             this.panel2.TabIndex = 45;
             // 
+            // DiscordButton
+            // 
+            this.DiscordButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.DiscordButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.DiscordButton.Image = ((System.Drawing.Image)(resources.GetObject("DiscordButton.Image")));
+            this.DiscordButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DiscordButton.Name = "DiscordButton";
+            this.DiscordButton.Size = new System.Drawing.Size(103, 19);
+            this.DiscordButton.Text = "Discord";
+            this.DiscordButton.Click += new System.EventHandler(this.DiscordButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -405,6 +453,9 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton TraderPlusButton;
+        private System.Windows.Forms.ToolStripButton KOSzoneManagerButton;
+        private System.Windows.Forms.ToolStripButton HelicrashManagerButton;
+        private System.Windows.Forms.ToolStripButton DiscordButton;
     }
 }
 

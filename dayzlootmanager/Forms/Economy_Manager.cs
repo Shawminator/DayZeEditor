@@ -21,6 +21,8 @@ namespace DayZeEditor
     {
         public bool isUserInteraction = true;
         public Project currentproject { get; set; }
+        public int ZoneScale = 1;
+
         public TypesFile vanillatypes;
         public List<TypesFile> ModTypes;
         public TypesFile currentTypesFile;
@@ -32,6 +34,7 @@ namespace DayZeEditor
         private int searchnum;
         private List<TreeNode> searchtreeNodes;
         private List<type> foundparts;
+        public playerspawnpoints playerspawnpoints;
 
         public Economy_Manager()
         {
@@ -68,21 +71,36 @@ namespace DayZeEditor
             filename = currentproject.ProjectName;
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
+
             comboBox1.DataSource = currentproject.limitfefinitions.lists.categories.category;
             comboBox2.DataSource = currentproject.limitfefinitions.lists.usageflags.usage;
             comboBox4.DataSource = currentproject.limitfefinitions.lists.tags.tag;
+
+            comboBox5.DataSource = currentproject.limitfefinitions.lists.tags.tag;
 
             comboBox8.DataSource = currentproject.limitfefinitions.lists.categories.category;
             comboBox7.DataSource = currentproject.limitfefinitions.lists.usageflags.usage;
             comboBox6.DataSource = currentproject.limitfefinitions.lists.tags.tag;
 
+
             PopulateTreeView();
             Loadevents();
             LoadSpawnableTypes();
             populateEconmyTreeview();
+            LoadPlayerSpawns();
 
             SetSummarytiers();
             NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
+
+
+
+            pictureBox2.BackgroundImage = Image.FromFile(Application.StartupPath + currentproject.MapPath); // Livonia maop size is 12800 x 12800, 0,0 bottom left, center 6400 x 6400
+            pictureBox2.Size = new Size(currentproject.MapSize, currentproject.MapSize);
+            pictureBox2.Paint += new PaintEventHandler(DrawAllPlayerSpawns);
+            pictureBox2.Invalidate();
+            trackBar4.Value = 1;
+            SetSpawnScale();
+
             isUserInteraction = true;
         }
         private void populateEconmyTreeview()
@@ -159,6 +177,17 @@ namespace DayZeEditor
                     }
                 }
             }
+
+            if (currentproject.cfgplayerspawnpoints != null)
+            {
+                    if (currentproject.cfgplayerspawnpoints.isDirty)
+                    {
+                        currentproject.cfgplayerspawnpoints.Savecfgplayerspawnpoints(SaveTime);
+                        currentproject.cfgplayerspawnpoints.isDirty = false;
+                        midifiedfiles.Add(Path.GetFileName(currentproject.cfgplayerspawnpoints.Filename));
+                    }
+            }
+
             string message = "The Following Files were saved....\n";
             int i = 0;
             foreach (string l in midifiedfiles)
@@ -263,6 +292,7 @@ namespace DayZeEditor
                     toolStripButton8.Checked = false;
                     toolStripButton9.Checked = false;
                     toolStripButton5.Checked = false;
+                    pictureBox2.Invalidate();
                     break;
                 default:
                     break;
@@ -357,7 +387,7 @@ namespace DayZeEditor
         }
         private void PopulateTreeView()
         {
-            treeView1.Nodes.Clear();
+            treeViewMS1.Nodes.Clear();
             TreeNode root = new TreeNode(Path.GetFileName(filename))
             {
                 Tag = "Parent"
@@ -388,7 +418,6 @@ namespace DayZeEditor
                 vanilla.Nodes[cat].Nodes.Add(typenode);
             }
             root.Nodes.Add(vanilla);
-
             if (ModTypes.Count > 0)
             {
                 foreach (TypesFile tf in ModTypes)
@@ -423,9 +452,10 @@ namespace DayZeEditor
                 }
             }
 
-            treeView1.Nodes.Add(root);
+            //treeView1.Nodes.Add(root);
+            treeViewMS1.Nodes.Add(root);
         }
-        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        private void treeViewMS1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             if (e.Node.Tag != null && e.Node.Tag is type)
             {
@@ -433,7 +463,7 @@ namespace DayZeEditor
                 TreeNode mainparent = parent.Parent;
                 currentcollection = parent.Text;
                 String typesfile = mainparent.Text;
-                if(typesfile == "Vanilla Types")
+                if (typesfile == "Vanilla Types")
                     currentTypesFile = vanillatypes;
                 else
                     currentTypesFile = ModTypes.FirstOrDefault(x => x.modname == typesfile);
@@ -449,6 +479,7 @@ namespace DayZeEditor
                     AddTypesTSMI.Visible = false;
                     DeleteSpecificTypeTSMI.Visible = true;
                     DeleteSpecificTypeTSMI.Text = "Delete " + currentlootpart.name + " from " + currentcollection + " in " + typesfile;
+                    checkForDuplicateTypesTSMI.Visible = false;
                     TypesContextMenu.Show(Cursor.Position);
                 }
             }
@@ -472,7 +503,9 @@ namespace DayZeEditor
                             DeleteTypesTSMI.Visible = false;
                             AddTypesTSMI.Visible = true;
                             AddTypesTSMI.Text = "Add new Types to Vanilla Types";
+                            checkForDuplicateTypesTSMI.Visible = false;
                             TypesContextMenu.Show(Cursor.Position);
+                            
                         }
                     }
                     else
@@ -489,6 +522,7 @@ namespace DayZeEditor
                             DeleteTypesTSMI.Text = "Delete " + currentTypesFile.modname;
                             AddTypesTSMI.Visible = true;
                             AddTypesTSMI.Text = "Add new Types to " + currentTypesFile.modname;
+                            checkForDuplicateTypesTSMI.Visible = false;
                             TypesContextMenu.Show(Cursor.Position);
                         }
                     }
@@ -507,6 +541,7 @@ namespace DayZeEditor
                         DeleteSpecificTypeTSMI.Visible = false;
                         DeleteTypesTSMI.Visible = true;
                         AddTypesTSMI.Visible = false;
+                        checkForDuplicateTypesTSMI.Visible = false;
                         DeleteTypesTSMI.Text = "Delete " + currentcollection + " from " + currentTypesFile.modname;
                         TypesContextMenu.Show(Cursor.Position);
                     }
@@ -518,22 +553,69 @@ namespace DayZeEditor
                         DeleteSpecificTypeTSMI.Visible = false;
                         AddTypesTSMI.Visible = true;
                         DeleteTypesTSMI.Visible = false;
+                        checkForDuplicateTypesTSMI.Visible = true;
                         AddTypesTSMI.Text = "Add new Types to Custom Folder";
                         TypesContextMenu.Show(Cursor.Position);
                     }
                 }
             }
-            this.treeView1.SelectedNode = e.Node;
+            this.treeViewMS1.SelectedNode = e.Node;
+        }
+        private void checkForDuplicateTypesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<Tuple<string, string>> typecheck = new List<Tuple<string, string>>();
+            List<Tuple<string, string, string>> duplicatelist = new List<Tuple<string, string, string>>();
+            foreach (type type in vanillatypes.types.type)
+            {
+                if(typecheck.Any(x => x.Item1 == type.name))
+                {
+
+                    Tuple<string, string> first = typecheck.FirstOrDefault(x => x.Item1 == type.name);
+                    duplicatelist.Add(new Tuple<string, string, string>(type.name, first.Item2, Path.GetFileNameWithoutExtension(vanillatypes.Filename)));
+                }
+                else
+                {
+                    typecheck.Add(new Tuple<string, string>(type.name, Path.GetFileNameWithoutExtension(vanillatypes.Filename)));
+                }
+            }
+            if (ModTypes.Count > 0)
+            {
+                foreach (TypesFile tf in ModTypes)
+                {
+                    foreach (type type in tf.types.type)
+                    {
+                        if (typecheck.Any(x => x.Item1 == type.name))
+                        {
+                            Tuple<string, string> first = typecheck.FirstOrDefault(x => x.Item1 == type.name);
+                            duplicatelist.Add(new Tuple<string, string, string>(type.name, first.Item2, Path.GetFileNameWithoutExtension(tf.Filename)));
+                        }
+                        else
+                        {
+                            typecheck.Add(new Tuple<string, string>(type.name, Path.GetFileNameWithoutExtension(tf.Filename)));
+                        }
+                    }
+                }
+            }
+            if(duplicatelist.Count > 0)
+            {
+                Console.WriteLine("");
+                Console.WriteLine("Duplicate types found");
+                foreach (Tuple<string,string,string> tup in duplicatelist)
+                {
+                    Console.WriteLine(tup.Item1 + " is in both " + tup.Item2 + " and " + tup.Item3);
+                }
+                MessageBox.Show("Duplicates found, Please see console");
+            }
         }
         private void DeleteSpecificTypeTSMI_Click(object sender, EventArgs e)
         {
             currentTypesFile.types.type.Remove(currentlootpart);
             currentTypesFile.SaveTyes(DateTime.Now.ToString("ddMMyy_HHmm"));
-            var savedExpansionState = treeView1.Nodes.GetExpansionState();
-            treeView1.BeginUpdate();
+            var savedExpansionState = treeViewMS1.Nodes.GetExpansionState();
+            treeViewMS1.BeginUpdate();
             PopulateTreeView();
-            treeView1.Nodes.SetExpansionState(savedExpansionState);
-            treeView1.EndUpdate();
+            treeViewMS1.Nodes.SetExpansionState(savedExpansionState);
+            treeViewMS1.EndUpdate();
             populateEconmyTreeview();
             currentproject.SetTotNomCount();
             NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
@@ -553,11 +635,11 @@ namespace DayZeEditor
                     currentproject.removeMod(currentTypesFile.modname);
                     ModTypes = currentproject.getModList();
 
-                    var savedExpansionState = treeView1.Nodes.GetExpansionState();
-                    treeView1.BeginUpdate();
+                    var savedExpansionState = treeViewMS1.Nodes.GetExpansionState();
+                    treeViewMS1.BeginUpdate();
                     PopulateTreeView();
-                    treeView1.Nodes.SetExpansionState(savedExpansionState);
-                    treeView1.EndUpdate();
+                    treeViewMS1.Nodes.SetExpansionState(savedExpansionState);
+                    treeViewMS1.EndUpdate();
                     MessageBox.Show("Mod Removed from Project....", "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
             }
@@ -580,11 +662,11 @@ namespace DayZeEditor
                     currentTypesFile.types.type.Remove(t);
                 }
                 currentTypesFile.SaveTyes(DateTime.Now.ToString("ddMMyy_HHmm"));
-                var savedExpansionState = treeView1.Nodes.GetExpansionState();
-                treeView1.BeginUpdate();
+                var savedExpansionState = treeViewMS1.Nodes.GetExpansionState();
+                treeViewMS1.BeginUpdate();
                 PopulateTreeView();
-                treeView1.Nodes.SetExpansionState(savedExpansionState);
-                treeView1.EndUpdate();
+                treeViewMS1.Nodes.SetExpansionState(savedExpansionState);
+                treeViewMS1.EndUpdate();
             }
             populateEconmyTreeview();
             currentproject.SetTotNomCount();
@@ -634,11 +716,11 @@ namespace DayZeEditor
                     currentproject.EconomyCore.SaveEconomycore();
                     currentproject.SetModListtypes();
                     ModTypes = currentproject.getModList();
-                    var savedExpansionState = treeView1.Nodes.GetExpansionState();
-                    treeView1.BeginUpdate();
+                    var savedExpansionState = treeViewMS1.Nodes.GetExpansionState();
+                    treeViewMS1.BeginUpdate();
                     PopulateTreeView();
-                    treeView1.Nodes.SetExpansionState(savedExpansionState);
-                    treeView1.EndUpdate();
+                    treeViewMS1.Nodes.SetExpansionState(savedExpansionState);
+                    treeViewMS1.EndUpdate();
                 }
                 else
                 {
@@ -658,11 +740,11 @@ namespace DayZeEditor
                         currentTypesFile.types.type.Add(type);
                     }
                     currentTypesFile.SaveTyes(DateTime.Now.ToString("ddMMyy_HHmm"));
-                    var savedExpansionState = treeView1.Nodes.GetExpansionState();
-                    treeView1.BeginUpdate();
+                    var savedExpansionState = treeViewMS1.Nodes.GetExpansionState();
+                    treeViewMS1.BeginUpdate();
                     PopulateTreeView();
-                    treeView1.Nodes.SetExpansionState(savedExpansionState);
-                    treeView1.EndUpdate();
+                    treeViewMS1.Nodes.SetExpansionState(savedExpansionState);
+                    treeViewMS1.EndUpdate();
                 }
             }
             populateEconmyTreeview();
@@ -720,66 +802,66 @@ namespace DayZeEditor
         {
             if (currentlootpart.nominal == null)
             {
-                numericUpDown1.Visible = false;
+                typeNomCountNUD.Visible = false;
             }
             else
             {
-                numericUpDown1.Visible = true;
-                numericUpDown1.Value = (decimal)currentlootpart.nominal;
+                typeNomCountNUD.Visible = true;
+                typeNomCountNUD.Value = (decimal)currentlootpart.nominal;
             }
             if (currentlootpart.min == null)
             {
-                numericUpDown2.Visible = false;
+                typeMinCountNUD.Visible = false;
             }
             else
             {
-                numericUpDown2.Visible = true;
-                numericUpDown2.Value = (decimal)currentlootpart.min;
+                typeMinCountNUD.Visible = true;
+                typeMinCountNUD.Value = (decimal)currentlootpart.min;
             }
             if (currentlootpart.lifetime == null)
             {
-                numericUpDown3.Visible = false;
+                typeLifetimeNUD.Visible = false;
             }
             else
             {
-                numericUpDown3.Visible = true;
-                numericUpDown3.Value = (decimal)currentlootpart.lifetime;
+                typeLifetimeNUD.Visible = true;
+                typeLifetimeNUD.Value = (decimal)currentlootpart.lifetime;
             }
             if (currentlootpart.restock == null)
             {
-                numericUpDown4.Visible = false;
+                typeRestockNUD.Visible = false;
             }
             else
             {
-                numericUpDown4.Visible = true;
-                numericUpDown4.Value = (decimal)currentlootpart.restock;
+                typeRestockNUD.Visible = true;
+                typeRestockNUD.Value = (decimal)currentlootpart.restock;
             }
             if (currentlootpart.quantmin == null)
             {
-                numericUpDown5.Visible = false;
+                typeQuantMINNUD.Visible = false;
             }
             else
             {
-                numericUpDown5.Visible = true;
-                numericUpDown5.Value = (decimal)currentlootpart.quantmin;
+                typeQuantMINNUD.Visible = true;
+                typeQuantMINNUD.Value = (decimal)currentlootpart.quantmin;
             }
             if (currentlootpart.quantmax == null)
             {
-                numericUpDown6.Visible = false;
+                typeQuantMAXNUD.Visible = false;
             }
             else
             {
-                numericUpDown6.Visible = true;
-                numericUpDown6.Value = (decimal)currentlootpart.quantmax;
+                typeQuantMAXNUD.Visible = true;
+                typeQuantMAXNUD.Value = (decimal)currentlootpart.quantmax;
             }
             if (currentlootpart.cost == null)
             {
-                numericUpDown7.Visible = false;
+                typeCostNUD.Visible = false;
             }
             else
             {
-                numericUpDown7.Visible = true;
-                numericUpDown7.Value = (decimal)currentlootpart.cost;
+                typeCostNUD.Visible = true;
+                typeCostNUD.Value = (decimal)currentlootpart.cost;
             }
         }
         private void populateUsage()
@@ -818,76 +900,200 @@ namespace DayZeEditor
         private void darkButton2_Click(object sender, EventArgs e)
         {
             usage u = comboBox2.SelectedItem as usage;
-            currentlootpart.AddnewUsage(u);
-            populateUsage();
-            currentTypesFile.isDirty = true;
+            foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+            {
+                type looptype = tn.Tag as type;
+                looptype.AddnewUsage(u);
+                populateUsage();
+                currentTypesFile.isDirty = true;
+            }
         }
         private void darkButton1_Click(object sender, EventArgs e)
         {
             usage u = listBox1.SelectedItem as usage;
-            currentlootpart.removeusage(u);
-            currentTypesFile.isDirty = true;
+            foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+            {
+                type looptype = tn.Tag as type;
+                looptype.removeusage(u);
+                currentTypesFile.isDirty = true;
+            }
         }
         private void darkButton8_Click(object sender, EventArgs e)
         {
             tag t = comboBox4.SelectedItem as tag;
-            currentlootpart.Addnewtag(t);
-            currentTypesFile.isDirty = true;
-            listBox2.Invalidate();
+            foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+            {
+                type looptype = tn.Tag as type;
+                looptype.Addnewtag(t);
+                currentTypesFile.isDirty = true;
+                PopulateTags();
+            }
         }
         private void darkButton7_Click(object sender, EventArgs e)
         {
             tag t = listBox2.SelectedItem as tag;
-            currentlootpart.removetag(t);
-            currentTypesFile.isDirty = true;
+            foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+            {
+                type looptype = tn.Tag as type;
+                looptype.removetag(t);
+                currentTypesFile.isDirty = true;
+            }
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (isUserInteraction)
             {
-                if(currentlootpart == null) { return; }
                 category c = comboBox1.SelectedItem as category;
-                currentlootpart.changecategory(c);
+                foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+                {
+                    type looptype = tn.Tag as type;
+                    looptype.changecategory(c);
+                }
                 currentTypesFile.isDirty = true;
                 PopulateTreeView();
                 isUserInteraction = false;
             }
         }
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        private void typeNomCountNUD_ValueChanged(object sender, EventArgs e)
         {
             if (isUserInteraction)
             {
-                if (currentlootpart.nominal != null)
-                    currentlootpart.nominal = (int)numericUpDown1.Value;
-                if (currentlootpart.min != null)
-                    currentlootpart.min = (int)numericUpDown2.Value;
-                if (currentlootpart.lifetime != null)
-                    currentlootpart.lifetime = (int)numericUpDown3.Value;
-                if (currentlootpart.restock != null)
-                    currentlootpart.restock = (int)numericUpDown4.Value;
-                if (currentlootpart.quantmin != null)
-                    currentlootpart.quantmin = (int)numericUpDown5.Value;
-                if (currentlootpart.quantmax != null)
-                    currentlootpart.quantmax = (int)numericUpDown6.Value;
-                if (currentlootpart.cost != null)
-                    currentlootpart.cost = (int)numericUpDown7.Value;
-                currentTypesFile.isDirty = true;
-                currentproject.SetTotNomCount();
-                NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
+                foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+                {
+                    type looptype = tn.Tag as type;
+                    if (looptype.nominal != null)
+                    {
+                        looptype.nominal = (int)typeNomCountNUD.Value;
+                        currentTypesFile.isDirty = true;
+                        currentproject.SetTotNomCount();
+                        //PopulateLootPartInfo();
+                        NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
+                    }
+                }
+            }
+        }
+        private void typeMinCountNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (isUserInteraction)
+            {
+                foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+                {
+                    type looptype = tn.Tag as type;
+                    if (looptype.min != null)
+                    {
+                        looptype.min = (int)typeMinCountNUD.Value;
+                        currentTypesFile.isDirty = true;
+                    }
+                }
+            }
+        }
+        private void typeLifetimeNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (isUserInteraction)
+            {
+                foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+                {
+                    type looptype = tn.Tag as type;
+                    if (looptype.lifetime != null)
+                    { 
+                        looptype.lifetime = (int)typeLifetimeNUD.Value;
+                        currentTypesFile.isDirty = true;
+                    }
+                }
+            }
+        }
+        private void typeRestockNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (isUserInteraction)
+            {
+                foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+                {
+                    type looptype = tn.Tag as type;
+                    if (looptype.restock != null)
+                    { 
+                        looptype.restock = (int)typeRestockNUD.Value;
+                        currentTypesFile.isDirty = true;
+                    }
+                }
+            }
+
+        }
+        private void typeQuantMINNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (isUserInteraction)
+            {
+                foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+                {
+                    type looptype = tn.Tag as type;
+                    if (looptype.quantmin != null)
+                    { 
+                        looptype.quantmin = (int)typeQuantMINNUD.Value;
+                        currentTypesFile.isDirty = true;
+                    }
+                }
+            }
+        }
+        private void typeQuantMAXNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (isUserInteraction)
+            {
+                foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+                {
+                    type looptype = tn.Tag as type;
+                    if (looptype.quantmax != null)
+                    { 
+                        looptype.quantmax = (int)typeQuantMAXNUD.Value;
+                        currentTypesFile.isDirty = true;
+                    }
+                }
+            }
+        }
+        private void typeCostNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (isUserInteraction)
+            {
+                foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+                {
+                    type looptype = tn.Tag as type;
+                    if (looptype.cost != null)
+                    { 
+                        looptype.cost = (int)typeCostNUD.Value; ;
+                        currentTypesFile.isDirty = true;
+                    }
+                }
             }
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (isUserInteraction)
             {
-                if (currentlootpart.flags == null) return;
-                currentlootpart.flags.count_in_cargo = checkBox1.Checked == true ? 1 : 0;
-                currentlootpart.flags.count_in_hoarder = checkBox2.Checked == true ? 1 : 0;
-                currentlootpart.flags.count_in_map = checkBox3.Checked == true ? 1 : 0;
-                currentlootpart.flags.count_in_player = checkBox4.Checked == true ? 1 : 0;
-                currentlootpart.flags.crafted = checkBox5.Checked == true ? 1 : 0;
-                currentlootpart.flags.deloot = checkBox6.Checked == true ? 1 : 0;
-                currentTypesFile.isDirty = true;
+                foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+                {
+                    type looptype = tn.Tag as type;
+                    CheckBox cb = sender as CheckBox;
+                    switch (cb.Name)
+                    {
+                        case "checkBox1":
+                            looptype.flags.count_in_cargo = checkBox1.Checked == true ? 1 : 0;
+                            break;
+                        case "checkBox2":
+                            looptype.flags.count_in_hoarder = checkBox2.Checked == true ? 1 : 0;
+                            break;
+                        case "checkBox3":
+                            looptype.flags.count_in_map = checkBox3.Checked == true ? 1 : 0;
+                            break;
+                        case "checkBox4":
+                            looptype.flags.count_in_player = checkBox4.Checked == true ? 1 : 0;
+                            break;
+                        case "checkBox5":
+                            looptype.flags.crafted = checkBox5.Checked == true ? 1 : 0;
+                            break;
+                        case "checkBox6":
+                            looptype.flags.deloot = checkBox6.Checked == true ? 1 : 0;
+                            break;
+                    }
+                    currentTypesFile.isDirty = true;
+                }
             }
         }
         private void TierCheckBoxchanged(object sender, EventArgs e)
@@ -896,12 +1102,16 @@ namespace DayZeEditor
             {
                 CheckBox cb = sender as CheckBox;
                 string tier = cb.Tag.ToString();
-                if (cb.Checked)
-                    currentlootpart.AddTier(tier);
-                else
-                    currentlootpart.removetier(tier);
+                foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+                {
+                    type looptype = tn.Tag as type;
+                    if (cb.Checked)
+                        looptype.AddTier(tier);
+                    else
+                        looptype.removetier(tier);
+                    currentTypesFile.isDirty = true;
+                }
                 PopulateLootPartInfo();
-                currentTypesFile.isDirty = true;
             }
         }
         private void UserdefiniedTiersChanged(object sender, EventArgs e)
@@ -910,26 +1120,33 @@ namespace DayZeEditor
             {
                 CheckBox cb = sender as CheckBox;
                 string tier = cb.Tag.ToString();
-                if (cb.Checked)
+                foreach (TreeNode tn in treeViewMS1.SelectedNodes)
                 {
-                    if (currentlootpart.value == null)
-                        currentlootpart.value = new BindingList<value>();
-                    //lets check if the defined tier are set, if so we remove them
-                    if (currentlootpart.value.Count > 0)
+                    type looptype = tn.Tag as type;
+                    if (cb.Checked)
                     {
-                        int count = currentlootpart.value.Count;
-                        for (int i = 0; i < count; i++)
+                        if (looptype.value != null)
                         {
-                            currentlootpart.removetier(currentlootpart.value[0].name);
+                            looptype.removetiers();
                         }
+                        looptype.AdduserTier(tier);
                     }
-                    currentlootpart.AdduserTier(tier);
+                    else
+                        looptype.removeusertier(tier);
                 }
-                else
-                    currentlootpart.removeusertier(tier);
+                currentTypesFile.isDirty = true;
                 PopulateLootPartInfo();
+            }
+        }
+        private void darkButton28_Click(object sender, EventArgs e)
+        {
+            foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+            {
+                type looptype = tn.Tag as type;
+                looptype.removetiers();
                 currentTypesFile.isDirty = true;
             }
+            PopulateLootPartInfo();
         }
         private void darkButton3_Click(object sender, EventArgs e)
         {
@@ -1174,7 +1391,7 @@ namespace DayZeEditor
         }
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            if (treeView1.Nodes.Count < 1)
+            if (treeViewMS1.Nodes.Count < 1)
                 return;
             string text = toolStripTextBox1.Text;
             searchnum = 0;
@@ -1204,18 +1421,18 @@ namespace DayZeEditor
             }
             foreach (type obj in foundparts)
             {
-                foreach (TreeNode node in treeView1.Nodes)
+                foreach (TreeNode node in treeViewMS1.Nodes)
                 {
                     searchtree(obj.name.ToLower(), node, searchtreeNodes);
                 }
             }
-            treeView1.SelectedNode = searchtreeNodes[searchnum];
-            treeView1.Focus();
-            if (treeView1.SelectedNode.Tag != null && treeView1.SelectedNode.Tag is type)
+            treeViewMS1.SelectedNode = searchtreeNodes[searchnum];
+            treeViewMS1.Focus();
+            if (treeViewMS1.SelectedNode.Tag != null && treeViewMS1.SelectedNode.Tag is type)
             {
                 isUserInteraction = false;
                 tabControl1.SelectedIndex = 1;
-                currentlootpart = treeView1.SelectedNode.Tag as type;
+                currentlootpart = treeViewMS1.SelectedNode.Tag as type;
                 PopulateLootPartInfo();
                 isUserInteraction = true;
             }
@@ -1230,13 +1447,13 @@ namespace DayZeEditor
                 MessageBox.Show("No More Items found");
                 return;
             }
-            treeView1.SelectedNode = searchtreeNodes[searchnum];
-            treeView1.Focus();
-            if (treeView1.SelectedNode.Tag != null && treeView1.SelectedNode.Tag is type)
+            treeViewMS1.SelectedNode = searchtreeNodes[searchnum];
+            treeViewMS1.Focus();
+            if (treeViewMS1.SelectedNode.Tag != null && treeViewMS1.SelectedNode.Tag is type)
             {
                 isUserInteraction = false;
                 tabControl1.SelectedIndex = 1;
-                currentlootpart = treeView1.SelectedNode.Tag as type;
+                currentlootpart = treeViewMS1.SelectedNode.Tag as type;
                 PopulateLootPartInfo();
                 isUserInteraction = true;
             }
@@ -1509,7 +1726,8 @@ namespace DayZeEditor
             if (SpawnabletypeslistLB.SelectedItem as Spawnabletypesconfig == currentspawnabletypesfile) { return; }
             if (SpawnabletypeslistLB.SelectedIndex == -1) { return; }
             currentspawnabletypesfile = SpawnabletypeslistLB.SelectedItem as Spawnabletypesconfig;
-            if(currentspawnabletypesfile.spawnabletypes.damage != null)
+            isUserInteraction = false;
+            if (currentspawnabletypesfile.spawnabletypes.damage != null)
             {
                 DamageMinNUD.Value = currentspawnabletypesfile.spawnabletypes.damage.min;
                 DamageMaxNUD.Value = currentspawnabletypesfile.spawnabletypes.damage.max;
@@ -1529,40 +1747,155 @@ namespace DayZeEditor
         }
         private void SpawnabletpesLB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (SpawnabletpesLB.SelectedItem as spawnabletypesType == CurrentspawnabletypesType) { return; }
+            ClearInfo();
+            
+            //if (SpawnabletpesLB.SelectedItem as spawnabletypesType == CurrentspawnabletypesType) { return; }
             if (SpawnabletpesLB.SelectedIndex == -1) { return; }
             CurrentspawnabletypesType = SpawnabletpesLB.SelectedItem as spawnabletypesType;
-
+            isUserInteraction = false;
             listBox6.DisplayMember = "DisplayName";
             listBox6.ValueMember = "Value";
             listBox6.DataSource = CurrentspawnabletypesType.Items;
-
-
+            listBox6.SelectedIndex = -1;
+            if (listBox6.Items.Count > 0)
+            {
+                listBox6.SelectedIndex = 0;
+            }
+            isUserInteraction = true;
         }
         private void listBox6_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBox6.SelectedItem as object == CurrentspawnabletypesTypetype) { return; }
+            //if (listBox6.SelectedItem as object == CurrentspawnabletypesTypetype) { return; }
             if (listBox6.SelectedIndex == -1) { return; }
             CurrentspawnabletypesTypetype = listBox6.SelectedItem as object;
-            HoarderCB.Checked = false;
-            checkBox49.Checked = false;
-            checkBox50.Checked = false;
-            checkBox51.Checked = false;
+            ClearInfo();
             if (CurrentspawnabletypesTypetype is spawnabletypesTypeHoarder)
             {
                 HoarderCB.Checked = true;
             }
             else if (CurrentspawnabletypesTypetype is spawnabletypesTypeTag)
             {
+                spawnabletypesTypeTag currenttag = CurrentspawnabletypesTypetype as spawnabletypesTypeTag;
+                Spaenabletypestagbox.Visible = true;
                 checkBox51.Checked = true;
+                textBox2.Text = currenttag.name;
             }
             else if (CurrentspawnabletypesTypetype is spawnabletypesTypeCargo)
             {
+                CargoGB.Visible = true;
                 checkBox49.Checked = true;
+                spawnabletypesTypeCargo currentcargo = CurrentspawnabletypesTypetype as spawnabletypesTypeCargo;
+                CargochanceCB.Checked = currentcargo.chanceSpecified;
+                if (currentcargo.chanceSpecified)
+                {
+                    CargoChanceGB.Visible = true;
+                    CargoPresetGB.Visible = false;
+                    CarcgoChanceNUD.Value = currentcargo.chance;
+                    textBox3.Text = currentcargo.item[0].name;
+                }
+                else
+                {
+                    CargoChanceGB.Visible = false;
+                    CargoPresetGB.Visible = true;
+                    textBox3.Text = currentcargo.preset;
+                }
+
+
+                
             }
-            else if(CurrentspawnabletypesTypetype is spawnabletypesTypeAttachments)
+            else if (CurrentspawnabletypesTypetype is spawnabletypesTypeAttachments)
             {
                 checkBox50.Checked = true;
+            }
+        }
+
+        private void ClearInfo()
+        {
+            HoarderCB.Checked = false;
+            checkBox49.Checked = false;
+            checkBox50.Checked = false;
+            checkBox51.Checked = false;
+            textBox2.Text = null;
+            Spaenabletypestagbox.Visible = false;
+            CargoGB.Visible = false;
+        }
+
+        private void darkButton34_Click(object sender, EventArgs e)
+        {
+            if (listBox6.SelectedItems == null) { return; }
+            int index = listBox6.SelectedIndex;
+            CurrentspawnabletypesType.Items.Remove(CurrentspawnabletypesTypetype);
+            currentspawnabletypesfile.isDirty = true;
+            listBox6.SelectedIndex = -1;
+            if (index == 0 && listBox6.Items.Count > 0)
+                listBox6.SelectedIndex = index;
+            else
+                listBox6.SelectedIndex = index - 1;
+        }
+        private void darkButton30_Click(object sender, EventArgs e)
+        {
+            if (SpawnabletpesLB.SelectedItem == null) { return; }
+            spawnabletypesTypeHoarder newhoarder = new spawnabletypesTypeHoarder();
+            CurrentspawnabletypesType.Items.Insert(0, newhoarder);
+            listBox6.SelectedIndex = -1;
+            listBox6.SelectedIndex = 0;
+            currentspawnabletypesfile.isDirty = true;
+
+        }
+        private void darkButton31_Click(object sender, EventArgs e)
+        {
+            if (SpawnabletpesLB.SelectedItem == null) { return; }
+            spawnabletypesTypeTag newtag = new spawnabletypesTypeTag();
+            CurrentspawnabletypesType.Items.Insert(0, newtag);
+            listBox6.SelectedIndex = -1;
+            listBox6.SelectedIndex = 0;
+            currentspawnabletypesfile.isDirty = true;
+        }
+        private void darkButton32_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void darkButton33_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void darkButton29_Click(object sender, EventArgs e)
+        {
+            tag t = comboBox5.SelectedItem as tag;
+            spawnabletypesTypeTag currenttag = CurrentspawnabletypesTypetype as spawnabletypesTypeTag;
+            currenttag.name = t.name;
+            textBox2.Text = currenttag.name;
+            currentspawnabletypesfile.isDirty = true;
+        }
+        private void darkButton35_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseMultiple = false,
+                isCategoryitem = true
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    spawnabletypesTypeCargoItem newitem = new spawnabletypesTypeCargoItem()
+                    {
+                        name = l
+                    };
+                    spawnabletypesTypeCargo currentcargo = CurrentspawnabletypesTypetype as spawnabletypesTypeCargo;
+                    currentcargo.item[0] = newitem;
+                    currentspawnabletypesfile.isDirty = true;
+                }
+
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
             }
         }
         #endregion spawnabletypes
@@ -1923,9 +2256,327 @@ namespace DayZeEditor
             FilterFlags = groupBox19.Enabled = checkBox65.Checked;
         }
 
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+
+        #region PlayerSpawnPoints
+        public void LoadPlayerSpawns()
+        {
+            isUserInteraction = false;
+
+            playerspawnpoints = currentproject.cfgplayerspawnpoints.playerspawnpoints;
+
+            min_dist_infectedNUD.Value = (decimal)playerspawnpoints.fresh.spawn_params.min_dist_infected;
+            max_dist_infectedNUD.Value = (decimal)playerspawnpoints.fresh.spawn_params.max_dist_infected;
+            min_dist_playerNUD.Value = (decimal)playerspawnpoints.fresh.spawn_params.min_dist_player;
+            max_dist_playerNUD.Value = (decimal)playerspawnpoints.fresh.spawn_params.max_dist_player;
+            min_dist_staticNUD.Value = (decimal)playerspawnpoints.fresh.spawn_params.min_dist_static;
+            max_dist_staticNUD.Value = (decimal)playerspawnpoints.fresh.spawn_params.max_dist_static;
+
+            grid_densityNUD.Value = (decimal)playerspawnpoints.fresh.generator_params.grid_density;
+            grid_widthNUD.Value = (decimal)playerspawnpoints.fresh.generator_params.grid_width;
+            grid_heightNUD.Value = (decimal)playerspawnpoints.fresh.generator_params.grid_height;
+            GPmin_dist_staticNUD.Value = (decimal)playerspawnpoints.fresh.generator_params.min_dist_static;
+            GPmax_dist_staticNUD.Value = (decimal)playerspawnpoints.fresh.generator_params.max_dist_static;
+            min_steepnessNUD.Value = (decimal)playerspawnpoints.fresh.generator_params.min_steepness;
+            max_steepnessNUD.Value = (decimal)playerspawnpoints.fresh.generator_params.max_steepness;
+            SetPlayerSpawnLists();
+            isUserInteraction = true;
+        }
+
+        private void SetPlayerSpawnLists()
+        {
+            if (playerspawnpoints.fresh != null)
+            {
+                PlayerFGreshSpawnLB.DisplayMember = "DisplayName";
+                PlayerFGreshSpawnLB.ValueMember = "Value";
+                PlayerFGreshSpawnLB.DataSource = playerspawnpoints.fresh.generator_posbubbles;
+            }
+            if (playerspawnpoints.hop != null)
+            {
+                PlayerSpanHopLB.DisplayMember = "DisplayName";
+                PlayerSpanHopLB.ValueMember = "Value";
+                PlayerSpanHopLB.DataSource = playerspawnpoints.hop.generator_posbubbles;
+            }
+            if (playerspawnpoints.travel != null)
+            {
+                PlayerspawntravelLB.DisplayMember = "DisplayName";
+                PlayerspawntravelLB.ValueMember = "Value";
+                PlayerspawntravelLB.DataSource = playerspawnpoints.travel.generator_posbubbles;
+            }
+        }
+
+        private void min_dist_infectedNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            playerspawnpoints.fresh.spawn_params.min_dist_infected = min_dist_infectedNUD.Value;
+            currentproject.cfgplayerspawnpoints.isDirty = true;
+
+        }
+        private void PlayerFGreshSpawnLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (PlayerFGreshSpawnLB.SelectedItems.Count == 0) return;
+            playerspawnpointsFreshPos currentpos = PlayerFGreshSpawnLB.SelectedItem as playerspawnpointsFreshPos;
+            isUserInteraction = false;
+            FreshPosXNUD.Value = (decimal)currentpos.x;
+            FreshPosZNUD.Value = (decimal)currentpos.z;
+            isUserInteraction = true;
+
+            pictureBox2.Invalidate();
+        }
+        private void FreshPosXNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            playerspawnpointsFreshPos currentpos = PlayerFGreshSpawnLB.SelectedItem as playerspawnpointsFreshPos;
+            currentpos.x = (float)FreshPosXNUD.Value;
+            PlayerFGreshSpawnLB.Invalidate();
+            currentproject.cfgplayerspawnpoints.isDirty = true;
+            pictureBox2.Invalidate();
+        }
+        private void FreshPosZNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            playerspawnpointsFreshPos currentpos = PlayerFGreshSpawnLB.SelectedItem as playerspawnpointsFreshPos;
+            currentpos.z = (float)FreshPosZNUD.Value;
+            PlayerFGreshSpawnLB.Invalidate();
+            currentproject.cfgplayerspawnpoints.isDirty = true;
+            pictureBox2.Invalidate();
+        }
+        private void darkButton23_Click(object sender, EventArgs e)
+        {
+            playerspawnpointsFreshPos newpos = new playerspawnpointsFreshPos()
+            {
+                x = currentproject.MapSize / 2,
+                z = currentproject.MapSize /2
+            };
+            playerspawnpoints.fresh.generator_posbubbles.Add(newpos);
+            PlayerFGreshSpawnLB.Invalidate();
+            PlayerFGreshSpawnLB.SelectedIndex = PlayerFGreshSpawnLB.Items.Count - 1;
+            currentproject.cfgplayerspawnpoints.isDirty = true;
+            pictureBox2.Invalidate();
+        }
+        private void darkButton22_Click(object sender, EventArgs e)
+        {
+            if (PlayerFGreshSpawnLB.SelectedItems.Count == 0) return;
+            playerspawnpointsFreshPos currentpos = PlayerFGreshSpawnLB.SelectedItem as playerspawnpointsFreshPos;
+            playerspawnpoints.fresh.generator_posbubbles.Remove(currentpos);
+            PlayerFGreshSpawnLB.Invalidate();
+            currentproject.cfgplayerspawnpoints.isDirty = true;
+            pictureBox2.Invalidate();
+        }
+        private void pictureBox2_DoubleClick(object sender, EventArgs e)
+        {
+            if (e is MouseEventArgs mouseEventArgs)
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                float scalevalue = ZoneScale * 0.05f;
+                float mapsize = currentproject.MapSize;
+                int newsize = (int)(mapsize * scalevalue);
+                switch (tabControl16.SelectedIndex)
+                {
+                    case 0:
+                        FreshPosXNUD.Value = (decimal)(mouseEventArgs.X / scalevalue);
+                        FreshPosZNUD.Value = (decimal)((newsize - mouseEventArgs.Y) / scalevalue);
+                        break;
+                    case 1:
+                        hopPosXNUD.Value = (decimal)(mouseEventArgs.X / scalevalue);
+                        hopPosZNUD.Value = (decimal)((newsize - mouseEventArgs.Y) / scalevalue);
+                        break;
+                    case 2:
+                        travelPosXNUD.Value = (decimal)(mouseEventArgs.X / scalevalue);
+                        travelPosZNUD.Value = (decimal)((newsize - mouseEventArgs.Y) / scalevalue);
+                        break;
+                }
+                Cursor.Current = Cursors.Default;
+                currentproject.cfgplayerspawnpoints.isDirty = true;
+                pictureBox2.Invalidate();
+            }
+        }
+        private void DrawAllPlayerSpawns(object sender, PaintEventArgs e)
+        {
+            switch (tabControl16.SelectedIndex)
+            {
+                case 0:
+                    if (playerspawnpoints.fresh == null) return;
+                    playerspawnpointsFreshPos currentpos = PlayerFGreshSpawnLB.SelectedItem as playerspawnpointsFreshPos;
+                    foreach (playerspawnpointsFreshPos newpos in playerspawnpoints.fresh.generator_posbubbles)
+                    {
+                        float scalevalue = ZoneScale * 0.05f;
+                        int centerX = (int)(Math.Round(newpos.x) * scalevalue);
+                        int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(newpos.z, 0) * scalevalue);
+                        int radius = (int)(Math.Round(1f, 0) * scalevalue);
+                        Point center = new Point(centerX, centerY);
+                        Pen pen = new Pen(Color.Red, 4);
+                        if (newpos == currentpos)
+                            pen.Color = Color.LimeGreen;
+                        getCircle(e.Graphics, pen, center, radius);
+                    }
+                    break;
+                case 1:
+                    if (playerspawnpoints.hop == null) return;
+                    playerspawnpointsHopPos currenthoppos = PlayerSpanHopLB.SelectedItem as playerspawnpointsHopPos;
+                    foreach (playerspawnpointsHopPos newpos in playerspawnpoints.hop.generator_posbubbles)
+                    {
+                        float scalevalue = ZoneScale * 0.05f;
+                        int centerX = (int)(Math.Round(newpos.x) * scalevalue);
+                        int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(newpos.z, 0) * scalevalue);
+                        int radius = (int)(Math.Round(1f, 0) * scalevalue);
+                        Point center = new Point(centerX, centerY);
+                        Pen pen = new Pen(Color.Red, 4);
+                        if (newpos == currenthoppos)
+                            pen.Color = Color.LimeGreen;
+                        getCircle(e.Graphics, pen, center, radius);
+                    }
+                    break;
+                case 2:
+                    if (playerspawnpoints.travel == null) return;
+                    playerspawnpointsTravelPos currenttravelpos = PlayerspawntravelLB.SelectedItem as playerspawnpointsTravelPos;
+                    foreach (playerspawnpointsTravelPos newpos in playerspawnpoints.travel.generator_posbubbles)
+                    {
+                        float scalevalue = ZoneScale * 0.05f;
+                        int centerX = (int)(Math.Round(newpos.x) * scalevalue);
+                        int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(newpos.z, 0) * scalevalue);
+                        int radius = (int)(Math.Round(1f, 0) * scalevalue);
+                        Point center = new Point(centerX, centerY);
+                        Pen pen = new Pen(Color.Red, 4);
+                        if (newpos == currenttravelpos)
+                            pen.Color = Color.LimeGreen;
+                        getCircle(e.Graphics, pen, center, radius);
+                    }
+                    break;
+            }
+            
+        }
+        private void SetSpawnScale()
+        {
+            float scalevalue = ZoneScale * 0.05f;
+            float mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            pictureBox2.Size = new Size(newsize, newsize);
+        }
+        private void getCircle(Graphics drawingArea, Pen penToUse, Point center, int radius)
+        {
+            Rectangle rect = new Rectangle(center.X - 1, center.Y - 1, 2, 2);
+            drawingArea.DrawEllipse(penToUse, rect);
+            Rectangle rect2 = new Rectangle(center.X - radius, center.Y - radius, radius * 2, radius * 2);
+            drawingArea.DrawEllipse(penToUse, rect2);
+        }
+        private void trackBar4_MouseUp(object sender, MouseEventArgs e)
+        {
+            ZoneScale = trackBar4.Value;
+            SetSpawnScale();
+        }
+        private void min_dist_playerNUD_ValueChanged(object sender, EventArgs e)
         {
 
         }
+        private void min_dist_staticNUD_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void max_dist_infectedNUD_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void max_dist_playerNUD_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void max_dist_staticNUD_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void grid_densityNUD_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void grid_widthNUD_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void GPmin_dist_staticNUD_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void min_steepnessNUD_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void grid_heightNUD_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void GPmax_dist_staticNUD_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void max_steepnessNUD_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void tabControl16_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            pictureBox2.Invalidate();
+        }
+        private void hopPosXNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            playerspawnpointsHopPos currentpos = PlayerSpanHopLB.SelectedItem as playerspawnpointsHopPos;
+            currentpos.x = (float)hopPosXNUD.Value;
+            PlayerSpanHopLB.Invalidate();
+            currentproject.cfgplayerspawnpoints.isDirty = true;
+            pictureBox2.Invalidate();
+        }
+        private void hopPosZNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            playerspawnpointsHopPos currentpos = PlayerSpanHopLB.SelectedItem as playerspawnpointsHopPos;
+            currentpos.z = (float)hopPosZNUD.Value;
+            PlayerSpanHopLB.Invalidate();
+            currentproject.cfgplayerspawnpoints.isDirty = true;
+            pictureBox2.Invalidate();
+        }
+        private void darkButton25_Click(object sender, EventArgs e)
+        {
+            playerspawnpointsHopPos newpos = new playerspawnpointsHopPos()
+            {
+                x = currentproject.MapSize / 2,
+                z = currentproject.MapSize / 2
+            };
+            if(playerspawnpoints.hop == null)
+            {
+                playerspawnpoints.hop = new playerspawnpointsHop()
+                {
+                    generator_posbubbles = new BindingList<playerspawnpointsHopPos>()
+                };
+            }
+            playerspawnpoints.hop.generator_posbubbles.Add(newpos);
+            PlayerSpanHopLB.Invalidate();
+            PlayerSpanHopLB.SelectedIndex = PlayerSpanHopLB.Items.Count - 1;
+            currentproject.cfgplayerspawnpoints.isDirty = true;
+            pictureBox2.Invalidate();
+        }
+        private void darkButton24_Click(object sender, EventArgs e)
+        {
+            if (PlayerSpanHopLB.SelectedItems.Count == 0) return;
+            playerspawnpointsHopPos currentpos = PlayerSpanHopLB.SelectedItem as playerspawnpointsHopPos;
+            playerspawnpoints.hop.generator_posbubbles.Remove(currentpos);
+            PlayerSpanHopLB.Invalidate();
+            currentproject.cfgplayerspawnpoints.isDirty = true;
+            pictureBox2.Invalidate();
+        }
+        private void PlayerSpanHopLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (PlayerSpanHopLB.SelectedItems.Count == 0) return;
+            playerspawnpointsHopPos currentpos = PlayerSpanHopLB.SelectedItem as playerspawnpointsHopPos;
+            isUserInteraction = false;
+            hopPosXNUD.Value = (decimal)currentpos.x;
+            hopPosZNUD.Value = (decimal)currentpos.z;
+            isUserInteraction = true;
+            pictureBox2.Invalidate();
+        }
+
+
+        #endregion PlayerSpawnPoints
+
+
     }
 }

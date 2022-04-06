@@ -197,10 +197,6 @@ namespace DayZeLib
                 }
                 else
                 {
-                    if(item.Key == "CarBattery")
-                    {
-                        string stop = "";
-                    }
                     string catname = marketCats.GetCatNameFromItemName(item.Key);
                     TradersItem ti = new TradersItem() { ClassName = item.Key.ToLower(), buysell = (canBuyCansell)item.Value, CatName = catname };
                     initialList.Add(ti);
