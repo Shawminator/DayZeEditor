@@ -91,9 +91,10 @@ namespace DayZeEditor
         public BindingList<eventscofig> ModEventsList { get; set; }
         [JsonIgnore]
         public globalsconfig gloabsconfig { get; set; }
-
         [JsonIgnore]
         public BindingList<Spawnabletypesconfig> spawnabletypesList { get; set; }
+        [JsonIgnore]
+        public cfgrandompresetsconfig cfgrandompresetsconfig { get; set; }
 
         [JsonIgnore]
         public int TotalNomCount { get; set; }
@@ -201,6 +202,10 @@ namespace DayZeEditor
                 }
             }
         }
+        internal void SetRandompresets()
+        {
+            cfgrandompresetsconfig = new cfgrandompresetsconfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgrandompresets.xml");
+        }
 
         internal void setuserdefinitions()
         {
@@ -252,6 +257,23 @@ namespace DayZeEditor
                     }
                 }
             }
+        }
+
+        internal string getcorrectclassamefromtypes(string className)
+        {
+            type vantype = vanillaTypes.types.type.FirstOrDefault(x => x.name.ToLower() == className);
+            if (vantype != null)
+                return vantype.name;
+            else
+            {
+                foreach(TypesFile tfile in ModTypesList)
+                {
+                    type modvantype = tfile.types.type.FirstOrDefault(x => x.name.ToLower() == className);
+                    if (modvantype != null)
+                        return modvantype.name;
+                }
+            }
+            return "";
         }
     }
 

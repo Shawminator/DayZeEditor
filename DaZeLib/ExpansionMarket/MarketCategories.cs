@@ -23,15 +23,18 @@ namespace DayZeLib
 
             CatList = new BindingList<Categories>();
         }
-        public MarketCategories(string Path)
+        public MarketCategories(string Path, bool createfolder = true)
         {
             MarketCatsPath = Path;
             CatList = new BindingList<Categories>();
-            if (!Directory.Exists(Path))
-                Directory.CreateDirectory(Path);
+            if (createfolder)
+            {
+                if (!Directory.Exists(Path))
+                    Directory.CreateDirectory(Path);
+            }
             DirectoryInfo dinfo = new DirectoryInfo(Path);
             FileInfo[] Files = dinfo.GetFiles("*.json");
-            Console.WriteLine("Getting Trader Zones....");
+            Console.WriteLine("Getting MarketCategories");
             Console.WriteLine(Files.Length.ToString() + " Found");
             foreach (FileInfo file in Files)
             {

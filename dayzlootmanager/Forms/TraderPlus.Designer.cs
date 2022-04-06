@@ -347,6 +347,7 @@ namespace DayZeEditor
             this.VehiclePartPartsLB = new System.Windows.Forms.ListBox();
             this.VehiclePartLB = new System.Windows.Forms.ListBox();
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.darkToolStrip21.SuspendLayout();
             this.darkToolStrip22.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -513,10 +514,11 @@ namespace DayZeEditor
             // 
             this.toolStripMenuItem3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.toolStripMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem6,
             this.toolStripMenuItem4});
             this.toolStripMenuItem3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(169, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem3.Text = "All";
             // 
             // toolStripMenuItem4
@@ -536,7 +538,7 @@ namespace DayZeEditor
             this.setCooefToMinPercentageOfBuyPriceToolStripMenuItem});
             this.categoriesToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.categoriesToolStripMenuItem.Name = "categoriesToolStripMenuItem";
-            this.categoriesToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.categoriesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.categoriesToolStripMenuItem.Text = "Selected Category";
             this.categoriesToolStripMenuItem.Visible = false;
             // 
@@ -4516,6 +4518,15 @@ namespace DayZeEditor
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "tabPage8";
             // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripMenuItem6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(230, 22);
+            this.toolStripMenuItem6.Text = "Import from expnsion Market";
+            this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
+            // 
             // TraderPlus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4948,5 +4959,6 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox IsReceiptSaveCargoCB;
         private System.Windows.Forms.CheckBox IsReceiptSaveAttachmentCB;
         private System.Windows.Forms.CheckBox BankingLogsCB;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
     }
 }

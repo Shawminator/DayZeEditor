@@ -410,10 +410,16 @@ namespace DayZeEditor
             StringBuilder sb = new StringBuilder();
             foreach (marketItem item in currentCat.Items)
             {
-                sb.Append(item.ClassName + "," + item.MinPriceThreshold.ToString() + Environment.NewLine);
-
+                sb.Append(item.ClassName + "," + item.MaxPriceThreshold.ToString() + Environment.NewLine);
+                if(item.Variants != null && item.Variants.Count > 0)
+                {
+                    foreach(string itemv in item.Variants)
+                    {
+                        sb.Append(itemv + "," + item.MaxPriceThreshold.ToString() + Environment.NewLine);
+                    }
+                }
             }
-            File.WriteAllText(currentCat.DisplayName + " Itemlist", sb.ToString());
+            File.WriteAllText("itemexport.txt", sb.ToString());
         }
         private void setPriceForItemsWithZeroToolStripMenuItem_Click(object sender, EventArgs e)
         {

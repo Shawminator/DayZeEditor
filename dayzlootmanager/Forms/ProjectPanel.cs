@@ -362,6 +362,8 @@ namespace DayZeEditor
             projects.getActiveProject().setuserdefinitions();
             projects.getActiveProject().setplayerspawns();
             projects.getActiveProject().SetEvents();
+            projects.getActiveProject().SetRandompresets();
+            projects.getActiveProject().SetSpawnabletypes();
             projects.getActiveProject().SetGlobals();
             projects.getActiveProject().setVanillaTypes();
             projects.getActiveProject().SetModListtypes();

@@ -35,6 +35,8 @@ namespace DayZeEditor
         private List<TreeNode> searchtreeNodes;
         private List<type> foundparts;
         public playerspawnpoints playerspawnpoints;
+        public BindingList<randompresetsAttachments> cargoAttachments = new BindingList<randompresetsAttachments>();
+        public BindingList<randompresetsCargo> cargoItems = new BindingList<randompresetsCargo>();
 
         public Economy_Manager()
         {
@@ -82,6 +84,21 @@ namespace DayZeEditor
             comboBox7.DataSource = currentproject.limitfefinitions.lists.usageflags.usage;
             comboBox6.DataSource = currentproject.limitfefinitions.lists.tags.tag;
 
+            
+
+            foreach (var item in currentproject.cfgrandompresetsconfig.randompresets.Items)
+            {
+                if ( item is randompresetsAttachments)
+                {
+                    cargoAttachments.Add(item as randompresetsAttachments);
+                }
+                else if (item is randompresetsCargo)
+                {
+                    cargoItems.Add(item as randompresetsCargo);
+                }
+            }
+
+            CargoPresetComboBox.DataSource = cargoItems;
 
             PopulateTreeView();
             Loadevents();

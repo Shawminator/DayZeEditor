@@ -1627,37 +1627,37 @@ namespace DayZeEditor
         {
             if (MessageBox.Show("This Will Remove The All reference to this category, Are you sure you want to do this?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                string removeitem = TraderCategoriesLB.GetItemText(TraderCategoriesLB.SelectedItem);
+                    string removeitem = TraderCategoriesLB.GetItemText(TraderCategoriesLB.SelectedItem);
 
-                string message = removeitem + " Category Removed....\nThe Following Items Were Removed from both Trader and Market Categories\n";
-                foreach (ItemProducts item in currentTradercategory.itemProducts)
-                {
-                    message += item.Classname + "\n";
-                }
-                foreach (IDs id in TraderPlusIDsConfig.IDs)
-                {
-                    bool remove = false;
-                    foreach (string cat in id.Categories)
+                    string message = removeitem + " Category Removed....\nThe Following Items Were Removed from both Trader and Market Categories\n";
+                    foreach (ItemProducts item in currentTradercategory.itemProducts)
                     {
-                        if (cat == removeitem)
+                        message += item.Classname + "\n";
+                    }
+                    foreach (IDs id in TraderPlusIDsConfig.IDs)
+                    {
+                        bool remove = false;
+                        foreach (string cat in id.Categories)
                         {
-                            remove = true;
-                            break;
+                            if (cat == removeitem)
+                            {
+                                remove = true;
+                                break;
+                            }
+                        }
+                        if (remove)
+                        {
+                            id.Categories.Remove(removeitem);
+                            TraderPlusIDsConfig.isDirty = true;
                         }
                     }
-                    if (remove)
-                    {
-                        id.Categories.Remove(removeitem);
-                        TraderPlusIDsConfig.isDirty = true;
-                    }
-                }
-                TraderPlusPriceConfig.TraderCategories.Remove(currentTradercategory);
-                TraderPlusPriceConfig.isDirty = true;
-                MessageBox.Show(message, "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                if (TraderCategoriesLB.Items.Count == 0)
-                    TraderCategoriesLB.SelectedIndex = -1;
-                else
-                    TraderCategoriesLB.SelectedIndex = 0;
+                    TraderPlusPriceConfig.TraderCategories.Remove(currentTradercategory);
+                    TraderPlusPriceConfig.isDirty = true;
+                    MessageBox.Show(message, "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    if (TraderCategoriesLB.Items.Count == 0)
+                        TraderCategoriesLB.SelectedIndex = -1;
+                    else
+                        TraderCategoriesLB.SelectedIndex = 0;
             }
         }
         private void darkButton14_Click(object sender, EventArgs e)
@@ -1729,7 +1729,7 @@ namespace DayZeEditor
                         destockCoefficent = 50,
                         UseDestockCoeff = true
                     };
-                    if (!Checkifincat(NewContainer))
+                    if (!Checkifincat(NewContainer, currentTradercategory))
                     {
                         currentTradercategory.AdditemProduct(NewContainer);
                         TraderPlusPriceConfig.isDirty = true;
@@ -1741,9 +1741,9 @@ namespace DayZeEditor
                 }
             }
         }
-        private bool Checkifincat(ItemProducts item)
+        private bool Checkifincat(ItemProducts item, Tradercategory tradercat)
         {
-            if (currentTradercategory.itemProducts.Any(x => x.Classname == item.Classname))
+            if (tradercat.itemProducts.Any(x => x.Classname == item.Classname))
             {
                 return true;
             }
@@ -2473,5 +2473,63 @@ namespace DayZeEditor
         }
 
 
+
+        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openfile = new OpenFileDialog();
+            if(openfile.ShowDialog() == DialogResult.OK)
+            {
+                Categories cat = JsonSerializer.Deserialize<Categories>(File.ReadAllText(openfile.FileName));
+                Tradercategory newcat = new Tradercategory()
+                {
+                    CategoryName = cat.DisplayName,
+                    Products = new BindingList<string>(),
+                    itemProducts = new BindingList<ItemProducts>()
+                };
+                foreach (marketItem item in cat.Items)
+                {
+                    string propperclassname = currentproject.getcorrectclassamefromtypes(item.ClassName);
+                    ItemProducts NewContainer = new ItemProducts
+                    {
+                        Classname = propperclassname,
+                        Coefficient = 100,
+                        MaxStock = -1,
+                        TradeQuantity = -1,
+                        BuyPrice = item.MaxPriceThreshold,
+                        Sellprice = 0,
+                        destockCoefficent = 100,
+                        UseDestockCoeff = false
+                    };
+                    if (!Checkifincat(NewContainer, newcat))
+                    {
+                        newcat.AdditemProduct(NewContainer);
+                    }
+                    if(item.Variants != null && item.Variants.Count > 0)
+                    {
+                        foreach(String itemv in item.Variants)
+                        {
+                            string propperclassnamev = currentproject.getcorrectclassamefromtypes(item.ClassName);
+                            ItemProducts NewContainerv = new ItemProducts
+                            {
+                                Classname = propperclassnamev,
+                                Coefficient = 100,
+                                MaxStock = -1,
+                                TradeQuantity = -1,
+                                BuyPrice = item.MaxPriceThreshold,
+                                Sellprice = 0,
+                                destockCoefficent = 100,
+                                UseDestockCoeff = false
+                            };
+                            if (!Checkifincat(NewContainerv, newcat))
+                            {
+                                newcat.AdditemProduct(NewContainerv);
+                            }
+                        }
+                    }
+                }
+                TraderPlusPriceConfig.TraderCategories.Add(newcat);
+                TraderPlusPriceConfig.isDirty = true;
+            }
+        }
     }
 }

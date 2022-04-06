@@ -419,7 +419,7 @@ namespace DayZeEditor
             this.CarcgoChanceNUD = new System.Windows.Forms.NumericUpDown();
             this.label45 = new System.Windows.Forms.Label();
             this.CargoPresetGB = new System.Windows.Forms.GroupBox();
-            this.comboBox10 = new System.Windows.Forms.ComboBox();
+            this.CargoPresetComboBox = new System.Windows.Forms.ComboBox();
             this.darkButton36 = new DarkUI.Controls.DarkButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -5410,7 +5410,7 @@ namespace DayZeEditor
             // 
             // CargoPresetGB
             // 
-            this.CargoPresetGB.Controls.Add(this.comboBox10);
+            this.CargoPresetGB.Controls.Add(this.CargoPresetComboBox);
             this.CargoPresetGB.Controls.Add(this.darkButton36);
             this.CargoPresetGB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.CargoPresetGB.Location = new System.Drawing.Point(9, 155);
@@ -5420,15 +5420,15 @@ namespace DayZeEditor
             this.CargoPresetGB.TabStop = false;
             this.CargoPresetGB.Text = "Change Cargo Preset";
             // 
-            // comboBox10
+            // CargoPresetComboBox
             // 
-            this.comboBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.comboBox10.ForeColor = System.Drawing.SystemColors.Control;
-            this.comboBox10.FormattingEnabled = true;
-            this.comboBox10.Location = new System.Drawing.Point(10, 25);
-            this.comboBox10.Name = "comboBox10";
-            this.comboBox10.Size = new System.Drawing.Size(202, 21);
-            this.comboBox10.TabIndex = 1;
+            this.CargoPresetComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CargoPresetComboBox.ForeColor = System.Drawing.SystemColors.Control;
+            this.CargoPresetComboBox.FormattingEnabled = true;
+            this.CargoPresetComboBox.Location = new System.Drawing.Point(10, 25);
+            this.CargoPresetComboBox.Name = "CargoPresetComboBox";
+            this.CargoPresetComboBox.Size = new System.Drawing.Size(202, 21);
+            this.CargoPresetComboBox.TabIndex = 1;
             // 
             // darkButton36
             // 
@@ -5995,7 +5995,7 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton darkButton35;
         private System.Windows.Forms.CheckBox CargochanceCB;
         private System.Windows.Forms.GroupBox CargoPresetGB;
-        private System.Windows.Forms.ComboBox comboBox10;
+        private System.Windows.Forms.ComboBox CargoPresetComboBox;
         private DarkUI.Controls.DarkButton darkButton36;
         private System.Windows.Forms.NumericUpDown CarcgoChanceNUD;
         private System.Windows.Forms.Label label45;

@@ -145,6 +145,40 @@ namespace DayZeLib
             return Path.GetFileNameWithoutExtension(Filename);
         }
     }
+    public class cfgrandompresetsconfig
+    {
+        public randompresets randompresets { get; set; }
+        public string Filename { get; set; }
+        public bool isDirty = false;
+
+        public cfgrandompresetsconfig(string filename)
+        {
+            Filename = filename;
+            var mySerializer = new XmlSerializer(typeof(randompresets));
+            StringBuilder sb = new StringBuilder();
+            List<string> filearray = File.ReadAllLines(Filename).ToList();
+            foreach (String line in filearray)
+            {
+                if (line.Contains("<!-- ---"))
+                {
+                    isDirty = true;
+                    continue;
+                }
+                sb.Append(line + Environment.NewLine);
+            }
+            using (Stream ms = Helper.GenerateStreamFromString(sb.ToString()))
+            {
+                try
+                {
+                    randompresets = (randompresets)mySerializer.Deserialize(ms);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message + "\n" + filename + "\n" + ex.InnerException.Message);
+                }
+            }
+        }
+    }
     public class eventscofig
     {
         public events events { get; set; }
@@ -266,4 +300,5 @@ namespace DayZeLib
             return Path.GetFileNameWithoutExtension(Filename);
         }
     }
+
 }
