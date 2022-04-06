@@ -273,7 +273,7 @@ namespace DayZeEditor
                         return modvantype.name;
                 }
             }
-            return "";
+            return "*** MISSING ITEM TYPE ***";
         }
     }
 
