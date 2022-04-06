@@ -2477,58 +2477,104 @@ namespace DayZeEditor
         private void toolStripMenuItem6_Click(object sender, EventArgs e)
         {
             OpenFileDialog openfile = new OpenFileDialog();
+            openfile.Multiselect = true;
             if(openfile.ShowDialog() == DialogResult.OK)
             {
-                Categories cat = JsonSerializer.Deserialize<Categories>(File.ReadAllText(openfile.FileName));
-                Tradercategory newcat = new Tradercategory()
+                foreach (String file in openfile.FileNames)
                 {
-                    CategoryName = cat.DisplayName,
-                    Products = new BindingList<string>(),
-                    itemProducts = new BindingList<ItemProducts>()
-                };
-                foreach (marketItem item in cat.Items)
-                {
-                    string propperclassname = currentproject.getcorrectclassamefromtypes(item.ClassName);
-                    ItemProducts NewContainer = new ItemProducts
+                    Categories cat = JsonSerializer.Deserialize<Categories>(File.ReadAllText(file));
+                    Tradercategory newcat = new Tradercategory()
                     {
-                        Classname = propperclassname,
-                        Coefficient = 100,
-                        MaxStock = -1,
-                        TradeQuantity = -1,
-                        BuyPrice = item.MaxPriceThreshold,
-                        Sellprice = 0,
-                        destockCoefficent = 100,
-                        UseDestockCoeff = false
+                        CategoryName = cat.DisplayName,
+                        Products = new BindingList<string>(),
+                        itemProducts = new BindingList<ItemProducts>()
                     };
-                    if (!Checkifincat(NewContainer, newcat))
+                    foreach (marketItem item in cat.Items)
                     {
-                        newcat.AdditemProduct(NewContainer);
-                    }
-                    if(item.Variants != null && item.Variants.Count > 0)
-                    {
-                        foreach(String itemv in item.Variants)
+                        string propperclassname = currentproject.getcorrectclassamefromtypes(item.ClassName);
+                        ItemProducts NewContainer = new ItemProducts
                         {
-                            string propperclassnamev = currentproject.getcorrectclassamefromtypes(item.ClassName);
-                            ItemProducts NewContainerv = new ItemProducts
+                            Classname = propperclassname,
+                            Coefficient = 100,
+                            MaxStock = -1,
+                            TradeQuantity = -1,
+                            BuyPrice = item.MaxPriceThreshold,
+                            Sellprice = 0,
+                            destockCoefficent = 100,
+                            UseDestockCoeff = false
+                        };
+                        if (!Checkifincat(NewContainer, newcat))
+                        {
+                            newcat.AdditemProduct(NewContainer);
+                        }
+                        if (item.Variants != null && item.Variants.Count > 0)
+                        {
+                            foreach (String itemv in item.Variants)
                             {
-                                Classname = propperclassnamev,
-                                Coefficient = 100,
-                                MaxStock = -1,
-                                TradeQuantity = -1,
-                                BuyPrice = item.MaxPriceThreshold,
-                                Sellprice = 0,
-                                destockCoefficent = 100,
-                                UseDestockCoeff = false
-                            };
-                            if (!Checkifincat(NewContainerv, newcat))
-                            {
-                                newcat.AdditemProduct(NewContainerv);
+                                string propperclassnamev = currentproject.getcorrectclassamefromtypes(itemv);
+                                ItemProducts NewContainerv = new ItemProducts
+                                {
+                                    Classname = propperclassnamev,
+                                    Coefficient = 100,
+                                    MaxStock = -1,
+                                    TradeQuantity = -1,
+                                    BuyPrice = item.MaxPriceThreshold,
+                                    Sellprice = 0,
+                                    destockCoefficent = 100,
+                                    UseDestockCoeff = false
+                                };
+                                if (!Checkifincat(NewContainerv, newcat))
+                                {
+                                    newcat.AdditemProduct(NewContainerv);
+                                }
                             }
                         }
                     }
+                    if (!Checkifincatlist(newcat))
+                    {
+                        TraderPlusPriceConfig.TraderCategories.Add(newcat);
+                        TraderPlusPriceConfig.isDirty = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("You have done this allready, Dummy!!!!\nExpansion json - " + Path.GetFileNameWithoutExtension(file));
+                    }
                 }
-                TraderPlusPriceConfig.TraderCategories.Add(newcat);
-                TraderPlusPriceConfig.isDirty = true;
+            }
+        }
+
+        private bool Checkifincatlist(Tradercategory tradercat)
+        {
+            if (TraderPlusPriceConfig.TraderCategories.Any(x => x.CategoryName == tradercat.CategoryName))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            TraderPlusPriceConfig.TraderCategories = new BindingList<Tradercategory>();
+            TraderPlusPriceConfig.isDirty = true;
+            CurrentTraderCatLB.DataSource = null;
+            SetupTraderPlusPriceConfig();
+        }
+
+        private void toolStripMenuItem7_Click(object sender, EventArgs e)
+        {
+            foreach(ItemProducts item in currentTradercategory.itemProducts)
+            {
+                if(item.Classname.StartsWith("*** MISSING ITEM TYPE ("))
+                {
+                    string oldclassname = item.Classname.Replace("*** MISSING ITEM TYPE (", "");
+                    oldclassname = oldclassname.Replace(")***", "");
+                    string propperclassname = currentproject.getcorrectclassamefromtypes(oldclassname);
+                    if(propperclassname != item.Classname)
+                    {
+                        item.Classname = propperclassname;
+                        TraderPlusPriceConfig.isDirty = true;
+                    }
+                }
             }
         }
     }

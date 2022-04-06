@@ -261,19 +261,19 @@ namespace DayZeEditor
 
         internal string getcorrectclassamefromtypes(string className)
         {
-            type vantype = vanillaTypes.types.type.FirstOrDefault(x => x.name.ToLower() == className);
+            type vantype = vanillaTypes.types.type.FirstOrDefault(x => x.name.ToLower() == className.ToLower());
             if (vantype != null)
                 return vantype.name;
             else
             {
                 foreach(TypesFile tfile in ModTypesList)
                 {
-                    type modvantype = tfile.types.type.FirstOrDefault(x => x.name.ToLower() == className);
+                    type modvantype = tfile.types.type.FirstOrDefault(x => x.name.ToLower() == className.ToLower());
                     if (modvantype != null)
                         return modvantype.name;
                 }
             }
-            return "*** MISSING ITEM TYPE ***";
+            return "*** MISSING ITEM TYPE (" + className + ")***";
         }
     }
 

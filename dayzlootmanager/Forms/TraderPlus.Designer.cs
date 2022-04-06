@@ -348,7 +348,8 @@ namespace DayZeEditor
             this.VehiclePartLB = new System.Windows.Forms.ListBox();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.darkToolStrip21.SuspendLayout();
             this.darkToolStrip22.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -517,7 +518,8 @@ namespace DayZeEditor
             this.toolStripMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem6,
             this.toolStripMenuItem4,
-            this.deleteAllToolStripMenuItem});
+            this.toolStripMenuItem7,
+            this.toolStripMenuItem5});
             this.toolStripMenuItem3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
@@ -4529,13 +4531,23 @@ namespace DayZeEditor
             this.toolStripMenuItem6.Text = "Import from expnsion Market";
             this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
             // 
-            // deleteAllToolStripMenuItem
+            // toolStripMenuItem5
             // 
-            this.deleteAllToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.deleteAllToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.deleteAllToolStripMenuItem.Name = "deleteAllToolStripMenuItem";
-            this.deleteAllToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
-            this.deleteAllToolStripMenuItem.Text = "delete all ";
+            this.toolStripMenuItem5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripMenuItem5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(230, 22);
+            this.toolStripMenuItem5.Text = "Remove All Categories";
+            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripMenuItem7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(230, 22);
+            this.toolStripMenuItem7.Text = "Check Missing Items";
+            this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItem7_Click);
             // 
             // TraderPlus
             // 
@@ -4970,6 +4982,7 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox IsReceiptSaveAttachmentCB;
         private System.Windows.Forms.CheckBox BankingLogsCB;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
-        private System.Windows.Forms.ToolStripMenuItem deleteAllToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
     }
 }
