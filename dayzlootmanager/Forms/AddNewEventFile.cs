@@ -33,7 +33,6 @@ namespace DayZeEditor
         }
         private void AddNewTypes_Load(object sender, EventArgs e)
         {
-
             if (!newlocation)
             {
                 darkButton1.Visible = false;
@@ -61,9 +60,22 @@ namespace DayZeEditor
         {
             TypesName = textBox3.Text;
         }
-
         private void darkButton2_Click(object sender, EventArgs e)
         {
         }
+
+        public string SetTitle
+        {
+            set { TitleLabel.Text = value; }
+        }
+        public string settype
+        {
+            set { darkLabel7.Text = value; }
+        }
+        public string setbuttontest
+        {
+            set { darkButton2.Text = value; }
+        }
+
     }
 }

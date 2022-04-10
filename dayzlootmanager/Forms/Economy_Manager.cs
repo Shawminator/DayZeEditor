@@ -6,12 +6,15 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Encodings.Web;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Xml.Xsl;
+using Cyotek.Windows.Forms;
 using DarkUI.Forms;
 using DayZeLib;
 
@@ -38,6 +41,7 @@ namespace DayZeEditor
         public BindingList<randompresetsAttachments> cargoAttachments = new BindingList<randompresetsAttachments>();
         public BindingList<randompresetsCargo> cargoItems = new BindingList<randompresetsCargo>();
 
+        #region formsstuff
         public Economy_Manager()
         {
             InitializeComponent();
@@ -47,11 +51,11 @@ namespace DayZeEditor
 
         }
 
-
         private void listBox_DrawItem(object sender, DrawItemEventArgs e)
         {
             ListBox lb = sender as ListBox;
             e.DrawBackground();
+            if (lb.Items.Count == 0) return;
             Brush myBrush = Brushes.Black;
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
             {
@@ -83,28 +87,15 @@ namespace DayZeEditor
             comboBox8.DataSource = currentproject.limitfefinitions.lists.categories.category;
             comboBox7.DataSource = currentproject.limitfefinitions.lists.usageflags.usage;
             comboBox6.DataSource = currentproject.limitfefinitions.lists.tags.tag;
-
-            
-
-            foreach (var item in currentproject.cfgrandompresetsconfig.randompresets.Items)
-            {
-                if ( item is randompresetsAttachments)
-                {
-                    cargoAttachments.Add(item as randompresetsAttachments);
-                }
-                else if (item is randompresetsCargo)
-                {
-                    cargoItems.Add(item as randompresetsCargo);
-                }
-            }
-
-            CargoPresetComboBox.DataSource = cargoItems;
+            SetuprandomPresetsForSpawnabletypes();
 
             PopulateTreeView();
             Loadevents();
+            LoadRandomPresets();
             LoadSpawnableTypes();
             populateEconmyTreeview();
             LoadPlayerSpawns();
+            LoadCFGGamelplay();
 
             SetSummarytiers();
             NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
@@ -120,6 +111,25 @@ namespace DayZeEditor
 
             isUserInteraction = true;
         }
+
+        private void SetuprandomPresetsForSpawnabletypes()
+        {
+            foreach (var item in currentproject.cfgrandompresetsconfig.randompresets.Items)
+            {
+                if (item is randompresetsAttachments)
+                {
+                    cargoAttachments.Add(item as randompresetsAttachments);
+                }
+                else if (item is randompresetsCargo)
+                {
+                    cargoItems.Add(item as randompresetsCargo);
+                }
+            }
+
+            CargoPresetComboBox.DataSource = cargoItems;
+            AttachmentPresetComboBox.DataSource = cargoAttachments;
+        }
+
         private void populateEconmyTreeview()
         {
             var serializer = new XmlSerializer(typeof(economycore));
@@ -194,6 +204,15 @@ namespace DayZeEditor
                     }
                 }
             }
+            if (currentproject.cfgrandompresetsconfig != null)
+            {
+                if (currentproject.cfgrandompresetsconfig.isDirty)
+                {
+                    currentproject.cfgrandompresetsconfig.SaveRandomPresets(SaveTime);
+                    currentproject.cfgrandompresetsconfig.isDirty = false;
+                    midifiedfiles.Add(Path.GetFileName(currentproject.cfgrandompresetsconfig.Filename));
+                }
+            }
 
             if (currentproject.cfgplayerspawnpoints != null)
             {
@@ -203,6 +222,17 @@ namespace DayZeEditor
                         currentproject.cfgplayerspawnpoints.isDirty = false;
                         midifiedfiles.Add(Path.GetFileName(currentproject.cfgplayerspawnpoints.Filename));
                     }
+            }
+            if (currentproject.CFGGameplayConfig != null)
+            {
+                if (cfggameplay.isDirty)
+                {
+                    cfggameplay.isDirty = false;
+                    var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                    string jsonString = JsonSerializer.Serialize(cfggameplay, options);
+                    File.WriteAllText(currentproject.CFGGameplayConfig.Filename, jsonString);
+                    midifiedfiles.Add(Path.GetFileName(currentproject.CFGGameplayConfig.Filename) + " Saved....");
+                }
             }
 
             string message = "The Following Files were saved....\n";
@@ -251,18 +281,29 @@ namespace DayZeEditor
             if (tabControl3.SelectedIndex== 3)
                 toolStripButton8.Checked = true;
         }
-
         private void toolStripButton9_Click(object sender, EventArgs e)
         {
             tabControl4.SelectedIndex = 4;
             if (tabControl3.SelectedIndex == 4)
-                toolStripButton8.Checked = true;
+                toolStripButton9.Checked = true;
         }
         private void toolStripButton10_Click(object sender, EventArgs e)
         {
             tabControl4.SelectedIndex = 5;
             if (tabControl3.SelectedIndex == 5)
-                toolStripButton8.Checked = true;
+                toolStripButton10.Checked = true;
+        }
+        private void toolStripButton12_Click(object sender, EventArgs e)
+        {
+            tabControl4.SelectedIndex = 6;
+            if (tabControl3.SelectedIndex == 6)
+                toolStripButton12.Checked = true;
+        }
+        private void toolStripButton11_Click(object sender, EventArgs e)
+        {
+            tabControl4.SelectedIndex = 7;
+            if (tabControl3.SelectedIndex == 7)
+                toolStripButton11.Checked = true;
         }
         private void tabControl4_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -274,6 +315,8 @@ namespace DayZeEditor
                     toolStripButton8.Checked = false;
                     toolStripButton9.Checked = false;
                     toolStripButton10.Checked = false;
+                    toolStripButton11.Checked = false;
+                    toolStripButton12.Checked = false;
                     break;
                 case 1:
                     toolStripButton3.Checked = false;
@@ -281,6 +324,8 @@ namespace DayZeEditor
                     toolStripButton8.Checked = false;
                     toolStripButton9.Checked = false;
                     toolStripButton10.Checked = false;
+                    toolStripButton11.Checked = false;
+                    toolStripButton12.Checked = false;
                     break;
                 case 2:
                     toolStripButton3.Checked = false;
@@ -288,6 +333,8 @@ namespace DayZeEditor
                     toolStripButton8.Checked = false;
                     toolStripButton9.Checked = false;
                     toolStripButton10.Checked = false;
+                    toolStripButton11.Checked = false;
+                    toolStripButton12.Checked = false;
                     break;
                 case 3:
                     toolStripButton3.Checked = false;
@@ -295,6 +342,8 @@ namespace DayZeEditor
                     toolStripButton6.Checked = false;
                     toolStripButton9.Checked = false;
                     toolStripButton10.Checked = false;
+                    toolStripButton11.Checked = false;
+                    toolStripButton12.Checked = false;
                     break;
                 case 4:
                     toolStripButton3.Checked = false;
@@ -302,19 +351,42 @@ namespace DayZeEditor
                     toolStripButton6.Checked = false;
                     toolStripButton8.Checked = false;
                     toolStripButton10.Checked = false;
+                    toolStripButton11.Checked = false;
+                    toolStripButton12.Checked = false;
                     break;
                 case 5:
                     toolStripButton3.Checked = false;
+                    toolStripButton5.Checked = false;
                     toolStripButton6.Checked = false;
                     toolStripButton8.Checked = false;
                     toolStripButton9.Checked = false;
-                    toolStripButton5.Checked = false;
+                    toolStripButton11.Checked = false;
+                    toolStripButton12.Checked = false;
                     pictureBox2.Invalidate();
+                    break;
+                case 6:
+                    toolStripButton3.Checked = false;
+                    toolStripButton5.Checked = false;
+                    toolStripButton6.Checked = false;
+                    toolStripButton8.Checked = false;
+                    toolStripButton9.Checked = false;
+                    toolStripButton10.Checked = false;
+                    toolStripButton12.Checked = false;
+                    break;
+                case 7:
+                    toolStripButton3.Checked = false;
+                    toolStripButton5.Checked = false;
+                    toolStripButton6.Checked = false;
+                    toolStripButton8.Checked = false;
+                    toolStripButton9.Checked = false;
+                    toolStripButton10.Checked = false;
+                    toolStripButton11.Checked = false;
                     break;
                 default:
                     break;
             }
         }
+        #endregion formsstuff
         #region Types
         public void SetSummarytiers()
         {
@@ -1725,7 +1797,6 @@ namespace DayZeEditor
             populateEconmyTreeview();
         }
         #endregion events
-
         #region spawnabletypes
         public Spawnabletypesconfig currentspawnabletypesfile;
         public spawnabletypesType CurrentspawnabletypesType;
@@ -1744,8 +1815,20 @@ namespace DayZeEditor
             if (SpawnabletypeslistLB.SelectedIndex == -1) { return; }
             currentspawnabletypesfile = SpawnabletypeslistLB.SelectedItem as Spawnabletypesconfig;
             isUserInteraction = false;
+            SetDamange();
+
+            SpawnabletpesLB.DisplayMember = "DisplayName";
+            SpawnabletpesLB.ValueMember = "Value";
+            SpawnabletpesLB.DataSource = currentspawnabletypesfile.spawnabletypes.type;
+            isUserInteraction = true;
+        }
+        private void SetDamange()
+        {
             if (currentspawnabletypesfile.spawnabletypes.damage != null)
             {
+                label24.Visible = true;
+                label25.Visible = true;
+                HasDamageCB.Checked = true;
                 DamageMinNUD.Value = currentspawnabletypesfile.spawnabletypes.damage.min;
                 DamageMaxNUD.Value = currentspawnabletypesfile.spawnabletypes.damage.max;
                 DamageMinNUD.Visible = true;
@@ -1753,14 +1836,12 @@ namespace DayZeEditor
             }
             else
             {
+                label25.Visible = false;
+                label24.Visible = false;
+                HasDamageCB.Checked = false;
                 DamageMinNUD.Visible = false;
                 DamageMaxNUD.Visible = false;
             }
-
-            SpawnabletpesLB.DisplayMember = "DisplayName";
-            SpawnabletpesLB.ValueMember = "Value";
-            SpawnabletpesLB.DataSource = currentspawnabletypesfile.spawnabletypes.type;
-            isUserInteraction = true;
         }
         private void SpawnabletpesLB_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1784,59 +1865,174 @@ namespace DayZeEditor
         {
             //if (listBox6.SelectedItem as object == CurrentspawnabletypesTypetype) { return; }
             if (listBox6.SelectedIndex == -1) { return; }
+            isUserInteraction = false;
             CurrentspawnabletypesTypetype = listBox6.SelectedItem as object;
             ClearInfo();
             if (CurrentspawnabletypesTypetype is spawnabletypesTypeHoarder)
             {
-                HoarderCB.Checked = true;
+                
             }
             else if (CurrentspawnabletypesTypetype is spawnabletypesTypeTag)
             {
                 spawnabletypesTypeTag currenttag = CurrentspawnabletypesTypetype as spawnabletypesTypeTag;
                 Spaenabletypestagbox.Visible = true;
-                checkBox51.Checked = true;
                 textBox2.Text = currenttag.name;
             }
             else if (CurrentspawnabletypesTypetype is spawnabletypesTypeCargo)
             {
                 CargoGB.Visible = true;
-                checkBox49.Checked = true;
                 spawnabletypesTypeCargo currentcargo = CurrentspawnabletypesTypetype as spawnabletypesTypeCargo;
-                CargochanceCB.Checked = currentcargo.chanceSpecified;
-                if (currentcargo.chanceSpecified)
-                {
-                    CargoChanceGB.Visible = true;
-                    CargoPresetGB.Visible = false;
-                    CarcgoChanceNUD.Value = currentcargo.chance;
-                    textBox3.Text = currentcargo.item[0].name;
-                }
-                else
-                {
-                    CargoChanceGB.Visible = false;
-                    CargoPresetGB.Visible = true;
-                    textBox3.Text = currentcargo.preset;
-                }
-
-
-                
+                CargochanceCB.Checked = !currentcargo.chanceSpecified;
+                SetCargo();
             }
             else if (CurrentspawnabletypesTypetype is spawnabletypesTypeAttachments)
             {
-                checkBox50.Checked = true;
+
+                AttachmentGB.Visible = true;
+                spawnabletypesTypeAttachments currentAttchment = CurrentspawnabletypesTypetype as spawnabletypesTypeAttachments;
+                AttchmentIsPresetCB.Checked = !currentAttchment.chanceSpecified;
+                setattchments();
+            }
+            isUserInteraction = true;
+        }
+        private void CargochanceCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isUserInteraction)
+            {
+                spawnabletypesTypeCargo currentcargo = CurrentspawnabletypesTypetype as spawnabletypesTypeCargo;
+                currentcargo.chanceSpecified = !CargochanceCB.Checked;
+                if (currentcargo.chanceSpecified)
+                {
+                    currentcargo.preset = null;
+                    currentcargo.chance = 1;
+                }
+                else
+                {
+                    currentcargo.item = new BindingList<spawnabletypesTypeCargoItem>();
+                    currentcargo.chance = 0;
+                }
+            }
+            SetCargo();
+        }
+        private void AttchmentIsPresetCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isUserInteraction)
+            {
+                spawnabletypesTypeAttachments currentAttchment = CurrentspawnabletypesTypetype as spawnabletypesTypeAttachments;
+                currentAttchment.chanceSpecified = !AttchmentIsPresetCB.Checked;
+                if (currentAttchment.chanceSpecified)
+                {
+                    currentAttchment.preset = null;
+                    currentAttchment.chance = 1;
+                    AttachemntTB.Text = "";
+                    currentAttchment.item = new BindingList<spawnabletypesTypeAttachmentsItem>();
+                }
+                else
+                {
+                    currentAttchment.item = new BindingList<spawnabletypesTypeAttachmentsItem>();
+                    currentAttchment.chance = 0;
+                    AttachemntTB.Text = "";
+                }
+            }
+            setattchments();
+        }
+        private void setattchments()
+        {
+            spawnabletypesTypeAttachments currentAttchment = CurrentspawnabletypesTypetype as spawnabletypesTypeAttachments;
+            if (currentAttchment.chanceSpecified)
+            {
+                AttachmentItemLB.Visible = true;
+                CargoAttachmentRemoveButton.Visible = true;
+                cargoattachemntAddButton.Visible = true;
+                chancAttachmentselabel.Visible = true;
+                AttachmentChangeItemButton.Visible = true;
+                AttachmentPresetGB.Visible = false;
+                ItemAttachmentchanceNUD.Visible = true;
+                AttachmemtItemChanceLabel.Visible = true;
+                AttachmentchanceNUD.Visible = true;
+                AttachmentchanceNUD.Value = currentAttchment.chance;
+                AttachmentItemLB.DisplayMember = "DisplayName";
+                AttachmentItemLB.ValueMember = "Value";
+                AttachmentItemLB.DataSource = currentAttchment.item;
+            }
+            else
+            {
+                AttachmentItemLB.Visible = false;
+                CargoAttachmentRemoveButton.Visible = false;
+                cargoattachemntAddButton.Visible = false;
+                chancAttachmentselabel.Visible = false;
+                AttachmentchanceNUD.Visible = false;
+                ItemAttachmentchanceNUD.Visible = false;
+                AttachmemtItemChanceLabel.Visible = false;
+                AttachmentChangeItemButton.Visible = false;
+                AttachmentPresetGB.Visible = true;
+                if (currentAttchment.preset != null)
+                    AttachemntTB.Text = currentAttchment.preset;
+                else
+                    AttachemntTB.Text = "";
             }
         }
-
+        private void SetCargo()
+        {
+            spawnabletypesTypeCargo currentcargo = CurrentspawnabletypesTypetype as spawnabletypesTypeCargo;
+            if (currentcargo.chanceSpecified)
+            {
+                cargoItemRemoveButton.Visible = true;
+                CargoItemAddButton.Visible = true;
+                CargoPresetTB.Visible = false;
+                CargoItemchanceNUD.Visible = true;
+                CargoItemchancelabel.Visible = true;
+                CargoItemLB.Visible = true;
+                cargochanceLabel.Visible = true;
+                CargoChangeItemButton.Visible = true;
+                CargoPresetGB.Visible = false;
+                CarcgoChanceNUD.Visible = true;
+                CarcgoChanceNUD.Value = currentcargo.chance;
+                CargoItemLB.DisplayMember = "DisplayName";
+                CargoItemLB.ValueMember = "Value";
+                CargoItemLB.DataSource = currentcargo.item;
+            }
+            else
+            {
+                cargoItemRemoveButton.Visible = false;
+                CargoItemAddButton.Visible = false;
+                CargoPresetTB.Visible = true;
+                CargoItemchanceNUD.Visible = false;
+                CargoItemchancelabel.Visible = false;
+                CargoItemLB.Visible = false;
+                CarcgoChanceNUD.Visible = false;
+                cargochanceLabel.Visible = false;
+                CargoChangeItemButton.Visible = false;
+                CargoPresetGB.Visible = true;
+                if(currentcargo.preset != null)
+                    CargoPresetTB.Text = currentcargo.preset;
+                else
+                    CargoPresetTB.Text = "";
+            }
+        }
+        private void darkButton36_Click(object sender, EventArgs e)
+        {
+            randompresetsCargo newcargopreset = CargoPresetComboBox.SelectedItem as randompresetsCargo;
+            spawnabletypesTypeCargo currentcargo = CurrentspawnabletypesTypetype as spawnabletypesTypeCargo;
+            currentcargo.preset = newcargopreset.name;
+            SetCargo();
+            currentspawnabletypesfile.isDirty = true;
+        }
+        private void darkButton37_Click(object sender, EventArgs e)
+        {
+            randompresetsAttachments newattachmentpreset = AttachmentPresetComboBox.SelectedItem as randompresetsAttachments;
+            spawnabletypesTypeAttachments currentattchemnt = CurrentspawnabletypesTypetype as spawnabletypesTypeAttachments;
+            currentattchemnt.preset = newattachmentpreset.name;
+            setattchments();
+            currentspawnabletypesfile.isDirty = true;
+        }
         private void ClearInfo()
         {
-            HoarderCB.Checked = false;
-            checkBox49.Checked = false;
-            checkBox50.Checked = false;
-            checkBox51.Checked = false;
-            textBox2.Text = null;
+             textBox2.Text = null;
             Spaenabletypestagbox.Visible = false;
+            AttachmentGB.Visible = false;
             CargoGB.Visible = false;
         }
-
         private void darkButton34_Click(object sender, EventArgs e)
         {
             if (listBox6.SelectedItems == null) { return; }
@@ -1853,7 +2049,13 @@ namespace DayZeEditor
         {
             if (SpawnabletpesLB.SelectedItem == null) { return; }
             spawnabletypesTypeHoarder newhoarder = new spawnabletypesTypeHoarder();
-            CurrentspawnabletypesType.Items.Insert(0, newhoarder);
+            if (CurrentspawnabletypesType.Items == null)
+            {
+                CurrentspawnabletypesType.Items = new BindingList<object>();
+                CurrentspawnabletypesType.Items.Add(newhoarder);
+            }
+            else
+                CurrentspawnabletypesType.Items.Insert(0, newhoarder);
             listBox6.SelectedIndex = -1;
             listBox6.SelectedIndex = 0;
             currentspawnabletypesfile.isDirty = true;
@@ -1863,18 +2065,41 @@ namespace DayZeEditor
         {
             if (SpawnabletpesLB.SelectedItem == null) { return; }
             spawnabletypesTypeTag newtag = new spawnabletypesTypeTag();
-            CurrentspawnabletypesType.Items.Insert(0, newtag);
+            if (CurrentspawnabletypesType.Items == null)
+            {
+                CurrentspawnabletypesType.Items = new BindingList<object>();
+                CurrentspawnabletypesType.Items.Add(newtag);
+            }
+            else
+                CurrentspawnabletypesType.Items.Insert(0, newtag);
             listBox6.SelectedIndex = -1;
             listBox6.SelectedIndex = 0;
             currentspawnabletypesfile.isDirty = true;
         }
         private void darkButton32_Click(object sender, EventArgs e)
         {
-
+            if (SpawnabletpesLB.SelectedItem == null) { return; }
+            spawnabletypesTypeCargo newcargo = new spawnabletypesTypeCargo()
+            {
+                item = new BindingList<spawnabletypesTypeCargoItem>()
+            };
+            if (CurrentspawnabletypesType.Items == null)
+                CurrentspawnabletypesType.Items = new BindingList<object>();
+            CurrentspawnabletypesType.Items.Add(newcargo);
+            listBox6.SelectedIndex = -1;
+            listBox6.SelectedIndex = 0;
+            currentspawnabletypesfile.isDirty = true;
         }
         private void darkButton33_Click(object sender, EventArgs e)
         {
-
+            if (SpawnabletpesLB.SelectedItem == null) { return; }
+            spawnabletypesTypeAttachments newspawnabletypesTypeAttachments = new spawnabletypesTypeAttachments();
+            if (CurrentspawnabletypesType.Items == null)
+                CurrentspawnabletypesType.Items = new BindingList<object>();
+            CurrentspawnabletypesType.Items.Add(newspawnabletypesTypeAttachments);
+            listBox6.SelectedIndex = -1;
+            listBox6.SelectedIndex = 0;
+            currentspawnabletypesfile.isDirty = true;
         }
         private void darkButton29_Click(object sender, EventArgs e)
         {
@@ -1883,6 +2108,35 @@ namespace DayZeEditor
             currenttag.name = t.name;
             textBox2.Text = currenttag.name;
             currentspawnabletypesfile.isDirty = true;
+        }
+        private void darkButton38_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseMultiple = false,
+                isCategoryitem = true
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    spawnabletypesTypeAttachmentsItem currentcargoitem = AttachmentItemLB.SelectedItem as spawnabletypesTypeAttachmentsItem;
+                    currentcargoitem.name = l;
+                    AttachmentItemLB.Refresh();
+                    currentspawnabletypesfile.isDirty = true;
+                    setattchments();
+                }
+
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
         }
         private void darkButton35_Click(object sender, EventArgs e)
         {
@@ -1900,13 +2154,11 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    spawnabletypesTypeCargoItem newitem = new spawnabletypesTypeCargoItem()
-                    {
-                        name = l
-                    };
-                    spawnabletypesTypeCargo currentcargo = CurrentspawnabletypesTypetype as spawnabletypesTypeCargo;
-                    currentcargo.item[0] = newitem;
+                    spawnabletypesTypeCargoItem currentcargoitem = CargoItemLB.SelectedItem as spawnabletypesTypeCargoItem;
+                    currentcargoitem.name = l;
+                    CargoItemLB.Refresh();
                     currentspawnabletypesfile.isDirty = true;
+                    SetCargo();
                 }
 
             }
@@ -1915,14 +2167,213 @@ namespace DayZeEditor
                 return;
             }
         }
+        private void AttachmentchanceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            spawnabletypesTypeAttachments currentattachment = CurrentspawnabletypesTypetype as spawnabletypesTypeAttachments;
+            currentattachment.chance = AttachmentchanceNUD.Value;
+            currentspawnabletypesfile.isDirty = true;
+        }
+        private void CarcgoChanceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            spawnabletypesTypeCargo currentcargo = CurrentspawnabletypesTypetype as spawnabletypesTypeCargo;
+            currentcargo.chance = CarcgoChanceNUD.Value;
+            currentspawnabletypesfile.isDirty = true;
+        }
+        private void listBox7_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CargoItemLB.SelectedItems.Count == 0) return;
+            spawnabletypesTypeCargoItem currentcargoitem = CargoItemLB.SelectedItem as spawnabletypesTypeCargoItem;
+            isUserInteraction = false;
+            CargoItemchanceNUD.Value = currentcargoitem.chance;
+            isUserInteraction = true;
+        }
+        private void AttachmentItemLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (AttachmentItemLB.SelectedItems.Count == 0) return;
+            spawnabletypesTypeAttachmentsItem currentAttachmentitem = AttachmentItemLB.SelectedItem as spawnabletypesTypeAttachmentsItem;
+            isUserInteraction = false;
+            ItemAttachmentchanceNUD.Value = currentAttachmentitem.chance;
+            isUserInteraction = true;
+        }
+        private void darkButton35_Click_1(object sender, EventArgs e)
+        {
+            spawnabletypesTypeCargoItem newitem = new spawnabletypesTypeCargoItem()
+            {
+                name = "New Item, Please change me...",
+                chance = 1
+            };
+            spawnabletypesTypeCargo currentcargo = CurrentspawnabletypesTypetype as spawnabletypesTypeCargo;
+            currentcargo.item.Add(newitem);
+            currentspawnabletypesfile.isDirty = true;
+        }
+        private void darkButton39_Click(object sender, EventArgs e)
+        {
+            if (CargoItemLB.SelectedItems == null) { return; }
+            int index = CargoItemLB.SelectedIndex;
+            spawnabletypesTypeCargoItem currentcargoitem = CargoItemLB.SelectedItem as spawnabletypesTypeCargoItem;
+            spawnabletypesTypeCargo currentcargo = CurrentspawnabletypesTypetype as spawnabletypesTypeCargo;
+            currentcargo.item.Remove(currentcargoitem);
+            currentspawnabletypesfile.isDirty = true;
+            CargoItemLB.SelectedIndex = -1;
+            if (index == 0 && CargoItemLB.Items.Count > 0)
+                CargoItemLB.SelectedIndex = index;
+            else
+                CargoItemLB.SelectedIndex = index - 1;
+        }
+        private void CargoItemchanceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            spawnabletypesTypeCargoItem currentcargoitem = CargoItemLB.SelectedItem as spawnabletypesTypeCargoItem;
+            currentcargoitem.chance = CargoItemchanceNUD.Value;
+            currentspawnabletypesfile.isDirty = true;
+        }
+        private void ItemAttachmentchanceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            spawnabletypesTypeAttachmentsItem currentattachmentitem = AttachmentItemLB.SelectedItem as spawnabletypesTypeAttachmentsItem;
+            currentattachmentitem.chance = ItemAttachmentchanceNUD.Value;
+            currentspawnabletypesfile.isDirty = true;
+        }
+        private void darkButton38_Click_1(object sender, EventArgs e)
+        {
+            spawnabletypesTypeAttachmentsItem newitem = new spawnabletypesTypeAttachmentsItem()
+            {
+                name = "New Item, Please change me...",
+                chance = 1
+            };
+            spawnabletypesTypeAttachments currentattachment = CurrentspawnabletypesTypetype as spawnabletypesTypeAttachments;
+            currentattachment.item.Add(newitem);
+            currentspawnabletypesfile.isDirty = true;
+        }
+        private void darkButton35_Click_2(object sender, EventArgs e)
+        {
+            if (AttachmentItemLB.SelectedItems == null) { return; }
+            int index = AttachmentItemLB.SelectedIndex;
+            spawnabletypesTypeAttachmentsItem currentAttachmentitem = AttachmentItemLB.SelectedItem as spawnabletypesTypeAttachmentsItem;
+            spawnabletypesTypeAttachments currentAttachment = CurrentspawnabletypesTypetype as spawnabletypesTypeAttachments;
+            currentAttachment.item.Remove(currentAttachmentitem);
+            currentspawnabletypesfile.isDirty = true;
+            AttachmentItemLB.SelectedIndex = -1;
+            if (index == 0 && AttachmentItemLB.Items.Count > 0)
+                AttachmentItemLB.SelectedIndex = index;
+            else
+                AttachmentItemLB.SelectedIndex = index - 1;
+        }
+        private void darkButton35_Click_3(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseMultiple = false,
+                isCategoryitem = true
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    spawnabletypesType newspawnabletypesType = new spawnabletypesType()
+                    {
+                        name = l,
+                        Items = new BindingList<object>()
+
+                    };
+                    currentspawnabletypesfile.spawnabletypes.type.Add(newspawnabletypesType);
+                    currentspawnabletypesfile.isDirty = true;
+                }
+
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+
+        }
+        private void darkButton38_Click_2(object sender, EventArgs e)
+        {
+            currentspawnabletypesfile.spawnabletypes.type.Remove(SpawnabletpesLB.SelectedItem as spawnabletypesType);
+            currentspawnabletypesfile.isDirty = true;
+        }
+        private void darkButton39_Click_1(object sender, EventArgs e)
+        {
+            AddNeweventFile form = new AddNeweventFile
+            {
+                currentproject = currentproject,
+                newlocation = true,
+                setbuttontest = "Add Spawnabletype File",
+                SetTitle = "Add New Spawnabletypes File",
+                settype = "Spawnabletype file Name (Use ModName.. eg. DorTags)"
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string path = form.CustomLocation;
+                string modname = form.TypesName;
+                Directory.CreateDirectory(path);
+                List<string> Spawnabletypesfile = new List<string>();
+                Spawnabletypesfile.Add("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
+                Spawnabletypesfile.Add("<spawnabletypes>");
+                Spawnabletypesfile.Add("</spawnabletypes>");
+                File.WriteAllLines(path + "\\" + modname + "_spawnabletypes.xml", Spawnabletypesfile);
+                Spawnabletypesconfig test = new Spawnabletypesconfig(path + "\\" + modname + "_spawnabletypes.xml");
+                test.Savespawnabletypes();
+                currentproject.EconomyCore.AddCe(path.Replace(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\", ""), modname + "_spawnabletypes.xml", "spawnabletypes");
+                currentproject.EconomyCore.SaveEconomycore();
+                currentproject.SetSpawnabletypes();
+                LoadSpawnableTypes();
+                populateEconmyTreeview();
+            }
+        }
+        private void darkButton40_Click(object sender, EventArgs e)
+        {
+            string Modname = Path.GetFileNameWithoutExtension(currentspawnabletypesfile.Filename);
+            currentproject.EconomyCore.RemoveCe(Modname, out string foflderpath, out string filename, out bool deletedirectory);
+            File.Delete(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\" + foflderpath + "\\" + filename);
+            if (deletedirectory)
+                Directory.Delete(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\" + foflderpath, true);
+            currentproject.EconomyCore.SaveEconomycore();
+            currentproject.removeSpawnabletype(currentspawnabletypesfile.Filename);
+            currentproject.SetSpawnabletypes();
+            populateEconmyTreeview();
+        }
+        private void HasDamageCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            if (HasDamageCB.Checked)
+            {
+                if (currentspawnabletypesfile.spawnabletypes.damage == null)
+                {
+                    currentspawnabletypesfile.spawnabletypes.damage = new spawnabletypesDamage()
+                    {
+                        min = 0,
+                        max = 0
+                    };
+                }
+            }
+            else
+            {
+                if (currentspawnabletypesfile.spawnabletypes.damage != null)
+                {
+                    currentspawnabletypesfile.spawnabletypes.damage = null;
+                }
+            }
+            currentspawnabletypesfile.isDirty = true;
+            SetDamange();
+        }
         #endregion spawnabletypes
-
-
+        #region typesquery
         public bool FilterTiers = false;
         public bool FilterCategories = false;
         public bool FilterLocations = false;
         public bool FilterTags = false;
         public bool FilterFlags = false;
+
+
         private void darkButton15_Click(object sender, EventArgs e)
         {
             treeView2.Nodes.Clear();
@@ -2272,8 +2723,7 @@ namespace DayZeEditor
         {
             FilterFlags = groupBox19.Enabled = checkBox65.Checked;
         }
-
-
+        #endregion typesquery
         #region PlayerSpawnPoints
         public void LoadPlayerSpawns()
         {
@@ -2298,7 +2748,6 @@ namespace DayZeEditor
             SetPlayerSpawnLists();
             isUserInteraction = true;
         }
-
         private void SetPlayerSpawnLists()
         {
             if (playerspawnpoints.fresh != null)
@@ -2320,7 +2769,6 @@ namespace DayZeEditor
                 PlayerspawntravelLB.DataSource = playerspawnpoints.travel.generator_posbubbles;
             }
         }
-
         private void min_dist_infectedNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
@@ -2591,9 +3039,533 @@ namespace DayZeEditor
             pictureBox2.Invalidate();
         }
 
-
         #endregion PlayerSpawnPoints
+        #region cfggameplayconfig
+        private cfggameplay cfggameplay;
+        private void LoadCFGGamelplay()
+        {
+            isUserInteraction = false;
+            cfggameplay = currentproject.CFGGameplayConfig.cfggameplay;
+            CFGGameplayTB.Text = cfggameplay.version.ToString();
+            disableBaseDamageCB.Checked = cfggameplay.GeneralData.disableBaseDamage == 1 ? true : false;
+            disableContainerDamageCB.Checked = cfggameplay.GeneralData.disableContainerDamage == 1 ? true : false;
+            disableRespawnDialogCB.Checked = cfggameplay.GeneralData.disableRespawnDialog == 1 ? true : false;
 
+            disablePersonalLightCB.Checked = cfggameplay.PlayerData.disablePersonalLight == 1 ? true : false;
+            sprintStaminaModifierErcNUD.Value = (decimal)cfggameplay.PlayerData.StaminaData.sprintStaminaModifierErc;
+            sprintStaminaModifierCroNUD.Value = (decimal)cfggameplay.PlayerData.StaminaData.sprintStaminaModifierCro;
+            staminaWeightLimitThresholdNUD.Value = (decimal)cfggameplay.PlayerData.StaminaData.staminaWeightLimitThreshold;
+            staminaMaxNUD.Value = (decimal)cfggameplay.PlayerData.StaminaData.staminaMax;
+            staminaKgToStaminaPercentPenaltyNUD.Value = (decimal)cfggameplay.PlayerData.StaminaData.staminaKgToStaminaPercentPenalty;
+            staminaMinCapNUD.Value = (decimal)cfggameplay.PlayerData.StaminaData.staminaMinCap;
 
+            lightingConfigNUD.Value = cfggameplay.WorldsData.lightingConfig;
+
+            disableIsCollidingBBoxCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsCollidingBBoxCheck == 1 ? true : false;
+            disableIsCollidingPlayerCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsCollidingPlayerCheck == 1 ? true : false;
+            disableIsClippingRoofCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsClippingRoofCheck == 1 ? true : false;
+            disableIsBaseViableCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsBaseViableCheck == 1 ? true : false;
+            disableIsCollidingGPlotCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsCollidingGPlotCheck == 1 ? true : false;
+            disableIsCollidingAngleCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsCollidingAngleCheck == 1 ? true : false;
+            disableIsPlacementPermittedCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsPlacementPermittedCheck == 1 ? true : false;
+            disableHeightPlacementCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableHeightPlacementCheck == 1 ? true : false;
+            disableIsUnderwaterCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsUnderwaterCheck == 1 ? true : false;
+            disableIsInTerrainCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsInTerrainCheck == 1 ? true : false;
+
+            disablePerformRoofCheckCB.Checked = cfggameplay.BaseBuildingData.ConstructionData.disablePerformRoofCheck == 1 ? true : false;
+            disableIsCollidingCheckCB.Checked = cfggameplay.BaseBuildingData.ConstructionData.disableIsCollidingCheck == 1 ? true : false;
+            disableDistanceCheckCB.Checked = cfggameplay.BaseBuildingData.ConstructionData.disableDistanceCheck == 1 ? true : false;
+
+            hitDirectionOverrideEnabledCB.Checked = cfggameplay.UIData.HitIndicationData.hitDirectionOverrideEnabled == 1 ? true : false;
+            hitDirectionBehaviourCB.Checked = cfggameplay.UIData.HitIndicationData.hitDirectionBehaviour == 1 ? true : false;
+            hitDirectionStyleCB.Checked = cfggameplay.UIData.HitIndicationData.hitDirectionStyle == 1 ? true : false;
+            hitDirectionMaxDurationNUD.Value = (decimal)cfggameplay.UIData.HitIndicationData.hitDirectionMaxDuration;
+            hitDirectionBreakPointRelativeNUD.Value = (decimal)cfggameplay.UIData.HitIndicationData.hitDirectionBreakPointRelative;
+            hitDirectionScatterNUD.Value = (decimal)cfggameplay.UIData.HitIndicationData.hitDirectionScatter;
+            hitIndicationPostProcessEnabledCB.Checked = cfggameplay.UIData.HitIndicationData.hitIndicationPostProcessEnabled == 1 ? true : false;
+            isUserInteraction = true;
+        }
+        private void m_Color_Click(object sender, EventArgs e)
+        {
+            PictureBox pb = sender as PictureBox;
+            ColorPickerDialog cpick = new ColorPickerDialog();
+            cpick.StartPosition = FormStartPosition.CenterParent;
+            string col = cfggameplay.UIData.HitIndicationData.hitDirectionIndicatorColorStr;
+            cpick.Color = ColorTranslator.FromHtml(col);
+            if (cpick.ShowDialog() == DialogResult.OK)
+            {
+                string Colourname = "0x" + cpick.Color.Name.ToLower();
+                cfggameplay.UIData.HitIndicationData.hitDirectionIndicatorColorStr = Colourname;
+                pb.Invalidate();
+                cfggameplay.isDirty = true;
+            }
+        }
+        private void m_Color_Paint(object sender, PaintEventArgs e)
+        {
+            PictureBox pb = sender as PictureBox;
+            Rectangle region;
+            region = pb.ClientRectangle;
+            Color colour = ColorTranslator.FromHtml(cfggameplay.UIData.HitIndicationData.hitDirectionIndicatorColorStr);
+            using (Brush brush = new SolidBrush(colour))
+            {
+                e.Graphics.FillRectangle(brush, region);
+            }
+            e.Graphics.DrawRectangle(SystemPens.ControlText, region.Left, region.Top, region.Width - 1, region.Height - 1);
+        }
+        private void disableBaseDamageCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.GeneralData.disableBaseDamage = disableBaseDamageCB.Checked == true ? 1 : 0;
+            cfggameplay.isDirty = true;
+        }
+        private void disableContainerDamageCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.GeneralData.disableContainerDamage = disableContainerDamageCB.Checked == true ? 1 : 0;
+            cfggameplay.isDirty = true;
+        }
+        private void disableRespawnDialogCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.GeneralData.disableRespawnDialog = disableRespawnDialogCB.Checked == true ? 1 : 0;
+            cfggameplay.isDirty = true;
+        }
+        private void disablePersonalLightCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.PlayerData.disablePersonalLight = disablePersonalLightCB.Checked == true ? 1 : 0;
+            cfggameplay.isDirty = true;
+        }
+        private void sprintStaminaModifierErcNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.PlayerData.StaminaData.sprintStaminaModifierErc = (decimal)Math.Round(sprintStaminaModifierErcNUD.Value, 2);
+            cfggameplay.isDirty = true;
+        }
+        private void sprintStaminaModifierCroNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.PlayerData.StaminaData.sprintStaminaModifierCro = (decimal)Math.Round(sprintStaminaModifierCroNUD.Value, 2);
+            cfggameplay.isDirty = true;
+        }
+        private void staminaWeightLimitThresholdNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.PlayerData.StaminaData.staminaWeightLimitThreshold = (decimal)Math.Round(staminaWeightLimitThresholdNUD.Value, 2);
+            cfggameplay.isDirty = true;
+        }
+        private void staminaMaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.PlayerData.StaminaData.staminaMax = (decimal)Math.Round(staminaMaxNUD.Value, 2);
+            cfggameplay.isDirty = true;
+        }
+        private void staminaKgToStaminaPercentPenaltyNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.PlayerData.StaminaData.staminaKgToStaminaPercentPenalty = (decimal)Math.Round(staminaKgToStaminaPercentPenaltyNUD.Value, 2);
+            cfggameplay.isDirty = true;
+        }
+        private void staminaMinCapNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.PlayerData.StaminaData.staminaMinCap = (decimal)Math.Round(staminaMinCapNUD.Value, 2);
+            cfggameplay.isDirty = true;
+        }
+        private void disableIsCollidingBBoxCheckCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.BaseBuildingData.HologramData.disableIsCollidingBBoxCheck = disableIsCollidingBBoxCheckCB.Checked == true ? 1 : 0;
+            cfggameplay.isDirty = true;
+        }
+        private void disableIsCollidingPlayerCheckCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.BaseBuildingData.HologramData.disableIsCollidingPlayerCheck = disableIsCollidingPlayerCheckCB.Checked == true ? 1 : 0;
+            cfggameplay.isDirty = true;
+        }
+        private void disableIsClippingRoofCheckCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.BaseBuildingData.HologramData.disableIsClippingRoofCheck = disableIsClippingRoofCheckCB.Checked == true ? 1 : 0;
+            cfggameplay.isDirty = true;
+        }
+        private void disableIsBaseViableCheckCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.BaseBuildingData.HologramData.disableIsBaseViableCheck = disableIsBaseViableCheckCB.Checked == true ? 1 : 0;
+            cfggameplay.isDirty = true;
+        }
+        private void disableIsCollidingGPlotCheckCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.BaseBuildingData.HologramData.disableIsCollidingGPlotCheck = disableIsCollidingGPlotCheckCB.Checked == true ? 1 : 0;
+            cfggameplay.isDirty = true;
+        }
+        private void disableIsCollidingAngleCheckCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.BaseBuildingData.HologramData.disableIsCollidingAngleCheck = disableIsCollidingAngleCheckCB.Checked == true ? 1 : 0;
+            cfggameplay.isDirty = true;
+        }
+        private void disableIsPlacementPermittedCheckCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.BaseBuildingData.HologramData.disableIsPlacementPermittedCheck = disableIsPlacementPermittedCheckCB.Checked == true ? 1 : 0;
+            cfggameplay.isDirty = true;
+        }
+        private void disableHeightPlacementCheckCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.BaseBuildingData.HologramData.disableHeightPlacementCheck = disableHeightPlacementCheckCB.Checked == true ? 1 : 0;
+            cfggameplay.isDirty = true;
+        }
+        private void disableIsUnderwaterCheckCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.BaseBuildingData.HologramData.disableIsUnderwaterCheck = disableIsUnderwaterCheckCB.Checked == true ? 1 : 0;
+            cfggameplay.isDirty = true;
+        }
+        private void disableIsInTerrainCheckCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.BaseBuildingData.HologramData.disableIsInTerrainCheck = disableIsInTerrainCheckCB.Checked == true ? 1 : 0;
+            cfggameplay.isDirty = true;
+        }
+        private void disablePerformRoofCheckCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.BaseBuildingData.ConstructionData.disablePerformRoofCheck = disablePerformRoofCheckCB.Checked == true ? 1 : 0;
+            cfggameplay.isDirty = true;
+        }
+        private void disableIsCollidingCheckCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.BaseBuildingData.ConstructionData.disableIsCollidingCheck = disableIsCollidingCheckCB.Checked == true ? 1 : 0;
+            cfggameplay.isDirty = true;
+        }
+        private void disableDistanceCheckCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.BaseBuildingData.ConstructionData.disableDistanceCheck = disableDistanceCheckCB.Checked == true ? 1 : 0;
+            cfggameplay.isDirty = true;
+        }
+        private void hitDirectionOverrideEnabledCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.UIData.HitIndicationData.hitDirectionOverrideEnabled = hitDirectionOverrideEnabledCB.Checked == true ? 1 : 0;
+            cfggameplay.isDirty = true;
+        }
+        private void hitDirectionBehaviourCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.UIData.HitIndicationData.hitDirectionBehaviour = hitDirectionBehaviourCB.Checked == true ? 1 : 0;
+            cfggameplay.isDirty = true;
+        }
+        private void hitDirectionStyleCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.UIData.HitIndicationData.hitDirectionStyle = hitDirectionStyleCB.Checked == true ? 1 : 0;
+            cfggameplay.isDirty = true;
+        }
+        private void hitDirectionMaxDurationNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.UIData.HitIndicationData.hitDirectionMaxDuration = (decimal)Math.Round(hitDirectionMaxDurationNUD.Value, 2);
+            cfggameplay.isDirty = true;
+        }
+        private void hitDirectionBreakPointRelativeNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.UIData.HitIndicationData.hitDirectionBreakPointRelative = (decimal)Math.Round(hitDirectionBreakPointRelativeNUD.Value, 2);
+            cfggameplay.isDirty = true;
+        }
+        private void hitDirectionScatterNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.UIData.HitIndicationData.hitDirectionScatter = (decimal)Math.Round(hitDirectionScatterNUD.Value, 2);
+            cfggameplay.isDirty = true;
+        }
+        private void hitIndicationPostProcessEnabledCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.UIData.HitIndicationData.hitIndicationPostProcessEnabled = hitIndicationPostProcessEnabledCB.Checked == true ? 1 : 0;
+            cfggameplay.isDirty = true;
+        }
+        private void lightingConfigNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.WorldsData.lightingConfig = (int)lightingConfigNUD.Value;
+            cfggameplay.isDirty = true;
+        }
+
+        #endregion cfggameplayconfig
+        #region cfgrandompresets
+        public object currentRandomPreset;
+
+        private void LoadRandomPresets()
+        {
+            isUserInteraction = false;
+            PresetItemListLB.DisplayMember = "DisplayName";
+            PresetItemListLB.ValueMember = "Value";
+            PresetItemListLB.DataSource = currentproject.cfgrandompresetsconfig.randompresets.Items;
+            isUserInteraction = true;
+        }
+        private void PresetItemListLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (PresetItemListLB.SelectedIndex == -1) { return; }
+            isUserInteraction = false;
+            currentRandomPreset = PresetItemListLB.SelectedItem as object;
+            ClearInfo();
+            if (currentRandomPreset is randompresetsAttachments)
+            {
+                randompresetsAttachments currentAttachments = currentRandomPreset as randompresetsAttachments;
+                RandompresetCargoGB.Visible = false;
+                RandompreseAttachmentGB.Visible = true;
+                setRandompresetAttachemnt();
+            }
+            else if (currentRandomPreset is randompresetsCargo)
+            {
+                randompresetsCargo currentCargo = currentRandomPreset as randompresetsCargo;
+                RandompresetCargoGB.Visible = true;
+                RandompreseAttachmentGB.Visible = false;
+                SetRandomPresetCargo();
+            }
+            isUserInteraction = true;
+        }
+        private void setRandompresetAttachemnt()
+        {
+            randompresetsAttachments currentAttachments = currentRandomPreset as randompresetsAttachments;
+            RandomPresetAttachmentChanceNUD.Value = currentAttachments.chance;
+            RandomPresetAttchemntNameTB.Text = currentAttachments.name;
+            PresetAttachmentsItemsLB.DisplayMember = "DisplayName";
+            PresetAttachmentsItemsLB.ValueMember = "Value";
+            PresetAttachmentsItemsLB.DataSource = currentAttachments.item;
+        }
+        private void SetRandomPresetCargo()
+        {
+            randompresetsCargo currentcargo = currentRandomPreset as randompresetsCargo;
+            RandomPresetCargoChanceNUD.Value = currentcargo.chance;
+            RandomPresetNameTB.Text = currentcargo.name;
+            PresetCargoItemsLB.DisplayMember = "DisplayName";
+            PresetCargoItemsLB.ValueMember = "Value";
+            PresetCargoItemsLB.DataSource = currentcargo.item;
+        }
+        private void PresetCArgoItemsLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (PresetCargoItemsLB.SelectedItems.Count == 0) return;
+            randompresetsCargoItem currentcargoitem = PresetCargoItemsLB.SelectedItem as randompresetsCargoItem;
+            isUserInteraction = false;
+            RandomPresetCargoItemchanceNUD.Value = currentcargoitem.chance;
+            isUserInteraction = true;
+        }
+        private void PresetAttachmentsItemsLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (PresetAttachmentsItemsLB.SelectedItems.Count == 0) return;
+            randompresetsAttachmentsItem currentattachmentitem = PresetAttachmentsItemsLB.SelectedItem as randompresetsAttachmentsItem;
+            isUserInteraction = false;
+            RandomPresetAttachmentItemchanceNUD.Value = currentattachmentitem.chance;
+            isUserInteraction = true;
+        }
+        private void RandomPresetCargoChanceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            randompresetsCargo currentCargo = currentRandomPreset as randompresetsCargo;
+            currentCargo.chance = RandomPresetCargoChanceNUD.Value;
+            currentproject.cfgrandompresetsconfig.isDirty = true;
+        }
+        private void RandomPresetCargoItemchanceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            randompresetsCargoItem currentcargoitem = PresetCargoItemsLB.SelectedItem as randompresetsCargoItem;
+            currentcargoitem.chance = RandomPresetCargoItemchanceNUD.Value;
+            currentproject.cfgrandompresetsconfig.isDirty = true;
+        }
+        private void RandomPresetAttachmentChanceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            randompresetsAttachments currentAttachments = currentRandomPreset as randompresetsAttachments;
+            currentAttachments.chance = RandomPresetAttachmentChanceNUD.Value;
+            currentproject.cfgrandompresetsconfig.isDirty = true;
+        }
+        private void RandomPresetAttachmentItemchanceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            randompresetsAttachmentsItem currentAttachmentitem = PresetAttachmentsItemsLB.SelectedItem as randompresetsAttachmentsItem;
+            currentAttachmentitem.chance = RandomPresetAttachmentItemchanceNUD.Value;
+            currentproject.cfgrandompresetsconfig.isDirty = true;
+        }
+        private void darkButton48_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseMultiple = false,
+                isCategoryitem = true
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    randompresetsCargoItem currentcargoitem = PresetCargoItemsLB.SelectedItem as randompresetsCargoItem;
+                    currentcargoitem.name = l;
+                    PresetCargoItemsLB.Refresh();
+                    currentproject.cfgrandompresetsconfig.isDirty = true;
+                    SetRandomPresetCargo();
+                }
+
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+        }
+        private void darkButton47_Click(object sender, EventArgs e)
+        {
+            randompresetsCargoItem newitem = new randompresetsCargoItem()
+            {
+                name = "New Item, Please change me...",
+                chance = 1
+            };
+            randompresetsCargo currentcargo = currentRandomPreset as randompresetsCargo;
+            currentcargo.item.Add(newitem);
+            currentproject.cfgrandompresetsconfig.isDirty = true;
+        }
+        private void darkButton46_Click(object sender, EventArgs e)
+        {
+            if (PresetCargoItemsLB.SelectedItems == null) { return; }
+            int index = PresetCargoItemsLB.SelectedIndex;
+            randompresetsCargoItem currentcargoitem = PresetCargoItemsLB.SelectedItem as randompresetsCargoItem;
+            randompresetsCargo currentcargo = currentRandomPreset as randompresetsCargo;
+            currentcargo.item.Remove(currentcargoitem);
+            currentproject.cfgrandompresetsconfig.isDirty = true;
+            PresetCargoItemsLB.SelectedIndex = -1;
+            if (index == 0 && PresetCargoItemsLB.Items.Count > 0)
+                PresetCargoItemsLB.SelectedIndex = index;
+            else
+                PresetCargoItemsLB.SelectedIndex = index - 1;
+        }
+        private void darkButton49_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseMultiple = false,
+                isCategoryitem = true
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    randompresetsAttachmentsItem currentAttachemntitem = PresetAttachmentsItemsLB.SelectedItem as randompresetsAttachmentsItem;
+                    currentAttachemntitem.name = l;
+                    PresetAttachmentsItemsLB.Refresh();
+                    currentproject.cfgrandompresetsconfig.isDirty = true;
+                    setRandompresetAttachemnt();
+                }
+
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+        }
+        private void darkButton42_Click(object sender, EventArgs e)
+        {
+            randompresetsAttachmentsItem newitem = new randompresetsAttachmentsItem()
+            {
+                name = "New Item, Please change me...",
+                chance = 1
+            };
+            randompresetsAttachments currentAttachemnt = currentRandomPreset as randompresetsAttachments;
+            currentAttachemnt.item.Add(newitem);
+            currentproject.cfgrandompresetsconfig.isDirty = true;
+        }
+        private void darkButton41_Click(object sender, EventArgs e)
+        {
+            if (PresetAttachmentsItemsLB.SelectedItems == null) { return; }
+            int index = PresetAttachmentsItemsLB.SelectedIndex;
+            randompresetsAttachmentsItem currentAttachemntitem = PresetAttachmentsItemsLB.SelectedItem as randompresetsAttachmentsItem;
+            randompresetsAttachments currentAttachent = currentRandomPreset as randompresetsAttachments;
+            currentAttachent.item.Remove(currentAttachemntitem);
+            currentproject.cfgrandompresetsconfig.isDirty = true;
+            PresetAttachmentsItemsLB.SelectedIndex = -1;
+            if (index == 0 && PresetAttachmentsItemsLB.Items.Count > 0)
+                PresetAttachmentsItemsLB.SelectedIndex = index;
+            else
+                PresetAttachmentsItemsLB.SelectedIndex = index - 1;
+        }
+        private void darkButton43_Click(object sender, EventArgs e)
+        {
+            if (PresetItemListLB.SelectedItems == null) { return; }
+            int index = PresetItemListLB.SelectedIndex;
+            currentproject.cfgrandompresetsconfig.randompresets.Items.Remove(currentRandomPreset);
+            currentproject.cfgrandompresetsconfig.isDirty = true;
+            PresetItemListLB.SelectedIndex = -1;
+            if (index == 0 && PresetItemListLB.Items.Count > 0)
+                PresetItemListLB.SelectedIndex = index;
+            else
+                PresetItemListLB.SelectedIndex = index - 1;
+            SetuprandomPresetsForSpawnabletypes();
+        }
+        private void darkButton45_Click(object sender, EventArgs e)
+        {
+            if (PresetItemListLB.SelectedItem == null) { return; }
+            randompresetsCargo newcargo = new randompresetsCargo()
+            {
+                name = "NewCargoList",
+                chance = 1,
+                item = new BindingList<randompresetsCargoItem>()
+            };
+            if (currentproject.cfgrandompresetsconfig.randompresets.Items == null)
+                currentproject.cfgrandompresetsconfig.randompresets.Items = new BindingList<object>();
+            currentproject.cfgrandompresetsconfig.randompresets.Items.Add(newcargo);
+            PresetItemListLB.SelectedIndex = -1;
+            PresetItemListLB.SelectedIndex = 0;
+            currentproject.cfgrandompresetsconfig.isDirty = true;
+            SetuprandomPresetsForSpawnabletypes();
+        }
+        private void darkButton44_Click(object sender, EventArgs e)
+        {
+            if (PresetItemListLB.SelectedItem == null) { return; }
+            randompresetsAttachments newspawnabletypesTypeAttachments = new randompresetsAttachments()
+            {
+                item = new BindingList<randompresetsAttachmentsItem>()
+            };
+            if ( currentproject.cfgrandompresetsconfig.randompresets.Items == null)
+                currentproject.cfgrandompresetsconfig.randompresets.Items = new BindingList<object>();
+            currentproject.cfgrandompresetsconfig.randompresets.Items.Add(newspawnabletypesTypeAttachments);
+            PresetItemListLB.SelectedIndex = -1;
+            PresetItemListLB.SelectedIndex = 0;
+            currentproject.cfgrandompresetsconfig.isDirty = true;
+            SetuprandomPresetsForSpawnabletypes();
+        }
+        private void RandomPresetNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            randompresetsCargo currentCargo = currentRandomPreset as randompresetsCargo;
+            currentCargo.name = RandomPresetNameTB.Text;
+            PresetItemListLB.Refresh();
+            currentproject.cfgrandompresetsconfig.isDirty = true;
+            SetuprandomPresetsForSpawnabletypes();
+        }
+        private void RandomPresetAttchemntNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            randompresetsAttachments currentAttachment = currentRandomPreset as randompresetsAttachments;
+            currentAttachment.name = RandomPresetAttchemntNameTB.Text;
+            PresetItemListLB.Refresh();
+            currentproject.cfgrandompresetsconfig.isDirty = true;
+            SetuprandomPresetsForSpawnabletypes();
+        }
+        #endregion cfgrandompresets
     }
 }

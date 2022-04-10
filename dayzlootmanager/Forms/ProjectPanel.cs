@@ -97,7 +97,9 @@ namespace DayZeEditor
                 radioButton4.Checked = true;
             else if (ActiveProject != null)
                 radioButton1.Checked = true;
-            
+
+            ((MainForm)this.MdiParent).toolStripStatusLabel1.Text = ActiveProject.ProjectName + " is the Current Active Project"; ;
+
         }
         private void LoadProjectstoList()
         {
@@ -361,6 +363,7 @@ namespace DayZeEditor
             projects.getActiveProject().seteconomydefinitions();
             projects.getActiveProject().setuserdefinitions();
             projects.getActiveProject().setplayerspawns();
+            projects.getActiveProject().SetCFGGameplayConfig();
             projects.getActiveProject().SetEvents();
             projects.getActiveProject().SetRandompresets();
             projects.getActiveProject().SetSpawnabletypes();

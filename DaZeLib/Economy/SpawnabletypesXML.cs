@@ -19,7 +19,7 @@ namespace DayZeLib
 
         private spawnabletypesDamage damageField;
 
-        private spawnabletypesType[] typeField;
+        private BindingList<spawnabletypesType> typeField;
 
         /// <remarks/>
         public spawnabletypesDamage damage
@@ -36,7 +36,7 @@ namespace DayZeLib
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("type")]
-        public spawnabletypesType[] type
+        public BindingList<spawnabletypesType> type
         {
             get
             {
@@ -144,7 +144,7 @@ namespace DayZeLib
     public partial class spawnabletypesTypeAttachments
     {
 
-        private spawnabletypesTypeAttachmentsItem[] itemField;
+        private BindingList<spawnabletypesTypeAttachmentsItem> itemField;
 
         private decimal chanceField;
 
@@ -154,7 +154,7 @@ namespace DayZeLib
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("item")]
-        public spawnabletypesTypeAttachmentsItem[] item
+        public BindingList<spawnabletypesTypeAttachmentsItem> item
         {
             get
             {
@@ -255,7 +255,7 @@ namespace DayZeLib
 
         public override string ToString()
         {
-            return "AttachmentItem";
+            return name;
         }
     }
 
@@ -266,7 +266,7 @@ namespace DayZeLib
     public partial class spawnabletypesTypeCargo
     {
 
-        private spawnabletypesTypeCargoItem[] itemField;
+        private BindingList<spawnabletypesTypeCargoItem> itemField;
 
         private string presetField;
 
@@ -276,7 +276,7 @@ namespace DayZeLib
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("item")]
-        public spawnabletypesTypeCargoItem[] item
+        public BindingList<spawnabletypesTypeCargoItem> item
         {
             get
             {
@@ -393,7 +393,7 @@ namespace DayZeLib
 
         public override string ToString()
         {
-            return "Cargoitem";
+            return name;
         }
     }
 

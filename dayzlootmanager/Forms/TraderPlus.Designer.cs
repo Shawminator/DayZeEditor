@@ -37,7 +37,10 @@ namespace DayZeEditor
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.categoriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setMaxStockForSelectedCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setCooefToMinPercentageOfBuyPriceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -159,6 +162,9 @@ namespace DayZeEditor
             this.AcceptDamagedCB = new System.Windows.Forms.CheckBox();
             this.AcceptWornCB = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.HideLicenceBtnCB = new System.Windows.Forms.CheckBox();
+            this.HideGarageBtnCB = new System.Windows.Forms.CheckBox();
+            this.HideInsuranceBtnCB = new System.Windows.Forms.CheckBox();
             this.IsReceiptSaveCargoCB = new System.Windows.Forms.CheckBox();
             this.IsReceiptSaveAttachmentCB = new System.Windows.Forms.CheckBox();
             this.EnableShowAllPricesCB = new System.Windows.Forms.CheckBox();
@@ -347,9 +353,6 @@ namespace DayZeEditor
             this.VehiclePartPartsLB = new System.Windows.Forms.ListBox();
             this.VehiclePartLB = new System.Windows.Forms.ListBox();
             this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.darkToolStrip21.SuspendLayout();
             this.darkToolStrip22.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -522,17 +525,44 @@ namespace DayZeEditor
             this.toolStripMenuItem5});
             this.toolStripMenuItem3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(169, 22);
             this.toolStripMenuItem3.Text = "All";
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripMenuItem6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(230, 22);
+            this.toolStripMenuItem6.Text = "Import from expnsion Market";
+            this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.toolStripMenuItem4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(219, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(230, 22);
             this.toolStripMenuItem4.Text = "Check for Cats not in trader";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripMenuItem7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(230, 22);
+            this.toolStripMenuItem7.Text = "Check Missing Items";
+            this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItem7_Click);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripMenuItem5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(230, 22);
+            this.toolStripMenuItem5.Text = "Remove All Categories";
+            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
             // 
             // categoriesToolStripMenuItem
             // 
@@ -542,7 +572,7 @@ namespace DayZeEditor
             this.setCooefToMinPercentageOfBuyPriceToolStripMenuItem});
             this.categoriesToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.categoriesToolStripMenuItem.Name = "categoriesToolStripMenuItem";
-            this.categoriesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.categoriesToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.categoriesToolStripMenuItem.Text = "Selected Category";
             this.categoriesToolStripMenuItem.Visible = false;
             // 
@@ -582,6 +612,7 @@ namespace DayZeEditor
             this.toolStripButton9.Name = "toolStripButton9";
             this.toolStripButton9.Size = new System.Drawing.Size(34, 42);
             this.toolStripButton9.Text = "Find";
+            this.toolStripButton9.Click += new System.EventHandler(this.toolStripButton9_Click);
             // 
             // darkToolStrip22
             // 
@@ -2043,7 +2074,7 @@ namespace DayZeEditor
             this.groupBox7.Controls.Add(this.AcceptDamagedCB);
             this.groupBox7.Controls.Add(this.AcceptWornCB);
             this.groupBox7.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox7.Location = new System.Drawing.Point(8, 461);
+            this.groupBox7.Location = new System.Drawing.Point(8, 554);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(364, 100);
             this.groupBox7.TabIndex = 70;
@@ -2085,6 +2116,9 @@ namespace DayZeEditor
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.HideLicenceBtnCB);
+            this.groupBox4.Controls.Add(this.HideGarageBtnCB);
+            this.groupBox4.Controls.Add(this.HideInsuranceBtnCB);
             this.groupBox4.Controls.Add(this.IsReceiptSaveCargoCB);
             this.groupBox4.Controls.Add(this.IsReceiptSaveAttachmentCB);
             this.groupBox4.Controls.Add(this.EnableShowAllPricesCB);
@@ -2107,15 +2141,48 @@ namespace DayZeEditor
             this.groupBox4.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox4.Location = new System.Drawing.Point(8, 12);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(364, 443);
+            this.groupBox4.Size = new System.Drawing.Size(364, 536);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "General Config";
             // 
+            // HideLicenceBtnCB
+            // 
+            this.HideLicenceBtnCB.AutoSize = true;
+            this.HideLicenceBtnCB.Location = new System.Drawing.Point(17, 173);
+            this.HideLicenceBtnCB.Name = "HideLicenceBtnCB";
+            this.HideLicenceBtnCB.Size = new System.Drawing.Size(123, 17);
+            this.HideLicenceBtnCB.TabIndex = 82;
+            this.HideLicenceBtnCB.Text = "Hide Licence Button";
+            this.HideLicenceBtnCB.UseVisualStyleBackColor = true;
+            this.HideLicenceBtnCB.CheckedChanged += new System.EventHandler(this.HideLicenceBtnCB_CheckedChanged);
+            // 
+            // HideGarageBtnCB
+            // 
+            this.HideGarageBtnCB.AutoSize = true;
+            this.HideGarageBtnCB.Location = new System.Drawing.Point(17, 150);
+            this.HideGarageBtnCB.Name = "HideGarageBtnCB";
+            this.HideGarageBtnCB.Size = new System.Drawing.Size(120, 17);
+            this.HideGarageBtnCB.TabIndex = 81;
+            this.HideGarageBtnCB.Text = "Hide Garage Button";
+            this.HideGarageBtnCB.UseVisualStyleBackColor = true;
+            this.HideGarageBtnCB.CheckedChanged += new System.EventHandler(this.HideGarageBtnCB_CheckedChanged);
+            // 
+            // HideInsuranceBtnCB
+            // 
+            this.HideInsuranceBtnCB.AutoSize = true;
+            this.HideInsuranceBtnCB.Location = new System.Drawing.Point(18, 127);
+            this.HideInsuranceBtnCB.Name = "HideInsuranceBtnCB";
+            this.HideInsuranceBtnCB.Size = new System.Drawing.Size(132, 17);
+            this.HideInsuranceBtnCB.TabIndex = 80;
+            this.HideInsuranceBtnCB.Text = "Hide Insurance Button";
+            this.HideInsuranceBtnCB.UseVisualStyleBackColor = true;
+            this.HideInsuranceBtnCB.CheckedChanged += new System.EventHandler(this.HideInsuranceBtnCB_CheckedChanged);
+            // 
             // IsReceiptSaveCargoCB
             // 
             this.IsReceiptSaveCargoCB.AutoSize = true;
-            this.IsReceiptSaveCargoCB.Location = new System.Drawing.Point(196, 219);
+            this.IsReceiptSaveCargoCB.Location = new System.Drawing.Point(195, 288);
             this.IsReceiptSaveCargoCB.Name = "IsReceiptSaveCargoCB";
             this.IsReceiptSaveCargoCB.Size = new System.Drawing.Size(133, 17);
             this.IsReceiptSaveCargoCB.TabIndex = 79;
@@ -2126,7 +2193,7 @@ namespace DayZeEditor
             // IsReceiptSaveAttachmentCB
             // 
             this.IsReceiptSaveAttachmentCB.AutoSize = true;
-            this.IsReceiptSaveAttachmentCB.Location = new System.Drawing.Point(18, 219);
+            this.IsReceiptSaveAttachmentCB.Location = new System.Drawing.Point(17, 288);
             this.IsReceiptSaveAttachmentCB.Name = "IsReceiptSaveAttachmentCB";
             this.IsReceiptSaveAttachmentCB.Size = new System.Drawing.Size(159, 17);
             this.IsReceiptSaveAttachmentCB.TabIndex = 78;
@@ -2137,7 +2204,7 @@ namespace DayZeEditor
             // EnableShowAllPricesCB
             // 
             this.EnableShowAllPricesCB.AutoSize = true;
-            this.EnableShowAllPricesCB.Location = new System.Drawing.Point(18, 127);
+            this.EnableShowAllPricesCB.Location = new System.Drawing.Point(17, 196);
             this.EnableShowAllPricesCB.Name = "EnableShowAllPricesCB";
             this.EnableShowAllPricesCB.Size = new System.Drawing.Size(135, 17);
             this.EnableShowAllPricesCB.TabIndex = 77;
@@ -2148,7 +2215,7 @@ namespace DayZeEditor
             // StoreOnlyToPristineStateCB
             // 
             this.StoreOnlyToPristineStateCB.AutoSize = true;
-            this.StoreOnlyToPristineStateCB.Location = new System.Drawing.Point(18, 242);
+            this.StoreOnlyToPristineStateCB.Location = new System.Drawing.Point(17, 311);
             this.StoreOnlyToPristineStateCB.Name = "StoreOnlyToPristineStateCB";
             this.StoreOnlyToPristineStateCB.Size = new System.Drawing.Size(156, 17);
             this.StoreOnlyToPristineStateCB.TabIndex = 76;
@@ -2159,7 +2226,7 @@ namespace DayZeEditor
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(14, 311);
+            this.label30.Location = new System.Drawing.Point(17, 399);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(50, 13);
             this.label30.TabIndex = 73;
@@ -2167,7 +2234,7 @@ namespace DayZeEditor
             // 
             // darkButton43
             // 
-            this.darkButton43.Location = new System.Drawing.Point(235, 412);
+            this.darkButton43.Location = new System.Drawing.Point(237, 490);
             this.darkButton43.Name = "darkButton43";
             this.darkButton43.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton43.Size = new System.Drawing.Size(94, 23);
@@ -2183,15 +2250,15 @@ namespace DayZeEditor
             this.LicencesLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.LicencesLB.ForeColor = System.Drawing.SystemColors.Control;
             this.LicencesLB.FormattingEnabled = true;
-            this.LicencesLB.Location = new System.Drawing.Point(18, 327);
+            this.LicencesLB.Location = new System.Drawing.Point(18, 418);
             this.LicencesLB.Name = "LicencesLB";
-            this.LicencesLB.Size = new System.Drawing.Size(211, 108);
+            this.LicencesLB.Size = new System.Drawing.Size(211, 95);
             this.LicencesLB.TabIndex = 72;
             this.LicencesLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
             // darkButton44
             // 
-            this.darkButton44.Location = new System.Drawing.Point(235, 327);
+            this.darkButton44.Location = new System.Drawing.Point(237, 418);
             this.darkButton44.Name = "darkButton44";
             this.darkButton44.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton44.Size = new System.Drawing.Size(94, 23);
@@ -2202,7 +2269,7 @@ namespace DayZeEditor
             // IsReceiptTraderOnlyCB
             // 
             this.IsReceiptTraderOnlyCB.AutoSize = true;
-            this.IsReceiptTraderOnlyCB.Location = new System.Drawing.Point(18, 173);
+            this.IsReceiptTraderOnlyCB.Location = new System.Drawing.Point(17, 242);
             this.IsReceiptTraderOnlyCB.Name = "IsReceiptTraderOnlyCB";
             this.IsReceiptTraderOnlyCB.Size = new System.Drawing.Size(132, 17);
             this.IsReceiptTraderOnlyCB.TabIndex = 71;
@@ -2213,7 +2280,7 @@ namespace DayZeEditor
             // IsReceiptSaveLockCB
             // 
             this.IsReceiptSaveLockCB.AutoSize = true;
-            this.IsReceiptSaveLockCB.Location = new System.Drawing.Point(18, 196);
+            this.IsReceiptSaveLockCB.Location = new System.Drawing.Point(17, 265);
             this.IsReceiptSaveLockCB.Name = "IsReceiptSaveLockCB";
             this.IsReceiptSaveLockCB.Size = new System.Drawing.Size(129, 17);
             this.IsReceiptSaveLockCB.TabIndex = 70;
@@ -2224,7 +2291,7 @@ namespace DayZeEditor
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(17, 295);
+            this.label38.Location = new System.Drawing.Point(19, 377);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(92, 13);
             this.label38.TabIndex = 12;
@@ -2234,7 +2301,7 @@ namespace DayZeEditor
             // 
             this.LicenceKeyWordTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.LicenceKeyWordTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.LicenceKeyWordTB.Location = new System.Drawing.Point(132, 292);
+            this.LicenceKeyWordTB.Location = new System.Drawing.Point(134, 374);
             this.LicenceKeyWordTB.Name = "LicenceKeyWordTB";
             this.LicenceKeyWordTB.Size = new System.Drawing.Size(197, 20);
             this.LicenceKeyWordTB.TabIndex = 11;
@@ -2246,7 +2313,7 @@ namespace DayZeEditor
             this.LockPickChanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.LockPickChanceNUD.DecimalPlaces = 2;
             this.LockPickChanceNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.LockPickChanceNUD.Location = new System.Drawing.Point(115, 265);
+            this.LockPickChanceNUD.Location = new System.Drawing.Point(117, 347);
             this.LockPickChanceNUD.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -2262,7 +2329,7 @@ namespace DayZeEditor
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(17, 268);
+            this.label40.Location = new System.Drawing.Point(19, 350);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(92, 13);
             this.label40.TabIndex = 7;
@@ -2271,7 +2338,7 @@ namespace DayZeEditor
             // EnableShowAllCheckBoxCB
             // 
             this.EnableShowAllCheckBoxCB.AutoSize = true;
-            this.EnableShowAllCheckBoxCB.Location = new System.Drawing.Point(18, 150);
+            this.EnableShowAllCheckBoxCB.Location = new System.Drawing.Point(17, 219);
             this.EnableShowAllCheckBoxCB.Name = "EnableShowAllCheckBoxCB";
             this.EnableShowAllCheckBoxCB.Size = new System.Drawing.Size(158, 17);
             this.EnableShowAllCheckBoxCB.TabIndex = 4;
@@ -3646,6 +3713,7 @@ namespace DayZeEditor
             this.TraderCategoriesLB.FormattingEnabled = true;
             this.TraderCategoriesLB.Location = new System.Drawing.Point(203, 17);
             this.TraderCategoriesLB.Name = "TraderCategoriesLB";
+            this.TraderCategoriesLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.TraderCategoriesLB.Size = new System.Drawing.Size(211, 550);
             this.TraderCategoriesLB.TabIndex = 59;
             this.TraderCategoriesLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
@@ -4522,33 +4590,6 @@ namespace DayZeEditor
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "tabPage8";
             // 
-            // toolStripMenuItem6
-            // 
-            this.toolStripMenuItem6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.toolStripMenuItem6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(230, 22);
-            this.toolStripMenuItem6.Text = "Import from expnsion Market";
-            this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.toolStripMenuItem5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(230, 22);
-            this.toolStripMenuItem5.Text = "Remove All Categories";
-            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
-            // 
-            // toolStripMenuItem7
-            // 
-            this.toolStripMenuItem7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.toolStripMenuItem7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(230, 22);
-            this.toolStripMenuItem7.Text = "Check Missing Items";
-            this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItem7_Click);
-            // 
             // TraderPlus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4984,5 +5025,8 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
+        private System.Windows.Forms.CheckBox HideLicenceBtnCB;
+        private System.Windows.Forms.CheckBox HideGarageBtnCB;
+        private System.Windows.Forms.CheckBox HideInsuranceBtnCB;
     }
 }

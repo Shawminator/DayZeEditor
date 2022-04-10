@@ -898,6 +898,9 @@ namespace DayZeEditor
             UseGarageToTradeCarCB.Checked = TraderPlusGeneralConfig.UseGarageToTradeCar == 1 ? true : false;
             DisableHeightFailSafeForReceiptDeploymentCB.Checked = TraderPlusGeneralConfig.DisableHeightFailSafeForReceiptDeployment == 1 ? true : false;
             EnableShowAllPricesCB.Checked = TraderPlusGeneralConfig.EnableShowAllPrices == 1 ? true : false;
+            HideInsuranceBtnCB.Checked = TraderPlusGeneralConfig.HideInsuranceBtn == 1 ? true : false;
+            HideGarageBtnCB.Checked = TraderPlusGeneralConfig.HideGarageBtn == 1 ? true : false;
+            HideLicenceBtnCB.Checked = TraderPlusGeneralConfig.HideLicenceBtn == 1 ? true : false;
             EnableShowAllCheckBoxCB.Checked = TraderPlusGeneralConfig.EnableShowAllCheckBox == 1 ? true : false;
             IsReceiptSaveLockCB.Checked = TraderPlusGeneralConfig.IsReceiptSaveLock == 1 ? true : false;
             IsReceiptSaveAttachmentCB.Checked = TraderPlusGeneralConfig.IsReceiptSaveAttachment == 1 ? true : false;
@@ -1047,6 +1050,24 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             TraderPlusGeneralConfig.UseGarageToTradeCar = UseGarageToTradeCarCB.Checked == true ? 1 : 0;
+            TraderPlusGeneralConfig.isDirty = true;
+        }
+        private void HideInsuranceBtnCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TraderPlusGeneralConfig.HideInsuranceBtn = HideInsuranceBtnCB.Checked == true ? 1 : 0;
+            TraderPlusGeneralConfig.isDirty = true;
+        }
+        private void HideGarageBtnCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TraderPlusGeneralConfig.HideGarageBtn = HideGarageBtnCB.Checked == true ? 1 : 0;
+            TraderPlusGeneralConfig.isDirty = true;
+        }
+        private void HideLicenceBtnCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TraderPlusGeneralConfig.HideLicenceBtn = HideLicenceBtnCB.Checked == true ? 1 : 0;
             TraderPlusGeneralConfig.isDirty = true;
         }
         private void DisableHeightFailSafeForReceiptDeploymentCB_CheckedChanged(object sender, EventArgs e)
@@ -1954,6 +1975,7 @@ namespace DayZeEditor
             int value = Convert.ToInt32(UserAnswer);
             foreach (ItemProducts item in currentTradercategory.itemProducts)
             {
+                if(item.Sellprice == -1 || item.BuyPrice == -1) { continue; }
                 decimal num1 = (decimal)item.BuyPrice / 100;
                 decimal num2 = num1 * value;
                 item.Sellprice = (int)Math.Round(num2, MidpointRounding.AwayFromZero);
@@ -2577,5 +2599,12 @@ namespace DayZeEditor
                 }
             }
         }
+
+        private void toolStripButton9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

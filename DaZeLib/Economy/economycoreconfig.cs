@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
@@ -53,6 +54,10 @@ namespace DayZeLib
                 case "events":
                     newfile.name = filename;
                     newfile.type = "events";
+                    break;
+                case "spawnabletypes":
+                    newfile.name = filename;
+                    newfile.type = "spawnabletypes";
                     break;
                 default:
                     break;
@@ -107,7 +112,7 @@ namespace DayZeLib
             List<string> filearray = File.ReadAllLines(Filename).ToList();
             foreach (String line in filearray)
             {
-                if(line.Contains("<!-- ---"))
+                if (line.Contains("<!-- ---"))
                 {
                     isDirty = true;
                     continue;
@@ -130,6 +135,18 @@ namespace DayZeLib
         {
             Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
             File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
+            var serializer = new XmlSerializer(typeof(spawnabletypes));
+            var ns = new XmlSerializerNamespaces();
+            ns.Add("", "");
+            var sw = new StringWriter();
+            sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
+            var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true, });
+            serializer.Serialize(xmlWriter, spawnabletypes, ns);
+            Console.WriteLine(sw.ToString());
+            File.WriteAllText(Filename, sw.ToString());
+        }
+        public void Savespawnabletypes()
+        {
             var serializer = new XmlSerializer(typeof(spawnabletypes));
             var ns = new XmlSerializerNamespaces();
             ns.Add("", "");
@@ -177,6 +194,21 @@ namespace DayZeLib
                     MessageBox.Show(ex.Message + "\n" + filename + "\n" + ex.InnerException.Message);
                 }
             }
+        }
+
+        public void SaveRandomPresets(string saveTime)
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
+            File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
+            var serializer = new XmlSerializer(typeof(randompresets));
+            var ns = new XmlSerializerNamespaces();
+            ns.Add("", "");
+            var sw = new StringWriter();
+            sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
+            var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true, });
+            serializer.Serialize(xmlWriter, randompresets, ns);
+            Console.WriteLine(sw.ToString());
+            File.WriteAllText(Filename, sw.ToString());
         }
     }
     public class eventscofig
@@ -301,4 +333,32 @@ namespace DayZeLib
         }
     }
 
+    public class CFGGameplayConfig
+    {
+        public cfggameplay cfggameplay { get; set; }
+        public string Filename { get; set; }
+        public bool isDirty { get; set; }
+        public CFGGameplayConfig(string filename)
+        {
+            Filename = filename;
+            System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
+            customCulture.NumberFormat.NumberDecimalSeparator = ".";
+            customCulture.NumberFormat.NumberGroupSeparator = "";
+            System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
+            try
+            {
+                cfggameplay = JsonSerializer.Deserialize<cfggameplay>(File.ReadAllText(Filename));
+                cfggameplay.isDirty = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString() + Environment.NewLine + ex.InnerException.Message.ToString());
+            }
+
+        }
+        public void SaveCFGGameplay()
+        {
+
+        }
+    }
 }

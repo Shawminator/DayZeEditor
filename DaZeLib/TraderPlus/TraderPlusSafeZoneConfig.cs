@@ -13,9 +13,9 @@ namespace DayZeLib
         [JsonIgnore]
         public const string fileName = "TraderPlusSafeZoneConfig.json";
         [JsonIgnore]
-        public const string m_Version = "2.2";
+        public const string m_Version = "2.3";
 
-        public string Version { get; set; } //current version 2.1
+        public string Version { get; set; } //current version 2.3
         public int IsHideOutActive { get; set; }
         public int EnableAfkDisconnect { get; set; }
         public int KickAfterDelay { get; set; }

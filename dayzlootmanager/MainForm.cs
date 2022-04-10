@@ -23,6 +23,13 @@ namespace DayZeEditor
         [DllImport("user32.dll")]
         static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
+        public string changeToolstrip
+        {
+            get { return toolStripStatusLabel1.Text; }
+            set { toolStripStatusLabel1.Text = value; }
+        }
+
+
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
         public string VersionNumber = "0.6.0";
@@ -78,6 +85,7 @@ namespace DayZeEditor
                     Projects.getActiveProject().seteconomydefinitions();
                     Projects.getActiveProject().setuserdefinitions();
                     Projects.getActiveProject().setplayerspawns();
+                    Projects.getActiveProject().SetCFGGameplayConfig();
                     Projects.getActiveProject().SetEvents();
                     Projects.getActiveProject().SetRandompresets();
                     Projects.getActiveProject().SetSpawnabletypes();
@@ -394,7 +402,6 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
-
         private void HelicrashManagerButton_Click(object sender, EventArgs e)
         {
 
@@ -469,14 +476,12 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
-
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             MapData data = new MapData(Application.StartupPath + "//Maps//map_output.txt");
 
            data.CreateNewData();
         }
-
         private void DiscordButton_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://discord.gg/5EHE49Kjsv");

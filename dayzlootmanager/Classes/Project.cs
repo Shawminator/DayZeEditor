@@ -49,6 +49,7 @@ namespace DayZeEditor
             string jsonString = JsonSerializer.Serialize(this, options);
             Directory.CreateDirectory(Application.StartupPath + "\\Project");
             File.WriteAllText(Application.StartupPath + "\\Project\\Projects.json", jsonString);
+            MessageBox.Show("Projects Config Saved.");
         }
         public void SetActiveProject(string profilename)
         {
@@ -95,6 +96,9 @@ namespace DayZeEditor
         public BindingList<Spawnabletypesconfig> spawnabletypesList { get; set; }
         [JsonIgnore]
         public cfgrandompresetsconfig cfgrandompresetsconfig { get; set; }
+        [JsonIgnore]
+        public CFGGameplayConfig CFGGameplayConfig { get; set; }
+
 
         [JsonIgnore]
         public int TotalNomCount { get; set; }
@@ -141,6 +145,10 @@ namespace DayZeEditor
         {
             return ModEventsList.FirstOrDefault(x => x.Filename == name);
         }
+        private Spawnabletypesconfig getspawnablwetyprbyname(string filename)
+        {
+            return spawnabletypesList.FirstOrDefault(x => x.Filename == filename);
+        }
         public void SetModListtypes()
         {
             ModTypesList = new BindingList<TypesFile>();
@@ -161,6 +169,10 @@ namespace DayZeEditor
         internal void removeevent(string filename)
         {
             ModEventsList.Remove(geteventbyname(filename));
+        }
+        internal void removeSpawnabletype(string filename)
+        {
+            spawnabletypesList.Remove(getspawnablwetyprbyname(filename));
         }
         internal void seteconomycore()
         {
@@ -206,7 +218,6 @@ namespace DayZeEditor
         {
             cfgrandompresetsconfig = new cfgrandompresetsconfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgrandompresets.xml");
         }
-
         internal void setuserdefinitions()
         {
             limitfefinitionsuser  = new Limitsdefinitionsuser(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfglimitsdefinitionuser.xml");
@@ -219,7 +230,6 @@ namespace DayZeEditor
         {
             gloabsconfig = new globalsconfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\db\\globals.xml");
         }
-
         internal void SetTotNomCount()
         {
             TotalNomCount = 0;
@@ -258,7 +268,6 @@ namespace DayZeEditor
                 }
             }
         }
-
         internal string getcorrectclassamefromtypes(string className)
         {
             type vantype = vanillaTypes.types.type.FirstOrDefault(x => x.name.ToLower() == className.ToLower());
@@ -275,6 +284,9 @@ namespace DayZeEditor
             }
             return "*** MISSING ITEM TYPE (" + className + ")***";
         }
+        internal void SetCFGGameplayConfig()
+        {
+            CFGGameplayConfig = new CFGGameplayConfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfggameplay.json");
+        }
     }
-
 }

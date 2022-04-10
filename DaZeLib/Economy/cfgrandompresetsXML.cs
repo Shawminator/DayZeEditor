@@ -42,7 +42,7 @@ namespace DayZeLib
     public partial class randompresetsAttachments
     {
 
-        private randompresetsAttachmentsItem[] itemField;
+        private BindingList<randompresetsAttachmentsItem> itemField;
 
         private decimal chanceField;
 
@@ -50,7 +50,7 @@ namespace DayZeLib
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("item")]
-        public randompresetsAttachmentsItem[] item
+        public BindingList<randompresetsAttachmentsItem> item
         {
             get
             {
@@ -61,6 +61,7 @@ namespace DayZeLib
                 this.itemField = value;
             }
         }
+
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -134,6 +135,10 @@ namespace DayZeLib
                 this.chanceField = value;
             }
         }
+        public override string ToString()
+        {
+            return name;
+        }
     }
 
     /// <remarks/>
@@ -143,7 +148,7 @@ namespace DayZeLib
     public partial class randompresetsCargo
     {
 
-        private randompresetsCargoItem[] itemField;
+        private BindingList<randompresetsCargoItem> itemField;
 
         private decimal chanceField;
 
@@ -151,7 +156,7 @@ namespace DayZeLib
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("item")]
-        public randompresetsCargoItem[] item
+        public BindingList<randompresetsCargoItem> item
         {
             get
             {
@@ -233,6 +238,10 @@ namespace DayZeLib
             {
                 this.chanceField = value;
             }
+        }
+        public override string ToString()
+        {
+            return name;
         }
     }
 

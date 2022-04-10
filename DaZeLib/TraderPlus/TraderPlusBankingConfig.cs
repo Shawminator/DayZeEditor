@@ -10,7 +10,7 @@ namespace DayZeLib
 {
     public class TraderPlusBankingConfig
     {
-        public string Version { get; set; }  //version  "2.2"
+        public string Version { get; set; }  //version  "2.3"
         public int BankingLogs { get; set; }
         public int IsCreditCarNeededForTransaction { get; set; }
         public float TransactionFees { get; set; }
@@ -20,7 +20,7 @@ namespace DayZeLib
         public string TheAmountHasBeenTransferedToTheAccount { get; set; }
 
         [JsonIgnore]
-        public const string m_version = "2.2";
+        public const string m_version = "2.3";
         [JsonIgnore]
         public const string fileName = "TraderPlusBankingConfig.json";
         [JsonIgnore]

@@ -39,15 +39,18 @@ namespace DayZeLib
         [JsonIgnore]
         private bool _isDirty;
         [JsonIgnore]
-        public const string m_Version = "2.2";
+        public const string m_Version = "2.3";
         [JsonIgnore]
         public int tempindex;
 
-        public string Version { get; set; } //version "2.2"
+        public string Version { get; set; } //version "2.3"
         public int ConvertTraderConfigToTraderPlus { get; set; }
         public int ConvertTraderConfigToTraderPlusWithStockBasedOnCE { get; set; }
         public int UseGarageToTradeCar { get; set; }
         public int DisableHeightFailSafeForReceiptDeployment { get; set; }
+        public int HideInsuranceBtn { get; set; }
+        public int HideGarageBtn { get; set; }
+        public int HideLicenceBtn { get; set; }
         public int EnableShowAllPrices { get; set; }
         public int EnableShowAllCheckBox { get; set; }
         //public int EnableStockAllCategory { get; set; } //removed in 2.1
