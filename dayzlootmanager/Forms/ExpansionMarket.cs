@@ -1885,7 +1885,12 @@ namespace DayZeEditor
                         MaxPriceThreshold = 0,
                         MinPriceThreshold = 0,
                         MaxStockThreshold = 0,
-                        MinStockThreshold = 0
+                        MinStockThreshold = 0,
+                        SellPricePercent = -1,
+                        QuantityPercent = -1,
+                        SpawnAttachments = new BindingList<string>(),
+                        Variants = new BindingList<string>()
+
                     };
                     if (!Checkifincat(NewContainer))
                     {

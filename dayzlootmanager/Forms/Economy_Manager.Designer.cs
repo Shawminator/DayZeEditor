@@ -165,10 +165,10 @@ namespace DayZeEditor
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton12 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton11 = new System.Windows.Forms.ToolStripButton();
             this.tabControl4 = new System.Windows.Forms.TabControl();
@@ -341,6 +341,25 @@ namespace DayZeEditor
             this.darkButton38 = new DarkUI.Controls.DarkButton();
             this.SpawnabletpesLB = new System.Windows.Forms.ListBox();
             this.groupBox21 = new System.Windows.Forms.GroupBox();
+            this.CargoGB = new System.Windows.Forms.GroupBox();
+            this.CargoItemLB = new System.Windows.Forms.ListBox();
+            this.cargoItemRemoveButton = new DarkUI.Controls.DarkButton();
+            this.CargoItemAddButton = new DarkUI.Controls.DarkButton();
+            this.CargoChangeItemButton = new DarkUI.Controls.DarkButton();
+            this.CargoPresetTB = new System.Windows.Forms.TextBox();
+            this.CargoItemchanceNUD = new System.Windows.Forms.NumericUpDown();
+            this.CargoItemchancelabel = new System.Windows.Forms.Label();
+            this.CarcgoChanceNUD = new System.Windows.Forms.NumericUpDown();
+            this.cargochanceLabel = new System.Windows.Forms.Label();
+            this.CargochanceCB = new System.Windows.Forms.CheckBox();
+            this.CargoPresetGB = new System.Windows.Forms.GroupBox();
+            this.CargoPresetComboBox = new System.Windows.Forms.ComboBox();
+            this.darkButton36 = new DarkUI.Controls.DarkButton();
+            this.Spaenabletypestagbox = new System.Windows.Forms.GroupBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.groupBox24 = new System.Windows.Forms.GroupBox();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.darkButton29 = new DarkUI.Controls.DarkButton();
             this.AttachmentGB = new System.Windows.Forms.GroupBox();
             this.CargoAttachmentRemoveButton = new DarkUI.Controls.DarkButton();
             this.cargoattachemntAddButton = new DarkUI.Controls.DarkButton();
@@ -355,25 +374,6 @@ namespace DayZeEditor
             this.AttachmentPresetGB = new System.Windows.Forms.GroupBox();
             this.AttachmentPresetComboBox = new System.Windows.Forms.ComboBox();
             this.darkButton37 = new DarkUI.Controls.DarkButton();
-            this.CargoGB = new System.Windows.Forms.GroupBox();
-            this.cargoItemRemoveButton = new DarkUI.Controls.DarkButton();
-            this.CargoItemAddButton = new DarkUI.Controls.DarkButton();
-            this.CargoChangeItemButton = new DarkUI.Controls.DarkButton();
-            this.CargoPresetTB = new System.Windows.Forms.TextBox();
-            this.CargoItemchanceNUD = new System.Windows.Forms.NumericUpDown();
-            this.CargoItemchancelabel = new System.Windows.Forms.Label();
-            this.CarcgoChanceNUD = new System.Windows.Forms.NumericUpDown();
-            this.cargochanceLabel = new System.Windows.Forms.Label();
-            this.CargochanceCB = new System.Windows.Forms.CheckBox();
-            this.CargoPresetGB = new System.Windows.Forms.GroupBox();
-            this.CargoPresetComboBox = new System.Windows.Forms.ComboBox();
-            this.darkButton36 = new DarkUI.Controls.DarkButton();
-            this.CargoItemLB = new System.Windows.Forms.ListBox();
-            this.Spaenabletypestagbox = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.groupBox24 = new System.Windows.Forms.GroupBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.darkButton29 = new DarkUI.Controls.DarkButton();
             this.PlayerSpawns = new System.Windows.Forms.TabPage();
             this.trackBar4 = new System.Windows.Forms.TrackBar();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -440,6 +440,32 @@ namespace DayZeEditor
             this.tabPage17 = new System.Windows.Forms.TabPage();
             this.PlayerspawntravelLB = new System.Windows.Forms.ListBox();
             this.RandomPresets = new System.Windows.Forms.TabPage();
+            this.tabControl20 = new System.Windows.Forms.TabControl();
+            this.tabPage19 = new System.Windows.Forms.TabPage();
+            this.darkButton43 = new DarkUI.Controls.DarkButton();
+            this.darkButton44 = new DarkUI.Controls.DarkButton();
+            this.darkButton45 = new DarkUI.Controls.DarkButton();
+            this.PresetItemListLB = new System.Windows.Forms.ListBox();
+            this.RandompresetCargoGB = new System.Windows.Forms.GroupBox();
+            this.RandomPresetNameTB = new System.Windows.Forms.TextBox();
+            this.darkButton46 = new DarkUI.Controls.DarkButton();
+            this.darkButton47 = new DarkUI.Controls.DarkButton();
+            this.darkButton48 = new DarkUI.Controls.DarkButton();
+            this.RandomPresetCargoItemchanceNUD = new System.Windows.Forms.NumericUpDown();
+            this.label56 = new System.Windows.Forms.Label();
+            this.RandomPresetCargoChanceNUD = new System.Windows.Forms.NumericUpDown();
+            this.label57 = new System.Windows.Forms.Label();
+            this.PresetCargoItemsLB = new System.Windows.Forms.ListBox();
+            this.RandompreseAttachmentGB = new System.Windows.Forms.GroupBox();
+            this.RandomPresetAttchemntNameTB = new System.Windows.Forms.TextBox();
+            this.darkButton41 = new DarkUI.Controls.DarkButton();
+            this.darkButton42 = new DarkUI.Controls.DarkButton();
+            this.darkButton49 = new DarkUI.Controls.DarkButton();
+            this.RandomPresetAttachmentItemchanceNUD = new System.Windows.Forms.NumericUpDown();
+            this.label58 = new System.Windows.Forms.Label();
+            this.RandomPresetAttachmentChanceNUD = new System.Windows.Forms.NumericUpDown();
+            this.label59 = new System.Windows.Forms.Label();
+            this.PresetAttachmentsItemsLB = new System.Windows.Forms.ListBox();
             this.CFGGameplay = new System.Windows.Forms.TabPage();
             this.groupBox31 = new System.Windows.Forms.GroupBox();
             this.groupBox32 = new System.Windows.Forms.GroupBox();
@@ -500,32 +526,6 @@ namespace DayZeEditor
             this.AddTypesTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteSpecificTypeTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForDuplicateTypesTSMI = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabControl20 = new System.Windows.Forms.TabControl();
-            this.tabPage19 = new System.Windows.Forms.TabPage();
-            this.darkButton43 = new DarkUI.Controls.DarkButton();
-            this.darkButton44 = new DarkUI.Controls.DarkButton();
-            this.darkButton45 = new DarkUI.Controls.DarkButton();
-            this.PresetItemListLB = new System.Windows.Forms.ListBox();
-            this.RandompresetCargoGB = new System.Windows.Forms.GroupBox();
-            this.PresetCargoItemsLB = new System.Windows.Forms.ListBox();
-            this.darkButton46 = new DarkUI.Controls.DarkButton();
-            this.darkButton47 = new DarkUI.Controls.DarkButton();
-            this.darkButton48 = new DarkUI.Controls.DarkButton();
-            this.RandomPresetCargoItemchanceNUD = new System.Windows.Forms.NumericUpDown();
-            this.label56 = new System.Windows.Forms.Label();
-            this.RandomPresetCargoChanceNUD = new System.Windows.Forms.NumericUpDown();
-            this.label57 = new System.Windows.Forms.Label();
-            this.RandompreseAttachmentGB = new System.Windows.Forms.GroupBox();
-            this.darkButton41 = new DarkUI.Controls.DarkButton();
-            this.darkButton42 = new DarkUI.Controls.DarkButton();
-            this.darkButton49 = new DarkUI.Controls.DarkButton();
-            this.RandomPresetAttachmentItemchanceNUD = new System.Windows.Forms.NumericUpDown();
-            this.label58 = new System.Windows.Forms.Label();
-            this.RandomPresetAttachmentChanceNUD = new System.Windows.Forms.NumericUpDown();
-            this.label59 = new System.Windows.Forms.Label();
-            this.PresetAttachmentsItemsLB = new System.Windows.Forms.ListBox();
-            this.RandomPresetNameTB = new System.Windows.Forms.TextBox();
-            this.RandomPresetAttchemntNameTB = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -608,16 +608,16 @@ namespace DayZeEditor
             this.tabControl10.SuspendLayout();
             this.tabPage7.SuspendLayout();
             this.groupBox21.SuspendLayout();
-            this.AttachmentGB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemAttachmentchanceNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AttachmentchanceNUD)).BeginInit();
-            this.AttachmentPresetGB.SuspendLayout();
             this.CargoGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CargoItemchanceNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CarcgoChanceNUD)).BeginInit();
             this.CargoPresetGB.SuspendLayout();
             this.Spaenabletypestagbox.SuspendLayout();
             this.groupBox24.SuspendLayout();
+            this.AttachmentGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemAttachmentchanceNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AttachmentchanceNUD)).BeginInit();
+            this.AttachmentPresetGB.SuspendLayout();
             this.PlayerSpawns.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).BeginInit();
             this.panel2.SuspendLayout();
@@ -656,6 +656,14 @@ namespace DayZeEditor
             this.tabControl18.SuspendLayout();
             this.tabPage17.SuspendLayout();
             this.RandomPresets.SuspendLayout();
+            this.tabControl20.SuspendLayout();
+            this.tabPage19.SuspendLayout();
+            this.RandompresetCargoGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RandomPresetCargoItemchanceNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RandomPresetCargoChanceNUD)).BeginInit();
+            this.RandompreseAttachmentGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RandomPresetAttachmentItemchanceNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RandomPresetAttachmentChanceNUD)).BeginInit();
             this.CFGGameplay.SuspendLayout();
             this.groupBox31.SuspendLayout();
             this.groupBox32.SuspendLayout();
@@ -678,14 +686,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.sprintStaminaModifierErcNUD)).BeginInit();
             this.groupBox23.SuspendLayout();
             this.TypesContextMenu.SuspendLayout();
-            this.tabControl20.SuspendLayout();
-            this.tabPage19.SuspendLayout();
-            this.RandompresetCargoGB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RandomPresetCargoItemchanceNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RandomPresetCargoChanceNUD)).BeginInit();
-            this.RandompreseAttachmentGB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RandomPresetAttachmentItemchanceNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RandomPresetAttachmentChanceNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -2204,7 +2204,7 @@ namespace DayZeEditor
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(62, 42);
+            this.toolStripButton2.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton2.Text = "Find Next";
             this.toolStripButton2.Visible = false;
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
@@ -2352,26 +2352,6 @@ namespace DayZeEditor
             this.toolStripButton9.Text = "Spawnable types";
             this.toolStripButton9.Click += new System.EventHandler(this.toolStripButton9_Click);
             // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.toolStripSeparator6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
-            this.toolStripSeparator6.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 28);
-            // 
-            // toolStripButton10
-            // 
-            this.toolStripButton10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.toolStripButton10.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
-            this.toolStripButton10.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton10.Image")));
-            this.toolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton10.Name = "toolStripButton10";
-            this.toolStripButton10.Size = new System.Drawing.Size(117, 25);
-            this.toolStripButton10.Text = "Player Spawn Points";
-            this.toolStripButton10.Click += new System.EventHandler(this.toolStripButton10_Click);
-            // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -2391,6 +2371,26 @@ namespace DayZeEditor
             this.toolStripButton12.Size = new System.Drawing.Size(96, 25);
             this.toolStripButton12.Text = "Random Presets";
             this.toolStripButton12.Click += new System.EventHandler(this.toolStripButton12_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripSeparator6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripSeparator6.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 28);
+            // 
+            // toolStripButton10
+            // 
+            this.toolStripButton10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripButton10.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripButton10.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton10.Image")));
+            this.toolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton10.Name = "toolStripButton10";
+            this.toolStripButton10.Size = new System.Drawing.Size(117, 25);
+            this.toolStripButton10.Text = "Player Spawn Points";
+            this.toolStripButton10.Click += new System.EventHandler(this.toolStripButton10_Click);
             // 
             // toolStripSeparator7
             // 
@@ -4519,6 +4519,237 @@ namespace DayZeEditor
             this.groupBox21.TabIndex = 60;
             this.groupBox21.TabStop = false;
             // 
+            // CargoGB
+            // 
+            this.CargoGB.Controls.Add(this.CargoItemLB);
+            this.CargoGB.Controls.Add(this.cargoItemRemoveButton);
+            this.CargoGB.Controls.Add(this.CargoItemAddButton);
+            this.CargoGB.Controls.Add(this.CargoChangeItemButton);
+            this.CargoGB.Controls.Add(this.CargoPresetTB);
+            this.CargoGB.Controls.Add(this.CargoItemchanceNUD);
+            this.CargoGB.Controls.Add(this.CargoItemchancelabel);
+            this.CargoGB.Controls.Add(this.CarcgoChanceNUD);
+            this.CargoGB.Controls.Add(this.cargochanceLabel);
+            this.CargoGB.Controls.Add(this.CargochanceCB);
+            this.CargoGB.Controls.Add(this.CargoPresetGB);
+            this.CargoGB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.CargoGB.Location = new System.Drawing.Point(6, 8);
+            this.CargoGB.Name = "CargoGB";
+            this.CargoGB.Size = new System.Drawing.Size(242, 512);
+            this.CargoGB.TabIndex = 65;
+            this.CargoGB.TabStop = false;
+            this.CargoGB.Text = "Cargo";
+            this.CargoGB.Visible = false;
+            // 
+            // CargoItemLB
+            // 
+            this.CargoItemLB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CargoItemLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CargoItemLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.CargoItemLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CargoItemLB.FormattingEnabled = true;
+            this.CargoItemLB.Location = new System.Drawing.Point(9, 42);
+            this.CargoItemLB.Name = "CargoItemLB";
+            this.CargoItemLB.Size = new System.Drawing.Size(218, 134);
+            this.CargoItemLB.TabIndex = 69;
+            this.CargoItemLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.CargoItemLB.SelectedIndexChanged += new System.EventHandler(this.listBox7_SelectedIndexChanged);
+            // 
+            // cargoItemRemoveButton
+            // 
+            this.cargoItemRemoveButton.Location = new System.Drawing.Point(9, 274);
+            this.cargoItemRemoveButton.Name = "cargoItemRemoveButton";
+            this.cargoItemRemoveButton.Padding = new System.Windows.Forms.Padding(5);
+            this.cargoItemRemoveButton.Size = new System.Drawing.Size(218, 27);
+            this.cargoItemRemoveButton.TabIndex = 72;
+            this.cargoItemRemoveButton.Text = "Remove Item";
+            this.cargoItemRemoveButton.Click += new System.EventHandler(this.darkButton39_Click);
+            // 
+            // CargoItemAddButton
+            // 
+            this.CargoItemAddButton.Location = new System.Drawing.Point(9, 241);
+            this.CargoItemAddButton.Name = "CargoItemAddButton";
+            this.CargoItemAddButton.Padding = new System.Windows.Forms.Padding(5);
+            this.CargoItemAddButton.Size = new System.Drawing.Size(218, 27);
+            this.CargoItemAddButton.TabIndex = 71;
+            this.CargoItemAddButton.Text = "Add New Item";
+            this.CargoItemAddButton.Click += new System.EventHandler(this.darkButton35_Click_1);
+            // 
+            // CargoChangeItemButton
+            // 
+            this.CargoChangeItemButton.Location = new System.Drawing.Point(9, 208);
+            this.CargoChangeItemButton.Name = "CargoChangeItemButton";
+            this.CargoChangeItemButton.Padding = new System.Windows.Forms.Padding(5);
+            this.CargoChangeItemButton.Size = new System.Drawing.Size(218, 27);
+            this.CargoChangeItemButton.TabIndex = 5;
+            this.CargoChangeItemButton.Text = "Change Item";
+            this.CargoChangeItemButton.Click += new System.EventHandler(this.darkButton35_Click);
+            // 
+            // CargoPresetTB
+            // 
+            this.CargoPresetTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CargoPresetTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CargoPresetTB.Location = new System.Drawing.Point(9, 42);
+            this.CargoPresetTB.Name = "CargoPresetTB";
+            this.CargoPresetTB.ReadOnly = true;
+            this.CargoPresetTB.Size = new System.Drawing.Size(218, 20);
+            this.CargoPresetTB.TabIndex = 70;
+            // 
+            // CargoItemchanceNUD
+            // 
+            this.CargoItemchanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CargoItemchanceNUD.DecimalPlaces = 2;
+            this.CargoItemchanceNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.CargoItemchanceNUD.Location = new System.Drawing.Point(159, 182);
+            this.CargoItemchanceNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.CargoItemchanceNUD.Name = "CargoItemchanceNUD";
+            this.CargoItemchanceNUD.Size = new System.Drawing.Size(68, 20);
+            this.CargoItemchanceNUD.TabIndex = 68;
+            this.CargoItemchanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.CargoItemchanceNUD.ValueChanged += new System.EventHandler(this.CargoItemchanceNUD_ValueChanged);
+            // 
+            // CargoItemchancelabel
+            // 
+            this.CargoItemchancelabel.AutoSize = true;
+            this.CargoItemchancelabel.ForeColor = System.Drawing.SystemColors.Control;
+            this.CargoItemchancelabel.Location = new System.Drawing.Point(87, 186);
+            this.CargoItemchancelabel.Name = "CargoItemchancelabel";
+            this.CargoItemchancelabel.Size = new System.Drawing.Size(67, 13);
+            this.CargoItemchancelabel.TabIndex = 67;
+            this.CargoItemchancelabel.Text = "Item Chance";
+            // 
+            // CarcgoChanceNUD
+            // 
+            this.CarcgoChanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CarcgoChanceNUD.DecimalPlaces = 2;
+            this.CarcgoChanceNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.CarcgoChanceNUD.Location = new System.Drawing.Point(159, 16);
+            this.CarcgoChanceNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.CarcgoChanceNUD.Name = "CarcgoChanceNUD";
+            this.CarcgoChanceNUD.Size = new System.Drawing.Size(68, 20);
+            this.CarcgoChanceNUD.TabIndex = 64;
+            this.CarcgoChanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.CarcgoChanceNUD.ValueChanged += new System.EventHandler(this.CarcgoChanceNUD_ValueChanged);
+            // 
+            // cargochanceLabel
+            // 
+            this.cargochanceLabel.AutoSize = true;
+            this.cargochanceLabel.ForeColor = System.Drawing.SystemColors.Control;
+            this.cargochanceLabel.Location = new System.Drawing.Point(109, 20);
+            this.cargochanceLabel.Name = "cargochanceLabel";
+            this.cargochanceLabel.Size = new System.Drawing.Size(44, 13);
+            this.cargochanceLabel.TabIndex = 63;
+            this.cargochanceLabel.Text = "Chance";
+            // 
+            // CargochanceCB
+            // 
+            this.CargochanceCB.AutoSize = true;
+            this.CargochanceCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CargochanceCB.Location = new System.Drawing.Point(9, 19);
+            this.CargochanceCB.Name = "CargochanceCB";
+            this.CargochanceCB.Size = new System.Drawing.Size(110, 17);
+            this.CargochanceCB.TabIndex = 62;
+            this.CargochanceCB.Text = "Is Random Preset";
+            this.CargochanceCB.UseVisualStyleBackColor = true;
+            this.CargochanceCB.CheckedChanged += new System.EventHandler(this.CargochanceCB_CheckedChanged);
+            // 
+            // CargoPresetGB
+            // 
+            this.CargoPresetGB.Controls.Add(this.CargoPresetComboBox);
+            this.CargoPresetGB.Controls.Add(this.darkButton36);
+            this.CargoPresetGB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.CargoPresetGB.Location = new System.Drawing.Point(9, 67);
+            this.CargoPresetGB.Name = "CargoPresetGB";
+            this.CargoPresetGB.Size = new System.Drawing.Size(218, 100);
+            this.CargoPresetGB.TabIndex = 8;
+            this.CargoPresetGB.TabStop = false;
+            this.CargoPresetGB.Text = "Change Cargo Preset";
+            // 
+            // CargoPresetComboBox
+            // 
+            this.CargoPresetComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CargoPresetComboBox.ForeColor = System.Drawing.SystemColors.Control;
+            this.CargoPresetComboBox.FormattingEnabled = true;
+            this.CargoPresetComboBox.Location = new System.Drawing.Point(10, 25);
+            this.CargoPresetComboBox.Name = "CargoPresetComboBox";
+            this.CargoPresetComboBox.Size = new System.Drawing.Size(202, 21);
+            this.CargoPresetComboBox.TabIndex = 1;
+            // 
+            // darkButton36
+            // 
+            this.darkButton36.Location = new System.Drawing.Point(8, 52);
+            this.darkButton36.Name = "darkButton36";
+            this.darkButton36.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton36.Size = new System.Drawing.Size(204, 27);
+            this.darkButton36.TabIndex = 5;
+            this.darkButton36.Text = "Change Preset";
+            this.darkButton36.Click += new System.EventHandler(this.darkButton36_Click);
+            // 
+            // Spaenabletypestagbox
+            // 
+            this.Spaenabletypestagbox.Controls.Add(this.textBox2);
+            this.Spaenabletypestagbox.Controls.Add(this.groupBox24);
+            this.Spaenabletypestagbox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Spaenabletypestagbox.Location = new System.Drawing.Point(6, 8);
+            this.Spaenabletypestagbox.Name = "Spaenabletypestagbox";
+            this.Spaenabletypestagbox.Size = new System.Drawing.Size(242, 154);
+            this.Spaenabletypestagbox.TabIndex = 64;
+            this.Spaenabletypestagbox.TabStop = false;
+            this.Spaenabletypestagbox.Text = "Tags";
+            this.Spaenabletypestagbox.Visible = false;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.textBox2.ForeColor = System.Drawing.SystemColors.Control;
+            this.textBox2.Location = new System.Drawing.Point(9, 19);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(218, 20);
+            this.textBox2.TabIndex = 8;
+            // 
+            // groupBox24
+            // 
+            this.groupBox24.Controls.Add(this.comboBox5);
+            this.groupBox24.Controls.Add(this.darkButton29);
+            this.groupBox24.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox24.Location = new System.Drawing.Point(9, 45);
+            this.groupBox24.Name = "groupBox24";
+            this.groupBox24.Size = new System.Drawing.Size(218, 100);
+            this.groupBox24.TabIndex = 7;
+            this.groupBox24.TabStop = false;
+            this.groupBox24.Text = "Change Tag";
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.comboBox5.ForeColor = System.Drawing.SystemColors.Control;
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Location = new System.Drawing.Point(10, 25);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(202, 21);
+            this.comboBox5.TabIndex = 1;
+            // 
+            // darkButton29
+            // 
+            this.darkButton29.Location = new System.Drawing.Point(8, 52);
+            this.darkButton29.Name = "darkButton29";
+            this.darkButton29.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton29.Size = new System.Drawing.Size(204, 27);
+            this.darkButton29.TabIndex = 5;
+            this.darkButton29.Text = "Change Tag";
+            this.darkButton29.Click += new System.EventHandler(this.darkButton29_Click);
+            // 
             // AttachmentGB
             // 
             this.AttachmentGB.Controls.Add(this.CargoAttachmentRemoveButton);
@@ -4694,237 +4925,6 @@ namespace DayZeEditor
             this.darkButton37.TabIndex = 5;
             this.darkButton37.Text = "Change Preset";
             this.darkButton37.Click += new System.EventHandler(this.darkButton37_Click);
-            // 
-            // CargoGB
-            // 
-            this.CargoGB.Controls.Add(this.CargoItemLB);
-            this.CargoGB.Controls.Add(this.cargoItemRemoveButton);
-            this.CargoGB.Controls.Add(this.CargoItemAddButton);
-            this.CargoGB.Controls.Add(this.CargoChangeItemButton);
-            this.CargoGB.Controls.Add(this.CargoPresetTB);
-            this.CargoGB.Controls.Add(this.CargoItemchanceNUD);
-            this.CargoGB.Controls.Add(this.CargoItemchancelabel);
-            this.CargoGB.Controls.Add(this.CarcgoChanceNUD);
-            this.CargoGB.Controls.Add(this.cargochanceLabel);
-            this.CargoGB.Controls.Add(this.CargochanceCB);
-            this.CargoGB.Controls.Add(this.CargoPresetGB);
-            this.CargoGB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.CargoGB.Location = new System.Drawing.Point(6, 8);
-            this.CargoGB.Name = "CargoGB";
-            this.CargoGB.Size = new System.Drawing.Size(242, 512);
-            this.CargoGB.TabIndex = 65;
-            this.CargoGB.TabStop = false;
-            this.CargoGB.Text = "Cargo";
-            this.CargoGB.Visible = false;
-            // 
-            // cargoItemRemoveButton
-            // 
-            this.cargoItemRemoveButton.Location = new System.Drawing.Point(9, 274);
-            this.cargoItemRemoveButton.Name = "cargoItemRemoveButton";
-            this.cargoItemRemoveButton.Padding = new System.Windows.Forms.Padding(5);
-            this.cargoItemRemoveButton.Size = new System.Drawing.Size(218, 27);
-            this.cargoItemRemoveButton.TabIndex = 72;
-            this.cargoItemRemoveButton.Text = "Remove Item";
-            this.cargoItemRemoveButton.Click += new System.EventHandler(this.darkButton39_Click);
-            // 
-            // CargoItemAddButton
-            // 
-            this.CargoItemAddButton.Location = new System.Drawing.Point(9, 241);
-            this.CargoItemAddButton.Name = "CargoItemAddButton";
-            this.CargoItemAddButton.Padding = new System.Windows.Forms.Padding(5);
-            this.CargoItemAddButton.Size = new System.Drawing.Size(218, 27);
-            this.CargoItemAddButton.TabIndex = 71;
-            this.CargoItemAddButton.Text = "Add New Item";
-            this.CargoItemAddButton.Click += new System.EventHandler(this.darkButton35_Click_1);
-            // 
-            // CargoChangeItemButton
-            // 
-            this.CargoChangeItemButton.Location = new System.Drawing.Point(9, 208);
-            this.CargoChangeItemButton.Name = "CargoChangeItemButton";
-            this.CargoChangeItemButton.Padding = new System.Windows.Forms.Padding(5);
-            this.CargoChangeItemButton.Size = new System.Drawing.Size(218, 27);
-            this.CargoChangeItemButton.TabIndex = 5;
-            this.CargoChangeItemButton.Text = "Change Item";
-            this.CargoChangeItemButton.Click += new System.EventHandler(this.darkButton35_Click);
-            // 
-            // CargoPresetTB
-            // 
-            this.CargoPresetTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.CargoPresetTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CargoPresetTB.Location = new System.Drawing.Point(9, 42);
-            this.CargoPresetTB.Name = "CargoPresetTB";
-            this.CargoPresetTB.ReadOnly = true;
-            this.CargoPresetTB.Size = new System.Drawing.Size(218, 20);
-            this.CargoPresetTB.TabIndex = 70;
-            // 
-            // CargoItemchanceNUD
-            // 
-            this.CargoItemchanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.CargoItemchanceNUD.DecimalPlaces = 2;
-            this.CargoItemchanceNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.CargoItemchanceNUD.Location = new System.Drawing.Point(159, 182);
-            this.CargoItemchanceNUD.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.CargoItemchanceNUD.Name = "CargoItemchanceNUD";
-            this.CargoItemchanceNUD.Size = new System.Drawing.Size(68, 20);
-            this.CargoItemchanceNUD.TabIndex = 68;
-            this.CargoItemchanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.CargoItemchanceNUD.ValueChanged += new System.EventHandler(this.CargoItemchanceNUD_ValueChanged);
-            // 
-            // CargoItemchancelabel
-            // 
-            this.CargoItemchancelabel.AutoSize = true;
-            this.CargoItemchancelabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.CargoItemchancelabel.Location = new System.Drawing.Point(87, 186);
-            this.CargoItemchancelabel.Name = "CargoItemchancelabel";
-            this.CargoItemchancelabel.Size = new System.Drawing.Size(67, 13);
-            this.CargoItemchancelabel.TabIndex = 67;
-            this.CargoItemchancelabel.Text = "Item Chance";
-            // 
-            // CarcgoChanceNUD
-            // 
-            this.CarcgoChanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.CarcgoChanceNUD.DecimalPlaces = 2;
-            this.CarcgoChanceNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.CarcgoChanceNUD.Location = new System.Drawing.Point(159, 16);
-            this.CarcgoChanceNUD.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.CarcgoChanceNUD.Name = "CarcgoChanceNUD";
-            this.CarcgoChanceNUD.Size = new System.Drawing.Size(68, 20);
-            this.CarcgoChanceNUD.TabIndex = 64;
-            this.CarcgoChanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.CarcgoChanceNUD.ValueChanged += new System.EventHandler(this.CarcgoChanceNUD_ValueChanged);
-            // 
-            // cargochanceLabel
-            // 
-            this.cargochanceLabel.AutoSize = true;
-            this.cargochanceLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.cargochanceLabel.Location = new System.Drawing.Point(109, 20);
-            this.cargochanceLabel.Name = "cargochanceLabel";
-            this.cargochanceLabel.Size = new System.Drawing.Size(44, 13);
-            this.cargochanceLabel.TabIndex = 63;
-            this.cargochanceLabel.Text = "Chance";
-            // 
-            // CargochanceCB
-            // 
-            this.CargochanceCB.AutoSize = true;
-            this.CargochanceCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CargochanceCB.Location = new System.Drawing.Point(9, 19);
-            this.CargochanceCB.Name = "CargochanceCB";
-            this.CargochanceCB.Size = new System.Drawing.Size(110, 17);
-            this.CargochanceCB.TabIndex = 62;
-            this.CargochanceCB.Text = "Is Random Preset";
-            this.CargochanceCB.UseVisualStyleBackColor = true;
-            this.CargochanceCB.CheckedChanged += new System.EventHandler(this.CargochanceCB_CheckedChanged);
-            // 
-            // CargoPresetGB
-            // 
-            this.CargoPresetGB.Controls.Add(this.CargoPresetComboBox);
-            this.CargoPresetGB.Controls.Add(this.darkButton36);
-            this.CargoPresetGB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.CargoPresetGB.Location = new System.Drawing.Point(9, 67);
-            this.CargoPresetGB.Name = "CargoPresetGB";
-            this.CargoPresetGB.Size = new System.Drawing.Size(218, 100);
-            this.CargoPresetGB.TabIndex = 8;
-            this.CargoPresetGB.TabStop = false;
-            this.CargoPresetGB.Text = "Change Cargo Preset";
-            // 
-            // CargoPresetComboBox
-            // 
-            this.CargoPresetComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.CargoPresetComboBox.ForeColor = System.Drawing.SystemColors.Control;
-            this.CargoPresetComboBox.FormattingEnabled = true;
-            this.CargoPresetComboBox.Location = new System.Drawing.Point(10, 25);
-            this.CargoPresetComboBox.Name = "CargoPresetComboBox";
-            this.CargoPresetComboBox.Size = new System.Drawing.Size(202, 21);
-            this.CargoPresetComboBox.TabIndex = 1;
-            // 
-            // darkButton36
-            // 
-            this.darkButton36.Location = new System.Drawing.Point(8, 52);
-            this.darkButton36.Name = "darkButton36";
-            this.darkButton36.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton36.Size = new System.Drawing.Size(204, 27);
-            this.darkButton36.TabIndex = 5;
-            this.darkButton36.Text = "Change Preset";
-            this.darkButton36.Click += new System.EventHandler(this.darkButton36_Click);
-            // 
-            // CargoItemLB
-            // 
-            this.CargoItemLB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CargoItemLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.CargoItemLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.CargoItemLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CargoItemLB.FormattingEnabled = true;
-            this.CargoItemLB.Location = new System.Drawing.Point(9, 42);
-            this.CargoItemLB.Name = "CargoItemLB";
-            this.CargoItemLB.Size = new System.Drawing.Size(218, 134);
-            this.CargoItemLB.TabIndex = 69;
-            this.CargoItemLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.CargoItemLB.SelectedIndexChanged += new System.EventHandler(this.listBox7_SelectedIndexChanged);
-            // 
-            // Spaenabletypestagbox
-            // 
-            this.Spaenabletypestagbox.Controls.Add(this.textBox2);
-            this.Spaenabletypestagbox.Controls.Add(this.groupBox24);
-            this.Spaenabletypestagbox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Spaenabletypestagbox.Location = new System.Drawing.Point(6, 8);
-            this.Spaenabletypestagbox.Name = "Spaenabletypestagbox";
-            this.Spaenabletypestagbox.Size = new System.Drawing.Size(242, 154);
-            this.Spaenabletypestagbox.TabIndex = 64;
-            this.Spaenabletypestagbox.TabStop = false;
-            this.Spaenabletypestagbox.Text = "Tags";
-            this.Spaenabletypestagbox.Visible = false;
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.textBox2.ForeColor = System.Drawing.SystemColors.Control;
-            this.textBox2.Location = new System.Drawing.Point(9, 19);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(218, 20);
-            this.textBox2.TabIndex = 8;
-            // 
-            // groupBox24
-            // 
-            this.groupBox24.Controls.Add(this.comboBox5);
-            this.groupBox24.Controls.Add(this.darkButton29);
-            this.groupBox24.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox24.Location = new System.Drawing.Point(9, 45);
-            this.groupBox24.Name = "groupBox24";
-            this.groupBox24.Size = new System.Drawing.Size(218, 100);
-            this.groupBox24.TabIndex = 7;
-            this.groupBox24.TabStop = false;
-            this.groupBox24.Text = "Change Tag";
-            // 
-            // comboBox5
-            // 
-            this.comboBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.comboBox5.ForeColor = System.Drawing.SystemColors.Control;
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(10, 25);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(202, 21);
-            this.comboBox5.TabIndex = 1;
-            // 
-            // darkButton29
-            // 
-            this.darkButton29.Location = new System.Drawing.Point(8, 52);
-            this.darkButton29.Name = "darkButton29";
-            this.darkButton29.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton29.Size = new System.Drawing.Size(204, 27);
-            this.darkButton29.TabIndex = 5;
-            this.darkButton29.Text = "Change Tag";
-            this.darkButton29.Click += new System.EventHandler(this.darkButton29_Click);
             // 
             // PlayerSpawns
             // 
@@ -5854,6 +5854,343 @@ namespace DayZeEditor
             this.RandomPresets.TabIndex = 6;
             this.RandomPresets.Text = "RandomPresets";
             // 
+            // tabControl20
+            // 
+            this.tabControl20.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.tabControl20.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
+            this.tabControl20.Controls.Add(this.tabPage19);
+            this.tabControl20.ItemSize = new System.Drawing.Size(0, 1);
+            this.tabControl20.Location = new System.Drawing.Point(8, 5);
+            this.tabControl20.Name = "tabControl20";
+            this.tabControl20.SelectedIndex = 0;
+            this.tabControl20.Size = new System.Drawing.Size(267, 562);
+            this.tabControl20.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.tabControl20.TabIndex = 62;
+            // 
+            // tabPage19
+            // 
+            this.tabPage19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage19.Controls.Add(this.darkButton43);
+            this.tabPage19.Controls.Add(this.darkButton44);
+            this.tabPage19.Controls.Add(this.darkButton45);
+            this.tabPage19.Controls.Add(this.PresetItemListLB);
+            this.tabPage19.Location = new System.Drawing.Point(4, 5);
+            this.tabPage19.Name = "tabPage19";
+            this.tabPage19.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage19.Size = new System.Drawing.Size(259, 553);
+            this.tabPage19.TabIndex = 0;
+            this.tabPage19.Text = "tabPage19";
+            // 
+            // darkButton43
+            // 
+            this.darkButton43.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton43.Location = new System.Drawing.Point(3, 455);
+            this.darkButton43.Name = "darkButton43";
+            this.darkButton43.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton43.Size = new System.Drawing.Size(253, 27);
+            this.darkButton43.TabIndex = 54;
+            this.darkButton43.Text = "Remove Selected";
+            this.darkButton43.Click += new System.EventHandler(this.darkButton43_Click);
+            // 
+            // darkButton44
+            // 
+            this.darkButton44.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton44.Location = new System.Drawing.Point(3, 521);
+            this.darkButton44.Name = "darkButton44";
+            this.darkButton44.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton44.Size = new System.Drawing.Size(253, 27);
+            this.darkButton44.TabIndex = 53;
+            this.darkButton44.Text = "Add Attachment";
+            this.darkButton44.Click += new System.EventHandler(this.darkButton44_Click);
+            // 
+            // darkButton45
+            // 
+            this.darkButton45.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton45.Location = new System.Drawing.Point(3, 488);
+            this.darkButton45.Name = "darkButton45";
+            this.darkButton45.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton45.Size = new System.Drawing.Size(253, 27);
+            this.darkButton45.TabIndex = 52;
+            this.darkButton45.Text = "Add Cargo";
+            this.darkButton45.Click += new System.EventHandler(this.darkButton45_Click);
+            // 
+            // PresetItemListLB
+            // 
+            this.PresetItemListLB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PresetItemListLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PresetItemListLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.PresetItemListLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PresetItemListLB.FormattingEnabled = true;
+            this.PresetItemListLB.Location = new System.Drawing.Point(3, 3);
+            this.PresetItemListLB.Name = "PresetItemListLB";
+            this.PresetItemListLB.Size = new System.Drawing.Size(253, 446);
+            this.PresetItemListLB.TabIndex = 50;
+            this.PresetItemListLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.PresetItemListLB.SelectedIndexChanged += new System.EventHandler(this.PresetItemListLB_SelectedIndexChanged);
+            // 
+            // RandompresetCargoGB
+            // 
+            this.RandompresetCargoGB.Controls.Add(this.RandomPresetNameTB);
+            this.RandompresetCargoGB.Controls.Add(this.darkButton46);
+            this.RandompresetCargoGB.Controls.Add(this.darkButton47);
+            this.RandompresetCargoGB.Controls.Add(this.darkButton48);
+            this.RandompresetCargoGB.Controls.Add(this.RandomPresetCargoItemchanceNUD);
+            this.RandompresetCargoGB.Controls.Add(this.label56);
+            this.RandompresetCargoGB.Controls.Add(this.RandomPresetCargoChanceNUD);
+            this.RandompresetCargoGB.Controls.Add(this.label57);
+            this.RandompresetCargoGB.Controls.Add(this.PresetCargoItemsLB);
+            this.RandompresetCargoGB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.RandompresetCargoGB.Location = new System.Drawing.Point(281, 5);
+            this.RandompresetCargoGB.Name = "RandompresetCargoGB";
+            this.RandompresetCargoGB.Size = new System.Drawing.Size(242, 466);
+            this.RandompresetCargoGB.TabIndex = 66;
+            this.RandompresetCargoGB.TabStop = false;
+            this.RandompresetCargoGB.Text = "Cargo";
+            this.RandompresetCargoGB.Visible = false;
+            // 
+            // RandomPresetNameTB
+            // 
+            this.RandomPresetNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.RandomPresetNameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.RandomPresetNameTB.Location = new System.Drawing.Point(9, 15);
+            this.RandomPresetNameTB.Name = "RandomPresetNameTB";
+            this.RandomPresetNameTB.Size = new System.Drawing.Size(218, 20);
+            this.RandomPresetNameTB.TabIndex = 79;
+            this.RandomPresetNameTB.TextChanged += new System.EventHandler(this.RandomPresetNameTB_TextChanged);
+            // 
+            // darkButton46
+            // 
+            this.darkButton46.Location = new System.Drawing.Point(9, 431);
+            this.darkButton46.Name = "darkButton46";
+            this.darkButton46.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton46.Size = new System.Drawing.Size(218, 27);
+            this.darkButton46.TabIndex = 72;
+            this.darkButton46.Text = "Remove Item";
+            this.darkButton46.Click += new System.EventHandler(this.darkButton46_Click);
+            // 
+            // darkButton47
+            // 
+            this.darkButton47.Location = new System.Drawing.Point(9, 398);
+            this.darkButton47.Name = "darkButton47";
+            this.darkButton47.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton47.Size = new System.Drawing.Size(218, 27);
+            this.darkButton47.TabIndex = 71;
+            this.darkButton47.Text = "Add New Item";
+            this.darkButton47.Click += new System.EventHandler(this.darkButton47_Click);
+            // 
+            // darkButton48
+            // 
+            this.darkButton48.Location = new System.Drawing.Point(9, 365);
+            this.darkButton48.Name = "darkButton48";
+            this.darkButton48.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton48.Size = new System.Drawing.Size(218, 27);
+            this.darkButton48.TabIndex = 5;
+            this.darkButton48.Text = "Change Item";
+            this.darkButton48.Click += new System.EventHandler(this.darkButton48_Click);
+            // 
+            // RandomPresetCargoItemchanceNUD
+            // 
+            this.RandomPresetCargoItemchanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.RandomPresetCargoItemchanceNUD.DecimalPlaces = 2;
+            this.RandomPresetCargoItemchanceNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.RandomPresetCargoItemchanceNUD.Location = new System.Drawing.Point(159, 339);
+            this.RandomPresetCargoItemchanceNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.RandomPresetCargoItemchanceNUD.Name = "RandomPresetCargoItemchanceNUD";
+            this.RandomPresetCargoItemchanceNUD.Size = new System.Drawing.Size(68, 20);
+            this.RandomPresetCargoItemchanceNUD.TabIndex = 68;
+            this.RandomPresetCargoItemchanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.RandomPresetCargoItemchanceNUD.ValueChanged += new System.EventHandler(this.RandomPresetCargoItemchanceNUD_ValueChanged);
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.ForeColor = System.Drawing.SystemColors.Control;
+            this.label56.Location = new System.Drawing.Point(87, 341);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(67, 13);
+            this.label56.TabIndex = 67;
+            this.label56.Text = "Item Chance";
+            // 
+            // RandomPresetCargoChanceNUD
+            // 
+            this.RandomPresetCargoChanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.RandomPresetCargoChanceNUD.DecimalPlaces = 2;
+            this.RandomPresetCargoChanceNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.RandomPresetCargoChanceNUD.Location = new System.Drawing.Point(159, 42);
+            this.RandomPresetCargoChanceNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.RandomPresetCargoChanceNUD.Name = "RandomPresetCargoChanceNUD";
+            this.RandomPresetCargoChanceNUD.Size = new System.Drawing.Size(68, 20);
+            this.RandomPresetCargoChanceNUD.TabIndex = 64;
+            this.RandomPresetCargoChanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.RandomPresetCargoChanceNUD.ValueChanged += new System.EventHandler(this.RandomPresetCargoChanceNUD_ValueChanged);
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.ForeColor = System.Drawing.SystemColors.Control;
+            this.label57.Location = new System.Drawing.Point(81, 44);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(77, 13);
+            this.label57.TabIndex = 63;
+            this.label57.Text = "Preset Chance";
+            // 
+            // PresetCargoItemsLB
+            // 
+            this.PresetCargoItemsLB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PresetCargoItemsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PresetCargoItemsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.PresetCargoItemsLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PresetCargoItemsLB.FormattingEnabled = true;
+            this.PresetCargoItemsLB.Location = new System.Drawing.Point(9, 68);
+            this.PresetCargoItemsLB.Name = "PresetCargoItemsLB";
+            this.PresetCargoItemsLB.Size = new System.Drawing.Size(218, 264);
+            this.PresetCargoItemsLB.TabIndex = 69;
+            this.PresetCargoItemsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.PresetCargoItemsLB.SelectedIndexChanged += new System.EventHandler(this.PresetCArgoItemsLB_SelectedIndexChanged);
+            // 
+            // RandompreseAttachmentGB
+            // 
+            this.RandompreseAttachmentGB.Controls.Add(this.RandomPresetAttchemntNameTB);
+            this.RandompreseAttachmentGB.Controls.Add(this.darkButton41);
+            this.RandompreseAttachmentGB.Controls.Add(this.darkButton42);
+            this.RandompreseAttachmentGB.Controls.Add(this.darkButton49);
+            this.RandompreseAttachmentGB.Controls.Add(this.RandomPresetAttachmentItemchanceNUD);
+            this.RandompreseAttachmentGB.Controls.Add(this.label58);
+            this.RandompreseAttachmentGB.Controls.Add(this.RandomPresetAttachmentChanceNUD);
+            this.RandompreseAttachmentGB.Controls.Add(this.label59);
+            this.RandompreseAttachmentGB.Controls.Add(this.PresetAttachmentsItemsLB);
+            this.RandompreseAttachmentGB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.RandompreseAttachmentGB.Location = new System.Drawing.Point(281, 5);
+            this.RandompreseAttachmentGB.Name = "RandompreseAttachmentGB";
+            this.RandompreseAttachmentGB.Size = new System.Drawing.Size(242, 466);
+            this.RandompreseAttachmentGB.TabIndex = 73;
+            this.RandompreseAttachmentGB.TabStop = false;
+            this.RandompreseAttachmentGB.Text = "Attachment";
+            this.RandompreseAttachmentGB.Visible = false;
+            // 
+            // RandomPresetAttchemntNameTB
+            // 
+            this.RandomPresetAttchemntNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.RandomPresetAttchemntNameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.RandomPresetAttchemntNameTB.Location = new System.Drawing.Point(9, 15);
+            this.RandomPresetAttchemntNameTB.Name = "RandomPresetAttchemntNameTB";
+            this.RandomPresetAttchemntNameTB.Size = new System.Drawing.Size(218, 20);
+            this.RandomPresetAttchemntNameTB.TabIndex = 80;
+            this.RandomPresetAttchemntNameTB.TextChanged += new System.EventHandler(this.RandomPresetAttchemntNameTB_TextChanged);
+            // 
+            // darkButton41
+            // 
+            this.darkButton41.Location = new System.Drawing.Point(9, 431);
+            this.darkButton41.Name = "darkButton41";
+            this.darkButton41.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton41.Size = new System.Drawing.Size(218, 27);
+            this.darkButton41.TabIndex = 72;
+            this.darkButton41.Text = "Remove Item";
+            this.darkButton41.Click += new System.EventHandler(this.darkButton41_Click);
+            // 
+            // darkButton42
+            // 
+            this.darkButton42.Location = new System.Drawing.Point(9, 398);
+            this.darkButton42.Name = "darkButton42";
+            this.darkButton42.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton42.Size = new System.Drawing.Size(218, 27);
+            this.darkButton42.TabIndex = 71;
+            this.darkButton42.Text = "Add New Item";
+            this.darkButton42.Click += new System.EventHandler(this.darkButton42_Click);
+            // 
+            // darkButton49
+            // 
+            this.darkButton49.Location = new System.Drawing.Point(9, 365);
+            this.darkButton49.Name = "darkButton49";
+            this.darkButton49.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton49.Size = new System.Drawing.Size(218, 27);
+            this.darkButton49.TabIndex = 5;
+            this.darkButton49.Text = "Change Item";
+            this.darkButton49.Click += new System.EventHandler(this.darkButton49_Click);
+            // 
+            // RandomPresetAttachmentItemchanceNUD
+            // 
+            this.RandomPresetAttachmentItemchanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.RandomPresetAttachmentItemchanceNUD.DecimalPlaces = 2;
+            this.RandomPresetAttachmentItemchanceNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.RandomPresetAttachmentItemchanceNUD.Location = new System.Drawing.Point(159, 339);
+            this.RandomPresetAttachmentItemchanceNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.RandomPresetAttachmentItemchanceNUD.Name = "RandomPresetAttachmentItemchanceNUD";
+            this.RandomPresetAttachmentItemchanceNUD.Size = new System.Drawing.Size(68, 20);
+            this.RandomPresetAttachmentItemchanceNUD.TabIndex = 68;
+            this.RandomPresetAttachmentItemchanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.RandomPresetAttachmentItemchanceNUD.ValueChanged += new System.EventHandler(this.RandomPresetAttachmentItemchanceNUD_ValueChanged);
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.ForeColor = System.Drawing.SystemColors.Control;
+            this.label58.Location = new System.Drawing.Point(91, 341);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(67, 13);
+            this.label58.TabIndex = 67;
+            this.label58.Text = "Item Chance";
+            // 
+            // RandomPresetAttachmentChanceNUD
+            // 
+            this.RandomPresetAttachmentChanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.RandomPresetAttachmentChanceNUD.DecimalPlaces = 2;
+            this.RandomPresetAttachmentChanceNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.RandomPresetAttachmentChanceNUD.Location = new System.Drawing.Point(159, 42);
+            this.RandomPresetAttachmentChanceNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.RandomPresetAttachmentChanceNUD.Name = "RandomPresetAttachmentChanceNUD";
+            this.RandomPresetAttachmentChanceNUD.Size = new System.Drawing.Size(68, 20);
+            this.RandomPresetAttachmentChanceNUD.TabIndex = 64;
+            this.RandomPresetAttachmentChanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.RandomPresetAttachmentChanceNUD.ValueChanged += new System.EventHandler(this.RandomPresetAttachmentChanceNUD_ValueChanged);
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.ForeColor = System.Drawing.SystemColors.Control;
+            this.label59.Location = new System.Drawing.Point(81, 44);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(77, 13);
+            this.label59.TabIndex = 63;
+            this.label59.Text = "Preset Chance";
+            // 
+            // PresetAttachmentsItemsLB
+            // 
+            this.PresetAttachmentsItemsLB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PresetAttachmentsItemsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PresetAttachmentsItemsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.PresetAttachmentsItemsLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PresetAttachmentsItemsLB.FormattingEnabled = true;
+            this.PresetAttachmentsItemsLB.Location = new System.Drawing.Point(9, 68);
+            this.PresetAttachmentsItemsLB.Name = "PresetAttachmentsItemsLB";
+            this.PresetAttachmentsItemsLB.Size = new System.Drawing.Size(218, 264);
+            this.PresetAttachmentsItemsLB.TabIndex = 69;
+            this.PresetAttachmentsItemsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.PresetAttachmentsItemsLB.SelectedIndexChanged += new System.EventHandler(this.PresetAttachmentsItemsLB_SelectedIndexChanged);
+            // 
             // CFGGameplay
             // 
             this.CFGGameplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
@@ -6586,343 +6923,6 @@ namespace DayZeEditor
             this.checkForDuplicateTypesTSMI.Text = "Check for Duplicate Types";
             this.checkForDuplicateTypesTSMI.Click += new System.EventHandler(this.checkForDuplicateTypesToolStripMenuItem_Click);
             // 
-            // tabControl20
-            // 
-            this.tabControl20.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.tabControl20.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
-            this.tabControl20.Controls.Add(this.tabPage19);
-            this.tabControl20.ItemSize = new System.Drawing.Size(0, 1);
-            this.tabControl20.Location = new System.Drawing.Point(8, 5);
-            this.tabControl20.Name = "tabControl20";
-            this.tabControl20.SelectedIndex = 0;
-            this.tabControl20.Size = new System.Drawing.Size(267, 562);
-            this.tabControl20.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabControl20.TabIndex = 62;
-            // 
-            // tabPage19
-            // 
-            this.tabPage19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.tabPage19.Controls.Add(this.darkButton43);
-            this.tabPage19.Controls.Add(this.darkButton44);
-            this.tabPage19.Controls.Add(this.darkButton45);
-            this.tabPage19.Controls.Add(this.PresetItemListLB);
-            this.tabPage19.Location = new System.Drawing.Point(4, 5);
-            this.tabPage19.Name = "tabPage19";
-            this.tabPage19.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage19.Size = new System.Drawing.Size(259, 553);
-            this.tabPage19.TabIndex = 0;
-            this.tabPage19.Text = "tabPage19";
-            // 
-            // darkButton43
-            // 
-            this.darkButton43.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton43.Location = new System.Drawing.Point(3, 455);
-            this.darkButton43.Name = "darkButton43";
-            this.darkButton43.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton43.Size = new System.Drawing.Size(253, 27);
-            this.darkButton43.TabIndex = 54;
-            this.darkButton43.Text = "Remove Selected";
-            this.darkButton43.Click += new System.EventHandler(this.darkButton43_Click);
-            // 
-            // darkButton44
-            // 
-            this.darkButton44.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton44.Location = new System.Drawing.Point(3, 521);
-            this.darkButton44.Name = "darkButton44";
-            this.darkButton44.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton44.Size = new System.Drawing.Size(253, 27);
-            this.darkButton44.TabIndex = 53;
-            this.darkButton44.Text = "Add Attachment";
-            this.darkButton44.Click += new System.EventHandler(this.darkButton44_Click);
-            // 
-            // darkButton45
-            // 
-            this.darkButton45.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton45.Location = new System.Drawing.Point(3, 488);
-            this.darkButton45.Name = "darkButton45";
-            this.darkButton45.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton45.Size = new System.Drawing.Size(253, 27);
-            this.darkButton45.TabIndex = 52;
-            this.darkButton45.Text = "Add Cargo";
-            this.darkButton45.Click += new System.EventHandler(this.darkButton45_Click);
-            // 
-            // PresetItemListLB
-            // 
-            this.PresetItemListLB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PresetItemListLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.PresetItemListLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.PresetItemListLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.PresetItemListLB.FormattingEnabled = true;
-            this.PresetItemListLB.Location = new System.Drawing.Point(3, 3);
-            this.PresetItemListLB.Name = "PresetItemListLB";
-            this.PresetItemListLB.Size = new System.Drawing.Size(253, 446);
-            this.PresetItemListLB.TabIndex = 50;
-            this.PresetItemListLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.PresetItemListLB.SelectedIndexChanged += new System.EventHandler(this.PresetItemListLB_SelectedIndexChanged);
-            // 
-            // RandompresetCargoGB
-            // 
-            this.RandompresetCargoGB.Controls.Add(this.RandomPresetNameTB);
-            this.RandompresetCargoGB.Controls.Add(this.darkButton46);
-            this.RandompresetCargoGB.Controls.Add(this.darkButton47);
-            this.RandompresetCargoGB.Controls.Add(this.darkButton48);
-            this.RandompresetCargoGB.Controls.Add(this.RandomPresetCargoItemchanceNUD);
-            this.RandompresetCargoGB.Controls.Add(this.label56);
-            this.RandompresetCargoGB.Controls.Add(this.RandomPresetCargoChanceNUD);
-            this.RandompresetCargoGB.Controls.Add(this.label57);
-            this.RandompresetCargoGB.Controls.Add(this.PresetCargoItemsLB);
-            this.RandompresetCargoGB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.RandompresetCargoGB.Location = new System.Drawing.Point(281, 5);
-            this.RandompresetCargoGB.Name = "RandompresetCargoGB";
-            this.RandompresetCargoGB.Size = new System.Drawing.Size(242, 466);
-            this.RandompresetCargoGB.TabIndex = 66;
-            this.RandompresetCargoGB.TabStop = false;
-            this.RandompresetCargoGB.Text = "Cargo";
-            this.RandompresetCargoGB.Visible = false;
-            // 
-            // PresetCargoItemsLB
-            // 
-            this.PresetCargoItemsLB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PresetCargoItemsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.PresetCargoItemsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.PresetCargoItemsLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.PresetCargoItemsLB.FormattingEnabled = true;
-            this.PresetCargoItemsLB.Location = new System.Drawing.Point(9, 68);
-            this.PresetCargoItemsLB.Name = "PresetCargoItemsLB";
-            this.PresetCargoItemsLB.Size = new System.Drawing.Size(218, 264);
-            this.PresetCargoItemsLB.TabIndex = 69;
-            this.PresetCargoItemsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.PresetCargoItemsLB.SelectedIndexChanged += new System.EventHandler(this.PresetCArgoItemsLB_SelectedIndexChanged);
-            // 
-            // darkButton46
-            // 
-            this.darkButton46.Location = new System.Drawing.Point(9, 431);
-            this.darkButton46.Name = "darkButton46";
-            this.darkButton46.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton46.Size = new System.Drawing.Size(218, 27);
-            this.darkButton46.TabIndex = 72;
-            this.darkButton46.Text = "Remove Item";
-            this.darkButton46.Click += new System.EventHandler(this.darkButton46_Click);
-            // 
-            // darkButton47
-            // 
-            this.darkButton47.Location = new System.Drawing.Point(9, 398);
-            this.darkButton47.Name = "darkButton47";
-            this.darkButton47.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton47.Size = new System.Drawing.Size(218, 27);
-            this.darkButton47.TabIndex = 71;
-            this.darkButton47.Text = "Add New Item";
-            this.darkButton47.Click += new System.EventHandler(this.darkButton47_Click);
-            // 
-            // darkButton48
-            // 
-            this.darkButton48.Location = new System.Drawing.Point(9, 365);
-            this.darkButton48.Name = "darkButton48";
-            this.darkButton48.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton48.Size = new System.Drawing.Size(218, 27);
-            this.darkButton48.TabIndex = 5;
-            this.darkButton48.Text = "Change Item";
-            this.darkButton48.Click += new System.EventHandler(this.darkButton48_Click);
-            // 
-            // RandomPresetCargoItemchanceNUD
-            // 
-            this.RandomPresetCargoItemchanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.RandomPresetCargoItemchanceNUD.DecimalPlaces = 2;
-            this.RandomPresetCargoItemchanceNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.RandomPresetCargoItemchanceNUD.Location = new System.Drawing.Point(159, 339);
-            this.RandomPresetCargoItemchanceNUD.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.RandomPresetCargoItemchanceNUD.Name = "RandomPresetCargoItemchanceNUD";
-            this.RandomPresetCargoItemchanceNUD.Size = new System.Drawing.Size(68, 20);
-            this.RandomPresetCargoItemchanceNUD.TabIndex = 68;
-            this.RandomPresetCargoItemchanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.RandomPresetCargoItemchanceNUD.ValueChanged += new System.EventHandler(this.RandomPresetCargoItemchanceNUD_ValueChanged);
-            // 
-            // label56
-            // 
-            this.label56.AutoSize = true;
-            this.label56.ForeColor = System.Drawing.SystemColors.Control;
-            this.label56.Location = new System.Drawing.Point(87, 341);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(67, 13);
-            this.label56.TabIndex = 67;
-            this.label56.Text = "Item Chance";
-            // 
-            // RandomPresetCargoChanceNUD
-            // 
-            this.RandomPresetCargoChanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.RandomPresetCargoChanceNUD.DecimalPlaces = 2;
-            this.RandomPresetCargoChanceNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.RandomPresetCargoChanceNUD.Location = new System.Drawing.Point(159, 42);
-            this.RandomPresetCargoChanceNUD.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.RandomPresetCargoChanceNUD.Name = "RandomPresetCargoChanceNUD";
-            this.RandomPresetCargoChanceNUD.Size = new System.Drawing.Size(68, 20);
-            this.RandomPresetCargoChanceNUD.TabIndex = 64;
-            this.RandomPresetCargoChanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.RandomPresetCargoChanceNUD.ValueChanged += new System.EventHandler(this.RandomPresetCargoChanceNUD_ValueChanged);
-            // 
-            // label57
-            // 
-            this.label57.AutoSize = true;
-            this.label57.ForeColor = System.Drawing.SystemColors.Control;
-            this.label57.Location = new System.Drawing.Point(81, 44);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(77, 13);
-            this.label57.TabIndex = 63;
-            this.label57.Text = "Preset Chance";
-            // 
-            // RandompreseAttachmentGB
-            // 
-            this.RandompreseAttachmentGB.Controls.Add(this.RandomPresetAttchemntNameTB);
-            this.RandompreseAttachmentGB.Controls.Add(this.darkButton41);
-            this.RandompreseAttachmentGB.Controls.Add(this.darkButton42);
-            this.RandompreseAttachmentGB.Controls.Add(this.darkButton49);
-            this.RandompreseAttachmentGB.Controls.Add(this.RandomPresetAttachmentItemchanceNUD);
-            this.RandompreseAttachmentGB.Controls.Add(this.label58);
-            this.RandompreseAttachmentGB.Controls.Add(this.RandomPresetAttachmentChanceNUD);
-            this.RandompreseAttachmentGB.Controls.Add(this.label59);
-            this.RandompreseAttachmentGB.Controls.Add(this.PresetAttachmentsItemsLB);
-            this.RandompreseAttachmentGB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.RandompreseAttachmentGB.Location = new System.Drawing.Point(281, 5);
-            this.RandompreseAttachmentGB.Name = "RandompreseAttachmentGB";
-            this.RandompreseAttachmentGB.Size = new System.Drawing.Size(242, 466);
-            this.RandompreseAttachmentGB.TabIndex = 73;
-            this.RandompreseAttachmentGB.TabStop = false;
-            this.RandompreseAttachmentGB.Text = "Attachment";
-            this.RandompreseAttachmentGB.Visible = false;
-            // 
-            // darkButton41
-            // 
-            this.darkButton41.Location = new System.Drawing.Point(9, 431);
-            this.darkButton41.Name = "darkButton41";
-            this.darkButton41.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton41.Size = new System.Drawing.Size(218, 27);
-            this.darkButton41.TabIndex = 72;
-            this.darkButton41.Text = "Remove Item";
-            this.darkButton41.Click += new System.EventHandler(this.darkButton41_Click);
-            // 
-            // darkButton42
-            // 
-            this.darkButton42.Location = new System.Drawing.Point(9, 398);
-            this.darkButton42.Name = "darkButton42";
-            this.darkButton42.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton42.Size = new System.Drawing.Size(218, 27);
-            this.darkButton42.TabIndex = 71;
-            this.darkButton42.Text = "Add New Item";
-            this.darkButton42.Click += new System.EventHandler(this.darkButton42_Click);
-            // 
-            // darkButton49
-            // 
-            this.darkButton49.Location = new System.Drawing.Point(9, 365);
-            this.darkButton49.Name = "darkButton49";
-            this.darkButton49.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton49.Size = new System.Drawing.Size(218, 27);
-            this.darkButton49.TabIndex = 5;
-            this.darkButton49.Text = "Change Item";
-            this.darkButton49.Click += new System.EventHandler(this.darkButton49_Click);
-            // 
-            // RandomPresetAttachmentItemchanceNUD
-            // 
-            this.RandomPresetAttachmentItemchanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.RandomPresetAttachmentItemchanceNUD.DecimalPlaces = 2;
-            this.RandomPresetAttachmentItemchanceNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.RandomPresetAttachmentItemchanceNUD.Location = new System.Drawing.Point(159, 339);
-            this.RandomPresetAttachmentItemchanceNUD.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.RandomPresetAttachmentItemchanceNUD.Name = "RandomPresetAttachmentItemchanceNUD";
-            this.RandomPresetAttachmentItemchanceNUD.Size = new System.Drawing.Size(68, 20);
-            this.RandomPresetAttachmentItemchanceNUD.TabIndex = 68;
-            this.RandomPresetAttachmentItemchanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.RandomPresetAttachmentItemchanceNUD.ValueChanged += new System.EventHandler(this.RandomPresetAttachmentItemchanceNUD_ValueChanged);
-            // 
-            // label58
-            // 
-            this.label58.AutoSize = true;
-            this.label58.ForeColor = System.Drawing.SystemColors.Control;
-            this.label58.Location = new System.Drawing.Point(91, 341);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(67, 13);
-            this.label58.TabIndex = 67;
-            this.label58.Text = "Item Chance";
-            // 
-            // RandomPresetAttachmentChanceNUD
-            // 
-            this.RandomPresetAttachmentChanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.RandomPresetAttachmentChanceNUD.DecimalPlaces = 2;
-            this.RandomPresetAttachmentChanceNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.RandomPresetAttachmentChanceNUD.Location = new System.Drawing.Point(159, 42);
-            this.RandomPresetAttachmentChanceNUD.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.RandomPresetAttachmentChanceNUD.Name = "RandomPresetAttachmentChanceNUD";
-            this.RandomPresetAttachmentChanceNUD.Size = new System.Drawing.Size(68, 20);
-            this.RandomPresetAttachmentChanceNUD.TabIndex = 64;
-            this.RandomPresetAttachmentChanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.RandomPresetAttachmentChanceNUD.ValueChanged += new System.EventHandler(this.RandomPresetAttachmentChanceNUD_ValueChanged);
-            // 
-            // label59
-            // 
-            this.label59.AutoSize = true;
-            this.label59.ForeColor = System.Drawing.SystemColors.Control;
-            this.label59.Location = new System.Drawing.Point(81, 44);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(77, 13);
-            this.label59.TabIndex = 63;
-            this.label59.Text = "Preset Chance";
-            // 
-            // PresetAttachmentsItemsLB
-            // 
-            this.PresetAttachmentsItemsLB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PresetAttachmentsItemsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.PresetAttachmentsItemsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.PresetAttachmentsItemsLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.PresetAttachmentsItemsLB.FormattingEnabled = true;
-            this.PresetAttachmentsItemsLB.Location = new System.Drawing.Point(9, 68);
-            this.PresetAttachmentsItemsLB.Name = "PresetAttachmentsItemsLB";
-            this.PresetAttachmentsItemsLB.Size = new System.Drawing.Size(218, 264);
-            this.PresetAttachmentsItemsLB.TabIndex = 69;
-            this.PresetAttachmentsItemsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.PresetAttachmentsItemsLB.SelectedIndexChanged += new System.EventHandler(this.PresetAttachmentsItemsLB_SelectedIndexChanged);
-            // 
-            // RandomPresetNameTB
-            // 
-            this.RandomPresetNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.RandomPresetNameTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.RandomPresetNameTB.Location = new System.Drawing.Point(9, 15);
-            this.RandomPresetNameTB.Name = "RandomPresetNameTB";
-            this.RandomPresetNameTB.Size = new System.Drawing.Size(218, 20);
-            this.RandomPresetNameTB.TabIndex = 79;
-            this.RandomPresetNameTB.TextChanged += new System.EventHandler(this.RandomPresetNameTB_TextChanged);
-            // 
-            // RandomPresetAttchemntNameTB
-            // 
-            this.RandomPresetAttchemntNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.RandomPresetAttchemntNameTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.RandomPresetAttchemntNameTB.Location = new System.Drawing.Point(9, 15);
-            this.RandomPresetAttchemntNameTB.Name = "RandomPresetAttchemntNameTB";
-            this.RandomPresetAttchemntNameTB.Size = new System.Drawing.Size(218, 20);
-            this.RandomPresetAttchemntNameTB.TabIndex = 80;
-            this.RandomPresetAttchemntNameTB.TextChanged += new System.EventHandler(this.RandomPresetAttchemntNameTB_TextChanged);
-            // 
             // Economy_Manager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -7036,11 +7036,6 @@ namespace DayZeEditor
             this.tabControl10.ResumeLayout(false);
             this.tabPage7.ResumeLayout(false);
             this.groupBox21.ResumeLayout(false);
-            this.AttachmentGB.ResumeLayout(false);
-            this.AttachmentGB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemAttachmentchanceNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AttachmentchanceNUD)).EndInit();
-            this.AttachmentPresetGB.ResumeLayout(false);
             this.CargoGB.ResumeLayout(false);
             this.CargoGB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CargoItemchanceNUD)).EndInit();
@@ -7049,6 +7044,11 @@ namespace DayZeEditor
             this.Spaenabletypestagbox.ResumeLayout(false);
             this.Spaenabletypestagbox.PerformLayout();
             this.groupBox24.ResumeLayout(false);
+            this.AttachmentGB.ResumeLayout(false);
+            this.AttachmentGB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemAttachmentchanceNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AttachmentchanceNUD)).EndInit();
+            this.AttachmentPresetGB.ResumeLayout(false);
             this.PlayerSpawns.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -7092,6 +7092,16 @@ namespace DayZeEditor
             this.tabControl18.ResumeLayout(false);
             this.tabPage17.ResumeLayout(false);
             this.RandomPresets.ResumeLayout(false);
+            this.tabControl20.ResumeLayout(false);
+            this.tabPage19.ResumeLayout(false);
+            this.RandompresetCargoGB.ResumeLayout(false);
+            this.RandompresetCargoGB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RandomPresetCargoItemchanceNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RandomPresetCargoChanceNUD)).EndInit();
+            this.RandompreseAttachmentGB.ResumeLayout(false);
+            this.RandompreseAttachmentGB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RandomPresetAttachmentItemchanceNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RandomPresetAttachmentChanceNUD)).EndInit();
             this.CFGGameplay.ResumeLayout(false);
             this.CFGGameplay.PerformLayout();
             this.groupBox31.ResumeLayout(false);
@@ -7122,16 +7132,6 @@ namespace DayZeEditor
             this.groupBox23.ResumeLayout(false);
             this.groupBox23.PerformLayout();
             this.TypesContextMenu.ResumeLayout(false);
-            this.tabControl20.ResumeLayout(false);
-            this.tabPage19.ResumeLayout(false);
-            this.RandompresetCargoGB.ResumeLayout(false);
-            this.RandompresetCargoGB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RandomPresetCargoItemchanceNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RandomPresetCargoChanceNUD)).EndInit();
-            this.RandompreseAttachmentGB.ResumeLayout(false);
-            this.RandompreseAttachmentGB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RandomPresetAttachmentItemchanceNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RandomPresetAttachmentChanceNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
