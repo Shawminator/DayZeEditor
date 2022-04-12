@@ -23,6 +23,8 @@ namespace DayZeEditor
     public partial class Economy_Manager : DarkForm
     {
         public bool isUserInteraction = true;
+
+
         public Project currentproject { get; set; }
         public int ZoneScale = 1;
 
@@ -96,6 +98,7 @@ namespace DayZeEditor
             populateEconmyTreeview();
             LoadPlayerSpawns();
             LoadCFGGamelplay();
+            LoadContaminatoedArea();
 
             SetSummarytiers();
             NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
@@ -129,7 +132,6 @@ namespace DayZeEditor
             CargoPresetComboBox.DataSource = cargoItems;
             AttachmentPresetComboBox.DataSource = cargoAttachments;
         }
-
         private void populateEconmyTreeview()
         {
             var serializer = new XmlSerializer(typeof(economycore));
@@ -225,13 +227,20 @@ namespace DayZeEditor
             }
             if (currentproject.CFGGameplayConfig != null)
             {
-                if (cfggameplay.isDirty)
+                if (currentproject.CFGGameplayConfig.isDirty)
                 {
-                    cfggameplay.isDirty = false;
-                    var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-                    string jsonString = JsonSerializer.Serialize(cfggameplay, options);
-                    File.WriteAllText(currentproject.CFGGameplayConfig.Filename, jsonString);
+                    currentproject.CFGGameplayConfig.SaveCFGGameplay();
+                    currentproject.CFGGameplayConfig.isDirty = false;
                     midifiedfiles.Add(Path.GetFileName(currentproject.CFGGameplayConfig.Filename) + " Saved....");
+                }
+            }
+            if (currentproject.cfgEffectAreaConfig != null)
+            {
+                if (currentproject.cfgEffectAreaConfig.isDirty)
+                {
+                    currentproject.cfgEffectAreaConfig.SavecfgEffectArea();
+                    currentproject.cfgEffectAreaConfig.isDirty = false;
+                    midifiedfiles.Add(Path.GetFileName(currentproject.cfgEffectAreaConfig.Filename) + " Saved....");
                 }
             }
 
@@ -305,6 +314,12 @@ namespace DayZeEditor
             if (tabControl3.SelectedIndex == 7)
                 toolStripButton11.Checked = true;
         }
+        private void toolStripButton13_Click(object sender, EventArgs e)
+        {
+            tabControl4.SelectedIndex = 8;
+            if (tabControl3.SelectedIndex == 8)
+                toolStripButton13.Checked = true;
+        }
         private void tabControl4_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (tabControl4.SelectedIndex)
@@ -317,6 +332,7 @@ namespace DayZeEditor
                     toolStripButton10.Checked = false;
                     toolStripButton11.Checked = false;
                     toolStripButton12.Checked = false;
+                    toolStripButton13.Checked = false;
                     break;
                 case 1:
                     toolStripButton3.Checked = false;
@@ -326,6 +342,7 @@ namespace DayZeEditor
                     toolStripButton10.Checked = false;
                     toolStripButton11.Checked = false;
                     toolStripButton12.Checked = false;
+                    toolStripButton13.Checked = false;
                     break;
                 case 2:
                     toolStripButton3.Checked = false;
@@ -335,6 +352,7 @@ namespace DayZeEditor
                     toolStripButton10.Checked = false;
                     toolStripButton11.Checked = false;
                     toolStripButton12.Checked = false;
+                    toolStripButton13.Checked = false;
                     break;
                 case 3:
                     toolStripButton3.Checked = false;
@@ -344,6 +362,7 @@ namespace DayZeEditor
                     toolStripButton10.Checked = false;
                     toolStripButton11.Checked = false;
                     toolStripButton12.Checked = false;
+                    toolStripButton13.Checked = false;
                     break;
                 case 4:
                     toolStripButton3.Checked = false;
@@ -353,6 +372,7 @@ namespace DayZeEditor
                     toolStripButton10.Checked = false;
                     toolStripButton11.Checked = false;
                     toolStripButton12.Checked = false;
+                    toolStripButton13.Checked = false;
                     break;
                 case 5:
                     toolStripButton3.Checked = false;
@@ -362,6 +382,7 @@ namespace DayZeEditor
                     toolStripButton9.Checked = false;
                     toolStripButton11.Checked = false;
                     toolStripButton12.Checked = false;
+                    toolStripButton13.Checked = false;
                     pictureBox2.Invalidate();
                     break;
                 case 6:
@@ -372,6 +393,7 @@ namespace DayZeEditor
                     toolStripButton9.Checked = false;
                     toolStripButton10.Checked = false;
                     toolStripButton12.Checked = false;
+                    toolStripButton13.Checked = false;
                     break;
                 case 7:
                     toolStripButton3.Checked = false;
@@ -381,6 +403,17 @@ namespace DayZeEditor
                     toolStripButton9.Checked = false;
                     toolStripButton10.Checked = false;
                     toolStripButton11.Checked = false;
+                    toolStripButton13.Checked = false;
+                    break;
+                case 8:
+                    toolStripButton3.Checked = false;
+                    toolStripButton5.Checked = false;
+                    toolStripButton6.Checked = false;
+                    toolStripButton8.Checked = false;
+                    toolStripButton9.Checked = false;
+                    toolStripButton10.Checked = false;
+                    toolStripButton11.Checked = false;
+                    toolStripButton12.Checked = false;
                     break;
                 default:
                     break;
@@ -3097,7 +3130,7 @@ namespace DayZeEditor
                 string Colourname = "0x" + cpick.Color.Name.ToLower();
                 cfggameplay.UIData.HitIndicationData.hitDirectionIndicatorColorStr = Colourname;
                 pb.Invalidate();
-                cfggameplay.isDirty = true;
+                currentproject.CFGGameplayConfig.isDirty = true;
             }
         }
         private void m_Color_Paint(object sender, PaintEventArgs e)
@@ -3116,193 +3149,191 @@ namespace DayZeEditor
         {
             if (!isUserInteraction) { return; }
             cfggameplay.GeneralData.disableBaseDamage = disableBaseDamageCB.Checked == true ? 1 : 0;
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disableContainerDamageCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.GeneralData.disableContainerDamage = disableContainerDamageCB.Checked == true ? 1 : 0;
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disableRespawnDialogCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.GeneralData.disableRespawnDialog = disableRespawnDialogCB.Checked == true ? 1 : 0;
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disablePersonalLightCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.PlayerData.disablePersonalLight = disablePersonalLightCB.Checked == true ? 1 : 0;
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void sprintStaminaModifierErcNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.PlayerData.StaminaData.sprintStaminaModifierErc = (decimal)Math.Round(sprintStaminaModifierErcNUD.Value, 2);
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void sprintStaminaModifierCroNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.PlayerData.StaminaData.sprintStaminaModifierCro = (decimal)Math.Round(sprintStaminaModifierCroNUD.Value, 2);
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void staminaWeightLimitThresholdNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.PlayerData.StaminaData.staminaWeightLimitThreshold = (decimal)Math.Round(staminaWeightLimitThresholdNUD.Value, 2);
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void staminaMaxNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.PlayerData.StaminaData.staminaMax = (decimal)Math.Round(staminaMaxNUD.Value, 2);
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void staminaKgToStaminaPercentPenaltyNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.PlayerData.StaminaData.staminaKgToStaminaPercentPenalty = (decimal)Math.Round(staminaKgToStaminaPercentPenaltyNUD.Value, 2);
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void staminaMinCapNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.PlayerData.StaminaData.staminaMinCap = (decimal)Math.Round(staminaMinCapNUD.Value, 2);
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disableIsCollidingBBoxCheckCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.BaseBuildingData.HologramData.disableIsCollidingBBoxCheck = disableIsCollidingBBoxCheckCB.Checked == true ? 1 : 0;
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disableIsCollidingPlayerCheckCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.BaseBuildingData.HologramData.disableIsCollidingPlayerCheck = disableIsCollidingPlayerCheckCB.Checked == true ? 1 : 0;
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disableIsClippingRoofCheckCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.BaseBuildingData.HologramData.disableIsClippingRoofCheck = disableIsClippingRoofCheckCB.Checked == true ? 1 : 0;
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disableIsBaseViableCheckCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.BaseBuildingData.HologramData.disableIsBaseViableCheck = disableIsBaseViableCheckCB.Checked == true ? 1 : 0;
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disableIsCollidingGPlotCheckCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.BaseBuildingData.HologramData.disableIsCollidingGPlotCheck = disableIsCollidingGPlotCheckCB.Checked == true ? 1 : 0;
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disableIsCollidingAngleCheckCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.BaseBuildingData.HologramData.disableIsCollidingAngleCheck = disableIsCollidingAngleCheckCB.Checked == true ? 1 : 0;
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disableIsPlacementPermittedCheckCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.BaseBuildingData.HologramData.disableIsPlacementPermittedCheck = disableIsPlacementPermittedCheckCB.Checked == true ? 1 : 0;
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disableHeightPlacementCheckCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.BaseBuildingData.HologramData.disableHeightPlacementCheck = disableHeightPlacementCheckCB.Checked == true ? 1 : 0;
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disableIsUnderwaterCheckCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.BaseBuildingData.HologramData.disableIsUnderwaterCheck = disableIsUnderwaterCheckCB.Checked == true ? 1 : 0;
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disableIsInTerrainCheckCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.BaseBuildingData.HologramData.disableIsInTerrainCheck = disableIsInTerrainCheckCB.Checked == true ? 1 : 0;
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disablePerformRoofCheckCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.BaseBuildingData.ConstructionData.disablePerformRoofCheck = disablePerformRoofCheckCB.Checked == true ? 1 : 0;
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disableIsCollidingCheckCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.BaseBuildingData.ConstructionData.disableIsCollidingCheck = disableIsCollidingCheckCB.Checked == true ? 1 : 0;
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disableDistanceCheckCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.BaseBuildingData.ConstructionData.disableDistanceCheck = disableDistanceCheckCB.Checked == true ? 1 : 0;
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void hitDirectionOverrideEnabledCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.UIData.HitIndicationData.hitDirectionOverrideEnabled = hitDirectionOverrideEnabledCB.Checked == true ? 1 : 0;
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void hitDirectionBehaviourCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.UIData.HitIndicationData.hitDirectionBehaviour = hitDirectionBehaviourCB.Checked == true ? 1 : 0;
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void hitDirectionStyleCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.UIData.HitIndicationData.hitDirectionStyle = hitDirectionStyleCB.Checked == true ? 1 : 0;
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void hitDirectionMaxDurationNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.UIData.HitIndicationData.hitDirectionMaxDuration = (decimal)Math.Round(hitDirectionMaxDurationNUD.Value, 2);
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void hitDirectionBreakPointRelativeNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.UIData.HitIndicationData.hitDirectionBreakPointRelative = (decimal)Math.Round(hitDirectionBreakPointRelativeNUD.Value, 2);
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void hitDirectionScatterNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.UIData.HitIndicationData.hitDirectionScatter = (decimal)Math.Round(hitDirectionScatterNUD.Value, 2);
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void hitIndicationPostProcessEnabledCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.UIData.HitIndicationData.hitIndicationPostProcessEnabled = hitIndicationPostProcessEnabledCB.Checked == true ? 1 : 0;
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void lightingConfigNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             cfggameplay.WorldsData.lightingConfig = (int)lightingConfigNUD.Value;
-            cfggameplay.isDirty = true;
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
-
         #endregion cfggameplayconfig
         #region cfgrandompresets
         public object currentRandomPreset;
-
         private void LoadRandomPresets()
         {
             isUserInteraction = false;
@@ -3567,5 +3598,216 @@ namespace DayZeEditor
             SetuprandomPresetsForSpawnabletypes();
         }
         #endregion cfgrandompresets
+        #region CFGAreaEffects
+        public cfgEffectArea cfgEffectArea;
+        public Position currentsafeposition;
+        public Areas CurrentToxicArea;
+        private void LoadContaminatoedArea()
+        {
+            isUserInteraction = false;
+            cfgEffectArea = currentproject.cfgEffectAreaConfig.cfgEffectArea;
+            AreasLB.DisplayMember = "DisplayName";
+            AreasLB.ValueMember = "Value";
+            AreasLB.DataSource = cfgEffectArea.Areas;
+
+            SafePositionsLB.DisplayMember = "DisplayName";
+            SafePositionsLB.ValueMember = "Value";
+            SafePositionsLB.DataSource = cfgEffectArea._positions;
+
+            isUserInteraction = true;
+        }
+        private void SafePositionsLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (SafePositionsLB.SelectedItems.Count < 1) return;
+            currentsafeposition = SafePositionsLB.SelectedItem as Position;
+            isUserInteraction = false;
+            SafePositionXNUD.Value = (decimal)currentsafeposition.X;
+            SafePositionZNUD.Value = (decimal)currentsafeposition.Z;
+
+            isUserInteraction = true;
+        }
+        private void AreasLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (AreasLB.SelectedItems.Count < 1) return;
+            CurrentToxicArea = AreasLB.SelectedItem as Areas;
+            isUserInteraction = false;
+
+            AreaNameTB.Text = CurrentToxicArea.AreaName;
+            TypeTB.Text = CurrentToxicArea.Type;
+            TriggerTypeTB.Text = CurrentToxicArea.TriggerType;
+            PosXNUD.Value = CurrentToxicArea.Data.Pos[0];
+            posYNUD.Value = CurrentToxicArea.Data.Pos[1];
+            posZNUD.Value = CurrentToxicArea.Data.Pos[2];
+            RadiusNUD.Value = CurrentToxicArea.Data.Radius;
+            PosHeightNUD.Value = CurrentToxicArea.Data.PosHeight;
+            NegHeightNUD.Value = CurrentToxicArea.Data.NegHeight;
+            InnerRingCountNUD.Value = CurrentToxicArea.Data.InnerRingCount;
+            InnerPartDistNUD.Value = CurrentToxicArea.Data.InnerPartDist;
+            OuterRingToggleCB.Checked = CurrentToxicArea.Data.OuterRingToggle == 1 ? true : false;
+            OuterPartDistNUD.Value = CurrentToxicArea.Data.OuterPartDist;
+            OuterOffsetNUD.Value = CurrentToxicArea.Data.OuterOffset;
+            VerticalLayersNUD.Value = CurrentToxicArea.Data.VerticalLayers;
+            VerticalOffsetNUD.Value = CurrentToxicArea.Data.VerticalOffset;
+            ParticleNameTB.Text = CurrentToxicArea.Data.ParticleName;
+            AroundPartNameTB.Text = CurrentToxicArea.PlayerData.AroundPartName;
+            TinyPartNameTB.Text = CurrentToxicArea.PlayerData.TinyPartName;
+            PPERequesterTypeTB.Text = CurrentToxicArea.PlayerData.PPERequesterType;
+
+            isUserInteraction = true;
+        }
+        private void AreaNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            CurrentToxicArea.AreaName = AreaNameTB.Text;
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+        }
+        private void TypeTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            CurrentToxicArea.Type = TypeTB.Text;
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+        }
+        private void TriggerTypeTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            CurrentToxicArea.TriggerType = TriggerTypeTB.Text;
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+        }
+        private void PosNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            CurrentToxicArea.Data.Pos = new int[] { (int)PosXNUD.Value, (int)posYNUD.Value, (int)posZNUD.Value };
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+        }
+        private void AreaNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            NumericUpDown nud = sender as NumericUpDown;
+            CurrentToxicArea.Data.SetIntValue(nud.Name.Substring(0, nud.Name.Length - 3), (int)nud.Value);
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+        }
+        private void OuterRingToggleCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            CurrentToxicArea.Data.OuterRingToggle = OuterRingToggleCB.Checked == true ? 1 : 0;
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+        } 
+        private void ParticleNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            CurrentToxicArea.Data.ParticleName = ParticleNameTB.Text;
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+        }
+        private void AroundPartNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            CurrentToxicArea.PlayerData.AroundPartName = AroundPartNameTB.Text;
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+        }
+        private void TinyPartNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            CurrentToxicArea.PlayerData.TinyPartName = TinyPartNameTB.Text;
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+        }
+        private void PPERequesterTypeTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            CurrentToxicArea.PlayerData.PPERequesterType = PPERequesterTypeTB.Text;
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+        }
+        private void SafePositionNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            currentsafeposition.X = (int)SafePositionXNUD.Value;
+            currentsafeposition.Z = (int)SafePositionZNUD.Value;
+            currentsafeposition.Name = currentsafeposition.X.ToString() + "," + currentsafeposition.Z.ToString();
+            SafePositionsLB.Invalidate();
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+        }
+        private void darkButton52_Click(object sender, EventArgs e)
+        {
+            Data newdata = new Data()
+            {
+                Pos = new int[] { 0, 0, 0 },
+                Radius = 0,
+                PosHeight = 0,
+                NegHeight = 0,
+                InnerRingCount = 0,
+                InnerPartDist = 0,
+                OuterRingToggle = 1,
+                OuterPartDist = 0,
+                OuterOffset = 0,
+                VerticalLayers = 0,
+                VerticalOffset = 0,
+                ParticleName = "graphics/particles/contaminated_area_gas_bigass"
+            };
+            PlayerData newplayerData = new PlayerData()
+            {
+                AroundPartName = "graphics/particles/contaminated_area_gas_around",
+                TinyPartName = "graphics/particles/contaminated_area_gas_around_tiny",
+                PPERequesterType = "PPERequester_ContaminatedAreaTint"
+            };
+            cfgEffectArea.Areas.Add(new Areas()
+            {
+                AreaName = "New-Toxic-Area",
+                Type = "ContaminatedArea_Static",
+                TriggerType = "ContaminatedTrigger",
+                Data = newdata,
+                PlayerData = newplayerData
+            }
+            );
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+            AreasLB.SelectedIndex = -1;
+            AreasLB.SelectedIndex = AreasLB.Items.Count - 1;
+        }
+        private void darkButton53_Click(object sender, EventArgs e)
+        {
+            if (AreasLB.SelectedItems.Count < 1) return;
+            int index = AreasLB.SelectedIndex;
+            cfgEffectArea.Areas.Remove(CurrentToxicArea);
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+            AreasLB.SelectedIndex = -1;
+            if (index - 1 == -1)
+            {
+                if (AreasLB.Items.Count > 0)
+                    AreasLB.SelectedIndex = 0;
+            }
+            else
+            {
+                AreasLB.SelectedIndex = index - 1;
+            }
+        }
+        private void darkButton50_Click(object sender, EventArgs e)
+        {
+            cfgEffectArea._positions.Add(new Position()
+            {
+                Name = "0,0",
+                X = 0,
+                Z = 0
+            }
+);
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+            SafePositionsLB.SelectedIndex = -1;
+            SafePositionsLB.SelectedIndex = SafePositionsLB.Items.Count - 1;
+        }
+        private void darkButton51_Click(object sender, EventArgs e)
+        {
+            if (SafePositionsLB.SelectedItems.Count < 1) return;
+            int index = SafePositionsLB.SelectedIndex;
+            cfgEffectArea._positions.Remove(currentsafeposition);
+            currentproject.cfgEffectAreaConfig.isDirty = true;
+            SafePositionsLB.SelectedIndex = -1;
+            if (index - 1 == -1)
+            {
+                if (SafePositionsLB.Items.Count > 0)
+                    SafePositionsLB.SelectedIndex = 0;
+            }
+            else
+            {
+                SafePositionsLB.SelectedIndex = index - 1;
+            }
+        }
+        #endregion CFGAreaEffects
     }
 }

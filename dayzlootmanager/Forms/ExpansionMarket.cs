@@ -1666,33 +1666,67 @@ namespace DayZeEditor
         private void numericUpDown9_ValueChanged(object sender, EventArgs e)
         {
             if (action) return;
-            currentCat.isDirty = true;
-            currentitem.MinStockThreshold = (int)numericUpDown9.Value;
+            if (listBox4.SelectedItems.Count > 0)
+            {
+                foreach (var item in listBox4.SelectedItems)
+                {
+                    marketItem pitem = item as marketItem;
+                    pitem.MinStockThreshold = (int)numericUpDown9.Value;
+                }
+                currentCat.isDirty = true;
+            }
         }
         private void numericUpDown24_ValueChanged(object sender, EventArgs e)
         {
             if (action) return;
-            currentCat.isDirty = true;
-            currentitem.QuantityPercent = (int)numericUpDown24.Value;
+            if (listBox4.SelectedItems.Count > 0)
+            {
+                foreach (var item in listBox4.SelectedItems)
+                {
+                    marketItem pitem = item as marketItem;
+                    pitem.QuantityPercent = (int)numericUpDown24.Value;
+                }
+                currentCat.isDirty = true;
+            }
         }
         private void numericUpDown8_ValueChanged(object sender, EventArgs e)
         {
             if (action) return;
-            currentCat.isDirty = true;
-            currentitem.MaxStockThreshold = (int)numericUpDown8.Value;
+            if (listBox4.SelectedItems.Count > 0)
+            {
+                foreach (var item in listBox4.SelectedItems)
+                {
+                    marketItem pitem = item as marketItem;
+                    pitem.MaxStockThreshold = (int)numericUpDown8.Value;
+                }
+                currentCat.isDirty = true;
+            }
         }
         private void numericUpDown7_ValueChanged(object sender, EventArgs e)
         {
             if (action) return;
-            currentCat.isDirty = true;
-            currentitem.MinPriceThreshold = (int)numericUpDown7.Value;
-
+            if (listBox4.SelectedItems.Count > 0)
+            {
+                foreach (var item in listBox4.SelectedItems)
+                {
+                    marketItem pitem = item as marketItem;
+                    pitem.MinPriceThreshold = (int)numericUpDown7.Value;
+                }
+                currentCat.isDirty = true;
+            }
         }
         private void numericUpDown6_ValueChanged(object sender, EventArgs e)
         {
             if (action) return;
-            currentitem.MaxPriceThreshold = (int)numericUpDown6.Value;
-            currentCat.isDirty = true;
+            if (listBox4.SelectedItems.Count > 0)
+            {
+                foreach (var item in listBox4.SelectedItems)
+                {
+                    marketItem pitem = item as marketItem;
+                    pitem.MaxPriceThreshold = (int)numericUpDown6.Value;
+                }
+                currentCat.isDirty = true;
+            }
         }
         private void darkButton2_Click(object sender, EventArgs e)
         {
@@ -2215,8 +2249,15 @@ namespace DayZeEditor
         private void numericUpDown23_ValueChanged(object sender, EventArgs e)
         {
             if (action) return;
-            currentCat.isDirty = true;
-            currentitem.SellPricePercent = (int)numericUpDown23.Value;
+            if (listBox4.SelectedItems.Count > 0)
+            {
+                foreach (var item in listBox4.SelectedItems)
+                {
+                    marketItem pitem = item as marketItem;
+                    pitem.SellPricePercent = (int)numericUpDown23.Value;
+                }
+                currentCat.isDirty = true;
+            }
         }
 
         /// <summary>

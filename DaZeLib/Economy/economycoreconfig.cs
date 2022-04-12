@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -348,8 +349,7 @@ namespace DayZeLib
             try
             {
                 cfggameplay = JsonSerializer.Deserialize<cfggameplay>(File.ReadAllText(Filename));
-                cfggameplay.isDirty = false;
-            }
+             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString() + Environment.NewLine + ex.InnerException.Message.ToString());
@@ -358,7 +358,40 @@ namespace DayZeLib
         }
         public void SaveCFGGameplay()
         {
+            var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            string jsonString = JsonSerializer.Serialize(cfggameplay, options);
+            File.WriteAllText(Filename, jsonString);
+        }
+    }
 
+    public class cfgEffectAreaConfig
+    {
+        public cfgEffectArea cfgEffectArea { get; set; }
+        public string Filename { get; set; }
+        public bool isDirty { get; set; }
+        public cfgEffectAreaConfig(string filename)
+        {
+            Filename = filename;
+            System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
+            customCulture.NumberFormat.NumberDecimalSeparator = ".";
+            customCulture.NumberFormat.NumberGroupSeparator = "";
+            System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
+            try
+            {
+                cfgEffectArea = JsonSerializer.Deserialize<cfgEffectArea>(File.ReadAllText(Filename));
+                cfgEffectArea.convertpositionstolist();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString() + Environment.NewLine + ex.InnerException.Message.ToString());
+            }
+
+        }
+        public void SavecfgEffectArea()
+        {
+            var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            string jsonString = JsonSerializer.Serialize(cfgEffectArea, options);
+            File.WriteAllText(Filename, jsonString);
         }
     }
 }

@@ -14,10 +14,6 @@ namespace DayZeLib
         public BindingList<float[]> SafePositions { get; set; }
 
         [JsonIgnore]
-        public bool isDirty;
-        [JsonIgnore]
-        public string Filename { get; set; }
-        [JsonIgnore]
         public BindingList<Position> _positions { get; set; }
 
         public void convertpositionstolist()

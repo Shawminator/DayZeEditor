@@ -98,6 +98,8 @@ namespace DayZeEditor
         public cfgrandompresetsconfig cfgrandompresetsconfig { get; set; }
         [JsonIgnore]
         public CFGGameplayConfig CFGGameplayConfig { get; set; }
+        [JsonIgnore]
+        public cfgEffectAreaConfig cfgEffectAreaConfig { get; set; }
 
 
         [JsonIgnore]
@@ -287,6 +289,10 @@ namespace DayZeEditor
         internal void SetCFGGameplayConfig()
         {
             CFGGameplayConfig = new CFGGameplayConfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfggameplay.json");
+        }
+        internal void SetcfgEffectAreaConfig()
+        {
+            cfgEffectAreaConfig = new cfgEffectAreaConfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgEffectArea.json");
         }
     }
 }

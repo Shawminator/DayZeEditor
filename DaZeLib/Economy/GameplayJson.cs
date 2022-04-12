@@ -16,9 +16,6 @@ namespace DayZeLib
         public Worldsdata WorldsData { get; set; }
         public Basebuildingdata BaseBuildingData { get; set; }
         public Uidata UIData { get; set; }
-
-        [JsonIgnore]
-        public bool isDirty { get; set; }
     }
 
     public class Generaldata
