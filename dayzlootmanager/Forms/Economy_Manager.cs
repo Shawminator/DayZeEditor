@@ -100,7 +100,7 @@ namespace DayZeEditor
             LoadCFGGamelplay();
             LoadContaminatoedArea();
             LoadGlobals();
-
+            Loadweather();
             SetSummarytiers();
             NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
 
@@ -242,6 +242,25 @@ namespace DayZeEditor
                     currentproject.cfgEffectAreaConfig.SavecfgEffectArea();
                     currentproject.cfgEffectAreaConfig.isDirty = false;
                     midifiedfiles.Add(Path.GetFileName(currentproject.cfgEffectAreaConfig.Filename) + " Saved....");
+                }
+            }
+
+            if (currentproject.gloabsconfig != null)
+            {
+                if (currentproject.gloabsconfig.isDirty)
+                {
+                    currentproject.gloabsconfig.SaveGlobals(SaveTime);
+                    currentproject.gloabsconfig.isDirty = false;
+                    midifiedfiles.Add(Path.GetFileName(currentproject.gloabsconfig.Filename));
+                }
+            }
+            if (currentproject.weatherconfig != null)
+            {
+                if (currentproject.weatherconfig.isDirty)
+                {
+                    currentproject.weatherconfig.SaveWeather(SaveTime);
+                    currentproject.weatherconfig.isDirty = false;
+                    midifiedfiles.Add(Path.GetFileName(currentproject.weatherconfig.Filename));
                 }
             }
 
@@ -3836,8 +3855,7 @@ namespace DayZeEditor
             }
         }
         #endregion CFGAreaEffects
-
-
+        #region gloabls
         private variables variables;
         public void LoadGlobals()
         {
@@ -3849,7 +3867,6 @@ namespace DayZeEditor
             VariablesLB.DataSource = variables.var;
             isUserInteraction = true;
         }
-
         private void listBox7_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             if (VariablesLB.SelectedItems.Count < 1) return;
@@ -3858,7 +3875,6 @@ namespace DayZeEditor
             variablesvartypeNUD.Value = m_var.type;
             variablesvarvalueNUD.Value = m_var.value;
         }
-
         private void variablesvartypeNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
@@ -3866,13 +3882,24 @@ namespace DayZeEditor
             m_var.type = (int)variablesvartypeNUD.Value;
             currentproject.gloabsconfig.isDirty = true;
         }
-
         private void variablesvarvalueNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             variablesVar m_var = VariablesLB.SelectedItem as variablesVar;
             m_var.value = (int)variablesvarvalueNUD.Value;
             currentproject.gloabsconfig.isDirty = true;
+        }
+        #endregion globals
+
+        public weather weather;
+        public void Loadweather()
+        {
+            isUserInteraction = false;
+            weather = currentproject.weatherconfig.weather;
+
+
+
+            isUserInteraction = true;
         }
     }
 }

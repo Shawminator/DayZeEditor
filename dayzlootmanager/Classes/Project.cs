@@ -100,6 +100,8 @@ namespace DayZeEditor
         public CFGGameplayConfig CFGGameplayConfig { get; set; }
         [JsonIgnore]
         public cfgEffectAreaConfig cfgEffectAreaConfig { get; set; }
+        [JsonIgnore]
+        public weatherconfig weatherconfig { get; set; }
 
 
         [JsonIgnore]
@@ -231,6 +233,10 @@ namespace DayZeEditor
         internal void SetGlobals()
         {
             gloabsconfig = new globalsconfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\db\\globals.xml");
+        }
+        internal void SetWeather()
+        {
+            weatherconfig = new weatherconfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgweather.xml");
         }
         internal void SetTotNomCount()
         {

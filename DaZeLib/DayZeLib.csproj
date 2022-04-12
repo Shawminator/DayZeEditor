@@ -88,6 +88,7 @@
     <Compile Include="Economy\SpawnabletypesXML.cs" />
     <Compile Include="Economy\variables.cs" />
     <Compile Include="Economy\Limitsdefinitions.cs" />
+    <Compile Include="Economy\weatherXML.cs" />
     <Compile Include="ExpansionMarket\MarketCategories.cs" />
     <Compile Include="ExpansionMarket\marketsettings.cs" />
     <Compile Include="ExpansionMarket\TraderModelMapping.cs" />

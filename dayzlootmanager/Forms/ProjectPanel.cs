@@ -369,6 +369,7 @@ namespace DayZeEditor
             projects.getActiveProject().SetRandompresets();
             projects.getActiveProject().SetSpawnabletypes();
             projects.getActiveProject().SetGlobals();
+            projects.getActiveProject().SetWeather();
             projects.getActiveProject().setVanillaTypes();
             projects.getActiveProject().SetModListtypes();
             projects.getActiveProject().SetTotNomCount();

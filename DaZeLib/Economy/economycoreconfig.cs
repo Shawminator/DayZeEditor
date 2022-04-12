@@ -196,7 +196,6 @@ namespace DayZeLib
                 }
             }
         }
-
         public void SaveRandomPresets(string saveTime)
         {
             Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
@@ -289,6 +288,33 @@ namespace DayZeLib
                     MessageBox.Show(ex.Message + "\n" + filename + "\n" + ex.InnerException.Message);
                 }
             }
+        }
+
+        public void SaveGlobals(string saveTime)
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
+            File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
+            var serializer = new XmlSerializer(typeof(variables));
+            var ns = new XmlSerializerNamespaces();
+            ns.Add("", "");
+            var sw = new StringWriter();
+            sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
+            var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true, });
+            serializer.Serialize(xmlWriter, variables, ns);
+            Console.WriteLine(sw.ToString());
+            File.WriteAllText(Filename, sw.ToString());
+        }
+        public void SaveGlobals()
+        {
+            var serializer = new XmlSerializer(typeof(variables));
+            var ns = new XmlSerializerNamespaces();
+            ns.Add("", "");
+            var sw = new StringWriter();
+            sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
+            var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true, });
+            serializer.Serialize(xmlWriter, variables, ns);
+            Console.WriteLine(sw.ToString());
+            File.WriteAllText(Filename, sw.ToString());
         }
     }
     public class cfgplayerspawnpoints
@@ -392,6 +418,45 @@ namespace DayZeLib
             var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
             string jsonString = JsonSerializer.Serialize(cfgEffectArea, options);
             File.WriteAllText(Filename, jsonString);
+        }
+    }
+    public class weatherconfig
+    {
+        public weather weather { get; set; }
+        public string Filename { get; set; }
+        public bool isDirty = false;
+
+        public weatherconfig(string filename)
+        {
+            Filename = filename;
+            var mySerializer = new XmlSerializer(typeof(weather));
+            // To read the file, create a FileStream.
+            using (var myFileStream = new FileStream(filename, FileMode.Open))
+            {
+                try
+                {
+                    // Call the Deserialize method and cast to the object type.
+                    weather = (weather)mySerializer.Deserialize(myFileStream);
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+        }
+        public void SaveWeather(string saveTime)
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
+            File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
+            var serializer = new XmlSerializer(typeof(weather));
+            var ns = new XmlSerializerNamespaces();
+            ns.Add("", "");
+            var sw = new StringWriter();
+            sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
+            var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true, });
+            serializer.Serialize(xmlWriter, weather, ns);
+            Console.WriteLine(sw.ToString());
+            File.WriteAllText(Filename, sw.ToString());
         }
     }
 }
