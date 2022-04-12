@@ -99,6 +99,7 @@ namespace DayZeEditor
             LoadPlayerSpawns();
             LoadCFGGamelplay();
             LoadContaminatoedArea();
+            LoadGlobals();
 
             SetSummarytiers();
             NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
@@ -320,6 +321,12 @@ namespace DayZeEditor
             if (tabControl3.SelectedIndex == 8)
                 toolStripButton13.Checked = true;
         }
+        private void toolStripButton14_Click(object sender, EventArgs e)
+        {
+            tabControl4.SelectedIndex = 9;
+            if (tabControl3.SelectedIndex == 9)
+                toolStripButton14.Checked = true;
+        }
         private void tabControl4_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (tabControl4.SelectedIndex)
@@ -333,6 +340,7 @@ namespace DayZeEditor
                     toolStripButton11.Checked = false;
                     toolStripButton12.Checked = false;
                     toolStripButton13.Checked = false;
+                    toolStripButton14.Checked = false;
                     break;
                 case 1:
                     toolStripButton3.Checked = false;
@@ -343,6 +351,7 @@ namespace DayZeEditor
                     toolStripButton11.Checked = false;
                     toolStripButton12.Checked = false;
                     toolStripButton13.Checked = false;
+                    toolStripButton14.Checked = false;
                     break;
                 case 2:
                     toolStripButton3.Checked = false;
@@ -353,6 +362,7 @@ namespace DayZeEditor
                     toolStripButton11.Checked = false;
                     toolStripButton12.Checked = false;
                     toolStripButton13.Checked = false;
+                    toolStripButton14.Checked = false;
                     break;
                 case 3:
                     toolStripButton3.Checked = false;
@@ -363,6 +373,7 @@ namespace DayZeEditor
                     toolStripButton11.Checked = false;
                     toolStripButton12.Checked = false;
                     toolStripButton13.Checked = false;
+                    toolStripButton14.Checked = false;
                     break;
                 case 4:
                     toolStripButton3.Checked = false;
@@ -373,6 +384,7 @@ namespace DayZeEditor
                     toolStripButton11.Checked = false;
                     toolStripButton12.Checked = false;
                     toolStripButton13.Checked = false;
+                    toolStripButton14.Checked = false;
                     break;
                 case 5:
                     toolStripButton3.Checked = false;
@@ -383,6 +395,7 @@ namespace DayZeEditor
                     toolStripButton11.Checked = false;
                     toolStripButton12.Checked = false;
                     toolStripButton13.Checked = false;
+                    toolStripButton14.Checked = false;
                     pictureBox2.Invalidate();
                     break;
                 case 6:
@@ -394,6 +407,7 @@ namespace DayZeEditor
                     toolStripButton10.Checked = false;
                     toolStripButton12.Checked = false;
                     toolStripButton13.Checked = false;
+                    toolStripButton14.Checked = false;
                     break;
                 case 7:
                     toolStripButton3.Checked = false;
@@ -404,6 +418,7 @@ namespace DayZeEditor
                     toolStripButton10.Checked = false;
                     toolStripButton11.Checked = false;
                     toolStripButton13.Checked = false;
+                    toolStripButton14.Checked = false;
                     break;
                 case 8:
                     toolStripButton3.Checked = false;
@@ -414,6 +429,18 @@ namespace DayZeEditor
                     toolStripButton10.Checked = false;
                     toolStripButton11.Checked = false;
                     toolStripButton12.Checked = false;
+                    toolStripButton14.Checked = false;
+                    break;
+                case 9:
+                    toolStripButton3.Checked = false;
+                    toolStripButton5.Checked = false;
+                    toolStripButton6.Checked = false;
+                    toolStripButton8.Checked = false;
+                    toolStripButton9.Checked = false;
+                    toolStripButton10.Checked = false;
+                    toolStripButton11.Checked = false;
+                    toolStripButton12.Checked = false;
+                    toolStripButton13.Checked = false;
                     break;
                 default:
                     break;
@@ -3809,5 +3836,43 @@ namespace DayZeEditor
             }
         }
         #endregion CFGAreaEffects
+
+
+        private variables variables;
+        public void LoadGlobals()
+        {
+            isUserInteraction = false;
+            variablesvarvalueNUD.Maximum = int.MaxValue;
+            variables = currentproject.gloabsconfig.variables;
+            VariablesLB.DisplayMember = "DisplayName";
+            VariablesLB.ValueMember = "Value";
+            VariablesLB.DataSource = variables.var;
+            isUserInteraction = true;
+        }
+
+        private void listBox7_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (VariablesLB.SelectedItems.Count < 1) return;
+            variablesVar m_var = VariablesLB.SelectedItem as variablesVar;
+            variablesvarnameTB.Text = m_var.name;
+            variablesvartypeNUD.Value = m_var.type;
+            variablesvarvalueNUD.Value = m_var.value;
+        }
+
+        private void variablesvartypeNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            variablesVar m_var = VariablesLB.SelectedItem as variablesVar;
+            m_var.type = (int)variablesvartypeNUD.Value;
+            currentproject.gloabsconfig.isDirty = true;
+        }
+
+        private void variablesvarvalueNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            variablesVar m_var = VariablesLB.SelectedItem as variablesVar;
+            m_var.value = (int)variablesvarvalueNUD.Value;
+            currentproject.gloabsconfig.isDirty = true;
+        }
     }
 }

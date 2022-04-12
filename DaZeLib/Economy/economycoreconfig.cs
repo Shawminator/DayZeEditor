@@ -269,7 +269,7 @@ namespace DayZeLib
     }
     public class globalsconfig
     {
-        public variables events { get; set; }
+        public variables variables { get; set; }
         public string Filename { get; set; }
         public bool isDirty = false;
         public globalsconfig(string filename)
@@ -282,7 +282,7 @@ namespace DayZeLib
                 try
                 {
                     // Call the Deserialize method and cast to the object type.
-                    events = (variables)mySerializer.Deserialize(myFileStream);
+                    variables = (variables)mySerializer.Deserialize(myFileStream);
                 }
                 catch (Exception ex)
                 {
