@@ -373,6 +373,7 @@ namespace DayZeEditor
             projects.getActiveProject().setVanillaTypes();
             projects.getActiveProject().SetModListtypes();
             projects.getActiveProject().SetTotNomCount();
+            //projects.getActiveProject().GetPlayerDB();
             getActiveProject();
         }
         private void SaveFileButton_Click(object sender, EventArgs e)

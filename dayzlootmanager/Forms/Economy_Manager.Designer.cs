@@ -156,14 +156,16 @@ namespace DayZeEditor
             this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.NomCountLabel = new System.Windows.Forms.ToolStripLabel();
             this.darkToolStrip22 = new DarkUI.Controls.DarkToolStrip2();
+            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton12 = new System.Windows.Forms.ToolStripButton();
@@ -173,8 +175,6 @@ namespace DayZeEditor
             this.toolStripButton11 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
             this.tabControl4 = new System.Windows.Forms.TabControl();
             this.TypesTab = new System.Windows.Forms.TabPage();
             this.EconomyCoreTab = new System.Windows.Forms.TabPage();
@@ -579,20 +579,20 @@ namespace DayZeEditor
             this.darkLabel24 = new DarkUI.Controls.DarkLabel();
             this.AreasLB = new System.Windows.Forms.ListBox();
             this.Globals = new System.Windows.Forms.TabPage();
+            this.groupBox36 = new System.Windows.Forms.GroupBox();
+            this.label60 = new System.Windows.Forms.Label();
+            this.variablesvarnameTB = new System.Windows.Forms.TextBox();
+            this.variablesvarvalueNUD = new System.Windows.Forms.NumericUpDown();
+            this.label63 = new System.Windows.Forms.Label();
+            this.variablesvartypeNUD = new System.Windows.Forms.NumericUpDown();
+            this.label64 = new System.Windows.Forms.Label();
+            this.darkLabel25 = new DarkUI.Controls.DarkLabel();
+            this.VariablesLB = new System.Windows.Forms.ListBox();
             this.TypesContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.DeleteTypesTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.AddTypesTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteSpecificTypeTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForDuplicateTypesTSMI = new System.Windows.Forms.ToolStripMenuItem();
-            this.darkLabel25 = new DarkUI.Controls.DarkLabel();
-            this.VariablesLB = new System.Windows.Forms.ListBox();
-            this.groupBox36 = new System.Windows.Forms.GroupBox();
-            this.variablesvarvalueNUD = new System.Windows.Forms.NumericUpDown();
-            this.label63 = new System.Windows.Forms.Label();
-            this.variablesvartypeNUD = new System.Windows.Forms.NumericUpDown();
-            this.label64 = new System.Windows.Forms.Label();
-            this.variablesvarnameTB = new System.Windows.Forms.TextBox();
-            this.label60 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -771,10 +771,10 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.posYNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PosXNUD)).BeginInit();
             this.Globals.SuspendLayout();
-            this.TypesContextMenu.SuspendLayout();
             this.groupBox36.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.variablesvarvalueNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.variablesvartypeNUD)).BeginInit();
+            this.TypesContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -2293,7 +2293,7 @@ namespace DayZeEditor
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(62, 42);
+            this.toolStripButton2.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton2.Text = "Find Next";
             this.toolStripButton2.Visible = false;
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
@@ -2352,6 +2352,46 @@ namespace DayZeEditor
             this.darkToolStrip22.Size = new System.Drawing.Size(1084, 28);
             this.darkToolStrip22.TabIndex = 49;
             this.darkToolStrip22.Text = "darkToolStrip22";
+            // 
+            // toolStripButton6
+            // 
+            this.toolStripButton6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
+            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton6.Name = "toolStripButton6";
+            this.toolStripButton6.Size = new System.Drawing.Size(45, 25);
+            this.toolStripButton6.Text = "Events";
+            this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripSeparator4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripSeparator4.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 28);
+            // 
+            // toolStripButton14
+            // 
+            this.toolStripButton14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripButton14.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripButton14.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton14.Image")));
+            this.toolStripButton14.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton14.Name = "toolStripButton14";
+            this.toolStripButton14.Size = new System.Drawing.Size(50, 25);
+            this.toolStripButton14.Text = "Globals";
+            this.toolStripButton14.Click += new System.EventHandler(this.toolStripButton14_Click);
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripSeparator9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripSeparator9.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripButton3
             // 
@@ -2412,26 +2452,6 @@ namespace DayZeEditor
             this.toolStripSeparator2.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
-            // 
-            // toolStripButton6
-            // 
-            this.toolStripButton6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
-            this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
-            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(45, 25);
-            this.toolStripButton6.Text = "Events";
-            this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.toolStripSeparator4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
-            this.toolStripSeparator4.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripButton9
             // 
@@ -2524,26 +2544,6 @@ namespace DayZeEditor
             this.toolStripButton13.Size = new System.Drawing.Size(114, 25);
             this.toolStripButton13.Text = "Contaminated Area";
             this.toolStripButton13.Click += new System.EventHandler(this.toolStripButton13_Click);
-            // 
-            // toolStripSeparator9
-            // 
-            this.toolStripSeparator9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.toolStripSeparator9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
-            this.toolStripSeparator9.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 28);
-            // 
-            // toolStripButton14
-            // 
-            this.toolStripButton14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.toolStripButton14.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
-            this.toolStripButton14.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton14.Image")));
-            this.toolStripButton14.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton14.Name = "toolStripButton14";
-            this.toolStripButton14.Size = new System.Drawing.Size(50, 25);
-            this.toolStripButton14.Text = "Globals";
-            this.toolStripButton14.Click += new System.EventHandler(this.toolStripButton14_Click);
             // 
             // tabControl4
             // 
@@ -6870,7 +6870,7 @@ namespace DayZeEditor
             this.staminaWeightLimitThresholdNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.staminaWeightLimitThresholdNUD.Location = new System.Drawing.Point(214, 71);
             this.staminaWeightLimitThresholdNUD.Maximum = new decimal(new int[] {
-            10000,
+            100000,
             0,
             0,
             0});
@@ -7717,69 +7717,6 @@ namespace DayZeEditor
             this.Globals.TabIndex = 9;
             this.Globals.Text = "Globals";
             // 
-            // TypesContextMenu
-            // 
-            this.TypesContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.DeleteTypesTSMI,
-            this.AddTypesTSMI,
-            this.DeleteSpecificTypeTSMI,
-            this.checkForDuplicateTypesTSMI});
-            this.TypesContextMenu.Name = "TypesContextMenu";
-            this.TypesContextMenu.Size = new System.Drawing.Size(211, 92);
-            // 
-            // DeleteTypesTSMI
-            // 
-            this.DeleteTypesTSMI.Name = "DeleteTypesTSMI";
-            this.DeleteTypesTSMI.Size = new System.Drawing.Size(210, 22);
-            this.DeleteTypesTSMI.Text = "Delete Types";
-            this.DeleteTypesTSMI.Click += new System.EventHandler(this.DeleteTypesTSMI_Click);
-            // 
-            // AddTypesTSMI
-            // 
-            this.AddTypesTSMI.Name = "AddTypesTSMI";
-            this.AddTypesTSMI.Size = new System.Drawing.Size(210, 22);
-            this.AddTypesTSMI.Text = "Add New Types";
-            this.AddTypesTSMI.Click += new System.EventHandler(this.AddtypesTSMI_Click);
-            // 
-            // DeleteSpecificTypeTSMI
-            // 
-            this.DeleteSpecificTypeTSMI.Name = "DeleteSpecificTypeTSMI";
-            this.DeleteSpecificTypeTSMI.Size = new System.Drawing.Size(210, 22);
-            this.DeleteSpecificTypeTSMI.Text = "Delete Specific Type";
-            this.DeleteSpecificTypeTSMI.Click += new System.EventHandler(this.DeleteSpecificTypeTSMI_Click);
-            // 
-            // checkForDuplicateTypesTSMI
-            // 
-            this.checkForDuplicateTypesTSMI.Name = "checkForDuplicateTypesTSMI";
-            this.checkForDuplicateTypesTSMI.Size = new System.Drawing.Size(210, 22);
-            this.checkForDuplicateTypesTSMI.Text = "Check for Duplicate Types";
-            this.checkForDuplicateTypesTSMI.Click += new System.EventHandler(this.checkForDuplicateTypesToolStripMenuItem_Click);
-            // 
-            // darkLabel25
-            // 
-            this.darkLabel25.AutoSize = true;
-            this.darkLabel25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel25.Location = new System.Drawing.Point(8, 3);
-            this.darkLabel25.Name = "darkLabel25";
-            this.darkLabel25.Size = new System.Drawing.Size(50, 13);
-            this.darkLabel25.TabIndex = 129;
-            this.darkLabel25.Text = "Variables";
-            // 
-            // VariablesLB
-            // 
-            this.VariablesLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.VariablesLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.VariablesLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.VariablesLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.VariablesLB.FormattingEnabled = true;
-            this.VariablesLB.Location = new System.Drawing.Point(8, 19);
-            this.VariablesLB.Name = "VariablesLB";
-            this.VariablesLB.Size = new System.Drawing.Size(226, 459);
-            this.VariablesLB.TabIndex = 128;
-            this.VariablesLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.VariablesLB.SelectedIndexChanged += new System.EventHandler(this.listBox7_SelectedIndexChanged_1);
-            // 
             // groupBox36
             // 
             this.groupBox36.Controls.Add(this.label60);
@@ -7795,6 +7732,25 @@ namespace DayZeEditor
             this.groupBox36.TabIndex = 130;
             this.groupBox36.TabStop = false;
             this.groupBox36.Text = "Info";
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.ForeColor = System.Drawing.SystemColors.Control;
+            this.label60.Location = new System.Drawing.Point(12, 22);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(35, 13);
+            this.label60.TabIndex = 81;
+            this.label60.Text = "Name";
+            // 
+            // variablesvarnameTB
+            // 
+            this.variablesvarnameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.variablesvarnameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.variablesvarnameTB.Location = new System.Drawing.Point(71, 19);
+            this.variablesvarnameTB.Name = "variablesvarnameTB";
+            this.variablesvarnameTB.Size = new System.Drawing.Size(218, 20);
+            this.variablesvarnameTB.TabIndex = 80;
             // 
             // variablesvarvalueNUD
             // 
@@ -7848,24 +7804,68 @@ namespace DayZeEditor
             this.label64.TabIndex = 69;
             this.label64.Text = "Type";
             // 
-            // variablesvarnameTB
+            // darkLabel25
             // 
-            this.variablesvarnameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.variablesvarnameTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.variablesvarnameTB.Location = new System.Drawing.Point(71, 19);
-            this.variablesvarnameTB.Name = "variablesvarnameTB";
-            this.variablesvarnameTB.Size = new System.Drawing.Size(218, 20);
-            this.variablesvarnameTB.TabIndex = 80;
+            this.darkLabel25.AutoSize = true;
+            this.darkLabel25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel25.Location = new System.Drawing.Point(8, 3);
+            this.darkLabel25.Name = "darkLabel25";
+            this.darkLabel25.Size = new System.Drawing.Size(50, 13);
+            this.darkLabel25.TabIndex = 129;
+            this.darkLabel25.Text = "Variables";
             // 
-            // label60
+            // VariablesLB
             // 
-            this.label60.AutoSize = true;
-            this.label60.ForeColor = System.Drawing.SystemColors.Control;
-            this.label60.Location = new System.Drawing.Point(12, 22);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(35, 13);
-            this.label60.TabIndex = 81;
-            this.label60.Text = "Name";
+            this.VariablesLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.VariablesLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.VariablesLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.VariablesLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.VariablesLB.FormattingEnabled = true;
+            this.VariablesLB.Location = new System.Drawing.Point(8, 19);
+            this.VariablesLB.Name = "VariablesLB";
+            this.VariablesLB.Size = new System.Drawing.Size(226, 459);
+            this.VariablesLB.TabIndex = 128;
+            this.VariablesLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.VariablesLB.SelectedIndexChanged += new System.EventHandler(this.listBox7_SelectedIndexChanged_1);
+            // 
+            // TypesContextMenu
+            // 
+            this.TypesContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.DeleteTypesTSMI,
+            this.AddTypesTSMI,
+            this.DeleteSpecificTypeTSMI,
+            this.checkForDuplicateTypesTSMI});
+            this.TypesContextMenu.Name = "TypesContextMenu";
+            this.TypesContextMenu.Size = new System.Drawing.Size(211, 92);
+            // 
+            // DeleteTypesTSMI
+            // 
+            this.DeleteTypesTSMI.Name = "DeleteTypesTSMI";
+            this.DeleteTypesTSMI.Size = new System.Drawing.Size(210, 22);
+            this.DeleteTypesTSMI.Text = "Delete Types";
+            this.DeleteTypesTSMI.Click += new System.EventHandler(this.DeleteTypesTSMI_Click);
+            // 
+            // AddTypesTSMI
+            // 
+            this.AddTypesTSMI.Name = "AddTypesTSMI";
+            this.AddTypesTSMI.Size = new System.Drawing.Size(210, 22);
+            this.AddTypesTSMI.Text = "Add New Types";
+            this.AddTypesTSMI.Click += new System.EventHandler(this.AddtypesTSMI_Click);
+            // 
+            // DeleteSpecificTypeTSMI
+            // 
+            this.DeleteSpecificTypeTSMI.Name = "DeleteSpecificTypeTSMI";
+            this.DeleteSpecificTypeTSMI.Size = new System.Drawing.Size(210, 22);
+            this.DeleteSpecificTypeTSMI.Text = "Delete Specific Type";
+            this.DeleteSpecificTypeTSMI.Click += new System.EventHandler(this.DeleteSpecificTypeTSMI_Click);
+            // 
+            // checkForDuplicateTypesTSMI
+            // 
+            this.checkForDuplicateTypesTSMI.Name = "checkForDuplicateTypesTSMI";
+            this.checkForDuplicateTypesTSMI.Size = new System.Drawing.Size(210, 22);
+            this.checkForDuplicateTypesTSMI.Text = "Check for Duplicate Types";
+            this.checkForDuplicateTypesTSMI.Click += new System.EventHandler(this.checkForDuplicateTypesToolStripMenuItem_Click);
             // 
             // Economy_Manager
             // 
@@ -8100,11 +8100,11 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.PosXNUD)).EndInit();
             this.Globals.ResumeLayout(false);
             this.Globals.PerformLayout();
-            this.TypesContextMenu.ResumeLayout(false);
             this.groupBox36.ResumeLayout(false);
             this.groupBox36.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.variablesvarvalueNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.variablesvartypeNUD)).EndInit();
+            this.TypesContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

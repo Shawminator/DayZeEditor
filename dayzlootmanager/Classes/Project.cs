@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text.Encodings.Web;
@@ -102,6 +103,8 @@ namespace DayZeEditor
         public cfgEffectAreaConfig cfgEffectAreaConfig { get; set; }
         [JsonIgnore]
         public weatherconfig weatherconfig { get; set; }
+        [JsonIgnore]
+        public PlayerDB PlayerDB { get; set; }
 
 
         [JsonIgnore]
@@ -299,6 +302,10 @@ namespace DayZeEditor
         internal void SetcfgEffectAreaConfig()
         {
             cfgEffectAreaConfig = new cfgEffectAreaConfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgEffectArea.json");
+        }
+        internal void GetPlayerDB()
+        {
+            //PlayerDB = new PlayerDB(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\storage_1\\players.db");
         }
     }
 }

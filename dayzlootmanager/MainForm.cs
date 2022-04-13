@@ -95,6 +95,7 @@ namespace DayZeEditor
                     Projects.getActiveProject().setVanillaTypes();
                     Projects.getActiveProject().SetModListtypes();
                     Projects.getActiveProject().SetTotNomCount();
+                    //Projects.getActiveProject().GetPlayerDB();
                     Console.WriteLine(Projects.ActiveProject + " is the Current Active Project");
                     Console.WriteLine("Project is running Expansion..... " + Projects.getActiveProject().isExpansion.ToString());
                     Console.WriteLine("Project is Running Dr Jones Trader...." + Projects.getActiveProject().usingDrJoneTrader.ToString());
