@@ -100,6 +100,14 @@ namespace DayZeLib
                 deletedirectory = true;
             }
         }
+
+        public bool checkiftodelete(string modname)
+        {
+            ce ce = economycore.findFile(modname);
+            if (ce != null)
+                return false;
+            return true;
+        }
     }
     public class Spawnabletypesconfig
     {

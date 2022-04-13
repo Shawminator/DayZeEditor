@@ -796,9 +796,12 @@ namespace DayZeEditor
                 {
                     string Modname = currentTypesFile.modname;
                     currentproject.EconomyCore.RemoveCe(Modname, out string foflderpath, out string filename, out bool deletedirectory);
-                    File.Delete(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\" + foflderpath + "\\" + filename);
-                    if (deletedirectory)
-                        Directory.Delete(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\" + foflderpath, true);
+                    if (currentproject.EconomyCore.checkiftodelete(Modname))
+                    {
+                        File.Delete(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\" + foflderpath + "\\" + filename);
+                        if (deletedirectory)
+                            Directory.Delete(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\" + foflderpath, true);
+                    }
                     currentproject.EconomyCore.SaveEconomycore();
                     currentproject.removeMod(currentTypesFile.modname);
                     ModTypes = currentproject.getModList();
