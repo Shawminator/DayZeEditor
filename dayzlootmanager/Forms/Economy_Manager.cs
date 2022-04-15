@@ -23,11 +23,8 @@ namespace DayZeEditor
     public partial class Economy_Manager : DarkForm
     {
         public bool isUserInteraction = true;
-
-
         public Project currentproject { get; set; }
         public int ZoneScale = 1;
-
         public TypesFile vanillatypes;
         public List<TypesFile> ModTypes;
         public TypesFile currentTypesFile;
@@ -42,7 +39,6 @@ namespace DayZeEditor
         public playerspawnpoints playerspawnpoints;
         public BindingList<randompresetsAttachments> cargoAttachments = new BindingList<randompresetsAttachments>();
         public BindingList<randompresetsCargo> cargoItems = new BindingList<randompresetsCargo>();
-
         #region formsstuff
         public Economy_Manager()
         {
@@ -52,7 +48,6 @@ namespace DayZeEditor
             isUserInteraction = true;
 
         }
-
         private void listBox_DrawItem(object sender, DrawItemEventArgs e)
         {
             ListBox lb = sender as ListBox;
@@ -115,7 +110,6 @@ namespace DayZeEditor
 
             isUserInteraction = true;
         }
-
         private void SetuprandomPresetsForSpawnabletypes()
         {
             foreach (var item in currentproject.cfgrandompresetsconfig.randompresets.Items)
@@ -285,7 +279,6 @@ namespace DayZeEditor
             else
                 MessageBox.Show("No changes were made.", "Nothing Saved", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
-
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             WeatherTabPage.SelectedIndex = 0;
@@ -1678,7 +1671,6 @@ namespace DayZeEditor
         {
             toolStripButton2.Visible = false;
         }
-
         #endregion types
         #region events
         public eventscofig currenteventsfile;
@@ -2482,8 +2474,6 @@ namespace DayZeEditor
         public bool FilterLocations = false;
         public bool FilterTags = false;
         public bool FilterFlags = false;
-
-
         private void darkButton15_Click(object sender, EventArgs e)
         {
             treeView2.Nodes.Clear();
@@ -3138,7 +3128,6 @@ namespace DayZeEditor
             currentproject.cfgplayerspawnpoints.isDirty = true;
             pictureBox2.Invalidate();
         }
-
         private void travelPosZNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
@@ -3187,7 +3176,6 @@ namespace DayZeEditor
             isUserInteraction = true;
             pictureBox2.Invalidate();
         }
-
         #endregion PlayerSpawnPoints
         #region cfggameplayconfig
         private cfggameplay cfggameplay;
@@ -3960,7 +3948,7 @@ namespace DayZeEditor
             currentproject.gloabsconfig.isDirty = true;
         }
         #endregion globals
-
+        #region weather
         public weather weather;
         public void Loadweather()
         {
@@ -4230,26 +4218,24 @@ namespace DayZeEditor
             weather.fog.changelimits.max = FCLmaxNUD.Value;
             currentproject.weatherconfig.isDirty = true;
         }
-
         private void SdensityNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
             weather.storm.density = SdensityNUD.Value;
             currentproject.weatherconfig.isDirty = true;
         }
-
         private void SthresholdNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
             weather.storm.threshold = SthresholdNUD.Value;
             currentproject.weatherconfig.isDirty = true;
         }
-
         private void StimeoutNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
             weather.storm.timeout = (int)StimeoutNUD.Value;
             currentproject.weatherconfig.isDirty = true;
         }
+        #endregion weather
     }
 }
