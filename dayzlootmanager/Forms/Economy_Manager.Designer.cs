@@ -175,7 +175,9 @@ namespace DayZeEditor
             this.toolStripButton11 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
-            this.tabControl4 = new System.Windows.Forms.TabControl();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton15 = new System.Windows.Forms.ToolStripButton();
+            this.WeatherTabPage = new System.Windows.Forms.TabControl();
             this.TypesTab = new System.Windows.Forms.TabPage();
             this.EconomyCoreTab = new System.Windows.Forms.TabPage();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
@@ -235,6 +237,7 @@ namespace DayZeEditor
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.EventsLB = new System.Windows.Forms.ListBox();
             this.TypesSummaryTab = new System.Windows.Forms.TabPage();
+            this.darkButton54 = new DarkUI.Controls.DarkButton();
             this.darkLabel6 = new DarkUI.Controls.DarkLabel();
             this.groupBox22 = new System.Windows.Forms.GroupBox();
             this.checkBox65 = new System.Windows.Forms.CheckBox();
@@ -588,6 +591,103 @@ namespace DayZeEditor
             this.label64 = new System.Windows.Forms.Label();
             this.darkLabel25 = new DarkUI.Controls.DarkLabel();
             this.VariablesLB = new System.Windows.Forms.ListBox();
+            this.tabPage18 = new System.Windows.Forms.TabPage();
+            this.groupBox55 = new System.Windows.Forms.GroupBox();
+            this.label94 = new System.Windows.Forms.Label();
+            this.StimeoutNUD = new System.Windows.Forms.NumericUpDown();
+            this.SdensityNUD = new System.Windows.Forms.NumericUpDown();
+            this.SthresholdNUD = new System.Windows.Forms.NumericUpDown();
+            this.label96 = new System.Windows.Forms.Label();
+            this.label95 = new System.Windows.Forms.Label();
+            this.groupBox54 = new System.Windows.Forms.GroupBox();
+            this.groupBox57 = new System.Windows.Forms.GroupBox();
+            this.label93 = new System.Windows.Forms.Label();
+            this.WPfrequencyNUD = new System.Windows.Forms.NumericUpDown();
+            this.WPmaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.WPminNUD = new System.Windows.Forms.NumericUpDown();
+            this.label97 = new System.Windows.Forms.Label();
+            this.label98 = new System.Windows.Forms.Label();
+            this.label101 = new System.Windows.Forms.Label();
+            this.WMaxSpeedNUD = new System.Windows.Forms.NumericUpDown();
+            this.groupBox48 = new System.Windows.Forms.GroupBox();
+            this.groupBox53 = new System.Windows.Forms.GroupBox();
+            this.RTendNUD = new System.Windows.Forms.NumericUpDown();
+            this.RTmaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.RTminNUD = new System.Windows.Forms.NumericUpDown();
+            this.label90 = new System.Windows.Forms.Label();
+            this.label91 = new System.Windows.Forms.Label();
+            this.label92 = new System.Windows.Forms.Label();
+            this.groupBox49 = new System.Windows.Forms.GroupBox();
+            this.RCLmaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.RCLminNUD = new System.Windows.Forms.NumericUpDown();
+            this.label81 = new System.Windows.Forms.Label();
+            this.label82 = new System.Windows.Forms.Label();
+            this.groupBox50 = new System.Windows.Forms.GroupBox();
+            this.RTLmaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.RTLminNUD = new System.Windows.Forms.NumericUpDown();
+            this.label83 = new System.Windows.Forms.Label();
+            this.label84 = new System.Windows.Forms.Label();
+            this.groupBox51 = new System.Windows.Forms.GroupBox();
+            this.RLmaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.RLminNUD = new System.Windows.Forms.NumericUpDown();
+            this.label85 = new System.Windows.Forms.Label();
+            this.label86 = new System.Windows.Forms.Label();
+            this.groupBox52 = new System.Windows.Forms.GroupBox();
+            this.RCdurationNUD = new System.Windows.Forms.NumericUpDown();
+            this.RCtimeNUD = new System.Windows.Forms.NumericUpDown();
+            this.RCactualNUD = new System.Windows.Forms.NumericUpDown();
+            this.label87 = new System.Windows.Forms.Label();
+            this.label88 = new System.Windows.Forms.Label();
+            this.label89 = new System.Windows.Forms.Label();
+            this.groupBox43 = new System.Windows.Forms.GroupBox();
+            this.groupBox44 = new System.Windows.Forms.GroupBox();
+            this.FCLmaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.FCLminNUD = new System.Windows.Forms.NumericUpDown();
+            this.label72 = new System.Windows.Forms.Label();
+            this.label73 = new System.Windows.Forms.Label();
+            this.groupBox45 = new System.Windows.Forms.GroupBox();
+            this.FTLmaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.FTLminNUD = new System.Windows.Forms.NumericUpDown();
+            this.label74 = new System.Windows.Forms.Label();
+            this.label75 = new System.Windows.Forms.Label();
+            this.groupBox46 = new System.Windows.Forms.GroupBox();
+            this.FLmaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.FLminNUD = new System.Windows.Forms.NumericUpDown();
+            this.label76 = new System.Windows.Forms.Label();
+            this.label77 = new System.Windows.Forms.Label();
+            this.groupBox47 = new System.Windows.Forms.GroupBox();
+            this.FCdurationNUD = new System.Windows.Forms.NumericUpDown();
+            this.FCtimeNUD = new System.Windows.Forms.NumericUpDown();
+            this.FCactualNUD = new System.Windows.Forms.NumericUpDown();
+            this.label78 = new System.Windows.Forms.Label();
+            this.label79 = new System.Windows.Forms.Label();
+            this.label80 = new System.Windows.Forms.Label();
+            this.groupBox38 = new System.Windows.Forms.GroupBox();
+            this.groupBox42 = new System.Windows.Forms.GroupBox();
+            this.OCLmaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.OCLminNUD = new System.Windows.Forms.NumericUpDown();
+            this.label70 = new System.Windows.Forms.Label();
+            this.label71 = new System.Windows.Forms.Label();
+            this.groupBox41 = new System.Windows.Forms.GroupBox();
+            this.OTLmaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.OTLminNUD = new System.Windows.Forms.NumericUpDown();
+            this.label66 = new System.Windows.Forms.Label();
+            this.label69 = new System.Windows.Forms.Label();
+            this.groupBox40 = new System.Windows.Forms.GroupBox();
+            this.OLmaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.OLminNUD = new System.Windows.Forms.NumericUpDown();
+            this.label67 = new System.Windows.Forms.Label();
+            this.label68 = new System.Windows.Forms.Label();
+            this.groupBox39 = new System.Windows.Forms.GroupBox();
+            this.OCdurationNUD = new System.Windows.Forms.NumericUpDown();
+            this.OCtimeNUD = new System.Windows.Forms.NumericUpDown();
+            this.OCactualNUD = new System.Windows.Forms.NumericUpDown();
+            this.label65 = new System.Windows.Forms.Label();
+            this.label62 = new System.Windows.Forms.Label();
+            this.label61 = new System.Windows.Forms.Label();
+            this.groupBox37 = new System.Windows.Forms.GroupBox();
+            this.weatherrestartCB = new System.Windows.Forms.CheckBox();
+            this.weatherenabledCB = new System.Windows.Forms.CheckBox();
             this.TypesContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.DeleteTypesTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.AddTypesTSMI = new System.Windows.Forms.ToolStripMenuItem();
@@ -624,7 +724,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.typeNomCountNUD)).BeginInit();
             this.darkToolStrip21.SuspendLayout();
             this.darkToolStrip22.SuspendLayout();
-            this.tabControl4.SuspendLayout();
+            this.WeatherTabPage.SuspendLayout();
             this.TypesTab.SuspendLayout();
             this.EconomyCoreTab.SuspendLayout();
             this.EventsTab.SuspendLayout();
@@ -774,6 +874,64 @@ namespace DayZeEditor
             this.groupBox36.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.variablesvarvalueNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.variablesvartypeNUD)).BeginInit();
+            this.tabPage18.SuspendLayout();
+            this.groupBox55.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StimeoutNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SdensityNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SthresholdNUD)).BeginInit();
+            this.groupBox54.SuspendLayout();
+            this.groupBox57.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WPfrequencyNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WPmaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WPminNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WMaxSpeedNUD)).BeginInit();
+            this.groupBox48.SuspendLayout();
+            this.groupBox53.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RTendNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RTmaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RTminNUD)).BeginInit();
+            this.groupBox49.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RCLmaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RCLminNUD)).BeginInit();
+            this.groupBox50.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RTLmaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RTLminNUD)).BeginInit();
+            this.groupBox51.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RLmaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RLminNUD)).BeginInit();
+            this.groupBox52.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RCdurationNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RCtimeNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RCactualNUD)).BeginInit();
+            this.groupBox43.SuspendLayout();
+            this.groupBox44.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FCLmaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FCLminNUD)).BeginInit();
+            this.groupBox45.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FTLmaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FTLminNUD)).BeginInit();
+            this.groupBox46.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FLmaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FLminNUD)).BeginInit();
+            this.groupBox47.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FCdurationNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FCtimeNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FCactualNUD)).BeginInit();
+            this.groupBox38.SuspendLayout();
+            this.groupBox42.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OCLmaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCLminNUD)).BeginInit();
+            this.groupBox41.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OTLmaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OTLminNUD)).BeginInit();
+            this.groupBox40.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OLmaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OLminNUD)).BeginInit();
+            this.groupBox39.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OCdurationNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCtimeNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCactualNUD)).BeginInit();
+            this.groupBox37.SuspendLayout();
             this.TypesContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -2293,7 +2451,7 @@ namespace DayZeEditor
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton2.Size = new System.Drawing.Size(62, 42);
             this.toolStripButton2.Text = "Find Next";
             this.toolStripButton2.Visible = false;
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
@@ -2345,7 +2503,9 @@ namespace DayZeEditor
             this.toolStripSeparator7,
             this.toolStripButton11,
             this.toolStripSeparator8,
-            this.toolStripButton13});
+            this.toolStripButton13,
+            this.toolStripSeparator10,
+            this.toolStripButton15});
             this.darkToolStrip22.Location = new System.Drawing.Point(0, 45);
             this.darkToolStrip22.Name = "darkToolStrip22";
             this.darkToolStrip22.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
@@ -2545,27 +2705,48 @@ namespace DayZeEditor
             this.toolStripButton13.Text = "Contaminated Area";
             this.toolStripButton13.Click += new System.EventHandler(this.toolStripButton13_Click);
             // 
-            // tabControl4
+            // toolStripSeparator10
             // 
-            this.tabControl4.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
-            this.tabControl4.Controls.Add(this.TypesTab);
-            this.tabControl4.Controls.Add(this.EconomyCoreTab);
-            this.tabControl4.Controls.Add(this.EventsTab);
-            this.tabControl4.Controls.Add(this.TypesSummaryTab);
-            this.tabControl4.Controls.Add(this.tabPage5);
-            this.tabControl4.Controls.Add(this.PlayerSpawns);
-            this.tabControl4.Controls.Add(this.RandomPresets);
-            this.tabControl4.Controls.Add(this.CFGGameplay);
-            this.tabControl4.Controls.Add(this.Toxic);
-            this.tabControl4.Controls.Add(this.Globals);
-            this.tabControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl4.Location = new System.Drawing.Point(0, 73);
-            this.tabControl4.Name = "tabControl4";
-            this.tabControl4.SelectedIndex = 0;
-            this.tabControl4.Size = new System.Drawing.Size(1084, 604);
-            this.tabControl4.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabControl4.TabIndex = 50;
-            this.tabControl4.SelectedIndexChanged += new System.EventHandler(this.tabControl4_SelectedIndexChanged);
+            this.toolStripSeparator10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripSeparator10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripSeparator10.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 28);
+            // 
+            // toolStripButton15
+            // 
+            this.toolStripButton15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripButton15.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripButton15.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton15.Image")));
+            this.toolStripButton15.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton15.Name = "toolStripButton15";
+            this.toolStripButton15.Size = new System.Drawing.Size(55, 25);
+            this.toolStripButton15.Text = "Weather";
+            this.toolStripButton15.Click += new System.EventHandler(this.toolStripButton15_Click);
+            // 
+            // WeatherTabPage
+            // 
+            this.WeatherTabPage.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
+            this.WeatherTabPage.Controls.Add(this.TypesTab);
+            this.WeatherTabPage.Controls.Add(this.EconomyCoreTab);
+            this.WeatherTabPage.Controls.Add(this.EventsTab);
+            this.WeatherTabPage.Controls.Add(this.TypesSummaryTab);
+            this.WeatherTabPage.Controls.Add(this.tabPage5);
+            this.WeatherTabPage.Controls.Add(this.PlayerSpawns);
+            this.WeatherTabPage.Controls.Add(this.RandomPresets);
+            this.WeatherTabPage.Controls.Add(this.CFGGameplay);
+            this.WeatherTabPage.Controls.Add(this.Toxic);
+            this.WeatherTabPage.Controls.Add(this.Globals);
+            this.WeatherTabPage.Controls.Add(this.tabPage18);
+            this.WeatherTabPage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WeatherTabPage.Location = new System.Drawing.Point(0, 73);
+            this.WeatherTabPage.Name = "WeatherTabPage";
+            this.WeatherTabPage.SelectedIndex = 0;
+            this.WeatherTabPage.Size = new System.Drawing.Size(1084, 604);
+            this.WeatherTabPage.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.WeatherTabPage.TabIndex = 50;
+            this.WeatherTabPage.SelectedIndexChanged += new System.EventHandler(this.tabControl4_SelectedIndexChanged);
             // 
             // TypesTab
             // 
@@ -3316,6 +3497,7 @@ namespace DayZeEditor
             // TypesSummaryTab
             // 
             this.TypesSummaryTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TypesSummaryTab.Controls.Add(this.darkButton54);
             this.TypesSummaryTab.Controls.Add(this.darkLabel6);
             this.TypesSummaryTab.Controls.Add(this.groupBox22);
             this.TypesSummaryTab.Controls.Add(this.darkButton15);
@@ -3329,6 +3511,18 @@ namespace DayZeEditor
             this.TypesSummaryTab.Size = new System.Drawing.Size(1076, 575);
             this.TypesSummaryTab.TabIndex = 3;
             this.TypesSummaryTab.Text = "Types Summary";
+            // 
+            // darkButton54
+            // 
+            this.darkButton54.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.darkButton54.Location = new System.Drawing.Point(843, 215);
+            this.darkButton54.Name = "darkButton54";
+            this.darkButton54.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton54.Size = new System.Drawing.Size(202, 27);
+            this.darkButton54.TabIndex = 47;
+            this.darkButton54.Text = "Export To text";
+            this.darkButton54.Visible = false;
+            this.darkButton54.Click += new System.EventHandler(this.darkButton54_Click);
             // 
             // darkLabel6
             // 
@@ -5896,6 +6090,7 @@ namespace DayZeEditor
             this.travelPosZNUD.Size = new System.Drawing.Size(68, 20);
             this.travelPosZNUD.TabIndex = 71;
             this.travelPosZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.travelPosZNUD.ValueChanged += new System.EventHandler(this.travelPosZNUD_ValueChanged);
             // 
             // travelPosXNUD
             // 
@@ -5917,6 +6112,7 @@ namespace DayZeEditor
             this.travelPosXNUD.Size = new System.Drawing.Size(68, 20);
             this.travelPosXNUD.TabIndex = 70;
             this.travelPosXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.travelPosXNUD.ValueChanged += new System.EventHandler(this.travelPosXNUD_ValueChanged);
             // 
             // darkButton26
             // 
@@ -7829,6 +8025,1360 @@ namespace DayZeEditor
             this.VariablesLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.VariablesLB.SelectedIndexChanged += new System.EventHandler(this.listBox7_SelectedIndexChanged_1);
             // 
+            // tabPage18
+            // 
+            this.tabPage18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage18.Controls.Add(this.groupBox55);
+            this.tabPage18.Controls.Add(this.groupBox54);
+            this.tabPage18.Controls.Add(this.groupBox48);
+            this.tabPage18.Controls.Add(this.groupBox43);
+            this.tabPage18.Controls.Add(this.groupBox38);
+            this.tabPage18.Controls.Add(this.groupBox37);
+            this.tabPage18.ForeColor = System.Drawing.SystemColors.Control;
+            this.tabPage18.Location = new System.Drawing.Point(4, 25);
+            this.tabPage18.Name = "tabPage18";
+            this.tabPage18.Size = new System.Drawing.Size(1076, 575);
+            this.tabPage18.TabIndex = 10;
+            this.tabPage18.Text = "Weather";
+            // 
+            // groupBox55
+            // 
+            this.groupBox55.Controls.Add(this.label94);
+            this.groupBox55.Controls.Add(this.StimeoutNUD);
+            this.groupBox55.Controls.Add(this.SdensityNUD);
+            this.groupBox55.Controls.Add(this.SthresholdNUD);
+            this.groupBox55.Controls.Add(this.label96);
+            this.groupBox55.Controls.Add(this.label95);
+            this.groupBox55.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox55.Location = new System.Drawing.Point(578, 324);
+            this.groupBox55.Name = "groupBox55";
+            this.groupBox55.Size = new System.Drawing.Size(279, 139);
+            this.groupBox55.TabIndex = 77;
+            this.groupBox55.TabStop = false;
+            this.groupBox55.Text = "Storm";
+            // 
+            // label94
+            // 
+            this.label94.AutoSize = true;
+            this.label94.Location = new System.Drawing.Point(14, 86);
+            this.label94.Name = "label94";
+            this.label94.Size = new System.Drawing.Size(41, 13);
+            this.label94.TabIndex = 74;
+            this.label94.Text = "timeout";
+            // 
+            // StimeoutNUD
+            // 
+            this.StimeoutNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StimeoutNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.StimeoutNUD.Location = new System.Drawing.Point(91, 84);
+            this.StimeoutNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.StimeoutNUD.Name = "StimeoutNUD";
+            this.StimeoutNUD.Size = new System.Drawing.Size(78, 20);
+            this.StimeoutNUD.TabIndex = 73;
+            this.StimeoutNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.StimeoutNUD.ValueChanged += new System.EventHandler(this.StimeoutNUD_ValueChanged);
+            // 
+            // SdensityNUD
+            // 
+            this.SdensityNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SdensityNUD.DecimalPlaces = 2;
+            this.SdensityNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SdensityNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.SdensityNUD.Location = new System.Drawing.Point(91, 24);
+            this.SdensityNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.SdensityNUD.Name = "SdensityNUD";
+            this.SdensityNUD.Size = new System.Drawing.Size(78, 20);
+            this.SdensityNUD.TabIndex = 71;
+            this.SdensityNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SdensityNUD.ValueChanged += new System.EventHandler(this.SdensityNUD_ValueChanged);
+            // 
+            // SthresholdNUD
+            // 
+            this.SthresholdNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SthresholdNUD.DecimalPlaces = 2;
+            this.SthresholdNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SthresholdNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.SthresholdNUD.Location = new System.Drawing.Point(91, 54);
+            this.SthresholdNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.SthresholdNUD.Name = "SthresholdNUD";
+            this.SthresholdNUD.Size = new System.Drawing.Size(78, 20);
+            this.SthresholdNUD.TabIndex = 72;
+            this.SthresholdNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SthresholdNUD.ValueChanged += new System.EventHandler(this.SthresholdNUD_ValueChanged);
+            // 
+            // label96
+            // 
+            this.label96.AutoSize = true;
+            this.label96.Location = new System.Drawing.Point(14, 26);
+            this.label96.Name = "label96";
+            this.label96.Size = new System.Drawing.Size(40, 13);
+            this.label96.TabIndex = 0;
+            this.label96.Text = "density";
+            // 
+            // label95
+            // 
+            this.label95.AutoSize = true;
+            this.label95.Location = new System.Drawing.Point(14, 56);
+            this.label95.Name = "label95";
+            this.label95.Size = new System.Drawing.Size(50, 13);
+            this.label95.TabIndex = 1;
+            this.label95.Text = "threshold";
+            // 
+            // groupBox54
+            // 
+            this.groupBox54.Controls.Add(this.groupBox57);
+            this.groupBox54.Controls.Add(this.label101);
+            this.groupBox54.Controls.Add(this.WMaxSpeedNUD);
+            this.groupBox54.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox54.Location = new System.Drawing.Point(293, 324);
+            this.groupBox54.Name = "groupBox54";
+            this.groupBox54.Size = new System.Drawing.Size(279, 139);
+            this.groupBox54.TabIndex = 76;
+            this.groupBox54.TabStop = false;
+            this.groupBox54.Text = "Wind";
+            // 
+            // groupBox57
+            // 
+            this.groupBox57.Controls.Add(this.label93);
+            this.groupBox57.Controls.Add(this.WPfrequencyNUD);
+            this.groupBox57.Controls.Add(this.WPmaxNUD);
+            this.groupBox57.Controls.Add(this.WPminNUD);
+            this.groupBox57.Controls.Add(this.label97);
+            this.groupBox57.Controls.Add(this.label98);
+            this.groupBox57.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox57.Location = new System.Drawing.Point(6, 57);
+            this.groupBox57.Name = "groupBox57";
+            this.groupBox57.Size = new System.Drawing.Size(267, 66);
+            this.groupBox57.TabIndex = 74;
+            this.groupBox57.TabStop = false;
+            this.groupBox57.Text = "Params";
+            // 
+            // label93
+            // 
+            this.label93.AutoSize = true;
+            this.label93.Location = new System.Drawing.Point(194, 16);
+            this.label93.Name = "label93";
+            this.label93.Size = new System.Drawing.Size(54, 13);
+            this.label93.TabIndex = 74;
+            this.label93.Text = "frequency";
+            // 
+            // WPfrequencyNUD
+            // 
+            this.WPfrequencyNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.WPfrequencyNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.WPfrequencyNUD.Location = new System.Drawing.Point(183, 32);
+            this.WPfrequencyNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.WPfrequencyNUD.Name = "WPfrequencyNUD";
+            this.WPfrequencyNUD.Size = new System.Drawing.Size(78, 20);
+            this.WPfrequencyNUD.TabIndex = 73;
+            this.WPfrequencyNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.WPfrequencyNUD.ValueChanged += new System.EventHandler(this.WPfrequencyNUD_ValueChanged);
+            // 
+            // WPmaxNUD
+            // 
+            this.WPmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.WPmaxNUD.DecimalPlaces = 2;
+            this.WPmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.WPmaxNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.WPmaxNUD.Location = new System.Drawing.Point(95, 32);
+            this.WPmaxNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.WPmaxNUD.Name = "WPmaxNUD";
+            this.WPmaxNUD.Size = new System.Drawing.Size(78, 20);
+            this.WPmaxNUD.TabIndex = 72;
+            this.WPmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.WPmaxNUD.ValueChanged += new System.EventHandler(this.WPmaxNUD_ValueChanged);
+            // 
+            // WPminNUD
+            // 
+            this.WPminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.WPminNUD.DecimalPlaces = 2;
+            this.WPminNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.WPminNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.WPminNUD.Location = new System.Drawing.Point(11, 32);
+            this.WPminNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.WPminNUD.Name = "WPminNUD";
+            this.WPminNUD.Size = new System.Drawing.Size(78, 20);
+            this.WPminNUD.TabIndex = 71;
+            this.WPminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.WPminNUD.ValueChanged += new System.EventHandler(this.WPminNUD_ValueChanged);
+            // 
+            // label97
+            // 
+            this.label97.AutoSize = true;
+            this.label97.Location = new System.Drawing.Point(115, 16);
+            this.label97.Name = "label97";
+            this.label97.Size = new System.Drawing.Size(26, 13);
+            this.label97.TabIndex = 1;
+            this.label97.Text = "max";
+            // 
+            // label98
+            // 
+            this.label98.AutoSize = true;
+            this.label98.Location = new System.Drawing.Point(36, 16);
+            this.label98.Name = "label98";
+            this.label98.Size = new System.Drawing.Size(23, 13);
+            this.label98.TabIndex = 0;
+            this.label98.Text = "min";
+            // 
+            // label101
+            // 
+            this.label101.AutoSize = true;
+            this.label101.Location = new System.Drawing.Point(14, 28);
+            this.label101.Name = "label101";
+            this.label101.Size = new System.Drawing.Size(61, 13);
+            this.label101.TabIndex = 0;
+            this.label101.Text = "Max Speed";
+            // 
+            // WMaxSpeedNUD
+            // 
+            this.WMaxSpeedNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.WMaxSpeedNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.WMaxSpeedNUD.Location = new System.Drawing.Point(81, 26);
+            this.WMaxSpeedNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.WMaxSpeedNUD.Name = "WMaxSpeedNUD";
+            this.WMaxSpeedNUD.Size = new System.Drawing.Size(78, 20);
+            this.WMaxSpeedNUD.TabIndex = 71;
+            this.WMaxSpeedNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.WMaxSpeedNUD.ValueChanged += new System.EventHandler(this.WMaxSpeedNUD_ValueChanged);
+            // 
+            // groupBox48
+            // 
+            this.groupBox48.Controls.Add(this.groupBox53);
+            this.groupBox48.Controls.Add(this.groupBox49);
+            this.groupBox48.Controls.Add(this.groupBox50);
+            this.groupBox48.Controls.Add(this.groupBox51);
+            this.groupBox48.Controls.Add(this.groupBox52);
+            this.groupBox48.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox48.Location = new System.Drawing.Point(8, 94);
+            this.groupBox48.Name = "groupBox48";
+            this.groupBox48.Size = new System.Drawing.Size(279, 369);
+            this.groupBox48.TabIndex = 76;
+            this.groupBox48.TabStop = false;
+            this.groupBox48.Text = "Rain";
+            // 
+            // groupBox53
+            // 
+            this.groupBox53.Controls.Add(this.RTendNUD);
+            this.groupBox53.Controls.Add(this.RTmaxNUD);
+            this.groupBox53.Controls.Add(this.RTminNUD);
+            this.groupBox53.Controls.Add(this.label90);
+            this.groupBox53.Controls.Add(this.label91);
+            this.groupBox53.Controls.Add(this.label92);
+            this.groupBox53.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox53.Location = new System.Drawing.Point(6, 302);
+            this.groupBox53.Name = "groupBox53";
+            this.groupBox53.Size = new System.Drawing.Size(267, 61);
+            this.groupBox53.TabIndex = 74;
+            this.groupBox53.TabStop = false;
+            this.groupBox53.Text = "Thresholds";
+            // 
+            // RTendNUD
+            // 
+            this.RTendNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.RTendNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.RTendNUD.Location = new System.Drawing.Point(179, 31);
+            this.RTendNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.RTendNUD.Name = "RTendNUD";
+            this.RTendNUD.Size = new System.Drawing.Size(78, 20);
+            this.RTendNUD.TabIndex = 73;
+            this.RTendNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.RTendNUD.ValueChanged += new System.EventHandler(this.RTendNUD_ValueChanged);
+            // 
+            // RTmaxNUD
+            // 
+            this.RTmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.RTmaxNUD.DecimalPlaces = 2;
+            this.RTmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.RTmaxNUD.Location = new System.Drawing.Point(95, 31);
+            this.RTmaxNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.RTmaxNUD.Name = "RTmaxNUD";
+            this.RTmaxNUD.Size = new System.Drawing.Size(78, 20);
+            this.RTmaxNUD.TabIndex = 72;
+            this.RTmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.RTmaxNUD.ValueChanged += new System.EventHandler(this.RTmaxNUD_ValueChanged);
+            // 
+            // RTminNUD
+            // 
+            this.RTminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.RTminNUD.DecimalPlaces = 2;
+            this.RTminNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.RTminNUD.Location = new System.Drawing.Point(11, 31);
+            this.RTminNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.RTminNUD.Name = "RTminNUD";
+            this.RTminNUD.Size = new System.Drawing.Size(78, 20);
+            this.RTminNUD.TabIndex = 71;
+            this.RTminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.RTminNUD.ValueChanged += new System.EventHandler(this.RTminNUD_ValueChanged);
+            // 
+            // label90
+            // 
+            this.label90.AutoSize = true;
+            this.label90.Location = new System.Drawing.Point(194, 15);
+            this.label90.Name = "label90";
+            this.label90.Size = new System.Drawing.Size(26, 13);
+            this.label90.TabIndex = 2;
+            this.label90.Text = "End";
+            // 
+            // label91
+            // 
+            this.label91.AutoSize = true;
+            this.label91.Location = new System.Drawing.Point(115, 15);
+            this.label91.Name = "label91";
+            this.label91.Size = new System.Drawing.Size(27, 13);
+            this.label91.TabIndex = 1;
+            this.label91.Text = "Max";
+            // 
+            // label92
+            // 
+            this.label92.AutoSize = true;
+            this.label92.Location = new System.Drawing.Point(24, 15);
+            this.label92.Name = "label92";
+            this.label92.Size = new System.Drawing.Size(24, 13);
+            this.label92.TabIndex = 0;
+            this.label92.Text = "Min";
+            // 
+            // groupBox49
+            // 
+            this.groupBox49.Controls.Add(this.RCLmaxNUD);
+            this.groupBox49.Controls.Add(this.RCLminNUD);
+            this.groupBox49.Controls.Add(this.label81);
+            this.groupBox49.Controls.Add(this.label82);
+            this.groupBox49.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox49.Location = new System.Drawing.Point(6, 230);
+            this.groupBox49.Name = "groupBox49";
+            this.groupBox49.Size = new System.Drawing.Size(267, 66);
+            this.groupBox49.TabIndex = 75;
+            this.groupBox49.TabStop = false;
+            this.groupBox49.Text = "Change Limits";
+            // 
+            // RCLmaxNUD
+            // 
+            this.RCLmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.RCLmaxNUD.DecimalPlaces = 2;
+            this.RCLmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.RCLmaxNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.RCLmaxNUD.Location = new System.Drawing.Point(95, 32);
+            this.RCLmaxNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.RCLmaxNUD.Name = "RCLmaxNUD";
+            this.RCLmaxNUD.Size = new System.Drawing.Size(78, 20);
+            this.RCLmaxNUD.TabIndex = 72;
+            this.RCLmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.RCLmaxNUD.ValueChanged += new System.EventHandler(this.RCLmaxNUD_ValueChanged);
+            // 
+            // RCLminNUD
+            // 
+            this.RCLminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.RCLminNUD.DecimalPlaces = 2;
+            this.RCLminNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.RCLminNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.RCLminNUD.Location = new System.Drawing.Point(11, 32);
+            this.RCLminNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.RCLminNUD.Name = "RCLminNUD";
+            this.RCLminNUD.Size = new System.Drawing.Size(78, 20);
+            this.RCLminNUD.TabIndex = 71;
+            this.RCLminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.RCLminNUD.ValueChanged += new System.EventHandler(this.RCLminNUD_ValueChanged);
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.Location = new System.Drawing.Point(115, 16);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(26, 13);
+            this.label81.TabIndex = 1;
+            this.label81.Text = "max";
+            // 
+            // label82
+            // 
+            this.label82.AutoSize = true;
+            this.label82.Location = new System.Drawing.Point(37, 16);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(23, 13);
+            this.label82.TabIndex = 0;
+            this.label82.Text = "min";
+            // 
+            // groupBox50
+            // 
+            this.groupBox50.Controls.Add(this.RTLmaxNUD);
+            this.groupBox50.Controls.Add(this.RTLminNUD);
+            this.groupBox50.Controls.Add(this.label83);
+            this.groupBox50.Controls.Add(this.label84);
+            this.groupBox50.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox50.Location = new System.Drawing.Point(6, 158);
+            this.groupBox50.Name = "groupBox50";
+            this.groupBox50.Size = new System.Drawing.Size(267, 66);
+            this.groupBox50.TabIndex = 75;
+            this.groupBox50.TabStop = false;
+            this.groupBox50.Text = "Time Limits";
+            // 
+            // RTLmaxNUD
+            // 
+            this.RTLmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.RTLmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.RTLmaxNUD.Location = new System.Drawing.Point(95, 32);
+            this.RTLmaxNUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.RTLmaxNUD.Name = "RTLmaxNUD";
+            this.RTLmaxNUD.Size = new System.Drawing.Size(78, 20);
+            this.RTLmaxNUD.TabIndex = 72;
+            this.RTLmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.RTLmaxNUD.ValueChanged += new System.EventHandler(this.RTLmaxNUD_ValueChanged);
+            // 
+            // RTLminNUD
+            // 
+            this.RTLminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.RTLminNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.RTLminNUD.Location = new System.Drawing.Point(11, 32);
+            this.RTLminNUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.RTLminNUD.Name = "RTLminNUD";
+            this.RTLminNUD.Size = new System.Drawing.Size(78, 20);
+            this.RTLminNUD.TabIndex = 71;
+            this.RTLminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.RTLminNUD.ValueChanged += new System.EventHandler(this.RTLminNUD_ValueChanged);
+            // 
+            // label83
+            // 
+            this.label83.AutoSize = true;
+            this.label83.Location = new System.Drawing.Point(115, 16);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(26, 13);
+            this.label83.TabIndex = 1;
+            this.label83.Text = "max";
+            // 
+            // label84
+            // 
+            this.label84.AutoSize = true;
+            this.label84.Location = new System.Drawing.Point(37, 16);
+            this.label84.Name = "label84";
+            this.label84.Size = new System.Drawing.Size(23, 13);
+            this.label84.TabIndex = 0;
+            this.label84.Text = "min";
+            // 
+            // groupBox51
+            // 
+            this.groupBox51.Controls.Add(this.RLmaxNUD);
+            this.groupBox51.Controls.Add(this.RLminNUD);
+            this.groupBox51.Controls.Add(this.label85);
+            this.groupBox51.Controls.Add(this.label86);
+            this.groupBox51.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox51.Location = new System.Drawing.Point(6, 86);
+            this.groupBox51.Name = "groupBox51";
+            this.groupBox51.Size = new System.Drawing.Size(267, 66);
+            this.groupBox51.TabIndex = 74;
+            this.groupBox51.TabStop = false;
+            this.groupBox51.Text = "Limits";
+            // 
+            // RLmaxNUD
+            // 
+            this.RLmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.RLmaxNUD.DecimalPlaces = 2;
+            this.RLmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.RLmaxNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.RLmaxNUD.Location = new System.Drawing.Point(95, 32);
+            this.RLmaxNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.RLmaxNUD.Name = "RLmaxNUD";
+            this.RLmaxNUD.Size = new System.Drawing.Size(78, 20);
+            this.RLmaxNUD.TabIndex = 72;
+            this.RLmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.RLmaxNUD.ValueChanged += new System.EventHandler(this.RLmaxNUD_ValueChanged);
+            // 
+            // RLminNUD
+            // 
+            this.RLminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.RLminNUD.DecimalPlaces = 2;
+            this.RLminNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.RLminNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.RLminNUD.Location = new System.Drawing.Point(11, 32);
+            this.RLminNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.RLminNUD.Name = "RLminNUD";
+            this.RLminNUD.Size = new System.Drawing.Size(78, 20);
+            this.RLminNUD.TabIndex = 71;
+            this.RLminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.RLminNUD.ValueChanged += new System.EventHandler(this.RLminNUD_ValueChanged);
+            // 
+            // label85
+            // 
+            this.label85.AutoSize = true;
+            this.label85.Location = new System.Drawing.Point(115, 16);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(26, 13);
+            this.label85.TabIndex = 1;
+            this.label85.Text = "max";
+            // 
+            // label86
+            // 
+            this.label86.AutoSize = true;
+            this.label86.Location = new System.Drawing.Point(37, 16);
+            this.label86.Name = "label86";
+            this.label86.Size = new System.Drawing.Size(23, 13);
+            this.label86.TabIndex = 0;
+            this.label86.Text = "min";
+            // 
+            // groupBox52
+            // 
+            this.groupBox52.Controls.Add(this.RCdurationNUD);
+            this.groupBox52.Controls.Add(this.RCtimeNUD);
+            this.groupBox52.Controls.Add(this.RCactualNUD);
+            this.groupBox52.Controls.Add(this.label87);
+            this.groupBox52.Controls.Add(this.label88);
+            this.groupBox52.Controls.Add(this.label89);
+            this.groupBox52.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox52.Location = new System.Drawing.Point(6, 19);
+            this.groupBox52.Name = "groupBox52";
+            this.groupBox52.Size = new System.Drawing.Size(267, 61);
+            this.groupBox52.TabIndex = 4;
+            this.groupBox52.TabStop = false;
+            this.groupBox52.Text = "Current";
+            // 
+            // RCdurationNUD
+            // 
+            this.RCdurationNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.RCdurationNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.RCdurationNUD.Location = new System.Drawing.Point(179, 31);
+            this.RCdurationNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.RCdurationNUD.Name = "RCdurationNUD";
+            this.RCdurationNUD.Size = new System.Drawing.Size(78, 20);
+            this.RCdurationNUD.TabIndex = 73;
+            this.RCdurationNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.RCdurationNUD.ValueChanged += new System.EventHandler(this.RCdurationNUD_ValueChanged);
+            // 
+            // RCtimeNUD
+            // 
+            this.RCtimeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.RCtimeNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.RCtimeNUD.Location = new System.Drawing.Point(95, 31);
+            this.RCtimeNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.RCtimeNUD.Name = "RCtimeNUD";
+            this.RCtimeNUD.Size = new System.Drawing.Size(78, 20);
+            this.RCtimeNUD.TabIndex = 72;
+            this.RCtimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.RCtimeNUD.ValueChanged += new System.EventHandler(this.RCtimeNUD_ValueChanged);
+            // 
+            // RCactualNUD
+            // 
+            this.RCactualNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.RCactualNUD.DecimalPlaces = 2;
+            this.RCactualNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.RCactualNUD.Location = new System.Drawing.Point(11, 31);
+            this.RCactualNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.RCactualNUD.Name = "RCactualNUD";
+            this.RCactualNUD.Size = new System.Drawing.Size(78, 20);
+            this.RCactualNUD.TabIndex = 71;
+            this.RCactualNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.RCactualNUD.ValueChanged += new System.EventHandler(this.RCactualNUD_ValueChanged);
+            // 
+            // label87
+            // 
+            this.label87.AutoSize = true;
+            this.label87.Location = new System.Drawing.Point(194, 15);
+            this.label87.Name = "label87";
+            this.label87.Size = new System.Drawing.Size(45, 13);
+            this.label87.TabIndex = 2;
+            this.label87.Text = "duration";
+            // 
+            // label88
+            // 
+            this.label88.AutoSize = true;
+            this.label88.Location = new System.Drawing.Point(115, 15);
+            this.label88.Name = "label88";
+            this.label88.Size = new System.Drawing.Size(26, 13);
+            this.label88.TabIndex = 1;
+            this.label88.Text = "time";
+            // 
+            // label89
+            // 
+            this.label89.AutoSize = true;
+            this.label89.Location = new System.Drawing.Point(24, 15);
+            this.label89.Name = "label89";
+            this.label89.Size = new System.Drawing.Size(36, 13);
+            this.label89.TabIndex = 0;
+            this.label89.Text = "actual";
+            // 
+            // groupBox43
+            // 
+            this.groupBox43.Controls.Add(this.groupBox44);
+            this.groupBox43.Controls.Add(this.groupBox45);
+            this.groupBox43.Controls.Add(this.groupBox46);
+            this.groupBox43.Controls.Add(this.groupBox47);
+            this.groupBox43.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox43.Location = new System.Drawing.Point(578, 13);
+            this.groupBox43.Name = "groupBox43";
+            this.groupBox43.Size = new System.Drawing.Size(279, 304);
+            this.groupBox43.TabIndex = 76;
+            this.groupBox43.TabStop = false;
+            this.groupBox43.Text = "Fog";
+            // 
+            // groupBox44
+            // 
+            this.groupBox44.Controls.Add(this.FCLmaxNUD);
+            this.groupBox44.Controls.Add(this.FCLminNUD);
+            this.groupBox44.Controls.Add(this.label72);
+            this.groupBox44.Controls.Add(this.label73);
+            this.groupBox44.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox44.Location = new System.Drawing.Point(6, 230);
+            this.groupBox44.Name = "groupBox44";
+            this.groupBox44.Size = new System.Drawing.Size(267, 66);
+            this.groupBox44.TabIndex = 75;
+            this.groupBox44.TabStop = false;
+            this.groupBox44.Text = "Change Limits";
+            // 
+            // FCLmaxNUD
+            // 
+            this.FCLmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.FCLmaxNUD.DecimalPlaces = 2;
+            this.FCLmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.FCLmaxNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.FCLmaxNUD.Location = new System.Drawing.Point(95, 32);
+            this.FCLmaxNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.FCLmaxNUD.Name = "FCLmaxNUD";
+            this.FCLmaxNUD.Size = new System.Drawing.Size(78, 20);
+            this.FCLmaxNUD.TabIndex = 72;
+            this.FCLmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.FCLmaxNUD.ValueChanged += new System.EventHandler(this.FCLmaxNUD_ValueChanged);
+            // 
+            // FCLminNUD
+            // 
+            this.FCLminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.FCLminNUD.DecimalPlaces = 2;
+            this.FCLminNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.FCLminNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.FCLminNUD.Location = new System.Drawing.Point(11, 32);
+            this.FCLminNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.FCLminNUD.Name = "FCLminNUD";
+            this.FCLminNUD.Size = new System.Drawing.Size(78, 20);
+            this.FCLminNUD.TabIndex = 71;
+            this.FCLminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.FCLminNUD.ValueChanged += new System.EventHandler(this.FCLminNUD_ValueChanged);
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Location = new System.Drawing.Point(115, 16);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(26, 13);
+            this.label72.TabIndex = 1;
+            this.label72.Text = "max";
+            // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.Location = new System.Drawing.Point(37, 16);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(23, 13);
+            this.label73.TabIndex = 0;
+            this.label73.Text = "min";
+            // 
+            // groupBox45
+            // 
+            this.groupBox45.Controls.Add(this.FTLmaxNUD);
+            this.groupBox45.Controls.Add(this.FTLminNUD);
+            this.groupBox45.Controls.Add(this.label74);
+            this.groupBox45.Controls.Add(this.label75);
+            this.groupBox45.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox45.Location = new System.Drawing.Point(6, 158);
+            this.groupBox45.Name = "groupBox45";
+            this.groupBox45.Size = new System.Drawing.Size(267, 66);
+            this.groupBox45.TabIndex = 75;
+            this.groupBox45.TabStop = false;
+            this.groupBox45.Text = "Time Limits";
+            // 
+            // FTLmaxNUD
+            // 
+            this.FTLmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.FTLmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.FTLmaxNUD.Location = new System.Drawing.Point(95, 32);
+            this.FTLmaxNUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.FTLmaxNUD.Name = "FTLmaxNUD";
+            this.FTLmaxNUD.Size = new System.Drawing.Size(78, 20);
+            this.FTLmaxNUD.TabIndex = 72;
+            this.FTLmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.FTLmaxNUD.ValueChanged += new System.EventHandler(this.FTLmaxNUD_ValueChanged);
+            // 
+            // FTLminNUD
+            // 
+            this.FTLminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.FTLminNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.FTLminNUD.Location = new System.Drawing.Point(11, 32);
+            this.FTLminNUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.FTLminNUD.Name = "FTLminNUD";
+            this.FTLminNUD.Size = new System.Drawing.Size(78, 20);
+            this.FTLminNUD.TabIndex = 71;
+            this.FTLminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.FTLminNUD.ValueChanged += new System.EventHandler(this.FTLminNUD_ValueChanged);
+            // 
+            // label74
+            // 
+            this.label74.AutoSize = true;
+            this.label74.Location = new System.Drawing.Point(115, 16);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(26, 13);
+            this.label74.TabIndex = 1;
+            this.label74.Text = "max";
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.Location = new System.Drawing.Point(37, 16);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(23, 13);
+            this.label75.TabIndex = 0;
+            this.label75.Text = "min";
+            // 
+            // groupBox46
+            // 
+            this.groupBox46.Controls.Add(this.FLmaxNUD);
+            this.groupBox46.Controls.Add(this.FLminNUD);
+            this.groupBox46.Controls.Add(this.label76);
+            this.groupBox46.Controls.Add(this.label77);
+            this.groupBox46.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox46.Location = new System.Drawing.Point(6, 86);
+            this.groupBox46.Name = "groupBox46";
+            this.groupBox46.Size = new System.Drawing.Size(267, 66);
+            this.groupBox46.TabIndex = 74;
+            this.groupBox46.TabStop = false;
+            this.groupBox46.Text = "Limits";
+            // 
+            // FLmaxNUD
+            // 
+            this.FLmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.FLmaxNUD.DecimalPlaces = 2;
+            this.FLmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.FLmaxNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.FLmaxNUD.Location = new System.Drawing.Point(95, 32);
+            this.FLmaxNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.FLmaxNUD.Name = "FLmaxNUD";
+            this.FLmaxNUD.Size = new System.Drawing.Size(78, 20);
+            this.FLmaxNUD.TabIndex = 72;
+            this.FLmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.FLmaxNUD.ValueChanged += new System.EventHandler(this.FLmaxNUD_ValueChanged);
+            // 
+            // FLminNUD
+            // 
+            this.FLminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.FLminNUD.DecimalPlaces = 2;
+            this.FLminNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.FLminNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.FLminNUD.Location = new System.Drawing.Point(11, 32);
+            this.FLminNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.FLminNUD.Name = "FLminNUD";
+            this.FLminNUD.Size = new System.Drawing.Size(78, 20);
+            this.FLminNUD.TabIndex = 71;
+            this.FLminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.FLminNUD.ValueChanged += new System.EventHandler(this.FLminNUD_ValueChanged);
+            // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.Location = new System.Drawing.Point(115, 16);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(26, 13);
+            this.label76.TabIndex = 1;
+            this.label76.Text = "max";
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.Location = new System.Drawing.Point(37, 16);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(23, 13);
+            this.label77.TabIndex = 0;
+            this.label77.Text = "min";
+            // 
+            // groupBox47
+            // 
+            this.groupBox47.Controls.Add(this.FCdurationNUD);
+            this.groupBox47.Controls.Add(this.FCtimeNUD);
+            this.groupBox47.Controls.Add(this.FCactualNUD);
+            this.groupBox47.Controls.Add(this.label78);
+            this.groupBox47.Controls.Add(this.label79);
+            this.groupBox47.Controls.Add(this.label80);
+            this.groupBox47.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox47.Location = new System.Drawing.Point(6, 19);
+            this.groupBox47.Name = "groupBox47";
+            this.groupBox47.Size = new System.Drawing.Size(267, 61);
+            this.groupBox47.TabIndex = 4;
+            this.groupBox47.TabStop = false;
+            this.groupBox47.Text = "Current";
+            // 
+            // FCdurationNUD
+            // 
+            this.FCdurationNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.FCdurationNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.FCdurationNUD.Location = new System.Drawing.Point(179, 31);
+            this.FCdurationNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.FCdurationNUD.Name = "FCdurationNUD";
+            this.FCdurationNUD.Size = new System.Drawing.Size(78, 20);
+            this.FCdurationNUD.TabIndex = 73;
+            this.FCdurationNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.FCdurationNUD.ValueChanged += new System.EventHandler(this.FCdurationNUD_ValueChanged);
+            // 
+            // FCtimeNUD
+            // 
+            this.FCtimeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.FCtimeNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.FCtimeNUD.Location = new System.Drawing.Point(95, 31);
+            this.FCtimeNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.FCtimeNUD.Name = "FCtimeNUD";
+            this.FCtimeNUD.Size = new System.Drawing.Size(78, 20);
+            this.FCtimeNUD.TabIndex = 72;
+            this.FCtimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.FCtimeNUD.ValueChanged += new System.EventHandler(this.FCtimeNUD_ValueChanged);
+            // 
+            // FCactualNUD
+            // 
+            this.FCactualNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.FCactualNUD.DecimalPlaces = 2;
+            this.FCactualNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.FCactualNUD.Location = new System.Drawing.Point(11, 31);
+            this.FCactualNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.FCactualNUD.Name = "FCactualNUD";
+            this.FCactualNUD.Size = new System.Drawing.Size(78, 20);
+            this.FCactualNUD.TabIndex = 71;
+            this.FCactualNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.FCactualNUD.ValueChanged += new System.EventHandler(this.FCactualNUD_ValueChanged);
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.Location = new System.Drawing.Point(194, 15);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(45, 13);
+            this.label78.TabIndex = 2;
+            this.label78.Text = "duration";
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Location = new System.Drawing.Point(115, 15);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(26, 13);
+            this.label79.TabIndex = 1;
+            this.label79.Text = "time";
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.Location = new System.Drawing.Point(24, 15);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(36, 13);
+            this.label80.TabIndex = 0;
+            this.label80.Text = "actual";
+            // 
+            // groupBox38
+            // 
+            this.groupBox38.Controls.Add(this.groupBox42);
+            this.groupBox38.Controls.Add(this.groupBox41);
+            this.groupBox38.Controls.Add(this.groupBox40);
+            this.groupBox38.Controls.Add(this.groupBox39);
+            this.groupBox38.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox38.Location = new System.Drawing.Point(293, 13);
+            this.groupBox38.Name = "groupBox38";
+            this.groupBox38.Size = new System.Drawing.Size(279, 304);
+            this.groupBox38.TabIndex = 3;
+            this.groupBox38.TabStop = false;
+            this.groupBox38.Text = "Overcast";
+            // 
+            // groupBox42
+            // 
+            this.groupBox42.Controls.Add(this.OCLmaxNUD);
+            this.groupBox42.Controls.Add(this.OCLminNUD);
+            this.groupBox42.Controls.Add(this.label70);
+            this.groupBox42.Controls.Add(this.label71);
+            this.groupBox42.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox42.Location = new System.Drawing.Point(6, 230);
+            this.groupBox42.Name = "groupBox42";
+            this.groupBox42.Size = new System.Drawing.Size(267, 66);
+            this.groupBox42.TabIndex = 75;
+            this.groupBox42.TabStop = false;
+            this.groupBox42.Text = "Change Limits";
+            // 
+            // OCLmaxNUD
+            // 
+            this.OCLmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.OCLmaxNUD.DecimalPlaces = 2;
+            this.OCLmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.OCLmaxNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.OCLmaxNUD.Location = new System.Drawing.Point(95, 32);
+            this.OCLmaxNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.OCLmaxNUD.Name = "OCLmaxNUD";
+            this.OCLmaxNUD.Size = new System.Drawing.Size(78, 20);
+            this.OCLmaxNUD.TabIndex = 72;
+            this.OCLmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.OCLmaxNUD.ValueChanged += new System.EventHandler(this.OCLmaxNUD_ValueChanged);
+            // 
+            // OCLminNUD
+            // 
+            this.OCLminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.OCLminNUD.DecimalPlaces = 2;
+            this.OCLminNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.OCLminNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.OCLminNUD.Location = new System.Drawing.Point(11, 32);
+            this.OCLminNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.OCLminNUD.Name = "OCLminNUD";
+            this.OCLminNUD.Size = new System.Drawing.Size(78, 20);
+            this.OCLminNUD.TabIndex = 71;
+            this.OCLminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.OCLminNUD.ValueChanged += new System.EventHandler(this.OCLminNUD_ValueChanged);
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Location = new System.Drawing.Point(115, 16);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(26, 13);
+            this.label70.TabIndex = 1;
+            this.label70.Text = "max";
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Location = new System.Drawing.Point(37, 16);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(23, 13);
+            this.label71.TabIndex = 0;
+            this.label71.Text = "min";
+            // 
+            // groupBox41
+            // 
+            this.groupBox41.Controls.Add(this.OTLmaxNUD);
+            this.groupBox41.Controls.Add(this.OTLminNUD);
+            this.groupBox41.Controls.Add(this.label66);
+            this.groupBox41.Controls.Add(this.label69);
+            this.groupBox41.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox41.Location = new System.Drawing.Point(6, 158);
+            this.groupBox41.Name = "groupBox41";
+            this.groupBox41.Size = new System.Drawing.Size(267, 66);
+            this.groupBox41.TabIndex = 75;
+            this.groupBox41.TabStop = false;
+            this.groupBox41.Text = "Time Limits";
+            // 
+            // OTLmaxNUD
+            // 
+            this.OTLmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.OTLmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.OTLmaxNUD.Location = new System.Drawing.Point(95, 32);
+            this.OTLmaxNUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.OTLmaxNUD.Name = "OTLmaxNUD";
+            this.OTLmaxNUD.Size = new System.Drawing.Size(78, 20);
+            this.OTLmaxNUD.TabIndex = 72;
+            this.OTLmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.OTLmaxNUD.ValueChanged += new System.EventHandler(this.OTLmaxNUD_ValueChanged);
+            // 
+            // OTLminNUD
+            // 
+            this.OTLminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.OTLminNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.OTLminNUD.Location = new System.Drawing.Point(11, 32);
+            this.OTLminNUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.OTLminNUD.Name = "OTLminNUD";
+            this.OTLminNUD.Size = new System.Drawing.Size(78, 20);
+            this.OTLminNUD.TabIndex = 71;
+            this.OTLminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.OTLminNUD.ValueChanged += new System.EventHandler(this.OTLminNUD_ValueChanged);
+            // 
+            // label66
+            // 
+            this.label66.AutoSize = true;
+            this.label66.Location = new System.Drawing.Point(115, 16);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(26, 13);
+            this.label66.TabIndex = 1;
+            this.label66.Text = "max";
+            // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.Location = new System.Drawing.Point(37, 16);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(23, 13);
+            this.label69.TabIndex = 0;
+            this.label69.Text = "min";
+            // 
+            // groupBox40
+            // 
+            this.groupBox40.Controls.Add(this.OLmaxNUD);
+            this.groupBox40.Controls.Add(this.OLminNUD);
+            this.groupBox40.Controls.Add(this.label67);
+            this.groupBox40.Controls.Add(this.label68);
+            this.groupBox40.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox40.Location = new System.Drawing.Point(6, 86);
+            this.groupBox40.Name = "groupBox40";
+            this.groupBox40.Size = new System.Drawing.Size(267, 66);
+            this.groupBox40.TabIndex = 74;
+            this.groupBox40.TabStop = false;
+            this.groupBox40.Text = "Limits";
+            // 
+            // OLmaxNUD
+            // 
+            this.OLmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.OLmaxNUD.DecimalPlaces = 2;
+            this.OLmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.OLmaxNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.OLmaxNUD.Location = new System.Drawing.Point(95, 32);
+            this.OLmaxNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.OLmaxNUD.Name = "OLmaxNUD";
+            this.OLmaxNUD.Size = new System.Drawing.Size(78, 20);
+            this.OLmaxNUD.TabIndex = 72;
+            this.OLmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.OLmaxNUD.ValueChanged += new System.EventHandler(this.OLmaxNUD_ValueChanged);
+            // 
+            // OLminNUD
+            // 
+            this.OLminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.OLminNUD.DecimalPlaces = 2;
+            this.OLminNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.OLminNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.OLminNUD.Location = new System.Drawing.Point(11, 32);
+            this.OLminNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.OLminNUD.Name = "OLminNUD";
+            this.OLminNUD.Size = new System.Drawing.Size(78, 20);
+            this.OLminNUD.TabIndex = 71;
+            this.OLminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.OLminNUD.ValueChanged += new System.EventHandler(this.OLminNUD_ValueChanged);
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Location = new System.Drawing.Point(115, 16);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(26, 13);
+            this.label67.TabIndex = 1;
+            this.label67.Text = "max";
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.Location = new System.Drawing.Point(37, 16);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(23, 13);
+            this.label68.TabIndex = 0;
+            this.label68.Text = "min";
+            // 
+            // groupBox39
+            // 
+            this.groupBox39.Controls.Add(this.OCdurationNUD);
+            this.groupBox39.Controls.Add(this.OCtimeNUD);
+            this.groupBox39.Controls.Add(this.OCactualNUD);
+            this.groupBox39.Controls.Add(this.label65);
+            this.groupBox39.Controls.Add(this.label62);
+            this.groupBox39.Controls.Add(this.label61);
+            this.groupBox39.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox39.Location = new System.Drawing.Point(6, 19);
+            this.groupBox39.Name = "groupBox39";
+            this.groupBox39.Size = new System.Drawing.Size(267, 61);
+            this.groupBox39.TabIndex = 4;
+            this.groupBox39.TabStop = false;
+            this.groupBox39.Text = "Current";
+            // 
+            // OCdurationNUD
+            // 
+            this.OCdurationNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.OCdurationNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.OCdurationNUD.Location = new System.Drawing.Point(179, 31);
+            this.OCdurationNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.OCdurationNUD.Name = "OCdurationNUD";
+            this.OCdurationNUD.Size = new System.Drawing.Size(78, 20);
+            this.OCdurationNUD.TabIndex = 73;
+            this.OCdurationNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.OCdurationNUD.ValueChanged += new System.EventHandler(this.OCdurationNUD_ValueChanged);
+            // 
+            // OCtimeNUD
+            // 
+            this.OCtimeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.OCtimeNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.OCtimeNUD.Location = new System.Drawing.Point(95, 31);
+            this.OCtimeNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.OCtimeNUD.Name = "OCtimeNUD";
+            this.OCtimeNUD.Size = new System.Drawing.Size(78, 20);
+            this.OCtimeNUD.TabIndex = 72;
+            this.OCtimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.OCtimeNUD.ValueChanged += new System.EventHandler(this.OCtimeNUD_ValueChanged);
+            // 
+            // OCactualNUD
+            // 
+            this.OCactualNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.OCactualNUD.DecimalPlaces = 2;
+            this.OCactualNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.OCactualNUD.Location = new System.Drawing.Point(11, 31);
+            this.OCactualNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.OCactualNUD.Name = "OCactualNUD";
+            this.OCactualNUD.Size = new System.Drawing.Size(78, 20);
+            this.OCactualNUD.TabIndex = 71;
+            this.OCactualNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.OCactualNUD.ValueChanged += new System.EventHandler(this.OCactualNUD_ValueChanged);
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Location = new System.Drawing.Point(194, 15);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(45, 13);
+            this.label65.TabIndex = 2;
+            this.label65.Text = "duration";
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Location = new System.Drawing.Point(115, 15);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(26, 13);
+            this.label62.TabIndex = 1;
+            this.label62.Text = "time";
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Location = new System.Drawing.Point(24, 15);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(36, 13);
+            this.label61.TabIndex = 0;
+            this.label61.Text = "actual";
+            // 
+            // groupBox37
+            // 
+            this.groupBox37.Controls.Add(this.weatherrestartCB);
+            this.groupBox37.Controls.Add(this.weatherenabledCB);
+            this.groupBox37.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox37.Location = new System.Drawing.Point(8, 13);
+            this.groupBox37.Name = "groupBox37";
+            this.groupBox37.Size = new System.Drawing.Size(279, 75);
+            this.groupBox37.TabIndex = 2;
+            this.groupBox37.TabStop = false;
+            this.groupBox37.Text = "General";
+            // 
+            // weatherrestartCB
+            // 
+            this.weatherrestartCB.AutoSize = true;
+            this.weatherrestartCB.Location = new System.Drawing.Point(17, 42);
+            this.weatherrestartCB.Name = "weatherrestartCB";
+            this.weatherrestartCB.Size = new System.Drawing.Size(238, 17);
+            this.weatherrestartCB.TabIndex = 0;
+            this.weatherrestartCB.Text = "Rest ( load weather from staorage on restart )";
+            this.weatherrestartCB.UseVisualStyleBackColor = true;
+            this.weatherrestartCB.CheckedChanged += new System.EventHandler(this.weatherrestartCB_CheckedChanged);
+            // 
+            // weatherenabledCB
+            // 
+            this.weatherenabledCB.AutoSize = true;
+            this.weatherenabledCB.Location = new System.Drawing.Point(17, 19);
+            this.weatherenabledCB.Name = "weatherenabledCB";
+            this.weatherenabledCB.Size = new System.Drawing.Size(130, 17);
+            this.weatherenabledCB.TabIndex = 1;
+            this.weatherenabledCB.Text = "Enabled weather CFG";
+            this.weatherenabledCB.UseVisualStyleBackColor = true;
+            this.weatherenabledCB.CheckedChanged += new System.EventHandler(this.weatherenabledCB_CheckedChanged);
+            // 
             // TypesContextMenu
             // 
             this.TypesContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -7872,7 +9422,7 @@ namespace DayZeEditor
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 677);
-            this.Controls.Add(this.tabControl4);
+            this.Controls.Add(this.WeatherTabPage);
             this.Controls.Add(this.darkToolStrip22);
             this.Controls.Add(this.darkToolStrip21);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -7920,7 +9470,7 @@ namespace DayZeEditor
             this.darkToolStrip21.PerformLayout();
             this.darkToolStrip22.ResumeLayout(false);
             this.darkToolStrip22.PerformLayout();
-            this.tabControl4.ResumeLayout(false);
+            this.WeatherTabPage.ResumeLayout(false);
             this.TypesTab.ResumeLayout(false);
             this.EconomyCoreTab.ResumeLayout(false);
             this.EventsTab.ResumeLayout(false);
@@ -8104,6 +9654,81 @@ namespace DayZeEditor
             this.groupBox36.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.variablesvarvalueNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.variablesvartypeNUD)).EndInit();
+            this.tabPage18.ResumeLayout(false);
+            this.groupBox55.ResumeLayout(false);
+            this.groupBox55.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StimeoutNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SdensityNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SthresholdNUD)).EndInit();
+            this.groupBox54.ResumeLayout(false);
+            this.groupBox54.PerformLayout();
+            this.groupBox57.ResumeLayout(false);
+            this.groupBox57.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WPfrequencyNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WPmaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WPminNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WMaxSpeedNUD)).EndInit();
+            this.groupBox48.ResumeLayout(false);
+            this.groupBox53.ResumeLayout(false);
+            this.groupBox53.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RTendNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RTmaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RTminNUD)).EndInit();
+            this.groupBox49.ResumeLayout(false);
+            this.groupBox49.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RCLmaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RCLminNUD)).EndInit();
+            this.groupBox50.ResumeLayout(false);
+            this.groupBox50.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RTLmaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RTLminNUD)).EndInit();
+            this.groupBox51.ResumeLayout(false);
+            this.groupBox51.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RLmaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RLminNUD)).EndInit();
+            this.groupBox52.ResumeLayout(false);
+            this.groupBox52.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RCdurationNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RCtimeNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RCactualNUD)).EndInit();
+            this.groupBox43.ResumeLayout(false);
+            this.groupBox44.ResumeLayout(false);
+            this.groupBox44.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FCLmaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FCLminNUD)).EndInit();
+            this.groupBox45.ResumeLayout(false);
+            this.groupBox45.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FTLmaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FTLminNUD)).EndInit();
+            this.groupBox46.ResumeLayout(false);
+            this.groupBox46.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FLmaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FLminNUD)).EndInit();
+            this.groupBox47.ResumeLayout(false);
+            this.groupBox47.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FCdurationNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FCtimeNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FCactualNUD)).EndInit();
+            this.groupBox38.ResumeLayout(false);
+            this.groupBox42.ResumeLayout(false);
+            this.groupBox42.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OCLmaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCLminNUD)).EndInit();
+            this.groupBox41.ResumeLayout(false);
+            this.groupBox41.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OTLmaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OTLminNUD)).EndInit();
+            this.groupBox40.ResumeLayout(false);
+            this.groupBox40.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OLmaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OLminNUD)).EndInit();
+            this.groupBox39.ResumeLayout(false);
+            this.groupBox39.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OCdurationNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCtimeNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCactualNUD)).EndInit();
+            this.groupBox37.ResumeLayout(false);
+            this.groupBox37.PerformLayout();
             this.TypesContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -8219,7 +9844,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton4;
         private DarkUI.Controls.DarkToolStrip2 darkToolStrip22;
-        private System.Windows.Forms.TabControl tabControl4;
+        private System.Windows.Forms.TabControl WeatherTabPage;
         private System.Windows.Forms.TabPage TypesTab;
         private System.Windows.Forms.TabPage EconomyCoreTab;
         private System.Windows.Forms.ContextMenuStrip TypesContextMenu;
@@ -8672,5 +10297,105 @@ namespace DayZeEditor
         private System.Windows.Forms.Label label64;
         private DarkUI.Controls.DarkLabel darkLabel25;
         private System.Windows.Forms.ListBox VariablesLB;
+        private System.Windows.Forms.ToolStripButton toolStripButton15;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
+        private System.Windows.Forms.TabPage tabPage18;
+        private System.Windows.Forms.GroupBox groupBox38;
+        private System.Windows.Forms.GroupBox groupBox42;
+        private System.Windows.Forms.NumericUpDown OCLmaxNUD;
+        private System.Windows.Forms.NumericUpDown OCLminNUD;
+        private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.GroupBox groupBox41;
+        private System.Windows.Forms.NumericUpDown OTLmaxNUD;
+        private System.Windows.Forms.NumericUpDown OTLminNUD;
+        private System.Windows.Forms.Label label66;
+        private System.Windows.Forms.Label label69;
+        private System.Windows.Forms.GroupBox groupBox40;
+        private System.Windows.Forms.NumericUpDown OLmaxNUD;
+        private System.Windows.Forms.NumericUpDown OLminNUD;
+        private System.Windows.Forms.Label label67;
+        private System.Windows.Forms.Label label68;
+        private System.Windows.Forms.GroupBox groupBox39;
+        private System.Windows.Forms.NumericUpDown OCdurationNUD;
+        private System.Windows.Forms.NumericUpDown OCtimeNUD;
+        private System.Windows.Forms.NumericUpDown OCactualNUD;
+        private System.Windows.Forms.Label label65;
+        private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.Label label61;
+        private System.Windows.Forms.GroupBox groupBox37;
+        private System.Windows.Forms.CheckBox weatherrestartCB;
+        private System.Windows.Forms.CheckBox weatherenabledCB;
+        private System.Windows.Forms.GroupBox groupBox43;
+        private System.Windows.Forms.GroupBox groupBox44;
+        private System.Windows.Forms.NumericUpDown FCLmaxNUD;
+        private System.Windows.Forms.NumericUpDown FCLminNUD;
+        private System.Windows.Forms.Label label72;
+        private System.Windows.Forms.Label label73;
+        private System.Windows.Forms.GroupBox groupBox45;
+        private System.Windows.Forms.NumericUpDown FTLmaxNUD;
+        private System.Windows.Forms.NumericUpDown FTLminNUD;
+        private System.Windows.Forms.Label label74;
+        private System.Windows.Forms.Label label75;
+        private System.Windows.Forms.GroupBox groupBox46;
+        private System.Windows.Forms.NumericUpDown FLmaxNUD;
+        private System.Windows.Forms.NumericUpDown FLminNUD;
+        private System.Windows.Forms.Label label76;
+        private System.Windows.Forms.Label label77;
+        private System.Windows.Forms.GroupBox groupBox47;
+        private System.Windows.Forms.NumericUpDown FCdurationNUD;
+        private System.Windows.Forms.NumericUpDown FCtimeNUD;
+        private System.Windows.Forms.NumericUpDown FCactualNUD;
+        private System.Windows.Forms.Label label78;
+        private System.Windows.Forms.Label label79;
+        private System.Windows.Forms.Label label80;
+        private DarkUI.Controls.DarkButton darkButton54;
+        private System.Windows.Forms.GroupBox groupBox48;
+        private System.Windows.Forms.GroupBox groupBox53;
+        private System.Windows.Forms.NumericUpDown RTendNUD;
+        private System.Windows.Forms.NumericUpDown RTmaxNUD;
+        private System.Windows.Forms.NumericUpDown RTminNUD;
+        private System.Windows.Forms.Label label90;
+        private System.Windows.Forms.Label label91;
+        private System.Windows.Forms.Label label92;
+        private System.Windows.Forms.GroupBox groupBox49;
+        private System.Windows.Forms.NumericUpDown RCLmaxNUD;
+        private System.Windows.Forms.NumericUpDown RCLminNUD;
+        private System.Windows.Forms.Label label81;
+        private System.Windows.Forms.Label label82;
+        private System.Windows.Forms.GroupBox groupBox50;
+        private System.Windows.Forms.NumericUpDown RTLmaxNUD;
+        private System.Windows.Forms.NumericUpDown RTLminNUD;
+        private System.Windows.Forms.Label label83;
+        private System.Windows.Forms.Label label84;
+        private System.Windows.Forms.GroupBox groupBox51;
+        private System.Windows.Forms.NumericUpDown RLmaxNUD;
+        private System.Windows.Forms.NumericUpDown RLminNUD;
+        private System.Windows.Forms.Label label85;
+        private System.Windows.Forms.Label label86;
+        private System.Windows.Forms.GroupBox groupBox52;
+        private System.Windows.Forms.NumericUpDown RCdurationNUD;
+        private System.Windows.Forms.NumericUpDown RCtimeNUD;
+        private System.Windows.Forms.NumericUpDown RCactualNUD;
+        private System.Windows.Forms.Label label87;
+        private System.Windows.Forms.Label label88;
+        private System.Windows.Forms.Label label89;
+        private System.Windows.Forms.GroupBox groupBox54;
+        private System.Windows.Forms.GroupBox groupBox57;
+        private System.Windows.Forms.Label label93;
+        private System.Windows.Forms.NumericUpDown WPfrequencyNUD;
+        private System.Windows.Forms.NumericUpDown WPmaxNUD;
+        private System.Windows.Forms.NumericUpDown WPminNUD;
+        private System.Windows.Forms.Label label97;
+        private System.Windows.Forms.Label label98;
+        private System.Windows.Forms.Label label101;
+        private System.Windows.Forms.NumericUpDown WMaxSpeedNUD;
+        private System.Windows.Forms.GroupBox groupBox55;
+        private System.Windows.Forms.Label label94;
+        private System.Windows.Forms.NumericUpDown StimeoutNUD;
+        private System.Windows.Forms.NumericUpDown SdensityNUD;
+        private System.Windows.Forms.NumericUpDown SthresholdNUD;
+        private System.Windows.Forms.Label label96;
+        private System.Windows.Forms.Label label95;
     }
 }

@@ -223,7 +223,7 @@ namespace DayZeLib
     public partial class playerspawnpointsFreshGenerator_params
     {
 
-        private byte grid_densityField;
+        private int grid_densityField;
 
         private decimal grid_widthField;
 
@@ -233,12 +233,12 @@ namespace DayZeLib
 
         private decimal max_dist_staticField;
 
-        private sbyte min_steepnessField;
+        private int min_steepnessField;
 
-        private byte max_steepnessField;
+        private int max_steepnessField;
 
         /// <remarks/>
-        public byte grid_density
+        public int grid_density
         {
             get
             {
@@ -303,7 +303,7 @@ namespace DayZeLib
         }
 
         /// <remarks/>
-        public sbyte min_steepness
+        public int min_steepness
         {
             get
             {
@@ -316,7 +316,7 @@ namespace DayZeLib
         }
 
         /// <remarks/>
-        public byte max_steepness
+        public int max_steepness
         {
             get
             {

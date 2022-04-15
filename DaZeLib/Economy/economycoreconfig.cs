@@ -71,9 +71,11 @@ namespace DayZeLib
             }
             else
             {
-                ce newce = new ce();
-                newce.folder = path;
-                newce.file = new BindingList<file>();
+                ce newce = new ce
+                {
+                    folder = path,
+                    file = new BindingList<file>()
+                };
                 newce.file.Add(newfile);
                 if (economycore.ce == null)
                 {
@@ -346,7 +348,7 @@ namespace DayZeLib
                 }
                 catch (Exception ex)
                 {
-
+                    MessageBox.Show(ex.Message.ToString());
                 }
             }
         }
@@ -450,7 +452,7 @@ namespace DayZeLib
                 }
                 catch (Exception ex)
                 {
-
+                    MessageBox.Show(ex.Message.ToString());
                 }
             }
         }

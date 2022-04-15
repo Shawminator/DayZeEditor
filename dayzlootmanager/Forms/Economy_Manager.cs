@@ -74,7 +74,7 @@ namespace DayZeEditor
         private void Economy_Manager_Load(object sender, EventArgs e)
         {
             isUserInteraction = false;
-            tabControl4.ItemSize = new Size(0, 1);
+            WeatherTabPage.ItemSize = new Size(0, 1);
 
             filename = currentproject.ProjectName;
             vanillatypes = currentproject.getvanillatypes();
@@ -288,67 +288,73 @@ namespace DayZeEditor
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            tabControl4.SelectedIndex = 0;
+            WeatherTabPage.SelectedIndex = 0;
             if (tabControl3.SelectedIndex == 0)
                 toolStripButton3.Checked = true;
         }
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
-            tabControl4.SelectedIndex = 1;
+            WeatherTabPage.SelectedIndex = 1;
             if (tabControl3.SelectedIndex == 1)
                 toolStripButton5.Checked = true;
         }
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
-            tabControl4.SelectedIndex = 2;
+            WeatherTabPage.SelectedIndex = 2;
             if (tabControl3.SelectedIndex == 2)
                 toolStripButton6.Checked = true;
         }
         private void toolStripButton8_Click(object sender, EventArgs e)
         {
-            tabControl4.SelectedIndex = 3;
+            WeatherTabPage.SelectedIndex = 3;
             if (tabControl3.SelectedIndex== 3)
                 toolStripButton8.Checked = true;
         }
         private void toolStripButton9_Click(object sender, EventArgs e)
         {
-            tabControl4.SelectedIndex = 4;
+            WeatherTabPage.SelectedIndex = 4;
             if (tabControl3.SelectedIndex == 4)
                 toolStripButton9.Checked = true;
         }
         private void toolStripButton10_Click(object sender, EventArgs e)
         {
-            tabControl4.SelectedIndex = 5;
+            WeatherTabPage.SelectedIndex = 5;
             if (tabControl3.SelectedIndex == 5)
                 toolStripButton10.Checked = true;
         }
         private void toolStripButton12_Click(object sender, EventArgs e)
         {
-            tabControl4.SelectedIndex = 6;
+            WeatherTabPage.SelectedIndex = 6;
             if (tabControl3.SelectedIndex == 6)
                 toolStripButton12.Checked = true;
         }
         private void toolStripButton11_Click(object sender, EventArgs e)
         {
-            tabControl4.SelectedIndex = 7;
+            WeatherTabPage.SelectedIndex = 7;
             if (tabControl3.SelectedIndex == 7)
                 toolStripButton11.Checked = true;
         }
         private void toolStripButton13_Click(object sender, EventArgs e)
         {
-            tabControl4.SelectedIndex = 8;
+            WeatherTabPage.SelectedIndex = 8;
             if (tabControl3.SelectedIndex == 8)
                 toolStripButton13.Checked = true;
         }
         private void toolStripButton14_Click(object sender, EventArgs e)
         {
-            tabControl4.SelectedIndex = 9;
+            WeatherTabPage.SelectedIndex = 9;
             if (tabControl3.SelectedIndex == 9)
                 toolStripButton14.Checked = true;
         }
+        private void toolStripButton15_Click(object sender, EventArgs e)
+        {
+            WeatherTabPage.SelectedIndex = 10;
+            if (tabControl3.SelectedIndex == 10)
+                toolStripButton15.Checked = true;
+        }
         private void tabControl4_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (tabControl4.SelectedIndex)
+            switch (WeatherTabPage.SelectedIndex)
             {
                 case 0:
                     toolStripButton5.Checked = false;
@@ -360,6 +366,7 @@ namespace DayZeEditor
                     toolStripButton12.Checked = false;
                     toolStripButton13.Checked = false;
                     toolStripButton14.Checked = false;
+                    toolStripButton15.Checked = false;
                     break;
                 case 1:
                     toolStripButton3.Checked = false;
@@ -371,6 +378,7 @@ namespace DayZeEditor
                     toolStripButton12.Checked = false;
                     toolStripButton13.Checked = false;
                     toolStripButton14.Checked = false;
+                    toolStripButton15.Checked = false;
                     break;
                 case 2:
                     toolStripButton3.Checked = false;
@@ -382,6 +390,7 @@ namespace DayZeEditor
                     toolStripButton12.Checked = false;
                     toolStripButton13.Checked = false;
                     toolStripButton14.Checked = false;
+                    toolStripButton15.Checked = false;
                     break;
                 case 3:
                     toolStripButton3.Checked = false;
@@ -393,6 +402,7 @@ namespace DayZeEditor
                     toolStripButton12.Checked = false;
                     toolStripButton13.Checked = false;
                     toolStripButton14.Checked = false;
+                    toolStripButton15.Checked = false;
                     break;
                 case 4:
                     toolStripButton3.Checked = false;
@@ -404,6 +414,7 @@ namespace DayZeEditor
                     toolStripButton12.Checked = false;
                     toolStripButton13.Checked = false;
                     toolStripButton14.Checked = false;
+                    toolStripButton15.Checked = false;
                     break;
                 case 5:
                     toolStripButton3.Checked = false;
@@ -415,6 +426,7 @@ namespace DayZeEditor
                     toolStripButton12.Checked = false;
                     toolStripButton13.Checked = false;
                     toolStripButton14.Checked = false;
+                    toolStripButton15.Checked = false;
                     pictureBox2.Invalidate();
                     break;
                 case 6:
@@ -427,6 +439,7 @@ namespace DayZeEditor
                     toolStripButton12.Checked = false;
                     toolStripButton13.Checked = false;
                     toolStripButton14.Checked = false;
+                    toolStripButton15.Checked = false;
                     break;
                 case 7:
                     toolStripButton3.Checked = false;
@@ -438,6 +451,7 @@ namespace DayZeEditor
                     toolStripButton11.Checked = false;
                     toolStripButton13.Checked = false;
                     toolStripButton14.Checked = false;
+                    toolStripButton15.Checked = false;
                     break;
                 case 8:
                     toolStripButton3.Checked = false;
@@ -449,6 +463,7 @@ namespace DayZeEditor
                     toolStripButton11.Checked = false;
                     toolStripButton12.Checked = false;
                     toolStripButton14.Checked = false;
+                    toolStripButton15.Checked = false;
                     break;
                 case 9:
                     toolStripButton3.Checked = false;
@@ -460,6 +475,19 @@ namespace DayZeEditor
                     toolStripButton11.Checked = false;
                     toolStripButton12.Checked = false;
                     toolStripButton13.Checked = false;
+                    toolStripButton15.Checked = false;
+                    break;
+                case 10:
+                    toolStripButton3.Checked = false;
+                    toolStripButton5.Checked = false;
+                    toolStripButton6.Checked = false;
+                    toolStripButton8.Checked = false;
+                    toolStripButton9.Checked = false;
+                    toolStripButton10.Checked = false;
+                    toolStripButton11.Checked = false;
+                    toolStripButton12.Checked = false;
+                    toolStripButton13.Checked = false;
+                    toolStripButton14.Checked = false;
                     break;
                 default:
                     break;
@@ -2651,13 +2679,6 @@ namespace DayZeEditor
                 if (checkBox48.Checked)
                     Queryitems.Add("count_in_cargo,flags");
             }
-            string stop = "";
-
-
-
-
-
-
 
             int count = 0;
             treeView2.Nodes.Clear();
@@ -2805,6 +2826,10 @@ namespace DayZeEditor
         {
             FilterFlags = groupBox19.Enabled = checkBox65.Checked;
         }
+        private void darkButton54_Click(object sender, EventArgs e)
+        {
+
+        }
         #endregion typesquery
         #region PlayerSpawnPoints
         public void LoadPlayerSpawns()
@@ -2850,13 +2875,6 @@ namespace DayZeEditor
                 PlayerspawntravelLB.ValueMember = "Value";
                 PlayerspawntravelLB.DataSource = playerspawnpoints.travel.generator_posbubbles;
             }
-        }
-        private void min_dist_infectedNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!isUserInteraction) return;
-            playerspawnpoints.fresh.spawn_params.min_dist_infected = min_dist_infectedNUD.Value;
-            currentproject.cfgplayerspawnpoints.isDirty = true;
-
         }
         private void PlayerFGreshSpawnLB_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -3011,53 +3029,83 @@ namespace DayZeEditor
             ZoneScale = trackBar4.Value;
             SetSpawnScale();
         }
+        private void min_dist_infectedNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            playerspawnpoints.fresh.spawn_params.min_dist_infected = min_dist_infectedNUD.Value;
+            currentproject.cfgplayerspawnpoints.isDirty = true;
+        }
         private void min_dist_playerNUD_ValueChanged(object sender, EventArgs e)
         {
-
+            if (!isUserInteraction) return;
+            playerspawnpoints.fresh.spawn_params.min_dist_player = min_dist_playerNUD.Value;
+            currentproject.cfgplayerspawnpoints.isDirty = true;
         }
         private void min_dist_staticNUD_ValueChanged(object sender, EventArgs e)
         {
-
+            if (!isUserInteraction) return;
+            playerspawnpoints.fresh.spawn_params.min_dist_static = min_dist_staticNUD.Value;
+            currentproject.cfgplayerspawnpoints.isDirty = true;
         }
         private void max_dist_infectedNUD_ValueChanged(object sender, EventArgs e)
         {
-
+            if (!isUserInteraction) return;
+            playerspawnpoints.fresh.spawn_params.max_dist_infected = max_dist_infectedNUD.Value;
+            currentproject.cfgplayerspawnpoints.isDirty = true;
         }
         private void max_dist_playerNUD_ValueChanged(object sender, EventArgs e)
         {
-
+            if (!isUserInteraction) return;
+            playerspawnpoints.fresh.spawn_params.max_dist_player = max_dist_playerNUD.Value;
+            currentproject.cfgplayerspawnpoints.isDirty = true;
         }
         private void max_dist_staticNUD_ValueChanged(object sender, EventArgs e)
         {
-
+            if (!isUserInteraction) return;
+            playerspawnpoints.fresh.spawn_params.max_dist_static = max_dist_staticNUD.Value;
+            currentproject.cfgplayerspawnpoints.isDirty = true;
         }
         private void grid_densityNUD_ValueChanged(object sender, EventArgs e)
         {
-
+            if (!isUserInteraction) return;
+            playerspawnpoints.fresh.generator_params.grid_density = (int)grid_densityNUD.Value;
+            currentproject.cfgplayerspawnpoints.isDirty = true;
         }
         private void grid_widthNUD_ValueChanged(object sender, EventArgs e)
         {
-
+            if (!isUserInteraction) return;
+            playerspawnpoints.fresh.generator_params.grid_width = grid_widthNUD.Value;
+            currentproject.cfgplayerspawnpoints.isDirty = true;
         }
         private void GPmin_dist_staticNUD_ValueChanged(object sender, EventArgs e)
         {
-
+            if (!isUserInteraction) return;
+            playerspawnpoints.fresh.generator_params.min_dist_static = GPmin_dist_staticNUD.Value;
+            currentproject.cfgplayerspawnpoints.isDirty = true;
         }
         private void min_steepnessNUD_ValueChanged(object sender, EventArgs e)
         {
-
+            if (!isUserInteraction) return;
+            playerspawnpoints.fresh.generator_params.min_steepness = (int)min_steepnessNUD.Value;
+            currentproject.cfgplayerspawnpoints.isDirty = true;
         }
         private void grid_heightNUD_ValueChanged(object sender, EventArgs e)
         {
-
+            if (!isUserInteraction) return;
+            playerspawnpoints.fresh.generator_params.grid_height = grid_heightNUD.Value;
+            currentproject.cfgplayerspawnpoints.isDirty = true;
         }
         private void GPmax_dist_staticNUD_ValueChanged(object sender, EventArgs e)
         {
-
+            if (!isUserInteraction) return;
+            playerspawnpoints.fresh.generator_params.max_dist_static = GPmax_dist_staticNUD.Value;
+            currentproject.cfgplayerspawnpoints.isDirty = true;
         }
         private void max_steepnessNUD_ValueChanged(object sender, EventArgs e)
         {
-
+            if (!isUserInteraction) return;
+            playerspawnpoints.fresh.generator_params.max_steepness = (int)max_steepnessNUD.Value;
+            currentproject.cfgplayerspawnpoints.isDirty = true;
         }
         private void tabControl16_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -3078,6 +3126,25 @@ namespace DayZeEditor
             playerspawnpointsHopPos currentpos = PlayerSpanHopLB.SelectedItem as playerspawnpointsHopPos;
             currentpos.z = (float)hopPosZNUD.Value;
             PlayerSpanHopLB.Invalidate();
+            currentproject.cfgplayerspawnpoints.isDirty = true;
+            pictureBox2.Invalidate();
+        }
+        private void travelPosXNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            playerspawnpointsTravelPos currentpos = PlayerspawntravelLB.SelectedItem as playerspawnpointsTravelPos;
+            currentpos.x = (float)travelPosXNUD.Value;
+            PlayerspawntravelLB.Invalidate();
+            currentproject.cfgplayerspawnpoints.isDirty = true;
+            pictureBox2.Invalidate();
+        }
+
+        private void travelPosZNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            playerspawnpointsTravelPos currentpos = PlayerspawntravelLB.SelectedItem as playerspawnpointsTravelPos;
+            currentpos.z = (float)travelPosZNUD.Value;
+            PlayerspawntravelLB.Invalidate();
             currentproject.cfgplayerspawnpoints.isDirty = true;
             pictureBox2.Invalidate();
         }
@@ -3900,9 +3967,289 @@ namespace DayZeEditor
             isUserInteraction = false;
             weather = currentproject.weatherconfig.weather;
 
-
+            weatherenabledCB.Checked = weather.enable == 1 ? true : false;
+            weatherrestartCB.Checked = weather.reset == 1 ? true : false;
+            //Overcast
+            OCactualNUD.Value = weather.overcast.current.actual;
+            OCtimeNUD.Value = weather.overcast.current.time;
+            OCdurationNUD.Value = weather.overcast.current.duration;
+            OLminNUD.Value = weather.overcast.limits.min;
+            OLmaxNUD.Value = weather.overcast.limits.max;
+            OTLminNUD.Value = weather.overcast.timelimits.min;
+            OTLmaxNUD.Value = weather.overcast.timelimits.max;
+            OCLminNUD.Value = weather.overcast.changelimits.min;
+            OCLmaxNUD.Value = weather.overcast.changelimits.max;
+            //fog
+            FCactualNUD.Value = weather.fog.current.actual;
+            FCtimeNUD.Value = weather.fog.current.time;
+            FCdurationNUD.Value = weather.fog.current.duration;
+            FLminNUD.Value = weather.fog.limits.min;
+            FLmaxNUD.Value = weather.fog.limits.max;
+            FTLminNUD.Value = weather.fog.timelimits.min;
+            FTLmaxNUD.Value = weather.fog.timelimits.max;
+            FCLminNUD.Value = weather.fog.changelimits.min;
+            FCLmaxNUD.Value = weather.fog.changelimits.max;
+            //rain
+            RCactualNUD.Value = weather.rain.current.actual;
+            RCtimeNUD.Value = weather.rain.current.time;
+            RCdurationNUD.Value = weather.rain.current.duration;
+            RLminNUD.Value = weather.rain.limit.min;
+            RLmaxNUD.Value = weather.rain.limit.max;
+            RTLminNUD.Value = weather.rain.timelimits.min;
+            RTLmaxNUD.Value = weather.rain.timelimits.max;
+            RCLminNUD.Value = weather.rain.changelimits.min;
+            RCLmaxNUD.Value = weather.rain.changelimits.max;
+            RTmaxNUD.Value = weather.rain.thresholds.max;
+            RTminNUD.Value = weather.rain.thresholds.min;
+            RTendNUD.Value = weather.rain.thresholds.end;
+            //wind
+            WMaxSpeedNUD.Value = weather.wind.maxspeed;
+            WPminNUD.Value = weather.wind.@params.min;
+            WPmaxNUD.Value = weather.wind.@params.max;
+            WPfrequencyNUD.Value = weather.wind.@params.frequency;
+            //storm
+            SdensityNUD.Value = weather.storm.density;
+            SthresholdNUD.Value = weather.storm.threshold;
+            StimeoutNUD.Value = weather.storm.timeout;
 
             isUserInteraction = true;
+        }
+        private void weatherenabledCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.enable = weatherenabledCB.Checked == true ? 1 : 0;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void weatherrestartCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.reset = weatherrestartCB.Checked == true ? 1 : 0;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void RCactualNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.rain.current.actual = RCactualNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void RCtimeNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.rain.current.time = (int)RCtimeNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void RCdurationNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.rain.current.duration = (int)RCdurationNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void RLminNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.rain.limit.min = RLminNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void RLmaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.rain.limit.min = RLmaxNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void RTLminNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.rain.timelimits.min = (int)RTLminNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void RTLmaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.rain.timelimits.max = (int)RTLmaxNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void RCLminNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.rain.changelimits.min = RCLminNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void RCLmaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.rain.changelimits.max = RCLmaxNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void RTminNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.rain.thresholds.min = RTminNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void RTmaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.rain.thresholds.max = RTmaxNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void RTendNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.rain.thresholds.end = (int)RTendNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void OCactualNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.overcast.current.actual = OCactualNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void OCtimeNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.overcast.current.time = (int)OCtimeNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void OCdurationNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.overcast.current.duration = (int)OCdurationNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void OLminNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.overcast.limits.min = OLminNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void OLmaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.overcast.limits.max = OLmaxNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void OTLminNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.overcast.timelimits.min = (int)OTLminNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void OTLmaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.overcast.timelimits.max = (int)OTLmaxNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void OCLminNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.overcast.changelimits.min = OCLminNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void OCLmaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.overcast.changelimits.max = OCLmaxNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void WMaxSpeedNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.wind.maxspeed = (int)WMaxSpeedNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void WPminNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.wind.@params.min = WPminNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void WPmaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.wind.@params.max = WPmaxNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void WPfrequencyNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.wind.@params.frequency = (int)WPfrequencyNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void FCactualNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.fog.current.actual = FCactualNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void FCtimeNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.fog.current.time = (int)FCtimeNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void FCdurationNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.fog.current.duration = (int)FCdurationNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void FLminNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.fog.limits.min = FLminNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void FLmaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.fog.limits.max = FLmaxNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void FTLminNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.fog.timelimits.min = (int)FTLminNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void FTLmaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.fog.timelimits.max = (int)FTLmaxNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void FCLminNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.fog.changelimits.min = FCLminNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+        private void FCLmaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.fog.changelimits.max = FCLmaxNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+
+        private void SdensityNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.storm.density = SdensityNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+
+        private void SthresholdNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.storm.threshold = SthresholdNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
+        }
+
+        private void StimeoutNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            weather.storm.timeout = (int)StimeoutNUD.Value;
+            currentproject.weatherconfig.isDirty = true;
         }
     }
 }

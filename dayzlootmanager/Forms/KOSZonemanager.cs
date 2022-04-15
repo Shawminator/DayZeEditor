@@ -110,13 +110,10 @@ namespace DayZeEditor
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
 
-            bool needtosave = false;
-
             KosZoneconfigPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\KosZone\\KZConfig\\KosZoneConfig.json";
             if (!File.Exists(KosZoneconfigPath))
             {
                 KosZoneconfig = new KosZoneconfig();
-                needtosave = true;
             }
             else
             {
@@ -130,7 +127,6 @@ namespace DayZeEditor
             if (!File.Exists(KosPurgeConfigPath))
             {
                 KosPurgeConfig = new KosPurgeConfig();
-                needtosave = true;
             }
             else
             {
@@ -144,7 +140,6 @@ namespace DayZeEditor
             if (!File.Exists(KozRestartConfigPath))
             {
                 KozRestartConfig = new KozRestartConfig();
-                needtosave = true;
             }
             else
             {
