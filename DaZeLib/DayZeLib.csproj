@@ -116,14 +116,17 @@
     <Compile Include="ExpansionSettings\AirdropSettings.cs" />
     <Compile Include="ExpansionSettings\BaseBuildingSettings.cs" />
     <Compile Include="ExpansionSettings\BookSettings.cs" />
+    <Compile Include="ExpansionSettings\chatsettings.cs" />
     <Compile Include="ExpansionSettings\DebugSettings.cs" />
     <Compile Include="ExpansionSettings\GeneralSettings.cs" />
     <Compile Include="ExpansionSettings\Logsettings.cs" />
     <Compile Include="ExpansionSettings\MapSettings.cs" />
     <Compile Include="ExpansionSettings\MissionSettingFiles.cs" />
     <Compile Include="ExpansionSettings\MissionSettings.cs" />
+    <Compile Include="ExpansionSettings\Monitorsettings.cs" />
     <Compile Include="ExpansionSettings\NameTagsettings.cs" />
     <Compile Include="ExpansionSettings\NotificationSettings.cs" />
+    <Compile Include="ExpansionSettings\NotioficationSchedulerSettings.cs" />
     <Compile Include="ExpansionSettings\PartySettings.cs" />
     <Compile Include="ExpansionSettings\PlayerListSettings.cs" />
     <Compile Include="ExpansionSettings\RaidSettings.cs" />

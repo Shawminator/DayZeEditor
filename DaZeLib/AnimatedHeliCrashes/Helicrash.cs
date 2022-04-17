@@ -73,6 +73,7 @@ namespace DayZeLib
     public class Weaponloottable
     {
         public string WeaponName { get; set; }
+        public string MagazineName { get; set; }
         public BindingList<string> Attachments { get; set; }
         public string Sight { get; set; }
 

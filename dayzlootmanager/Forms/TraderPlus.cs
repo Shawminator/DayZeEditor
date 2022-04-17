@@ -1538,10 +1538,10 @@ namespace DayZeEditor
         {
             if (TraderCategoriesLB.SelectedItems.Count < 1) return;
             currentTradercategory = TraderCategoriesLB.SelectedItem as Tradercategory;
-            CategoryNameTB.Text = currentTradercategory.CategoryName;
-
+           
             useraction = false;
 
+            CategoryNameTB.Text = currentTradercategory.CategoryName;
             CurrentTraderCatLB.DisplayMember = "Name";
             CurrentTraderCatLB.ValueMember = "Value";
             CurrentTraderCatLB.DataSource = currentTradercategory.itemProducts;

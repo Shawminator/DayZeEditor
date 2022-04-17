@@ -6,17 +6,22 @@ namespace DayZeLib
 {
     public class SpawnSettings
     {
-        public int m_Version { get; set; } //current version 3
+        public int m_Version { get; set; }
+        public BindingList<SpawnLocations> SpawnLocations { get; set; }
         public StartingClothing StartingClothing { get; set; }
         public int EnableSpawnSelection { get; set; }
-        //public int SpawnSelectionScreenMenuID { get; set; } //removed in version 3
         public int SpawnOnTerritory { get; set; }
-        public BindingList<SpawnLocations> SpawnLocations { get; set; }
         public StartingGear StartingGear { get; set; }
         public float SpawnHealthValue { get; set; }
         public float SpawnEnergyValue { get; set; }
         public float SpawnWaterValue { get; set; }
-
+        public int EnableRespawnCooldowns { get; set; }
+        public int RespawnCooldown { get; set; }
+        public int RespawnUTCTime { get; set; }
+        public int PunishMultispawn { get; set; }
+        public int PunishCooldown { get; set; }
+        public int PunishTimeframe { get; set; }
+        public int CreateDeathMarker { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }
@@ -34,7 +39,7 @@ namespace DayZeLib
 
         public SpawnSettings()
         {
-            m_Version = 3;
+            m_Version = 4;
             StartingClothing = new StartingClothing();
             SpawnLocations = new BindingList<SpawnLocations>();
             StartingGear = new StartingGear();
@@ -87,6 +92,7 @@ namespace DayZeLib
     {
         public string Name { get; set; }
         public BindingList<float[]> Positions { get; set; }
+        public int UseCooldown { get; set; }
 
         public SpawnLocations()
         {

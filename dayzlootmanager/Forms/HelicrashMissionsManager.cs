@@ -149,6 +149,7 @@ namespace DayZeEditor
         private void SetweaponInfo()
         {
             weaponTB.Text = currentWeaponloottable.WeaponName;
+            magazineTB.Text = currentWeaponloottable.MagazineName;
             opticTB.Text = currentWeaponloottable.Sight;
 
             attachmentsLB.DisplayMember = "DisplayName";

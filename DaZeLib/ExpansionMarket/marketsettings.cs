@@ -22,7 +22,7 @@ namespace DayZeLib
         public int ATMPlayerTransferEnabled { get; set; }
         public int ATMPartyLockerEnabled { get; set; }
         public int MaxPartyDepositMoney { get; set; }
-        public BindingList<string[]> MarketVIPs { get; set; }
+        //public BindingList<string[]> MarketVIPs { get; set; }
         public int UseWholeMapForATMPlayerList { get; set; }
         public float SellPricePercent { get; set; }
         public int NetworkBatchSize { get; set; }
@@ -47,7 +47,7 @@ namespace DayZeLib
             m_Version = 9;
             CurrencyIcon = "DayZExpansion/Market/GUI/icons/coinstack2_64x64.edds";
             NetworkCategories = new BindingList<string[]>();
-            MarketVIPs = new BindingList<string[]>();
+            //MarketVIPs = new BindingList<string[]>();
             LandSpawnPositions = new BindingList<SpawnPositions>();
             AirSpawnPositions = new BindingList<SpawnPositions>();
             WaterSpawnPositions = new BindingList<SpawnPositions>();
@@ -69,7 +69,7 @@ namespace DayZeLib
             MaxPartyDepositMoney = 0;
             SellPricePercent = 50;
             NetworkCategories = new BindingList<string[]>();
-            MarketVIPs = new BindingList<string[]>();
+            //MarketVIPs = new BindingList<string[]>();
             LandSpawnPositions = new BindingList<SpawnPositions>();
             AirSpawnPositions = new BindingList<SpawnPositions>();
             WaterSpawnPositions = new BindingList<SpawnPositions>();
@@ -79,7 +79,7 @@ namespace DayZeLib
         public void setspawnnames()
         {
             int i = 0;
-            foreach(SpawnPositions sp in LandSpawnPositions)
+            foreach (SpawnPositions sp in LandSpawnPositions)
             {
                 sp.name = "Land Spawn position " + i.ToString();
                 i++;
@@ -107,11 +107,11 @@ namespace DayZeLib
                 case 1:
                     return AirSpawnPositions[index];
                 case 2:
-                    return WaterSpawnPositions[index];                
+                    return WaterSpawnPositions[index];
             }
             return null;
         }
-        public void RemoveSpawn (int type, int index)
+        public void RemoveSpawn(int type, int index)
         {
             switch (type)
             {
@@ -126,7 +126,7 @@ namespace DayZeLib
                     break;
             }
             setspawnnames();
-            
+
         }
         public string getcolourfromcontrol(string name)
         {
@@ -230,7 +230,7 @@ namespace DayZeLib
                     MarketMenuColors.BaseColorCheckboxes = Colour;
                     break;
                 case "BaseColorInfoSectionBackgroundColour":
-                    MarketMenuColors.BaseColorInfoSectionBackground = Colour; 
+                    MarketMenuColors.BaseColorInfoSectionBackground = Colour;
                     break;
                 case "BaseColorTooltipsCornersColour":
                     MarketMenuColors.BaseColorTooltipsCorners = Colour;
@@ -245,85 +245,85 @@ namespace DayZeLib
                     MarketMenuColors.ColorDecreaseQuantityButton = Colour;
                     break;
                 case "ColorDecreaseQuantityIconColour":
-                     MarketMenuColors.ColorDecreaseQuantityIcon = Colour;
+                    MarketMenuColors.ColorDecreaseQuantityIcon = Colour;
                     break;
                 case "ColorSetQuantityButtonColour":
-                     MarketMenuColors.ColorSetQuantityButton = Colour;
+                    MarketMenuColors.ColorSetQuantityButton = Colour;
                     break;
                 case "ColorIncreaseQuantityButtonColour":
-                     MarketMenuColors.ColorIncreaseQuantityButton = Colour;
+                    MarketMenuColors.ColorIncreaseQuantityButton = Colour;
                     break;
                 case "ColorIncreaseQuantityIconColour":
                     MarketMenuColors.ColorIncreaseQuantityIcon = Colour;
                     break;
                 case "ColorSellPanelColour":
-                     MarketMenuColors.ColorSellPanel = Colour;
+                    MarketMenuColors.ColorSellPanel = Colour;
                     break;
                 case "ColorSellButtonColour":
-                     MarketMenuColors.ColorSellButton = Colour;
+                    MarketMenuColors.ColorSellButton = Colour;
                     break;
                 case "ColorBuyPanelColour":
-                     MarketMenuColors.ColorBuyPanel = Colour;
+                    MarketMenuColors.ColorBuyPanel = Colour;
                     break;
                 case "ColorBuyButtonColour":
-                     MarketMenuColors.ColorBuyButton = Colour;
+                    MarketMenuColors.ColorBuyButton = Colour;
                     break;
                 case "ColorMarketIconColour":
-                     MarketMenuColors.ColorMarketIcon = Colour;
+                    MarketMenuColors.ColorMarketIcon = Colour;
                     break;
                 case "ColorFilterOptionsButtonColour":
-                     MarketMenuColors.ColorFilterOptionsButton = Colour;
+                    MarketMenuColors.ColorFilterOptionsButton = Colour;
                     break;
                 case "ColorFilterOptionsIconColour":
-                     MarketMenuColors.ColorFilterOptionsIcon = Colour;
+                    MarketMenuColors.ColorFilterOptionsIcon = Colour;
                     break;
                 case "ColorSearchFilterButtonColour":
-                     MarketMenuColors.ColorSearchFilterButton = Colour;
+                    MarketMenuColors.ColorSearchFilterButton = Colour;
                     break;
                 case "ColorCategoryButtonColour":
-                     MarketMenuColors.ColorCategoryButton = Colour;
+                    MarketMenuColors.ColorCategoryButton = Colour;
                     break;
                 case "ColorCategoryCollapseIconColour":
-                     MarketMenuColors.ColorCategoryCollapseIcon = Colour;
+                    MarketMenuColors.ColorCategoryCollapseIcon = Colour;
                     break;
                 case "ColorCurrencyDenominationTextColour":
-                     MarketMenuColors.ColorCurrencyDenominationText = Colour;
+                    MarketMenuColors.ColorCurrencyDenominationText = Colour;
                     break;
                 case "ColorItemButtonColour":
-                     MarketMenuColors.ColorItemButton = Colour;
+                    MarketMenuColors.ColorItemButton = Colour;
                     break;
                 case "ColorItemInfoIconColour":
-                     MarketMenuColors.ColorItemInfoIcon = Colour;
+                    MarketMenuColors.ColorItemInfoIcon = Colour;
                     break;
                 case "ColorItemInfoTitleColour":
-                     MarketMenuColors.ColorItemInfoTitle = Colour;
+                    MarketMenuColors.ColorItemInfoTitle = Colour;
                     break;
                 case "ColorItemInfoHasContainerItemsColour":
-                     MarketMenuColors.ColorItemInfoHasContainerItems = Colour;
+                    MarketMenuColors.ColorItemInfoHasContainerItems = Colour;
                     break;
                 case "ColorItemInfoHasAttachmentsColour":
-                     MarketMenuColors.ColorItemInfoHasAttachments = Colour;
+                    MarketMenuColors.ColorItemInfoHasAttachments = Colour;
                     break;
                 case "ColorItemInfoHasBulletsColour":
-                     MarketMenuColors.ColorItemInfoHasBullets = Colour;
+                    MarketMenuColors.ColorItemInfoHasBullets = Colour;
                     break;
                 case "ColorItemInfoIsAttachmentColour":
-                     MarketMenuColors.ColorItemInfoIsAttachment = Colour;
+                    MarketMenuColors.ColorItemInfoIsAttachment = Colour;
                     break;
                 case "ColorItemInfoIsEquipedColour":
-                     MarketMenuColors.ColorItemInfoIsEquiped = Colour;
+                    MarketMenuColors.ColorItemInfoIsEquiped = Colour;
                     break;
                 case "ColorItemInfoAttachmentsColour":
                     MarketMenuColors.ColorItemInfoAttachments = Colour;
                     break;
                 case "ColorToggleCategoriesTextColour":
-                     MarketMenuColors.ColorToggleCategoriesText = Colour;
+                    MarketMenuColors.ColorToggleCategoriesText = Colour;
                     break;
                 case "ColorCategoryCornersColour":
-                     MarketMenuColors.ColorCategoryCorners = Colour;
+                    MarketMenuColors.ColorCategoryCorners = Colour;
                     break;
                 case "ColorCategoryBackgroundColour":
-                     MarketMenuColors.ColorCategoryBackground = Colour;
+                    MarketMenuColors.ColorCategoryBackground = Colour;
                     break;
             }
         }
@@ -332,7 +332,7 @@ namespace DayZeLib
             switch (v)
             {
                 case 0:
-                    LandSpawnPositions.Add(new SpawnPositions() { name = getnewname(0), Position = new float[] { 0, 0, 0 }, Orientation = new float[] {0,0,0 } });
+                    LandSpawnPositions.Add(new SpawnPositions() { name = getnewname(0), Position = new float[] { 0, 0, 0 }, Orientation = new float[] { 0, 0, 0 } });
                     break;
                 case 1:
                     AirSpawnPositions.Add(new SpawnPositions() { name = getnewname(1), Position = new float[] { 0, 0, 0 }, Orientation = new float[] { 0, 0, 0 } });

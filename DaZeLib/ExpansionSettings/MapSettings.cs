@@ -21,7 +21,7 @@ namespace DayZeLib
     };
     public class MapSettings
     {
-        public int m_Version { get; set; } //current version 2
+        public int m_Version { get; set; } //current version 4
         public int EnableMap { get; set; }
         public int UseMapOnMapItem { get; set; }
         public int ShowPlayerPosition { get; set; }
@@ -43,6 +43,8 @@ namespace DayZeLib
         public int NeedCompassItemForHUDCompass { get; set; }
         public int NeedGPSItemForHUDCompass { get; set; }
         public int CompassColor { get; set; }
+        public int CreateDeathMarker { get; set; }
+        public int PlayerLocationNotifier { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }
@@ -51,7 +53,7 @@ namespace DayZeLib
 
         public MapSettings()
         {
-            m_Version = 2;
+            m_Version = 4;
             ServerMarkers = new BindingList<ServerMarkers>();
             isDirty = true;
         }
@@ -65,6 +67,7 @@ namespace DayZeLib
         public string m_IconName { get; set; }
         public int m_Color { get; set; }
         public float[] m_Position { get; set; }
+        public int m_Locked { get; set; }
 
         public override string ToString()
         {

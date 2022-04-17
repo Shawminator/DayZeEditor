@@ -26,7 +26,6 @@ namespace DayZeLib
         {
             VehiclesParts = new BindingList<Vehiclespart>();
         }
-
         public bool getInsurance(TraderPlusInsuranceConfig traderPlusInsuranceConfig)
         {
             bool needtosave = false;
@@ -48,7 +47,6 @@ namespace DayZeLib
             }
             return needtosave;
         }
-
         public void setInsurances(TraderPlusInsuranceConfig traderPlusInsuranceConfig)
         {
             traderPlusInsuranceConfig.Insurances = new BindingList<Insurance>();
@@ -82,7 +80,6 @@ namespace DayZeLib
         {
             VehicleParts = new BindingList<string>();
         }
-
         public override string ToString()
         {
             return VehicleName;

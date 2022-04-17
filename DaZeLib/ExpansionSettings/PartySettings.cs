@@ -4,7 +4,7 @@ namespace DayZeLib
 {
     public class PartySettings
     {
-        public int m_Version { get; set; }//current version is 2
+        public int m_Version { get; set; }//current version is 3
         public int EnableParties { get; set; }
         public int MaxMembersInParty { get; set; }
         public int UseWholeMapForInviteList { get; set; }
@@ -16,6 +16,9 @@ namespace DayZeLib
         public int ShowNameOnQuickMarkers { get; set; }
         public int CanCreatePartyMarkers { get; set; }
         public int ShowPartyMemberHUD { get; set; }
+        public int ShowHUDMemberBlood { get; set; }
+        public int ShowHUDMemberStates { get; set; }
+        public int ShowHUDMemberStance { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }
@@ -24,7 +27,7 @@ namespace DayZeLib
 
         public PartySettings()
         {
-            m_Version = 2;
+            m_Version = 3;
             isDirty = true;
         }
 

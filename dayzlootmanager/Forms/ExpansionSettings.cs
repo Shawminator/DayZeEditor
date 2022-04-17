@@ -13,6 +13,7 @@ using System.Text.Encodings.Web;
 using Cyotek.Windows.Forms;
 using DayZeLib;
 using System.Text.Json.Serialization;
+using System.Globalization;
 
 namespace DayZeEditor
 {
@@ -34,16 +35,21 @@ namespace DayZeEditor
             }
         }
 
+
+
         public string AirdropsettingPath;
         public string BaseBUildignsettingsPath;
         public string BookSettingsPath;
+        public string ChatSettingsPath;
         public string DebugSettingsPath;
         public string GeneralSettingsPath;
         public string LogsSettingsPath;
         public string MapSettingsPath;
         public string MarketSettingsPath;
         public string MissionSettingsPath;
+        public string MonitoringSettingsPath;
         public string NameTagsettingsPath;
+        public string NotificationSchedulerSettingsPath;
         public string NotificationssettingsPath;
         public string PartySettingsPath;
         public string PlayerListsettingsPath;
@@ -57,13 +63,16 @@ namespace DayZeEditor
         public AirdropsettingsJson AirdropsettingsJson;
         public BaseBuildingSettings BaseBuildingSettings;
         public BookSettings BookSettings;
+        public ChatSettings ChatSettings;
         public DebugSettings DebugSettings;
         public GeneralSettings GeneralSettings;
         public LogSettings LogSettings;
         public MapSettings MapSettings;
         public MarketSettings marketsettings;
         public MissionSettings MissionSettings;
+        public MonitoringSettings MonitoringSettings;
         public NameTagsettings NameTagSettings;
+        public NotificationSchedulerSettings NotificationSchedulerSettings;
         public NotificationSettings NotificationSettings;
         public PartySettings PartySettings;
         public PlayerListSettings PlayerListSettings;
@@ -117,6 +126,7 @@ namespace DayZeEditor
                     toolStripButton12.Checked = false;
                     toolStripButton13.Checked = false;
                     toolStripButton14.Checked = false;
+                    toolStripButton18.Checked = false;
                     break;
                 case 1:
                     toolStripButton1.Checked = false;
@@ -129,6 +139,7 @@ namespace DayZeEditor
                     toolStripButton12.Checked = false;
                     toolStripButton13.Checked = false;
                     toolStripButton14.Checked = false;
+                    toolStripButton18.Checked = false;
                     break;
                 case 2:
                     toolStripButton1.Checked = false;
@@ -141,6 +152,7 @@ namespace DayZeEditor
                     toolStripButton12.Checked = false;
                     toolStripButton13.Checked = false;
                     toolStripButton14.Checked = false;
+                    toolStripButton18.Checked = false;
                     break;
                 case 3:
                     toolStripButton1.Checked = false;
@@ -153,6 +165,7 @@ namespace DayZeEditor
                     toolStripButton12.Checked = false;
                     toolStripButton13.Checked = false;
                     toolStripButton14.Checked = false;
+                    toolStripButton18.Checked = false;
                     break;
                 case 4:
                     toolStripButton1.Checked = false;
@@ -165,6 +178,7 @@ namespace DayZeEditor
                     toolStripButton12.Checked = false;
                     toolStripButton13.Checked = false;
                     toolStripButton14.Checked = false;
+                    toolStripButton18.Checked = false;
                     break;
                 case 5:
                     toolStripButton1.Checked = false;
@@ -176,6 +190,7 @@ namespace DayZeEditor
                     toolStripButton11.Checked = false;
                     toolStripButton12.Checked = false;
                     toolStripButton14.Checked = false;
+                    toolStripButton18.Checked = false;
                     break;
                 case 6:
                     toolStripButton1.Checked = false;
@@ -188,6 +203,7 @@ namespace DayZeEditor
                     toolStripButton12.Checked = false;
                     toolStripButton13.Checked = false;
                     toolStripButton14.Checked = false;
+                    toolStripButton18.Checked = false;
                     break;
                 case 7:
                     toolStripButton1.Checked = false;
@@ -200,6 +216,7 @@ namespace DayZeEditor
                     toolStripButton12.Checked = false;
                     toolStripButton13.Checked = false;
                     toolStripButton14.Checked = false;
+                    toolStripButton18.Checked = false;
                     break;
                 case 8:
                     toolStripButton1.Checked = false;
@@ -212,6 +229,7 @@ namespace DayZeEditor
                     toolStripButton11.Checked = false;
                     toolStripButton13.Checked = false;
                     toolStripButton14.Checked = false;
+                    toolStripButton18.Checked = false;
                     break;
                 case 9:
                     toolStripButton1.Checked = false;
@@ -224,6 +242,7 @@ namespace DayZeEditor
                     toolStripButton11.Checked = false;
                     toolStripButton12.Checked = false;
                     toolStripButton14.Checked = false;
+                    toolStripButton18.Checked = false;
                     break;
                 case 10:
                     toolStripButton1.Checked = false;
@@ -236,6 +255,20 @@ namespace DayZeEditor
                     toolStripButton11.Checked = false;
                     toolStripButton12.Checked = false;
                     toolStripButton13.Checked = false;
+                    toolStripButton18.Checked = false;
+                    break;
+                case 11:
+                    toolStripButton1.Checked = false;
+                    toolStripButton3.Checked = false;
+                    toolStripButton4.Checked = false;
+                    toolStripButton5.Checked = false;
+                    toolStripButton6.Checked = false;
+                    toolStripButton9.Checked = false;
+                    toolStripButton10.Checked = false;
+                    toolStripButton11.Checked = false;
+                    toolStripButton12.Checked = false;
+                    toolStripButton13.Checked = false;
+                    toolStripButton14.Checked = false;
                     break;
                 default:
                     break;
@@ -307,6 +340,12 @@ namespace DayZeEditor
             if (tabControl2.SelectedIndex == 10)
                 toolStripButton14.Checked = true;
         }
+        private void toolStripButton18_Click(object sender, EventArgs e)
+        {
+            tabControl2.SelectedIndex = 11;
+            if (tabControl2.SelectedIndex == 11)
+                toolStripButton18.Checked = true;
+        }
         private void expansionsettings_Load(object sender, EventArgs e)
         {
             Projectname = currentproject.ProjectName;
@@ -344,7 +383,7 @@ namespace DayZeEditor
             Setupbasebuildingsettings();
 
 
-            BookSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\Booksettings.json";
+            BookSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\BookSettings.json";
             if (!File.Exists(BookSettingsPath))
             {
                 BookSettings = new BookSettings();
@@ -357,6 +396,20 @@ namespace DayZeEditor
             }
             BookSettings.Filename = BookSettingsPath;
             loadBookSettings();
+
+            ChatSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\ChatSettings.json";
+            if (!File.Exists(ChatSettingsPath))
+            {
+                ChatSettings = new ChatSettings();
+                needtosave = true;
+            }
+            else
+            {
+                ChatSettings = JsonSerializer.Deserialize<ChatSettings>(File.ReadAllText(ChatSettingsPath));
+                ChatSettings.isDirty = false;
+            }
+            ChatSettings.Filename = ChatSettingsPath;
+            LoadChatsettings();
 
             DebugSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\DebugSettings.json";
             if (!File.Exists(DebugSettingsPath))
@@ -437,6 +490,20 @@ namespace DayZeEditor
             MissionSettings.LoadIndividualMissions(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath);
             loadMissionSettings();
 
+            MonitoringSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\MonitoringSettings.json";
+            if (!File.Exists(MonitoringSettingsPath))
+            {
+                MonitoringSettings = new MonitoringSettings();
+                needtosave = true;
+            }
+            else
+            {
+                MonitoringSettings = JsonSerializer.Deserialize<MonitoringSettings>(File.ReadAllText(MonitoringSettingsPath));
+                MonitoringSettings.isDirty = false;
+            }
+            MonitoringSettings.Filename = MonitoringSettingsPath;
+            LoadMonitoringSettingss();
+
             NameTagsettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\NameTagsSettings.json";
             if (!File.Exists(NameTagsettingsPath))
             {
@@ -450,6 +517,20 @@ namespace DayZeEditor
             }
             NameTagSettings.Filename = NameTagsettingsPath;
             LoadNameTagSettings();
+
+            NotificationSchedulerSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\NotificationSchedulerSettings.json";
+            if (!File.Exists(NotificationSchedulerSettingsPath))
+            {
+                NotificationSchedulerSettings = new NotificationSchedulerSettings();
+                needtosave = true;
+            }
+            else
+            {
+                NotificationSchedulerSettings = JsonSerializer.Deserialize<NotificationSchedulerSettings>(File.ReadAllText(NotificationSchedulerSettingsPath));
+                NotificationSchedulerSettings.isDirty = false;
+            }
+            NotificationSchedulerSettings.Filename = NotificationSchedulerSettingsPath;
+            LoadNotificationSchedulerSettings();
 
             NotificationssettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\NotificationSettings.json";
             if (!File.Exists(NotificationssettingsPath))
@@ -589,6 +670,7 @@ namespace DayZeEditor
             }
         }
 
+
         public ContainerTypes getContainertype(string container)
         {
             switch (container)
@@ -706,6 +788,19 @@ namespace DayZeEditor
                 File.WriteAllText(BookSettings.Filename, jsonString);
                 midifiedfiles.Add(Path.GetFileName(BookSettings.Filename));
             }
+            if (ChatSettings.isDirty)
+            {
+                ChatSettings.isDirty = false;
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                string jsonString = JsonSerializer.Serialize(ChatSettings, options);
+                if (File.Exists(ChatSettings.Filename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(ChatSettings.Filename) + "\\Backup\\" + SaveTime);
+                    File.Copy(ChatSettings.Filename, Path.GetDirectoryName(ChatSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(ChatSettings.Filename) + ".bak", true);
+                }
+                File.WriteAllText(ChatSettings.Filename, jsonString);
+                midifiedfiles.Add(Path.GetFileName(ChatSettings.Filename));
+            }
             if (DebugSettings.isDirty)
             {
                 DebugSettings.isDirty = false;
@@ -800,6 +895,19 @@ namespace DayZeEditor
                     midifiedfiles.Add(Path.GetFileName(msf.Filename));
                 }
             }
+            if (MonitoringSettings.isDirty)
+            {
+                MonitoringSettings.isDirty = false;
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                string jsonString = JsonSerializer.Serialize(MonitoringSettings, options);
+                if (File.Exists(MonitoringSettings.Filename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(MonitoringSettings.Filename) + "\\Backup\\" + SaveTime);
+                    File.Copy(MonitoringSettings.Filename, Path.GetDirectoryName(MonitoringSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(MonitoringSettings.Filename) + ".bak", true);
+                }
+                File.WriteAllText(MonitoringSettings.Filename, jsonString);
+                midifiedfiles.Add(Path.GetFileName(MonitoringSettings.Filename));
+            }
             if (NameTagSettings.isDirty)
             {
                 NameTagSettings.isDirty = false;
@@ -812,6 +920,19 @@ namespace DayZeEditor
                 }
                 File.WriteAllText(NameTagSettings.Filename, jsonString);
                 midifiedfiles.Add(Path.GetFileName(NameTagSettings.Filename));
+            }
+            if (NotificationSchedulerSettings.isDirty)
+            {
+                NotificationSchedulerSettings.isDirty = false;
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                string jsonString = JsonSerializer.Serialize(NotificationSchedulerSettings, options);
+                if (File.Exists(NotificationSchedulerSettings.Filename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(NotificationSchedulerSettings.Filename) + "\\Backup\\" + SaveTime);
+                    File.Copy(NotificationSchedulerSettings.Filename, Path.GetDirectoryName(NotificationSchedulerSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(NotificationSchedulerSettings.Filename) + ".bak", true);
+                }
+                File.WriteAllText(NotificationSchedulerSettings.Filename, jsonString);
+                midifiedfiles.Add(Path.GetFileName(NotificationSchedulerSettings.Filename));
             }
             if (NotificationSettings.isDirty)
             {
@@ -2336,6 +2457,70 @@ namespace DayZeEditor
 
         #endregion Booksettings
 
+        #region ChatSettings
+
+        public void LoadChatsettings()
+        {
+            useraction = false;
+            EnableGlobalChatCB.Checked = ChatSettings.EnableGlobalChat == 1 ? true : false;
+            EnablePartyChatCB.Checked = ChatSettings.EnablePartyChat == 1 ? true : false;
+            EnableTransportChatCB.Checked = ChatSettings.EnableTransportChat == 1 ? true : false;
+            useraction = true;
+        }
+        private void SystemChatColorPB_Click(object sender, EventArgs e)
+        {
+            PictureBox pb = sender as PictureBox;
+            ColorPickerDialog cpick = new ColorPickerDialog
+            {
+                StartPosition = FormStartPosition.CenterParent
+            };
+            string col = ChatSettings.getcolourfromcontrol(pb.Name);
+            string col1 = "#" + col.Substring(6) + col.Remove(6, 2);
+            cpick.Color = ColorTranslator.FromHtml(col1);
+            if (cpick.ShowDialog() == DialogResult.OK)
+            {
+
+                ChatSettings.setcolour(pb.Name, cpick.Color.Name.ToUpper());
+                pb.Invalidate();
+                GeneralSettings.isDirty = true;
+            }
+
+        }
+        private void ChatColorPB_Paint(object sender, PaintEventArgs e)
+        {
+            PictureBox pb = sender as PictureBox;
+            Rectangle region;
+            region = pb.ClientRectangle;
+            string col = ChatSettings.getcolourfromcontrol(pb.Name);
+            string col1 = "#" + col.Substring(6) + col.Remove(6, 2);
+            Color colour = ColorTranslator.FromHtml(col1);
+            using (Brush brush = new SolidBrush(colour))
+            {
+                e.Graphics.FillRectangle(brush, region);
+            }
+            e.Graphics.DrawRectangle(SystemPens.ControlText, region.Left, region.Top, region.Width - 1, region.Height - 1);
+        }
+        private void EnableGlobalChatCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            ChatSettings.EnableGlobalChat = EnableGlobalChatCB.Checked == true ? 1 : 0;
+            ChatSettings.isDirty = true;
+        }
+        private void EnablePartyChatCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            ChatSettings.EnablePartyChat = EnablePartyChatCB.Checked == true ? 1 : 0;
+            ChatSettings.isDirty = true;
+        }
+        private void EnableTransportChatCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            ChatSettings.EnableTransportChat = EnableTransportChatCB.Checked == true ? 1 : 0;
+            ChatSettings.isDirty = true;
+        }
+        #endregion chatSettings
+
+
         #region debugsettings
         private void loaddebugsettings()
         {
@@ -2359,10 +2544,7 @@ namespace DayZeEditor
         private void loadGeneralSettings()
         {
             useraction = false;
-            PlayerLocationNotifierCB.Checked = GeneralSettings.PlayerLocationNotifier == 1 ? true : false;
-            EnableGlobalChatCB.Checked = GeneralSettings.EnableGlobalChat == 1 ? true : false;
-            EnablePartyChatCB.Checked = GeneralSettings.EnablePartyChat == 1 ? true : false;
-            EnableTransportChatCB.Checked = GeneralSettings.EnableTransportChat == 1 ? true : false;
+
             DisableShootToUnlockCB.Checked = GeneralSettings.DisableShootToUnlock == 1 ? true : false;
             EnableGravecrossCB.Checked = GeneralSettings.EnableGravecross == 1 ? true : false;
             GravecrossDeleteBodyCB.Checked = GeneralSettings.GravecrossDeleteBody == 1 ? true : false;
@@ -2382,40 +2564,9 @@ namespace DayZeEditor
             UseNewsFeedInGameMenuCB.Checked = GeneralSettings.UseNewsFeedInGameMenu == 1 ? true : false;
             useraction = true;
         }
-        private void ChatColorPB_Paint(object sender, PaintEventArgs e)
-        {
-            PictureBox pb = sender as PictureBox;
-            Rectangle region;
-            region = pb.ClientRectangle;
-            string col = GeneralSettings.getcolourfromcontrol(pb.Name);
-            string col1 = "#" + col.Substring(6) + col.Remove(6, 2);
-            Color colour = ColorTranslator.FromHtml(col1);
-            using (Brush brush = new SolidBrush(colour))
-            {
-                e.Graphics.FillRectangle(brush, region);
-            }
-            e.Graphics.DrawRectangle(SystemPens.ControlText, region.Left, region.Top, region.Width - 1, region.Height - 1);
-        }
 
-        private void SystemChatColorPB_Click(object sender, EventArgs e)
-        {
-            PictureBox pb = sender as PictureBox;
-            ColorPickerDialog cpick = new ColorPickerDialog
-            {
-                StartPosition = FormStartPosition.CenterParent
-            };
-            string col = GeneralSettings.getcolourfromcontrol(pb.Name);
-            string col1 = "#" + col.Substring(6) + col.Remove(6, 2);
-            cpick.Color = ColorTranslator.FromHtml(col1);
-            if (cpick.ShowDialog() == DialogResult.OK)
-            {
 
-                GeneralSettings.setcolour(pb.Name, cpick.Color.Name.ToUpper());
-                pb.Invalidate();
-                GeneralSettings.isDirty = true;
-            }
 
-        }
         private void GeneralsettingsCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
@@ -2466,6 +2617,9 @@ namespace DayZeEditor
             MissionAirdropCB.Checked = LogSettings.MissionAirdrop == 1 ? true : false;
             MarketCB.Checked = LogSettings.Market == 1 ? true : false;
             ATMCB.Checked = LogSettings.ATM == 1 ? true : false;
+            LogToScriptsCB.Checked = LogSettings.LogToScripts == 1 ? true : false;
+            LogToADMCB.Checked = LogSettings.LogToADM == 1 ? true : false;
+            VehicleDestroyedCB.Checked = LogSettings.VehicleDestroyed == 1 ? true : false;
             useraction = true;
         }
         private void LogSettingsCB_CheckedChanged(object sender, EventArgs e)
@@ -2504,6 +2658,8 @@ namespace DayZeEditor
             EnableHUDCompassCB.Checked = MapSettings.EnableHUDCompass == 1 ? true : false;
             NeedCompassItemForHUDCompassCB.Checked = MapSettings.NeedCompassItemForHUDCompass == 1 ? true : false;
             NeedGPSItemForHUDCompassCB.Checked = MapSettings.NeedGPSItemForHUDCompass == 1 ? true : false;
+            CreateDeathMarkerCB.Checked = MapSettings.CreateDeathMarker == 1 ? true : false;
+            PlayerLocationNotifierCB.Checked = MapSettings.PlayerLocationNotifier == 1 ? true : false;
             CompassColor.Invalidate();
 
             comboBox1.DisplayMember = "Description";
@@ -2539,7 +2695,15 @@ namespace DayZeEditor
             float scalevalue = markerScale * 0.05f;
             foreach (ServerMarkers marker in MapSettings.ServerMarkers)
             {
-                Bitmap image = new Bitmap(Application.StartupPath + "\\Maps\\Icons\\" + marker.m_IconName + ".png");
+                Bitmap image;
+                if(File.Exists(Application.StartupPath + "\\Maps\\Icons\\" + marker.m_IconName + ".png"))
+                {
+                    image = new Bitmap(Application.StartupPath + "\\Maps\\Icons\\" + marker.m_IconName + ".png");
+                }
+                else
+                {
+                    image = new Bitmap(Application.StartupPath + "\\Maps\\Icons\\Exclamationmark.png");
+                }
                 Image image2 = Helper.MultiplyColorToBitmap(image, Color.FromArgb(marker.m_Color), 200, true);
                 Size msize = new Size(30, 30);
                 Image image3 = resizeImage(image2, msize);
@@ -2567,6 +2731,7 @@ namespace DayZeEditor
             numericUpDown25.Value = (decimal)currentmapmapmarker.m_Position[1];
             numericUpDown26.Value = (decimal)currentmapmapmarker.m_Position[2];
             m_Is3DCB.Checked = currentmapmapmarker.m_Is3D == 1 ? true : false;
+            m_LockedCB.Checked = currentmapmapmarker.m_Locked == 1 ? true : false;
             m_Color.Invalidate();
             pictureBox3.Invalidate();
             useraction = true;
@@ -2631,6 +2796,12 @@ namespace DayZeEditor
             MapSettings.ServerMarkers.Remove(currentmapmapmarker);
             MapSettings.isDirty = true;
             pictureBox3.Invalidate();
+        }
+        private void m_LockedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentmapmapmarker.m_Locked = m_LockedCB.Checked == true ? 1 : 0;
+            MapSettings.isDirty = true;
         }
         private void m_Is3DCB_CheckedChanged(object sender, EventArgs e)
         {
@@ -2754,6 +2925,18 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             MapSettings.NeedMapItemForKeyBinding = NeedMapItemForKeyBindingCB.Checked == true ? 1 : 0;
+            MapSettings.isDirty = true;
+        }
+        private void CreateDeathMarkerCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            MapSettings.CreateDeathMarker = CreateDeathMarkerCB.Checked == true ? 1 : 0;
+            MapSettings.isDirty = true;
+        }
+        private void PlayerLocationNotifierCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            MapSettings.PlayerLocationNotifier = PlayerLocationNotifierCB.Checked == true ? 1 : 0;
             MapSettings.isDirty = true;
         }
         private void EnableServerMarkersCB_CheckedChanged(object sender, EventArgs e)
@@ -3011,6 +3194,22 @@ namespace DayZeEditor
         }
         #endregion Missionsettings
 
+        #region monitoringSettings
+
+        public void LoadMonitoringSettingss()
+        {
+            useraction = false;
+            MonitoringSettingsEnabledCB.Checked = MonitoringSettings.Enabled == 1 ? true : false;
+            useraction = true;
+        }
+        private void MonitoringSettingsEnabledCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            MonitoringSettings.Enabled = MonitoringSettingsEnabledCB.Checked == true ? 1 : 0;
+            MonitoringSettings.isDirty = true;
+        }
+        #endregion monitoringsettings
+
         #region nametagsettings
         public void LoadNameTagSettings()
         {
@@ -3053,6 +3252,112 @@ namespace DayZeEditor
             NameTagSettings.isDirty = true;
         }
         #endregion nametagsettings
+
+        #region NortificationSchedulerSettings
+        public Notification currentNotification;
+        public void LoadNotificationSchedulerSettings()
+        {
+            useraction = false;
+            SchedulerEnabledCB.Checked = NotificationSchedulerSettings.Enabled == 1 ? true : false;
+            UTCTimeCB.Checked = NotificationSchedulerSettings.UTC == 1 ? true : false;
+
+            SchedulerNotificaionLB.DisplayMember = "DisplayName";
+            SchedulerNotificaionLB.ValueMember = "Value";
+            SchedulerNotificaionLB.DataSource = NotificationSchedulerSettings.Notifications;
+
+            useraction = true;
+        }
+        private void SchedulerNotificaionLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (SchedulerNotificaionLB.SelectedItems.Count < 1) return;
+            currentNotification = SchedulerNotificaionLB.SelectedItem as Notification;
+            useraction = false;
+            NSTitleTB.Text = currentNotification.Title;
+            DateTime Dtime = DateTime.Now.Date;
+            Dtime = Dtime.AddHours(currentNotification.Hour);
+            Dtime = Dtime.AddMinutes(currentNotification.Minute);
+            Dtime = Dtime.AddSeconds(currentNotification.Second);
+            NSTimeTP.Value = Dtime;
+            NSTextTB.Text = currentNotification.Text;
+            NotfifcationIconComboBox.SelectedIndex = NotfifcationIconComboBox.FindStringExact(currentNotification.Icon);
+            pictureBox5.Invalidate();
+            useraction = true;
+        }
+        private void NSTitleTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentNotification.Title = NSTitleTB.Text;
+            SchedulerNotificaionLB.Refresh();
+            NotificationSchedulerSettings.isDirty = true;
+        }
+        private void NSTimeTP_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            DateTime Dtime = NSTimeTP.Value;
+            currentNotification.Hour = Dtime.Hour;
+            currentNotification.Minute = Dtime.Minute;
+            currentNotification.Second = Dtime.Second;
+            NotificationSchedulerSettings.isDirty = true;
+        }
+        private void UTCTimeCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            NotificationSchedulerSettings.UTC = UTCTimeCB.Checked == true ? 1 : 0;
+            NotificationSchedulerSettings.isDirty = true;
+        }
+        private void SchedulerEnabledCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            NotificationSchedulerSettings.Enabled = SchedulerEnabledCB.Checked == true ? 1 : 0;
+            NotificationSchedulerSettings.isDirty = true;
+        }
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            PictureBox pb = sender as PictureBox;
+            ColorPickerDialog cpick = new ColorPickerDialog
+            {
+                StartPosition = FormStartPosition.CenterParent
+            };
+            string col = currentNotification.Color;
+            string col1 = "#" + col.Substring(6) + col.Remove(6, 2);
+            cpick.Color = ColorTranslator.FromHtml(col1);
+            if (cpick.ShowDialog() == DialogResult.OK)
+            {
+                string Colour = cpick.Color.Name.ToUpper().Substring(2) + cpick.Color.Name.ToUpper().Substring(0, 2);
+                currentNotification.Color = Colour;
+                pb.Invalidate();
+                NotificationSchedulerSettings.isDirty = true;
+            }
+        }
+
+        private void pictureBox5_Paint(object sender, PaintEventArgs e)
+        {
+            if (currentNotification == null) { return; }
+            PictureBox pb = sender as PictureBox;
+            Rectangle region;
+            region = pb.ClientRectangle;
+            string col = currentNotification.Color;
+            string col1 = "#" + col.Substring(6) + col.Remove(6, 2);
+            Color colour = ColorTranslator.FromHtml(col1);
+            using (Brush brush = new SolidBrush(colour))
+            {
+                e.Graphics.FillRectangle(brush, region);
+            }
+            e.Graphics.DrawRectangle(SystemPens.ControlText, region.Left, region.Top, region.Width - 1, region.Height - 1);
+        }
+        private void NotfifcationIconComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentNotification.Icon = NotfifcationIconComboBox.SelectedItem.ToString();
+            NotificationSchedulerSettings.isDirty = true;
+        }
+        private void NSTextTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentNotification.Text = NSTextTB.Text;
+            NotificationSchedulerSettings.isDirty = true;
+        }
+        #endregion NotificatioSchedulerSettings
 
         #region notifications
         private void LoadNotificationSettings()
@@ -3129,6 +3434,9 @@ namespace DayZeEditor
             ShowNameOnQuickMarkersCB.Checked = PartySettings.ShowNameOnQuickMarkers == 1 ? true : false;
             CanCreatePartyMarkersCB.Checked = PartySettings.CanCreatePartyMarkers == 1 ? true : false;
             ShowPartyMemberHUDCB.Checked = PartySettings.ShowPartyMemberHUD == 1 ? true : false;
+            ShowHUDMemberBloodCB.Checked = PartySettings.ShowHUDMemberBlood == 1 ? true : false;
+            ShowHUDMemberStatesCB.Checked = PartySettings.ShowHUDMemberStates == 1 ? true : false;
+            ShowHUDMemberStanceCB.Checked = PartySettings.ShowHUDMemberStance == 1 ? true : false;
             useraction = true;
         }
         private void PartySettingsCB_CheckedChanged(object sender, EventArgs e)
@@ -3827,6 +4135,7 @@ namespace DayZeEditor
 
             EnableSpawnSelectionCB.Checked = SpawnSettings.EnableSpawnSelection == 1 ? true : false;
             SpawnOnTerritoryCB.Checked = SpawnSettings.SpawnOnTerritory == 1 ? true : false;
+            EnableRespawnCooldownsCB.Checked = SpawnSettings.EnableRespawnCooldowns == 1 ? true : false;
             SpawnHealthValueNUD.Value = (decimal)SpawnSettings.SpawnHealthValue;
             SpawnEnergyValueNUD.Value = (decimal)SpawnSettings.SpawnEnergyValue;
             SpawnWaterValueNUD.Value = (decimal)SpawnSettings.SpawnWaterValue;
@@ -3863,7 +4172,7 @@ namespace DayZeEditor
             currentSpawnLocation = SpawnLocationLB.SelectedItem as SpawnLocations;
             useraction = false;
             SpawnLocationNameTB.Text = currentSpawnLocation.Name;
-
+            UseCooldownCB.Checked = currentSpawnLocation.UseCooldown == 1 ? true : false;
             SpawnPositionsLB.DisplayMember = "DisplayName";
             SpawnPositionsLB.ValueMember = "Value";
             SpawnPositionsLB.DataSource = currentSpawnLocation.Positions;
@@ -3948,6 +4257,12 @@ namespace DayZeEditor
                 SpawnPositionsLB.SelectedIndex = 0;
 
         }
+        private void UseCooldownCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentSpawnLocation.UseCooldown = UseCooldownCB.Checked == true ? 1 : 0;
+            SpawnSettings.isDirty = true;
+        }
         private void SpawnLocationNameTB_TextChanged(object sender, EventArgs e)
         {
             if(!useraction) { return; }
@@ -3973,6 +4288,46 @@ namespace DayZeEditor
             SpawnSettings.SpawnHealthValue = (int)SpawnHealthValueNUD.Value;
             SpawnSettings.isDirty = true;
         }
+        private void PunishMultispawnCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            SpawnSettings.PunishMultispawn = PunishMultispawnCB.Checked == true ? 1 : 0;
+            SpawnSettings.isDirty = true;
+        }
+
+        private void SpawnCreateDeathMarkerCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            SpawnSettings.CreateDeathMarker = SpawnCreateDeathMarkerCB.Checked == true ? 1 : 0;
+            SpawnSettings.isDirty = true;
+        }
+
+        private void RespawnCooldownNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            SpawnSettings.RespawnCooldown = (int)RespawnCooldownNUD.Value;
+            SpawnSettings.isDirty = true;
+        }
+
+        private void PunishCooldownNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            SpawnSettings.PunishCooldown = (int)PunishCooldownNUD.Value;
+            SpawnSettings.isDirty = true;
+        }
+
+        private void PunishTimeframeNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            SpawnSettings.PunishTimeframe = (int)PunishTimeframeNUD.Value;
+            SpawnSettings.isDirty = true;
+        }
+        private void RespawnUTCTimeNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            SpawnSettings.RespawnUTCTime = (int)RespawnUTCTimeNUD.Value;
+            SpawnSettings.isDirty = true;
+        }
         private void SpawnOnTerritoryCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -3991,7 +4346,14 @@ namespace DayZeEditor
             SpawnSettings.EnableSpawnSelection = EnableSpawnSelectionCB.Checked == true ? 1 : 0;
             SpawnSettings.isDirty = true;
         }
-    private void EnableCustomClothingCB_CheckedChanged(object sender, EventArgs e)
+        private void EnableRespawnCooldownsCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            SpawnSettings.EnableRespawnCooldowns = EnableRespawnCooldownsCB.Checked == true ? 1 : 0;
+            SpawnSettings.isDirty = true;
+
+        }
+        private void EnableCustomClothingCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             SpawnSettings.StartingClothing.EnableCustomClothing = EnableCustomClothingCB.Checked == true ? 1 : 0;
@@ -4829,6 +5191,7 @@ namespace DayZeEditor
             VehiclesConfigLB.DisplayMember = "DisplayName";
             VehiclesConfigLB.ValueMember = "Value";
             VehiclesConfigLB.DataSource = VehicleSettings.VehiclesConfig;
+            useraction = false;
 
             VehicleDropsRuinedDoorsCB.Checked = VehicleSettings.VehicleDropsRuinedDoors == 1 ? true : false;
             ExplodingVehicleDropsAttachmentsCB.Checked = VehicleSettings.ExplodingVehicleDropsAttachments == 1 ? true : false;
@@ -4989,9 +5352,23 @@ namespace DayZeEditor
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         #endregion VehicleSettings
-
-
     }
     public class NullToEmptyGearConverter : JsonConverter<Gear>
     {
