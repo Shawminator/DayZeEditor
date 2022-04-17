@@ -1503,6 +1503,7 @@ namespace DayZeEditor
 
         private void trackBar1_MouseUp(object sender, MouseEventArgs e)
         {
+            if (CL == null) return;
             CL.Chance = (float)(((decimal)trackBar1.Value) / 1000);
             AirdropsettingsJson.isDirty = true;
         }
@@ -1526,7 +1527,8 @@ namespace DayZeEditor
         }
 
         private void VarientChanceTrackBar_MouseUp(object sender, MouseEventArgs e)
-        {
+        { 
+            if(LootVarients == null)return;
             LootVarients.Chance = (float)(((decimal)VarientChanceTrackBar.Value) / 1000);
             AirdropsettingsJson.isDirty = true;
         }
