@@ -173,19 +173,27 @@ namespace DayZeLib
                 {
                     cbs = (canBuyCansell)Convert.ToInt32(results[1]);
                 }
-                List<marketItem> itemslist = marketCats.GetCatFromFileName(results[0]).Items.ToList();
-                foreach (marketItem item in itemslist)
+                try
                 {
-                    TradersItem ti = new TradersItem() { ClassName = item.ClassName.ToLower(), buysell = cbs, CatName = results[0]};
-                    if (item.SpawnAttachments.Count > 0)
-                        ti.HasAttachemnts = true;
-                    if (item.Variants.Count > 0)
-                        ti.HasVarients = true;
+                    List<marketItem> itemslist = marketCats.GetCatFromFileName(results[0]).Items.ToList();
+                    foreach (marketItem item in itemslist)
+                    {
+                        TradersItem ti = new TradersItem() { ClassName = item.ClassName.ToLower(), buysell = cbs, CatName = results[0] };
+                        if (item.SpawnAttachments.Count > 0)
+                            ti.HasAttachemnts = true;
+                        if (item.Variants.Count > 0)
+                            ti.HasVarients = true;
 
-                    if (!initialList.Any(x => x.ClassName == ti.ClassName))
-                        initialList.Add(ti);
+                        if (!initialList.Any(x => x.ClassName == ti.ClassName))
+                            initialList.Add(ti);
 
+                    }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Could not find Market File for :- " + results[0]);
+                }
+                
             }
             foreach (KeyValuePair<string, int> item in Items)
             {

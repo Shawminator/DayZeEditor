@@ -847,6 +847,7 @@ namespace DayZeEditor
             this.darkButton44 = new DarkUI.Controls.DarkButton();
             this.tabPage14 = new System.Windows.Forms.TabPage();
             this.groupBox64 = new System.Windows.Forms.GroupBox();
+            this.NotfifcationIconComboBox = new System.Windows.Forms.ComboBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.darkLabel167 = new DarkUI.Controls.DarkLabel();
             this.darkLabel166 = new DarkUI.Controls.DarkLabel();
@@ -886,7 +887,6 @@ namespace DayZeEditor
             this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
-            this.NotfifcationIconComboBox = new System.Windows.Forms.ComboBox();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -1721,7 +1721,7 @@ namespace DayZeEditor
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.groupBox2.Location = new System.Drawing.Point(209, 100);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(260, 308);
+            this.groupBox2.Size = new System.Drawing.Size(260, 291);
             this.groupBox2.TabIndex = 92;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Attachments";
@@ -1756,14 +1756,14 @@ namespace DayZeEditor
             this.listBox4.FormattingEnabled = true;
             this.listBox4.Location = new System.Drawing.Point(6, 19);
             this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(120, 264);
+            this.listBox4.Size = new System.Drawing.Size(120, 238);
             this.listBox4.TabIndex = 0;
             this.listBox4.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
             // darkButton8
             // 
             this.darkButton8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton8.Location = new System.Drawing.Point(208, 414);
+            this.darkButton8.Location = new System.Drawing.Point(208, 397);
             this.darkButton8.Name = "darkButton8";
             this.darkButton8.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton8.Size = new System.Drawing.Size(261, 23);
@@ -1774,7 +1774,7 @@ namespace DayZeEditor
             // darkButton2
             // 
             this.darkButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton2.Location = new System.Drawing.Point(9, 414);
+            this.darkButton2.Location = new System.Drawing.Point(9, 397);
             this.darkButton2.Name = "darkButton2";
             this.darkButton2.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton2.Size = new System.Drawing.Size(194, 23);
@@ -1833,7 +1833,7 @@ namespace DayZeEditor
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(9, 7);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(194, 394);
+            this.listBox1.Size = new System.Drawing.Size(194, 368);
             this.listBox1.TabIndex = 0;
             this.listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
@@ -4591,7 +4591,7 @@ namespace DayZeEditor
             this.toolStripButton8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton8.Name = "toolStripButton8";
-            this.toolStripButton8.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton8.Size = new System.Drawing.Size(96, 25);
             this.toolStripButton8.Text = "General Settings";
             this.toolStripButton8.Click += new System.EventHandler(this.toolStripButton8_Click);
             // 
@@ -4610,7 +4610,7 @@ namespace DayZeEditor
             this.toolStripButton7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton7.Size = new System.Drawing.Size(73, 25);
             this.toolStripButton7.Text = "Build Zones";
             this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
             // 
@@ -10303,6 +10303,7 @@ namespace DayZeEditor
             // 
             // UseCooldownCB
             // 
+            this.UseCooldownCB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.UseCooldownCB.AutoSize = true;
             this.UseCooldownCB.ForeColor = System.Drawing.SystemColors.Control;
             this.UseCooldownCB.Location = new System.Drawing.Point(149, 417);
@@ -10838,7 +10839,7 @@ namespace DayZeEditor
             this.toolStripButton15.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton15.Image")));
             this.toolStripButton15.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton15.Name = "toolStripButton15";
-            this.toolStripButton15.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton15.Size = new System.Drawing.Size(101, 22);
             this.toolStripButton15.Text = "Starting Clothing";
             this.toolStripButton15.Click += new System.EventHandler(this.toolStripButton15_Click);
             // 
@@ -10858,7 +10859,7 @@ namespace DayZeEditor
             this.toolStripButton16.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton16.Image")));
             this.toolStripButton16.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton16.Name = "toolStripButton16";
-            this.toolStripButton16.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton16.Size = new System.Drawing.Size(79, 22);
             this.toolStripButton16.Text = "Starting Gear";
             this.toolStripButton16.Click += new System.EventHandler(this.toolStripButton16_Click);
             // 
@@ -10878,7 +10879,7 @@ namespace DayZeEditor
             this.toolStripButton17.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton17.Image")));
             this.toolStripButton17.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton17.Name = "toolStripButton17";
-            this.toolStripButton17.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton17.Size = new System.Drawing.Size(51, 22);
             this.toolStripButton17.Text = "Spawns";
             this.toolStripButton17.Click += new System.EventHandler(this.toolStripButton17_Click);
             // 
@@ -11683,6 +11684,171 @@ namespace DayZeEditor
             this.groupBox64.TabStop = false;
             this.groupBox64.Text = "Notification Settings";
             // 
+            // NotfifcationIconComboBox
+            // 
+            this.NotfifcationIconComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.NotfifcationIconComboBox.ForeColor = System.Drawing.SystemColors.Control;
+            this.NotfifcationIconComboBox.FormattingEnabled = true;
+            this.NotfifcationIconComboBox.Items.AddRange(new object[] {
+            "Arrow",
+            "Error",
+            "Airdrop",
+            "Car",
+            "Deliver",
+            "Radiation",
+            "Trader",
+            "Water 1",
+            "Infected 1",
+            "Infected 2",
+            "Skull 1",
+            "Helicopter",
+            "Base",
+            "Boat",
+            "Fishing",
+            "Territory",
+            "Bear",
+            "Claw",
+            "Drip",
+            "Ear",
+            "Eye",
+            "Fireplace",
+            "Heart",
+            "Hook",
+            "Info",
+            "Knife",
+            "Marker",
+            "Map Marker",
+            "Menu",
+            "Moon",
+            "Pen",
+            "Persona",
+            "Pill",
+            "Questionmark",
+            "Skull 2",
+            "Skull 3",
+            "Star",
+            "Sun",
+            "Tent",
+            "Thermometer",
+            "Water 2",
+            "Book 1",
+            "Book 2",
+            "Ellipse",
+            "Square",
+            "Grab",
+            "Open Hand",
+            "Map",
+            "Note",
+            "Orientation",
+            "Radio",
+            "Shield",
+            "Snow",
+            "Group",
+            "Vehicle Crash",
+            "Animal Skull",
+            "Apple",
+            "Apple Core",
+            "Arrows",
+            "Axe",
+            "Backpack",
+            "Bandage",
+            "Batteries",
+            "Berries",
+            "Kitchen Knife Big",
+            "Binoculars",
+            "Bolt",
+            "Bonfire",
+            "Bottle",
+            "Bow",
+            "Broken Lighter",
+            "Can Of Beans Big",
+            "Can Of Beans Small",
+            "Car Keys",
+            "Carrot",
+            "Chain Saw",
+            "Chicken",
+            "Chocolate",
+            "Cigarets",
+            "Cloth",
+            "Compass",
+            "Corn",
+            "Crowbar",
+            "Cow",
+            "Dinosaur Skull",
+            "Dry Wood",
+            "Eatable Flowers",
+            "Electrical Tape",
+            "Empty Can",
+            "Fish",
+            "Flare",
+            "Flare Gun",
+            "Flare Gun Ammo",
+            "Flashlight",
+            "Fox",
+            "Frying Pan",
+            "Gas",
+            "Gas Mask",
+            "Golf Club",
+            "Goose",
+            "Grenade",
+            "Guitar",
+            "Gun",
+            "Gun Bullets",
+            "Hammer",
+            "Herbal Medicine",
+            "Home Made Grenade",
+            "Human Skull",
+            "Insect",
+            "Kitchen Knife",
+            "Ladder",
+            "Lantern",
+            "Lighter",
+            "Machette",
+            "Paper Map",
+            "Matches",
+            "Medic Box",
+            "Mushrooms",
+            "Nails",
+            "Paper",
+            "Pills",
+            "Pipe Wrench",
+            "Powder",
+            "Pumpkin",
+            "Rabbit",
+            "Racoon",
+            "Radio",
+            "Rat",
+            "Rock 1",
+            "Rock 2",
+            "Rope",
+            "Saw",
+            "Scrap Metal",
+            "Screwdriver",
+            "Shotgun",
+            "Shotgun Bullets",
+            "Shovel",
+            "Soda",
+            "Tent Small",
+            "Walkie Talkie",
+            "Water Jug",
+            "Wild Pork",
+            "Worms",
+            "Discord",
+            "Reddit",
+            "Steam",
+            "GitHub",
+            "Homepage",
+            "Forums",
+            "Twitter",
+            "YouTube",
+            "Patreon",
+            "Guilded"});
+            this.NotfifcationIconComboBox.Location = new System.Drawing.Point(50, 172);
+            this.NotfifcationIconComboBox.Name = "NotfifcationIconComboBox";
+            this.NotfifcationIconComboBox.Size = new System.Drawing.Size(272, 21);
+            this.NotfifcationIconComboBox.TabIndex = 119;
+            this.NotfifcationIconComboBox.SelectedIndexChanged += new System.EventHandler(this.NotfifcationIconComboBox_SelectedIndexChanged);
+            // 
             // pictureBox5
             // 
             this.pictureBox5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.BackgroundImage")));
@@ -12113,171 +12279,6 @@ namespace DayZeEditor
             this.toolStripButton14.Size = new System.Drawing.Size(93, 25);
             this.toolStripButton14.Text = "Vehicle Settings";
             this.toolStripButton14.Click += new System.EventHandler(this.toolStripButton14_Click);
-            // 
-            // NotfifcationIconComboBox
-            // 
-            this.NotfifcationIconComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.NotfifcationIconComboBox.ForeColor = System.Drawing.SystemColors.Control;
-            this.NotfifcationIconComboBox.FormattingEnabled = true;
-            this.NotfifcationIconComboBox.Items.AddRange(new object[] {
-            "Arrow",
-            "Error",
-            "Airdrop",
-            "Car",
-            "Deliver",
-            "Radiation",
-            "Trader",
-            "Water 1",
-            "Infected 1",
-            "Infected 2",
-            "Skull 1",
-            "Helicopter",
-            "Base",
-            "Boat",
-            "Fishing",
-            "Territory",
-            "Bear",
-            "Claw",
-            "Drip",
-            "Ear",
-            "Eye",
-            "Fireplace",
-            "Heart",
-            "Hook",
-            "Info",
-            "Knife",
-            "Marker",
-            "Map Marker",
-            "Menu",
-            "Moon",
-            "Pen",
-            "Persona",
-            "Pill",
-            "Questionmark",
-            "Skull 2",
-            "Skull 3",
-            "Star",
-            "Sun",
-            "Tent",
-            "Thermometer",
-            "Water 2",
-            "Book 1",
-            "Book 2",
-            "Ellipse",
-            "Square",
-            "Grab",
-            "Open Hand",
-            "Map",
-            "Note",
-            "Orientation",
-            "Radio",
-            "Shield",
-            "Snow",
-            "Group",
-            "Vehicle Crash",
-            "Animal Skull",
-            "Apple",
-            "Apple Core",
-            "Arrows",
-            "Axe",
-            "Backpack",
-            "Bandage",
-            "Batteries",
-            "Berries",
-            "Kitchen Knife Big",
-            "Binoculars",
-            "Bolt",
-            "Bonfire",
-            "Bottle",
-            "Bow",
-            "Broken Lighter",
-            "Can Of Beans Big",
-            "Can Of Beans Small",
-            "Car Keys",
-            "Carrot",
-            "Chain Saw",
-            "Chicken",
-            "Chocolate",
-            "Cigarets",
-            "Cloth",
-            "Compass",
-            "Corn",
-            "Crowbar",
-            "Cow",
-            "Dinosaur Skull",
-            "Dry Wood",
-            "Eatable Flowers",
-            "Electrical Tape",
-            "Empty Can",
-            "Fish",
-            "Flare",
-            "Flare Gun",
-            "Flare Gun Ammo",
-            "Flashlight",
-            "Fox",
-            "Frying Pan",
-            "Gas",
-            "Gas Mask",
-            "Golf Club",
-            "Goose",
-            "Grenade",
-            "Guitar",
-            "Gun",
-            "Gun Bullets",
-            "Hammer",
-            "Herbal Medicine",
-            "Home Made Grenade",
-            "Human Skull",
-            "Insect",
-            "Kitchen Knife",
-            "Ladder",
-            "Lantern",
-            "Lighter",
-            "Machette",
-            "Paper Map",
-            "Matches",
-            "Medic Box",
-            "Mushrooms",
-            "Nails",
-            "Paper",
-            "Pills",
-            "Pipe Wrench",
-            "Powder",
-            "Pumpkin",
-            "Rabbit",
-            "Racoon",
-            "Radio",
-            "Rat",
-            "Rock 1",
-            "Rock 2",
-            "Rope",
-            "Saw",
-            "Scrap Metal",
-            "Screwdriver",
-            "Shotgun",
-            "Shotgun Bullets",
-            "Shovel",
-            "Soda",
-            "Tent Small",
-            "Walkie Talkie",
-            "Water Jug",
-            "Wild Pork",
-            "Worms",
-            "Discord",
-            "Reddit",
-            "Steam",
-            "GitHub",
-            "Homepage",
-            "Forums",
-            "Twitter",
-            "YouTube",
-            "Patreon",
-            "Guilded"});
-            this.NotfifcationIconComboBox.Location = new System.Drawing.Point(50, 172);
-            this.NotfifcationIconComboBox.Name = "NotfifcationIconComboBox";
-            this.NotfifcationIconComboBox.Size = new System.Drawing.Size(272, 21);
-            this.NotfifcationIconComboBox.TabIndex = 119;
-            this.NotfifcationIconComboBox.SelectedIndexChanged += new System.EventHandler(this.NotfifcationIconComboBox_SelectedIndexChanged);
             // 
             // ExpansionSettings
             // 
