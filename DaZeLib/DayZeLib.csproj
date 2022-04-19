@@ -143,7 +143,6 @@
     <Compile Include="KOSZone\KOSZone.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Economy\TypesFile.cs" />
-    <Compile Include="Economy\XML Classes.cs" />
     <Compile Include="SpawnerBubaku\SpawnerBubaku.cs" />
     <Compile Include="TraderPlus\TraderPlusBankingConfig.cs" />
     <Compile Include="TraderPlus\TraderPlusGeneralConfig.cs" />

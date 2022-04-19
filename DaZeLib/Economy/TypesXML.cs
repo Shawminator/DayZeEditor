@@ -382,7 +382,6 @@ namespace DayZeLib
             if (value == null)
                 value = new BindingList<typesTypeValue>();
             value.Add(new typesTypeValue() { name = tier });
-           // Usinguserdifinitions = false;
             for (int i = 0; i < value.Count; i++)
             {
                 if (value[i].name == null)
@@ -405,7 +404,6 @@ namespace DayZeLib
             if (value == null)
                 value = new BindingList<typesTypeValue>();
             value.Add(new typesTypeValue() { user = tier });
-            //Usinguserdifinitions = true;
             for (int i = 0; i < value.Count; i++)
             {
                 if (value[i].user == null)
@@ -421,7 +419,6 @@ namespace DayZeLib
             if (value.Count == 0)
             {
                 value = null;
-                //Usinguserdifinitions = false;
             }
         }
 
