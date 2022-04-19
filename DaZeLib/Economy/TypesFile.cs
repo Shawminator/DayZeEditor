@@ -47,32 +47,32 @@ namespace DayZeLib
                     MessageBox.Show(ex.Message + "\n" + filename + "\n" + ex.InnerException.Message);
                 }
             }
-            foreach(type type in types.type)
-            {
+            //foreach(typesType type in types.type)
+            //{
 
-                if(type.usage == null || type.usage.Count == 0 || type.usage[0].name == null)
-                    type.usage = null;
+            //    if(type.usage == null || type.usage.Count == 0 || type.usage[0].name == null)
+            //        type.usage = null;
                 
-                if (type.value == null || type.value.Count == 0 || (type.value[0].name == null && type.value[0].user == null))
-                    type.value = null;
+            //    if (type.value == null || type.value.Count == 0 || (type.value[0].name == null && type.value[0].name == null))
+            //        type.value = null;
 
-                else if (type.value[0].name == null && type.value[0].user != null)
-                    type.Usinguserdifinitions = true;
-                else
-                    type.Usinguserdifinitions = false;
-            }
-            types.type = new BindingList<type>(types.type.OrderBy(x => x.name).ToList());
+            //    //else if (type.value[0].name == null && type.value[0].name != null)
+            //    //    type.Usinguserdifinitions = true;
+            //    //else
+            //    //    type.Usinguserdifinitions = false;
+            //}
+            types.type = new BindingList<typesType>(types.type.OrderBy(x => x.name).ToList());
         }
         public bool SaveTyes(string saveTime)
         {
-            foreach(type t in types.type)
+            foreach (typesType t in types.type)
             {
-                if(t.value != null)
-                    t.value = new BindingList<value>(new BindingList<value>(t.value.OrderBy(x => x.name).ToList()));
+                if (t.value != null)
+                    t.value = new BindingList<typesTypeValue>(new BindingList<typesTypeValue>(t.value.OrderBy(x => x.name).ToList()));
                 if (t.usage != null)
-                    t.usage = new BindingList<usage>(new BindingList<usage>(t.usage.OrderBy(x => x.name).ToList()));
+                    t.usage = new BindingList<typesTypeUsage>(new BindingList<typesTypeUsage>(t.usage.OrderBy(x => x.name).ToList()));
                 if (t.tag != null)
-                    t.tag = new BindingList<tag>(new BindingList<tag>(t.tag.OrderBy(x => x.name).ToList()));
+                    t.tag = new BindingList<typesTypeTag>(new BindingList<typesTypeTag>(t.tag.OrderBy(x => x.name).ToList()));
             }
 
             Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
@@ -90,14 +90,14 @@ namespace DayZeLib
         }
         public bool SaveTyes()
         {
-            foreach (type t in types.type)
+            foreach (typesType t in types.type)
             {
                 if (t.value != null)
-                    t.value = new BindingList<value>(new BindingList<value>(t.value.OrderBy(x => x.name).ToList()));
+                    t.value = new BindingList<typesTypeValue>(new BindingList<typesTypeValue>(t.value.OrderBy(x => x.name).ToList()));
                 if (t.usage != null)
-                    t.usage = new BindingList<usage>(new BindingList<usage>(t.usage.OrderBy(x => x.name).ToList()));
+                    t.usage = new BindingList<typesTypeUsage>(new BindingList<typesTypeUsage>(t.usage.OrderBy(x => x.name).ToList()));
                 if (t.tag != null)
-                    t.tag = new BindingList<tag>(new BindingList<tag>(t.tag.OrderBy(x => x.name).ToList()));
+                    t.tag = new BindingList<typesTypeTag>(new BindingList<typesTypeTag>(t.tag.OrderBy(x => x.name).ToList()));
             }
 
             var serializer = new XmlSerializer(typeof(types));
@@ -111,7 +111,7 @@ namespace DayZeLib
             File.WriteAllText(Filename, sw.ToString());
             return true;
         }
-        public List<type> SerachTypes(string Searchterm, bool exact = false)
+        public List<typesType> SerachTypes(string Searchterm, bool exact = false)
         {
             if (exact)
                 return types.type.Where(x => x.name == Searchterm).ToList();
@@ -119,9 +119,9 @@ namespace DayZeLib
                 return types.type.Where(x => x.name.ToLower().Contains(Searchterm)).ToList();
             
         }
-        public List<type> SerachTypes(string[] Searchterm, bool exact = false)
+        public List<typesType> SerachTypes(string[] Searchterm, bool exact = false)
         {
-            List<type> list = new List<type>();
+            List<typesType> list = new List<typesType>();
             foreach(string s in Searchterm)
             {
                 list.AddRange(types.type.Where(x => x.name.ToLower().Contains(s)).ToList());

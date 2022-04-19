@@ -159,10 +159,10 @@ namespace DayZeEditor
         public void SetModListtypes()
         {
             ModTypesList = new BindingList<TypesFile>();
-            foreach(ce mods in EconomyCore.economycore.ce)
+            foreach(economycoreCE mods in EconomyCore.economycore.ce)
             {
                 string path = projectFullName + "\\mpmissions\\" + mpmissionpath + "\\" + mods.folder;
-                foreach(file file in mods.file)
+                foreach(economycoreCEFile file in mods.file)
                 {
                     if (file.type == "types")
                         SetmodTypes(path + "\\" + file.name);
@@ -193,10 +193,10 @@ namespace DayZeEditor
         {
             ModEventsList = new BindingList<eventscofig>();
             ModEventsList.Add(new eventscofig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\db\\events.xml"));
-            foreach (ce mods in EconomyCore.economycore.ce)
+            foreach (economycoreCE mods in EconomyCore.economycore.ce)
             {
                 string path = projectFullName + "\\mpmissions\\" + mpmissionpath + "\\" + mods.folder;
-                foreach (file file in mods.file)
+                foreach (economycoreCEFile file in mods.file)
                 {
                     if (file.type == "events")
                     {
@@ -209,10 +209,10 @@ namespace DayZeEditor
         {
             spawnabletypesList = new BindingList<Spawnabletypesconfig>();
             spawnabletypesList.Add(new Spawnabletypesconfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgspawnabletypes.xml"));
-            foreach (ce mods in EconomyCore.economycore.ce)
+            foreach (economycoreCE mods in EconomyCore.economycore.ce)
             {
                 string path = projectFullName + "\\mpmissions\\" + mpmissionpath + "\\" + mods.folder;
-                foreach (file file in mods.file)
+                foreach (economycoreCEFile file in mods.file)
                 {
                     if (file.type == "spawnabletypes")
                     {
@@ -244,14 +244,14 @@ namespace DayZeEditor
         internal void SetTotNomCount()
         {
             TotalNomCount = 0;
-            List<type> typelistforcount = new List<type>();
-            foreach(type _type in vanillaTypes.types.type)
+            List<typesType> typelistforcount = new List<typesType>();
+            foreach(typesType _type in vanillaTypes.types.type)
             {
-                if (_type.nominal != null)
+                if (_type.nominalSpecified)
                 {
                     if(typelistforcount.Any(x => x.name == _type.name))
                     {
-                        type otype = typelistforcount.First(x => x.name == _type.name);
+                        typesType otype = typelistforcount.First(x => x.name == _type.name);
 
                         TotalNomCount -= otype.nominal;
                         typelistforcount.Remove(otype);
@@ -262,13 +262,13 @@ namespace DayZeEditor
             }
             foreach(TypesFile tf in ModTypesList)
             {
-                foreach(type _type in tf.types.type)
+                foreach(typesType _type in tf.types.type)
                 {
-                    if (_type.nominal != null)
+                    if (_type.nominalSpecified)
                     {
                         if (typelistforcount.Any(x => x.name == _type.name))
                         {
-                            type otype = typelistforcount.First(x => x.name == _type.name);
+                            typesType otype = typelistforcount.First(x => x.name == _type.name);
 
                             TotalNomCount -= otype.nominal;
                             typelistforcount.Remove(otype);
@@ -281,14 +281,14 @@ namespace DayZeEditor
         }
         internal string getcorrectclassamefromtypes(string className)
         {
-            type vantype = vanillaTypes.types.type.FirstOrDefault(x => x.name.ToLower() == className.ToLower());
+            typesType vantype = vanillaTypes.types.type.FirstOrDefault(x => x.name.ToLower() == className.ToLower());
             if (vantype != null)
                 return vantype.name;
             else
             {
                 foreach(TypesFile tfile in ModTypesList)
                 {
-                    type modvantype = tfile.types.type.FirstOrDefault(x => x.name.ToLower() == className.ToLower());
+                    typesType modvantype = tfile.types.type.FirstOrDefault(x => x.name.ToLower() == className.ToLower());
                     if (modvantype != null)
                         return modvantype.name;
                 }

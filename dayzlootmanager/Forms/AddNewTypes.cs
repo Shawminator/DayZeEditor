@@ -33,7 +33,7 @@ namespace DayZeEditor
         }
         private void AddNewTypes_Load(object sender, EventArgs e)
         {
-            comboBox1.DataSource = currentproject.limitfefinitions.lists.categories.category;
+            comboBox1.DataSource = currentproject.limitfefinitions.lists.categories;
             if (!newlocation)
             {
                 
@@ -71,7 +71,7 @@ namespace DayZeEditor
             else
             {
                 StringBuilder sb = new StringBuilder();
-                category c = comboBox1.SelectedItem as category;
+                typesTypeCategory c = comboBox1.SelectedItem as typesTypeCategory;
                 foreach (string line in richTextBox2.Lines)
                 {
                     sb.Append("<type name=\"" + line + "\">" + Environment.NewLine);

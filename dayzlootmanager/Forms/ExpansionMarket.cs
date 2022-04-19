@@ -2031,7 +2031,7 @@ namespace DayZeEditor
             {
                 searchsplit = true;
             }
-            List<type> vtypesvariaNTS = new List<type>();
+            List<typesType> vtypesvariaNTS = new List<typesType>();
             //check types files for any variants depending on search term
             if (!searchsplit)
                 vtypesvariaNTS = vanillatypes.SerachTypes(UserAnswer);
@@ -2063,14 +2063,14 @@ namespace DayZeEditor
                     }
                 }
             }
-            List<type> newlist = new List<type>();
-            foreach (type type in vtypesvariaNTS)
+            List<typesType> newlist = new List<typesType>();
+            foreach (typesType type in vtypesvariaNTS)
             {
                 if (!newlist.Any(x => x.name == type.name) && type.name.ToLower() != currentitem.ClassName)
                     newlist.Add(type);
             }
 
-            foreach (type type in newlist)
+            foreach (typesType type in newlist)
             {
                 marketItem newitem = new marketItem
                 {

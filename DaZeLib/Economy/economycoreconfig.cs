@@ -46,7 +46,7 @@ namespace DayZeLib
         }
         public void AddCe(string path, string filename, string type)
         {
-            file newfile = new file();
+            economycoreCEFile newfile = new economycoreCEFile();
             string _path = path.Replace("\\", "/");
             switch (type)
             {
@@ -71,28 +71,28 @@ namespace DayZeLib
             }
             else
             {
-                ce newce = new ce
+                economycoreCE newce = new economycoreCE
                 {
                     folder = path,
-                    file = new BindingList<file>()
+                    file = new BindingList<economycoreCEFile>()
                 };
                 newce.file.Add(newfile);
                 if (economycore.ce == null)
                 {
-                    economycore.ce = new BindingList<ce>();
+                    economycore.ce = new BindingList<economycoreCE>();
                 }
                 economycore.ce.Add(newce);
             }
         }
-        public ce getfolder(string path)
+        public economycoreCE getfolder(string path)
         {
             return economycore.ce.FirstOrDefault(x => x.folder == path);
         }
         public void RemoveCe(string modname, out string Folderpath, out string filename, out bool deletedirectory)
         {
-            ce ce = economycore.findFile(modname);
+            economycoreCE ce = economycore.findFile(modname);
             Folderpath = ce.folder;
-            file file = ce.getfile(modname);
+            economycoreCEFile file = ce.getfile(modname);
             filename = file.name;
             ce.removefile(file);
             deletedirectory = false;
@@ -105,7 +105,7 @@ namespace DayZeLib
 
         public bool checkiftodelete(string modname)
         {
-            ce ce = economycore.findFile(modname);
+            economycoreCE ce = economycore.findFile(modname);
             if (ce != null)
                 return false;
             return true;

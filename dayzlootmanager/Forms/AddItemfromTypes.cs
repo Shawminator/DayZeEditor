@@ -34,7 +34,7 @@ namespace DayZeEditor
         }
 
         public bool isCategoryitem { get; set; }
-        public type currentlootpart;
+        public typesType currentlootpart;
         public bool UseMultiple;
         public bool LowerCase { get; set; }
         public Project currentproject { get; internal set; }
@@ -76,7 +76,7 @@ namespace DayZeEditor
             //Set Vanilla Treenode types
             TreeNode vanilla = new TreeNode("Vanilla Types");
             vanilla.Tag = "VanillaTypes";
-            foreach (type type in vanillatypes.types.type)
+            foreach (typesType type in vanillatypes.types.type)
             {
                 if(usedtypes != null && usedtypes.ContainsKey(type.name.ToLower()) && HideUsed == true) { continue; }
                 string cat = "other";
@@ -101,7 +101,7 @@ namespace DayZeEditor
                     
                     TreeNode ModTypes = new TreeNode(tf.modname);
                     ModTypes.Tag = tf.modname;
-                    foreach (type type in tf.types.type)
+                    foreach (typesType type in tf.types.type)
                     {
                         if (usedtypes != null && usedtypes.ContainsKey(type.name.ToLower()) && HideUsed == true) { continue; }
                         string cat = "other";
@@ -197,16 +197,16 @@ namespace DayZeEditor
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            if (e.Node.Tag != null && e.Node.Tag is type)
+            if (e.Node.Tag != null && e.Node.Tag is typesType)
             {
-                currentlootpart = e.Node.Tag as type;
+                currentlootpart = e.Node.Tag as typesType;
             }
         }
         public bool manualchange = false;
         private int searchnum;
         private List<TreeNode> searchtreeNodes;
         private List<TreeNode> searchtreeparts;
-        private List<type> foundparts;
+        private List<typesType> foundparts;
 
         private void treeView1_AfterCheck(object sender, TreeViewEventArgs e)
         {
@@ -275,8 +275,8 @@ namespace DayZeEditor
             searchnum = 0;
             searchtreeNodes = new List<TreeNode>();
             searchtreeparts = new List<TreeNode>();
-            foundparts = new List<type>();
-            foreach(type type in vanillatypes.types.type)
+            foundparts = new List<typesType>();
+            foreach(typesType type in vanillatypes.types.type)
             {
                 if(type.name.ToLower().Contains(text.ToLower()))
                 {
@@ -285,7 +285,7 @@ namespace DayZeEditor
             }
             foreach (TypesFile tf in ModTypes)
             {
-                foreach (type type in tf.types.type)
+                foreach (typesType type in tf.types.type)
                 {
                     if (type.name.ToLower().Contains(text.ToLower()))
                     {
@@ -294,7 +294,7 @@ namespace DayZeEditor
                 }
             }
             if(foundparts.Count == 0) { return; }
-            foreach (type obj in foundparts)
+            foreach (typesType obj in foundparts)
             {
                 foreach (TreeNode node in treeView1.Nodes)
                 {
@@ -312,9 +312,9 @@ namespace DayZeEditor
             //}
             treeView1.SelectedNode = searchtreeNodes[searchnum];
             treeView1.Focus();
-            if (treeView1.SelectedNode.Tag != null && treeView1.SelectedNode.Tag is type)
+            if (treeView1.SelectedNode.Tag != null && treeView1.SelectedNode.Tag is typesType)
             {
-                currentlootpart = treeView1.SelectedNode.Tag as type;
+                currentlootpart = treeView1.SelectedNode.Tag as typesType;
             }
             if (searchtreeNodes.Count > 1)
                 darkButton7.Visible = true;
@@ -347,9 +347,9 @@ namespace DayZeEditor
             }
             treeView1.SelectedNode = searchtreeNodes[searchnum];
             treeView1.Focus();
-            if (treeView1.SelectedNode.Tag != null && treeView1.SelectedNode.Tag is type)
+            if (treeView1.SelectedNode.Tag != null && treeView1.SelectedNode.Tag is typesType)
             {
-                currentlootpart = treeView1.SelectedNode.Tag as type;
+                currentlootpart = treeView1.SelectedNode.Tag as typesType;
             }
         }
 

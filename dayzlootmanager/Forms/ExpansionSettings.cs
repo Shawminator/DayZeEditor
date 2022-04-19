@@ -1091,24 +1091,24 @@ namespace DayZeEditor
         private void setupairdropZombies()
         {
             listBox5.Items.Clear();
-            foreach (type type in vanillatypes.SerachTypes("zmbm_"))
+            foreach (typesType type in vanillatypes.SerachTypes("zmbm_"))
             {
                 listBox5.Items.Add(type.name);
             }
-            foreach (type type in vanillatypes.SerachTypes("zmbf_"))
+            foreach (typesType type in vanillatypes.SerachTypes("zmbf_"))
             {
                 listBox5.Items.Add(type.name);
             }
             foreach (TypesFile tf in ModTypes)
             {
-                foreach (type type in tf.SerachTypes("zmbm_"))
+                foreach (typesType type in tf.SerachTypes("zmbm_"))
                 {
                     listBox5.Items.Add(type.name);
                 }
             }
             foreach (TypesFile tf in ModTypes)
             {
-                foreach (type type in tf.SerachTypes("zmbf_"))
+                foreach (typesType type in tf.SerachTypes("zmbf_"))
                 {
                     listBox5.Items.Add(type.name);
                 }

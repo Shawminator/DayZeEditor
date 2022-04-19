@@ -97,7 +97,10 @@
     <Compile Include="DRJonesTrader\DrJonesTrader.cs" />
     <Compile Include="DRJonesTrader\DRJonesVariables.cs" />
     <Compile Include="DRJonesTrader\DrJonesvehicleParts.cs" />
+    <Compile Include="Economy\cfgeconomycore.cs" />
     <Compile Include="Economy\cfgEffectArea.cs" />
+    <Compile Include="Economy\cfglimitsdefinition.cs" />
+    <Compile Include="Economy\cfglimitsdefinitionuser.cs" />
     <Compile Include="Economy\cfgrandompresetsXML.cs" />
     <Compile Include="Economy\economycoreconfig.cs" />
     <Compile Include="Economy\EventSpawnsXML.cs" />
@@ -105,6 +108,7 @@
     <Compile Include="Economy\GameplayJson.cs" />
     <Compile Include="Economy\PlayerSpawnsXML.cs" />
     <Compile Include="Economy\SpawnabletypesXML.cs" />
+    <Compile Include="Economy\TypesXML.cs" />
     <Compile Include="Economy\variables.cs" />
     <Compile Include="Economy\Limitsdefinitions.cs" />
     <Compile Include="Economy\weatherXML.cs" />

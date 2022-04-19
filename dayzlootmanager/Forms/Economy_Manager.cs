@@ -28,14 +28,14 @@ namespace DayZeEditor
         public TypesFile vanillatypes;
         public List<TypesFile> ModTypes;
         public TypesFile currentTypesFile;
-        public type currentlootpart;
+        public typesType currentlootpart;
         public string currentcollection;
         public string filename;
         public bool Fileloaded = false;
         public bool FullTypes;
         private int searchnum;
         private List<TreeNode> searchtreeNodes;
-        private List<type> foundparts;
+        private List<typesType> foundparts;
         public playerspawnpoints playerspawnpoints;
         public BindingList<randompresetsAttachments> cargoAttachments = new BindingList<randompresetsAttachments>();
         public BindingList<randompresetsCargo> cargoItems = new BindingList<randompresetsCargo>();
@@ -75,15 +75,15 @@ namespace DayZeEditor
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
 
-            comboBox1.DataSource = currentproject.limitfefinitions.lists.categories.category;
-            comboBox2.DataSource = currentproject.limitfefinitions.lists.usageflags.usage;
-            comboBox4.DataSource = currentproject.limitfefinitions.lists.tags.tag;
+            comboBox1.DataSource = currentproject.limitfefinitions.lists.categories;
+            comboBox2.DataSource = currentproject.limitfefinitions.lists.usageflags;
+            comboBox4.DataSource = currentproject.limitfefinitions.lists.tags;
 
-            comboBox5.DataSource = currentproject.limitfefinitions.lists.tags.tag;
+            comboBox5.DataSource = currentproject.limitfefinitions.lists.tags;
 
-            comboBox8.DataSource = currentproject.limitfefinitions.lists.categories.category;
-            comboBox7.DataSource = currentproject.limitfefinitions.lists.usageflags.usage;
-            comboBox6.DataSource = currentproject.limitfefinitions.lists.tags.tag;
+            comboBox8.DataSource = currentproject.limitfefinitions.lists.categories;
+            comboBox7.DataSource = currentproject.limitfefinitions.lists.usageflags;
+            comboBox6.DataSource = currentproject.limitfefinitions.lists.tags;
             SetuprandomPresetsForSpawnabletypes();
 
             PopulateTreeView();
@@ -496,7 +496,7 @@ namespace DayZeEditor
                 cb.Visible = false;
             }
             int index = 15;
-            foreach (value value in currentproject.limitfefinitions.lists.valueflags.value)
+            foreach (listsValue value in currentproject.limitfefinitions.lists.valueflags)
             {
                 CheckBox cb = checkboxesSummary.First(x => x.Tag.ToString() == value.name);
                 cb.Tag = value.name;
@@ -512,7 +512,7 @@ namespace DayZeEditor
                 cb.Visible = false;
             }
             index = 0;
-            foreach (user user in currentproject.limitfefinitionsuser.user_lists.valueflags.user)
+            foreach (user_listsUser1 user in currentproject.limitfefinitionsuser.user_lists.valueflags)
             {
                 CheckBox cb = checkboxesSummary[index];
                 cb.Tag = user.name;
@@ -531,8 +531,8 @@ namespace DayZeEditor
                 cb.Visible = false;
             }
 
-            int index = 14;
-            foreach (value value in currentproject.limitfefinitions.lists.valueflags.value)
+            int index = currentproject.limitfefinitions.lists.valueflags.Count;
+            foreach (listsValue value in currentproject.limitfefinitions.lists.valueflags)
             {
                 CheckBox cb = checkboxes.First(x => x.Tag.ToString() == value.name);
                 cb.Tag = value.name;
@@ -552,7 +552,7 @@ namespace DayZeEditor
 
 
             index = 0;
-            foreach (user user in currentproject.limitfefinitionsuser.user_lists.valueflags.user)
+            foreach (user_listsUser1 user in currentproject.limitfefinitionsuser.user_lists.valueflags)
             {
                 CheckBox cb = checkboxes[index];
                 cb.Tag = user.name;
@@ -562,12 +562,12 @@ namespace DayZeEditor
                 index++;
             }
 
-            if (currentlootpart.Usinguserdifinitions)
-            {
-                tabControl3.SelectedIndex = 1;
-            }
-            else
-                tabControl3.SelectedIndex = 0;
+            //if (currentlootpart.Usinguserdifinitions)
+            //{
+            //    tabControl3.SelectedIndex = 1;
+            //}
+            //else
+            //    tabControl3.SelectedIndex = 0;
         }
         private void toolStripButton7_Click(object sender, EventArgs e)
         {
@@ -586,7 +586,7 @@ namespace DayZeEditor
             {
                 Tag = "VanillaTypes"
             };
-            foreach (type type in vanillatypes.types.type)
+            foreach (typesType type in vanillatypes.types.type)
             {
                 string cat = "other";
                 if (type.category != null)
@@ -615,7 +615,7 @@ namespace DayZeEditor
                     {
                         Tag = tf.modname
                     };
-                    foreach (type type in tf.types.type)
+                    foreach (typesType type in tf.types.type)
                     {
                         string cat = "other";
                         if (type.category != null)
@@ -646,7 +646,7 @@ namespace DayZeEditor
         }
         private void treeViewMS1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            if (e.Node.Tag != null && e.Node.Tag is type)
+            if (e.Node.Tag != null && e.Node.Tag is typesType)
             {
                 TreeNode parent = e.Node.Parent;
                 TreeNode mainparent = parent.Parent;
@@ -658,7 +658,7 @@ namespace DayZeEditor
                     currentTypesFile = ModTypes.FirstOrDefault(x => x.modname == typesfile);
                 isUserInteraction = false;
                 tabControl1.SelectedIndex = 1;
-                currentlootpart = e.Node.Tag as type;
+                currentlootpart = e.Node.Tag as typesType;
                 PopulateLootPartInfo();
                 isUserInteraction = true;
                 if (e.Button == MouseButtons.Right)
@@ -754,7 +754,7 @@ namespace DayZeEditor
         {
             List<Tuple<string, string>> typecheck = new List<Tuple<string, string>>();
             List<Tuple<string, string, string>> duplicatelist = new List<Tuple<string, string, string>>();
-            foreach (type type in vanillatypes.types.type)
+            foreach (typesType type in vanillatypes.types.type)
             {
                 if(typecheck.Any(x => x.Item1 == type.name))
                 {
@@ -771,7 +771,7 @@ namespace DayZeEditor
             {
                 foreach (TypesFile tf in ModTypes)
                 {
-                    foreach (type type in tf.types.type)
+                    foreach (typesType type in tf.types.type)
                     {
                         if (typecheck.Any(x => x.Item1 == type.name))
                         {
@@ -837,8 +837,8 @@ namespace DayZeEditor
             }
             else
             {
-                List<type> typetoremove = new List<type>();
-                foreach (type type in currentTypesFile.types.type)
+                List<typesType> typetoremove = new List<typesType>();
+                foreach (typesType type in currentTypesFile.types.type)
                 {
                     if(type.category == null && currentcollection == "other")
                     {
@@ -849,7 +849,7 @@ namespace DayZeEditor
                         typetoremove.Add(type);
                     }
                 }
-                foreach(type t in typetoremove)
+                foreach(typesType t in typetoremove)
                 {
                     currentTypesFile.types.type.Remove(t);
                 }
@@ -927,7 +927,7 @@ namespace DayZeEditor
                     File.WriteAllLines("Temp_types.xml", modtypes);
                     TypesFile test = new TypesFile("Temp_types.xml");
                     File.Delete("Temp_types.xml");
-                    foreach (type type in test.types.type)
+                    foreach (typesType type in test.types.type)
                     {
                         currentTypesFile.types.type.Add(type);
                     }
@@ -966,7 +966,9 @@ namespace DayZeEditor
             {
                 for(int i = 0; i < currentlootpart.value.Count; i++)
                 {
-                    if (currentlootpart.Usinguserdifinitions)
+                    if (currentlootpart.value[i].user != null && currentlootpart.value[i].user.Count() > 0 && currentlootpart.value[i].name == null)
+                    {
+                        tabControl3.SelectedIndex = 1;
                         try
                         {
                             UserdefinitionsTP.Controls.OfType<CheckBox>().First(x => x.Tag.ToString() == currentlootpart.value[i].user).Checked = true;
@@ -976,8 +978,11 @@ namespace DayZeEditor
                             currentlootpart.value.RemoveAt(i);
                             i--;
                         }
-                            
+                    }
                     else
+                    {
+                        tabControl3.SelectedIndex = 0;
+
                         try
                         {
                             SetdefinitionsTP.Controls.OfType<CheckBox>().First(x => x.Tag.ToString() == currentlootpart.value[i].name).Checked = true;
@@ -987,12 +992,13 @@ namespace DayZeEditor
                             currentlootpart.value.RemoveAt(i);
                             i--;
                         }
+                    }
                 }
             }
         }
         private void PopulateCounts()
         {
-            if (currentlootpart.nominal == null)
+            if (currentlootpart.nominalSpecified)
             {
                 typeNomCountNUD.Visible = false;
             }
@@ -1001,7 +1007,7 @@ namespace DayZeEditor
                 typeNomCountNUD.Visible = true;
                 typeNomCountNUD.Value = (decimal)currentlootpart.nominal;
             }
-            if (currentlootpart.min == null)
+            if (currentlootpart.minSpecified)
             {
                 typeMinCountNUD.Visible = false;
             }
@@ -1010,16 +1016,10 @@ namespace DayZeEditor
                 typeMinCountNUD.Visible = true;
                 typeMinCountNUD.Value = (decimal)currentlootpart.min;
             }
-            if (currentlootpart.lifetime == null)
-            {
-                typeLifetimeNUD.Visible = false;
-            }
-            else
-            {
-                typeLifetimeNUD.Visible = true;
-                typeLifetimeNUD.Value = (decimal)currentlootpart.lifetime;
-            }
-            if (currentlootpart.restock == null)
+            typeLifetimeNUD.Visible = true;
+            typeLifetimeNUD.Value = (decimal)currentlootpart.lifetime;
+
+            if (currentlootpart.restockSpecified)
             {
                 typeRestockNUD.Visible = false;
             }
@@ -1028,7 +1028,7 @@ namespace DayZeEditor
                 typeRestockNUD.Visible = true;
                 typeRestockNUD.Value = (decimal)currentlootpart.restock;
             }
-            if (currentlootpart.quantmin == null)
+            if (currentlootpart.quantminSpecified)
             {
                 typeQuantMINNUD.Visible = false;
             }
@@ -1037,7 +1037,7 @@ namespace DayZeEditor
                 typeQuantMINNUD.Visible = true;
                 typeQuantMINNUD.Value = (decimal)currentlootpart.quantmin;
             }
-            if (currentlootpart.quantmax == null)
+            if (currentlootpart.quantmaxSpecified)
             {
                 typeQuantMAXNUD.Visible = false;
             }
@@ -1046,7 +1046,7 @@ namespace DayZeEditor
                 typeQuantMAXNUD.Visible = true;
                 typeQuantMAXNUD.Value = (decimal)currentlootpart.quantmax;
             }
-            if (currentlootpart.cost == null)
+            if (currentlootpart.costSpecified)
             {
                 typeCostNUD.Visible = false;
             }
@@ -1091,10 +1091,10 @@ namespace DayZeEditor
         }
         private void darkButton2_Click(object sender, EventArgs e)
         {
-            usage u = comboBox2.SelectedItem as usage;
+            typesTypeUsage u = comboBox2.SelectedItem as typesTypeUsage;
             foreach (TreeNode tn in treeViewMS1.SelectedNodes)
             {
-                type looptype = tn.Tag as type;
+                typesType looptype = tn.Tag as typesType;
                 looptype.AddnewUsage(u);
                 populateUsage();
                 currentTypesFile.isDirty = true;
@@ -1102,20 +1102,20 @@ namespace DayZeEditor
         }
         private void darkButton1_Click(object sender, EventArgs e)
         {
-            usage u = listBox1.SelectedItem as usage;
+            typesTypeUsage u = listBox1.SelectedItem as typesTypeUsage;
             foreach (TreeNode tn in treeViewMS1.SelectedNodes)
             {
-                type looptype = tn.Tag as type;
+                typesType looptype = tn.Tag as typesType;
                 looptype.removeusage(u);
                 currentTypesFile.isDirty = true;
             }
         }
         private void darkButton8_Click(object sender, EventArgs e)
         {
-            tag t = comboBox4.SelectedItem as tag;
+            typesTypeTag t = comboBox4.SelectedItem as typesTypeTag;
             foreach (TreeNode tn in treeViewMS1.SelectedNodes)
             {
-                type looptype = tn.Tag as type;
+                typesType looptype = tn.Tag as typesType;
                 looptype.Addnewtag(t);
                 currentTypesFile.isDirty = true;
                 PopulateTags();
@@ -1123,10 +1123,10 @@ namespace DayZeEditor
         }
         private void darkButton7_Click(object sender, EventArgs e)
         {
-            tag t = listBox2.SelectedItem as tag;
+            typesTypeTag t = listBox2.SelectedItem as typesTypeTag;
             foreach (TreeNode tn in treeViewMS1.SelectedNodes)
             {
-                type looptype = tn.Tag as type;
+                typesType looptype = tn.Tag as typesType;
                 looptype.removetag(t);
                 currentTypesFile.isDirty = true;
             }
@@ -1135,10 +1135,10 @@ namespace DayZeEditor
         {
             if (isUserInteraction)
             {
-                category c = comboBox1.SelectedItem as category;
+                typesTypeCategory c = comboBox1.SelectedItem as typesTypeCategory;
                 foreach (TreeNode tn in treeViewMS1.SelectedNodes)
                 {
-                    type looptype = tn.Tag as type;
+                    typesType looptype = tn.Tag as typesType;
                     looptype.changecategory(c);
                 }
                 currentTypesFile.isDirty = true;
@@ -1152,8 +1152,8 @@ namespace DayZeEditor
             {
                 foreach (TreeNode tn in treeViewMS1.SelectedNodes)
                 {
-                    type looptype = tn.Tag as type;
-                    if (looptype.nominal != null)
+                    typesType looptype = tn.Tag as typesType;
+                    if (looptype.nominalSpecified)
                     {
                         looptype.nominal = (int)typeNomCountNUD.Value;
                         currentTypesFile.isDirty = true;
@@ -1170,8 +1170,8 @@ namespace DayZeEditor
             {
                 foreach (TreeNode tn in treeViewMS1.SelectedNodes)
                 {
-                    type looptype = tn.Tag as type;
-                    if (looptype.min != null)
+                    typesType looptype = tn.Tag as typesType;
+                    if (looptype.minSpecified)
                     {
                         looptype.min = (int)typeMinCountNUD.Value;
                         currentTypesFile.isDirty = true;
@@ -1185,13 +1185,10 @@ namespace DayZeEditor
             {
                 foreach (TreeNode tn in treeViewMS1.SelectedNodes)
                 {
-                    type looptype = tn.Tag as type;
-                    if (looptype.lifetime != null)
-                    { 
-                        looptype.lifetime = (int)typeLifetimeNUD.Value;
-                        currentTypesFile.isDirty = true;
-                    }
-                }
+                    typesType looptype = tn.Tag as typesType;
+                    looptype.lifetime = (int)typeLifetimeNUD.Value;
+                    currentTypesFile.isDirty = true;
+                 }
             }
         }
         private void typeRestockNUD_ValueChanged(object sender, EventArgs e)
@@ -1200,8 +1197,8 @@ namespace DayZeEditor
             {
                 foreach (TreeNode tn in treeViewMS1.SelectedNodes)
                 {
-                    type looptype = tn.Tag as type;
-                    if (looptype.restock != null)
+                    typesType looptype = tn.Tag as typesType;
+                    if (looptype.restockSpecified)
                     { 
                         looptype.restock = (int)typeRestockNUD.Value;
                         currentTypesFile.isDirty = true;
@@ -1216,8 +1213,8 @@ namespace DayZeEditor
             {
                 foreach (TreeNode tn in treeViewMS1.SelectedNodes)
                 {
-                    type looptype = tn.Tag as type;
-                    if (looptype.quantmin != null)
+                    typesType looptype = tn.Tag as typesType;
+                    if (looptype.quantminSpecified)
                     { 
                         looptype.quantmin = (int)typeQuantMINNUD.Value;
                         currentTypesFile.isDirty = true;
@@ -1231,8 +1228,8 @@ namespace DayZeEditor
             {
                 foreach (TreeNode tn in treeViewMS1.SelectedNodes)
                 {
-                    type looptype = tn.Tag as type;
-                    if (looptype.quantmax != null)
+                    typesType looptype = tn.Tag as typesType;
+                    if (looptype.quantmaxSpecified)
                     { 
                         looptype.quantmax = (int)typeQuantMAXNUD.Value;
                         currentTypesFile.isDirty = true;
@@ -1246,8 +1243,8 @@ namespace DayZeEditor
             {
                 foreach (TreeNode tn in treeViewMS1.SelectedNodes)
                 {
-                    type looptype = tn.Tag as type;
-                    if (looptype.cost != null)
+                    typesType looptype = tn.Tag as typesType;
+                    if (looptype.costSpecified)
                     { 
                         looptype.cost = (int)typeCostNUD.Value; ;
                         currentTypesFile.isDirty = true;
@@ -1261,7 +1258,7 @@ namespace DayZeEditor
             {
                 foreach (TreeNode tn in treeViewMS1.SelectedNodes)
                 {
-                    type looptype = tn.Tag as type;
+                    typesType looptype = tn.Tag as typesType;
                     CheckBox cb = sender as CheckBox;
                     switch (cb.Name)
                     {
@@ -1296,7 +1293,7 @@ namespace DayZeEditor
                 string tier = cb.Tag.ToString();
                 foreach (TreeNode tn in treeViewMS1.SelectedNodes)
                 {
-                    type looptype = tn.Tag as type;
+                    typesType looptype = tn.Tag as typesType;
                     if (cb.Checked)
                         looptype.AddTier(tier);
                     else
@@ -1314,7 +1311,7 @@ namespace DayZeEditor
                 string tier = cb.Tag.ToString();
                 foreach (TreeNode tn in treeViewMS1.SelectedNodes)
                 {
-                    type looptype = tn.Tag as type;
+                    typesType looptype = tn.Tag as typesType;
                     if (cb.Checked)
                     {
                         if (looptype.value != null)
@@ -1334,7 +1331,7 @@ namespace DayZeEditor
         {
             foreach (TreeNode tn in treeViewMS1.SelectedNodes)
             {
-                type looptype = tn.Tag as type;
+                typesType looptype = tn.Tag as typesType;
                 looptype.removetiers();
                 currentTypesFile.isDirty = true;
             }
@@ -1342,7 +1339,7 @@ namespace DayZeEditor
         }
         private void darkButton3_Click(object sender, EventArgs e)
         {
-            List<type> loot = new List<type>();
+            List<typesType> loot = new List<typesType>();
 
             if(currentcollection == "Parent")
             {
@@ -1382,14 +1379,14 @@ namespace DayZeEditor
             currentproject.SetTotNomCount();
             NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
         }
-        public void editnommax(List<type> loot)
+        public void editnommax(List<typesType> loot)
         {
             currentTypesFile.isDirty = true;
             Domultiplier(loot);
         }
-        private void Domultiplier(List<type> list)
+        private void Domultiplier(List<typesType> list)
         {
-            foreach (type item in list)
+            foreach (typesType item in list)
             {
                 if(item.nominal == null) { continue; }
                 if (item.nominal != 0)
@@ -1460,7 +1457,7 @@ namespace DayZeEditor
         private void Updatflag(object sender)
         {
             Button SB = (Button)sender;
-            List<type> loot = new List<type>();
+            List<typesType> loot = new List<typesType>();
             if (FullTypes)
             {
                 loot = currentTypesFile.types.type.ToList();
@@ -1480,42 +1477,42 @@ namespace DayZeEditor
             currentTypesFile.isDirty = true;
             SetFlags(SB, loot);
         }
-        private void SetFlags(Button SB, List<type> list)
+        private void SetFlags(Button SB, List<typesType> list)
         {
             switch (SB.Name)
             {
                 case "CargoButton":
-                    foreach (type item in list)
+                    foreach (typesType item in list)
                     {
                         item.flags.count_in_cargo = checkBox17.Checked == true ? 1 : 0;
                     }
                     break;
                 case "HoarderButton":
-                    foreach (type item in list)
+                    foreach (typesType item in list)
                     {
                         item.flags.count_in_hoarder = checkBox16.Checked == true ? 1 : 0;
                     }
                     break;
                 case "MapButton":
-                    foreach (type item in list)
+                    foreach (typesType item in list)
                     {
                         item.flags.count_in_map = checkBox15.Checked == true ? 1 : 0;
                     }
                     break;
                 case "PlayerButton":
-                    foreach (type item in list)
+                    foreach (typesType item in list)
                     {
                         item.flags.count_in_player = checkBox14.Checked == true ? 1 : 0;
                     }
                     break;
                 case "CraftedButton":
-                    foreach (type item in list)
+                    foreach (typesType item in list)
                     {
                         item.flags.crafted = checkBox9.Checked == true ? 1 : 0;
                     }
                     break;
                 case "DelootButton":
-                    foreach (type item in list)
+                    foreach (typesType item in list)
                     {
                         item.flags.deloot = checkBox8.Checked == true ? 1 : 0;
                     }
@@ -1526,7 +1523,7 @@ namespace DayZeEditor
         }
         private void darkButton5_Click(object sender, EventArgs e)
         {
-            List<type> loot = new List<type>();
+            List<typesType> loot = new List<typesType>();
             if (FullTypes)
             {
                 loot = currentTypesFile.types.type.ToList();
@@ -1546,16 +1543,16 @@ namespace DayZeEditor
             currentTypesFile.isDirty = true;
             DoSyncMintoNom(loot);
         }
-        private void DoSyncMintoNom(List<type> list)
+        private void DoSyncMintoNom(List<typesType> list)
         {
-            foreach (type item in list)
+            foreach (typesType item in list)
             {
                 item.min = item.nominal;
             }
         }
         private void darkButton6_Click_1(object sender, EventArgs e)
         {
-            List<type> loot = new List<type>();
+            List<typesType> loot = new List<typesType>();
             if (FullTypes)
             {
                 loot = currentTypesFile.types.type.ToList();
@@ -1574,9 +1571,9 @@ namespace DayZeEditor
             currentTypesFile.isDirty = true;
             DoSyncNomtoMin(loot);
         }
-        private void DoSyncNomtoMin(List<type> list)
+        private void DoSyncNomtoMin(List<typesType> list)
         {
-            foreach (type item in list)
+            foreach (typesType item in list)
             {
                 item.nominal = item.min;
             }
@@ -1588,8 +1585,8 @@ namespace DayZeEditor
             string text = toolStripTextBox1.Text;
             searchnum = 0;
             searchtreeNodes = new List<TreeNode>();
-            foundparts = new List<type>();
-            foreach (type type in vanillatypes.types.type)
+            foundparts = new List<typesType>();
+            foreach (typesType type in vanillatypes.types.type)
             {
                 if (type.name.ToLower().Contains(text.ToLower()))
                 {
@@ -1598,7 +1595,7 @@ namespace DayZeEditor
             }
             foreach (TypesFile tf in ModTypes)
             {
-                foreach (type type in tf.types.type)
+                foreach (typesType type in tf.types.type)
                 {
                     if (type.name.ToLower().Contains(text.ToLower()))
                     {
@@ -1611,7 +1608,7 @@ namespace DayZeEditor
                 MessageBox.Show("No Items found");
                 return;
             }
-            foreach (type obj in foundparts)
+            foreach (typesType obj in foundparts)
             {
                 foreach (TreeNode node in treeViewMS1.Nodes)
                 {
@@ -1620,11 +1617,11 @@ namespace DayZeEditor
             }
             treeViewMS1.SelectedNode = searchtreeNodes[searchnum];
             treeViewMS1.Focus();
-            if (treeViewMS1.SelectedNode.Tag != null && treeViewMS1.SelectedNode.Tag is type)
+            if (treeViewMS1.SelectedNode.Tag != null && treeViewMS1.SelectedNode.Tag is typesType)
             {
                 isUserInteraction = false;
                 tabControl1.SelectedIndex = 1;
-                currentlootpart = treeViewMS1.SelectedNode.Tag as type;
+                currentlootpart = treeViewMS1.SelectedNode.Tag as typesType;
                 PopulateLootPartInfo();
                 isUserInteraction = true;
             }
@@ -1641,11 +1638,11 @@ namespace DayZeEditor
             }
             treeViewMS1.SelectedNode = searchtreeNodes[searchnum];
             treeViewMS1.Focus();
-            if (treeViewMS1.SelectedNode.Tag != null && treeViewMS1.SelectedNode.Tag is type)
+            if (treeViewMS1.SelectedNode.Tag != null && treeViewMS1.SelectedNode.Tag is typesType)
             {
                 isUserInteraction = false;
                 tabControl1.SelectedIndex = 1;
-                currentlootpart = treeViewMS1.SelectedNode.Tag as type;
+                currentlootpart = treeViewMS1.SelectedNode.Tag as typesType;
                 PopulateLootPartInfo();
                 isUserInteraction = true;
             }
@@ -2205,7 +2202,7 @@ namespace DayZeEditor
         }
         private void darkButton29_Click(object sender, EventArgs e)
         {
-            tag t = comboBox5.SelectedItem as tag;
+            typesTypeTag t = comboBox5.SelectedItem as typesTypeTag;
             spawnabletypesTypeTag currenttag = CurrentspawnabletypesTypetype as spawnabletypesTypeTag;
             currenttag.name = t.name;
             textBox2.Text = currenttag.name;
@@ -2478,7 +2475,7 @@ namespace DayZeEditor
         {
             treeView2.Nodes.Clear();
         }
-        public bool typeinfilterlist(type type, List<string> Queryitems)
+        public bool typeinfilterlist(typesType type, List<string> Queryitems)
         {
             bool istrue = true;
             if (Queryitems.Count == 0) { return true; }
@@ -2502,7 +2499,7 @@ namespace DayZeEditor
                                 break;
                             case "1":
                                 def = fsplit[0];
-                                if (!type.value.Any(x => x.user == def))
+                                if (!type.value.Any(x => x.name == def))
                                      istrue = false;
                                 break;
                         }
@@ -2616,7 +2613,7 @@ namespace DayZeEditor
                 {
                     foreach (var item in listBox5.Items)
                     {
-                        category c = item as category;
+                        typesTypeCategory c = item as typesTypeCategory;
                         Queryitems.Add(c.name + ",categories");
                     }
                 }
@@ -2632,7 +2629,7 @@ namespace DayZeEditor
                 {
                     foreach (var item in listBox4.Items)
                     {
-                        usage u = item as usage;
+                        typesTypeUsage u = item as typesTypeUsage;
                         Queryitems.Add(u.name + ",usage");
                     }
                 }
@@ -2644,7 +2641,7 @@ namespace DayZeEditor
                 {
                     foreach (var item in listBox3.Items)
                     {
-                        tag c = item as tag;
+                        typesTypeTag c = item as typesTypeTag;
                         Queryitems.Add(c.name + ",tags");
                     }
                 }
@@ -2681,7 +2678,7 @@ namespace DayZeEditor
             {
                 Tag = "VanillaTypes"
             };
-            foreach (type type in vanillatypes.types.type)
+            foreach (typesType type in vanillatypes.types.type)
             {
                 if(!typeinfilterlist(type, Queryitems)) { continue; }
                 if(ZeroNomCB.Checked)
@@ -2719,7 +2716,7 @@ namespace DayZeEditor
                     {
                         Tag = tf.modname
                     };
-                    foreach (type type in tf.types.type)
+                    foreach (typesType type in tf.types.type)
                     {
                         if (!typeinfilterlist(type, Queryitems)) { continue; }
                         if (ZeroNomCB.Checked)
@@ -2756,7 +2753,7 @@ namespace DayZeEditor
         }
         private void darkButton12_Click(object sender, EventArgs e)
         {
-            category c = comboBox8.SelectedItem as category;
+            typesTypeCategory c = comboBox8.SelectedItem as typesTypeCategory;
             if(!listBox5.Items.Contains(c))
                 listBox5.Items.Add(c);
         }
@@ -2764,13 +2761,13 @@ namespace DayZeEditor
         {
             if (listBox5.SelectedItems.Count > 0)
             {
-                category c = listBox5.SelectedItem as category;
+                typesTypeCategory c = listBox5.SelectedItem as typesTypeCategory;
                 listBox5.Items.Remove(c);
             }
         }
         private void darkButton10_Click(object sender, EventArgs e)
         {
-            usage u = comboBox7.SelectedItem as usage;
+            typesTypeUsage u = comboBox7.SelectedItem as typesTypeUsage;
             if (!listBox4.Items.Contains(u))
                 listBox4.Items.Add(u);
         }
@@ -2778,13 +2775,13 @@ namespace DayZeEditor
         {
             if (listBox4.SelectedItems.Count > 0)
             {
-                usage u = listBox4.SelectedItem as usage;
+                typesTypeUsage u = listBox4.SelectedItem as typesTypeUsage;
                 listBox4.Items.Remove(u);
             }
         }
         private void darkButton4_Click(object sender, EventArgs e)
         {
-            tag t = comboBox6.SelectedItem as tag;
+            typesTypeTag t = comboBox6.SelectedItem as typesTypeTag;
             if (!listBox3.Items.Contains(t))
                 listBox3.Items.Add(t);
         }
@@ -2792,7 +2789,7 @@ namespace DayZeEditor
         {
             if (listBox3.SelectedItems.Count > 0)
             {
-                tag t = listBox3.SelectedItem as tag;
+                typesTypeTag t = listBox3.SelectedItem as typesTypeTag;
                 listBox3.Items.Remove(t);
             }
         }
