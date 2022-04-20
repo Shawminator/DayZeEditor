@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -29,22 +30,32 @@ namespace DayZeLib
     {
         public int disablePersonalLight { get; set; }
         public Staminadata StaminaData { get; set; }
+        public Shockhandlingdata ShockHandlingData { get; set; }
     }
 
     public class Staminadata
     {
-        public decimal sprintStaminaModifierErc { get; set; }
-        public decimal sprintStaminaModifierCro { get; set; }
-        public decimal staminaWeightLimitThreshold { get; set; }
-        public decimal staminaMax { get; set; }
-        public decimal staminaKgToStaminaPercentPenalty { get; set; }
-        public decimal staminaMinCap { get; set; }
+        public float sprintStaminaModifierErc { get; set; }
+        public float sprintStaminaModifierCro { get; set; }
+        public float staminaWeightLimitThreshold { get; set; }
+        public float staminaMax { get; set; }
+        public float staminaKgToStaminaPercentPenalty { get; set; }
+        public float staminaMinCap { get; set; }
+    }
+
+    public class Shockhandlingdata
+    {
+        public float shockRefillSpeedConscious { get; set; }
+        public float shockRefillSpeedUnconscious { get; set; }
+        public bool allowRefillSpeedModifier { get; set; }
     }
 
     public class Worldsdata
     {
         public int lightingConfig { get; set; }
         public object[] objectSpawnersArr { get; set; }
+        public BindingList<int> environmentMinTemps { get; set; }
+        public BindingList<int> environmentMaxTemps { get; set; }
     }
 
     public class Basebuildingdata
@@ -76,6 +87,7 @@ namespace DayZeLib
 
     public class Uidata
     {
+        public int use3DMap { get; set; }
         public Hitindicationdata HitIndicationData { get; set; }
     }
 
@@ -85,10 +97,11 @@ namespace DayZeLib
         public int hitDirectionBehaviour { get; set; }
         public int hitDirectionStyle { get; set; }
         public string hitDirectionIndicatorColorStr { get; set; }
-        public decimal hitDirectionMaxDuration { get; set; }
-        public decimal hitDirectionBreakPointRelative { get; set; }
-        public decimal hitDirectionScatter { get; set; }
+        public float hitDirectionMaxDuration { get; set; }
+        public float hitDirectionBreakPointRelative { get; set; }
+        public float hitDirectionScatter { get; set; }
         public int hitIndicationPostProcessEnabled { get; set; }
     }
+
 
 }

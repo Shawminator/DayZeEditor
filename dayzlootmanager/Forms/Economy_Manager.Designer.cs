@@ -475,6 +475,7 @@ namespace DayZeEditor
             this.PresetAttachmentsItemsLB = new System.Windows.Forms.ListBox();
             this.CFGGameplay = new System.Windows.Forms.TabPage();
             this.groupBox31 = new System.Windows.Forms.GroupBox();
+            this.use3DMapCB = new System.Windows.Forms.CheckBox();
             this.groupBox32 = new System.Windows.Forms.GroupBox();
             this.m_Color = new System.Windows.Forms.PictureBox();
             this.darkLabel54 = new DarkUI.Controls.DarkLabel();
@@ -505,9 +506,53 @@ namespace DayZeEditor
             this.disableIsCollidingPlayerCheckCB = new System.Windows.Forms.CheckBox();
             this.disableIsCollidingBBoxCheckCB = new System.Windows.Forms.CheckBox();
             this.groupBox27 = new System.Windows.Forms.GroupBox();
+            this.DecMaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.DecMinNUD = new System.Windows.Forms.NumericUpDown();
+            this.label110 = new System.Windows.Forms.Label();
+            this.NovMaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.NovMinNUD = new System.Windows.Forms.NumericUpDown();
+            this.label111 = new System.Windows.Forms.Label();
+            this.OctMaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.OctMinNUD = new System.Windows.Forms.NumericUpDown();
+            this.label112 = new System.Windows.Forms.Label();
+            this.SepMaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.SepMinNUD = new System.Windows.Forms.NumericUpDown();
+            this.label113 = new System.Windows.Forms.Label();
+            this.AugMaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.AugMinNUD = new System.Windows.Forms.NumericUpDown();
+            this.label114 = new System.Windows.Forms.Label();
+            this.JulMaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.JulMinNUD = new System.Windows.Forms.NumericUpDown();
+            this.label115 = new System.Windows.Forms.Label();
+            this.JunMaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.JunMinNUD = new System.Windows.Forms.NumericUpDown();
+            this.label109 = new System.Windows.Forms.Label();
+            this.MayMaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.MayMinNUD = new System.Windows.Forms.NumericUpDown();
+            this.label108 = new System.Windows.Forms.Label();
+            this.AprMaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.AprMinNUD = new System.Windows.Forms.NumericUpDown();
+            this.label107 = new System.Windows.Forms.Label();
+            this.MarMaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.MarMinNUD = new System.Windows.Forms.NumericUpDown();
+            this.label106 = new System.Windows.Forms.Label();
+            this.FebMaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.FebMinNUD = new System.Windows.Forms.NumericUpDown();
+            this.label103 = new System.Windows.Forms.Label();
+            this.label102 = new System.Windows.Forms.Label();
+            this.label100 = new System.Windows.Forms.Label();
+            this.JanMaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.JanMinNUD = new System.Windows.Forms.NumericUpDown();
+            this.label99 = new System.Windows.Forms.Label();
             this.lightingConfigNUD = new System.Windows.Forms.NumericUpDown();
             this.label52 = new System.Windows.Forms.Label();
             this.groupBox25 = new System.Windows.Forms.GroupBox();
+            this.groupBox56 = new System.Windows.Forms.GroupBox();
+            this.allowRefillSpeedModifierCB = new System.Windows.Forms.CheckBox();
+            this.shockRefillSpeedUnconsciousNUD = new System.Windows.Forms.NumericUpDown();
+            this.label104 = new System.Windows.Forms.Label();
+            this.shockRefillSpeedConsciousNUD = new System.Windows.Forms.NumericUpDown();
+            this.label105 = new System.Windows.Forms.Label();
             this.groupBox26 = new System.Windows.Forms.GroupBox();
             this.staminaMinCapNUD = new System.Windows.Forms.NumericUpDown();
             this.label51 = new System.Windows.Forms.Label();
@@ -842,8 +887,35 @@ namespace DayZeEditor
             this.groupBox30.SuspendLayout();
             this.groupBox29.SuspendLayout();
             this.groupBox27.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DecMaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DecMinNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NovMaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NovMinNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OctMaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OctMinNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SepMaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SepMinNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AugMaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AugMinNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.JulMaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.JulMinNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.JunMaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.JunMinNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MayMaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MayMinNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AprMaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AprMinNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MarMaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MarMinNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FebMaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FebMinNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.JanMaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.JanMinNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lightingConfigNUD)).BeginInit();
             this.groupBox25.SuspendLayout();
+            this.groupBox56.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.shockRefillSpeedUnconsciousNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shockRefillSpeedConsciousNUD)).BeginInit();
             this.groupBox26.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.staminaMinCapNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.staminaKgToStaminaPercentPenaltyNUD)).BeginInit();
@@ -6541,14 +6613,26 @@ namespace DayZeEditor
             // 
             // groupBox31
             // 
+            this.groupBox31.Controls.Add(this.use3DMapCB);
             this.groupBox31.Controls.Add(this.groupBox32);
             this.groupBox31.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox31.Location = new System.Drawing.Point(646, 35);
             this.groupBox31.Name = "groupBox31";
-            this.groupBox31.Size = new System.Drawing.Size(307, 296);
+            this.groupBox31.Size = new System.Drawing.Size(307, 286);
             this.groupBox31.TabIndex = 83;
             this.groupBox31.TabStop = false;
             this.groupBox31.Text = "UI Data";
+            // 
+            // use3DMapCB
+            // 
+            this.use3DMapCB.AutoSize = true;
+            this.use3DMapCB.Location = new System.Drawing.Point(23, 16);
+            this.use3DMapCB.Name = "use3DMapCB";
+            this.use3DMapCB.Size = new System.Drawing.Size(84, 17);
+            this.use3DMapCB.TabIndex = 85;
+            this.use3DMapCB.Text = "use 3D Map";
+            this.use3DMapCB.UseVisualStyleBackColor = true;
+            this.use3DMapCB.CheckedChanged += new System.EventHandler(this.use3DMapCB_CheckedChanged);
             // 
             // groupBox32
             // 
@@ -6565,7 +6649,7 @@ namespace DayZeEditor
             this.groupBox32.Controls.Add(this.label53);
             this.groupBox32.Controls.Add(this.label54);
             this.groupBox32.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox32.Location = new System.Drawing.Point(6, 15);
+            this.groupBox32.Location = new System.Drawing.Point(6, 36);
             this.groupBox32.Name = "groupBox32";
             this.groupBox32.Size = new System.Drawing.Size(295, 243);
             this.groupBox32.TabIndex = 84;
@@ -6908,21 +6992,583 @@ namespace DayZeEditor
             // 
             // groupBox27
             // 
+            this.groupBox27.Controls.Add(this.DecMaxNUD);
+            this.groupBox27.Controls.Add(this.DecMinNUD);
+            this.groupBox27.Controls.Add(this.label110);
+            this.groupBox27.Controls.Add(this.NovMaxNUD);
+            this.groupBox27.Controls.Add(this.NovMinNUD);
+            this.groupBox27.Controls.Add(this.label111);
+            this.groupBox27.Controls.Add(this.OctMaxNUD);
+            this.groupBox27.Controls.Add(this.OctMinNUD);
+            this.groupBox27.Controls.Add(this.label112);
+            this.groupBox27.Controls.Add(this.SepMaxNUD);
+            this.groupBox27.Controls.Add(this.SepMinNUD);
+            this.groupBox27.Controls.Add(this.label113);
+            this.groupBox27.Controls.Add(this.AugMaxNUD);
+            this.groupBox27.Controls.Add(this.AugMinNUD);
+            this.groupBox27.Controls.Add(this.label114);
+            this.groupBox27.Controls.Add(this.JulMaxNUD);
+            this.groupBox27.Controls.Add(this.JulMinNUD);
+            this.groupBox27.Controls.Add(this.label115);
+            this.groupBox27.Controls.Add(this.JunMaxNUD);
+            this.groupBox27.Controls.Add(this.JunMinNUD);
+            this.groupBox27.Controls.Add(this.label109);
+            this.groupBox27.Controls.Add(this.MayMaxNUD);
+            this.groupBox27.Controls.Add(this.MayMinNUD);
+            this.groupBox27.Controls.Add(this.label108);
+            this.groupBox27.Controls.Add(this.AprMaxNUD);
+            this.groupBox27.Controls.Add(this.AprMinNUD);
+            this.groupBox27.Controls.Add(this.label107);
+            this.groupBox27.Controls.Add(this.MarMaxNUD);
+            this.groupBox27.Controls.Add(this.MarMinNUD);
+            this.groupBox27.Controls.Add(this.label106);
+            this.groupBox27.Controls.Add(this.FebMaxNUD);
+            this.groupBox27.Controls.Add(this.FebMinNUD);
+            this.groupBox27.Controls.Add(this.label103);
+            this.groupBox27.Controls.Add(this.label102);
+            this.groupBox27.Controls.Add(this.label100);
+            this.groupBox27.Controls.Add(this.JanMaxNUD);
+            this.groupBox27.Controls.Add(this.JanMinNUD);
+            this.groupBox27.Controls.Add(this.label99);
             this.groupBox27.Controls.Add(this.lightingConfigNUD);
             this.groupBox27.Controls.Add(this.label52);
             this.groupBox27.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox27.Location = new System.Drawing.Point(646, 345);
+            this.groupBox27.Location = new System.Drawing.Point(20, 410);
             this.groupBox27.Name = "groupBox27";
-            this.groupBox27.Size = new System.Drawing.Size(307, 59);
+            this.groupBox27.Size = new System.Drawing.Size(963, 125);
             this.groupBox27.TabIndex = 81;
             this.groupBox27.TabStop = false;
             this.groupBox27.Text = "World Data";
+            // 
+            // DecMaxNUD
+            // 
+            this.DecMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.DecMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.DecMaxNUD.Location = new System.Drawing.Point(882, 90);
+            this.DecMaxNUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.DecMaxNUD.Name = "DecMaxNUD";
+            this.DecMaxNUD.Size = new System.Drawing.Size(68, 20);
+            this.DecMaxNUD.TabIndex = 108;
+            this.DecMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DecMaxNUD.ValueChanged += new System.EventHandler(this.MaxTemp_ValueChanged);
+            // 
+            // DecMinNUD
+            // 
+            this.DecMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.DecMinNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.DecMinNUD.Location = new System.Drawing.Point(882, 64);
+            this.DecMinNUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.DecMinNUD.Name = "DecMinNUD";
+            this.DecMinNUD.Size = new System.Drawing.Size(68, 20);
+            this.DecMinNUD.TabIndex = 107;
+            this.DecMinNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DecMinNUD.ValueChanged += new System.EventHandler(this.MinTemp_ValueChanged);
+            // 
+            // label110
+            // 
+            this.label110.AutoSize = true;
+            this.label110.ForeColor = System.Drawing.SystemColors.Control;
+            this.label110.Location = new System.Drawing.Point(899, 45);
+            this.label110.Name = "label110";
+            this.label110.Size = new System.Drawing.Size(27, 13);
+            this.label110.TabIndex = 106;
+            this.label110.Text = "Dec";
+            // 
+            // NovMaxNUD
+            // 
+            this.NovMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.NovMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.NovMaxNUD.Location = new System.Drawing.Point(808, 90);
+            this.NovMaxNUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.NovMaxNUD.Name = "NovMaxNUD";
+            this.NovMaxNUD.Size = new System.Drawing.Size(68, 20);
+            this.NovMaxNUD.TabIndex = 105;
+            this.NovMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.NovMaxNUD.ValueChanged += new System.EventHandler(this.MaxTemp_ValueChanged);
+            // 
+            // NovMinNUD
+            // 
+            this.NovMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.NovMinNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.NovMinNUD.Location = new System.Drawing.Point(808, 64);
+            this.NovMinNUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.NovMinNUD.Name = "NovMinNUD";
+            this.NovMinNUD.Size = new System.Drawing.Size(68, 20);
+            this.NovMinNUD.TabIndex = 104;
+            this.NovMinNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.NovMinNUD.ValueChanged += new System.EventHandler(this.MinTemp_ValueChanged);
+            // 
+            // label111
+            // 
+            this.label111.AutoSize = true;
+            this.label111.ForeColor = System.Drawing.SystemColors.Control;
+            this.label111.Location = new System.Drawing.Point(825, 45);
+            this.label111.Name = "label111";
+            this.label111.Size = new System.Drawing.Size(27, 13);
+            this.label111.TabIndex = 103;
+            this.label111.Text = "Nov";
+            // 
+            // OctMaxNUD
+            // 
+            this.OctMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.OctMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.OctMaxNUD.Location = new System.Drawing.Point(734, 90);
+            this.OctMaxNUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.OctMaxNUD.Name = "OctMaxNUD";
+            this.OctMaxNUD.Size = new System.Drawing.Size(68, 20);
+            this.OctMaxNUD.TabIndex = 102;
+            this.OctMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.OctMaxNUD.ValueChanged += new System.EventHandler(this.MaxTemp_ValueChanged);
+            // 
+            // OctMinNUD
+            // 
+            this.OctMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.OctMinNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.OctMinNUD.Location = new System.Drawing.Point(734, 64);
+            this.OctMinNUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.OctMinNUD.Name = "OctMinNUD";
+            this.OctMinNUD.Size = new System.Drawing.Size(68, 20);
+            this.OctMinNUD.TabIndex = 101;
+            this.OctMinNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.OctMinNUD.ValueChanged += new System.EventHandler(this.MinTemp_ValueChanged);
+            // 
+            // label112
+            // 
+            this.label112.AutoSize = true;
+            this.label112.ForeColor = System.Drawing.SystemColors.Control;
+            this.label112.Location = new System.Drawing.Point(751, 45);
+            this.label112.Name = "label112";
+            this.label112.Size = new System.Drawing.Size(24, 13);
+            this.label112.TabIndex = 100;
+            this.label112.Text = "Oct";
+            // 
+            // SepMaxNUD
+            // 
+            this.SepMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SepMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SepMaxNUD.Location = new System.Drawing.Point(660, 90);
+            this.SepMaxNUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.SepMaxNUD.Name = "SepMaxNUD";
+            this.SepMaxNUD.Size = new System.Drawing.Size(68, 20);
+            this.SepMaxNUD.TabIndex = 99;
+            this.SepMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SepMaxNUD.ValueChanged += new System.EventHandler(this.MaxTemp_ValueChanged);
+            // 
+            // SepMinNUD
+            // 
+            this.SepMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SepMinNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SepMinNUD.Location = new System.Drawing.Point(660, 64);
+            this.SepMinNUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.SepMinNUD.Name = "SepMinNUD";
+            this.SepMinNUD.Size = new System.Drawing.Size(68, 20);
+            this.SepMinNUD.TabIndex = 98;
+            this.SepMinNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SepMinNUD.ValueChanged += new System.EventHandler(this.MinTemp_ValueChanged);
+            // 
+            // label113
+            // 
+            this.label113.AutoSize = true;
+            this.label113.ForeColor = System.Drawing.SystemColors.Control;
+            this.label113.Location = new System.Drawing.Point(677, 45);
+            this.label113.Name = "label113";
+            this.label113.Size = new System.Drawing.Size(26, 13);
+            this.label113.TabIndex = 97;
+            this.label113.Text = "Sep";
+            // 
+            // AugMaxNUD
+            // 
+            this.AugMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.AugMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.AugMaxNUD.Location = new System.Drawing.Point(586, 90);
+            this.AugMaxNUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.AugMaxNUD.Name = "AugMaxNUD";
+            this.AugMaxNUD.Size = new System.Drawing.Size(68, 20);
+            this.AugMaxNUD.TabIndex = 96;
+            this.AugMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.AugMaxNUD.ValueChanged += new System.EventHandler(this.MaxTemp_ValueChanged);
+            // 
+            // AugMinNUD
+            // 
+            this.AugMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.AugMinNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.AugMinNUD.Location = new System.Drawing.Point(586, 64);
+            this.AugMinNUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.AugMinNUD.Name = "AugMinNUD";
+            this.AugMinNUD.Size = new System.Drawing.Size(68, 20);
+            this.AugMinNUD.TabIndex = 95;
+            this.AugMinNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.AugMinNUD.ValueChanged += new System.EventHandler(this.MinTemp_ValueChanged);
+            // 
+            // label114
+            // 
+            this.label114.AutoSize = true;
+            this.label114.ForeColor = System.Drawing.SystemColors.Control;
+            this.label114.Location = new System.Drawing.Point(603, 45);
+            this.label114.Name = "label114";
+            this.label114.Size = new System.Drawing.Size(26, 13);
+            this.label114.TabIndex = 94;
+            this.label114.Text = "Aug";
+            // 
+            // JulMaxNUD
+            // 
+            this.JulMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.JulMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.JulMaxNUD.Location = new System.Drawing.Point(512, 90);
+            this.JulMaxNUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.JulMaxNUD.Name = "JulMaxNUD";
+            this.JulMaxNUD.Size = new System.Drawing.Size(68, 20);
+            this.JulMaxNUD.TabIndex = 93;
+            this.JulMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.JulMaxNUD.ValueChanged += new System.EventHandler(this.MaxTemp_ValueChanged);
+            // 
+            // JulMinNUD
+            // 
+            this.JulMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.JulMinNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.JulMinNUD.Location = new System.Drawing.Point(512, 64);
+            this.JulMinNUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.JulMinNUD.Name = "JulMinNUD";
+            this.JulMinNUD.Size = new System.Drawing.Size(68, 20);
+            this.JulMinNUD.TabIndex = 92;
+            this.JulMinNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.JulMinNUD.ValueChanged += new System.EventHandler(this.MinTemp_ValueChanged);
+            // 
+            // label115
+            // 
+            this.label115.AutoSize = true;
+            this.label115.ForeColor = System.Drawing.SystemColors.Control;
+            this.label115.Location = new System.Drawing.Point(529, 45);
+            this.label115.Name = "label115";
+            this.label115.Size = new System.Drawing.Size(20, 13);
+            this.label115.TabIndex = 91;
+            this.label115.Text = "Jul";
+            // 
+            // JunMaxNUD
+            // 
+            this.JunMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.JunMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.JunMaxNUD.Location = new System.Drawing.Point(438, 90);
+            this.JunMaxNUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.JunMaxNUD.Name = "JunMaxNUD";
+            this.JunMaxNUD.Size = new System.Drawing.Size(68, 20);
+            this.JunMaxNUD.TabIndex = 90;
+            this.JunMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.JunMaxNUD.ValueChanged += new System.EventHandler(this.MaxTemp_ValueChanged);
+            // 
+            // JunMinNUD
+            // 
+            this.JunMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.JunMinNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.JunMinNUD.Location = new System.Drawing.Point(438, 64);
+            this.JunMinNUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.JunMinNUD.Name = "JunMinNUD";
+            this.JunMinNUD.Size = new System.Drawing.Size(68, 20);
+            this.JunMinNUD.TabIndex = 89;
+            this.JunMinNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.JunMinNUD.ValueChanged += new System.EventHandler(this.MinTemp_ValueChanged);
+            // 
+            // label109
+            // 
+            this.label109.AutoSize = true;
+            this.label109.ForeColor = System.Drawing.SystemColors.Control;
+            this.label109.Location = new System.Drawing.Point(455, 45);
+            this.label109.Name = "label109";
+            this.label109.Size = new System.Drawing.Size(24, 13);
+            this.label109.TabIndex = 88;
+            this.label109.Text = "Jun";
+            // 
+            // MayMaxNUD
+            // 
+            this.MayMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MayMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.MayMaxNUD.Location = new System.Drawing.Point(364, 90);
+            this.MayMaxNUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.MayMaxNUD.Name = "MayMaxNUD";
+            this.MayMaxNUD.Size = new System.Drawing.Size(68, 20);
+            this.MayMaxNUD.TabIndex = 87;
+            this.MayMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MayMaxNUD.ValueChanged += new System.EventHandler(this.MaxTemp_ValueChanged);
+            // 
+            // MayMinNUD
+            // 
+            this.MayMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MayMinNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.MayMinNUD.Location = new System.Drawing.Point(364, 64);
+            this.MayMinNUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.MayMinNUD.Name = "MayMinNUD";
+            this.MayMinNUD.Size = new System.Drawing.Size(68, 20);
+            this.MayMinNUD.TabIndex = 86;
+            this.MayMinNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MayMinNUD.ValueChanged += new System.EventHandler(this.MinTemp_ValueChanged);
+            // 
+            // label108
+            // 
+            this.label108.AutoSize = true;
+            this.label108.ForeColor = System.Drawing.SystemColors.Control;
+            this.label108.Location = new System.Drawing.Point(381, 45);
+            this.label108.Name = "label108";
+            this.label108.Size = new System.Drawing.Size(27, 13);
+            this.label108.TabIndex = 85;
+            this.label108.Text = "May";
+            // 
+            // AprMaxNUD
+            // 
+            this.AprMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.AprMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.AprMaxNUD.Location = new System.Drawing.Point(290, 90);
+            this.AprMaxNUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.AprMaxNUD.Name = "AprMaxNUD";
+            this.AprMaxNUD.Size = new System.Drawing.Size(68, 20);
+            this.AprMaxNUD.TabIndex = 84;
+            this.AprMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.AprMaxNUD.ValueChanged += new System.EventHandler(this.MaxTemp_ValueChanged);
+            // 
+            // AprMinNUD
+            // 
+            this.AprMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.AprMinNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.AprMinNUD.Location = new System.Drawing.Point(290, 64);
+            this.AprMinNUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.AprMinNUD.Name = "AprMinNUD";
+            this.AprMinNUD.Size = new System.Drawing.Size(68, 20);
+            this.AprMinNUD.TabIndex = 83;
+            this.AprMinNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.AprMinNUD.ValueChanged += new System.EventHandler(this.MinTemp_ValueChanged);
+            // 
+            // label107
+            // 
+            this.label107.AutoSize = true;
+            this.label107.ForeColor = System.Drawing.SystemColors.Control;
+            this.label107.Location = new System.Drawing.Point(307, 45);
+            this.label107.Name = "label107";
+            this.label107.Size = new System.Drawing.Size(23, 13);
+            this.label107.TabIndex = 82;
+            this.label107.Text = "Arp";
+            // 
+            // MarMaxNUD
+            // 
+            this.MarMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MarMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.MarMaxNUD.Location = new System.Drawing.Point(216, 90);
+            this.MarMaxNUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.MarMaxNUD.Name = "MarMaxNUD";
+            this.MarMaxNUD.Size = new System.Drawing.Size(68, 20);
+            this.MarMaxNUD.TabIndex = 81;
+            this.MarMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MarMaxNUD.ValueChanged += new System.EventHandler(this.MaxTemp_ValueChanged);
+            // 
+            // MarMinNUD
+            // 
+            this.MarMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MarMinNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.MarMinNUD.Location = new System.Drawing.Point(216, 64);
+            this.MarMinNUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.MarMinNUD.Name = "MarMinNUD";
+            this.MarMinNUD.Size = new System.Drawing.Size(68, 20);
+            this.MarMinNUD.TabIndex = 80;
+            this.MarMinNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MarMinNUD.ValueChanged += new System.EventHandler(this.MinTemp_ValueChanged);
+            // 
+            // label106
+            // 
+            this.label106.AutoSize = true;
+            this.label106.ForeColor = System.Drawing.SystemColors.Control;
+            this.label106.Location = new System.Drawing.Point(233, 45);
+            this.label106.Name = "label106";
+            this.label106.Size = new System.Drawing.Size(25, 13);
+            this.label106.TabIndex = 79;
+            this.label106.Text = "Mar";
+            // 
+            // FebMaxNUD
+            // 
+            this.FebMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.FebMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.FebMaxNUD.Location = new System.Drawing.Point(142, 90);
+            this.FebMaxNUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.FebMaxNUD.Name = "FebMaxNUD";
+            this.FebMaxNUD.Size = new System.Drawing.Size(68, 20);
+            this.FebMaxNUD.TabIndex = 78;
+            this.FebMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.FebMaxNUD.ValueChanged += new System.EventHandler(this.MaxTemp_ValueChanged);
+            // 
+            // FebMinNUD
+            // 
+            this.FebMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.FebMinNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.FebMinNUD.Location = new System.Drawing.Point(142, 64);
+            this.FebMinNUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.FebMinNUD.Name = "FebMinNUD";
+            this.FebMinNUD.Size = new System.Drawing.Size(68, 20);
+            this.FebMinNUD.TabIndex = 77;
+            this.FebMinNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.FebMinNUD.ValueChanged += new System.EventHandler(this.MinTemp_ValueChanged);
+            // 
+            // label103
+            // 
+            this.label103.AutoSize = true;
+            this.label103.ForeColor = System.Drawing.SystemColors.Control;
+            this.label103.Location = new System.Drawing.Point(159, 45);
+            this.label103.Name = "label103";
+            this.label103.Size = new System.Drawing.Size(25, 13);
+            this.label103.TabIndex = 76;
+            this.label103.Text = "Feb";
+            // 
+            // label102
+            // 
+            this.label102.AutoSize = true;
+            this.label102.ForeColor = System.Drawing.SystemColors.Control;
+            this.label102.Location = new System.Drawing.Point(8, 92);
+            this.label102.Name = "label102";
+            this.label102.Size = new System.Drawing.Size(57, 13);
+            this.label102.TabIndex = 75;
+            this.label102.Text = "Max Temp";
+            // 
+            // label100
+            // 
+            this.label100.AutoSize = true;
+            this.label100.ForeColor = System.Drawing.SystemColors.Control;
+            this.label100.Location = new System.Drawing.Point(5, 66);
+            this.label100.Name = "label100";
+            this.label100.Size = new System.Drawing.Size(54, 13);
+            this.label100.TabIndex = 74;
+            this.label100.Text = "Min Temp";
+            // 
+            // JanMaxNUD
+            // 
+            this.JanMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.JanMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.JanMaxNUD.Location = new System.Drawing.Point(68, 90);
+            this.JanMaxNUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.JanMaxNUD.Name = "JanMaxNUD";
+            this.JanMaxNUD.Size = new System.Drawing.Size(68, 20);
+            this.JanMaxNUD.TabIndex = 73;
+            this.JanMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.JanMaxNUD.ValueChanged += new System.EventHandler(this.MaxTemp_ValueChanged);
+            // 
+            // JanMinNUD
+            // 
+            this.JanMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.JanMinNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.JanMinNUD.Location = new System.Drawing.Point(68, 64);
+            this.JanMinNUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.JanMinNUD.Name = "JanMinNUD";
+            this.JanMinNUD.Size = new System.Drawing.Size(68, 20);
+            this.JanMinNUD.TabIndex = 72;
+            this.JanMinNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.JanMinNUD.ValueChanged += new System.EventHandler(this.MinTemp_ValueChanged);
+            // 
+            // label99
+            // 
+            this.label99.AutoSize = true;
+            this.label99.ForeColor = System.Drawing.SystemColors.Control;
+            this.label99.Location = new System.Drawing.Point(85, 45);
+            this.label99.Name = "label99";
+            this.label99.Size = new System.Drawing.Size(24, 13);
+            this.label99.TabIndex = 71;
+            this.label99.Text = "Jan";
             // 
             // lightingConfigNUD
             // 
             this.lightingConfigNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.lightingConfigNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.lightingConfigNUD.Location = new System.Drawing.Point(89, 24);
+            this.lightingConfigNUD.Location = new System.Drawing.Point(89, 20);
             this.lightingConfigNUD.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -6938,7 +7584,7 @@ namespace DayZeEditor
             // 
             this.label52.AutoSize = true;
             this.label52.ForeColor = System.Drawing.SystemColors.Control;
-            this.label52.Location = new System.Drawing.Point(6, 25);
+            this.label52.Location = new System.Drawing.Point(6, 21);
             this.label52.Name = "label52";
             this.label52.Size = new System.Drawing.Size(77, 13);
             this.label52.TabIndex = 69;
@@ -6946,15 +7592,96 @@ namespace DayZeEditor
             // 
             // groupBox25
             // 
+            this.groupBox25.Controls.Add(this.groupBox56);
             this.groupBox25.Controls.Add(this.groupBox26);
             this.groupBox25.Controls.Add(this.disablePersonalLightCB);
             this.groupBox25.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox25.Location = new System.Drawing.Point(20, 141);
+            this.groupBox25.Location = new System.Drawing.Point(20, 35);
             this.groupBox25.Name = "groupBox25";
-            this.groupBox25.Size = new System.Drawing.Size(307, 263);
+            this.groupBox25.Size = new System.Drawing.Size(307, 369);
             this.groupBox25.TabIndex = 81;
             this.groupBox25.TabStop = false;
             this.groupBox25.Text = "Player Data";
+            // 
+            // groupBox56
+            // 
+            this.groupBox56.Controls.Add(this.allowRefillSpeedModifierCB);
+            this.groupBox56.Controls.Add(this.shockRefillSpeedUnconsciousNUD);
+            this.groupBox56.Controls.Add(this.label104);
+            this.groupBox56.Controls.Add(this.shockRefillSpeedConsciousNUD);
+            this.groupBox56.Controls.Add(this.label105);
+            this.groupBox56.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox56.Location = new System.Drawing.Point(6, 235);
+            this.groupBox56.Name = "groupBox56";
+            this.groupBox56.Size = new System.Drawing.Size(295, 109);
+            this.groupBox56.TabIndex = 2;
+            this.groupBox56.TabStop = false;
+            this.groupBox56.Text = "ShockHandlingData";
+            // 
+            // allowRefillSpeedModifierCB
+            // 
+            this.allowRefillSpeedModifierCB.AutoSize = true;
+            this.allowRefillSpeedModifierCB.Location = new System.Drawing.Point(8, 74);
+            this.allowRefillSpeedModifierCB.Name = "allowRefillSpeedModifierCB";
+            this.allowRefillSpeedModifierCB.Size = new System.Drawing.Size(150, 17);
+            this.allowRefillSpeedModifierCB.TabIndex = 71;
+            this.allowRefillSpeedModifierCB.Text = "allow Refill Speed Modifier";
+            this.allowRefillSpeedModifierCB.UseVisualStyleBackColor = true;
+            this.allowRefillSpeedModifierCB.CheckedChanged += new System.EventHandler(this.allowRefillSpeedModifierCB_CheckedChanged);
+            // 
+            // shockRefillSpeedUnconsciousNUD
+            // 
+            this.shockRefillSpeedUnconsciousNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.shockRefillSpeedUnconsciousNUD.DecimalPlaces = 2;
+            this.shockRefillSpeedUnconsciousNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.shockRefillSpeedUnconsciousNUD.Location = new System.Drawing.Point(214, 45);
+            this.shockRefillSpeedUnconsciousNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.shockRefillSpeedUnconsciousNUD.Name = "shockRefillSpeedUnconsciousNUD";
+            this.shockRefillSpeedUnconsciousNUD.Size = new System.Drawing.Size(68, 20);
+            this.shockRefillSpeedUnconsciousNUD.TabIndex = 70;
+            this.shockRefillSpeedUnconsciousNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.shockRefillSpeedUnconsciousNUD.ValueChanged += new System.EventHandler(this.shockRefillSpeedUnconsciousNUD_ValueChanged);
+            // 
+            // label104
+            // 
+            this.label104.AutoSize = true;
+            this.label104.ForeColor = System.Drawing.SystemColors.Control;
+            this.label104.Location = new System.Drawing.Point(5, 49);
+            this.label104.Name = "label104";
+            this.label104.Size = new System.Drawing.Size(161, 13);
+            this.label104.TabIndex = 69;
+            this.label104.Text = "shock Refill Speed Unconscious";
+            // 
+            // shockRefillSpeedConsciousNUD
+            // 
+            this.shockRefillSpeedConsciousNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.shockRefillSpeedConsciousNUD.DecimalPlaces = 2;
+            this.shockRefillSpeedConsciousNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.shockRefillSpeedConsciousNUD.Location = new System.Drawing.Point(214, 19);
+            this.shockRefillSpeedConsciousNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.shockRefillSpeedConsciousNUD.Name = "shockRefillSpeedConsciousNUD";
+            this.shockRefillSpeedConsciousNUD.Size = new System.Drawing.Size(68, 20);
+            this.shockRefillSpeedConsciousNUD.TabIndex = 68;
+            this.shockRefillSpeedConsciousNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.shockRefillSpeedConsciousNUD.ValueChanged += new System.EventHandler(this.shockRefillSpeedConsciousNUD_ValueChanged);
+            // 
+            // label105
+            // 
+            this.label105.AutoSize = true;
+            this.label105.ForeColor = System.Drawing.SystemColors.Control;
+            this.label105.Location = new System.Drawing.Point(5, 23);
+            this.label105.Name = "label105";
+            this.label105.Size = new System.Drawing.Size(148, 13);
+            this.label105.TabIndex = 67;
+            this.label105.Text = "shock Refill Speed Conscious";
             // 
             // groupBox26
             // 
@@ -7157,9 +7884,9 @@ namespace DayZeEditor
             this.groupBox23.Controls.Add(this.disableContainerDamageCB);
             this.groupBox23.Controls.Add(this.disableBaseDamageCB);
             this.groupBox23.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox23.Location = new System.Drawing.Point(20, 35);
+            this.groupBox23.Location = new System.Drawing.Point(646, 322);
             this.groupBox23.Name = "groupBox23";
-            this.groupBox23.Size = new System.Drawing.Size(307, 100);
+            this.groupBox23.Size = new System.Drawing.Size(307, 82);
             this.groupBox23.TabIndex = 80;
             this.groupBox23.TabStop = false;
             this.groupBox23.Text = "general Data";
@@ -7167,7 +7894,7 @@ namespace DayZeEditor
             // disableRespawnDialogCB
             // 
             this.disableRespawnDialogCB.AutoSize = true;
-            this.disableRespawnDialogCB.Location = new System.Drawing.Point(11, 70);
+            this.disableRespawnDialogCB.Location = new System.Drawing.Point(11, 61);
             this.disableRespawnDialogCB.Name = "disableRespawnDialogCB";
             this.disableRespawnDialogCB.Size = new System.Drawing.Size(142, 17);
             this.disableRespawnDialogCB.TabIndex = 2;
@@ -7178,7 +7905,7 @@ namespace DayZeEditor
             // disableContainerDamageCB
             // 
             this.disableContainerDamageCB.AutoSize = true;
-            this.disableContainerDamageCB.Location = new System.Drawing.Point(11, 47);
+            this.disableContainerDamageCB.Location = new System.Drawing.Point(11, 38);
             this.disableContainerDamageCB.Name = "disableContainerDamageCB";
             this.disableContainerDamageCB.Size = new System.Drawing.Size(152, 17);
             this.disableContainerDamageCB.TabIndex = 1;
@@ -7189,7 +7916,7 @@ namespace DayZeEditor
             // disableBaseDamageCB
             // 
             this.disableBaseDamageCB.AutoSize = true;
-            this.disableBaseDamageCB.Location = new System.Drawing.Point(11, 24);
+            this.disableBaseDamageCB.Location = new System.Drawing.Point(11, 15);
             this.disableBaseDamageCB.Name = "disableBaseDamageCB";
             this.disableBaseDamageCB.Size = new System.Drawing.Size(131, 17);
             this.disableBaseDamageCB.TabIndex = 0;
@@ -9600,6 +10327,7 @@ namespace DayZeEditor
             this.CFGGameplay.ResumeLayout(false);
             this.CFGGameplay.PerformLayout();
             this.groupBox31.ResumeLayout(false);
+            this.groupBox31.PerformLayout();
             this.groupBox32.ResumeLayout(false);
             this.groupBox32.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_Color)).EndInit();
@@ -9613,9 +10341,37 @@ namespace DayZeEditor
             this.groupBox29.PerformLayout();
             this.groupBox27.ResumeLayout(false);
             this.groupBox27.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DecMaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DecMinNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NovMaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NovMinNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OctMaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OctMinNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SepMaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SepMinNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AugMaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AugMinNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.JulMaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.JulMinNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.JunMaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.JunMinNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MayMaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MayMinNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AprMaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AprMinNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MarMaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MarMinNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FebMaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FebMinNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.JanMaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.JanMinNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lightingConfigNUD)).EndInit();
             this.groupBox25.ResumeLayout(false);
             this.groupBox25.PerformLayout();
+            this.groupBox56.ResumeLayout(false);
+            this.groupBox56.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.shockRefillSpeedUnconsciousNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shockRefillSpeedConsciousNUD)).EndInit();
             this.groupBox26.ResumeLayout(false);
             this.groupBox26.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.staminaMinCapNUD)).EndInit();
@@ -10397,5 +11153,50 @@ namespace DayZeEditor
         private System.Windows.Forms.NumericUpDown SthresholdNUD;
         private System.Windows.Forms.Label label96;
         private System.Windows.Forms.Label label95;
+        private System.Windows.Forms.GroupBox groupBox56;
+        private System.Windows.Forms.CheckBox allowRefillSpeedModifierCB;
+        private System.Windows.Forms.NumericUpDown shockRefillSpeedUnconsciousNUD;
+        private System.Windows.Forms.Label label104;
+        private System.Windows.Forms.NumericUpDown shockRefillSpeedConsciousNUD;
+        private System.Windows.Forms.Label label105;
+        private System.Windows.Forms.CheckBox use3DMapCB;
+        private System.Windows.Forms.NumericUpDown DecMaxNUD;
+        private System.Windows.Forms.NumericUpDown DecMinNUD;
+        private System.Windows.Forms.Label label110;
+        private System.Windows.Forms.NumericUpDown NovMaxNUD;
+        private System.Windows.Forms.NumericUpDown NovMinNUD;
+        private System.Windows.Forms.Label label111;
+        private System.Windows.Forms.NumericUpDown OctMaxNUD;
+        private System.Windows.Forms.NumericUpDown OctMinNUD;
+        private System.Windows.Forms.Label label112;
+        private System.Windows.Forms.NumericUpDown SepMaxNUD;
+        private System.Windows.Forms.NumericUpDown SepMinNUD;
+        private System.Windows.Forms.Label label113;
+        private System.Windows.Forms.NumericUpDown AugMaxNUD;
+        private System.Windows.Forms.NumericUpDown AugMinNUD;
+        private System.Windows.Forms.Label label114;
+        private System.Windows.Forms.NumericUpDown JulMaxNUD;
+        private System.Windows.Forms.NumericUpDown JulMinNUD;
+        private System.Windows.Forms.Label label115;
+        private System.Windows.Forms.NumericUpDown JunMaxNUD;
+        private System.Windows.Forms.NumericUpDown JunMinNUD;
+        private System.Windows.Forms.Label label109;
+        private System.Windows.Forms.NumericUpDown MayMaxNUD;
+        private System.Windows.Forms.NumericUpDown MayMinNUD;
+        private System.Windows.Forms.Label label108;
+        private System.Windows.Forms.NumericUpDown AprMaxNUD;
+        private System.Windows.Forms.NumericUpDown AprMinNUD;
+        private System.Windows.Forms.Label label107;
+        private System.Windows.Forms.NumericUpDown MarMaxNUD;
+        private System.Windows.Forms.NumericUpDown MarMinNUD;
+        private System.Windows.Forms.Label label106;
+        private System.Windows.Forms.NumericUpDown FebMaxNUD;
+        private System.Windows.Forms.NumericUpDown FebMinNUD;
+        private System.Windows.Forms.Label label103;
+        private System.Windows.Forms.Label label102;
+        private System.Windows.Forms.Label label100;
+        private System.Windows.Forms.NumericUpDown JanMaxNUD;
+        private System.Windows.Forms.NumericUpDown JanMinNUD;
+        private System.Windows.Forms.Label label99;
     }
 }

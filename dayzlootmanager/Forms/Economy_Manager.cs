@@ -914,6 +914,29 @@ namespace DayZeEditor
                     treeViewMS1.Nodes.SetExpansionState(savedExpansionState);
                     treeViewMS1.EndUpdate();
                 }
+                else if (currentcollection == "VanillaTypes")
+                {
+                    string line1 = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>";
+                    string line2 = "<types>";
+                    List<string> modtypes = form.modtypes;
+                    string last = "</types>";
+                    modtypes.Insert(0, line2);
+                    modtypes.Insert(0, line1);
+                    modtypes.Add(last);
+                    File.WriteAllLines("Temp_types.xml", modtypes);
+                    TypesFile test = new TypesFile("Temp_types.xml");
+                    File.Delete("Temp_types.xml");
+                    foreach (typesType type in test.types.type)
+                    {
+                        vanillatypes.types.type.Add(type);
+                    }
+                    vanillatypes.SaveTyes(DateTime.Now.ToString("ddMMyy_HHmm"));
+                    var savedExpansionState = treeViewMS1.Nodes.GetExpansionState();
+                    treeViewMS1.BeginUpdate();
+                    PopulateTreeView();
+                    treeViewMS1.Nodes.SetExpansionState(savedExpansionState);
+                    treeViewMS1.EndUpdate();
+                }
                 else
                 {
                     currentTypesFile = ModTypes.FirstOrDefault(x => x.modname == currentcollection);
@@ -998,63 +1021,20 @@ namespace DayZeEditor
         }
         private void PopulateCounts()
         {
-            if (currentlootpart.nominalSpecified)
-            {
-                typeNomCountNUD.Visible = false;
-            }
-            else
-            {
-                typeNomCountNUD.Visible = true;
+            if (typeNomCountNUD.Visible = currentlootpart.nominalSpecified)
                 typeNomCountNUD.Value = (decimal)currentlootpart.nominal;
-            }
-            if (currentlootpart.minSpecified)
-            {
-                typeMinCountNUD.Visible = false;
-            }
-            else
-            {
-                typeMinCountNUD.Visible = true;
+            if (typeMinCountNUD.Visible = currentlootpart.minSpecified)
                 typeMinCountNUD.Value = (decimal)currentlootpart.min;
-            }
             typeLifetimeNUD.Visible = true;
             typeLifetimeNUD.Value = (decimal)currentlootpart.lifetime;
-
-            if (currentlootpart.restockSpecified)
-            {
-                typeRestockNUD.Visible = false;
-            }
-            else
-            {
-                typeRestockNUD.Visible = true;
+            if (typeRestockNUD.Visible = currentlootpart.restockSpecified)
                 typeRestockNUD.Value = (decimal)currentlootpart.restock;
-            }
-            if (currentlootpart.quantminSpecified)
-            {
-                typeQuantMINNUD.Visible = false;
-            }
-            else
-            {
-                typeQuantMINNUD.Visible = true;
+            if (typeQuantMINNUD.Visible = currentlootpart.quantminSpecified)
                 typeQuantMINNUD.Value = (decimal)currentlootpart.quantmin;
-            }
-            if (currentlootpart.quantmaxSpecified)
-            {
-                typeQuantMAXNUD.Visible = false;
-            }
-            else
-            {
-                typeQuantMAXNUD.Visible = true;
+            if (typeQuantMAXNUD.Visible = currentlootpart.quantmaxSpecified)
                 typeQuantMAXNUD.Value = (decimal)currentlootpart.quantmax;
-            }
-            if (currentlootpart.costSpecified)
-            {
-                typeCostNUD.Visible = false;
-            }
-            else
-            {
-                typeCostNUD.Visible = true;
+            if (typeCostNUD.Visible = currentlootpart.costSpecified)
                 typeCostNUD.Value = (decimal)currentlootpart.cost;
-            }
         }
         private void populateUsage()
         {
@@ -1388,7 +1368,7 @@ namespace DayZeEditor
         {
             foreach (typesType item in list)
             {
-                if(item.nominal == null) { continue; }
+                if(!item.nominalSpecified) { continue; }
                 if (item.nominal != 0)
                 {
                     item.nominal = getmultiplier((int)item.nominal);
@@ -3193,7 +3173,37 @@ namespace DayZeEditor
             staminaKgToStaminaPercentPenaltyNUD.Value = (decimal)cfggameplay.PlayerData.StaminaData.staminaKgToStaminaPercentPenalty;
             staminaMinCapNUD.Value = (decimal)cfggameplay.PlayerData.StaminaData.staminaMinCap;
 
+            shockRefillSpeedConsciousNUD.Value = (decimal)cfggameplay.PlayerData.ShockHandlingData.shockRefillSpeedConscious;
+            shockRefillSpeedUnconsciousNUD.Value = (decimal)cfggameplay.PlayerData.ShockHandlingData.shockRefillSpeedUnconscious;
+            allowRefillSpeedModifierCB.Checked = cfggameplay.PlayerData.ShockHandlingData.allowRefillSpeedModifier;
+
             lightingConfigNUD.Value = cfggameplay.WorldsData.lightingConfig;
+            JanMinNUD.Value = cfggameplay.WorldsData.environmentMinTemps[0];
+            FebMinNUD.Value = cfggameplay.WorldsData.environmentMinTemps[1];
+            MarMinNUD.Value = cfggameplay.WorldsData.environmentMinTemps[2];
+            AprMinNUD.Value = cfggameplay.WorldsData.environmentMinTemps[3];
+            MayMinNUD.Value = cfggameplay.WorldsData.environmentMinTemps[4];
+            JunMinNUD.Value = cfggameplay.WorldsData.environmentMinTemps[5];
+            JulMinNUD.Value = cfggameplay.WorldsData.environmentMinTemps[6];
+            AugMinNUD.Value = cfggameplay.WorldsData.environmentMinTemps[7];
+            SepMinNUD.Value = cfggameplay.WorldsData.environmentMinTemps[8];
+            OctMinNUD.Value = cfggameplay.WorldsData.environmentMinTemps[9];
+            NovMinNUD.Value = cfggameplay.WorldsData.environmentMinTemps[10];
+            DecMinNUD.Value = cfggameplay.WorldsData.environmentMinTemps[11];
+
+            JanMaxNUD.Value = cfggameplay.WorldsData.environmentMaxTemps[0];
+            FebMaxNUD.Value = cfggameplay.WorldsData.environmentMaxTemps[1];
+            MarMaxNUD.Value = cfggameplay.WorldsData.environmentMaxTemps[2];
+            AprMaxNUD.Value = cfggameplay.WorldsData.environmentMaxTemps[3];
+            MayMaxNUD.Value = cfggameplay.WorldsData.environmentMaxTemps[4];
+            JunMaxNUD.Value = cfggameplay.WorldsData.environmentMaxTemps[5];
+            JulMaxNUD.Value = cfggameplay.WorldsData.environmentMaxTemps[6];
+            AugMaxNUD.Value = cfggameplay.WorldsData.environmentMaxTemps[7];
+            SepMaxNUD.Value = cfggameplay.WorldsData.environmentMaxTemps[8];
+            OctMaxNUD.Value = cfggameplay.WorldsData.environmentMaxTemps[9];
+            NovMaxNUD.Value = cfggameplay.WorldsData.environmentMaxTemps[10];
+            DecMaxNUD.Value = cfggameplay.WorldsData.environmentMaxTemps[11];
+
 
             disableIsCollidingBBoxCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsCollidingBBoxCheck == 1 ? true : false;
             disableIsCollidingPlayerCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsCollidingPlayerCheck == 1 ? true : false;
@@ -3210,6 +3220,7 @@ namespace DayZeEditor
             disableIsCollidingCheckCB.Checked = cfggameplay.BaseBuildingData.ConstructionData.disableIsCollidingCheck == 1 ? true : false;
             disableDistanceCheckCB.Checked = cfggameplay.BaseBuildingData.ConstructionData.disableDistanceCheck == 1 ? true : false;
 
+            use3DMapCB.Checked = cfggameplay.UIData.use3DMap == 1 ? true : false;
             hitDirectionOverrideEnabledCB.Checked = cfggameplay.UIData.HitIndicationData.hitDirectionOverrideEnabled == 1 ? true : false;
             hitDirectionBehaviourCB.Checked = cfggameplay.UIData.HitIndicationData.hitDirectionBehaviour == 1 ? true : false;
             hitDirectionStyleCB.Checked = cfggameplay.UIData.HitIndicationData.hitDirectionStyle == 1 ? true : false;
@@ -3273,37 +3284,55 @@ namespace DayZeEditor
         private void sprintStaminaModifierErcNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.PlayerData.StaminaData.sprintStaminaModifierErc = (decimal)Math.Round(sprintStaminaModifierErcNUD.Value, 2);
+            cfggameplay.PlayerData.StaminaData.sprintStaminaModifierErc = (float)Math.Round(sprintStaminaModifierErcNUD.Value, 2);
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void sprintStaminaModifierCroNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.PlayerData.StaminaData.sprintStaminaModifierCro = (decimal)Math.Round(sprintStaminaModifierCroNUD.Value, 2);
+            cfggameplay.PlayerData.StaminaData.sprintStaminaModifierCro = (float)Math.Round(sprintStaminaModifierCroNUD.Value, 2);
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void staminaWeightLimitThresholdNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.PlayerData.StaminaData.staminaWeightLimitThreshold = (decimal)Math.Round(staminaWeightLimitThresholdNUD.Value, 2);
+            cfggameplay.PlayerData.StaminaData.staminaWeightLimitThreshold = (float)Math.Round(staminaWeightLimitThresholdNUD.Value, 2);
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void staminaMaxNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.PlayerData.StaminaData.staminaMax = (decimal)Math.Round(staminaMaxNUD.Value, 2);
+            cfggameplay.PlayerData.StaminaData.staminaMax = (float)Math.Round(staminaMaxNUD.Value, 2);
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void staminaKgToStaminaPercentPenaltyNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.PlayerData.StaminaData.staminaKgToStaminaPercentPenalty = (decimal)Math.Round(staminaKgToStaminaPercentPenaltyNUD.Value, 2);
+            cfggameplay.PlayerData.StaminaData.staminaKgToStaminaPercentPenalty = (float)Math.Round(staminaKgToStaminaPercentPenaltyNUD.Value, 2);
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void staminaMinCapNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.PlayerData.StaminaData.staminaMinCap = (decimal)Math.Round(staminaMinCapNUD.Value, 2);
+            cfggameplay.PlayerData.StaminaData.staminaMinCap = (float)Math.Round(staminaMinCapNUD.Value, 2);
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
+        private void shockRefillSpeedConsciousNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.PlayerData.ShockHandlingData.shockRefillSpeedConscious = (float)Math.Round(shockRefillSpeedConsciousNUD.Value, 2);
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
+        private void shockRefillSpeedUnconsciousNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.PlayerData.ShockHandlingData.shockRefillSpeedUnconscious = (float)Math.Round(shockRefillSpeedUnconsciousNUD.Value, 2);
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
+        private void allowRefillSpeedModifierCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.PlayerData.ShockHandlingData.allowRefillSpeedModifier = allowRefillSpeedModifierCB.Checked;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disableIsCollidingBBoxCheckCB_CheckedChanged(object sender, EventArgs e)
@@ -3384,6 +3413,12 @@ namespace DayZeEditor
             cfggameplay.BaseBuildingData.ConstructionData.disableDistanceCheck = disableDistanceCheckCB.Checked == true ? 1 : 0;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
+        private void use3DMapCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.UIData.use3DMap = use3DMapCB.Checked == true ? 1 : 0;
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
         private void hitDirectionOverrideEnabledCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
@@ -3405,19 +3440,19 @@ namespace DayZeEditor
         private void hitDirectionMaxDurationNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.UIData.HitIndicationData.hitDirectionMaxDuration = (decimal)Math.Round(hitDirectionMaxDurationNUD.Value, 2);
+            cfggameplay.UIData.HitIndicationData.hitDirectionMaxDuration = (float)Math.Round(hitDirectionMaxDurationNUD.Value, 2);
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void hitDirectionBreakPointRelativeNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.UIData.HitIndicationData.hitDirectionBreakPointRelative = (decimal)Math.Round(hitDirectionBreakPointRelativeNUD.Value, 2);
+            cfggameplay.UIData.HitIndicationData.hitDirectionBreakPointRelative = (float)Math.Round(hitDirectionBreakPointRelativeNUD.Value, 2);
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void hitDirectionScatterNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.UIData.HitIndicationData.hitDirectionScatter = (decimal)Math.Round(hitDirectionScatterNUD.Value, 2);
+            cfggameplay.UIData.HitIndicationData.hitDirectionScatter = (float)Math.Round(hitDirectionScatterNUD.Value, 2);
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void hitIndicationPostProcessEnabledCB_CheckedChanged(object sender, EventArgs e)
@@ -3430,6 +3465,40 @@ namespace DayZeEditor
         {
             if (!isUserInteraction) { return; }
             cfggameplay.WorldsData.lightingConfig = (int)lightingConfigNUD.Value;
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
+        private void MinTemp_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.WorldsData.environmentMinTemps[0] = (int)JanMinNUD.Value;
+            cfggameplay.WorldsData.environmentMinTemps[1] = (int)FebMinNUD.Value;
+            cfggameplay.WorldsData.environmentMinTemps[2] = (int)MarMinNUD.Value;
+            cfggameplay.WorldsData.environmentMinTemps[3] = (int)AprMinNUD.Value;
+            cfggameplay.WorldsData.environmentMinTemps[4] = (int)MayMinNUD.Value;
+            cfggameplay.WorldsData.environmentMinTemps[5] = (int)JunMinNUD.Value;
+            cfggameplay.WorldsData.environmentMinTemps[6] = (int)JulMinNUD.Value;
+            cfggameplay.WorldsData.environmentMinTemps[7] = (int)AugMinNUD.Value;
+            cfggameplay.WorldsData.environmentMinTemps[8] = (int)SepMinNUD.Value;
+            cfggameplay.WorldsData.environmentMinTemps[9] = (int)OctMinNUD.Value;
+            cfggameplay.WorldsData.environmentMinTemps[10] = (int)NovMinNUD.Value;
+            cfggameplay.WorldsData.environmentMinTemps[11] = (int)DecMinNUD.Value;
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
+        private void MaxTemp_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.WorldsData.environmentMaxTemps[0] = (int)JanMaxNUD.Value;
+            cfggameplay.WorldsData.environmentMaxTemps[1] = (int)FebMaxNUD.Value;
+            cfggameplay.WorldsData.environmentMaxTemps[2] = (int)MarMaxNUD.Value;
+            cfggameplay.WorldsData.environmentMaxTemps[3] = (int)AprMaxNUD.Value;
+            cfggameplay.WorldsData.environmentMaxTemps[4] = (int)MayMaxNUD.Value;
+            cfggameplay.WorldsData.environmentMaxTemps[5] = (int)JunMaxNUD.Value;
+            cfggameplay.WorldsData.environmentMaxTemps[6] = (int)JulMaxNUD.Value;
+            cfggameplay.WorldsData.environmentMaxTemps[7] = (int)AugMaxNUD.Value;
+            cfggameplay.WorldsData.environmentMaxTemps[8] = (int)SepMaxNUD.Value;
+            cfggameplay.WorldsData.environmentMaxTemps[9] = (int)OctMaxNUD.Value;
+            cfggameplay.WorldsData.environmentMaxTemps[10] = (int)NovMaxNUD.Value;
+            cfggameplay.WorldsData.environmentMaxTemps[11] = (int)DecMaxNUD.Value;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         #endregion cfggameplayconfig
@@ -4233,6 +4302,8 @@ namespace DayZeEditor
             weather.storm.timeout = (int)StimeoutNUD.Value;
             currentproject.weatherconfig.isDirty = true;
         }
+
+
         #endregion weather
     }
 }

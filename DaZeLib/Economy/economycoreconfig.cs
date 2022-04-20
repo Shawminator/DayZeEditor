@@ -348,7 +348,8 @@ namespace DayZeLib
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message.ToString());
+                    MessageBox.Show("FileName : " + Path.GetFileName(filename) + Environment.NewLine +  ex.Message.ToString() +
+                        Environment.NewLine + ex.InnerException.Message.ToString());
                 }
             }
         }

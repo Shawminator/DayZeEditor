@@ -12,6 +12,7 @@ namespace DayZeEditor
 {
     public partial class SplashForm : Form
     {
+        public delegate void CloseDelagate();
         public SplashForm()
         {
             InitializeComponent();
