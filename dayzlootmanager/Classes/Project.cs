@@ -44,13 +44,21 @@ namespace DayZeEditor
         {
             return Projects.FirstOrDefault(x => x.ProjectName == name);
         }
-        public void SaveProject()
+        public void SaveProject(bool create = false)
         {
             var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
             string jsonString = JsonSerializer.Serialize(this, options);
             Directory.CreateDirectory(Application.StartupPath + "\\Project");
             File.WriteAllText(Application.StartupPath + "\\Project\\Projects.json", jsonString);
-            MessageBox.Show("Projects Config Saved.");
+            var form = Application.OpenForms["SplashForm"];
+            if (form != null)
+            {
+                form.Invoke(new Action(() => { form.Close(); }));
+            }
+            if(create)
+                MessageBox.Show("Projects Config Created.");
+            else
+                MessageBox.Show("Projects Config Saved.");
         }
         public void SetActiveProject(string profilename)
         {
@@ -159,7 +167,8 @@ namespace DayZeEditor
         public void SetModListtypes()
         {
             ModTypesList = new BindingList<TypesFile>();
-            foreach(economycoreCE mods in EconomyCore.economycore.ce)
+            if (EconomyCore.economycore == null) return;
+            foreach (economycoreCE mods in EconomyCore.economycore.ce)
             {
                 string path = projectFullName + "\\mpmissions\\" + mpmissionpath + "\\" + mods.folder;
                 foreach(economycoreCEFile file in mods.file)
@@ -193,6 +202,7 @@ namespace DayZeEditor
         {
             ModEventsList = new BindingList<eventscofig>();
             ModEventsList.Add(new eventscofig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\db\\events.xml"));
+            if (EconomyCore.economycore == null) return;
             foreach (economycoreCE mods in EconomyCore.economycore.ce)
             {
                 string path = projectFullName + "\\mpmissions\\" + mpmissionpath + "\\" + mods.folder;
@@ -209,6 +219,7 @@ namespace DayZeEditor
         {
             spawnabletypesList = new BindingList<Spawnabletypesconfig>();
             spawnabletypesList.Add(new Spawnabletypesconfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgspawnabletypes.xml"));
+            if (EconomyCore.economycore == null) return;
             foreach (economycoreCE mods in EconomyCore.economycore.ce)
             {
                 string path = projectFullName + "\\mpmissions\\" + mpmissionpath + "\\" + mods.folder;

@@ -24,10 +24,22 @@ namespace DayZeLib
             Filename = filename;
             var mySerializer = new XmlSerializer(typeof(economycore));
             // To read the file, create a FileStream.
-            using (var myFileStream = new FileStream(filename, FileMode.Open))
+            try
             {
-                // Call the Deserialize method and cast to the object type.
-                economycore = (economycore)mySerializer.Deserialize(myFileStream);
+                using (var myFileStream = new FileStream(filename, FileMode.Open))
+                {
+                    // Call the Deserialize method and cast to the object type.
+                    economycore = (economycore)mySerializer.Deserialize(myFileStream);
+                }
+            }
+            catch(Exception ex)
+            {
+                var form = Application.OpenForms["SplashForm"];
+                if (form != null)
+                {
+                    form.Invoke(new Action(() => { form.Close(); }));
+                }
+                MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
             }
 
         }
@@ -140,7 +152,12 @@ namespace DayZeLib
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message + "\n" + filename + "\n" + ex.InnerException.Message);
+                    var form = Application.OpenForms["SplashForm"];
+                    if (form != null)
+                    {
+                        form.Invoke(new Action(() => { form.Close(); }));
+                    }
+                    MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
                 }
             }
         }
@@ -204,7 +221,12 @@ namespace DayZeLib
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message + "\n" + filename + "\n" + ex.InnerException.Message);
+                    var form = Application.OpenForms["SplashForm"];
+                    if (form != null)
+                    {
+                        form.Invoke(new Action(() => { form.Close(); }));
+                    }
+                    MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
                 }
             }
         }
@@ -242,7 +264,12 @@ namespace DayZeLib
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message + "\n" + filename + "\n" + ex.InnerException.Message);
+                    var form = Application.OpenForms["SplashForm"];
+                    if (form != null)
+                    {
+                        form.Invoke(new Action(() => { form.Close(); }));
+                    }
+                    MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
                 }
             }
         }
@@ -297,7 +324,12 @@ namespace DayZeLib
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message + "\n" + filename + "\n" + ex.InnerException.Message);
+                    var form = Application.OpenForms["SplashForm"];
+                    if (form != null)
+                    {
+                        form.Invoke(new Action(() => { form.Close(); }));
+                    }
+                    MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
                 }
             }
         }
@@ -348,8 +380,12 @@ namespace DayZeLib
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("FileName : " + Path.GetFileName(filename) + Environment.NewLine +  ex.Message.ToString() +
-                        Environment.NewLine + ex.InnerException.Message.ToString());
+                    var form = Application.OpenForms["SplashForm"];
+                    if (form != null)
+                    {
+                        form.Invoke(new Action(() => { form.Close(); }));
+                    }
+                    MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
                 }
             }
         }
@@ -388,10 +424,15 @@ namespace DayZeLib
             try
             {
                 cfggameplay = JsonSerializer.Deserialize<cfggameplay>(File.ReadAllText(Filename));
-             }
+            }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString() + Environment.NewLine + ex.InnerException.Message.ToString());
+                var form = Application.OpenForms["SplashForm"];
+                if (form != null)
+                {
+                    form.Invoke(new Action(() => { form.Close(); }));
+                }
+                MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
             }
 
         }
@@ -422,7 +463,12 @@ namespace DayZeLib
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString() + Environment.NewLine + ex.InnerException.Message.ToString());
+                var form = Application.OpenForms["SplashForm"];
+                if (form != null)
+                {
+                    form.Invoke(new Action(() => { form.Close(); }));
+                }
+                MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
             }
 
         }
@@ -453,7 +499,12 @@ namespace DayZeLib
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message.ToString());
+                    var form = Application.OpenForms["SplashForm"];
+                    if (form != null)
+                    {
+                        form.Invoke(new Action(() => { form.Close(); }));
+                    }
+                    MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
                 }
             }
         }

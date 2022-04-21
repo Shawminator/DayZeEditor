@@ -41,27 +41,18 @@ namespace DayZeLib
                 try
                 {
                     types = (types)mySerializer.Deserialize(myFileStream);
+                    types.type = new BindingList<typesType>(types.type.OrderBy(x => x.name).ToList());
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message + "\n" + filename + "\n" + ex.InnerException.Message);
+                    var form = Application.OpenForms["SplashForm"];
+                    if (form != null)
+                    {
+                        form.Invoke(new Action(() => { form.Close(); }));
+                    }
+                    MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
                 }
             }
-            //foreach(typesType type in types.type)
-            //{
-
-            //    if(type.usage == null || type.usage.Count == 0 || type.usage[0].name == null)
-            //        type.usage = null;
-                
-            //    if (type.value == null || type.value.Count == 0 || (type.value[0].name == null && type.value[0].name == null))
-            //        type.value = null;
-
-            //    //else if (type.value[0].name == null && type.value[0].name != null)
-            //    //    type.Usinguserdifinitions = true;
-            //    //else
-            //    //    type.Usinguserdifinitions = false;
-            //}
-            types.type = new BindingList<typesType>(types.type.OrderBy(x => x.name).ToList());
         }
         public bool SaveTyes(string saveTime)
         {

@@ -390,8 +390,6 @@ namespace DayZeEditor
                 {
                     if (!currentLCPredefinedWeapons.attachments.Any(x => x == l))
                     {
-                        if (currentLCPredefinedWeapons.attachments.Count == 1 && currentLCPredefinedWeapons.attachments[0] == "")
-                            currentLCPredefinedWeapons.attachments.RemoveAt(0);
                         currentLCPredefinedWeapons.attachments.Add(l);
                         SetweaponInfo();
                         LootChestTable.isDirty = true;
@@ -434,16 +432,14 @@ namespace DayZeEditor
             if (attachmentsLB.SelectedItems.Count < 1) return;
             int index = attachmentsLB.SelectedIndex;
             currentLCPredefinedWeapons.attachments.Remove(attachmentsLB.GetItemText(attachmentsLB.SelectedItem));
-            if(currentLCPredefinedWeapons.attachments.Count == 0)
-            {
-                currentLCPredefinedWeapons.attachments.Add("");
-            }
             LootChestTable.isDirty = true;
             attachmentsLB.SelectedIndex = -1;
             if (index - 1 == -1)
             {
                 if (attachmentsLB.Items.Count > 0)
                     attachmentsLB.SelectedIndex = 0;
+                else
+                    attachmentsLB.SelectedIndex = -1;
             }
             else
             {

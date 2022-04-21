@@ -118,7 +118,7 @@ namespace DayZeEditor
             else
             {
                 Projects = new ProjectList{};
-                Projects.SaveProject();
+                Projects.SaveProject(true);
                 TypeManButton.Visible = false;
                 TraderManButton.Visible = false;
                 ExpansionSettingsButton.Visible = false;
