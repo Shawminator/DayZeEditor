@@ -34,6 +34,8 @@ namespace DayZeLib
     }
     public class BaseBuildingSettings
     {
+        const int CurrentVersion = 3;
+
         public int m_Version { get; set; }  // Current Version is 3
         public int CanBuildAnywhere { get; set; }
         public int AllowBuildingWithoutATerritory { get; set; }
@@ -68,11 +70,21 @@ namespace DayZeLib
 
         public BaseBuildingSettings()
         {
-            m_Version = 3;
+            m_Version = CurrentVersion;
             DeployableInsideAEnemyTerritory = new BindingList<string>();
             DeployableOutsideATerritory = new BindingList<string>();
             Zones = new BindingList<NoBuildZones>();
             isDirty = true;
+        }
+        public bool checkver()
+        {
+            if (m_Version != CurrentVersion)
+            {
+                m_Version = CurrentVersion;
+                isDirty = true;
+                return true;
+            }
+            return false;
         }
     }
     public class NoBuildZones
@@ -83,6 +95,11 @@ namespace DayZeLib
         public BindingList<string> Items { get; set; }
         public int IsWhitelist { get; set; }
         public string CustomMessage { get; set; }
+
+        public NoBuildZones()
+        {
+            Items = new BindingList<string>();
+        }
 
         public override string ToString()
         {

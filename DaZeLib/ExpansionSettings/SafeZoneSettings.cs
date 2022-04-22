@@ -10,6 +10,8 @@ namespace DayZeLib
 {
     public class SafeZoneSettings
     {
+        const int CurrentVersion = 6;
+
         public int m_Version { get; set; } //Currently Version 6
         public int Enabled { get; set; }
         public float FrameRateCheckSafeZoneInMs { get; set; }
@@ -28,10 +30,20 @@ namespace DayZeLib
 
         public SafeZoneSettings()
         {
-            m_Version = 6;
+            m_Version = CurrentVersion;
             CircleZones = new BindingList<CircleZones>();
             PolygonZones = new BindingList<PolygonZones>();
             isDirty = true;
+        }
+        public bool checkver()
+        {
+            if (m_Version != CurrentVersion)
+            {
+                m_Version = CurrentVersion;
+                isDirty = true;
+                return true;
+            }
+            return false;
         }
         public void SetCircleNames()
         {

@@ -154,11 +154,6 @@ namespace DayZeEditor
                 project.mpmissionpath = mpmissionpath;
                 project.MapPath = "\\Maps\\" + mpmissionpath.ToLower().Split('.')[1] + "_Map.png";
                 project.ProfilePath = profilefolder;
-                if (mpmissionpath.ToLower().Contains("expansion"))
-                {
-                    Directory.CreateDirectory(Pprofilefolder + "\\ExpansionMod");
-                    project.isExpansion = true;
-                }
                 projects.addtoprojects(project, false);
                 LoadProjectstoList();
                 MessageBox.Show("Blank Project created, Please Close the editor and populate the missions files before trying to load this project...");
@@ -188,11 +183,6 @@ namespace DayZeEditor
                 project.mpmissionpath = mpmissionpath;
                 project.MapPath = "\\Maps\\" + mpmissionpath.ToLower().Split('.')[1] + "_Map.png";
                 project.ProfilePath = profilefolder;
-                if (mpmissionpath.ToLower().Contains("expansion"))
-                {
-                    Directory.CreateDirectory(Pprofilefolder + "\\ExpansionMod");
-                    project.isExpansion = true;
-                }
                 projects.addtoprojects(project);
                 LoadProjectstoList();
                 SetActiveProject(ProjectName);
@@ -266,8 +256,6 @@ namespace DayZeEditor
                         project.mpmissionpath = mpmissionpath;
                         project.MapPath = "\\Maps\\" + mpmissionpath.ToLower().Split('.')[1] + "_Map.png";
                         project.ProfilePath = profile;
-                        if (mpmissionpath.ToLower().Contains("expansion"))
-                            project.isExpansion = true;
                         projects.addtoprojects(project);
                     }
                     LoadProjectstoList();
@@ -283,32 +271,23 @@ namespace DayZeEditor
         }
         private int Getmapsizefrommissionpath(string mpmissionpath)
         {
-            switch (mpmissionpath.ToLower())
+            switch (mpmissionpath.ToLower().Split('.')[1])
             {
-                case "dayzoffline.iztek":
-                case "expansion.iztek":
+                case "iztek":
                     return 8192;
-                case "dayzoffline.chernarusplus":
-                case "expansion.chernarusplus":
-                case "expansion.chernarusplusgloom":
-                case "empty.banov":
-                case "expansion.banov":
+                case "chernarusplus":
+                case "chernarusplusgloom":
+                case "banov":
                     return 15360;
-                case "expansionhard.namalsk":
-                case "expansionregular.namalsk":
-                case "dayzoffline.enoch":
-                case "expansion.enoch":
-                case "expansion.enochgloom":
-                case "expansion.takistanplus":
-                case "hardcore.namalsk":
-                case "regular.namalsk":
-                case "expansion.esseker":
+                case "namalsk":
+                case "enoch":
+                case "enochgloom":
+                case "takistanplus":
+                case "esseker":
                     return 12800;
-                case "expansion.deerisle":
-                case "empty.deerisle":
+                case "deerisle":
                     return 16384;
-                case "expansion.rostow":
-                case "offline.rostow":
+                case "rostow":
                     return 14336;
                 default:
                     return 0;

@@ -10,6 +10,8 @@ namespace DayZeLib
 {
     public class AirdropsettingsJson
     {
+        const int CurrentVersion = 2;
+
         public int m_Version { get; set; }
         public int ServerMarkerOnDropLocation { get; set; }
         public int Server3DMarkerOnDropLocation { get; set; }
@@ -31,9 +33,20 @@ namespace DayZeLib
 
         public AirdropsettingsJson()
         {
-            m_Version = 2;
+            m_Version = CurrentVersion;
             Containers = new BindingList<AirdropContainers>();
             isDirty = true;
+        }
+
+        public bool checkver()
+        {
+            if (m_Version != CurrentVersion)
+            {
+                m_Version = CurrentVersion;
+                isDirty = true;
+                return true;
+            }
+            return false;
         }
     }
     public class AirdropContainers
@@ -75,7 +88,8 @@ namespace DayZeLib
 
         public containerLoot()
         {
-
+            Attachments = new BindingList<string>();
+            Variants = new BindingList<lootVarients>();
         }
         public override string ToString()
         {
@@ -87,6 +101,12 @@ namespace DayZeLib
         public string Name { get; set; }
         public BindingList<string> Attachments { get; set; }
         public float Chance { get; set; }
+
+        public lootVarients()
+        {
+            Attachments = new BindingList<string>();
+        }
+
         public override string ToString()
         {
             return Name;

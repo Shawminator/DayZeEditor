@@ -4,6 +4,8 @@ namespace DayZeLib
 {
     public class PartySettings
     {
+        const int CurrentVersion = 3;
+
         public int m_Version { get; set; }//current version is 3
         public int EnableParties { get; set; }
         public int MaxMembersInParty { get; set; }
@@ -27,8 +29,18 @@ namespace DayZeLib
 
         public PartySettings()
         {
-            m_Version = 3;
+            m_Version = CurrentVersion;
             isDirty = true;
+        }
+        public bool checkver()
+        {
+            if (m_Version != CurrentVersion)
+            {
+                m_Version = CurrentVersion;
+                isDirty = true;
+                return true;
+            }
+            return false;
         }
 
         public void SetIntValue(string mytype, int myvalue)

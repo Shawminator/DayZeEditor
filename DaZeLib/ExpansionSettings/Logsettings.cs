@@ -4,6 +4,8 @@ namespace DayZeLib
 {
     public class LogSettings
     {
+        const int CurrentVersion = 2;
+
         public int m_Version { get; set; }
         public int Safezone { get; set; }
         public int AdminTools { get; set; }
@@ -31,8 +33,19 @@ namespace DayZeLib
 
         public LogSettings()
         {
-            m_Version = 2;
+            m_Version = CurrentVersion;
             isDirty = true;
+        }
+
+        public bool checkver()
+        {
+            if (m_Version != CurrentVersion)
+            {
+                m_Version = CurrentVersion;
+                isDirty = true;
+                return true;
+            }
+            return false;
         }
 
         public void SetIntValue(string mytype, int myvalue)

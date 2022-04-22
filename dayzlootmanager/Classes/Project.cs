@@ -81,7 +81,6 @@ namespace DayZeEditor
         public string ProjectName { get; set; }
         public string projectFullName { get; set; }
         public string ProfilePath { get; set; }
-        public bool isExpansion { get; set; }
         public bool usingDrJoneTrader { get; set; }
         public bool usingexpansionMarket { get; set; }
         public bool usingtraderplus { get; set; }
@@ -215,6 +214,15 @@ namespace DayZeEditor
                 }
             }
         }
+
+        internal bool isUsingExpansion()
+        {
+            if (Directory.Exists(projectFullName + "\\" + ProfilePath + "\\ExpansionMod"))
+                return true;
+            else
+                return false;
+        }
+
         internal void SetSpawnabletypes()
         {
             spawnabletypesList = new BindingList<Spawnabletypesconfig>();

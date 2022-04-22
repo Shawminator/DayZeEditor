@@ -8,6 +8,8 @@ namespace DayZeLib
 { 
     public class MissionSettings
     {
+        const int CurrentVersion = 2;
+
         public int m_Version { get; set; }
         public int Enabled { get; set; }
         public int InitialMissionStartDelay { get; set; }
@@ -15,8 +17,6 @@ namespace DayZeLib
         public int MinMissions { get; set; }
         public int MaxMissions { get; set; }
         public int MinPlayersToStartMissions { get; set; }
-        //public BindingList<Missions> Missions { get; set; } removed in version 2
-
 
         [JsonIgnore]
         public string Filename { get; set; }
@@ -27,10 +27,21 @@ namespace DayZeLib
 
         public MissionSettings()
         {
-            m_Version = 2;
-            //Missions = new BindingList<Missions>();
+            m_Version = CurrentVersion;
             isDirty = true;
         }
+
+        public bool checkver()
+        {
+            if (m_Version != CurrentVersion)
+            {
+                m_Version = CurrentVersion;
+                isDirty = true;
+                return true;
+            }
+            return false;
+        }
+
         public void LoadIndividualMissions(string Missionpath)
         {
             MissionSettingFiles = new BindingList<MissionSettingFiles>();

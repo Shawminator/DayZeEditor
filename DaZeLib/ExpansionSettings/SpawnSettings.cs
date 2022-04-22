@@ -6,6 +6,8 @@ namespace DayZeLib
 {
     public class SpawnSettings
     {
+        const int CurrentVersion = 4;
+
         public int m_Version { get; set; }
         public BindingList<SpawnLocations> SpawnLocations { get; set; }
         public StartingClothing StartingClothing { get; set; }
@@ -39,13 +41,22 @@ namespace DayZeLib
 
         public SpawnSettings()
         {
-            m_Version = 4;
+            m_Version = CurrentVersion;
             StartingClothing = new StartingClothing();
             SpawnLocations = new BindingList<SpawnLocations>();
             StartingGear = new StartingGear();
             isDirty = true;
         }
-
+        public bool checkver()
+        {
+            if (m_Version != CurrentVersion)
+            {
+                m_Version = CurrentVersion;
+                isDirty = true;
+                return true;
+            }
+            return false;
+        }
         public void SetStartingWeapons()
         {
 

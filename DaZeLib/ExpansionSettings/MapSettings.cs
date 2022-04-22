@@ -21,6 +21,8 @@ namespace DayZeLib
     };
     public class MapSettings
     {
+        const int CurrentVersion = 4;
+
         public int m_Version { get; set; } //current version 4
         public int EnableMap { get; set; }
         public int UseMapOnMapItem { get; set; }
@@ -53,9 +55,20 @@ namespace DayZeLib
 
         public MapSettings()
         {
-            m_Version = 4;
+            m_Version = CurrentVersion;
             ServerMarkers = new BindingList<ServerMarkers>();
             isDirty = true;
+        }
+
+        public bool checkver()
+        {
+            if (m_Version != CurrentVersion)
+            {
+                m_Version = CurrentVersion;
+                isDirty = true;
+                return true;
+            }
+            return false;
         }
     }
     public class ServerMarkers

@@ -97,7 +97,6 @@ namespace DayZeEditor
                     Projects.getActiveProject().SetTotNomCount();
                     //Projects.getActiveProject().GetPlayerDB();
                     Console.WriteLine(Projects.ActiveProject + " is the Current Active Project");
-                    Console.WriteLine("Project is running Expansion..... " + Projects.getActiveProject().isExpansion.ToString());
                     Console.WriteLine("Project is Running Dr Jones Trader...." + Projects.getActiveProject().usingDrJoneTrader.ToString());
                     Console.WriteLine("Project is Running Expansion Market...." + Projects.getActiveProject().usingexpansionMarket.ToString());
                     Console.WriteLine("Project is Running Trader Plus...." + Projects.getActiveProject().usingtraderplus.ToString());
@@ -185,14 +184,10 @@ namespace DayZeEditor
                     TraderPlusButton.Visible = true;
                 else
                     TraderPlusButton.Visible = false;
-                if (Projects.getActiveProject().isExpansion)
+                if (Projects.getActiveProject().isUsingExpansion())
                     ExpansionSettingsButton.Visible = true;
                 else
                     ExpansionSettingsButton.Visible = false;
-                if (Projects.getActiveProject().usingexpansionMarket)
-                    MarketButton.Visible = true;
-                else
-                    MarketButton.Visible = false;
                 if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\CJ_LootChests\\LootChests_V104.json"))
                     LootchestButton.Visible = true;
                 else

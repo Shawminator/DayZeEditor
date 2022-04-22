@@ -10,6 +10,8 @@ namespace DayZeLib
 
     public class ChatSettings
     {
+        const int CurrentVersion = 2;
+
         public int m_Version { get; set; }
         public int EnableGlobalChat { get; set; }
         public int EnablePartyChat { get; set; }
@@ -23,8 +25,20 @@ namespace DayZeLib
 
         public ChatSettings()
         {
-            m_Version = 2;
+            m_Version = CurrentVersion;
+            ChatColors = new Chatcolors();
             isDirty = true;
+        }
+
+        public bool checkver()
+        {
+            if (m_Version != CurrentVersion)
+            {
+                m_Version = CurrentVersion;
+                isDirty = true;
+                return true;
+            }
+            return false;
         }
 
         public string getcolourfromcontrol(string name)
@@ -87,6 +101,17 @@ namespace DayZeLib
         public string TransportChatColor { get; set; }
         public string PartyChatColor { get; set; }
         public string TransmitterChatColor { get; set; }
+
+        public Chatcolors()
+        {
+            SystemChatColor = "BA45BAFF";
+            AdminChatColor = "C0392BFF";
+            GlobalChatColor = "58C3F7FF";
+            DirectChatColor = "FFFFFFFF";
+            TransportChatColor = "FFCE09FF";
+            PartyChatColor = "FFCE09FF";
+            TransmitterChatColor = "F9FF49FF";
+        }
     }
 
 }

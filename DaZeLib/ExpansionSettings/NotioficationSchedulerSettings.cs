@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -10,10 +11,12 @@ namespace DayZeLib
 
     public class NotificationSchedulerSettings
     {
+        const int CurrentVersion = 1;
+
         public int m_Version { get; set; }
         public int Enabled { get; set; }
         public int UTC { get; set; }
-        public Notification[] Notifications { get; set; }
+        public BindingList<Notification> Notifications { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }
@@ -22,8 +25,20 @@ namespace DayZeLib
 
         public NotificationSchedulerSettings()
         {
-            m_Version = 1;
+            m_Version = CurrentVersion;
+            Notifications = new BindingList<Notification>(); 
             isDirty = true;
+        }
+
+        public bool checkver()
+        {
+            if (m_Version != CurrentVersion)
+            {
+                m_Version = CurrentVersion;
+                isDirty = true;
+                return true;
+            }
+            return false;
         }
     }
 
@@ -36,6 +51,11 @@ namespace DayZeLib
         public string Text { get; set; }
         public string Icon { get; set; }
         public string Color { get; set; }
+
+        public Notification()
+        {
+            Color = "F9FF49FF";
+        }
 
         public override string ToString()
         {

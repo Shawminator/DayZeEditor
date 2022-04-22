@@ -9,6 +9,8 @@ namespace DayZeLib
 {
     public class NameTagsettings
     {
+        const int CurrentVersion = 0;
+
         public int m_Version { get; set; }
         public int EnablePlayerTags { get; set; }
         public int PlayerTagViewRange { get; set; }
@@ -23,8 +25,19 @@ namespace DayZeLib
 
         public NameTagsettings()
         {
-            m_Version = 0;
+            m_Version = CurrentVersion;
             isDirty = true;
+        }
+
+        public bool checkver()
+        {
+            if (m_Version != CurrentVersion)
+            {
+                m_Version = CurrentVersion;
+                isDirty = true;
+                return true;
+            }
+            return false;
         }
     }
 }

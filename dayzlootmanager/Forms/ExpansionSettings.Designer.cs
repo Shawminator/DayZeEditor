@@ -887,6 +887,18 @@ namespace DayZeEditor
             this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
+            this.groupBox65 = new System.Windows.Forms.GroupBox();
+            this.darkLabel162 = new DarkUI.Controls.DarkLabel();
+            this.LockOnContainerRaidToolDamagePercentNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel168 = new DarkUI.Controls.DarkLabel();
+            this.LockOnContainerRaidToolCyclesNUD = new System.Windows.Forms.NumericUpDown();
+            this.RemoveLOCRTButton = new DarkUI.Controls.DarkButton();
+            this.AddLOCRTButton = new DarkUI.Controls.DarkButton();
+            this.LockOnContainerRaidToolsLB = new System.Windows.Forms.ListBox();
+            this.darkLabel169 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel170 = new DarkUI.Controls.DarkLabel();
+            this.LockOnContainerRaidToolTimeSecondsNUD = new System.Windows.Forms.NumericUpDown();
+            this.CanRaidLocksOnContainersCB = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -1102,6 +1114,10 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.groupBox63.SuspendLayout();
             this.darkToolStrip22.SuspendLayout();
+            this.groupBox65.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LockOnContainerRaidToolDamagePercentNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LockOnContainerRaidToolCyclesNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LockOnContainerRaidToolTimeSecondsNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -1721,7 +1737,7 @@ namespace DayZeEditor
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.groupBox2.Location = new System.Drawing.Point(209, 100);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(260, 291);
+            this.groupBox2.Size = new System.Drawing.Size(260, 274);
             this.groupBox2.TabIndex = 92;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Attachments";
@@ -1756,14 +1772,14 @@ namespace DayZeEditor
             this.listBox4.FormattingEnabled = true;
             this.listBox4.Location = new System.Drawing.Point(6, 19);
             this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(120, 238);
+            this.listBox4.Size = new System.Drawing.Size(120, 212);
             this.listBox4.TabIndex = 0;
             this.listBox4.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
             // darkButton8
             // 
             this.darkButton8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton8.Location = new System.Drawing.Point(208, 397);
+            this.darkButton8.Location = new System.Drawing.Point(208, 380);
             this.darkButton8.Name = "darkButton8";
             this.darkButton8.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton8.Size = new System.Drawing.Size(261, 23);
@@ -1774,7 +1790,7 @@ namespace DayZeEditor
             // darkButton2
             // 
             this.darkButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton2.Location = new System.Drawing.Point(9, 397);
+            this.darkButton2.Location = new System.Drawing.Point(9, 380);
             this.darkButton2.Name = "darkButton2";
             this.darkButton2.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton2.Size = new System.Drawing.Size(194, 23);
@@ -1833,7 +1849,7 @@ namespace DayZeEditor
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(9, 7);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(194, 368);
+            this.listBox1.Size = new System.Drawing.Size(194, 342);
             this.listBox1.TabIndex = 0;
             this.listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
@@ -4591,7 +4607,7 @@ namespace DayZeEditor
             this.toolStripButton8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton8.Name = "toolStripButton8";
-            this.toolStripButton8.Size = new System.Drawing.Size(96, 25);
+            this.toolStripButton8.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton8.Text = "General Settings";
             this.toolStripButton8.Click += new System.EventHandler(this.toolStripButton8_Click);
             // 
@@ -4610,7 +4626,7 @@ namespace DayZeEditor
             this.toolStripButton7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(73, 25);
+            this.toolStripButton7.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton7.Text = "Build Zones";
             this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
             // 
@@ -6648,6 +6664,7 @@ namespace DayZeEditor
             // tabPage9
             // 
             this.tabPage9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage9.Controls.Add(this.groupBox65);
             this.tabPage9.Controls.Add(this.groupBox26);
             this.tabPage9.Controls.Add(this.groupBox25);
             this.tabPage9.Controls.Add(this.groupBox24);
@@ -10839,7 +10856,7 @@ namespace DayZeEditor
             this.toolStripButton15.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton15.Image")));
             this.toolStripButton15.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton15.Name = "toolStripButton15";
-            this.toolStripButton15.Size = new System.Drawing.Size(101, 22);
+            this.toolStripButton15.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton15.Text = "Starting Clothing";
             this.toolStripButton15.Click += new System.EventHandler(this.toolStripButton15_Click);
             // 
@@ -10859,7 +10876,7 @@ namespace DayZeEditor
             this.toolStripButton16.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton16.Image")));
             this.toolStripButton16.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton16.Name = "toolStripButton16";
-            this.toolStripButton16.Size = new System.Drawing.Size(79, 22);
+            this.toolStripButton16.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton16.Text = "Starting Gear";
             this.toolStripButton16.Click += new System.EventHandler(this.toolStripButton16_Click);
             // 
@@ -10879,7 +10896,7 @@ namespace DayZeEditor
             this.toolStripButton17.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton17.Image")));
             this.toolStripButton17.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton17.Name = "toolStripButton17";
-            this.toolStripButton17.Size = new System.Drawing.Size(51, 22);
+            this.toolStripButton17.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton17.Text = "Spawns";
             this.toolStripButton17.Click += new System.EventHandler(this.toolStripButton17_Click);
             // 
@@ -12280,6 +12297,161 @@ namespace DayZeEditor
             this.toolStripButton14.Text = "Vehicle Settings";
             this.toolStripButton14.Click += new System.EventHandler(this.toolStripButton14_Click);
             // 
+            // groupBox65
+            // 
+            this.groupBox65.Controls.Add(this.darkLabel162);
+            this.groupBox65.Controls.Add(this.LockOnContainerRaidToolDamagePercentNUD);
+            this.groupBox65.Controls.Add(this.darkLabel168);
+            this.groupBox65.Controls.Add(this.LockOnContainerRaidToolCyclesNUD);
+            this.groupBox65.Controls.Add(this.RemoveLOCRTButton);
+            this.groupBox65.Controls.Add(this.AddLOCRTButton);
+            this.groupBox65.Controls.Add(this.LockOnContainerRaidToolsLB);
+            this.groupBox65.Controls.Add(this.darkLabel169);
+            this.groupBox65.Controls.Add(this.darkLabel170);
+            this.groupBox65.Controls.Add(this.LockOnContainerRaidToolTimeSecondsNUD);
+            this.groupBox65.Controls.Add(this.CanRaidLocksOnContainersCB);
+            this.groupBox65.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox65.Location = new System.Drawing.Point(841, 14);
+            this.groupBox65.Name = "groupBox65";
+            this.groupBox65.Size = new System.Drawing.Size(264, 375);
+            this.groupBox65.TabIndex = 118;
+            this.groupBox65.TabStop = false;
+            this.groupBox65.Text = "Containers";
+            // 
+            // darkLabel162
+            // 
+            this.darkLabel162.AutoSize = true;
+            this.darkLabel162.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel162.Location = new System.Drawing.Point(9, 324);
+            this.darkLabel162.Name = "darkLabel162";
+            this.darkLabel162.Size = new System.Drawing.Size(228, 13);
+            this.darkLabel162.TabIndex = 117;
+            this.darkLabel162.Text = "Lock On Container Raid Tool Damage Percent";
+            // 
+            // LockOnContainerRaidToolDamagePercentNUD
+            // 
+            this.LockOnContainerRaidToolDamagePercentNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.LockOnContainerRaidToolDamagePercentNUD.DecimalPlaces = 1;
+            this.LockOnContainerRaidToolDamagePercentNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.LockOnContainerRaidToolDamagePercentNUD.Location = new System.Drawing.Point(11, 345);
+            this.LockOnContainerRaidToolDamagePercentNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.LockOnContainerRaidToolDamagePercentNUD.Name = "LockOnContainerRaidToolDamagePercentNUD";
+            this.LockOnContainerRaidToolDamagePercentNUD.Size = new System.Drawing.Size(71, 20);
+            this.LockOnContainerRaidToolDamagePercentNUD.TabIndex = 116;
+            this.LockOnContainerRaidToolDamagePercentNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.LockOnContainerRaidToolDamagePercentNUD.ValueChanged += new System.EventHandler(this.RaidSettings_ValueChanged);
+            // 
+            // darkLabel168
+            // 
+            this.darkLabel168.AutoSize = true;
+            this.darkLabel168.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel168.Location = new System.Drawing.Point(8, 271);
+            this.darkLabel168.Name = "darkLabel168";
+            this.darkLabel168.Size = new System.Drawing.Size(179, 13);
+            this.darkLabel168.TabIndex = 115;
+            this.darkLabel168.Text = "Lock On Container Raid Tool Cycles";
+            // 
+            // LockOnContainerRaidToolCyclesNUD
+            // 
+            this.LockOnContainerRaidToolCyclesNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.LockOnContainerRaidToolCyclesNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.LockOnContainerRaidToolCyclesNUD.Location = new System.Drawing.Point(12, 293);
+            this.LockOnContainerRaidToolCyclesNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.LockOnContainerRaidToolCyclesNUD.Name = "LockOnContainerRaidToolCyclesNUD";
+            this.LockOnContainerRaidToolCyclesNUD.Size = new System.Drawing.Size(71, 20);
+            this.LockOnContainerRaidToolCyclesNUD.TabIndex = 114;
+            this.LockOnContainerRaidToolCyclesNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.LockOnContainerRaidToolCyclesNUD.ValueChanged += new System.EventHandler(this.RaidSettings_ValueChanged);
+            // 
+            // RemoveLOCRTButton
+            // 
+            this.RemoveLOCRTButton.Location = new System.Drawing.Point(143, 169);
+            this.RemoveLOCRTButton.Name = "RemoveLOCRTButton";
+            this.RemoveLOCRTButton.Padding = new System.Windows.Forms.Padding(5);
+            this.RemoveLOCRTButton.Size = new System.Drawing.Size(108, 23);
+            this.RemoveLOCRTButton.TabIndex = 113;
+            this.RemoveLOCRTButton.Text = "Remove";
+            this.RemoveLOCRTButton.Click += new System.EventHandler(this.RaidsettingsButton_Click);
+            // 
+            // AddLOCRTButton
+            // 
+            this.AddLOCRTButton.Location = new System.Drawing.Point(11, 169);
+            this.AddLOCRTButton.Name = "AddLOCRTButton";
+            this.AddLOCRTButton.Padding = new System.Windows.Forms.Padding(5);
+            this.AddLOCRTButton.Size = new System.Drawing.Size(108, 23);
+            this.AddLOCRTButton.TabIndex = 112;
+            this.AddLOCRTButton.Text = "Add New";
+            this.AddLOCRTButton.Click += new System.EventHandler(this.RaidsettingsButton_Click);
+            // 
+            // LockOnContainerRaidToolsLB
+            // 
+            this.LockOnContainerRaidToolsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.LockOnContainerRaidToolsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.LockOnContainerRaidToolsLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.LockOnContainerRaidToolsLB.FormattingEnabled = true;
+            this.LockOnContainerRaidToolsLB.Location = new System.Drawing.Point(11, 55);
+            this.LockOnContainerRaidToolsLB.Name = "LockOnContainerRaidToolsLB";
+            this.LockOnContainerRaidToolsLB.Size = new System.Drawing.Size(240, 108);
+            this.LockOnContainerRaidToolsLB.TabIndex = 111;
+            this.LockOnContainerRaidToolsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            // 
+            // darkLabel169
+            // 
+            this.darkLabel169.AutoSize = true;
+            this.darkLabel169.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel169.Location = new System.Drawing.Point(8, 39);
+            this.darkLabel169.Name = "darkLabel169";
+            this.darkLabel169.Size = new System.Drawing.Size(150, 13);
+            this.darkLabel169.TabIndex = 110;
+            this.darkLabel169.Text = "Lock On Container Raid Tools";
+            // 
+            // darkLabel170
+            // 
+            this.darkLabel170.AutoSize = true;
+            this.darkLabel170.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel170.Location = new System.Drawing.Point(9, 214);
+            this.darkLabel170.Name = "darkLabel170";
+            this.darkLabel170.Size = new System.Drawing.Size(216, 13);
+            this.darkLabel170.TabIndex = 109;
+            this.darkLabel170.Text = "Lock On Container Raid Tool Time Seconds";
+            // 
+            // LockOnContainerRaidToolTimeSecondsNUD
+            // 
+            this.LockOnContainerRaidToolTimeSecondsNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.LockOnContainerRaidToolTimeSecondsNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.LockOnContainerRaidToolTimeSecondsNUD.Location = new System.Drawing.Point(11, 238);
+            this.LockOnContainerRaidToolTimeSecondsNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.LockOnContainerRaidToolTimeSecondsNUD.Name = "LockOnContainerRaidToolTimeSecondsNUD";
+            this.LockOnContainerRaidToolTimeSecondsNUD.Size = new System.Drawing.Size(71, 20);
+            this.LockOnContainerRaidToolTimeSecondsNUD.TabIndex = 108;
+            this.LockOnContainerRaidToolTimeSecondsNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.LockOnContainerRaidToolTimeSecondsNUD.ValueChanged += new System.EventHandler(this.RaidSettings_ValueChanged);
+            // 
+            // CanRaidLocksOnContainersCB
+            // 
+            this.CanRaidLocksOnContainersCB.AutoSize = true;
+            this.CanRaidLocksOnContainersCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CanRaidLocksOnContainersCB.Location = new System.Drawing.Point(11, 19);
+            this.CanRaidLocksOnContainersCB.Name = "CanRaidLocksOnContainersCB";
+            this.CanRaidLocksOnContainersCB.Size = new System.Drawing.Size(177, 17);
+            this.CanRaidLocksOnContainersCB.TabIndex = 16;
+            this.CanRaidLocksOnContainersCB.Text = "Can Raid Locks On Containerss";
+            this.CanRaidLocksOnContainersCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CanRaidLocksOnContainersCB.UseVisualStyleBackColor = true;
+            this.CanRaidLocksOnContainersCB.CheckedChanged += new System.EventHandler(this.RaidSettings_CheckedChanged);
+            // 
             // ExpansionSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -12573,6 +12745,11 @@ namespace DayZeEditor
             this.groupBox63.PerformLayout();
             this.darkToolStrip22.ResumeLayout(false);
             this.darkToolStrip22.PerformLayout();
+            this.groupBox65.ResumeLayout(false);
+            this.groupBox65.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LockOnContainerRaidToolDamagePercentNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LockOnContainerRaidToolCyclesNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LockOnContainerRaidToolTimeSecondsNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -13436,5 +13613,17 @@ namespace DayZeEditor
         private System.Windows.Forms.DateTimePicker NSTimeTP;
         private System.Windows.Forms.CheckBox UTCTimeCB;
         private System.Windows.Forms.ComboBox NotfifcationIconComboBox;
+        private System.Windows.Forms.GroupBox groupBox65;
+        private DarkUI.Controls.DarkLabel darkLabel162;
+        private System.Windows.Forms.NumericUpDown LockOnContainerRaidToolDamagePercentNUD;
+        private DarkUI.Controls.DarkLabel darkLabel168;
+        private System.Windows.Forms.NumericUpDown LockOnContainerRaidToolCyclesNUD;
+        private DarkUI.Controls.DarkButton RemoveLOCRTButton;
+        private DarkUI.Controls.DarkButton AddLOCRTButton;
+        private System.Windows.Forms.ListBox LockOnContainerRaidToolsLB;
+        private DarkUI.Controls.DarkLabel darkLabel169;
+        private DarkUI.Controls.DarkLabel darkLabel170;
+        private System.Windows.Forms.NumericUpDown LockOnContainerRaidToolTimeSecondsNUD;
+        private System.Windows.Forms.CheckBox CanRaidLocksOnContainersCB;
     }
 }

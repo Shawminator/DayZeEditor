@@ -45,7 +45,7 @@ namespace DayZeEditor
         public string GeneralSettingsPath;
         public string LogsSettingsPath;
         public string MapSettingsPath;
-        public string MarketSettingsPath;
+        //public string MarketSettingsPath;
         public string MissionSettingsPath;
         public string MonitoringSettingsPath;
         public string NameTagsettingsPath;
@@ -68,7 +68,7 @@ namespace DayZeEditor
         public GeneralSettings GeneralSettings;
         public LogSettings LogSettings;
         public MapSettings MapSettings;
-        public MarketSettings marketsettings;
+        //public MarketSettings marketsettings;
         public MissionSettings MissionSettings;
         public MonitoringSettings MonitoringSettings;
         public NameTagsettings NameTagSettings;
@@ -364,6 +364,8 @@ namespace DayZeEditor
             {
                 AirdropsettingsJson = JsonSerializer.Deserialize<AirdropsettingsJson>(File.ReadAllText(AirdropsettingPath));
                 AirdropsettingsJson.isDirty = false;
+                if (AirdropsettingsJson.checkver())
+                    needtosave = true;
             }
             AirdropsettingsJson.Filename = AirdropsettingPath;
             SetupAirdropsettings();
@@ -378,6 +380,8 @@ namespace DayZeEditor
             {
                 BaseBuildingSettings = JsonSerializer.Deserialize<BaseBuildingSettings>(File.ReadAllText(BaseBUildignsettingsPath));
                 BaseBuildingSettings.isDirty = false;
+                if (BaseBuildingSettings.checkver())
+                    needtosave = true;
             }
             BaseBuildingSettings.Filename = BaseBUildignsettingsPath;
             Setupbasebuildingsettings();
@@ -393,6 +397,8 @@ namespace DayZeEditor
             {
                 BookSettings = JsonSerializer.Deserialize<BookSettings>(File.ReadAllText(BookSettingsPath));
                 BookSettings.isDirty = false;
+                if (BookSettings.checkver())
+                    needtosave = true;
             }
             BookSettings.Filename = BookSettingsPath;
             loadBookSettings();
@@ -407,6 +413,8 @@ namespace DayZeEditor
             {
                 ChatSettings = JsonSerializer.Deserialize<ChatSettings>(File.ReadAllText(ChatSettingsPath));
                 ChatSettings.isDirty = false;
+                if (ChatSettings.checkver())
+                    needtosave = true;
             }
             ChatSettings.Filename = ChatSettingsPath;
             LoadChatsettings();
@@ -421,6 +429,8 @@ namespace DayZeEditor
             {
                 DebugSettings = JsonSerializer.Deserialize<DebugSettings>(File.ReadAllText(DebugSettingsPath));
                 DebugSettings.isDirty = false;
+                if (DebugSettings.checkver())
+                    needtosave = true;
             }
             DebugSettings.Filename = DebugSettingsPath;
             loaddebugsettings();
@@ -435,6 +445,8 @@ namespace DayZeEditor
             {
                 GeneralSettings = JsonSerializer.Deserialize<GeneralSettings>(File.ReadAllText(GeneralSettingsPath));
                 GeneralSettings.isDirty = false;
+                if (GeneralSettings.checkver())
+                    needtosave = true;
             }
             GeneralSettings.Filename = GeneralSettingsPath;
             loadGeneralSettings();
@@ -449,6 +461,8 @@ namespace DayZeEditor
             {
                 LogSettings = JsonSerializer.Deserialize<LogSettings>(File.ReadAllText(LogsSettingsPath));
                 LogSettings.isDirty = false;
+                if (GeneralSettings.checkver())
+                    needtosave = true;
             }
             LogSettings.Filename = LogsSettingsPath;
             loadlogsettings();
@@ -463,17 +477,19 @@ namespace DayZeEditor
             {
                 MapSettings = JsonSerializer.Deserialize<MapSettings>(File.ReadAllText(MapSettingsPath));
                 MapSettings.isDirty = false;
+                if (MapSettings.checkver())
+                    needtosave = true;
             }
             MapSettings.Filename = MapSettingsPath;
             loadmapsettings();
 
-            MarketSettingsPath = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings\\MarketSettings.json";
-            if (!File.Exists(MarketSettingsPath))
-            {
-                marketsettings = new MarketSettings();
-                marketsettings.Filename = MarketSettingsPath;
-                needtosave = true;
-            }
+            //MarketSettingsPath = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings\\MarketSettings.json";
+            //if (!File.Exists(MarketSettingsPath))
+            //{
+            //    marketsettings = new MarketSettings();
+            //    marketsettings.Filename = MarketSettingsPath;
+            //    needtosave = true;
+            //}
 
             MissionSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\MissionSettings.json";
             if (!File.Exists(MissionSettingsPath))
@@ -485,6 +501,8 @@ namespace DayZeEditor
             {
                 MissionSettings = JsonSerializer.Deserialize<MissionSettings>(File.ReadAllText(MissionSettingsPath));
                 MissionSettings.isDirty = false;
+                if (MissionSettings.checkver())
+                    needtosave = true;
             }
             MissionSettings.Filename = MissionSettingsPath;
             MissionSettings.LoadIndividualMissions(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath);
@@ -500,6 +518,8 @@ namespace DayZeEditor
             {
                 MonitoringSettings = JsonSerializer.Deserialize<MonitoringSettings>(File.ReadAllText(MonitoringSettingsPath));
                 MonitoringSettings.isDirty = false;
+                if (MonitoringSettings.checkver())
+                    needtosave = true;
             }
             MonitoringSettings.Filename = MonitoringSettingsPath;
             LoadMonitoringSettingss();
@@ -514,6 +534,8 @@ namespace DayZeEditor
             {
                 NameTagSettings = JsonSerializer.Deserialize<NameTagsettings>(File.ReadAllText(NameTagsettingsPath));
                 NameTagSettings.isDirty = false;
+                if (NameTagSettings.checkver())
+                    needtosave = true;
             }
             NameTagSettings.Filename = NameTagsettingsPath;
             LoadNameTagSettings();
@@ -528,6 +550,8 @@ namespace DayZeEditor
             {
                 NotificationSchedulerSettings = JsonSerializer.Deserialize<NotificationSchedulerSettings>(File.ReadAllText(NotificationSchedulerSettingsPath));
                 NotificationSchedulerSettings.isDirty = false;
+                if (NotificationSchedulerSettings.checkver())
+                    needtosave = true;
             }
             NotificationSchedulerSettings.Filename = NotificationSchedulerSettingsPath;
             LoadNotificationSchedulerSettings();
@@ -542,6 +566,8 @@ namespace DayZeEditor
             {
                 NotificationSettings = JsonSerializer.Deserialize<NotificationSettings>(File.ReadAllText(NotificationssettingsPath));
                 NotificationSettings.isDirty = false;
+                if (NotificationSchedulerSettings.checkver())
+                    needtosave = true;
             }
             NotificationSettings.Filename = NotificationssettingsPath;
             LoadNotificationSettings();
@@ -556,6 +582,8 @@ namespace DayZeEditor
             {
                 PartySettings = JsonSerializer.Deserialize<PartySettings>(File.ReadAllText(PartySettingsPath));
                 PartySettings.isDirty = false;
+                if (PartySettings.checkver())
+                    needtosave = true;
             }
             PartySettings.Filename = PartySettingsPath;
             loadpartysettings();
@@ -570,6 +598,8 @@ namespace DayZeEditor
             {
                 PlayerListSettings = JsonSerializer.Deserialize<PlayerListSettings>(File.ReadAllText(PlayerListsettingsPath));
                 PlayerListSettings.isDirty = false;
+                if (PlayerListSettings.checkver())
+                    needtosave = true;
             }
             PlayerListSettings.Filename = PlayerListsettingsPath;
             LoadPlayerListsettings();
@@ -584,6 +614,8 @@ namespace DayZeEditor
             {
                 RaidSettings = JsonSerializer.Deserialize<RaidSettings>(File.ReadAllText(RaidSettingsPath));
                 RaidSettings.isDirty = false;
+                if (RaidSettings.checkver())
+                    needtosave = true;
             }
             RaidSettings.Filename = RaidSettingsPath;
             loadRaidSettings();
@@ -598,6 +630,8 @@ namespace DayZeEditor
             {
                 SafeZoneSettings = JsonSerializer.Deserialize<SafeZoneSettings>(File.ReadAllText(SafeZoneSettingspath));
                 SafeZoneSettings.isDirty = false;
+                if (SafeZoneSettings.checkver())
+                    needtosave = true;
             }
             SafeZoneSettings.Filename = SafeZoneSettingspath;
             LoadSafeZonesettings();
@@ -612,6 +646,8 @@ namespace DayZeEditor
             {
                 SocialMediaSettings = JsonSerializer.Deserialize<SocialMediaSettings>(File.ReadAllText(SocialMediaSettingsPath));
                 SocialMediaSettings.isDirty = false;
+                if (SocialMediaSettings.checkver())
+                    needtosave = true;
             }
             SocialMediaSettings.Filename = SocialMediaSettingsPath;
             LoadsocialMediaSettings();
@@ -628,6 +664,8 @@ namespace DayZeEditor
                 SpawnSettings = JsonSerializer.Deserialize<SpawnSettings>(File.ReadAllText(SpawnSettingsPath));
                 SpawnSettings.SetStartingWeapons();
                 SpawnSettings.isDirty = false;
+                if (SpawnSettings.checkver())
+                    needtosave = true;
             }
             SpawnSettings.Filename = SpawnSettingsPath;
             LoadSpawnsettings();
@@ -642,6 +680,8 @@ namespace DayZeEditor
             {
                 TerritorySettings = JsonSerializer.Deserialize<TerritorySettings>(File.ReadAllText(TerritorySettingsPath));
                 TerritorySettings.isDirty = false;
+                if (TerritorySettings.checkver())
+                    needtosave = true;
             }
             TerritorySettings.Filename = TerritorySettingsPath;
             LoadTerritorySettings();
@@ -656,6 +696,8 @@ namespace DayZeEditor
             {
                 VehicleSettings = JsonSerializer.Deserialize<VehicleSettings>(File.ReadAllText(VehicleSettingsPath));
                 VehicleSettings.isDirty = false;
+                if (VehicleSettings.checkver())
+                    needtosave = true;
             }
             VehicleSettings.Filename = VehicleSettingsPath;
             LoadvehicleSettings();
@@ -666,7 +708,7 @@ namespace DayZeEditor
 
             if(needtosave)
             {
-                savefiles();
+                savefiles(true);
             }
         }
 
@@ -742,7 +784,7 @@ namespace DayZeEditor
         {
             savefiles();
         }
-        public void savefiles()
+        public void savefiles(bool updated = false)
         {
             if (!Directory.Exists(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Settings"))
                 Directory.CreateDirectory(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Settings");
@@ -853,19 +895,19 @@ namespace DayZeEditor
                 File.WriteAllText(MapSettings.Filename, jsonString);
                 midifiedfiles.Add(Path.GetFileName(MapSettings.Filename));
             }
-            if (marketsettings != null &&  marketsettings.isDirty)
-            {
-                marketsettings.isDirty = false;
-                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-                string jsonString = JsonSerializer.Serialize(marketsettings, options);
-                if (File.Exists(marketsettings.Filename))
-                {
-                    Directory.CreateDirectory(Path.GetDirectoryName(marketsettings.Filename) + "\\Backup\\" + SaveTime);
-                    File.Copy(marketsettings.Filename, Path.GetDirectoryName(marketsettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(marketsettings.Filename) + ".bak", true);
-                }
-                File.WriteAllText(marketsettings.Filename, jsonString);
-                midifiedfiles.Add(Path.GetFileName(marketsettings.Filename));
-            }
+            //if (marketsettings != null &&  marketsettings.isDirty)
+            //{
+            //    marketsettings.isDirty = false;
+            //    var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            //    string jsonString = JsonSerializer.Serialize(marketsettings, options);
+            //    if (File.Exists(marketsettings.Filename))
+            //    {
+            //        Directory.CreateDirectory(Path.GetDirectoryName(marketsettings.Filename) + "\\Backup\\" + SaveTime);
+            //        File.Copy(marketsettings.Filename, Path.GetDirectoryName(marketsettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(marketsettings.Filename) + ".bak", true);
+            //    }
+            //    File.WriteAllText(marketsettings.Filename, jsonString);
+            //    midifiedfiles.Add(Path.GetFileName(marketsettings.Filename));
+            //}
             if (MissionSettings.isDirty)
             {
                 MissionSettings.isDirty = false;
@@ -1055,6 +1097,10 @@ namespace DayZeEditor
                 midifiedfiles.Add(Path.GetFileName(VehicleSettings.Filename));
             }
             string message = "The Following Files were saved....\n";
+            if(updated)
+            {
+                message = "The following files were either Created or Updated...\n";
+            }
             int i = 0;
             foreach (string l in midifiedfiles)
             {
@@ -3519,6 +3565,13 @@ namespace DayZeEditor
             LockOnTentRaidToolTimeSecondsNUD.Value = (decimal)RaidSettings.LockOnTentRaidToolTimeSeconds;
             LockRaidToolCyclesNUD.Value = (decimal)RaidSettings.LockRaidToolCycles;
             LockRaidToolDamagePercentNUD.Value = (decimal)RaidSettings.LockRaidToolDamagePercent;
+            CanRaidLocksOnContainersCB.Checked = RaidSettings.CanRaidLocksOnContainers == 1 ? true : false;
+            LockOnContainerRaidToolsLB.DisplayMember = "DisplayName";
+            LockOnContainerRaidToolsLB.ValueMember = "Value";
+            LockOnContainerRaidToolsLB.DataSource = RaidSettings.LockOnContainerRaidTools;
+            LockOnContainerRaidToolTimeSecondsNUD.Value = (decimal)RaidSettings.LockOnContainerRaidToolTimeSeconds;
+            LockOnContainerRaidToolCyclesNUD.Value = (decimal)RaidSettings.LockOnContainerRaidToolCycles;
+            LockOnContainerRaidToolDamagePercentNUD.Value = (decimal)RaidSettings.LockOnContainerRaidToolDamagePercent;
             useraction = true;
         }
         private void BaseBuildingRaidModeComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -3555,6 +3608,7 @@ namespace DayZeEditor
                 case "AddBWRTButton":
                 case "AddSRTButton":
                 case "AddLRTButton":
+                case "AddLOCRTButton":
                     AddItemfromTypes form = new AddItemfromTypes();
                     form.vanillatypes = vanillatypes;
                     form.ModTypes = ModTypes;
@@ -3598,6 +3652,13 @@ namespace DayZeEditor
                                         RaidSettings.isDirty = true;
                                     }
                                     break;
+                                case "AddLOCRTButton":
+                                    if (!RaidSettings.LockOnContainerRaidTools.Contains(l))
+                                    {
+                                        RaidSettings.LockOnContainerRaidTools.Add(l);
+                                        RaidSettings.isDirty = true;
+                                    }
+                                    break;
                             }
                         }
                     }
@@ -3613,6 +3674,9 @@ namespace DayZeEditor
                     break;
                 case "RemoveLRTButton":
                     RaidSettings.LockRaidTools.Remove(LockRaidToolsLB.GetItemText(LockRaidToolsLB.SelectedItem));
+                    break;
+                case "RemoveLOCRTButton":
+                    RaidSettings.LockOnContainerRaidTools.Remove(LockOnContainerRaidToolsLB.GetItemText(LockOnContainerRaidToolsLB.SelectedItem));
                     break;
             }
             RaidSettings.isDirty = true;
@@ -5370,7 +5434,10 @@ namespace DayZeEditor
 
 
 
+
         #endregion VehicleSettings
+
+
     }
     public class NullToEmptyGearConverter : JsonConverter<Gear>
     {

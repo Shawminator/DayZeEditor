@@ -45,6 +45,7 @@ namespace DayZeLib
     }
     public class VehicleSettings
     {
+        const int CurrentVersion = 8;
         public int m_Version { get; set; } // current version 8
         public int VehicleSync { get; set; }
         public int VehicleRequireKeyToStart { get; set; }
@@ -84,13 +85,22 @@ namespace DayZeLib
 
         public VehicleSettings()
         {
-            m_Version = 8;
+            m_Version = CurrentVersion;
             PickLockTools = new BindingList<string>();
             ChangeLockTools = new BindingList<string>();
             VehiclesConfig = new BindingList<VConfigs>();
             isDirty = true;
         }
-
+        public bool checkver()
+        {
+            if (m_Version != CurrentVersion)
+            {
+                m_Version = CurrentVersion;
+                isDirty = true;
+                return true;
+            }
+            return false;
+        }
         public void SetIntValue(string mytype, int myvalue)
         {
             GetType().GetProperty(mytype).SetValue(this, myvalue, null);

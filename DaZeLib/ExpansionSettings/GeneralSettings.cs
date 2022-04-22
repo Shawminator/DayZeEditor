@@ -21,6 +21,8 @@ namespace DayZeLib
     };
     public class GeneralSettings
     {
+        static int CurrentVersion = 6;
+
         public int m_Version { get; set; } //currentversion 6
         public int DisableShootToUnlock { get; set; }
         public int EnableGravecross { get; set; }
@@ -38,13 +40,6 @@ namespace DayZeLib
         public int UseDeathScreenStatistics { get; set; }
         public int UseNewsFeedInGameMenu { get; set; }
 
-        /*
-        public int PlayerLocationNotifier { get; set; }
-        public int EnableGlobalChat { get; set; }
-        public int EnablePartyChat { get; set; }
-        public int EnableTransportChat { get; set; }
-        public ChatColors ChatColors { get; set; }
-        */
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -52,10 +47,22 @@ namespace DayZeLib
 
         public GeneralSettings()
         {
-            m_Version = 6;
+            m_Version = CurrentVersion;
             Mapping = new CustomMapping();
             isDirty = true;
         }
+
+        public bool checkver()
+        {
+            if (m_Version != CurrentVersion)
+            {
+                m_Version = CurrentVersion;
+                isDirty = true;
+                return true;
+            }
+            return false;
+        }
+
         public int getIntValue(string mytype)
         {
             return (int)GetType().GetProperty(mytype).GetValue(this);
@@ -84,16 +91,5 @@ namespace DayZeLib
         {
             GetType().GetProperty(mytype).SetValue(this, myvalue, null);
         }
-    }
-    public class ChatColors
-    {
-        public string SystemChatColor { get; set; }
-        public string AdminChatColor { get; set; }
-        public string GlobalChatColor { get; set; }
-        public string DirectChatColor { get; set; }
-        public string TransportChatColor { get; set; }
-        public string PartyChatColor { get; set; }
-        public string TransmitterChatColor { get; set; }
-
     }
 }

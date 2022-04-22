@@ -21,7 +21,9 @@ namespace DayZeLib
     }
     public class RaidSettings
     {
-        public int m_Version { get; set; } //current version is 0
+        const int CurrentVersion = 3;
+
+        public int m_Version { get; set; }
         public float ExplosionTime { get; set; }
         public BindingList<string> ExplosiveDamageWhitelist { get; set; }
         public int EnableExplosiveWhitelist { get; set; }
@@ -49,6 +51,12 @@ namespace DayZeLib
         public int LockRaidToolCycles { get; set; }
         public float LockRaidToolDamagePercent { get; set; }
         public int BaseBuildingRaidMode { get; set; }
+        public int CanRaidLocksOnContainers { get; set; }
+        public BindingList<string> LockOnContainerRaidTools { get; set; }
+        public int LockOnContainerRaidToolTimeSeconds { get; set; }
+        public int LockOnContainerRaidToolCycles { get; set; }
+        public float LockOnContainerRaidToolDamagePercent { get; set; }
+
 
         [JsonIgnore]
         public string Filename { get; set; }
@@ -57,12 +65,24 @@ namespace DayZeLib
 
         public RaidSettings()
         {
-            m_Version = 0;
+            m_Version = CurrentVersion;
             ExplosiveDamageWhitelist = new BindingList<string>();
             SafeRaidTools = new BindingList<string>();
             BarbedWireRaidTools = new BindingList<string>();
             LockRaidTools = new BindingList<string>();
+            LockOnContainerRaidTools = new BindingList<string>();
             isDirty = true;
+        }
+
+        public bool checkver()
+        {
+            if (m_Version != CurrentVersion)
+            {
+                m_Version = CurrentVersion;
+                isDirty = true;
+                return true;
+            }
+            return false;
         }
 
         public void SetIntValue(string mytype, int myvalue)

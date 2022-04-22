@@ -4,6 +4,8 @@ namespace DayZeLib
 {
     public class SocialMediaSettings
     {
+        const int CurrentVersion = 0;
+
         public int m_Version { get; set; }
         public string Discord { get; set; }
         public string Homepage { get; set; }
@@ -20,8 +22,19 @@ namespace DayZeLib
 
         public SocialMediaSettings()
         {
-            m_Version = 0;
+            m_Version = CurrentVersion;
             isDirty = true;
+        }
+
+        public bool checkver()
+        {
+            if (m_Version != CurrentVersion)
+            {
+                m_Version = CurrentVersion;
+                isDirty = true;
+                return true;
+            }
+            return false;
         }
 
         public void SetStringValue(string mytype, string myString)

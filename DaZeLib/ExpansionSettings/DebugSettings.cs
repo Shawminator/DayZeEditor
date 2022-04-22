@@ -4,6 +4,8 @@ namespace DayZeLib
 {
     public class DebugSettings
     {
+        const int CurrentVersion = 0;
+
         public int m_Version { get; set; }
         public int ShowVehicleDebugMarkers { get; set; }
         public int DebugVehicleSync { get; set; }
@@ -17,9 +19,21 @@ namespace DayZeLib
 
         public DebugSettings()
         {
-            m_Version = 0;
+            m_Version = CurrentVersion;
             isDirty = true;
         }
+
+        public bool checkver()
+        {
+            if (m_Version != CurrentVersion)
+            {
+                m_Version = CurrentVersion;
+                isDirty = true;
+                return true;
+            }
+            return false;
+        }
+
         public void SetIntValue(string mytype, int myvalue)
         {
             GetType().GetProperty(mytype).SetValue(this, myvalue, null);

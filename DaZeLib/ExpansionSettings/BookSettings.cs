@@ -10,6 +10,8 @@ namespace DayZeLib
 {
     public class BookSettings
     {
+        const int CurrentVersion = 3;
+
         public int m_Version { get; set; } //currently 3
         public int EnableStatusTab { get; set; }
         public int EnablePartyTab { get; set; }
@@ -32,13 +34,23 @@ namespace DayZeLib
 
         public BookSettings()
         {
-            m_Version = 3;
+            m_Version = CurrentVersion;
             RuleCategories = new BindingList<Rulecats>();
             SettingCategories = new BindingList<SettingCategories>();
             Links = new BindingList<Links>();
             Descriptions = new BindingList<Descript>();
             CraftingCategories = new BindingList<CraftingCategories>();
             isDirty = true;
+        }
+        public bool checkver()
+        {
+            if (m_Version != CurrentVersion)
+            {
+                m_Version = CurrentVersion;
+                isDirty = true;
+                return true;
+            }
+            return false;
         }
         public void RenameRules()
         {
@@ -52,6 +64,11 @@ namespace DayZeLib
     {
         public string CategoryName { get; set; }
         public BindingList<Rules> Rules { get; set; }
+
+        public Rulecats()
+        {
+            Rules = new BindingList<Rules>();
+        }
 
         public override string ToString()
         {
@@ -80,6 +97,11 @@ namespace DayZeLib
         public string CategoryName { get; set; }
         public BindingList<Settings> Settings { get; set; }
 
+        public SettingCategories()
+        {
+            Settings = new BindingList<Settings>();
+        }
+
         public override string ToString()
         {
             return CategoryName;
@@ -107,6 +129,11 @@ namespace DayZeLib
     {
         public string CategoryName { get; set; }
         public BindingList<DT> Descriptions { get; set; }
+
+        public Descript()
+        {
+            Descriptions = new BindingList<DT>();
+        }
        
         public override string ToString()
         {
@@ -129,6 +156,11 @@ namespace DayZeLib
     {
         public string CategoryName { get; set; }
         public BindingList<string> Results { get; set; }
+
+        public CraftingCategories()
+        {
+            Results = new BindingList<string>();
+        }
 
         public override string ToString()
         {
