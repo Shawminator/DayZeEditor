@@ -798,7 +798,11 @@ namespace DayZeEditor
         }
         private void DeleteSpecificTypeTSMI_Click(object sender, EventArgs e)
         {
-            currentTypesFile.types.type.Remove(currentlootpart);
+            foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+            {
+                typesType looptype = tn.Tag as typesType;
+                currentTypesFile.types.type.Remove(looptype);
+            }
             currentTypesFile.SaveTyes(DateTime.Now.ToString("ddMMyy_HHmm"));
             var savedExpansionState = treeViewMS1.Nodes.GetExpansionState();
             treeViewMS1.BeginUpdate();
@@ -1071,7 +1075,7 @@ namespace DayZeEditor
         }
         private void darkButton2_Click(object sender, EventArgs e)
         {
-            typesTypeUsage u = comboBox2.SelectedItem as typesTypeUsage;
+            listsUsage u = comboBox2.SelectedItem as listsUsage;
             foreach (TreeNode tn in treeViewMS1.SelectedNodes)
             {
                 typesType looptype = tn.Tag as typesType;
@@ -1092,7 +1096,7 @@ namespace DayZeEditor
         }
         private void darkButton8_Click(object sender, EventArgs e)
         {
-            typesTypeTag t = comboBox4.SelectedItem as typesTypeTag;
+            listsTag t = comboBox4.SelectedItem as listsTag;
             foreach (TreeNode tn in treeViewMS1.SelectedNodes)
             {
                 typesType looptype = tn.Tag as typesType;
@@ -1115,7 +1119,7 @@ namespace DayZeEditor
         {
             if (isUserInteraction)
             {
-                typesTypeCategory c = comboBox1.SelectedItem as typesTypeCategory;
+                listsCategory c = comboBox1.SelectedItem as listsCategory;
                 foreach (TreeNode tn in treeViewMS1.SelectedNodes)
                 {
                     typesType looptype = tn.Tag as typesType;
@@ -1138,10 +1142,9 @@ namespace DayZeEditor
                         looptype.nominal = (int)typeNomCountNUD.Value;
                         currentTypesFile.isDirty = true;
                         currentproject.SetTotNomCount();
-                        //PopulateLootPartInfo();
-                        NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
                     }
                 }
+                NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
             }
         }
         private void typeMinCountNUD_ValueChanged(object sender, EventArgs e)

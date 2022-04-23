@@ -98,7 +98,8 @@ namespace DayZeEditor
             else if (ActiveProject != null)
                 radioButton1.Checked = true;
 
-            ((MainForm)this.MdiParent).toolStripStatusLabel1.Text = ActiveProject.ProjectName + " is the Current Active Project"; ;
+            if(ActiveProject != null)
+                ((MainForm)this.MdiParent).toolStripStatusLabel1.Text = ActiveProject.ProjectName + " is the Current Active Project"; ;
 
         }
         private void LoadProjectstoList()

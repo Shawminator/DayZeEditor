@@ -17,6 +17,15 @@ namespace DayZeLib
         public Worldsdata WorldsData { get; set; }
         public Basebuildingdata BaseBuildingData { get; set; }
         public Uidata UIData { get; set; }
+
+        public cfggameplay()
+        {
+            GeneralData = new Generaldata();
+            PlayerData = new Playerdata();
+            WorldsData = new Worldsdata();
+            BaseBuildingData = new Basebuildingdata();
+            UIData = new Uidata();
+        }
     }
 
     public class Generaldata
@@ -31,6 +40,12 @@ namespace DayZeLib
         public int disablePersonalLight { get; set; }
         public Staminadata StaminaData { get; set; }
         public Shockhandlingdata ShockHandlingData { get; set; }
+
+        public Playerdata()
+        {
+            StaminaData = new Staminadata();
+            ShockHandlingData = new Shockhandlingdata();
+        }
     }
 
     public class Staminadata
@@ -56,12 +71,29 @@ namespace DayZeLib
         public object[] objectSpawnersArr { get; set; }
         public BindingList<int> environmentMinTemps { get; set; }
         public BindingList<int> environmentMaxTemps { get; set; }
+
+        public Worldsdata()
+        {
+            environmentMaxTemps = new BindingList<int>();
+            environmentMinTemps = new BindingList<int>();
+            for (int i = 0; i < 12; i++)
+            {
+                environmentMaxTemps.Add(0);
+                environmentMinTemps.Add(0);
+            }
+        }
     }
 
     public class Basebuildingdata
     {
         public Hologramdata HologramData { get; set; }
         public Constructiondata ConstructionData { get; set; }
+
+        public Basebuildingdata()
+        {
+            HologramData = new Hologramdata();
+            ConstructionData = new Constructiondata();
+        }
     }
 
     public class Hologramdata
@@ -89,6 +121,11 @@ namespace DayZeLib
     {
         public int use3DMap { get; set; }
         public Hitindicationdata HitIndicationData { get; set; }
+
+        public Uidata()
+        {
+            HitIndicationData = new Hitindicationdata();
+        }
     }
 
     public class Hitindicationdata

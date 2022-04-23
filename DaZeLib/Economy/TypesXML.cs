@@ -341,13 +341,13 @@ namespace DayZeLib
         {
             return name;
         }
-        public void AddnewUsage(typesTypeUsage u)
+        public void AddnewUsage(listsUsage u)
         {
             if (usage == null)
                 usage = new BindingList<typesTypeUsage>();
             if (!usage.Any(x => x.name == u.name))
             {
-                usage.Add(u);
+                usage.Add(new typesTypeUsage() { name = u.name});
             }
         }
         public void removeusage(typesTypeUsage u)
@@ -357,13 +357,13 @@ namespace DayZeLib
             if (usagetoremove != null)
                 usage.Remove(usagetoremove);
         }
-        public void Addnewtag(typesTypeTag t)
+        public void Addnewtag(listsTag t)
         {
             if (tag == null)
                 tag = new BindingList<typesTypeTag>();
             if (!tag.Any(x => x.name == t.name))
             {
-                tag.Add(t);
+                tag.Add(new typesTypeTag() { name = t.name });
             }
         }
         public void removetag(typesTypeTag t)
@@ -373,9 +373,13 @@ namespace DayZeLib
             if (tagtoremove != null)
                 tag.Remove(tagtoremove);
         }
-        public void changecategory(typesTypeCategory c)
+        public void changecategory(listsCategory c)
         {
-            category = c;
+            typesTypeCategory cat = new typesTypeCategory()
+            {
+                name = c.name
+            };
+            category = cat;
         }
         public void AddTier(string tier)
         {
