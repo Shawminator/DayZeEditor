@@ -461,5 +461,11 @@ namespace DayZeEditor
             System.Diagnostics.Process.Start("https://discord.gg/5EHE49Kjsv");
             timer1.Start();
         }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.paypal.me/ADecadeOfdecay");
+            timer1.Start();
+        }
     }
 }

@@ -67,10 +67,10 @@ namespace DayZeLib
     }
     public class Data
     {
-        public int[] Pos { get; set; }
-        public int Radius { get; set; }
-        public int PosHeight { get; set; }
-        public int NegHeight { get; set; }
+        public float[] Pos { get; set; }
+        public float Radius { get; set; }
+        public float PosHeight { get; set; }
+        public float NegHeight { get; set; }
         public int InnerRingCount { get; set; }
         public int InnerPartDist { get; set; }
         public int OuterRingToggle { get; set; }

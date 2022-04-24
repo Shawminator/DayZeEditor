@@ -59,6 +59,7 @@ namespace DayZeEditor
             this.darkStatusStrip1 = new DarkUI.Controls.DarkStatusStrip();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.SlidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Slidelabel)).BeginInit();
@@ -158,6 +159,7 @@ namespace DayZeEditor
             this.ToolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.ToolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.ToolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton2,
             this.DiscordButton,
             this.ProjectsButton,
             this.TypeManButton,
@@ -381,6 +383,17 @@ namespace DayZeEditor
             this.panel2.Size = new System.Drawing.Size(25, 25);
             this.panel2.TabIndex = 45;
             // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(103, 19);
+            this.toolStripButton2.Text = "Donate";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -441,6 +454,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton KOSzoneManagerButton;
         private System.Windows.Forms.ToolStripButton HelicrashManagerButton;
         private System.Windows.Forms.ToolStripButton DiscordButton;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
     }
 }
 

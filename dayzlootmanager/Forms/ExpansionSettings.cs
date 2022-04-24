@@ -2532,7 +2532,7 @@ namespace DayZeEditor
 
                 ChatSettings.setcolour(pb.Name, cpick.Color.Name.ToUpper());
                 pb.Invalidate();
-                GeneralSettings.isDirty = true;
+                ChatSettings.isDirty = true;
             }
 
         }

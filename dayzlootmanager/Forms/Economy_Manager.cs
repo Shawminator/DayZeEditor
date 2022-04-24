@@ -3808,12 +3808,12 @@ namespace DayZeEditor
             AreaNameTB.Text = CurrentToxicArea.AreaName;
             TypeTB.Text = CurrentToxicArea.Type;
             TriggerTypeTB.Text = CurrentToxicArea.TriggerType;
-            PosXNUD.Value = CurrentToxicArea.Data.Pos[0];
-            posYNUD.Value = CurrentToxicArea.Data.Pos[1];
-            posZNUD.Value = CurrentToxicArea.Data.Pos[2];
-            RadiusNUD.Value = CurrentToxicArea.Data.Radius;
-            PosHeightNUD.Value = CurrentToxicArea.Data.PosHeight;
-            NegHeightNUD.Value = CurrentToxicArea.Data.NegHeight;
+            PosXNUD.Value = (decimal)CurrentToxicArea.Data.Pos[0];
+            posYNUD.Value = (decimal)CurrentToxicArea.Data.Pos[1];
+            posZNUD.Value = (decimal)CurrentToxicArea.Data.Pos[2];
+            RadiusNUD.Value = (decimal)CurrentToxicArea.Data.Radius;
+            PosHeightNUD.Value = (decimal)CurrentToxicArea.Data.PosHeight;
+            NegHeightNUD.Value = (decimal)CurrentToxicArea.Data.NegHeight;
             InnerRingCountNUD.Value = CurrentToxicArea.Data.InnerRingCount;
             InnerPartDistNUD.Value = CurrentToxicArea.Data.InnerPartDist;
             OuterRingToggleCB.Checked = CurrentToxicArea.Data.OuterRingToggle == 1 ? true : false;
@@ -3849,7 +3849,7 @@ namespace DayZeEditor
         private void PosNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            CurrentToxicArea.Data.Pos = new int[] { (int)PosXNUD.Value, (int)posYNUD.Value, (int)posZNUD.Value };
+            CurrentToxicArea.Data.Pos = new float[] { (float)PosXNUD.Value, (float)posYNUD.Value, (float)posZNUD.Value };
             currentproject.cfgEffectAreaConfig.isDirty = true;
         }
         private void AreaNUD_ValueChanged(object sender, EventArgs e)
@@ -3902,7 +3902,7 @@ namespace DayZeEditor
         {
             Data newdata = new Data()
             {
-                Pos = new int[] { 0, 0, 0 },
+                Pos = new float[] { 0, 0, 0 },
                 Radius = 0,
                 PosHeight = 0,
                 NegHeight = 0,
