@@ -18,6 +18,9 @@ namespace DayZeLib
         public Basebuildingdata BaseBuildingData { get; set; }
         public Uidata UIData { get; set; }
 
+
+        [JsonIgnore]
+        const int currentversion = 116;
         public cfggameplay()
         {
             GeneralData = new Generaldata();
@@ -25,6 +28,16 @@ namespace DayZeLib
             WorldsData = new Worldsdata();
             BaseBuildingData = new Basebuildingdata();
             UIData = new Uidata();
+        }
+
+        internal bool checkver()
+        {
+            if (version != currentversion)
+            {
+                version = currentversion;
+                return true;
+            }
+            return false;
         }
     }
 

@@ -424,6 +424,8 @@ namespace DayZeLib
             try
             {
                 cfggameplay = JsonSerializer.Deserialize<cfggameplay>(File.ReadAllText(Filename));
+                if (cfggameplay.checkver())
+                    SaveCFGGameplay();
             }
             catch (Exception ex)
             {
