@@ -31,16 +31,17 @@ namespace DayZeLib
         }
         public bool checknotificationcols()
         {
+            bool returntype = false;
             foreach(Notification not in Notifications)
             {
                 if (not.Color == "")
                 {
                     not.Color = "FFFFFFFF";
                     isDirty = true;
-                    return true;
+                    returntype = true;
                 }
             }
-            return false;
+            return returntype;
         }
 
         public bool checkver()
