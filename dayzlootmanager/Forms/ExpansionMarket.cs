@@ -1623,10 +1623,12 @@ namespace DayZeEditor
             textBox9.Text = currentCat.DisplayName;
             IconTB.Text = currentCat.Icon;
             InitStockPercentNUD.Value = (decimal)currentCat.InitStockPercent;
+            CategorycolourPB.Invalidate();
 
             listBox4.DisplayMember = "Name";
             listBox4.ValueMember = "Value";
             listBox4.DataSource = currentCat.Items;
+
             action = false;
         }
         private void listBox4_SelectedIndexChanged(object sender, EventArgs e)

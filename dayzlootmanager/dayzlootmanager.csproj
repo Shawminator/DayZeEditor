@@ -480,7 +480,9 @@
     <Content Include="Maps\livonia_Map.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Maps\deerisle_Map.png" />
+    <Content Include="Maps\deerisle_map.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Maps\namalsk_Map.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

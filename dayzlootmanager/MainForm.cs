@@ -69,7 +69,7 @@ namespace DayZeEditor
             var culture = CultureInfo.GetCultureInfo("en-GB");
             CultureInfo.DefaultThreadCurrentCulture = culture;
             CultureInfo.DefaultThreadCurrentUICulture = culture;
-            TitleLabel.Text = "DayZeEditor " + VersionNumber;
+            TitleLabel.Text = "DayZeEditor " + VersionNumber + " by Shawminator";
             if (File.Exists(ProjectsJson))
             {
                 Projects = (JsonSerializer.Deserialize<ProjectList>(File.ReadAllText(ProjectsJson)));
