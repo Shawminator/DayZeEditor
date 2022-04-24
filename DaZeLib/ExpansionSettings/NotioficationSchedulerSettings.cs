@@ -29,6 +29,19 @@ namespace DayZeLib
             Notifications = new BindingList<Notification>(); 
             isDirty = true;
         }
+        public bool checknotificationcols()
+        {
+            foreach(Notification not in Notifications)
+            {
+                if (not.Color == "")
+                {
+                    not.Color = "FFFFFFFF";
+                    isDirty = true;
+                    return true;
+                }
+            }
+            return false;
+        }
 
         public bool checkver()
         {
@@ -54,7 +67,7 @@ namespace DayZeLib
 
         public Notification()
         {
-            Color = "F9FF49FF";
+            Color = "FFFFFFFF";
         }
 
         public override string ToString()

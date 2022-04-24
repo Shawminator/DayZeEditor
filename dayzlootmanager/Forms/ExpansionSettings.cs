@@ -552,6 +552,8 @@ namespace DayZeEditor
                 NotificationSchedulerSettings.isDirty = false;
                 if (NotificationSchedulerSettings.checkver())
                     needtosave = true;
+                if (NotificationSchedulerSettings.checknotificationcols())
+                    needtosave = true;
             }
             NotificationSchedulerSettings.Filename = NotificationSchedulerSettingsPath;
             LoadNotificationSchedulerSettings();
@@ -566,7 +568,7 @@ namespace DayZeEditor
             {
                 NotificationSettings = JsonSerializer.Deserialize<NotificationSettings>(File.ReadAllText(NotificationssettingsPath));
                 NotificationSettings.isDirty = false;
-                if (NotificationSchedulerSettings.checkver())
+                if (NotificationSettings.checkver())
                     needtosave = true;
             }
             NotificationSettings.Filename = NotificationssettingsPath;
@@ -3405,6 +3407,27 @@ namespace DayZeEditor
             currentNotification.Text = NSTextTB.Text;
             NotificationSchedulerSettings.isDirty = true;
         }
+        private void darkButton59_Click(object sender, EventArgs e)
+        {
+            Notification newnotification = new Notification()
+            {
+                Title = "New Notification",
+                Hour = 00,
+                Minute = 00,
+                Second = 00,
+                Text = "",
+                Icon = "Info",
+                Color = "27272DFF"
+            };
+            NotificationSchedulerSettings.Notifications.Add(newnotification);
+            NotificationSchedulerSettings.isDirty = true;
+        }
+
+        private void darkButton60_Click(object sender, EventArgs e)
+        {
+            NotificationSchedulerSettings.Notifications.Remove(SchedulerNotificaionLB.SelectedItem as Notification);
+            NotificationSchedulerSettings.isDirty = true;
+        }
         #endregion NotificatioSchedulerSettings
 
         #region notifications
@@ -5413,6 +5436,7 @@ namespace DayZeEditor
             VehicleSettings.MasterKeyPairingMode = (int)cacl;
             VehicleSettings.isDirty = true;
         }
+
 
 
 
