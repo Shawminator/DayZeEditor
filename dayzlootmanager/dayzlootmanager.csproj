@@ -387,13 +387,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Downloads\treeviewms_src\TreeViewMS\TreeViewMS.csproj">
-      <Project>{7c2cce0a-a288-4869-a7b7-cc0d18af3b8c}</Project>
-      <Name>TreeViewMS</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\DarkUI-master\DarkUI-master\DarkUI\DarkUI.csproj">
       <Project>{f19472f5-8c44-4c51-a8a0-b9de5f555255}</Project>
       <Name>DarkUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\TreeViewMS\TreeViewMS.csproj">
+      <Project>{7c2cce0a-a288-4869-a7b7-cc0d18af3b8c}</Project>
+      <Name>TreeViewMS</Name>
     </ProjectReference>
     <ProjectReference Include="..\DaZeLib\DayZeLib.csproj">
       <Project>{0bf2117f-7239-4b9b-9279-3b47ea65615c}</Project>

@@ -18,10 +18,12 @@ namespace DayZeEditor
         public MarketCategories MarketCats { get; set; }
         public List<marketItem> marketitems { get; set; }
         public Categories currentcat;
+        public List<int> marked = new List<int>();
 
         private void listBox_DrawItem(object sender, DrawItemEventArgs e)
         {
             ListBox lb = sender as ListBox;
+            if (lb.Text == "") return;
             e.DrawBackground();
             Brush myBrush = Brushes.Black;
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
@@ -30,7 +32,14 @@ namespace DayZeEditor
             }
             else
             {
-                myBrush = Brushes.White;
+                if (lb.Name == "listBox1" && marked.Contains(e.Index))
+                {
+                    myBrush = Brushes.Red;
+                }
+                else 
+                { 
+                    myBrush = Brushes.White;
+                }
                 e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(60, 63, 65)), e.Bounds);
             }
             e.Graphics.DrawString(lb.Items[e.Index].ToString(), e.Font, myBrush, e.Bounds);
@@ -70,6 +79,7 @@ namespace DayZeEditor
 
         private void darkButton1_Click(object sender, EventArgs e)
         {
+            marked.Add(listBox1.SelectedIndex);
             marketItem item = listBox1.SelectedItem as marketItem;
             Categories currentitemcurretncat = MarketCats.GetCat(item);
             MarketCats.removeitemfromcat(item);

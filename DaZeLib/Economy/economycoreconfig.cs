@@ -421,20 +421,28 @@ namespace DayZeLib
             customCulture.NumberFormat.NumberDecimalSeparator = ".";
             customCulture.NumberFormat.NumberGroupSeparator = "";
             System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
-            try
+            if (File.Exists(Filename))
             {
-                cfggameplay = JsonSerializer.Deserialize<cfggameplay>(File.ReadAllText(Filename));
-                if (cfggameplay.checkver())
-                    SaveCFGGameplay();
-            }
-            catch (Exception ex)
-            {
-                var form = Application.OpenForms["SplashForm"];
-                if (form != null)
+                try
                 {
-                    form.Invoke(new Action(() => { form.Close(); }));
+                    cfggameplay = JsonSerializer.Deserialize<cfggameplay>(File.ReadAllText(Filename));
+                    if (cfggameplay.checkver())
+                        SaveCFGGameplay();
                 }
-                MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                catch (Exception ex)
+                {
+                    var form = Application.OpenForms["SplashForm"];
+                    if (form != null)
+                    {
+                        form.Invoke(new Action(() => { form.Close(); }));
+                    }
+                    MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                }
+            }
+            else
+            {
+                cfggameplay = new cfggameplay();
+                SaveCFGGameplay();
             }
 
         }
