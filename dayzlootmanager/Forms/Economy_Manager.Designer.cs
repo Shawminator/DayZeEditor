@@ -8681,10 +8681,15 @@ namespace DayZeEditor
             this.variablesvarvalueNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.variablesvarvalueNUD.Location = new System.Drawing.Point(71, 71);
             this.variablesvarvalueNUD.Maximum = new decimal(new int[] {
-            0,
+            10000000,
             0,
             0,
             0});
+            this.variablesvarvalueNUD.Minimum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            -2147483648});
             this.variablesvarvalueNUD.Name = "variablesvarvalueNUD";
             this.variablesvarvalueNUD.Size = new System.Drawing.Size(218, 20);
             this.variablesvarvalueNUD.TabIndex = 72;
@@ -8707,7 +8712,7 @@ namespace DayZeEditor
             this.variablesvartypeNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.variablesvartypeNUD.Location = new System.Drawing.Point(71, 45);
             this.variablesvartypeNUD.Maximum = new decimal(new int[] {
-            10000,
+            1,
             0,
             0,
             0});

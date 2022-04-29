@@ -3998,15 +3998,18 @@ namespace DayZeEditor
         {
             if (VariablesLB.SelectedItems.Count < 1) return;
             variablesVar m_var = VariablesLB.SelectedItem as variablesVar;
+            isUserInteraction = false;
             variablesvarnameTB.Text = m_var.name;
             variablesvartypeNUD.Value = m_var.type;
             variablesvarvalueNUD.Value = m_var.value;
+
+            isUserInteraction = true;
         }
         private void variablesvartypeNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
             variablesVar m_var = VariablesLB.SelectedItem as variablesVar;
-            m_var.type = (int)variablesvartypeNUD.Value;
+            m_var.type = (byte)variablesvartypeNUD.Value;
             currentproject.gloabsconfig.isDirty = true;
         }
         private void variablesvarvalueNUD_ValueChanged(object sender, EventArgs e)

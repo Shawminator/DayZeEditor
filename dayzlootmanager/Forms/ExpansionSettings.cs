@@ -4414,7 +4414,7 @@ namespace DayZeEditor
         private void RespawnUTCTimeNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            SpawnSettings.RespawnUTCTime = (int)RespawnUTCTimeNUD.Value;
+            SpawnSettings.TerritoryRespawnCooldown = (int)TerritoryRespawnCooldownNUD.Value;
             SpawnSettings.isDirty = true;
         }
         private void SpawnOnTerritoryCB_CheckedChanged(object sender, EventArgs e)
@@ -5267,6 +5267,7 @@ namespace DayZeEditor
             VehicleCrewDamageMultiplierNUD.Value = (decimal)VehicleSettings.VehicleCrewDamageMultiplier;
             VehicleSpeedDamageMultiplierNUD.Value = (decimal)VehicleSettings.VehicleSpeedDamageMultiplier;
             CanChangeLockCB.Checked = VehicleSettings.CanChangeLock == 1 ? true : false;
+            DesyncInvulnerabilityTimeoutSecondsNUD.Value = VehicleSettings.DesyncInvulnerabilityTimeoutSeconds;
 
             ChangeLockToolsLB.DisplayMember = "DisplayName";
             ChangeLockToolsLB.ValueMember = "Value";
@@ -5284,7 +5285,7 @@ namespace DayZeEditor
 
             VehicleDropsRuinedDoorsCB.Checked = VehicleSettings.VehicleDropsRuinedDoors == 1 ? true : false;
             ExplodingVehicleDropsAttachmentsCB.Checked = VehicleSettings.ExplodingVehicleDropsAttachments == 1 ? true : false;
-            ForcePilotSyncIntervalSecondsNUD.Value = (decimal)VehicleSettings.ForcePilotSyncIntervalSeconds;
+            //ForcePilotSyncIntervalSecondsNUD.Value = (decimal)VehicleSettings.ForcePilotSyncIntervalSeconds;
 
             useraction = true;
         }
@@ -5383,20 +5384,28 @@ namespace DayZeEditor
             useraction = false;
             ClassNameTB.Text = CurrentCVehicleConfig.ClassName;
             CanPlayerAttachCB.Checked = CurrentCVehicleConfig.CanPlayerAttach == 1 ? true : false;
+            LockComplexityNUD.Value = (decimal)CurrentCVehicleConfig.LockComplexity;
             useraction = true;
         }
         private void CanPlayerAttachCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            CurrentCVehicleConfig.CanPlayerAttach = CanPlayerAttachCB.Checked == true ? 1 : 0;
-            VehicleSettings.isDirty = true;
+            if (VehiclesConfigLB.SelectedItems.Count > 1)
+            {
+                foreach (var item in VehiclesConfigLB.SelectedItems)
+                {
+                    VConfigs pitem = item as VConfigs;
+                    pitem.CanPlayerAttach = CanPlayerAttachCB.Checked == true ? 1 : 0;
+                }
+                VehicleSettings.isDirty = true;
+            }
         }
         private void VehicleSettingsNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
             NumericUpDown nud = sender as NumericUpDown;
             if (nud.DecimalPlaces > 0)
-                VehicleSettings.SetFloatValue(nud.Name.Substring(0, nud.Name.Length - 3), (float)nud.Value);
+                VehicleSettings.SetFloatValue(nud.Name.Substring(0, nud.Name.Length - 3), (decimal)nud.Value);
             else
                 VehicleSettings.SetIntValue(nud.Name.Substring(0, nud.Name.Length - 3), (int)nud.Value);
             VehicleSettings.isDirty = true;
@@ -5437,7 +5446,26 @@ namespace DayZeEditor
             VehicleSettings.isDirty = true;
         }
 
+        private void LockComplexityNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if (VehiclesConfigLB.SelectedItems.Count > 1)
+            {
+                foreach (var item in VehiclesConfigLB.SelectedItems)
+                {
+                    VConfigs pitem = item as VConfigs;
+                    pitem.LockComplexity = LockComplexityNUD.Value;
+                }
+                VehicleSettings.isDirty = true;
+            }
+        }
 
+        private void DesyncInvulnerabilityTimeoutSecondsNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            VehicleSettings.DesyncInvulnerabilityTimeoutSeconds = DesyncInvulnerabilityTimeoutSecondsNUD.Value;
+            VehicleSettings.isDirty = true;
+        }
 
 
 

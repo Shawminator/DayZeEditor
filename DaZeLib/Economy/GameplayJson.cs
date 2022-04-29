@@ -81,7 +81,7 @@ namespace DayZeLib
     public class Worldsdata
     {
         public int lightingConfig { get; set; }
-        public object[] objectSpawnersArr { get; set; }
+        public BindingList<object> objectSpawnersArr { get; set; }
         public BindingList<int> environmentMinTemps { get; set; }
         public BindingList<int> environmentMaxTemps { get; set; }
 
@@ -94,6 +94,7 @@ namespace DayZeLib
                 environmentMaxTemps.Add(0);
                 environmentMinTemps.Add(0);
             }
+            objectSpawnersArr = new BindingList<object>();
         }
     }
 
@@ -151,6 +152,11 @@ namespace DayZeLib
         public float hitDirectionBreakPointRelative { get; set; }
         public float hitDirectionScatter { get; set; }
         public int hitIndicationPostProcessEnabled { get; set; }
+
+        public Hitindicationdata()
+        {
+            hitDirectionIndicatorColorStr = "0xffbb0a1e";
+        }
     }
 
 

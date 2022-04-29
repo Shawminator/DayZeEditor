@@ -44,9 +44,9 @@ namespace DayZeLib
 
         private string nameField;
 
-        private int typeField;
+        private byte typeField;
 
-        private int valueField;
+        private decimal valueField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -64,7 +64,7 @@ namespace DayZeLib
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int type
+        public byte type
         {
             get
             {
@@ -78,7 +78,7 @@ namespace DayZeLib
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int value
+        public decimal value
         {
             get
             {
@@ -89,6 +89,7 @@ namespace DayZeLib
                 this.valueField = value;
             }
         }
+
 
         public override string ToString()
         {

@@ -45,7 +45,7 @@ namespace DayZeLib
     }
     public class VehicleSettings
     {
-        const int CurrentVersion = 8;
+        const int CurrentVersion = 10;
         public int m_Version { get; set; } // current version 8
         public int VehicleSync { get; set; }
         public int VehicleRequireKeyToStart { get; set; }
@@ -56,26 +56,27 @@ namespace DayZeLib
         public int MasterKeyUses { get; set; }
         public int CanPickLock { get; set; }
         public BindingList<string> PickLockTools { get; set; }
-        public float PickLockChancePercent { get; set; }
+        public decimal PickLockChancePercent { get; set; }
         public int PickLockTimeSeconds { get; set; }
-        public float PickLockToolDamagePercent { get; set; }
+        public decimal PickLockToolDamagePercent { get; set; }
         public int EnableWindAerodynamics { get; set; }
         public int EnableTailRotorDamage { get; set; }
         public int PlayerAttachment { get; set; }
         public int Towing { get; set; }
         public int EnableHelicopterExplosions { get; set; }
         public int DisableVehicleDamage { get; set; }
-        public float VehicleCrewDamageMultiplier { get; set; }
-        public float VehicleSpeedDamageMultiplier { get; set; }
+        public decimal VehicleCrewDamageMultiplier { get; set; }
+        public decimal VehicleSpeedDamageMultiplier { get; set; }
         public int CanChangeLock { get; set; }
         public BindingList<string> ChangeLockTools { get; set; }
-        public float ChangeLockTimeSeconds { get; set; }
-        public float ChangeLockToolDamagePercent { get; set; }
+        public decimal ChangeLockTimeSeconds { get; set; }
+        public decimal ChangeLockToolDamagePercent { get; set; }
         public int PlacePlayerOnGroundOnReconnectInVehicle { get; set; }
         public int RevvingOverMaxRPMRuinsEngineInstantly { get; set; }
         public int VehicleDropsRuinedDoors { get; set; }
         public int ExplodingVehicleDropsAttachments { get; set; }
-        public float ForcePilotSyncIntervalSeconds { get; set; }
+        //public float ForcePilotSyncIntervalSeconds { get; set; }
+        public decimal DesyncInvulnerabilityTimeoutSeconds { get; set; }
         public BindingList<VConfigs> VehiclesConfig { get; set; }
 
         [JsonIgnore]
@@ -105,7 +106,7 @@ namespace DayZeLib
         {
             GetType().GetProperty(mytype).SetValue(this, myvalue, null);
         }
-        public void SetFloatValue(string mytype, float myvalue)
+        public void SetFloatValue(string mytype, decimal myvalue)
         {
             GetType().GetProperty(mytype).SetValue(this, myvalue, null);
         }
@@ -114,6 +115,7 @@ namespace DayZeLib
     {
         public string ClassName { get; set; }
         public int CanPlayerAttach { get; set; }
+        public decimal LockComplexity { get; set; }
 
         public override string ToString()
         {

@@ -71,7 +71,7 @@ namespace DayZeEditor
             else
             {
                 StringBuilder sb = new StringBuilder();
-                typesTypeCategory c = comboBox1.SelectedItem as typesTypeCategory;
+                listsCategory c = comboBox1.SelectedItem as listsCategory;
                 foreach (string line in richTextBox2.Lines)
                 {
                     sb.Append("<type name=\"" + line + "\">" + Environment.NewLine);

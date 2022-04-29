@@ -35,23 +35,36 @@ namespace DayZeLib
         public TypesFile (string filename)
         {
             Filename = filename;
-            var mySerializer = new XmlSerializer(typeof(types));
-            using (var myFileStream = new FileStream(filename, FileMode.Open))
+            try
             {
-                try
+                var mySerializer = new XmlSerializer(typeof(types));
+                using (var myFileStream = new FileStream(filename, FileMode.Open))
                 {
-                    types = (types)mySerializer.Deserialize(myFileStream);
-                    types.type = new BindingList<typesType>(types.type.OrderBy(x => x.name).ToList());
-                }
-                catch (Exception ex)
-                {
-                    var form = Application.OpenForms["SplashForm"];
-                    if (form != null)
+                    try
                     {
-                        form.Invoke(new Action(() => { form.Close(); }));
+                        types = (types)mySerializer.Deserialize(myFileStream);
+                        types.type = new BindingList<typesType>(types.type.OrderBy(x => x.name).ToList());
                     }
-                    MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                    catch (Exception ex)
+                    {
+                        var form = Application.OpenForms["SplashForm"];
+                        if (form != null)
+                        {
+                            form.Invoke(new Action(() => { form.Close(); }));
+                        }
+                        MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                    }
                 }
+            }
+            catch(Exception ex)
+            {
+                var form = Application.OpenForms["SplashForm"];
+                if (form != null)
+                {
+                    form.Invoke(new Action(() => { form.Close(); }));
+                }
+
+                MessageBox.Show(ex.Message);
             }
         }
         public bool SaveTyes(string saveTime)
