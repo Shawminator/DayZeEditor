@@ -39,6 +39,9 @@ namespace DayZeEditor
             this.LootChestsLocationsLB = new System.Windows.Forms.ListBox();
             this.darkLabel1 = new DarkUI.Controls.DarkLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.darkButton28 = new DarkUI.Controls.DarkButton();
+            this.darkButton24 = new DarkUI.Controls.DarkButton();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.darkLabel15 = new DarkUI.Controls.DarkLabel();
             this.darkButton3 = new DarkUI.Controls.DarkButton();
@@ -134,8 +137,6 @@ namespace DayZeEditor
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.darkButton28 = new DarkUI.Controls.DarkButton();
-            this.darkButton24 = new DarkUI.Controls.DarkButton();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LootRandomizationNUD)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -199,7 +200,7 @@ namespace DayZeEditor
             this.toolStripButton4.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton4.Size = new System.Drawing.Size(42, 42);
             this.toolStripButton4.Text = "toolStripButton2";
             this.toolStripButton4.ToolTipText = "Open TraderConfig.txt";
             this.toolStripButton4.Visible = false;
@@ -256,6 +257,7 @@ namespace DayZeEditor
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.darkButton28);
             this.groupBox1.Controls.Add(this.darkButton24);
             this.groupBox1.Controls.Add(this.comboBox2);
@@ -283,6 +285,39 @@ namespace DayZeEditor
             this.groupBox1.TabIndex = 91;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Loot chests";
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel1.Location = new System.Drawing.Point(328, 491);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(31, 27);
+            this.panel1.TabIndex = 133;
+            this.panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseClick);
+            // 
+            // darkButton28
+            // 
+            this.darkButton28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton28.Location = new System.Drawing.Point(214, 491);
+            this.darkButton28.Name = "darkButton28";
+            this.darkButton28.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton28.Size = new System.Drawing.Size(108, 23);
+            this.darkButton28.TabIndex = 131;
+            this.darkButton28.Text = "Add From Text";
+            this.darkButton28.Click += new System.EventHandler(this.darkButton28_Click);
+            // 
+            // darkButton24
+            // 
+            this.darkButton24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton24.Location = new System.Drawing.Point(93, 491);
+            this.darkButton24.Name = "darkButton24";
+            this.darkButton24.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton24.Size = new System.Drawing.Size(115, 23);
+            this.darkButton24.TabIndex = 130;
+            this.darkButton24.Text = "Add From Types";
+            this.darkButton24.Click += new System.EventHandler(this.darkButton24_Click);
             // 
             // comboBox2
             // 
@@ -369,6 +404,7 @@ namespace DayZeEditor
             this.lootLB.FormattingEnabled = true;
             this.lootLB.Location = new System.Drawing.Point(93, 211);
             this.lootLB.Name = "lootLB";
+            this.lootLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lootLB.Size = new System.Drawing.Size(229, 277);
             this.lootLB.TabIndex = 122;
             this.lootLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
@@ -771,7 +807,7 @@ namespace DayZeEditor
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1001, 452);
+            this.tabPage2.Size = new System.Drawing.Size(1001, 544);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             // 
@@ -892,6 +928,7 @@ namespace DayZeEditor
             this.LootCatLootLB.FormattingEnabled = true;
             this.LootCatLootLB.Location = new System.Drawing.Point(93, 37);
             this.LootCatLootLB.Name = "LootCatLootLB";
+            this.LootCatLootLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.LootCatLootLB.Size = new System.Drawing.Size(266, 355);
             this.LootCatLootLB.TabIndex = 122;
             this.LootCatLootLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
@@ -951,7 +988,7 @@ namespace DayZeEditor
             this.tabPage3.Controls.Add(this.LCPredefinedWeaponsLB);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1001, 452);
+            this.tabPage3.Size = new System.Drawing.Size(1001, 544);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.ToolTipText = "\"LC_Table_xxxxxx\" for all Items // \"LC_Table_Weapons_xxxxxx\" for Weapons and pred" +
@@ -1221,7 +1258,7 @@ namespace DayZeEditor
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1001, 452);
+            this.tabPage4.Size = new System.Drawing.Size(1001, 544);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "tabPage4";
             // 
@@ -1464,28 +1501,6 @@ namespace DayZeEditor
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
             // 
-            // darkButton28
-            // 
-            this.darkButton28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton28.Location = new System.Drawing.Point(214, 494);
-            this.darkButton28.Name = "darkButton28";
-            this.darkButton28.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton28.Size = new System.Drawing.Size(108, 23);
-            this.darkButton28.TabIndex = 131;
-            this.darkButton28.Text = "Add From Text";
-            this.darkButton28.Click += new System.EventHandler(this.darkButton28_Click);
-            // 
-            // darkButton24
-            // 
-            this.darkButton24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton24.Location = new System.Drawing.Point(93, 494);
-            this.darkButton24.Name = "darkButton24";
-            this.darkButton24.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton24.Size = new System.Drawing.Size(115, 23);
-            this.darkButton24.TabIndex = 130;
-            this.darkButton24.Text = "Add From Types";
-            this.darkButton24.Click += new System.EventHandler(this.darkButton24_Click);
-            // 
             // Lootchest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1644,5 +1659,6 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkLabel darkLabel20;
         private DarkUI.Controls.DarkButton darkButton28;
         private DarkUI.Controls.DarkButton darkButton24;
+        private System.Windows.Forms.Panel panel1;
     }
 }

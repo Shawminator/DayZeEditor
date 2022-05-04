@@ -16,6 +16,7 @@ namespace DayZeEditor
     {
         private void listBox_DrawItem(object sender, DrawItemEventArgs e)
         {
+            if (e.Index < 0) return;
             ListBox lb = sender as ListBox;
             if (lb.SelectedItem == null) return;
             e.DrawBackground();
@@ -54,16 +55,16 @@ namespace DayZeEditor
             );
             addedtypes = new BindingList<string>();
             LowerCase = true;
-            listBox1.DisplayMember = "Name";
-            listBox1.ValueMember = "Value";
-            listBox1.DataSource = addedtypes;
+
            
         }
         public bool HideUsed = false;
 
         private void AddItemfromTypes_Load(object sender, EventArgs e)
         {
-            
+            listBox1.DisplayMember = "Name";
+            listBox1.ValueMember = "Value";
+            listBox1.DataSource = addedtypes;
             if (isCategoryitem)
                 treeView1.CheckBoxes = true;
             if (usedtypes == null)
@@ -192,7 +193,10 @@ namespace DayZeEditor
         }
         private void darkButton3_Click(object sender, EventArgs e)
         {
+            if (listBox1.SelectedItem == null) return;
             addedtypes.Remove(listBox1.GetItemText(listBox1.SelectedItem));
+            if (addedtypes.Count == 0)
+                listBox1.SelectedIndex = -1;
         }
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)

@@ -788,7 +788,11 @@ namespace DayZeEditor
                     filePath = openFileDialog.FileName;
                     var fileStream = openFileDialog.OpenFile();
                     fileContent = File.ReadAllLines(filePath);
-                    CurrentLootChestLocation.pos.Clear();
+                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        CurrentLootChestLocation.pos.Clear();
+                    }
                     foreach (string line in fileContent)
                     {
                         string[] linesplit = line.Split('|');
@@ -843,6 +847,26 @@ namespace DayZeEditor
                     LootChestTable.isDirty = true;
                 }
             }
+        }
+        private void panel1_MouseClick(object sender, MouseEventArgs e)
+        {
+            List<string> selectedLoot = new List<string>();
+            foreach (var item in lootLB.SelectedItems)
+            {
+                selectedLoot.Add(item.ToString());
+            }
+            Clipboard.SetText(string.Join(Environment.NewLine, selectedLoot.Cast<object>().Select(o => o.ToString()).ToArray()));
+            Console.WriteLine("\nCopied to Clipboard:\n" + string.Join(Environment.NewLine, selectedLoot.Cast<object>().Select(o => o.ToString()).ToArray()));
+        }
+        private void panel2_MouseClick(object sender, MouseEventArgs e)
+        {
+            List<string> selectedLoot = new List<string>();
+            foreach (var item in LootCatLootLB.SelectedItems)
+            {
+                selectedLoot.Add(item.ToString());
+            }
+            Clipboard.SetText(string.Join(Environment.NewLine, selectedLoot.Cast<object>().Select(o => o.ToString()).ToArray()));
+            Console.WriteLine("\nCopied to Clipboard:\n" + string.Join(Environment.NewLine, selectedLoot.Cast<object>().Select(o => o.ToString()).ToArray()));
         }
     }
 }

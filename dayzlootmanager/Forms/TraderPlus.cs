@@ -2374,14 +2374,21 @@ namespace DayZeEditor
         }
         private void darkButton16_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("This Will Remove The All reference to this Vehicle, Are you sure you want to do this?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (MessageBox.Show("This Will Remove The All reference to this/these Vehicle/s, Are you sure you want to do this?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                TraderPlusVehiclesConfig.VehiclesParts.Remove(currentVehiclespart);
-                TraderPlusVehiclesConfig.isDirty = true;
-                if (VehiclePartLB.Items.Count == 0)
-                    VehiclePartLB.SelectedIndex = -1;
-                else
-                    VehiclePartLB.SelectedIndex = 0;
+                if (VehiclePartLB.SelectedItems.Count > 1)
+                {
+                    List<Vehiclespart> removelist = VehiclePartLB.SelectedItems.Cast<Vehiclespart>().ToList();
+                    foreach (Vehiclespart item in removelist)
+                    {
+                        TraderPlusVehiclesConfig.VehiclesParts.Remove(item);
+                        TraderPlusVehiclesConfig.isDirty = true;
+                    }
+                    if (VehiclePartLB.Items.Count == 0)
+                        VehiclePartLB.SelectedIndex = -1;
+                    else
+                        VehiclePartLB.SelectedIndex = 0;
+                }
             }
         }
         private void darkButton19_Click(object sender, EventArgs e)
@@ -2427,20 +2434,38 @@ namespace DayZeEditor
         private void vehicleHeightNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentVehiclespart.Height = (int)vehicleHeightNUD.Value;
-            TraderPlusVehiclesConfig.isDirty = true;
+            if (VehiclePartLB.SelectedItems.Count > 0)
+            {
+                foreach (Vehiclespart item in VehiclePartLB.SelectedItems)
+                {
+                    item.Height = (int)vehicleHeightNUD.Value;
+                }
+                TraderPlusVehiclesConfig.isDirty = true;
+            }
         }
         private void InsurancePriceCoefficientNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentVehiclespart.Insurance.InsurancePriceCoefficient = (float)Math.Round(InsurancePriceCoefficientNUD.Value, 2);
-            TraderPlusVehiclesConfig.isDirty = true;
+            if (VehiclePartLB.SelectedItems.Count > 0)
+            {
+                foreach (Vehiclespart item in VehiclePartLB.SelectedItems)
+                {
+                    item.Insurance.InsurancePriceCoefficient = (float)Math.Round(InsurancePriceCoefficientNUD.Value, 2);
+                }
+                TraderPlusVehiclesConfig.isDirty = true;
+            }
         }
         private void CollateralMoneyCoefficientNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentVehiclespart.Insurance.CollateralMoneyCoefficient = (float)CollateralMoneyCoefficientNUD.Value;
-            TraderPlusVehiclesConfig.isDirty = true;
+            if (VehiclePartLB.SelectedItems.Count > 0)
+            {
+                foreach (Vehiclespart item in VehiclePartLB.SelectedItems)
+                {
+                    item.Insurance.CollateralMoneyCoefficient = (float)CollateralMoneyCoefficientNUD.Value;
+                }
+                TraderPlusVehiclesConfig.isDirty = true;
+            }
         }
         #endregion Vehicle Settings
 
@@ -2584,17 +2609,20 @@ namespace DayZeEditor
 
         private void toolStripMenuItem7_Click(object sender, EventArgs e)
         {
-            foreach(ItemProducts item in currentTradercategory.itemProducts)
+            foreach (Tradercategory tc in TraderPlusPriceConfig.TraderCategories)
             {
-                if(item.Classname.StartsWith("*** MISSING ITEM TYPE ("))
+                foreach (ItemProducts item in tc.itemProducts)
                 {
-                    string oldclassname = item.Classname.Replace("*** MISSING ITEM TYPE (", "");
-                    oldclassname = oldclassname.Replace(")***", "");
-                    string propperclassname = currentproject.getcorrectclassamefromtypes(oldclassname);
-                    if(propperclassname != item.Classname)
+                    if (item.Classname.StartsWith("*** MISSING ITEM TYPE ("))
                     {
-                        item.Classname = propperclassname;
-                        TraderPlusPriceConfig.isDirty = true;
+                        string oldclassname = item.Classname.Replace("*** MISSING ITEM TYPE (", "");
+                        oldclassname = oldclassname.Replace(")***", "");
+                        string propperclassname = currentproject.getcorrectclassamefromtypes(oldclassname);
+                        if (propperclassname != item.Classname)
+                        {
+                            item.Classname = propperclassname;
+                            TraderPlusPriceConfig.isDirty = true;
+                        }
                     }
                 }
             }
@@ -2605,6 +2633,15 @@ namespace DayZeEditor
 
         }
 
-
+        private void toolStripMenuItem8_Click(object sender, EventArgs e)
+        {
+            foreach (Tradercategory tc in TraderPlusPriceConfig.TraderCategories)
+            {
+                foreach (ItemProducts item in tc.itemProducts)
+                {
+                    item.Classname = currentproject.getcorrectclassamefromtypes(item.Classname);
+                }
+            }
+        }
     }
 }

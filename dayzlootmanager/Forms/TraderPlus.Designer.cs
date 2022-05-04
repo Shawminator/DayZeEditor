@@ -39,6 +39,7 @@ namespace DayZeEditor
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.categoriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -521,6 +522,7 @@ namespace DayZeEditor
             this.toolStripMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem6,
             this.toolStripMenuItem4,
+            this.toolStripMenuItem8,
             this.toolStripMenuItem7,
             this.toolStripMenuItem5});
             this.toolStripMenuItem3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
@@ -545,6 +547,15 @@ namespace DayZeEditor
             this.toolStripMenuItem4.Size = new System.Drawing.Size(230, 22);
             this.toolStripMenuItem4.Text = "Check for Cats not in trader";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
+            // 
+            // toolStripMenuItem8
+            // 
+            this.toolStripMenuItem8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripMenuItem8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(230, 22);
+            this.toolStripMenuItem8.Text = "Check for items not in types";
+            this.toolStripMenuItem8.Click += new System.EventHandler(this.toolStripMenuItem8_Click);
             // 
             // toolStripMenuItem7
             // 
@@ -4576,6 +4587,7 @@ namespace DayZeEditor
             this.VehiclePartLB.FormattingEnabled = true;
             this.VehiclePartLB.Location = new System.Drawing.Point(8, 29);
             this.VehiclePartLB.Name = "VehiclePartLB";
+            this.VehiclePartLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.VehiclePartLB.Size = new System.Drawing.Size(298, 550);
             this.VehiclePartLB.TabIndex = 60;
             this.VehiclePartLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
@@ -5028,5 +5040,6 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox HideLicenceBtnCB;
         private System.Windows.Forms.CheckBox HideGarageBtnCB;
         private System.Windows.Forms.CheckBox HideInsuranceBtnCB;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
     }
 }
