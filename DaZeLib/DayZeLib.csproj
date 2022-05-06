@@ -106,6 +106,8 @@
     <Compile Include="Economy\EventSpawnsXML.cs" />
     <Compile Include="Economy\EventsXML.cs" />
     <Compile Include="Economy\GameplayJson.cs" />
+    <Compile Include="Economy\mapgroupposxml.cs" />
+    <Compile Include="Economy\mapgrouprotoXML.cs" />
     <Compile Include="Economy\PlayerSpawnsXML.cs" />
     <Compile Include="Economy\SpawnabletypesXML.cs" />
     <Compile Include="Economy\TypesXML.cs" />

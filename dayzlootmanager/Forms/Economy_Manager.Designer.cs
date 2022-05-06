@@ -237,6 +237,7 @@ namespace DayZeEditor
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.EventsLB = new System.Windows.Forms.ListBox();
             this.TypesSummaryTab = new System.Windows.Forms.TabPage();
+            this.darkButton55 = new DarkUI.Controls.DarkButton();
             this.darkButton54 = new DarkUI.Controls.DarkButton();
             this.darkLabel6 = new DarkUI.Controls.DarkLabel();
             this.groupBox22 = new System.Windows.Forms.GroupBox();
@@ -3569,6 +3570,7 @@ namespace DayZeEditor
             // TypesSummaryTab
             // 
             this.TypesSummaryTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TypesSummaryTab.Controls.Add(this.darkButton55);
             this.TypesSummaryTab.Controls.Add(this.darkButton54);
             this.TypesSummaryTab.Controls.Add(this.darkLabel6);
             this.TypesSummaryTab.Controls.Add(this.groupBox22);
@@ -3583,6 +3585,17 @@ namespace DayZeEditor
             this.TypesSummaryTab.Size = new System.Drawing.Size(1076, 575);
             this.TypesSummaryTab.TabIndex = 3;
             this.TypesSummaryTab.Text = "Types Summary";
+            // 
+            // darkButton55
+            // 
+            this.darkButton55.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.darkButton55.Location = new System.Drawing.Point(843, 248);
+            this.darkButton55.Name = "darkButton55";
+            this.darkButton55.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton55.Size = new System.Drawing.Size(202, 27);
+            this.darkButton55.TabIndex = 48;
+            this.darkButton55.Text = "Calculate Total Loot positions";
+            this.darkButton55.Click += new System.EventHandler(this.darkButton55_Click);
             // 
             // darkButton54
             // 
@@ -7043,6 +7056,7 @@ namespace DayZeEditor
             // DecMaxNUD
             // 
             this.DecMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.DecMaxNUD.DecimalPlaces = 1;
             this.DecMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.DecMaxNUD.Location = new System.Drawing.Point(882, 90);
             this.DecMaxNUD.Minimum = new decimal(new int[] {
@@ -7059,6 +7073,7 @@ namespace DayZeEditor
             // DecMinNUD
             // 
             this.DecMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.DecMinNUD.DecimalPlaces = 1;
             this.DecMinNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.DecMinNUD.Location = new System.Drawing.Point(882, 64);
             this.DecMinNUD.Minimum = new decimal(new int[] {
@@ -7085,6 +7100,7 @@ namespace DayZeEditor
             // NovMaxNUD
             // 
             this.NovMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.NovMaxNUD.DecimalPlaces = 1;
             this.NovMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.NovMaxNUD.Location = new System.Drawing.Point(808, 90);
             this.NovMaxNUD.Minimum = new decimal(new int[] {
@@ -7101,6 +7117,7 @@ namespace DayZeEditor
             // NovMinNUD
             // 
             this.NovMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.NovMinNUD.DecimalPlaces = 1;
             this.NovMinNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.NovMinNUD.Location = new System.Drawing.Point(808, 64);
             this.NovMinNUD.Minimum = new decimal(new int[] {
@@ -7127,6 +7144,7 @@ namespace DayZeEditor
             // OctMaxNUD
             // 
             this.OctMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.OctMaxNUD.DecimalPlaces = 1;
             this.OctMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.OctMaxNUD.Location = new System.Drawing.Point(734, 90);
             this.OctMaxNUD.Minimum = new decimal(new int[] {
@@ -7143,6 +7161,7 @@ namespace DayZeEditor
             // OctMinNUD
             // 
             this.OctMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.OctMinNUD.DecimalPlaces = 1;
             this.OctMinNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.OctMinNUD.Location = new System.Drawing.Point(734, 64);
             this.OctMinNUD.Minimum = new decimal(new int[] {
@@ -7169,6 +7188,7 @@ namespace DayZeEditor
             // SepMaxNUD
             // 
             this.SepMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SepMaxNUD.DecimalPlaces = 1;
             this.SepMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.SepMaxNUD.Location = new System.Drawing.Point(660, 90);
             this.SepMaxNUD.Minimum = new decimal(new int[] {
@@ -7185,6 +7205,7 @@ namespace DayZeEditor
             // SepMinNUD
             // 
             this.SepMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SepMinNUD.DecimalPlaces = 1;
             this.SepMinNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.SepMinNUD.Location = new System.Drawing.Point(660, 64);
             this.SepMinNUD.Minimum = new decimal(new int[] {
@@ -7211,6 +7232,7 @@ namespace DayZeEditor
             // AugMaxNUD
             // 
             this.AugMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.AugMaxNUD.DecimalPlaces = 1;
             this.AugMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.AugMaxNUD.Location = new System.Drawing.Point(586, 90);
             this.AugMaxNUD.Minimum = new decimal(new int[] {
@@ -7227,6 +7249,7 @@ namespace DayZeEditor
             // AugMinNUD
             // 
             this.AugMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.AugMinNUD.DecimalPlaces = 1;
             this.AugMinNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.AugMinNUD.Location = new System.Drawing.Point(586, 64);
             this.AugMinNUD.Minimum = new decimal(new int[] {
@@ -7253,6 +7276,7 @@ namespace DayZeEditor
             // JulMaxNUD
             // 
             this.JulMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.JulMaxNUD.DecimalPlaces = 1;
             this.JulMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.JulMaxNUD.Location = new System.Drawing.Point(512, 90);
             this.JulMaxNUD.Minimum = new decimal(new int[] {
@@ -7269,6 +7293,7 @@ namespace DayZeEditor
             // JulMinNUD
             // 
             this.JulMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.JulMinNUD.DecimalPlaces = 1;
             this.JulMinNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.JulMinNUD.Location = new System.Drawing.Point(512, 64);
             this.JulMinNUD.Minimum = new decimal(new int[] {
@@ -7295,6 +7320,7 @@ namespace DayZeEditor
             // JunMaxNUD
             // 
             this.JunMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.JunMaxNUD.DecimalPlaces = 1;
             this.JunMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.JunMaxNUD.Location = new System.Drawing.Point(438, 90);
             this.JunMaxNUD.Minimum = new decimal(new int[] {
@@ -7311,6 +7337,7 @@ namespace DayZeEditor
             // JunMinNUD
             // 
             this.JunMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.JunMinNUD.DecimalPlaces = 1;
             this.JunMinNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.JunMinNUD.Location = new System.Drawing.Point(438, 64);
             this.JunMinNUD.Minimum = new decimal(new int[] {
@@ -7337,6 +7364,7 @@ namespace DayZeEditor
             // MayMaxNUD
             // 
             this.MayMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MayMaxNUD.DecimalPlaces = 1;
             this.MayMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.MayMaxNUD.Location = new System.Drawing.Point(364, 90);
             this.MayMaxNUD.Minimum = new decimal(new int[] {
@@ -7353,6 +7381,7 @@ namespace DayZeEditor
             // MayMinNUD
             // 
             this.MayMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MayMinNUD.DecimalPlaces = 1;
             this.MayMinNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.MayMinNUD.Location = new System.Drawing.Point(364, 64);
             this.MayMinNUD.Minimum = new decimal(new int[] {
@@ -7379,6 +7408,7 @@ namespace DayZeEditor
             // AprMaxNUD
             // 
             this.AprMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.AprMaxNUD.DecimalPlaces = 1;
             this.AprMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.AprMaxNUD.Location = new System.Drawing.Point(290, 90);
             this.AprMaxNUD.Minimum = new decimal(new int[] {
@@ -7395,6 +7425,7 @@ namespace DayZeEditor
             // AprMinNUD
             // 
             this.AprMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.AprMinNUD.DecimalPlaces = 1;
             this.AprMinNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.AprMinNUD.Location = new System.Drawing.Point(290, 64);
             this.AprMinNUD.Minimum = new decimal(new int[] {
@@ -7421,6 +7452,7 @@ namespace DayZeEditor
             // MarMaxNUD
             // 
             this.MarMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MarMaxNUD.DecimalPlaces = 1;
             this.MarMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.MarMaxNUD.Location = new System.Drawing.Point(216, 90);
             this.MarMaxNUD.Minimum = new decimal(new int[] {
@@ -7437,6 +7469,7 @@ namespace DayZeEditor
             // MarMinNUD
             // 
             this.MarMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MarMinNUD.DecimalPlaces = 1;
             this.MarMinNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.MarMinNUD.Location = new System.Drawing.Point(216, 64);
             this.MarMinNUD.Minimum = new decimal(new int[] {
@@ -7463,6 +7496,7 @@ namespace DayZeEditor
             // FebMaxNUD
             // 
             this.FebMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.FebMaxNUD.DecimalPlaces = 1;
             this.FebMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.FebMaxNUD.Location = new System.Drawing.Point(142, 90);
             this.FebMaxNUD.Minimum = new decimal(new int[] {
@@ -7479,6 +7513,7 @@ namespace DayZeEditor
             // FebMinNUD
             // 
             this.FebMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.FebMinNUD.DecimalPlaces = 1;
             this.FebMinNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.FebMinNUD.Location = new System.Drawing.Point(142, 64);
             this.FebMinNUD.Minimum = new decimal(new int[] {
@@ -7525,6 +7560,7 @@ namespace DayZeEditor
             // JanMaxNUD
             // 
             this.JanMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.JanMaxNUD.DecimalPlaces = 1;
             this.JanMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.JanMaxNUD.Location = new System.Drawing.Point(68, 90);
             this.JanMaxNUD.Minimum = new decimal(new int[] {
@@ -7541,6 +7577,7 @@ namespace DayZeEditor
             // JanMinNUD
             // 
             this.JanMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.JanMinNUD.DecimalPlaces = 1;
             this.JanMinNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.JanMinNUD.Location = new System.Drawing.Point(68, 64);
             this.JanMinNUD.Minimum = new decimal(new int[] {
@@ -11203,5 +11240,6 @@ namespace DayZeEditor
         private System.Windows.Forms.NumericUpDown JanMaxNUD;
         private System.Windows.Forms.NumericUpDown JanMinNUD;
         private System.Windows.Forms.Label label99;
+        private DarkUI.Controls.DarkButton darkButton55;
     }
 }

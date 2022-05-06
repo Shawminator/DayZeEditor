@@ -112,7 +112,10 @@ namespace DayZeEditor
         public weatherconfig weatherconfig { get; set; }
         [JsonIgnore]
         public PlayerDB PlayerDB { get; set; }
-
+        [JsonIgnore]
+        public mapgroupproto mapgroupproto { get; set; }
+        [JsonIgnore]
+        public mapgrouppos mapgrouppos { get; set; }
 
         [JsonIgnore]
         public int TotalNomCount { get; set; }
@@ -255,6 +258,14 @@ namespace DayZeEditor
         internal void SetGlobals()
         {
             gloabsconfig = new globalsconfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\db\\globals.xml");
+        }
+        internal void Setmapgrouproto()
+        {
+            mapgroupproto = new mapgroupproto(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\mapgroupproto.xml");
+        }
+        internal void Setmapgroupos()
+        {
+            mapgrouppos = new mapgrouppos(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\mapgrouppos.xml");
         }
         internal void SetWeather()
         {

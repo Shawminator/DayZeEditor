@@ -81,7 +81,8 @@ namespace DayZeEditor
 
             comboBox5.DataSource = currentproject.limitfefinitions.lists.tags;
 
-            comboBox8.DataSource = currentproject.limitfefinitions.lists.categories;
+            comboBox8.DataSource = new List<listsCategory>( currentproject.limitfefinitions.lists.categories.ToList());
+
             comboBox7.DataSource = currentproject.limitfefinitions.lists.usageflags;
             comboBox6.DataSource = currentproject.limitfefinitions.lists.tags;
             SetuprandomPresetsForSpawnabletypes();
@@ -2596,7 +2597,7 @@ namespace DayZeEditor
                 {
                     foreach (var item in listBox5.Items)
                     {
-                        typesTypeCategory c = item as typesTypeCategory;
+                        listsCategory c = item as listsCategory;
                         Queryitems.Add(c.name + ",categories");
                     }
                 }
@@ -2612,7 +2613,7 @@ namespace DayZeEditor
                 {
                     foreach (var item in listBox4.Items)
                     {
-                        typesTypeUsage u = item as typesTypeUsage;
+                        listsUsage u = item as listsUsage;
                         Queryitems.Add(u.name + ",usage");
                     }
                 }
@@ -2624,7 +2625,7 @@ namespace DayZeEditor
                 {
                     foreach (var item in listBox3.Items)
                     {
-                        typesTypeTag c = item as typesTypeTag;
+                        listsTag c = item as listsTag;
                         Queryitems.Add(c.name + ",tags");
                     }
                 }
@@ -2736,7 +2737,7 @@ namespace DayZeEditor
         }
         private void darkButton12_Click(object sender, EventArgs e)
         {
-            typesTypeCategory c = comboBox8.SelectedItem as typesTypeCategory;
+            listsCategory c = comboBox8.SelectedItem as listsCategory;
             if(!listBox5.Items.Contains(c))
                 listBox5.Items.Add(c);
         }
@@ -2744,13 +2745,13 @@ namespace DayZeEditor
         {
             if (listBox5.SelectedItems.Count > 0)
             {
-                typesTypeCategory c = listBox5.SelectedItem as typesTypeCategory;
+                listsCategory c = listBox5.SelectedItem as listsCategory;
                 listBox5.Items.Remove(c);
             }
         }
         private void darkButton10_Click(object sender, EventArgs e)
         {
-            typesTypeUsage u = comboBox7.SelectedItem as typesTypeUsage;
+            listsUsage u = comboBox7.SelectedItem as listsUsage;
             if (!listBox4.Items.Contains(u))
                 listBox4.Items.Add(u);
         }
@@ -2758,13 +2759,13 @@ namespace DayZeEditor
         {
             if (listBox4.SelectedItems.Count > 0)
             {
-                typesTypeUsage u = listBox4.SelectedItem as typesTypeUsage;
+                listsUsage u = listBox4.SelectedItem as listsUsage;
                 listBox4.Items.Remove(u);
             }
         }
         private void darkButton4_Click(object sender, EventArgs e)
         {
-            typesTypeTag t = comboBox6.SelectedItem as typesTypeTag;
+            listsTag t = comboBox6.SelectedItem as listsTag;
             if (!listBox3.Items.Contains(t))
                 listBox3.Items.Add(t);
         }
@@ -2772,7 +2773,7 @@ namespace DayZeEditor
         {
             if (listBox3.SelectedItems.Count > 0)
             {
-                typesTypeTag t = listBox3.SelectedItem as typesTypeTag;
+                listsTag t = listBox3.SelectedItem as listsTag;
                 listBox3.Items.Remove(t);
             }
         }
@@ -3473,35 +3474,35 @@ namespace DayZeEditor
         private void MinTemp_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.WorldsData.environmentMinTemps[0] = (int)JanMinNUD.Value;
-            cfggameplay.WorldsData.environmentMinTemps[1] = (int)FebMinNUD.Value;
-            cfggameplay.WorldsData.environmentMinTemps[2] = (int)MarMinNUD.Value;
-            cfggameplay.WorldsData.environmentMinTemps[3] = (int)AprMinNUD.Value;
-            cfggameplay.WorldsData.environmentMinTemps[4] = (int)MayMinNUD.Value;
-            cfggameplay.WorldsData.environmentMinTemps[5] = (int)JunMinNUD.Value;
-            cfggameplay.WorldsData.environmentMinTemps[6] = (int)JulMinNUD.Value;
-            cfggameplay.WorldsData.environmentMinTemps[7] = (int)AugMinNUD.Value;
-            cfggameplay.WorldsData.environmentMinTemps[8] = (int)SepMinNUD.Value;
-            cfggameplay.WorldsData.environmentMinTemps[9] = (int)OctMinNUD.Value;
-            cfggameplay.WorldsData.environmentMinTemps[10] = (int)NovMinNUD.Value;
-            cfggameplay.WorldsData.environmentMinTemps[11] = (int)DecMinNUD.Value;
+            cfggameplay.WorldsData.environmentMinTemps[0] = JanMinNUD.Value;
+            cfggameplay.WorldsData.environmentMinTemps[1] = FebMinNUD.Value;
+            cfggameplay.WorldsData.environmentMinTemps[2] = MarMinNUD.Value;
+            cfggameplay.WorldsData.environmentMinTemps[3] = AprMinNUD.Value;
+            cfggameplay.WorldsData.environmentMinTemps[4] = MayMinNUD.Value;
+            cfggameplay.WorldsData.environmentMinTemps[5] = JunMinNUD.Value;
+            cfggameplay.WorldsData.environmentMinTemps[6] = JulMinNUD.Value;
+            cfggameplay.WorldsData.environmentMinTemps[7] = AugMinNUD.Value;
+            cfggameplay.WorldsData.environmentMinTemps[8] = SepMinNUD.Value;
+            cfggameplay.WorldsData.environmentMinTemps[9] = OctMinNUD.Value;
+            cfggameplay.WorldsData.environmentMinTemps[10] = NovMinNUD.Value;
+            cfggameplay.WorldsData.environmentMinTemps[11] = DecMinNUD.Value;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void MaxTemp_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.WorldsData.environmentMaxTemps[0] = (int)JanMaxNUD.Value;
-            cfggameplay.WorldsData.environmentMaxTemps[1] = (int)FebMaxNUD.Value;
-            cfggameplay.WorldsData.environmentMaxTemps[2] = (int)MarMaxNUD.Value;
-            cfggameplay.WorldsData.environmentMaxTemps[3] = (int)AprMaxNUD.Value;
-            cfggameplay.WorldsData.environmentMaxTemps[4] = (int)MayMaxNUD.Value;
-            cfggameplay.WorldsData.environmentMaxTemps[5] = (int)JunMaxNUD.Value;
-            cfggameplay.WorldsData.environmentMaxTemps[6] = (int)JulMaxNUD.Value;
-            cfggameplay.WorldsData.environmentMaxTemps[7] = (int)AugMaxNUD.Value;
-            cfggameplay.WorldsData.environmentMaxTemps[8] = (int)SepMaxNUD.Value;
-            cfggameplay.WorldsData.environmentMaxTemps[9] = (int)OctMaxNUD.Value;
-            cfggameplay.WorldsData.environmentMaxTemps[10] = (int)NovMaxNUD.Value;
-            cfggameplay.WorldsData.environmentMaxTemps[11] = (int)DecMaxNUD.Value;
+            cfggameplay.WorldsData.environmentMaxTemps[0] = JanMaxNUD.Value;
+            cfggameplay.WorldsData.environmentMaxTemps[1] = FebMaxNUD.Value;
+            cfggameplay.WorldsData.environmentMaxTemps[2] = MarMaxNUD.Value;
+            cfggameplay.WorldsData.environmentMaxTemps[3] = AprMaxNUD.Value;
+            cfggameplay.WorldsData.environmentMaxTemps[4] = MayMaxNUD.Value;
+            cfggameplay.WorldsData.environmentMaxTemps[5] = JunMaxNUD.Value;
+            cfggameplay.WorldsData.environmentMaxTemps[6] = JulMaxNUD.Value;
+            cfggameplay.WorldsData.environmentMaxTemps[7] = AugMaxNUD.Value;
+            cfggameplay.WorldsData.environmentMaxTemps[8] = SepMaxNUD.Value;
+            cfggameplay.WorldsData.environmentMaxTemps[9] = OctMaxNUD.Value;
+            cfggameplay.WorldsData.environmentMaxTemps[10] = NovMaxNUD.Value;
+            cfggameplay.WorldsData.environmentMaxTemps[11] = DecMaxNUD.Value;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         #endregion cfggameplayconfig
@@ -4311,5 +4312,23 @@ namespace DayZeEditor
 
 
         #endregion weather
+
+        private void darkButton55_Click(object sender, EventArgs e)
+        {
+            int Total = 0;
+            foreach(mapGroup lootposition in currentproject.mapgrouppos.map.group)
+            {
+                prototypeGroup group = currentproject.mapgroupproto.prototypeGroup.group.FirstOrDefault(x => x.name == lootposition.name);
+                if (group.lootmax == 0)
+                {
+                    Total += currentproject.mapgroupproto.prototypeGroup.defaults.FirstOrDefault(x => x.name == "group").lootmax;
+                }
+                else
+                {
+                    Total += currentproject.mapgroupproto.prototypeGroup.group.First(x => x.name == lootposition.name).lootmax;
+                }
+            }
+            MessageBox.Show("Total Maximum Loot Positions : " + Total.ToString());
+        }
     }
 }

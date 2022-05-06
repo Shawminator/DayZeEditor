@@ -245,6 +245,64 @@ namespace DayZeLib
             File.WriteAllText(Filename, sw.ToString());
         }
     }
+    public class mapgroupproto
+    {
+        public prototype prototypeGroup { get; set; }
+        public string Filename { get; set; }
+        public bool isDirty = false;
+        public mapgroupproto(string filename)
+        {
+            Filename = filename;
+            var mySerializer = new XmlSerializer(typeof(prototype));
+            // To read the file, create a FileStream.
+            using (var myFileStream = new FileStream(filename, FileMode.Open))
+            {
+                try
+                {
+                    // Call the Deserialize method and cast to the object type.
+                    prototypeGroup = (prototype)mySerializer.Deserialize(myFileStream);
+                }
+                catch (Exception ex)
+                {
+                    var form = Application.OpenForms["SplashForm"];
+                    if (form != null)
+                    {
+                        form.Invoke(new Action(() => { form.Close(); }));
+                    }
+                    MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                }
+            }
+        }
+    }
+    public class mapgrouppos
+    {
+        public map map { get; set; }
+        public string Filename { get; set; }
+        public bool isDirty = false;
+        public mapgrouppos(string filename)
+        {
+            Filename = filename;
+            var mySerializer = new XmlSerializer(typeof(map));
+            // To read the file, create a FileStream.
+            using (var myFileStream = new FileStream(filename, FileMode.Open))
+            {
+                try
+                {
+                    // Call the Deserialize method and cast to the object type.
+                    map = (map)mySerializer.Deserialize(myFileStream);
+                }
+                catch (Exception ex)
+                {
+                    var form = Application.OpenForms["SplashForm"];
+                    if (form != null)
+                    {
+                        form.Invoke(new Action(() => { form.Close(); }));
+                    }
+                    MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                }
+            }
+        }
+    }
     public class eventscofig
     {
         public events events { get; set; }

@@ -82,13 +82,13 @@ namespace DayZeLib
     {
         public int lightingConfig { get; set; }
         public BindingList<object> objectSpawnersArr { get; set; }
-        public BindingList<int> environmentMinTemps { get; set; }
-        public BindingList<int> environmentMaxTemps { get; set; }
+        public BindingList<decimal> environmentMinTemps { get; set; }
+        public BindingList<decimal> environmentMaxTemps { get; set; }
 
         public Worldsdata()
         {
-            environmentMaxTemps = new BindingList<int>();
-            environmentMinTemps = new BindingList<int>();
+            environmentMaxTemps = new BindingList<decimal>();
+            environmentMinTemps = new BindingList<decimal>();
             for (int i = 0; i < 12; i++)
             {
                 environmentMaxTemps.Add(0);

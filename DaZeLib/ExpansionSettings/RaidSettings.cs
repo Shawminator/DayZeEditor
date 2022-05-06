@@ -57,7 +57,6 @@ namespace DayZeLib
         public int LockOnContainerRaidToolCycles { get; set; }
         public float LockOnContainerRaidToolDamagePercent { get; set; }
 
-
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
