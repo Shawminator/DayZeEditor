@@ -4,7 +4,7 @@ namespace DayZeLib
 {
     public class NotificationSettings
     {
-        const int CurrentVersion = 2;
+        const int CurrentVersion = 4;
 
         public int m_Version { get; set; }
         public int EnableNotification { get; set; }
@@ -31,6 +31,8 @@ namespace DayZeLib
         public int KillFeedHeliHitNoDriver { get; set; }
         public int KillFeedHeliCrash { get; set; }
         public int KillFeedHeliCrashCrew { get; set; }
+        public int KillFeedBoatHitDriver { get; set; }
+        public int KillFeedBoatHitNoDriver { get; set; }
         public int KillFeedBoatCrash { get; set; }
         public int KillFeedBoatCrashCrew { get; set; }
         public int KillFeedBarbedWire { get; set; }
@@ -39,6 +41,7 @@ namespace DayZeLib
         public int KillFeedDehydration { get; set; }
         public int KillFeedStarvation { get; set; }
         public int KillFeedBleeding { get; set; }
+        public int KillFeedStatusEffects { get; set; }
         public int KillFeedSuicide { get; set; }
         public int KillFeedWeapon { get; set; }
         public int KillFeedMeleeWeapon { get; set; }
@@ -47,11 +50,6 @@ namespace DayZeLib
         public int KillFeedAnimal { get; set; }
         public int KillFeedKilledUnknown { get; set; }
         public int KillFeedDiedUnknown { get; set; }
-        public int EnableKillFeedDiscordMsg { get; set; }
-        public int ShowVictimOnKillFeed { get; set; }
-        public int ShowDistanceOnKillFeed { get; set; }
-        public int ShowKillerOnKillFeed { get; set; }
-        public int ShowWeaponOnKillFeed { get; set; }
 
 
         [JsonIgnore]

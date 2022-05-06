@@ -109,7 +109,7 @@ namespace DayZeEditor
             this.darkLabel14 = new DarkUI.Controls.DarkLabel();
             this.darkLabel13 = new DarkUI.Controls.DarkLabel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.VariousSettingsTabPage = new System.Windows.Forms.TabPage();
             this.groupBox62 = new System.Windows.Forms.GroupBox();
             this.MonitoringSettingsEnabledCB = new System.Windows.Forms.CheckBox();
             this.groupBox59 = new System.Windows.Forms.GroupBox();
@@ -147,27 +147,25 @@ namespace DayZeEditor
             this.EnableTerritoriesTCB = new System.Windows.Forms.CheckBox();
             this.UseWholeMapForInviteListTCB = new System.Windows.Forms.CheckBox();
             this.groupBox27 = new System.Windows.Forms.GroupBox();
-            this.ShowWeaponOnKillFeedCB = new System.Windows.Forms.CheckBox();
-            this.ShowKillerOnKillFeedCB = new System.Windows.Forms.CheckBox();
-            this.EnableKillFeedDiscordMsgCB = new System.Windows.Forms.CheckBox();
-            this.ShowDistanceOnKillFeedCB = new System.Windows.Forms.CheckBox();
-            this.ShowVictimOnKillFeedCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedAnimalCB = new System.Windows.Forms.CheckBox();
             this.KillFeedDiedUnknownCB = new System.Windows.Forms.CheckBox();
             this.KillFeedKilledUnknownCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedAnimalCB = new System.Windows.Forms.CheckBox();
             this.KillFeedInfectedCB = new System.Windows.Forms.CheckBox();
             this.KillFeedBarehandsCB = new System.Windows.Forms.CheckBox();
             this.KillFeedMeleeWeaponCB = new System.Windows.Forms.CheckBox();
             this.KillFeedWeaponCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedDehydrationCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedStarvationCB = new System.Windows.Forms.CheckBox();
             this.KillFeedSuicideCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedStatusEffectsCB = new System.Windows.Forms.CheckBox();
             this.KillFeedBleedingCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedBoatCrashCrewCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedBarbedWireCB = new System.Windows.Forms.CheckBox();
-            this.KillFeedWeaponExplosionCB = new System.Windows.Forms.CheckBox();
             this.KillFeedFireCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedWeaponExplosionCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedStarvationCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedDehydrationCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedBoatHitNoDriverCB = new System.Windows.Forms.CheckBox();
             this.KillFeedBoatCrashCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedBarbedWireCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedBoatCrashCrewCB = new System.Windows.Forms.CheckBox();
+            this.KillFeedBoatHitDriverCB = new System.Windows.Forms.CheckBox();
             this.KillFeedHeliCrashCrewCB = new System.Windows.Forms.CheckBox();
             this.KillFeedHeliCrashCB = new System.Windows.Forms.CheckBox();
             this.KillFeedHeliHitNoDriverCB = new System.Windows.Forms.CheckBox();
@@ -768,6 +766,7 @@ namespace DayZeEditor
             this.darkButton48 = new DarkUI.Controls.DarkButton();
             this.darkButton49 = new DarkUI.Controls.DarkButton();
             this.groupBox44 = new System.Windows.Forms.GroupBox();
+            this.BackgroundImagePathTB = new System.Windows.Forms.TextBox();
             this.darkLabel161 = new DarkUI.Controls.DarkLabel();
             this.TerritoryRespawnCooldownNUD = new System.Windows.Forms.NumericUpDown();
             this.SpawnCreateDeathMarkerCB = new System.Windows.Forms.CheckBox();
@@ -924,7 +923,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
             this.tabControl2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
+            this.VariousSettingsTabPage.SuspendLayout();
             this.groupBox62.SuspendLayout();
             this.groupBox59.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerTagViewRangeNUD)).BeginInit();
@@ -1740,7 +1739,7 @@ namespace DayZeEditor
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.groupBox2.Location = new System.Drawing.Point(209, 100);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(260, 138);
+            this.groupBox2.Size = new System.Drawing.Size(260, 301);
             this.groupBox2.TabIndex = 92;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Attachments";
@@ -1775,14 +1774,14 @@ namespace DayZeEditor
             this.listBox4.FormattingEnabled = true;
             this.listBox4.Location = new System.Drawing.Point(6, 19);
             this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(120, 4);
+            this.listBox4.Size = new System.Drawing.Size(120, 277);
             this.listBox4.TabIndex = 0;
             this.listBox4.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
             // darkButton8
             // 
             this.darkButton8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton8.Location = new System.Drawing.Point(208, 244);
+            this.darkButton8.Location = new System.Drawing.Point(209, 407);
             this.darkButton8.Name = "darkButton8";
             this.darkButton8.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton8.Size = new System.Drawing.Size(261, 23);
@@ -1793,7 +1792,7 @@ namespace DayZeEditor
             // darkButton2
             // 
             this.darkButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton2.Location = new System.Drawing.Point(9, 244);
+            this.darkButton2.Location = new System.Drawing.Point(9, 407);
             this.darkButton2.Name = "darkButton2";
             this.darkButton2.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton2.Size = new System.Drawing.Size(194, 23);
@@ -1852,7 +1851,7 @@ namespace DayZeEditor
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(9, 7);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(194, 134);
+            this.listBox1.Size = new System.Drawing.Size(194, 394);
             this.listBox1.TabIndex = 0;
             this.listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
@@ -2069,7 +2068,7 @@ namespace DayZeEditor
             // tabControl2
             // 
             this.tabControl2.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
-            this.tabControl2.Controls.Add(this.tabPage3);
+            this.tabControl2.Controls.Add(this.VariousSettingsTabPage);
             this.tabControl2.Controls.Add(this.tabPage1);
             this.tabControl2.Controls.Add(this.tabPage2);
             this.tabControl2.Controls.Add(this.tabPage4);
@@ -2090,25 +2089,25 @@ namespace DayZeEditor
             this.tabControl2.TabIndex = 72;
             this.tabControl2.SelectedIndexChanged += new System.EventHandler(this.tabControl2_SelectedIndexChanged);
             // 
-            // tabPage3
+            // VariousSettingsTabPage
             // 
-            this.tabPage3.AutoScroll = true;
-            this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.tabPage3.Controls.Add(this.groupBox62);
-            this.tabPage3.Controls.Add(this.groupBox59);
-            this.tabPage3.Controls.Add(this.groupBox29);
-            this.tabPage3.Controls.Add(this.groupBox28);
-            this.tabPage3.Controls.Add(this.groupBox27);
-            this.tabPage3.Controls.Add(this.groupBox10);
-            this.tabPage3.Controls.Add(this.groupBox9);
-            this.tabPage3.Controls.Add(this.groupBox8);
-            this.tabPage3.Controls.Add(this.groupBox7);
-            this.tabPage3.ForeColor = System.Drawing.SystemColors.Control;
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1280, 642);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Various Settings";
+            this.VariousSettingsTabPage.AutoScroll = true;
+            this.VariousSettingsTabPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.VariousSettingsTabPage.Controls.Add(this.groupBox62);
+            this.VariousSettingsTabPage.Controls.Add(this.groupBox59);
+            this.VariousSettingsTabPage.Controls.Add(this.groupBox29);
+            this.VariousSettingsTabPage.Controls.Add(this.groupBox28);
+            this.VariousSettingsTabPage.Controls.Add(this.groupBox27);
+            this.VariousSettingsTabPage.Controls.Add(this.groupBox10);
+            this.VariousSettingsTabPage.Controls.Add(this.groupBox9);
+            this.VariousSettingsTabPage.Controls.Add(this.groupBox8);
+            this.VariousSettingsTabPage.Controls.Add(this.groupBox7);
+            this.VariousSettingsTabPage.ForeColor = System.Drawing.SystemColors.Control;
+            this.VariousSettingsTabPage.Location = new System.Drawing.Point(4, 25);
+            this.VariousSettingsTabPage.Name = "VariousSettingsTabPage";
+            this.VariousSettingsTabPage.Size = new System.Drawing.Size(1280, 642);
+            this.VariousSettingsTabPage.TabIndex = 2;
+            this.VariousSettingsTabPage.Text = "Various Settings";
             // 
             // groupBox62
             // 
@@ -2530,27 +2529,25 @@ namespace DayZeEditor
             // 
             // groupBox27
             // 
-            this.groupBox27.Controls.Add(this.ShowWeaponOnKillFeedCB);
-            this.groupBox27.Controls.Add(this.ShowKillerOnKillFeedCB);
-            this.groupBox27.Controls.Add(this.EnableKillFeedDiscordMsgCB);
-            this.groupBox27.Controls.Add(this.ShowDistanceOnKillFeedCB);
-            this.groupBox27.Controls.Add(this.ShowVictimOnKillFeedCB);
+            this.groupBox27.Controls.Add(this.KillFeedAnimalCB);
             this.groupBox27.Controls.Add(this.KillFeedDiedUnknownCB);
             this.groupBox27.Controls.Add(this.KillFeedKilledUnknownCB);
-            this.groupBox27.Controls.Add(this.KillFeedAnimalCB);
             this.groupBox27.Controls.Add(this.KillFeedInfectedCB);
             this.groupBox27.Controls.Add(this.KillFeedBarehandsCB);
             this.groupBox27.Controls.Add(this.KillFeedMeleeWeaponCB);
             this.groupBox27.Controls.Add(this.KillFeedWeaponCB);
-            this.groupBox27.Controls.Add(this.KillFeedDehydrationCB);
-            this.groupBox27.Controls.Add(this.KillFeedStarvationCB);
             this.groupBox27.Controls.Add(this.KillFeedSuicideCB);
+            this.groupBox27.Controls.Add(this.KillFeedStatusEffectsCB);
             this.groupBox27.Controls.Add(this.KillFeedBleedingCB);
-            this.groupBox27.Controls.Add(this.KillFeedBoatCrashCrewCB);
-            this.groupBox27.Controls.Add(this.KillFeedBarbedWireCB);
-            this.groupBox27.Controls.Add(this.KillFeedWeaponExplosionCB);
             this.groupBox27.Controls.Add(this.KillFeedFireCB);
+            this.groupBox27.Controls.Add(this.KillFeedWeaponExplosionCB);
+            this.groupBox27.Controls.Add(this.KillFeedStarvationCB);
+            this.groupBox27.Controls.Add(this.KillFeedDehydrationCB);
+            this.groupBox27.Controls.Add(this.KillFeedBoatHitNoDriverCB);
             this.groupBox27.Controls.Add(this.KillFeedBoatCrashCB);
+            this.groupBox27.Controls.Add(this.KillFeedBarbedWireCB);
+            this.groupBox27.Controls.Add(this.KillFeedBoatCrashCrewCB);
+            this.groupBox27.Controls.Add(this.KillFeedBoatHitDriverCB);
             this.groupBox27.Controls.Add(this.KillFeedHeliCrashCrewCB);
             this.groupBox27.Controls.Add(this.KillFeedHeliCrashCB);
             this.groupBox27.Controls.Add(this.KillFeedHeliHitNoDriverCB);
@@ -2583,79 +2580,27 @@ namespace DayZeEditor
             this.groupBox27.TabStop = false;
             this.groupBox27.Text = "Notifications";
             // 
-            // ShowWeaponOnKillFeedCB
+            // KillFeedAnimalCB
             // 
-            this.ShowWeaponOnKillFeedCB.AutoSize = true;
-            this.ShowWeaponOnKillFeedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowWeaponOnKillFeedCB.Location = new System.Drawing.Point(220, 503);
-            this.ShowWeaponOnKillFeedCB.Name = "ShowWeaponOnKillFeedCB";
-            this.ShowWeaponOnKillFeedCB.Size = new System.Drawing.Size(157, 17);
-            this.ShowWeaponOnKillFeedCB.TabIndex = 61;
-            this.ShowWeaponOnKillFeedCB.Text = "Show Weapon On Kill Feed";
-            this.ShowWeaponOnKillFeedCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ShowWeaponOnKillFeedCB.UseVisualStyleBackColor = true;
-            this.ShowWeaponOnKillFeedCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // ShowKillerOnKillFeedCB
-            // 
-            this.ShowKillerOnKillFeedCB.AutoSize = true;
-            this.ShowKillerOnKillFeedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowKillerOnKillFeedCB.Location = new System.Drawing.Point(220, 480);
-            this.ShowKillerOnKillFeedCB.Name = "ShowKillerOnKillFeedCB";
-            this.ShowKillerOnKillFeedCB.Size = new System.Drawing.Size(138, 17);
-            this.ShowKillerOnKillFeedCB.TabIndex = 60;
-            this.ShowKillerOnKillFeedCB.Text = "Show Killer On Kill Feed";
-            this.ShowKillerOnKillFeedCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ShowKillerOnKillFeedCB.UseVisualStyleBackColor = true;
-            this.ShowKillerOnKillFeedCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // EnableKillFeedDiscordMsgCB
-            // 
-            this.EnableKillFeedDiscordMsgCB.AutoSize = true;
-            this.EnableKillFeedDiscordMsgCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.EnableKillFeedDiscordMsgCB.Location = new System.Drawing.Point(220, 411);
-            this.EnableKillFeedDiscordMsgCB.Name = "EnableKillFeedDiscordMsgCB";
-            this.EnableKillFeedDiscordMsgCB.Size = new System.Drawing.Size(164, 17);
-            this.EnableKillFeedDiscordMsgCB.TabIndex = 58;
-            this.EnableKillFeedDiscordMsgCB.Text = "Enable Kill Feed Discord Msg";
-            this.EnableKillFeedDiscordMsgCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.EnableKillFeedDiscordMsgCB.UseVisualStyleBackColor = true;
-            this.EnableKillFeedDiscordMsgCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // ShowDistanceOnKillFeedCB
-            // 
-            this.ShowDistanceOnKillFeedCB.AutoSize = true;
-            this.ShowDistanceOnKillFeedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowDistanceOnKillFeedCB.Location = new System.Drawing.Point(220, 457);
-            this.ShowDistanceOnKillFeedCB.Name = "ShowDistanceOnKillFeedCB";
-            this.ShowDistanceOnKillFeedCB.Size = new System.Drawing.Size(158, 17);
-            this.ShowDistanceOnKillFeedCB.TabIndex = 57;
-            this.ShowDistanceOnKillFeedCB.Text = "Show Distance On Kill Feed";
-            this.ShowDistanceOnKillFeedCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ShowDistanceOnKillFeedCB.UseVisualStyleBackColor = true;
-            this.ShowDistanceOnKillFeedCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // ShowVictimOnKillFeedCB
-            // 
-            this.ShowVictimOnKillFeedCB.AutoSize = true;
-            this.ShowVictimOnKillFeedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowVictimOnKillFeedCB.Location = new System.Drawing.Point(220, 434);
-            this.ShowVictimOnKillFeedCB.Name = "ShowVictimOnKillFeedCB";
-            this.ShowVictimOnKillFeedCB.Size = new System.Drawing.Size(144, 17);
-            this.ShowVictimOnKillFeedCB.TabIndex = 59;
-            this.ShowVictimOnKillFeedCB.Text = "Show Victim On Kill Feed";
-            this.ShowVictimOnKillFeedCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ShowVictimOnKillFeedCB.UseVisualStyleBackColor = true;
-            this.ShowVictimOnKillFeedCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            this.KillFeedAnimalCB.AutoSize = true;
+            this.KillFeedAnimalCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedAnimalCB.Location = new System.Drawing.Point(221, 434);
+            this.KillFeedAnimalCB.Name = "KillFeedAnimalCB";
+            this.KillFeedAnimalCB.Size = new System.Drawing.Size(100, 17);
+            this.KillFeedAnimalCB.TabIndex = 58;
+            this.KillFeedAnimalCB.Text = "Kill Feed Animal";
+            this.KillFeedAnimalCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedAnimalCB.UseVisualStyleBackColor = true;
+            this.KillFeedAnimalCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
             // 
             // KillFeedDiedUnknownCB
             // 
             this.KillFeedDiedUnknownCB.AutoSize = true;
             this.KillFeedDiedUnknownCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedDiedUnknownCB.Location = new System.Drawing.Point(220, 388);
+            this.KillFeedDiedUnknownCB.Location = new System.Drawing.Point(221, 480);
             this.KillFeedDiedUnknownCB.Name = "KillFeedDiedUnknownCB";
             this.KillFeedDiedUnknownCB.Size = new System.Drawing.Size(140, 17);
-            this.KillFeedDiedUnknownCB.TabIndex = 56;
+            this.KillFeedDiedUnknownCB.TabIndex = 57;
             this.KillFeedDiedUnknownCB.Text = "Kill Feed Died Unknown";
             this.KillFeedDiedUnknownCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.KillFeedDiedUnknownCB.UseVisualStyleBackColor = true;
@@ -2665,36 +2610,23 @@ namespace DayZeEditor
             // 
             this.KillFeedKilledUnknownCB.AutoSize = true;
             this.KillFeedKilledUnknownCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedKilledUnknownCB.Location = new System.Drawing.Point(220, 364);
+            this.KillFeedKilledUnknownCB.Location = new System.Drawing.Point(221, 457);
             this.KillFeedKilledUnknownCB.Name = "KillFeedKilledUnknownCB";
             this.KillFeedKilledUnknownCB.Size = new System.Drawing.Size(143, 17);
-            this.KillFeedKilledUnknownCB.TabIndex = 55;
+            this.KillFeedKilledUnknownCB.TabIndex = 59;
             this.KillFeedKilledUnknownCB.Text = "Kill Feed Killed Unknown";
             this.KillFeedKilledUnknownCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.KillFeedKilledUnknownCB.UseVisualStyleBackColor = true;
             this.KillFeedKilledUnknownCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
             // 
-            // KillFeedAnimalCB
-            // 
-            this.KillFeedAnimalCB.AutoSize = true;
-            this.KillFeedAnimalCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedAnimalCB.Location = new System.Drawing.Point(220, 341);
-            this.KillFeedAnimalCB.Name = "KillFeedAnimalCB";
-            this.KillFeedAnimalCB.Size = new System.Drawing.Size(100, 17);
-            this.KillFeedAnimalCB.TabIndex = 54;
-            this.KillFeedAnimalCB.Text = "Kill Feed Animal";
-            this.KillFeedAnimalCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedAnimalCB.UseVisualStyleBackColor = true;
-            this.KillFeedAnimalCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
             // KillFeedInfectedCB
             // 
             this.KillFeedInfectedCB.AutoSize = true;
             this.KillFeedInfectedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedInfectedCB.Location = new System.Drawing.Point(220, 318);
+            this.KillFeedInfectedCB.Location = new System.Drawing.Point(221, 411);
             this.KillFeedInfectedCB.Name = "KillFeedInfectedCB";
             this.KillFeedInfectedCB.Size = new System.Drawing.Size(108, 17);
-            this.KillFeedInfectedCB.TabIndex = 53;
+            this.KillFeedInfectedCB.TabIndex = 56;
             this.KillFeedInfectedCB.Text = "Kill Feed Infected";
             this.KillFeedInfectedCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.KillFeedInfectedCB.UseVisualStyleBackColor = true;
@@ -2704,10 +2636,10 @@ namespace DayZeEditor
             // 
             this.KillFeedBarehandsCB.AutoSize = true;
             this.KillFeedBarehandsCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedBarehandsCB.Location = new System.Drawing.Point(220, 295);
+            this.KillFeedBarehandsCB.Location = new System.Drawing.Point(221, 387);
             this.KillFeedBarehandsCB.Name = "KillFeedBarehandsCB";
             this.KillFeedBarehandsCB.Size = new System.Drawing.Size(120, 17);
-            this.KillFeedBarehandsCB.TabIndex = 52;
+            this.KillFeedBarehandsCB.TabIndex = 55;
             this.KillFeedBarehandsCB.Text = "Kill Feed Barehands";
             this.KillFeedBarehandsCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.KillFeedBarehandsCB.UseVisualStyleBackColor = true;
@@ -2717,10 +2649,10 @@ namespace DayZeEditor
             // 
             this.KillFeedMeleeWeaponCB.AutoSize = true;
             this.KillFeedMeleeWeaponCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedMeleeWeaponCB.Location = new System.Drawing.Point(220, 272);
+            this.KillFeedMeleeWeaponCB.Location = new System.Drawing.Point(221, 364);
             this.KillFeedMeleeWeaponCB.Name = "KillFeedMeleeWeaponCB";
             this.KillFeedMeleeWeaponCB.Size = new System.Drawing.Size(142, 17);
-            this.KillFeedMeleeWeaponCB.TabIndex = 51;
+            this.KillFeedMeleeWeaponCB.TabIndex = 54;
             this.KillFeedMeleeWeaponCB.Text = "Kill Feed Melee Weapon";
             this.KillFeedMeleeWeaponCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.KillFeedMeleeWeaponCB.UseVisualStyleBackColor = true;
@@ -2730,137 +2662,176 @@ namespace DayZeEditor
             // 
             this.KillFeedWeaponCB.AutoSize = true;
             this.KillFeedWeaponCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedWeaponCB.Location = new System.Drawing.Point(220, 249);
+            this.KillFeedWeaponCB.Location = new System.Drawing.Point(221, 341);
             this.KillFeedWeaponCB.Name = "KillFeedWeaponCB";
             this.KillFeedWeaponCB.Size = new System.Drawing.Size(110, 17);
-            this.KillFeedWeaponCB.TabIndex = 50;
+            this.KillFeedWeaponCB.TabIndex = 53;
             this.KillFeedWeaponCB.Text = "Kill Feed Weapon";
             this.KillFeedWeaponCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.KillFeedWeaponCB.UseVisualStyleBackColor = true;
             this.KillFeedWeaponCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
             // 
-            // KillFeedDehydrationCB
-            // 
-            this.KillFeedDehydrationCB.AutoSize = true;
-            this.KillFeedDehydrationCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedDehydrationCB.Location = new System.Drawing.Point(220, 157);
-            this.KillFeedDehydrationCB.Name = "KillFeedDehydrationCB";
-            this.KillFeedDehydrationCB.Size = new System.Drawing.Size(126, 17);
-            this.KillFeedDehydrationCB.TabIndex = 48;
-            this.KillFeedDehydrationCB.Text = "Kill Feed Dehydration";
-            this.KillFeedDehydrationCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedDehydrationCB.UseVisualStyleBackColor = true;
-            this.KillFeedDehydrationCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedStarvationCB
-            // 
-            this.KillFeedStarvationCB.AutoSize = true;
-            this.KillFeedStarvationCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedStarvationCB.Location = new System.Drawing.Point(220, 180);
-            this.KillFeedStarvationCB.Name = "KillFeedStarvationCB";
-            this.KillFeedStarvationCB.Size = new System.Drawing.Size(117, 17);
-            this.KillFeedStarvationCB.TabIndex = 47;
-            this.KillFeedStarvationCB.Text = "Kill Feed Starvation";
-            this.KillFeedStarvationCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedStarvationCB.UseVisualStyleBackColor = true;
-            this.KillFeedStarvationCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
             // KillFeedSuicideCB
             // 
             this.KillFeedSuicideCB.AutoSize = true;
             this.KillFeedSuicideCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedSuicideCB.Location = new System.Drawing.Point(220, 226);
+            this.KillFeedSuicideCB.Location = new System.Drawing.Point(221, 318);
             this.KillFeedSuicideCB.Name = "KillFeedSuicideCB";
             this.KillFeedSuicideCB.Size = new System.Drawing.Size(104, 17);
-            this.KillFeedSuicideCB.TabIndex = 46;
+            this.KillFeedSuicideCB.TabIndex = 52;
             this.KillFeedSuicideCB.Text = "Kill Feed Suicide";
             this.KillFeedSuicideCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.KillFeedSuicideCB.UseVisualStyleBackColor = true;
             this.KillFeedSuicideCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
             // 
+            // KillFeedStatusEffectsCB
+            // 
+            this.KillFeedStatusEffectsCB.AutoSize = true;
+            this.KillFeedStatusEffectsCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedStatusEffectsCB.Location = new System.Drawing.Point(221, 295);
+            this.KillFeedStatusEffectsCB.Name = "KillFeedStatusEffectsCB";
+            this.KillFeedStatusEffectsCB.Size = new System.Drawing.Size(135, 17);
+            this.KillFeedStatusEffectsCB.TabIndex = 51;
+            this.KillFeedStatusEffectsCB.Text = "Kill Feed Status Effects";
+            this.KillFeedStatusEffectsCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedStatusEffectsCB.UseVisualStyleBackColor = true;
+            this.KillFeedStatusEffectsCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
             // KillFeedBleedingCB
             // 
             this.KillFeedBleedingCB.AutoSize = true;
             this.KillFeedBleedingCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedBleedingCB.Location = new System.Drawing.Point(220, 203);
+            this.KillFeedBleedingCB.Location = new System.Drawing.Point(221, 272);
             this.KillFeedBleedingCB.Name = "KillFeedBleedingCB";
             this.KillFeedBleedingCB.Size = new System.Drawing.Size(110, 17);
-            this.KillFeedBleedingCB.TabIndex = 49;
+            this.KillFeedBleedingCB.TabIndex = 50;
             this.KillFeedBleedingCB.Text = "Kill Feed Bleeding";
             this.KillFeedBleedingCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.KillFeedBleedingCB.UseVisualStyleBackColor = true;
             this.KillFeedBleedingCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
             // 
-            // KillFeedBoatCrashCrewCB
-            // 
-            this.KillFeedBoatCrashCrewCB.AutoSize = true;
-            this.KillFeedBoatCrashCrewCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedBoatCrashCrewCB.Location = new System.Drawing.Point(220, 65);
-            this.KillFeedBoatCrashCrewCB.Name = "KillFeedBoatCrashCrewCB";
-            this.KillFeedBoatCrashCrewCB.Size = new System.Drawing.Size(148, 17);
-            this.KillFeedBoatCrashCrewCB.TabIndex = 44;
-            this.KillFeedBoatCrashCrewCB.Text = "Kill Feed Boat Crash Crew";
-            this.KillFeedBoatCrashCrewCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedBoatCrashCrewCB.UseVisualStyleBackColor = true;
-            this.KillFeedBoatCrashCrewCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedBarbedWireCB
-            // 
-            this.KillFeedBarbedWireCB.AutoSize = true;
-            this.KillFeedBarbedWireCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedBarbedWireCB.Location = new System.Drawing.Point(220, 88);
-            this.KillFeedBarbedWireCB.Name = "KillFeedBarbedWireCB";
-            this.KillFeedBarbedWireCB.Size = new System.Drawing.Size(128, 17);
-            this.KillFeedBarbedWireCB.TabIndex = 43;
-            this.KillFeedBarbedWireCB.Text = "Kill Feed Barbed Wire";
-            this.KillFeedBarbedWireCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedBarbedWireCB.UseVisualStyleBackColor = true;
-            this.KillFeedBarbedWireCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
-            // KillFeedWeaponExplosionCB
-            // 
-            this.KillFeedWeaponExplosionCB.AutoSize = true;
-            this.KillFeedWeaponExplosionCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedWeaponExplosionCB.Location = new System.Drawing.Point(220, 134);
-            this.KillFeedWeaponExplosionCB.Name = "KillFeedWeaponExplosionCB";
-            this.KillFeedWeaponExplosionCB.Size = new System.Drawing.Size(158, 17);
-            this.KillFeedWeaponExplosionCB.TabIndex = 42;
-            this.KillFeedWeaponExplosionCB.Text = "Kill Feed Weapon Explosion";
-            this.KillFeedWeaponExplosionCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.KillFeedWeaponExplosionCB.UseVisualStyleBackColor = true;
-            this.KillFeedWeaponExplosionCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
-            // 
             // KillFeedFireCB
             // 
             this.KillFeedFireCB.AutoSize = true;
             this.KillFeedFireCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedFireCB.Location = new System.Drawing.Point(220, 111);
+            this.KillFeedFireCB.Location = new System.Drawing.Point(221, 180);
             this.KillFeedFireCB.Name = "KillFeedFireCB";
             this.KillFeedFireCB.Size = new System.Drawing.Size(86, 17);
-            this.KillFeedFireCB.TabIndex = 45;
+            this.KillFeedFireCB.TabIndex = 48;
             this.KillFeedFireCB.Text = "Kill Feed Fire";
             this.KillFeedFireCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.KillFeedFireCB.UseVisualStyleBackColor = true;
             this.KillFeedFireCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
             // 
+            // KillFeedWeaponExplosionCB
+            // 
+            this.KillFeedWeaponExplosionCB.AutoSize = true;
+            this.KillFeedWeaponExplosionCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedWeaponExplosionCB.Location = new System.Drawing.Point(221, 203);
+            this.KillFeedWeaponExplosionCB.Name = "KillFeedWeaponExplosionCB";
+            this.KillFeedWeaponExplosionCB.Size = new System.Drawing.Size(158, 17);
+            this.KillFeedWeaponExplosionCB.TabIndex = 47;
+            this.KillFeedWeaponExplosionCB.Text = "Kill Feed Weapon Explosion";
+            this.KillFeedWeaponExplosionCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedWeaponExplosionCB.UseVisualStyleBackColor = true;
+            this.KillFeedWeaponExplosionCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedStarvationCB
+            // 
+            this.KillFeedStarvationCB.AutoSize = true;
+            this.KillFeedStarvationCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedStarvationCB.Location = new System.Drawing.Point(221, 249);
+            this.KillFeedStarvationCB.Name = "KillFeedStarvationCB";
+            this.KillFeedStarvationCB.Size = new System.Drawing.Size(117, 17);
+            this.KillFeedStarvationCB.TabIndex = 46;
+            this.KillFeedStarvationCB.Text = "Kill Feed Starvation";
+            this.KillFeedStarvationCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedStarvationCB.UseVisualStyleBackColor = true;
+            this.KillFeedStarvationCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedDehydrationCB
+            // 
+            this.KillFeedDehydrationCB.AutoSize = true;
+            this.KillFeedDehydrationCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedDehydrationCB.Location = new System.Drawing.Point(221, 226);
+            this.KillFeedDehydrationCB.Name = "KillFeedDehydrationCB";
+            this.KillFeedDehydrationCB.Size = new System.Drawing.Size(126, 17);
+            this.KillFeedDehydrationCB.TabIndex = 49;
+            this.KillFeedDehydrationCB.Text = "Kill Feed Dehydration";
+            this.KillFeedDehydrationCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedDehydrationCB.UseVisualStyleBackColor = true;
+            this.KillFeedDehydrationCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedBoatHitNoDriverCB
+            // 
+            this.KillFeedBoatHitNoDriverCB.AutoSize = true;
+            this.KillFeedBoatHitNoDriverCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedBoatHitNoDriverCB.Location = new System.Drawing.Point(221, 88);
+            this.KillFeedBoatHitNoDriverCB.Name = "KillFeedBoatHitNoDriverCB";
+            this.KillFeedBoatHitNoDriverCB.Size = new System.Drawing.Size(155, 17);
+            this.KillFeedBoatHitNoDriverCB.TabIndex = 44;
+            this.KillFeedBoatHitNoDriverCB.Text = "Kill Feed Boat Hit No Driver";
+            this.KillFeedBoatHitNoDriverCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedBoatHitNoDriverCB.UseVisualStyleBackColor = true;
+            this.KillFeedBoatHitNoDriverCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
             // KillFeedBoatCrashCB
             // 
             this.KillFeedBoatCrashCB.AutoSize = true;
             this.KillFeedBoatCrashCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedBoatCrashCB.Location = new System.Drawing.Point(220, 43);
+            this.KillFeedBoatCrashCB.Location = new System.Drawing.Point(221, 111);
             this.KillFeedBoatCrashCB.Name = "KillFeedBoatCrashCB";
             this.KillFeedBoatCrashCB.Size = new System.Drawing.Size(121, 17);
-            this.KillFeedBoatCrashCB.TabIndex = 41;
+            this.KillFeedBoatCrashCB.TabIndex = 43;
             this.KillFeedBoatCrashCB.Text = "Kill Feed Boat Crash";
             this.KillFeedBoatCrashCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.KillFeedBoatCrashCB.UseVisualStyleBackColor = true;
             this.KillFeedBoatCrashCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
             // 
+            // KillFeedBarbedWireCB
+            // 
+            this.KillFeedBarbedWireCB.AutoSize = true;
+            this.KillFeedBarbedWireCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedBarbedWireCB.Location = new System.Drawing.Point(221, 157);
+            this.KillFeedBarbedWireCB.Name = "KillFeedBarbedWireCB";
+            this.KillFeedBarbedWireCB.Size = new System.Drawing.Size(128, 17);
+            this.KillFeedBarbedWireCB.TabIndex = 42;
+            this.KillFeedBarbedWireCB.Text = "Kill Feed Barbed Wire";
+            this.KillFeedBarbedWireCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedBarbedWireCB.UseVisualStyleBackColor = true;
+            this.KillFeedBarbedWireCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedBoatCrashCrewCB
+            // 
+            this.KillFeedBoatCrashCrewCB.AutoSize = true;
+            this.KillFeedBoatCrashCrewCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedBoatCrashCrewCB.Location = new System.Drawing.Point(221, 134);
+            this.KillFeedBoatCrashCrewCB.Name = "KillFeedBoatCrashCrewCB";
+            this.KillFeedBoatCrashCrewCB.Size = new System.Drawing.Size(148, 17);
+            this.KillFeedBoatCrashCrewCB.TabIndex = 45;
+            this.KillFeedBoatCrashCrewCB.Text = "Kill Feed Boat Crash Crew";
+            this.KillFeedBoatCrashCrewCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedBoatCrashCrewCB.UseVisualStyleBackColor = true;
+            this.KillFeedBoatCrashCrewCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
+            // KillFeedBoatHitDriverCB
+            // 
+            this.KillFeedBoatHitDriverCB.AutoSize = true;
+            this.KillFeedBoatHitDriverCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.KillFeedBoatHitDriverCB.Location = new System.Drawing.Point(221, 66);
+            this.KillFeedBoatHitDriverCB.Name = "KillFeedBoatHitDriverCB";
+            this.KillFeedBoatHitDriverCB.Size = new System.Drawing.Size(138, 17);
+            this.KillFeedBoatHitDriverCB.TabIndex = 41;
+            this.KillFeedBoatHitDriverCB.Text = "Kill Feed Boat Hit Driver";
+            this.KillFeedBoatHitDriverCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.KillFeedBoatHitDriverCB.UseVisualStyleBackColor = true;
+            this.KillFeedBoatHitDriverCB.CheckedChanged += new System.EventHandler(this.NotificationCB_CheckedChanged);
+            // 
             // KillFeedHeliCrashCrewCB
             // 
             this.KillFeedHeliCrashCrewCB.AutoSize = true;
             this.KillFeedHeliCrashCrewCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedHeliCrashCrewCB.Location = new System.Drawing.Point(220, 19);
+            this.KillFeedHeliCrashCrewCB.Location = new System.Drawing.Point(221, 42);
             this.KillFeedHeliCrashCrewCB.Name = "KillFeedHeliCrashCrewCB";
             this.KillFeedHeliCrashCrewCB.Size = new System.Drawing.Size(144, 17);
             this.KillFeedHeliCrashCrewCB.TabIndex = 40;
@@ -2873,7 +2844,7 @@ namespace DayZeEditor
             // 
             this.KillFeedHeliCrashCB.AutoSize = true;
             this.KillFeedHeliCrashCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.KillFeedHeliCrashCB.Location = new System.Drawing.Point(23, 526);
+            this.KillFeedHeliCrashCB.Location = new System.Drawing.Point(221, 19);
             this.KillFeedHeliCrashCB.Name = "KillFeedHeliCrashCB";
             this.KillFeedHeliCrashCB.Size = new System.Drawing.Size(117, 17);
             this.KillFeedHeliCrashCB.TabIndex = 39;
@@ -4610,7 +4581,7 @@ namespace DayZeEditor
             this.toolStripButton8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton8.Name = "toolStripButton8";
-            this.toolStripButton8.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton8.Size = new System.Drawing.Size(96, 22);
             this.toolStripButton8.Text = "General Settings";
             this.toolStripButton8.Click += new System.EventHandler(this.toolStripButton8_Click);
             // 
@@ -4629,7 +4600,7 @@ namespace DayZeEditor
             this.toolStripButton7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton7.Size = new System.Drawing.Size(73, 22);
             this.toolStripButton7.Text = "Build Zones";
             this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
             // 
@@ -10479,7 +10450,7 @@ namespace DayZeEditor
             this.UseCooldownCB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.UseCooldownCB.AutoSize = true;
             this.UseCooldownCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.UseCooldownCB.Location = new System.Drawing.Point(149, 417);
+            this.UseCooldownCB.Location = new System.Drawing.Point(149, 431);
             this.UseCooldownCB.Name = "UseCooldownCB";
             this.UseCooldownCB.Size = new System.Drawing.Size(95, 17);
             this.UseCooldownCB.TabIndex = 119;
@@ -10562,7 +10533,7 @@ namespace DayZeEditor
             this.darkLabel138.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.darkLabel138.AutoSize = true;
             this.darkLabel138.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel138.Location = new System.Drawing.Point(4, 381);
+            this.darkLabel138.Location = new System.Drawing.Point(4, 395);
             this.darkLabel138.Name = "darkLabel138";
             this.darkLabel138.Size = new System.Drawing.Size(115, 13);
             this.darkLabel138.TabIndex = 145;
@@ -10573,7 +10544,7 @@ namespace DayZeEditor
             this.SpawnLocationNameTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.SpawnLocationNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.SpawnLocationNameTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SpawnLocationNameTB.Location = new System.Drawing.Point(4, 397);
+            this.SpawnLocationNameTB.Location = new System.Drawing.Point(4, 411);
             this.SpawnLocationNameTB.Name = "SpawnLocationNameTB";
             this.SpawnLocationNameTB.Size = new System.Drawing.Size(240, 20);
             this.SpawnLocationNameTB.TabIndex = 144;
@@ -10606,7 +10577,7 @@ namespace DayZeEditor
             this.darkLabel137.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.darkLabel137.AutoSize = true;
             this.darkLabel137.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel137.Location = new System.Drawing.Point(4, 417);
+            this.darkLabel137.Location = new System.Drawing.Point(4, 431);
             this.darkLabel137.Name = "darkLabel137";
             this.darkLabel137.Size = new System.Drawing.Size(85, 13);
             this.darkLabel137.TabIndex = 141;
@@ -10619,9 +10590,9 @@ namespace DayZeEditor
             this.SpawnPositionsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.SpawnPositionsLB.ForeColor = System.Drawing.SystemColors.Control;
             this.SpawnPositionsLB.FormattingEnabled = true;
-            this.SpawnPositionsLB.Location = new System.Drawing.Point(4, 434);
+            this.SpawnPositionsLB.Location = new System.Drawing.Point(4, 447);
             this.SpawnPositionsLB.Name = "SpawnPositionsLB";
-            this.SpawnPositionsLB.Size = new System.Drawing.Size(240, 95);
+            this.SpawnPositionsLB.Size = new System.Drawing.Size(240, 82);
             this.SpawnPositionsLB.TabIndex = 140;
             this.SpawnPositionsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.SpawnPositionsLB.SelectedIndexChanged += new System.EventHandler(this.SpawnPositionsLB_SelectedIndexChanged);
@@ -10629,7 +10600,7 @@ namespace DayZeEditor
             // darkButton48
             // 
             this.darkButton48.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton48.Location = new System.Drawing.Point(4, 351);
+            this.darkButton48.Location = new System.Drawing.Point(4, 365);
             this.darkButton48.Name = "darkButton48";
             this.darkButton48.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton48.Size = new System.Drawing.Size(108, 23);
@@ -10640,7 +10611,7 @@ namespace DayZeEditor
             // darkButton49
             // 
             this.darkButton49.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton49.Location = new System.Drawing.Point(136, 351);
+            this.darkButton49.Location = new System.Drawing.Point(136, 365);
             this.darkButton49.Name = "darkButton49";
             this.darkButton49.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton49.Size = new System.Drawing.Size(108, 23);
@@ -10650,6 +10621,7 @@ namespace DayZeEditor
             // 
             // groupBox44
             // 
+            this.groupBox44.Controls.Add(this.BackgroundImagePathTB);
             this.groupBox44.Controls.Add(this.darkLabel161);
             this.groupBox44.Controls.Add(this.TerritoryRespawnCooldownNUD);
             this.groupBox44.Controls.Add(this.SpawnCreateDeathMarkerCB);
@@ -10672,10 +10644,21 @@ namespace DayZeEditor
             this.groupBox44.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox44.Location = new System.Drawing.Point(7, 6);
             this.groupBox44.Name = "groupBox44";
-            this.groupBox44.Size = new System.Drawing.Size(237, 241);
+            this.groupBox44.Size = new System.Drawing.Size(237, 266);
             this.groupBox44.TabIndex = 117;
             this.groupBox44.TabStop = false;
             this.groupBox44.Text = "Spawn Settings";
+            // 
+            // BackgroundImagePathTB
+            // 
+            this.BackgroundImagePathTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BackgroundImagePathTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BackgroundImagePathTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.BackgroundImagePathTB.Location = new System.Drawing.Point(5, 240);
+            this.BackgroundImagePathTB.Name = "BackgroundImagePathTB";
+            this.BackgroundImagePathTB.Size = new System.Drawing.Size(222, 20);
+            this.BackgroundImagePathTB.TabIndex = 145;
+            this.BackgroundImagePathTB.TextChanged += new System.EventHandler(this.BackgroundImagePathTB_TextChanged);
             // 
             // darkLabel161
             // 
@@ -10930,7 +10913,7 @@ namespace DayZeEditor
             // 
             this.darkLabel132.AutoSize = true;
             this.darkLabel132.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel132.Location = new System.Drawing.Point(3, 250);
+            this.darkLabel132.Location = new System.Drawing.Point(3, 275);
             this.darkLabel132.Name = "darkLabel132";
             this.darkLabel132.Size = new System.Drawing.Size(89, 13);
             this.darkLabel132.TabIndex = 116;
@@ -10944,9 +10927,9 @@ namespace DayZeEditor
             this.SpawnLocationLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.SpawnLocationLB.ForeColor = System.Drawing.SystemColors.Control;
             this.SpawnLocationLB.FormattingEnabled = true;
-            this.SpawnLocationLB.Location = new System.Drawing.Point(4, 265);
+            this.SpawnLocationLB.Location = new System.Drawing.Point(4, 291);
             this.SpawnLocationLB.Name = "SpawnLocationLB";
-            this.SpawnLocationLB.Size = new System.Drawing.Size(240, 82);
+            this.SpawnLocationLB.Size = new System.Drawing.Size(240, 69);
             this.SpawnLocationLB.TabIndex = 115;
             this.SpawnLocationLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.SpawnLocationLB.SelectedIndexChanged += new System.EventHandler(this.SpawnLocationLB_SelectedIndexChanged);
@@ -11012,7 +10995,7 @@ namespace DayZeEditor
             this.toolStripButton15.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton15.Image")));
             this.toolStripButton15.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton15.Name = "toolStripButton15";
-            this.toolStripButton15.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton15.Size = new System.Drawing.Size(101, 22);
             this.toolStripButton15.Text = "Starting Clothing";
             this.toolStripButton15.Click += new System.EventHandler(this.toolStripButton15_Click);
             // 
@@ -11032,7 +11015,7 @@ namespace DayZeEditor
             this.toolStripButton16.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton16.Image")));
             this.toolStripButton16.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton16.Name = "toolStripButton16";
-            this.toolStripButton16.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton16.Size = new System.Drawing.Size(79, 22);
             this.toolStripButton16.Text = "Starting Gear";
             this.toolStripButton16.Click += new System.EventHandler(this.toolStripButton16_Click);
             // 
@@ -11052,7 +11035,7 @@ namespace DayZeEditor
             this.toolStripButton17.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton17.Image")));
             this.toolStripButton17.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton17.Name = "toolStripButton17";
-            this.toolStripButton17.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton17.Size = new System.Drawing.Size(51, 22);
             this.toolStripButton17.Text = "Spawns";
             this.toolStripButton17.Click += new System.EventHandler(this.toolStripButton17_Click);
             // 
@@ -12526,7 +12509,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).EndInit();
             this.tabControl2.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
+            this.VariousSettingsTabPage.ResumeLayout(false);
             this.groupBox62.ResumeLayout(false);
             this.groupBox62.PerformLayout();
             this.groupBox59.ResumeLayout(false);
@@ -12893,7 +12876,7 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton darkButton3;
         private DarkUI.Controls.DarkButton darkButton1;
         private DarkUI.Controls.DarkButton darkButton11;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage VariousSettingsTabPage;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.CheckBox ShowVehicleDebugMarkersCB;
         private System.Windows.Forms.CheckBox DebugVehicleSyncCB;
@@ -13175,27 +13158,25 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox ShowPlayerJoinServerCB;
         private System.Windows.Forms.CheckBox ShowPlayerLeftServerCB;
         private System.Windows.Forms.CheckBox JoinMessageTypeCB;
-        private System.Windows.Forms.CheckBox ShowWeaponOnKillFeedCB;
-        private System.Windows.Forms.CheckBox ShowKillerOnKillFeedCB;
-        private System.Windows.Forms.CheckBox EnableKillFeedDiscordMsgCB;
-        private System.Windows.Forms.CheckBox ShowDistanceOnKillFeedCB;
-        private System.Windows.Forms.CheckBox ShowVictimOnKillFeedCB;
+        private System.Windows.Forms.CheckBox KillFeedAnimalCB;
         private System.Windows.Forms.CheckBox KillFeedDiedUnknownCB;
         private System.Windows.Forms.CheckBox KillFeedKilledUnknownCB;
-        private System.Windows.Forms.CheckBox KillFeedAnimalCB;
         private System.Windows.Forms.CheckBox KillFeedInfectedCB;
         private System.Windows.Forms.CheckBox KillFeedBarehandsCB;
         private System.Windows.Forms.CheckBox KillFeedMeleeWeaponCB;
         private System.Windows.Forms.CheckBox KillFeedWeaponCB;
-        private System.Windows.Forms.CheckBox KillFeedDehydrationCB;
-        private System.Windows.Forms.CheckBox KillFeedStarvationCB;
         private System.Windows.Forms.CheckBox KillFeedSuicideCB;
+        private System.Windows.Forms.CheckBox KillFeedStatusEffectsCB;
         private System.Windows.Forms.CheckBox KillFeedBleedingCB;
-        private System.Windows.Forms.CheckBox KillFeedBoatCrashCrewCB;
-        private System.Windows.Forms.CheckBox KillFeedBarbedWireCB;
-        private System.Windows.Forms.CheckBox KillFeedWeaponExplosionCB;
         private System.Windows.Forms.CheckBox KillFeedFireCB;
+        private System.Windows.Forms.CheckBox KillFeedWeaponExplosionCB;
+        private System.Windows.Forms.CheckBox KillFeedStarvationCB;
+        private System.Windows.Forms.CheckBox KillFeedDehydrationCB;
+        private System.Windows.Forms.CheckBox KillFeedBoatHitNoDriverCB;
         private System.Windows.Forms.CheckBox KillFeedBoatCrashCB;
+        private System.Windows.Forms.CheckBox KillFeedBarbedWireCB;
+        private System.Windows.Forms.CheckBox KillFeedBoatCrashCrewCB;
+        private System.Windows.Forms.CheckBox KillFeedBoatHitDriverCB;
         private System.Windows.Forms.CheckBox KillFeedHeliCrashCrewCB;
         private System.Windows.Forms.CheckBox KillFeedHeliCrashCB;
         private System.Windows.Forms.CheckBox KillFeedHeliHitNoDriverCB;
@@ -13662,5 +13643,6 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkLabel darkLabel171;
         private System.Windows.Forms.NumericUpDown DesyncInvulnerabilityTimeoutSecondsNUD;
         private DarkUI.Controls.DarkLabel darkLabel99;
+        private System.Windows.Forms.TextBox BackgroundImagePathTB;
     }
 }

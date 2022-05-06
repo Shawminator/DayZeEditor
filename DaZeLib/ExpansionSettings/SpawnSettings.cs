@@ -6,7 +6,7 @@ namespace DayZeLib
 {
     public class SpawnSettings
     {
-        const int CurrentVersion = 5;
+        const int CurrentVersion = 6;
 
         public int m_Version { get; set; }
         public BindingList<SpawnLocations> SpawnLocations { get; set; }
@@ -24,6 +24,7 @@ namespace DayZeLib
         public int PunishCooldown { get; set; }
         public int PunishTimeframe { get; set; }
         public int CreateDeathMarker { get; set; }
+        public string BackgroundImagePath { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }

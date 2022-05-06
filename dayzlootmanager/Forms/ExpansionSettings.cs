@@ -3458,6 +3458,8 @@ namespace DayZeEditor
             KillFeedHeliHitNoDriverCB.Checked = NotificationSettings.KillFeedHeliHitNoDriver == 1 ? true : false;
             KillFeedHeliCrashCB.Checked = NotificationSettings.KillFeedHeliCrash == 1 ? true : false;
             KillFeedHeliCrashCrewCB.Checked = NotificationSettings.KillFeedHeliCrashCrew == 1 ? true : false;
+            KillFeedBoatHitDriverCB.Checked = NotificationSettings.KillFeedBoatHitDriver == 1 ? true : false;
+            KillFeedBoatHitNoDriverCB.Checked = NotificationSettings.KillFeedBoatHitNoDriver == 1 ? true : false;
             KillFeedBoatCrashCB.Checked = NotificationSettings.KillFeedBoatCrash == 1 ? true : false;
             KillFeedBoatCrashCrewCB.Checked = NotificationSettings.KillFeedBoatCrashCrew == 1 ? true : false;
             KillFeedBarbedWireCB.Checked = NotificationSettings.KillFeedBarbedWire == 1 ? true : false;
@@ -3466,6 +3468,7 @@ namespace DayZeEditor
             KillFeedDehydrationCB.Checked = NotificationSettings.KillFeedDehydration == 1 ? true : false;
             KillFeedStarvationCB.Checked = NotificationSettings.KillFeedStarvation == 1 ? true : false;
             KillFeedBleedingCB.Checked = NotificationSettings.KillFeedBleeding == 1 ? true : false;
+            KillFeedStatusEffectsCB.Checked = NotificationSettings.KillFeedStatusEffects == 1 ? true : false;
             KillFeedSuicideCB.Checked = NotificationSettings.KillFeedSuicide == 1 ? true : false;
             KillFeedWeaponCB.Checked = NotificationSettings.KillFeedWeapon == 1 ? true : false;
             KillFeedMeleeWeaponCB.Checked = NotificationSettings.KillFeedMeleeWeapon == 1 ? true : false;
@@ -3474,11 +3477,6 @@ namespace DayZeEditor
             KillFeedAnimalCB.Checked = NotificationSettings.KillFeedAnimal == 1 ? true : false;
             KillFeedKilledUnknownCB.Checked = NotificationSettings.KillFeedKilledUnknown == 1 ? true : false;
             KillFeedDiedUnknownCB.Checked = NotificationSettings.KillFeedDiedUnknown == 1 ? true : false;
-            EnableKillFeedDiscordMsgCB.Checked = NotificationSettings.EnableKillFeedDiscordMsg == 1 ? true : false;
-            ShowVictimOnKillFeedCB.Checked = NotificationSettings.ShowVictimOnKillFeed == 1 ? true : false;
-            ShowDistanceOnKillFeedCB.Checked = NotificationSettings.ShowDistanceOnKillFeed == 1 ? true : false;
-            ShowKillerOnKillFeedCB.Checked = NotificationSettings.ShowKillerOnKillFeed == 1 ? true : false;
-            ShowWeaponOnKillFeedCB.Checked = NotificationSettings.ShowWeaponOnKillFeed == 1 ? true : false;
             useraction = true;
         }
         private void NotificationCB_CheckedChanged(object sender, EventArgs e)
@@ -4224,13 +4222,22 @@ namespace DayZeEditor
 
             EnableSpawnSelectionCB.Checked = SpawnSettings.EnableSpawnSelection == 1 ? true : false;
             SpawnOnTerritoryCB.Checked = SpawnSettings.SpawnOnTerritory == 1 ? true : false;
-            EnableRespawnCooldownsCB.Checked = SpawnSettings.EnableRespawnCooldowns == 1 ? true : false;
             SpawnHealthValueNUD.Value = (decimal)SpawnSettings.SpawnHealthValue;
             SpawnEnergyValueNUD.Value = (decimal)SpawnSettings.SpawnEnergyValue;
             SpawnWaterValueNUD.Value = (decimal)SpawnSettings.SpawnWaterValue;
+            EnableRespawnCooldownsCB.Checked = SpawnSettings.EnableRespawnCooldowns == 1 ? true : false;
+            RespawnCooldownNUD.Value = SpawnSettings.RespawnCooldown;
+            TerritoryRespawnCooldownNUD.Value = SpawnSettings.TerritoryRespawnCooldown;
+            PunishMultispawnCB.Checked = SpawnSettings.PunishMultispawn == 1 ? true : false;
+            PunishCooldownNUD.Value = SpawnSettings.PunishCooldown;
+            SpawnCreateDeathMarkerCB.Checked = SpawnSettings.CreateDeathMarker == 1 ? true : false;
+            BackgroundImagePathTB.Text = SpawnSettings.BackgroundImagePath;
+
+            //spawn locations
             SpawnLocationLB.DisplayMember = "DisplayName";
             SpawnLocationLB.ValueMember = "Value";
             SpawnLocationLB.DataSource = SpawnSettings.SpawnLocations;
+            useraction = false;
 
             pictureBox4.BackgroundImage = Image.FromFile(Application.StartupPath + currentproject.MapPath); // Map Size is 15360 x 15360, 0,0 bottom left, middle 7680 x 7680
             pictureBox4.Size = new Size(currentproject.MapSize, currentproject.MapSize);
@@ -4254,6 +4261,12 @@ namespace DayZeEditor
                     pen.Color = Color.LimeGreen;
                 getCircle(e.Graphics, pen, center, 4);
             }
+        }
+        private void BackgroundImagePathTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            SpawnSettings.BackgroundImagePath = BackgroundImagePathTB.Text;
+            SpawnSettings.isDirty = true;
         }
         private void SpawnLocationLB_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -5466,6 +5479,7 @@ namespace DayZeEditor
             VehicleSettings.DesyncInvulnerabilityTimeoutSeconds = DesyncInvulnerabilityTimeoutSecondsNUD.Value;
             VehicleSettings.isDirty = true;
         }
+
 
 
 
