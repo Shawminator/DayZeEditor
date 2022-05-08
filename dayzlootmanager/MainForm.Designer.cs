@@ -41,6 +41,7 @@ namespace DayZeEditor
             this.SlidePanel = new System.Windows.Forms.Panel();
             this.Slidelabel = new System.Windows.Forms.PictureBox();
             this.ToolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.DiscordButton = new System.Windows.Forms.ToolStripButton();
             this.ProjectsButton = new System.Windows.Forms.ToolStripButton();
             this.TypeManButton = new System.Windows.Forms.ToolStripButton();
@@ -59,7 +60,7 @@ namespace DayZeEditor
             this.darkStatusStrip1 = new DarkUI.Controls.DarkStatusStrip();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.KOTHManagerButton = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.SlidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Slidelabel)).BeginInit();
@@ -169,6 +170,7 @@ namespace DayZeEditor
             this.MarketButton,
             this.HelicrashManagerButton,
             this.LootchestButton,
+            this.KOTHManagerButton,
             this.KOSzoneManagerButton,
             this.toolStripButton1});
             this.ToolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
@@ -179,6 +181,17 @@ namespace DayZeEditor
             this.ToolStrip1.Size = new System.Drawing.Size(114, 629);
             this.ToolStrip1.TabIndex = 39;
             this.ToolStrip1.Text = "toolStrip4";
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(103, 19);
+            this.toolStripButton2.Text = "Donate";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // DiscordButton
             // 
@@ -383,16 +396,17 @@ namespace DayZeEditor
             this.panel2.Size = new System.Drawing.Size(25, 25);
             this.panel2.TabIndex = 45;
             // 
-            // toolStripButton2
+            // KOTHManagerButton
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(103, 19);
-            this.toolStripButton2.Text = "Donate";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            this.KOTHManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.KOTHManagerButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.KOTHManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("KOTHManagerButton.Image")));
+            this.KOTHManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.KOTHManagerButton.Name = "KOTHManagerButton";
+            this.KOTHManagerButton.Size = new System.Drawing.Size(103, 19);
+            this.KOTHManagerButton.Text = "King of the Hill";
+            this.KOTHManagerButton.Visible = false;
+            this.KOTHManagerButton.Click += new System.EventHandler(this.KOTHManagerButton_Click);
             // 
             // MainForm
             // 
@@ -455,6 +469,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton HelicrashManagerButton;
         private System.Windows.Forms.ToolStripButton DiscordButton;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton KOTHManagerButton;
     }
 }
 

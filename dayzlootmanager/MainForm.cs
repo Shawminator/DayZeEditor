@@ -198,6 +198,10 @@ namespace DayZeEditor
                     HelicrashManagerButton.Visible = true;
                 else
                     HelicrashManagerButton.Visible = false;
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KingOfTheHill.json"))
+                    KOTHManagerButton.Visible = true;
+                else
+                    KOTHManagerButton.Visible = false;
                 if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KosZone\\KZConfig\\KosZoneConfig.json") &&
                     File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KosZone\\KZConfig\\PurgeConfigV1.json") &&
                     File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KosZone\\KZConfig\\RestartConfigV1.json"))
@@ -427,6 +431,31 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
+        private void KOTHManagerButton_Click(object sender, EventArgs e)
+        {
+            KOTHManager _TM = Application.OpenForms["KOTHManager"] as KOTHManager;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new KOTHManager
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+                };
+                _TM.Show();
+                Console.WriteLine("loading KOSZone manager....");
+            }
+            timer1.Start();
+        }
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             KOSZonemanager _TM = Application.OpenForms["KOSZone"] as KOSZonemanager;
@@ -469,5 +498,7 @@ namespace DayZeEditor
             System.Diagnostics.Process.Start("https://www.paypal.me/ADecadeOfdecay");
             timer1.Start();
         }
+
+
     }
 }

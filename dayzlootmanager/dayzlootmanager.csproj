@@ -166,6 +166,12 @@
     <Compile Include="Forms\KOSZonemanager.Designer.cs">
       <DependentUpon>KOSZonemanager.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\KOTHManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\KOTHManager.Designer.cs">
+      <DependentUpon>KOTHManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\LoadingScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -289,6 +295,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\KOSZonemanager.resx">
       <DependentUpon>KOSZonemanager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\KOTHManager.resx">
+      <DependentUpon>KOTHManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoadingScreen.resx">
       <DependentUpon>LoadingScreen.cs</DependentUpon>
