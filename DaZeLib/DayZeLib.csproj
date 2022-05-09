@@ -93,6 +93,8 @@
     <Compile Include="AnimatedHeliCrashes\Helicrash.cs" />
     <Compile Include="Cannabisplus\CannabisPlus.cs" />
     <Compile Include="CJ187LootTable\LootChestTable.cs" />
+    <Compile Include="DNAKeycards\Basic\DNABasicConfig.cs" />
+    <Compile Include="DNAKeycards\Basic\DNAProprietaryConfig.cs" />
     <Compile Include="DRJonesTrader\DrJonesAdmins.cs" />
     <Compile Include="DRJonesTrader\DrJonesTrader.cs" />
     <Compile Include="DRJonesTrader\DRJonesVariables.cs" />

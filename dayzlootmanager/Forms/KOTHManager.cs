@@ -742,5 +742,37 @@ namespace DayZeEditor
             else
                 MessageBox.Show("No changes were made.", "Nothing Saved", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
+
+        private void darkButton23_Click(object sender, EventArgs e)
+        {
+            string[] fileContent = new string[] { };
+            var filePath = string.Empty;
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    filePath = openFileDialog.FileName;
+                    var fileStream = openFileDialog.OpenFile();
+                    fileContent = File.ReadAllLines(filePath);
+                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        currentHill.Objects = new BindingList<KOTHObject>();
+                    }
+                    foreach (string line in fileContent)
+                    {
+                        string[] linesplit = line.Split('|');
+                        KOTHObject newobject = new KOTHObject();
+                        newobject.Item = linesplit[0];
+                        newobject.Position = new float[] {Convert.ToSingle(linesplit[1].Split(' ')[0]), Convert.ToSingle(linesplit[1].Split(' ')[1]), Convert.ToSingle(linesplit[1].Split(' ')[2]) };
+                        newobject.Orientation = new float[] { Convert.ToSingle(linesplit[2].Split(' ')[0]), Convert.ToSingle(linesplit[2].Split(' ')[1]), Convert.ToSingle(linesplit[2].Split(' ')[2]) };
+                        currentHill.Objects.Add(newobject);
+                        KingOfTheHillConfig.isDirty = true;
+                    }
+                    ObjectsLB.Refresh();
+
+                }
+            }
+        }
     }
 }
