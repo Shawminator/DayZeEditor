@@ -1182,10 +1182,10 @@ namespace DayZeEditor
         private void populate()
         {
             useraction = false;
-            checkBox1.Checked = AirdropsettingsJson.Server3DMarkerOnDropLocation.Equals(1) ? true : false;
-            checkBox2.Checked = AirdropsettingsJson.ServerMarkerOnDropLocation.Equals(1) ? true : false;
-            checkBox3.Checked = AirdropsettingsJson.ShowAirdropTypeOnMarker.Equals(1) ? true : false;
-            checkBox4.Checked = AirdropsettingsJson.HeightIsRelativeToGroundLevel.Equals(1) ? true : false;
+            checkBox1.Checked = AirdropsettingsJson.ServerMarkerOnDropLocation == 1 ? true : false;
+            checkBox2.Checked = AirdropsettingsJson.Server3DMarkerOnDropLocation == 1 ? true : false;
+            checkBox3.Checked = AirdropsettingsJson.ShowAirdropTypeOnMarker == 1 ? true : false;
+            checkBox4.Checked = AirdropsettingsJson.HeightIsRelativeToGroundLevel == 1 ? true : false;
             numericUpDown1.Value = (decimal)AirdropsettingsJson.Height;
             numericUpDown2.Value = (decimal)AirdropsettingsJson.FollowTerrainFraction;
             numericUpDown3.Value = (decimal)AirdropsettingsJson.Speed;
@@ -1456,7 +1456,7 @@ namespace DayZeEditor
         {
             if (useraction)
             {
-                AirdropsettingsJson.Server3DMarkerOnDropLocation = checkBox1.Checked == true ? 1 : 0;
+                AirdropsettingsJson.ServerMarkerOnDropLocation = checkBox1.Checked == true ? 1 : 0;
                 AirdropsettingsJson.isDirty = true;
             }
         }
@@ -1464,7 +1464,7 @@ namespace DayZeEditor
         {
             if (useraction)
             {
-                AirdropsettingsJson.ServerMarkerOnDropLocation = checkBox1.Checked == true ? 1 : 0;
+                AirdropsettingsJson.Server3DMarkerOnDropLocation = checkBox1.Checked == true ? 1 : 0;
                 AirdropsettingsJson.isDirty = true;
             }
         }
