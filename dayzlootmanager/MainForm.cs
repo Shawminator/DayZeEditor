@@ -32,7 +32,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.6.0";
+        public string VersionNumber = "0.6.2";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -88,6 +88,7 @@ namespace DayZeEditor
                     Projects.getActiveProject().SetCFGGameplayConfig();
                     Projects.getActiveProject().SetcfgEffectAreaConfig();
                     Projects.getActiveProject().SetEvents();
+                    Projects.getActiveProject().seteventspawns();
                     Projects.getActiveProject().SetRandompresets();
                     Projects.getActiveProject().SetSpawnabletypes();
                     Projects.getActiveProject().SetGlobals();
@@ -203,11 +204,15 @@ namespace DayZeEditor
                 else
                     KOTHManagerButton.Visible = false;
                 if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KosZone\\KZConfig\\KosZoneConfig.json") &&
-                    File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KosZone\\KZConfig\\PurgeConfigV1.json") &&
-                    File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KosZone\\KZConfig\\RestartConfigV1.json"))
+                    File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KosZone\\KZConfig\\PurgeConfigV1.json"))
                     KOSzoneManagerButton.Visible = true;
                 else
                     KOSzoneManagerButton.Visible = false;
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\ExpansionMod\\Settings\\AISettings.json") &&
+                    File.Exists(Projects.getActiveProject().projectFullName + "\\mpmissions\\" + Projects.getActiveProject().mpmissionpath + "\\expansion\\settings\\AIPatrolSettings.json"))
+                    ExpansionAIButton.Visible = true;
+                else
+                    ExpansionAIButton.Visible = false;
 
 
 
@@ -382,6 +387,30 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
+        private void toolStripButton3_Click_1(object sender, EventArgs e)
+        {
+            ExpansionAI _TM = Application.OpenForms["ExpansionAI"] as ExpansionAI;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new ExpansionAI
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+                };
+                _TM.Show();
+            }
+            timer1.Start();
+        }
         private void Lootchest_Click(object sender, EventArgs e)
         {
             Lootchest _TM = Application.OpenForms["Lootchest"] as Lootchest;
@@ -492,13 +521,10 @@ namespace DayZeEditor
             System.Diagnostics.Process.Start("https://discord.gg/5EHE49Kjsv");
             timer1.Start();
         }
-
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://www.paypal.me/ADecadeOfdecay");
             timer1.Start();
         }
-
-
     }
 }

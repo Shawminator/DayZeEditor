@@ -39,8 +39,6 @@ namespace DayZeEditor
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.darkLabel3 = new DarkUI.Controls.DarkLabel();
@@ -66,21 +64,28 @@ namespace DayZeEditor
             this.label1 = new System.Windows.Forms.Label();
             this.IsKosZoneActiveCB = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.DPWeekNumberCB = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.darkLabel5 = new DarkUI.Controls.DarkLabel();
+            this.DPNameTB = new System.Windows.Forms.TextBox();
+            this.DPdayofthewekkCB = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.SPWeekNumCB = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.darkLabel4 = new DarkUI.Controls.DarkLabel();
+            this.SPNameTB = new System.Windows.Forms.TextBox();
+            this.ServerrestartCycleNUD = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.SPEndDT = new System.Windows.Forms.DateTimePicker();
+            this.SPStartDT = new System.Windows.Forms.DateTimePicker();
+            this.StaticPurgeDOWCB = new System.Windows.Forms.ComboBox();
+            this.AllowRaidingCB = new System.Windows.Forms.CheckBox();
             this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
             this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
-            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
-            this.label10 = new System.Windows.Forms.Label();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
-            this.label9 = new System.Windows.Forms.Label();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.darkButton3 = new DarkUI.Controls.DarkButton();
@@ -94,12 +99,6 @@ namespace DayZeEditor
             this.label18 = new System.Windows.Forms.Label();
             this.IsDynPurgeActiveCB = new System.Windows.Forms.CheckBox();
             this.IsPurgeActiveCB = new System.Windows.Forms.CheckBox();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label13 = new System.Windows.Forms.Label();
-            this.darkButton5 = new DarkUI.Controls.DarkButton();
-            this.darkButton6 = new DarkUI.Controls.DarkButton();
-            this.m_hoursLB = new System.Windows.Forms.ListBox();
-            this.IsRestartMsgActiveCB = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             this.darkToolStrip22.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -112,16 +111,10 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KOSCheckNUD)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ServerrestartCycleNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TimeZoneNUD)).BeginInit();
-            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -196,9 +189,7 @@ namespace DayZeEditor
             this.darkToolStrip22.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1,
             this.toolStripSeparator2,
-            this.toolStripButton3,
-            this.toolStripSeparator1,
-            this.toolStripButton4});
+            this.toolStripButton3});
             this.darkToolStrip22.Location = new System.Drawing.Point(0, 45);
             this.darkToolStrip22.Name = "darkToolStrip22";
             this.darkToolStrip22.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
@@ -238,32 +229,11 @@ namespace DayZeEditor
             this.toolStripButton3.Text = "Purge Config";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.toolStripSeparator1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
-            this.toolStripSeparator1.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
-            // 
-            // toolStripButton4
-            // 
-            this.toolStripButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
-            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(86, 25);
-            this.toolStripButton4.Text = "Restart Config";
-            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
-            // 
             // tabControl1
             // 
             this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 73);
             this.tabControl1.Name = "tabControl1";
@@ -585,21 +555,28 @@ namespace DayZeEditor
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage2.Controls.Add(this.DPWeekNumberCB);
+            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Controls.Add(this.darkLabel5);
+            this.tabPage2.Controls.Add(this.DPNameTB);
+            this.tabPage2.Controls.Add(this.DPdayofthewekkCB);
+            this.tabPage2.Controls.Add(this.label9);
+            this.tabPage2.Controls.Add(this.SPWeekNumCB);
+            this.tabPage2.Controls.Add(this.label14);
+            this.tabPage2.Controls.Add(this.darkLabel4);
+            this.tabPage2.Controls.Add(this.SPNameTB);
+            this.tabPage2.Controls.Add(this.ServerrestartCycleNUD);
+            this.tabPage2.Controls.Add(this.label13);
+            this.tabPage2.Controls.Add(this.SPEndDT);
+            this.tabPage2.Controls.Add(this.SPStartDT);
+            this.tabPage2.Controls.Add(this.StaticPurgeDOWCB);
+            this.tabPage2.Controls.Add(this.AllowRaidingCB);
             this.tabPage2.Controls.Add(this.numericUpDown8);
             this.tabPage2.Controls.Add(this.label12);
             this.tabPage2.Controls.Add(this.numericUpDown7);
             this.tabPage2.Controls.Add(this.label11);
-            this.tabPage2.Controls.Add(this.numericUpDown6);
-            this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.numericUpDown5);
-            this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Controls.Add(this.numericUpDown4);
             this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.numericUpDown3);
-            this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Controls.Add(this.numericUpDown2);
             this.tabPage2.Controls.Add(this.label6);
-            this.tabPage2.Controls.Add(this.numericUpDown1);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.darkButton3);
@@ -620,11 +597,194 @@ namespace DayZeEditor
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             // 
+            // DPWeekNumberCB
+            // 
+            this.DPWeekNumberCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.DPWeekNumberCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.DPWeekNumberCB.FormattingEnabled = true;
+            this.DPWeekNumberCB.Location = new System.Drawing.Point(487, 334);
+            this.DPWeekNumberCB.Name = "DPWeekNumberCB";
+            this.DPWeekNumberCB.Size = new System.Drawing.Size(107, 21);
+            this.DPWeekNumberCB.TabIndex = 146;
+            this.DPWeekNumberCB.SelectedIndexChanged += new System.EventHandler(this.DPWeekNumberCB_SelectedIndexChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.SystemColors.Control;
+            this.label7.Location = new System.Drawing.Point(405, 337);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(76, 13);
+            this.label7.TabIndex = 145;
+            this.label7.Text = "Week Number";
+            // 
+            // darkLabel5
+            // 
+            this.darkLabel5.AutoSize = true;
+            this.darkLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel5.Location = new System.Drawing.Point(405, 312);
+            this.darkLabel5.Name = "darkLabel5";
+            this.darkLabel5.Size = new System.Drawing.Size(35, 13);
+            this.darkLabel5.TabIndex = 144;
+            this.darkLabel5.Text = "Name";
+            // 
+            // DPNameTB
+            // 
+            this.DPNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.DPNameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.DPNameTB.Location = new System.Drawing.Point(487, 309);
+            this.DPNameTB.Name = "DPNameTB";
+            this.DPNameTB.Size = new System.Drawing.Size(211, 20);
+            this.DPNameTB.TabIndex = 143;
+            this.DPNameTB.Tag = "MsgEnterZone";
+            this.DPNameTB.TextChanged += new System.EventHandler(this.DPNameTB_TextChanged);
+            // 
+            // DPdayofthewekkCB
+            // 
+            this.DPdayofthewekkCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.DPdayofthewekkCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.DPdayofthewekkCB.FormattingEnabled = true;
+            this.DPdayofthewekkCB.Location = new System.Drawing.Point(487, 361);
+            this.DPdayofthewekkCB.Name = "DPdayofthewekkCB";
+            this.DPdayofthewekkCB.Size = new System.Drawing.Size(107, 21);
+            this.DPdayofthewekkCB.TabIndex = 142;
+            this.DPdayofthewekkCB.SelectedIndexChanged += new System.EventHandler(this.DPdayofthewekkCB_SelectedIndexChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.SystemColors.Control;
+            this.label9.Location = new System.Drawing.Point(405, 364);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(26, 13);
+            this.label9.TabIndex = 141;
+            this.label9.Text = "Day";
+            // 
+            // SPWeekNumCB
+            // 
+            this.SPWeekNumCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SPWeekNumCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SPWeekNumCB.FormattingEnabled = true;
+            this.SPWeekNumCB.Location = new System.Drawing.Point(487, 61);
+            this.SPWeekNumCB.Name = "SPWeekNumCB";
+            this.SPWeekNumCB.Size = new System.Drawing.Size(107, 21);
+            this.SPWeekNumCB.TabIndex = 140;
+            this.SPWeekNumCB.SelectedIndexChanged += new System.EventHandler(this.SPWeekNumCB_SelectedIndexChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.ForeColor = System.Drawing.SystemColors.Control;
+            this.label14.Location = new System.Drawing.Point(405, 64);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(76, 13);
+            this.label14.TabIndex = 139;
+            this.label14.Text = "Week Number";
+            // 
+            // darkLabel4
+            // 
+            this.darkLabel4.AutoSize = true;
+            this.darkLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel4.Location = new System.Drawing.Point(405, 39);
+            this.darkLabel4.Name = "darkLabel4";
+            this.darkLabel4.Size = new System.Drawing.Size(35, 13);
+            this.darkLabel4.TabIndex = 138;
+            this.darkLabel4.Text = "Name";
+            // 
+            // SPNameTB
+            // 
+            this.SPNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SPNameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SPNameTB.Location = new System.Drawing.Point(487, 36);
+            this.SPNameTB.Name = "SPNameTB";
+            this.SPNameTB.Size = new System.Drawing.Size(211, 20);
+            this.SPNameTB.TabIndex = 137;
+            this.SPNameTB.Tag = "MsgEnterZone";
+            this.SPNameTB.TextChanged += new System.EventHandler(this.SPNameTB_TextChanged);
+            // 
+            // ServerrestartCycleNUD
+            // 
+            this.ServerrestartCycleNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ServerrestartCycleNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.ServerrestartCycleNUD.Location = new System.Drawing.Point(87, 95);
+            this.ServerrestartCycleNUD.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.ServerrestartCycleNUD.Name = "ServerrestartCycleNUD";
+            this.ServerrestartCycleNUD.Size = new System.Drawing.Size(71, 20);
+            this.ServerrestartCycleNUD.TabIndex = 136;
+            this.ServerrestartCycleNUD.Tag = "KickAfterDelay";
+            this.ServerrestartCycleNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ServerrestartCycleNUD.ValueChanged += new System.EventHandler(this.ServerrestartCycleNUD_ValueChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.SystemColors.Control;
+            this.label13.Location = new System.Drawing.Point(14, 97);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(69, 13);
+            this.label13.TabIndex = 135;
+            this.label13.Text = "Restart cycle";
+            // 
+            // SPEndDT
+            // 
+            this.SPEndDT.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SPEndDT.CalendarMonthBackground = System.Drawing.SystemColors.Control;
+            this.SPEndDT.CalendarTitleForeColor = System.Drawing.SystemColors.Control;
+            this.SPEndDT.CustomFormat = "HH mm";
+            this.SPEndDT.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.SPEndDT.Location = new System.Drawing.Point(487, 141);
+            this.SPEndDT.Name = "SPEndDT";
+            this.SPEndDT.ShowUpDown = true;
+            this.SPEndDT.Size = new System.Drawing.Size(85, 20);
+            this.SPEndDT.TabIndex = 134;
+            this.SPEndDT.ValueChanged += new System.EventHandler(this.SPEndDT_ValueChanged);
+            // 
+            // SPStartDT
+            // 
+            this.SPStartDT.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SPStartDT.CalendarMonthBackground = System.Drawing.SystemColors.Control;
+            this.SPStartDT.CalendarTitleForeColor = System.Drawing.SystemColors.Control;
+            this.SPStartDT.CustomFormat = "HH:mm";
+            this.SPStartDT.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.SPStartDT.Location = new System.Drawing.Point(487, 115);
+            this.SPStartDT.Name = "SPStartDT";
+            this.SPStartDT.ShowUpDown = true;
+            this.SPStartDT.Size = new System.Drawing.Size(85, 20);
+            this.SPStartDT.TabIndex = 133;
+            this.SPStartDT.ValueChanged += new System.EventHandler(this.SPStartDT_ValueChanged);
+            // 
+            // StaticPurgeDOWCB
+            // 
+            this.StaticPurgeDOWCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPurgeDOWCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPurgeDOWCB.FormattingEnabled = true;
+            this.StaticPurgeDOWCB.Location = new System.Drawing.Point(487, 88);
+            this.StaticPurgeDOWCB.Name = "StaticPurgeDOWCB";
+            this.StaticPurgeDOWCB.Size = new System.Drawing.Size(107, 21);
+            this.StaticPurgeDOWCB.TabIndex = 132;
+            this.StaticPurgeDOWCB.SelectedIndexChanged += new System.EventHandler(this.StaticPurgeDOWCB_SelectedIndexChanged);
+            // 
+            // AllowRaidingCB
+            // 
+            this.AllowRaidingCB.AutoSize = true;
+            this.AllowRaidingCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.AllowRaidingCB.Location = new System.Drawing.Point(408, 167);
+            this.AllowRaidingCB.Name = "AllowRaidingCB";
+            this.AllowRaidingCB.Size = new System.Drawing.Size(90, 17);
+            this.AllowRaidingCB.TabIndex = 131;
+            this.AllowRaidingCB.Text = "Allow Raiding";
+            this.AllowRaidingCB.UseVisualStyleBackColor = true;
+            this.AllowRaidingCB.CheckedChanged += new System.EventHandler(this.AllowRaidingCB_CheckedChanged);
+            // 
             // numericUpDown8
             // 
             this.numericUpDown8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.numericUpDown8.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown8.Location = new System.Drawing.Point(466, 378);
+            this.numericUpDown8.Location = new System.Drawing.Point(487, 414);
             this.numericUpDown8.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -641,7 +801,7 @@ namespace DayZeEditor
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.SystemColors.Control;
-            this.label12.Location = new System.Drawing.Point(405, 380);
+            this.label12.Location = new System.Drawing.Point(405, 416);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(47, 13);
             this.label12.TabIndex = 129;
@@ -652,7 +812,7 @@ namespace DayZeEditor
             this.numericUpDown7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.numericUpDown7.DecimalPlaces = 2;
             this.numericUpDown7.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown7.Location = new System.Drawing.Point(466, 352);
+            this.numericUpDown7.Location = new System.Drawing.Point(487, 388);
             this.numericUpDown7.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -669,169 +829,37 @@ namespace DayZeEditor
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.SystemColors.Control;
-            this.label11.Location = new System.Drawing.Point(405, 354);
+            this.label11.Location = new System.Drawing.Point(405, 390);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(44, 13);
             this.label11.TabIndex = 127;
             this.label11.Text = "Chance";
             // 
-            // numericUpDown6
-            // 
-            this.numericUpDown6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown6.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown6.Location = new System.Drawing.Point(466, 326);
-            this.numericUpDown6.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
-            this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(71, 20);
-            this.numericUpDown6.TabIndex = 126;
-            this.numericUpDown6.Tag = "KickAfterDelay";
-            this.numericUpDown6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown6.ValueChanged += new System.EventHandler(this.numericUpDown6_ValueChanged);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.SystemColors.Control;
-            this.label10.Location = new System.Drawing.Point(405, 328);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(26, 13);
-            this.label10.TabIndex = 125;
-            this.label10.Text = "Day";
-            // 
-            // numericUpDown5
-            // 
-            this.numericUpDown5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown5.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown5.Location = new System.Drawing.Point(466, 145);
-            this.numericUpDown5.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(71, 20);
-            this.numericUpDown5.TabIndex = 124;
-            this.numericUpDown5.Tag = "KickAfterDelay";
-            this.numericUpDown5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown5.ValueChanged += new System.EventHandler(this.numericUpDown5_ValueChanged);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.SystemColors.Control;
-            this.label9.Location = new System.Drawing.Point(405, 147);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(46, 13);
-            this.label9.TabIndex = 123;
-            this.label9.Text = "End Min";
-            // 
-            // numericUpDown4
-            // 
-            this.numericUpDown4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown4.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown4.Location = new System.Drawing.Point(466, 119);
-            this.numericUpDown4.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(71, 20);
-            this.numericUpDown4.TabIndex = 122;
-            this.numericUpDown4.Tag = "KickAfterDelay";
-            this.numericUpDown4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown4.ValueChanged += new System.EventHandler(this.numericUpDown4_ValueChanged);
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.SystemColors.Control;
-            this.label8.Location = new System.Drawing.Point(405, 121);
+            this.label8.Location = new System.Drawing.Point(405, 145);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(52, 13);
+            this.label8.Size = new System.Drawing.Size(26, 13);
             this.label8.TabIndex = 121;
-            this.label8.Text = "End Hour";
-            // 
-            // numericUpDown3
-            // 
-            this.numericUpDown3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown3.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown3.Location = new System.Drawing.Point(466, 93);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(71, 20);
-            this.numericUpDown3.TabIndex = 120;
-            this.numericUpDown3.Tag = "KickAfterDelay";
-            this.numericUpDown3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown3.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.SystemColors.Control;
-            this.label7.Location = new System.Drawing.Point(405, 95);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(50, 13);
-            this.label7.TabIndex = 119;
-            this.label7.Text = "Hour Min";
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown2.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown2.Location = new System.Drawing.Point(466, 67);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(71, 20);
-            this.numericUpDown2.TabIndex = 118;
-            this.numericUpDown2.Tag = "KickAfterDelay";
-            this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+            this.label8.Text = "End";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.SystemColors.Control;
-            this.label6.Location = new System.Drawing.Point(405, 69);
+            this.label6.Location = new System.Drawing.Point(405, 117);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 13);
+            this.label6.Size = new System.Drawing.Size(29, 13);
             this.label6.TabIndex = 117;
-            this.label6.Text = "Hour Start";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown1.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown1.Location = new System.Drawing.Point(466, 41);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(71, 20);
-            this.numericUpDown1.TabIndex = 116;
-            this.numericUpDown1.Tag = "KickAfterDelay";
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            this.label6.Text = "Start";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.SystemColors.Control;
-            this.label5.Location = new System.Drawing.Point(405, 43);
+            this.label5.Location = new System.Drawing.Point(405, 91);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(26, 13);
             this.label5.TabIndex = 115;
@@ -927,7 +955,7 @@ namespace DayZeEditor
             // 
             this.TimeZoneNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.TimeZoneNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.TimeZoneNUD.Location = new System.Drawing.Point(75, 65);
+            this.TimeZoneNUD.Location = new System.Drawing.Point(87, 65);
             this.TimeZoneNUD.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -956,9 +984,9 @@ namespace DayZeEditor
             this.IsDynPurgeActiveCB.ForeColor = System.Drawing.SystemColors.Control;
             this.IsDynPurgeActiveCB.Location = new System.Drawing.Point(17, 42);
             this.IsDynPurgeActiveCB.Name = "IsDynPurgeActiveCB";
-            this.IsDynPurgeActiveCB.Size = new System.Drawing.Size(142, 17);
+            this.IsDynPurgeActiveCB.Size = new System.Drawing.Size(140, 17);
             this.IsDynPurgeActiveCB.TabIndex = 2;
-            this.IsDynPurgeActiveCB.Text = "Is Dynamic Purge Active";
+            this.IsDynPurgeActiveCB.Text = "Dynamic Purge Enabled";
             this.IsDynPurgeActiveCB.UseVisualStyleBackColor = true;
             this.IsDynPurgeActiveCB.CheckedChanged += new System.EventHandler(this.IsDynPurgeActiveCB_CheckedChanged);
             // 
@@ -968,80 +996,11 @@ namespace DayZeEditor
             this.IsPurgeActiveCB.ForeColor = System.Drawing.SystemColors.Control;
             this.IsPurgeActiveCB.Location = new System.Drawing.Point(17, 19);
             this.IsPurgeActiveCB.Name = "IsPurgeActiveCB";
-            this.IsPurgeActiveCB.Size = new System.Drawing.Size(98, 17);
+            this.IsPurgeActiveCB.Size = new System.Drawing.Size(96, 17);
             this.IsPurgeActiveCB.TabIndex = 1;
-            this.IsPurgeActiveCB.Text = "Is Purge Active";
+            this.IsPurgeActiveCB.Text = "Purge Enabled";
             this.IsPurgeActiveCB.UseVisualStyleBackColor = true;
             this.IsPurgeActiveCB.CheckedChanged += new System.EventHandler(this.IsPurgeActiveCB_CheckedChanged);
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.tabPage3.Controls.Add(this.label13);
-            this.tabPage3.Controls.Add(this.darkButton5);
-            this.tabPage3.Controls.Add(this.darkButton6);
-            this.tabPage3.Controls.Add(this.m_hoursLB);
-            this.tabPage3.Controls.Add(this.IsRestartMsgActiveCB);
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1003, 562);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "tabPage3";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.ForeColor = System.Drawing.SystemColors.Control;
-            this.label13.Location = new System.Drawing.Point(15, 31);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(72, 13);
-            this.label13.TabIndex = 115;
-            this.label13.Text = "Restart Hours";
-            // 
-            // darkButton5
-            // 
-            this.darkButton5.Location = new System.Drawing.Point(109, 278);
-            this.darkButton5.Name = "darkButton5";
-            this.darkButton5.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton5.Size = new System.Drawing.Size(110, 23);
-            this.darkButton5.TabIndex = 114;
-            this.darkButton5.Text = "Removed Selected";
-            this.darkButton5.Click += new System.EventHandler(this.darkButton5_Click);
-            // 
-            // darkButton6
-            // 
-            this.darkButton6.Location = new System.Drawing.Point(8, 278);
-            this.darkButton6.Name = "darkButton6";
-            this.darkButton6.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton6.Size = new System.Drawing.Size(95, 23);
-            this.darkButton6.TabIndex = 113;
-            this.darkButton6.Text = "Add New";
-            this.darkButton6.Click += new System.EventHandler(this.darkButton6_Click);
-            // 
-            // m_hoursLB
-            // 
-            this.m_hoursLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.m_hoursLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.m_hoursLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.m_hoursLB.FormattingEnabled = true;
-            this.m_hoursLB.Location = new System.Drawing.Point(8, 47);
-            this.m_hoursLB.Name = "m_hoursLB";
-            this.m_hoursLB.Size = new System.Drawing.Size(211, 225);
-            this.m_hoursLB.TabIndex = 112;
-            this.m_hoursLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.m_hoursLB.SelectedIndexChanged += new System.EventHandler(this.m_hoursLB_SelectedIndexChanged);
-            // 
-            // IsRestartMsgActiveCB
-            // 
-            this.IsRestartMsgActiveCB.AutoSize = true;
-            this.IsRestartMsgActiveCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.IsRestartMsgActiveCB.Location = new System.Drawing.Point(8, 11);
-            this.IsRestartMsgActiveCB.Name = "IsRestartMsgActiveCB";
-            this.IsRestartMsgActiveCB.Size = new System.Drawing.Size(127, 17);
-            this.IsRestartMsgActiveCB.TabIndex = 111;
-            this.IsRestartMsgActiveCB.Text = "Is Restart Msg Active";
-            this.IsRestartMsgActiveCB.UseVisualStyleBackColor = true;
-            this.IsRestartMsgActiveCB.CheckedChanged += new System.EventHandler(this.IsRestartMsgActiveCB_CheckedChanged);
             // 
             // KOSZonemanager
             // 
@@ -1071,17 +1030,10 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.KOSCheckNUD)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ServerrestartCycleNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TimeZoneNUD)).EndInit();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1097,12 +1049,9 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox IsKosZoneActiveCB;
         private System.Windows.Forms.NumericUpDown KOSCheckNUD;
@@ -1137,26 +1086,28 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton darkButton3;
         private DarkUI.Controls.DarkButton darkButton4;
         private System.Windows.Forms.ListBox DynamicPurgeSchedulesLB;
-        private System.Windows.Forms.NumericUpDown numericUpDown5;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown numericUpDown8;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.NumericUpDown numericUpDown7;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.NumericUpDown numericUpDown6;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.CheckBox AllowRaidingCB;
+        private System.Windows.Forms.ComboBox StaticPurgeDOWCB;
+        private System.Windows.Forms.DateTimePicker SPEndDT;
+        private System.Windows.Forms.DateTimePicker SPStartDT;
+        private System.Windows.Forms.NumericUpDown ServerrestartCycleNUD;
         private System.Windows.Forms.Label label13;
-        private DarkUI.Controls.DarkButton darkButton5;
-        private DarkUI.Controls.DarkButton darkButton6;
-        private System.Windows.Forms.ListBox m_hoursLB;
-        private System.Windows.Forms.CheckBox IsRestartMsgActiveCB;
+        private System.Windows.Forms.ComboBox SPWeekNumCB;
+        private System.Windows.Forms.Label label14;
+        private DarkUI.Controls.DarkLabel darkLabel4;
+        private System.Windows.Forms.TextBox SPNameTB;
+        private System.Windows.Forms.ComboBox DPWeekNumberCB;
+        private System.Windows.Forms.Label label7;
+        private DarkUI.Controls.DarkLabel darkLabel5;
+        private System.Windows.Forms.TextBox DPNameTB;
+        private System.Windows.Forms.ComboBox DPdayofthewekkCB;
+        private System.Windows.Forms.Label label9;
     }
 }

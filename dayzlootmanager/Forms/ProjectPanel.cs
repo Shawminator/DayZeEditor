@@ -346,6 +346,7 @@ namespace DayZeEditor
             projects.getActiveProject().SetCFGGameplayConfig();
             projects.getActiveProject().SetcfgEffectAreaConfig();
             projects.getActiveProject().SetEvents();
+            projects.getActiveProject().seteventspawns();
             projects.getActiveProject().SetRandompresets();
             projects.getActiveProject().SetSpawnabletypes();
             projects.getActiveProject().SetGlobals();

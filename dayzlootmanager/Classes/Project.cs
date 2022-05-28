@@ -99,6 +99,8 @@ namespace DayZeEditor
         [JsonIgnore]
         public BindingList<eventscofig> ModEventsList { get; set; }
         [JsonIgnore]
+        public cfgeventspawns cfgeventspawns { get; set; }
+        [JsonIgnore]
         public globalsconfig gloabsconfig { get; set; }
         [JsonIgnore]
         public BindingList<Spawnabletypesconfig> spawnabletypesList { get; set; }
@@ -254,6 +256,10 @@ namespace DayZeEditor
         internal void setplayerspawns()
         {
             cfgplayerspawnpoints = new cfgplayerspawnpoints(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgplayerspawnpoints.xml");
+        }
+        internal void seteventspawns()
+        {
+            cfgeventspawns = new cfgeventspawns(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgeventspawns.xml");
         }
         internal void SetGlobals()
         {

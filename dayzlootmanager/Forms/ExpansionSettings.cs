@@ -1548,14 +1548,12 @@ namespace DayZeEditor
         {
             darkLabel23.Text = ((decimal)(trackBar1.Value) / 10).ToString() + "%";
         }
-
         private void trackBar1_MouseUp(object sender, MouseEventArgs e)
         {
             if (CL == null) return;
             CL.Chance = (float)(((decimal)trackBar1.Value) / 1000);
             AirdropsettingsJson.isDirty = true;
         }
-
         private void darkButton52_Click(object sender, EventArgs e)
         {
             foreach (containerLoot cl in ADC.Loot)
@@ -1564,7 +1562,6 @@ namespace DayZeEditor
             }
             AirdropsettingsJson.isDirty = true;
         }
-
         private void VarientChanceTrackBar_ValueChanged(object sender, EventArgs e)
         {
             darkLabel159.Text = ((decimal)(VarientChanceTrackBar.Value) / 10).ToString() + "%";
@@ -1573,7 +1570,6 @@ namespace DayZeEditor
         {
             darkLabel159.Text = ((decimal)(VarientChanceTrackBar.Value) / 10).ToString() + "%";
         }
-
         private void VarientChanceTrackBar_MouseUp(object sender, MouseEventArgs e)
         { 
             if(LootVarients == null)return;
@@ -1608,7 +1604,6 @@ namespace DayZeEditor
                 }
             }
         }
-
         private void darkButton56_Click(object sender, EventArgs e)
         {
             CL.Variants.Remove(LootVarients);
@@ -1620,7 +1615,6 @@ namespace DayZeEditor
             }
             AirdropsettingsJson.isDirty = true;
         }
-
         private void darkButton57_Click(object sender, EventArgs e)
         {
             AddItemfromTypes form = new AddItemfromTypes
@@ -1648,7 +1642,6 @@ namespace DayZeEditor
                 }
             }
         }
-
         private void darkButton58_Click(object sender, EventArgs e)
         {
             LootVarients.Attachments.Remove(listBox22.GetItemText(listBox22.SelectedItem));
@@ -2669,7 +2662,7 @@ namespace DayZeEditor
             ATMCB.Checked = LogSettings.ATM == 1 ? true : false;
             LogToScriptsCB.Checked = LogSettings.LogToScripts == 1 ? true : false;
             LogToADMCB.Checked = LogSettings.LogToADM == 1 ? true : false;
-            VehicleDestroyedCB.Checked = LogSettings.VehicleDestroyed == 1 ? true : false;
+            AICrashPatrolCB.Checked = LogSettings.AICrashPatrol == 1 ? true : false;
             useraction = true;
         }
         private void LogSettingsCB_CheckedChanged(object sender, EventArgs e)
@@ -3768,7 +3761,7 @@ namespace DayZeEditor
                 int radius = (int)(Math.Round(zones.Radius, 0) * scalevalue);
                 Point center = new Point(centerX, centerY);
                 Pen pen = new Pen(Color.Red, 4);
-                if (currentcircleZone.CircleSafeZoneName == zones.CircleSafeZoneName)
+                if (currentcircleZone != null && currentcircleZone.CircleSafeZoneName == zones.CircleSafeZoneName)
                     pen.Color = Color.LimeGreen;
                 getCircle(e.Graphics, pen, center, radius);
             }
@@ -4004,6 +3997,7 @@ namespace DayZeEditor
             SafeZoneSettings.RemoveCircleZone(currentcircleZone);
             SafeZoneSettings.SetCircleNames();
             pictureBox2.Invalidate();
+            SafeZoneSettings.isDirty = true;
         }
         private void darkButton28_Click(object sender, EventArgs e)
         {
@@ -4098,19 +4092,23 @@ namespace DayZeEditor
 
         private void tabControl4_SelectedIndexChanged(object sender, EventArgs e)
         {
+            toolStripButton15.Checked = false;
+            toolStripButton16.Checked = false;
+            toolStripButton17.Checked = false;
+            toolStripButton19.Checked = false;
             switch (SpawnTabControl.SelectedIndex)
             {
                 case 0:
-                    toolStripButton16.Checked = false;
-                    toolStripButton17.Checked = false;
+                    toolStripButton15.Checked = true;
                     break;
                 case 1:
-                    toolStripButton15.Checked = false;
-                    toolStripButton17.Checked = false;
+                    toolStripButton16.Checked = true;
                     break;
                 case 2:
-                    toolStripButton15.Checked = false;
-                    toolStripButton16.Checked = false;
+                    toolStripButton17.Checked = true;
+                    break;
+                case 3:
+                    toolStripButton19.Checked = true;
                     break;
             }
         }
@@ -4131,6 +4129,12 @@ namespace DayZeEditor
             SpawnTabControl.SelectedIndex = 2;
             if (SpawnTabControl.SelectedIndex == 2)
                 toolStripButton17.Checked = true;
+        }
+        private void toolStripButton19_Click(object sender, EventArgs e)
+        {
+            SpawnTabControl.SelectedIndex = 3;
+            if (SpawnTabControl.SelectedIndex == 3)
+                toolStripButton19.Checked = true;
         }
         private void LoadSpawnsettings()
         {
@@ -4232,6 +4236,17 @@ namespace DayZeEditor
             PunishCooldownNUD.Value = SpawnSettings.PunishCooldown;
             SpawnCreateDeathMarkerCB.Checked = SpawnSettings.CreateDeathMarker == 1 ? true : false;
             BackgroundImagePathTB.Text = SpawnSettings.BackgroundImagePath;
+            UseLoadoutsCB.Checked = SpawnSettings.UseLoadouts == 1 ? true : false;
+
+            MaleLoadoutLB.DisplayMember = "DisplayName";
+            MaleLoadoutLB.ValueMember = "Value";
+            MaleLoadoutLB.DataSource = SpawnSettings.MaleLoadouts;
+            useraction = false;
+
+            FemaleLoadoutLB.DisplayMember = "DisplayName";
+            FemaleLoadoutLB.ValueMember = "Value";
+            FemaleLoadoutLB.DataSource = SpawnSettings.FemaleLoadouts;
+            useraction = false;
 
             //spawn locations
             SpawnLocationLB.DisplayMember = "DisplayName";
@@ -5210,6 +5225,90 @@ namespace DayZeEditor
             SpawnSettings.StartingGear.SecondaryWeapon.Attachments.Remove(SecondaryWeaponAttachLB.GetItemText(SecondaryWeaponAttachLB.SelectedItem));
             SpawnSettings.isDirty = true;
         }
+
+        public SpawnLoadouts CurrentMaleLoaouts;
+        public SpawnLoadouts CurrentFemaleLoaouts;
+        private void UseLoadoutsCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            SpawnSettings.UseLoadouts = UseLoadoutsCB.Checked == true ? 1 : 0;
+            SpawnSettings.isDirty = true;
+        }
+        private void listBox24_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (MaleLoadoutLB.SelectedItems.Count < 1) return;
+            CurrentMaleLoaouts = MaleLoadoutLB.SelectedItem as SpawnLoadouts;
+            useraction = false;
+
+            MaleNameTB.Text = CurrentMaleLoaouts.Loadout;
+            MaleChanceNUD.Value = CurrentMaleLoaouts.Chance;
+
+            useraction = true;
+        }
+        private void listBox23_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (FemaleLoadoutLB.SelectedItems.Count < 1) return;
+            CurrentFemaleLoaouts = FemaleLoadoutLB.SelectedItem as SpawnLoadouts;
+            useraction = false;
+            FemaleNameTB.Text = CurrentFemaleLoaouts.Loadout;
+            FemaleChanceNUD.Value = CurrentFemaleLoaouts.Chance;
+            useraction = true;
+        }
+        private void MaleNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            CurrentMaleLoaouts.Loadout = MaleNameTB.Text;
+            SpawnSettings.isDirty = true;
+        }
+        private void MaleChanceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            CurrentMaleLoaouts.Chance = MaleChanceNUD.Value;
+            SpawnSettings.isDirty = true;
+        }
+        private void FemaleNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            CurrentFemaleLoaouts.Loadout = FemaleNameTB.Text;
+            SpawnSettings.isDirty = true;
+        }
+        private void FemaleChanceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            CurrentFemaleLoaouts.Chance = FemaleChanceNUD.Value;
+            SpawnSettings.isDirty = true;
+        }
+        private void darkButton63_Click(object sender, EventArgs e)
+        {
+            SpawnLoadouts newloadout = new SpawnLoadouts()
+            { Chance = (decimal)1.0, Loadout = "Player" };
+            SpawnSettings.MaleLoadouts.Add(newloadout);
+            SpawnSettings.isDirty = true;
+        }
+        private void darkButton64_Click(object sender, EventArgs e)
+        {
+            SpawnSettings.MaleLoadouts.Remove(CurrentMaleLoaouts);
+            SpawnSettings.isDirty = true;
+            MaleLoadoutLB.SelectedIndex = -1;
+            if (MaleLoadoutLB.Items.Count > 0)
+                MaleLoadoutLB.SelectedIndex = 0;
+        }
+        private void darkButton61_Click(object sender, EventArgs e)
+        {
+            SpawnLoadouts newloadout = new SpawnLoadouts()
+            { Chance = (decimal)1.0, Loadout = "Player" };
+            SpawnSettings.FemaleLoadouts.Add(newloadout);
+            SpawnSettings.isDirty = true;
+        }
+        private void darkButton62_Click(object sender, EventArgs e)
+        {
+            SpawnSettings.FemaleLoadouts.Remove(CurrentFemaleLoaouts);
+            SpawnSettings.isDirty = true;
+            FemaleLoadoutLB.SelectedIndex = -1;
+            if (FemaleLoadoutLB.Items.Count > 0)
+                FemaleLoadoutLB.SelectedIndex = 0;
+        }
+
         #endregion SpawnSettings
 
         #region TerritorySettings
@@ -5462,7 +5561,7 @@ namespace DayZeEditor
         private void LockComplexityNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            if (VehiclesConfigLB.SelectedItems.Count > 1)
+            if (VehiclesConfigLB.SelectedItems.Count > 0)
             {
                 foreach (var item in VehiclesConfigLB.SelectedItems)
                 {
@@ -5479,6 +5578,9 @@ namespace DayZeEditor
             VehicleSettings.DesyncInvulnerabilityTimeoutSeconds = DesyncInvulnerabilityTimeoutSecondsNUD.Value;
             VehicleSettings.isDirty = true;
         }
+
+
+
 
 
 

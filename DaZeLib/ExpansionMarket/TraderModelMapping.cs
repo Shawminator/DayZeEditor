@@ -33,7 +33,7 @@ namespace DayZeLib
                 foreach (string line in tfile)
                 {
                     string[] tfilesplit = line.Split('|');
-                    if (tfilesplit.Length == 1 && tfilesplit[0] == "") continue;
+                    if (tfilesplit.Length == 1) continue;
                     Tradermap tmap = new Tradermap(tfilesplit);
                     tmap.Filename = file.FullName;
                     maps.Add(tmap);

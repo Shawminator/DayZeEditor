@@ -6,7 +6,7 @@ namespace DayZeLib
 {
     public class SpawnSettings
     {
-        const int CurrentVersion = 6;
+        const int CurrentVersion = 7;
 
         public int m_Version { get; set; }
         public BindingList<SpawnLocations> SpawnLocations { get; set; }
@@ -14,6 +14,9 @@ namespace DayZeLib
         public int EnableSpawnSelection { get; set; }
         public int SpawnOnTerritory { get; set; }
         public StartingGear StartingGear { get; set; }
+        public int UseLoadouts { get; set;  }
+        public BindingList<SpawnLoadouts> MaleLoadouts { get; set; }
+        public BindingList<SpawnLoadouts> FemaleLoadouts { get; set;}
         public decimal SpawnHealthValue { get; set; }
         public decimal SpawnEnergyValue { get; set; }
         public decimal SpawnWaterValue { get; set; }
@@ -159,5 +162,10 @@ namespace DayZeLib
     public class EmptyGear
     {
 
+    }
+    public class SpawnLoadouts
+    {
+        public string Loadout { get; set; }
+        public decimal Chance { get; set; }
     }
 }

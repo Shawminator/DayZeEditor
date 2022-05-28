@@ -116,12 +116,15 @@
     <Compile Include="Economy\variables.cs" />
     <Compile Include="Economy\Limitsdefinitions.cs" />
     <Compile Include="Economy\weatherXML.cs" />
+    <Compile Include="ExpansionAI\AILoadouts.cs" />
+    <Compile Include="ExpansionAI\AIPatrolSettings.cs" />
     <Compile Include="ExpansionMarket\MarketCategories.cs" />
     <Compile Include="ExpansionMarket\marketsettings.cs" />
     <Compile Include="ExpansionMarket\TraderModelMapping.cs" />
     <Compile Include="ExpansionMarket\Traders.cs" />
     <Compile Include="ExpansionMarket\TraderZones.cs" />
     <Compile Include="ExpansionSettings\AirdropSettings.cs" />
+    <Compile Include="ExpansionAI\AISettings.cs" />
     <Compile Include="ExpansionSettings\BaseBuildingSettings.cs" />
     <Compile Include="ExpansionSettings\BookSettings.cs" />
     <Compile Include="ExpansionSettings\chatsettings.cs" />

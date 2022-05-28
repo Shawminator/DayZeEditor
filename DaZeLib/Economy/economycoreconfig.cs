@@ -363,6 +363,66 @@ namespace DayZeLib
             return Path.GetFileNameWithoutExtension(Filename);
         }
     }
+    public class cfgeventspawns
+    {
+        public eventposdef eventposdef { get; set; }
+        public string Filename { get; set; }
+        public bool isDirty = false;
+        public cfgeventspawns(string filename)
+        {
+            Filename = filename;
+            var mySerializer = new XmlSerializer(typeof(eventposdef));
+            // To read the file, create a FileStream.
+            using (var myFileStream = new FileStream(filename, FileMode.Open))
+            {
+                try
+                {
+                    // Call the Deserialize method and cast to the object type.
+                    eventposdef = (eventposdef)mySerializer.Deserialize(myFileStream);
+                }
+                catch (Exception ex)
+                {
+                    var form = Application.OpenForms["SplashForm"];
+                    if (form != null)
+                    {
+                        form.Invoke(new Action(() => { form.Close(); }));
+                    }
+                    MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                }
+            }
+        }
+
+        public void SaveEventSpawns(string saveTime)
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
+            File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
+            var serializer = new XmlSerializer(typeof(eventposdef));
+            var ns = new XmlSerializerNamespaces();
+            ns.Add("", "");
+            var sw = new StringWriter();
+            sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
+            var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true, });
+            serializer.Serialize(xmlWriter, eventposdef, ns);
+            Console.WriteLine(sw.ToString());
+            File.WriteAllText(Filename, sw.ToString());
+        }
+        public void SaveEventSpawns()
+        {
+            var serializer = new XmlSerializer(typeof(eventposdef));
+            var ns = new XmlSerializerNamespaces();
+            ns.Add("", "");
+            var sw = new StringWriter();
+            sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
+            var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true, });
+            serializer.Serialize(xmlWriter, eventposdef, ns);
+            Console.WriteLine(sw.ToString());
+            File.WriteAllText(Filename, sw.ToString());
+        }
+        public override string ToString()
+        {
+            return Path.GetFileNameWithoutExtension(Filename);
+        }
+    }
     public class globalsconfig
     {
         public variables variables { get; set; }

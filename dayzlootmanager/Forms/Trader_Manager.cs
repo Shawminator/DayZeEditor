@@ -173,28 +173,24 @@ namespace DayZeEditor
         {
 
         }
-
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             tabControl3.SelectedIndex = 0;
             if (tabControl3.SelectedIndex == 0)
                 toolStripButton1.Checked = true;
         }
-
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             tabControl3.SelectedIndex = 1;
             if (tabControl3.SelectedIndex == 1)
                 toolStripButton3.Checked = true;
         }
-
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
             tabControl3.SelectedIndex = 2;
             if (tabControl3.SelectedIndex == 2)
                 toolStripButton4.Checked = true;
         }
-
         private void tabControl3_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (tabControl3.SelectedIndex)
@@ -217,8 +213,6 @@ namespace DayZeEditor
         }
 
         #endregion region Form Load And Other shit
-
-
 
         #region Admins
         private void darkButton15_Click(object sender, EventArgs e)

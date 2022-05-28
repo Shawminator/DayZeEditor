@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DayZeLib
 {
-
     // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.
     /// <remarks/>
     [System.SerializableAttribute()]
@@ -16,11 +16,11 @@ namespace DayZeLib
     public partial class eventposdef
     {
 
-        private eventposdefEvent[] eventField;
+        private BindingList<eventposdefEvent> eventField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("event")]
-        public eventposdefEvent[] @event
+        public BindingList<eventposdefEvent> @event
         {
             get
             {
@@ -42,7 +42,7 @@ namespace DayZeLib
 
         private eventposdefEventZone zoneField;
 
-        private eventposdefEventPos[] posField;
+        private BindingList<eventposdefEventPos> posField;
 
         private string nameField;
 
@@ -61,7 +61,7 @@ namespace DayZeLib
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("pos")]
-        public eventposdefEventPos[] pos
+        public BindingList<eventposdefEventPos> pos
         {
             get
             {
@@ -85,6 +85,11 @@ namespace DayZeLib
             {
                 this.nameField = value;
             }
+        }
+
+        public override string ToString()
+        {
+            return name;
         }
     }
 
@@ -277,6 +282,11 @@ namespace DayZeLib
             {
                 this.aFieldSpecified = value;
             }
+        }
+
+        public override string ToString()
+        {
+            return x.ToString() + "," + z.ToString();
         }
     }
 

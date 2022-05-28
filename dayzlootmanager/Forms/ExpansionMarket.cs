@@ -691,22 +691,24 @@ namespace DayZeEditor
             listBox12.DataSource = marketsettings.Currencies;
 
             Categories cat = MarketCats.GetCatFromFileName("EXCHANGE");
-            listBox19.Items.Clear();
-            List<string> items = new List<string>();
-            foreach (marketItem item in cat.Items)
+            if (cat != null)
             {
-                foreach (string vitem in item.Variants)
+                listBox19.Items.Clear();
+                List<string> items = new List<string>();
+                foreach (marketItem item in cat.Items)
                 {
-                    if (!items.Contains(vitem))
-                        items.Add(vitem);
+                    foreach (string vitem in item.Variants)
+                    {
+                        if (!items.Contains(vitem))
+                            items.Add(vitem);
+                    }
+                    if (!items.Contains(item.ClassName))
+                        items.Add(item.ClassName);
+
                 }
-                if (!items.Contains(item.ClassName))
-                    items.Add(item.ClassName);
-
+                items.Sort();
+                listBox19.Items.AddRange(items.ToArray());
             }
-            items.Sort();
-            listBox19.Items.AddRange(items.ToArray());
-
             action = false;
         }
         private void BackGround_Paint(object sender, PaintEventArgs e)
@@ -3038,6 +3040,18 @@ namespace DayZeEditor
                 }
             }
             currentCat.isDirty = true;
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Set your Starting Percentage... ", "Starting Stock", "");
+            if (UserAnswer == "") return;
+            int value = Convert.ToInt32(UserAnswer);
+            foreach (Categories cats in MarketCats.CatList)
+            {
+                cats.InitStockPercent = value;
+                cats.isDirty = true;
+            }
         }
     }
 }

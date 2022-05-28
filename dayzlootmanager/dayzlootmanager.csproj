@@ -147,6 +147,12 @@
     <Compile Include="Forms\CategoryList.Designer.cs">
       <DependentUpon>CategoryList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ExpansionAI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ExpansionAI.Designer.cs">
+      <DependentUpon>ExpansionAI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ExpansionSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -287,6 +293,9 @@
     <EmbeddedResource Include="Forms\CategoryList.resx">
       <DependentUpon>CategoryList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ExpansionAI.resx">
+      <DependentUpon>ExpansionAI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ExpansionSettings.resx">
       <DependentUpon>ExpansionSettings.cs</DependentUpon>
     </EmbeddedResource>
@@ -359,9 +368,6 @@
     </None>
     <None Include="Maps\chernarusplus_Map.png.xyz">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Maps\deerisle_Map.png.xyz">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Maps\esseker_Map.png.xyz">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

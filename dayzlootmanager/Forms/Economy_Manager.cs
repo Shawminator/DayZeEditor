@@ -25,6 +25,7 @@ namespace DayZeEditor
         public bool isUserInteraction = true;
         public Project currentproject { get; set; }
         public int ZoneScale = 1;
+        public int ZoneEventScale = 1;
         public TypesFile vanillatypes;
         public List<TypesFile> ModTypes;
         public TypesFile currentTypesFile;
@@ -36,7 +37,9 @@ namespace DayZeEditor
         private int searchnum;
         private List<TreeNode> searchtreeNodes;
         private List<typesType> foundparts;
-        public playerspawnpoints playerspawnpoints;
+
+        public MapData MapData { get; private set; }
+
         public BindingList<randompresetsAttachments> cargoAttachments = new BindingList<randompresetsAttachments>();
         public BindingList<randompresetsCargo> cargoItems = new BindingList<randompresetsCargo>();
         #region formsstuff
@@ -89,6 +92,7 @@ namespace DayZeEditor
 
             PopulateTreeView();
             Loadevents();
+            LoadeventSpawns();
             LoadRandomPresets();
             LoadSpawnableTypes();
             populateEconmyTreeview();
@@ -100,7 +104,7 @@ namespace DayZeEditor
             SetSummarytiers();
             NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
 
-
+            MapData = new MapData(Application.StartupPath + currentproject.MapPath + ".xyz");
 
             pictureBox2.BackgroundImage = Image.FromFile(Application.StartupPath + currentproject.MapPath); // Livonia maop size is 12800 x 12800, 0,0 bottom left, center 6400 x 6400
             pictureBox2.Size = new Size(currentproject.MapSize, currentproject.MapSize);
@@ -108,6 +112,13 @@ namespace DayZeEditor
             pictureBox2.Invalidate();
             trackBar4.Value = 1;
             SetSpawnScale();
+
+            pictureBox1.BackgroundImage = Image.FromFile(Application.StartupPath + currentproject.MapPath); // Livonia maop size is 12800 x 12800, 0,0 bottom left, center 6400 x 6400
+            pictureBox1.Size = new Size(currentproject.MapSize, currentproject.MapSize);
+            pictureBox1.Paint += new PaintEventHandler(DrawAllEventSpawns);
+            pictureBox1.Invalidate();
+            trackBar1.Value = 1;
+            SetEventSpawnScale();
 
             isUserInteraction = true;
         }
@@ -187,6 +198,16 @@ namespace DayZeEditor
                     eventconfig.SaveEvent(SaveTime);
                     eventconfig.isDirty = false;
                     midifiedfiles.Add(Path.GetFileName(eventconfig.Filename));
+                }
+            }
+
+            if (currentproject.cfgeventspawns != null)
+            {
+                if (currentproject.cfgeventspawns.isDirty)
+                {
+                    currentproject.cfgeventspawns.SaveEventSpawns(SaveTime);
+                    currentproject.cfgeventspawns.isDirty = false;
+                    midifiedfiles.Add(Path.GetFileName(currentproject.cfgeventspawns.Filename));
                 }
             }
 
@@ -346,142 +367,64 @@ namespace DayZeEditor
             if (tabControl3.SelectedIndex == 10)
                 toolStripButton15.Checked = true;
         }
+        private void toolStripButton16_Click(object sender, EventArgs e)
+        {
+            WeatherTabPage.SelectedIndex = 11;
+            if (tabControl3.SelectedIndex == 11)
+                toolStripButton16.Checked = true;
+        }
         private void tabControl4_SelectedIndexChanged(object sender, EventArgs e)
         {
+            toolStripButton3.Checked = false;
+            toolStripButton5.Checked = false;
+            toolStripButton6.Checked = false;
+            toolStripButton8.Checked = false;
+            toolStripButton9.Checked = false;
+            toolStripButton10.Checked = false;
+            toolStripButton11.Checked = false;
+            toolStripButton12.Checked = false;
+            toolStripButton13.Checked = false;
+            toolStripButton14.Checked = false;
+            toolStripButton15.Checked = false;
+            toolStripButton16.Checked = false;
             switch (WeatherTabPage.SelectedIndex)
             {
                 case 0:
-                    toolStripButton5.Checked = false;
-                    toolStripButton6.Checked = false;
-                    toolStripButton8.Checked = false;
-                    toolStripButton9.Checked = false;
-                    toolStripButton10.Checked = false;
-                    toolStripButton11.Checked = false;
-                    toolStripButton12.Checked = false;
-                    toolStripButton13.Checked = false;
-                    toolStripButton14.Checked = false;
-                    toolStripButton15.Checked = false;
+                    toolStripButton3.Checked = true;
                     break;
                 case 1:
-                    toolStripButton3.Checked = false;
-                    toolStripButton6.Checked = false;
-                    toolStripButton8.Checked = false;
-                    toolStripButton9.Checked = false;
-                    toolStripButton10.Checked = false;
-                    toolStripButton11.Checked = false;
-                    toolStripButton12.Checked = false;
-                    toolStripButton13.Checked = false;
-                    toolStripButton14.Checked = false;
-                    toolStripButton15.Checked = false;
+                    toolStripButton5.Checked = true;
                     break;
                 case 2:
-                    toolStripButton3.Checked = false;
-                    toolStripButton5.Checked = false;
-                    toolStripButton8.Checked = false;
-                    toolStripButton9.Checked = false;
-                    toolStripButton10.Checked = false;
-                    toolStripButton11.Checked = false;
-                    toolStripButton12.Checked = false;
-                    toolStripButton13.Checked = false;
-                    toolStripButton14.Checked = false;
-                    toolStripButton15.Checked = false;
+                    toolStripButton6.Checked = true;
                     break;
                 case 3:
-                    toolStripButton3.Checked = false;
-                    toolStripButton5.Checked = false;
-                    toolStripButton6.Checked = false;
-                    toolStripButton9.Checked = false;
-                    toolStripButton10.Checked = false;
-                    toolStripButton11.Checked = false;
-                    toolStripButton12.Checked = false;
-                    toolStripButton13.Checked = false;
-                    toolStripButton14.Checked = false;
-                    toolStripButton15.Checked = false;
+                    toolStripButton8.Checked = true;
                     break;
                 case 4:
-                    toolStripButton3.Checked = false;
-                    toolStripButton5.Checked = false;
-                    toolStripButton6.Checked = false;
-                    toolStripButton8.Checked = false;
-                    toolStripButton10.Checked = false;
-                    toolStripButton11.Checked = false;
-                    toolStripButton12.Checked = false;
-                    toolStripButton13.Checked = false;
-                    toolStripButton14.Checked = false;
-                    toolStripButton15.Checked = false;
+                    toolStripButton9.Checked = true;
                     break;
                 case 5:
-                    toolStripButton3.Checked = false;
-                    toolStripButton5.Checked = false;
-                    toolStripButton6.Checked = false;
-                    toolStripButton8.Checked = false;
-                    toolStripButton9.Checked = false;
-                    toolStripButton11.Checked = false;
-                    toolStripButton12.Checked = false;
-                    toolStripButton13.Checked = false;
-                    toolStripButton14.Checked = false;
-                    toolStripButton15.Checked = false;
+                    toolStripButton10.Checked = true;
                     pictureBox2.Invalidate();
                     break;
                 case 6:
-                    toolStripButton3.Checked = false;
-                    toolStripButton5.Checked = false;
-                    toolStripButton6.Checked = false;
-                    toolStripButton8.Checked = false;
-                    toolStripButton9.Checked = false;
-                    toolStripButton10.Checked = false;
-                    toolStripButton12.Checked = false;
-                    toolStripButton13.Checked = false;
-                    toolStripButton14.Checked = false;
-                    toolStripButton15.Checked = false;
+                    toolStripButton11.Checked = true;
                     break;
                 case 7:
-                    toolStripButton3.Checked = false;
-                    toolStripButton5.Checked = false;
-                    toolStripButton6.Checked = false;
-                    toolStripButton8.Checked = false;
-                    toolStripButton9.Checked = false;
-                    toolStripButton10.Checked = false;
-                    toolStripButton11.Checked = false;
-                    toolStripButton13.Checked = false;
-                    toolStripButton14.Checked = false;
-                    toolStripButton15.Checked = false;
+                    toolStripButton12.Checked = true;
                     break;
                 case 8:
-                    toolStripButton3.Checked = false;
-                    toolStripButton5.Checked = false;
-                    toolStripButton6.Checked = false;
-                    toolStripButton8.Checked = false;
-                    toolStripButton9.Checked = false;
-                    toolStripButton10.Checked = false;
-                    toolStripButton11.Checked = false;
-                    toolStripButton12.Checked = false;
-                    toolStripButton14.Checked = false;
-                    toolStripButton15.Checked = false;
+                    toolStripButton13.Checked = true;
                     break;
                 case 9:
-                    toolStripButton3.Checked = false;
-                    toolStripButton5.Checked = false;
-                    toolStripButton6.Checked = false;
-                    toolStripButton8.Checked = false;
-                    toolStripButton9.Checked = false;
-                    toolStripButton10.Checked = false;
-                    toolStripButton11.Checked = false;
-                    toolStripButton12.Checked = false;
-                    toolStripButton13.Checked = false;
-                    toolStripButton15.Checked = false;
+                    toolStripButton14.Checked = true;
                     break;
                 case 10:
-                    toolStripButton3.Checked = false;
-                    toolStripButton5.Checked = false;
-                    toolStripButton6.Checked = false;
-                    toolStripButton8.Checked = false;
-                    toolStripButton9.Checked = false;
-                    toolStripButton10.Checked = false;
-                    toolStripButton11.Checked = false;
-                    toolStripButton12.Checked = false;
-                    toolStripButton13.Checked = false;
-                    toolStripButton14.Checked = false;
+                    toolStripButton15.Checked = false;
+                    break;
+                case 11:
+                    toolStripButton16.Checked = false;
                     break;
                 default:
                     break;
@@ -933,7 +876,8 @@ namespace DayZeEditor
                     File.Delete("Temp_types.xml");
                     foreach (typesType type in test.types.type)
                     {
-                        vanillatypes.types.type.Add(type);
+                        if(!vanillatypes.types.type.Any(x => x.name.ToLower() == type.name.ToLower()))
+                            vanillatypes.types.type.Add(type);
                     }
                     vanillatypes.SaveTyes(DateTime.Now.ToString("ddMMyy_HHmm"));
                     var savedExpansionState = treeViewMS1.Nodes.GetExpansionState();
@@ -1657,14 +1601,47 @@ namespace DayZeEditor
         public eventscofig currenteventsfile;
         private eventsEvent CurrentEvent;
         private eventsEventChild CurrentChild;
+        public BindingList<string> AllEvents;
         private void Loadevents()
         {
             isUserInteraction = false;
+
+
+            AllEvents = new BindingList<string>();
+            foreach(eventscofig eventsconfig in currentproject.ModEventsList)
+            {
+                foreach(eventsEvent cevents in eventsconfig.events.@event)
+                {
+                    AllEvents.Add(cevents.name);
+                }
+            }
+            var sortedListInstance = new BindingList<string>(AllEvents.OrderBy(x => x).ToList());
+            sortedListInstance.Insert(0, "None");
+            SecondaryCB.DisplayMember = "DisplayName";
+            SecondaryCB.ValueMember = "Value";
+            SecondaryCB.DataSource = sortedListInstance;
+
             EventsLIstLB.DisplayMember = "DisplayName";
             EventsLIstLB.ValueMember = "Value";
             EventsLIstLB.DataSource = currentproject.ModEventsList;
             isUserInteraction = true;
             
+        }
+        private void darkButton60_Click(object sender, EventArgs e)
+        {
+            AllEvents = new BindingList<string>();
+            foreach (eventscofig eventsconfig in currentproject.ModEventsList)
+            {
+                foreach (eventsEvent cevents in eventsconfig.events.@event)
+                {
+                    AllEvents.Add(cevents.name);
+                }
+            }
+            var sortedListInstance = new BindingList<string>(AllEvents.OrderBy(x => x).ToList());
+            sortedListInstance.Insert(0, "None");
+            SecondaryCB.DisplayMember = "DisplayName";
+            SecondaryCB.ValueMember = "Value";
+            SecondaryCB.DataSource = sortedListInstance;
         }
         private void EventsLIstLB_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1674,6 +1651,10 @@ namespace DayZeEditor
             currenteventsfile = EventsLIstLB.SelectedItem as eventscofig;
             positionComboBox.DataSource = Enum.GetValues(typeof(position));
             limitComboBox.DataSource = Enum.GetValues(typeof(limit));
+
+            var sortedListInstance = new BindingList<eventsEvent>(currenteventsfile.events.@event.OrderBy(x => x.name).ToList());
+            currenteventsfile.events.@event = sortedListInstance;
+
             EventsLB.DisplayMember = "DisplayName";
             EventsLB.ValueMember = "Value";
             EventsLB.DataSource = currenteventsfile.events.@event;
@@ -1703,6 +1684,11 @@ namespace DayZeEditor
             init_randomCB.Checked = CurrentEvent.flags.init_random == 1 ? true : false;
             remove_damagedCB.Checked = CurrentEvent.flags.remove_damaged == 1 ? true : false;
             activeCB.Checked = CurrentEvent.active == 1 ? true : false;
+            if(CurrentEvent.secondary != null)
+                SecondaryCB.SelectedIndex = SecondaryCB.FindStringExact(CurrentEvent.secondary);
+            else
+                SecondaryCB.SelectedIndex = SecondaryCB.FindStringExact("None");
+
             ChildrenLB.DisplayMember = "DisplayName";
             ChildrenLB.ValueMember = "Value";
             ChildrenLB.DataSource = CurrentEvent.children;
@@ -1778,6 +1764,15 @@ namespace DayZeEditor
             if (!isUserInteraction) { return; }
             limit lim = (limit)limitComboBox.SelectedItem;
             CurrentEvent.limit = lim;
+            currenteventsfile.isDirty = true;
+        }
+        private void SecondaryCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            if (SecondaryCB.GetItemText(SecondaryCB.SelectedItem) == "None")
+                CurrentEvent.secondary = null;
+            else
+                CurrentEvent.secondary = SecondaryCB.GetItemText(SecondaryCB.SelectedItem);
             currenteventsfile.isDirty = true;
         }
         private void nameTB_TextChanged(object sender, EventArgs e)
@@ -1880,6 +1875,190 @@ namespace DayZeEditor
             populateEconmyTreeview();
         }
         #endregion events
+        #region eventspawn
+        public eventposdef eventposdef;
+        public eventposdefEvent eventposdefEvent;
+        public eventposdefEventPos eventposdefEventPos;
+        private void LoadeventSpawns()
+        {
+            isUserInteraction = false;
+            var sortedListInstance = new BindingList<eventposdefEvent>(currentproject.cfgeventspawns.eventposdef.@event.OrderBy(x => x.name).ToList());
+            currentproject.cfgeventspawns.eventposdef.@event = sortedListInstance;
+            eventposdef = currentproject.cfgeventspawns.eventposdef;
+
+            EventSpawnLB.DisplayMember = "DisplayName";
+            EventSpawnLB.ValueMember = "Value";
+            EventSpawnLB.DataSource = eventposdef.@event;
+
+
+            isUserInteraction = true;
+        }
+        private void EventSpawnLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (EventSpawnLB.SelectedItem as eventposdefEvent == eventposdefEvent) { return; }
+            if (EventSpawnLB.SelectedIndex == -1) { return; }
+            eventposdefEvent = EventSpawnLB.SelectedItem as eventposdefEvent;
+            isUserInteraction = false;
+
+            EventSpawnNameTB.Text = eventposdefEvent.name;
+
+            EventSpawnPosLB.DisplayMember = "DisplayName";
+            EventSpawnPosLB.ValueMember = "Value";
+            EventSpawnPosLB.DataSource = eventposdefEvent.pos;
+
+            pictureBox1.Invalidate();
+            isUserInteraction = true;
+        }
+        private void EventSpawnNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            eventposdefEvent.name = EventSpawnNameTB.Text;
+            currentproject.cfgeventspawns.isDirty = true;
+            EventSpawnLB.Refresh();
+        }
+        private void EventSpawnPosLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (EventSpawnPosLB.SelectedItem as eventposdefEventPos == eventposdefEventPos) { return; }
+            if (EventSpawnPosLB.SelectedIndex == -1) { return; }
+            eventposdefEventPos = EventSpawnPosLB.SelectedItem as eventposdefEventPos;
+            isUserInteraction = false;
+
+            IsYvalueusedCB.Checked = eventposdefEventPos.ySpecified;
+            EventSpawnPosXNUD.Value = eventposdefEventPos.x;
+            if (eventposdefEventPos.ySpecified)
+                EventSpawnPosYNUD.Value = eventposdefEventPos.y;
+            EventSpawnPosZNUD.Value = eventposdefEventPos.z;
+            EventSpawnPosANUD.Value = eventposdefEventPos.a;
+
+            pictureBox1.Invalidate();
+            isUserInteraction = true;
+        }
+        private void DrawAllEventSpawns(object sender, PaintEventArgs e)
+        {
+            eventposdefEventPos currentpos = EventSpawnPosLB.SelectedItem as eventposdefEventPos;
+            if (currentpos == null) return;
+            foreach (eventposdefEventPos newpos in eventposdefEvent.pos)
+            {
+                float scalevalue = ZoneEventScale * 0.05f;
+                int centerX = (int)(Math.Round((float)newpos.x) * scalevalue);
+                int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round((float)newpos.z, 0) * scalevalue);
+                int radius = (int)(Math.Round(1f, 0) * scalevalue);
+                Point center = new Point(centerX, centerY);
+                Pen pen = new Pen(Color.Red, 4);
+                if (newpos == currentpos)
+                    pen.Color = Color.LimeGreen;
+                getCircle(e.Graphics, pen, center, radius);
+            }
+        }
+        private void SetEventSpawnScale()
+        {
+            float scalevalue = ZoneEventScale * 0.05f;
+            float mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            pictureBox1.Size = new Size(newsize, newsize);
+        }
+        private void getEventCircle(Graphics drawingArea, Pen penToUse, Point center, int radius)
+        {
+            Rectangle rect = new Rectangle(center.X - 1, center.Y - 1, 2, 2);
+            drawingArea.DrawEllipse(penToUse, rect);
+            Rectangle rect2 = new Rectangle(center.X - radius, center.Y - radius, radius * 2, radius * 2);
+            drawingArea.DrawEllipse(penToUse, rect2);
+        }
+        private void trackBar1_MouseUp(object sender, MouseEventArgs e)
+        {
+            ZoneEventScale = trackBar1.Value;
+            SetEventSpawnScale();
+        }
+        private void pictureBox1_DoubleClick(object sender, EventArgs e)
+        {
+            if (e is MouseEventArgs mouseEventArgs)
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                float scalevalue = ZoneEventScale * 0.05f;
+                float mapsize = currentproject.MapSize;
+                int newsize = (int)(mapsize * scalevalue);
+                EventSpawnPosXNUD.Value = (decimal)(mouseEventArgs.X / scalevalue);
+                EventSpawnPosZNUD.Value = (decimal)((newsize - mouseEventArgs.Y) / scalevalue);
+                if (eventposdefEventPos.ySpecified)
+                {
+                    if (MapData.FileExists)
+                    {
+                        EventSpawnPosYNUD.Value = (decimal)(MapData.gethieght((float)eventposdefEventPos.x, (float)eventposdefEventPos.z));
+                    }
+                }
+                Cursor.Current = Cursors.Default;
+                currentproject.cfgeventspawns.isDirty = true;
+                EventSpawnPosLB.Refresh();
+                pictureBox1.Invalidate();
+            }
+        }
+        private void EventSpawnPosXNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            eventposdefEventPos.x = EventSpawnPosXNUD.Value;
+            currentproject.cfgeventspawns.isDirty = true;
+            pictureBox1.Invalidate();
+        }
+        private void EventSpawnPosYNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            eventposdefEventPos.y = EventSpawnPosYNUD.Value;
+            currentproject.cfgeventspawns.isDirty = true;
+            pictureBox1.Invalidate();
+        }
+        private void EventSpawnPosZNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            eventposdefEventPos.z = EventSpawnPosZNUD.Value;
+            currentproject.cfgeventspawns.isDirty = true;
+            pictureBox1.Invalidate();
+        }
+        private void EventSpawnPosANUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            eventposdefEventPos.a = EventSpawnPosANUD.Value;
+            currentproject.cfgeventspawns.isDirty = true;
+        }
+        private void darkButton57_Click(object sender, EventArgs e)
+        {
+            eventposdefEvent newvenspawn = new eventposdefEvent()
+            {
+                name = "NewEventSpawn",
+                zone = null,
+                pos = null
+            };
+            eventposdef.@event.Add(newvenspawn);
+            currentproject.cfgeventspawns.isDirty = true;
+        }
+        private void darkButton56_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void darkButton59_Click(object sender, EventArgs e)
+        {
+            eventposdefEventPos newpos = new eventposdefEventPos()
+            {
+                x = currentproject.MapSize / 2,
+                z = currentproject.MapSize / 2
+            };
+            if (eventposdefEvent.pos == null)
+            {
+                eventposdefEvent.pos = new BindingList<eventposdefEventPos>();
+            }
+            eventposdefEvent.pos.Add(newpos);
+            EventSpawnPosLB.Invalidate();
+            EventSpawnPosLB.SelectedIndex = -1;
+            EventSpawnPosLB.SelectedIndex = EventSpawnPosLB.Items.Count - 1;
+            currentproject.cfgeventspawns.isDirty = true;
+            pictureBox1.Invalidate();
+        }
+
+        private void darkButton58_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion eventspawns
         #region spawnabletypes
         public Spawnabletypesconfig currentspawnabletypesfile;
         public spawnabletypesType CurrentspawnabletypesType;
@@ -2803,6 +2982,7 @@ namespace DayZeEditor
         }
         #endregion typesquery
         #region PlayerSpawnPoints
+        public playerspawnpoints playerspawnpoints;
         public void LoadPlayerSpawns()
         {
             isUserInteraction = false;
@@ -4330,5 +4510,12 @@ namespace DayZeEditor
             }
             MessageBox.Show("Total Maximum Loot Positions : " + Total.ToString());
         }
+
+        private void tabPage20_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

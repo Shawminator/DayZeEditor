@@ -78,6 +78,7 @@ namespace DayZeEditor
             this.HillsLB = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.darkButton23 = new DarkUI.Controls.DarkButton();
             this.label1 = new System.Windows.Forms.Label();
             this.darkButton9 = new DarkUI.Controls.DarkButton();
             this.darkButton10 = new DarkUI.Controls.DarkButton();
@@ -116,7 +117,6 @@ namespace DayZeEditor
             this.darkLabel12 = new DarkUI.Controls.DarkLabel();
             this.darkButton4 = new DarkUI.Controls.DarkButton();
             this.label3 = new System.Windows.Forms.Label();
-            this.darkButton23 = new DarkUI.Controls.DarkButton();
             this.darkToolStrip22.SuspendLayout();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -887,6 +887,16 @@ namespace DayZeEditor
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Hill Objects";
             // 
+            // darkButton23
+            // 
+            this.darkButton23.Location = new System.Drawing.Point(130, 217);
+            this.darkButton23.Name = "darkButton23";
+            this.darkButton23.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton23.Size = new System.Drawing.Size(104, 23);
+            this.darkButton23.TabIndex = 141;
+            this.darkButton23.Text = "Import from .map";
+            this.darkButton23.Click += new System.EventHandler(this.darkButton23_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -1384,16 +1394,6 @@ namespace DayZeEditor
             this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 129;
             this.label3.Text = "Rewards";
-            // 
-            // darkButton23
-            // 
-            this.darkButton23.Location = new System.Drawing.Point(130, 217);
-            this.darkButton23.Name = "darkButton23";
-            this.darkButton23.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton23.Size = new System.Drawing.Size(104, 23);
-            this.darkButton23.TabIndex = 141;
-            this.darkButton23.Text = "Import from .map";
-            this.darkButton23.Click += new System.EventHandler(this.darkButton23_Click);
             // 
             // KOTHManager
             // 

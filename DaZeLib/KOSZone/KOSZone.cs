@@ -8,7 +8,22 @@ using System.Threading.Tasks;
 
 namespace DayZeLib
 {
+    public enum KOZDayOfWeek
+    {
+        Monday,
+        Tuesday,
+        Wednesday,
+        Thursday,
+        Friday,
+        Saturday,
+        Sunday
 
+    };
+    public enum WeekNumber
+    {
+        Week1,
+        Week2
+    };
     public class KosZoneconfig
     {
         public int IsKosZoneActive { get; set; }
@@ -39,9 +54,10 @@ namespace DayZeLib
 
     public class KosPurgeConfig
     {
-        public int IsPurgeActive { get; set; }
-        public int IsDynPurgeActive { get; set; }
+        public int IsPurgeEnabled { get; set; }
+        public int IsDynPurgeEnabled { get; set; }
         public int TimeZone { get; set; }
+        public int RestartCycle { get; set; }
         public BindingList<Purgeschedule> PurgeSchedules { get; set; }
         public BindingList<Dynamicpurgeschedule> DynamicPurgeSchedules { get; set; }
 
@@ -53,40 +69,32 @@ namespace DayZeLib
 
     public class Purgeschedule
     {
+        public string PurgeName { get; set; }
+        public int WeekNumber { get; set; }
         public int Day { get; set; }
         public int StartHour { get; set; }
         public int StartMin { get; set; }
         public int EndHour { get; set; }
         public int EndMin { get; set; }
+        public int AllowRaiding { get; set; }
 
         public override string ToString()
         {
-            return Day.ToString();
+            return PurgeName;
         }
     }
 
     public class Dynamicpurgeschedule
     {
+        public string DynamicPurgeName { get; set; }
+        public int WeekNumber { get; set; }
         public int Day { get; set; }
-        public float Chance { get; set; }
+        public decimal Chance { get; set; }
         public int Duration { get; set; }
 
         public override string ToString()
         {
-            return Day.ToString();
+            return DynamicPurgeName;
         }
     }
-
-    public class KozRestartConfig
-    {
-        public int IsRestartMsgActive { get; set; }
-        public BindingList<int> m_hours { get; set; }
-
-        [JsonIgnore]
-        public string FullFilename { get; set; }
-        [JsonIgnore]
-        public bool isDirty { get; set; }
-
-    }
-
 }

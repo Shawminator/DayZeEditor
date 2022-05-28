@@ -4,7 +4,7 @@ namespace DayZeLib
 {
     public class LogSettings
     {
-        const int CurrentVersion = 2;
+        const int CurrentVersion = 3;
 
         public int m_Version { get; set; }
         public int Safezone { get; set; }
@@ -22,9 +22,11 @@ namespace DayZeLib
         public int Chat { get; set; }
         public int Market { get; set; }
         public int ATM { get; set; }
+        public int AIGeneral { get; set; }
+        public int AIPatrol { get; set; }
+        public int AICrashPatrol { get; set; }
         public int LogToScripts { get; set; }
         public int LogToADM { get; set; }
-        public int VehicleDestroyed { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }

@@ -45,6 +45,7 @@ namespace DayZeEditor
             this.syncMaxToMinPricesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setPricesForItemWithZeroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setMinMaxStockForItemsWith0ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.categoriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setMaxStockForSelectedCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setMinStockForSelectedCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -546,7 +547,8 @@ namespace DayZeEditor
             this.syncMinToMaxPricesToolStripMenuItem,
             this.syncMaxToMinPricesToolStripMenuItem,
             this.setPricesForItemWithZeroToolStripMenuItem,
-            this.setMinMaxStockForItemsWith0ToolStripMenuItem});
+            this.setMinMaxStockForItemsWith0ToolStripMenuItem,
+            this.toolStripMenuItem1});
             this.itemsToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.itemsToolStripMenuItem.Name = "itemsToolStripMenuItem";
             this.itemsToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
@@ -605,6 +607,15 @@ namespace DayZeEditor
             this.setMinMaxStockForItemsWith0ToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
             this.setMinMaxStockForItemsWith0ToolStripMenuItem.Text = "Set Min/Max Stock for items with 0";
             this.setMinMaxStockForItemsWith0ToolStripMenuItem.Click += new System.EventHandler(this.setMinMaxStockForItemsWith0ToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(259, 22);
+            this.toolStripMenuItem1.Text = "Set Staring level for all cats";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // categoriesToolStripMenuItem
             // 
@@ -5051,5 +5062,6 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton darkButton36;
         private System.Windows.Forms.ListBox listBox19;
         private System.Windows.Forms.ToolStripMenuItem chnageAttchmentsToLowerCaseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }

@@ -2376,7 +2376,7 @@ namespace DayZeEditor
         {
             if (MessageBox.Show("This Will Remove The All reference to this/these Vehicle/s, Are you sure you want to do this?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                if (VehiclePartLB.SelectedItems.Count > 1)
+                if (VehiclePartLB.SelectedItems.Count >= 1)
                 {
                     List<Vehiclespart> removelist = VehiclePartLB.SelectedItems.Cast<Vehiclespart>().ToList();
                     foreach (Vehiclespart item in removelist)
@@ -2405,11 +2405,21 @@ namespace DayZeEditor
             if (result == DialogResult.OK)
             {
                 List<string> addedtypes = form.addedtypes.ToList();
-                foreach (string l in addedtypes)
+                if (addedtypes.Count > 0)
                 {
-                    currentVehiclespart.VehicleParts.Add(l);
+                    foreach (string l in addedtypes)
+                    {
+                        if (VehiclePartLB.SelectedItems.Count > 0)
+                        {
+                            List<Vehiclespart> VehicleList = VehiclePartLB.SelectedItems.Cast<Vehiclespart>().ToList();
+                            foreach (Vehiclespart vehicle in VehicleList)
+                            {
+                                vehicle.VehicleParts.Add(l);
+                            }
+                        }
+                    }
+                    TraderPlusVehiclesConfig.isDirty = true;
                 }
-                TraderPlusVehiclesConfig.isDirty = true;
             }
         }
         private void darkButton17_Click(object sender, EventArgs e)

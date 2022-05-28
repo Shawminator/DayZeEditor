@@ -27,7 +27,6 @@ namespace DayZeEditor
         public string KosPurgeConfigPath { get; private set; }
         public KosPurgeConfig KosPurgeConfig { get; set; }
         public string KozRestartConfigPath { get; private set; }
-        public KozRestartConfig KozRestartConfig { get; private set; }
         public MapData MapData { get; private set; }
 
         public string Projectname;
@@ -75,17 +74,10 @@ namespace DayZeEditor
             if (tabControl1.SelectedIndex == 1)
                 toolStripButton3.Checked = true;
         }
-        private void toolStripButton4_Click(object sender, EventArgs e)
-        {
-            tabControl1.SelectedIndex = 2;
-            if (tabControl1.SelectedIndex == 2)
-                toolStripButton4.Checked = true;
-        }
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             toolStripButton1.Checked = false;
             toolStripButton3.Checked = false;
-            toolStripButton4.Checked = false;
             switch (tabControl1.SelectedIndex)
             {
                 case 0:
@@ -93,9 +85,6 @@ namespace DayZeEditor
                     break;
                 case 1:
                     toolStripButton3.Checked = true;
-                    break;
-                case 2:
-                    toolStripButton4.Checked = true;
                     break;
                 default:
                     break;
@@ -136,19 +125,6 @@ namespace DayZeEditor
             KosPurgeConfig.FullFilename = KosPurgeConfigPath;
             SetupKosPurgeConfig();
 
-            KozRestartConfigPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\KosZone\\KZConfig\\RestartConfigV1.json";
-            if (!File.Exists(KozRestartConfigPath))
-            {
-                KozRestartConfig = new KozRestartConfig();
-            }
-            else
-            {
-                KozRestartConfig = JsonSerializer.Deserialize<KozRestartConfig>(File.ReadAllText(KozRestartConfigPath));
-                KozRestartConfig.isDirty = false;
-            }
-            KozRestartConfig.FullFilename = KosPurgeConfigPath;
-            SetupKozRestartConfig();
-
             MapData = new MapData(Application.StartupPath + currentproject.MapPath + ".xyz");
 
             pictureBox2.BackgroundImage = Image.FromFile(Application.StartupPath + currentproject.MapPath); // Livonia maop size is 12800 x 12800, 0,0 bottom left, center 6400 x 6400
@@ -179,14 +155,6 @@ namespace DayZeEditor
                 string jsonString = JsonSerializer.Serialize(KosPurgeConfig, options);
                 File.WriteAllText(KosPurgeConfig.FullFilename, jsonString);
                 midifiedfiles.Add(Path.GetFileName(Path.GetFileName(KosPurgeConfigPath)));
-            }
-            if (KozRestartConfig.isDirty)
-            {
-                KozRestartConfig.isDirty = false;
-                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-                string jsonString = JsonSerializer.Serialize(KozRestartConfig, options);
-                File.WriteAllText(KozRestartConfig.FullFilename, jsonString);
-                midifiedfiles.Add(Path.GetFileName(Path.GetFileName(KozRestartConfigPath)));
             }
             string message = "The Following Files were saved....\n";
             int i = 0;
@@ -387,10 +355,17 @@ namespace DayZeEditor
         {
             useraction = false;
 
-            IsPurgeActiveCB.Checked = KosPurgeConfig.IsPurgeActive == 1 ? true : false;
-            IsDynPurgeActiveCB.Checked = KosPurgeConfig.IsDynPurgeActive == 1 ? true : false;
-            TimeZoneNUD.Value = KosPurgeConfig.TimeZone;
+            StaticPurgeDOWCB.DataSource = Enum.GetValues(typeof(KOZDayOfWeek));
+            SPWeekNumCB.DataSource = Enum.GetValues(typeof(WeekNumber));
 
+            DPdayofthewekkCB.DataSource = Enum.GetValues(typeof(KOZDayOfWeek));
+            DPWeekNumberCB.DataSource = Enum.GetValues(typeof(WeekNumber));
+
+
+            IsPurgeActiveCB.Checked = KosPurgeConfig.IsPurgeEnabled == 1 ? true : false;
+            IsDynPurgeActiveCB.Checked = KosPurgeConfig.IsDynPurgeEnabled == 1 ? true : false;
+            TimeZoneNUD.Value = KosPurgeConfig.TimeZone;
+            ServerrestartCycleNUD.Value = KosPurgeConfig.RestartCycle;
 
             PurgeSchedulesLB.DisplayMember = "Name";
             PurgeSchedulesLB.ValueMember = "Value";
@@ -401,18 +376,19 @@ namespace DayZeEditor
             DynamicPurgeSchedulesLB.ValueMember = "Value";
             DynamicPurgeSchedulesLB.DataSource = KosPurgeConfig.DynamicPurgeSchedules;
 
+
             useraction = true;
         }
         private void IsPurgeActiveCB_CheckedChanged(object sender, EventArgs e)
         {
             if(!useraction) return;
-            KosPurgeConfig.IsPurgeActive = IsPurgeActiveCB.Checked == true ? 1 : 0;
+            KosPurgeConfig.IsPurgeEnabled = IsPurgeActiveCB.Checked == true ? 1 : 0;
             KosPurgeConfig.isDirty = true;
         }
         private void IsDynPurgeActiveCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            KosPurgeConfig.IsDynPurgeActive = IsDynPurgeActiveCB.Checked == true ? 1 : 0;
+            KosPurgeConfig.IsDynPurgeEnabled = IsDynPurgeActiveCB.Checked == true ? 1 : 0;
             KosPurgeConfig.isDirty = true;
         }
         private void TimeZoneNUD_ValueChanged(object sender, EventArgs e)
@@ -421,26 +397,45 @@ namespace DayZeEditor
             KosPurgeConfig.TimeZone = (int)TimeZoneNUD.Value;
             KosPurgeConfig.isDirty = true;
         }
+        private void ServerrestartCycleNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            KosPurgeConfig.RestartCycle = (int)ServerrestartCycleNUD.Value;
+            KosPurgeConfig.isDirty = true;
+        }
         private void PurgeSchedulesLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (PurgeSchedulesLB.SelectedItems.Count < 1) return;
             currentPurgeschedule = PurgeSchedulesLB.SelectedItem as Purgeschedule;
+            useraction = false;
 
-            numericUpDown1.Value = currentPurgeschedule.Day;
-            numericUpDown2.Value = currentPurgeschedule.StartHour;
-            numericUpDown3.Value = currentPurgeschedule.StartMin;
-            numericUpDown4.Value = currentPurgeschedule.EndHour;
-            numericUpDown5.Value = currentPurgeschedule.EndMin;
+            SPNameTB.Text = currentPurgeschedule.PurgeName;
+            SPWeekNumCB.SelectedItem = (WeekNumber)currentPurgeschedule.WeekNumber;
+            StaticPurgeDOWCB.SelectedItem = (KOZDayOfWeek)currentPurgeschedule.Day;
+            DateTime Dtime = DateTime.Now.Date;
+            Dtime = Dtime.AddHours(currentPurgeschedule.StartHour);
+            Dtime = Dtime.AddMinutes(currentPurgeschedule.StartMin);
+            SPStartDT.Value = Dtime;
+            DateTime Dtime2 = DateTime.Now.Date;
+            Dtime2 = Dtime2.AddHours(currentPurgeschedule.EndHour);
+            Dtime2 = Dtime2.AddMinutes(currentPurgeschedule.EndMin);
+            SPEndDT.Value = Dtime2;
+
+            AllowRaidingCB.Checked = currentPurgeschedule.AllowRaiding == 1 ? true : false;
+            useraction = true;
         }
         private void darkButton2_Click(object sender, EventArgs e)
         {
             Purgeschedule newPurgeschedule = new Purgeschedule()
             {
+                PurgeName = "New Purge",
+                WeekNumber = 0,
                 Day = 0,
                 StartHour = 0,
                 StartMin = 0,
                 EndHour = 0,
-                EndMin = 0
+                EndMin = 0,
+                AllowRaiding = 0
             };
             KosPurgeConfig.PurgeSchedules.Add(newPurgeschedule);
             KosPurgeConfig.isDirty = true;
@@ -458,18 +453,24 @@ namespace DayZeEditor
         {
             if (DynamicPurgeSchedulesLB.SelectedItems.Count < 1) return;
             currentDynamicpurgeschedule = DynamicPurgeSchedulesLB.SelectedItem as Dynamicpurgeschedule;
+            useraction = false;
 
-            numericUpDown6.Value = currentDynamicpurgeschedule.Day;
+            DPNameTB.Text = currentDynamicpurgeschedule.DynamicPurgeName;
+            DPWeekNumberCB.SelectedItem = (WeekNumber)currentDynamicpurgeschedule.WeekNumber;
+            DPdayofthewekkCB.SelectedItem = (KOZDayOfWeek)currentDynamicpurgeschedule.Day;
             numericUpDown7.Value = (decimal) currentDynamicpurgeschedule.Chance;
             numericUpDown8.Value = currentDynamicpurgeschedule.Duration;
+            useraction = true;
         }
         private void darkButton4_Click(object sender, EventArgs e)
         {
             Dynamicpurgeschedule newDynamicpurgeschedule = new Dynamicpurgeschedule()
             {
+                DynamicPurgeName = "New Dynamic Purge",
+                WeekNumber = 0,
                 Day = 0,
-                Chance = 0,
-                Duration = 0
+                Chance = (decimal)0.5,
+                Duration = 60
             };
             KosPurgeConfig.DynamicPurgeSchedules.Add(newDynamicpurgeschedule);
             KosPurgeConfig.isDirty = true;
@@ -484,46 +485,79 @@ namespace DayZeEditor
             else
                 DynamicPurgeSchedulesLB.SelectedIndex = 0;
         }
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+
+
+        private void SPNameTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentPurgeschedule.Day = (int)numericUpDown1.Value;
+            currentPurgeschedule.PurgeName = SPNameTB.Text;
             KosPurgeConfig.isDirty = true;
         }
-        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        private void SPWeekNumCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentPurgeschedule.StartHour = (int)numericUpDown3.Value;
+            WeekNumber cacl = (WeekNumber)SPWeekNumCB.SelectedItem;
+            currentPurgeschedule.WeekNumber = (int)cacl;
             KosPurgeConfig.isDirty = true;
         }
-        private void numericUpDown3_ValueChanged(object sender, EventArgs e)
+        private void StaticPurgeDOWCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentPurgeschedule.StartMin = (int)numericUpDown3.Value;
+            KOZDayOfWeek cacl = (KOZDayOfWeek)StaticPurgeDOWCB.SelectedItem;
+            currentPurgeschedule.Day = (int)cacl;
+            KosPurgeConfig.isDirty = true;
+
+        }
+        private void SPStartDT_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            DateTime Dtime = SPStartDT.Value;
+            currentPurgeschedule.StartHour = Dtime.Hour;
+            currentPurgeschedule.StartMin = Dtime.Minute;
             KosPurgeConfig.isDirty = true;
         }
-        private void numericUpDown4_ValueChanged(object sender, EventArgs e)
+
+        private void SPEndDT_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentPurgeschedule.EndHour = (int)numericUpDown4.Value;
+            DateTime Dtime = SPEndDT.Value;
+            currentPurgeschedule.EndHour = Dtime.Hour;
+            currentPurgeschedule.EndMin = Dtime.Minute;
             KosPurgeConfig.isDirty = true;
         }
-        private void numericUpDown5_ValueChanged(object sender, EventArgs e)
+        private void AllowRaidingCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentPurgeschedule.EndMin = (int)numericUpDown5.Value;
+            currentPurgeschedule.AllowRaiding = AllowRaidingCB.Checked == true ? 1 : 0;
             KosPurgeConfig.isDirty = true;
         }
-        private void numericUpDown6_ValueChanged(object sender, EventArgs e)
+
+        private void DPNameTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentDynamicpurgeschedule.Day = (int)numericUpDown6.Value;
+            currentDynamicpurgeschedule.DynamicPurgeName = DPNameTB.Text;
+            KosPurgeConfig.isDirty = true;
+        }
+
+        private void DPWeekNumberCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            WeekNumber cacl = (WeekNumber)DPWeekNumberCB.SelectedItem;
+            currentDynamicpurgeschedule.WeekNumber = (int)cacl;
+            KosPurgeConfig.isDirty = true;
+        }
+
+        private void DPdayofthewekkCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            KOZDayOfWeek cacl = (KOZDayOfWeek)DPdayofthewekkCB.SelectedItem;
+            currentDynamicpurgeschedule.Day = (int)cacl;
             KosPurgeConfig.isDirty = true;
         }
         private void numericUpDown7_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentDynamicpurgeschedule.Chance = (float)numericUpDown7.Value;
+            currentDynamicpurgeschedule.Chance = numericUpDown7.Value;
             KosPurgeConfig.isDirty = true;
         }
         private void numericUpDown8_ValueChanged(object sender, EventArgs e)
@@ -532,54 +566,6 @@ namespace DayZeEditor
             currentDynamicpurgeschedule.Duration = (int)numericUpDown8.Value;
             KosPurgeConfig.isDirty = true;
         }
-        #endregion KOSZonePurge
-  
-        #region restart
-        private void SetupKozRestartConfig()
-        {
-            useraction = false;
-            IsRestartMsgActiveCB.Checked = KozRestartConfig.IsRestartMsgActive == 1 ? true : false;
-
-            m_hoursLB.DisplayMember = "Name";
-            m_hoursLB.ValueMember = "Value";
-            m_hoursLB.DataSource = KozRestartConfig.m_hours;
-
-            useraction = true;
-        }
-        private void darkButton6_Click(object sender, EventArgs e)
-        {
-            AddItemfromString form = new AddItemfromString();
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                List<string> addedtypes = form.addedtypes.ToList();
-                foreach (string l in addedtypes)
-                {
-                    KozRestartConfig.m_hours.Add(Convert.ToInt32(l));
-                    KozRestartConfig.isDirty = true;
-                }
-            }
-        }
-        private void m_hoursLB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (m_hoursLB.SelectedItems.Count == 0) return;
-            currentrestarthour = (int)m_hoursLB.SelectedItem;
-        }
-        private void darkButton5_Click(object sender, EventArgs e)
-        {
-            KozRestartConfig.m_hours.Remove(currentrestarthour);
-            KozRestartConfig.isDirty = true;
-            if (m_hoursLB.Items.Count == 0)
-                m_hoursLB.SelectedIndex = -1;
-            else
-                m_hoursLB.SelectedIndex = 0;
-        }
-        private void IsRestartMsgActiveCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            KozRestartConfig.IsRestartMsgActive = IsRestartMsgActiveCB.Checked == true ? 1 : 0;
-            KozRestartConfig.isDirty = true;
-        }
-        #endregion restart
+        #endregion KOSZonePurg
     }
 }
