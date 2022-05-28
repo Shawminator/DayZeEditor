@@ -872,6 +872,7 @@ namespace DayZeEditor
         {
             Eventcrashpatrol newpatrol = new Eventcrashpatrol()
             {
+                Name = "NewName",
                 Faction = "WEST",
                 EventName = "Your event Goes Here",
                 LoadoutFile = "",
@@ -885,6 +886,7 @@ namespace DayZeEditor
                 UnlimitedReload = 0,
                 Chance = (decimal)1.0
             };
+            
             AIPatrolSettings.EventCrashPatrol.Add(newpatrol);
             AIPatrolSettings.SetPatrolNames();
             AIPatrolSettings.isDirty = true;
