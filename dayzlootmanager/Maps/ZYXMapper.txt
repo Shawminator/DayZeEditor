@@ -1,0 +1,22 @@
+﻿	//map Y mapper:
+	const float MAP_X = 16400;
+	const float MAP_Z = 16400;
+	const float RESOLUTION = 7.5;
+
+	DeleteFile("$profile:map_output.txt");
+	FileHandle fh = OpenFile("$profile:map_output.txt", FileMode.WRITE);
+
+	float x, z;
+	while (x < MAP_X) {
+	    while (z < MAP_Z) {
+	        vector point = Vector(x, GetGame().SurfaceY(x, z), z);
+	        FPrintln(fh, point.ToString(false));
+	        z += RESOLUTION;
+	    }
+
+	    z = 0;
+	    x += RESOLUTION;
+	}
+
+	CloseFile(fh);
+	//end Y mapper
