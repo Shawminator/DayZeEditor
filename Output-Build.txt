@@ -1,0 +1,145 @@
+﻿Build started...
+1>------ Build started: Project: dayzlootmanager, Configuration: Debug Any CPU ------
+1>C:\Users\Shawminator-PC\source\repos\dayzlootmanager\dayzlootmanager\Forms\KOSZonemanager.cs(184,21,184,39): warning CS0169: The field 'KOSZonemanager.currentrestarthour' is never used
+1>  dayzlootmanager -> C:\Users\Shawminator-PC\source\repos\dayzlootmanager\dayzlootmanager\bin\Debug\DayZeEditor.exe
+1>  The syntax of the command is incorrect.
+1>  
+1>  -------------------------------------------------------------------------------
+1>     ROBOCOPY     ::     Robust File Copy for Windows                              
+1>  -------------------------------------------------------------------------------
+1>  
+1>    Started : 30 May 2022 00:28:23
+1>     Source : C:\Users\Shawminator-PC\source\repos\dayzlootmanager\dayzlootmanager\bin\Debug\
+1>       Dest : C:\Users\Shawminator-PC\source\repos\dayzlootmanager\dayzlootmanager\bin\Debug\lib\
+1>  
+1>      Files : *.*
+1>  	    
+1>  Exc Files : *.exe
+1>  	    *.config
+1>  	    *.manifest
+1>  	    
+1>   Exc Dirs : lib
+1>  	    Maps
+1>  	    Templates
+1>  	    Trader
+1>  	    TraderNPCs
+1>  	    Project
+1>  	    
+1>    Options : *.* /S /E /DCOPY:DA /COPY:DAT /MOVE /IS /R:1000000 /W:30 
+1>  
+1>  ------------------------------------------------------------------------------
+1>  
+1>  	                  35	C:\Users\Shawminator-PC\source\repos\dayzlootmanager\dayzlootmanager\bin\Debug\
+1>  	  *EXTRA File 		   8.4 m	DayZeEditor_v0.61.rar
+1>  	    Same      		  150528	Cyotek.Windows.Forms.ColorPicker.dll
+1>   87%  
+1>  100%  
+1>  	    Same      		  195584	DarkUI.dll
+1>   67%  
+1>  100%  
+1>  	    Same      		  472576	DarkUI.pdb
+1>   27%  
+1>   55%  
+1>   83%  
+1>  100%  
+1>  	    Newer     		   1.5 m	DayZeEditor.pdb
+1>   15%  
+1>   31%  
+1>   47%  
+1>   62%  
+1>   78%  
+1>   94%  
+1>  100%  
+1>  	    Same      		  384000	DayZeLib.dll
+1>   34%  
+1>   68%  
+1>  100%  
+1>  	    Same      		   1.3 m	DayZeLib.pdb
+1>   18%  
+1>   37%  
+1>   55%  
+1>   74%  
+1>   92%  
+1>  100%  
+1>  	    Same      		   17890	defaultss.xsl
+1>  100%  
+1>  	    Same      		   20872	Microsoft.Bcl.AsyncInterfaces.dll
+1>  100%  
+1>  	    Same      		   18215	Microsoft.Bcl.AsyncInterfaces.xml
+1>  100%  
+1>  	    Same      		   20856	System.Buffers.dll
+1>  100%  
+1>  	    Same      		    3481	System.Buffers.xml
+1>  100%  
+1>  	    Same      		  393520	System.Data.SQLite.dll
+1>   33%  
+1>   66%  
+1>   99%  
+1>  100%  
+1>  	    Same      		   1.0 m	System.Data.SQLite.xml
+1>   23%  
+1>   46%  
+1>   70%  
+1>   93%  
+1>  100%  
+1>  	    Same      		  141184	System.Memory.dll
+1>   92%  
+1>  100%  
+1>  	    Same      		   13950	System.Memory.xml
+1>  100%  
+1>  	    Same      		  115856	System.Numerics.Vectors.dll
+1>  100%  
+1>  	    Same      		  183484	System.Numerics.Vectors.xml
+1>   71%  
+1>  100%  
+1>  	    Same      		   16768	System.Runtime.CompilerServices.Unsafe.dll
+1>  100%  
+1>  	    Same      		   17998	System.Runtime.CompilerServices.Unsafe.xml
+1>  100%  
+1>  	    Same      		   68472	System.Text.Encodings.Web.dll
+1>  100%  
+1>  	    Same      		   62941	System.Text.Encodings.Web.xml
+1>  100%  
+1>  	    Same      		  355720	System.Text.Json.dll
+1>   36%  
+1>   73%  
+1>  100%  
+1>  	    Same      		  244053	System.Text.Json.xml
+1>   53%  
+1>  100%  
+1>  	    Same      		   25984	System.Threading.Tasks.Extensions.dll
+1>  100%  
+1>  	    Same      		   10147	System.Threading.Tasks.Extensions.xml
+1>  100%  
+1>  	    Same      		   25232	System.ValueTuple.dll
+1>  100%  
+1>  	    Same      		     142	System.ValueTuple.xml
+1>  100%  
+1>  	    Same      		   20480	TreeViewMS.dll
+1>  100%  
+1>  	    Same      		   17920	TreeViewMS.pdb
+1>  100%  
+1>  	    Same      		  162072	WinSCPnet.dll
+1>   80%  
+1>  100%  
+1>  	    Same      		     512	ZYXMapper.txt
+1>  100%  
+1>  
+1>  ------------------------------------------------------------------------------
+1>  
+1>                 Total    Copied   Skipped  Mismatch    FAILED    Extras
+1>      Dirs :         6         0         6         0         0         0
+1>     Files :        35        31         4         0         0         1
+1>     Bytes :   34.92 m    7.02 m   27.90 m         0         0    8.40 m
+1>     Times :   0:00:00   0:00:00                       0:00:00   0:00:00
+1>  
+1>  
+1>     Speed :           216,702,823 Bytes/sec.
+1>     Speed :            12,399.835 MegaBytes/min.
+1>     Ended : 30 May 2022 00:28:23
+1>  
+1>  
+1>  2022/05/30 00:28:23 ERROR 32 (0x00000020) Deleting Source Directory C:\Users\Shawminator-PC\source\repos\dayzlootmanager\dayzlootmanager\bin\Debug\
+1>  The process cannot access the file because it is being used by another process.
+1>  
+========== Build: 1 succeeded, 0 failed, 3 up-to-date, 0 skipped ==========

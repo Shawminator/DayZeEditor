@@ -1177,7 +1177,25 @@ namespace DayZeEditor
         }
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\expansionMod\\Settings");
+            switch (tabControl2.SelectedIndex)
+            {
+                case 0:
+                case 1:
+                case 3:
+                case 6:
+                case 7:
+                case 8:
+                case 10:
+                case 11:
+                    Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\expansionMod\\Settings");
+                    break;
+                case 2:
+                case 4:
+                case 5:
+                case 9:
+                    Process.Start(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings");
+                    break;
+            }
         }
         private void populate()
         {

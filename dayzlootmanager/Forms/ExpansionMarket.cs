@@ -270,7 +270,24 @@ namespace DayZeEditor
         }
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\expansionMod");
+            switch (tabControl1.SelectedIndex)
+            {
+                case 0:
+                    Process.Start(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings");
+                    break;
+                case 1:
+                    Process.Start(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\traders");
+                    break;
+                case 2:
+                    Process.Start(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\traderzones");
+                    break;
+                case 3:
+                    Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\expansionMod\\Traders");
+                    break;
+                case 4:
+                    Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\expansionMod\\Market");
+                    break;
+            }
         }
         private void syncMinToMaxPricesToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -407,19 +424,26 @@ namespace DayZeEditor
         }
         private void exportItemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            StringBuilder sb = new StringBuilder();
-            foreach (marketItem item in currentCat.Items)
+            if (listBox5.SelectedItems.Count > 0)
             {
-                sb.Append(item.ClassName + "," + item.MaxPriceThreshold.ToString() + Environment.NewLine);
-                if(item.Variants != null && item.Variants.Count > 0)
+                foreach (var item in listBox5.SelectedItems)
                 {
-                    foreach(string itemv in item.Variants)
+                    StringBuilder sb = new StringBuilder();
+                    Categories pitem = item as Categories;
+                    foreach (marketItem mitem in pitem.Items)
                     {
-                        sb.Append(itemv + "," + item.MaxPriceThreshold.ToString() + Environment.NewLine);
+                        sb.Append(mitem.ClassName + "," + mitem.MaxPriceThreshold.ToString() + Environment.NewLine);
+                        //if(item.Variants != null && item.Variants.Count > 0)
+                        //{
+                        //    foreach(string itemv in item.Variants)
+                        //    {
+                        //        sb.Append(itemv + "," + item.MaxPriceThreshold.ToString() + Environment.NewLine);
+                        //    }
+                        //}
                     }
+                    File.WriteAllText(pitem.DisplayName + ".txt", sb.ToString());
                 }
             }
-            File.WriteAllText("itemexport.txt", sb.ToString());
         }
         private void setPriceForItemsWithZeroToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -491,7 +515,7 @@ namespace DayZeEditor
                     if (list.Any(x => x.Split(',')[0] == item.ClassName))
                     {
                         string price = list.First(x => x.Split(',')[0] == item.ClassName);
-                        item.MinPriceThreshold = Convert.ToInt32(price.Split(',')[1]);
+                        item.MaxPriceThreshold = Convert.ToInt32(price.Split(',')[1]);
                     }
                 }
                 currentCat.isDirty = true;

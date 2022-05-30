@@ -511,7 +511,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="depositphotos_20788183_stock_illustration_cartoon_thief_running_with_a_Cw8_icon.ico" />
-    <Content Include="Maps\ZYXMapper.txt">
+    <Content Include="ZYXMapper.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="TraderNPCs\TraderPlusNPCs.txt">

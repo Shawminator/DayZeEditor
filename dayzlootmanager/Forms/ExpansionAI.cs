@@ -985,6 +985,7 @@ namespace DayZeEditor
             StaticPatrolBehaviorCB.SelectedIndex = StaticPatrolBehaviorCB.FindStringExact(CurrentPatrol.Behaviour);
             StaticPatrolSpeedCB.SelectedIndex = StaticPatrolSpeedCB.FindStringExact(CurrentPatrol.Speed);
             StaticPatrolUnderThreatSpeedCB.SelectedIndex = StaticPatrolUnderThreatSpeedCB.FindStringExact(CurrentPatrol.UnderThreatSpeed);
+            StaticPatrolRespawnTimeNUD.Value = CurrentPatrol.RespawnTime;
             StaticPatrolMinDistRadiusNUD.Value = CurrentPatrol.MinDistRadius;
             StaticPatrolMaxDistRadiusNUD.Value = CurrentPatrol.MaxDistRadius;
             StaticPatrolChanceCB.Value = CurrentPatrol.Chance;
@@ -1089,6 +1090,12 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             CurrentPatrol.UnderThreatSpeed = StaticPatrolUnderThreatSpeedCB.GetItemText(StaticPatrolUnderThreatSpeedCB.SelectedItem);
+            AIPatrolSettings.isDirty = true;
+        }
+        private void StaticPatrolRespawnTimeNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPatrol.RespawnTime = StaticPatrolRespawnTimeNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
         private void StaticPatrolMinDistRadiusNUD_ValueChanged(object sender, EventArgs e)
@@ -1264,5 +1271,7 @@ namespace DayZeEditor
             AISettings.isDirty = true;
         }
         #endregion AISettings
+
+
     }
 }
