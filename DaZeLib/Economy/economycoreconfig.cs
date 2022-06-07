@@ -161,22 +161,13 @@ namespace DayZeLib
                 }
             }
         }
-        public void Savespawnabletypes(string saveTime)
+        public void Savespawnabletypes(string saveTime = null)
         {
-            Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
-            File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
-            var serializer = new XmlSerializer(typeof(spawnabletypes));
-            var ns = new XmlSerializerNamespaces();
-            ns.Add("", "");
-            var sw = new StringWriter();
-            sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
-            var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true, });
-            serializer.Serialize(xmlWriter, spawnabletypes, ns);
-            Console.WriteLine(sw.ToString());
-            File.WriteAllText(Filename, sw.ToString());
-        }
-        public void Savespawnabletypes()
-        {
+            if (saveTime != null)
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
+                File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
+            }
             var serializer = new XmlSerializer(typeof(spawnabletypes));
             var ns = new XmlSerializerNamespaces();
             ns.Add("", "");
@@ -230,10 +221,13 @@ namespace DayZeLib
                 }
             }
         }
-        public void SaveRandomPresets(string saveTime)
+        public void SaveRandomPresets(string saveTime = null)
         {
-            Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
-            File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
+            if (saveTime != null)
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
+                File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
+            }
             var serializer = new XmlSerializer(typeof(randompresets));
             var ns = new XmlSerializerNamespaces();
             ns.Add("", "");
@@ -332,22 +326,13 @@ namespace DayZeLib
             }
         }
 
-        public void SaveEvent(string saveTime)
+        public void SaveEvent(string saveTime = null)
         {
-            Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
-            File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
-            var serializer = new XmlSerializer(typeof(events));
-            var ns = new XmlSerializerNamespaces();
-            ns.Add("", "");
-            var sw = new StringWriter();
-            sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
-            var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true, });
-            serializer.Serialize(xmlWriter, events, ns);
-            Console.WriteLine(sw.ToString());
-            File.WriteAllText(Filename, sw.ToString());
-        }
-        public void SaveEvent()
-        {
+            if (saveTime != null)
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
+                File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
+            }
             var serializer = new XmlSerializer(typeof(events));
             var ns = new XmlSerializerNamespaces();
             ns.Add("", "");
@@ -392,22 +377,13 @@ namespace DayZeLib
             }
         }
 
-        public void SaveEventSpawns(string saveTime)
+        public void SaveEventSpawns(string saveTime = null)
         {
-            Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
-            File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
-            var serializer = new XmlSerializer(typeof(eventposdef));
-            var ns = new XmlSerializerNamespaces();
-            ns.Add("", "");
-            var sw = new StringWriter();
-            sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
-            var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true, });
-            serializer.Serialize(xmlWriter, eventposdef, ns);
-            Console.WriteLine(sw.ToString());
-            File.WriteAllText(Filename, sw.ToString());
-        }
-        public void SaveEventSpawns()
-        {
+            if (saveTime != null)
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
+                File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
+            }
             var serializer = new XmlSerializer(typeof(eventposdef));
             var ns = new XmlSerializerNamespaces();
             ns.Add("", "");
@@ -452,22 +428,13 @@ namespace DayZeLib
             }
         }
 
-        public void SaveGlobals(string saveTime)
+        public void SaveGlobals(string saveTime = null)
         {
-            Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
-            File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
-            var serializer = new XmlSerializer(typeof(variables));
-            var ns = new XmlSerializerNamespaces();
-            ns.Add("", "");
-            var sw = new StringWriter();
-            sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
-            var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true, });
-            serializer.Serialize(xmlWriter, variables, ns);
-            Console.WriteLine(sw.ToString());
-            File.WriteAllText(Filename, sw.ToString());
-        }
-        public void SaveGlobals()
-        {
+            if (saveTime != null)
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
+                File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
+            }
             var serializer = new XmlSerializer(typeof(variables));
             var ns = new XmlSerializerNamespaces();
             ns.Add("", "");
@@ -507,10 +474,13 @@ namespace DayZeLib
                 }
             }
         }
-        public void Savecfgplayerspawnpoints(string saveTime)
+        public void Savecfgplayerspawnpoints(string saveTime = null)
         {
-            Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
-            File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
+            if (saveTime != null)
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
+                File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
+            }
             var serializer = new XmlSerializer(typeof(playerspawnpoints));
             var ns = new XmlSerializerNamespaces();
             ns.Add("", "");
@@ -636,10 +606,13 @@ namespace DayZeLib
                 }
             }
         }
-        public void SaveWeather(string saveTime)
+        public void SaveWeather(string saveTime = null)
         {
-            Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
-            File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
+            if (saveTime != null)
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
+                File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
+            }
             var serializer = new XmlSerializer(typeof(weather));
             var ns = new XmlSerializerNamespaces();
             ns.Add("", "");

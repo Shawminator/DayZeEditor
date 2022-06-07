@@ -135,10 +135,16 @@ namespace DayZeEditor
             savefiles();
         }
         public void savefiles(bool updated = false)
-            {
-                List<string> midifiedfiles = new List<string>();
+        {
+            List<string> midifiedfiles = new List<string>();
+            string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
             if (AISettings.isDirty)
             {
+                if (currentproject.Createbackups && File.Exists(AISettings.Filename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(AISettings.Filename) + "\\Backup\\" + SaveTime);
+                    File.Copy(AISettings.Filename, Path.GetDirectoryName(AISettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(AISettings.Filename) + ".bak", true);
+                }
                 AISettings.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(AISettings, options);
@@ -147,6 +153,11 @@ namespace DayZeEditor
             }
             if (AIPatrolSettings.isDirty)
             {
+                if (currentproject.Createbackups && File.Exists(AIPatrolSettings.Filename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(AIPatrolSettings.Filename) + "\\Backup\\" + SaveTime);
+                    File.Copy(AIPatrolSettings.Filename, Path.GetDirectoryName(AIPatrolSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(AIPatrolSettings.Filename) + ".bak", true);
+                }
                 AIPatrolSettings.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(AIPatrolSettings, options);
@@ -158,6 +169,11 @@ namespace DayZeEditor
             {
                 if (AILO.isDirty)
                 {
+                    if (currentproject.Createbackups && File.Exists(AILO.Filename))
+                    {
+                        Directory.CreateDirectory(Path.GetDirectoryName(AILO.Filename) + "\\Backup\\" + SaveTime);
+                        File.Copy(AILO.Filename, Path.GetDirectoryName(AILO.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(AILO.Filename) + ".bak", true);
+                    }
                     AILO.isDirty = false;
                     var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                     string jsonString = JsonSerializer.Serialize(AILO, options);

@@ -175,9 +175,17 @@ namespace DayZeEditor
         {
             List<string> midifiedfiles = new List<string>();
             string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
+            SaveEconomyFiles(midifiedfiles, SaveTime);
+        }
+
+        private void SaveEconomyFiles(List<string> midifiedfiles, string SaveTime)
+        {
             if (vanillatypes.isDirty)
             {
-                vanillatypes.SaveTyes(SaveTime);
+                if (currentproject.Createbackups)
+                    vanillatypes.SaveTyes(SaveTime);
+                else
+                    vanillatypes.SaveTyes();
                 vanillatypes.isDirty = false;
                 midifiedfiles.Add(Path.GetFileName(vanillatypes.Filename));
             }
@@ -185,7 +193,10 @@ namespace DayZeEditor
             {
                 if (tf.isDirty)
                 {
-                    tf.SaveTyes(SaveTime);
+                    if (currentproject.Createbackups)
+                        tf.SaveTyes(SaveTime);
+                    else
+                        tf.SaveTyes();
                     tf.isDirty = false;
                     midifiedfiles.Add(Path.GetFileName(tf.Filename));
                 }
@@ -195,7 +206,10 @@ namespace DayZeEditor
             {
                 if (eventconfig.isDirty)
                 {
-                    eventconfig.SaveEvent(SaveTime);
+                    if (currentproject.Createbackups)
+                        eventconfig.SaveEvent(SaveTime);
+                    else
+                        eventconfig.SaveEvent();
                     eventconfig.isDirty = false;
                     midifiedfiles.Add(Path.GetFileName(eventconfig.Filename));
                 }
@@ -205,7 +219,10 @@ namespace DayZeEditor
             {
                 if (currentproject.cfgeventspawns.isDirty)
                 {
-                    currentproject.cfgeventspawns.SaveEventSpawns(SaveTime);
+                    if (currentproject.Createbackups)
+                        currentproject.cfgeventspawns.SaveEventSpawns(SaveTime);
+                    else
+                        currentproject.cfgeventspawns.SaveEventSpawns();
                     currentproject.cfgeventspawns.isDirty = false;
                     midifiedfiles.Add(Path.GetFileName(currentproject.cfgeventspawns.Filename));
                 }
@@ -217,7 +234,10 @@ namespace DayZeEditor
                 {
                     if (Spawnabletypesconfig.isDirty)
                     {
-                        Spawnabletypesconfig.Savespawnabletypes(SaveTime);
+                        if (currentproject.Createbackups)
+                            Spawnabletypesconfig.Savespawnabletypes(SaveTime);
+                        else
+                            Spawnabletypesconfig.Savespawnabletypes();
                         Spawnabletypesconfig.isDirty = false;
                         midifiedfiles.Add(Path.GetFileName(Spawnabletypesconfig.Filename));
                     }
@@ -227,7 +247,10 @@ namespace DayZeEditor
             {
                 if (currentproject.cfgrandompresetsconfig.isDirty)
                 {
-                    currentproject.cfgrandompresetsconfig.SaveRandomPresets(SaveTime);
+                    if (currentproject.Createbackups)
+                        currentproject.cfgrandompresetsconfig.SaveRandomPresets(SaveTime);
+                    else
+                        currentproject.cfgrandompresetsconfig.SaveRandomPresets();
                     currentproject.cfgrandompresetsconfig.isDirty = false;
                     midifiedfiles.Add(Path.GetFileName(currentproject.cfgrandompresetsconfig.Filename));
                 }
@@ -235,12 +258,15 @@ namespace DayZeEditor
 
             if (currentproject.cfgplayerspawnpoints != null)
             {
-                    if (currentproject.cfgplayerspawnpoints.isDirty)
-                    {
+                if (currentproject.cfgplayerspawnpoints.isDirty)
+                {
+                    if (currentproject.Createbackups)
                         currentproject.cfgplayerspawnpoints.Savecfgplayerspawnpoints(SaveTime);
-                        currentproject.cfgplayerspawnpoints.isDirty = false;
-                        midifiedfiles.Add(Path.GetFileName(currentproject.cfgplayerspawnpoints.Filename));
-                    }
+                    else
+                        currentproject.cfgplayerspawnpoints.Savecfgplayerspawnpoints();
+                    currentproject.cfgplayerspawnpoints.isDirty = false;
+                    midifiedfiles.Add(Path.GetFileName(currentproject.cfgplayerspawnpoints.Filename));
+                }
             }
             if (currentproject.CFGGameplayConfig != null)
             {
@@ -265,7 +291,10 @@ namespace DayZeEditor
             {
                 if (currentproject.gloabsconfig.isDirty)
                 {
-                    currentproject.gloabsconfig.SaveGlobals(SaveTime);
+                    if (currentproject.Createbackups)
+                        currentproject.gloabsconfig.SaveGlobals(SaveTime);
+                    else
+                        currentproject.gloabsconfig.SaveGlobals();
                     currentproject.gloabsconfig.isDirty = false;
                     midifiedfiles.Add(Path.GetFileName(currentproject.gloabsconfig.Filename));
                 }
@@ -274,7 +303,10 @@ namespace DayZeEditor
             {
                 if (currentproject.weatherconfig.isDirty)
                 {
-                    currentproject.weatherconfig.SaveWeather(SaveTime);
+                    if (currentproject.Createbackups)
+                        currentproject.weatherconfig.SaveWeather(SaveTime);
+                    else
+                        currentproject.weatherconfig.SaveWeather();
                     currentproject.weatherconfig.isDirty = false;
                     midifiedfiles.Add(Path.GetFileName(currentproject.weatherconfig.Filename));
                 }
@@ -301,6 +333,7 @@ namespace DayZeEditor
             else
                 MessageBox.Show("No changes were made.", "Nothing Saved", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
+
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             WeatherTabPage.SelectedIndex = 0;

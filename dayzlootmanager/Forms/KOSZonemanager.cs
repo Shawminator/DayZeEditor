@@ -140,8 +140,14 @@ namespace DayZeEditor
         private void SaveKOSZoneconfigs()
         {
             List<string> midifiedfiles = new List<string>();
+            string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
             if (KosZoneconfig.isDirty)
             {
+                if (currentproject.Createbackups && File.Exists(KosZoneconfig.FullFilename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(KosZoneconfig.FullFilename) + "\\Backup\\" + SaveTime);
+                    File.Copy(KosZoneconfig.FullFilename, Path.GetDirectoryName(KosZoneconfig.FullFilename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(KosZoneconfig.FullFilename) + ".bak", true);
+                }
                 KosZoneconfig.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(KosZoneconfig, options);
@@ -150,6 +156,11 @@ namespace DayZeEditor
             }
             if (KosPurgeConfig.isDirty)
             {
+                if (currentproject.Createbackups && File.Exists(KosPurgeConfig.FullFilename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(KosPurgeConfig.FullFilename) + "\\Backup\\" + SaveTime);
+                    File.Copy(KosPurgeConfig.FullFilename, Path.GetDirectoryName(KosPurgeConfig.FullFilename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(KosPurgeConfig.FullFilename) + ".bak", true);
+                }
                 KosPurgeConfig.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(KosPurgeConfig, options);

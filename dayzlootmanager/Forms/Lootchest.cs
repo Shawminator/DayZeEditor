@@ -581,22 +581,54 @@ namespace DayZeEditor
         }
         public void savefiles()
         {
+            List<string> midifiedfiles = new List<string>();
+            string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
             if (LootChestTable.isDirty)
             {
+                if (currentproject.Createbackups && File.Exists(LootChestTable.Filename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(LootChestTable.Filename) + "\\Backup\\" + SaveTime);
+                    File.Copy(LootChestTable.Filename, Path.GetDirectoryName(LootChestTable.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(LootChestTable.Filename) + ".bak", true);
+                }
                 LootChestTable.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(LootChestTable, options);
                 File.WriteAllText(LootChestTable.Filename, jsonString);
-                MessageBox.Show(Path.GetFileName(LootChestTable.Filename) + " Saved....");
+                midifiedfiles.Add(Path.GetFileName(LootChestTable.Filename));
             }
             if (LootChestTools.isDirty)
             {
+                if (currentproject.Createbackups && File.Exists(LootChestTools.Filename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(LootChestTools.Filename) + "\\Backup\\" + SaveTime);
+                    File.Copy(LootChestTools.Filename, Path.GetDirectoryName(LootChestTools.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(LootChestTools.Filename) + ".bak", true);
+                }
                 LootChestTools.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(LootChestTools, options);
                 File.WriteAllText(LootChestTools.Filename, jsonString);
-                MessageBox.Show(Path.GetFileName(LootChestTools.Filename) + " Saved....");
+                midifiedfiles.Add(Path.GetFileName(LootChestTools.Filename));
             }
+            string message = "The Following Files were saved....\n";
+            int i = 0;
+            foreach (string l in midifiedfiles)
+            {
+                if (i == 5)
+                {
+                    message += l + "\n";
+                    i = 0;
+                }
+                else
+                {
+                    message += l + ", ";
+                    i++;
+                }
+
+            }
+            if (midifiedfiles.Count > 0)
+                MessageBox.Show(message, "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            else
+                MessageBox.Show("No changes were made.", "Nothing Saved", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
         private void toolStripButton8_Click(object sender, EventArgs e)

@@ -713,8 +713,14 @@ namespace DayZeEditor
         private void SaveKOTHZoneconfigs()
         {
             List<string> midifiedfiles = new List<string>();
+            string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
             if (KingOfTheHillConfig.isDirty)
             {
+                if (currentproject.Createbackups && File.Exists(KingOfTheHillConfig.FullFilename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(KingOfTheHillConfig.FullFilename) + "\\Backup\\" + SaveTime);
+                    File.Copy(KingOfTheHillConfig.FullFilename, Path.GetDirectoryName(KingOfTheHillConfig.FullFilename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(KingOfTheHillConfig.FullFilename) + ".bak", true);
+                }
                 KingOfTheHillConfig.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(KingOfTheHillConfig, options);

@@ -798,7 +798,7 @@ namespace DayZeEditor
                 AirdropsettingsJson.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(AirdropsettingsJson, options);
-                if (File.Exists(AirdropsettingsJson.Filename))
+                if (currentproject.Createbackups && File.Exists(AirdropsettingsJson.Filename))
                 {
                     Directory.CreateDirectory(Path.GetDirectoryName(AirdropsettingsJson.Filename) + "\\Backup\\" + SaveTime);
                     File.Copy(AirdropsettingsJson.Filename, Path.GetDirectoryName(AirdropsettingsJson.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(AirdropsettingsJson.Filename) + ".bak", true);
@@ -811,7 +811,7 @@ namespace DayZeEditor
                 BaseBuildingSettings.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(BaseBuildingSettings, options);
-                if (File.Exists(BaseBuildingSettings.Filename))
+                if (currentproject.Createbackups && File.Exists(BaseBuildingSettings.Filename))
                 {
                     Directory.CreateDirectory(Path.GetDirectoryName(BaseBuildingSettings.Filename) + "\\Backup\\" + SaveTime);
                     File.Copy(BaseBuildingSettings.Filename, Path.GetDirectoryName(BaseBuildingSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(BaseBuildingSettings.Filename) + ".bak", true);
@@ -824,7 +824,7 @@ namespace DayZeEditor
                 BookSettings.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(BookSettings, options);
-                if (File.Exists(BookSettings.Filename))
+                if (currentproject.Createbackups && File.Exists(BookSettings.Filename))
                 {
                     Directory.CreateDirectory(Path.GetDirectoryName(BookSettings.Filename) + "\\Backup\\" + SaveTime);
                     File.Copy(BookSettings.Filename, Path.GetDirectoryName(BookSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(BookSettings.Filename) + ".bak", true);
@@ -837,7 +837,7 @@ namespace DayZeEditor
                 ChatSettings.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(ChatSettings, options);
-                if (File.Exists(ChatSettings.Filename))
+                if (currentproject.Createbackups && File.Exists(ChatSettings.Filename))
                 {
                     Directory.CreateDirectory(Path.GetDirectoryName(ChatSettings.Filename) + "\\Backup\\" + SaveTime);
                     File.Copy(ChatSettings.Filename, Path.GetDirectoryName(ChatSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(ChatSettings.Filename) + ".bak", true);
@@ -850,7 +850,7 @@ namespace DayZeEditor
                 DebugSettings.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(DebugSettings, options);
-                if (File.Exists(DebugSettings.Filename))
+                if (currentproject.Createbackups && File.Exists(DebugSettings.Filename))
                 {
                     Directory.CreateDirectory(Path.GetDirectoryName(DebugSettings.Filename) + "\\Backup\\" + SaveTime);
                     File.Copy(DebugSettings.Filename, Path.GetDirectoryName(DebugSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(DebugSettings.Filename) + ".bak", true);
@@ -863,7 +863,7 @@ namespace DayZeEditor
                 GeneralSettings.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(GeneralSettings, options);
-                if (File.Exists(GeneralSettings.Filename))
+                if (currentproject.Createbackups && File.Exists(GeneralSettings.Filename))
                 {
                     Directory.CreateDirectory(Path.GetDirectoryName(GeneralSettings.Filename) + "\\Backup\\" + SaveTime);
                     File.Copy(GeneralSettings.Filename, Path.GetDirectoryName(GeneralSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(GeneralSettings.Filename) + ".bak", true);
@@ -876,7 +876,7 @@ namespace DayZeEditor
                 LogSettings.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(LogSettings, options);
-                if (File.Exists(LogSettings.Filename))
+                if (currentproject.Createbackups && File.Exists(LogSettings.Filename))
                 {
                     Directory.CreateDirectory(Path.GetDirectoryName(LogSettings.Filename) + "\\Backup\\" + SaveTime);
                     File.Copy(LogSettings.Filename, Path.GetDirectoryName(LogSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(LogSettings.Filename) + ".bak", true);
@@ -889,7 +889,7 @@ namespace DayZeEditor
                 MapSettings.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(MapSettings, options);
-                if (File.Exists(MapSettings.Filename))
+                if (currentproject.Createbackups && File.Exists(MapSettings.Filename))
                 {
                     Directory.CreateDirectory(Path.GetDirectoryName(MapSettings.Filename) + "\\Backup\\" + SaveTime);
                     File.Copy(MapSettings.Filename, Path.GetDirectoryName(MapSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(MapSettings.Filename) + ".bak", true);
@@ -915,7 +915,7 @@ namespace DayZeEditor
                 MissionSettings.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(MissionSettings, options);
-                if (File.Exists(MissionSettings.Filename))
+                if (currentproject.Createbackups && File.Exists(MissionSettings.Filename))
                 {
                     Directory.CreateDirectory(Path.GetDirectoryName(MissionSettings.Filename) + "\\Backup\\" + SaveTime);
                     File.Copy(MissionSettings.Filename, Path.GetDirectoryName(MissionSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(MissionSettings.Filename) + ".bak", true);
@@ -930,7 +930,7 @@ namespace DayZeEditor
                     msf.isDirty = false;
                     var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                     string jsonString = JsonSerializer.Serialize(msf, options);
-                    if (File.Exists(msf.Filename))
+                    if (currentproject.Createbackups && File.Exists(msf.Filename))
                     {
                         Directory.CreateDirectory(Path.GetDirectoryName(msf.Filename) + "\\Backup\\" + SaveTime);
                         File.Copy(msf.Filename, Path.GetDirectoryName(msf.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(msf.Filename) + ".bak", true);
@@ -944,7 +944,7 @@ namespace DayZeEditor
                 MonitoringSettings.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(MonitoringSettings, options);
-                if (File.Exists(MonitoringSettings.Filename))
+                if (currentproject.Createbackups && File.Exists(MonitoringSettings.Filename))
                 {
                     Directory.CreateDirectory(Path.GetDirectoryName(MonitoringSettings.Filename) + "\\Backup\\" + SaveTime);
                     File.Copy(MonitoringSettings.Filename, Path.GetDirectoryName(MonitoringSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(MonitoringSettings.Filename) + ".bak", true);
@@ -957,7 +957,7 @@ namespace DayZeEditor
                 NameTagSettings.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(NameTagSettings, options);
-                if (File.Exists(NameTagSettings.Filename))
+                if (currentproject.Createbackups && File.Exists(NameTagSettings.Filename))
                 {
                     Directory.CreateDirectory(Path.GetDirectoryName(NameTagSettings.Filename) + "\\Backup\\" + SaveTime);
                     File.Copy(NameTagSettings.Filename, Path.GetDirectoryName(NameTagSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(NameTagSettings.Filename) + ".bak", true);
@@ -970,7 +970,7 @@ namespace DayZeEditor
                 NotificationSchedulerSettings.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(NotificationSchedulerSettings, options);
-                if (File.Exists(NotificationSchedulerSettings.Filename))
+                if (currentproject.Createbackups && File.Exists(NotificationSchedulerSettings.Filename))
                 {
                     Directory.CreateDirectory(Path.GetDirectoryName(NotificationSchedulerSettings.Filename) + "\\Backup\\" + SaveTime);
                     File.Copy(NotificationSchedulerSettings.Filename, Path.GetDirectoryName(NotificationSchedulerSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(NotificationSchedulerSettings.Filename) + ".bak", true);
@@ -983,7 +983,7 @@ namespace DayZeEditor
                 NotificationSettings.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(NotificationSettings, options);
-                if (File.Exists(NotificationSettings.Filename))
+                if (currentproject.Createbackups && File.Exists(NotificationSettings.Filename))
                 {
                     Directory.CreateDirectory(Path.GetDirectoryName(NotificationSettings.Filename) + "\\Backup\\" + SaveTime);
                     File.Copy(NotificationSettings.Filename, Path.GetDirectoryName(NotificationSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(NotificationSettings.Filename) + ".bak", true);
@@ -1010,7 +1010,7 @@ namespace DayZeEditor
                 PlayerListSettings.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(PlayerListSettings, options);
-                if (File.Exists(PlayerListSettings.Filename))
+                if (currentproject.Createbackups && File.Exists(PlayerListSettings.Filename))
                 {
                     Directory.CreateDirectory(Path.GetDirectoryName(PlayerListSettings.Filename) + "\\Backup\\" + SaveTime);
                     File.Copy(PlayerListSettings.Filename, Path.GetDirectoryName(PlayerListSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(PlayerListSettings.Filename) + ".bak", true);
@@ -1023,7 +1023,7 @@ namespace DayZeEditor
                 RaidSettings.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(RaidSettings, options);
-                if (File.Exists(RaidSettings.Filename))
+                if (currentproject.Createbackups && File.Exists(RaidSettings.Filename))
                 {
                     Directory.CreateDirectory(Path.GetDirectoryName(RaidSettings.Filename) + "\\Backup\\" + SaveTime);
                     File.Copy(RaidSettings.Filename, Path.GetDirectoryName(RaidSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(RaidSettings.Filename) + ".bak", true);
@@ -1037,7 +1037,7 @@ namespace DayZeEditor
                 SafeZoneSettings.convertpointstoarray();
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(SafeZoneSettings, options);
-                if (File.Exists(SafeZoneSettings.Filename))
+                if (currentproject.Createbackups && File.Exists(SafeZoneSettings.Filename))
                 {
                     Directory.CreateDirectory(Path.GetDirectoryName(SafeZoneSettings.Filename) + "\\Backup\\" + SaveTime);
                     File.Copy(SafeZoneSettings.Filename, Path.GetDirectoryName(SafeZoneSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(SafeZoneSettings.Filename) + ".bak", true);
@@ -1050,7 +1050,7 @@ namespace DayZeEditor
                 SocialMediaSettings.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(SocialMediaSettings, options);
-                if (File.Exists(SocialMediaSettings.Filename))
+                if (currentproject.Createbackups && File.Exists(SocialMediaSettings.Filename))
                 {
                     Directory.CreateDirectory(Path.GetDirectoryName(SocialMediaSettings.Filename) + "\\Backup\\" + SaveTime);
                     File.Copy(SocialMediaSettings.Filename, Path.GetDirectoryName(SocialMediaSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(SocialMediaSettings.Filename) + ".bak", true);
@@ -1064,7 +1064,7 @@ namespace DayZeEditor
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 options.Converters.Add(new NullToEmptyGearConverter());
                 string jsonString = JsonSerializer.Serialize(SpawnSettings, options);
-                if (File.Exists(SpawnSettings.Filename))
+                if (currentproject.Createbackups && File.Exists(SpawnSettings.Filename))
                 {
                     Directory.CreateDirectory(Path.GetDirectoryName(SpawnSettings.Filename) + "\\Backup\\" + SaveTime);
                     File.Copy(SpawnSettings.Filename, Path.GetDirectoryName(SpawnSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(SpawnSettings.Filename) + ".bak", true);
@@ -1077,7 +1077,7 @@ namespace DayZeEditor
                 TerritorySettings.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(TerritorySettings, options);
-                if (File.Exists(TerritorySettings.Filename))
+                if (currentproject.Createbackups && File.Exists(TerritorySettings.Filename))
                 {
                     Directory.CreateDirectory(Path.GetDirectoryName(TerritorySettings.Filename) + "\\Backup\\" + SaveTime);
                     File.Copy(TerritorySettings.Filename, Path.GetDirectoryName(TerritorySettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(TerritorySettings.Filename) + ".bak", true);
@@ -1090,7 +1090,7 @@ namespace DayZeEditor
                 VehicleSettings.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(VehicleSettings, options);
-                if (File.Exists(VehicleSettings.Filename))
+                if (currentproject.Createbackups && File.Exists(VehicleSettings.Filename))
                 {
                     Directory.CreateDirectory(Path.GetDirectoryName(VehicleSettings.Filename) + "\\Backup\\" + SaveTime);
                     File.Copy(VehicleSettings.Filename, Path.GetDirectoryName(VehicleSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(VehicleSettings.Filename) + ".bak", true);

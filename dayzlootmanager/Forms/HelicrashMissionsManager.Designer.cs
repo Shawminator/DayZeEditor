@@ -126,6 +126,7 @@ namespace DayZeEditor
             this.SaveFileButton.Size = new System.Drawing.Size(42, 42);
             this.SaveFileButton.Text = "toolStripButton1";
             this.SaveFileButton.ToolTipText = "Save to New Loot List XML";
+            this.SaveFileButton.Click += new System.EventHandler(this.SaveFileButton_Click);
             // 
             // toolStripButton2
             // 

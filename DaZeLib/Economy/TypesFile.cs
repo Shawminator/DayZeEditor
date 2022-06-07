@@ -67,7 +67,7 @@ namespace DayZeLib
                 MessageBox.Show(ex.Message);
             }
         }
-        public bool SaveTyes(string saveTime)
+        public bool SaveTyes(string saveTime = null)
         {
             foreach (typesType t in types.type)
             {
@@ -79,37 +79,17 @@ namespace DayZeLib
                     t.tag = new BindingList<typesTypeTag>(new BindingList<typesTypeTag>(t.tag.OrderBy(x => x.name).ToList()));
             }
 
-            Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
-            File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
+            if (saveTime != null)
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
+                File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
+            }
             var serializer = new XmlSerializer(typeof(types));
             var ns = new XmlSerializerNamespaces();
             ns.Add("", "");
             var sw = new StringWriter();
             sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
             var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true ,});
-            serializer.Serialize(xmlWriter, types, ns);
-            Console.WriteLine(sw.ToString());
-            File.WriteAllText(Filename, sw.ToString());
-            return true;
-        }
-        public bool SaveTyes()
-        {
-            foreach (typesType t in types.type)
-            {
-                if (t.value != null)
-                    t.value = new BindingList<typesTypeValue>(new BindingList<typesTypeValue>(t.value.OrderBy(x => x.name).ToList()));
-                if (t.usage != null)
-                    t.usage = new BindingList<typesTypeUsage>(new BindingList<typesTypeUsage>(t.usage.OrderBy(x => x.name).ToList()));
-                if (t.tag != null)
-                    t.tag = new BindingList<typesTypeTag>(new BindingList<typesTypeTag>(t.tag.OrderBy(x => x.name).ToList()));
-            }
-
-            var serializer = new XmlSerializer(typeof(types));
-            var ns = new XmlSerializerNamespaces();
-            ns.Add("", "");
-            var sw = new StringWriter();
-            sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
-            var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true });
             serializer.Serialize(xmlWriter, types, ns);
             Console.WriteLine(sw.ToString());
             File.WriteAllText(Filename, sw.ToString());

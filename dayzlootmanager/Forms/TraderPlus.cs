@@ -64,8 +64,14 @@ namespace DayZeEditor
         public void SaveTraderfiles()
         {
             List<string> midifiedfiles = new List<string>();
+            string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
             if (TraderPlusBankingConfig.isDirty)
             {
+                if (currentproject.Createbackups && File.Exists(TraderPlusBankingConfig.FullFilename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(TraderPlusBankingConfig.FullFilename) + "\\Backup\\" + SaveTime);
+                    File.Copy(TraderPlusBankingConfig.FullFilename, Path.GetDirectoryName(TraderPlusBankingConfig.FullFilename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(TraderPlusBankingConfig.FullFilename) + ".bak", true);
+                }
                 TraderPlusBankingConfig.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(TraderPlusBankingConfig, options);
@@ -74,6 +80,11 @@ namespace DayZeEditor
             }
             if (TraderPlusGarageConfig.isDirty)
             {
+                if (currentproject.Createbackups && File.Exists(TraderPlusGarageConfig.FullFilename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(TraderPlusGarageConfig.FullFilename) + "\\Backup\\" + SaveTime);
+                    File.Copy(TraderPlusGarageConfig.FullFilename, Path.GetDirectoryName(TraderPlusGarageConfig.FullFilename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(TraderPlusGarageConfig.FullFilename) + ".bak", true);
+                }
                 TraderPlusGarageConfig.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(TraderPlusGarageConfig, options);
@@ -92,6 +103,11 @@ namespace DayZeEditor
             }
             if (TraderPlusVehiclesConfig.isDirty)
             {
+                if (currentproject.Createbackups && File.Exists(TraderPlusVehiclesConfig.FullFilename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(TraderPlusVehiclesConfig.FullFilename) + "\\Backup\\" + SaveTime);
+                    File.Copy(TraderPlusVehiclesConfig.FullFilename, Path.GetDirectoryName(TraderPlusVehiclesConfig.FullFilename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(TraderPlusVehiclesConfig.FullFilename) + ".bak", true);
+                }
                 TraderPlusVehiclesConfig.isDirty = false;
                 TraderPlusVehiclesConfig.setInsurances(TraderPlusInsuranceConfig);
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
@@ -101,6 +117,11 @@ namespace DayZeEditor
             }
             if (TraderPlusInsuranceConfig.isDirty)
             {
+                if (currentproject.Createbackups && File.Exists(TraderPlusInsuranceConfig.FullFilename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(TraderPlusInsuranceConfig.FullFilename) + "\\Backup\\" + SaveTime);
+                    File.Copy(TraderPlusInsuranceConfig.FullFilename, Path.GetDirectoryName(TraderPlusInsuranceConfig.FullFilename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(TraderPlusInsuranceConfig.FullFilename) + ".bak", true);
+                }
                 TraderPlusInsuranceConfig.isDirty = false;
                 TraderPlusInsuranceConfig.setInsurers(TraderPlusGeneralConfig);
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
@@ -110,6 +131,11 @@ namespace DayZeEditor
             }
             if (TraderPlusSafeZoneConfig.isDirty)
             {
+                if (currentproject.Createbackups && File.Exists(TraderPlusSafeZoneConfig.FullFilename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(TraderPlusSafeZoneConfig.FullFilename) + "\\Backup\\" + SaveTime);
+                    File.Copy(TraderPlusSafeZoneConfig.FullFilename, Path.GetDirectoryName(TraderPlusSafeZoneConfig.FullFilename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(TraderPlusSafeZoneConfig.FullFilename) + ".bak", true);
+                }
                 TraderPlusSafeZoneConfig.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(TraderPlusSafeZoneConfig, options);
@@ -118,6 +144,11 @@ namespace DayZeEditor
             }
             if (TraderPlusPriceConfig.isDirty)
             {
+                if (currentproject.Createbackups && File.Exists(TraderPlusPriceConfig.FullFilename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(TraderPlusPriceConfig.FullFilename) + "\\Backup\\" + SaveTime);
+                    File.Copy(TraderPlusPriceConfig.FullFilename, Path.GetDirectoryName(TraderPlusPriceConfig.FullFilename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(TraderPlusPriceConfig.FullFilename) + ".bak", true);
+                }
                 TraderPlusPriceConfig.isDirty = false;
                 TraderPlusPriceConfig.SetProducts();
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
@@ -127,6 +158,11 @@ namespace DayZeEditor
             }
             if (TraderPlusIDsConfig.isDirty)
             {
+                if (currentproject.Createbackups && File.Exists(TraderPlusIDsConfig.FullFilename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(TraderPlusIDsConfig.FullFilename) + "\\Backup\\" + SaveTime);
+                    File.Copy(TraderPlusIDsConfig.FullFilename, Path.GetDirectoryName(TraderPlusIDsConfig.FullFilename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(TraderPlusIDsConfig.FullFilename) + ".bak", true);
+                }
                 TraderPlusIDsConfig.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(TraderPlusIDsConfig, options);
