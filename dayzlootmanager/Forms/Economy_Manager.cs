@@ -1935,6 +1935,7 @@ namespace DayZeEditor
         }
         private void DrawAllEventSpawns(object sender, PaintEventArgs e)
         {
+            if (eventposdefEvent == null) return;
             eventposdefEventPos currentpos = EventSpawnPosLB.SelectedItem as eventposdefEventPos;
             if (currentpos == null) return;
             foreach (eventposdefEventPos newpos in eventposdefEvent.pos)
@@ -2032,9 +2033,11 @@ namespace DayZeEditor
         }
         private void darkButton56_Click(object sender, EventArgs e)
         {
-
+            eventposdef.@event.Remove(eventposdefEvent);
+            eventposdefEvent = null;
+            currentproject.cfgeventspawns.isDirty = true;
+            pictureBox1.Invalidate();
         }
-
         private void darkButton59_Click(object sender, EventArgs e)
         {
             eventposdefEventPos newpos = new eventposdefEventPos()
@@ -2053,10 +2056,11 @@ namespace DayZeEditor
             currentproject.cfgeventspawns.isDirty = true;
             pictureBox1.Invalidate();
         }
-
         private void darkButton58_Click(object sender, EventArgs e)
         {
-
+            eventposdefEvent.pos.Remove(eventposdefEventPos);
+            currentproject.cfgeventspawns.isDirty = true;
+            pictureBox1.Invalidate();
         }
         #endregion eventspawns
         #region spawnabletypes
@@ -4515,7 +4519,5 @@ namespace DayZeEditor
         {
 
         }
-
-
     }
 }

@@ -1429,6 +1429,7 @@ namespace DayZeEditor
             if (useraction)
             {
                 ADC.Container = getContainerString((ContainerTypes)comboBox2.SelectedItem);
+                AirdropsettingsJson.isDirty = true;
             }
         }
         private void numericUpDown8_ValueChanged(object sender, EventArgs e)
@@ -3100,6 +3101,7 @@ namespace DayZeEditor
         #region MissionSettings
         public MissionSettingFiles currentmission;
         public MissionSettingFiles currentmissionfile;
+        public float MissionMapscale = 1;
         private void loadMissionSettings()
         {
             useraction = false;
@@ -3112,7 +3114,69 @@ namespace DayZeEditor
             MissionsLB.DisplayMember = "DisplayName";
             MissionsLB.ValueMember = "Value";
             MissionsLB.DataSource = MissionSettings.MissionSettingFiles;
+
+            pictureBox6.BackgroundImage = Image.FromFile(Application.StartupPath + currentproject.MapPath); // Map Size is 15360 x 15360, 0,0 bottom left, middle 7680 x 7680
+            pictureBox6.Size = new Size(currentproject.MapSize, currentproject.MapSize);
+            pictureBox6.Paint += new PaintEventHandler(DrawAllMissions);
+            trackBar6.Value = 1;
+            SetsMissionScale();
             useraction = true;
+        }
+        private void trackBar6_MouseUp(object sender, MouseEventArgs e)
+        {
+            MissionMapscale = trackBar6.Value;
+            SetsMissionScale();
+
+        }
+        private void SetsMissionScale()
+        {
+            float scalevalue = MissionMapscale * 0.05f;
+            float mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            pictureBox6.Size = new Size(newsize, newsize);
+        }
+        private void DrawAllMissions(object sender, PaintEventArgs e)
+        {
+            float scalevalue = MissionMapscale * 0.05f;
+            if (MissionSettings.MissionSettingFiles.Count > 0)
+            {
+                foreach (var item in MissionSettings.MissionSettingFiles)
+                {
+                    MissionSettingFiles pitem = item as MissionSettingFiles;
+
+                    int centerX = (int)(Math.Round(pitem.DropLocation.x, 0) * scalevalue);
+                    int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(pitem.DropLocation.z, 0) * scalevalue);
+
+                    int radius = (int)(pitem.DropLocation.Radius * scalevalue);
+                    Point center = new Point(centerX, centerY);
+                    Pen pen = new Pen(Color.Red)
+                    {
+                        Width = 4
+                    };
+                    if (item == currentmissionfile)
+                        pen.Color = Color.LimeGreen;
+                    else
+                        pen.Color = Color.Red;
+                    getCircle(e.Graphics, pen, center, radius);
+                }
+            }
+        }
+        private void pictureBox6_DoubleClick(object sender, EventArgs e)
+        {
+            var mouseEventArgs = e as MouseEventArgs;
+            if (mouseEventArgs != null)
+            {
+                float scalevalue = MissionMapscale * 0.05f;
+                float mapsize = currentproject.MapSize;
+                int newsize = (int)(mapsize * scalevalue);
+                if (currentmissionfile == null) { return; }
+                Cursor.Current = Cursors.WaitCursor;
+                MissionDropXNUD.Value = (decimal)(mouseEventArgs.X / scalevalue);
+                MissionDropYNUD.Value = (decimal)((newsize - mouseEventArgs.Y) / scalevalue);
+                Cursor.Current = Cursors.Default;
+                currentmissionfile.isDirty = true;
+                pictureBox6.Invalidate();
+            }
         }
         private void MissionsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -3132,6 +3196,7 @@ namespace DayZeEditor
             MissionDropYNUD.Value = (decimal)currentmissionfile.DropLocation.z;
             MissionDropRadiusNUD.Value = (decimal)currentmissionfile.DropLocation.Radius;
             MissionDropNameTB.Text = currentmissionfile.DropLocation.Name;
+            pictureBox6.Invalidate();
             useraction = true;
         }
         private void MissionsEnabledCB_CheckedChanged(object sender, EventArgs e)
@@ -3202,18 +3267,21 @@ namespace DayZeEditor
             if (!useraction) { return; }
             currentmissionfile.DropLocation.x = (float)MissionDropXNUD.Value;
             currentmissionfile.isDirty = true;
+            pictureBox6.Invalidate();
         }
         private void MissionDropYNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
             currentmissionfile.DropLocation.z = (float)MissionDropYNUD.Value;
             currentmissionfile.isDirty = true;
+            pictureBox6.Invalidate();
         }
         private void MissionDropRadiusNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
             currentmissionfile.DropLocation.Radius = (float)MissionDropRadiusNUD.Value;
             currentmissionfile.isDirty = true;
+            pictureBox6.Invalidate();
         }
         private void darkButton40_Click(object sender, EventArgs e)
         {
@@ -3245,13 +3313,25 @@ namespace DayZeEditor
             MissionSettings.MissionSettingFiles.Add(newmission);
             MissionsLB.SelectedIndex = -1;
             MissionsLB.SelectedIndex = MissionsLB.Items.Count - 1;
+            pictureBox6.Invalidate();
         }
 
         private void darkButton41_Click(object sender, EventArgs e)
         {
+            int index = MissionsLB.SelectedIndex;
             File.Delete(currentmissionfile.Filename);
             MissionSettings.MissionSettingFiles.Remove(currentmissionfile);
             MissionSettings.isDirty = true;
+            if (MissionsLB.Items.Count == 0)
+                MissionsLB.SelectedIndex = -1;
+            else if (index == 0)
+            {
+                MissionsLB.SelectedIndex = -1;
+                MissionsLB.SelectedIndex = 0;
+            }
+            else
+                MissionsLB.SelectedIndex = index - 1;
+            pictureBox6.Invalidate();
         }
         #endregion Missionsettings
 
@@ -5596,6 +5676,7 @@ namespace DayZeEditor
             VehicleSettings.DesyncInvulnerabilityTimeoutSeconds = DesyncInvulnerabilityTimeoutSecondsNUD.Value;
             VehicleSettings.isDirty = true;
         }
+
 
 
 

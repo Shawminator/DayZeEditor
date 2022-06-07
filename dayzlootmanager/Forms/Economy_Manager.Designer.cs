@@ -8734,7 +8734,7 @@ namespace DayZeEditor
             this.AreaNameTB.Name = "AreaNameTB";
             this.AreaNameTB.Size = new System.Drawing.Size(359, 20);
             this.AreaNameTB.TabIndex = 118;
-            this.AreaNameTB.TextChanged += new System.EventHandler(this.min_dist_infectedNUD_ValueChanged);
+            this.AreaNameTB.TextChanged += new System.EventHandler(this.AreaNameTB_TextChanged);
             // 
             // darkLabel24
             // 

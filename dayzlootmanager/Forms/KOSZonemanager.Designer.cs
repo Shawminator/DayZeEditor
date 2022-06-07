@@ -80,7 +80,7 @@ namespace DayZeEditor
             this.SPStartDT = new System.Windows.Forms.DateTimePicker();
             this.StaticPurgeDOWCB = new System.Windows.Forms.ComboBox();
             this.AllowRaidingCB = new System.Windows.Forms.CheckBox();
-            this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
+            this.DynamicPurgeDurationMinNUD = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
             this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
@@ -99,6 +99,8 @@ namespace DayZeEditor
             this.label18 = new System.Windows.Forms.Label();
             this.IsDynPurgeActiveCB = new System.Windows.Forms.CheckBox();
             this.IsPurgeActiveCB = new System.Windows.Forms.CheckBox();
+            this.DynamicPurgeDurationMaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
             this.darkToolStrip21.SuspendLayout();
             this.darkToolStrip22.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -112,9 +114,10 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.KOSCheckNUD)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ServerrestartCycleNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DynamicPurgeDurationMinNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TimeZoneNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DynamicPurgeDurationMaxNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -555,6 +558,8 @@ namespace DayZeEditor
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage2.Controls.Add(this.DynamicPurgeDurationMaxNUD);
+            this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.DPWeekNumberCB);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.darkLabel5);
@@ -571,7 +576,7 @@ namespace DayZeEditor
             this.tabPage2.Controls.Add(this.SPStartDT);
             this.tabPage2.Controls.Add(this.StaticPurgeDOWCB);
             this.tabPage2.Controls.Add(this.AllowRaidingCB);
-            this.tabPage2.Controls.Add(this.numericUpDown8);
+            this.tabPage2.Controls.Add(this.DynamicPurgeDurationMinNUD);
             this.tabPage2.Controls.Add(this.label12);
             this.tabPage2.Controls.Add(this.numericUpDown7);
             this.tabPage2.Controls.Add(this.label11);
@@ -780,22 +785,22 @@ namespace DayZeEditor
             this.AllowRaidingCB.UseVisualStyleBackColor = true;
             this.AllowRaidingCB.CheckedChanged += new System.EventHandler(this.AllowRaidingCB_CheckedChanged);
             // 
-            // numericUpDown8
+            // DynamicPurgeDurationMinNUD
             // 
-            this.numericUpDown8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown8.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown8.Location = new System.Drawing.Point(487, 414);
-            this.numericUpDown8.Maximum = new decimal(new int[] {
+            this.DynamicPurgeDurationMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.DynamicPurgeDurationMinNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.DynamicPurgeDurationMinNUD.Location = new System.Drawing.Point(487, 414);
+            this.DynamicPurgeDurationMinNUD.Maximum = new decimal(new int[] {
             100000000,
             0,
             0,
             0});
-            this.numericUpDown8.Name = "numericUpDown8";
-            this.numericUpDown8.Size = new System.Drawing.Size(71, 20);
-            this.numericUpDown8.TabIndex = 130;
-            this.numericUpDown8.Tag = "KickAfterDelay";
-            this.numericUpDown8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown8.ValueChanged += new System.EventHandler(this.numericUpDown8_ValueChanged);
+            this.DynamicPurgeDurationMinNUD.Name = "DynamicPurgeDurationMinNUD";
+            this.DynamicPurgeDurationMinNUD.Size = new System.Drawing.Size(71, 20);
+            this.DynamicPurgeDurationMinNUD.TabIndex = 130;
+            this.DynamicPurgeDurationMinNUD.Tag = "KickAfterDelay";
+            this.DynamicPurgeDurationMinNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DynamicPurgeDurationMinNUD.ValueChanged += new System.EventHandler(this.numericUpDown8_ValueChanged);
             // 
             // label12
             // 
@@ -803,9 +808,9 @@ namespace DayZeEditor
             this.label12.ForeColor = System.Drawing.SystemColors.Control;
             this.label12.Location = new System.Drawing.Point(405, 416);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(47, 13);
+            this.label12.Size = new System.Drawing.Size(67, 13);
             this.label12.TabIndex = 129;
-            this.label12.Text = "Duration";
+            this.label12.Text = "Duration Min";
             // 
             // numericUpDown7
             // 
@@ -1002,6 +1007,33 @@ namespace DayZeEditor
             this.IsPurgeActiveCB.UseVisualStyleBackColor = true;
             this.IsPurgeActiveCB.CheckedChanged += new System.EventHandler(this.IsPurgeActiveCB_CheckedChanged);
             // 
+            // DynamicPurgeDurationMaxNUD
+            // 
+            this.DynamicPurgeDurationMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.DynamicPurgeDurationMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.DynamicPurgeDurationMaxNUD.Location = new System.Drawing.Point(487, 440);
+            this.DynamicPurgeDurationMaxNUD.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.DynamicPurgeDurationMaxNUD.Name = "DynamicPurgeDurationMaxNUD";
+            this.DynamicPurgeDurationMaxNUD.Size = new System.Drawing.Size(71, 20);
+            this.DynamicPurgeDurationMaxNUD.TabIndex = 148;
+            this.DynamicPurgeDurationMaxNUD.Tag = "KickAfterDelay";
+            this.DynamicPurgeDurationMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DynamicPurgeDurationMaxNUD.ValueChanged += new System.EventHandler(this.DynamicPurgeDurationMaxNUD_ValueChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.SystemColors.Control;
+            this.label10.Location = new System.Drawing.Point(405, 442);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(70, 13);
+            this.label10.TabIndex = 147;
+            this.label10.Text = "Duration Max";
+            // 
             // KOSZonemanager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1031,9 +1063,10 @@ namespace DayZeEditor
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ServerrestartCycleNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DynamicPurgeDurationMinNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TimeZoneNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DynamicPurgeDurationMaxNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1089,7 +1122,7 @@ namespace DayZeEditor
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.NumericUpDown numericUpDown8;
+        private System.Windows.Forms.NumericUpDown DynamicPurgeDurationMinNUD;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.NumericUpDown numericUpDown7;
         private System.Windows.Forms.Label label11;
@@ -1109,5 +1142,7 @@ namespace DayZeEditor
         private System.Windows.Forms.TextBox DPNameTB;
         private System.Windows.Forms.ComboBox DPdayofthewekkCB;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.NumericUpDown DynamicPurgeDurationMaxNUD;
+        private System.Windows.Forms.Label label10;
     }
 }

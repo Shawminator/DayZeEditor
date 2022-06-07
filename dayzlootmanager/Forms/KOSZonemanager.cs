@@ -459,7 +459,8 @@ namespace DayZeEditor
             DPWeekNumberCB.SelectedItem = (WeekNumber)currentDynamicpurgeschedule.WeekNumber;
             DPdayofthewekkCB.SelectedItem = (KOZDayOfWeek)currentDynamicpurgeschedule.Day;
             numericUpDown7.Value = (decimal) currentDynamicpurgeschedule.Chance;
-            numericUpDown8.Value = currentDynamicpurgeschedule.Duration;
+            DynamicPurgeDurationMinNUD.Value = currentDynamicpurgeschedule.DurationMin;
+            DynamicPurgeDurationMaxNUD.Value = currentDynamicpurgeschedule.DurationMax;
             useraction = true;
         }
         private void darkButton4_Click(object sender, EventArgs e)
@@ -470,7 +471,8 @@ namespace DayZeEditor
                 WeekNumber = 0,
                 Day = 0,
                 Chance = (decimal)0.5,
-                Duration = 60
+                DurationMin = 15,
+                DurationMax = 60
             };
             KosPurgeConfig.DynamicPurgeSchedules.Add(newDynamicpurgeschedule);
             KosPurgeConfig.isDirty = true;
@@ -563,9 +565,17 @@ namespace DayZeEditor
         private void numericUpDown8_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentDynamicpurgeschedule.Duration = (int)numericUpDown8.Value;
+            currentDynamicpurgeschedule.DurationMin = (int)DynamicPurgeDurationMinNUD.Value;
+            KosPurgeConfig.isDirty = true;
+        }
+        private void DynamicPurgeDurationMaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentDynamicpurgeschedule.DurationMax = (int)DynamicPurgeDurationMinNUD.Value;
             KosPurgeConfig.isDirty = true;
         }
         #endregion KOSZonePurg
+
+
     }
 }

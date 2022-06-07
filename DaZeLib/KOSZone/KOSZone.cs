@@ -90,7 +90,8 @@ namespace DayZeLib
         public int WeekNumber { get; set; }
         public int Day { get; set; }
         public decimal Chance { get; set; }
-        public int Duration { get; set; }
+        public int DurationMin { get; set; }
+        public int DurationMax { get; set; }
 
         public override string ToString()
         {

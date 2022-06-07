@@ -1270,8 +1270,23 @@ namespace DayZeEditor
             AISettings.Admins.Remove(AISettingsAdminsLB.GetItemText(AISettingsAdminsLB.SelectedItem));
             AISettings.isDirty = true;
         }
+
         #endregion AISettings
 
+        private void darkButton10_Click(object sender, EventArgs e)
+        {
+            StringBuilder SB = new StringBuilder();
+            SB.AppendLine("eAI_SurvivorM_Lewis|" + CurrentPatrol.StartPos[0].ToString() + " " + CurrentPatrol.StartPos[1].ToString() + " " + CurrentPatrol.StartPos[2].ToString() + "|0.0 0.0 0.0");
+            foreach(float[] array in CurrentPatrol.Waypoints)
+            {
+                SB.AppendLine("eAI_SurvivorM_Lewis|" + array[0].ToString() + " " + array[1].ToString() + " " + array[2].ToString() + "|0.0 0.0 0.0");
+            }
+            SaveFileDialog save = new SaveFileDialog();
+            if(save.ShowDialog() == DialogResult.OK)
+            {
+                File.WriteAllText(save.FileName + ".map", SB.ToString());
+            }
 
+        }
     }
 }
