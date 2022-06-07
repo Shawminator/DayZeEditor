@@ -87,6 +87,7 @@ namespace DayZeEditor
         public string MapPath { get; set; }
         public int MapSize { get; set; }
         public string mpmissionpath { get; set; }
+        public bool Createbackups { get; set; }
 
         [JsonIgnore]
         public economycoreconfig EconomyCore { get; set; }

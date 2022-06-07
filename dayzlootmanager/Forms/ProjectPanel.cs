@@ -428,6 +428,11 @@ namespace DayZeEditor
                     Directory.CreateDirectory(ActiveProject.projectFullName + "\\" + ActiveProject.ProfilePath + "\\TraderPlus\\TraderPlusConfig");
             }
         }
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ActiveProject == null) return;
+            ActiveProject.Createbackups = checkBox1.Checked;
+        }
 
         public IEnumerable<RemoteFileInfo> fileInfos;
         public Session session;
@@ -781,6 +786,7 @@ namespace DayZeEditor
                 ProjectFolderTB.Text = fb.SelectedPath;
             }
         }
+
 
     }
 }

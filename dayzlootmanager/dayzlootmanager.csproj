@@ -105,46 +105,46 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Form_Controls_AddfromType.cs" />
-    <Compile Include="Forms\Add new container.cs">
+    <Compile Include="HelperForms\Add new container.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Add new container.Designer.cs">
+    <Compile Include="HelperForms\Add new container.Designer.cs">
       <DependentUpon>Add new container.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AddfromPredefinedWeapons.cs">
+    <Compile Include="HelperForms\AddfromPredefinedWeapons.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddfromPredefinedWeapons.Designer.cs">
+    <Compile Include="HelperForms\AddfromPredefinedWeapons.Designer.cs">
       <DependentUpon>AddfromPredefinedWeapons.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AddItemfromString.cs">
+    <Compile Include="HelperForms\AddItemfromString.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddItemfromString.Designer.cs">
+    <Compile Include="HelperForms\AddItemfromString.Designer.cs">
       <DependentUpon>AddItemfromString.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AddItemfromTypes.cs">
+    <Compile Include="HelperForms\AddItemfromTypes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddItemfromTypes.Designer.cs">
+    <Compile Include="HelperForms\AddItemfromTypes.Designer.cs">
       <DependentUpon>AddItemfromTypes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AddNewEventFile.cs">
+    <Compile Include="HelperForms\AddNewEventFile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddNewEventFile.Designer.cs">
+    <Compile Include="HelperForms\AddNewEventFile.Designer.cs">
       <DependentUpon>AddNewEventFile.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AddNewTypes.cs">
+    <Compile Include="HelperForms\AddNewTypes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddNewTypes.Designer.cs">
+    <Compile Include="HelperForms\AddNewTypes.Designer.cs">
       <DependentUpon>AddNewTypes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CategoryList.cs">
+    <Compile Include="HelperForms\CategoryList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CategoryList.Designer.cs">
+    <Compile Include="HelperForms\CategoryList.Designer.cs">
       <DependentUpon>CategoryList.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ExpansionAI.cs">
@@ -190,22 +190,22 @@
     <Compile Include="Forms\Lootchest.Designer.cs">
       <DependentUpon>Lootchest.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NewProjectFTP.cs">
+    <Compile Include="HelperForms\NewProjectFTP.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\NewProjectFTP.Designer.cs">
+    <Compile Include="HelperForms\NewProjectFTP.Designer.cs">
       <DependentUpon>NewProjectFTP.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NewTraderMapForm.cs">
+    <Compile Include="HelperForms\NewTraderMapForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\NewTraderMapForm.Designer.cs">
+    <Compile Include="HelperForms\NewTraderMapForm.Designer.cs">
       <DependentUpon>NewTraderMapForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\PossibleAmmoBoxes.cs">
+    <Compile Include="HelperForms\PossibleAmmoBoxes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\PossibleAmmoBoxes.Designer.cs">
+    <Compile Include="HelperForms\PossibleAmmoBoxes.Designer.cs">
       <DependentUpon>PossibleAmmoBoxes.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SplashForm.cs">
@@ -214,10 +214,10 @@
     <Compile Include="Forms\SplashForm.Designer.cs">
       <DependentUpon>SplashForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\TraderNPCs.cs">
+    <Compile Include="HelperForms\TraderNPCs.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\TraderNPCs.Designer.cs">
+    <Compile Include="HelperForms\TraderNPCs.Designer.cs">
       <DependentUpon>TraderNPCs.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\TraderPlus.cs">
@@ -226,10 +226,10 @@
     <Compile Include="Forms\TraderPlus.Designer.cs">
       <DependentUpon>TraderPlus.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Variants.cs">
+    <Compile Include="HelperForms\Variants.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Variants.Designer.cs">
+    <Compile Include="HelperForms\Variants.Designer.cs">
       <DependentUpon>Variants.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
@@ -238,10 +238,10 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Loot_Info.cs">
+    <Compile Include="HelperForms\Loot_Info.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Loot_Info.Designer.cs">
+    <Compile Include="HelperForms\Loot_Info.Designer.cs">
       <DependentUpon>Loot_Info.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ExpansionMarket.cs">
@@ -272,25 +272,25 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\Add new container.resx">
+    <EmbeddedResource Include="HelperForms\Add new container.resx">
       <DependentUpon>Add new container.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddfromPredefinedWeapons.resx">
+    <EmbeddedResource Include="HelperForms\AddfromPredefinedWeapons.resx">
       <DependentUpon>AddfromPredefinedWeapons.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddItemfromString.resx">
+    <EmbeddedResource Include="HelperForms\AddItemfromString.resx">
       <DependentUpon>AddItemfromString.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddItemfromTypes.resx">
+    <EmbeddedResource Include="HelperForms\AddItemfromTypes.resx">
       <DependentUpon>AddItemfromTypes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddNewEventFile.resx">
+    <EmbeddedResource Include="HelperForms\AddNewEventFile.resx">
       <DependentUpon>AddNewEventFile.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddNewTypes.resx">
+    <EmbeddedResource Include="HelperForms\AddNewTypes.resx">
       <DependentUpon>AddNewTypes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CategoryList.resx">
+    <EmbeddedResource Include="HelperForms\CategoryList.resx">
       <DependentUpon>CategoryList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ExpansionAI.resx">
@@ -314,31 +314,31 @@
     <EmbeddedResource Include="Forms\Lootchest.resx">
       <DependentUpon>Lootchest.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\NewProjectFTP.resx">
+    <EmbeddedResource Include="HelperForms\NewProjectFTP.resx">
       <DependentUpon>NewProjectFTP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\NewTraderMapForm.resx">
+    <EmbeddedResource Include="HelperForms\NewTraderMapForm.resx">
       <DependentUpon>NewTraderMapForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PossibleAmmoBoxes.resx">
+    <EmbeddedResource Include="HelperForms\PossibleAmmoBoxes.resx">
       <DependentUpon>PossibleAmmoBoxes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SplashForm.resx">
       <DependentUpon>SplashForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\TraderNPCs.resx">
+    <EmbeddedResource Include="HelperForms\TraderNPCs.resx">
       <DependentUpon>TraderNPCs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TraderPlus.resx">
       <DependentUpon>TraderPlus.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Variants.resx">
+    <EmbeddedResource Include="HelperForms\Variants.resx">
       <DependentUpon>Variants.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Loot_Info.resx">
+    <EmbeddedResource Include="HelperForms\Loot_Info.resx">
       <DependentUpon>Loot_Info.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ExpansionMarket.resx">
