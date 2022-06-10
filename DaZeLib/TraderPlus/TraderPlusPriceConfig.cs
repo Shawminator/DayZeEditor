@@ -91,6 +91,12 @@ namespace DayZeLib
                 string product = item.Classname + ",";
                 product += ((float)item.Coefficient / 100).ToString() + ",";
                 product += item.MaxStock.ToString() + ",";
+
+                if (item.MaxStock > 0 && item.MaxStock < 1)
+                    product += item.MaxStock.ToString("F2") + ",";
+                else
+                    product += item.MaxStock.ToString("F0") + ",";
+
                 product += item.TradeQuantity.ToString() + ",";
                 product += item.BuyPrice.ToString() + ",";
                 if(item.Sellprice > 0 && item.Sellprice < 1)
@@ -117,7 +123,7 @@ namespace DayZeLib
                     if (itemProduct.Coefficient == -100)
                         itemProduct.Coefficient = 100;
                     itemProduct.MaxStock = Convert.ToInt32(itemsplit[2]);
-                    itemProduct.TradeQuantity = Convert.ToSingle(itemsplit[3]);
+                    itemProduct.TradeQuantity = Convert.ToDecimal(itemsplit[3]);
                     itemProduct.BuyPrice = Convert.ToInt32(itemsplit[4]);
                     itemProduct.Sellprice = Convert.ToSingle(itemsplit[5]);
                     if (itemsplit.Length >= 7)
@@ -172,7 +178,7 @@ namespace DayZeLib
         public string Classname { get; set; }
         public int Coefficient { get; set; }
         public int MaxStock { get; set; }
-        public float TradeQuantity { get; set; }
+        public decimal TradeQuantity { get; set; }
         public int BuyPrice { get; set; }
         public float Sellprice { get; set; }
         public int destockCoefficent { get; set; }

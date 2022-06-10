@@ -1872,7 +1872,7 @@ namespace DayZeEditor
                 foreach (var item in CurrentTraderCatLB.SelectedItems)
                 {
                     ItemProducts pitem = item as ItemProducts;
-                    pitem.TradeQuantity = (int)TradeQuantityNUD.Value;
+                    pitem.TradeQuantity = (decimal)TradeQuantityNUD.Value;
                 }
             }
         }

@@ -31,14 +31,14 @@ namespace DayZeLib
 
     public class Crashpoint
     {
-        public float x { get; set; }
-        public float y { get; set; }
-        public float Radius { get; set; }
+        public decimal x { get; set; }
+        public decimal y { get; set; }
+        public decimal Radius { get; set; }
         public string Crash_Message { get; set; }
 
         public override string ToString()
         {
-            return "X:" + x.ToString() + ",Z:" + y.ToString();
+            return Crash_Message;
         }
     }
 

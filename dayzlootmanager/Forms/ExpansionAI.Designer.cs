@@ -85,6 +85,7 @@ namespace DayZeEditor
             this.darkButton7 = new DarkUI.Controls.DarkButton();
             this.EventCrachPatrolLB = new System.Windows.Forms.ListBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.darkButton10 = new DarkUI.Controls.DarkButton();
             this.darkLabel6 = new DarkUI.Controls.DarkLabel();
             this.StaticPatrolRespawnTimeNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel36 = new DarkUI.Controls.DarkLabel();
@@ -170,7 +171,6 @@ namespace DayZeEditor
             this.RemoveSetItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.darkButton10 = new DarkUI.Controls.DarkButton();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -777,7 +777,8 @@ namespace DayZeEditor
             "WALK",
             "JOG",
             "SPRINT",
-            "RANDOM"});
+            "RANDOM",
+            "STATIC"});
             this.CrashUnderThreatSpeedCB.Location = new System.Drawing.Point(335, 178);
             this.CrashUnderThreatSpeedCB.Name = "CrashUnderThreatSpeedCB";
             this.CrashUnderThreatSpeedCB.Size = new System.Drawing.Size(229, 21);
@@ -803,7 +804,8 @@ namespace DayZeEditor
             "WALK",
             "JOG",
             "SPRINT",
-            "RANDOM"});
+            "RANDOM",
+            "STATIC"});
             this.CrashSpeedCB.Location = new System.Drawing.Point(335, 151);
             this.CrashSpeedCB.Name = "CrashSpeedCB";
             this.CrashSpeedCB.Size = new System.Drawing.Size(229, 21);
@@ -997,6 +999,17 @@ namespace DayZeEditor
             this.groupBox5.TabIndex = 133;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Crash Patrols";
+            // 
+            // darkButton10
+            // 
+            this.darkButton10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton10.Location = new System.Drawing.Point(408, 314);
+            this.darkButton10.Name = "darkButton10";
+            this.darkButton10.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton10.Size = new System.Drawing.Size(163, 23);
+            this.darkButton10.TabIndex = 156;
+            this.darkButton10.Text = "Export to Map";
+            this.darkButton10.Click += new System.EventHandler(this.darkButton10_Click);
             // 
             // darkLabel6
             // 
@@ -1384,7 +1397,8 @@ namespace DayZeEditor
             "WALK",
             "JOG",
             "SPRINT",
-            "RANDOM"});
+            "RANDOM",
+            "STATIC"});
             this.StaticPatrolUnderThreatSpeedCB.Location = new System.Drawing.Point(342, 152);
             this.StaticPatrolUnderThreatSpeedCB.Name = "StaticPatrolUnderThreatSpeedCB";
             this.StaticPatrolUnderThreatSpeedCB.Size = new System.Drawing.Size(229, 21);
@@ -1410,7 +1424,8 @@ namespace DayZeEditor
             "WALK",
             "JOG",
             "SPRINT",
-            "RANDOM"});
+            "RANDOM",
+            "STATIC"});
             this.StaticPatrolSpeedCB.Location = new System.Drawing.Point(342, 125);
             this.StaticPatrolSpeedCB.Name = "StaticPatrolSpeedCB";
             this.StaticPatrolSpeedCB.Size = new System.Drawing.Size(229, 21);
@@ -2130,17 +2145,6 @@ namespace DayZeEditor
             this.removeItemToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.removeItemToolStripMenuItem.Text = "Remove item";
             this.removeItemToolStripMenuItem.Click += new System.EventHandler(this.removeItemToolStripMenuItem_Click);
-            // 
-            // darkButton10
-            // 
-            this.darkButton10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton10.Location = new System.Drawing.Point(408, 314);
-            this.darkButton10.Name = "darkButton10";
-            this.darkButton10.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton10.Size = new System.Drawing.Size(163, 23);
-            this.darkButton10.TabIndex = 156;
-            this.darkButton10.Text = "Export to Map";
-            this.darkButton10.Click += new System.EventHandler(this.darkButton10_Click);
             // 
             // ExpansionAI
             // 

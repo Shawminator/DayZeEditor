@@ -250,6 +250,8 @@ namespace DayZeEditor
         private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             if (currentlootpart == null) return;
+            if (!UseMultiple)
+                addedtypes.Clear();
             addedtypes.Add(currentlootpart.name);
         }
 
