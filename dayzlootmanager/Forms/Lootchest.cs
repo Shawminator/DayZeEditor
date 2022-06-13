@@ -761,8 +761,16 @@ namespace DayZeEditor
             numericUpDown1.Value = (decimal)currentLootchestTool.time;
             numericUpDown2.Value = (decimal)currentLootchestTool.dmg;
             string desc = currentLootchestTool.desc;
-            ToolsNameDescTB.Text = desc.Split('|')[0];
-            ToolDescDescTB.Text = desc.Split('|')[1];
+            if (desc.Contains("|"))
+            {
+                ToolsNameDescTB.Text = desc.Split('|')[0];
+                ToolDescDescTB.Text = desc.Split('|')[1];
+            }
+            else
+            {
+                ToolsNameDescTB.Text = "";
+                ToolDescDescTB.Text = "";
+            }
             useraction = true;
         }
         private void darkButton21_Click(object sender, EventArgs e)

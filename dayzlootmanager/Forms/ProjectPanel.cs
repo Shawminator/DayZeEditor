@@ -272,27 +272,41 @@ namespace DayZeEditor
         }
         private int Getmapsizefrommissionpath(string mpmissionpath)
         {
-            switch (mpmissionpath.ToLower().Split('.')[1])
+            string[] MapSizeList = File.ReadAllLines("Maps/MapSizes.txt");
+            Dictionary<string, int> maplist = new Dictionary<string, int>();
+            foreach(string line in MapSizeList)
             {
-                case "iztek":
-                    return 8192;
-                case "chernarusplus":
-                case "chernarusplusgloom":
-                case "banov":
-                    return 15360;
-                case "namalsk":
-                case "enoch":
-                case "enochgloom":
-                case "takistanplus":
-                case "esseker":
-                    return 12800;
-                case "deerisle":
-                    return 16384;
-                case "rostow":
-                    return 14336;
-                default:
-                    return 0;
+                maplist.Add(line.Split(':')[0], Convert.ToInt32(line.Split(':')[1]));
             }
+            string currentmap = mpmissionpath.ToLower().Split('.')[1];
+            int size;
+            if (maplist.TryGetValue(currentmap, out size))
+            {
+                return size;
+            }
+            return 0;
+
+            //switch (mpmissionpath.ToLower().Split('.')[1])
+            //{
+            //    case "iztek":
+            //        return 8192;
+            //    case "chernarusplus":
+            //    case "chernarusplusgloom":
+            //    case "banov":
+            //        return 15360;
+            //    case "namalsk":
+            //    case "enoch":
+            //    case "enochgloom":
+            //    case "takistanplus":
+            //    case "esseker":
+            //        return 12800;
+            //    case "deerisle":
+            //        return 16384;
+            //    case "rostow":
+            //        return 14336;
+            //    default:
+            //        return 0;
+            //}
         }
         private void ProjectTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
