@@ -191,7 +191,7 @@ namespace DayZeEditor
                     ExpansionSettingsButton.Visible = true;
                 else
                     ExpansionSettingsButton.Visible = false;
-                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\CJ_LootChests\\LootChests_V104.json"))
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\CJ_LootChests\\LootChests_V105.json"))
                     LootchestButton.Visible = true;
                 else
                     LootchestButton.Visible = false;

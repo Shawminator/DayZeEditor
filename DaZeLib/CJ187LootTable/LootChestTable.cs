@@ -29,6 +29,7 @@ namespace DayZeLib
         public string name { get; set; }
         public int time { get; set; }
         public int dmg { get; set; }
+        public string desc { get; set; }
 
         public override string ToString()
         {
@@ -38,6 +39,8 @@ namespace DayZeLib
     public class LootChestTable
     {
         public int EnableDebug { get; set; }
+        public int DeleteLogs { get; set; }
+        public int MaxSpareMags { get; set; }
         public BindingList<LootChestsLocations> LootChestsLocations { get; set; }
         public BindingList<LCPredefinedWeapons> LCPredefinedWeapons { get; set; }
         public BindingList<LootCategories> LootCategories { get; set; }
@@ -55,7 +58,8 @@ namespace DayZeLib
         public string keyclass { get; set; }
         public int openable { get; set; }
         public BindingList<string> chest { get; set; }
-        public float LootRandomization { get; set; }
+        public decimal LootRandomization { get; set; }
+        public int light { get; set; }
         public BindingList<string> loot { get; set; }
 
 

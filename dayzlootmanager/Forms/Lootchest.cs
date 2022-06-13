@@ -71,12 +71,12 @@ namespace DayZeEditor
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
 
-            LootChestTablePath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\CJ_LootChests\\LootChests_V104.json";
+            LootChestTablePath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\CJ_LootChests\\LootChests_V105.json";
             LootChestTable = JsonSerializer.Deserialize<LootChestTable>(File.ReadAllText(LootChestTablePath));
             LootChestTable.isDirty = false;
             LootChestTable.Filename = LootChestTablePath;
 
-            LootchestToolPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\CJ_LootChests\\LootChestsTools_V104.json";
+            LootchestToolPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\CJ_LootChests\\LootChestsTools_V105.json";
             LootChestTools = JsonSerializer.Deserialize<LootChestTools>(File.ReadAllText(LootchestToolPath));
             LootChestTools.isDirty = false;
             LootChestTools.Filename = LootchestToolPath;
@@ -91,6 +91,8 @@ namespace DayZeEditor
             LootChestTable.LCPredefinedWeapons = sortedListInstance;
 
             checkBox1.Checked = LootChestTable.EnableDebug == 0 ? false : true;
+            DeleteLogsCB.Checked = LootChestTable.DeleteLogs == 0 ? false : true ;
+            MaxMagsNUD.Value = LootChestTable.MaxSpareMags;
 
             LootChestsLocationsLB.DisplayMember = "DisplayName";
             LootChestsLocationsLB.ValueMember = "Value";
@@ -118,6 +120,7 @@ namespace DayZeEditor
             numberNUD.Value = CurrentLootChestLocation.number;
             keyclassTB.Text = CurrentLootChestLocation.keyclass;
             LootRandomizationNUD.Value = (decimal)CurrentLootChestLocation.LootRandomization;
+            LightCB.Checked = CurrentLootChestLocation.light == 1 ? true : false;
             comboBox2.SelectedItem = (LootchestOpenable)CurrentLootChestLocation.openable;
 
 
@@ -468,6 +471,7 @@ namespace DayZeEditor
             currentLootCategories.name = LootCatNameTB.Text;
             LootChestTable.isDirty = true;
         }
+
         private void darkButton18_Click(object sender, EventArgs e)
         {
             AddItemfromTypes form = new AddItemfromTypes
@@ -572,7 +576,13 @@ namespace DayZeEditor
         private void LootRandomizationNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
-            CurrentLootChestLocation.LootRandomization = (float)LootRandomizationNUD.Value;
+            CurrentLootChestLocation.LootRandomization = LootRandomizationNUD.Value;
+            LootChestTable.isDirty = true;
+        }
+        private void LightCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            CurrentLootChestLocation.light = LightCB.Checked == true ? 1 : 0;
             LootChestTable.isDirty = true;
         }
         private void SaveFileButton_Click(object sender, EventArgs e)
@@ -693,6 +703,19 @@ namespace DayZeEditor
             LootChestTable.EnableDebug = checkBox1.Checked == false ? 0 : 1;
             LootChestTable.isDirty = true;
         }
+        private void MaxMagsNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            LootChestTable.MaxSpareMags = (int)MaxMagsNUD.Value;
+            LootChestTable.isDirty = true;
+        }
+
+        private void DeleteLogsCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            LootChestTable.DeleteLogs = DeleteLogsCB.Checked == false ? 0 : 1;
+            LootChestTable.isDirty = true;
+        }
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -737,6 +760,9 @@ namespace DayZeEditor
             textBox4.Text = currentLootchestTool.name;
             numericUpDown1.Value = (decimal)currentLootchestTool.time;
             numericUpDown2.Value = (decimal)currentLootchestTool.dmg;
+            string desc = currentLootchestTool.desc;
+            ToolsNameDescTB.Text = desc.Split('|')[0];
+            ToolDescDescTB.Text = desc.Split('|')[1];
             useraction = true;
         }
         private void darkButton21_Click(object sender, EventArgs e)
@@ -900,5 +926,21 @@ namespace DayZeEditor
             Clipboard.SetText(string.Join(Environment.NewLine, selectedLoot.Cast<object>().Select(o => o.ToString()).ToArray()));
             Console.WriteLine("\nCopied to Clipboard:\n" + string.Join(Environment.NewLine, selectedLoot.Cast<object>().Select(o => o.ToString()).ToArray()));
         }
+
+        private void ToolsNameDescTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentLootchestTool.desc = ToolsNameDescTB.Text + "|" + ToolsNameDescTB.Text;
+            LootChestTools.isDirty = true;
+        }
+
+        private void ToolDescDescTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentLootchestTool.desc = ToolsNameDescTB.Text + "|" + ToolsNameDescTB.Text;
+            LootChestTools.isDirty = true;
+        }
+
+
     }
 }
