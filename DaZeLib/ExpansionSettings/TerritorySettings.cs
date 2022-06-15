@@ -4,14 +4,15 @@ namespace DayZeLib
 {
     public class TerritorySettings
     {
-        const int CurrentVersion = 0;
+        const int CurrentVersion = 2;
         public int m_Version { get; set; }
         public int EnableTerritories { get; set; }
         public int UseWholeMapForInviteList { get; set; }
-        public float TerritorySize { get; set; }
-        public float TerritoryPerimeterSize { get; set; }
+        public decimal TerritorySize { get; set; }
+        public decimal TerritoryPerimeterSize { get; set; }
         public int MaxMembersInTerritory { get; set; }
         public int MaxTerritoryPerPlayer { get; set; }
+        public decimal TerritoryAuthenticationRadius { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }
@@ -38,7 +39,7 @@ namespace DayZeLib
         {
             GetType().GetProperty(mytype).SetValue(this, myvalue, null);
         }
-        public void SetFloatValue(string mytype, float myvalue)
+        public void SetdeciamlValue(string mytype, decimal myvalue)
         {
             GetType().GetProperty(mytype).SetValue(this, myvalue, null);
         }

@@ -132,7 +132,7 @@
     <Compile Include="ExpansionSettings\GeneralSettings.cs" />
     <Compile Include="ExpansionSettings\Logsettings.cs" />
     <Compile Include="ExpansionSettings\MapSettings.cs" />
-    <Compile Include="ExpansionSettings\MissionSettingFiles.cs" />
+    <Compile Include="ExpansionSettings\AirdropMissionSettingFiles.cs" />
     <Compile Include="ExpansionSettings\MissionSettings.cs" />
     <Compile Include="ExpansionSettings\Monitorsettings.cs" />
     <Compile Include="ExpansionSettings\NameTagsettings.cs" />

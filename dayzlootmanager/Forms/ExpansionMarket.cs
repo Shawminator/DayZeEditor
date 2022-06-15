@@ -1691,6 +1691,12 @@ namespace DayZeEditor
                 listBox5.Refresh();
             }
         }
+        private void textBox10_TextChanged(object sender, EventArgs e)
+        {
+            if (action) return;
+            currentitem.ClassName = textBox10.Text;
+            currentCat.isDirty = true;
+        }
         private void numericUpDown9_ValueChanged(object sender, EventArgs e)
         {
             if (action) return;
@@ -3077,5 +3083,7 @@ namespace DayZeEditor
                 cats.isDirty = true;
             }
         }
+
+
     }
 }

@@ -23,7 +23,7 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty { get; set; }
         [JsonIgnore]
-        public BindingList<MissionSettingFiles> MissionSettingFiles { get; set; }
+        public BindingList<object> MissionSettingFiles { get; set; }
 
         public MissionSettings()
         {
@@ -44,15 +44,28 @@ namespace DayZeLib
 
         public void LoadIndividualMissions(string Missionpath)
         {
-            MissionSettingFiles = new BindingList<MissionSettingFiles>();
+            MissionSettingFiles = new BindingList<object>();
             string path = Missionpath + "\\expansion\\missions";
             foreach (var file in Directory.EnumerateFiles(path, "*.json"))
             {
-                MissionSettingFiles msf = JsonSerializer.Deserialize<MissionSettingFiles>(File.ReadAllText(file));
-                msf.isDirty = false;
-                msf.Filename = file;
-                msf.MissionPath = Missionpath;
-                MissionSettingFiles.Add(msf);
+                switch (Path.GetFileNameWithoutExtension(file).Split('_')[0])
+                {
+                    case "Airdrop":
+                        AirdropMissionSettingFiles Amsf = JsonSerializer.Deserialize<AirdropMissionSettingFiles>(File.ReadAllText(file));
+                        Amsf.isDirty = false;
+                        Amsf.Filename = file;
+                        Amsf.MissionPath = Missionpath;
+                        MissionSettingFiles.Add(Amsf);
+                        break;
+
+                    case "ContaminatedArea":
+                        ContaminatedAreaMissionSettingFiles CAmsf = JsonSerializer.Deserialize<ContaminatedAreaMissionSettingFiles>(File.ReadAllText(file));
+                        CAmsf.isDirty = false;
+                        CAmsf.Filename = file;
+                        CAmsf.MissionPath = Missionpath;
+                        MissionSettingFiles.Add(CAmsf);
+                        break;
+                }
             }
         }
         public void SetIntValue(string mytype, int myvalue)

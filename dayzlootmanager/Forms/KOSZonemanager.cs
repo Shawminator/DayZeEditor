@@ -192,7 +192,6 @@ namespace DayZeEditor
         #region KOSZoneLocations
         public Koszonearealocation currentKOSZoneAreaLocation { get; set; }
         public int ZoneScale = 1;
-        private int currentrestarthour;
         private void SetupKosZoneconfig()
         {
             useraction = false;

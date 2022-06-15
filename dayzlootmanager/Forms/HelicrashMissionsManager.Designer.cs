@@ -482,6 +482,7 @@ namespace DayZeEditor
             this.darkButton5.Size = new System.Drawing.Size(110, 23);
             this.darkButton5.TabIndex = 95;
             this.darkButton5.Text = "Add";
+            this.darkButton5.Click += new System.EventHandler(this.darkButton5_Click);
             // 
             // darkButton6
             // 
@@ -491,6 +492,7 @@ namespace DayZeEditor
             this.darkButton6.Size = new System.Drawing.Size(104, 23);
             this.darkButton6.TabIndex = 94;
             this.darkButton6.Text = "Remove";
+            this.darkButton6.Click += new System.EventHandler(this.darkButton6_Click);
             // 
             // CrashpointLB
             // 

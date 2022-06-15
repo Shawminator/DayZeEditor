@@ -4,10 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -248,11 +250,51 @@ namespace DayZeEditor
         }
         private void SaveFileButton_Click(object sender, EventArgs e)
         {
-
+            SaveHeliCrashMissions();
         }
+
+        private void SaveHeliCrashMissions()
+        {
+            List<string> midifiedfiles = new List<string>();
+            string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
+            if (Helicrash.isDirty)
+            {
+                if (currentproject.Createbackups && File.Exists(Helicrash.FullFilename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(Helicrash.FullFilename) + "\\Backup\\" + SaveTime);
+                    File.Copy(Helicrash.FullFilename, Path.GetDirectoryName(Helicrash.FullFilename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(Helicrash.FullFilename) + ".bak", true);
+                }
+                Helicrash.isDirty = false;
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                string jsonString = JsonSerializer.Serialize(Helicrash, options);
+                File.WriteAllText(Helicrash.FullFilename, jsonString);
+                midifiedfiles.Add(Path.GetFileName(Path.GetFileName(HelicrashMissionsPath)));
+            }
+            string message = "The Following Files were saved....\n";
+            int i = 0;
+            foreach (string l in midifiedfiles)
+            {
+                if (i == 5)
+                {
+                    message += l + "\n";
+                    i = 0;
+                }
+                else
+                {
+                    message += l + ", ";
+                    i++;
+                }
+
+            }
+            if (midifiedfiles.Count > 0)
+                MessageBox.Show(message, "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            else
+                MessageBox.Show("No changes were made.", "Nothing Saved", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+        }
+
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-
+            Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\HeliCrashMissions");
         }
 
         private void adminlogCB_CheckedChanged(object sender, EventArgs e)
@@ -289,6 +331,7 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             currentCrashpoint.Radius = CrashPointradiusNUD.Value;
+            pictureBox1.Invalidate();
             Helicrash.isDirty = true;
         }
         private void Crash_MessageTB_TextChanged(object sender, EventArgs e)
@@ -612,6 +655,27 @@ namespace DayZeEditor
                 SetweaponInfo();
                 Helicrash.isDirty = true;
             }
+        }
+
+        private void darkButton5_Click(object sender, EventArgs e)
+        {
+            Crashpoint newcrashpoint = new Crashpoint()
+            {
+                Crash_Message = "New Crash",
+                x = currentproject.MapSize / 2,
+                y = currentproject.MapSize / 2,
+                Radius = 100
+            };
+            Helicrash.CrashPoints.Add(newcrashpoint);
+            pictureBox1.Invalidate();
+            Helicrash.isDirty = true;
+        }
+
+        private void darkButton6_Click(object sender, EventArgs e)
+        {
+            Helicrash.CrashPoints.Remove(currentCrashpoint);
+            pictureBox1.Invalidate();
+            Helicrash.isDirty = true;
         }
     }
 }

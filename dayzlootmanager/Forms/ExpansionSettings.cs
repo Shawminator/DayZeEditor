@@ -35,7 +35,7 @@ namespace DayZeEditor
             }
         }
 
-
+        public ContaminatedAreaMissionSettingFiles currentContaminatedAreaMissionFile { get; private set; }
 
         public string AirdropsettingPath;
         public string BaseBUildignsettingsPath;
@@ -923,20 +923,41 @@ namespace DayZeEditor
                 File.WriteAllText(MissionSettings.Filename, jsonString);
                 midifiedfiles.Add(Path.GetFileName(MissionSettings.Filename));
             }
-            foreach (MissionSettingFiles msf in MissionSettings.MissionSettingFiles)
+            foreach (object msf in MissionSettings.MissionSettingFiles)
             {
-                if (msf.isDirty)
+                if (msf is AirdropMissionSettingFiles)
                 {
-                    msf.isDirty = false;
-                    var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-                    string jsonString = JsonSerializer.Serialize(msf, options);
-                    if (currentproject.Createbackups && File.Exists(msf.Filename))
+                    AirdropMissionSettingFiles amsf = msf as AirdropMissionSettingFiles;
+                    if (amsf.isDirty)
                     {
-                        Directory.CreateDirectory(Path.GetDirectoryName(msf.Filename) + "\\Backup\\" + SaveTime);
-                        File.Copy(msf.Filename, Path.GetDirectoryName(msf.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(msf.Filename) + ".bak", true);
+                        amsf.isDirty = false;
+                        var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                        string jsonString = JsonSerializer.Serialize(amsf, options);
+                        if (currentproject.Createbackups && File.Exists(amsf.Filename))
+                        {
+                            Directory.CreateDirectory(Path.GetDirectoryName(amsf.Filename) + "\\Backup\\" + SaveTime);
+                            File.Copy(amsf.Filename, Path.GetDirectoryName(amsf.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(amsf.Filename) + ".bak", true);
+                        }
+                        File.WriteAllText(amsf.Filename, jsonString);
+                        midifiedfiles.Add(Path.GetFileName(amsf.Filename));
                     }
-                    File.WriteAllText(msf.Filename, jsonString);
-                    midifiedfiles.Add(Path.GetFileName(msf.Filename));
+                }
+                else if (msf is ContaminatedAreaMissionSettingFiles)
+                {
+                    ContaminatedAreaMissionSettingFiles camsf = msf as ContaminatedAreaMissionSettingFiles;
+                    if (camsf.isDirty)
+                    {
+                        camsf.isDirty = false;
+                        var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                        string jsonString = JsonSerializer.Serialize(camsf, options);
+                        if (currentproject.Createbackups && File.Exists(camsf.Filename))
+                        {
+                            Directory.CreateDirectory(Path.GetDirectoryName(camsf.Filename) + "\\Backup\\" + SaveTime);
+                            File.Copy(camsf.Filename, Path.GetDirectoryName(camsf.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(camsf.Filename) + ".bak", true);
+                        }
+                        File.WriteAllText(camsf.Filename, jsonString);
+                        midifiedfiles.Add(Path.GetFileName(camsf.Filename));
+                    }
                 }
             }
             if (MonitoringSettings.isDirty)
@@ -3099,8 +3120,8 @@ namespace DayZeEditor
         #endregion mapsettings
 
         #region MissionSettings
-        public MissionSettingFiles currentmission;
-        public MissionSettingFiles currentmissionfile;
+        public AirdropMissionSettingFiles currentmission;
+        public AirdropMissionSettingFiles currentAirdropmissionfile;
         public float MissionMapscale = 1;
         private void loadMissionSettings()
         {
@@ -3138,26 +3159,55 @@ namespace DayZeEditor
         private void DrawAllMissions(object sender, PaintEventArgs e)
         {
             float scalevalue = MissionMapscale * 0.05f;
+            string missiontype = "";
+            if (MissionsLB.SelectedItem is AirdropMissionSettingFiles)
+                missiontype = "Airdrop";
+            else if (MissionsLB.SelectedItem is ContaminatedAreaMissionSettingFiles)
+                missiontype = "ContaminsatedArea";
+
+
             if (MissionSettings.MissionSettingFiles.Count > 0)
             {
                 foreach (var item in MissionSettings.MissionSettingFiles)
                 {
-                    MissionSettingFiles pitem = item as MissionSettingFiles;
-
-                    int centerX = (int)(Math.Round(pitem.DropLocation.x, 0) * scalevalue);
-                    int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(pitem.DropLocation.z, 0) * scalevalue);
-
-                    int radius = (int)(pitem.DropLocation.Radius * scalevalue);
-                    Point center = new Point(centerX, centerY);
-                    Pen pen = new Pen(Color.Red)
+                    if (item is AirdropMissionSettingFiles)
                     {
-                        Width = 4
-                    };
-                    if (item == currentmissionfile)
-                        pen.Color = Color.LimeGreen;
-                    else
-                        pen.Color = Color.Red;
-                    getCircle(e.Graphics, pen, center, radius);
+                        AirdropMissionSettingFiles pitem = item as AirdropMissionSettingFiles;
+
+                        int centerX = (int)(Math.Round(pitem.DropLocation.x, 0) * scalevalue);
+                        int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(pitem.DropLocation.z, 0) * scalevalue);
+
+                        int radius = (int)(pitem.DropLocation.Radius * scalevalue);
+                        Point center = new Point(centerX, centerY);
+                        Pen pen = new Pen(Color.Red)
+                        {
+                            Width = 4
+                        };
+                        if (item == currentAirdropmissionfile && missiontype == "Airdrop")
+                            pen.Color = Color.LimeGreen;
+                        else
+                            pen.Color = Color.Red;
+                        getCircle(e.Graphics, pen, center, radius);
+                    }
+                    else if (item is ContaminatedAreaMissionSettingFiles)
+                    {
+                        ContaminatedAreaMissionSettingFiles pitem = item as ContaminatedAreaMissionSettingFiles;
+
+                        int centerX = (int)(Math.Round(pitem.Data.Pos[0], 0) * scalevalue);
+                        int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(pitem.Data.Pos[2], 0) * scalevalue);
+
+                        int radius = (int)((float)pitem.Data.Radius * scalevalue);
+                        Point center = new Point(centerX, centerY);
+                        Pen pen = new Pen(Color.Red)
+                        {
+                            Width = 4
+                        };
+                        if (item == currentContaminatedAreaMissionFile && missiontype == "ContaminsatedArea")
+                            pen.Color = Color.LimeGreen;
+                        else
+                            pen.Color = Color.Red;
+                        getCircle(e.Graphics, pen, center, radius);
+                    }
                 }
             }
         }
@@ -3169,33 +3219,79 @@ namespace DayZeEditor
                 float scalevalue = MissionMapscale * 0.05f;
                 float mapsize = currentproject.MapSize;
                 int newsize = (int)(mapsize * scalevalue);
-                if (currentmissionfile == null) { return; }
-                Cursor.Current = Cursors.WaitCursor;
-                MissionDropXNUD.Value = (decimal)(mouseEventArgs.X / scalevalue);
-                MissionDropYNUD.Value = (decimal)((newsize - mouseEventArgs.Y) / scalevalue);
-                Cursor.Current = Cursors.Default;
-                currentmissionfile.isDirty = true;
+                if (MissionsLB.SelectedItem is AirdropMissionSettingFiles)
+                {
+                    Cursor.Current = Cursors.WaitCursor;
+                    MissionDropXNUD.Value = (decimal)(mouseEventArgs.X / scalevalue);
+                    MissionDropYNUD.Value = (decimal)((newsize - mouseEventArgs.Y) / scalevalue);
+                    Cursor.Current = Cursors.Default;
+                    currentAirdropmissionfile.isDirty = true;
+                }
+                else if (MissionsLB.SelectedItem is ContaminatedAreaMissionSettingFiles)
+                {
+                    Cursor.Current = Cursors.WaitCursor;
+                    MissionDropXNUD.Value = (decimal)(mouseEventArgs.X / scalevalue);
+                    MissionDropYNUD.Value = (decimal)((newsize - mouseEventArgs.Y) / scalevalue);
+                    Cursor.Current = Cursors.Default;
+                    currentAirdropmissionfile.isDirty = true;
+                }
                 pictureBox6.Invalidate();
             }
         }
         private void MissionsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (MissionsLB.SelectedItems.Count < 1) return;
-            currentmissionfile = MissionsLB.SelectedItem as MissionSettingFiles;
+            
             useraction = false;
-            MissionPathTB.Text = currentmissionfile.Filename;
-            MissionNameTB.Text = currentmissionfile.MissionName;
-            MIssionContainerTB.Text = currentmissionfile.Container;
-            MissionEnabledCB.Checked = currentmissionfile.Enabled == 1 ? true : false;
-            MissionShowNotificationCB.Checked = currentmissionfile.ShowNotification == 1 ? true : false;
-            MissionWeightNUD.Value = (decimal)currentmissionfile.Weight;
-            MissionMissionMaxTimeNUD.Value = (decimal)Helper.ConvertSecondsToMinutes(currentmissionfile.MissionMaxTime);
-            MissionHeightNUD.Value = (decimal)currentmissionfile.Height;
-            MissionSpeedNUD.Value = (decimal)currentmissionfile.Speed;
-            MissionDropXNUD.Value = (decimal)currentmissionfile.DropLocation.x;
-            MissionDropYNUD.Value = (decimal)currentmissionfile.DropLocation.z;
-            MissionDropRadiusNUD.Value = (decimal)currentmissionfile.DropLocation.Radius;
-            MissionDropNameTB.Text = currentmissionfile.DropLocation.Name;
+            if(MissionsLB.SelectedItem is AirdropMissionSettingFiles)
+            {
+                AirdropMissionGB.Visible = true;
+                ContaminatedAreaGB.Visible = false;
+                currentAirdropmissionfile = MissionsLB.SelectedItem as AirdropMissionSettingFiles;
+                MissionPathTB.Text = currentAirdropmissionfile.Filename;
+                MissionNameTB.Text = currentAirdropmissionfile.MissionName;
+                MIssionContainerTB.Text = currentAirdropmissionfile.Container;
+                MissionEnabledCB.Checked = currentAirdropmissionfile.Enabled == 1 ? true : false;
+                MissionShowNotificationCB.Checked = currentAirdropmissionfile.ShowNotification == 1 ? true : false;
+                MissionWeightNUD.Value = (decimal)currentAirdropmissionfile.Weight;
+                MissionMissionMaxTimeNUD.Value = (decimal)Helper.ConvertSecondsToMinutes(currentAirdropmissionfile.MissionMaxTime);
+                MissionHeightNUD.Value = (decimal)currentAirdropmissionfile.Height;
+                MissionSpeedNUD.Value = (decimal)currentAirdropmissionfile.Speed;
+                MissionDropXNUD.Value = (decimal)currentAirdropmissionfile.DropLocation.x;
+                MissionDropYNUD.Value = (decimal)currentAirdropmissionfile.DropLocation.z;
+                MissionDropRadiusNUD.Value = (decimal)currentAirdropmissionfile.DropLocation.Radius;
+                MissionDropNameTB.Text = currentAirdropmissionfile.DropLocation.Name;
+            }
+            else if (MissionsLB.SelectedItem is ContaminatedAreaMissionSettingFiles)
+            {
+                AirdropMissionGB.Visible = false;
+                ContaminatedAreaGB.Visible = true;
+                currentContaminatedAreaMissionFile = MissionsLB.SelectedItem as ContaminatedAreaMissionSettingFiles;
+                textBox15.Text = currentContaminatedAreaMissionFile.Filename;
+                textBox16.Text = currentContaminatedAreaMissionFile.MissionName;
+                checkBox7.Checked = currentContaminatedAreaMissionFile.Enabled == 1 ? true : false;
+                numericUpDown29.Value = (decimal)currentContaminatedAreaMissionFile.Weight;
+                numericUpDown30.Value = (decimal)Helper.ConvertSecondsToMinutes(currentContaminatedAreaMissionFile.MissionMaxTime);
+                PosXNUD.Value = (decimal)currentContaminatedAreaMissionFile.Data.Pos[0];
+                posYNUD.Value = (decimal)currentContaminatedAreaMissionFile.Data.Pos[1];
+                posZNUD.Value = (decimal)currentContaminatedAreaMissionFile.Data.Pos[2];
+                RadiusNUD.Value = (decimal)currentContaminatedAreaMissionFile.Data.Radius;
+                PosHeightNUD.Value = (decimal)currentContaminatedAreaMissionFile.Data.PosHeight;
+                NegHeightNUD.Value = (decimal)currentContaminatedAreaMissionFile.Data.NegHeight;
+                InnerRingCountNUD.Value = currentContaminatedAreaMissionFile.Data.InnerRingCount;
+                InnerPartDistNUD.Value = currentContaminatedAreaMissionFile.Data.InnerPartDist;
+                OuterRingToggleCB.Checked = currentContaminatedAreaMissionFile.Data.OuterRingToggle == 1 ? true : false;
+                OuterPartDistNUD.Value = currentContaminatedAreaMissionFile.Data.OuterPartDist;
+                OuterOffsetNUD.Value = currentContaminatedAreaMissionFile.Data.OuterOffset;
+                VerticalLayersNUD.Value = currentContaminatedAreaMissionFile.Data.VerticalLayers;
+                VerticalOffsetNUD.Value = currentContaminatedAreaMissionFile.Data.VerticalOffset;
+                ParticleNameTB.Text = currentContaminatedAreaMissionFile.Data.ParticleName;
+                AroundPartNameTB.Text = currentContaminatedAreaMissionFile.PlayerData.AroundPartName;
+                TinyPartNameTB.Text = currentContaminatedAreaMissionFile.PlayerData.TinyPartName;
+                PPERequesterTypeTB.Text = currentContaminatedAreaMissionFile.PlayerData.PPERequesterType;
+                numericUpDown27.Value = currentContaminatedAreaMissionFile.StartDecayLifetime;
+                numericUpDown28.Value = currentContaminatedAreaMissionFile.FinishDecayLifetime;
+            }
             pictureBox6.Invalidate();
             useraction = true;
         }
@@ -3208,14 +3304,14 @@ namespace DayZeEditor
         private void MissionEnabledCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
-            currentmissionfile.Enabled = MissionEnabledCB.Checked == true ? 1 : 0;
-            currentmissionfile.isDirty = true;
+            currentAirdropmissionfile.Enabled = MissionEnabledCB.Checked == true ? 1 : 0;
+            currentAirdropmissionfile.isDirty = true;
         }
         private void MissionShowNotificationCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
-            currentmissionfile.ShowNotification = MissionShowNotificationCB.Checked == true ? 1 : 0;
-            currentmissionfile.isDirty = true;
+            currentAirdropmissionfile.ShowNotification = MissionShowNotificationCB.Checked == true ? 1 : 0;
+            currentAirdropmissionfile.isDirty = true;
         }
         private void missionsettingsNUD_ValueChanged(object sender, EventArgs e)
         {
@@ -3228,67 +3324,70 @@ namespace DayZeEditor
         {
             if (!useraction) { return; }
             NumericUpDown nud = sender as NumericUpDown;
-            currentmissionfile.SetIntValue(nud.Tag as string, (int)nud.Value);
-            currentmissionfile.isDirty = true;
+            currentAirdropmissionfile.SetIntValue(nud.Tag as string, (int)nud.Value);
+            currentAirdropmissionfile.isDirty = true;
         }
         private void MissionWeightFloatNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
             NumericUpDown nud = sender as NumericUpDown;
-            currentmissionfile.SetFloatValue(nud.Tag as string, (float)nud.Value);
-            currentmissionfile.isDirty = true;
+            currentAirdropmissionfile.SetFloatValue(nud.Tag as string, (float)nud.Value);
+            currentAirdropmissionfile.isDirty = true;
         }
         private void MissionPathTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
-            currentmissionfile.Filename = MissionPathTB.Text;
+            currentAirdropmissionfile.Filename = MissionPathTB.Text;
             MissionSettings.isDirty = true;
         }
         private void MissionNameTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
-            currentmissionfile.MissionName = MissionNameTB.Text;
-            currentmissionfile.isDirty = true;
+            currentAirdropmissionfile.MissionName = MissionNameTB.Text;
+            currentAirdropmissionfile.isDirty = true;
         }
         private void MIssionContainerTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
-            currentmissionfile.Container = MIssionContainerTB.Text;
-            currentmissionfile.isDirty = true;
+            currentAirdropmissionfile.Container = MIssionContainerTB.Text;
+            currentAirdropmissionfile.isDirty = true;
         }
         private void MissionDropNameTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
-            currentmissionfile.DropLocation.Name = MissionDropNameTB.Text;
-            currentmissionfile.isDirty = true;
+            currentAirdropmissionfile.DropLocation.Name = MissionDropNameTB.Text;
+            currentAirdropmissionfile.isDirty = true;
         }
         private void MissionDropXNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
-            currentmissionfile.DropLocation.x = (float)MissionDropXNUD.Value;
-            currentmissionfile.isDirty = true;
+            currentAirdropmissionfile.DropLocation.x = (float)MissionDropXNUD.Value;
+            currentAirdropmissionfile.isDirty = true;
             pictureBox6.Invalidate();
         }
         private void MissionDropYNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
-            currentmissionfile.DropLocation.z = (float)MissionDropYNUD.Value;
-            currentmissionfile.isDirty = true;
+            currentAirdropmissionfile.DropLocation.z = (float)MissionDropYNUD.Value;
+            currentAirdropmissionfile.isDirty = true;
             pictureBox6.Invalidate();
         }
         private void MissionDropRadiusNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
-            currentmissionfile.DropLocation.Radius = (float)MissionDropRadiusNUD.Value;
-            currentmissionfile.isDirty = true;
+            currentAirdropmissionfile.DropLocation.Radius = (float)MissionDropRadiusNUD.Value;
+            currentAirdropmissionfile.isDirty = true;
             pictureBox6.Invalidate();
         }
         private void darkButton40_Click(object sender, EventArgs e)
         {
-            MissionSettingFiles newmission = new MissionSettingFiles()
+            AirdropMissionSettingFiles newmission = new AirdropMissionSettingFiles()
             {
                 Filename = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\missions\\Airdrop_NewMission.json",
                 MissionName = "NewMission",
+                Difficulty = 0,
+                Objective = 0,
+                Reward = "",
                 Enabled = 1,
                 ShowNotification = 1,
                 Weight = 0,
@@ -3303,8 +3402,6 @@ namespace DayZeEditor
                     x = currentproject.MapSize / 2,
                     z = currentproject.MapSize / 2
                 },
-                Difficulty = 0,
-                Reward = "",
                 Loot = new BindingList<Empty>(),
                 Infected = new BindingList<Empty>(),
                 ItemCount = -1,
@@ -3315,12 +3412,62 @@ namespace DayZeEditor
             MissionsLB.SelectedIndex = MissionsLB.Items.Count - 1;
             pictureBox6.Invalidate();
         }
-
+        private void darkButton65_Click(object sender, EventArgs e)
+        {
+            ContaminatedAreaMissionSettingFiles newcasf = new ContaminatedAreaMissionSettingFiles()
+            {
+                Filename = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\missions\\ContaminatedArea_NewMission.json",
+                MissionName = "NewMission",
+                Difficulty = 0,
+                Objective = 0,
+                Reward = "",
+                Enabled = 1,
+                Weight = 0,
+                MissionMaxTime = 0,
+                Data = new ContaminatedAreaMissionData()
+                {
+                    Pos = new float[] { currentproject.MapSize / 2,0, currentproject.MapSize / 2, },
+                    Radius = 100,
+                    PosHeight = 25,
+                    NegHeight = 20,
+                    InnerRingCount = 2,
+                    InnerPartDist = 50,
+                    OuterRingToggle = 1,
+                    OuterPartDist = 40,
+                    OuterOffset = 0,
+                    VerticalLayers = 0,
+                    VerticalOffset = 0,
+                    ParticleName = "graphics/particles/contaminated_area_gas_bigass"
+                },
+                PlayerData = new ContaminatedAreaMissionPlayerdata()
+                {
+                    AroundPartName = "graphics/particles/contaminated_area_gas_around",
+                    TinyPartName = "graphics/particles/contaminated_area_gas_around_tiny",
+                    PPERequesterType = "PPERequester_ContaminatedAreaTint"
+                },
+                StartDecayLifetime = 600,
+                FinishDecayLifetime = 300
+            };
+            MissionSettings.MissionSettingFiles.Add(newcasf);
+            MissionsLB.SelectedIndex = -1;
+            MissionsLB.SelectedIndex = MissionsLB.Items.Count - 1;
+            pictureBox6.Invalidate();
+        }
         private void darkButton41_Click(object sender, EventArgs e)
         {
             int index = MissionsLB.SelectedIndex;
-            File.Delete(currentmissionfile.Filename);
-            MissionSettings.MissionSettingFiles.Remove(currentmissionfile);
+            if(MissionsLB.SelectedItem is AirdropMissionSettingFiles)
+            {
+                AirdropMissionSettingFiles amsf = MissionsLB.SelectedItem as AirdropMissionSettingFiles;
+                File.Delete(amsf.Filename);
+                MissionSettings.MissionSettingFiles.Remove(amsf);
+            }
+            else if (MissionsLB.SelectedItem is ContaminatedAreaMissionSettingFiles)
+            {
+                ContaminatedAreaMissionSettingFiles camsf = MissionsLB.SelectedItem as ContaminatedAreaMissionSettingFiles;
+                File.Delete(camsf.Filename);
+                MissionSettings.MissionSettingFiles.Remove(camsf);
+            }
             MissionSettings.isDirty = true;
             if (MissionsLB.Items.Count == 0)
                 MissionsLB.SelectedIndex = -1;
@@ -5433,7 +5580,7 @@ namespace DayZeEditor
             if (!useraction) { return; }
             NumericUpDown nud = sender as NumericUpDown;
             if (nud.DecimalPlaces > 0)
-                TerritorySettings.SetFloatValue(nud.Name.Substring(0, nud.Name.Length - 4), (float)nud.Value);
+                TerritorySettings.SetdeciamlValue(nud.Name.Substring(0, nud.Name.Length - 4), nud.Value);
             else
                 TerritorySettings.SetIntValue(nud.Name.Substring(0, nud.Name.Length - 4), (int)nud.Value);
             TerritorySettings.isDirty = true;
@@ -5702,9 +5849,33 @@ namespace DayZeEditor
 
 
 
+
         #endregion VehicleSettings
 
+        private void numericUpDown30_ValueChanged(object sender, EventArgs e)
+        {
 
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PosXNUD_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void posYNUD_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void posZNUD_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
     public class NullToEmptyGearConverter : JsonConverter<Gear>
     {

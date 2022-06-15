@@ -9,3 +9,5 @@ takistanplus:12800
 esseker:12800
 deerisle:16384
 rostow:14336
+valning:10240
+pripyat:20480
