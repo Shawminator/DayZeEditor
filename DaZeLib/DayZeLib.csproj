@@ -147,6 +147,7 @@
     <Compile Include="ExpansionSettings\TerritorySettings.cs" />
     <Compile Include="ExpansionSettings\VehicleSettings.cs" />
     <Compile Include="Helper\Helper.cs" />
+    <Compile Include="Helper\XYZMapping.cs" />
     <Compile Include="KingOfTheHill\KOTH.cs" />
     <Compile Include="KOSZone\KOSZone.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -35,7 +35,7 @@ namespace DayZeEditor
             }
         }
 
-        public ContaminatedAreaMissionSettingFiles currentContaminatedAreaMissionFile { get; private set; }
+        
 
         public string AirdropsettingPath;
         public string BaseBUildignsettingsPath;
@@ -3120,7 +3120,6 @@ namespace DayZeEditor
         #endregion mapsettings
 
         #region MissionSettings
-        public AirdropMissionSettingFiles currentmission;
         public AirdropMissionSettingFiles currentAirdropmissionfile;
         public float MissionMapscale = 1;
         private void loadMissionSettings()
@@ -3295,6 +3294,8 @@ namespace DayZeEditor
             pictureBox6.Invalidate();
             useraction = true;
         }
+
+        //Airdrop Missions
         private void MissionsEnabledCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
@@ -3320,11 +3321,25 @@ namespace DayZeEditor
             MissionSettings.SetIntValue(nud.Tag as string, (int)nud.Value);
             MissionSettings.isDirty = true;
         }
+        private void missionsettingsTosecondsNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            NumericUpDown nud = sender as NumericUpDown;
+            MissionSettings.SetIntValue(nud.Tag as string, (int)Helper.ConvertMinutesToSeconds((int)nud.Value));
+            MissionSettings.isDirty = true;
+        }
         private void MissionFileIntNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
             NumericUpDown nud = sender as NumericUpDown;
             currentAirdropmissionfile.SetIntValue(nud.Tag as string, (int)nud.Value);
+            currentAirdropmissionfile.isDirty = true;
+        }
+        private void MissionFileIntTosecondsNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            NumericUpDown nud = sender as NumericUpDown;
+            currentAirdropmissionfile.SetIntValue(nud.Tag as string, (int)Helper.ConvertMinutesToSeconds((int)nud.Value));
             currentAirdropmissionfile.isDirty = true;
         }
         private void MissionWeightFloatNUD_ValueChanged(object sender, EventArgs e)
@@ -3479,6 +3494,157 @@ namespace DayZeEditor
             else
                 MissionsLB.SelectedIndex = index - 1;
             pictureBox6.Invalidate();
+        }
+
+        //Contaminated Area missions
+        public ContaminatedAreaMissionSettingFiles currentContaminatedAreaMissionFile { get; private set; }
+        private void PosXNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentContaminatedAreaMissionFile.Data.Pos[0] = (float)PosXNUD.Value;
+            currentContaminatedAreaMissionFile.isDirty = true;
+            pictureBox6.Invalidate();
+        }
+        private void posYNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentContaminatedAreaMissionFile.Data.Pos[1] = (float)posYNUD.Value;
+            currentContaminatedAreaMissionFile.isDirty = true;
+            pictureBox6.Invalidate();
+        }
+        private void posZNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentContaminatedAreaMissionFile.Data.Pos[2] = (float)posZNUD.Value;
+            currentContaminatedAreaMissionFile.isDirty = true;
+            pictureBox6.Invalidate();
+        }
+        private void RadiusNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentContaminatedAreaMissionFile.Data.Radius = (int)RadiusNUD.Value;
+            currentContaminatedAreaMissionFile.isDirty = true;
+            pictureBox6.Invalidate();
+        }
+        private void textBox15_TextChanged_1(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentContaminatedAreaMissionFile.Filename = textBox15.Text;
+            currentContaminatedAreaMissionFile.isDirty = true;
+        }
+        private void textBox16_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentContaminatedAreaMissionFile.MissionName = textBox16.Text;
+            currentContaminatedAreaMissionFile.isDirty = true;
+        }
+        private void checkBox7_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentContaminatedAreaMissionFile.Enabled = checkBox7.Checked == true ? 1 : 0;
+            currentContaminatedAreaMissionFile.isDirty = true;
+        }
+        private void numericUpDown30_ValueChanged_1(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentContaminatedAreaMissionFile.MissionMaxTime = (int)Helper.ConvertMinutesToSeconds((int)numericUpDown30.Value);
+            currentContaminatedAreaMissionFile.isDirty = true;
+        }
+        private void numericUpDown29_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentContaminatedAreaMissionFile.Weight = numericUpDown29.Value;
+            currentContaminatedAreaMissionFile.isDirty = true;
+        }
+        private void InnerRingCountNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentContaminatedAreaMissionFile.Data.InnerRingCount = (int)InnerRingCountNUD.Value;
+            currentContaminatedAreaMissionFile.isDirty = true;
+        }
+        private void PosHeightNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentContaminatedAreaMissionFile.Data.PosHeight = PosHeightNUD.Value;
+            currentContaminatedAreaMissionFile.isDirty = true;
+        }
+        private void InnerPartDistNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentContaminatedAreaMissionFile.Data.InnerPartDist = (int)InnerPartDistNUD.Value;
+            currentContaminatedAreaMissionFile.isDirty = true;
+        }
+        private void NegHeightNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentContaminatedAreaMissionFile.Data.NegHeight = NegHeightNUD.Value;
+            currentContaminatedAreaMissionFile.isDirty = true;
+        }
+        private void OuterRingToggleCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentContaminatedAreaMissionFile.Data.OuterRingToggle = OuterRingToggleCB.Checked == true ? 1 : 0;
+            currentContaminatedAreaMissionFile.isDirty = true;
+        }
+        private void VerticalLayersNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentContaminatedAreaMissionFile.Data.VerticalLayers = (int)VerticalLayersNUD.Value;
+            currentContaminatedAreaMissionFile.isDirty = true;
+        }
+        private void OuterPartDistNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentContaminatedAreaMissionFile.Data.OuterPartDist = (int)OuterPartDistNUD.Value;
+            currentContaminatedAreaMissionFile.isDirty = true;
+        }
+        private void VerticalOffsetNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentContaminatedAreaMissionFile.Data.VerticalOffset = (int)VerticalOffsetNUD.Value;
+            currentContaminatedAreaMissionFile.isDirty = true;
+        }
+        private void OuterOffsetNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentContaminatedAreaMissionFile.Data.OuterOffset = (int)OuterOffsetNUD.Value;
+            currentContaminatedAreaMissionFile.isDirty = true;
+        }
+        private void ParticleNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentContaminatedAreaMissionFile.Data.ParticleName = AroundPartNameTB.Text;
+            currentContaminatedAreaMissionFile.isDirty = true;
+        }
+        private void AroundPartNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentContaminatedAreaMissionFile.PlayerData.AroundPartName = AroundPartNameTB.Text;
+            currentContaminatedAreaMissionFile.isDirty = true;
+        }
+        private void TinyPartNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentContaminatedAreaMissionFile.PlayerData.TinyPartName = TinyPartNameTB.Text;
+            currentContaminatedAreaMissionFile.isDirty = true;
+        }
+        private void PPERequesterTypeTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentContaminatedAreaMissionFile.PlayerData.PPERequesterType = PPERequesterTypeTB.Text;
+            currentContaminatedAreaMissionFile.isDirty = true;
+        }
+        private void numericUpDown27_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentContaminatedAreaMissionFile.StartDecayLifetime = numericUpDown27.Value;
+            currentContaminatedAreaMissionFile.isDirty = true;
+        }
+        private void numericUpDown28_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentContaminatedAreaMissionFile.FinishDecayLifetime = numericUpDown28.Value;
+            currentContaminatedAreaMissionFile.isDirty = true;
         }
         #endregion Missionsettings
 
@@ -5850,32 +6016,11 @@ namespace DayZeEditor
 
 
 
+
+
         #endregion VehicleSettings
 
-        private void numericUpDown30_ValueChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void pictureBox6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PosXNUD_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void posYNUD_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void posZNUD_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
     }
     public class NullToEmptyGearConverter : JsonConverter<Gear>
     {

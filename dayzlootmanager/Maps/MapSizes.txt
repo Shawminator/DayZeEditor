@@ -1,5 +1,4 @@
-﻿iztek:8192
-chernarusplus:15360
+﻿chernarusplus:15360
 chernarusplusgloom:15360
 banov:15360
 namalsk:12800
@@ -9,5 +8,6 @@ takistanplus:12800
 esseker:12800
 deerisle:16384
 rostow:14336
+iztek:8192
 valning:10240
 pripyat:20480

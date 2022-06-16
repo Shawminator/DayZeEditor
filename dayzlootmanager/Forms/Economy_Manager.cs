@@ -4271,8 +4271,8 @@ namespace DayZeEditor
             RCactualNUD.Value = weather.rain.current.actual;
             RCtimeNUD.Value = weather.rain.current.time;
             RCdurationNUD.Value = weather.rain.current.duration;
-            RLminNUD.Value = weather.rain.limit.min;
-            RLmaxNUD.Value = weather.rain.limit.max;
+            RLminNUD.Value = weather.rain.limits.min;
+            RLmaxNUD.Value = weather.rain.limits.max;
             RTLminNUD.Value = weather.rain.timelimits.min;
             RTLmaxNUD.Value = weather.rain.timelimits.max;
             RCLminNUD.Value = weather.rain.changelimits.min;
@@ -4325,13 +4325,13 @@ namespace DayZeEditor
         private void RLminNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            weather.rain.limit.min = RLminNUD.Value;
+            weather.rain.limits.min = RLminNUD.Value;
             currentproject.weatherconfig.isDirty = true;
         }
         private void RLmaxNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            weather.rain.limit.min = RLmaxNUD.Value;
+            weather.rain.limits.min = RLmaxNUD.Value;
             currentproject.weatherconfig.isDirty = true;
         }
         private void RTLminNUD_ValueChanged(object sender, EventArgs e)

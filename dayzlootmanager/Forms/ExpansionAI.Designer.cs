@@ -774,11 +774,11 @@ namespace DayZeEditor
             this.CrashUnderThreatSpeedCB.ForeColor = System.Drawing.SystemColors.Control;
             this.CrashUnderThreatSpeedCB.FormattingEnabled = true;
             this.CrashUnderThreatSpeedCB.Items.AddRange(new object[] {
+            "STATIC",
             "WALK",
             "JOG",
             "SPRINT",
-            "RANDOM",
-            "STATIC"});
+            "RANDOM"});
             this.CrashUnderThreatSpeedCB.Location = new System.Drawing.Point(335, 178);
             this.CrashUnderThreatSpeedCB.Name = "CrashUnderThreatSpeedCB";
             this.CrashUnderThreatSpeedCB.Size = new System.Drawing.Size(229, 21);
@@ -801,11 +801,11 @@ namespace DayZeEditor
             this.CrashSpeedCB.ForeColor = System.Drawing.SystemColors.Control;
             this.CrashSpeedCB.FormattingEnabled = true;
             this.CrashSpeedCB.Items.AddRange(new object[] {
+            "STATIC",
             "WALK",
             "JOG",
             "SPRINT",
-            "RANDOM",
-            "STATIC"});
+            "RANDOM"});
             this.CrashSpeedCB.Location = new System.Drawing.Point(335, 151);
             this.CrashSpeedCB.Name = "CrashSpeedCB";
             this.CrashSpeedCB.Size = new System.Drawing.Size(229, 21);
@@ -828,8 +828,9 @@ namespace DayZeEditor
             this.CrashBehaviourCB.ForeColor = System.Drawing.SystemColors.Control;
             this.CrashBehaviourCB.FormattingEnabled = true;
             this.CrashBehaviourCB.Items.AddRange(new object[] {
-            "HOLD",
-            "PATROL",
+            "HALT",
+            "LOOP",
+            "ALTERNATE",
             "HOLD OR PATROL"});
             this.CrashBehaviourCB.Location = new System.Drawing.Point(335, 124);
             this.CrashBehaviourCB.Name = "CrashBehaviourCB";
@@ -899,7 +900,8 @@ namespace DayZeEditor
             "EAST",
             "INSURGENT",
             "CIVILIAN",
-            "GAURDS"});
+            "GAURDS",
+            "PASSIVE"});
             this.CrashFactionCB.Location = new System.Drawing.Point(335, 45);
             this.CrashFactionCB.Name = "CrashFactionCB";
             this.CrashFactionCB.Size = new System.Drawing.Size(229, 21);
@@ -1394,11 +1396,11 @@ namespace DayZeEditor
             this.StaticPatrolUnderThreatSpeedCB.ForeColor = System.Drawing.SystemColors.Control;
             this.StaticPatrolUnderThreatSpeedCB.FormattingEnabled = true;
             this.StaticPatrolUnderThreatSpeedCB.Items.AddRange(new object[] {
+            "STATIC",
             "WALK",
             "JOG",
             "SPRINT",
-            "RANDOM",
-            "STATIC"});
+            "RANDOM"});
             this.StaticPatrolUnderThreatSpeedCB.Location = new System.Drawing.Point(342, 152);
             this.StaticPatrolUnderThreatSpeedCB.Name = "StaticPatrolUnderThreatSpeedCB";
             this.StaticPatrolUnderThreatSpeedCB.Size = new System.Drawing.Size(229, 21);
@@ -1421,11 +1423,11 @@ namespace DayZeEditor
             this.StaticPatrolSpeedCB.ForeColor = System.Drawing.SystemColors.Control;
             this.StaticPatrolSpeedCB.FormattingEnabled = true;
             this.StaticPatrolSpeedCB.Items.AddRange(new object[] {
+            "STATIC",
             "WALK",
             "JOG",
             "SPRINT",
-            "RANDOM",
-            "STATIC"});
+            "RANDOM"});
             this.StaticPatrolSpeedCB.Location = new System.Drawing.Point(342, 125);
             this.StaticPatrolSpeedCB.Name = "StaticPatrolSpeedCB";
             this.StaticPatrolSpeedCB.Size = new System.Drawing.Size(229, 21);
@@ -1448,8 +1450,9 @@ namespace DayZeEditor
             this.StaticPatrolBehaviorCB.ForeColor = System.Drawing.SystemColors.Control;
             this.StaticPatrolBehaviorCB.FormattingEnabled = true;
             this.StaticPatrolBehaviorCB.Items.AddRange(new object[] {
-            "HOLD",
-            "PATROL",
+            "HALT",
+            "LOOP",
+            "ALTERNATE",
             "HOLD OR PATROL"});
             this.StaticPatrolBehaviorCB.Location = new System.Drawing.Point(342, 98);
             this.StaticPatrolBehaviorCB.Name = "StaticPatrolBehaviorCB";
@@ -1519,7 +1522,8 @@ namespace DayZeEditor
             "EAST",
             "INSURGENT",
             "CIVILIAN",
-            "GAURDS"});
+            "GAURDS",
+            "PASSIVE"});
             this.StaticPatrolFactionCB.Location = new System.Drawing.Point(342, 19);
             this.StaticPatrolFactionCB.Name = "StaticPatrolFactionCB";
             this.StaticPatrolFactionCB.Size = new System.Drawing.Size(229, 21);

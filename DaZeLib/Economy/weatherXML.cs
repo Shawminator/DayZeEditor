@@ -621,7 +621,7 @@ namespace DayZeLib
 
         private weatherRainCurrent currentField;
 
-        private weatherRainLimit limitField;
+        private weatherRainLimits limitsField;
 
         private weatherRainTimelimits timelimitsField;
 
@@ -643,15 +643,15 @@ namespace DayZeLib
         }
 
         /// <remarks/>
-        public weatherRainLimit limit
+        public weatherRainLimits limits
         {
             get
             {
-                return this.limitField;
+                return this.limitsField;
             }
             set
             {
-                this.limitField = value;
+                this.limitsField = value;
             }
         }
 
@@ -755,7 +755,7 @@ namespace DayZeLib
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class weatherRainLimit
+    public partial class weatherRainLimits
     {
 
         private decimal minField;

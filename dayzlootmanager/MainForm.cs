@@ -512,9 +512,13 @@ namespace DayZeEditor
         }
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            MapData data = new MapData(Application.StartupPath + "//Maps//map_output.txt");
-
-           data.CreateNewData();
+            OpenFileDialog openfile = new OpenFileDialog();
+            openfile.Title = "Please select the map_output.txt upi wosh to convert";
+            if (openfile.ShowDialog() == DialogResult.OK)
+            {
+                MapData data = new MapData(openfile.FileName);
+                data.CreateNewData();
+            }
         }
         private void DiscordButton_Click(object sender, EventArgs e)
         {
