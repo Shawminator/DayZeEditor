@@ -15,6 +15,15 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
     public partial class weather
     {
+        public weather()
+        {
+            overcast = new weatherOvercast();
+            fog = new weatherFog();
+            rain = new weatherRain();
+            wind = new weatherWind();
+            storm = new weatherStorm();
+
+        }
 
         private weatherOvercast overcastField;
 
@@ -130,6 +139,13 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherOvercast
     {
+        public weatherOvercast()
+        {
+            current = new weatherOvercastCurrent();
+            limits = new weatherOvercastLimits();
+            timelimits = new weatherOvercastTimelimits();
+            changelimits = new weatherOvercastChangelimits();
+        }
 
         private weatherOvercastCurrent currentField;
 
@@ -198,11 +214,16 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherOvercastCurrent
     {
+        public weatherOvercastCurrent()
+        {
+            actual = (decimal)0.10;
+            time = 120;
+            duration = 240;
+        }
+
 
         private decimal actualField;
-
         private int timeField;
-
         private int durationField;
 
         /// <remarks/>
@@ -254,7 +275,11 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherOvercastLimits
     {
-
+        public weatherOvercastLimits()
+        {
+            min = (decimal)0.0;
+            max = (decimal)0.55;
+        }
         private decimal minField;
 
         private decimal maxField;
@@ -294,7 +319,11 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherOvercastTimelimits
     {
-
+        public weatherOvercastTimelimits()
+        {
+            min = 900;
+            max = 1200;
+        }
         private int minField;
 
         private int maxField;
@@ -334,7 +363,11 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherOvercastChangelimits
     {
-
+        public weatherOvercastChangelimits()
+        {
+            min = (decimal)0.1;
+            max = (decimal)0.5;
+        }
         private decimal minField;
 
         private decimal maxField;
@@ -374,7 +407,13 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherFog
     {
-
+        public weatherFog()
+        {
+            current = new weatherFogCurrent();
+            limits = new weatherFogLimits();
+            timelimits = new weatherFogTimelimits();
+            changelimits = new weatherFogChangelimits();
+        }
         private weatherFogCurrent currentField;
 
         private weatherFogLimits limitsField;
@@ -442,7 +481,12 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherFogCurrent
     {
-
+        public weatherFogCurrent()
+        {
+            actual = (decimal)0.0;
+            time = 120;
+            duration = 240;
+        }
         private decimal actualField;
 
         private int timeField;
@@ -498,7 +542,11 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherFogLimits
     {
-
+        public weatherFogLimits()
+        {
+            min = (decimal)0.00;
+            max = (decimal)0.01;
+        }
         private decimal minField;
 
         private decimal maxField;
@@ -538,7 +586,11 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherFogTimelimits
     {
-
+        public weatherFogTimelimits()
+        {
+            min = 900;
+            max = 1800;
+        }
         private int minField;
 
         private int maxField;
@@ -578,7 +630,11 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherFogChangelimits
     {
-
+        public weatherFogChangelimits()
+        {
+            min = (decimal)0.1;
+            max = (decimal)0.5;
+        }
         private decimal minField;
 
         private decimal maxField;
@@ -618,15 +674,18 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherRain
     {
-
+        public weatherRain()
+        {
+            current = new weatherRainCurrent();
+            limits = new weatherRainLimits();
+            timelimits = new weatherRainTimelimits();
+            changelimits = new weatherRainChangelimits();
+            thresholds = new weatherRainThresholds();
+        }
         private weatherRainCurrent currentField;
-
         private weatherRainLimits limitsField;
-
         private weatherRainTimelimits timelimitsField;
-
         private weatherRainChangelimits changelimitsField;
-
         private weatherRainThresholds thresholdsField;
 
         /// <remarks/>
@@ -701,7 +760,12 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherRainCurrent
     {
-
+        public weatherRainCurrent()
+        {
+            actual = 0;
+            time = 120;
+            duration = 240;
+        }
         private decimal actualField;
 
         private int timeField;
@@ -757,7 +821,11 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherRainLimits
     {
-
+        public weatherRainLimits()
+        {
+            min = (decimal)0.0;
+            max = (decimal)0.35;
+        }
         private decimal minField;
 
         private decimal maxField;
@@ -797,7 +865,11 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherRainTimelimits
     {
-
+        public weatherRainTimelimits()
+        {
+            min = 300;
+            max = 600;
+        }
         private int minField;
 
         private int maxField;
@@ -837,7 +909,11 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherRainChangelimits
     {
-
+        public weatherRainChangelimits()
+        {
+            min = 0;
+            max = (decimal)0.25;
+        }
         private decimal minField;
 
         private decimal maxField;
@@ -877,7 +953,12 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherRainThresholds
     {
-
+        public weatherRainThresholds()
+        {
+            min = (decimal)0.5;
+            max = (decimal)1.0;
+            end = 120;
+        }
         private decimal minField;
 
         private decimal maxField;
@@ -933,7 +1014,11 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherWind
     {
-
+        public weatherWind()
+        {
+            maxspeed = 10;
+            @params = new weatherWindParams();
+        }
         private int maxspeedField;
 
         private weatherWindParams paramsField;
@@ -971,7 +1056,12 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherWindParams
     {
-
+        public weatherWindParams()
+        {
+            min = 0;
+            max = 1;
+            frequency = 60;
+        }
         private decimal minField;
 
         private decimal maxField;
@@ -1027,7 +1117,12 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherStorm
     {
-
+        public weatherStorm()
+        {
+            density = (decimal)1.0;
+            threshold = (decimal)0.75;
+            timeout = 30;
+        }
         private decimal densityField;
 
         private decimal thresholdField;

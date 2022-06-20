@@ -556,7 +556,16 @@ namespace DayZeLib
             System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
             try
             {
-                cfgEffectArea = JsonSerializer.Deserialize<cfgEffectArea>(File.ReadAllText(Filename));
+                if (File.Exists(Filename))
+                {
+                    cfgEffectArea = JsonSerializer.Deserialize<cfgEffectArea>(File.ReadAllText(Filename));
+                }
+                else
+                {
+                    cfgEffectArea = new cfgEffectArea();
+                    SavecfgEffectArea();
+
+                }
                 cfgEffectArea.convertpositionstolist();
             }
             catch (Exception ex)
@@ -586,6 +595,11 @@ namespace DayZeLib
         public weatherconfig(string filename)
         {
             Filename = filename;
+            if(!File.Exists(Filename))
+            {
+                weather = new weather();
+                SaveWeather();
+            }
             var mySerializer = new XmlSerializer(typeof(weather));
             // To read the file, create a FileStream.
             using (var myFileStream = new FileStream(filename, FileMode.Open))

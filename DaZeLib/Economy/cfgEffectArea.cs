@@ -13,6 +13,12 @@ namespace DayZeLib
         public BindingList<Areas> Areas { get; set; }
         public BindingList<float[]> SafePositions { get; set; }
 
+        public cfgEffectArea()
+        {
+            Areas = new BindingList<Areas>();
+            SafePositions = new BindingList<float[]>();
+        }
+
         [JsonIgnore]
         public BindingList<Position> _positions { get; set; }
 

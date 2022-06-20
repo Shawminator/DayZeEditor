@@ -82,27 +82,28 @@ namespace DayZeEditor
             this.darkButton28 = new DarkUI.Controls.DarkButton();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.SetdefinitionsTP = new System.Windows.Forms.TabPage();
-            this.Tier21CB = new System.Windows.Forms.CheckBox();
-            this.Tier20CB = new System.Windows.Forms.CheckBox();
-            this.Tier19CB = new System.Windows.Forms.CheckBox();
-            this.Tier18CB = new System.Windows.Forms.CheckBox();
-            this.Tier17CB = new System.Windows.Forms.CheckBox();
-            this.Tier16CB = new System.Windows.Forms.CheckBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.Tier1CB = new System.Windows.Forms.CheckBox();
-            this.Tier15CB = new System.Windows.Forms.CheckBox();
             this.Tier2CB = new System.Windows.Forms.CheckBox();
-            this.Tier14CB = new System.Windows.Forms.CheckBox();
             this.Tier3CB = new System.Windows.Forms.CheckBox();
-            this.Tier13CB = new System.Windows.Forms.CheckBox();
             this.Tier4CB = new System.Windows.Forms.CheckBox();
-            this.Tier12CB = new System.Windows.Forms.CheckBox();
             this.Tier5CB = new System.Windows.Forms.CheckBox();
-            this.Tier11CB = new System.Windows.Forms.CheckBox();
             this.Tier6CB = new System.Windows.Forms.CheckBox();
-            this.Tier10CB = new System.Windows.Forms.CheckBox();
             this.Tier7CB = new System.Windows.Forms.CheckBox();
-            this.Tier9CB = new System.Windows.Forms.CheckBox();
             this.Tier8CB = new System.Windows.Forms.CheckBox();
+            this.Tier9CB = new System.Windows.Forms.CheckBox();
+            this.Tier10CB = new System.Windows.Forms.CheckBox();
+            this.Tier11CB = new System.Windows.Forms.CheckBox();
+            this.Tier12CB = new System.Windows.Forms.CheckBox();
+            this.Tier13CB = new System.Windows.Forms.CheckBox();
+            this.Tier14CB = new System.Windows.Forms.CheckBox();
+            this.Tier15CB = new System.Windows.Forms.CheckBox();
+            this.Tier16CB = new System.Windows.Forms.CheckBox();
+            this.Tier17CB = new System.Windows.Forms.CheckBox();
+            this.Tier18CB = new System.Windows.Forms.CheckBox();
+            this.Tier19CB = new System.Windows.Forms.CheckBox();
+            this.Tier20CB = new System.Windows.Forms.CheckBox();
+            this.UniqueCB = new System.Windows.Forms.CheckBox();
             this.UserdefinitionsTP = new System.Windows.Forms.TabPage();
             this.TierUCB = new System.Windows.Forms.CheckBox();
             this.TierTCB = new System.Windows.Forms.CheckBox();
@@ -788,6 +789,7 @@ namespace DayZeEditor
             this.TiersGB.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.SetdefinitionsTP.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.UserdefinitionsTP.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -1645,27 +1647,7 @@ namespace DayZeEditor
             // SetdefinitionsTP
             // 
             this.SetdefinitionsTP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.SetdefinitionsTP.Controls.Add(this.Tier21CB);
-            this.SetdefinitionsTP.Controls.Add(this.Tier20CB);
-            this.SetdefinitionsTP.Controls.Add(this.Tier19CB);
-            this.SetdefinitionsTP.Controls.Add(this.Tier18CB);
-            this.SetdefinitionsTP.Controls.Add(this.Tier17CB);
-            this.SetdefinitionsTP.Controls.Add(this.Tier16CB);
-            this.SetdefinitionsTP.Controls.Add(this.Tier1CB);
-            this.SetdefinitionsTP.Controls.Add(this.Tier15CB);
-            this.SetdefinitionsTP.Controls.Add(this.Tier2CB);
-            this.SetdefinitionsTP.Controls.Add(this.Tier14CB);
-            this.SetdefinitionsTP.Controls.Add(this.Tier3CB);
-            this.SetdefinitionsTP.Controls.Add(this.Tier13CB);
-            this.SetdefinitionsTP.Controls.Add(this.Tier4CB);
-            this.SetdefinitionsTP.Controls.Add(this.Tier12CB);
-            this.SetdefinitionsTP.Controls.Add(this.Tier5CB);
-            this.SetdefinitionsTP.Controls.Add(this.Tier11CB);
-            this.SetdefinitionsTP.Controls.Add(this.Tier6CB);
-            this.SetdefinitionsTP.Controls.Add(this.Tier10CB);
-            this.SetdefinitionsTP.Controls.Add(this.Tier7CB);
-            this.SetdefinitionsTP.Controls.Add(this.Tier9CB);
-            this.SetdefinitionsTP.Controls.Add(this.Tier8CB);
+            this.SetdefinitionsTP.Controls.Add(this.flowLayoutPanel1);
             this.SetdefinitionsTP.Location = new System.Drawing.Point(4, 25);
             this.SetdefinitionsTP.Name = "SetdefinitionsTP";
             this.SetdefinitionsTP.Padding = new System.Windows.Forms.Padding(3);
@@ -1673,82 +1655,40 @@ namespace DayZeEditor
             this.SetdefinitionsTP.TabIndex = 0;
             this.SetdefinitionsTP.Text = "Set definitions";
             // 
-            // Tier21CB
+            // flowLayoutPanel1
             // 
-            this.Tier21CB.AutoSize = true;
-            this.Tier21CB.Location = new System.Drawing.Point(174, 141);
-            this.Tier21CB.Name = "Tier21CB";
-            this.Tier21CB.Size = new System.Drawing.Size(59, 17);
-            this.Tier21CB.TabIndex = 20;
-            this.Tier21CB.Tag = "Tier21";
-            this.Tier21CB.Text = "Tier 21";
-            this.Tier21CB.UseVisualStyleBackColor = true;
-            this.Tier21CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
-            // 
-            // Tier20CB
-            // 
-            this.Tier20CB.AutoSize = true;
-            this.Tier20CB.Location = new System.Drawing.Point(174, 118);
-            this.Tier20CB.Name = "Tier20CB";
-            this.Tier20CB.Size = new System.Drawing.Size(59, 17);
-            this.Tier20CB.TabIndex = 19;
-            this.Tier20CB.Tag = "Tier20";
-            this.Tier20CB.Text = "Tier 20";
-            this.Tier20CB.UseVisualStyleBackColor = true;
-            this.Tier20CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
-            // 
-            // Tier19CB
-            // 
-            this.Tier19CB.AutoSize = true;
-            this.Tier19CB.Location = new System.Drawing.Point(174, 95);
-            this.Tier19CB.Name = "Tier19CB";
-            this.Tier19CB.Size = new System.Drawing.Size(59, 17);
-            this.Tier19CB.TabIndex = 18;
-            this.Tier19CB.Tag = "Tier19";
-            this.Tier19CB.Text = "Tier 19";
-            this.Tier19CB.UseVisualStyleBackColor = true;
-            this.Tier19CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
-            // 
-            // Tier18CB
-            // 
-            this.Tier18CB.AutoSize = true;
-            this.Tier18CB.Location = new System.Drawing.Point(174, 72);
-            this.Tier18CB.Name = "Tier18CB";
-            this.Tier18CB.Size = new System.Drawing.Size(59, 17);
-            this.Tier18CB.TabIndex = 17;
-            this.Tier18CB.Tag = "Tier18";
-            this.Tier18CB.Text = "Tier 18";
-            this.Tier18CB.UseVisualStyleBackColor = true;
-            this.Tier18CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
-            // 
-            // Tier17CB
-            // 
-            this.Tier17CB.AutoSize = true;
-            this.Tier17CB.Location = new System.Drawing.Point(174, 50);
-            this.Tier17CB.Name = "Tier17CB";
-            this.Tier17CB.Size = new System.Drawing.Size(59, 17);
-            this.Tier17CB.TabIndex = 16;
-            this.Tier17CB.Tag = "Tier17";
-            this.Tier17CB.Text = "Tier 17";
-            this.Tier17CB.UseVisualStyleBackColor = true;
-            this.Tier17CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
-            // 
-            // Tier16CB
-            // 
-            this.Tier16CB.AutoSize = true;
-            this.Tier16CB.Location = new System.Drawing.Point(174, 27);
-            this.Tier16CB.Name = "Tier16CB";
-            this.Tier16CB.Size = new System.Drawing.Size(59, 17);
-            this.Tier16CB.TabIndex = 15;
-            this.Tier16CB.Tag = "Tier16";
-            this.Tier16CB.Text = "Tier 16";
-            this.Tier16CB.UseVisualStyleBackColor = true;
-            this.Tier16CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
+            this.flowLayoutPanel1.Controls.Add(this.Tier1CB);
+            this.flowLayoutPanel1.Controls.Add(this.Tier2CB);
+            this.flowLayoutPanel1.Controls.Add(this.Tier3CB);
+            this.flowLayoutPanel1.Controls.Add(this.Tier4CB);
+            this.flowLayoutPanel1.Controls.Add(this.Tier5CB);
+            this.flowLayoutPanel1.Controls.Add(this.Tier6CB);
+            this.flowLayoutPanel1.Controls.Add(this.Tier7CB);
+            this.flowLayoutPanel1.Controls.Add(this.Tier8CB);
+            this.flowLayoutPanel1.Controls.Add(this.Tier9CB);
+            this.flowLayoutPanel1.Controls.Add(this.Tier10CB);
+            this.flowLayoutPanel1.Controls.Add(this.Tier11CB);
+            this.flowLayoutPanel1.Controls.Add(this.Tier12CB);
+            this.flowLayoutPanel1.Controls.Add(this.Tier13CB);
+            this.flowLayoutPanel1.Controls.Add(this.Tier14CB);
+            this.flowLayoutPanel1.Controls.Add(this.Tier15CB);
+            this.flowLayoutPanel1.Controls.Add(this.Tier16CB);
+            this.flowLayoutPanel1.Controls.Add(this.Tier17CB);
+            this.flowLayoutPanel1.Controls.Add(this.Tier18CB);
+            this.flowLayoutPanel1.Controls.Add(this.Tier19CB);
+            this.flowLayoutPanel1.Controls.Add(this.Tier20CB);
+            this.flowLayoutPanel1.Controls.Add(this.UniqueCB);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(234, 154);
+            this.flowLayoutPanel1.TabIndex = 0;
             // 
             // Tier1CB
             // 
             this.Tier1CB.AutoSize = true;
-            this.Tier1CB.Location = new System.Drawing.Point(7, 3);
+            this.Tier1CB.Location = new System.Drawing.Point(3, 3);
             this.Tier1CB.Name = "Tier1CB";
             this.Tier1CB.Size = new System.Drawing.Size(53, 17);
             this.Tier1CB.TabIndex = 0;
@@ -1757,22 +1697,10 @@ namespace DayZeEditor
             this.Tier1CB.UseVisualStyleBackColor = true;
             this.Tier1CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
             // 
-            // Tier15CB
-            // 
-            this.Tier15CB.AutoSize = true;
-            this.Tier15CB.Location = new System.Drawing.Point(174, 3);
-            this.Tier15CB.Name = "Tier15CB";
-            this.Tier15CB.Size = new System.Drawing.Size(59, 17);
-            this.Tier15CB.TabIndex = 14;
-            this.Tier15CB.Tag = "Tier15";
-            this.Tier15CB.Text = "Tier 15";
-            this.Tier15CB.UseVisualStyleBackColor = true;
-            this.Tier15CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
-            // 
             // Tier2CB
             // 
             this.Tier2CB.AutoSize = true;
-            this.Tier2CB.Location = new System.Drawing.Point(7, 26);
+            this.Tier2CB.Location = new System.Drawing.Point(3, 26);
             this.Tier2CB.Name = "Tier2CB";
             this.Tier2CB.Size = new System.Drawing.Size(53, 17);
             this.Tier2CB.TabIndex = 1;
@@ -1781,22 +1709,10 @@ namespace DayZeEditor
             this.Tier2CB.UseVisualStyleBackColor = true;
             this.Tier2CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
             // 
-            // Tier14CB
-            // 
-            this.Tier14CB.AutoSize = true;
-            this.Tier14CB.Location = new System.Drawing.Point(96, 141);
-            this.Tier14CB.Name = "Tier14CB";
-            this.Tier14CB.Size = new System.Drawing.Size(59, 17);
-            this.Tier14CB.TabIndex = 13;
-            this.Tier14CB.Tag = "Tier14";
-            this.Tier14CB.Text = "Tier 14";
-            this.Tier14CB.UseVisualStyleBackColor = true;
-            this.Tier14CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
-            // 
             // Tier3CB
             // 
             this.Tier3CB.AutoSize = true;
-            this.Tier3CB.Location = new System.Drawing.Point(7, 49);
+            this.Tier3CB.Location = new System.Drawing.Point(3, 49);
             this.Tier3CB.Name = "Tier3CB";
             this.Tier3CB.Size = new System.Drawing.Size(53, 17);
             this.Tier3CB.TabIndex = 2;
@@ -1805,22 +1721,10 @@ namespace DayZeEditor
             this.Tier3CB.UseVisualStyleBackColor = true;
             this.Tier3CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
             // 
-            // Tier13CB
-            // 
-            this.Tier13CB.AutoSize = true;
-            this.Tier13CB.Location = new System.Drawing.Point(96, 118);
-            this.Tier13CB.Name = "Tier13CB";
-            this.Tier13CB.Size = new System.Drawing.Size(59, 17);
-            this.Tier13CB.TabIndex = 12;
-            this.Tier13CB.Tag = "Tier13";
-            this.Tier13CB.Text = "Tier 13";
-            this.Tier13CB.UseVisualStyleBackColor = true;
-            this.Tier13CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
-            // 
             // Tier4CB
             // 
             this.Tier4CB.AutoSize = true;
-            this.Tier4CB.Location = new System.Drawing.Point(7, 72);
+            this.Tier4CB.Location = new System.Drawing.Point(3, 72);
             this.Tier4CB.Name = "Tier4CB";
             this.Tier4CB.Size = new System.Drawing.Size(53, 17);
             this.Tier4CB.TabIndex = 3;
@@ -1829,22 +1733,10 @@ namespace DayZeEditor
             this.Tier4CB.UseVisualStyleBackColor = true;
             this.Tier4CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
             // 
-            // Tier12CB
-            // 
-            this.Tier12CB.AutoSize = true;
-            this.Tier12CB.Location = new System.Drawing.Point(96, 95);
-            this.Tier12CB.Name = "Tier12CB";
-            this.Tier12CB.Size = new System.Drawing.Size(59, 17);
-            this.Tier12CB.TabIndex = 11;
-            this.Tier12CB.Tag = "Tier12";
-            this.Tier12CB.Text = "Tier 12";
-            this.Tier12CB.UseVisualStyleBackColor = true;
-            this.Tier12CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
-            // 
             // Tier5CB
             // 
             this.Tier5CB.AutoSize = true;
-            this.Tier5CB.Location = new System.Drawing.Point(7, 95);
+            this.Tier5CB.Location = new System.Drawing.Point(3, 95);
             this.Tier5CB.Name = "Tier5CB";
             this.Tier5CB.Size = new System.Drawing.Size(53, 17);
             this.Tier5CB.TabIndex = 4;
@@ -1853,22 +1745,10 @@ namespace DayZeEditor
             this.Tier5CB.UseVisualStyleBackColor = true;
             this.Tier5CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
             // 
-            // Tier11CB
-            // 
-            this.Tier11CB.AutoSize = true;
-            this.Tier11CB.Location = new System.Drawing.Point(96, 72);
-            this.Tier11CB.Name = "Tier11CB";
-            this.Tier11CB.Size = new System.Drawing.Size(59, 17);
-            this.Tier11CB.TabIndex = 10;
-            this.Tier11CB.Tag = "Tier11";
-            this.Tier11CB.Text = "Tier 11";
-            this.Tier11CB.UseVisualStyleBackColor = true;
-            this.Tier11CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
-            // 
             // Tier6CB
             // 
             this.Tier6CB.AutoSize = true;
-            this.Tier6CB.Location = new System.Drawing.Point(7, 118);
+            this.Tier6CB.Location = new System.Drawing.Point(3, 118);
             this.Tier6CB.Name = "Tier6CB";
             this.Tier6CB.Size = new System.Drawing.Size(53, 17);
             this.Tier6CB.TabIndex = 5;
@@ -1877,22 +1757,10 @@ namespace DayZeEditor
             this.Tier6CB.UseVisualStyleBackColor = true;
             this.Tier6CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
             // 
-            // Tier10CB
-            // 
-            this.Tier10CB.AutoSize = true;
-            this.Tier10CB.Location = new System.Drawing.Point(96, 49);
-            this.Tier10CB.Name = "Tier10CB";
-            this.Tier10CB.Size = new System.Drawing.Size(59, 17);
-            this.Tier10CB.TabIndex = 9;
-            this.Tier10CB.Tag = "Tier10";
-            this.Tier10CB.Text = "Tier 10";
-            this.Tier10CB.UseVisualStyleBackColor = true;
-            this.Tier10CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
-            // 
             // Tier7CB
             // 
             this.Tier7CB.AutoSize = true;
-            this.Tier7CB.Location = new System.Drawing.Point(7, 141);
+            this.Tier7CB.Location = new System.Drawing.Point(62, 3);
             this.Tier7CB.Name = "Tier7CB";
             this.Tier7CB.Size = new System.Drawing.Size(53, 17);
             this.Tier7CB.TabIndex = 6;
@@ -1901,10 +1769,22 @@ namespace DayZeEditor
             this.Tier7CB.UseVisualStyleBackColor = true;
             this.Tier7CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
             // 
+            // Tier8CB
+            // 
+            this.Tier8CB.AutoSize = true;
+            this.Tier8CB.Location = new System.Drawing.Point(62, 26);
+            this.Tier8CB.Name = "Tier8CB";
+            this.Tier8CB.Size = new System.Drawing.Size(53, 17);
+            this.Tier8CB.TabIndex = 7;
+            this.Tier8CB.Tag = "Tier8";
+            this.Tier8CB.Text = "Tier 8";
+            this.Tier8CB.UseVisualStyleBackColor = true;
+            this.Tier8CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
+            // 
             // Tier9CB
             // 
             this.Tier9CB.AutoSize = true;
-            this.Tier9CB.Location = new System.Drawing.Point(96, 26);
+            this.Tier9CB.Location = new System.Drawing.Point(62, 49);
             this.Tier9CB.Name = "Tier9CB";
             this.Tier9CB.Size = new System.Drawing.Size(53, 17);
             this.Tier9CB.TabIndex = 8;
@@ -1913,17 +1793,149 @@ namespace DayZeEditor
             this.Tier9CB.UseVisualStyleBackColor = true;
             this.Tier9CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
             // 
-            // Tier8CB
+            // Tier10CB
             // 
-            this.Tier8CB.AutoSize = true;
-            this.Tier8CB.Location = new System.Drawing.Point(96, 3);
-            this.Tier8CB.Name = "Tier8CB";
-            this.Tier8CB.Size = new System.Drawing.Size(53, 17);
-            this.Tier8CB.TabIndex = 7;
-            this.Tier8CB.Tag = "Tier8";
-            this.Tier8CB.Text = "Tier 8";
-            this.Tier8CB.UseVisualStyleBackColor = true;
-            this.Tier8CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
+            this.Tier10CB.AutoSize = true;
+            this.Tier10CB.Location = new System.Drawing.Point(62, 72);
+            this.Tier10CB.Name = "Tier10CB";
+            this.Tier10CB.Size = new System.Drawing.Size(59, 17);
+            this.Tier10CB.TabIndex = 9;
+            this.Tier10CB.Tag = "Tier10";
+            this.Tier10CB.Text = "Tier 10";
+            this.Tier10CB.UseVisualStyleBackColor = true;
+            this.Tier10CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
+            // 
+            // Tier11CB
+            // 
+            this.Tier11CB.AutoSize = true;
+            this.Tier11CB.Location = new System.Drawing.Point(62, 95);
+            this.Tier11CB.Name = "Tier11CB";
+            this.Tier11CB.Size = new System.Drawing.Size(59, 17);
+            this.Tier11CB.TabIndex = 10;
+            this.Tier11CB.Tag = "Tier11";
+            this.Tier11CB.Text = "Tier 11";
+            this.Tier11CB.UseVisualStyleBackColor = true;
+            this.Tier11CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
+            // 
+            // Tier12CB
+            // 
+            this.Tier12CB.AutoSize = true;
+            this.Tier12CB.Location = new System.Drawing.Point(62, 118);
+            this.Tier12CB.Name = "Tier12CB";
+            this.Tier12CB.Size = new System.Drawing.Size(59, 17);
+            this.Tier12CB.TabIndex = 11;
+            this.Tier12CB.Tag = "Tier12";
+            this.Tier12CB.Text = "Tier 12";
+            this.Tier12CB.UseVisualStyleBackColor = true;
+            this.Tier12CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
+            // 
+            // Tier13CB
+            // 
+            this.Tier13CB.AutoSize = true;
+            this.Tier13CB.Location = new System.Drawing.Point(127, 3);
+            this.Tier13CB.Name = "Tier13CB";
+            this.Tier13CB.Size = new System.Drawing.Size(59, 17);
+            this.Tier13CB.TabIndex = 12;
+            this.Tier13CB.Tag = "Tier13";
+            this.Tier13CB.Text = "Tier 13";
+            this.Tier13CB.UseVisualStyleBackColor = true;
+            this.Tier13CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
+            // 
+            // Tier14CB
+            // 
+            this.Tier14CB.AutoSize = true;
+            this.Tier14CB.Location = new System.Drawing.Point(127, 26);
+            this.Tier14CB.Name = "Tier14CB";
+            this.Tier14CB.Size = new System.Drawing.Size(59, 17);
+            this.Tier14CB.TabIndex = 13;
+            this.Tier14CB.Tag = "Tier14";
+            this.Tier14CB.Text = "Tier 14";
+            this.Tier14CB.UseVisualStyleBackColor = true;
+            this.Tier14CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
+            // 
+            // Tier15CB
+            // 
+            this.Tier15CB.AutoSize = true;
+            this.Tier15CB.Location = new System.Drawing.Point(127, 49);
+            this.Tier15CB.Name = "Tier15CB";
+            this.Tier15CB.Size = new System.Drawing.Size(59, 17);
+            this.Tier15CB.TabIndex = 14;
+            this.Tier15CB.Tag = "Tier15";
+            this.Tier15CB.Text = "Tier 15";
+            this.Tier15CB.UseVisualStyleBackColor = true;
+            this.Tier15CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
+            // 
+            // Tier16CB
+            // 
+            this.Tier16CB.AutoSize = true;
+            this.Tier16CB.Location = new System.Drawing.Point(127, 72);
+            this.Tier16CB.Name = "Tier16CB";
+            this.Tier16CB.Size = new System.Drawing.Size(59, 17);
+            this.Tier16CB.TabIndex = 15;
+            this.Tier16CB.Tag = "Tier16";
+            this.Tier16CB.Text = "Tier 16";
+            this.Tier16CB.UseVisualStyleBackColor = true;
+            this.Tier16CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
+            // 
+            // Tier17CB
+            // 
+            this.Tier17CB.AutoSize = true;
+            this.Tier17CB.Location = new System.Drawing.Point(127, 95);
+            this.Tier17CB.Name = "Tier17CB";
+            this.Tier17CB.Size = new System.Drawing.Size(59, 17);
+            this.Tier17CB.TabIndex = 16;
+            this.Tier17CB.Tag = "Tier17";
+            this.Tier17CB.Text = "Tier 17";
+            this.Tier17CB.UseVisualStyleBackColor = true;
+            this.Tier17CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
+            // 
+            // Tier18CB
+            // 
+            this.Tier18CB.AutoSize = true;
+            this.Tier18CB.Location = new System.Drawing.Point(127, 118);
+            this.Tier18CB.Name = "Tier18CB";
+            this.Tier18CB.Size = new System.Drawing.Size(59, 17);
+            this.Tier18CB.TabIndex = 17;
+            this.Tier18CB.Tag = "Tier18";
+            this.Tier18CB.Text = "Tier 18";
+            this.Tier18CB.UseVisualStyleBackColor = true;
+            this.Tier18CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
+            // 
+            // Tier19CB
+            // 
+            this.Tier19CB.AutoSize = true;
+            this.Tier19CB.Location = new System.Drawing.Point(192, 3);
+            this.Tier19CB.Name = "Tier19CB";
+            this.Tier19CB.Size = new System.Drawing.Size(59, 17);
+            this.Tier19CB.TabIndex = 18;
+            this.Tier19CB.Tag = "Tier19";
+            this.Tier19CB.Text = "Tier 19";
+            this.Tier19CB.UseVisualStyleBackColor = true;
+            this.Tier19CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
+            // 
+            // Tier20CB
+            // 
+            this.Tier20CB.AutoSize = true;
+            this.Tier20CB.Location = new System.Drawing.Point(192, 26);
+            this.Tier20CB.Name = "Tier20CB";
+            this.Tier20CB.Size = new System.Drawing.Size(59, 17);
+            this.Tier20CB.TabIndex = 19;
+            this.Tier20CB.Tag = "Tier20";
+            this.Tier20CB.Text = "Tier 20";
+            this.Tier20CB.UseVisualStyleBackColor = true;
+            this.Tier20CB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
+            // 
+            // UniqueCB
+            // 
+            this.UniqueCB.AutoSize = true;
+            this.UniqueCB.Location = new System.Drawing.Point(192, 49);
+            this.UniqueCB.Name = "UniqueCB";
+            this.UniqueCB.Size = new System.Drawing.Size(60, 17);
+            this.UniqueCB.TabIndex = 20;
+            this.UniqueCB.Tag = "Unique";
+            this.UniqueCB.Text = "Unique";
+            this.UniqueCB.UseVisualStyleBackColor = true;
+            this.UniqueCB.CheckedChanged += new System.EventHandler(this.TierCheckBoxchanged);
             // 
             // UserdefinitionsTP
             // 
@@ -1961,10 +1973,10 @@ namespace DayZeEditor
             this.TierUCB.AutoSize = true;
             this.TierUCB.Location = new System.Drawing.Point(174, 140);
             this.TierUCB.Name = "TierUCB";
-            this.TierUCB.Size = new System.Drawing.Size(59, 17);
+            this.TierUCB.Size = new System.Drawing.Size(60, 17);
             this.TierUCB.TabIndex = 35;
-            this.TierUCB.Tag = "Tier21";
-            this.TierUCB.Text = "Tier 21";
+            this.TierUCB.Tag = "Unique";
+            this.TierUCB.Text = "Unique";
             this.TierUCB.UseVisualStyleBackColor = true;
             this.TierUCB.CheckedChanged += new System.EventHandler(this.UserdefiniedTiersChanged);
             // 
@@ -2566,7 +2578,7 @@ namespace DayZeEditor
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton2.Size = new System.Drawing.Size(62, 42);
             this.toolStripButton2.Text = "Find Next";
             this.toolStripButton2.Visible = false;
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
@@ -3909,10 +3921,10 @@ namespace DayZeEditor
             this.checkBox54.AutoSize = true;
             this.checkBox54.Location = new System.Drawing.Point(174, 140);
             this.checkBox54.Name = "checkBox54";
-            this.checkBox54.Size = new System.Drawing.Size(59, 17);
+            this.checkBox54.Size = new System.Drawing.Size(60, 17);
             this.checkBox54.TabIndex = 40;
-            this.checkBox54.Tag = "Tier21";
-            this.checkBox54.Text = "Tier 21";
+            this.checkBox54.Tag = "Unique";
+            this.checkBox54.Text = "Unique";
             this.checkBox54.UseVisualStyleBackColor = true;
             // 
             // checkBox55
@@ -4171,10 +4183,10 @@ namespace DayZeEditor
             this.checkBox28.AutoSize = true;
             this.checkBox28.Location = new System.Drawing.Point(174, 140);
             this.checkBox28.Name = "checkBox28";
-            this.checkBox28.Size = new System.Drawing.Size(59, 17);
+            this.checkBox28.Size = new System.Drawing.Size(60, 17);
             this.checkBox28.TabIndex = 56;
-            this.checkBox28.Tag = "Tier21";
-            this.checkBox28.Text = "Tier 21";
+            this.checkBox28.Tag = "Unique";
+            this.checkBox28.Text = "Unique";
             this.checkBox28.UseVisualStyleBackColor = true;
             // 
             // checkBox29
@@ -10273,7 +10285,6 @@ namespace DayZeEditor
             this.tabPage20.Size = new System.Drawing.Size(1218, 575);
             this.tabPage20.TabIndex = 11;
             this.tabPage20.Text = "EventSpawns";
-            this.tabPage20.Click += new System.EventHandler(this.tabPage20_Click);
             // 
             // darkLabel26
             // 
@@ -10661,7 +10672,8 @@ namespace DayZeEditor
             this.TiersGB.ResumeLayout(false);
             this.tabControl3.ResumeLayout(false);
             this.SetdefinitionsTP.ResumeLayout(false);
-            this.SetdefinitionsTP.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.UserdefinitionsTP.ResumeLayout(false);
             this.UserdefinitionsTP.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -11232,7 +11244,7 @@ namespace DayZeEditor
         private System.Windows.Forms.TabControl tabControl12;
         private System.Windows.Forms.TabPage tabPage9;
         private System.Windows.Forms.ListBox listBox6;
-        private System.Windows.Forms.CheckBox Tier21CB;
+        private System.Windows.Forms.CheckBox UniqueCB;
         private System.Windows.Forms.CheckBox Tier20CB;
         private System.Windows.Forms.CheckBox Tier19CB;
         private System.Windows.Forms.CheckBox Tier18CB;
@@ -11724,5 +11736,6 @@ namespace DayZeEditor
         private System.Windows.Forms.Label label120;
         private System.Windows.Forms.ComboBox SecondaryCB;
         private DarkUI.Controls.DarkButton darkButton60;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
