@@ -229,7 +229,7 @@ namespace DayZeLib
     }
     public class Categories
     {
-        public int m_Version { get; set; } //current version 8
+        public int m_Version { get; set; } //current version 9
         public string DisplayName { get; set; }
         public string Icon { get; set; }
         public string Color { get; set; }
@@ -267,13 +267,13 @@ namespace DayZeLib
         }
         public marketItem getitem(string name)
         {
-            if (Items.Any(x => x.ClassName.ToLower() == name))
+            if (Items.Any(x => x.ClassName.ToLower() == name.ToLower()))
             {
-                return Items.First(x => x.ClassName.ToLower() == name);
+                return Items.First(x => x.ClassName.ToLower() == name.ToLower());
             }
-            else if (Items.Any(x => x.Variants.Contains(name)))
+            else if (Items.Any(x => x.Variants.Contains(name.ToLower())))
             {
-                return Items.First(x => x.Variants.Contains(name));
+                return Items.First(x => x.Variants.Contains(name.ToLower()));
             }
             else
                 return null;

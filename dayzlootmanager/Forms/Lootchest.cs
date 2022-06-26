@@ -92,6 +92,7 @@ namespace DayZeEditor
 
             checkBox1.Checked = LootChestTable.EnableDebug == 0 ? false : true;
             DeleteLogsCB.Checked = LootChestTable.DeleteLogs == 0 ? false : true ;
+            checkBox2.Checked = LootChestTable.RandomQuantity == 0 ? false : true;
             MaxMagsNUD.Value = LootChestTable.MaxSpareMags;
 
             LootChestsLocationsLB.DisplayMember = "DisplayName";
@@ -716,6 +717,12 @@ namespace DayZeEditor
             LootChestTable.DeleteLogs = DeleteLogsCB.Checked == false ? 0 : 1;
             LootChestTable.isDirty = true;
         }
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            LootChestTable.RandomQuantity = checkBox2.Checked == false ? 0 : 1;
+            LootChestTable.isDirty = true;
+        }
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -948,6 +955,7 @@ namespace DayZeEditor
             currentLootchestTool.desc = ToolsNameDescTB.Text + "|" + ToolsNameDescTB.Text;
             LootChestTools.isDirty = true;
         }
+
 
 
     }

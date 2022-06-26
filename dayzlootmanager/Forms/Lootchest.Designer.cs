@@ -39,6 +39,7 @@ namespace DayZeEditor
             this.LootChestsLocationsLB = new System.Windows.Forms.ListBox();
             this.darkLabel1 = new DarkUI.Controls.DarkLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.LightCB = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.darkButton28 = new DarkUI.Controls.DarkButton();
             this.darkButton24 = new DarkUI.Controls.DarkButton();
@@ -60,6 +61,9 @@ namespace DayZeEditor
             this.nameTB = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.darkLabel22 = new DarkUI.Controls.DarkLabel();
+            this.MaxMagsNUD = new System.Windows.Forms.NumericUpDown();
+            this.DeleteLogsCB = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.darkLabel20 = new DarkUI.Controls.DarkLabel();
@@ -117,6 +121,9 @@ namespace DayZeEditor
             this.LCPredefinedWeaponsLB = new System.Windows.Forms.ListBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.ToolsNameDescTB = new System.Windows.Forms.TextBox();
+            this.darkLabel21 = new DarkUI.Controls.DarkLabel();
+            this.ToolDescDescTB = new System.Windows.Forms.TextBox();
             this.darkLabel19 = new DarkUI.Controls.DarkLabel();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.darkLabel17 = new DarkUI.Controls.DarkLabel();
@@ -137,19 +144,14 @@ namespace DayZeEditor
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.darkLabel21 = new DarkUI.Controls.DarkLabel();
-            this.ToolDescDescTB = new System.Windows.Forms.TextBox();
-            this.ToolsNameDescTB = new System.Windows.Forms.TextBox();
-            this.LightCB = new System.Windows.Forms.CheckBox();
-            this.DeleteLogsCB = new System.Windows.Forms.CheckBox();
-            this.darkLabel22 = new DarkUI.Controls.DarkLabel();
-            this.MaxMagsNUD = new System.Windows.Forms.NumericUpDown();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LootRandomizationNUD)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberNUD)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxMagsNUD)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.posZRNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.posYRNUD)).BeginInit();
@@ -167,7 +169,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.darkToolStrip23.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MaxMagsNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -244,9 +245,9 @@ namespace DayZeEditor
             this.LootChestsLocationsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.LootChestsLocationsLB.ForeColor = System.Drawing.SystemColors.Control;
             this.LootChestsLocationsLB.FormattingEnabled = true;
-            this.LootChestsLocationsLB.Location = new System.Drawing.Point(6, 81);
+            this.LootChestsLocationsLB.Location = new System.Drawing.Point(6, 107);
             this.LootChestsLocationsLB.Name = "LootChestsLocationsLB";
-            this.LootChestsLocationsLB.Size = new System.Drawing.Size(226, 420);
+            this.LootChestsLocationsLB.Size = new System.Drawing.Size(226, 394);
             this.LootChestsLocationsLB.TabIndex = 89;
             this.LootChestsLocationsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.LootChestsLocationsLB.SelectedIndexChanged += new System.EventHandler(this.LootChestsLocationsLB_SelectedIndexChanged);
@@ -255,7 +256,7 @@ namespace DayZeEditor
             // 
             this.darkLabel1.AutoSize = true;
             this.darkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel1.Location = new System.Drawing.Point(8, 63);
+            this.darkLabel1.Location = new System.Drawing.Point(8, 91);
             this.darkLabel1.Name = "darkLabel1";
             this.darkLabel1.Size = new System.Drawing.Size(112, 13);
             this.darkLabel1.TabIndex = 90;
@@ -294,6 +295,19 @@ namespace DayZeEditor
             this.groupBox1.TabIndex = 91;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Loot chests";
+            // 
+            // LightCB
+            // 
+            this.LightCB.AutoSize = true;
+            this.LightCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.LightCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.LightCB.Location = new System.Drawing.Point(6, 71);
+            this.LightCB.Name = "LightCB";
+            this.LightCB.Size = new System.Drawing.Size(100, 17);
+            this.LightCB.TabIndex = 134;
+            this.LightCB.Text = "Light                 ";
+            this.LightCB.UseVisualStyleBackColor = true;
+            this.LightCB.CheckedChanged += new System.EventHandler(this.LightCB_CheckedChanged);
             // 
             // panel1
             // 
@@ -525,6 +539,7 @@ namespace DayZeEditor
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage1.Controls.Add(this.checkBox2);
             this.tabPage1.Controls.Add(this.darkLabel22);
             this.tabPage1.Controls.Add(this.MaxMagsNUD);
             this.tabPage1.Controls.Add(this.DeleteLogsCB);
@@ -541,6 +556,45 @@ namespace DayZeEditor
             this.tabPage1.Size = new System.Drawing.Size(1001, 544);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
+            // 
+            // darkLabel22
+            // 
+            this.darkLabel22.AutoSize = true;
+            this.darkLabel22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel22.Location = new System.Drawing.Point(8, 37);
+            this.darkLabel22.Name = "darkLabel22";
+            this.darkLabel22.Size = new System.Drawing.Size(56, 13);
+            this.darkLabel22.TabIndex = 123;
+            this.darkLabel22.Text = "Max Mags";
+            // 
+            // MaxMagsNUD
+            // 
+            this.MaxMagsNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MaxMagsNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.MaxMagsNUD.Location = new System.Drawing.Point(140, 35);
+            this.MaxMagsNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.MaxMagsNUD.Name = "MaxMagsNUD";
+            this.MaxMagsNUD.Size = new System.Drawing.Size(71, 20);
+            this.MaxMagsNUD.TabIndex = 122;
+            this.MaxMagsNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MaxMagsNUD.ValueChanged += new System.EventHandler(this.MaxMagsNUD_ValueChanged);
+            // 
+            // DeleteLogsCB
+            // 
+            this.DeleteLogsCB.AutoSize = true;
+            this.DeleteLogsCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.DeleteLogsCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.DeleteLogsCB.Location = new System.Drawing.Point(128, 12);
+            this.DeleteLogsCB.Name = "DeleteLogsCB";
+            this.DeleteLogsCB.Size = new System.Drawing.Size(83, 17);
+            this.DeleteLogsCB.TabIndex = 121;
+            this.DeleteLogsCB.Text = "Delete Logs";
+            this.DeleteLogsCB.UseVisualStyleBackColor = true;
+            this.DeleteLogsCB.CheckedChanged += new System.EventHandler(this.DeleteLogsCB_CheckedChanged);
             // 
             // checkBox1
             // 
@@ -1294,6 +1348,37 @@ namespace DayZeEditor
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Tools";
             // 
+            // ToolsNameDescTB
+            // 
+            this.ToolsNameDescTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ToolsNameDescTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ToolsNameDescTB.Location = new System.Drawing.Point(93, 97);
+            this.ToolsNameDescTB.Name = "ToolsNameDescTB";
+            this.ToolsNameDescTB.Size = new System.Drawing.Size(255, 20);
+            this.ToolsNameDescTB.TabIndex = 141;
+            this.ToolsNameDescTB.TextChanged += new System.EventHandler(this.ToolsNameDescTB_TextChanged);
+            // 
+            // darkLabel21
+            // 
+            this.darkLabel21.AutoSize = true;
+            this.darkLabel21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel21.Location = new System.Drawing.Point(7, 100);
+            this.darkLabel21.Name = "darkLabel21";
+            this.darkLabel21.Size = new System.Drawing.Size(60, 13);
+            this.darkLabel21.TabIndex = 140;
+            this.darkLabel21.Text = "Description";
+            // 
+            // ToolDescDescTB
+            // 
+            this.ToolDescDescTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ToolDescDescTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ToolDescDescTB.Location = new System.Drawing.Point(93, 124);
+            this.ToolDescDescTB.Multiline = true;
+            this.ToolDescDescTB.Name = "ToolDescDescTB";
+            this.ToolDescDescTB.Size = new System.Drawing.Size(255, 40);
+            this.ToolDescDescTB.TabIndex = 139;
+            this.ToolDescDescTB.TextChanged += new System.EventHandler(this.ToolDescDescTB_TextChanged);
+            // 
             // darkLabel19
             // 
             this.darkLabel19.AutoSize = true;
@@ -1516,88 +1601,18 @@ namespace DayZeEditor
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
             // 
-            // darkLabel21
+            // checkBox2
             // 
-            this.darkLabel21.AutoSize = true;
-            this.darkLabel21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel21.Location = new System.Drawing.Point(7, 100);
-            this.darkLabel21.Name = "darkLabel21";
-            this.darkLabel21.Size = new System.Drawing.Size(60, 13);
-            this.darkLabel21.TabIndex = 140;
-            this.darkLabel21.Text = "Description";
-            // 
-            // ToolDescDescTB
-            // 
-            this.ToolDescDescTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ToolDescDescTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ToolDescDescTB.Location = new System.Drawing.Point(93, 124);
-            this.ToolDescDescTB.Multiline = true;
-            this.ToolDescDescTB.Name = "ToolDescDescTB";
-            this.ToolDescDescTB.Size = new System.Drawing.Size(255, 40);
-            this.ToolDescDescTB.TabIndex = 139;
-            this.ToolDescDescTB.TextChanged += new System.EventHandler(this.ToolDescDescTB_TextChanged);
-            // 
-            // ToolsNameDescTB
-            // 
-            this.ToolsNameDescTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ToolsNameDescTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ToolsNameDescTB.Location = new System.Drawing.Point(93, 97);
-            this.ToolsNameDescTB.Name = "ToolsNameDescTB";
-            this.ToolsNameDescTB.Size = new System.Drawing.Size(255, 20);
-            this.ToolsNameDescTB.TabIndex = 141;
-            this.ToolsNameDescTB.TextChanged += new System.EventHandler(this.ToolsNameDescTB_TextChanged);
-            // 
-            // LightCB
-            // 
-            this.LightCB.AutoSize = true;
-            this.LightCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.LightCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.LightCB.Location = new System.Drawing.Point(6, 71);
-            this.LightCB.Name = "LightCB";
-            this.LightCB.Size = new System.Drawing.Size(100, 17);
-            this.LightCB.TabIndex = 134;
-            this.LightCB.Text = "Light                 ";
-            this.LightCB.UseVisualStyleBackColor = true;
-            this.LightCB.CheckedChanged += new System.EventHandler(this.LightCB_CheckedChanged);
-            // 
-            // DeleteLogsCB
-            // 
-            this.DeleteLogsCB.AutoSize = true;
-            this.DeleteLogsCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.DeleteLogsCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.DeleteLogsCB.Location = new System.Drawing.Point(128, 12);
-            this.DeleteLogsCB.Name = "DeleteLogsCB";
-            this.DeleteLogsCB.Size = new System.Drawing.Size(83, 17);
-            this.DeleteLogsCB.TabIndex = 121;
-            this.DeleteLogsCB.Text = "Delete Logs";
-            this.DeleteLogsCB.UseVisualStyleBackColor = true;
-            this.DeleteLogsCB.CheckedChanged += new System.EventHandler(this.DeleteLogsCB_CheckedChanged);
-            // 
-            // darkLabel22
-            // 
-            this.darkLabel22.AutoSize = true;
-            this.darkLabel22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel22.Location = new System.Drawing.Point(8, 37);
-            this.darkLabel22.Name = "darkLabel22";
-            this.darkLabel22.Size = new System.Drawing.Size(56, 13);
-            this.darkLabel22.TabIndex = 123;
-            this.darkLabel22.Text = "Max Mags";
-            // 
-            // MaxMagsNUD
-            // 
-            this.MaxMagsNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.MaxMagsNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.MaxMagsNUD.Location = new System.Drawing.Point(140, 35);
-            this.MaxMagsNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.MaxMagsNUD.Name = "MaxMagsNUD";
-            this.MaxMagsNUD.Size = new System.Drawing.Size(71, 20);
-            this.MaxMagsNUD.TabIndex = 122;
-            this.MaxMagsNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.MaxMagsNUD.ValueChanged += new System.EventHandler(this.MaxMagsNUD_ValueChanged);
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBox2.ForeColor = System.Drawing.SystemColors.Control;
+            this.checkBox2.Location = new System.Drawing.Point(103, 63);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(108, 17);
+            this.checkBox2.TabIndex = 124;
+            this.checkBox2.Text = "Random Quantity";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // Lootchest
             // 
@@ -1621,6 +1636,7 @@ namespace DayZeEditor
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxMagsNUD)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.posZRNUD)).EndInit();
@@ -1646,7 +1662,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.darkToolStrip23.ResumeLayout(false);
             this.darkToolStrip23.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MaxMagsNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1766,5 +1781,6 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkLabel darkLabel22;
         private System.Windows.Forms.NumericUpDown MaxMagsNUD;
         private System.Windows.Forms.CheckBox DeleteLogsCB;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }

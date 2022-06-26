@@ -41,6 +41,7 @@ namespace DayZeLib
         public int EnableDebug { get; set; }
         public int DeleteLogs { get; set; }
         public int MaxSpareMags { get; set; }
+        public int RandomQuantity { get; set; }
         public BindingList<LootChestsLocations> LootChestsLocations { get; set; }
         public BindingList<LCPredefinedWeapons> LCPredefinedWeapons { get; set; }
         public BindingList<LootCategories> LootCategories { get; set; }

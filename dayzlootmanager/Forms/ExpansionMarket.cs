@@ -3084,6 +3084,32 @@ namespace DayZeEditor
             }
         }
 
-
+        private void checkForItemsNotInTypesFilesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (Categories cats in MarketCats.CatList)
+            {
+                foreach(marketItem item in cats.Items)
+                {
+                    item.ClassName = currentproject.getcorrectclassamefromtypes(item.ClassName).ToLower();
+                    if(item.ClassName.ToLower().StartsWith("*** missing item type"))
+                    {
+                        sb.Append(cats.DisplayName + " contains and item not in the types : " + item.ClassName + Environment.NewLine);
+                    }
+                    if (item.Variants.Count > 0)
+                    {
+                        for (int i = 0; i < item.Variants.Count; i++)
+                        {
+                            item.Variants[i] = currentproject.getcorrectclassamefromtypes(item.Variants[i]).ToLower();
+                            if (item.Variants[i].ToLower().StartsWith("*** missing item type"))
+                            {
+                                sb.Append(cats.DisplayName + " contains and item which has varients not in the types : " + item.ClassName + " : " + item.Variants[i] + Environment.NewLine);
+                            }
+                        }
+                    }
+                }
+            }
+            File.WriteAllText(currentproject.projectFullName + "//missing_market_types.txt", sb.ToString());
+        }
     }
 }
