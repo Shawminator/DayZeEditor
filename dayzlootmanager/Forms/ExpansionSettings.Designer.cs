@@ -212,6 +212,7 @@ namespace DayZeEditor
             this.ShowPartyMember3DMarkersCB = new System.Windows.Forms.CheckBox();
             this.UseWholeMapForInviteListCB = new System.Windows.Forms.CheckBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.HardlineCB = new System.Windows.Forms.CheckBox();
             this.AIPatrolCB = new System.Windows.Forms.CheckBox();
             this.AIGeneralCB = new System.Windows.Forms.CheckBox();
             this.AICrashPatrolCB = new System.Windows.Forms.CheckBox();
@@ -1845,7 +1846,7 @@ namespace DayZeEditor
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.groupBox2.Location = new System.Drawing.Point(209, 100);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(260, 155);
+            this.groupBox2.Size = new System.Drawing.Size(260, 121);
             this.groupBox2.TabIndex = 92;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Attachments";
@@ -1887,7 +1888,7 @@ namespace DayZeEditor
             // darkButton8
             // 
             this.darkButton8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton8.Location = new System.Drawing.Point(209, 257);
+            this.darkButton8.Location = new System.Drawing.Point(209, 223);
             this.darkButton8.Name = "darkButton8";
             this.darkButton8.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton8.Size = new System.Drawing.Size(261, 23);
@@ -1898,7 +1899,7 @@ namespace DayZeEditor
             // darkButton2
             // 
             this.darkButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton2.Location = new System.Drawing.Point(9, 257);
+            this.darkButton2.Location = new System.Drawing.Point(9, 223);
             this.darkButton2.Name = "darkButton2";
             this.darkButton2.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton2.Size = new System.Drawing.Size(194, 23);
@@ -1957,7 +1958,7 @@ namespace DayZeEditor
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(6, 3);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(194, 160);
+            this.listBox1.Size = new System.Drawing.Size(194, 108);
             this.listBox1.TabIndex = 0;
             this.listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
@@ -3524,6 +3525,7 @@ namespace DayZeEditor
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.HardlineCB);
             this.groupBox8.Controls.Add(this.AIPatrolCB);
             this.groupBox8.Controls.Add(this.AIGeneralCB);
             this.groupBox8.Controls.Add(this.AICrashPatrolCB);
@@ -3551,6 +3553,17 @@ namespace DayZeEditor
             this.groupBox8.TabIndex = 1;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Logs";
+            // 
+            // HardlineCB
+            // 
+            this.HardlineCB.AutoSize = true;
+            this.HardlineCB.Location = new System.Drawing.Point(187, 228);
+            this.HardlineCB.Name = "HardlineCB";
+            this.HardlineCB.Size = new System.Drawing.Size(65, 17);
+            this.HardlineCB.TabIndex = 121;
+            this.HardlineCB.Text = "Hardline";
+            this.HardlineCB.UseVisualStyleBackColor = true;
+            this.HardlineCB.CheckedChanged += new System.EventHandler(this.LogSettingsCB_CheckedChanged);
             // 
             // AIPatrolCB
             // 
@@ -3614,7 +3627,7 @@ namespace DayZeEditor
             // LogToADMCB
             // 
             this.LogToADMCB.AutoSize = true;
-            this.LogToADMCB.Location = new System.Drawing.Point(155, 228);
+            this.LogToADMCB.Location = new System.Drawing.Point(94, 228);
             this.LogToADMCB.Name = "LogToADMCB";
             this.LogToADMCB.Size = new System.Drawing.Size(87, 17);
             this.LogToADMCB.TabIndex = 117;
@@ -14865,5 +14878,6 @@ namespace DayZeEditor
         private System.Windows.Forms.NumericUpDown numericUpDown30;
         private DarkUI.Controls.DarkLabel darkLabel182;
         private DarkUI.Controls.DarkButton darkButton65;
+        private System.Windows.Forms.CheckBox HardlineCB;
     }
 }

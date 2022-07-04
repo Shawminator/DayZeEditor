@@ -2703,6 +2703,7 @@ namespace DayZeEditor
             LogToScriptsCB.Checked = LogSettings.LogToScripts == 1 ? true : false;
             LogToADMCB.Checked = LogSettings.LogToADM == 1 ? true : false;
             AICrashPatrolCB.Checked = LogSettings.AICrashPatrol == 1 ? true : false;
+            HardlineCB.Checked = LogSettings.Hardline == 1 ? true : false;
             useraction = true;
         }
         private void LogSettingsCB_CheckedChanged(object sender, EventArgs e)
@@ -5989,6 +5990,7 @@ namespace DayZeEditor
             VehicleSettings.DesyncInvulnerabilityTimeoutSeconds = DesyncInvulnerabilityTimeoutSecondsNUD.Value;
             VehicleSettings.isDirty = true;
         }
+
 
 
 

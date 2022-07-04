@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -13,6 +14,8 @@ namespace DayZeLib
 {
     public class TraderZones
     {
+        public const int CurrentVersion = 6;
+
         public BindingList<Zones> ZoneList { get; set; }
         public string ZonesPath { get; set; }
 
@@ -29,12 +32,28 @@ namespace DayZeLib
             Console.WriteLine(Files.Length.ToString() + " Found");
             foreach (FileInfo file in Files)
             {
+                bool savefile = false;
                 Console.WriteLine("serializing " + file.Name);
                 Zones z = JsonSerializer.Deserialize<Zones>(File.ReadAllText(file.FullName));
                 Console.WriteLine("Converting trader Item Dictionary to list");
                 z.ConvertDicttoList();
-                z.Filename = file.FullName;
+                if (System.IO.Path.GetFileNameWithoutExtension(file.FullName).Any(char.IsLower))
+                {
+                    z.Filename = System.IO.Path.GetFileNameWithoutExtension(file.FullName).ToUpper();
+                    savefile = true;
+                }
+                else
+                {
+                    z.Filename = System.IO.Path.GetFileNameWithoutExtension(file.FullName);
+                }
                 ZoneList.Add(z);
+                if (savefile)
+                {
+                    File.Delete(file.FullName);
+                    var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                    string jsonString = JsonSerializer.Serialize(z, options);
+                    File.WriteAllText(ZonesPath + "\\" + z.Filename + ".json", jsonString);
+                }
             }
         }
         public void ConvertallListstoDict()
@@ -46,11 +65,12 @@ namespace DayZeLib
         }
         public void NewTraderZone(string zonename, int mapsize)
         {
-            Zones z = new Zones(zonename);
+            string newZonename = zonename.ToUpper();
+            Zones z = new Zones(newZonename);
             z.Position = new float[] { mapsize/2, 0, mapsize/2 };
             z.isDirty = true;
-            z.Filename = ZonesPath + "\\" + z.m_ZoneName + ".json";
-            if (ZoneList.Any(x => x.m_ZoneName == zonename))
+            z.Filename = ZonesPath + "\\" + z + ".json";
+            if (ZoneList.Any(x => x.Filename == zonename))
             {
                 MessageBox.Show(zonename = " Allready in list of Zones....");
                 return;
@@ -68,13 +88,12 @@ namespace DayZeLib
         }
         public Zones GetZoneZoneName(string removeitem)
         {
-            return ZoneList.First(x => x.m_ZoneName == removeitem);
+            return ZoneList.First(x => x.m_DisplayName == removeitem);
         }
     }
     public class Zones
     {
         public int m_Version { get; set; }  //current version 5
-        public string m_ZoneName { get; set; }
         public string m_DisplayName { get; set; }
         public float[] Position { get; set; }
         public float Radius { get; set; }
@@ -91,8 +110,7 @@ namespace DayZeLib
 
         public Zones (string filename)
         {
-            m_Version = 5;
-            m_ZoneName = filename;
+            m_Version = TraderZones.CurrentVersion;
             m_DisplayName = filename;
             Position = new float[] { 0, 0, 0 };
             Radius = 1000;
@@ -103,7 +121,7 @@ namespace DayZeLib
         }
         public override string ToString()
         {
-            return m_ZoneName;
+            return m_DisplayName;
         }
         public void ConvertDicttoList()
         {

@@ -755,7 +755,7 @@ namespace DayZeEditor
             {
                 trader.ConvertToDict(MarketCats);
                 Directory.CreateDirectory(ExpansionPath + "\\Traders");
-                trader.Filename = ExpansionPath + "\\Traders\\" + ReplaceInvalidChars(trader.TraderName) + ".json";
+                trader.Filename = ExpansionPath + "\\Traders\\" + ReplaceInvalidChars(trader.Filename) + ".json";
                 var options = new JsonSerializerOptions();
                 options.WriteIndented = true;
                 options.Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping;

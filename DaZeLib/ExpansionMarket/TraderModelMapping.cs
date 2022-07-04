@@ -38,20 +38,32 @@ namespace DayZeLib
 
             }
         }
-        public void savefiles(string saveTime)
+        public void savefiles(string saveTime = null)
         {
             DirectoryInfo dinfo = new DirectoryInfo(TradermapsPath);
-            Directory.CreateDirectory(TradermapsPath + "\\Backup\\" + saveTime);
             FileInfo[] Files = dinfo.GetFiles("*.map");
-            Console.WriteLine("Getting Trader maps....");
-            Console.WriteLine(Files.Length.ToString() + " Found");
-            foreach (FileInfo file in Files)
+            if (saveTime != null)
             {
-                if (File.Exists(TradermapsPath + "\\Backup\\" + saveTime + "\\" + file.Name + ".bak"))
-                    file.MoveTo(TradermapsPath + "\\Backup\\" + saveTime + "\\" + file.Name + ".bak1");
-                else
-                    file.MoveTo(TradermapsPath + "\\Backup\\" + saveTime + "\\" + file.Name + ".bak");
+                Directory.CreateDirectory(TradermapsPath + "\\Backup\\" + saveTime);
+
+                Console.WriteLine("Getting Trader maps....");
+                Console.WriteLine(Files.Length.ToString() + " Found");
+                foreach (FileInfo file in Files)
+                {
+                    if (File.Exists(TradermapsPath + "\\Backup\\" + saveTime + "\\" + file.Name + ".bak"))
+                        file.MoveTo(TradermapsPath + "\\Backup\\" + saveTime + "\\" + file.Name + ".bak1");
+                    else
+                        file.MoveTo(TradermapsPath + "\\Backup\\" + saveTime + "\\" + file.Name + ".bak");
+                }
             }
+            else
+            {
+                foreach (FileInfo file in Files)
+                {
+                    file.Delete();
+                }
+            }
+
             List<string> mappaths = new List<string>();
             foreach (Tradermap map in maps)
             {

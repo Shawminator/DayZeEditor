@@ -161,8 +161,7 @@
   <data name="darkLabel36.Text" xml:space="preserve">
     <value>Import From .map
 This Function import a set od coord from a .map file created
-in Dayz Editor, it will set the First coord as the starting position 
-and then add the rest into the wayspoints in the order it 
+in Dayz Editor, it will set wayspoints in the order it 
 appears in the file, Double check the order is correct by 
 importing back to DayZ Editor before import to the AIPAtrolSettings.json</value>
   </data>

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace DayZeLib
 {
     public class TradersList
     {
+        public const int CurrentVersion = 8;
         public BindingList<Traders> Traderlist { get; set; }
         public string TraderPath { get; set; }
 
@@ -35,12 +37,34 @@ namespace DayZeLib
             {
                 try
                 {
+                    bool savefile = false;
                     Console.WriteLine("serializing " + file.Name);
                     Traders t = JsonSerializer.Deserialize<Traders>(File.ReadAllText(file.FullName));
-                    t.Filename = file.FullName;
+                    if (System.IO.Path.GetFileNameWithoutExtension(file.FullName).Any(char.IsLower))
+                    {
+                        t.Filename = System.IO.Path.GetFileNameWithoutExtension(file.FullName).ToUpper();
+                        savefile = true;
+                    }
+                    else
+                    {
+                        t.Filename = System.IO.Path.GetFileNameWithoutExtension(file.FullName);
+                    }
                     Console.WriteLine("Converting Stock Dictionary to list");
                     t.ConvertDictToList(marketCats);
                     Traderlist.Add(t);
+                    if (t.m_Version != CurrentVersion)
+                    {
+                        t.m_Version = CurrentVersion;
+                        savefile = true;
+                    }
+
+                    if (savefile)
+                    {
+                        File.Delete(file.FullName);
+                        var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                        string jsonString = JsonSerializer.Serialize(t, options);
+                        File.WriteAllText(TraderPath + "\\" + t.Filename + ".json", jsonString);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -89,26 +113,27 @@ namespace DayZeLib
         }
         public Traders GetTraderFromName(string name)
         {
-            return Traderlist.FirstOrDefault(x => x.TraderName == name);
+            return Traderlist.FirstOrDefault(x => x.Filename == name);
         }
         public void removeTrader(Traders removeitem)
         {
             removeitem.backupandDelete();
             Traderlist.Remove(removeitem);
         }
-        public void AddNewTrader(string tradername)
+        public void AddNewTrader(string m_fileName)
         {
-            Traders t = new Traders(tradername);
-            t.Filename = TraderPath + "\\" + tradername + ".json";
-            if (Traderlist.Any(x => x.TraderName == tradername))
+            string newFilename = m_fileName.ToUpper();
+            Traders t = new Traders(newFilename);
+            t.Filename = TraderPath + "\\" + newFilename + ".json";
+            if (Traderlist.Any(x => x.Filename == newFilename))
             {
-                MessageBox.Show(tradername = " Allready in list of traders....");
+                MessageBox.Show(newFilename = " Allready in list of traders....");
                 return;
             }
             else
             {
                 Traderlist.Add(t);
-                MessageBox.Show(tradername = " added to list of  traders....");
+                MessageBox.Show(newFilename = " added to list of  traders....");
             }
         }
         public void CheckCategories(MarketCategories marketCats)
@@ -119,8 +144,7 @@ namespace DayZeLib
     }
     public class Traders
     {
-        public int m_Version { get; set; } //current Version 7
-        public string TraderName { get; set; }
+        public int m_Version { get; set; } //current Version 8
         public string DisplayName { get; set; }
         public string TraderIcon { get; set; }
         public BindingList<string> Currencies { get; set; }
@@ -137,8 +161,7 @@ namespace DayZeLib
 
         public Traders()
         {
-            m_Version = 7;
-            TraderName = "";
+            m_Version = TradersList.CurrentVersion;
             TraderIcon = "";
             Currencies = new BindingList<string>();
             Items = new Dictionary<string, int>();
@@ -147,8 +170,7 @@ namespace DayZeLib
         }
         public Traders(string filename)
         {
-            m_Version = 7;
-            TraderName = filename;
+            m_Version = TradersList.CurrentVersion;
             DisplayName = filename;
             TraderIcon = "Questionmark";
             Currencies = new BindingList<string>();
@@ -158,7 +180,7 @@ namespace DayZeLib
         }
         public override string ToString()
         {
-            return TraderName;
+            return Filename;
         }
         public void ConvertDictToList(MarketCategories marketCats)
         {

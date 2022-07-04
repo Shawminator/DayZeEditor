@@ -14,7 +14,7 @@ namespace DayZeLib
 {
     public class MarketCategories
     {
-        public int CurrentVersion = 9;
+        public const int CurrentVersion = 9;
         public BindingList<Categories> CatList { get; set; }
         public string MarketCatsPath {get;set;}
 
@@ -86,14 +86,23 @@ namespace DayZeLib
                         if (item.MaxStockThreshold < item.MinStockThreshold)
                             MessageBox.Show(cat.DisplayName + Environment.NewLine + item.ClassName + " Has a max stock lower than the min Stock." + Environment.NewLine + "Please fix......");
                     }
-                    cat.Filename = file.FullName;
+                    if (System.IO.Path.GetFileNameWithoutExtension(file.FullName).Any(char.IsLower))
+                    {
+                        cat.Filename = System.IO.Path.GetFileNameWithoutExtension(file.FullName).ToUpper();
+                        savefile = true;
+                    }
+                    else
+                    {
+                        cat.Filename = System.IO.Path.GetFileNameWithoutExtension(file.FullName);
+                    }
                     cat.Items = new BindingList<marketItem>(new BindingList<marketItem>(cat.Items.OrderBy(x => x.ClassName).ToList()));
                     CatList.Add(cat);
                     if (savefile)
                     {
+                        File.Delete(file.FullName);
                         var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                         string jsonString = JsonSerializer.Serialize(cat, options);
-                        File.WriteAllText(cat.Filename, jsonString);
+                        File.WriteAllText(MarketCatsPath + "\\" + cat.Filename + ".json", jsonString);
                     }
                 }
                 catch(Exception ex)
@@ -245,7 +254,7 @@ namespace DayZeLib
 
         public Categories(string filename)
         {
-            m_Version = 9;
+            m_Version = MarketCategories.CurrentVersion;
             DisplayName = filename;
             Icon = "deliver";
             Color = "FBFCFEFF";
@@ -254,7 +263,7 @@ namespace DayZeLib
         }
         public Categories()
         {
-            m_Version = 9;
+            m_Version = MarketCategories.CurrentVersion;
             DisplayName = "";
             Icon = "deliver";
             Color = "FBFCFEFF";

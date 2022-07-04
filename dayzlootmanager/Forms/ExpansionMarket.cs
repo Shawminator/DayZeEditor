@@ -162,7 +162,7 @@ namespace DayZeEditor
                     PointF pP = new PointF(tm.position.X, tm.position.Z);
                     if (IsWithinCircle(pC, pP, zone.Radius))
                     {
-                        tm.Filename = Path.GetDirectoryName(tm.Filename) + "\\" + zone.m_ZoneName + ".map";
+                        tm.Filename = Path.GetDirectoryName(tm.Filename) + "\\" + zone.Filename + ".map";
                         tm.IsInAZone = true;
                     }
 
@@ -578,7 +578,14 @@ namespace DayZeEditor
             if (tradermaps.isDirty)
             {
                 tradermaps.isDirty = false;
-                tradermaps.savefiles(SaveTime);
+                if (currentproject.Createbackups)
+                {
+                    tradermaps.savefiles(SaveTime);
+                }
+                else
+                {
+                    tradermaps.savefiles();
+                }
                 midifiedfiles.Add("Al trader maps Saved.....");
             }
             foreach (Zones zones in Zones.ZoneList)
@@ -591,9 +598,9 @@ namespace DayZeEditor
                 if (currentproject.Createbackups && File.Exists(zones.Filename))
                 {
                     Directory.CreateDirectory(ZonesPath + "\\Backup\\" + SaveTime);
-                    File.Copy(zones.Filename, ZonesPath + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(zones.Filename) + ".bak", true);
+                    File.Copy(ZonesPath+ "\\" + zones.Filename + ".json", ZonesPath + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(zones.Filename) + ".bak", true);
                 }
-                File.WriteAllText(zones.Filename, jsonString);
+                File.WriteAllText(ZonesPath + "\\" + zones.Filename + ".json", jsonString);
                 midifiedfiles.Add(Path.GetFileName(zones.Filename));
 
             }
@@ -607,9 +614,9 @@ namespace DayZeEditor
                 if (currentproject.Createbackups && File.Exists(trader.Filename))
                 {
                     Directory.CreateDirectory(TradersPath + "\\Backup\\" + SaveTime);
-                    File.Copy(trader.Filename, TradersPath + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(trader.Filename) + ".bak", true);
+                    File.Copy(TradersPath + "\\" + trader.Filename, TradersPath + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(trader.Filename) + ".bak", true);
                 }
-                File.WriteAllText(trader.Filename, jsonString);
+                File.WriteAllText(TradersPath + "\\" + trader.Filename + ".json", jsonString);
                 midifiedfiles.Add(Path.GetFileName(trader.Filename));
             }
             foreach (Categories cat in MarketCats.CatList)
@@ -621,9 +628,9 @@ namespace DayZeEditor
                 if (currentproject.Createbackups && File.Exists(cat.Filename))
                 {
                     Directory.CreateDirectory(CatPath + "\\Backup\\" + SaveTime);
-                    File.Copy(cat.Filename, CatPath + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(cat.Filename) + ".bak", true);
+                    File.Copy(CatPath + "\\" + cat.Filename + ".json", CatPath + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(cat.Filename) + ".bak", true);
                 }
-                File.WriteAllText(cat.Filename, jsonString);
+                File.WriteAllText(CatPath + "\\" + cat.Filename + ".json", jsonString);
                 midifiedfiles.Add(Path.GetFileName(cat.Filename));
             }
             string message = "The Following Files were saved....\n";
@@ -755,7 +762,7 @@ namespace DayZeEditor
             if (listBox1.SelectedItems.Count < 1) return;
             currentZone = listBox1.SelectedItem as Zones;
             textBox1.Text = currentZone.m_Version.ToString();
-            textBox3.Text = currentZone.m_ZoneName;
+            textBox3.Text = currentZone.Filename;
             textBox4.Text = currentZone.m_DisplayName;
             numericUpDown1.Value = (int)currentZone.Position[0];
             numericUpDown2.Value = (int)currentZone.Position[1];
@@ -1199,7 +1206,6 @@ namespace DayZeEditor
             currentTrader = listBox2.SelectedItem as Traders;
             textBox2.Text = currentTrader.Filename;
             textBox8.Text = currentTrader.m_Version.ToString();
-            textBox7.Text = currentTrader.TraderName;
             textBox5.Text = currentTrader.DisplayName;
             textBox17.Text = currentTrader.TraderIcon;
             listBox10.DisplayMember = "Name";
@@ -1212,7 +1218,7 @@ namespace DayZeEditor
         private void Poppulatetreeview()
         {
             treeView1.Nodes.Clear();
-            MytreeNode tn = new MytreeNode(currentTrader.TraderName)
+            MytreeNode tn = new MytreeNode(currentTrader.Filename)
             {
                 Tag = "Parent"
             };
@@ -1491,7 +1497,7 @@ namespace DayZeEditor
         {
             if (MessageBox.Show("This Will Remove The All reference to this Trader, Are you sure you want to do this?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                string currentname = currentTrader.TraderName;
+                string currentname = currentTrader.Filename;
                 Traders.removeTrader(currentTrader);
                 MessageBox.Show(currentname + " has been removed from the traders list", "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 if (listBox2.Items.Count == 0)
@@ -1502,9 +1508,9 @@ namespace DayZeEditor
         }
         private void darkButton11_Click(object sender, EventArgs e)
         {
-            string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Enter Name of New Trader ", "Traders", "");
+            string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Enter Name of New Trader(No spaces in name)", "Traders", "");
             Traders.AddNewTrader(UserAnswer);
-            List<string> currencies = MarketCats.GetCatFromFileName("EXCHANGE").getallItemsasString();
+            List<string> currencies = MarketCats.GetCatFromFileName("exchange").getallItemsasString();
             listBox2.SelectedIndex = -1;
             if (listBox2.Items.Count == 0)
                 listBox2.SelectedIndex = listBox2.Items.Count - 1;
@@ -2330,7 +2336,7 @@ namespace DayZeEditor
                 int radius = ((int)zones.Radius / (currentproject.MapSize / 512)) * TraderZoneMapScale;
                 Point center = new Point(centerX, centerY);
                 Pen pen = new Pen(Color.Red);
-                if (currentZone.m_ZoneName == zones.m_ZoneName)
+                if (currentZone.Filename == zones.Filename)
                     pen.Color = Color.LimeGreen;
                 pen.Width = 2;
                 getCircle(e.Graphics, pen, center, radius);
@@ -2373,7 +2379,7 @@ namespace DayZeEditor
                     File.Copy(currentZone.Filename, ZonesPath + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(currentZone.Filename) + ".bak");
                     File.Delete(currentZone.Filename);
                 }
-                MessageBox.Show(currentZone.m_ZoneName + " has been removed from the Zone list", "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show(currentZone.Filename + " has been removed from the Zone list", "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 Zones.removeZone(currentZone);
                 if (Zones.ZoneList.Count == 0)
                     listBox1.SelectedIndex = -1;
@@ -2442,7 +2448,7 @@ namespace DayZeEditor
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
             if (pcontroll) return;
-            currentZone.m_ZoneName = textBox3.Text;
+            currentZone.Filename = textBox3.Text;
             currentZone.isDirty = true;
         }
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -2741,7 +2747,7 @@ namespace DayZeEditor
                 PointF pP = new PointF(tm.position.X, tm.position.Z);
                 if (IsWithinCircle(pC, pP, currentZone.Radius))
                 {
-                    tm.Filename = Path.GetDirectoryName(tm.Filename) + "\\" + currentZone.m_ZoneName + ".map";
+                    tm.Filename = Path.GetDirectoryName(tm.Filename) + "\\" + currentZone.Filename.ToUpper() + ".map";
                     ZoneTraders.Add(tm);
                 }
             }
@@ -2839,7 +2845,7 @@ namespace DayZeEditor
         private void darkButton22_Click(object sender, EventArgs e)
         {
             Traders newNPCTrader = listBox16.SelectedItem as Traders;
-            currentctradermap.NPCTrade = newNPCTrader.TraderName;
+            currentctradermap.NPCTrade = newNPCTrader.Filename;
             tradermaps.isDirty = true;
             SetNPCTrade();
             groupBox12.Visible = false;
@@ -2866,9 +2872,9 @@ namespace DayZeEditor
                 }
                 Tradermap newtradermap = new Tradermap
                 {
-                    Filename = tradermapsPath + "\\" + NTM.SelectedZone.m_ZoneName + ".map",
+                    Filename = tradermapsPath + "\\" + NTM.SelectedZone.Filename + ".map",
                     NPCName = NTM.NPC,
-                    NPCTrade = NTM.selectedTrader.TraderName,
+                    NPCTrade = NTM.selectedTrader.Filename,
                     position = new Vec3() { X = NTM.SelectedZone.Position[0], Y = NTM.SelectedZone.Position[1], Z = NTM.SelectedZone.Position[2] },
                     roattions = new Vec3() { X = 0, Y = 0, Z = 0 },
                     Attachments = new BindingList<string>()
@@ -2982,7 +2988,7 @@ namespace DayZeEditor
                     PointF pP = new PointF(tm.position.X, tm.position.Z);
                     if (IsWithinCircle(pC, pP, zone.Radius))
                     {
-                        tm.Filename = Path.GetDirectoryName(tm.Filename) + "\\" + zone.m_ZoneName + ".map";
+                        tm.Filename = Path.GetDirectoryName(tm.Filename) + "\\" + zone.Filename.ToUpper() + ".map";
                         tm.IsInAZone = true;
                     }
                 }

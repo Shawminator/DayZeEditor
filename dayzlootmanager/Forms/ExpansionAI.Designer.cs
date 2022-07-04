@@ -37,6 +37,11 @@ namespace DayZeEditor
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.PlayerFactionCB = new System.Windows.Forms.ComboBox();
+            this.darkButton12 = new DarkUI.Controls.DarkButton();
+            this.darkButton13 = new DarkUI.Controls.DarkButton();
+            this.darkLabel7 = new DarkUI.Controls.DarkLabel();
+            this.PlayerFactionsLB = new System.Windows.Forms.ListBox();
             this.darkLabel16 = new DarkUI.Controls.DarkLabel();
             this.darkButton2 = new DarkUI.Controls.DarkButton();
             this.darkButton1 = new DarkUI.Controls.DarkButton();
@@ -59,6 +64,10 @@ namespace DayZeEditor
             this.AIPatrolSettingsEnabledCB = new System.Windows.Forms.CheckBox();
             this.RespawnTimeNUD = new System.Windows.Forms.NumericUpDown();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.darkLabel10 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel11 = new DarkUI.Controls.DarkLabel();
+            this.CrashMaxSpreadRadiusNUD = new System.Windows.Forms.NumericUpDown();
+            this.CrashMinSpreadRadiusNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel25 = new DarkUI.Controls.DarkLabel();
             this.CrashChanceNUD = new System.Windows.Forms.NumericUpDown();
             this.CrashEventNameTB = new System.Windows.Forms.TextBox();
@@ -85,6 +94,8 @@ namespace DayZeEditor
             this.darkButton7 = new DarkUI.Controls.DarkButton();
             this.EventCrachPatrolLB = new System.Windows.Forms.ListBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.darkLabel8 = new DarkUI.Controls.DarkLabel();
+            this.StaticPatrolMaxSpreadRadiusNUD = new System.Windows.Forms.NumericUpDown();
             this.darkButton10 = new DarkUI.Controls.DarkButton();
             this.darkLabel6 = new DarkUI.Controls.DarkLabel();
             this.StaticPatrolRespawnTimeNUD = new System.Windows.Forms.NumericUpDown();
@@ -94,13 +105,9 @@ namespace DayZeEditor
             this.StaticPatrolWaypointPOSYNUD = new System.Windows.Forms.NumericUpDown();
             this.StaticPatrolWaypointPOSXNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel35 = new DarkUI.Controls.DarkLabel();
-            this.StaticPatrolStartPosZNUD = new System.Windows.Forms.NumericUpDown();
-            this.StaticPatrolStartPosYNUD = new System.Windows.Forms.NumericUpDown();
-            this.StaticPatrolStartPosXNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel67 = new DarkUI.Controls.DarkLabel();
             this.StaticPatrolWayPointsLB = new System.Windows.Forms.ListBox();
             this.darkLabel13 = new DarkUI.Controls.DarkLabel();
-            this.StaticPatrolWaypointsSpreadRadiusNUD = new System.Windows.Forms.NumericUpDown();
+            this.StaticPatrolMinSpreadRadiusNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel12 = new DarkUI.Controls.DarkLabel();
             this.StaticPatrolChanceCB = new System.Windows.Forms.NumericUpDown();
             this.StaticPatrolCanBeLotedCB = new System.Windows.Forms.CheckBox();
@@ -184,19 +191,19 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.MinDistRadiusNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RespawnTimeNUD)).BeginInit();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CrashMaxSpreadRadiusNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CrashMinSpreadRadiusNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrashChanceNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrashMaxDistRadiusNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrashMinDistRadiusNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrashNumberOfAINUD)).BeginInit();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolMaxSpreadRadiusNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolRespawnTimeNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolWaypointPOSZNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolWaypointPOSYNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolWaypointPOSXNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolStartPosZNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolStartPosYNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolStartPosXNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolWaypointsSpreadRadiusNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolMinSpreadRadiusNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolChanceCB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolMaxDistRadiusNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolMinDistRadiusNUD)).BeginInit();
@@ -288,6 +295,11 @@ namespace DayZeEditor
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.PlayerFactionCB);
+            this.groupBox1.Controls.Add(this.darkButton12);
+            this.groupBox1.Controls.Add(this.darkButton13);
+            this.groupBox1.Controls.Add(this.darkLabel7);
+            this.groupBox1.Controls.Add(this.PlayerFactionsLB);
             this.groupBox1.Controls.Add(this.darkLabel16);
             this.groupBox1.Controls.Add(this.darkButton2);
             this.groupBox1.Controls.Add(this.darkButton1);
@@ -303,10 +315,71 @@ namespace DayZeEditor
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox1.Location = new System.Drawing.Point(8, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(241, 257);
+            this.groupBox1.Size = new System.Drawing.Size(241, 454);
             this.groupBox1.TabIndex = 129;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "AI Settings";
+            // 
+            // PlayerFactionCB
+            // 
+            this.PlayerFactionCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PlayerFactionCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PlayerFactionCB.FormattingEnabled = true;
+            this.PlayerFactionCB.Items.AddRange(new object[] {
+            "WEST",
+            "EAST",
+            "INSURGENT",
+            "CIVILIAN",
+            "GAURDS",
+            "PASSIVE"});
+            this.PlayerFactionCB.Location = new System.Drawing.Point(20, 268);
+            this.PlayerFactionCB.Name = "PlayerFactionCB";
+            this.PlayerFactionCB.Size = new System.Drawing.Size(171, 21);
+            this.PlayerFactionCB.TabIndex = 134;
+            // 
+            // darkButton12
+            // 
+            this.darkButton12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton12.Location = new System.Drawing.Point(197, 380);
+            this.darkButton12.Name = "darkButton12";
+            this.darkButton12.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton12.Size = new System.Drawing.Size(23, 23);
+            this.darkButton12.TabIndex = 132;
+            this.darkButton12.Text = "-";
+            this.darkButton12.Click += new System.EventHandler(this.darkButton12_Click);
+            // 
+            // darkButton13
+            // 
+            this.darkButton13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton13.Location = new System.Drawing.Point(197, 266);
+            this.darkButton13.Name = "darkButton13";
+            this.darkButton13.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton13.Size = new System.Drawing.Size(23, 23);
+            this.darkButton13.TabIndex = 131;
+            this.darkButton13.Text = "+";
+            this.darkButton13.Click += new System.EventHandler(this.darkButton13_Click);
+            // 
+            // darkLabel7
+            // 
+            this.darkLabel7.AutoSize = true;
+            this.darkLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel7.Location = new System.Drawing.Point(22, 250);
+            this.darkLabel7.Name = "darkLabel7";
+            this.darkLabel7.Size = new System.Drawing.Size(79, 13);
+            this.darkLabel7.TabIndex = 130;
+            this.darkLabel7.Text = "Player Factions";
+            // 
+            // PlayerFactionsLB
+            // 
+            this.PlayerFactionsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PlayerFactionsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.PlayerFactionsLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PlayerFactionsLB.FormattingEnabled = true;
+            this.PlayerFactionsLB.Location = new System.Drawing.Point(20, 295);
+            this.PlayerFactionsLB.Name = "PlayerFactionsLB";
+            this.PlayerFactionsLB.Size = new System.Drawing.Size(171, 108);
+            this.PlayerFactionsLB.TabIndex = 129;
+            this.PlayerFactionsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
             // darkLabel16
             // 
@@ -390,8 +463,6 @@ namespace DayZeEditor
             // 
             // AISettingsAdminsLB
             // 
-            this.AISettingsAdminsLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.AISettingsAdminsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.AISettingsAdminsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.AISettingsAdminsLB.ForeColor = System.Drawing.SystemColors.Control;
@@ -478,7 +549,7 @@ namespace DayZeEditor
             this.groupBox3.Controls.Add(this.AIPatrolSettingsEnabledCB);
             this.groupBox3.Controls.Add(this.RespawnTimeNUD);
             this.groupBox3.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox3.Location = new System.Drawing.Point(608, 322);
+            this.groupBox3.Location = new System.Drawing.Point(608, 357);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(241, 120);
             this.groupBox3.TabIndex = 135;
@@ -588,6 +659,10 @@ namespace DayZeEditor
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.darkLabel10);
+            this.groupBox4.Controls.Add(this.darkLabel11);
+            this.groupBox4.Controls.Add(this.CrashMaxSpreadRadiusNUD);
+            this.groupBox4.Controls.Add(this.CrashMinSpreadRadiusNUD);
             this.groupBox4.Controls.Add(this.darkLabel25);
             this.groupBox4.Controls.Add(this.CrashChanceNUD);
             this.groupBox4.Controls.Add(this.CrashEventNameTB);
@@ -616,16 +691,80 @@ namespace DayZeEditor
             this.groupBox4.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox4.Location = new System.Drawing.Point(608, 8);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(594, 308);
+            this.groupBox4.Size = new System.Drawing.Size(594, 343);
             this.groupBox4.TabIndex = 134;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Crash Patrols";
+            this.groupBox4.Text = "Object Patrols";
+            // 
+            // darkLabel10
+            // 
+            this.darkLabel10.AutoSize = true;
+            this.darkLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel10.Location = new System.Drawing.Point(225, 287);
+            this.darkLabel10.Name = "darkLabel10";
+            this.darkLabel10.Size = new System.Drawing.Size(95, 13);
+            this.darkLabel10.TabIndex = 160;
+            this.darkLabel10.Text = "Max Spread radius";
+            // 
+            // darkLabel11
+            // 
+            this.darkLabel11.AutoSize = true;
+            this.darkLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel11.Location = new System.Drawing.Point(225, 261);
+            this.darkLabel11.Name = "darkLabel11";
+            this.darkLabel11.Size = new System.Drawing.Size(92, 13);
+            this.darkLabel11.TabIndex = 159;
+            this.darkLabel11.Text = "Min Spread radius";
+            // 
+            // CrashMaxSpreadRadiusNUD
+            // 
+            this.CrashMaxSpreadRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CrashMaxSpreadRadiusNUD.DecimalPlaces = 1;
+            this.CrashMaxSpreadRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.CrashMaxSpreadRadiusNUD.Location = new System.Drawing.Point(335, 285);
+            this.CrashMaxSpreadRadiusNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.CrashMaxSpreadRadiusNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.CrashMaxSpreadRadiusNUD.Name = "CrashMaxSpreadRadiusNUD";
+            this.CrashMaxSpreadRadiusNUD.Size = new System.Drawing.Size(105, 20);
+            this.CrashMaxSpreadRadiusNUD.TabIndex = 143;
+            this.CrashMaxSpreadRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.CrashMaxSpreadRadiusNUD.ValueChanged += new System.EventHandler(this.CrashMaxSpreadRadiusNUD_ValueChanged);
+            // 
+            // CrashMinSpreadRadiusNUD
+            // 
+            this.CrashMinSpreadRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CrashMinSpreadRadiusNUD.DecimalPlaces = 1;
+            this.CrashMinSpreadRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.CrashMinSpreadRadiusNUD.Location = new System.Drawing.Point(335, 259);
+            this.CrashMinSpreadRadiusNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.CrashMinSpreadRadiusNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.CrashMinSpreadRadiusNUD.Name = "CrashMinSpreadRadiusNUD";
+            this.CrashMinSpreadRadiusNUD.Size = new System.Drawing.Size(105, 20);
+            this.CrashMinSpreadRadiusNUD.TabIndex = 141;
+            this.CrashMinSpreadRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.CrashMinSpreadRadiusNUD.ValueChanged += new System.EventHandler(this.CrashMinSpreadRadiusNUD_ValueChanged);
             // 
             // darkLabel25
             // 
             this.darkLabel25.AutoSize = true;
             this.darkLabel25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel25.Location = new System.Drawing.Point(226, 259);
+            this.darkLabel25.Location = new System.Drawing.Point(226, 313);
             this.darkLabel25.Name = "darkLabel25";
             this.darkLabel25.Size = new System.Drawing.Size(44, 13);
             this.darkLabel25.TabIndex = 140;
@@ -636,7 +775,7 @@ namespace DayZeEditor
             this.CrashChanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.CrashChanceNUD.DecimalPlaces = 1;
             this.CrashChanceNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.CrashChanceNUD.Location = new System.Drawing.Point(335, 257);
+            this.CrashChanceNUD.Location = new System.Drawing.Point(335, 311);
             this.CrashChanceNUD.Maximum = new decimal(new int[] {
             1,
             0,
@@ -664,9 +803,9 @@ namespace DayZeEditor
             this.darkLabel33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.darkLabel33.Location = new System.Drawing.Point(225, 22);
             this.darkLabel33.Name = "darkLabel33";
-            this.darkLabel33.Size = new System.Drawing.Size(66, 13);
+            this.darkLabel33.Size = new System.Drawing.Size(58, 13);
             this.darkLabel33.TabIndex = 97;
-            this.darkLabel33.Text = "Event Name";
+            this.darkLabel33.Text = "Classname";
             // 
             // CrashCanBeLootedCB
             // 
@@ -921,7 +1060,7 @@ namespace DayZeEditor
             // darkButton6
             // 
             this.darkButton6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton6.Location = new System.Drawing.Point(107, 275);
+            this.darkButton6.Location = new System.Drawing.Point(107, 310);
             this.darkButton6.Name = "darkButton6";
             this.darkButton6.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton6.Size = new System.Drawing.Size(110, 23);
@@ -932,7 +1071,7 @@ namespace DayZeEditor
             // darkButton7
             // 
             this.darkButton7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton7.Location = new System.Drawing.Point(6, 275);
+            this.darkButton7.Location = new System.Drawing.Point(6, 310);
             this.darkButton7.Name = "darkButton7";
             this.darkButton7.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton7.Size = new System.Drawing.Size(95, 23);
@@ -948,13 +1087,15 @@ namespace DayZeEditor
             this.EventCrachPatrolLB.FormattingEnabled = true;
             this.EventCrachPatrolLB.Location = new System.Drawing.Point(6, 19);
             this.EventCrachPatrolLB.Name = "EventCrachPatrolLB";
-            this.EventCrachPatrolLB.Size = new System.Drawing.Size(211, 251);
+            this.EventCrachPatrolLB.Size = new System.Drawing.Size(211, 277);
             this.EventCrachPatrolLB.TabIndex = 89;
             this.EventCrachPatrolLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.EventCrachPatrolLB.SelectedIndexChanged += new System.EventHandler(this.EventCrachPatrolLB_SelectedIndexChanged);
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.darkLabel8);
+            this.groupBox5.Controls.Add(this.StaticPatrolMaxSpreadRadiusNUD);
             this.groupBox5.Controls.Add(this.darkButton10);
             this.groupBox5.Controls.Add(this.darkLabel6);
             this.groupBox5.Controls.Add(this.StaticPatrolRespawnTimeNUD);
@@ -964,13 +1105,9 @@ namespace DayZeEditor
             this.groupBox5.Controls.Add(this.StaticPatrolWaypointPOSYNUD);
             this.groupBox5.Controls.Add(this.StaticPatrolWaypointPOSXNUD);
             this.groupBox5.Controls.Add(this.darkLabel35);
-            this.groupBox5.Controls.Add(this.StaticPatrolStartPosZNUD);
-            this.groupBox5.Controls.Add(this.StaticPatrolStartPosYNUD);
-            this.groupBox5.Controls.Add(this.StaticPatrolStartPosXNUD);
-            this.groupBox5.Controls.Add(this.darkLabel67);
             this.groupBox5.Controls.Add(this.StaticPatrolWayPointsLB);
             this.groupBox5.Controls.Add(this.darkLabel13);
-            this.groupBox5.Controls.Add(this.StaticPatrolWaypointsSpreadRadiusNUD);
+            this.groupBox5.Controls.Add(this.StaticPatrolMinSpreadRadiusNUD);
             this.groupBox5.Controls.Add(this.darkLabel12);
             this.groupBox5.Controls.Add(this.StaticPatrolChanceCB);
             this.groupBox5.Controls.Add(this.StaticPatrolCanBeLotedCB);
@@ -1002,10 +1139,42 @@ namespace DayZeEditor
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Crash Patrols";
             // 
+            // darkLabel8
+            // 
+            this.darkLabel8.AutoSize = true;
+            this.darkLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel8.Location = new System.Drawing.Point(233, 261);
+            this.darkLabel8.Name = "darkLabel8";
+            this.darkLabel8.Size = new System.Drawing.Size(95, 13);
+            this.darkLabel8.TabIndex = 158;
+            this.darkLabel8.Text = "Max Spread radius";
+            // 
+            // StaticPatrolMaxSpreadRadiusNUD
+            // 
+            this.StaticPatrolMaxSpreadRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolMaxSpreadRadiusNUD.DecimalPlaces = 1;
+            this.StaticPatrolMaxSpreadRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolMaxSpreadRadiusNUD.Location = new System.Drawing.Point(342, 259);
+            this.StaticPatrolMaxSpreadRadiusNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.StaticPatrolMaxSpreadRadiusNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.StaticPatrolMaxSpreadRadiusNUD.Name = "StaticPatrolMaxSpreadRadiusNUD";
+            this.StaticPatrolMaxSpreadRadiusNUD.Size = new System.Drawing.Size(105, 20);
+            this.StaticPatrolMaxSpreadRadiusNUD.TabIndex = 157;
+            this.StaticPatrolMaxSpreadRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.StaticPatrolMaxSpreadRadiusNUD.ValueChanged += new System.EventHandler(this.StaticPatrolMaxSpreadRadiusNUD_ValueChanged);
+            // 
             // darkButton10
             // 
             this.darkButton10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton10.Location = new System.Drawing.Point(408, 314);
+            this.darkButton10.Location = new System.Drawing.Point(408, 369);
             this.darkButton10.Name = "darkButton10";
             this.darkButton10.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton10.Size = new System.Drawing.Size(163, 23);
@@ -1017,7 +1186,7 @@ namespace DayZeEditor
             // 
             this.darkLabel6.AutoSize = true;
             this.darkLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel6.Location = new System.Drawing.Point(232, 180);
+            this.darkLabel6.Location = new System.Drawing.Point(232, 313);
             this.darkLabel6.Name = "darkLabel6";
             this.darkLabel6.Size = new System.Drawing.Size(78, 13);
             this.darkLabel6.TabIndex = 155;
@@ -1028,7 +1197,7 @@ namespace DayZeEditor
             this.StaticPatrolRespawnTimeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.StaticPatrolRespawnTimeNUD.DecimalPlaces = 1;
             this.StaticPatrolRespawnTimeNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolRespawnTimeNUD.Location = new System.Drawing.Point(342, 178);
+            this.StaticPatrolRespawnTimeNUD.Location = new System.Drawing.Point(342, 311);
             this.StaticPatrolRespawnTimeNUD.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -1049,16 +1218,16 @@ namespace DayZeEditor
             // 
             this.darkLabel36.AutoSize = true;
             this.darkLabel36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel36.Location = new System.Drawing.Point(233, 340);
+            this.darkLabel36.Location = new System.Drawing.Point(233, 395);
             this.darkLabel36.Name = "darkLabel36";
-            this.darkLabel36.Size = new System.Drawing.Size(342, 78);
+            this.darkLabel36.Size = new System.Drawing.Size(342, 65);
             this.darkLabel36.TabIndex = 153;
             this.darkLabel36.Text = resources.GetString("darkLabel36.Text");
             // 
             // darkButton5
             // 
             this.darkButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton5.Location = new System.Drawing.Point(234, 314);
+            this.darkButton5.Location = new System.Drawing.Point(234, 369);
             this.darkButton5.Name = "darkButton5";
             this.darkButton5.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton5.Size = new System.Drawing.Size(159, 23);
@@ -1071,7 +1240,7 @@ namespace DayZeEditor
             this.StaticPatrolWaypointPOSZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.StaticPatrolWaypointPOSZNUD.DecimalPlaces = 6;
             this.StaticPatrolWaypointPOSZNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolWaypointPOSZNUD.Location = new System.Drawing.Point(465, 495);
+            this.StaticPatrolWaypointPOSZNUD.Location = new System.Drawing.Point(465, 492);
             this.StaticPatrolWaypointPOSZNUD.Maximum = new decimal(new int[] {
             20000,
             0,
@@ -1093,7 +1262,7 @@ namespace DayZeEditor
             this.StaticPatrolWaypointPOSYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.StaticPatrolWaypointPOSYNUD.DecimalPlaces = 6;
             this.StaticPatrolWaypointPOSYNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolWaypointPOSYNUD.Location = new System.Drawing.Point(353, 495);
+            this.StaticPatrolWaypointPOSYNUD.Location = new System.Drawing.Point(353, 492);
             this.StaticPatrolWaypointPOSYNUD.Maximum = new decimal(new int[] {
             20000,
             0,
@@ -1115,7 +1284,7 @@ namespace DayZeEditor
             this.StaticPatrolWaypointPOSXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.StaticPatrolWaypointPOSXNUD.DecimalPlaces = 6;
             this.StaticPatrolWaypointPOSXNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolWaypointPOSXNUD.Location = new System.Drawing.Point(241, 495);
+            this.StaticPatrolWaypointPOSXNUD.Location = new System.Drawing.Point(241, 492);
             this.StaticPatrolWaypointPOSXNUD.Maximum = new decimal(new int[] {
             20000,
             0,
@@ -1136,87 +1305,11 @@ namespace DayZeEditor
             // 
             this.darkLabel35.AutoSize = true;
             this.darkLabel35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel35.Location = new System.Drawing.Point(233, 479);
+            this.darkLabel35.Location = new System.Drawing.Point(233, 476);
             this.darkLabel35.Name = "darkLabel35";
             this.darkLabel35.Size = new System.Drawing.Size(52, 13);
             this.darkLabel35.TabIndex = 151;
             this.darkLabel35.Text = "Waypoint";
-            // 
-            // StaticPatrolStartPosZNUD
-            // 
-            this.StaticPatrolStartPosZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolStartPosZNUD.DecimalPlaces = 6;
-            this.StaticPatrolStartPosZNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolStartPosZNUD.Location = new System.Drawing.Point(465, 454);
-            this.StaticPatrolStartPosZNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.StaticPatrolStartPosZNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.StaticPatrolStartPosZNUD.Name = "StaticPatrolStartPosZNUD";
-            this.StaticPatrolStartPosZNUD.Size = new System.Drawing.Size(106, 20);
-            this.StaticPatrolStartPosZNUD.TabIndex = 146;
-            this.StaticPatrolStartPosZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StaticPatrolStartPosZNUD.ValueChanged += new System.EventHandler(this.StaticPatrolStartPosZNUD_ValueChanged);
-            // 
-            // StaticPatrolStartPosYNUD
-            // 
-            this.StaticPatrolStartPosYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolStartPosYNUD.DecimalPlaces = 6;
-            this.StaticPatrolStartPosYNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolStartPosYNUD.Location = new System.Drawing.Point(353, 454);
-            this.StaticPatrolStartPosYNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.StaticPatrolStartPosYNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.StaticPatrolStartPosYNUD.Name = "StaticPatrolStartPosYNUD";
-            this.StaticPatrolStartPosYNUD.Size = new System.Drawing.Size(106, 20);
-            this.StaticPatrolStartPosYNUD.TabIndex = 145;
-            this.StaticPatrolStartPosYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StaticPatrolStartPosYNUD.ValueChanged += new System.EventHandler(this.StaticPatrolStartPosYNUD_ValueChanged);
-            // 
-            // StaticPatrolStartPosXNUD
-            // 
-            this.StaticPatrolStartPosXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolStartPosXNUD.DecimalPlaces = 6;
-            this.StaticPatrolStartPosXNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolStartPosXNUD.Location = new System.Drawing.Point(241, 454);
-            this.StaticPatrolStartPosXNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.StaticPatrolStartPosXNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.StaticPatrolStartPosXNUD.Name = "StaticPatrolStartPosXNUD";
-            this.StaticPatrolStartPosXNUD.Size = new System.Drawing.Size(106, 20);
-            this.StaticPatrolStartPosXNUD.TabIndex = 144;
-            this.StaticPatrolStartPosXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StaticPatrolStartPosXNUD.ValueChanged += new System.EventHandler(this.StaticPatrolStartPosXNUD_ValueChanged);
-            // 
-            // darkLabel67
-            // 
-            this.darkLabel67.AutoSize = true;
-            this.darkLabel67.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel67.Location = new System.Drawing.Point(233, 438);
-            this.darkLabel67.Name = "darkLabel67";
-            this.darkLabel67.Size = new System.Drawing.Size(50, 13);
-            this.darkLabel67.TabIndex = 147;
-            this.darkLabel67.Text = "Start Pos";
             // 
             // StaticPatrolWayPointsLB
             // 
@@ -1235,39 +1328,39 @@ namespace DayZeEditor
             // 
             this.darkLabel13.AutoSize = true;
             this.darkLabel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel13.Location = new System.Drawing.Point(232, 280);
+            this.darkLabel13.Location = new System.Drawing.Point(233, 235);
             this.darkLabel13.Name = "darkLabel13";
-            this.darkLabel13.Size = new System.Drawing.Size(94, 26);
+            this.darkLabel13.Size = new System.Drawing.Size(92, 13);
             this.darkLabel13.TabIndex = 142;
-            this.darkLabel13.Text = "Waypoints Spread\r\nRadius";
+            this.darkLabel13.Text = "Min Spread radius";
             // 
-            // StaticPatrolWaypointsSpreadRadiusNUD
+            // StaticPatrolMinSpreadRadiusNUD
             // 
-            this.StaticPatrolWaypointsSpreadRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolWaypointsSpreadRadiusNUD.DecimalPlaces = 1;
-            this.StaticPatrolWaypointsSpreadRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolWaypointsSpreadRadiusNUD.Location = new System.Drawing.Point(342, 282);
-            this.StaticPatrolWaypointsSpreadRadiusNUD.Maximum = new decimal(new int[] {
+            this.StaticPatrolMinSpreadRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolMinSpreadRadiusNUD.DecimalPlaces = 1;
+            this.StaticPatrolMinSpreadRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolMinSpreadRadiusNUD.Location = new System.Drawing.Point(342, 233);
+            this.StaticPatrolMinSpreadRadiusNUD.Maximum = new decimal(new int[] {
             10000000,
             0,
             0,
             0});
-            this.StaticPatrolWaypointsSpreadRadiusNUD.Minimum = new decimal(new int[] {
+            this.StaticPatrolMinSpreadRadiusNUD.Minimum = new decimal(new int[] {
             10000000,
             0,
             0,
             -2147483648});
-            this.StaticPatrolWaypointsSpreadRadiusNUD.Name = "StaticPatrolWaypointsSpreadRadiusNUD";
-            this.StaticPatrolWaypointsSpreadRadiusNUD.Size = new System.Drawing.Size(105, 20);
-            this.StaticPatrolWaypointsSpreadRadiusNUD.TabIndex = 141;
-            this.StaticPatrolWaypointsSpreadRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StaticPatrolWaypointsSpreadRadiusNUD.ValueChanged += new System.EventHandler(this.StaticPatrolWaypointsSpreadRadiusNUD_ValueChanged);
+            this.StaticPatrolMinSpreadRadiusNUD.Name = "StaticPatrolMinSpreadRadiusNUD";
+            this.StaticPatrolMinSpreadRadiusNUD.Size = new System.Drawing.Size(105, 20);
+            this.StaticPatrolMinSpreadRadiusNUD.TabIndex = 141;
+            this.StaticPatrolMinSpreadRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.StaticPatrolMinSpreadRadiusNUD.ValueChanged += new System.EventHandler(this.StaticPatrolMinSpreadRadiusNUD_ValueChanged);
             // 
             // darkLabel12
             // 
             this.darkLabel12.AutoSize = true;
             this.darkLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel12.Location = new System.Drawing.Point(233, 258);
+            this.darkLabel12.Location = new System.Drawing.Point(233, 287);
             this.darkLabel12.Name = "darkLabel12";
             this.darkLabel12.Size = new System.Drawing.Size(44, 13);
             this.darkLabel12.TabIndex = 140;
@@ -1276,9 +1369,9 @@ namespace DayZeEditor
             // StaticPatrolChanceCB
             // 
             this.StaticPatrolChanceCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolChanceCB.DecimalPlaces = 1;
+            this.StaticPatrolChanceCB.DecimalPlaces = 2;
             this.StaticPatrolChanceCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolChanceCB.Location = new System.Drawing.Point(342, 256);
+            this.StaticPatrolChanceCB.Location = new System.Drawing.Point(342, 285);
             this.StaticPatrolChanceCB.Maximum = new decimal(new int[] {
             1,
             0,
@@ -1307,7 +1400,7 @@ namespace DayZeEditor
             // 
             this.darkLabel26.AutoSize = true;
             this.darkLabel26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel26.Location = new System.Drawing.Point(233, 232);
+            this.darkLabel26.Location = new System.Drawing.Point(233, 209);
             this.darkLabel26.Name = "darkLabel26";
             this.darkLabel26.Size = new System.Drawing.Size(84, 13);
             this.darkLabel26.TabIndex = 136;
@@ -1318,7 +1411,7 @@ namespace DayZeEditor
             this.StaticPatrolMaxDistRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.StaticPatrolMaxDistRadiusNUD.DecimalPlaces = 1;
             this.StaticPatrolMaxDistRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolMaxDistRadiusNUD.Location = new System.Drawing.Point(342, 230);
+            this.StaticPatrolMaxDistRadiusNUD.Location = new System.Drawing.Point(342, 207);
             this.StaticPatrolMaxDistRadiusNUD.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -1352,7 +1445,7 @@ namespace DayZeEditor
             // 
             this.darkLabel27.AutoSize = true;
             this.darkLabel27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel27.Location = new System.Drawing.Point(232, 206);
+            this.darkLabel27.Location = new System.Drawing.Point(232, 183);
             this.darkLabel27.Name = "darkLabel27";
             this.darkLabel27.Size = new System.Drawing.Size(81, 13);
             this.darkLabel27.TabIndex = 134;
@@ -1363,7 +1456,7 @@ namespace DayZeEditor
             this.StaticPatrolMinDistRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.StaticPatrolMinDistRadiusNUD.DecimalPlaces = 1;
             this.StaticPatrolMinDistRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolMinDistRadiusNUD.Location = new System.Drawing.Point(342, 204);
+            this.StaticPatrolMinDistRadiusNUD.Location = new System.Drawing.Point(342, 181);
             this.StaticPatrolMinDistRadiusNUD.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -2179,20 +2272,20 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.RespawnTimeNUD)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CrashMaxSpreadRadiusNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CrashMinSpreadRadiusNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrashChanceNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrashMaxDistRadiusNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrashMinDistRadiusNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrashNumberOfAINUD)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolMaxSpreadRadiusNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolRespawnTimeNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolWaypointPOSZNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolWaypointPOSYNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolWaypointPOSXNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolStartPosZNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolStartPosYNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolStartPosXNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolWaypointsSpreadRadiusNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolMinSpreadRadiusNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolChanceCB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolMaxDistRadiusNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolMinDistRadiusNUD)).EndInit();
@@ -2278,16 +2371,12 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton darkButton4;
         private System.Windows.Forms.ListBox StaticPatrolLB;
         private DarkUI.Controls.DarkLabel darkLabel13;
-        private System.Windows.Forms.NumericUpDown StaticPatrolWaypointsSpreadRadiusNUD;
+        private System.Windows.Forms.NumericUpDown StaticPatrolMinSpreadRadiusNUD;
         private System.Windows.Forms.ListBox StaticPatrolWayPointsLB;
         private System.Windows.Forms.NumericUpDown StaticPatrolWaypointPOSZNUD;
         private System.Windows.Forms.NumericUpDown StaticPatrolWaypointPOSYNUD;
         private System.Windows.Forms.NumericUpDown StaticPatrolWaypointPOSXNUD;
         private DarkUI.Controls.DarkLabel darkLabel35;
-        private System.Windows.Forms.NumericUpDown StaticPatrolStartPosZNUD;
-        private System.Windows.Forms.NumericUpDown StaticPatrolStartPosYNUD;
-        private System.Windows.Forms.NumericUpDown StaticPatrolStartPosXNUD;
-        private DarkUI.Controls.DarkLabel darkLabel67;
         private DarkUI.Controls.DarkLabel darkLabel36;
         private DarkUI.Controls.DarkButton darkButton5;
         private System.Windows.Forms.GroupBox groupBox4;
@@ -2363,5 +2452,16 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkLabel darkLabel6;
         private System.Windows.Forms.NumericUpDown StaticPatrolRespawnTimeNUD;
         private DarkUI.Controls.DarkButton darkButton10;
+        private DarkUI.Controls.DarkButton darkButton12;
+        private DarkUI.Controls.DarkButton darkButton13;
+        private DarkUI.Controls.DarkLabel darkLabel7;
+        private System.Windows.Forms.ListBox PlayerFactionsLB;
+        private System.Windows.Forms.ComboBox PlayerFactionCB;
+        private DarkUI.Controls.DarkLabel darkLabel8;
+        private System.Windows.Forms.NumericUpDown StaticPatrolMaxSpreadRadiusNUD;
+        private DarkUI.Controls.DarkLabel darkLabel10;
+        private DarkUI.Controls.DarkLabel darkLabel11;
+        private System.Windows.Forms.NumericUpDown CrashMaxSpreadRadiusNUD;
+        private System.Windows.Forms.NumericUpDown CrashMinSpreadRadiusNUD;
     }
 }

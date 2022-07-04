@@ -12,7 +12,7 @@ namespace DayZeLib
     public class AIPatrolSettings
     {
         [JsonIgnore]
-        const int CurrentVersion = 1;
+        const int CurrentVersion = 5;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -23,15 +23,15 @@ namespace DayZeLib
         public decimal RespawnTime { get; set; }
         public decimal MinDistRadius { get; set; }
         public decimal MaxDistRadius { get; set; }
-        public BindingList<Eventcrashpatrol> EventCrashPatrol { get; set; }
-        public BindingList<Patrol> Patrol { get; set; }
+        public BindingList<ObjectPatrols> ObjectPatrols { get; set; }
+        public BindingList<Patrols> Patrols { get; set; }
 
 
         public AIPatrolSettings()
         {
             m_Version = CurrentVersion;
-            EventCrashPatrol = new BindingList<Eventcrashpatrol>();
-            Patrol = new BindingList<Patrol>();
+            ObjectPatrols = new BindingList<ObjectPatrols>();
+            Patrols = new BindingList<Patrols>();
         }
         public bool checkver()
         {
@@ -45,34 +45,36 @@ namespace DayZeLib
         }
         public void SetPatrolNames()
         {
-            for (int i =0; i < Patrol.Count; i++)
+            for (int i =0; i < Patrols.Count; i++)
             {
-                Patrol[i].Name = "Patrol " + i.ToString();
+                Patrols[i].Name = "Patrol " + i.ToString();
             }
-            for (int j = 0; j < EventCrashPatrol.Count; j++)
+            for (int j = 0; j < ObjectPatrols.Count; j++)
             {
-                EventCrashPatrol[j].Name = "Event Crash Patrol " + j.ToString();
+                ObjectPatrols[j].Name = "Object Patrol " + j.ToString();
             }
         }
     }
 
-    public class Eventcrashpatrol
+    public class ObjectPatrols
     {
         [JsonIgnore]
         public string Name { get; set; }
 
         public string Faction { get; set; }
-        public string EventName { get; set; }
         public string LoadoutFile { get; set; }
         public int NumberOfAI { get; set; }
         public string Behaviour { get; set; }
         public string Speed { get; set; }
         public string UnderThreatSpeed { get; set; }
-        public decimal MinDistRadius { get; set; }
-        public decimal MaxDistRadius { get; set; }
         public int CanBeLooted { get; set; }
         public int UnlimitedReload { get; set; }
+        public decimal MinDistRadius { get; set; }
+        public decimal MaxDistRadius { get; set; }
+        public decimal MinSpreadRadius { get; set; }
+        public decimal MaxSpreadRadius { get; set; }
         public decimal Chance { get; set; }
+        public string ClassName { get; set; }
 
         public override string ToString()
         {
@@ -80,7 +82,7 @@ namespace DayZeLib
         }
     }
 
-    public class Patrol
+    public class Patrols
     {
         [JsonIgnore]
         public string Name { get; set; }
@@ -91,19 +93,18 @@ namespace DayZeLib
         public string Behaviour { get; set; }
         public string Speed { get; set; }
         public string UnderThreatSpeed { get; set; }
-        public decimal RespawnTime { get; set; }
-        public decimal MinDistRadius { get; set; }
-        public decimal MaxDistRadius { get; set; }
-        public decimal WaypointsSpreadRadius { get; set; }
-        public float[] StartPos { get; set; }
-        public BindingList<float[]> Waypoints { get; set; }
         public int CanBeLooted { get; set; }
         public int UnlimitedReload { get; set; }
+        public decimal MinDistRadius { get; set; }
+        public decimal MaxDistRadius { get; set; }
+        public decimal MinSpreadRadius { get; set; }
+        public decimal MaxSpreadRadius { get; set; }
         public decimal Chance { get; set; }
+        public decimal RespawnTime { get; set; }
+        public BindingList<float[]> Waypoints { get; set; }
 
-        public Patrol()
+        public Patrols()
         {
-            StartPos = new float[] { 0, 0, 0 };
             Waypoints = new BindingList<float[]>();
         }
         public override string ToString()
