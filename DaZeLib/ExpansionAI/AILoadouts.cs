@@ -18,6 +18,18 @@ namespace DayZeLib
         [JsonIgnore]
         public string Name { get; set; }
 
+        public AILoadouts()
+        {
+            ClassName = "";
+            Chance = (decimal)1;
+            Quantity = new Quantity();
+            Health = new BindingList<Health>();
+            InventoryAttachments = new BindingList<Inventoryattachment>();
+            InventoryCargo = new BindingList<AILoadouts>();
+            ConstructionPartsBuilt = new BindingList<object>();
+            Sets = new BindingList<AILoadouts>();
+        }
+
         public string ClassName { get; set; }
         public decimal Chance { get; set; }
         public Quantity Quantity { get; set; }

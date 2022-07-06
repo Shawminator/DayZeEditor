@@ -24,6 +24,11 @@ namespace DayZeLib
             Z = Convert.ToSingle(floats[2], format);
         }
         public Vec3() { }
+
+        public override string ToString()
+        {
+            return X.ToString() + ","+ Y.ToString() + "," + Z.ToString();
+        }
     }
     public class MapData
     {

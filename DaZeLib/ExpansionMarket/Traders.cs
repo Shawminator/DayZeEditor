@@ -117,14 +117,14 @@ namespace DayZeLib
         }
         public void removeTrader(Traders removeitem)
         {
-            removeitem.backupandDelete();
+            removeitem.backupandDelete(TraderPath);
             Traderlist.Remove(removeitem);
         }
         public void AddNewTrader(string m_fileName)
         {
             string newFilename = m_fileName.ToUpper();
             Traders t = new Traders(newFilename);
-            t.Filename = TraderPath + "\\" + newFilename + ".json";
+            t.Filename = newFilename;
             if (Traderlist.Any(x => x.Filename == newFilename))
             {
                 MessageBox.Show(newFilename = " Allready in list of traders....");
@@ -133,6 +133,7 @@ namespace DayZeLib
             else
             {
                 Traderlist.Add(t);
+                t.isDirty = true;
                 MessageBox.Show(newFilename = " added to list of  traders....");
             }
         }
@@ -374,14 +375,15 @@ namespace DayZeLib
 
             }
         }
-        public void backupandDelete()
+        public void backupandDelete(string traderpath)
         {
             string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
-            if (File.Exists(Filename))
+            string fullfilename = traderpath + "\\" + Filename + ".json";
+            if (File.Exists(fullfilename))
             {
-                Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + SaveTime);
-                File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(Filename) + ".bak");
-                File.Delete(Filename);
+                Directory.CreateDirectory(traderpath + "\\Backup\\" + SaveTime);
+                File.Copy(fullfilename, traderpath + "\\Backup\\" + SaveTime + "\\" + Filename + ".bak");
+                File.Delete(fullfilename);
             }
         }
     }

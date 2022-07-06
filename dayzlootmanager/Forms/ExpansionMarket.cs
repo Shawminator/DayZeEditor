@@ -1509,6 +1509,7 @@ namespace DayZeEditor
         private void darkButton11_Click(object sender, EventArgs e)
         {
             string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Enter Name of New Trader(No spaces in name)", "Traders", "");
+            if (UserAnswer == "") return;
             Traders.AddNewTrader(UserAnswer);
             List<string> currencies = MarketCats.GetCatFromFileName("exchange").getallItemsasString();
             listBox2.SelectedIndex = -1;
@@ -2306,7 +2307,7 @@ namespace DayZeEditor
         private void InitStockPercentNUD_ValueChanged(object sender, EventArgs e)
         {
             if (action) return;
-            currentCat.InitStockPercent = (float)InitStockPercentNUD.Value;
+            currentCat.InitStockPercent = (decimal)InitStockPercentNUD.Value;
             currentCat.isDirty = true;
         }
 
@@ -2722,7 +2723,7 @@ namespace DayZeEditor
 
         #region tradermaps
         public Zones currenttradermapzone;
-        public Tradermap currentctradermap;
+        public Tradermap currenttradermap;
         public BindingList<Tradermap> ZoneTraders;
         private void listBox13_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -2756,53 +2757,105 @@ namespace DayZeEditor
         private void listBox14_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBox14.SelectedItems.Count < 1) return;
-            currentctradermap = listBox14.SelectedItem as Tradermap;
+            currenttradermap = listBox14.SelectedItem as Tradermap;
             pcontroll = true;
-            textBox14.Text = currentctradermap.Filename;
-            textBox15.Text = currentctradermap.NPCName;
+            textBox14.Text = currenttradermap.Filename;
+            textBox15.Text = currenttradermap.NPCName;
 
             SetNPCTrade();
 
             
-            numericUpDown14.Value = (decimal)currentctradermap.position.X;
-            numericUpDown15.Value = (decimal)currentctradermap.position.Y;
-            numericUpDown16.Value = (decimal)currentctradermap.position.Z;
-            numericUpDown17.Value = (decimal)currentctradermap.roattions.X;
-            numericUpDown18.Value = (decimal)currentctradermap.roattions.Y;
-            numericUpDown19.Value = (decimal)currentctradermap.roattions.Z;
+            numericUpDown14.Value = (decimal)currenttradermap.position.X;
+            numericUpDown15.Value = (decimal)currenttradermap.position.Y;
+            numericUpDown16.Value = (decimal)currenttradermap.position.Z;
+            numericUpDown17.Value = (decimal)currenttradermap.roattions.X;
+            numericUpDown18.Value = (decimal)currenttradermap.roattions.Y;
+            numericUpDown19.Value = (decimal)currenttradermap.roattions.Z;
             listBox15.DisplayMember = "Name";
             listBox15.ValueMember = "Value";
-            listBox15.DataSource = currentctradermap.Attachments;
+            listBox15.DataSource = currenttradermap.Attachments;
+
+            IsRoamingTraderCB.Checked = currenttradermap.isroaming;
+            if (currenttradermap.isroaming)
+            {
+                RoamingTraderWaypointsLB.DisplayMember = "Name";
+                RoamingTraderWaypointsLB.ValueMember = "Value";
+                RoamingTraderWaypointsLB.DataSource = currenttradermap.Roamingpoints;
+            }
+
             pcontroll = false;
+        }
+        private void RoamingTraderWaypointsLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (RoamingTraderWaypointsLB.SelectedItems.Count < 1) return;
+            pcontroll = true;
+            Vec3 currentwaypoint = RoamingTraderWaypointsLB.SelectedItem as Vec3;
+            if (currentwaypoint == null) return;
+            TraderRoamingWaypointXNUD.Value = (decimal)currentwaypoint.X;
+            TraderRoamingWaypointYNUD.Value = (decimal)currentwaypoint.Y;
+            TraderRoamingWaypointZNUD.Value = (decimal)currentwaypoint.Z;
+            pcontroll = false;
+        }
+        private void IsRoamingTraderCB_CheckedChanged(object sender, EventArgs e)
+        {
+            groupBox14.Visible = IsRoamingTraderCB.Checked;
+            if (pcontroll) return;
+            if (currenttradermap == null) return;
+            if(IsRoamingTraderCB.Checked)
+            {
+                currenttradermap.NPCName = currenttradermap.NPCName.Replace("ExpansionTrader", "ExpansionTraderAI");
+                currenttradermap.Roamingpoints = new BindingList<Vec3>();
+                currenttradermap.isroaming = true;
+            }
+            else
+            {
+                currenttradermap.NPCName = currenttradermap.NPCName.Replace("ExpansionTraderAI", "ExpansionTrader");
+                currenttradermap.Roamingpoints = new BindingList<Vec3>();
+                currenttradermap.isroaming = false;
+            }
+            textBox15.Text = currenttradermap.NPCName;
+            tradermaps.isDirty = true;
+            listBox14.Invalidate();
+            listBox18.Invalidate();
+            RoamingTraderWaypointsLB.Refresh();
         }
         private void listBox18_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBox14.SelectedItems.Count < 1) return;
-            currentctradermap = listBox18.SelectedItem as Tradermap;
-            if(currentctradermap == null) { return; }
+            currenttradermap = listBox18.SelectedItem as Tradermap;
+            if(currenttradermap == null) { return; }
             pcontroll = true;
-            textBox14.Text = currentctradermap.Filename;
-            textBox15.Text = currentctradermap.NPCName;
+            textBox14.Text = currenttradermap.Filename;
+            textBox15.Text = currenttradermap.NPCName;
 
             SetNPCTrade();
 
-            numericUpDown14.Value = (decimal)currentctradermap.position.X;
-            numericUpDown15.Value = (decimal)currentctradermap.position.Y;
-            numericUpDown16.Value = (decimal)currentctradermap.position.Z;
-            numericUpDown17.Value = (decimal)currentctradermap.roattions.X;
-            numericUpDown18.Value = (decimal)currentctradermap.roattions.Y;
-            numericUpDown19.Value = (decimal)currentctradermap.roattions.Z;
+            numericUpDown14.Value = (decimal)currenttradermap.position.X;
+            numericUpDown15.Value = (decimal)currenttradermap.position.Y;
+            numericUpDown16.Value = (decimal)currenttradermap.position.Z;
+            numericUpDown17.Value = (decimal)currenttradermap.roattions.X;
+            numericUpDown18.Value = (decimal)currenttradermap.roattions.Y;
+            numericUpDown19.Value = (decimal)currenttradermap.roattions.Z;
             listBox15.DisplayMember = "Name";
             listBox15.ValueMember = "Value";
-            listBox15.DataSource = currentctradermap.Attachments;
+            listBox15.DataSource = currenttradermap.Attachments;
+
+            IsRoamingTraderCB.Checked = currenttradermap.isroaming;
+            if(currenttradermap.isroaming)
+            {
+                RoamingTraderWaypointsLB.DisplayMember = "Name";
+                RoamingTraderWaypointsLB.ValueMember = "Value";
+                RoamingTraderWaypointsLB.DataSource = currenttradermap.Roamingpoints;
+            }
+
             pcontroll = false;
         }
         public bool hastrader;
         private void SetNPCTrade()
         {
-            textBox16.Text = currentctradermap.NPCTrade;
+            textBox16.Text = currenttradermap.NPCTrade;
             // check if tader exists
-            Traders t = Traders.GetTraderFromName(currentctradermap.NPCTrade);
+            Traders t = Traders.GetTraderFromName(currenttradermap.NPCTrade);
             if (t == null)
             {
                 TradercheckPanel.BackgroundImage = imageList1.Images[1];
@@ -2845,7 +2898,7 @@ namespace DayZeEditor
         private void darkButton22_Click(object sender, EventArgs e)
         {
             Traders newNPCTrader = listBox16.SelectedItem as Traders;
-            currentctradermap.NPCTrade = newNPCTrader.Filename;
+            currenttradermap.NPCTrade = newNPCTrader.Filename;
             tradermaps.isDirty = true;
             SetNPCTrade();
             groupBox12.Visible = false;
@@ -2902,38 +2955,38 @@ namespace DayZeEditor
         private void numericUpDown14_ValueChanged(object sender, EventArgs e)
         {
             if (pcontroll) return;
-            currentctradermap.position.X = (float)numericUpDown14.Value;
+            currenttradermap.position.X = (float)numericUpDown14.Value;
             tradermaps.isDirty = true;
         }
         private void numericUpDown15_ValueChanged(object sender, EventArgs e)
         {
             if (pcontroll) return;
-            currentctradermap.position.Y = (float)numericUpDown15.Value;
+            currenttradermap.position.Y = (float)numericUpDown15.Value;
             tradermaps.isDirty = true;
         }
         private void numericUpDown16_ValueChanged(object sender, EventArgs e)
         {
             if (pcontroll) return;
-            currentctradermap.position.Z = (float)numericUpDown16.Value;
+            currenttradermap.position.Z = (float)numericUpDown16.Value;
             tradermaps.isDirty = true;
         }
         private void numericUpDown17_ValueChanged(object sender, EventArgs e)
         {
             if (pcontroll) return;
-            currentctradermap.roattions.X = (float)numericUpDown17.Value;
+            currenttradermap.roattions.X = (float)numericUpDown17.Value;
             tradermaps.isDirty = true;
         }
         private void numericUpDown18_ValueChanged(object sender, EventArgs e)
         {
             if (pcontroll) return;
-            currentctradermap.roattions.Y = (float)numericUpDown18.Value;
+            currenttradermap.roattions.Y = (float)numericUpDown18.Value;
             tradermaps.isDirty = true;
 
         }
         private void numericUpDown19_ValueChanged(object sender, EventArgs e)
         {
             if (pcontroll) return;
-            currentctradermap.roattions.Z = (float)numericUpDown19.Value;
+            currenttradermap.roattions.Z = (float)numericUpDown19.Value;
             tradermaps.isDirty = true;
         }
         private void darkButton24_Click(object sender, EventArgs e)
@@ -2953,14 +3006,14 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    currentctradermap.Attachments.Add(l);
+                    currenttradermap.Attachments.Add(l);
                     tradermaps.isDirty = true;
                 }
             }
         }
         private void darkButton23_Click(object sender, EventArgs e)
         {
-            currentctradermap.Attachments.Remove(listBox15.GetItemText(listBox15.SelectedItem));
+            currenttradermap.Attachments.Remove(listBox15.GetItemText(listBox15.SelectedItem));
             tradermaps.isDirty = true;
         }
         private void darkButton26_Click(object sender, EventArgs e)
@@ -2974,7 +3027,7 @@ namespace DayZeEditor
         private void textBox15_TextChanged(object sender, EventArgs e)
         {
             if (pcontroll) return;
-            currentctradermap.NPCName = textBox15.Text;
+            currenttradermap.NPCName = textBox15.Text;
             listBox14.Refresh();
             tradermaps.isDirty = true;
         }
@@ -2994,6 +3047,122 @@ namespace DayZeEditor
                 }
             }
             setTraderzonelist();
+        }
+        private void darkButton37_Click(object sender, EventArgs e)
+        {
+            if (currenttradermap == null) return;
+            currenttradermap.Roamingpoints.Add(new Vec3());
+            tradermaps.isDirty = true;
+        }
+        private void darkButton35_Click(object sender, EventArgs e)
+        {
+            if (currenttradermap == null) return;
+            currenttradermap.Roamingpoints.Remove(RoamingTraderWaypointsLB.SelectedItem as Vec3);
+            tradermaps.isDirty = true;
+        }
+        private void TraderRoamingWaypointXNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (pcontroll) return;
+            Vec3 currentwaypoint = RoamingTraderWaypointsLB.SelectedItem as Vec3;
+            currentwaypoint.X = (float)TraderRoamingWaypointXNUD.Value;
+            RoamingTraderWaypointsLB.Invalidate();
+            tradermaps.isDirty = true;
+        }
+        private void TraderRoamingWaypointYNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (pcontroll) return;
+            Vec3 currentwaypoint = RoamingTraderWaypointsLB.SelectedItem as Vec3;
+            currentwaypoint.Y = (float)TraderRoamingWaypointYNUD.Value;
+            RoamingTraderWaypointsLB.Invalidate();
+            tradermaps.isDirty = true;
+        }
+        private void TraderRoamingWaypointZNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (pcontroll) return;
+            Vec3 currentwaypoint = RoamingTraderWaypointsLB.SelectedItem as Vec3;
+            currentwaypoint.Z = (float)TraderRoamingWaypointZNUD.Value;
+            RoamingTraderWaypointsLB.Invalidate();
+            tradermaps.isDirty = true;
+        }
+        private void darkButton39_Click(object sender, EventArgs e)
+        {
+            string[] fileContent = new string[] { };
+            var filePath = string.Empty;
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    filePath = openFileDialog.FileName;
+                    var fileStream = openFileDialog.OpenFile();
+                    fileContent = File.ReadAllLines(filePath);
+                    currenttradermap.Roamingpoints = new BindingList<Vec3>();
+                    for (int i = 0; i < fileContent.Length; i++)
+                    {
+                        if (fileContent[i] == "") continue;
+                        string[] linesplit = fileContent[i].Split('|');
+                        string[] XYZ = linesplit[1].Split(' ');
+                        Vec3 newvec3 = new Vec3()
+                        {
+                            X = Convert.ToSingle(XYZ[0]),
+                            Y = Convert.ToSingle(XYZ[1]),
+                            Z = Convert.ToSingle(XYZ[2])
+                        };
+                        if (i == 0)
+                        {
+                            currenttradermap.position = newvec3;
+
+                        }
+                        else
+                        {
+                            currenttradermap.Roamingpoints.Add(newvec3);
+                        }
+
+                    }
+                    RoamingTraderWaypointsLB.SelectedIndex = -1;
+                    RoamingTraderWaypointsLB.SelectedIndex = RoamingTraderWaypointsLB.Items.Count - 1;
+                    RoamingTraderWaypointsLB.Invalidate();
+                    tradermaps.isDirty = true;
+                }
+            }
+        }
+        private void darkButton38_Click(object sender, EventArgs e)
+        {
+            StringBuilder SB = new StringBuilder();
+            SB.AppendLine(currenttradermap.NPCName + "|" + currenttradermap.position.X.ToString("F6") + " " + currenttradermap.position.Y.ToString("F6") + " " + currenttradermap.position.Z.ToString("F6") + "|0.0 0.0 0.0");
+            foreach (Vec3 vec3 in currenttradermap.Roamingpoints)
+            {
+                SB.AppendLine(currenttradermap.NPCName + "|" + vec3.X.ToString("F6") + " " + vec3.Y.ToString("F6") + " " + vec3.Z.ToString("F6") + "|0.0 0.0 0.0");
+            }
+            SaveFileDialog save = new SaveFileDialog();
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                File.WriteAllText(save.FileName + ".map", SB.ToString());
+            }
+        }
+        private void darkButton40_Click(object sender, EventArgs e)
+        {
+            if (currenttradermap == null || !currenttradermap.IsInAZone) return;
+            List<Vec3> outsidepoints = new List<Vec3>();
+            PointF pC = new PointF(currenttradermapzone.Position[0], currenttradermapzone.Position[2]);
+            foreach (Vec3 vec3 in currenttradermap.Roamingpoints)
+            {
+                PointF pP = new PointF(vec3.X, vec3.Z);
+                if (!IsWithinCircle(pC, pP, currenttradermapzone.Radius))
+                {
+                    outsidepoints.Add(vec3);
+                   
+                }
+            }
+            if(outsidepoints.Count > 0)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append("The folowing points are outside the assigned Zone:-" + Environment.NewLine);
+                foreach(Vec3 v3 in outsidepoints)
+                {
+                    sb.Append(v3.ToString() + Environment.NewLine);
+                }
+                MessageBox.Show(sb.ToString());
+            }
         }
         #endregion tradermaps
 
@@ -3036,21 +3205,16 @@ namespace DayZeEditor
             tradermaps.isDirty = true;
             setTraderzonelist();
         }
-
         private void trackBar3_MouseUp(object sender, MouseEventArgs e)
         {
 
         }
-
-
-
         private void darkButton17_Click(object sender, EventArgs e)
         {
             string removeitem = listBox12.GetItemText(listBox12.SelectedItem);
             marketsettings.Currencies.Remove(removeitem);
             marketsettings.isDirty = true;
         }
-
         private void darkButton36_Click(object sender, EventArgs e)
         {
             foreach (var item in listBox19.SelectedItems)
@@ -3061,7 +3225,6 @@ namespace DayZeEditor
             }
             return;
         }
-
         private void chnageAttchmentsToLowerCaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             foreach (marketItem item in currentCat.Items)
@@ -3077,7 +3240,6 @@ namespace DayZeEditor
             }
             currentCat.isDirty = true;
         }
-
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Set your Starting Percentage... ", "Starting Stock", "");
@@ -3089,7 +3251,6 @@ namespace DayZeEditor
                 cats.isDirty = true;
             }
         }
-
         private void checkForItemsNotInTypesFilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StringBuilder sb = new StringBuilder();
@@ -3117,5 +3278,8 @@ namespace DayZeEditor
             }
             File.WriteAllText(currentproject.projectFullName + "//missing_market_types.txt", sb.ToString());
         }
+
+
     }
 }
+

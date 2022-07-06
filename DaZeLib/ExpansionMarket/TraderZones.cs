@@ -69,7 +69,7 @@ namespace DayZeLib
             Zones z = new Zones(newZonename);
             z.Position = new float[] { mapsize/2, 0, mapsize/2 };
             z.isDirty = true;
-            z.Filename = ZonesPath + "\\" + z + ".json";
+            z.Filename = newZonename;
             if (ZoneList.Any(x => x.Filename == zonename))
             {
                 MessageBox.Show(zonename = " Allready in list of Zones....");
@@ -78,12 +78,13 @@ namespace DayZeLib
             else
             {
                 ZoneList.Add(z);
+                z.isDirty = true;
                 MessageBox.Show(zonename = " added to list of Zones....");
             }
         }
         public void removeZone(Zones removeitem)
         {
-            removeitem.backupAndDelete();
+            removeitem.backupAndDelete(ZonesPath);
             ZoneList.Remove(removeitem);
         }
         public Zones GetZoneZoneName(string removeitem)
@@ -143,14 +144,15 @@ namespace DayZeLib
                 Stock.Add(si.Classname, si.StockValue);
             }
         }
-        public void backupAndDelete()
+        public void backupAndDelete(string ZonesPath)
         {
-            if (File.Exists(Filename))
+            string fullfilename = ZonesPath + "\\" + Filename + ".json";
+            if (File.Exists(fullfilename))
             {
                 string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
-                Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + SaveTime);
-                File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(Filename) + ".bak", true);
-                File.Delete(Filename);
+                Directory.CreateDirectory(ZonesPath + "\\Backup\\" + SaveTime);
+                File.Copy(Filename, ZonesPath + "\\Backup\\" + SaveTime + "\\" +Filename + ".bak", true);
+                File.Delete(fullfilename);
             }
         }
     }

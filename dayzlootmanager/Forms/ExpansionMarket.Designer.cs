@@ -31,9 +31,9 @@ namespace DayZeEditor
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExpansionMarket));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             this.darkToolStrip21 = new DarkUI.Controls.DarkToolStrip2();
             this.SaveFileButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -221,6 +221,7 @@ namespace DayZeEditor
             this.darkButton20 = new DarkUI.Controls.DarkButton();
             this.darkButton21 = new DarkUI.Controls.DarkButton();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.IsRoamingTraderCB = new System.Windows.Forms.CheckBox();
             this.darkButton26 = new DarkUI.Controls.DarkButton();
             this.darkButton23 = new DarkUI.Controls.DarkButton();
             this.darkButton24 = new DarkUI.Controls.DarkButton();
@@ -360,6 +361,17 @@ namespace DayZeEditor
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.RoamingTraderWaypointsLB = new System.Windows.Forms.ListBox();
+            this.darkButton35 = new DarkUI.Controls.DarkButton();
+            this.darkButton37 = new DarkUI.Controls.DarkButton();
+            this.darkLabel5 = new DarkUI.Controls.DarkLabel();
+            this.TraderRoamingWaypointXNUD = new System.Windows.Forms.NumericUpDown();
+            this.TraderRoamingWaypointYNUD = new System.Windows.Forms.NumericUpDown();
+            this.TraderRoamingWaypointZNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkButton38 = new DarkUI.Controls.DarkButton();
+            this.darkButton39 = new DarkUI.Controls.DarkButton();
+            this.darkButton40 = new DarkUI.Controls.DarkButton();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -469,6 +481,10 @@ namespace DayZeEditor
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.darkToolStrip22.SuspendLayout();
+            this.groupBox14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TraderRoamingWaypointXNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TraderRoamingWaypointYNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TraderRoamingWaypointZNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -2782,6 +2798,10 @@ namespace DayZeEditor
             // 
             // groupBox11
             // 
+            this.groupBox11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox11.Controls.Add(this.groupBox14);
+            this.groupBox11.Controls.Add(this.IsRoamingTraderCB);
             this.groupBox11.Controls.Add(this.darkButton26);
             this.groupBox11.Controls.Add(this.darkButton23);
             this.groupBox11.Controls.Add(this.darkButton24);
@@ -2806,10 +2826,22 @@ namespace DayZeEditor
             this.groupBox11.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox11.Location = new System.Drawing.Point(413, 40);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(598, 333);
+            this.groupBox11.Size = new System.Drawing.Size(598, 537);
             this.groupBox11.TabIndex = 53;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Tradermap Info";
+            // 
+            // IsRoamingTraderCB
+            // 
+            this.IsRoamingTraderCB.AutoSize = true;
+            this.IsRoamingTraderCB.Location = new System.Drawing.Point(18, 338);
+            this.IsRoamingTraderCB.Name = "IsRoamingTraderCB";
+            this.IsRoamingTraderCB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.IsRoamingTraderCB.Size = new System.Drawing.Size(113, 17);
+            this.IsRoamingTraderCB.TabIndex = 99;
+            this.IsRoamingTraderCB.Text = "Is Roaming Trader";
+            this.IsRoamingTraderCB.UseVisualStyleBackColor = true;
+            this.IsRoamingTraderCB.CheckedChanged += new System.EventHandler(this.IsRoamingTraderCB_CheckedChanged);
             // 
             // darkButton26
             // 
@@ -3249,34 +3281,34 @@ namespace DayZeEditor
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle26;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(9, 246);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
             this.dataGridView1.Size = new System.Drawing.Size(518, 356);
             this.dataGridView1.TabIndex = 87;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
@@ -4585,6 +4617,175 @@ namespace DayZeEditor
             this.toolStripButton6.Text = "Market Items";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
+            // groupBox14
+            // 
+            this.groupBox14.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox14.Controls.Add(this.darkButton40);
+            this.groupBox14.Controls.Add(this.darkButton39);
+            this.groupBox14.Controls.Add(this.darkButton38);
+            this.groupBox14.Controls.Add(this.darkLabel5);
+            this.groupBox14.Controls.Add(this.TraderRoamingWaypointXNUD);
+            this.groupBox14.Controls.Add(this.TraderRoamingWaypointYNUD);
+            this.groupBox14.Controls.Add(this.TraderRoamingWaypointZNUD);
+            this.groupBox14.Controls.Add(this.darkButton35);
+            this.groupBox14.Controls.Add(this.darkButton37);
+            this.groupBox14.Controls.Add(this.RoamingTraderWaypointsLB);
+            this.groupBox14.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox14.Location = new System.Drawing.Point(18, 361);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(566, 170);
+            this.groupBox14.TabIndex = 100;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "Waypoints";
+            // 
+            // RoamingTraderWaypointsLB
+            // 
+            this.RoamingTraderWaypointsLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.RoamingTraderWaypointsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.RoamingTraderWaypointsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.RoamingTraderWaypointsLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.RoamingTraderWaypointsLB.FormattingEnabled = true;
+            this.RoamingTraderWaypointsLB.Location = new System.Drawing.Point(7, 16);
+            this.RoamingTraderWaypointsLB.Name = "RoamingTraderWaypointsLB";
+            this.RoamingTraderWaypointsLB.Size = new System.Drawing.Size(210, 147);
+            this.RoamingTraderWaypointsLB.TabIndex = 2;
+            this.RoamingTraderWaypointsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.RoamingTraderWaypointsLB.SelectedIndexChanged += new System.EventHandler(this.RoamingTraderWaypointsLB_SelectedIndexChanged);
+            // 
+            // darkButton35
+            // 
+            this.darkButton35.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton35.Location = new System.Drawing.Point(223, 140);
+            this.darkButton35.Name = "darkButton35";
+            this.darkButton35.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton35.Size = new System.Drawing.Size(23, 23);
+            this.darkButton35.TabIndex = 127;
+            this.darkButton35.Text = "-";
+            this.darkButton35.Click += new System.EventHandler(this.darkButton35_Click);
+            // 
+            // darkButton37
+            // 
+            this.darkButton37.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton37.Location = new System.Drawing.Point(223, 16);
+            this.darkButton37.Name = "darkButton37";
+            this.darkButton37.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton37.Size = new System.Drawing.Size(23, 23);
+            this.darkButton37.TabIndex = 126;
+            this.darkButton37.Text = "+";
+            this.darkButton37.Click += new System.EventHandler(this.darkButton37_Click);
+            // 
+            // darkLabel5
+            // 
+            this.darkLabel5.AutoSize = true;
+            this.darkLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel5.Location = new System.Drawing.Point(258, 21);
+            this.darkLabel5.Name = "darkLabel5";
+            this.darkLabel5.Size = new System.Drawing.Size(53, 13);
+            this.darkLabel5.TabIndex = 131;
+            this.darkLabel5.Text = "WayPoint";
+            // 
+            // TraderRoamingWaypointXNUD
+            // 
+            this.TraderRoamingWaypointXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TraderRoamingWaypointXNUD.DecimalPlaces = 3;
+            this.TraderRoamingWaypointXNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.TraderRoamingWaypointXNUD.Location = new System.Drawing.Point(330, 19);
+            this.TraderRoamingWaypointXNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.TraderRoamingWaypointXNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.TraderRoamingWaypointXNUD.Name = "TraderRoamingWaypointXNUD";
+            this.TraderRoamingWaypointXNUD.Size = new System.Drawing.Size(71, 20);
+            this.TraderRoamingWaypointXNUD.TabIndex = 130;
+            this.TraderRoamingWaypointXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TraderRoamingWaypointXNUD.ValueChanged += new System.EventHandler(this.TraderRoamingWaypointXNUD_ValueChanged);
+            // 
+            // TraderRoamingWaypointYNUD
+            // 
+            this.TraderRoamingWaypointYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TraderRoamingWaypointYNUD.DecimalPlaces = 3;
+            this.TraderRoamingWaypointYNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.TraderRoamingWaypointYNUD.Location = new System.Drawing.Point(407, 19);
+            this.TraderRoamingWaypointYNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.TraderRoamingWaypointYNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.TraderRoamingWaypointYNUD.Name = "TraderRoamingWaypointYNUD";
+            this.TraderRoamingWaypointYNUD.Size = new System.Drawing.Size(71, 20);
+            this.TraderRoamingWaypointYNUD.TabIndex = 128;
+            this.TraderRoamingWaypointYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TraderRoamingWaypointYNUD.ValueChanged += new System.EventHandler(this.TraderRoamingWaypointYNUD_ValueChanged);
+            // 
+            // TraderRoamingWaypointZNUD
+            // 
+            this.TraderRoamingWaypointZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TraderRoamingWaypointZNUD.DecimalPlaces = 3;
+            this.TraderRoamingWaypointZNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.TraderRoamingWaypointZNUD.Location = new System.Drawing.Point(484, 19);
+            this.TraderRoamingWaypointZNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.TraderRoamingWaypointZNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.TraderRoamingWaypointZNUD.Name = "TraderRoamingWaypointZNUD";
+            this.TraderRoamingWaypointZNUD.Size = new System.Drawing.Size(71, 20);
+            this.TraderRoamingWaypointZNUD.TabIndex = 129;
+            this.TraderRoamingWaypointZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TraderRoamingWaypointZNUD.ValueChanged += new System.EventHandler(this.TraderRoamingWaypointZNUD_ValueChanged);
+            // 
+            // darkButton38
+            // 
+            this.darkButton38.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton38.Location = new System.Drawing.Point(444, 140);
+            this.darkButton38.Name = "darkButton38";
+            this.darkButton38.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton38.Size = new System.Drawing.Size(111, 23);
+            this.darkButton38.TabIndex = 132;
+            this.darkButton38.Text = "Export to map";
+            this.darkButton38.Click += new System.EventHandler(this.darkButton38_Click);
+            // 
+            // darkButton39
+            // 
+            this.darkButton39.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton39.Location = new System.Drawing.Point(327, 140);
+            this.darkButton39.Name = "darkButton39";
+            this.darkButton39.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton39.Size = new System.Drawing.Size(111, 23);
+            this.darkButton39.TabIndex = 133;
+            this.darkButton39.Text = "Import from map";
+            this.darkButton39.Click += new System.EventHandler(this.darkButton39_Click);
+            // 
+            // darkButton40
+            // 
+            this.darkButton40.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton40.Location = new System.Drawing.Point(327, 111);
+            this.darkButton40.Name = "darkButton40";
+            this.darkButton40.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton40.Size = new System.Drawing.Size(228, 23);
+            this.darkButton40.TabIndex = 134;
+            this.darkButton40.Text = "Check all waypoints are in zone";
+            this.darkButton40.Click += new System.EventHandler(this.darkButton40_Click);
+            // 
             // ExpansionMarket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4719,6 +4920,11 @@ namespace DayZeEditor
             this.groupBox3.ResumeLayout(false);
             this.darkToolStrip22.ResumeLayout(false);
             this.darkToolStrip22.PerformLayout();
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TraderRoamingWaypointXNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TraderRoamingWaypointYNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TraderRoamingWaypointZNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -5051,5 +5257,17 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripMenuItem chnageAttchmentsToLowerCaseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem checkForItemsNotInTypesFilesToolStripMenuItem;
+        private System.Windows.Forms.CheckBox IsRoamingTraderCB;
+        private System.Windows.Forms.GroupBox groupBox14;
+        private System.Windows.Forms.ListBox RoamingTraderWaypointsLB;
+        private DarkUI.Controls.DarkLabel darkLabel5;
+        private System.Windows.Forms.NumericUpDown TraderRoamingWaypointXNUD;
+        private System.Windows.Forms.NumericUpDown TraderRoamingWaypointYNUD;
+        private System.Windows.Forms.NumericUpDown TraderRoamingWaypointZNUD;
+        private DarkUI.Controls.DarkButton darkButton35;
+        private DarkUI.Controls.DarkButton darkButton37;
+        private DarkUI.Controls.DarkButton darkButton39;
+        private DarkUI.Controls.DarkButton darkButton38;
+        private DarkUI.Controls.DarkButton darkButton40;
     }
 }

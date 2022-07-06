@@ -1,0 +1,33 @@
+﻿'DayZeEditor.exe' (CLR v4.0.30319: DefaultDomain): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_64\mscorlib\v4.0_4.0.0.0__b77a5c561934e089\mscorlib.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'DayZeEditor.exe' (CLR v4.0.30319: DefaultDomain): Loaded 'C:\Users\Shawminator-PC\source\repos\dayzlootmanager\dayzlootmanager\bin\Debug\DayZeEditor.exe'. Symbols loaded.
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Windows.Forms\v4.0_4.0.0.0__b77a5c561934e089\System.Windows.Forms.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System\v4.0_4.0.0.0__b77a5c561934e089\System.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Drawing\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Drawing.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'C:\Users\Shawminator-PC\source\repos\dayzlootmanager\dayzlootmanager\bin\Debug\lib\DarkUI.dll'. Symbols loaded.
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Configuration\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Configuration.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Core\v4.0_4.0.0.0__b77a5c561934e089\System.Core.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Xml\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'C:\Users\Shawminator-PC\source\repos\dayzlootmanager\dayzlootmanager\bin\Debug\lib\System.Text.Json.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'C:\Users\Shawminator-PC\source\repos\dayzlootmanager\dayzlootmanager\bin\Debug\lib\System.Memory.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'C:\Users\Shawminator-PC\source\repos\dayzlootmanager\dayzlootmanager\bin\Debug\lib\System.Buffers.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.ValueTuple\v4.0_4.0.0.0__cc7b13ffcd2ddd51\System.ValueTuple.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'C:\Users\Shawminator-PC\source\repos\dayzlootmanager\dayzlootmanager\bin\Debug\lib\System.Runtime.CompilerServices.Unsafe.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'C:\Users\Shawminator-PC\source\repos\dayzlootmanager\dayzlootmanager\bin\Debug\lib\System.Text.Encodings.Web.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'C:\Users\Shawminator-PC\source\repos\dayzlootmanager\dayzlootmanager\bin\Debug\lib\System.Numerics.Vectors.dll'. Skipped loading symbols. Module is optimized and the debugger option 'Just My Code' is enabled.
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'C:\Users\Shawminator-PC\source\repos\dayzlootmanager\dayzlootmanager\bin\Debug\lib\DayZeLib.dll'. Symbols loaded.
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'Microsoft.GeneratedCode'. 
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'Microsoft.GeneratedCode'. 
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'Microsoft.GeneratedCode'. 
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'Microsoft.GeneratedCode'. 
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'Microsoft.GeneratedCode'. 
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'Microsoft.GeneratedCode'. 
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'Microsoft.GeneratedCode'. 
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'Microsoft.GeneratedCode'. 
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'Microsoft.GeneratedCode'. 
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'Microsoft.GeneratedCode'. 
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'Microsoft.GeneratedCode'. 
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'Microsoft.GeneratedCode'. 
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'Microsoft.GeneratedCode'. 
+The thread 0x1a0c has exited with code 0 (0x0).
+'DayZeEditor.exe' (CLR v4.0.30319: DayZeEditor.exe): Loaded 'C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\Accessibility\v4.0_4.0.0.0__b03f5f7f11d50a3a\Accessibility.dll'. 
+The program '[13096] DayZeEditor.exe' has exited with code 0 (0x0).

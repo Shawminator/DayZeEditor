@@ -142,15 +142,14 @@ namespace DayZeLib
         }
         public void RemoveCat(Categories catfordelete)
         {
-            catfordelete.backupandDelete();
+            catfordelete.backupandDelete(MarketCatsPath);
             CatList.Remove(catfordelete);
             
         }
         public void CreateNewCat(string catName)
         {
             Categories NewCat = new Categories(catName.ToUpper().Replace("_", " "));
-            NewCat.isDirty = true;
-            NewCat.Filename = MarketCatsPath + "\\" + catName + ".json";
+            NewCat.Filename = NewCat.DisplayName;
             if (CatList.Any(x => x.DisplayName == catName))
             {
                 MessageBox.Show(catName = " Allready in list of catogories....");
@@ -159,6 +158,7 @@ namespace DayZeLib
             else
             {
                 CatList.Add(NewCat);
+                NewCat.isDirty = true;
                 MessageBox.Show(catName = " added to list of  catogories....");
             }
         }
@@ -242,7 +242,7 @@ namespace DayZeLib
         public string DisplayName { get; set; }
         public string Icon { get; set; }
         public string Color { get; set; }
-        public float InitStockPercent { get; set; }
+        public decimal InitStockPercent { get; set; }
         public BindingList<marketItem> Items { get; set; }
 
 
@@ -258,7 +258,7 @@ namespace DayZeLib
             DisplayName = filename;
             Icon = "deliver";
             Color = "FBFCFEFF";
-            InitStockPercent = 75.0f;
+            InitStockPercent = (decimal)75.0;
             Items = new BindingList<marketItem>();
         }
         public Categories()
@@ -267,7 +267,7 @@ namespace DayZeLib
             DisplayName = "";
             Icon = "deliver";
             Color = "FBFCFEFF";
-            InitStockPercent = 75.0f;
+            InitStockPercent = (decimal)75.0;
             Items = new BindingList<marketItem>();
         }
         public override string ToString()
@@ -296,14 +296,15 @@ namespace DayZeLib
             }
             return items;
         }
-        public void backupandDelete()
+        public void backupandDelete(string marketpath)
         {
             string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
-            if (File.Exists(Filename))
+            string Fullfilename = marketpath + "\\" + Filename + ".json";
+            if (File.Exists(Fullfilename))
             {
-                Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + SaveTime);
-                File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(Filename) + ".bak");
-                File.Delete(Filename);
+                Directory.CreateDirectory(marketpath + "\\Backup\\" + SaveTime);
+                File.Copy(Fullfilename, marketpath + "\\Backup\\" + SaveTime + "\\" + Filename + ".bak");
+                File.Delete(Fullfilename);
             }
         }
     }

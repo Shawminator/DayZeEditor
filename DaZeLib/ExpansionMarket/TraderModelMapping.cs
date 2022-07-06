@@ -77,15 +77,27 @@ namespace DayZeLib
                 StringBuilder sb = new StringBuilder();
                 foreach(Tradermap tm in maps.Where(x => x .Filename == path))
                 {
-                    sb.Append(tm.NPCName + "." + tm.NPCTrade + "|" + tm.position.X.ToString("F6") + " " + tm.position.Y.ToString("F6") + " " + tm.position.Z.ToString("F6")
+                    if (tm.isroaming)
+                    {
+                        sb.Append(tm.NPCName + "." + tm.NPCTrade + "|" + tm.position.X.ToString("F6") + " " + tm.position.Y.ToString("F6") + " " + tm.position.Z.ToString("F6"));
+                        foreach (Vec3 waypoints in tm.Roamingpoints)
+                        {
+                            sb.Append(", " + waypoints.X.ToString("F6") + " " + waypoints.Y.ToString("F6") + " " + waypoints.Z.ToString("F6"));
+                        }
+                        sb.Append("|" + tm.roattions.X.ToString("F6") + " " + tm.roattions.Y.ToString("F6") + " " + tm.roattions.Z.ToString("F6"));
+                    }
+                    else
+                    {
+                        sb.Append(tm.NPCName + "." + tm.NPCTrade + "|" + tm.position.X.ToString("F6") + " " + tm.position.Y.ToString("F6") + " " + tm.position.Z.ToString("F6")
                         + "|" + tm.roattions.X.ToString("F6") + " " + tm.roattions.Y.ToString("F6") + " " + tm.roattions.Z.ToString("F6"));
+                    }
                     if (tm.Attachments == null || tm.Attachments.Count == 0)
                         sb.Append(Environment.NewLine);
                     else
                     {
                         sb.Append("|");
                         int i = 0;
-                        foreach(string s in tm.Attachments)
+                        foreach (string s in tm.Attachments)
                         {
                             sb.Append(s);
                             if (i != tm.Attachments.Count - 1)
@@ -104,9 +116,11 @@ namespace DayZeLib
         public string Filename { get; set; }
         public string NPCName { get; set; }
         public string NPCTrade { get; set; }
+        public bool isroaming = false;
 
         public Vec3 position { get; set; }
         public Vec3 roattions { get; set; }
+        public BindingList<Vec3> Roamingpoints { get; set; }
         public BindingList<string> Attachments { get; set; }
 
         public bool IsInAZone = false;
@@ -122,7 +136,33 @@ namespace DayZeLib
             string[] Part1 = array[0].Split('.');
             NPCName = Part1[0];
             NPCTrade = Part1[1];
-            position = new Vec3(array[1].Split(' '));
+            if (array[1].Contains(',') && NPCName.StartsWith("ExpansionTraderAI"))
+            {
+                isroaming = true;
+                Roamingpoints = new BindingList<Vec3>();
+                int start = 0;
+                foreach(string line in array[1].Split(','))
+                {
+                    string newline = line;
+                    if(line.StartsWith(" "))
+                    {
+                        newline = line.Remove(0, 1);
+                    }
+                    if (start == 0)
+                    {
+                        position = new Vec3(newline.Split(' '));
+                        start++;
+                    }
+                    else
+                    {
+                        Roamingpoints.Add(new Vec3(newline.Split(' ')));
+                    }
+                }
+            }
+            else
+            {
+                position = new Vec3(array[1].Split(' '));
+            }
             roattions = new Vec3(array[2].Split(' '));
             if(array.Length == 4)
             {

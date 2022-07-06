@@ -917,7 +917,8 @@ namespace DayZeEditor
             "WALK",
             "JOG",
             "SPRINT",
-            "RANDOM"});
+            "RANDOM",
+            "RANDOM_NONSTATIC "});
             this.CrashUnderThreatSpeedCB.Location = new System.Drawing.Point(335, 178);
             this.CrashUnderThreatSpeedCB.Name = "CrashUnderThreatSpeedCB";
             this.CrashUnderThreatSpeedCB.Size = new System.Drawing.Size(229, 21);
@@ -944,7 +945,8 @@ namespace DayZeEditor
             "WALK",
             "JOG",
             "SPRINT",
-            "RANDOM"});
+            "RANDOM",
+            "RANDOM_NONSTATIC "});
             this.CrashSpeedCB.Location = new System.Drawing.Point(335, 151);
             this.CrashSpeedCB.Name = "CrashSpeedCB";
             this.CrashSpeedCB.Size = new System.Drawing.Size(229, 21);
@@ -970,7 +972,7 @@ namespace DayZeEditor
             "HALT",
             "LOOP",
             "ALTERNATE",
-            "HOLD OR PATROL"});
+            "HALT_OR_ALTERNATE"});
             this.CrashBehaviourCB.Location = new System.Drawing.Point(335, 124);
             this.CrashBehaviourCB.Name = "CrashBehaviourCB";
             this.CrashBehaviourCB.Size = new System.Drawing.Size(229, 21);
@@ -1035,12 +1037,13 @@ namespace DayZeEditor
             this.CrashFactionCB.ForeColor = System.Drawing.SystemColors.Control;
             this.CrashFactionCB.FormattingEnabled = true;
             this.CrashFactionCB.Items.AddRange(new object[] {
-            "WEST",
-            "EAST",
-            "INSURGENT",
-            "CIVILIAN",
-            "GAURDS",
-            "PASSIVE"});
+            "West",
+            "East",
+            "Raiders",
+            "Mercenaries",
+            "Civilian",
+            "Passive ",
+            "Guards "});
             this.CrashFactionCB.Location = new System.Drawing.Point(335, 45);
             this.CrashFactionCB.Name = "CrashFactionCB";
             this.CrashFactionCB.Size = new System.Drawing.Size(229, 21);
@@ -1493,7 +1496,8 @@ namespace DayZeEditor
             "WALK",
             "JOG",
             "SPRINT",
-            "RANDOM"});
+            "RANDOM",
+            "RANDOM_NONSTATIC "});
             this.StaticPatrolUnderThreatSpeedCB.Location = new System.Drawing.Point(342, 152);
             this.StaticPatrolUnderThreatSpeedCB.Name = "StaticPatrolUnderThreatSpeedCB";
             this.StaticPatrolUnderThreatSpeedCB.Size = new System.Drawing.Size(229, 21);
@@ -1520,7 +1524,8 @@ namespace DayZeEditor
             "WALK",
             "JOG",
             "SPRINT",
-            "RANDOM"});
+            "RANDOM",
+            "RANDOM_NONSTATIC "});
             this.StaticPatrolSpeedCB.Location = new System.Drawing.Point(342, 125);
             this.StaticPatrolSpeedCB.Name = "StaticPatrolSpeedCB";
             this.StaticPatrolSpeedCB.Size = new System.Drawing.Size(229, 21);
@@ -1546,7 +1551,7 @@ namespace DayZeEditor
             "HALT",
             "LOOP",
             "ALTERNATE",
-            "HOLD OR PATROL"});
+            "HALT_OR_ALTERNATE"});
             this.StaticPatrolBehaviorCB.Location = new System.Drawing.Point(342, 98);
             this.StaticPatrolBehaviorCB.Name = "StaticPatrolBehaviorCB";
             this.StaticPatrolBehaviorCB.Size = new System.Drawing.Size(229, 21);
@@ -1611,12 +1616,13 @@ namespace DayZeEditor
             this.StaticPatrolFactionCB.ForeColor = System.Drawing.SystemColors.Control;
             this.StaticPatrolFactionCB.FormattingEnabled = true;
             this.StaticPatrolFactionCB.Items.AddRange(new object[] {
-            "WEST",
-            "EAST",
-            "INSURGENT",
-            "CIVILIAN",
-            "GAURDS",
-            "PASSIVE"});
+            "West",
+            "East",
+            "Raiders",
+            "Mercenaries",
+            "Civilian",
+            "Passive ",
+            "Guards "});
             this.StaticPatrolFactionCB.Location = new System.Drawing.Point(342, 19);
             this.StaticPatrolFactionCB.Name = "StaticPatrolFactionCB";
             this.StaticPatrolFactionCB.Size = new System.Drawing.Size(229, 21);

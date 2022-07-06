@@ -28,3 +28,4 @@ ExpansionTraderJudy
 ExpansionTraderKeiko
 ExpansionTraderEva
 ExpansionTraderNaomi
+ExpansionExchangeMachine
