@@ -442,10 +442,10 @@ namespace DayZeEditor
                     pictureBox2.Invalidate();
                     break;
                 case 6:
-                    toolStripButton11.Checked = true;
+                    toolStripButton12.Checked = true;
                     break;
                 case 7:
-                    toolStripButton12.Checked = true;
+                    toolStripButton11.Checked = true;
                     break;
                 case 8:
                     toolStripButton13.Checked = true;
@@ -4548,7 +4548,7 @@ namespace DayZeEditor
                 }
                 else
                 {
-                    Total += currentproject.mapgroupproto.prototypeGroup.group.First(x => x.name == lootposition.name).lootmax;
+                    Total += currentproject.mapgroupproto.prototypeGroup.group.First(x => x.name.ToLower() == lootposition.name.ToLower()).lootmax;
                 }
             }
             StringBuilder sb = new StringBuilder();
@@ -4566,6 +4566,72 @@ namespace DayZeEditor
                 }
                 File.WriteAllText(currentproject.projectFullName + "//LootOutput.txt", sb.ToString());
             } 
+        }
+
+        private void darkButton62_Click(object sender, EventArgs e)
+        {
+            if (eventposdefEvent == null)  return;
+            OpenFileDialog openfile = new OpenFileDialog();
+            openfile.DefaultExt = ".map";
+            if(openfile.ShowDialog() == DialogResult.OK)
+            {
+                string[] fileContent = File.ReadAllLines(openfile.FileName);
+                eventposdefEvent.pos = new BindingList<eventposdefEventPos>();
+                for (int i = 0; i < fileContent.Length; i++)
+                {
+                    if (fileContent[i] == "") continue;
+                    string[] linesplit = fileContent[i].Split('|');
+                    string[] XYZ = linesplit[1].Split(' ');
+                    string a = linesplit[2].Split(' ')[0];
+                    eventposdefEventPos newpos = new eventposdefEventPos()
+                    {
+                        x = Convert.ToDecimal(XYZ[0]),
+                        ySpecified = true,
+                        y = Convert.ToDecimal(XYZ[1]),
+                        z = Convert.ToDecimal(XYZ[2]),
+                        aSpecified = true,
+                        a = Convert.ToDecimal(a)
+                    };
+                    eventposdefEvent.pos.Add(newpos);
+
+                }
+                EventSpawnPosLB.SelectedIndex = -1;
+                EventSpawnPosLB.SelectedIndex = EventSpawnPosLB.Items.Count - 1;
+                EventSpawnPosLB.Invalidate();
+                currentproject.cfgeventspawns.isDirty = true;
+            }
+        }
+
+        private void darkButton61_Click(object sender, EventArgs e)
+        {
+            if (eventposdefEvent == null || eventposdefEvent.pos == null || eventposdefEvent.pos.Count == 0) return;
+            eventsEvent selectedeevent = geteventfromspawn(eventposdefEvent.name);
+            if (selectedeevent == null) return;
+            string classname = selectedeevent.children[0].type;
+            StringBuilder sb = new StringBuilder();
+            foreach(eventposdefEventPos pos in eventposdefEvent.pos)
+            {
+                sb.Append(classname + "|" + pos.x.ToString("F6") + " " + pos.y.ToString("F6") + " " + pos.z.ToString("F6") + "|" + pos.a.ToString("F6") + " 0.000000 0.000000" + Environment.NewLine);
+            }
+            SaveFileDialog savefile = new SaveFileDialog();
+            savefile.DefaultExt = ".map";
+            if (savefile.ShowDialog() == DialogResult.OK)
+            {
+                File.WriteAllText(savefile.FileName, sb.ToString());
+            }
+
+        }
+        public eventsEvent geteventfromspawn(string name)
+        {
+            foreach (eventscofig eventsconfig in currentproject.ModEventsList)
+            {
+                eventsEvent ee = eventsconfig.events.@event.FirstOrDefault(x => x.name == name);
+                if (ee == null)
+                    continue;
+                else
+                    return ee;
+            }
+            return null;
         }
     }
 }

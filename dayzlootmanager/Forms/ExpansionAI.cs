@@ -824,6 +824,7 @@ namespace DayZeEditor
             RespawnTimeNUD.Value = AIPatrolSettings.RespawnTime;
             MinDistRadiusNUD.Value = AIPatrolSettings.MinDistRadius;
             MaxDistRadiusNUD.Value = AIPatrolSettings.MaxDistRadius;
+            DespawnRadiusNUD.Value = AIPatrolSettings.DespawnRadius;
 
             EventCrachPatrolLB.DisplayMember = "DisplayName";
             EventCrachPatrolLB.ValueMember = "Value";
@@ -860,6 +861,12 @@ namespace DayZeEditor
             AIPatrolSettings.MaxDistRadius = MaxDistRadiusNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
+        private void DespawnRadiusNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AIPatrolSettings.DespawnRadius = DespawnRadiusNUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
         /// <summary>
         /// Event Crash Settings
         /// </summary>
@@ -878,6 +885,7 @@ namespace DayZeEditor
             CrashUnderThreatSpeedCB.SelectedIndex = CrashUnderThreatSpeedCB.FindStringExact(CurrentEventcrashpatrol.UnderThreatSpeed);
             CrashMinDistRadiusNUD.Value = CurrentEventcrashpatrol.MinDistRadius;
             CrashMaxDistRadiusNUD.Value = CurrentEventcrashpatrol.MaxDistRadius;
+            CrashDespawnRadiusNUD.Value = CurrentEventcrashpatrol.DespawnRadius;
             CrashMinSpreadRadiusNUD.Value = CurrentEventcrashpatrol.MinSpreadRadius;
             CrashMaxSpreadRadiusNUD.Value = CurrentEventcrashpatrol.MaxSpreadRadius;
             CrashChanceNUD.Value = CurrentEventcrashpatrol.Chance;
@@ -970,6 +978,12 @@ namespace DayZeEditor
             CurrentEventcrashpatrol.MaxDistRadius = CrashMaxDistRadiusNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
+        private void CrashDespawnRadiusNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentEventcrashpatrol.DespawnRadius = CrashDespawnRadiusNUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
         private void CrashMinSpreadRadiusNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -1018,6 +1032,7 @@ namespace DayZeEditor
             StaticPatrolRespawnTimeNUD.Value = CurrentPatrol.RespawnTime;
             StaticPatrolMinDistRadiusNUD.Value = CurrentPatrol.MinDistRadius;
             StaticPatrolMaxDistRadiusNUD.Value = CurrentPatrol.MaxDistRadius;
+            StaticPatrolDespawnRadiusNUD.Value = CurrentPatrol.DespawnRadius;
             StaticPatrolChanceCB.Value = CurrentPatrol.Chance;
             StaticPatrolCanBeLotedCB.Checked = CurrentPatrol.CanBeLooted == 1 ? true : false;
             StaticPatrolUnlimitedReloadCB.Checked = CurrentPatrol.UnlimitedReload == 1 ? true : false;
@@ -1127,6 +1142,12 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             CurrentPatrol.MaxDistRadius = StaticPatrolMaxDistRadiusNUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
+        private void StaticPatrolDespawnRadiusNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPatrol.DespawnRadius = StaticPatrolDespawnRadiusNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
         private void StaticPatrolChanceCB_ValueChanged(object sender, EventArgs e)
@@ -1305,6 +1326,10 @@ namespace DayZeEditor
             AISettings.PlayerFactions.Remove(PlayerFactionsLB.GetItemText(PlayerFactionsLB.SelectedItem));
             AISettings.isDirty = true;
         }
+
+
         #endregion AISettings
+
+
     }
 }

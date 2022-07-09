@@ -22,6 +22,7 @@ namespace DayZeLib
         public int CreateBookmarks { get; set; }
         public BindingList<Rulecats> RuleCategories { get; set; }
         public int DisplayServerSettingsInServerInfoTab { get; set; }
+        public int ShowHaBStats { get; set; }
         public BindingList<SettingCategories> SettingCategories { get; set; }
         public BindingList<Links> Links { get; set; }
         public BindingList<Descript> Descriptions { get; set; }
@@ -87,6 +88,11 @@ namespace DayZeLib
         public string RuleParagraph { get; set; }
         public string RuleText { get; set; }
 
+        public Rules()
+        {
+            RuleParagraph = "";
+            RuleText = "";
+        }
         public override string ToString()
         {
             return RuleParagraph;

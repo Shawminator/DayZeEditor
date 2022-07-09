@@ -355,6 +355,7 @@ namespace DayZeEditor
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.listBox10 = new System.Windows.Forms.ListBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.ShowHaBStatsCB = new System.Windows.Forms.CheckBox();
             this.DisplayServerSettingsInServerInfoTabCB = new System.Windows.Forms.CheckBox();
             this.EnableBookMenuCB = new System.Windows.Forms.CheckBox();
             this.CreateBookmarksCB = new System.Windows.Forms.CheckBox();
@@ -1549,14 +1550,14 @@ namespace DayZeEditor
             this.groupBox1.Controls.Add(this.darkLabel13);
             this.groupBox1.Location = new System.Drawing.Point(6, 113);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1268, 521);
+            this.groupBox1.Size = new System.Drawing.Size(1268, 565);
             this.groupBox1.TabIndex = 71;
             this.groupBox1.TabStop = false;
             // 
             // darkButton7
             // 
             this.darkButton7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton7.Location = new System.Drawing.Point(238, 488);
+            this.darkButton7.Location = new System.Drawing.Point(238, 532);
             this.darkButton7.Name = "darkButton7";
             this.darkButton7.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton7.Size = new System.Drawing.Size(261, 23);
@@ -1567,7 +1568,7 @@ namespace DayZeEditor
             // darkButton4
             // 
             this.darkButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton4.Location = new System.Drawing.Point(6, 488);
+            this.darkButton4.Location = new System.Drawing.Point(6, 532);
             this.darkButton4.Name = "darkButton4";
             this.darkButton4.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton4.Size = new System.Drawing.Size(226, 23);
@@ -1585,7 +1586,7 @@ namespace DayZeEditor
             this.listBox2.FormattingEnabled = true;
             this.listBox2.Location = new System.Drawing.Point(6, 12);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(226, 472);
+            this.listBox2.Size = new System.Drawing.Size(226, 511);
             this.listBox2.TabIndex = 88;
             this.listBox2.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
@@ -1631,7 +1632,7 @@ namespace DayZeEditor
             this.tabControl1.Location = new System.Drawing.Point(509, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(753, 503);
+            this.tabControl1.Size = new System.Drawing.Size(753, 543);
             this.tabControl1.TabIndex = 83;
             // 
             // Loot
@@ -1654,7 +1655,7 @@ namespace DayZeEditor
             this.Loot.Location = new System.Drawing.Point(4, 22);
             this.Loot.Name = "Loot";
             this.Loot.Padding = new System.Windows.Forms.Padding(3);
-            this.Loot.Size = new System.Drawing.Size(745, 477);
+            this.Loot.Size = new System.Drawing.Size(745, 517);
             this.Loot.TabIndex = 0;
             this.Loot.Text = "Loot";
             // 
@@ -1846,7 +1847,7 @@ namespace DayZeEditor
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.groupBox2.Location = new System.Drawing.Point(209, 100);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(260, 121);
+            this.groupBox2.Size = new System.Drawing.Size(260, 361);
             this.groupBox2.TabIndex = 92;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Attachments";
@@ -1881,14 +1882,14 @@ namespace DayZeEditor
             this.listBox4.FormattingEnabled = true;
             this.listBox4.Location = new System.Drawing.Point(6, 19);
             this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(120, 4);
+            this.listBox4.Size = new System.Drawing.Size(120, 329);
             this.listBox4.TabIndex = 0;
             this.listBox4.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
             // darkButton8
             // 
             this.darkButton8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton8.Location = new System.Drawing.Point(209, 223);
+            this.darkButton8.Location = new System.Drawing.Point(209, 467);
             this.darkButton8.Name = "darkButton8";
             this.darkButton8.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton8.Size = new System.Drawing.Size(261, 23);
@@ -1899,7 +1900,7 @@ namespace DayZeEditor
             // darkButton2
             // 
             this.darkButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton2.Location = new System.Drawing.Point(9, 223);
+            this.darkButton2.Location = new System.Drawing.Point(9, 467);
             this.darkButton2.Name = "darkButton2";
             this.darkButton2.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton2.Size = new System.Drawing.Size(194, 23);
@@ -1958,7 +1959,7 @@ namespace DayZeEditor
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(6, 3);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(194, 108);
+            this.listBox1.Size = new System.Drawing.Size(194, 459);
             this.listBox1.TabIndex = 0;
             this.listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
@@ -2312,7 +2313,7 @@ namespace DayZeEditor
             // 
             this.PlayerTagViewRangeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.PlayerTagViewRangeNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.PlayerTagViewRangeNUD.Location = new System.Drawing.Point(9, 55);
+            this.PlayerTagViewRangeNUD.Location = new System.Drawing.Point(9, 57);
             this.PlayerTagViewRangeNUD.Maximum = new decimal(new int[] {
             20000,
             0,
@@ -3277,7 +3278,7 @@ namespace DayZeEditor
             this.groupBox10.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox10.Location = new System.Drawing.Point(1006, 73);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(290, 61);
+            this.groupBox10.Size = new System.Drawing.Size(202, 61);
             this.groupBox10.TabIndex = 3;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Player List";
@@ -5335,6 +5336,7 @@ namespace DayZeEditor
             // 
             // groupBox11
             // 
+            this.groupBox11.Controls.Add(this.ShowHaBStatsCB);
             this.groupBox11.Controls.Add(this.DisplayServerSettingsInServerInfoTabCB);
             this.groupBox11.Controls.Add(this.EnableBookMenuCB);
             this.groupBox11.Controls.Add(this.CreateBookmarksCB);
@@ -5350,6 +5352,19 @@ namespace DayZeEditor
             this.groupBox11.TabIndex = 0;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "General";
+            // 
+            // ShowHaBStatsCB
+            // 
+            this.ShowHaBStatsCB.AutoSize = true;
+            this.ShowHaBStatsCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ShowHaBStatsCB.Location = new System.Drawing.Point(17, 111);
+            this.ShowHaBStatsCB.Name = "ShowHaBStatsCB";
+            this.ShowHaBStatsCB.Size = new System.Drawing.Size(107, 17);
+            this.ShowHaBStatsCB.TabIndex = 23;
+            this.ShowHaBStatsCB.Text = "Show Ha B Stats";
+            this.ShowHaBStatsCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ShowHaBStatsCB.UseVisualStyleBackColor = true;
+            this.ShowHaBStatsCB.CheckedChanged += new System.EventHandler(this.ShowHaBStatsCB_CheckedChanged);
             // 
             // DisplayServerSettingsInServerInfoTabCB
             // 
@@ -5899,7 +5914,7 @@ namespace DayZeEditor
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Location = new System.Drawing.Point(341, 35);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(931, 599);
+            this.panel1.Size = new System.Drawing.Size(931, 641);
             this.panel1.TabIndex = 99;
             // 
             // pictureBox2
@@ -6789,7 +6804,7 @@ namespace DayZeEditor
             this.panel2.Controls.Add(this.pictureBox3);
             this.panel2.Location = new System.Drawing.Point(490, 27);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(782, 607);
+            this.panel2.Size = new System.Drawing.Size(782, 649);
             this.panel2.TabIndex = 98;
             // 
             // pictureBox3
@@ -14879,5 +14894,6 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkLabel darkLabel182;
         private DarkUI.Controls.DarkButton darkButton65;
         private System.Windows.Forms.CheckBox HardlineCB;
+        private System.Windows.Forms.CheckBox ShowHaBStatsCB;
     }
 }

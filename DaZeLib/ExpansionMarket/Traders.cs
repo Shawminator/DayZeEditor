@@ -50,7 +50,8 @@ namespace DayZeLib
                         t.Filename = System.IO.Path.GetFileNameWithoutExtension(file.FullName);
                     }
                     Console.WriteLine("Converting Stock Dictionary to list");
-                    t.ConvertDictToList(marketCats);
+                    if (t.ConvertDictToList(marketCats))
+                        savefile = true;
                     Traderlist.Add(t);
                     if (t.m_Version != CurrentVersion)
                     {
@@ -183,11 +184,34 @@ namespace DayZeLib
         {
             return Filename;
         }
-        public void ConvertDictToList(MarketCategories marketCats)
+        public bool ConvertDictToList(MarketCategories marketCats)
         {
+            bool savefile = false;
             var initialList = new BindingList<TradersItem>();
             if (Categories.Count == 1 && Categories[0] == null)
                 Categories = new BindingList<string>();
+            for (int i = 0; i < Categories.Count; i++)
+            {
+                if (Categories[i].Contains(":"))
+                {
+                    string[] test = Categories[i].Split(':');
+                    if (System.IO.Path.GetFileNameWithoutExtension(test[0]).Any(char.IsLower))
+                    {
+                        Categories[i] = test[0].ToUpper() + ":" + test[1];
+                        savefile = true;
+                    }
+                }
+                else
+                {
+                    if (System.IO.Path.GetFileNameWithoutExtension(Categories[i]).Any(char.IsLower))
+                    {
+                        Categories[i] = Categories[i].ToUpper();
+                        savefile = true;
+                    }
+                }
+            }
+
+
             foreach (string cat in Categories)
             {
                 string[] results = cat.Split(':');
@@ -235,6 +259,7 @@ namespace DayZeLib
                 
             }
             ListItems = new BindingList<TradersItem>(new BindingList<TradersItem>(initialList.OrderBy(x => x.ClassName).ToList()));
+            return savefile;
         }
         public void SortList()
         {

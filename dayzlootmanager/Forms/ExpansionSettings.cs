@@ -2160,6 +2160,7 @@ namespace DayZeEditor
             EnableBookMenuCB.Checked = BookSettings.EnableBookMenu == 1 ? true : false;
             CreateBookmarksCB.Checked = BookSettings.CreateBookmarks == 1 ? true : false;
             DisplayServerSettingsInServerInfoTabCB.Checked = BookSettings.DisplayServerSettingsInServerInfoTab == 1 ? true : false;
+            ShowHaBStatsCB.Checked = BookSettings.ShowHaBStats == 1 ? true : false;
 
             listBox10.DisplayMember = "DisplayName";
             listBox10.ValueMember = "Value";
@@ -2380,6 +2381,12 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             BookSettings.CreateBookmarks = CreateBookmarksCB.Checked == true ? 1 : 0;
+            BookSettings.isDirty = true;
+        }
+        private void ShowHaBStatsCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            BookSettings.ShowHaBStats = ShowHaBStatsCB.Checked == true ? 1 : 0;
             BookSettings.isDirty = true;
         }
         private void DisplayServerSettingsInServerInfoTabCB_CheckedChanged(object sender, EventArgs e)
@@ -5990,6 +5997,7 @@ namespace DayZeEditor
             VehicleSettings.DesyncInvulnerabilityTimeoutSeconds = DesyncInvulnerabilityTimeoutSecondsNUD.Value;
             VehicleSettings.isDirty = true;
         }
+
 
 
 

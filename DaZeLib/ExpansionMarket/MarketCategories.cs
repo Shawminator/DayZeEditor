@@ -200,7 +200,8 @@ namespace DayZeLib
         }
         public Categories GetCatFromFileName(string cat)
         {
-            return CatList.FirstOrDefault(x => Path.GetFileNameWithoutExtension(x.Filename.ToLower()) == cat.ToLower());
+
+            return CatList.FirstOrDefault(x => Path.GetFileNameWithoutExtension(x.Filename) == cat);
         }
         public bool isincludedinavarient(string item)
         {

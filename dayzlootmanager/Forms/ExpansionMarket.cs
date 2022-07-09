@@ -1469,7 +1469,7 @@ namespace DayZeEditor
                 {
                     string name = item.ToString();
                     Categories Cat = MarketCats.GetCatFromDisplayName(name);
-                    string catname = Path.GetFileNameWithoutExtension(Cat.Filename);
+                    string catname = Cat.Filename;
                     foreach (marketItem mi in Cat.Items)
                     {
                         currentTrader.AdditemtoTrader(mi.ClassName, catname);
