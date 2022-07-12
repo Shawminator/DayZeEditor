@@ -49,6 +49,8 @@ namespace DayZeEditor
             this.TraderManButton = new System.Windows.Forms.ToolStripButton();
             this.ExpansionSettingsButton = new System.Windows.Forms.ToolStripButton();
             this.MarketButton = new System.Windows.Forms.ToolStripButton();
+            this.ExpansionAIButton = new System.Windows.Forms.ToolStripButton();
+            this.ExpansionQuestsButton = new System.Windows.Forms.ToolStripButton();
             this.HelicrashManagerButton = new System.Windows.Forms.ToolStripButton();
             this.LootchestButton = new System.Windows.Forms.ToolStripButton();
             this.KOTHManagerButton = new System.Windows.Forms.ToolStripButton();
@@ -61,7 +63,7 @@ namespace DayZeEditor
             this.darkStatusStrip1 = new DarkUI.Controls.DarkStatusStrip();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.ExpansionAIButton = new System.Windows.Forms.ToolStripButton();
+            this.MinimiseButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SlidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Slidelabel)).BeginInit();
@@ -73,6 +75,7 @@ namespace DayZeEditor
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.Controls.Add(this.MinimiseButton);
             this.panel1.Controls.Add(this.CloseButton);
             this.panel1.Controls.Add(this.TitleLabel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -170,6 +173,7 @@ namespace DayZeEditor
             this.ExpansionSettingsButton,
             this.MarketButton,
             this.ExpansionAIButton,
+            this.ExpansionQuestsButton,
             this.HelicrashManagerButton,
             this.LootchestButton,
             this.KOTHManagerButton,
@@ -276,6 +280,30 @@ namespace DayZeEditor
             this.MarketButton.Text = "Expansion Market";
             this.MarketButton.Visible = false;
             this.MarketButton.Click += new System.EventHandler(this.MarketButton_Click);
+            // 
+            // ExpansionAIButton
+            // 
+            this.ExpansionAIButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.ExpansionAIButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.ExpansionAIButton.Image = ((System.Drawing.Image)(resources.GetObject("ExpansionAIButton.Image")));
+            this.ExpansionAIButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ExpansionAIButton.Name = "ExpansionAIButton";
+            this.ExpansionAIButton.Size = new System.Drawing.Size(103, 19);
+            this.ExpansionAIButton.Text = "Expansion AI";
+            this.ExpansionAIButton.Visible = false;
+            this.ExpansionAIButton.Click += new System.EventHandler(this.toolStripButton3_Click_1);
+            // 
+            // ExpansionQuestsButton
+            // 
+            this.ExpansionQuestsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.ExpansionQuestsButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.ExpansionQuestsButton.Image = ((System.Drawing.Image)(resources.GetObject("ExpansionQuestsButton.Image")));
+            this.ExpansionQuestsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ExpansionQuestsButton.Name = "ExpansionQuestsButton";
+            this.ExpansionQuestsButton.Size = new System.Drawing.Size(103, 19);
+            this.ExpansionQuestsButton.Text = "Expansion Quests";
+            this.ExpansionQuestsButton.Visible = false;
+            this.ExpansionQuestsButton.Click += new System.EventHandler(this.ExpansionQuestsButton_Click);
             // 
             // HelicrashManagerButton
             // 
@@ -410,17 +438,19 @@ namespace DayZeEditor
             this.panel2.Size = new System.Drawing.Size(25, 25);
             this.panel2.TabIndex = 45;
             // 
-            // ExpansionAIButton
+            // MinimiseButton
             // 
-            this.ExpansionAIButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.ExpansionAIButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.ExpansionAIButton.Image = ((System.Drawing.Image)(resources.GetObject("ExpansionAIButton.Image")));
-            this.ExpansionAIButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ExpansionAIButton.Name = "ExpansionAIButton";
-            this.ExpansionAIButton.Size = new System.Drawing.Size(103, 19);
-            this.ExpansionAIButton.Text = "Expansion AI";
-            this.ExpansionAIButton.Visible = false;
-            this.ExpansionAIButton.Click += new System.EventHandler(this.toolStripButton3_Click_1);
+            this.MinimiseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MinimiseButton.BackColor = System.Drawing.Color.Black;
+            this.MinimiseButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.MinimiseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MinimiseButton.ForeColor = System.Drawing.Color.DarkRed;
+            this.MinimiseButton.Location = new System.Drawing.Point(1065, -3);
+            this.MinimiseButton.Name = "MinimiseButton";
+            this.MinimiseButton.Size = new System.Drawing.Size(41, 28);
+            this.MinimiseButton.TabIndex = 7;
+            this.MinimiseButton.Text = "_";
+            this.MinimiseButton.UseVisualStyleBackColor = false;
             // 
             // MainForm
             // 
@@ -433,6 +463,7 @@ namespace DayZeEditor
             this.Controls.Add(this.darkStatusStrip1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -485,6 +516,8 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton KOTHManagerButton;
         private System.Windows.Forms.ToolStripButton ExpansionAIButton;
+        private System.Windows.Forms.ToolStripButton ExpansionQuestsButton;
+        private System.Windows.Forms.Button MinimiseButton;
     }
 }
 

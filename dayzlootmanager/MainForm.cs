@@ -59,7 +59,8 @@ namespace DayZeEditor
                 panel1,
                 panel2,
                 TitleLabel,
-                CloseButton
+                CloseButton,
+                MinimiseButton
             );
             SlidePanel.Width = 30;
             hidden = true;
@@ -213,6 +214,11 @@ namespace DayZeEditor
                     ExpansionAIButton.Visible = true;
                 else
                     ExpansionAIButton.Visible = false;
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\ExpansionMod\\Settings\\QuestSettings.json") &&
+                    Directory.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\ExpansionMod\\Quests"))
+                    ExpansionQuestsButton.Visible = true;
+                else
+                    ExpansionQuestsButton.Visible = false;
 
 
 
@@ -411,6 +417,30 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
+        private void ExpansionQuestsButton_Click(object sender, EventArgs e)
+        {
+            ExpansionQuests _TM = Application.OpenForms["ExpansionQuests"] as ExpansionQuests;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new ExpansionQuests
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+                };
+                _TM.Show();
+            }
+            timer1.Start();
+        }
         private void Lootchest_Click(object sender, EventArgs e)
         {
             Lootchest _TM = Application.OpenForms["Lootchest"] as Lootchest;
@@ -530,5 +560,7 @@ namespace DayZeEditor
             System.Diagnostics.Process.Start("https://www.paypal.me/ADecadeOfdecay");
             timer1.Start();
         }
+
+
     }
 }

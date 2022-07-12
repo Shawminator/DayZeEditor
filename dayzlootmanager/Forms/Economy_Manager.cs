@@ -454,10 +454,10 @@ namespace DayZeEditor
                     toolStripButton14.Checked = true;
                     break;
                 case 10:
-                    toolStripButton15.Checked = false;
+                    toolStripButton15.Checked = true;
                     break;
                 case 11:
-                    toolStripButton16.Checked = false;
+                    toolStripButton16.Checked = true;
                     break;
                 default:
                     break;

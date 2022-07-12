@@ -105,11 +105,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Form_Controls_AddfromType.cs" />
+    <Compile Include="Forms\ExpansionQuests.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ExpansionQuests.Designer.cs">
+      <DependentUpon>ExpansionQuests.cs</DependentUpon>
+    </Compile>
     <Compile Include="HelperForms\Add new container.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="HelperForms\Add new container.Designer.cs">
       <DependentUpon>Add new container.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HelperForms\AddObjective.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelperForms\AddObjective.Designer.cs">
+      <DependentUpon>AddObjective.cs</DependentUpon>
     </Compile>
     <Compile Include="HelperForms\AddfromPredefinedWeapons.cs">
       <SubType>Form</SubType>
@@ -272,8 +284,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\ExpansionQuests.resx">
+      <DependentUpon>ExpansionQuests.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HelperForms\Add new container.resx">
       <DependentUpon>Add new container.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelperForms\AddObjective.resx">
+      <DependentUpon>AddObjective.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HelperForms\AddfromPredefinedWeapons.resx">
       <DependentUpon>AddfromPredefinedWeapons.cs</DependentUpon>
@@ -522,6 +540,12 @@
     <Content Include="depositphotos_20788183_stock_illustration_cartoon_thief_running_with_a_Cw8_icon.ico" />
     <Content Include="Maps\valning_Map.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TraderNPCs\Emotes.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TraderNPCs\QuestNPCs.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="ZYXMapper.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

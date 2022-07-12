@@ -595,7 +595,7 @@ namespace DayZeEditor
                 zones.ConvertlisttoDict();
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(zones, options);
-                if (currentproject.Createbackups && File.Exists(zones.Filename))
+                if (currentproject.Createbackups && File.Exists(ZonesPath + "\\" + zones.Filename + ".json"))
                 {
                     Directory.CreateDirectory(ZonesPath + "\\Backup\\" + SaveTime);
                     File.Copy(ZonesPath+ "\\" + zones.Filename + ".json", ZonesPath + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(zones.Filename) + ".bak", true);
@@ -611,7 +611,7 @@ namespace DayZeEditor
                 trader.ConvertToDict(MarketCats);
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(trader, options);
-                if (currentproject.Createbackups && File.Exists(trader.Filename))
+                if (currentproject.Createbackups && File.Exists(TradersPath + "\\" + trader.Filename + ".json"))
                 {
                     Directory.CreateDirectory(TradersPath + "\\Backup\\" + SaveTime);
                     File.Copy(TradersPath + "\\" + trader.Filename, TradersPath + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(trader.Filename) + ".bak", true);
@@ -625,7 +625,7 @@ namespace DayZeEditor
                 cat.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(cat, options);
-                if (currentproject.Createbackups && File.Exists(cat.Filename))
+                if (currentproject.Createbackups && File.Exists(CatPath + "\\" + cat.Filename + ".json"))
                 {
                     Directory.CreateDirectory(CatPath + "\\Backup\\" + SaveTime);
                     File.Copy(CatPath + "\\" + cat.Filename + ".json", CatPath + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(cat.Filename) + ".bak", true);
@@ -3279,7 +3279,10 @@ namespace DayZeEditor
             File.WriteAllText(currentproject.projectFullName + "//missing_market_types.txt", sb.ToString());
         }
 
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
 

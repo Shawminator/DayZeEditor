@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -255,7 +256,36 @@ namespace DayZeLib
         {
             return TimeSpan.FromSeconds(seconds).TotalMinutes;
         }
-
+        public static List<string> GetPropertiesNameOfClass<T>(object pObject, string[] IgnoreNames)
+        {
+            List<string> propertyList = new List<string>();
+            if (pObject != null)
+            {
+                foreach (var prop in pObject.GetType().GetProperties())
+                {
+                    if(prop.PropertyType == typeof(T) && !IgnoreNames.Contains(prop.Name))
+                        propertyList.Add(prop.Name);
+                }
+            }
+            return propertyList;
+        }
+        public static object GetPropValue(object src, string propName)
+        {
+            return src.GetType().GetProperty(propName).GetValue(src, null);
+        }
+        public static void SetStringValue(object src, string mytype, string myvalue)
+        {
+            src.GetType().GetProperty(mytype).SetValue(src, myvalue, null);
+        }
+        public static void SetIntValue(object src, string mytype, int myvalue)
+        {
+            src.GetType().GetProperty(mytype).SetValue(src, myvalue, null);
+        }
+        public static void SetBoolValue(object src, string mytype, bool myvalue)
+        {
+            int myvalueasint = myvalue == true ? 1 : 0;
+            src.GetType().GetProperty(mytype).SetValue(src, myvalueasint, null);
+        }
     }
     public static class extenstions
     {

@@ -8,6 +8,7 @@ namespace DayZeEditor
     {
         public static Size Formsize;
         private static Button B;
+        private static Button B1;
         private static Panel P;
         private static Panel P2;
         private static Label L;
@@ -20,12 +21,13 @@ namespace DayZeEditor
 
         public static int Height { get; private set; }
 
-        public static void InitializeForm_Controls(Form _F, Panel _P, Panel _P2, Label _L, Button _B = null)
+        public static void InitializeForm_Controls(Form _F, Panel _P, Panel _P2, Label _L, Button _B = null, Button _B1 = null)
         {
             F = _F;
             P = _P;
             P2 = _P2;
             B = _B;
+            B1 = _B1;
             L = _L;
             P.MouseDoubleClick += new MouseEventHandler(FormMax_MouseDoubleClick);
             P.MouseDown += new MouseEventHandler(FormMove_MouseDown);
@@ -40,8 +42,12 @@ namespace DayZeEditor
             L.MouseUp += new MouseEventHandler(FormMove_MouseUp);
             if (_B != null)
                 B.Click += new System.EventHandler(FormClose_Click);
+            if (_B1 != null)
+                B1.Click += new System.EventHandler(MinimiseForm_Click);
             Formsize = F.Size;
         }
+
+
 
         private static void FormResize_MouseUp(object sender, MouseEventArgs e)
         {
@@ -116,6 +122,10 @@ namespace DayZeEditor
         private static void FormClose_Click(object sender, EventArgs e)
         {
             F.Close();
+        }
+        private static void MinimiseForm_Click(object sender, EventArgs e)
+        {
+            F.WindowState = FormWindowState.Minimized;
         }
     }
 }

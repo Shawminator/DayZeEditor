@@ -12,6 +12,7 @@ using System.Windows.Forms;
 
 namespace DayZeLib
 {
+
     public class MarketCategories
     {
         public const int CurrentVersion = 9;
@@ -20,7 +21,6 @@ namespace DayZeLib
 
         public MarketCategories()
         {
-
             CatList = new BindingList<Categories>();
         }
         public MarketCategories(string Path, bool createfolder = true)

@@ -1168,6 +1168,10 @@ namespace DayZeEditor
             {
                 listBox5.Items.Add(type.name);
             }
+            foreach (typesType type in vanillatypes.SerachTypes("animal_"))
+            {
+                listBox5.Items.Add(type.name);
+            }
             foreach (TypesFile tf in ModTypes)
             {
                 foreach (typesType type in tf.SerachTypes("zmbm_"))
@@ -1178,6 +1182,13 @@ namespace DayZeEditor
             foreach (TypesFile tf in ModTypes)
             {
                 foreach (typesType type in tf.SerachTypes("zmbf_"))
+                {
+                    listBox5.Items.Add(type.name);
+                }
+            }
+            foreach (TypesFile tf in ModTypes)
+            {
+                foreach (typesType type in tf.SerachTypes("animal_"))
                 {
                     listBox5.Items.Add(type.name);
                 }
@@ -1346,7 +1357,7 @@ namespace DayZeEditor
                 }
                 else
                 {
-                    MessageBox.Show("Infected Type allready in teh list.....");
+                    MessageBox.Show("Infected Type allready in the list.....");
                 }
             }
         }
@@ -5727,7 +5738,29 @@ namespace DayZeEditor
             if (FemaleLoadoutLB.Items.Count > 0)
                 FemaleLoadoutLB.SelectedIndex = 0;
         }
+        private void SpawnXNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentSpawnPosition[0] = (float)SpawnXNUD.Value;
+            SpawnSettings.isDirty = true;
+            pictureBox4.Invalidate();
+        }
 
+        private void SpawnYNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentSpawnPosition[1] = (float)SpawnYNUD.Value;
+            SpawnSettings.isDirty = true;
+            pictureBox4.Invalidate();
+        }
+
+        private void SpawnZNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentSpawnPosition[2] = (float)SpawnZNUD.Value;
+            SpawnSettings.isDirty = true;
+            pictureBox4.Invalidate();
+        }
         #endregion SpawnSettings
 
         #region TerritorySettings
@@ -5997,6 +6030,7 @@ namespace DayZeEditor
             VehicleSettings.DesyncInvulnerabilityTimeoutSeconds = DesyncInvulnerabilityTimeoutSecondsNUD.Value;
             VehicleSettings.isDirty = true;
         }
+
 
 
 

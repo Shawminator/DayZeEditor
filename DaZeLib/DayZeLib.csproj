@@ -123,6 +123,19 @@
     <Compile Include="ExpansionMarket\TraderModelMapping.cs" />
     <Compile Include="ExpansionMarket\Traders.cs" />
     <Compile Include="ExpansionMarket\TraderZones.cs" />
+    <Compile Include="ExpansionQuests\NPCs\ExpansionQuestNPCs.cs" />
+    <Compile Include="ExpansionQuests\Objectives\QuestObjectivesAIPatrol.cs" />
+    <Compile Include="ExpansionQuests\Objectives\QuestObjectivesAction.cs" />
+    <Compile Include="ExpansionQuests\Objectives\QuestObjectives.cs" />
+    <Compile Include="ExpansionQuests\Objectives\QuestObjectivesAICamp.cs" />
+    <Compile Include="ExpansionQuests\Objectives\QuestObjectivesAIVIP.cs" />
+    <Compile Include="ExpansionQuests\Objectives\QuestObjectivesCollection.cs" />
+    <Compile Include="ExpansionQuests\Objectives\QuestObjectivesDelivery.cs" />
+    <Compile Include="ExpansionQuests\Objectives\QuestObjectivesTreasureHunt.cs" />
+    <Compile Include="ExpansionQuests\Objectives\QuestObjectovesTarget.cs" />
+    <Compile Include="ExpansionQuests\Objectives\QuestObjectivesTravel.cs" />
+    <Compile Include="ExpansionQuests\Quests\ExpansionQuests.cs" />
+    <Compile Include="ExpansionQuests\Settings\QuestSettings.cs" />
     <Compile Include="ExpansionSettings\AirdropSettings.cs" />
     <Compile Include="ExpansionAI\AISettings.cs" />
     <Compile Include="ExpansionSettings\BaseBuildingSettings.cs" />
@@ -168,6 +181,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ExpansionQuests\NPCs\NPCEmotes.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

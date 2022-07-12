@@ -35,6 +35,7 @@ namespace DayZeEditor
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.convertToExpansionMarketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportClassnameAndBuyPriceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -99,7 +100,6 @@ namespace DayZeEditor
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.exportClassnameAndBuyPriceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -198,6 +198,15 @@ namespace DayZeEditor
             this.convertToExpansionMarketToolStripMenuItem.Text = "Convert to Expansion Market";
             this.convertToExpansionMarketToolStripMenuItem.Click += new System.EventHandler(this.convertToExpansionMarketToolStripMenuItem_Click);
             // 
+            // exportClassnameAndBuyPriceToolStripMenuItem
+            // 
+            this.exportClassnameAndBuyPriceToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.exportClassnameAndBuyPriceToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.exportClassnameAndBuyPriceToolStripMenuItem.Name = "exportClassnameAndBuyPriceToolStripMenuItem";
+            this.exportClassnameAndBuyPriceToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
+            this.exportClassnameAndBuyPriceToolStripMenuItem.Text = "Export classname and Buy Price";
+            this.exportClassnameAndBuyPriceToolStripMenuItem.Click += new System.EventHandler(this.exportClassnameAndBuyPriceToolStripMenuItem_Click);
+            // 
             // tabControl3
             // 
             this.tabControl3.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
@@ -265,6 +274,11 @@ namespace DayZeEditor
             0,
             65536});
             this.VehicleCleanupTimerUpDown.Location = new System.Drawing.Point(16, 89);
+            this.VehicleCleanupTimerUpDown.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
             this.VehicleCleanupTimerUpDown.Name = "VehicleCleanupTimerUpDown";
             this.VehicleCleanupTimerUpDown.Size = new System.Drawing.Size(120, 20);
             this.VehicleCleanupTimerUpDown.TabIndex = 6;
@@ -306,6 +320,11 @@ namespace DayZeEditor
             0,
             65536});
             this.SafezoneTimeoutUpDown.Location = new System.Drawing.Point(16, 58);
+            this.SafezoneTimeoutUpDown.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
             this.SafezoneTimeoutUpDown.Name = "SafezoneTimeoutUpDown";
             this.SafezoneTimeoutUpDown.Size = new System.Drawing.Size(120, 20);
             this.SafezoneTimeoutUpDown.TabIndex = 6;
@@ -346,6 +365,11 @@ namespace DayZeEditor
             0,
             65536});
             this.ZombieCleanupTimerUpDown.Location = new System.Drawing.Point(16, 71);
+            this.ZombieCleanupTimerUpDown.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
             this.ZombieCleanupTimerUpDown.Name = "ZombieCleanupTimerUpDown";
             this.ZombieCleanupTimerUpDown.Size = new System.Drawing.Size(120, 20);
             this.ZombieCleanupTimerUpDown.TabIndex = 6;
@@ -386,6 +410,11 @@ namespace DayZeEditor
             0,
             65536});
             this.FireBarrelUpdateTimerUpDown.Location = new System.Drawing.Point(16, 89);
+            this.FireBarrelUpdateTimerUpDown.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
             this.FireBarrelUpdateTimerUpDown.Name = "FireBarrelUpdateTimerUpDown";
             this.FireBarrelUpdateTimerUpDown.Size = new System.Drawing.Size(120, 20);
             this.FireBarrelUpdateTimerUpDown.TabIndex = 6;
@@ -425,6 +454,11 @@ namespace DayZeEditor
             0,
             65536});
             this.StatUpdateTimerUpDown.Location = new System.Drawing.Point(16, 58);
+            this.StatUpdateTimerUpDown.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
             this.StatUpdateTimerUpDown.Name = "StatUpdateTimerUpDown";
             this.StatUpdateTimerUpDown.Size = new System.Drawing.Size(120, 20);
             this.StatUpdateTimerUpDown.TabIndex = 6;
@@ -465,6 +499,11 @@ namespace DayZeEditor
             0,
             65536});
             this.BuySellTimerUpDown.Location = new System.Drawing.Point(16, 71);
+            this.BuySellTimerUpDown.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
             this.BuySellTimerUpDown.Name = "BuySellTimerUpDown";
             this.BuySellTimerUpDown.Size = new System.Drawing.Size(120, 20);
             this.BuySellTimerUpDown.TabIndex = 6;
@@ -1019,15 +1058,6 @@ namespace DayZeEditor
             this.toolStripButton4.Size = new System.Drawing.Size(48, 25);
             this.toolStripButton4.Text = "Traders";
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
-            // 
-            // exportClassnameAndBuyPriceToolStripMenuItem
-            // 
-            this.exportClassnameAndBuyPriceToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.exportClassnameAndBuyPriceToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.exportClassnameAndBuyPriceToolStripMenuItem.Name = "exportClassnameAndBuyPriceToolStripMenuItem";
-            this.exportClassnameAndBuyPriceToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
-            this.exportClassnameAndBuyPriceToolStripMenuItem.Text = "Export classname and Buy Price";
-            this.exportClassnameAndBuyPriceToolStripMenuItem.Click += new System.EventHandler(this.exportClassnameAndBuyPriceToolStripMenuItem_Click);
             // 
             // DRJonesTrader_Manager
             // 

@@ -34,7 +34,6 @@ namespace DayZeEditor
         public TypesFile vanillatypes;
         public TypesFile Expansiontypes;
         public List<TypesFile> ModTypes;
-        public string filename;
         private bool useraction;
 
         private void listBox_DrawItem(object sender, DrawItemEventArgs e)
@@ -61,7 +60,6 @@ namespace DayZeEditor
         }
         private void ExpansionAI_Load(object sender, EventArgs e)
         {
-            filename = currentproject.ProjectName;
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
 
