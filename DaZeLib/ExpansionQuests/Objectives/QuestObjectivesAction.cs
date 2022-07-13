@@ -12,7 +12,6 @@ namespace DayZeLib
     {
         public BindingList<string> ActionNames { get; set; }
 
-        public QuestObjectivesAction() { }
         public override string ToString()
         {
             return ObjectiveText;

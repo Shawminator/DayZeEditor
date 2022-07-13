@@ -110,6 +110,14 @@ namespace DayZeLib
             Markedfordelete.Add(currentQuestNPC);
             NPCList.Remove(currentQuestNPC);
         }
+        public void RemoveQuest(Quests currentQuest)
+        {
+            foreach (ExpansionQuestNPCs npc in NPCList)
+            {
+                if (npc.QuestIDs.Contains(currentQuest.ID))
+                    npc.removequest(currentQuest);
+            }
+        }
     }
     public class ExpansionQuestNPCs
     {

@@ -133,6 +133,24 @@ namespace DayZeLib
                 }
             }
         }
+
+        public void RemoveObjectivesfromQuests(QuestObjectivesBase basequest)
+        {
+            foreach (Quests quest in QuestList)
+            {
+                List<QuestObjectivesBase> objectivestoremove = new List<QuestObjectivesBase>();
+                foreach (QuestObjectivesBase objective in quest.Objectives)
+                {
+                    if (objective.ObjectiveType == basequest.ObjectiveType && objective.ID == basequest.ID)
+                        objectivestoremove.Add(objective);
+                }
+                foreach(QuestObjectivesBase objbase in objectivestoremove)
+                {
+                    quest.Objectives.Remove(objbase);
+                    quest.isDirty = true;
+                }
+            }
+        }
     }
     public class Quests
     {

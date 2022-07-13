@@ -10,14 +10,14 @@ namespace DayZeLib
 {
     public class QuestObjectivesAIPatrol: QuestObjectivesBase
     {
-        public Aipatrol AIPatrol { get; set; }
+        public AIPatrol AIPatrol { get; set; }
         public decimal MinDistRadius { get; set; }
         public decimal MaxDistRadius { get; set; }
         public decimal DespawnRadius { get; set; }
 
         public QuestObjectivesAIPatrol()
         {
-            AIPatrol = new Aipatrol();
+            AIPatrol = new AIPatrol();
         }
         public override string ToString()
         {
@@ -25,7 +25,7 @@ namespace DayZeLib
         }
     }
 
-    public class Aipatrol
+    public class AIPatrol
     {
         public int NPCUnits { get; set; }
         public BindingList<float[]> Waypoints { get; set; }
@@ -37,7 +37,7 @@ namespace DayZeLib
         public int SpecialWeapon { get; set; }
         public BindingList<string> AllowedWeapons { get; set; }
 
-        public Aipatrol()
+        public AIPatrol()
         {
             Waypoints = new BindingList<float[]>();
             ClassNames = new BindingList<string>();

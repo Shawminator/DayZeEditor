@@ -28,11 +28,18 @@ namespace DayZeLib
     public class QuestObjectivesBase : IEquatable<QuestObjectivesBase>
     {
         [JsonIgnore]
+        public static readonly string[] Objectvetypesname = {"","", "Target", "Travel", "Collection", "Delivery", "TreasureHunt", "AIPatrol", "AICamp", "AIVIP", "Action"};
+        [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
         public bool isDirty = false;
         [JsonIgnore]
         public QuestType QuestType { get; set; }
+
+        public string[] getfoldernames()
+        {
+            return Objectvetypesname;
+        }
 
         public int ConfigVersion { get; set; }
         public int ID { get; set; }
@@ -51,6 +58,19 @@ namespace DayZeLib
                    this.ID == other.ID &&
                    this.ObjectiveType == other.ObjectiveType;
         }
+
+        public void backupandDelete(string questObjectivesPath)
+        {
+            string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
+            questObjectivesPath += "\\" + Objectvetypesname[(int)QuestType];
+            string Fullfilename = questObjectivesPath + "\\" + Filename + ".json";
+            if (File.Exists(Fullfilename))
+            {
+                Directory.CreateDirectory(questObjectivesPath + "\\Backup\\" + SaveTime);
+                File.Copy(Fullfilename, questObjectivesPath + "\\Backup\\" + SaveTime + "\\" + Filename + ".bak");
+                File.Delete(Fullfilename);
+            }
+        }
     }
     
 
@@ -59,6 +79,7 @@ namespace DayZeLib
         public static readonly string[] Objectvetypesname = { "Action", "AICamp", "AIPatrol", "AIVIP", "Collection", "Delivery", "Target", "Travel", "TreasureHunt" };
         public string QuestObjectiovesPath { get; set; }
         public BindingList<QuestObjectivesBase> Objectives { get; set; }
+        public List<QuestObjectivesBase> Markedfordelete { get; set; }
 
         public QuestObjectives(string m_QuestObjectiovesPath)
         {
@@ -99,5 +120,26 @@ namespace DayZeLib
             return null;
         }
 
+        public int GetNextQuestID(QuestType type)
+        {
+            List<int> Numberofobjectives = new List<int>();
+            foreach (QuestObjectivesBase objectives in Objectives)
+            {
+                if(objectives.QuestType == type)
+                    Numberofobjectives.Add(objectives.ID);
+            }
+            Numberofobjectives.Sort();
+            if (Numberofobjectives.Count == 0)
+                return 1;
+            List<int> result = Enumerable.Range(1, Numberofobjectives.Max() + 1).Except(Numberofobjectives).ToList();
+            result.Sort();
+            return result[0];
+        }
+        public void deleteObjective(QuestObjectivesBase quest)
+        {
+            if ( Markedfordelete == null)  Markedfordelete = new List<QuestObjectivesBase>();
+             Markedfordelete.Add(quest);
+            Objectives.Remove(quest);
+        }
     }
 }
