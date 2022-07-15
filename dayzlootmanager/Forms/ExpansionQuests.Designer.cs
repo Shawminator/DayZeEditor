@@ -255,6 +255,14 @@ namespace DayZeEditor
             this.darkLabel60 = new DarkUI.Controls.DarkLabel();
             this.QuestObjectivesCollectionClassnameTB = new System.Windows.Forms.TextBox();
             this.QuestObjectivesAIPositionsGB = new System.Windows.Forms.GroupBox();
+            this.darkButton31 = new DarkUI.Controls.DarkButton();
+            this.darkButton32 = new DarkUI.Controls.DarkButton();
+            this.darkLabel63 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel65 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel69 = new DarkUI.Controls.DarkLabel();
+            this.QiestObjectivesPositionXNUD = new System.Windows.Forms.NumericUpDown();
+            this.QiestObjectivesPositionYNUD = new System.Windows.Forms.NumericUpDown();
+            this.QiestObjectivesPositionZNUD = new System.Windows.Forms.NumericUpDown();
             this.questObjectivesPositionsLB = new System.Windows.Forms.ListBox();
             this.darkButton13 = new DarkUI.Controls.DarkButton();
             this.darkButton14 = new DarkUI.Controls.DarkButton();
@@ -325,14 +333,6 @@ namespace DayZeEditor
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.darkLabel63 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel65 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel69 = new DarkUI.Controls.DarkLabel();
-            this.QiestObjectivesPositionXNUD = new System.Windows.Forms.NumericUpDown();
-            this.QiestObjectivesPositionYNUD = new System.Windows.Forms.NumericUpDown();
-            this.QiestObjectivesPositionZNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkButton31 = new DarkUI.Controls.DarkButton();
-            this.darkButton32 = new DarkUI.Controls.DarkButton();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addNewActionObjectiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewAICampObjectiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -434,6 +434,9 @@ namespace DayZeEditor
             this.QuestObjectivesColectionGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.QuestObjectivesCollectionAmountNUD)).BeginInit();
             this.QuestObjectivesAIPositionsGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.QiestObjectivesPositionXNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QiestObjectivesPositionYNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QiestObjectivesPositionZNUD)).BeginInit();
             this.QuestObjectivesPositionGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.QuestObjectivesPosXNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.QuestObjectivesPosYNUD)).BeginInit();
@@ -462,9 +465,6 @@ namespace DayZeEditor
             this.panel47.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.QuestObjectiveTreasureHuntitemAmountNUD)).BeginInit();
             this.darkToolStrip23.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.QiestObjectivesPositionXNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.QiestObjectivesPositionYNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.QiestObjectivesPositionZNUD)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -3131,6 +3131,124 @@ namespace DayZeEditor
             this.QuestObjectivesAIPositionsGB.TabStop = false;
             this.QuestObjectivesAIPositionsGB.Text = "NPC AI Positions";
             // 
+            // darkButton31
+            // 
+            this.darkButton31.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton31.Location = new System.Drawing.Point(246, 47);
+            this.darkButton31.Name = "darkButton31";
+            this.darkButton31.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton31.Size = new System.Drawing.Size(106, 23);
+            this.darkButton31.TabIndex = 219;
+            this.darkButton31.Text = "Export to  .map";
+            this.darkButton31.Click += new System.EventHandler(this.darkButton31_Click);
+            // 
+            // darkButton32
+            // 
+            this.darkButton32.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton32.Location = new System.Drawing.Point(246, 18);
+            this.darkButton32.Name = "darkButton32";
+            this.darkButton32.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton32.Size = new System.Drawing.Size(106, 23);
+            this.darkButton32.TabIndex = 218;
+            this.darkButton32.Text = "Import from .map";
+            this.darkButton32.Click += new System.EventHandler(this.darkButton32_Click);
+            // 
+            // darkLabel63
+            // 
+            this.darkLabel63.AutoSize = true;
+            this.darkLabel63.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel63.Location = new System.Drawing.Point(226, 133);
+            this.darkLabel63.Name = "darkLabel63";
+            this.darkLabel63.Size = new System.Drawing.Size(14, 13);
+            this.darkLabel63.TabIndex = 217;
+            this.darkLabel63.Text = "Z";
+            // 
+            // darkLabel65
+            // 
+            this.darkLabel65.AutoSize = true;
+            this.darkLabel65.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel65.Location = new System.Drawing.Point(226, 108);
+            this.darkLabel65.Name = "darkLabel65";
+            this.darkLabel65.Size = new System.Drawing.Size(14, 13);
+            this.darkLabel65.TabIndex = 216;
+            this.darkLabel65.Text = "Y";
+            // 
+            // darkLabel69
+            // 
+            this.darkLabel69.AutoSize = true;
+            this.darkLabel69.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel69.Location = new System.Drawing.Point(226, 80);
+            this.darkLabel69.Name = "darkLabel69";
+            this.darkLabel69.Size = new System.Drawing.Size(14, 13);
+            this.darkLabel69.TabIndex = 215;
+            this.darkLabel69.Text = "X";
+            // 
+            // QiestObjectivesPositionXNUD
+            // 
+            this.QiestObjectivesPositionXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.QiestObjectivesPositionXNUD.DecimalPlaces = 6;
+            this.QiestObjectivesPositionXNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.QiestObjectivesPositionXNUD.Location = new System.Drawing.Point(246, 78);
+            this.QiestObjectivesPositionXNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.QiestObjectivesPositionXNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.QiestObjectivesPositionXNUD.Name = "QiestObjectivesPositionXNUD";
+            this.QiestObjectivesPositionXNUD.Size = new System.Drawing.Size(106, 20);
+            this.QiestObjectivesPositionXNUD.TabIndex = 212;
+            this.QiestObjectivesPositionXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.QiestObjectivesPositionXNUD.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged_1);
+            // 
+            // QiestObjectivesPositionYNUD
+            // 
+            this.QiestObjectivesPositionYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.QiestObjectivesPositionYNUD.DecimalPlaces = 6;
+            this.QiestObjectivesPositionYNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.QiestObjectivesPositionYNUD.Location = new System.Drawing.Point(246, 105);
+            this.QiestObjectivesPositionYNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.QiestObjectivesPositionYNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.QiestObjectivesPositionYNUD.Name = "QiestObjectivesPositionYNUD";
+            this.QiestObjectivesPositionYNUD.Size = new System.Drawing.Size(106, 20);
+            this.QiestObjectivesPositionYNUD.TabIndex = 213;
+            this.QiestObjectivesPositionYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.QiestObjectivesPositionYNUD.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged_1);
+            // 
+            // QiestObjectivesPositionZNUD
+            // 
+            this.QiestObjectivesPositionZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.QiestObjectivesPositionZNUD.DecimalPlaces = 6;
+            this.QiestObjectivesPositionZNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.QiestObjectivesPositionZNUD.Location = new System.Drawing.Point(246, 131);
+            this.QiestObjectivesPositionZNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.QiestObjectivesPositionZNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.QiestObjectivesPositionZNUD.Name = "QiestObjectivesPositionZNUD";
+            this.QiestObjectivesPositionZNUD.Size = new System.Drawing.Size(106, 20);
+            this.QiestObjectivesPositionZNUD.TabIndex = 214;
+            this.QiestObjectivesPositionZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.QiestObjectivesPositionZNUD.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged_1);
+            // 
             // questObjectivesPositionsLB
             // 
             this.questObjectivesPositionsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
@@ -3354,6 +3472,7 @@ namespace DayZeEditor
             "HALT",
             "LOOP",
             "ALTERNATE",
+            "HALT_OR_LOOP",
             "HALT_OR_ALTERNATE"});
             this.QuestObjectivesNPCModeCB.Location = new System.Drawing.Point(116, 0);
             this.QuestObjectivesNPCModeCB.Name = "QuestObjectivesNPCModeCB";
@@ -3469,7 +3588,8 @@ namespace DayZeEditor
             "Mercenaries",
             "Civilian",
             "Passive",
-            "Guards "});
+            "Guards ",
+            "Shamans"});
             this.QuestObjectivesNPCFactionCB.Location = new System.Drawing.Point(116, 0);
             this.QuestObjectivesNPCFactionCB.Name = "QuestObjectivesNPCFactionCB";
             this.QuestObjectivesNPCFactionCB.Size = new System.Drawing.Size(229, 21);
@@ -4002,124 +4122,6 @@ namespace DayZeEditor
             this.toolStripButton1.Text = "Objectives";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
-            // darkLabel63
-            // 
-            this.darkLabel63.AutoSize = true;
-            this.darkLabel63.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel63.Location = new System.Drawing.Point(226, 133);
-            this.darkLabel63.Name = "darkLabel63";
-            this.darkLabel63.Size = new System.Drawing.Size(14, 13);
-            this.darkLabel63.TabIndex = 217;
-            this.darkLabel63.Text = "Z";
-            // 
-            // darkLabel65
-            // 
-            this.darkLabel65.AutoSize = true;
-            this.darkLabel65.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel65.Location = new System.Drawing.Point(226, 108);
-            this.darkLabel65.Name = "darkLabel65";
-            this.darkLabel65.Size = new System.Drawing.Size(14, 13);
-            this.darkLabel65.TabIndex = 216;
-            this.darkLabel65.Text = "Y";
-            // 
-            // darkLabel69
-            // 
-            this.darkLabel69.AutoSize = true;
-            this.darkLabel69.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel69.Location = new System.Drawing.Point(226, 80);
-            this.darkLabel69.Name = "darkLabel69";
-            this.darkLabel69.Size = new System.Drawing.Size(14, 13);
-            this.darkLabel69.TabIndex = 215;
-            this.darkLabel69.Text = "X";
-            // 
-            // QiestObjectivesPositionXNUD
-            // 
-            this.QiestObjectivesPositionXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.QiestObjectivesPositionXNUD.DecimalPlaces = 6;
-            this.QiestObjectivesPositionXNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.QiestObjectivesPositionXNUD.Location = new System.Drawing.Point(246, 78);
-            this.QiestObjectivesPositionXNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.QiestObjectivesPositionXNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.QiestObjectivesPositionXNUD.Name = "QiestObjectivesPositionXNUD";
-            this.QiestObjectivesPositionXNUD.Size = new System.Drawing.Size(106, 20);
-            this.QiestObjectivesPositionXNUD.TabIndex = 212;
-            this.QiestObjectivesPositionXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.QiestObjectivesPositionXNUD.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged_1);
-            // 
-            // QiestObjectivesPositionYNUD
-            // 
-            this.QiestObjectivesPositionYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.QiestObjectivesPositionYNUD.DecimalPlaces = 6;
-            this.QiestObjectivesPositionYNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.QiestObjectivesPositionYNUD.Location = new System.Drawing.Point(246, 105);
-            this.QiestObjectivesPositionYNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.QiestObjectivesPositionYNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.QiestObjectivesPositionYNUD.Name = "QiestObjectivesPositionYNUD";
-            this.QiestObjectivesPositionYNUD.Size = new System.Drawing.Size(106, 20);
-            this.QiestObjectivesPositionYNUD.TabIndex = 213;
-            this.QiestObjectivesPositionYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.QiestObjectivesPositionYNUD.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged_1);
-            // 
-            // QiestObjectivesPositionZNUD
-            // 
-            this.QiestObjectivesPositionZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.QiestObjectivesPositionZNUD.DecimalPlaces = 6;
-            this.QiestObjectivesPositionZNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.QiestObjectivesPositionZNUD.Location = new System.Drawing.Point(246, 131);
-            this.QiestObjectivesPositionZNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.QiestObjectivesPositionZNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.QiestObjectivesPositionZNUD.Name = "QiestObjectivesPositionZNUD";
-            this.QiestObjectivesPositionZNUD.Size = new System.Drawing.Size(106, 20);
-            this.QiestObjectivesPositionZNUD.TabIndex = 214;
-            this.QiestObjectivesPositionZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.QiestObjectivesPositionZNUD.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged_1);
-            // 
-            // darkButton31
-            // 
-            this.darkButton31.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton31.Location = new System.Drawing.Point(246, 47);
-            this.darkButton31.Name = "darkButton31";
-            this.darkButton31.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton31.Size = new System.Drawing.Size(106, 23);
-            this.darkButton31.TabIndex = 219;
-            this.darkButton31.Text = "Export to  .map";
-            this.darkButton31.Click += new System.EventHandler(this.darkButton31_Click);
-            // 
-            // darkButton32
-            // 
-            this.darkButton32.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton32.Location = new System.Drawing.Point(246, 18);
-            this.darkButton32.Name = "darkButton32";
-            this.darkButton32.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton32.Size = new System.Drawing.Size(106, 23);
-            this.darkButton32.TabIndex = 218;
-            this.darkButton32.Text = "Import from .map";
-            this.darkButton32.Click += new System.EventHandler(this.darkButton32_Click);
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -4363,6 +4365,9 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.QuestObjectivesCollectionAmountNUD)).EndInit();
             this.QuestObjectivesAIPositionsGB.ResumeLayout(false);
             this.QuestObjectivesAIPositionsGB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.QiestObjectivesPositionXNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QiestObjectivesPositionYNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QiestObjectivesPositionZNUD)).EndInit();
             this.QuestObjectivesPositionGB.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.QuestObjectivesPosXNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.QuestObjectivesPosYNUD)).EndInit();
@@ -4405,9 +4410,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.QuestObjectiveTreasureHuntitemAmountNUD)).EndInit();
             this.darkToolStrip23.ResumeLayout(false);
             this.darkToolStrip23.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.QiestObjectivesPositionXNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.QiestObjectivesPositionYNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.QiestObjectivesPositionZNUD)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 

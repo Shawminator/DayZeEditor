@@ -216,12 +216,12 @@ namespace DayZeEditor
                 npcs.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(npcs, options);
-                if (currentproject.Createbackups && File.Exists(QuestsPath + "\\" + npcs.Filename + ".json"))
+                if (currentproject.Createbackups && File.Exists(QuestNPCPath + "\\" + npcs.Filename + ".json"))
                 {
                     Directory.CreateDirectory(QuestNPCPath + "\\Backup\\" + SaveTime);
-                    File.Copy(QuestsPath + "\\" + npcs.Filename + ".json", QuestsPath + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(npcs.Filename) + ".bak", true);
+                    File.Copy(QuestNPCPath + "\\" + npcs.Filename + ".json", QuestNPCPath + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(npcs.Filename) + ".bak", true);
                 }
-                File.WriteAllText(QuestsPath + "\\" + npcs.Filename + ".json", jsonString);
+                File.WriteAllText(QuestNPCPath + "\\" + npcs.Filename + ".json", jsonString);
                 midifiedfiles.Add(Path.GetFileName(npcs.Filename));
             }
             foreach (Quests Quest in QuestsList.QuestList)
@@ -931,6 +931,7 @@ namespace DayZeEditor
             ExpansionQuestNPCs npc = QuestQuestGiverIDCB.SelectedItem as ExpansionQuestNPCs;
             CurrentQuest.QuestGiverID = npc.ID;
             CurrentQuest.isDirty = true;
+            QuestNPCs.addQuesttoNPC(npc, CurrentQuest);
         }
         private void QuestQuestTurnInIDCB_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -938,6 +939,7 @@ namespace DayZeEditor
             ExpansionQuestNPCs npc = QuestQuestTurnInIDCB.SelectedItem as ExpansionQuestNPCs;
             CurrentQuest.QuestTurnInID = npc.ID;
             CurrentQuest.isDirty = true;
+            QuestNPCs.addQuesttoNPC(npc, CurrentQuest);
         }
         private void QuestIsAchivementCB_CheckedChanged(object sender, EventArgs e)
         {

@@ -118,6 +118,15 @@ namespace DayZeLib
                     npc.removequest(currentQuest);
             }
         }
+
+        public void addQuesttoNPC(ExpansionQuestNPCs npc, Quests currentQuest)
+        {
+            ExpansionQuestNPCs currentnpc = NPCList.FirstOrDefault(x => x.ID == npc.ID);
+            if (currentnpc == null) return;
+            if (!currentnpc.CurrentQuests.Equals(currentQuest))
+                currentnpc.AddNewQuest(currentQuest);
+
+        }
     }
     public class ExpansionQuestNPCs
     {

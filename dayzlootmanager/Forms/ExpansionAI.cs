@@ -890,6 +890,8 @@ namespace DayZeEditor
             CrashCanBeLootedCB.Checked = CurrentEventcrashpatrol.CanBeLooted == 1 ? true : false;
             CrashUnlimitedReloadCB.Checked = CurrentEventcrashpatrol.UnlimitedReload == 1 ? true : false;
             CrashLoadoutFileCB.SelectedIndex = CrashLoadoutFileCB.FindStringExact(CurrentEventcrashpatrol.LoadoutFile);
+            CrashFormationCB.SelectedIndex = CrashFormationCB.FindStringExact(CurrentEventcrashpatrol.Formation);
+            CrashWaypointInterpolationCB.SelectedIndex = CrashWaypointInterpolationCB.FindStringExact(CurrentEventcrashpatrol.WaypointInterpolation);
             useraction = true;
         }
         private void darkButton7_Click(object sender, EventArgs e)
@@ -1012,6 +1014,18 @@ namespace DayZeEditor
             CurrentEventcrashpatrol.CanBeLooted = CrashCanBeLootedCB.Checked == true ? 1 : 0;
             AIPatrolSettings.isDirty = true;
         }
+        private void CrashFormationCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentEventcrashpatrol.Formation = CrashFormationCB.GetItemText(CrashFormationCB.SelectedItem);
+            AIPatrolSettings.isDirty = true;
+        }
+        private void CrashWaypointInterpolationCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentEventcrashpatrol.WaypointInterpolation = CrashWaypointInterpolationCB.GetItemText(CrashWaypointInterpolationCB.SelectedItem);
+            AIPatrolSettings.isDirty = true;
+        }
         /// <summary>
         /// Stataic Patrol Settings
         /// </summary>
@@ -1037,6 +1051,8 @@ namespace DayZeEditor
             StaticPatrolLoadoutsCB.SelectedIndex = StaticPatrolLoadoutsCB.FindStringExact(CurrentPatrol.LoadoutFile);
             StaticPatrolMinSpreadRadiusNUD.Value = CurrentPatrol.MinSpreadRadius;
             StaticPatrolMaxSpreadRadiusNUD.Value = CurrentPatrol.MaxSpreadRadius;
+            StaticPatrolFormationCB.SelectedIndex = StaticPatrolFormationCB.FindStringExact(CurrentPatrol.Formation);
+            StaticPatrolWaypointInterpolationCB.SelectedIndex = StaticPatrolWaypointInterpolationCB.FindStringExact(CurrentPatrol.WaypointInterpolation);
 
             StaticPatrolWayPointsLB.DisplayMember = "DisplayName";
             StaticPatrolWayPointsLB.ValueMember = "Value";
@@ -1196,6 +1212,18 @@ namespace DayZeEditor
             CurrentWapypoint[2] = (float)StaticPatrolWaypointPOSZNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
+        private void StaticPatrolFormationCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPatrol.Formation = StaticPatrolFormationCB.GetItemText(StaticPatrolFormationCB.SelectedItem);
+            AIPatrolSettings.isDirty = true;
+        }
+        private void StaticPatrolWaypointInterpolationCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPatrol.WaypointInterpolation = StaticPatrolWaypointInterpolationCB.GetItemText(StaticPatrolWaypointInterpolationCB.SelectedItem);
+            AIPatrolSettings.isDirty = true;
+        }
         private void darkButton4_Click(object sender, EventArgs e)
         {
             Patrols newpatrol = new Patrols()
@@ -1326,8 +1354,8 @@ namespace DayZeEditor
         }
 
 
+
+
         #endregion AISettings
-
-
     }
 }

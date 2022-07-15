@@ -12,7 +12,7 @@ namespace DayZeLib
     public class AIPatrolSettings
     {
         [JsonIgnore]
-        const int CurrentVersion = 6;
+        const int CurrentVersion = 7;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -63,6 +63,7 @@ namespace DayZeLib
         public string Name { get; set; }
 
         public string Faction { get; set; }
+        public string Formation { get; set; }
         public string LoadoutFile { get; set; }
         public int NumberOfAI { get; set; }
         public string Behaviour { get; set; }
@@ -76,6 +77,7 @@ namespace DayZeLib
         public decimal MinSpreadRadius { get; set; }
         public decimal MaxSpreadRadius { get; set; }
         public decimal Chance { get; set; }
+        public string WaypointInterpolation { get; set; }
         public string ClassName { get; set; }
 
         public override string ToString()
@@ -90,6 +92,7 @@ namespace DayZeLib
         public string Name { get; set; }
 
         public string Faction { get; set; }
+        public string Formation { get; set; }
         public string LoadoutFile { get; set; }
         public int NumberOfAI { get; set; }
         public string Behaviour { get; set; }
@@ -103,6 +106,7 @@ namespace DayZeLib
         public decimal MinSpreadRadius { get; set; }
         public decimal MaxSpreadRadius { get; set; }
         public decimal Chance { get; set; }
+        public string WaypointInterpolation { get; set; }
         public decimal RespawnTime { get; set; }
         public BindingList<float[]> Waypoints { get; set; }
 

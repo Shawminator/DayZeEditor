@@ -10,7 +10,7 @@ namespace DayZeLib
 {
     public class AirdropsettingsJson
     {
-        const int CurrentVersion = 0; //Had set to 2, not sure why. wiki shows as still version 0
+        const int CurrentVersion = 0; 
 
         public int m_Version { get; set; }
         public int ServerMarkerOnDropLocation { get; set; }

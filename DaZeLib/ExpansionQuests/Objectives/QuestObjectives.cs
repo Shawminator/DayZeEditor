@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Numerics;
-using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeLib
@@ -40,7 +37,6 @@ namespace DayZeLib
         {
             return Objectvetypesname;
         }
-
         public int ConfigVersion { get; set; }
         public int ID { get; set; }
         public int ObjectiveType { get; set; }
