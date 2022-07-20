@@ -32,7 +32,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.6.3";
+        public string VersionNumber = "0.6.5";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -90,6 +90,7 @@ namespace DayZeEditor
                     Projects.getActiveProject().SetcfgEffectAreaConfig();
                     Projects.getActiveProject().SetEvents();
                     Projects.getActiveProject().seteventspawns();
+                    Projects.getActiveProject().seteventgroups();
                     Projects.getActiveProject().SetRandompresets();
                     Projects.getActiveProject().SetSpawnabletypes();
                     Projects.getActiveProject().SetGlobals();

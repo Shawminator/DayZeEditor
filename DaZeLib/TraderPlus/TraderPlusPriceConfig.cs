@@ -92,12 +92,12 @@ namespace DayZeLib
                 product += ((float)item.Coefficient / 100).ToString() + ",";
                 product += item.MaxStock.ToString() + ",";
 
-                if (item.MaxStock > 0 && item.MaxStock < 1)
-                    product += item.MaxStock.ToString("F2") + ",";
+                if (item.TradeQuantity > 0 && item.TradeQuantity < 1)
+                    product += item.TradeQuantity.ToString("F2") + ",";
                 else
-                    product += item.MaxStock.ToString("F0") + ",";
+                    product += item.TradeQuantity.ToString("F0") + ",";
 
-                product += item.TradeQuantity.ToString() + ",";
+                //product += item.TradeQuantity.ToString() + ",";
                 product += item.BuyPrice.ToString() + ",";
                 if(item.Sellprice > 0 && item.Sellprice < 1)
                     product += item.Sellprice.ToString("F2");

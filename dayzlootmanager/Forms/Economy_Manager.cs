@@ -72,7 +72,7 @@ namespace DayZeEditor
         private void Economy_Manager_Load(object sender, EventArgs e)
         {
             isUserInteraction = false;
-            WeatherTabPage.ItemSize = new Size(0, 1);
+            EconomyTabPage.ItemSize = new Size(0, 1);
 
             filename = currentproject.ProjectName;
             vanillatypes = currentproject.getvanillatypes();
@@ -93,6 +93,7 @@ namespace DayZeEditor
             PopulateTreeView();
             Loadevents();
             LoadeventSpawns();
+            LoadeventSpawnsGroup();
             LoadRandomPresets();
             LoadSpawnableTypes();
             populateEconmyTreeview();
@@ -227,6 +228,18 @@ namespace DayZeEditor
                     midifiedfiles.Add(Path.GetFileName(currentproject.cfgeventspawns.Filename));
                 }
             }
+            if (currentproject.cfgeventgroups != null)
+            {
+                if (currentproject.cfgeventgroups.isDirty)
+                {
+                    if (currentproject.Createbackups)
+                        currentproject.cfgeventgroups.SaveEventGroups(SaveTime);
+                    else
+                        currentproject.cfgeventgroups.SaveEventGroups();
+                    currentproject.cfgeventgroups.isDirty = false;
+                    midifiedfiles.Add(Path.GetFileName(currentproject.cfgeventgroups.Filename));
+                }
+            }
 
             if (currentproject.spawnabletypesList != null)
             {
@@ -336,77 +349,83 @@ namespace DayZeEditor
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            WeatherTabPage.SelectedIndex = 0;
-            if (tabControl3.SelectedIndex == 0)
+            EconomyTabPage.SelectedIndex = 0;
+            if (EconomyTabPage.SelectedIndex == 0)
                 toolStripButton3.Checked = true;
         }
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
-            WeatherTabPage.SelectedIndex = 1;
-            if (tabControl3.SelectedIndex == 1)
+            EconomyTabPage.SelectedIndex = 1;
+            if (EconomyTabPage.SelectedIndex == 1)
                 toolStripButton5.Checked = true;
         }
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
-            WeatherTabPage.SelectedIndex = 2;
-            if (tabControl3.SelectedIndex == 2)
+            EconomyTabPage.SelectedIndex = 2;
+            if (EconomyTabPage.SelectedIndex == 2)
                 toolStripButton6.Checked = true;
         }
         private void toolStripButton8_Click(object sender, EventArgs e)
         {
-            WeatherTabPage.SelectedIndex = 3;
-            if (tabControl3.SelectedIndex == 3)
+            EconomyTabPage.SelectedIndex = 3;
+            if (EconomyTabPage.SelectedIndex == 3)
                 toolStripButton8.Checked = true;
         }
         private void toolStripButton9_Click(object sender, EventArgs e)
         {
-            WeatherTabPage.SelectedIndex = 4;
-            if (tabControl3.SelectedIndex == 4)
+            EconomyTabPage.SelectedIndex = 4;
+            if (EconomyTabPage.SelectedIndex == 4)
                 toolStripButton9.Checked = true;
         }
         private void toolStripButton10_Click(object sender, EventArgs e)
         {
-            WeatherTabPage.SelectedIndex = 5;
-            if (tabControl3.SelectedIndex == 5)
+            EconomyTabPage.SelectedIndex = 5;
+            if (EconomyTabPage.SelectedIndex == 5)
                 toolStripButton10.Checked = true;
         }
         private void toolStripButton12_Click(object sender, EventArgs e)
         {
-            WeatherTabPage.SelectedIndex = 6;
-            if (tabControl3.SelectedIndex == 6)
+            EconomyTabPage.SelectedIndex = 6;
+            if (EconomyTabPage.SelectedIndex == 6)
                 toolStripButton12.Checked = true;
         }
         private void toolStripButton11_Click(object sender, EventArgs e)
         {
-            WeatherTabPage.SelectedIndex = 7;
-            if (tabControl3.SelectedIndex == 7)
+            EconomyTabPage.SelectedIndex = 7;
+            if (EconomyTabPage.SelectedIndex == 7)
                 toolStripButton11.Checked = true;
         }
         private void toolStripButton13_Click(object sender, EventArgs e)
         {
-            WeatherTabPage.SelectedIndex = 8;
-            if (tabControl3.SelectedIndex == 8)
+            EconomyTabPage.SelectedIndex = 8;
+            if (EconomyTabPage.SelectedIndex == 8)
                 toolStripButton13.Checked = true;
         }
         private void toolStripButton14_Click(object sender, EventArgs e)
         {
-            WeatherTabPage.SelectedIndex = 9;
-            if (tabControl3.SelectedIndex == 9)
+            EconomyTabPage.SelectedIndex = 9;
+            if (EconomyTabPage.SelectedIndex == 9)
                 toolStripButton14.Checked = true;
         }
         private void toolStripButton15_Click(object sender, EventArgs e)
         {
-            WeatherTabPage.SelectedIndex = 10;
-            if (tabControl3.SelectedIndex == 10)
+            EconomyTabPage.SelectedIndex = 10;
+            if (EconomyTabPage.SelectedIndex == 10)
                 toolStripButton15.Checked = true;
         }
         private void toolStripButton16_Click(object sender, EventArgs e)
         {
-            WeatherTabPage.SelectedIndex = 11;
-            if (tabControl3.SelectedIndex == 11)
+            EconomyTabPage.SelectedIndex = 11;
+            if (EconomyTabPage.SelectedIndex == 11)
                 toolStripButton16.Checked = true;
         }
-        private void tabControl4_SelectedIndexChanged(object sender, EventArgs e)
+        private void toolStripButton17_Click(object sender, EventArgs e)
+        {
+            EconomyTabPage.SelectedIndex = 12;
+            if (EconomyTabPage.SelectedIndex == 12)
+                toolStripButton17.Checked = true;
+        }
+        private void EconomyTabPage_SelectedIndexChanged(object sender, EventArgs e)
         {
             toolStripButton3.Checked = false;
             toolStripButton5.Checked = false;
@@ -420,48 +439,7 @@ namespace DayZeEditor
             toolStripButton14.Checked = false;
             toolStripButton15.Checked = false;
             toolStripButton16.Checked = false;
-            switch (WeatherTabPage.SelectedIndex)
-            {
-                case 0:
-                    toolStripButton3.Checked = true;
-                    break;
-                case 1:
-                    toolStripButton5.Checked = true;
-                    break;
-                case 2:
-                    toolStripButton6.Checked = true;
-                    break;
-                case 3:
-                    toolStripButton8.Checked = true;
-                    break;
-                case 4:
-                    toolStripButton9.Checked = true;
-                    break;
-                case 5:
-                    toolStripButton10.Checked = true;
-                    pictureBox2.Invalidate();
-                    break;
-                case 6:
-                    toolStripButton12.Checked = true;
-                    break;
-                case 7:
-                    toolStripButton11.Checked = true;
-                    break;
-                case 8:
-                    toolStripButton13.Checked = true;
-                    break;
-                case 9:
-                    toolStripButton14.Checked = true;
-                    break;
-                case 10:
-                    toolStripButton15.Checked = true;
-                    break;
-                case 11:
-                    toolStripButton16.Checked = true;
-                    break;
-                default:
-                    break;
-            }
+            toolStripButton17.Checked = false;
         }
         #endregion formsstuff
         #region Types
@@ -1907,69 +1885,279 @@ namespace DayZeEditor
             Loadevents();
             populateEconmyTreeview();
         }
+        private void CreateeventSpawnButton_Click(object sender, EventArgs e)
+        {
+            eventposdefEvent newvenspawn = new eventposdefEvent()
+            {
+                name = CurrentEvent.name,
+                zone = null,
+                pos = null
+            };
+            eventposdef.@event.Add(newvenspawn);
+            TreeNode neweventspawn = new TreeNode(CurrentEvent.name);
+            neweventspawn.Tag = newvenspawn;
+            EventSpawnTV.Nodes[0].Nodes.Add(neweventspawn);
+            currentproject.cfgeventspawns.isDirty = true;
+            MessageBox.Show(CurrentEvent.name + " Event spawn Added");
+        }
         #endregion events
         #region eventspawn
         public eventposdef eventposdef;
         public eventposdefEvent eventposdefEvent;
         public eventposdefEventPos eventposdefEventPos;
+        public eventposdefEventZone eventposdefEventZone;
         private void LoadeventSpawns()
         {
             isUserInteraction = false;
             var sortedListInstance = new BindingList<eventposdefEvent>(currentproject.cfgeventspawns.eventposdef.@event.OrderBy(x => x.name).ToList());
             currentproject.cfgeventspawns.eventposdef.@event = sortedListInstance;
             eventposdef = currentproject.cfgeventspawns.eventposdef;
+            isUserInteraction = true;
 
-            EventSpawnLB.DisplayMember = "DisplayName";
-            EventSpawnLB.ValueMember = "Value";
-            EventSpawnLB.DataSource = eventposdef.@event;
-
+            SetUpeventspawnTreeview();
 
             isUserInteraction = true;
         }
-        private void EventSpawnLB_SelectedIndexChanged(object sender, EventArgs e)
+        private void SetUpeventspawnTreeview()
         {
-            if (EventSpawnLB.SelectedItem as eventposdefEvent == eventposdefEvent) { return; }
-            if (EventSpawnLB.SelectedIndex == -1) { return; }
-            eventposdefEvent = EventSpawnLB.SelectedItem as eventposdefEvent;
+            EventSpawnTV.Nodes.Clear();
+            TreeNode rootnoot = new TreeNode(Path.GetFileName(currentproject.cfgeventspawns.Filename));
+            rootnoot.Tag = "EventSpawnParent";
+            foreach(eventposdefEvent eventspawn in eventposdef.@event)
+            {
+                TreeNode newevent = new TreeNode(eventspawn.ToString());
+                newevent.Tag = eventspawn;
+                if(eventspawn.zone!= null)
+                {
+                    eventposdefEventZone zone = eventspawn.zone;
+                    TreeNode zonenode = new TreeNode("zone");
+                    zonenode.Name = "ZONE";
+                    zonenode.Tag = zone;
+                    newevent.Nodes.Add(zonenode);
+                }
+                if(eventspawn.pos != null && eventspawn.pos.Count > 0)
+                {
+                    TreeNode eventposnodes = new TreeNode("pos");
+                    eventposnodes.Name = "POS";
+                    eventposnodes.Tag = "PosParent";
+                    foreach(eventposdefEventPos pos in eventspawn.pos)
+                    {
+                        TreeNode posnodes = new TreeNode(pos.ToString());
+                        posnodes.Tag = pos;
+                        eventposnodes.Nodes.Add(posnodes);
+                    }
+                    newevent.Nodes.Add(eventposnodes);
+                }
+                rootnoot.Nodes.Add(newevent);
+            }
+            EventSpawnTV.Nodes.Add(rootnoot);
+        }
+        private void EventSpawnTV_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            foreach (ToolStripMenuItem TSMI in EventSpawnContextMenu.Items)
+            {
+                TSMI.Visible = false;
+            }
+            EventSpawnTV.SelectedNode = e.Node;
+            EventspawnZoneGB.Visible = false;
+            EventspawnPositionGB.Visible = false;
+            EventSpawnInfoGB.Visible = false;
             isUserInteraction = false;
-
-            EventSpawnNameTB.Text = eventposdefEvent.name;
-
-            EventSpawnPosLB.DisplayMember = "DisplayName";
-            EventSpawnPosLB.ValueMember = "Value";
-            EventSpawnPosLB.DataSource = eventposdefEvent.pos;
-
-            pictureBox1.Invalidate();
+            if (e.Node.Tag != null && e.Node.Tag is string)
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    if (e.Node.Tag.ToString() == "EventSpawnParent")
+                    {
+                        addNewEventSpawnToolStripMenuItem.Visible = true;
+                        EventSpawnContextMenu.Show(Cursor.Position);
+                    }
+                }
+            }
+            else if (e.Node.Tag != null && e.Node.Tag is eventposdefEvent)
+            {
+                eventposdefEvent = e.Node.Tag as eventposdefEvent;
+                EventSpawnInfoGB.Visible = true;
+                eventSpawnNameTB.Text = eventposdefEvent.name;
+                if (eventposdefEvent.zone == null)
+                    EventspawnUseZoneCB.Checked = false;
+                else
+                    EventspawnUseZoneCB.Checked = true;
+                if (e.Button == MouseButtons.Right)
+                {
+                    addNewPosirtionToolStripMenuItem.Visible = true;
+                    importPositionFromdzeToolStripMenuItem.Visible = true;
+                    importPositionAndCreateEventgroupFormdzeToolStripMenuItem.Visible = true;
+                    deleteSelectedEventSpawnToolStripMenuItem.Visible = true;
+                    if (eventposdefEvent.pos != null && eventposdefEvent.pos.Count > 0)
+                    {
+                        removeAllPositionToolStripMenuItem.Visible = true;
+                        exportPositionTodzeToolStripMenuItem.Visible = true;
+                    }
+                    EventSpawnContextMenu.Show(Cursor.Position);
+                }
+            }
+            else if (e.Node.Tag != null && e.Node.Tag is eventposdefEventZone)
+            {
+                EventspawnZoneGB.Visible = true;
+                eventposdefEventZone = e.Node.Tag as eventposdefEventZone;
+                eventzonesminNUD.Value = eventposdefEventZone.smin;
+                eventzonesmaxNUD.Value = eventposdefEventZone.smax;
+                eventzonedminNUD.Value = eventposdefEventZone.dmin;
+                eventzonedmaxNUD.Value = eventposdefEventZone.dmax;
+                eventzonedNUD.Value = eventposdefEventZone.r;
+            }
+            else if (e.Node.Tag != null && e.Node.Tag is eventposdefEventPos)
+            {
+                eventposdefEvent = e.Node.Parent.Parent.Tag as eventposdefEvent;
+                eventposdefEventPos = e.Node.Tag as eventposdefEventPos;
+                EventspawnPositionGB.Visible = true;
+                EventSpawnPosXNUD.Value = eventposdefEventPos.x;
+                if (EventSpawnPosYNUD.Visible = checkBox50.Checked = eventposdefEventPos.ySpecified)
+                {
+                    EventSpawnPosYNUD.Value = eventposdefEventPos.y;
+                }
+                EventSpawnPosZNUD.Value = eventposdefEventPos.z;
+                if (EventSpawnPosANUD.Visible = checkBox51.Checked = eventposdefEventPos.aSpecified)
+                    EventSpawnPosANUD.Value = eventposdefEventPos.a;
+                if (eventposdefEventPos.@group != null)
+                {
+                    EventSpawnGroupTB.Visible = true;
+                    checkBox64.Checked = true;
+                    EventSpawnGroupTB.Text = eventposdefEventPos.group;
+                }
+                else
+                {
+                    EventSpawnGroupTB.Visible = false;
+                    checkBox64.Checked = false;
+                }
+                pictureBox1.Invalidate();
+                if (e.Button == MouseButtons.Right)
+                {
+                    removeSelectedPositionToolStripMenuItem.Visible = true;
+                    if(eventposdefEventPos.group != null)
+                    {
+                        exportGroupSpawnTodzeToolStripMenuItem.Visible = true;
+                    }
+                    EventSpawnContextMenu.Show(Cursor.Position);
+                }
+            }
             isUserInteraction = true;
         }
-        private void EventSpawnNameTB_TextChanged(object sender, EventArgs e)
+        private void checkBox64_CheckedChanged(object sender, EventArgs e)
+        {
+            EventSpawnGroupTB.Visible = checkBox64.Checked;
+            if (!isUserInteraction) return;
+            if (checkBox64.Checked)
+            {
+                eventposdefEventPos.group = "New Group Name, Please change";
+                EventSpawnGroupTB.Text = eventposdefEventPos.group;
+            }
+            else
+                eventposdefEventPos.group = null;
+            currentproject.cfgeventspawns.isDirty = true;
+        }
+        private void eventSpawnNameTB_TextChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            eventposdefEvent.name = EventSpawnNameTB.Text;
+            if (EventSpawnTV.SelectedNode.Tag is eventposdefEvent)
+            {
+                eventposdefEvent.name = EventSpawnTV.SelectedNode.Text = eventSpawnNameTB.Text;
+            }
             currentproject.cfgeventspawns.isDirty = true;
-            EventSpawnLB.Refresh();
         }
-        private void EventSpawnPosLB_SelectedIndexChanged(object sender, EventArgs e)
+        private void EventspawnUseZoneCB_CheckedChanged(object sender, EventArgs e)
         {
-            if (EventSpawnPosLB.SelectedItem as eventposdefEventPos == eventposdefEventPos) { return; }
-            if (EventSpawnPosLB.SelectedIndex == -1) { return; }
-            eventposdefEventPos = EventSpawnPosLB.SelectedItem as eventposdefEventPos;
-            isUserInteraction = false;
-
-            IsYvalueusedCB.Checked = eventposdefEventPos.ySpecified;
-            EventSpawnPosXNUD.Value = eventposdefEventPos.x;
-            if (eventposdefEventPos.ySpecified)
+            if (!isUserInteraction) return;
+            if (EventspawnUseZoneCB.Checked)
+            {
+                eventposdefEvent.zone = new eventposdefEventZone()
+                {
+                    smax = 0,
+                    smin = 0,
+                    dmin = 0,
+                    dmax = 0,
+                    r = 0
+                };
+                TreeNode zonenode = new TreeNode("zone");
+                zonenode.Name = "ZONE";
+                zonenode.Tag = eventposdefEvent.zone;
+                EventSpawnTV.SelectedNode.Nodes.Add(zonenode);
+            }
+            else
+            {
+                TreeNode zonennode = EventSpawnTV.SelectedNode.Nodes.Find("ZONE", false)[0];
+                zonennode.Remove();
+                eventposdefEvent.zone = null;
+            }
+            currentproject.cfgeventspawns.isDirty = true;
+        }
+        private void checkBox50_CheckedChanged(object sender, EventArgs e)
+        {
+            EventSpawnPosYNUD.Visible = checkBox50.Checked;
+            if (!isUserInteraction) return;
+            if(checkBox50.Checked)
+            {
+                eventposdefEventPos.y = 0;
+                eventposdefEventPos.ySpecified = true;
                 EventSpawnPosYNUD.Value = eventposdefEventPos.y;
-            EventSpawnPosZNUD.Value = eventposdefEventPos.z;
-            EventSpawnPosANUD.Value = eventposdefEventPos.a;
-
-            pictureBox1.Invalidate();
-            isUserInteraction = true;
+            }
+            else
+            {
+                eventposdefEventPos.ySpecified = false;
+            }
+            currentproject.cfgeventspawns.isDirty = true;
+        }
+        private void checkBox51_CheckedChanged(object sender, EventArgs e)
+        {
+            EventSpawnPosANUD.Visible = checkBox51.Checked;
+            if (!isUserInteraction) return;
+            if (checkBox51.Checked)
+            {
+                eventposdefEventPos.a = 0;
+                eventposdefEventPos.aSpecified = true;
+                EventSpawnPosANUD.Value = eventposdefEventPos.a;
+            }
+            else
+            {
+                eventposdefEventPos.aSpecified = false;
+            }
+            currentproject.cfgeventspawns.isDirty = true;
+        }
+        private void eventzonesminNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            eventposdefEventZone.smin = (int)eventzonesminNUD.Value;
+            currentproject.cfgeventspawns.isDirty = true;
+        }
+        private void eventzonesmaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            eventposdefEventZone.smax = (int)eventzonesmaxNUD.Value;
+            currentproject.cfgeventspawns.isDirty = true;
+        }
+        private void eventzonedminNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            eventposdefEventZone.dmin = (int)eventzonedminNUD.Value;
+            currentproject.cfgeventspawns.isDirty = true;
+        }
+        private void eventzonedmaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            eventposdefEventZone.dmax = (int)eventzonedmaxNUD.Value;
+            currentproject.cfgeventspawns.isDirty = true;
+        }
+        private void eventzonedNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            eventposdefEventZone.r = (int)eventzonedNUD.Value;
+            currentproject.cfgeventspawns.isDirty = true;
         }
         private void DrawAllEventSpawns(object sender, PaintEventArgs e)
         {
             if (eventposdefEvent == null) return;
-            eventposdefEventPos currentpos = EventSpawnPosLB.SelectedItem as eventposdefEventPos;
+            eventposdefEventPos currentpos = EventSpawnTV.SelectedNode.Tag as eventposdefEventPos;
             if (currentpos == null) return;
             foreach (eventposdefEventPos newpos in eventposdefEvent.pos)
             {
@@ -1981,7 +2169,7 @@ namespace DayZeEditor
                 Pen pen = new Pen(Color.Red, 4);
                 if (newpos == currentpos)
                     pen.Color = Color.LimeGreen;
-                getCircle(e.Graphics, pen, center, radius);
+                getEventCircle(e.Graphics, pen, center, radius);
             }
         }
         private void SetEventSpawnScale()
@@ -2022,7 +2210,6 @@ namespace DayZeEditor
                 }
                 Cursor.Current = Cursors.Default;
                 currentproject.cfgeventspawns.isDirty = true;
-                EventSpawnPosLB.Refresh();
                 pictureBox1.Invalidate();
             }
         }
@@ -2031,6 +2218,7 @@ namespace DayZeEditor
             if (!isUserInteraction) return;
             eventposdefEventPos.x = EventSpawnPosXNUD.Value;
             currentproject.cfgeventspawns.isDirty = true;
+            EventSpawnTV.SelectedNode.Text = eventposdefEventPos.ToString();
             pictureBox1.Invalidate();
         }
         private void EventSpawnPosYNUD_ValueChanged(object sender, EventArgs e)
@@ -2045,31 +2233,20 @@ namespace DayZeEditor
             if (!isUserInteraction) return;
             eventposdefEventPos.z = EventSpawnPosZNUD.Value;
             currentproject.cfgeventspawns.isDirty = true;
+            EventSpawnTV.SelectedNode.Text = eventposdefEventPos.ToString();
             pictureBox1.Invalidate();
         }
         private void EventSpawnPosANUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
+            eventposdefEventPos.group = EventSpawnGroupTB.Text;
+            currentproject.cfgeventspawns.isDirty = true;
+        }
+        private void EventSpawnGroupTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
             eventposdefEventPos.a = EventSpawnPosANUD.Value;
             currentproject.cfgeventspawns.isDirty = true;
-        }
-        private void darkButton57_Click(object sender, EventArgs e)
-        {
-            eventposdefEvent newvenspawn = new eventposdefEvent()
-            {
-                name = "NewEventSpawn",
-                zone = null,
-                pos = null
-            };
-            eventposdef.@event.Add(newvenspawn);
-            currentproject.cfgeventspawns.isDirty = true;
-        }
-        private void darkButton56_Click(object sender, EventArgs e)
-        {
-            eventposdef.@event.Remove(eventposdefEvent);
-            eventposdefEvent = null;
-            currentproject.cfgeventspawns.isDirty = true;
-            pictureBox1.Invalidate();
         }
         private void darkButton59_Click(object sender, EventArgs e)
         {
@@ -2083,9 +2260,6 @@ namespace DayZeEditor
                 eventposdefEvent.pos = new BindingList<eventposdefEventPos>();
             }
             eventposdefEvent.pos.Add(newpos);
-            EventSpawnPosLB.Invalidate();
-            EventSpawnPosLB.SelectedIndex = -1;
-            EventSpawnPosLB.SelectedIndex = EventSpawnPosLB.Items.Count - 1;
             currentproject.cfgeventspawns.isDirty = true;
             pictureBox1.Invalidate();
         }
@@ -2095,7 +2269,552 @@ namespace DayZeEditor
             currentproject.cfgeventspawns.isDirty = true;
             pictureBox1.Invalidate();
         }
+        private void darkButton62_Click(object sender, EventArgs e)
+        {
+            if (eventposdefEvent == null) return;
+            OpenFileDialog openfile = new OpenFileDialog();
+            openfile.DefaultExt = ".map";
+            if (openfile.ShowDialog() == DialogResult.OK)
+            {
+                string[] fileContent = File.ReadAllLines(openfile.FileName);
+                eventposdefEvent.pos = new BindingList<eventposdefEventPos>();
+                for (int i = 0; i < fileContent.Length; i++)
+                {
+                    if (fileContent[i] == "") continue;
+                    string[] linesplit = fileContent[i].Split('|');
+                    string[] XYZ = linesplit[1].Split(' ');
+                    string a = linesplit[2].Split(' ')[0];
+                    eventposdefEventPos newpos = new eventposdefEventPos()
+                    {
+                        x = Convert.ToDecimal(XYZ[0]),
+                        ySpecified = true,
+                        y = Convert.ToDecimal(XYZ[1]),
+                        z = Convert.ToDecimal(XYZ[2]),
+                        aSpecified = true,
+                        a = Convert.ToDecimal(a)
+                    };
+                    eventposdefEvent.pos.Add(newpos);
+
+                }
+                currentproject.cfgeventspawns.isDirty = true;
+            }
+        }
+        private void darkButton61_Click(object sender, EventArgs e)
+        {
+            if (eventposdefEvent == null || eventposdefEvent.pos == null || eventposdefEvent.pos.Count == 0) return;
+            eventsEvent selectedeevent = geteventfromspawn(eventposdefEvent.name);
+            if (selectedeevent == null) return;
+            string classname = selectedeevent.children[0].type;
+            StringBuilder sb = new StringBuilder();
+            foreach (eventposdefEventPos pos in eventposdefEvent.pos)
+            {
+                sb.Append(classname + "|" + pos.x.ToString("F6") + " " + pos.y.ToString("F6") + " " + pos.z.ToString("F6") + "|" + pos.a.ToString("F6") + " 0.000000 0.000000" + Environment.NewLine);
+            }
+            SaveFileDialog savefile = new SaveFileDialog();
+            savefile.DefaultExt = ".map";
+            if (savefile.ShowDialog() == DialogResult.OK)
+            {
+                File.WriteAllText(savefile.FileName, sb.ToString());
+            }
+
+        }
+        public eventsEvent geteventfromspawn(string name)
+        {
+            foreach (eventscofig eventsconfig in currentproject.ModEventsList)
+            {
+                eventsEvent ee = eventsconfig.events.@event.FirstOrDefault(x => x.name == name);
+                if (ee == null)
+                    continue;
+                else
+                    return ee;
+            }
+            return null;
+        }
+        private void addNewEventSpawnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            eventposdefEvent newvenspawn = new eventposdefEvent()
+            {
+                name = "NewEventSpawn",
+                zone = null,
+                pos = null
+            };
+            eventposdef.@event.Add(newvenspawn);
+            TreeNode neweventspawn = new TreeNode("NewEventSpawn");
+            neweventspawn.Tag = newvenspawn;
+            EventSpawnTV.SelectedNode.Nodes.Add(neweventspawn);
+            currentproject.cfgeventspawns.isDirty = true;
+        }
+        private void deleteSelectedEventSpawnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            eventposdef.@event.Remove(eventposdefEvent);
+            eventposdefEvent = null;
+            EventSpawnTV.SelectedNode.Remove();
+            currentproject.cfgeventspawns.isDirty = true;
+            pictureBox1.Invalidate();
+        }
+        private void importPositionsFromMapToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void importPositionFromdzeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    DZE importfile = JsonSerializer.Deserialize<DZE>(File.ReadAllText(filePath));
+                    TreeNode eventposnodes = null;
+                    if (eventposdefEvent.pos == null || eventposdefEvent.pos.Count == 0)
+                    {
+                        eventposdefEvent.pos = new BindingList<eventposdefEventPos>();
+                        if (!EventSpawnTV.SelectedNode.Nodes.ContainsKey("POS"))
+                        {
+                            eventposnodes = new TreeNode("pos");
+                            eventposnodes.Name = "POS";
+                            eventposnodes.Tag = "PosParent";
+                        }
+                        else
+                        {
+                            eventposnodes = EventSpawnTV.SelectedNode.Nodes.Find("POS", false)[0];
+                        }
+                    }
+                    else
+                    {
+                        eventposnodes = EventSpawnTV.SelectedNode.Nodes.Find("POS", false)[0];
+                        DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            eventposdefEvent.pos = new BindingList<eventposdefEventPos>();
+                            eventposnodes.Nodes.Clear();
+                            
+                        }
+                        eventposnodes.Remove();
+                    }
+                    
+                    foreach (Editorobject eo in importfile.EditorObjects)
+                    {
+                        eventposdefEventPos newpos = new eventposdefEventPos()
+                        {
+                            x = Convert.ToDecimal(eo.Position[0]),
+                            ySpecified = true,
+                            y = Convert.ToDecimal(eo.Position[1]),
+                            z = Convert.ToDecimal(eo.Position[2]),
+                            aSpecified = true,
+                            a = Convert.ToDecimal(eo.Orientation[0]),
+                            group = null
+
+                        };
+                        eventposdefEvent.pos.Add(newpos);
+                    }
+                    foreach (eventposdefEventPos pos in eventposdefEvent.pos)
+                    {
+                        TreeNode posnodes = new TreeNode(pos.ToString());
+                        posnodes.Tag = pos;
+                        eventposnodes.Nodes.Add(posnodes);
+                    }
+                    EventSpawnTV.SelectedNode.Nodes.Add(eventposnodes);
+                    currentproject.cfgeventspawns.isDirty = true;
+                }
+            }
+        }
+        private void importPositionAndCreateEventgroupFormdzeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    DZE importfile = JsonSerializer.Deserialize<DZE>(File.ReadAllText(filePath));
+                    AddItemfromString form = new AddItemfromString();
+                    form.TitleLable = "Enter Name of Event Group";
+                    DialogResult result = form.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        string Groupname = "";
+                        List<string> addedtypes = form.addedtypes.ToList();
+                        foreach (string l in addedtypes)
+                        {
+                            Groupname = l;
+                        }
+                        TreeNode eventposnodes = null;
+                        if (eventposdefEvent.pos == null || eventposdefEvent.pos.Count == 0)
+                        {
+                            eventposdefEvent.pos = new BindingList<eventposdefEventPos>();
+                            if (!EventSpawnTV.SelectedNode.Nodes.ContainsKey("POS"))
+                            {
+                                eventposnodes = new TreeNode("pos");
+                                eventposnodes.Name = "POS";
+                                eventposnodes.Tag = "PosParent";
+                            }
+                            else
+                            {
+                                eventposnodes = EventSpawnTV.SelectedNode.Nodes.Find("POS", false)[0];
+                            }
+                        }
+                        else
+                        {
+                            eventposnodes = EventSpawnTV.SelectedNode.Nodes.Find("POS", false)[0];
+                            DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                eventposdefEvent.pos = new BindingList<eventposdefEventPos>();
+                                eventposnodes.Nodes.Clear();
+
+                            }
+                            eventposnodes.Remove();
+                        }
+                        eventposdefEventPos newpos = new eventposdefEventPos()
+                        {
+                            x = Convert.ToDecimal(importfile.EditorObjects[0].Position[0]),
+                            ySpecified = true,
+                            y = Convert.ToDecimal(importfile.EditorObjects[0].Position[1]),
+                            z = Convert.ToDecimal(importfile.EditorObjects[0].Position[2]),
+                            aSpecified = true,
+                            a = 0,
+                            group = Groupname
+
+                        };
+                        eventposdefEvent.pos.Add(newpos);
+                        TreeNode posnodes = new TreeNode(newpos.ToString());
+                        posnodes.Tag = newpos;
+                        eventposnodes.Nodes.Add(posnodes);
+                        EventSpawnTV.SelectedNode.Nodes.Add(eventposnodes);
+                        currentproject.cfgeventspawns.isDirty = true;
+                        eventgroupdefGroup newvengroup = new eventgroupdefGroup()
+                        {
+                            name = Groupname,
+                            child = new BindingList<eventgroupdefGroupChild>()
+                        };
+                        
+                        TreeNode neweventspawn = new TreeNode(Groupname);
+                        neweventspawn.Tag = newvengroup;
+                        foreach (Editorobject eo in importfile.EditorObjects)
+                        {
+                            if (eo.Orientation[0] < 0)
+                                eo.Orientation[0] = 360 + eo.Orientation[0];
+                            eventgroupdefGroupChild eventgroupdefGroupChild = new eventgroupdefGroupChild()
+                            {
+                                type = eo.Type,
+                                x = (decimal)(eo.Position[0]) - newpos.x,
+                                ySpecified = true,
+                                y = (decimal)(eo.Position[1]) - newpos.y,
+                                z = (decimal)(eo.Position[2]) - newpos.z,
+                                a = (decimal)(eo.Orientation[0]),
+                                delootSpecified = true,
+                                deloot = 0,
+                                lootminSpecified = true,
+                                lootmin = 1,
+                                lootmaxSpecified = true,
+                                lootmax = 3
+                            };
+                            TreeNode eventgroupchile = new TreeNode(eventgroupdefGroupChild.type);
+                            eventgroupchile.Tag = eventgroupdefGroupChild;
+                            neweventspawn.Nodes.Add(eventgroupchile);
+                            newvengroup.child.Add(eventgroupdefGroupChild);
+                        }
+                        eventgroupdef.group.Add(newvengroup);
+                        eventspawngroupTV.Nodes[0].Nodes.Add(neweventspawn);
+                        currentproject.cfgeventgroups.isDirty = true;
+                    }
+                }
+            }
+        }
+        private void removeAllPositionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (EventSpawnTV.SelectedNode.Nodes.ContainsKey("POS"))
+            {
+                EventSpawnTV.SelectedNode.Nodes.Find("POS", false)[0].Remove();
+            }
+            eventposdefEvent.pos = new BindingList<eventposdefEventPos>();
+            currentproject.cfgeventspawns.isDirty = true;
+        }
+        private void exportPositionsTomapToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void exportPositionTodzeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void addNewPosirtionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            eventposdefEventPos newpos = new eventposdefEventPos()
+            {
+                x = currentproject.MapSize / 2,
+                z = currentproject.MapSize / 2
+            };
+            if (eventposdefEvent.pos == null)
+            {
+                eventposdefEvent.pos = new BindingList<eventposdefEventPos>();
+            }
+            eventposdefEvent.pos.Add(newpos);
+            currentproject.cfgeventspawns.isDirty = true;
+            pictureBox1.Invalidate();
+            TreeNode eventposnodes = null;
+            if (!EventSpawnTV.SelectedNode.Nodes.ContainsKey("POS"))
+            {
+                eventposnodes = new TreeNode("pos");
+                eventposnodes.Name = "POS";
+                eventposnodes.Tag = "PosParent";
+                EventSpawnTV.SelectedNode.Nodes.Add(eventposnodes);
+            }
+            else
+            {
+                eventposnodes = EventSpawnTV.SelectedNode.Nodes.Find("POS", false)[0];
+            }
+            TreeNode posnodes = new TreeNode(newpos.ToString());
+            posnodes.Tag = newpos;
+            eventposnodes.Nodes.Add(posnodes);
+            
+            currentproject.cfgeventspawns.isDirty = true;
+        }
+        private void removeSelectedPositionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            eventposdefEvent.pos.Remove(eventposdefEventPos);
+            currentproject.cfgeventspawns.isDirty = true;
+            EventSpawnTV.SelectedNode.Remove();
+            pictureBox1.Invalidate();
+        }
+        private void exportGroupSpawnTodzeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            eventgroupdefGroup eventgroupdefGroup = eventgroupdef.getassociatedgroup(eventposdefEventPos.group);
+            if (eventgroupdefGroup == null) return;
+            DZE newdze = new DZE()
+            {
+                CameraPosition = new float[] { (float)eventposdefEventPos.x, (float)(eventposdefEventPos.y + 8), (float)eventposdefEventPos.z },
+                MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath.Split('_')[0]),
+                EditorObjects = new List<Editorobject>(),
+                EditorDeletedObjects = new List<object>()
+            };
+            foreach(eventgroupdefGroupChild eventgroupdefGroupChild in eventgroupdefGroup.child)
+            {
+                Editorobject newobject = new Editorobject()
+                {
+                    Position = new float[] 
+                    {
+                       (float)(eventposdefEventPos.x + eventgroupdefGroupChild.x),
+                       (float)(eventposdefEventPos.y + eventgroupdefGroupChild.y),
+                       (float)(eventposdefEventPos.z + eventgroupdefGroupChild.z)
+                    },
+                    Orientation = new float[]
+                    {
+                        (float)(eventposdefEventPos.a + eventgroupdefGroupChild.a),
+                        0,
+                        0
+                    },
+                    DisplayName = eventgroupdefGroupChild.type,
+                    Type = eventgroupdefGroupChild.type,
+                    Scale = 1.0f,
+                    Flags = 2147483647
+                };
+                newdze.EditorObjects.Add(newobject);
+            }
+            SaveFileDialog save = new SaveFileDialog();
+            save.FileName = eventgroupdefGroup.name;
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                string jsonString = JsonSerializer.Serialize(newdze, options);
+                File.WriteAllText(save.FileName + ".dze", jsonString);
+            }
+        }
         #endregion eventspawns
+        #region evetngroups
+        public eventgroupdef eventgroupdef;
+        public eventgroupdefGroup eventgroupdefGroup;
+        public eventgroupdefGroupChild eventgroupdefGroupChild;
+        public void LoadeventSpawnsGroup()
+        {
+            isUserInteraction = false;
+            var sortedListInstance = new BindingList<eventgroupdefGroup>(currentproject.cfgeventgroups.eventgroupdef.group.OrderBy(x => x.name).ToList());
+            currentproject.cfgeventgroups.eventgroupdef.group = sortedListInstance;
+            eventgroupdef = currentproject.cfgeventgroups.eventgroupdef;
+            SetupEventSpawnGroupTreeView();
+            isUserInteraction = true;
+        }
+        private void SetupEventSpawnGroupTreeView()
+        {
+            eventspawngroupTV.Nodes.Clear();
+            TreeNode rootnoot = new TreeNode(Path.GetFileName(currentproject.cfgeventgroups.Filename));
+            rootnoot.Tag = "EventGroupParent";
+            foreach (eventgroupdefGroup eventspawngroup in eventgroupdef.group)
+            {
+                TreeNode neweventgroup = new TreeNode(eventspawngroup.ToString());
+                neweventgroup.Tag = eventspawngroup;
+                if (eventspawngroup.child != null && eventspawngroup.child.Count > 0)
+                {
+                    foreach (eventgroupdefGroupChild child in eventspawngroup.child)
+                    {
+                        TreeNode childnode = new TreeNode(child.ToString());
+                        childnode.Tag = child;
+                        neweventgroup.Nodes.Add(childnode);
+                    }
+                }
+                rootnoot.Nodes.Add(neweventgroup);
+            }
+            eventspawngroupTV.Nodes.Add(rootnoot);
+        }
+        private void eventspawngroupTV_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            foreach (ToolStripMenuItem TSMI in EventgroupContextMenu.Items)
+            {
+                TSMI.Visible = false;
+            }
+            eventspawngroupTV.SelectedNode = e.Node;
+            isUserInteraction = false;
+            if (e.Node.Tag != null && e.Node.Tag is string)
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    if (e.Node.Tag.ToString() == "EventGroupParent")
+                    {
+                        addNewGroupToolStripMenuItem.Visible = true;
+                        EventgroupContextMenu.Show(Cursor.Position);
+                    }
+                }
+            }
+            else if (e.Node.Tag != null && e.Node.Tag is eventgroupdefGroup)
+            {
+                eventgroupdefGroup = e.Node.Tag as eventgroupdefGroup;
+                if (e.Button == MouseButtons.Right)
+                {
+                    addChildToolStripMenuItem.Visible = true;
+                    removeGroupToolStripMenuItem.Visible = true;
+                    //importChildrenFromdzeToolStripMenuItem.Visible = true;
+                    EventgroupContextMenu.Show(Cursor.Position);
+                }
+            }
+            else if (e.Node.Tag != null && e.Node.Tag is eventgroupdefGroupChild)
+            {
+                eventgroupdefGroupChild = e.Node.Tag as eventgroupdefGroupChild;
+                eventgroupnameTB.Text = eventgroupdefGroupChild.type;
+                eventgroupXNUD.Value = eventgroupdefGroupChild.x;
+                eventgroupYNUD.Value = eventgroupdefGroupChild.y;
+                eventgroupZNUD.Value = eventgroupdefGroupChild.z;
+                eventgroupANUD.Value = eventgroupdefGroupChild.a;
+                eventgroupdelootNUD.Value = eventgroupdefGroupChild.deloot;
+                eventgroupLootminNUD.Value = eventgroupdefGroupChild.lootmin;
+                eventgrouplootmaxNUD.Value = eventgroupdefGroupChild.lootmax;
+                if (e.Button == MouseButtons.Right)
+                {
+                    removeChildToolStripMenuItem.Visible = true;
+                    EventgroupContextMenu.Show(Cursor.Position);
+                }
+            }
+            isUserInteraction = true;
+        }
+        private void addNewGroupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            eventgroupdefGroup newvengroup = new eventgroupdefGroup()
+            {
+                name = "NewEventGroup",
+                child = new BindingList<eventgroupdefGroupChild>()
+            };
+            eventgroupdef.group.Add(newvengroup);
+            TreeNode neweventspawn = new TreeNode("NewEventGroup");
+            neweventspawn.Tag = newvengroup;
+            eventspawngroupTV.SelectedNode.Nodes.Add(neweventspawn);
+            currentproject.cfgeventgroups.isDirty = true;
+        }
+        private void addChildToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            eventgroupdefGroupChild eventgroupdefGroupChild = new eventgroupdefGroupChild()
+            {
+                type = "ClassName, Replace me please....",
+                x = 0,
+                ySpecified = true,
+                y = 0,
+                z = 0,
+                a = 0,
+                delootSpecified = true,
+                deloot = 0,
+                lootminSpecified = true,
+                lootmin = 1,
+                lootmaxSpecified = true,
+                lootmax = 3
+            };
+            TreeNode eventgroupchile = new TreeNode(eventgroupdefGroupChild.type);
+            eventgroupchile.Tag = eventgroupdefGroupChild;
+            eventspawngroupTV.SelectedNode.Nodes.Add(eventgroupchile);
+            eventgroupdefGroup.child.Add(eventgroupdefGroupChild);
+            currentproject.cfgeventgroups.isDirty = true;
+        }
+        private void removeGroupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            eventgroupdef.group.Remove(eventgroupdefGroup);
+            eventspawngroupTV.SelectedNode.Remove();
+            currentproject.cfgeventgroups.isDirty = true;
+        }
+        private void removeChildToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            eventgroupdefGroup eventgroupdefGroup = eventspawngroupTV.SelectedNode.Parent.Tag as eventgroupdefGroup;
+            eventspawngroupTV.SelectedNode.Remove();
+            eventgroupdefGroup.child.Remove(eventgroupdefGroupChild);
+            currentproject.cfgeventgroups.isDirty = true;
+        }
+        private void importChildrenFromdzeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string Eventgroupname = eventgroupdefGroup.name;
+            eventposdefEventPos eventspawn = eventposdef.findeventgroup(Eventgroupname);
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    DZE importfile = JsonSerializer.Deserialize<DZE>(File.ReadAllText(filePath));
+                }
+            }
+        }
+        private void eventgroupnameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            eventgroupdefGroupChild.type = eventgroupnameTB.Text;
+            currentproject.cfgeventgroups.isDirty = true;
+        }
+        private void eventgroupXNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            eventgroupdefGroupChild.x = eventgroupXNUD.Value;
+            currentproject.cfgeventgroups.isDirty = true;
+        }
+        private void eventgroupYNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            eventgroupdefGroupChild.y = eventgroupYNUD.Value;
+            currentproject.cfgeventgroups.isDirty = true;
+        }
+        private void eventgroupZNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            eventgroupdefGroupChild.z = eventgroupZNUD.Value;
+            currentproject.cfgeventgroups.isDirty = true;
+        }
+        private void eventgroupANUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            eventgroupdefGroupChild.a = eventgroupANUD.Value;
+            currentproject.cfgeventgroups.isDirty = true;
+        }
+        private void eventgroupdelootNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            eventgroupdefGroupChild.deloot = (int)eventgroupdelootNUD.Value;
+            currentproject.cfgeventgroups.isDirty = true;
+        }
+        private void eventgroupLootminNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            eventgroupdefGroupChild.lootmin = (int)eventgroupLootminNUD.Value;
+            currentproject.cfgeventgroups.isDirty = true;
+        }
+        private void eventgrouplootmaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            eventgroupdefGroupChild.lootmax = (int)eventgrouplootmaxNUD.Value;
+            currentproject.cfgeventgroups.isDirty = true;
+        }
+        #endregion eventgroups
         #region spawnabletypes
         public Spawnabletypesconfig currentspawnabletypesfile;
         public spawnabletypesType CurrentspawnabletypesType;
@@ -2280,7 +2999,6 @@ namespace DayZeEditor
                 CargoItemAddButton.Visible = true;
                 CargoPresetTB.Visible = false;
                 CargoItemchanceNUD.Visible = true;
-                CargoItemchancelabel.Visible = true;
                 CargoItemLB.Visible = true;
                 cargochanceLabel.Visible = true;
                 CargoChangeItemButton.Visible = true;
@@ -2297,7 +3015,6 @@ namespace DayZeEditor
                 CargoItemAddButton.Visible = false;
                 CargoPresetTB.Visible = true;
                 CargoItemchanceNUD.Visible = false;
-                CargoItemchancelabel.Visible = false;
                 CargoItemLB.Visible = false;
                 CarcgoChanceNUD.Visible = false;
                 cargochanceLabel.Visible = false;
@@ -2485,8 +3202,28 @@ namespace DayZeEditor
             if (CargoItemLB.SelectedItems.Count == 0) return;
             spawnabletypesTypeCargoItem currentcargoitem = CargoItemLB.SelectedItem as spawnabletypesTypeCargoItem;
             isUserInteraction = false;
-            CargoItemchanceNUD.Value = currentcargoitem.chance;
+            if (currentcargoitem.chanceSpecified)
+            {
+                checkBox49.Checked = currentcargoitem.chanceSpecified;
+                CargoItemchanceNUD.Value = currentcargoitem.chance;
+            }
             isUserInteraction = true;
+        }
+        private void checkBox49_CheckedChanged(object sender, EventArgs e)
+        {
+            CargoItemchanceNUD.Visible = checkBox49.Checked;
+            if (!isUserInteraction) return;
+            spawnabletypesTypeCargoItem currentcargoitem = CargoItemLB.SelectedItem as spawnabletypesTypeCargoItem;
+            currentcargoitem.chanceSpecified = checkBox49.Checked;
+            if(currentcargoitem.chanceSpecified)
+            {
+                CargoItemchanceNUD.Value = currentcargoitem.chance = 1;
+            }
+            else
+            {
+
+            }
+            currentspawnabletypesfile.isDirty = true;
         }
         private void AttachmentItemLB_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -4568,70 +5305,7 @@ namespace DayZeEditor
             } 
         }
 
-        private void darkButton62_Click(object sender, EventArgs e)
-        {
-            if (eventposdefEvent == null)  return;
-            OpenFileDialog openfile = new OpenFileDialog();
-            openfile.DefaultExt = ".map";
-            if(openfile.ShowDialog() == DialogResult.OK)
-            {
-                string[] fileContent = File.ReadAllLines(openfile.FileName);
-                eventposdefEvent.pos = new BindingList<eventposdefEventPos>();
-                for (int i = 0; i < fileContent.Length; i++)
-                {
-                    if (fileContent[i] == "") continue;
-                    string[] linesplit = fileContent[i].Split('|');
-                    string[] XYZ = linesplit[1].Split(' ');
-                    string a = linesplit[2].Split(' ')[0];
-                    eventposdefEventPos newpos = new eventposdefEventPos()
-                    {
-                        x = Convert.ToDecimal(XYZ[0]),
-                        ySpecified = true,
-                        y = Convert.ToDecimal(XYZ[1]),
-                        z = Convert.ToDecimal(XYZ[2]),
-                        aSpecified = true,
-                        a = Convert.ToDecimal(a)
-                    };
-                    eventposdefEvent.pos.Add(newpos);
 
-                }
-                EventSpawnPosLB.SelectedIndex = -1;
-                EventSpawnPosLB.SelectedIndex = EventSpawnPosLB.Items.Count - 1;
-                EventSpawnPosLB.Invalidate();
-                currentproject.cfgeventspawns.isDirty = true;
-            }
-        }
-
-        private void darkButton61_Click(object sender, EventArgs e)
-        {
-            if (eventposdefEvent == null || eventposdefEvent.pos == null || eventposdefEvent.pos.Count == 0) return;
-            eventsEvent selectedeevent = geteventfromspawn(eventposdefEvent.name);
-            if (selectedeevent == null) return;
-            string classname = selectedeevent.children[0].type;
-            StringBuilder sb = new StringBuilder();
-            foreach(eventposdefEventPos pos in eventposdefEvent.pos)
-            {
-                sb.Append(classname + "|" + pos.x.ToString("F6") + " " + pos.y.ToString("F6") + " " + pos.z.ToString("F6") + "|" + pos.a.ToString("F6") + " 0.000000 0.000000" + Environment.NewLine);
-            }
-            SaveFileDialog savefile = new SaveFileDialog();
-            savefile.DefaultExt = ".map";
-            if (savefile.ShowDialog() == DialogResult.OK)
-            {
-                File.WriteAllText(savefile.FileName, sb.ToString());
-            }
-
-        }
-        public eventsEvent geteventfromspawn(string name)
-        {
-            foreach (eventscofig eventsconfig in currentproject.ModEventsList)
-            {
-                eventsEvent ee = eventsconfig.events.@event.FirstOrDefault(x => x.name == name);
-                if (ee == null)
-                    continue;
-                else
-                    return ee;
-            }
-            return null;
-        }
     }
+
 }

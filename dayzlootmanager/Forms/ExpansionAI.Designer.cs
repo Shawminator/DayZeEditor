@@ -66,6 +66,10 @@ namespace DayZeEditor
             this.AIPatrolSettingsEnabledCB = new System.Windows.Forms.CheckBox();
             this.RespawnTimeNUD = new System.Windows.Forms.NumericUpDown();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.CrashWaypointInterpolationCB = new System.Windows.Forms.ComboBox();
+            this.darkLabel50 = new DarkUI.Controls.DarkLabel();
+            this.CrashFormationCB = new System.Windows.Forms.ComboBox();
+            this.darkLabel49 = new DarkUI.Controls.DarkLabel();
             this.darkLabel10 = new DarkUI.Controls.DarkLabel();
             this.darkLabel38 = new DarkUI.Controls.DarkLabel();
             this.CrashDespawnRadiusNUD = new System.Windows.Forms.NumericUpDown();
@@ -98,6 +102,10 @@ namespace DayZeEditor
             this.darkButton7 = new DarkUI.Controls.DarkButton();
             this.EventCrachPatrolLB = new System.Windows.Forms.ListBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.StaticPatrolWaypointInterpolationCB = new System.Windows.Forms.ComboBox();
+            this.darkLabel48 = new DarkUI.Controls.DarkLabel();
+            this.StaticPatrolFormationCB = new System.Windows.Forms.ComboBox();
+            this.darkLabel47 = new DarkUI.Controls.DarkLabel();
             this.darkLabel39 = new DarkUI.Controls.DarkLabel();
             this.StaticPatrolDespawnRadiusNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel8 = new DarkUI.Controls.DarkLabel();
@@ -184,14 +192,8 @@ namespace DayZeEditor
             this.RemoveSetItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.StaticPatrolFormationCB = new System.Windows.Forms.ComboBox();
-            this.darkLabel47 = new DarkUI.Controls.DarkLabel();
-            this.StaticPatrolWaypointInterpolationCB = new System.Windows.Forms.ComboBox();
-            this.darkLabel48 = new DarkUI.Controls.DarkLabel();
-            this.CrashFormationCB = new System.Windows.Forms.ComboBox();
-            this.darkLabel49 = new DarkUI.Controls.DarkLabel();
-            this.CrashWaypointInterpolationCB = new System.Windows.Forms.ComboBox();
-            this.darkLabel50 = new DarkUI.Controls.DarkLabel();
+            this.darkButton14 = new DarkUI.Controls.DarkButton();
+            this.darkButton17 = new DarkUI.Controls.DarkButton();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -306,7 +308,7 @@ namespace DayZeEditor
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1212, 535);
+            this.tabPage1.Size = new System.Drawing.Size(1212, 618);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             // 
@@ -748,6 +750,59 @@ namespace DayZeEditor
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Object Patrols";
             // 
+            // CrashWaypointInterpolationCB
+            // 
+            this.CrashWaypointInterpolationCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CrashWaypointInterpolationCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CrashWaypointInterpolationCB.FormattingEnabled = true;
+            this.CrashWaypointInterpolationCB.Items.AddRange(new object[] {
+            "",
+            "CatmullRom",
+            "NaturalCubic",
+            "UniformCubic"});
+            this.CrashWaypointInterpolationCB.Location = new System.Drawing.Point(335, 380);
+            this.CrashWaypointInterpolationCB.Name = "CrashWaypointInterpolationCB";
+            this.CrashWaypointInterpolationCB.Size = new System.Drawing.Size(229, 21);
+            this.CrashWaypointInterpolationCB.TabIndex = 166;
+            this.CrashWaypointInterpolationCB.SelectedIndexChanged += new System.EventHandler(this.CrashWaypointInterpolationCB_SelectedIndexChanged);
+            // 
+            // darkLabel50
+            // 
+            this.darkLabel50.AutoSize = true;
+            this.darkLabel50.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel50.Location = new System.Drawing.Point(225, 383);
+            this.darkLabel50.Name = "darkLabel50";
+            this.darkLabel50.Size = new System.Drawing.Size(113, 13);
+            this.darkLabel50.TabIndex = 165;
+            this.darkLabel50.Text = "Waypoint Interpolation";
+            // 
+            // CrashFormationCB
+            // 
+            this.CrashFormationCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CrashFormationCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CrashFormationCB.FormattingEnabled = true;
+            this.CrashFormationCB.Items.AddRange(new object[] {
+            "Column",
+            "File",
+            "Vee",
+            "Wall",
+            "RANDOM"});
+            this.CrashFormationCB.Location = new System.Drawing.Point(335, 64);
+            this.CrashFormationCB.Name = "CrashFormationCB";
+            this.CrashFormationCB.Size = new System.Drawing.Size(229, 21);
+            this.CrashFormationCB.TabIndex = 164;
+            this.CrashFormationCB.SelectedIndexChanged += new System.EventHandler(this.CrashFormationCB_SelectedIndexChanged);
+            // 
+            // darkLabel49
+            // 
+            this.darkLabel49.AutoSize = true;
+            this.darkLabel49.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel49.Location = new System.Drawing.Point(225, 67);
+            this.darkLabel49.Name = "darkLabel49";
+            this.darkLabel49.Size = new System.Drawing.Size(53, 13);
+            this.darkLabel49.TabIndex = 163;
+            this.darkLabel49.Text = "Formation";
+            // 
             // darkLabel10
             // 
             this.darkLabel10.AutoSize = true;
@@ -1183,6 +1238,8 @@ namespace DayZeEditor
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.darkButton14);
+            this.groupBox5.Controls.Add(this.darkButton17);
             this.groupBox5.Controls.Add(this.StaticPatrolWaypointInterpolationCB);
             this.groupBox5.Controls.Add(this.darkLabel48);
             this.groupBox5.Controls.Add(this.StaticPatrolFormationCB);
@@ -1233,6 +1290,59 @@ namespace DayZeEditor
             this.groupBox5.TabIndex = 133;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "AI Patrols";
+            // 
+            // StaticPatrolWaypointInterpolationCB
+            // 
+            this.StaticPatrolWaypointInterpolationCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolWaypointInterpolationCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolWaypointInterpolationCB.FormattingEnabled = true;
+            this.StaticPatrolWaypointInterpolationCB.Items.AddRange(new object[] {
+            "",
+            "CatmullRom",
+            "NaturalCubic",
+            "UniformCubic"});
+            this.StaticPatrolWaypointInterpolationCB.Location = new System.Drawing.Point(342, 364);
+            this.StaticPatrolWaypointInterpolationCB.Name = "StaticPatrolWaypointInterpolationCB";
+            this.StaticPatrolWaypointInterpolationCB.Size = new System.Drawing.Size(229, 21);
+            this.StaticPatrolWaypointInterpolationCB.TabIndex = 164;
+            this.StaticPatrolWaypointInterpolationCB.SelectedIndexChanged += new System.EventHandler(this.StaticPatrolWaypointInterpolationCB_SelectedIndexChanged);
+            // 
+            // darkLabel48
+            // 
+            this.darkLabel48.AutoSize = true;
+            this.darkLabel48.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel48.Location = new System.Drawing.Point(232, 367);
+            this.darkLabel48.Name = "darkLabel48";
+            this.darkLabel48.Size = new System.Drawing.Size(113, 13);
+            this.darkLabel48.TabIndex = 163;
+            this.darkLabel48.Text = "Waypoint Interpolation";
+            // 
+            // StaticPatrolFormationCB
+            // 
+            this.StaticPatrolFormationCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolFormationCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolFormationCB.FormattingEnabled = true;
+            this.StaticPatrolFormationCB.Items.AddRange(new object[] {
+            "Column",
+            "File",
+            "Vee",
+            "Wall",
+            "RANDOM"});
+            this.StaticPatrolFormationCB.Location = new System.Drawing.Point(342, 46);
+            this.StaticPatrolFormationCB.Name = "StaticPatrolFormationCB";
+            this.StaticPatrolFormationCB.Size = new System.Drawing.Size(229, 21);
+            this.StaticPatrolFormationCB.TabIndex = 162;
+            this.StaticPatrolFormationCB.SelectedIndexChanged += new System.EventHandler(this.StaticPatrolFormationCB_SelectedIndexChanged);
+            // 
+            // darkLabel47
+            // 
+            this.darkLabel47.AutoSize = true;
+            this.darkLabel47.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel47.Location = new System.Drawing.Point(232, 49);
+            this.darkLabel47.Name = "darkLabel47";
+            this.darkLabel47.Size = new System.Drawing.Size(53, 13);
+            this.darkLabel47.TabIndex = 161;
+            this.darkLabel47.Text = "Formation";
             // 
             // darkLabel39
             // 
@@ -1812,7 +1922,7 @@ namespace DayZeEditor
             this.tabPage3.Controls.Add(this.loadoutsLB);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1212, 535);
+            this.tabPage3.Size = new System.Drawing.Size(1212, 618);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.ToolTipText = "\"LC_Table_xxxxxx\" for all Items // \"LC_Table_Weapons_xxxxxx\" for Weapons and pred" +
@@ -2375,111 +2485,27 @@ namespace DayZeEditor
             this.removeItemToolStripMenuItem.Text = "Remove item";
             this.removeItemToolStripMenuItem.Click += new System.EventHandler(this.removeItemToolStripMenuItem_Click);
             // 
-            // StaticPatrolFormationCB
+            // darkButton14
             // 
-            this.StaticPatrolFormationCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolFormationCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolFormationCB.FormattingEnabled = true;
-            this.StaticPatrolFormationCB.Items.AddRange(new object[] {
-            "Column",
-            "File",
-            "Vee",
-            "Wall",
-            "RANDOM"});
-            this.StaticPatrolFormationCB.Location = new System.Drawing.Point(342, 46);
-            this.StaticPatrolFormationCB.Name = "StaticPatrolFormationCB";
-            this.StaticPatrolFormationCB.Size = new System.Drawing.Size(229, 21);
-            this.StaticPatrolFormationCB.TabIndex = 162;
-            this.StaticPatrolFormationCB.SelectedIndexChanged += new System.EventHandler(this.StaticPatrolFormationCB_SelectedIndexChanged);
+            this.darkButton14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton14.Location = new System.Drawing.Point(408, 416);
+            this.darkButton14.Name = "darkButton14";
+            this.darkButton14.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton14.Size = new System.Drawing.Size(163, 23);
+            this.darkButton14.TabIndex = 166;
+            this.darkButton14.Text = "Export to DZE";
+            this.darkButton14.Click += new System.EventHandler(this.darkButton14_Click);
             // 
-            // darkLabel47
+            // darkButton17
             // 
-            this.darkLabel47.AutoSize = true;
-            this.darkLabel47.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel47.Location = new System.Drawing.Point(232, 49);
-            this.darkLabel47.Name = "darkLabel47";
-            this.darkLabel47.Size = new System.Drawing.Size(53, 13);
-            this.darkLabel47.TabIndex = 161;
-            this.darkLabel47.Text = "Formation";
-            // 
-            // StaticPatrolWaypointInterpolationCB
-            // 
-            this.StaticPatrolWaypointInterpolationCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolWaypointInterpolationCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolWaypointInterpolationCB.FormattingEnabled = true;
-            this.StaticPatrolWaypointInterpolationCB.Items.AddRange(new object[] {
-            "",
-            "CatmullRom",
-            "NaturalCubic",
-            "UniformCubic"});
-            this.StaticPatrolWaypointInterpolationCB.Location = new System.Drawing.Point(342, 364);
-            this.StaticPatrolWaypointInterpolationCB.Name = "StaticPatrolWaypointInterpolationCB";
-            this.StaticPatrolWaypointInterpolationCB.Size = new System.Drawing.Size(229, 21);
-            this.StaticPatrolWaypointInterpolationCB.TabIndex = 164;
-            this.StaticPatrolWaypointInterpolationCB.SelectedIndexChanged += new System.EventHandler(this.StaticPatrolWaypointInterpolationCB_SelectedIndexChanged);
-            // 
-            // darkLabel48
-            // 
-            this.darkLabel48.AutoSize = true;
-            this.darkLabel48.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel48.Location = new System.Drawing.Point(232, 367);
-            this.darkLabel48.Name = "darkLabel48";
-            this.darkLabel48.Size = new System.Drawing.Size(113, 13);
-            this.darkLabel48.TabIndex = 163;
-            this.darkLabel48.Text = "Waypoint Interpolation";
-            // 
-            // CrashFormationCB
-            // 
-            this.CrashFormationCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.CrashFormationCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CrashFormationCB.FormattingEnabled = true;
-            this.CrashFormationCB.Items.AddRange(new object[] {
-            "Column",
-            "File",
-            "Vee",
-            "Wall",
-            "RANDOM"});
-            this.CrashFormationCB.Location = new System.Drawing.Point(335, 64);
-            this.CrashFormationCB.Name = "CrashFormationCB";
-            this.CrashFormationCB.Size = new System.Drawing.Size(229, 21);
-            this.CrashFormationCB.TabIndex = 164;
-            this.CrashFormationCB.SelectedIndexChanged += new System.EventHandler(this.CrashFormationCB_SelectedIndexChanged);
-            // 
-            // darkLabel49
-            // 
-            this.darkLabel49.AutoSize = true;
-            this.darkLabel49.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel49.Location = new System.Drawing.Point(225, 67);
-            this.darkLabel49.Name = "darkLabel49";
-            this.darkLabel49.Size = new System.Drawing.Size(53, 13);
-            this.darkLabel49.TabIndex = 163;
-            this.darkLabel49.Text = "Formation";
-            // 
-            // CrashWaypointInterpolationCB
-            // 
-            this.CrashWaypointInterpolationCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.CrashWaypointInterpolationCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CrashWaypointInterpolationCB.FormattingEnabled = true;
-            this.CrashWaypointInterpolationCB.Items.AddRange(new object[] {
-            "",
-            "CatmullRom",
-            "NaturalCubic",
-            "UniformCubic"});
-            this.CrashWaypointInterpolationCB.Location = new System.Drawing.Point(335, 380);
-            this.CrashWaypointInterpolationCB.Name = "CrashWaypointInterpolationCB";
-            this.CrashWaypointInterpolationCB.Size = new System.Drawing.Size(229, 21);
-            this.CrashWaypointInterpolationCB.TabIndex = 166;
-            this.CrashWaypointInterpolationCB.SelectedIndexChanged += new System.EventHandler(this.CrashWaypointInterpolationCB_SelectedIndexChanged);
-            // 
-            // darkLabel50
-            // 
-            this.darkLabel50.AutoSize = true;
-            this.darkLabel50.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel50.Location = new System.Drawing.Point(225, 383);
-            this.darkLabel50.Name = "darkLabel50";
-            this.darkLabel50.Size = new System.Drawing.Size(113, 13);
-            this.darkLabel50.TabIndex = 165;
-            this.darkLabel50.Text = "Waypoint Interpolation";
+            this.darkButton17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton17.Location = new System.Drawing.Point(234, 416);
+            this.darkButton17.Name = "darkButton17";
+            this.darkButton17.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton17.Size = new System.Drawing.Size(159, 23);
+            this.darkButton17.TabIndex = 165;
+            this.darkButton17.Text = "Import From DZE";
+            this.darkButton17.Click += new System.EventHandler(this.darkButton17_Click);
             // 
             // ExpansionAI
             // 
@@ -2718,5 +2744,7 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkLabel darkLabel50;
         private System.Windows.Forms.ComboBox CrashFormationCB;
         private DarkUI.Controls.DarkLabel darkLabel49;
+        private DarkUI.Controls.DarkButton darkButton14;
+        private DarkUI.Controls.DarkButton darkButton17;
     }
 }

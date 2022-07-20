@@ -1104,6 +1104,30 @@ namespace DayZeEditor
 
             AIPatrolSettings.SetPatrolNames();
         }
+        private void darkButton17_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    DZE importfile = JsonSerializer.Deserialize<DZE>(File.ReadAllText(filePath));
+                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        CurrentPatrol.Waypoints.Clear();
+                    }
+                    foreach(Editorobject eo in importfile.EditorObjects)
+                    {
+                        float[] newfloatarray = new float[] { Convert.ToSingle(eo.Position[0]), Convert.ToSingle(eo.Position[1]), Convert.ToSingle(eo.Position[2]) };
+                        CurrentPatrol.Waypoints.Add(newfloatarray);
+                    }
+                    StaticPatrolWayPointsLB.SelectedIndex = -1;
+                    StaticPatrolWayPointsLB.SelectedIndex = StaticPatrolWayPointsLB.Items.Count - 1;
+                    StaticPatrolWayPointsLB.Refresh();
+                }
+            }
+        }
         private void StaticPatrolFactionCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -1272,6 +1296,35 @@ namespace DayZeEditor
             }
 
         }
+        private void darkButton14_Click(object sender, EventArgs e)
+        {
+            DZE newdze = new DZE()
+            {
+                MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
+            };
+            foreach (float[] array in CurrentPatrol.Waypoints)
+            {
+                Editorobject eo = new Editorobject()
+                {
+                    Type = "eAI_SurvivorM_Jose",
+                    DisplayName = "eAI_SurvivorM_Jose",
+                    Position = array,
+                    Orientation = new float[] {0,0,0},
+                    Scale = 1.0f,
+                    Flags = 2147483647
+                };
+                newdze.EditorObjects.Add(eo);
+            }
+            newdze.CameraPosition = newdze.EditorObjects[0].Position;
+            SaveFileDialog save = new SaveFileDialog();
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                string jsonString = JsonSerializer.Serialize(newdze, options);
+                File.WriteAllText(save.FileName + ".dze", jsonString);
+            }
+
+        }
         #endregion aipatrolsettings
         #region AISettings
         private void SetupAISettings()
@@ -1356,6 +1409,9 @@ namespace DayZeEditor
 
 
 
+
         #endregion AISettings
+
+
     }
 }

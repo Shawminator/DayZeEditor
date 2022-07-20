@@ -101,10 +101,12 @@
     <Compile Include="DRJonesTrader\DrJonesvehicleParts.cs" />
     <Compile Include="Economy\cfgeconomycore.cs" />
     <Compile Include="Economy\cfgEffectArea.cs" />
+    <Compile Include="Economy\cfgenviromentxml.cs" />
     <Compile Include="Economy\cfglimitsdefinition.cs" />
     <Compile Include="Economy\cfglimitsdefinitionuser.cs" />
     <Compile Include="Economy\cfgrandompresetsXML.cs" />
     <Compile Include="Economy\economycoreconfig.cs" />
+    <Compile Include="Economy\EventgroupsXML.cs" />
     <Compile Include="Economy\EventSpawnsXML.cs" />
     <Compile Include="Economy\EventsXML.cs" />
     <Compile Include="Economy\GameplayJson.cs" />
@@ -116,6 +118,7 @@
     <Compile Include="Economy\variables.cs" />
     <Compile Include="Economy\Limitsdefinitions.cs" />
     <Compile Include="Economy\weatherXML.cs" />
+    <Compile Include="EditorDze\DZE.cs" />
     <Compile Include="ExpansionAI\AILoadouts.cs" />
     <Compile Include="ExpansionAI\AIPatrolSettings.cs" />
     <Compile Include="ExpansionMarket\MarketCategories.cs" />

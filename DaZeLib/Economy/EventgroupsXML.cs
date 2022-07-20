@@ -7,42 +7,38 @@ using System.Threading.Tasks;
 
 namespace DayZeLib
 {
+
     // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
-    public partial class eventposdef
+    public partial class eventgroupdef
     {
 
-        private BindingList<eventposdefEvent> eventField;
+        private BindingList<eventgroupdefGroup> groupField;
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("event")]
-        public BindingList<eventposdefEvent> @event
+        [System.Xml.Serialization.XmlElementAttribute("group")]
+        public BindingList<eventgroupdefGroup> group
         {
             get
             {
-                return this.eventField;
+                return this.groupField;
             }
             set
             {
-                this.eventField = value;
+                this.groupField = value;
             }
         }
 
-        public eventposdefEventPos findeventgroup(string eventgroupname)
+        public eventgroupdefGroup getassociatedgroup(string name)
         {
-            foreach(eventposdefEvent eventposdefEvent in @event)
+            foreach(eventgroupdefGroup eventgroupdefGroup in group)
             {
-                foreach(eventposdefEventPos eventposdefEventPos in eventposdefEvent.pos)
-                {
-                    if(eventposdefEventPos.group != null && eventposdefEventPos.group == eventgroupname)
-                    {
-                        return eventposdefEventPos;
-                    }
-                }
+                if (eventgroupdefGroup.name == name)
+                    return eventgroupdefGroup;
             }
             return null;
         }
@@ -52,39 +48,24 @@ namespace DayZeLib
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class eventposdefEvent
+    public partial class eventgroupdefGroup
     {
 
-        private eventposdefEventZone zoneField;
-
-        private BindingList<eventposdefEventPos> posField;
+        private BindingList<eventgroupdefGroupChild> childField;
 
         private string nameField;
 
         /// <remarks/>
-        public eventposdefEventZone zone
+        [System.Xml.Serialization.XmlElementAttribute("child")]
+        public BindingList<eventgroupdefGroupChild> child
         {
             get
             {
-                return this.zoneField;
+                return this.childField;
             }
             set
             {
-                this.zoneField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("pos")]
-        public BindingList<eventposdefEventPos> pos
-        {
-            get
-            {
-                return this.posField;
-            }
-            set
-            {
-                this.posField = value;
+                this.childField = value;
             }
         }
 
@@ -102,6 +83,7 @@ namespace DayZeLib
             }
         }
 
+
         public override string ToString()
         {
             return name;
@@ -112,111 +94,130 @@ namespace DayZeLib
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class eventposdefEventZone
+    public partial class eventgroupdefGroupChild
     {
 
-        private int sminField;
+        private string typeField;
 
-        private int smaxField;
+        private int delootField;
 
-        private int dminField;
+        private bool delootFieldSpecified;
 
-        private int dmaxField;
+        private int lootmaxField;
 
-        private int rField;
+        private bool lootmaxFieldSpecified;
 
-       
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int smin
-        {
-            get
-            {
-                return this.sminField;
-            }
-            set
-            {
-                this.sminField = value;
-            }
-        }
+        private int lootminField;
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int smax
-        {
-            get
-            {
-                return this.smaxField;
-            }
-            set
-            {
-                this.smaxField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int dmin
-        {
-            get
-            {
-                return this.dminField;
-            }
-            set
-            {
-                this.dminField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int dmax
-        {
-            get
-            {
-                return this.dmaxField;
-            }
-            set
-            {
-                this.dmaxField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int r
-        {
-            get
-            {
-                return this.rField;
-            }
-            set
-            {
-                this.rField = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class eventposdefEventPos
-    {
+        private bool lootminFieldSpecified;
 
         private decimal xField;
-
-        private decimal yField;
-
-        private bool yFieldSpecified;
 
         private decimal zField;
 
         private decimal aField;
 
-        private bool aFieldSpecified;
+        private bool yFieldSpecified;
 
-        private string groupField;
+        private decimal yField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string type
+        {
+            get
+            {
+                return this.typeField;
+            }
+            set
+            {
+                this.typeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int deloot
+        {
+            get
+            {
+                return this.delootField;
+            }
+            set
+            {
+                this.delootField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool delootSpecified
+        {
+            get
+            {
+                return this.delootFieldSpecified;
+            }
+            set
+            {
+                this.delootFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int lootmax
+        {
+            get
+            {
+                return this.lootmaxField;
+            }
+            set
+            {
+                this.lootmaxField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool lootmaxSpecified
+        {
+            get
+            {
+                return this.lootmaxFieldSpecified;
+            }
+            set
+            {
+                this.lootmaxFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int lootmin
+        {
+            get
+            {
+                return this.lootminField;
+            }
+            set
+            {
+                this.lootminField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool lootminSpecified
+        {
+            get
+            {
+                return this.lootminFieldSpecified;
+            }
+            set
+            {
+                this.lootminFieldSpecified = value;
+            }
+        }
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -229,34 +230,6 @@ namespace DayZeLib
             set
             {
                 this.xField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public decimal y
-        {
-            get
-            {
-                return this.yField;
-            }
-            set
-            {
-                this.yField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool ySpecified
-        {
-            get
-            {
-                return this.yFieldSpecified;
-            }
-            set
-            {
-                this.yFieldSpecified = value;
             }
         }
 
@@ -290,35 +263,37 @@ namespace DayZeLib
 
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool aSpecified
+        public bool ySpecified
         {
             get
             {
-                return this.aFieldSpecified;
+                return this.yFieldSpecified;
             }
             set
             {
-                this.aFieldSpecified = value;
+                this.yFieldSpecified = value;
             }
         }
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string group
+        public decimal y
         {
             get
             {
-                return this.groupField;
+                return this.yField;
             }
             set
             {
-                this.groupField = value;
+                this.yField = value;
             }
         }
 
         public override string ToString()
         {
-            return x.ToString() + "," + z.ToString();
+            return type;
         }
     }
+
+
 }

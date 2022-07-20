@@ -1335,7 +1335,7 @@ namespace DayZeEditor
                         contextMenuStrip1.Show(Cursor.Position);
                     }
                     break;
-                    case "collection":
+                    case "Collection":
                         if (e.Button == MouseButtons.Right)
                         {
                             addNewCollectionObjectiveToolStripMenuItem.Visible = true;

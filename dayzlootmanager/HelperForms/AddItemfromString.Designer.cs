@@ -72,7 +72,7 @@ namespace DayZeEditor
             this.TitleLabel.Name = "TitleLabel";
             this.TitleLabel.Size = new System.Drawing.Size(124, 15);
             this.TitleLabel.TabIndex = 6;
-            this.TitleLabel.Text = "Add Items from Types";
+            this.TitleLabel.Text = "Add Items from String";
             // 
             // darkButton1
             // 

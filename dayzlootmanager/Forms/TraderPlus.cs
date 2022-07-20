@@ -1865,7 +1865,7 @@ namespace DayZeEditor
         private void TradeQuantityNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentItemProducts.TradeQuantity = (int)TradeQuantityNUD.Value;
+            currentItemProducts.TradeQuantity = (decimal)TradeQuantityNUD.Value;
             TraderPlusPriceConfig.isDirty = true;
             if (CurrentTraderCatLB.SelectedItems.Count > 1)
             {

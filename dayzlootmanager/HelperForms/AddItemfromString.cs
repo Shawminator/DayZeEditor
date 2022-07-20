@@ -14,6 +14,13 @@ namespace DayZeEditor
 {
     public partial class AddItemfromString : DarkForm
     {
+        public string TitleLable
+        {
+            set
+            {
+                TitleLabel.Text = value;
+            }
+        }
         public List<string> addedtypes { get; set; }
         public AddItemfromString()
         {
