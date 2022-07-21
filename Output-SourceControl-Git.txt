@@ -1,0 +1,25 @@
+﻿Opening repositories:
+C:\Users\Shawminator-PC\source\repos\dayzlootmanager
+Commit 744b22d5 created locally in repository C:\Users\Shawminator-PC\source\repos\dayzlootmanager
+Pushing master
+Enumerating objects: 33, done.
+Delta compression using up to 16 threads
+Total 22 (delta 12), reused 0 (delta 0), pack-reused 0
+Remote: Resolving deltas:   0% (0/12)        
+Remote: Resolving deltas:   8% (1/12)        
+Remote: Resolving deltas:  16% (2/12)        
+Remote: Resolving deltas:  25% (3/12)        
+Remote: Resolving deltas:  33% (4/12)        
+Remote: Resolving deltas:  41% (5/12)        
+Remote: Resolving deltas:  50% (6/12)        
+Remote: Resolving deltas:  58% (7/12)        
+Remote: Resolving deltas:  66% (8/12)        
+Remote: Resolving deltas:  75% (9/12)        
+Remote: Resolving deltas:  83% (10/12)        
+Remote: Resolving deltas:  91% (11/12)        
+Remote: Resolving deltas: 100% (12/12)        
+Remote: Resolving deltas: 100% (12/12), completed with 10 local objects.        
+Remote: This repository moved. Please use the new location:        
+Remote:   https://github.com/Shawminator/DayZeEditor.git        
+To https://github.com/Shawminator/dayzlootmanager.git
+   cf5380f..744b22d  master -> master
