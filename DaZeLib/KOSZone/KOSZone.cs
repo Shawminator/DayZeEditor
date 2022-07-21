@@ -56,7 +56,7 @@ namespace DayZeLib
     {
         public int IsPurgeEnabled { get; set; }
         public int IsDynPurgeEnabled { get; set; }
-        public int TimeZone { get; set; }
+        public int ScheduleCycle { get; set; }
         public int RestartCycle { get; set; }
         public BindingList<Purgeschedule> PurgeSchedules { get; set; }
         public BindingList<Dynamicpurgeschedule> DynamicPurgeSchedules { get; set; }
@@ -92,6 +92,10 @@ namespace DayZeLib
         public decimal Chance { get; set; }
         public int DurationMin { get; set; }
         public int DurationMax { get; set; }
+        public int StartHour { get; set; }
+        public int StartMin { get; set; }
+        public int EndHour { get; set; }
+        public int EndMin { get; set; }
 
         public override string ToString()
         {

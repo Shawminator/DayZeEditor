@@ -64,6 +64,10 @@ namespace DayZeEditor
             this.label1 = new System.Windows.Forms.Label();
             this.IsKosZoneActiveCB = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.DPEndDT = new System.Windows.Forms.DateTimePicker();
+            this.DPStartDT = new System.Windows.Forms.DateTimePicker();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.DynamicPurgeDurationMaxNUD = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.DPWeekNumberCB = new System.Windows.Forms.ComboBox();
@@ -97,7 +101,7 @@ namespace DayZeEditor
             this.darkButton1 = new DarkUI.Controls.DarkButton();
             this.darkButton2 = new DarkUI.Controls.DarkButton();
             this.PurgeSchedulesLB = new System.Windows.Forms.ListBox();
-            this.TimeZoneNUD = new System.Windows.Forms.NumericUpDown();
+            this.ScheduleCycleNUD = new System.Windows.Forms.NumericUpDown();
             this.label18 = new System.Windows.Forms.Label();
             this.IsDynPurgeActiveCB = new System.Windows.Forms.CheckBox();
             this.IsPurgeActiveCB = new System.Windows.Forms.CheckBox();
@@ -117,7 +121,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.ServerrestartCycleNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DynamicPurgeDurationMinNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TimeZoneNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ScheduleCycleNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -558,6 +562,10 @@ namespace DayZeEditor
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage2.Controls.Add(this.DPEndDT);
+            this.tabPage2.Controls.Add(this.DPStartDT);
+            this.tabPage2.Controls.Add(this.label15);
+            this.tabPage2.Controls.Add(this.label16);
             this.tabPage2.Controls.Add(this.DynamicPurgeDurationMaxNUD);
             this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.DPWeekNumberCB);
@@ -591,7 +599,7 @@ namespace DayZeEditor
             this.tabPage2.Controls.Add(this.darkButton1);
             this.tabPage2.Controls.Add(this.darkButton2);
             this.tabPage2.Controls.Add(this.PurgeSchedulesLB);
-            this.tabPage2.Controls.Add(this.TimeZoneNUD);
+            this.tabPage2.Controls.Add(this.ScheduleCycleNUD);
             this.tabPage2.Controls.Add(this.label18);
             this.tabPage2.Controls.Add(this.IsDynPurgeActiveCB);
             this.tabPage2.Controls.Add(this.IsPurgeActiveCB);
@@ -601,6 +609,54 @@ namespace DayZeEditor
             this.tabPage2.Size = new System.Drawing.Size(1003, 562);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
+            // 
+            // DPEndDT
+            // 
+            this.DPEndDT.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.DPEndDT.CalendarMonthBackground = System.Drawing.SystemColors.Control;
+            this.DPEndDT.CalendarTitleForeColor = System.Drawing.SystemColors.Control;
+            this.DPEndDT.CustomFormat = "HH mm";
+            this.DPEndDT.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.DPEndDT.Location = new System.Drawing.Point(487, 492);
+            this.DPEndDT.Name = "DPEndDT";
+            this.DPEndDT.ShowUpDown = true;
+            this.DPEndDT.Size = new System.Drawing.Size(107, 20);
+            this.DPEndDT.TabIndex = 152;
+            this.DPEndDT.ValueChanged += new System.EventHandler(this.DPEndDT_ValueChanged);
+            // 
+            // DPStartDT
+            // 
+            this.DPStartDT.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.DPStartDT.CalendarMonthBackground = System.Drawing.SystemColors.Control;
+            this.DPStartDT.CalendarTitleForeColor = System.Drawing.SystemColors.Control;
+            this.DPStartDT.CustomFormat = "HH:mm";
+            this.DPStartDT.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.DPStartDT.Location = new System.Drawing.Point(487, 466);
+            this.DPStartDT.Name = "DPStartDT";
+            this.DPStartDT.ShowUpDown = true;
+            this.DPStartDT.Size = new System.Drawing.Size(107, 20);
+            this.DPStartDT.TabIndex = 151;
+            this.DPStartDT.ValueChanged += new System.EventHandler(this.DPStartDT_ValueChanged);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.ForeColor = System.Drawing.SystemColors.Control;
+            this.label15.Location = new System.Drawing.Point(405, 496);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(26, 13);
+            this.label15.TabIndex = 150;
+            this.label15.Text = "End";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.ForeColor = System.Drawing.SystemColors.Control;
+            this.label16.Location = new System.Drawing.Point(405, 468);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(29, 13);
+            this.label16.TabIndex = 149;
+            this.label16.Text = "Start";
             // 
             // DynamicPurgeDurationMaxNUD
             // 
@@ -613,7 +669,7 @@ namespace DayZeEditor
             0,
             0});
             this.DynamicPurgeDurationMaxNUD.Name = "DynamicPurgeDurationMaxNUD";
-            this.DynamicPurgeDurationMaxNUD.Size = new System.Drawing.Size(71, 20);
+            this.DynamicPurgeDurationMaxNUD.Size = new System.Drawing.Size(107, 20);
             this.DynamicPurgeDurationMaxNUD.TabIndex = 148;
             this.DynamicPurgeDurationMaxNUD.Tag = "KickAfterDelay";
             this.DynamicPurgeDurationMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -771,7 +827,7 @@ namespace DayZeEditor
             this.SPEndDT.Location = new System.Drawing.Point(487, 141);
             this.SPEndDT.Name = "SPEndDT";
             this.SPEndDT.ShowUpDown = true;
-            this.SPEndDT.Size = new System.Drawing.Size(85, 20);
+            this.SPEndDT.Size = new System.Drawing.Size(107, 20);
             this.SPEndDT.TabIndex = 134;
             this.SPEndDT.ValueChanged += new System.EventHandler(this.SPEndDT_ValueChanged);
             // 
@@ -785,7 +841,7 @@ namespace DayZeEditor
             this.SPStartDT.Location = new System.Drawing.Point(487, 115);
             this.SPStartDT.Name = "SPStartDT";
             this.SPStartDT.ShowUpDown = true;
-            this.SPStartDT.Size = new System.Drawing.Size(85, 20);
+            this.SPStartDT.Size = new System.Drawing.Size(107, 20);
             this.SPStartDT.TabIndex = 133;
             this.SPStartDT.ValueChanged += new System.EventHandler(this.SPStartDT_ValueChanged);
             // 
@@ -823,7 +879,7 @@ namespace DayZeEditor
             0,
             0});
             this.DynamicPurgeDurationMinNUD.Name = "DynamicPurgeDurationMinNUD";
-            this.DynamicPurgeDurationMinNUD.Size = new System.Drawing.Size(71, 20);
+            this.DynamicPurgeDurationMinNUD.Size = new System.Drawing.Size(107, 20);
             this.DynamicPurgeDurationMinNUD.TabIndex = 130;
             this.DynamicPurgeDurationMinNUD.Tag = "KickAfterDelay";
             this.DynamicPurgeDurationMinNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -851,7 +907,7 @@ namespace DayZeEditor
             0,
             0});
             this.numericUpDown7.Name = "numericUpDown7";
-            this.numericUpDown7.Size = new System.Drawing.Size(71, 20);
+            this.numericUpDown7.Size = new System.Drawing.Size(107, 20);
             this.numericUpDown7.TabIndex = 128;
             this.numericUpDown7.Tag = "KickAfterDelay";
             this.numericUpDown7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -983,22 +1039,22 @@ namespace DayZeEditor
             this.PurgeSchedulesLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.PurgeSchedulesLB.SelectedIndexChanged += new System.EventHandler(this.PurgeSchedulesLB_SelectedIndexChanged);
             // 
-            // TimeZoneNUD
+            // ScheduleCycleNUD
             // 
-            this.TimeZoneNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.TimeZoneNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.TimeZoneNUD.Location = new System.Drawing.Point(87, 65);
-            this.TimeZoneNUD.Maximum = new decimal(new int[] {
+            this.ScheduleCycleNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ScheduleCycleNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.ScheduleCycleNUD.Location = new System.Drawing.Point(87, 65);
+            this.ScheduleCycleNUD.Maximum = new decimal(new int[] {
             100000000,
             0,
             0,
             0});
-            this.TimeZoneNUD.Name = "TimeZoneNUD";
-            this.TimeZoneNUD.Size = new System.Drawing.Size(71, 20);
-            this.TimeZoneNUD.TabIndex = 72;
-            this.TimeZoneNUD.Tag = "KickAfterDelay";
-            this.TimeZoneNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TimeZoneNUD.ValueChanged += new System.EventHandler(this.TimeZoneNUD_ValueChanged);
+            this.ScheduleCycleNUD.Name = "ScheduleCycleNUD";
+            this.ScheduleCycleNUD.Size = new System.Drawing.Size(71, 20);
+            this.ScheduleCycleNUD.TabIndex = 72;
+            this.ScheduleCycleNUD.Tag = "KickAfterDelay";
+            this.ScheduleCycleNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ScheduleCycleNUD.ValueChanged += new System.EventHandler(this.TimeZoneNUD_ValueChanged);
             // 
             // label18
             // 
@@ -1066,7 +1122,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.ServerrestartCycleNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DynamicPurgeDurationMinNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TimeZoneNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ScheduleCycleNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1109,7 +1165,7 @@ namespace DayZeEditor
         private System.Windows.Forms.NumericUpDown KOSZoneYNUD;
         private System.Windows.Forms.CheckBox IsDynPurgeActiveCB;
         private System.Windows.Forms.CheckBox IsPurgeActiveCB;
-        private System.Windows.Forms.NumericUpDown TimeZoneNUD;
+        private System.Windows.Forms.NumericUpDown ScheduleCycleNUD;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label3;
         private DarkUI.Controls.DarkButton darkButton1;
@@ -1144,5 +1200,9 @@ namespace DayZeEditor
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.NumericUpDown DynamicPurgeDurationMaxNUD;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DateTimePicker DPEndDT;
+        private System.Windows.Forms.DateTimePicker DPStartDT;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
     }
 }

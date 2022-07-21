@@ -3052,6 +3052,9 @@ namespace DayZeEditor
         {
             if (currenttradermap == null) return;
             currenttradermap.Roamingpoints.Add(new Vec3());
+            RoamingTraderWaypointsLB.DisplayMember = "Name";
+            RoamingTraderWaypointsLB.ValueMember = "Value";
+            RoamingTraderWaypointsLB.DataSource = currenttradermap.Roamingpoints;
             tradermaps.isDirty = true;
         }
         private void darkButton35_Click(object sender, EventArgs e)

@@ -374,7 +374,7 @@ namespace DayZeEditor
 
             IsPurgeActiveCB.Checked = KosPurgeConfig.IsPurgeEnabled == 1 ? true : false;
             IsDynPurgeActiveCB.Checked = KosPurgeConfig.IsDynPurgeEnabled == 1 ? true : false;
-            TimeZoneNUD.Value = KosPurgeConfig.TimeZone;
+            ScheduleCycleNUD.Value = KosPurgeConfig.ScheduleCycle;
             ServerrestartCycleNUD.Value = KosPurgeConfig.RestartCycle;
 
             PurgeSchedulesLB.DisplayMember = "Name";
@@ -404,7 +404,7 @@ namespace DayZeEditor
         private void TimeZoneNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            KosPurgeConfig.TimeZone = (int)TimeZoneNUD.Value;
+            KosPurgeConfig.ScheduleCycle = (int)ScheduleCycleNUD.Value;
             KosPurgeConfig.isDirty = true;
         }
         private void ServerrestartCycleNUD_ValueChanged(object sender, EventArgs e)
@@ -471,6 +471,15 @@ namespace DayZeEditor
             numericUpDown7.Value = (decimal) currentDynamicpurgeschedule.Chance;
             DynamicPurgeDurationMinNUD.Value = currentDynamicpurgeschedule.DurationMin;
             DynamicPurgeDurationMaxNUD.Value = currentDynamicpurgeschedule.DurationMax;
+
+            DateTime Dtime = DateTime.Now.Date;
+            Dtime = Dtime.AddHours(currentDynamicpurgeschedule.StartHour);
+            Dtime = Dtime.AddMinutes(currentDynamicpurgeschedule.StartMin);
+            DPStartDT.Value = Dtime;
+            DateTime Dtime2 = DateTime.Now.Date;
+            Dtime2 = Dtime2.AddHours(currentDynamicpurgeschedule.EndHour);
+            Dtime2 = Dtime2.AddMinutes(currentDynamicpurgeschedule.EndMin);
+            DPEndDT.Value = Dtime2;
             useraction = true;
         }
         private void darkButton4_Click(object sender, EventArgs e)
@@ -582,6 +591,23 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             currentDynamicpurgeschedule.DurationMax = (int)DynamicPurgeDurationMinNUD.Value;
+            KosPurgeConfig.isDirty = true;
+        }
+        private void DPStartDT_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            DateTime Dtime = DPStartDT.Value;
+            currentDynamicpurgeschedule.StartHour = Dtime.Hour;
+            currentDynamicpurgeschedule.StartMin = Dtime.Minute;
+            KosPurgeConfig.isDirty = true;
+        }
+
+        private void DPEndDT_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            DateTime Dtime = DPEndDT.Value;
+            currentDynamicpurgeschedule.EndHour = Dtime.Hour;
+            currentDynamicpurgeschedule.EndMin = Dtime.Minute;
             KosPurgeConfig.isDirty = true;
         }
         #endregion KOSZonePurg

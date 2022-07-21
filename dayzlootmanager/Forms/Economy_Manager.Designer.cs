@@ -1171,6 +1171,7 @@ namespace DayZeEditor
             this.treeViewMS1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.treeViewMS1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeViewMS1.ForeColor = System.Drawing.SystemColors.Control;
+            this.treeViewMS1.HideSelection = false;
             this.treeViewMS1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.treeViewMS1.Location = new System.Drawing.Point(3, 3);
             this.treeViewMS1.Name = "treeViewMS1";
