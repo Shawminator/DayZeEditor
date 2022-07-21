@@ -12,6 +12,8 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Globalization;
 using DayZeLib;
+using System.Net;
+using System.IO.Compression;
 
 namespace DayZeEditor
 {
@@ -32,7 +34,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.6.5";
+        public string VersionNumber = "0.6.6";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -67,10 +69,13 @@ namespace DayZeEditor
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
+            Console.WriteLine("Current Version : " + VersionNumber);
             var culture = CultureInfo.GetCultureInfo("en-GB");
             CultureInfo.DefaultThreadCurrentCulture = culture;
             CultureInfo.DefaultThreadCurrentUICulture = culture;
             TitleLabel.Text = "DayZeEditor " + VersionNumber + " by Shawminator";
+            CheckForUpdate();
+
             if (File.Exists(ProjectsJson))
             {
                 Projects = (JsonSerializer.Deserialize<ProjectList>(File.ReadAllText(ProjectsJson)));
@@ -129,6 +134,60 @@ namespace DayZeEditor
                 MarketButton.Visible = false;
                 Console.WriteLine("No Projects Found, Please Create a new Project from the Projects panel.....");
                 toolStripStatusLabel1.Text = "No Projects Found, Please Create a new Project from the Projects panel.....";
+            }
+        }
+
+        private void CheckForUpdate()
+        {
+            Console.WriteLine("Checking GitHub For Newest Release.....");
+            GitHub info = Build();
+            Console.WriteLine("Latest release : " + info.name);
+            var version1 = new Version(info.name);
+            var version2 = new Version(VersionNumber);
+
+            var result = version1.CompareTo(version2);
+            if (result > 0)
+            {
+                Console.WriteLine("Update Found.....");
+                string zipfile = Application.StartupPath + "\\" + Path.GetFileName(info.assets[0].browser_download_url);
+                using (var client = new WebClient())
+                {
+                    Console.WriteLine("Downloading Zip file......");
+                    client.DownloadFile(info.assets[0].browser_download_url, zipfile);
+                }
+                var form = Application.OpenForms["SplashForm"];
+                if (form != null)
+                {
+                    form.Invoke(new Action(() => { form.Close(); }));
+                }
+                MessageBox.Show("Update Downloaded, Press OK to Extract and update");
+                System.Diagnostics.Process.Start("Updater.exe", zipfile);
+                Application.Exit();
+            }
+            else if (result == 0)
+            {
+                Console.WriteLine("Application Upto Date....");
+            }
+        }
+
+        public GitHub Build()
+        {
+            var getData = GetGithubData();
+            return JsonSerializer.Deserialize<GitHub>(getData);
+        }
+        private string GetGithubData()
+        {
+            var url = "https://api.github.com/repos/Shawminator/DayZeEditor/releases/latest";
+
+            HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
+            request.Method = "GET";
+            request.ContentType = "application/json";
+            request.UserAgent = "TestApp";
+
+            using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+            {
+                StreamReader reader = new StreamReader(response.GetResponseStream());
+                return reader.ReadToEnd();
             }
         }
         private void closemdichildren()

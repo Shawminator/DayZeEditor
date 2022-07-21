@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -286,6 +287,7 @@ namespace DayZeLib
             int myvalueasint = myvalue == true ? 1 : 0;
             src.GetType().GetProperty(mytype).SetValue(src, myvalueasint, null);
         }
+        
     }
     public static class extenstions
     {
