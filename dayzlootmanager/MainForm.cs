@@ -230,6 +230,16 @@ namespace DayZeEditor
             else
                 ShowWindow(handle, SW_HIDE);
         }
+        private void DiscordButton_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://discord.gg/5EHE49Kjsv");
+            timer1.Start();
+        }
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.paypal.me/ADecadeOfdecay");
+            timer1.Start();
+        }
         private void ShowButtons()
         {
             ToolStrip1.Visible = true;
@@ -610,17 +620,5 @@ namespace DayZeEditor
                 data.CreateNewData();
             }
         }
-        private void DiscordButton_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://discord.gg/5EHE49Kjsv");
-            timer1.Start();
-        }
-        private void toolStripButton2_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://www.paypal.me/ADecadeOfdecay");
-            timer1.Start();
-        }
-
-
     }
 }
