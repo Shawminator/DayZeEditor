@@ -1,6 +1,7 @@
 ﻿Version 0.6.8
 [FIXED]
 Fixed expansion Loadouts creating new attchments, was always saving it to the root ailoadout.
+Fixed AI Patrol option saving to the wrong parameters
 Fixed an issue where when adding a npc to a quest it wasnt checking if hat quest allready existed in the npc objective list. thus sometime showing multiple of the same quest
 [ADDED]
 change log added to show upon first start after update.
