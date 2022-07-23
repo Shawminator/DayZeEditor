@@ -801,6 +801,11 @@ namespace DayZeEditor
                         CurrentQuest.Objectives[i].ObjectiveText = checkobj.ObjectiveText;
                         CurrentQuest.isDirty = true;
                     }
+                    if(CurrentQuest.Objectives[i].ConfigVersion != checkobj.ConfigVersion)
+                    {
+                        CurrentQuest.Objectives[i].ConfigVersion = checkobj.ConfigVersion;
+                        CurrentQuest.isDirty = true;
+                    }
                 }
             }
             QuestNeedToSelectRewardCB.Checked = CurrentQuest.NeedToSelectReward == 1 ? true : false;
@@ -908,7 +913,7 @@ namespace DayZeEditor
         private void QuestObjectiveTextTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            CurrentQuest.ObjectiveText = QuestObjectivesObjectiveTextTB.Text;
+            CurrentQuest.ObjectiveText = QuestObjectiveTextTB.Text;
             CurrentQuest.isDirty = true;
         }
         private void QuestPreQuestCB_SelectedIndexChanged(object sender, EventArgs e)
@@ -950,13 +955,13 @@ namespace DayZeEditor
         private void QuestRepeatableCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            CurrentQuest.IsAchivement = QuestIsAchivementCB.Checked == true ? 1 : 0;
+            CurrentQuest.Repeatable = QuestRepeatableCB.Checked == true ? 1 : 0;
             CurrentQuest.isDirty = true;
         }
         private void QuestIsDailyQuestCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            CurrentQuest.IsAchivement = QuestIsAchivementCB.Checked == true ? 1 : 0;
+            CurrentQuest.IsDailyQuest = QuestIsDailyQuestCB.Checked == true ? 1 : 0;
             CurrentQuest.isDirty = true;
         }
         private void QuestIsWeeklyQuestCB_CheckedChanged(object sender, EventArgs e)
@@ -1433,8 +1438,9 @@ namespace DayZeEditor
                         NPCBehaviourP.Visible = true;
                         NPCFactionP.Visible = true;
                         NPCLoadoutP.Visible = true;
+                        NPCFormationP.Visible = true;
                         NPCAIClassnamesP.Visible = true;
-                        QuestObjectivesNPCInfoGB.Height = 283;
+                        QuestObjectivesNPCInfoGB.Height = 303;
                         QuestObjectivesAIPositionsGB.Visible = true;
                         QuestObjectivesAIPositionsGB.Text = "Patrol Waypoints";
                         QuestObjectivesNPCInfoGB.Visible = true;
@@ -1463,7 +1469,7 @@ namespace DayZeEditor
                         NPCSpeedP.Visible = true;
                         NPCBehaviourP.Visible = true;
                         NPCFactionP.Visible = true;
-                        NPCLoadoutP.Visible = true;
+                         NPCLoadoutP.Visible = true;
                         QuestObjectivesNPCInfoGB.Height = 150;
                         QuestObjectivesNPCInfoGB.Visible = true;
                         QuestObjectivesMarkerNameGB.Visible = true;
@@ -1566,7 +1572,10 @@ namespace DayZeEditor
             QuestObjectivesNPCSpeedCB.SelectedIndex = QuestObjectivesNPCSpeedCB.FindStringExact(CurrentAIPatrol.AIPatrol.NPCSpeed);
             QuestObjectivesNPCModeCB.SelectedIndex = QuestObjectivesNPCModeCB.FindStringExact(CurrentAIPatrol.AIPatrol.NPCMode);
             QuestObjectivesNPCFactionCB.SelectedIndex = QuestObjectivesNPCFactionCB.FindStringExact(CurrentAIPatrol.AIPatrol.NPCFaction);
+            if (CurrentAIPatrol.AIPatrol.NPCLoadoutFile.Contains(".json"))
+                CurrentAIPatrol.AIPatrol.NPCLoadoutFile = Path.GetFileNameWithoutExtension(CurrentAIPatrol.AIPatrol.NPCLoadoutFile);
             QuestObjectivesNPCLoadoutsCB.SelectedIndex = QuestObjectivesNPCLoadoutsCB.FindStringExact(CurrentAIPatrol.AIPatrol.NPCLoadoutFile);
+            QuestObjectivesNPCFormationCB.SelectedIndex = QuestObjectivesNPCFormationCB.FindStringExact(CurrentAIPatrol.AIPatrol.NPCFormation);
             QuestObjectivesNPCAICLassNamesLB.DisplayMember = "DisplayName";
             QuestObjectivesNPCAICLassNamesLB.ValueMember = "Value";
             QuestObjectivesNPCAICLassNamesLB.DataSource = CurrentAIPatrol.AIPatrol.ClassNames;
@@ -1585,6 +1594,8 @@ namespace DayZeEditor
             questObjectivesPositionsLB.ValueMember = "Value";
             questObjectivesPositionsLB.DataSource = CurrentAICamp.AICamp.Positions;
             QuestObjectivesNPCModeCB.SelectedIndex = QuestObjectivesNPCModeCB.FindStringExact(CurrentAICamp.AICamp.NPCMode);
+            if (CurrentAICamp.AICamp.NPCLoadoutFile.Contains(".json"))
+                CurrentAICamp.AICamp.NPCLoadoutFile = Path.GetFileNameWithoutExtension(CurrentAICamp.AICamp.NPCLoadoutFile);
             QuestObjectivesNPCLoadoutsCB.SelectedIndex = QuestObjectivesNPCLoadoutsCB.FindStringExact(CurrentAICamp.AICamp.NPCLoadoutFile);
             QuestObjectivesNPCSpeedCB.SelectedIndex = QuestObjectivesNPCSpeedCB.FindStringExact(CurrentAICamp.AICamp.NPCSpeed);
             QuestObjectivesNPCFactionCB.SelectedIndex = QuestObjectivesNPCFactionCB.FindStringExact(CurrentAICamp.AICamp.NPCFaction);
@@ -1610,6 +1621,8 @@ namespace DayZeEditor
             QuestObjectivesNPCSpeedCB.SelectedIndex = QuestObjectivesNPCSpeedCB.FindStringExact(CurrentAIVIP.AIVIP.NPCSpeed);
             QuestObjectivesNPCModeCB.SelectedIndex = QuestObjectivesNPCModeCB.FindStringExact(CurrentAIVIP.AIVIP.NPCMode);
             QuestObjectivesNPCFactionCB.SelectedIndex = QuestObjectivesNPCFactionCB.FindStringExact(CurrentAIVIP.AIVIP.NPCFaction);
+            if (CurrentAIVIP.AIVIP.NPCLoadoutFile.Contains(".json"))
+                CurrentAIVIP.AIVIP.NPCLoadoutFile = Path.GetFileNameWithoutExtension(CurrentAIVIP.AIVIP.NPCLoadoutFile);
             QuestObjectivesNPCLoadoutsCB.SelectedIndex = QuestObjectivesNPCLoadoutsCB.FindStringExact(CurrentAIVIP.AIVIP.NPCLoadoutFile);
             QuestObjectivesMarkerNameTB.Text = CurrentAIVIP.MarkerName;
         }
@@ -2253,6 +2266,36 @@ namespace DayZeEditor
                 case QuestType.AIVIP:
                     QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
                     CurrentAIVIP.AIVIP.NPCSpeed = QuestObjectivesNPCSpeedCB.GetItemText(QuestObjectivesNPCSpeedCB.SelectedItem);
+                    break;
+                case QuestType.ACTION:
+                    break;
+                default:
+                    break;
+            }
+            CurrentTreeNodeTag.isDirty = true;
+        }
+        private void QuestObjectivesNPCFormationCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            switch (CurrentTreeNodeTag.QuestType)
+            {
+                case QuestType.TARGET:
+                    break;
+                case QuestType.TRAVEL:
+                    break;
+                case QuestType.COLLECT:
+                    break;
+                case QuestType.DELIVERY:
+                    break;
+                case QuestType.TREASUREHUNT:
+                    break;
+                case QuestType.AIPATROL:
+                    QuestObjectivesAIPatrol QuestObjectivesAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+                    QuestObjectivesAIPatrol.AIPatrol.NPCFormation = QuestObjectivesNPCFormationCB.GetItemText(QuestObjectivesNPCFormationCB.SelectedItem);
+                    break;
+                case QuestType.AICAMP:
+                    break;
+                case QuestType.AIVIP:
                     break;
                 case QuestType.ACTION:
                     break;

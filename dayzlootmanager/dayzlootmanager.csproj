@@ -210,6 +210,12 @@
     <Compile Include="Forms\Lootchest.Designer.cs">
       <DependentUpon>Lootchest.cs</DependentUpon>
     </Compile>
+    <Compile Include="HelperForms\ChangeLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelperForms\ChangeLog.Designer.cs">
+      <DependentUpon>ChangeLog.cs</DependentUpon>
+    </Compile>
     <Compile Include="HelperForms\NewProjectFTP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -340,6 +346,9 @@
     <EmbeddedResource Include="Forms\Lootchest.resx">
       <DependentUpon>Lootchest.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HelperForms\ChangeLog.resx">
+      <DependentUpon>ChangeLog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HelperForms\NewProjectFTP.resx">
       <DependentUpon>NewProjectFTP.cs</DependentUpon>
     </EmbeddedResource>
@@ -413,6 +422,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Maps\valning_Map.png.xyz" />
+    <None Include="Update.clog">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -575,7 +587,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>; Move all assemblies and related files to lib folder
-ROBOCOPY "$(TargetDir) " "$(TargetDir)lib\ " /XF *.exe *.config *.manifest /XD lib Maps Templates Trader TraderNPCs Project /E /IS /MOVE
+ROBOCOPY "$(TargetDir) " "$(TargetDir)lib\ " /XF *.exe *.config *.manifest *.clog /XD lib Maps Templates Trader TraderNPCs Project /E /IS /MOVE
 if %25errorlevel%25 leq 4 exit 0 else exit %25errorlevel%25</PostBuildEvent>
   </PropertyGroup>
 </Project>

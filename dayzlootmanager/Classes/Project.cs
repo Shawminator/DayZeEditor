@@ -26,6 +26,7 @@ namespace DayZeEditor
     public class ProjectList
     {
         //public BindingList<MissionTemplate> AvailableTemplates { get; set; }
+        public bool ShowChangeLog { get; set; }
         public string ActiveProject { get; set; }
         public List<Project> Projects { get; set; }
 
@@ -44,7 +45,7 @@ namespace DayZeEditor
         {
             return Projects.FirstOrDefault(x => x.ProjectName == name);
         }
-        public void SaveProject(bool create = false)
+        public void SaveProject(bool create = false, bool showmessage = true)
         {
             var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
             string jsonString = JsonSerializer.Serialize(this, options);
@@ -55,10 +56,13 @@ namespace DayZeEditor
             {
                 form.Invoke(new Action(() => { form.Close(); }));
             }
-            if(create)
-                MessageBox.Show("Projects Config Created.");
-            else
-                MessageBox.Show("Projects Config Saved.");
+            if (showmessage)
+            {
+                if (create)
+                    MessageBox.Show("Projects Config Created.");
+                else
+                    MessageBox.Show("Projects Config Saved.");
+            }
         }
         public void SetActiveProject(string profilename)
         {

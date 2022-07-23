@@ -123,7 +123,7 @@ namespace DayZeLib
         {
             ExpansionQuestNPCs currentnpc = NPCList.FirstOrDefault(x => x.ID == npc.ID);
             if (currentnpc == null) return;
-            if (!currentnpc.CurrentQuests.Equals(currentQuest))
+            if (!currentnpc.CurrentQuests.Any(x => x.ID == currentQuest.ID))
                 currentnpc.AddNewQuest(currentQuest);
 
         }

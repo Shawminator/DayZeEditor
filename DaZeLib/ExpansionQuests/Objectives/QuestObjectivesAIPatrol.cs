@@ -32,6 +32,7 @@ namespace DayZeLib
         public string NPCSpeed { get; set; }
         public string NPCMode { get; set; }
         public string NPCFaction { get; set; }
+        public string NPCFormation { get; set; }
         public string NPCLoadoutFile { get; set; }
         public BindingList<string> ClassNames { get; set; }
         public int SpecialWeapon { get; set; }

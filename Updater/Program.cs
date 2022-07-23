@@ -40,6 +40,7 @@ namespace Updater
 
             foreach (ZipArchiveEntry file in archive.Entries)
             {
+                if (file.Name == ("Updater.exe")) continue;
                 string completeFileName = Path.GetFullPath(Path.Combine(destinationDirectoryFullPath, file.FullName));
                 Console.WriteLine("Extracting : " + completeFileName);
                 if (!completeFileName.StartsWith(destinationDirectoryFullPath, StringComparison.OrdinalIgnoreCase))

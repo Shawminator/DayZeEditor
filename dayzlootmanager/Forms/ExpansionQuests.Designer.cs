@@ -344,6 +344,9 @@ namespace DayZeEditor
             this.addNewTravelObjectiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewTreasureHuntObjectiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteObjectiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.NPCFormationP = new System.Windows.Forms.Panel();
+            this.QuestObjectivesNPCFormationCB = new System.Windows.Forms.ComboBox();
+            this.darkLabel70 = new DarkUI.Controls.DarkLabel();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -466,6 +469,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.QuestObjectiveTreasureHuntitemAmountNUD)).BeginInit();
             this.darkToolStrip23.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.NPCFormationP.SuspendLayout();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -3369,7 +3373,7 @@ namespace DayZeEditor
             this.QuestObjectivesNPCInfoGB.ForeColor = System.Drawing.SystemColors.Control;
             this.QuestObjectivesNPCInfoGB.Location = new System.Drawing.Point(731, 3);
             this.QuestObjectivesNPCInfoGB.Name = "QuestObjectivesNPCInfoGB";
-            this.QuestObjectivesNPCInfoGB.Size = new System.Drawing.Size(358, 319);
+            this.QuestObjectivesNPCInfoGB.Size = new System.Drawing.Size(358, 338);
             this.QuestObjectivesNPCInfoGB.TabIndex = 216;
             this.QuestObjectivesNPCInfoGB.TabStop = false;
             this.QuestObjectivesNPCInfoGB.Text = "NPC AI Info";
@@ -3381,13 +3385,14 @@ namespace DayZeEditor
             this.flowLayoutPanel4.Controls.Add(this.NPCBehaviourP);
             this.flowLayoutPanel4.Controls.Add(this.NPCLoadoutP);
             this.flowLayoutPanel4.Controls.Add(this.NPCSpeedP);
+            this.flowLayoutPanel4.Controls.Add(this.NPCFormationP);
             this.flowLayoutPanel4.Controls.Add(this.NPCFactionP);
             this.flowLayoutPanel4.Controls.Add(this.NPCAIClassnamesP);
             this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 16);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(352, 300);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(352, 319);
             this.flowLayoutPanel4.TabIndex = 0;
             // 
             // NPCClassNameP
@@ -3472,6 +3477,7 @@ namespace DayZeEditor
             "HALT",
             "LOOP",
             "ALTERNATE",
+            "REVERSE",
             "HALT_OR_LOOP",
             "HALT_OR_ALTERNATE"});
             this.QuestObjectivesNPCModeCB.Location = new System.Drawing.Point(116, 0);
@@ -3561,7 +3567,7 @@ namespace DayZeEditor
             // 
             this.NPCFactionP.Controls.Add(this.darkLabel55);
             this.NPCFactionP.Controls.Add(this.QuestObjectivesNPCFactionCB);
-            this.NPCFactionP.Location = new System.Drawing.Point(3, 133);
+            this.NPCFactionP.Location = new System.Drawing.Point(3, 159);
             this.NPCFactionP.Name = "NPCFactionP";
             this.NPCFactionP.Size = new System.Drawing.Size(349, 20);
             this.NPCFactionP.TabIndex = 223;
@@ -3602,7 +3608,7 @@ namespace DayZeEditor
             this.NPCAIClassnamesP.Controls.Add(this.darkButton16);
             this.NPCAIClassnamesP.Controls.Add(this.QuestObjectivesNPCAICLassNamesLB);
             this.NPCAIClassnamesP.Controls.Add(this.darkButton15);
-            this.NPCAIClassnamesP.Location = new System.Drawing.Point(3, 159);
+            this.NPCAIClassnamesP.Location = new System.Drawing.Point(3, 185);
             this.NPCAIClassnamesP.Name = "NPCAIClassnamesP";
             this.NPCAIClassnamesP.Size = new System.Drawing.Size(349, 128);
             this.NPCAIClassnamesP.TabIndex = 225;
@@ -3660,7 +3666,7 @@ namespace DayZeEditor
             this.QuestObjectivesSpecialWeaponGB.Controls.Add(this.QuestObjectivesSpecialWeaponCB);
             this.QuestObjectivesSpecialWeaponGB.Controls.Add(this.label4);
             this.QuestObjectivesSpecialWeaponGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.QuestObjectivesSpecialWeaponGB.Location = new System.Drawing.Point(731, 328);
+            this.QuestObjectivesSpecialWeaponGB.Location = new System.Drawing.Point(731, 347);
             this.QuestObjectivesSpecialWeaponGB.Name = "QuestObjectivesSpecialWeaponGB";
             this.QuestObjectivesSpecialWeaponGB.Size = new System.Drawing.Size(358, 38);
             this.QuestObjectivesSpecialWeaponGB.TabIndex = 219;
@@ -4208,6 +4214,42 @@ namespace DayZeEditor
             this.deleteObjectiveToolStripMenuItem.Text = "Delete Objective";
             this.deleteObjectiveToolStripMenuItem.Click += new System.EventHandler(this.deleteObjectiveToolStripMenuItem_Click);
             // 
+            // NPCFormationP
+            // 
+            this.NPCFormationP.Controls.Add(this.QuestObjectivesNPCFormationCB);
+            this.NPCFormationP.Controls.Add(this.darkLabel70);
+            this.NPCFormationP.Location = new System.Drawing.Point(3, 133);
+            this.NPCFormationP.Name = "NPCFormationP";
+            this.NPCFormationP.Size = new System.Drawing.Size(349, 20);
+            this.NPCFormationP.TabIndex = 227;
+            // 
+            // QuestObjectivesNPCFormationCB
+            // 
+            this.QuestObjectivesNPCFormationCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.QuestObjectivesNPCFormationCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.QuestObjectivesNPCFormationCB.FormattingEnabled = true;
+            this.QuestObjectivesNPCFormationCB.Items.AddRange(new object[] {
+            "Column",
+            "File",
+            "Vee",
+            "Wall",
+            "RANDOM"});
+            this.QuestObjectivesNPCFormationCB.Location = new System.Drawing.Point(116, 0);
+            this.QuestObjectivesNPCFormationCB.Name = "QuestObjectivesNPCFormationCB";
+            this.QuestObjectivesNPCFormationCB.Size = new System.Drawing.Size(229, 21);
+            this.QuestObjectivesNPCFormationCB.TabIndex = 215;
+            this.QuestObjectivesNPCFormationCB.SelectedIndexChanged += new System.EventHandler(this.QuestObjectivesNPCFormationCB_SelectedIndexChanged);
+            // 
+            // darkLabel70
+            // 
+            this.darkLabel70.AutoSize = true;
+            this.darkLabel70.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel70.Location = new System.Drawing.Point(6, 3);
+            this.darkLabel70.Name = "darkLabel70";
+            this.darkLabel70.Size = new System.Drawing.Size(53, 13);
+            this.darkLabel70.TabIndex = 216;
+            this.darkLabel70.Text = "Formation";
+            // 
             // ExpansionQuests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4411,6 +4453,8 @@ namespace DayZeEditor
             this.darkToolStrip23.ResumeLayout(false);
             this.darkToolStrip23.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
+            this.NPCFormationP.ResumeLayout(false);
+            this.NPCFormationP.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -4730,5 +4774,8 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripMenuItem addNewTravelObjectiveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addNewTreasureHuntObjectiveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteObjectiveToolStripMenuItem;
+        private System.Windows.Forms.Panel NPCFormationP;
+        private System.Windows.Forms.ComboBox QuestObjectivesNPCFormationCB;
+        private DarkUI.Controls.DarkLabel darkLabel70;
     }
 }

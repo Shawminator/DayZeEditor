@@ -34,7 +34,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.6.6";
+        public string VersionNumber = "0.6.7";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -45,7 +45,22 @@ namespace DayZeEditor
         {
             base.OnLoad(e);
             OnLoadCompleted(EventArgs.Empty);
+            CheckChangeLog();
         }
+
+        private void CheckChangeLog()
+        {
+            if(Projects.ShowChangeLog)
+            {
+                string file = File.ReadAllText("Update.clog");
+                ChangeLog cl = new ChangeLog();
+                cl.Changelog = file;
+                DialogResult result = cl.ShowDialog();
+                Projects.ShowChangeLog = false;
+                Projects.SaveProject(false, false);
+            }
+        }
+
         protected virtual void OnLoadCompleted(EventArgs e)
         {
             LoadCompleted?.Invoke(this, e);
@@ -161,6 +176,8 @@ namespace DayZeEditor
                     form.Invoke(new Action(() => { form.Close(); }));
                 }
                 MessageBox.Show("Update Downloaded, Press OK to Extract and update");
+                Projects.ShowChangeLog = true;
+                Projects.SaveProject(false, false);
                 System.Diagnostics.Process.Start("Updater.exe", zipfile);
                 Application.Exit();
             }

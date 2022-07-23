@@ -546,12 +546,21 @@ namespace DayZeEditor
                 SlotName = "Back",
                 Items = new BindingList<AILoadouts>()
             };
-            CurrentAILoadouts.InventoryAttachments.Add(newIA);
             TreeNode newnode = new TreeNode(newIA.SlotName)
             {
                 Tag = newIA
             };
+            if (treeViewMS1.SelectedNode.Text == "inventoryAttchemnts")
+            {
+                CurrentAILoadouts.InventoryAttachments.Add(newIA);
+            }
+            else
+            {
+                CurrentInventoryAttchmentItems = treeViewMS1.SelectedNode.Tag as AILoadouts;
+                CurrentInventoryAttchmentItems.InventoryAttachments.Add(newIA);
+            }
             treeViewMS1.SelectedNode.Nodes.Add(newnode);
+
             CurrentAILoadouts.isDirty = true;
         }
         private void RemoveAttachemtItemToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1203,7 +1212,7 @@ namespace DayZeEditor
         private void StaticPatrolMaxSpreadRadiusNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            CurrentPatrol.MaxDistRadius = (int)StaticPatrolMaxSpreadRadiusNUD.Value;
+            CurrentPatrol.MaxSpreadRadius = (int)StaticPatrolMaxSpreadRadiusNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
         private void StaticPatrolUnlimitedReloadCB_CheckedChanged(object sender, EventArgs e)

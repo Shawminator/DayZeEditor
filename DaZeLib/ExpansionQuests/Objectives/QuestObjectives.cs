@@ -50,8 +50,7 @@ namespace DayZeLib
 
         public bool Equals(QuestObjectivesBase other)
         {
-            return this.ConfigVersion == other.ConfigVersion &&
-                   this.ID == other.ID &&
+            return this.ID == other.ID &&
                    this.ObjectiveType == other.ObjectiveType;
         }
 
