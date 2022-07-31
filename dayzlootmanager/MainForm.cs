@@ -34,7 +34,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.6.7";
+        public string VersionNumber = "0.6.9";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -45,7 +45,7 @@ namespace DayZeEditor
         {
             base.OnLoad(e);
             OnLoadCompleted(EventArgs.Empty);
-            CheckChangeLog();
+            
         }
 
         private void CheckChangeLog()
@@ -91,10 +91,10 @@ namespace DayZeEditor
             TitleLabel.Text = "DayZeEditor " + VersionNumber + " by Shawminator";
             CheckForUpdate();
 
+
             if (File.Exists(ProjectsJson))
             {
                 Projects = (JsonSerializer.Deserialize<ProjectList>(File.ReadAllText(ProjectsJson)));
-
                 if (Projects.getActiveProject() != null)
                 {
                     if (Projects.getActiveProject().ProfilePath == null)
@@ -150,6 +150,7 @@ namespace DayZeEditor
                 Console.WriteLine("No Projects Found, Please Create a new Project from the Projects panel.....");
                 toolStripStatusLabel1.Text = "No Projects Found, Please Create a new Project from the Projects panel.....";
             }
+            CheckChangeLog();
         }
 
         private void CheckForUpdate()
@@ -176,8 +177,12 @@ namespace DayZeEditor
                     form.Invoke(new Action(() => { form.Close(); }));
                 }
                 MessageBox.Show("Update Downloaded, Press OK to Extract and update");
-                Projects.ShowChangeLog = true;
-                Projects.SaveProject(false, false);
+                if (File.Exists(Application.StartupPath + "\\Project\\Projects.json"))
+                {
+                    Projects = (JsonSerializer.Deserialize<ProjectList>(File.ReadAllText(Application.StartupPath + "\\Project\\Projects.json")));
+                    Projects.ShowChangeLog = true;
+                    Projects.SaveProject(false, false);
+                }
                 System.Diagnostics.Process.Start("Updater.exe", zipfile);
                 Application.Exit();
             }
@@ -267,40 +272,54 @@ namespace DayZeEditor
                     TraderManButton.Visible = true;
                 else
                     TraderManButton.Visible = false;
+
                 if (Projects.getActiveProject().usingexpansionMarket)
                     MarketButton.Visible = true;
                 else
                     MarketButton.Visible = false;
+
                 if (Projects.getActiveProject().usingtraderplus)
                     TraderPlusButton.Visible = true;
                 else
                     TraderPlusButton.Visible = false;
+
                 if (Projects.getActiveProject().isUsingExpansion())
                     ExpansionSettingsButton.Visible = true;
                 else
                     ExpansionSettingsButton.Visible = false;
+
                 if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\CJ_LootChests\\LootChests_V105.json"))
                     LootchestButton.Visible = true;
                 else
                     LootchestButton.Visible = false;
+
                 if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\HeliCrashMissions\\Helicrash.json"))
                     HelicrashManagerButton.Visible = true;
                 else
                     HelicrashManagerButton.Visible = false;
-                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KingOfTheHill.json"))
-                    KOTHManagerButton.Visible = true;
+
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\BaseBuildingPlus\\BBP_Settings.json"))
+                    BBPManagerButton.Visible = true;
                 else
-                    KOTHManagerButton.Visible = false;
+                    BBPManagerButton.Visible = false;
+
+                //if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KingOfTheHill.json"))
+                //    KOTHManagerButton.Visible = true;
+                //else
+                //    KOTHManagerButton.Visible = false;
+
                 if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KosZone\\KZConfig\\KosZoneConfig.json") &&
                     File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KosZone\\KZConfig\\PurgeConfigV1.json"))
                     KOSzoneManagerButton.Visible = true;
                 else
                     KOSzoneManagerButton.Visible = false;
+
                 if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\ExpansionMod\\Settings\\AISettings.json") &&
                     File.Exists(Projects.getActiveProject().projectFullName + "\\mpmissions\\" + Projects.getActiveProject().mpmissionpath + "\\expansion\\settings\\AIPatrolSettings.json"))
                     ExpansionAIButton.Visible = true;
                 else
                     ExpansionAIButton.Visible = false;
+
                 if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\ExpansionMod\\Settings\\QuestSettings.json") &&
                     Directory.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\ExpansionMod\\Quests"))
                     ExpansionQuestsButton.Visible = true;
@@ -602,6 +621,31 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
+        private void BBPManagerButton_Click(object sender, EventArgs e)
+        {
+            BaseBuildingPlus _TM = Application.OpenForms["BaseBuildingPlus"] as BaseBuildingPlus;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new BaseBuildingPlus
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+                };
+                _TM.Show();
+                Console.WriteLine("loading KOSZone manager....");
+            }
+            timer1.Start();
+        }
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             KOSZonemanager _TM = Application.OpenForms["KOSZone"] as KOSZonemanager;
@@ -637,5 +681,7 @@ namespace DayZeEditor
                 data.CreateNewData();
             }
         }
+
+
     }
 }

@@ -1,4 +1,29 @@
-﻿Version 0.6.8
+﻿Version 0.7.0
+[Fixed]
+Hopefully fixed the updater and change log, this should work from now on, hopefully.......
+Trader plus objects were not showing Orientaion or updating orientaion
+Fixed bug in Missions where it would convert the missions time to milleseconds twice.
+Fixed bug where it would remove the assigned NPC to quests when adding a new NPC
+[Updated]
+Updated Objective config version
+Updated all Expansion settings/traders/quests etc.. to be in line with latest Expansion Update
+[Added]
+Added new expansion DamageSystemSettings
+Added new Crafting Objective to teh quest manager
+Added BBP Config
+[Removed]
+Removed King of the HIll Config.
+
+Version 0.6.9
+[FIXED]
+Fixed Loadouts in the AI Manager as it still wasnt working 100%, this should now fixed completely
+Fixed Expansion Quests to work without the AI Objectives
+Fixed Expansion Settings to Create missing folders if not in profile and mpmissions directories
+fixed CJ Loot Chest tool tab when the descriptions was not not being saved correctly.
+[ADDED]
+Added import/export to dze for roaming traders, quest NPC waypoints
+
+Version 0.6.8
 [FIXED]
 Fixed expansion Loadouts creating new attchments, was always saving it to the root ailoadout.
 Fixed AI Patrol option saving to the wrong parameters

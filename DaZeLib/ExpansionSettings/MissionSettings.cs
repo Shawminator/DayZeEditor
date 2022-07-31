@@ -46,6 +46,8 @@ namespace DayZeLib
         {
             MissionSettingFiles = new BindingList<object>();
             string path = Missionpath + "\\expansion\\missions";
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
             foreach (var file in Directory.EnumerateFiles(path, "*.json"))
             {
                 switch (Path.GetFileNameWithoutExtension(file).Split('_')[0])
@@ -70,10 +72,7 @@ namespace DayZeLib
         }
         public void SetIntValue(string mytype, int myvalue)
         {
-            if(mytype == "InitialMissionStartDelay" || mytype == "TimeBetweenMissions")
-                GetType().GetProperty(mytype).SetValue(this, (int)Helper.ConvertMinutesToMilliseconds(myvalue), null);
-            else
-                GetType().GetProperty(mytype).SetValue(this, myvalue, null);
+            GetType().GetProperty(mytype).SetValue(this, myvalue, null);
         }
     }
     public class Missions

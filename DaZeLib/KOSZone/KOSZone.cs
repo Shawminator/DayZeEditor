@@ -10,13 +10,14 @@ namespace DayZeLib
 {
     public enum KOZDayOfWeek
     {
+        Sunday,
         Monday,
         Tuesday,
         Wednesday,
         Thursday,
         Friday,
-        Saturday,
-        Sunday
+        Saturday
+       
 
     };
     public enum WeekNumber

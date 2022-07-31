@@ -12,7 +12,7 @@ namespace DayZeLib
 {
     public class MarketSettings
     {
-        public int m_Version { get; set; } //Current Version 9
+        public int m_Version { get; set; } //Current Version 10
         public int MarketSystemEnabled { get; set; }
         public BindingList<string[]> NetworkCategories { get; set; } //empty atm
         public string CurrencyIcon { get; set; }
@@ -35,7 +35,7 @@ namespace DayZeLib
         public BindingList<SpawnPositions> WaterSpawnPositions { get; set; }
         public MarketMenuColours MarketMenuColors { get; set; }
         public BindingList<string> Currencies { get; set; }
-
+        public BindingList<string> VehicleKeys { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }
@@ -44,7 +44,7 @@ namespace DayZeLib
 
         public MarketSettings()
         {
-            m_Version = 9;
+            m_Version = 10;
             CurrencyIcon = "DayZExpansion/Market/GUI/icons/coinstack2_64x64.edds";
             NetworkCategories = new BindingList<string[]>();
             //MarketVIPs = new BindingList<string[]>();
@@ -58,7 +58,7 @@ namespace DayZeLib
         public MarketSettings(string name)
         {
             Filename = name;
-            m_Version = 9;
+            m_Version = 10;
             MarketSystemEnabled = 0;
             CurrencyIcon = "DayZExpansion/Market/GUI/icons/coinstack2_64x64.edds";
             ATMSystemEnabled = 0;

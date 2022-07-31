@@ -266,8 +266,8 @@ namespace DayZeEditor
         {
             if (MessageBox.Show("This Will Remove The All reference to this Loadout, Are you sure you want to do this?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                File.Delete(CurrentAILoadouts.Filename);
-                LoadoutList.Remove(CurrentAILoadouts);
+                File.Delete(CurrentAILoadoutsFile.Filename);
+                LoadoutList.Remove(CurrentAILoadoutsFile);
                 SetupLoadoutList();
             }
         }
@@ -307,10 +307,9 @@ namespace DayZeEditor
             }
         }
         #region Loadouts
-        public AILoadouts CurrentAILoadouts;
+        public AILoadouts CurrentAILoadoutsFile;
         public Inventoryattachment CurrentInventoryattachment;
-        public AILoadouts CurrentInventoryAttchmentItems;
-        public AILoadouts Currentcargoitem;
+        public AILoadouts CurrentAIloadouts;
         public Health Currenthealth;
         public Quantity CurrentQuantity;
         private void SetupAILoadouts()
@@ -326,7 +325,7 @@ namespace DayZeEditor
         private void loadoutsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (loadoutsLB.SelectedItems.Count < 1) return;
-            CurrentAILoadouts = loadoutsLB.SelectedItem as AILoadouts;
+            CurrentAILoadoutsFile = loadoutsLB.SelectedItem as AILoadouts;
             useraction = false;
             SetupLoadoutTreeView();
             useraction = true;
@@ -335,7 +334,7 @@ namespace DayZeEditor
         private void SetupLoadoutTreeView()
         {
             treeViewMS1.Nodes.Clear();
-            TreeNode root = new TreeNode(Path.GetFileName(CurrentAILoadouts.Name))
+            TreeNode root = new TreeNode(Path.GetFileName(CurrentAILoadoutsFile.Name))
             {
                 Tag = "Parent"
             };
@@ -343,7 +342,7 @@ namespace DayZeEditor
             {
                 Tag = "inventoryAttchemnts"
             };
-            foreach (Inventoryattachment IA in CurrentAILoadouts.InventoryAttachments)
+            foreach (Inventoryattachment IA in CurrentAILoadoutsFile.InventoryAttachments)
             {
 
                 inventoryAttchemnts.Nodes.Add(inventoryAttchmentsTN(IA));
@@ -352,7 +351,7 @@ namespace DayZeEditor
             {
                 Tag = "InventoryCargo"
             };
-            foreach (AILoadouts IA in CurrentAILoadouts.InventoryCargo)
+            foreach (AILoadouts IA in CurrentAILoadoutsFile.InventoryCargo)
             {
 
                 InventoryCargo.Nodes.Add(inventoryAttchemntsItemsTN(IA));
@@ -361,7 +360,7 @@ namespace DayZeEditor
             {
                 Tag = "Sets"
             };
-            foreach (AILoadouts IA in CurrentAILoadouts.Sets)
+            foreach (AILoadouts IA in CurrentAILoadoutsFile.Sets)
             {
                 Sets.Nodes.Add(inventoryAttchemntsItemsTN(IA));
             }
@@ -500,22 +499,22 @@ namespace DayZeEditor
             else if (e.Node.Parent != null  && e.Node.Tag is AILoadouts)
             {
                 LoadOutGB.Visible = true;
-                Currentcargoitem = e.Node.Tag as AILoadouts;
+                CurrentAIloadouts = e.Node.Tag as AILoadouts;
 
                 useraction = false;
-                textBox1.Text = Currentcargoitem.ClassName;
-                numericUpDown1.Value = Currentcargoitem.Chance;
-                numericUpDown2.Value = Currentcargoitem.Quantity.Min;
-                numericUpDown3.Value = Currentcargoitem.Quantity.Max;
+                textBox1.Text = CurrentAIloadouts.ClassName;
+                numericUpDown1.Value = CurrentAIloadouts.Chance;
+                numericUpDown2.Value = CurrentAIloadouts.Quantity.Min;
+                numericUpDown3.Value = CurrentAIloadouts.Quantity.Max;
 
-                if (Currentcargoitem.Health.Count > 0)
+                if (CurrentAIloadouts.Health.Count > 0)
                 {
                     HealthGB.Visible = true;
                 }
                 
                 listBox1.DisplayMember = "DisplayName";
                 listBox1.ValueMember = "Value";
-                listBox1.DataSource = Currentcargoitem.Health;
+                listBox1.DataSource = CurrentAIloadouts.Health;
                 useraction = false;
 
                 if (e.Button == MouseButtons.Right)
@@ -537,7 +536,7 @@ namespace DayZeEditor
             if (Slot == "Default Slot") Slot = "";
             CurrentInventoryattachment.SlotName = Slot;
             treeViewMS1.SelectedNode.Text = ItemAttachmentSlotNameCB.GetItemText(ItemAttachmentSlotNameCB.SelectedItem);
-            CurrentAILoadouts.isDirty = true;
+            CurrentAILoadoutsFile.isDirty = true;
         }
         private void AddNewAttachmentItemToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -552,22 +551,21 @@ namespace DayZeEditor
             };
             if (treeViewMS1.SelectedNode.Text == "inventoryAttchemnts")
             {
-                CurrentAILoadouts.InventoryAttachments.Add(newIA);
+                CurrentAILoadoutsFile.InventoryAttachments.Add(newIA);
             }
             else
             {
-                CurrentInventoryAttchmentItems = treeViewMS1.SelectedNode.Tag as AILoadouts;
-                CurrentInventoryAttchmentItems.InventoryAttachments.Add(newIA);
+                CurrentAIloadouts.InventoryAttachments.Add(newIA);
             }
             treeViewMS1.SelectedNode.Nodes.Add(newnode);
 
-            CurrentAILoadouts.isDirty = true;
+            CurrentAILoadoutsFile.isDirty = true;
         }
         private void RemoveAttachemtItemToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CurrentAILoadouts.InventoryAttachments.Remove(CurrentInventoryattachment);
+            CurrentAILoadoutsFile.InventoryAttachments.Remove(CurrentInventoryattachment);
             treeViewMS1.SelectedNode.Remove();
-            CurrentAILoadouts.isDirty = true;
+            CurrentAILoadoutsFile.isDirty = true;
         }
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -602,15 +600,15 @@ namespace DayZeEditor
             
             if (treeViewMS1.SelectedNode.Text == "InventoryCargo")
             {
-                CurrentAILoadouts.InventoryCargo.Add(ailoadout);
+                CurrentAILoadoutsFile.InventoryCargo.Add(ailoadout);
                 treeViewMS1.SelectedNode.Nodes.Add(newailoadit);
             }
             else
             {
-                Currentcargoitem = treeViewMS1.SelectedNode.Tag as AILoadouts;
+                CurrentAIloadouts = treeViewMS1.SelectedNode.Tag as AILoadouts;
                 TreeNode newtreenode = new TreeNode("Cargo");
                 newtreenode.Tag = "Cargo";
-                if (Currentcargoitem.InventoryCargo.Count == 0)
+                if (CurrentAIloadouts.InventoryCargo.Count == 0)
                 {
                     newtreenode.Nodes.Add(newailoadit);
                     treeViewMS1.SelectedNode.Nodes.Add(newtreenode);
@@ -626,18 +624,18 @@ namespace DayZeEditor
                         }
                     }
                 }
-               
-                Currentcargoitem.InventoryCargo.Add(ailoadout);
+
+                CurrentAIloadouts.InventoryCargo.Add(ailoadout);
                 
             }
-            CurrentAILoadouts.isDirty = true;
+            CurrentAILoadoutsFile.isDirty = true;
         }
         private void RemoveCargoItemToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AILoadouts Parentloadout = treeViewMS1.SelectedNode.Parent.Tag as AILoadouts;
-            Parentloadout.Sets.Remove(Currentcargoitem);
+            Parentloadout.Sets.Remove(CurrentAIloadouts);
             treeViewMS1.SelectedNode.Remove();
-            CurrentAILoadouts.isDirty = true;
+            CurrentAILoadoutsFile.isDirty = true;
         }
         private void addNewItemToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -667,7 +665,7 @@ namespace DayZeEditor
                 Tag = ailoadout
             };
             treeViewMS1.SelectedNode.Nodes.Add(newailoadit);
-            CurrentAILoadouts.isDirty = true;
+            CurrentAILoadoutsFile.isDirty = true;
 
 
         }
@@ -677,25 +675,25 @@ namespace DayZeEditor
             if (treeViewMS1.SelectedNode.Parent.Tag is Inventoryattachment)
             {
                 Inventoryattachment IA = treeViewMS1.SelectedNode.Parent.Tag as Inventoryattachment;
-                IA.Items.Remove(Currentcargoitem);
+                IA.Items.Remove(CurrentAIloadouts);
                 treeViewMS1.SelectedNode.Remove();
                 if (IA.Items.Count == 0)
                     Parent.Remove();
-                CurrentAILoadouts.isDirty = true;
+                CurrentAILoadoutsFile.isDirty = true;
             }
             else if (treeViewMS1.SelectedNode.Tag is AILoadouts)
             {
                 if (treeViewMS1.SelectedNode.Parent.Text == "InventoryCargo")
                 {
-                    CurrentAILoadouts.InventoryCargo.Remove(Currentcargoitem);
+                    CurrentAILoadoutsFile.InventoryCargo.Remove(CurrentAIloadouts);
                     treeViewMS1.SelectedNode.Remove();
-                    CurrentAILoadouts.isDirty = true;
+                    CurrentAILoadoutsFile.isDirty = true;
                 }
                 if (treeViewMS1.SelectedNode.Parent.Text == "Sets")
                 {
-                    CurrentAILoadouts.Sets.Remove(Currentcargoitem);
+                    CurrentAILoadoutsFile.Sets.Remove(CurrentAIloadouts);
                     treeViewMS1.SelectedNode.Remove();
-                    CurrentAILoadouts.isDirty = true;
+                    CurrentAILoadoutsFile.isDirty = true;
                 }
                 else if (treeViewMS1.SelectedNode.Parent.Text == "Attachment")
                 {
@@ -704,11 +702,11 @@ namespace DayZeEditor
                 else if (treeViewMS1.SelectedNode.Parent.Text == "Cargo")
                 {
                     AILoadouts IA = treeViewMS1.SelectedNode.Parent.Parent.Tag as AILoadouts;
-                    IA.InventoryCargo.Remove(Currentcargoitem);
+                    IA.InventoryCargo.Remove(CurrentAIloadouts);
                     treeViewMS1.SelectedNode.Remove();
                     if (IA.InventoryCargo.Count == 0)
                         Parent.Remove();
-                    CurrentAILoadouts.isDirty = true;
+                    CurrentAILoadoutsFile.isDirty = true;
                 }
             }
         }
@@ -729,13 +727,13 @@ namespace DayZeEditor
                 ConstructionPartsBuilt = new BindingList<object>(),
                 Sets = new BindingList<AILoadouts>()
             };
-            CurrentAILoadouts.Sets.Add(ailoadout);
+            CurrentAILoadoutsFile.Sets.Add(ailoadout);
             TreeNode newailoadit = new TreeNode("Set")
             {
                 Tag = ailoadout
             };
             treeViewMS1.SelectedNode.Nodes.Add(newailoadit);
-            CurrentAILoadouts.isDirty = true;
+            CurrentAILoadoutsFile.isDirty = true;
         }
         private void darkButton11_Click(object sender, EventArgs e)
         {
@@ -761,44 +759,44 @@ namespace DayZeEditor
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            Currentcargoitem.ClassName = treeViewMS1.SelectedNode.Text = textBox1.Text;
-            CurrentAILoadouts.isDirty = true;
+            CurrentAIloadouts.ClassName = treeViewMS1.SelectedNode.Text = textBox1.Text;
+            CurrentAILoadoutsFile.isDirty = true;
         }
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            Currentcargoitem.Chance = numericUpDown1.Value;
-            CurrentAILoadouts.isDirty = true;
+            CurrentAIloadouts.Chance = numericUpDown1.Value;
+            CurrentAILoadoutsFile.isDirty = true;
         }
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            Currentcargoitem.Quantity.Min = numericUpDown2.Value;
-            CurrentAILoadouts.isDirty = true;
+            CurrentAIloadouts.Quantity.Min = numericUpDown2.Value;
+            CurrentAILoadoutsFile.isDirty = true;
         }
         private void numericUpDown3_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            Currentcargoitem.Quantity.Max = numericUpDown2.Value;
-            CurrentAILoadouts.isDirty = true;
+            CurrentAIloadouts.Quantity.Max = numericUpDown2.Value;
+            CurrentAILoadoutsFile.isDirty = true;
         }
         private void numericUpDown4_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             Currenthealth.Min = numericUpDown4.Value;
-            CurrentAILoadouts.isDirty = true;
+            CurrentAILoadoutsFile.isDirty = true;
         }
         private void numericUpDown5_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             Currenthealth.Max = numericUpDown5.Value;
-            CurrentAILoadouts.isDirty = true;
+            CurrentAILoadoutsFile.isDirty = true;
         }
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             Currenthealth.Zone = textBox2.Text;
-            CurrentAILoadouts.isDirty = true;
+            CurrentAILoadoutsFile.isDirty = true;
         }
         private void darkButton8_Click(object sender, EventArgs e)
         {
@@ -808,13 +806,13 @@ namespace DayZeEditor
                 Max = (decimal)1.0,
                 Zone = ""
             };
-            Currentcargoitem.Health.Add(newhealth);
-            CurrentAILoadouts.isDirty = true;
+            CurrentAIloadouts.Health.Add(newhealth);
+            CurrentAILoadoutsFile.isDirty = true;
         }
         private void darkButton9_Click(object sender, EventArgs e)
         {
-            Currentcargoitem.Health.Remove(Currenthealth);
-            CurrentAILoadouts.isDirty = true;
+            CurrentAIloadouts.Health.Remove(Currenthealth);
+            CurrentAILoadoutsFile.isDirty = true;
         }
         #endregion Loadouts
         #region aipatrolsettings
@@ -1134,6 +1132,7 @@ namespace DayZeEditor
                     StaticPatrolWayPointsLB.SelectedIndex = -1;
                     StaticPatrolWayPointsLB.SelectedIndex = StaticPatrolWayPointsLB.Items.Count - 1;
                     StaticPatrolWayPointsLB.Refresh();
+                    AIPatrolSettings.isDirty = true;
                 }
             }
         }

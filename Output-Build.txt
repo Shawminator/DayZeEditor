@@ -1,0 +1,152 @@
+﻿Build started...
+1>------ Build started: Project: Updater, Configuration: Debug Any CPU ------
+1>  Updater -> C:\Users\Shawminator-PC\source\repos\dayzlootmanager\Updater\bin\Debug\Updater.exe
+2>------ Build started: Project: dayzlootmanager, Configuration: Debug Any CPU ------
+2>  dayzlootmanager -> C:\Users\Shawminator-PC\source\repos\dayzlootmanager\dayzlootmanager\bin\Debug\DayZeEditor.exe
+2>  The syntax of the command is incorrect.
+2>  
+2>  -------------------------------------------------------------------------------
+2>     ROBOCOPY     ::     Robust File Copy for Windows                              
+2>  -------------------------------------------------------------------------------
+2>  
+2>    Started : 23 July 2022 20:50:43
+2>     Source : C:\Users\Shawminator-PC\source\repos\dayzlootmanager\dayzlootmanager\bin\Debug\
+2>       Dest : C:\Users\Shawminator-PC\source\repos\dayzlootmanager\dayzlootmanager\bin\Debug\lib\
+2>  
+2>      Files : *.*
+2>  	    
+2>  Exc Files : *.exe
+2>  	    *.config
+2>  	    *.manifest
+2>  	    *.clog
+2>  	    
+2>   Exc Dirs : lib
+2>  	    Maps
+2>  	    Templates
+2>  	    Trader
+2>  	    TraderNPCs
+2>  	    Project
+2>  	    
+2>    Options : *.* /S /E /DCOPY:DA /COPY:DAT /MOVE /IS /R:1000000 /W:30 
+2>  
+2>  ------------------------------------------------------------------------------
+2>  
+2>  	                  39	C:\Users\Shawminator-PC\source\repos\dayzlootmanager\dayzlootmanager\bin\Debug\
+2>  	  *EXTRA File 		     627	FirstRun
+2>  	    Same      		  150528	Cyotek.Windows.Forms.ColorPicker.dll
+2>   87%  
+2>  100%  
+2>  	    Same      		  195584	DarkUI.dll
+2>   67%  
+2>  100%  
+2>  	    Same      		  472576	DarkUI.pdb
+2>   27%  
+2>   55%  
+2>   83%  
+2>  100%  
+2>  	    Newer     		   1.9 m	DayZeEditor.pdb
+2>   12%  
+2>   25%  
+2>   38%  
+2>   51%  
+2>   64%  
+2>   77%  
+2>   90%  
+2>  100%  
+2>  	    Same      		  443392	DayZeLib.dll
+2>   29%  
+2>   59%  
+2>   88%  
+2>  100%  
+2>  	    Same      		   1.5 m	DayZeLib.pdb
+2>   15%  
+2>   31%  
+2>   47%  
+2>   62%  
+2>   78%  
+2>   94%  
+2>  100%  
+2>  	    Same      		   17890	defaultss.xsl
+2>  100%  
+2>  	    Same      		   20872	Microsoft.Bcl.AsyncInterfaces.dll
+2>  100%  
+2>  	    Same      		   18215	Microsoft.Bcl.AsyncInterfaces.xml
+2>  100%  
+2>  	    Same      		   20856	System.Buffers.dll
+2>  100%  
+2>  	    Same      		    3481	System.Buffers.xml
+2>  100%  
+2>  	    Same      		  393520	System.Data.SQLite.dll
+2>   33%  
+2>   66%  
+2>   99%  
+2>  100%  
+2>  	    Same      		   1.0 m	System.Data.SQLite.xml
+2>   23%  
+2>   46%  
+2>   70%  
+2>   93%  
+2>  100%  
+2>  	    Same      		  141184	System.Memory.dll
+2>   92%  
+2>  100%  
+2>  	    Same      		   13950	System.Memory.xml
+2>  100%  
+2>  	    Same      		  115856	System.Numerics.Vectors.dll
+2>  100%  
+2>  	    Same      		  183484	System.Numerics.Vectors.xml
+2>   71%  
+2>  100%  
+2>  	    Same      		   16768	System.Runtime.CompilerServices.Unsafe.dll
+2>  100%  
+2>  	    Same      		   17998	System.Runtime.CompilerServices.Unsafe.xml
+2>  100%  
+2>  	    Same      		   68472	System.Text.Encodings.Web.dll
+2>  100%  
+2>  	    Same      		   62941	System.Text.Encodings.Web.xml
+2>  100%  
+2>  	    Same      		  355720	System.Text.Json.dll
+2>   36%  
+2>   73%  
+2>  100%  
+2>  	    Same      		  244053	System.Text.Json.xml
+2>   53%  
+2>  100%  
+2>  	    Same      		   25984	System.Threading.Tasks.Extensions.dll
+2>  100%  
+2>  	    Same      		   10147	System.Threading.Tasks.Extensions.xml
+2>  100%  
+2>  	    Same      		   25232	System.ValueTuple.dll
+2>  100%  
+2>  	    Same      		     142	System.ValueTuple.xml
+2>  100%  
+2>  	    Same      		   20480	TreeViewMS.dll
+2>  100%  
+2>  	    Same      		   17920	TreeViewMS.pdb
+2>  100%  
+2>  	    Same      		   22016	Updater.pdb
+2>  100%  
+2>  	    Same      		  162072	WinSCPnet.dll
+2>   80%  
+2>  100%  
+2>  	    Same      		     512	ZYXMapper.txt
+2>  100%  
+2>  
+2>  ------------------------------------------------------------------------------
+2>  
+2>                 Total    Copied   Skipped  Mismatch    FAILED    Extras
+2>      Dirs :         6         0         6         0         0         0
+2>     Files :        39        32         7         0         0         1
+2>     Bytes :   35.89 m    7.68 m   28.21 m         0         0       627
+2>     Times :   0:00:00   0:00:00                       0:00:00   0:00:00
+2>  
+2>  
+2>     Speed :           251,670,750 Bytes/sec.
+2>     Speed :            14,400.716 MegaBytes/min.
+2>     Ended : 23 July 2022 20:50:43
+2>  
+2>  
+2>  2022/07/23 20:50:43 ERROR 32 (0x00000020) Deleting Source Directory C:\Users\Shawminator-PC\source\repos\dayzlootmanager\dayzlootmanager\bin\Debug\
+2>  The process cannot access the file because it is being used by another process.
+2>  
+========== Build: 2 succeeded, 0 failed, 3 up-to-date, 0 skipped ==========

@@ -161,7 +161,6 @@ namespace DayZeLib
     }
     public class EmptyGear
     {
-
     }
     public class SpawnLoadouts
     {

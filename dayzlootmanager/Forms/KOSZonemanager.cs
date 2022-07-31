@@ -590,7 +590,7 @@ namespace DayZeEditor
         private void DynamicPurgeDurationMaxNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentDynamicpurgeschedule.DurationMax = (int)DynamicPurgeDurationMinNUD.Value;
+            currentDynamicpurgeschedule.DurationMax = (int)DynamicPurgeDurationMaxNUD.Value;
             KosPurgeConfig.isDirty = true;
         }
         private void DPStartDT_ValueChanged(object sender, EventArgs e)

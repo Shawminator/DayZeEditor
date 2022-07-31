@@ -646,6 +646,10 @@ namespace DayZeEditor
             MarketCategories MarketCats = new MarketCategories();
             foreach (DRJonesCategories cat in drjonestraderconfig.m_categories)
             {
+                if(cat.m_Trader_Categorys == "Vest Storage")
+                {
+                    string s = "";
+                }
                 //check if cat has been created allready
                 Categories newcat = MarketCats.GetCatFromDisplayName(cat.m_Trader_Categorys);
                 if (newcat == null)
@@ -690,14 +694,14 @@ namespace DayZeEditor
                         newcat.Items.Add(newitem);
                     }
                 }
-                if (newcat.Items.Count > 0)
-                    MarketCats.CatList.Add(newcat);
+                //if (newcat.Items.Count > 0)
+                MarketCats.CatList.Add(newcat);
             }
 
             //Setup currency Market Category
             Categories newccat = new Categories();
             newccat.DisplayName = "#STR_EXPANSION_MARKET_CATEGORY_EXCHANGE";
-            newccat.Filename = "EXCHANGE";
+            newccat.Filename = "EXCHANGE.json";
             foreach(DRJonesCurrency drjc in  drjonestraderconfig.CurrencyConfig.currencyList)
             {
                 newccat.Items.Add(new marketItem() { ClassName = drjc.m_Trader_CurrencyClassnames, MaxPriceThreshold = drjc.m_Trader_CurrencyValues, MinPriceThreshold = drjc.m_Trader_CurrencyValues, MaxStockThreshold = 1, MinStockThreshold = 1 });
@@ -760,7 +764,7 @@ namespace DayZeEditor
             {
                 trader.ConvertToDict(MarketCats);
                 Directory.CreateDirectory(ExpansionPath + "\\Traders");
-                string traderFilename = ExpansionPath + "\\Traders\\" + ReplaceInvalidChars(trader.Filename).ToUpper() + ".json";
+                string traderFilename = ExpansionPath + "\\Traders\\" + trader.Filename + ".json";
                 var options = new JsonSerializerOptions();
                 options.WriteIndented = true;
                 options.Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping;
@@ -770,7 +774,7 @@ namespace DayZeEditor
             foreach (Categories cat in MarketCats.CatList)
             {
                 Directory.CreateDirectory(ExpansionPath + "\\Market");
-                string catFilename = ExpansionPath + "\\Market\\" + ReplaceInvalidChars(cat.DisplayName.Replace(" ", "_")).ToUpper() + ".json";
+                string catFilename = ExpansionPath + "\\Market\\" + cat.Filename;
                 var options = new JsonSerializerOptions();
                 options.WriteIndented = true;
                 options.Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping;

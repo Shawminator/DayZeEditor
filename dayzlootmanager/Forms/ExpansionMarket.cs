@@ -138,10 +138,10 @@ namespace DayZeEditor
             {
                 marketsettings = JsonSerializer.Deserialize<MarketSettings>(File.ReadAllText(MarketSettingsPath));
                 marketsettings.isDirty = false;
-                if (marketsettings.m_Version != 9)
+                if (marketsettings.m_Version != 10)
                 {
                     MessageBox.Show("MarketSettings Version number not up to date, updating to latest version....");
-                    marketsettings.m_Version = 9;
+                    marketsettings.m_Version = 10;
                     marketsettings.isDirty = true;
                     needtosave = true;
                 }
@@ -717,6 +717,10 @@ namespace DayZeEditor
             listBox17.ValueMember = "Value";
             listBox17.DataSource = marketsettings.LargeVehicles;
 
+            listBox20.DisplayMember = "DisplayName";
+            listBox20.ValueMember = "Value";
+            listBox20.DataSource = marketsettings.VehicleKeys;
+
             listBox12.DisplayMember = "DisplayName";
             listBox12.ValueMember = "Value";
             listBox12.DataSource = marketsettings.Currencies;
@@ -1191,7 +1195,34 @@ namespace DayZeEditor
                 pictureBox2.Invalidate();
             }
         }
+        private void darkButton44_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseMultiple = true,
+                isCategoryitem = true
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    marketsettings.VehicleKeys.Add(l);
+                    marketsettings.isDirty = true;
+                }
+            }
+        }
 
+        private void darkButton43_Click(object sender, EventArgs e)
+        {
+            string removeitem = listBox20.GetItemText(listBox20.SelectedItem);
+            marketsettings.VehicleKeys.Remove(removeitem);
+            marketsettings.isDirty = true;
+        }
         #endregion MarketSettings
 
         #region trader
@@ -1207,6 +1238,8 @@ namespace DayZeEditor
             textBox2.Text = currentTrader.Filename;
             textBox8.Text = currentTrader.m_Version.ToString();
             textBox5.Text = currentTrader.DisplayName;
+            MinRequiredHumanityNUD.Value = currentTrader.MinRequiredHumanity;
+            MaxRequiredHumanityNUD.Value = currentTrader.MaxRequiredHumanity;
             textBox17.Text = currentTrader.TraderIcon;
             listBox10.DisplayMember = "Name";
             listBox10.ValueMember = "Value";
@@ -1607,6 +1640,18 @@ namespace DayZeEditor
             currentTrader.isDirty = true;
             currentTrader.DisplayName = textBox5.Text;
 
+        }
+        private void MinRequiredHumanityNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (action) return;
+            currentTrader.MinRequiredHumanity = (int)MinRequiredHumanityNUD.Value;
+            currentTrader.isDirty = true;
+        }
+        private void MaxRequiredHumanityNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (action) return;
+            currentTrader.MaxRequiredHumanity = (int)MaxRequiredHumanityNUD.Value;
+            currentTrader.isDirty = true;
         }
         private void darkButton13_Click(object sender, EventArgs e)
         {
@@ -3128,6 +3173,90 @@ namespace DayZeEditor
                 }
             }
         }
+        private void darkButton41_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    DZE importfile = JsonSerializer.Deserialize<DZE>(File.ReadAllText(filePath));
+                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        currenttradermap.Roamingpoints = new BindingList<Vec3>();
+                    }
+                    int i = 0;
+                    foreach (Editorobject eo in importfile.EditorObjects)
+                    {
+                        Vec3 newvec3 = new Vec3()
+                        {
+                            X = Convert.ToSingle(eo.Position[0]),
+                            Y = Convert.ToSingle(eo.Position[1]),
+                            Z = Convert.ToSingle(eo.Position[2])
+                        };
+                        if(i == 0)
+                        {
+                            currenttradermap.position = newvec3;
+                            numericUpDown14.Value = (decimal)currenttradermap.position.X;
+                            numericUpDown15.Value = (decimal)currenttradermap.position.Y;
+                            numericUpDown16.Value = (decimal)currenttradermap.position.Z;
+                        }
+                        else
+                        {
+                            currenttradermap.Roamingpoints.Add(newvec3);
+                        }
+                        i++;
+                    }
+                    RoamingTraderWaypointsLB.DisplayMember = "Name";
+                    RoamingTraderWaypointsLB.ValueMember = "Value";
+                    RoamingTraderWaypointsLB.DataSource = currenttradermap.Roamingpoints;
+                    RoamingTraderWaypointsLB.Refresh();
+                    tradermaps.isDirty = true;
+                }
+            }
+        }
+
+        private void darkButton42_Click(object sender, EventArgs e)
+        {
+            DZE newdze = new DZE()
+            {
+                EditorObjects = new List<Editorobject>(),
+                EditorDeletedObjects = new List<object>(),
+                MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
+            };
+            Editorobject eo = new Editorobject()
+            {
+                Type = currenttradermap.NPCName,
+                DisplayName = currenttradermap.NPCName,
+                Position = new float[] {currenttradermap.position.X, currenttradermap.position.Y, currenttradermap.position.X },
+                Orientation = new float[] { 0, 0, 0 },
+                Scale = 1.0f,
+                Flags = 2147483647
+            };
+            newdze.EditorObjects.Add(eo);
+            foreach (Vec3 array in currenttradermap.Roamingpoints)
+            {
+                eo = new Editorobject()
+                {
+                    Type = currenttradermap.NPCName,
+                    DisplayName = currenttradermap.NPCName,
+                    Position = new float[] { array.X, array.Y, array.X },
+                    Orientation = new float[] { 0, 0, 0 },
+                    Scale = 1.0f,
+                    Flags = 2147483647
+                };
+                newdze.EditorObjects.Add(eo);
+            }
+            newdze.CameraPosition = newdze.EditorObjects[0].Position;
+            SaveFileDialog save = new SaveFileDialog();
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                string jsonString = JsonSerializer.Serialize(newdze, options);
+                File.WriteAllText(save.FileName + ".dze", jsonString);
+            }
+        }
         private void darkButton38_Click(object sender, EventArgs e)
         {
             StringBuilder SB = new StringBuilder();
@@ -3286,6 +3415,8 @@ namespace DayZeEditor
         {
 
         }
+
+
     }
 }
 

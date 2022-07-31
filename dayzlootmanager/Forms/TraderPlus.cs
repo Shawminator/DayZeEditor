@@ -959,9 +959,9 @@ namespace DayZeEditor
             ObjectPositionXNUD.Value = (decimal)currentTraderObject.Position[0];
             ObjectPositionYNUD.Value = (decimal)currentTraderObject.Position[1];
             ObjectPositionZNUD.Value = (decimal)currentTraderObject.Position[2];
-            ObjectOrientationXNUD.Value = (decimal)currentTraderObject.Position[0];
-            ObjectOrientationYNUD.Value = (decimal)currentTraderObject.Position[1];
-            ObjectOrientationZNUD.Value = (decimal)currentTraderObject.Position[2];
+            ObjectOrientationXNUD.Value = (decimal)currentTraderObject.Orientation[0];
+            ObjectOrientationYNUD.Value = (decimal)currentTraderObject.Orientation[1];
+            ObjectOrientationZNUD.Value = (decimal)currentTraderObject.Orientation[2];
 
         }
         private void CurrenciesLB_SelectedIndexChanged(object sender, EventArgs e)
@@ -1220,19 +1220,19 @@ namespace DayZeEditor
         private void ObjectOrientationXNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentTraderObject.Position[0] = (float)ObjectOrientationXNUD.Value;
+            currentTraderObject.Orientation[0] = (float)ObjectOrientationXNUD.Value;
             TraderPlusGeneralConfig.isDirty = true;
         }
         private void ObjectOrientationYNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentTraderObject.Position[1] = (float)ObjectOrientationYNUD.Value;
+            currentTraderObject.Orientation[1] = (float)ObjectOrientationYNUD.Value;
             TraderPlusGeneralConfig.isDirty = true;
         }
         private void ObjectOrientationZNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentTraderObject.Position[2] = (float)ObjectOrientationZNUD.Value;
+            currentTraderObject.Orientation[2] = (float)ObjectOrientationZNUD.Value;
             TraderPlusGeneralConfig.isDirty = true;
         }
         #endregion general

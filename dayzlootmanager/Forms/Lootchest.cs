@@ -945,14 +945,14 @@ namespace DayZeEditor
         private void ToolsNameDescTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
-            currentLootchestTool.desc = ToolsNameDescTB.Text + "|" + ToolsNameDescTB.Text;
+            currentLootchestTool.desc = ToolsNameDescTB.Text + "|" + ToolDescDescTB.Text;
             LootChestTools.isDirty = true;
         }
 
         private void ToolDescDescTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
-            currentLootchestTool.desc = ToolsNameDescTB.Text + "|" + ToolsNameDescTB.Text;
+            currentLootchestTool.desc = ToolsNameDescTB.Text + "|" + ToolDescDescTB.Text;
             LootChestTools.isDirty = true;
         }
 

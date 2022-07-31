@@ -61,7 +61,6 @@ namespace DayZeEditor
         {
             InitializeComponent();
         }
-
         private void toolStripButton8_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 0;
@@ -93,7 +92,6 @@ namespace DayZeEditor
             toolStripButton7.Checked = false;
             toolStripButton1.Checked = false;
         }
-
         private void ExpansionQuests_Load(object sender, EventArgs e)
         {
             vanillatypes = currentproject.getvanillatypes();
@@ -154,6 +152,8 @@ namespace DayZeEditor
         }
         private void SetupSharedLists()
         {
+            useraction = false;
+
             QuestNPCs.setupquestlists(QuestsList);
 
             List<Quests> quests = new List<Quests>();
@@ -188,6 +188,8 @@ namespace DayZeEditor
             QuestsListLB.SelectedIndex = -1;
             if (QuestsListLB.Items.Count > 0)
                 QuestsListLB.SelectedIndex = 0;
+
+            useraction = true;
         }
         private void SaveFileButton_Click(object sender, EventArgs e)
         {
@@ -406,7 +408,7 @@ namespace DayZeEditor
         }
         private void QuestIntsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (QuestStringsLB.SelectedItems.Count < 1) return;
+            if (QuestIntsLB.SelectedItems.Count < 1) return;
             useraction = false;
             QuestIntsNUD.Value = (int)Helper.GetPropValue(QuestSettings, QuestIntsLB.GetItemText(QuestIntsLB.SelectedItem));
             useraction = true;
@@ -729,6 +731,70 @@ namespace DayZeEditor
                 File.WriteAllText(save.FileName + ".map", SB.ToString());
             }
         }
+        private void darkButton33_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    DZE importfile = JsonSerializer.Deserialize<DZE>(File.ReadAllText(filePath));
+                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        currentQuestNPC.Waypoints.Clear();
+                    }
+                    foreach (Editorobject eo in importfile.EditorObjects)
+                    {
+                        int i = 0;
+                        if (i == 0)
+                        {
+                            currentQuestNPC.Position = eo.Position;
+                            QuestNPCsPOSXNUD.Value = (decimal)currentQuestNPC.Position[0];
+                            QuestNPCsPOSYNUD.Value = (decimal)currentQuestNPC.Position[1];
+                            QuestNPCsPOSZNUD.Value = (decimal)currentQuestNPC.Position[2];
+                        }
+                        else
+                        {
+                            currentQuestNPC.Waypoints.Add(eo.Position);
+                        }
+                    }
+                    QuestNPCWaypointsLB.SelectedIndex = -1;
+                    QuestNPCWaypointsLB.SelectedIndex = QuestNPCWaypointsLB.Items.Count - 1;
+                    QuestNPCWaypointsLB.Refresh();
+                    currentQuestNPC.isDirty = true;
+                }
+            }
+        }
+
+        private void darkButton30_Click(object sender, EventArgs e)
+        {
+            DZE newdze = new DZE()
+            {
+                MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
+            };
+            foreach (float[] array in currentQuestNPC.Waypoints)
+            {
+                Editorobject eo = new Editorobject()
+                {
+                    Type = currentQuestNPC.NPCName,
+                    DisplayName = currentQuestNPC.NPCName,
+                    Position = array,
+                    Orientation = new float[] { 0, 0, 0 },
+                    Scale = 1.0f,
+                    Flags = 2147483647
+                };
+                newdze.EditorObjects.Add(eo);
+            }
+            newdze.CameraPosition = newdze.EditorObjects[0].Position;
+            SaveFileDialog save = new SaveFileDialog();
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                string jsonString = JsonSerializer.Serialize(newdze, options);
+                File.WriteAllText(save.FileName + ".dze", jsonString);
+            }
+        }
         #endregion npc
         #region quests
         public Quests CurrentQuest { get; private set; }
@@ -736,7 +802,7 @@ namespace DayZeEditor
         {
             useraction = false;
 
-            
+            QuestTypeCB.DataSource = Enum.GetValues(typeof(QuestType));
 
             QuestsListLB.DisplayMember = "DisplayName";
             QuestsListLB.ValueMember = "Value";
@@ -756,6 +822,7 @@ namespace DayZeEditor
             QuestFileNameTB.Text = CurrentQuest.Filename;
             QuestConfigVersionNUD.Value = CurrentQuest.ConfigVersion;
             QuestIDNUD.Value = CurrentQuest.ID;
+            QuestTypeCB.SelectedItem = (QuestType)CurrentQuest.Type;
             QuestTitleTB.Text = CurrentQuest.Title;
             if (CurrentQuest.Descriptions.Count > 0)
             {
@@ -824,6 +891,13 @@ namespace DayZeEditor
             QuestRewardsLB.ValueMember = "Value";
             QuestRewardsLB.DataSource = CurrentQuest.Rewards;
             useraction = true;
+        }
+        private void QuestTypeCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestType QuestType = (QuestType)QuestTypeCB.SelectedItem;
+            CurrentQuest.Type = (int)QuestType;
+            CurrentQuest.isDirty = true;
         }
         private void QuestRewardsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1191,6 +1265,10 @@ namespace DayZeEditor
             {
                 Tag = "Collection"
             };
+            TreeNode ObjectivesCrafting = new TreeNode("Crafting")
+            {
+                Tag = "Crafting"
+            };
             TreeNode ObjectivesDelivery = new TreeNode("Delivery")
             {
                 Tag = "Delivery"
@@ -1234,6 +1312,14 @@ namespace DayZeEditor
                         QuestObjectives.Objectives[i].QuestType = QuestType.COLLECT;
                         newnode.Tag = QuestObjectives.Objectives[i];
                         ObjectivesCollection.Nodes.Add(newnode);
+                        break;
+                    case QuestType.CRAFTING:
+                        newnode = new TreeNode(QuestObjectives.Objectives[i].Filename);
+                        QuestObjectives.Objectives[i] = ReadJson<QuestObjectivesCrafting>(QuestObjectivesPath + "\\Crafting\\" + QuestObjectives.Objectives[i].Filename + ".json") as QuestObjectivesCrafting;
+                        QuestObjectives.Objectives[i].Filename = newnode.Text;
+                        QuestObjectives.Objectives[i].QuestType = QuestType.CRAFTING;
+                        newnode.Tag = QuestObjectives.Objectives[i];
+                        ObjectivesCrafting.Nodes.Add(newnode);
                         break;
                     case QuestType.DELIVERY:
                         newnode = new TreeNode(QuestObjectives.Objectives[i].Filename);
@@ -1294,6 +1380,7 @@ namespace DayZeEditor
             root.Nodes.Add(ObjectivesAIPatrol);
             root.Nodes.Add(ObjectivesAIVIP);
             root.Nodes.Add(ObjectivesCollection);
+            root.Nodes.Add(ObjectivesCrafting);
             root.Nodes.Add(ObjectivesDelivery);
             root.Nodes.Add(ObjectivesTarget);
             root.Nodes.Add(ObjectivesTravel);
@@ -1344,6 +1431,13 @@ namespace DayZeEditor
                         if (e.Button == MouseButtons.Right)
                         {
                             addNewCollectionObjectiveToolStripMenuItem.Visible = true;
+                            contextMenuStrip1.Show(Cursor.Position);
+                        }
+                        break;
+                    case "Crafting":
+                        if (e.Button == MouseButtons.Right)
+                        {
+                            addNewCraftingObjectiveToolStripMenuItem.Visible = true;
                             contextMenuStrip1.Show(Cursor.Position);
                         }
                         break;
@@ -1418,6 +1512,11 @@ namespace DayZeEditor
                         QuestObjectivesColectionGB.Visible = true;
                         setupObjectiveCollection(e);
                         break;
+                    case QuestType.CRAFTING:
+                        QuestsObjectivesActionNamesGB.Visible = true;
+                        QuestsObjectivesActionNamesGB.Text = "Item Names";
+                        setupobjectivecrafting(e);
+                        break;
                     case QuestType.DELIVERY:
                         QuestObjectivesPositionGB.Visible = true;
                         QuestObjectivesDeleveriesGB.Visible = true;
@@ -1477,6 +1576,7 @@ namespace DayZeEditor
                         break;
                     case QuestType.ACTION:
                         QuestsObjectivesActionNamesGB.Visible = true;
+                        QuestsObjectivesActionNamesGB.Text = "Action Names";
                         SetupObjectiveAction(e);
                         break;
                     default:
@@ -1633,6 +1733,13 @@ namespace DayZeEditor
             QuestObjectivesActionNamesLB.ValueMember = "Value";
             QuestObjectivesActionNamesLB.DataSource = CurrentAction.ActionNames;
         }
+        private void setupobjectivecrafting(TreeNodeMouseClickEventArgs e)
+        {
+            QuestObjectivesCrafting CurrentAction = e.Node.Tag as QuestObjectivesCrafting;
+            QuestObjectivesActionNamesLB.DisplayMember = "DisplayName";
+            QuestObjectivesActionNamesLB.ValueMember = "Value";
+            QuestObjectivesActionNamesLB.DataSource = CurrentAction.ItemNames;
+        }
         private void questObjectivesPositionsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             float[] array = questObjectivesPositionsLB.SelectedItem as float[];
@@ -1678,28 +1785,102 @@ namespace DayZeEditor
         }
         private void darkButton12_Click(object sender, EventArgs e)
         {
-            QuestObjectivesAction QuestObjectivesAction = CurrentTreeNodeTag as QuestObjectivesAction;
-            AddItemfromString form = new AddItemfromString();
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
+            switch (CurrentTreeNodeTag.QuestType)
             {
-                List<string> addedtypes = form.addedtypes.ToList();
-                foreach (string l in addedtypes)
-                {
-                    QuestObjectivesAction.ActionNames.Add(l);
-                    CurrentTreeNodeTag.isDirty = true;
-                }
+                case QuestType.TARGET:
+                    break;
+                case QuestType.TRAVEL:
+                    break;
+                case QuestType.COLLECT:
+                    break;
+                case QuestType.DELIVERY:
+                    break;
+                case QuestType.TREASUREHUNT:
+                    break;
+                case QuestType.AIPATROL:
+                    break;
+                case QuestType.AICAMP:
+                    break;
+                case QuestType.AIVIP:
+                    break;
+                case QuestType.ACTION:
+                    QuestObjectivesAction QuestObjectivesAction = CurrentTreeNodeTag as QuestObjectivesAction;
+                    AddItemfromString form = new AddItemfromString();
+                    DialogResult result = form.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        List<string> addedtypes = form.addedtypes.ToList();
+                        foreach (string l in addedtypes)
+                        {
+                            QuestObjectivesAction.ActionNames.Add(l);
+                        }
+                    }
+                    break;
+                case QuestType.CRAFTING:
+                    QuestObjectivesCrafting QuestObjectivesCrafting = CurrentTreeNodeTag as QuestObjectivesCrafting;
+                    AddItemfromTypes form2 = new AddItemfromTypes
+                    {
+                        vanillatypes = vanillatypes,
+                        ModTypes = ModTypes,
+                        currentproject = currentproject,
+                        UseMultiple = true,
+                        isCategoryitem = true
+                    };
+                    DialogResult result2 = form2.ShowDialog();
+                    if (result2 == DialogResult.OK)
+                    {
+                        List<string> addedtypes = form2.addedtypes.ToList();
+                        foreach (string l in addedtypes)
+                        {
+                            QuestObjectivesCrafting.ItemNames.Add(l);
+                        }
+                    }
+                    break;
+                default:
+                    break;
             }
-
+            CurrentTreeNodeTag.isDirty = true;
         }
         private void darkButton11_Click(object sender, EventArgs e)
         {
-            if (QuestObjectivesActionNamesLB.SelectedItems.Count < 1) return;
-            QuestObjectivesAction QuestObjectivesAction = CurrentTreeNodeTag as QuestObjectivesAction;
-            for (int i = 0; i < QuestObjectivesActionNamesLB.SelectedItems.Count; i++)
+            switch (CurrentTreeNodeTag.QuestType)
             {
-                QuestObjectivesAction.ActionNames.Remove(QuestObjectivesActionNamesLB.GetItemText(QuestObjectivesActionNamesLB.SelectedItems[0]));
+                case QuestType.TARGET:
+                    break;
+                case QuestType.TRAVEL:
+                    break;
+                case QuestType.COLLECT:
+                    break;
+                case QuestType.DELIVERY:
+                    break;
+                case QuestType.TREASUREHUNT:
+                    break;
+                case QuestType.AIPATROL:
+                    break;
+                case QuestType.AICAMP:
+                    break;
+                case QuestType.AIVIP:
+                    break;
+                case QuestType.ACTION:
+                    if (QuestObjectivesActionNamesLB.SelectedItems.Count < 1) return;
+                    QuestObjectivesAction QuestObjectivesAction = CurrentTreeNodeTag as QuestObjectivesAction;
+                    for (int i = 0; i < QuestObjectivesActionNamesLB.SelectedItems.Count; i++)
+                    {
+                        QuestObjectivesAction.ActionNames.Remove(QuestObjectivesActionNamesLB.GetItemText(QuestObjectivesActionNamesLB.SelectedItems[0]));
+                    }
+                    break;
+                case QuestType.CRAFTING:
+                    if (QuestObjectivesActionNamesLB.SelectedItems.Count < 1) return;
+                    QuestObjectivesCrafting QuestObjectivesCrafting = CurrentTreeNodeTag as QuestObjectivesCrafting;
+                    for (int i = 0; i < QuestObjectivesActionNamesLB.SelectedItems.Count; i++)
+                    {
+                        QuestObjectivesCrafting.ItemNames.Remove(QuestObjectivesActionNamesLB.GetItemText(QuestObjectivesActionNamesLB.SelectedItems[0]));
+                    }
+                    break;
+                default:
+                    break;
             }
+
             CurrentTreeNodeTag.isDirty = true;
         }
         private void darkButton20_Click(object sender, EventArgs e)
@@ -2838,7 +3019,7 @@ namespace DayZeEditor
             {
                 QuestType = QuestType.ACTION,
                 Filename = "Objective_A_" + newid.ToString(),
-                ConfigVersion = 4,
+                ConfigVersion = 5,
                 ID = newid,
                 ObjectiveType = (int)QuestType.ACTION,
                 ObjectiveText = "New Objective " + newid.ToString(),
@@ -2860,7 +3041,7 @@ namespace DayZeEditor
             {
                 QuestType = QuestType.AICAMP,
                 Filename = "Objective_AIC_" + newid.ToString(),
-                ConfigVersion = 4,
+                ConfigVersion = 5,
                 ID = newid,
                 ObjectiveType = (int)QuestType.AICAMP,
                 ObjectiveText = "New Objective " + newid.ToString(),
@@ -2895,7 +3076,7 @@ namespace DayZeEditor
             {
                 QuestType = QuestType.AIPATROL,
                 Filename = "Objective_AIP_" + newid.ToString(),
-                ConfigVersion = 4,
+                ConfigVersion = 5,
                 ID = newid,
                 ObjectiveType = (int)QuestType.AIPATROL,
                 ObjectiveText = "New Objective " + newid.ToString(),
@@ -2931,7 +3112,7 @@ namespace DayZeEditor
             {
                 QuestType = QuestType.AIVIP,
                 Filename = "Objective_AIVIP_" + newid.ToString(),
-                ConfigVersion = 4,
+                ConfigVersion = 5,
                 ID = newid,
                 ObjectiveType = (int)QuestType.AIVIP,
                 ObjectiveText = "New Objective " + newid.ToString(),
@@ -2961,7 +3142,7 @@ namespace DayZeEditor
             {
                 QuestType = QuestType.COLLECT,
                 Filename = "Objective_C_" + newid.ToString(),
-                ConfigVersion = 4,
+                ConfigVersion = 5,
                 ID = newid,
                 ObjectiveType = (int)QuestType.COLLECT,
                 ObjectiveText = "New Objective " + newid.ToString(),
@@ -2980,6 +3161,28 @@ namespace DayZeEditor
             };
             treeViewMS1.SelectedNode.Nodes.Add(newnode);
         }
+        private void addNewCraftingObjectiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int newid = QuestObjectives.GetNextQuestID(QuestType.CRAFTING);
+            QuestObjectivesCrafting newaction = new QuestObjectivesCrafting()
+            {
+                QuestType = QuestType.CRAFTING,
+                Filename = "Objective_CR_" + newid.ToString(),
+                ConfigVersion = 5,
+                ID = newid,
+                ObjectiveType = (int)QuestType.COLLECT,
+                ObjectiveText = "New Objective " + newid.ToString(),
+                TimeLimit = -1,
+                ItemNames = new BindingList<string>(),
+                isDirty = true
+            };
+            QuestObjectives.Objectives.Add(newaction);
+            TreeNode newnode = new TreeNode(newaction.Filename)
+            {
+                Tag = newaction
+            };
+            treeViewMS1.SelectedNode.Nodes.Add(newnode);
+        }
         private void addNewDeliveryObjectiveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int newid = QuestObjectives.GetNextQuestID(QuestType.DELIVERY);
@@ -2987,7 +3190,7 @@ namespace DayZeEditor
             {
                 QuestType = QuestType.DELIVERY,
                 Filename = "Objective_D_" + newid.ToString(),
-                ConfigVersion = 4,
+                ConfigVersion = 5,
                 ID = newid,
                 ObjectiveType = (int)QuestType.DELIVERY,
                 ObjectiveText = "New Objective " + newid.ToString(),
@@ -3017,7 +3220,7 @@ namespace DayZeEditor
             {
                 QuestType = QuestType.TARGET,
                 Filename = "Objective_TA_" + newid.ToString(),
-                ConfigVersion = 4,
+                ConfigVersion = 5,
                 ID = newid,
                 ObjectiveType = (int)QuestType.TARGET,
                 ObjectiveText = "New Objective " + newid.ToString(),
@@ -3047,7 +3250,7 @@ namespace DayZeEditor
             {
                 QuestType = QuestType.TRAVEL,
                 Filename = "Objective_T_" + newid.ToString(),
-                ConfigVersion = 4,
+                ConfigVersion = 5,
                 ID = newid,
                 ObjectiveType = (int)QuestType.TRAVEL,
                 ObjectiveText = "New Objective " + newid.ToString(),
@@ -3072,7 +3275,7 @@ namespace DayZeEditor
             {
                 QuestType = QuestType.TREASUREHUNT,
                 Filename = "Objective_TH_" + newid.ToString(),
-                ConfigVersion = 4,
+                ConfigVersion = 5,
                 ID = newid,
                 ObjectiveType = (int)QuestType.TREASUREHUNT,
                 ObjectiveText = "New Objective " + newid.ToString(),
@@ -3100,9 +3303,6 @@ namespace DayZeEditor
             treeViewMS1.SelectedNode.Remove();
             QuestsList.RemoveObjectivesfromQuests(basequest);
         }
-
         #endregion objectives
-
-
     }
 }

@@ -32,6 +32,7 @@ namespace DayZeEditor
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.MinimiseButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
             this.TitleLabel = new System.Windows.Forms.Label();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -63,7 +64,7 @@ namespace DayZeEditor
             this.darkStatusStrip1 = new DarkUI.Controls.DarkStatusStrip();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.MinimiseButton = new System.Windows.Forms.Button();
+            this.BBPManagerButton = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.SlidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Slidelabel)).BeginInit();
@@ -83,6 +84,20 @@ namespace DayZeEditor
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1148, 28);
             this.panel1.TabIndex = 7;
+            // 
+            // MinimiseButton
+            // 
+            this.MinimiseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MinimiseButton.BackColor = System.Drawing.Color.Black;
+            this.MinimiseButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.MinimiseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MinimiseButton.ForeColor = System.Drawing.Color.DarkRed;
+            this.MinimiseButton.Location = new System.Drawing.Point(1065, -3);
+            this.MinimiseButton.Name = "MinimiseButton";
+            this.MinimiseButton.Size = new System.Drawing.Size(41, 28);
+            this.MinimiseButton.TabIndex = 7;
+            this.MinimiseButton.Text = "_";
+            this.MinimiseButton.UseVisualStyleBackColor = false;
             // 
             // CloseButton
             // 
@@ -177,6 +192,7 @@ namespace DayZeEditor
             this.HelicrashManagerButton,
             this.LootchestButton,
             this.KOTHManagerButton,
+            this.BBPManagerButton,
             this.KOSzoneManagerButton,
             this.toolStripButton1});
             this.ToolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
@@ -438,19 +454,17 @@ namespace DayZeEditor
             this.panel2.Size = new System.Drawing.Size(25, 25);
             this.panel2.TabIndex = 45;
             // 
-            // MinimiseButton
+            // BBPManagerButton
             // 
-            this.MinimiseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.MinimiseButton.BackColor = System.Drawing.Color.Black;
-            this.MinimiseButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.MinimiseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MinimiseButton.ForeColor = System.Drawing.Color.DarkRed;
-            this.MinimiseButton.Location = new System.Drawing.Point(1065, -3);
-            this.MinimiseButton.Name = "MinimiseButton";
-            this.MinimiseButton.Size = new System.Drawing.Size(41, 28);
-            this.MinimiseButton.TabIndex = 7;
-            this.MinimiseButton.Text = "_";
-            this.MinimiseButton.UseVisualStyleBackColor = false;
+            this.BBPManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.BBPManagerButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.BBPManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("BBPManagerButton.Image")));
+            this.BBPManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BBPManagerButton.Name = "BBPManagerButton";
+            this.BBPManagerButton.Size = new System.Drawing.Size(103, 19);
+            this.BBPManagerButton.Text = "Base Building Plus";
+            this.BBPManagerButton.Visible = false;
+            this.BBPManagerButton.Click += new System.EventHandler(this.BBPManagerButton_Click);
             // 
             // MainForm
             // 
@@ -518,6 +532,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton ExpansionAIButton;
         private System.Windows.Forms.ToolStripButton ExpansionQuestsButton;
         private System.Windows.Forms.Button MinimiseButton;
+        private System.Windows.Forms.ToolStripButton BBPManagerButton;
     }
 }
 

@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnimatedHeliCrashes\Helicrash.cs" />
+    <Compile Include="BaseBuildingPlus\BBP.cs" />
     <Compile Include="Cannabisplus\CannabisPlus.cs" />
     <Compile Include="CJ187LootTable\LootChestTable.cs" />
     <Compile Include="DNAKeycards\Basic\DNABasicConfig.cs" />
@@ -128,6 +129,7 @@
     <Compile Include="ExpansionMarket\Traders.cs" />
     <Compile Include="ExpansionMarket\TraderZones.cs" />
     <Compile Include="ExpansionQuests\NPCs\ExpansionQuestNPCs.cs" />
+    <Compile Include="ExpansionQuests\Objectives\QuestObjectivesCrafting.cs" />
     <Compile Include="ExpansionQuests\Objectives\QuestObjectivesAIPatrol.cs" />
     <Compile Include="ExpansionQuests\Objectives\QuestObjectivesAction.cs" />
     <Compile Include="ExpansionQuests\Objectives\QuestObjectives.cs" />
@@ -145,6 +147,7 @@
     <Compile Include="ExpansionSettings\BaseBuildingSettings.cs" />
     <Compile Include="ExpansionSettings\BookSettings.cs" />
     <Compile Include="ExpansionSettings\chatsettings.cs" />
+    <Compile Include="ExpansionSettings\DamageSystemSettings.cs" />
     <Compile Include="ExpansionSettings\DebugSettings.cs" />
     <Compile Include="ExpansionSettings\GeneralSettings.cs" />
     <Compile Include="ExpansionSettings\Logsettings.cs" />

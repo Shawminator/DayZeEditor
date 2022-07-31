@@ -257,15 +257,28 @@ namespace DayZeLib
         {
             return TimeSpan.FromSeconds(seconds).TotalMinutes;
         }
-        public static List<string> GetPropertiesNameOfClass<T>(object pObject, string[] IgnoreNames)
+        public static List<string> GetPropertiesNameOfClass<T>(object pObject, string[] IgnoreNames = null, bool ignoreisspecific = false)
         {
             List<string> propertyList = new List<string>();
             if (pObject != null)
             {
                 foreach (var prop in pObject.GetType().GetProperties())
                 {
-                    if(prop.PropertyType == typeof(T) && !IgnoreNames.Contains(prop.Name))
-                        propertyList.Add(prop.Name);
+                    if(IgnoreNames == null)
+                    {
+                        if (prop.PropertyType == typeof(T))
+                            propertyList.Add(prop.Name);
+                    }
+                    else if (ignoreisspecific == false)
+                    {
+                        if (prop.PropertyType == typeof(T) && !IgnoreNames.Contains(prop.Name))
+                            propertyList.Add(prop.Name);
+                    }
+                    else if (ignoreisspecific == true)
+                    {
+                        if (prop.PropertyType == typeof(T) && IgnoreNames.Contains(prop.Name))
+                            propertyList.Add(prop.Name);
+                    }
                 }
             }
             return propertyList;

@@ -10,18 +10,19 @@ namespace DayZeLib
 {
     public class SafeZoneSettings
     {
-        const int CurrentVersion = 6;
+        const int CurrentVersion = 7;
 
-        public int m_Version { get; set; } //Currently Version 6
+        public int m_Version { get; set; }
         public int Enabled { get; set; }
         public float FrameRateCheckSafeZoneInMs { get; set; }
         public BindingList<CircleZones> CircleZones { get; set; }
         public BindingList<PolygonZones> PolygonZones { get; set; }
+        public int ActorsPerTick { get; set; }
         public int DisableVehicleDamageInSafeZone { get; set; }
         public int EnableForceSZCleanup { get; set; }
         public float ItemLifetimeInSafeZone { get; set; }
         public BindingList<string> ForceSZCleanup_ExcludedItems { get; set; }
-        public int ActorsPerTick { get;set;}
+
 
         [JsonIgnore]
         public string Filename { get; set; }
@@ -102,7 +103,7 @@ namespace DayZeLib
         }
         public void AddNewCircleZones()
         {
-            CircleZones.Add(new CircleZones() {Type = 0, Center = new float[] {0,0,0 }, Radius = 100 });
+            CircleZones.Add(new CircleZones() {Center = new float[] {0,0,0 }, Radius = 100 });
             SetCircleNames();
             isDirty = true;
         }
@@ -112,7 +113,6 @@ namespace DayZeLib
     // 2 = polygon
     public class CircleZones
     {
-        public int Type { get; set; }
         public float[] Center { get; set; }
         public float Radius { get; set; }
 
@@ -126,7 +126,6 @@ namespace DayZeLib
     }
     public class PolygonZones
     {
-        public int Type { get; set; }
         public BindingList<float[]> Positions { get; set; } 
         public float[] CenterPolygon { get; set; }
         public float RadiusPolygon { get; set; }

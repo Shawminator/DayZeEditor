@@ -41,6 +41,7 @@ namespace DayZeEditor
         public string BaseBUildignsettingsPath;
         public string BookSettingsPath;
         public string ChatSettingsPath;
+        public string DamageSystemSettingsPath;
         public string DebugSettingsPath;
         public string GeneralSettingsPath;
         public string LogsSettingsPath;
@@ -64,6 +65,7 @@ namespace DayZeEditor
         public BaseBuildingSettings BaseBuildingSettings;
         public BookSettings BookSettings;
         public ChatSettings ChatSettings;
+        public DamageSystemSettings DamageSystemSettings;
         public DebugSettings DebugSettings;
         public GeneralSettings GeneralSettings;
         public LogSettings LogSettings;
@@ -354,6 +356,23 @@ namespace DayZeEditor
 
             bool needtosave = false;
 
+            DamageSystemSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\DamageSystemSettings.json";
+            if (!File.Exists(DamageSystemSettingsPath))
+            {
+                DamageSystemSettings = new DamageSystemSettings();
+                needtosave = true;
+            }
+            else
+            {
+                DamageSystemSettings = JsonSerializer.Deserialize<DamageSystemSettings>(File.ReadAllText(DamageSystemSettingsPath));
+                DamageSystemSettings.ConvertDicttolist();
+                DamageSystemSettings.isDirty = false;
+                if (DamageSystemSettings.checkver())
+                    needtosave = true;
+            }
+            DamageSystemSettings.Filename = DamageSystemSettingsPath;
+            loadDamageSystemSettings();
+
             AirdropsettingPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\settings\\AirdropSettings.json";
             if (!File.Exists(AirdropsettingPath))
             {
@@ -434,6 +453,9 @@ namespace DayZeEditor
             }
             DebugSettings.Filename = DebugSettingsPath;
             loaddebugsettings();
+
+
+
 
             GeneralSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\GeneralSettings.json";
             if (!File.Exists(GeneralSettingsPath))
@@ -715,6 +737,7 @@ namespace DayZeEditor
         }
 
 
+
         public ContainerTypes getContainertype(string container)
         {
             switch (container)
@@ -790,6 +813,8 @@ namespace DayZeEditor
         {
             if (!Directory.Exists(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Settings"))
                 Directory.CreateDirectory(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Settings");
+            if (!Directory.Exists(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings"))
+                Directory.CreateDirectory(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings");
 
             List<string> midifiedfiles = new List<string>();
             string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
@@ -844,6 +869,20 @@ namespace DayZeEditor
                 }
                 File.WriteAllText(ChatSettings.Filename, jsonString);
                 midifiedfiles.Add(Path.GetFileName(ChatSettings.Filename));
+            }
+            if (DamageSystemSettings.isDirty)
+            {
+                DamageSystemSettings.isDirty = false;
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                string jsonString = JsonSerializer.Serialize(DamageSystemSettings, options);
+                if (currentproject.Createbackups && File.Exists(DamageSystemSettings.Filename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(DamageSystemSettings.Filename) + "\\Backup\\" + SaveTime);
+                    File.Copy(DamageSystemSettings.Filename, Path.GetDirectoryName(DamageSystemSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(DamageSystemSettings.Filename) + ".bak", true);
+                }
+                DamageSystemSettings.ConvertListtodict();
+                File.WriteAllText(DamageSystemSettings.Filename, jsonString);
+                midifiedfiles.Add(Path.GetFileName(DamageSystemSettings.Filename));
             }
             if (DebugSettings.isDirty)
             {
@@ -2621,7 +2660,60 @@ namespace DayZeEditor
         }
         #endregion chatSettings
 
+        #region dfamagesystemsettigns
+        private void loadDamageSystemSettings()
+        {
+            useraction = false;
+            DSEnabledCB.Checked = DamageSystemSettings.Enabled == 1 ? true : false;
+            CheckForBlockingObjectsCB.Checked = DamageSystemSettings.CheckForBlockingObjects == 1 ? true : false;
 
+            ExplosionTargetsLB.DisplayMember = "DisplayName";
+            ExplosionTargetsLB.ValueMember = "Value";
+            ExplosionTargetsLB.DataSource = DamageSystemSettings.ExplosionTargets;
+
+            ExplosiveProjectilesLB.DisplayMember = "DisplayName";
+            ExplosiveProjectilesLB.ValueMember = "Value";
+            ExplosiveProjectilesLB.DataSource = DamageSystemSettings.explosinvesList;
+
+            useraction = true;
+        }
+        private void ExplosiveProjectilesLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void DSEnabledCB_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void CheckForBlockingObjectsCB_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void darkButton67_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void darkButton66_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void darkButton69_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void darkButton68_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void textBox18_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void textBox17_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        #endregion damagesystemsettings
         #region debugsettings
         private void loaddebugsettings()
         {
@@ -2705,6 +2797,7 @@ namespace DayZeEditor
             useraction = false;
             SafezoneCB.Checked = LogSettings.Safezone == 1 ? true : false;
             VehicleCarKeyCB.Checked = LogSettings.VehicleCarKey == 1 ? true : false;
+            VehicleDestroyedCB.Checked = LogSettings.VehicleDestroyed == 1 ? true : false;
             VehicleTowingCB.Checked = LogSettings.VehicleTowing == 1 ? true : false;
             VehicleLockPickingCB.Checked = LogSettings.VehicleLockPicking == 1 ? true : false;
             BaseBuildingRaidingCB.Checked = LogSettings.BaseBuildingRaiding == 1 ? true : false;
@@ -2720,8 +2813,9 @@ namespace DayZeEditor
             ATMCB.Checked = LogSettings.ATM == 1 ? true : false;
             LogToScriptsCB.Checked = LogSettings.LogToScripts == 1 ? true : false;
             LogToADMCB.Checked = LogSettings.LogToADM == 1 ? true : false;
-            AICrashPatrolCB.Checked = LogSettings.AICrashPatrol == 1 ? true : false;
+            AIObjectPatrolCB.Checked = LogSettings.AIObjectPatrol == 1 ? true : false;
             HardlineCB.Checked = LogSettings.Hardline == 1 ? true : false;
+            ExplosionDamageSystemCB.Checked = LogSettings.ExplosionDamageSystem == 1 ? true : false;
             useraction = true;
         }
         private void LogSettingsCB_CheckedChanged(object sender, EventArgs e)
@@ -3344,7 +3438,7 @@ namespace DayZeEditor
         {
             if (!useraction) { return; }
             NumericUpDown nud = sender as NumericUpDown;
-            MissionSettings.SetIntValue(nud.Tag as string, (int)Helper.ConvertMinutesToSeconds((int)nud.Value));
+            MissionSettings.SetIntValue(nud.Tag as string, (int)Helper.ConvertMinutesToMilliseconds((int)nud.Value));
             MissionSettings.isDirty = true;
         }
         private void MissionFileIntNUD_ValueChanged(object sender, EventArgs e)
@@ -3690,9 +3784,35 @@ namespace DayZeEditor
             EnablePlayerTagsCB.Checked = NameTagSettings.EnablePlayerTags == 1 ? true : false;
             PlayerTagViewRangeNUD.Value = NameTagSettings.PlayerTagViewRange;
             PlayerTagsIconTB.Text = NameTagSettings.PlayerTagsIcon;
-            ShowPlayerTagsInSafeZonesCB.Checked = NameTagSettings.ShowPlayerTagsInSafeZones == 1 ? true : false;
-            ShowPlayerTagsInTerritoriesCB.Checked = NameTagSettings.ShowPlayerTagsInTerritories == 1 ? true : false;
+            ShowPlayerTagsInSafeZonesCB.Checked = NameTagSettings.OnlyInSafeZones == 1 ? true : false;
+            ShowPlayerTagsInTerritoriesCB.Checked = NameTagSettings.OnlyInTerritories == 1 ? true : false;
+            PlayerTagsColorPB.Invalidate();
+            PlayerNameColorPB.Invalidate();
             useraction = true;
+        }
+        private void PlayerTagsColor_Paint(object sender, PaintEventArgs e)
+        {
+            PictureBox pb = sender as PictureBox;
+            Rectangle region;
+            region = pb.ClientRectangle;
+            Color colour = Color.FromArgb(NameTagSettings.PlayerTagsColor);
+            using (Brush brush = new SolidBrush(colour))
+            {
+                e.Graphics.FillRectangle(brush, region);
+            }
+            e.Graphics.DrawRectangle(SystemPens.ControlText, region.Left, region.Top, region.Width - 1, region.Height - 1);
+        }
+        private void PlayerNameColorPB_Paint(object sender, PaintEventArgs e)
+        {
+            PictureBox pb = sender as PictureBox;
+            Rectangle region;
+            region = pb.ClientRectangle;
+            Color colour = Color.FromArgb(NameTagSettings.PlayerNameColor);
+            using (Brush brush = new SolidBrush(colour))
+            {
+                e.Graphics.FillRectangle(brush, region);
+            }
+            e.Graphics.DrawRectangle(SystemPens.ControlText, region.Left, region.Top, region.Width - 1, region.Height - 1);
         }
         private void EnablePlayerTagsCB_CheckedChanged(object sender, EventArgs e)
         {
@@ -3703,13 +3823,13 @@ namespace DayZeEditor
         private void ShowPlayerTagsInSafeZonesCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            NameTagSettings.ShowPlayerTagsInSafeZones = ShowPlayerTagsInSafeZonesCB.Checked == true ? 1 : 0;
+            NameTagSettings.OnlyInSafeZones = ShowPlayerTagsInSafeZonesCB.Checked == true ? 1 : 0;
             NameTagSettings.isDirty = true;
         }
         private void ShowPlayerTagsInTerritoriesCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            NameTagSettings.ShowPlayerTagsInTerritories = ShowPlayerTagsInTerritoriesCB.Checked == true ? 1 : 0;
+            NameTagSettings.OnlyInTerritories = ShowPlayerTagsInTerritoriesCB.Checked == true ? 1 : 0;
             NameTagSettings.isDirty = true;
         }
         private void PlayerTagViewRangeNUD_ValueChanged(object sender, EventArgs e)
@@ -3723,6 +3843,34 @@ namespace DayZeEditor
             if (!useraction) return;
             NameTagSettings.PlayerTagsIcon = PlayerTagsIconTB.Text;
             NameTagSettings.isDirty = true;
+        }
+        private void PlayerTagsColorPB_Click(object sender, EventArgs e)
+        {
+            PictureBox pb = sender as PictureBox;
+            ColorPickerDialog cpick = new ColorPickerDialog();
+            cpick.StartPosition = FormStartPosition.CenterParent;
+            cpick.Color = Color.FromArgb(NameTagSettings.PlayerTagsColor);
+            if (cpick.ShowDialog() == DialogResult.OK)
+            {
+
+                NameTagSettings.PlayerTagsColor = cpick.Color.ToArgb();
+                PlayerTagsColorPB.Invalidate();
+                NameTagSettings.isDirty = true;
+            }
+        }
+        private void PlayerNameColorPB_Click(object sender, EventArgs e)
+        {
+            PictureBox pb = sender as PictureBox;
+            ColorPickerDialog cpick = new ColorPickerDialog();
+            cpick.StartPosition = FormStartPosition.CenterParent;
+            cpick.Color = Color.FromArgb(NameTagSettings.PlayerNameColor);
+            if (cpick.ShowDialog() == DialogResult.OK)
+            {
+
+                NameTagSettings.PlayerNameColor = cpick.Color.ToArgb();
+                PlayerNameColorPB.Invalidate();
+                NameTagSettings.isDirty = true;
+            }
         }
         #endregion nametagsettings
 
@@ -6009,7 +6157,6 @@ namespace DayZeEditor
             VehicleSettings.MasterKeyPairingMode = (int)cacl;
             VehicleSettings.isDirty = true;
         }
-
         private void LockComplexityNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -6023,45 +6170,12 @@ namespace DayZeEditor
                 VehicleSettings.isDirty = true;
             }
         }
-
         private void DesyncInvulnerabilityTimeoutSecondsNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             VehicleSettings.DesyncInvulnerabilityTimeoutSeconds = DesyncInvulnerabilityTimeoutSecondsNUD.Value;
             VehicleSettings.isDirty = true;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         #endregion VehicleSettings
 
 

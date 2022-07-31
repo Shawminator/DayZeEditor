@@ -15,7 +15,7 @@ namespace DayZeLib
 {
     public class TradersList
     {
-        public const int CurrentVersion = 8;
+        public const int CurrentVersion = 9;
         public BindingList<Traders> Traderlist { get; set; }
         public string TraderPath { get; set; }
 
@@ -146,8 +146,10 @@ namespace DayZeLib
     }
     public class Traders
     {
-        public int m_Version { get; set; } //current Version 8
+        public int m_Version { get; set; }
         public string DisplayName { get; set; }
+        public int MinRequiredHumanity { get; set; }
+        public int MaxRequiredHumanity { get; set; }
         public string TraderIcon { get; set; }
         public BindingList<string> Currencies { get; set; }
         public BindingList<string> Categories { get; set; }
@@ -288,6 +290,7 @@ namespace DayZeLib
             foreach (string catname in CatNames)
             {
                 List<marketItem> catitemlist = MarketCats.GetCatFromFileName(catname).Items.ToList();
+                if (catitemlist.Count == 0) continue;
                 List<string> TIlist = new List<string>();
                 foreach (marketItem item in catitemlist)
                 {

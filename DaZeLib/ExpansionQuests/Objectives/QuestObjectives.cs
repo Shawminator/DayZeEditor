@@ -19,13 +19,14 @@ namespace DayZeLib
         AIPATROL = 7,
         AICAMP = 8,
         AIVIP = 9,
-        ACTION = 10
+        ACTION = 10,
+        CRAFTING = 11
     }
 
     public class QuestObjectivesBase : IEquatable<QuestObjectivesBase>
     {
         [JsonIgnore]
-        public static readonly string[] Objectvetypesname = {"","", "Target", "Travel", "Collection", "Delivery", "TreasureHunt", "AIPatrol", "AICamp", "AIVIP", "Action"};
+        public static readonly string[] Objectvetypesname = {"","", "Target", "Travel", "Collection", "Crafting", "Delivery", "TreasureHunt", "AIPatrol", "AICamp", "AIVIP", "Action"};
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -33,16 +34,19 @@ namespace DayZeLib
         [JsonIgnore]
         public QuestType QuestType { get; set; }
 
-        public string[] getfoldernames()
-        {
-            return Objectvetypesname;
-        }
+
         public int ConfigVersion { get; set; }
         public int ID { get; set; }
         public int ObjectiveType { get; set; }
         public string ObjectiveText { get; set; }
         public int TimeLimit { get; set; }
 
+
+
+        public string[] getfoldernames()
+        {
+            return Objectvetypesname;
+        }
         public override string ToString()
         {
             return ObjectiveText + ", type:" + (QuestType)ObjectiveType + ", ID:"+ID.ToString();
@@ -71,7 +75,7 @@ namespace DayZeLib
 
     public class QuestObjectives
     {
-        public static readonly string[] Objectvetypesname = { "Action", "AICamp", "AIPatrol", "AIVIP", "Collection", "Delivery", "Target", "Travel", "TreasureHunt" };
+        public static readonly string[] Objectvetypesname = { "Action", "AICamp", "AIPatrol", "AIVIP", "Collection", "Crafting", "Delivery", "Target", "Travel", "TreasureHunt" };
         public string QuestObjectiovesPath { get; set; }
         public BindingList<QuestObjectivesBase> Objectives { get; set; }
         public List<QuestObjectivesBase> Markedfordelete { get; set; }
@@ -83,23 +87,26 @@ namespace DayZeLib
             for (int i = 0; i < Objectvetypesname.Length; i++ )
             {
                 string m_type = Objectvetypesname[i];
-                DirectoryInfo dinfo = new DirectoryInfo(QuestObjectiovesPath + "\\" + m_type);
-                FileInfo[] Files = dinfo.GetFiles("*.json");
-                Console.WriteLine("Getting Quest Objectives");
-                Console.WriteLine(Files.Length.ToString() + " Found");
-                foreach (FileInfo file in Files)
+                if (Directory.Exists(QuestObjectiovesPath + "\\" + m_type))
                 {
-                    try
+                    DirectoryInfo dinfo = new DirectoryInfo(QuestObjectiovesPath + "\\" + m_type);
+                    FileInfo[] Files = dinfo.GetFiles("*.json");
+                    Console.WriteLine("Getting Quest Objectives");
+                    Console.WriteLine(Files.Length.ToString() + " Found");
+                    foreach (FileInfo file in Files)
                     {
-                        Console.WriteLine("serializing " + file.Name);
-                        QuestObjectivesBase newobjective = JsonSerializer.Deserialize<QuestObjectivesBase>(File.ReadAllText(file.FullName));
-                        newobjective.Filename = Path.GetFileNameWithoutExtension(file.Name);
-                        newobjective.QuestType = (QuestType)newobjective.ObjectiveType;
-                        Objectives.Add(newobjective);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("there is an error in the following file\n" + file.FullName + Environment.NewLine + ex.InnerException.Message);
+                        try
+                        {
+                            Console.WriteLine("serializing " + file.Name);
+                            QuestObjectivesBase newobjective = JsonSerializer.Deserialize<QuestObjectivesBase>(File.ReadAllText(file.FullName));
+                            newobjective.Filename = Path.GetFileNameWithoutExtension(file.Name);
+                            newobjective.QuestType = (QuestType)newobjective.ObjectiveType;
+                            Objectives.Add(newobjective);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("there is an error in the following file\n" + file.FullName + Environment.NewLine + ex.InnerException.Message);
+                        }
                     }
                 }
             }
