@@ -286,6 +286,10 @@ namespace DayZeEditor
                         QuestObjectivesAction Action = obj as QuestObjectivesAction;
                         jsonString = JsonSerializer.Serialize(Action, options);
                         break;
+                    case QuestType.CRAFTING:
+                        QuestObjectivesCrafting Crafting = obj as QuestObjectivesCrafting;
+                        jsonString = JsonSerializer.Serialize(Crafting, options);
+                        break;
                     default:
                         break;
                 }
@@ -1642,8 +1646,11 @@ namespace DayZeEditor
         }
         private void QuestObjectivesDeleveriesLB_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (QuestObjectivesDeleveriesLB.SelectedItems.Count == 0) return;
             Delivery del = QuestObjectivesDeleveriesLB.SelectedItem as Delivery;
+            useraction = false;
             QuestObjectivesDeliveriesAmountNUD.Value = del.Amount;
+            useraction = true;
         }
         private void SetupobjectiveTreasueHunt(TreeNodeMouseClickEventArgs e)
         {
@@ -1660,7 +1667,9 @@ namespace DayZeEditor
         {
             if (QuestObjectivesTreasureHUntItemListLB.SelectedItems.Count == 0) return;
             TreasureHuntItems thitems = QuestObjectivesTreasureHUntItemListLB.SelectedItem as TreasureHuntItems;
+            useraction = false;
             QuestObjectiveTreasureHuntitemAmountNUD.Value = thitems.Amount;
+            useraction = true;
         }
         private void SetupobjectiveAIPatrol(TreeNodeMouseClickEventArgs e)
         {
@@ -3170,7 +3179,7 @@ namespace DayZeEditor
                 Filename = "Objective_CR_" + newid.ToString(),
                 ConfigVersion = 5,
                 ID = newid,
-                ObjectiveType = (int)QuestType.COLLECT,
+                ObjectiveType = (int)QuestType.CRAFTING,
                 ObjectiveText = "New Objective " + newid.ToString(),
                 TimeLimit = -1,
                 ItemNames = new BindingList<string>(),

@@ -2649,7 +2649,7 @@ namespace DayZeEditor
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(62, 42);
+            this.toolStripButton2.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton2.Text = "Find Next";
             this.toolStripButton2.Visible = false;
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
@@ -10408,7 +10408,7 @@ namespace DayZeEditor
             // checkBox64
             // 
             this.checkBox64.AutoSize = true;
-            this.checkBox64.Location = new System.Drawing.Point(26, 100);
+            this.checkBox64.Location = new System.Drawing.Point(24, 98);
             this.checkBox64.Name = "checkBox64";
             this.checkBox64.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBox64.Size = new System.Drawing.Size(105, 17);
@@ -10419,10 +10419,9 @@ namespace DayZeEditor
             // 
             // EventSpawnGroupTB
             // 
-            this.EventSpawnGroupTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.EventSpawnGroupTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.EventSpawnGroupTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.EventSpawnGroupTB.Location = new System.Drawing.Point(7, 121);
+            this.EventSpawnGroupTB.Location = new System.Drawing.Point(10, 123);
             this.EventSpawnGroupTB.Name = "EventSpawnGroupTB";
             this.EventSpawnGroupTB.Size = new System.Drawing.Size(251, 20);
             this.EventSpawnGroupTB.TabIndex = 112;
@@ -10431,7 +10430,7 @@ namespace DayZeEditor
             // checkBox51
             // 
             this.checkBox51.AutoSize = true;
-            this.checkBox51.Location = new System.Drawing.Point(76, 74);
+            this.checkBox51.Location = new System.Drawing.Point(74, 72);
             this.checkBox51.Name = "checkBox51";
             this.checkBox51.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBox51.Size = new System.Drawing.Size(55, 17);
@@ -10443,7 +10442,7 @@ namespace DayZeEditor
             // checkBox50
             // 
             this.checkBox50.AutoSize = true;
-            this.checkBox50.Location = new System.Drawing.Point(76, 48);
+            this.checkBox50.Location = new System.Drawing.Point(74, 46);
             this.checkBox50.Name = "checkBox50";
             this.checkBox50.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBox50.Size = new System.Drawing.Size(55, 17);
@@ -10457,7 +10456,7 @@ namespace DayZeEditor
             this.EventSpawnPosXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.EventSpawnPosXNUD.DecimalPlaces = 4;
             this.EventSpawnPosXNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.EventSpawnPosXNUD.Location = new System.Drawing.Point(32, 21);
+            this.EventSpawnPosXNUD.Location = new System.Drawing.Point(30, 19);
             this.EventSpawnPosXNUD.Maximum = new decimal(new int[] {
             30000,
             0,
@@ -10478,7 +10477,7 @@ namespace DayZeEditor
             // 
             this.label116.AutoSize = true;
             this.label116.ForeColor = System.Drawing.SystemColors.Control;
-            this.label116.Location = new System.Drawing.Point(12, 23);
+            this.label116.Location = new System.Drawing.Point(10, 21);
             this.label116.Name = "label116";
             this.label116.Size = new System.Drawing.Size(23, 13);
             this.label116.TabIndex = 95;
@@ -10489,7 +10488,7 @@ namespace DayZeEditor
             this.EventSpawnPosYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.EventSpawnPosYNUD.DecimalPlaces = 4;
             this.EventSpawnPosYNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.EventSpawnPosYNUD.Location = new System.Drawing.Point(158, 47);
+            this.EventSpawnPosYNUD.Location = new System.Drawing.Point(156, 45);
             this.EventSpawnPosYNUD.Maximum = new decimal(new int[] {
             30000,
             0,
@@ -10511,7 +10510,7 @@ namespace DayZeEditor
             this.EventSpawnPosZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.EventSpawnPosZNUD.DecimalPlaces = 4;
             this.EventSpawnPosZNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.EventSpawnPosZNUD.Location = new System.Drawing.Point(158, 21);
+            this.EventSpawnPosZNUD.Location = new System.Drawing.Point(156, 19);
             this.EventSpawnPosZNUD.Maximum = new decimal(new int[] {
             30000,
             0,
@@ -10532,7 +10531,7 @@ namespace DayZeEditor
             // 
             this.label118.AutoSize = true;
             this.label118.ForeColor = System.Drawing.SystemColors.Control;
-            this.label118.Location = new System.Drawing.Point(138, 23);
+            this.label118.Location = new System.Drawing.Point(136, 21);
             this.label118.Name = "label118";
             this.label118.Size = new System.Drawing.Size(23, 13);
             this.label118.TabIndex = 99;
@@ -10543,7 +10542,7 @@ namespace DayZeEditor
             this.EventSpawnPosANUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.EventSpawnPosANUD.DecimalPlaces = 4;
             this.EventSpawnPosANUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.EventSpawnPosANUD.Location = new System.Drawing.Point(158, 73);
+            this.EventSpawnPosANUD.Location = new System.Drawing.Point(156, 71);
             this.EventSpawnPosANUD.Maximum = new decimal(new int[] {
             30000,
             0,

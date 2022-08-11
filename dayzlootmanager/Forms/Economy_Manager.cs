@@ -2220,6 +2220,13 @@ namespace DayZeEditor
             currentproject.cfgeventspawns.isDirty = true;
             EventSpawnTV.SelectedNode.Text = eventposdefEventPos.ToString();
             pictureBox1.Invalidate();
+            if(eventposdefEventPos.ySpecified)
+            {
+                if (MapData.FileExists)
+                {
+                    EventSpawnPosYNUD.Value = (decimal)(MapData.gethieght((float)eventposdefEventPos.x, (float)eventposdefEventPos.z));
+                }
+            }
         }
         private void EventSpawnPosYNUD_ValueChanged(object sender, EventArgs e)
         {
@@ -2235,6 +2242,13 @@ namespace DayZeEditor
             currentproject.cfgeventspawns.isDirty = true;
             EventSpawnTV.SelectedNode.Text = eventposdefEventPos.ToString();
             pictureBox1.Invalidate();
+            if (eventposdefEventPos.ySpecified)
+            {
+                if (MapData.FileExists)
+                {
+                    EventSpawnPosYNUD.Value = (decimal)(MapData.gethieght((float)eventposdefEventPos.x, (float)eventposdefEventPos.z));
+                }
+            }
         }
         private void EventSpawnPosANUD_ValueChanged(object sender, EventArgs e)
         {
@@ -2535,7 +2549,51 @@ namespace DayZeEditor
         }
         private void exportPositionTodzeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            DZE newdze = new DZE()
+            {
+                EditorObjects = new List<Editorobject>(),
+                EditorDeletedObjects = new List<object>(),
+                MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
+            };
+            string Classname = "";
+            foreach (eventscofig eventconfig in currentproject.ModEventsList)
+            {
+                if (Classname != "")
+                    break;
+                foreach(eventsEvent eve in eventconfig.events.@event)
+                {
+                    if(eve.name == eventposdefEvent.name)
+                    {
+                        Classname = eve.children[0].type;
+                        break;
+                    }
+                }
+            }
+            foreach (eventposdefEventPos array in eventposdefEvent.pos)
+            {
+                Editorobject eo = new Editorobject()
+                {
+                    Type = Classname,
+                    DisplayName = Classname,
+                    Position = new float[] { (float)array.x, 0f, (float)array.z },
+                    Orientation = new float[] { 0, 0, 0 },
+                    Scale = 1.0f,
+                    Flags = 2147483647
+                };
+                if (array.ySpecified)
+                    eo.Position[1] = (float)array.y;
+                if (array.aSpecified)
+                    eo.Orientation[0] = (float)array.a;
+                newdze.EditorObjects.Add(eo);
+            }
+            newdze.CameraPosition = newdze.EditorObjects[0].Position;
+            SaveFileDialog save = new SaveFileDialog();
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                string jsonString = JsonSerializer.Serialize(newdze, options);
+                File.WriteAllText(save.FileName + ".dze", jsonString);
+            }
         }
         private void addNewPosirtionToolStripMenuItem_Click(object sender, EventArgs e)
         {

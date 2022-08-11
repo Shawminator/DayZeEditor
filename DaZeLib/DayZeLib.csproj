@@ -91,8 +91,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbandonedVehicleremover\AVR.cs" />
     <Compile Include="AnimatedHeliCrashes\Helicrash.cs" />
     <Compile Include="BaseBuildingPlus\BBP.cs" />
+    <Compile Include="BreachingCharge\BreachingChargeSettigns.cs" />
     <Compile Include="Cannabisplus\CannabisPlus.cs" />
     <Compile Include="CJ187LootTable\LootChestTable.cs" />
     <Compile Include="DNAKeycards\Basic\DNABasicConfig.cs" />
@@ -192,6 +194,7 @@
   <ItemGroup>
     <Compile Include="ExpansionQuests\NPCs\NPCEmotes.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

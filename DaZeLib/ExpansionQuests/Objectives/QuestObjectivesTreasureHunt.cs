@@ -29,6 +29,7 @@ namespace DayZeLib
     {
         public BindingList<float[]> Positions { get; set; }
         public Dictionary<string,int> Items { get; set; }
+        [JsonIgnore]
         public BindingList<TreasureHuntItems> ListItems { get; set; }
 
         public Treasurehunt()

@@ -55,6 +55,8 @@ namespace DayZeEditor
             this.HelicrashManagerButton = new System.Windows.Forms.ToolStripButton();
             this.LootchestButton = new System.Windows.Forms.ToolStripButton();
             this.KOTHManagerButton = new System.Windows.Forms.ToolStripButton();
+            this.BBPManagerButton = new System.Windows.Forms.ToolStripButton();
+            this.AbandonedVehicleRemoverManagerButton = new System.Windows.Forms.ToolStripButton();
             this.KOSzoneManagerButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.HidePBox = new System.Windows.Forms.PictureBox();
@@ -64,7 +66,7 @@ namespace DayZeEditor
             this.darkStatusStrip1 = new DarkUI.Controls.DarkStatusStrip();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.BBPManagerButton = new System.Windows.Forms.ToolStripButton();
+            this.BreachingChargeManagerButton = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.SlidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Slidelabel)).BeginInit();
@@ -193,6 +195,8 @@ namespace DayZeEditor
             this.LootchestButton,
             this.KOTHManagerButton,
             this.BBPManagerButton,
+            this.AbandonedVehicleRemoverManagerButton,
+            this.BreachingChargeManagerButton,
             this.KOSzoneManagerButton,
             this.toolStripButton1});
             this.ToolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
@@ -307,7 +311,7 @@ namespace DayZeEditor
             this.ExpansionAIButton.Size = new System.Drawing.Size(103, 19);
             this.ExpansionAIButton.Text = "Expansion AI";
             this.ExpansionAIButton.Visible = false;
-            this.ExpansionAIButton.Click += new System.EventHandler(this.toolStripButton3_Click_1);
+            this.ExpansionAIButton.Click += new System.EventHandler(this.ExpansionAIButton_Click);
             // 
             // ExpansionQuestsButton
             // 
@@ -357,6 +361,30 @@ namespace DayZeEditor
             this.KOTHManagerButton.Visible = false;
             this.KOTHManagerButton.Click += new System.EventHandler(this.KOTHManagerButton_Click);
             // 
+            // BBPManagerButton
+            // 
+            this.BBPManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.BBPManagerButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.BBPManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("BBPManagerButton.Image")));
+            this.BBPManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BBPManagerButton.Name = "BBPManagerButton";
+            this.BBPManagerButton.Size = new System.Drawing.Size(103, 19);
+            this.BBPManagerButton.Text = "Base Building Plus";
+            this.BBPManagerButton.Visible = false;
+            this.BBPManagerButton.Click += new System.EventHandler(this.BBPManagerButton_Click);
+            // 
+            // AbandonedVehicleRemoverManagerButton
+            // 
+            this.AbandonedVehicleRemoverManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.AbandonedVehicleRemoverManagerButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.AbandonedVehicleRemoverManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("AbandonedVehicleRemoverManagerButton.Image")));
+            this.AbandonedVehicleRemoverManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AbandonedVehicleRemoverManagerButton.Name = "AbandonedVehicleRemoverManagerButton";
+            this.AbandonedVehicleRemoverManagerButton.Size = new System.Drawing.Size(103, 19);
+            this.AbandonedVehicleRemoverManagerButton.Text = "Vehicle Remover";
+            this.AbandonedVehicleRemoverManagerButton.Visible = false;
+            this.AbandonedVehicleRemoverManagerButton.Click += new System.EventHandler(this.AbandonedVehicleRemoverManagerButton_Click);
+            // 
             // KOSzoneManagerButton
             // 
             this.KOSzoneManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -367,7 +395,7 @@ namespace DayZeEditor
             this.KOSzoneManagerButton.Size = new System.Drawing.Size(103, 19);
             this.KOSzoneManagerButton.Text = "KOS Zone";
             this.KOSzoneManagerButton.Visible = false;
-            this.KOSzoneManagerButton.Click += new System.EventHandler(this.toolStripButton3_Click);
+            this.KOSzoneManagerButton.Click += new System.EventHandler(this.KOSzoneManagerButton_Click);
             // 
             // toolStripButton1
             // 
@@ -454,17 +482,17 @@ namespace DayZeEditor
             this.panel2.Size = new System.Drawing.Size(25, 25);
             this.panel2.TabIndex = 45;
             // 
-            // BBPManagerButton
+            // BreachingChargeManagerButton
             // 
-            this.BBPManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.BBPManagerButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.BBPManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("BBPManagerButton.Image")));
-            this.BBPManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.BBPManagerButton.Name = "BBPManagerButton";
-            this.BBPManagerButton.Size = new System.Drawing.Size(103, 19);
-            this.BBPManagerButton.Text = "Base Building Plus";
-            this.BBPManagerButton.Visible = false;
-            this.BBPManagerButton.Click += new System.EventHandler(this.BBPManagerButton_Click);
+            this.BreachingChargeManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.BreachingChargeManagerButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.BreachingChargeManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("BreachingChargeManagerButton.Image")));
+            this.BreachingChargeManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BreachingChargeManagerButton.Name = "BreachingChargeManagerButton";
+            this.BreachingChargeManagerButton.Size = new System.Drawing.Size(103, 19);
+            this.BreachingChargeManagerButton.Text = "Breaching Charge";
+            this.BreachingChargeManagerButton.Visible = false;
+            this.BreachingChargeManagerButton.Click += new System.EventHandler(this.BreachingChargeManagerButton_Click);
             // 
             // MainForm
             // 
@@ -533,6 +561,8 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton ExpansionQuestsButton;
         private System.Windows.Forms.Button MinimiseButton;
         private System.Windows.Forms.ToolStripButton BBPManagerButton;
+        private System.Windows.Forms.ToolStripButton AbandonedVehicleRemoverManagerButton;
+        private System.Windows.Forms.ToolStripButton BreachingChargeManagerButton;
     }
 }
 

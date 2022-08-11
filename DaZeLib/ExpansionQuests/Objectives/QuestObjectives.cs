@@ -26,7 +26,7 @@ namespace DayZeLib
     public class QuestObjectivesBase : IEquatable<QuestObjectivesBase>
     {
         [JsonIgnore]
-        public static readonly string[] Objectvetypesname = {"","", "Target", "Travel", "Collection", "Crafting", "Delivery", "TreasureHunt", "AIPatrol", "AICamp", "AIVIP", "Action"};
+        public static readonly string[] Objectvetypesname = {"","", "Target", "Travel", "Collection", "Delivery", "TreasureHunt", "AIPatrol", "AICamp", "AIVIP", "Action", "Crafting"};
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]

@@ -84,6 +84,20 @@ namespace DayZeLib
             }
             return string.Empty;
         }
+
+        public static float[] convertToRGBFloat(Color value)
+        {
+            return new float[] { value.R / 255.0F, value.G / 255.0f, value.B / 255.0f };
+        }
+
+        public static Color ConverToColor(float[] lightColorStart)
+        {
+            int R = (lightColorStart[0] >= 1.0 ? 255 : (lightColorStart[0] <= 0.0 ? 0 : (int)Math.Floor(lightColorStart[0] * 256.0)));
+            int G = (lightColorStart[1] >= 1.0 ? 255 : (lightColorStart[1] <= 0.0 ? 0 : (int)Math.Floor(lightColorStart[1] * 256.0)));
+            int B= (lightColorStart[2] >= 1.0 ? 255 : (lightColorStart[2] <= 0.0 ? 0 : (int)Math.Floor(lightColorStart[2] * 256.0)));
+            return Color.FromArgb(R,G,B);
+        }
+
         public static string SearchForNextTermsInFile(StreamReader reader, string[] searchTerms, string abortTerm)
         {
             int char_count = 0;

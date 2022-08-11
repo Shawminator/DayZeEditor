@@ -74,6 +74,10 @@ namespace DayZeEditor
             {
                 Tag = "Collection"
             };
+            TreeNode ObjectivesCrafting = new TreeNode("Crafting")
+            {
+                Tag = "Crafting"
+            };
             TreeNode ObjectivesDelivery = new TreeNode("Delivery")
             {
                 Tag = "Delivery"
@@ -123,6 +127,9 @@ namespace DayZeEditor
                     case QuestType.ACTION:
                         ObjectivesAction.Nodes.Add(newnode);
                         break;
+                    case QuestType.CRAFTING:
+                        ObjectivesCrafting.Nodes.Add(newnode);
+                        break;
                     default:
                         break;
                 }
@@ -132,6 +139,7 @@ namespace DayZeEditor
             root.Nodes.Add(ObjectivesAIPatrol);
             root.Nodes.Add(ObjectivesAIVIP);
             root.Nodes.Add(ObjectivesCollection);
+            root.Nodes.Add(ObjectivesCrafting);
             root.Nodes.Add(ObjectivesDelivery);
             root.Nodes.Add(ObjectivesTarget);
             root.Nodes.Add(ObjectivesTravel);

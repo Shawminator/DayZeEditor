@@ -34,7 +34,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.6.9";
+        public string VersionNumber = "0.7.0";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -303,6 +303,16 @@ namespace DayZeEditor
                 else
                     BBPManagerButton.Visible = false;
 
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\AbandonedVehicleRemover\\Settings.json"))
+                    AbandonedVehicleRemoverManagerButton.Visible = true;
+                else
+                    AbandonedVehicleRemoverManagerButton.Visible = false;
+
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\BreachingCharge\\breachingcharge.json"))
+                    BreachingChargeManagerButton.Visible = true;
+                else
+                    BreachingChargeManagerButton.Visible = false;
+
                 //if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KingOfTheHill.json"))
                 //    KOTHManagerButton.Visible = true;
                 //else
@@ -374,6 +384,7 @@ namespace DayZeEditor
                     projects = Projects
                 };
                 _TM.Show();
+                Console.WriteLine("loading Project manager....");
             }
             timer1.Start();
         }
@@ -398,6 +409,7 @@ namespace DayZeEditor
                     currentproject = Projects.getActiveProject()
                 };
                 _TM.Show();
+                Console.WriteLine("loading Economy manager....");
             }
             timer1.Start();
         }
@@ -472,6 +484,7 @@ namespace DayZeEditor
                     currentproject = Projects.getActiveProject()
                 };
                 _TM.Show();
+                Console.WriteLine("loading Expansion Settings manager....");
             }
             timer1.Start();
         }
@@ -496,10 +509,11 @@ namespace DayZeEditor
                     currentproject = Projects.getActiveProject()
                 };
                 _TM.Show();
+                Console.WriteLine("loading Expansion Market manager....");
             }
             timer1.Start();
         }
-        private void toolStripButton3_Click_1(object sender, EventArgs e)
+        private void ExpansionAIButton_Click(object sender, EventArgs e)
         {
             ExpansionAI _TM = Application.OpenForms["ExpansionAI"] as ExpansionAI;
             if (_TM != null)
@@ -520,6 +534,7 @@ namespace DayZeEditor
                     currentproject = Projects.getActiveProject()
                 };
                 _TM.Show();
+                Console.WriteLine("loading expansion AI manager....");
             }
             timer1.Start();
         }
@@ -546,6 +561,7 @@ namespace DayZeEditor
                 _TM.Show();
             }
             timer1.Start();
+            Console.WriteLine("loading Expasion Quest manager....");
         }
         private void Lootchest_Click(object sender, EventArgs e)
         {
@@ -568,6 +584,7 @@ namespace DayZeEditor
                     currentproject = Projects.getActiveProject()
                 };
                 _TM.Show();
+                Console.WriteLine("loading Loot Chest manager....");
             }
             timer1.Start();
         }
@@ -593,6 +610,7 @@ namespace DayZeEditor
                     currentproject = Projects.getActiveProject()
                 };
                 _TM.Show();
+                Console.WriteLine("loading Heli crash Mission manager....");
             }
             timer1.Start();
         }
@@ -617,7 +635,7 @@ namespace DayZeEditor
                     currentproject = Projects.getActiveProject()
                 };
                 _TM.Show();
-                Console.WriteLine("loading KOSZone manager....");
+                Console.WriteLine("loading KOTH manager....");
             }
             timer1.Start();
         }
@@ -642,11 +660,11 @@ namespace DayZeEditor
                     currentproject = Projects.getActiveProject()
                 };
                 _TM.Show();
-                Console.WriteLine("loading KOSZone manager....");
+                Console.WriteLine("loading Base Building Plus manager....");
             }
             timer1.Start();
         }
-        private void toolStripButton3_Click(object sender, EventArgs e)
+        private void KOSzoneManagerButton_Click(object sender, EventArgs e)
         {
             KOSZonemanager _TM = Application.OpenForms["KOSZone"] as KOSZonemanager;
             if (_TM != null)
@@ -681,7 +699,58 @@ namespace DayZeEditor
                 data.CreateNewData();
             }
         }
+        private void AbandonedVehicleRemoverManagerButton_Click(object sender, EventArgs e)
+        {
+            ABVManager _TM = Application.OpenForms["ABVManager"] as ABVManager;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new ABVManager
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
 
+                };
+                _TM.Show();
+                Console.WriteLine("loading Abandoned Vehicle Remover manager....");
+            }
+            timer1.Start();
+        }
+        private void BreachingChargeManagerButton_Click(object sender, EventArgs e)
+        {
+            BreachingChargeManager _TM = Application.OpenForms["BreachingChargeManager"] as BreachingChargeManager;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new BreachingChargeManager
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+
+                };
+                _TM.Show();
+                Console.WriteLine("loading KOSZone manager....");
+            }
+            timer1.Start();
+        }
 
     }
 }
