@@ -859,18 +859,16 @@ namespace DayZeEditor
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     filePath = openFileDialog.FileName;
-                    var fileStream = openFileDialog.OpenFile();
-                    fileContent = File.ReadAllLines(filePath);
+                    DZE importfile = DZEHelpers.LoadFile(filePath);
                     DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
                         CurrentLootChestLocation.pos.Clear();
                     }
-                    foreach (string line in fileContent)
+                    foreach (EditorObjectData eo in importfile.EditorObjects)
                     {
-                        string[] linesplit = line.Split('|');
-                        if(!linesplit[0] .Contains("CJ_LootChest")) { return; }
-                        CurrentLootChestLocation.pos.Add(linesplit[1] + "|" + linesplit[2]);
+                        if(!eo.Type.Contains("CJ_LootChest")) { return; }
+                        CurrentLootChestLocation.pos.Add(eo.Orientation[0].ToString("F6") + " " + eo.Position[1].ToString("F6") + " " + eo.Position[2].ToString("F6") + "|" + eo.Orientation[0].ToString("F6") + " " + eo.Orientation[1].ToString("F6") + " " + eo.Position[2].ToString("F6"));
                         posLB.SelectedIndex = -1;
                         posLB.SelectedIndex = posLB.Items.Count - 1;
                         posLB.Refresh();
@@ -928,6 +926,7 @@ namespace DayZeEditor
             {
                 selectedLoot.Add(item.ToString());
             }
+            if (selectedLoot.Count <= 0) return;
             Clipboard.SetText(string.Join(Environment.NewLine, selectedLoot.Cast<object>().Select(o => o.ToString()).ToArray()));
             Console.WriteLine("\nCopied to Clipboard:\n" + string.Join(Environment.NewLine, selectedLoot.Cast<object>().Select(o => o.ToString()).ToArray()));
         }

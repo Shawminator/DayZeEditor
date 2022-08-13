@@ -1,16 +1,20 @@
-﻿Version 0.7.0
+﻿Version 0.7.0/0.7.1
+Two versions as i forgot to push the changes to github so dont know exactlywhat was changed. but the following was done between the two versions.
 [Fixed]
 Hopefully fixed the updater and change log, this should work from now on, hopefully.......
 Trader plus objects were not showing Orientaion or updating orientaion
 Fixed bug in Missions where it would convert the missions time to milleseconds twice.
 Fixed bug where it would remove the assigned NPC to quests when adding a new NPC
-[Updated]
+[Updated/Changed]
 Updated Objective config version
 Updated all Expansion settings/traders/quests etc.. to be in line with latest Expansion Update
+Changed CJ Loot crate import from map to import from unbinned dze
 [Added]
 Added new expansion DamageSystemSettings
 Added new Crafting Objective to teh quest manager
 Added BBP Config
+Added Abandoned vehicle remover config
+Added breaching charge config
 [Removed]
 Removed King of the HIll Config.
 

@@ -290,6 +290,7 @@ namespace DayZeEditor
             this.ChargeDamageToObjectsNUD.Size = new System.Drawing.Size(72, 20);
             this.ChargeDamageToObjectsNUD.TabIndex = 174;
             this.ChargeDamageToObjectsNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ChargeDamageToObjectsNUD.ValueChanged += new System.EventHandler(this.ChargeDamageToObjectsNUD_ValueChanged);
             // 
             // darkLabel22
             // 
@@ -364,6 +365,7 @@ namespace DayZeEditor
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(161, 20);
             this.textBox1.TabIndex = 167;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // ChargeSwitchIntervalNUD
             // 
@@ -380,6 +382,7 @@ namespace DayZeEditor
             this.ChargeSwitchIntervalNUD.Size = new System.Drawing.Size(65, 20);
             this.ChargeSwitchIntervalNUD.TabIndex = 166;
             this.ChargeSwitchIntervalNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ChargeSwitchIntervalNUD.ValueChanged += new System.EventHandler(this.ChargeSwitchIntervalNUD_ValueChanged);
             // 
             // darkLabel18
             // 
@@ -406,6 +409,7 @@ namespace DayZeEditor
             this.ChargeBeepingSoundEndTimeNUD.Size = new System.Drawing.Size(65, 20);
             this.ChargeBeepingSoundEndTimeNUD.TabIndex = 164;
             this.ChargeBeepingSoundEndTimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ChargeBeepingSoundEndTimeNUD.ValueChanged += new System.EventHandler(this.ChargeBeepingSoundEndTimeNUD_ValueChanged);
             // 
             // darkLabel19
             // 
@@ -435,6 +439,7 @@ namespace DayZeEditor
             this.ChargeBeepingSoundSetTB.Name = "ChargeBeepingSoundSetTB";
             this.ChargeBeepingSoundSetTB.Size = new System.Drawing.Size(161, 20);
             this.ChargeBeepingSoundSetTB.TabIndex = 161;
+            this.ChargeBeepingSoundSetTB.TextChanged += new System.EventHandler(this.ChargeBeepingSoundSetTB_TextChanged);
             // 
             // ChargeLightColorEndPB
             // 
@@ -514,6 +519,7 @@ namespace DayZeEditor
             this.CharegLightRadiusNUD.Size = new System.Drawing.Size(105, 20);
             this.CharegLightRadiusNUD.TabIndex = 154;
             this.CharegLightRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.CharegLightRadiusNUD.ValueChanged += new System.EventHandler(this.CharegLightRadiusNUD_ValueChanged);
             // 
             // darkLabel13
             // 
@@ -540,6 +546,7 @@ namespace DayZeEditor
             this.ChargeLightBrightnessNUD.Size = new System.Drawing.Size(105, 20);
             this.ChargeLightBrightnessNUD.TabIndex = 152;
             this.ChargeLightBrightnessNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ChargeLightBrightnessNUD.ValueChanged += new System.EventHandler(this.ChargeLightBrightnessNUD_ValueChanged);
             // 
             // darkLabel14
             // 
@@ -566,6 +573,7 @@ namespace DayZeEditor
             this.ChargeTimeToDefuseNUD.Size = new System.Drawing.Size(105, 20);
             this.ChargeTimeToDefuseNUD.TabIndex = 150;
             this.ChargeTimeToDefuseNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ChargeTimeToDefuseNUD.ValueChanged += new System.EventHandler(this.ChargeTimeToDefuseNUD_ValueChanged);
             // 
             // darkLabel9
             // 
@@ -592,6 +600,7 @@ namespace DayZeEditor
             this.ChargeTimeToExplodeNUD.Size = new System.Drawing.Size(105, 20);
             this.ChargeTimeToExplodeNUD.TabIndex = 148;
             this.ChargeTimeToExplodeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ChargeTimeToExplodeNUD.ValueChanged += new System.EventHandler(this.ChargeTimeToExplodeNUD_ValueChanged);
             // 
             // darkLabel11
             // 
@@ -618,6 +627,7 @@ namespace DayZeEditor
             this.ChargeTimeToPlantNUD.Size = new System.Drawing.Size(105, 20);
             this.ChargeTimeToPlantNUD.TabIndex = 146;
             this.ChargeTimeToPlantNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ChargeTimeToPlantNUD.ValueChanged += new System.EventHandler(this.ChargeTimeToPlantNUD_ValueChanged);
             // 
             // darkLabel12
             // 
@@ -640,6 +650,7 @@ namespace DayZeEditor
             this.ChargeDestroyOtherChargesCB.TabIndex = 144;
             this.ChargeDestroyOtherChargesCB.Text = "Destroy Other Charges";
             this.ChargeDestroyOtherChargesCB.UseVisualStyleBackColor = true;
+            this.ChargeDestroyOtherChargesCB.CheckedChanged += new System.EventHandler(this.ChargeDestroyOtherChargesCB_CheckedChanged);
             // 
             // ChargeToolDamageOnDefuseNUD
             // 
@@ -656,6 +667,7 @@ namespace DayZeEditor
             this.ChargeToolDamageOnDefuseNUD.Size = new System.Drawing.Size(72, 20);
             this.ChargeToolDamageOnDefuseNUD.TabIndex = 143;
             this.ChargeToolDamageOnDefuseNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ChargeToolDamageOnDefuseNUD.ValueChanged += new System.EventHandler(this.ChargeToolDamageOnDefuseNUD_ValueChanged);
             // 
             // darkLabel8
             // 
@@ -682,6 +694,7 @@ namespace DayZeEditor
             this.ChargeMinPlacementDistanceNUD.Size = new System.Drawing.Size(72, 20);
             this.ChargeMinPlacementDistanceNUD.TabIndex = 141;
             this.ChargeMinPlacementDistanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ChargeMinPlacementDistanceNUD.ValueChanged += new System.EventHandler(this.ChargeMinPlacementDistanceNUD_ValueChanged);
             // 
             // LABEL
             // 
@@ -708,6 +721,7 @@ namespace DayZeEditor
             this.ChargePlacementDistanceNUD.Size = new System.Drawing.Size(72, 20);
             this.ChargePlacementDistanceNUD.TabIndex = 139;
             this.ChargePlacementDistanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ChargePlacementDistanceNUD.ValueChanged += new System.EventHandler(this.ChargePlacementDistanceNUD_ValueChanged);
             // 
             // darkLabel10
             // 
@@ -730,6 +744,7 @@ namespace DayZeEditor
             this.ChargeDestroyLocksFirstCB.TabIndex = 137;
             this.ChargeDestroyLocksFirstCB.Text = "Destroy Locks First";
             this.ChargeDestroyLocksFirstCB.UseVisualStyleBackColor = true;
+            this.ChargeDestroyLocksFirstCB.CheckedChanged += new System.EventHandler(this.ChargeDestroyLocksFirstCB_CheckedChanged);
             // 
             // ChargeOnlyDestroyLocksCB
             // 
@@ -742,6 +757,7 @@ namespace DayZeEditor
             this.ChargeOnlyDestroyLocksCB.TabIndex = 136;
             this.ChargeOnlyDestroyLocksCB.Text = "Only Destroy Locks";
             this.ChargeOnlyDestroyLocksCB.UseVisualStyleBackColor = true;
+            this.ChargeOnlyDestroyLocksCB.CheckedChanged += new System.EventHandler(this.ChargeOnlyDestroyLocksCB_CheckedChanged);
             // 
             // ChargeDeleteObjectsDirectlyCB
             // 
@@ -754,6 +770,7 @@ namespace DayZeEditor
             this.ChargeDeleteObjectsDirectlyCB.TabIndex = 135;
             this.ChargeDeleteObjectsDirectlyCB.Text = "Delete Objects Directly";
             this.ChargeDeleteObjectsDirectlyCB.UseVisualStyleBackColor = true;
+            this.ChargeDeleteObjectsDirectlyCB.CheckedChanged += new System.EventHandler(this.ChargeDeleteObjectsDirectlyCB_CheckedChanged);
             // 
             // ChargeMaxVerticalDistancePlayersNUD
             // 
@@ -770,6 +787,7 @@ namespace DayZeEditor
             this.ChargeMaxVerticalDistancePlayersNUD.Size = new System.Drawing.Size(72, 20);
             this.ChargeMaxVerticalDistancePlayersNUD.TabIndex = 134;
             this.ChargeMaxVerticalDistancePlayersNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ChargeMaxVerticalDistancePlayersNUD.ValueChanged += new System.EventHandler(this.ChargeMaxVerticalDistancePlayersNUD_ValueChanged);
             // 
             // darkLabel7
             // 
@@ -796,6 +814,7 @@ namespace DayZeEditor
             this.ChargeMaxDamageToPlayersRadiusNUD.Size = new System.Drawing.Size(72, 20);
             this.ChargeMaxDamageToPlayersRadiusNUD.TabIndex = 132;
             this.ChargeMaxDamageToPlayersRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ChargeMaxDamageToPlayersRadiusNUD.ValueChanged += new System.EventHandler(this.ChargeMaxDamageToPlayersRadiusNUD_ValueChanged);
             // 
             // darkLabel6
             // 
@@ -822,6 +841,7 @@ namespace DayZeEditor
             this.ChargeDamageToPlayersRadiusNUD.Size = new System.Drawing.Size(72, 20);
             this.ChargeDamageToPlayersRadiusNUD.TabIndex = 130;
             this.ChargeDamageToPlayersRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ChargeDamageToPlayersRadiusNUD.ValueChanged += new System.EventHandler(this.ChargeDamageToPlayersRadiusNUD_ValueChanged);
             // 
             // darkLabel5
             // 
@@ -848,6 +868,7 @@ namespace DayZeEditor
             this.ChargeMinDamageToPlayersNUD.Size = new System.Drawing.Size(72, 20);
             this.ChargeMinDamageToPlayersNUD.TabIndex = 128;
             this.ChargeMinDamageToPlayersNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ChargeMinDamageToPlayersNUD.ValueChanged += new System.EventHandler(this.ChargeMinDamageToPlayersNUD_ValueChanged);
             // 
             // darkLabel4
             // 
@@ -874,6 +895,7 @@ namespace DayZeEditor
             this.ChargeMaxDamageToPlayersNUD.Size = new System.Drawing.Size(72, 20);
             this.ChargeMaxDamageToPlayersNUD.TabIndex = 126;
             this.ChargeMaxDamageToPlayersNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ChargeMaxDamageToPlayersNUD.ValueChanged += new System.EventHandler(this.ChargeMaxDamageToPlayersNUD_ValueChanged);
             // 
             // darkLabel3
             // 
@@ -900,6 +922,7 @@ namespace DayZeEditor
             this.ChargeMaxVerticalDistanceObjectsNUD.Size = new System.Drawing.Size(72, 20);
             this.ChargeMaxVerticalDistanceObjectsNUD.TabIndex = 124;
             this.ChargeMaxVerticalDistanceObjectsNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ChargeMaxVerticalDistanceObjectsNUD.ValueChanged += new System.EventHandler(this.ChargeMaxVerticalDistanceObjectsNUD_ValueChanged);
             // 
             // darkLabel2
             // 
@@ -926,6 +949,7 @@ namespace DayZeEditor
             this.ChargeVerticalDistanceModeObjectsNUD.Size = new System.Drawing.Size(72, 20);
             this.ChargeVerticalDistanceModeObjectsNUD.TabIndex = 122;
             this.ChargeVerticalDistanceModeObjectsNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ChargeVerticalDistanceModeObjectsNUD.ValueChanged += new System.EventHandler(this.ChargeVerticalDistanceModeObjectsNUD_ValueChanged);
             // 
             // darkLabel1
             // 
@@ -952,6 +976,7 @@ namespace DayZeEditor
             this.ChargeDamageToDestroyableObjectsRadiusNUD.Size = new System.Drawing.Size(72, 20);
             this.ChargeDamageToDestroyableObjectsRadiusNUD.TabIndex = 120;
             this.ChargeDamageToDestroyableObjectsRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ChargeDamageToDestroyableObjectsRadiusNUD.ValueChanged += new System.EventHandler(this.ChargeDamageToDestroyableObjectsRadiusNUD_ValueChanged);
             // 
             // darkLabel69
             // 
@@ -981,6 +1006,7 @@ namespace DayZeEditor
             this.ChargeClassNameTB.Name = "ChargeClassNameTB";
             this.ChargeClassNameTB.Size = new System.Drawing.Size(221, 20);
             this.ChargeClassNameTB.TabIndex = 98;
+            this.ChargeClassNameTB.TextChanged += new System.EventHandler(this.ChargeClassNameTB_TextChanged);
             // 
             // BCChargesLB
             // 

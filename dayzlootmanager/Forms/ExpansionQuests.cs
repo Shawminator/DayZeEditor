@@ -742,13 +742,13 @@ namespace DayZeEditor
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string filePath = openFileDialog.FileName;
-                    DZE importfile = JsonSerializer.Deserialize<DZE>(File.ReadAllText(filePath));
+                    DZE importfile = DZEHelpers.LoadFile(filePath);
                     DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
                         currentQuestNPC.Waypoints.Clear();
                     }
-                    foreach (Editorobject eo in importfile.EditorObjects)
+                    foreach (EditorObjectData eo in importfile.EditorObjects)
                     {
                         int i = 0;
                         if (i == 0)
@@ -779,7 +779,7 @@ namespace DayZeEditor
             };
             foreach (float[] array in currentQuestNPC.Waypoints)
             {
-                Editorobject eo = new Editorobject()
+                EditorObjectData eo = new EditorObjectData()
                 {
                     Type = currentQuestNPC.NPCName,
                     DisplayName = currentQuestNPC.NPCName,

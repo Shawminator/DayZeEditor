@@ -104,7 +104,6 @@ namespace DayZeEditor
             else
                 MessageBox.Show("No changes were made.", "Nothing Saved", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
-
         private void BreachingChargeManager_Load(object sender, EventArgs e)
         {
             System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
@@ -128,16 +127,21 @@ namespace DayZeEditor
             BCChargesLB.DisplayMember = "DisplayName";
             BCChargesLB.ValueMember = "Value";
             BCChargesLB.DataSource = Breachingcharge.Charges;
-
-            AcceptedChargesCB.DisplayMember = "DisplayName";
-            AcceptedChargesCB.ValueMember = "Value";
-            AcceptedChargesCB.DataSource = Breachingcharge.Charges;
+            
+            SetupChargelist();
 
             TiersLB.DisplayMember = "DisplayName";
             TiersLB.ValueMember = "Value";
             TiersLB.DataSource = Breachingcharge.Tiers;
 
             useraction = true;
+        }
+        private void SetupChargelist()
+        {
+            List<Charge> chargelist = new List<Charge>(Breachingcharge.Charges);
+            AcceptedChargesCB.DisplayMember = "DisplayName";
+            AcceptedChargesCB.ValueMember = "Value";
+            AcceptedChargesCB.DataSource = chargelist;
         }
         private void CreateLogsCB_CheckedChanged(object sender, EventArgs e)
         {
@@ -276,7 +280,6 @@ namespace DayZeEditor
             }
             e.Graphics.DrawRectangle(SystemPens.ControlText, region.Left, region.Top, region.Width - 1, region.Height - 1);
         }
-
         private void TiersLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (TiersLB.SelectedItems.Count == 0) return;
@@ -295,7 +298,6 @@ namespace DayZeEditor
 
             useraction = true;
         }
-
         private void darkButton6_Click(object sender, EventArgs e)
         {
             if (CurrentTier == null) { return; }
@@ -324,14 +326,12 @@ namespace DayZeEditor
             CurrentTier.TierDestroyableObjectsList.Remove(DestroyableObjectsLB.GetItemText(DestroyableObjectsLB.SelectedItem));
             Breachingcharge.isDirty = true;
         }
-
         private void darkButton1_Click(object sender, EventArgs e)
         {
             if (CurrentTier == null) { return; }
             CurrentTier.AcceptedChargeTypes.Remove(TiersAcceptedChargesLB.GetItemText(TiersAcceptedChargesLB.SelectedItem));
             Breachingcharge.isDirty = true;
         }
-
         private void darkButton2_Click(object sender, EventArgs e)
         {
             Charge charge = AcceptedChargesCB.SelectedItem as Charge;
@@ -340,14 +340,12 @@ namespace DayZeEditor
                 CurrentTier.AcceptedChargeTypes.Add(chargename);
             Breachingcharge.isDirty = true;
         }
-
         private void TiersHealthNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             CurrentTier.Health = (int)TiersHealthNUD.Value;
             Breachingcharge.isDirty = true;
         }
-
         private void TiersNameTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -355,7 +353,6 @@ namespace DayZeEditor
             TiersLB.Refresh();
             Breachingcharge.isDirty = true;
         }
-
         private void darkButton4_Click(object sender, EventArgs e)
         {
             if (TiersLB.SelectedItems.Count == 0) return;
@@ -368,14 +365,12 @@ namespace DayZeEditor
             Breachingcharge.Tiers.Add(newtier);
             Breachingcharge.isDirty = true;
         }
-
         private void darkButton3_Click(object sender, EventArgs e)
         {
             if (TiersLB.SelectedItems.Count == 0) return;
             Breachingcharge.Tiers.Remove(CurrentTier);
             Breachingcharge.isDirty = true;
         }
-
         private void defuseToolUnarmedCB_CheckedChanged(object sender, EventArgs e)
         {
             if (defuseToolUnarmedCB.Checked)
@@ -406,7 +401,6 @@ namespace DayZeEditor
             }
             Breachingcharge.isDirty = true;
         }
-
         private void darkButton32_Click(object sender, EventArgs e)
         {
             AddItemfromTypes form = new AddItemfromTypes
@@ -440,11 +434,166 @@ namespace DayZeEditor
                 return;
             }
         }
-
         private void darkButton31_Click(object sender, EventArgs e)
         {
             if (Currentcharge == null) { return; }
             Currentcharge.DefuseTools.Remove(ChargeDefusetoolsLB.GetItemText(ChargeDefusetoolsLB.SelectedItem));
+            Breachingcharge.isDirty = true;
+        }
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Currentcharge.ExplosionSoundSet = textBox1.Text;
+            Breachingcharge.isDirty = true;
+        }
+        private void ChargeSwitchIntervalNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Currentcharge.SwitchInterval = ChargeSwitchIntervalNUD.Value;
+            Breachingcharge.isDirty = true;
+        }
+        private void ChargeBeepingSoundEndTimeNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Currentcharge.BeepingSoundEndTime = ChargeBeepingSoundEndTimeNUD.Value;
+            Breachingcharge.isDirty = true;
+        }
+        private void ChargeBeepingSoundSetTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Currentcharge.BeepingSoundSet = ChargeBeepingSoundSetTB.Text;
+            Breachingcharge.isDirty = true;
+        }
+        private void CharegLightRadiusNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Currentcharge.LightRadius = CharegLightRadiusNUD.Value;
+            Breachingcharge.isDirty = true;
+        }
+        private void ChargeLightBrightnessNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Currentcharge.LightBrightness = ChargeLightBrightnessNUD.Value;
+            Breachingcharge.isDirty = true;
+        }
+        private void ChargeTimeToDefuseNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Currentcharge.TimeToDefuse = ChargeTimeToDefuseNUD.Value;
+            Breachingcharge.isDirty = true;
+        }
+        private void ChargeTimeToExplodeNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Currentcharge.TimeToExplode = ChargeTimeToExplodeNUD.Value;
+            Breachingcharge.isDirty = true;
+        }
+        private void ChargeTimeToPlantNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Currentcharge.TimeToPlant = ChargeTimeToPlantNUD.Value;
+            Breachingcharge.isDirty = true;
+        }
+        private void ChargeToolDamageOnDefuseNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Currentcharge.ToolDamageOnDefuse = ChargeToolDamageOnDefuseNUD.Value;
+            Breachingcharge.isDirty = true;
+        }
+        private void ChargeMinPlacementDistanceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Currentcharge.MinPlacementDistance = ChargeMinPlacementDistanceNUD.Value;
+            Breachingcharge.isDirty = true;
+        }
+        private void ChargePlacementDistanceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Currentcharge.PlacementDistance = ChargeMinPlacementDistanceNUD.Value;
+            Breachingcharge.isDirty = true;
+        }
+        private void ChargeDestroyOtherChargesCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Currentcharge.DestroyOtherCharges = ChargeDestroyOtherChargesCB.Checked == true ? 1 : 0;
+            Breachingcharge.isDirty = true;
+        }
+        private void ChargeDeleteObjectsDirectlyCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Currentcharge.DeleteObjectsDirectly = ChargeDeleteObjectsDirectlyCB.Checked == true ? 1 : 0;
+            Breachingcharge.isDirty = true;
+        }
+        private void ChargeDestroyLocksFirstCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Currentcharge.DestroyLocksFirst = ChargeDestroyLocksFirstCB.Checked == true ? 1 : 0;
+            Breachingcharge.isDirty = true;
+        }
+        private void ChargeOnlyDestroyLocksCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Currentcharge.OnlyDestroyLocks = ChargeOnlyDestroyLocksCB.Checked == true ? 1 : 0;
+            Breachingcharge.isDirty = true;
+        }
+        private void ChargeMaxVerticalDistancePlayersNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Currentcharge.MaxVerticalDistancePlayers = ChargeMaxVerticalDistancePlayersNUD.Value;
+            Breachingcharge.isDirty = true;
+        }
+        private void ChargeMaxDamageToPlayersRadiusNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Currentcharge.MaxDamageToPlayersRadius = ChargeMaxDamageToPlayersRadiusNUD.Value;
+            Breachingcharge.isDirty = true;
+        }
+        private void ChargeDamageToPlayersRadiusNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Currentcharge.DamageToPlayersRadius = ChargeMaxDamageToPlayersRadiusNUD.Value;
+            Breachingcharge.isDirty = true;
+        }
+        private void ChargeMinDamageToPlayersNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Currentcharge.MinDamageToPlayers = ChargeMinDamageToPlayersNUD.Value;
+            Breachingcharge.isDirty = true;
+        }
+        private void ChargeMaxDamageToPlayersNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Currentcharge.MaxDamageToPlayers = ChargeMaxDamageToPlayersNUD.Value;
+            Breachingcharge.isDirty = true;
+        }
+        private void ChargeMaxVerticalDistanceObjectsNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Currentcharge.MaxVerticalDistanceObjects = ChargeMaxVerticalDistancePlayersNUD.Value;
+            Breachingcharge.isDirty = true;
+        }
+        private void ChargeVerticalDistanceModeObjectsNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Currentcharge.VerticalDistanceModeObjects = ChargeMaxVerticalDistanceObjectsNUD.Value;
+            Breachingcharge.isDirty = true;
+        }
+        private void ChargeDamageToDestroyableObjectsRadiusNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Currentcharge.DamageToDestroyableObjectsRadius = ChargeDamageToDestroyableObjectsRadiusNUD.Value;
+            Breachingcharge.isDirty = true;
+        }
+        private void ChargeDamageToObjectsNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Currentcharge.DamageToObjects = (int)ChargeDamageToObjectsNUD.Value;
+            Breachingcharge.isDirty = true;
+        }
+        private void ChargeClassNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Currentcharge.Classname = ChargeClassNameTB.Text;
             Breachingcharge.isDirty = true;
         }
     }

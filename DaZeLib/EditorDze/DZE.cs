@@ -1,27 +1,63 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace DayZeLib
 {
-
+    
     public class DZE
     {
+        [JsonIgnore]
+        const int Version = 3;
+
         public string MapName { get; set; }
         public float[] CameraPosition { get; set; }
-        public List<Editorobject> EditorObjects { get; set; }
-        public List<object> EditorDeletedObjects { get; set; }
+        public List<EditorObjectData> EditorObjects { get; set; }
+        public List<EditorDeletedObjectData> EditorDeletedObjects { get; set; }
 
-       public DZE()
+        public DZE()
         {
-            EditorObjects = new List<Editorobject>();
-            EditorDeletedObjects = new List<object>();
+            EditorObjects = new List<EditorObjectData>();
+            EditorDeletedObjects = new List<EditorDeletedObjectData>();
+        }
+        public DZE(string fileName)
+        {
+            using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+            using (BinaryReader br = new BinaryReader(fs))
+            {
+                int Length = br.ReadInt32();
+                string bincheck = Helper.ReadCString(br, 12);
+                if (br.ReadInt32() != Version)
+                    return;
+                MapName = Helper.ReadCString(br, br.ReadInt32());
+                int loop = br.ReadInt32();
+                CameraPosition = new float[3];
+                for(int i = 0; i < loop; i++)
+                {
+                    CameraPosition[i] = br.ReadSingle();
+                }
+                int EditorobjectCount = br.ReadInt32();
+                EditorObjects = new List<EditorObjectData>();
+                for (int j = 0; j < EditorobjectCount; j++)
+                {
+                    EditorObjects.Add(new EditorObjectData(br));
+                }
+                int EditorDeletedObjectsCount = br.ReadInt32();
+                EditorDeletedObjects = new List<EditorDeletedObjectData>();
+                for (int j = 0; j < EditorDeletedObjectsCount; j++)
+                {
+                    EditorDeletedObjects.Add(new EditorDeletedObjectData(br));
+                }
+            }
         }
     }
 
-    public class Editorobject
+    public class EditorObjectData
     {
         public string Type { get; set; }
         public string DisplayName { get; set; }
@@ -30,11 +66,95 @@ namespace DayZeLib
         public float Scale { get; set; }
         public int Flags { get; set; }
 
-        public Editorobject()
+        [JsonIgnore]
+        public List<String> Attachments { get; set; }
+        [JsonIgnore]
+        public int attachments_count { get; set; }
+        [JsonIgnore]
+        public int params_count { get; set; }
+        [JsonIgnore]
+        public bool EditorOnly { get; set; }
+        [JsonIgnore]
+        public bool Locked { get; set; }
+        [JsonIgnore]
+        public bool AllowDamage { get; set; }
+        [JsonIgnore]
+        public bool Simulate { get; set; }
+
+        public EditorObjectData()
         {
             Scale = 1;
             Flags = 2147483647;
         }
+        public EditorObjectData(BinaryReader br)
+        {
+            Type = Helper.ReadCString(br, br.ReadInt32());
+            DisplayName = Helper.ReadCString(br, br.ReadInt32());
+            int loop = br.ReadInt32();
+            Position = new float[3];
+            for (int i = 0; i < loop; i++)
+            {
+                Position[i] = br.ReadSingle();
+            }
+            loop = br.ReadInt32();
+            Orientation = new float[3];
+            for (int i = 0; i < loop; i++)
+            {
+                Orientation[i] = br.ReadSingle();
+            }
+            Scale = br.ReadSingle();
+            Flags = br.ReadInt32();
+            attachments_count = br.ReadInt32();
+            Attachments = new List<string>();
+            for (int k = 0; k < attachments_count; k++)
+            {
+                Attachments.Add(Helper.ReadCString(br, br.ReadInt32()));
+            }
+            params_count = br.ReadInt32();
+            for (int k = 0; k < params_count; k++)
+            {
+                string param_key = Helper.ReadCString(br, br.ReadInt32());
+                string param_type = Helper.ReadCString(br, br.ReadInt32());
+                switch (param_type)
+                {
+                    case "SerializableParam1<bool>":
+                        bool b = br.ReadInt32() == 1 ? true : false;
+                        break;
+                    case "SerializableParam1<int>":
+                        int i = br.ReadInt32();
+                        break;
+                    case "SerializableParam1<float>":
+                        float f = br.ReadSingle();
+                        break;
+                    default:
+                        break;
+                }
+
+
+            }
+            EditorOnly = br.ReadInt32() == 1 ? true : false;
+            Locked = br.ReadInt32() == 1 ? true : false;
+            AllowDamage = br.ReadInt32() == 1 ? true : false;
+            Simulate = br.ReadInt32() == 1 ? true : false;
+        }
     }
 
+    public class EditorDeletedObjectData
+    {
+        public string Type { get; set; }
+        public float[] Position { get; set; }
+        public int Flags { get; set; }
+
+        public EditorDeletedObjectData(BinaryReader br)
+        {
+            Type = Helper.ReadCString(br, br.ReadInt32());
+            int loop = br.ReadInt32();
+            Position = new float[3];
+            for (int i = 0; i < loop; i++)
+            {
+                Position[i] = br.ReadSingle();
+            }
+            Flags = br.ReadInt32();
+        }
+    }
 }

@@ -125,6 +125,7 @@
     <Compile Include="EditorDze\DZE.cs" />
     <Compile Include="ExpansionAI\AILoadouts.cs" />
     <Compile Include="ExpansionAI\AIPatrolSettings.cs" />
+    <Compile Include="ExpansionExtras\ATMs.cs" />
     <Compile Include="ExpansionMarket\MarketCategories.cs" />
     <Compile Include="ExpansionMarket\marketsettings.cs" />
     <Compile Include="ExpansionMarket\TraderModelMapping.cs" />

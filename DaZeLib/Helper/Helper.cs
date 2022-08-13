@@ -6,6 +6,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -314,7 +315,61 @@ namespace DayZeLib
             int myvalueasint = myvalue == true ? 1 : 0;
             src.GetType().GetProperty(mytype).SetValue(src, myvalueasint, null);
         }
-        
+        public static string ReadCString(BinaryReader br, int MaxLength = -1, long lOffset = -1, Encoding enc = null)
+        {
+            int Max;
+            if (MaxLength == -1)
+                Max = 255;
+            else
+                Max = MaxLength;
+
+            long fTemp = br.BaseStream.Position;
+            byte bTemp = 0;
+            int i = 0;
+            string result = "";
+
+            if (lOffset > -1)
+            {
+                br.BaseStream.Seek(lOffset, SeekOrigin.Begin);
+            }
+
+            do
+            {
+                bTemp = br.ReadByte();
+                if (bTemp == 0)
+                    break;
+                i += 1;
+            } while (i < Max);
+
+            if (MaxLength == -1)
+                Max = i + 1;
+            else
+                Max = MaxLength;
+
+            if (lOffset > -1)
+            {
+                br.BaseStream.Seek(lOffset, SeekOrigin.Begin);
+
+                if (enc == null)
+                    result = Encoding.ASCII.GetString(br.ReadBytes(i));
+                else
+                    result = enc.GetString(br.ReadBytes(i));
+
+                br.BaseStream.Seek(fTemp, SeekOrigin.Begin);
+            }
+            else
+            {
+                br.BaseStream.Seek(fTemp, SeekOrigin.Begin);
+                if (enc == null)
+                    result = Encoding.ASCII.GetString(br.ReadBytes(i));
+                else
+                    result = enc.GetString(br.ReadBytes(i));
+
+                br.BaseStream.Seek(fTemp + Max, SeekOrigin.Begin);
+            }
+
+            return result;
+        }
     }
     public static class extenstions
     {
@@ -353,6 +408,35 @@ namespace DayZeLib
             }
 
         }
-
+    }
+    public static class DZEHelpers
+    {
+        static string BIN_CHECK = "EditorBinned";
+        public static bool IsBinnedFile(string file)
+        {
+            using (FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read))
+            using (BinaryReader br = new BinaryReader(fs))
+            {
+                int Length = br.ReadInt32();
+                if (Length == 12 && Helper.ReadCString(br, 12) == BIN_CHECK)
+                    return true;
+            }
+            return false;
+        }
+        public static DZE LoadFile(string fileName)
+        {
+            if (IsBinnedFile(fileName))
+                return ReadBinned (fileName);
+            else
+               return  ReadJson(fileName);
+        }
+        private static DZE ReadJson(string fileName)
+        {
+            return JsonSerializer.Deserialize<DZE>(File.ReadAllText(fileName));
+        }
+        private static DZE ReadBinned(string fileName)
+        {
+            return new DZE(fileName);
+        }
     }
 }

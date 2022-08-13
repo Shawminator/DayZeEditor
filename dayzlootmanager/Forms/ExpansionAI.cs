@@ -1118,13 +1118,13 @@ namespace DayZeEditor
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string filePath = openFileDialog.FileName;
-                    DZE importfile = JsonSerializer.Deserialize<DZE>(File.ReadAllText(filePath));
+                    DZE importfile = DZEHelpers.LoadFile(filePath);
                     DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
                         CurrentPatrol.Waypoints.Clear();
                     }
-                    foreach(Editorobject eo in importfile.EditorObjects)
+                    foreach(EditorObjectData eo in importfile.EditorObjects)
                     {
                         float[] newfloatarray = new float[] { Convert.ToSingle(eo.Position[0]), Convert.ToSingle(eo.Position[1]), Convert.ToSingle(eo.Position[2]) };
                         CurrentPatrol.Waypoints.Add(newfloatarray);
@@ -1312,7 +1312,7 @@ namespace DayZeEditor
             };
             foreach (float[] array in CurrentPatrol.Waypoints)
             {
-                Editorobject eo = new Editorobject()
+                EditorObjectData eo = new EditorObjectData()
                 {
                     Type = "eAI_SurvivorM_Jose",
                     DisplayName = "eAI_SurvivorM_Jose",

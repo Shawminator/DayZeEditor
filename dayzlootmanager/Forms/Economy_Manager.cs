@@ -2096,17 +2096,21 @@ namespace DayZeEditor
         {
             EventSpawnPosYNUD.Visible = checkBox50.Checked;
             if (!isUserInteraction) return;
-            if(checkBox50.Checked)
+            foreach (TreeNode tn in EventSpawnTV.SelectedNodes)
             {
-                eventposdefEventPos.y = 0;
-                eventposdefEventPos.ySpecified = true;
-                EventSpawnPosYNUD.Value = eventposdefEventPos.y;
+                eventposdefEventPos eventpos = tn.Tag as eventposdefEventPos;
+                if (checkBox50.Checked)
+                {
+                    eventpos.y = 0;
+                    eventpos.ySpecified = true;
+                    EventSpawnPosYNUD.Value = eventpos.y;
+                }
+                else
+                {
+                    eventpos.ySpecified = false;
+                }
+                currentproject.cfgeventspawns.isDirty = true;
             }
-            else
-            {
-                eventposdefEventPos.ySpecified = false;
-            }
-            currentproject.cfgeventspawns.isDirty = true;
         }
         private void checkBox51_CheckedChanged(object sender, EventArgs e)
         {
@@ -2377,7 +2381,7 @@ namespace DayZeEditor
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string filePath = openFileDialog.FileName;
-                    DZE importfile = JsonSerializer.Deserialize<DZE>(File.ReadAllText(filePath));
+                    DZE importfile = DZEHelpers.LoadFile(filePath);
                     TreeNode eventposnodes = null;
                     if (eventposdefEvent.pos == null || eventposdefEvent.pos.Count == 0)
                     {
@@ -2406,7 +2410,7 @@ namespace DayZeEditor
                         eventposnodes.Remove();
                     }
                     
-                    foreach (Editorobject eo in importfile.EditorObjects)
+                    foreach (EditorObjectData eo in importfile.EditorObjects)
                     {
                         eventposdefEventPos newpos = new eventposdefEventPos()
                         {
@@ -2439,7 +2443,7 @@ namespace DayZeEditor
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string filePath = openFileDialog.FileName;
-                    DZE importfile = JsonSerializer.Deserialize<DZE>(File.ReadAllText(filePath));
+                    DZE importfile = DZEHelpers.LoadFile(filePath);
                     AddItemfromString form = new AddItemfromString();
                     form.TitleLable = "Enter Name of Event Group";
                     DialogResult result = form.ShowDialog();
@@ -2503,7 +2507,7 @@ namespace DayZeEditor
                         
                         TreeNode neweventspawn = new TreeNode(Groupname);
                         neweventspawn.Tag = newvengroup;
-                        foreach (Editorobject eo in importfile.EditorObjects)
+                        foreach (EditorObjectData eo in importfile.EditorObjects)
                         {
                             if (eo.Orientation[0] < 0)
                                 eo.Orientation[0] = 360 + eo.Orientation[0];
@@ -2551,8 +2555,8 @@ namespace DayZeEditor
         {
             DZE newdze = new DZE()
             {
-                EditorObjects = new List<Editorobject>(),
-                EditorDeletedObjects = new List<object>(),
+                EditorObjects = new List<EditorObjectData>(),
+                EditorDeletedObjects = new List<EditorDeletedObjectData>(),
                 MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
             };
             string Classname = "";
@@ -2571,7 +2575,7 @@ namespace DayZeEditor
             }
             foreach (eventposdefEventPos array in eventposdefEvent.pos)
             {
-                Editorobject eo = new Editorobject()
+                EditorObjectData eo = new EditorObjectData()
                 {
                     Type = Classname,
                     DisplayName = Classname,
@@ -2642,12 +2646,12 @@ namespace DayZeEditor
             {
                 CameraPosition = new float[] { (float)eventposdefEventPos.x, (float)(eventposdefEventPos.y + 8), (float)eventposdefEventPos.z },
                 MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath.Split('_')[0]),
-                EditorObjects = new List<Editorobject>(),
-                EditorDeletedObjects = new List<object>()
+                EditorObjects = new List<EditorObjectData>(),
+                EditorDeletedObjects = new List<EditorDeletedObjectData>()
             };
             foreach(eventgroupdefGroupChild eventgroupdefGroupChild in eventgroupdefGroup.child)
             {
-                Editorobject newobject = new Editorobject()
+                EditorObjectData newobject = new EditorObjectData()
                 {
                     Position = new float[] 
                     {
@@ -2820,7 +2824,7 @@ namespace DayZeEditor
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string filePath = openFileDialog.FileName;
-                    DZE importfile = JsonSerializer.Deserialize<DZE>(File.ReadAllText(filePath));
+                    DZE importfile = DZEHelpers.LoadFile(filePath);
                 }
             }
         }

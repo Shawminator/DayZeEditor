@@ -3180,14 +3180,14 @@ namespace DayZeEditor
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string filePath = openFileDialog.FileName;
-                    DZE importfile = JsonSerializer.Deserialize<DZE>(File.ReadAllText(filePath));
+                    DZE importfile = DZEHelpers.LoadFile(filePath);
                     DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
                         currenttradermap.Roamingpoints = new BindingList<Vec3>();
                     }
                     int i = 0;
-                    foreach (Editorobject eo in importfile.EditorObjects)
+                    foreach (EditorObjectData eo in importfile.EditorObjects)
                     {
                         Vec3 newvec3 = new Vec3()
                         {
@@ -3221,11 +3221,11 @@ namespace DayZeEditor
         {
             DZE newdze = new DZE()
             {
-                EditorObjects = new List<Editorobject>(),
-                EditorDeletedObjects = new List<object>(),
+                EditorObjects = new List<EditorObjectData>(),
+                EditorDeletedObjects = new List<EditorDeletedObjectData>(),
                 MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
             };
-            Editorobject eo = new Editorobject()
+            EditorObjectData eo = new EditorObjectData()
             {
                 Type = currenttradermap.NPCName,
                 DisplayName = currenttradermap.NPCName,
@@ -3237,7 +3237,7 @@ namespace DayZeEditor
             newdze.EditorObjects.Add(eo);
             foreach (Vec3 array in currenttradermap.Roamingpoints)
             {
-                eo = new Editorobject()
+                eo = new EditorObjectData()
                 {
                     Type = currenttradermap.NPCName,
                     DisplayName = currenttradermap.NPCName,

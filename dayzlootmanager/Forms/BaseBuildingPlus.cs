@@ -223,13 +223,13 @@ namespace DayZeEditor
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string filePath = openFileDialog.FileName;
-                    DZE importfile = JsonSerializer.Deserialize<DZE>(File.ReadAllText(filePath));
+                    DZE importfile = DZEHelpers.LoadFile(filePath);
                     DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
                         BBPSettings.BBP_CementMixerLocations.Clear();
                     }
-                    foreach (Editorobject eo in importfile.EditorObjects)
+                    foreach (EditorObjectData eo in importfile.EditorObjects)
                     {
                         BBP_Cementmixerlocations newmix = new BBP_Cementmixerlocations()
                         {

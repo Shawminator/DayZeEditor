@@ -61,6 +61,7 @@ namespace DayZeEditor
             this.nameTB = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.darkLabel22 = new DarkUI.Controls.DarkLabel();
             this.MaxMagsNUD = new System.Windows.Forms.NumericUpDown();
             this.DeleteLogsCB = new System.Windows.Forms.CheckBox();
@@ -144,7 +145,6 @@ namespace DayZeEditor
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LootRandomizationNUD)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -557,6 +557,19 @@ namespace DayZeEditor
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBox2.ForeColor = System.Drawing.SystemColors.Control;
+            this.checkBox2.Location = new System.Drawing.Point(103, 63);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(108, 17);
+            this.checkBox2.TabIndex = 124;
+            this.checkBox2.Text = "Random Quantity";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
             // darkLabel22
             // 
             this.darkLabel22.AutoSize = true;
@@ -649,7 +662,7 @@ namespace DayZeEditor
             this.darkButton23.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton23.Size = new System.Drawing.Size(104, 23);
             this.darkButton23.TabIndex = 134;
-            this.darkButton23.Text = "Import from .map";
+            this.darkButton23.Text = "Import from .dze";
             this.darkButton23.Click += new System.EventHandler(this.darkButton23_Click);
             // 
             // darkButton13
@@ -1600,19 +1613,6 @@ namespace DayZeEditor
             // 
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBox2.ForeColor = System.Drawing.SystemColors.Control;
-            this.checkBox2.Location = new System.Drawing.Point(103, 63);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(108, 17);
-            this.checkBox2.TabIndex = 124;
-            this.checkBox2.Text = "Random Quantity";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // Lootchest
             // 
