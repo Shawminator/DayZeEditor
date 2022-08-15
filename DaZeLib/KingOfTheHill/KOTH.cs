@@ -16,72 +16,59 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty { get; set; }
 
-        public int LastCapturePoint { get; set; }
-        public string ConfigVersion { get; set; }
-        public decimal Interval { get; set; }
-        public decimal StartDelay { get; set; }
-        public decimal CaptureTime { get; set; }
-        public decimal EmptyEventTimeOut { get; set; }
-        public decimal CleanUpTime { get; set; }
-        public decimal PreStartDelay { get; set; }
-        public BindingList<Hill> Hills { get; set; }
-        public BindingList<Rewardpool> RewardPools { get; set; }
-        public BindingList<string> ZombiesClassNames { get; set; }
-        public decimal FullMapCheckTimer { get; set; }
-        public decimal EventTickTime { get; set; }
-        public int Logging { get; set; }
+
+        public string m_ModVersion { get; set; }
+        public decimal m_CaptureTime { get; set; }
+        public decimal m_UpdateInterval { get; set; }
+        public decimal m_ServerStartDelay { get; set; }
+        public decimal m_HillEventInterval { get; set; }
+        public decimal m_EventCleanupTime { get; set; }
+        public decimal m_EventPreStart { get; set; }
+        public string m_EventPreStartMessage { get; set; }
+        public string m_EventCapturedMessage { get; set; }
+        public string m_EventDespawnedMessage { get; set; }
+        public string m_EventStartMessage { get; set; }
+        public int m_DoLogsToCF { get; set; }
+        public int m_PlayerPopulationToStartEvents { get; set; }
+        public int m_MaxEvents { get; set; }
+        public string m_FlagName { get; set; }
+        public BindingList<M_Hilllocations> m_HillLocations { get; set; }
+        public BindingList<M_Rewardpools> m_RewardPools { get; set; }
+        public BindingList<string> m_Creatures { get; set; }
     }
 
-    public class Hill
+    public class M_Hilllocations
     {
         public string Name { get; set; }
-        public float X { get; set; }
-        public float Y { get; set; }
-        public float Z { get; set; }
-        public decimal CaptureRadius { get; set; }
-        public decimal EventRadius { get; set; }
-        public int ZombieCount { get; set; }
-        public BindingList<KOTHObject> Objects { get; set; }
-
-        public override string ToString()
-        {
-            return Name;
-        }
-    }
-
-    public class KOTHObject
-    {
-        public string Item { get; set; }
+        public decimal Radius { get; set; }
         public float[] Position { get; set; }
-        public float[] Orientation { get; set; }
-
-        public override string ToString()
-        {
-            return Item;
-        }
-    }
-
-    public class Rewardpool
-    {
-        public string Name { get; set; }
-        public string RewardContainer { get; set; }
-        public BindingList<Reward> Rewards { get; set; }
+        public int AISpawnCount { get; set; }
+        public string ObjectListName { get; set; }
 
         public override string ToString()
         {
             return Name;
         }
     }
-
-    public class Reward
+    public class M_Rewardpools
     {
-        public string Item { get; set; }
-        public BindingList<string> ItemAttachments { get; set; }
+        public string RewardContainerName { get; set; }
+        public BindingList<M_Rewards> m_Rewards { get; set; }
 
         public override string ToString()
         {
-            return Item;
+            return RewardContainerName;
         }
     }
 
+    public class M_Rewards
+    {
+        public string ItemName { get; set; }
+        public BindingList<string> Attachments { get; set; }
+
+        public override string ToString()
+        {
+            return ItemName;
+        }
+    }
 }

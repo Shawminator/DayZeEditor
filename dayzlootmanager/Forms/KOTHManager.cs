@@ -96,19 +96,17 @@ namespace DayZeEditor
         }
         private void DrawHillZones(object sender, PaintEventArgs e)
         {
-            foreach (Hill Hills in KingOfTheHillConfig.Hills)
+            foreach (M_Hilllocations Hills in KingOfTheHillConfig.m_HillLocations)
             {
                 float scalevalue = ZoneScale * 0.05f;
-                int centerX = (int)(Math.Round(Hills.X) * scalevalue);
-                int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(Hills.Z, 0) * scalevalue);
-                int eventradius = (int)(Math.Round((float)Hills.EventRadius, 0) * scalevalue);
-                int captureradius = (int)(Math.Round((float)Hills.CaptureRadius, 0) * scalevalue);
+                int centerX = (int)(Math.Round(Hills.Position[0]) * scalevalue);
+                int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(Hills.Position[2], 0) * scalevalue);
+                int eventradius = (int)(Math.Round((float)Hills.Radius, 0) * scalevalue);
                 Point center = new Point(centerX, centerY);
                 Pen pen = new Pen(Color.Red, 4);
                 if (Hills == currentHill)
                     pen.Color = Color.LimeGreen;
                 getCircle(e.Graphics, pen, center, eventradius);
-                getCircle(e.Graphics, pen, center, captureradius);
             }
         }
         private void getCircle(Graphics drawingArea, Pen penToUse, Point center, int radius)
@@ -134,7 +132,7 @@ namespace DayZeEditor
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
 
-            KingOfTheHillConfigPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\KingOfTheHill.json";
+            KingOfTheHillConfigPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\KingOfTheHill\\server-config.json";
             if (!File.Exists(KingOfTheHillConfigPath))
             {
                 KingOfTheHillConfig = new KingOfTheHillConfig();
@@ -161,66 +159,65 @@ namespace DayZeEditor
         {
             useraction = false;
 
-            IntervalNUD.Value = KingOfTheHillConfig.Interval;
-            StartDelayNUD.Value = KingOfTheHillConfig.StartDelay;
-            CaptureTimeNUD.Value = KingOfTheHillConfig.CaptureTime;
-            EmptyEventTimeOutNUD.Value = KingOfTheHillConfig.EmptyEventTimeOut;
-            CleanUpTimeNUD.Value = KingOfTheHillConfig.CleanUpTime;
-            PreStartDelayNUD.Value = KingOfTheHillConfig.PreStartDelay;
-            FullMapCheckTimerNUD.Value = KingOfTheHillConfig.FullMapCheckTimer;
-            EventTickTimeNUD.Value = KingOfTheHillConfig.EventTickTime;
-            LoggingCB.Checked = KingOfTheHillConfig.Logging == 1 ? true : false;
+            m_CaptureTimeNUD.Value = KingOfTheHillConfig.m_CaptureTime;
+            m_UpdateIntervalNUD.Value = KingOfTheHillConfig.m_UpdateInterval;
+            m_ServerStartDelayNUD.Value = KingOfTheHillConfig.m_ServerStartDelay;
+            m_HillEventIntervalNUD.Value = KingOfTheHillConfig.m_HillEventInterval;
+            m_EventCleanupTimeNUD.Value = KingOfTheHillConfig.m_EventCleanupTime;
+            m_EventPreStartNUD.Value = KingOfTheHillConfig.m_EventPreStart;
+            m_EventPreStartMessageTB.Text = KingOfTheHillConfig.m_EventPreStartMessage;
+            m_EventCapturedMessageTB.Text = KingOfTheHillConfig.m_EventCapturedMessage;
+            m_EventDespawnedMessageTB.Text = KingOfTheHillConfig.m_EventDespawnedMessage;
+            m_EventStartMessageTB.Text = KingOfTheHillConfig.m_EventStartMessage;
+            m_DoLogsToCFCB.Checked = KingOfTheHillConfig.m_DoLogsToCF == 1 ? true : false;
+            m_PlayerPopulationToStartEventsNUD.Value = (decimal)KingOfTheHillConfig.m_PlayerPopulationToStartEvents;
+            m_MaxEventsNUD.Value = (decimal)KingOfTheHillConfig.m_MaxEvents;
+            m_FlagNameTB.Text = KingOfTheHillConfig.m_FlagName;
 
             HillsLB.DisplayMember = "Name";
             HillsLB.ValueMember = "Value";
-            HillsLB.DataSource = KingOfTheHillConfig.Hills;
+            HillsLB.DataSource = KingOfTheHillConfig.m_HillLocations;
             useraction = false;
-            Hills2LB.DisplayMember = "Name";
-            Hills2LB.ValueMember = "Value";
-            Hills2LB.DataSource = KingOfTheHillConfig.Hills;
             useraction = false;
             RewardPoolsLB.DisplayMember = "Name";
             RewardPoolsLB.ValueMember = "Value";
-            RewardPoolsLB.DataSource = KingOfTheHillConfig.RewardPools;
+            RewardPoolsLB.DataSource = KingOfTheHillConfig.m_RewardPools;
             useraction = false;
             ZombiesClassNamesLB.DisplayMember = "Name";
             ZombiesClassNamesLB.ValueMember = "Value";
-            ZombiesClassNamesLB.DataSource = KingOfTheHillConfig.ZombiesClassNames;
+            ZombiesClassNamesLB.DataSource = KingOfTheHillConfig.m_Creatures;
             useraction = true;
         }
 
-
-        public Hill currentHill;
+        public M_Hilllocations currentHill;
         private void HillsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (HillsLB.SelectedItems.Count < 1) return;
-            currentHill = HillsLB.SelectedItem as Hill;
+            currentHill = HillsLB.SelectedItem as M_Hilllocations;
             useraction = false;
             NameTB.Text = currentHill.Name;
-            XNUD.Value = (decimal)currentHill.X;
-            YNUD.Value = (decimal)currentHill.Y;
-            ZNUD.Value = (decimal)currentHill.Z;
-            CaptureRadiusNUD.Value = currentHill.CaptureRadius;
-            EventRadiusNUD.Value = currentHill.EventRadius;
-            ZombieCountNUD.Value = currentHill.ZombieCount;
+            XNUD.Value = (decimal)currentHill.Position[0];
+            YNUD.Value = (decimal)currentHill.Position[1];
+            ZNUD.Value = (decimal)currentHill.Position[2];
+            RadiusNUD.Value = currentHill.Radius;
+            AISpawnCountNUD.Value = currentHill.AISpawnCount;
 
             pictureBox2.Invalidate();
             useraction = true;
         }
-        public Rewardpool CurrentrewardPool;
+        public M_Rewardpools CurrentrewardPool;
         private void RewardPoolsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (RewardPoolsLB.SelectedItems.Count < 1) return;
-            CurrentrewardPool = RewardPoolsLB.SelectedItem as Rewardpool;
+            CurrentrewardPool = RewardPoolsLB.SelectedItem as M_Rewardpools;
             useraction = false;
-            RewardsPoolNameTB.Text = CurrentrewardPool.Name;
-            RewardContainerTB.Text = CurrentrewardPool.RewardContainer;
+            RewardsPoolNameTB.Text = CurrentrewardPool.RewardContainerName;
 
             RewardsLB.DisplayMember = "Name";
             RewardsLB.ValueMember = "Value";
-            RewardsLB.DataSource = CurrentrewardPool.Rewards;
+            RewardsLB.DataSource = CurrentrewardPool.m_Rewards;
             useraction = false;
-            if (CurrentrewardPool.Rewards.Count == 0)
+            if (CurrentrewardPool.m_Rewards.Count == 0)
             {
                 RewardItemTB.Text = "";
                 ItemAttachmentsLB.DataSource = null;
@@ -228,16 +225,16 @@ namespace DayZeEditor
 
             useraction = true;
         }
-        public Reward currentReward;
+        public M_Rewards currentReward;
         private void RewardsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (RewardsLB.SelectedItems.Count < 1) return;
-            currentReward = RewardsLB.SelectedItem as Reward;
+            currentReward = RewardsLB.SelectedItem as M_Rewards;
             useraction = false;
-            RewardItemTB.Text = currentReward.Item;
+            RewardItemTB.Text = currentReward.ItemName;
             ItemAttachmentsLB.DisplayMember = "Name";
             ItemAttachmentsLB.ValueMember = "Value";
-            ItemAttachmentsLB.DataSource = currentReward.ItemAttachments;
+            ItemAttachmentsLB.DataSource = currentReward.Attachments;
 
             useraction = true;
         }
@@ -247,58 +244,88 @@ namespace DayZeEditor
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void IntervalNUD_ValueChanged(object sender, EventArgs e)
+        private void m_UpdateIntervalNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            KingOfTheHillConfig.Interval = IntervalNUD.Value;
+            KingOfTheHillConfig.m_UpdateInterval = m_UpdateIntervalNUD.Value;
             KingOfTheHillConfig.isDirty = true;
         }
-        private void StartDelayNUD_ValueChanged(object sender, EventArgs e)
+        private void m_ServerStartDelayNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            KingOfTheHillConfig.StartDelay = StartDelayNUD.Value;
+            KingOfTheHillConfig.m_ServerStartDelay = m_ServerStartDelayNUD.Value;
             KingOfTheHillConfig.isDirty = true;
         }
-        private void CaptureTimeNUD_ValueChanged(object sender, EventArgs e)
+        private void m_CaptureTimeNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            KingOfTheHillConfig.CaptureTime = CaptureTimeNUD.Value;
+            KingOfTheHillConfig.m_CaptureTime = m_CaptureTimeNUD.Value;
             KingOfTheHillConfig.isDirty = true;
         }
-        private void EmptyEventTimeOutNUD_ValueChanged(object sender, EventArgs e)
+        private void m_HillEventIntervalNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            KingOfTheHillConfig.CaptureTime = CaptureTimeNUD.Value;
+            KingOfTheHillConfig.m_HillEventInterval = m_HillEventIntervalNUD.Value;
             KingOfTheHillConfig.isDirty = true;
         }
-        private void CleanUpTimeNUD_ValueChanged(object sender, EventArgs e)
+        private void m_EventCleanupTimeNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            KingOfTheHillConfig.Interval = IntervalNUD.Value;
+            KingOfTheHillConfig.m_EventCleanupTime = m_EventCleanupTimeNUD.Value;
             KingOfTheHillConfig.isDirty = true;
         }
-        private void PreStartDelayNUD_ValueChanged(object sender, EventArgs e)
+        private void m_EventPreStartNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            KingOfTheHillConfig.PreStartDelay = PreStartDelayNUD.Value;
+            KingOfTheHillConfig.m_EventPreStart = m_EventPreStartNUD.Value;
             KingOfTheHillConfig.isDirty = true;
         }
-        private void FullMapCheckTimerNUD_ValueChanged(object sender, EventArgs e)
+        private void m_PlayerPopulationToStartEventsNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            KingOfTheHillConfig.FullMapCheckTimer = FullMapCheckTimerNUD.Value;
+            KingOfTheHillConfig.m_PlayerPopulationToStartEvents = (int)m_PlayerPopulationToStartEventsNUD.Value;
             KingOfTheHillConfig.isDirty = true;
         }
-        private void EventTickTimeNUD_ValueChanged(object sender, EventArgs e)
+        private void m_MaxEventsNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            KingOfTheHillConfig.EventTickTime = EventTickTimeNUD.Value;
+            KingOfTheHillConfig.m_MaxEvents = (int)m_MaxEventsNUD.Value;
             KingOfTheHillConfig.isDirty = true;
         }
-        private void LoggingCB_CheckedChanged(object sender, EventArgs e)
+        private void m_DoLogsToCFCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            KingOfTheHillConfig.Logging = LoggingCB.Checked == true ? 1 : 0;
+            KingOfTheHillConfig.m_DoLogsToCF = m_DoLogsToCFCB.Checked == true ? 1 : 0;
+            KingOfTheHillConfig.isDirty = true;
+        }
+        private void m_EventPreStartMessageTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            KingOfTheHillConfig.m_EventPreStartMessage = m_EventPreStartMessageTB.Text;
+            KingOfTheHillConfig.isDirty = true;
+        }
+        private void m_EventCapturedMessageTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            KingOfTheHillConfig.m_EventCapturedMessage = m_EventCapturedMessageTB.Text;
+            KingOfTheHillConfig.isDirty = true;
+        }
+        private void m_EventDespawnedMessageTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            KingOfTheHillConfig.m_EventDespawnedMessage = m_EventDespawnedMessageTB.Text;
+            KingOfTheHillConfig.isDirty = true;
+        }
+        private void m_EventStartMessageTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            KingOfTheHillConfig.m_EventStartMessage = m_EventStartMessageTB.Text;
+            KingOfTheHillConfig.isDirty = true;
+        }
+        private void m_FlagNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            KingOfTheHillConfig.m_FlagName = m_FlagNameTB.Text;
             KingOfTheHillConfig.isDirty = true;
         }
 
@@ -310,23 +337,24 @@ namespace DayZeEditor
         private void darkButton12_Click(object sender, EventArgs e)
         {
             float[] centre = new float[] { currentproject.MapSize / 2, 0, currentproject.MapSize / 2 };
-            Hill newHill = new Hill()
+            M_Hilllocations newHill = new M_Hilllocations()
             {
                 Name = "New Hill",
-                X = centre[0],
-                Y = centre[1],
-                Z = centre[2],
-                CaptureRadius = 20,
-                EventRadius = 100,
-                ZombieCount = 20,
-                Objects = new BindingList<KOTHObject>()
+                Position = new float[]
+                {
+                    centre[0],
+                    centre[1],
+                    centre[2]
+                },
+                Radius = 20,
+                AISpawnCount = 20
             };
-            KingOfTheHillConfig.Hills.Add(newHill);
+            KingOfTheHillConfig.m_HillLocations.Add(newHill);
             KingOfTheHillConfig.isDirty = true;
         }
         private void darkButton11_Click(object sender, EventArgs e)
         {
-            KingOfTheHillConfig.Hills.Remove(currentHill);
+            KingOfTheHillConfig.m_HillLocations.Remove(currentHill);
             KingOfTheHillConfig.isDirty = true;
             pictureBox2.Invalidate();
             if (HillsLB.Items.Count == 0)
@@ -344,42 +372,35 @@ namespace DayZeEditor
         private void XNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentHill.X = (float)XNUD.Value;
+            currentHill.Position[0] = (float)XNUD.Value;
             KingOfTheHillConfig.isDirty = true;
             pictureBox2.Invalidate();
         }
         private void YNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentHill.Y = (float)YNUD.Value;
+            currentHill.Position[1] = (float)YNUD.Value;
             KingOfTheHillConfig.isDirty = true;
             pictureBox2.Invalidate();
         }
         private void ZNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentHill.Z = (float)ZNUD.Value;
+            currentHill.Position[2] = (float)ZNUD.Value;
             KingOfTheHillConfig.isDirty = true;
             pictureBox2.Invalidate();
         }
-        private void CaptureRadiusNUD_ValueChanged(object sender, EventArgs e)
+        private void RadiusNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentHill.CaptureRadius = CaptureRadiusNUD.Value;
+            currentHill.Radius = RadiusNUD.Value;
             KingOfTheHillConfig.isDirty = true;
             pictureBox2.Invalidate();
         }
-        private void EventRadiusNUD_ValueChanged(object sender, EventArgs e)
+        private void AISpawnCountNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentHill.EventRadius = EventRadiusNUD.Value;
-            KingOfTheHillConfig.isDirty = true;
-            pictureBox2.Invalidate();
-        }
-        private void ZombieCountNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            currentHill.ZombieCount = (int)ZombieCountNUD.Value;
+            currentHill.AISpawnCount = (int)AISpawnCountNUD.Value;
             KingOfTheHillConfig.isDirty = true;
         }
         private void pictureBox2_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -396,7 +417,7 @@ namespace DayZeEditor
                 ZNUD.Value = (decimal)((newsize - mouseEventArgs.Y) / scalevalue);
                 if (MapData.FileExists)
                 {
-                    YNUD.Value = (decimal)(MapData.gethieght(currentHill.X, currentHill.Z));
+                    YNUD.Value = (decimal)(MapData.gethieght(currentHill.Position[0], currentHill.Position[2]));
                 }
                 Cursor.Current = Cursors.Default;
                 KingOfTheHillConfig.isDirty = true;
@@ -421,6 +442,10 @@ namespace DayZeEditor
             {
                 ZombiestochoosefromLB.Items.Add(type.name);
             }
+            foreach (typesType type in vanillatypes.SerachTypes("Animal_"))
+            {
+                ZombiestochoosefromLB.Items.Add(type.name);
+            }
             foreach (TypesFile tf in ModTypes)
             {
                 foreach (typesType type in tf.SerachTypes("zmbm_"))
@@ -431,6 +456,13 @@ namespace DayZeEditor
             foreach (TypesFile tf in ModTypes)
             {
                 foreach (typesType type in tf.SerachTypes("zmbf_"))
+                {
+                    ZombiestochoosefromLB.Items.Add(type.name);
+                }
+            }
+            foreach (TypesFile tf in ModTypes)
+            {
+                foreach (typesType type in tf.SerachTypes("Animal_"))
                 {
                     ZombiestochoosefromLB.Items.Add(type.name);
                 }
@@ -446,7 +478,7 @@ namespace DayZeEditor
             }
             foreach (string s in removezombies)
             {
-                KingOfTheHillConfig.ZombiesClassNames.Remove(s);
+                KingOfTheHillConfig.m_Creatures.Remove(s);
                 
             }
             KingOfTheHillConfig.isDirty = true;
@@ -456,9 +488,9 @@ namespace DayZeEditor
             foreach (var item in ZombiestochoosefromLB.SelectedItems)
             {
                 string zombie = item.ToString();
-                if (!KingOfTheHillConfig.ZombiesClassNames.Contains(zombie))
+                if (!KingOfTheHillConfig.m_Creatures.Contains(zombie))
                 {
-                    KingOfTheHillConfig.ZombiesClassNames.Add(zombie);
+                    KingOfTheHillConfig.m_Creatures.Add(zombie);
                     KingOfTheHillConfig.isDirty = true;
                 }
                 else
@@ -475,18 +507,17 @@ namespace DayZeEditor
         /// <param name="e"></param>
         private void darkButton2_Click(object sender, EventArgs e)
         {
-            Rewardpool Newpool = new Rewardpool()
+            M_Rewardpools Newpool = new M_Rewardpools()
             {
-                Name = "New Rweards Pool",
-                RewardContainer = "SeaChest",
-                Rewards = new BindingList<Reward>()
+                RewardContainerName = "New Rweards Pool",
+                m_Rewards = new BindingList<M_Rewards>()
             };
-            KingOfTheHillConfig.RewardPools.Add(Newpool);
+            KingOfTheHillConfig.m_RewardPools.Add(Newpool);
             KingOfTheHillConfig.isDirty = true;
         }
         private void darkButton1_Click(object sender, EventArgs e)
         {
-            KingOfTheHillConfig.RewardPools.Remove(CurrentrewardPool);
+            KingOfTheHillConfig.m_RewardPools.Remove(CurrentrewardPool);
             KingOfTheHillConfig.isDirty = true;
             if (RewardPoolsLB.Items.Count == 0)
                 RewardPoolsLB.SelectedIndex = -1;
@@ -496,15 +527,9 @@ namespace DayZeEditor
         private void RewardsPoolNameTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            CurrentrewardPool.Name = RewardsPoolNameTB.Text;
+            CurrentrewardPool.RewardContainerName = RewardsPoolNameTB.Text;
             KingOfTheHillConfig.isDirty = true;
             RewardPoolsLB.Refresh();
-        }
-        private void RewardContainerTB_TextChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentrewardPool.RewardContainer = RewardContainerTB.Text;
-            KingOfTheHillConfig.isDirty = true;
         }
 
         /// <summary>
@@ -529,19 +554,19 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    Reward NewReward = new Reward()
+                    M_Rewards NewReward = new M_Rewards()
                     {
-                        Item = l,
-                        ItemAttachments = new BindingList<string>()
+                        ItemName = l,
+                        Attachments = new BindingList<string>()
                     };
-                    CurrentrewardPool.Rewards.Add(NewReward);
+                    CurrentrewardPool.m_Rewards.Add(NewReward);
                     KingOfTheHillConfig.isDirty = true;
                 }
             }
         }
         private void darkButton3_Click(object sender, EventArgs e)
         {
-            CurrentrewardPool.Rewards.Remove(currentReward);
+            CurrentrewardPool.m_Rewards.Remove(currentReward);
             KingOfTheHillConfig.isDirty = true;
             if (RewardsLB.Items.Count == 0)
                 RewardsLB.SelectedIndex = -1;
@@ -551,7 +576,7 @@ namespace DayZeEditor
         private void RewardItemTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentReward.Item = RewardItemTB.Text;
+            currentReward.ItemName = RewardItemTB.Text;
             KingOfTheHillConfig.isDirty = true;
             RewardsLB.Refresh();
         }
@@ -572,9 +597,9 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    if (!currentReward.ItemAttachments.Contains(l))
+                    if (!currentReward.Attachments.Contains(l))
                     {
-                        currentReward.ItemAttachments.Add(l);
+                        currentReward.Attachments.Add(l);
                         KingOfTheHillConfig.isDirty = true;
                     }
                     else
@@ -584,7 +609,7 @@ namespace DayZeEditor
         }
         private void darkButton5_Click(object sender, EventArgs e)
         {
-            currentReward.ItemAttachments.Remove(ItemAttachmentsLB.GetItemText(ItemAttachmentsLB.SelectedItem));
+            currentReward.Attachments.Remove(ItemAttachmentsLB.GetItemText(ItemAttachmentsLB.SelectedItem));
             KingOfTheHillConfig.isDirty = true;
             if (ItemAttachmentsLB.Items.Count == 0)
                 ItemAttachmentsLB.SelectedIndex = -1;
@@ -592,120 +617,10 @@ namespace DayZeEditor
                 ItemAttachmentsLB.SelectedIndex = 0;
         }
 
-        /// <summary>
-        /// Objects Value Changed
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Hills2LB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (Hills2LB.SelectedItems.Count < 1) return;
-
-            useraction = false;
-
-            ObjectsLB.DisplayMember = "Name";
-            ObjectsLB.ValueMember = "Value";
-            ObjectsLB.DataSource = currentHill.Objects;
-
-            if (currentHill.Objects.Count == 0)
-            {
-                ObjectItemTB.Text = "";
-                ObjectPosXNUD.Value = 0;
-                ObjectPosYNUD.Value = 0;
-                ObjectPosZNUD.Value = 0;
-                ObjectOrentaionXNUD.Value = 0;
-                ObjectOrentaionYNUD.Value = 0;
-                ObjectOrentaionZNUD.Value = 0;
-            }
-
-            useraction = true;
-        }
-        public KOTHObject currentObject;
-        private void ObjectsLB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ObjectsLB.SelectedItems.Count < 1) return;
-            currentObject = ObjectsLB.SelectedItem as KOTHObject;
-
-            useraction = false;
-
-            ObjectItemTB.Text = currentObject.Item;
-            ObjectPosXNUD.Value = (decimal)currentObject.Position[0];
-            ObjectPosYNUD.Value = (decimal)currentObject.Position[1];
-            ObjectPosZNUD.Value = (decimal)currentObject.Position[2];
-            ObjectOrentaionXNUD.Value = (decimal)currentObject.Orientation[0];
-            ObjectOrentaionYNUD.Value = (decimal)currentObject.Orientation[1];
-            ObjectOrentaionZNUD.Value = (decimal)currentObject.Orientation[2];
-
-            useraction = true;
-        }
-        private void darkButton10_Click(object sender, EventArgs e)
-        {
-            KOTHObject newkothObject = new KOTHObject()
-            {
-                Item = "NewItem",
-                Position = new float[] { 0, 0, 0 },
-                Orientation = new float[] { 0, 0, 0 }
-            };
-            currentHill.Objects.Add(newkothObject);
-            KingOfTheHillConfig.isDirty = true;
-        }
-        private void darkButton9_Click(object sender, EventArgs e)
-        {
-            currentHill.Objects.Remove(currentObject);
-            KingOfTheHillConfig.isDirty = true;
-            if (ObjectsLB.Items.Count == 0)
-                ObjectsLB.SelectedIndex = -1;
-            else
-                ObjectsLB.SelectedIndex = 0;
-        }
-        private void ObjectItemTB_TextChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            currentObject.Item = ObjectItemTB.Text;
-            KingOfTheHillConfig.isDirty = true;
-        }
-        private void ObjectPosXNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            currentObject.Position[0] = (float)ObjectPosXNUD.Value;
-            KingOfTheHillConfig.isDirty = true;
-        }
-        private void ObjectPosYNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            currentObject.Position[1] = (float)ObjectPosYNUD.Value;
-            KingOfTheHillConfig.isDirty = true;
-        }
-        private void ObjectPosZNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            currentObject.Position[2] = (float)ObjectPosZNUD.Value;
-            KingOfTheHillConfig.isDirty = true;
-        }
-        private void ObjectOrentaionXNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            currentObject.Orientation[0] = (float)ObjectOrentaionXNUD.Value;
-            KingOfTheHillConfig.isDirty = true;
-        }
-        private void ObjectOrentaionYNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            currentObject.Orientation[1] = (float)ObjectOrentaionYNUD.Value;
-            KingOfTheHillConfig.isDirty = true;
-        }
-        private void ObjectOrentaionZNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            currentObject.Orientation[2] = (float)ObjectOrentaionZNUD.Value;
-            KingOfTheHillConfig.isDirty = true;
-        }
-
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath);
         }
-
         private void SaveFileButton_Click(object sender, EventArgs e)
         {
             SaveKOTHZoneconfigs();
@@ -749,36 +664,6 @@ namespace DayZeEditor
                 MessageBox.Show("No changes were made.", "Nothing Saved", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
-        private void darkButton23_Click(object sender, EventArgs e)
-        {
-            string[] fileContent = new string[] { };
-            var filePath = string.Empty;
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    filePath = openFileDialog.FileName;
-                    var fileStream = openFileDialog.OpenFile();
-                    fileContent = File.ReadAllLines(filePath);
-                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        currentHill.Objects = new BindingList<KOTHObject>();
-                    }
-                    foreach (string line in fileContent)
-                    {
-                        string[] linesplit = line.Split('|');
-                        KOTHObject newobject = new KOTHObject();
-                        newobject.Item = linesplit[0];
-                        newobject.Position = new float[] {Convert.ToSingle(linesplit[1].Split(' ')[0]), Convert.ToSingle(linesplit[1].Split(' ')[1]), Convert.ToSingle(linesplit[1].Split(' ')[2]) };
-                        newobject.Orientation = new float[] { Convert.ToSingle(linesplit[2].Split(' ')[0]), Convert.ToSingle(linesplit[2].Split(' ')[1]), Convert.ToSingle(linesplit[2].Split(' ')[2]) };
-                        currentHill.Objects.Add(newobject);
-                        KingOfTheHillConfig.isDirty = true;
-                    }
-                    ObjectsLB.Refresh();
 
-                }
-            }
-        }
     }
 }

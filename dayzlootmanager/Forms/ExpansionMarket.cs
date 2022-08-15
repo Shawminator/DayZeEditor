@@ -1544,7 +1544,7 @@ namespace DayZeEditor
             string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Enter Name of New Trader(No spaces in name)", "Traders", "");
             if (UserAnswer == "") return;
             Traders.AddNewTrader(UserAnswer);
-            List<string> currencies = MarketCats.GetCatFromFileName("exchange").getallItemsasString();
+            List<string> currencies = MarketCats.GetCatFromFileName("EXCHANGE").getallItemsasString();
             listBox2.SelectedIndex = -1;
             if (listBox2.Items.Count == 0)
                 listBox2.SelectedIndex = listBox2.Items.Count - 1;

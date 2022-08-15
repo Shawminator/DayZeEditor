@@ -9,6 +9,7 @@ Fixed bug where it would remove the assigned NPC to quests when adding a new NPC
 Updated Objective config version
 Updated all Expansion settings/traders/quests etc.. to be in line with latest Expansion Update
 Changed CJ Loot crate import from map to import from unbinned dze
+Updated DZE Import to support both binned and unbinned versions
 [Added]
 Added new expansion DamageSystemSettings
 Added new Crafting Objective to teh quest manager

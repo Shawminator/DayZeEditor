@@ -110,9 +110,26 @@ namespace DayZeEditor
             this.darkLabel13 = new DarkUI.Controls.DarkLabel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.VariousSettingsTabPage = new System.Windows.Forms.TabPage();
+            this.groupBox68 = new System.Windows.Forms.GroupBox();
+            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.darkButton68 = new DarkUI.Controls.DarkButton();
+            this.darkButton69 = new DarkUI.Controls.DarkButton();
+            this.ExplosiveProjectilesLB = new System.Windows.Forms.ListBox();
+            this.darkLabel186 = new DarkUI.Controls.DarkLabel();
+            this.darkButton66 = new DarkUI.Controls.DarkButton();
+            this.darkButton67 = new DarkUI.Controls.DarkButton();
+            this.ExplosionTargetsLB = new System.Windows.Forms.ListBox();
+            this.ExplosionTargetsLBL = new DarkUI.Controls.DarkLabel();
+            this.CheckForBlockingObjectsCB = new System.Windows.Forms.CheckBox();
+            this.DSEnabledCB = new System.Windows.Forms.CheckBox();
             this.groupBox62 = new System.Windows.Forms.GroupBox();
             this.MonitoringSettingsEnabledCB = new System.Windows.Forms.CheckBox();
             this.groupBox59 = new System.Windows.Forms.GroupBox();
+            this.PlayerNameColorPB = new System.Windows.Forms.PictureBox();
+            this.darkLabel184 = new DarkUI.Controls.DarkLabel();
+            this.PlayerTagsColorPB = new System.Windows.Forms.PictureBox();
+            this.darkLabel183 = new DarkUI.Controls.DarkLabel();
             this.label12 = new System.Windows.Forms.Label();
             this.PlayerTagsIconTB = new System.Windows.Forms.TextBox();
             this.ShowPlayerTagsInTerritoriesCB = new System.Windows.Forms.CheckBox();
@@ -212,7 +229,9 @@ namespace DayZeEditor
             this.ShowPartyMember3DMarkersCB = new System.Windows.Forms.CheckBox();
             this.UseWholeMapForInviteListCB = new System.Windows.Forms.CheckBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.VehicleDestroyedCB = new System.Windows.Forms.CheckBox();
             this.HardlineCB = new System.Windows.Forms.CheckBox();
+            this.ExplosionDamageSystemCB = new System.Windows.Forms.CheckBox();
             this.AIPatrolCB = new System.Windows.Forms.CheckBox();
             this.AIGeneralCB = new System.Windows.Forms.CheckBox();
             this.AIObjectPatrolCB = new System.Windows.Forms.CheckBox();
@@ -979,25 +998,6 @@ namespace DayZeEditor
             this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
-            this.VehicleDestroyedCB = new System.Windows.Forms.CheckBox();
-            this.ExplosionDamageSystemCB = new System.Windows.Forms.CheckBox();
-            this.PlayerTagsColorPB = new System.Windows.Forms.PictureBox();
-            this.darkLabel183 = new DarkUI.Controls.DarkLabel();
-            this.PlayerNameColorPB = new System.Windows.Forms.PictureBox();
-            this.darkLabel184 = new DarkUI.Controls.DarkLabel();
-            this.groupBox68 = new System.Windows.Forms.GroupBox();
-            this.DSEnabledCB = new System.Windows.Forms.CheckBox();
-            this.CheckForBlockingObjectsCB = new System.Windows.Forms.CheckBox();
-            this.darkButton66 = new DarkUI.Controls.DarkButton();
-            this.darkButton67 = new DarkUI.Controls.DarkButton();
-            this.ExplosionTargetsLB = new System.Windows.Forms.ListBox();
-            this.ExplosionTargetsLBL = new DarkUI.Controls.DarkLabel();
-            this.darkButton68 = new DarkUI.Controls.DarkButton();
-            this.darkButton69 = new DarkUI.Controls.DarkButton();
-            this.ExplosiveProjectilesLB = new System.Windows.Forms.ListBox();
-            this.darkLabel186 = new DarkUI.Controls.DarkLabel();
-            this.textBox17 = new System.Windows.Forms.TextBox();
-            this.textBox18 = new System.Windows.Forms.TextBox();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -1022,8 +1022,11 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
             this.tabControl2.SuspendLayout();
             this.VariousSettingsTabPage.SuspendLayout();
+            this.groupBox68.SuspendLayout();
             this.groupBox62.SuspendLayout();
             this.groupBox59.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerNameColorPB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerTagsColorPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerTagViewRangeNUD)).BeginInit();
             this.groupBox29.SuspendLayout();
             this.groupBox28.SuspendLayout();
@@ -1247,9 +1250,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.groupBox63.SuspendLayout();
             this.darkToolStrip22.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PlayerTagsColorPB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PlayerNameColorPB)).BeginInit();
-            this.groupBox68.SuspendLayout();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -1869,7 +1869,7 @@ namespace DayZeEditor
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.groupBox2.Location = new System.Drawing.Point(209, 100);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(260, 276);
+            this.groupBox2.Size = new System.Drawing.Size(260, 225);
             this.groupBox2.TabIndex = 92;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Attachments";
@@ -1904,14 +1904,14 @@ namespace DayZeEditor
             this.listBox4.FormattingEnabled = true;
             this.listBox4.Location = new System.Drawing.Point(6, 19);
             this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(120, 199);
+            this.listBox4.Size = new System.Drawing.Size(120, 121);
             this.listBox4.TabIndex = 0;
             this.listBox4.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
             // darkButton8
             // 
             this.darkButton8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton8.Location = new System.Drawing.Point(209, 382);
+            this.darkButton8.Location = new System.Drawing.Point(209, 331);
             this.darkButton8.Name = "darkButton8";
             this.darkButton8.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton8.Size = new System.Drawing.Size(261, 23);
@@ -1922,7 +1922,7 @@ namespace DayZeEditor
             // darkButton2
             // 
             this.darkButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton2.Location = new System.Drawing.Point(9, 382);
+            this.darkButton2.Location = new System.Drawing.Point(9, 331);
             this.darkButton2.Name = "darkButton2";
             this.darkButton2.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton2.Size = new System.Drawing.Size(194, 23);
@@ -1981,7 +1981,7 @@ namespace DayZeEditor
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(6, 3);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(194, 329);
+            this.listBox1.Size = new System.Drawing.Size(194, 251);
             this.listBox1.TabIndex = 0;
             this.listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
@@ -2240,6 +2240,159 @@ namespace DayZeEditor
             this.VariousSettingsTabPage.TabIndex = 2;
             this.VariousSettingsTabPage.Text = "Various Settings";
             // 
+            // groupBox68
+            // 
+            this.groupBox68.Controls.Add(this.textBox17);
+            this.groupBox68.Controls.Add(this.textBox18);
+            this.groupBox68.Controls.Add(this.darkButton68);
+            this.groupBox68.Controls.Add(this.darkButton69);
+            this.groupBox68.Controls.Add(this.ExplosiveProjectilesLB);
+            this.groupBox68.Controls.Add(this.darkLabel186);
+            this.groupBox68.Controls.Add(this.darkButton66);
+            this.groupBox68.Controls.Add(this.darkButton67);
+            this.groupBox68.Controls.Add(this.ExplosionTargetsLB);
+            this.groupBox68.Controls.Add(this.ExplosionTargetsLBL);
+            this.groupBox68.Controls.Add(this.CheckForBlockingObjectsCB);
+            this.groupBox68.Controls.Add(this.DSEnabledCB);
+            this.groupBox68.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox68.Location = new System.Drawing.Point(1008, 140);
+            this.groupBox68.Name = "groupBox68";
+            this.groupBox68.Size = new System.Drawing.Size(264, 429);
+            this.groupBox68.TabIndex = 21;
+            this.groupBox68.TabStop = false;
+            this.groupBox68.Text = "Damage System Settings";
+            // 
+            // textBox17
+            // 
+            this.textBox17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.textBox17.ForeColor = System.Drawing.SystemColors.Control;
+            this.textBox17.Location = new System.Drawing.Point(11, 401);
+            this.textBox17.Name = "textBox17";
+            this.textBox17.Size = new System.Drawing.Size(240, 20);
+            this.textBox17.TabIndex = 123;
+            this.textBox17.TextChanged += new System.EventHandler(this.textBox17_TextChanged);
+            // 
+            // textBox18
+            // 
+            this.textBox18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.textBox18.ForeColor = System.Drawing.SystemColors.Control;
+            this.textBox18.Location = new System.Drawing.Point(11, 375);
+            this.textBox18.Name = "textBox18";
+            this.textBox18.Size = new System.Drawing.Size(240, 20);
+            this.textBox18.TabIndex = 122;
+            this.textBox18.TextChanged += new System.EventHandler(this.textBox18_TextChanged);
+            // 
+            // darkButton68
+            // 
+            this.darkButton68.Location = new System.Drawing.Point(143, 343);
+            this.darkButton68.Name = "darkButton68";
+            this.darkButton68.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton68.Size = new System.Drawing.Size(108, 23);
+            this.darkButton68.TabIndex = 121;
+            this.darkButton68.Text = "Remove";
+            this.darkButton68.Click += new System.EventHandler(this.darkButton68_Click);
+            // 
+            // darkButton69
+            // 
+            this.darkButton69.Location = new System.Drawing.Point(11, 343);
+            this.darkButton69.Name = "darkButton69";
+            this.darkButton69.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton69.Size = new System.Drawing.Size(108, 23);
+            this.darkButton69.TabIndex = 120;
+            this.darkButton69.Text = "Add New";
+            this.darkButton69.Click += new System.EventHandler(this.darkButton69_Click);
+            // 
+            // ExplosiveProjectilesLB
+            // 
+            this.ExplosiveProjectilesLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ExplosiveProjectilesLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ExplosiveProjectilesLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ExplosiveProjectilesLB.FormattingEnabled = true;
+            this.ExplosiveProjectilesLB.Location = new System.Drawing.Point(11, 229);
+            this.ExplosiveProjectilesLB.Name = "ExplosiveProjectilesLB";
+            this.ExplosiveProjectilesLB.Size = new System.Drawing.Size(240, 108);
+            this.ExplosiveProjectilesLB.TabIndex = 119;
+            this.ExplosiveProjectilesLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.ExplosiveProjectilesLB.SelectedIndexChanged += new System.EventHandler(this.ExplosiveProjectilesLB_SelectedIndexChanged);
+            // 
+            // darkLabel186
+            // 
+            this.darkLabel186.AutoSize = true;
+            this.darkLabel186.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel186.Location = new System.Drawing.Point(8, 213);
+            this.darkLabel186.Name = "darkLabel186";
+            this.darkLabel186.Size = new System.Drawing.Size(103, 13);
+            this.darkLabel186.TabIndex = 118;
+            this.darkLabel186.Text = "Explosive Projectiles";
+            // 
+            // darkButton66
+            // 
+            this.darkButton66.Location = new System.Drawing.Point(143, 181);
+            this.darkButton66.Name = "darkButton66";
+            this.darkButton66.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton66.Size = new System.Drawing.Size(108, 23);
+            this.darkButton66.TabIndex = 117;
+            this.darkButton66.Text = "Remove";
+            this.darkButton66.Click += new System.EventHandler(this.darkButton66_Click);
+            // 
+            // darkButton67
+            // 
+            this.darkButton67.Location = new System.Drawing.Point(11, 181);
+            this.darkButton67.Name = "darkButton67";
+            this.darkButton67.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton67.Size = new System.Drawing.Size(108, 23);
+            this.darkButton67.TabIndex = 116;
+            this.darkButton67.Text = "Add New";
+            this.darkButton67.Click += new System.EventHandler(this.darkButton67_Click);
+            // 
+            // ExplosionTargetsLB
+            // 
+            this.ExplosionTargetsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ExplosionTargetsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ExplosionTargetsLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ExplosionTargetsLB.FormattingEnabled = true;
+            this.ExplosionTargetsLB.Location = new System.Drawing.Point(11, 67);
+            this.ExplosionTargetsLB.Name = "ExplosionTargetsLB";
+            this.ExplosionTargetsLB.Size = new System.Drawing.Size(240, 108);
+            this.ExplosionTargetsLB.TabIndex = 115;
+            this.ExplosionTargetsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            // 
+            // ExplosionTargetsLBL
+            // 
+            this.ExplosionTargetsLBL.AutoSize = true;
+            this.ExplosionTargetsLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.ExplosionTargetsLBL.Location = new System.Drawing.Point(8, 51);
+            this.ExplosionTargetsLBL.Name = "ExplosionTargetsLBL";
+            this.ExplosionTargetsLBL.Size = new System.Drawing.Size(91, 13);
+            this.ExplosionTargetsLBL.TabIndex = 114;
+            this.ExplosionTargetsLBL.Text = "Explosion Targets";
+            // 
+            // CheckForBlockingObjectsCB
+            // 
+            this.CheckForBlockingObjectsCB.AutoSize = true;
+            this.CheckForBlockingObjectsCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CheckForBlockingObjectsCB.Location = new System.Drawing.Point(98, 30);
+            this.CheckForBlockingObjectsCB.Name = "CheckForBlockingObjectsCB";
+            this.CheckForBlockingObjectsCB.Size = new System.Drawing.Size(158, 17);
+            this.CheckForBlockingObjectsCB.TabIndex = 21;
+            this.CheckForBlockingObjectsCB.Text = "Check For Blocking Objects";
+            this.CheckForBlockingObjectsCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CheckForBlockingObjectsCB.UseVisualStyleBackColor = true;
+            this.CheckForBlockingObjectsCB.CheckedChanged += new System.EventHandler(this.CheckForBlockingObjectsCB_CheckedChanged);
+            // 
+            // DSEnabledCB
+            // 
+            this.DSEnabledCB.AutoSize = true;
+            this.DSEnabledCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.DSEnabledCB.Location = new System.Drawing.Point(21, 30);
+            this.DSEnabledCB.Name = "DSEnabledCB";
+            this.DSEnabledCB.Size = new System.Drawing.Size(65, 17);
+            this.DSEnabledCB.TabIndex = 20;
+            this.DSEnabledCB.Text = "Enabled";
+            this.DSEnabledCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.DSEnabledCB.UseVisualStyleBackColor = true;
+            this.DSEnabledCB.CheckedChanged += new System.EventHandler(this.DSEnabledCB_CheckedChanged);
+            // 
             // groupBox62
             // 
             this.groupBox62.Controls.Add(this.MonitoringSettingsEnabledCB);
@@ -2284,6 +2437,48 @@ namespace DayZeEditor
             this.groupBox59.TabIndex = 7;
             this.groupBox59.TabStop = false;
             this.groupBox59.Text = "Name Tags";
+            // 
+            // PlayerNameColorPB
+            // 
+            this.PlayerNameColorPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PlayerNameColorPB.BackgroundImage")));
+            this.PlayerNameColorPB.Location = new System.Drawing.Point(253, 55);
+            this.PlayerNameColorPB.Name = "PlayerNameColorPB";
+            this.PlayerNameColorPB.Size = new System.Drawing.Size(121, 22);
+            this.PlayerNameColorPB.TabIndex = 123;
+            this.PlayerNameColorPB.TabStop = false;
+            this.PlayerNameColorPB.Click += new System.EventHandler(this.PlayerNameColorPB_Click);
+            this.PlayerNameColorPB.Paint += new System.Windows.Forms.PaintEventHandler(this.PlayerNameColorPB_Paint);
+            // 
+            // darkLabel184
+            // 
+            this.darkLabel184.AutoSize = true;
+            this.darkLabel184.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel184.Location = new System.Drawing.Point(142, 39);
+            this.darkLabel184.Name = "darkLabel184";
+            this.darkLabel184.Size = new System.Drawing.Size(90, 13);
+            this.darkLabel184.TabIndex = 122;
+            this.darkLabel184.Text = "Player Tags Color";
+            // 
+            // PlayerTagsColorPB
+            // 
+            this.PlayerTagsColorPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PlayerTagsColorPB.BackgroundImage")));
+            this.PlayerTagsColorPB.Location = new System.Drawing.Point(126, 55);
+            this.PlayerTagsColorPB.Name = "PlayerTagsColorPB";
+            this.PlayerTagsColorPB.Size = new System.Drawing.Size(121, 22);
+            this.PlayerTagsColorPB.TabIndex = 121;
+            this.PlayerTagsColorPB.TabStop = false;
+            this.PlayerTagsColorPB.Click += new System.EventHandler(this.PlayerTagsColorPB_Click);
+            this.PlayerTagsColorPB.Paint += new System.Windows.Forms.PaintEventHandler(this.PlayerTagsColor_Paint);
+            // 
+            // darkLabel183
+            // 
+            this.darkLabel183.AutoSize = true;
+            this.darkLabel183.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel183.Location = new System.Drawing.Point(264, 39);
+            this.darkLabel183.Name = "darkLabel183";
+            this.darkLabel183.Size = new System.Drawing.Size(100, 13);
+            this.darkLabel183.TabIndex = 120;
+            this.darkLabel183.Text = "Player Name Colour";
             // 
             // label12
             // 
@@ -3584,6 +3779,19 @@ namespace DayZeEditor
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Logs";
             // 
+            // VehicleDestroyedCB
+            // 
+            this.VehicleDestroyedCB.AutoSize = true;
+            this.VehicleDestroyedCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.VehicleDestroyedCB.Location = new System.Drawing.Point(130, 184);
+            this.VehicleDestroyedCB.Name = "VehicleDestroyedCB";
+            this.VehicleDestroyedCB.Size = new System.Drawing.Size(112, 17);
+            this.VehicleDestroyedCB.TabIndex = 122;
+            this.VehicleDestroyedCB.Text = "Vehicle Destroyed";
+            this.VehicleDestroyedCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.VehicleDestroyedCB.UseVisualStyleBackColor = true;
+            this.VehicleDestroyedCB.CheckedChanged += new System.EventHandler(this.LogSettingsCB_CheckedChanged);
+            // 
             // HardlineCB
             // 
             this.HardlineCB.AutoSize = true;
@@ -3594,6 +3802,19 @@ namespace DayZeEditor
             this.HardlineCB.Text = "Hardline";
             this.HardlineCB.UseVisualStyleBackColor = true;
             this.HardlineCB.CheckedChanged += new System.EventHandler(this.LogSettingsCB_CheckedChanged);
+            // 
+            // ExplosionDamageSystemCB
+            // 
+            this.ExplosionDamageSystemCB.AutoSize = true;
+            this.ExplosionDamageSystemCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ExplosionDamageSystemCB.Location = new System.Drawing.Point(23, 92);
+            this.ExplosionDamageSystemCB.Name = "ExplosionDamageSystemCB";
+            this.ExplosionDamageSystemCB.Size = new System.Drawing.Size(151, 17);
+            this.ExplosionDamageSystemCB.TabIndex = 123;
+            this.ExplosionDamageSystemCB.Text = "Explosion Damage System";
+            this.ExplosionDamageSystemCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ExplosionDamageSystemCB.UseVisualStyleBackColor = true;
+            this.ExplosionDamageSystemCB.CheckedChanged += new System.EventHandler(this.LogSettingsCB_CheckedChanged);
             // 
             // AIPatrolCB
             // 
@@ -12141,7 +12362,7 @@ namespace DayZeEditor
             this.toolStripButton15.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton15.Image")));
             this.toolStripButton15.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton15.Name = "toolStripButton15";
-            this.toolStripButton15.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton15.Size = new System.Drawing.Size(101, 22);
             this.toolStripButton15.Text = "Starting Clothing";
             this.toolStripButton15.Click += new System.EventHandler(this.toolStripButton15_Click);
             // 
@@ -12161,7 +12382,7 @@ namespace DayZeEditor
             this.toolStripButton16.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton16.Image")));
             this.toolStripButton16.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton16.Name = "toolStripButton16";
-            this.toolStripButton16.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton16.Size = new System.Drawing.Size(79, 22);
             this.toolStripButton16.Text = "Starting Gear";
             this.toolStripButton16.Click += new System.EventHandler(this.toolStripButton16_Click);
             // 
@@ -12181,7 +12402,7 @@ namespace DayZeEditor
             this.toolStripButton17.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton17.Image")));
             this.toolStripButton17.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton17.Name = "toolStripButton17";
-            this.toolStripButton17.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton17.Size = new System.Drawing.Size(51, 22);
             this.toolStripButton17.Text = "Spawns";
             this.toolStripButton17.Click += new System.EventHandler(this.toolStripButton17_Click);
             // 
@@ -12201,7 +12422,7 @@ namespace DayZeEditor
             this.toolStripButton19.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton19.Image")));
             this.toolStripButton19.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton19.Name = "toolStripButton19";
-            this.toolStripButton19.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton19.Size = new System.Drawing.Size(60, 22);
             this.toolStripButton19.Text = "Loadouts";
             this.toolStripButton19.Click += new System.EventHandler(this.toolStripButton19_Click);
             // 
@@ -13635,227 +13856,6 @@ namespace DayZeEditor
             this.toolStripButton14.Text = "Vehicle Settings";
             this.toolStripButton14.Click += new System.EventHandler(this.toolStripButton14_Click);
             // 
-            // VehicleDestroyedCB
-            // 
-            this.VehicleDestroyedCB.AutoSize = true;
-            this.VehicleDestroyedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.VehicleDestroyedCB.Location = new System.Drawing.Point(130, 184);
-            this.VehicleDestroyedCB.Name = "VehicleDestroyedCB";
-            this.VehicleDestroyedCB.Size = new System.Drawing.Size(112, 17);
-            this.VehicleDestroyedCB.TabIndex = 122;
-            this.VehicleDestroyedCB.Text = "Vehicle Destroyed";
-            this.VehicleDestroyedCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.VehicleDestroyedCB.UseVisualStyleBackColor = true;
-            this.VehicleDestroyedCB.CheckedChanged += new System.EventHandler(this.LogSettingsCB_CheckedChanged);
-            // 
-            // ExplosionDamageSystemCB
-            // 
-            this.ExplosionDamageSystemCB.AutoSize = true;
-            this.ExplosionDamageSystemCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ExplosionDamageSystemCB.Location = new System.Drawing.Point(23, 92);
-            this.ExplosionDamageSystemCB.Name = "ExplosionDamageSystemCB";
-            this.ExplosionDamageSystemCB.Size = new System.Drawing.Size(151, 17);
-            this.ExplosionDamageSystemCB.TabIndex = 123;
-            this.ExplosionDamageSystemCB.Text = "Explosion Damage System";
-            this.ExplosionDamageSystemCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ExplosionDamageSystemCB.UseVisualStyleBackColor = true;
-            this.ExplosionDamageSystemCB.CheckedChanged += new System.EventHandler(this.LogSettingsCB_CheckedChanged);
-            // 
-            // PlayerTagsColorPB
-            // 
-            this.PlayerTagsColorPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PlayerTagsColorPB.BackgroundImage")));
-            this.PlayerTagsColorPB.Location = new System.Drawing.Point(126, 55);
-            this.PlayerTagsColorPB.Name = "PlayerTagsColorPB";
-            this.PlayerTagsColorPB.Size = new System.Drawing.Size(121, 22);
-            this.PlayerTagsColorPB.TabIndex = 121;
-            this.PlayerTagsColorPB.TabStop = false;
-            this.PlayerTagsColorPB.Click += new System.EventHandler(this.PlayerTagsColorPB_Click);
-            this.PlayerTagsColorPB.Paint += new System.Windows.Forms.PaintEventHandler(this.PlayerTagsColor_Paint);
-            // 
-            // darkLabel183
-            // 
-            this.darkLabel183.AutoSize = true;
-            this.darkLabel183.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel183.Location = new System.Drawing.Point(264, 39);
-            this.darkLabel183.Name = "darkLabel183";
-            this.darkLabel183.Size = new System.Drawing.Size(100, 13);
-            this.darkLabel183.TabIndex = 120;
-            this.darkLabel183.Text = "Player Name Colour";
-            // 
-            // PlayerNameColorPB
-            // 
-            this.PlayerNameColorPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PlayerNameColorPB.BackgroundImage")));
-            this.PlayerNameColorPB.Location = new System.Drawing.Point(253, 55);
-            this.PlayerNameColorPB.Name = "PlayerNameColorPB";
-            this.PlayerNameColorPB.Size = new System.Drawing.Size(121, 22);
-            this.PlayerNameColorPB.TabIndex = 123;
-            this.PlayerNameColorPB.TabStop = false;
-            this.PlayerNameColorPB.Click += new System.EventHandler(this.PlayerNameColorPB_Click);
-            this.PlayerNameColorPB.Paint += new System.Windows.Forms.PaintEventHandler(this.PlayerNameColorPB_Paint);
-            // 
-            // darkLabel184
-            // 
-            this.darkLabel184.AutoSize = true;
-            this.darkLabel184.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel184.Location = new System.Drawing.Point(142, 39);
-            this.darkLabel184.Name = "darkLabel184";
-            this.darkLabel184.Size = new System.Drawing.Size(90, 13);
-            this.darkLabel184.TabIndex = 122;
-            this.darkLabel184.Text = "Player Tags Color";
-            // 
-            // groupBox68
-            // 
-            this.groupBox68.Controls.Add(this.textBox17);
-            this.groupBox68.Controls.Add(this.textBox18);
-            this.groupBox68.Controls.Add(this.darkButton68);
-            this.groupBox68.Controls.Add(this.darkButton69);
-            this.groupBox68.Controls.Add(this.ExplosiveProjectilesLB);
-            this.groupBox68.Controls.Add(this.darkLabel186);
-            this.groupBox68.Controls.Add(this.darkButton66);
-            this.groupBox68.Controls.Add(this.darkButton67);
-            this.groupBox68.Controls.Add(this.ExplosionTargetsLB);
-            this.groupBox68.Controls.Add(this.ExplosionTargetsLBL);
-            this.groupBox68.Controls.Add(this.CheckForBlockingObjectsCB);
-            this.groupBox68.Controls.Add(this.DSEnabledCB);
-            this.groupBox68.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox68.Location = new System.Drawing.Point(1008, 140);
-            this.groupBox68.Name = "groupBox68";
-            this.groupBox68.Size = new System.Drawing.Size(264, 429);
-            this.groupBox68.TabIndex = 21;
-            this.groupBox68.TabStop = false;
-            this.groupBox68.Text = "Damage System Settings";
-            // 
-            // DSEnabledCB
-            // 
-            this.DSEnabledCB.AutoSize = true;
-            this.DSEnabledCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.DSEnabledCB.Location = new System.Drawing.Point(21, 30);
-            this.DSEnabledCB.Name = "DSEnabledCB";
-            this.DSEnabledCB.Size = new System.Drawing.Size(65, 17);
-            this.DSEnabledCB.TabIndex = 20;
-            this.DSEnabledCB.Text = "Enabled";
-            this.DSEnabledCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.DSEnabledCB.UseVisualStyleBackColor = true;
-            this.DSEnabledCB.CheckedChanged += new System.EventHandler(this.DSEnabledCB_CheckedChanged);
-            // 
-            // CheckForBlockingObjectsCB
-            // 
-            this.CheckForBlockingObjectsCB.AutoSize = true;
-            this.CheckForBlockingObjectsCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CheckForBlockingObjectsCB.Location = new System.Drawing.Point(98, 30);
-            this.CheckForBlockingObjectsCB.Name = "CheckForBlockingObjectsCB";
-            this.CheckForBlockingObjectsCB.Size = new System.Drawing.Size(158, 17);
-            this.CheckForBlockingObjectsCB.TabIndex = 21;
-            this.CheckForBlockingObjectsCB.Text = "Check For Blocking Objects";
-            this.CheckForBlockingObjectsCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.CheckForBlockingObjectsCB.UseVisualStyleBackColor = true;
-            this.CheckForBlockingObjectsCB.CheckedChanged += new System.EventHandler(this.CheckForBlockingObjectsCB_CheckedChanged);
-            // 
-            // darkButton66
-            // 
-            this.darkButton66.Location = new System.Drawing.Point(143, 181);
-            this.darkButton66.Name = "darkButton66";
-            this.darkButton66.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton66.Size = new System.Drawing.Size(108, 23);
-            this.darkButton66.TabIndex = 117;
-            this.darkButton66.Text = "Remove";
-            this.darkButton66.Click += new System.EventHandler(this.darkButton66_Click);
-            // 
-            // darkButton67
-            // 
-            this.darkButton67.Location = new System.Drawing.Point(11, 181);
-            this.darkButton67.Name = "darkButton67";
-            this.darkButton67.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton67.Size = new System.Drawing.Size(108, 23);
-            this.darkButton67.TabIndex = 116;
-            this.darkButton67.Text = "Add New";
-            this.darkButton67.Click += new System.EventHandler(this.darkButton67_Click);
-            // 
-            // ExplosionTargetsLB
-            // 
-            this.ExplosionTargetsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ExplosionTargetsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.ExplosionTargetsLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ExplosionTargetsLB.FormattingEnabled = true;
-            this.ExplosionTargetsLB.Location = new System.Drawing.Point(11, 67);
-            this.ExplosionTargetsLB.Name = "ExplosionTargetsLB";
-            this.ExplosionTargetsLB.Size = new System.Drawing.Size(240, 108);
-            this.ExplosionTargetsLB.TabIndex = 115;
-            this.ExplosionTargetsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            // 
-            // ExplosionTargetsLBL
-            // 
-            this.ExplosionTargetsLBL.AutoSize = true;
-            this.ExplosionTargetsLBL.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.ExplosionTargetsLBL.Location = new System.Drawing.Point(8, 51);
-            this.ExplosionTargetsLBL.Name = "ExplosionTargetsLBL";
-            this.ExplosionTargetsLBL.Size = new System.Drawing.Size(91, 13);
-            this.ExplosionTargetsLBL.TabIndex = 114;
-            this.ExplosionTargetsLBL.Text = "Explosion Targets";
-            // 
-            // darkButton68
-            // 
-            this.darkButton68.Location = new System.Drawing.Point(143, 343);
-            this.darkButton68.Name = "darkButton68";
-            this.darkButton68.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton68.Size = new System.Drawing.Size(108, 23);
-            this.darkButton68.TabIndex = 121;
-            this.darkButton68.Text = "Remove";
-            this.darkButton68.Click += new System.EventHandler(this.darkButton68_Click);
-            // 
-            // darkButton69
-            // 
-            this.darkButton69.Location = new System.Drawing.Point(11, 343);
-            this.darkButton69.Name = "darkButton69";
-            this.darkButton69.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton69.Size = new System.Drawing.Size(108, 23);
-            this.darkButton69.TabIndex = 120;
-            this.darkButton69.Text = "Add New";
-            this.darkButton69.Click += new System.EventHandler(this.darkButton69_Click);
-            // 
-            // ExplosiveProjectilesLB
-            // 
-            this.ExplosiveProjectilesLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ExplosiveProjectilesLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.ExplosiveProjectilesLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ExplosiveProjectilesLB.FormattingEnabled = true;
-            this.ExplosiveProjectilesLB.Location = new System.Drawing.Point(11, 229);
-            this.ExplosiveProjectilesLB.Name = "ExplosiveProjectilesLB";
-            this.ExplosiveProjectilesLB.Size = new System.Drawing.Size(240, 108);
-            this.ExplosiveProjectilesLB.TabIndex = 119;
-            this.ExplosiveProjectilesLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.ExplosiveProjectilesLB.SelectedIndexChanged += new System.EventHandler(this.ExplosiveProjectilesLB_SelectedIndexChanged);
-            // 
-            // darkLabel186
-            // 
-            this.darkLabel186.AutoSize = true;
-            this.darkLabel186.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel186.Location = new System.Drawing.Point(8, 213);
-            this.darkLabel186.Name = "darkLabel186";
-            this.darkLabel186.Size = new System.Drawing.Size(103, 13);
-            this.darkLabel186.TabIndex = 118;
-            this.darkLabel186.Text = "Explosive Projectiles";
-            // 
-            // textBox17
-            // 
-            this.textBox17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.textBox17.ForeColor = System.Drawing.SystemColors.Control;
-            this.textBox17.Location = new System.Drawing.Point(11, 401);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(240, 20);
-            this.textBox17.TabIndex = 123;
-            this.textBox17.TextChanged += new System.EventHandler(this.textBox17_TextChanged);
-            // 
-            // textBox18
-            // 
-            this.textBox18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.textBox18.ForeColor = System.Drawing.SystemColors.Control;
-            this.textBox18.Location = new System.Drawing.Point(11, 375);
-            this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(240, 20);
-            this.textBox18.TabIndex = 122;
-            this.textBox18.TextChanged += new System.EventHandler(this.textBox18_TextChanged);
-            // 
             // ExpansionSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -13897,10 +13897,14 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).EndInit();
             this.tabControl2.ResumeLayout(false);
             this.VariousSettingsTabPage.ResumeLayout(false);
+            this.groupBox68.ResumeLayout(false);
+            this.groupBox68.PerformLayout();
             this.groupBox62.ResumeLayout(false);
             this.groupBox62.PerformLayout();
             this.groupBox59.ResumeLayout(false);
             this.groupBox59.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerNameColorPB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PlayerTagsColorPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerTagViewRangeNUD)).EndInit();
             this.groupBox29.ResumeLayout(false);
             this.groupBox29.PerformLayout();
@@ -14190,10 +14194,6 @@ namespace DayZeEditor
             this.groupBox63.PerformLayout();
             this.darkToolStrip22.ResumeLayout(false);
             this.darkToolStrip22.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PlayerTagsColorPB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PlayerNameColorPB)).EndInit();
-            this.groupBox68.ResumeLayout(false);
-            this.groupBox68.PerformLayout();
             this.ResumeLayout(false);
 
         }

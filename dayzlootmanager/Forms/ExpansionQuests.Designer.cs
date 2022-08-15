@@ -353,6 +353,7 @@ namespace DayZeEditor
             this.addNewTreasureHuntObjectiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteObjectiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewCraftingObjectiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -541,6 +542,7 @@ namespace DayZeEditor
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage1.Controls.Add(this.groupBox7);
             this.tabPage1.Controls.Add(this.groupBox3);
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.groupBox1);
@@ -4320,6 +4322,17 @@ namespace DayZeEditor
             this.addNewCraftingObjectiveToolStripMenuItem.Text = "Add New Crafting Objective";
             this.addNewCraftingObjectiveToolStripMenuItem.Click += new System.EventHandler(this.addNewCraftingObjectiveToolStripMenuItem_Click);
             // 
+            // groupBox7
+            // 
+            this.groupBox7.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox7.Location = new System.Drawing.Point(795, 6);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(162, 281);
+            this.groupBox7.TabIndex = 99;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Persistent Server Data";
+            this.groupBox7.Visible = false;
+            // 
             // ExpansionQuests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4855,5 +4868,6 @@ namespace DayZeEditor
         private System.Windows.Forms.ComboBox QuestTypeCB;
         private DarkUI.Controls.DarkLabel darkLabel71;
         private System.Windows.Forms.ToolStripMenuItem addNewCraftingObjectiveToolStripMenuItem;
+        private System.Windows.Forms.GroupBox groupBox7;
     }
 }

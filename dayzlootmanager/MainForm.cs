@@ -313,10 +313,10 @@ namespace DayZeEditor
                 else
                     BreachingChargeManagerButton.Visible = false;
 
-                //if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KingOfTheHill.json"))
-                //    KOTHManagerButton.Visible = true;
-                //else
-                //    KOTHManagerButton.Visible = false;
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KingOfTheHill\\server-config.json"))
+                    KOTHManagerButton.Visible = true;
+                else
+                    KOTHManagerButton.Visible = false;
 
                 if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KosZone\\KZConfig\\KosZoneConfig.json") &&
                     File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KosZone\\KZConfig\\PurgeConfigV1.json"))
