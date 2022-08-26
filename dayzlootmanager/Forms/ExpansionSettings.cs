@@ -520,6 +520,7 @@ namespace DayZeEditor
                 if (HardLineSettings.checkver())
                     needtosave = true;
             }
+            HardLineSettings.ConvertDictionarytoLevels();
             HardLineSettings.Filename = HArdlineSettingsPath;
             loadHardlineSettings();
 
@@ -960,6 +961,20 @@ namespace DayZeEditor
                 File.WriteAllText(GeneralSettings.Filename, jsonString);
                 midifiedfiles.Add(Path.GetFileName(GeneralSettings.Filename));
             }
+            if (HardLineSettings.isDirty)
+            {
+                HardLineSettings.isDirty = false;
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                HardLineSettings.convertliststoDict();
+                string jsonString = JsonSerializer.Serialize(HardLineSettings, options);
+                if (currentproject.Createbackups && File.Exists(HardLineSettings.Filename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(HardLineSettings.Filename) + "\\Backup\\" + SaveTime);
+                    File.Copy(HardLineSettings.Filename, Path.GetDirectoryName(HardLineSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(HardLineSettings.Filename) + ".bak", true);
+                }
+                File.WriteAllText(HardLineSettings.Filename, jsonString);
+                midifiedfiles.Add(Path.GetFileName(HardLineSettings.Filename));
+            }
             if (LogSettings.isDirty)
             {
                 LogSettings.isDirty = false;
@@ -1314,6 +1329,7 @@ namespace DayZeEditor
                 case 4:
                 case 5:
                 case 9:
+                case 12:
                     Process.Start(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings");
                     break;
             }
@@ -2874,9 +2890,130 @@ namespace DayZeEditor
         #region Hartdline
         private void loadHardlineSettings()
         {
+            useraction = false;
+
+            UseItemRarityForMarketPurchaseNCB.Checked = HardLineSettings.UseItemRarityForMarketPurchase == 1 ? true : false;
+            UseItemRarityForMarketSellCB.Checked = HardLineSettings.UseItemRarityForMarketSell == 1 ? true : false;
+            EnableItemRarityCB.Checked = HardLineSettings.EnableItemRarity == 1 ? true : false;
+            UseHumanityCB.Checked = HardLineSettings.UseHumanity == 1 ? true : false;
+            ShowHardlineHUDCB.Checked = HardLineSettings.ShowHardlineHUD == 1 ? true : false;
+            RankLegendNUD.Value = HardLineSettings.RankLegend;
+            RankSuperheroNUD.Value = HardLineSettings.RankSuperhero;
+            RankHeroNUD.Value = HardLineSettings.RankHero;
+            RankPathfinderNUD.Value = HardLineSettings.RankPathfinder;
+            RankScoutNUD.Value = HardLineSettings.RankScout;
+            RankSurvivorNUD.Value = HardLineSettings.RankSurvivor;
+            RankBambiNUD.Value = HardLineSettings.RankBambi;
+            RankKleptomaniacNUD.Value = HardLineSettings.RankKleptomaniac;
+            RankBullyNUD.Value = HardLineSettings.RankBully;
+            RankBanditNUD.Value = HardLineSettings.RankBandit;
+            RankKillerNUD.Value = HardLineSettings.RankKiller;
+            RankMadmanNUD.Value = HardLineSettings.RankMadman;
+
+            HumanityBandageTargetNUD.Value = HardLineSettings.HumanityBandageTarget;
+            HumanityOnKillInfectedNUD.Value = HardLineSettings.HumanityOnKillInfected;
+            HumanityOnKillAINUD.Value = HardLineSettings.HumanityOnKillAI;
+            HumanityOnKillBambiNUD.Value = HardLineSettings.HumanityOnKillBambi;
+            HumanityOnKillHeroNUD.Value = HardLineSettings.HumanityOnKillHero;
+            HumanityOnKillBanditNUD.Value = HardLineSettings.HumanityOnKillBandit;
+            HumanityLossOnDeathNUD.Value = HardLineSettings.HumanityLossOnDeath;
+
+            useraction = true;
+        }
+        private void UseItemRarityForMarketPurchaseNCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            HardLineSettings.UseItemRarityForMarketPurchase = UseItemRarityForMarketPurchaseNCB.Checked == true ? 1 : 0;
+            HardLineSettings.isDirty = true;
+        }
+        private void UseItemRarityForMarketSellCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            HardLineSettings.UseItemRarityForMarketSell = UseItemRarityForMarketSellCB.Checked == true ? 1 : 0;
+            HardLineSettings.isDirty = true;
+        }
+        private void EnableItemRarityCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            HardLineSettings.EnableItemRarity = EnableItemRarityCB.Checked == true ? 1 : 0;
+            HardLineSettings.isDirty = true;
+        }
+        private void UseHumanityCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            HardLineSettings.UseHumanity = UseHumanityCB.Checked == true ? 1 : 0;
+            HardLineSettings.isDirty = true;
+        }
+        private void ShowHardlineHUDCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            HardLineSettings.ShowHardlineHUD = ShowHardlineHUDCB.Checked == true ? 1 : 0;
+            HardLineSettings.isDirty = true;
+        }
+        private void HardlineINT_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            NumericUpDown nud = sender as NumericUpDown;
+            HardLineSettings.setIntValue(nud.Name.Substring(0, nud.Name.Length - 3), (int)nud.Value);
+            HardLineSettings.isDirty = true;
+        }
+        private void comboBox4_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            string Type = comboBox4.GetItemText(comboBox4.SelectedItem);
+            useraction = false;
+
+            ItemRequirementNUD.Value = HardLineSettings.getRequirment(Type);
+
+            ItemRarityLB.DisplayMember = "DisplayName";
+            ItemRarityLB.ValueMember = "Value";
+            ItemRarityLB.DataSource = HardLineSettings.getlist(Type);
+            useraction = true;
+        }
+        private void ItemRequirementNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            HardLineSettings.SetRequirment(comboBox4.GetItemText(comboBox4.SelectedItem), (int)ItemRequirementNUD.Value);
+            HardLineSettings.isDirty = true;
+        }
+        private void darkButton71_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseMultiple = true,
+                isCategoryitem = false,
+                LowerCase = false,
+                Multiselect = true
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string Type = comboBox4.GetItemText(comboBox4.SelectedItem);
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    if (!HardLineSettings.getlist(Type).Contains(l))
+                    {
+                        HardLineSettings.getlist(Type).Add(l);
+
+                    }
+                    HardLineSettings.isDirty = true;
+                }
+            }
+        }
+        private void darkButton72_Click(object sender, EventArgs e)
+        {
 
         }
-
+        private void darkButton70_Click(object sender, EventArgs e)
+        {
+            string Type = comboBox4.GetItemText(comboBox4.SelectedItem);
+            HardLineSettings.getlist(Type).Add(ItemRarityLB.GetItemText(ItemRarityLB.SelectedItem));
+            HardLineSettings.isDirty = true;
+        }
         #endregion
 
         #region logsettings
@@ -6271,7 +6408,13 @@ namespace DayZeEditor
             VehicleSettings.isDirty = true;
         }
 
+
         #endregion VehicleSettings
+
+        private void darkLabel235_Click(object sender, EventArgs e)
+        {
+
+        }
 
 
     }

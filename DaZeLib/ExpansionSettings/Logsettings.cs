@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System;
+using System.Text.Json.Serialization;
 
 namespace DayZeLib
 {
@@ -63,5 +64,6 @@ namespace DayZeLib
             GetType().GetProperty(mytype).SetValue(this, myvalue, null);
 
         }
+
     }
 }

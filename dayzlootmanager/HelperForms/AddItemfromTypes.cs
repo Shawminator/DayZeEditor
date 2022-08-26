@@ -37,6 +37,7 @@ namespace DayZeEditor
         public bool isCategoryitem { get; set; }
         public typesType currentlootpart;
         public bool UseMultiple;
+        public bool Multiselect { get; set; }
         public bool LowerCase { get; set; }
         public Project currentproject { get; internal set; }
         public TypesFile vanillatypes { get; set; }
@@ -66,14 +67,16 @@ namespace DayZeEditor
             listBox1.ValueMember = "Value";
             listBox1.DataSource = addedtypes;
             if (isCategoryitem)
-                treeView1.CheckBoxes = true;
+                treeViewMS1.CheckBoxes = true;
             if (usedtypes == null)
                 darkButton5.Visible = false;
+            treeViewMS1.SetMultiselect = Multiselect;
+
             PopulateTreeView();
         }
         private void PopulateTreeView()
         {
-            treeView1.Nodes.Clear();
+            treeViewMS1.Nodes.Clear();
             //Set Vanilla Treenode types
             TreeNode vanilla = new TreeNode("Vanilla Types");
             vanilla.Tag = "VanillaTypes";
@@ -94,7 +97,7 @@ namespace DayZeEditor
                 }
                 vanilla.Nodes[cat].Nodes.Add(typenode);
             }
-            treeView1.Nodes.Add(vanilla);
+            treeViewMS1.Nodes.Add(vanilla);
             if (ModTypes.Count > 0)
             {
                 foreach (TypesFile tf in ModTypes)
@@ -119,7 +122,7 @@ namespace DayZeEditor
                         }
                         ModTypes.Nodes[cat].Nodes.Add(typenode);
                     }
-                    treeView1.Nodes.Add(ModTypes);
+                    treeViewMS1.Nodes.Add(ModTypes);
                 }
             }
         }
@@ -145,49 +148,22 @@ namespace DayZeEditor
 
         private void darkButton4_Click(object sender, EventArgs e)
         {
-            if (isCategoryitem)
+            foreach (TreeNode tn in treeViewMS1.SelectedNodes)
             {
-                var selectedNodes = treeView1.Nodes.Descendants()
-                    .Where(n => n.Checked)
-                    .ToList();
-
-
-                foreach(TreeNode node in selectedNodes)
-                {
-                    if (node.Tag.ToString() == "SelectAll") continue;
-                    string now = node.Text;
-                    if (now == "Clothes" || now == "Containers" || now == "Explosives" || now == "Food" || now == "Tools" || now == "Vehiclesparts" || now == "Weapons" || now == "others") continue;
-                    addedtypes.Add(now);
-                }
-
-            }
-            else
-            {
+                typesType looptype = tn.Tag as typesType;
                 if (UseMultiple)
                 {
-                    if(LowerCase)
+                    if (LowerCase)
                         addedtypes.Add(currentlootpart.name.ToLower());
                     else
-                        addedtypes.Add(currentlootpart.name);
+                        addedtypes.Add(looptype.name);
                 }
-                else if (!addedtypes.Contains(currentlootpart.name.ToLower()) && !addedtypes.Contains(currentlootpart.name))
+                else if (!addedtypes.Contains(looptype.name.ToLower()) && !addedtypes.Contains(looptype.name))
                 {
-                    if(LowerCase)
-                        addedtypes.Add(currentlootpart.name.ToLower());
+                    if (LowerCase)
+                        addedtypes.Add(looptype.name.ToLower());
                     else
-                        addedtypes.Add(currentlootpart.name);
-                }
-            }
-        }
-        private IEnumerable<TreeNode> Descendants(TreeNodeCollection c)
-        {
-            foreach (var node in c.OfType<TreeNode>())
-            {
-                yield return node;
-
-                foreach (var child in node.Nodes.Descendants())
-                {
-                    yield return child;
+                        addedtypes.Add(looptype.name);
                 }
             }
         }
@@ -204,6 +180,7 @@ namespace DayZeEditor
             if (e.Node.Tag != null && e.Node.Tag is typesType)
             {
                 currentlootpart = e.Node.Tag as typesType;
+                isCategoryitem = false;
             }
         }
         public bool manualchange = false;
@@ -275,7 +252,7 @@ namespace DayZeEditor
         
         private void darkButton6_Click(object sender, EventArgs e)
         {
-            if (treeView1.Nodes.Count < 1)
+            if (treeViewMS1.Nodes.Count < 1)
                 return;
             string text = darkTextBox1.Text;
             searchnum = 0;
@@ -302,7 +279,7 @@ namespace DayZeEditor
             if(foundparts.Count == 0) { return; }
             foreach (typesType obj in foundparts)
             {
-                foreach (TreeNode node in treeView1.Nodes)
+                foreach (TreeNode node in treeViewMS1.Nodes)
                 {
                     searchtree(obj.name.ToLower(), node, searchtreeNodes);
                 }
@@ -316,11 +293,11 @@ namespace DayZeEditor
             //{
             //    searchtree(text, tn, searchtreeparts);
             //}
-            treeView1.SelectedNode = searchtreeNodes[searchnum];
-            treeView1.Focus();
-            if (treeView1.SelectedNode.Tag != null && treeView1.SelectedNode.Tag is typesType)
+            treeViewMS1.SelectedNode = searchtreeNodes[searchnum];
+            treeViewMS1.Focus();
+            if (treeViewMS1.SelectedNode.Tag != null && treeViewMS1.SelectedNode.Tag is typesType)
             {
-                currentlootpart = treeView1.SelectedNode.Tag as typesType;
+                currentlootpart = treeViewMS1.SelectedNode.Tag as typesType;
             }
             if (searchtreeNodes.Count > 1)
                 darkButton7.Visible = true;
@@ -351,11 +328,11 @@ namespace DayZeEditor
                 MessageBox.Show("No More Items found");
                 return;
             }
-            treeView1.SelectedNode = searchtreeNodes[searchnum];
-            treeView1.Focus();
-            if (treeView1.SelectedNode.Tag != null && treeView1.SelectedNode.Tag is typesType)
+            treeViewMS1.SelectedNode = searchtreeNodes[searchnum];
+            treeViewMS1.Focus();
+            if (treeViewMS1.SelectedNode.Tag != null && treeViewMS1.SelectedNode.Tag is typesType)
             {
-                currentlootpart = treeView1.SelectedNode.Tag as typesType;
+                currentlootpart = treeViewMS1.SelectedNode.Tag as typesType;
             }
         }
 

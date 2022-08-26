@@ -29,10 +29,10 @@ namespace DayZeEditor
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddItemfromTypes));
             this.panel1 = new System.Windows.Forms.Panel();
             this.CloseButton = new System.Windows.Forms.Button();
             this.TitleLabel = new System.Windows.Forms.Label();
-            this.treeView1 = new System.Windows.Forms.TreeView();
             this.darkButton1 = new DarkUI.Controls.DarkButton();
             this.darkButton2 = new DarkUI.Controls.DarkButton();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -42,6 +42,7 @@ namespace DayZeEditor
             this.darkTextBox1 = new DarkUI.Controls.DarkTextBox();
             this.darkButton6 = new DarkUI.Controls.DarkButton();
             this.darkButton7 = new DarkUI.Controls.DarkButton();
+            this.treeViewMS1 = new TreeViewMS.TreeViewMS();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,19 +82,6 @@ namespace DayZeEditor
             this.TitleLabel.TabIndex = 6;
             this.TitleLabel.Text = "Add Items from Types";
             // 
-            // treeView1
-            // 
-            this.treeView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.treeView1.ForeColor = System.Drawing.SystemColors.Control;
-            this.treeView1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.treeView1.Location = new System.Drawing.Point(8, 60);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(419, 371);
-            this.treeView1.TabIndex = 9;
-            this.treeView1.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCheck);
-            this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
-            this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
-            // 
             // darkButton1
             // 
             this.darkButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
@@ -120,7 +108,7 @@ namespace DayZeEditor
             this.listBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.listBox1.ForeColor = System.Drawing.SystemColors.Control;
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(435, 60);
+            this.listBox1.Location = new System.Drawing.Point(433, 60);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(218, 342);
             this.listBox1.TabIndex = 12;
@@ -189,11 +177,26 @@ namespace DayZeEditor
             this.darkButton7.Visible = false;
             this.darkButton7.Click += new System.EventHandler(this.darkButton7_Click);
             // 
+            // treeViewMS1
+            // 
+            this.treeViewMS1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.treeViewMS1.ForeColor = System.Drawing.SystemColors.Control;
+            this.treeViewMS1.HideSelection = false;
+            this.treeViewMS1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.treeViewMS1.Location = new System.Drawing.Point(8, 60);
+            this.treeViewMS1.Name = "treeViewMS1";
+            this.treeViewMS1.SelectedNodes = ((System.Collections.ArrayList)(resources.GetObject("treeViewMS1.SelectedNodes")));
+            this.treeViewMS1.Size = new System.Drawing.Size(419, 371);
+            this.treeViewMS1.TabIndex = 19;
+            this.treeViewMS1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
+            this.treeViewMS1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
+            // 
             // AddItemfromTypes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(665, 443);
+            this.Controls.Add(this.treeViewMS1);
             this.Controls.Add(this.darkButton7);
             this.Controls.Add(this.darkButton6);
             this.Controls.Add(this.darkTextBox1);
@@ -203,7 +206,6 @@ namespace DayZeEditor
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.darkButton2);
             this.Controls.Add(this.darkButton1);
-            this.Controls.Add(this.treeView1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddItemfromTypes";
@@ -221,7 +223,6 @@ namespace DayZeEditor
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label TitleLabel;
-        private System.Windows.Forms.TreeView treeView1;
         private DarkUI.Controls.DarkButton darkButton1;
         private DarkUI.Controls.DarkButton darkButton2;
         private System.Windows.Forms.ListBox listBox1;
@@ -232,5 +233,6 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkTextBox darkTextBox1;
         private DarkUI.Controls.DarkButton darkButton6;
         private DarkUI.Controls.DarkButton darkButton7;
+        private TreeViewMS.TreeViewMS treeViewMS1;
     }
 }
