@@ -1,6 +1,6 @@
 ﻿Version 0.7.2
 [Added]
-Added new expansion settings for Logs, General, AI and Market.
+Added new expansion settings for Logs, General, AI, Market and Quests.
 Added Hardline to Expansion settings
 [Fixed]
 Max mission time was doing a double convert to seconds, changed to only do it once.

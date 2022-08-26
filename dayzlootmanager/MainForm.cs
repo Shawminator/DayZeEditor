@@ -34,7 +34,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.7.1";
+        public string VersionNumber = "0.7.2";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -177,9 +177,9 @@ namespace DayZeEditor
                     form.Invoke(new Action(() => { form.Close(); }));
                 }
                 MessageBox.Show("Update Downloaded, Press OK to Extract and update");
-                if (File.Exists(Application.StartupPath + "\\Project\\Projects.json"))
+                if (File.Exists(ProjectsJson))
                 {
-                    Projects = (JsonSerializer.Deserialize<ProjectList>(File.ReadAllText(Application.StartupPath + "\\Project\\Projects.json")));
+                    Projects = (JsonSerializer.Deserialize<ProjectList>(File.ReadAllText(ProjectsJson)));
                     Projects.ShowChangeLog = true;
                     Projects.SaveProject(false, false);
                 }
