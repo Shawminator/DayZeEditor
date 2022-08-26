@@ -31,6 +31,7 @@ namespace DayZeLib
 
         public int Amount { get; set; }
         public BindingList<string> ClassNames { get; set; }
+        public int CountSelfKill { get; set; }
         public int SpecialWeapon { get; set; }
         public BindingList<string> AllowedWeapons { get; set; }
 

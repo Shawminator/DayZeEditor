@@ -77,6 +77,7 @@ namespace DayZeEditor
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.SellPricePercentNUD = new System.Windows.Forms.NumericUpDown();
             this.darkButton30 = new DarkUI.Controls.DarkButton();
             this.darkButton31 = new DarkUI.Controls.DarkButton();
             this.label10 = new System.Windows.Forms.Label();
@@ -89,8 +90,6 @@ namespace DayZeEditor
             this.NetworkBatchSizeNUD = new System.Windows.Forms.NumericUpDown();
             this.UseWholeMapForATMPlayerListCheckBox = new System.Windows.Forms.CheckBox();
             this.darkLabel48 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel13 = new DarkUI.Controls.DarkLabel();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.label3 = new System.Windows.Forms.Label();
             this.MaxPartyDepositMoneyUpDown = new System.Windows.Forms.NumericUpDown();
             this.ATMPartyLockerEnabledCheckBox = new System.Windows.Forms.CheckBox();
@@ -389,10 +388,10 @@ namespace DayZeEditor
             this.tabPage9.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SellPricePercentNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxLargeVehicleDistanceToTraderNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxVehicleDistanceToTraderNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NetworkBatchSizeNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxPartyDepositMoneyUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DefaultDepositUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxdepositUpDown)).BeginInit();
@@ -580,7 +579,7 @@ namespace DayZeEditor
             this.checkForItemsNotInTypesFilesToolStripMenuItem});
             this.itemsToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.itemsToolStripMenuItem.Name = "itemsToolStripMenuItem";
-            this.itemsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.itemsToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.itemsToolStripMenuItem.Text = "All Items";
             // 
             // setMinStockForAllItemsToolStripMenuItem
@@ -671,7 +670,7 @@ namespace DayZeEditor
             this.chnageAttchmentsToLowerCaseToolStripMenuItem});
             this.categoriesToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.categoriesToolStripMenuItem.Name = "categoriesToolStripMenuItem";
-            this.categoriesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.categoriesToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.categoriesToolStripMenuItem.Text = "Selected Category";
             // 
             // setMaxStockForSelectedCategoryToolStripMenuItem
@@ -771,7 +770,7 @@ namespace DayZeEditor
             this.testToolStripMenuItem});
             this.selectedItemsToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.selectedItemsToolStripMenuItem.Name = "selectedItemsToolStripMenuItem";
-            this.selectedItemsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.selectedItemsToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.selectedItemsToolStripMenuItem.Text = "Selected Items";
             // 
             // testToolStripMenuItem
@@ -791,7 +790,7 @@ namespace DayZeEditor
             this.deleteAllStockForAllZonesToolStripMenuItem});
             this.allZonesToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.allZonesToolStripMenuItem.Name = "allZonesToolStripMenuItem";
-            this.allZonesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.allZonesToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.allZonesToolStripMenuItem.Text = "AllZones";
             // 
             // setStockValueForAllItemsInAllZonesToolStripMenuItem
@@ -821,7 +820,7 @@ namespace DayZeEditor
             this.findMissingItemsAndSetStockToolStripMenuItem});
             this.selectedZoneToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.selectedZoneToolStripMenuItem.Name = "selectedZoneToolStripMenuItem";
-            this.selectedZoneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.selectedZoneToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.selectedZoneToolStripMenuItem.Text = "Selected Zone";
             // 
             // deleteStockForSelectedZoneToolStripMenuItem
@@ -858,7 +857,7 @@ namespace DayZeEditor
             this.createNewMarketToolStripMenuItem});
             this.expansionMarketToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.expansionMarketToolStripMenuItem.Name = "expansionMarketToolStripMenuItem";
-            this.expansionMarketToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.expansionMarketToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.expansionMarketToolStripMenuItem.Text = "Expansion Market";
             // 
             // createNewMarketToolStripMenuItem
@@ -866,7 +865,7 @@ namespace DayZeEditor
             this.createNewMarketToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.createNewMarketToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.createNewMarketToolStripMenuItem.Name = "createNewMarketToolStripMenuItem";
-            this.createNewMarketToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createNewMarketToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.createNewMarketToolStripMenuItem.Text = "Create New Market";
             this.createNewMarketToolStripMenuItem.Click += new System.EventHandler(this.createNewMarketToolStripMenuItem_Click);
             // 
@@ -961,6 +960,7 @@ namespace DayZeEditor
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.SellPricePercentNUD);
             this.groupBox7.Controls.Add(this.darkButton30);
             this.groupBox7.Controls.Add(this.darkButton31);
             this.groupBox7.Controls.Add(this.label10);
@@ -973,8 +973,6 @@ namespace DayZeEditor
             this.groupBox7.Controls.Add(this.NetworkBatchSizeNUD);
             this.groupBox7.Controls.Add(this.UseWholeMapForATMPlayerListCheckBox);
             this.groupBox7.Controls.Add(this.darkLabel48);
-            this.groupBox7.Controls.Add(this.darkLabel13);
-            this.groupBox7.Controls.Add(this.trackBar1);
             this.groupBox7.Controls.Add(this.label3);
             this.groupBox7.Controls.Add(this.MaxPartyDepositMoneyUpDown);
             this.groupBox7.Controls.Add(this.ATMPartyLockerEnabledCheckBox);
@@ -988,15 +986,32 @@ namespace DayZeEditor
             this.groupBox7.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox7.Location = new System.Drawing.Point(3, 3);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(242, 524);
+            this.groupBox7.Size = new System.Drawing.Size(242, 492);
             this.groupBox7.TabIndex = 9;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "General Settings";
             // 
+            // SellPricePercentNUD
+            // 
+            this.SellPricePercentNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SellPricePercentNUD.DecimalPlaces = 2;
+            this.SellPricePercentNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SellPricePercentNUD.Location = new System.Drawing.Point(109, 198);
+            this.SellPricePercentNUD.Maximum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            0});
+            this.SellPricePercentNUD.Name = "SellPricePercentNUD";
+            this.SellPricePercentNUD.Size = new System.Drawing.Size(120, 20);
+            this.SellPricePercentNUD.TabIndex = 98;
+            this.SellPricePercentNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SellPricePercentNUD.ValueChanged += new System.EventHandler(this.SellPricePercentNUD_ValueChanged);
+            // 
             // darkButton30
             // 
             this.darkButton30.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton30.Location = new System.Drawing.Point(132, 492);
+            this.darkButton30.Location = new System.Drawing.Point(132, 458);
             this.darkButton30.Name = "darkButton30";
             this.darkButton30.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton30.Size = new System.Drawing.Size(102, 23);
@@ -1007,7 +1022,7 @@ namespace DayZeEditor
             // darkButton31
             // 
             this.darkButton31.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton31.Location = new System.Drawing.Point(132, 463);
+            this.darkButton31.Location = new System.Drawing.Point(132, 429);
             this.darkButton31.Name = "darkButton31";
             this.darkButton31.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton31.Size = new System.Drawing.Size(102, 23);
@@ -1018,7 +1033,7 @@ namespace DayZeEditor
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 430);
+            this.label10.Location = new System.Drawing.Point(6, 396);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(77, 13);
             this.label10.TabIndex = 21;
@@ -1032,7 +1047,7 @@ namespace DayZeEditor
             this.listBox17.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.listBox17.ForeColor = System.Drawing.SystemColors.Control;
             this.listBox17.FormattingEnabled = true;
-            this.listBox17.Location = new System.Drawing.Point(6, 446);
+            this.listBox17.Location = new System.Drawing.Point(6, 412);
             this.listBox17.Name = "listBox17";
             this.listBox17.Size = new System.Drawing.Size(120, 69);
             this.listBox17.TabIndex = 20;
@@ -1041,7 +1056,7 @@ namespace DayZeEditor
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 376);
+            this.label9.Location = new System.Drawing.Point(6, 342);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(190, 13);
             this.label9.TabIndex = 19;
@@ -1052,7 +1067,7 @@ namespace DayZeEditor
             this.MaxLargeVehicleDistanceToTraderNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.MaxLargeVehicleDistanceToTraderNUD.DecimalPlaces = 1;
             this.MaxLargeVehicleDistanceToTraderNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.MaxLargeVehicleDistanceToTraderNUD.Location = new System.Drawing.Point(6, 392);
+            this.MaxLargeVehicleDistanceToTraderNUD.Location = new System.Drawing.Point(6, 358);
             this.MaxLargeVehicleDistanceToTraderNUD.Maximum = new decimal(new int[] {
             -727379969,
             232,
@@ -1067,7 +1082,7 @@ namespace DayZeEditor
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 337);
+            this.label7.Location = new System.Drawing.Point(6, 303);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(160, 13);
             this.label7.TabIndex = 17;
@@ -1078,7 +1093,7 @@ namespace DayZeEditor
             this.MaxVehicleDistanceToTraderNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.MaxVehicleDistanceToTraderNUD.DecimalPlaces = 1;
             this.MaxVehicleDistanceToTraderNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.MaxVehicleDistanceToTraderNUD.Location = new System.Drawing.Point(6, 353);
+            this.MaxVehicleDistanceToTraderNUD.Location = new System.Drawing.Point(6, 319);
             this.MaxVehicleDistanceToTraderNUD.Maximum = new decimal(new int[] {
             -727379969,
             232,
@@ -1093,7 +1108,7 @@ namespace DayZeEditor
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 297);
+            this.label8.Location = new System.Drawing.Point(6, 263);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(101, 13);
             this.label8.TabIndex = 15;
@@ -1103,7 +1118,7 @@ namespace DayZeEditor
             // 
             this.NetworkBatchSizeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.NetworkBatchSizeNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.NetworkBatchSizeNUD.Location = new System.Drawing.Point(6, 314);
+            this.NetworkBatchSizeNUD.Location = new System.Drawing.Point(6, 280);
             this.NetworkBatchSizeNUD.Maximum = new decimal(new int[] {
             -727379969,
             232,
@@ -1119,7 +1134,7 @@ namespace DayZeEditor
             // 
             this.UseWholeMapForATMPlayerListCheckBox.AutoSize = true;
             this.UseWholeMapForATMPlayerListCheckBox.ForeColor = System.Drawing.SystemColors.Control;
-            this.UseWholeMapForATMPlayerListCheckBox.Location = new System.Drawing.Point(9, 268);
+            this.UseWholeMapForATMPlayerListCheckBox.Location = new System.Drawing.Point(9, 234);
             this.UseWholeMapForATMPlayerListCheckBox.Name = "UseWholeMapForATMPlayerListCheckBox";
             this.UseWholeMapForATMPlayerListCheckBox.Size = new System.Drawing.Size(195, 17);
             this.UseWholeMapForATMPlayerListCheckBox.TabIndex = 13;
@@ -1133,29 +1148,9 @@ namespace DayZeEditor
             this.darkLabel48.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.darkLabel48.Location = new System.Drawing.Point(6, 200);
             this.darkLabel48.Name = "darkLabel48";
-            this.darkLabel48.Size = new System.Drawing.Size(94, 13);
+            this.darkLabel48.Size = new System.Drawing.Size(88, 13);
             this.darkLabel48.TabIndex = 12;
-            this.darkLabel48.Text = "SellPricePercent :-";
-            // 
-            // darkLabel13
-            // 
-            this.darkLabel13.AutoSize = true;
-            this.darkLabel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel13.Location = new System.Drawing.Point(80, 240);
-            this.darkLabel13.Name = "darkLabel13";
-            this.darkLabel13.Size = new System.Drawing.Size(66, 13);
-            this.darkLabel13.TabIndex = 11;
-            this.darkLabel13.Text = "darkLabel13";
-            // 
-            // trackBar1
-            // 
-            this.trackBar1.Location = new System.Drawing.Point(9, 217);
-            this.trackBar1.Maximum = 100;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(220, 45);
-            this.trackBar1.TabIndex = 10;
-            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
+            this.darkLabel48.Text = "SellPricePercent ";
             // 
             // label3
             // 
@@ -3641,7 +3636,7 @@ namespace DayZeEditor
             // numericUpDown13
             // 
             this.numericUpDown13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown13.DecimalPlaces = 1;
+            this.numericUpDown13.DecimalPlaces = 2;
             this.numericUpDown13.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown13.Location = new System.Drawing.Point(140, 173);
             this.numericUpDown13.Maximum = new decimal(new int[] {
@@ -3673,7 +3668,7 @@ namespace DayZeEditor
             // numericUpDown5
             // 
             this.numericUpDown5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown5.DecimalPlaces = 1;
+            this.numericUpDown5.DecimalPlaces = 2;
             this.numericUpDown5.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown5.Location = new System.Drawing.Point(140, 147);
             this.numericUpDown5.Maximum = new decimal(new int[] {
@@ -4366,6 +4361,7 @@ namespace DayZeEditor
             // numericUpDown23
             // 
             this.numericUpDown23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown23.DecimalPlaces = 2;
             this.numericUpDown23.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown23.Location = new System.Drawing.Point(103, 97);
             this.numericUpDown23.Maximum = new decimal(new int[] {
@@ -4960,10 +4956,10 @@ namespace DayZeEditor
             this.flowLayoutPanel1.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SellPricePercentNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxLargeVehicleDistanceToTraderNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxVehicleDistanceToTraderNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NetworkBatchSizeNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxPartyDepositMoneyUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DefaultDepositUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxdepositUpDown)).EndInit();
@@ -5226,8 +5222,6 @@ namespace DayZeEditor
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown MaxdepositUpDown;
         private System.Windows.Forms.CheckBox ATMSytemeEnabledcheckBox;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private DarkUI.Controls.DarkLabel darkLabel13;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.GroupBox groupBox9;
         private DarkUI.Controls.DarkButton darkButton14;
@@ -5435,5 +5429,6 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton darkButton43;
         private System.Windows.Forms.ListBox listBox20;
         private DarkUI.Controls.DarkButton darkButton44;
+        private System.Windows.Forms.NumericUpDown SellPricePercentNUD;
     }
 }

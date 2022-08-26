@@ -160,7 +160,7 @@ namespace DayZeEditor
                 {
                     PointF pC = new PointF(zone.Position[0], zone.Position[2]);
                     PointF pP = new PointF(tm.position.X, tm.position.Z);
-                    if (IsWithinCircle(pC, pP, zone.Radius))
+                    if (IsWithinCircle(pC, pP, (float)zone.Radius))
                     {
                         tm.Filename = Path.GetDirectoryName(tm.Filename) + "\\" + zone.Filename + ".map";
                         tm.IsInAZone = true;
@@ -694,7 +694,7 @@ namespace DayZeEditor
             ATMPlayerTransferEnabledcheckbox.Checked = marketsettings.ATMPlayerTransferEnabled == 1 ? true : false;
             ATMPartyLockerEnabledCheckBox.Checked = marketsettings.ATMPartyLockerEnabled == 1 ? true : false;
             MaxPartyDepositMoneyUpDown.Value = marketsettings.MaxPartyDepositMoney;
-            trackBar1.Value = (int)marketsettings.SellPricePercent;
+            SellPricePercentNUD.Value = marketsettings.SellPricePercent;
             UseWholeMapForATMPlayerListCheckBox.Checked = marketsettings.UseWholeMapForATMPlayerList == 1 ? true : false;
             NetworkBatchSizeNUD.Value = marketsettings.NetworkBatchSize;
             MaxVehicleDistanceToTraderNUD.Value = (decimal)marketsettings.MaxVehicleDistanceToTrader;
@@ -942,6 +942,12 @@ namespace DayZeEditor
             marketsettings.MaxDepositMoney = (int)MaxdepositUpDown.Value;
             marketsettings.isDirty = true;
         }
+        private void SellPricePercentNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (action) return;
+            marketsettings.SellPricePercent = SellPricePercentNUD.Value;
+            marketsettings.isDirty = true;
+        }
         private void DefaultDepositUpDown_ValueChanged(object sender, EventArgs e)
         {
             if (action) return;
@@ -1030,14 +1036,6 @@ namespace DayZeEditor
                     action = false;
                     break;
             }
-        }
-        private void trackBar1_ValueChanged(object sender, EventArgs e)
-        {
-            darkLabel13.Text = trackBar1.Value.ToString() + "%";
-            if (action) return;
-            marketsettings.SellPricePercent = (int)trackBar1.Value;
-            marketsettings.isDirty = true;
-            //setzoneprices();
         }
         private void DrawAllSpawns(object sender, PaintEventArgs e)
         {
@@ -2444,14 +2442,14 @@ namespace DayZeEditor
         private void numericUpDown4_ValueChanged(object sender, EventArgs e)
         {
             if (pcontroll) return;
-            currentZone.Radius = (float)numericUpDown4.Value;
+            currentZone.Radius = numericUpDown4.Value;
             currentZone.isDirty = true;
             pictureBox1.Invalidate();
         }
         private void numericUpDown5_ValueChanged(object sender, EventArgs e)
         {
             if (pcontroll) return;
-            currentZone.BuyPricePercent = (float)numericUpDown5.Value;
+            currentZone.BuyPricePercent = numericUpDown5.Value;
             currentZone.isDirty = true;
             //setzoneprices();
             //pictureBox1.Invalidate();
@@ -2459,7 +2457,7 @@ namespace DayZeEditor
         private void numericUpDown13_ValueChanged(object sender, EventArgs e)
         {
             if (pcontroll) return;
-            currentZone.SellPricePercent = (float)numericUpDown13.Value;
+            currentZone.SellPricePercent = numericUpDown13.Value;
             currentZone.isDirty = true;
             //setzoneprices();
             //pictureBox1.Invalidate();
@@ -2520,7 +2518,7 @@ namespace DayZeEditor
                 {
                     PointF pC = new PointF(zone.Position[0], zone.Position[2]);
                     PointF pP = new PointF(tm.position.X, tm.position.Z);
-                    if (IsWithinCircle(pC, pP, zone.Radius))
+                    if (IsWithinCircle(pC, pP, (float)zone.Radius))
                     {
                         ZoneTraders.Add(Traders.GetTraderFromName(tm.NPCTrade));
                     }
@@ -2584,7 +2582,7 @@ namespace DayZeEditor
             {
                 PointF pC = new PointF(currentZone.Position[0], currentZone.Position[2]);
                 PointF pP = new PointF(tm.position.X, tm.position.Z);
-                if(IsWithinCircle(pC, pP, currentZone.Radius))
+                if(IsWithinCircle(pC, pP, (float)currentZone.Radius))
                 {
                     ZoneTraders.Add(Traders.GetTraderFromName(tm.NPCTrade));
                 }
@@ -2672,7 +2670,7 @@ namespace DayZeEditor
         {
             foreach (Zones zone in Zones.ZoneList)
             {
-                float zonebuypercentage = zone.BuyPricePercent;
+                float zonebuypercentage = (float)zone.BuyPricePercent;
                 
                 foreach(StockItem item in zone.StockItems)
                 {
@@ -2699,7 +2697,7 @@ namespace DayZeEditor
             {
                 PointF pC = new PointF(currentZone.Position[0], currentZone.Position[2]);
                 PointF pP = new PointF(tm.position.X, tm.position.Z);
-                if (IsWithinCircle(pC, pP, currentZone.Radius))
+                if (IsWithinCircle(pC, pP, (float)currentZone.Radius))
                 {
                     ZoneTraders.Add(Traders.GetTraderFromName(tm.NPCTrade));
                 }
@@ -2791,7 +2789,7 @@ namespace DayZeEditor
             {
                 PointF pC = new PointF(currentZone.Position[0], currentZone.Position[2]);
                 PointF pP = new PointF(tm.position.X, tm.position.Z);
-                if (IsWithinCircle(pC, pP, currentZone.Radius))
+                if (IsWithinCircle(pC, pP, (float)currentZone.Radius))
                 {
                     tm.Filename = Path.GetDirectoryName(tm.Filename) + "\\" + currentZone.Filename.ToUpper() + ".map";
                     ZoneTraders.Add(tm);
@@ -3084,7 +3082,7 @@ namespace DayZeEditor
                 {
                     PointF pC = new PointF(zone.Position[0], zone.Position[2]);
                     PointF pP = new PointF(tm.position.X, tm.position.Z);
-                    if (IsWithinCircle(pC, pP, zone.Radius))
+                    if (IsWithinCircle(pC, pP, (float)zone.Radius))
                     {
                         tm.Filename = Path.GetDirectoryName(tm.Filename) + "\\" + zone.Filename.ToUpper() + ".map";
                         tm.IsInAZone = true;
@@ -3279,7 +3277,7 @@ namespace DayZeEditor
             foreach (Vec3 vec3 in currenttradermap.Roamingpoints)
             {
                 PointF pP = new PointF(vec3.X, vec3.Z);
-                if (!IsWithinCircle(pC, pP, currenttradermapzone.Radius))
+                if (!IsWithinCircle(pC, pP, (float)currenttradermapzone.Radius))
                 {
                     outsidepoints.Add(vec3);
                    

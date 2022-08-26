@@ -909,6 +909,10 @@ namespace DayZeEditor
             QuestReward qr = QuestRewardsLB.SelectedItem as QuestReward;
             useraction = false;
             QuestRewardsAmountNUD.Value = qr.Amount;
+
+            QuestRewrdsAttchemntsLB.DisplayMember = "DisplayName";
+            QuestRewrdsAttchemntsLB.ValueMember = "Value";
+            QuestRewrdsAttchemntsLB.DataSource = qr.Attachments;
             useraction = true;
         }
         private void QuestRewardsAmountNUD_ValueChanged_1(object sender, EventArgs e)
@@ -918,6 +922,49 @@ namespace DayZeEditor
             QuestReward qr = QuestRewardsLB.SelectedItem as QuestReward;
             qr.Amount = (int)QuestRewardsAmountNUD.Value;
             CurrentQuest.isDirty = true;
+        }
+        private void darkButton34_Click(object sender, EventArgs e)
+        {
+            QuestReward qr = QuestRewardsLB.SelectedItem as QuestReward;
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseMultiple = true,
+                isCategoryitem = true
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    if (!qr.Attachments.Contains(l))
+                    {
+                        qr.Attachments.Add(l);
+                        CurrentQuest.isDirty = true;
+                    }
+                }
+                QuestRewardsLB.Refresh();
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+        }
+
+        private void darkButton35_Click(object sender, EventArgs e)
+        {
+            if (QuestRewardsLB.SelectedItems.Count < 1) return;
+            QuestReward qr = QuestRewardsLB.SelectedItem as QuestReward;
+            qr.Attachments.Remove(QuestRewrdsAttchemntsLB.GetItemText(QuestRewrdsAttchemntsLB.SelectedItem));
+            CurrentQuest.isDirty = true;
+            QuestRewrdsAttchemntsLB.Refresh();
+            if (QuestRewrdsAttchemntsLB.Items.Count == 0)
+                QuestRewrdsAttchemntsLB.SelectedIndex = -1;
+            else
+                QuestRewrdsAttchemntsLB.SelectedIndex = 0;
         }
         private void darkButton4_Click(object sender, EventArgs e)
         {
@@ -1127,7 +1174,8 @@ namespace DayZeEditor
                     QuestReward newrawrd = new QuestReward()
                     {
                         ClassName = l,
-                        Amount = 1
+                        Amount = 1,
+                        Attachments = new BindingList<string>()
                     };
                     CurrentQuest.Rewards.Add(newrawrd);
                     CurrentQuest.isDirty = true;
@@ -1542,8 +1590,10 @@ namespace DayZeEditor
                         NPCFactionP.Visible = true;
                         NPCLoadoutP.Visible = true;
                         NPCFormationP.Visible = true;
+                        NPCAccuracyMinP.Visible = true;
+                        NPCAccuracyMaxP.Visible = true;
                         NPCAIClassnamesP.Visible = true;
-                        QuestObjectivesNPCInfoGB.Height = 303;
+                        QuestObjectivesNPCInfoGB.Height = 380;
                         QuestObjectivesAIPositionsGB.Visible = true;
                         QuestObjectivesAIPositionsGB.Text = "Patrol Waypoints";
                         QuestObjectivesNPCInfoGB.Visible = true;
@@ -1556,8 +1606,10 @@ namespace DayZeEditor
                         NPCBehaviourP.Visible = true;
                         NPCFactionP.Visible = true;
                         NPCLoadoutP.Visible = true;
+                        NPCAccuracyMinP.Visible = true;
+                        NPCAccuracyMaxP.Visible = true;
                         NPCAIClassnamesP.Visible = true;
-                        QuestObjectivesNPCInfoGB.Height = 263;
+                        QuestObjectivesNPCInfoGB.Height = 310;
                         QuestObjectivesAIPositionsGB.Visible = true;
                         QuestObjectivesAIPositionsGB.Text = "Camp Positions";
                         QuestObjectivesNPCInfoGB.Visible = true;
@@ -1572,7 +1624,7 @@ namespace DayZeEditor
                         NPCSpeedP.Visible = true;
                         NPCBehaviourP.Visible = true;
                         NPCFactionP.Visible = true;
-                         NPCLoadoutP.Visible = true;
+                        NPCLoadoutP.Visible = true;
                         QuestObjectivesNPCInfoGB.Height = 150;
                         QuestObjectivesNPCInfoGB.Visible = true;
                         QuestObjectivesMarkerNameGB.Visible = true;
@@ -1695,6 +1747,9 @@ namespace DayZeEditor
             QuestObjectivesMinDistRadiusNUD.Value = CurrentAIPatrol.MinDistRadius;
             QuestObjectivesMaxDistRadiusNUD.Value = CurrentAIPatrol.MaxDistRadius;
             QuestObjectivesDespawnRadiusNUD.Value = CurrentAIPatrol.DespawnRadius;
+            QuestObjectivesNPCAcuracyMinNUD.Value = CurrentAIPatrol.AIPatrol.NPCAccuracyMin;
+            QuestObjectivesNPCAccuracyMaxNUD.Value = CurrentAIPatrol.AIPatrol.NPCAccuracyMax;
+            checkBox1.Checked = CurrentAIPatrol.CanLootAI == 1 ? true : false;
         }
         private void SetupObjectiveAICamp(TreeNodeMouseClickEventArgs e)
         {
@@ -1718,6 +1773,9 @@ namespace DayZeEditor
             QuestObjectivesMinDistRadiusNUD.Value = CurrentAICamp.MinDistRadius;
             QuestObjectivesMaxDistRadiusNUD.Value = CurrentAICamp.MaxDistRadius;
             QuestObjectivesDespawnRadiusNUD.Value = CurrentAICamp.DespawnRadius;
+            QuestObjectivesNPCAcuracyMinNUD.Value = CurrentAICamp.AICamp.NPCAccuracyMin;
+            QuestObjectivesNPCAccuracyMaxNUD.Value = CurrentAICamp.AICamp.NPCAccuracyMax;
+            checkBox1.Checked = CurrentAICamp.CanLootAI == 1 ? true : false;
         }
         private void SetupObjectiveAIVIP(TreeNodeMouseClickEventArgs e)
         {
@@ -2528,6 +2586,102 @@ namespace DayZeEditor
             }
             CurrentTreeNodeTag.isDirty = true;
         }
+        private void QuestObjectivesNPCAcuracyMinNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            switch (CurrentTreeNodeTag.QuestType)
+            {
+                case QuestType.TARGET:
+                    break;
+                case QuestType.TRAVEL:
+                    break;
+                case QuestType.COLLECT:
+                    break;
+                case QuestType.DELIVERY:
+                    break;
+                case QuestType.TREASUREHUNT:
+                    break;
+                case QuestType.AIPATROL:
+                    QuestObjectivesAIPatrol QuestObjectivesAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+                    QuestObjectivesAIPatrol.AIPatrol.NPCAccuracyMin = QuestObjectivesNPCAcuracyMinNUD.Value;
+                    break;
+                case QuestType.AICAMP:
+                    QuestObjectivesAICamp QuestObjectivesAICamp = CurrentTreeNodeTag as QuestObjectivesAICamp;
+                    QuestObjectivesAICamp.AICamp.NPCAccuracyMin = QuestObjectivesNPCAcuracyMinNUD.Value;
+                    break;
+                case QuestType.AIVIP:
+                    break;
+                case QuestType.ACTION:
+                    break;
+                default:
+                    break;
+            }
+            CurrentTreeNodeTag.isDirty = true;
+        }
+        private void QuestObjectivesNPCAccuracyMaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            switch (CurrentTreeNodeTag.QuestType)
+            {
+                case QuestType.TARGET:
+                    break;
+                case QuestType.TRAVEL:
+                    break;
+                case QuestType.COLLECT:
+                    break;
+                case QuestType.DELIVERY:
+                    break;
+                case QuestType.TREASUREHUNT:
+                    break;
+                case QuestType.AIPATROL:
+                    QuestObjectivesAIPatrol QuestObjectivesAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+                    QuestObjectivesAIPatrol.AIPatrol.NPCAccuracyMax = QuestObjectivesNPCAccuracyMaxNUD.Value;
+                    break;
+                case QuestType.AICAMP:
+                    QuestObjectivesAICamp QuestObjectivesAICamp = CurrentTreeNodeTag as QuestObjectivesAICamp;
+                    QuestObjectivesAICamp.AICamp.NPCAccuracyMax = QuestObjectivesNPCAccuracyMaxNUD.Value;
+                    break;
+                case QuestType.AIVIP:
+                    break;
+                case QuestType.ACTION:
+                    break;
+                default:
+                    break;
+            }
+            CurrentTreeNodeTag.isDirty = true;
+        }
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            switch (CurrentTreeNodeTag.QuestType)
+            {
+                case QuestType.TARGET:
+                    break;
+                case QuestType.TRAVEL:
+                    break;
+                case QuestType.COLLECT:
+                    break;
+                case QuestType.DELIVERY:
+                    break;
+                case QuestType.TREASUREHUNT:
+                    break;
+                case QuestType.AIPATROL:
+                    QuestObjectivesAIPatrol QuestObjectivesAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+                    QuestObjectivesAIPatrol.CanLootAI = checkBox1.Checked == true ? 1 : 0;
+                    break;
+                case QuestType.AICAMP:
+                    QuestObjectivesAICamp QuestObjectivesAICamp = CurrentTreeNodeTag as QuestObjectivesAICamp;
+                    QuestObjectivesAICamp.CanLootAI = checkBox1.Checked == true ? 1 : 0;
+                    break;
+                case QuestType.AIVIP:
+                    break;
+                case QuestType.ACTION:
+                    break;
+                default:
+                    break;
+            }
+            CurrentTreeNodeTag.isDirty = true;
+        }
         private void darkButton16_Click(object sender, EventArgs e)
         {
             AddItemfromTypes form = new AddItemfromTypes
@@ -3028,7 +3182,7 @@ namespace DayZeEditor
             {
                 QuestType = QuestType.ACTION,
                 Filename = "Objective_A_" + newid.ToString(),
-                ConfigVersion = 5,
+                ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
                 ObjectiveType = (int)QuestType.ACTION,
                 ObjectiveText = "New Objective " + newid.ToString(),
@@ -3050,7 +3204,7 @@ namespace DayZeEditor
             {
                 QuestType = QuestType.AICAMP,
                 Filename = "Objective_AIC_" + newid.ToString(),
-                ConfigVersion = 5,
+                ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
                 ObjectiveType = (int)QuestType.AICAMP,
                 ObjectiveText = "New Objective " + newid.ToString(),
@@ -3085,7 +3239,7 @@ namespace DayZeEditor
             {
                 QuestType = QuestType.AIPATROL,
                 Filename = "Objective_AIP_" + newid.ToString(),
-                ConfigVersion = 5,
+                ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
                 ObjectiveType = (int)QuestType.AIPATROL,
                 ObjectiveText = "New Objective " + newid.ToString(),
@@ -3121,7 +3275,7 @@ namespace DayZeEditor
             {
                 QuestType = QuestType.AIVIP,
                 Filename = "Objective_AIVIP_" + newid.ToString(),
-                ConfigVersion = 5,
+                ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
                 ObjectiveType = (int)QuestType.AIVIP,
                 ObjectiveText = "New Objective " + newid.ToString(),
@@ -3151,7 +3305,7 @@ namespace DayZeEditor
             {
                 QuestType = QuestType.COLLECT,
                 Filename = "Objective_C_" + newid.ToString(),
-                ConfigVersion = 5,
+                ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
                 ObjectiveType = (int)QuestType.COLLECT,
                 ObjectiveText = "New Objective " + newid.ToString(),
@@ -3177,7 +3331,7 @@ namespace DayZeEditor
             {
                 QuestType = QuestType.CRAFTING,
                 Filename = "Objective_CR_" + newid.ToString(),
-                ConfigVersion = 5,
+                ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
                 ObjectiveType = (int)QuestType.CRAFTING,
                 ObjectiveText = "New Objective " + newid.ToString(),
@@ -3199,7 +3353,7 @@ namespace DayZeEditor
             {
                 QuestType = QuestType.DELIVERY,
                 Filename = "Objective_D_" + newid.ToString(),
-                ConfigVersion = 5,
+                ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
                 ObjectiveType = (int)QuestType.DELIVERY,
                 ObjectiveText = "New Objective " + newid.ToString(),
@@ -3229,7 +3383,7 @@ namespace DayZeEditor
             {
                 QuestType = QuestType.TARGET,
                 Filename = "Objective_TA_" + newid.ToString(),
-                ConfigVersion = 5,
+                ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
                 ObjectiveType = (int)QuestType.TARGET,
                 ObjectiveText = "New Objective " + newid.ToString(),
@@ -3259,7 +3413,7 @@ namespace DayZeEditor
             {
                 QuestType = QuestType.TRAVEL,
                 Filename = "Objective_T_" + newid.ToString(),
-                ConfigVersion = 5,
+                ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
                 ObjectiveType = (int)QuestType.TRAVEL,
                 ObjectiveText = "New Objective " + newid.ToString(),
@@ -3284,7 +3438,7 @@ namespace DayZeEditor
             {
                 QuestType = QuestType.TREASUREHUNT,
                 Filename = "Objective_TH_" + newid.ToString(),
-                ConfigVersion = 5,
+                ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
                 ObjectiveType = (int)QuestType.TREASUREHUNT,
                 ObjectiveText = "New Objective " + newid.ToString(),
@@ -3312,6 +3466,9 @@ namespace DayZeEditor
             treeViewMS1.SelectedNode.Remove();
             QuestsList.RemoveObjectivesfromQuests(basequest);
         }
+
+
         #endregion objectives
+
     }
 }

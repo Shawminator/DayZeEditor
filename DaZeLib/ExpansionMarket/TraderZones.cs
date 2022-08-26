@@ -97,9 +97,9 @@ namespace DayZeLib
         public int m_Version { get; set; }  //current version 5
         public string m_DisplayName { get; set; }
         public float[] Position { get; set; }
-        public float Radius { get; set; }
-        public float BuyPricePercent { get; set; }
-        public float SellPricePercent { get; set; }
+        public decimal Radius { get; set; }
+        public decimal BuyPricePercent { get; set; }
+        public decimal SellPricePercent { get; set; }
         public Dictionary<string, int> Stock { get; set; }
 
         [JsonIgnore]

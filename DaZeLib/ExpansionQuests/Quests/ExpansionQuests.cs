@@ -15,6 +15,12 @@ namespace DayZeLib
 
     public class ExpansioQuestList
     {
+        const int m_QuestConfigVersion = 4;
+        public static int getQuestConfigVersion
+        {
+            get { return m_QuestConfigVersion; }
+        }
+
         public BindingList<Quests> QuestList { get; set; }
         public List<Quests>Markedfordelete { get; set; }
         public string QuestsPath { get; set; }
@@ -75,7 +81,7 @@ namespace DayZeLib
             {
                 isDirty = true,
                 Filename = "Quest_" + id.ToString(),
-                ConfigVersion = 3,
+                ConfigVersion = m_QuestConfigVersion,
                 ID = id,
                 Type = 0,
                 Title = "New Quest with id:" + id.ToString(),
@@ -236,8 +242,6 @@ namespace DayZeLib
         public string ClassName { get; set; }
         public int Amount { get; set; }
 
-        public Questitem() { }
-
         public override string ToString()
         {
             return ClassName;
@@ -248,8 +252,9 @@ namespace DayZeLib
     {
         public string ClassName { get; set; }
         public int Amount { get; set; }
+        public BindingList<string> Attachments { get; set; }
 
-        public QuestReward() { }
+        public QuestReward() { Attachments = new BindingList<string>(); }
 
         public override string ToString()
         {

@@ -12,7 +12,7 @@ namespace DayZeLib
     public class AIPatrolSettings
     {
         [JsonIgnore]
-        const int CurrentVersion = 7;
+        const int CurrentVersion = 8;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -20,10 +20,13 @@ namespace DayZeLib
 
         public int m_Version { get; set; }
         public int Enabled { get; set; }
+        public decimal DespawnTime { get; set; }
         public decimal RespawnTime { get; set; }
         public decimal MinDistRadius { get; set; }
         public decimal MaxDistRadius { get; set; }
         public decimal DespawnRadius { get; set; }
+        public decimal AccuracyMin { get; set; }
+        public decimal AccuracyMax { get; set; }
         public BindingList<ObjectPatrols> ObjectPatrols { get; set; }
         public BindingList<Patrols> Patrols { get; set; }
 
@@ -71,6 +74,8 @@ namespace DayZeLib
         public string UnderThreatSpeed { get; set; }
         public int CanBeLooted { get; set; }
         public int UnlimitedReload { get; set; }
+        public decimal AccuracyMin { get; set; }
+        public decimal AccuracyMax { get; set; }
         public decimal MinDistRadius { get; set; }
         public decimal MaxDistRadius { get; set; }
         public decimal DespawnRadius { get; set; }
@@ -78,6 +83,7 @@ namespace DayZeLib
         public decimal MaxSpreadRadius { get; set; }
         public decimal Chance { get; set; }
         public string WaypointInterpolation { get; set; }
+        public decimal DespawnTime { get; set; }
         public string ClassName { get; set; }
 
         public override string ToString()
@@ -100,6 +106,8 @@ namespace DayZeLib
         public string UnderThreatSpeed { get; set; }
         public int CanBeLooted { get; set; }
         public int UnlimitedReload { get; set; }
+        public decimal AccuracyMin { get; set; }
+        public decimal AccuracyMax { get; set; }
         public decimal MinDistRadius { get; set; }
         public decimal MaxDistRadius { get; set; }
         public decimal DespawnRadius { get; set;  }
@@ -107,6 +115,7 @@ namespace DayZeLib
         public decimal MaxSpreadRadius { get; set; }
         public decimal Chance { get; set; }
         public string WaypointInterpolation { get; set; }
+        public decimal DespawnTime { get; set; }
         public decimal RespawnTime { get; set; }
         public BindingList<float[]> Waypoints { get; set; }
 

@@ -314,7 +314,7 @@ namespace DayZeLib
         public string ClassName { get; set; }
         public int MaxPriceThreshold { get; set; }
         public int MinPriceThreshold { get; set; }
-        public int SellPricePercent { get; set; } //Added in Version 7
+        public decimal SellPricePercent { get; set; } //Added in Version 7
         public int MaxStockThreshold { get; set; }
         public int MinStockThreshold { get; set; }
         //public int PurchaseType { get; set; }  removed in Version 6

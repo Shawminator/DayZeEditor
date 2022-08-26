@@ -1,4 +1,12 @@
-﻿Version 0.7.0/0.7.1
+﻿Version 0.7.2
+[Added]
+Added new expansion settings for Logs, General, AI and Market.
+Added Hardline to Expansion settings
+[Fixed]
+Max mission time was doing a double convert to seconds, changed to only do it once.
+Updated all expansion settings to latest version
+
+Version 0.7.0/0.7.1
 Two versions as i forgot to push the changes to github so dont know exactlywhat was changed. but the following was done between the two versions.
 [Fixed]
 Hopefully fixed the updater and change log, this should work from now on, hopefully.......

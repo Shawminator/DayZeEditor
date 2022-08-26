@@ -4,7 +4,7 @@ namespace DayZeLib
 {
     public class LogSettings
     {
-        const int CurrentVersion = 5;
+        const int CurrentVersion = 6;
 
         public int m_Version { get; set; }
         public int Safezone { get; set; }
@@ -14,6 +14,11 @@ namespace DayZeLib
         public int VehicleTowing { get; set; }
         public int VehicleLockPicking { get; set; }
         public int VehicleDestroyed { get; set; }
+        public int VehicleAttachments { get; set; }
+        public int VehicleEnter { get; set; }
+        public int VehicleLeave { get; set; }
+        public int VehicleDeleted { get; set; }
+        public int VehicleEngine { get; set; }
         public int BaseBuildingRaiding { get; set; }
         public int CodeLockRaiding { get; set; }
         public int Territory { get; set; }

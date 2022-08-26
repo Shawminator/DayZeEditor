@@ -25,6 +25,8 @@ namespace DayZeLib
 
     public class QuestObjectivesBase : IEquatable<QuestObjectivesBase>
     {
+        const int m_currentConfigVersion = 7;
+
         [JsonIgnore]
         public static readonly string[] Objectvetypesname = {"","", "Target", "Travel", "Collection", "Delivery", "TreasureHunt", "AIPatrol", "AICamp", "AIVIP", "Action", "Crafting"};
         [JsonIgnore]
@@ -34,14 +36,20 @@ namespace DayZeLib
         [JsonIgnore]
         public QuestType QuestType { get; set; }
 
-
         public int ConfigVersion { get; set; }
         public int ID { get; set; }
         public int ObjectiveType { get; set; }
         public string ObjectiveText { get; set; }
         public int TimeLimit { get; set; }
 
-
+        static public int GetconfigVersion
+        {
+            get
+            {
+                return m_currentConfigVersion;
+            }
+            
+        }
 
         public string[] getfoldernames()
         {

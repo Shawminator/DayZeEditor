@@ -45,10 +45,7 @@ namespace DayZeLib
 
         public void SetIntValue(string mytype, int myvalue)
         {
-            if (mytype == "MissionMaxTime")
-                GetType().GetProperty(mytype).SetValue(this, (int)Helper.ConvertMinutesToSeconds(myvalue), null);
-            else
-                GetType().GetProperty(mytype).SetValue(this, myvalue, null);
+            GetType().GetProperty(mytype).SetValue(this, myvalue, null);
         }
         public void SetFloatValue(string mytype, float myvalue)
         {

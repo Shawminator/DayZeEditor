@@ -24,7 +24,7 @@ namespace DayZeLib
         public int MaxPartyDepositMoney { get; set; }
         //public BindingList<string[]> MarketVIPs { get; set; }
         public int UseWholeMapForATMPlayerList { get; set; }
-        public float SellPricePercent { get; set; }
+        public decimal SellPricePercent { get; set; }
         public int NetworkBatchSize { get; set; }
         public float MaxVehicleDistanceToTrader { get; set; }
         public float MaxLargeVehicleDistanceToTrader { get; set; }

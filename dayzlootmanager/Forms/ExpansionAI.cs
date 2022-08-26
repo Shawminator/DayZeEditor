@@ -825,11 +825,14 @@ namespace DayZeEditor
 
 
 
-            AIPatrolSettingsEnabledCB.Checked = AIPatrolSettings.Enabled == 1 ? true : false;
-            RespawnTimeNUD.Value = AIPatrolSettings.RespawnTime;
-            MinDistRadiusNUD.Value = AIPatrolSettings.MinDistRadius;
-            MaxDistRadiusNUD.Value = AIPatrolSettings.MaxDistRadius;
-            DespawnRadiusNUD.Value = AIPatrolSettings.DespawnRadius;
+            AIGeneralEnabledCB.Checked = AIPatrolSettings.Enabled == 1 ? true : false;
+            AIGeneralDespawnTimeNUD.Value = AIPatrolSettings.DespawnTime;
+            AIGeneralRespawnTimeNUD.Value = AIPatrolSettings.RespawnTime;
+            AIGeneralMinDistRadiusNUD.Value = AIPatrolSettings.MinDistRadius;
+            AIGeneralMaxDistRadiusNUD.Value = AIPatrolSettings.MaxDistRadius;
+            AIGeneralDespawnTimeNUD.Value = AIPatrolSettings.DespawnRadius;
+            AIGeneralAccuracyMinNUD.Value = AIPatrolSettings.AccuracyMin;
+            AIGeneralAccuracyMaxNUD.Value = AIPatrolSettings.AccuracyMax;
 
             EventCrachPatrolLB.DisplayMember = "DisplayName";
             EventCrachPatrolLB.ValueMember = "Value";
@@ -842,34 +845,52 @@ namespace DayZeEditor
 
             useraction = true;
         }
-        private void AIPatrolSettingsEnabledCB_CheckedChanged(object sender, EventArgs e)
+        private void AIGeneralEnabledCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            AIPatrolSettings.Enabled = AIPatrolSettingsEnabledCB.Checked == true ? 1 : 0;
+            AIPatrolSettings.Enabled = AIGeneralEnabledCB.Checked == true ? 1 : 0;
             AIPatrolSettings.isDirty = true;
         }
-        private void RespawnTimeNUD_ValueChanged(object sender, EventArgs e)
+        private void AIGeneralRespawnTimeNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            AIPatrolSettings.RespawnTime = RespawnTimeNUD.Value;
+            AIPatrolSettings.RespawnTime = AIGeneralRespawnTimeNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
-        private void MinDistRadiusNUD_ValueChanged(object sender, EventArgs e)
+        private void AIGeneralMinDistRadiusNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            AIPatrolSettings.MinDistRadius = MinDistRadiusNUD.Value;
+            AIPatrolSettings.MinDistRadius = AIGeneralMinDistRadiusNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
-        private void MaxDistRadiusNUD_ValueChanged(object sender, EventArgs e)
+        private void AIGeneralMaxDistRadiusNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            AIPatrolSettings.MaxDistRadius = MaxDistRadiusNUD.Value;
+            AIPatrolSettings.MaxDistRadius = AIGeneralMaxDistRadiusNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
-        private void DespawnRadiusNUD_ValueChanged(object sender, EventArgs e)
+        private void AIGeneralDespawnTimeNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            AIPatrolSettings.DespawnRadius = DespawnRadiusNUD.Value;
+            AIPatrolSettings.DespawnTime = AIGeneralDespawnTimeNUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
+        private void AIGeneralAccuracyMinNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AIPatrolSettings.AccuracyMin = AIGeneralAccuracyMinNUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
+        private void AIGenralAccuracyMaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AIPatrolSettings.AccuracyMax = AIGeneralAccuracyMaxNUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
+        private void AIGeneralDespawnRadiusNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AIPatrolSettings.DespawnRadius = AIGeneralDespawnRadiusNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
         /// <summary>
@@ -891,6 +912,7 @@ namespace DayZeEditor
             CrashMinDistRadiusNUD.Value = CurrentEventcrashpatrol.MinDistRadius;
             CrashMaxDistRadiusNUD.Value = CurrentEventcrashpatrol.MaxDistRadius;
             CrashDespawnRadiusNUD.Value = CurrentEventcrashpatrol.DespawnRadius;
+            CrashDespawnTimeNUD.Value = CurrentEventcrashpatrol.DespawnTime;
             CrashMinSpreadRadiusNUD.Value = CurrentEventcrashpatrol.MinSpreadRadius;
             CrashMaxSpreadRadiusNUD.Value = CurrentEventcrashpatrol.MaxSpreadRadius;
             CrashChanceNUD.Value = CurrentEventcrashpatrol.Chance;
@@ -991,6 +1013,24 @@ namespace DayZeEditor
             CurrentEventcrashpatrol.DespawnRadius = CrashDespawnRadiusNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
+        private void CrashDespawnTimeNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentEventcrashpatrol.DespawnTime = CrashDespawnTimeNUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
+        private void numericUpDown7_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentEventcrashpatrol.AccuracyMin = CrashAccuracyMinNud.Value;
+            AIPatrolSettings.isDirty = true;
+        }
+        private void numericUpDown6_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentEventcrashpatrol.AccuracyMax = CrashAccuracyMaxNUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
         private void CrashMinSpreadRadiusNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -1049,9 +1089,12 @@ namespace DayZeEditor
             StaticPatrolSpeedCB.SelectedIndex = StaticPatrolSpeedCB.FindStringExact(CurrentPatrol.Speed);
             StaticPatrolUnderThreatSpeedCB.SelectedIndex = StaticPatrolUnderThreatSpeedCB.FindStringExact(CurrentPatrol.UnderThreatSpeed);
             StaticPatrolRespawnTimeNUD.Value = CurrentPatrol.RespawnTime;
+            StaticPatrolDespawnTimeNUD.Value = CurrentPatrol.DespawnTime;
             StaticPatrolMinDistRadiusNUD.Value = CurrentPatrol.MinDistRadius;
             StaticPatrolMaxDistRadiusNUD.Value = CurrentPatrol.MaxDistRadius;
             StaticPatrolDespawnRadiusNUD.Value = CurrentPatrol.DespawnRadius;
+            StaticPatrolAccuracyMinNUD.Value = CurrentPatrol.AccuracyMin;
+            StaticPatrolAccuracyMaxNUD.Value = CurrentPatrol.AccuracyMax;
             StaticPatrolChanceCB.Value = CurrentPatrol.Chance;
             StaticPatrolCanBeLotedCB.Checked = CurrentPatrol.CanBeLooted == 1 ? true : false;
             StaticPatrolUnlimitedReloadCB.Checked = CurrentPatrol.UnlimitedReload == 1 ? true : false;
@@ -1178,6 +1221,12 @@ namespace DayZeEditor
             CurrentPatrol.RespawnTime = StaticPatrolRespawnTimeNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
+        private void StaticPatrolDespawnTimeNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPatrol.DespawnTime = StaticPatrolDespawnTimeNUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
         private void StaticPatrolMinDistRadiusNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -1200,6 +1249,18 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             CurrentPatrol.Chance = StaticPatrolChanceCB.Value;
+            AIPatrolSettings.isDirty = true;
+        }
+        private void StaticPatrolAccuracyMinNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPatrol.AccuracyMin = StaticPatrolAccuracyMinNUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
+        private void StaticPatrolAccuracyMaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPatrol.AccuracyMax = StaticPatrolAccuracyMaxNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
         private void StaticPatrolMinSpreadRadiusNUD_ValueChanged(object sender, EventArgs e)
@@ -1413,11 +1474,6 @@ namespace DayZeEditor
             AISettings.PlayerFactions.Remove(PlayerFactionsLB.GetItemText(PlayerFactionsLB.SelectedItem));
             AISettings.isDirty = true;
         }
-
-
-
-
-
         #endregion AISettings
 
 

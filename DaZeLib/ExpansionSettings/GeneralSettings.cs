@@ -21,9 +21,9 @@ namespace DayZeLib
     };
     public class GeneralSettings
     {
-        static int CurrentVersion = 6;
+        static int CurrentVersion = 8;
 
-        public int m_Version { get; set; } //currentversion 6
+        public int m_Version { get; set; }
         public int DisableShootToUnlock { get; set; }
         public int EnableGravecross { get; set; }
         public int GravecrossDeleteBody { get; set; }
@@ -39,11 +39,13 @@ namespace DayZeLib
         public int UseDeathScreen { get; set; }
         public int UseDeathScreenStatistics { get; set; }
         public int UseNewsFeedInGameMenu { get; set; }
+        public Hudcolors HUDColors { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
         public bool isDirty { get; set; }
+        public int Colour { get; private set; }
 
         public GeneralSettings()
         {
@@ -71,8 +73,70 @@ namespace DayZeLib
         {
             GetType().GetProperty(mytype).SetValue(this, myvalue, null);
         }
-
-
+        public string getcolourfromcontrol(string name)
+        {
+            switch (name)
+            {
+                case "StaminaBarColorPB":
+                    return HUDColors.StaminaBarColor;
+                case "NotifierDividerColorPB":
+                    return HUDColors.NotifierDividerColor;
+                case "TemperatureBurningColorPB":
+                    return HUDColors.TemperatureBurningColor;
+                case "TemperatureHotColorPB":
+                    return HUDColors.TemperatureHotColor;
+                case "TemperatureIdealColorPB":
+                    return HUDColors.TemperatureIdealColor;
+                case "TemperatureColdColorPB":
+                    return HUDColors.TemperatureColdColor;
+                case "TemperatureFreezingColorPB":
+                    return HUDColors.TemperatureFreezingColor;
+                case "NotifiersIdealColorPB":
+                    return HUDColors.NotifiersIdealColor;
+                case "NotifiersHalfColorPB":
+                    return HUDColors.NotifiersHalfColor;
+                case "NotifiersLowColorPB":
+                    return HUDColors.NotifiersLowColor;
+            }
+            return "";
+        }
+        public void setcolour(string name, string Colour)
+        {
+            Colour = Colour.Substring(2) + Colour.Substring(0, 2);
+            switch (name)
+            {
+                case "StaminaBarColorPB":
+                    HUDColors.StaminaBarColor = Colour;
+                    break;
+                case "NotifierDividerColorPB":
+                    HUDColors.NotifierDividerColor = Colour;
+                    break;
+                case "TemperatureBurningColorPB":
+                    HUDColors.TemperatureBurningColor = Colour;
+                    break;
+                case "TemperatureHotColorPB":
+                    HUDColors.TemperatureHotColor = Colour;
+                    break;
+                case "TemperatureIdealColorPB":
+                    HUDColors.NotifiersIdealColor = Colour;
+                    break;
+                case "TemperatureColdColorPB":
+                    HUDColors.TemperatureColdColor = Colour;
+                    break;
+                case "TemperatureFreezingColorPB":
+                    HUDColors.TemperatureFreezingColor = Colour;
+                    break;
+                case "NotifiersIdealColorPB":
+                    HUDColors.NotifiersIdealColor = Colour;
+                    break;
+                case "NotifiersHalfColorPB":
+                    HUDColors.NotifiersHalfColor = Colour;
+                    break;
+                case "NotifiersLowColorPB":
+                    HUDColors.NotifiersLowColor = Colour;
+                    break;
+            }
+        }
     }
     public class CustomMapping
     {
@@ -91,5 +155,19 @@ namespace DayZeLib
         {
             GetType().GetProperty(mytype).SetValue(this, myvalue, null);
         }
+    }
+
+    public class Hudcolors
+    {
+        public string StaminaBarColor { get; set; }
+        public string NotifierDividerColor { get; set; }
+        public string TemperatureBurningColor { get; set; }
+        public string TemperatureHotColor { get; set; }
+        public string TemperatureIdealColor { get; set; }
+        public string TemperatureColdColor { get; set; }
+        public string TemperatureFreezingColor { get; set; }
+        public string NotifiersIdealColor { get; set; }
+        public string NotifiersHalfColor { get; set; }
+        public string NotifiersLowColor { get; set; }
     }
 }

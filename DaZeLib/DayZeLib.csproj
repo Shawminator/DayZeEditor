@@ -153,6 +153,7 @@
     <Compile Include="ExpansionSettings\DamageSystemSettings.cs" />
     <Compile Include="ExpansionSettings\DebugSettings.cs" />
     <Compile Include="ExpansionSettings\GeneralSettings.cs" />
+    <Compile Include="ExpansionSettings\HardlineSettings.cs" />
     <Compile Include="ExpansionSettings\Logsettings.cs" />
     <Compile Include="ExpansionSettings\MapSettings.cs" />
     <Compile Include="ExpansionSettings\AirdropMissionSettingFiles.cs" />

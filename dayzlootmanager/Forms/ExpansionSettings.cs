@@ -44,6 +44,7 @@ namespace DayZeEditor
         public string DamageSystemSettingsPath;
         public string DebugSettingsPath;
         public string GeneralSettingsPath;
+        public string HArdlineSettingsPath;
         public string LogsSettingsPath;
         public string MapSettingsPath;
         //public string MarketSettingsPath;
@@ -68,6 +69,7 @@ namespace DayZeEditor
         public DamageSystemSettings DamageSystemSettings;
         public DebugSettings DebugSettings;
         public GeneralSettings GeneralSettings;
+        public HardLineSettings HardLineSettings;
         public LogSettings LogSettings;
         public MapSettings MapSettings;
         //public MarketSettings marketsettings;
@@ -129,6 +131,7 @@ namespace DayZeEditor
                     toolStripButton13.Checked = false;
                     toolStripButton14.Checked = false;
                     toolStripButton18.Checked = false;
+                    toolStripButton20.Checked = false;
                     break;
                 case 1:
                     toolStripButton1.Checked = false;
@@ -142,6 +145,7 @@ namespace DayZeEditor
                     toolStripButton13.Checked = false;
                     toolStripButton14.Checked = false;
                     toolStripButton18.Checked = false;
+                    toolStripButton20.Checked = false;
                     break;
                 case 2:
                     toolStripButton1.Checked = false;
@@ -155,6 +159,7 @@ namespace DayZeEditor
                     toolStripButton13.Checked = false;
                     toolStripButton14.Checked = false;
                     toolStripButton18.Checked = false;
+                    toolStripButton20.Checked = false;
                     break;
                 case 3:
                     toolStripButton1.Checked = false;
@@ -168,6 +173,7 @@ namespace DayZeEditor
                     toolStripButton13.Checked = false;
                     toolStripButton14.Checked = false;
                     toolStripButton18.Checked = false;
+                    toolStripButton20.Checked = false;
                     break;
                 case 4:
                     toolStripButton1.Checked = false;
@@ -181,6 +187,7 @@ namespace DayZeEditor
                     toolStripButton13.Checked = false;
                     toolStripButton14.Checked = false;
                     toolStripButton18.Checked = false;
+                    toolStripButton20.Checked = false;
                     break;
                 case 5:
                     toolStripButton1.Checked = false;
@@ -193,6 +200,7 @@ namespace DayZeEditor
                     toolStripButton12.Checked = false;
                     toolStripButton14.Checked = false;
                     toolStripButton18.Checked = false;
+                    toolStripButton20.Checked = false;
                     break;
                 case 6:
                     toolStripButton1.Checked = false;
@@ -206,6 +214,7 @@ namespace DayZeEditor
                     toolStripButton13.Checked = false;
                     toolStripButton14.Checked = false;
                     toolStripButton18.Checked = false;
+                    toolStripButton20.Checked = false;
                     break;
                 case 7:
                     toolStripButton1.Checked = false;
@@ -219,6 +228,7 @@ namespace DayZeEditor
                     toolStripButton13.Checked = false;
                     toolStripButton14.Checked = false;
                     toolStripButton18.Checked = false;
+                    toolStripButton20.Checked = false;
                     break;
                 case 8:
                     toolStripButton1.Checked = false;
@@ -232,6 +242,7 @@ namespace DayZeEditor
                     toolStripButton13.Checked = false;
                     toolStripButton14.Checked = false;
                     toolStripButton18.Checked = false;
+                    toolStripButton20.Checked = false;
                     break;
                 case 9:
                     toolStripButton1.Checked = false;
@@ -245,6 +256,7 @@ namespace DayZeEditor
                     toolStripButton12.Checked = false;
                     toolStripButton14.Checked = false;
                     toolStripButton18.Checked = false;
+                    toolStripButton20.Checked = false;
                     break;
                 case 10:
                     toolStripButton1.Checked = false;
@@ -258,6 +270,7 @@ namespace DayZeEditor
                     toolStripButton12.Checked = false;
                     toolStripButton13.Checked = false;
                     toolStripButton18.Checked = false;
+                    toolStripButton20.Checked = false;
                     break;
                 case 11:
                     toolStripButton1.Checked = false;
@@ -271,6 +284,21 @@ namespace DayZeEditor
                     toolStripButton12.Checked = false;
                     toolStripButton13.Checked = false;
                     toolStripButton14.Checked = false;
+                    toolStripButton20.Checked = false;
+                    break;
+                case 12:
+                    toolStripButton1.Checked = false;
+                    toolStripButton3.Checked = false;
+                    toolStripButton4.Checked = false;
+                    toolStripButton5.Checked = false;
+                    toolStripButton6.Checked = false;
+                    toolStripButton9.Checked = false;
+                    toolStripButton10.Checked = false;
+                    toolStripButton11.Checked = false;
+                    toolStripButton12.Checked = false;
+                    toolStripButton13.Checked = false;
+                    toolStripButton14.Checked = false;
+                    toolStripButton18.Checked = false;
                     break;
                 default:
                     break;
@@ -347,6 +375,12 @@ namespace DayZeEditor
             tabControl2.SelectedIndex = 11;
             if (tabControl2.SelectedIndex == 11)
                 toolStripButton18.Checked = true;
+        }
+        private void toolStripButton20_Click(object sender, EventArgs e)
+        {
+            tabControl2.SelectedIndex = 12;
+            if (tabControl2.SelectedIndex == 12)
+                toolStripButton20.Checked = true;
         }
         private void expansionsettings_Load(object sender, EventArgs e)
         {
@@ -472,6 +506,22 @@ namespace DayZeEditor
             }
             GeneralSettings.Filename = GeneralSettingsPath;
             loadGeneralSettings();
+
+            HArdlineSettingsPath = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings\\HardlineSettings.json";
+            if (!File.Exists(HArdlineSettingsPath))
+            {
+                HardLineSettings = new HardLineSettings();
+                needtosave = true;
+            }
+            else
+            {
+                HardLineSettings = JsonSerializer.Deserialize<HardLineSettings>(File.ReadAllText(HArdlineSettingsPath));
+                HardLineSettings.isDirty = false;
+                if (HardLineSettings.checkver())
+                    needtosave = true;
+            }
+            HardLineSettings.Filename = HArdlineSettingsPath;
+            loadHardlineSettings();
 
             LogsSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\LogsSettings.json";
             if (!File.Exists(LogsSettingsPath))
@@ -2640,6 +2690,7 @@ namespace DayZeEditor
             }
             e.Graphics.DrawRectangle(SystemPens.ControlText, region.Left, region.Top, region.Width - 1, region.Height - 1);
         }
+
         private void EnableGlobalChatCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
@@ -2757,9 +2808,38 @@ namespace DayZeEditor
             UseNewsFeedInGameMenuCB.Checked = GeneralSettings.UseNewsFeedInGameMenu == 1 ? true : false;
             useraction = true;
         }
+        private void HudColourPB_Click(object sender, EventArgs e)
+        {
+            PictureBox pb = sender as PictureBox;
+            ColorPickerDialog cpick = new ColorPickerDialog
+            {
+                StartPosition = FormStartPosition.CenterParent
+            };
+            string col = GeneralSettings.getcolourfromcontrol(pb.Name);
+            string col1 = "#" + col.Substring(6) + col.Remove(6, 2);
+            cpick.Color = ColorTranslator.FromHtml(col1);
+            if (cpick.ShowDialog() == DialogResult.OK)
+            {
 
-
-
+                GeneralSettings.setcolour(pb.Name, cpick.Color.Name.ToUpper());
+                pb.Invalidate();
+                GeneralSettings.isDirty = true;
+            }
+        }
+        private void HUDColourPB_Paint(object sender, PaintEventArgs e)
+        {
+            PictureBox pb = sender as PictureBox;
+            Rectangle region;
+            region = pb.ClientRectangle;
+            string col = GeneralSettings.getcolourfromcontrol(pb.Name);
+            string col1 = "#" + col.Substring(6) + col.Remove(6, 2);
+            Color colour = ColorTranslator.FromHtml(col1);
+            using (Brush brush = new SolidBrush(colour))
+            {
+                e.Graphics.FillRectangle(brush, region);
+            }
+            e.Graphics.DrawRectangle(SystemPens.ControlText, region.Left, region.Top, region.Width - 1, region.Height - 1);
+        }
         private void GeneralsettingsCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
@@ -2791,6 +2871,14 @@ namespace DayZeEditor
         }
         #endregion Generalsettings
 
+        #region Hartdline
+        private void loadHardlineSettings()
+        {
+
+        }
+
+        #endregion
+
         #region logsettings
         private void loadlogsettings()
         {
@@ -2800,6 +2888,12 @@ namespace DayZeEditor
             VehicleDestroyedCB.Checked = LogSettings.VehicleDestroyed == 1 ? true : false;
             VehicleTowingCB.Checked = LogSettings.VehicleTowing == 1 ? true : false;
             VehicleLockPickingCB.Checked = LogSettings.VehicleLockPicking == 1 ? true : false;
+            VehicleDestroyedCB.Checked = LogSettings.VehicleDestroyed == 1 ? true : false;
+            VehicleAttachmentsCB.Checked = LogSettings.VehicleAttachments == 1 ? true : false;
+            VehicleEnterCB.Checked = LogSettings.VehicleEnter == 1 ? true : false;
+            VehicleLeaveCB.Checked = LogSettings.VehicleLeave == 1 ? true : false;
+            VehicleDeletedCB.Checked = LogSettings.VehicleDeleted == 1 ? true : false;
+            VehicleEngineCB.Checked = LogSettings.VehicleEngine == 1 ? true : false;
             BaseBuildingRaidingCB.Checked = LogSettings.BaseBuildingRaiding == 1 ? true : false;
             CodeLockRaidingCB.Checked = LogSettings.CodeLockRaiding == 1 ? true : false;
             TerritoryCB.Checked = LogSettings.Territory == 1 ? true : false;
@@ -6176,6 +6270,7 @@ namespace DayZeEditor
             VehicleSettings.DesyncInvulnerabilityTimeoutSeconds = DesyncInvulnerabilityTimeoutSecondsNUD.Value;
             VehicleSettings.isDirty = true;
         }
+
         #endregion VehicleSettings
 
 

@@ -15,6 +15,7 @@ namespace DayZeLib
         public decimal MinDistRadius { get; set; }
         public decimal MaxDistRadius { get; set; }
         public decimal DespawnRadius { get; set; }
+        public int CanLootAI { get; set; }
 
         public QuestObjectivesAICamp() 
         {
@@ -33,6 +34,8 @@ namespace DayZeLib
         public string NPCMode { get; set; }
         public string NPCFaction { get; set; }
         public string NPCLoadoutFile { get; set; }
+        public decimal NPCAccuracyMin { get; set; }
+        public decimal NPCAccuracyMax { get; set; }
         public BindingList<string> ClassNames { get; set; }
         public int SpecialWeapon { get; set; }
         public BindingList<string> AllowedWeapons { get; set; }
