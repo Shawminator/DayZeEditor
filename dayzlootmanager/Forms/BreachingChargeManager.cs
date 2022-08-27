@@ -191,7 +191,9 @@ namespace DayZeEditor
             }
             else
             {
-
+                darkButton31.Visible = true;
+                darkButton32.Visible = true;
+                ChargeDefusetoolsLB.Visible = true;
                 ChargeDefusetoolsLB.DisplayMember = "DisplayName";
                 ChargeDefusetoolsLB.ValueMember = "Value";
                 ChargeDefusetoolsLB.DataSource = Currentcharge.DefuseTools;
@@ -407,9 +409,7 @@ namespace DayZeEditor
             {
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
-                currentproject = currentproject,
-                UseMultiple = false,
-                isCategoryitem = true
+                currentproject = currentproject
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)

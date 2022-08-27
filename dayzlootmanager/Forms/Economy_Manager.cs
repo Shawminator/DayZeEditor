@@ -3187,15 +3187,14 @@ namespace DayZeEditor
             textBox2.Text = currenttag.name;
             currentspawnabletypesfile.isDirty = true;
         }
-        private void darkButton38_Click(object sender, EventArgs e)
+        private void AttachmentChangeItemButton_Click(object sender, EventArgs e)
         {
             AddItemfromTypes form = new AddItemfromTypes
             {
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
                 currentproject = currentproject,
-                UseMultiple = false,
-                isCategoryitem = true
+                UseOnlySingleitem = true
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -3216,15 +3215,14 @@ namespace DayZeEditor
                 return;
             }
         }
-        private void darkButton35_Click(object sender, EventArgs e)
+        private void CargoChangeItemButton_Click(object sender, EventArgs e)
         {
             AddItemfromTypes form = new AddItemfromTypes
             {
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
                 currentproject = currentproject,
-                UseMultiple = false,
-                isCategoryitem = true
+                UseOnlySingleitem = true
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -3365,9 +3363,7 @@ namespace DayZeEditor
             {
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
-                currentproject = currentproject,
-                UseMultiple = false,
-                isCategoryitem = true
+                currentproject = currentproject
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -4623,8 +4619,7 @@ namespace DayZeEditor
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
                 currentproject = currentproject,
-                UseMultiple = false,
-                isCategoryitem = true
+                UseOnlySingleitem = true
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -4677,8 +4672,7 @@ namespace DayZeEditor
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
                 currentproject = currentproject,
-                UseMultiple = false,
-                isCategoryitem = true
+                UseMultipleofSameItem = false
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)

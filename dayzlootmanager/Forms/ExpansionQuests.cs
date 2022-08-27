@@ -930,9 +930,7 @@ namespace DayZeEditor
             {
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
-                currentproject = currentproject,
-                UseMultiple = true,
-                isCategoryitem = true
+                currentproject = currentproject
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -1162,8 +1160,7 @@ namespace DayZeEditor
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
                 currentproject = currentproject,
-                UseMultiple = true,
-                isCategoryitem = true
+                UseMultipleofSameItem = true
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -1221,9 +1218,7 @@ namespace DayZeEditor
             {
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
-                currentproject = currentproject,
-                UseMultiple = true,
-                isCategoryitem = true
+                currentproject = currentproject
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -1236,8 +1231,11 @@ namespace DayZeEditor
                         ClassName = l,
                         Amount = 1
                     };
-                    CurrentQuest.QuestItems.Add(newrawrd);
-                    CurrentQuest.isDirty = true;
+                    if (!CurrentQuest.QuestItems.Any(x => x.ClassName == newrawrd.ClassName))
+                    {
+                        CurrentQuest.QuestItems.Add(newrawrd);
+                        CurrentQuest.isDirty = true;
+                    }
                 }
                 QuestRewardsLB.Refresh();
             }
@@ -1889,9 +1887,7 @@ namespace DayZeEditor
                     {
                         vanillatypes = vanillatypes,
                         ModTypes = ModTypes,
-                        currentproject = currentproject,
-                        UseMultiple = true,
-                        isCategoryitem = true
+                        currentproject = currentproject
                     };
                     DialogResult result2 = form2.ShowDialog();
                     if (result2 == DialogResult.OK)
@@ -1957,9 +1953,7 @@ namespace DayZeEditor
             {
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
-                currentproject = currentproject,
-                UseMultiple = true,
-                isCategoryitem = true
+                currentproject = currentproject
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -1972,8 +1966,11 @@ namespace DayZeEditor
                         ClassName = l,
                         Amount = 1
                     };
-                    CurrentDelivery.Deliveries.Add(newitem);
-                    CurrentTreeNodeTag.isDirty = true;
+                    if (!CurrentDelivery.Deliveries.Any(x => x.ClassName == newitem.ClassName))
+                    {
+                        CurrentDelivery.Deliveries.Add(newitem);
+                        CurrentTreeNodeTag.isDirty = true;
+                    }
                 }
                 QuestObjectivesDeleveriesLB.Refresh();
             }
@@ -2024,8 +2021,7 @@ namespace DayZeEditor
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
                 currentproject = currentproject,
-                UseMultiple = false,
-                isCategoryitem = true
+                UseOnlySingleitem = true
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -2688,9 +2684,7 @@ namespace DayZeEditor
             {
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
-                currentproject = currentproject,
-                UseMultiple = true,
-                isCategoryitem = true
+                currentproject = currentproject
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -2835,9 +2829,7 @@ namespace DayZeEditor
             {
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
-                currentproject = currentproject,
-                UseMultiple = true,
-                isCategoryitem = true
+                currentproject = currentproject
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -3129,9 +3121,7 @@ namespace DayZeEditor
             {
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
-                currentproject = currentproject,
-                UseMultiple = true,
-                isCategoryitem = true
+                currentproject = currentproject
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -3144,8 +3134,16 @@ namespace DayZeEditor
                         ClassName = l,
                         Amount = 1
                     };
-                    CurrentTreasureHunt.TreasureHunt.ListItems.Add(newitem);
-                    CurrentTreeNodeTag.isDirty = true;
+                    if (!CurrentTreasureHunt.TreasureHunt.ListItems.Any(x => x.ClassName == newitem.ClassName))
+                    {
+                        CurrentTreasureHunt.TreasureHunt.ListItems.Add(newitem);
+                        CurrentTreeNodeTag.isDirty = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show(newitem.ClassName + " Is allready in the list, use amount valuve to get multiple of the same");
+                    }
+                        
                 }
                 QuestObjectivesTreasureHUntItemListLB.Refresh();
             }

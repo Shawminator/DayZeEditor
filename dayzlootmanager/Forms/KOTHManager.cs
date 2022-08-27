@@ -544,9 +544,7 @@ namespace DayZeEditor
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
                 currentproject = currentproject,
-                UseMultiple = false,
-                isCategoryitem = true,
-                LowerCase = false
+                UseMultipleofSameItem = true
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -586,10 +584,7 @@ namespace DayZeEditor
             {
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
-                currentproject = currentproject,
-                UseMultiple = false,
-                isCategoryitem = false,
-                LowerCase = false
+                currentproject = currentproject
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)

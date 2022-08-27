@@ -328,9 +328,7 @@ namespace DayZeEditor
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
                 currentproject = currentproject,
-                UseMultiple = false,
-                isCategoryitem = false,
-                LowerCase = false
+                UseOnlySingleitem = true
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -359,9 +357,7 @@ namespace DayZeEditor
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
                 currentproject = currentproject,
-                UseMultiple = false,
-                isCategoryitem = false,
-                LowerCase = false
+                UseOnlySingleitem = true
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -381,10 +377,7 @@ namespace DayZeEditor
             {
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
-                currentproject = currentproject,
-                UseMultiple = false,
-                isCategoryitem = false,
-                LowerCase = false
+                currentproject = currentproject
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -408,9 +401,7 @@ namespace DayZeEditor
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
                 currentproject = currentproject,
-                UseMultiple = false,
-                isCategoryitem = false,
-                LowerCase = false
+                UseOnlySingleitem = true
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -480,9 +471,7 @@ namespace DayZeEditor
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
                 currentproject = currentproject,
-                UseMultiple = false,
-                isCategoryitem = false,
-                LowerCase = false
+                UseMultipleofSameItem = true
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -816,8 +805,7 @@ namespace DayZeEditor
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
                 currentproject = currentproject,
-                UseMultiple = false,
-                isCategoryitem = false,
+                UseMultipleofSameItem = false,
                 LowerCase = false
             };
             DialogResult result = form.ShowDialog();
@@ -885,8 +873,7 @@ namespace DayZeEditor
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
                 currentproject = currentproject,
-                UseMultiple = true,
-                isCategoryitem = true
+                UseMultipleofSameItem = true
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)

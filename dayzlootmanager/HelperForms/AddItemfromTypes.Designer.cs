@@ -110,6 +110,7 @@ namespace DayZeEditor
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(433, 60);
             this.listBox1.Name = "listBox1";
+            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBox1.Size = new System.Drawing.Size(218, 342);
             this.listBox1.TabIndex = 12;
             this.listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
@@ -122,7 +123,7 @@ namespace DayZeEditor
             this.darkButton3.Size = new System.Drawing.Size(106, 23);
             this.darkButton3.TabIndex = 14;
             this.darkButton3.Text = "Remove from List";
-            this.darkButton3.Click += new System.EventHandler(this.darkButton3_Click);
+            this.darkButton3.Click += new System.EventHandler(this.RemoveItemsButton_Click);
             // 
             // darkButton4
             // 
@@ -154,7 +155,6 @@ namespace DayZeEditor
             this.darkTextBox1.Name = "darkTextBox1";
             this.darkTextBox1.Size = new System.Drawing.Size(193, 20);
             this.darkTextBox1.TabIndex = 16;
-            this.darkTextBox1.TextChanged += new System.EventHandler(this.darkTextBox1_TextChanged);
             // 
             // darkButton6
             // 
@@ -186,6 +186,7 @@ namespace DayZeEditor
             this.treeViewMS1.Location = new System.Drawing.Point(8, 60);
             this.treeViewMS1.Name = "treeViewMS1";
             this.treeViewMS1.SelectedNodes = ((System.Collections.ArrayList)(resources.GetObject("treeViewMS1.SelectedNodes")));
+            this.treeViewMS1.SetMultiselect = true;
             this.treeViewMS1.Size = new System.Drawing.Size(419, 371);
             this.treeViewMS1.TabIndex = 19;
             this.treeViewMS1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);

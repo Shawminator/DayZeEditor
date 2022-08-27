@@ -1176,6 +1176,7 @@ namespace DayZeEditor
             this.treeViewMS1.Location = new System.Drawing.Point(3, 3);
             this.treeViewMS1.Name = "treeViewMS1";
             this.treeViewMS1.SelectedNodes = ((System.Collections.ArrayList)(resources.GetObject("treeViewMS1.SelectedNodes")));
+            this.treeViewMS1.SetMultiselect = true;
             this.treeViewMS1.Size = new System.Drawing.Size(401, 538);
             this.treeViewMS1.TabIndex = 0;
             this.treeViewMS1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewMS1_NodeMouseClick);
@@ -2649,7 +2650,7 @@ namespace DayZeEditor
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton2.Size = new System.Drawing.Size(62, 42);
             this.toolStripButton2.Text = "Find Next";
             this.toolStripButton2.Visible = false;
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
@@ -5228,7 +5229,7 @@ namespace DayZeEditor
             this.CargoChangeItemButton.Size = new System.Drawing.Size(218, 27);
             this.CargoChangeItemButton.TabIndex = 5;
             this.CargoChangeItemButton.Text = "Change Item";
-            this.CargoChangeItemButton.Click += new System.EventHandler(this.darkButton35_Click);
+            this.CargoChangeItemButton.Click += new System.EventHandler(this.CargoChangeItemButton_Click);
             // 
             // CargoPresetTB
             // 
@@ -5433,7 +5434,7 @@ namespace DayZeEditor
             this.AttachmentChangeItemButton.Size = new System.Drawing.Size(218, 27);
             this.AttachmentChangeItemButton.TabIndex = 5;
             this.AttachmentChangeItemButton.Text = "Change Item";
-            this.AttachmentChangeItemButton.Click += new System.EventHandler(this.darkButton38_Click);
+            this.AttachmentChangeItemButton.Click += new System.EventHandler(this.AttachmentChangeItemButton_Click);
             // 
             // AttachmentItemLB
             // 
@@ -10771,6 +10772,7 @@ namespace DayZeEditor
             this.EventSpawnTV.Location = new System.Drawing.Point(3, 3);
             this.EventSpawnTV.Name = "EventSpawnTV";
             this.EventSpawnTV.SelectedNodes = ((System.Collections.ArrayList)(resources.GetObject("EventSpawnTV.SelectedNodes")));
+            this.EventSpawnTV.SetMultiselect = true;
             this.EventSpawnTV.Size = new System.Drawing.Size(253, 388);
             this.EventSpawnTV.TabIndex = 0;
             this.EventSpawnTV.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.EventSpawnTV_NodeMouseClick);
@@ -11167,6 +11169,7 @@ namespace DayZeEditor
             this.eventspawngroupTV.Location = new System.Drawing.Point(3, 3);
             this.eventspawngroupTV.Name = "eventspawngroupTV";
             this.eventspawngroupTV.SelectedNodes = ((System.Collections.ArrayList)(resources.GetObject("eventspawngroupTV.SelectedNodes")));
+            this.eventspawngroupTV.SetMultiselect = true;
             this.eventspawngroupTV.Size = new System.Drawing.Size(320, 542);
             this.eventspawngroupTV.TabIndex = 0;
             this.eventspawngroupTV.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.eventspawngroupTV_NodeMouseClick);

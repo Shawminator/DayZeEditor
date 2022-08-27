@@ -34,11 +34,12 @@ namespace DayZeEditor
             e.DrawFocusRectangle();
         }
 
-        public bool isCategoryitem { get; set; }
         public typesType currentlootpart;
-        public bool UseMultiple;
-        public bool Multiselect { get; set; }
-        public bool LowerCase { get; set; }
+
+        public bool UseMultipleofSameItem = false;
+        public bool UseOnlySingleitem = false;
+        public bool LowerCase = false;
+
         public Project currentproject { get; internal set; }
         public TypesFile vanillatypes { get; set; }
         public List<TypesFile> ModTypes { get; set; }
@@ -54,10 +55,7 @@ namespace DayZeEditor
                 TitleLabel,
                 CloseButton
             );
-            addedtypes = new BindingList<string>();
-            LowerCase = true;
-
-           
+            addedtypes = new BindingList<string>();           
         }
         public bool HideUsed = false;
 
@@ -66,11 +64,10 @@ namespace DayZeEditor
             listBox1.DisplayMember = "Name";
             listBox1.ValueMember = "Value";
             listBox1.DataSource = addedtypes;
-            if (isCategoryitem)
-                treeViewMS1.CheckBoxes = true;
             if (usedtypes == null)
                 darkButton5.Visible = false;
-            treeViewMS1.SetMultiselect = Multiselect;
+            if(UseOnlySingleitem)
+                treeViewMS1.SetMultiselect = false;
 
             PopulateTreeView();
         }
@@ -145,34 +142,71 @@ namespace DayZeEditor
             }
             return tn;
         }
-
+        private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (currentlootpart == null) return;
+            Additem(currentlootpart.name);
+        }
         private void darkButton4_Click(object sender, EventArgs e)
         {
             foreach (TreeNode tn in treeViewMS1.SelectedNodes)
             {
                 typesType looptype = tn.Tag as typesType;
-                if (UseMultiple)
+                Additem(looptype.name);
+            }
+        }
+
+        public void Additem(string item)
+        {
+            if (UseOnlySingleitem)
+                addedtypes.Clear();
+            if (LowerCase)
+            {
+                if (!UseMultipleofSameItem && !addedtypes.Contains(item.ToLower()))
                 {
-                    if (LowerCase)
-                        addedtypes.Add(currentlootpart.name.ToLower());
-                    else
-                        addedtypes.Add(looptype.name);
+                    addedtypes.Add(item.ToLower());
                 }
-                else if (!addedtypes.Contains(looptype.name.ToLower()) && !addedtypes.Contains(looptype.name))
+                else if (UseMultipleofSameItem)
                 {
-                    if (LowerCase)
-                        addedtypes.Add(looptype.name.ToLower());
-                    else
-                        addedtypes.Add(looptype.name);
+                    addedtypes.Add(item.ToLower());
+                }
+                else
+                {
+                    MessageBox.Show(item + " Allready in the list");
+                }
+            }
+            else
+            {
+                if (!UseMultipleofSameItem && !addedtypes.Contains(item))
+                {
+                    addedtypes.Add(item);
+                }
+                else if (UseMultipleofSameItem)
+                {
+                    addedtypes.Add(item);
+                }
+                else
+                {
+                    MessageBox.Show(item + " Allready in the list");
                 }
             }
         }
-        private void darkButton3_Click(object sender, EventArgs e)
+        private void RemoveItemsButton_Click(object sender, EventArgs e)
         {
             if (listBox1.SelectedItem == null) return;
-            addedtypes.Remove(listBox1.GetItemText(listBox1.SelectedItem));
-            if (addedtypes.Count == 0)
-                listBox1.SelectedIndex = -1;
+            List<string> removeitems = new List<string>();
+            foreach (var item in listBox1.SelectedItems)
+            {
+                removeitems.Add(item.ToString());
+            }
+            foreach (string item in removeitems)
+            {
+                addedtypes.Remove(item);
+                if (listBox1.Items.Count == 0)
+                    listBox1.SelectedIndex = -1;
+                else
+                    listBox1.SelectedIndex = 0;
+            }
         }
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -180,7 +214,6 @@ namespace DayZeEditor
             if (e.Node.Tag != null && e.Node.Tag is typesType)
             {
                 currentlootpart = e.Node.Tag as typesType;
-                isCategoryitem = false;
             }
         }
         public bool manualchange = false;
@@ -189,15 +222,6 @@ namespace DayZeEditor
         private List<TreeNode> searchtreeparts;
         private List<typesType> foundparts;
 
-        private void treeView1_AfterCheck(object sender, TreeViewEventArgs e)
-        {
-            {
-                if (!this.manualchange)
-                {
-                    this.CheckTreeViewNode(e.Node, e.Node.Checked);
-                }
-            }
-        }
         private void CheckTreeViewNode(TreeNode node, bool isChecked)
         {
             manualchange = true;
@@ -222,14 +246,6 @@ namespace DayZeEditor
                 }
             }
             manualchange = false;
-        }
-
-        private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
-        {
-            if (currentlootpart == null) return;
-            if (!UseMultiple)
-                addedtypes.Clear();
-            addedtypes.Add(currentlootpart.name);
         }
 
         private void darkButton5_Click(object sender, EventArgs e)
@@ -326,6 +342,7 @@ namespace DayZeEditor
             if (searchnum == searchtreeNodes.Count)
             {
                 MessageBox.Show("No More Items found");
+                darkButton7.Visible = false;
                 return;
             }
             treeViewMS1.SelectedNode = searchtreeNodes[searchnum];
@@ -334,11 +351,6 @@ namespace DayZeEditor
             {
                 currentlootpart = treeViewMS1.SelectedNode.Tag as typesType;
             }
-        }
-
-        private void darkTextBox1_TextChanged(object sender, EventArgs e)
-        {
-            darkButton7.Visible = false;
         }
     }
 }

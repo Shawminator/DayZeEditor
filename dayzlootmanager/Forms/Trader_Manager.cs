@@ -308,9 +308,7 @@ namespace DayZeEditor
             form.vanillatypes = vanillatypes;
             form.ModTypes = ModTypes;
             form.currentproject = currentproject;
-            form.UseMultiple = false;
-            form.isCategoryitem = true;
-            DialogResult result = form.ShowDialog();
+             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
                 List<string> addedtypes = form.addedtypes.ToList();
@@ -340,8 +338,7 @@ namespace DayZeEditor
             form.vanillatypes = vanillatypes;
             form.ModTypes = ModTypes;
             form.currentproject = currentproject;
-            form.UseMultiple = true;
-            form.isCategoryitem = false;
+            form.UseMultipleofSameItem = true;
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -527,8 +524,6 @@ namespace DayZeEditor
                     form.vanillatypes = vanillatypes;
                     form.ModTypes = ModTypes;
                     form.currentproject = currentproject;
-                    form.UseMultiple = false;
-                    form.isCategoryitem = true;
                     DialogResult result = form.ShowDialog();
                     if (result == DialogResult.OK)
                     {

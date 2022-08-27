@@ -882,10 +882,7 @@ namespace DayZeEditor
             {
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
-                currentproject = currentproject,
-                UseMultiple = false,
-                LowerCase = false,
-                isCategoryitem = false
+                currentproject = currentproject
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -1199,9 +1196,7 @@ namespace DayZeEditor
             {
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
-                currentproject = currentproject,
-                UseMultiple = true,
-                isCategoryitem = true
+                currentproject = currentproject
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -1826,8 +1821,8 @@ namespace DayZeEditor
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
                 currentproject = currentproject,
-                UseMultiple = true,
-                isCategoryitem = false
+                UseMultipleofSameItem = true,
+                LowerCase = true
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -1835,14 +1830,14 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    if (form.UseMultiple)
+                    if (form.UseMultipleofSameItem)
                     {
-                        currentitem.SpawnAttachments.Add(l.ToLower());
+                        currentitem.SpawnAttachments.Add(l);
                         currentCat.isDirty = true;
                     }
-                    else if (!currentitem.SpawnAttachments.Contains(l.ToLower()))
+                    else if (!currentitem.SpawnAttachments.Contains(l))
                     {
-                        currentitem.SpawnAttachments.Add(l.ToLower());
+                        currentitem.SpawnAttachments.Add(l);
                         currentCat.isDirty = true;
                     }
                 }
@@ -1879,8 +1874,7 @@ namespace DayZeEditor
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
                 currentproject = currentproject,
-                UseMultiple = false,
-                isCategoryitem = true
+                LowerCase = true
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -1888,9 +1882,9 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    if (!currentitem.Variants.Contains(l.ToLower()))
+                    if (!currentitem.Variants.Contains(l))
                     {
-                        currentitem.Variants.Add(l.ToLower());
+                        currentitem.Variants.Add(l);
                         currentCat.isDirty = true;
                     }
                 }
@@ -1987,9 +1981,9 @@ namespace DayZeEditor
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
                 currentproject = currentproject,
-                UseMultiple = false,
-                isCategoryitem = true,
-                usedtypes = UsedTypes
+                UseMultipleofSameItem = false,
+                usedtypes = UsedTypes,
+                LowerCase = true
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -1999,7 +1993,7 @@ namespace DayZeEditor
                 {
                     marketItem NewContainer = new marketItem
                     {
-                        ClassName = l.ToLower(),
+                        ClassName = l,
                         MaxPriceThreshold = 0,
                         MinPriceThreshold = 0,
                         MaxStockThreshold = 0,
@@ -3038,10 +3032,7 @@ namespace DayZeEditor
             {
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
-                currentproject = currentproject,
-                UseMultiple = false,
-                LowerCase = false,
-                isCategoryitem = false
+                currentproject = currentproject
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -3049,8 +3040,15 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    currenttradermap.Attachments.Add(l);
-                    tradermaps.isDirty = true;
+                    if (!currenttradermap.Attachments.Contains(l))
+                    {
+                        currenttradermap.Attachments.Add(l);
+                        tradermaps.isDirty = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show(l + " is allready in the list");
+                    }
                 }
             }
         }
