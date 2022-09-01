@@ -92,31 +92,38 @@ namespace DayZeLib
 
             foreach (KeyValuePair<string,int> item in ItemRarity)
             {
+                string useitem = item.Key;
+                if (useitem != useitem.ToLower())
+                {
+                    useitem = useitem.ToLower();
+                    isDirty = true;
+                }
+
                 switch (item.Value)
                 {
                     case 1:
-                        PoorItems.Add(item.Key);
+                        PoorItems.Add(useitem);
                         break;
                     case 2:
-                        CommonItems.Add(item.Key);
+                        CommonItems.Add(useitem);
                         break;
                     case 3:
-                        UncommonItems.Add(item.Key);
+                        UncommonItems.Add(useitem);
                         break;
                     case 4:
-                        RareItems.Add(item.Key);
+                        RareItems.Add(useitem);
                         break;
                     case 5:
-                        EpicItems.Add(item.Key);
+                        EpicItems.Add(useitem);
                         break;
                     case 6:
-                        LegendaryItems.Add(item.Key);
+                        LegendaryItems.Add(useitem);
                         break;
                     case 7:
-                        MythicItems.Add(item.Key);
+                        MythicItems.Add(useitem);
                         break;
                     case 8:
-                        ExoticItems.Add(item.Key);
+                        ExoticItems.Add(useitem);
                         break;
 
                 }

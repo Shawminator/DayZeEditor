@@ -626,6 +626,16 @@ namespace DayZeEditor
             this.AIGeneralDespawnRadiusNUD.DecimalPlaces = 2;
             this.AIGeneralDespawnRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.AIGeneralDespawnRadiusNUD.Location = new System.Drawing.Point(342, 41);
+            this.AIGeneralDespawnRadiusNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.AIGeneralDespawnRadiusNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
             this.AIGeneralDespawnRadiusNUD.Name = "AIGeneralDespawnRadiusNUD";
             this.AIGeneralDespawnRadiusNUD.Size = new System.Drawing.Size(105, 20);
             this.AIGeneralDespawnRadiusNUD.TabIndex = 139;
@@ -648,6 +658,11 @@ namespace DayZeEditor
             this.AIGeneralAccuracyMaxNUD.DecimalPlaces = 2;
             this.AIGeneralAccuracyMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.AIGeneralAccuracyMaxNUD.Location = new System.Drawing.Point(342, 93);
+            this.AIGeneralAccuracyMaxNUD.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            -2147483648});
             this.AIGeneralAccuracyMaxNUD.Name = "AIGeneralAccuracyMaxNUD";
             this.AIGeneralAccuracyMaxNUD.Size = new System.Drawing.Size(105, 20);
             this.AIGeneralAccuracyMaxNUD.TabIndex = 137;
@@ -660,6 +675,11 @@ namespace DayZeEditor
             this.AIGeneralAccuracyMinNUD.DecimalPlaces = 2;
             this.AIGeneralAccuracyMinNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.AIGeneralAccuracyMinNUD.Location = new System.Drawing.Point(342, 67);
+            this.AIGeneralAccuracyMinNUD.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            -2147483648});
             this.AIGeneralAccuracyMinNUD.Name = "AIGeneralAccuracyMinNUD";
             this.AIGeneralAccuracyMinNUD.Size = new System.Drawing.Size(105, 20);
             this.AIGeneralAccuracyMinNUD.TabIndex = 135;
@@ -697,6 +717,11 @@ namespace DayZeEditor
             0,
             0,
             0});
+            this.AIGeneralDespawnTimeNUD.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
             this.AIGeneralDespawnTimeNUD.Name = "AIGeneralDespawnTimeNUD";
             this.AIGeneralDespawnTimeNUD.Size = new System.Drawing.Size(111, 20);
             this.AIGeneralDespawnTimeNUD.TabIndex = 133;
@@ -724,6 +749,11 @@ namespace DayZeEditor
             0,
             0,
             0});
+            this.AIGeneralMaxDistRadiusNUD.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
             this.AIGeneralMaxDistRadiusNUD.Name = "AIGeneralMaxDistRadiusNUD";
             this.AIGeneralMaxDistRadiusNUD.Size = new System.Drawing.Size(111, 20);
             this.AIGeneralMaxDistRadiusNUD.TabIndex = 131;
@@ -751,6 +781,11 @@ namespace DayZeEditor
             0,
             0,
             0});
+            this.AIGeneralMinDistRadiusNUD.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
             this.AIGeneralMinDistRadiusNUD.Name = "AIGeneralMinDistRadiusNUD";
             this.AIGeneralMinDistRadiusNUD.Size = new System.Drawing.Size(111, 20);
             this.AIGeneralMinDistRadiusNUD.TabIndex = 129;
@@ -881,6 +916,11 @@ namespace DayZeEditor
             this.CrashAccuracyMaxNUD.DecimalPlaces = 2;
             this.CrashAccuracyMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.CrashAccuracyMaxNUD.Location = new System.Drawing.Point(335, 250);
+            this.CrashAccuracyMaxNUD.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            -2147483648});
             this.CrashAccuracyMaxNUD.Name = "CrashAccuracyMaxNUD";
             this.CrashAccuracyMaxNUD.Size = new System.Drawing.Size(105, 20);
             this.CrashAccuracyMaxNUD.TabIndex = 175;
@@ -915,6 +955,11 @@ namespace DayZeEditor
             this.CrashAccuracyMinNud.DecimalPlaces = 2;
             this.CrashAccuracyMinNud.ForeColor = System.Drawing.SystemColors.Control;
             this.CrashAccuracyMinNud.Location = new System.Drawing.Point(335, 224);
+            this.CrashAccuracyMinNud.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            -2147483648});
             this.CrashAccuracyMinNud.Name = "CrashAccuracyMinNud";
             this.CrashAccuracyMinNud.Size = new System.Drawing.Size(105, 20);
             this.CrashAccuracyMinNud.TabIndex = 173;
@@ -1494,6 +1539,11 @@ namespace DayZeEditor
             this.StaticPatrolAccuracyMaxNUD.DecimalPlaces = 2;
             this.StaticPatrolAccuracyMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.StaticPatrolAccuracyMaxNUD.Location = new System.Drawing.Point(342, 234);
+            this.StaticPatrolAccuracyMaxNUD.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            -2147483648});
             this.StaticPatrolAccuracyMaxNUD.Name = "StaticPatrolAccuracyMaxNUD";
             this.StaticPatrolAccuracyMaxNUD.Size = new System.Drawing.Size(105, 20);
             this.StaticPatrolAccuracyMaxNUD.TabIndex = 171;
@@ -1506,6 +1556,11 @@ namespace DayZeEditor
             this.StaticPatrolAccuracyMinNUD.DecimalPlaces = 2;
             this.StaticPatrolAccuracyMinNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.StaticPatrolAccuracyMinNUD.Location = new System.Drawing.Point(342, 208);
+            this.StaticPatrolAccuracyMinNUD.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            -2147483648});
             this.StaticPatrolAccuracyMinNUD.Name = "StaticPatrolAccuracyMinNUD";
             this.StaticPatrolAccuracyMinNUD.Size = new System.Drawing.Size(105, 20);
             this.StaticPatrolAccuracyMinNUD.TabIndex = 169;

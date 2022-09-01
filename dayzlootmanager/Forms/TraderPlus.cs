@@ -1030,7 +1030,7 @@ namespace DayZeEditor
             {
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
-                currentproject = currentproject
+                currentproject = currentproject,
                 usedtypes = UsedTypes
             };
             DialogResult result = form.ShowDialog();
@@ -1726,7 +1726,7 @@ namespace DayZeEditor
             {
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
-                currentproject = currentproject
+                currentproject = currentproject,
                 usedtypes = UsedTypes
             };
             DialogResult result = form.ShowDialog();

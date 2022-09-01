@@ -2959,7 +2959,8 @@ namespace DayZeEditor
             {
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
-                currentproject = currentproject
+                currentproject = currentproject,
+                LowerCase = true
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -2984,7 +2985,7 @@ namespace DayZeEditor
         private void darkButton70_Click(object sender, EventArgs e)
         {
             string Type = comboBox4.GetItemText(comboBox4.SelectedItem);
-            HardLineSettings.getlist(Type).Add(ItemRarityLB.GetItemText(ItemRarityLB.SelectedItem));
+            HardLineSettings.getlist(Type).Remove(ItemRarityLB.GetItemText(ItemRarityLB.SelectedItem));
             HardLineSettings.isDirty = true;
         }
         #endregion
@@ -5266,7 +5267,7 @@ namespace DayZeEditor
             AddItemfromTypes form = new AddItemfromTypes();
             form.vanillatypes = vanillatypes;
             form.ModTypes = ModTypes;
-            form.currentproject = currentproject
+            form.currentproject = currentproject;
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {

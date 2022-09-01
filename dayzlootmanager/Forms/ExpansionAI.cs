@@ -828,7 +828,7 @@ namespace DayZeEditor
             AIGeneralRespawnTimeNUD.Value = AIPatrolSettings.RespawnTime;
             AIGeneralMinDistRadiusNUD.Value = AIPatrolSettings.MinDistRadius;
             AIGeneralMaxDistRadiusNUD.Value = AIPatrolSettings.MaxDistRadius;
-            AIGeneralDespawnTimeNUD.Value = AIPatrolSettings.DespawnRadius;
+            AIGeneralDespawnRadiusNUD.Value = AIPatrolSettings.DespawnRadius;
             AIGeneralAccuracyMinNUD.Value = AIPatrolSettings.AccuracyMin;
             AIGeneralAccuracyMaxNUD.Value = AIPatrolSettings.AccuracyMax;
 
