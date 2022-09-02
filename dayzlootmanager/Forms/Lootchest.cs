@@ -865,7 +865,6 @@ namespace DayZeEditor
                 }
             }
         }
-
         private void darkButton24_Click(object sender, EventArgs e)
         {
             AddItemfromTypes form = new AddItemfromTypes
@@ -891,7 +890,6 @@ namespace DayZeEditor
                 return;
             }
         }
-
         private void darkButton28_Click(object sender, EventArgs e)
         {
             AddItemfromString form = new AddItemfromString();
@@ -927,21 +925,18 @@ namespace DayZeEditor
             Clipboard.SetText(string.Join(Environment.NewLine, selectedLoot.Cast<object>().Select(o => o.ToString()).ToArray()));
             Console.WriteLine("\nCopied to Clipboard:\n" + string.Join(Environment.NewLine, selectedLoot.Cast<object>().Select(o => o.ToString()).ToArray()));
         }
-
         private void ToolsNameDescTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
             currentLootchestTool.desc = ToolsNameDescTB.Text + "|" + ToolDescDescTB.Text;
             LootChestTools.isDirty = true;
         }
-
         private void ToolDescDescTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
             currentLootchestTool.desc = ToolsNameDescTB.Text + "|" + ToolDescDescTB.Text;
             LootChestTools.isDirty = true;
         }
-
         private void Lootchest_FormClosing(object sender, FormClosingEventArgs e)
         {
             bool needtosave = false;
