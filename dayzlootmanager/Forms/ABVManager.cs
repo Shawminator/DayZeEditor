@@ -130,5 +130,17 @@ namespace DayZeEditor
             AbandonedVehicleRemover.Logging = LoggingCB.Checked == true ? 1 : 0;
             AbandonedVehicleRemover.isDirty = true;
         }
+
+        private void ABVManager_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (AbandonedVehicleRemover.isDirty)
+            {
+                DialogResult dialogResult = MessageBox.Show("You have Unsaved Changes, do you wish to save", "Unsaved Changes found", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    SaveFile();
+                }
+            }
+        }
     }
 }

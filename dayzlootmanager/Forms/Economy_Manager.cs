@@ -599,8 +599,59 @@ namespace DayZeEditor
             //treeView1.Nodes.Add(root);
             treeViewMS1.Nodes.Add(root);
         }
+        private void treeViewMS1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (e.Node.Tag != null && e.Node.Tag is typesType)
+            {
+                TreeNode parent = e.Node.Parent;
+                TreeNode mainparent = parent.Parent;
+                currentcollection = parent.Text;
+                String typesfile = mainparent.Text;
+                if (typesfile == "Vanilla Types")
+                    currentTypesFile = vanillatypes;
+                else
+                    currentTypesFile = ModTypes.FirstOrDefault(x => x.modname == typesfile);
+                isUserInteraction = false;
+                tabControl1.SelectedIndex = 1;
+                currentlootpart = e.Node.Tag as typesType;
+                PopulateLootPartInfo();
+                isUserInteraction = true;
+            }
+            else if (e.Node.Tag != null && e.Node.Tag is string)
+            {
+                tabControl1.SelectedIndex = 0;
+                currentcollection = e.Node.Tag.ToString();
+                darkLabel2.Text = currentcollection;
+                TreeNode parent = e.Node.Parent;
+
+                if (parent != null && parent.Tag.ToString() == "Parent")
+                {
+                    FullTypes = true;
+                    if (currentcollection == "VanillaTypes")
+                    {
+                        currentTypesFile = vanillatypes;
+                    }
+                    else
+                    {
+                        currentTypesFile = ModTypes.FirstOrDefault(x => x.modname == currentcollection);
+                    }
+                }
+                else if (parent != null)
+                {
+                    FullTypes = false;
+                    if (parent.Text == "Vanilla Types")
+                        currentTypesFile = vanillatypes;
+                    else
+                    {
+                        currentTypesFile = ModTypes.FirstOrDefault(x => x.modname == parent.Text);
+                    }
+                }
+            }
+            this.treeViewMS1.SelectedNode = e.Node;
+        }
         private void treeViewMS1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
+        
             if (e.Node.Tag != null && e.Node.Tag is typesType)
             {
                 TreeNode parent = e.Node.Parent;
@@ -5361,7 +5412,109 @@ namespace DayZeEditor
             } 
         }
 
+        private void Economy_Manager_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            bool needtosave = false;
+            if (vanillatypes.isDirty)
+            {
+                needtosave = true;
+            }
+            foreach (TypesFile tf in ModTypes)
+            {
+                if (tf.isDirty)
+                {
+                    needtosave = true;
+                }
+            }
 
+            foreach (eventscofig eventconfig in currentproject.ModEventsList)
+            {
+                if (eventconfig.isDirty)
+                {
+                    needtosave = true;
+                }
+            }
+
+            if (currentproject.cfgeventspawns != null)
+            {
+                if (currentproject.cfgeventspawns.isDirty)
+                {
+                    needtosave = true;
+                }
+            }
+            if (currentproject.cfgeventgroups != null)
+            {
+                if (currentproject.cfgeventgroups.isDirty)
+                {
+                    needtosave = true;
+                }
+            }
+
+            if (currentproject.spawnabletypesList != null)
+            {
+                foreach (Spawnabletypesconfig Spawnabletypesconfig in currentproject.spawnabletypesList)
+                {
+                    if (Spawnabletypesconfig.isDirty)
+                    {
+                        needtosave = true;
+                    }
+                }
+            }
+            if (currentproject.cfgrandompresetsconfig != null)
+            {
+                if (currentproject.cfgrandompresetsconfig.isDirty)
+                {
+                    needtosave = true;
+                }
+            }
+
+            if (currentproject.cfgplayerspawnpoints != null)
+            {
+                if (currentproject.cfgplayerspawnpoints.isDirty)
+                {
+                    needtosave = true;
+                }
+            }
+            if (currentproject.CFGGameplayConfig != null)
+            {
+                if (currentproject.CFGGameplayConfig.isDirty)
+                {
+                    needtosave = true;
+                }
+            }
+            if (currentproject.cfgEffectAreaConfig != null)
+            {
+                if (currentproject.cfgEffectAreaConfig.isDirty)
+                {
+                    needtosave = true;
+                }
+            }
+
+            if (currentproject.gloabsconfig != null)
+            {
+                if (currentproject.gloabsconfig.isDirty)
+                {
+                    needtosave = true;
+                }
+            }
+            if (currentproject.weatherconfig != null)
+            {
+                if (currentproject.weatherconfig.isDirty)
+                {
+                    needtosave = true;
+                }
+            }
+            if (needtosave)
+            {
+                DialogResult dialogResult = MessageBox.Show("You have Unsaved Changes, do you wish to save", "Unsaved Changes found", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    List<string> midifiedfiles = new List<string>();
+                    string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
+                    SaveEconomyFiles(midifiedfiles, SaveTime);
+                }
+            }
+        }
     }
 
 }

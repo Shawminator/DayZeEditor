@@ -659,6 +659,21 @@ namespace DayZeEditor
                 MessageBox.Show("No changes were made.", "Nothing Saved", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
-
+        private void KOTHManager_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            bool needtosave = false;
+            if (KingOfTheHillConfig.isDirty)
+            {
+                needtosave = true;
+            }
+            if (needtosave)
+            {
+                DialogResult dialogResult = MessageBox.Show("You have Unsaved Changes, do you wish to save", "Unsaved Changes found", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    SaveKOTHZoneconfigs();
+                }
+            }
+        }
     }
 }

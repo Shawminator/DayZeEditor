@@ -2677,5 +2677,50 @@ namespace DayZeEditor
                 }
             }
         }
+
+        private void TraderPlus_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            bool needtosave = false;
+            if (TraderPlusBankingConfig.isDirty)
+            {
+                needtosave = true;
+            }
+            if (TraderPlusGarageConfig.isDirty)
+            {
+                needtosave = true;
+            }
+            if (TraderPlusGeneralConfig.isDirty)
+            {
+                needtosave = true;
+            }
+            if (TraderPlusVehiclesConfig.isDirty)
+            {
+                needtosave = true;
+            }
+            if (TraderPlusInsuranceConfig.isDirty)
+            {
+                needtosave = true;
+            }
+            if (TraderPlusSafeZoneConfig.isDirty)
+            {
+                needtosave = true;
+            }
+            if (TraderPlusPriceConfig.isDirty)
+            {
+                needtosave = true;
+            }
+            if (TraderPlusIDsConfig.isDirty)
+            {
+                needtosave = true;
+            }
+            if (needtosave)
+            {
+                DialogResult dialogResult = MessageBox.Show("You have Unsaved Changes, do you wish to save", "Unsaved Changes found", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    SaveTraderfiles();
+                }
+            }
+        }
     }
 }

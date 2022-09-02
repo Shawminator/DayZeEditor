@@ -6339,7 +6339,130 @@ namespace DayZeEditor
 
         }
 
+        private void ExpansionSettings_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            bool needtosave = false;
+            if (AirdropsettingsJson.isDirty)
+            {
+                needtosave = true;
+            }
+            if (BaseBuildingSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (BookSettings.isDirty)
+            {
+                needtosave = true; ;
+            }
+            if (ChatSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (DamageSystemSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (DebugSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (GeneralSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (HardLineSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (LogSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (MapSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (MissionSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            foreach (object msf in MissionSettings.MissionSettingFiles)
+            {
+                if (msf is AirdropMissionSettingFiles)
+                {
+                    AirdropMissionSettingFiles amsf = msf as AirdropMissionSettingFiles;
+                    if (amsf.isDirty)
+                    {
+                        needtosave = true;
+                    }
+                }
+                else if (msf is ContaminatedAreaMissionSettingFiles)
+                {
+                    ContaminatedAreaMissionSettingFiles camsf = msf as ContaminatedAreaMissionSettingFiles;
+                    if (camsf.isDirty)
+                    {
+                        needtosave = true;);
+                    }
+                }
+            }
+            if (MonitoringSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (NameTagSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (NotificationSchedulerSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (NotificationSettings.isDirty)
+            {
+                needtosave = true;
+            }
 
+            if (PartySettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (PlayerListSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (RaidSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (SafeZoneSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (SocialMediaSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (SpawnSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (TerritorySettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (VehicleSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (needtosave)
+            {
+                DialogResult dialogResult = MessageBox.Show("You have Unsaved Changes, do you wish to save", "Unsaved Changes found", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    savefiles();
+                }
+            }
+        }
     }
     public class NullToEmptyGearConverter : JsonConverter<Gear>
     {

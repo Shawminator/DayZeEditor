@@ -1101,6 +1101,7 @@ namespace DayZeEditor
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "KOSZonemanager";
             this.Text = "KOSZone";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.KOSZonemanager_FormClosing);
             this.Load += new System.EventHandler(this.KOSZonemanager_Load);
             this.darkToolStrip21.ResumeLayout(false);
             this.darkToolStrip21.PerformLayout();

@@ -1472,8 +1472,36 @@ namespace DayZeEditor
             AISettings.PlayerFactions.Remove(PlayerFactionsLB.GetItemText(PlayerFactionsLB.SelectedItem));
             AISettings.isDirty = true;
         }
+
         #endregion AISettings
 
+        private void ExpansionAI_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            bool needtosave = false;
+            if (AISettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (AIPatrolSettings.isDirty)
+            {
+                needtosave = true;
+            }
 
+            foreach (AILoadouts AILO in LoadoutList)
+            {
+                if (AILO.isDirty)
+                {
+                    needtosave = true;
+                }
+            }
+            if (needtosave)
+            {
+                DialogResult dialogResult = MessageBox.Show("You have Unsaved Changes, do you wish to save", "Unsaved Changes found", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    savefiles();
+                }
+            }
+        }
     }
 }

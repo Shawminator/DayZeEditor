@@ -659,5 +659,22 @@ namespace DayZeEditor
             pictureBox1.Invalidate();
             Helicrash.isDirty = true;
         }
+
+        private void HelicrashMissionsManager_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            bool needtosave = false;
+            if (Helicrash.isDirty)
+            {
+                needtosave = true;
+            }
+            if (needtosave)
+            {
+                DialogResult dialogResult = MessageBox.Show("You have Unsaved Changes, do you wish to save", "Unsaved Changes found", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    SaveHeliCrashMissions();
+                }
+            }
+        }
     }
 }

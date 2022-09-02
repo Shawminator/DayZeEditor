@@ -1179,6 +1179,7 @@ namespace DayZeEditor
             this.treeViewMS1.SetMultiselect = true;
             this.treeViewMS1.Size = new System.Drawing.Size(401, 538);
             this.treeViewMS1.TabIndex = 0;
+            this.treeViewMS1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewMS1_AfterSelect);
             this.treeViewMS1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewMS1_NodeMouseClick);
             // 
             // tabControl1
@@ -2650,7 +2651,7 @@ namespace DayZeEditor
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(62, 42);
+            this.toolStripButton2.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton2.Text = "Find Next";
             this.toolStripButton2.Visible = false;
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
@@ -11363,6 +11364,7 @@ namespace DayZeEditor
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Economy_Manager";
             this.Text = "Form3";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Economy_Manager_FormClosing);
             this.Load += new System.EventHandler(this.Economy_Manager_Load);
             this.TextChanged += new System.EventHandler(this.AreaNameTB_TextChanged);
             this.splitContainer1.Panel1.ResumeLayout(false);

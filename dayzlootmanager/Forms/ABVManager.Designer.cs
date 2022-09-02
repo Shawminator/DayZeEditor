@@ -36,17 +36,17 @@ namespace DayZeEditor
             this.LifetimeNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel35 = new DarkUI.Controls.DarkLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.UpdateIntervalNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel1 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel3 = new DarkUI.Controls.DarkLabel();
+            this.LoggingCB = new System.Windows.Forms.CheckBox();
             this.SaveIntervalNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel2 = new DarkUI.Controls.DarkLabel();
-            this.LoggingCB = new System.Windows.Forms.CheckBox();
-            this.darkLabel3 = new DarkUI.Controls.DarkLabel();
+            this.UpdateIntervalNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel1 = new DarkUI.Controls.DarkLabel();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LifetimeNUD)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.UpdateIntervalNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SaveIntervalNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UpdateIntervalNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -134,31 +134,28 @@ namespace DayZeEditor
             this.groupBox1.TabIndex = 158;
             this.groupBox1.TabStop = false;
             // 
-            // UpdateIntervalNUD
+            // darkLabel3
             // 
-            this.UpdateIntervalNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.UpdateIntervalNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.UpdateIntervalNUD.Location = new System.Drawing.Point(111, 45);
-            this.UpdateIntervalNUD.Maximum = new decimal(new int[] {
-            99999999,
-            0,
-            0,
-            0});
-            this.UpdateIntervalNUD.Name = "UpdateIntervalNUD";
-            this.UpdateIntervalNUD.Size = new System.Drawing.Size(106, 20);
-            this.UpdateIntervalNUD.TabIndex = 158;
-            this.UpdateIntervalNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.UpdateIntervalNUD.ValueChanged += new System.EventHandler(this.UpdateIntervalNUD_ValueChanged);
+            this.darkLabel3.AutoSize = true;
+            this.darkLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel3.Location = new System.Drawing.Point(16, 100);
+            this.darkLabel3.Name = "darkLabel3";
+            this.darkLabel3.Size = new System.Drawing.Size(45, 13);
+            this.darkLabel3.TabIndex = 163;
+            this.darkLabel3.Text = "Logging";
             // 
-            // darkLabel1
+            // LoggingCB
             // 
-            this.darkLabel1.AutoSize = true;
-            this.darkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel1.Location = new System.Drawing.Point(16, 47);
-            this.darkLabel1.Name = "darkLabel1";
-            this.darkLabel1.Size = new System.Drawing.Size(80, 13);
-            this.darkLabel1.TabIndex = 159;
-            this.darkLabel1.Text = "Update Interval";
+            this.LoggingCB.AutoSize = true;
+            this.LoggingCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.LoggingCB.Location = new System.Drawing.Point(111, 100);
+            this.LoggingCB.Name = "LoggingCB";
+            this.LoggingCB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.LoggingCB.Size = new System.Drawing.Size(15, 14);
+            this.LoggingCB.TabIndex = 162;
+            this.LoggingCB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LoggingCB.UseVisualStyleBackColor = true;
+            this.LoggingCB.CheckedChanged += new System.EventHandler(this.LoggingCB_CheckedChanged);
             // 
             // SaveIntervalNUD
             // 
@@ -186,28 +183,31 @@ namespace DayZeEditor
             this.darkLabel2.TabIndex = 161;
             this.darkLabel2.Text = "Save Interval";
             // 
-            // LoggingCB
+            // UpdateIntervalNUD
             // 
-            this.LoggingCB.AutoSize = true;
-            this.LoggingCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.LoggingCB.Location = new System.Drawing.Point(111, 100);
-            this.LoggingCB.Name = "LoggingCB";
-            this.LoggingCB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.LoggingCB.Size = new System.Drawing.Size(15, 14);
-            this.LoggingCB.TabIndex = 162;
-            this.LoggingCB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.LoggingCB.UseVisualStyleBackColor = true;
-            this.LoggingCB.CheckedChanged += new System.EventHandler(this.LoggingCB_CheckedChanged);
+            this.UpdateIntervalNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.UpdateIntervalNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.UpdateIntervalNUD.Location = new System.Drawing.Point(111, 45);
+            this.UpdateIntervalNUD.Maximum = new decimal(new int[] {
+            99999999,
+            0,
+            0,
+            0});
+            this.UpdateIntervalNUD.Name = "UpdateIntervalNUD";
+            this.UpdateIntervalNUD.Size = new System.Drawing.Size(106, 20);
+            this.UpdateIntervalNUD.TabIndex = 158;
+            this.UpdateIntervalNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.UpdateIntervalNUD.ValueChanged += new System.EventHandler(this.UpdateIntervalNUD_ValueChanged);
             // 
-            // darkLabel3
+            // darkLabel1
             // 
-            this.darkLabel3.AutoSize = true;
-            this.darkLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel3.Location = new System.Drawing.Point(16, 100);
-            this.darkLabel3.Name = "darkLabel3";
-            this.darkLabel3.Size = new System.Drawing.Size(45, 13);
-            this.darkLabel3.TabIndex = 163;
-            this.darkLabel3.Text = "Logging";
+            this.darkLabel1.AutoSize = true;
+            this.darkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel1.Location = new System.Drawing.Point(16, 47);
+            this.darkLabel1.Name = "darkLabel1";
+            this.darkLabel1.Size = new System.Drawing.Size(80, 13);
+            this.darkLabel1.TabIndex = 159;
+            this.darkLabel1.Text = "Update Interval";
             // 
             // ABVManager
             // 
@@ -219,14 +219,15 @@ namespace DayZeEditor
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ABVManager";
             this.Text = "ABVManager";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ABVManager_FormClosing);
             this.Load += new System.EventHandler(this.ABVManager_Load);
             this.darkToolStrip21.ResumeLayout(false);
             this.darkToolStrip21.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LifetimeNUD)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.UpdateIntervalNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SaveIntervalNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UpdateIntervalNUD)).EndInit();
             this.ResumeLayout(false);
 
         }

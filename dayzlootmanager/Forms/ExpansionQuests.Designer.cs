@@ -323,6 +323,8 @@ namespace DayZeEditor
             this.darkButton17 = new DarkUI.Controls.DarkButton();
             this.darkButton18 = new DarkUI.Controls.DarkButton();
             this.QuestObjectivesAISpawnInfoGB = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.QuestObjectivesDespawnRadiusNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel56 = new DarkUI.Controls.DarkLabel();
             this.QuestObjectivesMinDistRadiusNUD = new System.Windows.Forms.NumericUpDown();
@@ -365,8 +367,6 @@ namespace DayZeEditor
             this.addNewTreasureHuntObjectiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteObjectiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewCraftingObjectiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -4030,6 +4030,27 @@ namespace DayZeEditor
             this.QuestObjectivesAISpawnInfoGB.TabStop = false;
             this.QuestObjectivesAISpawnInfoGB.Text = "Spawn Info";
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.ForeColor = System.Drawing.SystemColors.Control;
+            this.checkBox1.Location = new System.Drawing.Point(172, 97);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.TabIndex = 235;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.SystemColors.Control;
+            this.label6.Location = new System.Drawing.Point(6, 97);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(63, 13);
+            this.label6.TabIndex = 236;
+            this.label6.Text = "Can Loot AI";
+            // 
             // QuestObjectivesDespawnRadiusNUD
             // 
             this.QuestObjectivesDespawnRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
@@ -4306,6 +4327,7 @@ namespace DayZeEditor
             this.treeViewMS1.Location = new System.Drawing.Point(8, 10);
             this.treeViewMS1.Name = "treeViewMS1";
             this.treeViewMS1.SelectedNodes = ((System.Collections.ArrayList)(resources.GetObject("treeViewMS1.SelectedNodes")));
+            this.treeViewMS1.SetMultiselect = true;
             this.treeViewMS1.Size = new System.Drawing.Size(230, 517);
             this.treeViewMS1.TabIndex = 206;
             this.treeViewMS1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewMS1_NodeMouseClick);
@@ -4492,27 +4514,6 @@ namespace DayZeEditor
             this.addNewCraftingObjectiveToolStripMenuItem.Text = "Add New Crafting Objective";
             this.addNewCraftingObjectiveToolStripMenuItem.Click += new System.EventHandler(this.addNewCraftingObjectiveToolStripMenuItem_Click);
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.ForeColor = System.Drawing.SystemColors.Control;
-            this.checkBox1.Location = new System.Drawing.Point(172, 97);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
-            this.checkBox1.TabIndex = 235;
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.SystemColors.Control;
-            this.label6.Location = new System.Drawing.Point(6, 97);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(63, 13);
-            this.label6.TabIndex = 236;
-            this.label6.Text = "Can Loot AI";
-            // 
             // ExpansionQuests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4524,6 +4525,7 @@ namespace DayZeEditor
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ExpansionQuests";
             this.Text = "ExpansionAI";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ExpansionQuests_FormClosing);
             this.Load += new System.EventHandler(this.ExpansionQuests_Load);
             this.darkToolStrip21.ResumeLayout(false);
             this.darkToolStrip21.PerformLayout();

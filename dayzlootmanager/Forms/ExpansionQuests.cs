@@ -3468,5 +3468,36 @@ namespace DayZeEditor
 
         #endregion objectives
 
+        private void ExpansionQuests_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            bool needtosave = false;
+            if (QuestSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            foreach (ExpansionQuestNPCs npcs in QuestNPCs.NPCList)
+            {
+                if (npcs.isDirty)
+                    needtosave = true;
+            }
+            foreach (Quests Quest in QuestsList.QuestList)
+            {
+                if (Quest.isDirty)
+                    needtosave = true;
+            }
+            foreach (QuestObjectivesBase obj in QuestObjectives.Objectives)
+            {
+                if (obj.isDirty)
+                    needtosave = true; 
+            }
+            if (needtosave)
+            {
+                DialogResult dialogResult = MessageBox.Show("You have Unsaved Changes, do you wish to save", "Unsaved Changes found", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    savefiles();
+                }
+            }
+        }
     }
 }

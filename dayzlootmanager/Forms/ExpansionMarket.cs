@@ -3412,7 +3412,47 @@ namespace DayZeEditor
 
         }
 
+        private void darkLabel8_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void ExpansionMarket_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            bool needtosave = false;
+            if (marketsettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (tradermaps.isDirty)
+            {
+                needtosave = true;
+            }
+            foreach (Zones zones in Zones.ZoneList)
+            {
+                if (zones.isDirty)
+                    needtosave = true; 
+                continue;
+            }
+            foreach (Traders trader in Traders.Traderlist)
+            {
+                if (trader.isDirty)
+                    needtosave = true; 
+            }
+            foreach (Categories cat in MarketCats.CatList)
+            {
+                if (cat.isDirty)
+                    needtosave = true; 
+            }
+            if (needtosave)
+            {
+                DialogResult dialogResult = MessageBox.Show("You have Unsaved Changes, do you wish to save", "Unsaved Changes found", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    saveMarketfiles();
+                }
+            }
+        }
     }
 }
 

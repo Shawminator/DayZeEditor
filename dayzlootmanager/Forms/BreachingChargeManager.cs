@@ -596,5 +596,17 @@ namespace DayZeEditor
             Currentcharge.Classname = ChargeClassNameTB.Text;
             Breachingcharge.isDirty = true;
         }
+
+        private void BreachingChargeManager_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Breachingcharge.isDirty)
+            {
+                DialogResult dialogResult = MessageBox.Show("You have Unsaved Changes, do you wish to save", "Unsaved Changes found", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    SaveFile();
+                }
+            }
+        }
     }
 }

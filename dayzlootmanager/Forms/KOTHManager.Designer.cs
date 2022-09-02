@@ -1191,6 +1191,7 @@ namespace DayZeEditor
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "KOTHManager";
             this.Text = "KOTHManager";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.KOTHManager_FormClosing);
             this.Load += new System.EventHandler(this.KOTHManager_Load);
             this.darkToolStrip22.ResumeLayout(false);
             this.darkToolStrip22.PerformLayout();

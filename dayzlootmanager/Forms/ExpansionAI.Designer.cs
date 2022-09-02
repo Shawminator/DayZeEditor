@@ -2842,6 +2842,7 @@ namespace DayZeEditor
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ExpansionAI";
             this.Text = "ExpansionAI";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ExpansionAI_FormClosing);
             this.Load += new System.EventHandler(this.ExpansionAI_Load);
             this.darkToolStrip21.ResumeLayout(false);
             this.darkToolStrip21.PerformLayout();

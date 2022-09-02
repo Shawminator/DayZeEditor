@@ -140,6 +140,12 @@ namespace DayZeEditor
         }
         private void SaveFileButton_Click(object sender, EventArgs e)
         {
+            savefiles();
+
+        }
+
+        private void savefiles()
+        {
             string message = "The folliwng files Were saved." + Environment.NewLine;
             int savedfiles = 0;
             string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
@@ -166,7 +172,6 @@ namespace DayZeEditor
                 MessageBox.Show(message);
             else
                 MessageBox.Show("no files were saved");
-
         }
 
         private void toolStripDropDownButton1_Click(object sender, EventArgs e)
@@ -809,6 +814,10 @@ namespace DayZeEditor
                 }
             }
             File.WriteAllText("PriceExport.txt", String.Join("\n", list.ToArray()));
+        }
+
+        private void DRJonesTrader_Manager_FormClosing(object sender, FormClosingEventArgs e)
+        {
         }
     }
 }

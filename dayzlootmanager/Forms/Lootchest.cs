@@ -942,7 +942,25 @@ namespace DayZeEditor
             LootChestTools.isDirty = true;
         }
 
-
-
+        private void Lootchest_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            bool needtosave = false;
+            if (LootChestTable.isDirty)
+            {
+                needtosave = true;
+            }
+            if (LootChestTools.isDirty)
+            {
+                needtosave = true;
+            }
+            if (needtosave)
+            {
+                DialogResult dialogResult = MessageBox.Show("You have Unsaved Changes, do you wish to save", "Unsaved Changes found", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    savefiles();
+                }
+            }
+        }
     }
 }

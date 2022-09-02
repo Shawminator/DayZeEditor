@@ -215,7 +215,9 @@ namespace DayZeEditor
         private void closemdichildren()
         {
             if (MdiChildren.Length >= 1)
+            {
                 MdiChildren[0].Close();
+            }
         }
         private void Slide_Click(object sender, EventArgs e)
         {
@@ -336,6 +338,10 @@ namespace DayZeEditor
                 else
                     ExpansionQuestsButton.Visible = false;
 
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\Advanced_Workbench\\AdvancedWorkBenchConfig.json"))
+                    AdvancedWorkbenchButton.Visible = true;
+                else
+                    AdvancedWorkbenchButton.Visible = false;
 
 
             }
@@ -752,5 +758,31 @@ namespace DayZeEditor
             timer1.Start();
         }
 
+        private void AdvancedWB_Click(object sender, EventArgs e)
+        {
+            AdvancedWorkBenchManager _TM = Application.OpenForms["AdvancedWorkBenchManager"] as AdvancedWorkBenchManager;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new AdvancedWorkBenchManager
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+
+                };
+                _TM.Show();
+                Console.WriteLine("loading AdvancedWorkBenchManager manager....");
+            }
+            timer1.Start();
+        }
     }
 }

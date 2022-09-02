@@ -37,14 +37,14 @@ namespace DayZeEditor
             this.BBPBoolsCB = new System.Windows.Forms.CheckBox();
             this.BBPBoolsLB = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.BBPIntsNUD = new System.Windows.Forms.NumericUpDown();
             this.BBPIntsLB = new System.Windows.Forms.ListBox();
+            this.BBPIntsNUD = new System.Windows.Forms.NumericUpDown();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.BBPlistsLB = new System.Windows.Forms.ListBox();
-            this.CurrentBBPListLB = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.darkButton19 = new DarkUI.Controls.DarkButton();
             this.darkButton20 = new DarkUI.Controls.DarkButton();
-            this.label1 = new System.Windows.Forms.Label();
+            this.CurrentBBPListLB = new System.Windows.Forms.ListBox();
+            this.BBPlistsLB = new System.Windows.Forms.ListBox();
             this.BBPMixerPOSXNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel35 = new DarkUI.Controls.DarkLabel();
             this.BBPMixerOZNUD = new System.Windows.Forms.NumericUpDown();
@@ -54,10 +54,10 @@ namespace DayZeEditor
             this.BBPMixerOXNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel11 = new DarkUI.Controls.DarkLabel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.darkButton3 = new DarkUI.Controls.DarkButton();
             this.darkButton1 = new DarkUI.Controls.DarkButton();
             this.darkButton2 = new DarkUI.Controls.DarkButton();
             this.BBP_CementMixerLocationsLB = new System.Windows.Forms.ListBox();
-            this.darkButton3 = new DarkUI.Controls.DarkButton();
             this.darkToolStrip21.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -162,6 +162,19 @@ namespace DayZeEditor
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "BBP  ints";
             // 
+            // BBPIntsLB
+            // 
+            this.BBPIntsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BBPIntsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.BBPIntsLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.BBPIntsLB.FormattingEnabled = true;
+            this.BBPIntsLB.Location = new System.Drawing.Point(6, 19);
+            this.BBPIntsLB.Name = "BBPIntsLB";
+            this.BBPIntsLB.Size = new System.Drawing.Size(199, 368);
+            this.BBPIntsLB.TabIndex = 90;
+            this.BBPIntsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.BBPIntsLB.SelectedIndexChanged += new System.EventHandler(this.BBPIntsLB_SelectedIndexChanged);
+            // 
             // BBPIntsNUD
             // 
             this.BBPIntsNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
@@ -183,19 +196,6 @@ namespace DayZeEditor
             this.BBPIntsNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.BBPIntsNUD.ValueChanged += new System.EventHandler(this.BBPIntsNUD_ValueChanged);
             // 
-            // BBPIntsLB
-            // 
-            this.BBPIntsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.BBPIntsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.BBPIntsLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.BBPIntsLB.FormattingEnabled = true;
-            this.BBPIntsLB.Location = new System.Drawing.Point(6, 19);
-            this.BBPIntsLB.Name = "BBPIntsLB";
-            this.BBPIntsLB.Size = new System.Drawing.Size(199, 368);
-            this.BBPIntsLB.TabIndex = 90;
-            this.BBPIntsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.BBPIntsLB.SelectedIndexChanged += new System.EventHandler(this.BBPIntsLB_SelectedIndexChanged);
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label1);
@@ -211,30 +211,14 @@ namespace DayZeEditor
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "BBP  Lists";
             // 
-            // BBPlistsLB
+            // label1
             // 
-            this.BBPlistsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.BBPlistsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.BBPlistsLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.BBPlistsLB.FormattingEnabled = true;
-            this.BBPlistsLB.Location = new System.Drawing.Point(6, 19);
-            this.BBPlistsLB.Name = "BBPlistsLB";
-            this.BBPlistsLB.Size = new System.Drawing.Size(199, 147);
-            this.BBPlistsLB.TabIndex = 90;
-            this.BBPlistsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.BBPlistsLB.SelectedIndexChanged += new System.EventHandler(this.BBPlistsLB_SelectedIndexChanged);
-            // 
-            // CurrentBBPListLB
-            // 
-            this.CurrentBBPListLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.CurrentBBPListLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.CurrentBBPListLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CurrentBBPListLB.FormattingEnabled = true;
-            this.CurrentBBPListLB.Location = new System.Drawing.Point(6, 188);
-            this.CurrentBBPListLB.Name = "CurrentBBPListLB";
-            this.CurrentBBPListLB.Size = new System.Drawing.Size(199, 199);
-            this.CurrentBBPListLB.TabIndex = 91;
-            this.CurrentBBPListLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 172);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.TabIndex = 241;
+            this.label1.Text = "Items";
             // 
             // darkButton19
             // 
@@ -258,14 +242,30 @@ namespace DayZeEditor
             this.darkButton20.Text = "+";
             this.darkButton20.Click += new System.EventHandler(this.darkButton20_Click);
             // 
-            // label1
+            // CurrentBBPListLB
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 172);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
-            this.label1.TabIndex = 241;
-            this.label1.Text = "Items";
+            this.CurrentBBPListLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CurrentBBPListLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.CurrentBBPListLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CurrentBBPListLB.FormattingEnabled = true;
+            this.CurrentBBPListLB.Location = new System.Drawing.Point(6, 188);
+            this.CurrentBBPListLB.Name = "CurrentBBPListLB";
+            this.CurrentBBPListLB.Size = new System.Drawing.Size(199, 199);
+            this.CurrentBBPListLB.TabIndex = 91;
+            this.CurrentBBPListLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            // 
+            // BBPlistsLB
+            // 
+            this.BBPlistsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BBPlistsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.BBPlistsLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.BBPlistsLB.FormattingEnabled = true;
+            this.BBPlistsLB.Location = new System.Drawing.Point(6, 19);
+            this.BBPlistsLB.Name = "BBPlistsLB";
+            this.BBPlistsLB.Size = new System.Drawing.Size(199, 147);
+            this.BBPlistsLB.TabIndex = 90;
+            this.BBPlistsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.BBPlistsLB.SelectedIndexChanged += new System.EventHandler(this.BBPlistsLB_SelectedIndexChanged);
             // 
             // BBPMixerPOSXNUD
             // 
@@ -441,6 +441,17 @@ namespace DayZeEditor
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "BBP  Cement Mixer Locations";
             // 
+            // darkButton3
+            // 
+            this.darkButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton3.Location = new System.Drawing.Point(35, 288);
+            this.darkButton3.Name = "darkButton3";
+            this.darkButton3.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton3.Size = new System.Drawing.Size(168, 23);
+            this.darkButton3.TabIndex = 241;
+            this.darkButton3.Text = "Import from DZE";
+            this.darkButton3.Click += new System.EventHandler(this.darkButton3_Click);
+            // 
             // darkButton1
             // 
             this.darkButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -476,17 +487,6 @@ namespace DayZeEditor
             this.BBP_CementMixerLocationsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.BBP_CementMixerLocationsLB.SelectedIndexChanged += new System.EventHandler(this.BBP_CementMixerLocationsLB_SelectedIndexChanged);
             // 
-            // darkButton3
-            // 
-            this.darkButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton3.Location = new System.Drawing.Point(35, 288);
-            this.darkButton3.Name = "darkButton3";
-            this.darkButton3.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton3.Size = new System.Drawing.Size(168, 23);
-            this.darkButton3.TabIndex = 241;
-            this.darkButton3.Text = "Import from DZE";
-            this.darkButton3.Click += new System.EventHandler(this.darkButton3_Click);
-            // 
             // BaseBuildingPlus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -501,6 +501,7 @@ namespace DayZeEditor
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "BaseBuildingPlus";
             this.Text = "BaseBuildingPlus";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BaseBuildingPlus_FormClosing);
             this.Load += new System.EventHandler(this.BaseBuildingPlus_Load);
             this.darkToolStrip21.ResumeLayout(false);
             this.darkToolStrip21.PerformLayout();

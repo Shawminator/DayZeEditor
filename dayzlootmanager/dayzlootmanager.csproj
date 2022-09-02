@@ -119,6 +119,12 @@
     <Compile Include="Forms\ABVManager.Designer.cs">
       <DependentUpon>ABVManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AdvancedWorkBenchManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AdvancedWorkBenchManager.Designer.cs">
+      <DependentUpon>AdvancedWorkBenchManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\BaseBuildingPlus.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -318,6 +324,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\ABVManager.resx">
       <DependentUpon>ABVManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AdvancedWorkBenchManager.resx">
+      <DependentUpon>AdvancedWorkBenchManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BaseBuildingPlus.resx">
       <DependentUpon>BaseBuildingPlus.cs</DependentUpon>

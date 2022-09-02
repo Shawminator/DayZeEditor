@@ -36,6 +36,7 @@ namespace DayZeEditor
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.CreateLogsCB = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.defuseToolUnarmedCB = new System.Windows.Forms.CheckBox();
             this.ChargeDamageToObjectsNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel22 = new DarkUI.Controls.DarkLabel();
             this.darkButton31 = new DarkUI.Controls.DarkButton();
@@ -96,6 +97,7 @@ namespace DayZeEditor
             this.ChargeClassNameTB = new System.Windows.Forms.TextBox();
             this.BCChargesLB = new System.Windows.Forms.ListBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.AcceptedChargesCB = new System.Windows.Forms.ComboBox();
             this.darkButton5 = new DarkUI.Controls.DarkButton();
             this.darkButton6 = new DarkUI.Controls.DarkButton();
             this.DestroyableObjectsLB = new System.Windows.Forms.ListBox();
@@ -110,8 +112,6 @@ namespace DayZeEditor
             this.darkLabel23 = new DarkUI.Controls.DarkLabel();
             this.TiersNameTB = new System.Windows.Forms.TextBox();
             this.TiersLB = new System.Windows.Forms.ListBox();
-            this.AcceptedChargesCB = new System.Windows.Forms.ComboBox();
-            this.defuseToolUnarmedCB = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -275,6 +275,19 @@ namespace DayZeEditor
             this.groupBox2.TabIndex = 51;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Charges";
+            // 
+            // defuseToolUnarmedCB
+            // 
+            this.defuseToolUnarmedCB.AutoSize = true;
+            this.defuseToolUnarmedCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.defuseToolUnarmedCB.Location = new System.Drawing.Point(398, 342);
+            this.defuseToolUnarmedCB.Name = "defuseToolUnarmedCB";
+            this.defuseToolUnarmedCB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.defuseToolUnarmedCB.Size = new System.Drawing.Size(69, 17);
+            this.defuseToolUnarmedCB.TabIndex = 175;
+            this.defuseToolUnarmedCB.Text = "Unarmed";
+            this.defuseToolUnarmedCB.UseVisualStyleBackColor = true;
+            this.defuseToolUnarmedCB.CheckedChanged += new System.EventHandler(this.defuseToolUnarmedCB_CheckedChanged);
             // 
             // ChargeDamageToObjectsNUD
             // 
@@ -1046,6 +1059,16 @@ namespace DayZeEditor
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tiers";
             // 
+            // AcceptedChargesCB
+            // 
+            this.AcceptedChargesCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.AcceptedChargesCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.AcceptedChargesCB.FormattingEnabled = true;
+            this.AcceptedChargesCB.Location = new System.Drawing.Point(6, 403);
+            this.AcceptedChargesCB.Name = "AcceptedChargesCB";
+            this.AcceptedChargesCB.Size = new System.Drawing.Size(222, 21);
+            this.AcceptedChargesCB.TabIndex = 184;
+            // 
             // darkButton5
             // 
             this.darkButton5.Location = new System.Drawing.Point(388, 432);
@@ -1199,29 +1222,6 @@ namespace DayZeEditor
             this.TiersLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.TiersLB.SelectedIndexChanged += new System.EventHandler(this.TiersLB_SelectedIndexChanged);
             // 
-            // AcceptedChargesCB
-            // 
-            this.AcceptedChargesCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.AcceptedChargesCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.AcceptedChargesCB.FormattingEnabled = true;
-            this.AcceptedChargesCB.Location = new System.Drawing.Point(6, 403);
-            this.AcceptedChargesCB.Name = "AcceptedChargesCB";
-            this.AcceptedChargesCB.Size = new System.Drawing.Size(222, 21);
-            this.AcceptedChargesCB.TabIndex = 184;
-            // 
-            // defuseToolUnarmedCB
-            // 
-            this.defuseToolUnarmedCB.AutoSize = true;
-            this.defuseToolUnarmedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.defuseToolUnarmedCB.Location = new System.Drawing.Point(398, 342);
-            this.defuseToolUnarmedCB.Name = "defuseToolUnarmedCB";
-            this.defuseToolUnarmedCB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.defuseToolUnarmedCB.Size = new System.Drawing.Size(69, 17);
-            this.defuseToolUnarmedCB.TabIndex = 175;
-            this.defuseToolUnarmedCB.Text = "Unarmed";
-            this.defuseToolUnarmedCB.UseVisualStyleBackColor = true;
-            this.defuseToolUnarmedCB.CheckedChanged += new System.EventHandler(this.defuseToolUnarmedCB_CheckedChanged);
-            // 
             // BreachingChargeManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1234,6 +1234,7 @@ namespace DayZeEditor
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "BreachingChargeManager";
             this.Text = "BreachingChargeManager";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BreachingChargeManager_FormClosing);
             this.Load += new System.EventHandler(this.BreachingChargeManager_Load);
             this.darkToolStrip21.ResumeLayout(false);
             this.darkToolStrip21.PerformLayout();

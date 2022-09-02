@@ -4479,6 +4479,7 @@ namespace DayZeEditor
             this.darkLabel8.Size = new System.Drawing.Size(54, 13);
             this.darkLabel8.TabIndex = 78;
             this.darkLabel8.Text = "Max Price";
+            this.darkLabel8.Click += new System.EventHandler(this.darkLabel8_Click);
             // 
             // darkLabel10
             // 
@@ -4946,6 +4947,7 @@ namespace DayZeEditor
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ExpansionMarket";
             this.Text = "Missionssettings";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ExpansionMarket_FormClosing);
             this.Load += new System.EventHandler(this.ExpansionMarket_Load);
             this.darkToolStrip21.ResumeLayout(false);
             this.darkToolStrip21.PerformLayout();

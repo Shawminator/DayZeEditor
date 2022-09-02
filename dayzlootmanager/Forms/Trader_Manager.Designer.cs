@@ -1070,6 +1070,7 @@ namespace DayZeEditor
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DRJonesTrader_Manager";
             this.Text = "TraderManager";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DRJonesTrader_Manager_FormClosing);
             this.Load += new System.EventHandler(this.Trader_Manager_Load);
             this.darkToolStrip21.ResumeLayout(false);
             this.darkToolStrip21.PerformLayout();

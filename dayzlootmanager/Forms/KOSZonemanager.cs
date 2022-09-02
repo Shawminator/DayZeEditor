@@ -610,8 +610,28 @@ namespace DayZeEditor
             currentDynamicpurgeschedule.EndMin = Dtime.Minute;
             KosPurgeConfig.isDirty = true;
         }
+
         #endregion KOSZonePurg
 
-
+        private void KOSZonemanager_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            bool needtosave = false;
+            if (KosZoneconfig.isDirty)
+            {
+                needtosave = true;
+            }
+            if (KosPurgeConfig.isDirty)
+            {
+                needtosave = true;
+            }
+            if (needtosave)
+            {
+                DialogResult dialogResult = MessageBox.Show("You have Unsaved Changes, do you wish to save", "Unsaved Changes found", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    SaveKOSZoneconfigs();
+                }
+            }
+        }
     }
 }

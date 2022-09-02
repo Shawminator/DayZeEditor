@@ -4613,6 +4613,7 @@ namespace DayZeEditor
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TraderPlus";
             this.Text = "TraderPlus";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TraderPlus_FormClosing);
             this.Load += new System.EventHandler(this.TraderPlus_Load);
             this.darkToolStrip21.ResumeLayout(false);
             this.darkToolStrip21.PerformLayout();

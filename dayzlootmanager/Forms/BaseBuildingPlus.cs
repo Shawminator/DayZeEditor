@@ -325,5 +325,17 @@ namespace DayZeEditor
             BBP_Cementmixerlocations.orientation[2] = (float)BBPMixerOZNUD.Value;
             BBPSettings.isDirty = true;
         }
+
+        private void BaseBuildingPlus_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (BBPSettings.isDirty)
+            {
+                DialogResult dialogResult = MessageBox.Show("You have Unsaved Changes, do you wish to save", "Unsaved Changes found", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Savefiles();
+                }
+            }
+        }
     }
 }

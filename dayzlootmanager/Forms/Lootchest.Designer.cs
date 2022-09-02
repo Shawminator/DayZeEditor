@@ -1626,6 +1626,7 @@ namespace DayZeEditor
             this.Name = "Lootchest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Lootchest";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Lootchest_FormClosing);
             this.Load += new System.EventHandler(this.Lootchest_Load);
             this.darkToolStrip21.ResumeLayout(false);
             this.darkToolStrip21.PerformLayout();

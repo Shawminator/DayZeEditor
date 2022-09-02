@@ -1377,6 +1377,7 @@ namespace DayZeEditor
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "HelicrashMissionsManager";
             this.Text = "HelicrashMissionsManager";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HelicrashMissionsManager_FormClosing);
             this.Load += new System.EventHandler(this.HelicrashMissionsManager_Load);
             this.darkToolStrip21.ResumeLayout(false);
             this.darkToolStrip21.PerformLayout();
