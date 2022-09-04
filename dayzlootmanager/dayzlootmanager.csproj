@@ -143,6 +143,12 @@
     <Compile Include="Forms\ExpansionQuests.Designer.cs">
       <DependentUpon>ExpansionQuests.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MysteryBoxManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MysteryBoxManager.Designer.cs">
+      <DependentUpon>MysteryBoxManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="HelperForms\Add new container.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -336,6 +342,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ExpansionQuests.resx">
       <DependentUpon>ExpansionQuests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MysteryBoxManager.resx">
+      <DependentUpon>MysteryBoxManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HelperForms\Add new container.resx">
       <DependentUpon>Add new container.cs</DependentUpon>

@@ -6401,7 +6401,7 @@ namespace DayZeEditor
                     ContaminatedAreaMissionSettingFiles camsf = msf as ContaminatedAreaMissionSettingFiles;
                     if (camsf.isDirty)
                     {
-                        needtosave = true;);
+                        needtosave = true;
                     }
                 }
             }

@@ -100,34 +100,34 @@ namespace DayZeEditor
                 newnode.Tag = objs;
                 switch (objs.QuestType)
                 {
-                    case QuestType.TARGET:
+                    case QuExpansionQuestObjectiveTypeestType.TARGET:
                         ObjectivesTarget.Nodes.Add(newnode);
                         break;
-                    case QuestType.TRAVEL:
+                    case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                         ObjectivesTravel.Nodes.Add(newnode);
                         break;
-                    case QuestType.COLLECT:
+                    case QuExpansionQuestObjectiveTypeestType.COLLECT:
                         ObjectivesCollection.Nodes.Add(newnode);
                         break;
-                    case QuestType.DELIVERY:
+                    case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                         ObjectivesDelivery.Nodes.Add(newnode);
                         break;
-                    case QuestType.TREASUREHUNT:
+                    case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                         ObjectivesTreasureHunt.Nodes.Add(newnode);
                         break;
-                    case QuestType.AIPATROL:
+                    case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                         ObjectivesAIPatrol.Nodes.Add(newnode);
                         break;
-                    case QuestType.AICAMP:
+                    case QuExpansionQuestObjectiveTypeestType.AICAMP:
                         ObjectivesAICamp.Nodes.Add(newnode);
                         break;
-                    case QuestType.AIVIP:
+                    case QuExpansionQuestObjectiveTypeestType.AIVIP:
                         ObjectivesAIVIP.Nodes.Add(newnode);
                         break;
-                    case QuestType.ACTION:
+                    case QuExpansionQuestObjectiveTypeestType.ACTION:
                         ObjectivesAction.Nodes.Add(newnode);
                         break;
-                    case QuestType.CRAFTING:
+                    case QuExpansionQuestObjectiveTypeestType.CRAFTING:
                         ObjectivesCrafting.Nodes.Add(newnode);
                         break;
                     default:

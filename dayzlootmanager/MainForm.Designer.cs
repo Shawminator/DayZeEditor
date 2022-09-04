@@ -68,6 +68,7 @@ namespace DayZeEditor
             this.darkStatusStrip1 = new DarkUI.Controls.DarkStatusStrip();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.MysteryBoxButton = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.SlidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Slidelabel)).BeginInit();
@@ -199,6 +200,7 @@ namespace DayZeEditor
             this.AbandonedVehicleRemoverManagerButton,
             this.BreachingChargeManagerButton,
             this.KOSzoneManagerButton,
+            this.MysteryBoxButton,
             this.AdvancedWorkbenchButton,
             this.toolStripButton1});
             this.ToolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
@@ -508,6 +510,18 @@ namespace DayZeEditor
             this.panel2.Size = new System.Drawing.Size(25, 25);
             this.panel2.TabIndex = 45;
             // 
+            // MysteryBoxButton
+            // 
+            this.MysteryBoxButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.MysteryBoxButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.MysteryBoxButton.Image = ((System.Drawing.Image)(resources.GetObject("MysteryBoxButton.Image")));
+            this.MysteryBoxButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MysteryBoxButton.Name = "MysteryBoxButton";
+            this.MysteryBoxButton.Size = new System.Drawing.Size(103, 19);
+            this.MysteryBoxButton.Text = "Mystery Box";
+            this.MysteryBoxButton.Visible = false;
+            this.MysteryBoxButton.Click += new System.EventHandler(this.MysteryBoxButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -578,6 +592,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton AbandonedVehicleRemoverManagerButton;
         private System.Windows.Forms.ToolStripButton BreachingChargeManagerButton;
         private System.Windows.Forms.ToolStripButton AdvancedWorkbenchButton;
+        private System.Windows.Forms.ToolStripButton MysteryBoxButton;
     }
 }
 

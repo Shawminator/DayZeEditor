@@ -36,6 +36,7 @@ namespace DayZeEditor
         public QuestObjectives QuestObjectives { get; set; }
         public ExpansioQuestList QuestsList { get; private set; }
         public QuestNPCLists QuestNPCs { get; private set; }
+        public BindingList<QuestPlayerData> QuestPlayerDataList { get; private set; }
 
         private void listBox_DrawItem(object sender, DrawItemEventArgs e)
         {
@@ -85,12 +86,19 @@ namespace DayZeEditor
             if (tabControl1.SelectedIndex == 3)
                 toolStripButton1.Checked = true;
         }
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 4;
+            if (tabControl1.SelectedIndex == 4)
+                toolStripButton4.Checked = true;
+        }
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             toolStripButton8.Checked = false;
             toolStripButton3.Checked = false;
             toolStripButton7.Checked = false;
             toolStripButton1.Checked = false;
+            toolStripButton4.Checked = false;
         }
         private void ExpansionQuests_Load(object sender, EventArgs e)
         {
@@ -126,9 +134,25 @@ namespace DayZeEditor
             QuestsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Quests\\Quests";
             QuestsList = new ExpansioQuestList(QuestsPath);
             setupquests();
-            
-            
+                        
             SetupSharedLists();
+
+            QuestPlayerDataList = new BindingList<QuestPlayerData>();
+            DirectoryInfo d = new DirectoryInfo(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Quests\\PlayerData");
+            FileInfo[] Files = d.GetFiles();
+            foreach (FileInfo file in Files)
+            {
+                try
+                {
+                    QuestPlayerData QuestPlayerData = new QuestPlayerData(file.FullName);
+                    QuestPlayerData.Filename = file.FullName;
+                    QuestPlayerData.isDirty = false;
+                    QuestPlayerDataList.Add(QuestPlayerData);
+                }
+                catch { }
+            }
+            setupplayerdata();
+            
 
             tabControl1.ItemSize = new Size(0, 1);
 
@@ -137,6 +161,39 @@ namespace DayZeEditor
                 savefiles(true);
             }
         }
+        private void ExpansionQuests_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            bool needtosave = false;
+            if (QuestSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            foreach (ExpansionQuestNPCs npcs in QuestNPCs.NPCList)
+            {
+                if (npcs.isDirty)
+                    needtosave = true;
+            }
+            foreach (Quests Quest in QuestsList.QuestList)
+            {
+                if (Quest.isDirty)
+                    needtosave = true;
+            }
+            foreach (QuestObjectivesBase obj in QuestObjectives.Objectives)
+            {
+                if (obj.isDirty)
+                    needtosave = true;
+            }
+            if (needtosave)
+            {
+                DialogResult dialogResult = MessageBox.Show("You have Unsaved Changes, do you wish to save", "Unsaved Changes found", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    savefiles();
+                }
+            }
+        }
+
+
         private object ReadJson<T>(string filename)
         {
             try
@@ -155,6 +212,15 @@ namespace DayZeEditor
             useraction = false;
 
             QuestNPCs.setupquestlists(QuestsList);
+
+            comboBox1.DisplayMember = "DisplayName";
+            comboBox1.ValueMember = "Value";
+            comboBox1.DataSource = Enum.GetValues(typeof(ExpansionQuestState));
+
+            comboBox2.DisplayMember = "DisplayName";
+            comboBox2.ValueMember = "Value";
+            comboBox2.DataSource = Enum.GetValues(typeof(QuExpansionQuestObjectiveTypeestType));
+
 
             List<Quests> quests = new List<Quests>();
             quests.Add(new Quests() { Title = "NONE", ID = -1 });
@@ -249,44 +315,44 @@ namespace DayZeEditor
                 string filepath = QuestObjectivesPath + "\\" + obj.getfoldernames()[(int)obj.QuestType];
                 switch (obj.QuestType)
                 {
-                    case QuestType.TARGET:
+                    case QuExpansionQuestObjectiveTypeestType.TARGET:
                         QuestObjectivesTarget target = obj as QuestObjectivesTarget;
                         jsonString = JsonSerializer.Serialize(target, options);
                         break;
-                    case QuestType.TRAVEL:
+                    case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                         QuestObjectivesTravel travel = obj as QuestObjectivesTravel;
                         jsonString = JsonSerializer.Serialize(travel, options);
                         break;
-                    case QuestType.COLLECT:
+                    case QuExpansionQuestObjectiveTypeestType.COLLECT:
                         QuestObjectivesCollection collection = obj as QuestObjectivesCollection;
                         jsonString = JsonSerializer.Serialize(collection, options);
                         break;
-                    case QuestType.DELIVERY:
+                    case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                         QuestObjectivesDelivery Delivery = obj as QuestObjectivesDelivery;
                         jsonString = JsonSerializer.Serialize(Delivery, options);
                         break;
-                    case QuestType.TREASUREHUNT:
+                    case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                         QuestObjectivesTreasureHunt TreasureHunt = obj as QuestObjectivesTreasureHunt;
                         TreasureHunt.TreasureHunt.ConvertListToDict();
                         jsonString = JsonSerializer.Serialize(TreasureHunt, options);
                         break;
-                    case QuestType.AIPATROL:
+                    case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                         QuestObjectivesAIPatrol AIPatrol = obj as QuestObjectivesAIPatrol;
                         jsonString = JsonSerializer.Serialize(AIPatrol, options);
                         break;
-                    case QuestType.AICAMP:
+                    case QuExpansionQuestObjectiveTypeestType.AICAMP:
                         QuestObjectivesAICamp AICamp = obj as QuestObjectivesAICamp;
                         jsonString = JsonSerializer.Serialize(AICamp, options);
                         break;
-                    case QuestType.AIVIP:
+                    case QuExpansionQuestObjectiveTypeestType.AIVIP:
                         QuestObjectivesAIVIP AIVIP = obj as QuestObjectivesAIVIP;
                         jsonString = JsonSerializer.Serialize(AIVIP, options);
                         break;
-                    case QuestType.ACTION:
+                    case QuExpansionQuestObjectiveTypeestType.ACTION:
                         QuestObjectivesAction Action = obj as QuestObjectivesAction;
                         jsonString = JsonSerializer.Serialize(Action, options);
                         break;
-                    case QuestType.CRAFTING:
+                    case QuExpansionQuestObjectiveTypeestType.CRAFTING:
                         QuestObjectivesCrafting Crafting = obj as QuestObjectivesCrafting;
                         jsonString = JsonSerializer.Serialize(Crafting, options);
                         break;
@@ -806,7 +872,7 @@ namespace DayZeEditor
         {
             useraction = false;
 
-            QuestTypeCB.DataSource = Enum.GetValues(typeof(QuestType));
+            QuestTypeCB.DataSource = Enum.GetValues(typeof(QuExpansionQuestObjectiveTypeestType));
 
             QuestsListLB.DisplayMember = "DisplayName";
             QuestsListLB.ValueMember = "Value";
@@ -826,7 +892,7 @@ namespace DayZeEditor
             QuestFileNameTB.Text = CurrentQuest.Filename;
             QuestConfigVersionNUD.Value = CurrentQuest.ConfigVersion;
             QuestIDNUD.Value = CurrentQuest.ID;
-            QuestTypeCB.SelectedItem = (QuestType)CurrentQuest.Type;
+            QuestTypeCB.SelectedItem = (QuExpansionQuestObjectiveTypeestType)CurrentQuest.Type;
             QuestTitleTB.Text = CurrentQuest.Title;
             if (CurrentQuest.Descriptions.Count > 0)
             {
@@ -899,7 +965,7 @@ namespace DayZeEditor
         private void QuestTypeCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            QuestType QuestType = (QuestType)QuestTypeCB.SelectedItem;
+            QuExpansionQuestObjectiveTypeestType QuestType = (QuExpansionQuestObjectiveTypeestType)QuestTypeCB.SelectedItem;
             CurrentQuest.Type = (int)QuestType;
             CurrentQuest.isDirty = true;
         }
@@ -1289,7 +1355,7 @@ namespace DayZeEditor
         public QuestObjectivesBase CurrentTreeNodeTag;
         private void setupobjectives()
         {
-            QuestObjectivesObjectiveTypeCB.DataSource = Enum.GetValues(typeof(QuestType));
+            QuestObjectivesObjectiveTypeCB.DataSource = Enum.GetValues(typeof(QuExpansionQuestObjectiveTypeestType));
             treeViewMS1.Nodes.Clear();
             TreeNode root = new TreeNode("Objectives")
             {
@@ -1339,85 +1405,85 @@ namespace DayZeEditor
             {
                 switch (QuestObjectives.Objectives[i].QuestType)
                 {
-                    case QuestType.TARGET:
+                    case QuExpansionQuestObjectiveTypeestType.TARGET:
                         TreeNode newnode = new TreeNode(QuestObjectives.Objectives[i].Filename);
                         QuestObjectives.Objectives[i] = ReadJson<QuestObjectivesTarget>(QuestObjectivesPath + "\\Target\\" + QuestObjectives.Objectives[i].Filename + ".json") as QuestObjectivesTarget;
                         QuestObjectives.Objectives[i].Filename = newnode.Text;
-                        QuestObjectives.Objectives[i].QuestType = QuestType.TARGET;
+                        QuestObjectives.Objectives[i].QuestType = QuExpansionQuestObjectiveTypeestType.TARGET;
                         newnode.Tag = QuestObjectives.Objectives[i];
                         ObjectivesTarget.Nodes.Add(newnode);
                         break;
-                    case QuestType.TRAVEL:
+                    case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                         newnode = new TreeNode(QuestObjectives.Objectives[i].Filename);
                         QuestObjectives.Objectives[i] = ReadJson<QuestObjectivesTravel>(QuestObjectivesPath + "\\Travel\\" + QuestObjectives.Objectives[i].Filename + ".json") as QuestObjectivesTravel;
                         QuestObjectives.Objectives[i].Filename = newnode.Text;
-                        QuestObjectives.Objectives[i].QuestType = QuestType.TRAVEL;
+                        QuestObjectives.Objectives[i].QuestType = QuExpansionQuestObjectiveTypeestType.TRAVEL;
                         newnode.Tag = QuestObjectives.Objectives[i];
                         ObjectivesTravel.Nodes.Add(newnode);
                         break;
-                    case QuestType.COLLECT:
+                    case QuExpansionQuestObjectiveTypeestType.COLLECT:
                         newnode = new TreeNode(QuestObjectives.Objectives[i].Filename);
                         QuestObjectives.Objectives[i] = ReadJson<QuestObjectivesCollection>(QuestObjectivesPath + "\\Collection\\" + QuestObjectives.Objectives[i].Filename + ".json") as QuestObjectivesCollection;
                         QuestObjectives.Objectives[i].Filename = newnode.Text;
-                        QuestObjectives.Objectives[i].QuestType = QuestType.COLLECT;
+                        QuestObjectives.Objectives[i].QuestType = QuExpansionQuestObjectiveTypeestType.COLLECT;
                         newnode.Tag = QuestObjectives.Objectives[i];
                         ObjectivesCollection.Nodes.Add(newnode);
                         break;
-                    case QuestType.CRAFTING:
+                    case QuExpansionQuestObjectiveTypeestType.CRAFTING:
                         newnode = new TreeNode(QuestObjectives.Objectives[i].Filename);
                         QuestObjectives.Objectives[i] = ReadJson<QuestObjectivesCrafting>(QuestObjectivesPath + "\\Crafting\\" + QuestObjectives.Objectives[i].Filename + ".json") as QuestObjectivesCrafting;
                         QuestObjectives.Objectives[i].Filename = newnode.Text;
-                        QuestObjectives.Objectives[i].QuestType = QuestType.CRAFTING;
+                        QuestObjectives.Objectives[i].QuestType = QuExpansionQuestObjectiveTypeestType.CRAFTING;
                         newnode.Tag = QuestObjectives.Objectives[i];
                         ObjectivesCrafting.Nodes.Add(newnode);
                         break;
-                    case QuestType.DELIVERY:
+                    case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                         newnode = new TreeNode(QuestObjectives.Objectives[i].Filename);
                         QuestObjectives.Objectives[i] = ReadJson<QuestObjectivesDelivery>(QuestObjectivesPath + "\\Delivery\\" + QuestObjectives.Objectives[i].Filename + ".json") as QuestObjectivesDelivery;
                         QuestObjectives.Objectives[i].Filename = newnode.Text;
-                        QuestObjectives.Objectives[i].QuestType = QuestType.DELIVERY;
+                        QuestObjectives.Objectives[i].QuestType = QuExpansionQuestObjectiveTypeestType.DELIVERY;
                         newnode.Tag = QuestObjectives.Objectives[i];
                         ObjectivesDelivery.Nodes.Add(newnode);
                         break;
-                    case QuestType.TREASUREHUNT:
+                    case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                         newnode = new TreeNode(QuestObjectives.Objectives[i].Filename);
                         QuestObjectives.Objectives[i] = ReadJson<QuestObjectivesTreasureHunt>(QuestObjectivesPath + "\\TreasureHunt\\" + QuestObjectives.Objectives[i].Filename + ".json") as QuestObjectivesTreasureHunt;
                         QuestObjectives.Objectives[i].Filename = newnode.Text;
-                        QuestObjectives.Objectives[i].QuestType = QuestType.TREASUREHUNT;
+                        QuestObjectives.Objectives[i].QuestType = QuExpansionQuestObjectiveTypeestType.TREASUREHUNT;
                         QuestObjectivesTreasureHunt qoth = QuestObjectives.Objectives[i] as QuestObjectivesTreasureHunt;
                         qoth.TreasureHunt.ConvertDictToList();
                         newnode.Tag = QuestObjectives.Objectives[i];
                         ObjectivesTreasureHunt.Nodes.Add(newnode);
                         break;
-                    case QuestType.AIPATROL:
+                    case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                         newnode = new TreeNode(QuestObjectives.Objectives[i].Filename);
                         QuestObjectives.Objectives[i] = ReadJson<QuestObjectivesAIPatrol>(QuestObjectivesPath + "\\AIPatrol\\" + QuestObjectives.Objectives[i].Filename + ".json") as QuestObjectivesAIPatrol;
                         QuestObjectives.Objectives[i].Filename = newnode.Text;
-                        QuestObjectives.Objectives[i].QuestType = QuestType.AIPATROL;
+                        QuestObjectives.Objectives[i].QuestType = QuExpansionQuestObjectiveTypeestType.AIPATROL;
                         newnode.Tag = QuestObjectives.Objectives[i];
                         ObjectivesAIPatrol.Nodes.Add(newnode);
                         break;
-                    case QuestType.AICAMP:
+                    case QuExpansionQuestObjectiveTypeestType.AICAMP:
                         newnode = new TreeNode(QuestObjectives.Objectives[i].Filename);
                         QuestObjectives.Objectives[i] = ReadJson<QuestObjectivesAICamp>(QuestObjectivesPath + "\\AICamp\\" + QuestObjectives.Objectives[i].Filename + ".json") as QuestObjectivesAICamp;
                         QuestObjectives.Objectives[i].Filename = newnode.Text;
-                        QuestObjectives.Objectives[i].QuestType = QuestType.AICAMP;
+                        QuestObjectives.Objectives[i].QuestType = QuExpansionQuestObjectiveTypeestType.AICAMP;
                         newnode.Tag = QuestObjectives.Objectives[i];
                         ObjectivesAICamp.Nodes.Add(newnode);
                         break;
-                    case QuestType.AIVIP:
+                    case QuExpansionQuestObjectiveTypeestType.AIVIP:
                         newnode = new TreeNode(QuestObjectives.Objectives[i].Filename);
                         QuestObjectives.Objectives[i] = ReadJson<QuestObjectivesAIVIP>(QuestObjectivesPath + "\\AIVIP\\" + QuestObjectives.Objectives[i].Filename + ".json") as QuestObjectivesAIVIP;
                         QuestObjectives.Objectives[i].Filename = newnode.Text;
-                        QuestObjectives.Objectives[i].QuestType = QuestType.AIVIP;
+                        QuestObjectives.Objectives[i].QuestType = QuExpansionQuestObjectiveTypeestType.AIVIP;
                         newnode.Tag = QuestObjectives.Objectives[i];
                         ObjectivesAIVIP.Nodes.Add(newnode);
                         break;
-                    case QuestType.ACTION:
+                    case QuExpansionQuestObjectiveTypeestType.ACTION:
                         newnode = new TreeNode(QuestObjectives.Objectives[i].Filename);
                         QuestObjectives.Objectives[i] = ReadJson<QuestObjectivesAction>(QuestObjectivesPath + "\\Action\\" + QuestObjectives.Objectives[i].Filename + ".json") as QuestObjectivesAction;
                         QuestObjectives.Objectives[i].Filename = newnode.Text;
-                        QuestObjectives.Objectives[i].QuestType = QuestType.ACTION;
+                        QuestObjectives.Objectives[i].QuestType = QuExpansionQuestObjectiveTypeestType.ACTION;
                         newnode.Tag = QuestObjectives.Objectives[i];
                         ObjectivesAction.Nodes.Add(newnode);
                         break;
@@ -1527,7 +1593,7 @@ namespace DayZeEditor
                 QuestObjectivesFilenameTB.Text = CurrentTreeNodeTag.Filename;
                 QuestObjectivesConfigVersionNUD.Value = CurrentTreeNodeTag.ConfigVersion;
                 QuestsObjectivesIDNUD.Value = CurrentTreeNodeTag.ID;
-                QuestObjectivesObjectiveTypeCB.SelectedItem = (QuestType)CurrentTreeNodeTag.ObjectiveType;
+                QuestObjectivesObjectiveTypeCB.SelectedItem = (QuExpansionQuestObjectiveTypeestType)CurrentTreeNodeTag.ObjectiveType;
                 QuestObjectivesObjectiveTextTB.Text = CurrentTreeNodeTag.ObjectiveText;
                 QuestObjectivesTimeLimitNUD.Value = CurrentTreeNodeTag.TimeLimit;
                 foreach (GroupBox gpBox in flowLayoutPanel3.Controls.OfType<GroupBox>())
@@ -1541,7 +1607,7 @@ namespace DayZeEditor
                 }
                 switch (CurrentTreeNodeTag.QuestType)
                 {
-                    case QuestType.TARGET:
+                    case QuExpansionQuestObjectiveTypeestType.TARGET:
                         QuestObjectivesPositionGB.Visible = true;
                         QuestObjectivesMaxdistanceGB.Visible = true;
                         QuestObjectivesNPCInfoGB.Visible = true;
@@ -1551,37 +1617,37 @@ namespace DayZeEditor
                         QuestObjectivesSpecialWeaponGB.Visible = true;
                         setupObjectiveTarget(e);
                         break;
-                    case QuestType.TRAVEL:
+                    case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                         QuestObjectivesPositionGB.Visible = true;
                         QuestObjectivesMaxdistanceGB.Visible = true;
                         QuestObjectivesMarkerNameGB.Visible = true;
                         QuestObjectivesShowDistanceGB.Visible = true;
                         SetupObjectiveTravel(e);
                         break;
-                    case QuestType.COLLECT:
+                    case QuExpansionQuestObjectiveTypeestType.COLLECT:
                         QuestObjectivesColectionGB.Visible = true;
                         setupObjectiveCollection(e);
                         break;
-                    case QuestType.CRAFTING:
+                    case QuExpansionQuestObjectiveTypeestType.CRAFTING:
                         QuestsObjectivesActionNamesGB.Visible = true;
                         QuestsObjectivesActionNamesGB.Text = "Item Names";
                         setupobjectivecrafting(e);
                         break;
-                    case QuestType.DELIVERY:
+                    case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                         QuestObjectivesPositionGB.Visible = true;
                         QuestObjectivesDeleveriesGB.Visible = true;
                         QuestObjectivesMaxdistanceGB.Visible = true;
                         QuestObjectivesMarkerNameGB.Visible = true;
                         setupobjectiveDelivery(e);
                         break;
-                    case QuestType.TREASUREHUNT:
+                    case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                         QuestObjectivesAIPositionsGB.Visible = true;
                         QuestObjectivesAIPositionsGB.Text = "Tresure Hunt Position";
                         QuestObjectivesShowDistanceGB.Visible = true;
                         QuestObjectivesTreasureHuntItemsGB.Visible = true;
                         SetupobjectiveTreasueHunt(e);
                         break;
-                    case QuestType.AIPATROL:
+                    case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                         NPCUnitsP.Visible = true;
                         NPCSpeedP.Visible = true;
                         NPCBehaviourP.Visible = true;
@@ -1599,7 +1665,7 @@ namespace DayZeEditor
                         QuestObjectivesAISpawnInfoGB.Visible = true;
                         SetupobjectiveAIPatrol(e);
                         break;
-                    case QuestType.AICAMP:
+                    case QuExpansionQuestObjectiveTypeestType.AICAMP:
                         NPCSpeedP.Visible = true;
                         NPCBehaviourP.Visible = true;
                         NPCFactionP.Visible = true;
@@ -1615,7 +1681,7 @@ namespace DayZeEditor
                         QuestObjectivesAISpawnInfoGB.Visible = true;
                         SetupObjectiveAICamp(e);
                         break;
-                    case QuestType.AIVIP:
+                    case QuExpansionQuestObjectiveTypeestType.AIVIP:
                         QuestObjectivesPositionGB.Visible = true;
                         QuestObjectivesMaxdistanceGB.Visible = true;
                         NPCClassNameP.Visible = true;
@@ -1628,7 +1694,7 @@ namespace DayZeEditor
                         QuestObjectivesMarkerNameGB.Visible = true;
                         SetupObjectiveAIVIP(e);
                         break;
-                    case QuestType.ACTION:
+                    case QuExpansionQuestObjectiveTypeestType.ACTION:
                         QuestsObjectivesActionNamesGB.Visible = true;
                         QuestsObjectivesActionNamesGB.Text = "Action Names";
                         SetupObjectiveAction(e);
@@ -1852,23 +1918,23 @@ namespace DayZeEditor
         {
             switch (CurrentTreeNodeTag.QuestType)
             {
-                case QuestType.TARGET:
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
                     break;
-                case QuestType.TRAVEL:
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                     break;
-                case QuestType.COLLECT:
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
                     break;
-                case QuestType.DELIVERY:
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                     break;
-                case QuestType.TREASUREHUNT:
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                     break;
-                case QuestType.AIPATROL:
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                     break;
-                case QuestType.AICAMP:
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
                     break;
-                case QuestType.AIVIP:
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
                     break;
-                case QuestType.ACTION:
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
                     QuestObjectivesAction QuestObjectivesAction = CurrentTreeNodeTag as QuestObjectivesAction;
                     AddItemfromString form = new AddItemfromString();
                     DialogResult result = form.ShowDialog();
@@ -1881,7 +1947,7 @@ namespace DayZeEditor
                         }
                     }
                     break;
-                case QuestType.CRAFTING:
+                case QuExpansionQuestObjectiveTypeestType.CRAFTING:
                     QuestObjectivesCrafting QuestObjectivesCrafting = CurrentTreeNodeTag as QuestObjectivesCrafting;
                     AddItemfromTypes form2 = new AddItemfromTypes
                     {
@@ -1908,23 +1974,23 @@ namespace DayZeEditor
         {
             switch (CurrentTreeNodeTag.QuestType)
             {
-                case QuestType.TARGET:
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
                     break;
-                case QuestType.TRAVEL:
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                     break;
-                case QuestType.COLLECT:
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
                     break;
-                case QuestType.DELIVERY:
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                     break;
-                case QuestType.TREASUREHUNT:
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                     break;
-                case QuestType.AIPATROL:
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                     break;
-                case QuestType.AICAMP:
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
                     break;
-                case QuestType.AIVIP:
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
                     break;
-                case QuestType.ACTION:
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
                     if (QuestObjectivesActionNamesLB.SelectedItems.Count < 1) return;
                     QuestObjectivesAction QuestObjectivesAction = CurrentTreeNodeTag as QuestObjectivesAction;
                     for (int i = 0; i < QuestObjectivesActionNamesLB.SelectedItems.Count; i++)
@@ -1932,7 +1998,7 @@ namespace DayZeEditor
                         QuestObjectivesAction.ActionNames.Remove(QuestObjectivesActionNamesLB.GetItemText(QuestObjectivesActionNamesLB.SelectedItems[0]));
                     }
                     break;
-                case QuestType.CRAFTING:
+                case QuExpansionQuestObjectiveTypeestType.CRAFTING:
                     if (QuestObjectivesActionNamesLB.SelectedItems.Count < 1) return;
                     QuestObjectivesCrafting QuestObjectivesCrafting = CurrentTreeNodeTag as QuestObjectivesCrafting;
                     for (int i = 0; i < QuestObjectivesActionNamesLB.SelectedItems.Count; i++)
@@ -2041,29 +2107,29 @@ namespace DayZeEditor
         {
             switch (CurrentTreeNodeTag.QuestType)
             {
-                case QuestType.TARGET:
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
                     break;
-                case QuestType.TRAVEL:
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                     break;
-                case QuestType.COLLECT:
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
                     break;
-                case QuestType.DELIVERY:
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                     break;
-                case QuestType.TREASUREHUNT:
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                     QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
                     CurrentTreasureHunt.TreasureHunt.Positions.Add(new float[] { 0,0,0});
                     break;
-                case QuestType.AIPATROL:
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                     QuestObjectivesAIPatrol QuestObjectivesAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
                     QuestObjectivesAIPatrol.AIPatrol.Waypoints.Add(new float[] { 0, 0, 0 });
                     break;
-                case QuestType.AICAMP:
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
                     QuestObjectivesAICamp QuestObjectivesAICamp = CurrentTreeNodeTag as QuestObjectivesAICamp;
                     QuestObjectivesAICamp.AICamp.Positions.Add(new float[] { 0, 0, 0 });
                     break;
-                case QuestType.AIVIP:
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
                     break;
-                case QuestType.ACTION:
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
                     break;
                 default:
                     break;
@@ -2074,29 +2140,29 @@ namespace DayZeEditor
         {
             switch (CurrentTreeNodeTag.QuestType)
             {
-                case QuestType.TARGET:
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
                     break;
-                case QuestType.TRAVEL:
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                     break;
-                case QuestType.COLLECT:
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
                     break;
-                case QuestType.DELIVERY:
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                     break;
-                case QuestType.TREASUREHUNT:
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                     QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
                     CurrentTreasureHunt.TreasureHunt.Positions.Remove(questObjectivesPositionsLB.SelectedItem as float[]);
                     break;
-                case QuestType.AIPATROL:
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                     QuestObjectivesAIPatrol QuestObjectivesAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
                     QuestObjectivesAIPatrol.AIPatrol.Waypoints.Remove(questObjectivesPositionsLB.SelectedItem as float[]);
                     break;
-                case QuestType.AICAMP:
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
                     QuestObjectivesAICamp QuestObjectivesAICamp = CurrentTreeNodeTag as QuestObjectivesAICamp;
                     QuestObjectivesAICamp.AICamp.Positions.Remove(questObjectivesPositionsLB.SelectedItem as float[]);
                     break;
-                case QuestType.AIVIP:
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
                     break;
-                case QuestType.ACTION:
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
                     break;
                 default:
                     break;
@@ -2122,15 +2188,15 @@ namespace DayZeEditor
                     
                     switch (CurrentTreeNodeTag.QuestType)
                     {
-                        case QuestType.TARGET:
+                        case QuExpansionQuestObjectiveTypeestType.TARGET:
                             break;
-                        case QuestType.TRAVEL:
+                        case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                             break;
-                        case QuestType.COLLECT:
+                        case QuExpansionQuestObjectiveTypeestType.COLLECT:
                             break;
-                        case QuestType.DELIVERY:
+                        case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                             break;
-                        case QuestType.TREASUREHUNT:
+                        case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                             QuestObjectivesTreasureHunt QuestObjectivesTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
                             QuestObjectivesTreasureHunt.TreasureHunt.Positions = new BindingList<float[]>();
                             for (int i = 0; i < fileContent.Length; i++)
@@ -2141,7 +2207,7 @@ namespace DayZeEditor
                                 QuestObjectivesTreasureHunt.TreasureHunt.Positions.Add(new float[] {Convert.ToSingle(XYZ[0]), Convert.ToSingle(XYZ[1]), Convert.ToSingle(XYZ[2]) });
                             }
                             break;
-                        case QuestType.AIPATROL:
+                        case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                             QuestObjectivesAIPatrol QuestObjectivesAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
                             QuestObjectivesAIPatrol.AIPatrol.Waypoints = new BindingList<float[]>();
                             for (int i = 0; i < fileContent.Length; i++)
@@ -2152,7 +2218,7 @@ namespace DayZeEditor
                                 QuestObjectivesAIPatrol.AIPatrol.Waypoints.Add(new float[] { Convert.ToSingle(XYZ[0]), Convert.ToSingle(XYZ[1]), Convert.ToSingle(XYZ[2]) });
                             }
                             break;
-                        case QuestType.AICAMP:
+                        case QuExpansionQuestObjectiveTypeestType.AICAMP:
                             QuestObjectivesAICamp QuestObjectivesAICamp = CurrentTreeNodeTag as QuestObjectivesAICamp;
                             QuestObjectivesAICamp.AICamp.Positions = new BindingList<float[]>();
                             for (int i = 0; i < fileContent.Length; i++)
@@ -2163,9 +2229,9 @@ namespace DayZeEditor
                                 QuestObjectivesAICamp.AICamp.Positions.Add(new float[] { Convert.ToSingle(XYZ[0]), Convert.ToSingle(XYZ[1]), Convert.ToSingle(XYZ[2]) });
                             }
                             break;
-                        case QuestType.AIVIP:
+                        case QuExpansionQuestObjectiveTypeestType.AIVIP:
                             break;
-                        case QuestType.ACTION:
+                        case QuExpansionQuestObjectiveTypeestType.ACTION:
                             break;
                         default:
                             break;
@@ -2182,38 +2248,38 @@ namespace DayZeEditor
             StringBuilder SB = new StringBuilder();
             switch (CurrentTreeNodeTag.QuestType)
             {
-                case QuestType.TARGET:
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
                     break;
-                case QuestType.TRAVEL:
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                     break;
-                case QuestType.COLLECT:
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
                     break;
-                case QuestType.DELIVERY:
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                     break;
-                case QuestType.TREASUREHUNT:
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                     QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
                     foreach (float[] vec3 in CurrentTreasureHunt.TreasureHunt.Positions)
                     {
                         SB.AppendLine("SeaChest| " + vec3[0].ToString("F6") + " " + vec3[1].ToString("F6") + " " + vec3[2].ToString("F6") + "|0.0 0.0 0.0");
                     }
                     break;
-                case QuestType.AIPATROL:
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                     QuestObjectivesAIPatrol QuestObjectivesAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
                     foreach (float[] vec3 in QuestObjectivesAIPatrol.AIPatrol.Waypoints)
                     {
                         SB.AppendLine(QuestObjectivesAIPatrol.AIPatrol.ClassNames[0] + "|" + vec3[0].ToString("F6") + " " + vec3[1].ToString("F6") + " " + vec3[2].ToString("F6") + "|0.0 0.0 0.0");
                     }
                     break;
-                case QuestType.AICAMP:
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
                     QuestObjectivesAICamp QuestObjectivesAICamp = CurrentTreeNodeTag as QuestObjectivesAICamp;
                     foreach (float[] vec3 in QuestObjectivesAICamp.AICamp.Positions)
                     {
                         SB.AppendLine(QuestObjectivesAICamp.AICamp.ClassNames[0] + "|" + vec3[0].ToString("F6") + " " + vec3[1].ToString("F6") + " " + vec3[2].ToString("F6") + "|0.0 0.0 0.0");
                     }
                     break;
-                case QuestType.AIVIP:
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
                     break;
-                case QuestType.ACTION:
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
                     break;
                 default:
                     break;
@@ -2250,31 +2316,31 @@ namespace DayZeEditor
             if (!useraction) return;
             switch (CurrentTreeNodeTag.QuestType)
             {
-                case QuestType.TARGET:
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
                     QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
                     CurrentTarget.Position[0] = (float)QuestObjectivesPosXNUD.Value;
                     break;
-                case QuestType.TRAVEL:
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                     QuestObjectivesTravel CurrentTravel = CurrentTreeNodeTag as QuestObjectivesTravel;
                     CurrentTravel.Position[0] = (float)QuestObjectivesPosXNUD.Value;
                     break;
-                case QuestType.COLLECT:
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
                     break;
-                case QuestType.DELIVERY:
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                     QuestObjectivesDelivery Currentdelivery = CurrentTreeNodeTag as QuestObjectivesDelivery;
                     Currentdelivery.Position[0] = (float)QuestObjectivesPosXNUD.Value;
                     break;
-                case QuestType.TREASUREHUNT:
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                     break;
-                case QuestType.AIPATROL:
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                     break;
-                case QuestType.AICAMP:
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
                     break;
-                case QuestType.AIVIP:
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
                     QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
                     CurrentAIVIP.Position[0] = (float)QuestObjectivesPosXNUD.Value;
                     break;
-                case QuestType.ACTION:
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
                     break;
                 default:
                     break;
@@ -2286,31 +2352,31 @@ namespace DayZeEditor
             if (!useraction) return;
             switch (CurrentTreeNodeTag.QuestType)
             {
-                case QuestType.TARGET:
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
                     QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
                     CurrentTarget.Position[1] = (float)QuestObjectivesPosYNUD.Value;
                     break;
-                case QuestType.TRAVEL:
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                     QuestObjectivesTravel CurrentTravel = CurrentTreeNodeTag as QuestObjectivesTravel;
                     CurrentTravel.Position[1] = (float)QuestObjectivesPosYNUD.Value;
                     break;
-                case QuestType.COLLECT:
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
                     break;
-                case QuestType.DELIVERY:
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                     QuestObjectivesDelivery Currentdelivery = CurrentTreeNodeTag as QuestObjectivesDelivery;
                     Currentdelivery.Position[1] = (float)QuestObjectivesPosYNUD.Value;
                     break;
-                case QuestType.TREASUREHUNT:
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                     break;
-                case QuestType.AIPATROL:
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                     break;
-                case QuestType.AICAMP:
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
                     break;
-                case QuestType.AIVIP:
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
                     QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
                     CurrentAIVIP.Position[1] = (float)QuestObjectivesPosYNUD.Value;
                     break;
-                case QuestType.ACTION:
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
                     break;
                 default:
                     break;
@@ -2323,31 +2389,31 @@ namespace DayZeEditor
             if (!useraction) return;
             switch (CurrentTreeNodeTag.QuestType)
             {
-                case QuestType.TARGET:
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
                     QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
                     CurrentTarget.Position[2] = (float)QuestObjectivesPosZNUD.Value;
                     break;
-                case QuestType.TRAVEL:
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                     QuestObjectivesTravel CurrentTravel = CurrentTreeNodeTag as QuestObjectivesTravel;
                     CurrentTravel.Position[2] = (float)QuestObjectivesPosZNUD.Value;
                     break;
-                case QuestType.COLLECT:
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
                     break;
-                case QuestType.DELIVERY:
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                     QuestObjectivesDelivery Currentdelivery = CurrentTreeNodeTag as QuestObjectivesDelivery;
                     Currentdelivery.Position[2] = (float)QuestObjectivesPosZNUD.Value;
                     break;
-                case QuestType.TREASUREHUNT:
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                     break;
-                case QuestType.AIPATROL:
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                     break;
-                case QuestType.AICAMP:
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
                     break;
-                case QuestType.AIVIP:
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
                     QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
                     CurrentAIVIP.Position[2] = (float)QuestObjectivesPosZNUD.Value;
                     break;
-                case QuestType.ACTION:
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
                     break;
                 default:
                     break;
@@ -2359,25 +2425,25 @@ namespace DayZeEditor
             if (!useraction) return;
             switch (CurrentTreeNodeTag.QuestType)
             {
-                case QuestType.TARGET:
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
                     break;
-                case QuestType.TRAVEL:
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                     break;
-                case QuestType.COLLECT:
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
                     break;
-                case QuestType.DELIVERY:
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                     break;
-                case QuestType.TREASUREHUNT:
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                     break;
-                case QuestType.AIPATROL:
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                     break;
-                case QuestType.AICAMP:
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
                     break;
-                case QuestType.AIVIP:
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
                     QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
                     CurrentAIVIP.AIVIP.NPCClassName = QuestObjectivesNPCClassnameTB.Text;
                     break;
-                case QuestType.ACTION:
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
                     break;
                 default:
                     break;
@@ -2389,27 +2455,27 @@ namespace DayZeEditor
             if (!useraction) return;
             switch (CurrentTreeNodeTag.QuestType)
             {
-                case QuestType.TARGET:
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
                     QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
                     CurrentTarget.Target.Amount = (int)QuestObjectivesNPCUnitsNUD.Value;
                     break;
-                case QuestType.TRAVEL:
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                     break;
-                case QuestType.COLLECT:
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
                     break;
-                case QuestType.DELIVERY:
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                     break;
-                case QuestType.TREASUREHUNT:
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                     break;
-                case QuestType.AIPATROL:
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                     QuestObjectivesAIPatrol QuestObjectivesAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
                     QuestObjectivesAIPatrol.AIPatrol.NPCUnits = (int)QuestObjectivesNPCUnitsNUD.Value;
                     break;
-                case QuestType.AICAMP:
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
                     break;
-                case QuestType.AIVIP:
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
                     break;
-                case QuestType.ACTION:
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
                     break;
                 default:
                     break;
@@ -2421,29 +2487,29 @@ namespace DayZeEditor
             if (!useraction) return;
             switch (CurrentTreeNodeTag.QuestType)
             {
-                case QuestType.TARGET:
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
                     break;
-                case QuestType.TRAVEL:
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                     break;
-                case QuestType.COLLECT:
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
                     break;
-                case QuestType.DELIVERY:
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                     break;
-                case QuestType.TREASUREHUNT:
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                     break;
-                case QuestType.AIPATROL:
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                     QuestObjectivesAIPatrol QuestObjectivesAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
                     QuestObjectivesAIPatrol.AIPatrol.NPCMode = QuestObjectivesNPCModeCB.GetItemText(QuestObjectivesNPCModeCB.SelectedItem);
                     break;
-                case QuestType.AICAMP:
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
                     QuestObjectivesAICamp QuestObjectivesAICamp = CurrentTreeNodeTag as QuestObjectivesAICamp;
                     QuestObjectivesAICamp.AICamp.NPCMode = QuestObjectivesNPCModeCB.GetItemText(QuestObjectivesNPCModeCB.SelectedItem);
                     break;
-                case QuestType.AIVIP:
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
                     QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
                     CurrentAIVIP.AIVIP.NPCMode = QuestObjectivesNPCModeCB.GetItemText(QuestObjectivesNPCModeCB.SelectedItem);
                     break;
-                case QuestType.ACTION:
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
                     break;
                 default:
                     break;
@@ -2455,29 +2521,29 @@ namespace DayZeEditor
             if (!useraction) return;
             switch (CurrentTreeNodeTag.QuestType)
             {
-                case QuestType.TARGET:
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
                     break;
-                case QuestType.TRAVEL:
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                     break;
-                case QuestType.COLLECT:
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
                     break;
-                case QuestType.DELIVERY:
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                     break;
-                case QuestType.TREASUREHUNT:
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                     break;
-                case QuestType.AIPATROL:
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                     QuestObjectivesAIPatrol QuestObjectivesAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
                     QuestObjectivesAIPatrol.AIPatrol.NPCLoadoutFile = QuestObjectivesNPCLoadoutsCB.GetItemText(QuestObjectivesNPCLoadoutsCB.SelectedItem);
                     break;
-                case QuestType.AICAMP:
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
                     QuestObjectivesAICamp QuestObjectivesAICamp = CurrentTreeNodeTag as QuestObjectivesAICamp;
                     QuestObjectivesAICamp.AICamp.NPCLoadoutFile = QuestObjectivesNPCLoadoutsCB.GetItemText(QuestObjectivesNPCLoadoutsCB.SelectedItem);
                     break;
-                case QuestType.AIVIP:
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
                     QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
                     CurrentAIVIP.AIVIP.NPCLoadoutFile = QuestObjectivesNPCLoadoutsCB.GetItemText(QuestObjectivesNPCLoadoutsCB.SelectedItem);
                     break;
-                case QuestType.ACTION:
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
                     break;
                 default:
                     break;
@@ -2489,29 +2555,29 @@ namespace DayZeEditor
             if (!useraction) return;
             switch (CurrentTreeNodeTag.QuestType)
             {
-                case QuestType.TARGET:
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
                     break;
-                case QuestType.TRAVEL:
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                     break;
-                case QuestType.COLLECT:
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
                     break;
-                case QuestType.DELIVERY:
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                     break;
-                case QuestType.TREASUREHUNT:
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                     break;
-                case QuestType.AIPATROL:
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                     QuestObjectivesAIPatrol QuestObjectivesAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
                     QuestObjectivesAIPatrol.AIPatrol.NPCSpeed = QuestObjectivesNPCSpeedCB.GetItemText(QuestObjectivesNPCSpeedCB.SelectedItem);
                     break;
-                case QuestType.AICAMP:
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
                     QuestObjectivesAICamp QuestObjectivesAICamp = CurrentTreeNodeTag as QuestObjectivesAICamp;
                     QuestObjectivesAICamp.AICamp.NPCSpeed = QuestObjectivesNPCSpeedCB.GetItemText(QuestObjectivesNPCSpeedCB.SelectedItem);
                     break;
-                case QuestType.AIVIP:
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
                     QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
                     CurrentAIVIP.AIVIP.NPCSpeed = QuestObjectivesNPCSpeedCB.GetItemText(QuestObjectivesNPCSpeedCB.SelectedItem);
                     break;
-                case QuestType.ACTION:
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
                     break;
                 default:
                     break;
@@ -2523,25 +2589,25 @@ namespace DayZeEditor
             if (!useraction) return;
             switch (CurrentTreeNodeTag.QuestType)
             {
-                case QuestType.TARGET:
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
                     break;
-                case QuestType.TRAVEL:
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                     break;
-                case QuestType.COLLECT:
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
                     break;
-                case QuestType.DELIVERY:
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                     break;
-                case QuestType.TREASUREHUNT:
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                     break;
-                case QuestType.AIPATROL:
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                     QuestObjectivesAIPatrol QuestObjectivesAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
                     QuestObjectivesAIPatrol.AIPatrol.NPCFormation = QuestObjectivesNPCFormationCB.GetItemText(QuestObjectivesNPCFormationCB.SelectedItem);
                     break;
-                case QuestType.AICAMP:
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
                     break;
-                case QuestType.AIVIP:
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
                     break;
-                case QuestType.ACTION:
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
                     break;
                 default:
                     break;
@@ -2553,29 +2619,29 @@ namespace DayZeEditor
             if (!useraction) return;
             switch (CurrentTreeNodeTag.QuestType)
             {
-                case QuestType.TARGET:
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
                     break;
-                case QuestType.TRAVEL:
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                     break;
-                case QuestType.COLLECT:
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
                     break;
-                case QuestType.DELIVERY:
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                     break;
-                case QuestType.TREASUREHUNT:
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                     break;
-                case QuestType.AIPATROL:
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                     QuestObjectivesAIPatrol QuestObjectivesAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
                     QuestObjectivesAIPatrol.AIPatrol.NPCFaction = QuestObjectivesNPCFactionCB.GetItemText(QuestObjectivesNPCFactionCB.SelectedItem);
                     break;
-                case QuestType.AICAMP:
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
                     QuestObjectivesAICamp QuestObjectivesAICamp = CurrentTreeNodeTag as QuestObjectivesAICamp;
                     QuestObjectivesAICamp.AICamp.NPCFaction = QuestObjectivesNPCFactionCB.GetItemText(QuestObjectivesNPCFactionCB.SelectedItem);
                     break;
-                case QuestType.AIVIP:
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
                     QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
                     CurrentAIVIP.AIVIP.NPCFaction = QuestObjectivesNPCFactionCB.GetItemText(QuestObjectivesNPCFactionCB.SelectedItem);
                     break;
-                case QuestType.ACTION:
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
                     break;
                 default:
                     break;
@@ -2587,27 +2653,27 @@ namespace DayZeEditor
             if (!useraction) return;
             switch (CurrentTreeNodeTag.QuestType)
             {
-                case QuestType.TARGET:
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
                     break;
-                case QuestType.TRAVEL:
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                     break;
-                case QuestType.COLLECT:
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
                     break;
-                case QuestType.DELIVERY:
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                     break;
-                case QuestType.TREASUREHUNT:
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                     break;
-                case QuestType.AIPATROL:
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                     QuestObjectivesAIPatrol QuestObjectivesAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
                     QuestObjectivesAIPatrol.AIPatrol.NPCAccuracyMin = QuestObjectivesNPCAcuracyMinNUD.Value;
                     break;
-                case QuestType.AICAMP:
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
                     QuestObjectivesAICamp QuestObjectivesAICamp = CurrentTreeNodeTag as QuestObjectivesAICamp;
                     QuestObjectivesAICamp.AICamp.NPCAccuracyMin = QuestObjectivesNPCAcuracyMinNUD.Value;
                     break;
-                case QuestType.AIVIP:
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
                     break;
-                case QuestType.ACTION:
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
                     break;
                 default:
                     break;
@@ -2619,27 +2685,27 @@ namespace DayZeEditor
             if (!useraction) return;
             switch (CurrentTreeNodeTag.QuestType)
             {
-                case QuestType.TARGET:
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
                     break;
-                case QuestType.TRAVEL:
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                     break;
-                case QuestType.COLLECT:
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
                     break;
-                case QuestType.DELIVERY:
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                     break;
-                case QuestType.TREASUREHUNT:
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                     break;
-                case QuestType.AIPATROL:
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                     QuestObjectivesAIPatrol QuestObjectivesAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
                     QuestObjectivesAIPatrol.AIPatrol.NPCAccuracyMax = QuestObjectivesNPCAccuracyMaxNUD.Value;
                     break;
-                case QuestType.AICAMP:
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
                     QuestObjectivesAICamp QuestObjectivesAICamp = CurrentTreeNodeTag as QuestObjectivesAICamp;
                     QuestObjectivesAICamp.AICamp.NPCAccuracyMax = QuestObjectivesNPCAccuracyMaxNUD.Value;
                     break;
-                case QuestType.AIVIP:
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
                     break;
-                case QuestType.ACTION:
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
                     break;
                 default:
                     break;
@@ -2651,27 +2717,27 @@ namespace DayZeEditor
             if (!useraction) return;
             switch (CurrentTreeNodeTag.QuestType)
             {
-                case QuestType.TARGET:
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
                     break;
-                case QuestType.TRAVEL:
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                     break;
-                case QuestType.COLLECT:
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
                     break;
-                case QuestType.DELIVERY:
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                     break;
-                case QuestType.TREASUREHUNT:
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                     break;
-                case QuestType.AIPATROL:
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                     QuestObjectivesAIPatrol QuestObjectivesAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
                     QuestObjectivesAIPatrol.CanLootAI = checkBox1.Checked == true ? 1 : 0;
                     break;
-                case QuestType.AICAMP:
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
                     QuestObjectivesAICamp QuestObjectivesAICamp = CurrentTreeNodeTag as QuestObjectivesAICamp;
                     QuestObjectivesAICamp.CanLootAI = checkBox1.Checked == true ? 1 : 0;
                     break;
-                case QuestType.AIVIP:
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
                     break;
-                case QuestType.ACTION:
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
                     break;
                 default:
                     break;
@@ -2694,29 +2760,29 @@ namespace DayZeEditor
                 {
                     switch (CurrentTreeNodeTag.QuestType)
                     {
-                        case QuestType.TARGET:
+                        case QuExpansionQuestObjectiveTypeestType.TARGET:
                             QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
                             CurrentTarget.Target.ClassNames.Add(l);
                             break;
-                        case QuestType.TRAVEL:
+                        case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                             break;
-                        case QuestType.COLLECT:
+                        case QuExpansionQuestObjectiveTypeestType.COLLECT:
                             break;
-                        case QuestType.DELIVERY:
+                        case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                             break;
-                        case QuestType.TREASUREHUNT:
+                        case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                             break;
-                        case QuestType.AIPATROL:
+                        case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                             QuestObjectivesAIPatrol QuestObjectivesAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
                             QuestObjectivesAIPatrol.AIPatrol.ClassNames.Add(l);
                             break;
-                        case QuestType.AICAMP:
+                        case QuExpansionQuestObjectiveTypeestType.AICAMP:
                             QuestObjectivesAICamp QuestObjectivesAICamp = CurrentTreeNodeTag as QuestObjectivesAICamp;
                             QuestObjectivesAICamp.AICamp.ClassNames.Add(l);
                             break;
-                        case QuestType.AIVIP:
+                        case QuExpansionQuestObjectiveTypeestType.AIVIP:
                             break;
-                        case QuestType.ACTION:
+                        case QuExpansionQuestObjectiveTypeestType.ACTION:
                             break;
                         default:
                             break;
@@ -2738,29 +2804,29 @@ namespace DayZeEditor
             {
                 switch (CurrentTreeNodeTag.QuestType)
                 {
-                    case QuestType.TARGET:
+                    case QuExpansionQuestObjectiveTypeestType.TARGET:
                         QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
                         CurrentTarget.Target.ClassNames.Remove(QuestObjectivesNPCAICLassNamesLB.GetItemText(QuestObjectivesNPCAICLassNamesLB.SelectedItems[0]));
                         break;
-                    case QuestType.TRAVEL:
+                    case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                         break;
-                    case QuestType.COLLECT:
+                    case QuExpansionQuestObjectiveTypeestType.COLLECT:
                         break;
-                    case QuestType.DELIVERY:
+                    case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                         break;
-                    case QuestType.TREASUREHUNT:
+                    case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                         break;
-                    case QuestType.AIPATROL:
+                    case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                         QuestObjectivesAIPatrol QuestObjectivesAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
                         QuestObjectivesAIPatrol.AIPatrol.ClassNames.Remove(QuestObjectivesNPCAICLassNamesLB.GetItemText(QuestObjectivesNPCAICLassNamesLB.SelectedItems[0]));
                         break;
-                    case QuestType.AICAMP:
+                    case QuExpansionQuestObjectiveTypeestType.AICAMP:
                         QuestObjectivesAICamp QuestObjectivesAICamp = CurrentTreeNodeTag as QuestObjectivesAICamp;
                         QuestObjectivesAICamp.AICamp.ClassNames.Remove(QuestObjectivesNPCAICLassNamesLB.GetItemText(QuestObjectivesNPCAICLassNamesLB.SelectedItems[0]));
                         break;
-                    case QuestType.AIVIP:
+                    case QuExpansionQuestObjectiveTypeestType.AIVIP:
                         break;
-                    case QuestType.ACTION:
+                    case QuExpansionQuestObjectiveTypeestType.ACTION:
                         break;
                     default:
                         break;
@@ -2779,7 +2845,7 @@ namespace DayZeEditor
             if (!useraction) return;
             switch (CurrentTreeNodeTag.QuestType)
             {
-                case QuestType.TARGET:
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
                     QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
                     CurrentTarget.Target.SpecialWeapon = QuestObjectivesSpecialWeaponCB.Checked == true ? 1 : 0;
                     if (!QuestObjectivesSpecialWeaponCB.Checked)
@@ -2788,15 +2854,15 @@ namespace DayZeEditor
                         QuestObjectivesAllowedWeaponsLB.DataSource = CurrentTarget.Target.AllowedWeapons;
                     }
                     break;
-                case QuestType.TRAVEL:
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                     break;
-                case QuestType.COLLECT:
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
                     break;
-                case QuestType.DELIVERY:
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                     break;
-                case QuestType.TREASUREHUNT:
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                     break;
-                case QuestType.AIPATROL:
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                     QuestObjectivesAIPatrol QuestObjectivesAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
                     QuestObjectivesAIPatrol.AIPatrol.SpecialWeapon = QuestObjectivesSpecialWeaponCB.Checked == true ? 1 : 0;
                     if (!QuestObjectivesSpecialWeaponCB.Checked)
@@ -2805,7 +2871,7 @@ namespace DayZeEditor
                         QuestObjectivesAllowedWeaponsLB.DataSource = QuestObjectivesAIPatrol.AIPatrol.AllowedWeapons;
                     }
                     break;
-                case QuestType.AICAMP:
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
                     QuestObjectivesAICamp QuestObjectivesAICamp = CurrentTreeNodeTag as QuestObjectivesAICamp;
                     QuestObjectivesAICamp.AICamp.SpecialWeapon = QuestObjectivesSpecialWeaponCB.Checked == true ? 1 : 0;
                     if (!QuestObjectivesSpecialWeaponCB.Checked)
@@ -2814,9 +2880,9 @@ namespace DayZeEditor
                         QuestObjectivesAllowedWeaponsLB.DataSource = QuestObjectivesAICamp.AICamp.AllowedWeapons;
                     }
                     break;
-                case QuestType.AIVIP:
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
                     break;
-                case QuestType.ACTION:
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
                     break;
                 default:
                     break;
@@ -2839,29 +2905,29 @@ namespace DayZeEditor
                 {
                     switch (CurrentTreeNodeTag.QuestType)
                     {
-                        case QuestType.TARGET:
+                        case QuExpansionQuestObjectiveTypeestType.TARGET:
                             QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
                             CurrentTarget.Target.AllowedWeapons.Add(l);
                             break;
-                        case QuestType.TRAVEL:
+                        case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                             break;
-                        case QuestType.COLLECT:
+                        case QuExpansionQuestObjectiveTypeestType.COLLECT:
                             break;
-                        case QuestType.DELIVERY:
+                        case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                             break;
-                        case QuestType.TREASUREHUNT:
+                        case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                             break;
-                        case QuestType.AIPATROL:
+                        case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                             QuestObjectivesAIPatrol QuestObjectivesAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
                             QuestObjectivesAIPatrol.AIPatrol.AllowedWeapons.Add(l);
                             break;
-                        case QuestType.AICAMP:
+                        case QuExpansionQuestObjectiveTypeestType.AICAMP:
                             QuestObjectivesAICamp QuestObjectivesAICamp = CurrentTreeNodeTag as QuestObjectivesAICamp;
                             QuestObjectivesAICamp.AICamp.AllowedWeapons.Add(l);
                             break;
-                        case QuestType.AIVIP:
+                        case QuExpansionQuestObjectiveTypeestType.AIVIP:
                             break;
-                        case QuestType.ACTION:
+                        case QuExpansionQuestObjectiveTypeestType.ACTION:
                             break;
                         default:
                             break;
@@ -2881,30 +2947,30 @@ namespace DayZeEditor
             if (QuestObjectivesAllowedWeaponsLB.SelectedItems.Count < 1) return;
             switch (CurrentTreeNodeTag.QuestType)
             {
-                case QuestType.TARGET:
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
                     QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
                     CurrentTarget.Target.AllowedWeapons.Remove(QuestObjectivesAllowedWeaponsLB.GetItemText(QuestObjectivesAllowedWeaponsLB.SelectedItem));
                     break;
-                case QuestType.TRAVEL:
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                     break;
-                case QuestType.COLLECT:
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
                     break;
-                case QuestType.DELIVERY:
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                     break;
-                case QuestType.TREASUREHUNT:
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                     break;
-                case QuestType.AIPATROL:
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                     QuestObjectivesAIPatrol QuestObjectivesAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
                     QuestObjectivesAIPatrol.AIPatrol.AllowedWeapons.Remove(QuestObjectivesAllowedWeaponsLB.GetItemText(QuestObjectivesAllowedWeaponsLB.SelectedItem));
                     break;
-                case QuestType.AICAMP:
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
                     QuestObjectivesAICamp QuestObjectivesAICamp = CurrentTreeNodeTag as QuestObjectivesAICamp;
                     QuestObjectivesAICamp.AICamp.AllowedWeapons.Remove(QuestObjectivesAllowedWeaponsLB.GetItemText(QuestObjectivesAllowedWeaponsLB.SelectedItem));
                     break;
-                case QuestType.AIVIP:
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
 
                     break;
-                case QuestType.ACTION:
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
                     break;
                 default:
                     break;
@@ -2921,27 +2987,27 @@ namespace DayZeEditor
             if (!useraction) return;
             switch (CurrentTreeNodeTag.QuestType)
             {
-                case QuestType.TARGET:
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
                     break;
-                case QuestType.TRAVEL:
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                     break;
-                case QuestType.COLLECT:
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
                     break;
-                case QuestType.DELIVERY:
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                     break;
-                case QuestType.TREASUREHUNT:
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                     break;
-                case QuestType.AIPATROL:
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                     QuestObjectivesAIPatrol QuestObjectivesAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
                     QuestObjectivesAIPatrol.MinDistRadius = QuestObjectivesMinDistRadiusNUD.Value;
                     break;
-                case QuestType.AICAMP:
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
                     QuestObjectivesAICamp QuestObjectivesAICamp = CurrentTreeNodeTag as QuestObjectivesAICamp;
                     QuestObjectivesAICamp.MinDistRadius = QuestObjectivesMinDistRadiusNUD.Value;
                     break;
-                case QuestType.AIVIP:
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
                     break;
-                case QuestType.ACTION:
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
                     break;
                 default:
                     break;
@@ -2953,27 +3019,27 @@ namespace DayZeEditor
             if (!useraction) return;
             switch (CurrentTreeNodeTag.QuestType)
             {
-                case QuestType.TARGET:
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
                     break;
-                case QuestType.TRAVEL:
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                     break;
-                case QuestType.COLLECT:
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
                     break;
-                case QuestType.DELIVERY:
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                     break;
-                case QuestType.TREASUREHUNT:
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                     break;
-                case QuestType.AIPATROL:
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                     QuestObjectivesAIPatrol QuestObjectivesAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
                     QuestObjectivesAIPatrol.MaxDistRadius = QuestObjectivesMaxDistRadiusNUD.Value;
                     break;
-                case QuestType.AICAMP:
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
                     QuestObjectivesAICamp QuestObjectivesAICamp = CurrentTreeNodeTag as QuestObjectivesAICamp;
                     QuestObjectivesAICamp.MaxDistRadius = QuestObjectivesMaxDistRadiusNUD.Value;
                     break;
-                case QuestType.AIVIP:
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
                     break;
-                case QuestType.ACTION:
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
                     break;
                 default:
                     break;
@@ -2985,27 +3051,27 @@ namespace DayZeEditor
             if (!useraction) return;
             switch (CurrentTreeNodeTag.QuestType)
             {
-                case QuestType.TARGET:
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
                     break;
-                case QuestType.TRAVEL:
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                     break;
-                case QuestType.COLLECT:
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
                     break;
-                case QuestType.DELIVERY:
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                     break;
-                case QuestType.TREASUREHUNT:
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                     break;
-                case QuestType.AIPATROL:
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                     QuestObjectivesAIPatrol QuestObjectivesAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
                     QuestObjectivesAIPatrol.DespawnRadius = QuestObjectivesDespawnRadiusNUD.Value;
                     break;
-                case QuestType.AICAMP:
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
                     QuestObjectivesAICamp QuestObjectivesAICamp = CurrentTreeNodeTag as QuestObjectivesAICamp;
                     QuestObjectivesAICamp.DespawnRadius = QuestObjectivesDespawnRadiusNUD.Value;
                     break;
-                case QuestType.AIVIP:
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
                     break;
-                case QuestType.ACTION:
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
                     break;
                 default:
                     break;
@@ -3017,31 +3083,31 @@ namespace DayZeEditor
             if (!useraction) return;
             switch (CurrentTreeNodeTag.QuestType)
             {
-                case QuestType.TARGET:
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
                     QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
                     CurrentTarget.MaxDistance = QuestObjectivesMaxDistanceNUD.Value;
                     break;
-                case QuestType.TRAVEL:
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                     QuestObjectivesTravel CurrentTravel = CurrentTreeNodeTag as QuestObjectivesTravel;
                     CurrentTravel.MaxDistance = QuestObjectivesMaxDistanceNUD.Value;
                     break;
-                case QuestType.COLLECT:
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
                     break;
-                case QuestType.DELIVERY:
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                     QuestObjectivesDelivery CurrentDelivery = CurrentTreeNodeTag as QuestObjectivesDelivery;
                     CurrentDelivery.MaxDistance = QuestObjectivesMaxDistanceNUD.Value;
                     break;
-                case QuestType.TREASUREHUNT:
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                     break;
-                case QuestType.AIPATROL:
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                     break;
-                case QuestType.AICAMP:
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
                     break;
-                case QuestType.AIVIP:
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
                     QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
                     CurrentAIVIP.MaxDistance = QuestObjectivesMaxDistanceNUD.Value;
                     break;
-                case QuestType.ACTION:
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
                     break;
                 default:
                     break;
@@ -3053,29 +3119,29 @@ namespace DayZeEditor
             if (!useraction) return;
             switch (CurrentTreeNodeTag.QuestType)
             {
-                case QuestType.TARGET:
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
                     break;
-                case QuestType.TRAVEL:
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                     QuestObjectivesTravel CurrentTravel = CurrentTreeNodeTag as QuestObjectivesTravel;
                     CurrentTravel.MarkerName = QuestObjectivesMarkerNameTB.Text;
                     break;
-                case QuestType.COLLECT:
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
                     break;
-                case QuestType.DELIVERY:
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                     QuestObjectivesDelivery Currentdelivery = CurrentTreeNodeTag as QuestObjectivesDelivery;
                     Currentdelivery.MarkerName = QuestObjectivesMarkerNameTB.Text;
                     break;
-                case QuestType.TREASUREHUNT:
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                     break;
-                case QuestType.AIPATROL:
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                     break;
-                case QuestType.AICAMP:
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
                     break;
-                case QuestType.AIVIP:
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
                     QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
                     CurrentAIVIP.MarkerName = QuestObjectivesMarkerNameTB.Text;
                     break;
-                case QuestType.ACTION:
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
                     break;
                 default:
                     break;
@@ -3087,27 +3153,27 @@ namespace DayZeEditor
             if (!useraction) return;
             switch (CurrentTreeNodeTag.QuestType)
             {
-                case QuestType.TARGET:
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
                     break;
-                case QuestType.TRAVEL:
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
                     QuestObjectivesTravel CurrentTravel= CurrentTreeNodeTag as QuestObjectivesTravel;
                     CurrentTravel.ShowDistance = QuestObjectivesShowDistanceCB.Checked == true ? 1 : 0;
                     break;
-                case QuestType.COLLECT:
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
                     break;
-                case QuestType.DELIVERY:
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
                     break;
-                case QuestType.TREASUREHUNT:
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                     QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
                     CurrentTreasureHunt.ShowDistance = QuestObjectivesShowDistanceCB.Checked == true ? 1 : 0;
                     break;
-                case QuestType.AIPATROL:
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                     break;
-                case QuestType.AICAMP:
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
                     break;
-                case QuestType.AIVIP:
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
                     break;
-                case QuestType.ACTION:
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
                     break;
                 default:
                     break;
@@ -3175,14 +3241,14 @@ namespace DayZeEditor
         }
         private void addNewActionObjectiveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int newid = QuestObjectives.GetNextQuestID(QuestType.ACTION);
+            int newid = QuestObjectives.GetNextQuestID(QuExpansionQuestObjectiveTypeestType.ACTION);
             QuestObjectivesAction newaction = new QuestObjectivesAction()
             {
-                QuestType = QuestType.ACTION,
+                QuestType = QuExpansionQuestObjectiveTypeestType.ACTION,
                 Filename = "Objective_A_" + newid.ToString(),
                 ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
-                ObjectiveType = (int)QuestType.ACTION,
+                ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.ACTION,
                 ObjectiveText = "New Objective " + newid.ToString(),
                 TimeLimit = -1,
                 ActionNames = new BindingList<string>(),
@@ -3197,14 +3263,14 @@ namespace DayZeEditor
         }
         private void addNewAICampObjectiveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int newid = QuestObjectives.GetNextQuestID(QuestType.AICAMP);
+            int newid = QuestObjectives.GetNextQuestID(QuExpansionQuestObjectiveTypeestType.AICAMP);
             QuestObjectivesAICamp newaction = new QuestObjectivesAICamp()
             {
-                QuestType = QuestType.AICAMP,
+                QuestType = QuExpansionQuestObjectiveTypeestType.AICAMP,
                 Filename = "Objective_AIC_" + newid.ToString(),
                 ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
-                ObjectiveType = (int)QuestType.AICAMP,
+                ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.AICAMP,
                 ObjectiveText = "New Objective " + newid.ToString(),
                 TimeLimit = -1,
                 AICamp = new Aicamp()
@@ -3232,14 +3298,14 @@ namespace DayZeEditor
         }
         private void addNewAIPatrolObjectiveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int newid = QuestObjectives.GetNextQuestID(QuestType.AIPATROL);
+            int newid = QuestObjectives.GetNextQuestID(QuExpansionQuestObjectiveTypeestType.AIPATROL);
             QuestObjectivesAIPatrol newaction = new QuestObjectivesAIPatrol()
             {
-                QuestType = QuestType.AIPATROL,
+                QuestType = QuExpansionQuestObjectiveTypeestType.AIPATROL,
                 Filename = "Objective_AIP_" + newid.ToString(),
                 ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
-                ObjectiveType = (int)QuestType.AIPATROL,
+                ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.AIPATROL,
                 ObjectiveText = "New Objective " + newid.ToString(),
                 TimeLimit = -1,
                 AIPatrol = new AIPatrol()
@@ -3268,14 +3334,14 @@ namespace DayZeEditor
         }
         private void addNewAiVIPObjectiveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int newid = QuestObjectives.GetNextQuestID(QuestType.AIVIP);
+            int newid = QuestObjectives.GetNextQuestID(QuExpansionQuestObjectiveTypeestType.AIVIP);
             QuestObjectivesAIVIP newaction = new QuestObjectivesAIVIP()
             {
-                QuestType = QuestType.AIVIP,
+                QuestType = QuExpansionQuestObjectiveTypeestType.AIVIP,
                 Filename = "Objective_AIVIP_" + newid.ToString(),
                 ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
-                ObjectiveType = (int)QuestType.AIVIP,
+                ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.AIVIP,
                 ObjectiveText = "New Objective " + newid.ToString(),
                 TimeLimit = -1,
                 AIVIP = new AIVIP()
@@ -3298,14 +3364,14 @@ namespace DayZeEditor
         }
         private void addNewCollectionObjectiveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int newid = QuestObjectives.GetNextQuestID(QuestType.COLLECT);
+            int newid = QuestObjectives.GetNextQuestID(QuExpansionQuestObjectiveTypeestType.COLLECT);
             QuestObjectivesCollection newaction = new QuestObjectivesCollection()
             {
-                QuestType = QuestType.COLLECT,
+                QuestType = QuExpansionQuestObjectiveTypeestType.COLLECT,
                 Filename = "Objective_C_" + newid.ToString(),
                 ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
-                ObjectiveType = (int)QuestType.COLLECT,
+                ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.COLLECT,
                 ObjectiveText = "New Objective " + newid.ToString(),
                 TimeLimit = -1,
                 Collection = new Collection()
@@ -3324,14 +3390,14 @@ namespace DayZeEditor
         }
         private void addNewCraftingObjectiveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int newid = QuestObjectives.GetNextQuestID(QuestType.CRAFTING);
+            int newid = QuestObjectives.GetNextQuestID(QuExpansionQuestObjectiveTypeestType.CRAFTING);
             QuestObjectivesCrafting newaction = new QuestObjectivesCrafting()
             {
-                QuestType = QuestType.CRAFTING,
+                QuestType = QuExpansionQuestObjectiveTypeestType.CRAFTING,
                 Filename = "Objective_CR_" + newid.ToString(),
                 ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
-                ObjectiveType = (int)QuestType.CRAFTING,
+                ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.CRAFTING,
                 ObjectiveText = "New Objective " + newid.ToString(),
                 TimeLimit = -1,
                 ItemNames = new BindingList<string>(),
@@ -3346,14 +3412,14 @@ namespace DayZeEditor
         }
         private void addNewDeliveryObjectiveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int newid = QuestObjectives.GetNextQuestID(QuestType.DELIVERY);
+            int newid = QuestObjectives.GetNextQuestID(QuExpansionQuestObjectiveTypeestType.DELIVERY);
             QuestObjectivesDelivery newaction = new QuestObjectivesDelivery()
             {
-                QuestType = QuestType.DELIVERY,
+                QuestType = QuExpansionQuestObjectiveTypeestType.DELIVERY,
                 Filename = "Objective_D_" + newid.ToString(),
                 ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
-                ObjectiveType = (int)QuestType.DELIVERY,
+                ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.DELIVERY,
                 ObjectiveText = "New Objective " + newid.ToString(),
                 TimeLimit = -1,
                 Deliveries = new BindingList<Delivery>(),
@@ -3376,14 +3442,14 @@ namespace DayZeEditor
         }
         private void addNewTargetObjectiveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int newid = QuestObjectives.GetNextQuestID(QuestType.TARGET);
+            int newid = QuestObjectives.GetNextQuestID(QuExpansionQuestObjectiveTypeestType.TARGET);
             QuestObjectivesTarget newaction = new QuestObjectivesTarget()
             {
-                QuestType = QuestType.TARGET,
+                QuestType = QuExpansionQuestObjectiveTypeestType.TARGET,
                 Filename = "Objective_TA_" + newid.ToString(),
                 ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
-                ObjectiveType = (int)QuestType.TARGET,
+                ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.TARGET,
                 ObjectiveText = "New Objective " + newid.ToString(),
                 TimeLimit = -1,
                 Position = new float[] { 0, 0, 0 },
@@ -3406,14 +3472,14 @@ namespace DayZeEditor
         }
         private void addNewTravelObjectiveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int newid = QuestObjectives.GetNextQuestID(QuestType.TRAVEL);
+            int newid = QuestObjectives.GetNextQuestID(QuExpansionQuestObjectiveTypeestType.TRAVEL);
             QuestObjectivesTravel newaction = new QuestObjectivesTravel()
             {
-                QuestType = QuestType.TRAVEL,
+                QuestType = QuExpansionQuestObjectiveTypeestType.TRAVEL,
                 Filename = "Objective_T_" + newid.ToString(),
                 ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
-                ObjectiveType = (int)QuestType.TRAVEL,
+                ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.TRAVEL,
                 ObjectiveText = "New Objective " + newid.ToString(),
                 TimeLimit = -1,
                 Position = new float[] { 0, 0, 0 },
@@ -3431,14 +3497,14 @@ namespace DayZeEditor
         }
         private void addNewTreasureHuntObjectiveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int newid = QuestObjectives.GetNextQuestID(QuestType.TREASUREHUNT);
+            int newid = QuestObjectives.GetNextQuestID(QuExpansionQuestObjectiveTypeestType.TREASUREHUNT);
             QuestObjectivesTreasureHunt newaction = new QuestObjectivesTreasureHunt()
             {
-                QuestType = QuestType.TREASUREHUNT,
+                QuestType = QuExpansionQuestObjectiveTypeestType.TREASUREHUNT,
                 Filename = "Objective_TH_" + newid.ToString(),
                 ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
-                ObjectiveType = (int)QuestType.TREASUREHUNT,
+                ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.TREASUREHUNT,
                 ObjectiveText = "New Objective " + newid.ToString(),
                 TimeLimit = -1,
                 ShowDistance = 1,
@@ -3468,36 +3534,111 @@ namespace DayZeEditor
 
         #endregion objectives
 
-        private void ExpansionQuests_FormClosing(object sender, FormClosingEventArgs e)
+
+        public ExpansionQuestPersistentQuestData currentExpansionQuestPersistentQuestData;
+        public ExpansionQuestObjectiveData currentExpansionQuestObjectiveData;
+        private void setupplayerdata()
         {
-            bool needtosave = false;
-            if (QuestSettings.isDirty)
+            useraction = false;
+
+            treeViewMS2.Nodes.Clear();
+            TreeNode root = new TreeNode("Quest Player Data")
             {
-                needtosave = true;
+                Tag = "Parent"
+            };
+            foreach(QuestPlayerData QPD in QuestPlayerDataList)
+            {
+                root.Nodes.Add(treenodeplayerquestdata(QPD));
             }
-            foreach (ExpansionQuestNPCs npcs in QuestNPCs.NPCList)
+            treeViewMS2.Nodes.Add(root);
+
+
+            useraction = true;
+        }
+        private TreeNode treenodeplayerquestdata(QuestPlayerData QPD)
+        {
+            TreeNode Playerdata = new TreeNode(Path.GetFileNameWithoutExtension(QPD.Filename))
             {
-                if (npcs.isDirty)
-                    needtosave = true;
+                Tag = QPD
+            };
+            for(int i = 0; i < QPD.ExpansionQuestPersistentQuestDataCount; i++)
+            {
+                TreeNode newquest = new TreeNode(QPD.QuestDatas[i].ToString());
+                newquest.Tag = QPD.QuestDatas[i];
+                Playerdata.Nodes.Add(newquest);
             }
-            foreach (Quests Quest in QuestsList.QuestList)
+            return Playerdata;
+        }
+        private void treeViewMS2_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            useraction = false;
+            QuestInfoGB.Visible = false;
+            ObjectiveInfoGB.Visible = false;
+            if (e.Node.Tag != null && e.Node.Tag is QuestPlayerData)
             {
-                if (Quest.isDirty)
-                    needtosave = true;
             }
-            foreach (QuestObjectivesBase obj in QuestObjectives.Objectives)
+            else if (e.Node.Tag != null && e.Node.Tag is ExpansionQuestPersistentQuestData)
             {
-                if (obj.isDirty)
-                    needtosave = true; 
-            }
-            if (needtosave)
-            {
-                DialogResult dialogResult = MessageBox.Show("You have Unsaved Changes, do you wish to save", "Unsaved Changes found", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
+                QuestInfoGB.Visible = true;
+                currentExpansionQuestPersistentQuestData = e.Node.Tag as ExpansionQuestPersistentQuestData;
+                currentExpansionQuestPersistentQuestData.AssignedQuestinfo = QuestsList.GetQuestfromid(currentExpansionQuestPersistentQuestData.QuestID);
+                if (currentExpansionQuestPersistentQuestData.AssignedQuestinfo == null)
                 {
-                    savefiles();
+                    QuestInfoGB.Visible = false;
+                    MessageBox.Show("Quest Does not exist, Please remove from all Players data");
+                }
+                else
+                {
+                    for (int i = 0; i < currentExpansionQuestPersistentQuestData.QuestObjectivesCount; i++)
+                    {
+                        int ObjectiveIndex = currentExpansionQuestPersistentQuestData.QuestObjectives[i].ObjectiveIndex;
+                        try
+                        {
+                            currentExpansionQuestPersistentQuestData.QuestObjectives[i].AssignedObjective = currentExpansionQuestPersistentQuestData.AssignedQuestinfo.Objectives[ObjectiveIndex];
+                        }
+                        catch
+                        {
+                            currentExpansionQuestPersistentQuestData.QuestObjectives[i].AssignedObjective = null;
+                        }
+                    }
+                    numericUpDown1.Value = currentExpansionQuestPersistentQuestData.QuestID;
+                    comboBox1.SelectedItem = (ExpansionQuestState)currentExpansionQuestPersistentQuestData.State;
+                    listBox1.DisplayMember = "DisplayName";
+                    listBox1.ValueMember = "Value";
+                    listBox1.DataSource = currentExpansionQuestPersistentQuestData.QuestObjectives;
                 }
             }
+            else if (e.Node.Tag != null && e.Node.Tag is ExpansionQuestObjectiveData)
+            {
+            }
+            useraction = true;
+        }
+
+        private void treeViewMS2_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            treeViewMS2.SelectedNode = e.Node;
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItems.Count <= 0) return;
+            currentExpansionQuestObjectiveData = listBox1.SelectedItem as ExpansionQuestObjectiveData;
+            useraction = false;
+            ObjectiveInfoGB.Visible = true;
+
+            numericUpDown3.Value = currentExpansionQuestObjectiveData.ObjectiveIndex;
+            comboBox2.SelectedItem = (QuExpansionQuestObjectiveTypeestType)currentExpansionQuestObjectiveData.ObjectiveType;
+            checkBox2.Checked = currentExpansionQuestObjectiveData.IsCompleted;
+            checkBox3.Checked = currentExpansionQuestObjectiveData.IsActive;
+            numericUpDown4.Value = currentExpansionQuestObjectiveData.ObjectiveAmount;
+            numericUpDown5.Value = currentExpansionQuestObjectiveData.ObjectiveCount;
+            numericUpDown6.Value = (decimal)currentExpansionQuestObjectiveData.ObjectivePosition[0];
+            numericUpDown8.Value = (decimal)currentExpansionQuestObjectiveData.ObjectivePosition[1];
+            numericUpDown10.Value = (decimal)currentExpansionQuestObjectiveData.ObjectivePosition[02];
+            checkBox4.Checked = currentExpansionQuestObjectiveData.ActionState;
+            numericUpDown7.Value = currentExpansionQuestObjectiveData.TimeLimit;
+
+            useraction = true;
         }
     }
 }

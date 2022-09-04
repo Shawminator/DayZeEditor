@@ -343,6 +343,11 @@ namespace DayZeEditor
                 else
                     AdvancedWorkbenchButton.Visible = false;
 
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\MagicCrateManagerSettings.json"))
+                    MysteryBoxButton.Visible = true;
+                else
+                    MysteryBoxButton.Visible = false;
+
 
             }
         }
@@ -771,6 +776,33 @@ namespace DayZeEditor
             {
                 closemdichildren();
                 _TM = new AdvancedWorkBenchManager
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+
+                };
+                _TM.Show();
+                Console.WriteLine("loading AdvancedWorkBenchManager manager....");
+            }
+            timer1.Start();
+        }
+
+        private void MysteryBoxButton_Click(object sender, EventArgs e)
+        {
+            MysteryBoxManager _TM = Application.OpenForms["MysteryBoxManager"] as MysteryBoxManager;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new MysteryBoxManager
                 {
                     MdiParent = this,
                     Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,

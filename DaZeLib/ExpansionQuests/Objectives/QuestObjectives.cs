@@ -9,8 +9,9 @@ using System.Windows.Forms;
 
 namespace DayZeLib
 {
-    public enum QuestType
+    public enum QuExpansionQuestObjectiveTypeestType
     {
+        NONE = 1,
         TARGET = 2,
         TRAVEL = 3,
         COLLECT = 4,
@@ -20,7 +21,8 @@ namespace DayZeLib
         AICAMP = 8,
         AIVIP = 9,
         ACTION = 10,
-        CRAFTING = 11
+        CRAFTING = 11,
+        SCRIPTED = 12
     }
 
     public class QuestObjectivesBase : IEquatable<QuestObjectivesBase>
@@ -34,7 +36,7 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty = false;
         [JsonIgnore]
-        public QuestType QuestType { get; set; }
+        public QuExpansionQuestObjectiveTypeestType QuestType { get; set; }
 
         public int ConfigVersion { get; set; }
         public int ID { get; set; }
@@ -57,7 +59,7 @@ namespace DayZeLib
         }
         public override string ToString()
         {
-            return ObjectiveText + ", type:" + (QuestType)ObjectiveType + ", ID:"+ID.ToString();
+            return ObjectiveText + ", type:" + (QuExpansionQuestObjectiveTypeestType)ObjectiveType + ", ID:"+ID.ToString();
         }
 
         public bool Equals(QuestObjectivesBase other)
@@ -108,7 +110,7 @@ namespace DayZeLib
                             Console.WriteLine("serializing " + file.Name);
                             QuestObjectivesBase newobjective = JsonSerializer.Deserialize<QuestObjectivesBase>(File.ReadAllText(file.FullName));
                             newobjective.Filename = Path.GetFileNameWithoutExtension(file.Name);
-                            newobjective.QuestType = (QuestType)newobjective.ObjectiveType;
+                            newobjective.QuestType = (QuExpansionQuestObjectiveTypeestType)newobjective.ObjectiveType;
                             Objectives.Add(newobjective);
                         }
                         catch (Exception ex)
@@ -130,7 +132,7 @@ namespace DayZeLib
             return null;
         }
 
-        public int GetNextQuestID(QuestType type)
+        public int GetNextQuestID(QuExpansionQuestObjectiveTypeestType type)
         {
             List<int> Numberofobjectives = new List<int>();
             foreach (QuestObjectivesBase objectives in Objectives)

@@ -98,6 +98,7 @@
     <Compile Include="BreachingCharge\BreachingChargeSettigns.cs" />
     <Compile Include="Cannabisplus\CannabisPlus.cs" />
     <Compile Include="CJ187LootTable\LootChestTable.cs" />
+    <Compile Include="DarkHorde\DarkHordeMainoptions.cs" />
     <Compile Include="DNAKeycards\Basic\DNABasicConfig.cs" />
     <Compile Include="DNAKeycards\Basic\DNAProprietaryConfig.cs" />
     <Compile Include="DRJonesTrader\DrJonesAdmins.cs" />
@@ -144,6 +145,7 @@
     <Compile Include="ExpansionQuests\Objectives\QuestObjectivesTreasureHunt.cs" />
     <Compile Include="ExpansionQuests\Objectives\QuestObjectovesTarget.cs" />
     <Compile Include="ExpansionQuests\Objectives\QuestObjectivesTravel.cs" />
+    <Compile Include="ExpansionQuests\PlayerData\PlayerData.cs" />
     <Compile Include="ExpansionQuests\Quests\ExpansionQuests.cs" />
     <Compile Include="ExpansionQuests\Settings\QuestSettings.cs" />
     <Compile Include="ExpansionSettings\AirdropSettings.cs" />
@@ -175,8 +177,12 @@
     <Compile Include="Helper\XYZMapping.cs" />
     <Compile Include="KingOfTheHill\KOTH.cs" />
     <Compile Include="KOSZone\KOSZone.cs" />
+    <Compile Include="LootPool\LootPool.cs" />
+    <Compile Include="MagicBox\MysteryBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Economy\TypesFile.cs" />
+    <Compile Include="RHCaptureTheFlag\RHCaptureTheFlag.cs" />
+    <Compile Include="RHLootBoxes\RHLootBoxes.cs" />
     <Compile Include="SpawnerBubaku\SpawnerBubaku.cs" />
     <Compile Include="TraderPlus\TraderPlusBankingConfig.cs" />
     <Compile Include="TraderPlus\TraderPlusGeneralConfig.cs" />

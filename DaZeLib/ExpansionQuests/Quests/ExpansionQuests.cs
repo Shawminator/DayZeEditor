@@ -139,7 +139,6 @@ namespace DayZeLib
                 }
             }
         }
-
         public void RemoveObjectivesfromQuests(QuestObjectivesBase basequest)
         {
             foreach (Quests quest in QuestList)
@@ -156,6 +155,10 @@ namespace DayZeLib
                     quest.isDirty = true;
                 }
             }
+        }
+        public Quests GetQuestfromid(int id)
+        {
+            return QuestList.FirstOrDefault(x => x.ID == id);
         }
     }
     public class Quests
