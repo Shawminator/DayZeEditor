@@ -803,6 +803,7 @@ namespace DayZeEditor
             this.AddTypesTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteSpecificTypeTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForDuplicateTypesTSMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportAllToExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EventSpawnContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addNewEventSpawnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteSelectedEventSpawnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -11181,9 +11182,10 @@ namespace DayZeEditor
             this.DeleteTypesTSMI,
             this.AddTypesTSMI,
             this.DeleteSpecificTypeTSMI,
-            this.checkForDuplicateTypesTSMI});
+            this.checkForDuplicateTypesTSMI,
+            this.exportAllToExcelToolStripMenuItem});
             this.TypesContextMenu.Name = "TypesContextMenu";
-            this.TypesContextMenu.Size = new System.Drawing.Size(211, 92);
+            this.TypesContextMenu.Size = new System.Drawing.Size(211, 114);
             // 
             // DeleteTypesTSMI
             // 
@@ -11212,6 +11214,13 @@ namespace DayZeEditor
             this.checkForDuplicateTypesTSMI.Size = new System.Drawing.Size(210, 22);
             this.checkForDuplicateTypesTSMI.Text = "Check for Duplicate Types";
             this.checkForDuplicateTypesTSMI.Click += new System.EventHandler(this.checkForDuplicateTypesToolStripMenuItem_Click);
+            // 
+            // exportAllToExcelToolStripMenuItem
+            // 
+            this.exportAllToExcelToolStripMenuItem.Name = "exportAllToExcelToolStripMenuItem";
+            this.exportAllToExcelToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.exportAllToExcelToolStripMenuItem.Text = "Export All to CSV";
+            this.exportAllToExcelToolStripMenuItem.Click += new System.EventHandler(this.exportAllToExcelToolStripMenuItem_Click);
             // 
             // EventSpawnContextMenu
             // 
@@ -12528,5 +12537,6 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripMenuItem importChildrenFromdzeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportGroupSpawnTodzeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importPositionAndCreateEventgroupFormdzeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportAllToExcelToolStripMenuItem;
     }
 }

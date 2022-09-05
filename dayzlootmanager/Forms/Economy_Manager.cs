@@ -673,6 +673,7 @@ namespace DayZeEditor
                     DeleteTypesTSMI.Visible = false;
                     AddTypesTSMI.Visible = false;
                     DeleteSpecificTypeTSMI.Visible = true;
+                    exportAllToExcelToolStripMenuItem.Visible = false;
                     DeleteSpecificTypeTSMI.Text = "Delete " + currentlootpart.name + " from " + currentcollection + " in " + typesfile;
                     checkForDuplicateTypesTSMI.Visible = false;
                     TypesContextMenu.Show(Cursor.Position);
@@ -697,6 +698,7 @@ namespace DayZeEditor
                             DeleteSpecificTypeTSMI.Visible = false;
                             DeleteTypesTSMI.Visible = false;
                             AddTypesTSMI.Visible = true;
+                            exportAllToExcelToolStripMenuItem.Visible = false;
                             AddTypesTSMI.Text = "Add new Types to Vanilla Types";
                             checkForDuplicateTypesTSMI.Visible = false;
                             TypesContextMenu.Show(Cursor.Position);
@@ -718,6 +720,7 @@ namespace DayZeEditor
                             AddTypesTSMI.Visible = true;
                             AddTypesTSMI.Text = "Add new Types to " + currentTypesFile.modname;
                             checkForDuplicateTypesTSMI.Visible = false;
+                            exportAllToExcelToolStripMenuItem.Visible = false;
                             TypesContextMenu.Show(Cursor.Position);
                         }
                     }
@@ -737,6 +740,7 @@ namespace DayZeEditor
                         DeleteTypesTSMI.Visible = true;
                         AddTypesTSMI.Visible = false;
                         checkForDuplicateTypesTSMI.Visible = false;
+                        exportAllToExcelToolStripMenuItem.Visible = false;
                         DeleteTypesTSMI.Text = "Delete " + currentcollection + " from " + currentTypesFile.modname;
                         TypesContextMenu.Show(Cursor.Position);
                     }
@@ -749,6 +753,7 @@ namespace DayZeEditor
                         AddTypesTSMI.Visible = true;
                         DeleteTypesTSMI.Visible = false;
                         checkForDuplicateTypesTSMI.Visible = true;
+                        exportAllToExcelToolStripMenuItem.Visible = true;
                         AddTypesTSMI.Text = "Add new Types to Custom Folder";
                         TypesContextMenu.Show(Cursor.Position);
                     }
@@ -977,6 +982,99 @@ namespace DayZeEditor
             currentproject.SetTotNomCount();
             NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
         }
+        private void exportAllToExcelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Filename,Classname,Nomainal,min,Lifetime,Restock,QuantMin,QuantMaxm,Cost,CountInCargo,CountInhoarder,CountInMap,CountInPlayer,Crafter,Deloot,Category,Usage,Tag" + Environment.NewLine);
+            string filename = Path.GetFileName(vanillatypes.Filename);
+            foreach(typesType type in  vanillatypes.types.type)
+            {
+                sb.Append(GetStringline(type, filename));
+            }
+            foreach (TypesFile tf in ModTypes)
+            {
+                filename = Path.GetFileName(tf.Filename);
+                foreach (typesType type in tf.types.type)
+                {
+                    sb.Append(GetStringline(type, filename));
+                }
+            }
+            SaveFileDialog save = new SaveFileDialog();
+            if(save.ShowDialog() == DialogResult.OK)
+            {
+                File.WriteAllText(save.FileName, sb.ToString());
+            }
+
+        }
+
+        private string GetStringline(typesType type, string filename)
+        {
+            string line = "";
+            line += filename + ",";
+            line += type.name;
+            line += ",";
+            if(type.nominalSpecified)
+                line += type.nominal;
+            line += ",";
+            if(type.minSpecified)
+                line += type.min;
+            line += ",";
+            if(type.lifetimeSpecified)
+                line += type.lifetime;
+            line += ",";
+            if (type.restockSpecified)
+                line += type.restock;
+            line += ",";
+            if (type.quantminSpecified)
+                line += type.quantmin;
+            line += ",";
+            if(type.quantmaxSpecified)
+                line += type.quantmax;
+            line += ",";
+            if(type.costSpecified)
+                line += type.cost;
+            line += ",";
+            if (type.flags != null)
+            {
+                line += type.flags.count_in_cargo == 1 ? true : false;
+                line += ",";
+                line += type.flags.count_in_hoarder == 1 ? true : false;
+                line += ",";
+                line += type.flags.count_in_map == 1 ? true : false;
+                line += ",";
+                line += type.flags.count_in_player == 1 ? true : false;
+                line += ",";
+                line += type.flags.crafted == 1 ? true : false;
+                line += ",";
+                line += type.flags.deloot == 1 ? true : false;
+                line += ",";
+            }
+            else
+            {
+                line += ",,,,,,";
+            }
+            if(type.category != null)
+                line += type.category.name;
+            line += ",";
+            if(type.usage != null || type.usage.Count != 0)
+            {
+                foreach(typesTypeUsage u in type.usage)
+                {
+                    line += u.name + " ";
+                }
+            }
+            line += ",";
+            if (type.tag != null || type.tag.Count != 0)
+            {
+                foreach (typesTypeTag t in type.tag)
+                {
+                    line += t.name + " ";
+                }
+            }
+            line += Environment.NewLine;
+            return line;
+        }
+
         private void PopulateLootPartInfo()
         {
             isUserInteraction = false;
@@ -1176,8 +1274,11 @@ namespace DayZeEditor
                 foreach (TreeNode tn in treeViewMS1.SelectedNodes)
                 {
                     typesType looptype = tn.Tag as typesType;
-                    looptype.lifetime = (int)typeLifetimeNUD.Value;
-                    currentTypesFile.isDirty = true;
+                    if (looptype.lifetimeSpecified)
+                    {
+                        looptype.lifetime = (int)typeLifetimeNUD.Value;
+                        currentTypesFile.isDirty = true;
+                    }
                 }
             }
         }
@@ -1570,9 +1671,11 @@ namespace DayZeEditor
         }
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
+            isUserInteraction = false;
             if (treeViewMS1.Nodes.Count < 1)
                 return;
             string text = toolStripTextBox1.Text;
+            if (text == "") return;
             searchnum = 0;
             searchtreeNodes = new List<TreeNode>();
             foundparts = new List<typesType>();
@@ -1616,13 +1719,19 @@ namespace DayZeEditor
                 isUserInteraction = true;
             }
             if (searchtreeNodes.Count > 1)
+            {
                 toolStripButton2.Visible = true;
+                toolStripButton2.AutoSize = false;
+                toolStripButton2.AutoSize = true;
+            }
+            isUserInteraction = true;
         }
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             searchnum++;
             if (searchnum == searchtreeNodes.Count)
             {
+                toolStripButton2.Visible = false;
                 MessageBox.Show("No More Items found");
                 return;
             }
@@ -5515,6 +5624,8 @@ namespace DayZeEditor
                 }
             }
         }
+
+
     }
 
 }

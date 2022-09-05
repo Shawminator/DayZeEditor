@@ -114,6 +114,19 @@ namespace DayZeEditor
             tabControl2.ItemSize = new Size(0, 1);
             comboBox2.DataSource = Enum.GetValues(typeof(ContainerTypes));
             EnableLampsComboBox.DataSource = Enum.GetValues(typeof(Lamps));
+            toolStripButton1.AutoSize = true;
+            toolStripButton3.AutoSize = true;
+            toolStripButton4.AutoSize = true;
+            toolStripButton5.AutoSize = true;
+            toolStripButton6.AutoSize = true;
+            toolStripButton9.AutoSize = true;
+            toolStripButton10.AutoSize = true;
+            toolStripButton11.AutoSize = true;
+            toolStripButton12.AutoSize = true;
+            toolStripButton13.AutoSize = true;
+            toolStripButton14.AutoSize = true;
+            toolStripButton18.AutoSize = true;
+            toolStripButton20.AutoSize = true;
         }
         private void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -319,6 +332,10 @@ namespace DayZeEditor
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
             tabControl2.SelectedIndex = 2;
+            toolStripButton7.AutoSize = false;
+            toolStripButton7.AutoSize = true;
+            toolStripButton8.AutoSize = false;
+            toolStripButton8.AutoSize = true;
             if (tabControl2.SelectedIndex == 2)
                 toolStripButton5.Checked = true;
         }
@@ -361,6 +378,14 @@ namespace DayZeEditor
         private void toolStripButton13_Click(object sender, EventArgs e)
         {
             tabControl2.SelectedIndex = 9;
+            toolStripButton15.AutoSize = false;
+            toolStripButton15.AutoSize = true;
+            toolStripButton16.AutoSize = false;
+            toolStripButton16.AutoSize = true;
+            toolStripButton17.AutoSize = false;
+            toolStripButton17.AutoSize = true;
+            toolStripButton19.AutoSize = false;
+            toolStripButton19.AutoSize = true;
             if (tabControl2.SelectedIndex == 9)
                 toolStripButton13.Checked = true;
         }

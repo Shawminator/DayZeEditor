@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DayZeLib
 {
@@ -15,6 +16,43 @@ namespace DayZeLib
         CAN_TURNIN = 2,
         COMPLETED = 3
     };
+    public class QuestPersistantDataPlayersList
+    {
+        private string m_questPlayerDataPath;
+        public BindingList<QuestPlayerData> QuestPlayerDataList { get; private set; }
+        public List<QuestPlayerData> Markedfordelete { get; set; }
+
+        public QuestPersistantDataPlayersList(string questPlayerDataPath)
+        {
+            m_questPlayerDataPath = questPlayerDataPath;
+            QuestPlayerDataList = new BindingList<QuestPlayerData>();
+            DirectoryInfo d = new DirectoryInfo(m_questPlayerDataPath);
+            FileInfo[] Files = d.GetFiles();
+            foreach (FileInfo file in Files)
+            {
+                try
+                {
+                    QuestPlayerData QuestPlayerData = new QuestPlayerData(file.FullName);
+                    QuestPlayerData.Filename = Path.GetFileNameWithoutExtension(file.Name); ;
+                    QuestPlayerData.isDirty = false;
+                    QuestPlayerDataList.Add(QuestPlayerData);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("there is an error in the following file\n" + file.FullName + Environment.NewLine + ex.InnerException.Message);
+                }
+            }
+        }
+        public void deletePlayerData(QuestPlayerData Playerdata)
+        {
+            if (Markedfordelete == null) Markedfordelete = new List<QuestPlayerData>();
+            Markedfordelete.Add(Playerdata);
+            QuestPlayerDataList.Remove(Playerdata);
+        }
+
+    }
+
+
     public class QuestPlayerData
     {
         public string Filename { get; set; }
@@ -41,7 +79,33 @@ namespace DayZeLib
         }
         public override string ToString()
         {
-            return Path.GetFileNameWithoutExtension(Filename);
+            return Filename;
+        }
+
+        public void backupandDelete(string questplayerdataPath)
+        {
+            string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
+            string Fullfilename = questplayerdataPath + "\\" + Filename + ".json";
+            if (File.Exists(Fullfilename))
+            {
+                Directory.CreateDirectory(questplayerdataPath + "\\Backup\\" + SaveTime);
+                File.Copy(Fullfilename, questplayerdataPath + "\\Backup\\" + SaveTime + "\\" + Filename + ".bak");
+                File.Delete(Fullfilename);
+            }
+        }
+
+        public void SaveFIle(string path)
+        {
+            using (FileStream fs = new FileStream(path + "//" + Filename + ".bin", FileMode.Open, FileAccess.ReadWrite))
+            using (BinaryWriter bw = new BinaryWriter(fs))
+            {
+                bw.Write(CONFIGVERSION);
+                bw.Write(ExpansionQuestPersistentQuestDataCount);
+                for (int i = 0; i < ExpansionQuestPersistentQuestDataCount; i++)
+                {
+                    QuestDatas[i].WriteBin(bw);
+                }
+            }
         }
     }
 
@@ -70,6 +134,18 @@ namespace DayZeLib
         public override string ToString()
         {
             return "Quest ID : " + QuestID;
+        }
+
+        internal void WriteBin(BinaryWriter bw)
+        {
+            bw.Write(QuestID);
+            bw.Write((int)State);
+            bw.Write(Timestamp);
+            bw.Write(QuestObjectivesCount);
+            for (int i = 0; i < QuestObjectivesCount; i++)
+            {
+                QuestObjectives[i].WriteBin(bw);
+            }
         }
     }
     public class ExpansionQuestObjectiveData
@@ -111,6 +187,23 @@ namespace DayZeLib
                 return "This Querst is Broken, please remove from Player Data......";
             else
                 return AssignedObjective.ToString();
+        }
+
+        internal void WriteBin(BinaryWriter bw)
+        {
+            bw.Write(ObjectiveIndex);
+            bw.Write((int)ObjectiveType);
+            bw.Write(IsCompleted ? 1 : 0);
+            bw.Write(IsActive ? 1 : 0);
+            bw.Write(ObjectiveAmount);
+            bw.Write(ObjectiveCount);
+            bw.Write(3);
+            for (int i = 0; i < 3; i++)
+            {
+                bw.Write(ObjectivePosition[i]);
+            }
+            bw.Write(ActionState ? 1 : 0);
+            bw.Write(TimeLimit);
         }
     }
 }

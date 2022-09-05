@@ -30,13 +30,14 @@ namespace DayZeEditor
         public string QuestObjectivesPath { get; private set; }
         public string QuestNPCPath { get; private set; }
         public string QuestsPath { get; private set; }
+        public string QuestPlayerDataPath { get; set; }
 
         public NPCEmotes NPCEmotes { get; private set; }
         public QuestSettings QuestSettings { get; private set; }
         public QuestObjectives QuestObjectives { get; set; }
         public ExpansioQuestList QuestsList { get; private set; }
         public QuestNPCLists QuestNPCs { get; private set; }
-        public BindingList<QuestPlayerData> QuestPlayerDataList { get; private set; }
+        public QuestPersistantDataPlayersList QuestPlayerDataList { get; private set; }
 
         private void listBox_DrawItem(object sender, DrawItemEventArgs e)
         {
@@ -137,20 +138,9 @@ namespace DayZeEditor
                         
             SetupSharedLists();
 
-            QuestPlayerDataList = new BindingList<QuestPlayerData>();
-            DirectoryInfo d = new DirectoryInfo(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Quests\\PlayerData");
-            FileInfo[] Files = d.GetFiles();
-            foreach (FileInfo file in Files)
-            {
-                try
-                {
-                    QuestPlayerData QuestPlayerData = new QuestPlayerData(file.FullName);
-                    QuestPlayerData.Filename = file.FullName;
-                    QuestPlayerData.isDirty = false;
-                    QuestPlayerDataList.Add(QuestPlayerData);
-                }
-                catch { }
-            }
+
+            QuestPlayerDataPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Quests\\PlayerData";
+            QuestPlayerDataList = new QuestPersistantDataPlayersList(QuestPlayerDataPath);
             setupplayerdata();
             
 
@@ -183,16 +173,36 @@ namespace DayZeEditor
                 if (obj.isDirty)
                     needtosave = true;
             }
+            foreach(QuestPlayerData qpd in QuestPlayerDataList.QuestPlayerDataList)
+            {
+                if (qpd.isDirty)
+                    needtosave = true;
+            }
+            if (QuestNPCs.Markedfordelete != null)
+            {
+                needtosave = true;
+            }
+            if (QuestsList.Markedfordelete != null)
+            {
+                needtosave = true;
+            }
+            if (QuestObjectives.Markedfordelete != null)
+            {
+                needtosave = true;
+            }
+            if (QuestPlayerDataList.Markedfordelete != null)
+            {
+                needtosave = true;
+            }
             if (needtosave)
             {
-                DialogResult dialogResult = MessageBox.Show("You have Unsaved Changes, do you wish to save", "Unsaved Changes found", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("You have Unsaved Changes or finilized deletetions., do you wish to save/Finalise delete", "Unsaved Changes found", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     savefiles();
                 }
             }
         }
-
 
         private object ReadJson<T>(string filename)
         {
@@ -368,6 +378,21 @@ namespace DayZeEditor
                 midifiedfiles.Add(Path.GetFileName(obj.Filename));
             }
 
+            foreach(QuestPlayerData qpd in QuestPlayerDataList.QuestPlayerDataList)
+            {
+                if(qpd.isDirty)
+                {
+                    qpd.isDirty = false;
+                    if (currentproject.Createbackups && File.Exists(QuestPlayerDataPath + "\\" + qpd.Filename + ".bin"))
+                    {
+                        Directory.CreateDirectory(QuestsPath + "\\Backup\\" + SaveTime);
+                        File.Copy(QuestPlayerDataPath + "\\" + qpd.Filename + ".bin", QuestPlayerDataPath + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(qpd.Filename) + ".bak", true);
+                    }
+                    qpd.SaveFIle(QuestPlayerDataPath);
+                    midifiedfiles.Add(Path.GetFileName(qpd.Filename));
+                }
+            }
+
             string message = "The Following Files were saved....\n";
             if (updated)
             {
@@ -413,6 +438,13 @@ namespace DayZeEditor
                 foreach (QuestObjectivesBase del in QuestObjectives.Markedfordelete)
                 {
                     del.backupandDelete(QuestObjectivesPath);
+                }
+            }
+            if (QuestPlayerDataList.Markedfordelete != null)
+            {
+                foreach (QuestPlayerData del in QuestPlayerDataList.Markedfordelete)
+                {
+                    del.backupandDelete(QuestPlayerDataPath);
                 }
             }
         }
@@ -3527,8 +3559,8 @@ namespace DayZeEditor
         {
             QuestObjectivesBase basequest = treeViewMS1.SelectedNode.Tag as QuestObjectivesBase;
             QuestObjectives.deleteObjective(basequest);
-            treeViewMS1.SelectedNode.Remove();
             QuestsList.RemoveObjectivesfromQuests(basequest);
+            treeViewMS1.SelectedNode.Remove();
         }
 
 
@@ -3546,7 +3578,7 @@ namespace DayZeEditor
             {
                 Tag = "Parent"
             };
-            foreach(QuestPlayerData QPD in QuestPlayerDataList)
+            foreach(QuestPlayerData QPD in QuestPlayerDataList.QuestPlayerDataList)
             {
                 root.Nodes.Add(treenodeplayerquestdata(QPD));
             }
@@ -3617,8 +3649,37 @@ namespace DayZeEditor
         private void treeViewMS2_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             treeViewMS2.SelectedNode = e.Node;
+            if (e.Node.Tag != null && e.Node.Tag is QuestPlayerData)
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    removePlayerSaveDataToolStripMenuItem.Visible = true;
+                    removeQuestFromPlayerToolStripMenuItem.Visible = false;
+                    contextMenuStrip2.Show(Cursor.Position);
+                }
+            }
+            else if (e.Node.Tag != null && e.Node.Tag is ExpansionQuestPersistentQuestData)
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    removePlayerSaveDataToolStripMenuItem.Visible = false;
+                    removeQuestFromPlayerToolStripMenuItem.Visible = true;
+                    contextMenuStrip2.Show(Cursor.Position);
+                }
+            }
+            else if (e.Node.Tag != null && e.Node.Tag is ExpansionQuestObjectiveData)
+            {
+            }
         }
-
+        private void removeQuestFromPlayerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            QuestPlayerData currentplayer = treeViewMS2.SelectedNode.Parent.Tag as QuestPlayerData;
+            if (currentplayer == null) return;
+            currentplayer.QuestDatas.Remove(treeViewMS2.SelectedNode.Tag as ExpansionQuestPersistentQuestData);
+            currentplayer.ExpansionQuestPersistentQuestDataCount -= 1;
+            currentplayer.isDirty = true;
+            treeViewMS2.SelectedNode.Remove();
+        }
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBox1.SelectedItems.Count <= 0) return;
@@ -3639,6 +3700,14 @@ namespace DayZeEditor
             numericUpDown7.Value = currentExpansionQuestObjectiveData.TimeLimit;
 
             useraction = true;
+        }
+
+        private void removePlayerSaveDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            QuestPlayerData currentplayer = treeViewMS2.SelectedNode.Parent.Tag as QuestPlayerData;
+            if (currentplayer == null) return;
+            QuestPlayerDataList.deletePlayerData(currentplayer);
+            File.Delete(currentplayer.Filename);
         }
     }
 }

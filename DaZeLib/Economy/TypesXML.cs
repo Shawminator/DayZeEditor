@@ -48,6 +48,8 @@ namespace DayZeLib
 
         private int lifetimeField;
 
+        private bool lifetimeFieldSpecified;
+
         private int restockField;
 
         private bool restockFieldSpecified;
@@ -117,6 +119,20 @@ namespace DayZeLib
             set
             {
                 this.lifetimeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool lifetimeSpecified
+        {
+            get
+            {
+                return this.lifetimeFieldSpecified;
+            }
+            set
+            {
+                this.lifetimeFieldSpecified = value;
             }
         }
 

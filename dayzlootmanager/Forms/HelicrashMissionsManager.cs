@@ -171,26 +171,15 @@ namespace DayZeEditor
         {
             var sortedListInstance = new BindingList<Weaponloottable>(Helicrash.WeaponLootTables.OrderBy(x => x.WeaponName).ToList());
             Helicrash.WeaponLootTables = sortedListInstance;
+            useraction = false;
 
             adminlogCB.Checked = Helicrash.admin_log == 1 ? true : false;
             HelicrashSpawnTimeNUD.Value = Helicrash.HelicrashSpawnTime;
             HelicrashDespawnTimeNUD.Value = Helicrash.HelicrashDespawnTime;
 
-            CrashpointLB.DisplayMember = "DisplayName";
-            CrashpointLB.ValueMember = "Value";
-            CrashpointLB.DataSource = Helicrash.CrashPoints;
-
-            animal_nameLB.DisplayMember = "DisplayName";
-            animal_nameLB.ValueMember = "Value";
-            animal_nameLB.DataSource = Helicrash.AnimalSpawnArray[0].animal_name;
-
             AnimalMaxNUD.Value = Helicrash.AnimalSpawnArray[0].amount_maximum;
             AnimalMinNUD.Value = Helicrash.AnimalSpawnArray[0].amount_minimum;
             AnimalRadiusNUD.Value = Helicrash.AnimalSpawnArray[0].radius;
-
-            zombie_nameLB.DisplayMember = "DisplayName";
-            zombie_nameLB.ValueMember = "Value";
-            zombie_nameLB.DataSource = Helicrash.ZombieSpawnArray[0].zombie_name;
 
             ZombieMaxNUD.Value = Helicrash.ZombieSpawnArray[0].amount_maximum;
             ZombieMinNUD.Value = Helicrash.ZombieSpawnArray[0].amount_minimum;
@@ -205,6 +194,17 @@ namespace DayZeEditor
             Maximum_Weapons_HelicrashNUD.Value = Helicrash.HelicopterUS_[0].Maximum_Weapons_Helicrash;
             Minimum_Weapons_HelicrashNUD.Value = Helicrash.HelicopterUS_[0].Minimum_Weapons_Helicrash;
 
+            zombie_nameLB.DisplayMember = "DisplayName";
+            zombie_nameLB.ValueMember = "Value";
+            zombie_nameLB.DataSource = Helicrash.ZombieSpawnArray[0].zombie_name;
+
+            CrashpointLB.DisplayMember = "DisplayName";
+            CrashpointLB.ValueMember = "Value";
+            CrashpointLB.DataSource = Helicrash.CrashPoints;
+
+            animal_nameLB.DisplayMember = "DisplayName";
+            animal_nameLB.ValueMember = "Value";
+            animal_nameLB.DataSource = Helicrash.AnimalSpawnArray[0].animal_name;
 
             Loot_HelicrashLB.DisplayMember = "DisplayName";
             Loot_HelicrashLB.ValueMember = "Value";
@@ -213,6 +213,8 @@ namespace DayZeEditor
             WeaponLootTablesLB.DisplayMember = "DisplayName";
             WeaponLootTablesLB.ValueMember = "Value";
             WeaponLootTablesLB.DataSource = Helicrash.WeaponLootTables;
+
+            useraction = true;
         }
         private void WeaponLootTablesLB_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -675,6 +677,21 @@ namespace DayZeEditor
                     SaveHeliCrashMissions();
                 }
             }
+        }
+
+        private void Loot_HelicrashLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void animal_nameLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void zombie_nameLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

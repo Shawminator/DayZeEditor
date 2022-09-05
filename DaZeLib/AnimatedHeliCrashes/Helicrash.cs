@@ -14,7 +14,11 @@ namespace DayZeLib
         [JsonIgnore]
         public const string Filename = "Helicrash.json";
         [JsonIgnore]
-        public bool isDirty { get; set; }
+        public bool isDirty 
+        {
+            get;
+            set; 
+        }
         [JsonIgnore]
         public string FullFilename { get; set; }
 

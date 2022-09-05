@@ -348,6 +348,51 @@ namespace DayZeEditor
             this.darkButton22 = new DarkUI.Controls.DarkButton();
             this.treeViewMS1 = new TreeViewMS.TreeViewMS();
             this.Tab5 = new System.Windows.Forms.TabPage();
+            this.ObjectiveInfoGB = new System.Windows.Forms.GroupBox();
+            this.panel63 = new System.Windows.Forms.Panel();
+            this.darkLabel84 = new DarkUI.Controls.DarkLabel();
+            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
+            this.panel62 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.panel61 = new System.Windows.Forms.Panel();
+            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel83 = new DarkUI.Controls.DarkLabel();
+            this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown10 = new System.Windows.Forms.NumericUpDown();
+            this.panel60 = new System.Windows.Forms.Panel();
+            this.darkLabel82 = new DarkUI.Controls.DarkLabel();
+            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
+            this.panel59 = new System.Windows.Forms.Panel();
+            this.darkLabel81 = new DarkUI.Controls.DarkLabel();
+            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.panel58 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.panel57 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.panel56 = new System.Windows.Forms.Panel();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.darkLabel80 = new DarkUI.Controls.DarkLabel();
+            this.panel55 = new System.Windows.Forms.Panel();
+            this.darkLabel79 = new DarkUI.Controls.DarkLabel();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.QuestInfoGB = new System.Windows.Forms.GroupBox();
+            this.panel51 = new System.Windows.Forms.Panel();
+            this.darkLabel76 = new DarkUI.Controls.DarkLabel();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.panel54 = new System.Windows.Forms.Panel();
+            this.darkButton36 = new DarkUI.Controls.DarkButton();
+            this.darkButton37 = new DarkUI.Controls.DarkButton();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.darkLabel78 = new DarkUI.Controls.DarkLabel();
+            this.panel52 = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.darkLabel75 = new DarkUI.Controls.DarkLabel();
+            this.panel53 = new System.Windows.Forms.Panel();
+            this.darkLabel77 = new DarkUI.Controls.DarkLabel();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.treeViewMS2 = new TreeViewMS.TreeViewMS();
             this.darkToolStrip23 = new DarkUI.Controls.DarkToolStrip2();
             this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
@@ -371,51 +416,9 @@ namespace DayZeEditor
             this.addNewTreasureHuntObjectiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteObjectiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewCraftingObjectiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel51 = new System.Windows.Forms.Panel();
-            this.darkLabel76 = new DarkUI.Controls.DarkLabel();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.panel52 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.darkLabel75 = new DarkUI.Controls.DarkLabel();
-            this.panel53 = new System.Windows.Forms.Panel();
-            this.darkLabel77 = new DarkUI.Controls.DarkLabel();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.panel54 = new System.Windows.Forms.Panel();
-            this.darkButton36 = new DarkUI.Controls.DarkButton();
-            this.darkButton37 = new DarkUI.Controls.DarkButton();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.darkLabel78 = new DarkUI.Controls.DarkLabel();
-            this.QuestInfoGB = new System.Windows.Forms.GroupBox();
-            this.ObjectiveInfoGB = new System.Windows.Forms.GroupBox();
-            this.panel55 = new System.Windows.Forms.Panel();
-            this.darkLabel79 = new DarkUI.Controls.DarkLabel();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.panel56 = new System.Windows.Forms.Panel();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.darkLabel80 = new DarkUI.Controls.DarkLabel();
-            this.panel57 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.panel58 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.panel59 = new System.Windows.Forms.Panel();
-            this.darkLabel81 = new DarkUI.Controls.DarkLabel();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.panel60 = new System.Windows.Forms.Panel();
-            this.darkLabel82 = new DarkUI.Controls.DarkLabel();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
-            this.panel61 = new System.Windows.Forms.Panel();
-            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel83 = new DarkUI.Controls.DarkLabel();
-            this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown10 = new System.Windows.Forms.NumericUpDown();
-            this.panel62 = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.panel63 = new System.Windows.Forms.Panel();
-            this.darkLabel84 = new DarkUI.Controls.DarkLabel();
-            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.removeQuestFromPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removePlayerSaveDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -544,32 +547,33 @@ namespace DayZeEditor
             this.panel47.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.QuestObjectiveTreasureHuntitemAmountNUD)).BeginInit();
             this.Tab5.SuspendLayout();
-            this.darkToolStrip23.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
-            this.panel51.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            this.panel52.SuspendLayout();
-            this.panel53.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            this.panel54.SuspendLayout();
-            this.QuestInfoGB.SuspendLayout();
             this.ObjectiveInfoGB.SuspendLayout();
-            this.panel55.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            this.panel56.SuspendLayout();
-            this.panel57.SuspendLayout();
-            this.panel58.SuspendLayout();
-            this.panel59.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            this.panel60.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
+            this.panel63.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
+            this.panel62.SuspendLayout();
             this.panel61.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).BeginInit();
-            this.panel62.SuspendLayout();
-            this.panel63.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
+            this.panel60.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
+            this.panel59.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            this.panel58.SuspendLayout();
+            this.panel57.SuspendLayout();
+            this.panel56.SuspendLayout();
+            this.panel55.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            this.QuestInfoGB.SuspendLayout();
+            this.panel51.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.panel54.SuspendLayout();
+            this.panel52.SuspendLayout();
+            this.panel53.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            this.darkToolStrip23.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
+            this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -4420,6 +4424,559 @@ namespace DayZeEditor
             this.Tab5.TabIndex = 4;
             this.Tab5.Text = "tabPage5";
             // 
+            // ObjectiveInfoGB
+            // 
+            this.ObjectiveInfoGB.Controls.Add(this.panel63);
+            this.ObjectiveInfoGB.Controls.Add(this.panel62);
+            this.ObjectiveInfoGB.Controls.Add(this.panel61);
+            this.ObjectiveInfoGB.Controls.Add(this.panel60);
+            this.ObjectiveInfoGB.Controls.Add(this.panel59);
+            this.ObjectiveInfoGB.Controls.Add(this.panel58);
+            this.ObjectiveInfoGB.Controls.Add(this.panel57);
+            this.ObjectiveInfoGB.Controls.Add(this.panel56);
+            this.ObjectiveInfoGB.Controls.Add(this.panel55);
+            this.ObjectiveInfoGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ObjectiveInfoGB.Location = new System.Drawing.Point(423, 252);
+            this.ObjectiveInfoGB.Name = "ObjectiveInfoGB";
+            this.ObjectiveInfoGB.Size = new System.Drawing.Size(350, 275);
+            this.ObjectiveInfoGB.TabIndex = 215;
+            this.ObjectiveInfoGB.TabStop = false;
+            this.ObjectiveInfoGB.Text = "Objective Info";
+            // 
+            // panel63
+            // 
+            this.panel63.Controls.Add(this.darkLabel84);
+            this.panel63.Controls.Add(this.numericUpDown7);
+            this.panel63.Location = new System.Drawing.Point(8, 245);
+            this.panel63.Name = "panel63";
+            this.panel63.Size = new System.Drawing.Size(336, 20);
+            this.panel63.TabIndex = 216;
+            // 
+            // darkLabel84
+            // 
+            this.darkLabel84.AutoSize = true;
+            this.darkLabel84.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel84.Location = new System.Drawing.Point(3, 2);
+            this.darkLabel84.Name = "darkLabel84";
+            this.darkLabel84.Size = new System.Drawing.Size(54, 13);
+            this.darkLabel84.TabIndex = 102;
+            this.darkLabel84.Text = "Time Limit";
+            // 
+            // numericUpDown7
+            // 
+            this.numericUpDown7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown7.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericUpDown7.Location = new System.Drawing.Point(96, 0);
+            this.numericUpDown7.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.numericUpDown7.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown7.Name = "numericUpDown7";
+            this.numericUpDown7.ReadOnly = true;
+            this.numericUpDown7.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown7.TabIndex = 101;
+            this.numericUpDown7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // panel62
+            // 
+            this.panel62.Controls.Add(this.label9);
+            this.panel62.Controls.Add(this.checkBox4);
+            this.panel62.Location = new System.Drawing.Point(8, 219);
+            this.panel62.Name = "panel62";
+            this.panel62.Size = new System.Drawing.Size(336, 20);
+            this.panel62.TabIndex = 218;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.SystemColors.Control;
+            this.label9.Location = new System.Drawing.Point(3, 3);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(65, 13);
+            this.label9.TabIndex = 113;
+            this.label9.Text = "Action State";
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.ForeColor = System.Drawing.SystemColors.Control;
+            this.checkBox4.Location = new System.Drawing.Point(122, 3);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(15, 14);
+            this.checkBox4.TabIndex = 112;
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // panel61
+            // 
+            this.panel61.Controls.Add(this.numericUpDown6);
+            this.panel61.Controls.Add(this.darkLabel83);
+            this.panel61.Controls.Add(this.numericUpDown8);
+            this.panel61.Controls.Add(this.numericUpDown10);
+            this.panel61.Location = new System.Drawing.Point(6, 168);
+            this.panel61.Name = "panel61";
+            this.panel61.Size = new System.Drawing.Size(338, 45);
+            this.panel61.TabIndex = 217;
+            // 
+            // numericUpDown6
+            // 
+            this.numericUpDown6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown6.DecimalPlaces = 6;
+            this.numericUpDown6.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericUpDown6.Location = new System.Drawing.Point(3, 18);
+            this.numericUpDown6.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.numericUpDown6.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown6.Name = "numericUpDown6";
+            this.numericUpDown6.Size = new System.Drawing.Size(106, 20);
+            this.numericUpDown6.TabIndex = 152;
+            this.numericUpDown6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // darkLabel83
+            // 
+            this.darkLabel83.AutoSize = true;
+            this.darkLabel83.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel83.Location = new System.Drawing.Point(3, 2);
+            this.darkLabel83.Name = "darkLabel83";
+            this.darkLabel83.Size = new System.Drawing.Size(92, 13);
+            this.darkLabel83.TabIndex = 155;
+            this.darkLabel83.Text = "Objective Position";
+            // 
+            // numericUpDown8
+            // 
+            this.numericUpDown8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown8.DecimalPlaces = 6;
+            this.numericUpDown8.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericUpDown8.Location = new System.Drawing.Point(115, 18);
+            this.numericUpDown8.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.numericUpDown8.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown8.Name = "numericUpDown8";
+            this.numericUpDown8.Size = new System.Drawing.Size(106, 20);
+            this.numericUpDown8.TabIndex = 153;
+            this.numericUpDown8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // numericUpDown10
+            // 
+            this.numericUpDown10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown10.DecimalPlaces = 6;
+            this.numericUpDown10.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericUpDown10.Location = new System.Drawing.Point(227, 18);
+            this.numericUpDown10.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.numericUpDown10.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown10.Name = "numericUpDown10";
+            this.numericUpDown10.Size = new System.Drawing.Size(106, 20);
+            this.numericUpDown10.TabIndex = 154;
+            this.numericUpDown10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // panel60
+            // 
+            this.panel60.Controls.Add(this.darkLabel82);
+            this.panel60.Controls.Add(this.numericUpDown5);
+            this.panel60.Location = new System.Drawing.Point(8, 142);
+            this.panel60.Name = "panel60";
+            this.panel60.Size = new System.Drawing.Size(336, 20);
+            this.panel60.TabIndex = 216;
+            // 
+            // darkLabel82
+            // 
+            this.darkLabel82.AutoSize = true;
+            this.darkLabel82.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel82.Location = new System.Drawing.Point(3, 2);
+            this.darkLabel82.Name = "darkLabel82";
+            this.darkLabel82.Size = new System.Drawing.Size(83, 13);
+            this.darkLabel82.TabIndex = 102;
+            this.darkLabel82.Text = "Objective Count";
+            // 
+            // numericUpDown5
+            // 
+            this.numericUpDown5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown5.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericUpDown5.Location = new System.Drawing.Point(96, 0);
+            this.numericUpDown5.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.numericUpDown5.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown5.Name = "numericUpDown5";
+            this.numericUpDown5.ReadOnly = true;
+            this.numericUpDown5.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown5.TabIndex = 101;
+            this.numericUpDown5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // panel59
+            // 
+            this.panel59.Controls.Add(this.darkLabel81);
+            this.panel59.Controls.Add(this.numericUpDown4);
+            this.panel59.Location = new System.Drawing.Point(8, 116);
+            this.panel59.Name = "panel59";
+            this.panel59.Size = new System.Drawing.Size(336, 20);
+            this.panel59.TabIndex = 215;
+            // 
+            // darkLabel81
+            // 
+            this.darkLabel81.AutoSize = true;
+            this.darkLabel81.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel81.Location = new System.Drawing.Point(3, 2);
+            this.darkLabel81.Name = "darkLabel81";
+            this.darkLabel81.Size = new System.Drawing.Size(91, 13);
+            this.darkLabel81.TabIndex = 102;
+            this.darkLabel81.Text = "Objective Amount";
+            // 
+            // numericUpDown4
+            // 
+            this.numericUpDown4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown4.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericUpDown4.Location = new System.Drawing.Point(96, 0);
+            this.numericUpDown4.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.numericUpDown4.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown4.Name = "numericUpDown4";
+            this.numericUpDown4.ReadOnly = true;
+            this.numericUpDown4.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown4.TabIndex = 101;
+            this.numericUpDown4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // panel58
+            // 
+            this.panel58.Controls.Add(this.label8);
+            this.panel58.Controls.Add(this.checkBox3);
+            this.panel58.Location = new System.Drawing.Point(8, 90);
+            this.panel58.Name = "panel58";
+            this.panel58.Size = new System.Drawing.Size(336, 20);
+            this.panel58.TabIndex = 214;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.SystemColors.Control;
+            this.label8.Location = new System.Drawing.Point(3, 3);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(48, 13);
+            this.label8.TabIndex = 113;
+            this.label8.Text = "Is Active";
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.ForeColor = System.Drawing.SystemColors.Control;
+            this.checkBox3.Location = new System.Drawing.Point(122, 3);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(15, 14);
+            this.checkBox3.TabIndex = 112;
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // panel57
+            // 
+            this.panel57.Controls.Add(this.label7);
+            this.panel57.Controls.Add(this.checkBox2);
+            this.panel57.Location = new System.Drawing.Point(8, 67);
+            this.panel57.Name = "panel57";
+            this.panel57.Size = new System.Drawing.Size(336, 20);
+            this.panel57.TabIndex = 213;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.SystemColors.Control;
+            this.label7.Location = new System.Drawing.Point(3, 3);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(68, 13);
+            this.label7.TabIndex = 113;
+            this.label7.Text = "Is Completed";
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.ForeColor = System.Drawing.SystemColors.Control;
+            this.checkBox2.Location = new System.Drawing.Point(122, 3);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(15, 14);
+            this.checkBox2.TabIndex = 112;
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // panel56
+            // 
+            this.panel56.Controls.Add(this.comboBox2);
+            this.panel56.Controls.Add(this.darkLabel80);
+            this.panel56.Location = new System.Drawing.Point(8, 40);
+            this.panel56.Name = "panel56";
+            this.panel56.Size = new System.Drawing.Size(336, 20);
+            this.panel56.TabIndex = 212;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.comboBox2.ForeColor = System.Drawing.SystemColors.Control;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(96, 0);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(237, 21);
+            this.comboBox2.TabIndex = 173;
+            // 
+            // darkLabel80
+            // 
+            this.darkLabel80.AutoSize = true;
+            this.darkLabel80.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel80.Location = new System.Drawing.Point(3, 3);
+            this.darkLabel80.Name = "darkLabel80";
+            this.darkLabel80.Size = new System.Drawing.Size(79, 13);
+            this.darkLabel80.TabIndex = 107;
+            this.darkLabel80.Text = "Objective Type";
+            // 
+            // panel55
+            // 
+            this.panel55.Controls.Add(this.darkLabel79);
+            this.panel55.Controls.Add(this.numericUpDown3);
+            this.panel55.Location = new System.Drawing.Point(8, 14);
+            this.panel55.Name = "panel55";
+            this.panel55.Size = new System.Drawing.Size(336, 20);
+            this.panel55.TabIndex = 211;
+            // 
+            // darkLabel79
+            // 
+            this.darkLabel79.AutoSize = true;
+            this.darkLabel79.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel79.Location = new System.Drawing.Point(3, 2);
+            this.darkLabel79.Name = "darkLabel79";
+            this.darkLabel79.Size = new System.Drawing.Size(81, 13);
+            this.darkLabel79.TabIndex = 102;
+            this.darkLabel79.Text = "Objective Index";
+            // 
+            // numericUpDown3
+            // 
+            this.numericUpDown3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown3.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericUpDown3.Location = new System.Drawing.Point(96, 0);
+            this.numericUpDown3.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.numericUpDown3.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.ReadOnly = true;
+            this.numericUpDown3.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown3.TabIndex = 101;
+            this.numericUpDown3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // QuestInfoGB
+            // 
+            this.QuestInfoGB.Controls.Add(this.panel51);
+            this.QuestInfoGB.Controls.Add(this.panel54);
+            this.QuestInfoGB.Controls.Add(this.panel52);
+            this.QuestInfoGB.Controls.Add(this.panel53);
+            this.QuestInfoGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.QuestInfoGB.Location = new System.Drawing.Point(423, 5);
+            this.QuestInfoGB.Name = "QuestInfoGB";
+            this.QuestInfoGB.Size = new System.Drawing.Size(350, 244);
+            this.QuestInfoGB.TabIndex = 214;
+            this.QuestInfoGB.TabStop = false;
+            this.QuestInfoGB.Text = "QuestInfo";
+            this.QuestInfoGB.Visible = false;
+            // 
+            // panel51
+            // 
+            this.panel51.Controls.Add(this.darkLabel76);
+            this.panel51.Controls.Add(this.numericUpDown1);
+            this.panel51.Location = new System.Drawing.Point(8, 19);
+            this.panel51.Name = "panel51";
+            this.panel51.Size = new System.Drawing.Size(336, 20);
+            this.panel51.TabIndex = 210;
+            // 
+            // darkLabel76
+            // 
+            this.darkLabel76.AutoSize = true;
+            this.darkLabel76.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel76.Location = new System.Drawing.Point(3, 2);
+            this.darkLabel76.Name = "darkLabel76";
+            this.darkLabel76.Size = new System.Drawing.Size(18, 13);
+            this.darkLabel76.TabIndex = 102;
+            this.darkLabel76.Text = "ID";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown1.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericUpDown1.Location = new System.Drawing.Point(96, 0);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.ReadOnly = true;
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown1.TabIndex = 101;
+            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // panel54
+            // 
+            this.panel54.Controls.Add(this.darkButton36);
+            this.panel54.Controls.Add(this.darkButton37);
+            this.panel54.Controls.Add(this.listBox1);
+            this.panel54.Controls.Add(this.darkLabel78);
+            this.panel54.Location = new System.Drawing.Point(5, 98);
+            this.panel54.Name = "panel54";
+            this.panel54.Size = new System.Drawing.Size(339, 136);
+            this.panel54.TabIndex = 213;
+            // 
+            // darkButton36
+            // 
+            this.darkButton36.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton36.Location = new System.Drawing.Point(313, 101);
+            this.darkButton36.Name = "darkButton36";
+            this.darkButton36.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton36.Size = new System.Drawing.Size(20, 20);
+            this.darkButton36.TabIndex = 241;
+            this.darkButton36.Text = "-";
+            // 
+            // darkButton37
+            // 
+            this.darkButton37.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton37.Location = new System.Drawing.Point(313, 26);
+            this.darkButton37.Name = "darkButton37";
+            this.darkButton37.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton37.Size = new System.Drawing.Size(20, 20);
+            this.darkButton37.TabIndex = 240;
+            this.darkButton37.Text = "+";
+            // 
+            // listBox1
+            // 
+            this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.listBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.listBox1.ForeColor = System.Drawing.SystemColors.Control;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.HorizontalScrollbar = true;
+            this.listBox1.Location = new System.Drawing.Point(6, 26);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(301, 95);
+            this.listBox1.TabIndex = 239;
+            this.listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
+            // darkLabel78
+            // 
+            this.darkLabel78.AutoSize = true;
+            this.darkLabel78.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel78.Location = new System.Drawing.Point(3, 2);
+            this.darkLabel78.Name = "darkLabel78";
+            this.darkLabel78.Size = new System.Drawing.Size(57, 13);
+            this.darkLabel78.TabIndex = 108;
+            this.darkLabel78.Text = "Objectives";
+            // 
+            // panel52
+            // 
+            this.panel52.Controls.Add(this.comboBox1);
+            this.panel52.Controls.Add(this.darkLabel75);
+            this.panel52.Location = new System.Drawing.Point(8, 45);
+            this.panel52.Name = "panel52";
+            this.panel52.Size = new System.Drawing.Size(336, 20);
+            this.panel52.TabIndex = 211;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.comboBox1.ForeColor = System.Drawing.SystemColors.Control;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(96, 0);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(237, 21);
+            this.comboBox1.TabIndex = 173;
+            // 
+            // darkLabel75
+            // 
+            this.darkLabel75.AutoSize = true;
+            this.darkLabel75.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel75.Location = new System.Drawing.Point(3, 3);
+            this.darkLabel75.Name = "darkLabel75";
+            this.darkLabel75.Size = new System.Drawing.Size(63, 13);
+            this.darkLabel75.TabIndex = 107;
+            this.darkLabel75.Text = "Quest State";
+            // 
+            // panel53
+            // 
+            this.panel53.Controls.Add(this.darkLabel77);
+            this.panel53.Controls.Add(this.numericUpDown2);
+            this.panel53.Location = new System.Drawing.Point(8, 72);
+            this.panel53.Name = "panel53";
+            this.panel53.Size = new System.Drawing.Size(336, 20);
+            this.panel53.TabIndex = 212;
+            // 
+            // darkLabel77
+            // 
+            this.darkLabel77.AutoSize = true;
+            this.darkLabel77.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel77.Location = new System.Drawing.Point(3, 2);
+            this.darkLabel77.Name = "darkLabel77";
+            this.darkLabel77.Size = new System.Drawing.Size(63, 13);
+            this.darkLabel77.TabIndex = 102;
+            this.darkLabel77.Text = "Time Stamp";
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown2.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericUpDown2.Location = new System.Drawing.Point(96, 0);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.ReadOnly = true;
+            this.numericUpDown2.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown2.TabIndex = 101;
+            this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // treeViewMS2
             // 
             this.treeViewMS2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -4542,8 +5099,8 @@ namespace DayZeEditor
             this.toolStripButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(66, 25);
-            this.toolStripButton4.Text = "Objectives";
+            this.toolStripButton4.Size = new System.Drawing.Size(124, 25);
+            this.toolStripButton4.Text = "Persistant Player Data";
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // contextMenuStrip1
@@ -4640,558 +5197,27 @@ namespace DayZeEditor
             this.addNewCraftingObjectiveToolStripMenuItem.Text = "Add New Crafting Objective";
             this.addNewCraftingObjectiveToolStripMenuItem.Click += new System.EventHandler(this.addNewCraftingObjectiveToolStripMenuItem_Click);
             // 
-            // panel51
-            // 
-            this.panel51.Controls.Add(this.darkLabel76);
-            this.panel51.Controls.Add(this.numericUpDown1);
-            this.panel51.Location = new System.Drawing.Point(8, 19);
-            this.panel51.Name = "panel51";
-            this.panel51.Size = new System.Drawing.Size(336, 20);
-            this.panel51.TabIndex = 210;
-            // 
-            // darkLabel76
-            // 
-            this.darkLabel76.AutoSize = true;
-            this.darkLabel76.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel76.Location = new System.Drawing.Point(3, 2);
-            this.darkLabel76.Name = "darkLabel76";
-            this.darkLabel76.Size = new System.Drawing.Size(18, 13);
-            this.darkLabel76.TabIndex = 102;
-            this.darkLabel76.Text = "ID";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown1.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown1.Location = new System.Drawing.Point(96, 0);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            1000000000,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.ReadOnly = true;
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 101;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // panel52
-            // 
-            this.panel52.Controls.Add(this.comboBox1);
-            this.panel52.Controls.Add(this.darkLabel75);
-            this.panel52.Location = new System.Drawing.Point(8, 45);
-            this.panel52.Name = "panel52";
-            this.panel52.Size = new System.Drawing.Size(336, 20);
-            this.panel52.TabIndex = 211;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.comboBox1.ForeColor = System.Drawing.SystemColors.Control;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(96, 0);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(237, 21);
-            this.comboBox1.TabIndex = 173;
-            // 
-            // darkLabel75
-            // 
-            this.darkLabel75.AutoSize = true;
-            this.darkLabel75.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel75.Location = new System.Drawing.Point(3, 3);
-            this.darkLabel75.Name = "darkLabel75";
-            this.darkLabel75.Size = new System.Drawing.Size(63, 13);
-            this.darkLabel75.TabIndex = 107;
-            this.darkLabel75.Text = "Quest State";
-            // 
-            // panel53
-            // 
-            this.panel53.Controls.Add(this.darkLabel77);
-            this.panel53.Controls.Add(this.numericUpDown2);
-            this.panel53.Location = new System.Drawing.Point(8, 72);
-            this.panel53.Name = "panel53";
-            this.panel53.Size = new System.Drawing.Size(336, 20);
-            this.panel53.TabIndex = 212;
-            // 
-            // darkLabel77
-            // 
-            this.darkLabel77.AutoSize = true;
-            this.darkLabel77.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel77.Location = new System.Drawing.Point(3, 2);
-            this.darkLabel77.Name = "darkLabel77";
-            this.darkLabel77.Size = new System.Drawing.Size(63, 13);
-            this.darkLabel77.TabIndex = 102;
-            this.darkLabel77.Text = "Time Stamp";
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown2.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown2.Location = new System.Drawing.Point(96, 0);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
-            1000000000,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.ReadOnly = true;
-            this.numericUpDown2.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown2.TabIndex = 101;
-            this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // panel54
-            // 
-            this.panel54.Controls.Add(this.darkButton36);
-            this.panel54.Controls.Add(this.darkButton37);
-            this.panel54.Controls.Add(this.listBox1);
-            this.panel54.Controls.Add(this.darkLabel78);
-            this.panel54.Location = new System.Drawing.Point(5, 98);
-            this.panel54.Name = "panel54";
-            this.panel54.Size = new System.Drawing.Size(339, 136);
-            this.panel54.TabIndex = 213;
-            // 
-            // darkButton36
-            // 
-            this.darkButton36.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton36.Location = new System.Drawing.Point(313, 101);
-            this.darkButton36.Name = "darkButton36";
-            this.darkButton36.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton36.Size = new System.Drawing.Size(20, 20);
-            this.darkButton36.TabIndex = 241;
-            this.darkButton36.Text = "-";
-            // 
-            // darkButton37
-            // 
-            this.darkButton37.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton37.Location = new System.Drawing.Point(313, 26);
-            this.darkButton37.Name = "darkButton37";
-            this.darkButton37.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton37.Size = new System.Drawing.Size(20, 20);
-            this.darkButton37.TabIndex = 240;
-            this.darkButton37.Text = "+";
-            // 
-            // listBox1
-            // 
-            this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.listBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.listBox1.ForeColor = System.Drawing.SystemColors.Control;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.HorizontalScrollbar = true;
-            this.listBox1.Location = new System.Drawing.Point(6, 26);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(301, 95);
-            this.listBox1.TabIndex = 239;
-            this.listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
-            // 
-            // darkLabel78
-            // 
-            this.darkLabel78.AutoSize = true;
-            this.darkLabel78.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel78.Location = new System.Drawing.Point(3, 2);
-            this.darkLabel78.Name = "darkLabel78";
-            this.darkLabel78.Size = new System.Drawing.Size(57, 13);
-            this.darkLabel78.TabIndex = 108;
-            this.darkLabel78.Text = "Objectives";
-            // 
-            // QuestInfoGB
-            // 
-            this.QuestInfoGB.Controls.Add(this.panel51);
-            this.QuestInfoGB.Controls.Add(this.panel54);
-            this.QuestInfoGB.Controls.Add(this.panel52);
-            this.QuestInfoGB.Controls.Add(this.panel53);
-            this.QuestInfoGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.QuestInfoGB.Location = new System.Drawing.Point(423, 5);
-            this.QuestInfoGB.Name = "QuestInfoGB";
-            this.QuestInfoGB.Size = new System.Drawing.Size(350, 244);
-            this.QuestInfoGB.TabIndex = 214;
-            this.QuestInfoGB.TabStop = false;
-            this.QuestInfoGB.Text = "QuestInfo";
-            this.QuestInfoGB.Visible = false;
-            // 
-            // ObjectiveInfoGB
-            // 
-            this.ObjectiveInfoGB.Controls.Add(this.panel63);
-            this.ObjectiveInfoGB.Controls.Add(this.panel62);
-            this.ObjectiveInfoGB.Controls.Add(this.panel61);
-            this.ObjectiveInfoGB.Controls.Add(this.panel60);
-            this.ObjectiveInfoGB.Controls.Add(this.panel59);
-            this.ObjectiveInfoGB.Controls.Add(this.panel58);
-            this.ObjectiveInfoGB.Controls.Add(this.panel57);
-            this.ObjectiveInfoGB.Controls.Add(this.panel56);
-            this.ObjectiveInfoGB.Controls.Add(this.panel55);
-            this.ObjectiveInfoGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectiveInfoGB.Location = new System.Drawing.Point(423, 252);
-            this.ObjectiveInfoGB.Name = "ObjectiveInfoGB";
-            this.ObjectiveInfoGB.Size = new System.Drawing.Size(350, 275);
-            this.ObjectiveInfoGB.TabIndex = 215;
-            this.ObjectiveInfoGB.TabStop = false;
-            this.ObjectiveInfoGB.Text = "Objective Info";
-            // 
-            // panel55
-            // 
-            this.panel55.Controls.Add(this.darkLabel79);
-            this.panel55.Controls.Add(this.numericUpDown3);
-            this.panel55.Location = new System.Drawing.Point(8, 14);
-            this.panel55.Name = "panel55";
-            this.panel55.Size = new System.Drawing.Size(336, 20);
-            this.panel55.TabIndex = 211;
-            // 
-            // darkLabel79
-            // 
-            this.darkLabel79.AutoSize = true;
-            this.darkLabel79.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel79.Location = new System.Drawing.Point(3, 2);
-            this.darkLabel79.Name = "darkLabel79";
-            this.darkLabel79.Size = new System.Drawing.Size(81, 13);
-            this.darkLabel79.TabIndex = 102;
-            this.darkLabel79.Text = "Objective Index";
-            // 
-            // numericUpDown3
-            // 
-            this.numericUpDown3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown3.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown3.Location = new System.Drawing.Point(96, 0);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
-            1000000000,
-            0,
-            0,
-            0});
-            this.numericUpDown3.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.ReadOnly = true;
-            this.numericUpDown3.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown3.TabIndex = 101;
-            this.numericUpDown3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // panel56
-            // 
-            this.panel56.Controls.Add(this.comboBox2);
-            this.panel56.Controls.Add(this.darkLabel80);
-            this.panel56.Location = new System.Drawing.Point(8, 40);
-            this.panel56.Name = "panel56";
-            this.panel56.Size = new System.Drawing.Size(336, 20);
-            this.panel56.TabIndex = 212;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.comboBox2.ForeColor = System.Drawing.SystemColors.Control;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(96, 0);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(237, 21);
-            this.comboBox2.TabIndex = 173;
-            // 
-            // darkLabel80
-            // 
-            this.darkLabel80.AutoSize = true;
-            this.darkLabel80.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel80.Location = new System.Drawing.Point(3, 3);
-            this.darkLabel80.Name = "darkLabel80";
-            this.darkLabel80.Size = new System.Drawing.Size(79, 13);
-            this.darkLabel80.TabIndex = 107;
-            this.darkLabel80.Text = "Objective Type";
-            // 
-            // panel57
-            // 
-            this.panel57.Controls.Add(this.label7);
-            this.panel57.Controls.Add(this.checkBox2);
-            this.panel57.Location = new System.Drawing.Point(8, 67);
-            this.panel57.Name = "panel57";
-            this.panel57.Size = new System.Drawing.Size(336, 20);
-            this.panel57.TabIndex = 213;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.SystemColors.Control;
-            this.label7.Location = new System.Drawing.Point(3, 3);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(68, 13);
-            this.label7.TabIndex = 113;
-            this.label7.Text = "Is Completed";
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.ForeColor = System.Drawing.SystemColors.Control;
-            this.checkBox2.Location = new System.Drawing.Point(122, 3);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(15, 14);
-            this.checkBox2.TabIndex = 112;
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // panel58
-            // 
-            this.panel58.Controls.Add(this.label8);
-            this.panel58.Controls.Add(this.checkBox3);
-            this.panel58.Location = new System.Drawing.Point(8, 90);
-            this.panel58.Name = "panel58";
-            this.panel58.Size = new System.Drawing.Size(336, 20);
-            this.panel58.TabIndex = 214;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.SystemColors.Control;
-            this.label8.Location = new System.Drawing.Point(3, 3);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(48, 13);
-            this.label8.TabIndex = 113;
-            this.label8.Text = "Is Active";
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.ForeColor = System.Drawing.SystemColors.Control;
-            this.checkBox3.Location = new System.Drawing.Point(122, 3);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(15, 14);
-            this.checkBox3.TabIndex = 112;
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // panel59
-            // 
-            this.panel59.Controls.Add(this.darkLabel81);
-            this.panel59.Controls.Add(this.numericUpDown4);
-            this.panel59.Location = new System.Drawing.Point(8, 116);
-            this.panel59.Name = "panel59";
-            this.panel59.Size = new System.Drawing.Size(336, 20);
-            this.panel59.TabIndex = 215;
-            // 
-            // darkLabel81
-            // 
-            this.darkLabel81.AutoSize = true;
-            this.darkLabel81.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel81.Location = new System.Drawing.Point(3, 2);
-            this.darkLabel81.Name = "darkLabel81";
-            this.darkLabel81.Size = new System.Drawing.Size(91, 13);
-            this.darkLabel81.TabIndex = 102;
-            this.darkLabel81.Text = "Objective Amount";
-            // 
-            // numericUpDown4
-            // 
-            this.numericUpDown4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown4.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown4.Location = new System.Drawing.Point(96, 0);
-            this.numericUpDown4.Maximum = new decimal(new int[] {
-            1000000000,
-            0,
-            0,
-            0});
-            this.numericUpDown4.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.ReadOnly = true;
-            this.numericUpDown4.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown4.TabIndex = 101;
-            this.numericUpDown4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // panel60
-            // 
-            this.panel60.Controls.Add(this.darkLabel82);
-            this.panel60.Controls.Add(this.numericUpDown5);
-            this.panel60.Location = new System.Drawing.Point(8, 142);
-            this.panel60.Name = "panel60";
-            this.panel60.Size = new System.Drawing.Size(336, 20);
-            this.panel60.TabIndex = 216;
-            // 
-            // darkLabel82
-            // 
-            this.darkLabel82.AutoSize = true;
-            this.darkLabel82.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel82.Location = new System.Drawing.Point(3, 2);
-            this.darkLabel82.Name = "darkLabel82";
-            this.darkLabel82.Size = new System.Drawing.Size(83, 13);
-            this.darkLabel82.TabIndex = 102;
-            this.darkLabel82.Text = "Objective Count";
-            // 
-            // numericUpDown5
-            // 
-            this.numericUpDown5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown5.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown5.Location = new System.Drawing.Point(96, 0);
-            this.numericUpDown5.Maximum = new decimal(new int[] {
-            1000000000,
-            0,
-            0,
-            0});
-            this.numericUpDown5.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.ReadOnly = true;
-            this.numericUpDown5.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown5.TabIndex = 101;
-            this.numericUpDown5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // panel61
-            // 
-            this.panel61.Controls.Add(this.numericUpDown6);
-            this.panel61.Controls.Add(this.darkLabel83);
-            this.panel61.Controls.Add(this.numericUpDown8);
-            this.panel61.Controls.Add(this.numericUpDown10);
-            this.panel61.Location = new System.Drawing.Point(6, 168);
-            this.panel61.Name = "panel61";
-            this.panel61.Size = new System.Drawing.Size(338, 45);
-            this.panel61.TabIndex = 217;
-            // 
-            // numericUpDown6
-            // 
-            this.numericUpDown6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown6.DecimalPlaces = 6;
-            this.numericUpDown6.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown6.Location = new System.Drawing.Point(3, 18);
-            this.numericUpDown6.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.numericUpDown6.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(106, 20);
-            this.numericUpDown6.TabIndex = 152;
-            this.numericUpDown6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // darkLabel83
-            // 
-            this.darkLabel83.AutoSize = true;
-            this.darkLabel83.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel83.Location = new System.Drawing.Point(3, 2);
-            this.darkLabel83.Name = "darkLabel83";
-            this.darkLabel83.Size = new System.Drawing.Size(92, 13);
-            this.darkLabel83.TabIndex = 155;
-            this.darkLabel83.Text = "Objective Position";
-            // 
-            // numericUpDown8
-            // 
-            this.numericUpDown8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown8.DecimalPlaces = 6;
-            this.numericUpDown8.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown8.Location = new System.Drawing.Point(115, 18);
-            this.numericUpDown8.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.numericUpDown8.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown8.Name = "numericUpDown8";
-            this.numericUpDown8.Size = new System.Drawing.Size(106, 20);
-            this.numericUpDown8.TabIndex = 153;
-            this.numericUpDown8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // numericUpDown10
-            // 
-            this.numericUpDown10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown10.DecimalPlaces = 6;
-            this.numericUpDown10.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown10.Location = new System.Drawing.Point(227, 18);
-            this.numericUpDown10.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.numericUpDown10.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown10.Name = "numericUpDown10";
-            this.numericUpDown10.Size = new System.Drawing.Size(106, 20);
-            this.numericUpDown10.TabIndex = 154;
-            this.numericUpDown10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // panel62
-            // 
-            this.panel62.Controls.Add(this.label9);
-            this.panel62.Controls.Add(this.checkBox4);
-            this.panel62.Location = new System.Drawing.Point(8, 219);
-            this.panel62.Name = "panel62";
-            this.panel62.Size = new System.Drawing.Size(336, 20);
-            this.panel62.TabIndex = 218;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.SystemColors.Control;
-            this.label9.Location = new System.Drawing.Point(3, 3);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(65, 13);
-            this.label9.TabIndex = 113;
-            this.label9.Text = "Action State";
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.ForeColor = System.Drawing.SystemColors.Control;
-            this.checkBox4.Location = new System.Drawing.Point(122, 3);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(15, 14);
-            this.checkBox4.TabIndex = 112;
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // panel63
-            // 
-            this.panel63.Controls.Add(this.darkLabel84);
-            this.panel63.Controls.Add(this.numericUpDown7);
-            this.panel63.Location = new System.Drawing.Point(8, 245);
-            this.panel63.Name = "panel63";
-            this.panel63.Size = new System.Drawing.Size(336, 20);
-            this.panel63.TabIndex = 216;
-            // 
-            // darkLabel84
-            // 
-            this.darkLabel84.AutoSize = true;
-            this.darkLabel84.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel84.Location = new System.Drawing.Point(3, 2);
-            this.darkLabel84.Name = "darkLabel84";
-            this.darkLabel84.Size = new System.Drawing.Size(54, 13);
-            this.darkLabel84.TabIndex = 102;
-            this.darkLabel84.Text = "Time Limit";
-            // 
-            // numericUpDown7
-            // 
-            this.numericUpDown7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown7.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown7.Location = new System.Drawing.Point(96, 0);
-            this.numericUpDown7.Maximum = new decimal(new int[] {
-            1000000000,
-            0,
-            0,
-            0});
-            this.numericUpDown7.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown7.Name = "numericUpDown7";
-            this.numericUpDown7.ReadOnly = true;
-            this.numericUpDown7.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown7.TabIndex = 101;
-            this.numericUpDown7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.removeQuestFromPlayerToolStripMenuItem,
+            this.removePlayerSaveDataToolStripMenuItem});
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(216, 48);
+            // 
+            // removeQuestFromPlayerToolStripMenuItem
+            // 
+            this.removeQuestFromPlayerToolStripMenuItem.Name = "removeQuestFromPlayerToolStripMenuItem";
+            this.removeQuestFromPlayerToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.removeQuestFromPlayerToolStripMenuItem.Text = "Remove Quest from Player";
+            this.removeQuestFromPlayerToolStripMenuItem.Click += new System.EventHandler(this.removeQuestFromPlayerToolStripMenuItem_Click);
+            // 
+            // removePlayerSaveDataToolStripMenuItem
+            // 
+            this.removePlayerSaveDataToolStripMenuItem.Name = "removePlayerSaveDataToolStripMenuItem";
+            this.removePlayerSaveDataToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.removePlayerSaveDataToolStripMenuItem.Text = "Remove Player Save Data";
+            this.removePlayerSaveDataToolStripMenuItem.Click += new System.EventHandler(this.removePlayerSaveDataToolStripMenuItem_Click);
             // 
             // ExpansionQuests
             // 
@@ -5407,46 +5433,47 @@ namespace DayZeEditor
             this.panel47.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.QuestObjectiveTreasureHuntitemAmountNUD)).EndInit();
             this.Tab5.ResumeLayout(false);
-            this.darkToolStrip23.ResumeLayout(false);
-            this.darkToolStrip23.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
-            this.panel51.ResumeLayout(false);
-            this.panel51.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            this.panel52.ResumeLayout(false);
-            this.panel52.PerformLayout();
-            this.panel53.ResumeLayout(false);
-            this.panel53.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            this.panel54.ResumeLayout(false);
-            this.panel54.PerformLayout();
-            this.QuestInfoGB.ResumeLayout(false);
             this.ObjectiveInfoGB.ResumeLayout(false);
-            this.panel55.ResumeLayout(false);
-            this.panel55.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            this.panel56.ResumeLayout(false);
-            this.panel56.PerformLayout();
-            this.panel57.ResumeLayout(false);
-            this.panel57.PerformLayout();
-            this.panel58.ResumeLayout(false);
-            this.panel58.PerformLayout();
-            this.panel59.ResumeLayout(false);
-            this.panel59.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            this.panel60.ResumeLayout(false);
-            this.panel60.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
+            this.panel63.ResumeLayout(false);
+            this.panel63.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
+            this.panel62.ResumeLayout(false);
+            this.panel62.PerformLayout();
             this.panel61.ResumeLayout(false);
             this.panel61.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).EndInit();
-            this.panel62.ResumeLayout(false);
-            this.panel62.PerformLayout();
-            this.panel63.ResumeLayout(false);
-            this.panel63.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
+            this.panel60.ResumeLayout(false);
+            this.panel60.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
+            this.panel59.ResumeLayout(false);
+            this.panel59.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            this.panel58.ResumeLayout(false);
+            this.panel58.PerformLayout();
+            this.panel57.ResumeLayout(false);
+            this.panel57.PerformLayout();
+            this.panel56.ResumeLayout(false);
+            this.panel56.PerformLayout();
+            this.panel55.ResumeLayout(false);
+            this.panel55.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            this.QuestInfoGB.ResumeLayout(false);
+            this.panel51.ResumeLayout(false);
+            this.panel51.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.panel54.ResumeLayout(false);
+            this.panel54.PerformLayout();
+            this.panel52.ResumeLayout(false);
+            this.panel52.PerformLayout();
+            this.panel53.ResumeLayout(false);
+            this.panel53.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            this.darkToolStrip23.ResumeLayout(false);
+            this.darkToolStrip23.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
+            this.contextMenuStrip2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -5838,5 +5865,8 @@ namespace DayZeEditor
         private System.Windows.Forms.Panel panel62;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem removeQuestFromPlayerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removePlayerSaveDataToolStripMenuItem;
     }
 }

@@ -600,6 +600,7 @@ namespace DayZeEditor
             this.zombie_nameLB.Size = new System.Drawing.Size(238, 238);
             this.zombie_nameLB.TabIndex = 122;
             this.zombie_nameLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.zombie_nameLB.SelectedIndexChanged += new System.EventHandler(this.zombie_nameLB_SelectedIndexChanged);
             // 
             // ZombieMaxNUD
             // 
@@ -967,6 +968,7 @@ namespace DayZeEditor
             this.animal_nameLB.Size = new System.Drawing.Size(238, 238);
             this.animal_nameLB.TabIndex = 122;
             this.animal_nameLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.animal_nameLB.SelectedIndexChanged += new System.EventHandler(this.animal_nameLB_SelectedIndexChanged);
             // 
             // AnimalMaxNUD
             // 
@@ -1085,6 +1087,7 @@ namespace DayZeEditor
             this.Loot_HelicrashLB.Size = new System.Drawing.Size(226, 394);
             this.Loot_HelicrashLB.TabIndex = 98;
             this.Loot_HelicrashLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.Loot_HelicrashLB.SelectedIndexChanged += new System.EventHandler(this.Loot_HelicrashLB_SelectedIndexChanged);
             // 
             // darkButton15
             // 
