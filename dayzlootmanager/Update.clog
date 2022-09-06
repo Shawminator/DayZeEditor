@@ -1,6 +1,10 @@
 ﻿Version 0.7.4
 [Fixed]
 Hardline remove from list was actually adding it rather than removing. Now fixed.
+[Changed]
+Updated Expansion Settings/Market/AI/Quest after latest expansion Update
+[Added]
+Mysery Box Config
 
 Version 0.7.3
 [Fixed]
