@@ -15,7 +15,7 @@ namespace DayZeLib
 
     public class MarketCategories
     {
-        public const int CurrentVersion = 9;
+        public const int CurrentVersion = 11;
         public BindingList<Categories> CatList { get; set; }
         public string MarketCatsPath {get;set;}
 
@@ -200,8 +200,11 @@ namespace DayZeLib
         }
         public Categories GetCatFromFileName(string cat)
         {
-
             return CatList.FirstOrDefault(x => Path.GetFileNameWithoutExtension(x.Filename) == cat);
+        }
+        public List<Categories> GetexchangeCats()
+        {
+            return CatList.Where(x => x.IsExchange == 1).ToList();
         }
         public bool isincludedinavarient(string item)
         {
@@ -244,6 +247,7 @@ namespace DayZeLib
         public string Icon { get; set; }
         public string Color { get; set; }
         public decimal InitStockPercent { get; set; }
+        public int IsExchange { get; set; }
         public BindingList<marketItem> Items { get; set; }
 
 
@@ -251,7 +255,6 @@ namespace DayZeLib
         public string Filename { get; set; }
         [JsonIgnore]
         public bool isDirty = false;
-
 
         public Categories(string filename)
         {

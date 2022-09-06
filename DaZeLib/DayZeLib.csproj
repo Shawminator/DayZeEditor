@@ -143,7 +143,7 @@
     <Compile Include="ExpansionQuests\Objectives\QuestObjectivesCollection.cs" />
     <Compile Include="ExpansionQuests\Objectives\QuestObjectivesDelivery.cs" />
     <Compile Include="ExpansionQuests\Objectives\QuestObjectivesTreasureHunt.cs" />
-    <Compile Include="ExpansionQuests\Objectives\QuestObjectovesTarget.cs" />
+    <Compile Include="ExpansionQuests\Objectives\QuestObjectivesTarget.cs" />
     <Compile Include="ExpansionQuests\Objectives\QuestObjectivesTravel.cs" />
     <Compile Include="ExpansionQuests\PlayerData\PlayerData.cs" />
     <Compile Include="ExpansionQuests\Quests\ExpansionQuests.cs" />

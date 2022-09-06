@@ -27,7 +27,7 @@ namespace DayZeLib
 
     public class QuestObjectivesBase : IEquatable<QuestObjectivesBase>
     {
-        const int m_currentConfigVersion = 7;
+        const int m_currentConfigVersion = 8;
 
         [JsonIgnore]
         public static readonly string[] Objectvetypesname = {"","", "Target", "Travel", "Collection", "Delivery", "TreasureHunt", "AIPatrol", "AICamp", "AIVIP", "Action", "Crafting"};

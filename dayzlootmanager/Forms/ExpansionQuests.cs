@@ -1643,10 +1643,11 @@ namespace DayZeEditor
                         QuestObjectivesPositionGB.Visible = true;
                         QuestObjectivesMaxdistanceGB.Visible = true;
                         QuestObjectivesNPCInfoGB.Visible = true;
-                        QuestObjectivesNPCInfoGB.Height = 180;
                         NPCUnitsP.Visible = true;
                         NPCAIClassnamesP.Visible = true;
+                        NPCAISelfKillP.Visible = true;
                         QuestObjectivesSpecialWeaponGB.Visible = true;
+                        NPCExludedClassnamesGB.Visible = true;
                         setupObjectiveTarget(e);
                         break;
                     case QuExpansionQuestObjectiveTypeestType.TRAVEL:
@@ -1689,7 +1690,6 @@ namespace DayZeEditor
                         NPCAccuracyMinP.Visible = true;
                         NPCAccuracyMaxP.Visible = true;
                         NPCAIClassnamesP.Visible = true;
-                        QuestObjectivesNPCInfoGB.Height = 380;
                         QuestObjectivesAIPositionsGB.Visible = true;
                         QuestObjectivesAIPositionsGB.Text = "Patrol Waypoints";
                         QuestObjectivesNPCInfoGB.Visible = true;
@@ -1705,7 +1705,6 @@ namespace DayZeEditor
                         NPCAccuracyMinP.Visible = true;
                         NPCAccuracyMaxP.Visible = true;
                         NPCAIClassnamesP.Visible = true;
-                        QuestObjectivesNPCInfoGB.Height = 310;
                         QuestObjectivesAIPositionsGB.Visible = true;
                         QuestObjectivesAIPositionsGB.Text = "Camp Positions";
                         QuestObjectivesNPCInfoGB.Visible = true;
@@ -1721,7 +1720,6 @@ namespace DayZeEditor
                         NPCBehaviourP.Visible = true;
                         NPCFactionP.Visible = true;
                         NPCLoadoutP.Visible = true;
-                        QuestObjectivesNPCInfoGB.Height = 150;
                         QuestObjectivesNPCInfoGB.Visible = true;
                         QuestObjectivesMarkerNameGB.Visible = true;
                         SetupObjectiveAIVIP(e);
@@ -1751,6 +1749,7 @@ namespace DayZeEditor
             QuestObjectivesPosZNUD.Value = (decimal)CurrentTarget.Position[2];
             QuestObjectivesMaxDistanceNUD.Value = CurrentTarget.MaxDistance;
             QuestObjectivesNPCUnitsNUD.Value = CurrentTarget.Target.Amount;
+            QuestObjectivesNPCCountSelfKillCB.Checked = CurrentTarget.Target.CountSelfKill == 1 ? true : false;
             QuestObjectivesSpecialWeaponCB.Checked = CurrentTarget.Target.SpecialWeapon == 1 ? true : false;
             if (QuestObjectivesSpecialWeaponCB.Checked)
                 QuestObjectivesAllowedWeaponsGB.Visible = true;
@@ -1761,6 +1760,10 @@ namespace DayZeEditor
             QuestObjectivesAllowedWeaponsLB.DisplayMember = "DisplayName";
             QuestObjectivesAllowedWeaponsLB.ValueMember = "Value";
             QuestObjectivesAllowedWeaponsLB.DataSource = CurrentTarget.Target.AllowedWeapons;
+
+            QuestObjectivesExcludedClassNamesLB.DisplayMember = "DisplayName";
+            QuestObjectivesExcludedClassNamesLB.ValueMember = "Value";
+            QuestObjectivesExcludedClassNamesLB.DataSource = CurrentTarget.Target.ExcludedClassNames;
 
         }
         private void SetupObjectiveTravel(TreeNodeMouseClickEventArgs e)
@@ -3491,7 +3494,9 @@ namespace DayZeEditor
                     Amount = 10,
                     ClassNames = new BindingList<string>(),
                     SpecialWeapon = 0,
-                    AllowedWeapons = new BindingList<string>()
+                    AllowedWeapons = new BindingList<string>(),
+                    CountSelfKill = 0,
+                    ExcludedClassNames = new BindingList<string>()
                 },
                 isDirty = true
             };
@@ -3562,7 +3567,61 @@ namespace DayZeEditor
             QuestsList.RemoveObjectivesfromQuests(basequest);
             treeViewMS1.SelectedNode.Remove();
         }
-
+        private void QuestObjectivesNPCCountSelfKillCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            switch (CurrentTreeNodeTag.QuestType)
+            {
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
+                    QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
+                    CurrentTarget.Target.CountSelfKill = QuestObjectivesNPCCountSelfKillCB.Checked == true ? 1 : 0;
+                    break;
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
+                    break;
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
+                    break;
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
+                    break;
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
+                    break;
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
+                    break;
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
+                    break;
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
+                    break;
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
+                    break;
+                default:
+                    break;
+            }
+            CurrentTreeNodeTag.isDirty = true;
+        }
+        private void darkButton39_Click(object sender, EventArgs e)
+        {
+            QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
+            AddItemfromString form = new AddItemfromString();
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    CurrentTarget.Target.ExcludedClassNames.Add(l);
+                }
+            }
+            CurrentTreeNodeTag.isDirty = true;
+        }
+        private void darkButton38_Click(object sender, EventArgs e)
+        {
+            if (QuestObjectivesExcludedClassNamesLB.SelectedItems.Count < 1) return;
+            QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
+            for (int i = 0; i < QuestObjectivesExcludedClassNamesLB.SelectedItems.Count; i++)
+            {
+                CurrentTarget.Target.ExcludedClassNames.Remove(QuestObjectivesExcludedClassNamesLB.GetItemText(QuestObjectivesExcludedClassNamesLB.SelectedItems[0]));
+            }
+            CurrentTreeNodeTag.isDirty = true;
+        }
 
         #endregion objectives
 
@@ -3709,5 +3768,7 @@ namespace DayZeEditor
             QuestPlayerDataList.deletePlayerData(currentplayer);
             File.Delete(currentplayer.Filename);
         }
+
+
     }
 }

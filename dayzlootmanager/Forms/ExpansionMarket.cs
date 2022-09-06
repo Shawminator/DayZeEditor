@@ -725,21 +725,23 @@ namespace DayZeEditor
             listBox12.ValueMember = "Value";
             listBox12.DataSource = marketsettings.Currencies;
 
-            Categories cat = MarketCats.GetCatFromFileName("EXCHANGE");
-            if (cat != null)
+            List<Categories> cats = MarketCats.GetexchangeCats();
+            if (cats != null || cats.Count != 0)
             {
                 listBox19.Items.Clear();
                 List<string> items = new List<string>();
-                foreach (marketItem item in cat.Items)
+                foreach (Categories cat in cats)
                 {
-                    foreach (string vitem in item.Variants)
+                    foreach (marketItem item in cat.Items)
                     {
-                        if (!items.Contains(vitem))
-                            items.Add(vitem);
+                        foreach (string vitem in item.Variants)
+                        {
+                            if (!items.Contains(vitem))
+                                items.Add(vitem);
+                        }
+                        if (!items.Contains(item.ClassName))
+                            items.Add(item.ClassName);
                     }
-                    if (!items.Contains(item.ClassName))
-                        items.Add(item.ClassName);
-
                 }
                 items.Sort();
                 listBox19.Items.AddRange(items.ToArray());
@@ -1537,15 +1539,19 @@ namespace DayZeEditor
             string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Enter Name of New Trader(No spaces in name)", "Traders", "");
             if (UserAnswer == "") return;
             Traders.AddNewTrader(UserAnswer);
-            List<string> currencies = MarketCats.GetCatFromFileName("EXCHANGE").getallItemsasString();
+            List<Categories> currencies = MarketCats.GetexchangeCats();
             listBox2.SelectedIndex = -1;
             if (listBox2.Items.Count == 0)
                 listBox2.SelectedIndex = listBox2.Items.Count - 1;
             else
                 listBox2.SelectedIndex = 0;
-            foreach(string s in currencies)
+            Traders newtrader = Traders.GetTraderFromName(UserAnswer.ToUpper());
+            foreach (Categories currency in currencies)
             {
-                currentTrader.Currencies.Add(s);
+                foreach (marketItem s in currency.Items)
+                {
+                    newtrader.Currencies.Add(s.ClassName);
+                }
             }
         }
         private void CanBuyCanSell_CheckChanged(object sender, EventArgs e)
@@ -1651,19 +1657,22 @@ namespace DayZeEditor
             AddFromCategoryListBox.Visible = true;
             AddFromCategoryListBox.Text = "Add Currency from Exchange";
             AddFromCategoryListBox.Tag = "AddExchange";
-            Categories cat = MarketCats.GetCatFromFileName("EXCHANGE");
+            List<Categories> cats = MarketCats.GetexchangeCats();
             listBox3.Items.Clear();
             List<string> items = new List<string>();
-            foreach (marketItem item in cat.Items)
+            foreach (Categories cat in cats)
             {
-                foreach (string vitem in item.Variants)
+                foreach (marketItem item in cat.Items)
                 {
-                    if (!items.Contains(vitem))
-                        items.Add(vitem);
-                }
-                if (!items.Contains(item.ClassName))
-                    items.Add(item.ClassName);
+                    foreach (string vitem in item.Variants)
+                    {
+                        if (!items.Contains(vitem))
+                            items.Add(vitem);
+                    }
+                    if (!items.Contains(item.ClassName))
+                        items.Add(item.ClassName);
 
+                }
             }
             items.Sort();
             listBox3.Items.AddRange(items.ToArray());
@@ -1694,6 +1703,7 @@ namespace DayZeEditor
             textBox9.Text = currentCat.DisplayName;
             IconTB.Text = currentCat.Icon;
             InitStockPercentNUD.Value = (decimal)currentCat.InitStockPercent;
+            IsExchangeCB.Checked = currentCat.IsExchange == 1 ? true : false;
             CategorycolourPB.Invalidate();
 
             listBox4.DisplayMember = "Name";
@@ -2337,7 +2347,12 @@ namespace DayZeEditor
                 currentCat.isDirty = true;
             }
         }
-
+        private void IsExchangeCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (action) return;
+            currentCat.IsExchange = IsExchangeCB.Checked == true ? 1 : 0;
+            currentCat.isDirty = true;
+        }
         /// <summary>
         /// Added in version 9 for cat sell stock percent
         /// </summary>
@@ -3453,6 +3468,8 @@ namespace DayZeEditor
                 }
             }
         }
+
+
     }
 }
 

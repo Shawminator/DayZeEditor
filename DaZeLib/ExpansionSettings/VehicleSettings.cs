@@ -45,7 +45,7 @@ namespace DayZeLib
     }
     public class VehicleSettings
     {
-        const int CurrentVersion = 10;
+        const int CurrentVersion = 11;
         public int m_Version { get; set; } // current version 8
         public int VehicleSync { get; set; }
         public int VehicleRequireKeyToStart { get; set; }
@@ -71,12 +71,14 @@ namespace DayZeLib
         public BindingList<string> ChangeLockTools { get; set; }
         public decimal ChangeLockTimeSeconds { get; set; }
         public decimal ChangeLockToolDamagePercent { get; set; }
+        public decimal VehicleRoadKillDamageMultiplier { get; set; }
         public int PlacePlayerOnGroundOnReconnectInVehicle { get; set; }
         public int RevvingOverMaxRPMRuinsEngineInstantly { get; set; }
         public int VehicleDropsRuinedDoors { get; set; }
         public int ExplodingVehicleDropsAttachments { get; set; }
         //public float ForcePilotSyncIntervalSeconds { get; set; }
         public decimal DesyncInvulnerabilityTimeoutSeconds { get; set; }
+        public decimal DamagedEngineStartupChancePercent { get; set; }
         public BindingList<VConfigs> VehiclesConfig { get; set; }
 
         [JsonIgnore]

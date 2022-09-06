@@ -321,6 +321,8 @@ namespace DayZeEditor
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.darkLabel13 = new DarkUI.Controls.DarkLabel();
+            this.IsExchangeCB = new System.Windows.Forms.CheckBox();
             this.InitStockPercentNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel76 = new DarkUI.Controls.DarkLabel();
             this.CategorycolourPB = new System.Windows.Forms.PictureBox();
@@ -4191,6 +4193,8 @@ namespace DayZeEditor
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage3.Controls.Add(this.darkLabel13);
+            this.tabPage3.Controls.Add(this.IsExchangeCB);
             this.tabPage3.Controls.Add(this.InitStockPercentNUD);
             this.tabPage3.Controls.Add(this.darkLabel76);
             this.tabPage3.Controls.Add(this.CategorycolourPB);
@@ -4220,12 +4224,33 @@ namespace DayZeEditor
             this.tabPage3.Text = "Categories";
             this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
             // 
+            // darkLabel13
+            // 
+            this.darkLabel13.AutoSize = true;
+            this.darkLabel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel13.Location = new System.Drawing.Point(238, 148);
+            this.darkLabel13.Name = "darkLabel13";
+            this.darkLabel13.Size = new System.Drawing.Size(66, 13);
+            this.darkLabel13.TabIndex = 105;
+            this.darkLabel13.Text = "Is Exchange";
+            // 
+            // IsExchangeCB
+            // 
+            this.IsExchangeCB.AutoSize = true;
+            this.IsExchangeCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.IsExchangeCB.Location = new System.Drawing.Point(316, 148);
+            this.IsExchangeCB.Name = "IsExchangeCB";
+            this.IsExchangeCB.Size = new System.Drawing.Size(15, 14);
+            this.IsExchangeCB.TabIndex = 104;
+            this.IsExchangeCB.UseVisualStyleBackColor = true;
+            this.IsExchangeCB.CheckedChanged += new System.EventHandler(this.IsExchangeCB_CheckedChanged);
+            // 
             // InitStockPercentNUD
             // 
             this.InitStockPercentNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.InitStockPercentNUD.DecimalPlaces = 1;
             this.InitStockPercentNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.InitStockPercentNUD.Location = new System.Drawing.Point(333, 146);
+            this.InitStockPercentNUD.Location = new System.Drawing.Point(333, 168);
             this.InitStockPercentNUD.Name = "InitStockPercentNUD";
             this.InitStockPercentNUD.Size = new System.Drawing.Size(203, 20);
             this.InitStockPercentNUD.TabIndex = 102;
@@ -4236,7 +4261,7 @@ namespace DayZeEditor
             // 
             this.darkLabel76.AutoSize = true;
             this.darkLabel76.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel76.Location = new System.Drawing.Point(238, 148);
+            this.darkLabel76.Location = new System.Drawing.Point(238, 170);
             this.darkLabel76.Name = "darkLabel76";
             this.darkLabel76.Size = new System.Drawing.Size(89, 13);
             this.darkLabel76.TabIndex = 103;
@@ -4717,7 +4742,7 @@ namespace DayZeEditor
             // 
             this.darkLabel6.AutoSize = true;
             this.darkLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel6.Location = new System.Drawing.Point(238, 181);
+            this.darkLabel6.Location = new System.Drawing.Point(237, 192);
             this.darkLabel6.Name = "darkLabel6";
             this.darkLabel6.Size = new System.Drawing.Size(38, 13);
             this.darkLabel6.TabIndex = 76;
@@ -4771,10 +4796,10 @@ namespace DayZeEditor
             this.listBox4.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.listBox4.ForeColor = System.Drawing.SystemColors.Control;
             this.listBox4.FormattingEnabled = true;
-            this.listBox4.Location = new System.Drawing.Point(238, 197);
+            this.listBox4.Location = new System.Drawing.Point(238, 210);
             this.listBox4.Name = "listBox4";
             this.listBox4.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBox4.Size = new System.Drawing.Size(298, 368);
+            this.listBox4.Size = new System.Drawing.Size(298, 355);
             this.listBox4.TabIndex = 62;
             this.listBox4.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.listBox4.SelectedIndexChanged += new System.EventHandler(this.listBox4_SelectedIndexChanged);
@@ -5432,5 +5457,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ListBox listBox20;
         private DarkUI.Controls.DarkButton darkButton44;
         private System.Windows.Forms.NumericUpDown SellPricePercentNUD;
+        private DarkUI.Controls.DarkLabel darkLabel13;
+        private System.Windows.Forms.CheckBox IsExchangeCB;
     }
 }

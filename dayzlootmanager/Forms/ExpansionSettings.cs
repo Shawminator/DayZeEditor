@@ -418,11 +418,13 @@ namespace DayZeEditor
             DamageSystemSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\DamageSystemSettings.json";
             if (!File.Exists(DamageSystemSettingsPath))
             {
+                Console.WriteLine(Path.GetFileName(DamageSystemSettingsPath) + " File not found, Creating new....");
                 DamageSystemSettings = new DamageSystemSettings();
                 needtosave = true;
             }
             else
             {
+                Console.WriteLine("serializing " + Path.GetFileName(DamageSystemSettingsPath));
                 DamageSystemSettings = JsonSerializer.Deserialize<DamageSystemSettings>(File.ReadAllText(DamageSystemSettingsPath));
                 DamageSystemSettings.ConvertDicttolist();
                 DamageSystemSettings.isDirty = false;
@@ -435,11 +437,13 @@ namespace DayZeEditor
             AirdropsettingPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\settings\\AirdropSettings.json";
             if (!File.Exists(AirdropsettingPath))
             {
+                Console.WriteLine(Path.GetFileName(AirdropsettingPath) + " File not found, Creating new....");
                 AirdropsettingsJson = new AirdropsettingsJson();
                 needtosave = true;
             }
             else
             {
+                Console.WriteLine("serializing " + Path.GetFileName(AirdropsettingPath));
                 AirdropsettingsJson = JsonSerializer.Deserialize<AirdropsettingsJson>(File.ReadAllText(AirdropsettingPath));
                 AirdropsettingsJson.isDirty = false;
                 if (AirdropsettingsJson.checkver())
@@ -453,9 +457,11 @@ namespace DayZeEditor
             {
                 BaseBuildingSettings = new BaseBuildingSettings();
                 needtosave = true;
+                Console.WriteLine(Path.GetFileName(BaseBUildignsettingsPath) + " File not found, Creating new....");
             }
             else
             {
+                Console.WriteLine("serializing " + Path.GetFileName(BaseBUildignsettingsPath));
                 BaseBuildingSettings = JsonSerializer.Deserialize<BaseBuildingSettings>(File.ReadAllText(BaseBUildignsettingsPath));
                 BaseBuildingSettings.isDirty = false;
                 if (BaseBuildingSettings.checkver())
@@ -470,9 +476,11 @@ namespace DayZeEditor
             {
                 BookSettings = new BookSettings();
                 needtosave = true;
+                Console.WriteLine(Path.GetFileName(BookSettingsPath) + " File not found, Creating new....");
             }
             else
             {
+                Console.WriteLine("serializing " + Path.GetFileName(BookSettingsPath));
                 BookSettings = JsonSerializer.Deserialize<BookSettings>(File.ReadAllText(BookSettingsPath));
                 BookSettings.isDirty = false;
                 if (BookSettings.checkver())
@@ -486,9 +494,11 @@ namespace DayZeEditor
             {
                 ChatSettings = new ChatSettings();
                 needtosave = true;
+                Console.WriteLine(Path.GetFileName(ChatSettingsPath) + " File not found, Creating new....");
             }
             else
             {
+                Console.WriteLine("serializing " + Path.GetFileName(ChatSettingsPath));
                 ChatSettings = JsonSerializer.Deserialize<ChatSettings>(File.ReadAllText(ChatSettingsPath));
                 ChatSettings.isDirty = false;
                 if (ChatSettings.checkver())
@@ -502,9 +512,11 @@ namespace DayZeEditor
             {
                 DebugSettings = new DebugSettings();
                 needtosave = true;
+                Console.WriteLine(Path.GetFileName(DebugSettingsPath) + " File not found, Creating new....");
             }
             else
             {
+                Console.WriteLine("serializing " + Path.GetFileName(DebugSettingsPath));
                 DebugSettings = JsonSerializer.Deserialize<DebugSettings>(File.ReadAllText(DebugSettingsPath));
                 DebugSettings.isDirty = false;
                 if (DebugSettings.checkver())
@@ -521,9 +533,11 @@ namespace DayZeEditor
             {
                 GeneralSettings = new GeneralSettings();
                 needtosave = true;
+                Console.WriteLine(Path.GetFileName(GeneralSettingsPath) + " File not found, Creating new....");
             }
             else
             {
+                Console.WriteLine("serializing " + Path.GetFileName(GeneralSettingsPath));
                 GeneralSettings = JsonSerializer.Deserialize<GeneralSettings>(File.ReadAllText(GeneralSettingsPath));
                 GeneralSettings.isDirty = false;
                 if (GeneralSettings.checkver())
@@ -537,9 +551,11 @@ namespace DayZeEditor
             {
                 HardLineSettings = new HardLineSettings();
                 needtosave = true;
+                Console.WriteLine(Path.GetFileName(HArdlineSettingsPath) + " File not found, Creating new....");
             }
             else
             {
+                Console.WriteLine("serializing " + Path.GetFileName(HArdlineSettingsPath));
                 HardLineSettings = JsonSerializer.Deserialize<HardLineSettings>(File.ReadAllText(HArdlineSettingsPath));
                 HardLineSettings.isDirty = false;
                 if (HardLineSettings.checkver())
@@ -554,9 +570,11 @@ namespace DayZeEditor
             {
                 LogSettings = new LogSettings();
                 needtosave = true;
+                Console.WriteLine(Path.GetFileName(LogsSettingsPath) + " File not found, Creating new....");
             }
             else
             {
+                Console.WriteLine("serializing " + Path.GetFileName(LogsSettingsPath));
                 LogSettings = JsonSerializer.Deserialize<LogSettings>(File.ReadAllText(LogsSettingsPath));
                 LogSettings.isDirty = false;
                 if (GeneralSettings.checkver())
@@ -570,9 +588,11 @@ namespace DayZeEditor
             {
                 MapSettings = new MapSettings();
                 needtosave = true;
+                Console.WriteLine(Path.GetFileName(MapSettingsPath) + " File not found, Creating new....");
             }
             else
             {
+                Console.WriteLine("serializing " + Path.GetFileName(MapSettingsPath));
                 MapSettings = JsonSerializer.Deserialize<MapSettings>(File.ReadAllText(MapSettingsPath));
                 MapSettings.isDirty = false;
                 if (MapSettings.checkver())
@@ -594,9 +614,11 @@ namespace DayZeEditor
             {
                 MissionSettings = new MissionSettings();
                 needtosave = true;
+                Console.WriteLine(Path.GetFileName(MissionSettingsPath) + " File not found, Creating new....");
             }
             else
             {
+                Console.WriteLine("serializing " + Path.GetFileName(MissionSettingsPath));
                 MissionSettings = JsonSerializer.Deserialize<MissionSettings>(File.ReadAllText(MissionSettingsPath));
                 MissionSettings.isDirty = false;
                 if (MissionSettings.checkver())
@@ -611,9 +633,11 @@ namespace DayZeEditor
             {
                 MonitoringSettings = new MonitoringSettings();
                 needtosave = true;
+                Console.WriteLine(Path.GetFileName(MonitoringSettingsPath) + " File not found, Creating new....");
             }
             else
             {
+                Console.WriteLine("serializing " + Path.GetFileName(MonitoringSettingsPath));
                 MonitoringSettings = JsonSerializer.Deserialize<MonitoringSettings>(File.ReadAllText(MonitoringSettingsPath));
                 MonitoringSettings.isDirty = false;
                 if (MonitoringSettings.checkver())
@@ -627,9 +651,11 @@ namespace DayZeEditor
             {
                 NameTagSettings = new NameTagsettings();
                 needtosave = true;
+                Console.WriteLine(Path.GetFileName(NameTagsettingsPath) + " File not found, Creating new....");
             }
             else
             {
+                Console.WriteLine("serializing " + Path.GetFileName(NameTagsettingsPath));
                 NameTagSettings = JsonSerializer.Deserialize<NameTagsettings>(File.ReadAllText(NameTagsettingsPath));
                 NameTagSettings.isDirty = false;
                 if (NameTagSettings.checkver())
@@ -643,9 +669,11 @@ namespace DayZeEditor
             {
                 NotificationSchedulerSettings = new NotificationSchedulerSettings();
                 needtosave = true;
+                Console.WriteLine(Path.GetFileName(NotificationSchedulerSettingsPath) + " File not found, Creating new....");
             }
             else
             {
+                Console.WriteLine("serializing " + Path.GetFileName(NotificationSchedulerSettingsPath));
                 NotificationSchedulerSettings = JsonSerializer.Deserialize<NotificationSchedulerSettings>(File.ReadAllText(NotificationSchedulerSettingsPath));
                 NotificationSchedulerSettings.isDirty = false;
                 if (NotificationSchedulerSettings.checkver())
@@ -661,9 +689,11 @@ namespace DayZeEditor
             {
                 NotificationSettings = new NotificationSettings();
                 needtosave = true;
+                Console.WriteLine(Path.GetFileName(NotificationssettingsPath) + " File not found, Creating new....");
             }
             else
             {
+                Console.WriteLine("serializing " + Path.GetFileName(NotificationssettingsPath));
                 NotificationSettings = JsonSerializer.Deserialize<NotificationSettings>(File.ReadAllText(NotificationssettingsPath));
                 NotificationSettings.isDirty = false;
                 if (NotificationSettings.checkver())
@@ -677,9 +707,11 @@ namespace DayZeEditor
             {
                 PartySettings = new PartySettings();
                 needtosave = true;
+                Console.WriteLine(Path.GetFileName(PartySettingsPath) + " File not found, Creating new....");
             }
             else
             {
+                Console.WriteLine("serializing " + Path.GetFileName(PartySettingsPath));
                 PartySettings = JsonSerializer.Deserialize<PartySettings>(File.ReadAllText(PartySettingsPath));
                 PartySettings.isDirty = false;
                 if (PartySettings.checkver())
@@ -693,9 +725,11 @@ namespace DayZeEditor
             {
                 PlayerListSettings = new PlayerListSettings();
                 needtosave = true;
+                Console.WriteLine(Path.GetFileName(PlayerListsettingsPath) + " File not found, Creating new....");
             }
             else
             {
+                Console.WriteLine("serializing " + Path.GetFileName(PlayerListsettingsPath));
                 PlayerListSettings = JsonSerializer.Deserialize<PlayerListSettings>(File.ReadAllText(PlayerListsettingsPath));
                 PlayerListSettings.isDirty = false;
                 if (PlayerListSettings.checkver())
@@ -709,9 +743,11 @@ namespace DayZeEditor
             {
                 RaidSettings = new RaidSettings();
                 needtosave = true;
+                Console.WriteLine(Path.GetFileName(RaidSettingsPath) + " File not found, Creating new....");
             }
             else
             {
+                Console.WriteLine("serializing " + Path.GetFileName(RaidSettingsPath));
                 RaidSettings = JsonSerializer.Deserialize<RaidSettings>(File.ReadAllText(RaidSettingsPath));
                 RaidSettings.isDirty = false;
                 if (RaidSettings.checkver())
@@ -725,9 +761,11 @@ namespace DayZeEditor
             {
                 SafeZoneSettings = new SafeZoneSettings();
                 needtosave = true;
+                Console.WriteLine(Path.GetFileName(SafeZoneSettingspath) + " File not found, Creating new....");
             }
             else
             {
+                Console.WriteLine("serializing " + Path.GetFileName(SafeZoneSettingspath));
                 SafeZoneSettings = JsonSerializer.Deserialize<SafeZoneSettings>(File.ReadAllText(SafeZoneSettingspath));
                 SafeZoneSettings.isDirty = false;
                 if (SafeZoneSettings.checkver())
@@ -741,9 +779,11 @@ namespace DayZeEditor
             {
                 SocialMediaSettings = new SocialMediaSettings();
                 needtosave = true;
+                Console.WriteLine(Path.GetFileName(SocialMediaSettingsPath) + " File not found, Creating new....");
             }
             else
             {
+                Console.WriteLine("serializing " + Path.GetFileName(SocialMediaSettingsPath));
                 SocialMediaSettings = JsonSerializer.Deserialize<SocialMediaSettings>(File.ReadAllText(SocialMediaSettingsPath));
                 SocialMediaSettings.isDirty = false;
                 if (SocialMediaSettings.checkver())
@@ -758,9 +798,11 @@ namespace DayZeEditor
                 SpawnSettings = new SpawnSettings();
                 SpawnSettings.SetStartingWeapons();
                 needtosave = true;
+                Console.WriteLine(Path.GetFileName(SpawnSettingsPath) + " File not found, Creating new....");
             }
             else
             {
+                Console.WriteLine("serializing " + Path.GetFileName(SpawnSettingsPath));
                 SpawnSettings = JsonSerializer.Deserialize<SpawnSettings>(File.ReadAllText(SpawnSettingsPath));
                 SpawnSettings.SetStartingWeapons();
                 SpawnSettings.isDirty = false;
@@ -775,9 +817,11 @@ namespace DayZeEditor
             {
                 TerritorySettings = new TerritorySettings();
                 needtosave = true;
+                Console.WriteLine(Path.GetFileName(TerritorySettingsPath) + " File not found, Creating new....");
             }
             else
             {
+                Console.WriteLine("serializing " + Path.GetFileName(TerritorySettingsPath));
                 TerritorySettings = JsonSerializer.Deserialize<TerritorySettings>(File.ReadAllText(TerritorySettingsPath));
                 TerritorySettings.isDirty = false;
                 if (TerritorySettings.checkver())
@@ -791,9 +835,11 @@ namespace DayZeEditor
             {
                 VehicleSettings = new VehicleSettings();
                 needtosave = true;
+                Console.WriteLine(Path.GetFileName(VehicleSettingsPath) + " File not found, Creating new....");
             }
             else
             {
+                Console.WriteLine("serializing " + Path.GetFileName(VehicleSettingsPath));
                 VehicleSettings = JsonSerializer.Deserialize<VehicleSettings>(File.ReadAllText(VehicleSettingsPath));
                 VehicleSettings.isDirty = false;
                 if (VehicleSettings.checkver())
@@ -6168,6 +6214,8 @@ namespace DayZeEditor
             VehicleSpeedDamageMultiplierNUD.Value = (decimal)VehicleSettings.VehicleSpeedDamageMultiplier;
             CanChangeLockCB.Checked = VehicleSettings.CanChangeLock == 1 ? true : false;
             DesyncInvulnerabilityTimeoutSecondsNUD.Value = VehicleSettings.DesyncInvulnerabilityTimeoutSeconds;
+            VehicleRoadKillDamageMultiplierNUD.Value = VehicleSettings.VehicleRoadKillDamageMultiplier;
+            DamagedEngineStartupChancePercentNUD.Value = VehicleSettings.DamagedEngineStartupChancePercent;
 
             ChangeLockToolsLB.DisplayMember = "DisplayName";
             ChangeLockToolsLB.ValueMember = "Value";
@@ -6355,7 +6403,19 @@ namespace DayZeEditor
             VehicleSettings.DesyncInvulnerabilityTimeoutSeconds = DesyncInvulnerabilityTimeoutSecondsNUD.Value;
             VehicleSettings.isDirty = true;
         }
+        private void VehicleRoadKillDamageMultiplierNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            VehicleSettings.VehicleRoadKillDamageMultiplier = VehicleRoadKillDamageMultiplierNUD.Value;
+            VehicleSettings.isDirty = true;
+        }
 
+        private void DamagedEngineStartupChancePercentNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            VehicleSettings.DamagedEngineStartupChancePercent = DamagedEngineStartupChancePercentNUD.Value;
+            VehicleSettings.isDirty = true;
+        }
 
         #endregion VehicleSettings
 
@@ -6488,6 +6548,8 @@ namespace DayZeEditor
                 }
             }
         }
+
+ 
     }
     public class NullToEmptyGearConverter : JsonConverter<Gear>
     {

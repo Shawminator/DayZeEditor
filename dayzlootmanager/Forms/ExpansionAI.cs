@@ -73,6 +73,7 @@ namespace DayZeEditor
             {
                 try
                 {
+                    Console.WriteLine("serializing " + Path.GetFileName(file.FullName));
                     AILoadouts AILoadouts = JsonSerializer.Deserialize<AILoadouts>(File.ReadAllText(file.FullName));
                     AILoadouts.Filename = file.FullName;
                     AILoadouts.Setname();
@@ -89,9 +90,11 @@ namespace DayZeEditor
             {
                 AISettings = new AISettings();
                 needtosave = true;
+                Console.WriteLine(Path.GetFileName(AISettingsPath) + " File not found, Creating new....");
             }
             else
             {
+                Console.WriteLine("serializing " + Path.GetFileName(AISettingsPath));
                 AISettings = JsonSerializer.Deserialize<AISettings>(File.ReadAllText(AISettingsPath));
                 AISettings.isDirty = false;
                 if (AISettings.checkver())
@@ -107,9 +110,11 @@ namespace DayZeEditor
             {
                 AIPatrolSettings = new AIPatrolSettings();
                 needtosave = true;
+                Console.WriteLine(Path.GetFileName(AIPatrolSettingsPath) + " File not found, Creating new....");
             }
             else
             {
+                Console.WriteLine("serializing " + Path.GetFileName(AIPatrolSettingsPath));
                 AIPatrolSettings = JsonSerializer.Deserialize<AIPatrolSettings>(File.ReadAllText(AIPatrolSettingsPath));
                 AIPatrolSettings.isDirty = false;
                 if (AIPatrolSettings.checkver())
@@ -913,6 +918,7 @@ namespace DayZeEditor
             CrashDespawnTimeNUD.Value = CurrentEventcrashpatrol.DespawnTime;
             CrashMinSpreadRadiusNUD.Value = CurrentEventcrashpatrol.MinSpreadRadius;
             CrashMaxSpreadRadiusNUD.Value = CurrentEventcrashpatrol.MaxSpreadRadius;
+            CrashRespawnTimeNUD.Value = CurrentEventcrashpatrol.RespawnTime;
             CrashChanceNUD.Value = CurrentEventcrashpatrol.Chance;
             CrashCanBeLootedCB.Checked = CurrentEventcrashpatrol.CanBeLooted == 1 ? true : false;
             CrashUnlimitedReloadCB.Checked = CurrentEventcrashpatrol.UnlimitedReload == 1 ? true : false;
@@ -1069,6 +1075,12 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             CurrentEventcrashpatrol.WaypointInterpolation = CrashWaypointInterpolationCB.GetItemText(CrashWaypointInterpolationCB.SelectedItem);
+            AIPatrolSettings.isDirty = true;
+        }
+        private void numericUpDown6_ValueChanged_1(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentEventcrashpatrol.RespawnTime = CrashRespawnTimeNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
         /// <summary>
@@ -1503,5 +1515,7 @@ namespace DayZeEditor
                 }
             }
         }
+
+
     }
 }
