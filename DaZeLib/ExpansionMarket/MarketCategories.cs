@@ -15,7 +15,7 @@ namespace DayZeLib
 
     public class MarketCategories
     {
-        public const int CurrentVersion = 11;
+        public const int CurrentVersion = 12;
         public BindingList<Categories> CatList { get; set; }
         public string MarketCatsPath {get;set;}
 

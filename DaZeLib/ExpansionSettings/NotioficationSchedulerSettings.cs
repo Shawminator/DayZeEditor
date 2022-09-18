@@ -11,11 +11,12 @@ namespace DayZeLib
 
     public class NotificationSchedulerSettings
     {
-        const int CurrentVersion = 1;
+        const int CurrentVersion = 2;
 
         public int m_Version { get; set; }
         public int Enabled { get; set; }
         public int UTC { get; set; }
+        public int UseMissionTime { get; set; }
         public BindingList<Notification> Notifications { get; set; }
 
         [JsonIgnore]

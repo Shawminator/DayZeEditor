@@ -38,6 +38,10 @@ namespace DayZeEditor
             this.darkButton6 = new DarkUI.Controls.DarkButton();
             this.RecipesLB = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.BPCutting_sawCB = new System.Windows.Forms.CheckBox();
+            this.BPDrillCB = new System.Windows.Forms.CheckBox();
+            this.BPGrinderCB = new System.Windows.Forms.CheckBox();
             this.darkButton3 = new DarkUI.Controls.DarkButton();
             this.darkButton20 = new DarkUI.Controls.DarkButton();
             this.CICPDestoryCB = new System.Windows.Forms.CheckBox();
@@ -50,7 +54,6 @@ namespace DayZeEditor
             this.CICPClassnameTB = new System.Windows.Forms.TextBox();
             this.darkLabel5 = new DarkUI.Controls.DarkLabel();
             this.darkLabel4 = new DarkUI.Controls.DarkLabel();
-            this.CIRecipeCategoryTB = new System.Windows.Forms.TextBox();
             this.darkLabel3 = new DarkUI.Controls.DarkLabel();
             this.CIRecipeNameTB = new System.Windows.Forms.TextBox();
             this.darkLabel1 = new DarkUI.Controls.DarkLabel();
@@ -62,9 +65,11 @@ namespace DayZeEditor
             this.darkButton1 = new DarkUI.Controls.DarkButton();
             this.darkButton2 = new DarkUI.Controls.DarkButton();
             this.CICompentsLB = new System.Windows.Forms.ListBox();
+            this.CIRecipeCategoryCB = new System.Windows.Forms.ComboBox();
             this.darkToolStrip21.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CICPChangeHealthNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CICPAmountNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CIresultCountNUD)).BeginInit();
@@ -164,6 +169,8 @@ namespace DayZeEditor
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.CIRecipeCategoryCB);
+            this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.darkButton3);
             this.groupBox2.Controls.Add(this.darkButton20);
             this.groupBox2.Controls.Add(this.CICPDestoryCB);
@@ -176,7 +183,6 @@ namespace DayZeEditor
             this.groupBox2.Controls.Add(this.CICPClassnameTB);
             this.groupBox2.Controls.Add(this.darkLabel5);
             this.groupBox2.Controls.Add(this.darkLabel4);
-            this.groupBox2.Controls.Add(this.CIRecipeCategoryTB);
             this.groupBox2.Controls.Add(this.darkLabel3);
             this.groupBox2.Controls.Add(this.CIRecipeNameTB);
             this.groupBox2.Controls.Add(this.darkLabel1);
@@ -195,6 +201,52 @@ namespace DayZeEditor
             this.groupBox2.TabIndex = 52;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Recipe";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.BPCutting_sawCB);
+            this.groupBox3.Controls.Add(this.BPDrillCB);
+            this.groupBox3.Controls.Add(this.BPGrinderCB);
+            this.groupBox3.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox3.Location = new System.Drawing.Point(7, 419);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(226, 100);
+            this.groupBox3.TabIndex = 242;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Attachments Needed";
+            // 
+            // BPCutting_sawCB
+            // 
+            this.BPCutting_sawCB.AutoSize = true;
+            this.BPCutting_sawCB.Location = new System.Drawing.Point(12, 70);
+            this.BPCutting_sawCB.Name = "BPCutting_sawCB";
+            this.BPCutting_sawCB.Size = new System.Drawing.Size(81, 17);
+            this.BPCutting_sawCB.TabIndex = 2;
+            this.BPCutting_sawCB.Text = "Cutting saw";
+            this.BPCutting_sawCB.UseVisualStyleBackColor = true;
+            this.BPCutting_sawCB.CheckedChanged += new System.EventHandler(this.BPCutting_sawCB_CheckedChanged);
+            // 
+            // BPDrillCB
+            // 
+            this.BPDrillCB.AutoSize = true;
+            this.BPDrillCB.Location = new System.Drawing.Point(12, 47);
+            this.BPDrillCB.Name = "BPDrillCB";
+            this.BPDrillCB.Size = new System.Drawing.Size(43, 17);
+            this.BPDrillCB.TabIndex = 1;
+            this.BPDrillCB.Text = "Drill";
+            this.BPDrillCB.UseVisualStyleBackColor = true;
+            this.BPDrillCB.CheckedChanged += new System.EventHandler(this.BPDrillCB_CheckedChanged);
+            // 
+            // BPGrinderCB
+            // 
+            this.BPGrinderCB.AutoSize = true;
+            this.BPGrinderCB.Location = new System.Drawing.Point(12, 24);
+            this.BPGrinderCB.Name = "BPGrinderCB";
+            this.BPGrinderCB.Size = new System.Drawing.Size(60, 17);
+            this.BPGrinderCB.TabIndex = 0;
+            this.BPGrinderCB.Text = "Grinder";
+            this.BPGrinderCB.UseVisualStyleBackColor = true;
+            this.BPGrinderCB.CheckedChanged += new System.EventHandler(this.BPGrinderCB_CheckedChanged);
             // 
             // darkButton3
             // 
@@ -332,16 +384,6 @@ namespace DayZeEditor
             this.darkLabel4.TabIndex = 107;
             this.darkLabel4.Text = "Recipe Cat";
             // 
-            // CIRecipeCategoryTB
-            // 
-            this.CIRecipeCategoryTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.CIRecipeCategoryTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CIRecipeCategoryTB.Location = new System.Drawing.Point(87, 127);
-            this.CIRecipeCategoryTB.Name = "CIRecipeCategoryTB";
-            this.CIRecipeCategoryTB.Size = new System.Drawing.Size(220, 20);
-            this.CIRecipeCategoryTB.TabIndex = 106;
-            this.CIRecipeCategoryTB.TextChanged += new System.EventHandler(this.CIRecipeCategoryTB_TextChanged);
-            // 
             // darkLabel3
             // 
             this.darkLabel3.AutoSize = true;
@@ -464,6 +506,24 @@ namespace DayZeEditor
             this.CICompentsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.CICompentsLB.SelectedIndexChanged += new System.EventHandler(this.CICompentsLB_SelectedIndexChanged);
             // 
+            // CIRecipeCategoryCB
+            // 
+            this.CIRecipeCategoryCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CIRecipeCategoryCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CIRecipeCategoryCB.FormattingEnabled = true;
+            this.CIRecipeCategoryCB.Items.AddRange(new object[] {
+            "",
+            "RHToolsDoc",
+            "RHMedicalDoc",
+            "RHCarDoc",
+            "RHWeaponsDoc",
+            "RHSecretDoc"});
+            this.CIRecipeCategoryCB.Location = new System.Drawing.Point(87, 130);
+            this.CIRecipeCategoryCB.Name = "CIRecipeCategoryCB";
+            this.CIRecipeCategoryCB.Size = new System.Drawing.Size(219, 21);
+            this.CIRecipeCategoryCB.TabIndex = 243;
+            this.CIRecipeCategoryCB.SelectedIndexChanged += new System.EventHandler(this.CIRecipeCategoryCB_SelectedIndexChanged);
+            // 
             // AdvancedWorkBenchManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -482,6 +542,8 @@ namespace DayZeEditor
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CICPChangeHealthNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CICPAmountNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CIresultCountNUD)).EndInit();
@@ -506,7 +568,6 @@ namespace DayZeEditor
         private System.Windows.Forms.TextBox CIresultTB;
         private DarkUI.Controls.DarkLabel darkLabel5;
         private DarkUI.Controls.DarkLabel darkLabel4;
-        private System.Windows.Forms.TextBox CIRecipeCategoryTB;
         private DarkUI.Controls.DarkLabel darkLabel3;
         private System.Windows.Forms.TextBox CIRecipeNameTB;
         private DarkUI.Controls.DarkLabel darkLabel1;
@@ -523,5 +584,10 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox CICPDestoryCB;
         private DarkUI.Controls.DarkButton darkButton3;
         private DarkUI.Controls.DarkButton darkButton20;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.CheckBox BPCutting_sawCB;
+        private System.Windows.Forms.CheckBox BPDrillCB;
+        private System.Windows.Forms.CheckBox BPGrinderCB;
+        private System.Windows.Forms.ComboBox CIRecipeCategoryCB;
     }
 }

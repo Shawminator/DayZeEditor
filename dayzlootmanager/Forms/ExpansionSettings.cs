@@ -4157,6 +4157,7 @@ namespace DayZeEditor
             useraction = false;
             SchedulerEnabledCB.Checked = NotificationSchedulerSettings.Enabled == 1 ? true : false;
             UTCTimeCB.Checked = NotificationSchedulerSettings.UTC == 1 ? true : false;
+            UseMissionTimeCB.Checked = NotificationSchedulerSettings.UseMissionTime == 1 ? true : false;
 
             SchedulerNotificaionLB.DisplayMember = "DisplayName";
             SchedulerNotificaionLB.ValueMember = "Value";
@@ -4200,6 +4201,12 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             NotificationSchedulerSettings.UTC = UTCTimeCB.Checked == true ? 1 : 0;
+            NotificationSchedulerSettings.isDirty = true;
+        }
+        private void UseMissionTimeCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            NotificationSchedulerSettings.UseMissionTime = UseMissionTimeCB.Checked == true ? 1 : 0;
             NotificationSchedulerSettings.isDirty = true;
         }
         private void SchedulerEnabledCB_CheckedChanged(object sender, EventArgs e)
@@ -6549,7 +6556,7 @@ namespace DayZeEditor
             }
         }
 
- 
+
     }
     public class NullToEmptyGearConverter : JsonConverter<Gear>
     {

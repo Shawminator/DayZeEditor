@@ -532,6 +532,7 @@ namespace DayZeEditor
             this.darkButton4.Size = new System.Drawing.Size(87, 23);
             this.darkButton4.TabIndex = 153;
             this.darkButton4.Text = "Remove";
+            this.darkButton4.Click += new System.EventHandler(this.darkButton4_Click);
             // 
             // darkButton2
             // 

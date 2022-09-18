@@ -154,7 +154,10 @@ namespace DayZeEditor
             CIresultTB.Text = CurrentCraftItem.Result;
             CIresultCountNUD.Value = CurrentCraftItem.ResultCount;
             CICraftTypeTB.Text = CurrentCraftItem.CraftType;
-            CIRecipeCategoryTB.Text = CurrentCraftItem.RecipeCategory;
+            CIRecipeCategoryCB.SelectedIndex = CIRecipeCategoryCB.FindStringExact(CurrentCraftItem.RecipeCategory);
+            BPDrillCB.Checked = CurrentCraftItem.AttachmentsNeed.Contains("BPDrill");
+            BPCutting_sawCB.Checked = CurrentCraftItem.AttachmentsNeed.Contains("BPCutting_saw");
+            BPGrinderCB.Checked = CurrentCraftItem.AttachmentsNeed.Contains("BPGrinder");
 
             CICompentsLB.DisplayMember = "DisplayName";
             CICompentsLB.ValueMember = "Value";
@@ -244,7 +247,7 @@ namespace DayZeEditor
             }
             AdvancedWorkBenchConfig.isDirty = true;
         }
-        private void CIRecipeCategoryTB_TextChanged(object sender, EventArgs e)
+        private void CIRecipeCategoryCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             if (RecipesLB.SelectedItems.Count > 0)
@@ -252,7 +255,7 @@ namespace DayZeEditor
                 foreach (var item in RecipesLB.SelectedItems)
                 {
                     Craftitem citem = item as Craftitem;
-                    citem.RecipeCategory = CIRecipeCategoryTB.Text;
+                    citem.RecipeCategory = CIRecipeCategoryCB.GetItemText(CIRecipeCategoryCB.SelectedItem);
                 }
             }
             AdvancedWorkBenchConfig.isDirty = true;
@@ -320,6 +323,51 @@ namespace DayZeEditor
                     Craftcomponent citem = item as Craftcomponent;
                     citem.Changehealth = CICPChangeHealthNUD.Value;
                 }
+            }
+            AdvancedWorkBenchConfig.isDirty = true;
+        }
+        private void BPGrinderCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if (BPGrinderCB.Checked)
+            {
+                if (!CurrentCraftItem.AttachmentsNeed.Contains("BPGrinder"))
+                    CurrentCraftItem.AttachmentsNeed.Add("BPGrinder");
+            }
+            else
+            {
+                if(CurrentCraftItem.AttachmentsNeed.Contains("BPGrinder"))
+                    CurrentCraftItem.AttachmentsNeed.Remove("BPGrinder");
+            }
+            AdvancedWorkBenchConfig.isDirty = true;
+        }
+        private void BPDrillCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if (BPDrillCB.Checked)
+            {
+                if (!CurrentCraftItem.AttachmentsNeed.Contains("BPDrill"))
+                    CurrentCraftItem.AttachmentsNeed.Add("BPDrill");
+            }
+            else
+            {
+                if (CurrentCraftItem.AttachmentsNeed.Contains("BPDrill"))
+                    CurrentCraftItem.AttachmentsNeed.Remove("BPDrill");
+            }
+            AdvancedWorkBenchConfig.isDirty = true;
+        }
+        private void BPCutting_sawCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if (BPCutting_sawCB.Checked)
+            {
+                if (!CurrentCraftItem.AttachmentsNeed.Contains("BPCutting_saw"))
+                    CurrentCraftItem.AttachmentsNeed.Add("BPCutting_saw");
+            }
+            else
+            {
+                if (CurrentCraftItem.AttachmentsNeed.Contains("BPCutting_saw"))
+                    CurrentCraftItem.AttachmentsNeed.Remove("BPCutting_saw");
             }
             AdvancedWorkBenchConfig.isDirty = true;
         }
@@ -414,5 +462,7 @@ namespace DayZeEditor
         {
             Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Advanced_Workbench");
         }
+
+
     }
 }

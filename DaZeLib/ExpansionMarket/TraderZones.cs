@@ -151,7 +151,7 @@ namespace DayZeLib
             {
                 string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
                 Directory.CreateDirectory(ZonesPath + "\\Backup\\" + SaveTime);
-                File.Copy(Filename, ZonesPath + "\\Backup\\" + SaveTime + "\\" +Filename + ".bak", true);
+                File.Copy(fullfilename, ZonesPath + "\\Backup\\" + SaveTime + "\\" +Filename + ".bak", true);
                 File.Delete(fullfilename);
             }
         }

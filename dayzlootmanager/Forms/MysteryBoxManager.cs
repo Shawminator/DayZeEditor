@@ -156,6 +156,41 @@ namespace DayZeEditor
         private void darkButton6_Click(object sender, EventArgs e)
         {
             if (!useraction) return;
+            if (PossibleBoxPositionsLB.SelectedItems.Count > 0)
+            {
+                List<Possibleboxposition> removeitems = new List<Possibleboxposition>();
+                foreach (var item in PossibleBoxPositionsLB.SelectedItems)
+                {
+                    Possibleboxposition citem = item as Possibleboxposition;
+                    removeitems.Add(citem);
+                }
+                foreach (Possibleboxposition item in removeitems)
+                {
+                    MysteryBoxConfig.PossibleBoxPositions.Remove(item);
+                }
+                MysteryBoxConfig.isDirty = true;
+                if (PossibleBoxPositionsLB.Items.Count == 0)
+                    PossibleBoxPositionsLB.SelectedIndex = -1;
+                else
+                    PossibleBoxPositionsLB.SelectedIndex = 0;
+
+            }
+        }
+        private void darkButton3_Click(object sender, EventArgs e)
+        {
+            Possibleboxitem newitem = new Possibleboxitem()
+            {
+                Item = "New Item",
+                Mag = "",
+                Attachments = new BindingList<string>()
+            };
+            MysteryBoxConfig.PossibleBoxItems.Add(newitem);
+            PossibleBoxItemsLB.SelectedIndex = -1;
+            PossibleBoxItemsLB.SelectedIndex = PossibleBoxItemsLB.Items.Count - 1;
+        }
+        private void darkButton4_Click(object sender, EventArgs e)
+        {
+            if (!useraction) return;
             if (PossibleBoxItemsLB.SelectedItems.Count > 0)
             {
                 List<Possibleboxitem> removeitems = new List<Possibleboxitem>();
@@ -173,20 +208,7 @@ namespace DayZeEditor
                     PossibleBoxItemsLB.SelectedIndex = -1;
                 else
                     PossibleBoxItemsLB.SelectedIndex = 0;
-
             }
-        }
-        private void darkButton3_Click(object sender, EventArgs e)
-        {
-            Possibleboxitem newitem = new Possibleboxitem()
-            {
-                Item = "New Item",
-                Mag = "",
-                Attachments = new BindingList<string>()
-            };
-            MysteryBoxConfig.PossibleBoxItems.Add(newitem);
-            PossibleBoxItemsLB.SelectedIndex = -1;
-            PossibleBoxItemsLB.SelectedIndex = PossibleBoxItemsLB.Items.Count - 1;
         }
         private void PossibleBoxItemsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -401,5 +423,6 @@ namespace DayZeEditor
             currentPossibleboxposition.Orientation[2] = (float)PossibleBoxPositionsOZNUD.Value;
             MysteryBoxConfig.isDirty = true;
         }
+
     }
 }

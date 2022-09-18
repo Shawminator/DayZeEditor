@@ -3885,13 +3885,13 @@ namespace DayZeEditor
             this.MaxRequiredHumanityNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.MaxRequiredHumanityNUD.Location = new System.Drawing.Point(363, 122);
             this.MaxRequiredHumanityNUD.Maximum = new decimal(new int[] {
-            9999,
-            0,
+            1410065407,
+            2,
             0,
             0});
             this.MaxRequiredHumanityNUD.Minimum = new decimal(new int[] {
-            9999,
-            0,
+            1410065407,
+            2,
             0,
             -2147483648});
             this.MaxRequiredHumanityNUD.Name = "MaxRequiredHumanityNUD";
@@ -3916,13 +3916,13 @@ namespace DayZeEditor
             this.MinRequiredHumanityNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.MinRequiredHumanityNUD.Location = new System.Drawing.Point(363, 96);
             this.MinRequiredHumanityNUD.Maximum = new decimal(new int[] {
-            9999,
-            0,
+            1410065407,
+            2,
             0,
             0});
             this.MinRequiredHumanityNUD.Minimum = new decimal(new int[] {
-            9999,
-            0,
+            1410065407,
+            2,
             0,
             -2147483648});
             this.MinRequiredHumanityNUD.Name = "MinRequiredHumanityNUD";
