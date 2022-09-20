@@ -38,6 +38,7 @@ namespace DayZeEditor
             this.darkButton6 = new DarkUI.Controls.DarkButton();
             this.RecipesLB = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.CIRecipeCategoryCB = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.BPCutting_sawCB = new System.Windows.Forms.CheckBox();
             this.BPDrillCB = new System.Windows.Forms.CheckBox();
@@ -57,7 +58,6 @@ namespace DayZeEditor
             this.darkLabel3 = new DarkUI.Controls.DarkLabel();
             this.CIRecipeNameTB = new System.Windows.Forms.TextBox();
             this.darkLabel1 = new DarkUI.Controls.DarkLabel();
-            this.CICraftTypeTB = new System.Windows.Forms.TextBox();
             this.CIresultCountNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel8 = new DarkUI.Controls.DarkLabel();
             this.darkLabel2 = new DarkUI.Controls.DarkLabel();
@@ -65,7 +65,7 @@ namespace DayZeEditor
             this.darkButton1 = new DarkUI.Controls.DarkButton();
             this.darkButton2 = new DarkUI.Controls.DarkButton();
             this.CICompentsLB = new System.Windows.Forms.ListBox();
-            this.CIRecipeCategoryCB = new System.Windows.Forms.ComboBox();
+            this.CIRecipetypeCB = new System.Windows.Forms.ComboBox();
             this.darkToolStrip21.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -169,6 +169,7 @@ namespace DayZeEditor
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.CIRecipetypeCB);
             this.groupBox2.Controls.Add(this.CIRecipeCategoryCB);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.darkButton3);
@@ -186,7 +187,6 @@ namespace DayZeEditor
             this.groupBox2.Controls.Add(this.darkLabel3);
             this.groupBox2.Controls.Add(this.CIRecipeNameTB);
             this.groupBox2.Controls.Add(this.darkLabel1);
-            this.groupBox2.Controls.Add(this.CICraftTypeTB);
             this.groupBox2.Controls.Add(this.CIresultCountNUD);
             this.groupBox2.Controls.Add(this.darkLabel8);
             this.groupBox2.Controls.Add(this.darkLabel2);
@@ -201,6 +201,24 @@ namespace DayZeEditor
             this.groupBox2.TabIndex = 52;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Recipe";
+            // 
+            // CIRecipeCategoryCB
+            // 
+            this.CIRecipeCategoryCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CIRecipeCategoryCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CIRecipeCategoryCB.FormattingEnabled = true;
+            this.CIRecipeCategoryCB.Items.AddRange(new object[] {
+            "None",
+            "RHToolsManual",
+            "RHSurvivalManual",
+            "RHAmmoManual",
+            "RHWeaponsManual",
+            "RHDeadlySkillsManual"});
+            this.CIRecipeCategoryCB.Location = new System.Drawing.Point(87, 130);
+            this.CIRecipeCategoryCB.Name = "CIRecipeCategoryCB";
+            this.CIRecipeCategoryCB.Size = new System.Drawing.Size(219, 21);
+            this.CIRecipeCategoryCB.TabIndex = 243;
+            this.CIRecipeCategoryCB.SelectedIndexChanged += new System.EventHandler(this.CIRecipeCategoryCB_SelectedIndexChanged);
             // 
             // groupBox3
             // 
@@ -414,16 +432,6 @@ namespace DayZeEditor
             this.darkLabel1.TabIndex = 103;
             this.darkLabel1.Text = "Craft Type";
             // 
-            // CICraftTypeTB
-            // 
-            this.CICraftTypeTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.CICraftTypeTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CICraftTypeTB.Location = new System.Drawing.Point(87, 101);
-            this.CICraftTypeTB.Name = "CICraftTypeTB";
-            this.CICraftTypeTB.Size = new System.Drawing.Size(220, 20);
-            this.CICraftTypeTB.TabIndex = 102;
-            this.CICraftTypeTB.TextChanged += new System.EventHandler(this.CICraftTypeTB_TextChanged);
-            // 
             // CIresultCountNUD
             // 
             this.CIresultCountNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
@@ -506,23 +514,20 @@ namespace DayZeEditor
             this.CICompentsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.CICompentsLB.SelectedIndexChanged += new System.EventHandler(this.CICompentsLB_SelectedIndexChanged);
             // 
-            // CIRecipeCategoryCB
+            // CIRecipetypeCB
             // 
-            this.CIRecipeCategoryCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.CIRecipeCategoryCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CIRecipeCategoryCB.FormattingEnabled = true;
-            this.CIRecipeCategoryCB.Items.AddRange(new object[] {
-            "",
-            "RHToolsDoc",
-            "RHMedicalDoc",
-            "RHCarDoc",
-            "RHWeaponsDoc",
-            "RHSecretDoc"});
-            this.CIRecipeCategoryCB.Location = new System.Drawing.Point(87, 130);
-            this.CIRecipeCategoryCB.Name = "CIRecipeCategoryCB";
-            this.CIRecipeCategoryCB.Size = new System.Drawing.Size(219, 21);
-            this.CIRecipeCategoryCB.TabIndex = 243;
-            this.CIRecipeCategoryCB.SelectedIndexChanged += new System.EventHandler(this.CIRecipeCategoryCB_SelectedIndexChanged);
+            this.CIRecipetypeCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CIRecipetypeCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CIRecipetypeCB.FormattingEnabled = true;
+            this.CIRecipetypeCB.Items.AddRange(new object[] {
+            "Craft",
+            "Paint",
+            "Repair"});
+            this.CIRecipetypeCB.Location = new System.Drawing.Point(87, 101);
+            this.CIRecipetypeCB.Name = "CIRecipetypeCB";
+            this.CIRecipetypeCB.Size = new System.Drawing.Size(219, 21);
+            this.CIRecipetypeCB.TabIndex = 244;
+            this.CIRecipetypeCB.SelectedIndexChanged += new System.EventHandler(this.CIRecipetypeCB_SelectedIndexChanged);
             // 
             // AdvancedWorkBenchManager
             // 
@@ -571,7 +576,6 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkLabel darkLabel3;
         private System.Windows.Forms.TextBox CIRecipeNameTB;
         private DarkUI.Controls.DarkLabel darkLabel1;
-        private System.Windows.Forms.TextBox CICraftTypeTB;
         private System.Windows.Forms.NumericUpDown CIresultCountNUD;
         private DarkUI.Controls.DarkLabel darkLabel8;
         private System.Windows.Forms.NumericUpDown CICPChangeHealthNUD;
@@ -589,5 +593,6 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox BPDrillCB;
         private System.Windows.Forms.CheckBox BPGrinderCB;
         private System.Windows.Forms.ComboBox CIRecipeCategoryCB;
+        private System.Windows.Forms.ComboBox CIRecipetypeCB;
     }
 }

@@ -996,7 +996,7 @@ namespace DayZeEditor
             this.DefaultMaxCurrencyNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.DefaultMaxCurrencyNUD.Location = new System.Drawing.Point(146, 117);
             this.DefaultMaxCurrencyNUD.Maximum = new decimal(new int[] {
-            100000000,
+            1000000000,
             0,
             0,
             0});

@@ -912,6 +912,8 @@ namespace DayZeEditor
             CrashBehaviourCB.SelectedIndex = CrashBehaviourCB.FindStringExact(CurrentEventcrashpatrol.Behaviour);
             CrashSpeedCB.SelectedIndex = CrashSpeedCB.FindStringExact(CurrentEventcrashpatrol.Speed);
             CrashUnderThreatSpeedCB.SelectedIndex = CrashUnderThreatSpeedCB.FindStringExact(CurrentEventcrashpatrol.UnderThreatSpeed);
+            CrashAccuracyMinNud.Value = CurrentEventcrashpatrol.AccuracyMin;
+            CrashAccuracyMaxNUD.Value = CurrentEventcrashpatrol.AccuracyMax;
             CrashMinDistRadiusNUD.Value = CurrentEventcrashpatrol.MinDistRadius;
             CrashMaxDistRadiusNUD.Value = CurrentEventcrashpatrol.MaxDistRadius;
             CrashDespawnRadiusNUD.Value = CurrentEventcrashpatrol.DespawnRadius;

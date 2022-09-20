@@ -153,8 +153,11 @@ namespace DayZeEditor
             CIRecipeNameTB.Text = CurrentCraftItem.RecipeName;
             CIresultTB.Text = CurrentCraftItem.Result;
             CIresultCountNUD.Value = CurrentCraftItem.ResultCount;
-            CICraftTypeTB.Text = CurrentCraftItem.CraftType;
-            CIRecipeCategoryCB.SelectedIndex = CIRecipeCategoryCB.FindStringExact(CurrentCraftItem.RecipeCategory);
+            CIRecipeCategoryCB.SelectedIndex = CIRecipeCategoryCB.FindStringExact(CurrentCraftItem.CraftType);
+            if(CurrentCraftItem.RecipeCategory == "")
+                CIRecipeCategoryCB.SelectedIndex = CIRecipeCategoryCB.FindStringExact("None");
+            else
+                CIRecipeCategoryCB.SelectedIndex = CIRecipeCategoryCB.FindStringExact(CurrentCraftItem.RecipeCategory);
             BPDrillCB.Checked = CurrentCraftItem.AttachmentsNeed.Contains("BPDrill");
             BPCutting_sawCB.Checked = CurrentCraftItem.AttachmentsNeed.Contains("BPCutting_saw");
             BPGrinderCB.Checked = CurrentCraftItem.AttachmentsNeed.Contains("BPGrinder");
@@ -234,7 +237,7 @@ namespace DayZeEditor
             CurrentCraftItem.ResultCount = (int)CIresultCountNUD.Value;
             AdvancedWorkBenchConfig.isDirty = true;
         }
-        private void CICraftTypeTB_TextChanged(object sender, EventArgs e)
+        private void CIRecipetypeCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             if (RecipesLB.SelectedItems.Count > 0)
@@ -242,7 +245,7 @@ namespace DayZeEditor
                 foreach (var item in RecipesLB.SelectedItems)
                 {
                     Craftitem citem = item as Craftitem;
-                    citem.CraftType = CICraftTypeTB.Text;
+                    citem.CraftType = CIRecipetypeCB.GetItemText(CIRecipetypeCB.SelectedItem);
                 }
             }
             AdvancedWorkBenchConfig.isDirty = true;
@@ -255,7 +258,11 @@ namespace DayZeEditor
                 foreach (var item in RecipesLB.SelectedItems)
                 {
                     Craftitem citem = item as Craftitem;
-                    citem.RecipeCategory = CIRecipeCategoryCB.GetItemText(CIRecipeCategoryCB.SelectedItem);
+                    string text = CIRecipeCategoryCB.GetItemText(CIRecipeCategoryCB.SelectedItem);
+                    if (text == "None")
+                        citem.RecipeCategory = "";
+                    else
+                        citem.RecipeCategory = text;
                 }
             }
             AdvancedWorkBenchConfig.isDirty = true;
