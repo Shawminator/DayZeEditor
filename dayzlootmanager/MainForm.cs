@@ -52,6 +52,11 @@ namespace DayZeEditor
         {
             if(Projects.ShowChangeLog)
             {
+                var form = Application.OpenForms["SplashForm"];
+                if (form != null)
+                {
+                    form.Invoke(new Action(() => { form.Close(); }));
+                }
                 string file = File.ReadAllText("Update.clog");
                 ChangeLog cl = new ChangeLog();
                 cl.Changelog = file;
@@ -89,7 +94,11 @@ namespace DayZeEditor
             CultureInfo.DefaultThreadCurrentCulture = culture;
             CultureInfo.DefaultThreadCurrentUICulture = culture;
             TitleLabel.Text = "DayZeEditor " + VersionNumber + " by Shawminator";
-            CheckForUpdate();
+            if(CheckForUpdate())
+            {
+                Application.Exit();
+                return;
+            }
 
 
             if (File.Exists(ProjectsJson))
@@ -153,7 +162,7 @@ namespace DayZeEditor
             CheckChangeLog();
         }
 
-        private void CheckForUpdate()
+        private bool CheckForUpdate()
         {
             Console.WriteLine("Checking GitHub For Newest Release.....");
             GitHub info = Build();
@@ -184,12 +193,14 @@ namespace DayZeEditor
                     Projects.SaveProject(false, false);
                 }
                 System.Diagnostics.Process.Start("Updater.exe", zipfile);
-                Application.Exit();
+                return true;
             }
             else if (result == 0)
             {
                 Console.WriteLine("Application Upto Date....");
+                return false;
             }
+            return false;
         }
 
         public GitHub Build()
