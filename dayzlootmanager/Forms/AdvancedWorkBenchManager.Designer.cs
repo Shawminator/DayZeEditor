@@ -38,6 +38,7 @@ namespace DayZeEditor
             this.darkButton6 = new DarkUI.Controls.DarkButton();
             this.RecipesLB = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.CIRecipetypeCB = new System.Windows.Forms.ComboBox();
             this.CIRecipeCategoryCB = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.BPCutting_sawCB = new System.Windows.Forms.CheckBox();
@@ -65,7 +66,6 @@ namespace DayZeEditor
             this.darkButton1 = new DarkUI.Controls.DarkButton();
             this.darkButton2 = new DarkUI.Controls.DarkButton();
             this.CICompentsLB = new System.Windows.Forms.ListBox();
-            this.CIRecipetypeCB = new System.Windows.Forms.ComboBox();
             this.darkToolStrip21.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -201,6 +201,21 @@ namespace DayZeEditor
             this.groupBox2.TabIndex = 52;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Recipe";
+            // 
+            // CIRecipetypeCB
+            // 
+            this.CIRecipetypeCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CIRecipetypeCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CIRecipetypeCB.FormattingEnabled = true;
+            this.CIRecipetypeCB.Items.AddRange(new object[] {
+            "craft",
+            "paint",
+            "repair"});
+            this.CIRecipetypeCB.Location = new System.Drawing.Point(87, 101);
+            this.CIRecipetypeCB.Name = "CIRecipetypeCB";
+            this.CIRecipetypeCB.Size = new System.Drawing.Size(219, 21);
+            this.CIRecipetypeCB.TabIndex = 244;
+            this.CIRecipetypeCB.SelectedIndexChanged += new System.EventHandler(this.CIRecipetypeCB_SelectedIndexChanged);
             // 
             // CIRecipeCategoryCB
             // 
@@ -513,21 +528,6 @@ namespace DayZeEditor
             this.CICompentsLB.TabIndex = 92;
             this.CICompentsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.CICompentsLB.SelectedIndexChanged += new System.EventHandler(this.CICompentsLB_SelectedIndexChanged);
-            // 
-            // CIRecipetypeCB
-            // 
-            this.CIRecipetypeCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.CIRecipetypeCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CIRecipetypeCB.FormattingEnabled = true;
-            this.CIRecipetypeCB.Items.AddRange(new object[] {
-            "Craft",
-            "Paint",
-            "Repair"});
-            this.CIRecipetypeCB.Location = new System.Drawing.Point(87, 101);
-            this.CIRecipetypeCB.Name = "CIRecipetypeCB";
-            this.CIRecipetypeCB.Size = new System.Drawing.Size(219, 21);
-            this.CIRecipetypeCB.TabIndex = 244;
-            this.CIRecipetypeCB.SelectedIndexChanged += new System.EventHandler(this.CIRecipetypeCB_SelectedIndexChanged);
             // 
             // AdvancedWorkBenchManager
             // 

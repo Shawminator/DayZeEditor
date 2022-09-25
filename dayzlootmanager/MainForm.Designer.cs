@@ -53,12 +53,14 @@ namespace DayZeEditor
             this.ExpansionAIButton = new System.Windows.Forms.ToolStripButton();
             this.ExpansionQuestsButton = new System.Windows.Forms.ToolStripButton();
             this.HelicrashManagerButton = new System.Windows.Forms.ToolStripButton();
+            this.LootPoolManagerButton = new System.Windows.Forms.ToolStripButton();
             this.LootchestButton = new System.Windows.Forms.ToolStripButton();
             this.KOTHManagerButton = new System.Windows.Forms.ToolStripButton();
             this.BBPManagerButton = new System.Windows.Forms.ToolStripButton();
             this.AbandonedVehicleRemoverManagerButton = new System.Windows.Forms.ToolStripButton();
             this.BreachingChargeManagerButton = new System.Windows.Forms.ToolStripButton();
             this.KOSzoneManagerButton = new System.Windows.Forms.ToolStripButton();
+            this.MysteryBoxButton = new System.Windows.Forms.ToolStripButton();
             this.AdvancedWorkbenchButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.HidePBox = new System.Windows.Forms.PictureBox();
@@ -68,7 +70,7 @@ namespace DayZeEditor
             this.darkStatusStrip1 = new DarkUI.Controls.DarkStatusStrip();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.MysteryBoxButton = new System.Windows.Forms.ToolStripButton();
+            this.RHLootBoxManagerButton = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.SlidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Slidelabel)).BeginInit();
@@ -194,6 +196,8 @@ namespace DayZeEditor
             this.ExpansionAIButton,
             this.ExpansionQuestsButton,
             this.HelicrashManagerButton,
+            this.LootPoolManagerButton,
+            this.RHLootBoxManagerButton,
             this.LootchestButton,
             this.KOTHManagerButton,
             this.BBPManagerButton,
@@ -341,6 +345,18 @@ namespace DayZeEditor
             this.HelicrashManagerButton.Visible = false;
             this.HelicrashManagerButton.Click += new System.EventHandler(this.HelicrashManagerButton_Click);
             // 
+            // LootPoolManagerButton
+            // 
+            this.LootPoolManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.LootPoolManagerButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.LootPoolManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("LootPoolManagerButton.Image")));
+            this.LootPoolManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.LootPoolManagerButton.Name = "LootPoolManagerButton";
+            this.LootPoolManagerButton.Size = new System.Drawing.Size(103, 19);
+            this.LootPoolManagerButton.Text = "Loot Pool Manager";
+            this.LootPoolManagerButton.Visible = false;
+            this.LootPoolManagerButton.Click += new System.EventHandler(this.LootPoolManagerButton_Click);
+            // 
             // LootchestButton
             // 
             this.LootchestButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -412,6 +428,18 @@ namespace DayZeEditor
             this.KOSzoneManagerButton.Text = "KOS Zone";
             this.KOSzoneManagerButton.Visible = false;
             this.KOSzoneManagerButton.Click += new System.EventHandler(this.KOSzoneManagerButton_Click);
+            // 
+            // MysteryBoxButton
+            // 
+            this.MysteryBoxButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.MysteryBoxButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.MysteryBoxButton.Image = ((System.Drawing.Image)(resources.GetObject("MysteryBoxButton.Image")));
+            this.MysteryBoxButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MysteryBoxButton.Name = "MysteryBoxButton";
+            this.MysteryBoxButton.Size = new System.Drawing.Size(103, 19);
+            this.MysteryBoxButton.Text = "Mystery Box";
+            this.MysteryBoxButton.Visible = false;
+            this.MysteryBoxButton.Click += new System.EventHandler(this.MysteryBoxButton_Click);
             // 
             // AdvancedWorkbenchButton
             // 
@@ -510,17 +538,17 @@ namespace DayZeEditor
             this.panel2.Size = new System.Drawing.Size(25, 25);
             this.panel2.TabIndex = 45;
             // 
-            // MysteryBoxButton
+            // RHLootBoxManagerButton
             // 
-            this.MysteryBoxButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.MysteryBoxButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.MysteryBoxButton.Image = ((System.Drawing.Image)(resources.GetObject("MysteryBoxButton.Image")));
-            this.MysteryBoxButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MysteryBoxButton.Name = "MysteryBoxButton";
-            this.MysteryBoxButton.Size = new System.Drawing.Size(103, 19);
-            this.MysteryBoxButton.Text = "Mystery Box";
-            this.MysteryBoxButton.Visible = false;
-            this.MysteryBoxButton.Click += new System.EventHandler(this.MysteryBoxButton_Click);
+            this.RHLootBoxManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.RHLootBoxManagerButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.RHLootBoxManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("RHLootBoxManagerButton.Image")));
+            this.RHLootBoxManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.RHLootBoxManagerButton.Name = "RHLootBoxManagerButton";
+            this.RHLootBoxManagerButton.Size = new System.Drawing.Size(103, 19);
+            this.RHLootBoxManagerButton.Text = "LootBox Manager";
+            this.RHLootBoxManagerButton.Visible = false;
+            this.RHLootBoxManagerButton.Click += new System.EventHandler(this.RHLootBoxManagerButton_Click);
             // 
             // MainForm
             // 
@@ -593,6 +621,8 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton BreachingChargeManagerButton;
         private System.Windows.Forms.ToolStripButton AdvancedWorkbenchButton;
         private System.Windows.Forms.ToolStripButton MysteryBoxButton;
+        private System.Windows.Forms.ToolStripButton LootPoolManagerButton;
+        private System.Windows.Forms.ToolStripButton RHLootBoxManagerButton;
     }
 }
 

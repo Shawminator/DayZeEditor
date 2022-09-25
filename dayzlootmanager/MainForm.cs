@@ -295,6 +295,17 @@ namespace DayZeEditor
                 else
                     LootchestButton.Visible = false;
 
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\LootPool\\LootPoolConfig.json"))
+                    LootPoolManagerButton.Visible = true;
+                else
+                    LootPoolManagerButton.Visible = false;
+
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\RH_LootBox\\RHLootBoxConfig.json") &&
+                    File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\LootPool\\LootPoolConfig.json"))
+                    RHLootBoxManagerButton.Visible = true;
+                else
+                    RHLootBoxManagerButton.Visible = false;
+
                 if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\HeliCrashMissions\\Helicrash.json"))
                     HelicrashManagerButton.Visible = true;
                 else
@@ -599,6 +610,56 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
+        private void RHLootBoxManagerButton_Click(object sender, EventArgs e)
+        {
+            RHLootBoxManager _TM = Application.OpenForms["RHLootBoxManager"] as RHLootBoxManager;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new RHLootBoxManager
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+                };
+                _TM.Show();
+                Console.WriteLine("loading Loot Pool manager....");
+            }
+            timer1.Start();
+        }
+        private void LootPoolManagerButton_Click(object sender, EventArgs e)
+        {
+            LootPoolManager _TM = Application.OpenForms["LootPoolManager"] as LootPoolManager;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new LootPoolManager
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+                };
+                _TM.Show();
+                Console.WriteLine("loading Loot Pool manager....");
+            }
+            timer1.Start();
+        }
         private void HelicrashManagerButton_Click(object sender, EventArgs e)
         {
 
@@ -816,5 +877,7 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
+
+
     }
 }

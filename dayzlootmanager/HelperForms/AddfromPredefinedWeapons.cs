@@ -14,6 +14,7 @@ namespace DayZeEditor
 {
     public partial class AddfromPredefinedWeapons : DarkForm
     {
+        
         private void listBox_DrawItem(object sender, DrawItemEventArgs e)
         {
             if (e.Index < 0) return;
@@ -34,13 +35,21 @@ namespace DayZeEditor
         }
 
         public BindingList<LCPredefinedWeapons> LCPredefinedWeapons { get; set; }
+        public BindingList<Rhlpdefinedweapon> Rhlpdefinedweapon { get; set; }
         public BindingList<LootCategories> LootCategories { get; set; }
+        public BindingList<Rhlploottable> LootTables { get; set; }
+        public BindingList<Rhlprewardtable> Rhlprewardtable { get; set; }
+        public BindingList<Rhlootboxconfig> Rhlootboxconfig { get; set; }
         public string predefweapon { get; set; }
         public List<string>WeaponList { get; set; }
         public bool ispredefinedweapon { get; set; }
+        public bool isRHPredefinedWeapon { get; set; }
         public bool isLootList { get; set; }
+        public bool isRHTableList { get; set; }
+        public bool isRewardTable { get; set; }
         public string titellabel { get; set; }
         public bool isLootchest { get; set; }
+        public bool isLootBoxList { get; set; }
         public AddfromPredefinedWeapons()
         {
             InitializeComponent();
@@ -63,11 +72,40 @@ namespace DayZeEditor
                 LCPredefinedWeaponsLB.DataSource = LCPredefinedWeapons;
                 WeaponList = new List<string>();
             }
+            else if (isRHPredefinedWeapon)
+            {
+                LCPredefinedWeaponsLB.DisplayMember = "DisplayName";
+                LCPredefinedWeaponsLB.ValueMember = "Value";
+                LCPredefinedWeaponsLB.DataSource = Rhlpdefinedweapon;
+                WeaponList = new List<string>();
+            }
             else if(isLootList)
             {
                 LCPredefinedWeaponsLB.DisplayMember = "DisplayName";
                 LCPredefinedWeaponsLB.ValueMember = "Value";
                 LCPredefinedWeaponsLB.DataSource = LootCategories;
+                WeaponList = new List<string>();
+            }
+            else if (isRHTableList)
+            {
+                LCPredefinedWeaponsLB.DisplayMember = "DisplayName";
+                LCPredefinedWeaponsLB.ValueMember = "Value";
+                LCPredefinedWeaponsLB.DataSource = LootTables;
+                WeaponList = new List<string>();
+            }
+            else if (isRewardTable)
+            {
+                LCPredefinedWeaponsLB.DisplayMember = "DisplayName";
+                LCPredefinedWeaponsLB.ValueMember = "Value";
+                LCPredefinedWeaponsLB.DataSource = Rhlprewardtable;
+                WeaponList = new List<string>();
+            }
+            else if (isLootBoxList)
+            {
+                LCPredefinedWeaponsLB.DisplayMember = "DisplayName";
+                LCPredefinedWeaponsLB.ValueMember = "Value";
+                LCPredefinedWeaponsLB.DataSource = Rhlootboxconfig;
+                WeaponList = new List<string>();
             }
         }
 
@@ -81,20 +119,51 @@ namespace DayZeEditor
                     WeaponList.Add(predefweaponclass.defname);
                 }
             }
+            else if (isRHPredefinedWeapon)
+            {
+                foreach (var item in LCPredefinedWeaponsLB.SelectedItems)
+                {
+                    Rhlpdefinedweapon predefweaponclass = item as Rhlpdefinedweapon;
+                    WeaponList.Add(predefweaponclass.DefineName);
+                }
+            }
+            else if (isLootList)
+            {
+                foreach (var item in LCPredefinedWeaponsLB.SelectedItems)
+                {
+                    LootCategories predefweaponclass = item as LootCategories;
+                    WeaponList.Add(predefweaponclass.name);
+                }
+            }
+            else if (isRHTableList)
+            {
+                foreach (var item in LCPredefinedWeaponsLB.SelectedItems)
+                {
+                    Rhlploottable predefweaponclass = item as Rhlploottable;
+                    WeaponList.Add(predefweaponclass.TableName);
+                }
+            }
+            else if (isRewardTable)
+            {
+                foreach (var item in LCPredefinedWeaponsLB.SelectedItems)
+                {
+                    Rhlprewardtable predefweaponclass = item as Rhlprewardtable;
+                    WeaponList.Add(predefweaponclass.RewardName);
+                }
+            }
+            else if (isLootBoxList)
+            {
+                foreach (var item in LCPredefinedWeaponsLB.SelectedItems)
+                {
+                    Rhlootboxconfig predefweaponclass = item as Rhlootboxconfig;
+                    WeaponList.Add(predefweaponclass.LootBoxName);
+                }
+            }
         }
 
         private void LCPredefinedWeaponsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ispredefinedweapon)
-            {
-                
-            }
-            else if (isLootList)
-            {
-                LootCategories predefweaponclass = LCPredefinedWeaponsLB.SelectedItem as LootCategories;
-                predefweapon = predefweaponclass.name;
-            }
-            else if (isLootchest)
+            if (isLootchest)
             {
                 predefweapon = LCPredefinedWeaponsLB.GetItemText(LCPredefinedWeaponsLB.SelectedItem);
             }

@@ -143,11 +143,23 @@
     <Compile Include="Forms\ExpansionQuests.Designer.cs">
       <DependentUpon>ExpansionQuests.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\LootPoolManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LootPoolManager.Designer.cs">
+      <DependentUpon>LootPoolManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MysteryBoxManager.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\MysteryBoxManager.Designer.cs">
       <DependentUpon>MysteryBoxManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RHLootBoxManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RHLootBoxManager.Designer.cs">
+      <DependentUpon>RHLootBoxManager.cs</DependentUpon>
     </Compile>
     <Compile Include="HelperForms\Add new container.cs">
       <SubType>Form</SubType>
@@ -343,8 +355,14 @@
     <EmbeddedResource Include="Forms\ExpansionQuests.resx">
       <DependentUpon>ExpansionQuests.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LootPoolManager.resx">
+      <DependentUpon>LootPoolManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MysteryBoxManager.resx">
       <DependentUpon>MysteryBoxManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RHLootBoxManager.resx">
+      <DependentUpon>RHLootBoxManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HelperForms\Add new container.resx">
       <DependentUpon>Add new container.cs</DependentUpon>

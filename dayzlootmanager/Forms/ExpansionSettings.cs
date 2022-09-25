@@ -3133,6 +3133,7 @@ namespace DayZeEditor
             CreateDeathMarkerCB.Checked = MapSettings.CreateDeathMarker == 1 ? true : false;
             PlayerLocationNotifierCB.Checked = MapSettings.PlayerLocationNotifier == 1 ? true : false;
             CompassColor.Invalidate();
+            pictureBox7.Invalidate();
 
             comboBox1.DisplayMember = "Description";
             comboBox1.ValueMember = "Value";
@@ -3505,6 +3506,32 @@ namespace DayZeEditor
                 MapSettings.isDirty = true;
                 pictureBox3.Invalidate();
             }
+        }
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+            PictureBox pb = sender as PictureBox;
+            ColorPickerDialog cpick = new ColorPickerDialog();
+            cpick.StartPosition = FormStartPosition.CenterParent;
+            cpick.Color = Color.FromArgb(MapSettings.CompassBadgesColor);
+            if (cpick.ShowDialog() == DialogResult.OK)
+            {
+
+                MapSettings.CompassBadgesColor = cpick.Color.ToArgb();
+                CompassColor.Invalidate();
+                MapSettings.isDirty = true;
+            }
+        }
+        private void pictureBox7_Paint(object sender, PaintEventArgs e)
+        {
+            PictureBox pb = sender as PictureBox;
+            Rectangle region;
+            region = pb.ClientRectangle;
+            Color colour = Color.FromArgb(MapSettings.CompassBadgesColor);
+            using (Brush brush = new SolidBrush(colour))
+            {
+                e.Graphics.FillRectangle(brush, region);
+            }
+            e.Graphics.DrawRectangle(SystemPens.ControlText, region.Left, region.Top, region.Width - 1, region.Height - 1);
         }
         #endregion mapsettings
 

@@ -153,7 +153,7 @@ namespace DayZeEditor
             CIRecipeNameTB.Text = CurrentCraftItem.RecipeName;
             CIresultTB.Text = CurrentCraftItem.Result;
             CIresultCountNUD.Value = CurrentCraftItem.ResultCount;
-            CIRecipeCategoryCB.SelectedIndex = CIRecipeCategoryCB.FindStringExact(CurrentCraftItem.CraftType);
+            CIRecipetypeCB.SelectedIndex = CIRecipetypeCB.FindStringExact(CurrentCraftItem.CraftType);
             if(CurrentCraftItem.RecipeCategory == "")
                 CIRecipeCategoryCB.SelectedIndex = CIRecipeCategoryCB.FindStringExact("None");
             else

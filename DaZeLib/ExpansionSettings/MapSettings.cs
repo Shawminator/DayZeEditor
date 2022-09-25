@@ -21,7 +21,7 @@ namespace DayZeLib
     };
     public class MapSettings
     {
-        const int CurrentVersion = 4;
+        const int CurrentVersion = 5;
 
         public int m_Version { get; set; } //current version 4
         public int EnableMap { get; set; }
@@ -47,6 +47,7 @@ namespace DayZeLib
         public int CompassColor { get; set; }
         public int CreateDeathMarker { get; set; }
         public int PlayerLocationNotifier { get; set; }
+        public int CompassBadgesColor { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }

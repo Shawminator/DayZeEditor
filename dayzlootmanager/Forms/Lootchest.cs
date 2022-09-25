@@ -149,8 +149,12 @@ namespace DayZeEditor
                 LootCategories = LootChestTable.LootCategories,
                 titellabel = "Add loot chest types",
                 isLootList = false,
+                isRewardTable = false,
+                isRHTableList = false,
                 ispredefinedweapon = false,
-                isLootchest = true
+                isRHPredefinedWeapon = false,
+                isLootchest = true,
+                isLootBoxList = false
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -167,15 +171,22 @@ namespace DayZeEditor
                 LootCategories = LootChestTable.LootCategories,
                 titellabel = "Add Items from Loot list",
                 isLootList = true,
+                isRewardTable = false,
+                isRHTableList = false,
                 ispredefinedweapon = false,
-                isLootchest = false
+                isRHPredefinedWeapon = false,
+                isLootchest = false,
+                isLootBoxList = false
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
-                string predefweapon = form.predefweapon;
-                CurrentLootChestLocation.loot.Add(predefweapon);
-                LootChestTable.isDirty = true;
+                List<string> predefweapon = form.WeaponList;
+                foreach (string weapon in predefweapon)
+                {
+                    CurrentLootChestLocation.loot.Add(weapon);
+                    LootChestTable.isDirty = true;
+                }
             }
         }
         private void darkButton2_Click(object sender, EventArgs e)
@@ -528,8 +539,12 @@ namespace DayZeEditor
                 LCPredefinedWeapons = LootChestTable.LCPredefinedWeapons,
                 titellabel = "Add Items from Predefined Weapons",
                 isLootList = false,
+                isRewardTable = false,
+                isRHTableList = false,
                 ispredefinedweapon = true,
-                isLootchest = false
+                isRHPredefinedWeapon = false,
+                isLootchest = false,
+                isLootBoxList = false
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -726,8 +741,7 @@ namespace DayZeEditor
             {
                 name = "LC_Table_",
                 Loot = new BindingList<string>()
-            }
-        ); ;
+            }); 
             LCPredefinedWeaponsLB.SelectedIndex = -1;
             LCPredefinedWeaponsLB.SelectedIndex = LCPredefinedWeaponsLB.Items.Count - 1;
         }
