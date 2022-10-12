@@ -21,8 +21,9 @@ namespace DayZeLib
 
     public class Rhlootboxconfig
     {
-        public BindingList<string> PossibleLootList { get; set; }
         public string LootBoxName { get; set; }
+        public BindingList<string> PossibleLootList { get; set; }
+
 
         public override string ToString()
         {
@@ -38,7 +39,7 @@ namespace DayZeLib
         public int NumberOfPositions { get; set; }
         public BindingList<Staticboxposition> StaticBoxPositions { get; set; }
         public int UseBoxLootList { get; set; }
-        public BindingList<string> PossibleLootList { get; set; }
+        public BindingList<string> CustomLootList { get; set; }
 
         public override string ToString()
         {

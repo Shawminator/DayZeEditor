@@ -394,7 +394,7 @@ namespace DayZeEditor
         {
             LootPool.RHLPLootTables.Add(new Rhlploottable()
             {
-                TableName = "LC_Table_",
+                TableName = "Loot_Table_",
                 LootItems = new BindingList<string>()
             });
             LCPredefinedWeaponsLB.SelectedIndex = -1;
@@ -407,11 +407,20 @@ namespace DayZeEditor
             CurrentRHLPRewardTables = LootChestsLocationsLB.SelectedItem as Rhlprewardtable;
             useraction = false;
 
+            RewardTableNameTB.Text = CurrentRHLPRewardTables.RewardName;
+
             lootLB.DisplayMember = "DisplayName";
             lootLB.ValueMember = "Value";
             lootLB.DataSource = CurrentRHLPRewardTables.Rewards;
 
             useraction = true;
+        }
+        private void RewardTableNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            CurrentRHLPRewardTables.RewardName = RewardTableNameTB.Text;
+            lootLB.Refresh();
+            LootPool.isDirty = true;
         }
         private void darkButton5_Click(object sender, EventArgs e)
         {
@@ -590,5 +599,15 @@ namespace DayZeEditor
         {
             Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\LootPool");
         }
+
+
+        private void LootCatNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentRhlploottable.TableName = LootCatNameTB.Text;
+            LootCatLootLB.Refresh();
+            LootPool.isDirty = true;
+        }
+
     }
 }

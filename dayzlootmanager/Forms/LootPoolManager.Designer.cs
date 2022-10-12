@@ -91,6 +91,7 @@ namespace DayZeEditor
             this.defnameTB = new System.Windows.Forms.TextBox();
             this.darkLabel5 = new DarkUI.Controls.DarkLabel();
             this.LCPredefinedWeaponsLB = new System.Windows.Forms.ListBox();
+            this.RewardTableNameTB = new System.Windows.Forms.TextBox();
             this.darkToolStrip21.SuspendLayout();
             this.darkToolStrip23.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -298,6 +299,7 @@ namespace DayZeEditor
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox1.Controls.Add(this.RewardTableNameTB);
             this.groupBox1.Controls.Add(this.darkButton13);
             this.groupBox1.Controls.Add(this.darkButton2);
             this.groupBox1.Controls.Add(this.darkButton1);
@@ -385,10 +387,10 @@ namespace DayZeEditor
             this.lootLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.lootLB.ForeColor = System.Drawing.SystemColors.Control;
             this.lootLB.FormattingEnabled = true;
-            this.lootLB.Location = new System.Drawing.Point(20, 32);
+            this.lootLB.Location = new System.Drawing.Point(20, 58);
             this.lootLB.Name = "lootLB";
             this.lootLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lootLB.Size = new System.Drawing.Size(268, 355);
+            this.lootLB.Size = new System.Drawing.Size(268, 329);
             this.lootLB.TabIndex = 122;
             this.lootLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
@@ -571,6 +573,7 @@ namespace DayZeEditor
             this.LootCatNameTB.Name = "LootCatNameTB";
             this.LootCatNameTB.Size = new System.Drawing.Size(266, 20);
             this.LootCatNameTB.TabIndex = 96;
+            this.LootCatNameTB.TextChanged += new System.EventHandler(this.LootCatNameTB_TextChanged);
             // 
             // darkLabel13
             // 
@@ -838,6 +841,16 @@ namespace DayZeEditor
             this.LCPredefinedWeaponsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.LCPredefinedWeaponsLB.SelectedIndexChanged += new System.EventHandler(this.LCPredefinedWeaponsLB_SelectedIndexChanged);
             // 
+            // RewardTableNameTB
+            // 
+            this.RewardTableNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.RewardTableNameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.RewardTableNameTB.Location = new System.Drawing.Point(20, 32);
+            this.RewardTableNameTB.Name = "RewardTableNameTB";
+            this.RewardTableNameTB.Size = new System.Drawing.Size(268, 20);
+            this.RewardTableNameTB.TabIndex = 137;
+            this.RewardTableNameTB.TextChanged += new System.EventHandler(this.RewardTableNameTB_TextChanged);
+            // 
             // LootPoolManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -936,5 +949,6 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton darkButton13;
         private DarkUI.Controls.DarkButton darkButton2;
         private DarkUI.Controls.DarkButton darkButton1;
+        private System.Windows.Forms.TextBox RewardTableNameTB;
     }
 }

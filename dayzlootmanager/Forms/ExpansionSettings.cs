@@ -2798,11 +2798,15 @@ namespace DayZeEditor
         }
         private void DSEnabledCB_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (!useraction) { return; }
+            DamageSystemSettings.Enabled = DSEnabledCB.Checked == true ? 1 : 0;
+            DamageSystemSettings.isDirty = true;
         }
         private void CheckForBlockingObjectsCB_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (!useraction) { return; }
+            DamageSystemSettings.CheckForBlockingObjects = CheckForBlockingObjectsCB.Checked == true ? 1 : 0;
+            DamageSystemSettings.isDirty = true;
         }
         private void darkButton67_Click(object sender, EventArgs e)
         {
@@ -3090,6 +3094,9 @@ namespace DayZeEditor
             LogToScriptsCB.Checked = LogSettings.LogToScripts == 1 ? true : false;
             LogToADMCB.Checked = LogSettings.LogToADM == 1 ? true : false;
             AIObjectPatrolCB.Checked = LogSettings.AIObjectPatrol == 1 ? true : false;
+            AIGeneralCB.Checked = LogSettings.AIGeneral == 1 ? true : false;
+            AIObjectPatrolCB.Checked = LogSettings.AIObjectPatrol == 1 ? true : false;
+            AIPatrolCB.Checked = LogSettings.AIPatrol == 1 ? true : false;
             HardlineCB.Checked = LogSettings.Hardline == 1 ? true : false;
             ExplosionDamageSystemCB.Checked = LogSettings.ExplosionDamageSystem == 1 ? true : false;
             useraction = true;
@@ -3517,7 +3524,7 @@ namespace DayZeEditor
             {
 
                 MapSettings.CompassBadgesColor = cpick.Color.ToArgb();
-                CompassColor.Invalidate();
+                pictureBox7.Invalidate();
                 MapSettings.isDirty = true;
             }
         }
@@ -6189,6 +6196,7 @@ namespace DayZeEditor
             TerritoryPerimeterSizeTNUD.Value = (decimal)TerritorySettings.TerritoryPerimeterSize;
             MaxMembersInTerritoryTNUD.Value = TerritorySettings.MaxMembersInTerritory;
             MaxTerritoryPerPlayerTNUD.Value = TerritorySettings.MaxTerritoryPerPlayer;
+            TerritoryAuthenticationRadiusNUD.Value = TerritorySettings.TerritoryAuthenticationRadius;
             useraction = true;
         }
         private void TerritoriesTCB_CheckedChanged(object sender, EventArgs e)

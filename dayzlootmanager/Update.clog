@@ -1,4 +1,23 @@
-﻿Version 0.7.4
+﻿Version 0.7.4.4
+[Fixed]
+Fixed Backup not saving correct and causing a crash with traders
+Fixed Player Factions list showing old faction names
+Removed Color entry in general settings.json of expansion, no idea why it was added??
+[Added]
+Added if 0 make 1 when doing the mass nom/min changes
+Added new AI Option from latest expansion update
+[Changed]
+Expansion Loadout have own section now as not tied to AI
+
+
+Version 0.7.4.3
+[Changed] 
+Updated Expansion Map config and CompassBadgeColour
+[Fixed]
+MysteryBox add/remove buttons were assigned to the wrong section
+
+
+Version 0.7.4
 [Fixed]
 Hardline remove from list was actually adding it rather than removing. Now fixed.
 [Changed]

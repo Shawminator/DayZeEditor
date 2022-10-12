@@ -34,7 +34,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.7.4.2";
+        public string VersionNumber = "0.7.4.4";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -354,6 +354,11 @@ namespace DayZeEditor
                 else
                     ExpansionAIButton.Visible = false;
 
+                if (Directory.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\ExpansionMod\\Loadouts"))
+                    ExpansionLoadoutManagerButton.Visible = true;
+                else
+                    ExpansionLoadoutManagerButton.Visible = false;
+
                 if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\ExpansionMod\\Settings\\QuestSettings.json") &&
                     Directory.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\ExpansionMod\\Quests"))
                     ExpansionQuestsButton.Visible = true;
@@ -378,7 +383,7 @@ namespace DayZeEditor
             if (hidden)
             {
                 SlidePanel.Width = SlidePanel.Width + 10;
-                if (SlidePanel.Width == 140)
+                if (SlidePanel.Width == 160)
                 {
                     timer1.Stop();
                     hidden = false;
@@ -571,6 +576,33 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
+
+        private void ExpansionLoadoutManagerButton_Click(object sender, EventArgs e)
+        {
+            ExpansionLoadoutsManager _TM = Application.OpenForms["ExpansionLoadoutsManager"] as ExpansionLoadoutsManager;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new ExpansionLoadoutsManager
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+                };
+                _TM.Show();
+                Console.WriteLine("loading expansion Loadout manager....");
+            }
+            timer1.Start();
+        }
+
         private void ExpansionQuestsButton_Click(object sender, EventArgs e)
         {
             ExpansionQuests _TM = Application.OpenForms["ExpansionQuests"] as ExpansionQuests;
@@ -888,7 +920,6 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
-
 
     }
 }

@@ -98,7 +98,6 @@
     <Compile Include="BreachingCharge\BreachingChargeSettigns.cs" />
     <Compile Include="Cannabisplus\CannabisPlus.cs" />
     <Compile Include="CJ187LootTable\LootChestTable.cs" />
-    <Compile Include="DarkHorde\DarkHordeMainoptions.cs" />
     <Compile Include="DNAKeycards\Basic\DNABasicConfig.cs" />
     <Compile Include="DNAKeycards\Basic\DNAProprietaryConfig.cs" />
     <Compile Include="DRJonesTrader\DrJonesAdmins.cs" />
@@ -183,7 +182,6 @@
     <Compile Include="Economy\TypesFile.cs" />
     <Compile Include="RHCaptureTheFlag\RHCaptureTheFlag.cs" />
     <Compile Include="RHLootBoxes\RHLootBoxes.cs" />
-    <Compile Include="SpawnerBubaku\SpawnerBubaku.cs" />
     <Compile Include="TraderPlus\TraderPlusBankingConfig.cs" />
     <Compile Include="TraderPlus\TraderPlusGeneralConfig.cs" />
     <Compile Include="TraderPlus\TraderPlusGarageConfig.cs" />

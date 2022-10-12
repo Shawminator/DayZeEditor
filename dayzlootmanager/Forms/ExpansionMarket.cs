@@ -614,7 +614,7 @@ namespace DayZeEditor
                 if (currentproject.Createbackups && File.Exists(TradersPath + "\\" + trader.Filename + ".json"))
                 {
                     Directory.CreateDirectory(TradersPath + "\\Backup\\" + SaveTime);
-                    File.Copy(TradersPath + "\\" + trader.Filename, TradersPath + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(trader.Filename) + ".bak", true);
+                    File.Copy(TradersPath + "\\" + trader.Filename + ".json", TradersPath + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(trader.Filename) + ".bak", true);
                 }
                 File.WriteAllText(TradersPath + "\\" + trader.Filename + ".json", jsonString);
                 midifiedfiles.Add(Path.GetFileName(trader.Filename));

@@ -260,7 +260,7 @@ namespace DayZeLib
         {
             m_Version = MarketCategories.CurrentVersion;
             DisplayName = filename;
-            Icon = "deliver";
+            Icon = "Deliver";
             Color = "FBFCFEFF";
             InitStockPercent = (decimal)75.0;
             Items = new BindingList<marketItem>();
@@ -269,7 +269,7 @@ namespace DayZeLib
         {
             m_Version = MarketCategories.CurrentVersion;
             DisplayName = "";
-            Icon = "deliver";
+            Icon = "Deliver";
             Color = "FBFCFEFF";
             InitStockPercent = (decimal)75.0;
             Items = new BindingList<marketItem>();

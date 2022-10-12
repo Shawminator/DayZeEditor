@@ -137,6 +137,12 @@
     <Compile Include="Forms\BreachingChargeManager.Designer.cs">
       <DependentUpon>BreachingChargeManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ExpansionLoadoutsManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ExpansionLoadoutsManager.Designer.cs">
+      <DependentUpon>ExpansionLoadoutsManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ExpansionQuests.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -351,6 +357,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BreachingChargeManager.resx">
       <DependentUpon>BreachingChargeManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ExpansionLoadoutsManager.resx">
+      <DependentUpon>ExpansionLoadoutsManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ExpansionQuests.resx">
       <DependentUpon>ExpansionQuests.cs</DependentUpon>

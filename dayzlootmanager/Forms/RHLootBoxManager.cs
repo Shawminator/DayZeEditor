@@ -227,6 +227,10 @@ namespace DayZeEditor
             posLB.ValueMember = "Value";
             posLB.DataSource = CurrentRhlootboxstaticbox.StaticBoxPositions;
 
+            lootLB.DisplayMember = "DisplayName";
+            lootLB.ValueMember = "Value";
+            lootLB.DataSource = CurrentRhlootboxstaticbox.CustomLootList;
+
             darkLabel20.Text = "Location count:" + CurrentRhlootboxstaticbox.StaticBoxPositions.Count.ToString();
 
             useraction = true;
@@ -246,7 +250,7 @@ namespace DayZeEditor
                 StaticBoxPositions = new BindingList<Staticboxposition>(),
                 UseBoxLootList = 1,
                 PossibleLootBoxNames = new BindingList<string>(),
-                PossibleLootList = new BindingList<string>()
+                CustomLootList = new BindingList<string>()
             });
             LootBoxLocationsLB.SelectedIndex = -1;
             LootBoxLocationsLB.SelectedIndex = LootBoxLocationsLB.Items.Count - 1;
@@ -318,6 +322,13 @@ namespace DayZeEditor
         }
         private void darkButton4_Click(object sender, EventArgs e)
         {
+            if (CurrentRhlootboxstaticbox.CustomLootList == null)
+            {
+                CurrentRhlootboxstaticbox.CustomLootList = new BindingList<string>();
+                lootLB.DisplayMember = "DisplayName";
+                lootLB.ValueMember = "Value";
+                lootLB.DataSource = CurrentRhlootboxstaticbox.CustomLootList;
+            }
             AddfromPredefinedWeapons form = new AddfromPredefinedWeapons
             {
                 Rhlprewardtable = LootPool.RHLPRewardTables,
@@ -336,14 +347,14 @@ namespace DayZeEditor
                 List<string> predefweapon = form.WeaponList;
                 foreach (string weapon in predefweapon)
                 {
-                    CurrentRhlootboxstaticbox.PossibleLootList.Add(weapon);
+                    CurrentRhlootboxstaticbox.CustomLootList.Add(weapon);
                     LootBoxConfig.isDirty = true;
                 }
             }
         }
         private void darkButton3_Click(object sender, EventArgs e)
         {
-            CurrentRhlootboxstaticbox.PossibleLootList.Remove(lootLB.GetItemText(lootLB.SelectedItem));
+            CurrentRhlootboxstaticbox.CustomLootList.Remove(lootLB.GetItemText(lootLB.SelectedItem));
             LootBoxConfig.isDirty = true;
         }
         private void posLB_SelectedIndexChanged(object sender, EventArgs e)

@@ -447,6 +447,8 @@ namespace DayZeEditor
             this.groupBox19 = new System.Windows.Forms.GroupBox();
             this.EnableHUDGPSCB = new System.Windows.Forms.CheckBox();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.darkLabel224 = new DarkUI.Controls.DarkLabel();
             this.CompassColor = new System.Windows.Forms.PictureBox();
             this.darkLabel55 = new DarkUI.Controls.DarkLabel();
             this.NeedGPSItemForHUDCompassCB = new System.Windows.Forms.CheckBox();
@@ -1088,8 +1090,6 @@ namespace DayZeEditor
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.darkLabel224 = new DarkUI.Controls.DarkLabel();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -1179,6 +1179,7 @@ namespace DayZeEditor
             this.groupBox20.SuspendLayout();
             this.groupBox19.SuspendLayout();
             this.groupBox18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CompassColor)).BeginInit();
             this.groupBox16.SuspendLayout();
             this.groupBox17.SuspendLayout();
@@ -1380,7 +1381,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.RankLegendNUD)).BeginInit();
             this.groupBox72.SuspendLayout();
             this.darkToolStrip22.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -2000,7 +2000,7 @@ namespace DayZeEditor
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.groupBox2.Location = new System.Drawing.Point(209, 100);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(260, 348);
+            this.groupBox2.Size = new System.Drawing.Size(260, 331);
             this.groupBox2.TabIndex = 92;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Attachments";
@@ -2035,14 +2035,14 @@ namespace DayZeEditor
             this.listBox4.FormattingEnabled = true;
             this.listBox4.Location = new System.Drawing.Point(6, 19);
             this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(120, 316);
+            this.listBox4.Size = new System.Drawing.Size(120, 290);
             this.listBox4.TabIndex = 0;
             this.listBox4.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
             // darkButton8
             // 
             this.darkButton8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton8.Location = new System.Drawing.Point(209, 454);
+            this.darkButton8.Location = new System.Drawing.Point(209, 437);
             this.darkButton8.Name = "darkButton8";
             this.darkButton8.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton8.Size = new System.Drawing.Size(261, 23);
@@ -2053,7 +2053,7 @@ namespace DayZeEditor
             // darkButton2
             // 
             this.darkButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton2.Location = new System.Drawing.Point(9, 454);
+            this.darkButton2.Location = new System.Drawing.Point(9, 437);
             this.darkButton2.Name = "darkButton2";
             this.darkButton2.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton2.Size = new System.Drawing.Size(194, 23);
@@ -2112,7 +2112,7 @@ namespace DayZeEditor
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(6, 3);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(194, 433);
+            this.listBox1.Size = new System.Drawing.Size(194, 407);
             this.listBox1.TabIndex = 0;
             this.listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
@@ -2885,6 +2885,11 @@ namespace DayZeEditor
             this.TerritoryAuthenticationRadiusNUD.DecimalPlaces = 1;
             this.TerritoryAuthenticationRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.TerritoryAuthenticationRadiusNUD.Location = new System.Drawing.Point(23, 157);
+            this.TerritoryAuthenticationRadiusNUD.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.TerritoryAuthenticationRadiusNUD.Name = "TerritoryAuthenticationRadiusNUD";
             this.TerritoryAuthenticationRadiusNUD.Size = new System.Drawing.Size(65, 20);
             this.TerritoryAuthenticationRadiusNUD.TabIndex = 38;
@@ -6739,6 +6744,27 @@ namespace DayZeEditor
             this.groupBox18.TabIndex = 102;
             this.groupBox18.TabStop = false;
             this.groupBox18.Text = "Compass";
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox7.BackgroundImage")));
+            this.pictureBox7.Location = new System.Drawing.Point(96, 102);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(121, 13);
+            this.pictureBox7.TabIndex = 120;
+            this.pictureBox7.TabStop = false;
+            this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
+            this.pictureBox7.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox7_Paint);
+            // 
+            // darkLabel224
+            // 
+            this.darkLabel224.AutoSize = true;
+            this.darkLabel224.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel224.Location = new System.Drawing.Point(7, 102);
+            this.darkLabel224.Name = "darkLabel224";
+            this.darkLabel224.Size = new System.Drawing.Size(71, 13);
+            this.darkLabel224.TabIndex = 119;
+            this.darkLabel224.Text = "Badge Colour";
             // 
             // CompassColor
             // 
@@ -15318,27 +15344,6 @@ namespace DayZeEditor
             this.toolStripSeparator17.Name = "toolStripSeparator17";
             this.toolStripSeparator17.Size = new System.Drawing.Size(6, 28);
             // 
-            // pictureBox7
-            // 
-            this.pictureBox7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox7.BackgroundImage")));
-            this.pictureBox7.Location = new System.Drawing.Point(96, 102);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(121, 13);
-            this.pictureBox7.TabIndex = 120;
-            this.pictureBox7.TabStop = false;
-            this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
-            this.pictureBox7.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox7_Paint);
-            // 
-            // darkLabel224
-            // 
-            this.darkLabel224.AutoSize = true;
-            this.darkLabel224.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel224.Location = new System.Drawing.Point(7, 102);
-            this.darkLabel224.Name = "darkLabel224";
-            this.darkLabel224.Size = new System.Drawing.Size(71, 13);
-            this.darkLabel224.TabIndex = 119;
-            this.darkLabel224.Text = "Badge Colour";
-            // 
             // ExpansionSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -15474,6 +15479,7 @@ namespace DayZeEditor
             this.groupBox19.PerformLayout();
             this.groupBox18.ResumeLayout(false);
             this.groupBox18.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CompassColor)).EndInit();
             this.groupBox16.ResumeLayout(false);
             this.groupBox17.ResumeLayout(false);
@@ -15721,7 +15727,6 @@ namespace DayZeEditor
             this.groupBox72.PerformLayout();
             this.darkToolStrip22.ResumeLayout(false);
             this.darkToolStrip22.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ResumeLayout(false);
 
         }

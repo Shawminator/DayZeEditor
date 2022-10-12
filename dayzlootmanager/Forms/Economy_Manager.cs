@@ -575,6 +575,7 @@ namespace DayZeEditor
                         string cat = "other";
                         if (type.category != null)
                             cat = type.category.name;
+                        
                         TreeNode typenode = new TreeNode(type.name)
                         {
                             Tag = type
@@ -891,6 +892,7 @@ namespace DayZeEditor
         }
         private void AddtypesTSMI_Click(object sender, EventArgs e)
         {
+            List<typesType> Addedtypes = new List<typesType>();
             AddNewTypes form = new AddNewTypes
             {
                 currentproject = currentproject
@@ -941,10 +943,15 @@ namespace DayZeEditor
                     File.WriteAllLines("Temp_types.xml", modtypes);
                     TypesFile test = new TypesFile("Temp_types.xml");
                     File.Delete("Temp_types.xml");
+                    Console.WriteLine("The following Types have been added....");
                     foreach (typesType type in test.types.type)
                     {
                         if (!vanillatypes.types.type.Any(x => x.name.ToLower() == type.name.ToLower()))
+                        {
+                            Addedtypes.Add(type);
+                            Console.WriteLine(type.name);
                             vanillatypes.types.type.Add(type);
+                        }
                     }
                     vanillatypes.SaveTyes(DateTime.Now.ToString("ddMMyy_HHmm"));
                     var savedExpansionState = treeViewMS1.Nodes.GetExpansionState();
@@ -1483,12 +1490,16 @@ namespace DayZeEditor
                 if (item.nominal != 0)
                 {
                     item.nominal = getmultiplier((int)item.nominal);
+                    if (item.nominal == 0 && if0setto1CB.Checked)
+                        item.nominal = 1;
                 }
                 if (ChangeMinCheckBox.Checked)
                 {
                     if (item.min != 0)
                     {
                         item.min = getmultiplier((int)item.min);
+                        if (item.min == 0 && if0setto1CB.Checked)
+                            item.min = 1;
                     }
                 }
             }

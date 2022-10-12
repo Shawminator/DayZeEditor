@@ -12,7 +12,7 @@ namespace DayZeLib
     public class AIPatrolSettings
     {
         [JsonIgnore]
-        const int CurrentVersion = 9;
+        const int CurrentVersion = 10;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -118,6 +118,7 @@ namespace DayZeLib
         public string WaypointInterpolation { get; set; }
         public decimal DespawnTime { get; set; }
         public decimal RespawnTime { get; set; }
+        public int UseRandomWaypointAsStartPoint { get; set; }
         public BindingList<float[]> Waypoints { get; set; }
 
         public Patrols()

@@ -45,7 +45,6 @@ namespace DayZeLib
         public string Filename { get; set; }
         [JsonIgnore]
         public bool isDirty { get; set; }
-        public int Colour { get; private set; }
 
         public GeneralSettings()
         {
