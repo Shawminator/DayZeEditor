@@ -71,12 +71,12 @@ namespace DayZeEditor
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
 
-            LootChestTablePath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\CJ_LootChests\\LootChests_V105.json";
+            LootChestTablePath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\CJ_LootChests\\LootChests_V106.json";
             LootChestTable = JsonSerializer.Deserialize<LootChestTable>(File.ReadAllText(LootChestTablePath));
             LootChestTable.isDirty = false;
             LootChestTable.Filename = LootChestTablePath;
 
-            LootchestToolPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\CJ_LootChests\\LootChestsTools_V105.json";
+            LootchestToolPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\CJ_LootChests\\LootChestsTools_V106.json";
             LootChestTools = JsonSerializer.Deserialize<LootChestTools>(File.ReadAllText(LootchestToolPath));
             LootChestTools.isDirty = false;
             LootChestTools.Filename = LootchestToolPath;
@@ -970,6 +970,110 @@ namespace DayZeEditor
                     savefiles();
                 }
             }
+        }
+
+
+        public string currentloot;
+        private void LootCatLootLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (LootCatLootLB.SelectedItems.Count < 1) return;
+            currentloot = LootCatLootLB.SelectedItem as string;
+            useraction = false;
+            if (currentloot.StartsWith("LC_predefined"))
+            {
+                ItemRarityTableCB.Visible = false;
+                ItemRarityTableNUD.Visible = false;
+            }
+            else if (currentloot.Contains("|"))
+            {
+                ItemRarityTableCB.Visible = true;
+                ItemRarityTableNUD.Visible = true;
+                ItemRarityTableCB.Checked = true;
+                ItemRarityTableNUD.Value = Convert.ToDecimal(currentloot.Split('|')[1]);
+            }
+            else
+            {
+                ItemRarityTableCB.Visible = true;
+                ItemRarityTableCB.Checked = false;
+                
+            }
+            useraction = true;
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            ItemRarityTableNUD.Visible = ItemRarityTableCB.Checked;
+            if (!useraction) { return; }
+            string loot = "";
+            if (ItemRarityTableCB.Checked)
+            {
+                loot = currentloot + "|1.0";
+            }
+            else
+            {
+                loot = currentloot.Split('|')[0];
+            }
+            currentLootCategories.Loot[LootCatLootLB.SelectedIndex] = loot;
+            LootChestTable.isDirty = true;
+        }
+
+        private void ItemRarityTableNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            string loot = currentloot.Split('|')[0] + "|" + ItemRarityTableNUD.Value.ToString();
+            currentLootCategories.Loot[LootCatLootLB.SelectedIndex] = loot;
+            LootChestTable.isDirty = true;
+        }
+
+        private void lootLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lootLB.SelectedItems.Count < 1) return;
+            currentloot = lootLB.SelectedItem as string;
+            useraction = false;
+            if (currentloot.StartsWith("LC_predefined_") || currentloot.StartsWith("LC_Table_"))
+            {
+                ItemrarityChestCB.Visible = false;
+                ItemrarityChestNUD.Visible = false;
+            }
+            else if (currentloot.Contains("|"))
+            {
+                ItemrarityChestCB.Visible = true;
+                ItemrarityChestNUD.Visible = true;
+                ItemrarityChestCB.Checked = true;
+                ItemrarityChestNUD.Value = Convert.ToDecimal(currentloot.Split('|')[1]);
+            }
+            else
+            {
+                ItemrarityChestCB.Visible = true;
+                ItemrarityChestCB.Checked = false;
+
+            }
+            useraction = true;
+        }
+
+        private void ItemrarityChestCB_CheckedChanged(object sender, EventArgs e)
+        {
+            ItemrarityChestNUD.Visible = ItemrarityChestCB.Checked;
+            if (!useraction) { return; }
+            string loot = "";
+            if (ItemrarityChestCB.Checked)
+            {
+                loot = currentloot + "|1.0";
+            }
+            else
+            {
+                loot = currentloot.Split('|')[0];
+            }
+            CurrentLootChestLocation.loot[lootLB.SelectedIndex] = loot;
+            LootChestTable.isDirty = true;
+        }
+
+        private void ItemrarityChestNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            string loot = currentloot.Split('|')[0] + "|" + ItemrarityChestNUD.Value.ToString();
+            CurrentLootChestLocation.loot[lootLB.SelectedIndex] = loot;
+            LootChestTable.isDirty = true;
         }
     }
 }

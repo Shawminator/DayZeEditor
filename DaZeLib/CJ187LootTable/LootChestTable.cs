@@ -69,6 +69,18 @@ namespace DayZeLib
             return name;
         }
     }
+
+    public class CJLoot
+    {
+        public string Classname { get; set; }
+        public decimal Rarity { get; set; }
+
+        public override string ToString()
+        {
+            return Classname;
+        }
+    }
+
     public class LCPredefinedWeapons
     {
         public string defname { get; set; }
