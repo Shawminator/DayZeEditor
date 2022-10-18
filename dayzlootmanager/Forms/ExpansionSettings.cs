@@ -6758,6 +6758,7 @@ namespace DayZeEditor
             GarageGroupStoreModeCB.DataSource = Enum.GetValues(typeof(GroupStoreMode));
 
             GarageEnabledCB.Checked = GarageSettings.Enabled == 1 ? true:false;
+            AllowStoringDEVehiclesCB.Checked = GarageSettings.AllowStoringDEVehicles == 1 ? true : false;
             GarageModeCB.SelectedItem = (GarageMode)GarageSettings.GarageMode;
             GarageStoreModeCB.SelectedItem = (GarageStoreMode)GarageSettings.GarageStoreMode;
             GarageRetrieveModeCB.SelectedItem = (GarageRetrieveMode)GarageSettings.GarageRetrieveMode;
@@ -6785,16 +6786,12 @@ namespace DayZeEditor
             GarageEntityWhitelistLB.DataSource = GarageSettings.EntityWhitelist;
             useraction = true;
         }
-
-        #endregion Garagesettings
-
         private void GarageEnabledCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             GarageSettings.Enabled = GarageEnabledCB.Checked == true ? 1 : 0;
             GarageSettings.isDirty = true;
         }
-
         private void GarageModeCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -6802,7 +6799,6 @@ namespace DayZeEditor
             GarageSettings.GarageMode = (int)cacl;
             GarageSettings.isDirty = true;
         }
-
         private void GarageStoreModeCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -6810,7 +6806,6 @@ namespace DayZeEditor
             GarageSettings.GarageStoreMode = (int)cacl;
             GarageSettings.isDirty = true;
         }
-
         private void GarageRetrieveModeCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -6818,35 +6813,30 @@ namespace DayZeEditor
             GarageSettings.GarageRetrieveMode = (int)cacl;
             GarageSettings.isDirty = true;
         }
-
         private void MaxStorableVehiclesNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             GarageSettings.MaxStorableVehicles = (int)MaxStorableVehiclesNUD.Value;
             GarageSettings.isDirty = true;
         }
-
         private void GarageVehicleSearchRadiusNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             GarageSettings.VehicleSearchRadius = GarageVehicleSearchRadiusNUD.Value;
             GarageSettings.isDirty = true;
         }
-
         private void GarageMaxDistanceFromStoredPositionNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             GarageSettings.MaxDistanceFromStoredPosition = GarageMaxDistanceFromStoredPositionNUD.Value;
             GarageSettings.isDirty = true;
         }
-
         private void GarageCanStoreWithCargoCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             GarageSettings.CanStoreWithCargo = GarageCanStoreWithCargoCB.Checked == true ? 1 : 0;
             GarageSettings.isDirty = true;
         }
-
         private void GarageUseVirtualStorageForCargoCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -6854,14 +6844,12 @@ namespace DayZeEditor
             GarageSettings.isDirty = true;
 
         }
-
         private void GarageNeedKeyToStoreCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             GarageSettings.NeedKeyToStore = GarageNeedKeyToStoreCB.Checked == true ? 1 : 0;
             GarageSettings.isDirty = true;
         }
-
         private void darkButton74_Click(object sender, EventArgs e)
         {
             AddItemfromTypes form = new AddItemfromTypes();
@@ -6879,20 +6867,17 @@ namespace DayZeEditor
                 }
             }
         }
-
         private void darkButton73_Click(object sender, EventArgs e)
         {
             GarageSettings.EntityWhitelist.Remove(GarageEntityWhitelistLB.GetItemText(GarageEntityWhitelistLB.SelectedItem));
             GarageSettings.isDirty = true;
         }
-
         private void GarageEnableGroupFeaturesCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             GarageSettings.EnableMarketFeatures = GarageEnableMarketFeaturesCB.Checked == true ? 1 : 0;
             GarageSettings.isDirty = true;
         }
-
         private void GarageGroupStoreModeCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -6900,71 +6885,67 @@ namespace DayZeEditor
             GarageSettings.GroupStoreMode = (int)cacl;
             GarageSettings.isDirty = true;
         }
-
         private void GarageEnableMarketFeaturesCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             GarageSettings.EnableMarketFeatures = GarageEnableMarketFeaturesCB.Checked == true ? 1 : 0;
             GarageSettings.isDirty = true;
         }
-
         private void GarageStorePricePercentNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             GarageSettings.StorePricePercent = GarageStorePricePercentNUD.Value;
             GarageSettings.isDirty = true;
         }
-
         private void GarageStaticStorePriceNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             GarageSettings.StaticStorePrice = (int)GarageStaticStorePriceNUD.Value;
             GarageSettings.isDirty = true;
         }
-
         private void GarageMaxStorableTier1NUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             GarageSettings.MaxStorableTier1 = (int)GarageMaxStorableTier1NUD.Value;
             GarageSettings.isDirty = true;
         }
-
         private void GarageMaxStorableTier2NUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             GarageSettings.MaxStorableTier2 = (int)GarageMaxStorableTier2NUD.Value;
             GarageSettings.isDirty = true;
         }
-
         private void GarageMaxStorableTier3NUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             GarageSettings.MaxStorableTier3 = (int)GarageMaxStorableTier3NUD.Value;
             GarageSettings.isDirty = true;
         }
-
         private void GarageMaxRangeTier1NUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             GarageSettings.MaxRangeTier1 = GarageMaxRangeTier1NUD.Value;
             GarageSettings.isDirty = true;
         }
-
         private void GarageMaxRangeTier2NUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             GarageSettings.MaxRangeTier2 = GarageMaxRangeTier2NUD.Value;
             GarageSettings.isDirty = true;
         }
-
         private void GarageMaxRangeTier3NUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             GarageSettings.MaxRangeTier3 = GarageMaxRangeTier3NUD.Value;
             GarageSettings.isDirty = true;
         }
-
-
+        private void AllowStoringDEVehiclesCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            GarageSettings.AllowStoringDEVehicles = AllowStoringDEVehiclesCB.Checked == true ? 1 : 0;
+            GarageSettings.isDirty = true;
+        }
+        #endregion Garagesettings
     }
     public class NullToEmptyGearConverter : JsonConverter<Gear>
     {

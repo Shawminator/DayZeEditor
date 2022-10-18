@@ -37,10 +37,11 @@ namespace DayZeLib
 
     public class GarageSettings
     {
-        const int CurrentVersion = 4;
+        const int CurrentVersion = 5;
 
         public int m_Version { get; set; }
         public int Enabled { get; set; }
+        public int AllowStoringDEVehicles { get; set; }
         public int GarageMode { get; set; }
         public int GarageStoreMode { get; set; }
         public int GarageRetrieveMode { get; set; }

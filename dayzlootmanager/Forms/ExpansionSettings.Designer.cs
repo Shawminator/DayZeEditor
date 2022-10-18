@@ -1152,6 +1152,7 @@ namespace DayZeEditor
             this.darkButton76 = new DarkUI.Controls.DarkButton();
             this.darkLabel247 = new DarkUI.Controls.DarkLabel();
             this.VirtualStorageExcludedContainersLB = new System.Windows.Forms.ListBox();
+            this.AllowStoringDEVehiclesCB = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -15153,6 +15154,7 @@ namespace DayZeEditor
             // 
             // groupBox76
             // 
+            this.groupBox76.Controls.Add(this.AllowStoringDEVehiclesCB);
             this.groupBox76.Controls.Add(this.GarageMaxRangeTier3NUD);
             this.groupBox76.Controls.Add(this.darkLabel244);
             this.groupBox76.Controls.Add(this.GarageMaxRangeTier2NUD);
@@ -16231,6 +16233,18 @@ namespace DayZeEditor
             this.VirtualStorageExcludedContainersLB.Size = new System.Drawing.Size(180, 121);
             this.VirtualStorageExcludedContainersLB.TabIndex = 96;
             this.VirtualStorageExcludedContainersLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            // 
+            // AllowStoringDEVehiclesCB
+            // 
+            this.AllowStoringDEVehiclesCB.AutoSize = true;
+            this.AllowStoringDEVehiclesCB.Location = new System.Drawing.Point(149, 19);
+            this.AllowStoringDEVehiclesCB.Name = "AllowStoringDEVehiclesCB";
+            this.AllowStoringDEVehiclesCB.Size = new System.Drawing.Size(148, 17);
+            this.AllowStoringDEVehiclesCB.TabIndex = 140;
+            this.AllowStoringDEVehiclesCB.Tag = "";
+            this.AllowStoringDEVehiclesCB.Text = "Allow Storing DE Vehicles";
+            this.AllowStoringDEVehiclesCB.UseVisualStyleBackColor = true;
+            this.AllowStoringDEVehiclesCB.CheckedChanged += new System.EventHandler(this.AllowStoringDEVehiclesCB_CheckedChanged);
             // 
             // ExpansionSettings
             // 
@@ -17764,5 +17778,6 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton darkButton76;
         private DarkUI.Controls.DarkLabel darkLabel247;
         private System.Windows.Forms.ListBox VirtualStorageExcludedContainersLB;
+        private System.Windows.Forms.CheckBox AllowStoringDEVehiclesCB;
     }
 }
