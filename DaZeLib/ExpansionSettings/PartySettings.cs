@@ -4,7 +4,7 @@ namespace DayZeLib
 {
     public class PartySettings
     {
-        const int CurrentVersion = 3;
+        const int CurrentVersion = 4;
 
         public int m_Version { get; set; }//current version is 3
         public int EnableParties { get; set; }
@@ -21,6 +21,7 @@ namespace DayZeLib
         public int ShowHUDMemberBlood { get; set; }
         public int ShowHUDMemberStates { get; set; }
         public int ShowHUDMemberStance { get; set; }
+        public int ShowPartyMemberMapMarkers { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }

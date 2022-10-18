@@ -1138,6 +1138,7 @@ namespace DayZeEditor
             this.groupBox77 = new System.Windows.Forms.GroupBox();
             this.darkLabel245 = new DarkUI.Controls.DarkLabel();
             this.InGameMenuLogoPathTB = new System.Windows.Forms.TextBox();
+            this.ShowPartyMemberMapMarkersCB = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -2925,9 +2926,9 @@ namespace DayZeEditor
             this.groupBox28.Controls.Add(this.EnableTerritoriesTCB);
             this.groupBox28.Controls.Add(this.UseWholeMapForInviteListTCB);
             this.groupBox28.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox28.Location = new System.Drawing.Point(710, 352);
+            this.groupBox28.Location = new System.Drawing.Point(710, 384);
             this.groupBox28.Name = "groupBox28";
-            this.groupBox28.Size = new System.Drawing.Size(290, 217);
+            this.groupBox28.Size = new System.Drawing.Size(290, 183);
             this.groupBox28.TabIndex = 5;
             this.groupBox28.TabStop = false;
             this.groupBox28.Text = "Territories";
@@ -3733,6 +3734,7 @@ namespace DayZeEditor
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.ShowPartyMemberMapMarkersCB);
             this.groupBox9.Controls.Add(this.ShowHUDMemberStanceCB);
             this.groupBox9.Controls.Add(this.ShowHUDMemberStatesCB);
             this.groupBox9.Controls.Add(this.ShowHUDMemberBloodCB);
@@ -3751,7 +3753,7 @@ namespace DayZeEditor
             this.groupBox9.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox9.Location = new System.Drawing.Point(710, 13);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(290, 335);
+            this.groupBox9.Size = new System.Drawing.Size(290, 365);
             this.groupBox9.TabIndex = 2;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Party Settings";
@@ -16034,6 +16036,19 @@ namespace DayZeEditor
             this.InGameMenuLogoPathTB.TabIndex = 96;
             this.InGameMenuLogoPathTB.TextChanged += new System.EventHandler(this.InGameMenuLogoPathTB_TextChanged);
             // 
+            // ShowPartyMemberMapMarkersCB
+            // 
+            this.ShowPartyMemberMapMarkersCB.AutoSize = true;
+            this.ShowPartyMemberMapMarkersCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ShowPartyMemberMapMarkersCB.Location = new System.Drawing.Point(23, 336);
+            this.ShowPartyMemberMapMarkersCB.Name = "ShowPartyMemberMapMarkersCB";
+            this.ShowPartyMemberMapMarkersCB.Size = new System.Drawing.Size(186, 17);
+            this.ShowPartyMemberMapMarkersCB.TabIndex = 33;
+            this.ShowPartyMemberMapMarkersCB.Text = "Show Party Member Map Markers";
+            this.ShowPartyMemberMapMarkersCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ShowPartyMemberMapMarkersCB.UseVisualStyleBackColor = true;
+            this.ShowPartyMemberMapMarkersCB.CheckedChanged += new System.EventHandler(this.PartySettingsCB_CheckedChanged);
+            // 
             // ExpansionSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -17547,5 +17562,6 @@ namespace DayZeEditor
         private System.Windows.Forms.GroupBox groupBox77;
         private DarkUI.Controls.DarkLabel darkLabel245;
         private System.Windows.Forms.TextBox InGameMenuLogoPathTB;
+        private System.Windows.Forms.CheckBox ShowPartyMemberMapMarkersCB;
     }
 }

@@ -4470,6 +4470,7 @@ namespace DayZeEditor
             ShowHUDMemberBloodCB.Checked = PartySettings.ShowHUDMemberBlood == 1 ? true : false;
             ShowHUDMemberStatesCB.Checked = PartySettings.ShowHUDMemberStates == 1 ? true : false;
             ShowHUDMemberStanceCB.Checked = PartySettings.ShowHUDMemberStance == 1 ? true : false;
+            ShowPartyMemberMapMarkersCB.Checked = PartySettings.ShowPartyMemberMapMarkers == 1 ? true : false;
             useraction = true;
         }
         private void PartySettingsCB_CheckedChanged(object sender, EventArgs e)
