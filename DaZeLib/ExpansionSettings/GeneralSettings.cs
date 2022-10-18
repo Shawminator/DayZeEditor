@@ -21,7 +21,7 @@ namespace DayZeLib
     };
     public class GeneralSettings
     {
-        static int CurrentVersion = 8;
+        static int CurrentVersion = 9;
 
         public int m_Version { get; set; }
         public int DisableShootToUnlock { get; set; }
@@ -40,6 +40,8 @@ namespace DayZeLib
         public int UseDeathScreenStatistics { get; set; }
         public int UseNewsFeedInGameMenu { get; set; }
         public Hudcolors HUDColors { get; set; }
+        public int EnableEarPlugs { get; set; }
+        public string InGameMenuLogoPath { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }

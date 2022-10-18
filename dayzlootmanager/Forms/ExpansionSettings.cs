@@ -2942,6 +2942,8 @@ namespace DayZeEditor
             UseDeathScreenCB.Checked = GeneralSettings.UseDeathScreen == 1 ? true : false;
             UseDeathScreenStatisticsCB.Checked = GeneralSettings.UseDeathScreenStatistics == 1 ? true : false;
             UseNewsFeedInGameMenuCB.Checked = GeneralSettings.UseNewsFeedInGameMenu == 1 ? true : false;
+            EnableEarPlugsCB.Checked = GeneralSettings.EnableEarPlugs == 1 ? true : false;
+            InGameMenuLogoPathTB.Text = GeneralSettings.InGameMenuLogoPath;
             useraction = true;
         }
         private void HudColourPB_Click(object sender, EventArgs e)
@@ -2981,6 +2983,12 @@ namespace DayZeEditor
             if (!useraction) { return; }
             CheckBox cb = sender as CheckBox;
             GeneralSettings.SetIntValue(cb.Name.Substring(0, cb.Name.Length - 2), cb.Checked == true ? 1 : 0);
+            GeneralSettings.isDirty = true;
+        }
+        private void InGameMenuLogoPathTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            GeneralSettings.InGameMenuLogoPath = InGameMenuLogoPathTB.Text;
             GeneralSettings.isDirty = true;
         }
         private void GeneralsettingsNUD_ValueChanged(object sender, EventArgs e)
@@ -6877,6 +6885,8 @@ namespace DayZeEditor
             GarageSettings.MaxRangeTier3 = GarageMaxRangeTier3NUD.Value;
             GarageSettings.isDirty = true;
         }
+
+
     }
     public class NullToEmptyGearConverter : JsonConverter<Gear>
     {

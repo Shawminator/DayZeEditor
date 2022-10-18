@@ -624,6 +624,7 @@ namespace DayZeEditor
             this.GravecrossDeleteBodyCB = new System.Windows.Forms.CheckBox();
             this.GravecrossTimeThresholdNUD = new System.Windows.Forms.NumericUpDown();
             this.groupBox32 = new System.Windows.Forms.GroupBox();
+            this.EnableEarPlugsCB = new System.Windows.Forms.CheckBox();
             this.DisableShootToUnlockCB = new System.Windows.Forms.CheckBox();
             this.DisableMagicCrosshairCB = new System.Windows.Forms.CheckBox();
             this.EnableAutoRunCB = new System.Windows.Forms.CheckBox();
@@ -1134,6 +1135,9 @@ namespace DayZeEditor
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
+            this.groupBox77 = new System.Windows.Forms.GroupBox();
+            this.darkLabel245 = new DarkUI.Controls.DarkLabel();
+            this.InGameMenuLogoPathTB = new System.Windows.Forms.TextBox();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -1438,6 +1442,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.GarageVehicleSearchRadiusNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxStorableVehiclesNUD)).BeginInit();
             this.darkToolStrip22.SuspendLayout();
+            this.groupBox77.SuspendLayout();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -8324,6 +8329,7 @@ namespace DayZeEditor
             // tabPage10
             // 
             this.tabPage10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage10.Controls.Add(this.groupBox77);
             this.tabPage10.Controls.Add(this.groupBox69);
             this.tabPage10.Controls.Add(this.groupBox37);
             this.tabPage10.Controls.Add(this.groupBox36);
@@ -8585,7 +8591,7 @@ namespace DayZeEditor
             this.groupBox37.Controls.Add(this.BuildingInteriorsCB);
             this.groupBox37.Controls.Add(this.UseCustomMappingModuleCB);
             this.groupBox37.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox37.Location = new System.Drawing.Point(228, 239);
+            this.groupBox37.Location = new System.Drawing.Point(228, 303);
             this.groupBox37.Name = "groupBox37";
             this.groupBox37.Size = new System.Drawing.Size(262, 139);
             this.groupBox37.TabIndex = 5;
@@ -8642,9 +8648,9 @@ namespace DayZeEditor
             this.groupBox36.Controls.Add(this.UseDeathScreenCB);
             this.groupBox36.Controls.Add(this.UseDeathScreenStatisticsCB);
             this.groupBox36.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox36.Location = new System.Drawing.Point(8, 147);
+            this.groupBox36.Location = new System.Drawing.Point(8, 170);
             this.groupBox36.Name = "groupBox36";
-            this.groupBox36.Size = new System.Drawing.Size(214, 86);
+            this.groupBox36.Size = new System.Drawing.Size(214, 89);
             this.groupBox36.TabIndex = 4;
             this.groupBox36.TabStop = false;
             this.groupBox36.Text = "Screen";
@@ -8689,7 +8695,7 @@ namespace DayZeEditor
             this.groupBox35.Controls.Add(this.EnableLighthousesCB);
             this.groupBox35.Controls.Add(this.EnableLampsComboBox);
             this.groupBox35.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox35.Location = new System.Drawing.Point(8, 348);
+            this.groupBox35.Location = new System.Drawing.Point(8, 375);
             this.groupBox35.Name = "groupBox35";
             this.groupBox35.Size = new System.Drawing.Size(214, 114);
             this.groupBox35.TabIndex = 3;
@@ -8954,7 +8960,7 @@ namespace DayZeEditor
             this.groupBox33.Controls.Add(this.GravecrossDeleteBodyCB);
             this.groupBox33.Controls.Add(this.GravecrossTimeThresholdNUD);
             this.groupBox33.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox33.Location = new System.Drawing.Point(8, 234);
+            this.groupBox33.Location = new System.Drawing.Point(8, 261);
             this.groupBox33.Name = "groupBox33";
             this.groupBox33.Size = new System.Drawing.Size(214, 108);
             this.groupBox33.TabIndex = 1;
@@ -9011,6 +9017,7 @@ namespace DayZeEditor
             // 
             // groupBox32
             // 
+            this.groupBox32.Controls.Add(this.EnableEarPlugsCB);
             this.groupBox32.Controls.Add(this.DisableShootToUnlockCB);
             this.groupBox32.Controls.Add(this.DisableMagicCrosshairCB);
             this.groupBox32.Controls.Add(this.EnableAutoRunCB);
@@ -9019,10 +9026,21 @@ namespace DayZeEditor
             this.groupBox32.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox32.Location = new System.Drawing.Point(8, 3);
             this.groupBox32.Name = "groupBox32";
-            this.groupBox32.Size = new System.Drawing.Size(214, 138);
+            this.groupBox32.Size = new System.Drawing.Size(214, 161);
             this.groupBox32.TabIndex = 0;
             this.groupBox32.TabStop = false;
             this.groupBox32.Text = "Settings";
+            // 
+            // EnableEarPlugsCB
+            // 
+            this.EnableEarPlugsCB.AutoSize = true;
+            this.EnableEarPlugsCB.Location = new System.Drawing.Point(21, 134);
+            this.EnableEarPlugsCB.Name = "EnableEarPlugsCB";
+            this.EnableEarPlugsCB.Size = new System.Drawing.Size(107, 17);
+            this.EnableEarPlugsCB.TabIndex = 113;
+            this.EnableEarPlugsCB.Text = "Enable Ear Plugs";
+            this.EnableEarPlugsCB.UseVisualStyleBackColor = true;
+            this.EnableEarPlugsCB.CheckedChanged += new System.EventHandler(this.GeneralsettingsCB_CheckedChanged);
             // 
             // DisableShootToUnlockCB
             // 
@@ -15984,6 +16002,38 @@ namespace DayZeEditor
             this.toolStripSeparator17.Name = "toolStripSeparator17";
             this.toolStripSeparator17.Size = new System.Drawing.Size(6, 28);
             // 
+            // groupBox77
+            // 
+            this.groupBox77.Controls.Add(this.darkLabel245);
+            this.groupBox77.Controls.Add(this.InGameMenuLogoPathTB);
+            this.groupBox77.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox77.Location = new System.Drawing.Point(228, 239);
+            this.groupBox77.Name = "groupBox77";
+            this.groupBox77.Size = new System.Drawing.Size(553, 58);
+            this.groupBox77.TabIndex = 109;
+            this.groupBox77.TabStop = false;
+            this.groupBox77.Text = "Logo Path";
+            // 
+            // darkLabel245
+            // 
+            this.darkLabel245.AutoSize = true;
+            this.darkLabel245.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel245.Location = new System.Drawing.Point(13, 25);
+            this.darkLabel245.Name = "darkLabel245";
+            this.darkLabel245.Size = new System.Drawing.Size(126, 13);
+            this.darkLabel245.TabIndex = 97;
+            this.darkLabel245.Text = "InGame Menu Logo Path";
+            // 
+            // InGameMenuLogoPathTB
+            // 
+            this.InGameMenuLogoPathTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.InGameMenuLogoPathTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.InGameMenuLogoPathTB.Location = new System.Drawing.Point(145, 22);
+            this.InGameMenuLogoPathTB.Name = "InGameMenuLogoPathTB";
+            this.InGameMenuLogoPathTB.Size = new System.Drawing.Size(398, 20);
+            this.InGameMenuLogoPathTB.TabIndex = 96;
+            this.InGameMenuLogoPathTB.TextChanged += new System.EventHandler(this.InGameMenuLogoPathTB_TextChanged);
+            // 
             // ExpansionSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -16381,6 +16431,8 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.MaxStorableVehiclesNUD)).EndInit();
             this.darkToolStrip22.ResumeLayout(false);
             this.darkToolStrip22.PerformLayout();
+            this.groupBox77.ResumeLayout(false);
+            this.groupBox77.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -17491,5 +17543,9 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkLabel darkLabel240;
         private System.Windows.Forms.NumericUpDown GarageMaxStorableTier1NUD;
         private DarkUI.Controls.DarkLabel darkLabel239;
+        private System.Windows.Forms.CheckBox EnableEarPlugsCB;
+        private System.Windows.Forms.GroupBox groupBox77;
+        private DarkUI.Controls.DarkLabel darkLabel245;
+        private System.Windows.Forms.TextBox InGameMenuLogoPathTB;
     }
 }
