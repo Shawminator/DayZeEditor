@@ -993,7 +993,7 @@ namespace DayZeEditor
             131072});
             this.CrashAccuracyMinNud.Location = new System.Drawing.Point(335, 224);
             this.CrashAccuracyMinNud.Maximum = new decimal(new int[] {
-            0,
+            1,
             0,
             0,
             0});

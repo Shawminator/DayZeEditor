@@ -1063,6 +1063,48 @@ namespace DayZeEditor
             this.EnableItemRarityCB = new System.Windows.Forms.CheckBox();
             this.UseHumanityCB = new System.Windows.Forms.CheckBox();
             this.ShowHardlineHUDCB = new System.Windows.Forms.CheckBox();
+            this.tabPage17 = new System.Windows.Forms.TabPage();
+            this.groupBox76 = new System.Windows.Forms.GroupBox();
+            this.GarageMaxRangeTier3NUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel244 = new DarkUI.Controls.DarkLabel();
+            this.GarageMaxRangeTier2NUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel243 = new DarkUI.Controls.DarkLabel();
+            this.GarageMaxRangeTier1NUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel242 = new DarkUI.Controls.DarkLabel();
+            this.GarageMaxStorableTier3NUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel241 = new DarkUI.Controls.DarkLabel();
+            this.GarageMaxStorableTier2NUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel240 = new DarkUI.Controls.DarkLabel();
+            this.GarageMaxStorableTier1NUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel239 = new DarkUI.Controls.DarkLabel();
+            this.GarageStaticStorePriceNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel238 = new DarkUI.Controls.DarkLabel();
+            this.GarageEnableMarketFeaturesCB = new System.Windows.Forms.CheckBox();
+            this.GarageGroupStoreModeCB = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.GarageEnableGroupFeaturesCB = new System.Windows.Forms.CheckBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.darkButton73 = new DarkUI.Controls.DarkButton();
+            this.darkButton74 = new DarkUI.Controls.DarkButton();
+            this.GarageEntityWhitelistLB = new System.Windows.Forms.ListBox();
+            this.GarageNeedKeyToStoreCB = new System.Windows.Forms.CheckBox();
+            this.GarageUseVirtualStorageForCargoCB = new System.Windows.Forms.CheckBox();
+            this.GarageStorePricePercentNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel236 = new DarkUI.Controls.DarkLabel();
+            this.GarageMaxDistanceFromStoredPositionNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel234 = new DarkUI.Controls.DarkLabel();
+            this.GarageVehicleSearchRadiusNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel226 = new DarkUI.Controls.DarkLabel();
+            this.MaxStorableVehiclesNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel225 = new DarkUI.Controls.DarkLabel();
+            this.GarageCanStoreWithCargoCB = new System.Windows.Forms.CheckBox();
+            this.GarageRetrieveModeCB = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.GarageStoreModeCB = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.GarageModeCB = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.GarageEnabledCB = new System.Windows.Forms.CheckBox();
             this.darkToolStrip22 = new DarkUI.Controls.DarkToolStrip2();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -1072,6 +1114,8 @@ namespace DayZeEditor
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton21 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator18 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton11 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton20 = new System.Windows.Forms.ToolStripButton();
@@ -1380,6 +1424,19 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.RankSuperheroNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RankLegendNUD)).BeginInit();
             this.groupBox72.SuspendLayout();
+            this.tabPage17.SuspendLayout();
+            this.groupBox76.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GarageMaxRangeTier3NUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GarageMaxRangeTier2NUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GarageMaxRangeTier1NUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GarageMaxStorableTier3NUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GarageMaxStorableTier2NUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GarageMaxStorableTier1NUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GarageStaticStorePriceNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GarageStorePricePercentNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GarageMaxDistanceFromStoredPositionNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GarageVehicleSearchRadiusNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxStorableVehiclesNUD)).BeginInit();
             this.darkToolStrip22.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -1394,7 +1451,7 @@ namespace DayZeEditor
             this.darkToolStrip21.Location = new System.Drawing.Point(0, 0);
             this.darkToolStrip21.Name = "darkToolStrip21";
             this.darkToolStrip21.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
-            this.darkToolStrip21.Size = new System.Drawing.Size(1288, 45);
+            this.darkToolStrip21.Size = new System.Drawing.Size(1381, 45);
             this.darkToolStrip21.TabIndex = 46;
             this.darkToolStrip21.Text = "darkToolStrip21";
             // 
@@ -1703,7 +1760,7 @@ namespace DayZeEditor
             this.groupBox1.Controls.Add(this.darkLabel13);
             this.groupBox1.Location = new System.Drawing.Point(6, 113);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1268, 565);
+            this.groupBox1.Size = new System.Drawing.Size(1361, 565);
             this.groupBox1.TabIndex = 71;
             this.groupBox1.TabStop = false;
             // 
@@ -1785,7 +1842,7 @@ namespace DayZeEditor
             this.tabControl1.Location = new System.Drawing.Point(509, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(753, 543);
+            this.tabControl1.Size = new System.Drawing.Size(846, 543);
             this.tabControl1.TabIndex = 83;
             // 
             // Loot
@@ -1808,7 +1865,7 @@ namespace DayZeEditor
             this.Loot.Location = new System.Drawing.Point(4, 22);
             this.Loot.Name = "Loot";
             this.Loot.Padding = new System.Windows.Forms.Padding(3);
-            this.Loot.Size = new System.Drawing.Size(745, 517);
+            this.Loot.Size = new System.Drawing.Size(838, 517);
             this.Loot.TabIndex = 0;
             this.Loot.Text = "Loot";
             // 
@@ -2035,7 +2092,7 @@ namespace DayZeEditor
             this.listBox4.FormattingEnabled = true;
             this.listBox4.Location = new System.Drawing.Point(6, 19);
             this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(120, 290);
+            this.listBox4.Size = new System.Drawing.Size(120, 277);
             this.listBox4.TabIndex = 0;
             this.listBox4.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
@@ -2112,7 +2169,7 @@ namespace DayZeEditor
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(6, 3);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(194, 407);
+            this.listBox1.Size = new System.Drawing.Size(194, 394);
             this.listBox1.TabIndex = 0;
             this.listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
@@ -2129,7 +2186,7 @@ namespace DayZeEditor
             this.Infected.Location = new System.Drawing.Point(4, 22);
             this.Infected.Name = "Infected";
             this.Infected.Padding = new System.Windows.Forms.Padding(3);
-            this.Infected.Size = new System.Drawing.Size(745, 517);
+            this.Infected.Size = new System.Drawing.Size(838, 517);
             this.Infected.TabIndex = 1;
             this.Infected.Text = "Infected";
             // 
@@ -2342,11 +2399,12 @@ namespace DayZeEditor
             this.tabControl2.Controls.Add(this.tabPage13);
             this.tabControl2.Controls.Add(this.tabPage14);
             this.tabControl2.Controls.Add(this.tabPage3);
+            this.tabControl2.Controls.Add(this.tabPage17);
             this.tabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl2.Location = new System.Drawing.Point(0, 73);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(1288, 713);
+            this.tabControl2.Size = new System.Drawing.Size(1381, 713);
             this.tabControl2.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl2.TabIndex = 72;
             this.tabControl2.SelectedIndexChanged += new System.EventHandler(this.tabControl2_SelectedIndexChanged);
@@ -2368,7 +2426,7 @@ namespace DayZeEditor
             this.VariousSettingsTabPage.ForeColor = System.Drawing.SystemColors.Control;
             this.VariousSettingsTabPage.Location = new System.Drawing.Point(4, 25);
             this.VariousSettingsTabPage.Name = "VariousSettingsTabPage";
-            this.VariousSettingsTabPage.Size = new System.Drawing.Size(1280, 684);
+            this.VariousSettingsTabPage.Size = new System.Drawing.Size(1373, 684);
             this.VariousSettingsTabPage.TabIndex = 2;
             this.VariousSettingsTabPage.Text = "Various Settings";
             // 
@@ -4370,7 +4428,7 @@ namespace DayZeEditor
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1280, 684);
+            this.tabPage1.Size = new System.Drawing.Size(1373, 684);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Airdrop Settings";
             // 
@@ -4383,7 +4441,7 @@ namespace DayZeEditor
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1280, 684);
+            this.tabPage2.Size = new System.Drawing.Size(1373, 684);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "BaseBuilding settings";
             // 
@@ -4396,7 +4454,7 @@ namespace DayZeEditor
             this.tabControl3.Location = new System.Drawing.Point(3, 28);
             this.tabControl3.Name = "tabControl3";
             this.tabControl3.SelectedIndex = 0;
-            this.tabControl3.Size = new System.Drawing.Size(1274, 653);
+            this.tabControl3.Size = new System.Drawing.Size(1367, 653);
             this.tabControl3.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl3.TabIndex = 23;
             this.tabControl3.SelectedIndexChanged += new System.EventHandler(this.tabControl3_SelectedIndexChanged);
@@ -4410,7 +4468,7 @@ namespace DayZeEditor
             this.tabPage6.Location = new System.Drawing.Point(4, 25);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(1266, 624);
+            this.tabPage6.Size = new System.Drawing.Size(1359, 624);
             this.tabPage6.TabIndex = 0;
             this.tabPage6.Text = "tabPage6";
             // 
@@ -4886,7 +4944,7 @@ namespace DayZeEditor
             this.tabPage7.Location = new System.Drawing.Point(4, 25);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(1266, 624);
+            this.tabPage7.Size = new System.Drawing.Size(1359, 624);
             this.tabPage7.TabIndex = 1;
             this.tabPage7.Text = "tabPage7";
             // 
@@ -4922,7 +4980,7 @@ namespace DayZeEditor
             this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Location = new System.Drawing.Point(329, 29);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(936, 596);
+            this.panel3.Size = new System.Drawing.Size(1029, 596);
             this.panel3.TabIndex = 97;
             // 
             // pictureBox1
@@ -5195,7 +5253,7 @@ namespace DayZeEditor
             this.darkToolStrip23.Location = new System.Drawing.Point(3, 3);
             this.darkToolStrip23.Name = "darkToolStrip23";
             this.darkToolStrip23.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
-            this.darkToolStrip23.Size = new System.Drawing.Size(1274, 25);
+            this.darkToolStrip23.Size = new System.Drawing.Size(1367, 25);
             this.darkToolStrip23.TabIndex = 24;
             this.darkToolStrip23.Text = "darkToolStrip23";
             // 
@@ -5240,7 +5298,7 @@ namespace DayZeEditor
             this.tabPage4.ForeColor = System.Drawing.SystemColors.Control;
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1280, 684);
+            this.tabPage4.Size = new System.Drawing.Size(1373, 684);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Book Settings";
             // 
@@ -5939,7 +5997,7 @@ namespace DayZeEditor
             this.tabPage5.ForeColor = System.Drawing.SystemColors.Control;
             this.tabPage5.Location = new System.Drawing.Point(4, 25);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1280, 684);
+            this.tabPage5.Size = new System.Drawing.Size(1373, 684);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Safe Zone Settings";
             // 
@@ -6371,7 +6429,7 @@ namespace DayZeEditor
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Location = new System.Drawing.Point(341, 35);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(931, 641);
+            this.panel1.Size = new System.Drawing.Size(1024, 641);
             this.panel1.TabIndex = 99;
             // 
             // pictureBox2
@@ -6568,7 +6626,7 @@ namespace DayZeEditor
             this.tabPage8.ForeColor = System.Drawing.SystemColors.Control;
             this.tabPage8.Location = new System.Drawing.Point(4, 25);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(1280, 684);
+            this.tabPage8.Size = new System.Drawing.Size(1373, 684);
             this.tabPage8.TabIndex = 5;
             this.tabPage8.Text = "Map Settings";
             // 
@@ -7284,7 +7342,7 @@ namespace DayZeEditor
             this.panel2.Controls.Add(this.pictureBox3);
             this.panel2.Location = new System.Drawing.Point(490, 27);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(782, 649);
+            this.panel2.Size = new System.Drawing.Size(875, 649);
             this.panel2.TabIndex = 98;
             // 
             // pictureBox3
@@ -7309,7 +7367,7 @@ namespace DayZeEditor
             this.tabPage9.ForeColor = System.Drawing.SystemColors.Control;
             this.tabPage9.Location = new System.Drawing.Point(4, 25);
             this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Size = new System.Drawing.Size(1280, 684);
+            this.tabPage9.Size = new System.Drawing.Size(1373, 684);
             this.tabPage9.TabIndex = 6;
             this.tabPage9.Text = "Raid Settings";
             // 
@@ -8276,7 +8334,7 @@ namespace DayZeEditor
             this.tabPage10.ForeColor = System.Drawing.SystemColors.Control;
             this.tabPage10.Location = new System.Drawing.Point(4, 25);
             this.tabPage10.Name = "tabPage10";
-            this.tabPage10.Size = new System.Drawing.Size(1280, 684);
+            this.tabPage10.Size = new System.Drawing.Size(1373, 684);
             this.tabPage10.TabIndex = 7;
             this.tabPage10.Text = "General Settings";
             // 
@@ -9033,7 +9091,7 @@ namespace DayZeEditor
             this.tabPage11.ForeColor = System.Drawing.SystemColors.Control;
             this.tabPage11.Location = new System.Drawing.Point(4, 25);
             this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Size = new System.Drawing.Size(1280, 684);
+            this.tabPage11.Size = new System.Drawing.Size(1373, 684);
             this.tabPage11.TabIndex = 8;
             this.tabPage11.Text = "Mission";
             // 
@@ -9399,7 +9457,7 @@ namespace DayZeEditor
             this.panel5.Controls.Add(this.pictureBox6);
             this.panel5.Location = new System.Drawing.Point(572, 36);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(700, 640);
+            this.panel5.Size = new System.Drawing.Size(793, 640);
             this.panel5.TabIndex = 99;
             // 
             // pictureBox6
@@ -10304,7 +10362,7 @@ namespace DayZeEditor
             this.tabPage12.ForeColor = System.Drawing.SystemColors.Control;
             this.tabPage12.Location = new System.Drawing.Point(4, 25);
             this.tabPage12.Name = "tabPage12";
-            this.tabPage12.Size = new System.Drawing.Size(1280, 684);
+            this.tabPage12.Size = new System.Drawing.Size(1373, 684);
             this.tabPage12.TabIndex = 9;
             this.tabPage12.Text = "Spawn Settings";
             // 
@@ -10319,7 +10377,7 @@ namespace DayZeEditor
             this.SpawnTabControl.Location = new System.Drawing.Point(0, 25);
             this.SpawnTabControl.Name = "SpawnTabControl";
             this.SpawnTabControl.SelectedIndex = 0;
-            this.SpawnTabControl.Size = new System.Drawing.Size(1280, 659);
+            this.SpawnTabControl.Size = new System.Drawing.Size(1373, 659);
             this.SpawnTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.SpawnTabControl.TabIndex = 104;
             this.SpawnTabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl4_SelectedIndexChanged);
@@ -10332,7 +10390,7 @@ namespace DayZeEditor
             this.TabPageStartingclothes.Location = new System.Drawing.Point(4, 25);
             this.TabPageStartingclothes.Name = "TabPageStartingclothes";
             this.TabPageStartingclothes.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPageStartingclothes.Size = new System.Drawing.Size(1272, 630);
+            this.TabPageStartingclothes.Size = new System.Drawing.Size(1365, 630);
             this.TabPageStartingclothes.TabIndex = 0;
             this.TabPageStartingclothes.Text = "tabPage14";
             // 
@@ -10970,7 +11028,7 @@ namespace DayZeEditor
             this.tabPage15.Location = new System.Drawing.Point(4, 25);
             this.tabPage15.Name = "tabPage15";
             this.tabPage15.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage15.Size = new System.Drawing.Size(1272, 630);
+            this.tabPage15.Size = new System.Drawing.Size(1365, 630);
             this.tabPage15.TabIndex = 1;
             this.tabPage15.Text = "tabPage15";
             // 
@@ -12039,7 +12097,7 @@ namespace DayZeEditor
             this.tabPage16.Controls.Add(this.trackBar5);
             this.tabPage16.Location = new System.Drawing.Point(4, 25);
             this.tabPage16.Name = "tabPage16";
-            this.tabPage16.Size = new System.Drawing.Size(1272, 630);
+            this.tabPage16.Size = new System.Drawing.Size(1365, 630);
             this.tabPage16.TabIndex = 2;
             this.tabPage16.Text = "tabPage16";
             // 
@@ -12541,7 +12599,7 @@ namespace DayZeEditor
             this.panel4.Controls.Add(this.pictureBox4);
             this.panel4.Location = new System.Drawing.Point(250, 29);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1018, 596);
+            this.panel4.Size = new System.Drawing.Size(1111, 596);
             this.panel4.TabIndex = 100;
             // 
             // pictureBox4
@@ -12575,7 +12633,7 @@ namespace DayZeEditor
             this.SpawnLoadouts.Controls.Add(this.UseLoadoutsCB);
             this.SpawnLoadouts.Location = new System.Drawing.Point(4, 25);
             this.SpawnLoadouts.Name = "SpawnLoadouts";
-            this.SpawnLoadouts.Size = new System.Drawing.Size(1272, 630);
+            this.SpawnLoadouts.Size = new System.Drawing.Size(1365, 630);
             this.SpawnLoadouts.TabIndex = 3;
             this.SpawnLoadouts.Text = "SpawnLoadouts";
             // 
@@ -12821,7 +12879,7 @@ namespace DayZeEditor
             this.darkToolStrip24.Location = new System.Drawing.Point(0, 0);
             this.darkToolStrip24.Name = "darkToolStrip24";
             this.darkToolStrip24.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
-            this.darkToolStrip24.Size = new System.Drawing.Size(1280, 25);
+            this.darkToolStrip24.Size = new System.Drawing.Size(1373, 25);
             this.darkToolStrip24.TabIndex = 103;
             this.darkToolStrip24.Text = "darkToolStrip24";
             // 
@@ -12907,7 +12965,7 @@ namespace DayZeEditor
             this.tabPage13.ForeColor = System.Drawing.SystemColors.Control;
             this.tabPage13.Location = new System.Drawing.Point(4, 25);
             this.tabPage13.Name = "tabPage13";
-            this.tabPage13.Size = new System.Drawing.Size(1280, 684);
+            this.tabPage13.Size = new System.Drawing.Size(1373, 684);
             this.tabPage13.TabIndex = 10;
             this.tabPage13.Text = "Vehicle Settings";
             // 
@@ -13765,7 +13823,7 @@ namespace DayZeEditor
             this.tabPage14.ForeColor = System.Drawing.SystemColors.Control;
             this.tabPage14.Location = new System.Drawing.Point(4, 25);
             this.tabPage14.Name = "tabPage14";
-            this.tabPage14.Size = new System.Drawing.Size(1280, 684);
+            this.tabPage14.Size = new System.Drawing.Size(1373, 684);
             this.tabPage14.TabIndex = 11;
             this.tabPage14.Text = "Notification Scheduler";
             // 
@@ -14141,7 +14199,7 @@ namespace DayZeEditor
             this.tabPage3.ForeColor = System.Drawing.SystemColors.Control;
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1280, 684);
+            this.tabPage3.Size = new System.Drawing.Size(1373, 684);
             this.tabPage3.TabIndex = 12;
             this.tabPage3.Text = "Hardline";
             // 
@@ -15044,6 +15102,566 @@ namespace DayZeEditor
             this.ShowHardlineHUDCB.UseVisualStyleBackColor = true;
             this.ShowHardlineHUDCB.CheckedChanged += new System.EventHandler(this.ShowHardlineHUDCB_CheckedChanged);
             // 
+            // tabPage17
+            // 
+            this.tabPage17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage17.Controls.Add(this.groupBox76);
+            this.tabPage17.ForeColor = System.Drawing.SystemColors.Control;
+            this.tabPage17.Location = new System.Drawing.Point(4, 25);
+            this.tabPage17.Name = "tabPage17";
+            this.tabPage17.Size = new System.Drawing.Size(1373, 684);
+            this.tabPage17.TabIndex = 13;
+            this.tabPage17.Text = "Garage";
+            // 
+            // groupBox76
+            // 
+            this.groupBox76.Controls.Add(this.GarageMaxRangeTier3NUD);
+            this.groupBox76.Controls.Add(this.darkLabel244);
+            this.groupBox76.Controls.Add(this.GarageMaxRangeTier2NUD);
+            this.groupBox76.Controls.Add(this.darkLabel243);
+            this.groupBox76.Controls.Add(this.GarageMaxRangeTier1NUD);
+            this.groupBox76.Controls.Add(this.darkLabel242);
+            this.groupBox76.Controls.Add(this.GarageMaxStorableTier3NUD);
+            this.groupBox76.Controls.Add(this.darkLabel241);
+            this.groupBox76.Controls.Add(this.GarageMaxStorableTier2NUD);
+            this.groupBox76.Controls.Add(this.darkLabel240);
+            this.groupBox76.Controls.Add(this.GarageMaxStorableTier1NUD);
+            this.groupBox76.Controls.Add(this.darkLabel239);
+            this.groupBox76.Controls.Add(this.GarageStaticStorePriceNUD);
+            this.groupBox76.Controls.Add(this.darkLabel238);
+            this.groupBox76.Controls.Add(this.GarageEnableMarketFeaturesCB);
+            this.groupBox76.Controls.Add(this.GarageGroupStoreModeCB);
+            this.groupBox76.Controls.Add(this.label18);
+            this.groupBox76.Controls.Add(this.GarageEnableGroupFeaturesCB);
+            this.groupBox76.Controls.Add(this.label17);
+            this.groupBox76.Controls.Add(this.darkButton73);
+            this.groupBox76.Controls.Add(this.darkButton74);
+            this.groupBox76.Controls.Add(this.GarageEntityWhitelistLB);
+            this.groupBox76.Controls.Add(this.GarageNeedKeyToStoreCB);
+            this.groupBox76.Controls.Add(this.GarageUseVirtualStorageForCargoCB);
+            this.groupBox76.Controls.Add(this.GarageStorePricePercentNUD);
+            this.groupBox76.Controls.Add(this.darkLabel236);
+            this.groupBox76.Controls.Add(this.GarageMaxDistanceFromStoredPositionNUD);
+            this.groupBox76.Controls.Add(this.darkLabel234);
+            this.groupBox76.Controls.Add(this.GarageVehicleSearchRadiusNUD);
+            this.groupBox76.Controls.Add(this.darkLabel226);
+            this.groupBox76.Controls.Add(this.MaxStorableVehiclesNUD);
+            this.groupBox76.Controls.Add(this.darkLabel225);
+            this.groupBox76.Controls.Add(this.GarageCanStoreWithCargoCB);
+            this.groupBox76.Controls.Add(this.GarageRetrieveModeCB);
+            this.groupBox76.Controls.Add(this.label16);
+            this.groupBox76.Controls.Add(this.GarageStoreModeCB);
+            this.groupBox76.Controls.Add(this.label15);
+            this.groupBox76.Controls.Add(this.GarageModeCB);
+            this.groupBox76.Controls.Add(this.label14);
+            this.groupBox76.Controls.Add(this.GarageEnabledCB);
+            this.groupBox76.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox76.Location = new System.Drawing.Point(8, 14);
+            this.groupBox76.Name = "groupBox76";
+            this.groupBox76.Size = new System.Drawing.Size(682, 589);
+            this.groupBox76.TabIndex = 1;
+            this.groupBox76.TabStop = false;
+            this.groupBox76.Text = "General Settings";
+            // 
+            // GarageMaxRangeTier3NUD
+            // 
+            this.GarageMaxRangeTier3NUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.GarageMaxRangeTier3NUD.DecimalPlaces = 1;
+            this.GarageMaxRangeTier3NUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.GarageMaxRangeTier3NUD.Location = new System.Drawing.Point(518, 281);
+            this.GarageMaxRangeTier3NUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.GarageMaxRangeTier3NUD.Name = "GarageMaxRangeTier3NUD";
+            this.GarageMaxRangeTier3NUD.Size = new System.Drawing.Size(101, 20);
+            this.GarageMaxRangeTier3NUD.TabIndex = 138;
+            this.GarageMaxRangeTier3NUD.Tag = "Weight";
+            this.GarageMaxRangeTier3NUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.GarageMaxRangeTier3NUD.ValueChanged += new System.EventHandler(this.GarageMaxRangeTier3NUD_ValueChanged);
+            // 
+            // darkLabel244
+            // 
+            this.darkLabel244.AutoSize = true;
+            this.darkLabel244.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel244.Location = new System.Drawing.Point(340, 283);
+            this.darkLabel244.Name = "darkLabel244";
+            this.darkLabel244.Size = new System.Drawing.Size(89, 13);
+            this.darkLabel244.TabIndex = 139;
+            this.darkLabel244.Tag = "";
+            this.darkLabel244.Text = "Max Range Tier3";
+            // 
+            // GarageMaxRangeTier2NUD
+            // 
+            this.GarageMaxRangeTier2NUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.GarageMaxRangeTier2NUD.DecimalPlaces = 1;
+            this.GarageMaxRangeTier2NUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.GarageMaxRangeTier2NUD.Location = new System.Drawing.Point(518, 255);
+            this.GarageMaxRangeTier2NUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.GarageMaxRangeTier2NUD.Name = "GarageMaxRangeTier2NUD";
+            this.GarageMaxRangeTier2NUD.Size = new System.Drawing.Size(101, 20);
+            this.GarageMaxRangeTier2NUD.TabIndex = 136;
+            this.GarageMaxRangeTier2NUD.Tag = "Weight";
+            this.GarageMaxRangeTier2NUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.GarageMaxRangeTier2NUD.ValueChanged += new System.EventHandler(this.GarageMaxRangeTier2NUD_ValueChanged);
+            // 
+            // darkLabel243
+            // 
+            this.darkLabel243.AutoSize = true;
+            this.darkLabel243.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel243.Location = new System.Drawing.Point(340, 257);
+            this.darkLabel243.Name = "darkLabel243";
+            this.darkLabel243.Size = new System.Drawing.Size(89, 13);
+            this.darkLabel243.TabIndex = 137;
+            this.darkLabel243.Tag = "";
+            this.darkLabel243.Text = "Max Range Tier2";
+            // 
+            // GarageMaxRangeTier1NUD
+            // 
+            this.GarageMaxRangeTier1NUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.GarageMaxRangeTier1NUD.DecimalPlaces = 1;
+            this.GarageMaxRangeTier1NUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.GarageMaxRangeTier1NUD.Location = new System.Drawing.Point(518, 229);
+            this.GarageMaxRangeTier1NUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.GarageMaxRangeTier1NUD.Name = "GarageMaxRangeTier1NUD";
+            this.GarageMaxRangeTier1NUD.Size = new System.Drawing.Size(101, 20);
+            this.GarageMaxRangeTier1NUD.TabIndex = 134;
+            this.GarageMaxRangeTier1NUD.Tag = "Weight";
+            this.GarageMaxRangeTier1NUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.GarageMaxRangeTier1NUD.ValueChanged += new System.EventHandler(this.GarageMaxRangeTier1NUD_ValueChanged);
+            // 
+            // darkLabel242
+            // 
+            this.darkLabel242.AutoSize = true;
+            this.darkLabel242.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel242.Location = new System.Drawing.Point(340, 231);
+            this.darkLabel242.Name = "darkLabel242";
+            this.darkLabel242.Size = new System.Drawing.Size(89, 13);
+            this.darkLabel242.TabIndex = 135;
+            this.darkLabel242.Tag = "";
+            this.darkLabel242.Text = "Max Range Tier1";
+            // 
+            // GarageMaxStorableTier3NUD
+            // 
+            this.GarageMaxStorableTier3NUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.GarageMaxStorableTier3NUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.GarageMaxStorableTier3NUD.Location = new System.Drawing.Point(518, 203);
+            this.GarageMaxStorableTier3NUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.GarageMaxStorableTier3NUD.Name = "GarageMaxStorableTier3NUD";
+            this.GarageMaxStorableTier3NUD.Size = new System.Drawing.Size(101, 20);
+            this.GarageMaxStorableTier3NUD.TabIndex = 132;
+            this.GarageMaxStorableTier3NUD.Tag = "Weight";
+            this.GarageMaxStorableTier3NUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.GarageMaxStorableTier3NUD.ValueChanged += new System.EventHandler(this.GarageMaxStorableTier3NUD_ValueChanged);
+            // 
+            // darkLabel241
+            // 
+            this.darkLabel241.AutoSize = true;
+            this.darkLabel241.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel241.Location = new System.Drawing.Point(340, 205);
+            this.darkLabel241.Name = "darkLabel241";
+            this.darkLabel241.Size = new System.Drawing.Size(96, 13);
+            this.darkLabel241.TabIndex = 133;
+            this.darkLabel241.Tag = "";
+            this.darkLabel241.Text = "Max Storable Tier3";
+            // 
+            // GarageMaxStorableTier2NUD
+            // 
+            this.GarageMaxStorableTier2NUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.GarageMaxStorableTier2NUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.GarageMaxStorableTier2NUD.Location = new System.Drawing.Point(518, 177);
+            this.GarageMaxStorableTier2NUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.GarageMaxStorableTier2NUD.Name = "GarageMaxStorableTier2NUD";
+            this.GarageMaxStorableTier2NUD.Size = new System.Drawing.Size(101, 20);
+            this.GarageMaxStorableTier2NUD.TabIndex = 130;
+            this.GarageMaxStorableTier2NUD.Tag = "Weight";
+            this.GarageMaxStorableTier2NUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.GarageMaxStorableTier2NUD.ValueChanged += new System.EventHandler(this.GarageMaxStorableTier2NUD_ValueChanged);
+            // 
+            // darkLabel240
+            // 
+            this.darkLabel240.AutoSize = true;
+            this.darkLabel240.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel240.Location = new System.Drawing.Point(340, 179);
+            this.darkLabel240.Name = "darkLabel240";
+            this.darkLabel240.Size = new System.Drawing.Size(96, 13);
+            this.darkLabel240.TabIndex = 131;
+            this.darkLabel240.Tag = "";
+            this.darkLabel240.Text = "Max Storable Tier2";
+            // 
+            // GarageMaxStorableTier1NUD
+            // 
+            this.GarageMaxStorableTier1NUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.GarageMaxStorableTier1NUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.GarageMaxStorableTier1NUD.Location = new System.Drawing.Point(518, 151);
+            this.GarageMaxStorableTier1NUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.GarageMaxStorableTier1NUD.Name = "GarageMaxStorableTier1NUD";
+            this.GarageMaxStorableTier1NUD.Size = new System.Drawing.Size(101, 20);
+            this.GarageMaxStorableTier1NUD.TabIndex = 128;
+            this.GarageMaxStorableTier1NUD.Tag = "Weight";
+            this.GarageMaxStorableTier1NUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.GarageMaxStorableTier1NUD.ValueChanged += new System.EventHandler(this.GarageMaxStorableTier1NUD_ValueChanged);
+            // 
+            // darkLabel239
+            // 
+            this.darkLabel239.AutoSize = true;
+            this.darkLabel239.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel239.Location = new System.Drawing.Point(340, 153);
+            this.darkLabel239.Name = "darkLabel239";
+            this.darkLabel239.Size = new System.Drawing.Size(96, 13);
+            this.darkLabel239.TabIndex = 129;
+            this.darkLabel239.Tag = "";
+            this.darkLabel239.Text = "Max Storable Tier1";
+            // 
+            // GarageStaticStorePriceNUD
+            // 
+            this.GarageStaticStorePriceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.GarageStaticStorePriceNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.GarageStaticStorePriceNUD.Location = new System.Drawing.Point(518, 125);
+            this.GarageStaticStorePriceNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.GarageStaticStorePriceNUD.Name = "GarageStaticStorePriceNUD";
+            this.GarageStaticStorePriceNUD.Size = new System.Drawing.Size(101, 20);
+            this.GarageStaticStorePriceNUD.TabIndex = 126;
+            this.GarageStaticStorePriceNUD.Tag = "Weight";
+            this.GarageStaticStorePriceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.GarageStaticStorePriceNUD.ValueChanged += new System.EventHandler(this.GarageStaticStorePriceNUD_ValueChanged);
+            // 
+            // darkLabel238
+            // 
+            this.darkLabel238.AutoSize = true;
+            this.darkLabel238.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel238.Location = new System.Drawing.Point(340, 127);
+            this.darkLabel238.Name = "darkLabel238";
+            this.darkLabel238.Size = new System.Drawing.Size(89, 13);
+            this.darkLabel238.TabIndex = 127;
+            this.darkLabel238.Tag = "";
+            this.darkLabel238.Text = "Static Store Price";
+            // 
+            // GarageEnableMarketFeaturesCB
+            // 
+            this.GarageEnableMarketFeaturesCB.AutoSize = true;
+            this.GarageEnableMarketFeaturesCB.Location = new System.Drawing.Point(343, 82);
+            this.GarageEnableMarketFeaturesCB.Name = "GarageEnableMarketFeaturesCB";
+            this.GarageEnableMarketFeaturesCB.Size = new System.Drawing.Size(139, 17);
+            this.GarageEnableMarketFeaturesCB.TabIndex = 125;
+            this.GarageEnableMarketFeaturesCB.Tag = "";
+            this.GarageEnableMarketFeaturesCB.Text = "Enable Market Features";
+            this.GarageEnableMarketFeaturesCB.UseVisualStyleBackColor = true;
+            this.GarageEnableMarketFeaturesCB.CheckedChanged += new System.EventHandler(this.GarageEnableMarketFeaturesCB_CheckedChanged);
+            // 
+            // GarageGroupStoreModeCB
+            // 
+            this.GarageGroupStoreModeCB.FormattingEnabled = true;
+            this.GarageGroupStoreModeCB.Location = new System.Drawing.Point(343, 55);
+            this.GarageGroupStoreModeCB.Name = "GarageGroupStoreModeCB";
+            this.GarageGroupStoreModeCB.Size = new System.Drawing.Size(276, 21);
+            this.GarageGroupStoreModeCB.TabIndex = 124;
+            this.GarageGroupStoreModeCB.SelectedIndexChanged += new System.EventHandler(this.GarageGroupStoreModeCB_SelectedIndexChanged);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(340, 39);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(94, 13);
+            this.label18.TabIndex = 123;
+            this.label18.Text = "Group Store Mode";
+            // 
+            // GarageEnableGroupFeaturesCB
+            // 
+            this.GarageEnableGroupFeaturesCB.AutoSize = true;
+            this.GarageEnableGroupFeaturesCB.Location = new System.Drawing.Point(343, 19);
+            this.GarageEnableGroupFeaturesCB.Name = "GarageEnableGroupFeaturesCB";
+            this.GarageEnableGroupFeaturesCB.Size = new System.Drawing.Size(135, 17);
+            this.GarageEnableGroupFeaturesCB.TabIndex = 122;
+            this.GarageEnableGroupFeaturesCB.Tag = "";
+            this.GarageEnableGroupFeaturesCB.Text = "Enable Group Features";
+            this.GarageEnableGroupFeaturesCB.UseVisualStyleBackColor = true;
+            this.GarageEnableGroupFeaturesCB.CheckedChanged += new System.EventHandler(this.GarageEnableGroupFeaturesCB_CheckedChanged);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(18, 325);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(76, 13);
+            this.label17.TabIndex = 121;
+            this.label17.Text = "Entity Whitelist";
+            // 
+            // darkButton73
+            // 
+            this.darkButton73.Location = new System.Drawing.Point(225, 370);
+            this.darkButton73.Name = "darkButton73";
+            this.darkButton73.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton73.Size = new System.Drawing.Size(72, 23);
+            this.darkButton73.TabIndex = 120;
+            this.darkButton73.Text = "Remove";
+            this.darkButton73.Click += new System.EventHandler(this.darkButton73_Click);
+            // 
+            // darkButton74
+            // 
+            this.darkButton74.Location = new System.Drawing.Point(225, 341);
+            this.darkButton74.Name = "darkButton74";
+            this.darkButton74.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton74.Size = new System.Drawing.Size(72, 23);
+            this.darkButton74.TabIndex = 119;
+            this.darkButton74.Text = "Add New";
+            this.darkButton74.Click += new System.EventHandler(this.darkButton74_Click);
+            // 
+            // GarageEntityWhitelistLB
+            // 
+            this.GarageEntityWhitelistLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.GarageEntityWhitelistLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.GarageEntityWhitelistLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.GarageEntityWhitelistLB.FormattingEnabled = true;
+            this.GarageEntityWhitelistLB.Location = new System.Drawing.Point(21, 341);
+            this.GarageEntityWhitelistLB.Name = "GarageEntityWhitelistLB";
+            this.GarageEntityWhitelistLB.Size = new System.Drawing.Size(198, 225);
+            this.GarageEntityWhitelistLB.TabIndex = 118;
+            this.GarageEntityWhitelistLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            // 
+            // GarageNeedKeyToStoreCB
+            // 
+            this.GarageNeedKeyToStoreCB.AutoSize = true;
+            this.GarageNeedKeyToStoreCB.Location = new System.Drawing.Point(21, 292);
+            this.GarageNeedKeyToStoreCB.Name = "GarageNeedKeyToStoreCB";
+            this.GarageNeedKeyToStoreCB.Size = new System.Drawing.Size(117, 17);
+            this.GarageNeedKeyToStoreCB.TabIndex = 117;
+            this.GarageNeedKeyToStoreCB.Tag = "";
+            this.GarageNeedKeyToStoreCB.Text = "Need Key To Store";
+            this.GarageNeedKeyToStoreCB.UseVisualStyleBackColor = true;
+            this.GarageNeedKeyToStoreCB.CheckedChanged += new System.EventHandler(this.GarageNeedKeyToStoreCB_CheckedChanged);
+            // 
+            // GarageUseVirtualStorageForCargoCB
+            // 
+            this.GarageUseVirtualStorageForCargoCB.AutoSize = true;
+            this.GarageUseVirtualStorageForCargoCB.Location = new System.Drawing.Point(21, 269);
+            this.GarageUseVirtualStorageForCargoCB.Name = "GarageUseVirtualStorageForCargoCB";
+            this.GarageUseVirtualStorageForCargoCB.Size = new System.Drawing.Size(166, 17);
+            this.GarageUseVirtualStorageForCargoCB.TabIndex = 116;
+            this.GarageUseVirtualStorageForCargoCB.Tag = "";
+            this.GarageUseVirtualStorageForCargoCB.Text = "Use Virtual Storage For Cargo";
+            this.GarageUseVirtualStorageForCargoCB.UseVisualStyleBackColor = true;
+            this.GarageUseVirtualStorageForCargoCB.CheckedChanged += new System.EventHandler(this.GarageUseVirtualStorageForCargoCB_CheckedChanged);
+            // 
+            // GarageStorePricePercentNUD
+            // 
+            this.GarageStorePricePercentNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.GarageStorePricePercentNUD.DecimalPlaces = 1;
+            this.GarageStorePricePercentNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.GarageStorePricePercentNUD.Location = new System.Drawing.Point(518, 99);
+            this.GarageStorePricePercentNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.GarageStorePricePercentNUD.Name = "GarageStorePricePercentNUD";
+            this.GarageStorePricePercentNUD.Size = new System.Drawing.Size(101, 20);
+            this.GarageStorePricePercentNUD.TabIndex = 114;
+            this.GarageStorePricePercentNUD.Tag = "Weight";
+            this.GarageStorePricePercentNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.GarageStorePricePercentNUD.ValueChanged += new System.EventHandler(this.GarageStorePricePercentNUD_ValueChanged);
+            // 
+            // darkLabel236
+            // 
+            this.darkLabel236.AutoSize = true;
+            this.darkLabel236.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel236.Location = new System.Drawing.Point(340, 101);
+            this.darkLabel236.Name = "darkLabel236";
+            this.darkLabel236.Size = new System.Drawing.Size(99, 13);
+            this.darkLabel236.TabIndex = 115;
+            this.darkLabel236.Tag = "";
+            this.darkLabel236.Text = "Store Price Percent";
+            // 
+            // GarageMaxDistanceFromStoredPositionNUD
+            // 
+            this.GarageMaxDistanceFromStoredPositionNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.GarageMaxDistanceFromStoredPositionNUD.DecimalPlaces = 1;
+            this.GarageMaxDistanceFromStoredPositionNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.GarageMaxDistanceFromStoredPositionNUD.Location = new System.Drawing.Point(196, 222);
+            this.GarageMaxDistanceFromStoredPositionNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.GarageMaxDistanceFromStoredPositionNUD.Name = "GarageMaxDistanceFromStoredPositionNUD";
+            this.GarageMaxDistanceFromStoredPositionNUD.Size = new System.Drawing.Size(101, 20);
+            this.GarageMaxDistanceFromStoredPositionNUD.TabIndex = 112;
+            this.GarageMaxDistanceFromStoredPositionNUD.Tag = "Weight";
+            this.GarageMaxDistanceFromStoredPositionNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.GarageMaxDistanceFromStoredPositionNUD.ValueChanged += new System.EventHandler(this.GarageMaxDistanceFromStoredPositionNUD_ValueChanged);
+            // 
+            // darkLabel234
+            // 
+            this.darkLabel234.AutoSize = true;
+            this.darkLabel234.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel234.Location = new System.Drawing.Point(18, 224);
+            this.darkLabel234.Name = "darkLabel234";
+            this.darkLabel234.Size = new System.Drawing.Size(172, 13);
+            this.darkLabel234.TabIndex = 113;
+            this.darkLabel234.Tag = "";
+            this.darkLabel234.Text = "Max Distance From Stored Position";
+            // 
+            // GarageVehicleSearchRadiusNUD
+            // 
+            this.GarageVehicleSearchRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.GarageVehicleSearchRadiusNUD.DecimalPlaces = 1;
+            this.GarageVehicleSearchRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.GarageVehicleSearchRadiusNUD.Location = new System.Drawing.Point(196, 196);
+            this.GarageVehicleSearchRadiusNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.GarageVehicleSearchRadiusNUD.Name = "GarageVehicleSearchRadiusNUD";
+            this.GarageVehicleSearchRadiusNUD.Size = new System.Drawing.Size(101, 20);
+            this.GarageVehicleSearchRadiusNUD.TabIndex = 110;
+            this.GarageVehicleSearchRadiusNUD.Tag = "Weight";
+            this.GarageVehicleSearchRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.GarageVehicleSearchRadiusNUD.ValueChanged += new System.EventHandler(this.GarageVehicleSearchRadiusNUD_ValueChanged);
+            // 
+            // darkLabel226
+            // 
+            this.darkLabel226.AutoSize = true;
+            this.darkLabel226.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel226.Location = new System.Drawing.Point(18, 198);
+            this.darkLabel226.Name = "darkLabel226";
+            this.darkLabel226.Size = new System.Drawing.Size(115, 13);
+            this.darkLabel226.TabIndex = 111;
+            this.darkLabel226.Tag = "";
+            this.darkLabel226.Text = "Vehicle Search Radius";
+            // 
+            // MaxStorableVehiclesNUD
+            // 
+            this.MaxStorableVehiclesNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MaxStorableVehiclesNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.MaxStorableVehiclesNUD.Location = new System.Drawing.Point(196, 170);
+            this.MaxStorableVehiclesNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.MaxStorableVehiclesNUD.Name = "MaxStorableVehiclesNUD";
+            this.MaxStorableVehiclesNUD.Size = new System.Drawing.Size(101, 20);
+            this.MaxStorableVehiclesNUD.TabIndex = 108;
+            this.MaxStorableVehiclesNUD.Tag = "Weight";
+            this.MaxStorableVehiclesNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MaxStorableVehiclesNUD.ValueChanged += new System.EventHandler(this.MaxStorableVehiclesNUD_ValueChanged);
+            // 
+            // darkLabel225
+            // 
+            this.darkLabel225.AutoSize = true;
+            this.darkLabel225.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel225.Location = new System.Drawing.Point(18, 172);
+            this.darkLabel225.Name = "darkLabel225";
+            this.darkLabel225.Size = new System.Drawing.Size(109, 13);
+            this.darkLabel225.TabIndex = 109;
+            this.darkLabel225.Tag = "";
+            this.darkLabel225.Text = "MaxStorable Vehicles";
+            // 
+            // GarageCanStoreWithCargoCB
+            // 
+            this.GarageCanStoreWithCargoCB.AutoSize = true;
+            this.GarageCanStoreWithCargoCB.Location = new System.Drawing.Point(21, 246);
+            this.GarageCanStoreWithCargoCB.Name = "GarageCanStoreWithCargoCB";
+            this.GarageCanStoreWithCargoCB.Size = new System.Drawing.Size(126, 17);
+            this.GarageCanStoreWithCargoCB.TabIndex = 23;
+            this.GarageCanStoreWithCargoCB.Tag = "";
+            this.GarageCanStoreWithCargoCB.Text = "CanStore With Cargo";
+            this.GarageCanStoreWithCargoCB.UseVisualStyleBackColor = true;
+            this.GarageCanStoreWithCargoCB.CheckedChanged += new System.EventHandler(this.GarageCanStoreWithCargoCB_CheckedChanged);
+            // 
+            // GarageRetrieveModeCB
+            // 
+            this.GarageRetrieveModeCB.FormattingEnabled = true;
+            this.GarageRetrieveModeCB.Location = new System.Drawing.Point(21, 143);
+            this.GarageRetrieveModeCB.Name = "GarageRetrieveModeCB";
+            this.GarageRetrieveModeCB.Size = new System.Drawing.Size(276, 21);
+            this.GarageRetrieveModeCB.TabIndex = 22;
+            this.GarageRetrieveModeCB.SelectedIndexChanged += new System.EventHandler(this.GarageRetrieveModeCB_SelectedIndexChanged);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(18, 127);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(115, 13);
+            this.label16.TabIndex = 21;
+            this.label16.Text = "Garage Retrieve Mode";
+            // 
+            // GarageStoreModeCB
+            // 
+            this.GarageStoreModeCB.FormattingEnabled = true;
+            this.GarageStoreModeCB.Location = new System.Drawing.Point(21, 98);
+            this.GarageStoreModeCB.Name = "GarageStoreModeCB";
+            this.GarageStoreModeCB.Size = new System.Drawing.Size(276, 21);
+            this.GarageStoreModeCB.TabIndex = 20;
+            this.GarageStoreModeCB.SelectedIndexChanged += new System.EventHandler(this.GarageStoreModeCB_SelectedIndexChanged);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(18, 82);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(100, 13);
+            this.label15.TabIndex = 19;
+            this.label15.Text = "Garage Store Mode";
+            // 
+            // GarageModeCB
+            // 
+            this.GarageModeCB.FormattingEnabled = true;
+            this.GarageModeCB.Location = new System.Drawing.Point(21, 55);
+            this.GarageModeCB.Name = "GarageModeCB";
+            this.GarageModeCB.Size = new System.Drawing.Size(276, 21);
+            this.GarageModeCB.TabIndex = 18;
+            this.GarageModeCB.SelectedIndexChanged += new System.EventHandler(this.GarageModeCB_SelectedIndexChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(18, 39);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(72, 13);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "Garage Mode";
+            // 
+            // GarageEnabledCB
+            // 
+            this.GarageEnabledCB.AutoSize = true;
+            this.GarageEnabledCB.Location = new System.Drawing.Point(21, 19);
+            this.GarageEnabledCB.Name = "GarageEnabledCB";
+            this.GarageEnabledCB.Size = new System.Drawing.Size(59, 17);
+            this.GarageEnabledCB.TabIndex = 1;
+            this.GarageEnabledCB.Tag = "";
+            this.GarageEnabledCB.Text = "Enable";
+            this.GarageEnabledCB.UseVisualStyleBackColor = true;
+            this.GarageEnabledCB.CheckedChanged += new System.EventHandler(this.GarageEnabledCB_CheckedChanged);
+            // 
             // darkToolStrip22
             // 
             this.darkToolStrip22.AutoSize = false;
@@ -15058,6 +15676,8 @@ namespace DayZeEditor
             this.toolStripSeparator2,
             this.toolStripButton4,
             this.toolStripSeparator4,
+            this.toolStripButton21,
+            this.toolStripSeparator18,
             this.toolStripButton11,
             this.toolStripSeparator6,
             this.toolStripButton20,
@@ -15079,7 +15699,7 @@ namespace DayZeEditor
             this.darkToolStrip22.Location = new System.Drawing.Point(0, 45);
             this.darkToolStrip22.Name = "darkToolStrip22";
             this.darkToolStrip22.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
-            this.darkToolStrip22.Size = new System.Drawing.Size(1288, 28);
+            this.darkToolStrip22.Size = new System.Drawing.Size(1381, 28);
             this.darkToolStrip22.TabIndex = 73;
             this.darkToolStrip22.Text = "darkToolStrip22";
             // 
@@ -15162,6 +15782,26 @@ namespace DayZeEditor
             this.toolStripSeparator4.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 28);
+            // 
+            // toolStripButton21
+            // 
+            this.toolStripButton21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripButton21.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripButton21.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton21.Image")));
+            this.toolStripButton21.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton21.Name = "toolStripButton21";
+            this.toolStripButton21.Size = new System.Drawing.Size(93, 25);
+            this.toolStripButton21.Text = "Garage Settings";
+            this.toolStripButton21.Click += new System.EventHandler(this.toolStripButton21_Click);
+            // 
+            // toolStripSeparator18
+            // 
+            this.toolStripSeparator18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripSeparator18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripSeparator18.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStripSeparator18.Name = "toolStripSeparator18";
+            this.toolStripSeparator18.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripButton11
             // 
@@ -15348,7 +15988,7 @@ namespace DayZeEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1288, 786);
+            this.ClientSize = new System.Drawing.Size(1381, 786);
             this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.darkToolStrip22);
             this.Controls.Add(this.darkToolStrip21);
@@ -15725,6 +16365,20 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.RankLegendNUD)).EndInit();
             this.groupBox72.ResumeLayout(false);
             this.groupBox72.PerformLayout();
+            this.tabPage17.ResumeLayout(false);
+            this.groupBox76.ResumeLayout(false);
+            this.groupBox76.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GarageMaxRangeTier3NUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GarageMaxRangeTier2NUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GarageMaxRangeTier1NUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GarageMaxStorableTier3NUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GarageMaxStorableTier2NUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GarageMaxStorableTier1NUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GarageStaticStorePriceNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GarageStorePricePercentNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GarageMaxDistanceFromStoredPositionNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GarageVehicleSearchRadiusNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxStorableVehiclesNUD)).EndInit();
             this.darkToolStrip22.ResumeLayout(false);
             this.darkToolStrip22.PerformLayout();
             this.ResumeLayout(false);
@@ -16793,5 +17447,49 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox UseMissionTimeCB;
         private System.Windows.Forms.PictureBox pictureBox7;
         private DarkUI.Controls.DarkLabel darkLabel224;
+        private System.Windows.Forms.TabPage tabPage17;
+        private System.Windows.Forms.ToolStripButton toolStripButton21;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator18;
+        private System.Windows.Forms.GroupBox groupBox76;
+        private System.Windows.Forms.CheckBox GarageNeedKeyToStoreCB;
+        private System.Windows.Forms.CheckBox GarageUseVirtualStorageForCargoCB;
+        private System.Windows.Forms.NumericUpDown GarageStorePricePercentNUD;
+        private DarkUI.Controls.DarkLabel darkLabel236;
+        private System.Windows.Forms.NumericUpDown GarageMaxDistanceFromStoredPositionNUD;
+        private DarkUI.Controls.DarkLabel darkLabel234;
+        private System.Windows.Forms.NumericUpDown GarageVehicleSearchRadiusNUD;
+        private DarkUI.Controls.DarkLabel darkLabel226;
+        private System.Windows.Forms.NumericUpDown MaxStorableVehiclesNUD;
+        private DarkUI.Controls.DarkLabel darkLabel225;
+        private System.Windows.Forms.CheckBox GarageCanStoreWithCargoCB;
+        private System.Windows.Forms.ComboBox GarageRetrieveModeCB;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ComboBox GarageStoreModeCB;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox GarageModeCB;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.CheckBox GarageEnabledCB;
+        private DarkUI.Controls.DarkButton darkButton73;
+        private DarkUI.Controls.DarkButton darkButton74;
+        private System.Windows.Forms.ListBox GarageEntityWhitelistLB;
+        private System.Windows.Forms.CheckBox GarageEnableMarketFeaturesCB;
+        private System.Windows.Forms.ComboBox GarageGroupStoreModeCB;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.CheckBox GarageEnableGroupFeaturesCB;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.NumericUpDown GarageStaticStorePriceNUD;
+        private DarkUI.Controls.DarkLabel darkLabel238;
+        private System.Windows.Forms.NumericUpDown GarageMaxRangeTier3NUD;
+        private DarkUI.Controls.DarkLabel darkLabel244;
+        private System.Windows.Forms.NumericUpDown GarageMaxRangeTier2NUD;
+        private DarkUI.Controls.DarkLabel darkLabel243;
+        private System.Windows.Forms.NumericUpDown GarageMaxRangeTier1NUD;
+        private DarkUI.Controls.DarkLabel darkLabel242;
+        private System.Windows.Forms.NumericUpDown GarageMaxStorableTier3NUD;
+        private DarkUI.Controls.DarkLabel darkLabel241;
+        private System.Windows.Forms.NumericUpDown GarageMaxStorableTier2NUD;
+        private DarkUI.Controls.DarkLabel darkLabel240;
+        private System.Windows.Forms.NumericUpDown GarageMaxStorableTier1NUD;
+        private DarkUI.Controls.DarkLabel darkLabel239;
     }
 }

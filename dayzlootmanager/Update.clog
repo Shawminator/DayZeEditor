@@ -1,4 +1,12 @@
-﻿Version 0.7.4.4
+﻿Version 0.7.4.6
+[Fixed]
+Fixed Accuracy max limit in AI Opbject patrols, was set to 0, now set to 1.
+
+Version 0.7.4.5
+[Fixed]
+Updated CJ Loot chest to 1.6, added in item rarity for none defined/table items
+
+Version 0.7.4.4
 [Fixed]
 Fixed Backup not saving correct and causing a crash with traders
 Fixed Player Factions list showing old faction names

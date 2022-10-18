@@ -119,6 +119,10 @@ namespace DayZeLib
                         }
                     }
                 }
+                else
+                {
+                    Directory.CreateDirectory(QuestObjectiovesPath + "\\" + m_type);
+                }
             }
         }
         public QuestObjectivesBase CheckObjectiveExists(QuestObjectivesBase objective)

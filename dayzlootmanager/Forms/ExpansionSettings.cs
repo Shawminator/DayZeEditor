@@ -43,6 +43,7 @@ namespace DayZeEditor
         public string ChatSettingsPath;
         public string DamageSystemSettingsPath;
         public string DebugSettingsPath;
+        public string GarageSettingsPath;
         public string GeneralSettingsPath;
         public string HArdlineSettingsPath;
         public string LogsSettingsPath;
@@ -68,6 +69,7 @@ namespace DayZeEditor
         public ChatSettings ChatSettings;
         public DamageSystemSettings DamageSystemSettings;
         public DebugSettings DebugSettings;
+        public GarageSettings GarageSettings;
         public GeneralSettings GeneralSettings;
         public HardLineSettings HardLineSettings;
         public LogSettings LogSettings;
@@ -145,6 +147,7 @@ namespace DayZeEditor
                     toolStripButton14.Checked = false;
                     toolStripButton18.Checked = false;
                     toolStripButton20.Checked = false;
+                    toolStripButton21.Checked = false;
                     break;
                 case 1:
                     toolStripButton1.Checked = false;
@@ -159,6 +162,7 @@ namespace DayZeEditor
                     toolStripButton14.Checked = false;
                     toolStripButton18.Checked = false;
                     toolStripButton20.Checked = false;
+                    toolStripButton21.Checked = false;
                     break;
                 case 2:
                     toolStripButton1.Checked = false;
@@ -173,6 +177,7 @@ namespace DayZeEditor
                     toolStripButton14.Checked = false;
                     toolStripButton18.Checked = false;
                     toolStripButton20.Checked = false;
+                    toolStripButton21.Checked = false;
                     break;
                 case 3:
                     toolStripButton1.Checked = false;
@@ -187,6 +192,7 @@ namespace DayZeEditor
                     toolStripButton14.Checked = false;
                     toolStripButton18.Checked = false;
                     toolStripButton20.Checked = false;
+                    toolStripButton21.Checked = false;
                     break;
                 case 4:
                     toolStripButton1.Checked = false;
@@ -201,6 +207,7 @@ namespace DayZeEditor
                     toolStripButton14.Checked = false;
                     toolStripButton18.Checked = false;
                     toolStripButton20.Checked = false;
+                    toolStripButton21.Checked = false;
                     break;
                 case 5:
                     toolStripButton1.Checked = false;
@@ -214,6 +221,7 @@ namespace DayZeEditor
                     toolStripButton14.Checked = false;
                     toolStripButton18.Checked = false;
                     toolStripButton20.Checked = false;
+                    toolStripButton21.Checked = false;
                     break;
                 case 6:
                     toolStripButton1.Checked = false;
@@ -228,6 +236,7 @@ namespace DayZeEditor
                     toolStripButton14.Checked = false;
                     toolStripButton18.Checked = false;
                     toolStripButton20.Checked = false;
+                    toolStripButton21.Checked = false;
                     break;
                 case 7:
                     toolStripButton1.Checked = false;
@@ -242,6 +251,7 @@ namespace DayZeEditor
                     toolStripButton14.Checked = false;
                     toolStripButton18.Checked = false;
                     toolStripButton20.Checked = false;
+                    toolStripButton21.Checked = false;
                     break;
                 case 8:
                     toolStripButton1.Checked = false;
@@ -256,6 +266,7 @@ namespace DayZeEditor
                     toolStripButton14.Checked = false;
                     toolStripButton18.Checked = false;
                     toolStripButton20.Checked = false;
+                    toolStripButton21.Checked = false;
                     break;
                 case 9:
                     toolStripButton1.Checked = false;
@@ -270,6 +281,7 @@ namespace DayZeEditor
                     toolStripButton14.Checked = false;
                     toolStripButton18.Checked = false;
                     toolStripButton20.Checked = false;
+                    toolStripButton21.Checked = false;
                     break;
                 case 10:
                     toolStripButton1.Checked = false;
@@ -284,6 +296,7 @@ namespace DayZeEditor
                     toolStripButton13.Checked = false;
                     toolStripButton18.Checked = false;
                     toolStripButton20.Checked = false;
+                    toolStripButton21.Checked = false;
                     break;
                 case 11:
                     toolStripButton1.Checked = false;
@@ -298,6 +311,7 @@ namespace DayZeEditor
                     toolStripButton13.Checked = false;
                     toolStripButton14.Checked = false;
                     toolStripButton20.Checked = false;
+                    toolStripButton21.Checked = false;
                     break;
                 case 12:
                     toolStripButton1.Checked = false;
@@ -312,6 +326,22 @@ namespace DayZeEditor
                     toolStripButton13.Checked = false;
                     toolStripButton14.Checked = false;
                     toolStripButton18.Checked = false;
+                    toolStripButton21.Checked = false;
+                    break;
+                case 13:
+                    toolStripButton1.Checked = false;
+                    toolStripButton3.Checked = false;
+                    toolStripButton4.Checked = false;
+                    toolStripButton5.Checked = false;
+                    toolStripButton6.Checked = false;
+                    toolStripButton9.Checked = false;
+                    toolStripButton10.Checked = false;
+                    toolStripButton11.Checked = false;
+                    toolStripButton12.Checked = false;
+                    toolStripButton13.Checked = false;
+                    toolStripButton14.Checked = false;
+                    toolStripButton18.Checked = false;
+                    toolStripButton20.Checked = false;
                     break;
                 default:
                     break;
@@ -406,6 +436,12 @@ namespace DayZeEditor
             tabControl2.SelectedIndex = 12;
             if (tabControl2.SelectedIndex == 12)
                 toolStripButton20.Checked = true;
+        }
+        private void toolStripButton21_Click(object sender, EventArgs e)
+        {
+            tabControl2.SelectedIndex = 13;
+            if (tabControl2.SelectedIndex == 13)
+                toolStripButton21.Checked = true;
         }
         private void expansionsettings_Load(object sender, EventArgs e)
         {
@@ -525,7 +561,23 @@ namespace DayZeEditor
             DebugSettings.Filename = DebugSettingsPath;
             loaddebugsettings();
 
-
+            GarageSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\GarageSettings.json";
+            if (!File.Exists(GarageSettingsPath))
+            {
+                GarageSettings = new GarageSettings();
+                needtosave = true;
+                Console.WriteLine(Path.GetFileName(GarageSettingsPath) + " File not found, Creating new....");
+            }
+            else
+            {
+                Console.WriteLine("serializing " + Path.GetFileName(GarageSettingsPath));
+                GarageSettings = JsonSerializer.Deserialize<GarageSettings>(File.ReadAllText(GarageSettingsPath));
+                GarageSettings.isDirty = false;
+                if (GarageSettings.checkver())
+                    needtosave = true;
+            }
+            GarageSettings.Filename = GarageSettingsPath;
+            loadgaragesettings();
 
 
             GeneralSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\GeneralSettings.json";
@@ -1019,6 +1071,21 @@ namespace DayZeEditor
                 File.WriteAllText(DebugSettings.Filename, jsonString);
                 midifiedfiles.Add(Path.GetFileName(DebugSettings.Filename));
             }
+
+            if (GarageSettings.isDirty)
+            {
+                GarageSettings.isDirty = false;
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                string jsonString = JsonSerializer.Serialize(GarageSettings, options);
+                if (currentproject.Createbackups && File.Exists(GarageSettings.Filename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(GarageSettings.Filename) + "\\Backup\\" + SaveTime);
+                    File.Copy(GarageSettings.Filename, Path.GetDirectoryName(GarageSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(GarageSettings.Filename) + ".bak", true);
+                }
+                File.WriteAllText(GarageSettings.Filename, jsonString);
+                midifiedfiles.Add(Path.GetFileName(GarageSettings.Filename));
+            }
+
             if (GeneralSettings.isDirty)
             {
                 GeneralSettings.isDirty = false;
@@ -1394,6 +1461,7 @@ namespace DayZeEditor
                 case 8:
                 case 10:
                 case 11:
+                case 13:
                     Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\expansionMod\\Settings");
                     break;
                 case 2:
@@ -6592,6 +6660,223 @@ namespace DayZeEditor
         }
 
 
+
+
+        #region Garegesettings
+        private void loadgaragesettings()
+        {
+            useraction = false;
+            GarageModeCB.DataSource = Enum.GetValues(typeof(GarageMode));
+            GarageStoreModeCB.DataSource = Enum.GetValues(typeof(GarageStoreMode));
+            GarageRetrieveModeCB.DataSource = Enum.GetValues(typeof(GarageRetrieveMode));
+            GarageGroupStoreModeCB.DataSource = Enum.GetValues(typeof(GroupStoreMode));
+
+            GarageEnabledCB.Checked = GarageSettings.Enabled == 1 ? true:false;
+            GarageModeCB.SelectedItem = (GarageMode)GarageSettings.GarageMode;
+            GarageStoreModeCB.SelectedItem = (GarageStoreMode)GarageSettings.GarageStoreMode;
+            GarageRetrieveModeCB.SelectedItem = (GarageRetrieveMode)GarageSettings.GarageRetrieveMode;
+            MaxStorableVehiclesNUD.Value = GarageSettings.MaxStorableVehicles;
+            GarageVehicleSearchRadiusNUD.Value = GarageSettings.VehicleSearchRadius;
+            GarageMaxDistanceFromStoredPositionNUD.Value = GarageSettings.MaxDistanceFromStoredPosition;
+            GarageCanStoreWithCargoCB.Checked = GarageSettings.CanStoreWithCargo == 1 ? true : false;
+            GarageUseVirtualStorageForCargoCB.Checked = GarageSettings.UseVirtualStorageForCargo == 1 ? true : false;
+            GarageNeedKeyToStoreCB.Checked = GarageSettings.NeedKeyToStore == 1 ? true : false;
+            GarageEnableGroupFeaturesCB.Checked = GarageSettings.EnableGroupFeatures == 1 ? true : false;
+            GarageGroupStoreModeCB.SelectedItem = (GroupStoreMode)GarageSettings.GroupStoreMode;
+            GarageEnableMarketFeaturesCB.Checked = GarageSettings.EnableMarketFeatures == 1 ? true : false;
+            GarageStorePricePercentNUD.Value = GarageSettings.StorePricePercent;
+            GarageStaticStorePriceNUD.Value = GarageSettings.StaticStorePrice;
+            GarageMaxStorableTier1NUD.Value = GarageSettings.MaxStorableTier1;
+            GarageMaxStorableTier2NUD.Value = GarageSettings.MaxStorableTier2;
+            GarageMaxStorableTier3NUD.Value = GarageSettings.MaxStorableTier3;
+            GarageMaxRangeTier1NUD.Value = GarageSettings.MaxRangeTier1;
+            GarageMaxRangeTier2NUD.Value = GarageSettings.MaxRangeTier2;
+            GarageMaxRangeTier3NUD.Value = GarageSettings.MaxRangeTier3;
+
+
+            GarageEntityWhitelistLB.DisplayMember = "DisplayName";
+            GarageEntityWhitelistLB.ValueMember = "Value";
+            GarageEntityWhitelistLB.DataSource = GarageSettings.EntityWhitelist;
+            useraction = true;
+        }
+
+        #endregion Garagesettings
+
+        private void GarageEnabledCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            GarageSettings.Enabled = GarageEnabledCB.Checked == true ? 1 : 0;
+            GarageSettings.isDirty = true;
+        }
+
+        private void GarageModeCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            GarageMode cacl = (GarageMode)GarageModeCB.SelectedItem;
+            GarageSettings.GarageMode = (int)cacl;
+            GarageSettings.isDirty = true;
+        }
+
+        private void GarageStoreModeCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            GarageStoreMode cacl = (GarageStoreMode)GarageStoreModeCB.SelectedItem;
+            GarageSettings.GarageStoreMode = (int)cacl;
+            GarageSettings.isDirty = true;
+        }
+
+        private void GarageRetrieveModeCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            GarageRetrieveMode cacl = (GarageRetrieveMode)GarageRetrieveModeCB.SelectedItem;
+            GarageSettings.GarageRetrieveMode = (int)cacl;
+            GarageSettings.isDirty = true;
+        }
+
+        private void MaxStorableVehiclesNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            GarageSettings.MaxStorableVehicles = (int)MaxStorableVehiclesNUD.Value;
+            GarageSettings.isDirty = true;
+        }
+
+        private void GarageVehicleSearchRadiusNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            GarageSettings.VehicleSearchRadius = GarageVehicleSearchRadiusNUD.Value;
+            GarageSettings.isDirty = true;
+        }
+
+        private void GarageMaxDistanceFromStoredPositionNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            GarageSettings.MaxDistanceFromStoredPosition = GarageMaxDistanceFromStoredPositionNUD.Value;
+            GarageSettings.isDirty = true;
+        }
+
+        private void GarageCanStoreWithCargoCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            GarageSettings.CanStoreWithCargo = GarageCanStoreWithCargoCB.Checked == true ? 1 : 0;
+            GarageSettings.isDirty = true;
+        }
+
+        private void GarageUseVirtualStorageForCargoCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            GarageSettings.UseVirtualStorageForCargo = GarageUseVirtualStorageForCargoCB.Checked == true ? 1 : 0;
+            GarageSettings.isDirty = true;
+
+        }
+
+        private void GarageNeedKeyToStoreCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            GarageSettings.NeedKeyToStore = GarageNeedKeyToStoreCB.Checked == true ? 1 : 0;
+            GarageSettings.isDirty = true;
+        }
+
+        private void darkButton74_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes();
+            form.vanillatypes = vanillatypes;
+            form.ModTypes = ModTypes;
+            form.currentproject = currentproject;
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    GarageSettings.EntityWhitelist.Add(l);
+                    GarageSettings.isDirty = true;
+                }
+            }
+        }
+
+        private void darkButton73_Click(object sender, EventArgs e)
+        {
+            GarageSettings.EntityWhitelist.Remove(GarageEntityWhitelistLB.GetItemText(GarageEntityWhitelistLB.SelectedItem));
+            GarageSettings.isDirty = true;
+        }
+
+        private void GarageEnableGroupFeaturesCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            GarageSettings.EnableMarketFeatures = GarageEnableMarketFeaturesCB.Checked == true ? 1 : 0;
+            GarageSettings.isDirty = true;
+        }
+
+        private void GarageGroupStoreModeCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            GroupStoreMode cacl = (GroupStoreMode)GarageGroupStoreModeCB.SelectedItem;
+            GarageSettings.GroupStoreMode = (int)cacl;
+            GarageSettings.isDirty = true;
+        }
+
+        private void GarageEnableMarketFeaturesCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            GarageSettings.EnableMarketFeatures = GarageEnableMarketFeaturesCB.Checked == true ? 1 : 0;
+            GarageSettings.isDirty = true;
+        }
+
+        private void GarageStorePricePercentNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            GarageSettings.StorePricePercent = GarageStorePricePercentNUD.Value;
+            GarageSettings.isDirty = true;
+        }
+
+        private void GarageStaticStorePriceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            GarageSettings.StaticStorePrice = (int)GarageStaticStorePriceNUD.Value;
+            GarageSettings.isDirty = true;
+        }
+
+        private void GarageMaxStorableTier1NUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            GarageSettings.MaxStorableTier1 = (int)GarageMaxStorableTier1NUD.Value;
+            GarageSettings.isDirty = true;
+        }
+
+        private void GarageMaxStorableTier2NUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            GarageSettings.MaxStorableTier2 = (int)GarageMaxStorableTier2NUD.Value;
+            GarageSettings.isDirty = true;
+        }
+
+        private void GarageMaxStorableTier3NUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            GarageSettings.MaxStorableTier3 = (int)GarageMaxStorableTier3NUD.Value;
+            GarageSettings.isDirty = true;
+        }
+
+        private void GarageMaxRangeTier1NUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            GarageSettings.MaxRangeTier1 = GarageMaxRangeTier1NUD.Value;
+            GarageSettings.isDirty = true;
+        }
+
+        private void GarageMaxRangeTier2NUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            GarageSettings.MaxRangeTier2 = GarageMaxRangeTier2NUD.Value;
+            GarageSettings.isDirty = true;
+        }
+
+        private void GarageMaxRangeTier3NUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            GarageSettings.MaxRangeTier3 = GarageMaxRangeTier3NUD.Value;
+            GarageSettings.isDirty = true;
+        }
     }
     public class NullToEmptyGearConverter : JsonConverter<Gear>
     {
