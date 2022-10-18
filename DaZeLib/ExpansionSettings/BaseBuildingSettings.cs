@@ -34,7 +34,7 @@ namespace DayZeLib
     }
     public class BaseBuildingSettings
     {
-        const int CurrentVersion = 3;
+        const int CurrentVersion = 4;
 
         public int m_Version { get; set; }  // Current Version is 3
         public int CanBuildAnywhere { get; set; }
@@ -62,6 +62,8 @@ namespace DayZeLib
         public int CodelockAttachMode { get; set; }
         public int DismantleFlagMode { get; set; }
         public int FlagMenuMode { get; set; }
+        public int EnableVirtualStorage { get; set; }
+        public BindingList<string> VirtualStorageExcludedContainers { get;set;}
 
         [JsonIgnore]
         public string Filename { get; set; }

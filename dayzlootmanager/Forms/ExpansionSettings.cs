@@ -1964,7 +1964,7 @@ namespace DayZeEditor
             GetTerritoryFlagKitAfterBuildCB.Checked = BaseBuildingSettings.GetTerritoryFlagKitAfterBuild == 1 ? true : false;
             textBox2.Text = BaseBuildingSettings.BuildZoneRequiredCustomMessage;
             ZonesAreNoBuildZonesCB.Checked = BaseBuildingSettings.ZonesAreNoBuildZones == 1 ? true : false;
-
+            EnableVirtualStorageCB.Checked = BaseBuildingSettings.EnableVirtualStorage == 1 ? true : false;
 
             listBox6.DisplayMember = "DisplayName";
             listBox6.ValueMember = "Value";
@@ -1977,6 +1977,11 @@ namespace DayZeEditor
             listBox8.DisplayMember = "DisplayName";
             listBox8.ValueMember = "Value";
             listBox8.DataSource = BaseBuildingSettings.Zones;
+
+            VirtualStorageExcludedContainersLB.DisplayMember = "DisplayName";
+            VirtualStorageExcludedContainersLB.ValueMember = "Value";
+            VirtualStorageExcludedContainersLB.DataSource = BaseBuildingSettings.VirtualStorageExcludedContainers;
+
             pictureBox1.BackgroundImage = Image.FromFile(Application.StartupPath + currentproject.MapPath); // Map Size is 15360 x 15360, 0,0 bottom left, middle 7680 x 7680
             pictureBox1.Size = new Size(currentproject.MapSize, currentproject.MapSize);
             pictureBox1.Paint += new PaintEventHandler(DrawAll);
@@ -2371,6 +2376,41 @@ namespace DayZeEditor
             if (!useraction) return;
             DismantleFlagMode cacl = (DismantleFlagMode)DismantleFlagModeComboBox.SelectedItem;
             BaseBuildingSettings.DismantleFlagMode = (int)cacl;
+            BaseBuildingSettings.isDirty = true;
+        }
+        private void darkButton75_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    if (!BaseBuildingSettings.VirtualStorageExcludedContainers.Contains(l))
+                    {
+                        BaseBuildingSettings.VirtualStorageExcludedContainers.Add(l);
+                        BaseBuildingSettings.isDirty = true;
+                    }
+                }
+            }
+        }
+
+        private void darkButton76_Click(object sender, EventArgs e)
+        {
+            BaseBuildingSettings.VirtualStorageExcludedContainers.Remove(VirtualStorageExcludedContainersLB.GetItemText(VirtualStorageExcludedContainersLB.SelectedItem));
+            BaseBuildingSettings.isDirty = true;
+        }
+
+        private void EnableVirtualStorageCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            BaseBuildingSettings.EnableVirtualStorage = EnableVirtualStorageCB.Checked == true ? 1 : 0;
             BaseBuildingSettings.isDirty = true;
         }
         #endregion basebuildingsettings
@@ -6923,8 +6963,6 @@ namespace DayZeEditor
             GarageSettings.MaxRangeTier3 = GarageMaxRangeTier3NUD.Value;
             GarageSettings.isDirty = true;
         }
-
-
 
 
     }

@@ -1146,6 +1146,12 @@ namespace DayZeEditor
             this.VehicleAutoCoverRequireCamonetCB = new System.Windows.Forms.CheckBox();
             this.darkLabel246 = new DarkUI.Controls.DarkLabel();
             this.VehicleAutoCoverTimeSecondsNUD = new System.Windows.Forms.NumericUpDown();
+            this.groupBox79 = new System.Windows.Forms.GroupBox();
+            this.EnableVirtualStorageCB = new System.Windows.Forms.CheckBox();
+            this.darkButton75 = new DarkUI.Controls.DarkButton();
+            this.darkButton76 = new DarkUI.Controls.DarkButton();
+            this.darkLabel247 = new DarkUI.Controls.DarkLabel();
+            this.VirtualStorageExcludedContainersLB = new System.Windows.Forms.ListBox();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -1453,6 +1459,7 @@ namespace DayZeEditor
             this.groupBox77.SuspendLayout();
             this.groupBox78.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VehicleAutoCoverTimeSecondsNUD)).BeginInit();
+            this.groupBox79.SuspendLayout();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -4478,6 +4485,7 @@ namespace DayZeEditor
             // tabPage6
             // 
             this.tabPage6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage6.Controls.Add(this.groupBox79);
             this.tabPage6.Controls.Add(this.groupBox5);
             this.tabPage6.Controls.Add(this.groupBox3);
             this.tabPage6.Controls.Add(this.groupBox4);
@@ -5280,7 +5288,7 @@ namespace DayZeEditor
             this.toolStripButton8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton8.Name = "toolStripButton8";
-            this.toolStripButton8.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton8.Size = new System.Drawing.Size(96, 22);
             this.toolStripButton8.Text = "General Settings";
             this.toolStripButton8.Click += new System.EventHandler(this.toolStripButton8_Click);
             // 
@@ -5299,7 +5307,7 @@ namespace DayZeEditor
             this.toolStripButton7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton7.Size = new System.Drawing.Size(73, 22);
             this.toolStripButton7.Text = "Build Zones";
             this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
             // 
@@ -16154,6 +16162,76 @@ namespace DayZeEditor
             this.VehicleAutoCoverTimeSecondsNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.VehicleAutoCoverTimeSecondsNUD.ValueChanged += new System.EventHandler(this.VehicleAutoCoverTimeSecondsNUD_ValueChanged);
             // 
+            // groupBox79
+            // 
+            this.groupBox79.Controls.Add(this.darkButton75);
+            this.groupBox79.Controls.Add(this.darkButton76);
+            this.groupBox79.Controls.Add(this.darkLabel247);
+            this.groupBox79.Controls.Add(this.VirtualStorageExcludedContainersLB);
+            this.groupBox79.Controls.Add(this.EnableVirtualStorageCB);
+            this.groupBox79.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox79.Location = new System.Drawing.Point(505, 9);
+            this.groupBox79.Name = "groupBox79";
+            this.groupBox79.Size = new System.Drawing.Size(213, 229);
+            this.groupBox79.TabIndex = 22;
+            this.groupBox79.TabStop = false;
+            this.groupBox79.Text = "Storage";
+            // 
+            // EnableVirtualStorageCB
+            // 
+            this.EnableVirtualStorageCB.AutoSize = true;
+            this.EnableVirtualStorageCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.EnableVirtualStorageCB.Location = new System.Drawing.Point(15, 19);
+            this.EnableVirtualStorageCB.Name = "EnableVirtualStorageCB";
+            this.EnableVirtualStorageCB.Size = new System.Drawing.Size(131, 17);
+            this.EnableVirtualStorageCB.TabIndex = 10;
+            this.EnableVirtualStorageCB.Text = "Enable Virtual Storage";
+            this.EnableVirtualStorageCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.EnableVirtualStorageCB.UseVisualStyleBackColor = true;
+            this.EnableVirtualStorageCB.CheckedChanged += new System.EventHandler(this.EnableVirtualStorageCB_CheckedChanged);
+            // 
+            // darkButton75
+            // 
+            this.darkButton75.Location = new System.Drawing.Point(15, 181);
+            this.darkButton75.Name = "darkButton75";
+            this.darkButton75.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton75.Size = new System.Drawing.Size(91, 23);
+            this.darkButton75.TabIndex = 99;
+            this.darkButton75.Text = "Add";
+            this.darkButton75.Click += new System.EventHandler(this.darkButton75_Click);
+            // 
+            // darkButton76
+            // 
+            this.darkButton76.Location = new System.Drawing.Point(112, 181);
+            this.darkButton76.Name = "darkButton76";
+            this.darkButton76.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton76.Size = new System.Drawing.Size(83, 23);
+            this.darkButton76.TabIndex = 98;
+            this.darkButton76.Text = "Remove";
+            this.darkButton76.Click += new System.EventHandler(this.darkButton76_Click);
+            // 
+            // darkLabel247
+            // 
+            this.darkLabel247.AutoSize = true;
+            this.darkLabel247.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel247.Location = new System.Drawing.Point(12, 40);
+            this.darkLabel247.Name = "darkLabel247";
+            this.darkLabel247.Size = new System.Drawing.Size(176, 13);
+            this.darkLabel247.TabIndex = 97;
+            this.darkLabel247.Text = "Virtual Storage Excluded Containers";
+            // 
+            // VirtualStorageExcludedContainersLB
+            // 
+            this.VirtualStorageExcludedContainersLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.VirtualStorageExcludedContainersLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.VirtualStorageExcludedContainersLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.VirtualStorageExcludedContainersLB.FormattingEnabled = true;
+            this.VirtualStorageExcludedContainersLB.Location = new System.Drawing.Point(15, 56);
+            this.VirtualStorageExcludedContainersLB.Name = "VirtualStorageExcludedContainersLB";
+            this.VirtualStorageExcludedContainersLB.Size = new System.Drawing.Size(180, 121);
+            this.VirtualStorageExcludedContainersLB.TabIndex = 96;
+            this.VirtualStorageExcludedContainersLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            // 
             // ExpansionSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -16556,6 +16634,8 @@ namespace DayZeEditor
             this.groupBox78.ResumeLayout(false);
             this.groupBox78.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VehicleAutoCoverTimeSecondsNUD)).EndInit();
+            this.groupBox79.ResumeLayout(false);
+            this.groupBox79.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -17678,5 +17758,11 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox VehicleAutoCoverRequireCamonetCB;
         private DarkUI.Controls.DarkLabel darkLabel246;
         private System.Windows.Forms.NumericUpDown VehicleAutoCoverTimeSecondsNUD;
+        private System.Windows.Forms.GroupBox groupBox79;
+        private System.Windows.Forms.CheckBox EnableVirtualStorageCB;
+        private DarkUI.Controls.DarkButton darkButton75;
+        private DarkUI.Controls.DarkButton darkButton76;
+        private DarkUI.Controls.DarkLabel darkLabel247;
+        private System.Windows.Forms.ListBox VirtualStorageExcludedContainersLB;
     }
 }
