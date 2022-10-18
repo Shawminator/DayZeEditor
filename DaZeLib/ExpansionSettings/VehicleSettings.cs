@@ -45,7 +45,7 @@ namespace DayZeLib
     }
     public class VehicleSettings
     {
-        const int CurrentVersion = 11;
+        const int CurrentVersion = 13;
         public int m_Version { get; set; } // current version 8
         public int VehicleSync { get; set; }
         public int VehicleRequireKeyToStart { get; set; }
@@ -80,6 +80,11 @@ namespace DayZeLib
         public decimal DesyncInvulnerabilityTimeoutSeconds { get; set; }
         public decimal DamagedEngineStartupChancePercent { get; set; }
         public BindingList<VConfigs> VehiclesConfig { get; set; }
+        public int EnableVehicleCovers { get; set; }
+        public int AllowCoveringDEVehicles { get; set; }
+        public int UseVirtualStorageForCoverCargo { get; set; }
+        public decimal VehicleAutoCoverTimeSeconds { get; set; }
+        public int VehicleAutoCoverRequireCamonet { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }

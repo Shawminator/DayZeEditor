@@ -6316,9 +6316,7 @@ namespace DayZeEditor
             MasterKeyUsesNUD.Value = VehicleSettings.MasterKeyUses;
             CanPickLockCB.Checked = VehicleSettings.CanPickLock == 1 ? true : false;
 
-            PickLockToolsLB.DisplayMember = "DisplayName";
-            PickLockToolsLB.ValueMember = "Value";
-            PickLockToolsLB.DataSource = VehicleSettings.PickLockTools;
+
 
             PickLockChancePercentNUD.Value = (decimal)VehicleSettings.PickLockChancePercent;
             PickLockTimeSecondsNUD.Value = (decimal)VehicleSettings.PickLockTimeSeconds;
@@ -6335,24 +6333,31 @@ namespace DayZeEditor
             DesyncInvulnerabilityTimeoutSecondsNUD.Value = VehicleSettings.DesyncInvulnerabilityTimeoutSeconds;
             VehicleRoadKillDamageMultiplierNUD.Value = VehicleSettings.VehicleRoadKillDamageMultiplier;
             DamagedEngineStartupChancePercentNUD.Value = VehicleSettings.DamagedEngineStartupChancePercent;
+            ChangeLockTimeSecondsNUD.Value = (decimal)VehicleSettings.ChangeLockTimeSeconds;
+            ChangeLockToolDamagePercentNUD.Value = (decimal)VehicleSettings.ChangeLockToolDamagePercent;
+            PlacePlayerOnGroundOnReconnectInVehicleComboBox.SelectedItem = (PlacePlayerOnGroundOnReconnectInVehicle)VehicleSettings.PlacePlayerOnGroundOnReconnectInVehicle;
+            RevvingOverMaxRPMRuinsEngineInstantlyCB.Checked = VehicleSettings.RevvingOverMaxRPMRuinsEngineInstantly == 1 ? true : false;
+            VehicleDropsRuinedDoorsCB.Checked = VehicleSettings.VehicleDropsRuinedDoors == 1 ? true : false;
+            ExplodingVehicleDropsAttachmentsCB.Checked = VehicleSettings.ExplodingVehicleDropsAttachments == 1 ? true : false;
+            EnableVehicleCoversCB.Checked = VehicleSettings.EnableVehicleCovers == 1 ? true : false;
+            AllowCoveringDEVehiclesCB.Checked = VehicleSettings.AllowCoveringDEVehicles == 1 ? true : false;
+            UseVirtualStorageForCoverCargoCB.Checked = VehicleSettings.UseVirtualStorageForCoverCargo == 1 ? true : false;
+            VehicleAutoCoverTimeSecondsNUD.Value = VehicleSettings.VehicleAutoCoverTimeSeconds;
+            VehicleAutoCoverRequireCamonetCB.Checked = VehicleSettings.VehicleAutoCoverRequireCamonet == 1 ? true : false;
 
             ChangeLockToolsLB.DisplayMember = "DisplayName";
             ChangeLockToolsLB.ValueMember = "Value";
             ChangeLockToolsLB.DataSource = VehicleSettings.ChangeLockTools;
 
-            ChangeLockTimeSecondsNUD.Value = (decimal)VehicleSettings.ChangeLockTimeSeconds;
-            ChangeLockToolDamagePercentNUD.Value = (decimal)VehicleSettings.ChangeLockToolDamagePercent;
-            PlacePlayerOnGroundOnReconnectInVehicleComboBox.SelectedItem = (PlacePlayerOnGroundOnReconnectInVehicle)VehicleSettings.PlacePlayerOnGroundOnReconnectInVehicle;
-            RevvingOverMaxRPMRuinsEngineInstantlyCB.Checked = VehicleSettings.RevvingOverMaxRPMRuinsEngineInstantly == 1 ? true : false;
+            PickLockToolsLB.DisplayMember = "DisplayName";
+            PickLockToolsLB.ValueMember = "Value";
+            PickLockToolsLB.DataSource = VehicleSettings.PickLockTools;
 
             VehiclesConfigLB.DisplayMember = "DisplayName";
             VehiclesConfigLB.ValueMember = "Value";
             VehiclesConfigLB.DataSource = VehicleSettings.VehiclesConfig;
             useraction = false;
 
-            VehicleDropsRuinedDoorsCB.Checked = VehicleSettings.VehicleDropsRuinedDoors == 1 ? true : false;
-            ExplodingVehicleDropsAttachmentsCB.Checked = VehicleSettings.ExplodingVehicleDropsAttachments == 1 ? true : false;
-            //ForcePilotSyncIntervalSecondsNUD.Value = (decimal)VehicleSettings.ForcePilotSyncIntervalSeconds;
 
             useraction = true;
         }
@@ -6528,11 +6533,43 @@ namespace DayZeEditor
             VehicleSettings.VehicleRoadKillDamageMultiplier = VehicleRoadKillDamageMultiplierNUD.Value;
             VehicleSettings.isDirty = true;
         }
-
         private void DamagedEngineStartupChancePercentNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             VehicleSettings.DamagedEngineStartupChancePercent = DamagedEngineStartupChancePercentNUD.Value;
+            VehicleSettings.isDirty = true;
+        }
+        private void EnableVehicleCoversCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            VehicleSettings.EnableVehicleCovers = EnableVehicleCoversCB.Checked == true ? 1 : 0;
+            VehicleSettings.isDirty = true;
+        }
+
+        private void AllowCoveringDEVehiclesCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            VehicleSettings.AllowCoveringDEVehicles = AllowCoveringDEVehiclesCB.Checked == true ? 1 : 0;
+            VehicleSettings.isDirty = true;
+        }
+        private void UseVirtualStorageForCoverCargoCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            VehicleSettings.UseVirtualStorageForCoverCargo = UseVirtualStorageForCoverCargoCB.Checked == true ? 1 : 0;
+            VehicleSettings.isDirty = true;
+        }
+
+        private void VehicleAutoCoverTimeSecondsNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            VehicleSettings.VehicleAutoCoverTimeSeconds = VehicleAutoCoverTimeSecondsNUD.Value;
+            VehicleSettings.isDirty = true;
+        }
+
+        private void VehicleAutoCoverRequireCamonetCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            VehicleSettings.VehicleAutoCoverRequireCamonet = VehicleAutoCoverRequireCamonetCB.Checked == true? 1: 0;
             VehicleSettings.isDirty = true;
         }
 
@@ -6886,6 +6923,8 @@ namespace DayZeEditor
             GarageSettings.MaxRangeTier3 = GarageMaxRangeTier3NUD.Value;
             GarageSettings.isDirty = true;
         }
+
+
 
 
     }

@@ -1139,6 +1139,13 @@ namespace DayZeEditor
             this.darkLabel245 = new DarkUI.Controls.DarkLabel();
             this.InGameMenuLogoPathTB = new System.Windows.Forms.TextBox();
             this.ShowPartyMemberMapMarkersCB = new System.Windows.Forms.CheckBox();
+            this.groupBox78 = new System.Windows.Forms.GroupBox();
+            this.EnableVehicleCoversCB = new System.Windows.Forms.CheckBox();
+            this.AllowCoveringDEVehiclesCB = new System.Windows.Forms.CheckBox();
+            this.UseVirtualStorageForCoverCargoCB = new System.Windows.Forms.CheckBox();
+            this.VehicleAutoCoverRequireCamonetCB = new System.Windows.Forms.CheckBox();
+            this.darkLabel246 = new DarkUI.Controls.DarkLabel();
+            this.VehicleAutoCoverTimeSecondsNUD = new System.Windows.Forms.NumericUpDown();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -1444,6 +1451,8 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.MaxStorableVehiclesNUD)).BeginInit();
             this.darkToolStrip22.SuspendLayout();
             this.groupBox77.SuspendLayout();
+            this.groupBox78.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VehicleAutoCoverTimeSecondsNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -12978,6 +12987,7 @@ namespace DayZeEditor
             // tabPage13
             // 
             this.tabPage13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage13.Controls.Add(this.groupBox78);
             this.tabPage13.Controls.Add(this.groupBox43);
             this.tabPage13.Controls.Add(this.groupBox42);
             this.tabPage13.Controls.Add(this.groupBox41);
@@ -13579,7 +13589,7 @@ namespace DayZeEditor
             this.groupBox40.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox40.Location = new System.Drawing.Point(313, 16);
             this.groupBox40.Name = "groupBox40";
-            this.groupBox40.Size = new System.Drawing.Size(284, 608);
+            this.groupBox40.Size = new System.Drawing.Size(284, 526);
             this.groupBox40.TabIndex = 152;
             this.groupBox40.TabStop = false;
             this.groupBox40.Text = "Lock Picking";
@@ -13644,7 +13654,7 @@ namespace DayZeEditor
             this.PickLockChancePercentNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.PickLockChancePercentNUD.DecimalPlaces = 1;
             this.PickLockChancePercentNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.PickLockChancePercentNUD.Location = new System.Drawing.Point(177, 222);
+            this.PickLockChancePercentNUD.Location = new System.Drawing.Point(171, 205);
             this.PickLockChancePercentNUD.Maximum = new decimal(new int[] {
             20000,
             0,
@@ -13661,7 +13671,7 @@ namespace DayZeEditor
             // 
             this.darkLabel119.AutoSize = true;
             this.darkLabel119.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel119.Location = new System.Drawing.Point(12, 224);
+            this.darkLabel119.Location = new System.Drawing.Point(6, 207);
             this.darkLabel119.Name = "darkLabel119";
             this.darkLabel119.Size = new System.Drawing.Size(135, 13);
             this.darkLabel119.TabIndex = 119;
@@ -13671,7 +13681,7 @@ namespace DayZeEditor
             // 
             this.PickLockTimeSecondsNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.PickLockTimeSecondsNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.PickLockTimeSecondsNUD.Location = new System.Drawing.Point(177, 248);
+            this.PickLockTimeSecondsNUD.Location = new System.Drawing.Point(171, 231);
             this.PickLockTimeSecondsNUD.Maximum = new decimal(new int[] {
             20000,
             0,
@@ -13688,7 +13698,7 @@ namespace DayZeEditor
             // 
             this.darkLabel120.AutoSize = true;
             this.darkLabel120.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel120.Location = new System.Drawing.Point(12, 250);
+            this.darkLabel120.Location = new System.Drawing.Point(6, 233);
             this.darkLabel120.Name = "darkLabel120";
             this.darkLabel120.Size = new System.Drawing.Size(126, 13);
             this.darkLabel120.TabIndex = 121;
@@ -13698,7 +13708,7 @@ namespace DayZeEditor
             // 
             this.darkLabel126.AutoSize = true;
             this.darkLabel126.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel126.Location = new System.Drawing.Point(6, 566);
+            this.darkLabel126.Location = new System.Drawing.Point(9, 497);
             this.darkLabel126.Name = "darkLabel126";
             this.darkLabel126.Size = new System.Drawing.Size(178, 13);
             this.darkLabel126.TabIndex = 142;
@@ -13709,7 +13719,7 @@ namespace DayZeEditor
             this.PickLockToolDamagePercentNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.PickLockToolDamagePercentNUD.DecimalPlaces = 1;
             this.PickLockToolDamagePercentNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.PickLockToolDamagePercentNUD.Location = new System.Drawing.Point(177, 274);
+            this.PickLockToolDamagePercentNUD.Location = new System.Drawing.Point(171, 257);
             this.PickLockToolDamagePercentNUD.Maximum = new decimal(new int[] {
             20000,
             0,
@@ -13727,14 +13737,14 @@ namespace DayZeEditor
             this.ChangeLockToolDamagePercentNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ChangeLockToolDamagePercentNUD.DecimalPlaces = 1;
             this.ChangeLockToolDamagePercentNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ChangeLockToolDamagePercentNUD.Location = new System.Drawing.Point(9, 582);
+            this.ChangeLockToolDamagePercentNUD.Location = new System.Drawing.Point(188, 495);
             this.ChangeLockToolDamagePercentNUD.Maximum = new decimal(new int[] {
             20000,
             0,
             0,
             0});
             this.ChangeLockToolDamagePercentNUD.Name = "ChangeLockToolDamagePercentNUD";
-            this.ChangeLockToolDamagePercentNUD.Size = new System.Drawing.Size(96, 20);
+            this.ChangeLockToolDamagePercentNUD.Size = new System.Drawing.Size(79, 20);
             this.ChangeLockToolDamagePercentNUD.TabIndex = 141;
             this.ChangeLockToolDamagePercentNUD.Tag = "ChangeLockToolDamagePercent";
             this.ChangeLockToolDamagePercentNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -13744,7 +13754,7 @@ namespace DayZeEditor
             // 
             this.darkLabel121.AutoSize = true;
             this.darkLabel121.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel121.Location = new System.Drawing.Point(12, 276);
+            this.darkLabel121.Location = new System.Drawing.Point(6, 259);
             this.darkLabel121.Name = "darkLabel121";
             this.darkLabel121.Size = new System.Drawing.Size(162, 13);
             this.darkLabel121.TabIndex = 123;
@@ -13754,7 +13764,7 @@ namespace DayZeEditor
             // 
             this.darkLabel125.AutoSize = true;
             this.darkLabel125.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel125.Location = new System.Drawing.Point(6, 519);
+            this.darkLabel125.Location = new System.Drawing.Point(9, 468);
             this.darkLabel125.Name = "darkLabel125";
             this.darkLabel125.Size = new System.Drawing.Size(142, 13);
             this.darkLabel125.TabIndex = 140;
@@ -13764,7 +13774,7 @@ namespace DayZeEditor
             // 
             this.CanChangeLockCB.AutoSize = true;
             this.CanChangeLockCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CanChangeLockCB.Location = new System.Drawing.Point(9, 315);
+            this.CanChangeLockCB.Location = new System.Drawing.Point(9, 283);
             this.CanChangeLockCB.Name = "CanChangeLockCB";
             this.CanChangeLockCB.Size = new System.Drawing.Size(112, 17);
             this.CanChangeLockCB.TabIndex = 134;
@@ -13777,14 +13787,14 @@ namespace DayZeEditor
             // 
             this.ChangeLockTimeSecondsNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ChangeLockTimeSecondsNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ChangeLockTimeSecondsNUD.Location = new System.Drawing.Point(9, 535);
+            this.ChangeLockTimeSecondsNUD.Location = new System.Drawing.Point(188, 468);
             this.ChangeLockTimeSecondsNUD.Maximum = new decimal(new int[] {
             20000,
             0,
             0,
             0});
             this.ChangeLockTimeSecondsNUD.Name = "ChangeLockTimeSecondsNUD";
-            this.ChangeLockTimeSecondsNUD.Size = new System.Drawing.Size(96, 20);
+            this.ChangeLockTimeSecondsNUD.Size = new System.Drawing.Size(79, 20);
             this.ChangeLockTimeSecondsNUD.TabIndex = 139;
             this.ChangeLockTimeSecondsNUD.Tag = "ChangeLockTimeSeconds";
             this.ChangeLockTimeSecondsNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -13796,7 +13806,7 @@ namespace DayZeEditor
             this.ChangeLockToolsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.ChangeLockToolsLB.ForeColor = System.Drawing.SystemColors.Control;
             this.ChangeLockToolsLB.FormattingEnabled = true;
-            this.ChangeLockToolsLB.Location = new System.Drawing.Point(9, 361);
+            this.ChangeLockToolsLB.Location = new System.Drawing.Point(9, 326);
             this.ChangeLockToolsLB.Name = "ChangeLockToolsLB";
             this.ChangeLockToolsLB.Size = new System.Drawing.Size(240, 108);
             this.ChangeLockToolsLB.TabIndex = 135;
@@ -13806,7 +13816,7 @@ namespace DayZeEditor
             // 
             this.darkLabel124.AutoSize = true;
             this.darkLabel124.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel124.Location = new System.Drawing.Point(25, 342);
+            this.darkLabel124.Location = new System.Drawing.Point(9, 307);
             this.darkLabel124.Name = "darkLabel124";
             this.darkLabel124.Size = new System.Drawing.Size(100, 13);
             this.darkLabel124.TabIndex = 138;
@@ -13814,7 +13824,7 @@ namespace DayZeEditor
             // 
             // darkButton45
             // 
-            this.darkButton45.Location = new System.Drawing.Point(9, 475);
+            this.darkButton45.Location = new System.Drawing.Point(9, 440);
             this.darkButton45.Name = "darkButton45";
             this.darkButton45.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton45.Size = new System.Drawing.Size(108, 23);
@@ -13824,7 +13834,7 @@ namespace DayZeEditor
             // 
             // darkButton44
             // 
-            this.darkButton44.Location = new System.Drawing.Point(141, 475);
+            this.darkButton44.Location = new System.Drawing.Point(141, 440);
             this.darkButton44.Name = "darkButton44";
             this.darkButton44.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton44.Size = new System.Drawing.Size(108, 23);
@@ -16049,6 +16059,101 @@ namespace DayZeEditor
             this.ShowPartyMemberMapMarkersCB.UseVisualStyleBackColor = true;
             this.ShowPartyMemberMapMarkersCB.CheckedChanged += new System.EventHandler(this.PartySettingsCB_CheckedChanged);
             // 
+            // groupBox78
+            // 
+            this.groupBox78.Controls.Add(this.darkLabel246);
+            this.groupBox78.Controls.Add(this.VehicleAutoCoverTimeSecondsNUD);
+            this.groupBox78.Controls.Add(this.VehicleAutoCoverRequireCamonetCB);
+            this.groupBox78.Controls.Add(this.UseVirtualStorageForCoverCargoCB);
+            this.groupBox78.Controls.Add(this.AllowCoveringDEVehiclesCB);
+            this.groupBox78.Controls.Add(this.EnableVehicleCoversCB);
+            this.groupBox78.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox78.Location = new System.Drawing.Point(313, 548);
+            this.groupBox78.Name = "groupBox78";
+            this.groupBox78.Size = new System.Drawing.Size(284, 133);
+            this.groupBox78.TabIndex = 156;
+            this.groupBox78.TabStop = false;
+            this.groupBox78.Text = "Covers";
+            // 
+            // EnableVehicleCoversCB
+            // 
+            this.EnableVehicleCoversCB.AutoSize = true;
+            this.EnableVehicleCoversCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.EnableVehicleCoversCB.Location = new System.Drawing.Point(9, 19);
+            this.EnableVehicleCoversCB.Name = "EnableVehicleCoversCB";
+            this.EnableVehicleCoversCB.Size = new System.Drawing.Size(133, 17);
+            this.EnableVehicleCoversCB.TabIndex = 135;
+            this.EnableVehicleCoversCB.Tag = "";
+            this.EnableVehicleCoversCB.Text = "Enable Vehicle Covers";
+            this.EnableVehicleCoversCB.UseVisualStyleBackColor = true;
+            this.EnableVehicleCoversCB.CheckedChanged += new System.EventHandler(this.EnableVehicleCoversCB_CheckedChanged);
+            // 
+            // AllowCoveringDEVehiclesCB
+            // 
+            this.AllowCoveringDEVehiclesCB.AutoSize = true;
+            this.AllowCoveringDEVehiclesCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.AllowCoveringDEVehiclesCB.Location = new System.Drawing.Point(9, 37);
+            this.AllowCoveringDEVehiclesCB.Name = "AllowCoveringDEVehiclesCB";
+            this.AllowCoveringDEVehiclesCB.Size = new System.Drawing.Size(157, 17);
+            this.AllowCoveringDEVehiclesCB.TabIndex = 136;
+            this.AllowCoveringDEVehiclesCB.Tag = "";
+            this.AllowCoveringDEVehiclesCB.Text = "Allow Covering DE Vehicles";
+            this.AllowCoveringDEVehiclesCB.UseVisualStyleBackColor = true;
+            this.AllowCoveringDEVehiclesCB.CheckedChanged += new System.EventHandler(this.AllowCoveringDEVehiclesCB_CheckedChanged);
+            // 
+            // UseVirtualStorageForCoverCargoCB
+            // 
+            this.UseVirtualStorageForCoverCargoCB.AutoSize = true;
+            this.UseVirtualStorageForCoverCargoCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.UseVirtualStorageForCoverCargoCB.Location = new System.Drawing.Point(9, 59);
+            this.UseVirtualStorageForCoverCargoCB.Name = "UseVirtualStorageForCoverCargoCB";
+            this.UseVirtualStorageForCoverCargoCB.Size = new System.Drawing.Size(197, 17);
+            this.UseVirtualStorageForCoverCargoCB.TabIndex = 137;
+            this.UseVirtualStorageForCoverCargoCB.Tag = "";
+            this.UseVirtualStorageForCoverCargoCB.Text = "Use Virtual Storage For Cover Cargo";
+            this.UseVirtualStorageForCoverCargoCB.UseVisualStyleBackColor = true;
+            this.UseVirtualStorageForCoverCargoCB.CheckedChanged += new System.EventHandler(this.UseVirtualStorageForCoverCargoCB_CheckedChanged);
+            // 
+            // VehicleAutoCoverRequireCamonetCB
+            // 
+            this.VehicleAutoCoverRequireCamonetCB.AutoSize = true;
+            this.VehicleAutoCoverRequireCamonetCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.VehicleAutoCoverRequireCamonetCB.Location = new System.Drawing.Point(9, 109);
+            this.VehicleAutoCoverRequireCamonetCB.Name = "VehicleAutoCoverRequireCamonetCB";
+            this.VehicleAutoCoverRequireCamonetCB.Size = new System.Drawing.Size(202, 17);
+            this.VehicleAutoCoverRequireCamonetCB.TabIndex = 138;
+            this.VehicleAutoCoverRequireCamonetCB.Tag = "";
+            this.VehicleAutoCoverRequireCamonetCB.Text = "Vehicle Auto Cover Require Camonet";
+            this.VehicleAutoCoverRequireCamonetCB.UseVisualStyleBackColor = true;
+            this.VehicleAutoCoverRequireCamonetCB.CheckedChanged += new System.EventHandler(this.VehicleAutoCoverRequireCamonetCB_CheckedChanged);
+            // 
+            // darkLabel246
+            // 
+            this.darkLabel246.AutoSize = true;
+            this.darkLabel246.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel246.Location = new System.Drawing.Point(6, 85);
+            this.darkLabel246.Name = "darkLabel246";
+            this.darkLabel246.Size = new System.Drawing.Size(169, 13);
+            this.darkLabel246.TabIndex = 142;
+            this.darkLabel246.Text = "Vehicle Auto Cover Time Seconds";
+            // 
+            // VehicleAutoCoverTimeSecondsNUD
+            // 
+            this.VehicleAutoCoverTimeSecondsNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.VehicleAutoCoverTimeSecondsNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.VehicleAutoCoverTimeSecondsNUD.Location = new System.Drawing.Point(188, 83);
+            this.VehicleAutoCoverTimeSecondsNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.VehicleAutoCoverTimeSecondsNUD.Name = "VehicleAutoCoverTimeSecondsNUD";
+            this.VehicleAutoCoverTimeSecondsNUD.Size = new System.Drawing.Size(79, 20);
+            this.VehicleAutoCoverTimeSecondsNUD.TabIndex = 141;
+            this.VehicleAutoCoverTimeSecondsNUD.Tag = "ChangeLockTimeSeconds";
+            this.VehicleAutoCoverTimeSecondsNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.VehicleAutoCoverTimeSecondsNUD.ValueChanged += new System.EventHandler(this.VehicleAutoCoverTimeSecondsNUD_ValueChanged);
+            // 
             // ExpansionSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -16448,6 +16553,9 @@ namespace DayZeEditor
             this.darkToolStrip22.PerformLayout();
             this.groupBox77.ResumeLayout(false);
             this.groupBox77.PerformLayout();
+            this.groupBox78.ResumeLayout(false);
+            this.groupBox78.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VehicleAutoCoverTimeSecondsNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -17563,5 +17671,12 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkLabel darkLabel245;
         private System.Windows.Forms.TextBox InGameMenuLogoPathTB;
         private System.Windows.Forms.CheckBox ShowPartyMemberMapMarkersCB;
+        private System.Windows.Forms.GroupBox groupBox78;
+        private System.Windows.Forms.CheckBox EnableVehicleCoversCB;
+        private System.Windows.Forms.CheckBox AllowCoveringDEVehiclesCB;
+        private System.Windows.Forms.CheckBox UseVirtualStorageForCoverCargoCB;
+        private System.Windows.Forms.CheckBox VehicleAutoCoverRequireCamonetCB;
+        private DarkUI.Controls.DarkLabel darkLabel246;
+        private System.Windows.Forms.NumericUpDown VehicleAutoCoverTimeSecondsNUD;
     }
 }

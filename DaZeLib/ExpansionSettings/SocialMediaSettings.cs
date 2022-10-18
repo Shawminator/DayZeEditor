@@ -4,7 +4,7 @@ namespace DayZeLib
 {
     public class SocialMediaSettings
     {
-        const int CurrentVersion = 0;
+        const int CurrentVersion = 2;
 
         public int m_Version { get; set; }
         public string Discord { get; set; }
