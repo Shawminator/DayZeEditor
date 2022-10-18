@@ -11,7 +11,7 @@ namespace DayZeLib
 
     public class HardLineSettings
     {
-        const int CurrentVersion = 3;
+        const int CurrentVersion = 5;
 
         public int m_Version { get; set; }
         public int RankBambi { get; set; }

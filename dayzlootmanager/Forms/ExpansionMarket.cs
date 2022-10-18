@@ -138,10 +138,10 @@ namespace DayZeEditor
             {
                 marketsettings = JsonSerializer.Deserialize<MarketSettings>(File.ReadAllText(MarketSettingsPath));
                 marketsettings.isDirty = false;
-                if (marketsettings.m_Version != 10)
+                if (marketsettings.m_Version != 11)
                 {
                     MessageBox.Show("MarketSettings Version number not up to date, updating to latest version....");
-                    marketsettings.m_Version = 10;
+                    marketsettings.m_Version = 11;
                     marketsettings.isDirty = true;
                     needtosave = true;
                 }

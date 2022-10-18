@@ -10,7 +10,7 @@ namespace DayZeLib
 {
     public class SafeZoneSettings
     {
-        const int CurrentVersion = 7;
+        const int CurrentVersion = 8;
 
         public int m_Version { get; set; }
         public int Enabled { get; set; }

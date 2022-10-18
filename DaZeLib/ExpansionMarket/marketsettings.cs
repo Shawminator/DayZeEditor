@@ -44,7 +44,7 @@ namespace DayZeLib
 
         public MarketSettings()
         {
-            m_Version = 10;
+            m_Version = 11;
             CurrencyIcon = "DayZExpansion/Market/GUI/icons/coinstack2_64x64.edds";
             NetworkCategories = new BindingList<string[]>();
             //MarketVIPs = new BindingList<string[]>();
@@ -58,7 +58,7 @@ namespace DayZeLib
         public MarketSettings(string name)
         {
             Filename = name;
-            m_Version = 10;
+            m_Version = 11;
             MarketSystemEnabled = 0;
             CurrencyIcon = "DayZExpansion/Market/GUI/icons/coinstack2_64x64.edds";
             ATMSystemEnabled = 0;
