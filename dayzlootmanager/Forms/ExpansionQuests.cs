@@ -2781,12 +2781,7 @@ namespace DayZeEditor
         }
         private void darkButton16_Click(object sender, EventArgs e)
         {
-            AddItemfromTypes form = new AddItemfromTypes
-            {
-                vanillatypes = vanillatypes,
-                ModTypes = ModTypes,
-                currentproject = currentproject
-            };
+            AddItemfromString form = new AddItemfromString();
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {

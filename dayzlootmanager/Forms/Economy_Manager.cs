@@ -446,6 +446,7 @@ namespace DayZeEditor
         #region Types
         public void SetSummarytiers()
         {
+            Console.WriteLine("Loading SummaryPage");
             List<CheckBox> checkboxesSummary = SetdefinitionsTPSummary.Controls.OfType<CheckBox>().ToList();
             foreach (CheckBox cb in checkboxesSummary)
             {
