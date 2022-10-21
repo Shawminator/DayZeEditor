@@ -24,6 +24,7 @@ namespace DayZeLib
             Filename = filename;
             var mySerializer = new XmlSerializer(typeof(economycore));
             // To read the file, create a FileStream.
+            Console.WriteLine("serializing " + Path.GetFileName(Filename));
             try
             {
                 using (var myFileStream = new FileStream(filename, FileMode.Open))
@@ -146,6 +147,7 @@ namespace DayZeLib
             }
             using (Stream ms = Helper.GenerateStreamFromString(sb.ToString()))
             {
+                Console.WriteLine("serializing " + Path.GetFileName(Filename));
                 try
                 {
                     spawnabletypes = (spawnabletypes)mySerializer.Deserialize(ms);
@@ -206,6 +208,7 @@ namespace DayZeLib
             }
             using (Stream ms = Helper.GenerateStreamFromString(sb.ToString()))
             {
+                Console.WriteLine("serializing " + Path.GetFileName(Filename));
                 try
                 {
                     randompresets = (randompresets)mySerializer.Deserialize(ms);
@@ -251,6 +254,7 @@ namespace DayZeLib
             // To read the file, create a FileStream.
             using (var myFileStream = new FileStream(filename, FileMode.Open))
             {
+                Console.WriteLine("serializing " + Path.GetFileName(Filename));
                 try
                 {
                     // Call the Deserialize method and cast to the object type.
@@ -280,6 +284,7 @@ namespace DayZeLib
             // To read the file, create a FileStream.
             using (var myFileStream = new FileStream(filename, FileMode.Open))
             {
+                Console.WriteLine("serializing " + Path.GetFileName(Filename));
                 try
                 {
                     // Call the Deserialize method and cast to the object type.
@@ -309,6 +314,7 @@ namespace DayZeLib
             // To read the file, create a FileStream.
             using (var myFileStream = new FileStream(filename, FileMode.Open))
             {
+                Console.WriteLine("serializing " + Path.GetFileName(Filename));
                 try
                 {
                     // Call the Deserialize method and cast to the object type.
@@ -360,6 +366,7 @@ namespace DayZeLib
             // To read the file, create a FileStream.
             using (var myFileStream = new FileStream(filename, FileMode.Open))
             {
+                Console.WriteLine("serializing " + Path.GetFileName(Filename));
                 try
                 {
                     // Call the Deserialize method and cast to the object type.
@@ -411,6 +418,7 @@ namespace DayZeLib
             // To read the file, create a FileStream.
             using (var myFileStream = new FileStream(filename, FileMode.Open))
             {
+                Console.WriteLine("serializing " + Path.GetFileName(Filename));
                 try
                 {
                     // Call the Deserialize method and cast to the object type.
@@ -462,6 +470,7 @@ namespace DayZeLib
             // To read the file, create a FileStream.
             using (var myFileStream = new FileStream(filename, FileMode.Open))
             {
+                Console.WriteLine("serializing " + Path.GetFileName(Filename));
                 try
                 {
                     // Call the Deserialize method and cast to the object type.
@@ -509,19 +518,29 @@ namespace DayZeLib
             // To read the file, create a FileStream.
             using (var myFileStream = new FileStream(filename, FileMode.Open))
             {
-                try
+                if (File.Exists(Filename))
                 {
-                    // Call the Deserialize method and cast to the object type.
-                    playerspawnpoints = (playerspawnpoints)mySerializer.Deserialize(myFileStream);
-                }
-                catch (Exception ex)
-                {
-                    var form = Application.OpenForms["SplashForm"];
-                    if (form != null)
+                    Console.WriteLine("serializing " + Path.GetFileName(Filename));
+                    try
                     {
-                        form.Invoke(new Action(() => { form.Close(); }));
+                        // Call the Deserialize method and cast to the object type.
+                        playerspawnpoints = (playerspawnpoints)mySerializer.Deserialize(myFileStream);
                     }
-                    MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                    catch (Exception ex)
+                    {
+                        var form = Application.OpenForms["SplashForm"];
+                        if (form != null)
+                        {
+                            form.Invoke(new Action(() => { form.Close(); }));
+                        }
+                        MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                    }
+                }
+                else
+                {
+                    Console.WriteLine(Path.GetFileName(Filename) + " File not found, Creating new....");
+                    playerspawnpoints = new playerspawnpoints();
+                    Savecfgplayerspawnpoints();
                 }
             }
         }
@@ -562,11 +581,21 @@ namespace DayZeLib
             System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
             if (File.Exists(Filename))
             {
+                Console.WriteLine("serializing " + Path.GetFileName(Filename));
                 try
                 {
                     cfggameplay = JsonSerializer.Deserialize<cfggameplay>(File.ReadAllText(Filename));
                     if (cfggameplay.checkver())
+                    {
+                        if (cfggameplay.version == 119)
+                        {
+                            cfggameplay.PlayerData.MovementData = new MovementData();
+                            cfggameplay.PlayerData.DrowningData = new DrowningData();
+                            cfggameplay.MapData = new CFGGameplayMapData();
+                        }
                         SaveCFGGameplay();
+                    }
+
                 }
                 catch (Exception ex)
                 {
@@ -580,6 +609,7 @@ namespace DayZeLib
             }
             else
             {
+                Console.WriteLine(Path.GetFileName(Filename) + " File not found, Creating new....");
                 cfggameplay = new cfggameplay();
                 SaveCFGGameplay();
             }
@@ -605,30 +635,31 @@ namespace DayZeLib
             customCulture.NumberFormat.NumberDecimalSeparator = ".";
             customCulture.NumberFormat.NumberGroupSeparator = "";
             System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
-            try
+            if (File.Exists(Filename))
             {
-                if (File.Exists(Filename))
+                Console.WriteLine("serializing " + Path.GetFileName(Filename));
+                try
                 {
                     cfgEffectArea = JsonSerializer.Deserialize<cfgEffectArea>(File.ReadAllText(Filename));
+                    cfgEffectArea.convertpositionstolist();
                 }
-                else
+                catch (Exception ex)
                 {
-                    cfgEffectArea = new cfgEffectArea();
-                    SavecfgEffectArea();
-
+                    var form = Application.OpenForms["SplashForm"];
+                    if (form != null)
+                    {
+                        form.Invoke(new Action(() => { form.Close(); }));
+                    }
+                    MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
                 }
+            }
+            else
+            {
+                Console.WriteLine(Path.GetFileName(Filename) + " File not found, Creating new....");
+                cfgEffectArea = new cfgEffectArea();
+                SavecfgEffectArea();
                 cfgEffectArea.convertpositionstolist();
             }
-            catch (Exception ex)
-            {
-                var form = Application.OpenForms["SplashForm"];
-                if (form != null)
-                {
-                    form.Invoke(new Action(() => { form.Close(); }));
-                }
-                MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
-            }
-
         }
         public void SavecfgEffectArea()
         {
@@ -648,6 +679,7 @@ namespace DayZeLib
             Filename = filename;
             if(!File.Exists(Filename))
             {
+                Console.WriteLine(Path.GetFileName(Filename) + " File not found, Creating new....");
                 weather = new weather();
                 SaveWeather();
             }
@@ -655,6 +687,7 @@ namespace DayZeLib
             // To read the file, create a FileStream.
             using (var myFileStream = new FileStream(filename, FileMode.Open))
             {
+                Console.WriteLine("serializing " + Path.GetFileName(Filename));
                 try
                 {
                     // Call the Deserialize method and cast to the object type.

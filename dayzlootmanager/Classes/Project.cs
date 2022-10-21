@@ -348,6 +348,7 @@ namespace DayZeEditor
         }
         internal void SetcfgEffectAreaConfig()
         {
+           
             cfgEffectAreaConfig = new cfgEffectAreaConfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgEffectArea.json");
         }
         internal void GetPlayerDB()

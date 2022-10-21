@@ -35,6 +35,7 @@ namespace DayZeLib
         public TypesFile (string filename)
         {
             Filename = filename;
+            Console.WriteLine("serializing " + Path.GetFileName(Filename));
             try
             {
                 var mySerializer = new XmlSerializer(typeof(types));

@@ -111,6 +111,8 @@ namespace DayZeEditor
                         Projects.getActiveProject().ProfilePath = "profile";
                         Projects.SaveProject();
                     }
+                    Console.WriteLine(Projects.ActiveProject + " is the Current Active Project");
+                    Console.WriteLine("Will now serialize base economy files from Project " + Projects.ActiveProject);
                     Projects.getActiveProject().seteconomycore();
                     Projects.getActiveProject().seteconomydefinitions();
                     Projects.getActiveProject().setuserdefinitions();
@@ -130,7 +132,6 @@ namespace DayZeEditor
                     Projects.getActiveProject().Setmapgrouproto();
                     Projects.getActiveProject().Setmapgroupos();
                     //Projects.getActiveProject().GetPlayerDB();
-                    Console.WriteLine(Projects.ActiveProject + " is the Current Active Project");
                     Console.WriteLine("Project is Running Dr Jones Trader...." + Projects.getActiveProject().usingDrJoneTrader.ToString());
                     Console.WriteLine("Project is Running Expansion Market...." + Projects.getActiveProject().usingexpansionMarket.ToString());
                     Console.WriteLine("Project is Running Trader Plus...." + Projects.getActiveProject().usingtraderplus.ToString());

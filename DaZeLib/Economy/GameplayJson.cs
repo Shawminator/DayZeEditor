@@ -17,10 +17,11 @@ namespace DayZeLib
         public Worldsdata WorldsData { get; set; }
         public Basebuildingdata BaseBuildingData { get; set; }
         public Uidata UIData { get; set; }
-
+        public CFGGameplayMapData MapData { get; set; }
 
         [JsonIgnore]
-        const int currentversion = 116;
+        const int currentversion = 119;
+        
         public cfggameplay()
         {
             GeneralData = new Generaldata();
@@ -28,6 +29,7 @@ namespace DayZeLib
             WorldsData = new Worldsdata();
             BaseBuildingData = new Basebuildingdata();
             UIData = new Uidata();
+            MapData = new CFGGameplayMapData();
         }
 
         internal bool checkver()
@@ -46,6 +48,13 @@ namespace DayZeLib
         public int disableBaseDamage { get; set; }
         public int disableContainerDamage { get; set; }
         public int disableRespawnDialog { get; set; }
+
+        public Generaldata() 
+        {
+            disableBaseDamage = 0;
+            disableContainerDamage = 0;
+            disableRespawnDialog = 0;
+        }
     }
 
     public class Playerdata
@@ -53,30 +62,63 @@ namespace DayZeLib
         public int disablePersonalLight { get; set; }
         public Staminadata StaminaData { get; set; }
         public Shockhandlingdata ShockHandlingData { get; set; }
+        public MovementData MovementData { get; set; }
+        public DrowningData DrowningData { get; set; }
 
         public Playerdata()
         {
+            disablePersonalLight = 1;
             StaminaData = new Staminadata();
             ShockHandlingData = new Shockhandlingdata();
+            MovementData = new MovementData();
+            DrowningData = new DrowningData();
         }
     }
-
     public class Staminadata
     {
-        public float sprintStaminaModifierErc { get; set; }
-        public float sprintStaminaModifierCro { get; set; }
-        public float staminaWeightLimitThreshold { get; set; }
-        public float staminaMax { get; set; }
-        public float staminaKgToStaminaPercentPenalty { get; set; }
-        public float staminaMinCap { get; set; }
-    }
+        public decimal sprintStaminaModifierErc { get; set; }
+        public decimal sprintStaminaModifierCro { get; set; }
+        public decimal staminaWeightLimitThreshold { get; set; }
+        public decimal staminaMax { get; set; }
+        public decimal staminaKgToStaminaPercentPenalty { get; set; }
+        public decimal staminaMinCap { get; set; }
 
+        public Staminadata() { }
+    }
     public class Shockhandlingdata
     {
-        public float shockRefillSpeedConscious { get; set; }
-        public float shockRefillSpeedUnconscious { get; set; }
+        public decimal shockRefillSpeedConscious { get; set; }
+        public decimal shockRefillSpeedUnconscious { get; set; }
         public bool allowRefillSpeedModifier { get; set; }
+
+        public Shockhandlingdata() { }
     }
+    public class MovementData
+    {
+        public decimal timeToStrafeJog { get; set; }
+        public decimal rotationSpeedJog { get; set; }
+        public decimal timeToSprint { get; set; }
+        public decimal timeToStrafeSprint { get; set; }
+        public decimal rotationSpeedSprint { get; set; }
+
+        public MovementData() 
+        {
+            timeToStrafeJog = (decimal)0.1;
+			rotationSpeedJog = (decimal)0.3;
+			timeToSprint = (decimal)0.45;
+			timeToStrafeSprint = (decimal)0.3;
+			rotationSpeedSprint = (decimal)0.15;
+        }
+    }
+    public class DrowningData
+    {
+        public decimal staminaDepletionSpeed { get; set; }
+        public decimal healthDepletionSpeed { get; set; }
+        public decimal shockDepletionSpeed { get; set; }
+
+        public DrowningData() { }
+    }
+
 
     public class Worldsdata
     {
@@ -109,7 +151,6 @@ namespace DayZeLib
             ConstructionData = new Constructiondata();
         }
     }
-
     public class Hologramdata
     {
         public int disableIsCollidingBBoxCheck { get; set; }
@@ -123,7 +164,6 @@ namespace DayZeLib
         public int disableIsUnderwaterCheck { get; set; }
         public int disableIsInTerrainCheck { get; set; }
     }
-
     public class Constructiondata
     {
         public int disablePerformRoofCheck { get; set; }
@@ -141,23 +181,44 @@ namespace DayZeLib
             HitIndicationData = new Hitindicationdata();
         }
     }
-
     public class Hitindicationdata
     {
         public int hitDirectionOverrideEnabled { get; set; }
         public int hitDirectionBehaviour { get; set; }
         public int hitDirectionStyle { get; set; }
         public string hitDirectionIndicatorColorStr { get; set; }
-        public float hitDirectionMaxDuration { get; set; }
-        public float hitDirectionBreakPointRelative { get; set; }
-        public float hitDirectionScatter { get; set; }
+        public decimal hitDirectionMaxDuration { get; set; }
+        public decimal hitDirectionBreakPointRelative { get; set; }
+        public decimal hitDirectionScatter { get; set; }
         public int hitIndicationPostProcessEnabled { get; set; }
 
         public Hitindicationdata()
         {
-            hitDirectionIndicatorColorStr = "0xffbb0a1e";
+            hitDirectionOverrideEnabled = 0;
+			hitDirectionBehaviour = 1;
+			hitDirectionStyle = 0;
+			hitDirectionIndicatorColorStr = "0xffbb0a1e";
+			hitDirectionMaxDuration = (decimal)2.0;
+            hitDirectionBreakPointRelative = (decimal)0.2;
+            hitDirectionScatter = (decimal)10.0;
+            hitIndicationPostProcessEnabled = 1;
         }
     }
 
+    public class CFGGameplayMapData
+    {
+        public int ignoreMapOwnership { get; set; }
+        public int ignoreNavItemsOwnership { get; set; }
+        public int displayPlayerPosition { get; set; }
+        public int displayNavInfo { get; set; }
+
+        public CFGGameplayMapData() 
+        {
+            ignoreMapOwnership = 0;
+            ignoreNavItemsOwnership = 0;
+            displayPlayerPosition = 0;
+		    displayNavInfo = 1;
+        }
+    }
 
 }

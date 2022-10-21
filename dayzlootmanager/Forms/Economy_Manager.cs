@@ -90,6 +90,7 @@ namespace DayZeEditor
             comboBox6.DataSource = currentproject.limitfefinitions.lists.tags;
             SetuprandomPresetsForSpawnabletypes();
 
+            
             PopulateTreeView();
             Loadevents();
             LoadeventSpawns();
@@ -531,6 +532,7 @@ namespace DayZeEditor
         }
         private void PopulateTreeView()
         {
+            Console.WriteLine("populating Types treeView");
             treeViewMS1.Nodes.Clear();
             TreeNode root = new TreeNode(Path.GetFileName(filename))
             {
@@ -1788,7 +1790,7 @@ namespace DayZeEditor
         {
             isUserInteraction = false;
 
-
+            Console.WriteLine("Loading Events");
             AllEvents = new BindingList<string>();
             foreach (eventscofig eventsconfig in currentproject.ModEventsList)
             {
@@ -2079,6 +2081,7 @@ namespace DayZeEditor
         public eventposdefEventZone eventposdefEventZone;
         private void LoadeventSpawns()
         {
+            Console.WriteLine("Loading EventSpawns");
             isUserInteraction = false;
             var sortedListInstance = new BindingList<eventposdefEvent>(currentproject.cfgeventspawns.eventposdef.@event.OrderBy(x => x.name).ToList());
             currentproject.cfgeventspawns.eventposdef.@event = sortedListInstance;
@@ -2859,6 +2862,7 @@ namespace DayZeEditor
         public eventgroupdefGroupChild eventgroupdefGroupChild;
         public void LoadeventSpawnsGroup()
         {
+            Console.WriteLine("Loading Eventgroups");
             isUserInteraction = false;
             var sortedListInstance = new BindingList<eventgroupdefGroup>(currentproject.cfgeventgroups.eventgroupdef.group.OrderBy(x => x.name).ToList());
             currentproject.cfgeventgroups.eventgroupdef.group = sortedListInstance;
@@ -3054,6 +3058,7 @@ namespace DayZeEditor
         public object CurrentspawnabletypesTypetype;
         private void LoadSpawnableTypes()
         {
+            Console.WriteLine("Loading SpawnableTypes");
             isUserInteraction = false;
             SpawnabletypeslistLB.DisplayMember = "DisplayName";
             SpawnabletypeslistLB.ValueMember = "Value";
@@ -3988,6 +3993,7 @@ namespace DayZeEditor
         public playerspawnpoints playerspawnpoints;
         public void LoadPlayerSpawns()
         {
+            Console.WriteLine("Loading PlayerSpawn");
             isUserInteraction = false;
 
             playerspawnpoints = currentproject.cfgplayerspawnpoints.playerspawnpoints;
@@ -4345,6 +4351,7 @@ namespace DayZeEditor
         private cfggameplay cfggameplay;
         private void LoadCFGGamelplay()
         {
+            Console.WriteLine("Loading CFGamePlay");
             isUserInteraction = false;
             cfggameplay = currentproject.CFGGameplayConfig.cfggameplay;
             CFGGameplayTB.Text = cfggameplay.version.ToString();
@@ -4353,16 +4360,26 @@ namespace DayZeEditor
             disableRespawnDialogCB.Checked = cfggameplay.GeneralData.disableRespawnDialog == 1 ? true : false;
 
             disablePersonalLightCB.Checked = cfggameplay.PlayerData.disablePersonalLight == 1 ? true : false;
-            sprintStaminaModifierErcNUD.Value = (decimal)cfggameplay.PlayerData.StaminaData.sprintStaminaModifierErc;
-            sprintStaminaModifierCroNUD.Value = (decimal)cfggameplay.PlayerData.StaminaData.sprintStaminaModifierCro;
-            staminaWeightLimitThresholdNUD.Value = (decimal)cfggameplay.PlayerData.StaminaData.staminaWeightLimitThreshold;
-            staminaMaxNUD.Value = (decimal)cfggameplay.PlayerData.StaminaData.staminaMax;
-            staminaKgToStaminaPercentPenaltyNUD.Value = (decimal)cfggameplay.PlayerData.StaminaData.staminaKgToStaminaPercentPenalty;
-            staminaMinCapNUD.Value = (decimal)cfggameplay.PlayerData.StaminaData.staminaMinCap;
+            sprintStaminaModifierErcNUD.Value = cfggameplay.PlayerData.StaminaData.sprintStaminaModifierErc;
+            sprintStaminaModifierCroNUD.Value = cfggameplay.PlayerData.StaminaData.sprintStaminaModifierCro;
+            staminaWeightLimitThresholdNUD.Value = cfggameplay.PlayerData.StaminaData.staminaWeightLimitThreshold;
+            staminaMaxNUD.Value = cfggameplay.PlayerData.StaminaData.staminaMax;
+            staminaKgToStaminaPercentPenaltyNUD.Value = cfggameplay.PlayerData.StaminaData.staminaKgToStaminaPercentPenalty;
+            staminaMinCapNUD.Value = cfggameplay.PlayerData.StaminaData.staminaMinCap;
 
-            shockRefillSpeedConsciousNUD.Value = (decimal)cfggameplay.PlayerData.ShockHandlingData.shockRefillSpeedConscious;
-            shockRefillSpeedUnconsciousNUD.Value = (decimal)cfggameplay.PlayerData.ShockHandlingData.shockRefillSpeedUnconscious;
+            shockRefillSpeedConsciousNUD.Value = cfggameplay.PlayerData.ShockHandlingData.shockRefillSpeedConscious;
+            shockRefillSpeedUnconsciousNUD.Value = cfggameplay.PlayerData.ShockHandlingData.shockRefillSpeedUnconscious;
             allowRefillSpeedModifierCB.Checked = cfggameplay.PlayerData.ShockHandlingData.allowRefillSpeedModifier;
+
+            timeToStrafeJogNUD.Value = cfggameplay.PlayerData.MovementData.timeToStrafeJog;
+            rotationSpeedJogNUD.Value = cfggameplay.PlayerData.MovementData.rotationSpeedJog;
+            timeToSprintNUD.Value = cfggameplay.PlayerData.MovementData.timeToSprint;
+            timeToStrafeSprintNUD.Value = cfggameplay.PlayerData.MovementData.timeToStrafeSprint;
+            rotationSpeedSprintNUD.Value = cfggameplay.PlayerData.MovementData.rotationSpeedSprint;
+
+            staminaDepletionSpeedNUD.Value = cfggameplay.PlayerData.DrowningData.staminaDepletionSpeed;
+            healthDepletionSpeedNUD.Value = cfggameplay.PlayerData.DrowningData.healthDepletionSpeed;
+            shockDepletionSpeedNUD.Value = cfggameplay.PlayerData.DrowningData.shockDepletionSpeed;
 
             lightingConfigNUD.Value = cfggameplay.WorldsData.lightingConfig;
             JanMinNUD.Value = cfggameplay.WorldsData.environmentMinTemps[0];
@@ -4415,6 +4432,11 @@ namespace DayZeEditor
             hitDirectionBreakPointRelativeNUD.Value = (decimal)cfggameplay.UIData.HitIndicationData.hitDirectionBreakPointRelative;
             hitDirectionScatterNUD.Value = (decimal)cfggameplay.UIData.HitIndicationData.hitDirectionScatter;
             hitIndicationPostProcessEnabledCB.Checked = cfggameplay.UIData.HitIndicationData.hitIndicationPostProcessEnabled == 1 ? true : false;
+
+            ignoreMapOwnershipCB.Checked = cfggameplay.MapData.ignoreMapOwnership == 1 ? true : false;
+            ignoreNavItemsOwnershipCB.Checked = cfggameplay.MapData.ignoreNavItemsOwnership == 1 ? true : false;
+            displayPlayerPositionCB.Checked = cfggameplay.MapData.displayPlayerPosition == 1 ? true : false;
+            displayNavInfoCB.Checked = cfggameplay.MapData.displayNavInfo == 1 ? true : false;
             isUserInteraction = true;
         }
         private void m_Color_Click(object sender, EventArgs e)
@@ -4471,49 +4493,49 @@ namespace DayZeEditor
         private void sprintStaminaModifierErcNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.PlayerData.StaminaData.sprintStaminaModifierErc = (float)Math.Round(sprintStaminaModifierErcNUD.Value, 2);
+            cfggameplay.PlayerData.StaminaData.sprintStaminaModifierErc = Math.Round(sprintStaminaModifierErcNUD.Value, 2);
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void sprintStaminaModifierCroNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.PlayerData.StaminaData.sprintStaminaModifierCro = (float)Math.Round(sprintStaminaModifierCroNUD.Value, 2);
+            cfggameplay.PlayerData.StaminaData.sprintStaminaModifierCro = Math.Round(sprintStaminaModifierCroNUD.Value, 2);
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void staminaWeightLimitThresholdNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.PlayerData.StaminaData.staminaWeightLimitThreshold = (float)Math.Round(staminaWeightLimitThresholdNUD.Value, 2);
+            cfggameplay.PlayerData.StaminaData.staminaWeightLimitThreshold = Math.Round(staminaWeightLimitThresholdNUD.Value, 2);
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void staminaMaxNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.PlayerData.StaminaData.staminaMax = (float)Math.Round(staminaMaxNUD.Value, 2);
+            cfggameplay.PlayerData.StaminaData.staminaMax = Math.Round(staminaMaxNUD.Value, 2);
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void staminaKgToStaminaPercentPenaltyNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.PlayerData.StaminaData.staminaKgToStaminaPercentPenalty = (float)Math.Round(staminaKgToStaminaPercentPenaltyNUD.Value, 2);
+            cfggameplay.PlayerData.StaminaData.staminaKgToStaminaPercentPenalty = Math.Round(staminaKgToStaminaPercentPenaltyNUD.Value, 2);
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void staminaMinCapNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.PlayerData.StaminaData.staminaMinCap = (float)Math.Round(staminaMinCapNUD.Value, 2);
+            cfggameplay.PlayerData.StaminaData.staminaMinCap = Math.Round(staminaMinCapNUD.Value, 2);
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void shockRefillSpeedConsciousNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.PlayerData.ShockHandlingData.shockRefillSpeedConscious = (float)Math.Round(shockRefillSpeedConsciousNUD.Value, 2);
+            cfggameplay.PlayerData.ShockHandlingData.shockRefillSpeedConscious = Math.Round(shockRefillSpeedConsciousNUD.Value, 2);
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void shockRefillSpeedUnconsciousNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.PlayerData.ShockHandlingData.shockRefillSpeedUnconscious = (float)Math.Round(shockRefillSpeedUnconsciousNUD.Value, 2);
+            cfggameplay.PlayerData.ShockHandlingData.shockRefillSpeedUnconscious = Math.Round(shockRefillSpeedUnconsciousNUD.Value, 2);
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void allowRefillSpeedModifierCB_CheckedChanged(object sender, EventArgs e)
@@ -4627,19 +4649,19 @@ namespace DayZeEditor
         private void hitDirectionMaxDurationNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.UIData.HitIndicationData.hitDirectionMaxDuration = (float)Math.Round(hitDirectionMaxDurationNUD.Value, 2);
+            cfggameplay.UIData.HitIndicationData.hitDirectionMaxDuration = Math.Round(hitDirectionMaxDurationNUD.Value, 2);
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void hitDirectionBreakPointRelativeNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.UIData.HitIndicationData.hitDirectionBreakPointRelative = (float)Math.Round(hitDirectionBreakPointRelativeNUD.Value, 2);
+            cfggameplay.UIData.HitIndicationData.hitDirectionBreakPointRelative = Math.Round(hitDirectionBreakPointRelativeNUD.Value, 2);
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void hitDirectionScatterNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.UIData.HitIndicationData.hitDirectionScatter = (float)Math.Round(hitDirectionScatterNUD.Value, 2);
+            cfggameplay.UIData.HitIndicationData.hitDirectionScatter = Math.Round(hitDirectionScatterNUD.Value, 2);
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void hitIndicationPostProcessEnabledCB_CheckedChanged(object sender, EventArgs e)
@@ -4693,6 +4715,7 @@ namespace DayZeEditor
         public object currentRandomPreset;
         private void LoadRandomPresets()
         {
+            Console.WriteLine("Loading Random presets");
             isUserInteraction = false;
             PresetItemListLB.DisplayMember = "DisplayName";
             PresetItemListLB.ValueMember = "Value";
@@ -4959,6 +4982,7 @@ namespace DayZeEditor
         public Areas CurrentToxicArea;
         private void LoadContaminatoedArea()
         {
+            Console.WriteLine("Loading ContaminatedAreas");
             isUserInteraction = false;
             cfgEffectArea = currentproject.cfgEffectAreaConfig.cfgEffectArea;
             AreasLB.DisplayMember = "DisplayName";
@@ -5168,6 +5192,7 @@ namespace DayZeEditor
         private variables variables;
         public void LoadGlobals()
         {
+            Console.WriteLine("Loading Globals");
             isUserInteraction = false;
             variablesvarvalueNUD.Maximum = int.MaxValue;
             variables = currentproject.gloabsconfig.variables;
@@ -5206,6 +5231,7 @@ namespace DayZeEditor
         public weather weather;
         public void Loadweather()
         {
+            Console.WriteLine("Loading Weather");
             isUserInteraction = false;
             weather = currentproject.weatherconfig.weather;
 
