@@ -1,4 +1,12 @@
-﻿Version 0.7.4.6
+﻿Version 0.7.4.7
+[Updated]
+CFGGameplay updated to 119, this should update the json to match 119
+updated all expansion settings to the most recent config versions.
+[fixed]
+quest ai min/max accuracy changed to max one with increments of 0.05
+quest ai has been changed to add from text rather than types to allow you type in the the correct AINPC's
+
+Version 0.7.4.6
 [Fixed]
 Fixed Accuracy max limit in AI Opbject patrols, was set to 0, now set to 1.
 

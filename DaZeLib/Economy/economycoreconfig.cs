@@ -416,23 +416,33 @@ namespace DayZeLib
             Filename = filename;
             var mySerializer = new XmlSerializer(typeof(eventgroupdef));
             // To read the file, create a FileStream.
-            using (var myFileStream = new FileStream(filename, FileMode.Open))
+            if (File.Exists(Filename))
             {
-                Console.WriteLine("serializing " + Path.GetFileName(Filename));
-                try
+                using (var myFileStream = new FileStream(filename, FileMode.Open))
                 {
-                    // Call the Deserialize method and cast to the object type.
-                    eventgroupdef = (eventgroupdef)mySerializer.Deserialize(myFileStream);
-                }
-                catch (Exception ex)
-                {
-                    var form = Application.OpenForms["SplashForm"];
-                    if (form != null)
+
+                    Console.WriteLine("serializing " + Path.GetFileName(Filename));
+                    try
                     {
-                        form.Invoke(new Action(() => { form.Close(); }));
+                        // Call the Deserialize method and cast to the object type.
+                        eventgroupdef = (eventgroupdef)mySerializer.Deserialize(myFileStream);
                     }
-                    MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                    catch (Exception ex)
+                    {
+                        var form = Application.OpenForms["SplashForm"];
+                        if (form != null)
+                        {
+                            form.Invoke(new Action(() => { form.Close(); }));
+                        }
+                        MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                    }
                 }
+            }
+            else
+            {
+                Console.WriteLine(Path.GetFileName(Filename) + "Does not exist, Creating new empty file.");
+                eventgroupdef = new eventgroupdef();
+                SaveEventGroups();
             }
         }
 

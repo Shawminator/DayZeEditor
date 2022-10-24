@@ -5209,8 +5209,23 @@ namespace DayZeEditor
             isUserInteraction = false;
             variablesvarnameTB.Text = m_var.name;
             variablesvartypeNUD.Value = m_var.type;
-            variablesvarvalueNUD.Value = m_var.value;
+            switch (m_var.type)
+            {
+                case 0:
+                    variablesvarvalueNUD.DecimalPlaces = 0;
+                    variablesvarvalueNUD.Increment = 1;
+                    variablesvarvalueNUD.Maximum = 999999999999;
+                    variablesvarvalueNUD.Minimum = 0;
+                    break;
+                case 1:
+                    variablesvarvalueNUD.DecimalPlaces = 2;
+                    variablesvarvalueNUD.Increment = (decimal)0.05;
+                    variablesvarvalueNUD.Maximum = 1;
+                    variablesvarvalueNUD.Minimum = 0;
+                    break;
 
+            }
+            variablesvarvalueNUD.Value = m_var.value;
             isUserInteraction = true;
         }
         private void variablesvartypeNUD_ValueChanged(object sender, EventArgs e)
@@ -5224,7 +5239,16 @@ namespace DayZeEditor
         {
             if (!isUserInteraction) { return; }
             variablesVar m_var = VariablesLB.SelectedItem as variablesVar;
-            m_var.value = (int)variablesvarvalueNUD.Value;
+            switch (m_var.type)
+            {
+                case 0:
+                    m_var.value = (int)variablesvarvalueNUD.Value;
+                    break;
+                case 1:
+                    m_var.value = variablesvarvalueNUD.Value;
+                    break;
+
+            }
             currentproject.gloabsconfig.isDirty = true;
         }
         #endregion globals

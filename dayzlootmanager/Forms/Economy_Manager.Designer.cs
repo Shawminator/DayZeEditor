@@ -485,37 +485,6 @@ namespace DayZeEditor
             this.label59 = new System.Windows.Forms.Label();
             this.PresetAttachmentsItemsLB = new System.Windows.Forms.ListBox();
             this.CFGGameplay = new System.Windows.Forms.TabPage();
-            this.groupBox31 = new System.Windows.Forms.GroupBox();
-            this.use3DMapCB = new System.Windows.Forms.CheckBox();
-            this.groupBox32 = new System.Windows.Forms.GroupBox();
-            this.m_Color = new System.Windows.Forms.PictureBox();
-            this.darkLabel54 = new DarkUI.Controls.DarkLabel();
-            this.hitDirectionScatterNUD = new System.Windows.Forms.NumericUpDown();
-            this.label55 = new System.Windows.Forms.Label();
-            this.hitIndicationPostProcessEnabledCB = new System.Windows.Forms.CheckBox();
-            this.hitDirectionStyleCB = new System.Windows.Forms.CheckBox();
-            this.hitDirectionBehaviourCB = new System.Windows.Forms.CheckBox();
-            this.hitDirectionOverrideEnabledCB = new System.Windows.Forms.CheckBox();
-            this.hitDirectionMaxDurationNUD = new System.Windows.Forms.NumericUpDown();
-            this.hitDirectionBreakPointRelativeNUD = new System.Windows.Forms.NumericUpDown();
-            this.label53 = new System.Windows.Forms.Label();
-            this.label54 = new System.Windows.Forms.Label();
-            this.groupBox28 = new System.Windows.Forms.GroupBox();
-            this.groupBox30 = new System.Windows.Forms.GroupBox();
-            this.disableDistanceCheckCB = new System.Windows.Forms.CheckBox();
-            this.disableIsCollidingCheckCB = new System.Windows.Forms.CheckBox();
-            this.disablePerformRoofCheckCB = new System.Windows.Forms.CheckBox();
-            this.groupBox29 = new System.Windows.Forms.GroupBox();
-            this.disableIsInTerrainCheckCB = new System.Windows.Forms.CheckBox();
-            this.disableIsUnderwaterCheckCB = new System.Windows.Forms.CheckBox();
-            this.disableHeightPlacementCheckCB = new System.Windows.Forms.CheckBox();
-            this.disableIsPlacementPermittedCheckCB = new System.Windows.Forms.CheckBox();
-            this.disableIsCollidingAngleCheckCB = new System.Windows.Forms.CheckBox();
-            this.disableIsCollidingGPlotCheckCB = new System.Windows.Forms.CheckBox();
-            this.disableIsBaseViableCheckCB = new System.Windows.Forms.CheckBox();
-            this.disableIsClippingRoofCheckCB = new System.Windows.Forms.CheckBox();
-            this.disableIsCollidingPlayerCheckCB = new System.Windows.Forms.CheckBox();
-            this.disableIsCollidingBBoxCheckCB = new System.Windows.Forms.CheckBox();
             this.groupBox27 = new System.Windows.Forms.GroupBox();
             this.DecMaxNUD = new System.Windows.Forms.NumericUpDown();
             this.DecMinNUD = new System.Windows.Forms.NumericUpDown();
@@ -557,7 +526,61 @@ namespace DayZeEditor
             this.label99 = new System.Windows.Forms.Label();
             this.lightingConfigNUD = new System.Windows.Forms.NumericUpDown();
             this.label52 = new System.Windows.Forms.Label();
+            this.groupBox59 = new System.Windows.Forms.GroupBox();
+            this.displayNavInfoCB = new System.Windows.Forms.CheckBox();
+            this.displayPlayerPositionCB = new System.Windows.Forms.CheckBox();
+            this.ignoreNavItemsOwnershipCB = new System.Windows.Forms.CheckBox();
+            this.ignoreMapOwnershipCB = new System.Windows.Forms.CheckBox();
+            this.groupBox31 = new System.Windows.Forms.GroupBox();
+            this.use3DMapCB = new System.Windows.Forms.CheckBox();
+            this.groupBox32 = new System.Windows.Forms.GroupBox();
+            this.m_Color = new System.Windows.Forms.PictureBox();
+            this.darkLabel54 = new DarkUI.Controls.DarkLabel();
+            this.hitDirectionScatterNUD = new System.Windows.Forms.NumericUpDown();
+            this.label55 = new System.Windows.Forms.Label();
+            this.hitIndicationPostProcessEnabledCB = new System.Windows.Forms.CheckBox();
+            this.hitDirectionStyleCB = new System.Windows.Forms.CheckBox();
+            this.hitDirectionBehaviourCB = new System.Windows.Forms.CheckBox();
+            this.hitDirectionOverrideEnabledCB = new System.Windows.Forms.CheckBox();
+            this.hitDirectionMaxDurationNUD = new System.Windows.Forms.NumericUpDown();
+            this.hitDirectionBreakPointRelativeNUD = new System.Windows.Forms.NumericUpDown();
+            this.label53 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
+            this.groupBox28 = new System.Windows.Forms.GroupBox();
+            this.groupBox30 = new System.Windows.Forms.GroupBox();
+            this.disableDistanceCheckCB = new System.Windows.Forms.CheckBox();
+            this.disableIsCollidingCheckCB = new System.Windows.Forms.CheckBox();
+            this.disablePerformRoofCheckCB = new System.Windows.Forms.CheckBox();
+            this.groupBox29 = new System.Windows.Forms.GroupBox();
+            this.disableIsInTerrainCheckCB = new System.Windows.Forms.CheckBox();
+            this.disableIsUnderwaterCheckCB = new System.Windows.Forms.CheckBox();
+            this.disableHeightPlacementCheckCB = new System.Windows.Forms.CheckBox();
+            this.disableIsPlacementPermittedCheckCB = new System.Windows.Forms.CheckBox();
+            this.disableIsCollidingAngleCheckCB = new System.Windows.Forms.CheckBox();
+            this.disableIsCollidingGPlotCheckCB = new System.Windows.Forms.CheckBox();
+            this.disableIsBaseViableCheckCB = new System.Windows.Forms.CheckBox();
+            this.disableIsClippingRoofCheckCB = new System.Windows.Forms.CheckBox();
+            this.disableIsCollidingPlayerCheckCB = new System.Windows.Forms.CheckBox();
+            this.disableIsCollidingBBoxCheckCB = new System.Windows.Forms.CheckBox();
             this.groupBox25 = new System.Windows.Forms.GroupBox();
+            this.groupBox61 = new System.Windows.Forms.GroupBox();
+            this.shockDepletionSpeedNUD = new System.Windows.Forms.NumericUpDown();
+            this.label139 = new System.Windows.Forms.Label();
+            this.healthDepletionSpeedNUD = new System.Windows.Forms.NumericUpDown();
+            this.label132 = new System.Windows.Forms.Label();
+            this.staminaDepletionSpeedNUD = new System.Windows.Forms.NumericUpDown();
+            this.label138 = new System.Windows.Forms.Label();
+            this.groupBox60 = new System.Windows.Forms.GroupBox();
+            this.rotationSpeedSprintNUD = new System.Windows.Forms.NumericUpDown();
+            this.label133 = new System.Windows.Forms.Label();
+            this.timeToStrafeSprintNUD = new System.Windows.Forms.NumericUpDown();
+            this.label134 = new System.Windows.Forms.Label();
+            this.timeToSprintNUD = new System.Windows.Forms.NumericUpDown();
+            this.label135 = new System.Windows.Forms.Label();
+            this.rotationSpeedJogNUD = new System.Windows.Forms.NumericUpDown();
+            this.label136 = new System.Windows.Forms.Label();
+            this.timeToStrafeJogNUD = new System.Windows.Forms.NumericUpDown();
+            this.label137 = new System.Windows.Forms.Label();
             this.groupBox56 = new System.Windows.Forms.GroupBox();
             this.allowRefillSpeedModifierCB = new System.Windows.Forms.CheckBox();
             this.shockRefillSpeedUnconsciousNUD = new System.Windows.Forms.NumericUpDown();
@@ -823,29 +846,6 @@ namespace DayZeEditor
             this.removeGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeChildToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importChildrenFromdzeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox59 = new System.Windows.Forms.GroupBox();
-            this.displayPlayerPositionCB = new System.Windows.Forms.CheckBox();
-            this.ignoreNavItemsOwnershipCB = new System.Windows.Forms.CheckBox();
-            this.ignoreMapOwnershipCB = new System.Windows.Forms.CheckBox();
-            this.displayNavInfoCB = new System.Windows.Forms.CheckBox();
-            this.groupBox60 = new System.Windows.Forms.GroupBox();
-            this.rotationSpeedSprintNUD = new System.Windows.Forms.NumericUpDown();
-            this.label133 = new System.Windows.Forms.Label();
-            this.timeToStrafeSprintNUD = new System.Windows.Forms.NumericUpDown();
-            this.label134 = new System.Windows.Forms.Label();
-            this.timeToSprintNUD = new System.Windows.Forms.NumericUpDown();
-            this.label135 = new System.Windows.Forms.Label();
-            this.rotationSpeedJogNUD = new System.Windows.Forms.NumericUpDown();
-            this.label136 = new System.Windows.Forms.Label();
-            this.timeToStrafeJogNUD = new System.Windows.Forms.NumericUpDown();
-            this.label137 = new System.Windows.Forms.Label();
-            this.groupBox61 = new System.Windows.Forms.GroupBox();
-            this.healthDepletionSpeedNUD = new System.Windows.Forms.NumericUpDown();
-            this.label132 = new System.Windows.Forms.Label();
-            this.staminaDepletionSpeedNUD = new System.Windows.Forms.NumericUpDown();
-            this.label138 = new System.Windows.Forms.Label();
-            this.shockDepletionSpeedNUD = new System.Windows.Forms.NumericUpDown();
-            this.label139 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -986,15 +986,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.RandomPresetAttachmentItemchanceNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RandomPresetAttachmentChanceNUD)).BeginInit();
             this.CFGGameplay.SuspendLayout();
-            this.groupBox31.SuspendLayout();
-            this.groupBox32.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.m_Color)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hitDirectionScatterNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hitDirectionMaxDurationNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hitDirectionBreakPointRelativeNUD)).BeginInit();
-            this.groupBox28.SuspendLayout();
-            this.groupBox30.SuspendLayout();
-            this.groupBox29.SuspendLayout();
             this.groupBox27.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DecMaxNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DecMinNUD)).BeginInit();
@@ -1021,7 +1012,27 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.JanMaxNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.JanMinNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lightingConfigNUD)).BeginInit();
+            this.groupBox59.SuspendLayout();
+            this.groupBox31.SuspendLayout();
+            this.groupBox32.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.m_Color)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hitDirectionScatterNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hitDirectionMaxDurationNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hitDirectionBreakPointRelativeNUD)).BeginInit();
+            this.groupBox28.SuspendLayout();
+            this.groupBox30.SuspendLayout();
+            this.groupBox29.SuspendLayout();
             this.groupBox25.SuspendLayout();
+            this.groupBox61.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.shockDepletionSpeedNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.healthDepletionSpeedNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.staminaDepletionSpeedNUD)).BeginInit();
+            this.groupBox60.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rotationSpeedSprintNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timeToStrafeSprintNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timeToSprintNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rotationSpeedJogNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timeToStrafeJogNUD)).BeginInit();
             this.groupBox56.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shockRefillSpeedUnconsciousNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.shockRefillSpeedConsciousNUD)).BeginInit();
@@ -1145,17 +1156,6 @@ namespace DayZeEditor
             this.TypesContextMenu.SuspendLayout();
             this.EventSpawnContextMenu.SuspendLayout();
             this.EventgroupContextMenu.SuspendLayout();
-            this.groupBox59.SuspendLayout();
-            this.groupBox60.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rotationSpeedSprintNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timeToStrafeSprintNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timeToSprintNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rotationSpeedJogNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timeToStrafeJogNUD)).BeginInit();
-            this.groupBox61.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.healthDepletionSpeedNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.staminaDepletionSpeedNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.shockDepletionSpeedNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -6894,385 +6894,6 @@ namespace DayZeEditor
             this.CFGGameplay.TabIndex = 7;
             this.CFGGameplay.Text = "CFGGameplay";
             // 
-            // groupBox31
-            // 
-            this.groupBox31.Controls.Add(this.use3DMapCB);
-            this.groupBox31.Controls.Add(this.groupBox32);
-            this.groupBox31.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox31.Location = new System.Drawing.Point(761, 9);
-            this.groupBox31.Name = "groupBox31";
-            this.groupBox31.Size = new System.Drawing.Size(273, 286);
-            this.groupBox31.TabIndex = 83;
-            this.groupBox31.TabStop = false;
-            this.groupBox31.Text = "UI Data";
-            // 
-            // use3DMapCB
-            // 
-            this.use3DMapCB.AutoSize = true;
-            this.use3DMapCB.Location = new System.Drawing.Point(23, 16);
-            this.use3DMapCB.Name = "use3DMapCB";
-            this.use3DMapCB.Size = new System.Drawing.Size(84, 17);
-            this.use3DMapCB.TabIndex = 85;
-            this.use3DMapCB.Text = "use 3D Map";
-            this.use3DMapCB.UseVisualStyleBackColor = true;
-            this.use3DMapCB.CheckedChanged += new System.EventHandler(this.use3DMapCB_CheckedChanged);
-            // 
-            // groupBox32
-            // 
-            this.groupBox32.Controls.Add(this.m_Color);
-            this.groupBox32.Controls.Add(this.darkLabel54);
-            this.groupBox32.Controls.Add(this.hitDirectionScatterNUD);
-            this.groupBox32.Controls.Add(this.label55);
-            this.groupBox32.Controls.Add(this.hitIndicationPostProcessEnabledCB);
-            this.groupBox32.Controls.Add(this.hitDirectionStyleCB);
-            this.groupBox32.Controls.Add(this.hitDirectionBehaviourCB);
-            this.groupBox32.Controls.Add(this.hitDirectionOverrideEnabledCB);
-            this.groupBox32.Controls.Add(this.hitDirectionMaxDurationNUD);
-            this.groupBox32.Controls.Add(this.hitDirectionBreakPointRelativeNUD);
-            this.groupBox32.Controls.Add(this.label53);
-            this.groupBox32.Controls.Add(this.label54);
-            this.groupBox32.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox32.Location = new System.Drawing.Point(6, 36);
-            this.groupBox32.Name = "groupBox32";
-            this.groupBox32.Size = new System.Drawing.Size(262, 243);
-            this.groupBox32.TabIndex = 84;
-            this.groupBox32.TabStop = false;
-            this.groupBox32.Text = "Hit Indication Data";
-            // 
-            // m_Color
-            // 
-            this.m_Color.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("m_Color.BackgroundImage")));
-            this.m_Color.Location = new System.Drawing.Point(17, 104);
-            this.m_Color.Name = "m_Color";
-            this.m_Color.Size = new System.Drawing.Size(236, 13);
-            this.m_Color.TabIndex = 118;
-            this.m_Color.TabStop = false;
-            this.m_Color.Click += new System.EventHandler(this.m_Color_Click);
-            this.m_Color.Paint += new System.Windows.Forms.PaintEventHandler(this.m_Color_Paint);
-            // 
-            // darkLabel54
-            // 
-            this.darkLabel54.AutoSize = true;
-            this.darkLabel54.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel54.Location = new System.Drawing.Point(17, 85);
-            this.darkLabel54.Name = "darkLabel54";
-            this.darkLabel54.Size = new System.Drawing.Size(152, 13);
-            this.darkLabel54.TabIndex = 117;
-            this.darkLabel54.Text = "Hit Direction Indicator Color Str";
-            // 
-            // hitDirectionScatterNUD
-            // 
-            this.hitDirectionScatterNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.hitDirectionScatterNUD.DecimalPlaces = 1;
-            this.hitDirectionScatterNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.hitDirectionScatterNUD.Location = new System.Drawing.Point(185, 185);
-            this.hitDirectionScatterNUD.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.hitDirectionScatterNUD.Name = "hitDirectionScatterNUD";
-            this.hitDirectionScatterNUD.Size = new System.Drawing.Size(68, 20);
-            this.hitDirectionScatterNUD.TabIndex = 76;
-            this.hitDirectionScatterNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.hitDirectionScatterNUD.ValueChanged += new System.EventHandler(this.hitDirectionScatterNUD_ValueChanged);
-            // 
-            // label55
-            // 
-            this.label55.AutoSize = true;
-            this.label55.ForeColor = System.Drawing.SystemColors.Control;
-            this.label55.Location = new System.Drawing.Point(17, 189);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(102, 13);
-            this.label55.TabIndex = 75;
-            this.label55.Text = "Hit Direction Scatter";
-            // 
-            // hitIndicationPostProcessEnabledCB
-            // 
-            this.hitIndicationPostProcessEnabledCB.AutoSize = true;
-            this.hitIndicationPostProcessEnabledCB.Location = new System.Drawing.Point(17, 213);
-            this.hitIndicationPostProcessEnabledCB.Name = "hitIndicationPostProcessEnabledCB";
-            this.hitIndicationPostProcessEnabledCB.Size = new System.Drawing.Size(195, 17);
-            this.hitIndicationPostProcessEnabledCB.TabIndex = 74;
-            this.hitIndicationPostProcessEnabledCB.Text = "Hit Indication Post Process Enabled";
-            this.hitIndicationPostProcessEnabledCB.UseVisualStyleBackColor = true;
-            this.hitIndicationPostProcessEnabledCB.CheckedChanged += new System.EventHandler(this.hitIndicationPostProcessEnabledCB_CheckedChanged);
-            // 
-            // hitDirectionStyleCB
-            // 
-            this.hitDirectionStyleCB.AutoSize = true;
-            this.hitDirectionStyleCB.Location = new System.Drawing.Point(17, 65);
-            this.hitDirectionStyleCB.Name = "hitDirectionStyleCB";
-            this.hitDirectionStyleCB.Size = new System.Drawing.Size(110, 17);
-            this.hitDirectionStyleCB.TabIndex = 73;
-            this.hitDirectionStyleCB.Text = "Hit Direction Style";
-            this.hitDirectionStyleCB.UseVisualStyleBackColor = true;
-            this.hitDirectionStyleCB.CheckedChanged += new System.EventHandler(this.hitDirectionStyleCB_CheckedChanged);
-            // 
-            // hitDirectionBehaviourCB
-            // 
-            this.hitDirectionBehaviourCB.AutoSize = true;
-            this.hitDirectionBehaviourCB.Location = new System.Drawing.Point(17, 42);
-            this.hitDirectionBehaviourCB.Name = "hitDirectionBehaviourCB";
-            this.hitDirectionBehaviourCB.Size = new System.Drawing.Size(135, 17);
-            this.hitDirectionBehaviourCB.TabIndex = 72;
-            this.hitDirectionBehaviourCB.Text = "Hit Direction Behaviour";
-            this.hitDirectionBehaviourCB.UseVisualStyleBackColor = true;
-            this.hitDirectionBehaviourCB.CheckedChanged += new System.EventHandler(this.hitDirectionBehaviourCB_CheckedChanged);
-            // 
-            // hitDirectionOverrideEnabledCB
-            // 
-            this.hitDirectionOverrideEnabledCB.AutoSize = true;
-            this.hitDirectionOverrideEnabledCB.Location = new System.Drawing.Point(17, 19);
-            this.hitDirectionOverrideEnabledCB.Name = "hitDirectionOverrideEnabledCB";
-            this.hitDirectionOverrideEnabledCB.Size = new System.Drawing.Size(169, 17);
-            this.hitDirectionOverrideEnabledCB.TabIndex = 71;
-            this.hitDirectionOverrideEnabledCB.Text = "Hit Direction Override Enabled";
-            this.hitDirectionOverrideEnabledCB.UseVisualStyleBackColor = true;
-            this.hitDirectionOverrideEnabledCB.CheckedChanged += new System.EventHandler(this.hitDirectionOverrideEnabledCB_CheckedChanged);
-            // 
-            // hitDirectionMaxDurationNUD
-            // 
-            this.hitDirectionMaxDurationNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.hitDirectionMaxDurationNUD.DecimalPlaces = 1;
-            this.hitDirectionMaxDurationNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.hitDirectionMaxDurationNUD.Location = new System.Drawing.Point(185, 132);
-            this.hitDirectionMaxDurationNUD.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.hitDirectionMaxDurationNUD.Name = "hitDirectionMaxDurationNUD";
-            this.hitDirectionMaxDurationNUD.Size = new System.Drawing.Size(68, 20);
-            this.hitDirectionMaxDurationNUD.TabIndex = 70;
-            this.hitDirectionMaxDurationNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.hitDirectionMaxDurationNUD.ValueChanged += new System.EventHandler(this.hitDirectionMaxDurationNUD_ValueChanged);
-            // 
-            // hitDirectionBreakPointRelativeNUD
-            // 
-            this.hitDirectionBreakPointRelativeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.hitDirectionBreakPointRelativeNUD.DecimalPlaces = 1;
-            this.hitDirectionBreakPointRelativeNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.hitDirectionBreakPointRelativeNUD.Location = new System.Drawing.Point(185, 159);
-            this.hitDirectionBreakPointRelativeNUD.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.hitDirectionBreakPointRelativeNUD.Name = "hitDirectionBreakPointRelativeNUD";
-            this.hitDirectionBreakPointRelativeNUD.Size = new System.Drawing.Size(68, 20);
-            this.hitDirectionBreakPointRelativeNUD.TabIndex = 70;
-            this.hitDirectionBreakPointRelativeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.hitDirectionBreakPointRelativeNUD.ValueChanged += new System.EventHandler(this.hitDirectionBreakPointRelativeNUD_ValueChanged);
-            // 
-            // label53
-            // 
-            this.label53.AutoSize = true;
-            this.label53.ForeColor = System.Drawing.SystemColors.Control;
-            this.label53.Location = new System.Drawing.Point(17, 163);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(165, 13);
-            this.label53.TabIndex = 69;
-            this.label53.Text = "Hit Direction Break Point Relative";
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.ForeColor = System.Drawing.SystemColors.Control;
-            this.label54.Location = new System.Drawing.Point(17, 134);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(131, 13);
-            this.label54.TabIndex = 69;
-            this.label54.Text = "Hit Direction Max Duration";
-            // 
-            // groupBox28
-            // 
-            this.groupBox28.Controls.Add(this.groupBox30);
-            this.groupBox28.Controls.Add(this.groupBox29);
-            this.groupBox28.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox28.Location = new System.Drawing.Point(519, 9);
-            this.groupBox28.Name = "groupBox28";
-            this.groupBox28.Size = new System.Drawing.Size(236, 378);
-            this.groupBox28.TabIndex = 82;
-            this.groupBox28.TabStop = false;
-            this.groupBox28.Text = "BaseBuilding Data";
-            // 
-            // groupBox30
-            // 
-            this.groupBox30.Controls.Add(this.disableDistanceCheckCB);
-            this.groupBox30.Controls.Add(this.disableIsCollidingCheckCB);
-            this.groupBox30.Controls.Add(this.disablePerformRoofCheckCB);
-            this.groupBox30.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox30.Location = new System.Drawing.Point(6, 275);
-            this.groupBox30.Name = "groupBox30";
-            this.groupBox30.Size = new System.Drawing.Size(224, 86);
-            this.groupBox30.TabIndex = 11;
-            this.groupBox30.TabStop = false;
-            this.groupBox30.Text = "Construction Data";
-            // 
-            // disableDistanceCheckCB
-            // 
-            this.disableDistanceCheckCB.AutoSize = true;
-            this.disableDistanceCheckCB.Location = new System.Drawing.Point(14, 65);
-            this.disableDistanceCheckCB.Name = "disableDistanceCheckCB";
-            this.disableDistanceCheckCB.Size = new System.Drawing.Size(140, 17);
-            this.disableDistanceCheckCB.TabIndex = 3;
-            this.disableDistanceCheckCB.Text = "Disable Distance Check";
-            this.disableDistanceCheckCB.UseVisualStyleBackColor = true;
-            this.disableDistanceCheckCB.CheckedChanged += new System.EventHandler(this.disableDistanceCheckCB_CheckedChanged);
-            // 
-            // disableIsCollidingCheckCB
-            // 
-            this.disableIsCollidingCheckCB.AutoSize = true;
-            this.disableIsCollidingCheckCB.Location = new System.Drawing.Point(14, 42);
-            this.disableIsCollidingCheckCB.Name = "disableIsCollidingCheckCB";
-            this.disableIsCollidingCheckCB.Size = new System.Drawing.Size(148, 17);
-            this.disableIsCollidingCheckCB.TabIndex = 2;
-            this.disableIsCollidingCheckCB.Text = "Disable Is Colliding Check";
-            this.disableIsCollidingCheckCB.UseVisualStyleBackColor = true;
-            this.disableIsCollidingCheckCB.CheckedChanged += new System.EventHandler(this.disableIsCollidingCheckCB_CheckedChanged);
-            // 
-            // disablePerformRoofCheckCB
-            // 
-            this.disablePerformRoofCheckCB.AutoSize = true;
-            this.disablePerformRoofCheckCB.Location = new System.Drawing.Point(14, 19);
-            this.disablePerformRoofCheckCB.Name = "disablePerformRoofCheckCB";
-            this.disablePerformRoofCheckCB.Size = new System.Drawing.Size(160, 17);
-            this.disablePerformRoofCheckCB.TabIndex = 1;
-            this.disablePerformRoofCheckCB.Text = "Disable Perform Roof Check";
-            this.disablePerformRoofCheckCB.UseVisualStyleBackColor = true;
-            this.disablePerformRoofCheckCB.CheckedChanged += new System.EventHandler(this.disablePerformRoofCheckCB_CheckedChanged);
-            // 
-            // groupBox29
-            // 
-            this.groupBox29.Controls.Add(this.disableIsInTerrainCheckCB);
-            this.groupBox29.Controls.Add(this.disableIsUnderwaterCheckCB);
-            this.groupBox29.Controls.Add(this.disableHeightPlacementCheckCB);
-            this.groupBox29.Controls.Add(this.disableIsPlacementPermittedCheckCB);
-            this.groupBox29.Controls.Add(this.disableIsCollidingAngleCheckCB);
-            this.groupBox29.Controls.Add(this.disableIsCollidingGPlotCheckCB);
-            this.groupBox29.Controls.Add(this.disableIsBaseViableCheckCB);
-            this.groupBox29.Controls.Add(this.disableIsClippingRoofCheckCB);
-            this.groupBox29.Controls.Add(this.disableIsCollidingPlayerCheckCB);
-            this.groupBox29.Controls.Add(this.disableIsCollidingBBoxCheckCB);
-            this.groupBox29.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox29.Location = new System.Drawing.Point(6, 15);
-            this.groupBox29.Name = "groupBox29";
-            this.groupBox29.Size = new System.Drawing.Size(224, 255);
-            this.groupBox29.TabIndex = 1;
-            this.groupBox29.TabStop = false;
-            this.groupBox29.Text = "Hologram Data";
-            // 
-            // disableIsInTerrainCheckCB
-            // 
-            this.disableIsInTerrainCheckCB.AutoSize = true;
-            this.disableIsInTerrainCheckCB.Location = new System.Drawing.Point(14, 226);
-            this.disableIsInTerrainCheckCB.Name = "disableIsInTerrainCheckCB";
-            this.disableIsInTerrainCheckCB.Size = new System.Drawing.Size(154, 17);
-            this.disableIsInTerrainCheckCB.TabIndex = 10;
-            this.disableIsInTerrainCheckCB.Text = "Disable Is In Terrain Check";
-            this.disableIsInTerrainCheckCB.UseVisualStyleBackColor = true;
-            this.disableIsInTerrainCheckCB.CheckedChanged += new System.EventHandler(this.disableIsInTerrainCheckCB_CheckedChanged);
-            // 
-            // disableIsUnderwaterCheckCB
-            // 
-            this.disableIsUnderwaterCheckCB.AutoSize = true;
-            this.disableIsUnderwaterCheckCB.Location = new System.Drawing.Point(14, 203);
-            this.disableIsUnderwaterCheckCB.Name = "disableIsUnderwaterCheckCB";
-            this.disableIsUnderwaterCheckCB.Size = new System.Drawing.Size(164, 17);
-            this.disableIsUnderwaterCheckCB.TabIndex = 9;
-            this.disableIsUnderwaterCheckCB.Text = "Disable Is Underwater Check";
-            this.disableIsUnderwaterCheckCB.UseVisualStyleBackColor = true;
-            this.disableIsUnderwaterCheckCB.CheckedChanged += new System.EventHandler(this.disableIsUnderwaterCheckCB_CheckedChanged);
-            // 
-            // disableHeightPlacementCheckCB
-            // 
-            this.disableHeightPlacementCheckCB.AutoSize = true;
-            this.disableHeightPlacementCheckCB.Location = new System.Drawing.Point(14, 180);
-            this.disableHeightPlacementCheckCB.Name = "disableHeightPlacementCheckCB";
-            this.disableHeightPlacementCheckCB.Size = new System.Drawing.Size(182, 17);
-            this.disableHeightPlacementCheckCB.TabIndex = 8;
-            this.disableHeightPlacementCheckCB.Text = "Disable Height Placement Check";
-            this.disableHeightPlacementCheckCB.UseVisualStyleBackColor = true;
-            this.disableHeightPlacementCheckCB.CheckedChanged += new System.EventHandler(this.disableHeightPlacementCheckCB_CheckedChanged);
-            // 
-            // disableIsPlacementPermittedCheckCB
-            // 
-            this.disableIsPlacementPermittedCheckCB.AutoSize = true;
-            this.disableIsPlacementPermittedCheckCB.Location = new System.Drawing.Point(14, 157);
-            this.disableIsPlacementPermittedCheckCB.Name = "disableIsPlacementPermittedCheckCB";
-            this.disableIsPlacementPermittedCheckCB.Size = new System.Drawing.Size(206, 17);
-            this.disableIsPlacementPermittedCheckCB.TabIndex = 7;
-            this.disableIsPlacementPermittedCheckCB.Text = "Disable Is Placement Permitted Check";
-            this.disableIsPlacementPermittedCheckCB.UseVisualStyleBackColor = true;
-            this.disableIsPlacementPermittedCheckCB.CheckedChanged += new System.EventHandler(this.disableIsPlacementPermittedCheckCB_CheckedChanged);
-            // 
-            // disableIsCollidingAngleCheckCB
-            // 
-            this.disableIsCollidingAngleCheckCB.AutoSize = true;
-            this.disableIsCollidingAngleCheckCB.Location = new System.Drawing.Point(14, 134);
-            this.disableIsCollidingAngleCheckCB.Name = "disableIsCollidingAngleCheckCB";
-            this.disableIsCollidingAngleCheckCB.Size = new System.Drawing.Size(178, 17);
-            this.disableIsCollidingAngleCheckCB.TabIndex = 6;
-            this.disableIsCollidingAngleCheckCB.Text = "Disable Is Colliding Angle Check";
-            this.disableIsCollidingAngleCheckCB.UseVisualStyleBackColor = true;
-            this.disableIsCollidingAngleCheckCB.CheckedChanged += new System.EventHandler(this.disableIsCollidingAngleCheckCB_CheckedChanged);
-            // 
-            // disableIsCollidingGPlotCheckCB
-            // 
-            this.disableIsCollidingGPlotCheckCB.AutoSize = true;
-            this.disableIsCollidingGPlotCheckCB.Location = new System.Drawing.Point(14, 111);
-            this.disableIsCollidingGPlotCheckCB.Name = "disableIsCollidingGPlotCheckCB";
-            this.disableIsCollidingGPlotCheckCB.Size = new System.Drawing.Size(180, 17);
-            this.disableIsCollidingGPlotCheckCB.TabIndex = 5;
-            this.disableIsCollidingGPlotCheckCB.Text = "Disable Is Colliding G Plot Check";
-            this.disableIsCollidingGPlotCheckCB.UseVisualStyleBackColor = true;
-            this.disableIsCollidingGPlotCheckCB.CheckedChanged += new System.EventHandler(this.disableIsCollidingGPlotCheckCB_CheckedChanged);
-            // 
-            // disableIsBaseViableCheckCB
-            // 
-            this.disableIsBaseViableCheckCB.AutoSize = true;
-            this.disableIsBaseViableCheckCB.Location = new System.Drawing.Point(14, 88);
-            this.disableIsBaseViableCheckCB.Name = "disableIsBaseViableCheckCB";
-            this.disableIsBaseViableCheckCB.Size = new System.Drawing.Size(165, 17);
-            this.disableIsBaseViableCheckCB.TabIndex = 4;
-            this.disableIsBaseViableCheckCB.Text = "Disable Is Base Viable Check";
-            this.disableIsBaseViableCheckCB.UseVisualStyleBackColor = true;
-            this.disableIsBaseViableCheckCB.CheckedChanged += new System.EventHandler(this.disableIsBaseViableCheckCB_CheckedChanged);
-            // 
-            // disableIsClippingRoofCheckCB
-            // 
-            this.disableIsClippingRoofCheckCB.AutoSize = true;
-            this.disableIsClippingRoofCheckCB.Location = new System.Drawing.Point(14, 65);
-            this.disableIsClippingRoofCheckCB.Name = "disableIsClippingRoofCheckCB";
-            this.disableIsClippingRoofCheckCB.Size = new System.Drawing.Size(172, 17);
-            this.disableIsClippingRoofCheckCB.TabIndex = 3;
-            this.disableIsClippingRoofCheckCB.Text = "Disable Is Clipping Roof Check";
-            this.disableIsClippingRoofCheckCB.UseVisualStyleBackColor = true;
-            this.disableIsClippingRoofCheckCB.CheckedChanged += new System.EventHandler(this.disableIsClippingRoofCheckCB_CheckedChanged);
-            // 
-            // disableIsCollidingPlayerCheckCB
-            // 
-            this.disableIsCollidingPlayerCheckCB.AutoSize = true;
-            this.disableIsCollidingPlayerCheckCB.Location = new System.Drawing.Point(14, 42);
-            this.disableIsCollidingPlayerCheckCB.Name = "disableIsCollidingPlayerCheckCB";
-            this.disableIsCollidingPlayerCheckCB.Size = new System.Drawing.Size(180, 17);
-            this.disableIsCollidingPlayerCheckCB.TabIndex = 2;
-            this.disableIsCollidingPlayerCheckCB.Text = "Disable Is Colliding Player Check";
-            this.disableIsCollidingPlayerCheckCB.UseVisualStyleBackColor = true;
-            this.disableIsCollidingPlayerCheckCB.CheckedChanged += new System.EventHandler(this.disableIsCollidingPlayerCheckCB_CheckedChanged);
-            // 
-            // disableIsCollidingBBoxCheckCB
-            // 
-            this.disableIsCollidingBBoxCheckCB.AutoSize = true;
-            this.disableIsCollidingBBoxCheckCB.Location = new System.Drawing.Point(14, 19);
-            this.disableIsCollidingBBoxCheckCB.Name = "disableIsCollidingBBoxCheckCB";
-            this.disableIsCollidingBBoxCheckCB.Size = new System.Drawing.Size(176, 17);
-            this.disableIsCollidingBBoxCheckCB.TabIndex = 1;
-            this.disableIsCollidingBBoxCheckCB.Text = "Disable Is Colliding BBox Check";
-            this.disableIsCollidingBBoxCheckCB.UseVisualStyleBackColor = true;
-            this.disableIsCollidingBBoxCheckCB.CheckedChanged += new System.EventHandler(this.disableIsCollidingBBoxCheckCB_CheckedChanged);
-            // 
             // groupBox27
             // 
             this.groupBox27.Controls.Add(this.DecMaxNUD);
@@ -7897,6 +7518,439 @@ namespace DayZeEditor
             this.label52.TabIndex = 69;
             this.label52.Text = "Lighting Config";
             // 
+            // groupBox59
+            // 
+            this.groupBox59.Controls.Add(this.displayNavInfoCB);
+            this.groupBox59.Controls.Add(this.displayPlayerPositionCB);
+            this.groupBox59.Controls.Add(this.ignoreNavItemsOwnershipCB);
+            this.groupBox59.Controls.Add(this.ignoreMapOwnershipCB);
+            this.groupBox59.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox59.Location = new System.Drawing.Point(321, 481);
+            this.groupBox59.Name = "groupBox59";
+            this.groupBox59.Size = new System.Drawing.Size(185, 111);
+            this.groupBox59.TabIndex = 84;
+            this.groupBox59.TabStop = false;
+            this.groupBox59.Text = "Map Data";
+            // 
+            // displayNavInfoCB
+            // 
+            this.displayNavInfoCB.AutoSize = true;
+            this.displayNavInfoCB.Location = new System.Drawing.Point(11, 84);
+            this.displayNavInfoCB.Name = "displayNavInfoCB";
+            this.displayNavInfoCB.Size = new System.Drawing.Size(102, 17);
+            this.displayNavInfoCB.TabIndex = 3;
+            this.displayNavInfoCB.Text = "display Nav Info";
+            this.displayNavInfoCB.UseVisualStyleBackColor = true;
+            // 
+            // displayPlayerPositionCB
+            // 
+            this.displayPlayerPositionCB.AutoSize = true;
+            this.displayPlayerPositionCB.Location = new System.Drawing.Point(11, 61);
+            this.displayPlayerPositionCB.Name = "displayPlayerPositionCB";
+            this.displayPlayerPositionCB.Size = new System.Drawing.Size(130, 17);
+            this.displayPlayerPositionCB.TabIndex = 2;
+            this.displayPlayerPositionCB.Text = "display Player Position";
+            this.displayPlayerPositionCB.UseVisualStyleBackColor = true;
+            // 
+            // ignoreNavItemsOwnershipCB
+            // 
+            this.ignoreNavItemsOwnershipCB.AutoSize = true;
+            this.ignoreNavItemsOwnershipCB.Location = new System.Drawing.Point(11, 38);
+            this.ignoreNavItemsOwnershipCB.Name = "ignoreNavItemsOwnershipCB";
+            this.ignoreNavItemsOwnershipCB.Size = new System.Drawing.Size(159, 17);
+            this.ignoreNavItemsOwnershipCB.TabIndex = 1;
+            this.ignoreNavItemsOwnershipCB.Text = "ignore Nav Items Ownership";
+            this.ignoreNavItemsOwnershipCB.UseVisualStyleBackColor = true;
+            // 
+            // ignoreMapOwnershipCB
+            // 
+            this.ignoreMapOwnershipCB.AutoSize = true;
+            this.ignoreMapOwnershipCB.Location = new System.Drawing.Point(11, 15);
+            this.ignoreMapOwnershipCB.Name = "ignoreMapOwnershipCB";
+            this.ignoreMapOwnershipCB.Size = new System.Drawing.Size(132, 17);
+            this.ignoreMapOwnershipCB.TabIndex = 0;
+            this.ignoreMapOwnershipCB.Text = "ignore Map Ownership";
+            this.ignoreMapOwnershipCB.UseVisualStyleBackColor = true;
+            // 
+            // groupBox31
+            // 
+            this.groupBox31.Controls.Add(this.use3DMapCB);
+            this.groupBox31.Controls.Add(this.groupBox32);
+            this.groupBox31.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox31.Location = new System.Drawing.Point(761, 9);
+            this.groupBox31.Name = "groupBox31";
+            this.groupBox31.Size = new System.Drawing.Size(273, 286);
+            this.groupBox31.TabIndex = 83;
+            this.groupBox31.TabStop = false;
+            this.groupBox31.Text = "UI Data";
+            // 
+            // use3DMapCB
+            // 
+            this.use3DMapCB.AutoSize = true;
+            this.use3DMapCB.Location = new System.Drawing.Point(23, 16);
+            this.use3DMapCB.Name = "use3DMapCB";
+            this.use3DMapCB.Size = new System.Drawing.Size(84, 17);
+            this.use3DMapCB.TabIndex = 85;
+            this.use3DMapCB.Text = "use 3D Map";
+            this.use3DMapCB.UseVisualStyleBackColor = true;
+            this.use3DMapCB.CheckedChanged += new System.EventHandler(this.use3DMapCB_CheckedChanged);
+            // 
+            // groupBox32
+            // 
+            this.groupBox32.Controls.Add(this.m_Color);
+            this.groupBox32.Controls.Add(this.darkLabel54);
+            this.groupBox32.Controls.Add(this.hitDirectionScatterNUD);
+            this.groupBox32.Controls.Add(this.label55);
+            this.groupBox32.Controls.Add(this.hitIndicationPostProcessEnabledCB);
+            this.groupBox32.Controls.Add(this.hitDirectionStyleCB);
+            this.groupBox32.Controls.Add(this.hitDirectionBehaviourCB);
+            this.groupBox32.Controls.Add(this.hitDirectionOverrideEnabledCB);
+            this.groupBox32.Controls.Add(this.hitDirectionMaxDurationNUD);
+            this.groupBox32.Controls.Add(this.hitDirectionBreakPointRelativeNUD);
+            this.groupBox32.Controls.Add(this.label53);
+            this.groupBox32.Controls.Add(this.label54);
+            this.groupBox32.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox32.Location = new System.Drawing.Point(6, 36);
+            this.groupBox32.Name = "groupBox32";
+            this.groupBox32.Size = new System.Drawing.Size(262, 243);
+            this.groupBox32.TabIndex = 84;
+            this.groupBox32.TabStop = false;
+            this.groupBox32.Text = "Hit Indication Data";
+            // 
+            // m_Color
+            // 
+            this.m_Color.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("m_Color.BackgroundImage")));
+            this.m_Color.Location = new System.Drawing.Point(17, 104);
+            this.m_Color.Name = "m_Color";
+            this.m_Color.Size = new System.Drawing.Size(236, 13);
+            this.m_Color.TabIndex = 118;
+            this.m_Color.TabStop = false;
+            this.m_Color.Click += new System.EventHandler(this.m_Color_Click);
+            this.m_Color.Paint += new System.Windows.Forms.PaintEventHandler(this.m_Color_Paint);
+            // 
+            // darkLabel54
+            // 
+            this.darkLabel54.AutoSize = true;
+            this.darkLabel54.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel54.Location = new System.Drawing.Point(17, 85);
+            this.darkLabel54.Name = "darkLabel54";
+            this.darkLabel54.Size = new System.Drawing.Size(152, 13);
+            this.darkLabel54.TabIndex = 117;
+            this.darkLabel54.Text = "Hit Direction Indicator Color Str";
+            // 
+            // hitDirectionScatterNUD
+            // 
+            this.hitDirectionScatterNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.hitDirectionScatterNUD.DecimalPlaces = 1;
+            this.hitDirectionScatterNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.hitDirectionScatterNUD.Location = new System.Drawing.Point(185, 185);
+            this.hitDirectionScatterNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.hitDirectionScatterNUD.Name = "hitDirectionScatterNUD";
+            this.hitDirectionScatterNUD.Size = new System.Drawing.Size(68, 20);
+            this.hitDirectionScatterNUD.TabIndex = 76;
+            this.hitDirectionScatterNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.hitDirectionScatterNUD.ValueChanged += new System.EventHandler(this.hitDirectionScatterNUD_ValueChanged);
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.ForeColor = System.Drawing.SystemColors.Control;
+            this.label55.Location = new System.Drawing.Point(17, 189);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(102, 13);
+            this.label55.TabIndex = 75;
+            this.label55.Text = "Hit Direction Scatter";
+            // 
+            // hitIndicationPostProcessEnabledCB
+            // 
+            this.hitIndicationPostProcessEnabledCB.AutoSize = true;
+            this.hitIndicationPostProcessEnabledCB.Location = new System.Drawing.Point(17, 213);
+            this.hitIndicationPostProcessEnabledCB.Name = "hitIndicationPostProcessEnabledCB";
+            this.hitIndicationPostProcessEnabledCB.Size = new System.Drawing.Size(195, 17);
+            this.hitIndicationPostProcessEnabledCB.TabIndex = 74;
+            this.hitIndicationPostProcessEnabledCB.Text = "Hit Indication Post Process Enabled";
+            this.hitIndicationPostProcessEnabledCB.UseVisualStyleBackColor = true;
+            this.hitIndicationPostProcessEnabledCB.CheckedChanged += new System.EventHandler(this.hitIndicationPostProcessEnabledCB_CheckedChanged);
+            // 
+            // hitDirectionStyleCB
+            // 
+            this.hitDirectionStyleCB.AutoSize = true;
+            this.hitDirectionStyleCB.Location = new System.Drawing.Point(17, 65);
+            this.hitDirectionStyleCB.Name = "hitDirectionStyleCB";
+            this.hitDirectionStyleCB.Size = new System.Drawing.Size(110, 17);
+            this.hitDirectionStyleCB.TabIndex = 73;
+            this.hitDirectionStyleCB.Text = "Hit Direction Style";
+            this.hitDirectionStyleCB.UseVisualStyleBackColor = true;
+            this.hitDirectionStyleCB.CheckedChanged += new System.EventHandler(this.hitDirectionStyleCB_CheckedChanged);
+            // 
+            // hitDirectionBehaviourCB
+            // 
+            this.hitDirectionBehaviourCB.AutoSize = true;
+            this.hitDirectionBehaviourCB.Location = new System.Drawing.Point(17, 42);
+            this.hitDirectionBehaviourCB.Name = "hitDirectionBehaviourCB";
+            this.hitDirectionBehaviourCB.Size = new System.Drawing.Size(135, 17);
+            this.hitDirectionBehaviourCB.TabIndex = 72;
+            this.hitDirectionBehaviourCB.Text = "Hit Direction Behaviour";
+            this.hitDirectionBehaviourCB.UseVisualStyleBackColor = true;
+            this.hitDirectionBehaviourCB.CheckedChanged += new System.EventHandler(this.hitDirectionBehaviourCB_CheckedChanged);
+            // 
+            // hitDirectionOverrideEnabledCB
+            // 
+            this.hitDirectionOverrideEnabledCB.AutoSize = true;
+            this.hitDirectionOverrideEnabledCB.Location = new System.Drawing.Point(17, 19);
+            this.hitDirectionOverrideEnabledCB.Name = "hitDirectionOverrideEnabledCB";
+            this.hitDirectionOverrideEnabledCB.Size = new System.Drawing.Size(169, 17);
+            this.hitDirectionOverrideEnabledCB.TabIndex = 71;
+            this.hitDirectionOverrideEnabledCB.Text = "Hit Direction Override Enabled";
+            this.hitDirectionOverrideEnabledCB.UseVisualStyleBackColor = true;
+            this.hitDirectionOverrideEnabledCB.CheckedChanged += new System.EventHandler(this.hitDirectionOverrideEnabledCB_CheckedChanged);
+            // 
+            // hitDirectionMaxDurationNUD
+            // 
+            this.hitDirectionMaxDurationNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.hitDirectionMaxDurationNUD.DecimalPlaces = 1;
+            this.hitDirectionMaxDurationNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.hitDirectionMaxDurationNUD.Location = new System.Drawing.Point(185, 132);
+            this.hitDirectionMaxDurationNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.hitDirectionMaxDurationNUD.Name = "hitDirectionMaxDurationNUD";
+            this.hitDirectionMaxDurationNUD.Size = new System.Drawing.Size(68, 20);
+            this.hitDirectionMaxDurationNUD.TabIndex = 70;
+            this.hitDirectionMaxDurationNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.hitDirectionMaxDurationNUD.ValueChanged += new System.EventHandler(this.hitDirectionMaxDurationNUD_ValueChanged);
+            // 
+            // hitDirectionBreakPointRelativeNUD
+            // 
+            this.hitDirectionBreakPointRelativeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.hitDirectionBreakPointRelativeNUD.DecimalPlaces = 1;
+            this.hitDirectionBreakPointRelativeNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.hitDirectionBreakPointRelativeNUD.Location = new System.Drawing.Point(185, 159);
+            this.hitDirectionBreakPointRelativeNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.hitDirectionBreakPointRelativeNUD.Name = "hitDirectionBreakPointRelativeNUD";
+            this.hitDirectionBreakPointRelativeNUD.Size = new System.Drawing.Size(68, 20);
+            this.hitDirectionBreakPointRelativeNUD.TabIndex = 70;
+            this.hitDirectionBreakPointRelativeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.hitDirectionBreakPointRelativeNUD.ValueChanged += new System.EventHandler(this.hitDirectionBreakPointRelativeNUD_ValueChanged);
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.ForeColor = System.Drawing.SystemColors.Control;
+            this.label53.Location = new System.Drawing.Point(17, 163);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(165, 13);
+            this.label53.TabIndex = 69;
+            this.label53.Text = "Hit Direction Break Point Relative";
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.ForeColor = System.Drawing.SystemColors.Control;
+            this.label54.Location = new System.Drawing.Point(17, 134);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(131, 13);
+            this.label54.TabIndex = 69;
+            this.label54.Text = "Hit Direction Max Duration";
+            // 
+            // groupBox28
+            // 
+            this.groupBox28.Controls.Add(this.groupBox30);
+            this.groupBox28.Controls.Add(this.groupBox29);
+            this.groupBox28.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox28.Location = new System.Drawing.Point(519, 9);
+            this.groupBox28.Name = "groupBox28";
+            this.groupBox28.Size = new System.Drawing.Size(236, 378);
+            this.groupBox28.TabIndex = 82;
+            this.groupBox28.TabStop = false;
+            this.groupBox28.Text = "BaseBuilding Data";
+            // 
+            // groupBox30
+            // 
+            this.groupBox30.Controls.Add(this.disableDistanceCheckCB);
+            this.groupBox30.Controls.Add(this.disableIsCollidingCheckCB);
+            this.groupBox30.Controls.Add(this.disablePerformRoofCheckCB);
+            this.groupBox30.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox30.Location = new System.Drawing.Point(6, 275);
+            this.groupBox30.Name = "groupBox30";
+            this.groupBox30.Size = new System.Drawing.Size(224, 86);
+            this.groupBox30.TabIndex = 11;
+            this.groupBox30.TabStop = false;
+            this.groupBox30.Text = "Construction Data";
+            // 
+            // disableDistanceCheckCB
+            // 
+            this.disableDistanceCheckCB.AutoSize = true;
+            this.disableDistanceCheckCB.Location = new System.Drawing.Point(14, 65);
+            this.disableDistanceCheckCB.Name = "disableDistanceCheckCB";
+            this.disableDistanceCheckCB.Size = new System.Drawing.Size(140, 17);
+            this.disableDistanceCheckCB.TabIndex = 3;
+            this.disableDistanceCheckCB.Text = "Disable Distance Check";
+            this.disableDistanceCheckCB.UseVisualStyleBackColor = true;
+            this.disableDistanceCheckCB.CheckedChanged += new System.EventHandler(this.disableDistanceCheckCB_CheckedChanged);
+            // 
+            // disableIsCollidingCheckCB
+            // 
+            this.disableIsCollidingCheckCB.AutoSize = true;
+            this.disableIsCollidingCheckCB.Location = new System.Drawing.Point(14, 42);
+            this.disableIsCollidingCheckCB.Name = "disableIsCollidingCheckCB";
+            this.disableIsCollidingCheckCB.Size = new System.Drawing.Size(148, 17);
+            this.disableIsCollidingCheckCB.TabIndex = 2;
+            this.disableIsCollidingCheckCB.Text = "Disable Is Colliding Check";
+            this.disableIsCollidingCheckCB.UseVisualStyleBackColor = true;
+            this.disableIsCollidingCheckCB.CheckedChanged += new System.EventHandler(this.disableIsCollidingCheckCB_CheckedChanged);
+            // 
+            // disablePerformRoofCheckCB
+            // 
+            this.disablePerformRoofCheckCB.AutoSize = true;
+            this.disablePerformRoofCheckCB.Location = new System.Drawing.Point(14, 19);
+            this.disablePerformRoofCheckCB.Name = "disablePerformRoofCheckCB";
+            this.disablePerformRoofCheckCB.Size = new System.Drawing.Size(160, 17);
+            this.disablePerformRoofCheckCB.TabIndex = 1;
+            this.disablePerformRoofCheckCB.Text = "Disable Perform Roof Check";
+            this.disablePerformRoofCheckCB.UseVisualStyleBackColor = true;
+            this.disablePerformRoofCheckCB.CheckedChanged += new System.EventHandler(this.disablePerformRoofCheckCB_CheckedChanged);
+            // 
+            // groupBox29
+            // 
+            this.groupBox29.Controls.Add(this.disableIsInTerrainCheckCB);
+            this.groupBox29.Controls.Add(this.disableIsUnderwaterCheckCB);
+            this.groupBox29.Controls.Add(this.disableHeightPlacementCheckCB);
+            this.groupBox29.Controls.Add(this.disableIsPlacementPermittedCheckCB);
+            this.groupBox29.Controls.Add(this.disableIsCollidingAngleCheckCB);
+            this.groupBox29.Controls.Add(this.disableIsCollidingGPlotCheckCB);
+            this.groupBox29.Controls.Add(this.disableIsBaseViableCheckCB);
+            this.groupBox29.Controls.Add(this.disableIsClippingRoofCheckCB);
+            this.groupBox29.Controls.Add(this.disableIsCollidingPlayerCheckCB);
+            this.groupBox29.Controls.Add(this.disableIsCollidingBBoxCheckCB);
+            this.groupBox29.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox29.Location = new System.Drawing.Point(6, 15);
+            this.groupBox29.Name = "groupBox29";
+            this.groupBox29.Size = new System.Drawing.Size(224, 255);
+            this.groupBox29.TabIndex = 1;
+            this.groupBox29.TabStop = false;
+            this.groupBox29.Text = "Hologram Data";
+            // 
+            // disableIsInTerrainCheckCB
+            // 
+            this.disableIsInTerrainCheckCB.AutoSize = true;
+            this.disableIsInTerrainCheckCB.Location = new System.Drawing.Point(14, 226);
+            this.disableIsInTerrainCheckCB.Name = "disableIsInTerrainCheckCB";
+            this.disableIsInTerrainCheckCB.Size = new System.Drawing.Size(154, 17);
+            this.disableIsInTerrainCheckCB.TabIndex = 10;
+            this.disableIsInTerrainCheckCB.Text = "Disable Is In Terrain Check";
+            this.disableIsInTerrainCheckCB.UseVisualStyleBackColor = true;
+            this.disableIsInTerrainCheckCB.CheckedChanged += new System.EventHandler(this.disableIsInTerrainCheckCB_CheckedChanged);
+            // 
+            // disableIsUnderwaterCheckCB
+            // 
+            this.disableIsUnderwaterCheckCB.AutoSize = true;
+            this.disableIsUnderwaterCheckCB.Location = new System.Drawing.Point(14, 203);
+            this.disableIsUnderwaterCheckCB.Name = "disableIsUnderwaterCheckCB";
+            this.disableIsUnderwaterCheckCB.Size = new System.Drawing.Size(164, 17);
+            this.disableIsUnderwaterCheckCB.TabIndex = 9;
+            this.disableIsUnderwaterCheckCB.Text = "Disable Is Underwater Check";
+            this.disableIsUnderwaterCheckCB.UseVisualStyleBackColor = true;
+            this.disableIsUnderwaterCheckCB.CheckedChanged += new System.EventHandler(this.disableIsUnderwaterCheckCB_CheckedChanged);
+            // 
+            // disableHeightPlacementCheckCB
+            // 
+            this.disableHeightPlacementCheckCB.AutoSize = true;
+            this.disableHeightPlacementCheckCB.Location = new System.Drawing.Point(14, 180);
+            this.disableHeightPlacementCheckCB.Name = "disableHeightPlacementCheckCB";
+            this.disableHeightPlacementCheckCB.Size = new System.Drawing.Size(182, 17);
+            this.disableHeightPlacementCheckCB.TabIndex = 8;
+            this.disableHeightPlacementCheckCB.Text = "Disable Height Placement Check";
+            this.disableHeightPlacementCheckCB.UseVisualStyleBackColor = true;
+            this.disableHeightPlacementCheckCB.CheckedChanged += new System.EventHandler(this.disableHeightPlacementCheckCB_CheckedChanged);
+            // 
+            // disableIsPlacementPermittedCheckCB
+            // 
+            this.disableIsPlacementPermittedCheckCB.AutoSize = true;
+            this.disableIsPlacementPermittedCheckCB.Location = new System.Drawing.Point(14, 157);
+            this.disableIsPlacementPermittedCheckCB.Name = "disableIsPlacementPermittedCheckCB";
+            this.disableIsPlacementPermittedCheckCB.Size = new System.Drawing.Size(206, 17);
+            this.disableIsPlacementPermittedCheckCB.TabIndex = 7;
+            this.disableIsPlacementPermittedCheckCB.Text = "Disable Is Placement Permitted Check";
+            this.disableIsPlacementPermittedCheckCB.UseVisualStyleBackColor = true;
+            this.disableIsPlacementPermittedCheckCB.CheckedChanged += new System.EventHandler(this.disableIsPlacementPermittedCheckCB_CheckedChanged);
+            // 
+            // disableIsCollidingAngleCheckCB
+            // 
+            this.disableIsCollidingAngleCheckCB.AutoSize = true;
+            this.disableIsCollidingAngleCheckCB.Location = new System.Drawing.Point(14, 134);
+            this.disableIsCollidingAngleCheckCB.Name = "disableIsCollidingAngleCheckCB";
+            this.disableIsCollidingAngleCheckCB.Size = new System.Drawing.Size(178, 17);
+            this.disableIsCollidingAngleCheckCB.TabIndex = 6;
+            this.disableIsCollidingAngleCheckCB.Text = "Disable Is Colliding Angle Check";
+            this.disableIsCollidingAngleCheckCB.UseVisualStyleBackColor = true;
+            this.disableIsCollidingAngleCheckCB.CheckedChanged += new System.EventHandler(this.disableIsCollidingAngleCheckCB_CheckedChanged);
+            // 
+            // disableIsCollidingGPlotCheckCB
+            // 
+            this.disableIsCollidingGPlotCheckCB.AutoSize = true;
+            this.disableIsCollidingGPlotCheckCB.Location = new System.Drawing.Point(14, 111);
+            this.disableIsCollidingGPlotCheckCB.Name = "disableIsCollidingGPlotCheckCB";
+            this.disableIsCollidingGPlotCheckCB.Size = new System.Drawing.Size(180, 17);
+            this.disableIsCollidingGPlotCheckCB.TabIndex = 5;
+            this.disableIsCollidingGPlotCheckCB.Text = "Disable Is Colliding G Plot Check";
+            this.disableIsCollidingGPlotCheckCB.UseVisualStyleBackColor = true;
+            this.disableIsCollidingGPlotCheckCB.CheckedChanged += new System.EventHandler(this.disableIsCollidingGPlotCheckCB_CheckedChanged);
+            // 
+            // disableIsBaseViableCheckCB
+            // 
+            this.disableIsBaseViableCheckCB.AutoSize = true;
+            this.disableIsBaseViableCheckCB.Location = new System.Drawing.Point(14, 88);
+            this.disableIsBaseViableCheckCB.Name = "disableIsBaseViableCheckCB";
+            this.disableIsBaseViableCheckCB.Size = new System.Drawing.Size(165, 17);
+            this.disableIsBaseViableCheckCB.TabIndex = 4;
+            this.disableIsBaseViableCheckCB.Text = "Disable Is Base Viable Check";
+            this.disableIsBaseViableCheckCB.UseVisualStyleBackColor = true;
+            this.disableIsBaseViableCheckCB.CheckedChanged += new System.EventHandler(this.disableIsBaseViableCheckCB_CheckedChanged);
+            // 
+            // disableIsClippingRoofCheckCB
+            // 
+            this.disableIsClippingRoofCheckCB.AutoSize = true;
+            this.disableIsClippingRoofCheckCB.Location = new System.Drawing.Point(14, 65);
+            this.disableIsClippingRoofCheckCB.Name = "disableIsClippingRoofCheckCB";
+            this.disableIsClippingRoofCheckCB.Size = new System.Drawing.Size(172, 17);
+            this.disableIsClippingRoofCheckCB.TabIndex = 3;
+            this.disableIsClippingRoofCheckCB.Text = "Disable Is Clipping Roof Check";
+            this.disableIsClippingRoofCheckCB.UseVisualStyleBackColor = true;
+            this.disableIsClippingRoofCheckCB.CheckedChanged += new System.EventHandler(this.disableIsClippingRoofCheckCB_CheckedChanged);
+            // 
+            // disableIsCollidingPlayerCheckCB
+            // 
+            this.disableIsCollidingPlayerCheckCB.AutoSize = true;
+            this.disableIsCollidingPlayerCheckCB.Location = new System.Drawing.Point(14, 42);
+            this.disableIsCollidingPlayerCheckCB.Name = "disableIsCollidingPlayerCheckCB";
+            this.disableIsCollidingPlayerCheckCB.Size = new System.Drawing.Size(180, 17);
+            this.disableIsCollidingPlayerCheckCB.TabIndex = 2;
+            this.disableIsCollidingPlayerCheckCB.Text = "Disable Is Colliding Player Check";
+            this.disableIsCollidingPlayerCheckCB.UseVisualStyleBackColor = true;
+            this.disableIsCollidingPlayerCheckCB.CheckedChanged += new System.EventHandler(this.disableIsCollidingPlayerCheckCB_CheckedChanged);
+            // 
+            // disableIsCollidingBBoxCheckCB
+            // 
+            this.disableIsCollidingBBoxCheckCB.AutoSize = true;
+            this.disableIsCollidingBBoxCheckCB.Location = new System.Drawing.Point(14, 19);
+            this.disableIsCollidingBBoxCheckCB.Name = "disableIsCollidingBBoxCheckCB";
+            this.disableIsCollidingBBoxCheckCB.Size = new System.Drawing.Size(176, 17);
+            this.disableIsCollidingBBoxCheckCB.TabIndex = 1;
+            this.disableIsCollidingBBoxCheckCB.Text = "Disable Is Colliding BBox Check";
+            this.disableIsCollidingBBoxCheckCB.UseVisualStyleBackColor = true;
+            this.disableIsCollidingBBoxCheckCB.CheckedChanged += new System.EventHandler(this.disableIsCollidingBBoxCheckCB_CheckedChanged);
+            // 
             // groupBox25
             // 
             this.groupBox25.Controls.Add(this.groupBox61);
@@ -7911,6 +7965,250 @@ namespace DayZeEditor
             this.groupBox25.TabIndex = 81;
             this.groupBox25.TabStop = false;
             this.groupBox25.Text = "Player Data";
+            // 
+            // groupBox61
+            // 
+            this.groupBox61.Controls.Add(this.shockDepletionSpeedNUD);
+            this.groupBox61.Controls.Add(this.label139);
+            this.groupBox61.Controls.Add(this.healthDepletionSpeedNUD);
+            this.groupBox61.Controls.Add(this.label132);
+            this.groupBox61.Controls.Add(this.staminaDepletionSpeedNUD);
+            this.groupBox61.Controls.Add(this.label138);
+            this.groupBox61.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox61.Location = new System.Drawing.Point(6, 479);
+            this.groupBox61.Name = "groupBox61";
+            this.groupBox61.Size = new System.Drawing.Size(295, 97);
+            this.groupBox61.TabIndex = 72;
+            this.groupBox61.TabStop = false;
+            this.groupBox61.Text = "Drowning Data";
+            // 
+            // shockDepletionSpeedNUD
+            // 
+            this.shockDepletionSpeedNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.shockDepletionSpeedNUD.DecimalPlaces = 2;
+            this.shockDepletionSpeedNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.shockDepletionSpeedNUD.Location = new System.Drawing.Point(214, 71);
+            this.shockDepletionSpeedNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.shockDepletionSpeedNUD.Name = "shockDepletionSpeedNUD";
+            this.shockDepletionSpeedNUD.Size = new System.Drawing.Size(68, 20);
+            this.shockDepletionSpeedNUD.TabIndex = 72;
+            this.shockDepletionSpeedNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label139
+            // 
+            this.label139.AutoSize = true;
+            this.label139.ForeColor = System.Drawing.SystemColors.Control;
+            this.label139.Location = new System.Drawing.Point(5, 75);
+            this.label139.Name = "label139";
+            this.label139.Size = new System.Drawing.Size(118, 13);
+            this.label139.TabIndex = 71;
+            this.label139.Text = "shock Depletion Speed";
+            // 
+            // healthDepletionSpeedNUD
+            // 
+            this.healthDepletionSpeedNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.healthDepletionSpeedNUD.DecimalPlaces = 2;
+            this.healthDepletionSpeedNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.healthDepletionSpeedNUD.Location = new System.Drawing.Point(214, 45);
+            this.healthDepletionSpeedNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.healthDepletionSpeedNUD.Name = "healthDepletionSpeedNUD";
+            this.healthDepletionSpeedNUD.Size = new System.Drawing.Size(68, 20);
+            this.healthDepletionSpeedNUD.TabIndex = 70;
+            this.healthDepletionSpeedNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label132
+            // 
+            this.label132.AutoSize = true;
+            this.label132.ForeColor = System.Drawing.SystemColors.Control;
+            this.label132.Location = new System.Drawing.Point(5, 49);
+            this.label132.Name = "label132";
+            this.label132.Size = new System.Drawing.Size(118, 13);
+            this.label132.TabIndex = 69;
+            this.label132.Text = "health Depletion Speed";
+            // 
+            // staminaDepletionSpeedNUD
+            // 
+            this.staminaDepletionSpeedNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.staminaDepletionSpeedNUD.DecimalPlaces = 2;
+            this.staminaDepletionSpeedNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.staminaDepletionSpeedNUD.Location = new System.Drawing.Point(214, 19);
+            this.staminaDepletionSpeedNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.staminaDepletionSpeedNUD.Name = "staminaDepletionSpeedNUD";
+            this.staminaDepletionSpeedNUD.Size = new System.Drawing.Size(68, 20);
+            this.staminaDepletionSpeedNUD.TabIndex = 68;
+            this.staminaDepletionSpeedNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label138
+            // 
+            this.label138.AutoSize = true;
+            this.label138.ForeColor = System.Drawing.SystemColors.Control;
+            this.label138.Location = new System.Drawing.Point(5, 23);
+            this.label138.Name = "label138";
+            this.label138.Size = new System.Drawing.Size(125, 13);
+            this.label138.TabIndex = 67;
+            this.label138.Text = "stamina Depletion Speed";
+            // 
+            // groupBox60
+            // 
+            this.groupBox60.Controls.Add(this.rotationSpeedSprintNUD);
+            this.groupBox60.Controls.Add(this.label133);
+            this.groupBox60.Controls.Add(this.timeToStrafeSprintNUD);
+            this.groupBox60.Controls.Add(this.label134);
+            this.groupBox60.Controls.Add(this.timeToSprintNUD);
+            this.groupBox60.Controls.Add(this.label135);
+            this.groupBox60.Controls.Add(this.rotationSpeedJogNUD);
+            this.groupBox60.Controls.Add(this.label136);
+            this.groupBox60.Controls.Add(this.timeToStrafeJogNUD);
+            this.groupBox60.Controls.Add(this.label137);
+            this.groupBox60.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox60.Location = new System.Drawing.Point(6, 319);
+            this.groupBox60.Name = "groupBox60";
+            this.groupBox60.Size = new System.Drawing.Size(295, 154);
+            this.groupBox60.TabIndex = 77;
+            this.groupBox60.TabStop = false;
+            this.groupBox60.Text = "Movement Data";
+            // 
+            // rotationSpeedSprintNUD
+            // 
+            this.rotationSpeedSprintNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.rotationSpeedSprintNUD.DecimalPlaces = 2;
+            this.rotationSpeedSprintNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.rotationSpeedSprintNUD.Location = new System.Drawing.Point(214, 123);
+            this.rotationSpeedSprintNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.rotationSpeedSprintNUD.Name = "rotationSpeedSprintNUD";
+            this.rotationSpeedSprintNUD.Size = new System.Drawing.Size(68, 20);
+            this.rotationSpeedSprintNUD.TabIndex = 76;
+            this.rotationSpeedSprintNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label133
+            // 
+            this.label133.AutoSize = true;
+            this.label133.ForeColor = System.Drawing.SystemColors.Control;
+            this.label133.Location = new System.Drawing.Point(5, 125);
+            this.label133.Name = "label133";
+            this.label133.Size = new System.Drawing.Size(106, 13);
+            this.label133.TabIndex = 75;
+            this.label133.Text = "rotation Speed Sprint";
+            // 
+            // timeToStrafeSprintNUD
+            // 
+            this.timeToStrafeSprintNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.timeToStrafeSprintNUD.DecimalPlaces = 2;
+            this.timeToStrafeSprintNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.timeToStrafeSprintNUD.Location = new System.Drawing.Point(214, 97);
+            this.timeToStrafeSprintNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.timeToStrafeSprintNUD.Name = "timeToStrafeSprintNUD";
+            this.timeToStrafeSprintNUD.Size = new System.Drawing.Size(68, 20);
+            this.timeToStrafeSprintNUD.TabIndex = 74;
+            this.timeToStrafeSprintNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label134
+            // 
+            this.label134.AutoSize = true;
+            this.label134.ForeColor = System.Drawing.SystemColors.Control;
+            this.label134.Location = new System.Drawing.Point(5, 101);
+            this.label134.Name = "label134";
+            this.label134.Size = new System.Drawing.Size(103, 13);
+            this.label134.TabIndex = 73;
+            this.label134.Text = "time To Strafe Sprint";
+            // 
+            // timeToSprintNUD
+            // 
+            this.timeToSprintNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.timeToSprintNUD.DecimalPlaces = 2;
+            this.timeToSprintNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.timeToSprintNUD.Location = new System.Drawing.Point(214, 71);
+            this.timeToSprintNUD.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.timeToSprintNUD.Name = "timeToSprintNUD";
+            this.timeToSprintNUD.Size = new System.Drawing.Size(68, 20);
+            this.timeToSprintNUD.TabIndex = 72;
+            this.timeToSprintNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label135
+            // 
+            this.label135.AutoSize = true;
+            this.label135.ForeColor = System.Drawing.SystemColors.Control;
+            this.label135.Location = new System.Drawing.Point(5, 75);
+            this.label135.Name = "label135";
+            this.label135.Size = new System.Drawing.Size(72, 13);
+            this.label135.TabIndex = 71;
+            this.label135.Text = "time To Sprint";
+            // 
+            // rotationSpeedJogNUD
+            // 
+            this.rotationSpeedJogNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.rotationSpeedJogNUD.DecimalPlaces = 2;
+            this.rotationSpeedJogNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.rotationSpeedJogNUD.Location = new System.Drawing.Point(214, 45);
+            this.rotationSpeedJogNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.rotationSpeedJogNUD.Name = "rotationSpeedJogNUD";
+            this.rotationSpeedJogNUD.Size = new System.Drawing.Size(68, 20);
+            this.rotationSpeedJogNUD.TabIndex = 70;
+            this.rotationSpeedJogNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label136
+            // 
+            this.label136.AutoSize = true;
+            this.label136.ForeColor = System.Drawing.SystemColors.Control;
+            this.label136.Location = new System.Drawing.Point(5, 49);
+            this.label136.Name = "label136";
+            this.label136.Size = new System.Drawing.Size(96, 13);
+            this.label136.TabIndex = 69;
+            this.label136.Text = "rotation Speed Jog";
+            // 
+            // timeToStrafeJogNUD
+            // 
+            this.timeToStrafeJogNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.timeToStrafeJogNUD.DecimalPlaces = 2;
+            this.timeToStrafeJogNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.timeToStrafeJogNUD.Location = new System.Drawing.Point(214, 19);
+            this.timeToStrafeJogNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.timeToStrafeJogNUD.Name = "timeToStrafeJogNUD";
+            this.timeToStrafeJogNUD.Size = new System.Drawing.Size(68, 20);
+            this.timeToStrafeJogNUD.TabIndex = 68;
+            this.timeToStrafeJogNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label137
+            // 
+            this.label137.AutoSize = true;
+            this.label137.ForeColor = System.Drawing.SystemColors.Control;
+            this.label137.Location = new System.Drawing.Point(5, 23);
+            this.label137.Name = "label137";
+            this.label137.Size = new System.Drawing.Size(93, 13);
+            this.label137.TabIndex = 67;
+            this.label137.Text = "time To Strafe Jog";
             // 
             // groupBox56
             // 
@@ -11412,304 +11710,6 @@ namespace DayZeEditor
             this.importChildrenFromdzeToolStripMenuItem.Text = "Import Children from .dze";
             this.importChildrenFromdzeToolStripMenuItem.Click += new System.EventHandler(this.importChildrenFromdzeToolStripMenuItem_Click);
             // 
-            // groupBox59
-            // 
-            this.groupBox59.Controls.Add(this.displayNavInfoCB);
-            this.groupBox59.Controls.Add(this.displayPlayerPositionCB);
-            this.groupBox59.Controls.Add(this.ignoreNavItemsOwnershipCB);
-            this.groupBox59.Controls.Add(this.ignoreMapOwnershipCB);
-            this.groupBox59.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox59.Location = new System.Drawing.Point(321, 481);
-            this.groupBox59.Name = "groupBox59";
-            this.groupBox59.Size = new System.Drawing.Size(185, 111);
-            this.groupBox59.TabIndex = 84;
-            this.groupBox59.TabStop = false;
-            this.groupBox59.Text = "Map Data";
-            // 
-            // displayPlayerPositionCB
-            // 
-            this.displayPlayerPositionCB.AutoSize = true;
-            this.displayPlayerPositionCB.Location = new System.Drawing.Point(11, 61);
-            this.displayPlayerPositionCB.Name = "displayPlayerPositionCB";
-            this.displayPlayerPositionCB.Size = new System.Drawing.Size(130, 17);
-            this.displayPlayerPositionCB.TabIndex = 2;
-            this.displayPlayerPositionCB.Text = "display Player Position";
-            this.displayPlayerPositionCB.UseVisualStyleBackColor = true;
-            // 
-            // ignoreNavItemsOwnershipCB
-            // 
-            this.ignoreNavItemsOwnershipCB.AutoSize = true;
-            this.ignoreNavItemsOwnershipCB.Location = new System.Drawing.Point(11, 38);
-            this.ignoreNavItemsOwnershipCB.Name = "ignoreNavItemsOwnershipCB";
-            this.ignoreNavItemsOwnershipCB.Size = new System.Drawing.Size(159, 17);
-            this.ignoreNavItemsOwnershipCB.TabIndex = 1;
-            this.ignoreNavItemsOwnershipCB.Text = "ignore Nav Items Ownership";
-            this.ignoreNavItemsOwnershipCB.UseVisualStyleBackColor = true;
-            // 
-            // ignoreMapOwnershipCB
-            // 
-            this.ignoreMapOwnershipCB.AutoSize = true;
-            this.ignoreMapOwnershipCB.Location = new System.Drawing.Point(11, 15);
-            this.ignoreMapOwnershipCB.Name = "ignoreMapOwnershipCB";
-            this.ignoreMapOwnershipCB.Size = new System.Drawing.Size(132, 17);
-            this.ignoreMapOwnershipCB.TabIndex = 0;
-            this.ignoreMapOwnershipCB.Text = "ignore Map Ownership";
-            this.ignoreMapOwnershipCB.UseVisualStyleBackColor = true;
-            // 
-            // displayNavInfoCB
-            // 
-            this.displayNavInfoCB.AutoSize = true;
-            this.displayNavInfoCB.Location = new System.Drawing.Point(11, 84);
-            this.displayNavInfoCB.Name = "displayNavInfoCB";
-            this.displayNavInfoCB.Size = new System.Drawing.Size(102, 17);
-            this.displayNavInfoCB.TabIndex = 3;
-            this.displayNavInfoCB.Text = "display Nav Info";
-            this.displayNavInfoCB.UseVisualStyleBackColor = true;
-            // 
-            // groupBox60
-            // 
-            this.groupBox60.Controls.Add(this.rotationSpeedSprintNUD);
-            this.groupBox60.Controls.Add(this.label133);
-            this.groupBox60.Controls.Add(this.timeToStrafeSprintNUD);
-            this.groupBox60.Controls.Add(this.label134);
-            this.groupBox60.Controls.Add(this.timeToSprintNUD);
-            this.groupBox60.Controls.Add(this.label135);
-            this.groupBox60.Controls.Add(this.rotationSpeedJogNUD);
-            this.groupBox60.Controls.Add(this.label136);
-            this.groupBox60.Controls.Add(this.timeToStrafeJogNUD);
-            this.groupBox60.Controls.Add(this.label137);
-            this.groupBox60.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox60.Location = new System.Drawing.Point(6, 319);
-            this.groupBox60.Name = "groupBox60";
-            this.groupBox60.Size = new System.Drawing.Size(295, 154);
-            this.groupBox60.TabIndex = 77;
-            this.groupBox60.TabStop = false;
-            this.groupBox60.Text = "Movement Data";
-            // 
-            // rotationSpeedSprintNUD
-            // 
-            this.rotationSpeedSprintNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.rotationSpeedSprintNUD.DecimalPlaces = 2;
-            this.rotationSpeedSprintNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.rotationSpeedSprintNUD.Location = new System.Drawing.Point(214, 123);
-            this.rotationSpeedSprintNUD.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.rotationSpeedSprintNUD.Name = "rotationSpeedSprintNUD";
-            this.rotationSpeedSprintNUD.Size = new System.Drawing.Size(68, 20);
-            this.rotationSpeedSprintNUD.TabIndex = 76;
-            this.rotationSpeedSprintNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label133
-            // 
-            this.label133.AutoSize = true;
-            this.label133.ForeColor = System.Drawing.SystemColors.Control;
-            this.label133.Location = new System.Drawing.Point(5, 125);
-            this.label133.Name = "label133";
-            this.label133.Size = new System.Drawing.Size(106, 13);
-            this.label133.TabIndex = 75;
-            this.label133.Text = "rotation Speed Sprint";
-            // 
-            // timeToStrafeSprintNUD
-            // 
-            this.timeToStrafeSprintNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.timeToStrafeSprintNUD.DecimalPlaces = 2;
-            this.timeToStrafeSprintNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.timeToStrafeSprintNUD.Location = new System.Drawing.Point(214, 97);
-            this.timeToStrafeSprintNUD.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.timeToStrafeSprintNUD.Name = "timeToStrafeSprintNUD";
-            this.timeToStrafeSprintNUD.Size = new System.Drawing.Size(68, 20);
-            this.timeToStrafeSprintNUD.TabIndex = 74;
-            this.timeToStrafeSprintNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label134
-            // 
-            this.label134.AutoSize = true;
-            this.label134.ForeColor = System.Drawing.SystemColors.Control;
-            this.label134.Location = new System.Drawing.Point(5, 101);
-            this.label134.Name = "label134";
-            this.label134.Size = new System.Drawing.Size(103, 13);
-            this.label134.TabIndex = 73;
-            this.label134.Text = "time To Strafe Sprint";
-            // 
-            // timeToSprintNUD
-            // 
-            this.timeToSprintNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.timeToSprintNUD.DecimalPlaces = 2;
-            this.timeToSprintNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.timeToSprintNUD.Location = new System.Drawing.Point(214, 71);
-            this.timeToSprintNUD.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.timeToSprintNUD.Name = "timeToSprintNUD";
-            this.timeToSprintNUD.Size = new System.Drawing.Size(68, 20);
-            this.timeToSprintNUD.TabIndex = 72;
-            this.timeToSprintNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label135
-            // 
-            this.label135.AutoSize = true;
-            this.label135.ForeColor = System.Drawing.SystemColors.Control;
-            this.label135.Location = new System.Drawing.Point(5, 75);
-            this.label135.Name = "label135";
-            this.label135.Size = new System.Drawing.Size(72, 13);
-            this.label135.TabIndex = 71;
-            this.label135.Text = "time To Sprint";
-            // 
-            // rotationSpeedJogNUD
-            // 
-            this.rotationSpeedJogNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.rotationSpeedJogNUD.DecimalPlaces = 2;
-            this.rotationSpeedJogNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.rotationSpeedJogNUD.Location = new System.Drawing.Point(214, 45);
-            this.rotationSpeedJogNUD.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.rotationSpeedJogNUD.Name = "rotationSpeedJogNUD";
-            this.rotationSpeedJogNUD.Size = new System.Drawing.Size(68, 20);
-            this.rotationSpeedJogNUD.TabIndex = 70;
-            this.rotationSpeedJogNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label136
-            // 
-            this.label136.AutoSize = true;
-            this.label136.ForeColor = System.Drawing.SystemColors.Control;
-            this.label136.Location = new System.Drawing.Point(5, 49);
-            this.label136.Name = "label136";
-            this.label136.Size = new System.Drawing.Size(96, 13);
-            this.label136.TabIndex = 69;
-            this.label136.Text = "rotation Speed Jog";
-            // 
-            // timeToStrafeJogNUD
-            // 
-            this.timeToStrafeJogNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.timeToStrafeJogNUD.DecimalPlaces = 2;
-            this.timeToStrafeJogNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.timeToStrafeJogNUD.Location = new System.Drawing.Point(214, 19);
-            this.timeToStrafeJogNUD.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.timeToStrafeJogNUD.Name = "timeToStrafeJogNUD";
-            this.timeToStrafeJogNUD.Size = new System.Drawing.Size(68, 20);
-            this.timeToStrafeJogNUD.TabIndex = 68;
-            this.timeToStrafeJogNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label137
-            // 
-            this.label137.AutoSize = true;
-            this.label137.ForeColor = System.Drawing.SystemColors.Control;
-            this.label137.Location = new System.Drawing.Point(5, 23);
-            this.label137.Name = "label137";
-            this.label137.Size = new System.Drawing.Size(93, 13);
-            this.label137.TabIndex = 67;
-            this.label137.Text = "time To Strafe Jog";
-            // 
-            // groupBox61
-            // 
-            this.groupBox61.Controls.Add(this.shockDepletionSpeedNUD);
-            this.groupBox61.Controls.Add(this.label139);
-            this.groupBox61.Controls.Add(this.healthDepletionSpeedNUD);
-            this.groupBox61.Controls.Add(this.label132);
-            this.groupBox61.Controls.Add(this.staminaDepletionSpeedNUD);
-            this.groupBox61.Controls.Add(this.label138);
-            this.groupBox61.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox61.Location = new System.Drawing.Point(6, 479);
-            this.groupBox61.Name = "groupBox61";
-            this.groupBox61.Size = new System.Drawing.Size(295, 97);
-            this.groupBox61.TabIndex = 72;
-            this.groupBox61.TabStop = false;
-            this.groupBox61.Text = "Drowning Data";
-            // 
-            // healthDepletionSpeedNUD
-            // 
-            this.healthDepletionSpeedNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.healthDepletionSpeedNUD.DecimalPlaces = 2;
-            this.healthDepletionSpeedNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.healthDepletionSpeedNUD.Location = new System.Drawing.Point(214, 45);
-            this.healthDepletionSpeedNUD.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.healthDepletionSpeedNUD.Name = "healthDepletionSpeedNUD";
-            this.healthDepletionSpeedNUD.Size = new System.Drawing.Size(68, 20);
-            this.healthDepletionSpeedNUD.TabIndex = 70;
-            this.healthDepletionSpeedNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label132
-            // 
-            this.label132.AutoSize = true;
-            this.label132.ForeColor = System.Drawing.SystemColors.Control;
-            this.label132.Location = new System.Drawing.Point(5, 49);
-            this.label132.Name = "label132";
-            this.label132.Size = new System.Drawing.Size(118, 13);
-            this.label132.TabIndex = 69;
-            this.label132.Text = "health Depletion Speed";
-            // 
-            // staminaDepletionSpeedNUD
-            // 
-            this.staminaDepletionSpeedNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.staminaDepletionSpeedNUD.DecimalPlaces = 2;
-            this.staminaDepletionSpeedNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.staminaDepletionSpeedNUD.Location = new System.Drawing.Point(214, 19);
-            this.staminaDepletionSpeedNUD.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.staminaDepletionSpeedNUD.Name = "staminaDepletionSpeedNUD";
-            this.staminaDepletionSpeedNUD.Size = new System.Drawing.Size(68, 20);
-            this.staminaDepletionSpeedNUD.TabIndex = 68;
-            this.staminaDepletionSpeedNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label138
-            // 
-            this.label138.AutoSize = true;
-            this.label138.ForeColor = System.Drawing.SystemColors.Control;
-            this.label138.Location = new System.Drawing.Point(5, 23);
-            this.label138.Name = "label138";
-            this.label138.Size = new System.Drawing.Size(125, 13);
-            this.label138.TabIndex = 67;
-            this.label138.Text = "stamina Depletion Speed";
-            // 
-            // shockDepletionSpeedNUD
-            // 
-            this.shockDepletionSpeedNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.shockDepletionSpeedNUD.DecimalPlaces = 2;
-            this.shockDepletionSpeedNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.shockDepletionSpeedNUD.Location = new System.Drawing.Point(214, 71);
-            this.shockDepletionSpeedNUD.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.shockDepletionSpeedNUD.Name = "shockDepletionSpeedNUD";
-            this.shockDepletionSpeedNUD.Size = new System.Drawing.Size(68, 20);
-            this.shockDepletionSpeedNUD.TabIndex = 72;
-            this.shockDepletionSpeedNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label139
-            // 
-            this.label139.AutoSize = true;
-            this.label139.ForeColor = System.Drawing.SystemColors.Control;
-            this.label139.Location = new System.Drawing.Point(5, 75);
-            this.label139.Name = "label139";
-            this.label139.Size = new System.Drawing.Size(118, 13);
-            this.label139.TabIndex = 71;
-            this.label139.Text = "shock Depletion Speed";
-            // 
             // Economy_Manager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -11894,19 +11894,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.RandomPresetAttachmentChanceNUD)).EndInit();
             this.CFGGameplay.ResumeLayout(false);
             this.CFGGameplay.PerformLayout();
-            this.groupBox31.ResumeLayout(false);
-            this.groupBox31.PerformLayout();
-            this.groupBox32.ResumeLayout(false);
-            this.groupBox32.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.m_Color)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hitDirectionScatterNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hitDirectionMaxDurationNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hitDirectionBreakPointRelativeNUD)).EndInit();
-            this.groupBox28.ResumeLayout(false);
-            this.groupBox30.ResumeLayout(false);
-            this.groupBox30.PerformLayout();
-            this.groupBox29.ResumeLayout(false);
-            this.groupBox29.PerformLayout();
             this.groupBox27.ResumeLayout(false);
             this.groupBox27.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DecMaxNUD)).EndInit();
@@ -11934,8 +11921,35 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.JanMaxNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.JanMinNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lightingConfigNUD)).EndInit();
+            this.groupBox59.ResumeLayout(false);
+            this.groupBox59.PerformLayout();
+            this.groupBox31.ResumeLayout(false);
+            this.groupBox31.PerformLayout();
+            this.groupBox32.ResumeLayout(false);
+            this.groupBox32.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.m_Color)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hitDirectionScatterNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hitDirectionMaxDurationNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hitDirectionBreakPointRelativeNUD)).EndInit();
+            this.groupBox28.ResumeLayout(false);
+            this.groupBox30.ResumeLayout(false);
+            this.groupBox30.PerformLayout();
+            this.groupBox29.ResumeLayout(false);
+            this.groupBox29.PerformLayout();
             this.groupBox25.ResumeLayout(false);
             this.groupBox25.PerformLayout();
+            this.groupBox61.ResumeLayout(false);
+            this.groupBox61.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.shockDepletionSpeedNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.healthDepletionSpeedNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.staminaDepletionSpeedNUD)).EndInit();
+            this.groupBox60.ResumeLayout(false);
+            this.groupBox60.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rotationSpeedSprintNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timeToStrafeSprintNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timeToSprintNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rotationSpeedJogNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timeToStrafeJogNUD)).EndInit();
             this.groupBox56.ResumeLayout(false);
             this.groupBox56.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shockRefillSpeedUnconsciousNUD)).EndInit();
@@ -12090,20 +12104,6 @@ namespace DayZeEditor
             this.TypesContextMenu.ResumeLayout(false);
             this.EventSpawnContextMenu.ResumeLayout(false);
             this.EventgroupContextMenu.ResumeLayout(false);
-            this.groupBox59.ResumeLayout(false);
-            this.groupBox59.PerformLayout();
-            this.groupBox60.ResumeLayout(false);
-            this.groupBox60.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rotationSpeedSprintNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timeToStrafeSprintNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timeToSprintNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rotationSpeedJogNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timeToStrafeJogNUD)).EndInit();
-            this.groupBox61.ResumeLayout(false);
-            this.groupBox61.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.healthDepletionSpeedNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.staminaDepletionSpeedNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.shockDepletionSpeedNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
