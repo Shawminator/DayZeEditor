@@ -317,6 +317,9 @@ namespace DayZeLib
         }
         public static string ReadCString(BinaryReader br, int MaxLength = -1, long lOffset = -1, Encoding enc = null)
         {
+            if (MaxLength == 0)
+                return "";
+
             int Max;
             if (MaxLength == -1)
                 Max = 255;

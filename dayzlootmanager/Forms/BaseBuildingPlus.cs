@@ -227,7 +227,7 @@ namespace DayZeEditor
                     {
                         BBPSettings.BBP_CementMixerLocations.Clear();
                     }
-                    foreach (EditorObjectData eo in importfile.EditorObjects)
+                    foreach (Editorobject eo in importfile.EditorObjects)
                     {
                         BBP_Cementmixerlocations newmix = new BBP_Cementmixerlocations()
                         {

@@ -637,7 +637,7 @@ namespace DayZeEditor
                     {
                         CurrentPatrol.Waypoints.Clear();
                     }
-                    foreach(EditorObjectData eo in importfile.EditorObjects)
+                    foreach(Editorobject eo in importfile.EditorObjects)
                     {
                         float[] newfloatarray = new float[] { Convert.ToSingle(eo.Position[0]), Convert.ToSingle(eo.Position[1]), Convert.ToSingle(eo.Position[2]) };
                         CurrentPatrol.Waypoints.Add(newfloatarray);
@@ -849,7 +849,7 @@ namespace DayZeEditor
             };
             foreach (float[] array in CurrentPatrol.Waypoints)
             {
-                EditorObjectData eo = new EditorObjectData()
+                Editorobject eo = new Editorobject()
                 {
                     Type = "eAI_SurvivorM_Jose",
                     DisplayName = "eAI_SurvivorM_Jose",

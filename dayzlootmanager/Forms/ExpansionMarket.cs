@@ -3198,7 +3198,7 @@ namespace DayZeEditor
                         currenttradermap.Roamingpoints = new BindingList<Vec3>();
                     }
                     int i = 0;
-                    foreach (EditorObjectData eo in importfile.EditorObjects)
+                    foreach (Editorobject eo in importfile.EditorObjects)
                     {
                         Vec3 newvec3 = new Vec3()
                         {
@@ -3232,11 +3232,11 @@ namespace DayZeEditor
         {
             DZE newdze = new DZE()
             {
-                EditorObjects = new List<EditorObjectData>(),
-                EditorDeletedObjects = new List<EditorDeletedObjectData>(),
+                EditorObjects = new BindingList<Editorobject>(),
+                EditorDeletedObjects = new BindingList<Editordeletedobject>(),
                 MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
             };
-            EditorObjectData eo = new EditorObjectData()
+            Editorobject eo = new Editorobject()
             {
                 Type = currenttradermap.NPCName,
                 DisplayName = currenttradermap.NPCName,
@@ -3248,7 +3248,7 @@ namespace DayZeEditor
             newdze.EditorObjects.Add(eo);
             foreach (Vec3 array in currenttradermap.Roamingpoints)
             {
-                eo = new EditorObjectData()
+                eo = new Editorobject()
                 {
                     Type = currenttradermap.NPCName,
                     DisplayName = currenttradermap.NPCName,

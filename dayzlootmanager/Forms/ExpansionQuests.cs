@@ -846,7 +846,7 @@ namespace DayZeEditor
                     {
                         currentQuestNPC.Waypoints.Clear();
                     }
-                    foreach (EditorObjectData eo in importfile.EditorObjects)
+                    foreach (Editorobject eo in importfile.EditorObjects)
                     {
                         int i = 0;
                         if (i == 0)
@@ -877,7 +877,7 @@ namespace DayZeEditor
             };
             foreach (float[] array in currentQuestNPC.Waypoints)
             {
-                EditorObjectData eo = new EditorObjectData()
+                Editorobject eo = new Editorobject()
                 {
                     Type = currentQuestNPC.NPCName,
                     DisplayName = currentQuestNPC.NPCName,

@@ -867,7 +867,7 @@ namespace DayZeEditor
                     {
                         CurrentLootChestLocation.pos.Clear();
                     }
-                    foreach (EditorObjectData eo in importfile.EditorObjects)
+                    foreach (Editorobject eo in importfile.EditorObjects)
                     {
                         if(!eo.Type.Contains("CJ_LootChest")) { return; }
                         CurrentLootChestLocation.pos.Add(eo.Position[0].ToString("F6") + " " + eo.Position[1].ToString("F6") + " " + eo.Position[2].ToString("F6") + "|" + eo.Orientation[0].ToString("F6") + " " + eo.Orientation[1].ToString("F6") + " " + eo.Orientation[2].ToString("F6"));

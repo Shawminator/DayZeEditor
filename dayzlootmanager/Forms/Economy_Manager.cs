@@ -2585,7 +2585,7 @@ namespace DayZeEditor
                         eventposnodes.Remove();
                     }
                     
-                    foreach (EditorObjectData eo in importfile.EditorObjects)
+                    foreach (Editorobject eo in importfile.EditorObjects)
                     {
                         eventposdefEventPos newpos = new eventposdefEventPos()
                         {
@@ -2682,7 +2682,7 @@ namespace DayZeEditor
                         
                         TreeNode neweventspawn = new TreeNode(Groupname);
                         neweventspawn.Tag = newvengroup;
-                        foreach (EditorObjectData eo in importfile.EditorObjects)
+                        foreach (Editorobject eo in importfile.EditorObjects)
                         {
                             if (eo.Orientation[0] < 0)
                                 eo.Orientation[0] = 360 + eo.Orientation[0];
@@ -2730,8 +2730,8 @@ namespace DayZeEditor
         {
             DZE newdze = new DZE()
             {
-                EditorObjects = new List<EditorObjectData>(),
-                EditorDeletedObjects = new List<EditorDeletedObjectData>(),
+                EditorObjects = new BindingList<Editorobject>(),
+                EditorDeletedObjects = new BindingList<Editordeletedobject>(),
                 MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
             };
             string Classname = "";
@@ -2750,7 +2750,7 @@ namespace DayZeEditor
             }
             foreach (eventposdefEventPos array in eventposdefEvent.pos)
             {
-                EditorObjectData eo = new EditorObjectData()
+                Editorobject eo = new Editorobject()
                 {
                     Type = Classname,
                     DisplayName = Classname,
@@ -2821,12 +2821,12 @@ namespace DayZeEditor
             {
                 CameraPosition = new float[] { (float)eventposdefEventPos.x, (float)(eventposdefEventPos.y + 8), (float)eventposdefEventPos.z },
                 MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath.Split('_')[0]),
-                EditorObjects = new List<EditorObjectData>(),
-                EditorDeletedObjects = new List<EditorDeletedObjectData>()
+                EditorObjects = new BindingList<Editorobject>(),
+                EditorDeletedObjects = new BindingList<Editordeletedobject>()
             };
             foreach(eventgroupdefGroupChild eventgroupdefGroupChild in eventgroupdefGroup.child)
             {
-                EditorObjectData newobject = new EditorObjectData()
+                Editorobject newobject = new Editorobject()
                 {
                     Position = new float[] 
                     {

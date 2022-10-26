@@ -416,7 +416,7 @@ namespace DayZeEditor
                     {
                         CurrentRhlootboxstaticbox.StaticBoxPositions.Clear();
                     }
-                    foreach (EditorObjectData eo in importfile.EditorObjects)
+                    foreach (Editorobject eo in importfile.EditorObjects)
                     {
                         CurrentRhlootboxstaticbox.StaticBoxPositions.Add(new Staticboxposition() 
                         {

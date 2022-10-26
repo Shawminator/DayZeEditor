@@ -1,19 +1,17 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel;
+using System.Text.Json.Serialization;
 
 namespace DayZeLib
 {
+
     public class SocialMediaSettings
     {
         const int CurrentVersion = 2;
 
         public int m_Version { get; set; }
-        public string Discord { get; set; }
-        public string Homepage { get; set; }
-        public string Forums { get; set; }
-        public string YouTube { get; set; }
-        public string Steam { get; set; }
-        public string Twitter { get; set; }
-        public string Guilded { get; set; }
+        public BindingList<Newsfeedtext> NewsFeedTexts { get; set; }
+        public BindingList<Newsfeedlink> NewsFeedLinks { get; set; }
+
 
         [JsonIgnore]
         public string Filename { get; set; }
@@ -40,6 +38,28 @@ namespace DayZeLib
         public void SetStringValue(string mytype, string myString)
         {
             GetType().GetProperty(mytype).SetValue(this, myString, null);
+        }
+    }
+    public class Newsfeedtext
+    {
+        public string m_Title { get; set; }
+        public string m_Text { get; set; }
+
+        public override string ToString()
+        {
+            return m_Title;
+        }
+    }
+
+    public class Newsfeedlink
+    {
+        public string m_Label { get; set; }
+        public string m_Icon { get; set; }
+        public string m_URL { get; set; }
+
+        public override string ToString()
+        {
+            return m_Label;
         }
     }
 }

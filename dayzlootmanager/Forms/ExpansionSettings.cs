@@ -14,6 +14,7 @@ using Cyotek.Windows.Forms;
 using DayZeLib;
 using System.Text.Json.Serialization;
 using System.Globalization;
+using System.Text;
 
 namespace DayZeEditor
 {
@@ -132,216 +133,72 @@ namespace DayZeEditor
         }
         private void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            foreach(var item in darkToolStrip22.Items)
+            {
+                if (item is ToolStripButton)
+                {
+                    ToolStripButton tsb = item as ToolStripButton;
+                    tsb.ForeColor = Color.FromArgb(75, 110, 175);
+                    tsb.Checked = false;
+                }
+            }
             switch (tabControl2.SelectedIndex)
             {
                 case 0:
-                    toolStripButton3.Checked = false;
-                    toolStripButton4.Checked = false;
-                    toolStripButton5.Checked = false;
-                    toolStripButton6.Checked = false;
-                    toolStripButton9.Checked = false;
-                    toolStripButton10.Checked = false;
-                    toolStripButton11.Checked = false;
-                    toolStripButton12.Checked = false;
-                    toolStripButton13.Checked = false;
-                    toolStripButton14.Checked = false;
-                    toolStripButton18.Checked = false;
-                    toolStripButton20.Checked = false;
-                    toolStripButton21.Checked = false;
+                    toolStripButton1.Checked = true;
+                    toolStripButton1.ForeColor = SystemColors.Control;
                     break;
                 case 1:
-                    toolStripButton1.Checked = false;
-                    toolStripButton4.Checked = false;
-                    toolStripButton5.Checked = false;
-                    toolStripButton6.Checked = false;
-                    toolStripButton9.Checked = false;
-                    toolStripButton10.Checked = false;
-                    toolStripButton11.Checked = false;
-                    toolStripButton12.Checked = false;
-                    toolStripButton13.Checked = false;
-                    toolStripButton14.Checked = false;
-                    toolStripButton18.Checked = false;
-                    toolStripButton20.Checked = false;
-                    toolStripButton21.Checked = false;
+                    toolStripButton3.Checked = true;
+                    toolStripButton3.ForeColor = SystemColors.Control;
                     break;
                 case 2:
-                    toolStripButton1.Checked = false;
-                    toolStripButton3.Checked = false;
-                    toolStripButton4.Checked = false;
-                    toolStripButton6.Checked = false;
-                    toolStripButton9.Checked = false;
-                    toolStripButton10.Checked = false;
-                    toolStripButton11.Checked = false;
-                    toolStripButton12.Checked = false;
-                    toolStripButton13.Checked = false;
-                    toolStripButton14.Checked = false;
-                    toolStripButton18.Checked = false;
-                    toolStripButton20.Checked = false;
-                    toolStripButton21.Checked = false;
+                    toolStripButton5.Checked = true;
+                    toolStripButton5.ForeColor = SystemColors.Control;
                     break;
                 case 3:
-                    toolStripButton1.Checked = false;
-                    toolStripButton3.Checked = false;
-                    toolStripButton5.Checked = false;
-                    toolStripButton6.Checked = false;
-                    toolStripButton9.Checked = false;
-                    toolStripButton10.Checked = false;
-                    toolStripButton11.Checked = false;
-                    toolStripButton12.Checked = false;
-                    toolStripButton13.Checked = false;
-                    toolStripButton14.Checked = false;
-                    toolStripButton18.Checked = false;
-                    toolStripButton20.Checked = false;
-                    toolStripButton21.Checked = false;
+                    toolStripButton4.Checked = true;
+                    toolStripButton4.ForeColor = SystemColors.Control;
                     break;
                 case 4:
-                    toolStripButton1.Checked = false;
-                    toolStripButton3.Checked = false;
-                    toolStripButton4.Checked = false;
-                    toolStripButton5.Checked = false;
-                    toolStripButton9.Checked = false;
-                    toolStripButton10.Checked = false;
-                    toolStripButton11.Checked = false;
-                    toolStripButton12.Checked = false;
-                    toolStripButton13.Checked = false;
-                    toolStripButton14.Checked = false;
-                    toolStripButton18.Checked = false;
-                    toolStripButton20.Checked = false;
-                    toolStripButton21.Checked = false;
+                    toolStripButton6.Checked = true;
+                    toolStripButton6.ForeColor = SystemColors.Control;
                     break;
                 case 5:
-                    toolStripButton1.Checked = false;
-                    toolStripButton3.Checked = false;
-                    toolStripButton4.Checked = false;
-                    toolStripButton5.Checked = false;
-                    toolStripButton6.Checked = false;
-                    toolStripButton10.Checked = false;
-                    toolStripButton11.Checked = false;
-                    toolStripButton12.Checked = false;
-                    toolStripButton14.Checked = false;
-                    toolStripButton18.Checked = false;
-                    toolStripButton20.Checked = false;
-                    toolStripButton21.Checked = false;
+                    toolStripButton9.Checked = true;
+                    toolStripButton9.ForeColor = SystemColors.Control;
                     break;
                 case 6:
-                    toolStripButton1.Checked = false;
-                    toolStripButton3.Checked = false;
-                    toolStripButton4.Checked = false;
-                    toolStripButton5.Checked = false;
-                    toolStripButton6.Checked = false;
-                    toolStripButton9.Checked = false;
-                    toolStripButton11.Checked = false;
-                    toolStripButton12.Checked = false;
-                    toolStripButton13.Checked = false;
-                    toolStripButton14.Checked = false;
-                    toolStripButton18.Checked = false;
-                    toolStripButton20.Checked = false;
-                    toolStripButton21.Checked = false;
+                    toolStripButton10.Checked = true;
+                    toolStripButton10.ForeColor = SystemColors.Control;
                     break;
                 case 7:
-                    toolStripButton1.Checked = false;
-                    toolStripButton3.Checked = false;
-                    toolStripButton4.Checked = false;
-                    toolStripButton5.Checked = false;
-                    toolStripButton6.Checked = false;
-                    toolStripButton9.Checked = false;
-                    toolStripButton10.Checked = false;
-                    toolStripButton12.Checked = false;
-                    toolStripButton13.Checked = false;
-                    toolStripButton14.Checked = false;
-                    toolStripButton18.Checked = false;
-                    toolStripButton20.Checked = false;
-                    toolStripButton21.Checked = false;
+                    toolStripButton11.Checked = true;
+                    toolStripButton11.ForeColor = SystemColors.Control;
                     break;
                 case 8:
-                    toolStripButton1.Checked = false;
-                    toolStripButton3.Checked = false;
-                    toolStripButton4.Checked = false;
-                    toolStripButton5.Checked = false;
-                    toolStripButton6.Checked = false;
-                    toolStripButton9.Checked = false;
-                    toolStripButton10.Checked = false;
-                    toolStripButton11.Checked = false;
-                    toolStripButton13.Checked = false;
-                    toolStripButton14.Checked = false;
-                    toolStripButton18.Checked = false;
-                    toolStripButton20.Checked = false;
-                    toolStripButton21.Checked = false;
+                    toolStripButton12.Checked = true;
+                    toolStripButton12.ForeColor = SystemColors.Control;
                     break;
                 case 9:
-                    toolStripButton1.Checked = false;
-                    toolStripButton3.Checked = false;
-                    toolStripButton4.Checked = false;
-                    toolStripButton5.Checked = false;
-                    toolStripButton6.Checked = false;
-                    toolStripButton9.Checked = false;
-                    toolStripButton10.Checked = false;
-                    toolStripButton11.Checked = false;
-                    toolStripButton12.Checked = false;
-                    toolStripButton14.Checked = false;
-                    toolStripButton18.Checked = false;
-                    toolStripButton20.Checked = false;
-                    toolStripButton21.Checked = false;
+                    toolStripButton13.Checked = true;
+                    toolStripButton13.ForeColor = SystemColors.Control;
                     break;
                 case 10:
-                    toolStripButton1.Checked = false;
-                    toolStripButton3.Checked = false;
-                    toolStripButton4.Checked = false;
-                    toolStripButton5.Checked = false;
-                    toolStripButton6.Checked = false;
-                    toolStripButton9.Checked = false;
-                    toolStripButton10.Checked = false;
-                    toolStripButton11.Checked = false;
-                    toolStripButton12.Checked = false;
-                    toolStripButton13.Checked = false;
-                    toolStripButton18.Checked = false;
-                    toolStripButton20.Checked = false;
-                    toolStripButton21.Checked = false;
+                    toolStripButton14.Checked = true;
+                    toolStripButton14.ForeColor = SystemColors.Control;
                     break;
                 case 11:
-                    toolStripButton1.Checked = false;
-                    toolStripButton3.Checked = false;
-                    toolStripButton4.Checked = false;
-                    toolStripButton5.Checked = false;
-                    toolStripButton6.Checked = false;
-                    toolStripButton9.Checked = false;
-                    toolStripButton10.Checked = false;
-                    toolStripButton11.Checked = false;
-                    toolStripButton12.Checked = false;
-                    toolStripButton13.Checked = false;
-                    toolStripButton14.Checked = false;
-                    toolStripButton20.Checked = false;
-                    toolStripButton21.Checked = false;
+                    toolStripButton18.Checked = true;
+                    toolStripButton18.ForeColor = SystemColors.Control;
                     break;
                 case 12:
-                    toolStripButton1.Checked = false;
-                    toolStripButton3.Checked = false;
-                    toolStripButton4.Checked = false;
-                    toolStripButton5.Checked = false;
-                    toolStripButton6.Checked = false;
-                    toolStripButton9.Checked = false;
-                    toolStripButton10.Checked = false;
-                    toolStripButton11.Checked = false;
-                    toolStripButton12.Checked = false;
-                    toolStripButton13.Checked = false;
-                    toolStripButton14.Checked = false;
-                    toolStripButton18.Checked = false;
-                    toolStripButton21.Checked = false;
+                    toolStripButton20.Checked = true;
+                    toolStripButton20.ForeColor = SystemColors.Control;
                     break;
                 case 13:
-                    toolStripButton1.Checked = false;
-                    toolStripButton3.Checked = false;
-                    toolStripButton4.Checked = false;
-                    toolStripButton5.Checked = false;
-                    toolStripButton6.Checked = false;
-                    toolStripButton9.Checked = false;
-                    toolStripButton10.Checked = false;
-                    toolStripButton11.Checked = false;
-                    toolStripButton12.Checked = false;
-                    toolStripButton13.Checked = false;
-                    toolStripButton14.Checked = false;
-                    toolStripButton18.Checked = false;
-                    toolStripButton20.Checked = false;
+                    toolStripButton21.Checked = true;
+                    toolStripButton21.ForeColor = SystemColors.Control;
                     break;
                 default:
                     break;
@@ -350,14 +207,10 @@ namespace DayZeEditor
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             tabControl2.SelectedIndex = 0;
-            if (tabControl2.SelectedIndex == 0)
-                toolStripButton1.Checked = true;
         }
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             tabControl2.SelectedIndex = 1;
-            if (tabControl2.SelectedIndex == 1)
-                toolStripButton3.Checked = true;
         }
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
@@ -366,44 +219,30 @@ namespace DayZeEditor
             toolStripButton7.AutoSize = true;
             toolStripButton8.AutoSize = false;
             toolStripButton8.AutoSize = true;
-            if (tabControl2.SelectedIndex == 2)
-                toolStripButton5.Checked = true;
         }
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
             tabControl2.SelectedIndex = 3;
-            if (tabControl2.SelectedIndex == 3)
-                toolStripButton4.Checked = true;
         }
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
             tabControl2.SelectedIndex = 4;
-            if (tabControl2.SelectedIndex == 4)
-                toolStripButton6.Checked = true;
         }
         private void toolStripButton9_Click(object sender, EventArgs e)
         {
             tabControl2.SelectedIndex = 5;
-            if (tabControl2.SelectedIndex == 5)
-                toolStripButton9.Checked = true;
         }
         private void toolStripButton10_Click(object sender, EventArgs e)
         {
             tabControl2.SelectedIndex = 6;
-            if (tabControl2.SelectedIndex == 6)
-                toolStripButton10.Checked = true;
         }
         private void toolStripButton11_Click(object sender, EventArgs e)
         {
             tabControl2.SelectedIndex = 7;
-            if (tabControl2.SelectedIndex == 7)
-                toolStripButton11.Checked = true;
         }
         private void toolStripButton12_Click(object sender, EventArgs e)
         {
             tabControl2.SelectedIndex = 8;
-            if (tabControl2.SelectedIndex == 8)
-                toolStripButton12.Checked = true;
         }
         private void toolStripButton13_Click(object sender, EventArgs e)
         {
@@ -416,32 +255,22 @@ namespace DayZeEditor
             toolStripButton17.AutoSize = true;
             toolStripButton19.AutoSize = false;
             toolStripButton19.AutoSize = true;
-            if (tabControl2.SelectedIndex == 9)
-                toolStripButton13.Checked = true;
         }
         private void toolStripButton14_Click(object sender, EventArgs e)
         {
             tabControl2.SelectedIndex = 10;
-            if (tabControl2.SelectedIndex == 10)
-                toolStripButton14.Checked = true;
         }
         private void toolStripButton18_Click(object sender, EventArgs e)
         {
             tabControl2.SelectedIndex = 11;
-            if (tabControl2.SelectedIndex == 11)
-                toolStripButton18.Checked = true;
         }
         private void toolStripButton20_Click(object sender, EventArgs e)
         {
             tabControl2.SelectedIndex = 12;
-            if (tabControl2.SelectedIndex == 12)
-                toolStripButton20.Checked = true;
         }
         private void toolStripButton21_Click(object sender, EventArgs e)
         {
             tabControl2.SelectedIndex = 13;
-            if (tabControl2.SelectedIndex == 13)
-                toolStripButton21.Checked = true;
         }
         private void expansionsettings_Load(object sender, EventArgs e)
         {
@@ -903,8 +732,9 @@ namespace DayZeEditor
             MapData = new MapData(Application.StartupPath + currentproject.MapPath + ".xyz");
             
             tabControl3.ItemSize = new Size(0, 1);
+            tabControl4.ItemSize = new Size(0, 1);
 
-            if(needtosave)
+            if (needtosave)
             {
                 savefiles(true);
             }
@@ -2341,14 +2171,10 @@ namespace DayZeEditor
         private void toolStripButton7_Click(object sender, EventArgs e)
         {
             tabControl3.SelectedIndex = 1;
-            if (tabControl3.SelectedIndex == 1)
-                toolStripButton7.Checked = true;
         }
         private void toolStripButton8_Click(object sender, EventArgs e)
         {
             tabControl3.SelectedIndex = 0;
-            if (tabControl3.SelectedIndex == 0)
-                toolStripButton8.Checked = true;
         }
         private void tabControl3_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -2356,9 +2182,15 @@ namespace DayZeEditor
             {
                 case 0:
                     toolStripButton7.Checked = false;
+                    toolStripButton8.Checked = true;
+                    toolStripButton7.ForeColor = Color.FromArgb(75, 110, 175);
+                    toolStripButton8.ForeColor = SystemColors.Control;
                     break;
                 case 1:
                     toolStripButton8.Checked = false;
+                    toolStripButton7.Checked = true;
+                    toolStripButton8.ForeColor = Color.FromArgb(75, 110, 175);
+                    toolStripButton7.ForeColor = SystemColors.Control;
                     break;
                 default:
                     break;
@@ -5072,20 +4904,138 @@ namespace DayZeEditor
         private void LoadsocialMediaSettings()
         {
             useraction = false;
-            DiscordTB.Text = SocialMediaSettings.Discord;
-            HomepageTB.Text = SocialMediaSettings.Homepage;
-            ForumsTB.Text = SocialMediaSettings.Forums;
-            YouTubeTB.Text = SocialMediaSettings.YouTube;
-            SteamTB.Text = SocialMediaSettings.Steam;
-            TwitterTB.Text = SocialMediaSettings.Twitter;
-            GuildedTB.Text = SocialMediaSettings.Guilded;
+            toolStripButton22.AutoSize = false;
+            toolStripButton22.AutoSize = true;
+            toolStripButton23.AutoSize = false;
+            toolStripButton23.AutoSize = true;
+
+
+            listBox23.DisplayMember = "DisplayName";
+            listBox23.ValueMember = "Value";
+            listBox23.DataSource = SocialMediaSettings.NewsFeedTexts;
+
+            listBox25.DisplayMember = "DisplayName";
+            listBox25.ValueMember = "Value";
+            listBox25.DataSource = SocialMediaSettings.NewsFeedLinks;
+
             useraction = true;
         }
-        private void SocialMediaSettingsTB_TextChanged(object sender, EventArgs e)
+        private void toolStripButton22_Click(object sender, EventArgs e)
         {
-            if (!useraction) { return; }
-            TextBox tb = sender as TextBox;
-            SocialMediaSettings.SetStringValue(tb.Name.Substring(0, tb.Name.Length - 2), tb.Text);
+            tabControl4.SelectedIndex = 0;
+            if (tabControl4.SelectedIndex == 0)
+                toolStripButton22.Checked = true;
+        }
+        private void toolStripButton23_Click(object sender, EventArgs e)
+        {
+            tabControl4.SelectedIndex = 1;
+            if (tabControl4.SelectedIndex == 1)
+                toolStripButton23.Checked = true;
+        }
+        private void tabControl4_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            switch (tabControl4.SelectedIndex)
+            {
+                case 0:
+                    toolStripButton23.Checked = false;
+                    toolStripButton23.ForeColor = Color.FromArgb(75, 110, 175);  
+                    toolStripButton22.ForeColor = SystemColors.Control;
+
+                    break;
+                case 1:
+                    toolStripButton22.Checked = false;
+                    toolStripButton23.ForeColor = SystemColors.Control;
+                    toolStripButton22.ForeColor = Color.FromArgb(75, 110, 175);
+                    break;
+                default:
+                    break;
+            }
+        }
+        public Newsfeedtext currentNewsfeedtext;
+        public Newsfeedlink currentNewsfeedlink;
+        private void listBox23_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (listBox23.SelectedItems.Count < 1) return;
+            currentNewsfeedtext = listBox23.SelectedItem as Newsfeedtext;
+            useraction = false;
+            textBox19.Text = currentNewsfeedtext.m_Title;
+            DiscordTB.Text = currentNewsfeedtext.m_Text;
+            useraction = true;
+        }
+        private void darkButton80_Click(object sender, EventArgs e)
+        {
+            Newsfeedtext newfeedtext = new Newsfeedtext()
+            {
+                m_Title = "New Title",
+                m_Text = "New Text"
+            };
+            SocialMediaSettings.NewsFeedTexts.Add(newfeedtext);
+            SocialMediaSettings.isDirty = true;
+
+        }
+        private void darkButton79_Click(object sender, EventArgs e)
+        {
+            if (listBox23.SelectedItems.Count < 1) return;
+            SocialMediaSettings.NewsFeedTexts.Remove(currentNewsfeedtext);
+            SocialMediaSettings.isDirty = true;
+
+        }
+        private void textBox19_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentNewsfeedtext.m_Title = textBox19.Text;
+            SocialMediaSettings.isDirty = true;
+        }
+        private void DiscordTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentNewsfeedtext.m_Text = DiscordTB.Text;
+            SocialMediaSettings.isDirty = true;
+        }
+        private void listBox25_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox25.SelectedItems.Count < 1) return;
+            currentNewsfeedlink = listBox25.SelectedItem as Newsfeedlink;
+            useraction = false;
+            textBox23.Text = currentNewsfeedlink.m_Label;
+            textBox24.Text = currentNewsfeedlink.m_Icon;
+            textBox25.Text = currentNewsfeedlink.m_URL;
+
+            useraction = true;
+        }
+        private void darkButton77_Click(object sender, EventArgs e)
+        {
+            Newsfeedlink newNewsfeedlink = new Newsfeedlink()
+            {
+                m_Label = "New label",
+                m_Icon = "New icon",
+                m_URL = "New Url"
+            };
+            SocialMediaSettings.NewsFeedLinks.Add(newNewsfeedlink);
+            SocialMediaSettings.isDirty = true;
+        }
+        private void darkButton78_Click(object sender, EventArgs e)
+        {
+            if (listBox23.SelectedItems.Count < 1) return;
+            SocialMediaSettings.NewsFeedLinks.Remove(currentNewsfeedlink);
+            SocialMediaSettings.isDirty = true;
+        }
+        private void textBox23_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentNewsfeedlink.m_Label = textBox23.Text;
+            SocialMediaSettings.isDirty = true;
+        }
+        private void textBox24_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentNewsfeedlink.m_Icon = textBox24.Text;
+            SocialMediaSettings.isDirty = true;
+        }
+        private void textBox25_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentNewsfeedlink.m_URL = textBox25.Text;
             SocialMediaSettings.isDirty = true;
         }
         #endregion SocialMediaSettings
@@ -5102,48 +5052,48 @@ namespace DayZeEditor
         private void tabControl4_SelectedIndexChanged(object sender, EventArgs e)
         {
             toolStripButton15.Checked = false;
+            toolStripButton15.ForeColor = Color.FromArgb(75, 110, 175);
             toolStripButton16.Checked = false;
+            toolStripButton16.ForeColor = Color.FromArgb(75, 110, 175);
             toolStripButton17.Checked = false;
+            toolStripButton17.ForeColor = Color.FromArgb(75, 110, 175);
             toolStripButton19.Checked = false;
+            toolStripButton19.ForeColor = Color.FromArgb(75, 110, 175);
             switch (SpawnTabControl.SelectedIndex)
             {
                 case 0:
                     toolStripButton15.Checked = true;
+                    toolStripButton15.ForeColor = SystemColors.Control;
                     break;
                 case 1:
                     toolStripButton16.Checked = true;
+                    toolStripButton16.ForeColor = SystemColors.Control;
                     break;
                 case 2:
                     toolStripButton17.Checked = true;
+                    toolStripButton17.ForeColor = SystemColors.Control;
                     break;
                 case 3:
                     toolStripButton19.Checked = true;
+                    toolStripButton19.ForeColor = SystemColors.Control;
                     break;
             }
         }
         private void toolStripButton15_Click(object sender, EventArgs e)
         {
             SpawnTabControl.SelectedIndex = 0;
-            if (SpawnTabControl.SelectedIndex == 0)
-                toolStripButton15.Checked = true;
         }
         private void toolStripButton16_Click(object sender, EventArgs e)
         {
             SpawnTabControl.SelectedIndex = 1;
-            if (SpawnTabControl.SelectedIndex == 1)
-                toolStripButton16.Checked = true;
         }
         private void toolStripButton17_Click(object sender, EventArgs e)
         {
             SpawnTabControl.SelectedIndex = 2;
-            if (SpawnTabControl.SelectedIndex == 2)
-                toolStripButton17.Checked = true;
         }
         private void toolStripButton19_Click(object sender, EventArgs e)
         {
             SpawnTabControl.SelectedIndex = 3;
-            if (SpawnTabControl.SelectedIndex == 3)
-                toolStripButton19.Checked = true;
         }
         private void LoadSpawnsettings()
         {
@@ -5420,28 +5370,24 @@ namespace DayZeEditor
             SpawnSettings.PunishMultispawn = PunishMultispawnCB.Checked == true ? 1 : 0;
             SpawnSettings.isDirty = true;
         }
-
         private void SpawnCreateDeathMarkerCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
             SpawnSettings.CreateDeathMarker = SpawnCreateDeathMarkerCB.Checked == true ? 1 : 0;
             SpawnSettings.isDirty = true;
         }
-
         private void RespawnCooldownNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             SpawnSettings.RespawnCooldown = (int)RespawnCooldownNUD.Value;
             SpawnSettings.isDirty = true;
         }
-
         private void PunishCooldownNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             SpawnSettings.PunishCooldown = (int)PunishCooldownNUD.Value;
             SpawnSettings.isDirty = true;
         }
-
         private void PunishTimeframeNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -6945,7 +6891,34 @@ namespace DayZeEditor
             GarageSettings.AllowStoringDEVehicles = AllowStoringDEVehiclesCB.Checked == true ? 1 : 0;
             GarageSettings.isDirty = true;
         }
+
         #endregion Garagesettings
+
+        private void importDZEToMapFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    string DestFile = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\objects\\" + Path.GetFileNameWithoutExtension(filePath) + ".map";
+                    StringBuilder sb = new StringBuilder();
+                    DZE importfile = DZEHelpers.LoadFile(filePath);
+                    foreach (Editordeletedobject eod in importfile.EditorDeletedObjects)
+                    {
+                        sb.AppendLine("-" + eod.Type + "|" + eod.Position[0].ToString() + " " + eod.Position[1].ToString() + " " + eod.Position[2].ToString() + "|0.000000 0.000000 0.000000");
+                    }
+                    foreach (Editorobject eo in importfile.EditorObjects)
+                    {
+                        sb.AppendLine(eo.Type + "|" + eo.Position[0].ToString() + " " + eo.Position[1].ToString() + " " + eo.Position[2].ToString() + "|" + eo.Orientation[0].ToString() + " " + eo.Orientation[1].ToString() + " " + eo.Orientation[2]);
+                    }
+                    File.WriteAllText(DestFile, sb.ToString());
+                    MessageBox.Show("File written to " + DestFile);
+                }
+
+            }
+        }
     }
     public class NullToEmptyGearConverter : JsonConverter<Gear>
     {

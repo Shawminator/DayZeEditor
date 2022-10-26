@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DayZeLib
 {
-    
+
     public class DZE
     {
         [JsonIgnore]
@@ -17,13 +18,13 @@ namespace DayZeLib
 
         public string MapName { get; set; }
         public float[] CameraPosition { get; set; }
-        public List<EditorObjectData> EditorObjects { get; set; }
-        public List<EditorDeletedObjectData> EditorDeletedObjects { get; set; }
+        public BindingList<Editorobject> EditorObjects { get; set; }
+        public BindingList<Editordeletedobject> EditorDeletedObjects { get; set; }
 
         public DZE()
         {
-            EditorObjects = new List<EditorObjectData>();
-            EditorDeletedObjects = new List<EditorDeletedObjectData>();
+            EditorObjects = new BindingList<Editorobject>();
+            EditorDeletedObjects = new BindingList<Editordeletedobject>();
         }
         public DZE(string fileName)
         {
@@ -37,27 +38,27 @@ namespace DayZeLib
                 MapName = Helper.ReadCString(br, br.ReadInt32());
                 int loop = br.ReadInt32();
                 CameraPosition = new float[3];
-                for(int i = 0; i < loop; i++)
+                for (int i = 0; i < loop; i++)
                 {
                     CameraPosition[i] = br.ReadSingle();
                 }
                 int EditorobjectCount = br.ReadInt32();
-                EditorObjects = new List<EditorObjectData>();
+                EditorObjects = new BindingList<Editorobject>();
                 for (int j = 0; j < EditorobjectCount; j++)
                 {
-                    EditorObjects.Add(new EditorObjectData(br));
+                    EditorObjects.Add(new Editorobject(br));
                 }
                 int EditorDeletedObjectsCount = br.ReadInt32();
-                EditorDeletedObjects = new List<EditorDeletedObjectData>();
+                EditorDeletedObjects = new BindingList<Editordeletedobject>();
                 for (int j = 0; j < EditorDeletedObjectsCount; j++)
                 {
-                    EditorDeletedObjects.Add(new EditorDeletedObjectData(br));
+                    EditorDeletedObjects.Add(new Editordeletedobject(br));
                 }
             }
         }
     }
 
-    public class EditorObjectData
+    public class Editorobject
     {
         public string Type { get; set; }
         public string DisplayName { get; set; }
@@ -81,12 +82,12 @@ namespace DayZeLib
         [JsonIgnore]
         public bool Simulate { get; set; }
 
-        public EditorObjectData()
+        public Editorobject()
         {
             Scale = 1;
             Flags = 2147483647;
         }
-        public EditorObjectData(BinaryReader br)
+        public Editorobject(BinaryReader br)
         {
             Type = Helper.ReadCString(br, br.ReadInt32());
             DisplayName = Helper.ReadCString(br, br.ReadInt32());
@@ -139,13 +140,17 @@ namespace DayZeLib
         }
     }
 
-    public class EditorDeletedObjectData
+    public class Editordeletedobject
     {
         public string Type { get; set; }
         public float[] Position { get; set; }
         public int Flags { get; set; }
 
-        public EditorDeletedObjectData(BinaryReader br)
+        public Editordeletedobject()
+        {
+
+        }
+        public Editordeletedobject(BinaryReader br)
         {
             Type = Helper.ReadCString(br, br.ReadInt32());
             int loop = br.ReadInt32();

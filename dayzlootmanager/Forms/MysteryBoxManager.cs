@@ -365,7 +365,7 @@ namespace DayZeEditor
                     {
                         MysteryBoxConfig.PossibleBoxPositions.Clear();
                     }
-                    foreach (EditorObjectData eo in importfile.EditorObjects)
+                    foreach (Editorobject eo in importfile.EditorObjects)
                     {
                         Possibleboxposition newbox = new Possibleboxposition()
                         {

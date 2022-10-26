@@ -1,4 +1,13 @@
-﻿Version 0.7.4.7
+﻿Version 0.7.4.8
+[Fixed]
+ExpansionAI and Loadout button showing when no project is loaded.
+Fixed Expansion Social Media Settings, This shows in Various Setting tab.
+[Added]
+Added Dze to .map file which also included delections, will convert either binned or unbinned dze files.
+[Chaged]
+some visual changes in expansion settings, selected tab will highlight lighter text 
+
+Version 0.7.4.7
 [Updated]
 CFGGameplay updated to 119, this should update the json to match 119
 updated all expansion settings to the most recent config versions.
