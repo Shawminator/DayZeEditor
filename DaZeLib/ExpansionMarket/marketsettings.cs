@@ -12,7 +12,7 @@ namespace DayZeLib
 {
     public class MarketSettings
     {
-        public int m_Version { get; set; } //Current Version 10
+        public int m_Version { get; set; } //Current Version 11
         public int MarketSystemEnabled { get; set; }
         public BindingList<string[]> NetworkCategories { get; set; } //empty atm
         public string CurrencyIcon { get; set; }

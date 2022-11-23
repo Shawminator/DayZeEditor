@@ -452,16 +452,18 @@ namespace DayZeEditor
             {
                 cb.Visible = false;
             }
-            int index = 15;
-            foreach (listsValue value in currentproject.limitfefinitions.lists.valueflags)
+            int index = currentproject.limitfefinitions.lists.valueflags.Count;
+            for (int i = 0; i < currentproject.limitfefinitions.lists.valueflags.Count; i++)
             {
-                CheckBox cb = checkboxesSummary.First(x => x.Tag.ToString() == value.name);
+                listsValue value = currentproject.limitfefinitions.lists.valueflags[i];
+                CheckBox cb = checkboxesSummary[i];
                 cb.Tag = value.name;
                 cb.Checked = false;
                 cb.Visible = true;
                 cb.Text = value.name;
                 index--;
             }
+
             checkboxesSummary = UserdefinitionsTPSummary.Controls.OfType<CheckBox>().ToList();
             checkboxesSummary = checkboxesSummary.OrderBy(x => x.Tag.ToString()).ToList();
             foreach (CheckBox cb in checkboxesSummary)
@@ -489,15 +491,15 @@ namespace DayZeEditor
             }
 
             int index = currentproject.limitfefinitions.lists.valueflags.Count;
-            foreach (listsValue value in currentproject.limitfefinitions.lists.valueflags)
+            for (int i = 0; i < currentproject.limitfefinitions.lists.valueflags.Count; i++)
             {
-                CheckBox cb = checkboxes.First(x => x.Tag.ToString() == value.name);
+                listsValue value = currentproject.limitfefinitions.lists.valueflags[i];
+                CheckBox cb = checkboxes[i];
                 cb.Tag = value.name;
                 cb.Checked = false;
                 cb.Visible = true;
                 cb.Text = value.name;
                 index--;
-
             }
 
             checkboxes = UserdefinitionsTP.Controls.OfType<CheckBox>().ToList();

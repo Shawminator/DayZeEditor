@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 
 namespace DayZeLib
 {
-
     public class QuestSettings
     {
         [JsonIgnore]
-        const int CurrentVersion = 3;
+        public const int CurrentVersion = 4;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -48,9 +47,10 @@ namespace DayZeLib
         public string QuestNotInGroupText { get; set; }
         public string QuestNotGroupOwnerTitle { get; set; }
         public string QuestNotGroupOwnerText { get; set; }
+        public int GroupQuestMode { get; set; }
 
         public QuestSettings() { }
-        
+
         public bool checkver()
         {
             if (m_Version != CurrentVersion)

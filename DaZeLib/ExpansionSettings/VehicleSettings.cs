@@ -45,7 +45,7 @@ namespace DayZeLib
     }
     public class VehicleSettings
     {
-        const int CurrentVersion = 14;
+        const int CurrentVersion = 18;
         public int m_Version { get; set; } // current version 8
         public int VehicleSync { get; set; }
         public int VehicleRequireKeyToStart { get; set; }
@@ -61,17 +61,19 @@ namespace DayZeLib
         public decimal PickLockToolDamagePercent { get; set; }
         public int EnableWindAerodynamics { get; set; }
         public int EnableTailRotorDamage { get; set; }
-        public int PlayerAttachment { get; set; }
+        //public int PlayerAttachment { get; set; } removed in version 16/17
         public int Towing { get; set; }
         public int EnableHelicopterExplosions { get; set; }
         public int DisableVehicleDamage { get; set; }
         public decimal VehicleCrewDamageMultiplier { get; set; }
         public decimal VehicleSpeedDamageMultiplier { get; set; }
+        public decimal VehicleRoadKillDamageMultiplier { get; set; }
+        public int CollisionDamageIfEngineOff { get; set; }
+        public decimal CollisionDamageMinSpeedKmh { get; set; }
         public int CanChangeLock { get; set; }
         public BindingList<string> ChangeLockTools { get; set; }
         public decimal ChangeLockTimeSeconds { get; set; }
         public decimal ChangeLockToolDamagePercent { get; set; }
-        public decimal VehicleRoadKillDamageMultiplier { get; set; }
         public int PlacePlayerOnGroundOnReconnectInVehicle { get; set; }
         public int RevvingOverMaxRPMRuinsEngineInstantly { get; set; }
         public int VehicleDropsRuinedDoors { get; set; }
@@ -79,12 +81,17 @@ namespace DayZeLib
         //public float ForcePilotSyncIntervalSeconds { get; set; }
         public decimal DesyncInvulnerabilityTimeoutSeconds { get; set; }
         public decimal DamagedEngineStartupChancePercent { get; set; }
-        public BindingList<VConfigs> VehiclesConfig { get; set; }
         public int EnableVehicleCovers { get; set; }
         public int AllowCoveringDEVehicles { get; set; }
+        public int CanCoverWithCargo { get; set; }
         public int UseVirtualStorageForCoverCargo { get; set; }
         public decimal VehicleAutoCoverTimeSeconds { get; set; }
         public int VehicleAutoCoverRequireCamonet { get; set; }
+        public int EnableAutoCoveringDEVehicles { get; set; }
+        public string CFToolsHeliCoverIconName { get; set; }
+        public string CFToolsBoatCoverIconName { get; set; }
+        public string CFToolsCarCoverIconName { get; set; }
+        public BindingList<VConfigs> VehiclesConfig { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }

@@ -1,4 +1,9 @@
-﻿Version 0.7.4.8
+﻿Version 0.7.4.9
+[Updated]
+Vehicles and garage updated to latest expansion release.
+Disabled Quest management until i have enough time to rework it.
+
+Version 0.7.4.8
 [Fixed]
 ExpansionAI and Loadout button showing when no project is loaded.
 Fixed Expansion Social Media Settings, This shows in Various Setting tab.

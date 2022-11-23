@@ -5,7 +5,7 @@ namespace DayZeLib
 {
     public class LogSettings
     {
-        const int CurrentVersion = 6;
+        const int CurrentVersion = 7;
 
         public int m_Version { get; set; }
         public int Safezone { get; set; }
@@ -36,6 +36,9 @@ namespace DayZeLib
         public int LogToScripts { get; set; }
         public int LogToADM { get; set; }
         public int Hardline { get; set; }
+        public int Garage { get; set; }
+        public int VehicleCover { get; set; }
+        public int EntityStorage { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }

@@ -14,6 +14,7 @@ namespace DayZeLib
         public decimal MaxDistance { get; set; }
         public AIVIP AIVIP { get; set; }
         public string MarkerName { get; set; }
+        public int ShowDistance { get; set; }
 
         public QuestObjectivesAIVIP()
         {
@@ -27,17 +28,13 @@ namespace DayZeLib
 
     public class AIVIP
     {
-        public string NPCClassName { get; set; }
-        public string NPCSpeed { get; set; }
-        public string NPCMode { get; set; }
-        public string NPCFaction { get; set; }
         public string NPCLoadoutFile { get; set; }
 
         public AIVIP(){ }
 
         public override string ToString()
         {
-            return NPCFaction;
+            return NPCLoadoutFile;
         }
     }
 

@@ -12,7 +12,7 @@ namespace DayZeLib
     public class AIPatrolSettings
     {
         [JsonIgnore]
-        const int CurrentVersion = 10;
+        const int CurrentVersion = 11;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -27,6 +27,8 @@ namespace DayZeLib
         public decimal DespawnRadius { get; set; }
         public decimal AccuracyMin { get; set; }
         public decimal AccuracyMax { get; set; }
+        public decimal ThreatDistanceLimit { get; set; }
+        public decimal DamageMultiplier { get; set; }
         public BindingList<ObjectPatrols> ObjectPatrols { get; set; }
         public BindingList<Patrols> Patrols { get; set; }
 
@@ -76,6 +78,8 @@ namespace DayZeLib
         public int UnlimitedReload { get; set; }
         public decimal AccuracyMin { get; set; }
         public decimal AccuracyMax { get; set; }
+        public decimal ThreatDistanceLimit { get; set; }
+        public decimal DamageMultiplier { get; set; }
         public decimal MinDistRadius { get; set; }
         public decimal MaxDistRadius { get; set; }
         public decimal DespawnRadius { get; set; }
@@ -109,6 +113,8 @@ namespace DayZeLib
         public int UnlimitedReload { get; set; }
         public decimal AccuracyMin { get; set; }
         public decimal AccuracyMax { get; set; }
+        public decimal ThreatDistanceLimit { get; set; }
+        public decimal DamageMultiplier { get; set; }
         public decimal MinDistRadius { get; set; }
         public decimal MaxDistRadius { get; set; }
         public decimal DespawnRadius { get; set;  }

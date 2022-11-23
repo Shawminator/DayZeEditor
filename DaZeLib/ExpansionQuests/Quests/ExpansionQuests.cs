@@ -15,7 +15,7 @@ namespace DayZeLib
 
     public class ExpansioQuestList
     {
-        const int m_QuestConfigVersion = 4;
+        const int m_QuestConfigVersion = 6;
         public static int getQuestConfigVersion
         {
             get { return m_QuestConfigVersion; }
@@ -89,8 +89,6 @@ namespace DayZeLib
                 ObjectiveText = "Short objective desctiption text.",
                 PreQuest = -1,
                 FollowUpQuest = -1,
-                QuestGiverID = -1,
-                QuestTurnInID = -1,
                 IsAchivement = 0,
                 Repeatable = 0,
                 IsDailyQuest = 0,
@@ -107,7 +105,12 @@ namespace DayZeLib
                 Rewards = new BindingList<QuestReward>(),
                 NeedToSelectReward = 0,
                 RewardsForGroupOwnerOnly = 1,
-                HumanityReward = 0
+                QuestGiverIDs = new BindingList<int>(),
+                QuestTurnInIDs = new BindingList<int>(),
+                QuestColor = 0,
+                ReputationReward = 0,
+                ReputationRequirement = -1,
+                PreQuestIDs = new BindingList<int>()
             };
             QuestList.Add(newquest);
         }
@@ -127,16 +130,17 @@ namespace DayZeLib
         {
             foreach(Quests quest in QuestList)
             {
-                if (quest.QuestGiverID == currentQuestNPC.ID)
+                if (quest.QuestGiverIDs.Contains(currentQuestNPC.ID))
                 {
-                    quest.QuestGiverID = -1;
+                    quest.QuestGiverIDs.Remove(currentQuestNPC.ID);
                     quest.isDirty = true;
                 }
-                if (quest.QuestTurnInID == currentQuestNPC.ID)
+                if (quest.QuestTurnInIDs.Contains(currentQuestNPC.ID))
                 {
-                    quest.QuestTurnInID = -1;
+                    quest.QuestTurnInIDs.Remove(currentQuestNPC.ID);
                     quest.isDirty = true;
                 }
+                
             }
         }
         public void RemoveObjectivesfromQuests(QuestObjectivesBase basequest)
@@ -178,8 +182,6 @@ namespace DayZeLib
         public string ObjectiveText { get; set; }
         public int PreQuest { get; set; }
         public int FollowUpQuest { get; set; }
-        public int QuestGiverID { get; set; }
-        public int QuestTurnInID { get; set; }
         public int IsAchivement { get; set; }
         public int Repeatable { get; set; }
         public int IsDailyQuest { get; set; }
@@ -196,8 +198,13 @@ namespace DayZeLib
         public BindingList<QuestReward> Rewards { get; set; }
         public int NeedToSelectReward { get; set; }
         public int RewardsForGroupOwnerOnly { get; set; }
-        public int HumanityReward { get; set; }
-        
+        public BindingList<int> QuestGiverIDs { get; set; }
+        public BindingList<int> QuestTurnInIDs { get; set; }
+        public int QuestColor { get; set; }
+        public int ReputationReward { get; set; }
+        public int ReputationRequirement { get; set; }
+        public BindingList<int> PreQuestIDs { get; set; }
+
 
         public Quests()
         {
@@ -224,21 +231,6 @@ namespace DayZeLib
             }
         }
     }
-    //public class Objective
-    //{
-    //    public int ConfigVersion { get; set; }
-    //    public int ID { get; set; }
-    //    public int ObjectiveType { get; set; }
-    //    public string ObjectiveText { get; set; }
-    //    public int TimeLimit { get; set; }
-
-    //    public Objective() { }
-
-    //    public override string ToString()
-    //    {
-    //        return ObjectiveText;
-    //    }
-    //}
 
     public class Questitem
     {

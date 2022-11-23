@@ -1365,6 +1365,7 @@ namespace DayZeEditor
                 CL.Chance = 1;
             trackBar1.Value = (int)(CL.Chance * 1000);
             numericUpDown12.Value = CL.Max;
+            numericUpDown31.Value = CL.QuantityPercent;
             listBox4.DisplayMember = "DisplayName";
             listBox4.ValueMember = "Value";
             listBox4.DataSource = CL.Attachments;
@@ -1571,6 +1572,14 @@ namespace DayZeEditor
                 AirdropsettingsJson.isDirty = true;
             }
         }
+        private void numericUpDown31_ValueChanged(object sender, EventArgs e)
+        {
+            if (useraction)
+            {
+                CL.QuantityPercent = (int)numericUpDown31.Value;
+                AirdropsettingsJson.isDirty = true;
+            }
+        }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (useraction)
@@ -1659,6 +1668,7 @@ namespace DayZeEditor
                 AirdropsettingsJson.isDirty = true;
             }
         }
+
         private void trackBar1_ValueChanged(object sender, EventArgs e)
         {
             darkLabel23.Text = ((decimal)(trackBar1.Value) / 10).ToString() + "%";
@@ -1707,6 +1717,12 @@ namespace DayZeEditor
             if (result == DialogResult.OK)
             {
                 List<string> addedtypes = form.addedtypes.ToList();
+                if (CL.Variants.Count == 0)
+                {
+                    listBox21.DisplayMember = "DisplayName";
+                    listBox21.ValueMember = "Value";
+                    listBox21.DataSource = CL.Variants;
+                }
                 foreach (string l in addedtypes)
                 {
                     lootVarients newlootVarients = new lootVarients()
@@ -1718,6 +1734,7 @@ namespace DayZeEditor
                     CL.Variants.Add(newlootVarients);
                     AirdropsettingsJson.isDirty = true;
                 }
+               
             }
         }
         private void darkButton56_Click(object sender, EventArgs e)
@@ -2891,32 +2908,17 @@ namespace DayZeEditor
         private void loadHardlineSettings()
         {
             useraction = false;
-
+            ShowHardlineHUDCB.Checked = HardLineSettings.ShowHardlineHUD == 1 ? true : false;
+            UseReputationCB.Checked = HardLineSettings.UseReputation == 1 ? true : false;
+            EnableItemRarityCB.Checked = HardLineSettings.EnableItemRarity == 1 ? true : false;
             UseItemRarityForMarketPurchaseNCB.Checked = HardLineSettings.UseItemRarityForMarketPurchase == 1 ? true : false;
             UseItemRarityForMarketSellCB.Checked = HardLineSettings.UseItemRarityForMarketSell == 1 ? true : false;
-            EnableItemRarityCB.Checked = HardLineSettings.EnableItemRarity == 1 ? true : false;
-            UseHumanityCB.Checked = HardLineSettings.UseHumanity == 1 ? true : false;
-            ShowHardlineHUDCB.Checked = HardLineSettings.ShowHardlineHUD == 1 ? true : false;
-            RankLegendNUD.Value = HardLineSettings.RankLegend;
-            RankSuperheroNUD.Value = HardLineSettings.RankSuperhero;
-            RankHeroNUD.Value = HardLineSettings.RankHero;
-            RankPathfinderNUD.Value = HardLineSettings.RankPathfinder;
-            RankScoutNUD.Value = HardLineSettings.RankScout;
-            RankSurvivorNUD.Value = HardLineSettings.RankSurvivor;
-            RankBambiNUD.Value = HardLineSettings.RankBambi;
-            RankKleptomaniacNUD.Value = HardLineSettings.RankKleptomaniac;
-            RankBullyNUD.Value = HardLineSettings.RankBully;
-            RankBanditNUD.Value = HardLineSettings.RankBandit;
-            RankKillerNUD.Value = HardLineSettings.RankKiller;
-            RankMadmanNUD.Value = HardLineSettings.RankMadman;
+            
 
-            HumanityBandageTargetNUD.Value = HardLineSettings.HumanityBandageTarget;
-            HumanityOnKillInfectedNUD.Value = HardLineSettings.HumanityOnKillInfected;
-            HumanityOnKillAINUD.Value = HardLineSettings.HumanityOnKillAI;
-            HumanityOnKillBambiNUD.Value = HardLineSettings.HumanityOnKillBambi;
-            HumanityOnKillHeroNUD.Value = HardLineSettings.HumanityOnKillHero;
-            HumanityOnKillBanditNUD.Value = HardLineSettings.HumanityOnKillBandit;
-            HumanityLossOnDeathNUD.Value = HardLineSettings.HumanityLossOnDeath;
+            ReputationOnKillInfectedNUD.Value = HardLineSettings.ReputationOnKillInfected;
+            ReputationOnKillPlayerNUD.Value = HardLineSettings.ReputationOnKillPlayer;
+            ReputationOnKillAnimalNUD.Value = HardLineSettings.ReputationOnKillAnimal;
+            ReputationOnKillAINUD.Value = HardLineSettings.ReputationOnKillAI;
 
             useraction = true;
         }
@@ -2941,7 +2943,7 @@ namespace DayZeEditor
         private void UseHumanityCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
-            HardLineSettings.UseHumanity = UseHumanityCB.Checked == true ? 1 : 0;
+            HardLineSettings.UseReputation = UseReputationCB.Checked == true ? 1 : 0;
             HardLineSettings.isDirty = true;
         }
         private void ShowHardlineHUDCB_CheckedChanged(object sender, EventArgs e)
@@ -3047,6 +3049,9 @@ namespace DayZeEditor
             AIPatrolCB.Checked = LogSettings.AIPatrol == 1 ? true : false;
             HardlineCB.Checked = LogSettings.Hardline == 1 ? true : false;
             ExplosionDamageSystemCB.Checked = LogSettings.ExplosionDamageSystem == 1 ? true : false;
+            EntityStorageCB.Checked = LogSettings.EntityStorage == 1 ? true : false;
+            GarageCB.Checked = LogSettings.Garage == 1 ? true : false;
+            VehicleCoverCB.Checked = LogSettings.VehicleCover == 1 ? true : false;
             useraction = true;
         }
         private void LogSettingsCB_CheckedChanged(object sender, EventArgs e)
@@ -3620,7 +3625,7 @@ namespace DayZeEditor
                 currentAirdropmissionfile = MissionsLB.SelectedItem as AirdropMissionSettingFiles;
                 MissionPathTB.Text = currentAirdropmissionfile.Filename;
                 MissionNameTB.Text = currentAirdropmissionfile.MissionName;
-                MIssionContainerTB.Text = currentAirdropmissionfile.Container;
+                MIssionContainerCB.SelectedIndex = MIssionContainerCB.FindStringExact(currentAirdropmissionfile.Container);
                 MissionEnabledCB.Checked = currentAirdropmissionfile.Enabled == 1 ? true : false;
                 MissionShowNotificationCB.Checked = currentAirdropmissionfile.ShowNotification == 1 ? true : false;
                 MissionWeightNUD.Value = (decimal)currentAirdropmissionfile.Weight;
@@ -3732,10 +3737,10 @@ namespace DayZeEditor
             currentAirdropmissionfile.MissionName = MissionNameTB.Text;
             currentAirdropmissionfile.isDirty = true;
         }
-        private void MIssionContainerTB_TextChanged(object sender, EventArgs e)
+        private void MIssionContainerCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
-            currentAirdropmissionfile.Container = MIssionContainerTB.Text;
+            currentAirdropmissionfile.Container = comboBox5.SelectedItem.ToString();
             currentAirdropmissionfile.isDirty = true;
         }
         private void MissionDropNameTB_TextChanged(object sender, EventArgs e)
@@ -3788,8 +3793,8 @@ namespace DayZeEditor
                     x = currentproject.MapSize / 2,
                     z = currentproject.MapSize / 2
                 },
-                Loot = new BindingList<Empty>(),
-                Infected = new BindingList<Empty>(),
+                Loot = new BindingList<containerLoot>(),
+                Infected = new BindingList<string>(),
                 ItemCount = -1,
                 InfectedCount = -1
             };
@@ -4390,46 +4395,61 @@ namespace DayZeEditor
             BaseBuildingRaidModeComboBox.DataSource = Enum.GetValues(typeof(BaseRaidMode));
             BaseBuildingRaidModeComboBox.SelectedItem = (BaseRaidMode)RaidSettings.BaseBuildingRaidMode;
             ExplosionTimeNUD.Value = (decimal)RaidSettings.ExplosionTime;
-            ExplosiveDamageWhitelistLB.DisplayMember = "DisplayName";
-            ExplosiveDamageWhitelistLB.ValueMember = "Value";
-            ExplosiveDamageWhitelistLB.DataSource = RaidSettings.ExplosiveDamageWhitelist;
+
             EnableExplosiveWhitelistCB.Checked = RaidSettings.EnableExplosiveWhitelist == 1 ? true : false;
             ExplosionDamageMultiplierNUD.Value = (decimal)RaidSettings.ExplosionDamageMultiplier;
             ProjectileDamageMultiplierNUD.Value = (decimal)RaidSettings.ProjectileDamageMultiplier;
             CanRaidSafesCB.Checked = RaidSettings.CanRaidSafes == 1 ? true : false;
             SafeExplosionDamageMultiplierNUD.Value = (decimal)RaidSettings.SafeExplosionDamageMultiplier;
             SafeProjectileDamageMultiplierNUD.Value = (decimal)RaidSettings.SafeProjectileDamageMultiplier;
-            SafeRaidToolsLB.DisplayMember = "DisplayName";
-            SafeRaidToolsLB.ValueMember = "Value";
-            SafeRaidToolsLB.DataSource = RaidSettings.SafeRaidTools;
             SafeRaidToolTimeSecondsNUD.Value = (decimal)RaidSettings.SafeRaidToolTimeSeconds;
             SafeRaidToolCyclesNUD.Value = (decimal)RaidSettings.SafeRaidToolCycles;
             SafeRaidToolDamagePercentNUD.Value = (decimal)RaidSettings.SafeRaidToolDamagePercent;
             CanRaidBarbedWireCB.Checked = RaidSettings.CanRaidBarbedWire == 1 ? true : false;
-            BarbedWireRaidToolsLB.DisplayMember = "DisplayName";
-            BarbedWireRaidToolsLB.ValueMember = "Value";
-            BarbedWireRaidToolsLB.DataSource = RaidSettings.BarbedWireRaidTools;
             BarbedWireRaidToolTimeSecondsNUD.Value = (decimal)RaidSettings.BarbedWireRaidToolTimeSeconds;
             BarbedWireRaidToolCyclesNUD.Value = (decimal)RaidSettings.BarbedWireRaidToolCycles;
             BarbedWireRaidToolDamagePercentNUD.Value = (decimal)RaidSettings.BarbedWireRaidToolDamagePercent;
             CanRaidLocksOnWallsCB.Checked = RaidSettings.CanRaidLocksOnWalls == 1 ? true : false;
             CanRaidLocksOnFencesCB.Checked = RaidSettings.CanRaidLocksOnFences == 1 ? true : false;
             CanRaidLocksOnTentsCB.Checked = RaidSettings.CanRaidLocksOnTents == 1 ? true : false;
-            LockRaidToolsLB.DisplayMember = "DisplayName";
-            LockRaidToolsLB.ValueMember = "Value";
-            LockRaidToolsLB.DataSource = RaidSettings.LockRaidTools;
             LockOnWallRaidToolTimeSecondsNUD.Value = (decimal)RaidSettings.LockOnWallRaidToolTimeSeconds;
             LockOnFenceRaidToolTimeSecondsNUD.Value = (decimal)RaidSettings.LockOnFenceRaidToolTimeSeconds;
             LockOnTentRaidToolTimeSecondsNUD.Value = (decimal)RaidSettings.LockOnTentRaidToolTimeSeconds;
             LockRaidToolCyclesNUD.Value = (decimal)RaidSettings.LockRaidToolCycles;
             LockRaidToolDamagePercentNUD.Value = (decimal)RaidSettings.LockRaidToolDamagePercent;
             CanRaidLocksOnContainersCB.Checked = RaidSettings.CanRaidLocksOnContainers == 1 ? true : false;
-            LockOnContainerRaidToolsLB.DisplayMember = "DisplayName";
-            LockOnContainerRaidToolsLB.ValueMember = "Value";
-            LockOnContainerRaidToolsLB.DataSource = RaidSettings.LockOnContainerRaidTools;
             LockOnContainerRaidToolTimeSecondsNUD.Value = (decimal)RaidSettings.LockOnContainerRaidToolTimeSeconds;
             LockOnContainerRaidToolCyclesNUD.Value = (decimal)RaidSettings.LockOnContainerRaidToolCycles;
             LockOnContainerRaidToolDamagePercentNUD.Value = (decimal)RaidSettings.LockOnContainerRaidToolDamagePercent;
+
+            ExplosiveDamageWhitelistLB.DisplayMember = "DisplayName";
+            ExplosiveDamageWhitelistLB.ValueMember = "Value";
+            ExplosiveDamageWhitelistLB.DataSource = RaidSettings.ExplosiveDamageWhitelist;
+
+            SafeRaidToolsLB.DisplayMember = "DisplayName";
+            SafeRaidToolsLB.ValueMember = "Value";
+            SafeRaidToolsLB.DataSource = RaidSettings.SafeRaidTools;
+
+            BarbedWireRaidToolsLB.DisplayMember = "DisplayName";
+            BarbedWireRaidToolsLB.ValueMember = "Value";
+            BarbedWireRaidToolsLB.DataSource = RaidSettings.BarbedWireRaidTools;
+
+            LockRaidToolsLB.DisplayMember = "DisplayName";
+            LockRaidToolsLB.ValueMember = "Value";
+            LockRaidToolsLB.DataSource = RaidSettings.LockRaidTools;
+
+            LockOnContainerRaidToolsLB.DisplayMember = "DisplayName";
+            LockOnContainerRaidToolsLB.ValueMember = "Value";
+            LockOnContainerRaidToolsLB.DataSource = RaidSettings.LockOnContainerRaidTools;
+
+            LockOnContainerRaidToolsLB.DisplayMember = "DisplayName";
+            LockOnContainerRaidToolsLB.ValueMember = "Value";
+            LockOnContainerRaidToolsLB.DataSource = RaidSettings.LockOnContainerRaidTools;
+
+            ScheduleLB.DisplayMember = "DisplayName";
+            ScheduleLB.ValueMember = "Value";
+            ScheduleLB.DataSource = RaidSettings.Schedule;
+
             useraction = true;
         }
         private void BaseBuildingRaidModeComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -4534,6 +4554,61 @@ namespace DayZeEditor
                     RaidSettings.LockOnContainerRaidTools.Remove(LockOnContainerRaidToolsLB.GetItemText(LockOnContainerRaidToolsLB.SelectedItem));
                     break;
             }
+            RaidSettings.isDirty = true;
+        }
+        public Schedule currentSchedule;
+        private void ScheduleLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ScheduleLB.SelectedItems.Count < 1) return;
+            currentSchedule = ScheduleLB.SelectedItem as Schedule;
+            useraction = false;
+            WeekdayTB.Text = currentSchedule.Weekday;
+            StartHourNUD.Value = currentSchedule.StartHour;
+            StartMinuteNUD.Value = currentSchedule.StartMinute;
+            DurationMinutesNUD.Value = currentSchedule.DurationMinutes;
+            useraction = true;
+        }
+        private void WeekdayTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentSchedule.Weekday = WeekdayTB.Text;
+            SafeZoneSettings.isDirty = true;
+        }
+        private void StartHourNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentSchedule.StartHour = (int)StartMinuteNUD.Value;
+            SafeZoneSettings.isDirty = true;
+        }
+        private void StartMinuteNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentSchedule.StartMinute = (int)StartMinuteNUD.Value;
+            SafeZoneSettings.isDirty = true;
+        }
+        private void DurationMinutesNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentSchedule.DurationMinutes = (int)DurationMinutesNUD.Value;
+            SafeZoneSettings.isDirty = true;
+        }
+        private void darkButton83_Click(object sender, EventArgs e)
+        {
+            Schedule newschedule = new Schedule()
+            {
+                Weekday = "Weekday",
+                StartHour = 0,
+                StartMinute = 0,
+                DurationMinutes = 60
+            };
+            RaidSettings.Schedule.Add(newschedule);
+            RaidSettings.isDirty = true;
+        }
+
+        private void darkButton82_Click(object sender, EventArgs e)
+        {
+            Schedule removeschedule = ScheduleLB.SelectedItem as Schedule;
+            RaidSettings.Schedule.Remove(removeschedule);
             RaidSettings.isDirty = true;
         }
         #endregion Raid Settigns
@@ -6309,15 +6384,17 @@ namespace DayZeEditor
             PickLockToolDamagePercentNUD.Value = (decimal)VehicleSettings.PickLockToolDamagePercent;
             EnableWindAerodynamicsCB.Checked = VehicleSettings.EnableWindAerodynamics == 1 ? true : false;
             EnableTailRotorDamageCB.Checked = VehicleSettings.EnableTailRotorDamage == 1 ? true : false;
-            PlayerAttachmentCB.Checked = VehicleSettings.PlayerAttachment == 1 ? true : false;
             TowingCB.Checked = VehicleSettings.Towing == 1 ? true : false;
             EnableHelicopterExplosionsCB.Checked = VehicleSettings.EnableHelicopterExplosions == 1 ? true : false;
             DisableVehicleDamageCB.Checked = VehicleSettings.DisableVehicleDamage == 1 ? true : false;
             VehicleCrewDamageMultiplierNUD.Value = (decimal)VehicleSettings.VehicleCrewDamageMultiplier;
             VehicleSpeedDamageMultiplierNUD.Value = (decimal)VehicleSettings.VehicleSpeedDamageMultiplier;
+            VehicleRoadKillDamageMultiplierNUD.Value = VehicleSettings.VehicleRoadKillDamageMultiplier;
+            CollisionDamageIfEngineOffCB.Checked = VehicleSettings.CollisionDamageIfEngineOff == 1 ? true : false;
+            CollisionDamageMinSpeedKmhNUD.Value = VehicleSettings.CollisionDamageMinSpeedKmh;
             CanChangeLockCB.Checked = VehicleSettings.CanChangeLock == 1 ? true : false;
             DesyncInvulnerabilityTimeoutSecondsNUD.Value = VehicleSettings.DesyncInvulnerabilityTimeoutSeconds;
-            VehicleRoadKillDamageMultiplierNUD.Value = VehicleSettings.VehicleRoadKillDamageMultiplier;
+
             DamagedEngineStartupChancePercentNUD.Value = VehicleSettings.DamagedEngineStartupChancePercent;
             ChangeLockTimeSecondsNUD.Value = (decimal)VehicleSettings.ChangeLockTimeSeconds;
             ChangeLockToolDamagePercentNUD.Value = (decimal)VehicleSettings.ChangeLockToolDamagePercent;
@@ -6327,9 +6404,14 @@ namespace DayZeEditor
             ExplodingVehicleDropsAttachmentsCB.Checked = VehicleSettings.ExplodingVehicleDropsAttachments == 1 ? true : false;
             EnableVehicleCoversCB.Checked = VehicleSettings.EnableVehicleCovers == 1 ? true : false;
             AllowCoveringDEVehiclesCB.Checked = VehicleSettings.AllowCoveringDEVehicles == 1 ? true : false;
+            CanCoverWithCargoCB.Checked = VehicleSettings.CanCoverWithCargo == 1 ? true : false;
             UseVirtualStorageForCoverCargoCB.Checked = VehicleSettings.UseVirtualStorageForCoverCargo == 1 ? true : false;
             VehicleAutoCoverTimeSecondsNUD.Value = VehicleSettings.VehicleAutoCoverTimeSeconds;
             VehicleAutoCoverRequireCamonetCB.Checked = VehicleSettings.VehicleAutoCoverRequireCamonet == 1 ? true : false;
+            EnableAutoCoveringDEVehiclesCB.Checked = VehicleSettings.EnableAutoCoveringDEVehicles == 1 ? true : false;
+            VehicleHeliCoverIconNameTB.Text = VehicleSettings.CFToolsHeliCoverIconName;
+            VehicleBoatCoverIconNameTB.Text = VehicleSettings.CFToolsBoatCoverIconName;
+            VehicleCarCoverIconNameTB.Text = VehicleSettings.CFToolsCarCoverIconName;
 
             ChangeLockToolsLB.DisplayMember = "DisplayName";
             ChangeLockToolsLB.ValueMember = "Value";
@@ -6531,7 +6613,6 @@ namespace DayZeEditor
             VehicleSettings.EnableVehicleCovers = EnableVehicleCoversCB.Checked == true ? 1 : 0;
             VehicleSettings.isDirty = true;
         }
-
         private void AllowCoveringDEVehiclesCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -6544,21 +6625,48 @@ namespace DayZeEditor
             VehicleSettings.UseVirtualStorageForCoverCargo = UseVirtualStorageForCoverCargoCB.Checked == true ? 1 : 0;
             VehicleSettings.isDirty = true;
         }
-
         private void VehicleAutoCoverTimeSecondsNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             VehicleSettings.VehicleAutoCoverTimeSeconds = VehicleAutoCoverTimeSecondsNUD.Value;
             VehicleSettings.isDirty = true;
         }
-
         private void VehicleAutoCoverRequireCamonetCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             VehicleSettings.VehicleAutoCoverRequireCamonet = VehicleAutoCoverRequireCamonetCB.Checked == true? 1: 0;
             VehicleSettings.isDirty = true;
         }
-
+        private void VehicleHeliCoverIconNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            VehicleSettings.CFToolsHeliCoverIconName = VehicleCarCoverIconNameTB.Text;
+            VehicleSettings.isDirty = true;
+        }
+        private void VehicleBoatCoverIconNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            VehicleSettings.CFToolsBoatCoverIconName = VehicleBoatCoverIconNameTB.Text;
+            VehicleSettings.isDirty = true;
+        }
+        private void VehicleCarCoverIconNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            VehicleSettings.CFToolsCarCoverIconName = VehicleCarCoverIconNameTB.Text;
+            VehicleSettings.isDirty = true;
+        }
+        private void CanCoverWithCargoCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            VehicleSettings.CanCoverWithCargo = CanCoverWithCargoCB.Checked == true ? 1 : 0; 
+            VehicleSettings.isDirty = true;
+        }
+        private void EnableAutoCoveringDEVehiclesCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            VehicleSettings.EnableAutoCoveringDEVehicles = EnableAutoCoveringDEVehiclesCB.Checked == true ? 1 : 0;
+            VehicleSettings.isDirty = true;
+        }
         #endregion VehicleSettings
 
         private void darkLabel235_Click(object sender, EventArgs e)
@@ -6725,7 +6833,7 @@ namespace DayZeEditor
             GarageMaxRangeTier1NUD.Value = GarageSettings.MaxRangeTier1;
             GarageMaxRangeTier2NUD.Value = GarageSettings.MaxRangeTier2;
             GarageMaxRangeTier3NUD.Value = GarageSettings.MaxRangeTier3;
-
+            GarageParkingMeterEnableFlavorCB.Checked = GarageSettings.ParkingMeterEnableFlavor == 1 ? true : false;
 
             GarageEntityWhitelistLB.DisplayMember = "DisplayName";
             GarageEntityWhitelistLB.ValueMember = "Value";
@@ -6891,7 +6999,12 @@ namespace DayZeEditor
             GarageSettings.AllowStoringDEVehicles = AllowStoringDEVehiclesCB.Checked == true ? 1 : 0;
             GarageSettings.isDirty = true;
         }
-
+        private void GarageParkingMeterEnableFlavorCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            GarageSettings.ParkingMeterEnableFlavor = GarageParkingMeterEnableFlavorCB.Checked == true ? 1 : 0;
+            GarageSettings.isDirty = true;
+        }
         #endregion Garagesettings
 
         private void importDZEToMapFileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -6907,11 +7020,11 @@ namespace DayZeEditor
                     DZE importfile = DZEHelpers.LoadFile(filePath);
                     foreach (Editordeletedobject eod in importfile.EditorDeletedObjects)
                     {
-                        sb.AppendLine("-" + eod.Type + "|" + eod.Position[0].ToString() + " " + eod.Position[1].ToString() + " " + eod.Position[2].ToString() + "|0.000000 0.000000 0.000000");
+                        sb.AppendLine("-" + eod.Type + "|" + eod.Position[0].ToString("R") + " " + eod.Position[1].ToString("R") + " " + eod.Position[2].ToString("R") + "|0.000000 0.000000 0.000000");
                     }
                     foreach (Editorobject eo in importfile.EditorObjects)
                     {
-                        sb.AppendLine(eo.Type + "|" + eo.Position[0].ToString() + " " + eo.Position[1].ToString() + " " + eo.Position[2].ToString() + "|" + eo.Orientation[0].ToString() + " " + eo.Orientation[1].ToString() + " " + eo.Orientation[2]);
+                        sb.AppendLine(eo.Type + "|" + eo.Position[0].ToString("R") + " " + eo.Position[1].ToString("R") + " " + eo.Position[2].ToString("R") + "|" + eo.Orientation[0].ToString("R") + " " + eo.Orientation[1].ToString("R") + " " + eo.Orientation[2].ToString("R"));
                     }
                     File.WriteAllText(DestFile, sb.ToString());
                     MessageBox.Show("File written to " + DestFile);
@@ -6919,6 +7032,14 @@ namespace DayZeEditor
 
             }
         }
+
+        private void darkButton81_Click(object sender, EventArgs e)
+        {
+            DateTime localtime = dateTimePicker1.Value;
+            darkLabel252.Text = "UTC Time : " + TimeZoneInfo.ConvertTimeToUtc(localtime, TimeZoneInfo.Local).ToString();
+        }
+
+
     }
     public class NullToEmptyGearConverter : JsonConverter<Gear>
     {

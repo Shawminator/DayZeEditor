@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -9,11 +10,14 @@ namespace DayZeLib
 {
     public class QuestObjectivesCollection: QuestObjectivesBase
     {
-        public Collection Collection { get; set; }
+        public decimal MaxDistance { get; set; }
+        public string MarkerName { get; set; }
+        public int ShowDistance { get; set; }
+        public BindingList<Collections> Collections { get; set; }
 
         public QuestObjectivesCollection()
         {
-            Collection = new Collection();
+            Collections = new BindingList<Collections>();
         }
         public override string ToString()
         {
@@ -21,12 +25,12 @@ namespace DayZeLib
         }
     }
 
-    public class Collection
+    public class Collections
     {
         public int Amount { get; set; }
         public string ClassName { get; set; }
 
-        public Collection()
+        public Collections()
         { }
 
         public override string ToString()

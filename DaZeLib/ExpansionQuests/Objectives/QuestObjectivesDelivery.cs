@@ -11,9 +11,9 @@ namespace DayZeLib
     public class QuestObjectivesDelivery: QuestObjectivesBase
     {
         public BindingList<Delivery> Deliveries { get; set; }
-        public float[] Position { get; set; }
         public decimal MaxDistance { get; set; }
         public string MarkerName { get; set; }
+        public int ShowDistance { get; set; }
 
         public QuestObjectivesDelivery()
         {

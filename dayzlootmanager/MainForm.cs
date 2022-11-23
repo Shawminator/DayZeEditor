@@ -14,6 +14,7 @@ using System.Globalization;
 using DayZeLib;
 using System.Net;
 using System.IO.Compression;
+using System.Text.Encodings.Web;
 
 namespace DayZeEditor
 {
@@ -34,7 +35,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.7.4.8";
+        public string VersionNumber = "0.7.4.9";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -808,7 +809,7 @@ namespace DayZeEditor
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             OpenFileDialog openfile = new OpenFileDialog();
-            openfile.Title = "Please select the map_output.txt upi wosh to convert";
+            openfile.Title = "Please select the map_output.txt u wish to convert";
             if (openfile.ShowDialog() == DialogResult.OK)
             {
                 MapData data = new MapData(openfile.FileName);
@@ -922,5 +923,25 @@ namespace DayZeEditor
             timer1.Start();
         }
 
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    StringBuilder sb = new StringBuilder();
+                    DZE importfile = DZEHelpers.LoadFile(filePath);
+
+                    var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                    string jsonString = JsonSerializer.Serialize(importfile, options);
+                    SaveFileDialog savefile = new SaveFileDialog();
+                    if (savefile.ShowDialog() == DialogResult.OK)
+                    {
+                        File.WriteAllText(savefile.FileName, jsonString);
+                    }
+                }
+            }
+        }
     }
 }

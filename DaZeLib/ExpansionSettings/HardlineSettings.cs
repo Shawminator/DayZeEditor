@@ -8,31 +8,16 @@ using System.Threading.Tasks;
 
 namespace DayZeLib
 {
-
     public class HardLineSettings
     {
-        const int CurrentVersion = 5;
+        const int CurrentVersion = 6;
 
         public int m_Version { get; set; }
-        public int RankBambi { get; set; }
-        public int RankSurvivor { get; set; }
-        public int RankScout { get; set; }
-        public int RankPathfinder { get; set; }
-        public int RankHero { get; set; }
-        public int RankSuperhero { get; set; }
-        public int RankLegend { get; set; }
-        public int RankKleptomaniac { get; set; }
-        public int RankBully { get; set; }
-        public int RankBandit { get; set; }
-        public int RankKiller { get; set; }
-        public int RankMadman { get; set; }
-        public int HumanityBandageTarget { get; set; }
-        public int HumanityOnKillInfected { get; set; }
-        public int HumanityOnKillAI { get; set; }
-        public int HumanityOnKillBambi { get; set; }
-        public int HumanityOnKillHero { get; set; }
-        public int HumanityOnKillBandit { get; set; }
-        public int HumanityLossOnDeath { get; set; }
+        public int ReputationOnKillInfected { get; set; }
+        public int ReputationOnKillPlayer { get; set; }
+        public int ReputationOnKillAnimal { get; set; }
+        public int ReputationOnKillAI { get; set; }
+        public int ReputationLossOnDeath { get; set; }
         public int PoorItemRequirement { get; set; }
         public int CommonItemRequirement { get; set; }
         public int UncommonItemRequirement { get; set; }
@@ -42,7 +27,7 @@ namespace DayZeLib
         public int MythicItemRequirement { get; set; }
         public int ExoticItemRequirement { get; set; }
         public int ShowHardlineHUD { get; set; }
-        public int UseHumanity { get; set; }
+        public int UseReputation { get; set; }
         public int EnableItemRarity { get; set; }
         public int UseItemRarityForMarketPurchase { get; set; }
         public int UseItemRarityForMarketSell { get; set; }
@@ -90,7 +75,7 @@ namespace DayZeLib
             MythicItems = new BindingList<string>();
             ExoticItems = new BindingList<string>();
 
-            foreach (KeyValuePair<string,int> item in ItemRarity)
+            foreach (KeyValuePair<string, int> item in ItemRarity)
             {
                 string useitem = item.Key;
                 if (useitem != useitem.ToLower())
@@ -132,7 +117,7 @@ namespace DayZeLib
         public void convertliststoDict()
         {
             ItemRarity = new Dictionary<string, int>();
-            foreach(string item in PoorItems)
+            foreach (string item in PoorItems)
             {
                 ItemRarity.Add(item, 1);
             }

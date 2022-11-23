@@ -146,6 +146,7 @@
     <Compile Include="ExpansionQuests\Objectives\QuestObjectivesTravel.cs" />
     <Compile Include="ExpansionQuests\PlayerData\PlayerData.cs" />
     <Compile Include="ExpansionQuests\Quests\ExpansionQuests.cs" />
+    <Compile Include="ExpansionQuests\Settings\PersistentServerData.cs" />
     <Compile Include="ExpansionQuests\Settings\QuestSettings.cs" />
     <Compile Include="ExpansionSettings\AirdropSettings.cs" />
     <Compile Include="ExpansionAI\AISettings.cs" />

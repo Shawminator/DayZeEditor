@@ -11,7 +11,7 @@ namespace DayZeLib
     public class AISettings
     {
         [JsonIgnore]
-        const int CurrentVersion = 3;
+        const int CurrentVersion = 4;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -20,6 +20,8 @@ namespace DayZeLib
         public int m_Version { get; set; }
         public decimal AccuracyMin { get; set; }
         public decimal AccuracyMax { get; set; }
+        public decimal ThreatDistanceLimit { get; set; }
+        public decimal DamageMultiplier { get; set; }
         public BindingList<string> Admins { get; set; }
         public int MaximumDynamicPatrols { get; set; }
         public int Vaulting { get; set; }

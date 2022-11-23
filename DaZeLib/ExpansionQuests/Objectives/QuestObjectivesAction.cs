@@ -11,6 +11,8 @@ namespace DayZeLib
     public class QuestObjectivesAction: QuestObjectivesBase
     {
         public BindingList<string> ActionNames { get; set; }
+        public BindingList<string> AllowedClassNames { get; set; }
+        public BindingList<string> ExcludedClassNames { get; set; }
 
         public override string ToString()
         {

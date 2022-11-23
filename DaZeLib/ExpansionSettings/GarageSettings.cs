@@ -37,7 +37,7 @@ namespace DayZeLib
 
     public class GarageSettings
     {
-        const int CurrentVersion = 5;
+        const int CurrentVersion = 6;
 
         public int m_Version { get; set; }
         public int Enabled { get; set; }
@@ -63,6 +63,7 @@ namespace DayZeLib
         public decimal MaxRangeTier1 { get; set; }
         public decimal MaxRangeTier2 { get; set; }
         public decimal MaxRangeTier3 { get; set; }
+        public int ParkingMeterEnableFlavor { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }

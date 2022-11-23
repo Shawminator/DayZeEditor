@@ -22,8 +22,8 @@ namespace DayZeLib
         public float Speed { get; set; }
         public string Container { get; set; }
         public DropLocation DropLocation { get; set; }
-        public BindingList<Empty> Loot { get; set; }
-        public BindingList<Empty> Infected { get; set; }
+        public BindingList<containerLoot> Loot { get; set; }
+        public BindingList<string> Infected { get; set; }
         public int ItemCount { get; set; }
         public int InfectedCount { get; set; }
 
@@ -38,8 +38,8 @@ namespace DayZeLib
         public AirdropMissionSettingFiles()
         {
             DropLocation = new DropLocation();
-            Loot = new BindingList<Empty>();
-            Infected = new BindingList<Empty>();
+            Loot = new BindingList<containerLoot>();
+            Infected = new BindingList<string>();
             isDirty = true;
         }
 
