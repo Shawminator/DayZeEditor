@@ -46,7 +46,7 @@ namespace DayZeLib
     public class VehicleSettings
     {
         const int CurrentVersion = 18;
-        public int m_Version { get; set; } // current version 8
+        public int m_Version { get; set; } // current version 18
         public int VehicleSync { get; set; }
         public int VehicleRequireKeyToStart { get; set; }
         public int VehicleRequireAllDoors { get; set; }

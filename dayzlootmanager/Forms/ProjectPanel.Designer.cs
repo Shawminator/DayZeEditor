@@ -52,6 +52,7 @@ namespace DayZeEditor
             this.ProjectProfileTB = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
@@ -78,6 +79,7 @@ namespace DayZeEditor
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.FTPConnectTSB = new System.Windows.Forms.ToolStripMenuItem();
+            this.SFTPConnectTSB1 = new System.Windows.Forms.ToolStripMenuItem();
             this.FTPDisconnectTSB = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
@@ -104,7 +106,6 @@ namespace DayZeEditor
             this.darkToolStrip23 = new DarkUI.Controls.DarkToolStrip2();
             this.ProjectTSB = new System.Windows.Forms.ToolStripButton();
             this.FTPTSB = new System.Windows.Forms.ToolStripButton();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -368,6 +369,17 @@ namespace DayZeEditor
             this.groupBox3.TabIndex = 55;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Edit Current Project";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(12, 164);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(102, 17);
+            this.checkBox1.TabIndex = 60;
+            this.checkBox1.Text = "Create Backups";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // groupBox5
             // 
@@ -646,6 +658,7 @@ namespace DayZeEditor
             this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FTPConnectTSB,
+            this.SFTPConnectTSB1,
             this.FTPDisconnectTSB});
             this.toolStripDropDownButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
@@ -660,16 +673,26 @@ namespace DayZeEditor
             this.FTPConnectTSB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.FTPConnectTSB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.FTPConnectTSB.Name = "FTPConnectTSB";
-            this.FTPConnectTSB.Size = new System.Drawing.Size(155, 22);
+            this.FTPConnectTSB.Size = new System.Drawing.Size(180, 22);
             this.FTPConnectTSB.Text = "Connect to FTP";
             this.FTPConnectTSB.Click += new System.EventHandler(this.FTPConnectTSB_Click);
+            // 
+            // SFTPConnectTSB1
+            // 
+            this.SFTPConnectTSB1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.SFTPConnectTSB1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.SFTPConnectTSB1.Name = "SFTPConnectTSB1";
+            this.SFTPConnectTSB1.Size = new System.Drawing.Size(180, 22);
+            this.SFTPConnectTSB1.Text = "Connect to SFTP";
+            this.SFTPConnectTSB1.Visible = false;
+            this.SFTPConnectTSB1.Click += new System.EventHandler(this.SFTPConnectTSB1_Click);
             // 
             // FTPDisconnectTSB
             // 
             this.FTPDisconnectTSB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.FTPDisconnectTSB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.FTPDisconnectTSB.Name = "FTPDisconnectTSB";
-            this.FTPDisconnectTSB.Size = new System.Drawing.Size(155, 22);
+            this.FTPDisconnectTSB.Size = new System.Drawing.Size(180, 22);
             this.FTPDisconnectTSB.Text = "Disconnect";
             this.FTPDisconnectTSB.Click += new System.EventHandler(this.FTPDisconnectTSB_Click);
             // 
@@ -884,17 +907,6 @@ namespace DayZeEditor
             this.FTPTSB.Text = "FTP";
             this.FTPTSB.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(12, 164);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(102, 17);
-            this.checkBox1.TabIndex = 60;
-            this.checkBox1.Text = "Create Backups";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
             // ProjectPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1009,5 +1021,6 @@ namespace DayZeEditor
         private System.Windows.Forms.TextBox ProjectMissionFolderTB;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.ToolStripMenuItem SFTPConnectTSB1;
     }
 }

@@ -251,6 +251,48 @@ namespace DayZeEditor
             this.panel44 = new System.Windows.Forms.Panel();
             this.QuestObjectivesObjectiveTextTB = new System.Windows.Forms.TextBox();
             this.darkLabel48 = new DarkUI.Controls.DarkLabel();
+            this.ObjectivesAICampGB = new System.Windows.Forms.GroupBox();
+            this.ObjectiovesAICampCanLootAICB = new System.Windows.Forms.CheckBox();
+            this.darkLabel66 = new DarkUI.Controls.DarkLabel();
+            this.ObjectivesAICampDespawnRadiusNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel64 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel65 = new DarkUI.Controls.DarkLabel();
+            this.ObjectivesAICampMinDistRadiusNUD = new System.Windows.Forms.NumericUpDown();
+            this.ObjectivesAICampMaxDistRadiusNUD = new System.Windows.Forms.NumericUpDown();
+            this.ObjectivesAICampSpecialWeaponCB = new System.Windows.Forms.CheckBox();
+            this.ObjectivesAICampAllowedWeaponsLB = new System.Windows.Forms.ListBox();
+            this.darkButton29 = new DarkUI.Controls.DarkButton();
+            this.darkButton31 = new DarkUI.Controls.DarkButton();
+            this.darkLabel63 = new DarkUI.Controls.DarkLabel();
+            this.ObjectivesAiCampClassnamesLB = new System.Windows.Forms.ListBox();
+            this.darkButton21 = new DarkUI.Controls.DarkButton();
+            this.darkButton22 = new DarkUI.Controls.DarkButton();
+            this.darkLabel61 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel62 = new DarkUI.Controls.DarkLabel();
+            this.ObjectivesAICampNPCAccuracyMinNUD = new System.Windows.Forms.NumericUpDown();
+            this.ObjectivesAICampNPCAccuracyMaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.ObjectivesAICampNPCLoadoutFileCB = new System.Windows.Forms.ComboBox();
+            this.darkLabel60 = new DarkUI.Controls.DarkLabel();
+            this.ObjectivesAICampNPCFactionCB = new System.Windows.Forms.ComboBox();
+            this.darkLabel59 = new DarkUI.Controls.DarkLabel();
+            this.ObjectiovesAICampNPCSpeedCB = new System.Windows.Forms.ComboBox();
+            this.darkLabel58 = new DarkUI.Controls.DarkLabel();
+            this.ObjectivesAICampNPCModeCB = new System.Windows.Forms.ComboBox();
+            this.darkLabel57 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel56 = new DarkUI.Controls.DarkLabel();
+            this.darkButton15 = new DarkUI.Controls.DarkButton();
+            this.darkButton16 = new DarkUI.Controls.DarkButton();
+            this.darkButton17 = new DarkUI.Controls.DarkButton();
+            this.darkButton18 = new DarkUI.Controls.DarkButton();
+            this.darkLabel53 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel54 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel55 = new DarkUI.Controls.DarkLabel();
+            this.numericUpDown9 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown11 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown12 = new System.Windows.Forms.NumericUpDown();
+            this.darkButton19 = new DarkUI.Controls.DarkButton();
+            this.darkButton20 = new DarkUI.Controls.DarkButton();
+            this.ObjectivesAICampPositionsLB = new System.Windows.Forms.ListBox();
             this.ObjectiveActionGB = new System.Windows.Forms.GroupBox();
             this.darkLabel52 = new DarkUI.Controls.DarkLabel();
             this.darkLabel51 = new DarkUI.Controls.DarkLabel();
@@ -297,6 +339,12 @@ namespace DayZeEditor
             this.darkLabel79 = new DarkUI.Controls.DarkLabel();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.QuestInfoGB = new System.Windows.Forms.GroupBox();
+            this.panel64 = new System.Windows.Forms.Panel();
+            this.darkLabel70 = new DarkUI.Controls.DarkLabel();
+            this.numericUpDown14 = new System.Windows.Forms.NumericUpDown();
+            this.panel47 = new System.Windows.Forms.Panel();
+            this.darkLabel69 = new DarkUI.Controls.DarkLabel();
+            this.numericUpDown13 = new System.Windows.Forms.NumericUpDown();
             this.panel51 = new System.Windows.Forms.Panel();
             this.darkLabel76 = new DarkUI.Controls.DarkLabel();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
@@ -337,48 +385,6 @@ namespace DayZeEditor
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.removeQuestFromPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removePlayerSaveDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ObjectivesAICampGB = new System.Windows.Forms.GroupBox();
-            this.darkButton15 = new DarkUI.Controls.DarkButton();
-            this.darkButton16 = new DarkUI.Controls.DarkButton();
-            this.darkButton17 = new DarkUI.Controls.DarkButton();
-            this.darkButton18 = new DarkUI.Controls.DarkButton();
-            this.darkLabel53 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel54 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel55 = new DarkUI.Controls.DarkLabel();
-            this.numericUpDown9 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown11 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown12 = new System.Windows.Forms.NumericUpDown();
-            this.darkButton19 = new DarkUI.Controls.DarkButton();
-            this.darkButton20 = new DarkUI.Controls.DarkButton();
-            this.ObjectivesAICampPositionsLB = new System.Windows.Forms.ListBox();
-            this.darkLabel56 = new DarkUI.Controls.DarkLabel();
-            this.ObjectivesAICampNPCModeCB = new System.Windows.Forms.ComboBox();
-            this.darkLabel57 = new DarkUI.Controls.DarkLabel();
-            this.ObjectiovesAICampNPCSpeedCB = new System.Windows.Forms.ComboBox();
-            this.darkLabel58 = new DarkUI.Controls.DarkLabel();
-            this.ObjectivesAICampNPCFactionCB = new System.Windows.Forms.ComboBox();
-            this.darkLabel59 = new DarkUI.Controls.DarkLabel();
-            this.ObjectivesAICampNPCLoadoutFileCB = new System.Windows.Forms.ComboBox();
-            this.darkLabel60 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel61 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel62 = new DarkUI.Controls.DarkLabel();
-            this.ObjectivesAICampNPCAccuracyMinNUD = new System.Windows.Forms.NumericUpDown();
-            this.ObjectivesAICampNPCAccuracyMaxNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel63 = new DarkUI.Controls.DarkLabel();
-            this.ObjectivesAiCampClassnamesLB = new System.Windows.Forms.ListBox();
-            this.darkButton21 = new DarkUI.Controls.DarkButton();
-            this.darkButton22 = new DarkUI.Controls.DarkButton();
-            this.ObjectivesAICampAllowedWeaponsLB = new System.Windows.Forms.ListBox();
-            this.darkButton29 = new DarkUI.Controls.DarkButton();
-            this.darkButton31 = new DarkUI.Controls.DarkButton();
-            this.ObjectivesAICampSpecialWeaponCB = new System.Windows.Forms.CheckBox();
-            this.darkLabel64 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel65 = new DarkUI.Controls.DarkLabel();
-            this.ObjectivesAICampMinDistRadiusNUD = new System.Windows.Forms.NumericUpDown();
-            this.ObjectivesAICampMaxDistRadiusNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel66 = new DarkUI.Controls.DarkLabel();
-            this.ObjectivesAICampDespawnRadiusNUD = new System.Windows.Forms.NumericUpDown();
-            this.ObjectiovesAICampCanLootAICB = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -466,6 +472,15 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.QuestsObjectivesIDNUD)).BeginInit();
             this.panel43.SuspendLayout();
             this.panel44.SuspendLayout();
+            this.ObjectivesAICampGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesAICampDespawnRadiusNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesAICampMinDistRadiusNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesAICampMaxDistRadiusNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesAICampNPCAccuracyMinNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesAICampNPCAccuracyMaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).BeginInit();
             this.ObjectiveActionGB.SuspendLayout();
             this.Tab5.SuspendLayout();
             this.ObjectiveInfoGB.SuspendLayout();
@@ -486,6 +501,10 @@ namespace DayZeEditor
             this.panel55.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             this.QuestInfoGB.SuspendLayout();
+            this.panel64.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown14)).BeginInit();
+            this.panel47.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown13)).BeginInit();
             this.panel51.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel54.SuspendLayout();
@@ -495,15 +514,6 @@ namespace DayZeEditor
             this.darkToolStrip23.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
-            this.ObjectivesAICampGB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesAICampNPCAccuracyMinNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesAICampNPCAccuracyMaxNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesAICampMinDistRadiusNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesAICampMaxDistRadiusNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesAICampDespawnRadiusNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -3041,7 +3051,6 @@ namespace DayZeEditor
             this.QuestObjectivesObjectiveTypeCB.Name = "QuestObjectivesObjectiveTypeCB";
             this.QuestObjectivesObjectiveTypeCB.Size = new System.Drawing.Size(248, 21);
             this.QuestObjectivesObjectiveTypeCB.TabIndex = 128;
-            this.QuestObjectivesObjectiveTypeCB.SelectedIndexChanged += new System.EventHandler(this.QuestObjectivesObjectiveTypeCB_SelectedIndexChanged);
             // 
             // darkLabel47
             // 
@@ -3082,6 +3091,609 @@ namespace DayZeEditor
             this.darkLabel48.Size = new System.Drawing.Size(76, 13);
             this.darkLabel48.TabIndex = 161;
             this.darkLabel48.Text = "Objective Text";
+            // 
+            // ObjectivesAICampGB
+            // 
+            this.ObjectivesAICampGB.Controls.Add(this.ObjectiovesAICampCanLootAICB);
+            this.ObjectivesAICampGB.Controls.Add(this.darkLabel66);
+            this.ObjectivesAICampGB.Controls.Add(this.ObjectivesAICampDespawnRadiusNUD);
+            this.ObjectivesAICampGB.Controls.Add(this.darkLabel64);
+            this.ObjectivesAICampGB.Controls.Add(this.darkLabel65);
+            this.ObjectivesAICampGB.Controls.Add(this.ObjectivesAICampMinDistRadiusNUD);
+            this.ObjectivesAICampGB.Controls.Add(this.ObjectivesAICampMaxDistRadiusNUD);
+            this.ObjectivesAICampGB.Controls.Add(this.ObjectivesAICampSpecialWeaponCB);
+            this.ObjectivesAICampGB.Controls.Add(this.ObjectivesAICampAllowedWeaponsLB);
+            this.ObjectivesAICampGB.Controls.Add(this.darkButton29);
+            this.ObjectivesAICampGB.Controls.Add(this.darkButton31);
+            this.ObjectivesAICampGB.Controls.Add(this.darkLabel63);
+            this.ObjectivesAICampGB.Controls.Add(this.ObjectivesAiCampClassnamesLB);
+            this.ObjectivesAICampGB.Controls.Add(this.darkButton21);
+            this.ObjectivesAICampGB.Controls.Add(this.darkButton22);
+            this.ObjectivesAICampGB.Controls.Add(this.darkLabel61);
+            this.ObjectivesAICampGB.Controls.Add(this.darkLabel62);
+            this.ObjectivesAICampGB.Controls.Add(this.ObjectivesAICampNPCAccuracyMinNUD);
+            this.ObjectivesAICampGB.Controls.Add(this.ObjectivesAICampNPCAccuracyMaxNUD);
+            this.ObjectivesAICampGB.Controls.Add(this.ObjectivesAICampNPCLoadoutFileCB);
+            this.ObjectivesAICampGB.Controls.Add(this.darkLabel60);
+            this.ObjectivesAICampGB.Controls.Add(this.ObjectivesAICampNPCFactionCB);
+            this.ObjectivesAICampGB.Controls.Add(this.darkLabel59);
+            this.ObjectivesAICampGB.Controls.Add(this.ObjectiovesAICampNPCSpeedCB);
+            this.ObjectivesAICampGB.Controls.Add(this.darkLabel58);
+            this.ObjectivesAICampGB.Controls.Add(this.ObjectivesAICampNPCModeCB);
+            this.ObjectivesAICampGB.Controls.Add(this.darkLabel57);
+            this.ObjectivesAICampGB.Controls.Add(this.darkLabel56);
+            this.ObjectivesAICampGB.Controls.Add(this.darkButton15);
+            this.ObjectivesAICampGB.Controls.Add(this.darkButton16);
+            this.ObjectivesAICampGB.Controls.Add(this.darkButton17);
+            this.ObjectivesAICampGB.Controls.Add(this.darkButton18);
+            this.ObjectivesAICampGB.Controls.Add(this.darkLabel53);
+            this.ObjectivesAICampGB.Controls.Add(this.darkLabel54);
+            this.ObjectivesAICampGB.Controls.Add(this.darkLabel55);
+            this.ObjectivesAICampGB.Controls.Add(this.numericUpDown9);
+            this.ObjectivesAICampGB.Controls.Add(this.numericUpDown11);
+            this.ObjectivesAICampGB.Controls.Add(this.numericUpDown12);
+            this.ObjectivesAICampGB.Controls.Add(this.darkButton19);
+            this.ObjectivesAICampGB.Controls.Add(this.darkButton20);
+            this.ObjectivesAICampGB.Controls.Add(this.ObjectivesAICampPositionsLB);
+            this.ObjectivesAICampGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ObjectivesAICampGB.Location = new System.Drawing.Point(367, 3);
+            this.ObjectivesAICampGB.Name = "ObjectivesAICampGB";
+            this.ObjectivesAICampGB.Size = new System.Drawing.Size(602, 437);
+            this.ObjectivesAICampGB.TabIndex = 228;
+            this.ObjectivesAICampGB.TabStop = false;
+            this.ObjectivesAICampGB.Text = "AI Camp";
+            // 
+            // ObjectiovesAICampCanLootAICB
+            // 
+            this.ObjectiovesAICampCanLootAICB.AutoSize = true;
+            this.ObjectiovesAICampCanLootAICB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ObjectiovesAICampCanLootAICB.Location = new System.Drawing.Point(352, 376);
+            this.ObjectiovesAICampCanLootAICB.Name = "ObjectiovesAICampCanLootAICB";
+            this.ObjectiovesAICampCanLootAICB.Size = new System.Drawing.Size(79, 17);
+            this.ObjectiovesAICampCanLootAICB.TabIndex = 265;
+            this.ObjectiovesAICampCanLootAICB.Text = "CanLoot AI";
+            this.ObjectiovesAICampCanLootAICB.UseVisualStyleBackColor = true;
+            this.ObjectiovesAICampCanLootAICB.CheckedChanged += new System.EventHandler(this.ObjectiovesAICampCanLootAICB_CheckedChanged);
+            // 
+            // darkLabel66
+            // 
+            this.darkLabel66.AutoSize = true;
+            this.darkLabel66.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel66.Location = new System.Drawing.Point(361, 350);
+            this.darkLabel66.Name = "darkLabel66";
+            this.darkLabel66.Size = new System.Drawing.Size(88, 13);
+            this.darkLabel66.TabIndex = 264;
+            this.darkLabel66.Text = "Despawn Radius";
+            // 
+            // ObjectivesAICampDespawnRadiusNUD
+            // 
+            this.ObjectivesAICampDespawnRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ObjectivesAICampDespawnRadiusNUD.DecimalPlaces = 6;
+            this.ObjectivesAICampDespawnRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.ObjectivesAICampDespawnRadiusNUD.Location = new System.Drawing.Point(464, 348);
+            this.ObjectivesAICampDespawnRadiusNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.ObjectivesAICampDespawnRadiusNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.ObjectivesAICampDespawnRadiusNUD.Name = "ObjectivesAICampDespawnRadiusNUD";
+            this.ObjectivesAICampDespawnRadiusNUD.Size = new System.Drawing.Size(106, 20);
+            this.ObjectivesAICampDespawnRadiusNUD.TabIndex = 263;
+            this.ObjectivesAICampDespawnRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ObjectivesAICampDespawnRadiusNUD.ValueChanged += new System.EventHandler(this.ObjectivesAICampDespawnRadiusNUD_ValueChanged);
+            // 
+            // darkLabel64
+            // 
+            this.darkLabel64.AutoSize = true;
+            this.darkLabel64.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel64.Location = new System.Drawing.Point(361, 323);
+            this.darkLabel64.Name = "darkLabel64";
+            this.darkLabel64.Size = new System.Drawing.Size(84, 13);
+            this.darkLabel64.TabIndex = 262;
+            this.darkLabel64.Text = "Max Dist Radius";
+            // 
+            // darkLabel65
+            // 
+            this.darkLabel65.AutoSize = true;
+            this.darkLabel65.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel65.Location = new System.Drawing.Point(361, 295);
+            this.darkLabel65.Name = "darkLabel65";
+            this.darkLabel65.Size = new System.Drawing.Size(81, 13);
+            this.darkLabel65.TabIndex = 261;
+            this.darkLabel65.Text = "Min Dist Radius";
+            // 
+            // ObjectivesAICampMinDistRadiusNUD
+            // 
+            this.ObjectivesAICampMinDistRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ObjectivesAICampMinDistRadiusNUD.DecimalPlaces = 6;
+            this.ObjectivesAICampMinDistRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.ObjectivesAICampMinDistRadiusNUD.Location = new System.Drawing.Point(464, 293);
+            this.ObjectivesAICampMinDistRadiusNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.ObjectivesAICampMinDistRadiusNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.ObjectivesAICampMinDistRadiusNUD.Name = "ObjectivesAICampMinDistRadiusNUD";
+            this.ObjectivesAICampMinDistRadiusNUD.Size = new System.Drawing.Size(106, 20);
+            this.ObjectivesAICampMinDistRadiusNUD.TabIndex = 259;
+            this.ObjectivesAICampMinDistRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ObjectivesAICampMinDistRadiusNUD.ValueChanged += new System.EventHandler(this.ObjectivesAICampMinDistRadiusNUD_ValueChanged);
+            // 
+            // ObjectivesAICampMaxDistRadiusNUD
+            // 
+            this.ObjectivesAICampMaxDistRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ObjectivesAICampMaxDistRadiusNUD.DecimalPlaces = 6;
+            this.ObjectivesAICampMaxDistRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.ObjectivesAICampMaxDistRadiusNUD.Location = new System.Drawing.Point(464, 319);
+            this.ObjectivesAICampMaxDistRadiusNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.ObjectivesAICampMaxDistRadiusNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.ObjectivesAICampMaxDistRadiusNUD.Name = "ObjectivesAICampMaxDistRadiusNUD";
+            this.ObjectivesAICampMaxDistRadiusNUD.Size = new System.Drawing.Size(106, 20);
+            this.ObjectivesAICampMaxDistRadiusNUD.TabIndex = 260;
+            this.ObjectivesAICampMaxDistRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ObjectivesAICampMaxDistRadiusNUD.ValueChanged += new System.EventHandler(this.ObjectivesAICampMaxDistRadiusNUD_ValueChanged);
+            // 
+            // ObjectivesAICampSpecialWeaponCB
+            // 
+            this.ObjectivesAICampSpecialWeaponCB.AutoSize = true;
+            this.ObjectivesAICampSpecialWeaponCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ObjectivesAICampSpecialWeaponCB.Location = new System.Drawing.Point(349, 153);
+            this.ObjectivesAICampSpecialWeaponCB.Name = "ObjectivesAICampSpecialWeaponCB";
+            this.ObjectivesAICampSpecialWeaponCB.Size = new System.Drawing.Size(111, 17);
+            this.ObjectivesAICampSpecialWeaponCB.TabIndex = 258;
+            this.ObjectivesAICampSpecialWeaponCB.Text = "Speacial Weapon";
+            this.ObjectivesAICampSpecialWeaponCB.UseVisualStyleBackColor = true;
+            this.ObjectivesAICampSpecialWeaponCB.CheckedChanged += new System.EventHandler(this.ObjectivesAICampSpecialWeaponCB_CheckedChanged);
+            // 
+            // ObjectivesAICampAllowedWeaponsLB
+            // 
+            this.ObjectivesAICampAllowedWeaponsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ObjectivesAICampAllowedWeaponsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ObjectivesAICampAllowedWeaponsLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ObjectivesAICampAllowedWeaponsLB.FormattingEnabled = true;
+            this.ObjectivesAICampAllowedWeaponsLB.Location = new System.Drawing.Point(349, 176);
+            this.ObjectivesAICampAllowedWeaponsLB.Name = "ObjectivesAICampAllowedWeaponsLB";
+            this.ObjectivesAICampAllowedWeaponsLB.Size = new System.Drawing.Size(221, 108);
+            this.ObjectivesAICampAllowedWeaponsLB.TabIndex = 254;
+            // 
+            // darkButton29
+            // 
+            this.darkButton29.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton29.Location = new System.Drawing.Point(576, 263);
+            this.darkButton29.Name = "darkButton29";
+            this.darkButton29.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton29.Size = new System.Drawing.Size(20, 20);
+            this.darkButton29.TabIndex = 256;
+            this.darkButton29.Text = "-";
+            this.darkButton29.Click += new System.EventHandler(this.darkButton29_Click);
+            // 
+            // darkButton31
+            // 
+            this.darkButton31.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton31.Location = new System.Drawing.Point(576, 176);
+            this.darkButton31.Name = "darkButton31";
+            this.darkButton31.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton31.Size = new System.Drawing.Size(20, 20);
+            this.darkButton31.TabIndex = 255;
+            this.darkButton31.Text = "+";
+            this.darkButton31.Click += new System.EventHandler(this.darkButton31_Click);
+            // 
+            // darkLabel63
+            // 
+            this.darkLabel63.AutoSize = true;
+            this.darkLabel63.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel63.Location = new System.Drawing.Point(349, 23);
+            this.darkLabel63.Name = "darkLabel63";
+            this.darkLabel63.Size = new System.Drawing.Size(63, 13);
+            this.darkLabel63.TabIndex = 253;
+            this.darkLabel63.Text = "Classnames";
+            // 
+            // ObjectivesAiCampClassnamesLB
+            // 
+            this.ObjectivesAiCampClassnamesLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ObjectivesAiCampClassnamesLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ObjectivesAiCampClassnamesLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ObjectivesAiCampClassnamesLB.FormattingEnabled = true;
+            this.ObjectivesAiCampClassnamesLB.Location = new System.Drawing.Point(349, 39);
+            this.ObjectivesAiCampClassnamesLB.Name = "ObjectivesAiCampClassnamesLB";
+            this.ObjectivesAiCampClassnamesLB.Size = new System.Drawing.Size(221, 108);
+            this.ObjectivesAiCampClassnamesLB.TabIndex = 250;
+            // 
+            // darkButton21
+            // 
+            this.darkButton21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton21.Location = new System.Drawing.Point(576, 126);
+            this.darkButton21.Name = "darkButton21";
+            this.darkButton21.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton21.Size = new System.Drawing.Size(20, 20);
+            this.darkButton21.TabIndex = 252;
+            this.darkButton21.Text = "-";
+            this.darkButton21.Click += new System.EventHandler(this.darkButton21_Click);
+            // 
+            // darkButton22
+            // 
+            this.darkButton22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton22.Location = new System.Drawing.Point(576, 39);
+            this.darkButton22.Name = "darkButton22";
+            this.darkButton22.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton22.Size = new System.Drawing.Size(20, 20);
+            this.darkButton22.TabIndex = 251;
+            this.darkButton22.Text = "+";
+            this.darkButton22.Click += new System.EventHandler(this.darkButton22_Click);
+            // 
+            // darkLabel61
+            // 
+            this.darkLabel61.AutoSize = true;
+            this.darkLabel61.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel61.Location = new System.Drawing.Point(6, 402);
+            this.darkLabel61.Name = "darkLabel61";
+            this.darkLabel61.Size = new System.Drawing.Size(100, 13);
+            this.darkLabel61.TabIndex = 249;
+            this.darkLabel61.Text = "NPC Accuracy Max";
+            // 
+            // darkLabel62
+            // 
+            this.darkLabel62.AutoSize = true;
+            this.darkLabel62.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel62.Location = new System.Drawing.Point(6, 376);
+            this.darkLabel62.Name = "darkLabel62";
+            this.darkLabel62.Size = new System.Drawing.Size(97, 13);
+            this.darkLabel62.TabIndex = 248;
+            this.darkLabel62.Text = "NPC Accuracy Min";
+            // 
+            // ObjectivesAICampNPCAccuracyMinNUD
+            // 
+            this.ObjectivesAICampNPCAccuracyMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ObjectivesAICampNPCAccuracyMinNUD.DecimalPlaces = 6;
+            this.ObjectivesAICampNPCAccuracyMinNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.ObjectivesAICampNPCAccuracyMinNUD.Location = new System.Drawing.Point(109, 374);
+            this.ObjectivesAICampNPCAccuracyMinNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.ObjectivesAICampNPCAccuracyMinNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.ObjectivesAICampNPCAccuracyMinNUD.Name = "ObjectivesAICampNPCAccuracyMinNUD";
+            this.ObjectivesAICampNPCAccuracyMinNUD.Size = new System.Drawing.Size(106, 20);
+            this.ObjectivesAICampNPCAccuracyMinNUD.TabIndex = 246;
+            this.ObjectivesAICampNPCAccuracyMinNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ObjectivesAICampNPCAccuracyMinNUD.ValueChanged += new System.EventHandler(this.ObjectivesAICampNPCAccuracyMinNUD_ValueChanged);
+            // 
+            // ObjectivesAICampNPCAccuracyMaxNUD
+            // 
+            this.ObjectivesAICampNPCAccuracyMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ObjectivesAICampNPCAccuracyMaxNUD.DecimalPlaces = 6;
+            this.ObjectivesAICampNPCAccuracyMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.ObjectivesAICampNPCAccuracyMaxNUD.Location = new System.Drawing.Point(109, 400);
+            this.ObjectivesAICampNPCAccuracyMaxNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.ObjectivesAICampNPCAccuracyMaxNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.ObjectivesAICampNPCAccuracyMaxNUD.Name = "ObjectivesAICampNPCAccuracyMaxNUD";
+            this.ObjectivesAICampNPCAccuracyMaxNUD.Size = new System.Drawing.Size(106, 20);
+            this.ObjectivesAICampNPCAccuracyMaxNUD.TabIndex = 247;
+            this.ObjectivesAICampNPCAccuracyMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ObjectivesAICampNPCAccuracyMaxNUD.ValueChanged += new System.EventHandler(this.ObjectivesAICampNPCAccuracyMaxNUD_ValueChanged);
+            // 
+            // ObjectivesAICampNPCLoadoutFileCB
+            // 
+            this.ObjectivesAICampNPCLoadoutFileCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ObjectivesAICampNPCLoadoutFileCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ObjectivesAICampNPCLoadoutFileCB.FormattingEnabled = true;
+            this.ObjectivesAICampNPCLoadoutFileCB.Location = new System.Drawing.Point(109, 347);
+            this.ObjectivesAICampNPCLoadoutFileCB.Name = "ObjectivesAICampNPCLoadoutFileCB";
+            this.ObjectivesAICampNPCLoadoutFileCB.Size = new System.Drawing.Size(221, 21);
+            this.ObjectivesAICampNPCLoadoutFileCB.TabIndex = 244;
+            this.ObjectivesAICampNPCLoadoutFileCB.SelectedIndexChanged += new System.EventHandler(this.ObjectivesAICampNPCLoadoutFileCB_SelectedIndexChanged);
+            // 
+            // darkLabel60
+            // 
+            this.darkLabel60.AutoSize = true;
+            this.darkLabel60.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel60.Location = new System.Drawing.Point(5, 350);
+            this.darkLabel60.Name = "darkLabel60";
+            this.darkLabel60.Size = new System.Drawing.Size(90, 13);
+            this.darkLabel60.TabIndex = 245;
+            this.darkLabel60.Text = "NPC Loadout File";
+            // 
+            // ObjectivesAICampNPCFactionCB
+            // 
+            this.ObjectivesAICampNPCFactionCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ObjectivesAICampNPCFactionCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ObjectivesAICampNPCFactionCB.FormattingEnabled = true;
+            this.ObjectivesAICampNPCFactionCB.Items.AddRange(new object[] {
+            "Civilian",
+            "East",
+            "Guards",
+            "Mercenaries",
+            "Passive",
+            "Raiders ",
+            "Shamans",
+            "West"});
+            this.ObjectivesAICampNPCFactionCB.Location = new System.Drawing.Point(109, 320);
+            this.ObjectivesAICampNPCFactionCB.Name = "ObjectivesAICampNPCFactionCB";
+            this.ObjectivesAICampNPCFactionCB.Size = new System.Drawing.Size(221, 21);
+            this.ObjectivesAICampNPCFactionCB.TabIndex = 242;
+            this.ObjectivesAICampNPCFactionCB.SelectedIndexChanged += new System.EventHandler(this.ObjectivesAICampNPCFactionCB_SelectedIndexChanged);
+            // 
+            // darkLabel59
+            // 
+            this.darkLabel59.AutoSize = true;
+            this.darkLabel59.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel59.Location = new System.Drawing.Point(5, 323);
+            this.darkLabel59.Name = "darkLabel59";
+            this.darkLabel59.Size = new System.Drawing.Size(67, 13);
+            this.darkLabel59.TabIndex = 243;
+            this.darkLabel59.Text = "NPC Faction";
+            // 
+            // ObjectiovesAICampNPCSpeedCB
+            // 
+            this.ObjectiovesAICampNPCSpeedCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ObjectiovesAICampNPCSpeedCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ObjectiovesAICampNPCSpeedCB.FormattingEnabled = true;
+            this.ObjectiovesAICampNPCSpeedCB.Items.AddRange(new object[] {
+            "STATIC",
+            "WALK",
+            "JOG",
+            "SPRINT",
+            "RANDOM",
+            "RANDOM_NONSTATIC"});
+            this.ObjectiovesAICampNPCSpeedCB.Location = new System.Drawing.Point(109, 266);
+            this.ObjectiovesAICampNPCSpeedCB.Name = "ObjectiovesAICampNPCSpeedCB";
+            this.ObjectiovesAICampNPCSpeedCB.Size = new System.Drawing.Size(221, 21);
+            this.ObjectiovesAICampNPCSpeedCB.TabIndex = 240;
+            this.ObjectiovesAICampNPCSpeedCB.SelectedIndexChanged += new System.EventHandler(this.ObjectiovesAICampNPCSpeedCB_SelectedIndexChanged);
+            // 
+            // darkLabel58
+            // 
+            this.darkLabel58.AutoSize = true;
+            this.darkLabel58.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel58.Location = new System.Drawing.Point(5, 269);
+            this.darkLabel58.Name = "darkLabel58";
+            this.darkLabel58.Size = new System.Drawing.Size(63, 13);
+            this.darkLabel58.TabIndex = 241;
+            this.darkLabel58.Text = "NPC Speed";
+            // 
+            // ObjectivesAICampNPCModeCB
+            // 
+            this.ObjectivesAICampNPCModeCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ObjectivesAICampNPCModeCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ObjectivesAICampNPCModeCB.FormattingEnabled = true;
+            this.ObjectivesAICampNPCModeCB.Items.AddRange(new object[] {
+            "HALT",
+            "LOOP",
+            "ALTERNATE",
+            "HALT_OR_LOOP",
+            "HALT_OR_ALTERNATE"});
+            this.ObjectivesAICampNPCModeCB.Location = new System.Drawing.Point(109, 293);
+            this.ObjectivesAICampNPCModeCB.Name = "ObjectivesAICampNPCModeCB";
+            this.ObjectivesAICampNPCModeCB.Size = new System.Drawing.Size(221, 21);
+            this.ObjectivesAICampNPCModeCB.TabIndex = 238;
+            this.ObjectivesAICampNPCModeCB.SelectedIndexChanged += new System.EventHandler(this.ObjectivesAICampNPCModeCB_SelectedIndexChanged);
+            // 
+            // darkLabel57
+            // 
+            this.darkLabel57.AutoSize = true;
+            this.darkLabel57.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel57.Location = new System.Drawing.Point(5, 296);
+            this.darkLabel57.Name = "darkLabel57";
+            this.darkLabel57.Size = new System.Drawing.Size(59, 13);
+            this.darkLabel57.TabIndex = 239;
+            this.darkLabel57.Text = "NPC Mode";
+            // 
+            // darkLabel56
+            // 
+            this.darkLabel56.AutoSize = true;
+            this.darkLabel56.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel56.Location = new System.Drawing.Point(6, 23);
+            this.darkLabel56.Name = "darkLabel56";
+            this.darkLabel56.Size = new System.Drawing.Size(49, 13);
+            this.darkLabel56.TabIndex = 237;
+            this.darkLabel56.Text = "Positions";
+            // 
+            // darkButton15
+            // 
+            this.darkButton15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton15.Location = new System.Drawing.Point(224, 125);
+            this.darkButton15.Name = "darkButton15";
+            this.darkButton15.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton15.Size = new System.Drawing.Size(106, 23);
+            this.darkButton15.TabIndex = 181;
+            this.darkButton15.Text = "Export to  .dze";
+            this.darkButton15.Click += new System.EventHandler(this.darkButton15_Click);
+            // 
+            // darkButton16
+            // 
+            this.darkButton16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton16.Location = new System.Drawing.Point(224, 96);
+            this.darkButton16.Name = "darkButton16";
+            this.darkButton16.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton16.Size = new System.Drawing.Size(106, 23);
+            this.darkButton16.TabIndex = 180;
+            this.darkButton16.Text = "Import from .dze";
+            this.darkButton16.Click += new System.EventHandler(this.darkButton16_Click);
+            // 
+            // darkButton17
+            // 
+            this.darkButton17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton17.Location = new System.Drawing.Point(224, 67);
+            this.darkButton17.Name = "darkButton17";
+            this.darkButton17.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton17.Size = new System.Drawing.Size(106, 23);
+            this.darkButton17.TabIndex = 179;
+            this.darkButton17.Text = "Export to  .map";
+            this.darkButton17.Click += new System.EventHandler(this.darkButton17_Click);
+            // 
+            // darkButton18
+            // 
+            this.darkButton18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton18.Location = new System.Drawing.Point(224, 38);
+            this.darkButton18.Name = "darkButton18";
+            this.darkButton18.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton18.Size = new System.Drawing.Size(106, 23);
+            this.darkButton18.TabIndex = 178;
+            this.darkButton18.Text = "Import from .map";
+            this.darkButton18.Click += new System.EventHandler(this.darkButton18_Click);
+            // 
+            // darkLabel53
+            // 
+            this.darkLabel53.AutoSize = true;
+            this.darkLabel53.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel53.Location = new System.Drawing.Point(204, 234);
+            this.darkLabel53.Name = "darkLabel53";
+            this.darkLabel53.Size = new System.Drawing.Size(14, 13);
+            this.darkLabel53.TabIndex = 177;
+            this.darkLabel53.Text = "Z";
+            // 
+            // darkLabel54
+            // 
+            this.darkLabel54.AutoSize = true;
+            this.darkLabel54.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel54.Location = new System.Drawing.Point(204, 209);
+            this.darkLabel54.Name = "darkLabel54";
+            this.darkLabel54.Size = new System.Drawing.Size(14, 13);
+            this.darkLabel54.TabIndex = 176;
+            this.darkLabel54.Text = "Y";
+            // 
+            // darkLabel55
+            // 
+            this.darkLabel55.AutoSize = true;
+            this.darkLabel55.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel55.Location = new System.Drawing.Point(204, 181);
+            this.darkLabel55.Name = "darkLabel55";
+            this.darkLabel55.Size = new System.Drawing.Size(14, 13);
+            this.darkLabel55.TabIndex = 175;
+            this.darkLabel55.Text = "X";
+            // 
+            // numericUpDown9
+            // 
+            this.numericUpDown9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown9.DecimalPlaces = 6;
+            this.numericUpDown9.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericUpDown9.Location = new System.Drawing.Point(224, 179);
+            this.numericUpDown9.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.numericUpDown9.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown9.Name = "numericUpDown9";
+            this.numericUpDown9.Size = new System.Drawing.Size(106, 20);
+            this.numericUpDown9.TabIndex = 172;
+            this.numericUpDown9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown9.ValueChanged += new System.EventHandler(this.numericUpDown9_ValueChanged);
+            // 
+            // numericUpDown11
+            // 
+            this.numericUpDown11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown11.DecimalPlaces = 6;
+            this.numericUpDown11.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericUpDown11.Location = new System.Drawing.Point(224, 206);
+            this.numericUpDown11.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.numericUpDown11.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown11.Name = "numericUpDown11";
+            this.numericUpDown11.Size = new System.Drawing.Size(106, 20);
+            this.numericUpDown11.TabIndex = 173;
+            this.numericUpDown11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown11.ValueChanged += new System.EventHandler(this.numericUpDown11_ValueChanged);
+            // 
+            // numericUpDown12
+            // 
+            this.numericUpDown12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown12.DecimalPlaces = 6;
+            this.numericUpDown12.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericUpDown12.Location = new System.Drawing.Point(224, 232);
+            this.numericUpDown12.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.numericUpDown12.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown12.Name = "numericUpDown12";
+            this.numericUpDown12.Size = new System.Drawing.Size(106, 20);
+            this.numericUpDown12.TabIndex = 174;
+            this.numericUpDown12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown12.ValueChanged += new System.EventHandler(this.numericUpDown12_ValueChanged);
+            // 
+            // darkButton19
+            // 
+            this.darkButton19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton19.Location = new System.Drawing.Point(180, 231);
+            this.darkButton19.Name = "darkButton19";
+            this.darkButton19.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton19.Size = new System.Drawing.Size(20, 20);
+            this.darkButton19.TabIndex = 171;
+            this.darkButton19.Text = "-";
+            this.darkButton19.Click += new System.EventHandler(this.darkButton19_Click);
+            // 
+            // darkButton20
+            // 
+            this.darkButton20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton20.Location = new System.Drawing.Point(180, 37);
+            this.darkButton20.Name = "darkButton20";
+            this.darkButton20.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton20.Size = new System.Drawing.Size(20, 20);
+            this.darkButton20.TabIndex = 170;
+            this.darkButton20.Text = "+";
+            this.darkButton20.Click += new System.EventHandler(this.darkButton20_Click);
+            // 
+            // ObjectivesAICampPositionsLB
+            // 
+            this.ObjectivesAICampPositionsLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.ObjectivesAICampPositionsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ObjectivesAICampPositionsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ObjectivesAICampPositionsLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ObjectivesAICampPositionsLB.FormattingEnabled = true;
+            this.ObjectivesAICampPositionsLB.Location = new System.Drawing.Point(6, 39);
+            this.ObjectivesAICampPositionsLB.Name = "ObjectivesAICampPositionsLB";
+            this.ObjectivesAICampPositionsLB.Size = new System.Drawing.Size(168, 212);
+            this.ObjectivesAICampPositionsLB.TabIndex = 169;
             // 
             // ObjectiveActionGB
             // 
@@ -3278,7 +3890,7 @@ namespace DayZeEditor
             this.ObjectiveInfoGB.Controls.Add(this.panel56);
             this.ObjectiveInfoGB.Controls.Add(this.panel55);
             this.ObjectiveInfoGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectiveInfoGB.Location = new System.Drawing.Point(423, 252);
+            this.ObjectiveInfoGB.Location = new System.Drawing.Point(779, 5);
             this.ObjectiveInfoGB.Name = "ObjectiveInfoGB";
             this.ObjectiveInfoGB.Size = new System.Drawing.Size(350, 275);
             this.ObjectiveInfoGB.TabIndex = 215;
@@ -3647,6 +4259,8 @@ namespace DayZeEditor
             // 
             // QuestInfoGB
             // 
+            this.QuestInfoGB.Controls.Add(this.panel64);
+            this.QuestInfoGB.Controls.Add(this.panel47);
             this.QuestInfoGB.Controls.Add(this.panel51);
             this.QuestInfoGB.Controls.Add(this.panel54);
             this.QuestInfoGB.Controls.Add(this.panel52);
@@ -3654,11 +4268,91 @@ namespace DayZeEditor
             this.QuestInfoGB.ForeColor = System.Drawing.SystemColors.Control;
             this.QuestInfoGB.Location = new System.Drawing.Point(423, 5);
             this.QuestInfoGB.Name = "QuestInfoGB";
-            this.QuestInfoGB.Size = new System.Drawing.Size(350, 244);
+            this.QuestInfoGB.Size = new System.Drawing.Size(350, 330);
             this.QuestInfoGB.TabIndex = 214;
             this.QuestInfoGB.TabStop = false;
             this.QuestInfoGB.Text = "QuestInfo";
             this.QuestInfoGB.Visible = false;
+            // 
+            // panel64
+            // 
+            this.panel64.Controls.Add(this.darkLabel70);
+            this.panel64.Controls.Add(this.numericUpDown14);
+            this.panel64.Location = new System.Drawing.Point(8, 266);
+            this.panel64.Name = "panel64";
+            this.panel64.Size = new System.Drawing.Size(336, 20);
+            this.panel64.TabIndex = 215;
+            // 
+            // darkLabel70
+            // 
+            this.darkLabel70.AutoSize = true;
+            this.darkLabel70.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel70.Location = new System.Drawing.Point(3, 2);
+            this.darkLabel70.Name = "darkLabel70";
+            this.darkLabel70.Size = new System.Drawing.Size(90, 13);
+            this.darkLabel70.TabIndex = 102;
+            this.darkLabel70.Text = "Completion Count";
+            // 
+            // numericUpDown14
+            // 
+            this.numericUpDown14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown14.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericUpDown14.Location = new System.Drawing.Point(96, 0);
+            this.numericUpDown14.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.numericUpDown14.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown14.Name = "numericUpDown14";
+            this.numericUpDown14.ReadOnly = true;
+            this.numericUpDown14.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown14.TabIndex = 101;
+            this.numericUpDown14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // panel47
+            // 
+            this.panel47.Controls.Add(this.darkLabel69);
+            this.panel47.Controls.Add(this.numericUpDown13);
+            this.panel47.Location = new System.Drawing.Point(8, 240);
+            this.panel47.Name = "panel47";
+            this.panel47.Size = new System.Drawing.Size(336, 20);
+            this.panel47.TabIndex = 214;
+            // 
+            // darkLabel69
+            // 
+            this.darkLabel69.AutoSize = true;
+            this.darkLabel69.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel69.Location = new System.Drawing.Point(3, 2);
+            this.darkLabel69.Name = "darkLabel69";
+            this.darkLabel69.Size = new System.Drawing.Size(91, 13);
+            this.darkLabel69.TabIndex = 102;
+            this.darkLabel69.Text = "Last Update Time";
+            // 
+            // numericUpDown13
+            // 
+            this.numericUpDown13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown13.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericUpDown13.Location = new System.Drawing.Point(96, 0);
+            this.numericUpDown13.Maximum = new decimal(new int[] {
+            -727379968,
+            232,
+            0,
+            0});
+            this.numericUpDown13.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown13.Name = "numericUpDown13";
+            this.numericUpDown13.ReadOnly = true;
+            this.numericUpDown13.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown13.TabIndex = 101;
+            this.numericUpDown13.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel51
             // 
@@ -4050,586 +4744,6 @@ namespace DayZeEditor
             this.removePlayerSaveDataToolStripMenuItem.Text = "Remove Player Save Data";
             this.removePlayerSaveDataToolStripMenuItem.Click += new System.EventHandler(this.removePlayerSaveDataToolStripMenuItem_Click);
             // 
-            // ObjectivesAICampGB
-            // 
-            this.ObjectivesAICampGB.Controls.Add(this.ObjectiovesAICampCanLootAICB);
-            this.ObjectivesAICampGB.Controls.Add(this.darkLabel66);
-            this.ObjectivesAICampGB.Controls.Add(this.ObjectivesAICampDespawnRadiusNUD);
-            this.ObjectivesAICampGB.Controls.Add(this.darkLabel64);
-            this.ObjectivesAICampGB.Controls.Add(this.darkLabel65);
-            this.ObjectivesAICampGB.Controls.Add(this.ObjectivesAICampMinDistRadiusNUD);
-            this.ObjectivesAICampGB.Controls.Add(this.ObjectivesAICampMaxDistRadiusNUD);
-            this.ObjectivesAICampGB.Controls.Add(this.ObjectivesAICampSpecialWeaponCB);
-            this.ObjectivesAICampGB.Controls.Add(this.ObjectivesAICampAllowedWeaponsLB);
-            this.ObjectivesAICampGB.Controls.Add(this.darkButton29);
-            this.ObjectivesAICampGB.Controls.Add(this.darkButton31);
-            this.ObjectivesAICampGB.Controls.Add(this.darkLabel63);
-            this.ObjectivesAICampGB.Controls.Add(this.ObjectivesAiCampClassnamesLB);
-            this.ObjectivesAICampGB.Controls.Add(this.darkButton21);
-            this.ObjectivesAICampGB.Controls.Add(this.darkButton22);
-            this.ObjectivesAICampGB.Controls.Add(this.darkLabel61);
-            this.ObjectivesAICampGB.Controls.Add(this.darkLabel62);
-            this.ObjectivesAICampGB.Controls.Add(this.ObjectivesAICampNPCAccuracyMinNUD);
-            this.ObjectivesAICampGB.Controls.Add(this.ObjectivesAICampNPCAccuracyMaxNUD);
-            this.ObjectivesAICampGB.Controls.Add(this.ObjectivesAICampNPCLoadoutFileCB);
-            this.ObjectivesAICampGB.Controls.Add(this.darkLabel60);
-            this.ObjectivesAICampGB.Controls.Add(this.ObjectivesAICampNPCFactionCB);
-            this.ObjectivesAICampGB.Controls.Add(this.darkLabel59);
-            this.ObjectivesAICampGB.Controls.Add(this.ObjectiovesAICampNPCSpeedCB);
-            this.ObjectivesAICampGB.Controls.Add(this.darkLabel58);
-            this.ObjectivesAICampGB.Controls.Add(this.ObjectivesAICampNPCModeCB);
-            this.ObjectivesAICampGB.Controls.Add(this.darkLabel57);
-            this.ObjectivesAICampGB.Controls.Add(this.darkLabel56);
-            this.ObjectivesAICampGB.Controls.Add(this.darkButton15);
-            this.ObjectivesAICampGB.Controls.Add(this.darkButton16);
-            this.ObjectivesAICampGB.Controls.Add(this.darkButton17);
-            this.ObjectivesAICampGB.Controls.Add(this.darkButton18);
-            this.ObjectivesAICampGB.Controls.Add(this.darkLabel53);
-            this.ObjectivesAICampGB.Controls.Add(this.darkLabel54);
-            this.ObjectivesAICampGB.Controls.Add(this.darkLabel55);
-            this.ObjectivesAICampGB.Controls.Add(this.numericUpDown9);
-            this.ObjectivesAICampGB.Controls.Add(this.numericUpDown11);
-            this.ObjectivesAICampGB.Controls.Add(this.numericUpDown12);
-            this.ObjectivesAICampGB.Controls.Add(this.darkButton19);
-            this.ObjectivesAICampGB.Controls.Add(this.darkButton20);
-            this.ObjectivesAICampGB.Controls.Add(this.ObjectivesAICampPositionsLB);
-            this.ObjectivesAICampGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesAICampGB.Location = new System.Drawing.Point(367, 3);
-            this.ObjectivesAICampGB.Name = "ObjectivesAICampGB";
-            this.ObjectivesAICampGB.Size = new System.Drawing.Size(602, 437);
-            this.ObjectivesAICampGB.TabIndex = 228;
-            this.ObjectivesAICampGB.TabStop = false;
-            this.ObjectivesAICampGB.Text = "AI Camp";
-            this.ObjectivesAICampGB.Enter += new System.EventHandler(this.groupBox9_Enter);
-            // 
-            // darkButton15
-            // 
-            this.darkButton15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton15.Location = new System.Drawing.Point(224, 125);
-            this.darkButton15.Name = "darkButton15";
-            this.darkButton15.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton15.Size = new System.Drawing.Size(106, 23);
-            this.darkButton15.TabIndex = 181;
-            this.darkButton15.Text = "Export to  .dze";
-            // 
-            // darkButton16
-            // 
-            this.darkButton16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton16.Location = new System.Drawing.Point(224, 96);
-            this.darkButton16.Name = "darkButton16";
-            this.darkButton16.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton16.Size = new System.Drawing.Size(106, 23);
-            this.darkButton16.TabIndex = 180;
-            this.darkButton16.Text = "Import from .dze";
-            // 
-            // darkButton17
-            // 
-            this.darkButton17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton17.Location = new System.Drawing.Point(224, 67);
-            this.darkButton17.Name = "darkButton17";
-            this.darkButton17.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton17.Size = new System.Drawing.Size(106, 23);
-            this.darkButton17.TabIndex = 179;
-            this.darkButton17.Text = "Export to  .map";
-            // 
-            // darkButton18
-            // 
-            this.darkButton18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton18.Location = new System.Drawing.Point(224, 38);
-            this.darkButton18.Name = "darkButton18";
-            this.darkButton18.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton18.Size = new System.Drawing.Size(106, 23);
-            this.darkButton18.TabIndex = 178;
-            this.darkButton18.Text = "Import from .map";
-            // 
-            // darkLabel53
-            // 
-            this.darkLabel53.AutoSize = true;
-            this.darkLabel53.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel53.Location = new System.Drawing.Point(204, 234);
-            this.darkLabel53.Name = "darkLabel53";
-            this.darkLabel53.Size = new System.Drawing.Size(14, 13);
-            this.darkLabel53.TabIndex = 177;
-            this.darkLabel53.Text = "Z";
-            // 
-            // darkLabel54
-            // 
-            this.darkLabel54.AutoSize = true;
-            this.darkLabel54.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel54.Location = new System.Drawing.Point(204, 209);
-            this.darkLabel54.Name = "darkLabel54";
-            this.darkLabel54.Size = new System.Drawing.Size(14, 13);
-            this.darkLabel54.TabIndex = 176;
-            this.darkLabel54.Text = "Y";
-            // 
-            // darkLabel55
-            // 
-            this.darkLabel55.AutoSize = true;
-            this.darkLabel55.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel55.Location = new System.Drawing.Point(204, 181);
-            this.darkLabel55.Name = "darkLabel55";
-            this.darkLabel55.Size = new System.Drawing.Size(14, 13);
-            this.darkLabel55.TabIndex = 175;
-            this.darkLabel55.Text = "X";
-            // 
-            // numericUpDown9
-            // 
-            this.numericUpDown9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown9.DecimalPlaces = 6;
-            this.numericUpDown9.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown9.Location = new System.Drawing.Point(224, 179);
-            this.numericUpDown9.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.numericUpDown9.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown9.Name = "numericUpDown9";
-            this.numericUpDown9.Size = new System.Drawing.Size(106, 20);
-            this.numericUpDown9.TabIndex = 172;
-            this.numericUpDown9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // numericUpDown11
-            // 
-            this.numericUpDown11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown11.DecimalPlaces = 6;
-            this.numericUpDown11.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown11.Location = new System.Drawing.Point(224, 206);
-            this.numericUpDown11.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.numericUpDown11.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown11.Name = "numericUpDown11";
-            this.numericUpDown11.Size = new System.Drawing.Size(106, 20);
-            this.numericUpDown11.TabIndex = 173;
-            this.numericUpDown11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // numericUpDown12
-            // 
-            this.numericUpDown12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown12.DecimalPlaces = 6;
-            this.numericUpDown12.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown12.Location = new System.Drawing.Point(224, 232);
-            this.numericUpDown12.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.numericUpDown12.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown12.Name = "numericUpDown12";
-            this.numericUpDown12.Size = new System.Drawing.Size(106, 20);
-            this.numericUpDown12.TabIndex = 174;
-            this.numericUpDown12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // darkButton19
-            // 
-            this.darkButton19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton19.Location = new System.Drawing.Point(180, 231);
-            this.darkButton19.Name = "darkButton19";
-            this.darkButton19.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton19.Size = new System.Drawing.Size(20, 20);
-            this.darkButton19.TabIndex = 171;
-            this.darkButton19.Text = "-";
-            // 
-            // darkButton20
-            // 
-            this.darkButton20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton20.Location = new System.Drawing.Point(180, 37);
-            this.darkButton20.Name = "darkButton20";
-            this.darkButton20.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton20.Size = new System.Drawing.Size(20, 20);
-            this.darkButton20.TabIndex = 170;
-            this.darkButton20.Text = "+";
-            // 
-            // ObjectivesAICampPositionsLB
-            // 
-            this.ObjectivesAICampPositionsLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.ObjectivesAICampPositionsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ObjectivesAICampPositionsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.ObjectivesAICampPositionsLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesAICampPositionsLB.FormattingEnabled = true;
-            this.ObjectivesAICampPositionsLB.Location = new System.Drawing.Point(6, 39);
-            this.ObjectivesAICampPositionsLB.Name = "ObjectivesAICampPositionsLB";
-            this.ObjectivesAICampPositionsLB.Size = new System.Drawing.Size(168, 212);
-            this.ObjectivesAICampPositionsLB.TabIndex = 169;
-            // 
-            // darkLabel56
-            // 
-            this.darkLabel56.AutoSize = true;
-            this.darkLabel56.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel56.Location = new System.Drawing.Point(6, 23);
-            this.darkLabel56.Name = "darkLabel56";
-            this.darkLabel56.Size = new System.Drawing.Size(49, 13);
-            this.darkLabel56.TabIndex = 237;
-            this.darkLabel56.Text = "Positions";
-            // 
-            // ObjectivesAICampNPCModeCB
-            // 
-            this.ObjectivesAICampNPCModeCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ObjectivesAICampNPCModeCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesAICampNPCModeCB.FormattingEnabled = true;
-            this.ObjectivesAICampNPCModeCB.Items.AddRange(new object[] {
-            "HALT",
-            "LOOP",
-            "ALTERNATE",
-            "HALT_OR_LOOP",
-            "HALT_OR_ALTERNATE"});
-            this.ObjectivesAICampNPCModeCB.Location = new System.Drawing.Point(109, 293);
-            this.ObjectivesAICampNPCModeCB.Name = "ObjectivesAICampNPCModeCB";
-            this.ObjectivesAICampNPCModeCB.Size = new System.Drawing.Size(221, 21);
-            this.ObjectivesAICampNPCModeCB.TabIndex = 238;
-            // 
-            // darkLabel57
-            // 
-            this.darkLabel57.AutoSize = true;
-            this.darkLabel57.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel57.Location = new System.Drawing.Point(5, 296);
-            this.darkLabel57.Name = "darkLabel57";
-            this.darkLabel57.Size = new System.Drawing.Size(59, 13);
-            this.darkLabel57.TabIndex = 239;
-            this.darkLabel57.Text = "NPC Mode";
-            // 
-            // ObjectiovesAICampNPCSpeedCB
-            // 
-            this.ObjectiovesAICampNPCSpeedCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ObjectiovesAICampNPCSpeedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectiovesAICampNPCSpeedCB.FormattingEnabled = true;
-            this.ObjectiovesAICampNPCSpeedCB.Items.AddRange(new object[] {
-            "STATIC",
-            "WALK",
-            "JOG",
-            "SPRINT",
-            "RANDOM",
-            "RANDOM_NONSTATIC"});
-            this.ObjectiovesAICampNPCSpeedCB.Location = new System.Drawing.Point(109, 266);
-            this.ObjectiovesAICampNPCSpeedCB.Name = "ObjectiovesAICampNPCSpeedCB";
-            this.ObjectiovesAICampNPCSpeedCB.Size = new System.Drawing.Size(221, 21);
-            this.ObjectiovesAICampNPCSpeedCB.TabIndex = 240;
-            // 
-            // darkLabel58
-            // 
-            this.darkLabel58.AutoSize = true;
-            this.darkLabel58.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel58.Location = new System.Drawing.Point(5, 269);
-            this.darkLabel58.Name = "darkLabel58";
-            this.darkLabel58.Size = new System.Drawing.Size(63, 13);
-            this.darkLabel58.TabIndex = 241;
-            this.darkLabel58.Text = "NPC Speed";
-            // 
-            // ObjectivesAICampNPCFactionCB
-            // 
-            this.ObjectivesAICampNPCFactionCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ObjectivesAICampNPCFactionCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesAICampNPCFactionCB.FormattingEnabled = true;
-            this.ObjectivesAICampNPCFactionCB.Items.AddRange(new object[] {
-            "Civilian",
-            "East",
-            "Guards",
-            "Mercenaries",
-            "Passive",
-            "Raiders ",
-            "Shamans",
-            "West"});
-            this.ObjectivesAICampNPCFactionCB.Location = new System.Drawing.Point(109, 320);
-            this.ObjectivesAICampNPCFactionCB.Name = "ObjectivesAICampNPCFactionCB";
-            this.ObjectivesAICampNPCFactionCB.Size = new System.Drawing.Size(221, 21);
-            this.ObjectivesAICampNPCFactionCB.TabIndex = 242;
-            // 
-            // darkLabel59
-            // 
-            this.darkLabel59.AutoSize = true;
-            this.darkLabel59.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel59.Location = new System.Drawing.Point(5, 323);
-            this.darkLabel59.Name = "darkLabel59";
-            this.darkLabel59.Size = new System.Drawing.Size(67, 13);
-            this.darkLabel59.TabIndex = 243;
-            this.darkLabel59.Text = "NPC Faction";
-            // 
-            // ObjectivesAICampNPCLoadoutFileCB
-            // 
-            this.ObjectivesAICampNPCLoadoutFileCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ObjectivesAICampNPCLoadoutFileCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesAICampNPCLoadoutFileCB.FormattingEnabled = true;
-            this.ObjectivesAICampNPCLoadoutFileCB.Location = new System.Drawing.Point(109, 347);
-            this.ObjectivesAICampNPCLoadoutFileCB.Name = "ObjectivesAICampNPCLoadoutFileCB";
-            this.ObjectivesAICampNPCLoadoutFileCB.Size = new System.Drawing.Size(221, 21);
-            this.ObjectivesAICampNPCLoadoutFileCB.TabIndex = 244;
-            // 
-            // darkLabel60
-            // 
-            this.darkLabel60.AutoSize = true;
-            this.darkLabel60.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel60.Location = new System.Drawing.Point(5, 350);
-            this.darkLabel60.Name = "darkLabel60";
-            this.darkLabel60.Size = new System.Drawing.Size(90, 13);
-            this.darkLabel60.TabIndex = 245;
-            this.darkLabel60.Text = "NPC Loadout File";
-            // 
-            // darkLabel61
-            // 
-            this.darkLabel61.AutoSize = true;
-            this.darkLabel61.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel61.Location = new System.Drawing.Point(6, 402);
-            this.darkLabel61.Name = "darkLabel61";
-            this.darkLabel61.Size = new System.Drawing.Size(100, 13);
-            this.darkLabel61.TabIndex = 249;
-            this.darkLabel61.Text = "NPC Accuracy Max";
-            // 
-            // darkLabel62
-            // 
-            this.darkLabel62.AutoSize = true;
-            this.darkLabel62.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel62.Location = new System.Drawing.Point(6, 376);
-            this.darkLabel62.Name = "darkLabel62";
-            this.darkLabel62.Size = new System.Drawing.Size(97, 13);
-            this.darkLabel62.TabIndex = 248;
-            this.darkLabel62.Text = "NPC Accuracy Min";
-            // 
-            // ObjectivesAICampNPCAccuracyMinNUD
-            // 
-            this.ObjectivesAICampNPCAccuracyMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ObjectivesAICampNPCAccuracyMinNUD.DecimalPlaces = 6;
-            this.ObjectivesAICampNPCAccuracyMinNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesAICampNPCAccuracyMinNUD.Location = new System.Drawing.Point(109, 374);
-            this.ObjectivesAICampNPCAccuracyMinNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.ObjectivesAICampNPCAccuracyMinNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.ObjectivesAICampNPCAccuracyMinNUD.Name = "ObjectivesAICampNPCAccuracyMinNUD";
-            this.ObjectivesAICampNPCAccuracyMinNUD.Size = new System.Drawing.Size(106, 20);
-            this.ObjectivesAICampNPCAccuracyMinNUD.TabIndex = 246;
-            this.ObjectivesAICampNPCAccuracyMinNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // ObjectivesAICampNPCAccuracyMaxNUD
-            // 
-            this.ObjectivesAICampNPCAccuracyMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ObjectivesAICampNPCAccuracyMaxNUD.DecimalPlaces = 6;
-            this.ObjectivesAICampNPCAccuracyMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesAICampNPCAccuracyMaxNUD.Location = new System.Drawing.Point(109, 400);
-            this.ObjectivesAICampNPCAccuracyMaxNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.ObjectivesAICampNPCAccuracyMaxNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.ObjectivesAICampNPCAccuracyMaxNUD.Name = "ObjectivesAICampNPCAccuracyMaxNUD";
-            this.ObjectivesAICampNPCAccuracyMaxNUD.Size = new System.Drawing.Size(106, 20);
-            this.ObjectivesAICampNPCAccuracyMaxNUD.TabIndex = 247;
-            this.ObjectivesAICampNPCAccuracyMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // darkLabel63
-            // 
-            this.darkLabel63.AutoSize = true;
-            this.darkLabel63.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel63.Location = new System.Drawing.Point(349, 23);
-            this.darkLabel63.Name = "darkLabel63";
-            this.darkLabel63.Size = new System.Drawing.Size(63, 13);
-            this.darkLabel63.TabIndex = 253;
-            this.darkLabel63.Text = "Classnames";
-            // 
-            // ObjectivesAiCampClassnamesLB
-            // 
-            this.ObjectivesAiCampClassnamesLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ObjectivesAiCampClassnamesLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.ObjectivesAiCampClassnamesLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesAiCampClassnamesLB.FormattingEnabled = true;
-            this.ObjectivesAiCampClassnamesLB.Location = new System.Drawing.Point(349, 39);
-            this.ObjectivesAiCampClassnamesLB.Name = "ObjectivesAiCampClassnamesLB";
-            this.ObjectivesAiCampClassnamesLB.Size = new System.Drawing.Size(221, 108);
-            this.ObjectivesAiCampClassnamesLB.TabIndex = 250;
-            // 
-            // darkButton21
-            // 
-            this.darkButton21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton21.Location = new System.Drawing.Point(576, 126);
-            this.darkButton21.Name = "darkButton21";
-            this.darkButton21.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton21.Size = new System.Drawing.Size(20, 20);
-            this.darkButton21.TabIndex = 252;
-            this.darkButton21.Text = "-";
-            // 
-            // darkButton22
-            // 
-            this.darkButton22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton22.Location = new System.Drawing.Point(576, 39);
-            this.darkButton22.Name = "darkButton22";
-            this.darkButton22.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton22.Size = new System.Drawing.Size(20, 20);
-            this.darkButton22.TabIndex = 251;
-            this.darkButton22.Text = "+";
-            // 
-            // ObjectivesAICampAllowedWeaponsLB
-            // 
-            this.ObjectivesAICampAllowedWeaponsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ObjectivesAICampAllowedWeaponsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.ObjectivesAICampAllowedWeaponsLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesAICampAllowedWeaponsLB.FormattingEnabled = true;
-            this.ObjectivesAICampAllowedWeaponsLB.Location = new System.Drawing.Point(349, 176);
-            this.ObjectivesAICampAllowedWeaponsLB.Name = "ObjectivesAICampAllowedWeaponsLB";
-            this.ObjectivesAICampAllowedWeaponsLB.Size = new System.Drawing.Size(221, 108);
-            this.ObjectivesAICampAllowedWeaponsLB.TabIndex = 254;
-            // 
-            // darkButton29
-            // 
-            this.darkButton29.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton29.Location = new System.Drawing.Point(576, 263);
-            this.darkButton29.Name = "darkButton29";
-            this.darkButton29.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton29.Size = new System.Drawing.Size(20, 20);
-            this.darkButton29.TabIndex = 256;
-            this.darkButton29.Text = "-";
-            // 
-            // darkButton31
-            // 
-            this.darkButton31.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton31.Location = new System.Drawing.Point(576, 176);
-            this.darkButton31.Name = "darkButton31";
-            this.darkButton31.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton31.Size = new System.Drawing.Size(20, 20);
-            this.darkButton31.TabIndex = 255;
-            this.darkButton31.Text = "+";
-            // 
-            // ObjectivesAICampSpecialWeaponCB
-            // 
-            this.ObjectivesAICampSpecialWeaponCB.AutoSize = true;
-            this.ObjectivesAICampSpecialWeaponCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesAICampSpecialWeaponCB.Location = new System.Drawing.Point(349, 153);
-            this.ObjectivesAICampSpecialWeaponCB.Name = "ObjectivesAICampSpecialWeaponCB";
-            this.ObjectivesAICampSpecialWeaponCB.Size = new System.Drawing.Size(111, 17);
-            this.ObjectivesAICampSpecialWeaponCB.TabIndex = 258;
-            this.ObjectivesAICampSpecialWeaponCB.Text = "Speacial Weapon";
-            this.ObjectivesAICampSpecialWeaponCB.UseVisualStyleBackColor = true;
-            // 
-            // darkLabel64
-            // 
-            this.darkLabel64.AutoSize = true;
-            this.darkLabel64.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel64.Location = new System.Drawing.Point(361, 323);
-            this.darkLabel64.Name = "darkLabel64";
-            this.darkLabel64.Size = new System.Drawing.Size(84, 13);
-            this.darkLabel64.TabIndex = 262;
-            this.darkLabel64.Text = "Max Dist Radius";
-            // 
-            // darkLabel65
-            // 
-            this.darkLabel65.AutoSize = true;
-            this.darkLabel65.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel65.Location = new System.Drawing.Point(361, 295);
-            this.darkLabel65.Name = "darkLabel65";
-            this.darkLabel65.Size = new System.Drawing.Size(81, 13);
-            this.darkLabel65.TabIndex = 261;
-            this.darkLabel65.Text = "Min Dist Radius";
-            // 
-            // ObjectivesAICampMinDistRadiusNUD
-            // 
-            this.ObjectivesAICampMinDistRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ObjectivesAICampMinDistRadiusNUD.DecimalPlaces = 6;
-            this.ObjectivesAICampMinDistRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesAICampMinDistRadiusNUD.Location = new System.Drawing.Point(464, 293);
-            this.ObjectivesAICampMinDistRadiusNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.ObjectivesAICampMinDistRadiusNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.ObjectivesAICampMinDistRadiusNUD.Name = "ObjectivesAICampMinDistRadiusNUD";
-            this.ObjectivesAICampMinDistRadiusNUD.Size = new System.Drawing.Size(106, 20);
-            this.ObjectivesAICampMinDistRadiusNUD.TabIndex = 259;
-            this.ObjectivesAICampMinDistRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // ObjectivesAICampMaxDistRadiusNUD
-            // 
-            this.ObjectivesAICampMaxDistRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ObjectivesAICampMaxDistRadiusNUD.DecimalPlaces = 6;
-            this.ObjectivesAICampMaxDistRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesAICampMaxDistRadiusNUD.Location = new System.Drawing.Point(464, 319);
-            this.ObjectivesAICampMaxDistRadiusNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.ObjectivesAICampMaxDistRadiusNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.ObjectivesAICampMaxDistRadiusNUD.Name = "ObjectivesAICampMaxDistRadiusNUD";
-            this.ObjectivesAICampMaxDistRadiusNUD.Size = new System.Drawing.Size(106, 20);
-            this.ObjectivesAICampMaxDistRadiusNUD.TabIndex = 260;
-            this.ObjectivesAICampMaxDistRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // darkLabel66
-            // 
-            this.darkLabel66.AutoSize = true;
-            this.darkLabel66.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel66.Location = new System.Drawing.Point(361, 350);
-            this.darkLabel66.Name = "darkLabel66";
-            this.darkLabel66.Size = new System.Drawing.Size(88, 13);
-            this.darkLabel66.TabIndex = 264;
-            this.darkLabel66.Text = "Despawn Radius";
-            // 
-            // ObjectivesAICampDespawnRadiusNUD
-            // 
-            this.ObjectivesAICampDespawnRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ObjectivesAICampDespawnRadiusNUD.DecimalPlaces = 6;
-            this.ObjectivesAICampDespawnRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesAICampDespawnRadiusNUD.Location = new System.Drawing.Point(464, 348);
-            this.ObjectivesAICampDespawnRadiusNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.ObjectivesAICampDespawnRadiusNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.ObjectivesAICampDespawnRadiusNUD.Name = "ObjectivesAICampDespawnRadiusNUD";
-            this.ObjectivesAICampDespawnRadiusNUD.Size = new System.Drawing.Size(106, 20);
-            this.ObjectivesAICampDespawnRadiusNUD.TabIndex = 263;
-            this.ObjectivesAICampDespawnRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // ObjectiovesAICampCanLootAICB
-            // 
-            this.ObjectiovesAICampCanLootAICB.AutoSize = true;
-            this.ObjectiovesAICampCanLootAICB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectiovesAICampCanLootAICB.Location = new System.Drawing.Point(352, 376);
-            this.ObjectiovesAICampCanLootAICB.Name = "ObjectiovesAICampCanLootAICB";
-            this.ObjectiovesAICampCanLootAICB.Size = new System.Drawing.Size(79, 17);
-            this.ObjectiovesAICampCanLootAICB.TabIndex = 265;
-            this.ObjectiovesAICampCanLootAICB.Text = "CanLoot AI";
-            this.ObjectiovesAICampCanLootAICB.UseVisualStyleBackColor = true;
-            // 
             // ExpansionQuests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4785,6 +4899,16 @@ namespace DayZeEditor
             this.panel43.PerformLayout();
             this.panel44.ResumeLayout(false);
             this.panel44.PerformLayout();
+            this.ObjectivesAICampGB.ResumeLayout(false);
+            this.ObjectivesAICampGB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesAICampDespawnRadiusNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesAICampMinDistRadiusNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesAICampMaxDistRadiusNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesAICampNPCAccuracyMinNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesAICampNPCAccuracyMaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).EndInit();
             this.ObjectiveActionGB.ResumeLayout(false);
             this.ObjectiveActionGB.PerformLayout();
             this.Tab5.ResumeLayout(false);
@@ -4815,6 +4939,12 @@ namespace DayZeEditor
             this.panel55.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             this.QuestInfoGB.ResumeLayout(false);
+            this.panel64.ResumeLayout(false);
+            this.panel64.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown14)).EndInit();
+            this.panel47.ResumeLayout(false);
+            this.panel47.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown13)).EndInit();
             this.panel51.ResumeLayout(false);
             this.panel51.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
@@ -4829,16 +4959,6 @@ namespace DayZeEditor
             this.darkToolStrip23.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
             this.contextMenuStrip2.ResumeLayout(false);
-            this.ObjectivesAICampGB.ResumeLayout(false);
-            this.ObjectivesAICampGB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesAICampNPCAccuracyMinNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesAICampNPCAccuracyMaxNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesAICampMinDistRadiusNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesAICampMaxDistRadiusNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesAICampDespawnRadiusNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -5193,5 +5313,11 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton darkButton19;
         private DarkUI.Controls.DarkButton darkButton20;
         private System.Windows.Forms.ListBox ObjectivesAICampPositionsLB;
+        private System.Windows.Forms.Panel panel64;
+        private DarkUI.Controls.DarkLabel darkLabel70;
+        private System.Windows.Forms.NumericUpDown numericUpDown14;
+        private System.Windows.Forms.Panel panel47;
+        private DarkUI.Controls.DarkLabel darkLabel69;
+        private System.Windows.Forms.NumericUpDown numericUpDown13;
     }
 }

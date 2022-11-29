@@ -15,7 +15,7 @@ namespace DayZeLib
 {
     public class TradersList
     {
-        public const int CurrentVersion = 9;
+        public const int CurrentVersion = 10;
         public BindingList<Traders> Traderlist { get; set; }
         public string TraderPath { get; set; }
 

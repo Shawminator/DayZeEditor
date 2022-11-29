@@ -58,7 +58,7 @@ namespace DayZeLib
         public string Filename { get; set; }
         public bool isDirty { get; set; }
 
-        const int CONFIGVERSION = 1;
+        const int CONFIGVERSION = 2;
         public int ExpansionQuestPersistentQuestDataCount;
         public BindingList<ExpansionQuestPersistentQuestData> QuestDatas;
 
@@ -116,6 +116,8 @@ namespace DayZeLib
         public int Timestamp = -1;
         public int QuestObjectivesCount;
         public BindingList<ExpansionQuestObjectiveData> QuestObjectives;
+        public int LastUpdateTime;
+        public int CompletionCount;
 
         public Quests AssignedQuestinfo;
 
@@ -130,6 +132,8 @@ namespace DayZeLib
             {
                 QuestObjectives.Add(new ExpansionQuestObjectiveData(br));
             }
+            LastUpdateTime = br.ReadInt32();
+            CompletionCount = br.ReadInt32();
         }
         public override string ToString()
         {
@@ -146,6 +150,8 @@ namespace DayZeLib
             {
                 QuestObjectives[i].WriteBin(bw);
             }
+            bw.Write(LastUpdateTime);
+            bw.Write(CompletionCount);
         }
     }
     public class ExpansionQuestObjectiveData

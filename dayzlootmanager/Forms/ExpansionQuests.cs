@@ -1847,7 +1847,102 @@ namespace DayZeEditor
         {
             QuestObjectivesAICamp CurrentAICamp = e.Node.Tag as QuestObjectivesAICamp;
         }
+        private void darkButton20_Click(object sender, EventArgs e)
+        {
 
+        }
+        private void darkButton19_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void darkButton18_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void darkButton17_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void darkButton16_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void darkButton15_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void numericUpDown9_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void numericUpDown11_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void numericUpDown12_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void ObjectiovesAICampNPCSpeedCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void ObjectivesAICampNPCModeCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void ObjectivesAICampNPCFactionCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void ObjectivesAICampNPCLoadoutFileCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void ObjectivesAICampNPCAccuracyMinNUD_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void ObjectivesAICampNPCAccuracyMaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void darkButton22_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void darkButton21_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void ObjectivesAICampSpecialWeaponCB_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void darkButton31_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void darkButton29_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void ObjectivesAICampMinDistRadiusNUD_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void ObjectivesAICampMaxDistRadiusNUD_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void ObjectivesAICampDespawnRadiusNUD_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void ObjectiovesAICampCanLootAICB_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
 
 
 
@@ -1995,6 +2090,8 @@ namespace DayZeEditor
                     }
                     numericUpDown1.Value = currentExpansionQuestPersistentQuestData.QuestID;
                     comboBox1.SelectedItem = (ExpansionQuestState)currentExpansionQuestPersistentQuestData.State;
+                    numericUpDown13.Value = currentExpansionQuestPersistentQuestData.LastUpdateTime;
+                    numericUpDown14.Value = currentExpansionQuestPersistentQuestData.CompletionCount;
                     listBox1.DisplayMember = "DisplayName";
                     listBox1.ValueMember = "Value";
                     listBox1.DataSource = currentExpansionQuestPersistentQuestData.QuestObjectives;
@@ -2070,14 +2167,6 @@ namespace DayZeEditor
             File.Delete(currentplayer.Filename);
         }
 
-        private void QuestObjectivesObjectiveTypeCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void groupBox9_Enter(object sender, EventArgs e)
-        {
-
-        }
     }
 }

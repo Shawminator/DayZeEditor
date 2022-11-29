@@ -133,7 +133,7 @@ namespace DayZeEditor
             Directory.CreateDirectory(ProjectPath);
 
             string projecttype = ProjectTypeComboBox.GetItemText(ProjectTypeComboBox.SelectedItem);
-            if(projecttype == "Blank project")
+            if (projecttype == "Blank project")
             {
                 if (ProjectProfileTB.Text == "" || ProjectMissionFolderTB.Text == "")
                 {
@@ -171,10 +171,10 @@ namespace DayZeEditor
                 string mpmissionpath = Path.GetFileName(missionsfolder);
                 string PmissionFolder = ProjectPath + "\\mpmissions\\" + Path.GetFileName(missionsfolder);
                 string Pprofilefolder = ProjectPath + "\\" + profilefolder;
-               
+
                 Directory.CreateDirectory(PmissionFolder);
                 Directory.CreateDirectory(Pprofilefolder);
-               
+
                 Helper.CopyFilesRecursively(missionsfolder, PmissionFolder);
 
 
@@ -194,7 +194,7 @@ namespace DayZeEditor
                 {
                     if (session == null || !session.Opened)
                     {
-                        if(FTPHostNameTB.Text == "" || FTPHostNameTB.Text == null)
+                        if (FTPHostNameTB.Text == "" || FTPHostNameTB.Text == null)
                         {
                             MessageBox.Show("Please fill in FTP Connection info in the FTP Tab....");
                             return;
@@ -262,6 +262,82 @@ namespace DayZeEditor
                     LoadProjectstoList();
                     SetActiveProject(ProjectName);
                     load.Abort();
+                }
+                else if (projecttype == "Get from SFTP")
+                {
+                    try
+                    {
+                        if (session == null || !session.Opened)
+                        {
+                            if (FTPHostNameTB.Text == "" || FTPHostNameTB.Text == null)
+                            {
+                                MessageBox.Show("Please fill in SFTP Connection info in the FTP Tab....");
+                                return;
+                            }
+                            SessionOptions sessionOptions = new SessionOptions
+                            {
+                                Protocol = Protocol.Sftp,
+                                HostName = FTPHostNameTB.Text,
+                                PortNumber = Convert.ToInt32(FTPPortTB.Text),
+                                UserName = FTPUSernameTB.Text,
+                                Password = FTPPasswordTB.Text,
+                            };
+                            session = new Session();
+                            session.Open(sessionOptions);
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Please check connection info.....");
+                        return;
+                    }
+                    ftpproject = new NewProjectFTP();
+                    ftpproject.session = session;
+                    result = ftpproject.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        Thread load = new Thread(new ThreadStart(showLoading));
+                        load.Start();
+                        if (ftpproject.Isconsole)
+                        {
+                            string mpmissiondirectory = ftpproject.MpMissionDirectory;
+                            string mpmissionpath = Path.GetFileName(mpmissiondirectory);
+
+                            Directory.CreateDirectory(ProjectPath + "\\mpmissions\\" + mpmissionpath);
+                            session.GetFilesToDirectory(mpmissiondirectory, ProjectPath + "\\mpmissions\\" + mpmissionpath);
+
+                            Project project = new Project();
+                            project.AddNames(ProjectName, ProjectPath);
+                            project.MapSize = Getmapsizefrommissionpath(mpmissionpath);
+                            project.mpmissionpath = mpmissionpath;
+                            project.MapPath = "\\Maps\\" + mpmissionpath.ToLower().Split('.')[1] + "_Map.png";
+                            project.ProfilePath = "";
+                            projects.addtoprojects(project);
+                        }
+                        else
+                        {
+                            string profiledir = ftpproject.ProfileDirecrtory;
+                            string mpmissiondirectory = ftpproject.MpMissionDirectory;
+                            string mpmissionpath = Path.GetFileName(mpmissiondirectory);
+                            string profile = Path.GetFileName(profiledir);
+
+                            Directory.CreateDirectory(ProjectPath + "\\" + profile);
+                            Directory.CreateDirectory(ProjectPath + "\\mpmissions\\" + mpmissionpath);
+                            session.GetFilesToDirectory(profiledir, ProjectPath + "\\" + profile);
+                            session.GetFilesToDirectory(mpmissiondirectory, ProjectPath + "\\mpmissions\\" + mpmissionpath);
+
+                            Project project = new Project();
+                            project.AddNames(ProjectName, ProjectPath);
+                            project.MapSize = Getmapsizefrommissionpath(mpmissionpath);
+                            project.mpmissionpath = mpmissionpath;
+                            project.MapPath = "\\Maps\\" + mpmissionpath.ToLower().Split('.')[1] + "_Map.png";
+                            project.ProfilePath = profile;
+                            projects.addtoprojects(project);
+                        }
+                        LoadProjectstoList();
+                        SetActiveProject(ProjectName);
+                        load.Abort();
+                    }
                 }
             }
         }
@@ -476,6 +552,21 @@ namespace DayZeEditor
                 PortNumber = Convert.ToInt32(FTPPortTB.Text),
                 UserName = FTPUSernameTB.Text,
                 Password = FTPPasswordTB.Text,
+            };
+            session = new Session();
+            session.Open(sessionOptions);
+            getrootdir();
+        }
+        private void SFTPConnectTSB1_Click(object sender, EventArgs e)
+        {
+            SessionOptions sessionOptions = new SessionOptions
+            {
+                Protocol = Protocol.Sftp,
+                HostName = FTPHostNameTB.Text,
+                PortNumber = Convert.ToInt32(FTPPortTB.Text),
+                UserName = FTPUSernameTB.Text,
+                Password = FTPPasswordTB.Text,
+                GiveUpSecurityAndAcceptAnyTlsHostCertificate = true
             };
             session = new Session();
             session.Open(sessionOptions);
