@@ -1233,8 +1233,8 @@ namespace DayZeEditor
             textBox2.Text = currentTrader.Filename;
             textBox8.Text = currentTrader.m_Version.ToString();
             textBox5.Text = currentTrader.DisplayName;
-            MinRequiredHumanityNUD.Value = currentTrader.MinRequiredHumanity;
-            MaxRequiredHumanityNUD.Value = currentTrader.MaxRequiredHumanity;
+            MinRequiredHumanityNUD.Value = currentTrader.MinRequiredReputation;
+            MaxRequiredHumanityNUD.Value = currentTrader.MaxRequiredReputation;
             textBox17.Text = currentTrader.TraderIcon;
             listBox10.DisplayMember = "Name";
             listBox10.ValueMember = "Value";
@@ -1643,13 +1643,13 @@ namespace DayZeEditor
         private void MinRequiredHumanityNUD_ValueChanged(object sender, EventArgs e)
         {
             if (action) return;
-            currentTrader.MinRequiredHumanity = (int)MinRequiredHumanityNUD.Value;
+            currentTrader.MinRequiredReputation = (int)MinRequiredHumanityNUD.Value;
             currentTrader.isDirty = true;
         }
         private void MaxRequiredHumanityNUD_ValueChanged(object sender, EventArgs e)
         {
             if (action) return;
-            currentTrader.MaxRequiredHumanity = (int)MaxRequiredHumanityNUD.Value;
+            currentTrader.MaxRequiredReputation = (int)MaxRequiredHumanityNUD.Value;
             currentTrader.isDirty = true;
         }
         private void darkButton13_Click(object sender, EventArgs e)

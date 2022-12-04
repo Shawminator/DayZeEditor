@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DayZeLib
 {
@@ -196,7 +198,6 @@ namespace DayZeLib
             }
             return 0;
         }
-
         public void SetRequirment(string type, int value)
         {
             switch (type)
@@ -227,10 +228,116 @@ namespace DayZeLib
                     break;
             }
         }
-
         public void setIntValue(string v, int value)
         {
             GetType().GetProperty(v).SetValue(this, value, null);
+        }
+    }
+    public class ExpansionHardlinePlayerDataList
+    {
+        private string m_ExpansionHardlinePlayerDataPath;
+
+        public BindingList<ExpansionHardlinePlayerData> HardlinePlayerDataList { get; set; }
+
+        public ExpansionHardlinePlayerDataList(string HardlinePlayerDataPath)
+        {
+            m_ExpansionHardlinePlayerDataPath = HardlinePlayerDataPath;
+            HardlinePlayerDataList = new BindingList<ExpansionHardlinePlayerData>();
+            DirectoryInfo d = new DirectoryInfo(m_ExpansionHardlinePlayerDataPath);
+            FileInfo[] Files = d.GetFiles();
+            foreach (FileInfo file in Files)
+            {
+                try
+                {
+                    ExpansionHardlinePlayerData ExpansionHardlinePlayerData = new ExpansionHardlinePlayerData(file.FullName);
+                    ExpansionHardlinePlayerData.Filename = Path.GetFileNameWithoutExtension(file.Name); ;
+                    ExpansionHardlinePlayerData.isDirty = false;
+                    HardlinePlayerDataList.Add(ExpansionHardlinePlayerData);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("there is an error in the following file\n" + file.FullName + Environment.NewLine + ex.InnerException.Message);
+                }
+            }
+        }
+    }
+    public class ExpansionHardlinePlayerData
+    {
+        public string Filename { get; set; }
+        public bool isDirty { get; set; }
+
+        const int CONFIGVERSION = 4;
+
+        private int Reputation;
+        private int PlayerKills;
+        private int AIKills;
+        private int InfectedKills;
+        private int PlayerDeaths;
+
+        public ExpansionHardlinePlayerData(string fileName)
+        {
+            using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+            using (BinaryReader br = new BinaryReader(fs))
+            {
+                if (br.ReadInt32() != CONFIGVERSION) return;
+                Reputation = br.ReadInt32();
+                PlayerKills = br.ReadInt32();
+                AIKills = br.ReadInt32();
+                InfectedKills = br.ReadInt32();
+                PlayerDeaths = br.ReadInt32();
+            }
+        }
+        public void SaveFIle(string path)
+        {
+            using (FileStream fs = new FileStream(path + "//" + Filename + ".bin", FileMode.Open, FileAccess.ReadWrite))
+            using (BinaryWriter bw = new BinaryWriter(fs))
+            {
+                bw.Write(CONFIGVERSION);
+                bw.Write(Reputation);
+                bw.Write(PlayerKills);
+                bw.Write(AIKills);
+                bw.Write(InfectedKills);
+                bw.Write(PlayerDeaths);
+            }
+        }
+        public override string ToString()
+        {
+            return Filename;
+        }
+        public void backupandDelete(string HardlineplayerdataPath)
+        {
+            string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
+            string Fullfilename = HardlineplayerdataPath + "\\" + Filename + ".json";
+            if (File.Exists(Fullfilename))
+            {
+                Directory.CreateDirectory(HardlineplayerdataPath + "\\Backup\\" + SaveTime);
+                File.Copy(Fullfilename, HardlineplayerdataPath + "\\Backup\\" + SaveTime + "\\" + Filename + ".bak");
+                File.Delete(Fullfilename);
+            }
+        }
+        public int GetReputation()
+        {
+            return Reputation;
+        }
+        public void SetReputation(int value)
+        {
+            Reputation = value;
+        }
+        public int GetPlayerKills()
+        {
+            return PlayerKills;
+        }
+        public int GetAIKills()
+        {
+            return AIKills;
+        }
+        public int GetInfectedKills()
+        {
+            return InfectedKills;
+        }
+        public int GetPlayerDeaths()
+        {
+            return PlayerDeaths;
         }
     }
 }

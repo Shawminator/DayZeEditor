@@ -1,4 +1,5 @@
-﻿using DarkUI.Forms;
+﻿using Cyotek.Windows.Forms;
+using DarkUI.Forms;
 using DayZeLib;
 using System;
 using System.Collections.Generic;
@@ -24,22 +25,26 @@ namespace DayZeEditor
         public TypesFile Expansiontypes;
         public List<TypesFile> ModTypes;
 
+        public float[] CurrentWapypoint { get; private set; }
+
         private bool useraction;
 
         public string QuestsSettingsPath { get; set; }
-        public string QuestObjectivesPath { get; private set; }
-        public string QuestNPCPath { get; private set; }
-        public string QuestsPath { get; private set; }
+        public string QuestObjectivesPath { get; set; }
+        public string QuestNPCPath { get; set; }
+        public string QuestsPath { get; set; }
         public string QuestPlayerDataPath { get; set; }
         public string QuestPersistantServerDataPath { get; set; }
+        public string AILoadoutsPath { get; set; }
 
-        public NPCEmotes NPCEmotes { get; private set; }
-        public QuestSettings QuestSettings { get; private set; }
+        public NPCEmotes NPCEmotes { get; set; }
+        public QuestSettings QuestSettings { get; set; }
         public QuestObjectives QuestObjectives { get; set; }
-        public ExpansioQuestList QuestsList { get; private set; }
-        public QuestNPCLists QuestNPCs { get; private set; }
-        public QuestPersistantDataPlayersList QuestPlayerDataList { get; private set; }
-        public QuestPersistentServerData QuestPersistentServerData { get; private set; }
+        public ExpansioQuestList QuestsList { get; set; }
+        public QuestNPCLists QuestNPCs { get; set; }
+        public QuestPersistantDataPlayersList QuestPlayerDataList { get; set; }
+        public QuestPersistentServerData QuestPersistentServerData { get; set; }
+        public BindingList<AILoadouts> LoadoutList { get; set; }
 
 
         private void listBox_DrawItem(object sender, DrawItemEventArgs e)
@@ -103,6 +108,15 @@ namespace DayZeEditor
             toolStripButton7.Checked = false;
             toolStripButton1.Checked = false;
             toolStripButton4.Checked = false;
+            if(tabControl1.SelectedIndex == 1)
+            {
+                useraction = false;
+                BindingList<Quests> questlist = new BindingList<Quests>(QuestsList.QuestList);
+                QuestFollowupQuestCB.DisplayMember = "DisplayName";
+                QuestFollowupQuestCB.ValueMember = "Value";
+                QuestFollowupQuestCB.DataSource = questlist;
+                useraction = true;
+            }
         }
         private void ExpansionQuests_Load(object sender, EventArgs e)
         {
@@ -110,6 +124,36 @@ namespace DayZeEditor
             ModTypes = currentproject.getModList();
 
             bool needtosave = false;
+
+            LoadoutList = new BindingList<AILoadouts>();
+            AILoadoutsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Loadouts";
+            DirectoryInfo dinfo = new DirectoryInfo(AILoadoutsPath);
+            FileInfo[] Files = dinfo.GetFiles("*.json");
+            foreach (FileInfo file in Files)
+            {
+                try
+                {
+                    Console.WriteLine("serializing " + Path.GetFileName(file.FullName));
+                    AILoadouts AILoadouts = JsonSerializer.Deserialize<AILoadouts>(File.ReadAllText(file.FullName));
+                    AILoadouts.Filename = file.FullName;
+                    AILoadouts.Setname();
+                    AILoadouts.isDirty = false;
+                    LoadoutList.Add(AILoadouts);
+                }
+                catch { }
+            }
+            ObjectivesAICampNPCLoadoutFileCB.DisplayMember = "DisplayName";
+            ObjectivesAICampNPCLoadoutFileCB.ValueMember = "Value";
+            ObjectivesAICampNPCLoadoutFileCB.DataSource = LoadoutList;
+
+            ObjectivesAIVIPNPCLoadoutFileCB.DisplayMember = "DisplayName";
+            ObjectivesAIVIPNPCLoadoutFileCB.ValueMember = "Value";
+            ObjectivesAIVIPNPCLoadoutFileCB.DataSource = LoadoutList;
+
+            ObjectivesAIPatrolNPCLoadoutFileCB.DisplayMember = "DisplayName";
+            ObjectivesAIPatrolNPCLoadoutFileCB.ValueMember = "Value";
+            ObjectivesAIPatrolNPCLoadoutFileCB.DataSource = LoadoutList;
+
 
             QuestsSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Settings\\QuestSettings.json";
             if (!File.Exists(QuestsSettingsPath))
@@ -157,8 +201,10 @@ namespace DayZeEditor
 
             QuestsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Quests\\Quests";
             QuestsList = new ExpansioQuestList(QuestsPath);
+            QuestsList.GetNPCLists(QuestNPCs);
+            QuestsList.GetPreQuests();
             setupquests();
-                        
+              
             SetupSharedLists();
 
 
@@ -257,31 +303,8 @@ namespace DayZeEditor
             comboBox2.ValueMember = "Value";
             comboBox2.DataSource = Enum.GetValues(typeof(QuExpansionQuestObjectiveTypeestType));
 
+            
 
-            List<Quests> quests = new List<Quests>();
-            quests.Add(new Quests() { Title = "NONE", ID = -1 });
-            quests.AddRange(QuestsList.QuestList.ToArray());
-            QuestPreQuestCB.DisplayMember = "DisplayName";
-            QuestPreQuestCB.ValueMember = "Value";
-            QuestPreQuestCB.DataSource = quests;
-
-            List<Quests> quests2 = new List<Quests>(quests);
-            QuestFollowupQuestCB.DisplayMember = "DisplayName";
-            QuestFollowupQuestCB.ValueMember = "Value";
-            QuestFollowupQuestCB.DataSource = quests2;
-
-            List<ExpansionQuestNPCs> questnpcs = new List<ExpansionQuestNPCs>();
-            questnpcs.Add(new ExpansionQuestNPCs() { NPCName = "NONE", ID = -1 });
-            questnpcs.AddRange(QuestNPCs.NPCList);
-
-            QuestQuestGiverIDCB.DisplayMember = "DisplayName";
-            QuestQuestGiverIDCB.ValueMember = "Value";
-            QuestQuestGiverIDCB.DataSource = questnpcs;
-
-            List<ExpansionQuestNPCs> questnpcs2 = new List<ExpansionQuestNPCs>(questnpcs);
-            QuestQuestTurnInIDCB.DisplayMember = "DisplayName";
-            QuestQuestTurnInIDCB.ValueMember = "Value";
-            QuestQuestTurnInIDCB.DataSource = questnpcs2;
 
             QuestNPCListLB.SelectedIndex = -1;
             if (QuestNPCListLB.Items.Count > 0)
@@ -332,6 +355,8 @@ namespace DayZeEditor
             {
                 if (!Quest.isDirty) continue;
                 Quest.isDirty = false;
+                Quest.SetNPCList();
+                Quest.SetPreQuests();
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(Quest, options);
                 if (currentproject.Createbackups && File.Exists(QuestsPath + "\\" + Quest.Filename + ".json"))
@@ -439,40 +464,97 @@ namespace DayZeEditor
                 }
 
             }
+            if (midifiedfiles.Count == 0)
+                message = "";
+            if (QuestNPCs.Markedfordelete != null)
+            {
+                message += "The following Quest NPC files were Removed\n";
+                i = 0;
+                foreach (ExpansionQuestNPCs del in QuestNPCs.Markedfordelete)
+                {
+                    del.backupandDelete(QuestNPCPath);
+                    midifiedfiles.Add(del.Filename);
+                    if (i == 5)
+                    {
+                        message += del.Filename + "\n";
+                        i = 0;
+                    }
+                    else
+                    {
+                        message += del.Filename + ", ";
+                        i++;
+                    }
+                }
+                QuestNPCs.Markedfordelete = null;
+            }
+            if (QuestsList.Markedfordelete != null)
+            {
+                message += "The following Quest files were Removed\n";
+                i = 0;
+                foreach (Quests del in QuestsList.Markedfordelete)
+                {
+                    del.backupandDelete(QuestsPath);
+                    midifiedfiles.Add(del.Filename);
+                    if (i == 5)
+                    {
+                        message += del.Filename + "\n";
+                        i = 0;
+                    }
+                    else
+                    {
+                        message += del.Filename + ", ";
+                        i++;
+                    }
+                }
+                QuestsList.Markedfordelete = null;
+            }
+            if (QuestObjectives.Markedfordelete != null)
+            {
+                message += "The following Quest Objective files were Removed\n";
+                i = 0;
+                foreach (QuestObjectivesBase del in QuestObjectives.Markedfordelete)
+                {
+                    del.backupandDelete(QuestObjectivesPath);
+                    midifiedfiles.Add(del.Filename);
+                    if (i == 5)
+                    {
+                        message += del.Filename + "\n";
+                        i = 0;
+                    }
+                    else
+                    {
+                        message += del.Filename + ", ";
+                        i++;
+                    }
+                }
+                QuestObjectives.Markedfordelete = null;
+            }
+            if (QuestPlayerDataList.Markedfordelete != null)
+            {
+                message += "The following Quest Player Data files were Removed\n";
+                i = 0;
+                foreach (QuestPlayerData del in QuestPlayerDataList.Markedfordelete)
+                {
+                    del.backupandDelete(QuestPlayerDataPath);
+                    midifiedfiles.Add(del.Filename);
+                    if (i == 5)
+                    {
+                        message += del.Filename + "\n";
+                        i = 0;
+                    }
+                    else
+                    {
+                        message += del.Filename + ", ";
+                        i++;
+                    }
+                }
+                QuestPlayerDataList.Markedfordelete = null;
+            }
 
             if (midifiedfiles.Count > 0)
                 MessageBox.Show(message, "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             else
                 MessageBox.Show("No changes were made.", "Nothing Saved", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-
-            if (QuestNPCs.Markedfordelete != null)
-            {
-                foreach (ExpansionQuestNPCs del in QuestNPCs.Markedfordelete)
-                {
-                    del.backupandDelete(QuestNPCPath);
-                }
-            }
-            if (QuestsList.Markedfordelete != null)
-            {
-                foreach (Quests del in QuestsList.Markedfordelete)
-                {
-                    del.backupandDelete(QuestsPath);
-                }
-            }
-            if (QuestObjectives.Markedfordelete != null)
-            {
-                foreach (QuestObjectivesBase del in QuestObjectives.Markedfordelete)
-                {
-                    del.backupandDelete(QuestObjectivesPath);
-                }
-            }
-            if (QuestPlayerDataList.Markedfordelete != null)
-            {
-                foreach (QuestPlayerData del in QuestPlayerDataList.Markedfordelete)
-                {
-                    del.backupandDelete(QuestPlayerDataPath);
-                }
-            }
         }
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
@@ -658,18 +740,22 @@ namespace DayZeEditor
             QuestNPCsOXNUD.Value = (decimal)currentQuestNPC.Orientation[0];
             QuestNPCsOYNUD.Value = (decimal)currentQuestNPC.Orientation[1];
             QuestNPCsOZNUD.Value = (decimal)currentQuestNPC.Orientation[2];
-            QuestsNPCsQuestIDSLB.DisplayMember = "DisplayName";
-            QuestsNPCsQuestIDSLB.ValueMember = "Value";
-            QuestsNPCsQuestIDSLB.DataSource = currentQuestNPC.CurrentQuests;
             QuestsNPCsNameTB.Text = currentQuestNPC.NPCName;
             QuestsNPCsDefaultNPCTextTB.Text = currentQuestNPC.DefaultNPCText;
-            QuestNPCWaypointsLB.DisplayMember = "DisplayName";
-            QuestNPCWaypointsLB.ValueMember = "Value";
-            QuestNPCWaypointsLB.DataSource = currentQuestNPC.Waypoints;
             questsNPCsNPCEmoteIDCB.SelectedValue = currentQuestNPC.NPCEmoteID;
             QuestNPCIsEmoteStaticCB.Checked = currentQuestNPC.NPCEmoteIsStatic == 1 ? true : false;
             QuestNPCsLoadoutsCB.SelectedIndex = QuestNPCsLoadoutsCB.FindStringExact(currentQuestNPC.NPCLoadoutFile);
             QuestNPCsIsStaticCB.Checked = currentQuestNPC.IsStatic == 1 ? true:false;
+
+            QuestsNPCsQuestIDSLB.DisplayMember = "DisplayName";
+            QuestsNPCsQuestIDSLB.ValueMember = "Value";
+            QuestsNPCsQuestIDSLB.DataSource = currentQuestNPC.CurrentQuests;
+
+            QuestNPCWaypointsLB.DisplayMember = "DisplayName";
+            QuestNPCWaypointsLB.ValueMember = "Value";
+            QuestNPCWaypointsLB.DataSource = currentQuestNPC.Waypoints;
+
+
             useraction = true;
         }
         private void darkButton2_Click(object sender, EventArgs e)
@@ -930,7 +1016,6 @@ namespace DayZeEditor
                 }
             }
         }
-
         private void darkButton30_Click(object sender, EventArgs e)
         {
             DZE newdze = new DZE()
@@ -962,11 +1047,13 @@ namespace DayZeEditor
         #endregion npc
         #region quests
         public Quests CurrentQuest { get; private set; }
+
+
         public void setupquests()
         {
             useraction = false;
 
-            QuestTypeCB.DataSource = Enum.GetValues(typeof(QuExpansionQuestObjectiveTypeestType));
+            QuestTypeCB.DataSource = Enum.GetValues(typeof(ExpansionQuestsQuestType));
 
             QuestsListLB.DisplayMember = "DisplayName";
             QuestsListLB.ValueMember = "Value";
@@ -986,28 +1073,19 @@ namespace DayZeEditor
             QuestFileNameTB.Text = CurrentQuest.Filename;
             QuestConfigVersionNUD.Value = CurrentQuest.ConfigVersion;
             QuestIDNUD.Value = CurrentQuest.ID;
-            QuestTypeCB.SelectedItem = (QuExpansionQuestObjectiveTypeestType)CurrentQuest.Type;
+            QuestTypeCB.SelectedItem = (ExpansionQuestsQuestType)CurrentQuest.Type;
             QuestTitleTB.Text = CurrentQuest.Title;
-            if (CurrentQuest.Descriptions.Count > 0)
+            if (CurrentQuest.Descriptions.Count == 0)
             {
-                QuestUsedescriptionCB.Checked = true;
-                QuestDescription1TB.Text = CurrentQuest.Descriptions[0];
-                QuestDescription2TB.Text = CurrentQuest.Descriptions[1];
-                QuestDescription3TB.Text = CurrentQuest.Descriptions[2];
+                CurrentQuest.Descriptions = new BindingList<string>(new string[] { "", "", "" });
             }
-            else
-            {
-                QuestUsedescriptionCB.Checked = false;
-                QuestDescription1TB.Text = "";
-                QuestDescription2TB.Text = "";
-                QuestDescription3TB.Text = "";
-            }
+            QuestDescription1TB.Text = CurrentQuest.Descriptions[0];
+            QuestDescription2TB.Text = CurrentQuest.Descriptions[1];
+            QuestDescription3TB.Text = CurrentQuest.Descriptions[2];
             useraction = false;
             QuestObjectiveTextTB.Text = CurrentQuest.ObjectiveText;
-            QuestPreQuestCB.SelectedItem = QuestPreQuestCB.Items.Cast<Quests>().FirstOrDefault(z => z.ID == CurrentQuest.PreQuest);
+
             QuestFollowupQuestCB.SelectedItem = QuestFollowupQuestCB.Items.Cast<Quests>().FirstOrDefault(z => z.ID == CurrentQuest.FollowUpQuest);
-            //QuestQuestGiverIDCB.SelectedItem = QuestQuestGiverIDCB.Items.Cast<ExpansionQuestNPCs>().FirstOrDefault(z => z.ID == CurrentQuest.QuestGiverID);
-            //QuestQuestTurnInIDCB.SelectedItem = QuestQuestTurnInIDCB.Items.Cast<ExpansionQuestNPCs>().FirstOrDefault(z => z.ID == CurrentQuest.QuestTurnInID);
             QuestIsAchivementCB.Checked = CurrentQuest.IsAchivement == 1 ? true : false;
             QuestRepeatableCB.Checked = CurrentQuest.Repeatable == 1 ? true : false;
             QuestIsDailyQuestCB.Checked = CurrentQuest.IsDailyQuest == 1 ? true : false;
@@ -1041,25 +1119,41 @@ namespace DayZeEditor
             }
             QuestNeedToSelectRewardCB.Checked = CurrentQuest.NeedToSelectReward == 1 ? true : false;
             QuestRewardsForGroupOwnerOnlyCB.Checked = CurrentQuest.RewardsForGroupOwnerOnly == 1 ? true : false;
-            //QuestHumanityRewardCB.Checked = CurrentQuest.HumanityReward == 1 ? true : false;
+            QuestReputationRewardNUD.Value = CurrentQuest.ReputationReward;
+            QuestReputationRequirmentNUD.Value = CurrentQuest.ReputationRequirement;
+
+            QuestPreQuestIDsLB.DisplayMember = "DisplayName";
+            QuestPreQuestIDsLB.ValueMember = "Value";
+            QuestPreQuestIDsLB.DataSource = CurrentQuest.PreQuests;
+
+            QuestGiverIDsLB.DisplayMember = "DisplayName";
+            QuestGiverIDsLB.ValueMember = "Value";
+            QuestGiverIDsLB.DataSource = CurrentQuest.QuestGivers;
+
+            QuestQuestTurnInIDsLB.DisplayMember = "DisplayName";
+            QuestQuestTurnInIDsLB.ValueMember = "Value";
+            QuestQuestTurnInIDsLB.DataSource = CurrentQuest.QuestTurnIns;
 
             QuestObjectivesLB.DisplayMember = "DisplayName";
             QuestObjectivesLB.ValueMember = "Value";
             QuestObjectivesLB.DataSource = CurrentQuest.Objectives;
-            useraction = false;
+
             QuestQuestItemsLB.DisplayMember = "DisplayName";
             QuestQuestItemsLB.ValueMember = "Value";
             QuestQuestItemsLB.DataSource = CurrentQuest.QuestItems;
-            useraction = true;
+
             QuestRewardsLB.DisplayMember = "DisplayName";
             QuestRewardsLB.ValueMember = "Value";
             QuestRewardsLB.DataSource = CurrentQuest.Rewards;
+
+            QuestColour.Invalidate();
+
             useraction = true;
         }
         private void QuestTypeCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            QuExpansionQuestObjectiveTypeestType QuestType = (QuExpansionQuestObjectiveTypeestType)QuestTypeCB.SelectedItem;
+            ExpansionQuestsQuestType QuestType = (ExpansionQuestsQuestType)QuestTypeCB.SelectedItem;
             CurrentQuest.Type = (int)QuestType;
             CurrentQuest.isDirty = true;
         }
@@ -1145,26 +1239,6 @@ namespace DayZeEditor
                     QuestsListLB.SelectedIndex = 0;
             }
         }
-        private void QuestUsedescriptionCB_CheckedChanged(object sender, EventArgs e)
-        {
-            QuestDescriptionsP.Visible = CurrentQuest.isusingdescription = QuestUsedescriptionCB.Checked;
-            if (CurrentQuest.Descriptions.Count == 0 && CurrentQuest.isusingdescription)
-            {
-                CurrentQuest.Descriptions.Add("Description on getting quest.");
-                CurrentQuest.Descriptions.Add("Description while quest is active.");
-                CurrentQuest.Descriptions.Add("Description when take in quest.");
-                QuestDescription1TB.Text = CurrentQuest.Descriptions[0];
-                QuestDescription2TB.Text = CurrentQuest.Descriptions[1];
-                QuestDescription3TB.Text = CurrentQuest.Descriptions[2];
-            }
-            else if (!CurrentQuest.isusingdescription && useraction == true)
-            {
-                CurrentQuest.Descriptions = new BindingList<string>();
-                QuestDescription1TB.Text = "";
-                QuestDescription2TB.Text = "";
-                QuestDescription3TB.Text = "";
-            }
-        }
         private void QuestTitleTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -1199,35 +1273,12 @@ namespace DayZeEditor
             CurrentQuest.ObjectiveText = QuestObjectiveTextTB.Text;
             CurrentQuest.isDirty = true;
         }
-        private void QuestPreQuestCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            Quests quest = QuestPreQuestCB.SelectedItem as Quests;
-            CurrentQuest.PreQuest = quest.ID;
-            CurrentQuest.isDirty = true;
-        }
         private void QuestFollowupQuestCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(!useraction) return;
             Quests quest = QuestFollowupQuestCB.SelectedItem as Quests;
             CurrentQuest.FollowUpQuest = quest.ID;
             CurrentQuest.isDirty = true;
-        }
-        private void QuestQuestGiverIDCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            ExpansionQuestNPCs npc = QuestQuestGiverIDCB.SelectedItem as ExpansionQuestNPCs;
-
-            CurrentQuest.isDirty = true;
-            QuestNPCs.addQuesttoNPC(npc, CurrentQuest);
-        }
-        private void QuestQuestTurnInIDCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            ExpansionQuestNPCs npc = QuestQuestTurnInIDCB.SelectedItem as ExpansionQuestNPCs;
-
-            CurrentQuest.isDirty = true;
-            QuestNPCs.addQuesttoNPC(npc, CurrentQuest);
         }
         private void QuestIsAchivementCB_CheckedChanged(object sender, EventArgs e)
         {
@@ -1443,6 +1494,134 @@ namespace DayZeEditor
                 QuestObjectivesLB.SelectedIndex = -1;
             else
                 QuestObjectivesLB.SelectedIndex = 0;
+        }
+        private void QuestReputationRequirmentNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentQuest.ReputationRequirement = (int)QuestReputationRequirmentNUD.Value;
+            CurrentQuest.isDirty = true;
+        }
+        private void QuestReputationRewardNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentQuest.ReputationReward = (int)QuestReputationRewardNUD.Value;
+            CurrentQuest.isDirty = true;
+        }
+        private void darkButton77_Click(object sender, EventArgs e)
+        {
+            AddQuestQuest form = new AddQuestQuest
+            {
+                ExpansioQuestList = QuestsList
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<Quests> SelectedQuests = form.SelectedQuests;
+                foreach (Quests obj in SelectedQuests)
+                {
+                    if (!CurrentQuest.PreQuests.Any(x => x.ID == obj.ID))
+                        CurrentQuest.PreQuests.Add(obj);
+                }
+                CurrentQuest.isDirty = true;
+            }
+        }
+        private void darkButton76_Click(object sender, EventArgs e)
+        {
+            if (QuestPreQuestIDsLB.SelectedItems.Count < 1) return;
+            Quests qr = QuestPreQuestIDsLB.SelectedItem as Quests;
+            CurrentQuest.PreQuests.Remove(qr);
+            CurrentQuest.isDirty = true;
+            QuestPreQuestIDsLB.Refresh();
+            if (QuestPreQuestIDsLB.Items.Count == 0)
+                QuestPreQuestIDsLB.SelectedIndex = -1;
+            else
+                QuestPreQuestIDsLB.SelectedIndex = 0;
+        }
+        private void darkButton75_Click(object sender, EventArgs e)
+        {
+            AddQuestNPC form = new AddQuestNPC
+            {
+                QuestNPCLists = QuestNPCs
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<ExpansionQuestNPCs> SelectedNPCs = form.SelectedNPCs;
+                foreach (ExpansionQuestNPCs obj in SelectedNPCs)
+                {
+                    if(!CurrentQuest.QuestGivers.Any(x => x.ID == obj.ID))
+                        CurrentQuest.QuestGivers.Add(obj);
+                }
+                CurrentQuest.isDirty = true;
+            }
+        }
+        private void darkButton74_Click(object sender, EventArgs e)
+        {
+            if (QuestGiverIDsLB.SelectedItems.Count < 1) return;
+            ExpansionQuestNPCs qr = QuestGiverIDsLB.SelectedItem as ExpansionQuestNPCs;
+            CurrentQuest.QuestGivers.Remove(qr);
+            CurrentQuest.isDirty = true;
+            QuestGiverIDsLB.Refresh();
+            if (QuestGiverIDsLB.Items.Count == 0)
+                QuestGiverIDsLB.SelectedIndex = -1;
+            else
+                QuestGiverIDsLB.SelectedIndex = 0;
+        }
+        private void darkButton73_Click(object sender, EventArgs e)
+        {
+            AddQuestNPC form = new AddQuestNPC
+            {
+                QuestNPCLists = QuestNPCs
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<ExpansionQuestNPCs> SelectedNPCs = form.SelectedNPCs;
+                foreach (ExpansionQuestNPCs obj in SelectedNPCs)
+                {
+                    if (!CurrentQuest.QuestTurnIns.Any(x => x.ID == obj.ID))
+                        CurrentQuest.QuestTurnIns.Add(obj);
+                }
+                CurrentQuest.isDirty = true;
+            }
+        }
+        private void darkButton72_Click(object sender, EventArgs e)
+        {
+            if (QuestQuestTurnInIDsLB.SelectedItems.Count < 1) return;
+            ExpansionQuestNPCs qr = QuestQuestTurnInIDsLB.SelectedItem as ExpansionQuestNPCs;
+            CurrentQuest.QuestTurnIns.Remove(qr);
+            CurrentQuest.isDirty = true;
+            QuestQuestTurnInIDsLB.Refresh();
+            if (QuestQuestTurnInIDsLB.Items.Count == 0)
+                QuestQuestTurnInIDsLB.SelectedIndex = -1;
+            else
+                QuestQuestTurnInIDsLB.SelectedIndex = 0;
+        }
+        private void QuestColour_Click(object sender, EventArgs e)
+        {
+            PictureBox pb = sender as PictureBox;
+            ColorPickerDialog cpick = new ColorPickerDialog();
+            cpick.StartPosition = FormStartPosition.CenterParent;
+            cpick.Color = Color.FromArgb(CurrentQuest.QuestColor);
+            if (cpick.ShowDialog() == DialogResult.OK)
+            {
+                CurrentQuest.QuestColor = cpick.Color.ToArgb();
+                QuestColour.Invalidate();
+                CurrentQuest.isDirty = true;
+            }
+        }
+        private void QuestColour_Paint(object sender, PaintEventArgs e)
+        {
+            if (CurrentQuest == null) { return; }
+            PictureBox pb = sender as PictureBox;
+            Rectangle region;
+            region = pb.ClientRectangle;
+            Color colour = Color.FromArgb(CurrentQuest.QuestColor);
+            using (Brush brush = new SolidBrush(colour))
+            {
+                e.Graphics.FillRectangle(brush, region);
+            }
+            e.Graphics.DrawRectangle(SystemPens.ControlText, region.Left, region.Top, region.Width - 1, region.Height - 1);
         }
         #endregion quests
         #region objectives
@@ -1698,27 +1877,35 @@ namespace DayZeEditor
                 switch (CurrentTreeNodeTag.QuestType)
                 {
                     case QuExpansionQuestObjectiveTypeestType.TARGET:
+                        ObjectivesTargetGB.Visible = true;
                         setupObjectiveTarget(e);
                         break;
                     case QuExpansionQuestObjectiveTypeestType.TRAVEL:
+                        ObjectivesTravelGB.Visible = true;
                         SetupObjectiveTravel(e);
                         break;
                     case QuExpansionQuestObjectiveTypeestType.COLLECT:
+                        ObjectivesCollectionGB.Visible = true;
                         setupObjectiveCollection(e);
                         break;
                     case QuExpansionQuestObjectiveTypeestType.CRAFTING:
+                        ObjectivesCraftingGB.Visible = true;
                         setupobjectivecrafting(e);
                         break;
                     case QuExpansionQuestObjectiveTypeestType.DELIVERY:
+                        ObejctiovesDeliveryGB.Visible = true;
                         setupobjectiveDelivery(e);
                         break;
                     case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
+                        ObjectivesTresureHuntGB.Visible = true;
                         SetupobjectiveTreasueHunt(e);
                         break;
                     case QuExpansionQuestObjectiveTypeestType.AIVIP:
+                        ObjectivesAIVIPGB.Visible = true;
                         SetupObjectiveAIVIP(e);
                         break;
                     case QuExpansionQuestObjectiveTypeestType.AIPATROL:
+                        ObjectivesAIPatrolGB.Visible = true;
                         SetupobjectiveAIPatrol(e);
                         break;
                     case QuExpansionQuestObjectiveTypeestType.AICAMP:
@@ -1741,6 +1928,342 @@ namespace DayZeEditor
             }
             useraction = true;
         }
+        private void QuestObjectivesObjectiveTextTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentTreeNodeTag.ObjectiveText = QuestObjectivesObjectiveTextTB.Text;
+            CurrentTreeNodeTag.isDirty = true;
+            foreach (Quests quest in QuestsList.QuestList)
+            {
+                foreach (QuestObjectivesBase obj in quest.Objectives)
+                {
+                    if (CurrentTreeNodeTag.ID == obj.ID && CurrentTreeNodeTag.ObjectiveType == obj.ObjectiveType)
+                    {
+                        obj.ObjectiveText = CurrentTreeNodeTag.ObjectiveText;
+                        quest.isDirty = true;
+                    }
+                }
+            }
+        }
+        private void QuestObjectivesTimeLimitNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentTreeNodeTag.TimeLimit = (int)QuestObjectivesTimeLimitNUD.Value;
+            CurrentTreeNodeTag.isDirty = true;
+            foreach (Quests quest in QuestsList.QuestList)
+            {
+                foreach (QuestObjectivesBase obj in quest.Objectives)
+                {
+                    if (CurrentTreeNodeTag.ID == obj.ID && CurrentTreeNodeTag.ObjectiveType == obj.ObjectiveType)
+                    {
+                        obj.TimeLimit = CurrentTreeNodeTag.TimeLimit;
+                        quest.isDirty = true;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Objective actions
+        /// </summary>
+        private void addNewActionObjectiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int newid = QuestObjectives.GetNextQuestID(QuExpansionQuestObjectiveTypeestType.ACTION);
+            QuestObjectivesAction newactionobjective = new QuestObjectivesAction()
+            {
+                ConfigVersion = QuestObjectivesBase.GetconfigVersion,
+                ID = newid,
+                Filename = "Objective_A_" + newid.ToString(),
+                ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.ACTION,
+                QuestType = QuExpansionQuestObjectiveTypeestType.ACTION,
+                ObjectiveText = "New Action Objective",
+                TimeLimit = -1,
+                ActionNames = new BindingList<string>(),
+                AllowedClassNames = new BindingList<string>(),
+                ExcludedClassNames = new BindingList<string>(),
+                isDirty = true
+            };
+            QuestObjectives.Objectives.Add(newactionobjective);
+            TreeNode newnode = new TreeNode(newactionobjective.Filename)
+            {
+                Tag = newactionobjective
+            };
+            treeViewMS1.SelectedNode.Nodes.Add(newnode);
+        }
+        private void addNewAICampObjectiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int newid = QuestObjectives.GetNextQuestID(QuExpansionQuestObjectiveTypeestType.AICAMP);
+            QuestObjectivesAICamp newAICampobjective = new QuestObjectivesAICamp()
+            {
+                ConfigVersion = QuestObjectivesBase.GetconfigVersion,
+                ID = newid,
+                Filename = "Objective_AIC_" + newid.ToString(),
+                ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.AICAMP,
+                QuestType = QuExpansionQuestObjectiveTypeestType.AICAMP,
+                ObjectiveText = "New AICamp Objective",
+                TimeLimit = -1,
+                AICamp = new Aicamp()
+                {
+                    Positions = new BindingList<float[]>(),
+                    NPCSpeed = "JOG",
+                    NPCMode = "HALT",
+                    NPCFaction = "West",
+                    NPCLoadoutFile = "BanditLoadout",
+                    NPCAccuracyMin = 0,
+                    NPCAccuracyMax = 0,
+                    ClassNames = new BindingList<string>(),
+                    SpecialWeapon = 0,
+                    AllowedWeapons = new BindingList<string>()
+                },
+                MinDistRadius = 50,
+                MaxDistRadius = 150,
+                DespawnRadius = 880,
+                CanLootAI = 1,
+                isDirty = true
+            };
+            QuestObjectives.Objectives.Add(newAICampobjective);
+            TreeNode newnode = new TreeNode(newAICampobjective.Filename)
+            {
+                Tag = newAICampobjective
+            };
+            treeViewMS1.SelectedNode.Nodes.Add(newnode);
+        }
+        private void addNewAIPatrolObjectiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int newid = QuestObjectives.GetNextQuestID(QuExpansionQuestObjectiveTypeestType.AIPATROL);
+            QuestObjectivesAIPatrol newAIPatrolobjective = new QuestObjectivesAIPatrol()
+            {
+                ConfigVersion = QuestObjectivesBase.GetconfigVersion,
+                ID = newid,
+                Filename = "Objective_AIP_" + newid.ToString(),
+                ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.AIPATROL,
+                QuestType = QuExpansionQuestObjectiveTypeestType.AIPATROL,
+                ObjectiveText = "New AIPatrol Objective",
+                TimeLimit = -1,
+                AIPatrol = new AIPatrol()
+                {
+                    NPCUnits = 4,
+                    Waypoints = new BindingList<float[]>(),
+                    NPCSpeed = "JOG",
+                    NPCMode = "HALT",
+                    NPCFaction = "West",
+                    NPCFormation = "RANDOM",
+                    NPCLoadoutFile = "BanditLoadout",
+                    NPCAccuracyMin = 0,
+                    NPCAccuracyMax = 0,
+                    ClassNames = new BindingList<string>(),
+                    SpecialWeapon = 0,
+                    AllowedWeapons = new BindingList<string>()
+                },
+                MinDistRadius = 50,
+                MaxDistRadius = 150,
+                DespawnRadius = 880,
+                CanLootAI = 1,
+                isDirty = true
+            };
+            QuestObjectives.Objectives.Add(newAIPatrolobjective);
+            TreeNode newnode = new TreeNode(newAIPatrolobjective.Filename)
+            {
+                Tag = newAIPatrolobjective
+            };
+            treeViewMS1.SelectedNode.Nodes.Add(newnode);
+        }
+        private void addNewAiVIPObjectiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int newid = QuestObjectives.GetNextQuestID(QuExpansionQuestObjectiveTypeestType.AIVIP);
+            QuestObjectivesAIVIP newAIVIPobjective = new QuestObjectivesAIVIP()
+            {
+                ConfigVersion = QuestObjectivesBase.GetconfigVersion,
+                ID = newid,
+                Filename = "Objective_AIVIP_" + newid.ToString(),
+                ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.AIVIP,
+                QuestType = QuExpansionQuestObjectiveTypeestType.AIVIP,
+                ObjectiveText = "New AIVIP Objective",
+                TimeLimit = -1,
+                Position = new float[] { 0,0,0},
+                MaxDistance = -1,
+                AIVIP = new AIVIP()
+                {
+                    NPCClassName = "",
+                    NPCSpeed = "JOG",
+                    NPCMode = "HALT",
+                    NPCFaction = "West",
+                    NPCLoadoutFile = "BanditLoadout",
+                },
+                MarkerName = "",
+                ShowDistance = 0,
+                isDirty = true
+            };
+            QuestObjectives.Objectives.Add(newAIVIPobjective);
+            TreeNode newnode = new TreeNode(newAIVIPobjective.Filename)
+            {
+                Tag = newAIVIPobjective
+            };
+            treeViewMS1.SelectedNode.Nodes.Add(newnode);
+        }
+        private void addNewCollectionObjectiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int newid = QuestObjectives.GetNextQuestID(QuExpansionQuestObjectiveTypeestType.COLLECT);
+            QuestObjectivesCollection newCollectionobjective = new QuestObjectivesCollection()
+            {
+                ConfigVersion = QuestObjectivesBase.GetconfigVersion,
+                ID = newid,
+                Filename = "Objective_C_" + newid.ToString(),
+                ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.COLLECT,
+                QuestType = QuExpansionQuestObjectiveTypeestType.COLLECT,
+                ObjectiveText = "New Collection Objective",
+                TimeLimit = -1,
+                MaxDistance = 0,
+                MarkerName = "",
+                ShowDistance = 0,
+                Collections = new BindingList<Collections>(),
+                isDirty = true
+            };
+            QuestObjectives.Objectives.Add(newCollectionobjective);
+            TreeNode newnode = new TreeNode(newCollectionobjective.Filename)
+            {
+                Tag = newCollectionobjective
+            };
+            treeViewMS1.SelectedNode.Nodes.Add(newnode);
+        }
+        private void addNewCraftingObjectiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int newid = QuestObjectives.GetNextQuestID(QuExpansionQuestObjectiveTypeestType.CRAFTING);
+            QuestObjectivesCrafting newCraftingobjective = new QuestObjectivesCrafting()
+            {
+                ConfigVersion = QuestObjectivesBase.GetconfigVersion,
+                ID = newid,
+                Filename = "Objective_CR_" + newid.ToString(),
+                ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.CRAFTING,
+                QuestType = QuExpansionQuestObjectiveTypeestType.CRAFTING,
+                ObjectiveText = "New Crafting Objective",
+                TimeLimit = -1,
+                ItemNames = new BindingList<string>(),
+                isDirty = true
+            };
+            QuestObjectives.Objectives.Add(newCraftingobjective);
+            TreeNode newnode = new TreeNode(newCraftingobjective.Filename)
+            {
+                Tag = newCraftingobjective
+            };
+            treeViewMS1.SelectedNode.Nodes.Add(newnode);
+        }
+        private void addNewDeliveryObjectiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int newid = QuestObjectives.GetNextQuestID(QuExpansionQuestObjectiveTypeestType.DELIVERY);
+            QuestObjectivesDelivery newdeliveryobjective = new QuestObjectivesDelivery()
+            {
+                ConfigVersion = QuestObjectivesBase.GetconfigVersion,
+                ID = newid,
+                Filename = "Objective_D_" + newid.ToString(),
+                ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.DELIVERY,
+                QuestType = QuExpansionQuestObjectiveTypeestType.DELIVERY,
+                ObjectiveText = "New Delivery Objective",
+                TimeLimit = -1,
+                Deliveries = new BindingList<Delivery>(),
+                MaxDistance = 50,
+                MarkerName = "",
+                ShowDistance = 0,
+                isDirty = true
+            };
+            QuestObjectives.Objectives.Add(newdeliveryobjective);
+            TreeNode newnode = new TreeNode(newdeliveryobjective.Filename)
+            {
+                Tag = newdeliveryobjective
+            };
+            treeViewMS1.SelectedNode.Nodes.Add(newnode);
+        }
+        private void addNewTargetObjectiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int newid = QuestObjectives.GetNextQuestID(QuExpansionQuestObjectiveTypeestType.TARGET);
+            QuestObjectivesTarget newTargetobjective = new QuestObjectivesTarget()
+            {
+                ConfigVersion = QuestObjectivesBase.GetconfigVersion,
+                ID = newid,
+                Filename = "Objective_TA_" + newid.ToString(),
+                ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.TARGET,
+                QuestType = QuExpansionQuestObjectiveTypeestType.TARGET,
+                ObjectiveText = "New Target Objective",
+                TimeLimit = -1,
+                Position = new float[] { 0,0,0},
+                MaxDistance = -1,
+                Target = new Target()
+                {
+                    Amount = 0,
+                    ClassNames = new BindingList<string>(),
+                    CountSelfKill = 0,
+                    SpecialWeapon = 0,
+                    AllowedWeapons = new BindingList<string>(),
+                    ExcludedClassNames = new BindingList<string>()
+                },
+                isDirty = true
+            };
+            QuestObjectives.Objectives.Add(newTargetobjective);
+            TreeNode newnode = new TreeNode(newTargetobjective.Filename)
+            {
+                Tag = newTargetobjective
+            };
+            treeViewMS1.SelectedNode.Nodes.Add(newnode);
+        }
+        private void addNewTravelObjectiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int newid = QuestObjectives.GetNextQuestID(QuExpansionQuestObjectiveTypeestType.TRAVEL);
+            QuestObjectivesTravel newTravelobjective = new QuestObjectivesTravel()
+            {
+                ConfigVersion = QuestObjectivesBase.GetconfigVersion,
+                ID = newid,
+                Filename = "Objective_T_" + newid.ToString(),
+                ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.TRAVEL,
+                QuestType = QuExpansionQuestObjectiveTypeestType.TRAVEL,
+                ObjectiveText = "New Travel Objective",
+                TimeLimit = -1,
+                Position = new float[] { 0, 0, 0 },
+                MaxDistance = -1,
+                MarkerName = "",
+                ShowDistance = 0,
+                isDirty = true
+            };
+            QuestObjectives.Objectives.Add(newTravelobjective);
+            TreeNode newnode = new TreeNode(newTravelobjective.Filename)
+            {
+                Tag = newTravelobjective
+            };
+            treeViewMS1.SelectedNode.Nodes.Add(newnode);
+        }
+        private void addNewTreasureHuntObjectiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int newid = QuestObjectives.GetNextQuestID(QuExpansionQuestObjectiveTypeestType.TREASUREHUNT);
+            QuestObjectivesTreasureHunt newTreasureHuntobjective = new QuestObjectivesTreasureHunt()
+            {
+                ConfigVersion = QuestObjectivesBase.GetconfigVersion,
+                ID = newid,
+                Filename = "Objective_TH_" + newid.ToString(),
+                ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.TREASUREHUNT,
+                QuestType = QuExpansionQuestObjectiveTypeestType.TREASUREHUNT,
+                ObjectiveText = "New TreasureHunt Objective",
+                TimeLimit = -1,
+                TreasureHunt = new Treasurehunt()
+                {
+                    Positions = new BindingList<float[]>(),
+                    ListItems = new BindingList<TreasureHuntItems>()
+                },
+                ShowDistance = 0,
+                isDirty = true
+            };
+            QuestObjectives.Objectives.Add(newTreasureHuntobjective);
+            TreeNode newnode = new TreeNode(newTreasureHuntobjective.Filename)
+            {
+                Tag = newTreasureHuntobjective
+            };
+            treeViewMS1.SelectedNode.Nodes.Add(newnode);
+        }
+        private void deleteObjectiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CurrentTreeNodeTag = treeViewMS1.SelectedNode.Tag as QuestObjectivesBase;
+            QuestObjectives.deleteObjective(CurrentTreeNodeTag);
+            treeViewMS1.SelectedNode.Parent.Nodes.Remove(treeViewMS1.SelectedNode);
+        }
+
         /// <summary>
         /// Action Objectives
         /// </summary>
@@ -1839,189 +2362,1538 @@ namespace DayZeEditor
             }
             CurrentTreeNodeTag.isDirty = true;
         }
-
         /// <summary>
         /// AI Camp
         /// </summary>
         private void SetupObjectiveAICamp(TreeNodeMouseClickEventArgs e)
         {
+            useraction = false;
             QuestObjectivesAICamp CurrentAICamp = e.Node.Tag as QuestObjectivesAICamp;
+
+            ObjectiovesAICampNPCSpeedCB.SelectedIndex = ObjectiovesAICampNPCSpeedCB.FindStringExact(CurrentAICamp.AICamp.NPCSpeed);
+            ObjectivesAICampNPCModeCB.SelectedIndex = ObjectivesAICampNPCModeCB.FindStringExact(CurrentAICamp.AICamp.NPCMode);
+            ObjectivesAICampNPCFactionCB.SelectedIndex = ObjectivesAICampNPCFactionCB.FindStringExact(CurrentAICamp.AICamp.NPCFaction);
+            ObjectivesAICampNPCLoadoutFileCB.SelectedIndex = ObjectivesAICampNPCLoadoutFileCB.FindStringExact(CurrentAICamp.AICamp.NPCLoadoutFile);
+            ObjectivesAICampNPCAccuracyMaxNUD.Value = CurrentAICamp.AICamp.NPCAccuracyMax;
+            ObjectivesAICampNPCAccuracyMinNUD.Value = CurrentAICamp.AICamp.NPCAccuracyMin;
+            ObjectivesAICampSpecialWeaponCB.Checked = CurrentAICamp.AICamp.SpecialWeapon == 1 ? true : false;
+            ObjectivesAICampMinDistRadiusNUD.Value = CurrentAICamp.MinDistRadius;
+            ObjectivesAICampMaxDistRadiusNUD.Value = CurrentAICamp.MaxDistRadius;
+            ObjectivesAICampDespawnRadiusNUD.Value = CurrentAICamp.DespawnRadius;
+            ObjectiovesAICampCanLootAICB.Checked = CurrentAICamp.CanLootAI == 1 ? true : false;
+
+
+            ObjectivesAICampPositionsLB.DisplayMember = "DisplayName";
+            ObjectivesAICampPositionsLB.ValueMember = "Value";
+            ObjectivesAICampPositionsLB.DataSource = CurrentAICamp.AICamp.Positions;
+
+            ObjectivesAiCampClassnamesLB.DisplayMember = "DisplayName";
+            ObjectivesAiCampClassnamesLB.ValueMember = "Value";
+            ObjectivesAiCampClassnamesLB.DataSource = CurrentAICamp.AICamp.ClassNames;
+
+            ObjectivesAICampAllowedWeaponsLB.DisplayMember = "DisplayName";
+            ObjectivesAICampAllowedWeaponsLB.ValueMember = "Value";
+            ObjectivesAICampAllowedWeaponsLB.DataSource = CurrentAICamp.AICamp.AllowedWeapons;
+            useraction = true;
+        }
+        private void ObjectivesAICampPositionsLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ObjectivesAICampPositionsLB.SelectedItems.Count < 1) return;
+            CurrentWapypoint = ObjectivesAICampPositionsLB.SelectedItem as float[];
+            useraction = false;
+            numericUpDown9.Value = (decimal)CurrentWapypoint[0];
+            numericUpDown11.Value = (decimal)CurrentWapypoint[1];
+            numericUpDown12.Value = (decimal)CurrentWapypoint[2];
+            useraction = true;
+
         }
         private void darkButton20_Click(object sender, EventArgs e)
         {
-
+            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
+            CurrentAICam.AICamp.Positions.Add(new float[] { 0, 0, 0 });
+            CurrentAICam.isDirty = true;
         }
         private void darkButton19_Click(object sender, EventArgs e)
         {
+            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
 
+            CurrentAICam.AICamp.Positions.Remove(CurrentWapypoint);
+            CurrentAICam.isDirty = true;
+            ObjectivesAICampPositionsLB.Refresh();
         }
         private void darkButton18_Click(object sender, EventArgs e)
         {
+            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
+            string[] fileContent = new string[] { };
+            var filePath = string.Empty;
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    filePath = openFileDialog.FileName;
+                    var fileStream = openFileDialog.OpenFile();
+                    fileContent = File.ReadAllLines(filePath);
+                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        CurrentAICam.AICamp.Positions.Clear();
+                    }
+                    for (int i = 0; i < fileContent.Length; i++)
+                    {
+                        if (fileContent[i] == "") continue;
+                        string[] linesplit = fileContent[i].Split('|');
+                        string[] XYZ = linesplit[1].Split(' ');
+                        float[] newfloatarray = new float[] { Convert.ToSingle(XYZ[0]), Convert.ToSingle(XYZ[1]), Convert.ToSingle(XYZ[2]) };
+                        CurrentAICam.AICamp.Positions.Add(newfloatarray);
 
+                    }
+                    ObjectivesAICampPositionsLB.SelectedIndex = -1;
+                    ObjectivesAICampPositionsLB.SelectedIndex = ObjectivesAICampPositionsLB.Items.Count - 1;
+                    ObjectivesAICampPositionsLB.Refresh();
+                    CurrentAICam.isDirty = true;
+                }
+            }
         }
         private void darkButton17_Click(object sender, EventArgs e)
         {
-
+            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
+            StringBuilder SB = new StringBuilder();
+            foreach (float[] array in CurrentAICam.AICamp.Positions)
+            {
+                SB.AppendLine("eAI_SurvivorM_Lewis|" + array[0].ToString() + " " + array[1].ToString() + " " + array[2].ToString() + "|0.0 0.0 0.0");
+            }
+            SaveFileDialog save = new SaveFileDialog();
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                File.WriteAllText(save.FileName + ".map", SB.ToString());
+            }
         }
         private void darkButton16_Click(object sender, EventArgs e)
         {
-
+            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    DZE importfile = DZEHelpers.LoadFile(filePath);
+                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        CurrentAICam.AICamp.Positions.Clear();
+                    }
+                    foreach (Editorobject eo in importfile.EditorObjects)
+                    {
+                        float[] newfloatarray = new float[] { Convert.ToSingle(eo.Position[0]), Convert.ToSingle(eo.Position[1]), Convert.ToSingle(eo.Position[2]) };
+                        CurrentAICam.AICamp.Positions.Add(newfloatarray);
+                    }
+                    ObjectivesAICampPositionsLB.SelectedIndex = -1;
+                    ObjectivesAICampPositionsLB.SelectedIndex = ObjectivesAICampPositionsLB.Items.Count - 1;
+                    ObjectivesAICampPositionsLB.Refresh();
+                    CurrentAICam.isDirty = true;
+                }
+            }
         }
         private void darkButton15_Click(object sender, EventArgs e)
         {
-
+            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
+            DZE newdze = new DZE()
+            {
+                MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
+            };
+            foreach (float[] array in CurrentAICam.AICamp.Positions)
+            {
+                Editorobject eo = new Editorobject()
+                {
+                    Type = "eAI_SurvivorM_Jose",
+                    DisplayName = "eAI_SurvivorM_Jose",
+                    Position = array,
+                    Orientation = new float[] { 0, 0, 0 },
+                    Scale = 1.0f,
+                    Flags = 2147483647
+                };
+                newdze.EditorObjects.Add(eo);
+            }
+            newdze.CameraPosition = newdze.EditorObjects[0].Position;
+            SaveFileDialog save = new SaveFileDialog();
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                string jsonString = JsonSerializer.Serialize(newdze, options);
+                File.WriteAllText(save.FileName + ".dze", jsonString);
+            }
         }
         private void numericUpDown9_ValueChanged(object sender, EventArgs e)
         {
-
+            if (!useraction) return;
+            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
+            CurrentWapypoint[0] = (float)numericUpDown9.Value;
+            CurrentAICam.isDirty = true;
         }
         private void numericUpDown11_ValueChanged(object sender, EventArgs e)
         {
-
+            if (!useraction) return;
+            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
+            CurrentWapypoint[1] = (float)numericUpDown11.Value;
+            CurrentAICam.isDirty = true;
         }
         private void numericUpDown12_ValueChanged(object sender, EventArgs e)
         {
-
+            if (!useraction) return;
+            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
+            CurrentWapypoint[2] = (float)numericUpDown12.Value;
+            CurrentAICam.isDirty = true;
         }
         private void ObjectiovesAICampNPCSpeedCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (!useraction) return;
+            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
+            CurrentAICam.AICamp.NPCSpeed = ObjectiovesAICampNPCSpeedCB.GetItemText(ObjectiovesAICampNPCSpeedCB.SelectedItem);
+            CurrentAICam.isDirty = true;
         }
         private void ObjectivesAICampNPCModeCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (!useraction) return;
+            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
+            CurrentAICam.AICamp.NPCMode = ObjectivesAICampNPCModeCB.GetItemText(ObjectivesAICampNPCModeCB.SelectedItem);
+            CurrentAICam.isDirty = true;
         }
         private void ObjectivesAICampNPCFactionCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (!useraction) return;
+            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
+            CurrentAICam.AICamp.NPCFaction = ObjectivesAICampNPCFactionCB.GetItemText(ObjectivesAICampNPCFactionCB.SelectedItem);
+            CurrentAICam.isDirty = true;
         }
         private void ObjectivesAICampNPCLoadoutFileCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (!useraction) return;
+            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
+            CurrentAICam.AICamp.NPCLoadoutFile = ObjectivesAICampNPCLoadoutFileCB.GetItemText(ObjectivesAICampNPCLoadoutFileCB.SelectedItem);
+            CurrentAICam.isDirty = true;
         }
         private void ObjectivesAICampNPCAccuracyMinNUD_ValueChanged(object sender, EventArgs e)
         {
-
+            if (!useraction) return;
+            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
+            CurrentAICam.AICamp.NPCAccuracyMin = ObjectivesAICampNPCAccuracyMinNUD.Value;
+            CurrentAICam.isDirty = true;
         }
         private void ObjectivesAICampNPCAccuracyMaxNUD_ValueChanged(object sender, EventArgs e)
         {
-
+            if (!useraction) return;
+            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
+            CurrentAICam.AICamp.NPCAccuracyMax = ObjectivesAICampNPCAccuracyMaxNUD.Value;
+            CurrentAICam.isDirty = true;
         }
         private void darkButton22_Click(object sender, EventArgs e)
         {
-
+            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
+            AddItemfromString form = new AddItemfromString();
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    if(!CurrentAICam.AICamp.ClassNames.Contains(l))
+                    CurrentAICam.AICamp.ClassNames.Add(l);
+                }
+            }
+            CurrentAICam.isDirty = true;
         }
         private void darkButton21_Click(object sender, EventArgs e)
         {
-
+            if (ObjectivesAiCampClassnamesLB.SelectedItems.Count < 1) return;
+            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
+            for (int i = 0; i < ObjectivesAiCampClassnamesLB.SelectedItems.Count; i++)
+            {
+                CurrentAICam.AICamp.ClassNames.Remove(ObjectivesAiCampClassnamesLB.GetItemText(ObjectivesAiCampClassnamesLB.SelectedItems[0]));
+            }
+            CurrentAICam.isDirty = true;
         }
         private void ObjectivesAICampSpecialWeaponCB_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (!useraction) return;
+            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
+            CurrentAICam.AICamp.SpecialWeapon = ObjectivesAICampSpecialWeaponCB.Checked == true ? 1 : 0;
+            CurrentAICam.isDirty = true;
         }
         private void darkButton31_Click(object sender, EventArgs e)
         {
-
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
+                foreach (string l in addedtypes)
+                {
+                    if (!CurrentAICam.AICamp.AllowedWeapons.Contains(l))
+                    {
+                        CurrentAICam.AICamp.AllowedWeapons.Add(l);
+                        CurrentAICam.isDirty = true;
+                    }
+                }
+                ObjectivesAICampAllowedWeaponsLB.Refresh();
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
         }
         private void darkButton29_Click(object sender, EventArgs e)
         {
-
+            if (ObjectivesAICampAllowedWeaponsLB.SelectedItems.Count < 1) return;
+            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
+            for (int i = 0; i < ObjectivesAICampAllowedWeaponsLB.SelectedItems.Count; i++)
+            {
+                CurrentAICam.AICamp.AllowedWeapons.Remove(ObjectivesAICampAllowedWeaponsLB.GetItemText(ObjectivesAICampAllowedWeaponsLB.SelectedItems[0]));
+            }
+            CurrentAICam.isDirty = true;
         }
         private void ObjectivesAICampMinDistRadiusNUD_ValueChanged(object sender, EventArgs e)
         {
-
+            if (!useraction) return;
+            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
+            CurrentAICam.MinDistRadius = ObjectivesAICampMinDistRadiusNUD.Value;
+            CurrentAICam.isDirty = true;
         }
         private void ObjectivesAICampMaxDistRadiusNUD_ValueChanged(object sender, EventArgs e)
         {
-
+            if (!useraction) return;
+            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
+            CurrentAICam.MaxDistRadius = ObjectivesAICampMaxDistRadiusNUD.Value;
+            CurrentAICam.isDirty = true;
         }
         private void ObjectivesAICampDespawnRadiusNUD_ValueChanged(object sender, EventArgs e)
         {
-
+            if (!useraction) return;
+            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
+            CurrentAICam.DespawnRadius = ObjectivesAICampDespawnRadiusNUD.Value;
+            CurrentAICam.isDirty = true;
         }
         private void ObjectiovesAICampCanLootAICB_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (!useraction) return;
+            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
+            CurrentAICam.CanLootAI = ObjectiovesAICampCanLootAICB.Checked == true ? 1:0;
+            CurrentAICam.isDirty = true;
         }
+        /// <summary>
+        /// AI Patrol
+        /// </summary>
+        private void SetupobjectiveAIPatrol(TreeNodeMouseClickEventArgs e)
+        {
+            useraction = false;
+            QuestObjectivesAIPatrol CurrentAIPatrol = e.Node.Tag as QuestObjectivesAIPatrol;
+            ObjectivesAIPatrolNPCUnitsNUD.Value = CurrentAIPatrol.AIPatrol.NPCUnits;
+            ObjectiovesAIPatrolNPCSpeedCB.SelectedIndex = ObjectiovesAIPatrolNPCSpeedCB.FindStringExact(CurrentAIPatrol.AIPatrol.NPCSpeed);
+            ObjectivesAIPatrolNPCModeCB.SelectedIndex = ObjectivesAIPatrolNPCModeCB.FindStringExact(CurrentAIPatrol.AIPatrol.NPCMode);
+            ObjectivesAIPatrolNPCFactionCB.SelectedIndex = ObjectivesAIPatrolNPCFactionCB.FindStringExact(CurrentAIPatrol.AIPatrol.NPCFaction);
+            ObjectivesAIPatrolNPCFormationCB.SelectedIndex = ObjectivesAIPatrolNPCFormationCB.FindStringExact(CurrentAIPatrol.AIPatrol.NPCFormation);
+            ObjectivesAIPatrolNPCLoadoutFileCB.SelectedIndex = ObjectivesAIPatrolNPCLoadoutFileCB.FindStringExact(CurrentAIPatrol.AIPatrol.NPCLoadoutFile);
+            ObjectivesAIPatrolNPCAccuracyMaxNUD.Value = CurrentAIPatrol.AIPatrol.NPCAccuracyMax;
+            ObjectivesAIPatrolNPCAccuracyMinNUD.Value = CurrentAIPatrol.AIPatrol.NPCAccuracyMin;
+            ObjectivesAIPatrolSpecialWeaponCB.Checked = CurrentAIPatrol.AIPatrol.SpecialWeapon == 1 ? true : false;
+            ObjectivesAIPatrolMinDistRadiusNUD.Value = CurrentAIPatrol.MinDistRadius;
+            ObjectivesAIPatrolMaxDistRadiusNUD.Value = CurrentAIPatrol.MaxDistRadius;
+            ObjectivesAIPatrolDespawnRadiusNUD.Value = CurrentAIPatrol.DespawnRadius;
+            ObjectiovesAIPatrolCanLootAICB.Checked = CurrentAIPatrol.CanLootAI == 1 ? true : false;
 
+            ObjectivesAIPatrolWaypointsLB.DisplayMember = "DisplayName";
+            ObjectivesAIPatrolWaypointsLB.ValueMember = "Value";
+            ObjectivesAIPatrolWaypointsLB.DataSource = CurrentAIPatrol.AIPatrol.Waypoints;
 
+            ObjectivesAiPatrolClassnamesLB.DisplayMember = "DisplayName";
+            ObjectivesAiPatrolClassnamesLB.ValueMember = "Value";
+            ObjectivesAiPatrolClassnamesLB.DataSource = CurrentAIPatrol.AIPatrol.ClassNames;
 
+            ObjectivesAIPatrolAllowedWeaponsLB.DisplayMember = "DisplayName";
+            ObjectivesAIPatrolAllowedWeaponsLB.ValueMember = "Value";
+            ObjectivesAIPatrolAllowedWeaponsLB.DataSource = CurrentAIPatrol.AIPatrol.AllowedWeapons;
+            useraction = true;
+        }
+        private void ObjectivesAIPatrolWaypointsLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ObjectivesAIPatrolWaypointsLB.SelectedItems.Count < 1) return;
+            CurrentWapypoint = ObjectivesAIPatrolWaypointsLB.SelectedItem as float[];
+            useraction = false;
+            numericUpDown20.Value = (decimal)CurrentWapypoint[0];
+            numericUpDown21.Value = (decimal)CurrentWapypoint[1];
+            numericUpDown22.Value = (decimal)CurrentWapypoint[2];
+            useraction = true;
+        }
+        private void darkButton48_Click(object sender, EventArgs e)
+        {
+            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            CurrentAIPatrol.AIPatrol.Waypoints.Add(new float[] { 0, 0, 0 });
+            CurrentAIPatrol.isDirty = true;
+        }
+        private void darkButton47_Click(object sender, EventArgs e)
+        {
+            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            CurrentAIPatrol.AIPatrol.Waypoints.Remove(CurrentWapypoint);
+            CurrentAIPatrol.isDirty = true;
+            ObjectivesAIPatrolWaypointsLB.Refresh();
+        }
+        private void darkButton46_Click(object sender, EventArgs e)
+        {
+            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            string[] fileContent = new string[] { };
+            var filePath = string.Empty;
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    filePath = openFileDialog.FileName;
+                    var fileStream = openFileDialog.OpenFile();
+                    fileContent = File.ReadAllLines(filePath);
+                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        CurrentAIPatrol.AIPatrol.Waypoints.Clear();
+                    }
+                    for (int i = 0; i < fileContent.Length; i++)
+                    {
+                        if (fileContent[i] == "") continue;
+                        string[] linesplit = fileContent[i].Split('|');
+                        string[] XYZ = linesplit[1].Split(' ');
+                        float[] newfloatarray = new float[] { Convert.ToSingle(XYZ[0]), Convert.ToSingle(XYZ[1]), Convert.ToSingle(XYZ[2]) };
+                        CurrentAIPatrol.AIPatrol.Waypoints.Add(newfloatarray);
 
+                    }
+                    ObjectivesAIPatrolWaypointsLB.SelectedIndex = -1;
+                    ObjectivesAIPatrolWaypointsLB.SelectedIndex = ObjectivesAIPatrolWaypointsLB.Items.Count - 1;
+                    ObjectivesAIPatrolWaypointsLB.Refresh();
+                    CurrentAIPatrol.isDirty = true;
+                }
+            }
+        }
+        private void darkButton45_Click(object sender, EventArgs e)
+        {
+            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            StringBuilder SB = new StringBuilder();
+            foreach (float[] array in CurrentAIPatrol.AIPatrol.Waypoints)
+            {
+                SB.AppendLine("eAI_SurvivorM_Lewis|" + array[0].ToString() + " " + array[1].ToString() + " " + array[2].ToString() + "|0.0 0.0 0.0");
+            }
+            SaveFileDialog save = new SaveFileDialog();
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                File.WriteAllText(save.FileName + ".map", SB.ToString());
+            }
+        }
+        private void darkButton44_Click(object sender, EventArgs e)
+        {
+            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    DZE importfile = DZEHelpers.LoadFile(filePath);
+                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        CurrentAIPatrol.AIPatrol.Waypoints.Clear();
+                    }
+                    foreach (Editorobject eo in importfile.EditorObjects)
+                    {
+                        float[] newfloatarray = new float[] { Convert.ToSingle(eo.Position[0]), Convert.ToSingle(eo.Position[1]), Convert.ToSingle(eo.Position[2]) };
+                        CurrentAIPatrol.AIPatrol.Waypoints.Add(newfloatarray);
+                    }
+                    ObjectivesAIPatrolWaypointsLB.SelectedIndex = -1;
+                    ObjectivesAIPatrolWaypointsLB.SelectedIndex = ObjectivesAIPatrolWaypointsLB.Items.Count - 1;
+                    ObjectivesAIPatrolWaypointsLB.Refresh();
+                    CurrentAIPatrol.isDirty = true;
+                }
+            }
+        }
+        private void darkButton43_Click(object sender, EventArgs e)
+        {
+            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            DZE newdze = new DZE()
+            {
+                MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
+            };
+            foreach (float[] array in CurrentAIPatrol.AIPatrol.Waypoints)
+            {
+                Editorobject eo = new Editorobject()
+                {
+                    Type = "eAI_SurvivorM_Jose",
+                    DisplayName = "eAI_SurvivorM_Jose",
+                    Position = array,
+                    Orientation = new float[] { 0, 0, 0 },
+                    Scale = 1.0f,
+                    Flags = 2147483647
+                };
+                newdze.EditorObjects.Add(eo);
+            }
+            newdze.CameraPosition = newdze.EditorObjects[0].Position;
+            SaveFileDialog save = new SaveFileDialog();
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                string jsonString = JsonSerializer.Serialize(newdze, options);
+                File.WriteAllText(save.FileName + ".dze", jsonString);
+            }
+        }
+        private void numericUpDown20_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            CurrentWapypoint[2] = (float)numericUpDown20.Value;
+            CurrentAIPatrol.isDirty = true;
+        }
+        private void numericUpDown21_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            CurrentWapypoint[2] = (float)numericUpDown21.Value;
+            CurrentAIPatrol.isDirty = true;
+        }
+        private void numericUpDown22_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            CurrentWapypoint[2] = (float)numericUpDown22.Value;
+            CurrentAIPatrol.isDirty = true;
+        }
+        private void ObjectivesAIPatrolNPCUnitsNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            CurrentAIPatrol.AIPatrol.NPCUnits = (int)ObjectivesAIPatrolNPCUnitsNUD.Value;
+            CurrentAIPatrol.isDirty = true;
+        }
+        private void ObjectiovesAIPatrolNPCSpeedCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            CurrentAIPatrol.AIPatrol.NPCSpeed = ObjectiovesAIPatrolNPCSpeedCB.GetItemText(ObjectiovesAIPatrolNPCSpeedCB.SelectedItem);
+            CurrentAIPatrol.isDirty = true;
+        }
+        private void ObjectivesAIPatrolNPCModeCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            CurrentAIPatrol.AIPatrol.NPCMode = ObjectivesAIPatrolNPCModeCB.GetItemText(ObjectivesAIPatrolNPCModeCB.SelectedItem);
+            CurrentAIPatrol.isDirty = true;
+        }
+        private void ObjectivesAIPatrolNPCFactionCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            CurrentAIPatrol.AIPatrol.NPCFaction = ObjectivesAIPatrolNPCFactionCB.GetItemText(ObjectivesAIPatrolNPCFactionCB.SelectedItem);
+            CurrentAIPatrol.isDirty = true;
+        }
+        private void ObjectivesAIPatrolNPCFormationCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            CurrentAIPatrol.AIPatrol.NPCFormation = ObjectivesAIPatrolNPCFormationCB.GetItemText(ObjectivesAIPatrolNPCFormationCB.SelectedItem);
+            CurrentAIPatrol.isDirty = true;
+        }
+        private void ObjectivesAIPatrolNPCLoadoutFileCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            CurrentAIPatrol.AIPatrol.NPCLoadoutFile = ObjectivesAIPatrolNPCLoadoutFileCB.GetItemText(ObjectivesAIPatrolNPCLoadoutFileCB.SelectedItem);
+            CurrentAIPatrol.isDirty = true;
+        }
+        private void ObjectivesAIPatrolNPCAccuracyMinNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            CurrentAIPatrol.AIPatrol.NPCAccuracyMin = ObjectivesAIPatrolNPCAccuracyMinNUD.Value;
+            CurrentAIPatrol.isDirty = true;
+        }
+        private void ObjectivesAIPatrolNPCAccuracyMaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            CurrentAIPatrol.AIPatrol.NPCAccuracyMax = ObjectivesAIPatrolNPCAccuracyMaxNUD.Value;
+            CurrentAIPatrol.isDirty = true;
+        }
+        private void darkButton42_Click(object sender, EventArgs e)
+        {
+            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            AddItemfromString form = new AddItemfromString();
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    if (!CurrentAIPatrol.AIPatrol.ClassNames.Contains(l))
+                        CurrentAIPatrol.AIPatrol.ClassNames.Add(l);
+                }
+            }
+            CurrentAIPatrol.isDirty = true;
+        }
+        private void darkButton41_Click(object sender, EventArgs e)
+        {
+            if (ObjectivesAiPatrolClassnamesLB.SelectedItems.Count < 1) return;
+            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            for (int i = 0; i < ObjectivesAiPatrolClassnamesLB.SelectedItems.Count; i++)
+            {
+                CurrentAIPatrol.AIPatrol.ClassNames.Remove(ObjectivesAiPatrolClassnamesLB.GetItemText(ObjectivesAiPatrolClassnamesLB.SelectedItems[0]));
+            }
+            CurrentAIPatrol.isDirty = true;
+        }
+        private void ObjectivesAIPatrolSpecialWeaponCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            CurrentAIPatrol.AIPatrol.SpecialWeapon = ObjectivesAIPatrolSpecialWeaponCB.Checked == true ? 1 : 0;
+            CurrentAIPatrol.isDirty = true;
+        }
+        private void darkButton40_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+                foreach (string l in addedtypes)
+                {
+                    if (!CurrentAIPatrol.AIPatrol.AllowedWeapons.Contains(l))
+                    {
+                        CurrentAIPatrol.AIPatrol.AllowedWeapons.Add(l);
+                        CurrentAIPatrol.isDirty = true;
+                    }
+                }
+                ObjectivesAIPatrolAllowedWeaponsLB.Refresh();
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+        }
+        private void darkButton32_Click(object sender, EventArgs e)
+        {
+            if (ObjectivesAICampAllowedWeaponsLB.SelectedItems.Count < 1) return;
+            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            for (int i = 0; i < ObjectivesAICampAllowedWeaponsLB.SelectedItems.Count; i++)
+            {
+                CurrentAIPatrol.AIPatrol.AllowedWeapons.Remove(ObjectivesAICampAllowedWeaponsLB.GetItemText(ObjectivesAICampAllowedWeaponsLB.SelectedItems[0]));
+            }
+            CurrentAIPatrol.isDirty = true;
+        }
+        private void ObjectivesAIPatrolMinDistRadiusNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            CurrentAIPatrol.MinDistRadius = ObjectivesAIPatrolMinDistRadiusNUD.Value;
+            CurrentAIPatrol.isDirty = true;
+        }
+        private void ObjectivesAIPatrolMaxDistRadiusNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            CurrentAIPatrol.MaxDistRadius = ObjectivesAIPatrolMaxDistRadiusNUD.Value;
+            CurrentAIPatrol.isDirty = true;
+        }
+        private void ObjectivesAIPatrolDespawnRadiusNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            CurrentAIPatrol.DespawnRadius = ObjectivesAIPatrolDespawnRadiusNUD.Value;
+            CurrentAIPatrol.isDirty = true;
+        }
+        private void ObjectiovesAIPatrolCanLootAICB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            CurrentAIPatrol.CanLootAI = ObjectiovesAIPatrolCanLootAICB.Checked == true ? 1 : 0;
+            CurrentAIPatrol.isDirty = true;
+        }
+        /// <summary>
+        /// AI VIP
+        /// </summary>
+        private void SetupObjectiveAIVIP(TreeNodeMouseClickEventArgs e)
+        {
+            useraction = false;
+            QuestObjectivesAIVIP CurrentAIVIP = e.Node.Tag as QuestObjectivesAIVIP;
+            ObjectivesAIVIPPositionXNUD.Value = (decimal)CurrentAIVIP.Position[0];
+            ObjectivesAIVIPPositionYNUD.Value = (decimal)CurrentAIVIP.Position[1];
+            ObjectivesAIVIPPositionZNUD.Value = (decimal)CurrentAIVIP.Position[2];
+            ObjectivesAIVIPMaxDistanceNUD.Value = CurrentAIVIP.MaxDistance;
+            ObjectivesAIVIPClassnameTB.Text = CurrentAIVIP.AIVIP.NPCClassName;
+            ObjectiovesAIVIPNPCSpeedCB.SelectedIndex = ObjectiovesAIPatrolNPCSpeedCB.FindStringExact(CurrentAIVIP.AIVIP.NPCSpeed);
+            ObjectivesAIVIPNPCModeCB.SelectedIndex = ObjectivesAIVIPNPCModeCB.FindStringExact(CurrentAIVIP.AIVIP.NPCMode);
+            ObjectivesAIVIPNPCFactionCB.SelectedIndex = ObjectivesAIVIPNPCFactionCB.FindStringExact(CurrentAIVIP.AIVIP.NPCFaction);
+            ObjectivesAIVIPNPCLoadoutFileCB.SelectedIndex = ObjectivesAIVIPNPCLoadoutFileCB.FindStringExact(CurrentAIVIP.AIVIP.NPCLoadoutFile);
+            ObjectivesAIVIPMarkerNameTB.Text = CurrentAIVIP.MarkerName;
+            useraction = true;
+        }
+        private void ObjectivesAIVIPPositionXNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
+            CurrentAIVIP.Position[0] = (float)ObjectivesAIVIPPositionXNUD.Value;
+            CurrentAIVIP.isDirty = true;
+        }
+        private void ObjectivesAIVIPPositionYNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
+            CurrentAIVIP.Position[1] = (float)ObjectivesAIVIPPositionYNUD.Value;
+            CurrentAIVIP.isDirty = true;
+        }
+        private void ObjectivesAIVIPPositionZNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
+            CurrentAIVIP.Position[2] = (float)ObjectivesAIVIPPositionZNUD.Value;
+            CurrentAIVIP.isDirty = true;
+        }
+        private void ObjectivesAIVIPMaxDistanceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
+            CurrentAIVIP.MaxDistance = ObjectivesAIVIPMaxDistanceNUD.Value;
+            CurrentAIVIP.isDirty = true;
+        }
+        private void ObjectivesAIVIPClassnameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
+            CurrentAIVIP.AIVIP.NPCClassName = ObjectivesAIVIPClassnameTB.Text;
+            CurrentAIVIP.isDirty = true;
+        }
+        private void ObjectiovesAIVIPNPCSpeedCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
+            CurrentAIVIP.AIVIP.NPCSpeed = ObjectiovesAIVIPNPCSpeedCB.GetItemText(ObjectiovesAIVIPNPCSpeedCB.SelectedItem);
+            CurrentAIVIP.isDirty = true;
+        }
+        private void ObjectivesAIVIPNPCModeCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
+            CurrentAIVIP.AIVIP.NPCMode = ObjectivesAIVIPNPCModeCB.GetItemText(ObjectivesAIVIPNPCModeCB.SelectedItem);
+            CurrentAIVIP.isDirty = true;
+        }
+        private void ObjectivesAIVIPNPCFactionCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
+            CurrentAIVIP.AIVIP.NPCFaction = ObjectivesAIVIPNPCFactionCB.GetItemText(ObjectivesAIVIPNPCFactionCB.SelectedItem);
+            CurrentAIVIP.isDirty = true;
+        }
+        private void ObjectivesAIVIPNPCLoadoutFileCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
+            CurrentAIVIP.AIVIP.NPCLoadoutFile = ObjectivesAIVIPNPCLoadoutFileCB.GetItemText(ObjectivesAIVIPNPCLoadoutFileCB.SelectedItem);
+            CurrentAIVIP.isDirty = true;
+        }
+        private void ObjectivesAIVIPMarkerNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
+            CurrentAIVIP.MarkerName = ObjectivesAIVIPMarkerNameTB.Text;
+            CurrentAIVIP.isDirty = true;
+        }
+        /// <summary>
+        /// Collection
+        /// </summary>
+        private void setupObjectiveCollection(TreeNodeMouseClickEventArgs e)
+        {
+            useraction = false;
+            QuestObjectivesCollection CurrentCollection = e.Node.Tag as QuestObjectivesCollection;
+            ObjectivesCollectionMaxDistanceNUD.Value = CurrentCollection.MaxDistance;
+            ObjectivesCollectionMarkernameTB.Text = CurrentCollection.MarkerName;
+            ObjectivesCollectionShowDistanceCB.Checked = CurrentCollection.ShowDistance == 1 ? true : false;
+
+            ObjectivesCollectionCollectionsLB.DisplayMember = "DisplayName";
+            ObjectivesCollectionCollectionsLB.ValueMember = "Value";
+            ObjectivesCollectionCollectionsLB.DataSource = CurrentCollection.Collections;
+
+            useraction = true;
+        }
+        public Collections CurrentCollections;
+        private void ObjectivesCollectionCollectionsLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ObjectivesCollectionCollectionsLB.SelectedItems.Count < 1) return;
+            CurrentCollections = ObjectivesCollectionCollectionsLB.SelectedItem as Collections;
+            useraction = false;
+            ObjectivesCollectionClassnameTB.Text = CurrentCollections.ClassName;
+            ObjectivesCollectionAmountNUD.Value = CurrentCollections.Amount;
+            useraction = true;
+        }
+        private void ObjectivesCollectionMaxDistanceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesCollection CurrentCollection = CurrentTreeNodeTag as QuestObjectivesCollection;
+            CurrentCollection.MaxDistance = ObjectivesCollectionMaxDistanceNUD.Value;
+            CurrentCollection.isDirty = true;
+        }
+        private void ObjectivesCollectionMarkernameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesCollection CurrentCollection = CurrentTreeNodeTag as QuestObjectivesCollection;
+            CurrentCollection.MarkerName = ObjectivesCollectionMarkernameTB.Text;
+            CurrentCollection.isDirty = true;
+        }
+        private void ObjectivesCollectionShowDistanceCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesCollection CurrentCollection = CurrentTreeNodeTag as QuestObjectivesCollection;
+            CurrentCollection.ShowDistance = ObjectivesCollectionShowDistanceCB.Checked == true ? 1 : 0;
+            CurrentCollection.isDirty = true;
+        }
+        private void darkButton51_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                QuestObjectivesCollection CurrentCollection = CurrentTreeNodeTag as QuestObjectivesCollection;
+                foreach (string l in addedtypes)
+                {
+                    Collections newcollection = new Collections()
+                    {
+                        ClassName = l,
+                        Amount = 1
+                    };
+                    CurrentCollection.Collections.Add(newcollection);
+                    ObjectivesCollectionCollectionsLB.Refresh();
+                }
+                CurrentCollection.isDirty = true;
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+        }
+        private void darkButton50_Click(object sender, EventArgs e)
+        {
+            QuestObjectivesCollection CurrentCollection = CurrentTreeNodeTag as QuestObjectivesCollection;
+            CurrentCollection.Collections.Remove(CurrentCollections);
+            CurrentCollection.isDirty = true;
+            ObjectivesCollectionCollectionsLB.Refresh();
+        }
+        private void ObjectivesCollectionAmountNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesCollection CurrentCollection = CurrentTreeNodeTag as QuestObjectivesCollection;
+            CurrentCollections.Amount = (int)ObjectivesCollectionAmountNUD.Value;
+            CurrentCollection.isDirty = true;
+        }
+        private void darkButton49_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseOnlySingleitem = true
+                
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    ObjectivesCollectionClassnameTB.Text = l;
+                }
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+        }
+        private void ObjectivesCollectionClassnameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesCollection CurrentCollection = CurrentTreeNodeTag as QuestObjectivesCollection;
+            CurrentCollections.ClassName = ObjectivesCollectionClassnameTB.Text;
+            CurrentCollection.isDirty = true;
+        }
+        /// <summary>
+        /// Crafting
+        /// </summary>
+        private void setupobjectivecrafting(TreeNodeMouseClickEventArgs e)
+        {
+            useraction = false;
+            QuestObjectivesCrafting CurrentCrafting = e.Node.Tag as QuestObjectivesCrafting;
+
+            ObjectivesCraftingLB.DisplayMember = "DisplayName";
+            ObjectivesCraftingLB.ValueMember = "Value";
+            ObjectivesCraftingLB.DataSource = CurrentCrafting.ItemNames;
+
+            useraction = true;
+        }
+        private void darkButton53_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                QuestObjectivesCrafting CurrentCrafting = CurrentTreeNodeTag as QuestObjectivesCrafting;
+                foreach (string l in addedtypes)
+                {
+                    if (!CurrentCrafting.ItemNames.Contains(l))
+                    {
+                        CurrentCrafting.ItemNames.Add(l);
+                        ObjectivesCraftingLB.Refresh();
+                    }
+                }
+                CurrentCrafting.isDirty = true;
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+        }
+        private void darkButton52_Click(object sender, EventArgs e)
+        {
+            if (ObjectivesCraftingLB.SelectedItems.Count < 1) return;
+            QuestObjectivesCrafting CurrentCrafting = CurrentTreeNodeTag as QuestObjectivesCrafting;
+            for (int i = 0; i < ObjectivesCraftingLB.SelectedItems.Count; i++)
+            {
+                CurrentCrafting.ItemNames.Remove(ObjectivesCraftingLB.GetItemText(ObjectivesCraftingLB.SelectedItems[0]));
+            }
+            CurrentCrafting.isDirty = true;
+        }
+        /// <summary>
+        /// Delivery
+        /// </summary>
+        private void setupobjectiveDelivery(TreeNodeMouseClickEventArgs e)
+        {
+            useraction = false;
+            QuestObjectivesDelivery CurrentDelivery = e.Node.Tag as QuestObjectivesDelivery;
+            ObjectivesDeliveryMaxDistanceNUD.Value = CurrentDelivery.MaxDistance;
+            ObjectivesDeliveryMarkerNameTB.Text = CurrentDelivery.MarkerName;
+            ObjectivesDeliveryShowDistanceCB.Checked = CurrentDelivery.ShowDistance == 1 ? true : false;
+
+            ObjectivesDeliveryDeliveriesLB.DisplayMember = "DisplayName";
+            ObjectivesDeliveryDeliveriesLB.ValueMember = "Value";
+            ObjectivesDeliveryDeliveriesLB.DataSource = CurrentDelivery.Deliveries;
+
+            useraction = true;
+        }
+        public Delivery CurrentDeliveries;
+        private void ObjectivesDeliveryDeliveriesLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ObjectivesDeliveryDeliveriesLB.SelectedItems.Count < 1) return;
+            CurrentDeliveries = ObjectivesDeliveryDeliveriesLB.SelectedItem as Delivery;
+            useraction = false;
+            ObjectivesDeliveryClassnameTB.Text = CurrentDeliveries.ClassName;
+            ObjectivesDeliveryAmountNUD.Value = CurrentDeliveries.Amount;
+            useraction = true;
+        }
+        private void ObjectivesDeliveryMaxDistanceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesDelivery CurrentDelivery = CurrentTreeNodeTag as QuestObjectivesDelivery;
+            CurrentDelivery.MaxDistance = ObjectivesCollectionMaxDistanceNUD.Value;
+            CurrentDelivery.isDirty = true;
+        }
+        private void ObjectivesDeliveryMarkerNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesDelivery CurrentDelivery = CurrentTreeNodeTag as QuestObjectivesDelivery;
+            CurrentDelivery.MarkerName = ObjectivesDeliveryMarkerNameTB.Text;
+            CurrentDelivery.isDirty = true;
+        }
+        private void ObjectivesDeliveryShowDistanceCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesDelivery CurrentDelivery = CurrentTreeNodeTag as QuestObjectivesDelivery;
+            CurrentDelivery.ShowDistance = ObjectivesDeliveryShowDistanceCB.Checked == true ? 1 : 0;
+            CurrentDelivery.isDirty = true;
+        }
+        private void darkButton55_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                QuestObjectivesDelivery CurrentDelivery = CurrentTreeNodeTag as QuestObjectivesDelivery;
+                foreach (string l in addedtypes)
+                {
+                    Delivery newDelivery = new Delivery()
+                    {
+                        ClassName = l,
+                        Amount = 1
+                    };
+                    CurrentDelivery.Deliveries.Add(newDelivery);
+                    ObjectivesDeliveryDeliveriesLB.Refresh();
+                }
+                CurrentDelivery.isDirty = true;
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+        }
+        private void darkButton54_Click(object sender, EventArgs e)
+        {
+            QuestObjectivesDelivery CurrentDelivery = CurrentTreeNodeTag as QuestObjectivesDelivery;
+            CurrentDelivery.Deliveries.Remove(CurrentDeliveries);
+            CurrentDelivery.isDirty = true;
+            ObjectivesDeliveryDeliveriesLB.Refresh();
+        }
+        private void ObjectivesDeliveryAmountNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesDelivery CurrentDelivery = CurrentTreeNodeTag as QuestObjectivesDelivery;
+            CurrentDeliveries.Amount = (int)ObjectivesDeliveryAmountNUD.Value;
+            CurrentDelivery.isDirty = true;
+        }
+        private void ObjectivesDeliveryClassnameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesDelivery CurrentDelivery = CurrentTreeNodeTag as QuestObjectivesDelivery;
+            CurrentDeliveries.ClassName = ObjectivesDeliveryClassnameTB.Text;
+            CurrentDelivery.isDirty = true;
+        }
+        private void darkButton56_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseOnlySingleitem = true
+
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    ObjectivesDeliveryClassnameTB.Text = l;
+                }
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+        }
+        /// <summary>
+        /// Target
+        /// </summary>
         private void setupObjectiveTarget(TreeNodeMouseClickEventArgs e)
         {
+            useraction = false;
             QuestObjectivesTarget CurrentTarget = e.Node.Tag as QuestObjectivesTarget;
+            ObjectivesTargetPositionXNUD.Value = (decimal)CurrentTarget.Position[0];
+            ObjectivesTargetPositionYNUD.Value = (decimal)CurrentTarget.Position[1];
+            ObjectivesTargetPositionZNUD.Value = (decimal)CurrentTarget.Position[2];
+            ObjectivesTargetMaxDistanceNUD.Value = CurrentTarget.MaxDistance;
+            ObjectivesTargetAmountNUD.Value = CurrentTarget.Target.Amount;
+            ObjectivesTargetCountSelfKillCB.Checked = CurrentTarget.Target.CountSelfKill == 1 ? true : false;
+            ObjectivesTargetSpecialWeaponCB.Checked = CurrentTarget.Target.SpecialWeapon == 1 ? true : false;
+
+            ObjectivesTargetClassnameLB.DisplayMember = "DisplayName";
+            ObjectivesTargetClassnameLB.ValueMember = "Value";
+            ObjectivesTargetClassnameLB.DataSource = CurrentTarget.Target.ClassNames;
+
+            ObjectivesTargetAllowedWeaponsLB.DisplayMember = "DisplayName";
+            ObjectivesTargetAllowedWeaponsLB.ValueMember = "Value";
+            ObjectivesTargetAllowedWeaponsLB.DataSource = CurrentTarget.Target.AllowedWeapons;
+
+            ObjectivesTargetExcludedClassnamesLB.DisplayMember = "DisplayName";
+            ObjectivesTargetExcludedClassnamesLB.ValueMember = "Value";
+            ObjectivesTargetExcludedClassnamesLB.DataSource = CurrentTarget.Target.ExcludedClassNames;
+
+            useraction = true;
 
         }
+        private void ObjectivesTargetPositionXNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
+            CurrentTarget.Position[0] = (float)ObjectivesTargetPositionXNUD.Value;
+            CurrentTarget.isDirty = true;
+        }
+        private void ObjectivesTargetPositionYNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
+            CurrentTarget.Position[1] = (float)ObjectivesTargetPositionYNUD.Value;
+            CurrentTarget.isDirty = true;
+        }
+        private void ObjectivesTargetPositionZNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
+            CurrentTarget.Position[2] = (float)ObjectivesTargetPositionZNUD.Value;
+            CurrentTarget.isDirty = true;
+        }
+        private void ObjectivesTargetMaxDistanceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
+            CurrentTarget.MaxDistance = ObjectivesTargetMaxDistanceNUD.Value;
+            CurrentTarget.isDirty = true;
+        }
+        private void ObjectivesTargetAmountNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
+            CurrentTarget.Target.Amount = (int)ObjectivesTargetAmountNUD.Value;
+            CurrentTarget.isDirty = true;
+        }
+        private void darkButton58_Click(object sender, EventArgs e)
+        {
+            QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
+            AddItemfromString form = new AddItemfromString();
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    if (!CurrentTarget.Target.ClassNames.Contains(l))
+                        CurrentTarget.Target.ClassNames.Add(l);
+                }
+            }
+            CurrentTarget.isDirty = true;
+        }
+        private void darkButton57_Click(object sender, EventArgs e)
+        {
+            if (ObjectivesTargetClassnameLB.SelectedItems.Count < 1) return;
+            QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
+            for (int i = 0; i < ObjectivesTargetClassnameLB.SelectedItems.Count; i++)
+            {
+                CurrentTarget.Target.ClassNames.Remove(ObjectivesTargetClassnameLB.GetItemText(ObjectivesTargetClassnameLB.SelectedItems[0]));
+            }
+            CurrentTarget.isDirty = true;
+        }
+        private void ObjectivesTargetCountSelfKillCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
+            CurrentTarget.Target.CountSelfKill = ObjectivesTargetCountSelfKillCB.Checked == true ? 1 : 0;
+            CurrentTarget.isDirty = true;
+        }
+        private void ObjectivesTargetSpecialWeaponCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
+            CurrentTarget.Target.SpecialWeapon = ObjectivesTargetSpecialWeaponCB.Checked == true ? 1 : 0;
+            CurrentTarget.isDirty = true;
+        }
+        private void darkButton60_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
+                foreach (string l in addedtypes)
+                {
+                    if (!CurrentTarget.Target.AllowedWeapons.Contains(l))
+                    {
+                        CurrentTarget.Target.AllowedWeapons.Add(l);
+                        CurrentTarget.isDirty = true;
+                    }
+                }
+                ObjectivesAICampAllowedWeaponsLB.Refresh();
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+
+        }
+        private void darkButton59_Click(object sender, EventArgs e)
+        {
+            if (ObjectivesTargetAllowedWeaponsLB.SelectedItems.Count < 1) return;
+            QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
+            for (int i = 0; i < ObjectivesTargetAllowedWeaponsLB.SelectedItems.Count; i++)
+            {
+                CurrentTarget.Target.AllowedWeapons.Remove(ObjectivesTargetAllowedWeaponsLB.GetItemText(ObjectivesTargetAllowedWeaponsLB.SelectedItems[0]));
+            }
+            CurrentTarget.isDirty = true;
+        }
+        private void darkButton62_Click(object sender, EventArgs e)
+        {
+            QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
+            AddItemfromString form = new AddItemfromString();
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    if (!CurrentTarget.Target.ExcludedClassNames.Contains(l))
+                        CurrentTarget.Target.ExcludedClassNames.Add(l);
+                }
+            }
+            CurrentTarget.isDirty = true;
+        }
+        private void darkButton61_Click(object sender, EventArgs e)
+        {
+            if (ObjectivesTargetExcludedClassnamesLB.SelectedItems.Count < 1) return;
+            QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
+            for (int i = 0; i < ObjectivesTargetExcludedClassnamesLB.SelectedItems.Count; i++)
+            {
+                CurrentTarget.Target.ExcludedClassNames.Remove(ObjectivesTargetExcludedClassnamesLB.GetItemText(ObjectivesTargetExcludedClassnamesLB.SelectedItems[0]));
+            }
+            CurrentTarget.isDirty = true;
+        }
+        /// <summary>
+        /// Travel
+        /// </summary>
         private void SetupObjectiveTravel(TreeNodeMouseClickEventArgs e)
         {
             QuestObjectivesTravel CurrentTravel = e.Node.Tag as QuestObjectivesTravel;
-        }
-        private void setupObjectiveCollection(TreeNodeMouseClickEventArgs e)
+            ObjectivesTravelPositionXNUD.Value = (decimal)CurrentTravel.Position[0];
+            ObjectivesTravelPositionYNUD.Value = (decimal)CurrentTravel.Position[1];
+            ObjectivesTravelPositionZNUD.Value = (decimal)CurrentTravel.Position[2];
+            ObjectivesTravelMaxDistanceNUD.Value = CurrentTravel.MaxDistance;
+            ObjectivesTravelMarkerNameTB.Text = CurrentTravel.MarkerName;
+            ObjectivesTravelShowDistanceCB.Checked = CurrentTravel.ShowDistance == 1 ? true : false;
+          }
+        private void ObjectivesTravelPositionXNUD_ValueChanged(object sender, EventArgs e)
         {
-            QuestObjectivesCollection CurrentCollection = e.Node.Tag as QuestObjectivesCollection;
-
+            if (!useraction) return;
+            QuestObjectivesTravel CurrentTravel = CurrentTreeNodeTag as QuestObjectivesTravel;
+            CurrentTravel.Position[0] = (float)ObjectivesTravelPositionXNUD.Value;
+            CurrentTravel.isDirty = true;
         }
-        private void setupobjectiveDelivery(TreeNodeMouseClickEventArgs e)
+        private void ObjectivesTravelPositionYNUD_ValueChanged(object sender, EventArgs e)
         {
-            QuestObjectivesDelivery CurrentDelivery = e.Node.Tag as QuestObjectivesDelivery;
+            if (!useraction) return;
+            QuestObjectivesTravel CurrentTravel = CurrentTreeNodeTag as QuestObjectivesTravel;
+            CurrentTravel.Position[1] = (float)ObjectivesTravelPositionYNUD.Value;
+            CurrentTravel.isDirty = true;
         }
+        private void ObjectivesTravelPositionZNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesTravel CurrentTravel = CurrentTreeNodeTag as QuestObjectivesTravel;
+            CurrentTravel.Position[2] = (float)ObjectivesTravelPositionZNUD.Value;
+            CurrentTravel.isDirty = true;
+        }
+        private void ObjectivesTravelShowDistanceCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesTravel CurrentTravel = CurrentTreeNodeTag as QuestObjectivesTravel;
+            CurrentTravel.ShowDistance = ObjectivesTravelShowDistanceCB.Checked == true ? 1 : 0;
+            CurrentTravel.isDirty = true;
+        }
+        private void ObjectivesTravelMaxDistanceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesTravel CurrentTravel = CurrentTreeNodeTag as QuestObjectivesTravel;
+            CurrentTravel.MaxDistance = ObjectivesTravelMaxDistanceNUD.Value;
+            CurrentTravel.isDirty = true;
+        }
+        private void ObjectivesTravelMarkerNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesTravel CurrentTravel = CurrentTreeNodeTag as QuestObjectivesTravel;
+            CurrentTravel.MarkerName = ObjectivesTravelMarkerNameTB.Text;
+            CurrentTravel.isDirty = true;
+        }
+        /// <summary>
+        /// TreasureHunt
+        /// </summary>
+        public TreasureHuntItems CurrentTreasureHuntItems;
         private void SetupobjectiveTreasueHunt(TreeNodeMouseClickEventArgs e)
         {
             QuestObjectivesTreasureHunt CurrentTreasureHunt = e.Node.Tag as QuestObjectivesTreasureHunt;
-        }
-        private void SetupobjectiveAIPatrol(TreeNodeMouseClickEventArgs e)
-        {
-            QuestObjectivesAIPatrol CurrentAIPatrol = e.Node.Tag as QuestObjectivesAIPatrol;
-        }
+            ObjectivesTreasureHuntShowdistanceCB.Checked = CurrentTreasureHunt.ShowDistance == 1 ? true : false;
+           
+            ObjectivesTreasureHuntPositionsLB.DisplayMember = "DisplayName";
+            ObjectivesTreasureHuntPositionsLB.ValueMember = "Value";
+            ObjectivesTreasureHuntPositionsLB.DataSource = CurrentTreasureHunt.TreasureHunt.Positions;
 
-        private void SetupObjectiveAIVIP(TreeNodeMouseClickEventArgs e)
-        {
-            QuestObjectivesAIVIP CurrentAIVIP = e.Node.Tag as QuestObjectivesAIVIP;
+            ObjectivesTreasureHuntItemsLB.DisplayMember = "DisplayName";
+            ObjectivesTreasureHuntItemsLB.ValueMember = "Value";
+            ObjectivesTreasureHuntItemsLB.DataSource = CurrentTreasureHunt.TreasureHunt.ListItems;
         }
+        private void ObjectivesTreasureHuntPositionsLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ObjectivesTreasureHuntPositionsLB.SelectedItems.Count < 1) return;
+            CurrentWapypoint = ObjectivesTreasureHuntPositionsLB.SelectedItem as float[];
+            useraction = false;
+            ObjectivesTreasureHuntPositionsXNUD.Value = (decimal)CurrentWapypoint[0];
+            ObjectivesTreasureHuntPositionsYNUD.Value = (decimal)CurrentWapypoint[1];
+            ObjectivesTreasureHuntPositionsZNUD.Value = (decimal)CurrentWapypoint[2];
+            useraction = true;
+        }
+        private void ObjectivesTreasureHuntItemsLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ObjectivesTreasureHuntItemsLB.SelectedItems.Count < 1) return;
+            CurrentTreasureHuntItems = ObjectivesTreasureHuntItemsLB.SelectedItem as TreasureHuntItems;
+            useraction = false;
+            ObjectivesTreasureHuntClassnameTB.Text = CurrentTreasureHuntItems.ClassName;
+            ObjectivesTreasureHuntAmountNUD.Value = CurrentTreasureHuntItems.Amount;
+            useraction = true;
+        }
+        private void darkButton68_Click(object sender, EventArgs e)
+        {
+            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
+            CurrentTreasureHunt.TreasureHunt.Positions.Add(new float[] { 0, 0, 0 });
+            CurrentTreasureHunt.isDirty = true;
+        }
+        private void darkButton67_Click(object sender, EventArgs e)
+        {
+            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
+            CurrentTreasureHunt.TreasureHunt.Positions.Remove(CurrentWapypoint);
+            CurrentTreasureHunt.isDirty = true;
+            ObjectivesTreasureHuntPositionsLB.Refresh();
+        }
+        private void darkButton66_Click(object sender, EventArgs e)
+        {
 
-        private void setupobjectivecrafting(TreeNodeMouseClickEventArgs e)
-        {
-            QuestObjectivesCrafting CurrentAction = e.Node.Tag as QuestObjectivesCrafting;
-        }
-        private void QuestObjectivesObjectiveTextTB_TextChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentTreeNodeTag.ObjectiveText = QuestObjectivesObjectiveTextTB.Text;
-            CurrentTreeNodeTag.isDirty = true;
-            foreach(Quests quest in QuestsList.QuestList)
+            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
+            string[] fileContent = new string[] { };
+            var filePath = string.Empty;
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                foreach(QuestObjectivesBase obj in quest.Objectives)
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    if(CurrentTreeNodeTag.ID == obj.ID && CurrentTreeNodeTag.ObjectiveType == obj.ObjectiveType)
+                    filePath = openFileDialog.FileName;
+                    var fileStream = openFileDialog.OpenFile();
+                    fileContent = File.ReadAllLines(filePath);
+                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
                     {
-                        obj.ObjectiveText = CurrentTreeNodeTag.ObjectiveText;
-                        quest.isDirty = true;
+                        CurrentTreasureHunt.TreasureHunt.Positions.Clear();
                     }
+                    for (int i = 0; i < fileContent.Length; i++)
+                    {
+                        if (fileContent[i] == "") continue;
+                        string[] linesplit = fileContent[i].Split('|');
+                        string[] XYZ = linesplit[1].Split(' ');
+                        float[] newfloatarray = new float[] { Convert.ToSingle(XYZ[0]), Convert.ToSingle(XYZ[1]), Convert.ToSingle(XYZ[2]) };
+                        CurrentTreasureHunt.TreasureHunt.Positions.Add(newfloatarray);
+
+                    }
+                    ObjectivesTreasureHuntPositionsLB.SelectedIndex = -1;
+                    ObjectivesTreasureHuntPositionsLB.SelectedIndex = ObjectivesTreasureHuntPositionsLB.Items.Count - 1;
+                    ObjectivesTreasureHuntPositionsLB.Refresh();
+                    CurrentTreasureHunt.isDirty = true;
                 }
             }
         }
-        private void QuestObjectivesTimeLimitNUD_ValueChanged(object sender, EventArgs e)
+        private void darkButton65_Click(object sender, EventArgs e)
         {
-            if (!useraction) return;
-            CurrentTreeNodeTag.TimeLimit = (int)QuestObjectivesTimeLimitNUD.Value;
-            CurrentTreeNodeTag.isDirty = true;
-            foreach (Quests quest in QuestsList.QuestList)
+            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
+            StringBuilder SB = new StringBuilder();
+            foreach (float[] array in CurrentTreasureHunt.TreasureHunt.Positions)
             {
-                foreach (QuestObjectivesBase obj in quest.Objectives)
+                SB.AppendLine("UndergroundStash|" + array[0].ToString() + " " + array[1].ToString() + " " + array[2].ToString() + "|0.0 0.0 0.0");
+            }
+            SaveFileDialog save = new SaveFileDialog();
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                File.WriteAllText(save.FileName + ".map", SB.ToString());
+            }
+        }
+        private void darkButton64_Click(object sender, EventArgs e)
+        {
+            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    if (CurrentTreeNodeTag.ID == obj.ID && CurrentTreeNodeTag.ObjectiveType == obj.ObjectiveType)
+                    string filePath = openFileDialog.FileName;
+                    DZE importfile = DZEHelpers.LoadFile(filePath);
+                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
                     {
-                        obj.TimeLimit = CurrentTreeNodeTag.TimeLimit;
-                        quest.isDirty = true;
+                        CurrentTreasureHunt.TreasureHunt.Positions.Clear();
                     }
+                    foreach (Editorobject eo in importfile.EditorObjects)
+                    {
+                        float[] newfloatarray = new float[] { Convert.ToSingle(eo.Position[0]), Convert.ToSingle(eo.Position[1]), Convert.ToSingle(eo.Position[2]) };
+                        CurrentTreasureHunt.TreasureHunt.Positions.Add(newfloatarray);
+                    }
+                    ObjectivesTreasureHuntPositionsLB.SelectedIndex = -1;
+                    ObjectivesTreasureHuntPositionsLB.SelectedIndex = ObjectivesTreasureHuntPositionsLB.Items.Count - 1;
+                    ObjectivesTreasureHuntPositionsLB.Refresh();
+                    CurrentTreasureHunt.isDirty = true;
                 }
             }
         }
+        private void darkButton63_Click(object sender, EventArgs e)
+        {
+            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
+            DZE newdze = new DZE()
+            {
+                MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
+            };
+            foreach (float[] array in CurrentTreasureHunt.TreasureHunt.Positions)
+            {
+                Editorobject eo = new Editorobject()
+                {
+                    Type = "UndergroundStash",
+                    DisplayName = "UndergroundStash",
+                    Position = array,
+                    Orientation = new float[] { 0, 0, 0 },
+                    Scale = 1.0f,
+                    Flags = 2147483647
+                };
+                newdze.EditorObjects.Add(eo);
+            }
+            newdze.CameraPosition = newdze.EditorObjects[0].Position;
+            SaveFileDialog save = new SaveFileDialog();
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                string jsonString = JsonSerializer.Serialize(newdze, options);
+                File.WriteAllText(save.FileName + ".dze", jsonString);
+            }
+        }
+        private void ObjectivesTreasureHuntPositionsXNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
+            CurrentWapypoint[0] = (float)ObjectivesTreasureHuntPositionsXNUD.Value;
+            CurrentTreasureHunt.isDirty = true;
+        }
+        private void ObjectivesTreasureHuntPositionsYNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
+            CurrentWapypoint[1] = (float)ObjectivesTreasureHuntPositionsYNUD.Value;
+            CurrentTreasureHunt.isDirty = true;
+        }
+        private void ObjectivesTreasureHuntPositionsZNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
+            CurrentWapypoint[2] = (float)ObjectivesTreasureHuntPositionsZNUD.Value;
+            CurrentTreasureHunt.isDirty = true;
+        }
+        private void ObjectivesTreasureHuntShowdistanceCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
+            CurrentTreasureHunt.ShowDistance = ObjectivesTreasureHuntShowdistanceCB.Checked == true ? 1 : 0;
+            CurrentTreasureHunt.isDirty = true;
+        }
+        private void darkButton70_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
+                foreach (string l in addedtypes)
+                {
+                    TreasureHuntItems newcollection = new TreasureHuntItems()
+                    {
+                        ClassName = l,
+                        Amount = 1
+                    };
+                    CurrentTreasureHunt.TreasureHunt.ListItems.Add(newcollection);
+                    ObjectivesTreasureHuntItemsLB.Refresh();
+                }
+                CurrentTreasureHunt.isDirty = true;
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+        }
+        private void darkButton69_Click(object sender, EventArgs e)
+        {
+            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
+            CurrentTreasureHunt.TreasureHunt.ListItems.Remove(CurrentTreasureHuntItems);
+            CurrentTreasureHunt.isDirty = true;
+            ObjectivesTreasureHuntItemsLB.Refresh();
+        }
+        private void ObjectivesTreasureHuntAmountNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
+            CurrentTreasureHuntItems.Amount = (int)ObjectivesTreasureHuntAmountNUD.Value;
+            CurrentTreasureHunt.isDirty = true;
+        }
+        private void ObjectivesTreasureHuntClassnameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
+            CurrentTreasureHuntItems.ClassName = ObjectivesTreasureHuntClassnameTB.Text;
+            CurrentTreasureHunt.isDirty = true;
+        }
+        private void darkButton71_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseOnlySingleitem = true
+
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    ObjectivesTreasureHuntClassnameTB.Text = l;
+                }
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+        }
+
+
 
 
         #endregion objectives
 
-
+        #region Persistant Player Data
         public ExpansionQuestPersistentQuestData currentExpansionQuestPersistentQuestData;
         public ExpansionQuestObjectiveData currentExpansionQuestObjectiveData;
         private void setupplayerdata()
@@ -2102,7 +3974,6 @@ namespace DayZeEditor
             }
             useraction = true;
         }
-
         private void treeViewMS2_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             treeViewMS2.SelectedNode = e.Node;
@@ -2158,7 +4029,6 @@ namespace DayZeEditor
 
             useraction = true;
         }
-
         private void removePlayerSaveDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
             QuestPlayerData currentplayer = treeViewMS2.SelectedNode.Parent.Tag as QuestPlayerData;
@@ -2166,6 +4036,19 @@ namespace DayZeEditor
             QuestPlayerDataList.deletePlayerData(currentplayer);
             File.Delete(currentplayer.Filename);
         }
+        private void numericUpDown13_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void numericUpDown3_ValueChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
+        #endregion Persistant Player Data
 
 
     }

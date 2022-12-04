@@ -972,6 +972,8 @@ namespace DayZeEditor
             this.darkLabel248 = new DarkUI.Controls.DarkLabel();
             this.VehicleHeliCoverIconNameTB = new System.Windows.Forms.TextBox();
             this.groupBox78 = new System.Windows.Forms.GroupBox();
+            this.EnableAutoCoveringDEVehiclesCB = new System.Windows.Forms.CheckBox();
+            this.CanCoverWithCargoCB = new System.Windows.Forms.CheckBox();
             this.darkLabel246 = new DarkUI.Controls.DarkLabel();
             this.VehicleAutoCoverTimeSecondsNUD = new System.Windows.Forms.NumericUpDown();
             this.VehicleAutoCoverRequireCamonetCB = new System.Windows.Forms.CheckBox();
@@ -1166,8 +1168,19 @@ namespace DayZeEditor
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
-            this.CanCoverWithCargoCB = new System.Windows.Forms.CheckBox();
-            this.EnableAutoCoveringDEVehiclesCB = new System.Windows.Forms.CheckBox();
+            this.treeViewMS2 = new TreeViewMS.TreeViewMS();
+            this.groupBox73 = new System.Windows.Forms.GroupBox();
+            this.groupBox85 = new System.Windows.Forms.GroupBox();
+            this.HardlineAIKillsNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel196 = new DarkUI.Controls.DarkLabel();
+            this.HardlinePlayerKillsNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel211 = new DarkUI.Controls.DarkLabel();
+            this.HardLineInfectedKillsNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel212 = new DarkUI.Controls.DarkLabel();
+            this.HardlineReputationNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel213 = new DarkUI.Controls.DarkLabel();
+            this.hardLinePlayerDeathsNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel214 = new DarkUI.Controls.DarkLabel();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -1473,6 +1486,13 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.GarageVehicleSearchRadiusNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxStorableVehiclesNUD)).BeginInit();
             this.darkToolStrip22.SuspendLayout();
+            this.groupBox73.SuspendLayout();
+            this.groupBox85.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.HardlineAIKillsNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HardlinePlayerKillsNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HardLineInfectedKillsNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HardlineReputationNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hardLinePlayerDeathsNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -13607,6 +13627,32 @@ namespace DayZeEditor
             this.groupBox78.TabStop = false;
             this.groupBox78.Text = "Covers";
             // 
+            // EnableAutoCoveringDEVehiclesCB
+            // 
+            this.EnableAutoCoveringDEVehiclesCB.AutoSize = true;
+            this.EnableAutoCoveringDEVehiclesCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.EnableAutoCoveringDEVehiclesCB.Location = new System.Drawing.Point(9, 111);
+            this.EnableAutoCoveringDEVehiclesCB.Name = "EnableAutoCoveringDEVehiclesCB";
+            this.EnableAutoCoveringDEVehiclesCB.Size = new System.Drawing.Size(190, 17);
+            this.EnableAutoCoveringDEVehiclesCB.TabIndex = 156;
+            this.EnableAutoCoveringDEVehiclesCB.Tag = "";
+            this.EnableAutoCoveringDEVehiclesCB.Text = "Enable Auto Covering DE Vehicles";
+            this.EnableAutoCoveringDEVehiclesCB.UseVisualStyleBackColor = true;
+            this.EnableAutoCoveringDEVehiclesCB.CheckedChanged += new System.EventHandler(this.EnableAutoCoveringDEVehiclesCB_CheckedChanged);
+            // 
+            // CanCoverWithCargoCB
+            // 
+            this.CanCoverWithCargoCB.AutoSize = true;
+            this.CanCoverWithCargoCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CanCoverWithCargoCB.Location = new System.Drawing.Point(9, 46);
+            this.CanCoverWithCargoCB.Name = "CanCoverWithCargoCB";
+            this.CanCoverWithCargoCB.Size = new System.Drawing.Size(132, 17);
+            this.CanCoverWithCargoCB.TabIndex = 143;
+            this.CanCoverWithCargoCB.Tag = "";
+            this.CanCoverWithCargoCB.Text = "Can Cover With Cargo";
+            this.CanCoverWithCargoCB.UseVisualStyleBackColor = true;
+            this.CanCoverWithCargoCB.CheckedChanged += new System.EventHandler(this.CanCoverWithCargoCB_CheckedChanged);
+            // 
             // darkLabel246
             // 
             this.darkLabel246.AutoSize = true;
@@ -14996,6 +15042,7 @@ namespace DayZeEditor
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage3.Controls.Add(this.groupBox73);
             this.tabPage3.Controls.Add(this.groupBox75);
             this.tabPage3.Controls.Add(this.groupBox74);
             this.tabPage3.Controls.Add(this.groupBox72);
@@ -15004,7 +15051,7 @@ namespace DayZeEditor
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(1373, 684);
             this.tabPage3.TabIndex = 12;
-            this.tabPage3.Text = "0";
+            this.tabPage3.Text = "Hardline";
             // 
             // groupBox75
             // 
@@ -15017,7 +15064,7 @@ namespace DayZeEditor
             this.groupBox75.Controls.Add(this.ItemRequirementNUD);
             this.groupBox75.Controls.Add(this.darkLabel235);
             this.groupBox75.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox75.Location = new System.Drawing.Point(520, 6);
+            this.groupBox75.Location = new System.Drawing.Point(264, 3);
             this.groupBox75.Name = "groupBox75";
             this.groupBox75.Size = new System.Drawing.Size(254, 490);
             this.groupBox75.TabIndex = 129;
@@ -15141,7 +15188,7 @@ namespace DayZeEditor
             this.groupBox74.Controls.Add(this.ReputationOnKillInfectedNUD);
             this.groupBox74.Controls.Add(this.darkLabel232);
             this.groupBox74.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox74.Location = new System.Drawing.Point(264, 6);
+            this.groupBox74.Location = new System.Drawing.Point(8, 150);
             this.groupBox74.Name = "groupBox74";
             this.groupBox74.Size = new System.Drawing.Size(250, 138);
             this.groupBox74.TabIndex = 128;
@@ -16259,31 +16306,216 @@ namespace DayZeEditor
             this.toolStripSeparator17.Name = "toolStripSeparator17";
             this.toolStripSeparator17.Size = new System.Drawing.Size(6, 28);
             // 
-            // CanCoverWithCargoCB
+            // treeViewMS2
             // 
-            this.CanCoverWithCargoCB.AutoSize = true;
-            this.CanCoverWithCargoCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CanCoverWithCargoCB.Location = new System.Drawing.Point(9, 46);
-            this.CanCoverWithCargoCB.Name = "CanCoverWithCargoCB";
-            this.CanCoverWithCargoCB.Size = new System.Drawing.Size(132, 17);
-            this.CanCoverWithCargoCB.TabIndex = 143;
-            this.CanCoverWithCargoCB.Tag = "";
-            this.CanCoverWithCargoCB.Text = "Can Cover With Cargo";
-            this.CanCoverWithCargoCB.UseVisualStyleBackColor = true;
-            this.CanCoverWithCargoCB.CheckedChanged += new System.EventHandler(this.CanCoverWithCargoCB_CheckedChanged);
+            this.treeViewMS2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.treeViewMS2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.treeViewMS2.ForeColor = System.Drawing.SystemColors.Control;
+            this.treeViewMS2.HideSelection = false;
+            this.treeViewMS2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.treeViewMS2.Location = new System.Drawing.Point(6, 19);
+            this.treeViewMS2.Name = "treeViewMS2";
+            this.treeViewMS2.SelectedNodes = ((System.Collections.ArrayList)(resources.GetObject("treeViewMS2.SelectedNodes")));
+            this.treeViewMS2.SetMultiselect = true;
+            this.treeViewMS2.Size = new System.Drawing.Size(409, 465);
+            this.treeViewMS2.TabIndex = 208;
+            this.treeViewMS2.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewMS2_AfterSelect);
+            this.treeViewMS2.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewMS2_NodeMouseClick);
             // 
-            // EnableAutoCoveringDEVehiclesCB
+            // groupBox73
             // 
-            this.EnableAutoCoveringDEVehiclesCB.AutoSize = true;
-            this.EnableAutoCoveringDEVehiclesCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.EnableAutoCoveringDEVehiclesCB.Location = new System.Drawing.Point(9, 111);
-            this.EnableAutoCoveringDEVehiclesCB.Name = "EnableAutoCoveringDEVehiclesCB";
-            this.EnableAutoCoveringDEVehiclesCB.Size = new System.Drawing.Size(190, 17);
-            this.EnableAutoCoveringDEVehiclesCB.TabIndex = 156;
-            this.EnableAutoCoveringDEVehiclesCB.Tag = "";
-            this.EnableAutoCoveringDEVehiclesCB.Text = "Enable Auto Covering DE Vehicles";
-            this.EnableAutoCoveringDEVehiclesCB.UseVisualStyleBackColor = true;
-            this.EnableAutoCoveringDEVehiclesCB.CheckedChanged += new System.EventHandler(this.EnableAutoCoveringDEVehiclesCB_CheckedChanged);
+            this.groupBox73.Controls.Add(this.groupBox85);
+            this.groupBox73.Controls.Add(this.treeViewMS2);
+            this.groupBox73.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox73.Location = new System.Drawing.Point(524, 3);
+            this.groupBox73.Name = "groupBox73";
+            this.groupBox73.Size = new System.Drawing.Size(748, 490);
+            this.groupBox73.TabIndex = 209;
+            this.groupBox73.TabStop = false;
+            this.groupBox73.Text = "Player Data";
+            // 
+            // groupBox85
+            // 
+            this.groupBox85.Controls.Add(this.hardLinePlayerDeathsNUD);
+            this.groupBox85.Controls.Add(this.darkLabel214);
+            this.groupBox85.Controls.Add(this.HardlineAIKillsNUD);
+            this.groupBox85.Controls.Add(this.darkLabel196);
+            this.groupBox85.Controls.Add(this.HardlinePlayerKillsNUD);
+            this.groupBox85.Controls.Add(this.darkLabel211);
+            this.groupBox85.Controls.Add(this.HardLineInfectedKillsNUD);
+            this.groupBox85.Controls.Add(this.darkLabel212);
+            this.groupBox85.Controls.Add(this.HardlineReputationNUD);
+            this.groupBox85.Controls.Add(this.darkLabel213);
+            this.groupBox85.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox85.Location = new System.Drawing.Point(421, 19);
+            this.groupBox85.Name = "groupBox85";
+            this.groupBox85.Size = new System.Drawing.Size(250, 167);
+            this.groupBox85.TabIndex = 209;
+            this.groupBox85.TabStop = false;
+            this.groupBox85.Text = "Player Data";
+            // 
+            // HardlineAIKillsNUD
+            // 
+            this.HardlineAIKillsNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.HardlineAIKillsNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.HardlineAIKillsNUD.Location = new System.Drawing.Point(143, 69);
+            this.HardlineAIKillsNUD.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.HardlineAIKillsNUD.Minimum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            -2147483648});
+            this.HardlineAIKillsNUD.Name = "HardlineAIKillsNUD";
+            this.HardlineAIKillsNUD.Size = new System.Drawing.Size(101, 20);
+            this.HardlineAIKillsNUD.TabIndex = 114;
+            this.HardlineAIKillsNUD.Tag = "Weight";
+            this.HardlineAIKillsNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // darkLabel196
+            // 
+            this.darkLabel196.AutoSize = true;
+            this.darkLabel196.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel196.Location = new System.Drawing.Point(12, 71);
+            this.darkLabel196.Name = "darkLabel196";
+            this.darkLabel196.Size = new System.Drawing.Size(35, 13);
+            this.darkLabel196.TabIndex = 115;
+            this.darkLabel196.Tag = "";
+            this.darkLabel196.Text = "AIKills";
+            // 
+            // HardlinePlayerKillsNUD
+            // 
+            this.HardlinePlayerKillsNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.HardlinePlayerKillsNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.HardlinePlayerKillsNUD.Location = new System.Drawing.Point(143, 43);
+            this.HardlinePlayerKillsNUD.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.HardlinePlayerKillsNUD.Minimum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            -2147483648});
+            this.HardlinePlayerKillsNUD.Name = "HardlinePlayerKillsNUD";
+            this.HardlinePlayerKillsNUD.Size = new System.Drawing.Size(101, 20);
+            this.HardlinePlayerKillsNUD.TabIndex = 112;
+            this.HardlinePlayerKillsNUD.Tag = "Weight";
+            this.HardlinePlayerKillsNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // darkLabel211
+            // 
+            this.darkLabel211.AutoSize = true;
+            this.darkLabel211.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel211.Location = new System.Drawing.Point(12, 45);
+            this.darkLabel211.Name = "darkLabel211";
+            this.darkLabel211.Size = new System.Drawing.Size(54, 13);
+            this.darkLabel211.TabIndex = 113;
+            this.darkLabel211.Tag = "";
+            this.darkLabel211.Text = "PlayerKills";
+            this.darkLabel211.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // HardLineInfectedKillsNUD
+            // 
+            this.HardLineInfectedKillsNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.HardLineInfectedKillsNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.HardLineInfectedKillsNUD.Location = new System.Drawing.Point(143, 95);
+            this.HardLineInfectedKillsNUD.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.HardLineInfectedKillsNUD.Minimum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            -2147483648});
+            this.HardLineInfectedKillsNUD.Name = "HardLineInfectedKillsNUD";
+            this.HardLineInfectedKillsNUD.Size = new System.Drawing.Size(101, 20);
+            this.HardLineInfectedKillsNUD.TabIndex = 112;
+            this.HardLineInfectedKillsNUD.Tag = "Weight";
+            this.HardLineInfectedKillsNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // darkLabel212
+            // 
+            this.darkLabel212.AutoSize = true;
+            this.darkLabel212.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel212.Location = new System.Drawing.Point(12, 97);
+            this.darkLabel212.Name = "darkLabel212";
+            this.darkLabel212.Size = new System.Drawing.Size(64, 13);
+            this.darkLabel212.TabIndex = 113;
+            this.darkLabel212.Tag = "";
+            this.darkLabel212.Text = "InfectedKills";
+            // 
+            // HardlineReputationNUD
+            // 
+            this.HardlineReputationNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.HardlineReputationNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.HardlineReputationNUD.Location = new System.Drawing.Point(143, 19);
+            this.HardlineReputationNUD.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.HardlineReputationNUD.Minimum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            -2147483648});
+            this.HardlineReputationNUD.Name = "HardlineReputationNUD";
+            this.HardlineReputationNUD.Size = new System.Drawing.Size(101, 20);
+            this.HardlineReputationNUD.TabIndex = 110;
+            this.HardlineReputationNUD.Tag = "Weight";
+            this.HardlineReputationNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.HardlineReputationNUD.ValueChanged += new System.EventHandler(this.HardlineReputationNUD_ValueChanged);
+            // 
+            // darkLabel213
+            // 
+            this.darkLabel213.AutoSize = true;
+            this.darkLabel213.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel213.Location = new System.Drawing.Point(12, 21);
+            this.darkLabel213.Name = "darkLabel213";
+            this.darkLabel213.Size = new System.Drawing.Size(59, 13);
+            this.darkLabel213.TabIndex = 111;
+            this.darkLabel213.Tag = "";
+            this.darkLabel213.Text = "Reputation";
+            // 
+            // hardLinePlayerDeathsNUD
+            // 
+            this.hardLinePlayerDeathsNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.hardLinePlayerDeathsNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.hardLinePlayerDeathsNUD.Location = new System.Drawing.Point(143, 121);
+            this.hardLinePlayerDeathsNUD.Maximum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            0});
+            this.hardLinePlayerDeathsNUD.Minimum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            -2147483648});
+            this.hardLinePlayerDeathsNUD.Name = "hardLinePlayerDeathsNUD";
+            this.hardLinePlayerDeathsNUD.Size = new System.Drawing.Size(101, 20);
+            this.hardLinePlayerDeathsNUD.TabIndex = 116;
+            this.hardLinePlayerDeathsNUD.Tag = "Weight";
+            this.hardLinePlayerDeathsNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // darkLabel214
+            // 
+            this.darkLabel214.AutoSize = true;
+            this.darkLabel214.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel214.Location = new System.Drawing.Point(12, 123);
+            this.darkLabel214.Name = "darkLabel214";
+            this.darkLabel214.Size = new System.Drawing.Size(70, 13);
+            this.darkLabel214.TabIndex = 117;
+            this.darkLabel214.Tag = "";
+            this.darkLabel214.Text = "PlayerDeaths";
             // 
             // ExpansionSettings
             // 
@@ -16691,6 +16923,14 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.MaxStorableVehiclesNUD)).EndInit();
             this.darkToolStrip22.ResumeLayout(false);
             this.darkToolStrip22.PerformLayout();
+            this.groupBox73.ResumeLayout(false);
+            this.groupBox85.ResumeLayout(false);
+            this.groupBox85.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.HardlineAIKillsNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HardlinePlayerKillsNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HardLineInfectedKillsNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HardlineReputationNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hardLinePlayerDeathsNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -17835,5 +18075,18 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkLabel darkLabel259;
         private System.Windows.Forms.CheckBox EnableAutoCoveringDEVehiclesCB;
         private System.Windows.Forms.CheckBox CanCoverWithCargoCB;
+        private System.Windows.Forms.GroupBox groupBox73;
+        private TreeViewMS.TreeViewMS treeViewMS2;
+        private System.Windows.Forms.GroupBox groupBox85;
+        private System.Windows.Forms.NumericUpDown hardLinePlayerDeathsNUD;
+        private DarkUI.Controls.DarkLabel darkLabel214;
+        private System.Windows.Forms.NumericUpDown HardlineAIKillsNUD;
+        private DarkUI.Controls.DarkLabel darkLabel196;
+        private System.Windows.Forms.NumericUpDown HardlinePlayerKillsNUD;
+        private DarkUI.Controls.DarkLabel darkLabel211;
+        private System.Windows.Forms.NumericUpDown HardLineInfectedKillsNUD;
+        private DarkUI.Controls.DarkLabel darkLabel212;
+        private System.Windows.Forms.NumericUpDown HardlineReputationNUD;
+        private DarkUI.Controls.DarkLabel darkLabel213;
     }
 }

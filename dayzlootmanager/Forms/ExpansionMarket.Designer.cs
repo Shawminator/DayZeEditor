@@ -3875,9 +3875,9 @@ namespace DayZeEditor
             this.darkLabel79.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.darkLabel79.Location = new System.Drawing.Point(240, 124);
             this.darkLabel79.Name = "darkLabel79";
-            this.darkLabel79.Size = new System.Drawing.Size(120, 13);
+            this.darkLabel79.Size = new System.Drawing.Size(96, 13);
             this.darkLabel79.TabIndex = 103;
-            this.darkLabel79.Text = "Max Required Humanity";
+            this.darkLabel79.Text = "Max Required Rep";
             // 
             // MaxRequiredHumanityNUD
             // 
@@ -3906,9 +3906,9 @@ namespace DayZeEditor
             this.darkLabel78.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.darkLabel78.Location = new System.Drawing.Point(240, 98);
             this.darkLabel78.Name = "darkLabel78";
-            this.darkLabel78.Size = new System.Drawing.Size(117, 13);
+            this.darkLabel78.Size = new System.Drawing.Size(93, 13);
             this.darkLabel78.TabIndex = 101;
-            this.darkLabel78.Text = "Min Required Humanity";
+            this.darkLabel78.Text = "Min Required Rep";
             // 
             // MinRequiredHumanityNUD
             // 

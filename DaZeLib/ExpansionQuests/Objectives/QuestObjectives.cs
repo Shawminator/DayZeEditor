@@ -70,7 +70,7 @@ namespace DayZeLib
 
         public void backupandDelete(string questObjectivesPath)
         {
-            string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
+            string SaveTime = DateTime.Now.ToString("ddMMyy_HHmmss");
             questObjectivesPath += "\\" + Objectvetypesname[(int)QuestType];
             string Fullfilename = questObjectivesPath + "\\" + Filename + ".json";
             if (File.Exists(Fullfilename))

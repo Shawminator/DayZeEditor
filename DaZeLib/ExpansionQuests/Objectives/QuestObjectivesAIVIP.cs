@@ -28,14 +28,13 @@ namespace DayZeLib
 
     public class AIVIP
     {
+        public string NPCClassName { get; set; }
+        public string NPCSpeed { get; set; }
+        public string NPCMode { get; set; }
+        public string NPCFaction { get; set; }
         public string NPCLoadoutFile { get; set; }
 
         public AIVIP(){ }
-
-        public override string ToString()
-        {
-            return NPCLoadoutFile;
-        }
     }
 
 }

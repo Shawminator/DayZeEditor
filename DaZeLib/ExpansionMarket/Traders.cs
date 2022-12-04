@@ -148,8 +148,8 @@ namespace DayZeLib
     {
         public int m_Version { get; set; }
         public string DisplayName { get; set; }
-        public int MinRequiredHumanity { get; set; }
-        public int MaxRequiredHumanity { get; set; }
+        public int MinRequiredReputation { get; set; }
+        public int MaxRequiredReputation { get; set; }
         public string TraderIcon { get; set; }
         public BindingList<string> Currencies { get; set; }
         public BindingList<string> Categories { get; set; }

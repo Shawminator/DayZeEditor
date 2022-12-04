@@ -118,7 +118,6 @@ namespace DayZeLib
                     npc.removequest(currentQuest);
             }
         }
-
         public void addQuesttoNPC(ExpansionQuestNPCs npc, Quests currentQuest)
         {
             ExpansionQuestNPCs currentnpc = NPCList.FirstOrDefault(x => x.ID == npc.ID);
@@ -126,6 +125,10 @@ namespace DayZeLib
             if (!currentnpc.CurrentQuests.Any(x => x.ID == currentQuest.ID))
                 currentnpc.AddNewQuest(currentQuest);
 
+        }
+        public ExpansionQuestNPCs GetNPCFromID(int id)
+        {
+            return NPCList.First(x => x.ID == id);
         }
     }
     public class ExpansionQuestNPCs
@@ -182,10 +185,21 @@ namespace DayZeLib
         public void setQuests(ExpansioQuestList QuestList)
         {
             CurrentQuests = new BindingList<Quests>();
+            List<int> idstoberemoved = new List<int>();
             foreach (int id in QuestIDs)
             {
-                CurrentQuests.Add(QuestList.QuestList.FirstOrDefault(x => x.ID == id));
+                Quests quest = QuestList.QuestList.FirstOrDefault(x => x.ID == id);
+                if (quest == null)
+                    idstoberemoved.Add(id);
+                else
+                    CurrentQuests.Add(quest);
             }
+            foreach(int id in idstoberemoved)
+            {
+                QuestIDs.Remove(id);
+                isDirty = true;
+            }
+
         }
         public override string ToString()
         {

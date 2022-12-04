@@ -209,6 +209,18 @@
     <Compile Include="HelperForms\AddNewTypes.Designer.cs">
       <DependentUpon>AddNewTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="HelperForms\AddQuestQuest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelperForms\AddQuestQuest.Designer.cs">
+      <DependentUpon>AddQuestQuest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HelperForms\AddQuestNPC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelperForms\AddQuestNPC.Designer.cs">
+      <DependentUpon>AddQuestNPC.cs</DependentUpon>
+    </Compile>
     <Compile Include="HelperForms\CategoryList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -393,6 +405,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HelperForms\AddNewTypes.resx">
       <DependentUpon>AddNewTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelperForms\AddQuestQuest.resx">
+      <DependentUpon>AddQuestQuest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelperForms\AddQuestNPC.resx">
+      <DependentUpon>AddQuestNPC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HelperForms\CategoryList.resx">
       <DependentUpon>CategoryList.cs</DependentUpon>

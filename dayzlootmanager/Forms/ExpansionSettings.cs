@@ -47,6 +47,7 @@ namespace DayZeEditor
         public string GarageSettingsPath;
         public string GeneralSettingsPath;
         public string HArdlineSettingsPath;
+        public string HardlinePlayerDataPath;
         public string LogsSettingsPath;
         public string MapSettingsPath;
         //public string MarketSettingsPath;
@@ -73,6 +74,7 @@ namespace DayZeEditor
         public GarageSettings GarageSettings;
         public GeneralSettings GeneralSettings;
         public HardLineSettings HardLineSettings;
+        public ExpansionHardlinePlayerDataList ExpansionHardlinePlayerDataList;
         public LogSettings LogSettings;
         public MapSettings MapSettings;
         //public MarketSettings marketsettings;
@@ -943,6 +945,23 @@ namespace DayZeEditor
                 File.WriteAllText(HardLineSettings.Filename, jsonString);
                 midifiedfiles.Add(Path.GetFileName(HardLineSettings.Filename));
             }
+
+            foreach (ExpansionHardlinePlayerData qpd in ExpansionHardlinePlayerDataList.HardlinePlayerDataList)
+            {
+                if (qpd.isDirty)
+                {
+                    qpd.isDirty = false;
+                    if (currentproject.Createbackups && File.Exists(HardlinePlayerDataPath + "\\" + qpd.Filename + ".bin"))
+                    {
+                        Directory.CreateDirectory(HardlinePlayerDataPath + "\\Backup\\" + SaveTime);
+                        File.Copy(HardlinePlayerDataPath + "\\" + qpd.Filename + ".bin", HardlinePlayerDataPath + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(qpd.Filename) + ".bak", true);
+                    }
+                    qpd.SaveFIle(HardlinePlayerDataPath);
+                    midifiedfiles.Add(Path.GetFileName(qpd.Filename));
+                }
+            }
+
+
             if (LogSettings.isDirty)
             {
                 LogSettings.isDirty = false;
@@ -2920,6 +2939,10 @@ namespace DayZeEditor
             ReputationOnKillAnimalNUD.Value = HardLineSettings.ReputationOnKillAnimal;
             ReputationOnKillAINUD.Value = HardLineSettings.ReputationOnKillAI;
 
+            HardlinePlayerDataPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Hardline\\PlayerData";
+            ExpansionHardlinePlayerDataList = new ExpansionHardlinePlayerDataList(HardlinePlayerDataPath);
+            setupExpansionHardlinePlayerData();
+
             useraction = true;
         }
         private void UseItemRarityForMarketPurchaseNCB_CheckedChanged(object sender, EventArgs e)
@@ -3013,7 +3036,53 @@ namespace DayZeEditor
             HardLineSettings.getlist(Type).Remove(ItemRarityLB.GetItemText(ItemRarityLB.SelectedItem));
             HardLineSettings.isDirty = true;
         }
-        #endregion
+        private void setupExpansionHardlinePlayerData()
+        {
+            useraction = false;
+
+            treeViewMS2.Nodes.Clear();
+            TreeNode root = new TreeNode("Quest Player Data")
+            {
+                Tag = "Parent"
+            };
+            foreach (ExpansionHardlinePlayerData QPD in ExpansionHardlinePlayerDataList.HardlinePlayerDataList)
+            {
+                TreeNode Playerdata = new TreeNode(Path.GetFileNameWithoutExtension(QPD.Filename))
+                {
+                    Tag = QPD
+                };
+                root.Nodes.Add(Playerdata);
+            }
+            treeViewMS2.Nodes.Add(root);
+
+
+            useraction = true;
+        }
+        public ExpansionHardlinePlayerData currentExpansionHardlinePlayerData;
+        private void treeViewMS2_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            useraction = false;
+            if (e.Node.Tag != null && e.Node.Tag is ExpansionHardlinePlayerData)
+            {
+                currentExpansionHardlinePlayerData = e.Node.Tag as ExpansionHardlinePlayerData;
+                HardlineReputationNUD.Value = currentExpansionHardlinePlayerData.GetReputation();
+                HardlinePlayerKillsNUD.Value = currentExpansionHardlinePlayerData.GetPlayerKills();
+                HardlineAIKillsNUD.Value = currentExpansionHardlinePlayerData.GetAIKills();
+                HardLineInfectedKillsNUD.Value = currentExpansionHardlinePlayerData.GetInfectedKills();
+                hardLinePlayerDeathsNUD.Value = currentExpansionHardlinePlayerData.GetPlayerDeaths();
+            }
+            useraction = true;
+        }
+        private void HardlineReputationNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentExpansionHardlinePlayerData.SetReputation((int)HardlineReputationNUD.Value);
+            currentExpansionHardlinePlayerData.isDirty = true;
+        }
+        private void treeViewMS2_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+        }
+         #endregion
 
         #region logsettings
         private void loadlogsettings()

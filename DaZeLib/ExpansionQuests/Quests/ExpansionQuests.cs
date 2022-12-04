@@ -12,7 +12,10 @@ using System.Windows.Forms;
 
 namespace DayZeLib
 {
-
+    public enum ExpansionQuestsQuestType
+    {
+        NORMAL = 1
+    }
     public class ExpansioQuestList
     {
         const int m_QuestConfigVersion = 6;
@@ -83,11 +86,10 @@ namespace DayZeLib
                 Filename = "Quest_" + id.ToString(),
                 ConfigVersion = m_QuestConfigVersion,
                 ID = id,
-                Type = 0,
+                Type = 1,
                 Title = "New Quest with id:" + id.ToString(),
-                Descriptions = new BindingList<string>(newdescription),
+                Descriptions = new BindingList<string>(newdescription.ToList()),
                 ObjectiveText = "Short objective desctiption text.",
-                PreQuest = -1,
                 FollowUpQuest = -1,
                 IsAchivement = 0,
                 Repeatable = 0,
@@ -106,11 +108,14 @@ namespace DayZeLib
                 NeedToSelectReward = 0,
                 RewardsForGroupOwnerOnly = 1,
                 QuestGiverIDs = new BindingList<int>(),
+                QuestGivers = new BindingList<ExpansionQuestNPCs>(),
                 QuestTurnInIDs = new BindingList<int>(),
+                QuestTurnIns = new BindingList<ExpansionQuestNPCs>(),
                 QuestColor = 0,
                 ReputationReward = 0,
                 ReputationRequirement = -1,
-                PreQuestIDs = new BindingList<int>()
+                PreQuestIDs = new BindingList<int>(),
+                PreQuests = new BindingList<Quests>()
             };
             QuestList.Add(newquest);
         }
@@ -164,6 +169,36 @@ namespace DayZeLib
         {
             return QuestList.FirstOrDefault(x => x.ID == id);
         }
+
+        public void GetNPCLists(QuestNPCLists questNPCs)
+        {
+            foreach(Quests q in QuestList)
+            {
+                q.GetNPCLists(questNPCs);
+            }
+        }
+
+        public void GetPreQuests()
+        {
+            foreach(Quests q in QuestList)
+            {
+                List<int> toberemoved = new List<int>();
+                q.PreQuests = new BindingList<Quests>();
+                foreach(int prequest in q.PreQuestIDs)
+                {
+                    Quests quest = QuestList.First(x => x.ID == prequest);
+                    if (quest == null)
+                        toberemoved.Add(prequest);
+                    else
+                        q.PreQuests.Add(quest);
+                }
+                foreach(int id in toberemoved)
+                {
+                    q.PreQuestIDs.Remove(id);
+                    q.isDirty = true;
+                }
+            }
+        }
     }
     public class Quests
     {
@@ -173,6 +208,12 @@ namespace DayZeLib
         public bool isDirty = false;
         [JsonIgnore]
         public bool isusingdescription { get; set; }
+        [JsonIgnore]
+        public BindingList<ExpansionQuestNPCs> QuestGivers;
+        [JsonIgnore]
+        public BindingList<ExpansionQuestNPCs> QuestTurnIns;
+        [JsonIgnore]
+        public BindingList<Quests> PreQuests;
 
         public int ConfigVersion { get; set; }
         public int ID { get; set; }
@@ -180,7 +221,6 @@ namespace DayZeLib
         public string Title { get; set; }
         public BindingList<string> Descriptions { get; set; } 
         public string ObjectiveText { get; set; }
-        public int PreQuest { get; set; }
         public int FollowUpQuest { get; set; }
         public int IsAchivement { get; set; }
         public int Repeatable { get; set; }
@@ -218,7 +258,32 @@ namespace DayZeLib
         {
             return Title;
         }
-
+        public void GetNPCLists(QuestNPCLists questNPCs)
+        {
+            QuestGivers = new BindingList<ExpansionQuestNPCs>();
+            QuestTurnIns = new BindingList<ExpansionQuestNPCs>();
+            foreach (int id in QuestGiverIDs)
+            {
+                QuestGivers.Add(questNPCs.GetNPCFromID(id));
+            }
+            foreach (int id in QuestTurnInIDs)
+            {
+                QuestTurnIns.Add(questNPCs.GetNPCFromID(id));
+            }
+        }
+        public void SetNPCList()
+        {
+            QuestGiverIDs = new BindingList<int>();
+            QuestTurnInIDs = new BindingList<int>();
+            foreach (ExpansionQuestNPCs npc in QuestGivers)
+            {
+                QuestGiverIDs.Add(npc.ID);
+            }
+            foreach (ExpansionQuestNPCs npc in QuestTurnIns)
+            {
+                QuestTurnInIDs.Add(npc.ID);
+            }
+        }
         public void backupandDelete(string questsPath)
         {
             string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
@@ -228,6 +293,15 @@ namespace DayZeLib
                 Directory.CreateDirectory(questsPath + "\\Backup\\" + SaveTime);
                 File.Copy(Fullfilename, questsPath + "\\Backup\\" + SaveTime + "\\" + Filename + ".bak");
                 File.Delete(Fullfilename);
+            }
+        }
+
+        public void SetPreQuests()
+        {
+            PreQuestIDs = new BindingList<int>();
+            foreach(Quests q in PreQuests)
+            {
+                PreQuestIDs.Add(q.ID);
             }
         }
     }
