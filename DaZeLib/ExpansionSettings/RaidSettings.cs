@@ -34,7 +34,7 @@ namespace DayZeLib
     }
     public class RaidSettings
     {
-        const int CurrentVersion = 4;
+        const int CurrentVersion = 5;
 
         public int m_Version { get; set; }
         public int BaseBuildingRaidMode { get; set; }
@@ -44,6 +44,7 @@ namespace DayZeLib
         public decimal ExplosionDamageMultiplier { get; set; }
         public decimal ProjectileDamageMultiplier { get; set; }
         public int CanRaidSafes { get; set; }
+        public int SafeRaidUseSchedule { get; set; }
         public decimal SafeExplosionDamageMultiplier { get; set; }
         public decimal SafeProjectileDamageMultiplier { get; set; }
         public BindingList<string> SafeRaidTools { get; set; }

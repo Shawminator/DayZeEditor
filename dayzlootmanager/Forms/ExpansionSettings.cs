@@ -4469,6 +4469,7 @@ namespace DayZeEditor
             ExplosionDamageMultiplierNUD.Value = (decimal)RaidSettings.ExplosionDamageMultiplier;
             ProjectileDamageMultiplierNUD.Value = (decimal)RaidSettings.ProjectileDamageMultiplier;
             CanRaidSafesCB.Checked = RaidSettings.CanRaidSafes == 1 ? true : false;
+            SafeRaidUseScheduleCB.Checked = RaidSettings.SafeRaidUseSchedule == 1 ? true : false;
             SafeExplosionDamageMultiplierNUD.Value = (decimal)RaidSettings.SafeExplosionDamageMultiplier;
             SafeProjectileDamageMultiplierNUD.Value = (decimal)RaidSettings.SafeProjectileDamageMultiplier;
             SafeRaidToolTimeSecondsNUD.Value = (decimal)RaidSettings.SafeRaidToolTimeSeconds;
