@@ -548,6 +548,7 @@
     <None Include="defaultss.xsl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Content Include="Maps\barrington_Map.png" />
     <Content Include="Maps\chernarusplus_Map.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -627,6 +628,7 @@
     <Content Include="Maps\takistanplus_Map.png" />
     <Content Include="depositphotos_20788183_stock_illustration_cartoon_thief_running_with_a_Cw8_icon.ico" />
     <Content Include="Maps\valning_Map.png" />
+    <Content Include="Maps\vela_Map.png" />
     <Content Include="TraderNPCs\Emotes.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

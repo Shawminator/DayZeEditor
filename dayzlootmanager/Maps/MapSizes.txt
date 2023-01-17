@@ -12,3 +12,5 @@ iztek:8192
 valning:10240
 pripyat:20480
 Yiprit:20480
+barrington:10240
+vela:10240
