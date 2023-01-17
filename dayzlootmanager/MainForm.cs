@@ -578,7 +578,6 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
-
         private void ExpansionLoadoutManagerButton_Click(object sender, EventArgs e)
         {
             ExpansionLoadoutsManager _TM = Application.OpenForms["ExpansionLoadoutsManager"] as ExpansionLoadoutsManager;
@@ -604,7 +603,6 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
-
         private void ExpansionQuestsButton_Click(object sender, EventArgs e)
         {
             ExpansionQuests _TM = Application.OpenForms["ExpansionQuests"] as ExpansionQuests;

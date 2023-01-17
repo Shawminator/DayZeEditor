@@ -14,6 +14,12 @@ namespace DayZeLib
 {
     public class QuestNPCLists
     {
+        const int m_NPCConfigVersion = 7;
+        public static int getNPCConfigVersion
+        {
+            get { return m_NPCConfigVersion; }
+        }
+
         public BindingList<ExpansionQuestNPCs> NPCList { get; set; }
         public string NPCPath { get; set; }
         public List<ExpansionQuestNPCs> Markedfordelete { get; set; }
@@ -39,18 +45,15 @@ namespace DayZeLib
             {
                 try
                 {
-                    bool savefile = false;
                     Console.WriteLine("serializing " + file.Name);
                     ExpansionQuestNPCs NPC = JsonSerializer.Deserialize<ExpansionQuestNPCs>(File.ReadAllText(file.FullName));
                     NPC.Filename = Path.GetFileNameWithoutExtension(file.Name);
-                    NPCList.Add(NPC);
-                    if (savefile)
+                    if (NPC.ConfigVersion != QuestNPCLists.getNPCConfigVersion)
                     {
-                        File.Delete(file.FullName);
-                        var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-                        string jsonString = JsonSerializer.Serialize(NPC, options);
-                        File.WriteAllText(NPCPath + "\\" + NPC.Filename + ".json", jsonString);
+                        NPC.ConfigVersion = QuestNPCLists.getNPCConfigVersion;
+                        NPC.isDirty = true;
                     }
+                    NPCList.Add(NPC);
                 }
                 catch (Exception ex)
                 {
@@ -86,7 +89,7 @@ namespace DayZeLib
             {
                 isDirty = true,
                 Filename = "QuestNPC_" + NEWID.ToString() + ".JSON",
-                ConfigVersion = 1,
+                ConfigVersion = m_NPCConfigVersion,
                 ID = NEWID,
                 ClassName = "ExpansionQuestNPCDenis",
                 IsAI = 0,
@@ -157,7 +160,7 @@ namespace DayZeLib
 
         public ExpansionQuestNPCs()
         {
-
+            ConfigVersion = QuestNPCLists.getNPCConfigVersion;
         }
         public void backupandDelete(string NPCPath)
         {

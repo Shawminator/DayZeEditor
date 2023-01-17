@@ -111,6 +111,11 @@ namespace DayZeLib
                             QuestObjectivesBase newobjective = JsonSerializer.Deserialize<QuestObjectivesBase>(File.ReadAllText(file.FullName));
                             newobjective.Filename = Path.GetFileNameWithoutExtension(file.Name);
                             newobjective.QuestType = (QuExpansionQuestObjectiveTypeestType)newobjective.ObjectiveType;
+                            if(newobjective.ConfigVersion != QuestObjectivesBase.GetconfigVersion)
+                            {
+                                newobjective.ConfigVersion = QuestObjectivesBase.GetconfigVersion;
+                                newobjective.isDirty = true;
+                            }    
                             Objectives.Add(newobjective);
                         }
                         catch (Exception ex)

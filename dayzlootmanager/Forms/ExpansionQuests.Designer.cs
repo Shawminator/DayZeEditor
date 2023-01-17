@@ -114,12 +114,6 @@ namespace DayZeEditor
             this.panel17 = new System.Windows.Forms.Panel();
             this.QuestIsGroupQuestCB = new System.Windows.Forms.CheckBox();
             this.darkLabel29 = new DarkUI.Controls.DarkLabel();
-            this.panel18 = new System.Windows.Forms.Panel();
-            this.QuestIsBanditQuestCB = new System.Windows.Forms.CheckBox();
-            this.darkLabel30 = new DarkUI.Controls.DarkLabel();
-            this.panel19 = new System.Windows.Forms.Panel();
-            this.QuestIsHeroQuestCB = new System.Windows.Forms.CheckBox();
-            this.darkLabel31 = new DarkUI.Controls.DarkLabel();
             this.panel20 = new System.Windows.Forms.Panel();
             this.darkLabel32 = new DarkUI.Controls.DarkLabel();
             this.QuestObjectSetFileNameTB = new System.Windows.Forms.TextBox();
@@ -586,8 +580,6 @@ namespace DayZeEditor
             this.panel15.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel17.SuspendLayout();
-            this.panel18.SuspendLayout();
-            this.panel19.SuspendLayout();
             this.panel20.SuspendLayout();
             this.panel21.SuspendLayout();
             this.panel22.SuspendLayout();
@@ -988,8 +980,6 @@ namespace DayZeEditor
             this.flowLayoutPanel1.Controls.Add(this.panel15);
             this.flowLayoutPanel1.Controls.Add(this.panel16);
             this.flowLayoutPanel1.Controls.Add(this.panel17);
-            this.flowLayoutPanel1.Controls.Add(this.panel18);
-            this.flowLayoutPanel1.Controls.Add(this.panel19);
             this.flowLayoutPanel1.Controls.Add(this.panel20);
             this.flowLayoutPanel1.Controls.Add(this.panel21);
             this.flowLayoutPanel1.Controls.Add(this.panel22);
@@ -1677,71 +1667,11 @@ namespace DayZeEditor
             this.darkLabel29.TabIndex = 171;
             this.darkLabel29.Text = "Is Group Quest";
             // 
-            // panel18
-            // 
-            this.panel18.Controls.Add(this.QuestIsBanditQuestCB);
-            this.panel18.Controls.Add(this.darkLabel30);
-            this.panel18.Location = new System.Drawing.Point(345, 495);
-            this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(336, 20);
-            this.panel18.TabIndex = 196;
-            // 
-            // QuestIsBanditQuestCB
-            // 
-            this.QuestIsBanditQuestCB.AutoSize = true;
-            this.QuestIsBanditQuestCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.QuestIsBanditQuestCB.Location = new System.Drawing.Point(96, 3);
-            this.QuestIsBanditQuestCB.Name = "QuestIsBanditQuestCB";
-            this.QuestIsBanditQuestCB.Size = new System.Drawing.Size(15, 14);
-            this.QuestIsBanditQuestCB.TabIndex = 170;
-            this.QuestIsBanditQuestCB.UseVisualStyleBackColor = true;
-            this.QuestIsBanditQuestCB.CheckedChanged += new System.EventHandler(this.QuestIsBanditQuestCB_CheckedChanged);
-            // 
-            // darkLabel30
-            // 
-            this.darkLabel30.AutoSize = true;
-            this.darkLabel30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel30.Location = new System.Drawing.Point(3, 2);
-            this.darkLabel30.Name = "darkLabel30";
-            this.darkLabel30.Size = new System.Drawing.Size(79, 13);
-            this.darkLabel30.TabIndex = 171;
-            this.darkLabel30.Text = "Is Bandit Quest";
-            // 
-            // panel19
-            // 
-            this.panel19.Controls.Add(this.QuestIsHeroQuestCB);
-            this.panel19.Controls.Add(this.darkLabel31);
-            this.panel19.Location = new System.Drawing.Point(687, 3);
-            this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(336, 20);
-            this.panel19.TabIndex = 197;
-            // 
-            // QuestIsHeroQuestCB
-            // 
-            this.QuestIsHeroQuestCB.AutoSize = true;
-            this.QuestIsHeroQuestCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.QuestIsHeroQuestCB.Location = new System.Drawing.Point(96, 3);
-            this.QuestIsHeroQuestCB.Name = "QuestIsHeroQuestCB";
-            this.QuestIsHeroQuestCB.Size = new System.Drawing.Size(15, 14);
-            this.QuestIsHeroQuestCB.TabIndex = 170;
-            this.QuestIsHeroQuestCB.UseVisualStyleBackColor = true;
-            this.QuestIsHeroQuestCB.CheckedChanged += new System.EventHandler(this.QuestIsHeroQuestCB_CheckedChanged);
-            // 
-            // darkLabel31
-            // 
-            this.darkLabel31.AutoSize = true;
-            this.darkLabel31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel31.Location = new System.Drawing.Point(3, 2);
-            this.darkLabel31.Name = "darkLabel31";
-            this.darkLabel31.Size = new System.Drawing.Size(72, 13);
-            this.darkLabel31.TabIndex = 171;
-            this.darkLabel31.Text = "Is Hero Quest";
-            // 
             // panel20
             // 
             this.panel20.Controls.Add(this.darkLabel32);
             this.panel20.Controls.Add(this.QuestObjectSetFileNameTB);
-            this.panel20.Location = new System.Drawing.Point(687, 29);
+            this.panel20.Location = new System.Drawing.Point(345, 495);
             this.panel20.Name = "panel20";
             this.panel20.Size = new System.Drawing.Size(336, 20);
             this.panel20.TabIndex = 198;
@@ -1770,7 +1700,7 @@ namespace DayZeEditor
             // 
             this.panel21.Controls.Add(this.darkLabel33);
             this.panel21.Controls.Add(this.QuestQuestClassNameTB);
-            this.panel21.Location = new System.Drawing.Point(687, 55);
+            this.panel21.Location = new System.Drawing.Point(687, 3);
             this.panel21.Name = "panel21";
             this.panel21.Size = new System.Drawing.Size(336, 20);
             this.panel21.TabIndex = 199;
@@ -1801,7 +1731,7 @@ namespace DayZeEditor
             this.panel22.Controls.Add(this.darkButton24);
             this.panel22.Controls.Add(this.QuestObjectivesLB);
             this.panel22.Controls.Add(this.darkLabel34);
-            this.panel22.Location = new System.Drawing.Point(687, 81);
+            this.panel22.Location = new System.Drawing.Point(687, 29);
             this.panel22.Name = "panel22";
             this.panel22.Size = new System.Drawing.Size(336, 132);
             this.panel22.TabIndex = 200;
@@ -1858,7 +1788,7 @@ namespace DayZeEditor
             this.panel23.Controls.Add(this.darkButton28);
             this.panel23.Controls.Add(this.QuestQuestItemsLB);
             this.panel23.Controls.Add(this.darkLabel36);
-            this.panel23.Location = new System.Drawing.Point(687, 219);
+            this.panel23.Location = new System.Drawing.Point(687, 167);
             this.panel23.Name = "panel23";
             this.panel23.Size = new System.Drawing.Size(336, 176);
             this.panel23.TabIndex = 201;
@@ -7441,10 +7371,6 @@ namespace DayZeEditor
             this.panel16.PerformLayout();
             this.panel17.ResumeLayout(false);
             this.panel17.PerformLayout();
-            this.panel18.ResumeLayout(false);
-            this.panel18.PerformLayout();
-            this.panel19.ResumeLayout(false);
-            this.panel19.PerformLayout();
             this.panel20.ResumeLayout(false);
             this.panel20.PerformLayout();
             this.panel21.ResumeLayout(false);
@@ -7754,12 +7680,6 @@ namespace DayZeEditor
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.CheckBox QuestIsGroupQuestCB;
         private DarkUI.Controls.DarkLabel darkLabel29;
-        private System.Windows.Forms.Panel panel18;
-        private System.Windows.Forms.CheckBox QuestIsBanditQuestCB;
-        private DarkUI.Controls.DarkLabel darkLabel30;
-        private System.Windows.Forms.Panel panel19;
-        private System.Windows.Forms.CheckBox QuestIsHeroQuestCB;
-        private DarkUI.Controls.DarkLabel darkLabel31;
         private System.Windows.Forms.Panel panel20;
         private DarkUI.Controls.DarkLabel darkLabel32;
         private System.Windows.Forms.TextBox QuestObjectSetFileNameTB;

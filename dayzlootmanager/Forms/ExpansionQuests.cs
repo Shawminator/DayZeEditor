@@ -193,16 +193,22 @@ namespace DayZeEditor
 
             QuestObjectivesPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Quests\\Objectives";
             QuestObjectives = new QuestObjectives(QuestObjectivesPath);
+            if (QuestObjectives.Objectives.Any(x => x.isDirty == true))
+                needtosave = true;
             setupobjectives();
 
             QuestNPCPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Quests\\NPCs";
             QuestNPCs = new QuestNPCLists(QuestNPCPath);
+            if (QuestNPCs.NPCList.Any(x => x.isDirty == true))
+                needtosave = true;
             setupNPCs();
 
             QuestsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Quests\\Quests";
             QuestsList = new ExpansioQuestList(QuestsPath);
             QuestsList.GetNPCLists(QuestNPCs);
             QuestsList.GetPreQuests();
+            if (QuestsList.QuestList.Any(x => x.isDirty == true))
+                needtosave = true;
             setupquests();
               
             SetupSharedLists();
@@ -1093,8 +1099,6 @@ namespace DayZeEditor
             QuestCancelQuestOnPlayerDeathCB.Checked = CurrentQuest.CancelQuestOnPlayerDeath == 1 ? true : false;
             questAutocompleteCB.Checked = CurrentQuest.Autocomplete == 1 ? true : false;
             QuestIsGroupQuestCB.Checked = CurrentQuest.IsGroupQuest == 1 ? true : false;
-            QuestIsBanditQuestCB.Checked = CurrentQuest.IsBanditQuest == 1 ? true : false;
-            QuestIsHeroQuestCB.Checked = CurrentQuest.IsHeroQuest == 1 ? true : false;
             QuestObjectSetFileNameTB.Text = CurrentQuest.ObjectSetFileName;
             QuestQuestClassNameTB.Text = CurrentQuest.QuestClassName;
 
@@ -1320,18 +1324,6 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             CurrentQuest.IsGroupQuest = QuestIsGroupQuestCB.Checked == true ? 1 : 0;
-            CurrentQuest.isDirty = true;
-        }
-        private void QuestIsBanditQuestCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentQuest.IsBanditQuest = QuestIsBanditQuestCB.Checked == true ? 1 : 0;
-            CurrentQuest.isDirty = true;
-        }
-        private void QuestIsHeroQuestCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentQuest.IsHeroQuest = QuestIsHeroQuestCB.Checked == true ? 1 : 0;
             CurrentQuest.isDirty = true;
         }
         private void QuestObjectSetFileNameTB_TextChanged(object sender, EventArgs e)

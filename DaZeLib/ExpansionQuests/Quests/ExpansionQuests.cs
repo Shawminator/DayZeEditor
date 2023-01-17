@@ -18,7 +18,7 @@ namespace DayZeLib
     }
     public class ExpansioQuestList
     {
-        const int m_QuestConfigVersion = 6;
+        const int m_QuestConfigVersion = 7;
         public static int getQuestConfigVersion
         {
             get { return m_QuestConfigVersion; }
@@ -49,17 +49,14 @@ namespace DayZeLib
             {
                 try
                 {
-                    bool savefile = false;
                     Console.WriteLine("serializing " + file.Name);
                     Quests Quest = JsonSerializer.Deserialize<Quests>(File.ReadAllText(file.FullName));
                     Quest.Filename = Path.GetFileNameWithoutExtension(file.Name);
                     QuestList.Add(Quest);
-                    if (savefile)
+                    if (Quest.ConfigVersion != getQuestConfigVersion)
                     {
-                        File.Delete(file.FullName);
-                        var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-                        string jsonString = JsonSerializer.Serialize(Quest, options);
-                        File.WriteAllText(QuestsPath + "\\" + Quest.Filename + ".json", jsonString);
+                        Quest.ConfigVersion = getQuestConfigVersion;
+                        Quest.isDirty = true;
                     }
                 }
                 catch (Exception ex)
@@ -98,8 +95,6 @@ namespace DayZeLib
                 CancelQuestOnPlayerDeath = 0,
                 Autocomplete = 0,
                 IsGroupQuest = 0,
-                IsBanditQuest = 0,
-                IsHeroQuest = 0,
                 ObjectSetFileName = "",
                 QuestClassName = "",
                 Objectives = new BindingList<QuestObjectivesBase>(),
@@ -229,8 +224,6 @@ namespace DayZeLib
         public int CancelQuestOnPlayerDeath { get; set; }
         public int Autocomplete { get; set; }
         public int IsGroupQuest { get; set; }
-        public int IsBanditQuest { get; set; }
-        public int IsHeroQuest { get; set; }
         public string ObjectSetFileName { get; set; }
         public string QuestClassName { get; set; }
         public BindingList<QuestObjectivesBase> Objectives { get; set; }
@@ -248,7 +241,7 @@ namespace DayZeLib
 
         public Quests()
         {
-            ConfigVersion = 3;
+            ConfigVersion = ExpansioQuestList.getQuestConfigVersion;
             Descriptions = new BindingList<string>();
             Objectives = new BindingList<QuestObjectivesBase>();
             QuestItems = new BindingList<Questitem>();
