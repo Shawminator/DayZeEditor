@@ -4417,6 +4417,7 @@ namespace DayZeEditor
             ShowHUDMemberStatesCB.Checked = PartySettings.ShowHUDMemberStates == 1 ? true : false;
             ShowHUDMemberStanceCB.Checked = PartySettings.ShowHUDMemberStance == 1 ? true : false;
             ShowPartyMemberMapMarkersCB.Checked = PartySettings.ShowPartyMemberMapMarkers == 1 ? true : false;
+            ShowHUDMemberDistanceCB.Checked = PartySettings.ShowHUDMemberDistance == 1 ? true : false;
             useraction = true;
         }
         private void PartySettingsCB_CheckedChanged(object sender, EventArgs e)

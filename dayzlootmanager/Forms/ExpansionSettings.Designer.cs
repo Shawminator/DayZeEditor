@@ -226,6 +226,7 @@ namespace DayZeEditor
             this.EnablePlayerListCB = new System.Windows.Forms.CheckBox();
             this.EnableTooltipCB = new System.Windows.Forms.CheckBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.ShowHUDMemberDistanceCB = new System.Windows.Forms.CheckBox();
             this.ShowPartyMemberMapMarkersCB = new System.Windows.Forms.CheckBox();
             this.ShowHUDMemberStanceCB = new System.Windows.Forms.CheckBox();
             this.ShowHUDMemberStatesCB = new System.Windows.Forms.CheckBox();
@@ -572,6 +573,7 @@ namespace DayZeEditor
             this.BarbedWireRaidToolTimeSecondsNUD = new System.Windows.Forms.NumericUpDown();
             this.CanRaidBarbedWireCB = new System.Windows.Forms.CheckBox();
             this.groupBox23 = new System.Windows.Forms.GroupBox();
+            this.SafeRaidUseScheduleCB = new System.Windows.Forms.CheckBox();
             this.darkLabel66 = new DarkUI.Controls.DarkLabel();
             this.SafeRaidToolDamagePercentNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel65 = new DarkUI.Controls.DarkLabel();
@@ -1181,7 +1183,6 @@ namespace DayZeEditor
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
-            this.SafeRaidUseScheduleCB = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -3146,7 +3147,7 @@ namespace DayZeEditor
             this.groupBox28.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox28.Location = new System.Drawing.Point(710, 384);
             this.groupBox28.Name = "groupBox28";
-            this.groupBox28.Size = new System.Drawing.Size(290, 183);
+            this.groupBox28.Size = new System.Drawing.Size(290, 185);
             this.groupBox28.TabIndex = 5;
             this.groupBox28.TabStop = false;
             this.groupBox28.Text = "Territories";
@@ -3952,6 +3953,7 @@ namespace DayZeEditor
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.ShowHUDMemberDistanceCB);
             this.groupBox9.Controls.Add(this.ShowPartyMemberMapMarkersCB);
             this.groupBox9.Controls.Add(this.ShowHUDMemberStanceCB);
             this.groupBox9.Controls.Add(this.ShowHUDMemberStatesCB);
@@ -3971,16 +3973,29 @@ namespace DayZeEditor
             this.groupBox9.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox9.Location = new System.Drawing.Point(710, 13);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(290, 365);
+            this.groupBox9.Size = new System.Drawing.Size(290, 372);
             this.groupBox9.TabIndex = 2;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Party Settings";
+            // 
+            // ShowHUDMemberDistanceCB
+            // 
+            this.ShowHUDMemberDistanceCB.AutoSize = true;
+            this.ShowHUDMemberDistanceCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ShowHUDMemberDistanceCB.Location = new System.Drawing.Point(23, 288);
+            this.ShowHUDMemberDistanceCB.Name = "ShowHUDMemberDistanceCB";
+            this.ShowHUDMemberDistanceCB.Size = new System.Drawing.Size(166, 17);
+            this.ShowHUDMemberDistanceCB.TabIndex = 34;
+            this.ShowHUDMemberDistanceCB.Text = "Show HUD Member Distance";
+            this.ShowHUDMemberDistanceCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ShowHUDMemberDistanceCB.UseVisualStyleBackColor = true;
+            this.ShowHUDMemberDistanceCB.CheckedChanged += new System.EventHandler(this.PartySettingsCB_CheckedChanged);
             // 
             // ShowPartyMemberMapMarkersCB
             // 
             this.ShowPartyMemberMapMarkersCB.AutoSize = true;
             this.ShowPartyMemberMapMarkersCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowPartyMemberMapMarkersCB.Location = new System.Drawing.Point(23, 336);
+            this.ShowPartyMemberMapMarkersCB.Location = new System.Drawing.Point(23, 270);
             this.ShowPartyMemberMapMarkersCB.Name = "ShowPartyMemberMapMarkersCB";
             this.ShowPartyMemberMapMarkersCB.Size = new System.Drawing.Size(186, 17);
             this.ShowPartyMemberMapMarkersCB.TabIndex = 33;
@@ -3993,7 +4008,7 @@ namespace DayZeEditor
             // 
             this.ShowHUDMemberStanceCB.AutoSize = true;
             this.ShowHUDMemberStanceCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowHUDMemberStanceCB.Location = new System.Drawing.Point(23, 316);
+            this.ShowHUDMemberStanceCB.Location = new System.Drawing.Point(23, 252);
             this.ShowHUDMemberStanceCB.Name = "ShowHUDMemberStanceCB";
             this.ShowHUDMemberStanceCB.Size = new System.Drawing.Size(158, 17);
             this.ShowHUDMemberStanceCB.TabIndex = 32;
@@ -4006,7 +4021,7 @@ namespace DayZeEditor
             // 
             this.ShowHUDMemberStatesCB.AutoSize = true;
             this.ShowHUDMemberStatesCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowHUDMemberStatesCB.Location = new System.Drawing.Point(23, 295);
+            this.ShowHUDMemberStatesCB.Location = new System.Drawing.Point(23, 234);
             this.ShowHUDMemberStatesCB.Name = "ShowHUDMemberStatesCB";
             this.ShowHUDMemberStatesCB.Size = new System.Drawing.Size(154, 17);
             this.ShowHUDMemberStatesCB.TabIndex = 31;
@@ -4019,7 +4034,7 @@ namespace DayZeEditor
             // 
             this.ShowHUDMemberBloodCB.AutoSize = true;
             this.ShowHUDMemberBloodCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowHUDMemberBloodCB.Location = new System.Drawing.Point(23, 272);
+            this.ShowHUDMemberBloodCB.Location = new System.Drawing.Point(23, 216);
             this.ShowHUDMemberBloodCB.Name = "ShowHUDMemberBloodCB";
             this.ShowHUDMemberBloodCB.Size = new System.Drawing.Size(151, 17);
             this.ShowHUDMemberBloodCB.TabIndex = 30;
@@ -4053,7 +4068,7 @@ namespace DayZeEditor
             // 
             this.ShowPartyMemberHUDCB.AutoSize = true;
             this.ShowPartyMemberHUDCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowPartyMemberHUDCB.Location = new System.Drawing.Point(23, 249);
+            this.ShowPartyMemberHUDCB.Location = new System.Drawing.Point(23, 200);
             this.ShowPartyMemberHUDCB.Name = "ShowPartyMemberHUDCB";
             this.ShowPartyMemberHUDCB.Size = new System.Drawing.Size(148, 17);
             this.ShowPartyMemberHUDCB.TabIndex = 27;
@@ -4066,7 +4081,7 @@ namespace DayZeEditor
             // 
             this.CanCreatePartyMarkersCB.AutoSize = true;
             this.CanCreatePartyMarkersCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CanCreatePartyMarkersCB.Location = new System.Drawing.Point(23, 226);
+            this.CanCreatePartyMarkersCB.Location = new System.Drawing.Point(23, 183);
             this.CanCreatePartyMarkersCB.Name = "CanCreatePartyMarkersCB";
             this.CanCreatePartyMarkersCB.Size = new System.Drawing.Size(147, 17);
             this.CanCreatePartyMarkersCB.TabIndex = 26;
@@ -4079,7 +4094,7 @@ namespace DayZeEditor
             // 
             this.ShowNameOnQuickMarkersCB.AutoSize = true;
             this.ShowNameOnQuickMarkersCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowNameOnQuickMarkersCB.Location = new System.Drawing.Point(23, 203);
+            this.ShowNameOnQuickMarkersCB.Location = new System.Drawing.Point(23, 167);
             this.ShowNameOnQuickMarkersCB.Name = "ShowNameOnQuickMarkersCB";
             this.ShowNameOnQuickMarkersCB.Size = new System.Drawing.Size(173, 17);
             this.ShowNameOnQuickMarkersCB.TabIndex = 25;
@@ -4092,7 +4107,7 @@ namespace DayZeEditor
             // 
             this.ShowDistanceUnderPartyMembersMarkersCB.AutoSize = true;
             this.ShowDistanceUnderPartyMembersMarkersCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowDistanceUnderPartyMembersMarkersCB.Location = new System.Drawing.Point(23, 111);
+            this.ShowDistanceUnderPartyMembersMarkersCB.Location = new System.Drawing.Point(23, 99);
             this.ShowDistanceUnderPartyMembersMarkersCB.Name = "ShowDistanceUnderPartyMembersMarkersCB";
             this.ShowDistanceUnderPartyMembersMarkersCB.Size = new System.Drawing.Size(244, 17);
             this.ShowDistanceUnderPartyMembersMarkersCB.TabIndex = 23;
@@ -4105,7 +4120,7 @@ namespace DayZeEditor
             // 
             this.ShowNameOnPartyMembersMarkersCB.AutoSize = true;
             this.ShowNameOnPartyMembersMarkersCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowNameOnPartyMembersMarkersCB.Location = new System.Drawing.Point(23, 134);
+            this.ShowNameOnPartyMembersMarkersCB.Location = new System.Drawing.Point(23, 116);
             this.ShowNameOnPartyMembersMarkersCB.Name = "ShowNameOnPartyMembersMarkersCB";
             this.ShowNameOnPartyMembersMarkersCB.Size = new System.Drawing.Size(215, 17);
             this.ShowNameOnPartyMembersMarkersCB.TabIndex = 22;
@@ -4118,7 +4133,7 @@ namespace DayZeEditor
             // 
             this.ShowDistanceUnderQuickMarkersCB.AutoSize = true;
             this.ShowDistanceUnderQuickMarkersCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowDistanceUnderQuickMarkersCB.Location = new System.Drawing.Point(23, 180);
+            this.ShowDistanceUnderQuickMarkersCB.Location = new System.Drawing.Point(23, 150);
             this.ShowDistanceUnderQuickMarkersCB.Name = "ShowDistanceUnderQuickMarkersCB";
             this.ShowDistanceUnderQuickMarkersCB.Size = new System.Drawing.Size(202, 17);
             this.ShowDistanceUnderQuickMarkersCB.TabIndex = 21;
@@ -4131,7 +4146,7 @@ namespace DayZeEditor
             // 
             this.EnableQuickMarkerCB.AutoSize = true;
             this.EnableQuickMarkerCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.EnableQuickMarkerCB.Location = new System.Drawing.Point(23, 157);
+            this.EnableQuickMarkerCB.Location = new System.Drawing.Point(23, 133);
             this.EnableQuickMarkerCB.Name = "EnableQuickMarkerCB";
             this.EnableQuickMarkerCB.Size = new System.Drawing.Size(126, 17);
             this.EnableQuickMarkerCB.TabIndex = 24;
@@ -4157,7 +4172,7 @@ namespace DayZeEditor
             // 
             this.ShowPartyMember3DMarkersCB.AutoSize = true;
             this.ShowPartyMember3DMarkersCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowPartyMember3DMarkersCB.Location = new System.Drawing.Point(23, 88);
+            this.ShowPartyMember3DMarkersCB.Location = new System.Drawing.Point(23, 82);
             this.ShowPartyMember3DMarkersCB.Name = "ShowPartyMember3DMarkersCB";
             this.ShowPartyMember3DMarkersCB.Size = new System.Drawing.Size(179, 17);
             this.ShowPartyMember3DMarkersCB.TabIndex = 17;
@@ -8475,6 +8490,19 @@ namespace DayZeEditor
             this.groupBox23.TabIndex = 1;
             this.groupBox23.TabStop = false;
             this.groupBox23.Text = "Safes";
+            // 
+            // SafeRaidUseScheduleCB
+            // 
+            this.SafeRaidUseScheduleCB.AutoSize = true;
+            this.SafeRaidUseScheduleCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SafeRaidUseScheduleCB.Location = new System.Drawing.Point(108, 18);
+            this.SafeRaidUseScheduleCB.Name = "SafeRaidUseScheduleCB";
+            this.SafeRaidUseScheduleCB.Size = new System.Drawing.Size(143, 17);
+            this.SafeRaidUseScheduleCB.TabIndex = 118;
+            this.SafeRaidUseScheduleCB.Text = "Safe Raid Use Schedule";
+            this.SafeRaidUseScheduleCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.SafeRaidUseScheduleCB.UseVisualStyleBackColor = true;
+            this.SafeRaidUseScheduleCB.CheckedChanged += new System.EventHandler(this.RaidSettings_CheckedChanged);
             // 
             // darkLabel66
             // 
@@ -16519,19 +16547,6 @@ namespace DayZeEditor
             this.toolStripSeparator17.Name = "toolStripSeparator17";
             this.toolStripSeparator17.Size = new System.Drawing.Size(6, 28);
             // 
-            // SafeRaidUseScheduleCB
-            // 
-            this.SafeRaidUseScheduleCB.AutoSize = true;
-            this.SafeRaidUseScheduleCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SafeRaidUseScheduleCB.Location = new System.Drawing.Point(108, 18);
-            this.SafeRaidUseScheduleCB.Name = "SafeRaidUseScheduleCB";
-            this.SafeRaidUseScheduleCB.Size = new System.Drawing.Size(143, 17);
-            this.SafeRaidUseScheduleCB.TabIndex = 118;
-            this.SafeRaidUseScheduleCB.Text = "Safe Raid Use Schedule";
-            this.SafeRaidUseScheduleCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.SafeRaidUseScheduleCB.UseVisualStyleBackColor = true;
-            this.SafeRaidUseScheduleCB.CheckedChanged += new System.EventHandler(this.RaidSettings_CheckedChanged);
-            // 
             // ExpansionSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -18104,5 +18119,6 @@ namespace DayZeEditor
         private System.Windows.Forms.NumericUpDown HardlineReputationNUD;
         private DarkUI.Controls.DarkLabel darkLabel213;
         private System.Windows.Forms.CheckBox SafeRaidUseScheduleCB;
+        private System.Windows.Forms.CheckBox ShowHUDMemberDistanceCB;
     }
 }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DayZeLib
 {
@@ -187,27 +188,34 @@ namespace DayZeLib
                     continue;
                 if (line_content.Contains("<Currency"))
                     continue;
-                string[] strs = line_content.Split(',');
-                string itemStr = strs[0];
-                itemStr = Helper.TrimSpaces(itemStr);
-                string qntStr = strs[1];
-                qntStr = Helper.TrimSpaces(qntStr);
-                string buyStr = strs[2];
-                buyStr = Helper.TrimSpaces(buyStr);
+                try
+                {
+                    string[] strs = line_content.Split(',');
+                    string itemStr = strs[0];
+                    itemStr = Helper.TrimSpaces(itemStr);
+                    string qntStr = strs[1];
+                    qntStr = Helper.TrimSpaces(qntStr);
+                    string buyStr = strs[2];
+                    buyStr = Helper.TrimSpaces(buyStr);
+                    string sellStr = strs[3];
+                    sellStr = Helper.TrimSpaces(sellStr);
+                    DrjonesItems item = new DrjonesItems();
+                    item.m_Trader_ItemsTraderId = traderID;
+                    item.m_Trader_ItemsCategoryId = categoryId;
+                    item.m_Trader_ItemsClassnames = itemStr;
+                    item.m_Trader_ItemsQuantity = qntStr;
+                    item.m_Trader_ItemsBuyValue = Convert.ToInt32(buyStr);
+                    item.m_Trader_ItemsSellValue = Convert.ToInt32(sellStr);
+                    DrjonesitemList.Add(item);
+                    Console.WriteLine("Item Found.... " + item.m_Trader_ItemsClassnames + ", " + item.m_Trader_ItemsQuantity + ", " + item.m_Trader_ItemsSellValue + ", " + item.m_Trader_ItemsBuyValue);
+                    itemCounter++;
+                }
+                catch(Exception e)
+                {
+                    MessageBox.Show("There is an error in the following line.\n" + line_content.ToString());
+                }
 
-                string sellStr = strs[3];
-                sellStr = Helper.TrimSpaces(sellStr);
-
-                DrjonesItems item = new DrjonesItems();
-                item.m_Trader_ItemsTraderId = traderID;
-                item.m_Trader_ItemsCategoryId = categoryId;
-                item.m_Trader_ItemsClassnames = itemStr;
-                item.m_Trader_ItemsQuantity = qntStr;
-                item.m_Trader_ItemsBuyValue = Convert.ToInt32(buyStr);
-                item.m_Trader_ItemsSellValue = Convert.ToInt32(sellStr);
-                DrjonesitemList.Add(item);
-                Console.WriteLine("Item Found.... " + item.m_Trader_ItemsClassnames + ", " + item.m_Trader_ItemsQuantity + ", " + item.m_Trader_ItemsSellValue + ", " + item.m_Trader_ItemsBuyValue);
-                itemCounter++;
+                
             }
             reader.Close();
             reader.Dispose();
