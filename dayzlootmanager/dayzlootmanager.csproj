@@ -506,6 +506,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Maps\namalsk_Map.png.xyz" />
+    <None Include="Maps\pripyat_Map.png.xyz" />
     <None Include="Maps\rostow_Map.png.xyz" />
     <None Include="Maps\takistanplus_Map.png.xyz" />
     <None Include="Maps\vela_Map.png.xyz" />
