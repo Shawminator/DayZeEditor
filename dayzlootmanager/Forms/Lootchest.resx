@@ -229,6 +229,14 @@
         lPQ50+dPH9MvKHrOa+5rPOfi9V4EuzFluFuuDHfLleFuqe+f/geXs2Rl0oNFpgAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>Tables for more randomization,
+You can create your own Tables, 
+but you MUST use these Prenames :-
+"LC_Table_Money_xxxxxx" for cash Registers
+"LC_Table_xxxxxx" for all Items
+"LC_Table_Weapons_xxxxxx" for Weapons and predifinied Weapons ONLY!</value>
+  </data>
   <metadata name="darkToolStrip23.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>430, 15</value>
   </metadata>

@@ -1075,5 +1075,10 @@ namespace DayZeEditor
             CurrentLootChestLocation.loot[lootLB.SelectedIndex] = loot;
             LootChestTable.isDirty = true;
         }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

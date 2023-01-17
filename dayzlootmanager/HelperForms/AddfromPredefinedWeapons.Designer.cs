@@ -82,6 +82,8 @@ namespace DayZeEditor
             this.LCPredefinedWeaponsLB.ForeColor = System.Drawing.SystemColors.Control;
             this.LCPredefinedWeaponsLB.FormattingEnabled = true;
             this.LCPredefinedWeaponsLB.Items.AddRange(new object[] {
+            "CJ_LootChest_CashRegister_Old",
+            "CJ_LootChest_CashRegister_New",
             "CJ_LootChest_Brown_Small",
             "CJ_LootChest_Brown_Medium",
             "CJ_LootChest_Brown_Large",

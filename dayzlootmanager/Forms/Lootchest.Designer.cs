@@ -954,9 +954,8 @@ namespace DayZeEditor
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(274, 96);
             this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "Tables for more randomization,\nYou can create your own Tables, \nbut you MUST use " +
-    "these Prenames :-\n\"LC_Table_xxxxxx\" for all Items\n\"LC_Table_Weapons_xxxxxx\" for " +
-    "Weapons and predifinied Weapons ONLY!";
+            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // darkButton19
             // 
