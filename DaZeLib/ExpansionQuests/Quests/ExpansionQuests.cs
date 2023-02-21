@@ -73,9 +73,8 @@ namespace DayZeLib
             Markedfordelete.Add(Questfordelete);
             QuestList.Remove(Questfordelete);
         }
-        public void CreateNewQuest()
+        public void CreateNewQuest(int id)
         {
-            int id = GetNextQuestID();
             string[] newdescription = new string[] { "Description on getting quest.", "Description while quest is active.", "Description when take in quest." };
             Quests newquest = new Quests()
             {
@@ -114,7 +113,7 @@ namespace DayZeLib
             };
             QuestList.Add(newquest);
         }
-        private int GetNextQuestID()
+        public List<int> GetAllQuestIDS()
         {
             List<int> Numberofquests = new List<int>();
             foreach (Quests quest in QuestList)
@@ -122,9 +121,12 @@ namespace DayZeLib
                 Numberofquests.Add(quest.ID);
             }
             Numberofquests.Sort();
-            List<int> result = Enumerable.Range(1, Numberofquests.Max() + 1).Except(Numberofquests).ToList();
-            result.Sort();
-            return result[0];
+            return Numberofquests;
+
+
+            //List<int> result = Enumerable.Range(1, Numberofquests.Max() + 1).Except(Numberofquests).ToList();
+            //result.Sort();
+            //return result[0];
         }
         public void RemoveNPCFromQuests(ExpansionQuestNPCs currentQuestNPC)
         {

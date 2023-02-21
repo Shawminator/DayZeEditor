@@ -10,7 +10,7 @@ namespace DayZeLib
 {
     public enum KOZDayOfWeek
     {
-        Sunday,
+        Sunday = 1,
         Monday,
         Tuesday,
         Wednesday,
@@ -28,6 +28,7 @@ namespace DayZeLib
     public class KosZoneconfig
     {
         public int IsKosZoneActive { get; set; }
+        public int ForceFPPinPVP { get; set; }
         public int KOSCheck { get; set; }
         public BindingList<Koszonearealocation> KosZoneAreaLocation { get; set; }
 
@@ -46,12 +47,13 @@ namespace DayZeLib
         public int IsMsgActive { get; set; }
         public string MsgEnterZone { get; set; }
         public string MsgExitZone { get; set; }
+        public int ShowOnMap { get; set; }
 
         public override string ToString()
         {
             return KosZoneStatut;
         }
-    } 
+    }
 
     public class KosPurgeConfig
     {
@@ -61,6 +63,7 @@ namespace DayZeLib
         public int RestartCycle { get; set; }
         public BindingList<Purgeschedule> PurgeSchedules { get; set; }
         public BindingList<Dynamicpurgeschedule> DynamicPurgeSchedules { get; set; }
+        public BindingList<LockedDoorLocations> LockedDoorLocations {get;set; }
 
         [JsonIgnore]
         public string FullFilename { get; set; }
@@ -88,8 +91,8 @@ namespace DayZeLib
     public class Dynamicpurgeschedule
     {
         public string DynamicPurgeName { get; set; }
-        public int WeekNumber { get; set; }
-        public int Day { get; set; }
+        public BindingList<int> WeekNumber { get; set; }
+        public BindingList<int> Day { get; set; }
         public decimal Chance { get; set; }
         public int DurationMin { get; set; }
         public int DurationMax { get; set; }
@@ -97,10 +100,26 @@ namespace DayZeLib
         public int StartMin { get; set; }
         public int EndHour { get; set; }
         public int EndMin { get; set; }
+        public int AllowRaiding { get; set; }
 
         public override string ToString()
         {
             return DynamicPurgeName;
         }
     }
+    public class LockedDoorLocations
+    {
+        public float Building_X { get; set; }
+        public float Building_Y { get; set; }
+        public float Building_Z { get; set; }
+        public int DoorIndex { get; set; }
+        public string BuildingClassName { get; set; }
+
+        public override string ToString()
+        {
+            return BuildingClassName;
+        }
+    }
+
+
 }

@@ -17,7 +17,7 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty;
         [JsonIgnore]
-        public const string m_Version = "2.3";
+        public const string m_Version = "2.5";
 
         public string Version { get; set; } //current version 2.3
         public BindingList<Vehiclespart> VehiclesParts { get; set; }

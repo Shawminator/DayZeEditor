@@ -10,6 +10,9 @@ namespace DayZeLib
 {
     public class TraderPlusGarageConfig
     {
+
+        [JsonIgnore]
+        public const string m_version = "2.5";
         [JsonIgnore]
         public const string fileName = "TraderPlusGarageConfig.json";
         [JsonIgnore]
@@ -17,10 +20,14 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty;
 
+        public string Version { get; set; }
+        public int UseGarageOnlyToTrade { get; set; }
         public int VehicleMustHaveLock { get; set; }
         public int SaveVehicleCargo { get; set; }
         public int SaveVehicleHealth { get; set; }
         public int SaveVehicleFuel { get; set; }
+        public int SavedVehicleInGarageForTradeInHour { get; set; }
+        public int MaxVehicleStored { get; set; }
         public int ParkInCost { get; set; }
         public int ParkOutCost { get; set; }
         public int PayWithBankAccount { get; set; }
@@ -34,6 +41,19 @@ namespace DayZeLib
         public string ParkInSuccess { get; set; }
         public string ParkOutFail { get; set; }
         public string ParkOutSuccess { get; set; }
+        public string MaxVehicleStoredReached { get; set; }
+        public string TradeVehicleWarning { get; set; }
+        public string TradeVehicleHasBeenDeleted { get; set; }
+
+        public bool CheckVersion()
+        {
+            if (Version != m_version)
+            {
+                Version = m_version;
+                return false;
+            }
+            return true;
+        }
 
     }
     public class Npc

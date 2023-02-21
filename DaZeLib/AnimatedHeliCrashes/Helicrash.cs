@@ -26,11 +26,10 @@ namespace DayZeLib
         public int HelicrashSpawnTime { get; set; }
         public int HelicrashDespawnTime { get; set; }
         public BindingList<Crashpoint> CrashPoints { get; set; }
-        public Helicopterus_[] HelicopterUS_ { get; set; }
+        public HelicopterArray[] HelicopterArray { get; set; }
         public BindingList<Animalspawnarray> AnimalSpawnArray { get; set; }
         public BindingList<Zombiespawnarray> ZombieSpawnArray { get; set; }
-        public BindingList<string> Loot_Helicrash { get; set; }
-        public BindingList<Weaponloottable> WeaponLootTables { get; set; }
+        public BindingList<string> LootTables { get; set; }
     }
 
     public class Crashpoint
@@ -46,16 +45,12 @@ namespace DayZeLib
         }
     }
 
-    public class Helicopterus_
+    public class HelicopterArray
     {
         public int start_height { get; set; }
         public int minimum_height { get; set; }
         public int speed { get; set; }
         public int minimum_speed { get; set; }
-        public int Maximum_Loot_Helicrash { get; set; }
-        public int Maximum_Weapons_Helicrash { get; set; }
-        public int Minimum_Loot_Helicrash { get; set; }
-        public int Minimum_Weapons_Helicrash { get; set; }
     }
 
     public class Animalspawnarray
@@ -73,18 +68,4 @@ namespace DayZeLib
         public int amount_minimum { get; set; }
         public int amount_maximum { get; set; }
     }
-
-    public class Weaponloottable
-    {
-        public string WeaponName { get; set; }
-        public string MagazineName { get; set; }
-        public BindingList<string> Attachments { get; set; }
-        public string Sight { get; set; }
-
-        public override string ToString()
-        {
-            return WeaponName;
-        }
-    }
-
 }

@@ -1,4 +1,36 @@
-﻿Version 0.7.5.1
+﻿Version 0.7.5.5
+[Fixed]
+Missed some stuff in the CFGGameplay.json 120
+
+Version 0.7.5.4
+[Updated]
+CFGGameplay updated to 1.20
+Added Sholder to Expansion Loadouts Attachment List.
+Added External Faction list to Quest Factions seelction boxes
+
+Version 0.7.5.3
+[Fixed]
+Expansion Market NPC Position now go above 20000 x 20000
+TraderPlus NPC Position now go above 20000 x 20000
+Added Auto create QuestPlayerData FOlder if does not exist
+Added auto create hardline Playerdata folder if it doesn not exist
+Hardline settings fixed when creating new json file, previously was not creating a item rarity list and crashing editor
+[Added]
+Factions Txt list in TraderNPC folder to set up the faction names incase you run a mod which can add more factions
+Exopansion quests will now allow you to enter a quest ID rather than assigning automatically
+Added check for market item colour if not the correct length of characters.
+[Updated]
+Updated Expansion settings to latest version
+Updated Trader Plus to latest versions
+
+Version 0.7.5.2
+[Updated]
+Updated configs for latest expansion update
+[Added]
+Added a config checker for quest, suestnpc and objective configs
+Add the two new cash registers for cj loot crate v 1.0.6
+
+Version 0.7.5.1
 [Updated]
 updated expansion Raid Settigns to include new SafeRaidUseSchedule setting
 

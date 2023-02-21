@@ -17,7 +17,7 @@ namespace DayZeLib
         [JsonIgnore]
         public string FullFilename { get; set; }
         [JsonIgnore]
-        public const string m_Version = "2.3";
+        public const string m_Version = "2.5";
 
         public string Version { get; set; }
         public int[] AuthorizedIDInsurance { get; set; }

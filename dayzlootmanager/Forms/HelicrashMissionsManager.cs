@@ -27,7 +27,9 @@ namespace DayZeEditor
 
         public string Projectname;
         private bool _useraction = false;
-        private Weaponloottable currentWeaponloottable;
+        public string LootPoolConfigPath { get; private set; }
+        public LootPool LootPool { get; private set; }
+
         private Crashpoint currentCrashpoint;
 
         public bool useraction
@@ -111,6 +113,9 @@ namespace DayZeEditor
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
 
+            LootPoolConfigPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\LootPool\\LootPoolConfig.json";
+            LootPool = JsonSerializer.Deserialize<LootPool>(File.ReadAllText(LootPoolConfigPath));
+
             HelicrashMissionsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\HeliCrashMissions\\Helicrash.json";
             Helicrash = JsonSerializer.Deserialize<Helicrash>(File.ReadAllText(HelicrashMissionsPath));
             Helicrash.isDirty = false;
@@ -169,8 +174,6 @@ namespace DayZeEditor
 
         private void LoadHeliCrash()
         {
-            var sortedListInstance = new BindingList<Weaponloottable>(Helicrash.WeaponLootTables.OrderBy(x => x.WeaponName).ToList());
-            Helicrash.WeaponLootTables = sortedListInstance;
             useraction = false;
 
             adminlogCB.Checked = Helicrash.admin_log == 1 ? true : false;
@@ -185,14 +188,10 @@ namespace DayZeEditor
             ZombieMinNUD.Value = Helicrash.ZombieSpawnArray[0].amount_minimum;
             ZombieRadiusNUD.Value = Helicrash.ZombieSpawnArray[0].radius;
 
-            start_heightNUD.Value = Helicrash.HelicopterUS_[0].start_height;
-            minimum_heightNUD.Value = Helicrash.HelicopterUS_[0].minimum_height;
-            speedNUD.Value = Helicrash.HelicopterUS_[0].speed;
-            minimum_speedNUD.Value = Helicrash.HelicopterUS_[0].minimum_speed;
-            Maximum_Loot_HelicrashNUD.Value = Helicrash.HelicopterUS_[0].Maximum_Loot_Helicrash;
-            Minimum_Loot_HelicrashNUD.Value = Helicrash.HelicopterUS_[0].Minimum_Loot_Helicrash;
-            Maximum_Weapons_HelicrashNUD.Value = Helicrash.HelicopterUS_[0].Maximum_Weapons_Helicrash;
-            Minimum_Weapons_HelicrashNUD.Value = Helicrash.HelicopterUS_[0].Minimum_Weapons_Helicrash;
+            start_heightNUD.Value = Helicrash.HelicopterArray[0].start_height;
+            minimum_heightNUD.Value = Helicrash.HelicopterArray[0].minimum_height;
+            speedNUD.Value = Helicrash.HelicopterArray[0].speed;
+            minimum_speedNUD.Value = Helicrash.HelicopterArray[0].minimum_speed;
 
             zombie_nameLB.DisplayMember = "DisplayName";
             zombie_nameLB.ValueMember = "Value";
@@ -208,31 +207,13 @@ namespace DayZeEditor
 
             Loot_HelicrashLB.DisplayMember = "DisplayName";
             Loot_HelicrashLB.ValueMember = "Value";
-            Loot_HelicrashLB.DataSource = Helicrash.Loot_Helicrash;
+            Loot_HelicrashLB.DataSource = Helicrash.LootTables;
 
-            WeaponLootTablesLB.DisplayMember = "DisplayName";
-            WeaponLootTablesLB.ValueMember = "Value";
-            WeaponLootTablesLB.DataSource = Helicrash.WeaponLootTables;
 
             useraction = true;
         }
         private void WeaponLootTablesLB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (WeaponLootTablesLB.SelectedItems.Count < 1) return;
-            currentWeaponloottable = WeaponLootTablesLB.SelectedItem as Weaponloottable;
-            useraction = false;
-            SetweaponInfo();
-            useraction = true;
-        }
-        private void SetweaponInfo()
-        {
-            weaponTB.Text = currentWeaponloottable.WeaponName;
-            magazineTB.Text = currentWeaponloottable.MagazineName;
-            opticTB.Text = currentWeaponloottable.Sight;
-
-            attachmentsLB.DisplayMember = "DisplayName";
-            attachmentsLB.ValueMember = "Value";
-            attachmentsLB.DataSource = currentWeaponloottable.Attachments;
         }
         private void CrashpointLB_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -363,50 +344,25 @@ namespace DayZeEditor
         private void start_heightNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            Helicrash.HelicopterUS_[0].start_height = (int)start_heightNUD.Value;
+            Helicrash.HelicopterArray[0].start_height = (int)start_heightNUD.Value;
             Helicrash.isDirty = true;
         }
         private void minimum_heightNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            Helicrash.HelicopterUS_[0].start_height = (int)start_heightNUD.Value;
+            Helicrash.HelicopterArray[0].start_height = (int)start_heightNUD.Value;
             Helicrash.isDirty = true;
         }
         private void speedNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            Helicrash.HelicopterUS_[0].speed = (int)speedNUD.Value;
+            Helicrash.HelicopterArray[0].speed = (int)speedNUD.Value;
             Helicrash.isDirty = true;
         }
         private void minimum_speedNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            Helicrash.HelicopterUS_[0].minimum_speed = (int)minimum_speedNUD.Value;
-            Helicrash.isDirty = true;
-        }
-        private void Maximum_Loot_HelicrashNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            Helicrash.HelicopterUS_[0].Maximum_Loot_Helicrash = (int)Maximum_Loot_HelicrashNUD.Value;
-            Helicrash.isDirty = true;
-        }
-        private void Minimum_Loot_HelicrashNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            Helicrash.HelicopterUS_[0].Minimum_Loot_Helicrash = (int)Minimum_Loot_HelicrashNUD.Value;
-            Helicrash.isDirty = true;
-        }
-        private void Maximum_Weapons_HelicrashNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            Helicrash.HelicopterUS_[0].Maximum_Weapons_Helicrash = (int)Maximum_Weapons_HelicrashNUD.Value;
-            Helicrash.isDirty = true;
-
-        }
-        private void Minimum_Weapons_HelicrashNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            Helicrash.HelicopterUS_[0].Minimum_Weapons_Helicrash = (int)Minimum_Weapons_HelicrashNUD.Value;
+            Helicrash.HelicopterArray[0].minimum_speed = (int)minimum_speedNUD.Value;
             Helicrash.isDirty = true;
         }
         private void AnimalMaxNUD_ValueChanged(object sender, EventArgs e)
@@ -499,146 +455,10 @@ namespace DayZeEditor
             Helicrash.ZombieSpawnArray[0].zombie_name.Remove(zombie_nameLB.GetItemText(zombie_nameLB.SelectedItem));
             Helicrash.isDirty = true;
         }
-        private void darkButton11_Click(object sender, EventArgs e)
-        {
-            AddItemfromTypes form = new AddItemfromTypes
-            {
-                vanillatypes = vanillatypes,
-                ModTypes = ModTypes,
-                currentproject = currentproject
-            };
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                List<string> addedtypes = form.addedtypes.ToList();
-                foreach (string l in addedtypes)
-                {
-                    if (!Helicrash.Loot_Helicrash.Contains(l))
-                    {
-                        Helicrash.Loot_Helicrash.Add(l);
-                        Helicrash.isDirty = true;
-                    }
-                }
-            }
-        }
         private void darkButton21_Click(object sender, EventArgs e)
         {
-            Helicrash.Loot_Helicrash.Remove(Loot_HelicrashLB.GetItemText(Loot_HelicrashLB.SelectedItem));
+            Helicrash.LootTables.Remove(Loot_HelicrashLB.GetItemText(Loot_HelicrashLB.SelectedItem));
             Helicrash.isDirty = true;
-        }
-        private void darkButton15_Click(object sender, EventArgs e)
-        {
-            Helicrash.WeaponLootTables.Add(new Weaponloottable()
-                {
-                    WeaponName = "New_Weapon_Name",
-                    MagazineName = "",
-                    Attachments = new BindingList<string>(),
-                    Sight = ""
-                }
-            );
-            WeaponLootTablesLB.SelectedIndex = -1;
-            WeaponLootTablesLB.SelectedIndex = WeaponLootTablesLB.Items.Count - 1;
-        }
-        private void darkButton16_Click(object sender, EventArgs e)
-        {
-            if (currentWeaponloottable == null) return;
-            Helicrash.WeaponLootTables.Remove(currentWeaponloottable);
-            Helicrash.isDirty = true;
-        }
-        private void darkButton8_Click(object sender, EventArgs e)
-        {
-            AddItemfromTypes form = new AddItemfromTypes
-            {
-                vanillatypes = vanillatypes,
-                ModTypes = ModTypes,
-                currentproject = currentproject,
-                UseOnlySingleitem = true
-            };
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                List<string> addedtypes = form.addedtypes.ToList();
-                foreach (string l in addedtypes)
-                {
-                    if (!Helicrash.WeaponLootTables.Any(x => x.WeaponName == l))
-                    {
-                        currentWeaponloottable.WeaponName = l;
-                        SetweaponInfo();
-                        Helicrash.isDirty = true;
-                    }
-                    else
-                    {
-                        MessageBox.Show("There is allready a pre defined weapon set up for " + l);
-                    }
-                }
-            }
-        }
-        private void darkButton1_Click(object sender, EventArgs e)
-        {
-            AddItemfromTypes form = new AddItemfromTypes
-            {
-                vanillatypes = vanillatypes,
-                ModTypes = ModTypes,
-                currentproject = currentproject,
-                UseOnlySingleitem = true
-            };
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                List<string> addedtypes = form.addedtypes.ToList();
-                foreach (string l in addedtypes)
-                {
-                    currentWeaponloottable.MagazineName = l;
-                    SetweaponInfo();
-                    Helicrash.isDirty = true;
-                }
-            }
-        }
-        private void darkButton10_Click(object sender, EventArgs e)
-        {
-            AddItemfromTypes form = new AddItemfromTypes
-            {
-                vanillatypes = vanillatypes,
-                ModTypes = ModTypes,
-                currentproject = currentproject
-            };
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                List<string> addedtypes = form.addedtypes.ToList();
-                foreach (string l in addedtypes)
-                {
-                    if (!currentWeaponloottable.Attachments.Any(x => x == l))
-                    {
-                        currentWeaponloottable.Attachments.Add(l);
-                        SetweaponInfo();
-                        Helicrash.isDirty = true;
-                    }
-                }
-            }
-        }
-        private void darkButton9_Click(object sender, EventArgs e)
-        {
-            currentWeaponloottable.Attachments.Remove(attachmentsLB.GetItemText(attachmentsLB.SelectedItem));
-            Helicrash.isDirty = true;
-        }
-        private void darkButton12_Click(object sender, EventArgs e)
-        {
-            AddItemfromTypes form = new AddItemfromTypes
-            {
-                vanillatypes = vanillatypes,
-                ModTypes = ModTypes,
-                currentproject = currentproject,
-                UseOnlySingleitem = true
-            };
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                List<string> addedtypes = form.addedtypes.ToList();
-                currentWeaponloottable.Sight = addedtypes[0];
-                SetweaponInfo();
-                Helicrash.isDirty = true;
-            }
         }
 
         private void darkButton5_Click(object sender, EventArgs e)
@@ -679,19 +499,30 @@ namespace DayZeEditor
             }
         }
 
-        private void Loot_HelicrashLB_SelectedIndexChanged(object sender, EventArgs e)
+        private void darkButton10_Click_1(object sender, EventArgs e)
         {
-
-        }
-
-        private void animal_nameLB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void zombie_nameLB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            AddfromPredefinedWeapons form = new AddfromPredefinedWeapons
+            {
+                Rhlprewardtable = LootPool.RHLPRewardTables,
+                titellabel = "Add Items from Loot list",
+                isLootList = false,
+                isRHTableList = false,
+                isRewardTable = true,
+                ispredefinedweapon = false,
+                isRHPredefinedWeapon = false,
+                isLootchest = false,
+                isLootBoxList = false
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> predefweapon = form.WeaponList;
+                foreach (string weapon in predefweapon)
+                {
+                    Helicrash.LootTables.Add(weapon);
+                    Helicrash.isDirty = true;
+                }
+            }
         }
     }
 }

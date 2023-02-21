@@ -72,6 +72,10 @@ namespace DayZeLib
                 ExpansionQuestPersistentQuestDataCount = br.ReadInt32();
                 for(int i = 0; i < ExpansionQuestPersistentQuestDataCount; i ++)
                 {
+                    if(i == 5)
+                    {
+                        string stop = "";
+                    }
                     QuestDatas.Add(new ExpansionQuestPersistentQuestData(br));
                 }
                 long pos = br.BaseStream.Position;
@@ -123,6 +127,7 @@ namespace DayZeLib
 
         public ExpansionQuestPersistentQuestData(BinaryReader br)
         {
+            long pos = br.BaseStream.Position;
             QuestID = br.ReadInt32();
             State = (ExpansionQuestState)br.ReadInt32();
             Timestamp = br.ReadInt32();
@@ -167,6 +172,10 @@ namespace DayZeLib
         public bool ActionState = false;
         public int TimeLimit = -1;
 
+        public int deliveryCount = 0;
+        public BindingList<ExpansionQuestDeliveryObjectiveData> ExpansionQuestDeliveryObjectiveData;
+
+
         public QuestObjectivesBase AssignedObjective;
 
         public ExpansionQuestObjectiveData(BinaryReader br)
@@ -185,7 +194,25 @@ namespace DayZeLib
             }
             ActionState = br.ReadInt32() == 1 ? true : false;
             TimeLimit = br.ReadInt32();
+            if(ObjectiveType == QuExpansionQuestObjectiveTypeestType.COLLECT || ObjectiveType == QuExpansionQuestObjectiveTypeestType.DELIVERY)
+            {
+                deliveryCount = br.ReadInt32();
+                if(deliveryCount > 0)
+                {
+                    ExpansionQuestDeliveryObjectiveData = new BindingList<ExpansionQuestDeliveryObjectiveData>();
+                    for (int j = 0; j < deliveryCount; j++)
+                    {
+                        ExpansionQuestDeliveryObjectiveData.Add(new ExpansionQuestDeliveryObjectiveData()
+                        {
+                            Index = br.ReadInt32(),
+                            Count = br.ReadInt32()
+                        }) ;
+                    }
+                }
 
+            }
+
+            long pos = br.BaseStream.Position;
         }
         public override string ToString()
         {
@@ -211,5 +238,11 @@ namespace DayZeLib
             bw.Write(ActionState ? 1 : 0);
             bw.Write(TimeLimit);
         }
+    }
+
+    public class ExpansionQuestDeliveryObjectiveData
+    {
+        public int Index;
+        public int Count;
     }
 }

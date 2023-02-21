@@ -213,7 +213,7 @@ namespace DayZeEditor
             KosZoneStatutTB.Text = currentKOSZoneAreaLocation.KosZoneStatut;
             KOSZoneXNUD.Value = (decimal)currentKOSZoneAreaLocation.X;
             KOSZoneYNUD.Value = (decimal)currentKOSZoneAreaLocation.Y;
-            KOSZoneRadiusNUD.Value = (decimal) currentKOSZoneAreaLocation.Radius;
+            KOSZoneRadiusNUD.Value = (decimal)currentKOSZoneAreaLocation.Radius;
             IsMsgActiveCB.Checked = currentKOSZoneAreaLocation.IsMsgActive == 1 ? true : false;
             MsgEnterZoneTB.Text = currentKOSZoneAreaLocation.MsgEnterZone;
             MsgExitZoneTB.Text = currentKOSZoneAreaLocation.MsgExitZone;
@@ -361,21 +361,39 @@ namespace DayZeEditor
         #region KOSZonePurge
         public Purgeschedule currentPurgeschedule { get; set; }
         public Dynamicpurgeschedule currentDynamicpurgeschedule { get; set; }
+        public void SetNumberofweeks()
+        {
+            List<CheckBox> checkboxes = DynamicPurgeWeeknumberGB.Controls.OfType<CheckBox>().ToList();
+
+            foreach (CheckBox cb in checkboxes)
+            {
+                cb.Visible = false;
+            }
+
+            int Schedule = KosPurgeConfig.ScheduleCycle;
+            for (int i = 0; i < Schedule; i++)
+            {
+                CheckBox cb = checkboxes[i];
+                cb.Tag = (i + 1).ToString();
+                cb.Checked = false;
+                cb.Visible = true;
+                cb.Text = (i + 1).ToString();
+            }
+        }
         private void SetupKosPurgeConfig()
         {
             useraction = false;
 
+            SetNumberofweeks();
+
             StaticPurgeDOWCB.DataSource = Enum.GetValues(typeof(KOZDayOfWeek));
             SPWeekNumCB.DataSource = Enum.GetValues(typeof(WeekNumber));
-
-            DPdayofthewekkCB.DataSource = Enum.GetValues(typeof(KOZDayOfWeek));
-            DPWeekNumberCB.DataSource = Enum.GetValues(typeof(WeekNumber));
-
 
             IsPurgeActiveCB.Checked = KosPurgeConfig.IsPurgeEnabled == 1 ? true : false;
             IsDynPurgeActiveCB.Checked = KosPurgeConfig.IsDynPurgeEnabled == 1 ? true : false;
             ScheduleCycleNUD.Value = KosPurgeConfig.ScheduleCycle;
             ServerrestartCycleNUD.Value = KosPurgeConfig.RestartCycle;
+
 
             PurgeSchedulesLB.DisplayMember = "Name";
             PurgeSchedulesLB.ValueMember = "Value";
@@ -391,7 +409,7 @@ namespace DayZeEditor
         }
         private void IsPurgeActiveCB_CheckedChanged(object sender, EventArgs e)
         {
-            if(!useraction) return;
+            if (!useraction) return;
             KosPurgeConfig.IsPurgeEnabled = IsPurgeActiveCB.Checked == true ? 1 : 0;
             KosPurgeConfig.isDirty = true;
         }
@@ -439,8 +457,8 @@ namespace DayZeEditor
             Purgeschedule newPurgeschedule = new Purgeschedule()
             {
                 PurgeName = "New Purge",
-                WeekNumber = 0,
-                Day = 0,
+                WeekNumber = 1,
+                Day = 1,
                 StartHour = 0,
                 StartMin = 0,
                 EndHour = 0,
@@ -466,8 +484,56 @@ namespace DayZeEditor
             useraction = false;
 
             DPNameTB.Text = currentDynamicpurgeschedule.DynamicPurgeName;
-            DPWeekNumberCB.SelectedItem = (WeekNumber)currentDynamicpurgeschedule.WeekNumber;
-            DPdayofthewekkCB.SelectedItem = (KOZDayOfWeek)currentDynamicpurgeschedule.Day;
+            List<CheckBox> checkboxes = DynamicPurgeWeeknumberGB.Controls.OfType<CheckBox>().ToList();
+            foreach (CheckBox cb in checkboxes)
+            {
+                cb.Checked = false;
+            }
+            for (int i = 0; i < currentDynamicpurgeschedule.WeekNumber.Count; i++)
+            {
+                int weeknum = currentDynamicpurgeschedule.WeekNumber[i];
+                foreach (CheckBox c in DynamicPurgeWeeknumberGB.Controls.OfType<CheckBox>())
+                {
+                    if (c.Tag.ToString() == weeknum.ToString())
+                    {
+                        c.Checked = true;
+                    }
+                }
+            }
+            List<CheckBox> checkboxes1 = groupBox1.Controls.OfType<CheckBox>().ToList();
+
+            foreach (CheckBox cb in checkboxes1)
+            {
+                cb.Checked = false;
+            }
+            foreach (int dayofweek in currentDynamicpurgeschedule.Day)
+            {
+                switch(dayofweek)
+                {
+                    case 1:
+                        SundayDOWCB.Checked = true;
+                        break;
+                    case 2:
+                        MondayDOWCB.Checked = true;
+                        break;
+                    case 3:
+                        TuesdayDOWCB.Checked = true;
+                        break;
+                    case 4:
+                        WednesdayDOWCB.Checked = true;
+                        break;
+                    case 5:
+                        ThursdayDOWCB.Checked = true;
+                        break;
+                    case 6:
+                        FridayDOWCB.Checked = true;
+                        break;
+                    case 7:
+                        SaturdayDOWCB.Checked = true;
+                        break;
+
+                }
+            }
             numericUpDown7.Value = (decimal) currentDynamicpurgeschedule.Chance;
             DynamicPurgeDurationMinNUD.Value = currentDynamicpurgeschedule.DurationMin;
             DynamicPurgeDurationMaxNUD.Value = currentDynamicpurgeschedule.DurationMax;
@@ -487,8 +553,8 @@ namespace DayZeEditor
             Dynamicpurgeschedule newDynamicpurgeschedule = new Dynamicpurgeschedule()
             {
                 DynamicPurgeName = "New Dynamic Purge",
-                WeekNumber = 0,
-                Day = 0,
+                WeekNumber = new BindingList<int>(),
+                Day = new BindingList<int>(),
                 Chance = (decimal)0.5,
                 DurationMin = 15,
                 DurationMax = 60
@@ -506,8 +572,6 @@ namespace DayZeEditor
             else
                 DynamicPurgeSchedulesLB.SelectedIndex = 0;
         }
-
-
         private void SPNameTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -537,7 +601,6 @@ namespace DayZeEditor
             currentPurgeschedule.StartMin = Dtime.Minute;
             KosPurgeConfig.isDirty = true;
         }
-
         private void SPEndDT_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -552,27 +615,252 @@ namespace DayZeEditor
             currentPurgeschedule.AllowRaiding = AllowRaidingCB.Checked == true ? 1 : 0;
             KosPurgeConfig.isDirty = true;
         }
-
         private void DPNameTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             currentDynamicpurgeschedule.DynamicPurgeName = DPNameTB.Text;
             KosPurgeConfig.isDirty = true;
         }
-
-        private void DPWeekNumberCB_SelectedIndexChanged(object sender, EventArgs e)
+        private void Week1CB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            WeekNumber cacl = (WeekNumber)DPWeekNumberCB.SelectedItem;
-            currentDynamicpurgeschedule.WeekNumber = (int)cacl;
+            if (Week1CB.Checked)
+            {
+                if (!currentDynamicpurgeschedule.WeekNumber.Contains(1))
+                {
+                    currentDynamicpurgeschedule.WeekNumber.Add(1);
+                }
+            }
+            else
+            {
+                if(currentDynamicpurgeschedule.WeekNumber.Contains(1))
+                {
+                    currentDynamicpurgeschedule.WeekNumber.Remove(1);
+                }
+            }
+            var sortedListInstance = new List<int>(currentDynamicpurgeschedule.WeekNumber);
+            sortedListInstance.Sort();
+            currentDynamicpurgeschedule.WeekNumber = new BindingList<int>(sortedListInstance);
             KosPurgeConfig.isDirty = true;
         }
-
-        private void DPdayofthewekkCB_SelectedIndexChanged(object sender, EventArgs e)
+        private void Week2CB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            KOZDayOfWeek cacl = (KOZDayOfWeek)DPdayofthewekkCB.SelectedItem;
-            currentDynamicpurgeschedule.Day = (int)cacl;
+            if (Week2CB.Checked)
+            {
+                if (!currentDynamicpurgeschedule.WeekNumber.Contains(2))
+                {
+                    currentDynamicpurgeschedule.WeekNumber.Add(2);
+                }
+            }
+            else
+            {
+                if (currentDynamicpurgeschedule.WeekNumber.Contains(2))
+                {
+                    currentDynamicpurgeschedule.WeekNumber.Remove(2);
+                }
+            }
+            var sortedListInstance = new List<int>(currentDynamicpurgeschedule.WeekNumber);
+            sortedListInstance.Sort();
+            currentDynamicpurgeschedule.WeekNumber = new BindingList<int>(sortedListInstance);
+            KosPurgeConfig.isDirty = true;
+        }
+        private void Week3CB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if (Week3CB.Checked)
+            {
+                if (!currentDynamicpurgeschedule.WeekNumber.Contains(3))
+                {
+                    currentDynamicpurgeschedule.WeekNumber.Add(3);
+                }
+            }
+            else
+            {
+                if (currentDynamicpurgeschedule.WeekNumber.Contains(3))
+                {
+                    currentDynamicpurgeschedule.WeekNumber.Remove(3);
+                }
+            }
+            var sortedListInstance = new List<int>(currentDynamicpurgeschedule.WeekNumber);
+            sortedListInstance.Sort();
+            currentDynamicpurgeschedule.WeekNumber = new BindingList<int>(sortedListInstance);
+            KosPurgeConfig.isDirty = true;
+        }
+        private void Week4CB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if (Week4CB.Checked)
+            {
+                if (!currentDynamicpurgeschedule.WeekNumber.Contains(4))
+                {
+                    currentDynamicpurgeschedule.WeekNumber.Add(4);
+                }
+            }
+            else
+            {
+                if (currentDynamicpurgeschedule.WeekNumber.Contains(4))
+                {
+                    currentDynamicpurgeschedule.WeekNumber.Remove(4);
+                }
+            }
+            var sortedListInstance = new List<int>(currentDynamicpurgeschedule.WeekNumber);
+            sortedListInstance.Sort();
+            currentDynamicpurgeschedule.WeekNumber = new BindingList<int>(sortedListInstance);
+            KosPurgeConfig.isDirty = true;
+        }
+        private void SundayDOWCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if (SundayDOWCB.Checked)
+            {
+                if (!currentDynamicpurgeschedule.Day.Contains(1))
+                {
+                    currentDynamicpurgeschedule.Day.Add(1);
+                }
+            }
+            else
+            {
+                if (currentDynamicpurgeschedule.Day.Contains(1))
+                {
+                    currentDynamicpurgeschedule.Day.Remove(1);
+                }
+            }
+            var sortedListInstance = new List<int>(currentDynamicpurgeschedule.Day);
+            sortedListInstance.Sort();
+            currentDynamicpurgeschedule.Day = new BindingList<int>(sortedListInstance);
+            KosPurgeConfig.isDirty = true;
+        }
+        private void MondayDOWCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if (MondayDOWCB.Checked)
+            {
+                if (!currentDynamicpurgeschedule.Day.Contains(2))
+                {
+                    currentDynamicpurgeschedule.Day.Add(2);
+                }
+            }
+            else
+            {
+                if (currentDynamicpurgeschedule.Day.Contains(2))
+                {
+                    currentDynamicpurgeschedule.Day.Remove(2);
+                }
+            }
+            var sortedListInstance = new List<int>(currentDynamicpurgeschedule.Day);
+            sortedListInstance.Sort();
+            currentDynamicpurgeschedule.Day = new BindingList<int>(sortedListInstance);
+            KosPurgeConfig.isDirty = true;
+        }
+        private void TuesdayDOWCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if (TuesdayDOWCB.Checked)
+            {
+                if (!currentDynamicpurgeschedule.Day.Contains(3))
+                {
+                    currentDynamicpurgeschedule.Day.Add(3);
+                }
+            }
+            else
+            {
+                if (currentDynamicpurgeschedule.Day.Contains(3))
+                {
+                    currentDynamicpurgeschedule.Day.Remove(3);
+                }
+            }
+            var sortedListInstance = new List<int>(currentDynamicpurgeschedule.Day);
+            sortedListInstance.Sort();
+            currentDynamicpurgeschedule.Day = new BindingList<int>(sortedListInstance);
+            KosPurgeConfig.isDirty = true;
+        }
+        private void WednesdayDOWCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if (WednesdayDOWCB.Checked)
+            {
+                if (!currentDynamicpurgeschedule.Day.Contains(4))
+                {
+                    currentDynamicpurgeschedule.Day.Add(4);
+                }
+            }
+            else
+            {
+                if (currentDynamicpurgeschedule.Day.Contains(4))
+                {
+                    currentDynamicpurgeschedule.Day.Remove(4);
+                }
+            }
+            var sortedListInstance = new List<int>(currentDynamicpurgeschedule.Day);
+            sortedListInstance.Sort();
+            currentDynamicpurgeschedule.Day = new BindingList<int>(sortedListInstance);
+            KosPurgeConfig.isDirty = true;
+        }
+        private void ThursdayDOWCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if (ThursdayDOWCB.Checked)
+            {
+                if (!currentDynamicpurgeschedule.Day.Contains(5))
+                {
+                    currentDynamicpurgeschedule.Day.Add(5);
+                }
+            }
+            else
+            {
+                if (currentDynamicpurgeschedule.Day.Contains(5))
+                {
+                    currentDynamicpurgeschedule.Day.Remove(5);
+                }
+            }
+            var sortedListInstance = new List<int>(currentDynamicpurgeschedule.Day);
+            sortedListInstance.Sort();
+            currentDynamicpurgeschedule.Day = new BindingList<int>(sortedListInstance);
+            KosPurgeConfig.isDirty = true;
+        }
+        private void FridayDOWCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if (FridayDOWCB.Checked)
+            {
+                if (!currentDynamicpurgeschedule.Day.Contains(6))
+                {
+                    currentDynamicpurgeschedule.Day.Add(6);
+                }
+            }
+            else
+            {
+                if (currentDynamicpurgeschedule.Day.Contains(6))
+                {
+                    currentDynamicpurgeschedule.Day.Remove(6);
+                }
+            }
+            var sortedListInstance = new List<int>(currentDynamicpurgeschedule.Day);
+            sortedListInstance.Sort();
+            currentDynamicpurgeschedule.Day = new BindingList<int>(sortedListInstance);
+            KosPurgeConfig.isDirty = true;
+        }
+        private void SaturdayDOWCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if (SaturdayDOWCB.Checked)
+            {
+                if (!currentDynamicpurgeschedule.Day.Contains(7))
+                {
+                    currentDynamicpurgeschedule.Day.Add(7);
+                }
+            }
+            else
+            {
+                if (currentDynamicpurgeschedule.Day.Contains(7))
+                {
+                    currentDynamicpurgeschedule.Day.Remove(7);
+                }
+            }
+            var sortedListInstance = new List<int>(currentDynamicpurgeschedule.Day);
+            sortedListInstance.Sort();
+            currentDynamicpurgeschedule.Day = new BindingList<int>(sortedListInstance);
             KosPurgeConfig.isDirty = true;
         }
         private void numericUpDown7_ValueChanged(object sender, EventArgs e)
@@ -601,7 +889,6 @@ namespace DayZeEditor
             currentDynamicpurgeschedule.StartMin = Dtime.Minute;
             KosPurgeConfig.isDirty = true;
         }
-
         private void DPEndDT_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -633,5 +920,7 @@ namespace DayZeEditor
                 }
             }
         }
+
+
     }
 }

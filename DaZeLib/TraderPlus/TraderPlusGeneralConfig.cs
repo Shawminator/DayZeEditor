@@ -39,7 +39,7 @@ namespace DayZeLib
         [JsonIgnore]
         private bool _isDirty;
         [JsonIgnore]
-        public const string m_Version = "2.3";
+        public const string m_Version = "2.5";
         [JsonIgnore]
         public int tempindex;
 
@@ -191,8 +191,6 @@ namespace DayZeLib
             }
             traderPlusIDsConfig.isDirty = true;
         }
-
-
     }
 
     public class Acceptedstates

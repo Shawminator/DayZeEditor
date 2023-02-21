@@ -26,6 +26,7 @@ namespace DayZeEditor
         public BindingList<AILoadouts> LoadoutList { get; private set; }
         public BindingList<string> LoadoutNameList1 { get; private set; }
         public BindingList<string> LoadoutNameList2 { get; private set; }
+        public BindingList<string> Factions { get; set; }
 
         public string AISettingsPath;
         public string AILoadoutsPath;
@@ -62,6 +63,9 @@ namespace DayZeEditor
         {
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
+            Factions = new BindingList<string>(File.ReadAllLines(Application.StartupPath + "\\TraderNPCs\\Factions.txt").ToList());
+            SetupFactionsDropDownBoxes();
+
 
             bool needtosave = false;
 
@@ -132,6 +136,16 @@ namespace DayZeEditor
 
 
         }
+
+        private void SetupFactionsDropDownBoxes()
+        {
+            useraction = false;
+            PlayerFactionCB.DataSource = new BindingList<string>(Factions);
+            CrashFactionCB.DataSource = new BindingList<string>(Factions);
+            StaticPatrolFactionCB.DataSource = new BindingList<string>(Factions);
+            useraction = true;
+        }
+
         private void SaveFileButton_Click(object sender, EventArgs e)
         {
             savefiles();
@@ -932,6 +946,7 @@ namespace DayZeEditor
             MaximumDynamicPatrolsNUD.Value = AISettings.MaximumDynamicPatrols;
             VaultingCB.Checked = AISettings.Vaulting == 1 ? true : false;
             MannersCB.Checked = AISettings.Manners == 1 ? true : false;
+            CanRecruitGuardsCB.Checked = AISettings.CanRecruitGuards == 1 ? true : false;
 
             AISettingsAdminsLB.DisplayMember = "DisplayName";
             AISettingsAdminsLB.ValueMember = "Value";
@@ -985,6 +1000,13 @@ namespace DayZeEditor
             if (!useraction) return;
             AISettings.Vaulting = VaultingCB.Checked == true ? 1 : 0;
             AISettings.isDirty = true;
+        }
+        private void CanRecruitGuardsCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AISettings.CanRecruitGuards = CanRecruitGuardsCB.Checked == true ? 1 : 0;
+            AISettings.isDirty = true;
+
         }
         private void darkButton1_Click(object sender, EventArgs e)
         {
@@ -1046,7 +1068,5 @@ namespace DayZeEditor
                 }
             }
         }
-
-
     }
 }

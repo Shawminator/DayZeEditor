@@ -2290,6 +2290,11 @@ namespace DayZeEditor
             Rectangle region;
             region = pb.ClientRectangle;
             string col = currentCat.Color;
+            if(col.Length != 8)
+            {
+                MessageBox.Show("Colour string is not the correct length, please choose a new colour.");
+                return;
+            }
             string col1 = "#" + col.Substring(6) + col.Remove(6, 2);
             Color colour = ColorTranslator.FromHtml(col1);
             using (Brush brush = new SolidBrush(colour))
@@ -2307,7 +2312,7 @@ namespace DayZeEditor
                 StartPosition = FormStartPosition.CenterParent
             };
             string col = "";
-            if (currentCat == null)
+            if (currentCat == null || currentCat.Color.Length != 8)
                 col = "FBFCFEFF";
             else
                 col = currentCat.Color;

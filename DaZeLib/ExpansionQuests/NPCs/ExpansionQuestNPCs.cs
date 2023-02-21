@@ -14,7 +14,7 @@ namespace DayZeLib
 {
     public class QuestNPCLists
     {
-        const int m_NPCConfigVersion = 7;
+        const int m_NPCConfigVersion = 2;
         public static int getNPCConfigVersion
         {
             get { return m_NPCConfigVersion; }
@@ -157,6 +157,10 @@ namespace DayZeLib
         public int NPCEmoteIsStatic { get; set; }
         public string NPCLoadoutFile { get; set; }
         public int IsStatic { get; set; }
+        public int NPCInteractionEmoteID { get; set; }
+        public int NPCQuestCancelEmoteID { get; set; }
+        public int NPCQuestStartEmoteID { get; set; }
+        public int NPCQuestCompleteEmoteID { get; set; }
 
         public ExpansionQuestNPCs()
         {

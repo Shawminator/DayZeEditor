@@ -15,3 +15,4 @@ yiprit:20480
 barrington:10240
 vela:10240
 chiemsee:10240
+melkart:20480

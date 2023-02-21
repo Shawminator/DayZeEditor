@@ -4351,6 +4351,7 @@ namespace DayZeEditor
         }
         #endregion PlayerSpawnPoints
         #region cfggameplayconfig
+
         private cfggameplay cfggameplay;
         private void LoadCFGGamelplay()
         {
@@ -4358,17 +4359,22 @@ namespace DayZeEditor
             isUserInteraction = false;
             cfggameplay = currentproject.CFGGameplayConfig.cfggameplay;
             CFGGameplayTB.Text = cfggameplay.version.ToString();
-            disableBaseDamageCB.Checked = cfggameplay.GeneralData.disableBaseDamage == 1 ? true : false;
-            disableContainerDamageCB.Checked = cfggameplay.GeneralData.disableContainerDamage == 1 ? true : false;
-            disableRespawnDialogCB.Checked = cfggameplay.GeneralData.disableRespawnDialog == 1 ? true : false;
+            disableBaseDamageCB.Checked = cfggameplay.GeneralData.disableBaseDamage;
+            disableContainerDamageCB.Checked = cfggameplay.GeneralData.disableContainerDamage;
+            disableRespawnDialogCB.Checked = cfggameplay.GeneralData.disableRespawnDialog;
 
-            disablePersonalLightCB.Checked = cfggameplay.PlayerData.disablePersonalLight == 1 ? true : false;
+            disablePersonalLightCB.Checked = cfggameplay.PlayerData.disablePersonalLight;
             sprintStaminaModifierErcNUD.Value = cfggameplay.PlayerData.StaminaData.sprintStaminaModifierErc;
             sprintStaminaModifierCroNUD.Value = cfggameplay.PlayerData.StaminaData.sprintStaminaModifierCro;
             staminaWeightLimitThresholdNUD.Value = cfggameplay.PlayerData.StaminaData.staminaWeightLimitThreshold;
             staminaMaxNUD.Value = cfggameplay.PlayerData.StaminaData.staminaMax;
             staminaKgToStaminaPercentPenaltyNUD.Value = cfggameplay.PlayerData.StaminaData.staminaKgToStaminaPercentPenalty;
             staminaMinCapNUD.Value = cfggameplay.PlayerData.StaminaData.staminaMinCap;
+            sprintSwimmingStaminaModifierNUD.Value = cfggameplay.PlayerData.StaminaData.sprintSwimmingStaminaModifier;
+            sprintLadderStaminaModifierNUD.Value = cfggameplay.PlayerData.StaminaData.sprintLadderStaminaModifier;
+            meleeStaminaModifierNUD.Value = cfggameplay.PlayerData.StaminaData.meleeStaminaModifier;
+            obstacleTraversalStaminaModifierNUD.Value = cfggameplay.PlayerData.StaminaData.obstacleTraversalStaminaModifier;
+            holdBreathStaminaModifierNUD.Value = cfggameplay.PlayerData.StaminaData.holdBreathStaminaModifier;
 
             shockRefillSpeedConsciousNUD.Value = cfggameplay.PlayerData.ShockHandlingData.shockRefillSpeedConscious;
             shockRefillSpeedUnconsciousNUD.Value = cfggameplay.PlayerData.ShockHandlingData.shockRefillSpeedUnconscious;
@@ -4379,6 +4385,7 @@ namespace DayZeEditor
             timeToSprintNUD.Value = cfggameplay.PlayerData.MovementData.timeToSprint;
             timeToStrafeSprintNUD.Value = cfggameplay.PlayerData.MovementData.timeToStrafeSprint;
             rotationSpeedSprintNUD.Value = cfggameplay.PlayerData.MovementData.rotationSpeedSprint;
+            allowStaminaAffectInertiaCB.Checked = cfggameplay.PlayerData.MovementData.allowStaminaAffectInertia;
 
             staminaDepletionSpeedNUD.Value = cfggameplay.PlayerData.DrowningData.staminaDepletionSpeed;
             healthDepletionSpeedNUD.Value = cfggameplay.PlayerData.DrowningData.healthDepletionSpeed;
@@ -4411,35 +4418,41 @@ namespace DayZeEditor
             NovMaxNUD.Value = cfggameplay.WorldsData.environmentMaxTemps[10];
             DecMaxNUD.Value = cfggameplay.WorldsData.environmentMaxTemps[11];
 
+            wetnessWeightModifiers1NUD.Value = cfggameplay.WorldsData.wetnessWeightModifiers[0];
+            wetnessWeightModifiers2NUD.Value = cfggameplay.WorldsData.wetnessWeightModifiers[1];
+            wetnessWeightModifiers3NUD.Value = cfggameplay.WorldsData.wetnessWeightModifiers[2];
+            wetnessWeightModifiers4NUD.Value = cfggameplay.WorldsData.wetnessWeightModifiers[3];
+            wetnessWeightModifiers5NUD.Value = cfggameplay.WorldsData.wetnessWeightModifiers[4];
 
-            disableIsCollidingBBoxCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsCollidingBBoxCheck == 1 ? true : false;
-            disableIsCollidingPlayerCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsCollidingPlayerCheck == 1 ? true : false;
-            disableIsClippingRoofCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsClippingRoofCheck == 1 ? true : false;
-            disableIsBaseViableCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsBaseViableCheck == 1 ? true : false;
-            disableIsCollidingGPlotCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsCollidingGPlotCheck == 1 ? true : false;
-            disableIsCollidingAngleCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsCollidingAngleCheck == 1 ? true : false;
-            disableIsPlacementPermittedCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsPlacementPermittedCheck == 1 ? true : false;
-            disableHeightPlacementCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableHeightPlacementCheck == 1 ? true : false;
-            disableIsUnderwaterCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsUnderwaterCheck == 1 ? true : false;
-            disableIsInTerrainCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsInTerrainCheck == 1 ? true : false;
 
-            disablePerformRoofCheckCB.Checked = cfggameplay.BaseBuildingData.ConstructionData.disablePerformRoofCheck == 1 ? true : false;
-            disableIsCollidingCheckCB.Checked = cfggameplay.BaseBuildingData.ConstructionData.disableIsCollidingCheck == 1 ? true : false;
-            disableDistanceCheckCB.Checked = cfggameplay.BaseBuildingData.ConstructionData.disableDistanceCheck == 1 ? true : false;
+            disableIsCollidingBBoxCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsCollidingBBoxCheck;
+            disableIsCollidingPlayerCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsCollidingPlayerCheck;
+            disableIsClippingRoofCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsClippingRoofCheck;
+            disableIsBaseViableCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsBaseViableCheck;
+            disableIsCollidingGPlotCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsCollidingGPlotCheck;
+            disableIsCollidingAngleCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsCollidingAngleCheck;
+            disableIsPlacementPermittedCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsPlacementPermittedCheck;
+            disableHeightPlacementCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableHeightPlacementCheck;
+            disableIsUnderwaterCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsUnderwaterCheck;
+            disableIsInTerrainCheckCB.Checked = cfggameplay.BaseBuildingData.HologramData.disableIsInTerrainCheck;
 
-            use3DMapCB.Checked = cfggameplay.UIData.use3DMap == 1 ? true : false;
-            hitDirectionOverrideEnabledCB.Checked = cfggameplay.UIData.HitIndicationData.hitDirectionOverrideEnabled == 1 ? true : false;
+            disablePerformRoofCheckCB.Checked = cfggameplay.BaseBuildingData.ConstructionData.disablePerformRoofCheck;
+            disableIsCollidingCheckCB.Checked = cfggameplay.BaseBuildingData.ConstructionData.disableIsCollidingCheck;
+            disableDistanceCheckCB.Checked = cfggameplay.BaseBuildingData.ConstructionData.disableDistanceCheck;
+
+            use3DMapCB.Checked = cfggameplay.UIData.use3DMap;
+            hitDirectionOverrideEnabledCB.Checked = cfggameplay.UIData.HitIndicationData.hitDirectionOverrideEnabled;
             hitDirectionBehaviourCB.Checked = cfggameplay.UIData.HitIndicationData.hitDirectionBehaviour == 1 ? true : false;
             hitDirectionStyleCB.Checked = cfggameplay.UIData.HitIndicationData.hitDirectionStyle == 1 ? true : false;
             hitDirectionMaxDurationNUD.Value = (decimal)cfggameplay.UIData.HitIndicationData.hitDirectionMaxDuration;
             hitDirectionBreakPointRelativeNUD.Value = (decimal)cfggameplay.UIData.HitIndicationData.hitDirectionBreakPointRelative;
             hitDirectionScatterNUD.Value = (decimal)cfggameplay.UIData.HitIndicationData.hitDirectionScatter;
-            hitIndicationPostProcessEnabledCB.Checked = cfggameplay.UIData.HitIndicationData.hitIndicationPostProcessEnabled == 1 ? true : false;
+            hitIndicationPostProcessEnabledCB.Checked = cfggameplay.UIData.HitIndicationData.hitIndicationPostProcessEnabled;
 
-            ignoreMapOwnershipCB.Checked = cfggameplay.MapData.ignoreMapOwnership == 1 ? true : false;
-            ignoreNavItemsOwnershipCB.Checked = cfggameplay.MapData.ignoreNavItemsOwnership == 1 ? true : false;
-            displayPlayerPositionCB.Checked = cfggameplay.MapData.displayPlayerPosition == 1 ? true : false;
-            displayNavInfoCB.Checked = cfggameplay.MapData.displayNavInfo == 1 ? true : false;
+            ignoreMapOwnershipCB.Checked = cfggameplay.MapData.ignoreMapOwnership;
+            ignoreNavItemsOwnershipCB.Checked = cfggameplay.MapData.ignoreNavItemsOwnership;
+            displayPlayerPositionCB.Checked = cfggameplay.MapData.displayPlayerPosition;
+            displayNavInfoCB.Checked = cfggameplay.MapData.displayNavInfo;
             isUserInteraction = true;
         }
         private void m_Color_Click(object sender, EventArgs e)
@@ -4472,25 +4485,25 @@ namespace DayZeEditor
         private void disableBaseDamageCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.GeneralData.disableBaseDamage = disableBaseDamageCB.Checked == true ? 1 : 0;
+            cfggameplay.GeneralData.disableBaseDamage = disableBaseDamageCB.Checked;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disableContainerDamageCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.GeneralData.disableContainerDamage = disableContainerDamageCB.Checked == true ? 1 : 0;
+            cfggameplay.GeneralData.disableContainerDamage = disableContainerDamageCB.Checked;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disableRespawnDialogCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.GeneralData.disableRespawnDialog = disableRespawnDialogCB.Checked == true ? 1 : 0;
+            cfggameplay.GeneralData.disableRespawnDialog = disableRespawnDialogCB.Checked;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disablePersonalLightCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.PlayerData.disablePersonalLight = disablePersonalLightCB.Checked == true ? 1 : 0;
+            cfggameplay.PlayerData.disablePersonalLight = disablePersonalLightCB.Checked;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void sprintStaminaModifierErcNUD_ValueChanged(object sender, EventArgs e)
@@ -4550,91 +4563,91 @@ namespace DayZeEditor
         private void disableIsCollidingBBoxCheckCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.BaseBuildingData.HologramData.disableIsCollidingBBoxCheck = disableIsCollidingBBoxCheckCB.Checked == true ? 1 : 0;
+            cfggameplay.BaseBuildingData.HologramData.disableIsCollidingBBoxCheck = disableIsCollidingBBoxCheckCB.Checked;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disableIsCollidingPlayerCheckCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.BaseBuildingData.HologramData.disableIsCollidingPlayerCheck = disableIsCollidingPlayerCheckCB.Checked == true ? 1 : 0;
+            cfggameplay.BaseBuildingData.HologramData.disableIsCollidingPlayerCheck = disableIsCollidingPlayerCheckCB.Checked;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disableIsClippingRoofCheckCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.BaseBuildingData.HologramData.disableIsClippingRoofCheck = disableIsClippingRoofCheckCB.Checked == true ? 1 : 0;
+            cfggameplay.BaseBuildingData.HologramData.disableIsClippingRoofCheck = disableIsClippingRoofCheckCB.Checked;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disableIsBaseViableCheckCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.BaseBuildingData.HologramData.disableIsBaseViableCheck = disableIsBaseViableCheckCB.Checked == true ? 1 : 0;
+            cfggameplay.BaseBuildingData.HologramData.disableIsBaseViableCheck = disableIsBaseViableCheckCB.Checked;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disableIsCollidingGPlotCheckCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.BaseBuildingData.HologramData.disableIsCollidingGPlotCheck = disableIsCollidingGPlotCheckCB.Checked == true ? 1 : 0;
+            cfggameplay.BaseBuildingData.HologramData.disableIsCollidingGPlotCheck = disableIsCollidingGPlotCheckCB.Checked;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disableIsCollidingAngleCheckCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.BaseBuildingData.HologramData.disableIsCollidingAngleCheck = disableIsCollidingAngleCheckCB.Checked == true ? 1 : 0;
+            cfggameplay.BaseBuildingData.HologramData.disableIsCollidingAngleCheck = disableIsCollidingAngleCheckCB.Checked;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disableIsPlacementPermittedCheckCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.BaseBuildingData.HologramData.disableIsPlacementPermittedCheck = disableIsPlacementPermittedCheckCB.Checked == true ? 1 : 0;
+            cfggameplay.BaseBuildingData.HologramData.disableIsPlacementPermittedCheck = disableIsPlacementPermittedCheckCB.Checked;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disableHeightPlacementCheckCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.BaseBuildingData.HologramData.disableHeightPlacementCheck = disableHeightPlacementCheckCB.Checked == true ? 1 : 0;
+            cfggameplay.BaseBuildingData.HologramData.disableHeightPlacementCheck = disableHeightPlacementCheckCB.Checked;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disableIsUnderwaterCheckCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.BaseBuildingData.HologramData.disableIsUnderwaterCheck = disableIsUnderwaterCheckCB.Checked == true ? 1 : 0;
+            cfggameplay.BaseBuildingData.HologramData.disableIsUnderwaterCheck = disableIsUnderwaterCheckCB.Checked;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disableIsInTerrainCheckCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.BaseBuildingData.HologramData.disableIsInTerrainCheck = disableIsInTerrainCheckCB.Checked == true ? 1 : 0;
+            cfggameplay.BaseBuildingData.HologramData.disableIsInTerrainCheck = disableIsInTerrainCheckCB.Checked;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disablePerformRoofCheckCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.BaseBuildingData.ConstructionData.disablePerformRoofCheck = disablePerformRoofCheckCB.Checked == true ? 1 : 0;
+            cfggameplay.BaseBuildingData.ConstructionData.disablePerformRoofCheck = disablePerformRoofCheckCB.Checked;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disableIsCollidingCheckCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.BaseBuildingData.ConstructionData.disableIsCollidingCheck = disableIsCollidingCheckCB.Checked == true ? 1 : 0;
+            cfggameplay.BaseBuildingData.ConstructionData.disableIsCollidingCheck = disableIsCollidingCheckCB.Checked;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disableDistanceCheckCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.BaseBuildingData.ConstructionData.disableDistanceCheck = disableDistanceCheckCB.Checked == true ? 1 : 0;
+            cfggameplay.BaseBuildingData.ConstructionData.disableDistanceCheck = disableDistanceCheckCB.Checked;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void use3DMapCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.UIData.use3DMap = use3DMapCB.Checked == true ? 1 : 0;
+            cfggameplay.UIData.use3DMap = use3DMapCB.Checked;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void hitDirectionOverrideEnabledCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.UIData.HitIndicationData.hitDirectionOverrideEnabled = hitDirectionOverrideEnabledCB.Checked == true ? 1 : 0;
+            cfggameplay.UIData.HitIndicationData.hitDirectionOverrideEnabled = hitDirectionOverrideEnabledCB.Checked;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void hitDirectionBehaviourCB_CheckedChanged(object sender, EventArgs e)
@@ -4670,7 +4683,7 @@ namespace DayZeEditor
         private void hitIndicationPostProcessEnabledCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) { return; }
-            cfggameplay.UIData.HitIndicationData.hitIndicationPostProcessEnabled = hitIndicationPostProcessEnabledCB.Checked == true ? 1 : 0;
+            cfggameplay.UIData.HitIndicationData.hitIndicationPostProcessEnabled = hitIndicationPostProcessEnabledCB.Checked;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void lightingConfigNUD_ValueChanged(object sender, EventArgs e)
@@ -4711,6 +4724,125 @@ namespace DayZeEditor
             cfggameplay.WorldsData.environmentMaxTemps[9] = OctMaxNUD.Value;
             cfggameplay.WorldsData.environmentMaxTemps[10] = NovMaxNUD.Value;
             cfggameplay.WorldsData.environmentMaxTemps[11] = DecMaxNUD.Value;
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
+        private void wetnessWeightModifiers_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.WorldsData.wetnessWeightModifiers[0] = wetnessWeightModifiers1NUD.Value;
+            cfggameplay.WorldsData.wetnessWeightModifiers[1] = wetnessWeightModifiers2NUD.Value;
+            cfggameplay.WorldsData.wetnessWeightModifiers[2] = wetnessWeightModifiers3NUD.Value;
+            cfggameplay.WorldsData.wetnessWeightModifiers[3] = wetnessWeightModifiers4NUD.Value;
+            cfggameplay.WorldsData.wetnessWeightModifiers[4] = wetnessWeightModifiers5NUD.Value;
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
+        private void allowStaminaAffectInertiaCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.PlayerData.MovementData.allowStaminaAffectInertia = allowStaminaAffectInertiaCB.Checked;
+            currentproject.CFGGameplayConfig.isDirty = true;
+
+        }
+        private void staminaDepletionSpeedNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.PlayerData.DrowningData.staminaDepletionSpeed = Math.Round(staminaDepletionSpeedNUD.Value, 2);
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
+        private void healthDepletionSpeedNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.PlayerData.DrowningData.healthDepletionSpeed = Math.Round(healthDepletionSpeedNUD.Value, 2);
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
+        private void shockDepletionSpeedNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.PlayerData.DrowningData.shockDepletionSpeed = Math.Round(shockDepletionSpeedNUD.Value, 2);
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
+        private void sprintSwimmingStaminaModifierNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.PlayerData.StaminaData.sprintSwimmingStaminaModifier = Math.Round(sprintSwimmingStaminaModifierNUD.Value, 2);
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
+        private void sprintLadderStaminaModifierNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.PlayerData.StaminaData.sprintLadderStaminaModifier = Math.Round(sprintLadderStaminaModifierNUD.Value, 2);
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
+        private void meleeStaminaModifierNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.PlayerData.StaminaData.meleeStaminaModifier = Math.Round(meleeStaminaModifierNUD.Value, 2);
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
+        private void obstacleTraversalStaminaModifierNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.PlayerData.StaminaData.obstacleTraversalStaminaModifier = Math.Round(obstacleTraversalStaminaModifierNUD.Value, 2);
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
+        private void holdBreathStaminaModifierNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.PlayerData.StaminaData.holdBreathStaminaModifier = Math.Round(holdBreathStaminaModifierNUD.Value, 2);
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
+        private void timeToStrafeJogNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.PlayerData.MovementData.timeToStrafeJog = Math.Round(timeToStrafeJogNUD.Value, 2);
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
+        private void rotationSpeedJogNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.PlayerData.MovementData.rotationSpeedJog = Math.Round(rotationSpeedJogNUD.Value, 2);
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
+        private void timeToSprintNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.PlayerData.MovementData.timeToSprint = Math.Round(timeToSprintNUD.Value, 2);
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
+        private void timeToStrafeSprintNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.PlayerData.MovementData.timeToSprint = Math.Round(timeToSprintNUD.Value, 2);
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
+        private void rotationSpeedSprintNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.PlayerData.MovementData.timeToSprint = Math.Round(timeToSprintNUD.Value, 2);
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
+        private void ignoreMapOwnershipCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.MapData.ignoreMapOwnership = ignoreMapOwnershipCB.Checked;
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
+        private void ignoreNavItemsOwnershipCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.MapData.ignoreNavItemsOwnership = ignoreNavItemsOwnershipCB.Checked;
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
+        private void displayPlayerPositionCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.MapData.displayPlayerPosition = displayPlayerPositionCB.Checked;
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
+        private void displayNavInfoCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.MapData.displayNavInfo = displayNavInfoCB.Checked;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         #endregion cfggameplayconfig

@@ -279,6 +279,7 @@ namespace DayZeEditor
             else if (e.Node.Parent != null && e.Node.Tag is Inventoryattachment)
             {
                 InventoryattchemntGB.Visible = true;
+                CurrentAIloadouts = e.Node.Parent.Tag as AILoadouts;
                 CurrentInventoryattachment = e.Node.Tag as Inventoryattachment;
                 useraction = false;
                 string slotname = CurrentInventoryattachment.SlotName;
@@ -354,7 +355,7 @@ namespace DayZeEditor
         }
         private void RemoveAttachemtItemToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CurrentAILoadoutsFile.InventoryAttachments.Remove(CurrentInventoryattachment);
+            CurrentAIloadouts.InventoryAttachments.Remove(CurrentInventoryattachment);
             treeViewMS1.SelectedNode.Remove();
             CurrentAILoadoutsFile.isDirty = true;
         }
@@ -412,7 +413,8 @@ namespace DayZeEditor
         private void RemoveCargoItemToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AILoadouts Parentloadout = treeViewMS1.SelectedNode.Parent.Tag as AILoadouts;
-            Parentloadout.Sets.Remove(CurrentAIloadouts);
+            Parentloadout.InventoryCargo = new BindingList<AILoadouts>();
+
             treeViewMS1.SelectedNode.Remove();
             CurrentAILoadoutsFile.isDirty = true;
         }
@@ -471,8 +473,6 @@ namespace DayZeEditor
                 Inventoryattachment IA = treeViewMS1.SelectedNode.Parent.Tag as Inventoryattachment;
                 IA.Items.Remove(CurrentAIloadouts);
                 treeViewMS1.SelectedNode.Remove();
-                if (IA.Items.Count == 0)
-                    Parent.Remove();
                 CurrentAILoadoutsFile.isDirty = true;
             }
             else if (treeViewMS1.SelectedNode.Tag is AILoadouts)

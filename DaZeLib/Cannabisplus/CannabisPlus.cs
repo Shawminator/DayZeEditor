@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace DayZeLib
 {
-    public class CannabisPlus
+
+    public class Rootobject
     {
         public int configVersion { get; set; }
         public int removeAfterHarvest { get; set; }
@@ -49,16 +50,24 @@ namespace DayZeLib
         public int pumpkin_growtime { get; set; }
         public int pumpkin_cropcount { get; set; }
         public int pumpkinSeed_count { get; set; }
-        public int spoiltime { get; set; }
+        public int potato_growtime { get; set; }
+        public int potato_cropcount { get; set; }
         public int activateCigaretteSmokingEffect { get; set; }
         public int smokingCigaretteEffectDuration { get; set; }
         public int cigaretteCyclesToActivateEffect { get; set; }
         public int activateJointSmokingEffect { get; set; }
         public int smokingJointEffectDuration { get; set; }
         public int jointCyclesToActivateEffect { get; set; }
-        public int weedHueIntensity { get; set; }
+        public float weedHueIntensity { get; set; }
         public int weedRadBlurXPower { get; set; }
         public int weedRadBlurYPower { get; set; }
         public int weedRotBlurPow { get; set; }
+        public int spoiltime { get; set; }
+        public int cannabis_drytime { get; set; }
+        public int RequireBattery { get; set; }
+        public float WorkBench_PowerUsed { get; set; }
+        public float Plastic_Wrap_Usage { get; set; }
+        public int Workbench_Processing_Time { get; set; }
     }
+
 }

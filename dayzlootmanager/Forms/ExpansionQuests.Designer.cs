@@ -191,6 +191,18 @@ namespace DayZeEditor
             this.panel35 = new System.Windows.Forms.Panel();
             this.questsNPCsNPCEmoteIDCB = new System.Windows.Forms.ComboBox();
             this.darkLabel14 = new DarkUI.Controls.DarkLabel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.NPCInteractionEmoteIDCB = new System.Windows.Forms.ComboBox();
+            this.darkLabel18 = new DarkUI.Controls.DarkLabel();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.NPCQuestCancelEmoteIDCB = new System.Windows.Forms.ComboBox();
+            this.darkLabel30 = new DarkUI.Controls.DarkLabel();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.NPCQuestStartEmoteIDCB = new System.Windows.Forms.ComboBox();
+            this.darkLabel31 = new DarkUI.Controls.DarkLabel();
+            this.panel67 = new System.Windows.Forms.Panel();
+            this.NPCQuestCompleteEmoteIDCB = new System.Windows.Forms.ComboBox();
+            this.darkLabel140 = new DarkUI.Controls.DarkLabel();
             this.panel36 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.QuestNPCIsAICB = new System.Windows.Forms.CheckBox();
@@ -611,6 +623,10 @@ namespace DayZeEditor
             this.panel33.SuspendLayout();
             this.panel34.SuspendLayout();
             this.panel35.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel18.SuspendLayout();
+            this.panel19.SuspendLayout();
+            this.panel67.SuspendLayout();
             this.panel36.SuspendLayout();
             this.panel37.SuspendLayout();
             this.panel38.SuspendLayout();
@@ -2267,6 +2283,10 @@ namespace DayZeEditor
             this.flowLayoutPanel2.Controls.Add(this.panel33);
             this.flowLayoutPanel2.Controls.Add(this.panel34);
             this.flowLayoutPanel2.Controls.Add(this.panel35);
+            this.flowLayoutPanel2.Controls.Add(this.panel5);
+            this.flowLayoutPanel2.Controls.Add(this.panel18);
+            this.flowLayoutPanel2.Controls.Add(this.panel19);
+            this.flowLayoutPanel2.Controls.Add(this.panel67);
             this.flowLayoutPanel2.Controls.Add(this.panel36);
             this.flowLayoutPanel2.Controls.Add(this.panel37);
             this.flowLayoutPanel2.Controls.Add(this.panel38);
@@ -2511,9 +2531,9 @@ namespace DayZeEditor
             this.questsNPCsNPCEmoteIDCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.questsNPCsNPCEmoteIDCB.ForeColor = System.Drawing.SystemColors.Control;
             this.questsNPCsNPCEmoteIDCB.FormattingEnabled = true;
-            this.questsNPCsNPCEmoteIDCB.Location = new System.Drawing.Point(93, 0);
+            this.questsNPCsNPCEmoteIDCB.Location = new System.Drawing.Point(149, 0);
             this.questsNPCsNPCEmoteIDCB.Name = "questsNPCsNPCEmoteIDCB";
-            this.questsNPCsNPCEmoteIDCB.Size = new System.Drawing.Size(248, 21);
+            this.questsNPCsNPCEmoteIDCB.Size = new System.Drawing.Size(192, 21);
             this.questsNPCsNPCEmoteIDCB.TabIndex = 166;
             this.questsNPCsNPCEmoteIDCB.SelectedIndexChanged += new System.EventHandler(this.questsNPCsNPCEmoteIDCB_SelectedIndexChanged);
             // 
@@ -2527,11 +2547,131 @@ namespace DayZeEditor
             this.darkLabel14.TabIndex = 167;
             this.darkLabel14.Text = "NPC Emote";
             // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.NPCInteractionEmoteIDCB);
+            this.panel5.Controls.Add(this.darkLabel18);
+            this.panel5.Location = new System.Drawing.Point(3, 274);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(349, 20);
+            this.panel5.TabIndex = 177;
+            // 
+            // NPCInteractionEmoteIDCB
+            // 
+            this.NPCInteractionEmoteIDCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.NPCInteractionEmoteIDCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.NPCInteractionEmoteIDCB.FormattingEnabled = true;
+            this.NPCInteractionEmoteIDCB.Location = new System.Drawing.Point(149, 0);
+            this.NPCInteractionEmoteIDCB.Name = "NPCInteractionEmoteIDCB";
+            this.NPCInteractionEmoteIDCB.Size = new System.Drawing.Size(192, 21);
+            this.NPCInteractionEmoteIDCB.TabIndex = 166;
+            this.NPCInteractionEmoteIDCB.SelectedIndexChanged += new System.EventHandler(this.NPCInteractionEmoteIDCB_SelectedIndexChanged);
+            // 
+            // darkLabel18
+            // 
+            this.darkLabel18.AutoSize = true;
+            this.darkLabel18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel18.Location = new System.Drawing.Point(3, 3);
+            this.darkLabel18.Name = "darkLabel18";
+            this.darkLabel18.Size = new System.Drawing.Size(115, 13);
+            this.darkLabel18.TabIndex = 167;
+            this.darkLabel18.Text = "NPC Interaction Emote";
+            // 
+            // panel18
+            // 
+            this.panel18.Controls.Add(this.NPCQuestCancelEmoteIDCB);
+            this.panel18.Controls.Add(this.darkLabel30);
+            this.panel18.Location = new System.Drawing.Point(3, 300);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(349, 20);
+            this.panel18.TabIndex = 182;
+            // 
+            // NPCQuestCancelEmoteIDCB
+            // 
+            this.NPCQuestCancelEmoteIDCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.NPCQuestCancelEmoteIDCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.NPCQuestCancelEmoteIDCB.FormattingEnabled = true;
+            this.NPCQuestCancelEmoteIDCB.Location = new System.Drawing.Point(149, 0);
+            this.NPCQuestCancelEmoteIDCB.Name = "NPCQuestCancelEmoteIDCB";
+            this.NPCQuestCancelEmoteIDCB.Size = new System.Drawing.Size(192, 21);
+            this.NPCQuestCancelEmoteIDCB.TabIndex = 166;
+            this.NPCQuestCancelEmoteIDCB.SelectedIndexChanged += new System.EventHandler(this.NPCQuestCancelEmoteIDCB_SelectedIndexChanged);
+            // 
+            // darkLabel30
+            // 
+            this.darkLabel30.AutoSize = true;
+            this.darkLabel30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel30.Location = new System.Drawing.Point(3, 3);
+            this.darkLabel30.Name = "darkLabel30";
+            this.darkLabel30.Size = new System.Drawing.Size(129, 13);
+            this.darkLabel30.TabIndex = 167;
+            this.darkLabel30.Text = "NPC Quest Cancel Emote";
+            // 
+            // panel19
+            // 
+            this.panel19.Controls.Add(this.NPCQuestStartEmoteIDCB);
+            this.panel19.Controls.Add(this.darkLabel31);
+            this.panel19.Location = new System.Drawing.Point(3, 326);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(349, 23);
+            this.panel19.TabIndex = 178;
+            // 
+            // NPCQuestStartEmoteIDCB
+            // 
+            this.NPCQuestStartEmoteIDCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.NPCQuestStartEmoteIDCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.NPCQuestStartEmoteIDCB.FormattingEnabled = true;
+            this.NPCQuestStartEmoteIDCB.Location = new System.Drawing.Point(149, 0);
+            this.NPCQuestStartEmoteIDCB.Name = "NPCQuestStartEmoteIDCB";
+            this.NPCQuestStartEmoteIDCB.Size = new System.Drawing.Size(192, 21);
+            this.NPCQuestStartEmoteIDCB.TabIndex = 166;
+            this.NPCQuestStartEmoteIDCB.SelectedIndexChanged += new System.EventHandler(this.NPCQuestStartEmoteIDCB_SelectedIndexChanged);
+            // 
+            // darkLabel31
+            // 
+            this.darkLabel31.AutoSize = true;
+            this.darkLabel31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel31.Location = new System.Drawing.Point(3, 3);
+            this.darkLabel31.Name = "darkLabel31";
+            this.darkLabel31.Size = new System.Drawing.Size(118, 13);
+            this.darkLabel31.TabIndex = 167;
+            this.darkLabel31.Text = "NPC Quest Start Emote";
+            // 
+            // panel67
+            // 
+            this.panel67.Controls.Add(this.NPCQuestCompleteEmoteIDCB);
+            this.panel67.Controls.Add(this.darkLabel140);
+            this.panel67.Location = new System.Drawing.Point(3, 355);
+            this.panel67.Name = "panel67";
+            this.panel67.Size = new System.Drawing.Size(349, 23);
+            this.panel67.TabIndex = 179;
+            // 
+            // NPCQuestCompleteEmoteIDCB
+            // 
+            this.NPCQuestCompleteEmoteIDCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.NPCQuestCompleteEmoteIDCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.NPCQuestCompleteEmoteIDCB.FormattingEnabled = true;
+            this.NPCQuestCompleteEmoteIDCB.Location = new System.Drawing.Point(149, 0);
+            this.NPCQuestCompleteEmoteIDCB.Name = "NPCQuestCompleteEmoteIDCB";
+            this.NPCQuestCompleteEmoteIDCB.Size = new System.Drawing.Size(192, 21);
+            this.NPCQuestCompleteEmoteIDCB.TabIndex = 166;
+            this.NPCQuestCompleteEmoteIDCB.SelectedIndexChanged += new System.EventHandler(this.NPCQuestCompleteEmoteIDCB_SelectedIndexChanged);
+            // 
+            // darkLabel140
+            // 
+            this.darkLabel140.AutoSize = true;
+            this.darkLabel140.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel140.Location = new System.Drawing.Point(3, 3);
+            this.darkLabel140.Name = "darkLabel140";
+            this.darkLabel140.Size = new System.Drawing.Size(140, 13);
+            this.darkLabel140.TabIndex = 167;
+            this.darkLabel140.Text = "NPC Quest Complete Emote";
+            // 
             // panel36
             // 
             this.panel36.Controls.Add(this.label1);
             this.panel36.Controls.Add(this.QuestNPCIsAICB);
-            this.panel36.Location = new System.Drawing.Point(3, 274);
+            this.panel36.Location = new System.Drawing.Point(3, 384);
             this.panel36.Name = "panel36";
             this.panel36.Size = new System.Drawing.Size(349, 20);
             this.panel36.TabIndex = 177;
@@ -2561,7 +2701,7 @@ namespace DayZeEditor
             // 
             this.panel37.Controls.Add(this.label2);
             this.panel37.Controls.Add(this.QuestNPCsIsStaticCB);
-            this.panel37.Location = new System.Drawing.Point(3, 300);
+            this.panel37.Location = new System.Drawing.Point(3, 410);
             this.panel37.Name = "panel37";
             this.panel37.Size = new System.Drawing.Size(349, 20);
             this.panel37.TabIndex = 178;
@@ -2591,7 +2731,7 @@ namespace DayZeEditor
             // 
             this.panel38.Controls.Add(this.label3);
             this.panel38.Controls.Add(this.QuestNPCIsEmoteStaticCB);
-            this.panel38.Location = new System.Drawing.Point(3, 326);
+            this.panel38.Location = new System.Drawing.Point(3, 436);
             this.panel38.Name = "panel38";
             this.panel38.Size = new System.Drawing.Size(349, 20);
             this.panel38.TabIndex = 179;
@@ -2627,7 +2767,7 @@ namespace DayZeEditor
             this.panel39.Controls.Add(this.QuestNPCsPOSZNUD);
             this.panel39.Controls.Add(this.QuestNPCsOXNUD);
             this.panel39.Controls.Add(this.darkLabel11);
-            this.panel39.Location = new System.Drawing.Point(3, 352);
+            this.panel39.Location = new System.Drawing.Point(358, 3);
             this.panel39.Name = "panel39";
             this.panel39.Size = new System.Drawing.Size(349, 100);
             this.panel39.TabIndex = 180;
@@ -2792,7 +2932,7 @@ namespace DayZeEditor
             this.groupBox5.Controls.Add(this.darkButton6);
             this.groupBox5.Controls.Add(this.QuestsNPCsQuestIDSLB);
             this.groupBox5.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox5.Location = new System.Drawing.Point(358, 3);
+            this.groupBox5.Location = new System.Drawing.Point(358, 109);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(384, 239);
             this.groupBox5.TabIndex = 101;
@@ -2880,7 +3020,7 @@ namespace DayZeEditor
             this.groupBox6.Controls.Add(this.darkButton8);
             this.groupBox6.Controls.Add(this.QuestNPCWaypointsLB);
             this.groupBox6.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox6.Location = new System.Drawing.Point(358, 248);
+            this.groupBox6.Location = new System.Drawing.Point(748, 3);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(384, 239);
             this.groupBox6.TabIndex = 181;
@@ -5350,15 +5490,6 @@ namespace DayZeEditor
             this.ObjectivesAIPatrolNPCFactionCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ObjectivesAIPatrolNPCFactionCB.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesAIPatrolNPCFactionCB.FormattingEnabled = true;
-            this.ObjectivesAIPatrolNPCFactionCB.Items.AddRange(new object[] {
-            "Civilian",
-            "East",
-            "Guards",
-            "Mercenaries",
-            "Passive",
-            "Raiders ",
-            "Shamans",
-            "West"});
             this.ObjectivesAIPatrolNPCFactionCB.Location = new System.Drawing.Point(112, 320);
             this.ObjectivesAIPatrolNPCFactionCB.Name = "ObjectivesAIPatrolNPCFactionCB";
             this.ObjectivesAIPatrolNPCFactionCB.Size = new System.Drawing.Size(221, 21);
@@ -5976,15 +6107,6 @@ namespace DayZeEditor
             this.ObjectivesAICampNPCFactionCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ObjectivesAICampNPCFactionCB.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesAICampNPCFactionCB.FormattingEnabled = true;
-            this.ObjectivesAICampNPCFactionCB.Items.AddRange(new object[] {
-            "Civilian",
-            "East",
-            "Guards",
-            "Mercenaries",
-            "Passive",
-            "Raiders ",
-            "Shamans",
-            "West"});
             this.ObjectivesAICampNPCFactionCB.Location = new System.Drawing.Point(109, 320);
             this.ObjectivesAICampNPCFactionCB.Name = "ObjectivesAICampNPCFactionCB";
             this.ObjectivesAICampNPCFactionCB.Size = new System.Drawing.Size(221, 21);
@@ -7423,6 +7545,14 @@ namespace DayZeEditor
             this.panel34.PerformLayout();
             this.panel35.ResumeLayout(false);
             this.panel35.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
+            this.panel19.ResumeLayout(false);
+            this.panel19.PerformLayout();
+            this.panel67.ResumeLayout(false);
+            this.panel67.PerformLayout();
             this.panel36.ResumeLayout(false);
             this.panel36.PerformLayout();
             this.panel37.ResumeLayout(false);
@@ -8092,5 +8222,17 @@ namespace DayZeEditor
         private System.Windows.Forms.ListBox QuestPreQuestIDsLB;
         private DarkUI.Controls.DarkLabel darkLabel19;
         private System.Windows.Forms.PictureBox QuestColour;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.ComboBox NPCInteractionEmoteIDCB;
+        private DarkUI.Controls.DarkLabel darkLabel18;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.ComboBox NPCQuestCancelEmoteIDCB;
+        private DarkUI.Controls.DarkLabel darkLabel30;
+        private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.ComboBox NPCQuestStartEmoteIDCB;
+        private DarkUI.Controls.DarkLabel darkLabel31;
+        private System.Windows.Forms.Panel panel67;
+        private System.Windows.Forms.ComboBox NPCQuestCompleteEmoteIDCB;
+        private DarkUI.Controls.DarkLabel darkLabel140;
     }
 }

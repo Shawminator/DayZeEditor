@@ -12,8 +12,12 @@ namespace DayZeLib
     public class TraderPlusPriceConfig
     {
         [JsonIgnore]
+        public const string m_Version = "2.5";
+
+        [JsonIgnore]
         public const string fileName = "TraderPlusPriceConfig.json";
 
+        public string Version { get; set; }
         public int EnableAutoCalculation { get; set; }
         public int EnableAutoDestockAtRestart { get; set; }
         public int EnableDefaultTraderStock { get; set; }
@@ -64,6 +68,16 @@ namespace DayZeLib
             }
             return newlist;
         }
+        public bool CheckVersion()
+        {
+            if (Version != m_Version)
+            {
+                Version = m_Version;
+                return false;
+            }
+            return true;
+        }
+
     }
 
     public class Tradercategory

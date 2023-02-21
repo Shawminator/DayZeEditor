@@ -13,7 +13,7 @@ namespace DayZeLib
         [JsonIgnore]
         public const string fileName = "TraderPlusSafeZoneConfig.json";
         [JsonIgnore]
-        public const string m_Version = "2.3";
+        public const string m_Version = "2.5";
 
         public string Version { get; set; } //current version 2.3
         public int IsHideOutActive { get; set; }
@@ -25,6 +25,7 @@ namespace DayZeLib
         public string MustRemoveArmband { get; set; }
         public BindingList<Safearealocation> SafeAreaLocation { get; set; }
         public int CleanUpTimer { get; set; }
+        public BindingList<string> WhitelistEntities { get; set; }
         public BindingList<string> ObjectsToDelete { get; set; }
         public BindingList<string> SZSteamUIDs { get; set; }
         public BindingList<string> BlackListedItemInStash { get; set; }

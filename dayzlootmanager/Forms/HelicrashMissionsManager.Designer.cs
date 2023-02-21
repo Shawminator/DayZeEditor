@@ -68,15 +68,7 @@ namespace DayZeEditor
             this.darkLabel18 = new DarkUI.Controls.DarkLabel();
             this.darkLabel22 = new DarkUI.Controls.DarkLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Minimum_Weapons_HelicrashNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel17 = new DarkUI.Controls.DarkLabel();
             this.minimum_speedNUD = new System.Windows.Forms.NumericUpDown();
-            this.Maximum_Weapons_HelicrashNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel16 = new DarkUI.Controls.DarkLabel();
-            this.Minimum_Loot_HelicrashNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel15 = new DarkUI.Controls.DarkLabel();
-            this.Maximum_Loot_HelicrashNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel13 = new DarkUI.Controls.DarkLabel();
             this.speedNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel12 = new DarkUI.Controls.DarkLabel();
             this.darkLabel4 = new DarkUI.Controls.DarkLabel();
@@ -95,28 +87,10 @@ namespace DayZeEditor
             this.darkLabel21 = new DarkUI.Controls.DarkLabel();
             this.darkLabel20 = new DarkUI.Controls.DarkLabel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.darkButton11 = new DarkUI.Controls.DarkButton();
+            this.darkButton10 = new DarkUI.Controls.DarkButton();
             this.darkButton21 = new DarkUI.Controls.DarkButton();
             this.darkLabel8 = new DarkUI.Controls.DarkLabel();
             this.Loot_HelicrashLB = new System.Windows.Forms.ListBox();
-            this.darkButton15 = new DarkUI.Controls.DarkButton();
-            this.darkButton16 = new DarkUI.Controls.DarkButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.darkButton1 = new DarkUI.Controls.DarkButton();
-            this.darkLabel1 = new DarkUI.Controls.DarkLabel();
-            this.magazineTB = new System.Windows.Forms.TextBox();
-            this.darkButton12 = new DarkUI.Controls.DarkButton();
-            this.darkButton8 = new DarkUI.Controls.DarkButton();
-            this.darkLabel6 = new DarkUI.Controls.DarkLabel();
-            this.opticTB = new System.Windows.Forms.TextBox();
-            this.weaponTB = new System.Windows.Forms.TextBox();
-            this.darkButton9 = new DarkUI.Controls.DarkButton();
-            this.darkButton10 = new DarkUI.Controls.DarkButton();
-            this.darkLabel7 = new DarkUI.Controls.DarkLabel();
-            this.attachmentsLB = new System.Windows.Forms.ListBox();
-            this.darkLabel9 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel5 = new DarkUI.Controls.DarkLabel();
-            this.WeaponLootTablesLB = new System.Windows.Forms.ListBox();
             this.darkToolStrip23 = new DarkUI.Controls.DarkToolStrip2();
             this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -141,11 +115,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.ZombieMaxNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ZombieRadiusNUD)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Minimum_Weapons_HelicrashNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimum_speedNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Maximum_Weapons_HelicrashNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Minimum_Loot_HelicrashNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Maximum_Loot_HelicrashNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.speedNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimum_heightNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.start_heightNUD)).BeginInit();
@@ -154,7 +124,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.AnimalMaxNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AnimalRadiusNUD)).BeginInit();
             this.tabPage3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.darkToolStrip23.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -600,7 +569,6 @@ namespace DayZeEditor
             this.zombie_nameLB.Size = new System.Drawing.Size(238, 238);
             this.zombie_nameLB.TabIndex = 122;
             this.zombie_nameLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.zombie_nameLB.SelectedIndexChanged += new System.EventHandler(this.zombie_nameLB_SelectedIndexChanged);
             // 
             // ZombieMaxNUD
             // 
@@ -656,15 +624,7 @@ namespace DayZeEditor
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.Minimum_Weapons_HelicrashNUD);
-            this.groupBox1.Controls.Add(this.darkLabel17);
             this.groupBox1.Controls.Add(this.minimum_speedNUD);
-            this.groupBox1.Controls.Add(this.Maximum_Weapons_HelicrashNUD);
-            this.groupBox1.Controls.Add(this.darkLabel16);
-            this.groupBox1.Controls.Add(this.Minimum_Loot_HelicrashNUD);
-            this.groupBox1.Controls.Add(this.darkLabel15);
-            this.groupBox1.Controls.Add(this.Maximum_Loot_HelicrashNUD);
-            this.groupBox1.Controls.Add(this.darkLabel13);
             this.groupBox1.Controls.Add(this.speedNUD);
             this.groupBox1.Controls.Add(this.darkLabel12);
             this.groupBox1.Controls.Add(this.darkLabel4);
@@ -675,36 +635,10 @@ namespace DayZeEditor
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox1.Location = new System.Drawing.Point(8, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(259, 242);
+            this.groupBox1.Size = new System.Drawing.Size(259, 124);
             this.groupBox1.TabIndex = 94;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Crash Info";
-            // 
-            // Minimum_Weapons_HelicrashNUD
-            // 
-            this.Minimum_Weapons_HelicrashNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.Minimum_Weapons_HelicrashNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.Minimum_Weapons_HelicrashNUD.Location = new System.Drawing.Point(122, 201);
-            this.Minimum_Weapons_HelicrashNUD.Maximum = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
-            this.Minimum_Weapons_HelicrashNUD.Name = "Minimum_Weapons_HelicrashNUD";
-            this.Minimum_Weapons_HelicrashNUD.Size = new System.Drawing.Size(120, 20);
-            this.Minimum_Weapons_HelicrashNUD.TabIndex = 83;
-            this.Minimum_Weapons_HelicrashNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Minimum_Weapons_HelicrashNUD.ValueChanged += new System.EventHandler(this.Minimum_Weapons_HelicrashNUD_ValueChanged);
-            // 
-            // darkLabel17
-            // 
-            this.darkLabel17.AutoSize = true;
-            this.darkLabel17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel17.Location = new System.Drawing.Point(7, 203);
-            this.darkLabel17.Name = "darkLabel17";
-            this.darkLabel17.Size = new System.Drawing.Size(73, 13);
-            this.darkLabel17.TabIndex = 82;
-            this.darkLabel17.Text = "Min Weapons";
             // 
             // minimum_speedNUD
             // 
@@ -721,84 +655,6 @@ namespace DayZeEditor
             this.minimum_speedNUD.TabIndex = 73;
             this.minimum_speedNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.minimum_speedNUD.ValueChanged += new System.EventHandler(this.minimum_speedNUD_ValueChanged);
-            // 
-            // Maximum_Weapons_HelicrashNUD
-            // 
-            this.Maximum_Weapons_HelicrashNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.Maximum_Weapons_HelicrashNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.Maximum_Weapons_HelicrashNUD.Location = new System.Drawing.Point(122, 175);
-            this.Maximum_Weapons_HelicrashNUD.Maximum = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
-            this.Maximum_Weapons_HelicrashNUD.Name = "Maximum_Weapons_HelicrashNUD";
-            this.Maximum_Weapons_HelicrashNUD.Size = new System.Drawing.Size(120, 20);
-            this.Maximum_Weapons_HelicrashNUD.TabIndex = 81;
-            this.Maximum_Weapons_HelicrashNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Maximum_Weapons_HelicrashNUD.ValueChanged += new System.EventHandler(this.Maximum_Weapons_HelicrashNUD_ValueChanged);
-            // 
-            // darkLabel16
-            // 
-            this.darkLabel16.AutoSize = true;
-            this.darkLabel16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel16.Location = new System.Drawing.Point(7, 177);
-            this.darkLabel16.Name = "darkLabel16";
-            this.darkLabel16.Size = new System.Drawing.Size(76, 13);
-            this.darkLabel16.TabIndex = 80;
-            this.darkLabel16.Text = "Max Weapons";
-            // 
-            // Minimum_Loot_HelicrashNUD
-            // 
-            this.Minimum_Loot_HelicrashNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.Minimum_Loot_HelicrashNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.Minimum_Loot_HelicrashNUD.Location = new System.Drawing.Point(122, 149);
-            this.Minimum_Loot_HelicrashNUD.Maximum = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
-            this.Minimum_Loot_HelicrashNUD.Name = "Minimum_Loot_HelicrashNUD";
-            this.Minimum_Loot_HelicrashNUD.Size = new System.Drawing.Size(120, 20);
-            this.Minimum_Loot_HelicrashNUD.TabIndex = 79;
-            this.Minimum_Loot_HelicrashNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Minimum_Loot_HelicrashNUD.ValueChanged += new System.EventHandler(this.Minimum_Loot_HelicrashNUD_ValueChanged);
-            // 
-            // darkLabel15
-            // 
-            this.darkLabel15.AutoSize = true;
-            this.darkLabel15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel15.Location = new System.Drawing.Point(7, 151);
-            this.darkLabel15.Name = "darkLabel15";
-            this.darkLabel15.Size = new System.Drawing.Size(48, 13);
-            this.darkLabel15.TabIndex = 78;
-            this.darkLabel15.Text = "Min Loot";
-            // 
-            // Maximum_Loot_HelicrashNUD
-            // 
-            this.Maximum_Loot_HelicrashNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.Maximum_Loot_HelicrashNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.Maximum_Loot_HelicrashNUD.Location = new System.Drawing.Point(122, 123);
-            this.Maximum_Loot_HelicrashNUD.Maximum = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
-            this.Maximum_Loot_HelicrashNUD.Name = "Maximum_Loot_HelicrashNUD";
-            this.Maximum_Loot_HelicrashNUD.Size = new System.Drawing.Size(120, 20);
-            this.Maximum_Loot_HelicrashNUD.TabIndex = 77;
-            this.Maximum_Loot_HelicrashNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Maximum_Loot_HelicrashNUD.ValueChanged += new System.EventHandler(this.Maximum_Loot_HelicrashNUD_ValueChanged);
-            // 
-            // darkLabel13
-            // 
-            this.darkLabel13.AutoSize = true;
-            this.darkLabel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel13.Location = new System.Drawing.Point(7, 125);
-            this.darkLabel13.Name = "darkLabel13";
-            this.darkLabel13.Size = new System.Drawing.Size(51, 13);
-            this.darkLabel13.TabIndex = 76;
-            this.darkLabel13.Text = "Max Loot";
             // 
             // speedNUD
             // 
@@ -968,7 +824,6 @@ namespace DayZeEditor
             this.animal_nameLB.Size = new System.Drawing.Size(238, 238);
             this.animal_nameLB.TabIndex = 122;
             this.animal_nameLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.animal_nameLB.SelectedIndexChanged += new System.EventHandler(this.animal_nameLB_SelectedIndexChanged);
             // 
             // AnimalMaxNUD
             // 
@@ -1025,15 +880,10 @@ namespace DayZeEditor
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.tabPage3.Controls.Add(this.darkButton11);
+            this.tabPage3.Controls.Add(this.darkButton10);
             this.tabPage3.Controls.Add(this.darkButton21);
             this.tabPage3.Controls.Add(this.darkLabel8);
             this.tabPage3.Controls.Add(this.Loot_HelicrashLB);
-            this.tabPage3.Controls.Add(this.darkButton15);
-            this.tabPage3.Controls.Add(this.darkButton16);
-            this.tabPage3.Controls.Add(this.groupBox2);
-            this.tabPage3.Controls.Add(this.darkLabel5);
-            this.tabPage3.Controls.Add(this.WeaponLootTablesLB);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(984, 552);
@@ -1042,24 +892,24 @@ namespace DayZeEditor
             this.tabPage3.ToolTipText = "\"LC_Table_xxxxxx\" for all Items // \"LC_Table_Weapons_xxxxxx\" for Weapons and pred" +
     "ifinied Weapons ONLY!";
             // 
-            // darkButton11
+            // darkButton10
             // 
-            this.darkButton11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton11.Location = new System.Drawing.Point(8, 430);
-            this.darkButton11.Name = "darkButton11";
-            this.darkButton11.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton11.Size = new System.Drawing.Size(110, 23);
-            this.darkButton11.TabIndex = 101;
-            this.darkButton11.Text = "Add";
-            this.darkButton11.Click += new System.EventHandler(this.darkButton11_Click);
+            this.darkButton10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton10.Location = new System.Drawing.Point(8, 428);
+            this.darkButton10.Name = "darkButton10";
+            this.darkButton10.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton10.Size = new System.Drawing.Size(226, 23);
+            this.darkButton10.TabIndex = 135;
+            this.darkButton10.Text = "Addf From Reward Lists";
+            this.darkButton10.Click += new System.EventHandler(this.darkButton10_Click_1);
             // 
             // darkButton21
             // 
             this.darkButton21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton21.Location = new System.Drawing.Point(130, 430);
+            this.darkButton21.Location = new System.Drawing.Point(8, 457);
             this.darkButton21.Name = "darkButton21";
             this.darkButton21.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton21.Size = new System.Drawing.Size(104, 23);
+            this.darkButton21.Size = new System.Drawing.Size(226, 23);
             this.darkButton21.TabIndex = 100;
             this.darkButton21.Text = "Remove";
             this.darkButton21.Click += new System.EventHandler(this.darkButton21_Click);
@@ -1087,211 +937,6 @@ namespace DayZeEditor
             this.Loot_HelicrashLB.Size = new System.Drawing.Size(226, 394);
             this.Loot_HelicrashLB.TabIndex = 98;
             this.Loot_HelicrashLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.Loot_HelicrashLB.SelectedIndexChanged += new System.EventHandler(this.Loot_HelicrashLB_SelectedIndexChanged);
-            // 
-            // darkButton15
-            // 
-            this.darkButton15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton15.Location = new System.Drawing.Point(247, 430);
-            this.darkButton15.Name = "darkButton15";
-            this.darkButton15.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton15.Size = new System.Drawing.Size(110, 23);
-            this.darkButton15.TabIndex = 97;
-            this.darkButton15.Text = "Add";
-            this.darkButton15.Click += new System.EventHandler(this.darkButton15_Click);
-            // 
-            // darkButton16
-            // 
-            this.darkButton16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton16.Location = new System.Drawing.Point(369, 430);
-            this.darkButton16.Name = "darkButton16";
-            this.darkButton16.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton16.Size = new System.Drawing.Size(104, 23);
-            this.darkButton16.TabIndex = 96;
-            this.darkButton16.Text = "Remove";
-            this.darkButton16.Click += new System.EventHandler(this.darkButton16_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.darkButton1);
-            this.groupBox2.Controls.Add(this.darkLabel1);
-            this.groupBox2.Controls.Add(this.magazineTB);
-            this.groupBox2.Controls.Add(this.darkButton12);
-            this.groupBox2.Controls.Add(this.darkButton8);
-            this.groupBox2.Controls.Add(this.darkLabel6);
-            this.groupBox2.Controls.Add(this.opticTB);
-            this.groupBox2.Controls.Add(this.weaponTB);
-            this.groupBox2.Controls.Add(this.darkButton9);
-            this.groupBox2.Controls.Add(this.darkButton10);
-            this.groupBox2.Controls.Add(this.darkLabel7);
-            this.groupBox2.Controls.Add(this.attachmentsLB);
-            this.groupBox2.Controls.Add(this.darkLabel9);
-            this.groupBox2.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox2.Location = new System.Drawing.Point(479, 11);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(365, 201);
-            this.groupBox2.TabIndex = 95;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Pre defined Weapon";
-            // 
-            // darkButton1
-            // 
-            this.darkButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton1.Location = new System.Drawing.Point(330, 45);
-            this.darkButton1.Name = "darkButton1";
-            this.darkButton1.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton1.Size = new System.Drawing.Size(20, 20);
-            this.darkButton1.TabIndex = 139;
-            this.darkButton1.Text = "+";
-            this.darkButton1.Click += new System.EventHandler(this.darkButton1_Click);
-            // 
-            // darkLabel1
-            // 
-            this.darkLabel1.AutoSize = true;
-            this.darkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel1.Location = new System.Drawing.Point(9, 48);
-            this.darkLabel1.Name = "darkLabel1";
-            this.darkLabel1.Size = new System.Drawing.Size(53, 13);
-            this.darkLabel1.TabIndex = 138;
-            this.darkLabel1.Text = "Magazine";
-            // 
-            // magazineTB
-            // 
-            this.magazineTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.magazineTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.magazineTB.Location = new System.Drawing.Point(95, 45);
-            this.magazineTB.Name = "magazineTB";
-            this.magazineTB.Size = new System.Drawing.Size(229, 20);
-            this.magazineTB.TabIndex = 137;
-            // 
-            // darkButton12
-            // 
-            this.darkButton12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton12.Location = new System.Drawing.Point(330, 159);
-            this.darkButton12.Name = "darkButton12";
-            this.darkButton12.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton12.Size = new System.Drawing.Size(20, 20);
-            this.darkButton12.TabIndex = 136;
-            this.darkButton12.Text = "+";
-            this.darkButton12.Click += new System.EventHandler(this.darkButton12_Click);
-            // 
-            // darkButton8
-            // 
-            this.darkButton8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton8.Location = new System.Drawing.Point(330, 19);
-            this.darkButton8.Name = "darkButton8";
-            this.darkButton8.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton8.Size = new System.Drawing.Size(20, 20);
-            this.darkButton8.TabIndex = 134;
-            this.darkButton8.Text = "+";
-            this.darkButton8.Click += new System.EventHandler(this.darkButton8_Click);
-            // 
-            // darkLabel6
-            // 
-            this.darkLabel6.AutoSize = true;
-            this.darkLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel6.Location = new System.Drawing.Point(9, 163);
-            this.darkLabel6.Name = "darkLabel6";
-            this.darkLabel6.Size = new System.Drawing.Size(32, 13);
-            this.darkLabel6.TabIndex = 130;
-            this.darkLabel6.Text = "Optic";
-            // 
-            // opticTB
-            // 
-            this.opticTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.opticTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.opticTB.Location = new System.Drawing.Point(95, 159);
-            this.opticTB.Name = "opticTB";
-            this.opticTB.Size = new System.Drawing.Size(229, 20);
-            this.opticTB.TabIndex = 129;
-            // 
-            // weaponTB
-            // 
-            this.weaponTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.weaponTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.weaponTB.Location = new System.Drawing.Point(95, 19);
-            this.weaponTB.Name = "weaponTB";
-            this.weaponTB.Size = new System.Drawing.Size(229, 20);
-            this.weaponTB.TabIndex = 128;
-            // 
-            // darkButton9
-            // 
-            this.darkButton9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton9.Location = new System.Drawing.Point(330, 97);
-            this.darkButton9.Name = "darkButton9";
-            this.darkButton9.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton9.Size = new System.Drawing.Size(20, 20);
-            this.darkButton9.TabIndex = 125;
-            this.darkButton9.Text = "-";
-            this.darkButton9.Click += new System.EventHandler(this.darkButton9_Click);
-            // 
-            // darkButton10
-            // 
-            this.darkButton10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton10.Location = new System.Drawing.Point(330, 71);
-            this.darkButton10.Name = "darkButton10";
-            this.darkButton10.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton10.Size = new System.Drawing.Size(20, 20);
-            this.darkButton10.TabIndex = 124;
-            this.darkButton10.Text = "+";
-            this.darkButton10.Click += new System.EventHandler(this.darkButton10_Click);
-            // 
-            // darkLabel7
-            // 
-            this.darkLabel7.AutoSize = true;
-            this.darkLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel7.Location = new System.Drawing.Point(9, 71);
-            this.darkLabel7.Name = "darkLabel7";
-            this.darkLabel7.Size = new System.Drawing.Size(66, 13);
-            this.darkLabel7.TabIndex = 121;
-            this.darkLabel7.Text = "Attachments";
-            // 
-            // attachmentsLB
-            // 
-            this.attachmentsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.attachmentsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.attachmentsLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.attachmentsLB.FormattingEnabled = true;
-            this.attachmentsLB.Location = new System.Drawing.Point(95, 71);
-            this.attachmentsLB.Name = "attachmentsLB";
-            this.attachmentsLB.Size = new System.Drawing.Size(229, 82);
-            this.attachmentsLB.TabIndex = 120;
-            this.attachmentsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            // 
-            // darkLabel9
-            // 
-            this.darkLabel9.AutoSize = true;
-            this.darkLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel9.Location = new System.Drawing.Point(9, 22);
-            this.darkLabel9.Name = "darkLabel9";
-            this.darkLabel9.Size = new System.Drawing.Size(48, 13);
-            this.darkLabel9.TabIndex = 117;
-            this.darkLabel9.Text = "Weapon";
-            // 
-            // darkLabel5
-            // 
-            this.darkLabel5.AutoSize = true;
-            this.darkLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel5.Location = new System.Drawing.Point(244, 11);
-            this.darkLabel5.Name = "darkLabel5";
-            this.darkLabel5.Size = new System.Drawing.Size(107, 13);
-            this.darkLabel5.TabIndex = 94;
-            this.darkLabel5.Text = "Predefined Weapons";
-            // 
-            // WeaponLootTablesLB
-            // 
-            this.WeaponLootTablesLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.WeaponLootTablesLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.WeaponLootTablesLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.WeaponLootTablesLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.WeaponLootTablesLB.FormattingEnabled = true;
-            this.WeaponLootTablesLB.Location = new System.Drawing.Point(247, 30);
-            this.WeaponLootTablesLB.Name = "WeaponLootTablesLB";
-            this.WeaponLootTablesLB.Size = new System.Drawing.Size(226, 394);
-            this.WeaponLootTablesLB.TabIndex = 93;
-            this.WeaponLootTablesLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.WeaponLootTablesLB.SelectedIndexChanged += new System.EventHandler(this.WeaponLootTablesLB_SelectedIndexChanged);
             // 
             // darkToolStrip23
             // 
@@ -1403,11 +1048,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.ZombieRadiusNUD)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Minimum_Weapons_HelicrashNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimum_speedNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Maximum_Weapons_HelicrashNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Minimum_Loot_HelicrashNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Maximum_Loot_HelicrashNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.speedNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimum_heightNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.start_heightNUD)).EndInit();
@@ -1418,8 +1059,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.AnimalRadiusNUD)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.darkToolStrip23.ResumeLayout(false);
             this.darkToolStrip23.PerformLayout();
             this.ResumeLayout(false);
@@ -1444,21 +1083,6 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton darkButton17;
         private System.Windows.Forms.ListBox animal_nameLB;
         private System.Windows.Forms.TabPage tabPage3;
-        private DarkUI.Controls.DarkButton darkButton15;
-        private DarkUI.Controls.DarkButton darkButton16;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private DarkUI.Controls.DarkButton darkButton12;
-        private DarkUI.Controls.DarkButton darkButton8;
-        private DarkUI.Controls.DarkLabel darkLabel6;
-        private System.Windows.Forms.TextBox opticTB;
-        private System.Windows.Forms.TextBox weaponTB;
-        private DarkUI.Controls.DarkButton darkButton9;
-        private DarkUI.Controls.DarkButton darkButton10;
-        private DarkUI.Controls.DarkLabel darkLabel7;
-        private System.Windows.Forms.ListBox attachmentsLB;
-        private DarkUI.Controls.DarkLabel darkLabel9;
-        private DarkUI.Controls.DarkLabel darkLabel5;
-        private System.Windows.Forms.ListBox WeaponLootTablesLB;
         private DarkUI.Controls.DarkToolStrip2 darkToolStrip23;
         private System.Windows.Forms.ToolStripButton toolStripButton8;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -1466,13 +1090,9 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripButton toolStripButton7;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private DarkUI.Controls.DarkButton darkButton11;
         private DarkUI.Controls.DarkButton darkButton21;
         private DarkUI.Controls.DarkLabel darkLabel8;
         private System.Windows.Forms.ListBox Loot_HelicrashLB;
-        private DarkUI.Controls.DarkButton darkButton1;
-        private DarkUI.Controls.DarkLabel darkLabel1;
-        private System.Windows.Forms.TextBox magazineTB;
         private System.Windows.Forms.TrackBar trackBar2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -1494,14 +1114,6 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkLabel darkLabel3;
         private System.Windows.Forms.NumericUpDown start_heightNUD;
         private DarkUI.Controls.DarkLabel start_heightlabel;
-        private System.Windows.Forms.NumericUpDown Minimum_Weapons_HelicrashNUD;
-        private DarkUI.Controls.DarkLabel darkLabel17;
-        private System.Windows.Forms.NumericUpDown Maximum_Weapons_HelicrashNUD;
-        private DarkUI.Controls.DarkLabel darkLabel16;
-        private System.Windows.Forms.NumericUpDown Minimum_Loot_HelicrashNUD;
-        private DarkUI.Controls.DarkLabel darkLabel15;
-        private System.Windows.Forms.NumericUpDown Maximum_Loot_HelicrashNUD;
-        private DarkUI.Controls.DarkLabel darkLabel13;
         private System.Windows.Forms.NumericUpDown speedNUD;
         private DarkUI.Controls.DarkLabel darkLabel12;
         private System.Windows.Forms.NumericUpDown minimum_speedNUD;
@@ -1522,5 +1134,6 @@ namespace DayZeEditor
         private System.Windows.Forms.NumericUpDown ZombieRadiusNUD;
         private DarkUI.Controls.DarkLabel darkLabel18;
         private DarkUI.Controls.DarkLabel darkLabel22;
+        private DarkUI.Controls.DarkButton darkButton10;
     }
 }

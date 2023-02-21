@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DayZeLib
 {
@@ -15,7 +16,7 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty;
         [JsonIgnore]
-        public const string m_Version = "2.3";
+        public const string m_Version = "2.5";
 
         public string Version { get; set; }
         public BindingList<IDs> IDs { get; set; }
@@ -34,7 +35,10 @@ namespace DayZeLib
         }
         public IDs getTraderbyID(int id)
         {
-            return IDs.Where(x => x.Id == id).First();
+            if(IDs.Any(x => x.Id == id))
+                return IDs.Where(x => x.Id == id).First();
+            MessageBox.Show("The following ID COuld not find matching NPC : " + id.ToString());
+            return null;
         }
     }
 

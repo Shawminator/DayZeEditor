@@ -70,12 +70,8 @@ namespace DayZeEditor
             this.label16 = new System.Windows.Forms.Label();
             this.DynamicPurgeDurationMaxNUD = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
-            this.DPWeekNumberCB = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.darkLabel5 = new DarkUI.Controls.DarkLabel();
             this.DPNameTB = new System.Windows.Forms.TextBox();
-            this.DPdayofthewekkCB = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.SPWeekNumCB = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.darkLabel4 = new DarkUI.Controls.DarkLabel();
@@ -105,6 +101,19 @@ namespace DayZeEditor
             this.label18 = new System.Windows.Forms.Label();
             this.IsDynPurgeActiveCB = new System.Windows.Forms.CheckBox();
             this.IsPurgeActiveCB = new System.Windows.Forms.CheckBox();
+            this.DynamicPurgeWeeknumberGB = new System.Windows.Forms.GroupBox();
+            this.Week4CB = new System.Windows.Forms.CheckBox();
+            this.Week3CB = new System.Windows.Forms.CheckBox();
+            this.Week2CB = new System.Windows.Forms.CheckBox();
+            this.Week1CB = new System.Windows.Forms.CheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.SundayDOWCB = new System.Windows.Forms.CheckBox();
+            this.MondayDOWCB = new System.Windows.Forms.CheckBox();
+            this.TuesdayDOWCB = new System.Windows.Forms.CheckBox();
+            this.WednesdayDOWCB = new System.Windows.Forms.CheckBox();
+            this.ThursdayDOWCB = new System.Windows.Forms.CheckBox();
+            this.FridayDOWCB = new System.Windows.Forms.CheckBox();
+            this.SaturdayDOWCB = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             this.darkToolStrip22.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -122,6 +131,8 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.DynamicPurgeDurationMinNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ScheduleCycleNUD)).BeginInit();
+            this.DynamicPurgeWeeknumberGB.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -562,18 +573,16 @@ namespace DayZeEditor
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage2.Controls.Add(this.groupBox1);
+            this.tabPage2.Controls.Add(this.DynamicPurgeWeeknumberGB);
             this.tabPage2.Controls.Add(this.DPEndDT);
             this.tabPage2.Controls.Add(this.DPStartDT);
             this.tabPage2.Controls.Add(this.label15);
             this.tabPage2.Controls.Add(this.label16);
             this.tabPage2.Controls.Add(this.DynamicPurgeDurationMaxNUD);
             this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.DPWeekNumberCB);
-            this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.darkLabel5);
             this.tabPage2.Controls.Add(this.DPNameTB);
-            this.tabPage2.Controls.Add(this.DPdayofthewekkCB);
-            this.tabPage2.Controls.Add(this.label9);
             this.tabPage2.Controls.Add(this.SPWeekNumCB);
             this.tabPage2.Controls.Add(this.label14);
             this.tabPage2.Controls.Add(this.darkLabel4);
@@ -617,7 +626,7 @@ namespace DayZeEditor
             this.DPEndDT.CalendarTitleForeColor = System.Drawing.SystemColors.Control;
             this.DPEndDT.CustomFormat = "HH mm";
             this.DPEndDT.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.DPEndDT.Location = new System.Drawing.Point(487, 492);
+            this.DPEndDT.Location = new System.Drawing.Point(691, 527);
             this.DPEndDT.Name = "DPEndDT";
             this.DPEndDT.ShowUpDown = true;
             this.DPEndDT.Size = new System.Drawing.Size(107, 20);
@@ -631,7 +640,7 @@ namespace DayZeEditor
             this.DPStartDT.CalendarTitleForeColor = System.Drawing.SystemColors.Control;
             this.DPStartDT.CustomFormat = "HH:mm";
             this.DPStartDT.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.DPStartDT.Location = new System.Drawing.Point(487, 466);
+            this.DPStartDT.Location = new System.Drawing.Point(487, 527);
             this.DPStartDT.Name = "DPStartDT";
             this.DPStartDT.ShowUpDown = true;
             this.DPStartDT.Size = new System.Drawing.Size(107, 20);
@@ -642,7 +651,7 @@ namespace DayZeEditor
             // 
             this.label15.AutoSize = true;
             this.label15.ForeColor = System.Drawing.SystemColors.Control;
-            this.label15.Location = new System.Drawing.Point(405, 496);
+            this.label15.Location = new System.Drawing.Point(609, 531);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(26, 13);
             this.label15.TabIndex = 150;
@@ -652,7 +661,7 @@ namespace DayZeEditor
             // 
             this.label16.AutoSize = true;
             this.label16.ForeColor = System.Drawing.SystemColors.Control;
-            this.label16.Location = new System.Drawing.Point(405, 468);
+            this.label16.Location = new System.Drawing.Point(405, 529);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(29, 13);
             this.label16.TabIndex = 149;
@@ -662,7 +671,7 @@ namespace DayZeEditor
             // 
             this.DynamicPurgeDurationMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.DynamicPurgeDurationMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.DynamicPurgeDurationMaxNUD.Location = new System.Drawing.Point(487, 440);
+            this.DynamicPurgeDurationMaxNUD.Location = new System.Drawing.Point(691, 501);
             this.DynamicPurgeDurationMaxNUD.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -679,32 +688,11 @@ namespace DayZeEditor
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.SystemColors.Control;
-            this.label10.Location = new System.Drawing.Point(405, 442);
+            this.label10.Location = new System.Drawing.Point(609, 503);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(70, 13);
             this.label10.TabIndex = 147;
             this.label10.Text = "Duration Max";
-            // 
-            // DPWeekNumberCB
-            // 
-            this.DPWeekNumberCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.DPWeekNumberCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.DPWeekNumberCB.FormattingEnabled = true;
-            this.DPWeekNumberCB.Location = new System.Drawing.Point(487, 334);
-            this.DPWeekNumberCB.Name = "DPWeekNumberCB";
-            this.DPWeekNumberCB.Size = new System.Drawing.Size(107, 21);
-            this.DPWeekNumberCB.TabIndex = 146;
-            this.DPWeekNumberCB.SelectedIndexChanged += new System.EventHandler(this.DPWeekNumberCB_SelectedIndexChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.SystemColors.Control;
-            this.label7.Location = new System.Drawing.Point(405, 337);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(76, 13);
-            this.label7.TabIndex = 145;
-            this.label7.Text = "Week Number";
             // 
             // darkLabel5
             // 
@@ -726,27 +714,6 @@ namespace DayZeEditor
             this.DPNameTB.TabIndex = 143;
             this.DPNameTB.Tag = "MsgEnterZone";
             this.DPNameTB.TextChanged += new System.EventHandler(this.DPNameTB_TextChanged);
-            // 
-            // DPdayofthewekkCB
-            // 
-            this.DPdayofthewekkCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.DPdayofthewekkCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.DPdayofthewekkCB.FormattingEnabled = true;
-            this.DPdayofthewekkCB.Location = new System.Drawing.Point(487, 361);
-            this.DPdayofthewekkCB.Name = "DPdayofthewekkCB";
-            this.DPdayofthewekkCB.Size = new System.Drawing.Size(107, 21);
-            this.DPdayofthewekkCB.TabIndex = 142;
-            this.DPdayofthewekkCB.SelectedIndexChanged += new System.EventHandler(this.DPdayofthewekkCB_SelectedIndexChanged);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.SystemColors.Control;
-            this.label9.Location = new System.Drawing.Point(405, 364);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(26, 13);
-            this.label9.TabIndex = 141;
-            this.label9.Text = "Day";
             // 
             // SPWeekNumCB
             // 
@@ -794,7 +761,7 @@ namespace DayZeEditor
             // 
             this.ServerrestartCycleNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ServerrestartCycleNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ServerrestartCycleNUD.Location = new System.Drawing.Point(87, 95);
+            this.ServerrestartCycleNUD.Location = new System.Drawing.Point(101, 95);
             this.ServerrestartCycleNUD.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -872,7 +839,7 @@ namespace DayZeEditor
             // 
             this.DynamicPurgeDurationMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.DynamicPurgeDurationMinNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.DynamicPurgeDurationMinNUD.Location = new System.Drawing.Point(487, 414);
+            this.DynamicPurgeDurationMinNUD.Location = new System.Drawing.Point(487, 501);
             this.DynamicPurgeDurationMinNUD.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -889,7 +856,7 @@ namespace DayZeEditor
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.SystemColors.Control;
-            this.label12.Location = new System.Drawing.Point(405, 416);
+            this.label12.Location = new System.Drawing.Point(405, 503);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(67, 13);
             this.label12.TabIndex = 129;
@@ -900,7 +867,7 @@ namespace DayZeEditor
             this.numericUpDown7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.numericUpDown7.DecimalPlaces = 2;
             this.numericUpDown7.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown7.Location = new System.Drawing.Point(487, 388);
+            this.numericUpDown7.Location = new System.Drawing.Point(487, 475);
             this.numericUpDown7.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -917,7 +884,7 @@ namespace DayZeEditor
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.SystemColors.Control;
-            this.label11.Location = new System.Drawing.Point(405, 390);
+            this.label11.Location = new System.Drawing.Point(405, 477);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(44, 13);
             this.label11.TabIndex = 127;
@@ -1043,7 +1010,7 @@ namespace DayZeEditor
             // 
             this.ScheduleCycleNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ScheduleCycleNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ScheduleCycleNUD.Location = new System.Drawing.Point(87, 65);
+            this.ScheduleCycleNUD.Location = new System.Drawing.Point(101, 65);
             this.ScheduleCycleNUD.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -1062,9 +1029,9 @@ namespace DayZeEditor
             this.label18.ForeColor = System.Drawing.SystemColors.Control;
             this.label18.Location = new System.Drawing.Point(14, 67);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(55, 13);
+            this.label18.Size = new System.Drawing.Size(81, 13);
             this.label18.TabIndex = 71;
-            this.label18.Text = "TimeZone";
+            this.label18.Text = "Schedule Cycle";
             // 
             // IsDynPurgeActiveCB
             // 
@@ -1089,6 +1056,180 @@ namespace DayZeEditor
             this.IsPurgeActiveCB.Text = "Purge Enabled";
             this.IsPurgeActiveCB.UseVisualStyleBackColor = true;
             this.IsPurgeActiveCB.CheckedChanged += new System.EventHandler(this.IsPurgeActiveCB_CheckedChanged);
+            // 
+            // DynamicPurgeWeeknumberGB
+            // 
+            this.DynamicPurgeWeeknumberGB.Controls.Add(this.Week1CB);
+            this.DynamicPurgeWeeknumberGB.Controls.Add(this.Week2CB);
+            this.DynamicPurgeWeeknumberGB.Controls.Add(this.Week3CB);
+            this.DynamicPurgeWeeknumberGB.Controls.Add(this.Week4CB);
+            this.DynamicPurgeWeeknumberGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.DynamicPurgeWeeknumberGB.Location = new System.Drawing.Point(408, 331);
+            this.DynamicPurgeWeeknumberGB.Name = "DynamicPurgeWeeknumberGB";
+            this.DynamicPurgeWeeknumberGB.Size = new System.Drawing.Size(73, 138);
+            this.DynamicPurgeWeeknumberGB.TabIndex = 153;
+            this.DynamicPurgeWeeknumberGB.TabStop = false;
+            this.DynamicPurgeWeeknumberGB.Text = "Week Number";
+            // 
+            // Week4CB
+            // 
+            this.Week4CB.AutoSize = true;
+            this.Week4CB.ForeColor = System.Drawing.SystemColors.Control;
+            this.Week4CB.Location = new System.Drawing.Point(21, 104);
+            this.Week4CB.Name = "Week4CB";
+            this.Week4CB.Size = new System.Drawing.Size(32, 17);
+            this.Week4CB.TabIndex = 132;
+            this.Week4CB.Tag = "4";
+            this.Week4CB.Text = "4";
+            this.Week4CB.UseVisualStyleBackColor = true;
+            this.Week4CB.CheckedChanged += new System.EventHandler(this.Week4CB_CheckedChanged);
+            // 
+            // Week3CB
+            // 
+            this.Week3CB.AutoSize = true;
+            this.Week3CB.ForeColor = System.Drawing.SystemColors.Control;
+            this.Week3CB.Location = new System.Drawing.Point(21, 81);
+            this.Week3CB.Name = "Week3CB";
+            this.Week3CB.Size = new System.Drawing.Size(32, 17);
+            this.Week3CB.TabIndex = 133;
+            this.Week3CB.Tag = "3";
+            this.Week3CB.Text = "3";
+            this.Week3CB.UseVisualStyleBackColor = true;
+            this.Week3CB.CheckedChanged += new System.EventHandler(this.Week3CB_CheckedChanged);
+            // 
+            // Week2CB
+            // 
+            this.Week2CB.AutoSize = true;
+            this.Week2CB.ForeColor = System.Drawing.SystemColors.Control;
+            this.Week2CB.Location = new System.Drawing.Point(21, 58);
+            this.Week2CB.Name = "Week2CB";
+            this.Week2CB.Size = new System.Drawing.Size(32, 17);
+            this.Week2CB.TabIndex = 134;
+            this.Week2CB.Tag = "2";
+            this.Week2CB.Text = "2";
+            this.Week2CB.UseVisualStyleBackColor = true;
+            this.Week2CB.CheckedChanged += new System.EventHandler(this.Week2CB_CheckedChanged);
+            // 
+            // Week1CB
+            // 
+            this.Week1CB.AutoSize = true;
+            this.Week1CB.ForeColor = System.Drawing.SystemColors.Control;
+            this.Week1CB.Location = new System.Drawing.Point(21, 35);
+            this.Week1CB.Name = "Week1CB";
+            this.Week1CB.Size = new System.Drawing.Size(32, 17);
+            this.Week1CB.TabIndex = 135;
+            this.Week1CB.Tag = "1";
+            this.Week1CB.Text = "1";
+            this.Week1CB.UseVisualStyleBackColor = true;
+            this.Week1CB.CheckedChanged += new System.EventHandler(this.Week1CB_CheckedChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.SaturdayDOWCB);
+            this.groupBox1.Controls.Add(this.FridayDOWCB);
+            this.groupBox1.Controls.Add(this.ThursdayDOWCB);
+            this.groupBox1.Controls.Add(this.SundayDOWCB);
+            this.groupBox1.Controls.Add(this.MondayDOWCB);
+            this.groupBox1.Controls.Add(this.TuesdayDOWCB);
+            this.groupBox1.Controls.Add(this.WednesdayDOWCB);
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox1.Location = new System.Drawing.Point(487, 331);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(211, 138);
+            this.groupBox1.TabIndex = 154;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Day of the Week";
+            // 
+            // SundayDOWCB
+            // 
+            this.SundayDOWCB.AutoSize = true;
+            this.SundayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SundayDOWCB.Location = new System.Drawing.Point(6, 19);
+            this.SundayDOWCB.Name = "SundayDOWCB";
+            this.SundayDOWCB.Size = new System.Drawing.Size(62, 17);
+            this.SundayDOWCB.TabIndex = 135;
+            this.SundayDOWCB.Tag = "1";
+            this.SundayDOWCB.Text = "Sunday";
+            this.SundayDOWCB.UseVisualStyleBackColor = true;
+            this.SundayDOWCB.CheckedChanged += new System.EventHandler(this.SundayDOWCB_CheckedChanged);
+            // 
+            // MondayDOWCB
+            // 
+            this.MondayDOWCB.AutoSize = true;
+            this.MondayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.MondayDOWCB.Location = new System.Drawing.Point(6, 35);
+            this.MondayDOWCB.Name = "MondayDOWCB";
+            this.MondayDOWCB.Size = new System.Drawing.Size(64, 17);
+            this.MondayDOWCB.TabIndex = 134;
+            this.MondayDOWCB.Tag = "2";
+            this.MondayDOWCB.Text = "Monday";
+            this.MondayDOWCB.UseVisualStyleBackColor = true;
+            this.MondayDOWCB.CheckedChanged += new System.EventHandler(this.MondayDOWCB_CheckedChanged);
+            // 
+            // TuesdayDOWCB
+            // 
+            this.TuesdayDOWCB.AutoSize = true;
+            this.TuesdayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.TuesdayDOWCB.Location = new System.Drawing.Point(6, 51);
+            this.TuesdayDOWCB.Name = "TuesdayDOWCB";
+            this.TuesdayDOWCB.Size = new System.Drawing.Size(67, 17);
+            this.TuesdayDOWCB.TabIndex = 133;
+            this.TuesdayDOWCB.Tag = "3";
+            this.TuesdayDOWCB.Text = "Tuesday";
+            this.TuesdayDOWCB.UseVisualStyleBackColor = true;
+            this.TuesdayDOWCB.CheckedChanged += new System.EventHandler(this.TuesdayDOWCB_CheckedChanged);
+            // 
+            // WednesdayDOWCB
+            // 
+            this.WednesdayDOWCB.AutoSize = true;
+            this.WednesdayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.WednesdayDOWCB.Location = new System.Drawing.Point(6, 67);
+            this.WednesdayDOWCB.Name = "WednesdayDOWCB";
+            this.WednesdayDOWCB.Size = new System.Drawing.Size(83, 17);
+            this.WednesdayDOWCB.TabIndex = 132;
+            this.WednesdayDOWCB.Tag = "4";
+            this.WednesdayDOWCB.Text = "Wednesday";
+            this.WednesdayDOWCB.UseVisualStyleBackColor = true;
+            this.WednesdayDOWCB.CheckedChanged += new System.EventHandler(this.WednesdayDOWCB_CheckedChanged);
+            // 
+            // ThursdayDOWCB
+            // 
+            this.ThursdayDOWCB.AutoSize = true;
+            this.ThursdayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ThursdayDOWCB.Location = new System.Drawing.Point(6, 83);
+            this.ThursdayDOWCB.Name = "ThursdayDOWCB";
+            this.ThursdayDOWCB.Size = new System.Drawing.Size(70, 17);
+            this.ThursdayDOWCB.TabIndex = 136;
+            this.ThursdayDOWCB.Tag = "4";
+            this.ThursdayDOWCB.Text = "Thursday";
+            this.ThursdayDOWCB.UseVisualStyleBackColor = true;
+            this.ThursdayDOWCB.CheckedChanged += new System.EventHandler(this.ThursdayDOWCB_CheckedChanged);
+            // 
+            // FridayDOWCB
+            // 
+            this.FridayDOWCB.AutoSize = true;
+            this.FridayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.FridayDOWCB.Location = new System.Drawing.Point(6, 99);
+            this.FridayDOWCB.Name = "FridayDOWCB";
+            this.FridayDOWCB.Size = new System.Drawing.Size(54, 17);
+            this.FridayDOWCB.TabIndex = 137;
+            this.FridayDOWCB.Tag = "4";
+            this.FridayDOWCB.Text = "Friday";
+            this.FridayDOWCB.UseVisualStyleBackColor = true;
+            this.FridayDOWCB.CheckedChanged += new System.EventHandler(this.FridayDOWCB_CheckedChanged);
+            // 
+            // SaturdayDOWCB
+            // 
+            this.SaturdayDOWCB.AutoSize = true;
+            this.SaturdayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SaturdayDOWCB.Location = new System.Drawing.Point(6, 115);
+            this.SaturdayDOWCB.Name = "SaturdayDOWCB";
+            this.SaturdayDOWCB.Size = new System.Drawing.Size(68, 17);
+            this.SaturdayDOWCB.TabIndex = 138;
+            this.SaturdayDOWCB.Tag = "4";
+            this.SaturdayDOWCB.Text = "Saturday";
+            this.SaturdayDOWCB.UseVisualStyleBackColor = true;
+            this.SaturdayDOWCB.CheckedChanged += new System.EventHandler(this.SaturdayDOWCB_CheckedChanged);
             // 
             // KOSZonemanager
             // 
@@ -1124,6 +1265,10 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.DynamicPurgeDurationMinNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ScheduleCycleNUD)).EndInit();
+            this.DynamicPurgeWeeknumberGB.ResumeLayout(false);
+            this.DynamicPurgeWeeknumberGB.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1193,17 +1338,26 @@ namespace DayZeEditor
         private System.Windows.Forms.Label label14;
         private DarkUI.Controls.DarkLabel darkLabel4;
         private System.Windows.Forms.TextBox SPNameTB;
-        private System.Windows.Forms.ComboBox DPWeekNumberCB;
-        private System.Windows.Forms.Label label7;
         private DarkUI.Controls.DarkLabel darkLabel5;
         private System.Windows.Forms.TextBox DPNameTB;
-        private System.Windows.Forms.ComboBox DPdayofthewekkCB;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.NumericUpDown DynamicPurgeDurationMaxNUD;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DateTimePicker DPEndDT;
         private System.Windows.Forms.DateTimePicker DPStartDT;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.GroupBox DynamicPurgeWeeknumberGB;
+        private System.Windows.Forms.CheckBox Week1CB;
+        private System.Windows.Forms.CheckBox Week2CB;
+        private System.Windows.Forms.CheckBox Week3CB;
+        private System.Windows.Forms.CheckBox Week4CB;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox SaturdayDOWCB;
+        private System.Windows.Forms.CheckBox FridayDOWCB;
+        private System.Windows.Forms.CheckBox ThursdayDOWCB;
+        private System.Windows.Forms.CheckBox SundayDOWCB;
+        private System.Windows.Forms.CheckBox MondayDOWCB;
+        private System.Windows.Forms.CheckBox TuesdayDOWCB;
+        private System.Windows.Forms.CheckBox WednesdayDOWCB;
     }
 }

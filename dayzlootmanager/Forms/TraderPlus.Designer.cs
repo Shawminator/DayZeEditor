@@ -70,6 +70,8 @@ namespace DayZeEditor
             this.darkButton52 = new DarkUI.Controls.DarkButton();
             this.ATMAvailableCurrencyLB = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.TheAmountErrorTransferAccountTB = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
             this.BankingLogsCB = new System.Windows.Forms.CheckBox();
             this.TheAmountHasBeenTransferedToTheAccountTB = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
@@ -86,6 +88,16 @@ namespace DayZeEditor
             this.IsCreditCarNeededForTransactionCB = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.MaxVehicleStoredNUD = new System.Windows.Forms.NumericUpDown();
+            this.label37 = new System.Windows.Forms.Label();
+            this.SavedVehicleInGarageForTradeInHourCB = new System.Windows.Forms.CheckBox();
+            this.UseGarageOnlyToTradeCB = new System.Windows.Forms.CheckBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.TradeVehicleHasBeenDeletedTB = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.TradeVehicleWarningTB = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.MaxVehicleStoredReachedTB = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.darkButton21 = new DarkUI.Controls.DarkButton();
             this.darkButton5 = new DarkUI.Controls.DarkButton();
@@ -365,6 +377,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.TransactionFeesNUD)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxVehicleStoredNUD)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown11)).BeginInit();
@@ -893,6 +906,8 @@ namespace DayZeEditor
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.TheAmountErrorTransferAccountTB);
+            this.groupBox1.Controls.Add(this.label33);
             this.groupBox1.Controls.Add(this.BankingLogsCB);
             this.groupBox1.Controls.Add(this.TheAmountHasBeenTransferedToTheAccountTB);
             this.groupBox1.Controls.Add(this.label29);
@@ -910,10 +925,31 @@ namespace DayZeEditor
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox1.Location = new System.Drawing.Point(8, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(279, 455);
+            this.groupBox1.Size = new System.Drawing.Size(279, 532);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Banking Config";
+            // 
+            // TheAmountErrorTransferAccountTB
+            // 
+            this.TheAmountErrorTransferAccountTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TheAmountErrorTransferAccountTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.TheAmountErrorTransferAccountTB.Location = new System.Drawing.Point(14, 466);
+            this.TheAmountErrorTransferAccountTB.Multiline = true;
+            this.TheAmountErrorTransferAccountTB.Name = "TheAmountErrorTransferAccountTB";
+            this.TheAmountErrorTransferAccountTB.Size = new System.Drawing.Size(252, 57);
+            this.TheAmountErrorTransferAccountTB.TabIndex = 71;
+            this.TheAmountErrorTransferAccountTB.Tag = "ParkingNotAvailable";
+            this.TheAmountErrorTransferAccountTB.TextChanged += new System.EventHandler(this.TheAmountErrorTransferAccountTB_TextChanged);
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(15, 450);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(134, 13);
+            this.label33.TabIndex = 70;
+            this.label33.Text = "Transaction Error Message";
             // 
             // BankingLogsCB
             // 
@@ -1088,6 +1124,16 @@ namespace DayZeEditor
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.MaxVehicleStoredNUD);
+            this.groupBox2.Controls.Add(this.label37);
+            this.groupBox2.Controls.Add(this.SavedVehicleInGarageForTradeInHourCB);
+            this.groupBox2.Controls.Add(this.UseGarageOnlyToTradeCB);
+            this.groupBox2.Controls.Add(this.label34);
+            this.groupBox2.Controls.Add(this.TradeVehicleHasBeenDeletedTB);
+            this.groupBox2.Controls.Add(this.label35);
+            this.groupBox2.Controls.Add(this.TradeVehicleWarningTB);
+            this.groupBox2.Controls.Add(this.label36);
+            this.groupBox2.Controls.Add(this.MaxVehicleStoredReachedTB);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.darkButton2);
             this.groupBox2.Controls.Add(this.darkButton1);
@@ -1121,10 +1167,118 @@ namespace DayZeEditor
             this.groupBox2.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox2.Location = new System.Drawing.Point(8, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(951, 452);
+            this.groupBox2.Size = new System.Drawing.Size(951, 577);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Garage Config";
+            // 
+            // MaxVehicleStoredNUD
+            // 
+            this.MaxVehicleStoredNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MaxVehicleStoredNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.MaxVehicleStoredNUD.Location = new System.Drawing.Point(124, 173);
+            this.MaxVehicleStoredNUD.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.MaxVehicleStoredNUD.Name = "MaxVehicleStoredNUD";
+            this.MaxVehicleStoredNUD.Size = new System.Drawing.Size(120, 20);
+            this.MaxVehicleStoredNUD.TabIndex = 79;
+            this.MaxVehicleStoredNUD.Tag = "ParkInCost";
+            this.MaxVehicleStoredNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MaxVehicleStoredNUD.ValueChanged += new System.EventHandler(this.MaxVehicleStoredNUD_ValueChanged);
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(19, 176);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(99, 13);
+            this.label37.TabIndex = 78;
+            this.label37.Text = "Max Vehicle Stored";
+            // 
+            // SavedVehicleInGarageForTradeInHourCB
+            // 
+            this.SavedVehicleInGarageForTradeInHourCB.AutoSize = true;
+            this.SavedVehicleInGarageForTradeInHourCB.Location = new System.Drawing.Point(20, 146);
+            this.SavedVehicleInGarageForTradeInHourCB.Name = "SavedVehicleInGarageForTradeInHourCB";
+            this.SavedVehicleInGarageForTradeInHourCB.Size = new System.Drawing.Size(232, 17);
+            this.SavedVehicleInGarageForTradeInHourCB.TabIndex = 77;
+            this.SavedVehicleInGarageForTradeInHourCB.Text = "Saved Vehicle In Garage For Trade In Hour";
+            this.SavedVehicleInGarageForTradeInHourCB.UseVisualStyleBackColor = true;
+            this.SavedVehicleInGarageForTradeInHourCB.CheckedChanged += new System.EventHandler(this.SavedVehicleInGarageForTradeInHourCB_CheckedChanged);
+            // 
+            // UseGarageOnlyToTradeCB
+            // 
+            this.UseGarageOnlyToTradeCB.AutoSize = true;
+            this.UseGarageOnlyToTradeCB.Location = new System.Drawing.Point(20, 29);
+            this.UseGarageOnlyToTradeCB.Name = "UseGarageOnlyToTradeCB";
+            this.UseGarageOnlyToTradeCB.Size = new System.Drawing.Size(154, 17);
+            this.UseGarageOnlyToTradeCB.TabIndex = 76;
+            this.UseGarageOnlyToTradeCB.Text = "Use Garage Only To Trade";
+            this.UseGarageOnlyToTradeCB.UseVisualStyleBackColor = true;
+            this.UseGarageOnlyToTradeCB.CheckedChanged += new System.EventHandler(this.UseGarageOnlyToTradeCB_CheckedChanged);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(15, 545);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(117, 13);
+            this.label34.TabIndex = 75;
+            this.label34.Text = "Trade as Been Deleted";
+            // 
+            // TradeVehicleHasBeenDeletedTB
+            // 
+            this.TradeVehicleHasBeenDeletedTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TradeVehicleHasBeenDeletedTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.TradeVehicleHasBeenDeletedTB.Location = new System.Drawing.Point(132, 542);
+            this.TradeVehicleHasBeenDeletedTB.Name = "TradeVehicleHasBeenDeletedTB";
+            this.TradeVehicleHasBeenDeletedTB.Size = new System.Drawing.Size(345, 20);
+            this.TradeVehicleHasBeenDeletedTB.TabIndex = 74;
+            this.TradeVehicleHasBeenDeletedTB.Tag = "ParkOutSuccess";
+            this.TradeVehicleHasBeenDeletedTB.TextChanged += new System.EventHandler(this.TradeVehicleHasBeenDeletedTB_TextChanged);
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(17, 519);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(78, 13);
+            this.label35.TabIndex = 73;
+            this.label35.Text = "Trade Warning";
+            // 
+            // TradeVehicleWarningTB
+            // 
+            this.TradeVehicleWarningTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TradeVehicleWarningTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.TradeVehicleWarningTB.Location = new System.Drawing.Point(132, 516);
+            this.TradeVehicleWarningTB.Name = "TradeVehicleWarningTB";
+            this.TradeVehicleWarningTB.Size = new System.Drawing.Size(345, 20);
+            this.TradeVehicleWarningTB.TabIndex = 72;
+            this.TradeVehicleWarningTB.Tag = "ParkOutFail";
+            this.TradeVehicleWarningTB.TextChanged += new System.EventHandler(this.TradeVehicleWarningTB_TextChanged);
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(17, 493);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(108, 13);
+            this.label36.TabIndex = 71;
+            this.label36.Text = "Max Stored Reached";
+            // 
+            // MaxVehicleStoredReachedTB
+            // 
+            this.MaxVehicleStoredReachedTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MaxVehicleStoredReachedTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.MaxVehicleStoredReachedTB.Location = new System.Drawing.Point(132, 490);
+            this.MaxVehicleStoredReachedTB.Name = "MaxVehicleStoredReachedTB";
+            this.MaxVehicleStoredReachedTB.Size = new System.Drawing.Size(345, 20);
+            this.MaxVehicleStoredReachedTB.TabIndex = 70;
+            this.MaxVehicleStoredReachedTB.Tag = "ParkInSuccess";
+            this.MaxVehicleStoredReachedTB.TextChanged += new System.EventHandler(this.MaxVehicleStoredReachedTB_TextChanged);
             // 
             // groupBox3
             // 
@@ -1558,7 +1712,7 @@ namespace DayZeEditor
             // 
             // darkButton2
             // 
-            this.darkButton2.Location = new System.Drawing.Point(383, 198);
+            this.darkButton2.Location = new System.Drawing.Point(383, 250);
             this.darkButton2.Name = "darkButton2";
             this.darkButton2.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton2.Size = new System.Drawing.Size(94, 23);
@@ -1568,7 +1722,7 @@ namespace DayZeEditor
             // 
             // darkButton1
             // 
-            this.darkButton1.Location = new System.Drawing.Point(266, 198);
+            this.darkButton1.Location = new System.Drawing.Point(266, 250);
             this.darkButton1.Name = "darkButton1";
             this.darkButton1.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton1.Size = new System.Drawing.Size(94, 23);
@@ -1587,22 +1741,20 @@ namespace DayZeEditor
             // 
             // GarageWhiteListLB
             // 
-            this.GarageWhiteListLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.GarageWhiteListLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.GarageWhiteListLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.GarageWhiteListLB.ForeColor = System.Drawing.SystemColors.Control;
             this.GarageWhiteListLB.FormattingEnabled = true;
             this.GarageWhiteListLB.Location = new System.Drawing.Point(266, 32);
             this.GarageWhiteListLB.Name = "GarageWhiteListLB";
-            this.GarageWhiteListLB.Size = new System.Drawing.Size(211, 160);
+            this.GarageWhiteListLB.Size = new System.Drawing.Size(211, 212);
             this.GarageWhiteListLB.TabIndex = 61;
             this.GarageWhiteListLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(17, 422);
+            this.label14.Location = new System.Drawing.Point(17, 467);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(93, 13);
             this.label14.TabIndex = 26;
@@ -1612,7 +1764,7 @@ namespace DayZeEditor
             // 
             this.ParkOutSuccessTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ParkOutSuccessTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ParkOutSuccessTB.Location = new System.Drawing.Point(132, 419);
+            this.ParkOutSuccessTB.Location = new System.Drawing.Point(132, 464);
             this.ParkOutSuccessTB.Name = "ParkOutSuccessTB";
             this.ParkOutSuccessTB.Size = new System.Drawing.Size(345, 20);
             this.ParkOutSuccessTB.TabIndex = 25;
@@ -1622,7 +1774,7 @@ namespace DayZeEditor
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(17, 396);
+            this.label13.Location = new System.Drawing.Point(17, 441);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(68, 13);
             this.label13.TabIndex = 24;
@@ -1632,7 +1784,7 @@ namespace DayZeEditor
             // 
             this.ParkOutFailTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ParkOutFailTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ParkOutFailTB.Location = new System.Drawing.Point(132, 393);
+            this.ParkOutFailTB.Location = new System.Drawing.Point(132, 438);
             this.ParkOutFailTB.Name = "ParkOutFailTB";
             this.ParkOutFailTB.Size = new System.Drawing.Size(345, 20);
             this.ParkOutFailTB.TabIndex = 23;
@@ -1642,7 +1794,7 @@ namespace DayZeEditor
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(17, 370);
+            this.label12.Location = new System.Drawing.Point(17, 415);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(85, 13);
             this.label12.TabIndex = 22;
@@ -1652,7 +1804,7 @@ namespace DayZeEditor
             // 
             this.ParkInSuccessTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ParkInSuccessTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ParkInSuccessTB.Location = new System.Drawing.Point(132, 367);
+            this.ParkInSuccessTB.Location = new System.Drawing.Point(132, 412);
             this.ParkInSuccessTB.Name = "ParkInSuccessTB";
             this.ParkInSuccessTB.Size = new System.Drawing.Size(345, 20);
             this.ParkInSuccessTB.TabIndex = 21;
@@ -1662,7 +1814,7 @@ namespace DayZeEditor
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(17, 344);
+            this.label11.Location = new System.Drawing.Point(17, 389);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(60, 13);
             this.label11.TabIndex = 20;
@@ -1672,7 +1824,7 @@ namespace DayZeEditor
             // 
             this.ParkInFailTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ParkInFailTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ParkInFailTB.Location = new System.Drawing.Point(132, 341);
+            this.ParkInFailTB.Location = new System.Drawing.Point(132, 386);
             this.ParkInFailTB.Name = "ParkInFailTB";
             this.ParkInFailTB.Size = new System.Drawing.Size(345, 20);
             this.ParkInFailTB.TabIndex = 19;
@@ -1682,7 +1834,7 @@ namespace DayZeEditor
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(17, 318);
+            this.label10.Location = new System.Drawing.Point(17, 363);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(86, 13);
             this.label10.TabIndex = 18;
@@ -1692,7 +1844,7 @@ namespace DayZeEditor
             // 
             this.CarHasMemberTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.CarHasMemberTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CarHasMemberTB.Location = new System.Drawing.Point(132, 315);
+            this.CarHasMemberTB.Location = new System.Drawing.Point(132, 360);
             this.CarHasMemberTB.Name = "CarHasMemberTB";
             this.CarHasMemberTB.Size = new System.Drawing.Size(345, 20);
             this.CarHasMemberTB.TabIndex = 17;
@@ -1702,7 +1854,7 @@ namespace DayZeEditor
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(17, 292);
+            this.label9.Location = new System.Drawing.Point(17, 337);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(93, 13);
             this.label9.TabIndex = 16;
@@ -1712,7 +1864,7 @@ namespace DayZeEditor
             // 
             this.NotRightToParkTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.NotRightToParkTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.NotRightToParkTB.Location = new System.Drawing.Point(132, 289);
+            this.NotRightToParkTB.Location = new System.Drawing.Point(132, 334);
             this.NotRightToParkTB.Name = "NotRightToParkTB";
             this.NotRightToParkTB.Size = new System.Drawing.Size(345, 20);
             this.NotRightToParkTB.TabIndex = 15;
@@ -1722,7 +1874,7 @@ namespace DayZeEditor
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(17, 266);
+            this.label8.Location = new System.Drawing.Point(17, 311);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(99, 13);
             this.label8.TabIndex = 14;
@@ -1732,7 +1884,7 @@ namespace DayZeEditor
             // 
             this.NotEnoughMoneyTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.NotEnoughMoneyTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.NotEnoughMoneyTB.Location = new System.Drawing.Point(132, 263);
+            this.NotEnoughMoneyTB.Location = new System.Drawing.Point(132, 308);
             this.NotEnoughMoneyTB.Name = "NotEnoughMoneyTB";
             this.NotEnoughMoneyTB.Size = new System.Drawing.Size(345, 20);
             this.NotEnoughMoneyTB.TabIndex = 13;
@@ -1742,7 +1894,7 @@ namespace DayZeEditor
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(17, 240);
+            this.label7.Location = new System.Drawing.Point(17, 285);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(109, 13);
             this.label7.TabIndex = 12;
@@ -1752,7 +1904,7 @@ namespace DayZeEditor
             // 
             this.ParkingNotAvailableTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ParkingNotAvailableTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ParkingNotAvailableTB.Location = new System.Drawing.Point(132, 237);
+            this.ParkingNotAvailableTB.Location = new System.Drawing.Point(132, 282);
             this.ParkingNotAvailableTB.Name = "ParkingNotAvailableTB";
             this.ParkingNotAvailableTB.Size = new System.Drawing.Size(345, 20);
             this.ParkingNotAvailableTB.TabIndex = 11;
@@ -1763,7 +1915,7 @@ namespace DayZeEditor
             // 
             this.ParkOutCostNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ParkOutCostNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ParkOutCostNUD.Location = new System.Drawing.Point(99, 185);
+            this.ParkOutCostNUD.Location = new System.Drawing.Point(124, 233);
             this.ParkOutCostNUD.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -1779,7 +1931,7 @@ namespace DayZeEditor
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(17, 186);
+            this.label5.Location = new System.Drawing.Point(23, 233);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 13);
             this.label5.TabIndex = 9;
@@ -1789,7 +1941,7 @@ namespace DayZeEditor
             // 
             this.ParkInCostNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ParkInCostNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ParkInCostNUD.Location = new System.Drawing.Point(99, 153);
+            this.ParkInCostNUD.Location = new System.Drawing.Point(124, 201);
             this.ParkInCostNUD.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -1805,7 +1957,7 @@ namespace DayZeEditor
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(17, 156);
+            this.label6.Location = new System.Drawing.Point(23, 203);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(62, 13);
             this.label6.TabIndex = 7;
@@ -1814,7 +1966,7 @@ namespace DayZeEditor
             // PayWithBankAccountCB
             // 
             this.PayWithBankAccountCB.AutoSize = true;
-            this.PayWithBankAccountCB.Location = new System.Drawing.Point(18, 127);
+            this.PayWithBankAccountCB.Location = new System.Drawing.Point(20, 259);
             this.PayWithBankAccountCB.Name = "PayWithBankAccountCB";
             this.PayWithBankAccountCB.Size = new System.Drawing.Size(140, 17);
             this.PayWithBankAccountCB.TabIndex = 4;
@@ -1825,7 +1977,7 @@ namespace DayZeEditor
             // SaveVehicleFuelCB
             // 
             this.SaveVehicleFuelCB.AutoSize = true;
-            this.SaveVehicleFuelCB.Location = new System.Drawing.Point(18, 104);
+            this.SaveVehicleFuelCB.Location = new System.Drawing.Point(20, 123);
             this.SaveVehicleFuelCB.Name = "SaveVehicleFuelCB";
             this.SaveVehicleFuelCB.Size = new System.Drawing.Size(112, 17);
             this.SaveVehicleFuelCB.TabIndex = 3;
@@ -1836,7 +1988,7 @@ namespace DayZeEditor
             // SaveVehicleHealthCB
             // 
             this.SaveVehicleHealthCB.AutoSize = true;
-            this.SaveVehicleHealthCB.Location = new System.Drawing.Point(18, 78);
+            this.SaveVehicleHealthCB.Location = new System.Drawing.Point(20, 97);
             this.SaveVehicleHealthCB.Name = "SaveVehicleHealthCB";
             this.SaveVehicleHealthCB.Size = new System.Drawing.Size(123, 17);
             this.SaveVehicleHealthCB.TabIndex = 2;
@@ -1847,7 +1999,7 @@ namespace DayZeEditor
             // SaveVehicleCargoCB
             // 
             this.SaveVehicleCargoCB.AutoSize = true;
-            this.SaveVehicleCargoCB.Location = new System.Drawing.Point(18, 54);
+            this.SaveVehicleCargoCB.Location = new System.Drawing.Point(20, 74);
             this.SaveVehicleCargoCB.Name = "SaveVehicleCargoCB";
             this.SaveVehicleCargoCB.Size = new System.Drawing.Size(120, 17);
             this.SaveVehicleCargoCB.TabIndex = 1;
@@ -1858,7 +2010,7 @@ namespace DayZeEditor
             // VehicleMustHaveLockCB
             // 
             this.VehicleMustHaveLockCB.AutoSize = true;
-            this.VehicleMustHaveLockCB.Location = new System.Drawing.Point(18, 31);
+            this.VehicleMustHaveLockCB.Location = new System.Drawing.Point(20, 51);
             this.VehicleMustHaveLockCB.Name = "VehicleMustHaveLockCB";
             this.VehicleMustHaveLockCB.Size = new System.Drawing.Size(143, 17);
             this.VehicleMustHaveLockCB.TabIndex = 0;
@@ -2785,7 +2937,7 @@ namespace DayZeEditor
             this.TraderNPCPositionZ.ForeColor = System.Drawing.SystemColors.Control;
             this.TraderNPCPositionZ.Location = new System.Drawing.Point(235, 249);
             this.TraderNPCPositionZ.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -2802,7 +2954,7 @@ namespace DayZeEditor
             this.TraderNPCPositionX.ForeColor = System.Drawing.SystemColors.Control;
             this.TraderNPCPositionX.Location = new System.Drawing.Point(235, 197);
             this.TraderNPCPositionX.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -2819,7 +2971,7 @@ namespace DayZeEditor
             this.TraderNPCPositionY.ForeColor = System.Drawing.SystemColors.Control;
             this.TraderNPCPositionY.Location = new System.Drawing.Point(235, 223);
             this.TraderNPCPositionY.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -4630,6 +4782,7 @@ namespace DayZeEditor
             this.tabPage2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxVehicleStoredNUD)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown10)).EndInit();
@@ -5042,5 +5195,17 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox HideGarageBtnCB;
         private System.Windows.Forms.CheckBox HideInsuranceBtnCB;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
+        private System.Windows.Forms.TextBox TheAmountErrorTransferAccountTB;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.NumericUpDown MaxVehicleStoredNUD;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.CheckBox SavedVehicleInGarageForTradeInHourCB;
+        private System.Windows.Forms.CheckBox UseGarageOnlyToTradeCB;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.TextBox TradeVehicleHasBeenDeletedTB;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.TextBox TradeVehicleWarningTB;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox MaxVehicleStoredReachedTB;
     }
 }

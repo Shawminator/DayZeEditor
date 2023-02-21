@@ -8588,6 +8588,7 @@ namespace DayZeEditor
             this.SafeRaidToolsLB.Size = new System.Drawing.Size(240, 108);
             this.SafeRaidToolsLB.TabIndex = 111;
             this.SafeRaidToolsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.SafeRaidToolsLB.SelectedIndexChanged += new System.EventHandler(this.SafeRaidToolsLB_SelectedIndexChanged);
             // 
             // darkLabel61
             // 

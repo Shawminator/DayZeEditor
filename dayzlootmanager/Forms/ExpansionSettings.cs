@@ -2940,6 +2940,10 @@ namespace DayZeEditor
             ReputationOnKillAINUD.Value = HardLineSettings.ReputationOnKillAI;
 
             HardlinePlayerDataPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Hardline\\PlayerData";
+            if(!Directory.Exists(HardlinePlayerDataPath))
+            {
+                Directory.CreateDirectory(HardlinePlayerDataPath);
+            }
             ExpansionHardlinePlayerDataList = new ExpansionHardlinePlayerDataList(HardlinePlayerDataPath);
             setupExpansionHardlinePlayerData();
 
@@ -3020,7 +3024,6 @@ namespace DayZeEditor
                     if (!HardLineSettings.getlist(Type).Contains(l))
                     {
                         HardLineSettings.getlist(Type).Add(l);
-
                     }
                     HardLineSettings.isDirty = true;
                 }
@@ -3041,7 +3044,7 @@ namespace DayZeEditor
             useraction = false;
 
             treeViewMS2.Nodes.Clear();
-            TreeNode root = new TreeNode("Quest Player Data")
+            TreeNode root = new TreeNode("Hardline Player Data")
             {
                 Tag = "Parent"
             };
@@ -7110,7 +7113,10 @@ namespace DayZeEditor
             darkLabel252.Text = "UTC Time : " + TimeZoneInfo.ConvertTimeToUtc(localtime, TimeZoneInfo.Local).ToString();
         }
 
+        private void SafeRaidToolsLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
     }
     public class NullToEmptyGearConverter : JsonConverter<Gear>
     {

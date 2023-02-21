@@ -475,6 +475,7 @@ namespace DayZeEditor
             "Legs",
             "Mask",
             "Melee",
+            "Shoulder",
             "Vest"});
             this.ItemAttachmentSlotNameCB.Location = new System.Drawing.Point(19, 36);
             this.ItemAttachmentSlotNameCB.Name = "ItemAttachmentSlotNameCB";

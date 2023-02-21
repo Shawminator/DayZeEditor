@@ -1,0 +1,8 @@
+﻿West
+East
+Raiders
+Mercenaries
+Civilian
+Passive
+Guards
+Shamans

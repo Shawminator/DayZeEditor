@@ -56,6 +56,14 @@ namespace DayZeLib
         [JsonIgnore]
         public BindingList<string> ExoticItems { get; set; }
 
+        public HardLineSettings()
+        {
+            m_Version = CurrentVersion;
+            ItemRarity = new Dictionary<string, int>();
+            isDirty = true;
+
+        }
+
         public bool checkver()
         {
             if (m_Version != CurrentVersion)
@@ -68,14 +76,17 @@ namespace DayZeLib
         }
         public void ConvertDictionarytoLevels()
         {
-            PoorItems = new BindingList<string>();
-            CommonItems = new BindingList<string>();
-            UncommonItems = new BindingList<string>();
-            RareItems = new BindingList<string>();
-            EpicItems = new BindingList<string>();
-            LegendaryItems = new BindingList<string>();
-            MythicItems = new BindingList<string>();
-            ExoticItems = new BindingList<string>();
+            List<string> InitialPoorItems = new List<string>();
+            List<string> InitialCommonItems = new List<string>();
+            List<string> InitialUncommonItems = new List<string>();
+            List<string> InitialRareItems = new List<string>();
+            List<string> InitialEpicItems = new List<string>();
+            List<string> InitialLegendaryItems = new List<string>();
+            List<string> InitialMythicItems = new List<string>();
+            List<string> InitialExoticItems = new List<string>();
+
+            if (ItemRarity == null)
+                ItemRarity = new Dictionary<string, int>();
 
             foreach (KeyValuePair<string, int> item in ItemRarity)
             {
@@ -89,32 +100,53 @@ namespace DayZeLib
                 switch (item.Value)
                 {
                     case 1:
-                        PoorItems.Add(useitem);
+                        InitialPoorItems.Add(useitem);
                         break;
                     case 2:
-                        CommonItems.Add(useitem);
+                        InitialCommonItems.Add(useitem);
                         break;
                     case 3:
-                        UncommonItems.Add(useitem);
+                        InitialUncommonItems.Add(useitem);
                         break;
                     case 4:
-                        RareItems.Add(useitem);
+                        InitialRareItems.Add(useitem);
                         break;
                     case 5:
-                        EpicItems.Add(useitem);
+                        InitialEpicItems.Add(useitem);
                         break;
                     case 6:
-                        LegendaryItems.Add(useitem);
+                        InitialLegendaryItems.Add(useitem);
                         break;
                     case 7:
-                        MythicItems.Add(useitem);
+                        InitialMythicItems.Add(useitem);
                         break;
                     case 8:
-                        ExoticItems.Add(useitem);
+                        InitialExoticItems.Add(useitem);
                         break;
 
                 }
             }
+
+            InitialPoorItems.Sort();
+            InitialCommonItems.Sort();
+            InitialUncommonItems.Sort();
+            InitialRareItems.Sort();
+            InitialEpicItems.Sort();
+            InitialLegendaryItems.Sort();
+            InitialMythicItems.Sort();
+            InitialExoticItems.Sort();
+
+            PoorItems = new BindingList<string>(InitialPoorItems);
+            CommonItems = new BindingList<string>(InitialCommonItems);
+            UncommonItems = new BindingList<string>(InitialUncommonItems);
+            RareItems = new BindingList<string>(InitialRareItems);
+            EpicItems = new BindingList<string>(InitialEpicItems);
+            LegendaryItems = new BindingList<string>(InitialLegendaryItems);
+            MythicItems = new BindingList<string>(InitialMythicItems);
+            ExoticItems = new BindingList<string>(InitialExoticItems);
+
+
+
         }
         public void convertliststoDict()
         {

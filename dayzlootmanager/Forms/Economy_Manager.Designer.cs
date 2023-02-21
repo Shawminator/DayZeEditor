@@ -486,6 +486,12 @@ namespace DayZeEditor
             this.PresetAttachmentsItemsLB = new System.Windows.Forms.ListBox();
             this.CFGGameplay = new System.Windows.Forms.TabPage();
             this.groupBox27 = new System.Windows.Forms.GroupBox();
+            this.wetnessWeightModifiers5NUD = new System.Windows.Forms.NumericUpDown();
+            this.wetnessWeightModifiers4NUD = new System.Windows.Forms.NumericUpDown();
+            this.wetnessWeightModifiers3NUD = new System.Windows.Forms.NumericUpDown();
+            this.wetnessWeightModifiers2NUD = new System.Windows.Forms.NumericUpDown();
+            this.label140 = new System.Windows.Forms.Label();
+            this.wetnessWeightModifiers1NUD = new System.Windows.Forms.NumericUpDown();
             this.DecMaxNUD = new System.Windows.Forms.NumericUpDown();
             this.DecMinNUD = new System.Windows.Forms.NumericUpDown();
             this.label110 = new System.Windows.Forms.Label();
@@ -563,6 +569,7 @@ namespace DayZeEditor
             this.disableIsCollidingPlayerCheckCB = new System.Windows.Forms.CheckBox();
             this.disableIsCollidingBBoxCheckCB = new System.Windows.Forms.CheckBox();
             this.groupBox25 = new System.Windows.Forms.GroupBox();
+            this.allowStaminaAffectInertiaCB = new System.Windows.Forms.CheckBox();
             this.groupBox61 = new System.Windows.Forms.GroupBox();
             this.shockDepletionSpeedNUD = new System.Windows.Forms.NumericUpDown();
             this.label139 = new System.Windows.Forms.Label();
@@ -571,6 +578,7 @@ namespace DayZeEditor
             this.staminaDepletionSpeedNUD = new System.Windows.Forms.NumericUpDown();
             this.label138 = new System.Windows.Forms.Label();
             this.groupBox60 = new System.Windows.Forms.GroupBox();
+            this.label146 = new System.Windows.Forms.Label();
             this.rotationSpeedSprintNUD = new System.Windows.Forms.NumericUpDown();
             this.label133 = new System.Windows.Forms.Label();
             this.timeToStrafeSprintNUD = new System.Windows.Forms.NumericUpDown();
@@ -588,6 +596,16 @@ namespace DayZeEditor
             this.shockRefillSpeedConsciousNUD = new System.Windows.Forms.NumericUpDown();
             this.label105 = new System.Windows.Forms.Label();
             this.groupBox26 = new System.Windows.Forms.GroupBox();
+            this.label145 = new System.Windows.Forms.Label();
+            this.holdBreathStaminaModifierNUD = new System.Windows.Forms.NumericUpDown();
+            this.label141 = new System.Windows.Forms.Label();
+            this.obstacleTraversalStaminaModifierNUD = new System.Windows.Forms.NumericUpDown();
+            this.meleeStaminaModifierNUD = new System.Windows.Forms.NumericUpDown();
+            this.label142 = new System.Windows.Forms.Label();
+            this.sprintLadderStaminaModifierNUD = new System.Windows.Forms.NumericUpDown();
+            this.label143 = new System.Windows.Forms.Label();
+            this.sprintSwimmingStaminaModifierNUD = new System.Windows.Forms.NumericUpDown();
+            this.label144 = new System.Windows.Forms.Label();
             this.staminaMinCapNUD = new System.Windows.Forms.NumericUpDown();
             this.label51 = new System.Windows.Forms.Label();
             this.staminaKgToStaminaPercentPenaltyNUD = new System.Windows.Forms.NumericUpDown();
@@ -987,6 +1005,11 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.RandomPresetAttachmentChanceNUD)).BeginInit();
             this.CFGGameplay.SuspendLayout();
             this.groupBox27.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.wetnessWeightModifiers5NUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wetnessWeightModifiers4NUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wetnessWeightModifiers3NUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wetnessWeightModifiers2NUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wetnessWeightModifiers1NUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DecMaxNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DecMinNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NovMaxNUD)).BeginInit();
@@ -1037,6 +1060,11 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.shockRefillSpeedUnconsciousNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.shockRefillSpeedConsciousNUD)).BeginInit();
             this.groupBox26.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.holdBreathStaminaModifierNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.obstacleTraversalStaminaModifierNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.meleeStaminaModifierNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sprintLadderStaminaModifierNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sprintSwimmingStaminaModifierNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.staminaMinCapNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.staminaKgToStaminaPercentPenaltyNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.staminaMaxNUD)).BeginInit();
@@ -2698,7 +2726,7 @@ namespace DayZeEditor
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton2.Size = new System.Drawing.Size(62, 42);
             this.toolStripButton2.Text = "Find Next";
             this.toolStripButton2.Visible = false;
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
@@ -6896,6 +6924,12 @@ namespace DayZeEditor
             // 
             // groupBox27
             // 
+            this.groupBox27.Controls.Add(this.wetnessWeightModifiers5NUD);
+            this.groupBox27.Controls.Add(this.wetnessWeightModifiers4NUD);
+            this.groupBox27.Controls.Add(this.wetnessWeightModifiers3NUD);
+            this.groupBox27.Controls.Add(this.wetnessWeightModifiers2NUD);
+            this.groupBox27.Controls.Add(this.label140);
+            this.groupBox27.Controls.Add(this.wetnessWeightModifiers1NUD);
             this.groupBox27.Controls.Add(this.DecMaxNUD);
             this.groupBox27.Controls.Add(this.DecMinNUD);
             this.groupBox27.Controls.Add(this.label110);
@@ -6937,12 +6971,107 @@ namespace DayZeEditor
             this.groupBox27.Controls.Add(this.lightingConfigNUD);
             this.groupBox27.Controls.Add(this.label52);
             this.groupBox27.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox27.Location = new System.Drawing.Point(321, 9);
+            this.groupBox27.Location = new System.Drawing.Point(620, 12);
             this.groupBox27.Name = "groupBox27";
-            this.groupBox27.Size = new System.Drawing.Size(192, 376);
+            this.groupBox27.Size = new System.Drawing.Size(199, 535);
             this.groupBox27.TabIndex = 81;
             this.groupBox27.TabStop = false;
             this.groupBox27.Text = "Worlds Data";
+            // 
+            // wetnessWeightModifiers5NUD
+            // 
+            this.wetnessWeightModifiers5NUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.wetnessWeightModifiers5NUD.DecimalPlaces = 1;
+            this.wetnessWeightModifiers5NUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.wetnessWeightModifiers5NUD.Location = new System.Drawing.Point(39, 500);
+            this.wetnessWeightModifiers5NUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.wetnessWeightModifiers5NUD.Name = "wetnessWeightModifiers5NUD";
+            this.wetnessWeightModifiers5NUD.Size = new System.Drawing.Size(68, 20);
+            this.wetnessWeightModifiers5NUD.TabIndex = 114;
+            this.wetnessWeightModifiers5NUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.wetnessWeightModifiers5NUD.ValueChanged += new System.EventHandler(this.wetnessWeightModifiers_ValueChanged);
+            // 
+            // wetnessWeightModifiers4NUD
+            // 
+            this.wetnessWeightModifiers4NUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.wetnessWeightModifiers4NUD.DecimalPlaces = 1;
+            this.wetnessWeightModifiers4NUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.wetnessWeightModifiers4NUD.Location = new System.Drawing.Point(39, 474);
+            this.wetnessWeightModifiers4NUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.wetnessWeightModifiers4NUD.Name = "wetnessWeightModifiers4NUD";
+            this.wetnessWeightModifiers4NUD.Size = new System.Drawing.Size(68, 20);
+            this.wetnessWeightModifiers4NUD.TabIndex = 113;
+            this.wetnessWeightModifiers4NUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.wetnessWeightModifiers4NUD.ValueChanged += new System.EventHandler(this.wetnessWeightModifiers_ValueChanged);
+            // 
+            // wetnessWeightModifiers3NUD
+            // 
+            this.wetnessWeightModifiers3NUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.wetnessWeightModifiers3NUD.DecimalPlaces = 1;
+            this.wetnessWeightModifiers3NUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.wetnessWeightModifiers3NUD.Location = new System.Drawing.Point(39, 448);
+            this.wetnessWeightModifiers3NUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.wetnessWeightModifiers3NUD.Name = "wetnessWeightModifiers3NUD";
+            this.wetnessWeightModifiers3NUD.Size = new System.Drawing.Size(68, 20);
+            this.wetnessWeightModifiers3NUD.TabIndex = 112;
+            this.wetnessWeightModifiers3NUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.wetnessWeightModifiers3NUD.ValueChanged += new System.EventHandler(this.wetnessWeightModifiers_ValueChanged);
+            // 
+            // wetnessWeightModifiers2NUD
+            // 
+            this.wetnessWeightModifiers2NUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.wetnessWeightModifiers2NUD.DecimalPlaces = 1;
+            this.wetnessWeightModifiers2NUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.wetnessWeightModifiers2NUD.Location = new System.Drawing.Point(39, 422);
+            this.wetnessWeightModifiers2NUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.wetnessWeightModifiers2NUD.Name = "wetnessWeightModifiers2NUD";
+            this.wetnessWeightModifiers2NUD.Size = new System.Drawing.Size(68, 20);
+            this.wetnessWeightModifiers2NUD.TabIndex = 111;
+            this.wetnessWeightModifiers2NUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.wetnessWeightModifiers2NUD.ValueChanged += new System.EventHandler(this.wetnessWeightModifiers_ValueChanged);
+            // 
+            // label140
+            // 
+            this.label140.AutoSize = true;
+            this.label140.ForeColor = System.Drawing.SystemColors.Control;
+            this.label140.Location = new System.Drawing.Point(7, 379);
+            this.label140.Name = "label140";
+            this.label140.Size = new System.Drawing.Size(131, 13);
+            this.label140.TabIndex = 110;
+            this.label140.Text = "Wetness Weight Modifiers";
+            // 
+            // wetnessWeightModifiers1NUD
+            // 
+            this.wetnessWeightModifiers1NUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.wetnessWeightModifiers1NUD.DecimalPlaces = 1;
+            this.wetnessWeightModifiers1NUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.wetnessWeightModifiers1NUD.Location = new System.Drawing.Point(39, 396);
+            this.wetnessWeightModifiers1NUD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.wetnessWeightModifiers1NUD.Name = "wetnessWeightModifiers1NUD";
+            this.wetnessWeightModifiers1NUD.Size = new System.Drawing.Size(68, 20);
+            this.wetnessWeightModifiers1NUD.TabIndex = 109;
+            this.wetnessWeightModifiers1NUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.wetnessWeightModifiers1NUD.ValueChanged += new System.EventHandler(this.wetnessWeightModifiers_ValueChanged);
             // 
             // DecMaxNUD
             // 
@@ -7525,9 +7654,9 @@ namespace DayZeEditor
             this.groupBox59.Controls.Add(this.ignoreNavItemsOwnershipCB);
             this.groupBox59.Controls.Add(this.ignoreMapOwnershipCB);
             this.groupBox59.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox59.Location = new System.Drawing.Point(321, 481);
+            this.groupBox59.Location = new System.Drawing.Point(210, 460);
             this.groupBox59.Name = "groupBox59";
-            this.groupBox59.Size = new System.Drawing.Size(185, 111);
+            this.groupBox59.Size = new System.Drawing.Size(396, 87);
             this.groupBox59.TabIndex = 84;
             this.groupBox59.TabStop = false;
             this.groupBox59.Text = "Map Data";
@@ -7535,22 +7664,24 @@ namespace DayZeEditor
             // displayNavInfoCB
             // 
             this.displayNavInfoCB.AutoSize = true;
-            this.displayNavInfoCB.Location = new System.Drawing.Point(11, 84);
+            this.displayNavInfoCB.Location = new System.Drawing.Point(191, 38);
             this.displayNavInfoCB.Name = "displayNavInfoCB";
             this.displayNavInfoCB.Size = new System.Drawing.Size(102, 17);
             this.displayNavInfoCB.TabIndex = 3;
             this.displayNavInfoCB.Text = "display Nav Info";
             this.displayNavInfoCB.UseVisualStyleBackColor = true;
+            this.displayNavInfoCB.CheckedChanged += new System.EventHandler(this.displayNavInfoCB_CheckedChanged);
             // 
             // displayPlayerPositionCB
             // 
             this.displayPlayerPositionCB.AutoSize = true;
-            this.displayPlayerPositionCB.Location = new System.Drawing.Point(11, 61);
+            this.displayPlayerPositionCB.Location = new System.Drawing.Point(191, 15);
             this.displayPlayerPositionCB.Name = "displayPlayerPositionCB";
             this.displayPlayerPositionCB.Size = new System.Drawing.Size(130, 17);
             this.displayPlayerPositionCB.TabIndex = 2;
             this.displayPlayerPositionCB.Text = "display Player Position";
             this.displayPlayerPositionCB.UseVisualStyleBackColor = true;
+            this.displayPlayerPositionCB.CheckedChanged += new System.EventHandler(this.displayPlayerPositionCB_CheckedChanged);
             // 
             // ignoreNavItemsOwnershipCB
             // 
@@ -7561,6 +7692,7 @@ namespace DayZeEditor
             this.ignoreNavItemsOwnershipCB.TabIndex = 1;
             this.ignoreNavItemsOwnershipCB.Text = "ignore Nav Items Ownership";
             this.ignoreNavItemsOwnershipCB.UseVisualStyleBackColor = true;
+            this.ignoreNavItemsOwnershipCB.CheckedChanged += new System.EventHandler(this.ignoreNavItemsOwnershipCB_CheckedChanged);
             // 
             // ignoreMapOwnershipCB
             // 
@@ -7571,13 +7703,14 @@ namespace DayZeEditor
             this.ignoreMapOwnershipCB.TabIndex = 0;
             this.ignoreMapOwnershipCB.Text = "ignore Map Ownership";
             this.ignoreMapOwnershipCB.UseVisualStyleBackColor = true;
+            this.ignoreMapOwnershipCB.CheckedChanged += new System.EventHandler(this.ignoreMapOwnershipCB_CheckedChanged);
             // 
             // groupBox31
             // 
             this.groupBox31.Controls.Add(this.use3DMapCB);
             this.groupBox31.Controls.Add(this.groupBox32);
             this.groupBox31.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox31.Location = new System.Drawing.Point(761, 9);
+            this.groupBox31.Location = new System.Drawing.Point(1067, 12);
             this.groupBox31.Name = "groupBox31";
             this.groupBox31.Size = new System.Drawing.Size(273, 286);
             this.groupBox31.TabIndex = 83;
@@ -7768,7 +7901,7 @@ namespace DayZeEditor
             this.groupBox28.Controls.Add(this.groupBox30);
             this.groupBox28.Controls.Add(this.groupBox29);
             this.groupBox28.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox28.Location = new System.Drawing.Point(519, 9);
+            this.groupBox28.Location = new System.Drawing.Point(825, 9);
             this.groupBox28.Name = "groupBox28";
             this.groupBox28.Size = new System.Drawing.Size(236, 378);
             this.groupBox28.TabIndex = 82;
@@ -7953,6 +8086,7 @@ namespace DayZeEditor
             // 
             // groupBox25
             // 
+            this.groupBox25.Controls.Add(this.allowStaminaAffectInertiaCB);
             this.groupBox25.Controls.Add(this.groupBox61);
             this.groupBox25.Controls.Add(this.groupBox60);
             this.groupBox25.Controls.Add(this.groupBox56);
@@ -7961,10 +8095,20 @@ namespace DayZeEditor
             this.groupBox25.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox25.Location = new System.Drawing.Point(3, 29);
             this.groupBox25.Name = "groupBox25";
-            this.groupBox25.Size = new System.Drawing.Size(307, 580);
+            this.groupBox25.Size = new System.Drawing.Size(603, 425);
             this.groupBox25.TabIndex = 81;
             this.groupBox25.TabStop = false;
             this.groupBox25.Text = "Player Data";
+            // 
+            // allowStaminaAffectInertiaCB
+            // 
+            this.allowStaminaAffectInertiaCB.AutoSize = true;
+            this.allowStaminaAffectInertiaCB.Location = new System.Drawing.Point(513, 370);
+            this.allowStaminaAffectInertiaCB.Name = "allowStaminaAffectInertiaCB";
+            this.allowStaminaAffectInertiaCB.Size = new System.Drawing.Size(15, 14);
+            this.allowStaminaAffectInertiaCB.TabIndex = 78;
+            this.allowStaminaAffectInertiaCB.UseVisualStyleBackColor = true;
+            this.allowStaminaAffectInertiaCB.CheckedChanged += new System.EventHandler(this.allowStaminaAffectInertiaCB_CheckedChanged);
             // 
             // groupBox61
             // 
@@ -7975,7 +8119,7 @@ namespace DayZeEditor
             this.groupBox61.Controls.Add(this.staminaDepletionSpeedNUD);
             this.groupBox61.Controls.Add(this.label138);
             this.groupBox61.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox61.Location = new System.Drawing.Point(6, 479);
+            this.groupBox61.Location = new System.Drawing.Point(6, 322);
             this.groupBox61.Name = "groupBox61";
             this.groupBox61.Size = new System.Drawing.Size(295, 97);
             this.groupBox61.TabIndex = 72;
@@ -7997,6 +8141,7 @@ namespace DayZeEditor
             this.shockDepletionSpeedNUD.Size = new System.Drawing.Size(68, 20);
             this.shockDepletionSpeedNUD.TabIndex = 72;
             this.shockDepletionSpeedNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.shockDepletionSpeedNUD.ValueChanged += new System.EventHandler(this.shockDepletionSpeedNUD_ValueChanged);
             // 
             // label139
             // 
@@ -8023,6 +8168,7 @@ namespace DayZeEditor
             this.healthDepletionSpeedNUD.Size = new System.Drawing.Size(68, 20);
             this.healthDepletionSpeedNUD.TabIndex = 70;
             this.healthDepletionSpeedNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.healthDepletionSpeedNUD.ValueChanged += new System.EventHandler(this.healthDepletionSpeedNUD_ValueChanged);
             // 
             // label132
             // 
@@ -8049,6 +8195,7 @@ namespace DayZeEditor
             this.staminaDepletionSpeedNUD.Size = new System.Drawing.Size(68, 20);
             this.staminaDepletionSpeedNUD.TabIndex = 68;
             this.staminaDepletionSpeedNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.staminaDepletionSpeedNUD.ValueChanged += new System.EventHandler(this.staminaDepletionSpeedNUD_ValueChanged);
             // 
             // label138
             // 
@@ -8062,6 +8209,7 @@ namespace DayZeEditor
             // 
             // groupBox60
             // 
+            this.groupBox60.Controls.Add(this.label146);
             this.groupBox60.Controls.Add(this.rotationSpeedSprintNUD);
             this.groupBox60.Controls.Add(this.label133);
             this.groupBox60.Controls.Add(this.timeToStrafeSprintNUD);
@@ -8073,19 +8221,29 @@ namespace DayZeEditor
             this.groupBox60.Controls.Add(this.timeToStrafeJogNUD);
             this.groupBox60.Controls.Add(this.label137);
             this.groupBox60.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox60.Location = new System.Drawing.Point(6, 319);
+            this.groupBox60.Location = new System.Drawing.Point(307, 219);
             this.groupBox60.Name = "groupBox60";
-            this.groupBox60.Size = new System.Drawing.Size(295, 154);
+            this.groupBox60.Size = new System.Drawing.Size(284, 200);
             this.groupBox60.TabIndex = 77;
             this.groupBox60.TabStop = false;
             this.groupBox60.Text = "Movement Data";
+            // 
+            // label146
+            // 
+            this.label146.AutoSize = true;
+            this.label146.ForeColor = System.Drawing.SystemColors.Control;
+            this.label146.Location = new System.Drawing.Point(5, 150);
+            this.label146.Name = "label146";
+            this.label146.Size = new System.Drawing.Size(136, 13);
+            this.label146.TabIndex = 77;
+            this.label146.Text = "Allow Stamina Affect Inertia";
             // 
             // rotationSpeedSprintNUD
             // 
             this.rotationSpeedSprintNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.rotationSpeedSprintNUD.DecimalPlaces = 2;
             this.rotationSpeedSprintNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.rotationSpeedSprintNUD.Location = new System.Drawing.Point(214, 123);
+            this.rotationSpeedSprintNUD.Location = new System.Drawing.Point(206, 125);
             this.rotationSpeedSprintNUD.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -8095,6 +8253,7 @@ namespace DayZeEditor
             this.rotationSpeedSprintNUD.Size = new System.Drawing.Size(68, 20);
             this.rotationSpeedSprintNUD.TabIndex = 76;
             this.rotationSpeedSprintNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.rotationSpeedSprintNUD.ValueChanged += new System.EventHandler(this.rotationSpeedSprintNUD_ValueChanged);
             // 
             // label133
             // 
@@ -8111,7 +8270,7 @@ namespace DayZeEditor
             this.timeToStrafeSprintNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.timeToStrafeSprintNUD.DecimalPlaces = 2;
             this.timeToStrafeSprintNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.timeToStrafeSprintNUD.Location = new System.Drawing.Point(214, 97);
+            this.timeToStrafeSprintNUD.Location = new System.Drawing.Point(206, 99);
             this.timeToStrafeSprintNUD.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -8121,6 +8280,7 @@ namespace DayZeEditor
             this.timeToStrafeSprintNUD.Size = new System.Drawing.Size(68, 20);
             this.timeToStrafeSprintNUD.TabIndex = 74;
             this.timeToStrafeSprintNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.timeToStrafeSprintNUD.ValueChanged += new System.EventHandler(this.timeToStrafeSprintNUD_ValueChanged);
             // 
             // label134
             // 
@@ -8137,7 +8297,7 @@ namespace DayZeEditor
             this.timeToSprintNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.timeToSprintNUD.DecimalPlaces = 2;
             this.timeToSprintNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.timeToSprintNUD.Location = new System.Drawing.Point(214, 71);
+            this.timeToSprintNUD.Location = new System.Drawing.Point(206, 73);
             this.timeToSprintNUD.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -8147,6 +8307,7 @@ namespace DayZeEditor
             this.timeToSprintNUD.Size = new System.Drawing.Size(68, 20);
             this.timeToSprintNUD.TabIndex = 72;
             this.timeToSprintNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.timeToSprintNUD.ValueChanged += new System.EventHandler(this.timeToSprintNUD_ValueChanged);
             // 
             // label135
             // 
@@ -8163,7 +8324,7 @@ namespace DayZeEditor
             this.rotationSpeedJogNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.rotationSpeedJogNUD.DecimalPlaces = 2;
             this.rotationSpeedJogNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.rotationSpeedJogNUD.Location = new System.Drawing.Point(214, 45);
+            this.rotationSpeedJogNUD.Location = new System.Drawing.Point(206, 47);
             this.rotationSpeedJogNUD.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -8173,6 +8334,7 @@ namespace DayZeEditor
             this.rotationSpeedJogNUD.Size = new System.Drawing.Size(68, 20);
             this.rotationSpeedJogNUD.TabIndex = 70;
             this.rotationSpeedJogNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.rotationSpeedJogNUD.ValueChanged += new System.EventHandler(this.rotationSpeedJogNUD_ValueChanged);
             // 
             // label136
             // 
@@ -8189,7 +8351,7 @@ namespace DayZeEditor
             this.timeToStrafeJogNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.timeToStrafeJogNUD.DecimalPlaces = 2;
             this.timeToStrafeJogNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.timeToStrafeJogNUD.Location = new System.Drawing.Point(214, 19);
+            this.timeToStrafeJogNUD.Location = new System.Drawing.Point(206, 21);
             this.timeToStrafeJogNUD.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -8199,6 +8361,7 @@ namespace DayZeEditor
             this.timeToStrafeJogNUD.Size = new System.Drawing.Size(68, 20);
             this.timeToStrafeJogNUD.TabIndex = 68;
             this.timeToStrafeJogNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.timeToStrafeJogNUD.ValueChanged += new System.EventHandler(this.timeToStrafeJogNUD_ValueChanged);
             // 
             // label137
             // 
@@ -8292,6 +8455,16 @@ namespace DayZeEditor
             // 
             // groupBox26
             // 
+            this.groupBox26.Controls.Add(this.label145);
+            this.groupBox26.Controls.Add(this.holdBreathStaminaModifierNUD);
+            this.groupBox26.Controls.Add(this.label141);
+            this.groupBox26.Controls.Add(this.obstacleTraversalStaminaModifierNUD);
+            this.groupBox26.Controls.Add(this.meleeStaminaModifierNUD);
+            this.groupBox26.Controls.Add(this.label142);
+            this.groupBox26.Controls.Add(this.sprintLadderStaminaModifierNUD);
+            this.groupBox26.Controls.Add(this.label143);
+            this.groupBox26.Controls.Add(this.sprintSwimmingStaminaModifierNUD);
+            this.groupBox26.Controls.Add(this.label144);
             this.groupBox26.Controls.Add(this.staminaMinCapNUD);
             this.groupBox26.Controls.Add(this.label51);
             this.groupBox26.Controls.Add(this.staminaKgToStaminaPercentPenaltyNUD);
@@ -8307,10 +8480,145 @@ namespace DayZeEditor
             this.groupBox26.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox26.Location = new System.Drawing.Point(6, 37);
             this.groupBox26.Name = "groupBox26";
-            this.groupBox26.Size = new System.Drawing.Size(295, 176);
+            this.groupBox26.Size = new System.Drawing.Size(585, 176);
             this.groupBox26.TabIndex = 1;
             this.groupBox26.TabStop = false;
             this.groupBox26.Text = "Stamina";
+            // 
+            // label145
+            // 
+            this.label145.AutoSize = true;
+            this.label145.ForeColor = System.Drawing.SystemColors.Control;
+            this.label145.Location = new System.Drawing.Point(298, 99);
+            this.label145.Name = "label145";
+            this.label145.Size = new System.Drawing.Size(177, 13);
+            this.label145.TabIndex = 86;
+            this.label145.Text = "Obstacle Traversal Stamina Modifier";
+            // 
+            // holdBreathStaminaModifierNUD
+            // 
+            this.holdBreathStaminaModifierNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.holdBreathStaminaModifierNUD.DecimalPlaces = 2;
+            this.holdBreathStaminaModifierNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.holdBreathStaminaModifierNUD.Location = new System.Drawing.Point(507, 123);
+            this.holdBreathStaminaModifierNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.holdBreathStaminaModifierNUD.Name = "holdBreathStaminaModifierNUD";
+            this.holdBreathStaminaModifierNUD.Size = new System.Drawing.Size(68, 20);
+            this.holdBreathStaminaModifierNUD.TabIndex = 85;
+            this.holdBreathStaminaModifierNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.holdBreathStaminaModifierNUD.ValueChanged += new System.EventHandler(this.holdBreathStaminaModifierNUD_ValueChanged);
+            // 
+            // label141
+            // 
+            this.label141.AutoSize = true;
+            this.label141.ForeColor = System.Drawing.SystemColors.Control;
+            this.label141.Location = new System.Drawing.Point(298, 125);
+            this.label141.Name = "label141";
+            this.label141.Size = new System.Drawing.Size(144, 13);
+            this.label141.TabIndex = 84;
+            this.label141.Text = "Hold Breath Stamina Modifier";
+            // 
+            // obstacleTraversalStaminaModifierNUD
+            // 
+            this.obstacleTraversalStaminaModifierNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.obstacleTraversalStaminaModifierNUD.DecimalPlaces = 2;
+            this.obstacleTraversalStaminaModifierNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.obstacleTraversalStaminaModifierNUD.Location = new System.Drawing.Point(507, 97);
+            this.obstacleTraversalStaminaModifierNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.obstacleTraversalStaminaModifierNUD.Name = "obstacleTraversalStaminaModifierNUD";
+            this.obstacleTraversalStaminaModifierNUD.Size = new System.Drawing.Size(68, 20);
+            this.obstacleTraversalStaminaModifierNUD.TabIndex = 83;
+            this.obstacleTraversalStaminaModifierNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.obstacleTraversalStaminaModifierNUD.ValueChanged += new System.EventHandler(this.obstacleTraversalStaminaModifierNUD_ValueChanged);
+            // 
+            // meleeStaminaModifierNUD
+            // 
+            this.meleeStaminaModifierNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.meleeStaminaModifierNUD.DecimalPlaces = 2;
+            this.meleeStaminaModifierNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.meleeStaminaModifierNUD.Location = new System.Drawing.Point(507, 71);
+            this.meleeStaminaModifierNUD.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.meleeStaminaModifierNUD.Name = "meleeStaminaModifierNUD";
+            this.meleeStaminaModifierNUD.Size = new System.Drawing.Size(68, 20);
+            this.meleeStaminaModifierNUD.TabIndex = 82;
+            this.meleeStaminaModifierNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.meleeStaminaModifierNUD.ValueChanged += new System.EventHandler(this.meleeStaminaModifierNUD_ValueChanged);
+            // 
+            // label142
+            // 
+            this.label142.AutoSize = true;
+            this.label142.ForeColor = System.Drawing.SystemColors.Control;
+            this.label142.Location = new System.Drawing.Point(298, 75);
+            this.label142.Name = "label142";
+            this.label142.Size = new System.Drawing.Size(117, 13);
+            this.label142.TabIndex = 81;
+            this.label142.Text = "Melee Stamina Modifier";
+            // 
+            // sprintLadderStaminaModifierNUD
+            // 
+            this.sprintLadderStaminaModifierNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.sprintLadderStaminaModifierNUD.DecimalPlaces = 2;
+            this.sprintLadderStaminaModifierNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.sprintLadderStaminaModifierNUD.Location = new System.Drawing.Point(507, 45);
+            this.sprintLadderStaminaModifierNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.sprintLadderStaminaModifierNUD.Name = "sprintLadderStaminaModifierNUD";
+            this.sprintLadderStaminaModifierNUD.Size = new System.Drawing.Size(68, 20);
+            this.sprintLadderStaminaModifierNUD.TabIndex = 80;
+            this.sprintLadderStaminaModifierNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.sprintLadderStaminaModifierNUD.ValueChanged += new System.EventHandler(this.sprintLadderStaminaModifierNUD_ValueChanged);
+            // 
+            // label143
+            // 
+            this.label143.AutoSize = true;
+            this.label143.ForeColor = System.Drawing.SystemColors.Control;
+            this.label143.Location = new System.Drawing.Point(298, 49);
+            this.label143.Name = "label143";
+            this.label143.Size = new System.Drawing.Size(151, 13);
+            this.label143.TabIndex = 79;
+            this.label143.Text = "Sprint Ladder Stamina Modifier";
+            // 
+            // sprintSwimmingStaminaModifierNUD
+            // 
+            this.sprintSwimmingStaminaModifierNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.sprintSwimmingStaminaModifierNUD.DecimalPlaces = 2;
+            this.sprintSwimmingStaminaModifierNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.sprintSwimmingStaminaModifierNUD.Location = new System.Drawing.Point(507, 19);
+            this.sprintSwimmingStaminaModifierNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.sprintSwimmingStaminaModifierNUD.Name = "sprintSwimmingStaminaModifierNUD";
+            this.sprintSwimmingStaminaModifierNUD.Size = new System.Drawing.Size(68, 20);
+            this.sprintSwimmingStaminaModifierNUD.TabIndex = 78;
+            this.sprintSwimmingStaminaModifierNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.sprintSwimmingStaminaModifierNUD.ValueChanged += new System.EventHandler(this.sprintSwimmingStaminaModifierNUD_ValueChanged);
+            // 
+            // label144
+            // 
+            this.label144.AutoSize = true;
+            this.label144.ForeColor = System.Drawing.SystemColors.Control;
+            this.label144.Location = new System.Drawing.Point(298, 23);
+            this.label144.Name = "label144";
+            this.label144.Size = new System.Drawing.Size(165, 13);
+            this.label144.TabIndex = 77;
+            this.label144.Text = "Sprint Swimming Stamina Modifier";
             // 
             // staminaMinCapNUD
             // 
@@ -8491,9 +8799,9 @@ namespace DayZeEditor
             this.groupBox23.Controls.Add(this.disableContainerDamageCB);
             this.groupBox23.Controls.Add(this.disableBaseDamageCB);
             this.groupBox23.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox23.Location = new System.Drawing.Point(321, 393);
+            this.groupBox23.Location = new System.Drawing.Point(3, 460);
             this.groupBox23.Name = "groupBox23";
-            this.groupBox23.Size = new System.Drawing.Size(307, 82);
+            this.groupBox23.Size = new System.Drawing.Size(201, 87);
             this.groupBox23.TabIndex = 80;
             this.groupBox23.TabStop = false;
             this.groupBox23.Text = "General Data";
@@ -11896,6 +12204,11 @@ namespace DayZeEditor
             this.CFGGameplay.PerformLayout();
             this.groupBox27.ResumeLayout(false);
             this.groupBox27.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.wetnessWeightModifiers5NUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wetnessWeightModifiers4NUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wetnessWeightModifiers3NUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wetnessWeightModifiers2NUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wetnessWeightModifiers1NUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DecMaxNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DecMinNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NovMaxNUD)).EndInit();
@@ -11956,6 +12269,11 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.shockRefillSpeedConsciousNUD)).EndInit();
             this.groupBox26.ResumeLayout(false);
             this.groupBox26.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.holdBreathStaminaModifierNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.obstacleTraversalStaminaModifierNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.meleeStaminaModifierNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sprintLadderStaminaModifierNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sprintSwimmingStaminaModifierNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.staminaMinCapNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.staminaKgToStaminaPercentPenaltyNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.staminaMaxNUD)).EndInit();
@@ -12924,5 +13242,23 @@ namespace DayZeEditor
         private System.Windows.Forms.Label label132;
         private System.Windows.Forms.NumericUpDown staminaDepletionSpeedNUD;
         private System.Windows.Forms.Label label138;
+        private System.Windows.Forms.NumericUpDown wetnessWeightModifiers5NUD;
+        private System.Windows.Forms.NumericUpDown wetnessWeightModifiers4NUD;
+        private System.Windows.Forms.NumericUpDown wetnessWeightModifiers3NUD;
+        private System.Windows.Forms.NumericUpDown wetnessWeightModifiers2NUD;
+        private System.Windows.Forms.Label label140;
+        private System.Windows.Forms.NumericUpDown wetnessWeightModifiers1NUD;
+        private System.Windows.Forms.CheckBox allowStaminaAffectInertiaCB;
+        private System.Windows.Forms.Label label146;
+        private System.Windows.Forms.Label label145;
+        private System.Windows.Forms.NumericUpDown holdBreathStaminaModifierNUD;
+        private System.Windows.Forms.Label label141;
+        private System.Windows.Forms.NumericUpDown obstacleTraversalStaminaModifierNUD;
+        private System.Windows.Forms.NumericUpDown meleeStaminaModifierNUD;
+        private System.Windows.Forms.Label label142;
+        private System.Windows.Forms.NumericUpDown sprintLadderStaminaModifierNUD;
+        private System.Windows.Forms.Label label143;
+        private System.Windows.Forms.NumericUpDown sprintSwimmingStaminaModifierNUD;
+        private System.Windows.Forms.Label label144;
     }
 }

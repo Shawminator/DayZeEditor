@@ -343,6 +343,11 @@ namespace DayZeEditor
             {
                 TraderPlusGarageConfig = JsonSerializer.Deserialize<TraderPlusGarageConfig>(File.ReadAllText(TraderPlusGarageConfigPath));
                 TraderPlusGarageConfig.isDirty = false;
+                if (!TraderPlusGarageConfig.CheckVersion())
+                {
+                    TraderPlusGarageConfig.isDirty = true;
+                    needtosave = true;
+                }
             }
             TraderPlusGarageConfig.FullFilename = TraderPlusGarageConfigPath;
             SetupTraderPlusGarageConfig();
@@ -375,6 +380,11 @@ namespace DayZeEditor
             {
                 TraderPlusPriceConfig = JsonSerializer.Deserialize<TraderPlusPriceConfig>(File.ReadAllText(TraderPlusPriceConfigPath));
                 TraderPlusPriceConfig.isDirty = false;
+                if (!TraderPlusPriceConfig.CheckVersion())
+                {
+                    TraderPlusPriceConfig.isDirty = true;
+                    needtosave = true;
+                }
 
             }
             TraderPlusPriceConfig.FullFilename = TraderPlusPriceConfigPath;
@@ -510,6 +520,7 @@ namespace DayZeEditor
             DefaultStartCurrencyNUD.Value = (int)TraderPlusBankingConfig.DefaultStartCurrency;
             DefaultMaxCurrencyNUD.Value = (int)TraderPlusBankingConfig.DefaultMaxCurrency;
             TheAmountHasBeenTransferedToTheAccountTB.Text = TraderPlusBankingConfig.TheAmountHasBeenTransferedToTheAccount;
+            TheAmountErrorTransferAccountTB.Text = TraderPlusBankingConfig.TheAmountErrorTransferAccount;
             BankingLogsCB.Checked = TraderPlusBankingConfig.BankingLogs == 1 ? true : false;
 
             BankingConfigAcceptedCurrenciesLB.DisplayMember = "Name";
@@ -574,6 +585,12 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             TraderPlusBankingConfig.TheAmountHasBeenTransferedToTheAccount = TheAmountHasBeenTransferedToTheAccountTB.Text;
+            TraderPlusBankingConfig.isDirty = true;
+        }
+        private void TheAmountErrorTransferAccountTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TraderPlusBankingConfig.TheAmountErrorTransferAccount = TheAmountErrorTransferAccountTB.Text;
             TraderPlusBankingConfig.isDirty = true;
         }
         private void BankingLogsCB_CheckedChanged(object sender, EventArgs e)
@@ -641,6 +658,43 @@ namespace DayZeEditor
             GarageNPCClothesLB.DisplayMember = "Name";
             GarageNPCClothesLB.ValueMember = "Value";
             GarageNPCClothesLB.DataSource = CurrentgarageNPC.Clothes;
+        }
+        private void UseGarageOnlyToTradeCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TraderPlusGarageConfig.UseGarageOnlyToTrade = UseGarageOnlyToTradeCB.Checked == true ? 1 : 0;
+            TraderPlusGarageConfig.isDirty = true;
+        }
+        private void SavedVehicleInGarageForTradeInHourCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TraderPlusGarageConfig.SavedVehicleInGarageForTradeInHour = SavedVehicleInGarageForTradeInHourCB.Checked == true ? 1 : 0;
+            TraderPlusGarageConfig.isDirty = true;
+        }
+        private void MaxVehicleStoredNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TraderPlusGarageConfig.MaxVehicleStored = (int)MaxVehicleStoredNUD.Value;
+            TraderPlusGarageConfig.isDirty = true;
+
+        }
+        private void MaxVehicleStoredReachedTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TraderPlusGarageConfig.MaxVehicleStoredReached = MaxVehicleStoredReachedTB.Text;
+            TraderPlusGarageConfig.isDirty = true;
+        }
+        private void TradeVehicleWarningTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TraderPlusGarageConfig.TradeVehicleWarning = TradeVehicleWarningTB.Text;
+            TraderPlusGarageConfig.isDirty = true;
+        }
+        private void TradeVehicleHasBeenDeletedTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TraderPlusGarageConfig.TradeVehicleHasBeenDeleted = TradeVehicleHasBeenDeletedTB.Text;
+            TraderPlusGarageConfig.isDirty = true;
         }
         private void VehicleMustHaveLockCB_CheckedChanged(object sender, EventArgs e)
         {
@@ -2722,5 +2776,7 @@ namespace DayZeEditor
                 }
             }
         }
+
+
     }
 }

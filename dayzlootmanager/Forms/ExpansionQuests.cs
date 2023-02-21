@@ -25,6 +25,7 @@ namespace DayZeEditor
         public TypesFile Expansiontypes;
         public List<TypesFile> ModTypes;
 
+        public BindingList<string> Factions { get; private set; }
         public float[] CurrentWapypoint { get; private set; }
 
         private bool useraction;
@@ -38,6 +39,10 @@ namespace DayZeEditor
         public string AILoadoutsPath { get; set; }
 
         public NPCEmotes NPCEmotes { get; set; }
+        public NPCEmotes NPCEmotes1 { get; set; }
+        public NPCEmotes NPCEmotes2 { get; set; }
+        public NPCEmotes NPCEmotes3 { get; set; }
+        public NPCEmotes NPCEmotes4 { get; set; }
         public QuestSettings QuestSettings { get; set; }
         public QuestObjectives QuestObjectives { get; set; }
         public ExpansioQuestList QuestsList { get; set; }
@@ -122,6 +127,9 @@ namespace DayZeEditor
         {
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
+
+            Factions = new BindingList<string>(File.ReadAllLines(Application.StartupPath + "\\TraderNPCs\\Factions.txt").ToList());
+            SetupFactionsDropDownBoxes();
 
             bool needtosave = false;
 
@@ -215,12 +223,12 @@ namespace DayZeEditor
 
 
             QuestPlayerDataPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Quests\\PlayerData";
+            if (!Directory.Exists(QuestPlayerDataPath))
+            {
+                Directory.CreateDirectory(QuestPlayerDataPath);
+            }
             QuestPlayerDataList = new QuestPersistantDataPlayersList(QuestPlayerDataPath);
             setupplayerdata();
-
-
-            
-
 
             tabControl1.ItemSize = new Size(0, 1);
 
@@ -229,6 +237,15 @@ namespace DayZeEditor
                 savefiles(true);
             }
         }
+
+        private void SetupFactionsDropDownBoxes()
+        {
+            useraction = false;
+            ObjectivesAICampNPCFactionCB.DataSource = new BindingList<string>(Factions);
+            ObjectivesAIPatrolNPCFactionCB.DataSource = new BindingList<string>(Factions);
+            useraction = true;
+        }
+
         private void ExpansionQuests_FormClosing(object sender, FormClosingEventArgs e)
         {
             bool needtosave = false;
@@ -695,10 +712,25 @@ namespace DayZeEditor
             QuestNPCsClassNameCB.DataSource = File.ReadAllLines(Application.StartupPath + "\\traderNPCs\\QuestNPCs.txt").ToList();
             
             NPCEmotes = new NPCEmotes(Application.StartupPath + "\\TraderNPCs\\Emotes.txt");
+            NPCEmotes1 = new NPCEmotes(Application.StartupPath + "\\TraderNPCs\\Emotes.txt");
+            NPCEmotes2 = new NPCEmotes(Application.StartupPath + "\\TraderNPCs\\Emotes.txt");
+            NPCEmotes3 = new NPCEmotes(Application.StartupPath + "\\TraderNPCs\\Emotes.txt");
+            NPCEmotes4 = new NPCEmotes(Application.StartupPath + "\\TraderNPCs\\Emotes.txt");
             questsNPCsNPCEmoteIDCB.DisplayMember = "DisplayName";
             questsNPCsNPCEmoteIDCB.ValueMember = "Value";
             questsNPCsNPCEmoteIDCB.DataSource = NPCEmotes.Emotes;
-
+            NPCInteractionEmoteIDCB.DisplayMember = "DisplayName";
+            NPCInteractionEmoteIDCB.ValueMember = "Value";
+            NPCInteractionEmoteIDCB.DataSource = NPCEmotes1.Emotes;
+            NPCQuestCancelEmoteIDCB.DisplayMember = "DisplayName";
+            NPCQuestCancelEmoteIDCB.ValueMember = "Value";
+            NPCQuestCancelEmoteIDCB.DataSource = NPCEmotes2.Emotes;
+            NPCQuestStartEmoteIDCB.DisplayMember = "DisplayName";
+            NPCQuestStartEmoteIDCB.ValueMember = "Value";
+            NPCQuestStartEmoteIDCB.DataSource = NPCEmotes3.Emotes;
+            NPCQuestCompleteEmoteIDCB.DisplayMember = "DisplayName";
+            NPCQuestCompleteEmoteIDCB.ValueMember = "Value";
+            NPCQuestCompleteEmoteIDCB.DataSource = NPCEmotes4.Emotes;
             List<string> loadouts = new List<string>();
             loadouts.Add("");
             string AILoadoutsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Loadouts";
@@ -749,6 +781,11 @@ namespace DayZeEditor
             QuestsNPCsNameTB.Text = currentQuestNPC.NPCName;
             QuestsNPCsDefaultNPCTextTB.Text = currentQuestNPC.DefaultNPCText;
             questsNPCsNPCEmoteIDCB.SelectedValue = currentQuestNPC.NPCEmoteID;
+            NPCInteractionEmoteIDCB.SelectedValue = currentQuestNPC.NPCInteractionEmoteID;
+            NPCQuestCancelEmoteIDCB.SelectedValue = currentQuestNPC.NPCQuestCancelEmoteID;
+            NPCQuestStartEmoteIDCB.SelectedValue = currentQuestNPC.NPCQuestStartEmoteID;
+            NPCQuestCompleteEmoteIDCB.SelectedValue = currentQuestNPC.NPCQuestCompleteEmoteID;
+
             QuestNPCIsEmoteStaticCB.Checked = currentQuestNPC.NPCEmoteIsStatic == 1 ? true : false;
             QuestNPCsLoadoutsCB.SelectedIndex = QuestNPCsLoadoutsCB.FindStringExact(currentQuestNPC.NPCLoadoutFile);
             QuestNPCsIsStaticCB.Checked = currentQuestNPC.IsStatic == 1 ? true:false;
@@ -827,6 +864,37 @@ namespace DayZeEditor
             if (!useraction) return;
             Emote emote = questsNPCsNPCEmoteIDCB.SelectedItem as Emote;
             currentQuestNPC.NPCEmoteID = emote.Value;
+            currentQuestNPC.isDirty = true;
+        }
+        private void NPCInteractionEmoteIDCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Emote emote = NPCInteractionEmoteIDCB.SelectedItem as Emote;
+            currentQuestNPC.NPCInteractionEmoteID = emote.Value;
+            currentQuestNPC.isDirty = true;
+        }
+
+        private void NPCQuestCancelEmoteIDCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Emote emote = NPCQuestCancelEmoteIDCB.SelectedItem as Emote;
+            currentQuestNPC.NPCQuestCancelEmoteID = emote.Value;
+            currentQuestNPC.isDirty = true;
+        }
+
+        private void NPCQuestStartEmoteIDCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Emote emote = NPCQuestStartEmoteIDCB.SelectedItem as Emote;
+            currentQuestNPC.NPCQuestStartEmoteID = emote.Value;
+            currentQuestNPC.isDirty = true;
+        }
+
+        private void NPCQuestCompleteEmoteIDCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Emote emote = NPCQuestCompleteEmoteIDCB.SelectedItem as Emote;
+            currentQuestNPC.NPCQuestCompleteEmoteID = emote.Value;
             currentQuestNPC.isDirty = true;
         }
         private void QuestNPCIsAICB_CheckedChanged(object sender, EventArgs e)
@@ -1224,7 +1292,17 @@ namespace DayZeEditor
         }
         private void darkButton4_Click(object sender, EventArgs e)
         {
-            QuestsList.CreateNewQuest();
+            List<int> AllQuestIDs = QuestsList.GetAllQuestIDS();
+
+            AddNewQuestID form = new AddNewQuestID
+            {
+                NumberofquestsIDs = AllQuestIDs
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                QuestsList.CreateNewQuest(form.SelectedID);
+            }
             QuestsListLB.SelectedIndex = -1;
             if (QuestsListLB.Items.Count == 0)
                 QuestsListLB.SelectedIndex = QuestsListLB.Items.Count - 1;
@@ -4036,6 +4114,7 @@ namespace DayZeEditor
         {
 
         }
+
 
 
 

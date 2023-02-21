@@ -173,6 +173,12 @@
     <Compile Include="HelperForms\Add new container.Designer.cs">
       <DependentUpon>Add new container.cs</DependentUpon>
     </Compile>
+    <Compile Include="HelperForms\AddnewQuestID.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelperForms\AddnewQuestID.Designer.cs">
+      <DependentUpon>AddnewQuestID.cs</DependentUpon>
+    </Compile>
     <Compile Include="HelperForms\AddObjective.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -388,6 +394,9 @@
     <EmbeddedResource Include="HelperForms\Add new container.resx">
       <DependentUpon>Add new container.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HelperForms\AddnewQuestID.resx">
+      <DependentUpon>AddnewQuestID.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HelperForms\AddObjective.resx">
       <DependentUpon>AddObjective.cs</DependentUpon>
     </EmbeddedResource>
@@ -505,12 +514,15 @@
     <None Include="Maps\banov_Map.png.xyz">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Maps\melkart_Map.png.xyz" />
     <None Include="Maps\namalsk_Map.png.xyz" />
     <None Include="Maps\pripyat_Map.png.xyz" />
     <None Include="Maps\rostow_Map.png.xyz" />
     <None Include="Maps\takistanplus_Map.png.xyz" />
     <None Include="Maps\vela_Map.png.xyz" />
-    <None Include="Maps\yiprit_map.png.xyz" />
+    <None Include="Maps\yiprit_map.png.xyz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -555,6 +567,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <Content Include="Maps\barrington_Map.png" />
+    <Content Include="Maps\Capare_Map.png" />
     <Content Include="Maps\chiemsee_Map.png" />
     <Content Include="Maps\chernarusplus_Map.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -629,6 +642,7 @@
     <Content Include="Maps\MapSizes.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Maps\melkart_Map.png" />
     <Content Include="Maps\namalsk_Map.png" />
     <Content Include="Maps\pripyat_Map.png" />
     <Content Include="Maps\rostow_Map.png" />
@@ -636,8 +650,13 @@
     <Content Include="depositphotos_20788183_stock_illustration_cartoon_thief_running_with_a_Cw8_icon.ico" />
     <Content Include="Maps\valning_Map.png" />
     <Content Include="Maps\vela_Map.png" />
-    <Content Include="Maps\yiprit_map.png" />
+    <Content Include="Maps\yiprit_map.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="TraderNPCs\Emotes.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TraderNPCs\Factions.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="TraderNPCs\QuestNPCs.txt">
