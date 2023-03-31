@@ -96,38 +96,59 @@ namespace DayZeEditor
             };
             foreach (QuestObjectivesBase objs in QuestObjectives)
             {
-                TreeNode newnode = new TreeNode(objs.ObjectiveText);
+                //TreeNode newnode = new TreeNode(objs.ObjectiveText);
+                TreeNode newnode = new TreeNode();
                 newnode.Tag = objs;
-                switch (objs.QuestType)
+                switch (objs._ObjectiveTypeEnum)
                 {
                     case QuExpansionQuestObjectiveTypeestType.TARGET:
+                        QuestObjectivesTarget t = objs as QuestObjectivesTarget;
+                        newnode.Text = t.ObjectiveText;
                         ObjectivesTarget.Nodes.Add(newnode);
                         break;
                     case QuExpansionQuestObjectiveTypeestType.TRAVEL:
+                        QuestObjectivesTravel tr = objs as QuestObjectivesTravel;
+                        newnode.Text = tr.ObjectiveText;
                         ObjectivesTravel.Nodes.Add(newnode);
                         break;
                     case QuExpansionQuestObjectiveTypeestType.COLLECT:
+                        QuestObjectivesCollection coll = objs as QuestObjectivesCollection;
+                        newnode.Text = coll.ObjectiveText;
                         ObjectivesCollection.Nodes.Add(newnode);
                         break;
                     case QuExpansionQuestObjectiveTypeestType.DELIVERY:
+                        QuestObjectivesDelivery del = objs as QuestObjectivesDelivery;
+                        newnode.Text = del.ObjectiveText;
                         ObjectivesDelivery.Nodes.Add(newnode);
                         break;
                     case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
+                        QuestObjectivesTreasureHunt th = objs as QuestObjectivesTreasureHunt;
+                        newnode.Text = th.ObjectiveText;
                         ObjectivesTreasureHunt.Nodes.Add(newnode);
                         break;
                     case QuExpansionQuestObjectiveTypeestType.AIPATROL:
+                        QuestObjectivesAIPatrol aip = objs as QuestObjectivesAIPatrol;
+                        newnode.Text = aip.ObjectiveText;
                         ObjectivesAIPatrol.Nodes.Add(newnode);
                         break;
                     case QuExpansionQuestObjectiveTypeestType.AICAMP:
+                        QuestObjectivesAICamp aic = objs as QuestObjectivesAICamp;
+                        newnode.Text = aic.ObjectiveText;
                         ObjectivesAICamp.Nodes.Add(newnode);
                         break;
                     case QuExpansionQuestObjectiveTypeestType.AIVIP:
+                        QuestObjectivesAIVIP aivip = objs as QuestObjectivesAIVIP;
+                        newnode.Text = aivip.ObjectiveText;
                         ObjectivesAIVIP.Nodes.Add(newnode);
                         break;
                     case QuExpansionQuestObjectiveTypeestType.ACTION:
+                        QuestObjectivesAction a = objs as QuestObjectivesAction;
+                        newnode.Text = a.ObjectiveText;
                         ObjectivesAction.Nodes.Add(newnode);
                         break;
                     case QuExpansionQuestObjectiveTypeestType.CRAFTING:
+                        QuestObjectivesCrafting c = objs as QuestObjectivesCrafting;
+                        newnode.Text = c.ObjectiveText;
                         ObjectivesCrafting.Nodes.Add(newnode);
                         break;
                     default:

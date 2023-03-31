@@ -10,10 +10,13 @@ namespace DayZeLib
 {
     public class QuestObjectivesDelivery: QuestObjectivesBase
     {
+        public string ObjectiveText { get; set; }
+        public int TimeLimit { get; set; }
         public BindingList<Delivery> Deliveries { get; set; }
         public decimal MaxDistance { get; set; }
         public string MarkerName { get; set; }
         public int ShowDistance { get; set; }
+        public int AddItemsToNearbyMarketZone { get; set; }
 
         public QuestObjectivesDelivery()
         {

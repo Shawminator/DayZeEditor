@@ -37,6 +37,8 @@ namespace DayZeEditor
             this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.HeliCrashEnabledCB = new System.Windows.Forms.CheckBox();
+            this.darkLabel1 = new DarkUI.Controls.DarkLabel();
             this.CrashpointYNUD = new System.Windows.Forms.NumericUpDown();
             this.CrashPointXNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel67 = new DarkUI.Controls.DarkLabel();
@@ -209,6 +211,8 @@ namespace DayZeEditor
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage1.Controls.Add(this.HeliCrashEnabledCB);
+            this.tabPage1.Controls.Add(this.darkLabel1);
             this.tabPage1.Controls.Add(this.CrashpointYNUD);
             this.tabPage1.Controls.Add(this.CrashPointXNUD);
             this.tabPage1.Controls.Add(this.darkLabel67);
@@ -233,6 +237,26 @@ namespace DayZeEditor
             this.tabPage1.Size = new System.Drawing.Size(984, 552);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
+            // 
+            // HeliCrashEnabledCB
+            // 
+            this.HeliCrashEnabledCB.AutoSize = true;
+            this.HeliCrashEnabledCB.Location = new System.Drawing.Point(128, 29);
+            this.HeliCrashEnabledCB.Name = "HeliCrashEnabledCB";
+            this.HeliCrashEnabledCB.Size = new System.Drawing.Size(15, 14);
+            this.HeliCrashEnabledCB.TabIndex = 137;
+            this.HeliCrashEnabledCB.UseVisualStyleBackColor = true;
+            this.HeliCrashEnabledCB.CheckedChanged += new System.EventHandler(this.HeliCrashEnabledCB_CheckedChanged);
+            // 
+            // darkLabel1
+            // 
+            this.darkLabel1.AutoSize = true;
+            this.darkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel1.Location = new System.Drawing.Point(3, 30);
+            this.darkLabel1.Name = "darkLabel1";
+            this.darkLabel1.Size = new System.Drawing.Size(94, 13);
+            this.darkLabel1.TabIndex = 136;
+            this.darkLabel1.Text = "HeliCrash Enabled";
             // 
             // CrashpointYNUD
             // 
@@ -355,7 +379,7 @@ namespace DayZeEditor
             // 
             this.HelicrashDespawnTimeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.HelicrashDespawnTimeNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.HelicrashDespawnTimeNUD.Location = new System.Drawing.Point(128, 56);
+            this.HelicrashDespawnTimeNUD.Location = new System.Drawing.Point(128, 79);
             this.HelicrashDespawnTimeNUD.Name = "HelicrashDespawnTimeNUD";
             this.HelicrashDespawnTimeNUD.Size = new System.Drawing.Size(104, 20);
             this.HelicrashDespawnTimeNUD.TabIndex = 127;
@@ -376,7 +400,7 @@ namespace DayZeEditor
             // 
             this.HelicrashSpawnTimeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.HelicrashSpawnTimeNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.HelicrashSpawnTimeNUD.Location = new System.Drawing.Point(128, 30);
+            this.HelicrashSpawnTimeNUD.Location = new System.Drawing.Point(128, 53);
             this.HelicrashSpawnTimeNUD.Maximum = new decimal(new int[] {
             500,
             0,
@@ -392,7 +416,7 @@ namespace DayZeEditor
             // 
             this.darkLabel10.AutoSize = true;
             this.darkLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel10.Location = new System.Drawing.Point(3, 32);
+            this.darkLabel10.Location = new System.Drawing.Point(3, 55);
             this.darkLabel10.Name = "darkLabel10";
             this.darkLabel10.Size = new System.Drawing.Size(113, 13);
             this.darkLabel10.TabIndex = 124;
@@ -402,7 +426,7 @@ namespace DayZeEditor
             // 
             this.darkLabel11.AutoSize = true;
             this.darkLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel11.Location = new System.Drawing.Point(3, 58);
+            this.darkLabel11.Location = new System.Drawing.Point(3, 81);
             this.darkLabel11.Name = "darkLabel11";
             this.darkLabel11.Size = new System.Drawing.Size(125, 13);
             this.darkLabel11.TabIndex = 125;
@@ -469,9 +493,9 @@ namespace DayZeEditor
             this.CrashpointLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.CrashpointLB.ForeColor = System.Drawing.SystemColors.Control;
             this.CrashpointLB.FormattingEnabled = true;
-            this.CrashpointLB.Location = new System.Drawing.Point(6, 82);
+            this.CrashpointLB.Location = new System.Drawing.Point(6, 108);
             this.CrashpointLB.Name = "CrashpointLB";
-            this.CrashpointLB.Size = new System.Drawing.Size(226, 264);
+            this.CrashpointLB.Size = new System.Drawing.Size(226, 238);
             this.CrashpointLB.TabIndex = 89;
             this.CrashpointLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.CrashpointLB.SelectedIndexChanged += new System.EventHandler(this.CrashpointLB_SelectedIndexChanged);
@@ -1135,5 +1159,7 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkLabel darkLabel18;
         private DarkUI.Controls.DarkLabel darkLabel22;
         private DarkUI.Controls.DarkButton darkButton10;
+        private System.Windows.Forms.CheckBox HeliCrashEnabledCB;
+        private DarkUI.Controls.DarkLabel darkLabel1;
     }
 }

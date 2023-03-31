@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -11,7 +12,7 @@ namespace DayZeLib
     public class QuestSettings
     {
         [JsonIgnore]
-        public const int CurrentVersion = 4;
+        public const int CurrentVersion = 7;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -33,14 +34,8 @@ namespace DayZeLib
         public string QuestTurnInText { get; set; }
         public string QuestObjectiveCompletedTitle { get; set; }
         public string QuestObjectiveCompletedText { get; set; }
-        public string AchivementCompletedTitle { get; set; }
-        public string AchivementCompletedText { get; set; }
-        public string WeeklyQuestResetDay { get; set; }
-        public int WeeklyQuestResetHour { get; set; }
-        public int WeeklyQuestResteMinute { get; set; }
-        public int DailyQuestResetHour { get; set; }
-        public int DailyQuestResetMinute { get; set; }
-        public int UseUTCTime { get; set; }
+        public string AchievementCompletedTitle { get; set; }
+        public string AchievementCompletedText { get; set; }
         public string QuestCooldownTitle { get; set; }
         public string QuestCooldownText { get; set; }
         public string QuestNotInGroupTitle { get; set; }
@@ -48,8 +43,18 @@ namespace DayZeLib
         public string QuestNotGroupOwnerTitle { get; set; }
         public string QuestNotGroupOwnerText { get; set; }
         public int GroupQuestMode { get; set; }
+        public BindingList<QuestActions> QuestActions { get; set; }
+
+        public string WeeklyResetDay { get; set; }
+        public int WeeklyResetHour { get; set; }
+        public int WeeklyResetMinute { get; set; }
+        public int DailyResetHour { get; set; }
+        public int DailyResetMinute { get; set; }
+        public int UseUTCTime { get; set; }
+
 
         public QuestSettings() { }
+
 
         public bool checkver()
         {
@@ -60,6 +65,21 @@ namespace DayZeLib
                 return true;
             }
             return false;
+        }
+    }
+    public class QuestActions
+    {
+        public string ActionName { get; set; }
+        public string MethodName { get; set; }
+
+        public QuestActions()
+        {
+
+        }
+
+        public override string ToString()
+        {
+            return ActionName;
         }
     }
 

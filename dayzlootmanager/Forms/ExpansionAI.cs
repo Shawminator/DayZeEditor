@@ -421,6 +421,7 @@ namespace DayZeEditor
             CrashLoadoutFileCB.SelectedIndex = CrashLoadoutFileCB.FindStringExact(CurrentEventcrashpatrol.LoadoutFile);
             CrashFormationCB.SelectedIndex = CrashFormationCB.FindStringExact(CurrentEventcrashpatrol.Formation);
             CrashWaypointInterpolationCB.SelectedIndex = CrashWaypointInterpolationCB.FindStringExact(CurrentEventcrashpatrol.WaypointInterpolation);
+            crashFormationLoosenessNUD.Value = CurrentEventcrashpatrol.FormationLooseness;
             useraction = true;
         }
         private void darkButton7_Click(object sender, EventArgs e)
@@ -592,6 +593,12 @@ namespace DayZeEditor
             CurrentEventcrashpatrol.RespawnTime = CrashRespawnTimeNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
+        private void crashFormationLoosenessNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentEventcrashpatrol.FormationLooseness = crashFormationLoosenessNUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
         /// <summary>
         /// Stataic Patrol Settings
         /// </summary>
@@ -623,6 +630,7 @@ namespace DayZeEditor
             StaticPatrolMinSpreadRadiusNUD.Value = CurrentPatrol.MinSpreadRadius;
             StaticPatrolMaxSpreadRadiusNUD.Value = CurrentPatrol.MaxSpreadRadius;
             StaticPatrolFormationCB.SelectedIndex = StaticPatrolFormationCB.FindStringExact(CurrentPatrol.Formation);
+            StaticPatrolFormationLoosenessNUD.Value = CurrentPatrol.FormationLooseness;
             StaticPatrolWaypointInterpolationCB.SelectedIndex = StaticPatrolWaypointInterpolationCB.FindStringExact(CurrentPatrol.WaypointInterpolation);
             StaticPatrolUseRandomWaypointAsStartPointCB.Checked = CurrentPatrol.UseRandomWaypointAsStartPoint == 1 ? true : false;
 
@@ -717,6 +725,12 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             CurrentPatrol.NumberOfAI = (int)StaticPatrolNumberOfAINUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
+        private void StaticPatrolFormationLoosenessNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPatrol.FormationLooseness = (int)StaticPatrolFormationLoosenessNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
         private void StaticPatrolBehaviorCB_SelectedIndexChanged(object sender, EventArgs e)
@@ -1068,5 +1082,7 @@ namespace DayZeEditor
                 }
             }
         }
+
+
     }
 }

@@ -35,7 +35,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.7.5.5";
+        public string VersionNumber = "0.7.5.6";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -136,7 +136,8 @@ namespace DayZeEditor
                     Console.WriteLine("Project is Running Dr Jones Trader...." + Projects.getActiveProject().usingDrJoneTrader.ToString());
                     Console.WriteLine("Project is Running Expansion Market...." + Projects.getActiveProject().usingexpansionMarket.ToString());
                     Console.WriteLine("Project is Running Trader Plus...." + Projects.getActiveProject().usingtraderplus.ToString());
-                    Console.WriteLine("Project is Running the following Mods....");
+                    Console.WriteLine("The Current Active Project is " + Projects.ActiveProject);
+                    Console.WriteLine("Please click the select section to get the pop out menu");
                     toolStripStatusLabel1.Text = Projects.ActiveProject + " is the Current Active Project";
                 }
                 else

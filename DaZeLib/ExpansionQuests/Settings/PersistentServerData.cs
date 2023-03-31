@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace DayZeLib
     public class QuestPersistentServerData
     {
         [JsonIgnore]
-        public const int m_currentConfigVersion = 0;
+        public const int m_currentConfigVersion = 1;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -21,12 +22,14 @@ namespace DayZeLib
         public int ConfigVersion { get; set; }
         public int LastWeeklyReset { get; set; }
         public int LastDailyReset { get; set; }
+        public BindingList<Object> m_QuestMarketItems { get; set; }
 
         public QuestPersistentServerData()
         {
             ConfigVersion = m_currentConfigVersion;
             LastDailyReset = 1662883200;
             LastDailyReset = 1662883200;
+            m_QuestMarketItems = new BindingList<object>();
         }
 
         public bool checkver()

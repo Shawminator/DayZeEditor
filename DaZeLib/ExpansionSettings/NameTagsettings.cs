@@ -9,7 +9,7 @@ namespace DayZeLib
 {
     public class NameTagsettings
     {
-        const int CurrentVersion = 2;
+        const int CurrentVersion = 4;
 
         public int m_Version { get; set; }
         public int EnablePlayerTags { get; set; }
@@ -19,6 +19,10 @@ namespace DayZeLib
         public int PlayerNameColor { get; set; }
         public int OnlyInSafeZones { get; set; }
         public int OnlyInTerritories { get; set; }
+        public int ShowPlayerItemInHands { get; set; }
+        public int ShowNPCTags { get; set; }
+        public int ShowPlayerFaction { get; set; }
+        public int UseRarityColorForItemInHands { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }

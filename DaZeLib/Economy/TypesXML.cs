@@ -401,7 +401,9 @@ namespace DayZeLib
         {
             if (value == null)
                 value = new BindingList<typesTypeValue>();
-            value.Add(new typesTypeValue() { name = tier });
+            typesTypeValue newtier = (new typesTypeValue() { name = tier });
+            if (!value.Any(x => x.name == newtier.name))
+                value.Add(newtier);
             for (int i = 0; i < value.Count; i++)
             {
                 if (value[i].name == null)
@@ -423,7 +425,9 @@ namespace DayZeLib
         {
             if (value == null)
                 value = new BindingList<typesTypeValue>();
-            value.Add(new typesTypeValue() { user = tier });
+            typesTypeValue newusertier = new typesTypeValue() { user = tier };
+            if (!value.Any(x => x.user == newusertier.user))
+                value.Add(newusertier);
             for (int i = 0; i < value.Count; i++)
             {
                 if (value[i].user == null)
@@ -435,7 +439,9 @@ namespace DayZeLib
         }
         public void removeusertier(string tier)
         {
-            value.Remove(value.First(X => X.user == tier));
+            if (value == null) return;
+            if (value.Any(x => x.user == tier))
+                value.Remove(value.First(X => X.user == tier));
             if (value.Count == 0)
             {
                 value = null;

@@ -23,6 +23,7 @@ namespace DayZeLib
         public string FullFilename { get; set; }
 
         public int admin_log { get; set; }
+        public int HeliCrashEnabled { get; set; }
         public int HelicrashSpawnTime { get; set; }
         public int HelicrashDespawnTime { get; set; }
         public BindingList<Crashpoint> CrashPoints { get; set; }

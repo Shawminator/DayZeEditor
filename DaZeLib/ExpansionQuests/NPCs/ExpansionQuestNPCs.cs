@@ -14,7 +14,7 @@ namespace DayZeLib
 {
     public class QuestNPCLists
     {
-        const int m_NPCConfigVersion = 2;
+        const int m_NPCConfigVersion = 4;
         public static int getNPCConfigVersion
         {
             get { return m_NPCConfigVersion; }
@@ -63,13 +63,6 @@ namespace DayZeLib
             }
             NPCList = new BindingList<ExpansionQuestNPCs>(NPCList.OrderBy(x => x.ID).ToList());
         }
-        public void setupquestlists(ExpansioQuestList questsList)
-        {
-            foreach(ExpansionQuestNPCs npcs in NPCList)
-            {
-                npcs.setQuests(questsList);
-            }
-        }
         public int GetNextID()
         {
             List<int> NumberofNPC = new List<int>();
@@ -95,7 +88,6 @@ namespace DayZeLib
                 IsAI = 0,
                 Position = new float[] { 0, 0, 0 },
                 Orientation = new float[] { 0, 0, 0 },
-                QuestIDs = new BindingList<int>(),
                 NPCName = "Phil McCracken",
                 DefaultNPCText = "You Looking at me!!!",
                 Waypoints = new BindingList<float[]>(),
@@ -103,7 +95,11 @@ namespace DayZeLib
                 NPCEmoteIsStatic = 0,
                 NPCLoadoutFile = "NBCLoadout",
                 IsStatic = 0,
-                CurrentQuests = new BindingList<Quests>()
+                NPCInteractionEmoteID = 1,
+                NPCQuestCancelEmoteID = 60,
+                NPCQuestStartEmoteID = 58,
+                NPCQuestCompleteEmoteID = 39,
+                NPCFaction = "InvincibleObservers"
             };
             NPCList.Add(newnpc);
         }
@@ -112,22 +108,6 @@ namespace DayZeLib
             if (Markedfordelete == null) Markedfordelete = new List<ExpansionQuestNPCs>();
             Markedfordelete.Add(currentQuestNPC);
             NPCList.Remove(currentQuestNPC);
-        }
-        public void RemoveQuest(Quests currentQuest)
-        {
-            foreach (ExpansionQuestNPCs npc in NPCList)
-            {
-                if (npc.QuestIDs.Contains(currentQuest.ID))
-                    npc.removequest(currentQuest);
-            }
-        }
-        public void addQuesttoNPC(ExpansionQuestNPCs npc, Quests currentQuest)
-        {
-            ExpansionQuestNPCs currentnpc = NPCList.FirstOrDefault(x => x.ID == npc.ID);
-            if (currentnpc == null) return;
-            if (!currentnpc.CurrentQuests.Any(x => x.ID == currentQuest.ID))
-                currentnpc.AddNewQuest(currentQuest);
-
         }
         public ExpansionQuestNPCs GetNPCFromID(int id)
         {
@@ -140,8 +120,6 @@ namespace DayZeLib
         public string Filename { get; set; }
         [JsonIgnore]
         public bool isDirty = false;
-        [JsonIgnore]
-        public BindingList<Quests> CurrentQuests { get; set; }
 
         public int ConfigVersion { get; set; }
         public int ID { get; set; }
@@ -161,6 +139,7 @@ namespace DayZeLib
         public int NPCQuestCancelEmoteID { get; set; }
         public int NPCQuestStartEmoteID { get; set; }
         public int NPCQuestCompleteEmoteID { get; set; }
+        public string NPCFaction { get; set; }
 
         public ExpansionQuestNPCs()
         {
@@ -176,37 +155,6 @@ namespace DayZeLib
                 File.Copy(Fullfilename, NPCPath + "\\Backup\\" + SaveTime + "\\" + Filename + ".bak");
                 File.Delete(Fullfilename);
             }
-        }
-        public void AddNewQuest(Quests quest)
-        {
-            QuestIDs.Add(quest.ID);
-            CurrentQuests.Add(quest);
-            isDirty = true;
-        }
-        public void removequest(Quests quest)
-        {
-            QuestIDs.Remove(quest.ID);
-            CurrentQuests.Remove(quest);
-            isDirty = true;
-        }
-        public void setQuests(ExpansioQuestList QuestList)
-        {
-            CurrentQuests = new BindingList<Quests>();
-            List<int> idstoberemoved = new List<int>();
-            foreach (int id in QuestIDs)
-            {
-                Quests quest = QuestList.QuestList.FirstOrDefault(x => x.ID == id);
-                if (quest == null)
-                    idstoberemoved.Add(id);
-                else
-                    CurrentQuests.Add(quest);
-            }
-            foreach(int id in idstoberemoved)
-            {
-                QuestIDs.Remove(id);
-                isDirty = true;
-            }
-
         }
         public override string ToString()
         {

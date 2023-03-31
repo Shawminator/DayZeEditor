@@ -171,6 +171,12 @@ namespace DayZeEditor
             this.darkButton46 = new DarkUI.Controls.DarkButton();
             this.TraderObjectsLB = new System.Windows.Forms.ListBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.BadlyDamagedCoeffNUD = new System.Windows.Forms.NumericUpDown();
+            this.label42 = new System.Windows.Forms.Label();
+            this.DamagedCoeffNUD = new System.Windows.Forms.NumericUpDown();
+            this.label41 = new System.Windows.Forms.Label();
+            this.WornCoeffNUD = new System.Windows.Forms.NumericUpDown();
+            this.label39 = new System.Windows.Forms.Label();
             this.AcceptBadlyDamagedCB = new System.Windows.Forms.CheckBox();
             this.AcceptDamagedCB = new System.Windows.Forms.CheckBox();
             this.AcceptWornCB = new System.Windows.Forms.CheckBox();
@@ -402,6 +408,9 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.ObjectPositionXNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ObjectPositionYNUD)).BeginInit();
             this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BadlyDamagedCoeffNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DamagedCoeffNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WornCoeffNUD)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LockPickChanceNUD)).BeginInit();
             this.groupBox5.SuspendLayout();
@@ -2233,6 +2242,12 @@ namespace DayZeEditor
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.BadlyDamagedCoeffNUD);
+            this.groupBox7.Controls.Add(this.label42);
+            this.groupBox7.Controls.Add(this.DamagedCoeffNUD);
+            this.groupBox7.Controls.Add(this.label41);
+            this.groupBox7.Controls.Add(this.WornCoeffNUD);
+            this.groupBox7.Controls.Add(this.label39);
             this.groupBox7.Controls.Add(this.AcceptBadlyDamagedCB);
             this.groupBox7.Controls.Add(this.AcceptDamagedCB);
             this.groupBox7.Controls.Add(this.AcceptWornCB);
@@ -2243,6 +2258,102 @@ namespace DayZeEditor
             this.groupBox7.TabIndex = 70;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Accepted States";
+            // 
+            // BadlyDamagedCoeffNUD
+            // 
+            this.BadlyDamagedCoeffNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BadlyDamagedCoeffNUD.DecimalPlaces = 2;
+            this.BadlyDamagedCoeffNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.BadlyDamagedCoeffNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.BadlyDamagedCoeffNUD.Location = new System.Drawing.Point(224, 69);
+            this.BadlyDamagedCoeffNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.BadlyDamagedCoeffNUD.Name = "BadlyDamagedCoeffNUD";
+            this.BadlyDamagedCoeffNUD.Size = new System.Drawing.Size(120, 20);
+            this.BadlyDamagedCoeffNUD.TabIndex = 85;
+            this.BadlyDamagedCoeffNUD.Tag = "LockPickChance";
+            this.BadlyDamagedCoeffNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BadlyDamagedCoeffNUD.ValueChanged += new System.EventHandler(this.BadlyDamagedCoeffNUD_ValueChanged);
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(186, 73);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(32, 13);
+            this.label42.TabIndex = 84;
+            this.label42.Text = "Coeff";
+            // 
+            // DamagedCoeffNUD
+            // 
+            this.DamagedCoeffNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.DamagedCoeffNUD.DecimalPlaces = 2;
+            this.DamagedCoeffNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.DamagedCoeffNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.DamagedCoeffNUD.Location = new System.Drawing.Point(224, 46);
+            this.DamagedCoeffNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.DamagedCoeffNUD.Name = "DamagedCoeffNUD";
+            this.DamagedCoeffNUD.Size = new System.Drawing.Size(120, 20);
+            this.DamagedCoeffNUD.TabIndex = 83;
+            this.DamagedCoeffNUD.Tag = "LockPickChance";
+            this.DamagedCoeffNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DamagedCoeffNUD.ValueChanged += new System.EventHandler(this.DamagedCoeffNUD_ValueChanged);
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(186, 50);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(32, 13);
+            this.label41.TabIndex = 82;
+            this.label41.Text = "Coeff";
+            // 
+            // WornCoeffNUD
+            // 
+            this.WornCoeffNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.WornCoeffNUD.DecimalPlaces = 2;
+            this.WornCoeffNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.WornCoeffNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.WornCoeffNUD.Location = new System.Drawing.Point(224, 24);
+            this.WornCoeffNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.WornCoeffNUD.Name = "WornCoeffNUD";
+            this.WornCoeffNUD.Size = new System.Drawing.Size(120, 20);
+            this.WornCoeffNUD.TabIndex = 81;
+            this.WornCoeffNUD.Tag = "LockPickChance";
+            this.WornCoeffNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.WornCoeffNUD.ValueChanged += new System.EventHandler(this.WornCoeffNUD_ValueChanged);
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(186, 28);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(32, 13);
+            this.label39.TabIndex = 80;
+            this.label39.Text = "Coeff";
             // 
             // AcceptBadlyDamagedCB
             // 
@@ -4810,6 +4921,9 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.ObjectPositionYNUD)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BadlyDamagedCoeffNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DamagedCoeffNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WornCoeffNUD)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LockPickChanceNUD)).EndInit();
@@ -5207,5 +5321,11 @@ namespace DayZeEditor
         private System.Windows.Forms.TextBox TradeVehicleWarningTB;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.TextBox MaxVehicleStoredReachedTB;
+        private System.Windows.Forms.NumericUpDown BadlyDamagedCoeffNUD;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.NumericUpDown DamagedCoeffNUD;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.NumericUpDown WornCoeffNUD;
+        private System.Windows.Forms.Label label39;
     }
 }

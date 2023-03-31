@@ -10,6 +10,8 @@ namespace DayZeLib
 {
     public class QuestObjectivesAIPatrol: QuestObjectivesBase
     {
+        public string ObjectiveText { get; set; }
+        public int TimeLimit { get; set; }
         public AIPatrol AIPatrol { get; set; }
         public decimal MinDistRadius { get; set; }
         public decimal MaxDistRadius { get; set; }

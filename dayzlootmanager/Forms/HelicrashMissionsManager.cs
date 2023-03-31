@@ -177,6 +177,7 @@ namespace DayZeEditor
             useraction = false;
 
             adminlogCB.Checked = Helicrash.admin_log == 1 ? true : false;
+            HeliCrashEnabledCB.Checked = Helicrash.HeliCrashEnabled == 1 ? true : false;
             HelicrashSpawnTimeNUD.Value = Helicrash.HelicrashSpawnTime;
             HelicrashDespawnTimeNUD.Value = Helicrash.HelicrashDespawnTime;
 
@@ -284,6 +285,12 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             Helicrash.admin_log = adminlogCB.Checked == true ? 1 : 0;
+            Helicrash.isDirty = true;
+        }
+        private void HeliCrashEnabledCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Helicrash.HeliCrashEnabled = HeliCrashEnabledCB.Checked == true ? 1 : 0;
             Helicrash.isDirty = true;
         }
         private void HelicrashSpawnTimeNUD_ValueChanged(object sender, EventArgs e)
@@ -524,5 +531,7 @@ namespace DayZeEditor
                 }
             }
         }
+
+
     }
 }

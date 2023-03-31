@@ -607,60 +607,70 @@ namespace DayZeEditor
         }
         private void treeViewMS1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            if (e.Node.Tag != null && e.Node.Tag is typesType)
-            {
-                TreeNode parent = e.Node.Parent;
-                TreeNode mainparent = parent.Parent;
-                currentcollection = parent.Text;
-                String typesfile = mainparent.Text;
-                if (typesfile == "Vanilla Types")
-                    currentTypesFile = vanillatypes;
-                else
-                    currentTypesFile = ModTypes.FirstOrDefault(x => x.modname == typesfile);
-                isUserInteraction = false;
-                tabControl1.SelectedIndex = 1;
-                currentlootpart = e.Node.Tag as typesType;
-                PopulateLootPartInfo();
-                isUserInteraction = true;
-            }
-            else if (e.Node.Tag != null && e.Node.Tag is string)
-            {
-                tabControl1.SelectedIndex = 0;
-                currentcollection = e.Node.Tag.ToString();
-                darkLabel2.Text = currentcollection;
-                TreeNode parent = e.Node.Parent;
+            //TreeNode usingtreenode = e.Node;
+            //if (ModifierKeys.HasFlag(Keys.Control) || ModifierKeys.HasFlag(Keys.Shift))
+            //{
+            //    return;
+            //}
 
-                if (parent != null && parent.Tag.ToString() == "Parent")
-                {
-                    FullTypes = true;
-                    if (currentcollection == "VanillaTypes")
-                    {
-                        currentTypesFile = vanillatypes;
-                    }
-                    else
-                    {
-                        currentTypesFile = ModTypes.FirstOrDefault(x => x.modname == currentcollection);
-                    }
-                }
-                else if (parent != null)
-                {
-                    FullTypes = false;
-                    if (parent.Text == "Vanilla Types")
-                        currentTypesFile = vanillatypes;
-                    else
-                    {
-                        currentTypesFile = ModTypes.FirstOrDefault(x => x.modname == parent.Text);
-                    }
-                }
-            }
-            this.treeViewMS1.SelectedNode = e.Node;
+            //if (usingtreenode.Tag != null && usingtreenode.Tag is typesType)
+            //{
+            //    TreeNode parent = usingtreenode.Parent;
+            //    TreeNode mainparent = parent.Parent;
+            //    currentcollection = parent.Text;
+            //    String typesfile = mainparent.Text;
+            //    if (typesfile == "Vanilla Types")
+            //        currentTypesFile = vanillatypes;
+            //    else
+            //        currentTypesFile = ModTypes.FirstOrDefault(x => x.modname == typesfile);
+            //    isUserInteraction = false;
+            //    tabControl1.SelectedIndex = 1;
+            //    currentlootpart = usingtreenode.Tag as typesType;
+            //    PopulateLootPartInfo();
+            //    isUserInteraction = true;
+            //}
+            //else if (usingtreenode.Tag != null && usingtreenode.Tag is string)
+            //{
+            //    tabControl1.SelectedIndex = 0;
+            //    currentcollection = usingtreenode.Tag.ToString();
+            //    darkLabel2.Text = currentcollection;
+            //    TreeNode parent = usingtreenode.Parent;
+
+            //    if (parent != null && parent.Tag.ToString() == "Parent")
+            //    {
+            //        FullTypes = true;
+            //        if (currentcollection == "VanillaTypes")
+            //        {
+            //            currentTypesFile = vanillatypes;
+            //        }
+            //        else
+            //        {
+            //            currentTypesFile = ModTypes.FirstOrDefault(x => x.modname == currentcollection);
+            //        }
+            //    }
+            //    else if (parent != null)
+            //    {
+            //        FullTypes = false;
+            //        if (parent.Text == "Vanilla Types")
+            //            currentTypesFile = vanillatypes;
+            //        else
+            //        {
+            //            currentTypesFile = ModTypes.FirstOrDefault(x => x.modname == parent.Text);
+            //        }
+            //    }
+            //}
+            //this.treeViewMS1.SelectedNode = usingtreenode;
         }
         private void treeViewMS1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-        
-            if (e.Node.Tag != null && e.Node.Tag is typesType)
+            TreeNode usingtreenode = e.Node;
+            if (ModifierKeys.HasFlag(Keys.Control) || ModifierKeys.HasFlag(Keys.Shift))
             {
-                TreeNode parent = e.Node.Parent;
+                return;
+            }
+            if (usingtreenode.Tag != null && usingtreenode.Tag is typesType)
+            {
+                TreeNode parent = usingtreenode.Parent;
                 TreeNode mainparent = parent.Parent;
                 currentcollection = parent.Text;
                 String typesfile = mainparent.Text;
@@ -670,7 +680,7 @@ namespace DayZeEditor
                     currentTypesFile = ModTypes.FirstOrDefault(x => x.modname == typesfile);
                 isUserInteraction = false;
                 tabControl1.SelectedIndex = 1;
-                currentlootpart = e.Node.Tag as typesType;
+                currentlootpart = usingtreenode.Tag as typesType;
                 PopulateLootPartInfo();
                 isUserInteraction = true;
                 if (e.Button == MouseButtons.Right)
@@ -685,12 +695,12 @@ namespace DayZeEditor
                     TypesContextMenu.Show(Cursor.Position);
                 }
             }
-            else if (e.Node.Tag != null && e.Node.Tag is string)
+            else if (usingtreenode.Tag != null && usingtreenode.Tag is string)
             {
                 tabControl1.SelectedIndex = 0;
-                currentcollection = e.Node.Tag.ToString();
+                currentcollection = usingtreenode.Tag.ToString();
                 darkLabel2.Text = currentcollection;
-                TreeNode parent = e.Node.Parent;
+                TreeNode parent = usingtreenode.Parent;
 
                 if (parent != null && parent.Tag.ToString() == "Parent")
                 {
@@ -765,7 +775,7 @@ namespace DayZeEditor
                     }
                 }
             }
-            this.treeViewMS1.SelectedNode = e.Node;
+            this.treeViewMS1.SelectedNode = usingtreenode;
         }
         private void checkForDuplicateTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {

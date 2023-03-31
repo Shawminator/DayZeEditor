@@ -160,8 +160,8 @@ namespace DayZeLib
 
         public Worldsdata()
         {
-            decimal[] maxtemp = new decimal[] { -3, -2, 0, 4, 9, 14, 18, 17, 12, 7, 4, 0 };
-            decimal[] mintemp = new decimal[] { 3, 5, 7, 14, 19, 24, 26, 25, 21, 16, 10, 5 };
+            decimal[] mintemp = new decimal[] { -3, -2, 0, 4, 9, 14, 18, 17, 12, 7, 4, 0 };
+            decimal[] maxtemp = new decimal[] { 3, 5, 7, 14, 19, 24, 26, 25, 21, 16, 10, 5 };
             decimal[] wetness = new decimal[] { (decimal)1.0, (decimal)1.0, (decimal)1.33, (decimal)1.66, (decimal)2.0 };
             environmentMaxTemps = new BindingList<decimal>(maxtemp.ToArray());
             environmentMinTemps = new BindingList<decimal>(mintemp.ToArray());

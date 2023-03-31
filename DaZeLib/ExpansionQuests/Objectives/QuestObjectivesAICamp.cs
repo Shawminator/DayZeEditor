@@ -11,11 +11,14 @@ namespace DayZeLib
 {
     public class QuestObjectivesAICamp: QuestObjectivesBase
     {
+        public string ObjectiveText { get; set; }
+        public int TimeLimit { get; set; }
         public Aicamp AICamp { get; set; }
         public decimal MinDistRadius { get; set; }
         public decimal MaxDistRadius { get; set; }
         public decimal DespawnRadius { get; set; }
         public int CanLootAI { get; set; }
+        public int InfectedDeletionRadius { get; set; }
 
         public QuestObjectivesAICamp() 
         {

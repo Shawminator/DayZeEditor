@@ -1,4 +1,9 @@
-﻿Version 0.7.5.5
+﻿Version 07.5.7
+[fixed]
+Fixed tier duplication when editing multiple items at once.
+
+
+Version 0.7.5.5
 [Fixed]
 Missed some stuff in the CFGGameplay.json 120
 

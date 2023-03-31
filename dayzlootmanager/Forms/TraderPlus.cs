@@ -999,6 +999,10 @@ namespace DayZeEditor
             AcceptWornCB.Checked = TraderPlusGeneralConfig.AcceptedStates.AcceptWorn == 1 ? true : false;
             AcceptDamagedCB.Checked = TraderPlusGeneralConfig.AcceptedStates.AcceptDamaged == 1 ? true : false;
             AcceptBadlyDamagedCB.Checked = TraderPlusGeneralConfig.AcceptedStates.AcceptBadlyDamaged == 1 ? true : false;
+            WornCoeffNUD.Value = TraderPlusGeneralConfig.AcceptedStates.CoefficientWorn;
+            DamagedCoeffNUD.Value = TraderPlusGeneralConfig.AcceptedStates.CoefficientDamaged;
+            BadlyDamagedCoeffNUD.Value = TraderPlusGeneralConfig.AcceptedStates.CoefficientBadlyDamaged;
+
 
             useraction = true;
         }
@@ -1233,6 +1237,25 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             TraderPlusGeneralConfig.AcceptedStates.AcceptBadlyDamaged = AcceptDamagedCB.Checked == true ? 1 : 0;
+            TraderPlusGeneralConfig.isDirty = true;
+        }
+        private void WornCoeffNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TraderPlusGeneralConfig.AcceptedStates.CoefficientWorn = WornCoeffNUD.Value;
+            TraderPlusGeneralConfig.isDirty = true;
+        }
+        private void DamagedCoeffNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TraderPlusGeneralConfig.AcceptedStates.CoefficientDamaged = DamagedCoeffNUD.Value;
+            TraderPlusGeneralConfig.isDirty = true;
+
+        }
+        private void BadlyDamagedCoeffNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            TraderPlusGeneralConfig.AcceptedStates.CoefficientBadlyDamaged = BadlyDamagedCoeffNUD.Value;
             TraderPlusGeneralConfig.isDirty = true;
         }
         private void CurrencyValueNUD_ValueChanged(object sender, EventArgs e)

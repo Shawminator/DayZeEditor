@@ -2726,7 +2726,7 @@ namespace DayZeEditor
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(62, 42);
+            this.toolStripButton2.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton2.Text = "Find Next";
             this.toolStripButton2.Visible = false;
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
@@ -11009,9 +11009,9 @@ namespace DayZeEditor
             this.weatherrestartCB.AutoSize = true;
             this.weatherrestartCB.Location = new System.Drawing.Point(17, 42);
             this.weatherrestartCB.Name = "weatherrestartCB";
-            this.weatherrestartCB.Size = new System.Drawing.Size(238, 17);
+            this.weatherrestartCB.Size = new System.Drawing.Size(232, 17);
             this.weatherrestartCB.TabIndex = 0;
-            this.weatherrestartCB.Text = "Rest ( load weather from staorage on restart )";
+            this.weatherrestartCB.Text = "Rest ( load weather from storage on restart )";
             this.weatherrestartCB.UseVisualStyleBackColor = true;
             this.weatherrestartCB.CheckedChanged += new System.EventHandler(this.weatherrestartCB_CheckedChanged);
             // 

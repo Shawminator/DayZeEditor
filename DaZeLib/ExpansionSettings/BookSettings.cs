@@ -10,7 +10,7 @@ namespace DayZeLib
 {
     public class BookSettings
     {
-        const int CurrentVersion = 3;
+        const int CurrentVersion = 4;
 
         public int m_Version { get; set; } //currently 3
         public int EnableStatusTab { get; set; }
@@ -23,6 +23,7 @@ namespace DayZeLib
         public BindingList<Rulecats> RuleCategories { get; set; }
         public int DisplayServerSettingsInServerInfoTab { get; set; }
         public int ShowHaBStats { get; set; }
+        public int ShowPlayerFaction { get; set; }
         public BindingList<SettingCategories> SettingCategories { get; set; }
         public BindingList<Links> Links { get; set; }
         public BindingList<Descript> Descriptions { get; set; }

@@ -45,6 +45,19 @@ namespace DayZeLib
                     {
                         types = (types)mySerializer.Deserialize(myFileStream);
                         types.type = new BindingList<typesType>(types.type.OrderBy(x => x.name).ToList());
+                        List<string> typeslist = new List<string>();
+                        foreach(typesType type in types.type)
+                        {
+                            if(type.min > type.nominal)
+                            {
+                                typeslist.Add(type.name);
+                            }
+                        }
+                        if(typeslist.Count > 0)
+                        {
+                            Console.WriteLine("Some Items within " + Path.GetFileName(filename) + " have as greater min than nominal, please fix\n " + Path.GetFileNameWithoutExtension(filename) + "_Noms.txt has been saved to\n " + Path.GetDirectoryName(filename) + "\n");
+                            File.WriteAllLines(Path.GetDirectoryName(filename) + "\\" + Path.GetFileNameWithoutExtension(filename) + "_Noms.txt", typeslist.ToArray());
+                        }
                     }
                     catch (Exception ex)
                     {

@@ -198,6 +198,9 @@ namespace DayZeLib
         public int AcceptWorn { get; set; }
         public int AcceptDamaged { get; set; }
         public int AcceptBadlyDamaged { get; set; }
+        public decimal CoefficientWorn { get; set; }
+        public decimal CoefficientDamaged { get; set; }
+        public decimal CoefficientBadlyDamaged { get; set; }
     }
 
     public class Currency

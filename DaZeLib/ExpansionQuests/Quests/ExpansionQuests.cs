@@ -18,7 +18,7 @@ namespace DayZeLib
     }
     public class ExpansioQuestList
     {
-        const int m_QuestConfigVersion = 7;
+        const int m_QuestConfigVersion = 15;
         public static int getQuestConfigVersion
         {
             get { return m_QuestConfigVersion; }
@@ -87,7 +87,6 @@ namespace DayZeLib
                 Descriptions = new BindingList<string>(newdescription.ToList()),
                 ObjectiveText = "Short objective desctiption text.",
                 FollowUpQuest = -1,
-                IsAchivement = 0,
                 Repeatable = 0,
                 IsDailyQuest = 0,
                 IsWeeklyQuest = 0,
@@ -95,8 +94,6 @@ namespace DayZeLib
                 Autocomplete = 0,
                 IsGroupQuest = 0,
                 ObjectSetFileName = "",
-                QuestClassName = "",
-                Objectives = new BindingList<QuestObjectivesBase>(),
                 QuestItems = new BindingList<Questitem>(),
                 Rewards = new BindingList<QuestReward>(),
                 NeedToSelectReward = 0,
@@ -105,11 +102,17 @@ namespace DayZeLib
                 QuestGivers = new BindingList<ExpansionQuestNPCs>(),
                 QuestTurnInIDs = new BindingList<int>(),
                 QuestTurnIns = new BindingList<ExpansionQuestNPCs>(),
+                IsAchivement = 0,
+                Objectives = new BindingList<QuestObjectivesBase>(),
                 QuestColor = 0,
                 ReputationReward = 0,
                 ReputationRequirement = -1,
                 PreQuestIDs = new BindingList<int>(),
-                PreQuests = new BindingList<Quests>()
+                PreQuests = new BindingList<Quests>(),
+                RequiredFaction = "",
+                FactionReward = "",
+                PlayerNeedQuestItems = 0,
+                DeleteQuestItems = 0
             };
             QuestList.Add(newquest);
         }
@@ -196,6 +199,17 @@ namespace DayZeLib
                 }
             }
         }
+
+        public void setobjectiveenums()
+        {
+            foreach (Quests q in QuestList)
+            {
+                foreach(QuestObjectivesBase obj in q.Objectives)
+                {
+                    obj._ObjectiveTypeEnum = (QuExpansionQuestObjectiveTypeestType)obj.ObjectiveType;
+                }
+            }
+        }
     }
     public class Quests
     {
@@ -219,7 +233,6 @@ namespace DayZeLib
         public BindingList<string> Descriptions { get; set; } 
         public string ObjectiveText { get; set; }
         public int FollowUpQuest { get; set; }
-        public int IsAchivement { get; set; }
         public int Repeatable { get; set; }
         public int IsDailyQuest { get; set; }
         public int IsWeeklyQuest { get; set; }
@@ -227,19 +240,22 @@ namespace DayZeLib
         public int Autocomplete { get; set; }
         public int IsGroupQuest { get; set; }
         public string ObjectSetFileName { get; set; }
-        public string QuestClassName { get; set; }
-        public BindingList<QuestObjectivesBase> Objectives { get; set; }
         public BindingList<Questitem> QuestItems { get; set; }
         public BindingList<QuestReward> Rewards { get; set; }
         public int NeedToSelectReward { get; set; }
         public int RewardsForGroupOwnerOnly { get; set; }
         public BindingList<int> QuestGiverIDs { get; set; }
         public BindingList<int> QuestTurnInIDs { get; set; }
+        public int IsAchivement { get; set; }
+        public BindingList<QuestObjectivesBase> Objectives { get; set; }
         public int QuestColor { get; set; }
         public int ReputationReward { get; set; }
         public int ReputationRequirement { get; set; }
         public BindingList<int> PreQuestIDs { get; set; }
-
+        public string RequiredFaction { get; set; }
+        public string FactionReward { get; set; }
+        public int PlayerNeedQuestItems { get; set; }
+        public int DeleteQuestItems { get; set; }
 
         public Quests()
         {
@@ -317,8 +333,9 @@ namespace DayZeLib
         public string ClassName { get; set; }
         public int Amount { get; set; }
         public BindingList<string> Attachments { get; set; }
-
-        public QuestReward() { Attachments = new BindingList<string>(); }
+        public int DamagePercent { get; set; }
+        public int HealthPercent { get; set; }
+        public int QuestID { get; set; }
 
         public override string ToString()
         {

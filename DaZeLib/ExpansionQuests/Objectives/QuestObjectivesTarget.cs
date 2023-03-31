@@ -10,6 +10,8 @@ namespace DayZeLib
 {
     public class QuestObjectivesTarget: QuestObjectivesBase
     {
+        public string ObjectiveText { get; set; }
+        public int TimeLimit { get; set; }
         public float[] Position { get; set; }
         public decimal MaxDistance { get; set; }
         public Target Target { get; set; }
@@ -35,6 +37,7 @@ namespace DayZeLib
         public int SpecialWeapon { get; set; }
         public BindingList<string> AllowedWeapons { get; set; }
         public BindingList<string> ExcludedClassNames{ get; set; }
+        public int CountAIPlayers { get; set; }
         public Target() 
         {
             ClassNames = new BindingList<string>();

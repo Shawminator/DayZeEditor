@@ -424,6 +424,8 @@ namespace DayZeEditor
             if(listBox1.SelectedItem == null) { return; }
             string profilename = listBox1.GetItemText(listBox1.SelectedItem);
             SetActiveProject(profilename);
+            Console.WriteLine("The Current Active Project is " + projects.ActiveProject);
+            Console.WriteLine("Please click the select section to get the pop out menu");
         }
         private void SetActiveProject(string profilename)
         {

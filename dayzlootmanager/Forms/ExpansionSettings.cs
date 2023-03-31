@@ -2303,6 +2303,7 @@ namespace DayZeEditor
             CreateBookmarksCB.Checked = BookSettings.CreateBookmarks == 1 ? true : false;
             DisplayServerSettingsInServerInfoTabCB.Checked = BookSettings.DisplayServerSettingsInServerInfoTab == 1 ? true : false;
             ShowHaBStatsCB.Checked = BookSettings.ShowHaBStats == 1 ? true : false;
+            ShowPlayerFactionCB.Checked = BookSettings.ShowPlayerFaction == 1 ? true : false;
 
             listBox10.DisplayMember = "DisplayName";
             listBox10.ValueMember = "Value";
@@ -2529,6 +2530,12 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             BookSettings.ShowHaBStats = ShowHaBStatsCB.Checked == true ? 1 : 0;
+            BookSettings.isDirty = true;
+        }
+        private void ShowPlayerFactionCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            BookSettings.ShowPlayerFaction = ShowPlayerFactionCB.Checked == true ? 1 : 0;
             BookSettings.isDirty = true;
         }
         private void DisplayServerSettingsInServerInfoTabCB_CheckedChanged(object sender, EventArgs e)
@@ -2816,7 +2823,8 @@ namespace DayZeEditor
             ShowVehicleDebugMarkersCB.Checked = DebugSettings.ShowVehicleDebugMarkers == 1 ? true : false;
             DebugVehicleSyncCB.Checked = DebugSettings.DebugVehicleSync == 1 ? true : false;
             DebugVehicleTransformSetCB.Checked = DebugSettings.DebugVehicleTransformSet == 1 ? true : false;
-            DebugVehiclePlayerNetworkBubbleModeCB.Checked = DebugSettings.DebugVehiclePlayerNetworkBubbleMode == 1 ? true : false;
+            DebugVehiclePlayerNetworkBubbleModeNUD.Value = DebugSettings.DebugVehiclePlayerNetworkBubbleMode;
+            ServerUpdateRateLimitNUD.Value = DebugSettings.ServerUpdateRateLimit;
             useraction = true;
         }
         private void DebugSettingsCB_CheckedChanged(object sender, EventArgs e)
@@ -2824,6 +2832,20 @@ namespace DayZeEditor
             if (!useraction) return;
             CheckBox cb = sender as CheckBox;
             DebugSettings.SetIntValue(cb.Name.Substring(0, cb.Name.Length - 2), cb.Checked == true ? 1 : 0);
+            DebugSettings.isDirty = true;
+        }
+        private void DebugVehiclePlayerNetworkBubbleModeNUD_ValueChanged(object sender, EventArgs e)
+        {
+
+            if (!useraction) return;
+            DebugSettings.DebugVehiclePlayerNetworkBubbleMode = (int)DebugVehiclePlayerNetworkBubbleModeNUD.Value;
+            DebugSettings.isDirty = true;
+        }
+        private void ServerUpdateRateLimitNUD_ValueChanged(object sender, EventArgs e)
+        {
+
+            if (!useraction) return;
+            DebugSettings.ServerUpdateRateLimit = (int)ServerUpdateRateLimitNUD.Value;
             DebugSettings.isDirty = true;
         }
         #endregion debugsettings
@@ -2932,7 +2954,9 @@ namespace DayZeEditor
             EnableItemRarityCB.Checked = HardLineSettings.EnableItemRarity == 1 ? true : false;
             UseItemRarityForMarketPurchaseNCB.Checked = HardLineSettings.UseItemRarityForMarketPurchase == 1 ? true : false;
             UseItemRarityForMarketSellCB.Checked = HardLineSettings.UseItemRarityForMarketSell == 1 ? true : false;
-            
+            EnableFactionPersistenceCB.Checked = HardLineSettings.EnableFactionPersistence == 1 ? true : false;
+            UseFactionReputationCB.Checked = HardLineSettings.UseFactionReputation == 1 ? true : false;
+
 
             ReputationOnKillInfectedNUD.Value = HardLineSettings.ReputationOnKillInfected;
             ReputationOnKillPlayerNUD.Value = HardLineSettings.ReputationOnKillPlayer;
@@ -3085,7 +3109,20 @@ namespace DayZeEditor
         private void treeViewMS2_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
         }
-         #endregion
+        private void EnableFactionPersistenceCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            HardLineSettings.EnableFactionPersistence = EnableFactionPersistenceCB.Checked == true ? 1 : 0;
+            HardLineSettings.isDirty = true;
+        }
+
+        private void UseFactionReputationCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            HardLineSettings.UseFactionReputation = UseFactionReputationCB.Checked == true ? 1 : 0;
+            HardLineSettings.isDirty = true;
+        }
+        #endregion
 
         #region logsettings
         private void loadlogsettings()
@@ -7113,10 +7150,7 @@ namespace DayZeEditor
             darkLabel252.Text = "UTC Time : " + TimeZoneInfo.ConvertTimeToUtc(localtime, TimeZoneInfo.Local).ToString();
         }
 
-        private void SafeRaidToolsLB_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
     }
     public class NullToEmptyGearConverter : JsonConverter<Gear>
     {

@@ -27,7 +27,7 @@ namespace DayZeLib
 
     public class QuestObjectivesBase : IEquatable<QuestObjectivesBase>
     {
-        const int m_currentConfigVersion = 11;
+        const int m_currentConfigVersion = 18;
 
         [JsonIgnore]
         public static readonly string[] Objectvetypesname = {"","", "Target", "Travel", "Collection", "Delivery", "TreasureHunt", "AIPatrol", "AICamp", "AIVIP", "Action", "Crafting"};
@@ -36,13 +36,12 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty = false;
         [JsonIgnore]
-        public QuExpansionQuestObjectiveTypeestType QuestType { get; set; }
+        public QuExpansionQuestObjectiveTypeestType _ObjectiveTypeEnum { get; set; }
 
         public int ConfigVersion { get; set; }
         public int ID { get; set; }
         public int ObjectiveType { get; set; }
-        public string ObjectiveText { get; set; }
-        public int TimeLimit { get; set; }
+
 
         static public int GetconfigVersion
         {
@@ -59,7 +58,7 @@ namespace DayZeLib
         }
         public override string ToString()
         {
-            return ObjectiveText + ", type:" + (QuExpansionQuestObjectiveTypeestType)ObjectiveType + ", ID:"+ID.ToString();
+            return "ObjectiveType: " + (QuExpansionQuestObjectiveTypeestType)ObjectiveType + "  ID: "+ID.ToString();
         }
 
         public bool Equals(QuestObjectivesBase other)
@@ -71,7 +70,7 @@ namespace DayZeLib
         public void backupandDelete(string questObjectivesPath)
         {
             string SaveTime = DateTime.Now.ToString("ddMMyy_HHmmss");
-            questObjectivesPath += "\\" + Objectvetypesname[(int)QuestType];
+            questObjectivesPath += "\\" + Objectvetypesname[(int)_ObjectiveTypeEnum];
             string Fullfilename = questObjectivesPath + "\\" + Filename + ".json";
             if (File.Exists(Fullfilename))
             {
@@ -110,7 +109,7 @@ namespace DayZeLib
                             Console.WriteLine("serializing " + file.Name);
                             QuestObjectivesBase newobjective = JsonSerializer.Deserialize<QuestObjectivesBase>(File.ReadAllText(file.FullName));
                             newobjective.Filename = Path.GetFileNameWithoutExtension(file.Name);
-                            newobjective.QuestType = (QuExpansionQuestObjectiveTypeestType)newobjective.ObjectiveType;
+                            newobjective._ObjectiveTypeEnum = (QuExpansionQuestObjectiveTypeestType)newobjective.ObjectiveType;
                             if(newobjective.ConfigVersion != QuestObjectivesBase.GetconfigVersion)
                             {
                                 newobjective.ConfigVersion = QuestObjectivesBase.GetconfigVersion;
@@ -146,7 +145,7 @@ namespace DayZeLib
             List<int> Numberofobjectives = new List<int>();
             foreach (QuestObjectivesBase objectives in Objectives)
             {
-                if(objectives.QuestType == type)
+                if(objectives._ObjectiveTypeEnum == type)
                     Numberofobjectives.Add(objectives.ID);
             }
             Numberofobjectives.Sort();

@@ -12,7 +12,7 @@ namespace DayZeLib
     public class AIPatrolSettings
     {
         [JsonIgnore]
-        const int CurrentVersion = 11;
+        const int CurrentVersion = 12;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -69,6 +69,7 @@ namespace DayZeLib
 
         public string Faction { get; set; }
         public string Formation { get; set; }
+        public decimal FormationLooseness { get; set; }
         public string LoadoutFile { get; set; }
         public int NumberOfAI { get; set; }
         public string Behaviour { get; set; }
@@ -104,6 +105,7 @@ namespace DayZeLib
 
         public string Faction { get; set; }
         public string Formation { get; set; }
+        public decimal FormationLooseness { get; set; }
         public string LoadoutFile { get; set; }
         public int NumberOfAI { get; set; }
         public string Behaviour { get; set; }

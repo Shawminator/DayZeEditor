@@ -4,13 +4,14 @@ namespace DayZeLib
 {
     public class DebugSettings
     {
-        const int CurrentVersion = 0;
+        const int CurrentVersion = 2;
 
         public int m_Version { get; set; }
         public int ShowVehicleDebugMarkers { get; set; }
         public int DebugVehicleSync { get; set; }
         public int DebugVehicleTransformSet { get; set; }
         public int DebugVehiclePlayerNetworkBubbleMode { get; set; }
+        public int ServerUpdateRateLimit { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }

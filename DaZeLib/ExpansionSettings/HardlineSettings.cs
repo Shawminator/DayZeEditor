@@ -12,7 +12,7 @@ namespace DayZeLib
 {
     public class HardLineSettings
     {
-        const int CurrentVersion = 6;
+        const int CurrentVersion = 7;
 
         public int m_Version { get; set; }
         public int ReputationOnKillInfected { get; set; }
@@ -30,6 +30,8 @@ namespace DayZeLib
         public int ExoticItemRequirement { get; set; }
         public int ShowHardlineHUD { get; set; }
         public int UseReputation { get; set; }
+        public int UseFactionReputation { get; set;}
+        public int EnableFactionPersistence { get; set; }
         public int EnableItemRarity { get; set; }
         public int UseItemRarityForMarketPurchase { get; set; }
         public int UseItemRarityForMarketSell { get; set; }
