@@ -27,6 +27,7 @@ namespace DayZeEditor
 
         public BindingList<string> Factions { get; private set; }
         public float[] CurrentWapypoint { get; private set; }
+        public treasurehunitemvarients LootVarients { get; private set; }
 
         private bool useraction;
 
@@ -164,7 +165,7 @@ namespace DayZeEditor
             {
                 QuestSettings = JsonSerializer.Deserialize<QuestSettings>(File.ReadAllText(QuestsSettingsPath));
                 QuestSettings.isDirty = false;
-                if (Helper.checkver(QuestSettings.m_Version, QuestSettings.CurrentVersion))
+                if (QuestSettings.checkver())
                 {
                     QuestSettings.isDirty = true;
                     needtosave = true;
@@ -183,7 +184,7 @@ namespace DayZeEditor
             {
                 QuestPersistentServerData = JsonSerializer.Deserialize<QuestPersistentServerData>(File.ReadAllText(QuestPersistantServerDataPath));
                 QuestPersistentServerData.isDirty = false;
-                if (Helper.checkver(QuestPersistentServerData.ConfigVersion, QuestPersistentServerData.m_currentConfigVersion))
+                if (QuestPersistentServerData.checkver())
                 {
                     QuestPersistentServerData.isDirty = true;
                     needtosave = true;
@@ -615,9 +616,6 @@ namespace DayZeEditor
             QuestIntsLB.ValueMember = "Value";
             QuestIntsLB.DataSource = questints;
 
-            QuestActionsLB.DisplayMember = "DisplayName";
-            QuestActionsLB.ValueMember = "Value";
-            QuestActionsLB.DataSource = QuestSettings.QuestActions;
 
             useraction = true;
         }
@@ -694,45 +692,6 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             Helper.SetIntValue(QuestSettings, QuestIntsLB.GetItemText(QuestIntsLB.SelectedItem), (int)QuestIntsNUD.Value);
-            QuestSettings.isDirty = true;
-        }
-        private void QuestActionsLB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            useraction = false;
-            QuestActions currentquestaction = QuestActionsLB.SelectedItem as QuestActions;
-            QuestActionNameTB.Text = currentquestaction.ActionName;
-            QuestActionMethodTB.Text = currentquestaction.MethodName;
-            useraction = true;
-        }
-        private void QuestActionNameTB_TextChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestActions currentquestaction = QuestActionsLB.SelectedItem as QuestActions;
-            currentquestaction.ActionName = QuestActionNameTB.Text;
-            QuestSettings.isDirty = true;
-        }
-        private void QuestActionMethodTB_TextChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestActions currentquestaction = QuestActionsLB.SelectedItem as QuestActions;
-            currentquestaction.MethodName = QuestActionMethodTB.Text;
-            QuestSettings.isDirty = true;
-        }
-        private void darkButton78_Click(object sender, EventArgs e)
-        {
-            QuestActions newquestaction = new QuestActions()
-            {
-                ActionName = "newActionName",
-                MethodName = "newMethodName"
-            };
-            QuestSettings.QuestActions.Add(newquestaction);
-            QuestActionsLB.Refresh();
-            QuestSettings.isDirty = true;
-        }
-        private void darkButton79_Click(object sender, EventArgs e)
-        {
-            QuestActions currentquestaction = QuestActionsLB.SelectedItem as QuestActions;
-            QuestSettings.QuestActions.Remove(currentquestaction);
             QuestSettings.isDirty = true;
         }
         #endregion questsettings
@@ -2330,7 +2289,7 @@ namespace DayZeEditor
                 _ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.DELIVERY,
                 ObjectiveText = "New Delivery Objective",
                 TimeLimit = -1,
-                Deliveries = new BindingList<Delivery>(),
+                Collections = new BindingList<Delivery>(),
                 MaxDistance = 50,
                 MarkerName = "",
                 ShowDistance = 0,
@@ -3500,7 +3459,7 @@ namespace DayZeEditor
             checkBox6.Checked = CurrentDelivery.AddItemsToNearbyMarketZone == 1 ? true : false;
             ObjectivesDeliveryDeliveriesLB.DisplayMember = "DisplayName";
             ObjectivesDeliveryDeliveriesLB.ValueMember = "Value";
-            ObjectivesDeliveryDeliveriesLB.DataSource = CurrentDelivery.Deliveries;
+            ObjectivesDeliveryDeliveriesLB.DataSource = CurrentDelivery.Collections;
 
             useraction = true;
         }
@@ -3562,7 +3521,7 @@ namespace DayZeEditor
                         ClassName = l,
                         Amount = 1
                     };
-                    CurrentDelivery.Deliveries.Add(newDelivery);
+                    CurrentDelivery.Collections.Add(newDelivery);
                     ObjectivesDeliveryDeliveriesLB.Refresh();
                 }
                 CurrentDelivery.isDirty = true;
@@ -3575,7 +3534,7 @@ namespace DayZeEditor
         private void darkButton54_Click(object sender, EventArgs e)
         {
             QuestObjectivesDelivery CurrentDelivery = CurrentTreeNodeTag as QuestObjectivesDelivery;
-            CurrentDelivery.Deliveries.Remove(CurrentDeliveries);
+            CurrentDelivery.Collections.Remove(CurrentDeliveries);
             CurrentDelivery.isDirty = true;
             ObjectivesDeliveryDeliveriesLB.Refresh();
         }
@@ -3911,10 +3870,41 @@ namespace DayZeEditor
             CurrentTreasureHuntItems = ObjectivesTreasureHuntItemsLB.SelectedItem as TreasureHuntItems;
             useraction = false;
 
+            if (CurrentTreasureHuntItems.Chance > 1)
+                CurrentTreasureHuntItems.Chance = 1;
+            ObjectivesTreasureHuntChanceTB.Value = (int)(CurrentTreasureHuntItems.Chance * 1000);
+            darkLabel147.Text = ((decimal)(ObjectivesTreasureHuntChanceTB.Value) / 10).ToString() + "%";
+            ObjectivesTreasureHuntMaxCountNUD.Value = CurrentTreasureHuntItems.Max;
+            ObjectivesTreasureHuntQualityPercentNUD.Value = CurrentTreasureHuntItems.QuantityPercent;
 
+            ObjectivesTreasureHuntAttachmentsLB.DisplayMember = "DisplayName";
+            ObjectivesTreasureHuntAttachmentsLB.ValueMember = "Value";
+            ObjectivesTreasureHuntAttachmentsLB.DataSource = CurrentTreasureHuntItems.Attachments;
 
+            listBox21.DataSource = null;
+            listBox22.DataSource = null;
 
+            if (CurrentTreasureHuntItems.Variants.Count > 0)
+            {
+                listBox21.DisplayMember = "DisplayName";
+                listBox21.ValueMember = "Value";
+                listBox21.DataSource = CurrentTreasureHuntItems.Variants;
+            }
             useraction = true;
+        }
+        private void listBox21_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox21.SelectedItems.Count < 1) return;
+            LootVarients = listBox21.SelectedItem as treasurehunitemvarients;
+            useraction = false;
+            VarientChanceTrackBar.Value = (int)(LootVarients.Chance * 1000);
+            darkLabel159.Text = ((decimal)(VarientChanceTrackBar.Value) / 10).ToString() + "%";
+
+            listBox22.DisplayMember = "DisplayName";
+            listBox22.ValueMember = "Value";
+            listBox22.DataSource = LootVarients.Attachments;
+            useraction = true;
+
         }
         private void darkButton68_Click(object sender, EventArgs e)
         {
@@ -4077,12 +4067,12 @@ namespace DayZeEditor
                 {
                     TreasureHuntItems newcollection = new TreasureHuntItems()
                     {
-                        ClassName = l,
+                        Name = l,
                         Attachments = new BindingList<string>(),
                         Chance = (decimal)0.5,
                         QuantityPercent = -1,
                         Max = -1,
-                        Variants = new BindingList<TreasureHuntItems>()
+                        Variants = new BindingList<treasurehunitemvarients>()
                     };
                     CurrentTreasureHunt.Loot.Add(newcollection);
                     ObjectivesTreasureHuntItemsLB.Refresh();
@@ -4107,37 +4097,6 @@ namespace DayZeEditor
             QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
             CurrentTreasureHunt.LootitemsAmount = (int)ObjectivesTreasureHuntAmountNUD.Value;
             CurrentTreasureHunt.isDirty = true;
-        }
-        private void ObjectivesTreasureHuntClassnameTB_TextChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
-            CurrentTreasureHuntItems.ClassName = ObjectivesTreasureHuntClassnameTB.Text;
-            CurrentTreasureHunt.isDirty = true;
-        }
-        private void darkButton71_Click(object sender, EventArgs e)
-        {
-            AddItemfromTypes form = new AddItemfromTypes
-            {
-                vanillatypes = vanillatypes,
-                ModTypes = ModTypes,
-                currentproject = currentproject,
-                UseOnlySingleitem = true
-
-            };
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                List<string> addedtypes = form.addedtypes.ToList();
-                foreach (string l in addedtypes)
-                {
-                    ObjectivesTreasureHuntClassnameTB.Text = l;
-                }
-            }
-            else if (result == DialogResult.Cancel)
-            {
-                return;
-            }
         }
         private void checkBox10_CheckedChanged(object sender, EventArgs e)
         {
@@ -4174,8 +4133,149 @@ namespace DayZeEditor
             CurrentTreasureHunt.MarkerVisibility = (int)numericUpDown17.Value;
             CurrentTreasureHunt.isDirty = true;
         }
+        private void ObjectivesTreasureHuntAttADDButton_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    if (!CurrentTreasureHuntItems.Attachments.Contains(l))
+                    {
+                        CurrentTreasureHuntItems.Attachments.Add(l);
+                        CurrentTreasureHunt.isDirty = true;
+                    }
+                    else
+                        MessageBox.Show("Attachments Type allready in the list.....");
+                }
+            }
+        }
+        private void ObjectivesTreasureHuntAttREMButton_Click(object sender, EventArgs e)
+        {
+            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
+            CurrentTreasureHuntItems.Attachments.Remove(ObjectivesTreasureHuntAttachmentsLB.GetItemText(ObjectivesTreasureHuntAttachmentsLB.SelectedItem));
+            CurrentTreasureHunt.isDirty = true;
+        }
+        private void darkButton78_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
+                List<string> addedtypes = form.addedtypes.ToList();
+                if (CurrentTreasureHuntItems.Variants.Count == 0)
+                {
+                    listBox21.DisplayMember = "DisplayName";
+                    listBox21.ValueMember = "Value";
+                    listBox21.DataSource = CurrentTreasureHuntItems.Variants;
+                }
+                foreach (string l in addedtypes)
+                {
+                    treasurehunitemvarients newlootVarients = new treasurehunitemvarients()
+                    {
+                        Name = l,
+                        Attachments = new BindingList<string>(),
+                        Chance = 0.5f,
+                    };
+                    CurrentTreasureHuntItems.Variants.Add(newlootVarients);
+                    CurrentTreasureHunt.isDirty = true;
+                }
 
-
+            }
+        }
+        private void darkButton79_Click(object sender, EventArgs e)
+        {
+            CurrentTreasureHuntItems.Variants.Remove(LootVarients);
+            listBox22.DataSource = null;
+            listBox21.SelectedIndex = -1;
+            if (CurrentTreasureHuntItems.Variants.Count > 0)
+            {
+                listBox21.SelectedIndex = 0;
+            }
+            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
+            CurrentTreasureHunt.isDirty = true;
+        }
+        private void darkButton6_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    if (!LootVarients.Attachments.Contains(l))
+                    {
+                        LootVarients.Attachments.Add(l);
+                        CurrentTreasureHunt.isDirty = true;
+                    }
+                    else
+                        MessageBox.Show("Attachments Type allready in the Varients list.....");
+                }
+            }
+        }
+        private void darkButton7_Click(object sender, EventArgs e)
+        {
+            LootVarients.Attachments.Remove(listBox22.GetItemText(listBox22.SelectedItem));
+            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
+            CurrentTreasureHunt.isDirty = true;
+        }
+        private void ObjectivesTreasureHuntChanceTB_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (CurrentTreasureHuntItems == null) return;
+            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
+            CurrentTreasureHuntItems.Chance = (((decimal)ObjectivesTreasureHuntChanceTB.Value) / 1000);
+            CurrentTreasureHunt.isDirty = true;
+        }
+        private void ObjectivesTreasureHuntChanceTB_Scroll(object sender, EventArgs e)
+        {
+            darkLabel147.Text = ((decimal)(ObjectivesTreasureHuntChanceTB.Value) / 10).ToString() + "%";
+        }
+        private void ObjectivesTreasureHuntQualityPercentNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (CurrentTreasureHuntItems == null) return;
+            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
+            CurrentTreasureHuntItems.QuantityPercent = (int)ObjectivesTreasureHuntQualityPercentNUD.Value;
+            CurrentTreasureHunt.isDirty = true;
+        }
+        private void ObjectivesTreasureHuntMaxCountNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (CurrentTreasureHuntItems == null) return;
+            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
+            CurrentTreasureHuntItems.Max = (int)ObjectivesTreasureHuntMaxCountNUD.Value;
+            CurrentTreasureHunt.isDirty = true;
+        }
+        private void VarientChanceTrackBar_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (LootVarients == null) return;
+            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
+            LootVarients.Chance = (float)(((decimal)VarientChanceTrackBar.Value) / 1000);
+            CurrentTreasureHunt.isDirty = true;
+        }
+        private void VarientChanceTrackBar_Scroll(object sender, EventArgs e)
+        {
+            darkLabel159.Text = ((decimal)(VarientChanceTrackBar.Value) / 10).ToString() + "%";
+        }
         #endregion objectives
 
         #region Persistant Player Data
@@ -4329,6 +4429,16 @@ namespace DayZeEditor
         {
 
         }
+
+
+
+
+
+
+
+
+
+
 
 
 

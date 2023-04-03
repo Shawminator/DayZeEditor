@@ -1109,6 +1109,8 @@ namespace DayZeEditor
             this.ReputationOnKillInfectedNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel232 = new DarkUI.Controls.DarkLabel();
             this.groupBox72 = new System.Windows.Forms.GroupBox();
+            this.EnableFactionPersistenceCB = new System.Windows.Forms.CheckBox();
+            this.UseFactionReputationCB = new System.Windows.Forms.CheckBox();
             this.UseItemRarityForMarketPurchaseNCB = new System.Windows.Forms.CheckBox();
             this.UseItemRarityForMarketSellCB = new System.Windows.Forms.CheckBox();
             this.EnableItemRarityCB = new System.Windows.Forms.CheckBox();
@@ -1187,8 +1189,6 @@ namespace DayZeEditor
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
-            this.UseFactionReputationCB = new System.Windows.Forms.CheckBox();
-            this.EnableFactionPersistenceCB = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -2214,6 +2214,7 @@ namespace DayZeEditor
             this.listBox4.Size = new System.Drawing.Size(120, 316);
             this.listBox4.TabIndex = 0;
             this.listBox4.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.listBox4.SelectedIndexChanged += new System.EventHandler(this.listBox4_SelectedIndexChanged);
             // 
             // darkButton8
             // 
@@ -2243,9 +2244,9 @@ namespace DayZeEditor
             this.darkLabel23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.darkLabel23.Location = new System.Drawing.Point(354, 57);
             this.darkLabel23.Name = "darkLabel23";
-            this.darkLabel23.Size = new System.Drawing.Size(40, 13);
+            this.darkLabel23.Size = new System.Drawing.Size(15, 13);
             this.darkLabel23.TabIndex = 55;
-            this.darkLabel23.Text = "Radius";
+            this.darkLabel23.Text = "%";
             // 
             // trackBar1
             // 
@@ -2255,7 +2256,7 @@ namespace DayZeEditor
             this.trackBar1.Size = new System.Drawing.Size(191, 45);
             this.trackBar1.TabIndex = 3;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
-            this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
+            this.trackBar1.ValueChanged += new System.EventHandler(this.darkButton52_Click);
             this.trackBar1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackBar1_MouseUp);
             // 
             // darkLabel22
@@ -15645,6 +15646,28 @@ namespace DayZeEditor
             this.groupBox72.TabStop = false;
             this.groupBox72.Text = "General";
             // 
+            // EnableFactionPersistenceCB
+            // 
+            this.EnableFactionPersistenceCB.AutoSize = true;
+            this.EnableFactionPersistenceCB.Location = new System.Drawing.Point(17, 157);
+            this.EnableFactionPersistenceCB.Name = "EnableFactionPersistenceCB";
+            this.EnableFactionPersistenceCB.Size = new System.Drawing.Size(155, 17);
+            this.EnableFactionPersistenceCB.TabIndex = 12;
+            this.EnableFactionPersistenceCB.Text = "Enable Faction Persistence";
+            this.EnableFactionPersistenceCB.UseVisualStyleBackColor = true;
+            this.EnableFactionPersistenceCB.CheckedChanged += new System.EventHandler(this.EnableFactionPersistenceCB_CheckedChanged);
+            // 
+            // UseFactionReputationCB
+            // 
+            this.UseFactionReputationCB.AutoSize = true;
+            this.UseFactionReputationCB.Location = new System.Drawing.Point(17, 134);
+            this.UseFactionReputationCB.Name = "UseFactionReputationCB";
+            this.UseFactionReputationCB.Size = new System.Drawing.Size(138, 17);
+            this.UseFactionReputationCB.TabIndex = 11;
+            this.UseFactionReputationCB.Text = "Use Faction Reputation";
+            this.UseFactionReputationCB.UseVisualStyleBackColor = true;
+            this.UseFactionReputationCB.CheckedChanged += new System.EventHandler(this.UseFactionReputationCB_CheckedChanged);
+            // 
             // UseItemRarityForMarketPurchaseNCB
             // 
             this.UseItemRarityForMarketPurchaseNCB.AutoSize = true;
@@ -16607,28 +16630,6 @@ namespace DayZeEditor
             this.toolStripSeparator17.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.toolStripSeparator17.Name = "toolStripSeparator17";
             this.toolStripSeparator17.Size = new System.Drawing.Size(6, 28);
-            // 
-            // UseFactionReputationCB
-            // 
-            this.UseFactionReputationCB.AutoSize = true;
-            this.UseFactionReputationCB.Location = new System.Drawing.Point(17, 134);
-            this.UseFactionReputationCB.Name = "UseFactionReputationCB";
-            this.UseFactionReputationCB.Size = new System.Drawing.Size(138, 17);
-            this.UseFactionReputationCB.TabIndex = 11;
-            this.UseFactionReputationCB.Text = "Use Faction Reputation";
-            this.UseFactionReputationCB.UseVisualStyleBackColor = true;
-            this.UseFactionReputationCB.CheckedChanged += new System.EventHandler(this.UseFactionReputationCB_CheckedChanged);
-            // 
-            // EnableFactionPersistenceCB
-            // 
-            this.EnableFactionPersistenceCB.AutoSize = true;
-            this.EnableFactionPersistenceCB.Location = new System.Drawing.Point(17, 157);
-            this.EnableFactionPersistenceCB.Name = "EnableFactionPersistenceCB";
-            this.EnableFactionPersistenceCB.Size = new System.Drawing.Size(155, 17);
-            this.EnableFactionPersistenceCB.TabIndex = 12;
-            this.EnableFactionPersistenceCB.Text = "Enable Faction Persistence";
-            this.EnableFactionPersistenceCB.UseVisualStyleBackColor = true;
-            this.EnableFactionPersistenceCB.CheckedChanged += new System.EventHandler(this.EnableFactionPersistenceCB_CheckedChanged);
             // 
             // ExpansionSettings
             // 

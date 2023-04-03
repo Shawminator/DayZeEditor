@@ -20,15 +20,11 @@ namespace DayZeLib
         public bool isDirty = false;
 
         public int ConfigVersion { get; set; }
-        public int LastWeeklyReset { get; set; }
-        public int LastDailyReset { get; set; }
         public BindingList<Object> m_QuestMarketItems { get; set; }
 
         public QuestPersistentServerData()
         {
             ConfigVersion = m_currentConfigVersion;
-            LastDailyReset = 1662883200;
-            LastDailyReset = 1662883200;
             m_QuestMarketItems = new BindingList<object>();
         }
 

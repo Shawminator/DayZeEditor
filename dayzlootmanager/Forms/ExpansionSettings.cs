@@ -1383,6 +1383,7 @@ namespace DayZeEditor
             if (CL.Chance > 1)
                 CL.Chance = 1;
             trackBar1.Value = (int)(CL.Chance * 1000);
+            darkLabel23.Text = ((decimal)(trackBar1.Value) / 10).ToString() + "%";
             numericUpDown12.Value = CL.Max;
             numericUpDown31.Value = CL.QuantityPercent;
             listBox4.DisplayMember = "DisplayName";
@@ -1405,10 +1406,14 @@ namespace DayZeEditor
             if (listBox21.SelectedItems.Count < 1) return;
             LootVarients = listBox21.SelectedItem as lootVarients;
             useraction = false;
+
+            VarientChanceTrackBar.Value = (int)(LootVarients.Chance * 1000);
+            darkLabel159.Text = ((decimal)(VarientChanceTrackBar.Value) / 10).ToString() + "%";
+
             listBox22.DisplayMember = "DisplayName";
             listBox22.ValueMember = "Value";
             listBox22.DataSource = LootVarients.Attachments;
-            VarientChanceTrackBar.Value = (int)(LootVarients.Chance * 1000);
+
             useraction = true;
         }
         private void darkButton2_Click(object sender, EventArgs e)
@@ -1527,7 +1532,7 @@ namespace DayZeEditor
                         AirdropsettingsJson.isDirty = true;
                     }
                     else
-                        MessageBox.Show("Attachments Type allready in teh list.....");
+                        MessageBox.Show("Attachments Type allready in the list.....");
                 }
             }
         }
@@ -7150,7 +7155,10 @@ namespace DayZeEditor
             darkLabel252.Text = "UTC Time : " + TimeZoneInfo.ConvertTimeToUtc(localtime, TimeZoneInfo.Local).ToString();
         }
 
+        private void listBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
     }
     public class NullToEmptyGearConverter : JsonConverter<Gear>
     {

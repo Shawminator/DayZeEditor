@@ -12,7 +12,7 @@ namespace DayZeLib
     {
         public string ObjectiveText { get; set; }
         public int TimeLimit { get; set; }
-        public BindingList<Delivery> Deliveries { get; set; }
+        public BindingList<Delivery> Collections { get; set; }
         public decimal MaxDistance { get; set; }
         public string MarkerName { get; set; }
         public int ShowDistance { get; set; }
@@ -20,7 +20,7 @@ namespace DayZeLib
 
         public QuestObjectivesDelivery()
         {
-            Deliveries = new BindingList<Delivery>();
+            Collections = new BindingList<Delivery>();
         }
         public override string ToString()
         {

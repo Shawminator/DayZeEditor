@@ -31,17 +31,34 @@ namespace DayZeLib
 
     public class TreasureHuntItems
     {
-        public string ClassName { get; set; }
+        public string Name { get; set; }
         public BindingList<string> Attachments { get; set; }
         public decimal Chance { get; set; }
         public int QuantityPercent { get; set; }
+        public BindingList<treasurehunitemvarients> Variants { get; set; }
         public int Max { get; set; }
-        public BindingList<TreasureHuntItems> Variants { get; set; }
+
 
         public TreasureHuntItems() { }
         public override string ToString()
         {
-            return ClassName;
+            return Name;
+        }
+    }
+    public class treasurehunitemvarients
+    {
+        public string Name { get; set; }
+        public BindingList<string> Attachments { get; set; }
+        public float Chance { get; set; }
+
+        public treasurehunitemvarients()
+        {
+            Attachments = new BindingList<string>();
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

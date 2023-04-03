@@ -12,7 +12,7 @@ namespace DayZeLib
     public class QuestSettings
     {
         [JsonIgnore]
-        public const int CurrentVersion = 7;
+        public const int CurrentVersion = 8;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -43,7 +43,7 @@ namespace DayZeLib
         public string QuestNotGroupOwnerTitle { get; set; }
         public string QuestNotGroupOwnerText { get; set; }
         public int GroupQuestMode { get; set; }
-        public BindingList<QuestActions> QuestActions { get; set; }
+        //public BindingList<QuestActions> QuestActions { get; set; }
 
         public string WeeklyResetDay { get; set; }
         public int WeeklyResetHour { get; set; }

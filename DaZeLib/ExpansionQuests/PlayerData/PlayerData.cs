@@ -58,7 +58,7 @@ namespace DayZeLib
         public string Filename { get; set; }
         public bool isDirty { get; set; }
 
-        const int CONFIGVERSION = 2;
+        const int DATAVERSION = 2;
         public int ExpansionQuestPersistentQuestDataCount;
         public BindingList<ExpansionQuestPersistentQuestData> QuestDatas;
 
@@ -67,15 +67,11 @@ namespace DayZeLib
             using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read))
             using (BinaryReader br = new BinaryReader(fs))
             {
-                if (br.ReadInt32() != CONFIGVERSION) return;
+                if (br.ReadInt32() != DATAVERSION) return;
                 QuestDatas = new BindingList<ExpansionQuestPersistentQuestData>();
                 ExpansionQuestPersistentQuestDataCount = br.ReadInt32();
                 for(int i = 0; i < ExpansionQuestPersistentQuestDataCount; i ++)
                 {
-                    if(i == 5)
-                    {
-                        string stop = "";
-                    }
                     QuestDatas.Add(new ExpansionQuestPersistentQuestData(br));
                 }
                 long pos = br.BaseStream.Position;
@@ -103,7 +99,7 @@ namespace DayZeLib
             using (FileStream fs = new FileStream(path + "//" + Filename + ".bin", FileMode.Open, FileAccess.ReadWrite))
             using (BinaryWriter bw = new BinaryWriter(fs))
             {
-                bw.Write(CONFIGVERSION);
+                bw.Write(DATAVERSION);
                 bw.Write(ExpansionQuestPersistentQuestDataCount);
                 for (int i = 0; i < ExpansionQuestPersistentQuestDataCount; i++)
                 {
