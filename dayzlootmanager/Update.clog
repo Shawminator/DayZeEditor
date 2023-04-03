@@ -1,4 +1,8 @@
-﻿Version 0.7.5.7
+﻿Version 0.7.5.8
+[Updated]
+Updated missed debug expansion settings
+
+Version 0.7.5.7
 [fixed]
 Fixed tier duplication when editing multiple items at once.
 [Updated]

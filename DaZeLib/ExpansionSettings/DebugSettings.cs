@@ -7,9 +7,6 @@ namespace DayZeLib
         const int CurrentVersion = 2;
 
         public int m_Version { get; set; }
-        public int ShowVehicleDebugMarkers { get; set; }
-        public int DebugVehicleSync { get; set; }
-        public int DebugVehicleTransformSet { get; set; }
         public int DebugVehiclePlayerNetworkBubbleMode { get; set; }
         public int ServerUpdateRateLimit { get; set; }
 

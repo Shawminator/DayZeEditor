@@ -280,9 +280,6 @@ namespace DayZeEditor
             this.ServerUpdateRateLimitNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel216 = new DarkUI.Controls.DarkLabel();
             this.DebugVehiclePlayerNetworkBubbleModeNUD = new System.Windows.Forms.NumericUpDown();
-            this.ShowVehicleDebugMarkersCB = new System.Windows.Forms.CheckBox();
-            this.DebugVehicleSyncCB = new System.Windows.Forms.CheckBox();
-            this.DebugVehicleTransformSetCB = new System.Windows.Forms.CheckBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControl3 = new System.Windows.Forms.TabControl();
@@ -2873,9 +2870,9 @@ namespace DayZeEditor
             this.groupBox29.Controls.Add(this.tabControl4);
             this.groupBox29.Controls.Add(this.darkToolStrip25);
             this.groupBox29.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox29.Location = new System.Drawing.Point(8, 355);
+            this.groupBox29.Location = new System.Drawing.Point(7, 328);
             this.groupBox29.Name = "groupBox29";
-            this.groupBox29.Size = new System.Drawing.Size(301, 307);
+            this.groupBox29.Size = new System.Drawing.Size(301, 334);
             this.groupBox29.TabIndex = 6;
             this.groupBox29.TabStop = false;
             this.groupBox29.Text = "Social Media Settings";
@@ -2889,7 +2886,7 @@ namespace DayZeEditor
             this.tabControl4.Location = new System.Drawing.Point(3, 44);
             this.tabControl4.Name = "tabControl4";
             this.tabControl4.SelectedIndex = 0;
-            this.tabControl4.Size = new System.Drawing.Size(295, 260);
+            this.tabControl4.Size = new System.Drawing.Size(295, 287);
             this.tabControl4.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl4.TabIndex = 0;
             this.tabControl4.SelectedIndexChanged += new System.EventHandler(this.tabControl4_SelectedIndexChanged_1);
@@ -2907,7 +2904,7 @@ namespace DayZeEditor
             this.tabPage18.Location = new System.Drawing.Point(4, 25);
             this.tabPage18.Name = "tabPage18";
             this.tabPage18.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage18.Size = new System.Drawing.Size(287, 231);
+            this.tabPage18.Size = new System.Drawing.Size(287, 258);
             this.tabPage18.TabIndex = 0;
             this.tabPage18.Text = "tabPage18";
             // 
@@ -2997,7 +2994,7 @@ namespace DayZeEditor
             this.tabPage19.Location = new System.Drawing.Point(4, 25);
             this.tabPage19.Name = "tabPage19";
             this.tabPage19.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage19.Size = new System.Drawing.Size(287, 231);
+            this.tabPage19.Size = new System.Drawing.Size(287, 258);
             this.tabPage19.TabIndex = 1;
             this.tabPage19.Text = "tabPage19";
             // 
@@ -4237,7 +4234,7 @@ namespace DayZeEditor
             this.groupBox8.Controls.Add(this.SafezoneCB);
             this.groupBox8.Controls.Add(this.VehicleCarKeyCB);
             this.groupBox8.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox8.Location = new System.Drawing.Point(8, 115);
+            this.groupBox8.Location = new System.Drawing.Point(8, 88);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(301, 234);
             this.groupBox8.TabIndex = 1;
@@ -4636,13 +4633,10 @@ namespace DayZeEditor
             this.groupBox7.Controls.Add(this.ServerUpdateRateLimitNUD);
             this.groupBox7.Controls.Add(this.darkLabel216);
             this.groupBox7.Controls.Add(this.DebugVehiclePlayerNetworkBubbleModeNUD);
-            this.groupBox7.Controls.Add(this.ShowVehicleDebugMarkersCB);
-            this.groupBox7.Controls.Add(this.DebugVehicleSyncCB);
-            this.groupBox7.Controls.Add(this.DebugVehicleTransformSetCB);
             this.groupBox7.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox7.Location = new System.Drawing.Point(8, 13);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(301, 99);
+            this.groupBox7.Size = new System.Drawing.Size(301, 69);
             this.groupBox7.TabIndex = 0;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Debug";
@@ -4651,7 +4645,7 @@ namespace DayZeEditor
             // 
             this.darkLabel215.AutoSize = true;
             this.darkLabel215.ForeColor = System.Drawing.SystemColors.Control;
-            this.darkLabel215.Location = new System.Drawing.Point(77, 75);
+            this.darkLabel215.Location = new System.Drawing.Point(78, 46);
             this.darkLabel215.Name = "darkLabel215";
             this.darkLabel215.Size = new System.Drawing.Size(126, 13);
             this.darkLabel215.TabIndex = 39;
@@ -4661,7 +4655,7 @@ namespace DayZeEditor
             // 
             this.ServerUpdateRateLimitNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ServerUpdateRateLimitNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ServerUpdateRateLimitNUD.Location = new System.Drawing.Point(6, 71);
+            this.ServerUpdateRateLimitNUD.Location = new System.Drawing.Point(7, 42);
             this.ServerUpdateRateLimitNUD.Name = "ServerUpdateRateLimitNUD";
             this.ServerUpdateRateLimitNUD.Size = new System.Drawing.Size(65, 20);
             this.ServerUpdateRateLimitNUD.TabIndex = 38;
@@ -4672,7 +4666,7 @@ namespace DayZeEditor
             // 
             this.darkLabel216.AutoSize = true;
             this.darkLabel216.ForeColor = System.Drawing.SystemColors.Control;
-            this.darkLabel216.Location = new System.Drawing.Point(77, 52);
+            this.darkLabel216.Location = new System.Drawing.Point(78, 23);
             this.darkLabel216.Name = "darkLabel216";
             this.darkLabel216.Size = new System.Drawing.Size(218, 13);
             this.darkLabel216.TabIndex = 37;
@@ -4682,7 +4676,7 @@ namespace DayZeEditor
             // 
             this.DebugVehiclePlayerNetworkBubbleModeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.DebugVehiclePlayerNetworkBubbleModeNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.DebugVehiclePlayerNetworkBubbleModeNUD.Location = new System.Drawing.Point(6, 48);
+            this.DebugVehiclePlayerNetworkBubbleModeNUD.Location = new System.Drawing.Point(7, 19);
             this.DebugVehiclePlayerNetworkBubbleModeNUD.Maximum = new decimal(new int[] {
             2,
             0,
@@ -4693,45 +4687,6 @@ namespace DayZeEditor
             this.DebugVehiclePlayerNetworkBubbleModeNUD.TabIndex = 36;
             this.DebugVehiclePlayerNetworkBubbleModeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.DebugVehiclePlayerNetworkBubbleModeNUD.ValueChanged += new System.EventHandler(this.DebugVehiclePlayerNetworkBubbleModeNUD_ValueChanged);
-            // 
-            // ShowVehicleDebugMarkersCB
-            // 
-            this.ShowVehicleDebugMarkersCB.AutoSize = true;
-            this.ShowVehicleDebugMarkersCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowVehicleDebugMarkersCB.Location = new System.Drawing.Point(6, 14);
-            this.ShowVehicleDebugMarkersCB.Name = "ShowVehicleDebugMarkersCB";
-            this.ShowVehicleDebugMarkersCB.Size = new System.Drawing.Size(167, 17);
-            this.ShowVehicleDebugMarkersCB.TabIndex = 19;
-            this.ShowVehicleDebugMarkersCB.Text = "Show Vehicle Debug Markers";
-            this.ShowVehicleDebugMarkersCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ShowVehicleDebugMarkersCB.UseVisualStyleBackColor = true;
-            this.ShowVehicleDebugMarkersCB.CheckedChanged += new System.EventHandler(this.DebugSettingsCB_CheckedChanged);
-            // 
-            // DebugVehicleSyncCB
-            // 
-            this.DebugVehicleSyncCB.AutoSize = true;
-            this.DebugVehicleSyncCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.DebugVehicleSyncCB.Location = new System.Drawing.Point(6, 30);
-            this.DebugVehicleSyncCB.Name = "DebugVehicleSyncCB";
-            this.DebugVehicleSyncCB.Size = new System.Drawing.Size(123, 17);
-            this.DebugVehicleSyncCB.TabIndex = 18;
-            this.DebugVehicleSyncCB.Text = "Debug Vehicle Sync";
-            this.DebugVehicleSyncCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.DebugVehicleSyncCB.UseVisualStyleBackColor = true;
-            this.DebugVehicleSyncCB.CheckedChanged += new System.EventHandler(this.DebugSettingsCB_CheckedChanged);
-            // 
-            // DebugVehicleTransformSetCB
-            // 
-            this.DebugVehicleTransformSetCB.AutoSize = true;
-            this.DebugVehicleTransformSetCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.DebugVehicleTransformSetCB.Location = new System.Drawing.Point(129, 30);
-            this.DebugVehicleTransformSetCB.Name = "DebugVehicleTransformSetCB";
-            this.DebugVehicleTransformSetCB.Size = new System.Drawing.Size(165, 17);
-            this.DebugVehicleTransformSetCB.TabIndex = 20;
-            this.DebugVehicleTransformSetCB.Text = "Debug Vehicle Transform Set";
-            this.DebugVehicleTransformSetCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.DebugVehicleTransformSetCB.UseVisualStyleBackColor = true;
-            this.DebugVehicleTransformSetCB.CheckedChanged += new System.EventHandler(this.DebugSettingsCB_CheckedChanged);
             // 
             // tabPage1
             // 
@@ -17157,9 +17112,6 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton darkButton11;
         private System.Windows.Forms.TabPage VariousSettingsTabPage;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.CheckBox ShowVehicleDebugMarkersCB;
-        private System.Windows.Forms.CheckBox DebugVehicleSyncCB;
-        private System.Windows.Forms.CheckBox DebugVehicleTransformSetCB;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.CheckBox ATMCB;
         private System.Windows.Forms.CheckBox MarketCB;

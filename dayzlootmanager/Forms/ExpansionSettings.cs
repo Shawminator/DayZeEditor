@@ -2825,19 +2825,9 @@ namespace DayZeEditor
         private void loaddebugsettings()
         {
             useraction = false;
-            ShowVehicleDebugMarkersCB.Checked = DebugSettings.ShowVehicleDebugMarkers == 1 ? true : false;
-            DebugVehicleSyncCB.Checked = DebugSettings.DebugVehicleSync == 1 ? true : false;
-            DebugVehicleTransformSetCB.Checked = DebugSettings.DebugVehicleTransformSet == 1 ? true : false;
             DebugVehiclePlayerNetworkBubbleModeNUD.Value = DebugSettings.DebugVehiclePlayerNetworkBubbleMode;
             ServerUpdateRateLimitNUD.Value = DebugSettings.ServerUpdateRateLimit;
             useraction = true;
-        }
-        private void DebugSettingsCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CheckBox cb = sender as CheckBox;
-            DebugSettings.SetIntValue(cb.Name.Substring(0, cb.Name.Length - 2), cb.Checked == true ? 1 : 0);
-            DebugSettings.isDirty = true;
         }
         private void DebugVehiclePlayerNetworkBubbleModeNUD_ValueChanged(object sender, EventArgs e)
         {
