@@ -1383,7 +1383,6 @@ namespace DayZeEditor
             if (CL.Chance > 1)
                 CL.Chance = 1;
             trackBar1.Value = (int)(CL.Chance * 1000);
-            darkLabel23.Text = ((decimal)(trackBar1.Value) / 10).ToString() + "%";
             numericUpDown12.Value = CL.Max;
             numericUpDown31.Value = CL.QuantityPercent;
             listBox4.DisplayMember = "DisplayName";
@@ -1408,7 +1407,6 @@ namespace DayZeEditor
             useraction = false;
 
             VarientChanceTrackBar.Value = (int)(LootVarients.Chance * 1000);
-            darkLabel159.Text = ((decimal)(VarientChanceTrackBar.Value) / 10).ToString() + "%";
 
             listBox22.DisplayMember = "DisplayName";
             listBox22.ValueMember = "Value";

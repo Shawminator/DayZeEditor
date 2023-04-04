@@ -1,4 +1,12 @@
-﻿Version 0.7.5.8
+﻿Version 0.7.6.0
+[updated]
+Set Expansion debug setting Serverupdatelimit max to 1000.
+
+Version 0.7.5.9
+[Fixed]
+Expansion Airdrops thinking it needed to save even though config version was not changed.
+
+Version 0.7.5.8
 [Updated]
 Updated missed debug expansion settings
 

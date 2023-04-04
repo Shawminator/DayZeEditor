@@ -2253,7 +2253,7 @@ namespace DayZeEditor
             this.trackBar1.Size = new System.Drawing.Size(191, 45);
             this.trackBar1.TabIndex = 3;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
-            this.trackBar1.ValueChanged += new System.EventHandler(this.darkButton52_Click);
+            this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
             this.trackBar1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackBar1_MouseUp);
             // 
             // darkLabel22
@@ -4656,6 +4656,11 @@ namespace DayZeEditor
             this.ServerUpdateRateLimitNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ServerUpdateRateLimitNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ServerUpdateRateLimitNUD.Location = new System.Drawing.Point(7, 42);
+            this.ServerUpdateRateLimitNUD.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.ServerUpdateRateLimitNUD.Name = "ServerUpdateRateLimitNUD";
             this.ServerUpdateRateLimitNUD.Size = new System.Drawing.Size(65, 20);
             this.ServerUpdateRateLimitNUD.TabIndex = 38;
