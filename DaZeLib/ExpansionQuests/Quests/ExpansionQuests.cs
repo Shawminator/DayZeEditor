@@ -333,9 +333,7 @@ namespace DayZeLib
         public string ClassName { get; set; }
         public int Amount { get; set; }
         public BindingList<string> Attachments { get; set; }
-        public int DamagePercent { get; set; }
         public int HealthPercent { get; set; }
-        public int QuestID { get; set; }
 
         public override string ToString()
         {

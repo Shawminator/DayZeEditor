@@ -1226,6 +1226,7 @@ namespace DayZeEditor
             CanOnlyBuyRB.Visible = false;
             CanBuySellRB.Visible = false;
             CanOnlySellRB.Visible = false;
+            AttachmentRB.Visible = false;
             AddFromCategoryListBox.Visible = false;
             if (listBox2.SelectedItems.Count < 1) return;
             action = true;
@@ -1252,8 +1253,8 @@ namespace DayZeEditor
             };
             foreach (TradersItem name in currentTrader.ListItems)
             {
-                if (name.buysell != canBuyCansell.Attchment)
-                {
+                //if (name.buysell != canBuyCansell.Attchment)
+                //{
                     marketItem mitem = MarketCats.getitemfromcategory(name.ClassName.ToLower().Replace("#STR_EXPANSION_MARKET_CATEGORY_", ""));
 
                     Categories cat = MarketCats.GetCat(mitem);
@@ -1288,7 +1289,7 @@ namespace DayZeEditor
                         };
                         cn.Nodes.Add(itemnode);
                     }
-                }
+                //}
 
             }
             //foreach (TradersItem ti in titemstoremove)
@@ -1332,6 +1333,7 @@ namespace DayZeEditor
                     CanOnlyBuyRB.Visible = false;
                     CanBuySellRB.Visible = false;
                     CanOnlySellRB.Visible = false;
+                    AttachmentRB.Visible = false;
                     treeviewcat = e.Node.Tag as Categories;
                     contexMenu.Items.Add("Remove Category and all items");
                     contexMenu.Items.Add("Add item from category list");
@@ -1342,6 +1344,7 @@ namespace DayZeEditor
                     CanOnlyBuyRB.Visible = true;
                     CanBuySellRB.Visible = true;
                     CanOnlySellRB.Visible = true;
+                    AttachmentRB.Visible = true;
                     switch (currentnode.BuySell)
                     {
                         case 0:
@@ -1355,6 +1358,9 @@ namespace DayZeEditor
                         case 2:
                             CanOnlySellRB.Checked = true;
                             break;
+                        case 3:
+                            AttachmentRB.Checked = true;
+                            break;
                     }
                     treeviewitem = e.Node.Tag as marketItem;
                     contexMenu.Items.Add("Remove item from this trader");
@@ -1365,6 +1371,7 @@ namespace DayZeEditor
                     CanOnlyBuyRB.Visible = false;
                     CanBuySellRB.Visible = false;
                     CanOnlySellRB.Visible = false;
+                    AttachmentRB.Visible = false;
                     contexMenu.Items.Add("Add new Category and all items");
 
                 }
@@ -1383,6 +1390,7 @@ namespace DayZeEditor
                     CanOnlyBuyRB.Visible = true;
                     CanBuySellRB.Visible = true;
                     CanOnlySellRB.Visible = true;
+                    AttachmentRB.Visible = true;
                     switch (currentnode.BuySell)
                     {
                         case 0:
@@ -1396,6 +1404,9 @@ namespace DayZeEditor
                         case 2:
                             CanOnlySellRB.Checked = true;
                             break;
+                        case 3:
+                            AttachmentRB.Checked = true;
+                            break;
                     }
                 }
                 else if (e.Node.Tag is Categories)
@@ -1404,15 +1415,18 @@ namespace DayZeEditor
                     CanOnlyBuyRB.Visible = true;
                     CanBuySellRB.Visible = true;
                     CanOnlySellRB.Visible = true;
+                    AttachmentRB.Visible = true;
                     CanOnlyBuyRB.Checked = false;
                     CanBuySellRB.Checked = false;
                     CanOnlySellRB.Checked = false;
+                    AttachmentRB.Checked = false;
                 }
                 else
                 {
                     CanOnlyBuyRB.Visible = false;
                     CanBuySellRB.Visible = false;
                     CanOnlySellRB.Visible = false;
+                    AttachmentRB.Visible = false;
                 }
             }
             pcontroll = false;
@@ -1608,6 +1622,22 @@ namespace DayZeEditor
                             n.BuySell = (int)canBuyCansell.CanOnlySell;
                             TradersItem t = n.Tag as TradersItem;
                             t.buysell = canBuyCansell.CanOnlySell;
+                        }
+                    }
+                    break;
+                case "AttachmentRB":
+                    if (!buysellFullCat)
+                    {
+                        currentnode.BuySell = (int)canBuyCansell.Attchment;
+                        TI.buysell = canBuyCansell.Attchment;
+                    }
+                    else if (buysellFullCat)
+                    {
+                        foreach (MytreeNode n in currentnode.Nodes)
+                        {
+                            n.BuySell = (int)canBuyCansell.Attchment;
+                            TradersItem t = n.Tag as TradersItem;
+                            t.buysell = canBuyCansell.Attchment;
                         }
                     }
                     break;
@@ -3473,7 +3503,6 @@ namespace DayZeEditor
                 }
             }
         }
-
 
     }
 }

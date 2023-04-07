@@ -1,4 +1,11 @@
-﻿Version 0.7.6.0
+﻿Version 0.7.6.1
+[Fixed]
+Removed Quest IDS from Expansion NPC Class
+Added GUI for Quest reward Health Percent
+Updated Expansion Market trader to included manuall addition of attchment items/categories
+Expasion Quest Ai Patrol X and z were both updating the Y value.
+
+Version 0.7.6.0
 [updated]
 Set Expansion debug setting Serverupdatelimit max to 1000.
 

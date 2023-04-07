@@ -294,6 +294,32 @@ namespace DayZeEditor
             this.ObjectivesTravelPositionYNUD = new System.Windows.Forms.NumericUpDown();
             this.ObjectivesTravelPositionZNUD = new System.Windows.Forms.NumericUpDown();
             this.ObjectivesTresureHuntGB = new System.Windows.Forms.GroupBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.groupBox60 = new System.Windows.Forms.GroupBox();
+            this.darkLabel159 = new DarkUI.Controls.DarkLabel();
+            this.VarientChanceTrackBar = new System.Windows.Forms.TrackBar();
+            this.darkLabel158 = new DarkUI.Controls.DarkLabel();
+            this.groupBox61 = new System.Windows.Forms.GroupBox();
+            this.darkButton6 = new DarkUI.Controls.DarkButton();
+            this.darkButton7 = new DarkUI.Controls.DarkButton();
+            this.listBox22 = new System.Windows.Forms.ListBox();
+            this.darkButton78 = new DarkUI.Controls.DarkButton();
+            this.darkButton79 = new DarkUI.Controls.DarkButton();
+            this.listBox21 = new System.Windows.Forms.ListBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.ObjectivesTreasureHuntAttADDButton = new DarkUI.Controls.DarkButton();
+            this.ObjectivesTreasureHuntAttREMButton = new DarkUI.Controls.DarkButton();
+            this.ObjectivesTreasureHuntAttachmentsLB = new System.Windows.Forms.ListBox();
+            this.darkLabel147 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel145 = new DarkUI.Controls.DarkLabel();
+            this.ObjectivesTreasureHuntChanceTB = new System.Windows.Forms.TrackBar();
+            this.ObjectivesTreasureHuntMaxCountNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel146 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel251 = new DarkUI.Controls.DarkLabel();
+            this.ObjectivesTreasureHuntQualityPercentNUD = new System.Windows.Forms.NumericUpDown();
+            this.ObjectivesTreasureHuntItemsLB = new System.Windows.Forms.ListBox();
+            this.darkButton70 = new DarkUI.Controls.DarkButton();
+            this.darkButton69 = new DarkUI.Controls.DarkButton();
             this.darkLabel144 = new DarkUI.Controls.DarkLabel();
             this.numericUpDown17 = new System.Windows.Forms.NumericUpDown();
             this.checkBox10 = new System.Windows.Forms.CheckBox();
@@ -304,9 +330,6 @@ namespace DayZeEditor
             this.darkLabel102 = new DarkUI.Controls.DarkLabel();
             this.numericUpDown16 = new System.Windows.Forms.NumericUpDown();
             this.ObjectivesTreasureHuntShowdistanceCB = new System.Windows.Forms.CheckBox();
-            this.darkButton69 = new DarkUI.Controls.DarkButton();
-            this.darkButton70 = new DarkUI.Controls.DarkButton();
-            this.ObjectivesTreasureHuntItemsLB = new System.Windows.Forms.ListBox();
             this.darkLabel136 = new DarkUI.Controls.DarkLabel();
             this.ObjectivesTreasureHuntAmountNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel132 = new DarkUI.Controls.DarkLabel();
@@ -569,29 +592,9 @@ namespace DayZeEditor
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.removeQuestFromPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removePlayerSaveDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ObjectivesTreasureHuntQualityPercentNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel251 = new DarkUI.Controls.DarkLabel();
-            this.ObjectivesTreasureHuntMaxCountNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel145 = new DarkUI.Controls.DarkLabel();
-            this.ObjectivesTreasureHuntChanceTB = new System.Windows.Forms.TrackBar();
-            this.darkLabel146 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel147 = new DarkUI.Controls.DarkLabel();
-            this.groupBox60 = new System.Windows.Forms.GroupBox();
-            this.darkLabel159 = new DarkUI.Controls.DarkLabel();
-            this.VarientChanceTrackBar = new System.Windows.Forms.TrackBar();
-            this.darkLabel158 = new DarkUI.Controls.DarkLabel();
-            this.groupBox61 = new System.Windows.Forms.GroupBox();
-            this.darkButton6 = new DarkUI.Controls.DarkButton();
-            this.darkButton7 = new DarkUI.Controls.DarkButton();
-            this.listBox22 = new System.Windows.Forms.ListBox();
-            this.darkButton78 = new DarkUI.Controls.DarkButton();
-            this.darkButton79 = new DarkUI.Controls.DarkButton();
-            this.listBox21 = new System.Windows.Forms.ListBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.ObjectivesTreasureHuntAttADDButton = new DarkUI.Controls.DarkButton();
-            this.ObjectivesTreasureHuntAttREMButton = new DarkUI.Controls.DarkButton();
-            this.ObjectivesTreasureHuntAttachmentsLB = new System.Windows.Forms.ListBox();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.panel69 = new System.Windows.Forms.Panel();
+            this.darkLabel137 = new DarkUI.Controls.DarkLabel();
+            this.QuestRewardsHealthPercentNUD = new System.Windows.Forms.NumericUpDown();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -694,6 +697,14 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.ObjectivesTravelPositionYNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ObjectivesTravelPositionZNUD)).BeginInit();
             this.ObjectivesTresureHuntGB.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox60.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VarientChanceTrackBar)).BeginInit();
+            this.groupBox61.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesTreasureHuntChanceTB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesTreasureHuntMaxCountNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesTreasureHuntQualityPercentNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ObjectivesTreasureHuntAmountNUD)).BeginInit();
@@ -770,14 +781,8 @@ namespace DayZeEditor
             this.darkToolStrip23.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesTreasureHuntQualityPercentNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesTreasureHuntMaxCountNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesTreasureHuntChanceTB)).BeginInit();
-            this.groupBox60.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.VarientChanceTrackBar)).BeginInit();
-            this.groupBox61.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox7.SuspendLayout();
+            this.panel69.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.QuestRewardsHealthPercentNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -1845,14 +1850,14 @@ namespace DayZeEditor
             this.panel48.Controls.Add(this.QuestQuestItemsAmountNUD);
             this.panel48.Location = new System.Drawing.Point(6, 145);
             this.panel48.Name = "panel48";
-            this.panel48.Size = new System.Drawing.Size(349, 20);
+            this.panel48.Size = new System.Drawing.Size(327, 20);
             this.panel48.TabIndex = 249;
             // 
             // darkLabel67
             // 
             this.darkLabel67.AutoSize = true;
             this.darkLabel67.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel67.Location = new System.Drawing.Point(6, 2);
+            this.darkLabel67.Location = new System.Drawing.Point(3, 3);
             this.darkLabel67.Name = "darkLabel67";
             this.darkLabel67.Size = new System.Drawing.Size(66, 13);
             this.darkLabel67.TabIndex = 112;
@@ -1922,6 +1927,7 @@ namespace DayZeEditor
             // 
             // panel24
             // 
+            this.panel24.Controls.Add(this.panel69);
             this.panel24.Controls.Add(this.panel49);
             this.panel24.Controls.Add(this.darkButton26);
             this.panel24.Controls.Add(this.QuestRewardsLB);
@@ -1930,7 +1936,7 @@ namespace DayZeEditor
             this.panel24.Controls.Add(this.panel50);
             this.panel24.Location = new System.Drawing.Point(1029, 3);
             this.panel24.Name = "panel24";
-            this.panel24.Size = new System.Drawing.Size(336, 328);
+            this.panel24.Size = new System.Drawing.Size(336, 351);
             this.panel24.TabIndex = 202;
             // 
             // panel49
@@ -2020,7 +2026,7 @@ namespace DayZeEditor
             this.panel50.Controls.Add(this.QuestRewrdsAttchemntsLB);
             this.panel50.Controls.Add(this.darkButton35);
             this.panel50.Controls.Add(this.darkLabel74);
-            this.panel50.Location = new System.Drawing.Point(6, 171);
+            this.panel50.Location = new System.Drawing.Point(6, 194);
             this.panel50.Name = "panel50";
             this.panel50.Size = new System.Drawing.Size(327, 146);
             this.panel50.TabIndex = 246;
@@ -2074,7 +2080,7 @@ namespace DayZeEditor
             // 
             this.panel25.Controls.Add(this.QuestNeedToSelectRewardCB);
             this.panel25.Controls.Add(this.darkLabel38);
-            this.panel25.Location = new System.Drawing.Point(1029, 337);
+            this.panel25.Location = new System.Drawing.Point(1029, 360);
             this.panel25.Name = "panel25";
             this.panel25.Size = new System.Drawing.Size(336, 20);
             this.panel25.TabIndex = 203;
@@ -2104,7 +2110,7 @@ namespace DayZeEditor
             // 
             this.panel26.Controls.Add(this.QuestRewardsForGroupOwnerOnlyCB);
             this.panel26.Controls.Add(this.darkLabel39);
-            this.panel26.Location = new System.Drawing.Point(1029, 363);
+            this.panel26.Location = new System.Drawing.Point(1029, 386);
             this.panel26.Name = "panel26";
             this.panel26.Size = new System.Drawing.Size(336, 20);
             this.panel26.TabIndex = 204;
@@ -2134,7 +2140,7 @@ namespace DayZeEditor
             // 
             this.panel27.Controls.Add(this.QuestColour);
             this.panel27.Controls.Add(this.darkLabel40);
-            this.panel27.Location = new System.Drawing.Point(1029, 389);
+            this.panel27.Location = new System.Drawing.Point(1029, 412);
             this.panel27.Name = "panel27";
             this.panel27.Size = new System.Drawing.Size(336, 20);
             this.panel27.TabIndex = 205;
@@ -2164,7 +2170,7 @@ namespace DayZeEditor
             // 
             this.panel65.Controls.Add(this.QuestReputationRewardNUD);
             this.panel65.Controls.Add(this.darkLabel138);
-            this.panel65.Location = new System.Drawing.Point(1029, 415);
+            this.panel65.Location = new System.Drawing.Point(1029, 438);
             this.panel65.Name = "panel65";
             this.panel65.Size = new System.Drawing.Size(336, 20);
             this.panel65.TabIndex = 243;
@@ -2199,7 +2205,7 @@ namespace DayZeEditor
             // 
             this.panel66.Controls.Add(this.QuestReputationRequirmentNUD);
             this.panel66.Controls.Add(this.darkLabel139);
-            this.panel66.Location = new System.Drawing.Point(1029, 441);
+            this.panel66.Location = new System.Drawing.Point(1029, 464);
             this.panel66.Name = "panel66";
             this.panel66.Size = new System.Drawing.Size(336, 20);
             this.panel66.TabIndex = 244;
@@ -3959,6 +3965,326 @@ namespace DayZeEditor
             this.ObjectivesTresureHuntGB.TabStop = false;
             this.ObjectivesTresureHuntGB.Text = "Treasure Hunt";
             // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.groupBox60);
+            this.groupBox7.Controls.Add(this.groupBox5);
+            this.groupBox7.Controls.Add(this.darkLabel147);
+            this.groupBox7.Controls.Add(this.darkLabel145);
+            this.groupBox7.Controls.Add(this.ObjectivesTreasureHuntChanceTB);
+            this.groupBox7.Controls.Add(this.ObjectivesTreasureHuntMaxCountNUD);
+            this.groupBox7.Controls.Add(this.darkLabel146);
+            this.groupBox7.Controls.Add(this.darkLabel251);
+            this.groupBox7.Controls.Add(this.ObjectivesTreasureHuntQualityPercentNUD);
+            this.groupBox7.Controls.Add(this.ObjectivesTreasureHuntItemsLB);
+            this.groupBox7.Controls.Add(this.darkButton70);
+            this.groupBox7.Controls.Add(this.darkButton69);
+            this.groupBox7.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox7.Location = new System.Drawing.Point(357, 21);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(565, 465);
+            this.groupBox7.TabIndex = 359;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Treasure Hunt Loot Items";
+            // 
+            // groupBox60
+            // 
+            this.groupBox60.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox60.Controls.Add(this.darkLabel159);
+            this.groupBox60.Controls.Add(this.VarientChanceTrackBar);
+            this.groupBox60.Controls.Add(this.darkLabel158);
+            this.groupBox60.Controls.Add(this.groupBox61);
+            this.groupBox60.Controls.Add(this.darkButton78);
+            this.groupBox60.Controls.Add(this.darkButton79);
+            this.groupBox60.Controls.Add(this.listBox21);
+            this.groupBox60.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.groupBox60.Location = new System.Drawing.Point(276, 127);
+            this.groupBox60.Name = "groupBox60";
+            this.groupBox60.Size = new System.Drawing.Size(272, 312);
+            this.groupBox60.TabIndex = 357;
+            this.groupBox60.TabStop = false;
+            this.groupBox60.Text = "Varients";
+            // 
+            // darkLabel159
+            // 
+            this.darkLabel159.AutoSize = true;
+            this.darkLabel159.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel159.Location = new System.Drawing.Point(152, 138);
+            this.darkLabel159.Name = "darkLabel159";
+            this.darkLabel159.Size = new System.Drawing.Size(15, 13);
+            this.darkLabel159.TabIndex = 97;
+            this.darkLabel159.Text = "%";
+            // 
+            // VarientChanceTrackBar
+            // 
+            this.VarientChanceTrackBar.Location = new System.Drawing.Point(75, 106);
+            this.VarientChanceTrackBar.Maximum = 1000;
+            this.VarientChanceTrackBar.Name = "VarientChanceTrackBar";
+            this.VarientChanceTrackBar.Size = new System.Drawing.Size(191, 45);
+            this.VarientChanceTrackBar.TabIndex = 96;
+            this.VarientChanceTrackBar.Scroll += new System.EventHandler(this.VarientChanceTrackBar_Scroll);
+            this.VarientChanceTrackBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.VarientChanceTrackBar_MouseUp);
+            // 
+            // darkLabel158
+            // 
+            this.darkLabel158.AutoSize = true;
+            this.darkLabel158.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel158.Location = new System.Drawing.Point(13, 119);
+            this.darkLabel158.Name = "darkLabel158";
+            this.darkLabel158.Size = new System.Drawing.Size(50, 13);
+            this.darkLabel158.TabIndex = 95;
+            this.darkLabel158.Text = "Chance :";
+            // 
+            // groupBox61
+            // 
+            this.groupBox61.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox61.Controls.Add(this.darkButton6);
+            this.groupBox61.Controls.Add(this.darkButton7);
+            this.groupBox61.Controls.Add(this.listBox22);
+            this.groupBox61.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.groupBox61.Location = new System.Drawing.Point(6, 157);
+            this.groupBox61.Name = "groupBox61";
+            this.groupBox61.Size = new System.Drawing.Size(260, 147);
+            this.groupBox61.TabIndex = 94;
+            this.groupBox61.TabStop = false;
+            this.groupBox61.Text = "Attachments";
+            // 
+            // darkButton6
+            // 
+            this.darkButton6.Location = new System.Drawing.Point(131, 19);
+            this.darkButton6.Name = "darkButton6";
+            this.darkButton6.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton6.Size = new System.Drawing.Size(122, 23);
+            this.darkButton6.TabIndex = 93;
+            this.darkButton6.Text = "Add New";
+            this.darkButton6.Click += new System.EventHandler(this.darkButton6_Click);
+            // 
+            // darkButton7
+            // 
+            this.darkButton7.Location = new System.Drawing.Point(131, 45);
+            this.darkButton7.Name = "darkButton7";
+            this.darkButton7.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton7.Size = new System.Drawing.Size(122, 23);
+            this.darkButton7.TabIndex = 92;
+            this.darkButton7.Text = "Remove Selected";
+            this.darkButton7.Click += new System.EventHandler(this.darkButton7_Click);
+            // 
+            // listBox22
+            // 
+            this.listBox22.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.listBox22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.listBox22.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.listBox22.ForeColor = System.Drawing.SystemColors.Control;
+            this.listBox22.FormattingEnabled = true;
+            this.listBox22.Location = new System.Drawing.Point(6, 19);
+            this.listBox22.Name = "listBox22";
+            this.listBox22.Size = new System.Drawing.Size(120, 108);
+            this.listBox22.TabIndex = 0;
+            // 
+            // darkButton78
+            // 
+            this.darkButton78.Location = new System.Drawing.Point(131, 19);
+            this.darkButton78.Name = "darkButton78";
+            this.darkButton78.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton78.Size = new System.Drawing.Size(122, 23);
+            this.darkButton78.TabIndex = 93;
+            this.darkButton78.Text = "Add New";
+            this.darkButton78.Click += new System.EventHandler(this.darkButton78_Click);
+            // 
+            // darkButton79
+            // 
+            this.darkButton79.Location = new System.Drawing.Point(131, 45);
+            this.darkButton79.Name = "darkButton79";
+            this.darkButton79.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton79.Size = new System.Drawing.Size(122, 23);
+            this.darkButton79.TabIndex = 92;
+            this.darkButton79.Text = "Remove Selected";
+            this.darkButton79.Click += new System.EventHandler(this.darkButton79_Click);
+            // 
+            // listBox21
+            // 
+            this.listBox21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.listBox21.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.listBox21.ForeColor = System.Drawing.SystemColors.Control;
+            this.listBox21.FormattingEnabled = true;
+            this.listBox21.Location = new System.Drawing.Point(6, 19);
+            this.listBox21.Name = "listBox21";
+            this.listBox21.Size = new System.Drawing.Size(120, 82);
+            this.listBox21.TabIndex = 0;
+            this.listBox21.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.listBox21.SelectedIndexChanged += new System.EventHandler(this.listBox21_SelectedIndexChanged);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox5.Controls.Add(this.ObjectivesTreasureHuntAttADDButton);
+            this.groupBox5.Controls.Add(this.ObjectivesTreasureHuntAttREMButton);
+            this.groupBox5.Controls.Add(this.ObjectivesTreasureHuntAttachmentsLB);
+            this.groupBox5.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.groupBox5.Location = new System.Drawing.Point(10, 120);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(260, 200);
+            this.groupBox5.TabIndex = 358;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Attachments";
+            // 
+            // ObjectivesTreasureHuntAttADDButton
+            // 
+            this.ObjectivesTreasureHuntAttADDButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ObjectivesTreasureHuntAttADDButton.Location = new System.Drawing.Point(6, 165);
+            this.ObjectivesTreasureHuntAttADDButton.Name = "ObjectivesTreasureHuntAttADDButton";
+            this.ObjectivesTreasureHuntAttADDButton.Padding = new System.Windows.Forms.Padding(5);
+            this.ObjectivesTreasureHuntAttADDButton.Size = new System.Drawing.Size(112, 23);
+            this.ObjectivesTreasureHuntAttADDButton.TabIndex = 93;
+            this.ObjectivesTreasureHuntAttADDButton.Text = "Add New";
+            this.ObjectivesTreasureHuntAttADDButton.Click += new System.EventHandler(this.ObjectivesTreasureHuntAttADDButton_Click);
+            // 
+            // ObjectivesTreasureHuntAttREMButton
+            // 
+            this.ObjectivesTreasureHuntAttREMButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ObjectivesTreasureHuntAttREMButton.Location = new System.Drawing.Point(124, 165);
+            this.ObjectivesTreasureHuntAttREMButton.Name = "ObjectivesTreasureHuntAttREMButton";
+            this.ObjectivesTreasureHuntAttREMButton.Padding = new System.Windows.Forms.Padding(5);
+            this.ObjectivesTreasureHuntAttREMButton.Size = new System.Drawing.Size(122, 23);
+            this.ObjectivesTreasureHuntAttREMButton.TabIndex = 92;
+            this.ObjectivesTreasureHuntAttREMButton.Text = "Remove Selected";
+            this.ObjectivesTreasureHuntAttREMButton.Click += new System.EventHandler(this.ObjectivesTreasureHuntAttREMButton_Click);
+            // 
+            // ObjectivesTreasureHuntAttachmentsLB
+            // 
+            this.ObjectivesTreasureHuntAttachmentsLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.ObjectivesTreasureHuntAttachmentsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ObjectivesTreasureHuntAttachmentsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ObjectivesTreasureHuntAttachmentsLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ObjectivesTreasureHuntAttachmentsLB.FormattingEnabled = true;
+            this.ObjectivesTreasureHuntAttachmentsLB.Location = new System.Drawing.Point(6, 19);
+            this.ObjectivesTreasureHuntAttachmentsLB.Name = "ObjectivesTreasureHuntAttachmentsLB";
+            this.ObjectivesTreasureHuntAttachmentsLB.Size = new System.Drawing.Size(240, 134);
+            this.ObjectivesTreasureHuntAttachmentsLB.TabIndex = 0;
+            this.ObjectivesTreasureHuntAttachmentsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            // 
+            // darkLabel147
+            // 
+            this.darkLabel147.AutoSize = true;
+            this.darkLabel147.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel147.Location = new System.Drawing.Point(448, 45);
+            this.darkLabel147.Name = "darkLabel147";
+            this.darkLabel147.Size = new System.Drawing.Size(15, 13);
+            this.darkLabel147.TabIndex = 356;
+            this.darkLabel147.Text = "%";
+            // 
+            // darkLabel145
+            // 
+            this.darkLabel145.AutoSize = true;
+            this.darkLabel145.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel145.Location = new System.Drawing.Point(280, 91);
+            this.darkLabel145.Name = "darkLabel145";
+            this.darkLabel145.Size = new System.Drawing.Size(58, 13);
+            this.darkLabel145.TabIndex = 350;
+            this.darkLabel145.Text = "Max Count";
+            // 
+            // ObjectivesTreasureHuntChanceTB
+            // 
+            this.ObjectivesTreasureHuntChanceTB.Location = new System.Drawing.Point(362, 20);
+            this.ObjectivesTreasureHuntChanceTB.Maximum = 1000;
+            this.ObjectivesTreasureHuntChanceTB.Name = "ObjectivesTreasureHuntChanceTB";
+            this.ObjectivesTreasureHuntChanceTB.Size = new System.Drawing.Size(191, 45);
+            this.ObjectivesTreasureHuntChanceTB.TabIndex = 355;
+            this.ObjectivesTreasureHuntChanceTB.Scroll += new System.EventHandler(this.ObjectivesTreasureHuntChanceTB_Scroll);
+            this.ObjectivesTreasureHuntChanceTB.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ObjectivesTreasureHuntChanceTB_MouseUp);
+            // 
+            // ObjectivesTreasureHuntMaxCountNUD
+            // 
+            this.ObjectivesTreasureHuntMaxCountNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ObjectivesTreasureHuntMaxCountNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.ObjectivesTreasureHuntMaxCountNUD.Location = new System.Drawing.Point(372, 89);
+            this.ObjectivesTreasureHuntMaxCountNUD.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.ObjectivesTreasureHuntMaxCountNUD.Name = "ObjectivesTreasureHuntMaxCountNUD";
+            this.ObjectivesTreasureHuntMaxCountNUD.Size = new System.Drawing.Size(148, 20);
+            this.ObjectivesTreasureHuntMaxCountNUD.TabIndex = 351;
+            this.ObjectivesTreasureHuntMaxCountNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ObjectivesTreasureHuntMaxCountNUD.ValueChanged += new System.EventHandler(this.ObjectivesTreasureHuntMaxCountNUD_ValueChanged);
+            // 
+            // darkLabel146
+            // 
+            this.darkLabel146.AutoSize = true;
+            this.darkLabel146.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel146.Location = new System.Drawing.Point(280, 29);
+            this.darkLabel146.Name = "darkLabel146";
+            this.darkLabel146.Size = new System.Drawing.Size(50, 13);
+            this.darkLabel146.TabIndex = 354;
+            this.darkLabel146.Text = "Chance :";
+            // 
+            // darkLabel251
+            // 
+            this.darkLabel251.AutoSize = true;
+            this.darkLabel251.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel251.Location = new System.Drawing.Point(280, 67);
+            this.darkLabel251.Name = "darkLabel251";
+            this.darkLabel251.Size = new System.Drawing.Size(86, 13);
+            this.darkLabel251.TabIndex = 352;
+            this.darkLabel251.Text = "Quantity Percent";
+            // 
+            // ObjectivesTreasureHuntQualityPercentNUD
+            // 
+            this.ObjectivesTreasureHuntQualityPercentNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ObjectivesTreasureHuntQualityPercentNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.ObjectivesTreasureHuntQualityPercentNUD.Location = new System.Drawing.Point(372, 65);
+            this.ObjectivesTreasureHuntQualityPercentNUD.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            -2147483648});
+            this.ObjectivesTreasureHuntQualityPercentNUD.Name = "ObjectivesTreasureHuntQualityPercentNUD";
+            this.ObjectivesTreasureHuntQualityPercentNUD.Size = new System.Drawing.Size(148, 20);
+            this.ObjectivesTreasureHuntQualityPercentNUD.TabIndex = 353;
+            this.ObjectivesTreasureHuntQualityPercentNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ObjectivesTreasureHuntQualityPercentNUD.ValueChanged += new System.EventHandler(this.ObjectivesTreasureHuntQualityPercentNUD_ValueChanged);
+            // 
+            // ObjectivesTreasureHuntItemsLB
+            // 
+            this.ObjectivesTreasureHuntItemsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ObjectivesTreasureHuntItemsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ObjectivesTreasureHuntItemsLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ObjectivesTreasureHuntItemsLB.FormattingEnabled = true;
+            this.ObjectivesTreasureHuntItemsLB.Location = new System.Drawing.Point(10, 18);
+            this.ObjectivesTreasureHuntItemsLB.Name = "ObjectivesTreasureHuntItemsLB";
+            this.ObjectivesTreasureHuntItemsLB.Size = new System.Drawing.Size(226, 95);
+            this.ObjectivesTreasureHuntItemsLB.TabIndex = 327;
+            this.ObjectivesTreasureHuntItemsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.ObjectivesTreasureHuntItemsLB.SelectedIndexChanged += new System.EventHandler(this.ObjectivesTreasureHuntItemsLB_SelectedIndexChanged);
+            // 
+            // darkButton70
+            // 
+            this.darkButton70.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton70.Location = new System.Drawing.Point(242, 19);
+            this.darkButton70.Name = "darkButton70";
+            this.darkButton70.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton70.Size = new System.Drawing.Size(20, 20);
+            this.darkButton70.TabIndex = 328;
+            this.darkButton70.Text = "+";
+            this.darkButton70.Click += new System.EventHandler(this.darkButton70_Click);
+            // 
+            // darkButton69
+            // 
+            this.darkButton69.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton69.Location = new System.Drawing.Point(242, 90);
+            this.darkButton69.Name = "darkButton69";
+            this.darkButton69.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton69.Size = new System.Drawing.Size(20, 20);
+            this.darkButton69.TabIndex = 329;
+            this.darkButton69.Text = "-";
+            this.darkButton69.Click += new System.EventHandler(this.darkButton69_Click);
+            // 
             // darkLabel144
             // 
             this.darkLabel144.AutoSize = true;
@@ -4090,41 +4416,6 @@ namespace DayZeEditor
             this.ObjectivesTreasureHuntShowdistanceCB.Text = "Show Distance";
             this.ObjectivesTreasureHuntShowdistanceCB.UseVisualStyleBackColor = true;
             this.ObjectivesTreasureHuntShowdistanceCB.CheckedChanged += new System.EventHandler(this.ObjectivesTreasureHuntShowdistanceCB_CheckedChanged);
-            // 
-            // darkButton69
-            // 
-            this.darkButton69.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton69.Location = new System.Drawing.Point(242, 90);
-            this.darkButton69.Name = "darkButton69";
-            this.darkButton69.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton69.Size = new System.Drawing.Size(20, 20);
-            this.darkButton69.TabIndex = 329;
-            this.darkButton69.Text = "-";
-            this.darkButton69.Click += new System.EventHandler(this.darkButton69_Click);
-            // 
-            // darkButton70
-            // 
-            this.darkButton70.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton70.Location = new System.Drawing.Point(242, 19);
-            this.darkButton70.Name = "darkButton70";
-            this.darkButton70.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton70.Size = new System.Drawing.Size(20, 20);
-            this.darkButton70.TabIndex = 328;
-            this.darkButton70.Text = "+";
-            this.darkButton70.Click += new System.EventHandler(this.darkButton70_Click);
-            // 
-            // ObjectivesTreasureHuntItemsLB
-            // 
-            this.ObjectivesTreasureHuntItemsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ObjectivesTreasureHuntItemsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.ObjectivesTreasureHuntItemsLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesTreasureHuntItemsLB.FormattingEnabled = true;
-            this.ObjectivesTreasureHuntItemsLB.Location = new System.Drawing.Point(10, 18);
-            this.ObjectivesTreasureHuntItemsLB.Name = "ObjectivesTreasureHuntItemsLB";
-            this.ObjectivesTreasureHuntItemsLB.Size = new System.Drawing.Size(226, 95);
-            this.ObjectivesTreasureHuntItemsLB.TabIndex = 327;
-            this.ObjectivesTreasureHuntItemsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.ObjectivesTreasureHuntItemsLB.SelectedIndexChanged += new System.EventHandler(this.ObjectivesTreasureHuntItemsLB_SelectedIndexChanged);
             // 
             // darkLabel136
             // 
@@ -7577,290 +7868,35 @@ namespace DayZeEditor
             this.removePlayerSaveDataToolStripMenuItem.Text = "Remove Player Save Data";
             this.removePlayerSaveDataToolStripMenuItem.Click += new System.EventHandler(this.removePlayerSaveDataToolStripMenuItem_Click);
             // 
-            // ObjectivesTreasureHuntQualityPercentNUD
+            // panel69
             // 
-            this.ObjectivesTreasureHuntQualityPercentNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ObjectivesTreasureHuntQualityPercentNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesTreasureHuntQualityPercentNUD.Location = new System.Drawing.Point(372, 65);
-            this.ObjectivesTreasureHuntQualityPercentNUD.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            -2147483648});
-            this.ObjectivesTreasureHuntQualityPercentNUD.Name = "ObjectivesTreasureHuntQualityPercentNUD";
-            this.ObjectivesTreasureHuntQualityPercentNUD.Size = new System.Drawing.Size(148, 20);
-            this.ObjectivesTreasureHuntQualityPercentNUD.TabIndex = 353;
-            this.ObjectivesTreasureHuntQualityPercentNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ObjectivesTreasureHuntQualityPercentNUD.ValueChanged += new System.EventHandler(this.ObjectivesTreasureHuntQualityPercentNUD_ValueChanged);
+            this.panel69.Controls.Add(this.darkLabel137);
+            this.panel69.Controls.Add(this.QuestRewardsHealthPercentNUD);
+            this.panel69.Location = new System.Drawing.Point(6, 168);
+            this.panel69.Name = "panel69";
+            this.panel69.Size = new System.Drawing.Size(330, 20);
+            this.panel69.TabIndex = 250;
             // 
-            // darkLabel251
+            // darkLabel137
             // 
-            this.darkLabel251.AutoSize = true;
-            this.darkLabel251.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel251.Location = new System.Drawing.Point(280, 67);
-            this.darkLabel251.Name = "darkLabel251";
-            this.darkLabel251.Size = new System.Drawing.Size(86, 13);
-            this.darkLabel251.TabIndex = 352;
-            this.darkLabel251.Text = "Quantity Percent";
+            this.darkLabel137.AutoSize = true;
+            this.darkLabel137.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel137.Location = new System.Drawing.Point(6, 2);
+            this.darkLabel137.Name = "darkLabel137";
+            this.darkLabel137.Size = new System.Drawing.Size(78, 13);
+            this.darkLabel137.TabIndex = 112;
+            this.darkLabel137.Text = "Health Percent";
             // 
-            // ObjectivesTreasureHuntMaxCountNUD
+            // QuestRewardsHealthPercentNUD
             // 
-            this.ObjectivesTreasureHuntMaxCountNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ObjectivesTreasureHuntMaxCountNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesTreasureHuntMaxCountNUD.Location = new System.Drawing.Point(372, 89);
-            this.ObjectivesTreasureHuntMaxCountNUD.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.ObjectivesTreasureHuntMaxCountNUD.Name = "ObjectivesTreasureHuntMaxCountNUD";
-            this.ObjectivesTreasureHuntMaxCountNUD.Size = new System.Drawing.Size(148, 20);
-            this.ObjectivesTreasureHuntMaxCountNUD.TabIndex = 351;
-            this.ObjectivesTreasureHuntMaxCountNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ObjectivesTreasureHuntMaxCountNUD.ValueChanged += new System.EventHandler(this.ObjectivesTreasureHuntMaxCountNUD_ValueChanged);
-            // 
-            // darkLabel145
-            // 
-            this.darkLabel145.AutoSize = true;
-            this.darkLabel145.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel145.Location = new System.Drawing.Point(280, 91);
-            this.darkLabel145.Name = "darkLabel145";
-            this.darkLabel145.Size = new System.Drawing.Size(58, 13);
-            this.darkLabel145.TabIndex = 350;
-            this.darkLabel145.Text = "Max Count";
-            // 
-            // ObjectivesTreasureHuntChanceTB
-            // 
-            this.ObjectivesTreasureHuntChanceTB.Location = new System.Drawing.Point(362, 20);
-            this.ObjectivesTreasureHuntChanceTB.Maximum = 1000;
-            this.ObjectivesTreasureHuntChanceTB.Name = "ObjectivesTreasureHuntChanceTB";
-            this.ObjectivesTreasureHuntChanceTB.Size = new System.Drawing.Size(191, 45);
-            this.ObjectivesTreasureHuntChanceTB.TabIndex = 355;
-            this.ObjectivesTreasureHuntChanceTB.Scroll += new System.EventHandler(this.ObjectivesTreasureHuntChanceTB_Scroll);
-            this.ObjectivesTreasureHuntChanceTB.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ObjectivesTreasureHuntChanceTB_MouseUp);
-            // 
-            // darkLabel146
-            // 
-            this.darkLabel146.AutoSize = true;
-            this.darkLabel146.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel146.Location = new System.Drawing.Point(280, 29);
-            this.darkLabel146.Name = "darkLabel146";
-            this.darkLabel146.Size = new System.Drawing.Size(50, 13);
-            this.darkLabel146.TabIndex = 354;
-            this.darkLabel146.Text = "Chance :";
-            // 
-            // darkLabel147
-            // 
-            this.darkLabel147.AutoSize = true;
-            this.darkLabel147.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel147.Location = new System.Drawing.Point(448, 45);
-            this.darkLabel147.Name = "darkLabel147";
-            this.darkLabel147.Size = new System.Drawing.Size(15, 13);
-            this.darkLabel147.TabIndex = 356;
-            this.darkLabel147.Text = "%";
-            // 
-            // groupBox60
-            // 
-            this.groupBox60.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox60.Controls.Add(this.darkLabel159);
-            this.groupBox60.Controls.Add(this.VarientChanceTrackBar);
-            this.groupBox60.Controls.Add(this.darkLabel158);
-            this.groupBox60.Controls.Add(this.groupBox61);
-            this.groupBox60.Controls.Add(this.darkButton78);
-            this.groupBox60.Controls.Add(this.darkButton79);
-            this.groupBox60.Controls.Add(this.listBox21);
-            this.groupBox60.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.groupBox60.Location = new System.Drawing.Point(276, 127);
-            this.groupBox60.Name = "groupBox60";
-            this.groupBox60.Size = new System.Drawing.Size(272, 312);
-            this.groupBox60.TabIndex = 357;
-            this.groupBox60.TabStop = false;
-            this.groupBox60.Text = "Varients";
-            // 
-            // darkLabel159
-            // 
-            this.darkLabel159.AutoSize = true;
-            this.darkLabel159.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel159.Location = new System.Drawing.Point(152, 138);
-            this.darkLabel159.Name = "darkLabel159";
-            this.darkLabel159.Size = new System.Drawing.Size(15, 13);
-            this.darkLabel159.TabIndex = 97;
-            this.darkLabel159.Text = "%";
-            // 
-            // VarientChanceTrackBar
-            // 
-            this.VarientChanceTrackBar.Location = new System.Drawing.Point(75, 106);
-            this.VarientChanceTrackBar.Maximum = 1000;
-            this.VarientChanceTrackBar.Name = "VarientChanceTrackBar";
-            this.VarientChanceTrackBar.Size = new System.Drawing.Size(191, 45);
-            this.VarientChanceTrackBar.TabIndex = 96;
-            this.VarientChanceTrackBar.Scroll += new System.EventHandler(this.VarientChanceTrackBar_Scroll);
-            this.VarientChanceTrackBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.VarientChanceTrackBar_MouseUp);
-            // 
-            // darkLabel158
-            // 
-            this.darkLabel158.AutoSize = true;
-            this.darkLabel158.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel158.Location = new System.Drawing.Point(13, 119);
-            this.darkLabel158.Name = "darkLabel158";
-            this.darkLabel158.Size = new System.Drawing.Size(50, 13);
-            this.darkLabel158.TabIndex = 95;
-            this.darkLabel158.Text = "Chance :";
-            // 
-            // groupBox61
-            // 
-            this.groupBox61.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox61.Controls.Add(this.darkButton6);
-            this.groupBox61.Controls.Add(this.darkButton7);
-            this.groupBox61.Controls.Add(this.listBox22);
-            this.groupBox61.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.groupBox61.Location = new System.Drawing.Point(6, 157);
-            this.groupBox61.Name = "groupBox61";
-            this.groupBox61.Size = new System.Drawing.Size(260, 147);
-            this.groupBox61.TabIndex = 94;
-            this.groupBox61.TabStop = false;
-            this.groupBox61.Text = "Attachments";
-            // 
-            // darkButton6
-            // 
-            this.darkButton6.Location = new System.Drawing.Point(131, 19);
-            this.darkButton6.Name = "darkButton6";
-            this.darkButton6.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton6.Size = new System.Drawing.Size(122, 23);
-            this.darkButton6.TabIndex = 93;
-            this.darkButton6.Text = "Add New";
-            this.darkButton6.Click += new System.EventHandler(this.darkButton6_Click);
-            // 
-            // darkButton7
-            // 
-            this.darkButton7.Location = new System.Drawing.Point(131, 45);
-            this.darkButton7.Name = "darkButton7";
-            this.darkButton7.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton7.Size = new System.Drawing.Size(122, 23);
-            this.darkButton7.TabIndex = 92;
-            this.darkButton7.Text = "Remove Selected";
-            this.darkButton7.Click += new System.EventHandler(this.darkButton7_Click);
-            // 
-            // listBox22
-            // 
-            this.listBox22.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.listBox22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.listBox22.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.listBox22.ForeColor = System.Drawing.SystemColors.Control;
-            this.listBox22.FormattingEnabled = true;
-            this.listBox22.Location = new System.Drawing.Point(6, 19);
-            this.listBox22.Name = "listBox22";
-            this.listBox22.Size = new System.Drawing.Size(120, 108);
-            this.listBox22.TabIndex = 0;
-            // 
-            // darkButton78
-            // 
-            this.darkButton78.Location = new System.Drawing.Point(131, 19);
-            this.darkButton78.Name = "darkButton78";
-            this.darkButton78.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton78.Size = new System.Drawing.Size(122, 23);
-            this.darkButton78.TabIndex = 93;
-            this.darkButton78.Text = "Add New";
-            this.darkButton78.Click += new System.EventHandler(this.darkButton78_Click);
-            // 
-            // darkButton79
-            // 
-            this.darkButton79.Location = new System.Drawing.Point(131, 45);
-            this.darkButton79.Name = "darkButton79";
-            this.darkButton79.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton79.Size = new System.Drawing.Size(122, 23);
-            this.darkButton79.TabIndex = 92;
-            this.darkButton79.Text = "Remove Selected";
-            this.darkButton79.Click += new System.EventHandler(this.darkButton79_Click);
-            // 
-            // listBox21
-            // 
-            this.listBox21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.listBox21.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.listBox21.ForeColor = System.Drawing.SystemColors.Control;
-            this.listBox21.FormattingEnabled = true;
-            this.listBox21.Location = new System.Drawing.Point(6, 19);
-            this.listBox21.Name = "listBox21";
-            this.listBox21.Size = new System.Drawing.Size(120, 82);
-            this.listBox21.TabIndex = 0;
-            this.listBox21.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.listBox21.SelectedIndexChanged += new System.EventHandler(this.listBox21_SelectedIndexChanged);
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox5.Controls.Add(this.ObjectivesTreasureHuntAttADDButton);
-            this.groupBox5.Controls.Add(this.ObjectivesTreasureHuntAttREMButton);
-            this.groupBox5.Controls.Add(this.ObjectivesTreasureHuntAttachmentsLB);
-            this.groupBox5.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.groupBox5.Location = new System.Drawing.Point(10, 120);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(260, 200);
-            this.groupBox5.TabIndex = 358;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Attachments";
-            // 
-            // ObjectivesTreasureHuntAttADDButton
-            // 
-            this.ObjectivesTreasureHuntAttADDButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ObjectivesTreasureHuntAttADDButton.Location = new System.Drawing.Point(6, 165);
-            this.ObjectivesTreasureHuntAttADDButton.Name = "ObjectivesTreasureHuntAttADDButton";
-            this.ObjectivesTreasureHuntAttADDButton.Padding = new System.Windows.Forms.Padding(5);
-            this.ObjectivesTreasureHuntAttADDButton.Size = new System.Drawing.Size(112, 23);
-            this.ObjectivesTreasureHuntAttADDButton.TabIndex = 93;
-            this.ObjectivesTreasureHuntAttADDButton.Text = "Add New";
-            this.ObjectivesTreasureHuntAttADDButton.Click += new System.EventHandler(this.ObjectivesTreasureHuntAttADDButton_Click);
-            // 
-            // ObjectivesTreasureHuntAttREMButton
-            // 
-            this.ObjectivesTreasureHuntAttREMButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ObjectivesTreasureHuntAttREMButton.Location = new System.Drawing.Point(124, 165);
-            this.ObjectivesTreasureHuntAttREMButton.Name = "ObjectivesTreasureHuntAttREMButton";
-            this.ObjectivesTreasureHuntAttREMButton.Padding = new System.Windows.Forms.Padding(5);
-            this.ObjectivesTreasureHuntAttREMButton.Size = new System.Drawing.Size(122, 23);
-            this.ObjectivesTreasureHuntAttREMButton.TabIndex = 92;
-            this.ObjectivesTreasureHuntAttREMButton.Text = "Remove Selected";
-            this.ObjectivesTreasureHuntAttREMButton.Click += new System.EventHandler(this.ObjectivesTreasureHuntAttREMButton_Click);
-            // 
-            // ObjectivesTreasureHuntAttachmentsLB
-            // 
-            this.ObjectivesTreasureHuntAttachmentsLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.ObjectivesTreasureHuntAttachmentsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ObjectivesTreasureHuntAttachmentsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.ObjectivesTreasureHuntAttachmentsLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesTreasureHuntAttachmentsLB.FormattingEnabled = true;
-            this.ObjectivesTreasureHuntAttachmentsLB.Location = new System.Drawing.Point(6, 19);
-            this.ObjectivesTreasureHuntAttachmentsLB.Name = "ObjectivesTreasureHuntAttachmentsLB";
-            this.ObjectivesTreasureHuntAttachmentsLB.Size = new System.Drawing.Size(240, 134);
-            this.ObjectivesTreasureHuntAttachmentsLB.TabIndex = 0;
-            this.ObjectivesTreasureHuntAttachmentsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.groupBox60);
-            this.groupBox7.Controls.Add(this.groupBox5);
-            this.groupBox7.Controls.Add(this.darkLabel147);
-            this.groupBox7.Controls.Add(this.darkLabel145);
-            this.groupBox7.Controls.Add(this.ObjectivesTreasureHuntChanceTB);
-            this.groupBox7.Controls.Add(this.ObjectivesTreasureHuntMaxCountNUD);
-            this.groupBox7.Controls.Add(this.darkLabel146);
-            this.groupBox7.Controls.Add(this.darkLabel251);
-            this.groupBox7.Controls.Add(this.ObjectivesTreasureHuntQualityPercentNUD);
-            this.groupBox7.Controls.Add(this.ObjectivesTreasureHuntItemsLB);
-            this.groupBox7.Controls.Add(this.darkButton70);
-            this.groupBox7.Controls.Add(this.darkButton69);
-            this.groupBox7.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox7.Location = new System.Drawing.Point(357, 21);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(565, 465);
-            this.groupBox7.TabIndex = 359;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Treasure Hunt Loot Items";
+            this.QuestRewardsHealthPercentNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.QuestRewardsHealthPercentNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.QuestRewardsHealthPercentNUD.Location = new System.Drawing.Point(171, 0);
+            this.QuestRewardsHealthPercentNUD.Name = "QuestRewardsHealthPercentNUD";
+            this.QuestRewardsHealthPercentNUD.Size = new System.Drawing.Size(120, 20);
+            this.QuestRewardsHealthPercentNUD.TabIndex = 108;
+            this.QuestRewardsHealthPercentNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.QuestRewardsHealthPercentNUD.ValueChanged += new System.EventHandler(this.QuestRewardsHealthPercentNUD_ValueChanged);
             // 
             // ExpansionQuests
             // 
@@ -8039,6 +8075,16 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.ObjectivesTravelPositionZNUD)).EndInit();
             this.ObjectivesTresureHuntGB.ResumeLayout(false);
             this.ObjectivesTresureHuntGB.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox60.ResumeLayout(false);
+            this.groupBox60.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VarientChanceTrackBar)).EndInit();
+            this.groupBox61.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesTreasureHuntChanceTB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesTreasureHuntMaxCountNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesTreasureHuntQualityPercentNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ObjectivesTreasureHuntAmountNUD)).EndInit();
@@ -8138,16 +8184,9 @@ namespace DayZeEditor
             this.darkToolStrip23.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
             this.contextMenuStrip2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesTreasureHuntQualityPercentNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesTreasureHuntMaxCountNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ObjectivesTreasureHuntChanceTB)).EndInit();
-            this.groupBox60.ResumeLayout(false);
-            this.groupBox60.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.VarientChanceTrackBar)).EndInit();
-            this.groupBox61.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
+            this.panel69.ResumeLayout(false);
+            this.panel69.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.QuestRewardsHealthPercentNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -8715,5 +8754,8 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton ObjectivesTreasureHuntAttADDButton;
         private DarkUI.Controls.DarkButton ObjectivesTreasureHuntAttREMButton;
         private System.Windows.Forms.ListBox ObjectivesTreasureHuntAttachmentsLB;
+        private System.Windows.Forms.Panel panel69;
+        private DarkUI.Controls.DarkLabel darkLabel137;
+        private System.Windows.Forms.NumericUpDown QuestRewardsHealthPercentNUD;
     }
 }

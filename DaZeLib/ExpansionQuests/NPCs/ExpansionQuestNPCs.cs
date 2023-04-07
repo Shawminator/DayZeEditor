@@ -81,7 +81,7 @@ namespace DayZeLib
             ExpansionQuestNPCs newnpc = new ExpansionQuestNPCs()
             {
                 isDirty = true,
-                Filename = "QuestNPC_" + NEWID.ToString() + ".JSON",
+                Filename = "QuestNPC_" + NEWID.ToString(),
                 ConfigVersion = m_NPCConfigVersion,
                 ID = NEWID,
                 ClassName = "ExpansionQuestNPCDenis",
@@ -127,7 +127,6 @@ namespace DayZeLib
         public int IsAI { get; set; }
         public float[] Position { get; set; }
         public float[] Orientation { get; set; }
-        public BindingList<int> QuestIDs { get; set; }
         public string NPCName { get; set; }
         public string DefaultNPCText { get; set; }
         public BindingList<float[]> Waypoints { get; set; }

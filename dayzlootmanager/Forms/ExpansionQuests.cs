@@ -1207,6 +1207,7 @@ namespace DayZeEditor
             QuestReward qr = QuestRewardsLB.SelectedItem as QuestReward;
             useraction = false;
             QuestRewardsAmountNUD.Value = qr.Amount;
+            QuestRewardsHealthPercentNUD.Value = qr.HealthPercent;
 
             QuestRewrdsAttchemntsLB.DisplayMember = "DisplayName";
             QuestRewrdsAttchemntsLB.ValueMember = "Value";
@@ -1219,6 +1220,14 @@ namespace DayZeEditor
             if (QuestRewardsLB.SelectedItems.Count < 1) return;
             QuestReward qr = QuestRewardsLB.SelectedItem as QuestReward;
             qr.Amount = (int)QuestRewardsAmountNUD.Value;
+            CurrentQuest.isDirty = true;
+        }
+        private void QuestRewardsHealthPercentNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if (QuestRewardsLB.SelectedItems.Count < 1) return;
+            QuestReward qr = QuestRewardsLB.SelectedItem as QuestReward;
+            qr.HealthPercent = (int)QuestRewardsHealthPercentNUD.Value;
             CurrentQuest.isDirty = true;
         }
         private void darkButton34_Click(object sender, EventArgs e)
@@ -3003,14 +3012,14 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            CurrentWapypoint[2] = (float)numericUpDown20.Value;
+            CurrentWapypoint[0] = (float)numericUpDown20.Value;
             CurrentAIPatrol.isDirty = true;
         }
         private void numericUpDown21_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            CurrentWapypoint[2] = (float)numericUpDown21.Value;
+            CurrentWapypoint[1] = (float)numericUpDown21.Value;
             CurrentAIPatrol.isDirty = true;
         }
         private void numericUpDown22_ValueChanged(object sender, EventArgs e)
@@ -4429,6 +4438,7 @@ namespace DayZeEditor
         {
 
         }
+
 
 
 

@@ -246,7 +246,6 @@ namespace DayZeLib
             }
             foreach (KeyValuePair<string, int> item in Items)
             {
-                if(item.Value == 3) { continue; }
                 if(initialList.Any(x => x.ClassName == item.Key))
                 {
                     TradersItem eti = initialList.First(x => x.ClassName == item.Key.ToLower());

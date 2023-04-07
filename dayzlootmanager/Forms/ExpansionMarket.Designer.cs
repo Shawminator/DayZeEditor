@@ -294,6 +294,7 @@ namespace DayZeEditor
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.AttachmentRB = new System.Windows.Forms.RadioButton();
             this.darkLabel79 = new DarkUI.Controls.DarkLabel();
             this.MaxRequiredHumanityNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel78 = new DarkUI.Controls.DarkLabel();
@@ -3856,6 +3857,7 @@ namespace DayZeEditor
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage2.Controls.Add(this.AttachmentRB);
             this.tabPage2.Controls.Add(this.darkLabel79);
             this.tabPage2.Controls.Add(this.MaxRequiredHumanityNUD);
             this.tabPage2.Controls.Add(this.darkLabel78);
@@ -3883,6 +3885,19 @@ namespace DayZeEditor
             this.tabPage2.Size = new System.Drawing.Size(1062, 617);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Traders";
+            // 
+            // AttachmentRB
+            // 
+            this.AttachmentRB.AutoSize = true;
+            this.AttachmentRB.ForeColor = System.Drawing.SystemColors.Control;
+            this.AttachmentRB.Location = new System.Drawing.Point(303, 193);
+            this.AttachmentRB.Name = "AttachmentRB";
+            this.AttachmentRB.Size = new System.Drawing.Size(167, 17);
+            this.AttachmentRB.TabIndex = 104;
+            this.AttachmentRB.TabStop = true;
+            this.AttachmentRB.Text = "Attchment(Hidden from player)";
+            this.AttachmentRB.UseVisualStyleBackColor = true;
+            this.AttachmentRB.CheckedChanged += new System.EventHandler(this.CanBuyCanSell_CheckChanged);
             // 
             // darkLabel79
             // 
@@ -4163,10 +4178,10 @@ namespace DayZeEditor
             this.treeView1.ForeColor = System.Drawing.SystemColors.Control;
             this.treeView1.FullRowSelect = true;
             this.treeView1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.treeView1.Location = new System.Drawing.Point(238, 198);
+            this.treeView1.Location = new System.Drawing.Point(238, 219);
             this.treeView1.Name = "treeView1";
             this.treeView1.ShowPlusMinus = false;
-            this.treeView1.Size = new System.Drawing.Size(298, 411);
+            this.treeView1.Size = new System.Drawing.Size(298, 390);
             this.treeView1.TabIndex = 57;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
             // 
@@ -5474,5 +5489,6 @@ namespace DayZeEditor
         private System.Windows.Forms.NumericUpDown SellPricePercentNUD;
         private DarkUI.Controls.DarkLabel darkLabel13;
         private System.Windows.Forms.CheckBox IsExchangeCB;
+        private System.Windows.Forms.RadioButton AttachmentRB;
     }
 }
