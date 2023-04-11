@@ -1,4 +1,15 @@
-﻿Version 0.7.6.1
+﻿Version 0.7.6.3
+[Added]
+Expansion Airdrops added string option to add to infected list, this is needed to add AI.
+[Fixed]
+Expansion Airdrops item count added negative range
+expansion AI Object Patrol realignet text for choice.
+
+Version 0.7.6.2
+[Fixed]
+expansion Quest AI Patrol remove allowed weapons was removing aicap allowed weapons in error. 
+
+Version 0.7.6.1
 [Fixed]
 Removed Quest IDS from Expansion NPC Class
 Added GUI for Quest reward Health Percent

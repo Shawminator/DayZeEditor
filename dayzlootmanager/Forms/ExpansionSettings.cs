@@ -1458,6 +1458,20 @@ namespace DayZeEditor
                 }
             }
         }
+        private void darkButton84_Click(object sender, EventArgs e)
+        {
+            string zombie = textBox20.Text;
+            if (!ADC.Infected.Contains(zombie))
+            {
+                ADC.Infected.Add(zombie);
+                AirdropsettingsJson.isDirty = true;
+                darkLabel20.Text = "Number of Infected = " + ADC.Infected.Count.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Infected Type allready in the list.....");
+            }
+        }
         private void darkButton7_Click(object sender, EventArgs e)
         {
             AirdropContainers NewContainer = new AirdropContainers();
@@ -7147,6 +7161,8 @@ namespace DayZeEditor
         {
 
         }
+
+
     }
     public class NullToEmptyGearConverter : JsonConverter<Gear>
     {

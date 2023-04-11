@@ -133,6 +133,9 @@ namespace DayZeEditor
             this.QuestQuestItemsLB = new System.Windows.Forms.ListBox();
             this.darkLabel36 = new DarkUI.Controls.DarkLabel();
             this.panel24 = new System.Windows.Forms.Panel();
+            this.panel69 = new System.Windows.Forms.Panel();
+            this.darkLabel137 = new DarkUI.Controls.DarkLabel();
+            this.QuestRewardsHealthPercentNUD = new System.Windows.Forms.NumericUpDown();
             this.panel49 = new System.Windows.Forms.Panel();
             this.darkLabel68 = new DarkUI.Controls.DarkLabel();
             this.QuestRewardsAmountNUD = new System.Windows.Forms.NumericUpDown();
@@ -592,9 +595,18 @@ namespace DayZeEditor
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.removeQuestFromPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removePlayerSaveDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel69 = new System.Windows.Forms.Panel();
-            this.darkLabel137 = new DarkUI.Controls.DarkLabel();
-            this.QuestRewardsHealthPercentNUD = new System.Windows.Forms.NumericUpDown();
+            this.panel71 = new System.Windows.Forms.Panel();
+            this.QuestRequiredFactionCB = new System.Windows.Forms.ComboBox();
+            this.darkLabel149 = new DarkUI.Controls.DarkLabel();
+            this.panel70 = new System.Windows.Forms.Panel();
+            this.QuestPlayerNeedQuestItemsCB = new System.Windows.Forms.CheckBox();
+            this.darkLabel148 = new DarkUI.Controls.DarkLabel();
+            this.panel72 = new System.Windows.Forms.Panel();
+            this.QuestDeleteQuestItemsCB = new System.Windows.Forms.CheckBox();
+            this.darkLabel150 = new DarkUI.Controls.DarkLabel();
+            this.panel73 = new System.Windows.Forms.Panel();
+            this.QuestFactionRewardCB = new System.Windows.Forms.ComboBox();
+            this.darkLabel151 = new DarkUI.Controls.DarkLabel();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -632,6 +644,8 @@ namespace DayZeEditor
             this.panel48.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.QuestQuestItemsAmountNUD)).BeginInit();
             this.panel24.SuspendLayout();
+            this.panel69.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.QuestRewardsHealthPercentNUD)).BeginInit();
             this.panel49.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.QuestRewardsAmountNUD)).BeginInit();
             this.panel50.SuspendLayout();
@@ -781,8 +795,10 @@ namespace DayZeEditor
             this.darkToolStrip23.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
-            this.panel69.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.QuestRewardsHealthPercentNUD)).BeginInit();
+            this.panel71.SuspendLayout();
+            this.panel70.SuspendLayout();
+            this.panel72.SuspendLayout();
+            this.panel73.SuspendLayout();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -1042,6 +1058,10 @@ namespace DayZeEditor
             this.flowLayoutPanel1.Controls.Add(this.panel27);
             this.flowLayoutPanel1.Controls.Add(this.panel65);
             this.flowLayoutPanel1.Controls.Add(this.panel66);
+            this.flowLayoutPanel1.Controls.Add(this.panel71);
+            this.flowLayoutPanel1.Controls.Add(this.panel73);
+            this.flowLayoutPanel1.Controls.Add(this.panel70);
+            this.flowLayoutPanel1.Controls.Add(this.panel72);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(194, 8);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -1938,6 +1958,36 @@ namespace DayZeEditor
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(336, 351);
             this.panel24.TabIndex = 202;
+            // 
+            // panel69
+            // 
+            this.panel69.Controls.Add(this.darkLabel137);
+            this.panel69.Controls.Add(this.QuestRewardsHealthPercentNUD);
+            this.panel69.Location = new System.Drawing.Point(6, 168);
+            this.panel69.Name = "panel69";
+            this.panel69.Size = new System.Drawing.Size(330, 20);
+            this.panel69.TabIndex = 250;
+            // 
+            // darkLabel137
+            // 
+            this.darkLabel137.AutoSize = true;
+            this.darkLabel137.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel137.Location = new System.Drawing.Point(6, 2);
+            this.darkLabel137.Name = "darkLabel137";
+            this.darkLabel137.Size = new System.Drawing.Size(78, 13);
+            this.darkLabel137.TabIndex = 112;
+            this.darkLabel137.Text = "Health Percent";
+            // 
+            // QuestRewardsHealthPercentNUD
+            // 
+            this.QuestRewardsHealthPercentNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.QuestRewardsHealthPercentNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.QuestRewardsHealthPercentNUD.Location = new System.Drawing.Point(171, 0);
+            this.QuestRewardsHealthPercentNUD.Name = "QuestRewardsHealthPercentNUD";
+            this.QuestRewardsHealthPercentNUD.Size = new System.Drawing.Size(120, 20);
+            this.QuestRewardsHealthPercentNUD.TabIndex = 108;
+            this.QuestRewardsHealthPercentNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.QuestRewardsHealthPercentNUD.ValueChanged += new System.EventHandler(this.QuestRewardsHealthPercentNUD_ValueChanged);
             // 
             // panel49
             // 
@@ -7868,35 +7918,125 @@ namespace DayZeEditor
             this.removePlayerSaveDataToolStripMenuItem.Text = "Remove Player Save Data";
             this.removePlayerSaveDataToolStripMenuItem.Click += new System.EventHandler(this.removePlayerSaveDataToolStripMenuItem_Click);
             // 
-            // panel69
+            // panel71
             // 
-            this.panel69.Controls.Add(this.darkLabel137);
-            this.panel69.Controls.Add(this.QuestRewardsHealthPercentNUD);
-            this.panel69.Location = new System.Drawing.Point(6, 168);
-            this.panel69.Name = "panel69";
-            this.panel69.Size = new System.Drawing.Size(330, 20);
-            this.panel69.TabIndex = 250;
+            this.panel71.Controls.Add(this.QuestRequiredFactionCB);
+            this.panel71.Controls.Add(this.darkLabel149);
+            this.panel71.Location = new System.Drawing.Point(1029, 490);
+            this.panel71.Name = "panel71";
+            this.panel71.Size = new System.Drawing.Size(349, 23);
+            this.panel71.TabIndex = 250;
             // 
-            // darkLabel137
+            // QuestRequiredFactionCB
             // 
-            this.darkLabel137.AutoSize = true;
-            this.darkLabel137.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel137.Location = new System.Drawing.Point(6, 2);
-            this.darkLabel137.Name = "darkLabel137";
-            this.darkLabel137.Size = new System.Drawing.Size(78, 13);
-            this.darkLabel137.TabIndex = 112;
-            this.darkLabel137.Text = "Health Percent";
+            this.QuestRequiredFactionCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.QuestRequiredFactionCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.QuestRequiredFactionCB.FormattingEnabled = true;
+            this.QuestRequiredFactionCB.Location = new System.Drawing.Point(93, 0);
+            this.QuestRequiredFactionCB.Name = "QuestRequiredFactionCB";
+            this.QuestRequiredFactionCB.Size = new System.Drawing.Size(248, 21);
+            this.QuestRequiredFactionCB.TabIndex = 166;
+            this.QuestRequiredFactionCB.SelectedIndexChanged += new System.EventHandler(this.QuestRequiredFactionCB_SelectedIndexChanged);
             // 
-            // QuestRewardsHealthPercentNUD
+            // darkLabel149
             // 
-            this.QuestRewardsHealthPercentNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.QuestRewardsHealthPercentNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.QuestRewardsHealthPercentNUD.Location = new System.Drawing.Point(171, 0);
-            this.QuestRewardsHealthPercentNUD.Name = "QuestRewardsHealthPercentNUD";
-            this.QuestRewardsHealthPercentNUD.Size = new System.Drawing.Size(120, 20);
-            this.QuestRewardsHealthPercentNUD.TabIndex = 108;
-            this.QuestRewardsHealthPercentNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.QuestRewardsHealthPercentNUD.ValueChanged += new System.EventHandler(this.QuestRewardsHealthPercentNUD_ValueChanged);
+            this.darkLabel149.AutoSize = true;
+            this.darkLabel149.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel149.Location = new System.Drawing.Point(3, 3);
+            this.darkLabel149.Name = "darkLabel149";
+            this.darkLabel149.Size = new System.Drawing.Size(88, 13);
+            this.darkLabel149.TabIndex = 167;
+            this.darkLabel149.Text = "Required Faction";
+            // 
+            // panel70
+            // 
+            this.panel70.Controls.Add(this.QuestPlayerNeedQuestItemsCB);
+            this.panel70.Controls.Add(this.darkLabel148);
+            this.panel70.Location = new System.Drawing.Point(1384, 32);
+            this.panel70.Name = "panel70";
+            this.panel70.Size = new System.Drawing.Size(336, 20);
+            this.panel70.TabIndex = 251;
+            // 
+            // QuestPlayerNeedQuestItemsCB
+            // 
+            this.QuestPlayerNeedQuestItemsCB.AutoSize = true;
+            this.QuestPlayerNeedQuestItemsCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.QuestPlayerNeedQuestItemsCB.Location = new System.Drawing.Point(130, 3);
+            this.QuestPlayerNeedQuestItemsCB.Name = "QuestPlayerNeedQuestItemsCB";
+            this.QuestPlayerNeedQuestItemsCB.Size = new System.Drawing.Size(15, 14);
+            this.QuestPlayerNeedQuestItemsCB.TabIndex = 170;
+            this.QuestPlayerNeedQuestItemsCB.UseVisualStyleBackColor = true;
+            this.QuestPlayerNeedQuestItemsCB.CheckedChanged += new System.EventHandler(this.QuestPlayerNeedQuestItemsCB_CheckedChanged);
+            // 
+            // darkLabel148
+            // 
+            this.darkLabel148.AutoSize = true;
+            this.darkLabel148.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel148.Location = new System.Drawing.Point(3, 2);
+            this.darkLabel148.Name = "darkLabel148";
+            this.darkLabel148.Size = new System.Drawing.Size(124, 13);
+            this.darkLabel148.TabIndex = 171;
+            this.darkLabel148.Text = "Player Need Quest Items";
+            // 
+            // panel72
+            // 
+            this.panel72.Controls.Add(this.QuestDeleteQuestItemsCB);
+            this.panel72.Controls.Add(this.darkLabel150);
+            this.panel72.Location = new System.Drawing.Point(1384, 58);
+            this.panel72.Name = "panel72";
+            this.panel72.Size = new System.Drawing.Size(336, 20);
+            this.panel72.TabIndex = 252;
+            // 
+            // QuestDeleteQuestItemsCB
+            // 
+            this.QuestDeleteQuestItemsCB.AutoSize = true;
+            this.QuestDeleteQuestItemsCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.QuestDeleteQuestItemsCB.Location = new System.Drawing.Point(105, 3);
+            this.QuestDeleteQuestItemsCB.Name = "QuestDeleteQuestItemsCB";
+            this.QuestDeleteQuestItemsCB.Size = new System.Drawing.Size(15, 14);
+            this.QuestDeleteQuestItemsCB.TabIndex = 170;
+            this.QuestDeleteQuestItemsCB.UseVisualStyleBackColor = true;
+            this.QuestDeleteQuestItemsCB.CheckedChanged += new System.EventHandler(this.QuestDeleteQuestItemsCB_CheckedChanged);
+            // 
+            // darkLabel150
+            // 
+            this.darkLabel150.AutoSize = true;
+            this.darkLabel150.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel150.Location = new System.Drawing.Point(3, 2);
+            this.darkLabel150.Name = "darkLabel150";
+            this.darkLabel150.Size = new System.Drawing.Size(97, 13);
+            this.darkLabel150.TabIndex = 171;
+            this.darkLabel150.Text = "Delete Quest Items";
+            // 
+            // panel73
+            // 
+            this.panel73.Controls.Add(this.QuestFactionRewardCB);
+            this.panel73.Controls.Add(this.darkLabel151);
+            this.panel73.Location = new System.Drawing.Point(1384, 3);
+            this.panel73.Name = "panel73";
+            this.panel73.Size = new System.Drawing.Size(349, 23);
+            this.panel73.TabIndex = 253;
+            // 
+            // QuestFactionRewardCB
+            // 
+            this.QuestFactionRewardCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.QuestFactionRewardCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.QuestFactionRewardCB.FormattingEnabled = true;
+            this.QuestFactionRewardCB.Location = new System.Drawing.Point(93, 0);
+            this.QuestFactionRewardCB.Name = "QuestFactionRewardCB";
+            this.QuestFactionRewardCB.Size = new System.Drawing.Size(248, 21);
+            this.QuestFactionRewardCB.TabIndex = 166;
+            this.QuestFactionRewardCB.SelectedIndexChanged += new System.EventHandler(this.QuestFactionRewardCB_SelectedIndexChanged);
+            // 
+            // darkLabel151
+            // 
+            this.darkLabel151.AutoSize = true;
+            this.darkLabel151.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel151.Location = new System.Drawing.Point(3, 3);
+            this.darkLabel151.Name = "darkLabel151";
+            this.darkLabel151.Size = new System.Drawing.Size(82, 13);
+            this.darkLabel151.TabIndex = 167;
+            this.darkLabel151.Text = "Faction Reward";
             // 
             // ExpansionQuests
             // 
@@ -7976,6 +8116,9 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.QuestQuestItemsAmountNUD)).EndInit();
             this.panel24.ResumeLayout(false);
             this.panel24.PerformLayout();
+            this.panel69.ResumeLayout(false);
+            this.panel69.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.QuestRewardsHealthPercentNUD)).EndInit();
             this.panel49.ResumeLayout(false);
             this.panel49.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.QuestRewardsAmountNUD)).EndInit();
@@ -8184,9 +8327,14 @@ namespace DayZeEditor
             this.darkToolStrip23.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
             this.contextMenuStrip2.ResumeLayout(false);
-            this.panel69.ResumeLayout(false);
-            this.panel69.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.QuestRewardsHealthPercentNUD)).EndInit();
+            this.panel71.ResumeLayout(false);
+            this.panel71.PerformLayout();
+            this.panel70.ResumeLayout(false);
+            this.panel70.PerformLayout();
+            this.panel72.ResumeLayout(false);
+            this.panel72.PerformLayout();
+            this.panel73.ResumeLayout(false);
+            this.panel73.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -8757,5 +8905,17 @@ namespace DayZeEditor
         private System.Windows.Forms.Panel panel69;
         private DarkUI.Controls.DarkLabel darkLabel137;
         private System.Windows.Forms.NumericUpDown QuestRewardsHealthPercentNUD;
+        private System.Windows.Forms.Panel panel71;
+        private System.Windows.Forms.ComboBox QuestRequiredFactionCB;
+        private DarkUI.Controls.DarkLabel darkLabel149;
+        private System.Windows.Forms.Panel panel70;
+        private System.Windows.Forms.CheckBox QuestPlayerNeedQuestItemsCB;
+        private DarkUI.Controls.DarkLabel darkLabel148;
+        private System.Windows.Forms.Panel panel72;
+        private System.Windows.Forms.CheckBox QuestDeleteQuestItemsCB;
+        private DarkUI.Controls.DarkLabel darkLabel150;
+        private System.Windows.Forms.Panel panel73;
+        private System.Windows.Forms.ComboBox QuestFactionRewardCB;
+        private DarkUI.Controls.DarkLabel darkLabel151;
     }
 }

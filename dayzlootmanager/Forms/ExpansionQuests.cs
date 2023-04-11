@@ -238,6 +238,14 @@ namespace DayZeEditor
             ObjectivesAIPatrolNPCFactionCB.DataSource = new BindingList<string>(Factions);
             QuestNPCFactionLB.DataSource = new BindingList<string>(Factions);
 
+            List<string> questrequiredfaction = new List<string>();
+            questrequiredfaction.Add("");
+            foreach(string rf in Factions)
+            {
+                questrequiredfaction.Add(rf);
+            }
+            QuestRequiredFactionCB.DataSource = new BindingList<string>(questrequiredfaction);
+            QuestFactionRewardCB.DataSource = new BindingList<string>(questrequiredfaction);
 
             useraction = true;
         }
@@ -1137,6 +1145,9 @@ namespace DayZeEditor
             QuestObjectiveTextTB.Text = CurrentQuest.ObjectiveText;
 
             QuestFollowupQuestCB.SelectedItem = QuestFollowupQuestCB.Items.Cast<Quests>().FirstOrDefault(z => z.ID == CurrentQuest.FollowUpQuest);
+            QuestFactionRewardCB.SelectedIndex = QuestFactionRewardCB.FindStringExact(CurrentQuest.FactionReward);
+            QuestRequiredFactionCB.SelectedIndex = QuestRequiredFactionCB.FindStringExact(CurrentQuest.RequiredFaction);
+
             QuestIsAchivementCB.Checked = CurrentQuest.IsAchivement == 1 ? true : false;
             QuestRepeatableCB.Checked = CurrentQuest.Repeatable == 1 ? true : false;
             QuestIsDailyQuestCB.Checked = CurrentQuest.IsDailyQuest == 1 ? true : false;
@@ -1145,8 +1156,10 @@ namespace DayZeEditor
             questAutocompleteCB.Checked = CurrentQuest.Autocomplete == 1 ? true : false;
             QuestIsGroupQuestCB.Checked = CurrentQuest.IsGroupQuest == 1 ? true : false;
             QuestObjectSetFileNameTB.Text = CurrentQuest.ObjectSetFileName;
+            QuestPlayerNeedQuestItemsCB.Checked = CurrentQuest.PlayerNeedQuestItems == 1 ? true : false;
+            QuestDeleteQuestItemsCB.Checked = CurrentQuest.DeleteQuestItems == 1 ? true : false;
 
-            for( int i = 0; i < CurrentQuest.Objectives.Count; i++)
+            for ( int i = 0; i < CurrentQuest.Objectives.Count; i++)
             {
                 QuestObjectivesBase checkobj = QuestObjectives.CheckObjectiveExists(CurrentQuest.Objectives[i]);
                 if (checkobj == null)
@@ -1401,12 +1414,6 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             CurrentQuest.RewardsForGroupOwnerOnly = QuestRewardsForGroupOwnerOnlyCB.Checked == true ? 1 : 0;
-            CurrentQuest.isDirty = true;
-        }
-        private void QuestHumanityRewardCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            //CurrentQuest.HumanityReward = QuestHumanityRewardCB.Checked == true ? 1 : 0;
             CurrentQuest.isDirty = true;
         }
         private void darkButton26_Click(object sender, EventArgs e)
@@ -1677,6 +1684,30 @@ namespace DayZeEditor
                 e.Graphics.FillRectangle(brush, region);
             }
             e.Graphics.DrawRectangle(SystemPens.ControlText, region.Left, region.Top, region.Width - 1, region.Height - 1);
+        }
+        private void QuestRequiredFactionCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentQuest.RequiredFaction = QuestRequiredFactionCB.GetItemText(QuestRequiredFactionCB.SelectedItem);
+            CurrentQuest.isDirty = true;
+        }
+        private void QuestFactionRewardCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentQuest.FactionReward = QuestFactionRewardCB.GetItemText(QuestFactionRewardCB.SelectedItem);
+            CurrentQuest.isDirty = true;
+        }
+        private void QuestPlayerNeedQuestItemsCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentQuest.PlayerNeedQuestItems = QuestPlayerNeedQuestItemsCB.Checked == true ? 1 : 0;
+            CurrentQuest.isDirty = true;
+        }
+        private void QuestDeleteQuestItemsCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentQuest.DeleteQuestItems = QuestDeleteQuestItemsCB.Checked == true ? 1 : 0;
+            CurrentQuest.isDirty = true;
         }
         #endregion quests
         #region objectives
@@ -3148,11 +3179,11 @@ namespace DayZeEditor
         }
         private void darkButton32_Click(object sender, EventArgs e)
         {
-            if (ObjectivesAICampAllowedWeaponsLB.SelectedItems.Count < 1) return;
+            if (ObjectivesAIPatrolAllowedWeaponsLB.SelectedItems.Count < 1) return;
             QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            for (int i = 0; i < ObjectivesAICampAllowedWeaponsLB.SelectedItems.Count; i++)
+            for (int i = 0; i < ObjectivesAIPatrolAllowedWeaponsLB.SelectedItems.Count; i++)
             {
-                CurrentAIPatrol.AIPatrol.AllowedWeapons.Remove(ObjectivesAICampAllowedWeaponsLB.GetItemText(ObjectivesAICampAllowedWeaponsLB.SelectedItems[0]));
+                CurrentAIPatrol.AIPatrol.AllowedWeapons.Remove(ObjectivesAIPatrolAllowedWeaponsLB.GetItemText(ObjectivesAIPatrolAllowedWeaponsLB.SelectedItems[0]));
             }
             CurrentAIPatrol.isDirty = true;
         }
@@ -4438,35 +4469,6 @@ namespace DayZeEditor
         {
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         #endregion Persistant Player Data
 
 

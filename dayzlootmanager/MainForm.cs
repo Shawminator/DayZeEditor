@@ -35,7 +35,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.7.6.1";
+        public string VersionNumber = "0.7.6.3";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -377,8 +377,6 @@ namespace DayZeEditor
                     MysteryBoxButton.Visible = true;
                 else
                     MysteryBoxButton.Visible = false;
-
-
             }
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -867,7 +865,6 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
-
         private void AdvancedWB_Click(object sender, EventArgs e)
         {
             AdvancedWorkBenchManager _TM = Application.OpenForms["AdvancedWorkBenchManager"] as AdvancedWorkBenchManager;
@@ -894,7 +891,6 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
-
         private void MysteryBoxButton_Click(object sender, EventArgs e)
         {
             MysteryBoxManager _TM = Application.OpenForms["MysteryBoxManager"] as MysteryBoxManager;
@@ -921,7 +917,6 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
-
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())

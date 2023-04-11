@@ -80,6 +80,8 @@ namespace DayZeEditor
             this.darkLabel17 = new DarkUI.Controls.DarkLabel();
             this.TabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.darkLabel63 = new DarkUI.Controls.DarkLabel();
+            this.crashFormationLoosenessNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel40 = new DarkUI.Controls.DarkLabel();
             this.CrashDamageMultiplierNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel41 = new DarkUI.Controls.DarkLabel();
@@ -129,6 +131,8 @@ namespace DayZeEditor
             this.EventCrachPatrolLB = new System.Windows.Forms.ListBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.darkLabel64 = new DarkUI.Controls.DarkLabel();
+            this.StaticPatrolFormationLoosenessNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel46 = new DarkUI.Controls.DarkLabel();
             this.darkLabel36 = new DarkUI.Controls.DarkLabel();
             this.StaticPatrolUseRandomWaypointAsStartPointCB = new System.Windows.Forms.CheckBox();
@@ -194,10 +198,6 @@ namespace DayZeEditor
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.darkLabel63 = new DarkUI.Controls.DarkLabel();
-            this.crashFormationLoosenessNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel64 = new DarkUI.Controls.DarkLabel();
-            this.StaticPatrolFormationLoosenessNUD = new System.Windows.Forms.NumericUpDown();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -219,6 +219,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.MaximumDynamicPatrolsNUD)).BeginInit();
             this.TabPage2.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.crashFormationLoosenessNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrashDamageMultiplierNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrashThreatDistanceLimitNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrashRespawnTimeNUD)).BeginInit();
@@ -234,6 +235,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.CrashNumberOfAINUD)).BeginInit();
             this.tabPage6.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolFormationLoosenessNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolWaypointPOSXNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolDamageMultiplierNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolWaypointPOSYNUD)).BeginInit();
@@ -251,8 +253,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolMinSpreadRadiusNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolNumberOfAINUD)).BeginInit();
             this.darkToolStrip23.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.crashFormationLoosenessNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolFormationLoosenessNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -1075,6 +1075,38 @@ namespace DayZeEditor
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Object Patrols";
             // 
+            // darkLabel63
+            // 
+            this.darkLabel63.AutoSize = true;
+            this.darkLabel63.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel63.Location = new System.Drawing.Point(225, 93);
+            this.darkLabel63.Name = "darkLabel63";
+            this.darkLabel63.Size = new System.Drawing.Size(107, 13);
+            this.darkLabel63.TabIndex = 186;
+            this.darkLabel63.Text = "Formation Looseness";
+            // 
+            // crashFormationLoosenessNUD
+            // 
+            this.crashFormationLoosenessNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.crashFormationLoosenessNUD.DecimalPlaces = 1;
+            this.crashFormationLoosenessNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.crashFormationLoosenessNUD.Location = new System.Drawing.Point(335, 91);
+            this.crashFormationLoosenessNUD.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.crashFormationLoosenessNUD.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            -2147483648});
+            this.crashFormationLoosenessNUD.Name = "crashFormationLoosenessNUD";
+            this.crashFormationLoosenessNUD.Size = new System.Drawing.Size(105, 20);
+            this.crashFormationLoosenessNUD.TabIndex = 185;
+            this.crashFormationLoosenessNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.crashFormationLoosenessNUD.ValueChanged += new System.EventHandler(this.crashFormationLoosenessNUD_ValueChanged);
+            // 
             // darkLabel40
             // 
             this.darkLabel40.AutoSize = true;
@@ -1473,7 +1505,7 @@ namespace DayZeEditor
             // 
             this.darkLabel25.AutoSize = true;
             this.darkLabel25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel25.Location = new System.Drawing.Point(226, 496);
+            this.darkLabel25.Location = new System.Drawing.Point(226, 486);
             this.darkLabel25.Name = "darkLabel25";
             this.darkLabel25.Size = new System.Drawing.Size(44, 13);
             this.darkLabel25.TabIndex = 140;
@@ -1835,6 +1867,38 @@ namespace DayZeEditor
             this.groupBox5.TabIndex = 133;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "AI Patrols";
+            // 
+            // darkLabel64
+            // 
+            this.darkLabel64.AutoSize = true;
+            this.darkLabel64.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel64.Location = new System.Drawing.Point(232, 75);
+            this.darkLabel64.Name = "darkLabel64";
+            this.darkLabel64.Size = new System.Drawing.Size(107, 13);
+            this.darkLabel64.TabIndex = 193;
+            this.darkLabel64.Text = "Formation Looseness";
+            // 
+            // StaticPatrolFormationLoosenessNUD
+            // 
+            this.StaticPatrolFormationLoosenessNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolFormationLoosenessNUD.DecimalPlaces = 1;
+            this.StaticPatrolFormationLoosenessNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolFormationLoosenessNUD.Location = new System.Drawing.Point(342, 73);
+            this.StaticPatrolFormationLoosenessNUD.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.StaticPatrolFormationLoosenessNUD.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            -2147483648});
+            this.StaticPatrolFormationLoosenessNUD.Name = "StaticPatrolFormationLoosenessNUD";
+            this.StaticPatrolFormationLoosenessNUD.Size = new System.Drawing.Size(105, 20);
+            this.StaticPatrolFormationLoosenessNUD.TabIndex = 192;
+            this.StaticPatrolFormationLoosenessNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.StaticPatrolFormationLoosenessNUD.ValueChanged += new System.EventHandler(this.StaticPatrolFormationLoosenessNUD_ValueChanged);
             // 
             // darkLabel46
             // 
@@ -2756,70 +2820,6 @@ namespace DayZeEditor
             this.toolStripButton1.Text = "AI Patrols";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
-            // darkLabel63
-            // 
-            this.darkLabel63.AutoSize = true;
-            this.darkLabel63.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel63.Location = new System.Drawing.Point(225, 93);
-            this.darkLabel63.Name = "darkLabel63";
-            this.darkLabel63.Size = new System.Drawing.Size(107, 13);
-            this.darkLabel63.TabIndex = 186;
-            this.darkLabel63.Text = "Formation Looseness";
-            // 
-            // crashFormationLoosenessNUD
-            // 
-            this.crashFormationLoosenessNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.crashFormationLoosenessNUD.DecimalPlaces = 1;
-            this.crashFormationLoosenessNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.crashFormationLoosenessNUD.Location = new System.Drawing.Point(335, 91);
-            this.crashFormationLoosenessNUD.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.crashFormationLoosenessNUD.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            -2147483648});
-            this.crashFormationLoosenessNUD.Name = "crashFormationLoosenessNUD";
-            this.crashFormationLoosenessNUD.Size = new System.Drawing.Size(105, 20);
-            this.crashFormationLoosenessNUD.TabIndex = 185;
-            this.crashFormationLoosenessNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.crashFormationLoosenessNUD.ValueChanged += new System.EventHandler(this.crashFormationLoosenessNUD_ValueChanged);
-            // 
-            // darkLabel64
-            // 
-            this.darkLabel64.AutoSize = true;
-            this.darkLabel64.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel64.Location = new System.Drawing.Point(232, 75);
-            this.darkLabel64.Name = "darkLabel64";
-            this.darkLabel64.Size = new System.Drawing.Size(107, 13);
-            this.darkLabel64.TabIndex = 193;
-            this.darkLabel64.Text = "Formation Looseness";
-            // 
-            // StaticPatrolFormationLoosenessNUD
-            // 
-            this.StaticPatrolFormationLoosenessNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolFormationLoosenessNUD.DecimalPlaces = 1;
-            this.StaticPatrolFormationLoosenessNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolFormationLoosenessNUD.Location = new System.Drawing.Point(342, 73);
-            this.StaticPatrolFormationLoosenessNUD.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.StaticPatrolFormationLoosenessNUD.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            -2147483648});
-            this.StaticPatrolFormationLoosenessNUD.Name = "StaticPatrolFormationLoosenessNUD";
-            this.StaticPatrolFormationLoosenessNUD.Size = new System.Drawing.Size(105, 20);
-            this.StaticPatrolFormationLoosenessNUD.TabIndex = 192;
-            this.StaticPatrolFormationLoosenessNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StaticPatrolFormationLoosenessNUD.ValueChanged += new System.EventHandler(this.StaticPatrolFormationLoosenessNUD_ValueChanged);
-            // 
             // ExpansionAI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2858,6 +2858,7 @@ namespace DayZeEditor
             this.TabPage2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.crashFormationLoosenessNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrashDamageMultiplierNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrashThreatDistanceLimitNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrashRespawnTimeNUD)).EndInit();
@@ -2874,6 +2875,7 @@ namespace DayZeEditor
             this.tabPage6.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolFormationLoosenessNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolWaypointPOSXNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolDamageMultiplierNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolWaypointPOSYNUD)).EndInit();
@@ -2892,8 +2894,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolNumberOfAINUD)).EndInit();
             this.darkToolStrip23.ResumeLayout(false);
             this.darkToolStrip23.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.crashFormationLoosenessNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolFormationLoosenessNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
