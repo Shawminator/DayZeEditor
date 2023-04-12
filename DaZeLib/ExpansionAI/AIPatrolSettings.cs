@@ -49,16 +49,22 @@ namespace DayZeLib
             }
             return false;
         }
-        public void SetPatrolNames()
+        public bool SetPatrolNames()
         {
+            bool needtosave = false;
             for (int i =0; i < Patrols.Count; i++)
             {
-                Patrols[i].Name = "Patrol " + i.ToString();
+                if (Patrols[i].Name == "")
+                {
+                    Patrols[i].Name = "Patrol " + i.ToString();
+                    needtosave = true;
+                }
             }
             for (int j = 0; j < ObjectPatrols.Count; j++)
             {
                 ObjectPatrols[j].Name = "Object Patrol " + j.ToString();
             }
+            return needtosave;
         }
     }
 
@@ -100,9 +106,7 @@ namespace DayZeLib
 
     public class Patrols
     {
-        [JsonIgnore]
         public string Name { get; set; }
-
         public string Faction { get; set; }
         public string Formation { get; set; }
         public decimal FormationLooseness { get; set; }

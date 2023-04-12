@@ -123,7 +123,8 @@ namespace DayZeEditor
                 if (AIPatrolSettings.checkver())
                     needtosave = true;
             }
-            AIPatrolSettings.SetPatrolNames();
+            if (AIPatrolSettings.SetPatrolNames())
+                needtosave = true;
             AIPatrolSettings.Filename = AIPatrolSettingsPath;
             SetupAIPatrolSettings();
 
@@ -609,6 +610,7 @@ namespace DayZeEditor
             if (StaticPatrolLB.SelectedItems.Count < 1) return;
             CurrentPatrol = StaticPatrolLB.SelectedItem as Patrols;
             useraction = false;
+            StaticPatrolNameTB.Text = CurrentPatrol.Name;
             StaticPatrolFactionCB.SelectedIndex = StaticPatrolFactionCB.FindStringExact(CurrentPatrol.Faction);
             StaticPatrolNumberOfAINUD.Value = CurrentPatrol.NumberOfAI;
             StaticPatrolBehaviorCB.SelectedIndex = StaticPatrolBehaviorCB.FindStringExact(CurrentPatrol.Behaviour);
@@ -680,9 +682,6 @@ namespace DayZeEditor
                     StaticPatrolWayPointsLB.Refresh();
                 }
             }
-
-
-            AIPatrolSettings.SetPatrolNames();
         }
         private void darkButton17_Click(object sender, EventArgs e)
         {
@@ -708,6 +707,13 @@ namespace DayZeEditor
                     AIPatrolSettings.isDirty = true;
                 }
             }
+        }
+        private void StaticPatrolNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPatrol.Name = StaticPatrolNameTB.Text;
+            StaticPatrolLB.Refresh();
+            AIPatrolSettings.isDirty = true;
         }
         private void StaticPatrolFactionCB_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -875,24 +881,32 @@ namespace DayZeEditor
         {
             Patrols newpatrol = new Patrols()
             {
-                Name = "NEwPatrol",
+                Name = "NewPatrol",
                 Faction = "WEST",
+                FormationLooseness = (decimal)0.0,
                 LoadoutFile = "",
                 NumberOfAI = 5,
                 Behaviour = "PATROL",
                 Speed = "WALK",
                 UnderThreatSpeed = "SPRINT",
+                CanBeLooted = 1,
+                UnlimitedReload = 1,
+                AccuracyMin = (decimal)-2.0,
+                AccuracyMax = (decimal)-2.0,
+                ThreatDistanceLimit = 800,
                 MinDistRadius = (decimal)-2.0,
                 MaxDistRadius = (decimal)-2.0,
+                DespawnRadius = (decimal) - 2.0,
                 MinSpreadRadius = (decimal)5.0,
                 MaxSpreadRadius = (decimal)20.0,
-                CanBeLooted = 1,
-                UnlimitedReload = 0,
                 Chance = (decimal)1.0,
+                WaypointInterpolation = "NaturalCubic",
+                DespawnTime = (decimal)-1.0,
+                RespawnTime = (decimal)-2.0,
+                UseRandomWaypointAsStartPoint = 0,
                 Waypoints = new BindingList<float[]>()
             };
             AIPatrolSettings.Patrols.Add(newpatrol);
-            AIPatrolSettings.SetPatrolNames();
             AIPatrolSettings.isDirty = true;
             StaticPatrolLB.Refresh();
             StaticPatrolWayPointsLB.Refresh();
