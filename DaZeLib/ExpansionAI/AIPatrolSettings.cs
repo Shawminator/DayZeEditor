@@ -12,7 +12,7 @@ namespace DayZeLib
     public class AIPatrolSettings
     {
         [JsonIgnore]
-        const int CurrentVersion = 12;
+        const int CurrentVersion = 13;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
