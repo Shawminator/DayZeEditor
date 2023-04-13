@@ -1,4 +1,8 @@
-﻿Version 0.7.6.3
+﻿Version 0.7.6.4
+[Added]
+Expasnion AI Patrol Name, if no name is there it will we given a name and auto saved when loading into the ai manager.
+
+Version 0.7.6.3
 [Added]
 Expansion Airdrops added string option to add to infected list, this is needed to add AI.
 [Fixed]
