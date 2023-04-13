@@ -1,4 +1,8 @@
-﻿Version 0.7.6.4
+﻿Version 0.7.6.5
+[Added]
+Expasnion AI added correct config version
+
+Version 0.7.6.4
 [Added]
 Expasnion AI Patrol Name, if no name is there it will we given a name and auto saved when loading into the ai manager.
 
