@@ -114,6 +114,7 @@ namespace DayZeEditor
         {
             useraction = false;
 
+            LifetimeNUD.Value = LootBoxConfig.LootBoxLifetime;
             checkBox1.Checked = LootBoxConfig.StaticLootBoxEnabled == 1 ? true : false;
 
             listBox1.DisplayMember = "DisplayName";
@@ -216,7 +217,7 @@ namespace DayZeEditor
 
             nameTB.Text = CurrentRhlootboxstaticbox.LootBoxSetName;
             numberNUD.Value = CurrentRhlootboxstaticbox.NumberOfPositions;
-            checkBox2.Checked = CurrentRhlootboxstaticbox.UseBoxLootList == 1 ? true : false;
+            checkBox2.Checked = CurrentRhlootboxstaticbox.UseCustomLootList == 1 ? true : false;
            
 
             chestLB.DisplayMember = "DisplayName";
@@ -248,7 +249,7 @@ namespace DayZeEditor
                 LootBoxSetName = "New_LootBox-set",
                 NumberOfPositions = 1,
                 StaticBoxPositions = new BindingList<Staticboxposition>(),
-                UseBoxLootList = 1,
+                UseCustomLootList = 1,
                 PossibleLootBoxNames = new BindingList<string>(),
                 CustomLootList = new BindingList<string>()
             });
@@ -287,7 +288,7 @@ namespace DayZeEditor
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
-            CurrentRhlootboxstaticbox.UseBoxLootList = checkBox2.Checked == true ? 1 : 0;
+            CurrentRhlootboxstaticbox.UseCustomLootList = checkBox2.Checked == true ? 1 : 0;
             LootBoxConfig.isDirty = true;
         }
         private void darkButton1_Click(object sender, EventArgs e)
@@ -491,6 +492,13 @@ namespace DayZeEditor
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
             Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\RH_LootBox");
+        }
+
+        private void LifetimeNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            LootBoxConfig.LootBoxLifetime = (int)LifetimeNUD.Value;
+            LootPool.isDirty = true;
         }
     }
 }

@@ -431,17 +431,27 @@ namespace DayZeEditor
             {
                 Name = "NewName",
                 Faction = "WEST",
-                ClassName = "Your Classname Goes Here",
                 LoadoutFile = "",
                 NumberOfAI = 5,
                 Behaviour = "PATROL",
                 Speed = "WALK",
                 UnderThreatSpeed = "SPRINT",
-                MinDistRadius = (decimal)-2.0,
-                MaxDistRadius = (decimal)-2.0,
                 CanBeLooted = 1,
                 UnlimitedReload = 0,
-                Chance = (decimal)1.0
+                AccuracyMin = (decimal)-1.0,
+                AccuracyMax = (decimal)-1.0,
+                ThreatDistanceLimit = (decimal)-1.0,
+                DamageMultiplier = (decimal)-1.0,
+                MinDistRadius = (decimal)-2.0,
+                MaxDistRadius = (decimal)-2.0,
+                DespawnRadius = (decimal)-2.0,
+                MinSpreadRadius = (decimal)-2.0,
+                MaxSpreadRadius = (decimal)-2.0,
+                Chance = (decimal)1.0,
+                WaypointInterpolation = "",
+                DespawnTime = (decimal)-1.0,
+                RespawnTime = (decimal)-2.0,
+                ClassName = "Your Classname Goes Here"
             };
             
             AIPatrolSettings.ObjectPatrols.Add(newpatrol);
@@ -549,7 +559,7 @@ namespace DayZeEditor
         private void CrashMinSpreadRadiusNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            CurrentEventcrashpatrol.MinSpreadRadius = CrashMinDistRadiusNUD.Value;
+            CurrentEventcrashpatrol.MinSpreadRadius = CrashMinSpreadRadiusNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
         private void CrashMaxSpreadRadiusNUD_ValueChanged(object sender, EventArgs e)

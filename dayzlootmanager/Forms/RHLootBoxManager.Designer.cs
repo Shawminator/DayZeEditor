@@ -82,6 +82,8 @@ namespace DayZeEditor
             this.darkToolStrip21 = new DarkUI.Controls.DarkToolStrip2();
             this.SaveFileButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.LifetimeNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel2 = new DarkUI.Controls.DarkLabel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -97,6 +99,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.numberNUD)).BeginInit();
             this.darkToolStrip23.SuspendLayout();
             this.darkToolStrip21.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LifetimeNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -116,6 +119,8 @@ namespace DayZeEditor
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage1.Controls.Add(this.darkLabel2);
+            this.tabPage1.Controls.Add(this.LifetimeNUD);
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.darkButton7);
             this.tabPage1.Controls.Add(this.darkButton8);
@@ -807,6 +812,32 @@ namespace DayZeEditor
             this.toolStripButton4.ToolTipText = "Open TraderConfig.txt";
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
+            // LifetimeNUD
+            // 
+            this.LifetimeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.LifetimeNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.LifetimeNUD.Location = new System.Drawing.Point(149, 3);
+            this.LifetimeNUD.Maximum = new decimal(new int[] {
+            3800000,
+            0,
+            0,
+            0});
+            this.LifetimeNUD.Name = "LifetimeNUD";
+            this.LifetimeNUD.Size = new System.Drawing.Size(85, 20);
+            this.LifetimeNUD.TabIndex = 117;
+            this.LifetimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.LifetimeNUD.ValueChanged += new System.EventHandler(this.LifetimeNUD_ValueChanged);
+            // 
+            // darkLabel2
+            // 
+            this.darkLabel2.AutoSize = true;
+            this.darkLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel2.Location = new System.Drawing.Point(100, 5);
+            this.darkLabel2.Name = "darkLabel2";
+            this.darkLabel2.Size = new System.Drawing.Size(43, 13);
+            this.darkLabel2.TabIndex = 118;
+            this.darkLabel2.Text = "Lifetime";
+            // 
             // RHLootBoxManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -841,6 +872,7 @@ namespace DayZeEditor
             this.darkToolStrip23.PerformLayout();
             this.darkToolStrip21.ResumeLayout(false);
             this.darkToolStrip21.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LifetimeNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -899,5 +931,7 @@ namespace DayZeEditor
         private System.Windows.Forms.NumericUpDown numberNUD;
         private DarkUI.Controls.DarkLabel darkLabel33;
         private System.Windows.Forms.TextBox nameTB;
+        private DarkUI.Controls.DarkLabel darkLabel2;
+        private System.Windows.Forms.NumericUpDown LifetimeNUD;
     }
 }

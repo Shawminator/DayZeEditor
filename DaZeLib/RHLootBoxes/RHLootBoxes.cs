@@ -14,6 +14,7 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty;
 
+        public int LootBoxLifetime { get; set; }
         public BindingList<Rhlootboxconfig> RHLootBoxConfigs { get; set; }
         public int StaticLootBoxEnabled { get; set; }
         public BindingList<Rhlootboxstaticbox> RHLootBoxStaticBoxes { get; set; }
@@ -38,7 +39,7 @@ namespace DayZeLib
         public BindingList<string> PossibleLootBoxNames { get; set; }
         public int NumberOfPositions { get; set; }
         public BindingList<Staticboxposition> StaticBoxPositions { get; set; }
-        public int UseBoxLootList { get; set; }
+        public int UseCustomLootList { get; set; }
         public BindingList<string> CustomLootList { get; set; }
 
         public override string ToString()
