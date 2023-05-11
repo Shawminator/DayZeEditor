@@ -664,8 +664,8 @@ namespace DayZeEditor
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(39, 25);
-            this.toolStripDropDownButton1.Text = "FTP";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(69, 25);
+            this.toolStripDropDownButton1.Text = "FTP/SFTP";
             this.toolStripDropDownButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // FTPConnectTSB
@@ -684,7 +684,6 @@ namespace DayZeEditor
             this.SFTPConnectTSB1.Name = "SFTPConnectTSB1";
             this.SFTPConnectTSB1.Size = new System.Drawing.Size(180, 22);
             this.SFTPConnectTSB1.Text = "Connect to SFTP";
-            this.SFTPConnectTSB1.Visible = false;
             this.SFTPConnectTSB1.Click += new System.EventHandler(this.SFTPConnectTSB1_Click);
             // 
             // FTPDisconnectTSB
@@ -903,8 +902,8 @@ namespace DayZeEditor
             this.FTPTSB.Image = ((System.Drawing.Image)(resources.GetObject("FTPTSB.Image")));
             this.FTPTSB.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.FTPTSB.Name = "FTPTSB";
-            this.FTPTSB.Size = new System.Drawing.Size(30, 22);
-            this.FTPTSB.Text = "FTP";
+            this.FTPTSB.Size = new System.Drawing.Size(60, 22);
+            this.FTPTSB.Text = "FTP/SFTP";
             this.FTPTSB.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // ProjectPanel

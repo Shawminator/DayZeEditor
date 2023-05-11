@@ -6341,6 +6341,8 @@ namespace DayZeEditor
         {
             if (!useraction) { return; }
             SpawnSettings.UseLoadouts = UseLoadoutsCB.Checked == true ? 1 : 0;
+            groupBox66.Visible = SpawnSettings.UseLoadouts == 1 ? true : false;
+            groupBox67.Visible = SpawnSettings.UseLoadouts == 1 ? true : false;
             SpawnSettings.isDirty = true;
         }
         private void listBox24_SelectedIndexChanged(object sender, EventArgs e)

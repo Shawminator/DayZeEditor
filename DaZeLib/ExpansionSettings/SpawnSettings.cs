@@ -166,5 +166,10 @@ namespace DayZeLib
     {
         public string Loadout { get; set; }
         public decimal Chance { get; set; }
+
+        public override string ToString()
+        {
+            return Loadout;
+        }
     }
 }

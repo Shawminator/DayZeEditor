@@ -179,7 +179,6 @@ namespace DayZeEditor
             string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
             SaveEconomyFiles(midifiedfiles, SaveTime);
         }
-
         private void SaveEconomyFiles(List<string> midifiedfiles, string SaveTime)
         {
             if (vanillatypes.isDirty)
@@ -347,7 +346,6 @@ namespace DayZeEditor
             else
                 MessageBox.Show("No changes were made.", "Nothing Saved", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
-
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             EconomyTabPage.SelectedIndex = 0;
@@ -3174,11 +3172,13 @@ namespace DayZeEditor
                 {
                     currentcargo.preset = null;
                     currentcargo.chance = 1;
+                    
                 }
                 else
                 {
                     currentcargo.item = new BindingList<spawnabletypesTypeCargoItem>();
                     currentcargo.chance = 0;
+                    
                 }
             }
             SetCargo();
@@ -3259,6 +3259,7 @@ namespace DayZeEditor
                 CargoItemLB.DisplayMember = "DisplayName";
                 CargoItemLB.ValueMember = "Value";
                 CargoItemLB.DataSource = currentcargo.item;
+                checkBox49.Visible = true;
             }
             else
             {
@@ -3271,6 +3272,7 @@ namespace DayZeEditor
                 cargochanceLabel.Visible = false;
                 CargoChangeItemButton.Visible = false;
                 CargoPresetGB.Visible = true;
+                checkBox49.Visible = false;
                 if (currentcargo.preset != null)
                     CargoPresetTB.Text = currentcargo.preset;
                 else

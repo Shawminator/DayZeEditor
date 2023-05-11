@@ -4,6 +4,24 @@ using System.Drawing;
 
 namespace DayZeEditor
 {
+    class MyRenderer : ToolStripProfessionalRenderer
+    {
+        protected override void OnRenderButtonBackground(ToolStripItemRenderEventArgs e)
+        {
+            var g = e.Graphics;
+
+            var rect = new Rectangle(0, 1, e.Item.Width, e.Item.Height - 2);
+
+            if (e.Item.Selected || e.Item.Pressed)
+            {
+                using (var b = new SolidBrush(Color.DarkGray))
+                {
+                    g.FillRectangle(b, rect);
+                }
+            }
+
+        }
+    }
     public static class Form_Controls
     {
         public static Size Formsize;

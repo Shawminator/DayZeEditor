@@ -1199,7 +1199,7 @@ namespace DayZeEditor
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer1.Size = new System.Drawing.Size(1212, 569);
+            this.splitContainer1.Size = new System.Drawing.Size(1212, 572);
             this.splitContainer1.SplitterDistance = 431;
             this.splitContainer1.SplitterWidth = 10;
             this.splitContainer1.TabIndex = 46;
@@ -1215,7 +1215,7 @@ namespace DayZeEditor
             this.tabControl2.Location = new System.Drawing.Point(8, 8);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(415, 553);
+            this.tabControl2.Size = new System.Drawing.Size(415, 556);
             this.tabControl2.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl2.TabIndex = 2;
             // 
@@ -1226,7 +1226,7 @@ namespace DayZeEditor
             this.tabPage3.Location = new System.Drawing.Point(4, 5);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(407, 544);
+            this.tabPage3.Size = new System.Drawing.Size(407, 547);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "tabPage3";
             // 
@@ -1241,7 +1241,7 @@ namespace DayZeEditor
             this.treeViewMS1.Name = "treeViewMS1";
             this.treeViewMS1.SelectedNodes = ((System.Collections.ArrayList)(resources.GetObject("treeViewMS1.SelectedNodes")));
             this.treeViewMS1.SetMultiselect = true;
-            this.treeViewMS1.Size = new System.Drawing.Size(401, 538);
+            this.treeViewMS1.Size = new System.Drawing.Size(401, 541);
             this.treeViewMS1.TabIndex = 0;
             this.treeViewMS1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewMS1_AfterSelect);
             this.treeViewMS1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewMS1_NodeMouseClick);
@@ -2788,7 +2788,7 @@ namespace DayZeEditor
             this.darkToolStrip22.Location = new System.Drawing.Point(0, 45);
             this.darkToolStrip22.Name = "darkToolStrip22";
             this.darkToolStrip22.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
-            this.darkToolStrip22.Size = new System.Drawing.Size(1226, 28);
+            this.darkToolStrip22.Size = new System.Drawing.Size(1226, 25);
             this.darkToolStrip22.TabIndex = 49;
             this.darkToolStrip22.Text = "darkToolStrip22";
             // 
@@ -2800,7 +2800,7 @@ namespace DayZeEditor
             this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
             this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(45, 25);
+            this.toolStripButton6.Size = new System.Drawing.Size(45, 22);
             this.toolStripButton6.Text = "Events";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
@@ -2810,7 +2810,7 @@ namespace DayZeEditor
             this.toolStripSeparator11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripSeparator11.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator11.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStripButton16
             // 
@@ -2820,7 +2820,7 @@ namespace DayZeEditor
             this.toolStripButton16.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton16.Image")));
             this.toolStripButton16.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton16.Name = "toolStripButton16";
-            this.toolStripButton16.Size = new System.Drawing.Size(83, 25);
+            this.toolStripButton16.Size = new System.Drawing.Size(83, 22);
             this.toolStripButton16.Text = "Event Spawns";
             this.toolStripButton16.Click += new System.EventHandler(this.toolStripButton16_Click);
             // 
@@ -2830,7 +2830,7 @@ namespace DayZeEditor
             this.toolStripSeparator4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripSeparator4.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStripButton17
             // 
@@ -2840,7 +2840,7 @@ namespace DayZeEditor
             this.toolStripButton17.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton17.Image")));
             this.toolStripButton17.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton17.Name = "toolStripButton17";
-            this.toolStripButton17.Size = new System.Drawing.Size(81, 25);
+            this.toolStripButton17.Size = new System.Drawing.Size(81, 22);
             this.toolStripButton17.Text = "Event Groups";
             this.toolStripButton17.Click += new System.EventHandler(this.toolStripButton17_Click);
             // 
@@ -2850,7 +2850,7 @@ namespace DayZeEditor
             this.toolStripSeparator12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripSeparator12.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.toolStripSeparator12.Name = "toolStripSeparator12";
-            this.toolStripSeparator12.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator12.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStripButton14
             // 
@@ -2860,7 +2860,7 @@ namespace DayZeEditor
             this.toolStripButton14.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton14.Image")));
             this.toolStripButton14.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton14.Name = "toolStripButton14";
-            this.toolStripButton14.Size = new System.Drawing.Size(50, 25);
+            this.toolStripButton14.Size = new System.Drawing.Size(50, 22);
             this.toolStripButton14.Text = "Globals";
             this.toolStripButton14.Click += new System.EventHandler(this.toolStripButton14_Click);
             // 
@@ -2870,7 +2870,7 @@ namespace DayZeEditor
             this.toolStripSeparator9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripSeparator9.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStripButton3
             // 
@@ -2880,7 +2880,7 @@ namespace DayZeEditor
             this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(40, 25);
+            this.toolStripButton3.Size = new System.Drawing.Size(40, 22);
             this.toolStripButton3.Text = "Types";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
@@ -2890,7 +2890,7 @@ namespace DayZeEditor
             this.toolStripSeparator3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripSeparator3.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStripButton8
             // 
@@ -2900,7 +2900,7 @@ namespace DayZeEditor
             this.toolStripButton8.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton8.Image")));
             this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton8.Name = "toolStripButton8";
-            this.toolStripButton8.Size = new System.Drawing.Size(94, 25);
+            this.toolStripButton8.Size = new System.Drawing.Size(94, 22);
             this.toolStripButton8.Text = "Types Summary";
             this.toolStripButton8.Click += new System.EventHandler(this.toolStripButton8_Click);
             // 
@@ -2910,7 +2910,7 @@ namespace DayZeEditor
             this.toolStripSeparator1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripSeparator1.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStripButton5
             // 
@@ -2920,7 +2920,7 @@ namespace DayZeEditor
             this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
             this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(128, 25);
+            this.toolStripButton5.Size = new System.Drawing.Size(128, 22);
             this.toolStripButton5.Text = "Economycore preview";
             this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
@@ -2930,7 +2930,7 @@ namespace DayZeEditor
             this.toolStripSeparator2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripSeparator2.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStripButton9
             // 
@@ -2940,7 +2940,7 @@ namespace DayZeEditor
             this.toolStripButton9.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton9.Image")));
             this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton9.Name = "toolStripButton9";
-            this.toolStripButton9.Size = new System.Drawing.Size(99, 25);
+            this.toolStripButton9.Size = new System.Drawing.Size(99, 22);
             this.toolStripButton9.Text = "Spawnable types";
             this.toolStripButton9.Click += new System.EventHandler(this.toolStripButton9_Click);
             // 
@@ -2950,7 +2950,7 @@ namespace DayZeEditor
             this.toolStripSeparator5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripSeparator5.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStripButton12
             // 
@@ -2960,7 +2960,7 @@ namespace DayZeEditor
             this.toolStripButton12.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton12.Image")));
             this.toolStripButton12.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton12.Name = "toolStripButton12";
-            this.toolStripButton12.Size = new System.Drawing.Size(96, 25);
+            this.toolStripButton12.Size = new System.Drawing.Size(96, 22);
             this.toolStripButton12.Text = "Random Presets";
             this.toolStripButton12.Click += new System.EventHandler(this.toolStripButton12_Click);
             // 
@@ -2970,7 +2970,7 @@ namespace DayZeEditor
             this.toolStripSeparator6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripSeparator6.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStripButton10
             // 
@@ -2980,7 +2980,7 @@ namespace DayZeEditor
             this.toolStripButton10.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton10.Image")));
             this.toolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton10.Name = "toolStripButton10";
-            this.toolStripButton10.Size = new System.Drawing.Size(117, 25);
+            this.toolStripButton10.Size = new System.Drawing.Size(117, 22);
             this.toolStripButton10.Text = "Player Spawn Points";
             this.toolStripButton10.Click += new System.EventHandler(this.toolStripButton10_Click);
             // 
@@ -2990,7 +2990,7 @@ namespace DayZeEditor
             this.toolStripSeparator7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripSeparator7.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStripButton11
             // 
@@ -3000,7 +3000,7 @@ namespace DayZeEditor
             this.toolStripButton11.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton11.Image")));
             this.toolStripButton11.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton11.Name = "toolStripButton11";
-            this.toolStripButton11.Size = new System.Drawing.Size(89, 25);
+            this.toolStripButton11.Size = new System.Drawing.Size(89, 22);
             this.toolStripButton11.Text = "CFG Gameplay";
             this.toolStripButton11.Click += new System.EventHandler(this.toolStripButton11_Click);
             // 
@@ -3010,7 +3010,7 @@ namespace DayZeEditor
             this.toolStripSeparator8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripSeparator8.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStripButton13
             // 
@@ -3020,7 +3020,7 @@ namespace DayZeEditor
             this.toolStripButton13.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton13.Image")));
             this.toolStripButton13.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton13.Name = "toolStripButton13";
-            this.toolStripButton13.Size = new System.Drawing.Size(114, 25);
+            this.toolStripButton13.Size = new System.Drawing.Size(114, 22);
             this.toolStripButton13.Text = "Contaminated Area";
             this.toolStripButton13.Click += new System.EventHandler(this.toolStripButton13_Click);
             // 
@@ -3030,7 +3030,7 @@ namespace DayZeEditor
             this.toolStripSeparator10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripSeparator10.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStripButton15
             // 
@@ -3040,7 +3040,7 @@ namespace DayZeEditor
             this.toolStripButton15.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton15.Image")));
             this.toolStripButton15.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton15.Name = "toolStripButton15";
-            this.toolStripButton15.Size = new System.Drawing.Size(55, 25);
+            this.toolStripButton15.Size = new System.Drawing.Size(55, 22);
             this.toolStripButton15.Text = "Weather";
             this.toolStripButton15.Click += new System.EventHandler(this.toolStripButton15_Click);
             // 
@@ -3061,10 +3061,10 @@ namespace DayZeEditor
             this.EconomyTabPage.Controls.Add(this.tabPage20);
             this.EconomyTabPage.Controls.Add(this.tabPage21);
             this.EconomyTabPage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.EconomyTabPage.Location = new System.Drawing.Point(0, 73);
+            this.EconomyTabPage.Location = new System.Drawing.Point(0, 70);
             this.EconomyTabPage.Name = "EconomyTabPage";
             this.EconomyTabPage.SelectedIndex = 0;
-            this.EconomyTabPage.Size = new System.Drawing.Size(1226, 604);
+            this.EconomyTabPage.Size = new System.Drawing.Size(1226, 607);
             this.EconomyTabPage.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.EconomyTabPage.TabIndex = 50;
             this.EconomyTabPage.SelectedIndexChanged += new System.EventHandler(this.EconomyTabPage_SelectedIndexChanged);
@@ -3076,7 +3076,7 @@ namespace DayZeEditor
             this.TypesTab.Location = new System.Drawing.Point(4, 25);
             this.TypesTab.Name = "TypesTab";
             this.TypesTab.Padding = new System.Windows.Forms.Padding(3);
-            this.TypesTab.Size = new System.Drawing.Size(1218, 575);
+            this.TypesTab.Size = new System.Drawing.Size(1218, 578);
             this.TypesTab.TabIndex = 0;
             this.TypesTab.Text = "Types";
             // 
@@ -3087,7 +3087,7 @@ namespace DayZeEditor
             this.EconomyCoreTab.Location = new System.Drawing.Point(4, 25);
             this.EconomyCoreTab.Name = "EconomyCoreTab";
             this.EconomyCoreTab.Padding = new System.Windows.Forms.Padding(3);
-            this.EconomyCoreTab.Size = new System.Drawing.Size(1218, 575);
+            this.EconomyCoreTab.Size = new System.Drawing.Size(1218, 578);
             this.EconomyCoreTab.TabIndex = 1;
             this.EconomyCoreTab.Text = "Economy Core";
             // 
@@ -3097,7 +3097,7 @@ namespace DayZeEditor
             this.webBrowser1.Location = new System.Drawing.Point(3, 3);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(1212, 569);
+            this.webBrowser1.Size = new System.Drawing.Size(1212, 572);
             this.webBrowser1.TabIndex = 0;
             // 
             // EventsTab
@@ -3112,7 +3112,7 @@ namespace DayZeEditor
             this.EventsTab.Controls.Add(this.tabControl6);
             this.EventsTab.Location = new System.Drawing.Point(4, 25);
             this.EventsTab.Name = "EventsTab";
-            this.EventsTab.Size = new System.Drawing.Size(1218, 575);
+            this.EventsTab.Size = new System.Drawing.Size(1218, 578);
             this.EventsTab.TabIndex = 2;
             this.EventsTab.Text = "Events";
             // 
@@ -3876,7 +3876,7 @@ namespace DayZeEditor
             this.TypesSummaryTab.Location = new System.Drawing.Point(4, 25);
             this.TypesSummaryTab.Name = "TypesSummaryTab";
             this.TypesSummaryTab.Padding = new System.Windows.Forms.Padding(3);
-            this.TypesSummaryTab.Size = new System.Drawing.Size(1218, 575);
+            this.TypesSummaryTab.Size = new System.Drawing.Size(1218, 578);
             this.TypesSummaryTab.TabIndex = 3;
             this.TypesSummaryTab.Text = "Types Summary";
             // 
@@ -4886,7 +4886,7 @@ namespace DayZeEditor
             this.tabPage5.Controls.Add(this.groupBox21);
             this.tabPage5.Location = new System.Drawing.Point(4, 25);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1218, 575);
+            this.tabPage5.Size = new System.Drawing.Size(1218, 578);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "SpawnableTypes";
             // 
@@ -5218,8 +5218,8 @@ namespace DayZeEditor
             this.groupBox21.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox21.Controls.Add(this.CargoGB);
-            this.groupBox21.Controls.Add(this.Spaenabletypestagbox);
             this.groupBox21.Controls.Add(this.AttachmentGB);
+            this.groupBox21.Controls.Add(this.Spaenabletypestagbox);
             this.groupBox21.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox21.Location = new System.Drawing.Point(814, 14);
             this.groupBox21.Name = "groupBox21";
@@ -5253,7 +5253,7 @@ namespace DayZeEditor
             // 
             this.checkBox49.AutoSize = true;
             this.checkBox49.ForeColor = System.Drawing.SystemColors.Control;
-            this.checkBox49.Location = new System.Drawing.Point(47, 183);
+            this.checkBox49.Location = new System.Drawing.Point(47, 211);
             this.checkBox49.Name = "checkBox49";
             this.checkBox49.Size = new System.Drawing.Size(107, 17);
             this.checkBox49.TabIndex = 73;
@@ -5270,7 +5270,7 @@ namespace DayZeEditor
             this.CargoItemLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.CargoItemLB.ForeColor = System.Drawing.SystemColors.Control;
             this.CargoItemLB.FormattingEnabled = true;
-            this.CargoItemLB.Location = new System.Drawing.Point(9, 42);
+            this.CargoItemLB.Location = new System.Drawing.Point(10, 66);
             this.CargoItemLB.Name = "CargoItemLB";
             this.CargoItemLB.Size = new System.Drawing.Size(218, 134);
             this.CargoItemLB.TabIndex = 69;
@@ -5279,7 +5279,7 @@ namespace DayZeEditor
             // 
             // cargoItemRemoveButton
             // 
-            this.cargoItemRemoveButton.Location = new System.Drawing.Point(9, 274);
+            this.cargoItemRemoveButton.Location = new System.Drawing.Point(9, 302);
             this.cargoItemRemoveButton.Name = "cargoItemRemoveButton";
             this.cargoItemRemoveButton.Padding = new System.Windows.Forms.Padding(5);
             this.cargoItemRemoveButton.Size = new System.Drawing.Size(218, 27);
@@ -5289,7 +5289,7 @@ namespace DayZeEditor
             // 
             // CargoItemAddButton
             // 
-            this.CargoItemAddButton.Location = new System.Drawing.Point(9, 241);
+            this.CargoItemAddButton.Location = new System.Drawing.Point(9, 269);
             this.CargoItemAddButton.Name = "CargoItemAddButton";
             this.CargoItemAddButton.Padding = new System.Windows.Forms.Padding(5);
             this.CargoItemAddButton.Size = new System.Drawing.Size(218, 27);
@@ -5299,7 +5299,7 @@ namespace DayZeEditor
             // 
             // CargoChangeItemButton
             // 
-            this.CargoChangeItemButton.Location = new System.Drawing.Point(9, 208);
+            this.CargoChangeItemButton.Location = new System.Drawing.Point(9, 236);
             this.CargoChangeItemButton.Name = "CargoChangeItemButton";
             this.CargoChangeItemButton.Padding = new System.Windows.Forms.Padding(5);
             this.CargoChangeItemButton.Size = new System.Drawing.Size(218, 27);
@@ -5311,7 +5311,7 @@ namespace DayZeEditor
             // 
             this.CargoPresetTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.CargoPresetTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CargoPresetTB.Location = new System.Drawing.Point(9, 42);
+            this.CargoPresetTB.Location = new System.Drawing.Point(10, 41);
             this.CargoPresetTB.Name = "CargoPresetTB";
             this.CargoPresetTB.ReadOnly = true;
             this.CargoPresetTB.Size = new System.Drawing.Size(218, 20);
@@ -5322,7 +5322,7 @@ namespace DayZeEditor
             this.CargoItemchanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.CargoItemchanceNUD.DecimalPlaces = 2;
             this.CargoItemchanceNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.CargoItemchanceNUD.Location = new System.Drawing.Point(160, 180);
+            this.CargoItemchanceNUD.Location = new System.Drawing.Point(160, 208);
             this.CargoItemchanceNUD.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -5339,7 +5339,7 @@ namespace DayZeEditor
             this.CarcgoChanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.CarcgoChanceNUD.DecimalPlaces = 2;
             this.CarcgoChanceNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.CarcgoChanceNUD.Location = new System.Drawing.Point(159, 16);
+            this.CarcgoChanceNUD.Location = new System.Drawing.Point(160, 41);
             this.CarcgoChanceNUD.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -5355,7 +5355,7 @@ namespace DayZeEditor
             // 
             this.cargochanceLabel.AutoSize = true;
             this.cargochanceLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.cargochanceLabel.Location = new System.Drawing.Point(109, 20);
+            this.cargochanceLabel.Location = new System.Drawing.Point(110, 45);
             this.cargochanceLabel.Name = "cargochanceLabel";
             this.cargochanceLabel.Size = new System.Drawing.Size(44, 13);
             this.cargochanceLabel.TabIndex = 63;
@@ -5378,7 +5378,7 @@ namespace DayZeEditor
             this.CargoPresetGB.Controls.Add(this.CargoPresetComboBox);
             this.CargoPresetGB.Controls.Add(this.darkButton36);
             this.CargoPresetGB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.CargoPresetGB.Location = new System.Drawing.Point(9, 67);
+            this.CargoPresetGB.Location = new System.Drawing.Point(10, 66);
             this.CargoPresetGB.Name = "CargoPresetGB";
             this.CargoPresetGB.Size = new System.Drawing.Size(218, 100);
             this.CargoPresetGB.TabIndex = 8;
@@ -5463,9 +5463,9 @@ namespace DayZeEditor
             // AttachmentGB
             // 
             this.AttachmentGB.Controls.Add(this.CargoAttachmentRemoveButton);
+            this.AttachmentGB.Controls.Add(this.AttachmentItemLB);
             this.AttachmentGB.Controls.Add(this.cargoattachemntAddButton);
             this.AttachmentGB.Controls.Add(this.AttachmentChangeItemButton);
-            this.AttachmentGB.Controls.Add(this.AttachmentItemLB);
             this.AttachmentGB.Controls.Add(this.AttachemntTB);
             this.AttachmentGB.Controls.Add(this.ItemAttachmentchanceNUD);
             this.AttachmentGB.Controls.Add(this.AttachmemtItemChanceLabel);
@@ -5484,7 +5484,7 @@ namespace DayZeEditor
             // 
             // CargoAttachmentRemoveButton
             // 
-            this.CargoAttachmentRemoveButton.Location = new System.Drawing.Point(9, 274);
+            this.CargoAttachmentRemoveButton.Location = new System.Drawing.Point(9, 299);
             this.CargoAttachmentRemoveButton.Name = "CargoAttachmentRemoveButton";
             this.CargoAttachmentRemoveButton.Padding = new System.Windows.Forms.Padding(5);
             this.CargoAttachmentRemoveButton.Size = new System.Drawing.Size(218, 27);
@@ -5494,7 +5494,7 @@ namespace DayZeEditor
             // 
             // cargoattachemntAddButton
             // 
-            this.cargoattachemntAddButton.Location = new System.Drawing.Point(9, 241);
+            this.cargoattachemntAddButton.Location = new System.Drawing.Point(9, 266);
             this.cargoattachemntAddButton.Name = "cargoattachemntAddButton";
             this.cargoattachemntAddButton.Padding = new System.Windows.Forms.Padding(5);
             this.cargoattachemntAddButton.Size = new System.Drawing.Size(218, 27);
@@ -5504,7 +5504,7 @@ namespace DayZeEditor
             // 
             // AttachmentChangeItemButton
             // 
-            this.AttachmentChangeItemButton.Location = new System.Drawing.Point(9, 208);
+            this.AttachmentChangeItemButton.Location = new System.Drawing.Point(9, 233);
             this.AttachmentChangeItemButton.Name = "AttachmentChangeItemButton";
             this.AttachmentChangeItemButton.Padding = new System.Windows.Forms.Padding(5);
             this.AttachmentChangeItemButton.Size = new System.Drawing.Size(218, 27);
@@ -5521,7 +5521,7 @@ namespace DayZeEditor
             this.AttachmentItemLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.AttachmentItemLB.ForeColor = System.Drawing.SystemColors.Control;
             this.AttachmentItemLB.FormattingEnabled = true;
-            this.AttachmentItemLB.Location = new System.Drawing.Point(9, 42);
+            this.AttachmentItemLB.Location = new System.Drawing.Point(9, 67);
             this.AttachmentItemLB.Name = "AttachmentItemLB";
             this.AttachmentItemLB.Size = new System.Drawing.Size(218, 134);
             this.AttachmentItemLB.TabIndex = 70;
@@ -5532,7 +5532,7 @@ namespace DayZeEditor
             // 
             this.AttachemntTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.AttachemntTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.AttachemntTB.Location = new System.Drawing.Point(9, 42);
+            this.AttachemntTB.Location = new System.Drawing.Point(9, 39);
             this.AttachemntTB.Name = "AttachemntTB";
             this.AttachemntTB.ReadOnly = true;
             this.AttachemntTB.Size = new System.Drawing.Size(218, 20);
@@ -5543,7 +5543,7 @@ namespace DayZeEditor
             this.ItemAttachmentchanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ItemAttachmentchanceNUD.DecimalPlaces = 2;
             this.ItemAttachmentchanceNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ItemAttachmentchanceNUD.Location = new System.Drawing.Point(159, 182);
+            this.ItemAttachmentchanceNUD.Location = new System.Drawing.Point(159, 207);
             this.ItemAttachmentchanceNUD.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -5559,7 +5559,7 @@ namespace DayZeEditor
             // 
             this.AttachmemtItemChanceLabel.AutoSize = true;
             this.AttachmemtItemChanceLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.AttachmemtItemChanceLabel.Location = new System.Drawing.Point(87, 186);
+            this.AttachmemtItemChanceLabel.Location = new System.Drawing.Point(87, 211);
             this.AttachmemtItemChanceLabel.Name = "AttachmemtItemChanceLabel";
             this.AttachmemtItemChanceLabel.Size = new System.Drawing.Size(67, 13);
             this.AttachmemtItemChanceLabel.TabIndex = 65;
@@ -5570,7 +5570,7 @@ namespace DayZeEditor
             this.AttachmentchanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.AttachmentchanceNUD.DecimalPlaces = 2;
             this.AttachmentchanceNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.AttachmentchanceNUD.Location = new System.Drawing.Point(159, 16);
+            this.AttachmentchanceNUD.Location = new System.Drawing.Point(159, 39);
             this.AttachmentchanceNUD.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -5586,7 +5586,7 @@ namespace DayZeEditor
             // 
             this.chancAttachmentselabel.AutoSize = true;
             this.chancAttachmentselabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.chancAttachmentselabel.Location = new System.Drawing.Point(109, 20);
+            this.chancAttachmentselabel.Location = new System.Drawing.Point(109, 43);
             this.chancAttachmentselabel.Name = "chancAttachmentselabel";
             this.chancAttachmentselabel.Size = new System.Drawing.Size(44, 13);
             this.chancAttachmentselabel.TabIndex = 63;
@@ -5644,7 +5644,7 @@ namespace DayZeEditor
             this.PlayerSpawns.Controls.Add(this.tabControl16);
             this.PlayerSpawns.Location = new System.Drawing.Point(4, 25);
             this.PlayerSpawns.Name = "PlayerSpawns";
-            this.PlayerSpawns.Size = new System.Drawing.Size(1218, 575);
+            this.PlayerSpawns.Size = new System.Drawing.Size(1218, 578);
             this.PlayerSpawns.TabIndex = 5;
             this.PlayerSpawns.Text = "PlayerSpawns";
             // 
@@ -5693,7 +5693,7 @@ namespace DayZeEditor
             this.tabControl16.Location = new System.Drawing.Point(0, 0);
             this.tabControl16.Name = "tabControl16";
             this.tabControl16.SelectedIndex = 0;
-            this.tabControl16.Size = new System.Drawing.Size(367, 575);
+            this.tabControl16.Size = new System.Drawing.Size(367, 578);
             this.tabControl16.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl16.TabIndex = 61;
             this.tabControl16.SelectedIndexChanged += new System.EventHandler(this.tabControl16_SelectedIndexChanged);
@@ -5714,7 +5714,7 @@ namespace DayZeEditor
             this.tabPage13.Location = new System.Drawing.Point(4, 25);
             this.tabPage13.Name = "tabPage13";
             this.tabPage13.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage13.Size = new System.Drawing.Size(359, 546);
+            this.tabPage13.Size = new System.Drawing.Size(359, 549);
             this.tabPage13.TabIndex = 0;
             this.tabPage13.Text = "Fresh";
             // 
@@ -5785,7 +5785,7 @@ namespace DayZeEditor
             // darkButton22
             // 
             this.darkButton22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton22.Location = new System.Drawing.Point(259, 517);
+            this.darkButton22.Location = new System.Drawing.Point(259, 520);
             this.darkButton22.Name = "darkButton22";
             this.darkButton22.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton22.Size = new System.Drawing.Size(99, 23);
@@ -5796,7 +5796,7 @@ namespace DayZeEditor
             // darkButton23
             // 
             this.darkButton23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton23.Location = new System.Drawing.Point(259, 488);
+            this.darkButton23.Location = new System.Drawing.Point(259, 491);
             this.darkButton23.Name = "darkButton23";
             this.darkButton23.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton23.Size = new System.Drawing.Size(99, 23);
@@ -6010,7 +6010,7 @@ namespace DayZeEditor
             this.tabControl13.Location = new System.Drawing.Point(3, 246);
             this.tabControl13.Name = "tabControl13";
             this.tabControl13.SelectedIndex = 0;
-            this.tabControl13.Size = new System.Drawing.Size(253, 294);
+            this.tabControl13.Size = new System.Drawing.Size(253, 297);
             this.tabControl13.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl13.TabIndex = 58;
             // 
@@ -6021,7 +6021,7 @@ namespace DayZeEditor
             this.tabPage10.Location = new System.Drawing.Point(4, 5);
             this.tabPage10.Name = "tabPage10";
             this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage10.Size = new System.Drawing.Size(245, 285);
+            this.tabPage10.Size = new System.Drawing.Size(245, 288);
             this.tabPage10.TabIndex = 0;
             this.tabPage10.Text = "tabPage10";
             // 
@@ -6034,7 +6034,7 @@ namespace DayZeEditor
             this.PlayerFGreshSpawnLB.FormattingEnabled = true;
             this.PlayerFGreshSpawnLB.Location = new System.Drawing.Point(3, 3);
             this.PlayerFGreshSpawnLB.Name = "PlayerFGreshSpawnLB";
-            this.PlayerFGreshSpawnLB.Size = new System.Drawing.Size(239, 279);
+            this.PlayerFGreshSpawnLB.Size = new System.Drawing.Size(239, 282);
             this.PlayerFGreshSpawnLB.TabIndex = 50;
             this.PlayerFGreshSpawnLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.PlayerFGreshSpawnLB.SelectedIndexChanged += new System.EventHandler(this.PlayerFGreshSpawnLB_SelectedIndexChanged);
@@ -6285,7 +6285,7 @@ namespace DayZeEditor
             this.tabPage14.Location = new System.Drawing.Point(4, 25);
             this.tabPage14.Name = "tabPage14";
             this.tabPage14.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage14.Size = new System.Drawing.Size(359, 546);
+            this.tabPage14.Size = new System.Drawing.Size(359, 549);
             this.tabPage14.TabIndex = 1;
             this.tabPage14.Text = "Hop";
             // 
@@ -6356,7 +6356,7 @@ namespace DayZeEditor
             // darkButton24
             // 
             this.darkButton24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton24.Location = new System.Drawing.Point(258, 517);
+            this.darkButton24.Location = new System.Drawing.Point(258, 520);
             this.darkButton24.Name = "darkButton24";
             this.darkButton24.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton24.Size = new System.Drawing.Size(99, 23);
@@ -6367,7 +6367,7 @@ namespace DayZeEditor
             // darkButton25
             // 
             this.darkButton25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton25.Location = new System.Drawing.Point(258, 488);
+            this.darkButton25.Location = new System.Drawing.Point(258, 491);
             this.darkButton25.Name = "darkButton25";
             this.darkButton25.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton25.Size = new System.Drawing.Size(99, 23);
@@ -6385,7 +6385,7 @@ namespace DayZeEditor
             this.tabControl17.Location = new System.Drawing.Point(3, 3);
             this.tabControl17.Name = "tabControl17";
             this.tabControl17.SelectedIndex = 0;
-            this.tabControl17.Size = new System.Drawing.Size(253, 540);
+            this.tabControl17.Size = new System.Drawing.Size(253, 543);
             this.tabControl17.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl17.TabIndex = 67;
             // 
@@ -6396,7 +6396,7 @@ namespace DayZeEditor
             this.tabPage16.Location = new System.Drawing.Point(4, 5);
             this.tabPage16.Name = "tabPage16";
             this.tabPage16.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage16.Size = new System.Drawing.Size(245, 531);
+            this.tabPage16.Size = new System.Drawing.Size(245, 534);
             this.tabPage16.TabIndex = 0;
             this.tabPage16.Text = "tabPage16";
             // 
@@ -6409,7 +6409,7 @@ namespace DayZeEditor
             this.PlayerSpanHopLB.FormattingEnabled = true;
             this.PlayerSpanHopLB.Location = new System.Drawing.Point(3, 3);
             this.PlayerSpanHopLB.Name = "PlayerSpanHopLB";
-            this.PlayerSpanHopLB.Size = new System.Drawing.Size(239, 525);
+            this.PlayerSpanHopLB.Size = new System.Drawing.Size(239, 528);
             this.PlayerSpanHopLB.TabIndex = 50;
             this.PlayerSpanHopLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.PlayerSpanHopLB.SelectedIndexChanged += new System.EventHandler(this.PlayerSpanHopLB_SelectedIndexChanged);
@@ -6427,7 +6427,7 @@ namespace DayZeEditor
             this.tabPage15.ForeColor = System.Drawing.SystemColors.Control;
             this.tabPage15.Location = new System.Drawing.Point(4, 25);
             this.tabPage15.Name = "tabPage15";
-            this.tabPage15.Size = new System.Drawing.Size(359, 546);
+            this.tabPage15.Size = new System.Drawing.Size(359, 549);
             this.tabPage15.TabIndex = 2;
             this.tabPage15.Text = "Travel";
             // 
@@ -6498,7 +6498,7 @@ namespace DayZeEditor
             // darkButton26
             // 
             this.darkButton26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton26.Location = new System.Drawing.Point(258, 519);
+            this.darkButton26.Location = new System.Drawing.Point(258, 522);
             this.darkButton26.Name = "darkButton26";
             this.darkButton26.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton26.Size = new System.Drawing.Size(99, 23);
@@ -6508,7 +6508,7 @@ namespace DayZeEditor
             // darkButton27
             // 
             this.darkButton27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton27.Location = new System.Drawing.Point(258, 490);
+            this.darkButton27.Location = new System.Drawing.Point(258, 493);
             this.darkButton27.Name = "darkButton27";
             this.darkButton27.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton27.Size = new System.Drawing.Size(99, 23);
@@ -6525,7 +6525,7 @@ namespace DayZeEditor
             this.tabControl18.Location = new System.Drawing.Point(3, 3);
             this.tabControl18.Name = "tabControl18";
             this.tabControl18.SelectedIndex = 0;
-            this.tabControl18.Size = new System.Drawing.Size(253, 539);
+            this.tabControl18.Size = new System.Drawing.Size(253, 542);
             this.tabControl18.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl18.TabIndex = 67;
             // 
@@ -6536,7 +6536,7 @@ namespace DayZeEditor
             this.tabPage17.Location = new System.Drawing.Point(4, 5);
             this.tabPage17.Name = "tabPage17";
             this.tabPage17.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage17.Size = new System.Drawing.Size(245, 530);
+            this.tabPage17.Size = new System.Drawing.Size(245, 533);
             this.tabPage17.TabIndex = 0;
             this.tabPage17.Text = "tabPage17";
             // 
@@ -6549,7 +6549,7 @@ namespace DayZeEditor
             this.PlayerspawntravelLB.FormattingEnabled = true;
             this.PlayerspawntravelLB.Location = new System.Drawing.Point(3, 3);
             this.PlayerspawntravelLB.Name = "PlayerspawntravelLB";
-            this.PlayerspawntravelLB.Size = new System.Drawing.Size(239, 524);
+            this.PlayerspawntravelLB.Size = new System.Drawing.Size(239, 527);
             this.PlayerspawntravelLB.TabIndex = 50;
             this.PlayerspawntravelLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
@@ -6562,7 +6562,7 @@ namespace DayZeEditor
             this.RandomPresets.ForeColor = System.Drawing.SystemColors.Control;
             this.RandomPresets.Location = new System.Drawing.Point(4, 25);
             this.RandomPresets.Name = "RandomPresets";
-            this.RandomPresets.Size = new System.Drawing.Size(1218, 575);
+            this.RandomPresets.Size = new System.Drawing.Size(1218, 578);
             this.RandomPresets.TabIndex = 6;
             this.RandomPresets.Text = "RandomPresets";
             // 
@@ -6918,7 +6918,7 @@ namespace DayZeEditor
             this.CFGGameplay.ForeColor = System.Drawing.SystemColors.Control;
             this.CFGGameplay.Location = new System.Drawing.Point(4, 25);
             this.CFGGameplay.Name = "CFGGameplay";
-            this.CFGGameplay.Size = new System.Drawing.Size(1218, 575);
+            this.CFGGameplay.Size = new System.Drawing.Size(1218, 578);
             this.CFGGameplay.TabIndex = 7;
             this.CFGGameplay.Text = "CFGGameplay";
             // 
@@ -8876,7 +8876,7 @@ namespace DayZeEditor
             this.Toxic.ForeColor = System.Drawing.SystemColors.Control;
             this.Toxic.Location = new System.Drawing.Point(4, 25);
             this.Toxic.Name = "Toxic";
-            this.Toxic.Size = new System.Drawing.Size(1218, 575);
+            this.Toxic.Size = new System.Drawing.Size(1218, 578);
             this.Toxic.TabIndex = 8;
             this.Toxic.Text = "Toxic";
             // 
@@ -9551,7 +9551,7 @@ namespace DayZeEditor
             this.Globals.ForeColor = System.Drawing.SystemColors.Control;
             this.Globals.Location = new System.Drawing.Point(4, 25);
             this.Globals.Name = "Globals";
-            this.Globals.Size = new System.Drawing.Size(1218, 575);
+            this.Globals.Size = new System.Drawing.Size(1218, 578);
             this.Globals.TabIndex = 9;
             this.Globals.Text = "Globals";
             // 
@@ -9684,7 +9684,7 @@ namespace DayZeEditor
             this.tabPage18.ForeColor = System.Drawing.SystemColors.Control;
             this.tabPage18.Location = new System.Drawing.Point(4, 25);
             this.tabPage18.Name = "tabPage18";
-            this.tabPage18.Size = new System.Drawing.Size(1218, 575);
+            this.tabPage18.Size = new System.Drawing.Size(1218, 578);
             this.tabPage18.TabIndex = 10;
             this.tabPage18.Text = "Weather";
             // 
@@ -11039,7 +11039,7 @@ namespace DayZeEditor
             this.tabPage20.ForeColor = System.Drawing.SystemColors.Control;
             this.tabPage20.Location = new System.Drawing.Point(4, 25);
             this.tabPage20.Name = "tabPage20";
-            this.tabPage20.Size = new System.Drawing.Size(1218, 575);
+            this.tabPage20.Size = new System.Drawing.Size(1218, 578);
             this.tabPage20.TabIndex = 11;
             this.tabPage20.Text = "EventSpawns";
             // 
@@ -11536,7 +11536,7 @@ namespace DayZeEditor
             this.tabPage21.ForeColor = System.Drawing.SystemColors.Control;
             this.tabPage21.Location = new System.Drawing.Point(4, 25);
             this.tabPage21.Name = "tabPage21";
-            this.tabPage21.Size = new System.Drawing.Size(1218, 575);
+            this.tabPage21.Size = new System.Drawing.Size(1218, 578);
             this.tabPage21.TabIndex = 12;
             this.tabPage21.Text = "EventGroupSpawn";
             // 

@@ -544,6 +544,7 @@ namespace DayZeLib
                             form.Invoke(new Action(() => { form.Close(); }));
                         }
                         MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                        Console.WriteLine("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString() + "\n***** Please Fix this before continuing to use the editor *****\n");
                     }
                 }
                 else

@@ -36,8 +36,8 @@ namespace DayZeEditor
         private void NewProjectFTP_Load(object sender, EventArgs e)
         {
             listView1.Items.Clear();
-            RemoteDirectoryInfo directory = session.ListDirectory("/");
-            CurrentRemoteDirectory = "/";
+            RemoteDirectoryInfo directory = session.ListDirectory(session.HomePath);
+            CurrentRemoteDirectory = session.HomePath;
             RemoteRoot = directory.Files[0].FullName;
             foreach (RemoteFileInfo fileInfo in directory.Files)
             {

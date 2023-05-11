@@ -179,6 +179,7 @@ namespace DayZeEditor
             // 
             // ToolStrip1
             // 
+            this.ToolStrip1.Renderer = new MyRenderer();
             this.ToolStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.ToolStrip1.AutoSize = false;
@@ -215,7 +216,6 @@ namespace DayZeEditor
             this.ToolStrip1.Location = new System.Drawing.Point(26, 29);
             this.ToolStrip1.Name = "ToolStrip1";
             this.ToolStrip1.Padding = new System.Windows.Forms.Padding(5);
-            this.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.ToolStrip1.Size = new System.Drawing.Size(134, 629);
             this.ToolStrip1.TabIndex = 39;
             this.ToolStrip1.Text = "toolStrip4";

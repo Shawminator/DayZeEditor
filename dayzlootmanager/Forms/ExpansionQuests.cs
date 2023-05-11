@@ -3517,7 +3517,7 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             QuestObjectivesDelivery CurrentDelivery = CurrentTreeNodeTag as QuestObjectivesDelivery;
-            CurrentDelivery.MaxDistance = ObjectivesCollectionMaxDistanceNUD.Value;
+            CurrentDelivery.MaxDistance = ObjectivesDeliveryMaxDistanceNUD.Value;
             CurrentDelivery.isDirty = true;
         }
         private void ObjectivesDeliveryMarkerNameTB_TextChanged(object sender, EventArgs e)

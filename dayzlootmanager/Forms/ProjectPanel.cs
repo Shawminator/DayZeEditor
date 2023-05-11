@@ -539,14 +539,6 @@ namespace DayZeEditor
 
         private void FTPConnectTSB_Click(object sender, EventArgs e)
         {
-            //SessionOptions sessionOptions = new SessionOptions
-            //{
-            //    Protocol = Protocol.Ftp,
-            //    HostName = "51.195.133.137",
-            //    PortNumber = 8821,
-            //    UserName = "craigs3",
-            //    Password = "@%$.!c6yHUG9",
-            //};
             SessionOptions sessionOptions = new SessionOptions
             {
                 Protocol = Protocol.Ftp,
@@ -566,9 +558,9 @@ namespace DayZeEditor
                 Protocol = Protocol.Sftp,
                 HostName = FTPHostNameTB.Text,
                 PortNumber = Convert.ToInt32(FTPPortTB.Text),
+                SshHostKeyPolicy = SshHostKeyPolicy.GiveUpSecurityAndAcceptAny,
                 UserName = FTPUSernameTB.Text,
-                Password = FTPPasswordTB.Text,
-                GiveUpSecurityAndAcceptAnyTlsHostCertificate = true
+                Password = FTPPasswordTB.Text
             };
             session = new Session();
             session.Open(sessionOptions);
@@ -752,10 +744,9 @@ namespace DayZeEditor
         private void getrootdir()
         {
             listView1.Items.Clear();
-            RemoteDirectoryInfo directory = session.ListDirectory("/");
+            RemoteDirectoryInfo directory = session.ListDirectory(session.HomePath);
             CurrentRemoteDirectory = directory.Files[0];
-            label2.Text = "/";
-            RemoteRoot = directory.Files[0].FullName;
+            label2.Text = session.HomePath;
             foreach (RemoteFileInfo fileInfo in directory.Files)
             {
                 if (fileInfo.IsDirectory)
@@ -783,7 +774,7 @@ namespace DayZeEditor
             string dir = fileinfo.FullName;
             if (dir.EndsWith(".."))
             {
-                if (dir == RemoteRoot)
+                if (dir.TrimEnd('/').Remove(dir.LastIndexOf('/')) == session.HomePath)
                     dir = dir.Substring(0, fileinfo.FullName.Length - 2);
                 else
                 {
@@ -838,7 +829,6 @@ namespace DayZeEditor
             Directory.Delete(FocusedProjectDirectory.FullName, true);
             DisplayDirlayout(CurrentProjectDirectory);
         }
-
         private void downloadFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TransferOptions option = new TransferOptions();
@@ -864,7 +854,6 @@ namespace DayZeEditor
             session.RemoveFiles(focusedremoteItem.FullName);
             DisplayFTPLayout(CurrentRemoteDirectory);
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
 
@@ -874,7 +863,6 @@ namespace DayZeEditor
                 ProjectProfileTB.Text = fb.SelectedPath;
             }
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
 
@@ -884,7 +872,6 @@ namespace DayZeEditor
                 ProjectMissionFolderTB.Text = fb.SelectedPath;
             }
         }
-
         private void button4_Click(object sender, EventArgs e)
         {
 
@@ -894,7 +881,5 @@ namespace DayZeEditor
                 ProjectFolderTB.Text = fb.SelectedPath;
             }
         }
-
-
     }
 }

@@ -200,7 +200,7 @@ namespace DayZeEditor
             AILoadouts newAILoadouts = new AILoadouts()
             {
                 Name = UserAnswer,
-                Filename = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Loadouts\\" + UserAnswer + ".Json",
+                Filename = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Loadouts\\" + UserAnswer + ".json",
                 ClassName = "",
                 Chance = (decimal)1.0,
                 Quantity = new Quantity(),
