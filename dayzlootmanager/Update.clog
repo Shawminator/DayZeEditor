@@ -1,4 +1,10 @@
-﻿Version 0.7.6.5
+﻿Version 0.7.6.6
+[FIXES/CHANGES]
+Various background fixes.
+[ADDED]
+Added SFTP to the projects tab to allows to connect to servers using SFTP
+
+Version 0.7.6.5
 [Added]
 Expasnion AI added correct config version
 
