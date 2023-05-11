@@ -3856,7 +3856,7 @@ namespace DayZeEditor
         private void MIssionContainerCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
-            currentAirdropmissionfile.Container = comboBox5.SelectedItem.ToString();
+            currentAirdropmissionfile.Container = MIssionContainerCB.SelectedItem.ToString();
             currentAirdropmissionfile.isDirty = true;
         }
         private void MissionDropNameTB_TextChanged(object sender, EventArgs e)

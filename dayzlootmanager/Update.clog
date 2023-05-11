@@ -1,4 +1,8 @@
-﻿Version 0.7.6.6
+﻿Version 0.7.6.7
+[FIXED]
+Expansion Mission Airdrop container was using wronng list when writing to file.
+
+Version 0.7.6.6
 [FIXES/CHANGES]
 Various background fixes.
 [ADDED]
