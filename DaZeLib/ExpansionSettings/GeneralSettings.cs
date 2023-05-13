@@ -182,7 +182,7 @@ namespace DayZeLib
             TemperatureFreezingColor = "1E90DCFF";
             NotifiersIdealColor = "DCDCDCFF";
             NotifiersHalfColor = "DCDC00FF";
-            NotifiersLowColor = "DC0000FF"";
+            NotifiersLowColor = "DC0000FF";
         }
     }
 }
