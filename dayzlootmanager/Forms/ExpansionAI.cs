@@ -321,11 +321,13 @@ namespace DayZeEditor
             EventCrachPatrolLB.ValueMember = "Value";
             EventCrachPatrolLB.DataSource = AIPatrolSettings.ObjectPatrols;
 
+            SuspendLayout();
+
             StaticPatrolLB.DisplayMember = "DisplayName";
             StaticPatrolLB.ValueMember = "Value";
             StaticPatrolLB.DataSource = AIPatrolSettings.Patrols;
 
-
+            ResumeLayout();
             useraction = true;
         }
         private void AIGeneralEnabledCB_CheckedChanged(object sender, EventArgs e)

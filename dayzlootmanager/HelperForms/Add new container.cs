@@ -18,13 +18,17 @@ namespace DayZeEditor
         {
             get { return getContainerString((ContainerTypes)comboBox1.SelectedItem); }
         }
+        public decimal getFallspeedValue
+        {
+            get { return numericUpDown1.Value;  } 
+        }
         public int getUsagevalue
         {
             get { return (int)numericUpDown8.Value;  }
         }
-        public float getWeightValue
+        public decimal getWeightValue
         {
-            get { return (float)numericUpDown9.Value; }
+            get { return numericUpDown9.Value; }
         }
         public int getItemevalue
         {
@@ -82,6 +86,11 @@ namespace DayZeEditor
                 default:
                     return "ExpansionAirdropContainer";
             }
+        }
+
+        private void darkButton1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1329,6 +1329,7 @@ namespace DayZeEditor
             checkBox2.Checked = AirdropsettingsJson.Server3DMarkerOnDropLocation == 1 ? true : false;
             checkBox3.Checked = AirdropsettingsJson.ShowAirdropTypeOnMarker == 1 ? true : false;
             checkBox4.Checked = AirdropsettingsJson.HeightIsRelativeToGroundLevel == 1 ? true : false;
+            checkBox8.Checked = AirdropsettingsJson.HideCargoWhileParachuteIsDeployed == 1 ? true : false;
             numericUpDown1.Value = (decimal)AirdropsettingsJson.Height;
             numericUpDown2.Value = (decimal)AirdropsettingsJson.FollowTerrainFraction;
             numericUpDown3.Value = (decimal)AirdropsettingsJson.Speed;
@@ -1352,6 +1353,7 @@ namespace DayZeEditor
             useraction = false;
             comboBox2.SelectedItem = getContainertype(ADC.Container);
             numericUpDown8.Value = ADC.Usage;
+            numericUpDown32.Value = ADC.FallSpeed;
             numericUpDown9.Value = (decimal)ADC.Weight;
             numericUpDown10.Value = ADC.ItemCount;
             numericUpDown11.Value = ADC.InfectedCount;
@@ -1384,6 +1386,7 @@ namespace DayZeEditor
                 CL.Chance = 1;
             trackBar1.Value = (int)(CL.Chance * 1000);
             numericUpDown12.Value = CL.Max;
+            numericUpDown33.Value = CL.Min;
             numericUpDown31.Value = CL.QuantityPercent;
             listBox4.DisplayMember = "DisplayName";
             listBox4.ValueMember = "Value";
@@ -1480,8 +1483,9 @@ namespace DayZeEditor
             if (result == DialogResult.OK)
             {
                 NewContainer.Container = anc.containerType;
+                NewContainer.FallSpeed = anc.getFallspeedValue;
                 NewContainer.Usage = anc.getUsagevalue;
-                NewContainer.Weight = anc.getWeightValue;
+                NewContainer.Weight = (decimal)anc.getWeightValue;
                 NewContainer.Loot = new BindingList<containerLoot>();
                 NewContainer.Infected = new BindingList<string>();
                 NewContainer.ItemCount = anc.getItemevalue;
@@ -1514,8 +1518,9 @@ namespace DayZeEditor
                     {
                         Name = l,
                         Attachments = new BindingList<string>(),
-                        Chance = 0.5f,
+                        Chance = (decimal)0.5,
                         Max = -1,
+                        Min = 0,
                         Variants = new BindingList<lootVarients>()
                     };
                     ADC.Loot.Add(Newloot);
@@ -1578,11 +1583,19 @@ namespace DayZeEditor
 
             }
         }
+        private void numericUpDown32_ValueChanged(object sender, EventArgs e)
+        {
+            if (useraction)
+            {
+                ADC.FallSpeed = numericUpDown32.Value;
+                AirdropsettingsJson.isDirty = true;
+            }
+        }
         private void numericUpDown9_ValueChanged(object sender, EventArgs e)
         {
             if (useraction)
             {
-                ADC.Weight = (float)numericUpDown9.Value;
+                ADC.Weight = (decimal)numericUpDown9.Value;
                 AirdropsettingsJson.isDirty = true;
             }
         }
@@ -1605,6 +1618,14 @@ namespace DayZeEditor
             if (useraction)
             {
                 CL.Max = (int)numericUpDown12.Value;
+                AirdropsettingsJson.isDirty = true;
+            }
+        }
+        private void numericUpDown33_ValueChanged(object sender, EventArgs e)
+        {
+            if (useraction)
+            {
+                CL.Min = (int)numericUpDown33.Value;
                 AirdropsettingsJson.isDirty = true;
             }
         }
@@ -1648,11 +1669,20 @@ namespace DayZeEditor
                 AirdropsettingsJson.isDirty = true;
             }
         }
+
+        private void checkBox8_CheckedChanged(object sender, EventArgs e)
+        {
+            if (useraction)
+            {
+                AirdropsettingsJson.HideCargoWhileParachuteIsDeployed = checkBox8.Checked == true ? 1 : 0;
+                AirdropsettingsJson.isDirty = true;
+            }
+        }
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             if (useraction)
             {
-                AirdropsettingsJson.Height = (float)numericUpDown1.Value;
+                AirdropsettingsJson.Height = (decimal)numericUpDown1.Value;
                 AirdropsettingsJson.isDirty = true;
             }
         }
@@ -1660,7 +1690,7 @@ namespace DayZeEditor
         {
             if (useraction)
             {
-                AirdropsettingsJson.FollowTerrainFraction = (float)numericUpDown2.Value;
+                AirdropsettingsJson.FollowTerrainFraction = (decimal)numericUpDown2.Value;
                 AirdropsettingsJson.isDirty = true;
             }
         }
@@ -1668,7 +1698,7 @@ namespace DayZeEditor
         {
             if (useraction)
             {
-                AirdropsettingsJson.Speed = (float)numericUpDown3.Value;
+                AirdropsettingsJson.Speed = (decimal)numericUpDown3.Value;
                 AirdropsettingsJson.isDirty = true;
             }
         }
@@ -1676,7 +1706,7 @@ namespace DayZeEditor
         {
             if (useraction)
             {
-                AirdropsettingsJson.Radius = (float)numericUpDown4.Value;
+                AirdropsettingsJson.Radius = (decimal)numericUpDown4.Value;
                 AirdropsettingsJson.isDirty = true;
             }
         }
@@ -1684,7 +1714,7 @@ namespace DayZeEditor
         {
             if (useraction)
             {
-                AirdropsettingsJson.InfectedSpawnRadius = (float)numericUpDown5.Value;
+                AirdropsettingsJson.InfectedSpawnRadius = (decimal)numericUpDown5.Value;
                 AirdropsettingsJson.isDirty = true;
             }
         }
@@ -1716,14 +1746,14 @@ namespace DayZeEditor
         private void trackBar1_MouseUp(object sender, MouseEventArgs e)
         {
             if (CL == null) return;
-            CL.Chance = (float)(((decimal)trackBar1.Value) / 1000);
+            CL.Chance = ((decimal)trackBar1.Value) / 1000;
             AirdropsettingsJson.isDirty = true;
         }
         private void darkButton52_Click(object sender, EventArgs e)
         {
             foreach (containerLoot cl in ADC.Loot)
             {
-                cl.Chance = (float)(((decimal)trackBar1.Value) / 1000);
+                cl.Chance = ((decimal)trackBar1.Value) / 1000;
             }
             AirdropsettingsJson.isDirty = true;
         }
@@ -1738,7 +1768,7 @@ namespace DayZeEditor
         private void VarientChanceTrackBar_MouseUp(object sender, MouseEventArgs e)
         { 
             if(LootVarients == null)return;
-            LootVarients.Chance = (float)(((decimal)VarientChanceTrackBar.Value) / 1000);
+            LootVarients.Chance =((decimal)VarientChanceTrackBar.Value) / 1000;
             AirdropsettingsJson.isDirty = true;
         }
         private void darkButton55_Click(object sender, EventArgs e)
@@ -1765,7 +1795,7 @@ namespace DayZeEditor
                     {
                         Name = l,
                         Attachments = new BindingList<string>(),
-                        Chance = 0.5f,
+                        Chance = (decimal)0.5,
                     };
                     CL.Variants.Add(newlootVarients);
                     AirdropsettingsJson.isDirty = true;
@@ -2963,7 +2993,7 @@ namespace DayZeEditor
             UseItemRarityForMarketSellCB.Checked = HardLineSettings.UseItemRarityForMarketSell == 1 ? true : false;
             EnableFactionPersistenceCB.Checked = HardLineSettings.EnableFactionPersistence == 1 ? true : false;
             UseFactionReputationCB.Checked = HardLineSettings.UseFactionReputation == 1 ? true : false;
-
+            ReputationMaxReputationNUD.Value = HardLineSettings.MaxReputation;
 
             ReputationOnKillInfectedNUD.Value = HardLineSettings.ReputationOnKillInfected;
             ReputationOnKillPlayerNUD.Value = HardLineSettings.ReputationOnKillPlayer;
@@ -3015,6 +3045,12 @@ namespace DayZeEditor
             if (!useraction) { return; }
             NumericUpDown nud = sender as NumericUpDown;
             HardLineSettings.setIntValue(nud.Name.Substring(0, nud.Name.Length - 3), (int)nud.Value);
+            HardLineSettings.isDirty = true;
+        }
+        private void ReputationMaxReputationNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            HardLineSettings.MaxReputation = (int)ReputationMaxReputationNUD.Value;
             HardLineSettings.isDirty = true;
         }
         private void comboBox4_SelectedIndexChanged_1(object sender, EventArgs e)

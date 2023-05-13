@@ -1221,6 +1221,8 @@ namespace DayZeEditor
             useraction = false;
             QuestRewardsAmountNUD.Value = qr.Amount;
             QuestRewardsHealthPercentNUD.Value = qr.HealthPercent;
+            QuestRewardsDamagePercentNUD.Value = qr.DamagePercent;
+            QuestRewardsQuestIDNUD.Value = qr.QuestID;
 
             QuestRewrdsAttchemntsLB.DisplayMember = "DisplayName";
             QuestRewrdsAttchemntsLB.ValueMember = "Value";
@@ -1241,6 +1243,22 @@ namespace DayZeEditor
             if (QuestRewardsLB.SelectedItems.Count < 1) return;
             QuestReward qr = QuestRewardsLB.SelectedItem as QuestReward;
             qr.HealthPercent = (int)QuestRewardsHealthPercentNUD.Value;
+            CurrentQuest.isDirty = true;
+        }
+        private void QuestRewardsDamagePercentNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if (QuestRewardsLB.SelectedItems.Count < 1) return;
+            QuestReward qr = QuestRewardsLB.SelectedItem as QuestReward;
+            qr.DamagePercent = (int)QuestRewardsDamagePercentNUD.Value;
+            CurrentQuest.isDirty = true;
+        }
+        private void QuestRewardsQuestIDNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if (QuestRewardsLB.SelectedItems.Count < 1) return;
+            QuestReward qr = QuestRewardsLB.SelectedItem as QuestReward;
+            qr.QuestID = (int)QuestRewardsQuestIDNUD.Value;
             CurrentQuest.isDirty = true;
         }
         private void darkButton34_Click(object sender, EventArgs e)
@@ -1435,7 +1453,11 @@ namespace DayZeEditor
                     {
                         ClassName = l,
                         Amount = 1,
-                        Attachments = new BindingList<string>()
+                        Attachments = new BindingList<string>(),
+                        HealthPercent = 0,
+                        DamagePercent = 0,
+                        QuestID = -1
+                        
                     };
                     CurrentQuest.Rewards.Add(newrawrd);
                     CurrentQuest.isDirty = true;
@@ -1709,6 +1731,7 @@ namespace DayZeEditor
             CurrentQuest.DeleteQuestItems = QuestDeleteQuestItemsCB.Checked == true ? 1 : 0;
             CurrentQuest.isDirty = true;
         }
+
         #endregion quests
         #region objectives
         public QuestObjectivesBase CurrentTreeNodeTag;
@@ -4469,6 +4492,7 @@ namespace DayZeEditor
         {
 
         }
+
         #endregion Persistant Player Data
 
 

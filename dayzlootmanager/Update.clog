@@ -1,4 +1,10 @@
-﻿Version 0.7.6.7
+﻿Version 0.7.6.8
+[Updated]
+Expansion Quests: Updated quest rewards to match latest expansion configs.
+Expansion Settings: Airdrops updated to version 4.
+Expansion HArdline updated to config version 8.
+
+Version 0.7.6.7
 [FIXED]
 Expansion Mission Airdrop container was using wronng list when writing to file.
 

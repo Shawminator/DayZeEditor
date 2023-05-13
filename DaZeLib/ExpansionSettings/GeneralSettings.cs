@@ -170,5 +170,19 @@ namespace DayZeLib
         public string NotifiersIdealColor { get; set; }
         public string NotifiersHalfColor { get; set; }
         public string NotifiersLowColor { get; set; }
+
+        public Hudcolors()
+        {
+            StaminaBarColor = "FFFFFFFF";
+            NotifierDividerColor = "DCDCDCFF";
+            TemperatureBurningColor = "DC0000FF";
+            TemperatureHotColor = "DCDC00FF";
+            TemperatureIdealColor = "DCDCDCFF";
+            TemperatureColdColor = "00CED1FF";
+            TemperatureFreezingColor = "1E90DCFF";
+            NotifiersIdealColor = "DCDCDCFF";
+            NotifiersHalfColor = "DCDC00FF";
+            NotifiersLowColor = "DC0000FF"";
+        }
     }
 }

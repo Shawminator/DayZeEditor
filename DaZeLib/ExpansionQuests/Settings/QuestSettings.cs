@@ -12,7 +12,7 @@ namespace DayZeLib
     public class QuestSettings
     {
         [JsonIgnore]
-        public const int CurrentVersion = 8;
+        public const int CurrentVersion = 9;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -34,8 +34,6 @@ namespace DayZeLib
         public string QuestTurnInText { get; set; }
         public string QuestObjectiveCompletedTitle { get; set; }
         public string QuestObjectiveCompletedText { get; set; }
-        public string AchievementCompletedTitle { get; set; }
-        public string AchievementCompletedText { get; set; }
         public string QuestCooldownTitle { get; set; }
         public string QuestCooldownText { get; set; }
         public string QuestNotInGroupTitle { get; set; }
@@ -43,15 +41,15 @@ namespace DayZeLib
         public string QuestNotGroupOwnerTitle { get; set; }
         public string QuestNotGroupOwnerText { get; set; }
         public int GroupQuestMode { get; set; }
-        //public BindingList<QuestActions> QuestActions { get; set; }
-
+        public string AchievementCompletedTitle { get; set; }
+        public string AchievementCompletedText { get; set; }
         public string WeeklyResetDay { get; set; }
         public int WeeklyResetHour { get; set; }
         public int WeeklyResetMinute { get; set; }
         public int DailyResetHour { get; set; }
         public int DailyResetMinute { get; set; }
         public int UseUTCTime { get; set; }
-
+        public int UseQuestNPCIndicators { get; set; }
 
         public QuestSettings() { }
 

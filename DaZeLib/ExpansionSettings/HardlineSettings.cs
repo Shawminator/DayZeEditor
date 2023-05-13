@@ -12,7 +12,7 @@ namespace DayZeLib
 {
     public class HardLineSettings
     {
-        const int CurrentVersion = 7;
+        const int CurrentVersion = 8;
 
         public int m_Version { get; set; }
         public int ReputationOnKillInfected { get; set; }
@@ -35,6 +35,7 @@ namespace DayZeLib
         public int EnableItemRarity { get; set; }
         public int UseItemRarityForMarketPurchase { get; set; }
         public int UseItemRarityForMarketSell { get; set; }
+        public int MaxReputation { get; set; }
         public Dictionary<string, int> ItemRarity { get; set; }
 
         [JsonIgnore]
