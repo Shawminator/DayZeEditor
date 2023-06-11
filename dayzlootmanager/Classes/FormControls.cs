@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 
 namespace DayZeEditor
 {
-    class MyRenderer : ToolStripProfessionalRenderer
+
+    public class MyRenderer : ToolStripProfessionalRenderer
     {
         protected override void OnRenderButtonBackground(ToolStripItemRenderEventArgs e)
         {

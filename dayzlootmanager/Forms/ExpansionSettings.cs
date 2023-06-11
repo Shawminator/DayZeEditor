@@ -2994,7 +2994,7 @@ namespace DayZeEditor
             EnableFactionPersistenceCB.Checked = HardLineSettings.EnableFactionPersistence == 1 ? true : false;
             UseFactionReputationCB.Checked = HardLineSettings.UseFactionReputation == 1 ? true : false;
             ReputationMaxReputationNUD.Value = HardLineSettings.MaxReputation;
-
+            ReputationLossOnDeathNUD.Value = HardLineSettings.ReputationLossOnDeath;
             ReputationOnKillInfectedNUD.Value = HardLineSettings.ReputationOnKillInfected;
             ReputationOnKillPlayerNUD.Value = HardLineSettings.ReputationOnKillPlayer;
             ReputationOnKillAnimalNUD.Value = HardLineSettings.ReputationOnKillAnimal;
@@ -3051,6 +3051,12 @@ namespace DayZeEditor
         {
             if (!useraction) { return; }
             HardLineSettings.MaxReputation = (int)ReputationMaxReputationNUD.Value;
+            HardLineSettings.isDirty = true;
+        }
+        private void ReputationLossOnDeathNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            HardLineSettings.ReputationLossOnDeath = (int)ReputationLossOnDeathNUD.Value;
             HardLineSettings.isDirty = true;
         }
         private void comboBox4_SelectedIndexChanged_1(object sender, EventArgs e)

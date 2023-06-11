@@ -71,9 +71,9 @@ namespace DayZeEditor
             this.TitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.TitleLabel.Location = new System.Drawing.Point(5, 6);
             this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(121, 15);
+            this.TitleLabel.Size = new System.Drawing.Size(114, 15);
             this.TitleLabel.TabIndex = 6;
-            this.TitleLabel.Text = "Eneter New Quest ID";
+            this.TitleLabel.Text = "Enter New Quest ID";
             // 
             // darkButton1
             // 

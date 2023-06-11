@@ -12,7 +12,7 @@ namespace DayZeLib
     public class AIPatrolSettings
     {
         [JsonIgnore]
-        const int CurrentVersion = 13;
+        const int CurrentVersion = 15;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -54,15 +54,21 @@ namespace DayZeLib
             bool needtosave = false;
             for (int i =0; i < Patrols.Count; i++)
             {
-                if (Patrols[i].Name == "")
+                if (Patrols[i].Name == "" || Patrols[i].Name == null)
                 {
                     Patrols[i].Name = "Patrol " + i.ToString();
                     needtosave = true;
+                    isDirty = true;
                 }
             }
             for (int j = 0; j < ObjectPatrols.Count; j++)
             {
-                ObjectPatrols[j].Name = "Object Patrol " + j.ToString();
+                if (ObjectPatrols[j].Name == "" || ObjectPatrols[j].Name == null)
+                {
+                    ObjectPatrols[j].Name = "Object Patrol " + j.ToString();
+                    needtosave = true;
+                    isDirty = true;
+                }
             }
             return needtosave;
         }
@@ -70,9 +76,7 @@ namespace DayZeLib
 
     public class ObjectPatrols
     {
-        [JsonIgnore]
         public string Name { get; set; }
-
         public string Faction { get; set; }
         public string Formation { get; set; }
         public decimal FormationLooseness { get; set; }
@@ -83,6 +87,7 @@ namespace DayZeLib
         public string UnderThreatSpeed { get; set; }
         public int CanBeLooted { get; set; }
         public int UnlimitedReload { get; set; }
+        public decimal SniperProneDistanceThreshold { get; set; }
         public decimal AccuracyMin { get; set; }
         public decimal AccuracyMax { get; set; }
         public decimal ThreatDistanceLimit { get; set; }
@@ -117,6 +122,7 @@ namespace DayZeLib
         public string UnderThreatSpeed { get; set; }
         public int CanBeLooted { get; set; }
         public int UnlimitedReload { get; set; }
+        public decimal SniperProneDistanceThreshold { get; set; }
         public decimal AccuracyMin { get; set; }
         public decimal AccuracyMax { get; set; }
         public decimal ThreatDistanceLimit { get; set; }

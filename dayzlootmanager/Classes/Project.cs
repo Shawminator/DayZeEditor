@@ -9,6 +9,7 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace DayZeEditor
 {
@@ -110,6 +111,8 @@ namespace DayZeEditor
         [JsonIgnore]
         public globalsconfig gloabsconfig { get; set; }
         [JsonIgnore]
+        public cfgignorelist cfgignorelist { get; set; }
+        [JsonIgnore]
         public BindingList<Spawnabletypesconfig> spawnabletypesList { get; set; }
         [JsonIgnore]
         public cfgrandompresetsconfig cfgrandompresetsconfig { get; set; }
@@ -128,6 +131,8 @@ namespace DayZeEditor
 
         [JsonIgnore]
         public int TotalNomCount { get; set; }
+
+
 
         private TypesFile vanillaTypes;
         private BindingList<TypesFile> ModTypesList;
@@ -212,6 +217,13 @@ namespace DayZeEditor
         internal void SetEvents()
         {
             ModEventsList = new BindingList<eventscofig>();
+            if(!File.Exists(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\db\\events.xml"))
+            {
+                XDocument xmlFile = new XDocument(new XDeclaration("1.0", "utf-8", "yes"));
+                xmlFile.Add(new XElement("events"));
+                xmlFile.Save(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\db\\events.xml");
+                Console.WriteLine("Vanilla events.xml File not found.... Creating blank XML");
+            }
             ModEventsList.Add(new eventscofig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\db\\events.xml"));
             if (EconomyCore.economycore == null) return;
             foreach (economycoreCE mods in EconomyCore.economycore.ce)
@@ -221,6 +233,13 @@ namespace DayZeEditor
                 {
                     if (file.type == "events")
                     {
+                        if(!File.Exists(path + "\\" + file.name))
+                        {
+                            XDocument xmlFile = new XDocument(new XDeclaration("1.0", "utf-8", "yes"));
+                            xmlFile.Add(new XElement("events"));
+                            xmlFile.Save(path + "\\" + file.name);
+                            Console.WriteLine("Custom " + file.name + " events file not found.... Creating blank XML");
+                        }
                         ModEventsList.Add(new eventscofig(path + "\\" + file.name));
                     }
                 }
@@ -238,6 +257,13 @@ namespace DayZeEditor
         internal void SetSpawnabletypes()
         {
             spawnabletypesList = new BindingList<Spawnabletypesconfig>();
+            if (!File.Exists(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgspawnabletypes.xml"))
+            {
+                XDocument xmlFile = new XDocument(new XDeclaration("1.0", "utf-8", "yes"));
+                xmlFile.Add(new XElement("spawnabletypes"));
+                xmlFile.Save(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgspawnabletypes.xml");
+                Console.WriteLine("Vanilla cfgspawnabletypes.xml File not found.... Creating blank XML");
+            }
             spawnabletypesList.Add(new Spawnabletypesconfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgspawnabletypes.xml"));
             if (EconomyCore.economycore == null) return;
             foreach (economycoreCE mods in EconomyCore.economycore.ce)
@@ -247,6 +273,13 @@ namespace DayZeEditor
                 {
                     if (file.type == "spawnabletypes")
                     {
+                        if (!File.Exists(path + "\\" + file.name))
+                        {
+                            XDocument xmlFile = new XDocument(new XDeclaration("1.0", "utf-8", "yes"));
+                            xmlFile.Add(new XElement("spawnabletypes"));
+                            xmlFile.Save(path + "\\" + file.name);
+                            Console.WriteLine("Custom " + file.name + " spawnabletypes file not found.... Creating blank XML");
+                        }
                         spawnabletypesList.Add(new Spawnabletypesconfig(path + "\\" + file.name));
                     }
                 }
@@ -254,6 +287,13 @@ namespace DayZeEditor
         }
         internal void SetRandompresets()
         {
+            if (!File.Exists(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgrandompresets.xml"))
+            {
+                XDocument xmlFile = new XDocument(new XDeclaration("1.0", "utf-8", "yes"));
+                xmlFile.Add(new XElement("randompresets"));
+                xmlFile.Save(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgrandompresets.xml");
+                Console.WriteLine("Vanilla cfgrandompresets.xml File not found.... Creating blank XML");
+            }
             cfgrandompresetsconfig = new cfgrandompresetsconfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgrandompresets.xml");
         }
         internal void setuserdefinitions()
@@ -271,6 +311,10 @@ namespace DayZeEditor
         internal void seteventgroups()
         {
             cfgeventgroups = new cfgeventgroups(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgeventgroups.xml");
+        }
+        internal void SetIgnoreList()
+        {
+            cfgignorelist = new cfgignorelist(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgignorelist.xml");
         }
         internal void SetGlobals()
         {
@@ -348,7 +392,6 @@ namespace DayZeEditor
         }
         internal void SetcfgEffectAreaConfig()
         {
-           
             cfgEffectAreaConfig = new cfgEffectAreaConfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgEffectArea.json");
         }
         internal void GetPlayerDB()

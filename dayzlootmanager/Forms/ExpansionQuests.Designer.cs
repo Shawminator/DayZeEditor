@@ -133,6 +133,12 @@ namespace DayZeEditor
             this.QuestQuestItemsLB = new System.Windows.Forms.ListBox();
             this.darkLabel36 = new DarkUI.Controls.DarkLabel();
             this.panel24 = new System.Windows.Forms.Panel();
+            this.panel75 = new System.Windows.Forms.Panel();
+            this.darkLabel153 = new DarkUI.Controls.DarkLabel();
+            this.QuestRewardsQuestIDNUD = new System.Windows.Forms.NumericUpDown();
+            this.panel74 = new System.Windows.Forms.Panel();
+            this.darkLabel152 = new DarkUI.Controls.DarkLabel();
+            this.QuestRewardsDamagePercentNUD = new System.Windows.Forms.NumericUpDown();
             this.panel69 = new System.Windows.Forms.Panel();
             this.darkLabel137 = new DarkUI.Controls.DarkLabel();
             this.QuestRewardsHealthPercentNUD = new System.Windows.Forms.NumericUpDown();
@@ -607,12 +613,6 @@ namespace DayZeEditor
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.removeQuestFromPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removePlayerSaveDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel74 = new System.Windows.Forms.Panel();
-            this.darkLabel152 = new DarkUI.Controls.DarkLabel();
-            this.QuestRewardsDamagePercentNUD = new System.Windows.Forms.NumericUpDown();
-            this.panel75 = new System.Windows.Forms.Panel();
-            this.darkLabel153 = new DarkUI.Controls.DarkLabel();
-            this.QuestRewardsQuestIDNUD = new System.Windows.Forms.NumericUpDown();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -650,6 +650,10 @@ namespace DayZeEditor
             this.panel48.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.QuestQuestItemsAmountNUD)).BeginInit();
             this.panel24.SuspendLayout();
+            this.panel75.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.QuestRewardsQuestIDNUD)).BeginInit();
+            this.panel74.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.QuestRewardsDamagePercentNUD)).BeginInit();
             this.panel69.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.QuestRewardsHealthPercentNUD)).BeginInit();
             this.panel49.SuspendLayout();
@@ -805,10 +809,6 @@ namespace DayZeEditor
             this.darkToolStrip23.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
-            this.panel74.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.QuestRewardsDamagePercentNUD)).BeginInit();
-            this.panel75.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.QuestRewardsQuestIDNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -1971,6 +1971,71 @@ namespace DayZeEditor
             this.panel24.Size = new System.Drawing.Size(336, 400);
             this.panel24.TabIndex = 202;
             // 
+            // panel75
+            // 
+            this.panel75.Controls.Add(this.darkLabel153);
+            this.panel75.Controls.Add(this.QuestRewardsQuestIDNUD);
+            this.panel75.Location = new System.Drawing.Point(6, 216);
+            this.panel75.Name = "panel75";
+            this.panel75.Size = new System.Drawing.Size(330, 20);
+            this.panel75.TabIndex = 252;
+            // 
+            // darkLabel153
+            // 
+            this.darkLabel153.AutoSize = true;
+            this.darkLabel153.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel153.Location = new System.Drawing.Point(6, 2);
+            this.darkLabel153.Name = "darkLabel153";
+            this.darkLabel153.Size = new System.Drawing.Size(49, 13);
+            this.darkLabel153.TabIndex = 112;
+            this.darkLabel153.Text = "Quest ID";
+            // 
+            // QuestRewardsQuestIDNUD
+            // 
+            this.QuestRewardsQuestIDNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.QuestRewardsQuestIDNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.QuestRewardsQuestIDNUD.Location = new System.Drawing.Point(171, 0);
+            this.QuestRewardsQuestIDNUD.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.QuestRewardsQuestIDNUD.Name = "QuestRewardsQuestIDNUD";
+            this.QuestRewardsQuestIDNUD.Size = new System.Drawing.Size(120, 20);
+            this.QuestRewardsQuestIDNUD.TabIndex = 108;
+            this.QuestRewardsQuestIDNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.QuestRewardsQuestIDNUD.ValueChanged += new System.EventHandler(this.QuestRewardsQuestIDNUD_ValueChanged);
+            // 
+            // panel74
+            // 
+            this.panel74.Controls.Add(this.darkLabel152);
+            this.panel74.Controls.Add(this.QuestRewardsDamagePercentNUD);
+            this.panel74.Location = new System.Drawing.Point(6, 192);
+            this.panel74.Name = "panel74";
+            this.panel74.Size = new System.Drawing.Size(330, 20);
+            this.panel74.TabIndex = 251;
+            // 
+            // darkLabel152
+            // 
+            this.darkLabel152.AutoSize = true;
+            this.darkLabel152.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel152.Location = new System.Drawing.Point(6, 2);
+            this.darkLabel152.Name = "darkLabel152";
+            this.darkLabel152.Size = new System.Drawing.Size(90, 13);
+            this.darkLabel152.TabIndex = 112;
+            this.darkLabel152.Text = "Damage  Percent";
+            // 
+            // QuestRewardsDamagePercentNUD
+            // 
+            this.QuestRewardsDamagePercentNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.QuestRewardsDamagePercentNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.QuestRewardsDamagePercentNUD.Location = new System.Drawing.Point(171, 0);
+            this.QuestRewardsDamagePercentNUD.Name = "QuestRewardsDamagePercentNUD";
+            this.QuestRewardsDamagePercentNUD.Size = new System.Drawing.Size(120, 20);
+            this.QuestRewardsDamagePercentNUD.TabIndex = 108;
+            this.QuestRewardsDamagePercentNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.QuestRewardsDamagePercentNUD.ValueChanged += new System.EventHandler(this.QuestRewardsDamagePercentNUD_ValueChanged);
+            // 
             // panel69
             // 
             this.panel69.Controls.Add(this.darkLabel137);
@@ -3027,7 +3092,7 @@ namespace DayZeEditor
             this.QuestNPCsPOSXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.QuestNPCsPOSXNUD.Location = new System.Drawing.Point(11, 18);
             this.QuestNPCsPOSXNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -3081,7 +3146,7 @@ namespace DayZeEditor
             this.QuestNPCsPOSYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.QuestNPCsPOSYNUD.Location = new System.Drawing.Point(123, 18);
             this.QuestNPCsPOSYNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -3125,7 +3190,7 @@ namespace DayZeEditor
             this.QuestNPCsPOSZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.QuestNPCsPOSZNUD.Location = new System.Drawing.Point(235, 18);
             this.QuestNPCsPOSZNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -4920,9 +4985,9 @@ namespace DayZeEditor
             this.ObjectivesTargetSpecialWeaponCB.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesTargetSpecialWeaponCB.Location = new System.Drawing.Point(264, 16);
             this.ObjectivesTargetSpecialWeaponCB.Name = "ObjectivesTargetSpecialWeaponCB";
-            this.ObjectivesTargetSpecialWeaponCB.Size = new System.Drawing.Size(111, 17);
+            this.ObjectivesTargetSpecialWeaponCB.Size = new System.Drawing.Size(105, 17);
             this.ObjectivesTargetSpecialWeaponCB.TabIndex = 350;
-            this.ObjectivesTargetSpecialWeaponCB.Text = "Speacial Weapon";
+            this.ObjectivesTargetSpecialWeaponCB.Text = "Special Weapon";
             this.ObjectivesTargetSpecialWeaponCB.UseVisualStyleBackColor = true;
             this.ObjectivesTargetSpecialWeaponCB.CheckedChanged += new System.EventHandler(this.ObjectivesTargetSpecialWeaponCB_CheckedChanged);
             // 
@@ -8050,71 +8115,6 @@ namespace DayZeEditor
             this.removePlayerSaveDataToolStripMenuItem.Text = "Remove Player Save Data";
             this.removePlayerSaveDataToolStripMenuItem.Click += new System.EventHandler(this.removePlayerSaveDataToolStripMenuItem_Click);
             // 
-            // panel74
-            // 
-            this.panel74.Controls.Add(this.darkLabel152);
-            this.panel74.Controls.Add(this.QuestRewardsDamagePercentNUD);
-            this.panel74.Location = new System.Drawing.Point(6, 192);
-            this.panel74.Name = "panel74";
-            this.panel74.Size = new System.Drawing.Size(330, 20);
-            this.panel74.TabIndex = 251;
-            // 
-            // darkLabel152
-            // 
-            this.darkLabel152.AutoSize = true;
-            this.darkLabel152.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel152.Location = new System.Drawing.Point(6, 2);
-            this.darkLabel152.Name = "darkLabel152";
-            this.darkLabel152.Size = new System.Drawing.Size(90, 13);
-            this.darkLabel152.TabIndex = 112;
-            this.darkLabel152.Text = "Damage  Percent";
-            // 
-            // QuestRewardsDamagePercentNUD
-            // 
-            this.QuestRewardsDamagePercentNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.QuestRewardsDamagePercentNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.QuestRewardsDamagePercentNUD.Location = new System.Drawing.Point(171, 0);
-            this.QuestRewardsDamagePercentNUD.Name = "QuestRewardsDamagePercentNUD";
-            this.QuestRewardsDamagePercentNUD.Size = new System.Drawing.Size(120, 20);
-            this.QuestRewardsDamagePercentNUD.TabIndex = 108;
-            this.QuestRewardsDamagePercentNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.QuestRewardsDamagePercentNUD.ValueChanged += new System.EventHandler(this.QuestRewardsDamagePercentNUD_ValueChanged);
-            // 
-            // panel75
-            // 
-            this.panel75.Controls.Add(this.darkLabel153);
-            this.panel75.Controls.Add(this.QuestRewardsQuestIDNUD);
-            this.panel75.Location = new System.Drawing.Point(6, 216);
-            this.panel75.Name = "panel75";
-            this.panel75.Size = new System.Drawing.Size(330, 20);
-            this.panel75.TabIndex = 252;
-            // 
-            // darkLabel153
-            // 
-            this.darkLabel153.AutoSize = true;
-            this.darkLabel153.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel153.Location = new System.Drawing.Point(6, 2);
-            this.darkLabel153.Name = "darkLabel153";
-            this.darkLabel153.Size = new System.Drawing.Size(49, 13);
-            this.darkLabel153.TabIndex = 112;
-            this.darkLabel153.Text = "Quest ID";
-            // 
-            // QuestRewardsQuestIDNUD
-            // 
-            this.QuestRewardsQuestIDNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.QuestRewardsQuestIDNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.QuestRewardsQuestIDNUD.Location = new System.Drawing.Point(171, 0);
-            this.QuestRewardsQuestIDNUD.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.QuestRewardsQuestIDNUD.Name = "QuestRewardsQuestIDNUD";
-            this.QuestRewardsQuestIDNUD.Size = new System.Drawing.Size(120, 20);
-            this.QuestRewardsQuestIDNUD.TabIndex = 108;
-            this.QuestRewardsQuestIDNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.QuestRewardsQuestIDNUD.ValueChanged += new System.EventHandler(this.QuestRewardsQuestIDNUD_ValueChanged);
-            // 
             // ExpansionQuests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -8193,6 +8193,12 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.QuestQuestItemsAmountNUD)).EndInit();
             this.panel24.ResumeLayout(false);
             this.panel24.PerformLayout();
+            this.panel75.ResumeLayout(false);
+            this.panel75.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.QuestRewardsQuestIDNUD)).EndInit();
+            this.panel74.ResumeLayout(false);
+            this.panel74.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.QuestRewardsDamagePercentNUD)).EndInit();
             this.panel69.ResumeLayout(false);
             this.panel69.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.QuestRewardsHealthPercentNUD)).EndInit();
@@ -8412,12 +8418,6 @@ namespace DayZeEditor
             this.darkToolStrip23.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
             this.contextMenuStrip2.ResumeLayout(false);
-            this.panel74.ResumeLayout(false);
-            this.panel74.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.QuestRewardsDamagePercentNUD)).EndInit();
-            this.panel75.ResumeLayout(false);
-            this.panel75.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.QuestRewardsQuestIDNUD)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -11,7 +11,7 @@ namespace DayZeLib
     public class AISettings
     {
         [JsonIgnore]
-        const int CurrentVersion = 5;
+        const int CurrentVersion = 6;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -25,6 +25,7 @@ namespace DayZeLib
         public BindingList<string> Admins { get; set; }
         public int MaximumDynamicPatrols { get; set; }
         public int Vaulting { get; set; }
+        public decimal SniperProneDistanceThreshold { get; set; }
         public int Manners { get; set; }
         public int CanRecruitGuards { get; set; }
         public BindingList<string> PlayerFactions { get; set; }

@@ -1,4 +1,19 @@
-﻿Version 0.7.6.8
+﻿Version 0.7.7.1
+[Fixed]
+Economy, fixed ramdon preset not adding new attchemnt.
+Expansion AI, fixed position of chance label.
+
+Version 0.7.7.0
+[Fixed]
+fixed missing name class on expansion AI Event patrols. this was causing always save but not actualy saving.
+
+Version 0.7.6.9
+[Updated]
+Update to match latest expansion release.
+Expansion Hardline, Added missing lossondeath value.
+Various bits and bobs fixed.
+
+Version 0.7.6.8
 [Updated]
 Expansion Quests: Updated quest rewards to match latest expansion configs.
 Expansion Settings: Airdrops updated to version 4.

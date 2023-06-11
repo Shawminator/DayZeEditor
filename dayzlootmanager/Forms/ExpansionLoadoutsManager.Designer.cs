@@ -467,6 +467,7 @@ namespace DayZeEditor
             "Default Slot",
             "Back",
             "Body",
+            "Eyes",
             "Feet",
             "Gloves",
             "Hands",

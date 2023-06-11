@@ -38,6 +38,7 @@ namespace DayZeLib
             Console.WriteLine("serializing " + Path.GetFileName(Filename));
             try
             {
+                bool savefile = false;
                 var mySerializer = new XmlSerializer(typeof(types));
                 using (var myFileStream = new FileStream(filename, FileMode.Open))
                 {
@@ -51,6 +52,21 @@ namespace DayZeLib
                             if(type.min > type.nominal)
                             {
                                 typeslist.Add(type.name);
+                            }
+                            if (type.usage.Count > 0)
+                            {
+                                int usagecount = type.usage.Count;
+                                for (int i = 0; i < usagecount; i++)
+                                {
+                                    if (type.usage[i].name == null)
+                                    {
+                                        type.usage.Remove(type.usage[i]);
+                                        i--;
+                                        usagecount--;
+                                        savefile = true;
+                                    }
+                                }
+                                
                             }
                         }
                         if(typeslist.Count > 0)
@@ -69,6 +85,8 @@ namespace DayZeLib
                         MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
                     }
                 }
+                if (savefile == true)
+                    SaveTyes();
             }
             catch(Exception ex)
             {

@@ -122,9 +122,10 @@ namespace DayZeEditor
                 AIPatrolSettings.isDirty = false;
                 if (AIPatrolSettings.checkver())
                     needtosave = true;
+                if (AIPatrolSettings.SetPatrolNames())
+                    needtosave = true;
             }
-            if (AIPatrolSettings.SetPatrolNames())
-                needtosave = true;
+            
             AIPatrolSettings.Filename = AIPatrolSettingsPath;
             SetupAIPatrolSettings();
 
@@ -401,7 +402,8 @@ namespace DayZeEditor
             if (EventCrachPatrolLB.SelectedItems.Count < 1) return;
             CurrentEventcrashpatrol = EventCrachPatrolLB.SelectedItem as ObjectPatrols;
             useraction = false;
-            CrashEventNameTB.Text = CurrentEventcrashpatrol.ClassName;
+            CrashEventNameTB.Text = CurrentEventcrashpatrol.Name;
+            CrashEventClassNameTB.Text = CurrentEventcrashpatrol.ClassName;
             CrashFactionCB.SelectedIndex = CrashFactionCB.FindStringExact(CurrentEventcrashpatrol.Faction);
             CrashNumberOfAINUD.Value = CurrentEventcrashpatrol.NumberOfAI;
             CrashBehaviourCB.SelectedIndex = CrashBehaviourCB.FindStringExact(CurrentEventcrashpatrol.Behaviour);
@@ -411,6 +413,7 @@ namespace DayZeEditor
             CrashAccuracyMaxNUD.Value = CurrentEventcrashpatrol.AccuracyMax;
             CrashThreatDistanceLimitNUD.Value = CurrentEventcrashpatrol.ThreatDistanceLimit;
             CrashDamageMultiplierNUD.Value = CurrentEventcrashpatrol.DamageMultiplier;
+            CrashSniperProneDistanceThresholdNUD.Value = CurrentEventcrashpatrol.SniperProneDistanceThreshold;
             CrashMinDistRadiusNUD.Value = CurrentEventcrashpatrol.MinDistRadius;
             CrashMaxDistRadiusNUD.Value = CurrentEventcrashpatrol.MaxDistRadius;
             CrashDespawnRadiusNUD.Value = CurrentEventcrashpatrol.DespawnRadius;
@@ -469,7 +472,14 @@ namespace DayZeEditor
         private void CrashEventNameTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            CurrentEventcrashpatrol.ClassName = CrashEventNameTB.Text;
+            CurrentEventcrashpatrol.Name = CrashEventNameTB.Text;
+            AIPatrolSettings.isDirty = true;
+            EventCrachPatrolLB.Refresh();
+        }
+        private void CrashEventClassNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentEventcrashpatrol.ClassName = CrashEventClassNameTB.Text;
             AIPatrolSettings.isDirty = true;
             EventCrachPatrolLB.Refresh();
         }
@@ -551,7 +561,12 @@ namespace DayZeEditor
             CurrentEventcrashpatrol.DamageMultiplier = CrashDamageMultiplierNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
-
+        private void CrashSniperProneDistanceThresholdNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentEventcrashpatrol.SniperProneDistanceThreshold = CrashSniperProneDistanceThresholdNUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
         private void CrashThreatDistanceLimitNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -636,6 +651,7 @@ namespace DayZeEditor
             StaticPatrolAccuracyMinNUD.Value = CurrentPatrol.AccuracyMin;
             StaticPatrolAccuracyMaxNUD.Value = CurrentPatrol.AccuracyMax;
             StaticPatrolThreatDistanceLimitNUD.Value = CurrentPatrol.ThreatDistanceLimit;
+            StaticPatrolSniperProneDistanceThresholdNUD.Value = CurrentPatrol.SniperProneDistanceThreshold;
             StaticPatrolDamageMultiplierNUD.Value = CurrentPatrol.DamageMultiplier;
             StaticPatrolChanceCB.Value = CurrentPatrol.Chance;
             StaticPatrolCanBeLotedCB.Checked = CurrentPatrol.CanBeLooted == 1 ? true : false;
@@ -791,6 +807,12 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             CurrentPatrol.MaxDistRadius = StaticPatrolMaxDistRadiusNUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
+        private void StaticPatrolSniperProneDistanceThresholdNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPatrol.SniperProneDistanceThreshold = StaticPatrolSniperProneDistanceThresholdNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
         private void StaticPatrolDespawnRadiusNUD_ValueChanged(object sender, EventArgs e)
@@ -984,6 +1006,7 @@ namespace DayZeEditor
             ThreatDistanceLimitNUD.Value = AISettings.ThreatDistanceLimit;
             DamageMultiplierNUD.Value = AISettings.DamageMultiplier;
             MaximumDynamicPatrolsNUD.Value = AISettings.MaximumDynamicPatrols;
+            SniperProneDistanceThresholdNUD.Value = AISettings.SniperProneDistanceThreshold;
             VaultingCB.Checked = AISettings.Vaulting == 1 ? true : false;
             MannersCB.Checked = AISettings.Manners == 1 ? true : false;
             CanRecruitGuardsCB.Checked = AISettings.CanRecruitGuards == 1 ? true : false;
@@ -1077,7 +1100,12 @@ namespace DayZeEditor
             AISettings.PlayerFactions.Remove(PlayerFactionsLB.GetItemText(PlayerFactionsLB.SelectedItem));
             AISettings.isDirty = true;
         }
-
+        private void SniperProneDistanceThresholdNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AISettings.SniperProneDistanceThreshold = SniperProneDistanceThresholdNUD.Value;
+            AISettings.isDirty = true;
+        }
         #endregion AISettings
 
         private void ExpansionAI_FormClosing(object sender, FormClosingEventArgs e)

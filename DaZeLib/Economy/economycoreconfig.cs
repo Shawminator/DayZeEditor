@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
@@ -15,6 +16,25 @@ using System.Xml.Serialization;
 
 namespace DayZeLib
 {
+    public class BoolConverter : JsonConverter<bool>
+    {
+        public override void Write(Utf8JsonWriter writer, bool value, JsonSerializerOptions options) =>
+            writer.WriteBooleanValue(value);
+
+        public override bool Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            switch (reader.TokenType)
+            {
+                case JsonTokenType.Number:
+                    return reader.TryGetInt64(out long l) ? Convert.ToBoolean(l) : reader.TryGetDouble(out double d) ? Convert.ToBoolean(d) : false;
+                case JsonTokenType.True:
+                    return true;
+                case JsonTokenType.False:
+                    return false;
+            }
+            return false;
+        }
+    }
     public class economycoreconfig
     {
         public economycore economycore { get; set; }
@@ -133,34 +153,43 @@ namespace DayZeLib
         public Spawnabletypesconfig(string filename)
         {
             Filename = filename;
-            var mySerializer = new XmlSerializer(typeof(spawnabletypes));
-            StringBuilder sb = new StringBuilder();
-            List<string> filearray = File.ReadAllLines(Filename).ToList();
-            foreach (String line in filearray)
+            if (File.Exists(Filename))
             {
-                if (line.Contains("<!-- ---"))
+                var mySerializer = new XmlSerializer(typeof(spawnabletypes));
+                StringBuilder sb = new StringBuilder();
+                List<string> filearray = File.ReadAllLines(Filename).ToList();
+                foreach (String line in filearray)
                 {
-                    isDirty = true;
-                    continue;
-                }
-                sb.Append(line + Environment.NewLine);
-            }
-            using (Stream ms = Helper.GenerateStreamFromString(sb.ToString()))
-            {
-                Console.WriteLine("serializing " + Path.GetFileName(Filename));
-                try
-                {
-                    spawnabletypes = (spawnabletypes)mySerializer.Deserialize(ms);
-                }
-                catch (Exception ex)
-                {
-                    var form = Application.OpenForms["SplashForm"];
-                    if (form != null)
+                    if (line.Contains("<!-- ---"))
                     {
-                        form.Invoke(new Action(() => { form.Close(); }));
+                        isDirty = true;
+                        continue;
                     }
-                    MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                    sb.Append(line + Environment.NewLine);
                 }
+                using (Stream ms = Helper.GenerateStreamFromString(sb.ToString()))
+                {
+                    Console.WriteLine("serializing " + Path.GetFileName(Filename));
+                    try
+                    {
+                        spawnabletypes = (spawnabletypes)mySerializer.Deserialize(ms);
+                    }
+                    catch (Exception ex)
+                    {
+                        var form = Application.OpenForms["SplashForm"];
+                        if (form != null)
+                        {
+                            form.Invoke(new Action(() => { form.Close(); }));
+                        }
+                        MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine(Path.GetFileName(Filename) + "Does not exist, Creating new empty file.");
+                spawnabletypes = new spawnabletypes();
+                Savespawnabletypes();
             }
         }
         public void Savespawnabletypes(string saveTime = null)
@@ -194,34 +223,43 @@ namespace DayZeLib
         public cfgrandompresetsconfig(string filename)
         {
             Filename = filename;
-            var mySerializer = new XmlSerializer(typeof(randompresets));
-            StringBuilder sb = new StringBuilder();
-            List<string> filearray = File.ReadAllLines(Filename).ToList();
-            foreach (String line in filearray)
+            if (File.Exists(Filename))
             {
-                if (line.Contains("<!-- ---"))
+                var mySerializer = new XmlSerializer(typeof(randompresets));
+                StringBuilder sb = new StringBuilder();
+                List<string> filearray = File.ReadAllLines(Filename).ToList();
+                foreach (String line in filearray)
                 {
-                    isDirty = true;
-                    continue;
-                }
-                sb.Append(line + Environment.NewLine);
-            }
-            using (Stream ms = Helper.GenerateStreamFromString(sb.ToString()))
-            {
-                Console.WriteLine("serializing " + Path.GetFileName(Filename));
-                try
-                {
-                    randompresets = (randompresets)mySerializer.Deserialize(ms);
-                }
-                catch (Exception ex)
-                {
-                    var form = Application.OpenForms["SplashForm"];
-                    if (form != null)
+                    if (line.Contains("<!-- ---"))
                     {
-                        form.Invoke(new Action(() => { form.Close(); }));
+                        isDirty = true;
+                        continue;
                     }
-                    MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                    sb.Append(line + Environment.NewLine);
                 }
+                using (Stream ms = Helper.GenerateStreamFromString(sb.ToString()))
+                {
+                    Console.WriteLine("serializing " + Path.GetFileName(Filename));
+                    try
+                    {
+                        randompresets = (randompresets)mySerializer.Deserialize(ms);
+                    }
+                    catch (Exception ex)
+                    {
+                        var form = Application.OpenForms["SplashForm"];
+                        if (form != null)
+                        {
+                            form.Invoke(new Action(() => { form.Close(); }));
+                        }
+                        MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine(Path.GetFileName(Filename) + "Does not exist, Creating new empty file.");
+                randompresets = new randompresets();
+                SaveRandomPresets();
             }
         }
         public void SaveRandomPresets(string saveTime = null)
@@ -250,25 +288,33 @@ namespace DayZeLib
         public mapgroupproto(string filename)
         {
             Filename = filename;
-            var mySerializer = new XmlSerializer(typeof(prototype));
-            // To read the file, create a FileStream.
-            using (var myFileStream = new FileStream(filename, FileMode.Open))
+            if (File.Exists(Filename))
             {
-                Console.WriteLine("serializing " + Path.GetFileName(Filename));
-                try
+                var mySerializer = new XmlSerializer(typeof(prototype));
+                // To read the file, create a FileStream.
+                using (var myFileStream = new FileStream(filename, FileMode.Open))
                 {
-                    // Call the Deserialize method and cast to the object type.
-                    prototypeGroup = (prototype)mySerializer.Deserialize(myFileStream);
-                }
-                catch (Exception ex)
-                {
-                    var form = Application.OpenForms["SplashForm"];
-                    if (form != null)
+                    Console.WriteLine("serializing " + Path.GetFileName(Filename));
+                    try
                     {
-                        form.Invoke(new Action(() => { form.Close(); }));
+                        // Call the Deserialize method and cast to the object type.
+                        prototypeGroup = (prototype)mySerializer.Deserialize(myFileStream);
                     }
-                    MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                    catch (Exception ex)
+                    {
+                        var form = Application.OpenForms["SplashForm"];
+                        if (form != null)
+                        {
+                            form.Invoke(new Action(() => { form.Close(); }));
+                        }
+                        MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                    }
                 }
+            }
+            else
+            {
+                Console.WriteLine(Path.GetFileName(Filename) + "Does not exist, Creating new empty file.");
+                prototypeGroup = new prototype();
             }
         }
     }
@@ -280,25 +326,33 @@ namespace DayZeLib
         public mapgrouppos(string filename)
         {
             Filename = filename;
-            var mySerializer = new XmlSerializer(typeof(map));
-            // To read the file, create a FileStream.
-            using (var myFileStream = new FileStream(filename, FileMode.Open))
+            if (File.Exists(Filename))
             {
-                Console.WriteLine("serializing " + Path.GetFileName(Filename));
-                try
+                var mySerializer = new XmlSerializer(typeof(map));
+                // To read the file, create a FileStream.
+                using (var myFileStream = new FileStream(filename, FileMode.Open))
                 {
-                    // Call the Deserialize method and cast to the object type.
-                    map = (map)mySerializer.Deserialize(myFileStream);
-                }
-                catch (Exception ex)
-                {
-                    var form = Application.OpenForms["SplashForm"];
-                    if (form != null)
+                    Console.WriteLine("serializing " + Path.GetFileName(Filename));
+                    try
                     {
-                        form.Invoke(new Action(() => { form.Close(); }));
+                        // Call the Deserialize method and cast to the object type.
+                        map = (map)mySerializer.Deserialize(myFileStream);
                     }
-                    MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                    catch (Exception ex)
+                    {
+                        var form = Application.OpenForms["SplashForm"];
+                        if (form != null)
+                        {
+                            form.Invoke(new Action(() => { form.Close(); }));
+                        }
+                        MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                    }
                 }
+            }
+            else
+            {
+                Console.WriteLine(Path.GetFileName(Filename) + "Does not exist, Creating new empty file.");
+                map = new map();
             }
         }
     }
@@ -310,25 +364,34 @@ namespace DayZeLib
         public eventscofig(string filename)
         {
             Filename = filename;
-            var mySerializer = new XmlSerializer(typeof(events));
-            // To read the file, create a FileStream.
-            using (var myFileStream = new FileStream(filename, FileMode.Open))
+            if (File.Exists(Filename))
             {
-                Console.WriteLine("serializing " + Path.GetFileName(Filename));
-                try
+                var mySerializer = new XmlSerializer(typeof(events));
+                // To read the file, create a FileStream.
+                using (var myFileStream = new FileStream(filename, FileMode.Open))
                 {
-                    // Call the Deserialize method and cast to the object type.
-                    events = (events)mySerializer.Deserialize(myFileStream);
-                }
-                catch (Exception ex)
-                {
-                    var form = Application.OpenForms["SplashForm"];
-                    if (form != null)
+                    Console.WriteLine("serializing " + Path.GetFileName(Filename));
+                    try
                     {
-                        form.Invoke(new Action(() => { form.Close(); }));
+                        // Call the Deserialize method and cast to the object type.
+                        events = (events)mySerializer.Deserialize(myFileStream);
                     }
-                    MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                    catch (Exception ex)
+                    {
+                        var form = Application.OpenForms["SplashForm"];
+                        if (form != null)
+                        {
+                            form.Invoke(new Action(() => { form.Close(); }));
+                        }
+                        MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                    }
                 }
+            }
+            else
+            {
+                Console.WriteLine(Path.GetFileName(Filename) + "Does not exist, Creating new empty file.");
+                events = new events();
+                SaveEvent();
             }
         }
 
@@ -362,25 +425,34 @@ namespace DayZeLib
         public cfgeventspawns(string filename)
         {
             Filename = filename;
-            var mySerializer = new XmlSerializer(typeof(eventposdef));
-            // To read the file, create a FileStream.
-            using (var myFileStream = new FileStream(filename, FileMode.Open))
+            if (File.Exists(Filename))
             {
-                Console.WriteLine("serializing " + Path.GetFileName(Filename));
-                try
+                var mySerializer = new XmlSerializer(typeof(eventposdef));
+                // To read the file, create a FileStream.
+                using (var myFileStream = new FileStream(filename, FileMode.Open))
                 {
-                    // Call the Deserialize method and cast to the object type.
-                    eventposdef = (eventposdef)mySerializer.Deserialize(myFileStream);
-                }
-                catch (Exception ex)
-                {
-                    var form = Application.OpenForms["SplashForm"];
-                    if (form != null)
+                    Console.WriteLine("serializing " + Path.GetFileName(Filename));
+                    try
                     {
-                        form.Invoke(new Action(() => { form.Close(); }));
+                        // Call the Deserialize method and cast to the object type.
+                        eventposdef = (eventposdef)mySerializer.Deserialize(myFileStream);
                     }
-                    MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                    catch (Exception ex)
+                    {
+                        var form = Application.OpenForms["SplashForm"];
+                        if (form != null)
+                        {
+                            form.Invoke(new Action(() => { form.Close(); }));
+                        }
+                        MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                    }
                 }
+            }
+            else
+            {
+                Console.WriteLine(Path.GetFileName(Filename) + "Does not exist, Creating new empty file.");
+                eventposdef = new eventposdef();
+                SaveEventSpawns();
             }
         }
 
@@ -420,7 +492,6 @@ namespace DayZeLib
             {
                 using (var myFileStream = new FileStream(filename, FileMode.Open))
                 {
-
                     Console.WriteLine("serializing " + Path.GetFileName(Filename));
                     try
                     {
@@ -476,25 +547,33 @@ namespace DayZeLib
         public globalsconfig(string filename)
         {
             Filename = filename;
-            var mySerializer = new XmlSerializer(typeof(variables));
-            // To read the file, create a FileStream.
-            using (var myFileStream = new FileStream(filename, FileMode.Open))
+            if (File.Exists(Filename))
             {
-                Console.WriteLine("serializing " + Path.GetFileName(Filename));
-                try
+                var mySerializer = new XmlSerializer(typeof(variables));
+                // To read the file, create a FileStream.
+                using (var myFileStream = new FileStream(filename, FileMode.Open))
                 {
-                    // Call the Deserialize method and cast to the object type.
-                    variables = (variables)mySerializer.Deserialize(myFileStream);
-                }
-                catch (Exception ex)
-                {
-                    var form = Application.OpenForms["SplashForm"];
-                    if (form != null)
+                    Console.WriteLine("serializing " + Path.GetFileName(Filename));
+                    try
                     {
-                        form.Invoke(new Action(() => { form.Close(); }));
+                        // Call the Deserialize method and cast to the object type.
+                        variables = (variables)mySerializer.Deserialize(myFileStream);
                     }
-                    MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                    catch (Exception ex)
+                    {
+                        var form = Application.OpenForms["SplashForm"];
+                        if (form != null)
+                        {
+                            form.Invoke(new Action(() => { form.Close(); }));
+                        }
+                        MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                    }
                 }
+            }
+            else
+            {
+                Console.WriteLine(Path.GetFileName(Filename) + " File not found, Creating new....");
+                variables = new variables();
             }
         }
 
@@ -516,6 +595,67 @@ namespace DayZeLib
             File.WriteAllText(Filename, sw.ToString());
         }
     }
+    public class cfgignorelist
+    {
+        public ignore ignore { get; set; }
+        public string Filename { get; set; }
+        public bool isDirty = false;
+        public cfgignorelist(string filename)
+        {
+            Filename = filename;
+            var mySerializer = new XmlSerializer(typeof(ignore));
+            // To read the file, create a FileStream.
+            if (File.Exists(Filename))
+            {
+                using (var myFileStream = new FileStream(filename, FileMode.Open))
+                {
+                    Console.WriteLine("serializing " + Path.GetFileName(Filename));
+                    try
+                    {
+                        // Call the Deserialize method and cast to the object type.
+                        ignore = (ignore)mySerializer.Deserialize(myFileStream);
+                    }
+                    catch (Exception ex)
+                    {
+                        var form = Application.OpenForms["SplashForm"];
+                        if (form != null)
+                        {
+                            form.Invoke(new Action(() => { form.Close(); }));
+                        }
+                        MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine(Path.GetFileName(Filename) + "Does not exist, Creating new empty file.");
+                ignore = new ignore();
+                Saveignorelist();
+            }
+        }
+
+        public void Saveignorelist(string saveTime = null)
+        {
+            if (saveTime != null)
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
+                File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
+            }
+            var serializer = new XmlSerializer(typeof(ignore));
+            var ns = new XmlSerializerNamespaces();
+            ns.Add("", "");
+            var sw = new StringWriter();
+            sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
+            var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true, });
+            serializer.Serialize(xmlWriter, ignore, ns);
+            Console.WriteLine(sw.ToString());
+            File.WriteAllText(Filename, sw.ToString());
+        }
+        public override string ToString()
+        {
+            return Path.GetFileNameWithoutExtension(Filename);
+        }
+    }
     public class cfgplayerspawnpoints
     {
         public playerspawnpoints playerspawnpoints { get; set; }
@@ -524,16 +664,14 @@ namespace DayZeLib
         public cfgplayerspawnpoints(string filename)
         {
             Filename = filename;
-            var mySerializer = new XmlSerializer(typeof(playerspawnpoints));
-            // To read the file, create a FileStream.
-            using (var myFileStream = new FileStream(filename, FileMode.Open))
+            if (File.Exists(Filename))
             {
-                if (File.Exists(Filename))
+                var mySerializer = new XmlSerializer(typeof(playerspawnpoints));
+                using (var myFileStream = new FileStream(filename, FileMode.Open))
                 {
                     Console.WriteLine("serializing " + Path.GetFileName(Filename));
                     try
                     {
-                        // Call the Deserialize method and cast to the object type.
                         playerspawnpoints = (playerspawnpoints)mySerializer.Deserialize(myFileStream);
                     }
                     catch (Exception ex)
@@ -547,12 +685,12 @@ namespace DayZeLib
                         Console.WriteLine("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString() + "\n***** Please Fix this before continuing to use the editor *****\n");
                     }
                 }
-                else
-                {
-                    Console.WriteLine(Path.GetFileName(Filename) + " File not found, Creating new....");
-                    playerspawnpoints = new playerspawnpoints();
-                    Savecfgplayerspawnpoints();
-                }
+            }
+            else
+            {
+                Console.WriteLine(Path.GetFileName(Filename) + " File not found, Creating new....\n");
+                playerspawnpoints = new playerspawnpoints();
+                Savecfgplayerspawnpoints();
             }
         }
         public void Savecfgplayerspawnpoints(string saveTime = null)
@@ -595,16 +733,15 @@ namespace DayZeLib
                 Console.WriteLine("serializing " + Path.GetFileName(Filename));
                 try
                 {
-                    cfggameplay = JsonSerializer.Deserialize<cfggameplay>(File.ReadAllText(Filename));
+                    var options = new JsonSerializerOptions
+                    {
+                        Converters = { new BoolConverter() },
+                    };
+                    cfggameplay = JsonSerializer.Deserialize<cfggameplay>(File.ReadAllText(Filename), options);
                     if (cfggameplay.checkver())
                     {
-                        if (cfggameplay.version == 119)
-                        {
-                            cfggameplay.PlayerData.MovementData = new MovementData();
-                            cfggameplay.PlayerData.DrowningData = new DrowningData();
-                            cfggameplay.MapData = new CFGGameplayMapData();
-                        }
                         SaveCFGGameplay();
+                        Console.WriteLine("CFGGameplayConfig Version Updated........\n");
                     }
 
                 }
@@ -633,7 +770,6 @@ namespace DayZeLib
             File.WriteAllText(Filename, jsonString);
         }
     }
-
     public class cfgEffectAreaConfig
     {
         public cfgEffectArea cfgEffectArea { get; set; }
@@ -688,31 +824,34 @@ namespace DayZeLib
         public weatherconfig(string filename)
         {
             Filename = filename;
-            if(!File.Exists(Filename))
+            if (File.Exists(Filename))
+            {
+                var mySerializer = new XmlSerializer(typeof(weather));
+                // To read the file, create a FileStream.
+                using (var myFileStream = new FileStream(filename, FileMode.Open))
+                {
+                    Console.WriteLine("serializing " + Path.GetFileName(Filename));
+                    try
+                    {
+                        // Call the Deserialize method and cast to the object type.
+                        weather = (weather)mySerializer.Deserialize(myFileStream);
+                    }
+                    catch (Exception ex)
+                    {
+                        var form = Application.OpenForms["SplashForm"];
+                        if (form != null)
+                        {
+                            form.Invoke(new Action(() => { form.Close(); }));
+                        }
+                        MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                    }
+                }
+            }
+            else
             {
                 Console.WriteLine(Path.GetFileName(Filename) + " File not found, Creating new....");
                 weather = new weather();
                 SaveWeather();
-            }
-            var mySerializer = new XmlSerializer(typeof(weather));
-            // To read the file, create a FileStream.
-            using (var myFileStream = new FileStream(filename, FileMode.Open))
-            {
-                Console.WriteLine("serializing " + Path.GetFileName(Filename));
-                try
-                {
-                    // Call the Deserialize method and cast to the object type.
-                    weather = (weather)mySerializer.Deserialize(myFileStream);
-                }
-                catch (Exception ex)
-                {
-                    var form = Application.OpenForms["SplashForm"];
-                    if (form != null)
-                    {
-                        form.Invoke(new Action(() => { form.Close(); }));
-                    }
-                    MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
-                }
             }
         }
         public void SaveWeather(string saveTime = null)

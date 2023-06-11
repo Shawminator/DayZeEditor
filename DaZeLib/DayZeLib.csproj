@@ -107,6 +107,7 @@
     <Compile Include="Economy\cfgeconomycore.cs" />
     <Compile Include="Economy\cfgEffectArea.cs" />
     <Compile Include="Economy\cfgenviromentxml.cs" />
+    <Compile Include="Economy\cfgignorelist.cs" />
     <Compile Include="Economy\cfglimitsdefinition.cs" />
     <Compile Include="Economy\cfglimitsdefinitionuser.cs" />
     <Compile Include="Economy\cfgrandompresetsXML.cs" />

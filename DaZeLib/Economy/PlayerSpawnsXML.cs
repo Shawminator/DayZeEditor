@@ -16,7 +16,12 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
     public partial class playerspawnpoints
     {
-
+        public playerspawnpoints()
+        {
+            fresh = new playerspawnpointsFresh();
+            hop = new playerspawnpointsHop();
+            travel = new playerspawnpointsTravel();
+        }
         private playerspawnpointsFresh freshField;
 
         private playerspawnpointsHop hopField;
@@ -69,6 +74,12 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class playerspawnpointsFresh
     {
+        public playerspawnpointsFresh()
+        {
+            spawn_params = new playerspawnpointsFreshSpawn_params();
+            generator_params = new playerspawnpointsFreshGenerator_params();
+            generator_posbubbles = new BindingList<playerspawnpointsFreshPos>();
+        }
 
         private playerspawnpointsFreshSpawn_params spawn_paramsField;
 
@@ -124,7 +135,15 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class playerspawnpointsFreshSpawn_params
     {
-
+        public playerspawnpointsFreshSpawn_params()
+        {
+            min_dist_infected = (decimal)30.0;
+            max_dist_infected = (decimal)70.0;
+            min_dist_player = (decimal)25.0;
+            max_dist_player = (decimal)70.0;
+            min_dist_static = (decimal)0.5;
+            max_dist_static = (decimal)2.0;
+        }
         private decimal min_dist_infectedField;
 
         private decimal max_dist_infectedField;
@@ -222,6 +241,16 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class playerspawnpointsFreshGenerator_params
     {
+        public playerspawnpointsFreshGenerator_params()
+        {
+            grid_density = 8;
+            grid_width = (decimal)40.0;
+            grid_height = (decimal)40.0;
+            min_dist_static = (decimal)0.5;
+            max_dist_static = (decimal)2.0;
+            min_steepness = -45;
+            max_steepness = 45;
+        }
 
         private int grid_densityField;
 
@@ -381,6 +410,11 @@ namespace DayZeLib
     public partial class playerspawnpointsHop
     {
 
+        public playerspawnpointsHop()
+        {
+            generator_posbubbles = new BindingList<playerspawnpointsHopPos>();
+        }
+
         private BindingList<playerspawnpointsHopPos> generator_posbubblesField;
 
         /// <remarks/>
@@ -449,7 +483,10 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class playerspawnpointsTravel
     {
-
+        public playerspawnpointsTravel()
+        {
+            generator_posbubbles = new BindingList<playerspawnpointsTravelPos>();
+        }
         private BindingList<playerspawnpointsTravelPos> generator_posbubblesField;
 
         /// <remarks/>

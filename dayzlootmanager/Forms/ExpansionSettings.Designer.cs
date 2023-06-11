@@ -1106,6 +1106,8 @@ namespace DayZeEditor
             this.ItemRequirementNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel235 = new DarkUI.Controls.DarkLabel();
             this.groupBox74 = new System.Windows.Forms.GroupBox();
+            this.ReputationMaxReputationNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel221 = new DarkUI.Controls.DarkLabel();
             this.ReputationOnKillAnimalNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel229 = new DarkUI.Controls.DarkLabel();
             this.ReputationOnKillPlayerNUD = new System.Windows.Forms.NumericUpDown();
@@ -1195,8 +1197,8 @@ namespace DayZeEditor
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
-            this.ReputationMaxReputationNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel221 = new DarkUI.Controls.DarkLabel();
+            this.ReputationLossOnDeathNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel227 = new DarkUI.Controls.DarkLabel();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -1494,6 +1496,7 @@ namespace DayZeEditor
             this.groupBox75.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemRequirementNUD)).BeginInit();
             this.groupBox74.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ReputationMaxReputationNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReputationOnKillAnimalNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReputationOnKillPlayerNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReputationOnKillAINUD)).BeginInit();
@@ -1513,7 +1516,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.GarageVehicleSearchRadiusNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxStorableVehiclesNUD)).BeginInit();
             this.darkToolStrip22.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ReputationMaxReputationNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReputationLossOnDeathNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -15581,6 +15584,8 @@ namespace DayZeEditor
             // 
             // groupBox74
             // 
+            this.groupBox74.Controls.Add(this.ReputationLossOnDeathNUD);
+            this.groupBox74.Controls.Add(this.darkLabel227);
             this.groupBox74.Controls.Add(this.ReputationMaxReputationNUD);
             this.groupBox74.Controls.Add(this.darkLabel221);
             this.groupBox74.Controls.Add(this.ReputationOnKillAnimalNUD);
@@ -15594,16 +15599,49 @@ namespace DayZeEditor
             this.groupBox74.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox74.Location = new System.Drawing.Point(8, 195);
             this.groupBox74.Name = "groupBox74";
-            this.groupBox74.Size = new System.Drawing.Size(258, 152);
+            this.groupBox74.Size = new System.Drawing.Size(250, 182);
             this.groupBox74.TabIndex = 128;
             this.groupBox74.TabStop = false;
             this.groupBox74.Text = "Reputation";
+            // 
+            // ReputationMaxReputationNUD
+            // 
+            this.ReputationMaxReputationNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ReputationMaxReputationNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.ReputationMaxReputationNUD.Location = new System.Drawing.Point(143, 148);
+            this.ReputationMaxReputationNUD.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.ReputationMaxReputationNUD.Minimum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            -2147483648});
+            this.ReputationMaxReputationNUD.Name = "ReputationMaxReputationNUD";
+            this.ReputationMaxReputationNUD.Size = new System.Drawing.Size(101, 20);
+            this.ReputationMaxReputationNUD.TabIndex = 112;
+            this.ReputationMaxReputationNUD.Tag = "Weight";
+            this.ReputationMaxReputationNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ReputationMaxReputationNUD.ValueChanged += new System.EventHandler(this.ReputationMaxReputationNUD_ValueChanged);
+            // 
+            // darkLabel221
+            // 
+            this.darkLabel221.AutoSize = true;
+            this.darkLabel221.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel221.Location = new System.Drawing.Point(12, 150);
+            this.darkLabel221.Name = "darkLabel221";
+            this.darkLabel221.Size = new System.Drawing.Size(82, 13);
+            this.darkLabel221.TabIndex = 113;
+            this.darkLabel221.Tag = "";
+            this.darkLabel221.Text = "Max Reputation";
             // 
             // ReputationOnKillAnimalNUD
             // 
             this.ReputationOnKillAnimalNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ReputationOnKillAnimalNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ReputationOnKillAnimalNUD.Location = new System.Drawing.Point(143, 69);
+            this.ReputationOnKillAnimalNUD.Location = new System.Drawing.Point(143, 96);
             this.ReputationOnKillAnimalNUD.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -15625,7 +15663,7 @@ namespace DayZeEditor
             // 
             this.darkLabel229.AutoSize = true;
             this.darkLabel229.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel229.Location = new System.Drawing.Point(12, 71);
+            this.darkLabel229.Location = new System.Drawing.Point(12, 98);
             this.darkLabel229.Name = "darkLabel229";
             this.darkLabel229.Size = new System.Drawing.Size(126, 13);
             this.darkLabel229.TabIndex = 115;
@@ -15636,7 +15674,7 @@ namespace DayZeEditor
             // 
             this.ReputationOnKillPlayerNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ReputationOnKillPlayerNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ReputationOnKillPlayerNUD.Location = new System.Drawing.Point(143, 43);
+            this.ReputationOnKillPlayerNUD.Location = new System.Drawing.Point(143, 70);
             this.ReputationOnKillPlayerNUD.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -15658,7 +15696,7 @@ namespace DayZeEditor
             // 
             this.darkLabel230.AutoSize = true;
             this.darkLabel230.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel230.Location = new System.Drawing.Point(12, 45);
+            this.darkLabel230.Location = new System.Drawing.Point(12, 72);
             this.darkLabel230.Name = "darkLabel230";
             this.darkLabel230.Size = new System.Drawing.Size(124, 13);
             this.darkLabel230.TabIndex = 113;
@@ -15670,7 +15708,7 @@ namespace DayZeEditor
             // 
             this.ReputationOnKillAINUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ReputationOnKillAINUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ReputationOnKillAINUD.Location = new System.Drawing.Point(143, 95);
+            this.ReputationOnKillAINUD.Location = new System.Drawing.Point(143, 122);
             this.ReputationOnKillAINUD.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -15692,7 +15730,7 @@ namespace DayZeEditor
             // 
             this.darkLabel231.AutoSize = true;
             this.darkLabel231.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel231.Location = new System.Drawing.Point(12, 97);
+            this.darkLabel231.Location = new System.Drawing.Point(12, 124);
             this.darkLabel231.Name = "darkLabel231";
             this.darkLabel231.Size = new System.Drawing.Size(105, 13);
             this.darkLabel231.TabIndex = 113;
@@ -15703,7 +15741,7 @@ namespace DayZeEditor
             // 
             this.ReputationOnKillInfectedNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ReputationOnKillInfectedNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ReputationOnKillInfectedNUD.Location = new System.Drawing.Point(143, 19);
+            this.ReputationOnKillInfectedNUD.Location = new System.Drawing.Point(143, 46);
             this.ReputationOnKillInfectedNUD.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -15725,7 +15763,7 @@ namespace DayZeEditor
             // 
             this.darkLabel232.AutoSize = true;
             this.darkLabel232.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel232.Location = new System.Drawing.Point(12, 21);
+            this.darkLabel232.Location = new System.Drawing.Point(12, 48);
             this.darkLabel232.Name = "darkLabel232";
             this.darkLabel232.Size = new System.Drawing.Size(134, 13);
             this.darkLabel232.TabIndex = 111;
@@ -16734,38 +16772,38 @@ namespace DayZeEditor
             this.toolStripSeparator17.Name = "toolStripSeparator17";
             this.toolStripSeparator17.Size = new System.Drawing.Size(6, 28);
             // 
-            // ReputationMaxReputationNUD
+            // ReputationLossOnDeathNUD
             // 
-            this.ReputationMaxReputationNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ReputationMaxReputationNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ReputationMaxReputationNUD.Location = new System.Drawing.Point(143, 121);
-            this.ReputationMaxReputationNUD.Maximum = new decimal(new int[] {
+            this.ReputationLossOnDeathNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ReputationLossOnDeathNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.ReputationLossOnDeathNUD.Location = new System.Drawing.Point(143, 20);
+            this.ReputationLossOnDeathNUD.Maximum = new decimal(new int[] {
             999999999,
             0,
             0,
             0});
-            this.ReputationMaxReputationNUD.Minimum = new decimal(new int[] {
+            this.ReputationLossOnDeathNUD.Minimum = new decimal(new int[] {
             999999999,
             0,
             0,
             -2147483648});
-            this.ReputationMaxReputationNUD.Name = "ReputationMaxReputationNUD";
-            this.ReputationMaxReputationNUD.Size = new System.Drawing.Size(101, 20);
-            this.ReputationMaxReputationNUD.TabIndex = 112;
-            this.ReputationMaxReputationNUD.Tag = "Weight";
-            this.ReputationMaxReputationNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ReputationMaxReputationNUD.ValueChanged += new System.EventHandler(this.ReputationMaxReputationNUD_ValueChanged);
+            this.ReputationLossOnDeathNUD.Name = "ReputationLossOnDeathNUD";
+            this.ReputationLossOnDeathNUD.Size = new System.Drawing.Size(101, 20);
+            this.ReputationLossOnDeathNUD.TabIndex = 116;
+            this.ReputationLossOnDeathNUD.Tag = "Weight";
+            this.ReputationLossOnDeathNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ReputationLossOnDeathNUD.ValueChanged += new System.EventHandler(this.ReputationLossOnDeathNUD_ValueChanged);
             // 
-            // darkLabel221
+            // darkLabel227
             // 
-            this.darkLabel221.AutoSize = true;
-            this.darkLabel221.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel221.Location = new System.Drawing.Point(12, 123);
-            this.darkLabel221.Name = "darkLabel221";
-            this.darkLabel221.Size = new System.Drawing.Size(82, 13);
-            this.darkLabel221.TabIndex = 113;
-            this.darkLabel221.Tag = "";
-            this.darkLabel221.Text = "Max Reputation";
+            this.darkLabel227.AutoSize = true;
+            this.darkLabel227.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel227.Location = new System.Drawing.Point(12, 22);
+            this.darkLabel227.Name = "darkLabel227";
+            this.darkLabel227.Size = new System.Drawing.Size(133, 13);
+            this.darkLabel227.TabIndex = 117;
+            this.darkLabel227.Tag = "";
+            this.darkLabel227.Text = "Reputation Loss On Death";
             // 
             // ExpansionSettings
             // 
@@ -17163,6 +17201,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.ItemRequirementNUD)).EndInit();
             this.groupBox74.ResumeLayout(false);
             this.groupBox74.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ReputationMaxReputationNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReputationOnKillAnimalNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReputationOnKillPlayerNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReputationOnKillAINUD)).EndInit();
@@ -17185,7 +17224,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.MaxStorableVehiclesNUD)).EndInit();
             this.darkToolStrip22.ResumeLayout(false);
             this.darkToolStrip22.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ReputationMaxReputationNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReputationLossOnDeathNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -18359,5 +18398,7 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkLabel darkLabel220;
         private System.Windows.Forms.NumericUpDown ReputationMaxReputationNUD;
         private DarkUI.Controls.DarkLabel darkLabel221;
+        private System.Windows.Forms.NumericUpDown ReputationLossOnDeathNUD;
+        private DarkUI.Controls.DarkLabel darkLabel227;
     }
 }

@@ -373,16 +373,11 @@ namespace DayZeEditor
             this.CargoPresetGB = new System.Windows.Forms.GroupBox();
             this.CargoPresetComboBox = new System.Windows.Forms.ComboBox();
             this.darkButton36 = new DarkUI.Controls.DarkButton();
-            this.Spaenabletypestagbox = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.groupBox24 = new System.Windows.Forms.GroupBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.darkButton29 = new DarkUI.Controls.DarkButton();
             this.AttachmentGB = new System.Windows.Forms.GroupBox();
             this.CargoAttachmentRemoveButton = new DarkUI.Controls.DarkButton();
+            this.AttachmentItemLB = new System.Windows.Forms.ListBox();
             this.cargoattachemntAddButton = new DarkUI.Controls.DarkButton();
             this.AttachmentChangeItemButton = new DarkUI.Controls.DarkButton();
-            this.AttachmentItemLB = new System.Windows.Forms.ListBox();
             this.AttachemntTB = new System.Windows.Forms.TextBox();
             this.ItemAttachmentchanceNUD = new System.Windows.Forms.NumericUpDown();
             this.AttachmemtItemChanceLabel = new System.Windows.Forms.Label();
@@ -392,6 +387,11 @@ namespace DayZeEditor
             this.AttachmentPresetGB = new System.Windows.Forms.GroupBox();
             this.AttachmentPresetComboBox = new System.Windows.Forms.ComboBox();
             this.darkButton37 = new DarkUI.Controls.DarkButton();
+            this.Spaenabletypestagbox = new System.Windows.Forms.GroupBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.groupBox24 = new System.Windows.Forms.GroupBox();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.darkButton29 = new DarkUI.Controls.DarkButton();
             this.PlayerSpawns = new System.Windows.Forms.TabPage();
             this.trackBar4 = new System.Windows.Forms.TrackBar();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -951,12 +951,12 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.CargoItemchanceNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CarcgoChanceNUD)).BeginInit();
             this.CargoPresetGB.SuspendLayout();
-            this.Spaenabletypestagbox.SuspendLayout();
-            this.groupBox24.SuspendLayout();
             this.AttachmentGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemAttachmentchanceNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AttachmentchanceNUD)).BeginInit();
             this.AttachmentPresetGB.SuspendLayout();
+            this.Spaenabletypestagbox.SuspendLayout();
+            this.groupBox24.SuspendLayout();
             this.PlayerSpawns.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).BeginInit();
             this.panel2.SuspendLayout();
@@ -5405,61 +5405,6 @@ namespace DayZeEditor
             this.darkButton36.Text = "Change Preset";
             this.darkButton36.Click += new System.EventHandler(this.darkButton36_Click);
             // 
-            // Spaenabletypestagbox
-            // 
-            this.Spaenabletypestagbox.Controls.Add(this.textBox2);
-            this.Spaenabletypestagbox.Controls.Add(this.groupBox24);
-            this.Spaenabletypestagbox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Spaenabletypestagbox.Location = new System.Drawing.Point(6, 8);
-            this.Spaenabletypestagbox.Name = "Spaenabletypestagbox";
-            this.Spaenabletypestagbox.Size = new System.Drawing.Size(242, 154);
-            this.Spaenabletypestagbox.TabIndex = 64;
-            this.Spaenabletypestagbox.TabStop = false;
-            this.Spaenabletypestagbox.Text = "Tags";
-            this.Spaenabletypestagbox.Visible = false;
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.textBox2.ForeColor = System.Drawing.SystemColors.Control;
-            this.textBox2.Location = new System.Drawing.Point(9, 19);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(218, 20);
-            this.textBox2.TabIndex = 8;
-            // 
-            // groupBox24
-            // 
-            this.groupBox24.Controls.Add(this.comboBox5);
-            this.groupBox24.Controls.Add(this.darkButton29);
-            this.groupBox24.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox24.Location = new System.Drawing.Point(9, 45);
-            this.groupBox24.Name = "groupBox24";
-            this.groupBox24.Size = new System.Drawing.Size(218, 100);
-            this.groupBox24.TabIndex = 7;
-            this.groupBox24.TabStop = false;
-            this.groupBox24.Text = "Change Tag";
-            // 
-            // comboBox5
-            // 
-            this.comboBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.comboBox5.ForeColor = System.Drawing.SystemColors.Control;
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(10, 25);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(202, 21);
-            this.comboBox5.TabIndex = 1;
-            // 
-            // darkButton29
-            // 
-            this.darkButton29.Location = new System.Drawing.Point(8, 52);
-            this.darkButton29.Name = "darkButton29";
-            this.darkButton29.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton29.Size = new System.Drawing.Size(204, 27);
-            this.darkButton29.TabIndex = 5;
-            this.darkButton29.Text = "Change Tag";
-            this.darkButton29.Click += new System.EventHandler(this.darkButton29_Click);
-            // 
             // AttachmentGB
             // 
             this.AttachmentGB.Controls.Add(this.CargoAttachmentRemoveButton);
@@ -5492,6 +5437,22 @@ namespace DayZeEditor
             this.CargoAttachmentRemoveButton.Text = "Remove Item";
             this.CargoAttachmentRemoveButton.Click += new System.EventHandler(this.darkButton35_Click_2);
             // 
+            // AttachmentItemLB
+            // 
+            this.AttachmentItemLB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AttachmentItemLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.AttachmentItemLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.AttachmentItemLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.AttachmentItemLB.FormattingEnabled = true;
+            this.AttachmentItemLB.Location = new System.Drawing.Point(9, 67);
+            this.AttachmentItemLB.Name = "AttachmentItemLB";
+            this.AttachmentItemLB.Size = new System.Drawing.Size(218, 134);
+            this.AttachmentItemLB.TabIndex = 70;
+            this.AttachmentItemLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.AttachmentItemLB.SelectedIndexChanged += new System.EventHandler(this.AttachmentItemLB_SelectedIndexChanged);
+            // 
             // cargoattachemntAddButton
             // 
             this.cargoattachemntAddButton.Location = new System.Drawing.Point(9, 266);
@@ -5511,22 +5472,6 @@ namespace DayZeEditor
             this.AttachmentChangeItemButton.TabIndex = 5;
             this.AttachmentChangeItemButton.Text = "Change Item";
             this.AttachmentChangeItemButton.Click += new System.EventHandler(this.AttachmentChangeItemButton_Click);
-            // 
-            // AttachmentItemLB
-            // 
-            this.AttachmentItemLB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.AttachmentItemLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.AttachmentItemLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.AttachmentItemLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.AttachmentItemLB.FormattingEnabled = true;
-            this.AttachmentItemLB.Location = new System.Drawing.Point(9, 67);
-            this.AttachmentItemLB.Name = "AttachmentItemLB";
-            this.AttachmentItemLB.Size = new System.Drawing.Size(218, 134);
-            this.AttachmentItemLB.TabIndex = 70;
-            this.AttachmentItemLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.AttachmentItemLB.SelectedIndexChanged += new System.EventHandler(this.AttachmentItemLB_SelectedIndexChanged);
             // 
             // AttachemntTB
             // 
@@ -5635,6 +5580,61 @@ namespace DayZeEditor
             this.darkButton37.TabIndex = 5;
             this.darkButton37.Text = "Change Preset";
             this.darkButton37.Click += new System.EventHandler(this.darkButton37_Click);
+            // 
+            // Spaenabletypestagbox
+            // 
+            this.Spaenabletypestagbox.Controls.Add(this.textBox2);
+            this.Spaenabletypestagbox.Controls.Add(this.groupBox24);
+            this.Spaenabletypestagbox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Spaenabletypestagbox.Location = new System.Drawing.Point(6, 8);
+            this.Spaenabletypestagbox.Name = "Spaenabletypestagbox";
+            this.Spaenabletypestagbox.Size = new System.Drawing.Size(242, 154);
+            this.Spaenabletypestagbox.TabIndex = 64;
+            this.Spaenabletypestagbox.TabStop = false;
+            this.Spaenabletypestagbox.Text = "Tags";
+            this.Spaenabletypestagbox.Visible = false;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.textBox2.ForeColor = System.Drawing.SystemColors.Control;
+            this.textBox2.Location = new System.Drawing.Point(9, 19);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(218, 20);
+            this.textBox2.TabIndex = 8;
+            // 
+            // groupBox24
+            // 
+            this.groupBox24.Controls.Add(this.comboBox5);
+            this.groupBox24.Controls.Add(this.darkButton29);
+            this.groupBox24.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox24.Location = new System.Drawing.Point(9, 45);
+            this.groupBox24.Name = "groupBox24";
+            this.groupBox24.Size = new System.Drawing.Size(218, 100);
+            this.groupBox24.TabIndex = 7;
+            this.groupBox24.TabStop = false;
+            this.groupBox24.Text = "Change Tag";
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.comboBox5.ForeColor = System.Drawing.SystemColors.Control;
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Location = new System.Drawing.Point(10, 25);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(202, 21);
+            this.comboBox5.TabIndex = 1;
+            // 
+            // darkButton29
+            // 
+            this.darkButton29.Location = new System.Drawing.Point(8, 52);
+            this.darkButton29.Name = "darkButton29";
+            this.darkButton29.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton29.Size = new System.Drawing.Size(204, 27);
+            this.darkButton29.TabIndex = 5;
+            this.darkButton29.Text = "Change Tag";
+            this.darkButton29.Click += new System.EventHandler(this.darkButton29_Click);
             // 
             // PlayerSpawns
             // 
@@ -11894,6 +11894,7 @@ namespace DayZeEditor
             this.importPositionAndCreateEventgroupFormdzeToolStripMenuItem});
             this.EventSpawnContextMenu.Name = "EventSpawnContextMenu";
             this.EventSpawnContextMenu.Size = new System.Drawing.Size(332, 246);
+            this.EventSpawnContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.EventSpawnContextMenu_Opening);
             // 
             // addNewEventSpawnToolStripMenuItem
             // 
@@ -12139,14 +12140,14 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.CargoItemchanceNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CarcgoChanceNUD)).EndInit();
             this.CargoPresetGB.ResumeLayout(false);
-            this.Spaenabletypestagbox.ResumeLayout(false);
-            this.Spaenabletypestagbox.PerformLayout();
-            this.groupBox24.ResumeLayout(false);
             this.AttachmentGB.ResumeLayout(false);
             this.AttachmentGB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemAttachmentchanceNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AttachmentchanceNUD)).EndInit();
             this.AttachmentPresetGB.ResumeLayout(false);
+            this.Spaenabletypestagbox.ResumeLayout(false);
+            this.Spaenabletypestagbox.PerformLayout();
+            this.groupBox24.ResumeLayout(false);
             this.PlayerSpawns.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).EndInit();
             this.panel2.ResumeLayout(false);

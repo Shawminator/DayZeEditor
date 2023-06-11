@@ -544,6 +544,7 @@ namespace DayZeEditor
             {
                 Tag = "VanillaTypes"
             };
+            Console.WriteLine("populating Vanilla types to treeview");
             foreach (typesType type in vanillatypes.types.type)
             {
                 string cat = "other";
@@ -569,6 +570,7 @@ namespace DayZeEditor
             {
                 foreach (TypesFile tf in ModTypes)
                 {
+                    Console.WriteLine("populating " + tf.modname + " to treeview");
                     TreeNode ModTypes = new TreeNode(tf.modname)
                     {
                         Tag = tf.modname
@@ -599,7 +601,7 @@ namespace DayZeEditor
                     root.Nodes.Add(ModTypes);
                 }
             }
-
+            Console.WriteLine("All Types files Populated......");
             //treeView1.Nodes.Add(root);
             treeViewMS1.Nodes.Add(root);
         }
@@ -5084,25 +5086,26 @@ namespace DayZeEditor
             if (currentproject.cfgrandompresetsconfig.randompresets.Items == null)
                 currentproject.cfgrandompresetsconfig.randompresets.Items = new BindingList<object>();
             currentproject.cfgrandompresetsconfig.randompresets.Items.Add(newcargo);
-            PresetItemListLB.SelectedIndex = -1;
-            PresetItemListLB.SelectedIndex = 0;
             currentproject.cfgrandompresetsconfig.isDirty = true;
             SetuprandomPresetsForSpawnabletypes();
+            PresetItemListLB.SelectedIndex = PresetItemListLB.Items.Count - 1;
         }
         private void darkButton44_Click(object sender, EventArgs e)
         {
             if (PresetItemListLB.SelectedItem == null) { return; }
             randompresetsAttachments newspawnabletypesTypeAttachments = new randompresetsAttachments()
             {
+                name = "NewAttachmentList",
+                chance = 1,
                 item = new BindingList<randompresetsAttachmentsItem>()
+               
             };
             if (currentproject.cfgrandompresetsconfig.randompresets.Items == null)
                 currentproject.cfgrandompresetsconfig.randompresets.Items = new BindingList<object>();
             currentproject.cfgrandompresetsconfig.randompresets.Items.Add(newspawnabletypesTypeAttachments);
-            PresetItemListLB.SelectedIndex = -1;
-            PresetItemListLB.SelectedIndex = 0;
             currentproject.cfgrandompresetsconfig.isDirty = true;
             SetuprandomPresetsForSpawnabletypes();
+            PresetItemListLB.SelectedIndex = PresetItemListLB.Items.Count - 1;
         }
         private void RandomPresetNameTB_TextChanged(object sender, EventArgs e)
         {
@@ -5833,7 +5836,10 @@ namespace DayZeEditor
             }
         }
 
+        private void EventSpawnContextMenu_Opening(object sender, CancelEventArgs e)
+        {
 
+        }
     }
 
 }
