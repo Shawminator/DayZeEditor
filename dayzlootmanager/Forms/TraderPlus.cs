@@ -2107,7 +2107,7 @@ namespace DayZeEditor
                 MoveToCatLB.Items.Clear();
             }
         }
-        private void darkButton57_Click(object sender, EventArgs e)
+        private void AddItemtoCategory(bool remove)
         {
             if (CurrentTraderCatLB.SelectedItems.Count == 0) return;
             List<ItemProducts> moveitem = new List<ItemProducts>();
@@ -2118,10 +2118,29 @@ namespace DayZeEditor
             }
             foreach (ItemProducts item in moveitem)
             {
-                currentTradercategory.removeItemProduct(item);
                 Tradercategory movetocat = MoveToCatLB.SelectedItem as Tradercategory;
-                movetocat.AdditemProduct(item);
+                if (!movetocat.itemProducts.Any(x => x.Classname == item.Classname))
+                {
+                    movetocat.AdditemProduct(item);
+                    if (remove)
+                        currentTradercategory.removeItemProduct(item);
+                }
+                else
+                {
+                    MessageBox.Show("Item allready exists in destication category, no action taken.");
+                    Console.WriteLine("Item allready exists in destication category, no action taken.\n");
+                }
             }
+        }
+        private void darkButton57_Click(object sender, EventArgs e)
+        {
+            AddItemtoCategory(true);
+            TraderPlusPriceConfig.isDirty = true;
+        }
+        private void darkButton59_Click(object sender, EventArgs e)
+        {
+
+            AddItemtoCategory(false);
             TraderPlusPriceConfig.isDirty = true;
         }
         #endregion traderprice

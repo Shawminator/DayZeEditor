@@ -1,4 +1,10 @@
-﻿Version 0.7.7.1
+﻿Version 0.7.7.2
+[Fixed]
+Expansion Loadouts, Added Eyes to slot type.
+Trader Plus added Copy seelcted to prices tab.
+expansion Quests, added better debuging to identify quests which have issues.
+
+Version 0.7.7.1
 [Fixed]
 Economy, fixed ramdon preset not adding new attchemnt.
 Expansion AI, fixed position of chance label.

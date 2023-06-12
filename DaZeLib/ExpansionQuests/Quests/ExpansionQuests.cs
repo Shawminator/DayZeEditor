@@ -275,11 +275,25 @@ namespace DayZeLib
             QuestTurnIns = new BindingList<ExpansionQuestNPCs>();
             foreach (int id in QuestGiverIDs)
             {
-                QuestGivers.Add(questNPCs.GetNPCFromID(id));
-            }
+                ExpansionQuestNPCs npc = questNPCs.GetNPCFromID(id);
+                if (npc != null)
+                    QuestGivers.Add(questNPCs.GetNPCFromID(id));
+                else
+                {
+                    MessageBox.Show("Quest " + ID + " Has a quest giver npc id (" + id.ToString() + ") that doesnt exist.\n the id will be removed and the file market as dirty.\nIf you save this will remove the id from the physical file.");
+                    Console.WriteLine("Quest " + ID + " Has a quest giver npc id (" + id.ToString() + ") that doesnt exist.\n the id will be removed and the file market as dirty.\nIf you save this will remove the id from the physical file.\n");
+                }
+             }
             foreach (int id in QuestTurnInIDs)
             {
-                QuestTurnIns.Add(questNPCs.GetNPCFromID(id));
+                ExpansionQuestNPCs npc = questNPCs.GetNPCFromID(id);
+                if (npc != null)
+                    QuestTurnIns.Add(npc);
+                else
+                {
+                    MessageBox.Show("Quest " + ID + " Has a quest turn in npc id (" + id.ToString() + ") that doesnt exist.\n the id will be removed and the file market as dirty.\nIf you save this will remove the id from the physical file.");
+                    Console.WriteLine("Quest " + ID + " Has a quest turn in npc id (" + id.ToString() + ") that doesnt exist.\n the id will be removed and the file market as dirty.\nIf you save this will remove the id from the physical file.\n");
+                }
             }
         }
         public void SetNPCList()

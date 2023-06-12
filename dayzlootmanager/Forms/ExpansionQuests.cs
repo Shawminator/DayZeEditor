@@ -606,7 +606,7 @@ namespace DayZeEditor
         {
             useraction = false;
 
-            string[] boolignorenames = new string[] { "m_Version", "WeeklyQuestResetHour", "WeeklyQuestResteMinute", "DailyQuestResetHour", "DailyQuestResetMinute", "GroupQuestMode" };
+            string[] boolignorenames = new string[] { "m_Version", "DailyResetMinute", "DailyResetHour", "WeeklyResetHour", "WeeklyResetMinute", "GroupQuestMode" };
             List<string> questbools = Helper.GetPropertiesNameOfClass<int>(QuestSettings, boolignorenames);
             QuestBoolsLB.DisplayMember = "DisplayName";
             QuestBoolsLB.ValueMember = "Value";
@@ -618,7 +618,7 @@ namespace DayZeEditor
             QuestStringsLB.ValueMember = "Value";
             QuestStringsLB.DataSource = queststrings;
 
-            string[] intIgnoreNames = new string[] { "m_Version", "EnableQuests", "EnableQuestLogTab", "CreateQuestNPCMarkers", "UseUTCTime",};
+            string[] intIgnoreNames = new string[] { "m_Version", "EnableQuests", "EnableQuestLogTab", "CreateQuestNPCMarkers", "UseUTCTime", "UseQuestNPCIndicators" };
             List<string> questints = Helper.GetPropertiesNameOfClass<int>(QuestSettings, intIgnoreNames);
             QuestIntsLB.DisplayMember = "DisplayName";
             QuestIntsLB.ValueMember = "Value";
@@ -647,6 +647,9 @@ namespace DayZeEditor
                 case "UseUTCTime":
                     InfoLabel.Text = "Boolean.\n\nUse UTC server time or not for all quest cooldown and reset times.";
                     break;
+                case "UseQuestNPCIndicators":
+                    InfoLabel.Text = "";
+                    break;
             }
 
             useraction = true;
@@ -656,7 +659,8 @@ namespace DayZeEditor
             if (QuestStringsLB.SelectedItems.Count < 1) return;
             useraction = false;
             QuestStringTB.Text = Helper.GetPropValue(QuestSettings, QuestStringsLB.GetItemText(QuestStringsLB.SelectedItem)).ToString();
-            useraction = true;
+            InfoLabel.Text = "";
+           useraction = true;
         }
         private void QuestIntsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -669,16 +673,16 @@ namespace DayZeEditor
                 case "GroupQuestMode":
                     InfoLabel.Text = "GroupQuestMode\nInteger.\n\n0 - Only group owners can accept and turn-in group quests.\n\n1 - Only group owner can turn-in group quest but all group members can accept them.\n\n2 - All group members can accept and turn-in group quests.";
                     break;
-                case "DailyQuestResetMinute":
+                case "DailyResetMinute":
                     InfoLabel.Text = "Integer.\n\nMinute at when the quest reset will happend for all daily quests.";
                     break;
-                case "DailyQuestResetHour":
+                case "DailyResetHour":
                     InfoLabel.Text = "Integer.\n\nHour at when the quest reset will happend for all daily quests.";
                     break;
-                case "WeeklyQuestResteMinute":
+                case "WeeklyResetMinute":
                     InfoLabel.Text = "Integer.\n\nMinute at when the quest reset will happend for all weekly quests.";
                     break;
-                case "WeeklyQuestResetHour":
+                case "WeeklyResetHour":
                     InfoLabel.Text = "Integer.\n\nHour at when the quest reset will happend for all weekly quests.";
                     break;
             }
@@ -1138,9 +1142,36 @@ namespace DayZeEditor
             {
                 CurrentQuest.Descriptions = new BindingList<string>(new string[] { "", "", "" });
             }
-            QuestDescription1TB.Text = CurrentQuest.Descriptions[0];
-            QuestDescription2TB.Text = CurrentQuest.Descriptions[1];
-            QuestDescription3TB.Text = CurrentQuest.Descriptions[2];
+            if (CurrentQuest.Descriptions.Count != 3)
+            {
+                switch(CurrentQuest.Descriptions.Count)
+                {
+                    case 0:
+                        QuestDescription1TB.Text = "";
+                        QuestDescription2TB.Text = "";
+                        QuestDescription3TB.Text = "";
+                        break;
+                    case 1:
+                        QuestDescription1TB.Text = CurrentQuest.Descriptions[0];
+                        QuestDescription2TB.Text = "";
+                        QuestDescription3TB.Text = "";
+                        break;
+                    case 2:
+                        QuestDescription1TB.Text = CurrentQuest.Descriptions[0];
+                        QuestDescription2TB.Text = CurrentQuest.Descriptions[1];
+                        QuestDescription3TB.Text = "";
+                        break;
+                }
+                CurrentQuest.isDirty = true;
+                MessageBox.Show("Incorrect number of lines for description. Please save to fix the file.");
+                Console.WriteLine("Quest " + CurrentQuest.ID.ToString() + "has incorrect number of lines for description. Please save to fix the file.\n");
+            }
+            else
+            {
+                QuestDescription1TB.Text = CurrentQuest.Descriptions[0];
+                QuestDescription2TB.Text = CurrentQuest.Descriptions[1];
+                QuestDescription3TB.Text = CurrentQuest.Descriptions[2];
+            }
             useraction = false;
             QuestObjectiveTextTB.Text = CurrentQuest.ObjectiveText;
 
@@ -1163,10 +1194,13 @@ namespace DayZeEditor
             {
                 QuestObjectivesBase checkobj = QuestObjectives.CheckObjectiveExists(CurrentQuest.Objectives[i]);
                 if (checkobj == null)
-                    MessageBox.Show("Type " + CurrentQuest.Objectives[i].ObjectiveType.ToString() + ",Objective " + CurrentQuest.Objectives[i].ID.ToString() + " doesn not exist in the list of objectives, please check");
+                {
+                    MessageBox.Show("Type " + CurrentQuest.Objectives[i]._ObjectiveTypeEnum.ToString() + ",Objective ID " + CurrentQuest.Objectives[i].ID.ToString() + " does not exist in the list of objectives,\nplease check\n manually remove the objective from the quest and save.");
+                    Console.WriteLine("Quest " + CurrentQuest.ID.ToString() + " objective type " + CurrentQuest.Objectives[i]._ObjectiveTypeEnum.ToString() + ",Objective ID " + CurrentQuest.Objectives[i].ID.ToString() + " does not exist in the list of objectives,\nplease check\nmanually remove the objective from the quest and save.\n");
+                }
                 else
                 {
-                    if(CurrentQuest.Objectives[i].ConfigVersion != checkobj.ConfigVersion)
+                    if (CurrentQuest.Objectives[i].ConfigVersion != checkobj.ConfigVersion)
                     {
                         CurrentQuest.Objectives[i].ConfigVersion = checkobj.ConfigVersion;
                         CurrentQuest.isDirty = true;

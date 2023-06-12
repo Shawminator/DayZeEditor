@@ -372,6 +372,7 @@ namespace DayZeEditor
             this.VehiclePartPartsLB = new System.Windows.Forms.ListBox();
             this.VehiclePartLB = new System.Windows.Forms.ListBox();
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.darkButton59 = new DarkUI.Controls.DarkButton();
             this.darkToolStrip21.SuspendLayout();
             this.darkToolStrip22.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -3495,8 +3496,8 @@ namespace DayZeEditor
             // MoveToCatGroupBox
             // 
             this.MoveToCatGroupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.MoveToCatGroupBox.Controls.Add(this.ItemInfoGroupBox);
             this.MoveToCatGroupBox.Controls.Add(this.MoveToCategoryGroupBox);
+            this.MoveToCatGroupBox.Controls.Add(this.ItemInfoGroupBox);
             this.MoveToCatGroupBox.Controls.Add(this.darkButton55);
             this.MoveToCatGroupBox.Controls.Add(this.darkLabel56);
             this.MoveToCatGroupBox.Controls.Add(this.EnableDefaultTraderStockCB);
@@ -3817,6 +3818,7 @@ namespace DayZeEditor
             // 
             this.MoveToCategoryGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.MoveToCategoryGroupBox.Controls.Add(this.darkButton59);
             this.MoveToCategoryGroupBox.Controls.Add(this.darkButton57);
             this.MoveToCategoryGroupBox.Controls.Add(this.MoveToCatLB);
             this.MoveToCategoryGroupBox.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -3847,9 +3849,9 @@ namespace DayZeEditor
             this.MoveToCatLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.MoveToCatLB.ForeColor = System.Drawing.SystemColors.Control;
             this.MoveToCatLB.FormattingEnabled = true;
-            this.MoveToCatLB.Location = new System.Drawing.Point(7, 18);
+            this.MoveToCatLB.Location = new System.Drawing.Point(7, 26);
             this.MoveToCatLB.Name = "MoveToCatLB";
-            this.MoveToCatLB.Size = new System.Drawing.Size(281, 524);
+            this.MoveToCatLB.Size = new System.Drawing.Size(281, 498);
             this.MoveToCatLB.TabIndex = 0;
             this.MoveToCatLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
@@ -3862,7 +3864,7 @@ namespace DayZeEditor
             this.darkButton55.Size = new System.Drawing.Size(298, 23);
             this.darkButton55.TabIndex = 108;
             this.darkButton55.Tag = "Info";
-            this.darkButton55.Text = "Show item Move Category";
+            this.darkButton55.Text = "Show item Move/Copy Category";
             this.darkButton55.Click += new System.EventHandler(this.darkButton55_Click);
             // 
             // darkLabel56
@@ -4865,6 +4867,17 @@ namespace DayZeEditor
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "tabPage8";
             // 
+            // darkButton59
+            // 
+            this.darkButton59.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton59.Location = new System.Drawing.Point(6, 530);
+            this.darkButton59.Name = "darkButton59";
+            this.darkButton59.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton59.Size = new System.Drawing.Size(282, 23);
+            this.darkButton59.TabIndex = 2;
+            this.darkButton59.Text = "Copy  to Selected";
+            this.darkButton59.Click += new System.EventHandler(this.darkButton59_Click);
+            // 
             // TraderPlus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5327,5 +5340,6 @@ namespace DayZeEditor
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.NumericUpDown WornCoeffNUD;
         private System.Windows.Forms.Label label39;
+        private DarkUI.Controls.DarkButton darkButton59;
     }
 }

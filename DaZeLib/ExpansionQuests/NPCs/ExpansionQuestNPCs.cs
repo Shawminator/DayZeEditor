@@ -111,7 +111,9 @@ namespace DayZeLib
         }
         public ExpansionQuestNPCs GetNPCFromID(int id)
         {
-            return NPCList.First(x => x.ID == id);
+            if(NPCList.Any(x => x.ID == id))
+                return NPCList.First(x => x.ID == id);
+            return null;
         }
     }
     public class ExpansionQuestNPCs
