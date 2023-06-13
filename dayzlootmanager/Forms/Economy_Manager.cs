@@ -2627,101 +2627,106 @@ namespace DayZeEditor
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
+                openFileDialog.Multiselect = true;
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    string filePath = openFileDialog.FileName;
-                    DZE importfile = DZEHelpers.LoadFile(filePath);
-                    AddItemfromString form = new AddItemfromString();
-                    form.TitleLable = "Enter Name of Event Group";
-                    DialogResult result = form.ShowDialog();
-                    if (result == DialogResult.OK)
+                    TreeNode eventposnodes = null;
+                    if (eventposdefEvent.pos == null || eventposdefEvent.pos.Count == 0)
                     {
-                        string Groupname = "";
-                        List<string> addedtypes = form.addedtypes.ToList();
-                        foreach (string l in addedtypes)
+                        eventposdefEvent.pos = new BindingList<eventposdefEventPos>();
+                        if (!EventSpawnTV.SelectedNode.Nodes.ContainsKey("POS"))
                         {
-                            Groupname = l;
-                        }
-                        TreeNode eventposnodes = null;
-                        if (eventposdefEvent.pos == null || eventposdefEvent.pos.Count == 0)
-                        {
-                            eventposdefEvent.pos = new BindingList<eventposdefEventPos>();
-                            if (!EventSpawnTV.SelectedNode.Nodes.ContainsKey("POS"))
-                            {
-                                eventposnodes = new TreeNode("pos");
-                                eventposnodes.Name = "POS";
-                                eventposnodes.Tag = "PosParent";
-                            }
-                            else
-                            {
-                                eventposnodes = EventSpawnTV.SelectedNode.Nodes.Find("POS", false)[0];
-                            }
+                            eventposnodes = new TreeNode("pos");
+                            eventposnodes.Name = "POS";
+                            eventposnodes.Tag = "PosParent";
                         }
                         else
                         {
                             eventposnodes = EventSpawnTV.SelectedNode.Nodes.Find("POS", false)[0];
-                            DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
-                            if (dialogResult == DialogResult.Yes)
-                            {
-                                eventposdefEvent.pos = new BindingList<eventposdefEventPos>();
-                                eventposnodes.Nodes.Clear();
-
-                            }
-                            eventposnodes.Remove();
                         }
-                        eventposdefEventPos newpos = new eventposdefEventPos()
-                        {
-                            x = Convert.ToDecimal(importfile.EditorObjects[0].Position[0]),
-                            ySpecified = true,
-                            y = Convert.ToDecimal(importfile.EditorObjects[0].Position[1]),
-                            z = Convert.ToDecimal(importfile.EditorObjects[0].Position[2]),
-                            aSpecified = true,
-                            a = 0,
-                            group = Groupname
-
-                        };
-                        eventposdefEvent.pos.Add(newpos);
-                        TreeNode posnodes = new TreeNode(newpos.ToString());
-                        posnodes.Tag = newpos;
-                        eventposnodes.Nodes.Add(posnodes);
-                        EventSpawnTV.SelectedNode.Nodes.Add(eventposnodes);
-                        currentproject.cfgeventspawns.isDirty = true;
-                        eventgroupdefGroup newvengroup = new eventgroupdefGroup()
-                        {
-                            name = Groupname,
-                            child = new BindingList<eventgroupdefGroupChild>()
-                        };
-                        
-                        TreeNode neweventspawn = new TreeNode(Groupname);
-                        neweventspawn.Tag = newvengroup;
-                        foreach (Editorobject eo in importfile.EditorObjects)
-                        {
-                            if (eo.Orientation[0] < 0)
-                                eo.Orientation[0] = 360 + eo.Orientation[0];
-                            eventgroupdefGroupChild eventgroupdefGroupChild = new eventgroupdefGroupChild()
-                            {
-                                type = eo.Type,
-                                x = (decimal)(eo.Position[0]) - newpos.x,
-                                ySpecified = true,
-                                y = (decimal)(eo.Position[1]) - newpos.y,
-                                z = (decimal)(eo.Position[2]) - newpos.z,
-                                a = (decimal)(eo.Orientation[0]),
-                                delootSpecified = true,
-                                deloot = 0,
-                                lootminSpecified = true,
-                                lootmin = 1,
-                                lootmaxSpecified = true,
-                                lootmax = 3
-                            };
-                            TreeNode eventgroupchile = new TreeNode(eventgroupdefGroupChild.type);
-                            eventgroupchile.Tag = eventgroupdefGroupChild;
-                            neweventspawn.Nodes.Add(eventgroupchile);
-                            newvengroup.child.Add(eventgroupdefGroupChild);
-                        }
-                        eventgroupdef.group.Add(newvengroup);
-                        eventspawngroupTV.Nodes[0].Nodes.Add(neweventspawn);
-                        currentproject.cfgeventgroups.isDirty = true;
                     }
+                    else
+                    {
+                        eventposnodes = EventSpawnTV.SelectedNode.Nodes.Find("POS", false)[0];
+                        DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            eventposdefEvent.pos = new BindingList<eventposdefEventPos>();
+                            eventposnodes.Nodes.Clear();
+
+                        }
+                        eventposnodes.Remove();
+                    }
+                    foreach (string file in openFileDialog.FileNames)
+                    {
+                        string filePath = file;
+                        DZE importfile = DZEHelpers.LoadFile(filePath);
+                        //AddItemfromString form = new AddItemfromString();
+                        //form.TitleLable = "Enter Name of Event Group";
+                        //DialogResult result = form.ShowDialog();
+                        //if (result == DialogResult.OK)
+                        //{
+                            string Groupname = Path.GetFileNameWithoutExtension(file);
+                            //List<string> addedtypes = form.addedtypes.ToList();
+                            //foreach (string l in addedtypes)
+                            //{
+                            //    Groupname = l;
+                            //}
+
+                            eventposdefEventPos newpos = new eventposdefEventPos()
+                            {
+                                x = Convert.ToDecimal(importfile.EditorObjects[0].Position[0]),
+                                ySpecified = true,
+                                y = Convert.ToDecimal(importfile.EditorObjects[0].Position[1]),
+                                z = Convert.ToDecimal(importfile.EditorObjects[0].Position[2]),
+                                aSpecified = true,
+                                a = 0,
+                                group = Groupname
+
+                            };
+                            eventposdefEvent.pos.Add(newpos);
+                            TreeNode posnodes = new TreeNode(newpos.ToString());
+                            posnodes.Tag = newpos;
+                            eventposnodes.Nodes.Add(posnodes);
+                            eventgroupdefGroup newvengroup = new eventgroupdefGroup()
+                            {
+                                name = Groupname,
+                                child = new BindingList<eventgroupdefGroupChild>()
+                            };
+
+                            TreeNode neweventspawn = new TreeNode(Groupname);
+                            neweventspawn.Tag = newvengroup;
+                            foreach (Editorobject eo in importfile.EditorObjects)
+                            {
+                                if (eo.Orientation[0] < 0)
+                                    eo.Orientation[0] = 360 + eo.Orientation[0];
+                                eventgroupdefGroupChild eventgroupdefGroupChild = new eventgroupdefGroupChild()
+                                {
+                                    type = eo.Type,
+                                    x = (decimal)(eo.Position[0]) - newpos.x,
+                                    ySpecified = true,
+                                    y = (decimal)(eo.Position[1]) - newpos.y,
+                                    z = (decimal)(eo.Position[2]) - newpos.z,
+                                    a = (decimal)(eo.Orientation[0]),
+                                    delootSpecified = true,
+                                    deloot = 0,
+                                    lootminSpecified = true,
+                                    lootmin = 1,
+                                    lootmaxSpecified = true,
+                                    lootmax = 3
+                                };
+                                TreeNode eventgroupchile = new TreeNode(eventgroupdefGroupChild.type);
+                                eventgroupchile.Tag = eventgroupdefGroupChild;
+                                neweventspawn.Nodes.Add(eventgroupchile);
+                                newvengroup.child.Add(eventgroupdefGroupChild);
+                            }
+                            eventgroupdef.group.Add(newvengroup);
+                            eventspawngroupTV.Nodes[0].Nodes.Add(neweventspawn);
+                            currentproject.cfgeventgroups.isDirty = true;
+                        //}
+                    }
+                    EventSpawnTV.SelectedNode.Nodes.Add(eventposnodes);
+                    currentproject.cfgeventspawns.isDirty = true;
                 }
             }
         }

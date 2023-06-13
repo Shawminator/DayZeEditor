@@ -2727,7 +2727,7 @@ namespace DayZeEditor
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(62, 42);
+            this.toolStripButton2.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton2.Text = "Find Next";
             this.toolStripButton2.Visible = false;
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
@@ -11895,7 +11895,7 @@ namespace DayZeEditor
             this.exportGroupSpawnTodzeToolStripMenuItem,
             this.importPositionAndCreateEventgroupFormdzeToolStripMenuItem});
             this.EventSpawnContextMenu.Name = "EventSpawnContextMenu";
-            this.EventSpawnContextMenu.Size = new System.Drawing.Size(332, 246);
+            this.EventSpawnContextMenu.Size = new System.Drawing.Size(332, 268);
             this.EventSpawnContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.EventSpawnContextMenu_Opening);
             // 
             // addNewEventSpawnToolStripMenuItem

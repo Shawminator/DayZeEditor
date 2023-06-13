@@ -669,6 +669,8 @@ namespace DayZeEditor
             this.SystemChatColorPB = new System.Windows.Forms.PictureBox();
             this.darkLabel92 = new DarkUI.Controls.DarkLabel();
             this.groupBox33 = new System.Windows.Forms.GroupBox();
+            this.darkLabel228 = new DarkUI.Controls.DarkLabel();
+            this.GravecrossSpawnTimeDelayNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel89 = new DarkUI.Controls.DarkLabel();
             this.EnableGravecrossCB = new System.Windows.Forms.CheckBox();
             this.GravecrossDeleteBodyCB = new System.Windows.Forms.CheckBox();
@@ -1106,6 +1108,8 @@ namespace DayZeEditor
             this.ItemRequirementNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel235 = new DarkUI.Controls.DarkLabel();
             this.groupBox74 = new System.Windows.Forms.GroupBox();
+            this.ReputationLossOnDeathNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel227 = new DarkUI.Controls.DarkLabel();
             this.ReputationMaxReputationNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel221 = new DarkUI.Controls.DarkLabel();
             this.ReputationOnKillAnimalNUD = new System.Windows.Forms.NumericUpDown();
@@ -1197,8 +1201,6 @@ namespace DayZeEditor
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
-            this.ReputationLossOnDeathNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel227 = new DarkUI.Controls.DarkLabel();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -1365,6 +1367,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.AdminChatColorPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SystemChatColorPB)).BeginInit();
             this.groupBox33.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GravecrossSpawnTimeDelayNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GravecrossTimeThresholdNUD)).BeginInit();
             this.groupBox32.SuspendLayout();
             this.tabPage11.SuspendLayout();
@@ -1496,6 +1499,7 @@ namespace DayZeEditor
             this.groupBox75.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemRequirementNUD)).BeginInit();
             this.groupBox74.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ReputationLossOnDeathNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReputationMaxReputationNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReputationOnKillAnimalNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReputationOnKillPlayerNUD)).BeginInit();
@@ -1516,7 +1520,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.GarageVehicleSearchRadiusNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxStorableVehiclesNUD)).BeginInit();
             this.darkToolStrip22.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ReputationLossOnDeathNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -9406,7 +9409,7 @@ namespace DayZeEditor
             this.groupBox35.Controls.Add(this.EnableLighthousesCB);
             this.groupBox35.Controls.Add(this.EnableLampsComboBox);
             this.groupBox35.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox35.Location = new System.Drawing.Point(8, 375);
+            this.groupBox35.Location = new System.Drawing.Point(8, 413);
             this.groupBox35.Name = "groupBox35";
             this.groupBox35.Size = new System.Drawing.Size(214, 114);
             this.groupBox35.TabIndex = 3;
@@ -9666,6 +9669,8 @@ namespace DayZeEditor
             // 
             // groupBox33
             // 
+            this.groupBox33.Controls.Add(this.darkLabel228);
+            this.groupBox33.Controls.Add(this.GravecrossSpawnTimeDelayNUD);
             this.groupBox33.Controls.Add(this.darkLabel89);
             this.groupBox33.Controls.Add(this.EnableGravecrossCB);
             this.groupBox33.Controls.Add(this.GravecrossDeleteBodyCB);
@@ -9673,10 +9678,37 @@ namespace DayZeEditor
             this.groupBox33.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox33.Location = new System.Drawing.Point(8, 261);
             this.groupBox33.Name = "groupBox33";
-            this.groupBox33.Size = new System.Drawing.Size(214, 108);
+            this.groupBox33.Size = new System.Drawing.Size(214, 146);
             this.groupBox33.TabIndex = 1;
             this.groupBox33.TabStop = false;
             this.groupBox33.Text = "Grave Cross";
+            // 
+            // darkLabel228
+            // 
+            this.darkLabel228.AutoSize = true;
+            this.darkLabel228.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel228.Location = new System.Drawing.Point(14, 104);
+            this.darkLabel228.Name = "darkLabel228";
+            this.darkLabel228.Size = new System.Drawing.Size(153, 13);
+            this.darkLabel228.TabIndex = 109;
+            this.darkLabel228.Text = "Gravecross Spawn Time Delay";
+            // 
+            // GravecrossSpawnTimeDelayNUD
+            // 
+            this.GravecrossSpawnTimeDelayNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.GravecrossSpawnTimeDelayNUD.DecimalPlaces = 1;
+            this.GravecrossSpawnTimeDelayNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.GravecrossSpawnTimeDelayNUD.Location = new System.Drawing.Point(17, 120);
+            this.GravecrossSpawnTimeDelayNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.GravecrossSpawnTimeDelayNUD.Name = "GravecrossSpawnTimeDelayNUD";
+            this.GravecrossSpawnTimeDelayNUD.Size = new System.Drawing.Size(111, 20);
+            this.GravecrossSpawnTimeDelayNUD.TabIndex = 108;
+            this.GravecrossSpawnTimeDelayNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.GravecrossSpawnTimeDelayNUD.ValueChanged += new System.EventHandler(this.GravecrossSpawnTimeDelayNUD_ValueChanged);
             // 
             // darkLabel89
             // 
@@ -9713,6 +9745,7 @@ namespace DayZeEditor
             // GravecrossTimeThresholdNUD
             // 
             this.GravecrossTimeThresholdNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.GravecrossTimeThresholdNUD.DecimalPlaces = 1;
             this.GravecrossTimeThresholdNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.GravecrossTimeThresholdNUD.Location = new System.Drawing.Point(17, 78);
             this.GravecrossTimeThresholdNUD.Maximum = new decimal(new int[] {
@@ -9724,7 +9757,7 @@ namespace DayZeEditor
             this.GravecrossTimeThresholdNUD.Size = new System.Drawing.Size(111, 20);
             this.GravecrossTimeThresholdNUD.TabIndex = 106;
             this.GravecrossTimeThresholdNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.GravecrossTimeThresholdNUD.ValueChanged += new System.EventHandler(this.GeneralsettingsNUD_ValueChanged);
+            this.GravecrossTimeThresholdNUD.ValueChanged += new System.EventHandler(this.GravecrossTimeThresholdNUD_ValueChanged);
             // 
             // groupBox32
             // 
@@ -15604,6 +15637,39 @@ namespace DayZeEditor
             this.groupBox74.TabStop = false;
             this.groupBox74.Text = "Reputation";
             // 
+            // ReputationLossOnDeathNUD
+            // 
+            this.ReputationLossOnDeathNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ReputationLossOnDeathNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.ReputationLossOnDeathNUD.Location = new System.Drawing.Point(143, 20);
+            this.ReputationLossOnDeathNUD.Maximum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            0});
+            this.ReputationLossOnDeathNUD.Minimum = new decimal(new int[] {
+            999999999,
+            0,
+            0,
+            -2147483648});
+            this.ReputationLossOnDeathNUD.Name = "ReputationLossOnDeathNUD";
+            this.ReputationLossOnDeathNUD.Size = new System.Drawing.Size(101, 20);
+            this.ReputationLossOnDeathNUD.TabIndex = 116;
+            this.ReputationLossOnDeathNUD.Tag = "Weight";
+            this.ReputationLossOnDeathNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ReputationLossOnDeathNUD.ValueChanged += new System.EventHandler(this.ReputationLossOnDeathNUD_ValueChanged);
+            // 
+            // darkLabel227
+            // 
+            this.darkLabel227.AutoSize = true;
+            this.darkLabel227.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel227.Location = new System.Drawing.Point(12, 22);
+            this.darkLabel227.Name = "darkLabel227";
+            this.darkLabel227.Size = new System.Drawing.Size(133, 13);
+            this.darkLabel227.TabIndex = 117;
+            this.darkLabel227.Tag = "";
+            this.darkLabel227.Text = "Reputation Loss On Death";
+            // 
             // ReputationMaxReputationNUD
             // 
             this.ReputationMaxReputationNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
@@ -16772,39 +16838,6 @@ namespace DayZeEditor
             this.toolStripSeparator17.Name = "toolStripSeparator17";
             this.toolStripSeparator17.Size = new System.Drawing.Size(6, 28);
             // 
-            // ReputationLossOnDeathNUD
-            // 
-            this.ReputationLossOnDeathNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ReputationLossOnDeathNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ReputationLossOnDeathNUD.Location = new System.Drawing.Point(143, 20);
-            this.ReputationLossOnDeathNUD.Maximum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            0});
-            this.ReputationLossOnDeathNUD.Minimum = new decimal(new int[] {
-            999999999,
-            0,
-            0,
-            -2147483648});
-            this.ReputationLossOnDeathNUD.Name = "ReputationLossOnDeathNUD";
-            this.ReputationLossOnDeathNUD.Size = new System.Drawing.Size(101, 20);
-            this.ReputationLossOnDeathNUD.TabIndex = 116;
-            this.ReputationLossOnDeathNUD.Tag = "Weight";
-            this.ReputationLossOnDeathNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ReputationLossOnDeathNUD.ValueChanged += new System.EventHandler(this.ReputationLossOnDeathNUD_ValueChanged);
-            // 
-            // darkLabel227
-            // 
-            this.darkLabel227.AutoSize = true;
-            this.darkLabel227.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel227.Location = new System.Drawing.Point(12, 22);
-            this.darkLabel227.Name = "darkLabel227";
-            this.darkLabel227.Size = new System.Drawing.Size(133, 13);
-            this.darkLabel227.TabIndex = 117;
-            this.darkLabel227.Tag = "";
-            this.darkLabel227.Text = "Reputation Loss On Death";
-            // 
             // ExpansionSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -17036,6 +17069,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.SystemChatColorPB)).EndInit();
             this.groupBox33.ResumeLayout(false);
             this.groupBox33.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GravecrossSpawnTimeDelayNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GravecrossTimeThresholdNUD)).EndInit();
             this.groupBox32.ResumeLayout(false);
             this.groupBox32.PerformLayout();
@@ -17201,6 +17235,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.ItemRequirementNUD)).EndInit();
             this.groupBox74.ResumeLayout(false);
             this.groupBox74.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ReputationLossOnDeathNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReputationMaxReputationNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReputationOnKillAnimalNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReputationOnKillPlayerNUD)).EndInit();
@@ -17224,7 +17259,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.MaxStorableVehiclesNUD)).EndInit();
             this.darkToolStrip22.ResumeLayout(false);
             this.darkToolStrip22.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ReputationLossOnDeathNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -18400,5 +18434,7 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkLabel darkLabel221;
         private System.Windows.Forms.NumericUpDown ReputationLossOnDeathNUD;
         private DarkUI.Controls.DarkLabel darkLabel227;
+        private DarkUI.Controls.DarkLabel darkLabel228;
+        private System.Windows.Forms.NumericUpDown GravecrossSpawnTimeDelayNUD;
     }
 }

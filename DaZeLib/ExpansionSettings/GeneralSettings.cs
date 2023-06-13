@@ -21,13 +21,14 @@ namespace DayZeLib
     };
     public class GeneralSettings
     {
-        static int CurrentVersion = 9;
+        static int CurrentVersion = 10;
 
         public int m_Version { get; set; }
         public int DisableShootToUnlock { get; set; }
         public int EnableGravecross { get; set; }
         public int GravecrossDeleteBody { get; set; }
-        public int GravecrossTimeThreshold { get; set; }
+        public decimal GravecrossTimeThreshold { get; set; }
+        public decimal GravecrossSpawnTimeDelay { get; set; }
         public CustomMapping Mapping { get; set; }
         public int EnableLamps { get; set; }
         public int EnableGenerators { get; set; }
@@ -53,6 +54,8 @@ namespace DayZeLib
             m_Version = CurrentVersion;
             Mapping = new CustomMapping();
             isDirty = true;
+            HUDColors = new Hudcolors();
+            InGameMenuLogoPath = "set:expansion_iconset image:logo_expansion_white";
         }
 
         public bool checkver()
@@ -61,6 +64,8 @@ namespace DayZeLib
             {
                 m_Version = CurrentVersion;
                 isDirty = true;
+                if (HUDColors == null)
+                    HUDColors = new Hudcolors();
                 return true;
             }
             return false;

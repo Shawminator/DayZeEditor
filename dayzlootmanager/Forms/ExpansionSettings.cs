@@ -2896,6 +2896,7 @@ namespace DayZeEditor
             EnableGravecrossCB.Checked = GeneralSettings.EnableGravecross == 1 ? true : false;
             GravecrossDeleteBodyCB.Checked = GeneralSettings.GravecrossDeleteBody == 1 ? true : false;
             GravecrossTimeThresholdNUD.Value = GeneralSettings.GravecrossTimeThreshold;
+            GravecrossSpawnTimeDelayNUD.Value = GeneralSettings.GravecrossSpawnTimeDelay;
             UseCustomMappingModuleCB.Checked = GeneralSettings.Mapping.UseCustomMappingModule == 1 ? true : false;
             BuildingInteriorsCB.Checked = GeneralSettings.Mapping.BuildingInteriors == 1 ? true : false;
             BuildingIvysCB.Checked = GeneralSettings.Mapping.BuildingIvys == 1 ? true : false;
@@ -2963,6 +2964,18 @@ namespace DayZeEditor
             if (!useraction) { return; }
             NumericUpDown nud = sender as NumericUpDown;
             GeneralSettings.SetIntValue(nud.Name.Substring(0, nud.Name.Length - 3), (int)nud.Value);
+            GeneralSettings.isDirty = true;
+        }
+        private void GravecrossTimeThresholdNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            GeneralSettings.GravecrossTimeThreshold = (decimal)GravecrossTimeThresholdNUD.Value;
+            GeneralSettings.isDirty = true;
+        }
+        private void GravecrossSpawnTimeDelayNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            GeneralSettings.GravecrossSpawnTimeDelay = (decimal)GravecrossSpawnTimeDelayNUD.Value;
             GeneralSettings.isDirty = true;
         }
         private void UseCustomMappingModuleCB_CheckedChanged(object sender, EventArgs e)

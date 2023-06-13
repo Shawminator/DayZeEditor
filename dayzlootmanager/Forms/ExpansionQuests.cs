@@ -787,6 +787,7 @@ namespace DayZeEditor
 
             QuestNPCIsEmoteStaticCB.Checked = currentQuestNPC.NPCEmoteIsStatic == 1 ? true : false;
             QuestNPCsLoadoutsCB.SelectedIndex = QuestNPCsLoadoutsCB.FindStringExact(currentQuestNPC.NPCLoadoutFile);
+            QuestNPCFactionLB.SelectedIndex = QuestNPCFactionLB.FindStringExact(currentQuestNPC.NPCFaction);
             QuestNPCsIsStaticCB.Checked = currentQuestNPC.IsStatic == 1 ? true:false;
 
             QuestNPCWaypointsLB.DisplayMember = "DisplayName";

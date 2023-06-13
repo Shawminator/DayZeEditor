@@ -15,7 +15,7 @@ namespace DayZeLib
 {
     public class TradersList
     {
-        public const int CurrentVersion = 10;
+        public const int CurrentVersion = 11;
         public BindingList<Traders> Traderlist { get; set; }
         public string TraderPath { get; set; }
 
@@ -150,6 +150,8 @@ namespace DayZeLib
         public string DisplayName { get; set; }
         public int MinRequiredReputation { get; set; }
         public int MaxRequiredReputation { get; set; }
+        public string RequiredFaction { get; set; }
+        public int RequiredCompletedQuestID { get; set; }
         public string TraderIcon { get; set; }
         public BindingList<string> Currencies { get; set; }
         public BindingList<string> Categories { get; set; }
@@ -171,6 +173,8 @@ namespace DayZeLib
             Items = new Dictionary<string, int>();
             ListItems = new BindingList<TradersItem>();
             Categories = new BindingList<string>();
+            RequiredFaction = "";
+            RequiredCompletedQuestID = -1;
         }
         public Traders(string filename)
         {

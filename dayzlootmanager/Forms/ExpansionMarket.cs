@@ -36,6 +36,9 @@ namespace DayZeEditor
         public TypesFile vanillatypes;
         public TypesFile Expansiontypes;
         public List<TypesFile> ModTypes;
+
+        public BindingList<string> Factions { get; private set; }
+
         public string filename;
 
         public Categories treeviewcat;
@@ -118,6 +121,17 @@ namespace DayZeEditor
             filename = currentproject.ProjectName;
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
+
+            Factions = new BindingList<string>(File.ReadAllLines(Application.StartupPath + "\\TraderNPCs\\Factions.txt").ToList());
+            List<string> questrequiredfaction = new List<string>();
+            questrequiredfaction.Add("");
+            foreach (string rf in Factions)
+            {
+                questrequiredfaction.Add(rf);
+            }
+            action = true;
+            RequiredFactionLB.DataSource = new BindingList<string>(questrequiredfaction);
+            action = false;
 
             catids = new List<int>();
             ZonesPath = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\traderzones";
@@ -1236,6 +1250,8 @@ namespace DayZeEditor
             textBox5.Text = currentTrader.DisplayName;
             MinRequiredHumanityNUD.Value = currentTrader.MinRequiredReputation;
             MaxRequiredHumanityNUD.Value = currentTrader.MaxRequiredReputation;
+            RequiredFactionLB.SelectedIndex = RequiredFactionLB.FindStringExact(currentTrader.RequiredFaction);
+            RequiredCompletedQuestIDNUD.Value = currentTrader.RequiredCompletedQuestID;
             textBox17.Text = currentTrader.TraderIcon;
             listBox10.DisplayMember = "Name";
             listBox10.ValueMember = "Value";
@@ -1680,6 +1696,18 @@ namespace DayZeEditor
         {
             if (action) return;
             currentTrader.MaxRequiredReputation = (int)MaxRequiredHumanityNUD.Value;
+            currentTrader.isDirty = true;
+        }
+        private void RequiredFactionLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (action) return;
+            currentTrader.RequiredFaction = RequiredFactionLB.GetItemText(RequiredFactionLB.SelectedItem);
+            currentTrader.isDirty = true;
+        }
+        private void RequiredCompletedQuestIDNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (action) return;
+            currentTrader.RequiredCompletedQuestID = (int)RequiredCompletedQuestIDNUD.Value;
             currentTrader.isDirty = true;
         }
         private void darkButton13_Click(object sender, EventArgs e)

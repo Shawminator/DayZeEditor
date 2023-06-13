@@ -6,3 +6,6 @@ Civilian
 Passive
 Guards
 Shamans
+InvincibleObservers
+Observers
+InvincibleGuards
