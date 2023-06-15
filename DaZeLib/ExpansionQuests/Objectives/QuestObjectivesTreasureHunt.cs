@@ -20,7 +20,7 @@ namespace DayZeLib
         public int MarkerVisibility { get; set; }
         public BindingList<float[]> Positions { get; set; }
         public BindingList<TreasureHuntItems> Loot { get; set; }
-        public int LootitemsAmount { get; set; }
+        public int LootItemsAmount { get; set; }
         public decimal MaxDistance { get; set; }
 
         public override string ToString()

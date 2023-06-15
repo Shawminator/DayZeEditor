@@ -17,11 +17,11 @@ namespace DayZeLib
     public partial class ignore
     {
 
-        private ignoreType[] typeField;
+        private BindingList<ignoreType> typeField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("type")]
-        public ignoreType[] type
+        public BindingList<ignoreType> type
         {
             get
             {

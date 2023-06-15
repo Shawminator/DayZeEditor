@@ -2480,7 +2480,7 @@ namespace DayZeEditor
                 MarkerVisibility = 4,
                 Positions = new BindingList<float[]>(),
                 Loot = new BindingList<TreasureHuntItems>(),
-                LootitemsAmount = 2,
+                LootItemsAmount = 2,
                 MaxDistance= 10,
                 isDirty = true
             };
@@ -3937,7 +3937,7 @@ namespace DayZeEditor
             QuestObjectivesObjectiveTextTB.Text = CurrentTreasureHunt.ObjectiveText;
             QuestObjectivesTimeLimitNUD.Value = CurrentTreasureHunt.TimeLimit;
             ObjectivesTreasureHuntShowdistanceCB.Checked = CurrentTreasureHunt.ShowDistance == 1 ? true : false;
-            ObjectivesTreasureHuntAmountNUD.Value = CurrentTreasureHunt.LootitemsAmount;
+            ObjectivesTreasureHuntAmountNUD.Value = CurrentTreasureHunt.LootItemsAmount;
             checkBox10.Checked = CurrentTreasureHunt.DigInStash == 1 ? true : false;
             numericUpDown16.Value = CurrentTreasureHunt.MaxDistance;
             numericUpDown17.Value = CurrentTreasureHunt.MarkerVisibility;
@@ -4193,7 +4193,7 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
-            CurrentTreasureHunt.LootitemsAmount = (int)ObjectivesTreasureHuntAmountNUD.Value;
+            CurrentTreasureHunt.LootItemsAmount = (int)ObjectivesTreasureHuntAmountNUD.Value;
             CurrentTreasureHunt.isDirty = true;
         }
         private void checkBox10_CheckedChanged(object sender, EventArgs e)

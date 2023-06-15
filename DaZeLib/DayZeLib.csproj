@@ -120,6 +120,7 @@
     <Compile Include="Economy\mapgrouprotoXML.cs" />
     <Compile Include="Economy\PlayerSpawnsXML.cs" />
     <Compile Include="Economy\SpawnabletypesXML.cs" />
+    <Compile Include="Economy\Territories.cs" />
     <Compile Include="Economy\TypesXML.cs" />
     <Compile Include="Economy\variables.cs" />
     <Compile Include="Economy\Limitsdefinitions.cs" />

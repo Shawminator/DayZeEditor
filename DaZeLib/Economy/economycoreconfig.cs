@@ -53,7 +53,7 @@ namespace DayZeLib
                     economycore = (economycore)mySerializer.Deserialize(myFileStream);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 var form = Application.OpenForms["SplashForm"];
                 if (form != null)
@@ -149,7 +149,6 @@ namespace DayZeLib
         public spawnabletypes spawnabletypes { get; set; }
         public string Filename { get; set; }
         public bool isDirty = false;
-
         public Spawnabletypesconfig(string filename)
         {
             Filename = filename;
@@ -214,6 +213,67 @@ namespace DayZeLib
             return Path.GetFileNameWithoutExtension(Filename);
         }
     }
+    public class territoriesConfig
+    {
+        public territorytype territorytype { get; set; }
+        public string Filename { get; set; }
+        public bool isDirty = false;
+        public territoriesConfig(string filename)
+        {
+            Filename = filename;
+            var mySerializer = new XmlSerializer(typeof(territorytype));
+            StringBuilder sb = new StringBuilder();
+            List<string> filearray = File.ReadAllLines(Filename).ToList();
+            foreach (String line in filearray)
+            {
+                if (line.Contains("<!-- ---"))
+                {
+                    isDirty = true;
+                    continue;
+                }
+                sb.Append(line + Environment.NewLine);
+            }
+            using (Stream ms = Helper.GenerateStreamFromString(sb.ToString()))
+            {
+                Console.WriteLine("serializing " + Path.GetFileName(Filename));
+                try
+                {
+                    territorytype = (territorytype)mySerializer.Deserialize(ms);
+                }
+                catch (Exception ex)
+                {
+                    var form = Application.OpenForms["SplashForm"];
+                    if (form != null)
+                    {
+                        form.Invoke(new Action(() => { form.Close(); }));
+                    }
+                    MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                }
+            }
+        }
+        public void SaveTerritories(string saveTime = null)
+        {
+            if (saveTime != null)
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
+                File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
+            }
+            var serializer = new XmlSerializer(typeof(territorytype));
+            var ns = new XmlSerializerNamespaces();
+            ns.Add("", "");
+            var sw = new StringWriter();
+            sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
+            var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true, });
+            serializer.Serialize(xmlWriter, territorytype, ns);
+            Console.WriteLine(sw.ToString());
+            File.WriteAllText(Filename, sw.ToString());
+        }
+        public override string ToString()
+        {
+            return Path.GetFileNameWithoutExtension(Filename);
+        }
+    }
+
     public class cfgrandompresetsconfig
     {
         public randompresets randompresets { get; set; }
@@ -516,7 +576,6 @@ namespace DayZeLib
                 SaveEventGroups();
             }
         }
-
         public void SaveEventGroups(string saveTime = null)
         {
             if (saveTime != null)
@@ -576,7 +635,6 @@ namespace DayZeLib
                 variables = new variables();
             }
         }
-
         public void SaveGlobals(string saveTime = null)
         {
             if (saveTime != null)
@@ -633,7 +691,6 @@ namespace DayZeLib
                 Saveignorelist();
             }
         }
-
         public void Saveignorelist(string saveTime = null)
         {
             if (saveTime != null)
@@ -641,13 +698,14 @@ namespace DayZeLib
                 Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
                 File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
             }
-            var serializer = new XmlSerializer(typeof(ignore));
-            var ns = new XmlSerializerNamespaces();
-            ns.Add("", "");
             var sw = new StringWriter();
             sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
-            var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true, });
-            serializer.Serialize(xmlWriter, ignore, ns);
+            sw.WriteLine("<ignore>");
+            foreach(ignoreType ignoretype in ignore.type)
+            {
+                sw.WriteLine("\t<type name=\"" + ignoretype.name + "\"></type>");
+            }
+            sw.WriteLine("</ignore>");
             Console.WriteLine(sw.ToString());
             File.WriteAllText(Filename, sw.ToString());
         }
@@ -715,7 +773,6 @@ namespace DayZeLib
             return Path.GetFileNameWithoutExtension(Filename);
         }
     }
-
     public class CFGGameplayConfig
     {
         public cfggameplay cfggameplay { get; set; }

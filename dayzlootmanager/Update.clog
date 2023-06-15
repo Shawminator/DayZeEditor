@@ -1,4 +1,16 @@
-﻿Version 0.7.7.3
+﻿Version 0.7.7.4
+[Added]
+CFGIgnorelist to economy manager
+added total number of nominals to types summary when running a query
+[Fixed]
+Expansion treasure hunt object wrong classname for LootItemsAmount.
+expasnion objectives, various numboxes could increment as set at 0.05, this is now 1.
+Economy manager, split tab bar over two lines.
+[Changed]
+economy manager- eventspawns and groups, when importing an event group to the event spawn using a dze file yuo can now import multiple dze files at once. 
+it will use the dze file name as teh group name. only difference is that it will not ask you to enter a group name anymore.
+
+Version 0.7.7.3
 [Updated]
 expansion Settings/Market updated to lates expansion release.
 

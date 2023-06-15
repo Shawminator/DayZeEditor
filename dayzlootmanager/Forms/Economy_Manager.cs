@@ -103,7 +103,9 @@ namespace DayZeEditor
             LoadContaminatoedArea();
             LoadGlobals();
             Loadweather();
+            loadignorelist();
             SetSummarytiers();
+            
             NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
 
             MapData = new MapData(Application.StartupPath + currentproject.MapPath + ".xyz");
@@ -121,7 +123,8 @@ namespace DayZeEditor
             pictureBox1.Invalidate();
             trackBar1.Value = 1;
             SetEventSpawnScale();
-
+            EconomyTabPage.SelectedIndex = 3;
+            TypesTabButton.Checked = true;
             isUserInteraction = true;
         }
         private void SetuprandomPresetsForSpawnabletypes()
@@ -324,6 +327,18 @@ namespace DayZeEditor
                     midifiedfiles.Add(Path.GetFileName(currentproject.weatherconfig.Filename));
                 }
             }
+            if (currentproject.cfgignorelist != null)
+            {
+                if (currentproject.cfgignorelist.isDirty)
+                {
+                    if (currentproject.Createbackups)
+                        currentproject.cfgignorelist.Saveignorelist(SaveTime);
+                    else
+                        currentproject.cfgignorelist.Saveignorelist();
+                    currentproject.cfgignorelist.isDirty = false;
+                    midifiedfiles.Add(Path.GetFileName(currentproject.cfgignorelist.Filename));
+                }
+            }
 
             string message = "The Following Files were saved....\n";
             int i = 0;
@@ -346,99 +361,115 @@ namespace DayZeEditor
             else
                 MessageBox.Show("No changes were made.", "Nothing Saved", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
-        private void toolStripButton3_Click(object sender, EventArgs e)
+
+
+        private void EventsTabButton_Click(object sender, EventArgs e)
         {
             EconomyTabPage.SelectedIndex = 0;
             if (EconomyTabPage.SelectedIndex == 0)
-                toolStripButton3.Checked = true;
+                EventsTabButton.Checked = true;
         }
-        private void toolStripButton5_Click(object sender, EventArgs e)
+        private void EventSpawnTabButton_Click(object sender, EventArgs e)
         {
             EconomyTabPage.SelectedIndex = 1;
             if (EconomyTabPage.SelectedIndex == 1)
-                toolStripButton5.Checked = true;
+                EventSpawnTabButton.Checked = true;
         }
-        private void toolStripButton6_Click(object sender, EventArgs e)
+        private void EventGroupsTabButton_Click(object sender, EventArgs e)
         {
             EconomyTabPage.SelectedIndex = 2;
             if (EconomyTabPage.SelectedIndex == 2)
-                toolStripButton6.Checked = true;
+                EventGroupsTabButton.Checked = true;
         }
-        private void toolStripButton8_Click(object sender, EventArgs e)
+        private void TypesTabButton_Click(object sender, EventArgs e)
         {
             EconomyTabPage.SelectedIndex = 3;
             if (EconomyTabPage.SelectedIndex == 3)
-                toolStripButton8.Checked = true;
+            {
+                EconomySearchBoxTB.Visible = true;
+                EconomyFindButton.Visible = true;
+                TypesTabButton.Checked = true;
+            }
         }
-        private void toolStripButton9_Click(object sender, EventArgs e)
+        private void TypesSummaryTabButton_Click(object sender, EventArgs e)
         {
             EconomyTabPage.SelectedIndex = 4;
             if (EconomyTabPage.SelectedIndex == 4)
-                toolStripButton9.Checked = true;
+                TypesSummaryTabButton.Checked = true;
         }
-        private void toolStripButton10_Click(object sender, EventArgs e)
+        private void EconomyCorePreviewTabButton_Click(object sender, EventArgs e)
         {
             EconomyTabPage.SelectedIndex = 5;
             if (EconomyTabPage.SelectedIndex == 5)
-                toolStripButton10.Checked = true;
+                EconomyCorePreviewTabButton.Checked = true;
         }
-        private void toolStripButton12_Click(object sender, EventArgs e)
+        private void SpawnabletypesTabButton_Click(object sender, EventArgs e)
         {
             EconomyTabPage.SelectedIndex = 6;
             if (EconomyTabPage.SelectedIndex == 6)
-                toolStripButton12.Checked = true;
+                SpawnabletypesTabButton.Checked = true;
         }
-        private void toolStripButton11_Click(object sender, EventArgs e)
+        private void RandomPresetsTabButton_Click(object sender, EventArgs e)
         {
             EconomyTabPage.SelectedIndex = 7;
             if (EconomyTabPage.SelectedIndex == 7)
-                toolStripButton11.Checked = true;
+                RandomPresetsTabButton.Checked = true;
         }
-        private void toolStripButton13_Click(object sender, EventArgs e)
+        private void GlobalsTabButton_Click(object sender, EventArgs e)
         {
             EconomyTabPage.SelectedIndex = 8;
             if (EconomyTabPage.SelectedIndex == 8)
-                toolStripButton13.Checked = true;
+                GlobalsTabButton.Checked = true;
         }
-        private void toolStripButton14_Click(object sender, EventArgs e)
+        private void PlayerSpawnPointsTabButton_Click(object sender, EventArgs e)
         {
             EconomyTabPage.SelectedIndex = 9;
             if (EconomyTabPage.SelectedIndex == 9)
-                toolStripButton14.Checked = true;
+                PlayerSpawnPointsTabButton.Checked = true;
         }
-        private void toolStripButton15_Click(object sender, EventArgs e)
+        private void CFGGameplayTabButton_Click(object sender, EventArgs e)
         {
             EconomyTabPage.SelectedIndex = 10;
             if (EconomyTabPage.SelectedIndex == 10)
-                toolStripButton15.Checked = true;
+                CFGGameplayTabButton.Checked = true;
         }
-        private void toolStripButton16_Click(object sender, EventArgs e)
+        private void ContaminatoedAreaTabButton_Click(object sender, EventArgs e)
         {
             EconomyTabPage.SelectedIndex = 11;
             if (EconomyTabPage.SelectedIndex == 11)
-                toolStripButton16.Checked = true;
+                ContaminatoedAreaTabButton.Checked = true;
         }
-        private void toolStripButton17_Click(object sender, EventArgs e)
+        private void WeatherTabButton_Click(object sender, EventArgs e)
         {
             EconomyTabPage.SelectedIndex = 12;
             if (EconomyTabPage.SelectedIndex == 12)
-                toolStripButton17.Checked = true;
+                WeatherTabButton.Checked = true;
+        }
+        private void CFGignoreListTabButton_Click(object sender, EventArgs e)
+        {
+            EconomyTabPage.SelectedIndex = 13;
+            if (EconomyTabPage.SelectedIndex == 13)
+                CFGignoreListTabButton.Checked = true;
         }
         private void EconomyTabPage_SelectedIndexChanged(object sender, EventArgs e)
         {
-            toolStripButton3.Checked = false;
-            toolStripButton5.Checked = false;
-            toolStripButton6.Checked = false;
-            toolStripButton8.Checked = false;
-            toolStripButton9.Checked = false;
-            toolStripButton10.Checked = false;
-            toolStripButton11.Checked = false;
-            toolStripButton12.Checked = false;
-            toolStripButton13.Checked = false;
-            toolStripButton14.Checked = false;
-            toolStripButton15.Checked = false;
-            toolStripButton16.Checked = false;
-            toolStripButton17.Checked = false;
+            EventsTabButton.Checked = false;
+            EventSpawnTabButton.Checked = false;
+            EventGroupsTabButton.Checked = false;
+            TypesTabButton.Checked = false;
+            TypesSummaryTabButton.Checked = false;
+            EconomyCorePreviewTabButton.Checked = false;
+            SpawnabletypesTabButton.Checked = false;
+            RandomPresetsTabButton.Checked = false;
+            GlobalsTabButton.Checked = false;
+            PlayerSpawnPointsTabButton.Checked = false;
+            CFGGameplayTabButton.Checked = false;
+            ContaminatoedAreaTabButton.Checked = false;
+            WeatherTabButton.Checked = false;
+            CFGignoreListTabButton.Checked = false;
+            EconomySearchBoxTB.Visible = false;
+            EconomyFindButton.Visible = false;
+            economySearchNextButton.Visible = false;
         }
         #endregion formsstuff
         #region Types
@@ -1028,7 +1059,6 @@ namespace DayZeEditor
             }
 
         }
-
         private string GetStringline(typesType type, string filename)
         {
             string line = "";
@@ -1096,7 +1126,6 @@ namespace DayZeEditor
             line += Environment.NewLine;
             return line;
         }
-
         private void PopulateLootPartInfo()
         {
             isUserInteraction = false;
@@ -1697,10 +1726,20 @@ namespace DayZeEditor
         }
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
+            switch (EconomyTabPage.SelectedIndex)
+            {
+                case 3:
+                    FindTypes();
+                    break;
+            }
+        }
+
+        private void FindTypes()
+        {
             isUserInteraction = false;
             if (treeViewMS1.Nodes.Count < 1)
                 return;
-            string text = toolStripTextBox1.Text;
+            string text = EconomySearchBoxTB.Text;
             if (text == "") return;
             searchnum = 0;
             searchtreeNodes = new List<TreeNode>();
@@ -1746,18 +1785,19 @@ namespace DayZeEditor
             }
             if (searchtreeNodes.Count > 1)
             {
-                toolStripButton2.Visible = true;
-                toolStripButton2.AutoSize = false;
-                toolStripButton2.AutoSize = true;
+                economySearchNextButton.Visible = true;
+                economySearchNextButton.AutoSize = false;
+                economySearchNextButton.AutoSize = true;
             }
             isUserInteraction = true;
         }
+
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             searchnum++;
             if (searchnum == searchtreeNodes.Count)
             {
-                toolStripButton2.Visible = false;
+                economySearchNextButton.Visible = false;
                 MessageBox.Show("No More Items found");
                 return;
             }
@@ -1791,7 +1831,7 @@ namespace DayZeEditor
         }
         private void toolStripTextBox1_Click(object sender, EventArgs e)
         {
-            toolStripButton2.Visible = false;
+            economySearchNextButton.Visible = false;
         }
         #endregion types
         #region events
@@ -3774,7 +3814,7 @@ namespace DayZeEditor
         private void darkButton14_Click(object sender, EventArgs e)
         {
             List<string> Queryitems = new List<string>();
-
+            int totalnominals = 0;
             //check Tiers
             //need to check if the fil;ter is for vanilla or user definitions
             if (FilterTiers)
@@ -3896,6 +3936,7 @@ namespace DayZeEditor
 
                     vanilla.Nodes.Add(newcatnode);
                 }
+                totalnominals += type.nominal;
                 count++;
                 vanilla.Nodes[cat].Nodes.Add(typenode);
             }
@@ -3933,6 +3974,7 @@ namespace DayZeEditor
                             };
                             ModTypes.Nodes.Add(newcatnode);
                         }
+                        totalnominals += type.nominal;
                         count++;
                         ModTypes.Nodes[cat].Nodes.Add(typenode);
                     }
@@ -3942,6 +3984,7 @@ namespace DayZeEditor
                 }
             }
             darkLabel6.Text = "Found Items :- " + count.ToString();
+            darkLabel27.Text = "Total Number of nominals :- " + totalnominals.ToString();
             treeView2.Nodes.Add(root);
         }
         private void darkButton12_Click(object sender, EventArgs e)
@@ -4370,7 +4413,6 @@ namespace DayZeEditor
         }
         #endregion PlayerSpawnPoints
         #region cfggameplayconfig
-
         private cfggameplay cfggameplay;
         private void LoadCFGGamelplay()
         {
@@ -5698,6 +5740,170 @@ namespace DayZeEditor
 
 
         #endregion weather
+        #region ignorelist
+        public ignore ignore;
+        public ignoreType currentignoretype;
+        private void loadignorelist()
+        {
+            Console.WriteLine("Loading cfgIgnorelist");
+            isUserInteraction = false;
+            ignore = currentproject.cfgignorelist.ignore;
+            populateignoretreeview();
+
+
+            isUserInteraction = true;
+        }
+        void populateignoretreeview()
+        {
+            Console.WriteLine("populating ignore treeView");
+            IgnoreTreeView.Nodes.Clear();
+            TreeNode root = new TreeNode(Path.GetFileName(filename))
+            {
+                Tag = "Parent"
+            };
+            //Set Vanilla Treenode types
+            TreeNode Ignorelist = new TreeNode("CFG Ignore list")
+            {
+                Tag = "CFGIgnoreList"
+            };
+            foreach (ignoreType ignoreType in ignore.type)
+            {
+                TreeNode typenode = new TreeNode(ignoreType.name)
+                {
+                    Tag = ignoreType
+                };
+                Ignorelist.Nodes.Add(typenode);
+            }
+            Console.WriteLine("All Types files Populated......");
+            //treeView1.Nodes.Add(root);
+            root.Nodes.Add(Ignorelist);
+            IgnoreTreeView.Nodes.Add(root);
+        }
+        private void IgnoreTreeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            TreeNode usingtreenode = e.Node;
+            if (ModifierKeys.HasFlag(Keys.Control) || ModifierKeys.HasFlag(Keys.Shift))
+            {
+                return;
+            }
+            if (usingtreenode.Tag != null && usingtreenode.Tag is ignoreType)
+            {
+                currentignoretype = usingtreenode.Tag as ignoreType;
+                if (e.Button == MouseButtons.Right)
+                {
+                    addClassnameFromTypesToolStripMenuItem.Visible = false;
+                    addClassnameFromStringToolStripMenuItem.Visible = false;
+                    removeClassnameToolStripMenuItem.Visible = true;
+                    CFGIgnoreContextMenu.Show(Cursor.Position);
+                }
+            }
+            else if (usingtreenode.Tag != null && usingtreenode.Tag is string)
+            {
+                currentignoretype = null;
+                if (usingtreenode.Tag.ToString() == "Parent")
+                {
+                    if (e.Button == MouseButtons.Right)
+                    {
+                        removeClassnameToolStripMenuItem.Visible = false;
+                        addClassnameFromTypesToolStripMenuItem.Visible = true;
+                        addClassnameFromStringToolStripMenuItem.Visible = true;
+                        CFGIgnoreContextMenu.Show(Cursor.Position);
+                    }
+                }
+            }
+            IgnoreTreeView.SelectedNode = usingtreenode;
+        }
+        private void removeClassnameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (TreeNode tn in IgnoreTreeView.SelectedNodes)
+            {
+                ignoreType ignotrtype = tn.Tag as ignoreType;
+                ignore.type.Remove(ignotrtype);
+            }
+            currentproject.cfgignorelist.isDirty = true;
+            var savedExpansionState = IgnoreTreeView.Nodes.GetExpansionState();
+            IgnoreTreeView.BeginUpdate();
+            populateignoretreeview();
+            IgnoreTreeView.Nodes.SetExpansionState(savedExpansionState);
+            IgnoreTreeView.EndUpdate();
+        }
+
+        private void addClassnameFromTypesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseMultipleofSameItem = false,
+                LowerCase = true
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    ignoreType newignoretype = new ignoreType()
+                    {
+                        name = l
+                    };
+                    if(!ignore.type.Any(x => x.name == newignoretype.name))
+                    {
+                        ignore.type.Add(newignoretype);
+                    }
+                    else
+                    {
+                        MessageBox.Show(newignoretype.name + " Allready exists.....");
+                    }
+                }
+                currentproject.cfgignorelist.isDirty = true;
+                var savedExpansionState = IgnoreTreeView.Nodes.GetExpansionState();
+                IgnoreTreeView.BeginUpdate();
+                populateignoretreeview();
+                IgnoreTreeView.Nodes.SetExpansionState(savedExpansionState);
+                IgnoreTreeView.EndUpdate();
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+        }
+        private void addClassnameFromStringToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddItemfromString form = new AddItemfromString();
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    ignoreType newignoretype = new ignoreType()
+                    {
+                        name = l
+                    };
+                    if (!ignore.type.Any(x => x.name == newignoretype.name))
+                    {
+                        ignore.type.Add(newignoretype);
+                    }
+                    else
+                    {
+                        MessageBox.Show(newignoretype.name + " Allready exists.....");
+                    }
+                }
+                currentproject.cfgignorelist.isDirty = true;
+                var savedExpansionState = IgnoreTreeView.Nodes.GetExpansionState();
+                IgnoreTreeView.BeginUpdate();
+                populateignoretreeview();
+                IgnoreTreeView.Nodes.SetExpansionState(savedExpansionState);
+                IgnoreTreeView.EndUpdate();
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+        }
+        #endregion ignorelist
 
         private void darkButton55_Click(object sender, EventArgs e)
         {
@@ -5845,6 +6051,8 @@ namespace DayZeEditor
         {
 
         }
+
+
     }
 
 }

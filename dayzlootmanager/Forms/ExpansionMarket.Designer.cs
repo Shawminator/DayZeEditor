@@ -31,9 +31,9 @@ namespace DayZeEditor
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExpansionMarket));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.darkToolStrip21 = new DarkUI.Controls.DarkToolStrip2();
             this.SaveFileButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -294,6 +294,10 @@ namespace DayZeEditor
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.darkLabel80 = new DarkUI.Controls.DarkLabel();
+            this.RequiredCompletedQuestIDNUD = new System.Windows.Forms.NumericUpDown();
+            this.RequiredFactionLB = new System.Windows.Forms.ComboBox();
+            this.darkLabel141 = new DarkUI.Controls.DarkLabel();
             this.AttachmentRB = new System.Windows.Forms.RadioButton();
             this.darkLabel79 = new DarkUI.Controls.DarkLabel();
             this.MaxRequiredHumanityNUD = new System.Windows.Forms.NumericUpDown();
@@ -384,10 +388,6 @@ namespace DayZeEditor
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
-            this.RequiredFactionLB = new System.Windows.Forms.ComboBox();
-            this.darkLabel141 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel80 = new DarkUI.Controls.DarkLabel();
-            this.RequiredCompletedQuestIDNUD = new System.Windows.Forms.NumericUpDown();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -486,6 +486,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RequiredCompletedQuestIDNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxRequiredHumanityNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinRequiredHumanityNUD)).BeginInit();
             this.groupBox5.SuspendLayout();
@@ -504,7 +505,6 @@ namespace DayZeEditor
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.darkToolStrip22.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RequiredCompletedQuestIDNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -3539,34 +3539,34 @@ namespace DayZeEditor
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(9, 246);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Size = new System.Drawing.Size(518, 356);
             this.dataGridView1.TabIndex = 87;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
@@ -3894,6 +3894,58 @@ namespace DayZeEditor
             this.tabPage2.Size = new System.Drawing.Size(1062, 617);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Traders";
+            // 
+            // darkLabel80
+            // 
+            this.darkLabel80.AutoSize = true;
+            this.darkLabel80.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel80.Location = new System.Drawing.Point(233, 175);
+            this.darkLabel80.Name = "darkLabel80";
+            this.darkLabel80.Size = new System.Drawing.Size(145, 13);
+            this.darkLabel80.TabIndex = 171;
+            this.darkLabel80.Text = "Required Completed QuestID";
+            // 
+            // RequiredCompletedQuestIDNUD
+            // 
+            this.RequiredCompletedQuestIDNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.RequiredCompletedQuestIDNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.RequiredCompletedQuestIDNUD.Location = new System.Drawing.Point(384, 173);
+            this.RequiredCompletedQuestIDNUD.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            0});
+            this.RequiredCompletedQuestIDNUD.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.RequiredCompletedQuestIDNUD.Name = "RequiredCompletedQuestIDNUD";
+            this.RequiredCompletedQuestIDNUD.Size = new System.Drawing.Size(152, 20);
+            this.RequiredCompletedQuestIDNUD.TabIndex = 170;
+            this.RequiredCompletedQuestIDNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.RequiredCompletedQuestIDNUD.ValueChanged += new System.EventHandler(this.RequiredCompletedQuestIDNUD_ValueChanged);
+            // 
+            // RequiredFactionLB
+            // 
+            this.RequiredFactionLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.RequiredFactionLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.RequiredFactionLB.FormattingEnabled = true;
+            this.RequiredFactionLB.Location = new System.Drawing.Point(316, 148);
+            this.RequiredFactionLB.Name = "RequiredFactionLB";
+            this.RequiredFactionLB.Size = new System.Drawing.Size(220, 21);
+            this.RequiredFactionLB.TabIndex = 168;
+            this.RequiredFactionLB.SelectedIndexChanged += new System.EventHandler(this.RequiredFactionLB_SelectedIndexChanged);
+            // 
+            // darkLabel141
+            // 
+            this.darkLabel141.AutoSize = true;
+            this.darkLabel141.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel141.Location = new System.Drawing.Point(230, 150);
+            this.darkLabel141.Name = "darkLabel141";
+            this.darkLabel141.Size = new System.Drawing.Size(88, 13);
+            this.darkLabel141.TabIndex = 169;
+            this.darkLabel141.Text = "Required Faction";
             // 
             // AttachmentRB
             // 
@@ -5000,58 +5052,6 @@ namespace DayZeEditor
             this.toolStripButton6.Text = "Market Items";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
-            // RequiredFactionLB
-            // 
-            this.RequiredFactionLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.RequiredFactionLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.RequiredFactionLB.FormattingEnabled = true;
-            this.RequiredFactionLB.Location = new System.Drawing.Point(316, 148);
-            this.RequiredFactionLB.Name = "RequiredFactionLB";
-            this.RequiredFactionLB.Size = new System.Drawing.Size(220, 21);
-            this.RequiredFactionLB.TabIndex = 168;
-            this.RequiredFactionLB.SelectedIndexChanged += new System.EventHandler(this.RequiredFactionLB_SelectedIndexChanged);
-            // 
-            // darkLabel141
-            // 
-            this.darkLabel141.AutoSize = true;
-            this.darkLabel141.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel141.Location = new System.Drawing.Point(230, 150);
-            this.darkLabel141.Name = "darkLabel141";
-            this.darkLabel141.Size = new System.Drawing.Size(88, 13);
-            this.darkLabel141.TabIndex = 169;
-            this.darkLabel141.Text = "Required Faction";
-            // 
-            // darkLabel80
-            // 
-            this.darkLabel80.AutoSize = true;
-            this.darkLabel80.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel80.Location = new System.Drawing.Point(233, 175);
-            this.darkLabel80.Name = "darkLabel80";
-            this.darkLabel80.Size = new System.Drawing.Size(145, 13);
-            this.darkLabel80.TabIndex = 171;
-            this.darkLabel80.Text = "Required Completed QuestID";
-            // 
-            // RequiredCompletedQuestIDNUD
-            // 
-            this.RequiredCompletedQuestIDNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.RequiredCompletedQuestIDNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.RequiredCompletedQuestIDNUD.Location = new System.Drawing.Point(384, 173);
-            this.RequiredCompletedQuestIDNUD.Maximum = new decimal(new int[] {
-            1410065407,
-            2,
-            0,
-            0});
-            this.RequiredCompletedQuestIDNUD.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.RequiredCompletedQuestIDNUD.Name = "RequiredCompletedQuestIDNUD";
-            this.RequiredCompletedQuestIDNUD.Size = new System.Drawing.Size(152, 20);
-            this.RequiredCompletedQuestIDNUD.TabIndex = 170;
-            this.RequiredCompletedQuestIDNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.RequiredCompletedQuestIDNUD.ValueChanged += new System.EventHandler(this.RequiredCompletedQuestIDNUD_ValueChanged);
-            // 
             // ExpansionMarket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5174,6 +5174,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RequiredCompletedQuestIDNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxRequiredHumanityNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinRequiredHumanityNUD)).EndInit();
             this.groupBox5.ResumeLayout(false);
@@ -5195,7 +5196,6 @@ namespace DayZeEditor
             this.groupBox3.ResumeLayout(false);
             this.darkToolStrip22.ResumeLayout(false);
             this.darkToolStrip22.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RequiredCompletedQuestIDNUD)).EndInit();
             this.ResumeLayout(false);
 
         }

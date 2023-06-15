@@ -35,7 +35,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.7.7.3";
+        public string VersionNumber = "0.7.7.4";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -133,6 +133,7 @@ namespace DayZeEditor
                     Projects.getActiveProject().SetTotNomCount();
                     Projects.getActiveProject().Setmapgrouproto();
                     Projects.getActiveProject().Setmapgroupos();
+                    Projects.getActiveProject().SetTerritories();
                     //Projects.getActiveProject().GetPlayerDB();
                     Console.WriteLine("Project is Running Dr Jones Trader...." + Projects.getActiveProject().usingDrJoneTrader.ToString());
                     Console.WriteLine("Project is Running Expansion Market...." + Projects.getActiveProject().usingexpansionMarket.ToString());

@@ -450,6 +450,7 @@ namespace DayZeEditor
             projects.getActiveProject().SetTotNomCount();
             projects.getActiveProject().Setmapgrouproto();
             projects.getActiveProject().Setmapgroupos();
+            projects.getActiveProject().SetTerritories();
             //projects.getActiveProject().GetPlayerDB();
             getActiveProject();
         }

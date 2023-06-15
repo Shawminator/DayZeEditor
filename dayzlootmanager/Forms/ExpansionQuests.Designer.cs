@@ -3914,11 +3914,6 @@ namespace DayZeEditor
             // 
             this.ObjectivesCollectionAmountNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ObjectivesCollectionAmountNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesCollectionAmountNUD.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
             this.ObjectivesCollectionAmountNUD.Location = new System.Drawing.Point(103, 222);
             this.ObjectivesCollectionAmountNUD.Maximum = new decimal(new int[] {
             10000,
@@ -4546,11 +4541,6 @@ namespace DayZeEditor
             // 
             this.numericUpDown17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.numericUpDown17.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown17.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
             this.numericUpDown17.Location = new System.Drawing.Point(117, 309);
             this.numericUpDown17.Maximum = new decimal(new int[] {
             10000,
@@ -4678,11 +4668,6 @@ namespace DayZeEditor
             // 
             this.ObjectivesTreasureHuntAmountNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ObjectivesTreasureHuntAmountNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesTreasureHuntAmountNUD.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
             this.ObjectivesTreasureHuntAmountNUD.Location = new System.Drawing.Point(117, 357);
             this.ObjectivesTreasureHuntAmountNUD.Maximum = new decimal(new int[] {
             10000,
@@ -5083,11 +5068,6 @@ namespace DayZeEditor
             // 
             this.ObjectivesTargetAmountNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ObjectivesTargetAmountNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesTargetAmountNUD.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
             this.ObjectivesTargetAmountNUD.Location = new System.Drawing.Point(108, 138);
             this.ObjectivesTargetAmountNUD.Maximum = new decimal(new int[] {
             10000,
@@ -5403,11 +5383,6 @@ namespace DayZeEditor
             // 
             this.ObjectivesDeliveryAmountNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ObjectivesDeliveryAmountNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesDeliveryAmountNUD.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
             this.ObjectivesDeliveryAmountNUD.Location = new System.Drawing.Point(101, 202);
             this.ObjectivesDeliveryAmountNUD.Maximum = new decimal(new int[] {
             10000,
@@ -5492,11 +5467,6 @@ namespace DayZeEditor
             this.ObjectivesAIVIPMaxDistanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ObjectivesAIVIPMaxDistanceNUD.DecimalPlaces = 2;
             this.ObjectivesAIVIPMaxDistanceNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesAIVIPMaxDistanceNUD.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
             this.ObjectivesAIVIPMaxDistanceNUD.Location = new System.Drawing.Point(116, 113);
             this.ObjectivesAIVIPMaxDistanceNUD.Maximum = new decimal(new int[] {
             10000,
@@ -5690,11 +5660,6 @@ namespace DayZeEditor
             // 
             this.numericUpDown15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.numericUpDown15.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown15.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
             this.numericUpDown15.Location = new System.Drawing.Point(109, 133);
             this.numericUpDown15.Maximum = new decimal(new int[] {
             1,
@@ -6456,11 +6421,6 @@ namespace DayZeEditor
             // 
             this.QuestObjectovesInfectedDeletionRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.QuestObjectovesInfectedDeletionRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.QuestObjectovesInfectedDeletionRadiusNUD.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
             this.QuestObjectovesInfectedDeletionRadiusNUD.Location = new System.Drawing.Point(464, 395);
             this.QuestObjectovesInfectedDeletionRadiusNUD.Maximum = new decimal(new int[] {
             30000,
@@ -7058,11 +7018,6 @@ namespace DayZeEditor
             // 
             this.ObjectivesActionsExecutionAmountNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ObjectivesActionsExecutionAmountNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesActionsExecutionAmountNUD.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
             this.ObjectivesActionsExecutionAmountNUD.Location = new System.Drawing.Point(116, 443);
             this.ObjectivesActionsExecutionAmountNUD.Maximum = new decimal(new int[] {
             1,
