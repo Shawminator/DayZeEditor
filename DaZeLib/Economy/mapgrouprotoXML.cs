@@ -213,11 +213,9 @@ namespace DayZeLib
     public partial class prototypeGroup
     {
 
-        private prototypeGroupValue valueField;
+        private BindingList<prototypeGroupValue> valueField;
 
         private BindingList<prototypeGroupUsage> usageField;
-
-        private BindingList<prototypeGroupTag> tagField;
 
         private BindingList<prototypeGroupContainer> containerField;
 
@@ -230,7 +228,8 @@ namespace DayZeLib
         private bool lootmaxFieldSpecified;
 
         /// <remarks/>
-        public prototypeGroupValue value
+        [System.Xml.Serialization.XmlElementAttribute("value")]
+        public BindingList<prototypeGroupValue> value
         {
             get
             {
@@ -253,20 +252,6 @@ namespace DayZeLib
             set
             {
                 this.usageField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("tag")]
-        public BindingList<prototypeGroupTag> tag
-        {
-            get
-            {
-                return this.tagField;
-            }
-            set
-            {
-                this.tagField = value;
             }
         }
 
@@ -353,7 +338,23 @@ namespace DayZeLib
     public partial class prototypeGroupValue
     {
 
+        private string userField;
+
         private string nameField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string user
+        {
+            get
+            {
+                return this.userField;
+            }
+            set
+            {
+                this.userField = value;
+            }
+        }
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -368,45 +369,19 @@ namespace DayZeLib
                 this.nameField = value;
             }
         }
+
         public override string ToString()
         {
             return name;
         }
     }
+
 
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class prototypeGroupUsage
-    {
-
-        private string nameField;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string name
-        {
-            get
-            {
-                return this.nameField;
-            }
-            set
-            {
-                this.nameField = value;
-            }
-        }
-        public override string ToString()
-        {
-            return name;
-        }
-    }
-
-    /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class prototypeGroupTag
     {
 
         private string nameField;
@@ -587,6 +562,11 @@ namespace DayZeLib
             {
                 this.nameField = value;
             }
+        }
+
+        public override string ToString()
+        {
+            return name;
         }
     }
 

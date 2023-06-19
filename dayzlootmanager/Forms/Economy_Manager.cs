@@ -6081,20 +6081,155 @@ namespace DayZeEditor
 
         #region mapgroupproto
         public prototype prototype;
+        public prototypeGroup currentgroup;
+        public prototypeGroupContainer currentgroupcontainer;
         private void LoadMapgrouProto()
         {
             Console.WriteLine("Loading MapgroupProto");
             isUserInteraction = false;
+
             prototype = currentproject.mapgroupproto.prototypeGroup;
+
             MapGroupProtoCategroyCB.DataSource = currentproject.limitfefinitions.lists.categories;
             MapGroupProtoUsageCB.DataSource = currentproject.limitfefinitions.lists.usageflags;
             MapGroupProtoTagCB.DataSource = currentproject.limitfefinitions.lists.tags;
+
+            MapGroupProtoGroupsLB.DisplayMember = "DisplayName";
+            MapGroupProtoGroupsLB.ValueMember = "Value";
+            MapGroupProtoGroupsLB.DataSource = currentproject.mapgroupproto.prototypeGroup.group;
+
+            isUserInteraction = true;
+        }
+        public void MapGroupProtoSetTiers()
+        {
+            List<CheckBox> checkboxes = flowLayoutPanel2.Controls.OfType<CheckBox>().ToList();
+            foreach (CheckBox cb in checkboxes)
+            {
+                cb.Visible = false;
+            }
+
+            int index = currentproject.limitfefinitions.lists.valueflags.Count;
+            for (int i = 0; i < currentproject.limitfefinitions.lists.valueflags.Count; i++)
+            {
+                listsValue value = currentproject.limitfefinitions.lists.valueflags[i];
+                CheckBox cb = checkboxes[i];
+                cb.Tag = value.name;
+                cb.Checked = false;
+                cb.Visible = true;
+                cb.Text = value.name;
+                index--;
+            }
+
+            checkboxes = flowLayoutPanel3.Controls.OfType<CheckBox>().ToList();
+            foreach (CheckBox cb in checkboxes)
+            {
+                cb.Visible = false;
+            }
+
+            index = 0;
+            foreach (user_listsUser1 user in currentproject.limitfefinitionsuser.user_lists.valueflags)
+            {
+                CheckBox cb = checkboxes[index];
+                cb.Tag = user.name;
+                cb.Visible = true;
+                cb.Checked = false;
+                cb.Text = user.name;
+                index++;
+            }
+        }
+        public void MapgroupProtoPopulateTiers()
+        {
+            MapGroupProtoSetTiers();
+            if (currentgroup.value != null)
+            {
+                for (int i = 0; i < currentgroup.value.Count; i++)
+                {
+                    if (currentgroup.value[i].user != null && currentgroup.value[i].user.Count() > 0 && currentgroup.value[i].name == null)
+                    {
+                        tabControl24.SelectedIndex = 1;
+                        try
+                        {
+                            UserdefinitionsTP.Controls.OfType<CheckBox>().First(x => x.Tag.ToString() == currentgroup.value[i].user).Checked = true;
+                        }
+                        catch
+                        {
+                            currentgroup.value.RemoveAt(i);
+                            i--;
+                        }
+                    }
+                    else
+                    {
+                        tabControl24.SelectedIndex = 0;
+
+                        try
+                        {
+                            flowLayoutPanel2.Controls.OfType<CheckBox>().First(x => x.Tag.ToString() == currentgroup.value[i].name).Checked = true;
+                        }
+                        catch
+                        {
+                            currentgroup.value.RemoveAt(i);
+                            i--;
+                        }
+                    }
+                }
+            }
+        }
+        private void MapGroupProtoGroupsLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (MapGroupProtoGroupsLB.SelectedItem as prototypeGroup == currentgroup) { return; }
+            if (MapGroupProtoGroupsLB.SelectedIndex == -1) { return; }
+            currentgroup = MapGroupProtoGroupsLB.SelectedItem as prototypeGroup;
+            isUserInteraction = false;
+
+            MapgroupprotoGroupNameTB.Text = currentgroup.name;
+            MapGroupprotoGroupUseLootmaxCB.Checked = currentgroup.lootmaxSpecified;
+            if (MapGroupProtoGroupUseLootMaxNUD.Visible = currentgroup.lootmaxSpecified)
+            {
+                MapGroupProtoGroupUseLootMaxNUD.Value = currentgroup.lootmax;
+            }
+
+
+            MapgroupProtoPopulateTiers();
+
+            MapGroupProtoGroupUsageLB.DisplayMember = "DisplayName";
+            MapGroupProtoGroupUsageLB.ValueMember = "Value";
+            MapGroupProtoGroupUsageLB.DataSource = currentgroup.usage;
+
+            MapGroupProtoGroupContainersLB.DisplayMember = "DisplayName";
+            MapGroupProtoGroupContainersLB.ValueMember = "Value";
+            MapGroupProtoGroupContainersLB.DataSource = currentgroup.container;
+
+
+            isUserInteraction = true;
+        }
+        private void MapGroupProtoGroupContainersLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (MapGroupProtoGroupContainersLB.SelectedItem as prototypeGroupContainer == currentgroupcontainer) { return; }
+            if (MapGroupProtoGroupContainersLB.SelectedIndex == -1) { return; }
+            currentgroupcontainer = MapGroupProtoGroupContainersLB.SelectedItem as prototypeGroupContainer;
+            isUserInteraction = false;
+
+            MapgroupProtoGroupcontainerNameTB.Text = currentgroupcontainer.name;
+            if (MapgroupProtoGroupcontainerUseLootMaxCB.Visible = MapgroupProtoGroupcontainerUseLootMaxCB.Checked  = currentgroupcontainer.lootmaxSpecified)
+            {
+                MapgroupProtoGroupcontainerUseLootMaxNUD.Value = currentgroupcontainer.lootmax;
+            }
+
+            MapGroupProtoGroupCategroyLB.DisplayMember = "DisplayName";
+            MapGroupProtoGroupCategroyLB.ValueMember = "Value";
+            MapGroupProtoGroupCategroyLB.DataSource = currentgroupcontainer.category;
+
+            MapGroupprotoGroupTagLB.DisplayMember = "DisplayName";
+            MapGroupprotoGroupTagLB.ValueMember = "Value";
+            MapGroupprotoGroupTagLB.DataSource = currentgroupcontainer.tag;
+
             isUserInteraction = true;
         }
 
 
-
         #endregion
+
+
     }
 
 }
