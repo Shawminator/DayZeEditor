@@ -19,6 +19,15 @@ namespace DayZeLib
         [Description("Force every lights to be turned on")]
         AlwaysOnEverywhere = 3
     };
+    public enum buildingIvy
+    {
+        [Description("No custom ivies will be added to the map")]
+        Disabled = 0,
+        [Description("Custom Ivies in specific locations will be added to the map")]
+        Specific_locations = 1,
+        [Description("on all buildings on the map, not just predefined areas")]
+        All_Buildings = 2,
+    };
     public class GeneralSettings
     {
         static int CurrentVersion = 10;

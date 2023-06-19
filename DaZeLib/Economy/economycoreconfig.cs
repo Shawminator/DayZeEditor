@@ -377,6 +377,23 @@ namespace DayZeLib
                 prototypeGroup = new prototype();
             }
         }
+        public void Savemapgroupproto(string saveTime = null)
+        {
+            if (saveTime != null)
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
+                File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
+            }
+            var serializer = new XmlSerializer(typeof(prototype));
+            var ns = new XmlSerializerNamespaces();
+            ns.Add("", "");
+            var sw = new StringWriter();
+            sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
+            var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true, });
+            serializer.Serialize(xmlWriter, prototypeGroup, ns);
+            Console.WriteLine(sw.ToString());
+            File.WriteAllText(Filename, sw.ToString());
+        }
     }
     public class mapgrouppos
     {

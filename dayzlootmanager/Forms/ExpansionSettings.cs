@@ -27,6 +27,10 @@ namespace DayZeEditor
         public List<TypesFile> ModTypes;
         public string Projectname;
         private bool _useraction = false;
+
+        public containerLoot SCL { get; private set; }
+        public lootVarients SLootVarients { get; private set; }
+
         public bool useraction
         {
             get { return _useraction; }
@@ -119,6 +123,7 @@ namespace DayZeEditor
             tabControl2.ItemSize = new Size(0, 1);
             comboBox2.DataSource = Enum.GetValues(typeof(ContainerTypes));
             EnableLampsComboBox.DataSource = Enum.GetValues(typeof(Lamps));
+            BuildingIvysComboBox.DataSource = Enum.GetValues(typeof(buildingIvy));
             toolStripButton1.AutoSize = true;
             toolStripButton3.AutoSize = true;
             toolStripButton4.AutoSize = true;
@@ -1246,42 +1251,42 @@ namespace DayZeEditor
         private void SetupAirdropsettings()
         {
             populate();
-            setupairdropZombies();
+            setupairdropZombies(listBox5);
         }
-        private void setupairdropZombies()
+        private void setupairdropZombies(ListBox lb)
         {
-            listBox5.Items.Clear();
+            lb.Items.Clear();
             foreach (typesType type in vanillatypes.SerachTypes("zmbm_"))
             {
-                listBox5.Items.Add(type.name);
+                lb.Items.Add(type.name);
             }
             foreach (typesType type in vanillatypes.SerachTypes("zmbf_"))
             {
-                listBox5.Items.Add(type.name);
+                lb.Items.Add(type.name);
             }
             foreach (typesType type in vanillatypes.SerachTypes("animal_"))
             {
-                listBox5.Items.Add(type.name);
+                lb.Items.Add(type.name);
             }
             foreach (TypesFile tf in ModTypes)
             {
                 foreach (typesType type in tf.SerachTypes("zmbm_"))
                 {
-                    listBox5.Items.Add(type.name);
+                    lb.Items.Add(type.name);
                 }
             }
             foreach (TypesFile tf in ModTypes)
             {
                 foreach (typesType type in tf.SerachTypes("zmbf_"))
                 {
-                    listBox5.Items.Add(type.name);
+                    lb.Items.Add(type.name);
                 }
             }
             foreach (TypesFile tf in ModTypes)
             {
                 foreach (typesType type in tf.SerachTypes("animal_"))
                 {
-                    listBox5.Items.Add(type.name);
+                    lb.Items.Add(type.name);
                 }
             }
         }
@@ -1842,8 +1847,14 @@ namespace DayZeEditor
         {
             LootVarients.Attachments.Remove(listBox22.GetItemText(listBox22.SelectedItem));
             AirdropsettingsJson.isDirty = true;
+        }
+
+        private void darkButton97_Click(object sender, EventArgs e)
+        {
 
         }
+
+
         #endregion Airdropsettings
 
         #region basebuildingsettings
@@ -2899,7 +2910,7 @@ namespace DayZeEditor
             GravecrossSpawnTimeDelayNUD.Value = GeneralSettings.GravecrossSpawnTimeDelay;
             UseCustomMappingModuleCB.Checked = GeneralSettings.Mapping.UseCustomMappingModule == 1 ? true : false;
             BuildingInteriorsCB.Checked = GeneralSettings.Mapping.BuildingInteriors == 1 ? true : false;
-            BuildingIvysCB.Checked = GeneralSettings.Mapping.BuildingIvys == 1 ? true : false;
+            BuildingIvysComboBox.SelectedItem = (buildingIvy)GeneralSettings.Mapping.BuildingIvys;
             EnableLampsComboBox.SelectedItem = (Lamps)GeneralSettings.EnableLamps;
             EnableGeneratorsCB.Checked = GeneralSettings.EnableGenerators == 1 ? true : false;
             EnableLighthousesCB.Checked = GeneralSettings.EnableLighthouses == 1 ? true : false;
@@ -2991,6 +3002,13 @@ namespace DayZeEditor
             if (!useraction) return;
             Lamps lamp = (Lamps)EnableLampsComboBox.SelectedItem;
             GeneralSettings.EnableLamps = (int)lamp;
+            GeneralSettings.isDirty = true;
+        }
+        private void BuildingIvysComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            buildingIvy ivies = (buildingIvy)BuildingIvysComboBox.SelectedItem;
+            GeneralSettings.Mapping.BuildingIvys = (int)ivies;
             GeneralSettings.isDirty = true;
         }
         #endregion Generalsettings
@@ -3668,10 +3686,11 @@ namespace DayZeEditor
 
         #region MissionSettings
         public AirdropMissionSettingFiles currentAirdropmissionfile;
-        public float MissionMapscale = 1;
+        public decimal MissionMapscale = 1;
         private void loadMissionSettings()
         {
             useraction = false;
+            setupairdropZombies(listBox24);
             MissionsEnabledCB.Checked = MissionSettings.Enabled == 1 ? true : false;
             InitialMissionStartDelayNUD.Value = (decimal)Helper.ConvertMillisecondsToMinutes(MissionSettings.InitialMissionStartDelay);
             TimeBetweenMissionsNUD.Value = (decimal)Helper.ConvertMillisecondsToMinutes(MissionSettings.TimeBetweenMissions);
@@ -3687,24 +3706,131 @@ namespace DayZeEditor
             pictureBox6.Paint += new PaintEventHandler(DrawAllMissions);
             trackBar6.Value = 1;
             SetsMissionScale();
+            panel5.AutoScrollPosition = new Point(0, 0);
             useraction = true;
         }
         private void trackBar6_MouseUp(object sender, MouseEventArgs e)
         {
             MissionMapscale = trackBar6.Value;
             SetsMissionScale();
+        }
+        private Point _mouseLastPosition;
+        private Point _newscrollPosition;
+        private void pictureBox6_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                _mouseLastPosition = e.Location;
+            }
+        }
+        private void pictureBox6_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Point changePoint = new Point(e.Location.X - _mouseLastPosition.X , e.Location.Y - _mouseLastPosition.Y );
+                _newscrollPosition = new Point(-panel5.AutoScrollPosition.X - changePoint.X, -panel5.AutoScrollPosition.Y - changePoint.Y);
+                if (_newscrollPosition.X <= 0)
+                    _newscrollPosition.X = 0;
+                if (_newscrollPosition.Y <= 0)
+                    _newscrollPosition.Y = 0;
+                panel5.AutoScrollPosition = _newscrollPosition;
+                pictureBox6.Invalidate();
 
+                darkLabel272.Text = "Y:" + panel5.AutoScrollPosition.Y.ToString();
+            }
+        }
+        private void pictureBox6_MouseEnter(object sender, EventArgs e)
+        {
+            if (pictureBox6.Focused == false)
+            {
+                pictureBox6.Focus();
+                panel5.AutoScrollPosition = _newscrollPosition;
+                pictureBox6.Invalidate();
+            }
+        }
+        private void PicBox_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta < 0)
+            {
+                ZoomOut();
+            }
+            else
+            {
+                ZoomIn();
+            }
+            
+        }
+        private void ZoomIn()
+        {
+            int oldpictureboxhieght = pictureBox6.Height;
+            int oldpitureboxwidht = pictureBox6.Width;
+            Point oldscrollpos = panel5.AutoScrollPosition;
+            int tbv = trackBar6.Value;
+            int newval = tbv + 1;
+            if (newval >= 20)
+                newval = 20;
+            trackBar6.Value = newval;
+            MissionMapscale = trackBar6.Value;
+            SetsMissionScale();
+            if (pictureBox6.Height > panel5.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox6.Height * newy);
+                _newscrollPosition.Y = y *-1;
+                panel5.AutoScrollPosition = _newscrollPosition;
+            }
+            if(pictureBox6.Width > panel5.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox6.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panel5.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox6.Invalidate();
+        }
+        private void ZoomOut()
+        {
+            int oldpictureboxhieght = pictureBox6.Height;
+            int oldpitureboxwidht = pictureBox6.Width;
+            Point oldscrollpos = panel5.AutoScrollPosition;
+            int tbv = trackBar6.Value;
+            int newval = tbv - 1;
+            if (newval <= 1)
+                newval = 1;
+            trackBar6.Value = newval;
+            MissionMapscale = trackBar6.Value;
+            SetsMissionScale();
+            if (pictureBox6.Height > panel5.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox6.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panel5.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox6.Width > panel5.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox6.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panel5.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox6.Invalidate();
         }
         private void SetsMissionScale()
         {
-            float scalevalue = MissionMapscale * 0.05f;
-            float mapsize = currentproject.MapSize;
+            
+            decimal scalevalue = MissionMapscale * (decimal)0.05;
+            decimal mapsize = currentproject.MapSize;
             int newsize = (int)(mapsize * scalevalue);
             pictureBox6.Size = new Size(newsize, newsize);
+            darkLabel273.Text = "MapSize:" + newsize.ToString();
+            darkLabel269.Text = "panelsize" + panel5.Height.ToString();
+            //panel5.VerticalScroll.Maximum = newsize;
+            //panel5.HorizontalScroll.Maximum = newsize;
         }
         private void DrawAllMissions(object sender, PaintEventArgs e)
         {
-            float scalevalue = MissionMapscale * 0.05f;
+            decimal scalevalue = MissionMapscale * (decimal)0.05;
             string missiontype = "";
             if (MissionsLB.SelectedItem is AirdropMissionSettingFiles)
                 missiontype = "Airdrop";
@@ -3742,7 +3868,7 @@ namespace DayZeEditor
                         int centerX = (int)(Math.Round(pitem.Data.Pos[0], 0) * scalevalue);
                         int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(pitem.Data.Pos[2], 0) * scalevalue);
 
-                        int radius = (int)((float)pitem.Data.Radius * scalevalue);
+                        int radius = (int)((decimal)pitem.Data.Radius * scalevalue);
                         Point center = new Point(centerX, centerY);
                         Pen pen = new Pen(Color.Red)
                         {
@@ -3762,8 +3888,8 @@ namespace DayZeEditor
             var mouseEventArgs = e as MouseEventArgs;
             if (mouseEventArgs != null)
             {
-                float scalevalue = MissionMapscale * 0.05f;
-                float mapsize = currentproject.MapSize;
+                decimal scalevalue = MissionMapscale * (decimal)0.05;
+                decimal mapsize = currentproject.MapSize;
                 int newsize = (int)(mapsize * scalevalue);
                 if (MissionsLB.SelectedItem is AirdropMissionSettingFiles)
                 {
@@ -3776,8 +3902,13 @@ namespace DayZeEditor
                 else if (MissionsLB.SelectedItem is ContaminatedAreaMissionSettingFiles)
                 {
                     Cursor.Current = Cursors.WaitCursor;
-                    MissionDropXNUD.Value = (decimal)(mouseEventArgs.X / scalevalue);
-                    MissionDropYNUD.Value = (decimal)((newsize - mouseEventArgs.Y) / scalevalue);
+                    PosXNUD.Value = (decimal)(mouseEventArgs.X / scalevalue);
+                    posZNUD.Value = (decimal)((newsize - mouseEventArgs.Y) / scalevalue);
+                    posYNUD.Value = 0;
+                    //if (MapData.FileExists)
+                    //{
+                    //    posYNUD.Value = (decimal)(MapData.gethieght((float)PosXNUD.Value, (float)posZNUD.Value));
+                    //}
                     Cursor.Current = Cursors.Default;
                     currentAirdropmissionfile.isDirty = true;
                 }
@@ -3807,6 +3938,10 @@ namespace DayZeEditor
                 MissionDropYNUD.Value = (decimal)currentAirdropmissionfile.DropLocation.z;
                 MissionDropRadiusNUD.Value = (decimal)currentAirdropmissionfile.DropLocation.Radius;
                 MissionDropNameTB.Text = currentAirdropmissionfile.DropLocation.Name;
+                numericUpDown38.Value = currentAirdropmissionfile.InfectedCount;
+                numericUpDown37.Value = currentAirdropmissionfile.ItemCount;
+                Specificpopulatelistbox();
+                SpecificpopulateZombies();
             }
             else if (MissionsLB.SelectedItem is ContaminatedAreaMissionSettingFiles)
             {
@@ -3843,6 +3978,18 @@ namespace DayZeEditor
         }
 
         //Airdrop Missions
+        private void Specificpopulatelistbox()
+        {
+            listBox30.DisplayMember = "DisplayName";
+            listBox30.ValueMember = "Value";
+            listBox30.DataSource = currentAirdropmissionfile.Loot;
+        }
+        private void SpecificpopulateZombies()
+        {
+            listBox26.DisplayMember = "DisplayName";
+            listBox26.ValueMember = "Value";
+            listBox26.DataSource = currentAirdropmissionfile.Infected;
+        }
         private void MissionsEnabledCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
@@ -3893,7 +4040,7 @@ namespace DayZeEditor
         {
             if (!useraction) { return; }
             NumericUpDown nud = sender as NumericUpDown;
-            currentAirdropmissionfile.SetFloatValue(nud.Tag as string, (float)nud.Value);
+            currentAirdropmissionfile.SetdecimalValue(nud.Tag as string, (decimal)nud.Value);
             currentAirdropmissionfile.isDirty = true;
         }
         private void MissionPathTB_TextChanged(object sender, EventArgs e)
@@ -3923,23 +4070,37 @@ namespace DayZeEditor
         private void MissionDropXNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
-            currentAirdropmissionfile.DropLocation.x = (float)MissionDropXNUD.Value;
+            currentAirdropmissionfile.DropLocation.x = (decimal)MissionDropXNUD.Value;
             currentAirdropmissionfile.isDirty = true;
             pictureBox6.Invalidate();
         }
         private void MissionDropYNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
-            currentAirdropmissionfile.DropLocation.z = (float)MissionDropYNUD.Value;
+            currentAirdropmissionfile.DropLocation.z = (decimal)MissionDropYNUD.Value;
             currentAirdropmissionfile.isDirty = true;
             pictureBox6.Invalidate();
         }
         private void MissionDropRadiusNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
-            currentAirdropmissionfile.DropLocation.Radius = (float)MissionDropRadiusNUD.Value;
+            currentAirdropmissionfile.DropLocation.Radius = (decimal)MissionDropRadiusNUD.Value;
             currentAirdropmissionfile.isDirty = true;
             pictureBox6.Invalidate();
+        }
+        private void numericUpDown38_ValueChanged(object sender, EventArgs e)
+        {
+            SpecificInfectedAirdropGB.Visible = numericUpDown38.Value == -1 ? false : true;
+            if (!useraction) { return; }
+            currentAirdropmissionfile.InfectedCount = (int)numericUpDown38.Value;
+            currentAirdropmissionfile.isDirty = true;
+        }
+        private void numericUpDown37_ValueChanged(object sender, EventArgs e)
+        {
+            SpecifcLootAirdropsGB.Visible = numericUpDown37.Value == -1 ? false : true;
+            if (!useraction) { return; }
+            currentAirdropmissionfile.ItemCount = (int)numericUpDown37.Value;
+            currentAirdropmissionfile.isDirty = true;
         }
         private void darkButton40_Click(object sender, EventArgs e)
         {
@@ -3988,7 +4149,7 @@ namespace DayZeEditor
                 MissionMaxTime = 0,
                 Data = new ContaminatedAreaMissionData()
                 {
-                    Pos = new float[] { currentproject.MapSize / 2,0, currentproject.MapSize / 2, },
+                    Pos = new decimal[] { currentproject.MapSize / 2,0, currentproject.MapSize / 2, },
                     Radius = 100,
                     PosHeight = 25,
                     NegHeight = 20,
@@ -4042,27 +4203,304 @@ namespace DayZeEditor
                 MissionsLB.SelectedIndex = index - 1;
             pictureBox6.Invalidate();
         }
+        private void darkButton87_Click(object sender, EventArgs e)
+        {
+            List<string> removezombies = new List<string>();
+            foreach (var item in listBox26.SelectedItems)
+            {
+                removezombies.Add(item.ToString());
 
+            }
+            foreach (string s in removezombies)
+            {
+                currentAirdropmissionfile.Infected.Remove(s);
+                currentAirdropmissionfile.isDirty = true;
+            }
+        }
+        private void darkButton86_Click(object sender, EventArgs e)
+        {
+            foreach (var item in listBox24.SelectedItems)
+            {
+                string zombie = item.ToString();
+                if (!currentAirdropmissionfile.Infected.Contains(zombie))
+                {
+                    currentAirdropmissionfile.Infected.Add(zombie);
+                    currentAirdropmissionfile.isDirty = true;
+                }
+                else
+                {
+                    MessageBox.Show("Infected Type allready in the list.....");
+                }
+            }
+        }
+        private void darkButton85_Click(object sender, EventArgs e)
+        {
+            string zombie = textBox21.Text;
+            if (!currentAirdropmissionfile.Infected.Contains(zombie))
+            {
+                currentAirdropmissionfile.Infected.Add(zombie);
+                currentAirdropmissionfile.isDirty = true;
+            }
+            else
+            {
+                MessageBox.Show("Infected Type allready in the list.....");
+            }
+        }
+        private void listBox30_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox30.SelectedItems.Count < 1) return;
+            SCL = listBox30.SelectedItem as containerLoot;
+            useraction = false;
+            textBox22.Text = SCL.Name;
+            if (SCL.Chance > 1)
+                SCL.Chance = 1;
+            trackBar8.Value = (int)(SCL.Chance * 1000);
+            numericUpDown36.Value = SCL.Max;
+            numericUpDown34.Value = SCL.Min;
+            numericUpDown35.Value = SCL.QuantityPercent;
+            listBox29.DisplayMember = "DisplayName";
+            listBox29.ValueMember = "Value";
+            listBox29.DataSource = SCL.Attachments;
+
+            listBox28.DataSource = null;
+            listBox27.DataSource = null;
+
+            if (SCL.Variants.Count > 0)
+            {
+                listBox28.DisplayMember = "DisplayName";
+                listBox28.ValueMember = "Value";
+                listBox28.DataSource = SCL.Variants;
+            }
+            useraction = true;
+        }
+        private void darkButton95_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    containerLoot Newloot = new containerLoot()
+                    {
+                        Name = l,
+                        Attachments = new BindingList<string>(),
+                        Chance = (decimal)0.5,
+                        Max = -1,
+                        Min = 0,
+                        Variants = new BindingList<lootVarients>()
+                    };
+                    currentAirdropmissionfile.Loot.Add(Newloot);
+                    currentAirdropmissionfile.isDirty = true;
+                }
+            }
+        }
+        private void darkButton96_Click(object sender, EventArgs e)
+        {
+            currentAirdropmissionfile.Loot.Remove(CL);
+            currentAirdropmissionfile.isDirty = true;
+            Specificpopulatelistbox();
+        }
+        private void trackBar8_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (SCL == null) return;
+            SCL.Chance = ((decimal)trackBar8.Value) / 1000;
+            currentAirdropmissionfile.isDirty = true;
+        }
+        private void trackBar8_Scroll(object sender, EventArgs e)
+        {
+            darkLabel266.Text = ((decimal)(trackBar8.Value) / 10).ToString() + "%";
+        }
+        private void trackBar8_ValueChanged(object sender, EventArgs e)
+        {
+            darkLabel266.Text = ((decimal)(trackBar8.Value) / 10).ToString() + "%";
+        }
+        private void darkButton93_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    if (!SCL.Attachments.Contains(l))
+                    {
+                        SCL.Attachments.Add(l);
+                        currentAirdropmissionfile.isDirty = true;
+                    }
+                    else
+                        MessageBox.Show("Attachments Type allready in the list.....");
+                }
+            }
+        }
+        private void darkButton94_Click(object sender, EventArgs e)
+        {
+            SCL.Attachments.Remove(listBox29.GetItemText(listBox29.SelectedItem));
+            currentAirdropmissionfile.isDirty = true;
+        }
+        private void numericUpDown35_ValueChanged(object sender, EventArgs e)
+        {
+            if (useraction)
+            {
+                SCL.QuantityPercent = (int)numericUpDown35.Value;
+                currentAirdropmissionfile.isDirty = true;
+            }
+        }
+        private void numericUpDown34_ValueChanged(object sender, EventArgs e)
+        {
+            if (useraction)
+            {
+                SCL.Min = (int)numericUpDown34.Value;
+                currentAirdropmissionfile.isDirty = true;
+            }
+        }
+        private void numericUpDown36_ValueChanged(object sender, EventArgs e)
+        {
+
+            if (useraction)
+            {
+                SCL.Max = (int)numericUpDown36.Value;
+                currentAirdropmissionfile.isDirty = true;
+            }
+        }
+        private void darkButton92_Click(object sender, EventArgs e)
+        {
+            foreach (containerLoot scl in currentAirdropmissionfile.Loot)
+            {
+                scl.Chance = ((decimal)trackBar1.Value) / 1000;
+            }
+            currentAirdropmissionfile.isDirty = true;
+        }
+        private void listBox28_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox28.SelectedItems.Count < 1) return;
+            SLootVarients = listBox28.SelectedItem as lootVarients;
+            useraction = false;
+
+            VarientChanceTrackBar.Value = (int)(SLootVarients.Chance * 1000);
+
+            listBox27.DisplayMember = "DisplayName";
+            listBox27.ValueMember = "Value";
+            listBox27.DataSource = SLootVarients.Attachments;
+        }
+        private void darkButton90_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                if (CL.Variants.Count == 0)
+                {
+                    listBox28.DisplayMember = "DisplayName";
+                    listBox28.ValueMember = "Value";
+                    listBox28.DataSource = CL.Variants;
+                }
+                foreach (string l in addedtypes)
+                {
+                    lootVarients newlootVarients = new lootVarients()
+                    {
+                        Name = l,
+                        Attachments = new BindingList<string>(),
+                        Chance = (decimal)0.5,
+                    };
+                    SCL.Variants.Add(newlootVarients);
+                    currentAirdropmissionfile.isDirty = true;
+                }
+
+            }
+        }
+        private void darkButton91_Click(object sender, EventArgs e)
+        {
+            SCL.Variants.Remove(SLootVarients);
+            listBox28.DataSource = null;
+            listBox28.SelectedIndex = -1;
+            if (SCL.Variants.Count > 0)
+            {
+                listBox28.SelectedIndex = 0;
+            }
+            currentAirdropmissionfile.isDirty = true;
+        }
+        private void trackBar7_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (SLootVarients == null) return;
+            SLootVarients.Chance = ((decimal)trackBar7.Value) / 1000;
+            currentAirdropmissionfile.isDirty = true;
+        }
+        private void trackBar7_Scroll(object sender, EventArgs e)
+        {
+            darkLabel263.Text = ((decimal)(trackBar7.Value) / 10).ToString() + "%";
+        }
+        private void trackBar7_ValueChanged(object sender, EventArgs e)
+        {
+            darkLabel263.Text = ((decimal)(trackBar7.Value) / 10).ToString() + "%";
+        }
+        private void darkButton88_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    if (!SLootVarients.Attachments.Contains(l))
+                    {
+                        SLootVarients.Attachments.Add(l);
+                        currentAirdropmissionfile.isDirty = true;
+                    }
+                    else
+                        MessageBox.Show("Attachments Type allready in the Varients list.....");
+                }
+            }
+        }
+        private void darkButton89_Click(object sender, EventArgs e)
+        {
+            SLootVarients.Attachments.Remove(listBox28.GetItemText(listBox28.SelectedItem));
+            currentAirdropmissionfile.isDirty = true;
+        }
         //Contaminated Area missions
         public ContaminatedAreaMissionSettingFiles currentContaminatedAreaMissionFile { get; private set; }
         private void PosXNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
-            currentContaminatedAreaMissionFile.Data.Pos[0] = (float)PosXNUD.Value;
+            currentContaminatedAreaMissionFile.Data.Pos[0] = (decimal)PosXNUD.Value;
             currentContaminatedAreaMissionFile.isDirty = true;
             pictureBox6.Invalidate();
         }
         private void posYNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
-            currentContaminatedAreaMissionFile.Data.Pos[1] = (float)posYNUD.Value;
+            currentContaminatedAreaMissionFile.Data.Pos[1] = (decimal)posYNUD.Value;
             currentContaminatedAreaMissionFile.isDirty = true;
             pictureBox6.Invalidate();
         }
         private void posZNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
-            currentContaminatedAreaMissionFile.Data.Pos[2] = (float)posZNUD.Value;
+            currentContaminatedAreaMissionFile.Data.Pos[2] = (decimal)posZNUD.Value;
             currentContaminatedAreaMissionFile.isDirty = true;
             pictureBox6.Invalidate();
         }
@@ -7215,6 +7653,11 @@ namespace DayZeEditor
         }
 
         private void listBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox29_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

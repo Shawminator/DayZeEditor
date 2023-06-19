@@ -36,31 +36,6 @@ namespace DayZeEditor
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.treeViewMS1 = new TreeViewMS.TreeViewMS();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.Collection = new System.Windows.Forms.TabPage();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.DelootButton = new DarkUI.Controls.DarkButton();
-            this.CraftedButton = new DarkUI.Controls.DarkButton();
-            this.PlayerButton = new DarkUI.Controls.DarkButton();
-            this.MapButton = new DarkUI.Controls.DarkButton();
-            this.HoarderButton = new DarkUI.Controls.DarkButton();
-            this.CargoButton = new DarkUI.Controls.DarkButton();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
-            this.checkBox9 = new System.Windows.Forms.CheckBox();
-            this.checkBox14 = new System.Windows.Forms.CheckBox();
-            this.checkBox15 = new System.Windows.Forms.CheckBox();
-            this.checkBox16 = new System.Windows.Forms.CheckBox();
-            this.checkBox17 = new System.Windows.Forms.CheckBox();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.if0setto1CB = new System.Windows.Forms.CheckBox();
-            this.darkButton6 = new DarkUI.Controls.DarkButton();
-            this.darkButton5 = new DarkUI.Controls.DarkButton();
-            this.ChangeMinCheckBox = new System.Windows.Forms.CheckBox();
-            this.darkLabel4 = new DarkUI.Controls.DarkLabel();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.darkButton3 = new DarkUI.Controls.DarkButton();
-            this.darkLabel3 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel2 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel1 = new DarkUI.Controls.DarkLabel();
             this.LootParts = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -149,6 +124,31 @@ namespace DayZeEditor
             this.typeNomCountNUD = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.Collection = new System.Windows.Forms.TabPage();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.DelootButton = new DarkUI.Controls.DarkButton();
+            this.CraftedButton = new DarkUI.Controls.DarkButton();
+            this.PlayerButton = new DarkUI.Controls.DarkButton();
+            this.MapButton = new DarkUI.Controls.DarkButton();
+            this.HoarderButton = new DarkUI.Controls.DarkButton();
+            this.CargoButton = new DarkUI.Controls.DarkButton();
+            this.checkBox8 = new System.Windows.Forms.CheckBox();
+            this.checkBox9 = new System.Windows.Forms.CheckBox();
+            this.checkBox14 = new System.Windows.Forms.CheckBox();
+            this.checkBox15 = new System.Windows.Forms.CheckBox();
+            this.checkBox16 = new System.Windows.Forms.CheckBox();
+            this.checkBox17 = new System.Windows.Forms.CheckBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.if0setto1CB = new System.Windows.Forms.CheckBox();
+            this.darkButton6 = new DarkUI.Controls.DarkButton();
+            this.darkButton5 = new DarkUI.Controls.DarkButton();
+            this.ChangeMinCheckBox = new System.Windows.Forms.CheckBox();
+            this.darkLabel4 = new DarkUI.Controls.DarkLabel();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.darkButton3 = new DarkUI.Controls.DarkButton();
+            this.darkLabel3 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel2 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel1 = new DarkUI.Controls.DarkLabel();
             this.darkToolStrip21 = new DarkUI.Controls.DarkToolStrip2();
             this.SaveFileButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
@@ -290,6 +290,7 @@ namespace DayZeEditor
             this.eventspawngroupTV = new TreeViewMS.TreeViewMS();
             this.TypesTab = new System.Windows.Forms.TabPage();
             this.TypesSummaryTab = new System.Windows.Forms.TabPage();
+            this.darkLabel27 = new DarkUI.Controls.DarkLabel();
             this.darkButton55 = new DarkUI.Controls.DarkButton();
             this.darkButton54 = new DarkUI.Controls.DarkButton();
             this.darkLabel6 = new DarkUI.Controls.DarkLabel();
@@ -834,6 +835,15 @@ namespace DayZeEditor
             this.tabControl19 = new System.Windows.Forms.TabControl();
             this.tabPage24 = new System.Windows.Forms.TabPage();
             this.IgnoreTreeView = new TreeViewMS.TreeViewMS();
+            this.MapgroupProtoTab = new System.Windows.Forms.TabPage();
+            this.groupBox62 = new System.Windows.Forms.GroupBox();
+            this.darkButton56 = new DarkUI.Controls.DarkButton();
+            this.MapGroupProtoUsageCB = new System.Windows.Forms.ComboBox();
+            this.groupBox63 = new System.Windows.Forms.GroupBox();
+            this.MapGroupProtoTagCB = new System.Windows.Forms.ComboBox();
+            this.darkButton57 = new DarkUI.Controls.DarkButton();
+            this.MapGroupProtoCategroyCB = new System.Windows.Forms.ComboBox();
+            this.label147 = new System.Windows.Forms.Label();
             this.TypesContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.DeleteTypesTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.AddTypesTSMI = new System.Windows.Forms.ToolStripMenuItem();
@@ -874,7 +884,8 @@ namespace DayZeEditor
             this.WeatherTabButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator26 = new System.Windows.Forms.ToolStripSeparator();
             this.CFGignoreListTabButton = new System.Windows.Forms.ToolStripButton();
-            this.darkLabel27 = new DarkUI.Controls.DarkLabel();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.MapGroupProtoTabButton = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -882,9 +893,6 @@ namespace DayZeEditor
             this.tabControl2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.Collection.SuspendLayout();
-            this.groupBox10.SuspendLayout();
-            this.groupBox8.SuspendLayout();
             this.LootParts.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -905,6 +913,9 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.typeLifetimeNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.typeMinCountNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.typeNomCountNUD)).BeginInit();
+            this.Collection.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.darkToolStrip21.SuspendLayout();
             this.darkToolStrip22.SuspendLayout();
             this.EconomyTabPage.SuspendLayout();
@@ -1195,6 +1206,9 @@ namespace DayZeEditor
             this.cfgIgnorelistTab.SuspendLayout();
             this.tabControl19.SuspendLayout();
             this.tabPage24.SuspendLayout();
+            this.MapgroupProtoTab.SuspendLayout();
+            this.groupBox62.SuspendLayout();
+            this.groupBox63.SuspendLayout();
             this.TypesContextMenu.SuspendLayout();
             this.EventSpawnContextMenu.SuspendLayout();
             this.EventgroupContextMenu.SuspendLayout();
@@ -1265,308 +1279,15 @@ namespace DayZeEditor
             // tabControl1
             // 
             this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
-            this.tabControl1.Controls.Add(this.Collection);
             this.tabControl1.Controls.Add(this.LootParts);
+            this.tabControl1.Controls.Add(this.Collection);
             this.tabControl1.ItemSize = new System.Drawing.Size(0, 1);
-            this.tabControl1.Location = new System.Drawing.Point(3, 8);
+            this.tabControl1.Location = new System.Drawing.Point(3, 7);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(481, 553);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 6;
-            // 
-            // Collection
-            // 
-            this.Collection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.Collection.Controls.Add(this.groupBox10);
-            this.Collection.Controls.Add(this.groupBox8);
-            this.Collection.Location = new System.Drawing.Point(4, 5);
-            this.Collection.Name = "Collection";
-            this.Collection.Size = new System.Drawing.Size(473, 544);
-            this.Collection.TabIndex = 1;
-            this.Collection.Text = "tabPage2";
-            // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.DelootButton);
-            this.groupBox10.Controls.Add(this.CraftedButton);
-            this.groupBox10.Controls.Add(this.PlayerButton);
-            this.groupBox10.Controls.Add(this.MapButton);
-            this.groupBox10.Controls.Add(this.HoarderButton);
-            this.groupBox10.Controls.Add(this.CargoButton);
-            this.groupBox10.Controls.Add(this.checkBox8);
-            this.groupBox10.Controls.Add(this.checkBox9);
-            this.groupBox10.Controls.Add(this.checkBox14);
-            this.groupBox10.Controls.Add(this.checkBox15);
-            this.groupBox10.Controls.Add(this.checkBox16);
-            this.groupBox10.Controls.Add(this.checkBox17);
-            this.groupBox10.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox10.Location = new System.Drawing.Point(9, 334);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(238, 195);
-            this.groupBox10.TabIndex = 3;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Flags";
-            // 
-            // DelootButton
-            // 
-            this.DelootButton.Location = new System.Drawing.Point(120, 160);
-            this.DelootButton.Name = "DelootButton";
-            this.DelootButton.Padding = new System.Windows.Forms.Padding(5);
-            this.DelootButton.Size = new System.Drawing.Size(109, 23);
-            this.DelootButton.TabIndex = 11;
-            this.DelootButton.Text = "Apply to Collection";
-            this.DelootButton.Click += new System.EventHandler(this.darkButton6_Click);
-            // 
-            // CraftedButton
-            // 
-            this.CraftedButton.Location = new System.Drawing.Point(120, 131);
-            this.CraftedButton.Name = "CraftedButton";
-            this.CraftedButton.Padding = new System.Windows.Forms.Padding(5);
-            this.CraftedButton.Size = new System.Drawing.Size(109, 23);
-            this.CraftedButton.TabIndex = 10;
-            this.CraftedButton.Text = "Apply to Collection";
-            this.CraftedButton.Click += new System.EventHandler(this.darkButton6_Click);
-            // 
-            // PlayerButton
-            // 
-            this.PlayerButton.Location = new System.Drawing.Point(120, 102);
-            this.PlayerButton.Name = "PlayerButton";
-            this.PlayerButton.Padding = new System.Windows.Forms.Padding(5);
-            this.PlayerButton.Size = new System.Drawing.Size(109, 23);
-            this.PlayerButton.TabIndex = 9;
-            this.PlayerButton.Text = "Apply to Collection";
-            this.PlayerButton.Click += new System.EventHandler(this.darkButton6_Click);
-            // 
-            // MapButton
-            // 
-            this.MapButton.Location = new System.Drawing.Point(120, 73);
-            this.MapButton.Name = "MapButton";
-            this.MapButton.Padding = new System.Windows.Forms.Padding(5);
-            this.MapButton.Size = new System.Drawing.Size(109, 23);
-            this.MapButton.TabIndex = 8;
-            this.MapButton.Text = "Apply to Collection";
-            this.MapButton.Click += new System.EventHandler(this.darkButton6_Click);
-            // 
-            // HoarderButton
-            // 
-            this.HoarderButton.Location = new System.Drawing.Point(120, 44);
-            this.HoarderButton.Name = "HoarderButton";
-            this.HoarderButton.Padding = new System.Windows.Forms.Padding(5);
-            this.HoarderButton.Size = new System.Drawing.Size(109, 23);
-            this.HoarderButton.TabIndex = 7;
-            this.HoarderButton.Text = "Apply to Collection";
-            this.HoarderButton.Click += new System.EventHandler(this.darkButton6_Click);
-            // 
-            // CargoButton
-            // 
-            this.CargoButton.Location = new System.Drawing.Point(120, 15);
-            this.CargoButton.Name = "CargoButton";
-            this.CargoButton.Padding = new System.Windows.Forms.Padding(5);
-            this.CargoButton.Size = new System.Drawing.Size(109, 23);
-            this.CargoButton.TabIndex = 6;
-            this.CargoButton.Text = "Apply to Collection";
-            this.CargoButton.Click += new System.EventHandler(this.darkButton6_Click);
-            // 
-            // checkBox8
-            // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(14, 164);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(55, 17);
-            this.checkBox8.TabIndex = 5;
-            this.checkBox8.Text = "deloot";
-            this.checkBox8.UseVisualStyleBackColor = true;
-            // 
-            // checkBox9
-            // 
-            this.checkBox9.AutoSize = true;
-            this.checkBox9.Location = new System.Drawing.Point(14, 135);
-            this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size(59, 17);
-            this.checkBox9.TabIndex = 4;
-            this.checkBox9.Text = "crafted";
-            this.checkBox9.UseVisualStyleBackColor = true;
-            // 
-            // checkBox14
-            // 
-            this.checkBox14.AutoSize = true;
-            this.checkBox14.Location = new System.Drawing.Point(14, 106);
-            this.checkBox14.Name = "checkBox14";
-            this.checkBox14.Size = new System.Drawing.Size(101, 17);
-            this.checkBox14.TabIndex = 3;
-            this.checkBox14.Text = "count_in_player";
-            this.checkBox14.UseVisualStyleBackColor = true;
-            // 
-            // checkBox15
-            // 
-            this.checkBox15.AutoSize = true;
-            this.checkBox15.Location = new System.Drawing.Point(14, 77);
-            this.checkBox15.Name = "checkBox15";
-            this.checkBox15.Size = new System.Drawing.Size(93, 17);
-            this.checkBox15.TabIndex = 2;
-            this.checkBox15.Text = "count_in_map";
-            this.checkBox15.UseVisualStyleBackColor = true;
-            // 
-            // checkBox16
-            // 
-            this.checkBox16.AutoSize = true;
-            this.checkBox16.Location = new System.Drawing.Point(14, 48);
-            this.checkBox16.Name = "checkBox16";
-            this.checkBox16.Size = new System.Drawing.Size(109, 17);
-            this.checkBox16.TabIndex = 1;
-            this.checkBox16.Text = "count_in_hoarder";
-            this.checkBox16.UseVisualStyleBackColor = true;
-            // 
-            // checkBox17
-            // 
-            this.checkBox17.AutoSize = true;
-            this.checkBox17.Location = new System.Drawing.Point(14, 19);
-            this.checkBox17.Name = "checkBox17";
-            this.checkBox17.Size = new System.Drawing.Size(100, 17);
-            this.checkBox17.TabIndex = 0;
-            this.checkBox17.Text = "count_in_cargo";
-            this.checkBox17.UseVisualStyleBackColor = true;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.if0setto1CB);
-            this.groupBox8.Controls.Add(this.darkButton6);
-            this.groupBox8.Controls.Add(this.darkButton5);
-            this.groupBox8.Controls.Add(this.ChangeMinCheckBox);
-            this.groupBox8.Controls.Add(this.darkLabel4);
-            this.groupBox8.Controls.Add(this.comboBox3);
-            this.groupBox8.Controls.Add(this.darkButton3);
-            this.groupBox8.Controls.Add(this.darkLabel3);
-            this.groupBox8.Controls.Add(this.darkLabel2);
-            this.groupBox8.Controls.Add(this.darkLabel1);
-            this.groupBox8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox8.Location = new System.Drawing.Point(9, 6);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(238, 322);
-            this.groupBox8.TabIndex = 0;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Collection Edits";
-            // 
-            // if0setto1CB
-            // 
-            this.if0setto1CB.AutoSize = true;
-            this.if0setto1CB.Location = new System.Drawing.Point(18, 94);
-            this.if0setto1CB.Name = "if0setto1CB";
-            this.if0setto1CB.Size = new System.Drawing.Size(121, 17);
-            this.if0setto1CB.TabIndex = 10;
-            this.if0setto1CB.Text = "If Result = 0 set to 1";
-            this.if0setto1CB.UseVisualStyleBackColor = true;
-            // 
-            // darkButton6
-            // 
-            this.darkButton6.Location = new System.Drawing.Point(18, 248);
-            this.darkButton6.Name = "darkButton6";
-            this.darkButton6.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton6.Size = new System.Drawing.Size(185, 23);
-            this.darkButton6.TabIndex = 9;
-            this.darkButton6.Text = "Sync Nom to Min";
-            this.darkButton6.Click += new System.EventHandler(this.darkButton6_Click_1);
-            // 
-            // darkButton5
-            // 
-            this.darkButton5.Location = new System.Drawing.Point(18, 219);
-            this.darkButton5.Name = "darkButton5";
-            this.darkButton5.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton5.Size = new System.Drawing.Size(185, 23);
-            this.darkButton5.TabIndex = 8;
-            this.darkButton5.Text = "Sync Min to Nom";
-            this.darkButton5.Click += new System.EventHandler(this.darkButton5_Click);
-            // 
-            // ChangeMinCheckBox
-            // 
-            this.ChangeMinCheckBox.AutoSize = true;
-            this.ChangeMinCheckBox.Location = new System.Drawing.Point(18, 71);
-            this.ChangeMinCheckBox.Name = "ChangeMinCheckBox";
-            this.ChangeMinCheckBox.Size = new System.Drawing.Size(86, 17);
-            this.ChangeMinCheckBox.TabIndex = 7;
-            this.ChangeMinCheckBox.Text = "Change Min ";
-            this.ChangeMinCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // darkLabel4
-            // 
-            this.darkLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel4.Location = new System.Drawing.Point(15, 159);
-            this.darkLabel4.Name = "darkLabel4";
-            this.darkLabel4.Size = new System.Drawing.Size(197, 57);
-            this.darkLabel4.TabIndex = 6;
-            this.darkLabel4.Text = "Once a multiplier has been applied any further collection changes will be made us" +
-    "uing the new value from previous  collection changes";
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.comboBox3.ForeColor = System.Drawing.SystemColors.Control;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            "x10",
-            "x9",
-            "x8",
-            "x7",
-            "x6",
-            "x5",
-            "x4",
-            "x3",
-            "x2",
-            "x1.5",
-            "/1.5",
-            "/2",
-            "/3",
-            "/4",
-            "/5",
-            "/6",
-            "/7",
-            "/8",
-            "/9",
-            "/10"});
-            this.comboBox3.Location = new System.Drawing.Point(148, 42);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(55, 21);
-            this.comboBox3.TabIndex = 5;
-            // 
-            // darkButton3
-            // 
-            this.darkButton3.Location = new System.Drawing.Point(18, 121);
-            this.darkButton3.Name = "darkButton3";
-            this.darkButton3.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton3.Size = new System.Drawing.Size(185, 23);
-            this.darkButton3.TabIndex = 4;
-            this.darkButton3.Text = "Apply to Collection";
-            this.darkButton3.Click += new System.EventHandler(this.darkButton3_Click);
-            // 
-            // darkLabel3
-            // 
-            this.darkLabel3.AutoSize = true;
-            this.darkLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel3.Location = new System.Drawing.Point(11, 45);
-            this.darkLabel3.Name = "darkLabel3";
-            this.darkLabel3.Size = new System.Drawing.Size(125, 13);
-            this.darkLabel3.TabIndex = 2;
-            this.darkLabel3.Text = " Min & Max Items Multiplier";
-            // 
-            // darkLabel2
-            // 
-            this.darkLabel2.AutoSize = true;
-            this.darkLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel2.Location = new System.Drawing.Point(110, 19);
-            this.darkLabel2.Name = "darkLabel2";
-            this.darkLabel2.Size = new System.Drawing.Size(0, 13);
-            this.darkLabel2.TabIndex = 1;
-            // 
-            // darkLabel1
-            // 
-            this.darkLabel1.AutoSize = true;
-            this.darkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel1.Location = new System.Drawing.Point(15, 19);
-            this.darkLabel1.Name = "darkLabel1";
-            this.darkLabel1.Size = new System.Drawing.Size(89, 13);
-            this.darkLabel1.TabIndex = 0;
-            this.darkLabel1.Text = "Collection Type:- ";
             // 
             // LootParts
             // 
@@ -2665,6 +2386,299 @@ namespace DayZeEditor
             this.label4.TabIndex = 1;
             this.label4.Text = "Nom Count :-";
             // 
+            // Collection
+            // 
+            this.Collection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.Collection.Controls.Add(this.groupBox10);
+            this.Collection.Controls.Add(this.groupBox8);
+            this.Collection.Location = new System.Drawing.Point(4, 5);
+            this.Collection.Name = "Collection";
+            this.Collection.Size = new System.Drawing.Size(473, 544);
+            this.Collection.TabIndex = 1;
+            this.Collection.Text = "tabPage2";
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.DelootButton);
+            this.groupBox10.Controls.Add(this.CraftedButton);
+            this.groupBox10.Controls.Add(this.PlayerButton);
+            this.groupBox10.Controls.Add(this.MapButton);
+            this.groupBox10.Controls.Add(this.HoarderButton);
+            this.groupBox10.Controls.Add(this.CargoButton);
+            this.groupBox10.Controls.Add(this.checkBox8);
+            this.groupBox10.Controls.Add(this.checkBox9);
+            this.groupBox10.Controls.Add(this.checkBox14);
+            this.groupBox10.Controls.Add(this.checkBox15);
+            this.groupBox10.Controls.Add(this.checkBox16);
+            this.groupBox10.Controls.Add(this.checkBox17);
+            this.groupBox10.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox10.Location = new System.Drawing.Point(9, 334);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(238, 195);
+            this.groupBox10.TabIndex = 3;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Flags";
+            // 
+            // DelootButton
+            // 
+            this.DelootButton.Location = new System.Drawing.Point(120, 160);
+            this.DelootButton.Name = "DelootButton";
+            this.DelootButton.Padding = new System.Windows.Forms.Padding(5);
+            this.DelootButton.Size = new System.Drawing.Size(109, 23);
+            this.DelootButton.TabIndex = 11;
+            this.DelootButton.Text = "Apply to Collection";
+            this.DelootButton.Click += new System.EventHandler(this.darkButton6_Click);
+            // 
+            // CraftedButton
+            // 
+            this.CraftedButton.Location = new System.Drawing.Point(120, 131);
+            this.CraftedButton.Name = "CraftedButton";
+            this.CraftedButton.Padding = new System.Windows.Forms.Padding(5);
+            this.CraftedButton.Size = new System.Drawing.Size(109, 23);
+            this.CraftedButton.TabIndex = 10;
+            this.CraftedButton.Text = "Apply to Collection";
+            this.CraftedButton.Click += new System.EventHandler(this.darkButton6_Click);
+            // 
+            // PlayerButton
+            // 
+            this.PlayerButton.Location = new System.Drawing.Point(120, 102);
+            this.PlayerButton.Name = "PlayerButton";
+            this.PlayerButton.Padding = new System.Windows.Forms.Padding(5);
+            this.PlayerButton.Size = new System.Drawing.Size(109, 23);
+            this.PlayerButton.TabIndex = 9;
+            this.PlayerButton.Text = "Apply to Collection";
+            this.PlayerButton.Click += new System.EventHandler(this.darkButton6_Click);
+            // 
+            // MapButton
+            // 
+            this.MapButton.Location = new System.Drawing.Point(120, 73);
+            this.MapButton.Name = "MapButton";
+            this.MapButton.Padding = new System.Windows.Forms.Padding(5);
+            this.MapButton.Size = new System.Drawing.Size(109, 23);
+            this.MapButton.TabIndex = 8;
+            this.MapButton.Text = "Apply to Collection";
+            this.MapButton.Click += new System.EventHandler(this.darkButton6_Click);
+            // 
+            // HoarderButton
+            // 
+            this.HoarderButton.Location = new System.Drawing.Point(120, 44);
+            this.HoarderButton.Name = "HoarderButton";
+            this.HoarderButton.Padding = new System.Windows.Forms.Padding(5);
+            this.HoarderButton.Size = new System.Drawing.Size(109, 23);
+            this.HoarderButton.TabIndex = 7;
+            this.HoarderButton.Text = "Apply to Collection";
+            this.HoarderButton.Click += new System.EventHandler(this.darkButton6_Click);
+            // 
+            // CargoButton
+            // 
+            this.CargoButton.Location = new System.Drawing.Point(120, 15);
+            this.CargoButton.Name = "CargoButton";
+            this.CargoButton.Padding = new System.Windows.Forms.Padding(5);
+            this.CargoButton.Size = new System.Drawing.Size(109, 23);
+            this.CargoButton.TabIndex = 6;
+            this.CargoButton.Text = "Apply to Collection";
+            this.CargoButton.Click += new System.EventHandler(this.darkButton6_Click);
+            // 
+            // checkBox8
+            // 
+            this.checkBox8.AutoSize = true;
+            this.checkBox8.Location = new System.Drawing.Point(14, 164);
+            this.checkBox8.Name = "checkBox8";
+            this.checkBox8.Size = new System.Drawing.Size(55, 17);
+            this.checkBox8.TabIndex = 5;
+            this.checkBox8.Text = "deloot";
+            this.checkBox8.UseVisualStyleBackColor = true;
+            // 
+            // checkBox9
+            // 
+            this.checkBox9.AutoSize = true;
+            this.checkBox9.Location = new System.Drawing.Point(14, 135);
+            this.checkBox9.Name = "checkBox9";
+            this.checkBox9.Size = new System.Drawing.Size(59, 17);
+            this.checkBox9.TabIndex = 4;
+            this.checkBox9.Text = "crafted";
+            this.checkBox9.UseVisualStyleBackColor = true;
+            // 
+            // checkBox14
+            // 
+            this.checkBox14.AutoSize = true;
+            this.checkBox14.Location = new System.Drawing.Point(14, 106);
+            this.checkBox14.Name = "checkBox14";
+            this.checkBox14.Size = new System.Drawing.Size(101, 17);
+            this.checkBox14.TabIndex = 3;
+            this.checkBox14.Text = "count_in_player";
+            this.checkBox14.UseVisualStyleBackColor = true;
+            // 
+            // checkBox15
+            // 
+            this.checkBox15.AutoSize = true;
+            this.checkBox15.Location = new System.Drawing.Point(14, 77);
+            this.checkBox15.Name = "checkBox15";
+            this.checkBox15.Size = new System.Drawing.Size(93, 17);
+            this.checkBox15.TabIndex = 2;
+            this.checkBox15.Text = "count_in_map";
+            this.checkBox15.UseVisualStyleBackColor = true;
+            // 
+            // checkBox16
+            // 
+            this.checkBox16.AutoSize = true;
+            this.checkBox16.Location = new System.Drawing.Point(14, 48);
+            this.checkBox16.Name = "checkBox16";
+            this.checkBox16.Size = new System.Drawing.Size(109, 17);
+            this.checkBox16.TabIndex = 1;
+            this.checkBox16.Text = "count_in_hoarder";
+            this.checkBox16.UseVisualStyleBackColor = true;
+            // 
+            // checkBox17
+            // 
+            this.checkBox17.AutoSize = true;
+            this.checkBox17.Location = new System.Drawing.Point(14, 19);
+            this.checkBox17.Name = "checkBox17";
+            this.checkBox17.Size = new System.Drawing.Size(100, 17);
+            this.checkBox17.TabIndex = 0;
+            this.checkBox17.Text = "count_in_cargo";
+            this.checkBox17.UseVisualStyleBackColor = true;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.if0setto1CB);
+            this.groupBox8.Controls.Add(this.darkButton6);
+            this.groupBox8.Controls.Add(this.darkButton5);
+            this.groupBox8.Controls.Add(this.ChangeMinCheckBox);
+            this.groupBox8.Controls.Add(this.darkLabel4);
+            this.groupBox8.Controls.Add(this.comboBox3);
+            this.groupBox8.Controls.Add(this.darkButton3);
+            this.groupBox8.Controls.Add(this.darkLabel3);
+            this.groupBox8.Controls.Add(this.darkLabel2);
+            this.groupBox8.Controls.Add(this.darkLabel1);
+            this.groupBox8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox8.Location = new System.Drawing.Point(9, 6);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(238, 322);
+            this.groupBox8.TabIndex = 0;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Collection Edits";
+            // 
+            // if0setto1CB
+            // 
+            this.if0setto1CB.AutoSize = true;
+            this.if0setto1CB.Location = new System.Drawing.Point(18, 94);
+            this.if0setto1CB.Name = "if0setto1CB";
+            this.if0setto1CB.Size = new System.Drawing.Size(121, 17);
+            this.if0setto1CB.TabIndex = 10;
+            this.if0setto1CB.Text = "If Result = 0 set to 1";
+            this.if0setto1CB.UseVisualStyleBackColor = true;
+            // 
+            // darkButton6
+            // 
+            this.darkButton6.Location = new System.Drawing.Point(18, 248);
+            this.darkButton6.Name = "darkButton6";
+            this.darkButton6.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton6.Size = new System.Drawing.Size(185, 23);
+            this.darkButton6.TabIndex = 9;
+            this.darkButton6.Text = "Sync Nom to Min";
+            this.darkButton6.Click += new System.EventHandler(this.darkButton6_Click_1);
+            // 
+            // darkButton5
+            // 
+            this.darkButton5.Location = new System.Drawing.Point(18, 219);
+            this.darkButton5.Name = "darkButton5";
+            this.darkButton5.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton5.Size = new System.Drawing.Size(185, 23);
+            this.darkButton5.TabIndex = 8;
+            this.darkButton5.Text = "Sync Min to Nom";
+            this.darkButton5.Click += new System.EventHandler(this.darkButton5_Click);
+            // 
+            // ChangeMinCheckBox
+            // 
+            this.ChangeMinCheckBox.AutoSize = true;
+            this.ChangeMinCheckBox.Location = new System.Drawing.Point(18, 71);
+            this.ChangeMinCheckBox.Name = "ChangeMinCheckBox";
+            this.ChangeMinCheckBox.Size = new System.Drawing.Size(86, 17);
+            this.ChangeMinCheckBox.TabIndex = 7;
+            this.ChangeMinCheckBox.Text = "Change Min ";
+            this.ChangeMinCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // darkLabel4
+            // 
+            this.darkLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel4.Location = new System.Drawing.Point(15, 159);
+            this.darkLabel4.Name = "darkLabel4";
+            this.darkLabel4.Size = new System.Drawing.Size(197, 57);
+            this.darkLabel4.TabIndex = 6;
+            this.darkLabel4.Text = "Once a multiplier has been applied any further collection changes will be made us" +
+    "uing the new value from previous  collection changes";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.comboBox3.ForeColor = System.Drawing.SystemColors.Control;
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "x10",
+            "x9",
+            "x8",
+            "x7",
+            "x6",
+            "x5",
+            "x4",
+            "x3",
+            "x2",
+            "x1.5",
+            "/1.5",
+            "/2",
+            "/3",
+            "/4",
+            "/5",
+            "/6",
+            "/7",
+            "/8",
+            "/9",
+            "/10"});
+            this.comboBox3.Location = new System.Drawing.Point(148, 42);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(55, 21);
+            this.comboBox3.TabIndex = 5;
+            // 
+            // darkButton3
+            // 
+            this.darkButton3.Location = new System.Drawing.Point(18, 121);
+            this.darkButton3.Name = "darkButton3";
+            this.darkButton3.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton3.Size = new System.Drawing.Size(185, 23);
+            this.darkButton3.TabIndex = 4;
+            this.darkButton3.Text = "Apply to Collection";
+            this.darkButton3.Click += new System.EventHandler(this.darkButton3_Click);
+            // 
+            // darkLabel3
+            // 
+            this.darkLabel3.AutoSize = true;
+            this.darkLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel3.Location = new System.Drawing.Point(11, 45);
+            this.darkLabel3.Name = "darkLabel3";
+            this.darkLabel3.Size = new System.Drawing.Size(125, 13);
+            this.darkLabel3.TabIndex = 2;
+            this.darkLabel3.Text = " Min & Max Items Multiplier";
+            // 
+            // darkLabel2
+            // 
+            this.darkLabel2.AutoSize = true;
+            this.darkLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel2.Location = new System.Drawing.Point(110, 19);
+            this.darkLabel2.Name = "darkLabel2";
+            this.darkLabel2.Size = new System.Drawing.Size(0, 13);
+            this.darkLabel2.TabIndex = 1;
+            // 
+            // darkLabel1
+            // 
+            this.darkLabel1.AutoSize = true;
+            this.darkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel1.Location = new System.Drawing.Point(15, 19);
+            this.darkLabel1.Name = "darkLabel1";
+            this.darkLabel1.Size = new System.Drawing.Size(89, 13);
+            this.darkLabel1.TabIndex = 0;
+            this.darkLabel1.Text = "Collection Type:- ";
+            // 
             // darkToolStrip21
             // 
             this.darkToolStrip21.AutoSize = false;
@@ -2743,7 +2757,7 @@ namespace DayZeEditor
             this.economySearchNextButton.Image = ((System.Drawing.Image)(resources.GetObject("economySearchNextButton.Image")));
             this.economySearchNextButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.economySearchNextButton.Name = "economySearchNextButton";
-            this.economySearchNextButton.Size = new System.Drawing.Size(24, 24);
+            this.economySearchNextButton.Size = new System.Drawing.Size(62, 42);
             this.economySearchNextButton.Text = "Find Next";
             this.economySearchNextButton.Visible = false;
             this.economySearchNextButton.Click += new System.EventHandler(this.toolStripButton2_Click);
@@ -2969,6 +2983,7 @@ namespace DayZeEditor
             this.EconomyTabPage.Controls.Add(this.ContaminatedAreaTab);
             this.EconomyTabPage.Controls.Add(this.WeatherTab);
             this.EconomyTabPage.Controls.Add(this.cfgIgnorelistTab);
+            this.EconomyTabPage.Controls.Add(this.MapgroupProtoTab);
             this.EconomyTabPage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.EconomyTabPage.Location = new System.Drawing.Point(0, 95);
             this.EconomyTabPage.Name = "EconomyTabPage";
@@ -4575,6 +4590,17 @@ namespace DayZeEditor
             this.TypesSummaryTab.Size = new System.Drawing.Size(1218, 553);
             this.TypesSummaryTab.TabIndex = 3;
             this.TypesSummaryTab.Text = "Types Summary";
+            // 
+            // darkLabel27
+            // 
+            this.darkLabel27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.darkLabel27.AutoSize = true;
+            this.darkLabel27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel27.Location = new System.Drawing.Point(843, 214);
+            this.darkLabel27.Name = "darkLabel27";
+            this.darkLabel27.Size = new System.Drawing.Size(136, 13);
+            this.darkLabel27.TabIndex = 49;
+            this.darkLabel27.Text = "Total Number of nominals :-";
             // 
             // darkButton55
             // 
@@ -11792,6 +11818,101 @@ namespace DayZeEditor
             this.IgnoreTreeView.TabIndex = 0;
             this.IgnoreTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.IgnoreTreeView_NodeMouseClick);
             // 
+            // MapgroupProtoTab
+            // 
+            this.MapgroupProtoTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MapgroupProtoTab.Controls.Add(this.groupBox62);
+            this.MapgroupProtoTab.Controls.Add(this.groupBox63);
+            this.MapgroupProtoTab.Controls.Add(this.MapGroupProtoCategroyCB);
+            this.MapgroupProtoTab.Controls.Add(this.label147);
+            this.MapgroupProtoTab.Location = new System.Drawing.Point(4, 25);
+            this.MapgroupProtoTab.Name = "MapgroupProtoTab";
+            this.MapgroupProtoTab.Size = new System.Drawing.Size(1218, 553);
+            this.MapgroupProtoTab.TabIndex = 14;
+            this.MapgroupProtoTab.Text = "MapgroupProto";
+            // 
+            // groupBox62
+            // 
+            this.groupBox62.Controls.Add(this.darkButton56);
+            this.groupBox62.Controls.Add(this.MapGroupProtoUsageCB);
+            this.groupBox62.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox62.Location = new System.Drawing.Point(389, 80);
+            this.groupBox62.Name = "groupBox62";
+            this.groupBox62.Size = new System.Drawing.Size(202, 100);
+            this.groupBox62.TabIndex = 9;
+            this.groupBox62.TabStop = false;
+            this.groupBox62.Text = "Add Location";
+            // 
+            // darkButton56
+            // 
+            this.darkButton56.Location = new System.Drawing.Point(6, 50);
+            this.darkButton56.Name = "darkButton56";
+            this.darkButton56.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton56.Size = new System.Drawing.Size(178, 27);
+            this.darkButton56.TabIndex = 3;
+            this.darkButton56.Text = "Add Selected";
+            // 
+            // MapGroupProtoUsageCB
+            // 
+            this.MapGroupProtoUsageCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MapGroupProtoUsageCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.MapGroupProtoUsageCB.FormattingEnabled = true;
+            this.MapGroupProtoUsageCB.Location = new System.Drawing.Point(6, 23);
+            this.MapGroupProtoUsageCB.Name = "MapGroupProtoUsageCB";
+            this.MapGroupProtoUsageCB.Size = new System.Drawing.Size(178, 21);
+            this.MapGroupProtoUsageCB.TabIndex = 1;
+            // 
+            // groupBox63
+            // 
+            this.groupBox63.Controls.Add(this.MapGroupProtoTagCB);
+            this.groupBox63.Controls.Add(this.darkButton57);
+            this.groupBox63.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox63.Location = new System.Drawing.Point(597, 80);
+            this.groupBox63.Name = "groupBox63";
+            this.groupBox63.Size = new System.Drawing.Size(202, 100);
+            this.groupBox63.TabIndex = 11;
+            this.groupBox63.TabStop = false;
+            this.groupBox63.Text = "Add Tag";
+            // 
+            // MapGroupProtoTagCB
+            // 
+            this.MapGroupProtoTagCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MapGroupProtoTagCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.MapGroupProtoTagCB.FormattingEnabled = true;
+            this.MapGroupProtoTagCB.Location = new System.Drawing.Point(10, 25);
+            this.MapGroupProtoTagCB.Name = "MapGroupProtoTagCB";
+            this.MapGroupProtoTagCB.Size = new System.Drawing.Size(176, 21);
+            this.MapGroupProtoTagCB.TabIndex = 1;
+            // 
+            // darkButton57
+            // 
+            this.darkButton57.Location = new System.Drawing.Point(8, 52);
+            this.darkButton57.Name = "darkButton57";
+            this.darkButton57.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton57.Size = new System.Drawing.Size(178, 27);
+            this.darkButton57.TabIndex = 5;
+            this.darkButton57.Text = "Add Selected";
+            // 
+            // MapGroupProtoCategroyCB
+            // 
+            this.MapGroupProtoCategroyCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MapGroupProtoCategroyCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.MapGroupProtoCategroyCB.FormattingEnabled = true;
+            this.MapGroupProtoCategroyCB.Location = new System.Drawing.Point(253, 90);
+            this.MapGroupProtoCategroyCB.Name = "MapGroupProtoCategroyCB";
+            this.MapGroupProtoCategroyCB.Size = new System.Drawing.Size(121, 21);
+            this.MapGroupProtoCategroyCB.TabIndex = 10;
+            // 
+            // label147
+            // 
+            this.label147.AutoSize = true;
+            this.label147.ForeColor = System.Drawing.SystemColors.Control;
+            this.label147.Location = new System.Drawing.Point(178, 93);
+            this.label147.Name = "label147";
+            this.label147.Size = new System.Drawing.Size(58, 13);
+            this.label147.TabIndex = 8;
+            this.label147.Text = "Category :-";
+            // 
             // TypesContextMenu
             // 
             this.TypesContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -11854,7 +11975,6 @@ namespace DayZeEditor
             this.importPositionAndCreateEventgroupFormdzeToolStripMenuItem});
             this.EventSpawnContextMenu.Name = "EventSpawnContextMenu";
             this.EventSpawnContextMenu.Size = new System.Drawing.Size(332, 246);
-            this.EventSpawnContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.EventSpawnContextMenu_Opening);
             // 
             // addNewEventSpawnToolStripMenuItem
             // 
@@ -12026,7 +12146,9 @@ namespace DayZeEditor
             this.toolStripSeparator25,
             this.WeatherTabButton,
             this.toolStripSeparator26,
-            this.CFGignoreListTabButton});
+            this.CFGignoreListTabButton,
+            this.toolStripSeparator6,
+            this.MapGroupProtoTabButton});
             this.darkToolStrip23.Location = new System.Drawing.Point(0, 70);
             this.darkToolStrip23.Name = "darkToolStrip23";
             this.darkToolStrip23.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
@@ -12146,16 +12268,25 @@ namespace DayZeEditor
             this.CFGignoreListTabButton.Text = "CFG Ignore List";
             this.CFGignoreListTabButton.Click += new System.EventHandler(this.CFGignoreListTabButton_Click);
             // 
-            // darkLabel27
+            // toolStripSeparator6
             // 
-            this.darkLabel27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.darkLabel27.AutoSize = true;
-            this.darkLabel27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel27.Location = new System.Drawing.Point(843, 214);
-            this.darkLabel27.Name = "darkLabel27";
-            this.darkLabel27.Size = new System.Drawing.Size(136, 13);
-            this.darkLabel27.TabIndex = 49;
-            this.darkLabel27.Text = "Total Number of nominals :-";
+            this.toolStripSeparator6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripSeparator6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripSeparator6.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
+            // 
+            // MapGroupProtoTabButton
+            // 
+            this.MapGroupProtoTabButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.MapGroupProtoTabButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.MapGroupProtoTabButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.MapGroupProtoTabButton.Image = ((System.Drawing.Image)(resources.GetObject("MapGroupProtoTabButton.Image")));
+            this.MapGroupProtoTabButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MapGroupProtoTabButton.Name = "MapGroupProtoTabButton";
+            this.MapGroupProtoTabButton.Size = new System.Drawing.Size(97, 22);
+            this.MapGroupProtoTabButton.Text = "MapGroupProto";
+            this.MapGroupProtoTabButton.Click += new System.EventHandler(this.MapGroupProtoTabButton_Click);
             // 
             // Economy_Manager
             // 
@@ -12179,11 +12310,6 @@ namespace DayZeEditor
             this.tabControl2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
-            this.Collection.ResumeLayout(false);
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
             this.LootParts.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -12209,6 +12335,11 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.typeLifetimeNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.typeMinCountNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.typeNomCountNUD)).EndInit();
+            this.Collection.ResumeLayout(false);
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.darkToolStrip21.ResumeLayout(false);
             this.darkToolStrip21.PerformLayout();
             this.darkToolStrip22.ResumeLayout(false);
@@ -12562,6 +12693,10 @@ namespace DayZeEditor
             this.cfgIgnorelistTab.ResumeLayout(false);
             this.tabControl19.ResumeLayout(false);
             this.tabPage24.ResumeLayout(false);
+            this.MapgroupProtoTab.ResumeLayout(false);
+            this.MapgroupProtoTab.PerformLayout();
+            this.groupBox62.ResumeLayout(false);
+            this.groupBox63.ResumeLayout(false);
             this.TypesContextMenu.ResumeLayout(false);
             this.EventSpawnContextMenu.ResumeLayout(false);
             this.EventgroupContextMenu.ResumeLayout(false);
@@ -13417,5 +13552,16 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator26;
         private System.Windows.Forms.ToolStripButton CFGignoreListTabButton;
         private DarkUI.Controls.DarkLabel darkLabel27;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripButton MapGroupProtoTabButton;
+        private System.Windows.Forms.TabPage MapgroupProtoTab;
+        private System.Windows.Forms.GroupBox groupBox62;
+        private DarkUI.Controls.DarkButton darkButton56;
+        private System.Windows.Forms.ComboBox MapGroupProtoUsageCB;
+        private System.Windows.Forms.GroupBox groupBox63;
+        private System.Windows.Forms.ComboBox MapGroupProtoTagCB;
+        private DarkUI.Controls.DarkButton darkButton57;
+        private System.Windows.Forms.ComboBox MapGroupProtoCategroyCB;
+        private System.Windows.Forms.Label label147;
     }
 }

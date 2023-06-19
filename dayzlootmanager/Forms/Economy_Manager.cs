@@ -103,7 +103,8 @@ namespace DayZeEditor
             LoadContaminatoedArea();
             LoadGlobals();
             Loadweather();
-            loadignorelist();
+            Loadignorelist();
+            LoadMapgrouProto();
             SetSummarytiers();
             
             NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
@@ -125,8 +126,13 @@ namespace DayZeEditor
             SetEventSpawnScale();
             EconomyTabPage.SelectedIndex = 3;
             TypesTabButton.Checked = true;
+            EconomySearchBoxTB.Visible = true;
+            EconomyFindButton.Visible = true;
             isUserInteraction = true;
         }
+
+
+
         private void SetuprandomPresetsForSpawnabletypes()
         {
             foreach (var item in currentproject.cfgrandompresetsconfig.randompresets.Items)
@@ -361,7 +367,130 @@ namespace DayZeEditor
             else
                 MessageBox.Show("No changes were made.", "Nothing Saved", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
-
+        private void Economy_Manager_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            bool needtosave = false;
+            //events
+            foreach (eventscofig eventconfig in currentproject.ModEventsList)
+            {
+                if (eventconfig.isDirty)
+                {
+                    needtosave = true;
+                }
+            }
+            //eventspawns
+            if (currentproject.cfgeventspawns != null)
+            {
+                if (currentproject.cfgeventspawns.isDirty)
+                {
+                    needtosave = true;
+                }
+            }
+            //eventgroups
+            if (currentproject.cfgeventgroups != null)
+            {
+                if (currentproject.cfgeventgroups.isDirty)
+                {
+                    needtosave = true;
+                }
+            }
+            //types
+            if (vanillatypes.isDirty)
+            {
+                needtosave = true;
+            }
+            foreach (TypesFile tf in ModTypes)
+            {
+                if (tf.isDirty)
+                {
+                    needtosave = true;
+                }
+            }
+            //spawnabletypes
+            if (currentproject.spawnabletypesList != null)
+            {
+                foreach (Spawnabletypesconfig Spawnabletypesconfig in currentproject.spawnabletypesList)
+                {
+                    if (Spawnabletypesconfig.isDirty)
+                    {
+                        needtosave = true;
+                    }
+                }
+            }
+            //randompresets
+            if (currentproject.cfgrandompresetsconfig != null)
+            {
+                if (currentproject.cfgrandompresetsconfig.isDirty)
+                {
+                    needtosave = true;
+                }
+            }
+            //globals
+            if (currentproject.gloabsconfig != null)
+            {
+                if (currentproject.gloabsconfig.isDirty)
+                {
+                    needtosave = true;
+                }
+            }
+            //playerspawns
+            if (currentproject.cfgplayerspawnpoints != null)
+            {
+                if (currentproject.cfgplayerspawnpoints.isDirty)
+                {
+                    needtosave = true;
+                }
+            }
+            //cfggameplay
+            if (currentproject.CFGGameplayConfig != null)
+            {
+                if (currentproject.CFGGameplayConfig.isDirty)
+                {
+                    needtosave = true;
+                }
+            }
+            //contaminatioedarea
+            if (currentproject.cfgEffectAreaConfig != null)
+            {
+                if (currentproject.cfgEffectAreaConfig.isDirty)
+                {
+                    needtosave = true;
+                }
+            }
+            //weather
+            if (currentproject.weatherconfig != null)
+            {
+                if (currentproject.weatherconfig.isDirty)
+                {
+                    needtosave = true;
+                }
+            }
+            //cfgignorelist
+            if (currentproject.cfgignorelist != null)
+            {
+                if (currentproject.cfgignorelist.isDirty)
+                {
+                    needtosave = true;
+                }
+            }
+            if (currentproject.mapgroupproto != null)
+            {
+                if (currentproject.mapgroupproto.isDirty)
+                {
+                    needtosave = true;
+                }
+            }
+            if (needtosave)
+            {
+                DialogResult dialogResult = MessageBox.Show("You have Unsaved Changes, do you wish to save", "Unsaved Changes found", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    List<string> midifiedfiles = new List<string>();
+                    string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
+                    SaveEconomyFiles(midifiedfiles, SaveTime);
+                }
+            }
+        }
 
         private void EventsTabButton_Click(object sender, EventArgs e)
         {
@@ -451,6 +580,13 @@ namespace DayZeEditor
             if (EconomyTabPage.SelectedIndex == 13)
                 CFGignoreListTabButton.Checked = true;
         }
+        private void MapGroupProtoTabButton_Click(object sender, EventArgs e)
+        {
+            EconomyTabPage.SelectedIndex = 14;
+            if (EconomyTabPage.SelectedIndex == 14)
+                MapGroupProtoTabButton.Checked = true;
+
+        }
         private void EconomyTabPage_SelectedIndexChanged(object sender, EventArgs e)
         {
             EventsTabButton.Checked = false;
@@ -467,9 +603,11 @@ namespace DayZeEditor
             ContaminatoedAreaTabButton.Checked = false;
             WeatherTabButton.Checked = false;
             CFGignoreListTabButton.Checked = false;
+            MapGroupProtoTabButton.Checked = false;
             EconomySearchBoxTB.Visible = false;
             EconomyFindButton.Visible = false;
             economySearchNextButton.Visible = false;
+
         }
         #endregion formsstuff
         #region Types
@@ -4053,6 +4191,43 @@ namespace DayZeEditor
         {
 
         }
+        private void darkButton55_Click(object sender, EventArgs e)
+        {
+            List<string> nopositions = new List<string>();
+            int Total = 0;
+            foreach (mapGroup lootposition in currentproject.mapgrouppos.map.group)
+            {
+                prototypeGroup group = currentproject.mapgroupproto.prototypeGroup.group.FirstOrDefault(x => x.name.ToLower() == lootposition.name.ToLower());
+                if (group == null)
+                {
+                    nopositions.Add(lootposition.name);
+                    continue;
+                }
+                if (group.lootmax == 0)
+                {
+                    Total += currentproject.mapgroupproto.prototypeGroup.defaults.FirstOrDefault(x => x.name == "group").lootmax;
+                }
+                else
+                {
+                    Total += currentproject.mapgroupproto.prototypeGroup.group.First(x => x.name.ToLower() == lootposition.name.ToLower()).lootmax;
+                }
+            }
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Total Maximum Loot Positions : " + Total.ToString() + Environment.NewLine);
+            if (nopositions.Count > 0)
+            {
+                sb.Append("Please see LootOutput.txt in project folder for Items with no loot positions");
+            }
+            MessageBox.Show(sb.ToString());
+            if (nopositions.Count > 0)
+            {
+                foreach (string s in nopositions)
+                {
+                    sb.Append(s + Environment.NewLine);
+                }
+                File.WriteAllText(currentproject.projectFullName + "//LootOutput.txt", sb.ToString());
+            }
+        }
         #endregion typesquery
         #region PlayerSpawnPoints
         public playerspawnpoints playerspawnpoints;
@@ -5743,14 +5918,12 @@ namespace DayZeEditor
         #region ignorelist
         public ignore ignore;
         public ignoreType currentignoretype;
-        private void loadignorelist()
+        private void Loadignorelist()
         {
             Console.WriteLine("Loading cfgIgnorelist");
             isUserInteraction = false;
             ignore = currentproject.cfgignorelist.ignore;
             populateignoretreeview();
-
-
             isUserInteraction = true;
         }
         void populateignoretreeview()
@@ -5905,154 +6078,23 @@ namespace DayZeEditor
         }
         #endregion ignorelist
 
-        private void darkButton55_Click(object sender, EventArgs e)
+
+        #region mapgroupproto
+        public prototype prototype;
+        private void LoadMapgrouProto()
         {
-            List<string> nopositions = new List<string>();
-            int Total = 0;
-            foreach (mapGroup lootposition in currentproject.mapgrouppos.map.group)
-            {
-                prototypeGroup group = currentproject.mapgroupproto.prototypeGroup.group.FirstOrDefault(x => x.name.ToLower() == lootposition.name.ToLower());
-                if (group == null)
-                {
-                    nopositions.Add(lootposition.name);
-                    continue;
-                }
-                if (group.lootmax == 0)
-                {
-                    Total += currentproject.mapgroupproto.prototypeGroup.defaults.FirstOrDefault(x => x.name == "group").lootmax;
-                }
-                else
-                {
-                    Total += currentproject.mapgroupproto.prototypeGroup.group.First(x => x.name.ToLower() == lootposition.name.ToLower()).lootmax;
-                }
-            }
-            StringBuilder sb = new StringBuilder();
-            sb.Append("Total Maximum Loot Positions : " + Total.ToString() + Environment.NewLine);
-            if (nopositions.Count > 0)
-            {
-                sb.Append("Please see LootOutput.txt in project folder for Items with no loot positions");
-            }
-            MessageBox.Show(sb.ToString());
-            if (nopositions.Count > 0)
-            { 
-                foreach (string s in nopositions)
-                {
-                    sb.Append(s + Environment.NewLine);
-                }
-                File.WriteAllText(currentproject.projectFullName + "//LootOutput.txt", sb.ToString());
-            } 
-        }
-
-        private void Economy_Manager_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            bool needtosave = false;
-            if (vanillatypes.isDirty)
-            {
-                needtosave = true;
-            }
-            foreach (TypesFile tf in ModTypes)
-            {
-                if (tf.isDirty)
-                {
-                    needtosave = true;
-                }
-            }
-
-            foreach (eventscofig eventconfig in currentproject.ModEventsList)
-            {
-                if (eventconfig.isDirty)
-                {
-                    needtosave = true;
-                }
-            }
-
-            if (currentproject.cfgeventspawns != null)
-            {
-                if (currentproject.cfgeventspawns.isDirty)
-                {
-                    needtosave = true;
-                }
-            }
-            if (currentproject.cfgeventgroups != null)
-            {
-                if (currentproject.cfgeventgroups.isDirty)
-                {
-                    needtosave = true;
-                }
-            }
-
-            if (currentproject.spawnabletypesList != null)
-            {
-                foreach (Spawnabletypesconfig Spawnabletypesconfig in currentproject.spawnabletypesList)
-                {
-                    if (Spawnabletypesconfig.isDirty)
-                    {
-                        needtosave = true;
-                    }
-                }
-            }
-            if (currentproject.cfgrandompresetsconfig != null)
-            {
-                if (currentproject.cfgrandompresetsconfig.isDirty)
-                {
-                    needtosave = true;
-                }
-            }
-
-            if (currentproject.cfgplayerspawnpoints != null)
-            {
-                if (currentproject.cfgplayerspawnpoints.isDirty)
-                {
-                    needtosave = true;
-                }
-            }
-            if (currentproject.CFGGameplayConfig != null)
-            {
-                if (currentproject.CFGGameplayConfig.isDirty)
-                {
-                    needtosave = true;
-                }
-            }
-            if (currentproject.cfgEffectAreaConfig != null)
-            {
-                if (currentproject.cfgEffectAreaConfig.isDirty)
-                {
-                    needtosave = true;
-                }
-            }
-
-            if (currentproject.gloabsconfig != null)
-            {
-                if (currentproject.gloabsconfig.isDirty)
-                {
-                    needtosave = true;
-                }
-            }
-            if (currentproject.weatherconfig != null)
-            {
-                if (currentproject.weatherconfig.isDirty)
-                {
-                    needtosave = true;
-                }
-            }
-            if (needtosave)
-            {
-                DialogResult dialogResult = MessageBox.Show("You have Unsaved Changes, do you wish to save", "Unsaved Changes found", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    List<string> midifiedfiles = new List<string>();
-                    string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
-                    SaveEconomyFiles(midifiedfiles, SaveTime);
-                }
-            }
-        }
-
-        private void EventSpawnContextMenu_Opening(object sender, CancelEventArgs e)
-        {
-
+            Console.WriteLine("Loading MapgroupProto");
+            isUserInteraction = false;
+            prototype = currentproject.mapgroupproto.prototypeGroup;
+            MapGroupProtoCategroyCB.DataSource = currentproject.limitfefinitions.lists.categories;
+            MapGroupProtoUsageCB.DataSource = currentproject.limitfefinitions.lists.usageflags;
+            MapGroupProtoTagCB.DataSource = currentproject.limitfefinitions.lists.tags;
+            isUserInteraction = true;
         }
 
 
+
+        #endregion
     }
 
 }

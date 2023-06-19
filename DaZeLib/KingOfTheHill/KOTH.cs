@@ -9,6 +9,85 @@ using System.Threading.Tasks;
 namespace DayZeLib
 {
 
+    public class MDCKOTH
+    {
+        [JsonIgnore]
+        public string FullFilename;
+        [JsonIgnore]
+        public bool isDirty { get; set; }
+
+        public int enabled { get; set; }
+        public int loggingLevel { get; set; }
+        public int useLocationText { get; set; }
+        public int useMapMarker { get; set; }
+        public int useNotifications { get; set; }
+        public int reduceProgressOnAbandoned { get; set; }
+        public int reduceProgressOnDeathFromOutside { get; set; }
+        public int requireFlagConstruction { get; set; }
+        public int estimateLocation { get; set; }
+        public int celebrateWin { get; set; }
+        public int punishLoss { get; set; }
+        public float baseCaptureTime { get; set; }
+        public float maxTimeBetweenEvents { get; set; }
+        public float minTimeBetweenEvents { get; set; }
+        public float playerTimeMultiplier { get; set; }
+        public float timeDespawn { get; set; }
+        public float timeLimit { get; set; }
+        public float timeStart { get; set; }
+        public float timeSpawn { get; set; }
+        public float timeZoneCooldown { get; set; }
+        public int minPlayerCount { get; set; }
+        public int maxEnemyCount { get; set; }
+        public int minEnemyCount { get; set; }
+        public int maxEvents { get; set; }
+        public int minimumDeaths { get; set; }
+        public int minimumPlayers { get; set; }
+        public int maximumPlayers { get; set; }
+        public int rewardCount { get; set; }
+        public string flagClassname { get; set; }
+        public string[] enemies { get; set; }
+        public string lootCrate { get; set; }
+        public int crateLifeTime { get; set; }
+        public object[] lootSets { get; set; }
+        public Zone[] zones { get; set; }
+    }
+
+    public class Zone
+    {
+        public string zoneName { get; set; }
+        public float[] zonePosition { get; set; }
+        public int zoneRadius { get; set; }
+        public float baseCaptureTime { get; set; }
+        public float playerTimeMultiplier { get; set; }
+        public float timeDespawn { get; set; }
+        public float timeLimit { get; set; }
+        public float timeStart { get; set; }
+        public int maxEnemyCount { get; set; }
+        public int minEnemyCount { get; set; }
+        public int minimumDeaths { get; set; }
+        public int minimumPlayers { get; set; }
+        public int maximumPlayers { get; set; }
+        public int rewardCount { get; set; }
+        public string flagClassname { get; set; }
+        public KOTHObject[] objects { get; set; }
+        public object[] enemies { get; set; }
+        public string lootCrate { get; set; }
+        public int crateLifeTime { get; set; }
+        public object[] lootSets { get; set; }
+    }
+
+    public class KOTHObject
+    {
+        public string classname { get; set; }
+        public float[] position { get; set; }
+        public float[] orientation { get; set; }
+        public int absolutePlacement { get; set; }
+        public int alignToTerrain { get; set; }
+        public int placeOnSurface { get; set; }
+    }
+
+
+
     public class KingOfTheHillConfig
     {
         [JsonIgnore]

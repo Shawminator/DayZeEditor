@@ -11,15 +11,15 @@ namespace DayZeLib
     public class AirdropMissionSettingFiles
     {
         public int Enabled { get; set; }
-        public float Weight { get; set; }
+        public decimal Weight { get; set; }
         public int MissionMaxTime { get; set; }
         public string MissionName { get; set; }
         public int Difficulty { get; set; }
         public int Objective { get; set; }
         public string Reward { get; set; }
         public int ShowNotification { get; set; }
-        public float Height { get; set; }
-        public float Speed { get; set; }
+        public decimal Height { get; set; }
+        public decimal Speed { get; set; }
         public string Container { get; set; }
         public DropLocation DropLocation { get; set; }
         public BindingList<containerLoot> Loot { get; set; }
@@ -41,13 +41,14 @@ namespace DayZeLib
             Loot = new BindingList<containerLoot>();
             Infected = new BindingList<string>();
             isDirty = true;
+            ItemCount = -1;
+            InfectedCount = -1;
         }
-
         public void SetIntValue(string mytype, int myvalue)
         {
             GetType().GetProperty(mytype).SetValue(this, myvalue, null);
         }
-        public void SetFloatValue(string mytype, float myvalue)
+        public void SetdecimalValue(string mytype, decimal myvalue)
         {
             GetType().GetProperty(mytype).SetValue(this, myvalue, null);
         }
@@ -58,12 +59,11 @@ namespace DayZeLib
     }
     public class DropLocation
     {
-        public float x { get; set; }
-        public float z { get; set; }
+        public decimal x { get; set; }
+        public decimal z { get; set; }
         public string Name { get; set; }
-        public float Radius { get; set; }
+        public decimal Radius { get; set; }
     }
-    public class Empty { }
 
     public class ContaminatedAreaMissionSettingFiles
     {
@@ -93,7 +93,7 @@ namespace DayZeLib
     }
     public class ContaminatedAreaMissionData
     {
-        public float[] Pos { get; set; }
+        public decimal[] Pos { get; set; }
         public decimal Radius { get; set; }
         public decimal PosHeight { get; set; }
         public decimal NegHeight { get; set; }
