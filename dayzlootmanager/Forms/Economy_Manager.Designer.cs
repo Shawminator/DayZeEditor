@@ -1530,7 +1530,7 @@ namespace DayZeEditor
             this.groupBox2.Size = new System.Drawing.Size(462, 123);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Location Found";
+            this.groupBox2.Text = "Usage";
             // 
             // groupBox5
             // 
@@ -1542,7 +1542,7 @@ namespace DayZeEditor
             this.groupBox5.Size = new System.Drawing.Size(202, 100);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Add Location";
+            this.groupBox5.Text = "Add Usage";
             // 
             // darkButton2
             // 
@@ -11932,23 +11932,20 @@ namespace DayZeEditor
             this.groupBox71.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox71.Location = new System.Drawing.Point(695, 3);
             this.groupBox71.Name = "groupBox71";
-            this.groupBox71.Size = new System.Drawing.Size(503, 533);
+            this.groupBox71.Size = new System.Drawing.Size(503, 428);
             this.groupBox71.TabIndex = 70;
             this.groupBox71.TabStop = false;
             this.groupBox71.Text = "Containers";
             // 
             // MapGroupProtoGroupContainersLB
             // 
-            this.MapGroupProtoGroupContainersLB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.MapGroupProtoGroupContainersLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.MapGroupProtoGroupContainersLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.MapGroupProtoGroupContainersLB.ForeColor = System.Drawing.SystemColors.Control;
             this.MapGroupProtoGroupContainersLB.FormattingEnabled = true;
             this.MapGroupProtoGroupContainersLB.Location = new System.Drawing.Point(13, 19);
             this.MapGroupProtoGroupContainersLB.Name = "MapGroupProtoGroupContainersLB";
-            this.MapGroupProtoGroupContainersLB.Size = new System.Drawing.Size(161, 173);
+            this.MapGroupProtoGroupContainersLB.Size = new System.Drawing.Size(161, 69);
             this.MapGroupProtoGroupContainersLB.TabIndex = 50;
             this.MapGroupProtoGroupContainersLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.MapGroupProtoGroupContainersLB.SelectedIndexChanged += new System.EventHandler(this.MapGroupProtoGroupContainersLB_SelectedIndexChanged);
@@ -11960,7 +11957,7 @@ namespace DayZeEditor
             this.groupBox69.Controls.Add(this.MapgroupProtoGroupcontainerNameTB);
             this.groupBox69.Controls.Add(this.label148);
             this.groupBox69.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox69.Location = new System.Drawing.Point(14, 198);
+            this.groupBox69.Location = new System.Drawing.Point(13, 94);
             this.groupBox69.Name = "groupBox69";
             this.groupBox69.Size = new System.Drawing.Size(469, 68);
             this.groupBox69.TabIndex = 67;
@@ -12019,7 +12016,7 @@ namespace DayZeEditor
             this.groupBox65.Controls.Add(this.MapGroupprotoGroupContainerTagLB);
             this.groupBox65.Controls.Add(this.darkButton59);
             this.groupBox65.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox65.Location = new System.Drawing.Point(13, 400);
+            this.groupBox65.Location = new System.Drawing.Point(12, 296);
             this.groupBox65.Name = "groupBox65";
             this.groupBox65.Size = new System.Drawing.Size(469, 122);
             this.groupBox65.TabIndex = 64;
@@ -12086,7 +12083,7 @@ namespace DayZeEditor
             this.groupBox66.Controls.Add(this.MapGroupProtoGroupContainerCategroyLB);
             this.groupBox66.Controls.Add(this.darkButton62);
             this.groupBox66.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox66.Location = new System.Drawing.Point(13, 272);
+            this.groupBox66.Location = new System.Drawing.Point(12, 168);
             this.groupBox66.Name = "groupBox66";
             this.groupBox66.Size = new System.Drawing.Size(469, 122);
             this.groupBox66.TabIndex = 65;
@@ -12851,7 +12848,7 @@ namespace DayZeEditor
             this.groupBox62.Size = new System.Drawing.Size(202, 100);
             this.groupBox62.TabIndex = 9;
             this.groupBox62.TabStop = false;
-            this.groupBox62.Text = "Add Location";
+            this.groupBox62.Text = "Add Usage";
             // 
             // darkButton56
             // 
