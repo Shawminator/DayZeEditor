@@ -345,7 +345,18 @@ namespace DayZeEditor
                     midifiedfiles.Add(Path.GetFileName(currentproject.cfgignorelist.Filename));
                 }
             }
-
+            if (currentproject.mapgroupproto != null)
+            {
+                if (currentproject.mapgroupproto.isDirty)
+                {
+                    if (currentproject.Createbackups)
+                        currentproject.mapgroupproto.Savemapgroupproto(SaveTime);
+                    else
+                        currentproject.mapgroupproto.Savemapgroupproto();
+                    currentproject.mapgroupproto.isDirty = false;
+                    midifiedfiles.Add(Path.GetFileName(currentproject.mapgroupproto.Filename));
+                }
+            }
             string message = "The Following Files were saved....\n";
             int i = 0;
             foreach (string l in midifiedfiles)
@@ -6081,8 +6092,8 @@ namespace DayZeEditor
 
         #region mapgroupproto
         public prototype prototype;
-        public prototypeGroup currentgroup;
-        public prototypeGroupContainer currentgroupcontainer;
+        public prototypeGroup currentmapgroupprotoGroup;
+        public prototypeGroupContainer currentmapgroupprotogroupcontainer;
         private void LoadMapgrouProto()
         {
             Console.WriteLine("Loading MapgroupProto");
@@ -6090,9 +6101,10 @@ namespace DayZeEditor
 
             prototype = currentproject.mapgroupproto.prototypeGroup;
 
-            MapGroupProtoCategroyCB.DataSource = currentproject.limitfefinitions.lists.categories;
             MapGroupProtoUsageCB.DataSource = currentproject.limitfefinitions.lists.usageflags;
-            MapGroupProtoTagCB.DataSource = currentproject.limitfefinitions.lists.tags;
+
+            MapGroupProtoGroupContainerCategroyCB.DataSource = new BindingList<listsCategory>(currentproject.limitfefinitions.lists.categories);
+            MapGroupProtoGroupContainerTagCB.DataSource = currentproject.limitfefinitions.lists.tags;
 
             MapGroupProtoGroupsLB.DisplayMember = "DisplayName";
             MapGroupProtoGroupsLB.ValueMember = "Value";
@@ -6140,20 +6152,20 @@ namespace DayZeEditor
         public void MapgroupProtoPopulateTiers()
         {
             MapGroupProtoSetTiers();
-            if (currentgroup.value != null)
+            if (currentmapgroupprotoGroup.value != null)
             {
-                for (int i = 0; i < currentgroup.value.Count; i++)
+                for (int i = 0; i < currentmapgroupprotoGroup.value.Count; i++)
                 {
-                    if (currentgroup.value[i].user != null && currentgroup.value[i].user.Count() > 0 && currentgroup.value[i].name == null)
+                    if (currentmapgroupprotoGroup.value[i].user != null && currentmapgroupprotoGroup.value[i].user.Count() > 0 && currentmapgroupprotoGroup.value[i].name == null)
                     {
                         tabControl24.SelectedIndex = 1;
                         try
                         {
-                            UserdefinitionsTP.Controls.OfType<CheckBox>().First(x => x.Tag.ToString() == currentgroup.value[i].user).Checked = true;
+                            flowLayoutPanel3.Controls.OfType<CheckBox>().First(x => x.Tag.ToString() == currentmapgroupprotoGroup.value[i].user).Checked = true;
                         }
                         catch
                         {
-                            currentgroup.value.RemoveAt(i);
+                            currentmapgroupprotoGroup.value.RemoveAt(i);
                             i--;
                         }
                     }
@@ -6163,73 +6175,194 @@ namespace DayZeEditor
 
                         try
                         {
-                            flowLayoutPanel2.Controls.OfType<CheckBox>().First(x => x.Tag.ToString() == currentgroup.value[i].name).Checked = true;
+                            flowLayoutPanel2.Controls.OfType<CheckBox>().First(x => x.Tag.ToString() == currentmapgroupprotoGroup.value[i].name).Checked = true;
                         }
                         catch
                         {
-                            currentgroup.value.RemoveAt(i);
+                            currentmapgroupprotoGroup.value.RemoveAt(i);
                             i--;
                         }
                     }
                 }
             }
         }
-        private void MapGroupProtoGroupsLB_SelectedIndexChanged(object sender, EventArgs e)
+        private void MapgroupProtopopulateUsage()
         {
-            if (MapGroupProtoGroupsLB.SelectedItem as prototypeGroup == currentgroup) { return; }
-            if (MapGroupProtoGroupsLB.SelectedIndex == -1) { return; }
-            currentgroup = MapGroupProtoGroupsLB.SelectedItem as prototypeGroup;
-            isUserInteraction = false;
-
-            MapgroupprotoGroupNameTB.Text = currentgroup.name;
-            MapGroupprotoGroupUseLootmaxCB.Checked = currentgroup.lootmaxSpecified;
-            if (MapGroupProtoGroupUseLootMaxNUD.Visible = currentgroup.lootmaxSpecified)
-            {
-                MapGroupProtoGroupUseLootMaxNUD.Value = currentgroup.lootmax;
-            }
-
-
-            MapgroupProtoPopulateTiers();
-
             MapGroupProtoGroupUsageLB.DisplayMember = "DisplayName";
             MapGroupProtoGroupUsageLB.ValueMember = "Value";
-            MapGroupProtoGroupUsageLB.DataSource = currentgroup.usage;
+            MapGroupProtoGroupUsageLB.DataSource = currentmapgroupprotoGroup.usage;
+        }
+        private void MapGroupProtoGroupsLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (MapGroupProtoGroupsLB.SelectedItem as prototypeGroup == currentmapgroupprotoGroup) { return; }
+            if (MapGroupProtoGroupsLB.SelectedIndex == -1) { return; }
+            currentmapgroupprotoGroup = MapGroupProtoGroupsLB.SelectedItem as prototypeGroup;
+            isUserInteraction = false;
 
-            MapGroupProtoGroupContainersLB.DisplayMember = "DisplayName";
-            MapGroupProtoGroupContainersLB.ValueMember = "Value";
-            MapGroupProtoGroupContainersLB.DataSource = currentgroup.container;
+            MapgroupprotoGroupNameTB.Text = currentmapgroupprotoGroup.name;
+            MapGroupProtoGroupUseLootMaxNUD.Visible = MapGroupprotoGroupUseLootmaxCB.Checked = currentmapgroupprotoGroup.lootmaxSpecified;
+            MapGroupProtoGroupUseLootMaxNUD.Value = currentmapgroupprotoGroup.lootmax;
 
+            MapgroupProtoPopulateTiers();
+            MapgroupProtopopulateUsage();
+            MapgroupProtopopulatecontainer();
 
             isUserInteraction = true;
+        }
+        private void MapgroupprotoGroupNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            currentmapgroupprotoGroup.name = MapgroupprotoGroupNameTB.Text;
+            currentproject.mapgroupproto.isDirty = true;
+        }
+        private void MapGroupprotoGroupUseLootmaxCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            MapGroupProtoGroupUseLootMaxNUD.Visible = currentmapgroupprotoGroup.lootmaxSpecified = MapGroupprotoGroupUseLootmaxCB.Checked;
+            currentproject.mapgroupproto.isDirty = true;
+        }
+        private void MapGroupProtoGroupUseLootMaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            currentmapgroupprotoGroup.lootmax = (int)MapgroupProtoGroupcontainerUseLootMaxNUD.Value;
+            currentproject.mapgroupproto.isDirty = true;
+        }
+        private void mapgroupprotoTierCheckBoxchanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            CheckBox cb = sender as CheckBox;
+            string tier = cb.Tag.ToString();
+            if (cb.Checked)
+                currentmapgroupprotoGroup.AddTier(tier);
+            else
+                currentmapgroupprotoGroup.removetier(tier);
+            currentproject.mapgroupproto.isDirty = true;
+            isUserInteraction = false;
+            MapgroupProtoPopulateTiers();
+            isUserInteraction = true;
+        }
+        private void MapgroupProtoUserdefiniedTiersChanged(object sender, EventArgs e)
+        {
+            if (isUserInteraction)
+            {
+                CheckBox cb = sender as CheckBox;
+                string tier = cb.Tag.ToString();
+                if (cb.Checked)
+                {
+                    if (currentmapgroupprotoGroup.value != null)
+                    {
+                        currentmapgroupprotoGroup.removetiers();
+                    }
+                    currentmapgroupprotoGroup.AdduserTier(tier);
+                }
+                else
+                    currentmapgroupprotoGroup.removeusertier(tier);
+                currentproject.mapgroupproto.isDirty = true;
+                isUserInteraction = false;
+                MapgroupProtoPopulateTiers();
+                isUserInteraction = true;
+            }
+        }
+        private void darkButton63_Click(object sender, EventArgs e)
+        {
+            currentmapgroupprotoGroup.removetiers();
+            currentproject.mapgroupproto.isDirty = true;
+            isUserInteraction = false;
+            MapgroupProtoPopulateTiers();
+            isUserInteraction = true;
+        }
+        private void darkButton58_Click_1(object sender, EventArgs e)
+        {
+            prototypeGroupUsage u = MapGroupProtoGroupUsageLB.SelectedItem as prototypeGroupUsage;
+            currentmapgroupprotoGroup.removeusage(u);
+            currentproject.mapgroupproto.isDirty = true;
+        }
+        private void darkButton56_Click(object sender, EventArgs e)
+        {
+            listsUsage u = MapGroupProtoUsageCB.SelectedItem as listsUsage;
+            currentmapgroupprotoGroup.AddnewUsage(u);
+            currentproject.mapgroupproto.isDirty = true;
+            isUserInteraction = false;
+            MapgroupProtopopulateUsage();
+            isUserInteraction = true;
+        }
+
+        private void MapgroupProtoGroupPopulatecategory()
+        {
+            MapGroupProtoGroupContainerCategroyLB.DisplayMember = "DisplayName";
+            MapGroupProtoGroupContainerCategroyLB.ValueMember = "Value";
+            MapGroupProtoGroupContainerCategroyLB.DataSource = currentmapgroupprotogroupcontainer.category;
+        }
+        private void MapgroupProtoGroupPopulateTags()
+        {
+            MapGroupprotoGroupContainerTagLB.DisplayMember = "DisplayName";
+            MapGroupprotoGroupContainerTagLB.ValueMember = "Value";
+            MapGroupprotoGroupContainerTagLB.DataSource = currentmapgroupprotogroupcontainer.tag;
+        }
+        private void MapgroupProtopopulatecontainer()
+        {
+            MapGroupProtoGroupContainersLB.DisplayMember = "DisplayName";
+            MapGroupProtoGroupContainersLB.ValueMember = "Value";
+            MapGroupProtoGroupContainersLB.DataSource = currentmapgroupprotoGroup.container;
         }
         private void MapGroupProtoGroupContainersLB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (MapGroupProtoGroupContainersLB.SelectedItem as prototypeGroupContainer == currentgroupcontainer) { return; }
+            if (MapGroupProtoGroupContainersLB.SelectedItem as prototypeGroupContainer == currentmapgroupprotogroupcontainer) { return; }
             if (MapGroupProtoGroupContainersLB.SelectedIndex == -1) { return; }
-            currentgroupcontainer = MapGroupProtoGroupContainersLB.SelectedItem as prototypeGroupContainer;
+            currentmapgroupprotogroupcontainer = MapGroupProtoGroupContainersLB.SelectedItem as prototypeGroupContainer;
             isUserInteraction = false;
 
-            MapgroupProtoGroupcontainerNameTB.Text = currentgroupcontainer.name;
-            if (MapgroupProtoGroupcontainerUseLootMaxCB.Visible = MapgroupProtoGroupcontainerUseLootMaxCB.Checked  = currentgroupcontainer.lootmaxSpecified)
-            {
-                MapgroupProtoGroupcontainerUseLootMaxNUD.Value = currentgroupcontainer.lootmax;
-            }
+            MapgroupProtoGroupcontainerNameTB.Text = currentmapgroupprotogroupcontainer.name;
+            MapgroupProtoGroupcontainerUseLootMaxNUD.Visible = MapgroupProtoGroupcontainerUseLootMaxCB.Checked = currentmapgroupprotogroupcontainer.lootmaxSpecified;
+            MapgroupProtoGroupcontainerUseLootMaxNUD.Value = currentmapgroupprotogroupcontainer.lootmax;
 
-            MapGroupProtoGroupCategroyLB.DisplayMember = "DisplayName";
-            MapGroupProtoGroupCategroyLB.ValueMember = "Value";
-            MapGroupProtoGroupCategroyLB.DataSource = currentgroupcontainer.category;
-
-            MapGroupprotoGroupTagLB.DisplayMember = "DisplayName";
-            MapGroupprotoGroupTagLB.ValueMember = "Value";
-            MapGroupprotoGroupTagLB.DataSource = currentgroupcontainer.tag;
+            MapgroupProtoGroupPopulatecategory();
+            MapgroupProtoGroupPopulateTags();
 
             isUserInteraction = true;
         }
-
-
+        private void MapgroupProtoGroupcontainerNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            currentmapgroupprotogroupcontainer.name = MapgroupProtoGroupcontainerNameTB.Text;
+            currentproject.mapgroupproto.isDirty = true;
+        }
+        private void MapgroupProtoGroupcontainerUseLootMaxCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            MapgroupProtoGroupcontainerUseLootMaxNUD.Visible = currentmapgroupprotogroupcontainer.lootmaxSpecified = MapgroupProtoGroupcontainerUseLootMaxCB.Checked;
+            currentproject.mapgroupproto.isDirty = true;
+        }
+        private void darkButton61_Click_1(object sender, EventArgs e)
+        {
+            listsCategory u = MapGroupProtoGroupContainerCategroyCB.SelectedItem as listsCategory;
+            currentmapgroupprotogroupcontainer.AddnewCategory(u);
+            currentproject.mapgroupproto.isDirty = true;
+            isUserInteraction = false;
+            MapgroupProtoGroupPopulatecategory();
+            isUserInteraction = true;
+        }
+        private void darkButton62_Click_1(object sender, EventArgs e)
+        {
+            prototypeGroupContainerCategory c = MapGroupProtoGroupContainerCategroyLB.SelectedItem as prototypeGroupContainerCategory;
+            currentmapgroupprotogroupcontainer.removecategory(c);
+            currentproject.mapgroupproto.isDirty = true;
+        }
+        private void darkButton57_Click(object sender, EventArgs e)
+        {
+            listsTag t = MapGroupProtoGroupContainerTagCB.SelectedItem as listsTag;
+            currentmapgroupprotogroupcontainer.Addnewtag(t);
+            currentproject.mapgroupproto.isDirty = true;
+            isUserInteraction = false;
+            MapgroupProtoGroupPopulateTags();
+            isUserInteraction = true;
+        }
+        private void darkButton59_Click_1(object sender, EventArgs e)
+        {
+            prototypeGroupContainerTag t = MapGroupprotoGroupContainerTagLB.SelectedItem as prototypeGroupContainerTag;
+            currentmapgroupprotogroupcontainer.removetag(t);
+            currentproject.mapgroupproto.isDirty = true;
+        }
         #endregion
-
-
     }
-
 }

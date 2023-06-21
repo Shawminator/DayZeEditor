@@ -329,6 +329,78 @@ namespace DayZeLib
         {
             return name;
         }
+
+        public void AddTier(string tier)
+        {
+            if (value == null)
+                value = new BindingList<prototypeGroupValue>();
+            prototypeGroupValue newtier = (new prototypeGroupValue() { name = tier });
+            if (!value.Any(x => x.name == newtier.name))
+                value.Add(newtier);
+            for (int i = 0; i < value.Count; i++)
+            {
+                if (value[i].name == null)
+                {
+                    value.RemoveAt(i);
+                    i--;
+                }
+            }
+        }
+        public void removetier(string tier)
+        {
+            if (value == null) return;
+            if (value.Any(x => x.name == tier))
+                value.Remove(value.First(X => X.name == tier));
+            if (value.Count == 0)
+                value = null;
+        }
+        public void AdduserTier(string tier)
+        {
+            if (value == null)
+                value = new BindingList<prototypeGroupValue>();
+            prototypeGroupValue newusertier = new prototypeGroupValue() { user = tier };
+            if (!value.Any(x => x.user == newusertier.user))
+                value.Add(newusertier);
+            for (int i = 0; i < value.Count; i++)
+            {
+                if (value[i].user == null)
+                {
+                    value.RemoveAt(i);
+                    i--;
+                }
+            }
+        }
+        public void removeusertier(string tier)
+        {
+            if (value == null) return;
+            if (value.Any(x => x.user == tier))
+                value.Remove(value.First(X => X.user == tier));
+            if (value.Count == 0)
+            {
+                value = null;
+            }
+        }
+        public void removetiers()
+        {
+            if (value != null)
+                value = null;
+        }
+        public void AddnewUsage(listsUsage u)
+        {
+            if (usage == null)
+                usage = new BindingList<prototypeGroupUsage>();
+            if (!usage.Any(x => x.name == u.name))
+            {
+                usage.Add(new prototypeGroupUsage() { name = u.name });
+            }
+        }
+        public void removeusage(prototypeGroupUsage u)
+        {
+            if (usage == null) return;
+            prototypeGroupUsage usagetoremove = usage.FirstOrDefault(x => x.name == u.name);
+            if (usagetoremove != null)
+                usage.Remove(usagetoremove);
+        }
     }
 
     /// <remarks/>
@@ -510,6 +582,39 @@ namespace DayZeLib
         public override string ToString()
         {
             return name;
+        }
+
+        public void AddnewCategory(listsCategory c)
+        {
+            if (category == null)
+                category = new BindingList<prototypeGroupContainerCategory>();
+            if (!category.Any(x => x.name == c.name))
+            {
+                category.Add(new prototypeGroupContainerCategory() { name = c.name });
+            }
+        }
+        public void removecategory(prototypeGroupContainerCategory c)
+        {
+            if (category == null) return;
+            prototypeGroupContainerCategory cattoremove = category.FirstOrDefault(x => x.name == c.name);
+            if (cattoremove != null)
+                category.Remove(cattoremove);
+        }
+        public void Addnewtag(listsTag t)
+        {
+            if (tag == null)
+                tag = new BindingList<prototypeGroupContainerTag>();
+            if (!tag.Any(x => x.name == t.name))
+            {
+                tag.Add(new prototypeGroupContainerTag() { name = t.name });
+            }
+        }
+        public void removetag(prototypeGroupContainerTag t)
+        {
+            if (tag == null) return;
+            prototypeGroupContainerTag tagtoremove = tag.FirstOrDefault(x => x.name == t.name);
+            if (tagtoremove != null)
+                tag.Remove(tagtoremove);
         }
     }
 

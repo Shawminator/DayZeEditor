@@ -718,9 +718,12 @@ namespace DayZeLib
             var sw = new StringWriter();
             sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
             sw.WriteLine("<ignore>");
-            foreach(ignoreType ignoretype in ignore.type)
+            if (ignore.type != null)
             {
-                sw.WriteLine("\t<type name=\"" + ignoretype.name + "\"></type>");
+                foreach (ignoreType ignoretype in ignore.type)
+                {
+                    sw.WriteLine("\t<type name=\"" + ignoretype.name + "\"></type>");
+                }
             }
             sw.WriteLine("</ignore>");
             Console.WriteLine(sw.ToString());
