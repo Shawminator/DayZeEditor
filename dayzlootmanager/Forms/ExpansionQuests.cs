@@ -123,6 +123,10 @@ namespace DayZeEditor
             Factions = new BindingList<string>(File.ReadAllLines(Application.StartupPath + "\\TraderNPCs\\Factions.txt").ToList());
             SetupFactionsDropDownBoxes();
 
+            QuestActions = new BindingList<string>(File.ReadAllLines(Application.StartupPath + "\\TraderNPCs\\Vanilla_Quest_Actions.txt").ToList());
+            ObjectivesActionsCB.DataSource = new BindingList<string>(QuestActions);
+
+
             bool needtosave = false;
 
             LoadoutList = new BindingList<AILoadouts>();
@@ -1096,7 +1100,7 @@ namespace DayZeEditor
         #endregion npc
         #region quests
         public Quests CurrentQuest { get; private set; }
-
+        public BindingList<string> QuestActions { get; private set; }
 
         public void setupquests()
         {
@@ -2524,6 +2528,12 @@ namespace DayZeEditor
             ObjectivesActionExcludedNamesLB.DataSource = CurrentAction.ExcludedClassNames;
 
             useraction = true;
+        }
+        private void darkButton71_Click(object sender, EventArgs e)
+        {
+            QuestObjectivesAction CurrentAction = CurrentTreeNodeTag as QuestObjectivesAction;
+            CurrentAction.ActionNames.Add(ObjectivesActionsCB.GetItemText(ObjectivesActionsCB.SelectedItem));
+            CurrentTreeNodeTag.isDirty = true;
         }
         private void darkButton39_Click(object sender, EventArgs e)
         {
@@ -4527,6 +4537,7 @@ namespace DayZeEditor
         {
 
         }
+
 
         #endregion Persistant Player Data
 

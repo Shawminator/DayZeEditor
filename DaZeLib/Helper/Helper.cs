@@ -16,6 +16,10 @@ namespace DayZeLib
 {
     public static class Helper
     {
+        public static Color longToColor(long dec)
+        {
+            return Color.FromArgb((int)(dec & 0xFF), (int)((dec >> 24) & 0xFF), (int)((dec >> 16) & 0xFF), (int)((dec >> 8) & 0xFF));
+        }
         public static Stream GenerateStreamFromString(string s)
         {
             var stream = new MemoryStream();

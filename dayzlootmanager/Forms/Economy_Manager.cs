@@ -105,7 +105,9 @@ namespace DayZeEditor
             Loadweather();
             Loadignorelist();
             LoadMapgrouProto();
+            LoadTerritories();
             SetSummarytiers();
+            
             
             NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
 
@@ -357,6 +359,21 @@ namespace DayZeEditor
                     midifiedfiles.Add(Path.GetFileName(currentproject.mapgroupproto.Filename));
                 }
             }
+            if (currentproject.territoriesList != null)
+            {
+                foreach (territoriesConfig territoriesConfig in currentproject.territoriesList)
+                {
+                    if (territoriesConfig.isDirty)
+                    {
+                        if (currentproject.Createbackups)
+                            territoriesConfig.SaveTerritories(SaveTime);
+                        else
+                            territoriesConfig.SaveTerritories();
+                        territoriesConfig.isDirty = false;
+                        midifiedfiles.Add(Path.GetFileName(territoriesConfig.Filename));
+                    }
+                }
+            }
             string message = "The Following Files were saved....\n";
             int i = 0;
             foreach (string l in midifiedfiles)
@@ -598,6 +615,12 @@ namespace DayZeEditor
                 MapGroupProtoTabButton.Checked = true;
 
         }
+        private void TerritoriesTabButton_Click(object sender, EventArgs e)
+        {
+            EconomyTabPage.SelectedIndex = 15;
+            if (EconomyTabPage.SelectedIndex == 15)
+                TerritoriesTabButton.Checked = true;
+        }
         private void EconomyTabPage_SelectedIndexChanged(object sender, EventArgs e)
         {
             EventsTabButton.Checked = false;
@@ -615,6 +638,7 @@ namespace DayZeEditor
             WeatherTabButton.Checked = false;
             CFGignoreListTabButton.Checked = false;
             MapGroupProtoTabButton.Checked = false;
+            TerritoriesTabButton.Checked = false;
             EconomySearchBoxTB.Visible = false;
             EconomyFindButton.Visible = false;
             economySearchNextButton.Visible = false;
@@ -859,7 +883,7 @@ namespace DayZeEditor
                 else
                     currentTypesFile = ModTypes.FirstOrDefault(x => x.modname == typesfile);
                 isUserInteraction = false;
-                tabControl1.SelectedIndex = 1;
+                tabControl1.SelectedIndex = 0;
                 currentlootpart = usingtreenode.Tag as typesType;
                 PopulateLootPartInfo();
                 isUserInteraction = true;
@@ -877,7 +901,7 @@ namespace DayZeEditor
             }
             else if (usingtreenode.Tag != null && usingtreenode.Tag is string)
             {
-                tabControl1.SelectedIndex = 0;
+                tabControl1.SelectedIndex = 1;
                 currentcollection = usingtreenode.Tag.ToString();
                 darkLabel2.Text = currentcollection;
                 TreeNode parent = usingtreenode.Parent;
@@ -6364,5 +6388,478 @@ namespace DayZeEditor
             currentproject.mapgroupproto.isDirty = true;
         }
         #endregion
+
+        #region territories
+        public decimal MissionMapscale = 1;
+        public territoriesConfig currentterritoriesConfig;
+        public territorytypeTerritory currentterritorytypeTerritory;
+        public territorytypeTerritoryZone currentterritorytypeTerritoryZone;
+
+        private void LoadTerritories()
+        {
+            Console.WriteLine("Loading Territoires");
+            isUserInteraction = false;
+
+            if (currentproject.territoriesList.Count > 0)
+                populateterritorytreeview();
+
+
+            pictureBox6.BackgroundImage = Image.FromFile(Application.StartupPath + currentproject.MapPath); // Map Size is 15360 x 15360, 0,0 bottom left, middle 7680 x 7680
+            pictureBox6.Size = new Size(currentproject.MapSize, currentproject.MapSize);
+            pictureBox6.Paint += new PaintEventHandler(DrawTerritories);
+
+            trackBar6.Value = 1;
+            SetsMissionScale();
+            panel5.AutoScrollPosition = new Point(0, 0);
+
+            isUserInteraction = true;
+        }
+        private void trackBar6_MouseUp(object sender, MouseEventArgs e)
+        {
+            MissionMapscale = trackBar6.Value;
+            SetsMissionScale();
+        }
+        private Point _mouseLastPosition;
+        private Point _newscrollPosition;
+        private void pictureBox6_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                _mouseLastPosition = e.Location;
+            }
+        }
+        private void pictureBox6_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Point changePoint = new Point(e.Location.X - _mouseLastPosition.X, e.Location.Y - _mouseLastPosition.Y);
+                _newscrollPosition = new Point(-panel5.AutoScrollPosition.X - changePoint.X, -panel5.AutoScrollPosition.Y - changePoint.Y);
+                if (_newscrollPosition.X <= 0)
+                    _newscrollPosition.X = 0;
+                if (_newscrollPosition.Y <= 0)
+                    _newscrollPosition.Y = 0;
+                panel5.AutoScrollPosition = _newscrollPosition;
+                pictureBox6.Invalidate();
+            }
+        }
+        private void pictureBox6_MouseEnter(object sender, EventArgs e)
+        {
+            if (pictureBox6.Focused == false)
+            {
+                pictureBox6.Focus();
+                panel5.AutoScrollPosition = _newscrollPosition;
+                pictureBox6.Invalidate();
+            }
+        }
+        private void PicBox_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta < 0)
+            {
+                ZoomOut();
+            }
+            else
+            {
+                ZoomIn();
+            }
+
+        }
+        private void ZoomIn()
+        {
+            int oldpictureboxhieght = pictureBox6.Height;
+            int oldpitureboxwidht = pictureBox6.Width;
+            Point oldscrollpos = panel5.AutoScrollPosition;
+            int tbv = trackBar6.Value;
+            int newval = tbv + 1;
+            if (newval >= 20)
+                newval = 20;
+            trackBar6.Value = newval;
+            MissionMapscale = trackBar6.Value;
+            SetsMissionScale();
+            if (pictureBox6.Height > panel5.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox6.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panel5.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox6.Width > panel5.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox6.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panel5.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox6.Invalidate();
+        }
+        private void ZoomOut()
+        {
+            int oldpictureboxhieght = pictureBox6.Height;
+            int oldpitureboxwidht = pictureBox6.Width;
+            Point oldscrollpos = panel5.AutoScrollPosition;
+            int tbv = trackBar6.Value;
+            int newval = tbv - 1;
+            if (newval <= 1)
+                newval = 1;
+            trackBar6.Value = newval;
+            MissionMapscale = trackBar6.Value;
+            SetsMissionScale();
+            if (pictureBox6.Height > panel5.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox6.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panel5.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox6.Width > panel5.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox6.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panel5.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox6.Invalidate();
+        }
+        private void SetsMissionScale()
+        {
+
+            decimal scalevalue = MissionMapscale * (decimal)0.05;
+            decimal mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            pictureBox6.Size = new Size(newsize, newsize);
+        }
+        private void getSquare(Graphics drawingArea, Pen penToUse, Point center, int radius)
+        {
+            Rectangle rect2 = new Rectangle(center.X - radius, center.Y - radius, radius * 2, radius * 2);
+            Pen pen = new Pen(Color.LimeGreen)
+            {
+                Width = 6,
+                DashStyle = System.Drawing.Drawing2D.DashStyle.Dash
+            };
+            drawingArea.DrawRectangle(pen, rect2);
+        }
+        private void DrawTerritories(object sender, PaintEventArgs e)
+        {
+            if (currentterritorytypeTerritory == null) return;
+            decimal scalevalue = MissionMapscale * (decimal)0.05;
+            if(TerritorieszonesCB.Checked)
+            {
+                foreach (territorytypeTerritory t in currentterritoriesConfig.territorytype.territory)
+                {
+                    if (!t.Equals(currentterritorytypeTerritory))
+                    {
+                        foreach (territorytypeTerritoryZone newpos in t.zone)
+                        {
+                            int centerX = (int)(Math.Round(newpos.x, 0) * scalevalue);
+                            int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(newpos.z, 0) * scalevalue);
+
+                            int radius = (int)(newpos.r * scalevalue);
+                            Point center = new Point(centerX, centerY);
+                            Pen pen = new Pen(Color.Red)
+                            {
+                                Width = 4
+                            };
+                            string col = string.Format("{0:X}", t.color);
+                            pen.Color = ColorTranslator.FromHtml("#" + col.Substring(2));
+                            getCircle(e.Graphics, pen, center, radius);
+                        }
+                    }
+                }
+            }
+            foreach (territorytypeTerritoryZone newpos in currentterritorytypeTerritory.zone)
+            {
+                int centerX = (int)(Math.Round(newpos.x, 0) * scalevalue);
+                int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(newpos.z, 0) * scalevalue);
+
+                int radius = (int)(newpos.r * scalevalue);
+                Point center = new Point(centerX, centerY);
+                Pen pen = new Pen(Color.Red)
+                {
+                    Width = 4
+                };
+                string col = string.Format("{0:X}", currentterritorytypeTerritory.color);
+                pen.Color = ColorTranslator.FromHtml("#" + col.Substring(2));
+                getCircle(e.Graphics, pen, center, radius);
+                if (newpos.Equals(currentterritorytypeTerritoryZone))
+                {
+                    getSquare(e.Graphics, pen, center, radius);
+                }
+            }
+        }
+        private void pictureBox6_DoubleClick(object sender, EventArgs e)
+        {
+            if (e is MouseEventArgs mouseEventArgs)
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                decimal scalevalue = MissionMapscale * (decimal)0.05;
+                decimal mapsize = currentproject.MapSize;
+                int newsize = (int)(mapsize * scalevalue);
+                currentterritorytypeTerritoryZone.x = (decimal)(mouseEventArgs.X / scalevalue);
+                currentterritorytypeTerritoryZone.z = (decimal)((newsize - mouseEventArgs.Y) / scalevalue);
+                Cursor.Current = Cursors.Default;
+                currentterritoriesConfig.isDirty = true;
+                pictureBox6.Invalidate();
+            }
+        }
+
+        private void populateterritorytreeview()
+        {
+            Console.WriteLine("populating Territories treeView");
+            TerritoriesTreeview.Nodes.Clear();
+            TreeNode root = new TreeNode(Path.GetFileName(filename))
+            {
+                Tag = "Parent"
+            };
+            //Set Vanilla Treenode types
+            TreeNode Ignorelist = new TreeNode("Territories")
+            {
+                Tag = "Territories"
+            };
+            foreach (territoriesConfig territoriesConfig in currentproject.territoriesList)
+            {
+                TreeNode typenode = new TreeNode(Path.GetFileNameWithoutExtension(territoriesConfig.Filename))
+                {
+                    Tag = territoriesConfig
+                };
+                int name = 1;
+                foreach (territorytypeTerritory territorytypeTerritory in territoriesConfig.territorytype.territory)
+                {
+                    TreeNode typeterritorynode = new TreeNode("Territory" + name.ToString())
+                    {
+                        Tag = territorytypeTerritory
+                    };
+                    name++;
+                    typenode.Nodes.Add(typeterritorynode);
+                }
+                Ignorelist.Nodes.Add(typenode);
+            }
+            Console.WriteLine("All Territory files Populated......");
+            //treeView1.Nodes.Add(root);
+            root.Nodes.Add(Ignorelist);
+            TerritoriesTreeview.Nodes.Add(root);
+        }
+        private void TerritoriesTreeview_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            TreeNode usingtreenode = e.Node;
+            if (e.Node.Tag is string)
+            {
+
+            }
+            else if (e.Node.Tag is territoriesConfig)
+            {
+                currentterritoriesConfig = e.Node.Tag as territoriesConfig;
+                currentterritorytypeTerritory = null;
+                if (e.Button == MouseButtons.Right)
+                {
+                    TerritoryContextMenu.Show(Cursor.Position);
+                    addNewTerritoryToolStripMenuItem.Visible = true;
+                    removeTerritoryToolStripMenuItem.Visible = false;
+                }
+            }
+            else if (e.Node.Tag is territorytypeTerritory)
+            {
+                currentterritorytypeTerritory = e.Node.Tag as territorytypeTerritory;
+                currentterritoriesConfig = e.Node.Parent.Tag as territoriesConfig;
+
+                TerritoriesZonesLB.DisplayMember = "DisplayName";
+                TerritoriesZonesLB.ValueMember = "Value";
+                TerritoriesZonesLB.DataSource = currentterritorytypeTerritory.zone;
+
+                pictureBox6.Invalidate();
+                pictureBox3.Invalidate();
+
+                if (e.Button == MouseButtons.Right)
+                {
+                    TerritoryContextMenu.Show(Cursor.Position);
+                    addNewTerritoryToolStripMenuItem.Visible = false;
+                    removeTerritoryToolStripMenuItem.Visible = true;
+                }
+            }
+            TerritoriesTreeview.SelectedNode = usingtreenode;
+        }
+        private void TerritorieszonesCB_CheckedChanged(object sender, EventArgs e)
+        {
+            pictureBox6.Invalidate();
+            pictureBox3.Invalidate();
+        }
+        private void TerritoriesZonesLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            currentterritorytypeTerritoryZone = TerritoriesZonesLB.SelectedItem as territorytypeTerritoryZone;
+            if (currentterritorytypeTerritoryZone == null) return;
+            pictureBox6.Invalidate();
+            isUserInteraction = false;
+            TerritoriesZonesRadiusNUD.Value = currentterritorytypeTerritoryZone.r;
+            TerritoriesZonesStaticMInNUD.Value = currentterritorytypeTerritoryZone.smin;
+            TerritoriesZonesStaticMaxNUD.Value = currentterritorytypeTerritoryZone.smax;
+            TerritoriesZonesDynamicMaxNUD.Value = currentterritorytypeTerritoryZone.dmin;
+            TerritoriesZonesStaticMaxNUD.Value = currentterritorytypeTerritoryZone.dmax;
+            RadioButton rb = groupBox74.Controls
+                              .OfType<RadioButton>()
+                              .FirstOrDefault(x => x.Text == currentterritorytypeTerritoryZone.name);
+            if (rb != null)
+                rb.Checked = true;
+            else
+            {
+                TerritoriesZonesDynamicRB.Checked = true;
+                TerritoriesZonesDynamicTB.Text = currentterritorytypeTerritoryZone.name;
+            }
+            pictureBox3.Invalidate();
+            isUserInteraction = true;
+        }
+        private void TerritoriesZonesAIUSage_CheckedChanged(object sender, EventArgs e)
+        {
+            if (TerritoriesZonesDynamicRB.Checked)
+            {
+                TerritoriesZonesDynamicTB.Visible = true;
+            }
+            else
+            {
+                TerritoriesZonesDynamicTB.Visible = false;
+            }
+            if (!isUserInteraction) return;
+            RadioButton rb = groupBox74.Controls
+                              .OfType<RadioButton>()
+                              .FirstOrDefault(x => x.Checked == true);
+            if (rb.Text == "Dynamic")
+                currentterritorytypeTerritoryZone.name = TerritoriesZonesDynamicTB.Text;
+            else
+                currentterritorytypeTerritoryZone.name = rb.Text;
+            TerritoriesZonesLB.Refresh();
+            currentterritoriesConfig.isDirty = true;
+
+        }
+        private void TerritoriesZonesDynamicTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            currentterritorytypeTerritoryZone.name = TerritoriesZonesDynamicTB.Text;
+            currentterritoriesConfig.isDirty = true;
+            TerritoriesZonesLB.Refresh();
+        }
+        private void TerritoriesZonesRadiusNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            currentterritorytypeTerritoryZone.r = (int)TerritoriesZonesRadiusNUD.Value;
+            currentterritoriesConfig.isDirty = true;
+            pictureBox6.Invalidate();
+        }
+        private void TerritoriesZonesStaticMInNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            currentterritorytypeTerritoryZone.smin = (int)TerritoriesZonesStaticMInNUD.Value;
+            currentterritoriesConfig.isDirty = true;
+        }
+        private void TerritoriesZonesStaticMaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+           currentterritorytypeTerritoryZone.smax = (int)TerritoriesZonesStaticMaxNUD.Value;
+            currentterritoriesConfig.isDirty = true;
+        }
+        private void TerritoriesZonesDynamicMinNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            currentterritorytypeTerritoryZone.dmin = (int)TerritoriesZonesDynamicMinNUD.Value;
+            currentterritoriesConfig.isDirty = true;
+        }
+        private void TerritoriesZonesDynamicMaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            currentterritorytypeTerritoryZone.dmax = (int)TerritoriesZonesDynamicMaxNUD.Value;
+            currentterritoriesConfig.isDirty = true;
+        }
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            if (currentterritorytypeTerritory == null) return;
+            PictureBox pb = sender as PictureBox;
+            ColorPickerDialog cpick = new ColorPickerDialog();
+            cpick.StartPosition = FormStartPosition.CenterParent;
+            string col = string.Format("{0:X}", currentterritorytypeTerritory.color);
+            cpick.Color = ColorTranslator.FromHtml("#" + col.Substring(2));
+            if (cpick.ShowDialog() == DialogResult.OK)
+            {
+                long answer = Convert.ToInt64(cpick.Color.Name.ToLower(), 16);
+                currentterritorytypeTerritory.color = answer;
+                pb.Invalidate();
+                pictureBox6.Invalidate();
+                currentterritoriesConfig.isDirty = true;
+            }
+        }
+        private void pictureBox3_Paint(object sender, PaintEventArgs e)
+        {
+            if (currentterritorytypeTerritory == null) return;
+            PictureBox pb = sender as PictureBox;
+            Rectangle region;
+            region = pb.ClientRectangle;
+            string col = string.Format("{0:X}", currentterritorytypeTerritory.color);
+            Color colour = ColorTranslator.FromHtml("#" + col.Substring(2));
+            using (Brush brush = new SolidBrush(colour))
+            {
+                e.Graphics.FillRectangle(brush, region);
+            }
+            e.Graphics.DrawRectangle(SystemPens.ControlText, region.Left, region.Top, region.Width - 1, region.Height - 1);
+           
+
+        }
+        private void darkButton65_Click(object sender, EventArgs e)
+        {
+            territorytypeTerritoryZone newzone = new territorytypeTerritoryZone()
+            {
+                name = "Graze",
+                smin = 0,
+                smax = 0,
+                dmin = 0,
+                dmax = 0,
+                x = currentproject.MapSize / 2,
+                z = currentproject.MapSize / 2,
+                r = 50
+            };
+            currentterritorytypeTerritory.zone.Add(newzone);
+            pictureBox3.Invalidate();
+            pictureBox6.Invalidate();
+            TerritoriesZonesLB.Refresh();
+            currentterritoriesConfig.isDirty = true;
+        }
+        private void darkButton64_Click(object sender, EventArgs e)
+        {
+
+            if (TerritoriesZonesLB.SelectedItems.Count == 0) return;
+            territorytypeTerritoryZone currentpos = TerritoriesZonesLB.SelectedItem as territorytypeTerritoryZone;
+            currentterritorytypeTerritory.zone.Remove(currentpos);
+            pictureBox3.Invalidate();
+            pictureBox6.Invalidate();
+            TerritoriesZonesLB.Refresh();
+            currentterritoriesConfig.isDirty = true;
+        }
+        private void addNewTerritoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            territorytypeTerritory newterritory = new territorytypeTerritory()
+            {
+                zone = new BindingList<territorytypeTerritoryZone>(),
+                color = 4294967295
+            };
+            currentterritoriesConfig.territorytype.territory.Add(newterritory);
+
+            var savedExpansionState = TerritoriesTreeview.Nodes.GetExpansionState();
+            TerritoriesTreeview.BeginUpdate();
+            populateterritorytreeview();
+            TerritoriesTreeview.Nodes.SetExpansionState(savedExpansionState);
+            TerritoriesTreeview.EndUpdate();
+
+            currentterritoriesConfig.isDirty = true;
+        }
+        private void removeTerritoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TreeNode usingtreenode = TerritoriesTreeview.SelectedNode.Parent.Nodes[0];
+            currentterritoriesConfig.territorytype.territory.Remove(currentterritorytypeTerritory);
+            currentterritorytypeTerritory = null;
+            currentterritorytypeTerritoryZone = null;
+            TreeNode parentnode = TerritoriesTreeview.SelectedNode.Parent;
+            var savedExpansionState = TerritoriesTreeview.Nodes.GetExpansionState();
+            TerritoriesTreeview.BeginUpdate();
+            populateterritorytreeview();
+            TerritoriesTreeview.Nodes.SetExpansionState(savedExpansionState);
+            TerritoriesTreeview.EndUpdate();
+            TerritoriesZonesLB.Refresh();
+            currentterritoriesConfig.isDirty = true;
+        }
+        #endregion territories
     }
 }

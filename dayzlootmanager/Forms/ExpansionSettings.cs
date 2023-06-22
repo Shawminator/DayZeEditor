@@ -1243,8 +1243,8 @@ namespace DayZeEditor
         #endregion savefiles
 
         #region Airdropsettings
-        public AirdropContainers ADC;
-        public containerLoot CL;
+        public AirdropContainers CurrentAirdropContainer;
+        public containerLoot CurrentAirdropContainerLoot;
         private NoBuildZones currentZone;
         public lootVarients LootVarients;
 
@@ -1354,17 +1354,17 @@ namespace DayZeEditor
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBox2.SelectedItems.Count < 1) return;
-            ADC = listBox2.SelectedItem as AirdropContainers;
+            CurrentAirdropContainer = listBox2.SelectedItem as AirdropContainers;
             useraction = false;
-            comboBox2.SelectedItem = getContainertype(ADC.Container);
-            numericUpDown8.Value = ADC.Usage;
-            numericUpDown32.Value = ADC.FallSpeed;
-            numericUpDown9.Value = (decimal)ADC.Weight;
-            numericUpDown10.Value = ADC.ItemCount;
-            numericUpDown11.Value = ADC.InfectedCount;
-            checkBox5.Checked = ADC.SpawnInfectedForPlayerCalledDrops.Equals(1) ? true : false;
-            darkLabel19.Text = "Number of Loot Items = " + ADC.Loot.Count.ToString();
-            darkLabel20.Text = "Number of Infected = " + ADC.Infected.Count.ToString();
+            comboBox2.SelectedItem = getContainertype(CurrentAirdropContainer.Container);
+            numericUpDown8.Value = CurrentAirdropContainer.Usage;
+            numericUpDown32.Value = CurrentAirdropContainer.FallSpeed;
+            numericUpDown9.Value = (decimal)CurrentAirdropContainer.Weight;
+            numericUpDown10.Value = CurrentAirdropContainer.ItemCount;
+            numericUpDown11.Value = CurrentAirdropContainer.InfectedCount;
+            checkBox5.Checked = CurrentAirdropContainer.SpawnInfectedForPlayerCalledDrops.Equals(1) ? true : false;
+            darkLabel19.Text = "Number of Loot Items = " + CurrentAirdropContainer.Loot.Count.ToString();
+            darkLabel20.Text = "Number of Infected = " + CurrentAirdropContainer.Infected.Count.ToString();
             populatelistbox();
             populateZombies();
             useraction = true;
@@ -1373,38 +1373,38 @@ namespace DayZeEditor
         {
             listBox1.DisplayMember = "DisplayName";
             listBox1.ValueMember = "Value";
-            listBox1.DataSource = ADC.Loot;
+            listBox1.DataSource = CurrentAirdropContainer.Loot;
         }
         private void populateZombies()
         {
             listBox3.DisplayMember = "DisplayName";
             listBox3.ValueMember = "Value";
-            listBox3.DataSource = ADC.Infected;
+            listBox3.DataSource = CurrentAirdropContainer.Infected;
         }
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBox1.SelectedItems.Count < 1) return;
-            CL = listBox1.SelectedItem as containerLoot;
+            CurrentAirdropContainerLoot = listBox1.SelectedItem as containerLoot;
             useraction = false;
-            textBox1.Text = CL.Name;
-            if (CL.Chance > 1)
-                CL.Chance = 1;
-            trackBar1.Value = (int)(CL.Chance * 1000);
-            numericUpDown12.Value = CL.Max;
-            numericUpDown33.Value = CL.Min;
-            numericUpDown31.Value = CL.QuantityPercent;
+            textBox1.Text = CurrentAirdropContainerLoot.Name;
+            if (CurrentAirdropContainerLoot.Chance > 1)
+                CurrentAirdropContainerLoot.Chance = 1;
+            trackBar1.Value = (int)(CurrentAirdropContainerLoot.Chance * 1000);
+            numericUpDown12.Value = CurrentAirdropContainerLoot.Max;
+            numericUpDown33.Value = CurrentAirdropContainerLoot.Min;
+            numericUpDown31.Value = CurrentAirdropContainerLoot.QuantityPercent;
             listBox4.DisplayMember = "DisplayName";
             listBox4.ValueMember = "Value";
-            listBox4.DataSource = CL.Attachments;
+            listBox4.DataSource = CurrentAirdropContainerLoot.Attachments;
 
             listBox21.DataSource = null;
             listBox22.DataSource = null;
 
-            if (CL.Variants.Count > 0)
+            if (CurrentAirdropContainerLoot.Variants.Count > 0)
             {
                 listBox21.DisplayMember = "DisplayName";
                 listBox21.ValueMember = "Value";
-                listBox21.DataSource = CL.Variants;
+                listBox21.DataSource = CurrentAirdropContainerLoot.Variants;
             }
             useraction = true;
         }
@@ -1424,13 +1424,13 @@ namespace DayZeEditor
         }
         private void darkButton2_Click(object sender, EventArgs e)
         {
-            ADC.Loot.Remove(CL);
+            CurrentAirdropContainer.Loot.Remove(CurrentAirdropContainerLoot);
             AirdropsettingsJson.isDirty = true;
             populatelistbox();
         }
         private void darkButton4_Click(object sender, EventArgs e)
         {
-            AirdropsettingsJson.Containers.Remove(ADC);
+            AirdropsettingsJson.Containers.Remove(CurrentAirdropContainer);
             AirdropsettingsJson.isDirty = true;
             PopelateContainerList();
         }
@@ -1444,21 +1444,21 @@ namespace DayZeEditor
             }
             foreach (string s in removezombies)
             {
-                ADC.Infected.Remove(s);
+                CurrentAirdropContainer.Infected.Remove(s);
                 AirdropsettingsJson.isDirty = true;
             }
-            darkLabel20.Text = "Number of Infected = " + ADC.Infected.Count.ToString();
+            darkLabel20.Text = "Number of Infected = " + CurrentAirdropContainer.Infected.Count.ToString();
         }
         private void darkButton6_Click(object sender, EventArgs e)
         {
             foreach (var item in listBox5.SelectedItems)
             {
                 string zombie = item.ToString();
-                if (!ADC.Infected.Contains(zombie))
+                if (!CurrentAirdropContainer.Infected.Contains(zombie))
                 {
-                    ADC.Infected.Add(zombie);
+                    CurrentAirdropContainer.Infected.Add(zombie);
                     AirdropsettingsJson.isDirty = true;
-                    darkLabel20.Text = "Number of Infected = " + ADC.Infected.Count.ToString();
+                    darkLabel20.Text = "Number of Infected = " + CurrentAirdropContainer.Infected.Count.ToString();
                 }
                 else
                 {
@@ -1469,11 +1469,11 @@ namespace DayZeEditor
         private void darkButton84_Click(object sender, EventArgs e)
         {
             string zombie = textBox20.Text;
-            if (!ADC.Infected.Contains(zombie))
+            if (!CurrentAirdropContainer.Infected.Contains(zombie))
             {
-                ADC.Infected.Add(zombie);
+                CurrentAirdropContainer.Infected.Add(zombie);
                 AirdropsettingsJson.isDirty = true;
-                darkLabel20.Text = "Number of Infected = " + ADC.Infected.Count.ToString();
+                darkLabel20.Text = "Number of Infected = " + CurrentAirdropContainer.Infected.Count.ToString();
             }
             else
             {
@@ -1528,9 +1528,9 @@ namespace DayZeEditor
                         Min = 0,
                         Variants = new BindingList<lootVarients>()
                     };
-                    ADC.Loot.Add(Newloot);
+                    CurrentAirdropContainer.Loot.Add(Newloot);
                     AirdropsettingsJson.isDirty = true;
-                    darkLabel19.Text = "Number of Loot Items = " + ADC.Loot.Count.ToString();
+                    darkLabel19.Text = "Number of Loot Items = " + CurrentAirdropContainer.Loot.Count.ToString();
                 }
             }
         }
@@ -1548,9 +1548,9 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    if (!CL.Attachments.Contains(l))
+                    if (!CurrentAirdropContainerLoot.Attachments.Contains(l))
                     {
-                        CL.Attachments.Add(l);
+                        CurrentAirdropContainerLoot.Attachments.Add(l);
                         AirdropsettingsJson.isDirty = true;
                     }
                     else
@@ -1560,14 +1560,14 @@ namespace DayZeEditor
         }
         private void darkButton10_Click(object sender, EventArgs e)
         {
-            CL.Attachments.Remove(listBox4.GetItemText(listBox4.SelectedItem));
+            CurrentAirdropContainerLoot.Attachments.Remove(listBox4.GetItemText(listBox4.SelectedItem));
             AirdropsettingsJson.isDirty = true;
         }
         private void numericUpDown11_ValueChanged(object sender, EventArgs e)
         {
             if (useraction)
             {
-                ADC.InfectedCount = (int)numericUpDown11.Value;
+                CurrentAirdropContainer.InfectedCount = (int)numericUpDown11.Value;
                 AirdropsettingsJson.isDirty = true;
             }
         }
@@ -1575,7 +1575,7 @@ namespace DayZeEditor
         {
             if (useraction)
             {
-                ADC.Container = getContainerString((ContainerTypes)comboBox2.SelectedItem);
+                CurrentAirdropContainer.Container = getContainerString((ContainerTypes)comboBox2.SelectedItem);
                 AirdropsettingsJson.isDirty = true;
             }
         }
@@ -1583,7 +1583,7 @@ namespace DayZeEditor
         {
             if (useraction)
             {
-                ADC.Usage = (int)numericUpDown8.Value;
+                CurrentAirdropContainer.Usage = (int)numericUpDown8.Value;
                 AirdropsettingsJson.isDirty = true;
 
             }
@@ -1592,7 +1592,7 @@ namespace DayZeEditor
         {
             if (useraction)
             {
-                ADC.FallSpeed = numericUpDown32.Value;
+                CurrentAirdropContainer.FallSpeed = numericUpDown32.Value;
                 AirdropsettingsJson.isDirty = true;
             }
         }
@@ -1600,7 +1600,7 @@ namespace DayZeEditor
         {
             if (useraction)
             {
-                ADC.Weight = (decimal)numericUpDown9.Value;
+                CurrentAirdropContainer.Weight = (decimal)numericUpDown9.Value;
                 AirdropsettingsJson.isDirty = true;
             }
         }
@@ -1608,21 +1608,21 @@ namespace DayZeEditor
         {
             if (useraction)
             {
-                ADC.ItemCount = (int)numericUpDown10.Value;
+                CurrentAirdropContainer.ItemCount = (int)numericUpDown10.Value;
                 AirdropsettingsJson.isDirty = true;
             }
         }
         private void checkBox5_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            ADC.SpawnInfectedForPlayerCalledDrops = checkBox5.Checked == true ? 1 : 0;
+            CurrentAirdropContainer.SpawnInfectedForPlayerCalledDrops = checkBox5.Checked == true ? 1 : 0;
             AirdropsettingsJson.isDirty = true;
         }
         private void numericUpDown12_ValueChanged(object sender, EventArgs e)
         {
             if (useraction)
             {
-                CL.Max = (int)numericUpDown12.Value;
+                CurrentAirdropContainerLoot.Max = (int)numericUpDown12.Value;
                 AirdropsettingsJson.isDirty = true;
             }
         }
@@ -1630,7 +1630,7 @@ namespace DayZeEditor
         {
             if (useraction)
             {
-                CL.Min = (int)numericUpDown33.Value;
+                CurrentAirdropContainerLoot.Min = (int)numericUpDown33.Value;
                 AirdropsettingsJson.isDirty = true;
             }
         }
@@ -1638,7 +1638,7 @@ namespace DayZeEditor
         {
             if (useraction)
             {
-                CL.QuantityPercent = (int)numericUpDown31.Value;
+                CurrentAirdropContainerLoot.QuantityPercent = (int)numericUpDown31.Value;
                 AirdropsettingsJson.isDirty = true;
             }
         }
@@ -1674,7 +1674,6 @@ namespace DayZeEditor
                 AirdropsettingsJson.isDirty = true;
             }
         }
-
         private void checkBox8_CheckedChanged(object sender, EventArgs e)
         {
             if (useraction)
@@ -1739,7 +1738,6 @@ namespace DayZeEditor
                 AirdropsettingsJson.isDirty = true;
             }
         }
-
         private void trackBar1_ValueChanged(object sender, EventArgs e)
         {
             darkLabel23.Text = ((decimal)(trackBar1.Value) / 10).ToString() + "%";
@@ -1750,13 +1748,13 @@ namespace DayZeEditor
         }
         private void trackBar1_MouseUp(object sender, MouseEventArgs e)
         {
-            if (CL == null) return;
-            CL.Chance = ((decimal)trackBar1.Value) / 1000;
+            if (CurrentAirdropContainerLoot == null) return;
+            CurrentAirdropContainerLoot.Chance = ((decimal)trackBar1.Value) / 1000;
             AirdropsettingsJson.isDirty = true;
         }
         private void darkButton52_Click(object sender, EventArgs e)
         {
-            foreach (containerLoot cl in ADC.Loot)
+            foreach (containerLoot cl in CurrentAirdropContainer.Loot)
             {
                 cl.Chance = ((decimal)trackBar1.Value) / 1000;
             }
@@ -1788,11 +1786,11 @@ namespace DayZeEditor
             if (result == DialogResult.OK)
             {
                 List<string> addedtypes = form.addedtypes.ToList();
-                if (CL.Variants.Count == 0)
+                if (CurrentAirdropContainerLoot.Variants.Count == 0)
                 {
                     listBox21.DisplayMember = "DisplayName";
                     listBox21.ValueMember = "Value";
-                    listBox21.DataSource = CL.Variants;
+                    listBox21.DataSource = CurrentAirdropContainerLoot.Variants;
                 }
                 foreach (string l in addedtypes)
                 {
@@ -1802,7 +1800,7 @@ namespace DayZeEditor
                         Attachments = new BindingList<string>(),
                         Chance = (decimal)0.5,
                     };
-                    CL.Variants.Add(newlootVarients);
+                    CurrentAirdropContainerLoot.Variants.Add(newlootVarients);
                     AirdropsettingsJson.isDirty = true;
                 }
                
@@ -1810,10 +1808,10 @@ namespace DayZeEditor
         }
         private void darkButton56_Click(object sender, EventArgs e)
         {
-            CL.Variants.Remove(LootVarients);
+            CurrentAirdropContainerLoot.Variants.Remove(LootVarients);
             listBox22.DataSource = null;
             listBox21.SelectedIndex = -1;
-            if (CL.Variants.Count > 0)
+            if (CurrentAirdropContainerLoot.Variants.Count > 0)
             {
                 listBox21.SelectedIndex = 0;
             }
@@ -1848,12 +1846,25 @@ namespace DayZeEditor
             LootVarients.Attachments.Remove(listBox22.GetItemText(listBox22.SelectedItem));
             AirdropsettingsJson.isDirty = true;
         }
-
         private void darkButton97_Click(object sender, EventArgs e)
         {
 
         }
-
+        private void darkButton97_Click_1(object sender, EventArgs e)
+        {
+            string lootitem = CurrentAirdropContainerLoot.Name;
+            BindingList<Spawnabletypesconfig> spawnabletypes = currentproject.spawnabletypesList;
+            foreach(Spawnabletypesconfig stc in spawnabletypes)
+            {
+                foreach(spawnabletypesType st in stc.spawnabletypes.type)
+                {
+                    if(st.name == lootitem)
+                    {
+                        
+                    }
+                }
+            }
+        }
 
         #endregion Airdropsettings
 
@@ -4303,7 +4314,7 @@ namespace DayZeEditor
         }
         private void darkButton96_Click(object sender, EventArgs e)
         {
-            currentAirdropmissionfile.Loot.Remove(CL);
+            currentAirdropmissionfile.Loot.Remove(CurrentAirdropContainerLoot);
             currentAirdropmissionfile.isDirty = true;
             Specificpopulatelistbox();
         }
@@ -4407,11 +4418,11 @@ namespace DayZeEditor
             if (result == DialogResult.OK)
             {
                 List<string> addedtypes = form.addedtypes.ToList();
-                if (CL.Variants.Count == 0)
+                if (CurrentAirdropContainerLoot.Variants.Count == 0)
                 {
                     listBox28.DisplayMember = "DisplayName";
                     listBox28.ValueMember = "Value";
-                    listBox28.DataSource = CL.Variants;
+                    listBox28.DataSource = CurrentAirdropContainerLoot.Variants;
                 }
                 foreach (string l in addedtypes)
                 {

@@ -918,6 +918,38 @@ namespace DayZeEditor
             this.tabControl22 = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.MapGroupProtoGroupsLB = new System.Windows.Forms.ListBox();
+            this.TerritoriesTab = new System.Windows.Forms.TabPage();
+            this.TerritorieszonesCB = new System.Windows.Forms.CheckBox();
+            this.panel5 = new TreeViewMS.PanelEx();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.trackBar6 = new System.Windows.Forms.TrackBar();
+            this.tabControl23 = new System.Windows.Forms.TabControl();
+            this.tabPage18 = new System.Windows.Forms.TabPage();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.TerritoriesTreeview = new TreeViewMS.TreeViewMS();
+            this.label154 = new System.Windows.Forms.Label();
+            this.TerritoriesZonesLB = new System.Windows.Forms.ListBox();
+            this.groupBox74 = new System.Windows.Forms.GroupBox();
+            this.TerritoriesZonesDynamicRB = new System.Windows.Forms.RadioButton();
+            this.TerritoriesZonesHuntingGroundRB = new System.Windows.Forms.RadioButton();
+            this.TerritoriesZonesGrazeRB = new System.Windows.Forms.RadioButton();
+            this.TerritoriesZonesWaterRB = new System.Windows.Forms.RadioButton();
+            this.TerritoriesZonesRestRB = new System.Windows.Forms.RadioButton();
+            this.TerritoriesZonesDynamicTB = new DarkUI.Controls.DarkTextBox();
+            this.darkButton65 = new DarkUI.Controls.DarkButton();
+            this.groupBox73 = new System.Windows.Forms.GroupBox();
+            this.TerritoriesZonesStaticMaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.TerritoriesZonesStaticMInNUD = new System.Windows.Forms.NumericUpDown();
+            this.label152 = new System.Windows.Forms.Label();
+            this.label153 = new System.Windows.Forms.Label();
+            this.darkButton64 = new DarkUI.Controls.DarkButton();
+            this.groupBox72 = new System.Windows.Forms.GroupBox();
+            this.TerritoriesZonesDynamicMaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.TerritoriesZonesDynamicMinNUD = new System.Windows.Forms.NumericUpDown();
+            this.label150 = new System.Windows.Forms.Label();
+            this.label149 = new System.Windows.Forms.Label();
+            this.TerritoriesZonesRadiusNUD = new System.Windows.Forms.NumericUpDown();
+            this.label151 = new System.Windows.Forms.Label();
             this.TypesContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.DeleteTypesTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.AddTypesTSMI = new System.Windows.Forms.ToolStripMenuItem();
@@ -960,6 +992,11 @@ namespace DayZeEditor
             this.CFGignoreListTabButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.MapGroupProtoTabButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.TerritoriesTabButton = new System.Windows.Forms.ToolStripButton();
+            this.TerritoryContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.addNewTerritoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeTerritoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -1300,11 +1337,27 @@ namespace DayZeEditor
             this.groupBox62.SuspendLayout();
             this.tabControl22.SuspendLayout();
             this.tabPage5.SuspendLayout();
+            this.TerritoriesTab.SuspendLayout();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar6)).BeginInit();
+            this.tabControl23.SuspendLayout();
+            this.tabPage18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.groupBox74.SuspendLayout();
+            this.groupBox73.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesStaticMaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesStaticMInNUD)).BeginInit();
+            this.groupBox72.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesDynamicMaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesDynamicMinNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesRadiusNUD)).BeginInit();
             this.TypesContextMenu.SuspendLayout();
             this.EventSpawnContextMenu.SuspendLayout();
             this.EventgroupContextMenu.SuspendLayout();
             this.CFGIgnoreContextMenu.SuspendLayout();
             this.darkToolStrip23.SuspendLayout();
+            this.TerritoryContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -3075,6 +3128,7 @@ namespace DayZeEditor
             this.EconomyTabPage.Controls.Add(this.WeatherTab);
             this.EconomyTabPage.Controls.Add(this.cfgIgnorelistTab);
             this.EconomyTabPage.Controls.Add(this.MapgroupProtoTab);
+            this.EconomyTabPage.Controls.Add(this.TerritoriesTab);
             this.EconomyTabPage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.EconomyTabPage.Location = new System.Drawing.Point(0, 95);
             this.EconomyTabPage.Name = "EconomyTabPage";
@@ -9671,7 +9725,7 @@ namespace DayZeEditor
             this.staminaWeightLimitThresholdNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.staminaWeightLimitThresholdNUD.Location = new System.Drawing.Point(214, 71);
             this.staminaWeightLimitThresholdNUD.Maximum = new decimal(new int[] {
-            100000,
+            10000000,
             0,
             0,
             0});
@@ -12933,6 +12987,459 @@ namespace DayZeEditor
             this.MapGroupProtoGroupsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.MapGroupProtoGroupsLB.SelectedIndexChanged += new System.EventHandler(this.MapGroupProtoGroupsLB_SelectedIndexChanged);
             // 
+            // TerritoriesTab
+            // 
+            this.TerritoriesTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TerritoriesTab.Controls.Add(this.TerritorieszonesCB);
+            this.TerritoriesTab.Controls.Add(this.panel5);
+            this.TerritoriesTab.Controls.Add(this.trackBar6);
+            this.TerritoriesTab.Controls.Add(this.tabControl23);
+            this.TerritoriesTab.ForeColor = System.Drawing.SystemColors.Control;
+            this.TerritoriesTab.Location = new System.Drawing.Point(4, 25);
+            this.TerritoriesTab.Name = "TerritoriesTab";
+            this.TerritoriesTab.Size = new System.Drawing.Size(1218, 553);
+            this.TerritoriesTab.TabIndex = 15;
+            this.TerritoriesTab.Text = "Territories";
+            // 
+            // TerritorieszonesCB
+            // 
+            this.TerritorieszonesCB.AutoSize = true;
+            this.TerritorieszonesCB.Location = new System.Drawing.Point(463, 3);
+            this.TerritorieszonesCB.Name = "TerritorieszonesCB";
+            this.TerritorieszonesCB.Size = new System.Drawing.Size(202, 17);
+            this.TerritorieszonesCB.TabIndex = 102;
+            this.TerritorieszonesCB.Text = "Paint all zones of current territory type";
+            this.TerritorieszonesCB.UseVisualStyleBackColor = true;
+            this.TerritorieszonesCB.CheckedChanged += new System.EventHandler(this.TerritorieszonesCB_CheckedChanged);
+            // 
+            // panel5
+            // 
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.AutoScroll = true;
+            this.panel5.Controls.Add(this.pictureBox6);
+            this.panel5.Location = new System.Drawing.Point(270, 24);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(945, 526);
+            this.panel5.TabIndex = 101;
+            this.panel5.MouseEnter += new System.EventHandler(this.pictureBox6_MouseEnter);
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox6.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(512, 512);
+            this.pictureBox6.TabIndex = 0;
+            this.pictureBox6.TabStop = false;
+            this.pictureBox6.DoubleClick += new System.EventHandler(this.pictureBox6_DoubleClick);
+            this.pictureBox6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox6_MouseDown);
+            this.pictureBox6.MouseEnter += new System.EventHandler(this.pictureBox6_MouseEnter);
+            this.pictureBox6.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox6_MouseMove);
+            this.pictureBox6.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.PicBox_MouseWheel);
+            // 
+            // trackBar6
+            // 
+            this.trackBar6.AutoSize = false;
+            this.trackBar6.LargeChange = 1;
+            this.trackBar6.Location = new System.Drawing.Point(285, 2);
+            this.trackBar6.Maximum = 20;
+            this.trackBar6.Minimum = 1;
+            this.trackBar6.Name = "trackBar6";
+            this.trackBar6.Size = new System.Drawing.Size(156, 16);
+            this.trackBar6.TabIndex = 100;
+            this.trackBar6.Value = 1;
+            // 
+            // tabControl23
+            // 
+            this.tabControl23.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.tabControl23.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
+            this.tabControl23.Controls.Add(this.tabPage18);
+            this.tabControl23.ItemSize = new System.Drawing.Size(0, 1);
+            this.tabControl23.Location = new System.Drawing.Point(3, 3);
+            this.tabControl23.Name = "tabControl23";
+            this.tabControl23.SelectedIndex = 0;
+            this.tabControl23.Size = new System.Drawing.Size(261, 547);
+            this.tabControl23.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.tabControl23.TabIndex = 4;
+            // 
+            // tabPage18
+            // 
+            this.tabPage18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage18.Controls.Add(this.pictureBox3);
+            this.tabPage18.Controls.Add(this.TerritoriesTreeview);
+            this.tabPage18.Controls.Add(this.label154);
+            this.tabPage18.Controls.Add(this.TerritoriesZonesLB);
+            this.tabPage18.Controls.Add(this.groupBox74);
+            this.tabPage18.Controls.Add(this.darkButton65);
+            this.tabPage18.Controls.Add(this.groupBox73);
+            this.tabPage18.Controls.Add(this.darkButton64);
+            this.tabPage18.Controls.Add(this.groupBox72);
+            this.tabPage18.Controls.Add(this.TerritoriesZonesRadiusNUD);
+            this.tabPage18.Controls.Add(this.label151);
+            this.tabPage18.Location = new System.Drawing.Point(4, 5);
+            this.tabPage18.Name = "tabPage18";
+            this.tabPage18.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage18.Size = new System.Drawing.Size(253, 538);
+            this.tabPage18.TabIndex = 0;
+            this.tabPage18.Text = "tabPage18";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
+            this.pictureBox3.Location = new System.Drawing.Point(51, 155);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(193, 13);
+            this.pictureBox3.TabIndex = 144;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            this.pictureBox3.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox3_Paint);
+            // 
+            // TerritoriesTreeview
+            // 
+            this.TerritoriesTreeview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TerritoriesTreeview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TerritoriesTreeview.ForeColor = System.Drawing.SystemColors.Control;
+            this.TerritoriesTreeview.HideSelection = false;
+            this.TerritoriesTreeview.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.TerritoriesTreeview.Location = new System.Drawing.Point(6, 6);
+            this.TerritoriesTreeview.Name = "TerritoriesTreeview";
+            this.TerritoriesTreeview.SelectedNodes = ((System.Collections.ArrayList)(resources.GetObject("TerritoriesTreeview.SelectedNodes")));
+            this.TerritoriesTreeview.SetMultiselect = true;
+            this.TerritoriesTreeview.Size = new System.Drawing.Size(241, 146);
+            this.TerritoriesTreeview.TabIndex = 0;
+            this.TerritoriesTreeview.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.TerritoriesTreeview_NodeMouseClick);
+            // 
+            // label154
+            // 
+            this.label154.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label154.AutoSize = true;
+            this.label154.ForeColor = System.Drawing.SystemColors.Control;
+            this.label154.Location = new System.Drawing.Point(8, 155);
+            this.label154.Name = "label154";
+            this.label154.Size = new System.Drawing.Size(37, 13);
+            this.label154.TabIndex = 143;
+            this.label154.Text = "Colour";
+            // 
+            // TerritoriesZonesLB
+            // 
+            this.TerritoriesZonesLB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.TerritoriesZonesLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TerritoriesZonesLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.TerritoriesZonesLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.TerritoriesZonesLB.FormattingEnabled = true;
+            this.TerritoriesZonesLB.Location = new System.Drawing.Point(6, 174);
+            this.TerritoriesZonesLB.Name = "TerritoriesZonesLB";
+            this.TerritoriesZonesLB.Size = new System.Drawing.Size(212, 121);
+            this.TerritoriesZonesLB.TabIndex = 51;
+            this.TerritoriesZonesLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.TerritoriesZonesLB.SelectedIndexChanged += new System.EventHandler(this.TerritoriesZonesLB_SelectedIndexChanged);
+            // 
+            // groupBox74
+            // 
+            this.groupBox74.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox74.Controls.Add(this.TerritoriesZonesDynamicRB);
+            this.groupBox74.Controls.Add(this.TerritoriesZonesHuntingGroundRB);
+            this.groupBox74.Controls.Add(this.TerritoriesZonesGrazeRB);
+            this.groupBox74.Controls.Add(this.TerritoriesZonesWaterRB);
+            this.groupBox74.Controls.Add(this.TerritoriesZonesRestRB);
+            this.groupBox74.Controls.Add(this.TerritoriesZonesDynamicTB);
+            this.groupBox74.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox74.Location = new System.Drawing.Point(5, 422);
+            this.groupBox74.Name = "groupBox74";
+            this.groupBox74.Size = new System.Drawing.Size(239, 114);
+            this.groupBox74.TabIndex = 142;
+            this.groupBox74.TabStop = false;
+            this.groupBox74.Text = "AI Usage";
+            // 
+            // TerritoriesZonesDynamicRB
+            // 
+            this.TerritoriesZonesDynamicRB.AutoSize = true;
+            this.TerritoriesZonesDynamicRB.Location = new System.Drawing.Point(6, 65);
+            this.TerritoriesZonesDynamicRB.Name = "TerritoriesZonesDynamicRB";
+            this.TerritoriesZonesDynamicRB.Size = new System.Drawing.Size(66, 17);
+            this.TerritoriesZonesDynamicRB.TabIndex = 7;
+            this.TerritoriesZonesDynamicRB.TabStop = true;
+            this.TerritoriesZonesDynamicRB.Text = "Dynamic";
+            this.TerritoriesZonesDynamicRB.UseVisualStyleBackColor = true;
+            this.TerritoriesZonesDynamicRB.CheckedChanged += new System.EventHandler(this.TerritoriesZonesAIUSage_CheckedChanged);
+            // 
+            // TerritoriesZonesHuntingGroundRB
+            // 
+            this.TerritoriesZonesHuntingGroundRB.AutoSize = true;
+            this.TerritoriesZonesHuntingGroundRB.Location = new System.Drawing.Point(114, 42);
+            this.TerritoriesZonesHuntingGroundRB.Name = "TerritoriesZonesHuntingGroundRB";
+            this.TerritoriesZonesHuntingGroundRB.Size = new System.Drawing.Size(97, 17);
+            this.TerritoriesZonesHuntingGroundRB.TabIndex = 6;
+            this.TerritoriesZonesHuntingGroundRB.TabStop = true;
+            this.TerritoriesZonesHuntingGroundRB.Text = "HuntingGround";
+            this.TerritoriesZonesHuntingGroundRB.UseVisualStyleBackColor = true;
+            this.TerritoriesZonesHuntingGroundRB.CheckedChanged += new System.EventHandler(this.TerritoriesZonesAIUSage_CheckedChanged);
+            // 
+            // TerritoriesZonesGrazeRB
+            // 
+            this.TerritoriesZonesGrazeRB.AutoSize = true;
+            this.TerritoriesZonesGrazeRB.Location = new System.Drawing.Point(114, 19);
+            this.TerritoriesZonesGrazeRB.Name = "TerritoriesZonesGrazeRB";
+            this.TerritoriesZonesGrazeRB.Size = new System.Drawing.Size(53, 17);
+            this.TerritoriesZonesGrazeRB.TabIndex = 5;
+            this.TerritoriesZonesGrazeRB.TabStop = true;
+            this.TerritoriesZonesGrazeRB.Text = "Graze";
+            this.TerritoriesZonesGrazeRB.UseVisualStyleBackColor = true;
+            this.TerritoriesZonesGrazeRB.CheckedChanged += new System.EventHandler(this.TerritoriesZonesAIUSage_CheckedChanged);
+            // 
+            // TerritoriesZonesWaterRB
+            // 
+            this.TerritoriesZonesWaterRB.AutoSize = true;
+            this.TerritoriesZonesWaterRB.Location = new System.Drawing.Point(6, 42);
+            this.TerritoriesZonesWaterRB.Name = "TerritoriesZonesWaterRB";
+            this.TerritoriesZonesWaterRB.Size = new System.Drawing.Size(54, 17);
+            this.TerritoriesZonesWaterRB.TabIndex = 4;
+            this.TerritoriesZonesWaterRB.TabStop = true;
+            this.TerritoriesZonesWaterRB.Text = "Water";
+            this.TerritoriesZonesWaterRB.UseVisualStyleBackColor = true;
+            this.TerritoriesZonesWaterRB.CheckedChanged += new System.EventHandler(this.TerritoriesZonesAIUSage_CheckedChanged);
+            // 
+            // TerritoriesZonesRestRB
+            // 
+            this.TerritoriesZonesRestRB.AutoSize = true;
+            this.TerritoriesZonesRestRB.Location = new System.Drawing.Point(6, 19);
+            this.TerritoriesZonesRestRB.Name = "TerritoriesZonesRestRB";
+            this.TerritoriesZonesRestRB.Size = new System.Drawing.Size(47, 17);
+            this.TerritoriesZonesRestRB.TabIndex = 3;
+            this.TerritoriesZonesRestRB.TabStop = true;
+            this.TerritoriesZonesRestRB.Text = "Rest";
+            this.TerritoriesZonesRestRB.UseVisualStyleBackColor = true;
+            this.TerritoriesZonesRestRB.CheckedChanged += new System.EventHandler(this.TerritoriesZonesAIUSage_CheckedChanged);
+            // 
+            // TerritoriesZonesDynamicTB
+            // 
+            this.TerritoriesZonesDynamicTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.TerritoriesZonesDynamicTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TerritoriesZonesDynamicTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.TerritoriesZonesDynamicTB.Location = new System.Drawing.Point(6, 86);
+            this.TerritoriesZonesDynamicTB.Name = "TerritoriesZonesDynamicTB";
+            this.TerritoriesZonesDynamicTB.Size = new System.Drawing.Size(227, 20);
+            this.TerritoriesZonesDynamicTB.TabIndex = 2;
+            this.TerritoriesZonesDynamicTB.TextChanged += new System.EventHandler(this.TerritoriesZonesDynamicTB_TextChanged);
+            // 
+            // darkButton65
+            // 
+            this.darkButton65.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton65.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton65.Location = new System.Drawing.Point(221, 174);
+            this.darkButton65.Name = "darkButton65";
+            this.darkButton65.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton65.Size = new System.Drawing.Size(23, 23);
+            this.darkButton65.TabIndex = 128;
+            this.darkButton65.Text = "+";
+            this.darkButton65.Click += new System.EventHandler(this.darkButton65_Click);
+            // 
+            // groupBox73
+            // 
+            this.groupBox73.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox73.Controls.Add(this.TerritoriesZonesStaticMaxNUD);
+            this.groupBox73.Controls.Add(this.TerritoriesZonesStaticMInNUD);
+            this.groupBox73.Controls.Add(this.label152);
+            this.groupBox73.Controls.Add(this.label153);
+            this.groupBox73.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox73.Location = new System.Drawing.Point(6, 323);
+            this.groupBox73.Name = "groupBox73";
+            this.groupBox73.Size = new System.Drawing.Size(239, 49);
+            this.groupBox73.TabIndex = 141;
+            this.groupBox73.TabStop = false;
+            this.groupBox73.Text = "Static";
+            // 
+            // TerritoriesZonesStaticMaxNUD
+            // 
+            this.TerritoriesZonesStaticMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TerritoriesZonesStaticMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.TerritoriesZonesStaticMaxNUD.Location = new System.Drawing.Point(144, 19);
+            this.TerritoriesZonesStaticMaxNUD.Maximum = new decimal(new int[] {
+            30000,
+            0,
+            0,
+            0});
+            this.TerritoriesZonesStaticMaxNUD.Minimum = new decimal(new int[] {
+            30000,
+            0,
+            0,
+            -2147483648});
+            this.TerritoriesZonesStaticMaxNUD.Name = "TerritoriesZonesStaticMaxNUD";
+            this.TerritoriesZonesStaticMaxNUD.Size = new System.Drawing.Size(68, 20);
+            this.TerritoriesZonesStaticMaxNUD.TabIndex = 132;
+            this.TerritoriesZonesStaticMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TerritoriesZonesStaticMaxNUD.ValueChanged += new System.EventHandler(this.TerritoriesZonesStaticMaxNUD_ValueChanged);
+            // 
+            // TerritoriesZonesStaticMInNUD
+            // 
+            this.TerritoriesZonesStaticMInNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TerritoriesZonesStaticMInNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.TerritoriesZonesStaticMInNUD.Location = new System.Drawing.Point(41, 19);
+            this.TerritoriesZonesStaticMInNUD.Maximum = new decimal(new int[] {
+            30000,
+            0,
+            0,
+            0});
+            this.TerritoriesZonesStaticMInNUD.Minimum = new decimal(new int[] {
+            30000,
+            0,
+            0,
+            -2147483648});
+            this.TerritoriesZonesStaticMInNUD.Name = "TerritoriesZonesStaticMInNUD";
+            this.TerritoriesZonesStaticMInNUD.Size = new System.Drawing.Size(68, 20);
+            this.TerritoriesZonesStaticMInNUD.TabIndex = 131;
+            this.TerritoriesZonesStaticMInNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TerritoriesZonesStaticMInNUD.ValueChanged += new System.EventHandler(this.TerritoriesZonesStaticMInNUD_ValueChanged);
+            // 
+            // label152
+            // 
+            this.label152.AutoSize = true;
+            this.label152.ForeColor = System.Drawing.SystemColors.Control;
+            this.label152.Location = new System.Drawing.Point(11, 21);
+            this.label152.Name = "label152";
+            this.label152.Size = new System.Drawing.Size(24, 13);
+            this.label152.TabIndex = 130;
+            this.label152.Text = "Min";
+            // 
+            // label153
+            // 
+            this.label153.AutoSize = true;
+            this.label153.ForeColor = System.Drawing.SystemColors.Control;
+            this.label153.Location = new System.Drawing.Point(111, 21);
+            this.label153.Name = "label153";
+            this.label153.Size = new System.Drawing.Size(27, 13);
+            this.label153.TabIndex = 133;
+            this.label153.Text = "Max";
+            // 
+            // darkButton64
+            // 
+            this.darkButton64.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton64.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton64.Location = new System.Drawing.Point(221, 272);
+            this.darkButton64.Name = "darkButton64";
+            this.darkButton64.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton64.Size = new System.Drawing.Size(23, 23);
+            this.darkButton64.TabIndex = 129;
+            this.darkButton64.Text = "-";
+            this.darkButton64.Click += new System.EventHandler(this.darkButton64_Click);
+            // 
+            // groupBox72
+            // 
+            this.groupBox72.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox72.Controls.Add(this.TerritoriesZonesDynamicMaxNUD);
+            this.groupBox72.Controls.Add(this.TerritoriesZonesDynamicMinNUD);
+            this.groupBox72.Controls.Add(this.label150);
+            this.groupBox72.Controls.Add(this.label149);
+            this.groupBox72.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox72.Location = new System.Drawing.Point(6, 372);
+            this.groupBox72.Name = "groupBox72";
+            this.groupBox72.Size = new System.Drawing.Size(239, 49);
+            this.groupBox72.TabIndex = 140;
+            this.groupBox72.TabStop = false;
+            this.groupBox72.Text = "dynamic";
+            // 
+            // TerritoriesZonesDynamicMaxNUD
+            // 
+            this.TerritoriesZonesDynamicMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TerritoriesZonesDynamicMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.TerritoriesZonesDynamicMaxNUD.Location = new System.Drawing.Point(144, 19);
+            this.TerritoriesZonesDynamicMaxNUD.Maximum = new decimal(new int[] {
+            30000,
+            0,
+            0,
+            0});
+            this.TerritoriesZonesDynamicMaxNUD.Minimum = new decimal(new int[] {
+            30000,
+            0,
+            0,
+            -2147483648});
+            this.TerritoriesZonesDynamicMaxNUD.Name = "TerritoriesZonesDynamicMaxNUD";
+            this.TerritoriesZonesDynamicMaxNUD.Size = new System.Drawing.Size(68, 20);
+            this.TerritoriesZonesDynamicMaxNUD.TabIndex = 132;
+            this.TerritoriesZonesDynamicMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TerritoriesZonesDynamicMaxNUD.ValueChanged += new System.EventHandler(this.TerritoriesZonesDynamicMaxNUD_ValueChanged);
+            // 
+            // TerritoriesZonesDynamicMinNUD
+            // 
+            this.TerritoriesZonesDynamicMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TerritoriesZonesDynamicMinNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.TerritoriesZonesDynamicMinNUD.Location = new System.Drawing.Point(41, 19);
+            this.TerritoriesZonesDynamicMinNUD.Maximum = new decimal(new int[] {
+            30000,
+            0,
+            0,
+            0});
+            this.TerritoriesZonesDynamicMinNUD.Minimum = new decimal(new int[] {
+            30000,
+            0,
+            0,
+            -2147483648});
+            this.TerritoriesZonesDynamicMinNUD.Name = "TerritoriesZonesDynamicMinNUD";
+            this.TerritoriesZonesDynamicMinNUD.Size = new System.Drawing.Size(68, 20);
+            this.TerritoriesZonesDynamicMinNUD.TabIndex = 131;
+            this.TerritoriesZonesDynamicMinNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TerritoriesZonesDynamicMinNUD.ValueChanged += new System.EventHandler(this.TerritoriesZonesDynamicMinNUD_ValueChanged);
+            // 
+            // label150
+            // 
+            this.label150.AutoSize = true;
+            this.label150.ForeColor = System.Drawing.SystemColors.Control;
+            this.label150.Location = new System.Drawing.Point(11, 21);
+            this.label150.Name = "label150";
+            this.label150.Size = new System.Drawing.Size(24, 13);
+            this.label150.TabIndex = 130;
+            this.label150.Text = "Min";
+            // 
+            // label149
+            // 
+            this.label149.AutoSize = true;
+            this.label149.ForeColor = System.Drawing.SystemColors.Control;
+            this.label149.Location = new System.Drawing.Point(111, 21);
+            this.label149.Name = "label149";
+            this.label149.Size = new System.Drawing.Size(27, 13);
+            this.label149.TabIndex = 133;
+            this.label149.Text = "Max";
+            // 
+            // TerritoriesZonesRadiusNUD
+            // 
+            this.TerritoriesZonesRadiusNUD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.TerritoriesZonesRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TerritoriesZonesRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.TerritoriesZonesRadiusNUD.Location = new System.Drawing.Point(60, 303);
+            this.TerritoriesZonesRadiusNUD.Maximum = new decimal(new int[] {
+            30000,
+            0,
+            0,
+            0});
+            this.TerritoriesZonesRadiusNUD.Minimum = new decimal(new int[] {
+            30000,
+            0,
+            0,
+            -2147483648});
+            this.TerritoriesZonesRadiusNUD.Name = "TerritoriesZonesRadiusNUD";
+            this.TerritoriesZonesRadiusNUD.Size = new System.Drawing.Size(149, 20);
+            this.TerritoriesZonesRadiusNUD.TabIndex = 135;
+            this.TerritoriesZonesRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TerritoriesZonesRadiusNUD.ValueChanged += new System.EventHandler(this.TerritoriesZonesRadiusNUD_ValueChanged);
+            // 
+            // label151
+            // 
+            this.label151.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label151.AutoSize = true;
+            this.label151.ForeColor = System.Drawing.SystemColors.Control;
+            this.label151.Location = new System.Drawing.Point(8, 307);
+            this.label151.Name = "label151";
+            this.label151.Size = new System.Drawing.Size(49, 13);
+            this.label151.TabIndex = 134;
+            this.label151.Text = "Radius - ";
+            // 
             // TypesContextMenu
             // 
             this.TypesContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -13168,7 +13675,9 @@ namespace DayZeEditor
             this.toolStripSeparator26,
             this.CFGignoreListTabButton,
             this.toolStripSeparator6,
-            this.MapGroupProtoTabButton});
+            this.MapGroupProtoTabButton,
+            this.toolStripSeparator7,
+            this.TerritoriesTabButton});
             this.darkToolStrip23.Location = new System.Drawing.Point(0, 70);
             this.darkToolStrip23.Name = "darkToolStrip23";
             this.darkToolStrip23.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
@@ -13307,6 +13816,48 @@ namespace DayZeEditor
             this.MapGroupProtoTabButton.Size = new System.Drawing.Size(97, 22);
             this.MapGroupProtoTabButton.Text = "MapGroupProto";
             this.MapGroupProtoTabButton.Click += new System.EventHandler(this.MapGroupProtoTabButton_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripSeparator7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripSeparator7.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
+            // 
+            // TerritoriesTabButton
+            // 
+            this.TerritoriesTabButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TerritoriesTabButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.TerritoriesTabButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.TerritoriesTabButton.Image = ((System.Drawing.Image)(resources.GetObject("TerritoriesTabButton.Image")));
+            this.TerritoriesTabButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TerritoriesTabButton.Name = "TerritoriesTabButton";
+            this.TerritoriesTabButton.Size = new System.Drawing.Size(62, 22);
+            this.TerritoriesTabButton.Text = "Territories";
+            this.TerritoriesTabButton.Click += new System.EventHandler(this.TerritoriesTabButton_Click);
+            // 
+            // TerritoryContextMenu
+            // 
+            this.TerritoryContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addNewTerritoryToolStripMenuItem,
+            this.removeTerritoryToolStripMenuItem});
+            this.TerritoryContextMenu.Name = "TerritoryContextMenu";
+            this.TerritoryContextMenu.Size = new System.Drawing.Size(168, 48);
+            // 
+            // addNewTerritoryToolStripMenuItem
+            // 
+            this.addNewTerritoryToolStripMenuItem.Name = "addNewTerritoryToolStripMenuItem";
+            this.addNewTerritoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addNewTerritoryToolStripMenuItem.Text = "Add new Territory";
+            this.addNewTerritoryToolStripMenuItem.Click += new System.EventHandler(this.addNewTerritoryToolStripMenuItem_Click);
+            // 
+            // removeTerritoryToolStripMenuItem
+            // 
+            this.removeTerritoryToolStripMenuItem.Name = "removeTerritoryToolStripMenuItem";
+            this.removeTerritoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removeTerritoryToolStripMenuItem.Text = "Remove Territory";
+            this.removeTerritoryToolStripMenuItem.Click += new System.EventHandler(this.removeTerritoryToolStripMenuItem_Click);
             // 
             // Economy_Manager
             // 
@@ -13737,12 +14288,33 @@ namespace DayZeEditor
             this.groupBox62.ResumeLayout(false);
             this.tabControl22.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
+            this.TerritoriesTab.ResumeLayout(false);
+            this.TerritoriesTab.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar6)).EndInit();
+            this.tabControl23.ResumeLayout(false);
+            this.tabPage18.ResumeLayout(false);
+            this.tabPage18.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.groupBox74.ResumeLayout(false);
+            this.groupBox74.PerformLayout();
+            this.groupBox73.ResumeLayout(false);
+            this.groupBox73.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesStaticMaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesStaticMInNUD)).EndInit();
+            this.groupBox72.ResumeLayout(false);
+            this.groupBox72.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesDynamicMaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesDynamicMinNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesRadiusNUD)).EndInit();
             this.TypesContextMenu.ResumeLayout(false);
             this.EventSpawnContextMenu.ResumeLayout(false);
             this.EventgroupContextMenu.ResumeLayout(false);
             this.CFGIgnoreContextMenu.ResumeLayout(false);
             this.darkToolStrip23.ResumeLayout(false);
             this.darkToolStrip23.PerformLayout();
+            this.TerritoryContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -13866,48 +14438,6 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripMenuItem DeleteSpecificTypeTSMI;
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.TabPage EventsTab;
-        private System.Windows.Forms.TabControl tabControl5;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.GroupBox ChildGB;
-        private DarkUI.Controls.DarkLabel darkLabel5;
-        private System.Windows.Forms.NumericUpDown CminNUD;
-        private System.Windows.Forms.TextBox CtypeTB;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.NumericUpDown CmaxNUD;
-        private System.Windows.Forms.NumericUpDown ClootmaxNUD;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.NumericUpDown ClootminNUD;
-        private System.Windows.Forms.ListBox ChildrenLB;
-        private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.CheckBox deletableCB;
-        private System.Windows.Forms.CheckBox remove_damagedCB;
-        private System.Windows.Forms.CheckBox init_randomCB;
-        private System.Windows.Forms.CheckBox activeCB;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox limitComboBox;
-        private System.Windows.Forms.ComboBox positionComboBox;
-        private System.Windows.Forms.NumericUpDown cleanupradiusNUD;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.NumericUpDown distanceradiusNUD;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.NumericUpDown saferadiusNUD;
-        private System.Windows.Forms.Label label18;
-        private DarkUI.Controls.DarkLabel darkLabel51;
-        private System.Windows.Forms.TextBox nameTB;
-        private System.Windows.Forms.NumericUpDown restockNUD;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.NumericUpDown lifetimeNUD;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.NumericUpDown maxNUD;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.NumericUpDown minNUD;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.NumericUpDown nominalNUD;
-        private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TabControl tabControl6;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.ListBox EventsLB;
@@ -14030,8 +14560,6 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkLabel darkLabel6;
         private DarkUI.Controls.DarkButton darkButton17;
         private DarkUI.Controls.DarkButton darkButton16;
-        private DarkUI.Controls.DarkButton darkButton18;
-        private DarkUI.Controls.DarkButton darkButton19;
         private DarkUI.Controls.DarkButton darkButton20;
         private DarkUI.Controls.DarkButton darkButton21;
         private System.Windows.Forms.CheckBox ZeroNomCB;
@@ -14446,9 +14974,6 @@ namespace DayZeEditor
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label120;
-        private System.Windows.Forms.ComboBox SecondaryCB;
-        private DarkUI.Controls.DarkButton darkButton60;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.TextBox EventSpawnGroupTB;
         private System.Windows.Forms.TabControl tabControl21;
@@ -14484,7 +15009,6 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox checkBox64;
         private System.Windows.Forms.CheckBox checkBox51;
         private System.Windows.Forms.CheckBox checkBox50;
-        private DarkUI.Controls.DarkButton CreateeventSpawnButton;
         private System.Windows.Forms.TabPage EventGroupSpawnTab;
         private System.Windows.Forms.TabControl tabControl4;
         private System.Windows.Forms.TabPage tabPage22;
@@ -14677,5 +15201,90 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox MapgroupProtoGroupcontainerUseLootMaxCB;
         private DarkUI.Controls.DarkTextBox MapgroupProtoGroupcontainerNameTB;
         private System.Windows.Forms.Label label148;
+        private System.Windows.Forms.TabControl tabControl5;
+        private System.Windows.Forms.TabPage tabPage1;
+        private DarkUI.Controls.DarkButton darkButton60;
+        private System.Windows.Forms.ComboBox SecondaryCB;
+        private System.Windows.Forms.Label label120;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private DarkUI.Controls.DarkButton CreateeventSpawnButton;
+        private DarkUI.Controls.DarkButton darkButton18;
+        private DarkUI.Controls.DarkButton darkButton19;
+        private System.Windows.Forms.GroupBox ChildGB;
+        private DarkUI.Controls.DarkLabel darkLabel5;
+        private System.Windows.Forms.NumericUpDown CminNUD;
+        private System.Windows.Forms.TextBox CtypeTB;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.NumericUpDown CmaxNUD;
+        private System.Windows.Forms.NumericUpDown ClootmaxNUD;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.NumericUpDown ClootminNUD;
+        private System.Windows.Forms.ListBox ChildrenLB;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.CheckBox deletableCB;
+        private System.Windows.Forms.CheckBox remove_damagedCB;
+        private System.Windows.Forms.CheckBox init_randomCB;
+        private System.Windows.Forms.CheckBox activeCB;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox limitComboBox;
+        private System.Windows.Forms.ComboBox positionComboBox;
+        private System.Windows.Forms.NumericUpDown cleanupradiusNUD;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.NumericUpDown distanceradiusNUD;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.NumericUpDown saferadiusNUD;
+        private System.Windows.Forms.Label label18;
+        private DarkUI.Controls.DarkLabel darkLabel51;
+        private System.Windows.Forms.TextBox nameTB;
+        private System.Windows.Forms.NumericUpDown restockNUD;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.NumericUpDown lifetimeNUD;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.NumericUpDown maxNUD;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.NumericUpDown minNUD;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.NumericUpDown nominalNUD;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TabPage TerritoriesTab;
+        private System.Windows.Forms.TabControl tabControl23;
+        private System.Windows.Forms.TabPage tabPage18;
+        private TreeViewMS.TreeViewMS TerritoriesTreeview;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripButton TerritoriesTabButton;
+        public TreeViewMS.PanelEx panel5;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.TrackBar trackBar6;
+        private System.Windows.Forms.ListBox TerritoriesZonesLB;
+        private DarkUI.Controls.DarkButton darkButton64;
+        private DarkUI.Controls.DarkButton darkButton65;
+        private System.Windows.Forms.CheckBox TerritorieszonesCB;
+        private System.Windows.Forms.Label label149;
+        private System.Windows.Forms.Label label150;
+        private System.Windows.Forms.NumericUpDown TerritoriesZonesDynamicMaxNUD;
+        private System.Windows.Forms.NumericUpDown TerritoriesZonesDynamicMinNUD;
+        private System.Windows.Forms.GroupBox groupBox74;
+        private System.Windows.Forms.RadioButton TerritoriesZonesDynamicRB;
+        private System.Windows.Forms.RadioButton TerritoriesZonesHuntingGroundRB;
+        private System.Windows.Forms.RadioButton TerritoriesZonesGrazeRB;
+        private System.Windows.Forms.RadioButton TerritoriesZonesWaterRB;
+        private System.Windows.Forms.RadioButton TerritoriesZonesRestRB;
+        private DarkUI.Controls.DarkTextBox TerritoriesZonesDynamicTB;
+        private System.Windows.Forms.GroupBox groupBox73;
+        private System.Windows.Forms.NumericUpDown TerritoriesZonesStaticMaxNUD;
+        private System.Windows.Forms.NumericUpDown TerritoriesZonesStaticMInNUD;
+        private System.Windows.Forms.Label label152;
+        private System.Windows.Forms.Label label153;
+        private System.Windows.Forms.GroupBox groupBox72;
+        private System.Windows.Forms.Label label151;
+        private System.Windows.Forms.NumericUpDown TerritoriesZonesRadiusNUD;
+        private System.Windows.Forms.Label label154;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.ContextMenuStrip TerritoryContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem addNewTerritoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeTerritoryToolStripMenuItem;
     }
 }

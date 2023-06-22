@@ -171,6 +171,11 @@ namespace DayZeEditor
         {
             Console.WriteLine("Checking GitHub For Newest Release.....");
             GitHub info = Build();
+            if (info == null)
+            {
+                Console.WriteLine("No Internet connectivity, offline mode.....");
+                return false;
+            }
             Console.WriteLine("Latest release : " + info.name);
             var version1 = new Version(info.name);
             var version2 = new Version(VersionNumber);
@@ -211,6 +216,10 @@ namespace DayZeEditor
         public GitHub Build()
         {
             var getData = GetGithubData();
+            if(getData.StartsWith("Offline"))
+            {
+                return null;
+            }
             return JsonSerializer.Deserialize<GitHub>(getData);
         }
         private string GetGithubData()
@@ -222,10 +231,17 @@ namespace DayZeEditor
             request.ContentType = "application/json";
             request.UserAgent = "TestApp";
 
-            using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+            try
             {
-                StreamReader reader = new StreamReader(response.GetResponseStream());
-                return reader.ReadToEnd();
+                using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+                {
+                    StreamReader reader = new StreamReader(response.GetResponseStream());
+                    return reader.ReadToEnd();
+                }
+            }
+            catch
+            {
+                return "Offline";
             }
         }
         private void closemdichildren()

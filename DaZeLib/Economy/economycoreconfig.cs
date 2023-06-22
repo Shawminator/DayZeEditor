@@ -98,15 +98,15 @@ namespace DayZeLib
                 default:
                     break;
             }
-            if (economycore.ce.Any(x => x.folder == path))
+            if (economycore.ce.Any(x => x.folder == _path))
             {
-                economycore.ce.FirstOrDefault(x => x.folder == path).file.Add(newfile);
+                economycore.ce.FirstOrDefault(x => x.folder == _path).file.Add(newfile);
             }
             else
             {
                 economycoreCE newce = new economycoreCE
                 {
-                    folder = path,
+                    folder = _path,
                     file = new BindingList<economycoreCEFile>()
                 };
                 newce.file.Add(newfile);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,11 +17,11 @@ namespace DayZeLib
     public partial class territorytype
     {
 
-        private territorytypeTerritory[] territoryField;
+        private BindingList<territorytypeTerritory> territoryField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("territory")]
-        public territorytypeTerritory[] territory
+        public BindingList<territorytypeTerritory> territory
         {
             get
             {
@@ -40,13 +41,13 @@ namespace DayZeLib
     public partial class territorytypeTerritory
     {
 
-        private territorytypeTerritoryZone[] zoneField;
+        private BindingList<territorytypeTerritoryZone> zoneField;
 
         private long colorField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("zone")]
-        public territorytypeTerritoryZone[] zone
+        public BindingList<territorytypeTerritoryZone> zone
         {
             get
             {
@@ -206,6 +207,17 @@ namespace DayZeLib
             {
                 this.rField = value;
             }
+        }
+        public override string ToString()
+        {
+            return name ;
+        }
+        public bool Equals(territorytypeTerritoryZone p)
+        {
+            if ((object)p == null)
+                return false;
+
+            return (name == p.name) && (smin == p.smin) && (smax == p.smax) && (dmin == p.dmin) && (dmax == p.dmax) && (x == p.x) && (z == p.z) && (r == p.r);
         }
     }
 

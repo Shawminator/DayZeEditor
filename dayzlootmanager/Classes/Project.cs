@@ -136,7 +136,7 @@ namespace DayZeEditor
 
         private TypesFile vanillaTypes;
         private BindingList<TypesFile> ModTypesList;
-        private BindingList<territoriesConfig> territoriesList;
+        public BindingList<territoriesConfig> territoriesList;
 
         public Project()
         {
@@ -148,9 +148,6 @@ namespace DayZeEditor
             projectFullName = fullname;
             ProjectName = _ProjectName;
         }
-
-
-
         public void setVanillaTypes()
         {
             vanillaTypes = new TypesFile(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\db\\types.xml");
@@ -185,16 +182,27 @@ namespace DayZeEditor
         }
         public void SetModListtypes()
         {
+            bool needsave = false;
             ModTypesList = new BindingList<TypesFile>();
             if (EconomyCore.economycore == null) return;
+            Console.WriteLine("\nSerializing custom types from Economycore");
             foreach (economycoreCE mods in EconomyCore.economycore.ce)
             {
+                if(mods.folder.Contains("\\"))
+                {
+                    mods.folder = mods.folder.Replace("\\", "/");
+                    needsave = true;
+                }
                 string path = projectFullName + "\\mpmissions\\" + mpmissionpath + "\\" + mods.folder;
                 foreach(economycoreCEFile file in mods.file)
                 {
                     if (file.type == "types")
                         SetmodTypes(path + "\\" + file.name);
                 }
+            }
+            if(needsave)
+            {
+                EconomyCore.SaveEconomycore();
             }
         }
         internal void removeMod(string modname)
@@ -292,7 +300,8 @@ namespace DayZeEditor
         {
             territoriesList = new BindingList<territoriesConfig>();
             string[] Territoryfiles = Directory.GetFiles(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\env");
-            foreach(string file in Territoryfiles)
+            Console.WriteLine("\nSerializing Territory files.....");
+            foreach (string file in Territoryfiles)
             {
                 territoriesList.Add(new territoriesConfig(file));
             }
