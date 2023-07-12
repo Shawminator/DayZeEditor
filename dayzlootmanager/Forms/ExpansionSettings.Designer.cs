@@ -68,6 +68,7 @@ namespace DayZeEditor
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Loot = new System.Windows.Forms.TabPage();
+            this.darkButton97 = new DarkUI.Controls.DarkButton();
             this.numericUpDown33 = new System.Windows.Forms.NumericUpDown();
             this.darkLabel220 = new DarkUI.Controls.DarkLabel();
             this.numericUpDown31 = new System.Windows.Forms.NumericUpDown();
@@ -1252,7 +1253,6 @@ namespace DayZeEditor
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
-            this.darkButton97 = new DarkUI.Controls.DarkButton();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -1875,6 +1875,11 @@ namespace DayZeEditor
             this.numericUpDown5.DecimalPlaces = 1;
             this.numericUpDown5.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown5.Location = new System.Drawing.Point(669, 10);
+            this.numericUpDown5.Maximum = new decimal(new int[] {
+            30000,
+            0,
+            0,
+            0});
             this.numericUpDown5.Name = "numericUpDown5";
             this.numericUpDown5.Size = new System.Drawing.Size(120, 20);
             this.numericUpDown5.TabIndex = 66;
@@ -1887,7 +1892,7 @@ namespace DayZeEditor
             this.numericUpDown6.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown6.Location = new System.Drawing.Point(669, 36);
             this.numericUpDown6.Maximum = new decimal(new int[] {
-            500,
+            10000,
             0,
             0,
             0});
@@ -1902,6 +1907,11 @@ namespace DayZeEditor
             this.numericUpDown7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.numericUpDown7.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown7.Location = new System.Drawing.Point(669, 62);
+            this.numericUpDown7.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.numericUpDown7.Name = "numericUpDown7";
             this.numericUpDown7.Size = new System.Drawing.Size(120, 20);
             this.numericUpDown7.TabIndex = 68;
@@ -2070,6 +2080,18 @@ namespace DayZeEditor
             this.Loot.Size = new System.Drawing.Size(838, 517);
             this.Loot.TabIndex = 0;
             this.Loot.Text = "Loot";
+            // 
+            // darkButton97
+            // 
+            this.darkButton97.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton97.Location = new System.Drawing.Point(6, 463);
+            this.darkButton97.Name = "darkButton97";
+            this.darkButton97.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton97.Size = new System.Drawing.Size(272, 23);
+            this.darkButton97.TabIndex = 102;
+            this.darkButton97.Text = "Find Varients from Spawnabletypes";
+            this.darkButton97.Visible = false;
+            this.darkButton97.Click += new System.EventHandler(this.darkButton97_Click_1);
             // 
             // numericUpDown33
             // 
@@ -2360,7 +2382,7 @@ namespace DayZeEditor
             // darkButton8
             // 
             this.darkButton8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton8.Location = new System.Drawing.Point(6, 436);
+            this.darkButton8.Location = new System.Drawing.Point(6, 463);
             this.darkButton8.Name = "darkButton8";
             this.darkButton8.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton8.Size = new System.Drawing.Size(272, 23);
@@ -2430,7 +2452,7 @@ namespace DayZeEditor
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(6, 10);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(272, 420);
+            this.listBox1.Size = new System.Drawing.Size(272, 446);
             this.listBox1.TabIndex = 0;
             this.listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
@@ -17561,17 +17583,6 @@ namespace DayZeEditor
             this.toolStripSeparator17.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.toolStripSeparator17.Name = "toolStripSeparator17";
             this.toolStripSeparator17.Size = new System.Drawing.Size(6, 28);
-            // 
-            // darkButton97
-            // 
-            this.darkButton97.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton97.Location = new System.Drawing.Point(6, 463);
-            this.darkButton97.Name = "darkButton97";
-            this.darkButton97.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton97.Size = new System.Drawing.Size(272, 23);
-            this.darkButton97.TabIndex = 102;
-            this.darkButton97.Text = "Find Varients from Spawnabletypes";
-            this.darkButton97.Click += new System.EventHandler(this.darkButton97_Click_1);
             // 
             // ExpansionSettings
             // 

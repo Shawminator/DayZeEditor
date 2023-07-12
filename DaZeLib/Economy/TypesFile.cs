@@ -47,9 +47,9 @@ namespace DayZeLib
                         types = (types)mySerializer.Deserialize(myFileStream);
                         types.type = new BindingList<typesType>(types.type.OrderBy(x => x.name).ToList());
                         List<string> typeslist = new List<string>();
-                        foreach(typesType type in types.type)
+                        foreach (typesType type in types.type)
                         {
-                            if(type.min > type.nominal)
+                            if (type.min > type.nominal)
                             {
                                 typeslist.Add(type.name);
                             }
@@ -58,7 +58,7 @@ namespace DayZeLib
                                 int usagecount = type.usage.Count;
                                 for (int i = 0; i < usagecount; i++)
                                 {
-                                    if (type.usage[i].name == null)
+                                    if (type.usage[i].name == null || type.usage[i].name == "")
                                     {
                                         type.usage.Remove(type.usage[i]);
                                         i--;
@@ -66,7 +66,32 @@ namespace DayZeLib
                                         savefile = true;
                                     }
                                 }
-                                
+
+                            }
+                            if(type.name == "HDSN_C4Stick")
+                            {
+                                string stop = "";
+                            }
+                            if (type.value.Count > 0)
+                            {
+                                int valuecount = type.value.Count;
+                                for (int i = 0; i < valuecount; i++)
+                                {
+                                    if (type.value[i].name == null && type.value[i].user == null
+                                        || type.value[i].name == null && type.value[i].user == ""
+                                        || type.value[i].name == "" && type.value[i].user == null)
+                                    {
+                                        type.value.Remove(type.value[i]);
+                                        i--;
+                                        valuecount--;
+                                        savefile = true;
+                                    }
+                                }
+                            }
+                            if (type.category != null && type.category.name == "")
+                            {
+                                type.category = null;
+                                savefile = true;
                             }
                         }
                         if(typeslist.Count > 0)

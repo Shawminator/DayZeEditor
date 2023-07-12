@@ -133,7 +133,7 @@ namespace DayZeLib
                     HUDColors.TemperatureHotColor = Colour;
                     break;
                 case "TemperatureIdealColorPB":
-                    HUDColors.NotifiersIdealColor = Colour;
+                    HUDColors.TemperatureIdealColor = Colour;
                     break;
                 case "TemperatureColdColorPB":
                     HUDColors.TemperatureColdColor = Colour;

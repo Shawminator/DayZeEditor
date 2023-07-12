@@ -1,4 +1,16 @@
 ﻿Version 0.7.7.4
+[Fixed]
+Wrong values assigned to numeric boxes in territories
+
+Version 0.7.7.4
+[Added]
+Territories to economy manager
+mapgrouporoto to economy manager
+specific airdrop containers to expansion missions, page has been split into data and map. 
+[fixed]
+various small fixes reported by user.
+
+Version 0.7.7.4
 [Added]
 CFGIgnorelist to economy manager
 added total number of nominals to types summary when running a query

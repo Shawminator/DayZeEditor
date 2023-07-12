@@ -395,7 +395,10 @@ namespace DayZeLib
             {
                 name = c.name
             };
-            category = cat;
+            if (cat.name == "other")
+                category = null;
+            else
+                category = cat;
         }
         public void AddTier(string tier)
         {

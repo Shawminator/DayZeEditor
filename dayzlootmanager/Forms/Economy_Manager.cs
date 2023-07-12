@@ -78,8 +78,22 @@ namespace DayZeEditor
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
 
-            comboBox1.DataSource = currentproject.limitfefinitions.lists.categories;
+            listsCategory nullcat = new listsCategory()
+            {
+                name = "other"
+            };
+            BindingList<listsCategory> newlist = new BindingList<listsCategory>();
+            newlist.Add(nullcat);
+            foreach (listsCategory cat in currentproject.limitfefinitions.lists.categories)
+            {
+                newlist.Add(cat);
+            }
+            comboBox1.DataSource = newlist;
             comboBox2.DataSource = currentproject.limitfefinitions.lists.usageflags;
+            if (comboBox2.Items.Count == 0)
+                groupBox2.Visible = false;
+            else
+                groupBox2.Visible = true;
             comboBox4.DataSource = currentproject.limitfefinitions.lists.tags;
 
             comboBox5.DataSource = currentproject.limitfefinitions.lists.tags;
@@ -1304,10 +1318,9 @@ namespace DayZeEditor
             isUserInteraction = false;
             textBox1.Text = currentlootpart.name;
             if (currentlootpart.category == null)
-                comboBox1.SelectedIndex = -1;
+                comboBox1.SelectedIndex = 0;
             else
                 comboBox1.SelectedIndex = comboBox1.FindStringExact(currentlootpart.category.name);
-
             populateUsage();
             PopulateCounts();
             PopulateFlags();
@@ -1354,20 +1367,106 @@ namespace DayZeEditor
         }
         private void PopulateCounts()
         {
-            if (typeNomCountNUD.Visible = currentlootpart.nominalSpecified)
+            if (typeNomCountNUD.Visible = NomCountCB.Checked = currentlootpart.nominalSpecified)
                 typeNomCountNUD.Value = (decimal)currentlootpart.nominal;
-            if (typeMinCountNUD.Visible = currentlootpart.minSpecified)
+            if (typeMinCountNUD.Visible = MinCountCB.Checked = currentlootpart.minSpecified)
                 typeMinCountNUD.Value = (decimal)currentlootpart.min;
             typeLifetimeNUD.Visible = true;
             typeLifetimeNUD.Value = (decimal)currentlootpart.lifetime;
-            if (typeRestockNUD.Visible = currentlootpart.restockSpecified)
+            if (typeRestockNUD.Visible = RestockCB.Checked = currentlootpart.restockSpecified)
                 typeRestockNUD.Value = (decimal)currentlootpart.restock;
-            if (typeQuantMINNUD.Visible = currentlootpart.quantminSpecified)
+            if (typeQuantMINNUD.Visible = QuanMinCB.Checked = currentlootpart.quantminSpecified)
                 typeQuantMINNUD.Value = (decimal)currentlootpart.quantmin;
-            if (typeQuantMAXNUD.Visible = currentlootpart.quantmaxSpecified)
+            if (typeQuantMAXNUD.Visible = QuanMaxCB.Checked = currentlootpart.quantmaxSpecified)
                 typeQuantMAXNUD.Value = (decimal)currentlootpart.quantmax;
-            if (typeCostNUD.Visible = currentlootpart.costSpecified)
+            if (typeCostNUD.Visible = costCB.Checked = currentlootpart.costSpecified)
                 typeCostNUD.Value = (decimal)currentlootpart.cost;
+        }
+        private void NomCountCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+            {
+                typesType looptype = tn.Tag as typesType;
+                if (typeNomCountNUD.Visible = looptype.nominalSpecified = NomCountCB.Checked)
+                {
+                    typeNomCountNUD.Value = 0;
+                    looptype.nominal = (int)typeNomCountNUD.Value;
+                    currentTypesFile.isDirty = true;
+                    currentproject.SetTotNomCount();
+                }
+            }
+            NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
+        }
+        private void MinCountCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+            {
+                typesType looptype = tn.Tag as typesType;
+                if (typeMinCountNUD.Visible = looptype.minSpecified = MinCountCB.Checked)
+                {
+                    typeMinCountNUD.Value = 0;
+                    looptype.min = (int)typeMinCountNUD.Value;
+                    currentTypesFile.isDirty = true;
+                }
+            }
+        }
+        private void RestockCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+            {
+                typesType looptype = tn.Tag as typesType;
+                if (typeRestockNUD.Visible = looptype.restockSpecified = RestockCB.Checked)
+                {
+                    typeRestockNUD.Value = 900;
+                    looptype.restock = (int)typeRestockNUD.Value;
+                    currentTypesFile.isDirty = true;
+                }
+            }
+        }
+        private void QuanMinCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+            {
+                typesType looptype = tn.Tag as typesType;
+                if (typeQuantMINNUD.Visible = looptype.minSpecified = QuanMinCB.Checked)
+                {
+                    typeQuantMINNUD.Value = -1;
+                    looptype.quantmin = (int)typeQuantMINNUD.Value;
+                    currentTypesFile.isDirty = true;
+                }
+            }
+        }
+        private void QuanMaxCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+            {
+                typesType looptype = tn.Tag as typesType;
+                if (typeQuantMAXNUD.Visible = looptype.quantmaxSpecified = QuanMaxCB.Checked)
+                {
+                    typeQuantMAXNUD.Value = -1;
+                    looptype.quantmax = (int)typeQuantMAXNUD.Value;
+                    currentTypesFile.isDirty = true;
+                }
+            }
+        }
+        private void costCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+            {
+                typesType looptype = tn.Tag as typesType;
+                if (typeCostNUD.Visible = looptype.costSpecified = costCB.Checked)
+                {
+                    typeCostNUD.Value = 100;
+                    looptype.cost = (int)typeCostNUD.Value; ;
+                    currentTypesFile.isDirty = true;
+                }
+            }
         }
         private void populateUsage()
         {
@@ -6541,7 +6640,34 @@ namespace DayZeEditor
         {
             if (currentterritorytypeTerritory == null) return;
             decimal scalevalue = MissionMapscale * (decimal)0.05;
-            if(TerritorieszonesCB.Checked)
+            if(TerritoryPaintAllCB.Checked)
+            {
+                foreach (territoriesConfig territoriesConfig in currentproject.territoriesList)
+                {
+                    foreach (territorytypeTerritory t in territoriesConfig.territorytype.territory)
+                    {
+                        if (!t.Equals(currentterritorytypeTerritory))
+                        {
+                            foreach (territorytypeTerritoryZone newpos in t.zone)
+                            {
+                                int centerX = (int)(Math.Round(newpos.x, 0) * scalevalue);
+                                int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(newpos.z, 0) * scalevalue);
+
+                                int radius = (int)(newpos.r * scalevalue);
+                                Point center = new Point(centerX, centerY);
+                                Pen pen = new Pen(Color.Red)
+                                {
+                                    Width = 4
+                                };
+                                string col = string.Format("{0:X}", t.color);
+                                pen.Color = ColorTranslator.FromHtml("#" + col.Substring(2));
+                                getCircle(e.Graphics, pen, center, radius);
+                            }
+                        }
+                    }
+                }
+            }
+            else if(TerritorieszonesCB.Checked)
             {
                 foreach (territorytypeTerritory t in currentterritoriesConfig.territorytype.territory)
                 {
@@ -6681,6 +6807,12 @@ namespace DayZeEditor
             pictureBox6.Invalidate();
             pictureBox3.Invalidate();
         }
+
+        private void TerritoryPaintAllCB_CheckedChanged(object sender, EventArgs e)
+        {
+            pictureBox6.Invalidate();
+            pictureBox3.Invalidate();
+        }
         private void TerritoriesZonesLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             currentterritorytypeTerritoryZone = TerritoriesZonesLB.SelectedItem as territorytypeTerritoryZone;
@@ -6690,8 +6822,8 @@ namespace DayZeEditor
             TerritoriesZonesRadiusNUD.Value = currentterritorytypeTerritoryZone.r;
             TerritoriesZonesStaticMInNUD.Value = currentterritorytypeTerritoryZone.smin;
             TerritoriesZonesStaticMaxNUD.Value = currentterritorytypeTerritoryZone.smax;
-            TerritoriesZonesDynamicMaxNUD.Value = currentterritorytypeTerritoryZone.dmin;
-            TerritoriesZonesStaticMaxNUD.Value = currentterritorytypeTerritoryZone.dmax;
+            TerritoriesZonesDynamicMinNUD.Value = currentterritorytypeTerritoryZone.dmin;
+            TerritoriesZonesDynamicMaxNUD.Value = currentterritorytypeTerritoryZone.dmax;
             RadioButton rb = groupBox74.Controls
                               .OfType<RadioButton>()
                               .FirstOrDefault(x => x.Text == currentterritorytypeTerritoryZone.name);
@@ -6861,5 +6993,7 @@ namespace DayZeEditor
             currentterritoriesConfig.isDirty = true;
         }
         #endregion territories
+
+
     }
 }

@@ -110,6 +110,12 @@ namespace DayZeEditor
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.costCB = new System.Windows.Forms.CheckBox();
+            this.QuanMaxCB = new System.Windows.Forms.CheckBox();
+            this.QuanMinCB = new System.Windows.Forms.CheckBox();
+            this.RestockCB = new System.Windows.Forms.CheckBox();
+            this.MinCountCB = new System.Windows.Forms.CheckBox();
+            this.NomCountCB = new System.Windows.Forms.CheckBox();
             this.typeCostNUD = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.typeQuantMAXNUD = new System.Windows.Forms.NumericUpDown();
@@ -919,6 +925,7 @@ namespace DayZeEditor
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.MapGroupProtoGroupsLB = new System.Windows.Forms.ListBox();
             this.TerritoriesTab = new System.Windows.Forms.TabPage();
+            this.TerritoryPaintAllCB = new System.Windows.Forms.CheckBox();
             this.TerritorieszonesCB = new System.Windows.Forms.CheckBox();
             this.panel5 = new TreeViewMS.PanelEx();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
@@ -2333,6 +2340,12 @@ namespace DayZeEditor
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.costCB);
+            this.groupBox4.Controls.Add(this.QuanMaxCB);
+            this.groupBox4.Controls.Add(this.QuanMinCB);
+            this.groupBox4.Controls.Add(this.RestockCB);
+            this.groupBox4.Controls.Add(this.MinCountCB);
+            this.groupBox4.Controls.Add(this.NomCountCB);
             this.groupBox4.Controls.Add(this.typeCostNUD);
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.typeQuantMAXNUD);
@@ -2354,6 +2367,66 @@ namespace DayZeEditor
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Counts";
+            // 
+            // costCB
+            // 
+            this.costCB.AutoSize = true;
+            this.costCB.Location = new System.Drawing.Point(9, 176);
+            this.costCB.Name = "costCB";
+            this.costCB.Size = new System.Drawing.Size(15, 14);
+            this.costCB.TabIndex = 20;
+            this.costCB.UseVisualStyleBackColor = true;
+            this.costCB.CheckedChanged += new System.EventHandler(this.costCB_CheckedChanged);
+            // 
+            // QuanMaxCB
+            // 
+            this.QuanMaxCB.AutoSize = true;
+            this.QuanMaxCB.Location = new System.Drawing.Point(9, 150);
+            this.QuanMaxCB.Name = "QuanMaxCB";
+            this.QuanMaxCB.Size = new System.Drawing.Size(15, 14);
+            this.QuanMaxCB.TabIndex = 19;
+            this.QuanMaxCB.UseVisualStyleBackColor = true;
+            this.QuanMaxCB.CheckedChanged += new System.EventHandler(this.QuanMaxCB_CheckedChanged);
+            // 
+            // QuanMinCB
+            // 
+            this.QuanMinCB.AutoSize = true;
+            this.QuanMinCB.Location = new System.Drawing.Point(9, 124);
+            this.QuanMinCB.Name = "QuanMinCB";
+            this.QuanMinCB.Size = new System.Drawing.Size(15, 14);
+            this.QuanMinCB.TabIndex = 18;
+            this.QuanMinCB.UseVisualStyleBackColor = true;
+            this.QuanMinCB.CheckedChanged += new System.EventHandler(this.QuanMinCB_CheckedChanged);
+            // 
+            // RestockCB
+            // 
+            this.RestockCB.AutoSize = true;
+            this.RestockCB.Location = new System.Drawing.Point(9, 98);
+            this.RestockCB.Name = "RestockCB";
+            this.RestockCB.Size = new System.Drawing.Size(15, 14);
+            this.RestockCB.TabIndex = 17;
+            this.RestockCB.UseVisualStyleBackColor = true;
+            this.RestockCB.CheckedChanged += new System.EventHandler(this.RestockCB_CheckedChanged);
+            // 
+            // MinCountCB
+            // 
+            this.MinCountCB.AutoSize = true;
+            this.MinCountCB.Location = new System.Drawing.Point(9, 46);
+            this.MinCountCB.Name = "MinCountCB";
+            this.MinCountCB.Size = new System.Drawing.Size(15, 14);
+            this.MinCountCB.TabIndex = 16;
+            this.MinCountCB.UseVisualStyleBackColor = true;
+            this.MinCountCB.CheckedChanged += new System.EventHandler(this.MinCountCB_CheckedChanged);
+            // 
+            // NomCountCB
+            // 
+            this.NomCountCB.AutoSize = true;
+            this.NomCountCB.Location = new System.Drawing.Point(9, 20);
+            this.NomCountCB.Name = "NomCountCB";
+            this.NomCountCB.Size = new System.Drawing.Size(15, 14);
+            this.NomCountCB.TabIndex = 15;
+            this.NomCountCB.UseVisualStyleBackColor = true;
+            this.NomCountCB.CheckedChanged += new System.EventHandler(this.NomCountCB_CheckedChanged);
             // 
             // typeCostNUD
             // 
@@ -2901,7 +2974,7 @@ namespace DayZeEditor
             this.economySearchNextButton.Image = ((System.Drawing.Image)(resources.GetObject("economySearchNextButton.Image")));
             this.economySearchNextButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.economySearchNextButton.Name = "economySearchNextButton";
-            this.economySearchNextButton.Size = new System.Drawing.Size(62, 42);
+            this.economySearchNextButton.Size = new System.Drawing.Size(24, 24);
             this.economySearchNextButton.Text = "Find Next";
             this.economySearchNextButton.Visible = false;
             this.economySearchNextButton.Click += new System.EventHandler(this.toolStripButton2_Click);
@@ -12990,6 +13063,7 @@ namespace DayZeEditor
             // TerritoriesTab
             // 
             this.TerritoriesTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TerritoriesTab.Controls.Add(this.TerritoryPaintAllCB);
             this.TerritoriesTab.Controls.Add(this.TerritorieszonesCB);
             this.TerritoriesTab.Controls.Add(this.panel5);
             this.TerritoriesTab.Controls.Add(this.trackBar6);
@@ -13000,6 +13074,17 @@ namespace DayZeEditor
             this.TerritoriesTab.Size = new System.Drawing.Size(1218, 553);
             this.TerritoriesTab.TabIndex = 15;
             this.TerritoriesTab.Text = "Territories";
+            // 
+            // TerritoryPaintAllCB
+            // 
+            this.TerritoryPaintAllCB.AutoSize = true;
+            this.TerritoryPaintAllCB.Location = new System.Drawing.Point(688, 3);
+            this.TerritoryPaintAllCB.Name = "TerritoryPaintAllCB";
+            this.TerritoryPaintAllCB.Size = new System.Drawing.Size(109, 17);
+            this.TerritoryPaintAllCB.TabIndex = 103;
+            this.TerritoryPaintAllCB.Text = "Paint All territories";
+            this.TerritoryPaintAllCB.UseVisualStyleBackColor = true;
+            this.TerritoryPaintAllCB.CheckedChanged += new System.EventHandler(this.TerritoryPaintAllCB_CheckedChanged);
             // 
             // TerritorieszonesCB
             // 
@@ -13848,14 +13933,14 @@ namespace DayZeEditor
             // addNewTerritoryToolStripMenuItem
             // 
             this.addNewTerritoryToolStripMenuItem.Name = "addNewTerritoryToolStripMenuItem";
-            this.addNewTerritoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addNewTerritoryToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.addNewTerritoryToolStripMenuItem.Text = "Add new Territory";
             this.addNewTerritoryToolStripMenuItem.Click += new System.EventHandler(this.addNewTerritoryToolStripMenuItem_Click);
             // 
             // removeTerritoryToolStripMenuItem
             // 
             this.removeTerritoryToolStripMenuItem.Name = "removeTerritoryToolStripMenuItem";
-            this.removeTerritoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removeTerritoryToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.removeTerritoryToolStripMenuItem.Text = "Remove Territory";
             this.removeTerritoryToolStripMenuItem.Click += new System.EventHandler(this.removeTerritoryToolStripMenuItem_Click);
             // 
@@ -15286,5 +15371,12 @@ namespace DayZeEditor
         private System.Windows.Forms.ContextMenuStrip TerritoryContextMenu;
         private System.Windows.Forms.ToolStripMenuItem addNewTerritoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeTerritoryToolStripMenuItem;
+        private System.Windows.Forms.CheckBox TerritoryPaintAllCB;
+        private System.Windows.Forms.CheckBox costCB;
+        private System.Windows.Forms.CheckBox QuanMaxCB;
+        private System.Windows.Forms.CheckBox QuanMinCB;
+        private System.Windows.Forms.CheckBox RestockCB;
+        private System.Windows.Forms.CheckBox MinCountCB;
+        private System.Windows.Forms.CheckBox NomCountCB;
     }
 }

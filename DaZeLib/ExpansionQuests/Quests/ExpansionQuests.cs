@@ -72,6 +72,16 @@ namespace DayZeLib
             if (Markedfordelete == null) Markedfordelete = new List<Quests>();
             Markedfordelete.Add(Questfordelete);
             QuestList.Remove(Questfordelete);
+            foreach(Quests Quests in QuestList)
+            {
+                if(Quests.PreQuests.Any(x => x.ID == Questfordelete.ID ))
+                {
+                    Quests.isDirty = true;
+                    Quests.PreQuestIDs.Remove(Questfordelete.ID);
+                    Quests.PreQuests.Remove(Questfordelete);
+                    Quests.isDirty = true;
+                }
+            }
         }
         public void CreateNewQuest(int id)
         {
@@ -102,7 +112,7 @@ namespace DayZeLib
                 QuestGivers = new BindingList<ExpansionQuestNPCs>(),
                 QuestTurnInIDs = new BindingList<int>(),
                 QuestTurnIns = new BindingList<ExpansionQuestNPCs>(),
-                IsAchivement = 0,
+                IsAchievement = 0,
                 Objectives = new BindingList<QuestObjectivesBase>(),
                 QuestColor = 0,
                 ReputationReward = 0,
@@ -246,7 +256,7 @@ namespace DayZeLib
         public int RewardsForGroupOwnerOnly { get; set; }
         public BindingList<int> QuestGiverIDs { get; set; }
         public BindingList<int> QuestTurnInIDs { get; set; }
-        public int IsAchivement { get; set; }
+        public int IsAchievement { get; set; }
         public BindingList<QuestObjectivesBase> Objectives { get; set; }
         public int QuestColor { get; set; }
         public int ReputationReward { get; set; }

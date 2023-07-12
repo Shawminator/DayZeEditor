@@ -1662,7 +1662,7 @@ namespace DayZeEditor
         {
             if (useraction)
             {
-                AirdropsettingsJson.ShowAirdropTypeOnMarker = checkBox1.Checked == true ? 1 : 0;
+                AirdropsettingsJson.ShowAirdropTypeOnMarker = checkBox3.Checked == true ? 1 : 0;
                 AirdropsettingsJson.isDirty = true;
             }
         }

@@ -474,10 +474,10 @@ namespace DayZeEditor
                 }
             }
 
-            string message = "The Following Files were saved....\n";
+            string message = "\nThe Following Files were saved....\n";
             if (updated)
             {
-                message = "The following files were either Created or Updated...\n";
+                message = "\nThe following files were either Created or Updated...\n";
             }
             int i = 0;
             foreach (string l in midifiedfiles)
@@ -498,7 +498,7 @@ namespace DayZeEditor
                 message = "";
             if (QuestNPCs.Markedfordelete != null)
             {
-                message += "The following Quest NPC files were Removed\n";
+                message += "\nThe following Quest NPC files were Removed\n";
                 i = 0;
                 foreach (ExpansionQuestNPCs del in QuestNPCs.Markedfordelete)
                 {
@@ -519,7 +519,7 @@ namespace DayZeEditor
             }
             if (QuestsList.Markedfordelete != null)
             {
-                message += "The following Quest files were Removed\n";
+                message += "\nThe following Quest files were Removed\n";
                 i = 0;
                 foreach (Quests del in QuestsList.Markedfordelete)
                 {
@@ -540,7 +540,7 @@ namespace DayZeEditor
             }
             if (QuestObjectives.Markedfordelete != null)
             {
-                message += "The following Quest Objective files were Removed\n";
+                message += "\nThe following Quest Objective files were Removed\n";
                 i = 0;
                 foreach (QuestObjectivesBase del in QuestObjectives.Markedfordelete)
                 {
@@ -561,7 +561,7 @@ namespace DayZeEditor
             }
             if (QuestPlayerDataList.Markedfordelete != null)
             {
-                message += "The following Quest Player Data files were Removed\n";
+                message += "\nThe following Quest Player Data files were Removed\n";
                 i = 0;
                 foreach (QuestPlayerData del in QuestPlayerDataList.Markedfordelete)
                 {
@@ -1184,7 +1184,7 @@ namespace DayZeEditor
             QuestFactionRewardCB.SelectedIndex = QuestFactionRewardCB.FindStringExact(CurrentQuest.FactionReward);
             QuestRequiredFactionCB.SelectedIndex = QuestRequiredFactionCB.FindStringExact(CurrentQuest.RequiredFaction);
 
-            QuestIsAchivementCB.Checked = CurrentQuest.IsAchivement == 1 ? true : false;
+            QuestIsAchievementCB.Checked = CurrentQuest.IsAchievement == 1 ? true : false;
             QuestRepeatableCB.Checked = CurrentQuest.Repeatable == 1 ? true : false;
             QuestIsDailyQuestCB.Checked = CurrentQuest.IsDailyQuest == 1 ? true : false;
             QuestIsWeeklyQuestCB.Checked = CurrentQuest.IsWeeklyQuest == 1 ? true : false;
@@ -1413,10 +1413,10 @@ namespace DayZeEditor
             CurrentQuest.FollowUpQuest = quest.ID;
             CurrentQuest.isDirty = true;
         }
-        private void QuestIsAchivementCB_CheckedChanged(object sender, EventArgs e)
+        private void QuestIsAchievementCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            CurrentQuest.IsAchivement = QuestIsAchivementCB.Checked == true ? 1 : 0;
+            CurrentQuest.IsAchievement = QuestIsAchievementCB.Checked == true ? 1 : 0;
             CurrentQuest.isDirty = true;
         }
         private void QuestRepeatableCB_CheckedChanged(object sender, EventArgs e)
@@ -2499,6 +2499,15 @@ namespace DayZeEditor
         {
             CurrentTreeNodeTag = treeViewMS1.SelectedNode.Tag as QuestObjectivesBase;
             QuestObjectives.deleteObjective(CurrentTreeNodeTag);
+            foreach(Quests quests in QuestsList.QuestList)
+            {
+                if (quests.Objectives.Any(x => x.ID == CurrentTreeNodeTag.ID) &&
+                   quests.Objectives.Any(y => y.ObjectiveType == CurrentTreeNodeTag.ObjectiveType))
+                {
+                    quests.Objectives.Remove(CurrentTreeNodeTag);
+                    quests.isDirty = true;
+                }
+            }
             treeViewMS1.SelectedNode.Parent.Nodes.Remove(treeViewMS1.SelectedNode);
         }
 

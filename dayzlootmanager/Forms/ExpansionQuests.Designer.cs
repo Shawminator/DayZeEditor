@@ -96,7 +96,7 @@ namespace DayZeEditor
             this.QuestRepeatableCB = new System.Windows.Forms.CheckBox();
             this.darkLabel24 = new DarkUI.Controls.DarkLabel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.QuestIsAchivementCB = new System.Windows.Forms.CheckBox();
+            this.QuestIsAchievementCB = new System.Windows.Forms.CheckBox();
             this.darkLabel23 = new DarkUI.Controls.DarkLabel();
             this.panel13 = new System.Windows.Forms.Panel();
             this.QuestIsDailyQuestCB = new System.Windows.Forms.CheckBox();
@@ -520,6 +520,8 @@ namespace DayZeEditor
             this.darkButton20 = new DarkUI.Controls.DarkButton();
             this.ObjectivesAICampPositionsLB = new System.Windows.Forms.ListBox();
             this.ObjectiveActionGB = new System.Windows.Forms.GroupBox();
+            this.darkButton71 = new DarkUI.Controls.DarkButton();
+            this.ObjectivesActionsCB = new System.Windows.Forms.ComboBox();
             this.darkLabel99 = new DarkUI.Controls.DarkLabel();
             this.ObjectivesActionsExecutionAmountNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel52 = new DarkUI.Controls.DarkLabel();
@@ -613,8 +615,6 @@ namespace DayZeEditor
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.removeQuestFromPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removePlayerSaveDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ObjectivesActionsCB = new System.Windows.Forms.ComboBox();
-            this.darkButton71 = new DarkUI.Controls.DarkButton();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1573,23 +1573,23 @@ namespace DayZeEditor
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.QuestIsAchivementCB);
+            this.panel6.Controls.Add(this.QuestIsAchievementCB);
             this.panel6.Controls.Add(this.darkLabel23);
             this.panel6.Location = new System.Drawing.Point(345, 339);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(336, 20);
             this.panel6.TabIndex = 190;
             // 
-            // QuestIsAchivementCB
+            // QuestIsAchievementCB
             // 
-            this.QuestIsAchivementCB.AutoSize = true;
-            this.QuestIsAchivementCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.QuestIsAchivementCB.Location = new System.Drawing.Point(96, 3);
-            this.QuestIsAchivementCB.Name = "QuestIsAchivementCB";
-            this.QuestIsAchivementCB.Size = new System.Drawing.Size(15, 14);
-            this.QuestIsAchivementCB.TabIndex = 170;
-            this.QuestIsAchivementCB.UseVisualStyleBackColor = true;
-            this.QuestIsAchivementCB.CheckedChanged += new System.EventHandler(this.QuestIsAchivementCB_CheckedChanged);
+            this.QuestIsAchievementCB.AutoSize = true;
+            this.QuestIsAchievementCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.QuestIsAchievementCB.Location = new System.Drawing.Point(96, 3);
+            this.QuestIsAchievementCB.Name = "QuestIsAchievementCB";
+            this.QuestIsAchievementCB.Size = new System.Drawing.Size(15, 14);
+            this.QuestIsAchievementCB.TabIndex = 170;
+            this.QuestIsAchievementCB.UseVisualStyleBackColor = true;
+            this.QuestIsAchievementCB.CheckedChanged += new System.EventHandler(this.QuestIsAchievementCB_CheckedChanged);
             // 
             // darkLabel23
             // 
@@ -1597,9 +1597,9 @@ namespace DayZeEditor
             this.darkLabel23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.darkLabel23.Location = new System.Drawing.Point(3, 2);
             this.darkLabel23.Name = "darkLabel23";
-            this.darkLabel23.Size = new System.Drawing.Size(74, 13);
+            this.darkLabel23.Size = new System.Drawing.Size(80, 13);
             this.darkLabel23.TabIndex = 171;
-            this.darkLabel23.Text = "Is Achivement";
+            this.darkLabel23.Text = "Is Achievement";
             // 
             // panel13
             // 
@@ -7007,6 +7007,27 @@ namespace DayZeEditor
             this.ObjectiveActionGB.TabStop = false;
             this.ObjectiveActionGB.Text = "Actions";
             // 
+            // darkButton71
+            // 
+            this.darkButton71.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton71.Location = new System.Drawing.Point(332, 22);
+            this.darkButton71.Name = "darkButton71";
+            this.darkButton71.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton71.Size = new System.Drawing.Size(20, 20);
+            this.darkButton71.TabIndex = 252;
+            this.darkButton71.Text = "+";
+            this.darkButton71.Click += new System.EventHandler(this.darkButton71_Click);
+            // 
+            // ObjectivesActionsCB
+            // 
+            this.ObjectivesActionsCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ObjectivesActionsCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ObjectivesActionsCB.FormattingEnabled = true;
+            this.ObjectivesActionsCB.Location = new System.Drawing.Point(6, 21);
+            this.ObjectivesActionsCB.Name = "ObjectivesActionsCB";
+            this.ObjectivesActionsCB.Size = new System.Drawing.Size(320, 21);
+            this.ObjectivesActionsCB.TabIndex = 251;
+            // 
             // darkLabel99
             // 
             this.darkLabel99.AutoSize = true;
@@ -8073,27 +8094,6 @@ namespace DayZeEditor
             this.removePlayerSaveDataToolStripMenuItem.Text = "Remove Player Save Data";
             this.removePlayerSaveDataToolStripMenuItem.Click += new System.EventHandler(this.removePlayerSaveDataToolStripMenuItem_Click);
             // 
-            // ObjectivesActionsCB
-            // 
-            this.ObjectivesActionsCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ObjectivesActionsCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesActionsCB.FormattingEnabled = true;
-            this.ObjectivesActionsCB.Location = new System.Drawing.Point(6, 21);
-            this.ObjectivesActionsCB.Name = "ObjectivesActionsCB";
-            this.ObjectivesActionsCB.Size = new System.Drawing.Size(320, 21);
-            this.ObjectivesActionsCB.TabIndex = 251;
-            // 
-            // darkButton71
-            // 
-            this.darkButton71.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton71.Location = new System.Drawing.Point(332, 22);
-            this.darkButton71.Name = "darkButton71";
-            this.darkButton71.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton71.Size = new System.Drawing.Size(20, 20);
-            this.darkButton71.TabIndex = 252;
-            this.darkButton71.Text = "+";
-            this.darkButton71.Click += new System.EventHandler(this.darkButton71_Click);
-            // 
             // ExpansionQuests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -8487,7 +8487,7 @@ namespace DayZeEditor
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.CheckBox QuestIsAchivementCB;
+        private System.Windows.Forms.CheckBox QuestIsAchievementCB;
         private DarkUI.Controls.DarkLabel darkLabel23;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.CheckBox QuestRepeatableCB;
