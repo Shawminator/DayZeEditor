@@ -60,6 +60,9 @@ namespace DayZeEditor
 
         public MapData data;
 
+        private Point _mouseLastPosition;
+        private Point _newscrollPosition;
+
         #region Form Load and populate plus other general Functions
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
@@ -203,7 +206,7 @@ namespace DayZeEditor
             pictureBox1.Size = new Size(currentproject.MapSize, currentproject.MapSize);
             pictureBox1.Paint += new PaintEventHandler(DrawAll);
             trackBar2.Value = 1;
-            SetScale();
+            SetTraderZoneScale();
 
             pictureBox2.BackgroundImage = Image.FromFile(Application.StartupPath + currentproject.MapPath); // Livonia maop size is 12800 x 12800, 0,0 bottom left, center 6400 x 6400
             pictureBox2.Size = new Size(currentproject.MapSize, currentproject.MapSize);
@@ -576,19 +579,7 @@ namespace DayZeEditor
         {
             List<string> midifiedfiles = new List<string>();
             string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
-            if (marketsettings.isDirty)
-            {
-                marketsettings.isDirty = false;
-                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-                string jsonString = JsonSerializer.Serialize(marketsettings, options);
-                if (currentproject.Createbackups && File.Exists(marketsettings.Filename))
-                {
-                    Directory.CreateDirectory(Path.GetDirectoryName(MarketSettingsPath) + "\\Backup\\" + SaveTime);
-                    File.Copy(marketsettings.Filename, Path.GetDirectoryName(MarketSettingsPath) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(marketsettings.Filename) + ".bak", true);
-                }
-                File.WriteAllText(marketsettings.Filename, jsonString);
-                midifiedfiles.Add(Path.GetFileName(marketsettings.Filename));
-            }
+            SaveMarketSettings(midifiedfiles, SaveTime);
             if (tradermaps.isDirty)
             {
                 tradermaps.isDirty = false;
@@ -612,7 +603,7 @@ namespace DayZeEditor
                 if (currentproject.Createbackups && File.Exists(ZonesPath + "\\" + zones.Filename + ".json"))
                 {
                     Directory.CreateDirectory(ZonesPath + "\\Backup\\" + SaveTime);
-                    File.Copy(ZonesPath+ "\\" + zones.Filename + ".json", ZonesPath + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(zones.Filename) + ".bak", true);
+                    File.Copy(ZonesPath + "\\" + zones.Filename + ".json", ZonesPath + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(zones.Filename) + ".bak", true);
                 }
                 File.WriteAllText(ZonesPath + "\\" + zones.Filename + ".json", jsonString);
                 midifiedfiles.Add(Path.GetFileName(zones.Filename));
@@ -668,10 +659,28 @@ namespace DayZeEditor
             else
                 MessageBox.Show("No changes were made.", "Nothing Saved", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
+
+        private void SaveMarketSettings(List<string> midifiedfiles = null, string SaveTime = null)
+        {
+            if (marketsettings.isDirty)
+            {
+                marketsettings.isDirty = false;
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                string jsonString = JsonSerializer.Serialize(marketsettings, options);
+                if (currentproject.Createbackups && SaveTime != null &&  File.Exists(marketsettings.Filename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(MarketSettingsPath) + "\\Backup\\" + SaveTime);
+                    File.Copy(marketsettings.Filename, Path.GetDirectoryName(MarketSettingsPath) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(marketsettings.Filename) + ".bak", true);
+                }
+                File.WriteAllText(marketsettings.Filename, jsonString);
+                if(midifiedfiles != null)
+                    midifiedfiles.Add(Path.GetFileName(marketsettings.Filename));
+            }
+        }
         #endregion Form Save function for all documents
 
         #region MarketSettings
-        public int scale2 = 1;
+        public int VehicleSpawnScale = 1;
         private void tabControl3_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (tabControl3.SelectedIndex)
@@ -773,6 +782,8 @@ namespace DayZeEditor
                 marketsettings.setcolour(pb.Name, "FFFFFFFF");
                 col = "FFFFFFFF";
                 marketsettings.isDirty = true;
+                SaveMarketSettings();
+                marketsettings.isDirty = false;
             }
             string col1 = "#" + col.Substring(6) + col.Remove(6, 2);
             Color colour = ColorTranslator.FromHtml(col1);
@@ -1058,7 +1069,7 @@ namespace DayZeEditor
         }
         private void DrawAllSpawns(object sender, PaintEventArgs e)
         {
-            float scalevalue = scale2 * 0.05f;
+            float scalevalue = VehicleSpawnScale * 0.05f;
             switch (tabControl2.SelectedIndex)
             {
                 case 0:
@@ -1183,12 +1194,12 @@ namespace DayZeEditor
         }
         private void trackBar4_MouseUp(object sender, MouseEventArgs e)
         {
-            scale2 = trackBar4.Value;
+            VehicleSpawnScale = trackBar4.Value;
             SetSpawnscale();
         }
         private void SetSpawnscale()
         {
-            float scalevalue = scale2 * 0.05f;
+            float scalevalue = VehicleSpawnScale * 0.05f;
             float mapsize = currentproject.MapSize;
             int newsize = (int)(mapsize * scalevalue);
             pictureBox2.Size = new Size(newsize, newsize);
@@ -1197,7 +1208,7 @@ namespace DayZeEditor
         {
             if (e is MouseEventArgs mouseEventArgs)
             {
-                float scalevalue = scale2 * 0.05f;
+                float scalevalue = VehicleSpawnScale * 0.05f;
                 float mapsize = currentproject.MapSize;
                 int newsize = (int)(mapsize * scalevalue);
                 Cursor.Current = Cursors.WaitCursor;
@@ -1211,6 +1222,108 @@ namespace DayZeEditor
                 marketsettings.isDirty = true;
                 pictureBox2.Invalidate();
             }
+        }
+        private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                _mouseLastPosition = e.Location;
+            }
+        }
+        private void pictureBox2_MouseEnter(object sender, EventArgs e)
+        {
+            if (pictureBox2.Focused == false)
+            {
+                pictureBox2.Focus();
+                panel2.AutoScrollPosition = _newscrollPosition;
+                pictureBox2.Invalidate();
+            }
+        }
+        private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Point changePoint = new Point(e.Location.X - _mouseLastPosition.X, e.Location.Y - _mouseLastPosition.Y);
+                _newscrollPosition = new Point(-panel2.AutoScrollPosition.X - changePoint.X, -panel2.AutoScrollPosition.Y - changePoint.Y);
+                if (_newscrollPosition.X <= 0)
+                    _newscrollPosition.X = 0;
+                if (_newscrollPosition.Y <= 0)
+                    _newscrollPosition.Y = 0;
+                panel2.AutoScrollPosition = _newscrollPosition;
+                pictureBox2.Invalidate();
+            }
+            decimal scalevalue = VehicleSpawnScale * (decimal)0.05;
+            decimal mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            label12.Text = Decimal.Round((decimal)(e.X / scalevalue), 4) + "," + Decimal.Round((decimal)((newsize - e.Y) / scalevalue), 4);
+        }
+        private void pictureBox2_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta < 0)
+            {
+                pictureBox2_ZoomOut();
+            }
+            else
+            {
+                pictureBox2_ZoomIn();
+            }
+
+        }
+        private void pictureBox2_ZoomIn()
+        {
+            int oldpictureboxhieght = pictureBox2.Height;
+            int oldpitureboxwidht = pictureBox2.Width;
+            Point oldscrollpos = panel2.AutoScrollPosition;
+            int tbv = trackBar4.Value;
+            int newval = tbv + 1;
+            if (newval >= 20)
+                newval = 20;
+            trackBar4.Value = newval;
+            VehicleSpawnScale = trackBar4.Value;
+            SetSpawnscale();
+            if (pictureBox2.Height > panel2.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox2.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panel2.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox2.Width > panel2.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox2.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panel2.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox2.Invalidate();
+        }
+        private void pictureBox2_ZoomOut()
+        {
+            int oldpictureboxhieght = pictureBox2.Height;
+            int oldpitureboxwidht = pictureBox2.Width;
+            Point oldscrollpos = panel2.AutoScrollPosition;
+            int tbv = trackBar4.Value;
+            int newval = tbv - 1;
+            if (newval <= 1)
+                newval = 1;
+            trackBar4.Value = newval;
+            VehicleSpawnScale = trackBar4.Value;
+            SetSpawnscale();
+            if (pictureBox2.Height > panel2.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox2.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panel2.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox2.Width > panel2.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox2.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panel2.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox2.Invalidate();
         }
         private void darkButton44_Click(object sender, EventArgs e)
         {
@@ -2439,9 +2552,9 @@ namespace DayZeEditor
         private void trackBar2_MouseUp(object sender, MouseEventArgs e)
         {
             TraderZoneMapScale = trackBar2.Value;
-            SetScale();
+            SetTraderZoneScale();
         }
-        private void SetScale()
+        private void SetTraderZoneScale()
         {
             float scalevalue = TraderZoneMapScale * 0.05f;
             float mapsize = currentproject.MapSize;
@@ -2482,6 +2595,108 @@ namespace DayZeEditor
                 currentZone.isDirty = true;
                 pictureBox2.Invalidate();
             }
+        }
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                _mouseLastPosition = e.Location;
+            }
+        }
+        private void pictureBox1_MouseEnter(object sender, EventArgs e)
+        {
+            if (pictureBox1.Focused == false)
+            {
+                pictureBox1.Focus();
+                panel1.AutoScrollPosition = _newscrollPosition;
+                pictureBox1.Invalidate();
+            }
+        }
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Point changePoint = new Point(e.Location.X - _mouseLastPosition.X, e.Location.Y - _mouseLastPosition.Y);
+                _newscrollPosition = new Point(-panel1.AutoScrollPosition.X - changePoint.X, -panel1.AutoScrollPosition.Y - changePoint.Y);
+                if (_newscrollPosition.X <= 0)
+                    _newscrollPosition.X = 0;
+                if (_newscrollPosition.Y <= 0)
+                    _newscrollPosition.Y = 0;
+                panel1.AutoScrollPosition = _newscrollPosition;
+                pictureBox1.Invalidate();
+            }
+            decimal scalevalue = TraderZoneMapScale * (decimal)0.05;
+            decimal mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            label11.Text = Decimal.Round((decimal)(e.X / scalevalue), 4) + "," + Decimal.Round((decimal)((newsize - e.Y) / scalevalue), 4);
+        }
+        private void pictureBox1_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta < 0)
+            {
+                pictureBox1_ZoomOut();
+            }
+            else
+            {
+                pictureBox1_ZoomIn();
+            }
+
+        }
+        private void pictureBox1_ZoomIn()
+        {
+            int oldpictureboxhieght = pictureBox1.Height;
+            int oldpitureboxwidht = pictureBox1.Width;
+            Point oldscrollpos = panel1.AutoScrollPosition;
+            int tbv = trackBar2.Value;
+            int newval = tbv + 1;
+            if (newval >= 20)
+                newval = 20;
+            trackBar2.Value = newval;
+            TraderZoneMapScale = trackBar2.Value;
+            SetTraderZoneScale();
+            if (pictureBox1.Height > panel1.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox1.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panel1.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox1.Width > panel1.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox1.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panel1.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox1.Invalidate();
+        }
+        private void pictureBox1_ZoomOut()
+        {
+            int oldpictureboxhieght = pictureBox1.Height;
+            int oldpitureboxwidht = pictureBox1.Width;
+            Point oldscrollpos = panel1.AutoScrollPosition;
+            int tbv = trackBar2.Value;
+            int newval = tbv - 1;
+            if (newval <= 1)
+                newval = 1;
+            trackBar2.Value = newval;
+            TraderZoneMapScale = trackBar2.Value;
+            SetTraderZoneScale();
+            if (pictureBox1.Height > panel1.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox1.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panel1.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox1.Width > panel1.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox1.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panel1.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox1.Invalidate();
         }
         private void getCircle(Graphics drawingArea, Pen penToUse, Point center, int radius)
         {
@@ -3136,6 +3351,27 @@ namespace DayZeEditor
                 }
             }
         }
+        private void darkButton45_Click(object sender, EventArgs e)
+        {
+            AddItemfromString form = new AddItemfromString();
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    if (!currenttradermap.Attachments.Contains(l))
+                    {
+                        currenttradermap.Attachments.Add(l);
+                        tradermaps.isDirty = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show(l + " is allready in the list");
+                    }
+                }
+            }
+        }
         private void darkButton23_Click(object sender, EventArgs e)
         {
             currenttradermap.Attachments.Remove(listBox15.GetItemText(listBox15.SelectedItem));
@@ -3537,6 +3773,7 @@ namespace DayZeEditor
                 }
             }
         }
+
 
     }
 }
