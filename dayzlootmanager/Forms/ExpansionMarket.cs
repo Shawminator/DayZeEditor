@@ -229,6 +229,8 @@ namespace DayZeEditor
             listBox13.ValueMember = "Value";
             listBox13.DataSource = Zones.ZoneList;
 
+            Traders.SortbyDisplayName();
+
             listBox2.DisplayMember = "Name";
             listBox2.ValueMember = "Value";
             listBox2.DataSource = Traders.Traderlist;
@@ -236,6 +238,8 @@ namespace DayZeEditor
             listBox16.DisplayMember = "Name";
             listBox16.ValueMember = "Value";
             listBox16.DataSource = Traders.Traderlist;
+
+            MarketCats.SortbyDisplayName();
 
             listBox5.DisplayMember = "Name";
             listBox5.ValueMember = "Value";
@@ -1354,6 +1358,16 @@ namespace DayZeEditor
         #endregion MarketSettings
 
         #region trader
+        private void darkButton46_Click(object sender, EventArgs e)
+        {
+            Traders.SortbyDisplayName();
+            listBox2.DataSource = Traders.Traderlist;
+        }
+        private void darkButton47_Click(object sender, EventArgs e)
+        {
+            Traders.SortByFilename();
+            listBox2.DataSource = Traders.Traderlist;
+        }
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             CanOnlyBuyRB.Visible = false;
@@ -1803,7 +1817,7 @@ namespace DayZeEditor
             if (action) return;
             currentTrader.isDirty = true;
             currentTrader.DisplayName = textBox5.Text;
-
+            listBox2.Invalidate();
         }
         private void MinRequiredHumanityNUD_ValueChanged(object sender, EventArgs e)
         {
@@ -2031,7 +2045,17 @@ namespace DayZeEditor
             }
         }
 
+        private void darkButton49_Click(object sender, EventArgs e)
+        {
+            MarketCats.SortbyDisplayName();
+            listBox5.DataSource = MarketCats.CatList;
+        }
 
+        private void darkButton48_Click(object sender, EventArgs e)
+        {
+            MarketCats.Sortbyfilename();
+            listBox5.DataSource = MarketCats.CatList;
+        }
         private void darkButton27_Click(object sender, EventArgs e)
         {
             if(currentitem == null) { return; }

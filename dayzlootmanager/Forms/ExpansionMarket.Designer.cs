@@ -31,9 +31,9 @@ namespace DayZeEditor
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExpansionMarket));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
             this.darkToolStrip21 = new DarkUI.Controls.DarkToolStrip2();
             this.SaveFileButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -391,6 +391,12 @@ namespace DayZeEditor
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.label12 = new System.Windows.Forms.Label();
             this.darkButton45 = new DarkUI.Controls.DarkButton();
+            this.darkButton46 = new DarkUI.Controls.DarkButton();
+            this.darkButton47 = new DarkUI.Controls.DarkButton();
+            this.darkLabel81 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel82 = new DarkUI.Controls.DarkLabel();
+            this.darkButton48 = new DarkUI.Controls.DarkButton();
+            this.darkButton49 = new DarkUI.Controls.DarkButton();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -3564,34 +3570,34 @@ namespace DayZeEditor
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle32;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(9, 246);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle33;
             this.dataGridView1.Size = new System.Drawing.Size(518, 356);
             this.dataGridView1.TabIndex = 87;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
@@ -3887,6 +3893,9 @@ namespace DayZeEditor
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage2.Controls.Add(this.darkLabel81);
+            this.tabPage2.Controls.Add(this.darkButton47);
+            this.tabPage2.Controls.Add(this.darkButton46);
             this.tabPage2.Controls.Add(this.darkLabel80);
             this.tabPage2.Controls.Add(this.RequiredCompletedQuestIDNUD);
             this.tabPage2.Controls.Add(this.RequiredFactionLB);
@@ -4299,7 +4308,7 @@ namespace DayZeEditor
             this.listBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.listBox2.ForeColor = System.Drawing.SystemColors.Control;
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(8, 14);
+            this.listBox2.Location = new System.Drawing.Point(8, 27);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(211, 550);
             this.listBox2.TabIndex = 0;
@@ -4309,6 +4318,9 @@ namespace DayZeEditor
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage3.Controls.Add(this.darkLabel82);
+            this.tabPage3.Controls.Add(this.darkButton48);
+            this.tabPage3.Controls.Add(this.darkButton49);
             this.tabPage3.Controls.Add(this.darkLabel13);
             this.tabPage3.Controls.Add(this.IsExchangeCB);
             this.tabPage3.Controls.Add(this.InitStockPercentNUD);
@@ -4948,10 +4960,10 @@ namespace DayZeEditor
             this.listBox5.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.listBox5.ForeColor = System.Drawing.SystemColors.Control;
             this.listBox5.FormattingEnabled = true;
-            this.listBox5.Location = new System.Drawing.Point(8, 14);
+            this.listBox5.Location = new System.Drawing.Point(8, 27);
             this.listBox5.Name = "listBox5";
             this.listBox5.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBox5.Size = new System.Drawing.Size(211, 550);
+            this.listBox5.Size = new System.Drawing.Size(211, 537);
             this.listBox5.TabIndex = 58;
             this.listBox5.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.listBox5.SelectedIndexChanged += new System.EventHandler(this.listBox5_SelectedIndexChanged);
@@ -5095,6 +5107,66 @@ namespace DayZeEditor
             this.darkButton45.TabIndex = 101;
             this.darkButton45.Text = "Add string";
             this.darkButton45.Click += new System.EventHandler(this.darkButton45_Click);
+            // 
+            // darkButton46
+            // 
+            this.darkButton46.Location = new System.Drawing.Point(46, 3);
+            this.darkButton46.Name = "darkButton46";
+            this.darkButton46.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton46.Size = new System.Drawing.Size(95, 23);
+            this.darkButton46.TabIndex = 172;
+            this.darkButton46.Text = "Display Name";
+            this.darkButton46.Click += new System.EventHandler(this.darkButton46_Click);
+            // 
+            // darkButton47
+            // 
+            this.darkButton47.Location = new System.Drawing.Point(147, 3);
+            this.darkButton47.Name = "darkButton47";
+            this.darkButton47.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton47.Size = new System.Drawing.Size(72, 23);
+            this.darkButton47.TabIndex = 173;
+            this.darkButton47.Text = "File Name";
+            this.darkButton47.Click += new System.EventHandler(this.darkButton47_Click);
+            // 
+            // darkLabel81
+            // 
+            this.darkLabel81.AutoSize = true;
+            this.darkLabel81.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel81.Location = new System.Drawing.Point(8, 8);
+            this.darkLabel81.Name = "darkLabel81";
+            this.darkLabel81.Size = new System.Drawing.Size(32, 13);
+            this.darkLabel81.TabIndex = 174;
+            this.darkLabel81.Text = "Sort:-";
+            // 
+            // darkLabel82
+            // 
+            this.darkLabel82.AutoSize = true;
+            this.darkLabel82.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel82.Location = new System.Drawing.Point(6, 7);
+            this.darkLabel82.Name = "darkLabel82";
+            this.darkLabel82.Size = new System.Drawing.Size(32, 13);
+            this.darkLabel82.TabIndex = 177;
+            this.darkLabel82.Text = "Sort:-";
+            // 
+            // darkButton48
+            // 
+            this.darkButton48.Location = new System.Drawing.Point(145, 2);
+            this.darkButton48.Name = "darkButton48";
+            this.darkButton48.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton48.Size = new System.Drawing.Size(72, 23);
+            this.darkButton48.TabIndex = 176;
+            this.darkButton48.Text = "File Name";
+            this.darkButton48.Click += new System.EventHandler(this.darkButton48_Click);
+            // 
+            // darkButton49
+            // 
+            this.darkButton49.Location = new System.Drawing.Point(44, 2);
+            this.darkButton49.Name = "darkButton49";
+            this.darkButton49.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton49.Size = new System.Drawing.Size(95, 23);
+            this.darkButton49.TabIndex = 175;
+            this.darkButton49.Text = "Display Name";
+            this.darkButton49.Click += new System.EventHandler(this.darkButton49_Click);
             // 
             // ExpansionMarket
             // 
@@ -5605,5 +5677,11 @@ namespace DayZeEditor
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private DarkUI.Controls.DarkButton darkButton45;
+        private DarkUI.Controls.DarkButton darkButton46;
+        private DarkUI.Controls.DarkButton darkButton47;
+        private DarkUI.Controls.DarkLabel darkLabel81;
+        private DarkUI.Controls.DarkLabel darkLabel82;
+        private DarkUI.Controls.DarkButton darkButton48;
+        private DarkUI.Controls.DarkButton darkButton49;
     }
 }

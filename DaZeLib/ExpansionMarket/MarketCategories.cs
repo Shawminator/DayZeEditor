@@ -17,6 +17,7 @@ namespace DayZeLib
     {
         public const int CurrentVersion = 12;
         public BindingList<Categories> CatList { get; set; }
+        public bool SortedbyDisplayName { get; private set; }
         public string MarketCatsPath {get;set;}
 
         public MarketCategories()
@@ -150,6 +151,7 @@ namespace DayZeLib
         {
             Categories NewCat = new Categories(catName.ToUpper().Replace("_", " "));
             NewCat.Filename = NewCat.DisplayName;
+            NewCat.SortByDisplayName = SortedbyDisplayName;
             if (CatList.Any(x => x.DisplayName == catName))
             {
                 MessageBox.Show(catName = " Allready in list of catogories....");
@@ -239,6 +241,27 @@ namespace DayZeLib
 
             return null;
         }
+
+        public void SortbyDisplayName()
+        {
+            var sortedListInstance = new BindingList<Categories>(CatList.OrderBy(x => x.DisplayName).ToList());
+            foreach (Categories t in sortedListInstance)
+            {
+                t.SortByDisplayName = true;
+            }
+            CatList = sortedListInstance;
+            SortedbyDisplayName = false;
+        }
+        public void Sortbyfilename()
+        {
+            var sortedListInstance = new BindingList<Categories>(CatList.OrderBy(x => x.Filename).ToList());
+            foreach (Categories t in sortedListInstance)
+            {
+                t.SortByDisplayName = false;
+            }
+            CatList = sortedListInstance;
+            SortedbyDisplayName = false;
+        }
     }
     public class Categories
     {
@@ -253,6 +276,8 @@ namespace DayZeLib
 
         [JsonIgnore]
         public string Filename { get; set; }
+        public bool SortByDisplayName { get; internal set; }
+
         [JsonIgnore]
         public bool isDirty = false;
 
@@ -276,7 +301,10 @@ namespace DayZeLib
         }
         public override string ToString()
         {
-            return DisplayName.Replace("#STR_EXPANSION_MARKET_CATEGORY_", "");
+            if (SortByDisplayName)
+                return DisplayName.Replace("#STR_EXPANSION_MARKET_CATEGORY_", "");
+            else
+                return Filename;
         }
         public marketItem getitem(string name)
         {

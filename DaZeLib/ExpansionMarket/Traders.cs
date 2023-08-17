@@ -18,7 +18,7 @@ namespace DayZeLib
         public const int CurrentVersion = 11;
         public BindingList<Traders> Traderlist { get; set; }
         public string TraderPath { get; set; }
-
+        public bool SortedbyDisplayName { get; set; }
         public TradersList()
         {
             Traderlist = new BindingList<Traders>();
@@ -126,6 +126,7 @@ namespace DayZeLib
             string newFilename = m_fileName.ToUpper();
             Traders t = new Traders(newFilename);
             t.Filename = newFilename;
+            t.SortByDisplayName = SortedbyDisplayName;
             if (Traderlist.Any(x => x.Filename == newFilename))
             {
                 MessageBox.Show(newFilename = " Allready in list of traders....");
@@ -142,6 +143,26 @@ namespace DayZeLib
         {
             
             
+        }
+        public void SortbyDisplayName()
+        {
+            var sortedListInstance = new BindingList<Traders>(Traderlist.OrderBy(x => x.DisplayName).ToList());
+            foreach(Traders t in sortedListInstance)
+            {
+                t.SortByDisplayName = true;
+            }
+            Traderlist = sortedListInstance;
+            SortedbyDisplayName = true;
+        }
+        public void SortByFilename()
+        {
+            var sortedListInstance = new BindingList<Traders>(Traderlist.OrderBy(x => x.Filename).ToList());
+            foreach (Traders t in sortedListInstance)
+            {
+                t.SortByDisplayName = false;
+            }
+            Traderlist = sortedListInstance;
+            SortedbyDisplayName = false;
         }
     }
     public class Traders
@@ -164,6 +185,8 @@ namespace DayZeLib
         public BindingList<TradersItem> ListItems { get; set; }
         [JsonIgnore]
         public bool isDirty = false;
+        [JsonIgnore]
+        public bool SortByDisplayName { get; set; }
 
         public Traders()
         {
@@ -188,7 +211,10 @@ namespace DayZeLib
         }
         public override string ToString()
         {
-            return Filename;
+            if (SortByDisplayName)
+                return DisplayName;
+            else
+                return Filename;
         }
         public bool ConvertDictToList(MarketCategories marketCats)
         {
