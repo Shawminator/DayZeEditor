@@ -194,8 +194,18 @@ namespace DayZeEditor
                     needsave = true;
                 }
                 string path = projectFullName + "\\mpmissions\\" + mpmissionpath + "\\" + mods.folder;
+                if (!Directory.Exists(path))
+                {
+                    Console.WriteLine(mods.folder + " does not exis, please remove full ce section from economy core." + Environment.NewLine);
+                    continue;
+                }
                 foreach(economycoreCEFile file in mods.file)
                 {
+                    if (!File.Exists(path + "\\" + file.name))
+                    {
+                        Console.WriteLine(file.name + " Does not exist, please remove from economy core."+ Environment.NewLine);
+                        continue;
+                    }
                     if (file.type == "types")
                         SetmodTypes(path + "\\" + file.name);
                 }
@@ -280,16 +290,19 @@ namespace DayZeEditor
             foreach (economycoreCE mods in EconomyCore.economycore.ce)
             {
                 string path = projectFullName + "\\mpmissions\\" + mpmissionpath + "\\" + mods.folder;
+                if (!Directory.Exists(path))
+                {
+                    Console.WriteLine(mods.folder + " Does not exist. please remove full ce section from economycore" + Environment.NewLine);
+                    continue;
+                }
                 foreach (economycoreCEFile file in mods.file)
                 {
                     if (file.type == "spawnabletypes")
                     {
                         if (!File.Exists(path + "\\" + file.name))
                         {
-                            XDocument xmlFile = new XDocument(new XDeclaration("1.0", "utf-8", "yes"));
-                            xmlFile.Add(new XElement("spawnabletypes"));
-                            xmlFile.Save(path + "\\" + file.name);
-                            Console.WriteLine("Custom " + file.name + " spawnabletypes file not found.... Creating blank XML");
+                            Console.WriteLine(mods.folder  + "\\" + file.name + " Does not exist, please remove from economy core." + Environment.NewLine);
+                            continue;
                         }
                         spawnabletypesList.Add(new Spawnabletypesconfig(path + "\\" + file.name));
                     }
@@ -303,7 +316,8 @@ namespace DayZeEditor
             Console.WriteLine("\nSerializing Territory files.....");
             foreach (string file in Territoryfiles)
             {
-                territoriesList.Add(new territoriesConfig(file));
+                if(Path.GetExtension(file) == ".xml")
+                    territoriesList.Add(new territoriesConfig(file));
             }
         }
         internal void SetRandompresets()

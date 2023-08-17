@@ -148,11 +148,13 @@ namespace DayZeLib
                 if (quest.QuestGiverIDs.Contains(currentQuestNPC.ID))
                 {
                     quest.QuestGiverIDs.Remove(currentQuestNPC.ID);
+                    quest.QuestGivers.Remove(currentQuestNPC);
                     quest.isDirty = true;
                 }
                 if (quest.QuestTurnInIDs.Contains(currentQuestNPC.ID))
                 {
                     quest.QuestTurnInIDs.Remove(currentQuestNPC.ID);
+                    quest.QuestTurnIns.Remove(currentQuestNPC);
                     quest.isDirty = true;
                 }
                 
@@ -290,8 +292,8 @@ namespace DayZeLib
                     QuestGivers.Add(questNPCs.GetNPCFromID(id));
                 else
                 {
-                    MessageBox.Show("Quest " + ID + " Has a quest giver npc id (" + id.ToString() + ") that doesnt exist.\n the id will be removed and the file market as dirty.\nIf you save this will remove the id from the physical file.");
-                    Console.WriteLine("Quest " + ID + " Has a quest giver npc id (" + id.ToString() + ") that doesnt exist.\n the id will be removed and the file market as dirty.\nIf you save this will remove the id from the physical file.\n");
+                    MessageBox.Show("Quest " + ID + " Has a quest giver npc id (" + id.ToString() + ") that doesnt exist.\n the id will be removed and the file marked as dirty.\nIf you save this will remove the id from the physical file.");
+                    Console.WriteLine("Quest " + ID + " Has a quest giver npc id (" + id.ToString() + ") that doesnt exist.\n the id will be removed and the file marked as dirty.\nIf you save this will remove the id from the physical file.\n");
                 }
              }
             foreach (int id in QuestTurnInIDs)
@@ -301,8 +303,8 @@ namespace DayZeLib
                     QuestTurnIns.Add(npc);
                 else
                 {
-                    MessageBox.Show("Quest " + ID + " Has a quest turn in npc id (" + id.ToString() + ") that doesnt exist.\n the id will be removed and the file market as dirty.\nIf you save this will remove the id from the physical file.");
-                    Console.WriteLine("Quest " + ID + " Has a quest turn in npc id (" + id.ToString() + ") that doesnt exist.\n the id will be removed and the file market as dirty.\nIf you save this will remove the id from the physical file.\n");
+                    MessageBox.Show("Quest " + ID + " Has a quest turn in npc id (" + id.ToString() + ") that doesnt exist.\n the id will be removed and the file marked as dirty.\nIf you save this will remove the id from the physical file.");
+                    Console.WriteLine("Quest " + ID + " Has a quest turn in npc id (" + id.ToString() + ") that doesnt exist.\n the id will be removed and the file marked as dirty.\nIf you save this will remove the id from the physical file.\n");
                 }
             }
         }

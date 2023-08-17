@@ -24,8 +24,8 @@ namespace DayZeEditor
     {
         public bool isUserInteraction = true;
         public Project currentproject { get; set; }
-        public int ZoneScale = 1;
-        public int ZoneEventScale = 1;
+
+
         public TypesFile vanillatypes;
         public List<TypesFile> ModTypes;
         public TypesFile currentTypesFile;
@@ -2404,6 +2404,7 @@ namespace DayZeEditor
         public eventposdefEvent eventposdefEvent;
         public eventposdefEventPos eventposdefEventPos;
         public eventposdefEventZone eventposdefEventZone;
+        public int ZoneEventScale = 1;
         private void LoadeventSpawns()
         {
             Console.WriteLine("Loading EventSpawns");
@@ -2702,19 +2703,125 @@ namespace DayZeEditor
                 float scalevalue = ZoneEventScale * 0.05f;
                 float mapsize = currentproject.MapSize;
                 int newsize = (int)(mapsize * scalevalue);
-                EventSpawnPosXNUD.Value = (decimal)(mouseEventArgs.X / scalevalue);
-                EventSpawnPosZNUD.Value = (decimal)((newsize - mouseEventArgs.Y) / scalevalue);
+                EventSpawnPosXNUD.Value = Decimal.Round((decimal)(mouseEventArgs.X / scalevalue), 4);
+                EventSpawnPosZNUD.Value = Decimal.Round((decimal)((newsize - mouseEventArgs.Y) / scalevalue), 4);
                 if (eventposdefEventPos.ySpecified)
                 {
                     if (MapData.FileExists)
                     {
-                        EventSpawnPosYNUD.Value = (decimal)(MapData.gethieght((float)eventposdefEventPos.x, (float)eventposdefEventPos.z));
+                        EventSpawnPosYNUD.Value = Decimal.Round((decimal)(MapData.gethieght((float)eventposdefEventPos.x, (float)eventposdefEventPos.z)), 4);
                     }
                 }
                 Cursor.Current = Cursors.Default;
                 currentproject.cfgeventspawns.isDirty = true;
                 pictureBox1.Invalidate();
             }
+        }
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                _mouseLastPosition = e.Location;
+            }
+        }
+
+        private void pictureBox1_MouseEnter(object sender, EventArgs e)
+        {
+            if (pictureBox1.Focused == false)
+            {
+                pictureBox1.Focus();
+                panel1.AutoScrollPosition = _newscrollPosition;
+                pictureBox1.Invalidate();
+            }
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Point changePoint = new Point(e.Location.X - _mouseLastPosition.X, e.Location.Y - _mouseLastPosition.Y);
+                _newscrollPosition = new Point(-panel1.AutoScrollPosition.X - changePoint.X, -panel1.AutoScrollPosition.Y - changePoint.Y);
+                if (_newscrollPosition.X <= 0)
+                    _newscrollPosition.X = 0;
+                if (_newscrollPosition.Y <= 0)
+                    _newscrollPosition.Y = 0;
+                panel1.AutoScrollPosition = _newscrollPosition;
+                pictureBox1.Invalidate();
+            }
+            decimal scalevalue = ZoneEventScale * (decimal)0.05;
+            decimal mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            decimal x = Decimal.Round((decimal)(e.X / scalevalue), 4);
+            decimal y = Decimal.Round((decimal)((newsize - e.Y) / scalevalue), 4);
+            label157.Text = x + "," + y;
+        }
+        private void pictureBox1_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta < 0)
+            {
+                pictureBox1_ZoomOut();
+            }
+            else
+            {
+                pictureBox1_ZoomIn();
+            }
+
+        }
+        private void pictureBox1_ZoomIn()
+        {
+            int oldpictureboxhieght = pictureBox1.Height;
+            int oldpitureboxwidht = pictureBox1.Width;
+            Point oldscrollpos = panel1.AutoScrollPosition;
+            int tbv = trackBar1.Value;
+            int newval = tbv + 1;
+            if (newval >= 20)
+                newval = 20;
+            trackBar1.Value = newval;
+            ZoneEventScale = trackBar1.Value;
+            SetEventSpawnScale();
+            if (pictureBox1.Height > panel1.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox1.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panel1.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox1.Width > panel1.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox1.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panel1.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox1.Invalidate();
+        }
+        private void pictureBox1_ZoomOut()
+        {
+            int oldpictureboxhieght = pictureBox1.Height;
+            int oldpitureboxwidht = pictureBox1.Width;
+            Point oldscrollpos = panel1.AutoScrollPosition;
+            int tbv = trackBar1.Value;
+            int newval = tbv - 1;
+            if (newval <= 1)
+                newval = 1;
+            trackBar1.Value = newval;
+            ZoneEventScale = trackBar1.Value;
+            SetEventSpawnScale();
+            if (pictureBox1.Height > panel1.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox1.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panel1.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox1.Width > panel1.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox1.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panel1.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox1.Invalidate();
         }
         private void EventSpawnPosXNUD_ValueChanged(object sender, EventArgs e)
         {
@@ -4364,6 +4471,7 @@ namespace DayZeEditor
         }
         #endregion typesquery
         #region PlayerSpawnPoints
+        public int PlayerSpawnScale = 1;
         public playerspawnpoints playerspawnpoints;
         public void LoadPlayerSpawns()
         {
@@ -4461,106 +4569,9 @@ namespace DayZeEditor
             currentproject.cfgplayerspawnpoints.isDirty = true;
             pictureBox2.Invalidate();
         }
-        private void pictureBox2_DoubleClick(object sender, EventArgs e)
-        {
-            if (e is MouseEventArgs mouseEventArgs)
-            {
-                Cursor.Current = Cursors.WaitCursor;
-                float scalevalue = ZoneScale * 0.05f;
-                float mapsize = currentproject.MapSize;
-                int newsize = (int)(mapsize * scalevalue);
-                switch (tabControl16.SelectedIndex)
-                {
-                    case 0:
-                        FreshPosXNUD.Value = (decimal)(mouseEventArgs.X / scalevalue);
-                        FreshPosZNUD.Value = (decimal)((newsize - mouseEventArgs.Y) / scalevalue);
-                        break;
-                    case 1:
-                        hopPosXNUD.Value = (decimal)(mouseEventArgs.X / scalevalue);
-                        hopPosZNUD.Value = (decimal)((newsize - mouseEventArgs.Y) / scalevalue);
-                        break;
-                    case 2:
-                        travelPosXNUD.Value = (decimal)(mouseEventArgs.X / scalevalue);
-                        travelPosZNUD.Value = (decimal)((newsize - mouseEventArgs.Y) / scalevalue);
-                        break;
-                }
-                Cursor.Current = Cursors.Default;
-                currentproject.cfgplayerspawnpoints.isDirty = true;
-                pictureBox2.Invalidate();
-            }
-        }
-        private void DrawAllPlayerSpawns(object sender, PaintEventArgs e)
-        {
-            switch (tabControl16.SelectedIndex)
-            {
-                case 0:
-                    if (playerspawnpoints.fresh == null) return;
-                    playerspawnpointsFreshPos currentpos = PlayerFGreshSpawnLB.SelectedItem as playerspawnpointsFreshPos;
-                    foreach (playerspawnpointsFreshPos newpos in playerspawnpoints.fresh.generator_posbubbles)
-                    {
-                        float scalevalue = ZoneScale * 0.05f;
-                        int centerX = (int)(Math.Round(newpos.x) * scalevalue);
-                        int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(newpos.z, 0) * scalevalue);
-                        int radius = (int)(Math.Round(1f, 0) * scalevalue);
-                        Point center = new Point(centerX, centerY);
-                        Pen pen = new Pen(Color.Red, 4);
-                        if (newpos == currentpos)
-                            pen.Color = Color.LimeGreen;
-                        getCircle(e.Graphics, pen, center, radius);
-                    }
-                    break;
-                case 1:
-                    if (playerspawnpoints.hop == null) return;
-                    playerspawnpointsHopPos currenthoppos = PlayerSpanHopLB.SelectedItem as playerspawnpointsHopPos;
-                    foreach (playerspawnpointsHopPos newpos in playerspawnpoints.hop.generator_posbubbles)
-                    {
-                        float scalevalue = ZoneScale * 0.05f;
-                        int centerX = (int)(Math.Round(newpos.x) * scalevalue);
-                        int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(newpos.z, 0) * scalevalue);
-                        int radius = (int)(Math.Round(1f, 0) * scalevalue);
-                        Point center = new Point(centerX, centerY);
-                        Pen pen = new Pen(Color.Red, 4);
-                        if (newpos == currenthoppos)
-                            pen.Color = Color.LimeGreen;
-                        getCircle(e.Graphics, pen, center, radius);
-                    }
-                    break;
-                case 2:
-                    if (playerspawnpoints.travel == null) return;
-                    playerspawnpointsTravelPos currenttravelpos = PlayerspawntravelLB.SelectedItem as playerspawnpointsTravelPos;
-                    foreach (playerspawnpointsTravelPos newpos in playerspawnpoints.travel.generator_posbubbles)
-                    {
-                        float scalevalue = ZoneScale * 0.05f;
-                        int centerX = (int)(Math.Round(newpos.x) * scalevalue);
-                        int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(newpos.z, 0) * scalevalue);
-                        int radius = (int)(Math.Round(1f, 0) * scalevalue);
-                        Point center = new Point(centerX, centerY);
-                        Pen pen = new Pen(Color.Red, 4);
-                        if (newpos == currenttravelpos)
-                            pen.Color = Color.LimeGreen;
-                        getCircle(e.Graphics, pen, center, radius);
-                    }
-                    break;
-            }
-
-        }
-        private void SetSpawnScale()
-        {
-            float scalevalue = ZoneScale * 0.05f;
-            float mapsize = currentproject.MapSize;
-            int newsize = (int)(mapsize * scalevalue);
-            pictureBox2.Size = new Size(newsize, newsize);
-        }
-        private void getCircle(Graphics drawingArea, Pen penToUse, Point center, int radius)
-        {
-            Rectangle rect = new Rectangle(center.X - 1, center.Y - 1, 2, 2);
-            drawingArea.DrawEllipse(penToUse, rect);
-            Rectangle rect2 = new Rectangle(center.X - radius, center.Y - radius, radius * 2, radius * 2);
-            drawingArea.DrawEllipse(penToUse, rect2);
-        }
         private void trackBar4_MouseUp(object sender, MouseEventArgs e)
         {
-            ZoneScale = trackBar4.Value;
+            PlayerSpawnScale = trackBar4.Value;
             SetSpawnScale();
         }
         private void min_dist_infectedNUD_ValueChanged(object sender, EventArgs e)
@@ -4719,6 +4730,205 @@ namespace DayZeEditor
             hopPosZNUD.Value = (decimal)currentpos.z;
             isUserInteraction = true;
             pictureBox2.Invalidate();
+        }
+        private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                _mouseLastPosition = e.Location;
+            }
+        }
+        private void pictureBox2_MouseEnter(object sender, EventArgs e)
+        {
+            if (pictureBox2.Focused == false)
+            {
+                pictureBox2.Focus();
+                panel2.AutoScrollPosition = _newscrollPosition;
+                pictureBox2.Invalidate();
+            }
+        }
+        private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Point changePoint = new Point(e.Location.X - _mouseLastPosition.X, e.Location.Y - _mouseLastPosition.Y);
+                _newscrollPosition = new Point(-panel2.AutoScrollPosition.X - changePoint.X, -panel2.AutoScrollPosition.Y - changePoint.Y);
+                if (_newscrollPosition.X <= 0)
+                    _newscrollPosition.X = 0;
+                if (_newscrollPosition.Y <= 0)
+                    _newscrollPosition.Y = 0;
+                panel2.AutoScrollPosition = _newscrollPosition;
+                pictureBox2.Invalidate();
+            }
+            decimal scalevalue = PlayerSpawnScale * (decimal)0.05;
+            decimal mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            label156.Text = Decimal.Round((decimal)(e.X / scalevalue),4) + "," + Decimal.Round((decimal)((newsize - e.Y) / scalevalue),4);
+        }
+        private void pictureBox2_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta < 0)
+            {
+                pictureBox2_ZoomOut();
+            }
+            else
+            {
+                pictureBox2_ZoomIn();
+            }
+
+        }
+        private void pictureBox2_ZoomIn()
+        {
+            int oldpictureboxhieght = pictureBox2.Height;
+            int oldpitureboxwidht = pictureBox2.Width;
+            Point oldscrollpos = panel2.AutoScrollPosition;
+            int tbv = trackBar4.Value;
+            int newval = tbv + 1;
+            if (newval >= 20)
+                newval = 20;
+            trackBar4.Value = newval;
+            PlayerSpawnScale = trackBar4.Value;
+            SetSpawnScale();
+            if (pictureBox2.Height > panel2.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox2.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panel2.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox2.Width > panel2.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox2.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panel2.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox2.Invalidate();
+        }
+        private void pictureBox2_ZoomOut()
+        {
+            int oldpictureboxhieght = pictureBox2.Height;
+            int oldpitureboxwidht = pictureBox2.Width;
+            Point oldscrollpos = panel2.AutoScrollPosition;
+            int tbv = trackBar4.Value;
+            int newval = tbv - 1;
+            if (newval <= 1)
+                newval = 1;
+            trackBar4.Value = newval;
+            PlayerSpawnScale = trackBar4.Value;
+            SetSpawnScale();
+            if (pictureBox2.Height > panel2.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox2.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panel2.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox2.Width > panel2.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox2.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panel2.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox2.Invalidate();
+        }
+        private void pictureBox2_DoubleClick(object sender, EventArgs e)
+        {
+            if (e is MouseEventArgs mouseEventArgs)
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                float scalevalue = PlayerSpawnScale * 0.05f;
+                float mapsize = currentproject.MapSize;
+                int newsize = (int)(mapsize * scalevalue);
+                switch (tabControl16.SelectedIndex)
+                {
+                    case 0:
+                        FreshPosXNUD.Value = Decimal.Round((decimal)(mouseEventArgs.X / scalevalue),4);
+                        FreshPosZNUD.Value = Decimal.Round((decimal)((newsize - mouseEventArgs.Y) / scalevalue),4);
+                        break;
+                    case 1:
+                        hopPosXNUD.Value = Decimal.Round((decimal)(mouseEventArgs.X / scalevalue),4);
+                        hopPosZNUD.Value = Decimal.Round((decimal)((newsize - mouseEventArgs.Y) / scalevalue),4);
+                        break;
+                    case 2:
+                        travelPosXNUD.Value = Decimal.Round((decimal)(mouseEventArgs.X / scalevalue),4);
+                        travelPosZNUD.Value = Decimal.Round((decimal)((newsize - mouseEventArgs.Y) / scalevalue),4);
+                        break;
+                }
+                Cursor.Current = Cursors.Default;
+                currentproject.cfgplayerspawnpoints.isDirty = true;
+                pictureBox2.Invalidate();
+            }
+        }
+        private void DrawAllPlayerSpawns(object sender, PaintEventArgs e)
+        {
+            switch (tabControl16.SelectedIndex)
+            {
+                case 0:
+                    if (playerspawnpoints.fresh == null) return;
+                    playerspawnpointsFreshPos currentpos = PlayerFGreshSpawnLB.SelectedItem as playerspawnpointsFreshPos;
+                    foreach (playerspawnpointsFreshPos newpos in playerspawnpoints.fresh.generator_posbubbles)
+                    {
+                        float scalevalue = PlayerSpawnScale * 0.05f;
+                        int centerX = (int)(Math.Round(newpos.x) * scalevalue);
+                        int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(newpos.z, 0) * scalevalue);
+                        int radius = (int)(Math.Round(1f, 0) * scalevalue);
+                        Point center = new Point(centerX, centerY);
+                        Pen pen = new Pen(Color.Red, 4);
+                        if (newpos == currentpos)
+                            pen.Color = Color.LimeGreen;
+                        getCircle(e.Graphics, pen, center, radius);
+                    }
+                    break;
+                case 1:
+                    if (playerspawnpoints.hop == null) return;
+                    playerspawnpointsHopPos currenthoppos = PlayerSpanHopLB.SelectedItem as playerspawnpointsHopPos;
+                    foreach (playerspawnpointsHopPos newpos in playerspawnpoints.hop.generator_posbubbles)
+                    {
+                        float scalevalue = PlayerSpawnScale * 0.05f;
+                        int centerX = (int)(Math.Round(newpos.x) * scalevalue);
+                        int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(newpos.z, 0) * scalevalue);
+                        int radius = (int)(Math.Round(1f, 0) * scalevalue);
+                        Point center = new Point(centerX, centerY);
+                        Pen pen = new Pen(Color.Red, 4);
+                        if (newpos == currenthoppos)
+                            pen.Color = Color.LimeGreen;
+                        getCircle(e.Graphics, pen, center, radius);
+                    }
+                    break;
+                case 2:
+                    if (playerspawnpoints.travel == null) return;
+                    playerspawnpointsTravelPos currenttravelpos = PlayerspawntravelLB.SelectedItem as playerspawnpointsTravelPos;
+                    foreach (playerspawnpointsTravelPos newpos in playerspawnpoints.travel.generator_posbubbles)
+                    {
+                        float scalevalue = PlayerSpawnScale * 0.05f;
+                        int centerX = (int)(Math.Round(newpos.x) * scalevalue);
+                        int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(newpos.z, 0) * scalevalue);
+                        int radius = (int)(Math.Round(1f, 0) * scalevalue);
+                        Point center = new Point(centerX, centerY);
+                        Pen pen = new Pen(Color.Red, 4);
+                        if (newpos == currenttravelpos)
+                            pen.Color = Color.LimeGreen;
+                        getCircle(e.Graphics, pen, center, radius);
+                    }
+                    break;
+            }
+
+        }
+        private void SetSpawnScale()
+        {
+            float scalevalue = PlayerSpawnScale * 0.05f;
+            float mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            pictureBox2.Size = new Size(newsize, newsize);
+        }
+        private void getCircle(Graphics drawingArea, Pen penToUse, Point center, int radius)
+        {
+            Rectangle rect = new Rectangle(center.X - 1, center.Y - 1, 2, 2);
+            drawingArea.DrawEllipse(penToUse, rect);
+            Rectangle rect2 = new Rectangle(center.X - radius, center.Y - radius, radius * 2, radius * 2);
+            drawingArea.DrawEllipse(penToUse, rect2);
         }
         #endregion PlayerSpawnPoints
         #region cfggameplayconfig
@@ -6513,11 +6723,6 @@ namespace DayZeEditor
 
             isUserInteraction = true;
         }
-        private void trackBar6_MouseUp(object sender, MouseEventArgs e)
-        {
-            MissionMapscale = trackBar6.Value;
-            SetsMissionScale();
-        }
         private Point _mouseLastPosition;
         private Point _newscrollPosition;
         private void pictureBox6_MouseDown(object sender, MouseEventArgs e)
@@ -6539,7 +6744,11 @@ namespace DayZeEditor
                     _newscrollPosition.Y = 0;
                 panel5.AutoScrollPosition = _newscrollPosition;
                 pictureBox6.Invalidate();
-            }
+             }
+            decimal scalevalue = MissionMapscale * (decimal)0.05;
+            decimal mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            label155.Text = Decimal.Round((decimal)(e.X / scalevalue),4) + "," + Decimal.Round((decimal)((newsize - e.Y) / scalevalue),4);
         }
         private void pictureBox6_MouseEnter(object sender, EventArgs e)
         {
@@ -6550,19 +6759,19 @@ namespace DayZeEditor
                 pictureBox6.Invalidate();
             }
         }
-        private void PicBox_MouseWheel(object sender, MouseEventArgs e)
+        private void pictureBox6_MouseWheel(object sender, MouseEventArgs e)
         {
             if (e.Delta < 0)
             {
-                ZoomOut();
+                pictureBox6_ZoomOut();
             }
             else
             {
-                ZoomIn();
+                pictureBox6_ZoomIn();
             }
 
         }
-        private void ZoomIn()
+        private void pictureBox6_ZoomIn()
         {
             int oldpictureboxhieght = pictureBox6.Height;
             int oldpitureboxwidht = pictureBox6.Width;
@@ -6590,7 +6799,7 @@ namespace DayZeEditor
             }
             pictureBox6.Invalidate();
         }
-        private void ZoomOut()
+        private void pictureBox6_ZoomOut()
         {
             int oldpictureboxhieght = pictureBox6.Height;
             int oldpitureboxwidht = pictureBox6.Width;
@@ -6719,14 +6928,18 @@ namespace DayZeEditor
                 decimal scalevalue = MissionMapscale * (decimal)0.05;
                 decimal mapsize = currentproject.MapSize;
                 int newsize = (int)(mapsize * scalevalue);
-                currentterritorytypeTerritoryZone.x = (decimal)(mouseEventArgs.X / scalevalue);
-                currentterritorytypeTerritoryZone.z = (decimal)((newsize - mouseEventArgs.Y) / scalevalue);
+                currentterritorytypeTerritoryZone.x = Decimal.Round((decimal)(mouseEventArgs.X / scalevalue),4);
+                currentterritorytypeTerritoryZone.z = Decimal.Round((decimal)((newsize - mouseEventArgs.Y) / scalevalue),4);
                 Cursor.Current = Cursors.Default;
                 currentterritoriesConfig.isDirty = true;
                 pictureBox6.Invalidate();
             }
         }
-
+        private void trackBar6_MouseUp(object sender, MouseEventArgs e)
+        {
+            MissionMapscale = trackBar6.Value;
+            SetsMissionScale();
+        }
         private void populateterritorytreeview()
         {
             Console.WriteLine("populating Territories treeView");
@@ -6992,6 +7205,9 @@ namespace DayZeEditor
             TerritoriesZonesLB.Refresh();
             currentterritoriesConfig.isDirty = true;
         }
+
+
+
         #endregion territories
 
 

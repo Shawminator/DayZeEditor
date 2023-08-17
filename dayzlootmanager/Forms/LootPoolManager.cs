@@ -20,13 +20,14 @@ namespace DayZeEditor
     {
         public Project currentproject { get; set; }
         public Rhlprewardtable CurrentRHLPRewardTables { get; private set; }
+        public RHLPAttachment currentRHLPAttachment { get; private set; }
 
         public TypesFile vanillatypes;
         public TypesFile Expansiontypes;
         public List<TypesFile> ModTypes;
         private string LootPoolConfigPath;
         public string Projectname;
-        private Rhlpdefinedweapon currentRHPredefinedWeapons;
+        private RHLPdefinedItems currentRHPredefineditems;
         private Rhlploottable currentRhlploottable;
         private bool useraction = false;
 
@@ -128,7 +129,7 @@ namespace DayZeEditor
 
             LCPredefinedWeaponsLB.DisplayMember = "DisplayName";
             LCPredefinedWeaponsLB.ValueMember = "Value";
-            LCPredefinedWeaponsLB.DataSource = LootPool.RHLPdefinedWeapons;
+            LCPredefinedWeaponsLB.DataSource = LootPool.RHLPdefinedItems;
 
             useraction = true;
         }
@@ -136,21 +137,30 @@ namespace DayZeEditor
         private void LCPredefinedWeaponsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (LCPredefinedWeaponsLB.SelectedItems.Count < 1) return;
-            currentRHPredefinedWeapons = LCPredefinedWeaponsLB.SelectedItem as Rhlpdefinedweapon;
+            currentRHPredefineditems = LCPredefinedWeaponsLB.SelectedItem as RHLPdefinedItems;
             useraction = false;
-            SetweaponInfo();
+            SetItemInfo();
             useraction = true;
         }
-        private void SetweaponInfo()
+        private void SetItemInfo()
         {
-            defnameTB.Text = currentRHPredefinedWeapons.DefineName;
-            weaponTB.Text = currentRHPredefinedWeapons.weapon;
-            magazineTB.Text = currentRHPredefinedWeapons.magazine;
-            opticTB.Text = currentRHPredefinedWeapons.optic;
+            defnameTB.Text = currentRHPredefineditems.DefineName;
+            weaponTB.Text = currentRHPredefineditems.Item;
+            SpawnExactCB.Checked = currentRHPredefineditems.SpawnExact == 1 ? true : false;
+
+            magazinesLB.DisplayMember = "DisplayName";
+            magazinesLB.ValueMember = "Value";
+            magazinesLB.DataSource = currentRHPredefineditems.magazines;
 
             attachmentsLB.DisplayMember = "DisplayName";
             attachmentsLB.ValueMember = "Value";
-            attachmentsLB.DataSource = currentRHPredefinedWeapons.attachments;
+            attachmentsLB.DataSource = currentRHPredefineditems.attachments;
+
+            if (currentRHPredefineditems.attachments.Count == 0)
+            {
+                attatchmentslistLB.DataSource = null;
+                attatchmentslistLB.Refresh();
+            }
         }
         private void darkButton8_Click(object sender, EventArgs e)
         {
@@ -167,11 +177,11 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    if (!LootPool.RHLPdefinedWeapons.Any(x => x.DefineName == "Defined_" + l))
+                    if (!LootPool.RHLPdefinedItems.Any(x => x.DefineName == "Defined_" + l))
                     {
-                        currentRHPredefinedWeapons.DefineName = "Defined_" + l;
-                        currentRHPredefinedWeapons.weapon = l;
-                        SetweaponInfo();
+                        currentRHPredefineditems.DefineName = "Defined_" + l;
+                        currentRHPredefineditems.Item = l;
+                        SetItemInfo();
                         LootPool.isDirty = true;
                     }
                     else
@@ -187,27 +197,6 @@ namespace DayZeEditor
             {
                 vanillatypes = vanillatypes,
                 ModTypes = ModTypes,
-                currentproject = currentproject,
-                UseOnlySingleitem = true
-            };
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                List<string> addedtypes = form.addedtypes.ToList();
-                foreach (string l in addedtypes)
-                {
-                    currentRHPredefinedWeapons.magazine = l;
-                    SetweaponInfo();
-                    LootPool.isDirty = true;
-                }
-            }
-        }
-        private void darkButton10_Click(object sender, EventArgs e)
-        {
-            AddItemfromTypes form = new AddItemfromTypes
-            {
-                vanillatypes = vanillatypes,
-                ModTypes = ModTypes,
                 currentproject = currentproject
             };
             DialogResult result = form.ShowDialog();
@@ -216,28 +205,34 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    if (!currentRHPredefinedWeapons.attachments.Any(x => x == l))
+                    if (!currentRHPredefineditems.magazines.Any(x => x == l))
                     {
-                        currentRHPredefinedWeapons.attachments.Add(l);
-                        SetweaponInfo();
+                        currentRHPredefineditems.magazines.Add(l);
                         LootPool.isDirty = true;
                     }
                 }
             }
         }
+        private void darkButton10_Click(object sender, EventArgs e)
+        {
+            RHLPAttachment newattachemnt = new RHLPAttachment()
+            {
+                attachments = new BindingList<string>()
+            };
+            currentRHPredefineditems.attachments.Add(newattachemnt);
+            LootPool.isDirty = true;
+        }
         private void darkButton9_Click(object sender, EventArgs e)
         {
             if (attachmentsLB.SelectedItems.Count < 1) return;
             int index = attachmentsLB.SelectedIndex;
-            currentRHPredefinedWeapons.attachments.Remove(attachmentsLB.GetItemText(attachmentsLB.SelectedItem));
+            currentRHPredefineditems.attachments.Remove(currentRHLPAttachment);
             LootPool.isDirty = true;
             attachmentsLB.SelectedIndex = -1;
             if (index - 1 == -1)
             {
                 if (attachmentsLB.Items.Count > 0)
                     attachmentsLB.SelectedIndex = 0;
-                else
-                    attachmentsLB.SelectedIndex = -1;
             }
             else
             {
@@ -259,23 +254,20 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    currentRHPredefinedWeapons.optic = l;
-                    SetweaponInfo();
+                    SetItemInfo();
                     LootPool.isDirty = true;
                 }
             }
         }
         private void darkButton15_Click(object sender, EventArgs e)
         {
-            LootPool.RHLPdefinedWeapons.Add(new Rhlpdefinedweapon()
+            LootPool.RHLPdefinedItems.Add(new RHLPdefinedItems()
             {
-                DefineName = "Defined_NewWeapon",
-                weapon = "",
-                magazine = "",
-                attachments = new BindingList<string>(),
-                optic = ""
-            }
-            ); ;
+                DefineName = "Defined_New_Item",
+                Item = "",
+                magazines = new BindingList<string>(),
+                attachments = new BindingList<RHLPAttachment>()
+            });
             LCPredefinedWeaponsLB.SelectedIndex = -1;
             LCPredefinedWeaponsLB.SelectedIndex = LCPredefinedWeaponsLB.Items.Count - 1;
         }
@@ -283,7 +275,7 @@ namespace DayZeEditor
         {
             if (LCPredefinedWeaponsLB.SelectedItems.Count < 1) return;
             int index = LCPredefinedWeaponsLB.SelectedIndex;
-            LootPool.RHLPdefinedWeapons.Remove(currentRHPredefinedWeapons);
+            LootPool.RHLPdefinedItems.Remove(currentRHPredefineditems);
             LootPool.isDirty = true;
             LCPredefinedWeaponsLB.SelectedIndex = -1;
             if (index - 1 == -1)
@@ -295,6 +287,17 @@ namespace DayZeEditor
             {
                 LCPredefinedWeaponsLB.SelectedIndex = index - 1;
             }
+        }
+
+        private void attachmentsLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (attachmentsLB.SelectedItems.Count < 1) return;
+            currentRHLPAttachment = attachmentsLB.SelectedItem as RHLPAttachment;
+
+            attatchmentslistLB.DisplayMember = "DisplayName";
+            attatchmentslistLB.ValueMember = "Value";
+            attatchmentslistLB.DataSource = currentRHLPAttachment.attachments;
+            attatchmentslistLB.Refresh();
         }
 
         private void LootCategoriesLB_SelectedIndexChanged(object sender, EventArgs e)
@@ -322,9 +325,9 @@ namespace DayZeEditor
         }
         private void darkButton7_Click(object sender, EventArgs e)
         {
-            AddfromPredefinedWeapons form = new AddfromPredefinedWeapons
+            AddfromPredefinedItems form = new AddfromPredefinedItems
             {
-                Rhlpdefinedweapon = LootPool.RHLPdefinedWeapons,
+                RHLPdefinedItems = LootPool.RHLPdefinedItems,
                 titellabel = "Add Items from Predefined Weapons",
                 isLootList = false,
                 isRHTableList = false,
@@ -491,9 +494,9 @@ namespace DayZeEditor
         }
         private void darkButton1_Click(object sender, EventArgs e)
         {
-            AddfromPredefinedWeapons form = new AddfromPredefinedWeapons
+            AddfromPredefinedItems form = new AddfromPredefinedItems
             {
-                Rhlpdefinedweapon = LootPool.RHLPdefinedWeapons,
+                RHLPdefinedItems = LootPool.RHLPdefinedItems,
                 titellabel = "Add Items from Predefined Weapons",
                 isLootList = false,
                 isRHTableList = false,
@@ -516,7 +519,7 @@ namespace DayZeEditor
         }
         private void darkButton2_Click(object sender, EventArgs e)
         {
-            AddfromPredefinedWeapons form = new AddfromPredefinedWeapons
+            AddfromPredefinedItems form = new AddfromPredefinedItems
             {
                 LootTables = LootPool.RHLPLootTables,
                 titellabel = "Add Items from Loot list",
@@ -544,14 +547,24 @@ namespace DayZeEditor
             CurrentRHLPRewardTables.Rewards.Remove(lootLB.GetItemText(lootLB.SelectedItem));
             LootPool.isDirty = true;
         }
-
+        private void SpawnExactCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentRHPredefineditems.SpawnExact = SpawnExactCB.Checked == true ? 1 : 0;
+            LootPool.isDirty = true;
+        }
         private void MaxMagsNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
             LootPool.NumberOfExtraMagsForDefinedWeapons = (int)MaxMagsNUD.Value;
             LootPool.isDirty = true;
         }
-
+        private void defnameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentRHPredefineditems.DefineName = defnameTB.Text;
+            LootPool.isDirty = true;
+        }
         private void SaveFileButton_Click(object sender, EventArgs e)
         {
             savefiles();
@@ -599,8 +612,6 @@ namespace DayZeEditor
         {
             Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\LootPool");
         }
-
-
         private void LootCatNameTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
@@ -608,6 +619,198 @@ namespace DayZeEditor
             LootCatLootLB.Refresh();
             LootPool.isDirty = true;
         }
+        private void darkButton4_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    if (!currentRHLPAttachment.attachments.Any(x => x == l))
+                    {
+                        currentRHLPAttachment.attachments.Add(l);
+                        LootPool.isDirty = true;
+                    }
+                }
+            }
+        }
+        private void darkButton3_Click(object sender, EventArgs e)
+        {
+            if (attatchmentslistLB.SelectedItems.Count < 1) return;
+            int index = attatchmentslistLB.SelectedIndex;
+            currentRHLPAttachment.attachments.Remove(attatchmentslistLB.GetItemText(attatchmentslistLB.SelectedItem));
+            LootPool.isDirty = true;
+            attatchmentslistLB.SelectedIndex = -1;
+            if (index - 1 == -1)
+            {
+                if (attatchmentslistLB.Items.Count > 0)
+                    attatchmentslistLB.SelectedIndex = 0;
+                else
+                    attatchmentslistLB.SelectedIndex = -1;
+            }
+            else
+            {
+                attatchmentslistLB.SelectedIndex = index - 1;
+            }
+        }
+        private void darkButton12_Click_1(object sender, EventArgs e)
+        {
+            if (magazinesLB.SelectedItems.Count < 1) return;
+            int index = magazinesLB.SelectedIndex;
+            currentRHPredefineditems.magazines.Remove(magazinesLB.GetItemText(magazinesLB.SelectedItem));
+            LootPool.isDirty = true;
+            magazinesLB.SelectedIndex = -1;
+            if (index - 1 == -1)
+            {
+                if (magazinesLB.Items.Count > 0)
+                    magazinesLB.SelectedIndex = 0;
+                else
+                    magazinesLB.SelectedIndex = -1;
+            }
+            else
+            {
+                magazinesLB.SelectedIndex = index - 1;
+            }
+        }
+        private void darkButton14_Click(object sender, EventArgs e)
+        {
+            List<spawnabletypesType> ST = new List<spawnabletypesType>();
+            foreach (Spawnabletypesconfig stc in currentproject.spawnabletypesList)
+            {
+                foreach (spawnabletypesType sp in stc.spawnabletypes.type)
+                {
+                    if (sp.name == currentRHPredefineditems.Item)
+                    {
+                        ST.Add(sp);
+                    }
+                }
+            }
+            spawnabletypesType useablespantypes = ST.Last();
 
+            foreach(var item in useablespantypes.Items)
+            {
+                if (item is spawnabletypesTypeAttachments)
+                {
+                    spawnabletypesTypeAttachments attachments = item as spawnabletypesTypeAttachments;
+                    RHLPAttachment NEWLIST = new RHLPAttachment();
+                    NEWLIST.attachments = new BindingList<string>();
+                    foreach (spawnabletypesTypeAttachmentsItem attitem in attachments.item)
+                    {
+                        if (attitem.name.ToLower().Contains("mag"))
+                        {
+                            currentRHPredefineditems.magazines.Add(attitem.name);
+                            continue;
+                        }
+                        else
+                        {
+                            NEWLIST.attachments.Add(attitem.name);
+                        }
+                    }
+                    if (NEWLIST.attachments.Count > 0)
+                    {
+                        currentRHPredefineditems.attachments.Add(NEWLIST);
+                    }
+                }
+                else if (item is spawnabletypesTypeCargo)
+                {
+                    spawnabletypesTypeCargo attachments = item as spawnabletypesTypeCargo;
+                    RHLPAttachment NEWLIST = new RHLPAttachment();
+                    NEWLIST.attachments = new BindingList<string>();
+                    foreach (spawnabletypesTypeCargoItem attitem in attachments.item)
+                    {
+                        NEWLIST.attachments.Add(attitem.name);
+                    }
+                    if (NEWLIST.attachments.Count > 0)
+                    {
+                        currentRHPredefineditems.attachments.Add(NEWLIST);
+                    }
+                }
+            }
+            
+        }
+
+        private void darkButton21_Click(object sender, EventArgs e)
+        {
+            List<spawnabletypesType> ST = new List<spawnabletypesType>();
+            foreach (Spawnabletypesconfig stc in currentproject.spawnabletypesList)
+            {
+                foreach (spawnabletypesType sp in stc.spawnabletypes.type)
+                {
+                    if (sp.name.ToLower().StartsWith("zmb"))
+                        continue;
+                    if (sp.Items.Count() > 0)
+                    {
+                        if(sp.ContainsAttchorcargo())
+                        {
+                            if(ST.Any(x => x.name == sp.name))
+                            {
+                                spawnabletypesType remove = ST.FirstOrDefault(x => x.name == sp.name);
+                                ST.Remove(remove);
+
+                            }
+                            ST.Add(sp);
+                        }
+                    }
+                }
+            }
+            foreach(spawnabletypesType sp in ST)
+            {
+                RHLPdefinedItems newitem = new RHLPdefinedItems()
+                {
+                    DefineName = "Defined_" + sp.name,
+                    Item = sp.name,
+                    magazines = new BindingList<string>(),
+                    attachments = new BindingList<RHLPAttachment>()
+                };
+                foreach (var item in sp.Items)
+                {
+                    if (item is spawnabletypesTypeAttachments)
+                    {
+                        spawnabletypesTypeAttachments attachments = item as spawnabletypesTypeAttachments;
+                        RHLPAttachment NEWLIST = new RHLPAttachment();
+                        NEWLIST.attachments = new BindingList<string>();
+                        foreach (spawnabletypesTypeAttachmentsItem attitem in attachments.item)
+                        {
+                            if (attitem.name.ToLower().Contains("mag"))
+                            {
+                                newitem.magazines.Add(attitem.name);
+                                continue;
+                            }
+                            else
+                            {
+                                NEWLIST.attachments.Add(attitem.name);
+                            }
+                        }
+                        if (NEWLIST.attachments.Count > 0)
+                        {
+                            newitem.attachments.Add(NEWLIST);
+                        }
+                    }
+                    else if (item is spawnabletypesTypeCargo)
+                    {
+                        spawnabletypesTypeCargo attachments = item as spawnabletypesTypeCargo;
+                        RHLPAttachment NEWLIST = new RHLPAttachment();
+                        NEWLIST.attachments = new BindingList<string>();
+                        foreach (spawnabletypesTypeCargoItem attitem in attachments.item)
+                        {
+                            NEWLIST.attachments.Add(attitem.name);
+                        }
+                        if (NEWLIST.attachments.Count > 0)
+                        {
+                            newitem.attachments.Add(NEWLIST);
+                        }
+                    }
+                }
+                LootPool.RHLPdefinedItems.Add(newitem);
+                LootPool.isDirty = true;
+            }
+        }
     }
 }

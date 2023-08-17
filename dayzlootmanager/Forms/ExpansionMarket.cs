@@ -768,6 +768,12 @@ namespace DayZeEditor
             Rectangle region;
             region = pb.ClientRectangle;
             string col = marketsettings.getcolourfromcontrol(pb.Name);
+            if (col == "")
+            {
+                marketsettings.setcolour(pb.Name, "FFFFFFFF");
+                col = "FFFFFFFF";
+                marketsettings.isDirty = true;
+            }
             string col1 = "#" + col.Substring(6) + col.Remove(6, 2);
             Color colour = ColorTranslator.FromHtml(col1);
             using (Brush brush = new SolidBrush(colour))

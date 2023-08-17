@@ -1,7 +1,7 @@
 ﻿
 namespace DayZeEditor
 {
-    partial class AddfromPredefinedWeapons
+    partial class AddfromPredefinedItems
     {
         /// <summary>
         /// Required designer variable.

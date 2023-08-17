@@ -75,7 +75,7 @@ namespace DayZeLib
             }
             List<string> duplist = new List<string>();
             StringBuilder sb = new StringBuilder();
-            sb.Append("The below files are duplicated, please manually fix");
+            sb.Append("The below files are duplicated, please manually fix:" + Environment.NewLine);
             bool printmessage = false;
             foreach (Categories cat in marketCats.CatList)
             {
@@ -244,7 +244,7 @@ namespace DayZeLib
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Could not find Market File for :- " + results[0]);
+                    MessageBox.Show(Path.GetFileName(Filename) + " Conatins and category enrty for " + results[0] + " That doesn not exist in the market folder");
                 }
                 
             }

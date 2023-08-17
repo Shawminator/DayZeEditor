@@ -144,7 +144,7 @@ namespace DayZeEditor
         }
         private void darkButton1_Click(object sender, EventArgs e)
         {
-            AddfromPredefinedWeapons form = new AddfromPredefinedWeapons
+            AddfromPredefinedItems form = new AddfromPredefinedItems
             {
                 LootCategories = LootChestTable.LootCategories,
                 titellabel = "Add loot chest types",
@@ -166,7 +166,7 @@ namespace DayZeEditor
         }
         private void darkButton4_Click(object sender, EventArgs e)
         {
-            AddfromPredefinedWeapons form = new AddfromPredefinedWeapons
+            AddfromPredefinedItems form = new AddfromPredefinedItems
             {
                 LootCategories = LootChestTable.LootCategories,
                 titellabel = "Add Items from Loot list",
@@ -534,7 +534,7 @@ namespace DayZeEditor
         }
         private void darkButton7_Click(object sender, EventArgs e)
         {
-            AddfromPredefinedWeapons form = new AddfromPredefinedWeapons
+            AddfromPredefinedItems form = new AddfromPredefinedItems
             {
                 LCPredefinedWeapons = LootChestTable.LCPredefinedWeapons,
                 titellabel = "Add Items from Predefined Weapons",

@@ -240,6 +240,7 @@ namespace DayZeEditor
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.EventsLB = new System.Windows.Forms.ListBox();
             this.EventSpawnsTab = new System.Windows.Forms.TabPage();
+            this.label157 = new System.Windows.Forms.Label();
             this.EventspawnPositionGB = new System.Windows.Forms.GroupBox();
             this.checkBox64 = new System.Windows.Forms.CheckBox();
             this.EventSpawnGroupTB = new System.Windows.Forms.TextBox();
@@ -482,6 +483,7 @@ namespace DayZeEditor
             this.darkLabel25 = new DarkUI.Controls.DarkLabel();
             this.VariablesLB = new System.Windows.Forms.ListBox();
             this.PlayerSpawnsTab = new System.Windows.Forms.TabPage();
+            this.label156 = new System.Windows.Forms.Label();
             this.trackBar4 = new System.Windows.Forms.TrackBar();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -925,6 +927,7 @@ namespace DayZeEditor
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.MapGroupProtoGroupsLB = new System.Windows.Forms.ListBox();
             this.TerritoriesTab = new System.Windows.Forms.TabPage();
+            this.label155 = new System.Windows.Forms.Label();
             this.TerritoryPaintAllCB = new System.Windows.Forms.CheckBox();
             this.TerritorieszonesCB = new System.Windows.Forms.CheckBox();
             this.panel5 = new TreeViewMS.PanelEx();
@@ -2974,7 +2977,7 @@ namespace DayZeEditor
             this.economySearchNextButton.Image = ((System.Drawing.Image)(resources.GetObject("economySearchNextButton.Image")));
             this.economySearchNextButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.economySearchNextButton.Name = "economySearchNextButton";
-            this.economySearchNextButton.Size = new System.Drawing.Size(24, 24);
+            this.economySearchNextButton.Size = new System.Drawing.Size(62, 42);
             this.economySearchNextButton.Text = "Find Next";
             this.economySearchNextButton.Visible = false;
             this.economySearchNextButton.Click += new System.EventHandler(this.toolStripButton2_Click);
@@ -3975,6 +3978,7 @@ namespace DayZeEditor
             // EventSpawnsTab
             // 
             this.EventSpawnsTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.EventSpawnsTab.Controls.Add(this.label157);
             this.EventSpawnsTab.Controls.Add(this.EventspawnPositionGB);
             this.EventSpawnsTab.Controls.Add(this.EventspawnZoneGB);
             this.EventSpawnsTab.Controls.Add(this.tabControl21);
@@ -3988,6 +3992,14 @@ namespace DayZeEditor
             this.EventSpawnsTab.Size = new System.Drawing.Size(1218, 553);
             this.EventSpawnsTab.TabIndex = 11;
             this.EventSpawnsTab.Text = "EventSpawns";
+            // 
+            // label157
+            // 
+            this.label157.AutoSize = true;
+            this.label157.Location = new System.Drawing.Point(520, 10);
+            this.label157.Name = "label157";
+            this.label157.Size = new System.Drawing.Size(0, 13);
+            this.label157.TabIndex = 118;
             // 
             // EventspawnPositionGB
             // 
@@ -4417,16 +4429,22 @@ namespace DayZeEditor
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(925, 514);
             this.panel1.TabIndex = 69;
+            this.panel1.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(512, 512);
             this.pictureBox1.TabIndex = 62;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.DoubleClick += new System.EventHandler(this.pictureBox1_DoubleClick);
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.pictureBox1.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
+            this.pictureBox1.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseWheel);
             // 
             // EventSpawnInfoGB
             // 
@@ -7079,6 +7097,7 @@ namespace DayZeEditor
             // PlayerSpawnsTab
             // 
             this.PlayerSpawnsTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PlayerSpawnsTab.Controls.Add(this.label156);
             this.PlayerSpawnsTab.Controls.Add(this.trackBar4);
             this.PlayerSpawnsTab.Controls.Add(this.panel2);
             this.PlayerSpawnsTab.Controls.Add(this.tabControl16);
@@ -7087,6 +7106,16 @@ namespace DayZeEditor
             this.PlayerSpawnsTab.Size = new System.Drawing.Size(1218, 553);
             this.PlayerSpawnsTab.TabIndex = 5;
             this.PlayerSpawnsTab.Text = "PlayerSpawns";
+            // 
+            // label156
+            // 
+            this.label156.AutoSize = true;
+            this.label156.ForeColor = System.Drawing.SystemColors.Control;
+            this.label156.Location = new System.Drawing.Point(535, 7);
+            this.label156.Name = "label156";
+            this.label156.Size = new System.Drawing.Size(47, 13);
+            this.label156.TabIndex = 69;
+            this.label156.Text = "label156";
             // 
             // trackBar4
             // 
@@ -7112,6 +7141,7 @@ namespace DayZeEditor
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(842, 521);
             this.panel2.TabIndex = 67;
+            this.panel2.MouseEnter += new System.EventHandler(this.pictureBox2_MouseEnter);
             // 
             // pictureBox2
             // 
@@ -7122,6 +7152,10 @@ namespace DayZeEditor
             this.pictureBox2.TabIndex = 62;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.DoubleClick += new System.EventHandler(this.pictureBox2_DoubleClick);
+            this.pictureBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseDown);
+            this.pictureBox2.MouseEnter += new System.EventHandler(this.pictureBox2_MouseEnter);
+            this.pictureBox2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseMove);
+            this.pictureBox2.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseWheel);
             // 
             // tabControl16
             // 
@@ -13063,6 +13097,7 @@ namespace DayZeEditor
             // TerritoriesTab
             // 
             this.TerritoriesTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TerritoriesTab.Controls.Add(this.label155);
             this.TerritoriesTab.Controls.Add(this.TerritoryPaintAllCB);
             this.TerritoriesTab.Controls.Add(this.TerritorieszonesCB);
             this.TerritoriesTab.Controls.Add(this.panel5);
@@ -13074,6 +13109,16 @@ namespace DayZeEditor
             this.TerritoriesTab.Size = new System.Drawing.Size(1218, 553);
             this.TerritoriesTab.TabIndex = 15;
             this.TerritoriesTab.Text = "Territories";
+            // 
+            // label155
+            // 
+            this.label155.AutoSize = true;
+            this.label155.Location = new System.Drawing.Point(813, 3);
+            this.label155.Name = "label155";
+            this.label155.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label155.Size = new System.Drawing.Size(0, 13);
+            this.label155.TabIndex = 104;
+            this.label155.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TerritoryPaintAllCB
             // 
@@ -13123,7 +13168,7 @@ namespace DayZeEditor
             this.pictureBox6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox6_MouseDown);
             this.pictureBox6.MouseEnter += new System.EventHandler(this.pictureBox6_MouseEnter);
             this.pictureBox6.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox6_MouseMove);
-            this.pictureBox6.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.PicBox_MouseWheel);
+            this.pictureBox6.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.pictureBox6_MouseWheel);
             // 
             // trackBar6
             // 
@@ -13136,6 +13181,7 @@ namespace DayZeEditor
             this.trackBar6.Size = new System.Drawing.Size(156, 16);
             this.trackBar6.TabIndex = 100;
             this.trackBar6.Value = 1;
+            this.trackBar6.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackBar6_MouseUp);
             // 
             // tabControl23
             // 
@@ -14126,6 +14172,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.variablesvarvalueNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.variablesvartypeNUD)).EndInit();
             this.PlayerSpawnsTab.ResumeLayout(false);
+            this.PlayerSpawnsTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -14648,72 +14695,7 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton darkButton20;
         private DarkUI.Controls.DarkButton darkButton21;
         private System.Windows.Forms.CheckBox ZeroNomCB;
-        private System.Windows.Forms.TabPage PlayerSpawnsTab;
-        private System.Windows.Forms.TabControl tabControl13;
-        private System.Windows.Forms.TabPage tabPage10;
-        private System.Windows.Forms.ListBox PlayerFGreshSpawnLB;
-        private System.Windows.Forms.TabControl tabControl14;
-        private System.Windows.Forms.TabPage tabPage11;
-        private System.Windows.Forms.NumericUpDown max_dist_staticNUD;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.NumericUpDown min_dist_staticNUD;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.NumericUpDown max_dist_playerNUD;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.NumericUpDown min_dist_playerNUD;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.NumericUpDown max_dist_infectedNUD;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.NumericUpDown min_dist_infectedNUD;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.TabControl tabControl15;
-        private System.Windows.Forms.TabPage tabPage12;
-        private System.Windows.Forms.NumericUpDown max_steepnessNUD;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.NumericUpDown GPmax_dist_staticNUD;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.NumericUpDown GPmin_dist_staticNUD;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.NumericUpDown min_steepnessNUD;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.NumericUpDown grid_heightNUD;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.NumericUpDown grid_widthNUD;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.NumericUpDown grid_densityNUD;
-        private System.Windows.Forms.Label label37;
         private TreeViewMS.TreeViewMS treeViewMS1;
-        private System.Windows.Forms.TabControl tabControl16;
-        private System.Windows.Forms.TabPage tabPage13;
-        private DarkUI.Controls.DarkButton darkButton22;
-        private DarkUI.Controls.DarkButton darkButton23;
-        private System.Windows.Forms.TabPage tabPage14;
-        private System.Windows.Forms.TabPage tabPage15;
-        private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.NumericUpDown FreshPosZNUD;
-        private System.Windows.Forms.NumericUpDown FreshPosXNUD;
-        private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.NumericUpDown hopPosZNUD;
-        private System.Windows.Forms.NumericUpDown hopPosXNUD;
-        private DarkUI.Controls.DarkButton darkButton24;
-        private DarkUI.Controls.DarkButton darkButton25;
-        private System.Windows.Forms.TabControl tabControl17;
-        private System.Windows.Forms.TabPage tabPage16;
-        private System.Windows.Forms.ListBox PlayerSpanHopLB;
-        private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.NumericUpDown travelPosZNUD;
-        private System.Windows.Forms.NumericUpDown travelPosXNUD;
-        private DarkUI.Controls.DarkButton darkButton26;
-        private DarkUI.Controls.DarkButton darkButton27;
-        private System.Windows.Forms.TabControl tabControl18;
-        private System.Windows.Forms.TabPage tabPage17;
-        private System.Windows.Forms.ListBox PlayerspawntravelLB;
-        private System.Windows.Forms.TrackBar trackBar4;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private DarkUI.Controls.DarkButton darkButton28;
         private System.Windows.Forms.ToolStripMenuItem checkForDuplicateTypesTSMI;
         private System.Windows.Forms.GroupBox Spaenabletypestagbox;
@@ -15378,5 +15360,73 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox RestockCB;
         private System.Windows.Forms.CheckBox MinCountCB;
         private System.Windows.Forms.CheckBox NomCountCB;
+        private System.Windows.Forms.Label label155;
+        private System.Windows.Forms.TabPage PlayerSpawnsTab;
+        private System.Windows.Forms.Label label156;
+        private System.Windows.Forms.TrackBar trackBar4;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.TabControl tabControl16;
+        private System.Windows.Forms.TabPage tabPage13;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.NumericUpDown FreshPosZNUD;
+        private System.Windows.Forms.NumericUpDown FreshPosXNUD;
+        private DarkUI.Controls.DarkButton darkButton22;
+        private DarkUI.Controls.DarkButton darkButton23;
+        private System.Windows.Forms.TabControl tabControl14;
+        private System.Windows.Forms.TabPage tabPage11;
+        private System.Windows.Forms.NumericUpDown max_dist_staticNUD;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.NumericUpDown min_dist_staticNUD;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.NumericUpDown max_dist_playerNUD;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.NumericUpDown min_dist_playerNUD;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.NumericUpDown max_dist_infectedNUD;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.NumericUpDown min_dist_infectedNUD;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TabControl tabControl13;
+        private System.Windows.Forms.TabPage tabPage10;
+        private System.Windows.Forms.ListBox PlayerFGreshSpawnLB;
+        private System.Windows.Forms.TabControl tabControl15;
+        private System.Windows.Forms.TabPage tabPage12;
+        private System.Windows.Forms.NumericUpDown max_steepnessNUD;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.NumericUpDown GPmax_dist_staticNUD;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.NumericUpDown GPmin_dist_staticNUD;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.NumericUpDown min_steepnessNUD;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.NumericUpDown grid_heightNUD;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.NumericUpDown grid_widthNUD;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.NumericUpDown grid_densityNUD;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.TabPage tabPage14;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.NumericUpDown hopPosZNUD;
+        private System.Windows.Forms.NumericUpDown hopPosXNUD;
+        private DarkUI.Controls.DarkButton darkButton24;
+        private DarkUI.Controls.DarkButton darkButton25;
+        private System.Windows.Forms.TabControl tabControl17;
+        private System.Windows.Forms.TabPage tabPage16;
+        private System.Windows.Forms.ListBox PlayerSpanHopLB;
+        private System.Windows.Forms.TabPage tabPage15;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.NumericUpDown travelPosZNUD;
+        private System.Windows.Forms.NumericUpDown travelPosXNUD;
+        private DarkUI.Controls.DarkButton darkButton26;
+        private DarkUI.Controls.DarkButton darkButton27;
+        private System.Windows.Forms.TabControl tabControl18;
+        private System.Windows.Forms.TabPage tabPage17;
+        private System.Windows.Forms.ListBox PlayerspawntravelLB;
+        private System.Windows.Forms.Label label157;
     }
 }

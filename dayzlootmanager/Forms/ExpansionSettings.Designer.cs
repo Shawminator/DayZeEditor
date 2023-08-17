@@ -1253,6 +1253,19 @@ namespace DayZeEditor
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
+            this.darkToolStrip26 = new DarkUI.Controls.DarkToolStrip2();
+            this.toolStripButton32 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator28 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton33 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator29 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton34 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator30 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton35 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator31 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton36 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator32 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton37 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator33 = new System.Windows.Forms.ToolStripSeparator();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -1587,6 +1600,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.GarageVehicleSearchRadiusNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxStorableVehiclesNUD)).BeginInit();
             this.darkToolStrip22.SuspendLayout();
+            this.darkToolStrip26.SuspendLayout();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -2722,17 +2736,17 @@ namespace DayZeEditor
             this.tabControl2.Controls.Add(this.tabPage8);
             this.tabControl2.Controls.Add(this.tabPage9);
             this.tabControl2.Controls.Add(this.tabPage10);
-            this.tabControl2.Controls.Add(this.tabPage11);
             this.tabControl2.Controls.Add(this.tabPage12);
             this.tabControl2.Controls.Add(this.tabPage13);
             this.tabControl2.Controls.Add(this.tabPage14);
             this.tabControl2.Controls.Add(this.tabPage3);
             this.tabControl2.Controls.Add(this.tabPage17);
+            this.tabControl2.Controls.Add(this.tabPage11);
             this.tabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl2.Location = new System.Drawing.Point(0, 73);
+            this.tabControl2.Location = new System.Drawing.Point(0, 101);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(1381, 713);
+            this.tabControl2.Size = new System.Drawing.Size(1381, 685);
             this.tabControl2.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl2.TabIndex = 72;
             this.tabControl2.SelectedIndexChanged += new System.EventHandler(this.tabControl2_SelectedIndexChanged);
@@ -5864,7 +5878,7 @@ namespace DayZeEditor
             this.toolStripButton8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton8.Name = "toolStripButton8";
-            this.toolStripButton8.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton8.Size = new System.Drawing.Size(96, 22);
             this.toolStripButton8.Text = "General Settings";
             this.toolStripButton8.Click += new System.EventHandler(this.toolStripButton8_Click);
             // 
@@ -5883,7 +5897,7 @@ namespace DayZeEditor
             this.toolStripButton7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton7.Size = new System.Drawing.Size(73, 22);
             this.toolStripButton7.Text = "Build Zones";
             this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
             // 
@@ -9955,7 +9969,7 @@ namespace DayZeEditor
             this.tabPage11.ForeColor = System.Drawing.SystemColors.Control;
             this.tabPage11.Location = new System.Drawing.Point(4, 25);
             this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Size = new System.Drawing.Size(1373, 684);
+            this.tabPage11.Size = new System.Drawing.Size(1373, 656);
             this.tabPage11.TabIndex = 8;
             this.tabPage11.Text = "Mission";
             // 
@@ -9969,7 +9983,7 @@ namespace DayZeEditor
             this.tabControl6.Location = new System.Drawing.Point(180, 3);
             this.tabControl6.Name = "tabControl6";
             this.tabControl6.SelectedIndex = 0;
-            this.tabControl6.Size = new System.Drawing.Size(1197, 685);
+            this.tabControl6.Size = new System.Drawing.Size(1197, 657);
             this.tabControl6.TabIndex = 130;
             // 
             // tabPage22
@@ -11566,7 +11580,7 @@ namespace DayZeEditor
             this.tabPage23.Location = new System.Drawing.Point(4, 22);
             this.tabPage23.Name = "tabPage23";
             this.tabPage23.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage23.Size = new System.Drawing.Size(1189, 659);
+            this.tabPage23.Size = new System.Drawing.Size(1189, 631);
             this.tabPage23.TabIndex = 1;
             this.tabPage23.Text = "Map";
             // 
@@ -11615,7 +11629,7 @@ namespace DayZeEditor
             this.panel5.Controls.Add(this.pictureBox6);
             this.panel5.Location = new System.Drawing.Point(3, 29);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1186, 630);
+            this.panel5.Size = new System.Drawing.Size(1186, 602);
             this.panel5.TabIndex = 99;
             this.panel5.MouseEnter += new System.EventHandler(this.pictureBox6_MouseEnter);
             // 
@@ -11833,7 +11847,7 @@ namespace DayZeEditor
             this.groupBox38.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox38.Location = new System.Drawing.Point(8, 321);
             this.groupBox38.Name = "groupBox38";
-            this.groupBox38.Size = new System.Drawing.Size(166, 360);
+            this.groupBox38.Size = new System.Drawing.Size(166, 332);
             this.groupBox38.TabIndex = 4;
             this.groupBox38.TabStop = false;
             this.groupBox38.Text = "Missions";
@@ -11841,7 +11855,7 @@ namespace DayZeEditor
             // darkButton65
             // 
             this.darkButton65.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton65.Location = new System.Drawing.Point(6, 287);
+            this.darkButton65.Location = new System.Drawing.Point(6, 259);
             this.darkButton65.Name = "darkButton65";
             this.darkButton65.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton65.Size = new System.Drawing.Size(154, 37);
@@ -11852,7 +11866,7 @@ namespace DayZeEditor
             // darkButton41
             // 
             this.darkButton41.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton41.Location = new System.Drawing.Point(6, 330);
+            this.darkButton41.Location = new System.Drawing.Point(6, 302);
             this.darkButton41.Name = "darkButton41";
             this.darkButton41.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton41.Size = new System.Drawing.Size(154, 23);
@@ -11863,7 +11877,7 @@ namespace DayZeEditor
             // darkButton40
             // 
             this.darkButton40.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton40.Location = new System.Drawing.Point(5, 258);
+            this.darkButton40.Location = new System.Drawing.Point(5, 230);
             this.darkButton40.Name = "darkButton40";
             this.darkButton40.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton40.Size = new System.Drawing.Size(154, 23);
@@ -11881,7 +11895,7 @@ namespace DayZeEditor
             this.MissionsLB.FormattingEnabled = true;
             this.MissionsLB.Location = new System.Drawing.Point(6, 15);
             this.MissionsLB.Name = "MissionsLB";
-            this.MissionsLB.Size = new System.Drawing.Size(154, 238);
+            this.MissionsLB.Size = new System.Drawing.Size(154, 199);
             this.MissionsLB.TabIndex = 3;
             this.MissionsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.MissionsLB.SelectedIndexChanged += new System.EventHandler(this.MissionsLB_SelectedIndexChanged);
@@ -17552,7 +17566,7 @@ namespace DayZeEditor
             this.toolStripButton13.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton13.Image")));
             this.toolStripButton13.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton13.Name = "toolStripButton13";
-            this.toolStripButton13.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton13.Size = new System.Drawing.Size(91, 19);
             this.toolStripButton13.Text = "Spawn Settings";
             this.toolStripButton13.Click += new System.EventHandler(this.toolStripButton13_Click);
             // 
@@ -17584,12 +17598,153 @@ namespace DayZeEditor
             this.toolStripSeparator17.Name = "toolStripSeparator17";
             this.toolStripSeparator17.Size = new System.Drawing.Size(6, 28);
             // 
+            // darkToolStrip26
+            // 
+            this.darkToolStrip26.AutoSize = false;
+            this.darkToolStrip26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.darkToolStrip26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkToolStrip26.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton32,
+            this.toolStripSeparator28,
+            this.toolStripButton33,
+            this.toolStripSeparator29,
+            this.toolStripButton34,
+            this.toolStripSeparator30,
+            this.toolStripButton35,
+            this.toolStripSeparator31,
+            this.toolStripButton36,
+            this.toolStripSeparator32,
+            this.toolStripButton37,
+            this.toolStripSeparator33});
+            this.darkToolStrip26.Location = new System.Drawing.Point(0, 73);
+            this.darkToolStrip26.Name = "darkToolStrip26";
+            this.darkToolStrip26.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
+            this.darkToolStrip26.Size = new System.Drawing.Size(1381, 28);
+            this.darkToolStrip26.TabIndex = 74;
+            this.darkToolStrip26.Text = "darkToolStrip26";
+            // 
+            // toolStripButton32
+            // 
+            this.toolStripButton32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripButton32.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripButton32.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton32.Image")));
+            this.toolStripButton32.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton32.Name = "toolStripButton32";
+            this.toolStripButton32.Size = new System.Drawing.Size(80, 25);
+            this.toolStripButton32.Text = "Map Settings";
+            // 
+            // toolStripSeparator28
+            // 
+            this.toolStripSeparator28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripSeparator28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripSeparator28.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStripSeparator28.Name = "toolStripSeparator28";
+            this.toolStripSeparator28.Size = new System.Drawing.Size(6, 28);
+            // 
+            // toolStripButton33
+            // 
+            this.toolStripButton33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripButton33.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripButton33.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton33.Image")));
+            this.toolStripButton33.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton33.Name = "toolStripButton33";
+            this.toolStripButton33.Size = new System.Drawing.Size(97, 25);
+            this.toolStripButton33.Text = "Mission Settings";
+            // 
+            // toolStripSeparator29
+            // 
+            this.toolStripSeparator29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripSeparator29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripSeparator29.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStripSeparator29.Name = "toolStripSeparator29";
+            this.toolStripSeparator29.Size = new System.Drawing.Size(6, 28);
+            // 
+            // toolStripButton34
+            // 
+            this.toolStripButton34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripButton34.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripButton34.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton34.Image")));
+            this.toolStripButton34.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton34.Name = "toolStripButton34";
+            this.toolStripButton34.Size = new System.Drawing.Size(79, 25);
+            this.toolStripButton34.Text = "Raid Settings";
+            this.toolStripButton34.ToolTipText = "Raid Settings";
+            // 
+            // toolStripSeparator30
+            // 
+            this.toolStripSeparator30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripSeparator30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripSeparator30.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStripSeparator30.Name = "toolStripSeparator30";
+            this.toolStripSeparator30.Size = new System.Drawing.Size(6, 28);
+            // 
+            // toolStripButton35
+            // 
+            this.toolStripButton35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripButton35.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripButton35.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton35.Image")));
+            this.toolStripButton35.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton35.Name = "toolStripButton35";
+            this.toolStripButton35.Size = new System.Drawing.Size(108, 25);
+            this.toolStripButton35.Text = "Safe Zone Settings";
+            // 
+            // toolStripSeparator31
+            // 
+            this.toolStripSeparator31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripSeparator31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripSeparator31.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStripSeparator31.Name = "toolStripSeparator31";
+            this.toolStripSeparator31.Size = new System.Drawing.Size(6, 28);
+            // 
+            // toolStripButton36
+            // 
+            this.toolStripButton36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripButton36.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripButton36.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton36.Image")));
+            this.toolStripButton36.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton36.Name = "toolStripButton36";
+            this.toolStripButton36.Size = new System.Drawing.Size(91, 25);
+            this.toolStripButton36.Text = "Spawn Settings";
+            // 
+            // toolStripSeparator32
+            // 
+            this.toolStripSeparator32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripSeparator32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripSeparator32.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStripSeparator32.Name = "toolStripSeparator32";
+            this.toolStripSeparator32.Size = new System.Drawing.Size(6, 28);
+            // 
+            // toolStripButton37
+            // 
+            this.toolStripButton37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripButton37.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripButton37.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton37.Image")));
+            this.toolStripButton37.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton37.Name = "toolStripButton37";
+            this.toolStripButton37.Size = new System.Drawing.Size(93, 25);
+            this.toolStripButton37.Text = "Vehicle Settings";
+            // 
+            // toolStripSeparator33
+            // 
+            this.toolStripSeparator33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripSeparator33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripSeparator33.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStripSeparator33.Name = "toolStripSeparator33";
+            this.toolStripSeparator33.Size = new System.Drawing.Size(6, 28);
+            // 
             // ExpansionSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1381, 786);
             this.Controls.Add(this.tabControl2);
+            this.Controls.Add(this.darkToolStrip26);
             this.Controls.Add(this.darkToolStrip22);
             this.Controls.Add(this.darkToolStrip21);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -18024,6 +18179,8 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.MaxStorableVehiclesNUD)).EndInit();
             this.darkToolStrip22.ResumeLayout(false);
             this.darkToolStrip22.PerformLayout();
+            this.darkToolStrip26.ResumeLayout(false);
+            this.darkToolStrip26.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -19253,5 +19410,18 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkLabel darkLabel269;
         private DarkUI.Controls.DarkLabel darkLabel273;
         private DarkUI.Controls.DarkButton darkButton97;
+        private DarkUI.Controls.DarkToolStrip2 darkToolStrip26;
+        private System.Windows.Forms.ToolStripButton toolStripButton32;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator28;
+        private System.Windows.Forms.ToolStripButton toolStripButton33;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator29;
+        private System.Windows.Forms.ToolStripButton toolStripButton34;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator30;
+        private System.Windows.Forms.ToolStripButton toolStripButton35;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator31;
+        private System.Windows.Forms.ToolStripButton toolStripButton36;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator32;
+        private System.Windows.Forms.ToolStripButton toolStripButton37;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator33;
     }
 }

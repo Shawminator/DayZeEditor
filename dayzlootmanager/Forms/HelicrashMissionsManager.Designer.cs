@@ -37,8 +37,11 @@ namespace DayZeEditor
             this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.HeliCrashEnabledCB = new System.Windows.Forms.CheckBox();
-            this.darkLabel1 = new DarkUI.Controls.DarkLabel();
+            this.darkButton1 = new DarkUI.Controls.DarkButton();
+            this.darkButton4 = new DarkUI.Controls.DarkButton();
+            this.darkLabel13 = new DarkUI.Controls.DarkLabel();
+            this.SpecificLootTablesLB = new System.Windows.Forms.ListBox();
+            this.darkLabel3 = new DarkUI.Controls.DarkLabel();
             this.CrashpointYNUD = new System.Windows.Forms.NumericUpDown();
             this.CrashPointXNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel67 = new DarkUI.Controls.DarkLabel();
@@ -46,12 +49,6 @@ namespace DayZeEditor
             this.CrashPointradiusNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel28 = new DarkUI.Controls.DarkLabel();
             this.Crash_MessageTB = new System.Windows.Forms.TextBox();
-            this.adminlogCB = new System.Windows.Forms.CheckBox();
-            this.HelicrashDespawnTimeNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel2 = new DarkUI.Controls.DarkLabel();
-            this.HelicrashSpawnTimeNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel10 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel11 = new DarkUI.Controls.DarkLabel();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -59,6 +56,27 @@ namespace DayZeEditor
             this.darkButton6 = new DarkUI.Controls.DarkButton();
             this.CrashpointLB = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.darkButton10 = new DarkUI.Controls.DarkButton();
+            this.darkButton21 = new DarkUI.Controls.DarkButton();
+            this.Loot_HelicrashLB = new System.Windows.Forms.ListBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ShowNotificationsCB = new System.Windows.Forms.CheckBox();
+            this.darkLabel9 = new DarkUI.Controls.DarkLabel();
+            this.CheckForPlayersbeforeDespawnCB = new System.Windows.Forms.CheckBox();
+            this.darkLabel7 = new DarkUI.Controls.DarkLabel();
+            this.ShowCrashMapMarkerCB = new System.Windows.Forms.CheckBox();
+            this.darkLabel6 = new DarkUI.Controls.DarkLabel();
+            this.HelicrashStartTimeNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel5 = new DarkUI.Controls.DarkLabel();
+            this.HeliCrashEnabledCB = new System.Windows.Forms.CheckBox();
+            this.darkLabel1 = new DarkUI.Controls.DarkLabel();
+            this.MakeCrashAreaPVPCB = new System.Windows.Forms.CheckBox();
+            this.HelicrashDespawnTimeNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel2 = new DarkUI.Controls.DarkLabel();
+            this.HelicrashSpawnTimeNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel10 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel11 = new DarkUI.Controls.DarkLabel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.ZombieMinNUD = new System.Windows.Forms.NumericUpDown();
             this.darkButton2 = new DarkUI.Controls.DarkButton();
@@ -74,8 +92,6 @@ namespace DayZeEditor
             this.speedNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel12 = new DarkUI.Controls.DarkLabel();
             this.darkLabel4 = new DarkUI.Controls.DarkLabel();
-            this.minimum_heightNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel3 = new DarkUI.Controls.DarkLabel();
             this.start_heightNUD = new System.Windows.Forms.NumericUpDown();
             this.start_heightlabel = new DarkUI.Controls.DarkLabel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -88,30 +104,26 @@ namespace DayZeEditor
             this.AnimalRadiusNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel21 = new DarkUI.Controls.DarkLabel();
             this.darkLabel20 = new DarkUI.Controls.DarkLabel();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.darkButton10 = new DarkUI.Controls.DarkButton();
-            this.darkButton21 = new DarkUI.Controls.DarkButton();
-            this.darkLabel8 = new DarkUI.Controls.DarkLabel();
-            this.Loot_HelicrashLB = new System.Windows.Forms.ListBox();
             this.darkToolStrip23 = new DarkUI.Controls.DarkToolStrip2();
             this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CrashpointYNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrashPointXNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrashPointradiusNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HelicrashDespawnTimeNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HelicrashSpawnTimeNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage2.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.HelicrashStartTimeNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HelicrashDespawnTimeNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HelicrashSpawnTimeNUD)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ZombieMinNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ZombieMaxNUD)).BeginInit();
@@ -119,13 +131,11 @@ namespace DayZeEditor
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.minimum_speedNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.speedNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.minimum_heightNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.start_heightNUD)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AnimalMinNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AnimalMaxNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AnimalRadiusNUD)).BeginInit();
-            this.tabPage3.SuspendLayout();
             this.darkToolStrip23.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -198,7 +208,6 @@ namespace DayZeEditor
             this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 73);
             this.tabControl1.Name = "tabControl1";
@@ -211,8 +220,11 @@ namespace DayZeEditor
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.tabPage1.Controls.Add(this.HeliCrashEnabledCB);
-            this.tabPage1.Controls.Add(this.darkLabel1);
+            this.tabPage1.Controls.Add(this.darkButton1);
+            this.tabPage1.Controls.Add(this.darkButton4);
+            this.tabPage1.Controls.Add(this.darkLabel13);
+            this.tabPage1.Controls.Add(this.SpecificLootTablesLB);
+            this.tabPage1.Controls.Add(this.darkLabel3);
             this.tabPage1.Controls.Add(this.CrashpointYNUD);
             this.tabPage1.Controls.Add(this.CrashPointXNUD);
             this.tabPage1.Controls.Add(this.darkLabel67);
@@ -220,12 +232,6 @@ namespace DayZeEditor
             this.tabPage1.Controls.Add(this.CrashPointradiusNUD);
             this.tabPage1.Controls.Add(this.darkLabel28);
             this.tabPage1.Controls.Add(this.Crash_MessageTB);
-            this.tabPage1.Controls.Add(this.adminlogCB);
-            this.tabPage1.Controls.Add(this.HelicrashDespawnTimeNUD);
-            this.tabPage1.Controls.Add(this.darkLabel2);
-            this.tabPage1.Controls.Add(this.HelicrashSpawnTimeNUD);
-            this.tabPage1.Controls.Add(this.darkLabel10);
-            this.tabPage1.Controls.Add(this.darkLabel11);
             this.tabPage1.Controls.Add(this.trackBar2);
             this.tabPage1.Controls.Add(this.panel3);
             this.tabPage1.Controls.Add(this.darkButton5);
@@ -238,32 +244,69 @@ namespace DayZeEditor
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             // 
-            // HeliCrashEnabledCB
+            // darkButton1
             // 
-            this.HeliCrashEnabledCB.AutoSize = true;
-            this.HeliCrashEnabledCB.Location = new System.Drawing.Point(128, 29);
-            this.HeliCrashEnabledCB.Name = "HeliCrashEnabledCB";
-            this.HeliCrashEnabledCB.Size = new System.Drawing.Size(15, 14);
-            this.HeliCrashEnabledCB.TabIndex = 137;
-            this.HeliCrashEnabledCB.UseVisualStyleBackColor = true;
-            this.HeliCrashEnabledCB.CheckedChanged += new System.EventHandler(this.HeliCrashEnabledCB_CheckedChanged);
+            this.darkButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton1.Location = new System.Drawing.Point(6, 521);
+            this.darkButton1.Name = "darkButton1";
+            this.darkButton1.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton1.Size = new System.Drawing.Size(110, 23);
+            this.darkButton1.TabIndex = 140;
+            this.darkButton1.Text = "Add";
+            this.darkButton1.Click += new System.EventHandler(this.darkButton1_Click);
             // 
-            // darkLabel1
+            // darkButton4
             // 
-            this.darkLabel1.AutoSize = true;
-            this.darkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel1.Location = new System.Drawing.Point(3, 30);
-            this.darkLabel1.Name = "darkLabel1";
-            this.darkLabel1.Size = new System.Drawing.Size(94, 13);
-            this.darkLabel1.TabIndex = 136;
-            this.darkLabel1.Text = "HeliCrash Enabled";
+            this.darkButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton4.Location = new System.Drawing.Point(128, 521);
+            this.darkButton4.Name = "darkButton4";
+            this.darkButton4.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton4.Size = new System.Drawing.Size(104, 23);
+            this.darkButton4.TabIndex = 139;
+            this.darkButton4.Text = "Remove";
+            this.darkButton4.Click += new System.EventHandler(this.darkButton4_Click);
+            // 
+            // darkLabel13
+            // 
+            this.darkLabel13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkLabel13.AutoSize = true;
+            this.darkLabel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel13.Location = new System.Drawing.Point(6, 391);
+            this.darkLabel13.Name = "darkLabel13";
+            this.darkLabel13.Size = new System.Drawing.Size(109, 13);
+            this.darkLabel13.TabIndex = 138;
+            this.darkLabel13.Text = "Specific Reward Sets";
+            // 
+            // SpecificLootTablesLB
+            // 
+            this.SpecificLootTablesLB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.SpecificLootTablesLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SpecificLootTablesLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.SpecificLootTablesLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SpecificLootTablesLB.FormattingEnabled = true;
+            this.SpecificLootTablesLB.Location = new System.Drawing.Point(6, 407);
+            this.SpecificLootTablesLB.Name = "SpecificLootTablesLB";
+            this.SpecificLootTablesLB.Size = new System.Drawing.Size(226, 108);
+            this.SpecificLootTablesLB.TabIndex = 137;
+            this.SpecificLootTablesLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            // 
+            // darkLabel3
+            // 
+            this.darkLabel3.AutoSize = true;
+            this.darkLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel3.Location = new System.Drawing.Point(9, 12);
+            this.darkLabel3.Name = "darkLabel3";
+            this.darkLabel3.Size = new System.Drawing.Size(66, 13);
+            this.darkLabel3.TabIndex = 136;
+            this.darkLabel3.Text = "Crash Points";
             // 
             // CrashpointYNUD
             // 
+            this.CrashpointYNUD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CrashpointYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.CrashpointYNUD.DecimalPlaces = 3;
             this.CrashpointYNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.CrashpointYNUD.Location = new System.Drawing.Point(161, 391);
+            this.CrashpointYNUD.Location = new System.Drawing.Point(162, 238);
             this.CrashpointYNUD.Maximum = new decimal(new int[] {
             20000,
             0,
@@ -282,10 +325,11 @@ namespace DayZeEditor
             // 
             // CrashPointXNUD
             // 
+            this.CrashPointXNUD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CrashPointXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.CrashPointXNUD.DecimalPlaces = 3;
             this.CrashPointXNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.CrashPointXNUD.Location = new System.Drawing.Point(84, 391);
+            this.CrashPointXNUD.Location = new System.Drawing.Point(85, 238);
             this.CrashPointXNUD.Maximum = new decimal(new int[] {
             20000,
             0,
@@ -304,9 +348,10 @@ namespace DayZeEditor
             // 
             // darkLabel67
             // 
+            this.darkLabel67.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.darkLabel67.AutoSize = true;
             this.darkLabel67.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel67.Location = new System.Drawing.Point(6, 393);
+            this.darkLabel67.Location = new System.Drawing.Point(7, 240);
             this.darkLabel67.Name = "darkLabel67";
             this.darkLabel67.Size = new System.Drawing.Size(38, 13);
             this.darkLabel67.TabIndex = 133;
@@ -314,9 +359,10 @@ namespace DayZeEditor
             // 
             // darkLabel31
             // 
+            this.darkLabel31.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.darkLabel31.AutoSize = true;
             this.darkLabel31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel31.Location = new System.Drawing.Point(6, 419);
+            this.darkLabel31.Location = new System.Drawing.Point(7, 266);
             this.darkLabel31.Name = "darkLabel31";
             this.darkLabel31.Size = new System.Drawing.Size(40, 13);
             this.darkLabel31.TabIndex = 135;
@@ -324,10 +370,11 @@ namespace DayZeEditor
             // 
             // CrashPointradiusNUD
             // 
+            this.CrashPointradiusNUD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CrashPointradiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.CrashPointradiusNUD.DecimalPlaces = 3;
             this.CrashPointradiusNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.CrashPointradiusNUD.Location = new System.Drawing.Point(84, 417);
+            this.CrashPointradiusNUD.Location = new System.Drawing.Point(85, 264);
             this.CrashPointradiusNUD.Maximum = new decimal(new int[] {
             20000,
             0,
@@ -346,9 +393,10 @@ namespace DayZeEditor
             // 
             // darkLabel28
             // 
+            this.darkLabel28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.darkLabel28.AutoSize = true;
             this.darkLabel28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel28.Location = new System.Drawing.Point(3, 444);
+            this.darkLabel28.Location = new System.Drawing.Point(3, 287);
             this.darkLabel28.Name = "darkLabel28";
             this.darkLabel28.Size = new System.Drawing.Size(80, 13);
             this.darkLabel28.TabIndex = 130;
@@ -356,81 +404,15 @@ namespace DayZeEditor
             // 
             // Crash_MessageTB
             // 
+            this.Crash_MessageTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Crash_MessageTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.Crash_MessageTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.Crash_MessageTB.Location = new System.Drawing.Point(2, 460);
+            this.Crash_MessageTB.Location = new System.Drawing.Point(6, 304);
             this.Crash_MessageTB.Multiline = true;
             this.Crash_MessageTB.Name = "Crash_MessageTB";
-            this.Crash_MessageTB.Size = new System.Drawing.Size(230, 84);
+            this.Crash_MessageTB.Size = new System.Drawing.Size(226, 84);
             this.Crash_MessageTB.TabIndex = 129;
             this.Crash_MessageTB.TextChanged += new System.EventHandler(this.Crash_MessageTB_TextChanged);
-            // 
-            // adminlogCB
-            // 
-            this.adminlogCB.AutoSize = true;
-            this.adminlogCB.Location = new System.Drawing.Point(128, 9);
-            this.adminlogCB.Name = "adminlogCB";
-            this.adminlogCB.Size = new System.Drawing.Size(15, 14);
-            this.adminlogCB.TabIndex = 128;
-            this.adminlogCB.UseVisualStyleBackColor = true;
-            this.adminlogCB.CheckedChanged += new System.EventHandler(this.adminlogCB_CheckedChanged);
-            // 
-            // HelicrashDespawnTimeNUD
-            // 
-            this.HelicrashDespawnTimeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.HelicrashDespawnTimeNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.HelicrashDespawnTimeNUD.Location = new System.Drawing.Point(128, 79);
-            this.HelicrashDespawnTimeNUD.Name = "HelicrashDespawnTimeNUD";
-            this.HelicrashDespawnTimeNUD.Size = new System.Drawing.Size(104, 20);
-            this.HelicrashDespawnTimeNUD.TabIndex = 127;
-            this.HelicrashDespawnTimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.HelicrashDespawnTimeNUD.ValueChanged += new System.EventHandler(this.HelicrashDespawnTimeNUD_ValueChanged);
-            // 
-            // darkLabel2
-            // 
-            this.darkLabel2.AutoSize = true;
-            this.darkLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel2.Location = new System.Drawing.Point(3, 10);
-            this.darkLabel2.Name = "darkLabel2";
-            this.darkLabel2.Size = new System.Drawing.Size(56, 13);
-            this.darkLabel2.TabIndex = 123;
-            this.darkLabel2.Text = "admin Log";
-            // 
-            // HelicrashSpawnTimeNUD
-            // 
-            this.HelicrashSpawnTimeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.HelicrashSpawnTimeNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.HelicrashSpawnTimeNUD.Location = new System.Drawing.Point(128, 53);
-            this.HelicrashSpawnTimeNUD.Maximum = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
-            this.HelicrashSpawnTimeNUD.Name = "HelicrashSpawnTimeNUD";
-            this.HelicrashSpawnTimeNUD.Size = new System.Drawing.Size(104, 20);
-            this.HelicrashSpawnTimeNUD.TabIndex = 126;
-            this.HelicrashSpawnTimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.HelicrashSpawnTimeNUD.ValueChanged += new System.EventHandler(this.HelicrashSpawnTimeNUD_ValueChanged);
-            // 
-            // darkLabel10
-            // 
-            this.darkLabel10.AutoSize = true;
-            this.darkLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel10.Location = new System.Drawing.Point(3, 55);
-            this.darkLabel10.Name = "darkLabel10";
-            this.darkLabel10.Size = new System.Drawing.Size(113, 13);
-            this.darkLabel10.TabIndex = 124;
-            this.darkLabel10.Text = "Helicrash Spawn Time";
-            // 
-            // darkLabel11
-            // 
-            this.darkLabel11.AutoSize = true;
-            this.darkLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel11.Location = new System.Drawing.Point(3, 81);
-            this.darkLabel11.Name = "darkLabel11";
-            this.darkLabel11.Size = new System.Drawing.Size(125, 13);
-            this.darkLabel11.TabIndex = 125;
-            this.darkLabel11.Text = "Helicrash Despawn Time";
             // 
             // trackBar2
             // 
@@ -456,20 +438,27 @@ namespace DayZeEditor
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(743, 518);
             this.panel3.TabIndex = 122;
+            this.panel3.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(512, 512);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.DoubleClick += new System.EventHandler(this.pictureBox1_DoubleClick);
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.pictureBox1.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
+            this.pictureBox1.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.PicBox_MouseWheel);
             // 
             // darkButton5
             // 
-            this.darkButton5.Location = new System.Drawing.Point(6, 351);
+            this.darkButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton5.Location = new System.Drawing.Point(6, 211);
             this.darkButton5.Name = "darkButton5";
             this.darkButton5.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton5.Size = new System.Drawing.Size(110, 23);
@@ -479,7 +468,8 @@ namespace DayZeEditor
             // 
             // darkButton6
             // 
-            this.darkButton6.Location = new System.Drawing.Point(128, 351);
+            this.darkButton6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton6.Location = new System.Drawing.Point(128, 211);
             this.darkButton6.Name = "darkButton6";
             this.darkButton6.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton6.Size = new System.Drawing.Size(104, 23);
@@ -489,13 +479,15 @@ namespace DayZeEditor
             // 
             // CrashpointLB
             // 
+            this.CrashpointLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.CrashpointLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.CrashpointLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.CrashpointLB.ForeColor = System.Drawing.SystemColors.Control;
             this.CrashpointLB.FormattingEnabled = true;
-            this.CrashpointLB.Location = new System.Drawing.Point(6, 108);
+            this.CrashpointLB.Location = new System.Drawing.Point(7, 28);
             this.CrashpointLB.Name = "CrashpointLB";
-            this.CrashpointLB.Size = new System.Drawing.Size(226, 238);
+            this.CrashpointLB.Size = new System.Drawing.Size(226, 173);
             this.CrashpointLB.TabIndex = 89;
             this.CrashpointLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.CrashpointLB.SelectedIndexChanged += new System.EventHandler(this.CrashpointLB_SelectedIndexChanged);
@@ -503,6 +495,8 @@ namespace DayZeEditor
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage2.Controls.Add(this.groupBox5);
+            this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.groupBox3);
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Controls.Add(this.groupBox4);
@@ -512,6 +506,254 @@ namespace DayZeEditor
             this.tabPage2.Size = new System.Drawing.Size(984, 552);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.darkButton10);
+            this.groupBox5.Controls.Add(this.darkButton21);
+            this.groupBox5.Controls.Add(this.Loot_HelicrashLB);
+            this.groupBox5.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox5.Location = new System.Drawing.Point(8, 233);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(259, 301);
+            this.groupBox5.TabIndex = 140;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Rewards";
+            // 
+            // darkButton10
+            // 
+            this.darkButton10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton10.Location = new System.Drawing.Point(6, 243);
+            this.darkButton10.Name = "darkButton10";
+            this.darkButton10.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton10.Size = new System.Drawing.Size(236, 23);
+            this.darkButton10.TabIndex = 139;
+            this.darkButton10.Text = "Addf From Reward Lists";
+            this.darkButton10.Click += new System.EventHandler(this.darkButton10_Click);
+            // 
+            // darkButton21
+            // 
+            this.darkButton21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton21.Location = new System.Drawing.Point(6, 272);
+            this.darkButton21.Name = "darkButton21";
+            this.darkButton21.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton21.Size = new System.Drawing.Size(233, 23);
+            this.darkButton21.TabIndex = 138;
+            this.darkButton21.Text = "Remove";
+            this.darkButton21.Click += new System.EventHandler(this.darkButton21_Click);
+            // 
+            // Loot_HelicrashLB
+            // 
+            this.Loot_HelicrashLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.Loot_HelicrashLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.Loot_HelicrashLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.Loot_HelicrashLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.Loot_HelicrashLB.FormattingEnabled = true;
+            this.Loot_HelicrashLB.Location = new System.Drawing.Point(6, 19);
+            this.Loot_HelicrashLB.Name = "Loot_HelicrashLB";
+            this.Loot_HelicrashLB.Size = new System.Drawing.Size(236, 212);
+            this.Loot_HelicrashLB.TabIndex = 136;
+            this.Loot_HelicrashLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.ShowNotificationsCB);
+            this.groupBox2.Controls.Add(this.darkLabel9);
+            this.groupBox2.Controls.Add(this.CheckForPlayersbeforeDespawnCB);
+            this.groupBox2.Controls.Add(this.darkLabel7);
+            this.groupBox2.Controls.Add(this.ShowCrashMapMarkerCB);
+            this.groupBox2.Controls.Add(this.darkLabel6);
+            this.groupBox2.Controls.Add(this.HelicrashStartTimeNUD);
+            this.groupBox2.Controls.Add(this.darkLabel5);
+            this.groupBox2.Controls.Add(this.HeliCrashEnabledCB);
+            this.groupBox2.Controls.Add(this.darkLabel1);
+            this.groupBox2.Controls.Add(this.MakeCrashAreaPVPCB);
+            this.groupBox2.Controls.Add(this.HelicrashDespawnTimeNUD);
+            this.groupBox2.Controls.Add(this.darkLabel2);
+            this.groupBox2.Controls.Add(this.HelicrashSpawnTimeNUD);
+            this.groupBox2.Controls.Add(this.darkLabel10);
+            this.groupBox2.Controls.Add(this.darkLabel11);
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox2.Location = new System.Drawing.Point(8, 6);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(259, 221);
+            this.groupBox2.TabIndex = 96;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "General Settings";
+            // 
+            // ShowNotificationsCB
+            // 
+            this.ShowNotificationsCB.AutoSize = true;
+            this.ShowNotificationsCB.Location = new System.Drawing.Point(224, 100);
+            this.ShowNotificationsCB.Name = "ShowNotificationsCB";
+            this.ShowNotificationsCB.Size = new System.Drawing.Size(15, 14);
+            this.ShowNotificationsCB.TabIndex = 161;
+            this.ShowNotificationsCB.UseVisualStyleBackColor = true;
+            this.ShowNotificationsCB.CheckedChanged += new System.EventHandler(this.ShowNotificationsCB_CheckedChanged);
+            // 
+            // darkLabel9
+            // 
+            this.darkLabel9.AutoSize = true;
+            this.darkLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel9.Location = new System.Drawing.Point(15, 101);
+            this.darkLabel9.Name = "darkLabel9";
+            this.darkLabel9.Size = new System.Drawing.Size(95, 13);
+            this.darkLabel9.TabIndex = 160;
+            this.darkLabel9.Text = "Show Notifications";
+            // 
+            // CheckForPlayersbeforeDespawnCB
+            // 
+            this.CheckForPlayersbeforeDespawnCB.AutoSize = true;
+            this.CheckForPlayersbeforeDespawnCB.Location = new System.Drawing.Point(224, 80);
+            this.CheckForPlayersbeforeDespawnCB.Name = "CheckForPlayersbeforeDespawnCB";
+            this.CheckForPlayersbeforeDespawnCB.Size = new System.Drawing.Size(15, 14);
+            this.CheckForPlayersbeforeDespawnCB.TabIndex = 159;
+            this.CheckForPlayersbeforeDespawnCB.UseVisualStyleBackColor = true;
+            this.CheckForPlayersbeforeDespawnCB.CheckedChanged += new System.EventHandler(this.CheckForPlayersbeforeDespawnCB_CheckedChanged);
+            // 
+            // darkLabel7
+            // 
+            this.darkLabel7.AutoSize = true;
+            this.darkLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel7.Location = new System.Drawing.Point(15, 81);
+            this.darkLabel7.Name = "darkLabel7";
+            this.darkLabel7.Size = new System.Drawing.Size(174, 13);
+            this.darkLabel7.TabIndex = 158;
+            this.darkLabel7.Text = "Check For Players before Despawn";
+            // 
+            // ShowCrashMapMarkerCB
+            // 
+            this.ShowCrashMapMarkerCB.AutoSize = true;
+            this.ShowCrashMapMarkerCB.Location = new System.Drawing.Point(224, 60);
+            this.ShowCrashMapMarkerCB.Name = "ShowCrashMapMarkerCB";
+            this.ShowCrashMapMarkerCB.Size = new System.Drawing.Size(15, 14);
+            this.ShowCrashMapMarkerCB.TabIndex = 157;
+            this.ShowCrashMapMarkerCB.UseVisualStyleBackColor = true;
+            this.ShowCrashMapMarkerCB.CheckedChanged += new System.EventHandler(this.ShowCrashMapMarkerCB_CheckedChanged);
+            // 
+            // darkLabel6
+            // 
+            this.darkLabel6.AutoSize = true;
+            this.darkLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel6.Location = new System.Drawing.Point(15, 61);
+            this.darkLabel6.Name = "darkLabel6";
+            this.darkLabel6.Size = new System.Drawing.Size(124, 13);
+            this.darkLabel6.TabIndex = 156;
+            this.darkLabel6.Text = "Show Crash Map Marker";
+            // 
+            // HelicrashStartTimeNUD
+            // 
+            this.HelicrashStartTimeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.HelicrashStartTimeNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.HelicrashStartTimeNUD.Location = new System.Drawing.Point(135, 120);
+            this.HelicrashStartTimeNUD.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.HelicrashStartTimeNUD.Name = "HelicrashStartTimeNUD";
+            this.HelicrashStartTimeNUD.Size = new System.Drawing.Size(104, 20);
+            this.HelicrashStartTimeNUD.TabIndex = 155;
+            this.HelicrashStartTimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.HelicrashStartTimeNUD.ValueChanged += new System.EventHandler(this.HelicrashStartTimeNUD_ValueChanged);
+            // 
+            // darkLabel5
+            // 
+            this.darkLabel5.AutoSize = true;
+            this.darkLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel5.Location = new System.Drawing.Point(10, 122);
+            this.darkLabel5.Name = "darkLabel5";
+            this.darkLabel5.Size = new System.Drawing.Size(102, 13);
+            this.darkLabel5.TabIndex = 154;
+            this.darkLabel5.Text = "Helicrash Start Time";
+            // 
+            // HeliCrashEnabledCB
+            // 
+            this.HeliCrashEnabledCB.AutoSize = true;
+            this.HeliCrashEnabledCB.Location = new System.Drawing.Point(224, 21);
+            this.HeliCrashEnabledCB.Name = "HeliCrashEnabledCB";
+            this.HeliCrashEnabledCB.Size = new System.Drawing.Size(15, 14);
+            this.HeliCrashEnabledCB.TabIndex = 153;
+            this.HeliCrashEnabledCB.UseVisualStyleBackColor = true;
+            this.HeliCrashEnabledCB.CheckedChanged += new System.EventHandler(this.HeliCrashEnabledCB_CheckedChanged);
+            // 
+            // darkLabel1
+            // 
+            this.darkLabel1.AutoSize = true;
+            this.darkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel1.Location = new System.Drawing.Point(15, 23);
+            this.darkLabel1.Name = "darkLabel1";
+            this.darkLabel1.Size = new System.Drawing.Size(94, 13);
+            this.darkLabel1.TabIndex = 152;
+            this.darkLabel1.Text = "HeliCrash Enabled";
+            // 
+            // MakeCrashAreaPVPCB
+            // 
+            this.MakeCrashAreaPVPCB.AutoSize = true;
+            this.MakeCrashAreaPVPCB.Location = new System.Drawing.Point(224, 40);
+            this.MakeCrashAreaPVPCB.Name = "MakeCrashAreaPVPCB";
+            this.MakeCrashAreaPVPCB.Size = new System.Drawing.Size(15, 14);
+            this.MakeCrashAreaPVPCB.TabIndex = 151;
+            this.MakeCrashAreaPVPCB.UseVisualStyleBackColor = true;
+            this.MakeCrashAreaPVPCB.CheckedChanged += new System.EventHandler(this.MakeCrashAreaPVPCB_CheckedChanged);
+            // 
+            // HelicrashDespawnTimeNUD
+            // 
+            this.HelicrashDespawnTimeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.HelicrashDespawnTimeNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.HelicrashDespawnTimeNUD.Location = new System.Drawing.Point(135, 172);
+            this.HelicrashDespawnTimeNUD.Name = "HelicrashDespawnTimeNUD";
+            this.HelicrashDespawnTimeNUD.Size = new System.Drawing.Size(104, 20);
+            this.HelicrashDespawnTimeNUD.TabIndex = 150;
+            this.HelicrashDespawnTimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.HelicrashDespawnTimeNUD.ValueChanged += new System.EventHandler(this.HelicrashDespawnTimeNUD_ValueChanged);
+            // 
+            // darkLabel2
+            // 
+            this.darkLabel2.AutoSize = true;
+            this.darkLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel2.Location = new System.Drawing.Point(15, 42);
+            this.darkLabel2.Name = "darkLabel2";
+            this.darkLabel2.Size = new System.Drawing.Size(113, 13);
+            this.darkLabel2.TabIndex = 146;
+            this.darkLabel2.Text = "Make Crash Area PVP";
+            // 
+            // HelicrashSpawnTimeNUD
+            // 
+            this.HelicrashSpawnTimeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.HelicrashSpawnTimeNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.HelicrashSpawnTimeNUD.Location = new System.Drawing.Point(135, 146);
+            this.HelicrashSpawnTimeNUD.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.HelicrashSpawnTimeNUD.Name = "HelicrashSpawnTimeNUD";
+            this.HelicrashSpawnTimeNUD.Size = new System.Drawing.Size(104, 20);
+            this.HelicrashSpawnTimeNUD.TabIndex = 149;
+            this.HelicrashSpawnTimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.HelicrashSpawnTimeNUD.ValueChanged += new System.EventHandler(this.HelicrashSpawnTimeNUD_ValueChanged);
+            // 
+            // darkLabel10
+            // 
+            this.darkLabel10.AutoSize = true;
+            this.darkLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel10.Location = new System.Drawing.Point(10, 148);
+            this.darkLabel10.Name = "darkLabel10";
+            this.darkLabel10.Size = new System.Drawing.Size(113, 13);
+            this.darkLabel10.TabIndex = 147;
+            this.darkLabel10.Text = "Helicrash Spawn Time";
+            // 
+            // darkLabel11
+            // 
+            this.darkLabel11.AutoSize = true;
+            this.darkLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel11.Location = new System.Drawing.Point(10, 174);
+            this.darkLabel11.Name = "darkLabel11";
+            this.darkLabel11.Size = new System.Drawing.Size(125, 13);
+            this.darkLabel11.TabIndex = 148;
+            this.darkLabel11.Text = "Helicrash Despawn Time";
             // 
             // groupBox3
             // 
@@ -652,23 +894,21 @@ namespace DayZeEditor
             this.groupBox1.Controls.Add(this.speedNUD);
             this.groupBox1.Controls.Add(this.darkLabel12);
             this.groupBox1.Controls.Add(this.darkLabel4);
-            this.groupBox1.Controls.Add(this.minimum_heightNUD);
-            this.groupBox1.Controls.Add(this.darkLabel3);
             this.groupBox1.Controls.Add(this.start_heightNUD);
             this.groupBox1.Controls.Add(this.start_heightlabel);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox1.Location = new System.Drawing.Point(8, 6);
+            this.groupBox1.Location = new System.Drawing.Point(273, 393);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(259, 124);
+            this.groupBox1.Size = new System.Drawing.Size(259, 107);
             this.groupBox1.TabIndex = 94;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Crash Info";
+            this.groupBox1.Text = "Heli Config";
             // 
             // minimum_speedNUD
             // 
             this.minimum_speedNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.minimum_speedNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.minimum_speedNUD.Location = new System.Drawing.Point(122, 97);
+            this.minimum_speedNUD.Location = new System.Drawing.Point(122, 73);
             this.minimum_speedNUD.Maximum = new decimal(new int[] {
             500,
             0,
@@ -684,7 +924,7 @@ namespace DayZeEditor
             // 
             this.speedNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.speedNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.speedNUD.Location = new System.Drawing.Point(122, 71);
+            this.speedNUD.Location = new System.Drawing.Point(122, 47);
             this.speedNUD.Maximum = new decimal(new int[] {
             500,
             0,
@@ -700,7 +940,7 @@ namespace DayZeEditor
             // 
             this.darkLabel12.AutoSize = true;
             this.darkLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel12.Location = new System.Drawing.Point(7, 99);
+            this.darkLabel12.Location = new System.Drawing.Point(7, 75);
             this.darkLabel12.Name = "darkLabel12";
             this.darkLabel12.Size = new System.Drawing.Size(58, 13);
             this.darkLabel12.TabIndex = 74;
@@ -710,37 +950,11 @@ namespace DayZeEditor
             // 
             this.darkLabel4.AutoSize = true;
             this.darkLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel4.Location = new System.Drawing.Point(7, 73);
+            this.darkLabel4.Location = new System.Drawing.Point(7, 49);
             this.darkLabel4.Name = "darkLabel4";
             this.darkLabel4.Size = new System.Drawing.Size(38, 13);
             this.darkLabel4.TabIndex = 72;
             this.darkLabel4.Text = "Speed";
-            // 
-            // minimum_heightNUD
-            // 
-            this.minimum_heightNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.minimum_heightNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.minimum_heightNUD.Location = new System.Drawing.Point(122, 45);
-            this.minimum_heightNUD.Maximum = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
-            this.minimum_heightNUD.Name = "minimum_heightNUD";
-            this.minimum_heightNUD.Size = new System.Drawing.Size(120, 20);
-            this.minimum_heightNUD.TabIndex = 71;
-            this.minimum_heightNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.minimum_heightNUD.ValueChanged += new System.EventHandler(this.minimum_heightNUD_ValueChanged);
-            // 
-            // darkLabel3
-            // 
-            this.darkLabel3.AutoSize = true;
-            this.darkLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel3.Location = new System.Drawing.Point(7, 47);
-            this.darkLabel3.Name = "darkLabel3";
-            this.darkLabel3.Size = new System.Drawing.Size(57, 13);
-            this.darkLabel3.TabIndex = 70;
-            this.darkLabel3.Text = "min Height";
             // 
             // start_heightNUD
             // 
@@ -901,67 +1115,6 @@ namespace DayZeEditor
             this.darkLabel20.TabIndex = 129;
             this.darkLabel20.Text = "Max";
             // 
-            // tabPage3
-            // 
-            this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.tabPage3.Controls.Add(this.darkButton10);
-            this.tabPage3.Controls.Add(this.darkButton21);
-            this.tabPage3.Controls.Add(this.darkLabel8);
-            this.tabPage3.Controls.Add(this.Loot_HelicrashLB);
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(984, 552);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "tabPage3";
-            this.tabPage3.ToolTipText = "\"LC_Table_xxxxxx\" for all Items // \"LC_Table_Weapons_xxxxxx\" for Weapons and pred" +
-    "ifinied Weapons ONLY!";
-            // 
-            // darkButton10
-            // 
-            this.darkButton10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton10.Location = new System.Drawing.Point(8, 428);
-            this.darkButton10.Name = "darkButton10";
-            this.darkButton10.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton10.Size = new System.Drawing.Size(226, 23);
-            this.darkButton10.TabIndex = 135;
-            this.darkButton10.Text = "Addf From Reward Lists";
-            this.darkButton10.Click += new System.EventHandler(this.darkButton10_Click_1);
-            // 
-            // darkButton21
-            // 
-            this.darkButton21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton21.Location = new System.Drawing.Point(8, 457);
-            this.darkButton21.Name = "darkButton21";
-            this.darkButton21.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton21.Size = new System.Drawing.Size(226, 23);
-            this.darkButton21.TabIndex = 100;
-            this.darkButton21.Text = "Remove";
-            this.darkButton21.Click += new System.EventHandler(this.darkButton21_Click);
-            // 
-            // darkLabel8
-            // 
-            this.darkLabel8.AutoSize = true;
-            this.darkLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel8.Location = new System.Drawing.Point(9, 11);
-            this.darkLabel8.Name = "darkLabel8";
-            this.darkLabel8.Size = new System.Drawing.Size(56, 13);
-            this.darkLabel8.TabIndex = 99;
-            this.darkLabel8.Text = "Loot Items";
-            // 
-            // Loot_HelicrashLB
-            // 
-            this.Loot_HelicrashLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.Loot_HelicrashLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.Loot_HelicrashLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.Loot_HelicrashLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.Loot_HelicrashLB.FormattingEnabled = true;
-            this.Loot_HelicrashLB.Location = new System.Drawing.Point(8, 30);
-            this.Loot_HelicrashLB.Name = "Loot_HelicrashLB";
-            this.Loot_HelicrashLB.Size = new System.Drawing.Size(226, 394);
-            this.Loot_HelicrashLB.TabIndex = 98;
-            this.Loot_HelicrashLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            // 
             // darkToolStrip23
             // 
             this.darkToolStrip23.AutoSize = false;
@@ -971,9 +1124,7 @@ namespace DayZeEditor
             this.toolStripButton8,
             this.toolStripSeparator1,
             this.toolStripButton3,
-            this.toolStripSeparator5,
-            this.toolStripButton7,
-            this.toolStripSeparator2});
+            this.toolStripSeparator5});
             this.darkToolStrip23.Location = new System.Drawing.Point(0, 45);
             this.darkToolStrip23.Name = "darkToolStrip23";
             this.darkToolStrip23.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
@@ -1007,8 +1158,8 @@ namespace DayZeEditor
             this.toolStripButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(84, 25);
-            this.toolStripButton3.Text = "Helicrash Info";
+            this.toolStripButton3.Size = new System.Drawing.Size(96, 25);
+            this.toolStripButton3.Text = "General Settings";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // toolStripSeparator5
@@ -1018,25 +1169,6 @@ namespace DayZeEditor
             this.toolStripSeparator5.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(6, 28);
-            // 
-            // toolStripButton7
-            // 
-            this.toolStripButton7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.toolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
-            this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(115, 25);
-            this.toolStripButton7.Text = "Weapon Definitions";
-            this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.toolStripSeparator2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
-            this.toolStripSeparator2.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
             // 
             // HelicrashMissionsManager
             // 
@@ -1059,12 +1191,16 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.CrashpointYNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrashPointXNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrashPointradiusNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HelicrashDespawnTimeNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HelicrashSpawnTimeNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage2.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.HelicrashStartTimeNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HelicrashDespawnTimeNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HelicrashSpawnTimeNUD)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ZombieMinNUD)).EndInit();
@@ -1074,15 +1210,12 @@ namespace DayZeEditor
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.minimum_speedNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.speedNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.minimum_heightNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.start_heightNUD)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AnimalMinNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AnimalMaxNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AnimalRadiusNUD)).EndInit();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
             this.darkToolStrip23.ResumeLayout(false);
             this.darkToolStrip23.PerformLayout();
             this.ResumeLayout(false);
@@ -1106,26 +1239,14 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton darkButton18;
         private DarkUI.Controls.DarkButton darkButton17;
         private System.Windows.Forms.ListBox animal_nameLB;
-        private System.Windows.Forms.TabPage tabPage3;
         private DarkUI.Controls.DarkToolStrip2 darkToolStrip23;
         private System.Windows.Forms.ToolStripButton toolStripButton8;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripButton toolStripButton7;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private DarkUI.Controls.DarkButton darkButton21;
-        private DarkUI.Controls.DarkLabel darkLabel8;
-        private System.Windows.Forms.ListBox Loot_HelicrashLB;
         private System.Windows.Forms.TrackBar trackBar2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.NumericUpDown HelicrashDespawnTimeNUD;
-        private DarkUI.Controls.DarkLabel darkLabel2;
-        private System.Windows.Forms.NumericUpDown HelicrashSpawnTimeNUD;
-        private DarkUI.Controls.DarkLabel darkLabel10;
-        private DarkUI.Controls.DarkLabel darkLabel11;
-        private System.Windows.Forms.CheckBox adminlogCB;
         private DarkUI.Controls.DarkLabel darkLabel28;
         private System.Windows.Forms.TextBox Crash_MessageTB;
         private System.Windows.Forms.NumericUpDown CrashpointYNUD;
@@ -1134,8 +1255,6 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkLabel darkLabel31;
         private System.Windows.Forms.NumericUpDown CrashPointradiusNUD;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.NumericUpDown minimum_heightNUD;
-        private DarkUI.Controls.DarkLabel darkLabel3;
         private System.Windows.Forms.NumericUpDown start_heightNUD;
         private DarkUI.Controls.DarkLabel start_heightlabel;
         private System.Windows.Forms.NumericUpDown speedNUD;
@@ -1158,8 +1277,31 @@ namespace DayZeEditor
         private System.Windows.Forms.NumericUpDown ZombieRadiusNUD;
         private DarkUI.Controls.DarkLabel darkLabel18;
         private DarkUI.Controls.DarkLabel darkLabel22;
-        private DarkUI.Controls.DarkButton darkButton10;
+        private DarkUI.Controls.DarkButton darkButton1;
+        private DarkUI.Controls.DarkButton darkButton4;
+        private DarkUI.Controls.DarkLabel darkLabel13;
+        private System.Windows.Forms.ListBox SpecificLootTablesLB;
+        private DarkUI.Controls.DarkLabel darkLabel3;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckBox ShowNotificationsCB;
+        private DarkUI.Controls.DarkLabel darkLabel9;
+        private System.Windows.Forms.CheckBox CheckForPlayersbeforeDespawnCB;
+        private DarkUI.Controls.DarkLabel darkLabel7;
+        private System.Windows.Forms.CheckBox ShowCrashMapMarkerCB;
+        private DarkUI.Controls.DarkLabel darkLabel6;
+        private System.Windows.Forms.NumericUpDown HelicrashStartTimeNUD;
+        private DarkUI.Controls.DarkLabel darkLabel5;
         private System.Windows.Forms.CheckBox HeliCrashEnabledCB;
         private DarkUI.Controls.DarkLabel darkLabel1;
+        private System.Windows.Forms.CheckBox MakeCrashAreaPVPCB;
+        private System.Windows.Forms.NumericUpDown HelicrashDespawnTimeNUD;
+        private DarkUI.Controls.DarkLabel darkLabel2;
+        private System.Windows.Forms.NumericUpDown HelicrashSpawnTimeNUD;
+        private DarkUI.Controls.DarkLabel darkLabel10;
+        private DarkUI.Controls.DarkLabel darkLabel11;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private DarkUI.Controls.DarkButton darkButton10;
+        private DarkUI.Controls.DarkButton darkButton21;
+        private System.Windows.Forms.ListBox Loot_HelicrashLB;
     }
 }

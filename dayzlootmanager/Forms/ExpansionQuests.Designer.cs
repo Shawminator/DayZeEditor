@@ -5663,7 +5663,7 @@ namespace DayZeEditor
             this.numericUpDown15.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown15.Location = new System.Drawing.Point(109, 133);
             this.numericUpDown15.Maximum = new decimal(new int[] {
-            1,
+            10000,
             0,
             0,
             0});
@@ -6019,7 +6019,7 @@ namespace DayZeEditor
             131072});
             this.ObjectivesAIPatrolNPCAccuracyMinNUD.Location = new System.Drawing.Point(113, 401);
             this.ObjectivesAIPatrolNPCAccuracyMinNUD.Maximum = new decimal(new int[] {
-            1,
+            200,
             0,
             0,
             0});
@@ -6041,7 +6041,7 @@ namespace DayZeEditor
             131072});
             this.ObjectivesAIPatrolNPCAccuracyMaxNUD.Location = new System.Drawing.Point(113, 427);
             this.ObjectivesAIPatrolNPCAccuracyMaxNUD.Maximum = new decimal(new int[] {
-            1,
+            200,
             0,
             0,
             0});
@@ -6664,7 +6664,7 @@ namespace DayZeEditor
             131072});
             this.ObjectivesAICampNPCAccuracyMinNUD.Location = new System.Drawing.Point(109, 374);
             this.ObjectivesAICampNPCAccuracyMinNUD.Maximum = new decimal(new int[] {
-            1,
+            200,
             0,
             0,
             0});
@@ -6686,7 +6686,7 @@ namespace DayZeEditor
             131072});
             this.ObjectivesAICampNPCAccuracyMaxNUD.Location = new System.Drawing.Point(109, 400);
             this.ObjectivesAICampNPCAccuracyMaxNUD.Maximum = new decimal(new int[] {
-            1,
+            200,
             0,
             0,
             0});
@@ -7044,7 +7044,7 @@ namespace DayZeEditor
             this.ObjectivesActionsExecutionAmountNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesActionsExecutionAmountNUD.Location = new System.Drawing.Point(115, 455);
             this.ObjectivesActionsExecutionAmountNUD.Maximum = new decimal(new int[] {
-            1,
+            1000,
             0,
             0,
             0});

@@ -23,6 +23,7 @@ namespace DayZeLib
             FileInfo[] Files = dinfo.GetFiles("*.map");
             Console.WriteLine("Getting Trader maps....");
             Console.WriteLine(Files.Length.ToString() + " Found");
+            bool savefile = false;
             foreach (FileInfo file in Files)
             {
                 Console.WriteLine("Parsing " + file.Name);
@@ -31,12 +32,21 @@ namespace DayZeLib
                 {
                     string[] tfilesplit = line.Split('|');
                     if (tfilesplit.Length == 1) continue;
+                    if(tfilesplit[0].Split('.')[1].Any(char.IsLower))
+                    {
+                        string[] tt = tfilesplit[0].Split('.');
+                        tfilesplit[0] = tt[0] + "." + tt[1].ToUpper();
+                        savefile = true;
+                    }
                     Tradermap tmap = new Tradermap(tfilesplit);
                     tmap.Filename = file.FullName;
                     maps.Add(tmap);
                 }
 
             }
+            if (savefile)
+                savefiles();
+            
         }
         public void savefiles(string saveTime = null)
         {

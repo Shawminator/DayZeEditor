@@ -64,15 +64,9 @@ namespace DayZeEditor
             {
                 case 0:
                     toolStripButton3.Checked = false;
-                    toolStripButton7.Checked = false;
                     break;
                 case 1:
                     toolStripButton8.Checked = false;
-                    toolStripButton7.Checked = false;
-                    break;
-                case 2:
-                    toolStripButton8.Checked = false;
-                    toolStripButton3.Checked = false;
                     break;
                 default:
                     break;
@@ -89,12 +83,6 @@ namespace DayZeEditor
             tabControl1.SelectedIndex = 1;
             if (tabControl1.SelectedIndex == 1)
                 toolStripButton3.Checked = true;
-        }
-        private void toolStripButton7_Click(object sender, EventArgs e)
-        {
-            tabControl1.SelectedIndex = 2;
-            if (tabControl1.SelectedIndex == 2)
-                toolStripButton7.Checked = true;
         }
  
         public HelicrashMissionsManager()
@@ -116,7 +104,7 @@ namespace DayZeEditor
             LootPoolConfigPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\LootPool\\LootPoolConfig.json";
             LootPool = JsonSerializer.Deserialize<LootPool>(File.ReadAllText(LootPoolConfigPath));
 
-            HelicrashMissionsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\HeliCrashMissions\\Helicrash.json";
+            HelicrashMissionsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\HeliCrash\\HCConfig\\HCConfig.json";
             Helicrash = JsonSerializer.Deserialize<Helicrash>(File.ReadAllText(HelicrashMissionsPath));
             Helicrash.isDirty = false;
             Helicrash.FullFilename = HelicrashMissionsPath;
@@ -129,74 +117,35 @@ namespace DayZeEditor
             trackBar2.Value = 1;
             SetHeliCrashScale();
         }
-        private void trackBar2_MouseUp(object sender, MouseEventArgs e)
-        {
-            HeliCrashMapscale = trackBar2.Value;
-            SetHeliCrashScale();
-
-        }
-        public int HeliCrashMapscale = 1;
-        private void SetHeliCrashScale()
-        {
-            float scalevalue = HeliCrashMapscale * 0.05f;
-            float mapsize = currentproject.MapSize;
-            int newsize = (int)(mapsize * scalevalue);
-            pictureBox1.Size = new Size(newsize, newsize);
-        }
-        private void DrawAll(object sender, PaintEventArgs e)
-        {
-            float scalevalue = HeliCrashMapscale * 0.05f;
-            foreach (Crashpoint zones in Helicrash.CrashPoints)
-            {
-                int centerX = (int)(Math.Round((float)zones.x, 0) * scalevalue);
-                int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round((float)zones.y, 0) * scalevalue);
-
-                int radius = (int)((float)zones.Radius * scalevalue);
-                Point center = new Point(centerX, centerY);
-                Pen pen = new Pen(Color.Red)
-                {
-                    Width = 4
-                };
-                if (currentCrashpoint == zones)
-                    pen.Color = Color.LimeGreen;
-                else
-                    pen.Color = Color.Red;
-                getCircle(e.Graphics, pen, center, radius);
-            }
-        }
-        private void getCircle(Graphics drawingArea, Pen penToUse, Point center, int radius)
-        {
-            Rectangle rect = new Rectangle(center.X - 1, center.Y - 1, 2, 2);
-            drawingArea.DrawEllipse(penToUse, rect);
-            Rectangle rect2 = new Rectangle(center.X - radius, center.Y - radius, radius * 2, radius * 2);
-            drawingArea.DrawEllipse(penToUse, rect2);
-        }
 
         private void LoadHeliCrash()
         {
             useraction = false;
 
-            adminlogCB.Checked = Helicrash.admin_log == 1 ? true : false;
             HeliCrashEnabledCB.Checked = Helicrash.HeliCrashEnabled == 1 ? true : false;
+            MakeCrashAreaPVPCB.Checked = Helicrash.MakeCrashAreaPVP == 1 ? true : false;
+            ShowCrashMapMarkerCB.Checked = Helicrash.ShowCrashMapMarker == 1 ? true : false;
+            CheckForPlayersbeforeDespawnCB.Checked = Helicrash.CheckForPlayersbeforeDespawn == 1 ? true : false;
+            ShowNotificationsCB.Checked = Helicrash.ShowNotifications == 1 ? true : false;
+            HelicrashStartTimeNUD.Value = Helicrash.HelicrashStartTime;
             HelicrashSpawnTimeNUD.Value = Helicrash.HelicrashSpawnTime;
             HelicrashDespawnTimeNUD.Value = Helicrash.HelicrashDespawnTime;
 
-            AnimalMaxNUD.Value = Helicrash.AnimalSpawnArray[0].amount_maximum;
-            AnimalMinNUD.Value = Helicrash.AnimalSpawnArray[0].amount_minimum;
-            AnimalRadiusNUD.Value = Helicrash.AnimalSpawnArray[0].radius;
+            AnimalMaxNUD.Value = Helicrash.AnimalSpawn.amount_maximum;
+            AnimalMinNUD.Value = Helicrash.AnimalSpawn.amount_minimum;
+            AnimalRadiusNUD.Value = Helicrash.AnimalSpawn.radius;
 
-            ZombieMaxNUD.Value = Helicrash.ZombieSpawnArray[0].amount_maximum;
-            ZombieMinNUD.Value = Helicrash.ZombieSpawnArray[0].amount_minimum;
-            ZombieRadiusNUD.Value = Helicrash.ZombieSpawnArray[0].radius;
+            ZombieMaxNUD.Value = Helicrash.ZombieSpawn.amount_maximum;
+            ZombieMinNUD.Value = Helicrash.ZombieSpawn.amount_minimum;
+            ZombieRadiusNUD.Value = Helicrash.ZombieSpawn.radius;
 
-            start_heightNUD.Value = Helicrash.HelicopterArray[0].start_height;
-            minimum_heightNUD.Value = Helicrash.HelicopterArray[0].minimum_height;
-            speedNUD.Value = Helicrash.HelicopterArray[0].speed;
-            minimum_speedNUD.Value = Helicrash.HelicopterArray[0].minimum_speed;
+            start_heightNUD.Value = Helicrash.HeliCrashHeliConfig.start_height;
+            speedNUD.Value = Helicrash.HeliCrashHeliConfig.speed;
+            minimum_speedNUD.Value = Helicrash.HeliCrashHeliConfig.minimum_speed;
 
             zombie_nameLB.DisplayMember = "DisplayName";
             zombie_nameLB.ValueMember = "Value";
-            zombie_nameLB.DataSource = Helicrash.ZombieSpawnArray[0].zombie_name;
+            zombie_nameLB.DataSource = Helicrash.ZombieSpawn.zombie_name;
 
             CrashpointLB.DisplayMember = "DisplayName";
             CrashpointLB.ValueMember = "Value";
@@ -204,17 +153,14 @@ namespace DayZeEditor
 
             animal_nameLB.DisplayMember = "DisplayName";
             animal_nameLB.ValueMember = "Value";
-            animal_nameLB.DataSource = Helicrash.AnimalSpawnArray[0].animal_name;
+            animal_nameLB.DataSource = Helicrash.AnimalSpawn.animal_name;
 
             Loot_HelicrashLB.DisplayMember = "DisplayName";
             Loot_HelicrashLB.ValueMember = "Value";
-            Loot_HelicrashLB.DataSource = Helicrash.LootTables;
+            Loot_HelicrashLB.DataSource = Helicrash.RandomRewards;
 
 
             useraction = true;
-        }
-        private void WeaponLootTablesLB_SelectedIndexChanged(object sender, EventArgs e)
-        {
         }
         private void CrashpointLB_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -223,6 +169,11 @@ namespace DayZeEditor
             useraction = false;
             SetupcrashPoint();
             pictureBox1.Invalidate();
+
+            SpecificLootTablesLB.DisplayMember = "DisplayName";
+            SpecificLootTablesLB.ValueMember = "Value";
+            SpecificLootTablesLB.DataSource = currentCrashpoint.RewardTables;
+
             useraction = true;
         }
         private void SetupcrashPoint()
@@ -231,6 +182,9 @@ namespace DayZeEditor
             CrashpointYNUD.Value = currentCrashpoint.y;
             CrashPointradiusNUD.Value = currentCrashpoint.Radius;
             Crash_MessageTB.Text = currentCrashpoint.Crash_Message;
+            SpecificLootTablesLB.DisplayMember = "DisplayName";
+            SpecificLootTablesLB.ValueMember = "Value";
+            SpecificLootTablesLB.DataSource = currentCrashpoint.RewardTables;
         }
         private void SaveFileButton_Click(object sender, EventArgs e)
         {
@@ -281,16 +235,40 @@ namespace DayZeEditor
             Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\HeliCrashMissions");
         }
 
-        private void adminlogCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            Helicrash.admin_log = adminlogCB.Checked == true ? 1 : 0;
-            Helicrash.isDirty = true;
-        }
         private void HeliCrashEnabledCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             Helicrash.HeliCrashEnabled = HeliCrashEnabledCB.Checked == true ? 1 : 0;
+            Helicrash.isDirty = true;
+        }
+        private void MakeCrashAreaPVPCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Helicrash.MakeCrashAreaPVP = MakeCrashAreaPVPCB.Checked == true ? 1 : 0;
+            Helicrash.isDirty = true;
+        }
+        private void ShowCrashMapMarkerCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Helicrash.ShowCrashMapMarker = ShowCrashMapMarkerCB.Checked == true ? 1 : 0;
+            Helicrash.isDirty = true;
+        }
+        private void CheckForPlayersbeforeDespawnCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Helicrash.CheckForPlayersbeforeDespawn = CheckForPlayersbeforeDespawnCB.Checked == true ? 1 : 0;
+            Helicrash.isDirty = true;
+        }
+        private void ShowNotificationsCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Helicrash.ShowNotifications = ShowNotificationsCB.Checked == true ? 1 : 0;
+            Helicrash.isDirty = true;
+        }
+        private void HelicrashStartTimeNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            Helicrash.HelicrashStartTime = (int)HelicrashStartTimeNUD.Value;
             Helicrash.isDirty = true;
         }
         private void HelicrashSpawnTimeNUD_ValueChanged(object sender, EventArgs e)
@@ -305,6 +283,8 @@ namespace DayZeEditor
             Helicrash.HelicrashDespawnTime = (int)HelicrashDespawnTimeNUD.Value;
             Helicrash.isDirty = true;
         }
+       
+        
         private void CrashPointXNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -330,6 +310,36 @@ namespace DayZeEditor
             currentCrashpoint.Crash_Message = Crash_MessageTB.Text;
             Helicrash.isDirty = true;
         }
+        private void darkButton1_Click(object sender, EventArgs e)
+        {
+            AddfromPredefinedItems form = new AddfromPredefinedItems
+            {
+                Rhlprewardtable = LootPool.RHLPRewardTables,
+                titellabel = "Add Items from Loot list",
+                isLootList = false,
+                isRHTableList = false,
+                isRewardTable = true,
+                ispredefinedweapon = false,
+                isRHPredefinedWeapon = false,
+                isLootchest = false,
+                isLootBoxList = false
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> predefweapon = form.WeaponList;
+                foreach (string weapon in predefweapon)
+                {
+                    currentCrashpoint.RewardTables.Add(weapon);
+                    Helicrash.isDirty = true;
+                }
+            }
+        }
+        private void darkButton4_Click(object sender, EventArgs e)
+        {
+            currentCrashpoint.RewardTables.Remove(SpecificLootTablesLB.GetItemText(SpecificLootTablesLB.SelectedItem));
+            Helicrash.isDirty = true;
+        }
         private void pictureBox1_DoubleClick(object sender, EventArgs e)
         {
             var mouseEventArgs = e as MouseEventArgs;
@@ -351,43 +361,43 @@ namespace DayZeEditor
         private void start_heightNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            Helicrash.HelicopterArray[0].start_height = (int)start_heightNUD.Value;
+            Helicrash.HeliCrashHeliConfig.start_height = (int)start_heightNUD.Value;
             Helicrash.isDirty = true;
         }
         private void minimum_heightNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            Helicrash.HelicopterArray[0].start_height = (int)start_heightNUD.Value;
+            Helicrash.HeliCrashHeliConfig.start_height = (int)start_heightNUD.Value;
             Helicrash.isDirty = true;
         }
         private void speedNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            Helicrash.HelicopterArray[0].speed = (int)speedNUD.Value;
+            Helicrash.HeliCrashHeliConfig.speed = (int)speedNUD.Value;
             Helicrash.isDirty = true;
         }
         private void minimum_speedNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            Helicrash.HelicopterArray[0].minimum_speed = (int)minimum_speedNUD.Value;
+            Helicrash.HeliCrashHeliConfig.minimum_speed = (int)minimum_speedNUD.Value;
             Helicrash.isDirty = true;
         }
         private void AnimalMaxNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            Helicrash.AnimalSpawnArray[0].amount_maximum = (int)AnimalMaxNUD.Value;
+            Helicrash.AnimalSpawn.amount_maximum = (int)AnimalMaxNUD.Value;
             Helicrash.isDirty = true;
         }
         private void AnimalMinNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            Helicrash.AnimalSpawnArray[0].amount_minimum = (int)AnimalMinNUD.Value;
+            Helicrash.AnimalSpawn.amount_minimum = (int)AnimalMinNUD.Value;
             Helicrash.isDirty = true;
         }
         private void AnimalRadiusNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            Helicrash.AnimalSpawnArray[0].radius = (int)AnimalRadiusNUD.Value;
+            Helicrash.AnimalSpawn.radius = (int)AnimalRadiusNUD.Value;
             Helicrash.isDirty = true;
         }
         private void darkButton18_Click(object sender, EventArgs e)
@@ -404,9 +414,9 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    if (!Helicrash.AnimalSpawnArray[0].animal_name.Contains(l))
+                    if (!Helicrash.AnimalSpawn.animal_name.Contains(l))
                     {
-                        Helicrash.AnimalSpawnArray[0].animal_name.Add(l);
+                        Helicrash.AnimalSpawn.animal_name.Add(l);
                         Helicrash.isDirty = true;
                     }
                 }
@@ -414,25 +424,25 @@ namespace DayZeEditor
         }
         private void darkButton17_Click(object sender, EventArgs e)
         {
-            Helicrash.AnimalSpawnArray[0].animal_name.Remove(animal_nameLB.GetItemText(animal_nameLB.SelectedItem));
+            Helicrash.AnimalSpawn.animal_name.Remove(animal_nameLB.GetItemText(animal_nameLB.SelectedItem));
             Helicrash.isDirty = true;
         }
         private void ZombieMaxNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            Helicrash.ZombieSpawnArray[0].amount_maximum = (int)ZombieMaxNUD.Value;
+            Helicrash.ZombieSpawn.amount_maximum = (int)ZombieMaxNUD.Value;
             Helicrash.isDirty = true;
         }
         private void ZombieMinNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            Helicrash.ZombieSpawnArray[0].amount_minimum = (int)ZombieMinNUD.Value;
+            Helicrash.ZombieSpawn.amount_minimum = (int)ZombieMinNUD.Value;
             Helicrash.isDirty = true;
         }
         private void ZombieRadiusNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            Helicrash.ZombieSpawnArray[0].radius = (int)ZombieRadiusNUD.Value;
+            Helicrash.ZombieSpawn.radius = (int)ZombieRadiusNUD.Value;
             Helicrash.isDirty = true;
         }
         private void darkButton2_Click(object sender, EventArgs e)
@@ -449,9 +459,9 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    if (!Helicrash.ZombieSpawnArray[0].zombie_name.Contains(l))
+                    if (!Helicrash.ZombieSpawn.zombie_name.Contains(l))
                     {
-                        Helicrash.ZombieSpawnArray[0].zombie_name.Add(l);
+                        Helicrash.ZombieSpawn.zombie_name.Add(l);
                         Helicrash.isDirty = true;
                     }
                 }
@@ -459,56 +469,12 @@ namespace DayZeEditor
         }
         private void darkButton3_Click(object sender, EventArgs e)
         {
-            Helicrash.ZombieSpawnArray[0].zombie_name.Remove(zombie_nameLB.GetItemText(zombie_nameLB.SelectedItem));
+            Helicrash.ZombieSpawn.zombie_name.Remove(zombie_nameLB.GetItemText(zombie_nameLB.SelectedItem));
             Helicrash.isDirty = true;
         }
-        private void darkButton21_Click(object sender, EventArgs e)
+        private void darkButton10_Click(object sender, EventArgs e)
         {
-            Helicrash.LootTables.Remove(Loot_HelicrashLB.GetItemText(Loot_HelicrashLB.SelectedItem));
-            Helicrash.isDirty = true;
-        }
-
-        private void darkButton5_Click(object sender, EventArgs e)
-        {
-            Crashpoint newcrashpoint = new Crashpoint()
-            {
-                Crash_Message = "New Crash",
-                x = currentproject.MapSize / 2,
-                y = currentproject.MapSize / 2,
-                Radius = 100
-            };
-            Helicrash.CrashPoints.Add(newcrashpoint);
-            pictureBox1.Invalidate();
-            Helicrash.isDirty = true;
-        }
-
-        private void darkButton6_Click(object sender, EventArgs e)
-        {
-            Helicrash.CrashPoints.Remove(currentCrashpoint);
-            pictureBox1.Invalidate();
-            Helicrash.isDirty = true;
-        }
-
-        private void HelicrashMissionsManager_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            bool needtosave = false;
-            if (Helicrash.isDirty)
-            {
-                needtosave = true;
-            }
-            if (needtosave)
-            {
-                DialogResult dialogResult = MessageBox.Show("You have Unsaved Changes, do you wish to save", "Unsaved Changes found", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    SaveHeliCrashMissions();
-                }
-            }
-        }
-
-        private void darkButton10_Click_1(object sender, EventArgs e)
-        {
-            AddfromPredefinedWeapons form = new AddfromPredefinedWeapons
+            AddfromPredefinedItems form = new AddfromPredefinedItems
             {
                 Rhlprewardtable = LootPool.RHLPRewardTables,
                 titellabel = "Add Items from Loot list",
@@ -526,10 +492,194 @@ namespace DayZeEditor
                 List<string> predefweapon = form.WeaponList;
                 foreach (string weapon in predefweapon)
                 {
-                    Helicrash.LootTables.Add(weapon);
+                    Helicrash.RandomRewards.Add(weapon);
                     Helicrash.isDirty = true;
                 }
             }
+        }
+        private void darkButton21_Click(object sender, EventArgs e)
+        {
+            Helicrash.RandomRewards.Remove(Loot_HelicrashLB.GetItemText(Loot_HelicrashLB.SelectedItem));
+            Helicrash.isDirty = true;
+        }
+        private void darkButton5_Click(object sender, EventArgs e)
+        {
+            Crashpoint newcrashpoint = new Crashpoint()
+            {
+                Crash_Message = "New Crash",
+                x = currentproject.MapSize / 2,
+                y = currentproject.MapSize / 2,
+                Radius = 100
+            };
+            Helicrash.CrashPoints.Add(newcrashpoint);
+            pictureBox1.Invalidate();
+            Helicrash.isDirty = true;
+        }
+        private void darkButton6_Click(object sender, EventArgs e)
+        {
+            Helicrash.CrashPoints.Remove(currentCrashpoint);
+            pictureBox1.Invalidate();
+            Helicrash.isDirty = true;
+        }
+        private void HelicrashMissionsManager_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            bool needtosave = false;
+            if (Helicrash.isDirty)
+            {
+                needtosave = true;
+            }
+            if (needtosave)
+            {
+                DialogResult dialogResult = MessageBox.Show("You have Unsaved Changes, do you wish to save", "Unsaved Changes found", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    SaveHeliCrashMissions();
+                }
+            }
+        }
+
+
+        public int HeliCrashMapscale = 1;
+        private Point _mouseLastPosition;
+        private Point _newscrollPosition;
+        private void trackBar2_MouseUp(object sender, MouseEventArgs e)
+        {
+            HeliCrashMapscale = trackBar2.Value;
+            SetHeliCrashScale();
+
+        }
+        private void SetHeliCrashScale()
+        {
+            float scalevalue = HeliCrashMapscale * 0.05f;
+            float mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            pictureBox1.Size = new Size(newsize, newsize);
+        }
+        private void DrawAll(object sender, PaintEventArgs e)
+        {
+            float scalevalue = HeliCrashMapscale * 0.05f;
+            foreach (Crashpoint zones in Helicrash.CrashPoints)
+            {
+                int centerX = (int)(Math.Round((float)zones.x, 0) * scalevalue);
+                int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round((float)zones.y, 0) * scalevalue);
+
+                int radius = (int)((float)zones.Radius * scalevalue);
+                Point center = new Point(centerX, centerY);
+                Pen pen = new Pen(Color.Red)
+                {
+                    Width = 4
+                };
+                if (currentCrashpoint == zones)
+                    pen.Color = Color.LimeGreen;
+                else
+                    pen.Color = Color.Red;
+                getCircle(e.Graphics, pen, center, radius);
+            }
+        }
+        private void getCircle(Graphics drawingArea, Pen penToUse, Point center, int radius)
+        {
+            Rectangle rect = new Rectangle(center.X - 1, center.Y - 1, 2, 2);
+            drawingArea.DrawEllipse(penToUse, rect);
+            Rectangle rect2 = new Rectangle(center.X - radius, center.Y - radius, radius * 2, radius * 2);
+            drawingArea.DrawEllipse(penToUse, rect2);
+        }
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                _mouseLastPosition = e.Location;
+            }
+        }
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Point changePoint = new Point(e.Location.X - _mouseLastPosition.X, e.Location.Y - _mouseLastPosition.Y);
+                _newscrollPosition = new Point(-panel3.AutoScrollPosition.X - changePoint.X, -panel3.AutoScrollPosition.Y - changePoint.Y);
+                if (_newscrollPosition.X <= 0)
+                    _newscrollPosition.X = 0;
+                if (_newscrollPosition.Y <= 0)
+                    _newscrollPosition.Y = 0;
+                panel3.AutoScrollPosition = _newscrollPosition;
+                pictureBox1.Invalidate();
+            }
+        }
+        private void pictureBox1_MouseEnter(object sender, EventArgs e)
+        {
+            if (pictureBox1.Focused == false)
+            {
+                pictureBox1.Focus();
+                panel3.AutoScrollPosition = _newscrollPosition;
+                pictureBox1.Invalidate();
+            }
+        }
+        private void PicBox_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta < 0)
+            {
+                ZoomOut();
+            }
+            else
+            {
+                ZoomIn();
+            }
+
+        }
+        private void ZoomIn()
+        {
+            int oldpictureboxhieght = pictureBox1.Height;
+            int oldpitureboxwidht = pictureBox1.Width;
+            Point oldscrollpos = panel3.AutoScrollPosition;
+            int tbv = trackBar2.Value;
+            int newval = tbv + 1;
+            if (newval >= 20)
+                newval = 20;
+            trackBar2.Value = newval;
+            HeliCrashMapscale = trackBar2.Value;
+            SetHeliCrashScale();
+            if (pictureBox1.Height > panel3.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox1.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panel3.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox1.Width > panel3.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox1.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panel3.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox1.Invalidate();
+        }
+        private void ZoomOut()
+        {
+            int oldpictureboxhieght = pictureBox1.Height;
+            int oldpitureboxwidht = pictureBox1.Width;
+            Point oldscrollpos = panel3.AutoScrollPosition;
+            int tbv = trackBar2.Value;
+            int newval = tbv - 1;
+            if (newval <= 1)
+                newval = 1;
+            trackBar2.Value = newval;
+            HeliCrashMapscale = trackBar2.Value;
+            SetHeliCrashScale();
+            if (pictureBox1.Height > panel3.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox1.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panel3.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox1.Width > panel3.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox1.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panel3.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox1.Invalidate();
         }
 
 

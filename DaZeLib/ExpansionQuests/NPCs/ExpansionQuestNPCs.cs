@@ -71,6 +71,8 @@ namespace DayZeLib
                 NumberofNPC.Add(npcs.ID);
             }
             NumberofNPC.Sort();
+            if (NumberofNPC.Count == 0)
+                return 1;
             List<int> result = Enumerable.Range(1, NumberofNPC.Max() + 1).Except(NumberofNPC).ToList();
             result.Sort();
             return result[0];

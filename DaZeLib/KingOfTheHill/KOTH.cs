@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 
 namespace DayZeLib
 {
-
-    public class MDCKOTH
+    public class MDCKOTHConfig
     {
         [JsonIgnore]
         public string FullFilename;
@@ -27,15 +26,15 @@ namespace DayZeLib
         public int estimateLocation { get; set; }
         public int celebrateWin { get; set; }
         public int punishLoss { get; set; }
-        public float baseCaptureTime { get; set; }
-        public float maxTimeBetweenEvents { get; set; }
-        public float minTimeBetweenEvents { get; set; }
-        public float playerTimeMultiplier { get; set; }
-        public float timeDespawn { get; set; }
-        public float timeLimit { get; set; }
-        public float timeStart { get; set; }
-        public float timeSpawn { get; set; }
-        public float timeZoneCooldown { get; set; }
+        public decimal baseCaptureTime { get; set; }
+        public decimal maxTimeBetweenEvents { get; set; }
+        public decimal minTimeBetweenEvents { get; set; }
+        public decimal playerTimeMultiplier { get; set; }
+        public decimal timeDespawn { get; set; }
+        public decimal timeLimit { get; set; }
+        public decimal timeStart { get; set; }
+        public decimal timeSpawn { get; set; }
+        public decimal timeZoneCooldown { get; set; }
         public int minPlayerCount { get; set; }
         public int maxEnemyCount { get; set; }
         public int minEnemyCount { get; set; }
@@ -45,14 +44,14 @@ namespace DayZeLib
         public int maximumPlayers { get; set; }
         public int rewardCount { get; set; }
         public string flagClassname { get; set; }
-        public string[] enemies { get; set; }
+        public BindingList<string> enemies { get; set; }
         public string lootCrate { get; set; }
         public int crateLifeTime { get; set; }
-        public object[] lootSets { get; set; }
-        public Zone[] zones { get; set; }
+        public BindingList<object> lootSets { get; set; }
+        public BindingList<MDCKOTHZones> zones { get; set; }
     }
 
-    public class Zone
+    public class MDCKOTHZones
     {
         public string zoneName { get; set; }
         public float[] zonePosition { get; set; }
@@ -69,11 +68,16 @@ namespace DayZeLib
         public int maximumPlayers { get; set; }
         public int rewardCount { get; set; }
         public string flagClassname { get; set; }
-        public KOTHObject[] objects { get; set; }
-        public object[] enemies { get; set; }
+        public BindingList<KOTHObject> objects { get; set; }
+        public BindingList<string> enemies { get; set; }
         public string lootCrate { get; set; }
         public int crateLifeTime { get; set; }
-        public object[] lootSets { get; set; }
+        public BindingList<KOTHLootset> lootSets { get; set; }
+
+        public override string ToString()
+        {
+            return zoneName;
+        }
     }
 
     public class KOTHObject
@@ -88,66 +92,29 @@ namespace DayZeLib
 
 
 
-    public class KingOfTheHillConfig
+    public class MDCKOTHLoot
     {
         [JsonIgnore]
         public string FullFilename;
         [JsonIgnore]
         public bool isDirty { get; set; }
 
-
-        public string m_ModVersion { get; set; }
-        public decimal m_CaptureTime { get; set; }
-        public decimal m_UpdateInterval { get; set; }
-        public decimal m_ServerStartDelay { get; set; }
-        public decimal m_HillEventInterval { get; set; }
-        public decimal m_EventCleanupTime { get; set; }
-        public decimal m_EventPreStart { get; set; }
-        public string m_EventPreStartMessage { get; set; }
-        public string m_EventCapturedMessage { get; set; }
-        public string m_EventDespawnedMessage { get; set; }
-        public string m_EventStartMessage { get; set; }
-        public int m_DoLogsToCF { get; set; }
-        public int m_PlayerPopulationToStartEvents { get; set; }
-        public int m_MaxEvents { get; set; }
-        public string m_FlagName { get; set; }
-        public BindingList<M_Hilllocations> m_HillLocations { get; set; }
-        public BindingList<M_Rewardpools> m_RewardPools { get; set; }
-        public BindingList<string> m_Creatures { get; set; }
+        public KOTHLootset[] lootSets { get; set; }
     }
 
-    public class M_Hilllocations
+    public class KOTHLootset
     {
-        public string Name { get; set; }
-        public decimal Radius { get; set; }
-        public float[] Position { get; set; }
-        public int AISpawnCount { get; set; }
-        public string ObjectListName { get; set; }
-
-        public override string ToString()
-        {
-            return Name;
-        }
-    }
-    public class M_Rewardpools
-    {
-        public string RewardContainerName { get; set; }
-        public BindingList<M_Rewards> m_Rewards { get; set; }
-
-        public override string ToString()
-        {
-            return RewardContainerName;
-        }
+        public string name { get; set; }
+        public BindingList<KOTHItem> items { get; set; }
     }
 
-    public class M_Rewards
+    public class KOTHItem
     {
-        public string ItemName { get; set; }
-        public BindingList<string> Attachments { get; set; }
-
-        public override string ToString()
-        {
-            return ItemName;
-        }
+        public string name { get; set; }
+        public int quantity { get; set; }
+        public BindingList<KOTHItem> attachments { get; set; }
+        public BindingList<KOTHItem> cargo { get; set; }
     }
 }
+
+

@@ -97,6 +97,7 @@
     <Compile Include="BaseBuildingPlus\BBP.cs" />
     <Compile Include="BreachingCharge\BreachingChargeSettigns.cs" />
     <Compile Include="Cannabisplus\CannabisPlus.cs" />
+    <Compile Include="CarePackagev2\CarePackagev2.cs" />
     <Compile Include="CJ187LootTable\LootChestTable.cs" />
     <Compile Include="DNAKeycards\Basic\DNABasicConfig.cs" />
     <Compile Include="DNAKeycards\Basic\DNAProprietaryConfig.cs" />

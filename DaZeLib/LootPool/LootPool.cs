@@ -12,7 +12,7 @@ namespace DayZeLib
     {
         public BindingList<Rhlprewardtable> RHLPRewardTables { get; set; }
         public BindingList<Rhlploottable> RHLPLootTables { get; set; }
-        public BindingList<Rhlpdefinedweapon> RHLPdefinedWeapons { get; set; }
+        public BindingList<RHLPdefinedItems> RHLPdefinedItems { get; set; }
         public int NumberOfExtraMagsForDefinedWeapons { get; set; }
 
         [JsonIgnore]
@@ -43,18 +43,26 @@ namespace DayZeLib
         }
     }
 
-    public class Rhlpdefinedweapon
+    public class RHLPdefinedItems
     {
         public string DefineName { get; set; }
-        public string weapon { get; set; }
-        public string magazine { get; set; }
-        public BindingList<string> attachments { get; set; }
-        public string optic { get; set; }
+        public string Item { get; set; }
+        public int SpawnExact { get; set; }
+        public BindingList<string> magazines { get; set; }
+        public BindingList<RHLPAttachment> attachments { get; set; }
 
         public override string ToString()
         {
             return DefineName;
         }
     }
+    public class RHLPAttachment
+    {
+        public BindingList<string> attachments { get; set; }
 
+        public override string ToString()
+        {
+            return "Attachemnts List";
+        }
+    }
 }

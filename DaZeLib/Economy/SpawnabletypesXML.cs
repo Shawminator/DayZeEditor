@@ -135,6 +135,33 @@ namespace DayZeLib
         {
             return nameField;
         }
+
+        public bool ContainsAttchorcargo()
+        {
+            foreach(var item in Items)
+            {
+                if (item is spawnabletypesTypeAttachments || item is spawnabletypesTypeCargo)
+                {
+                    if (item is spawnabletypesTypeAttachments)
+                    {
+                        spawnabletypesTypeAttachments att = item as spawnabletypesTypeAttachments;
+                        if(att.item.Count() > 0 && att.preset == null)
+                        {
+                            return true;
+                        }
+                        
+                    }
+                    if(item is spawnabletypesTypeCargo)
+                    {
+                        spawnabletypesTypeCargo cargo = item as spawnabletypesTypeCargo;
+                        if (cargo.item.Count > 0 && cargo.preset == null)
+                            return true;
+                    }
+                }
+                    
+            }
+            return false;
+        }
     }
 
     /// <remarks/>

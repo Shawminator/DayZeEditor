@@ -22,13 +22,16 @@ namespace DayZeEditor
         public TypesFile vanillatypes;
         public List<TypesFile> ModTypes;
 
-        public string KingOfTheHillConfigPath { get; private set; }
-        public KingOfTheHillConfig KingOfTheHillConfig { get; set; }
+        public string KOTHConfigPath { get; private set; }
+        public string KOTHLootPath { get; private set; }
+        public MDCKOTHConfig MDCKOTHConfig { get; set; }
 
         public MapData MapData { get; private set; }
 
         public string Projectname;
         private bool _useraction = false;
+        private MDCKOTHZones currentKOTHZoneAreaLocation;
+
         public bool useraction
         {
             get { return _useraction; }
@@ -58,14 +61,14 @@ namespace DayZeEditor
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedIndex = 0;
-            if (tabControl1.SelectedIndex == 0)
+            tabControl1.SelectedIndex = 1;
+            if (tabControl1.SelectedIndex == 1)
                 toolStripButton1.Checked = true;
         }
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedIndex = 1;
-            if (tabControl1.SelectedIndex == 1)
+            tabControl1.SelectedIndex = 0;
+            if (tabControl1.SelectedIndex == 0)
                 toolStripButton3.Checked = true;
         }
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -75,10 +78,10 @@ namespace DayZeEditor
             switch (tabControl1.SelectedIndex)
             {
                 case 0:
-                    toolStripButton1.Checked = true;
+                    toolStripButton3.Checked = true;
                     break;
                 case 1:
-                    toolStripButton3.Checked = true;
+                    toolStripButton1.Checked = true;
                     break;
                 default:
                     break;
@@ -96,15 +99,15 @@ namespace DayZeEditor
         }
         private void DrawHillZones(object sender, PaintEventArgs e)
         {
-            foreach (M_Hilllocations Hills in KingOfTheHillConfig.m_HillLocations)
+            foreach (MDCKOTHZones Hills in MDCKOTHConfig.zones)
             {
                 float scalevalue = ZoneScale * 0.05f;
-                int centerX = (int)(Math.Round(Hills.Position[0]) * scalevalue);
-                int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(Hills.Position[2], 0) * scalevalue);
-                int eventradius = (int)(Math.Round((float)Hills.Radius, 0) * scalevalue);
+                int centerX = (int)(Math.Round(Hills.zonePosition[0]) * scalevalue);
+                int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(Hills.zonePosition[2], 0) * scalevalue);
+                int eventradius = (int)(Math.Round((float)Hills.zoneRadius, 0) * scalevalue);
                 Point center = new Point(centerX, centerY);
                 Pen pen = new Pen(Color.Red, 4);
-                if (Hills == currentHill)
+                if (Hills == currentKOTHZoneAreaLocation)
                     pen.Color = Color.LimeGreen;
                 getCircle(e.Graphics, pen, center, eventradius);
             }
@@ -132,17 +135,18 @@ namespace DayZeEditor
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
 
-            KingOfTheHillConfigPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\KingOfTheHill\\server-config.json";
-            if (!File.Exists(KingOfTheHillConfigPath))
+            KOTHConfigPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\KOTH\\" + currentproject.mpmissionpath.Split('.').Last() + ".json";
+            KOTHLootPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\KOTH\\Loot.json";
+            if (!File.Exists(KOTHConfigPath))
             {
-                KingOfTheHillConfig = new KingOfTheHillConfig();
+                MDCKOTHConfig = new MDCKOTHConfig();
             }
             else
             {
-                KingOfTheHillConfig = JsonSerializer.Deserialize<KingOfTheHillConfig>(File.ReadAllText(KingOfTheHillConfigPath));
-                KingOfTheHillConfig.isDirty = false;
+                MDCKOTHConfig = JsonSerializer.Deserialize<MDCKOTHConfig>(File.ReadAllText(KOTHConfigPath));
+                MDCKOTHConfig.isDirty = false;
             }
-            KingOfTheHillConfig.FullFilename = KingOfTheHillConfigPath;
+            MDCKOTHConfig.FullFilename = KOTHConfigPath;
             SetupKingOfTheHillConfig();
 
             MapData = new MapData(Application.StartupPath + currentproject.MapPath + ".xyz");
@@ -159,83 +163,62 @@ namespace DayZeEditor
         {
             useraction = false;
 
-            m_CaptureTimeNUD.Value = KingOfTheHillConfig.m_CaptureTime;
-            m_UpdateIntervalNUD.Value = KingOfTheHillConfig.m_UpdateInterval;
-            m_ServerStartDelayNUD.Value = KingOfTheHillConfig.m_ServerStartDelay;
-            m_HillEventIntervalNUD.Value = KingOfTheHillConfig.m_HillEventInterval;
-            m_EventCleanupTimeNUD.Value = KingOfTheHillConfig.m_EventCleanupTime;
-            m_EventPreStartNUD.Value = KingOfTheHillConfig.m_EventPreStart;
-            m_EventPreStartMessageTB.Text = KingOfTheHillConfig.m_EventPreStartMessage;
-            m_EventCapturedMessageTB.Text = KingOfTheHillConfig.m_EventCapturedMessage;
-            m_EventDespawnedMessageTB.Text = KingOfTheHillConfig.m_EventDespawnedMessage;
-            m_EventStartMessageTB.Text = KingOfTheHillConfig.m_EventStartMessage;
-            m_DoLogsToCFCB.Checked = KingOfTheHillConfig.m_DoLogsToCF == 1 ? true : false;
-            m_PlayerPopulationToStartEventsNUD.Value = (decimal)KingOfTheHillConfig.m_PlayerPopulationToStartEvents;
-            m_MaxEventsNUD.Value = (decimal)KingOfTheHillConfig.m_MaxEvents;
-            m_FlagNameTB.Text = KingOfTheHillConfig.m_FlagName;
+            
+            enabledCB.Checked = MDCKOTHConfig.enabled == 1 ? true : false;
+            loggingLevelNUD.Value = MDCKOTHConfig.loggingLevel;
+            useLocationTextCB.Checked = MDCKOTHConfig.useLocationText == 1 ? true : false;
+            useMapMarkerCB.Checked = MDCKOTHConfig.useMapMarker == 1 ? true : false;
+            useNotificationsCB.Checked = MDCKOTHConfig.useNotifications == 1 ? true : false;
+            reduceProgressOnAbandonedCB.Checked = MDCKOTHConfig.reduceProgressOnAbandoned == 1 ? true : false;
+            reduceProgressOnDeathFromOutsideCB.Checked = MDCKOTHConfig.reduceProgressOnDeathFromOutside == 1 ? true : false;
+            requireFlagConstructionCB.Checked = MDCKOTHConfig.requireFlagConstruction == 1 ? true : false;
+            estimateLocationCB.Checked = MDCKOTHConfig.estimateLocation == 1 ? true : false;
+            celebrateWinCB.Checked = MDCKOTHConfig.celebrateWin == 1 ? true : false;
+            punishLossCB.Checked = MDCKOTHConfig.punishLoss == 1 ? true : false;
+            baseCaptureTimeNUD.Value = MDCKOTHConfig.baseCaptureTime;
+            maxTimeBetweenEventsNUD.Value = MDCKOTHConfig.maxTimeBetweenEvents;
+            minTimeBetweenEventsNUD.Value = MDCKOTHConfig.minTimeBetweenEvents;
+            playerTimeMultiplierNUD.Value = MDCKOTHConfig.playerTimeMultiplier;
+            timeDespawnNUD.Value = MDCKOTHConfig.timeDespawn;
+            timeLimitNUD.Value = MDCKOTHConfig.timeLimit;
+            timeStartNUD.Value = MDCKOTHConfig.timeStart;
+            timeSpawnNUD.Value = MDCKOTHConfig.timeSpawn;
+            timeZoneCooldownNUD.Value = MDCKOTHConfig.timeZoneCooldown;
 
-            HillsLB.DisplayMember = "Name";
-            HillsLB.ValueMember = "Value";
-            HillsLB.DataSource = KingOfTheHillConfig.m_HillLocations;
-            useraction = false;
-            useraction = false;
-            RewardPoolsLB.DisplayMember = "Name";
-            RewardPoolsLB.ValueMember = "Value";
-            RewardPoolsLB.DataSource = KingOfTheHillConfig.m_RewardPools;
-            useraction = false;
-            ZombiesClassNamesLB.DisplayMember = "Name";
-            ZombiesClassNamesLB.ValueMember = "Value";
-            ZombiesClassNamesLB.DataSource = KingOfTheHillConfig.m_Creatures;
+            minPlayerCountNUD.Value = MDCKOTHConfig.minPlayerCount;
+            maxEnemyCountNUD.Value = MDCKOTHConfig.maxEnemyCount;
+            minEnemyCountNUD.Value = MDCKOTHConfig.minEnemyCount;
+            maxEventsNUD.Value = MDCKOTHConfig.maxEvents;
+            minimumDeathsNUD.Value = MDCKOTHConfig.minimumDeaths;
+            minimumPlayersNUD.Value = MDCKOTHConfig.minimumPlayers;
+            maximumPlayersNUD.Value = MDCKOTHConfig.maximumPlayers;
+            rewardCountNUD.Value = MDCKOTHConfig.rewardCount;
+
+            flagClassnameTB.Text = MDCKOTHConfig.flagClassname;
+            lootCrateTB.Text = MDCKOTHConfig.lootCrate;
+            crateLifeTimeNUD.Value = MDCKOTHConfig.crateLifeTime;
+            ZombiesClassNamesLB.DataSource = MDCKOTHConfig.enemies;
+            HillsLB.DataSource = MDCKOTHConfig.zones;
+
             useraction = true;
         }
 
-        public M_Hilllocations currentHill;
+
         private void HillsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (HillsLB.SelectedItems.Count < 1) return;
-            currentHill = HillsLB.SelectedItem as M_Hilllocations;
+            currentKOTHZoneAreaLocation = HillsLB.SelectedItem as MDCKOTHZones;
             useraction = false;
-            NameTB.Text = currentHill.Name;
-            XNUD.Value = (decimal)currentHill.Position[0];
-            YNUD.Value = (decimal)currentHill.Position[1];
-            ZNUD.Value = (decimal)currentHill.Position[2];
-            RadiusNUD.Value = currentHill.Radius;
-            AISpawnCountNUD.Value = currentHill.AISpawnCount;
+            zoneNameTB.Text = currentKOTHZoneAreaLocation.zoneName;
+            XNUD.Value = (decimal)currentKOTHZoneAreaLocation.zonePosition[0];
+            YNUD.Value = (decimal)currentKOTHZoneAreaLocation.zonePosition[1];
+            ZNUD.Value = (decimal)currentKOTHZoneAreaLocation.zonePosition[2];
+            zoneRadiusNUD.Value = currentKOTHZoneAreaLocation.zoneRadius;
+
+
+
 
             pictureBox2.Invalidate();
-            useraction = true;
-        }
-        public M_Rewardpools CurrentrewardPool;
-        private void RewardPoolsLB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (RewardPoolsLB.SelectedItems.Count < 1) return;
-            CurrentrewardPool = RewardPoolsLB.SelectedItem as M_Rewardpools;
-            useraction = false;
-            RewardsPoolNameTB.Text = CurrentrewardPool.RewardContainerName;
-
-            RewardsLB.DisplayMember = "Name";
-            RewardsLB.ValueMember = "Value";
-            RewardsLB.DataSource = CurrentrewardPool.m_Rewards;
-            useraction = false;
-            if (CurrentrewardPool.m_Rewards.Count == 0)
-            {
-                RewardItemTB.Text = "";
-                ItemAttachmentsLB.DataSource = null;
-            }
-
-            useraction = true;
-        }
-        public M_Rewards currentReward;
-        private void RewardsLB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (RewardsLB.SelectedItems.Count < 1) return;
-            currentReward = RewardsLB.SelectedItem as M_Rewards;
-            useraction = false;
-            RewardItemTB.Text = currentReward.ItemName;
-            ItemAttachmentsLB.DisplayMember = "Name";
-            ItemAttachmentsLB.ValueMember = "Value";
-            ItemAttachmentsLB.DataSource = currentReward.Attachments;
-
             useraction = true;
         }
 
@@ -247,86 +230,86 @@ namespace DayZeEditor
         private void m_UpdateIntervalNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            KingOfTheHillConfig.m_UpdateInterval = m_UpdateIntervalNUD.Value;
-            KingOfTheHillConfig.isDirty = true;
+
+            MDCKOTHConfig.isDirty = true;
         }
         private void m_ServerStartDelayNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            KingOfTheHillConfig.m_ServerStartDelay = m_ServerStartDelayNUD.Value;
-            KingOfTheHillConfig.isDirty = true;
+
+            MDCKOTHConfig.isDirty = true;
         }
         private void m_CaptureTimeNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            KingOfTheHillConfig.m_CaptureTime = m_CaptureTimeNUD.Value;
-            KingOfTheHillConfig.isDirty = true;
+
+            MDCKOTHConfig.isDirty = true;
         }
         private void m_HillEventIntervalNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            KingOfTheHillConfig.m_HillEventInterval = m_HillEventIntervalNUD.Value;
-            KingOfTheHillConfig.isDirty = true;
+
+            MDCKOTHConfig.isDirty = true;
         }
         private void m_EventCleanupTimeNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            KingOfTheHillConfig.m_EventCleanupTime = m_EventCleanupTimeNUD.Value;
-            KingOfTheHillConfig.isDirty = true;
+
+            MDCKOTHConfig.isDirty = true;
         }
         private void m_EventPreStartNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            KingOfTheHillConfig.m_EventPreStart = m_EventPreStartNUD.Value;
-            KingOfTheHillConfig.isDirty = true;
+
+            MDCKOTHConfig.isDirty = true;
         }
         private void m_PlayerPopulationToStartEventsNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            KingOfTheHillConfig.m_PlayerPopulationToStartEvents = (int)m_PlayerPopulationToStartEventsNUD.Value;
-            KingOfTheHillConfig.isDirty = true;
+
+            MDCKOTHConfig.isDirty = true;
         }
         private void m_MaxEventsNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            KingOfTheHillConfig.m_MaxEvents = (int)m_MaxEventsNUD.Value;
-            KingOfTheHillConfig.isDirty = true;
+
+            MDCKOTHConfig.isDirty = true;
         }
         private void m_DoLogsToCFCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            KingOfTheHillConfig.m_DoLogsToCF = m_DoLogsToCFCB.Checked == true ? 1 : 0;
-            KingOfTheHillConfig.isDirty = true;
+
+            MDCKOTHConfig.isDirty = true;
         }
         private void m_EventPreStartMessageTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            KingOfTheHillConfig.m_EventPreStartMessage = m_EventPreStartMessageTB.Text;
-            KingOfTheHillConfig.isDirty = true;
+
+            MDCKOTHConfig.isDirty = true;
         }
         private void m_EventCapturedMessageTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            KingOfTheHillConfig.m_EventCapturedMessage = m_EventCapturedMessageTB.Text;
-            KingOfTheHillConfig.isDirty = true;
+
+            MDCKOTHConfig.isDirty = true;
         }
         private void m_EventDespawnedMessageTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            KingOfTheHillConfig.m_EventDespawnedMessage = m_EventDespawnedMessageTB.Text;
-            KingOfTheHillConfig.isDirty = true;
+
+            MDCKOTHConfig.isDirty = true;
         }
         private void m_EventStartMessageTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            KingOfTheHillConfig.m_EventStartMessage = m_EventStartMessageTB.Text;
-            KingOfTheHillConfig.isDirty = true;
+
+            MDCKOTHConfig.isDirty = true;
         }
         private void m_FlagNameTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            KingOfTheHillConfig.m_FlagName = m_FlagNameTB.Text;
-            KingOfTheHillConfig.isDirty = true;
+
+            MDCKOTHConfig.isDirty = true;
         }
 
         /// <summary>
@@ -337,25 +320,35 @@ namespace DayZeEditor
         private void darkButton12_Click(object sender, EventArgs e)
         {
             float[] centre = new float[] { currentproject.MapSize / 2, 0, currentproject.MapSize / 2 };
-            M_Hilllocations newHill = new M_Hilllocations()
+            MDCKOTHZones newzone = new MDCKOTHZones()
             {
-                Name = "New Hill",
-                Position = new float[]
-                {
-                    centre[0],
-                    centre[1],
-                    centre[2]
-                },
-                Radius = 20,
-                AISpawnCount = 20
+                zoneName = "New Zone",
+                zonePosition = centre,
+                zoneRadius = 50,
+                baseCaptureTime = -1,
+                playerTimeMultiplier = -1,
+                timeDespawn = -1,
+                timeStart = -1,
+                maxEnemyCount = -1,
+                minEnemyCount = -1,
+                minimumDeaths = -1,
+                minimumPlayers = -1,
+                maximumPlayers = -1,
+                rewardCount = -1,
+                flagClassname = "",
+                objects = new BindingList<KOTHObject>(),
+                enemies = new BindingList<string>(),
+                lootCrate = "",
+                crateLifeTime = -1,
+                lootSets = new BindingList<KOTHLootset>()
             };
-            KingOfTheHillConfig.m_HillLocations.Add(newHill);
-            KingOfTheHillConfig.isDirty = true;
+            MDCKOTHConfig.zones.Add(newzone);
+            MDCKOTHConfig.isDirty = true;
         }
         private void darkButton11_Click(object sender, EventArgs e)
         {
-            KingOfTheHillConfig.m_HillLocations.Remove(currentHill);
-            KingOfTheHillConfig.isDirty = true;
+
+            MDCKOTHConfig.isDirty = true;
             pictureBox2.Invalidate();
             if (HillsLB.Items.Count == 0)
                 HillsLB.SelectedIndex = -1;
@@ -365,43 +358,43 @@ namespace DayZeEditor
         private void NameTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentHill.Name = NameTB.Text;
-            KingOfTheHillConfig.isDirty = true;
+
+            MDCKOTHConfig.isDirty = true;
             HillsLB.Refresh();
         }
         private void XNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentHill.Position[0] = (float)XNUD.Value;
-            KingOfTheHillConfig.isDirty = true;
+
+            MDCKOTHConfig.isDirty = true;
             pictureBox2.Invalidate();
         }
         private void YNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentHill.Position[1] = (float)YNUD.Value;
-            KingOfTheHillConfig.isDirty = true;
+
+            MDCKOTHConfig.isDirty = true;
             pictureBox2.Invalidate();
         }
         private void ZNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentHill.Position[2] = (float)ZNUD.Value;
-            KingOfTheHillConfig.isDirty = true;
+
+            MDCKOTHConfig.isDirty = true;
             pictureBox2.Invalidate();
         }
         private void RadiusNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentHill.Radius = RadiusNUD.Value;
-            KingOfTheHillConfig.isDirty = true;
+
+            MDCKOTHConfig.isDirty = true;
             pictureBox2.Invalidate();
         }
         private void AISpawnCountNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentHill.AISpawnCount = (int)AISpawnCountNUD.Value;
-            KingOfTheHillConfig.isDirty = true;
+
+            MDCKOTHConfig.isDirty = true;
         }
         private void pictureBox2_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -417,10 +410,10 @@ namespace DayZeEditor
                 ZNUD.Value = (decimal)((newsize - mouseEventArgs.Y) / scalevalue);
                 if (MapData.FileExists)
                 {
-                    YNUD.Value = (decimal)(MapData.gethieght(currentHill.Position[0], currentHill.Position[2]));
+                    //YNUD.Value = (decimal)(MapData.gethieght(currentHill.Position[0], currentHill.Position[2]));
                 }
                 Cursor.Current = Cursors.Default;
-                KingOfTheHillConfig.isDirty = true;
+                MDCKOTHConfig.isDirty = true;
                 pictureBox2.Invalidate();
 
             }
@@ -478,139 +471,22 @@ namespace DayZeEditor
             }
             foreach (string s in removezombies)
             {
-                KingOfTheHillConfig.m_Creatures.Remove(s);
+                MDCKOTHConfig.enemies.Remove(s);
                 
             }
-            KingOfTheHillConfig.isDirty = true;
+            MDCKOTHConfig.isDirty = true;
         }
         private void darkButton7_Click(object sender, EventArgs e)
         {
             foreach (var item in ZombiestochoosefromLB.SelectedItems)
             {
-                string zombie = item.ToString();
-                if (!KingOfTheHillConfig.m_Creatures.Contains(zombie))
-                {
-                    KingOfTheHillConfig.m_Creatures.Add(zombie);
-                    KingOfTheHillConfig.isDirty = true;
-                }
-                else
-                {
-                    MessageBox.Show("Infected Type allready in the list.....");
-                }
+                string zombie = ZombiestochoosefromLB.GetItemText(ZombiestochoosefromLB.SelectedItem);
+                if (!MDCKOTHConfig.enemies.Contains(zombie))
+                    MDCKOTHConfig.enemies.Add(zombie);
             }
+            MDCKOTHConfig.isDirty = true;
         }
 
-        /// <summary>
-        /// Rewrds Value changes
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void darkButton2_Click(object sender, EventArgs e)
-        {
-            M_Rewardpools Newpool = new M_Rewardpools()
-            {
-                RewardContainerName = "New Rweards Pool",
-                m_Rewards = new BindingList<M_Rewards>()
-            };
-            KingOfTheHillConfig.m_RewardPools.Add(Newpool);
-            KingOfTheHillConfig.isDirty = true;
-        }
-        private void darkButton1_Click(object sender, EventArgs e)
-        {
-            KingOfTheHillConfig.m_RewardPools.Remove(CurrentrewardPool);
-            KingOfTheHillConfig.isDirty = true;
-            if (RewardPoolsLB.Items.Count == 0)
-                RewardPoolsLB.SelectedIndex = -1;
-            else
-                RewardPoolsLB.SelectedIndex = 0;
-        }
-        private void RewardsPoolNameTB_TextChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentrewardPool.RewardContainerName = RewardsPoolNameTB.Text;
-            KingOfTheHillConfig.isDirty = true;
-            RewardPoolsLB.Refresh();
-        }
-
-        /// <summary>
-        /// Rewards Value Chages
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void darkButton4_Click(object sender, EventArgs e)
-        {
-            AddItemfromTypes form = new AddItemfromTypes
-            {
-                vanillatypes = vanillatypes,
-                ModTypes = ModTypes,
-                currentproject = currentproject,
-                UseMultipleofSameItem = true
-            };
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                List<string> addedtypes = form.addedtypes.ToList();
-                foreach (string l in addedtypes)
-                {
-                    M_Rewards NewReward = new M_Rewards()
-                    {
-                        ItemName = l,
-                        Attachments = new BindingList<string>()
-                    };
-                    CurrentrewardPool.m_Rewards.Add(NewReward);
-                    KingOfTheHillConfig.isDirty = true;
-                }
-            }
-        }
-        private void darkButton3_Click(object sender, EventArgs e)
-        {
-            CurrentrewardPool.m_Rewards.Remove(currentReward);
-            KingOfTheHillConfig.isDirty = true;
-            if (RewardsLB.Items.Count == 0)
-                RewardsLB.SelectedIndex = -1;
-            else
-                RewardsLB.SelectedIndex = 0;
-        }
-        private void RewardItemTB_TextChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            currentReward.ItemName = RewardItemTB.Text;
-            KingOfTheHillConfig.isDirty = true;
-            RewardsLB.Refresh();
-        }
-        private void darkButton6_Click(object sender, EventArgs e)
-        {
-            AddItemfromTypes form = new AddItemfromTypes
-            {
-                vanillatypes = vanillatypes,
-                ModTypes = ModTypes,
-                currentproject = currentproject
-            };
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                List<string> addedtypes = form.addedtypes.ToList();
-                foreach (string l in addedtypes)
-                {
-                    if (!currentReward.Attachments.Contains(l))
-                    {
-                        currentReward.Attachments.Add(l);
-                        KingOfTheHillConfig.isDirty = true;
-                    }
-                    else
-                        MessageBox.Show("Attachments Type allready in the list.....");
-                }
-            }
-        }
-        private void darkButton5_Click(object sender, EventArgs e)
-        {
-            currentReward.Attachments.Remove(ItemAttachmentsLB.GetItemText(ItemAttachmentsLB.SelectedItem));
-            KingOfTheHillConfig.isDirty = true;
-            if (ItemAttachmentsLB.Items.Count == 0)
-                ItemAttachmentsLB.SelectedIndex = -1;
-            else
-                ItemAttachmentsLB.SelectedIndex = 0;
-        }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
@@ -624,18 +500,18 @@ namespace DayZeEditor
         {
             List<string> midifiedfiles = new List<string>();
             string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
-            if (KingOfTheHillConfig.isDirty)
+            if (MDCKOTHConfig.isDirty)
             {
-                if (currentproject.Createbackups && File.Exists(KingOfTheHillConfig.FullFilename))
+                if (currentproject.Createbackups && File.Exists(MDCKOTHConfig.FullFilename))
                 {
-                    Directory.CreateDirectory(Path.GetDirectoryName(KingOfTheHillConfig.FullFilename) + "\\Backup\\" + SaveTime);
-                    File.Copy(KingOfTheHillConfig.FullFilename, Path.GetDirectoryName(KingOfTheHillConfig.FullFilename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(KingOfTheHillConfig.FullFilename) + ".bak", true);
+                    Directory.CreateDirectory(Path.GetDirectoryName(MDCKOTHConfig.FullFilename) + "\\Backup\\" + SaveTime);
+                    File.Copy(MDCKOTHConfig.FullFilename, Path.GetDirectoryName(MDCKOTHConfig.FullFilename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(MDCKOTHConfig.FullFilename) + ".bak", true);
                 }
-                KingOfTheHillConfig.isDirty = false;
+                MDCKOTHConfig.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-                string jsonString = JsonSerializer.Serialize(KingOfTheHillConfig, options);
-                File.WriteAllText(KingOfTheHillConfig.FullFilename, jsonString);
-                midifiedfiles.Add(Path.GetFileName(Path.GetFileName(KingOfTheHillConfigPath)));
+                string jsonString = JsonSerializer.Serialize(MDCKOTHConfig, options);
+                File.WriteAllText(MDCKOTHConfig.FullFilename, jsonString);
+                midifiedfiles.Add(Path.GetFileName(Path.GetFileName(KOTHConfigPath)));
             }
             string message = "The Following Files were saved....\n";
             int i = 0;
@@ -662,7 +538,7 @@ namespace DayZeEditor
         private void KOTHManager_FormClosing(object sender, FormClosingEventArgs e)
         {
             bool needtosave = false;
-            if (KingOfTheHillConfig.isDirty)
+            if (MDCKOTHConfig.isDirty)
             {
                 needtosave = true;
             }
@@ -674,6 +550,21 @@ namespace DayZeEditor
                     SaveKOTHZoneconfigs();
                 }
             }
+        }
+
+        private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_MouseEnter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }

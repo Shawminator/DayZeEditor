@@ -15,6 +15,7 @@ using DayZeLib;
 using System.Net;
 using System.IO.Compression;
 using System.Text.Encodings.Web;
+using System.Linq;
 
 namespace DayZeEditor
 {
@@ -338,7 +339,7 @@ namespace DayZeEditor
                 else
                     RHLootBoxManagerButton.Visible = false;
 
-                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\HeliCrashMissions\\Helicrash.json"))
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\HeliCrash\\HCConfig\\HCConfig.json"))
                     HelicrashManagerButton.Visible = true;
                 else
                     HelicrashManagerButton.Visible = false;
@@ -358,7 +359,8 @@ namespace DayZeEditor
                 else
                     BreachingChargeManagerButton.Visible = false;
 
-                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KingOfTheHill\\server-config.json"))
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KOTH\\" + Projects.getActiveProject().mpmissionpath.Split('.').Last() + ".json") &&
+                    File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KOTH\\Loot.json"))
                     KOTHManagerButton.Visible = true;
                 else
                     KOTHManagerButton.Visible = false;

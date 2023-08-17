@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace DayZeEditor
 {
-    public partial class AddfromPredefinedWeapons : DarkForm
+    public partial class AddfromPredefinedItems : DarkForm
     {
         
         private void listBox_DrawItem(object sender, DrawItemEventArgs e)
@@ -35,7 +35,7 @@ namespace DayZeEditor
         }
 
         public BindingList<LCPredefinedWeapons> LCPredefinedWeapons { get; set; }
-        public BindingList<Rhlpdefinedweapon> Rhlpdefinedweapon { get; set; }
+        public BindingList<RHLPdefinedItems> RHLPdefinedItems { get; set; }
         public BindingList<LootCategories> LootCategories { get; set; }
         public BindingList<Rhlploottable> LootTables { get; set; }
         public BindingList<Rhlprewardtable> Rhlprewardtable { get; set; }
@@ -50,7 +50,7 @@ namespace DayZeEditor
         public string titellabel { get; set; }
         public bool isLootchest { get; set; }
         public bool isLootBoxList { get; set; }
-        public AddfromPredefinedWeapons()
+        public AddfromPredefinedItems()
         {
             InitializeComponent();
             Form_Controls_AddfromType.InitializeForm_Controls
@@ -76,7 +76,7 @@ namespace DayZeEditor
             {
                 LCPredefinedWeaponsLB.DisplayMember = "DisplayName";
                 LCPredefinedWeaponsLB.ValueMember = "Value";
-                LCPredefinedWeaponsLB.DataSource = Rhlpdefinedweapon;
+                LCPredefinedWeaponsLB.DataSource = RHLPdefinedItems;
                 WeaponList = new List<string>();
             }
             else if(isLootList)
@@ -123,7 +123,7 @@ namespace DayZeEditor
             {
                 foreach (var item in LCPredefinedWeaponsLB.SelectedItems)
                 {
-                    Rhlpdefinedweapon predefweaponclass = item as Rhlpdefinedweapon;
+                    RHLPdefinedItems predefweaponclass = item as RHLPdefinedItems;
                     WeaponList.Add(predefweaponclass.DefineName);
                 }
             }

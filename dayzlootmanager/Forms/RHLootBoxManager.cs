@@ -170,7 +170,7 @@ namespace DayZeEditor
         }
         private void darkButton10_Click(object sender, EventArgs e)
         {
-            AddfromPredefinedWeapons form = new AddfromPredefinedWeapons
+            AddfromPredefinedItems form = new AddfromPredefinedItems
             {
                 Rhlprewardtable = LootPool.RHLPRewardTables,
                 titellabel = "Add Items from Loot list",
@@ -293,7 +293,7 @@ namespace DayZeEditor
         }
         private void darkButton1_Click(object sender, EventArgs e)
         {
-            AddfromPredefinedWeapons form = new AddfromPredefinedWeapons
+            AddfromPredefinedItems form = new AddfromPredefinedItems
             {
                 Rhlootboxconfig = LootBoxConfig.RHLootBoxConfigs,
                 titellabel = "Add Items from Loot list",
@@ -330,7 +330,7 @@ namespace DayZeEditor
                 lootLB.ValueMember = "Value";
                 lootLB.DataSource = CurrentRhlootboxstaticbox.CustomLootList;
             }
-            AddfromPredefinedWeapons form = new AddfromPredefinedWeapons
+            AddfromPredefinedItems form = new AddfromPredefinedItems
             {
                 Rhlprewardtable = LootPool.RHLPRewardTables,
                 titellabel = "Add Items from Loot list",
