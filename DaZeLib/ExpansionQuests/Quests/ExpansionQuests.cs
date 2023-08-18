@@ -181,7 +181,6 @@ namespace DayZeLib
         {
             return QuestList.FirstOrDefault(x => x.ID == id);
         }
-
         public void GetNPCLists(QuestNPCLists questNPCs)
         {
             foreach(Quests q in QuestList)
@@ -189,7 +188,6 @@ namespace DayZeLib
                 q.GetNPCLists(questNPCs);
             }
         }
-
         public void GetPreQuests()
         {
             foreach(Quests q in QuestList)
@@ -211,7 +209,6 @@ namespace DayZeLib
                 }
             }
         }
-
         public void setobjectiveenums()
         {
             foreach (Quests q in QuestList)

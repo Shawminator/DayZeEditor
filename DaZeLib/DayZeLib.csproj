@@ -132,6 +132,7 @@
     <Compile Include="ExpansionExtras\ATMs.cs" />
     <Compile Include="ExpansionMarket\MarketCategories.cs" />
     <Compile Include="ExpansionMarket\marketsettings.cs" />
+    <Compile Include="ExpansionSettings\PersonalStorage.cs" />
     <Compile Include="ExpansionMarket\TraderModelMapping.cs" />
     <Compile Include="ExpansionMarket\Traders.cs" />
     <Compile Include="ExpansionMarket\TraderZones.cs" />
@@ -170,6 +171,7 @@
     <Compile Include="ExpansionSettings\NotificationSettings.cs" />
     <Compile Include="ExpansionSettings\NotioficationSchedulerSettings.cs" />
     <Compile Include="ExpansionSettings\PartySettings.cs" />
+    <Compile Include="ExpansionSettings\PersonalStorageSettings.cs" />
     <Compile Include="ExpansionSettings\PlayerListSettings.cs" />
     <Compile Include="ExpansionSettings\RaidSettings.cs" />
     <Compile Include="ExpansionSettings\SafeZoneSettings.cs" />

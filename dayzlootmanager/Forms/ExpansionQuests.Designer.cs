@@ -7993,7 +7993,7 @@ namespace DayZeEditor
             this.deleteObjectiveToolStripMenuItem,
             this.addNewCraftingObjectiveToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(253, 246);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(253, 268);
             // 
             // addNewActionObjectiveToolStripMenuItem
             // 

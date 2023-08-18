@@ -1,20 +1,19 @@
-﻿using DarkUI.Forms;
-using System.Text.Json;
+﻿using Cyotek.Windows.Forms;
+using DarkUI.Forms;
+using DayZeLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
-using System.IO;
 using System.Diagnostics;
-using System.Text.Encodings.Web;
-using Cyotek.Windows.Forms;
-using DayZeLib;
-using System.Text.Json.Serialization;
-using System.Globalization;
+using System.Drawing;
+using System.IO;
+using System.Linq;
 using System.Text;
+using System.Text.Encodings.Web;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Windows.Forms;
 
 namespace DayZeEditor
 {
@@ -25,11 +24,15 @@ namespace DayZeEditor
         public TypesFile vanillatypes;
         public TypesFile Expansiontypes;
         public List<TypesFile> ModTypes;
+
+        public BindingList<string> Factions { get; private set; }
+
         public string Projectname;
         private bool _useraction = false;
 
         public containerLoot SCL { get; private set; }
         public lootVarients SLootVarients { get; private set; }
+        public PersonalStorage CurrentPersonalStorage { get; private set; }
 
         public bool useraction
         {
@@ -61,6 +64,8 @@ namespace DayZeEditor
         public string NotificationSchedulerSettingsPath;
         public string NotificationssettingsPath;
         public string PartySettingsPath;
+        public string PersonalStoragePath;
+        public string PersonalStorageSettingsPath;
         public string PlayerListsettingsPath;
         public string RaidSettingsPath;
         public string SafeZoneSettingspath;
@@ -88,6 +93,8 @@ namespace DayZeEditor
         public NotificationSchedulerSettings NotificationSchedulerSettings;
         public NotificationSettings NotificationSettings;
         public PartySettings PartySettings;
+        public PersonalStorageList PersonalStorageList;
+        public PersonalStorageSettings PersonalStorageSettings;
         public PlayerListSettings PlayerListSettings;
         public RaidSettings RaidSettings;
         public SafeZoneSettings SafeZoneSettings;
@@ -120,170 +127,133 @@ namespace DayZeEditor
         public ExpansionSettings()
         {
             InitializeComponent();
-            tabControl2.ItemSize = new Size(0, 1);
+            ExpansionSettingsTabPage.ItemSize = new Size(0, 1);
             comboBox2.DataSource = Enum.GetValues(typeof(ContainerTypes));
             EnableLampsComboBox.DataSource = Enum.GetValues(typeof(Lamps));
             BuildingIvysComboBox.DataSource = Enum.GetValues(typeof(buildingIvy));
-            toolStripButton1.AutoSize = true;
-            toolStripButton3.AutoSize = true;
-            toolStripButton4.AutoSize = true;
-            toolStripButton5.AutoSize = true;
-            toolStripButton6.AutoSize = true;
-            toolStripButton9.AutoSize = true;
-            toolStripButton10.AutoSize = true;
-            toolStripButton11.AutoSize = true;
-            toolStripButton12.AutoSize = true;
-            toolStripButton13.AutoSize = true;
-            toolStripButton14.AutoSize = true;
-            toolStripButton18.AutoSize = true;
-            toolStripButton20.AutoSize = true;
+            VariousTabButton.AutoSize = true;
+            AirdropsTabButton.AutoSize = true;
+            BookTabButton.AutoSize = true;
+            BaseBuildingTabButton.AutoSize = true;
+            GeneralTabButton.AutoSize = true;
+            NotificationschedularTabButton.AutoSize = true;
+            HardlineTabButton.AutoSize = true;
         }
         private void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach(var item in darkToolStrip22.Items)
-            {
-                if (item is ToolStripButton)
-                {
-                    ToolStripButton tsb = item as ToolStripButton;
-                    tsb.ForeColor = Color.FromArgb(75, 110, 175);
-                    tsb.Checked = false;
-                }
-            }
-            switch (tabControl2.SelectedIndex)
-            {
-                case 0:
-                    toolStripButton1.Checked = true;
-                    toolStripButton1.ForeColor = SystemColors.Control;
-                    break;
-                case 1:
-                    toolStripButton3.Checked = true;
-                    toolStripButton3.ForeColor = SystemColors.Control;
-                    break;
-                case 2:
-                    toolStripButton5.Checked = true;
-                    toolStripButton5.ForeColor = SystemColors.Control;
-                    break;
-                case 3:
-                    toolStripButton4.Checked = true;
-                    toolStripButton4.ForeColor = SystemColors.Control;
-                    break;
-                case 4:
-                    toolStripButton6.Checked = true;
-                    toolStripButton6.ForeColor = SystemColors.Control;
-                    break;
-                case 5:
-                    toolStripButton9.Checked = true;
-                    toolStripButton9.ForeColor = SystemColors.Control;
-                    break;
-                case 6:
-                    toolStripButton10.Checked = true;
-                    toolStripButton10.ForeColor = SystemColors.Control;
-                    break;
-                case 7:
-                    toolStripButton11.Checked = true;
-                    toolStripButton11.ForeColor = SystemColors.Control;
-                    break;
-                case 8:
-                    toolStripButton12.Checked = true;
-                    toolStripButton12.ForeColor = SystemColors.Control;
-                    break;
-                case 9:
-                    toolStripButton13.Checked = true;
-                    toolStripButton13.ForeColor = SystemColors.Control;
-                    break;
-                case 10:
-                    toolStripButton14.Checked = true;
-                    toolStripButton14.ForeColor = SystemColors.Control;
-                    break;
-                case 11:
-                    toolStripButton18.Checked = true;
-                    toolStripButton18.ForeColor = SystemColors.Control;
-                    break;
-                case 12:
-                    toolStripButton20.Checked = true;
-                    toolStripButton20.ForeColor = SystemColors.Control;
-                    break;
-                case 13:
-                    toolStripButton21.Checked = true;
-                    toolStripButton21.ForeColor = SystemColors.Control;
-                    break;
-                default:
-                    break;
-            }
+            VariousTabButton.Checked = false;
+            AirdropsTabButton.Checked = false;
+            BaseBuildingTabButton.Checked = false;
+            BookTabButton.Checked = false;
+            GarageTabButton.Checked = false;
+            GeneralTabButton.Checked = false;
+            HardlineTabButton.Checked = false;
+            MapTabButton.Checked = false;
+            MissionsTabButton.Checked = false;
+            NotificationschedularTabButton.Checked = false;
+            PersonalStorageTabButton.Checked = false;
+            RaidTabButton.Checked = false;
+            SafeZoneTabButton.Checked = false;
+            SpawnTabButton.Checked = false;
+            VehicleTabButton.Checked = false;
         }
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void VariousTabButton_Click(object sender, EventArgs e)
         {
-            tabControl2.SelectedIndex = 0;
+            ExpansionSettingsTabPage.SelectedIndex = 0;
+            if (ExpansionSettingsTabPage.SelectedIndex == 0)
+                VariousTabButton.Checked = true;
         }
-        private void toolStripButton3_Click(object sender, EventArgs e)
+        private void AirdropsTabButton_Click(object sender, EventArgs e)
         {
-            tabControl2.SelectedIndex = 1;
+            ExpansionSettingsTabPage.SelectedIndex = 1;
+            if (ExpansionSettingsTabPage.SelectedIndex == 1)
+                AirdropsTabButton.Checked = true;
         }
-        private void toolStripButton5_Click(object sender, EventArgs e)
+        private void BaseBuildingTabButton_Click(object sender, EventArgs e)
         {
-            tabControl2.SelectedIndex = 2;
-            toolStripButton7.AutoSize = false;
-            toolStripButton7.AutoSize = true;
-            toolStripButton8.AutoSize = false;
-            toolStripButton8.AutoSize = true;
+            ExpansionSettingsTabPage.SelectedIndex = 2;
+            if (ExpansionSettingsTabPage.SelectedIndex == 2)
+                BaseBuildingTabButton.Checked = true;
         }
-        private void toolStripButton4_Click(object sender, EventArgs e)
+        private void BookTabButton_Click(object sender, EventArgs e)
         {
-            tabControl2.SelectedIndex = 3;
+            ExpansionSettingsTabPage.SelectedIndex = 3;
+            if (ExpansionSettingsTabPage.SelectedIndex == 3)
+                BookTabButton.Checked = true;
         }
-        private void toolStripButton6_Click(object sender, EventArgs e)
+        private void GarageTabButton_Click(object sender, EventArgs e)
         {
-            tabControl2.SelectedIndex = 4;
+            ExpansionSettingsTabPage.SelectedIndex = 4;
+            if (ExpansionSettingsTabPage.SelectedIndex == 4)
+                GarageTabButton.Checked = true;
         }
-        private void toolStripButton9_Click(object sender, EventArgs e)
+        private void GeneralTabButton_Click(object sender, EventArgs e)
         {
-            tabControl2.SelectedIndex = 5;
+            ExpansionSettingsTabPage.SelectedIndex = 5;
+            if (ExpansionSettingsTabPage.SelectedIndex == 5)
+                GeneralTabButton.Checked = true;
         }
-        private void toolStripButton10_Click(object sender, EventArgs e)
+        private void HardlineTabButton_Click(object sender, EventArgs e)
         {
-            tabControl2.SelectedIndex = 6;
+            ExpansionSettingsTabPage.SelectedIndex = 6;
+            if (ExpansionSettingsTabPage.SelectedIndex == 6)
+                HardlineTabButton.Checked = true;
         }
-        private void toolStripButton11_Click(object sender, EventArgs e)
+        private void MapTabButton_Click(object sender, EventArgs e)
         {
-            tabControl2.SelectedIndex = 7;
+            ExpansionSettingsTabPage.SelectedIndex = 7;
+            if (ExpansionSettingsTabPage.SelectedIndex == 7)
+                MapTabButton.Checked = true;
         }
-        private void toolStripButton12_Click(object sender, EventArgs e)
+        private void MissionsTabButton_Click(object sender, EventArgs e)
         {
-            tabControl2.SelectedIndex = 8;
+            ExpansionSettingsTabPage.SelectedIndex = 8;
+            if (ExpansionSettingsTabPage.SelectedIndex == 8)
+                MissionsTabButton.Checked = true;
         }
-        private void toolStripButton13_Click(object sender, EventArgs e)
+        private void NotificationschedularTabButton_Click(object sender, EventArgs e)
         {
-            tabControl2.SelectedIndex = 9;
-            toolStripButton15.AutoSize = false;
-            toolStripButton15.AutoSize = true;
-            toolStripButton16.AutoSize = false;
-            toolStripButton16.AutoSize = true;
-            toolStripButton17.AutoSize = false;
-            toolStripButton17.AutoSize = true;
-            toolStripButton19.AutoSize = false;
-            toolStripButton19.AutoSize = true;
+            ExpansionSettingsTabPage.SelectedIndex = 9;
+            if (ExpansionSettingsTabPage.SelectedIndex == 9)
+                NotificationschedularTabButton.Checked = true;
         }
-        private void toolStripButton14_Click(object sender, EventArgs e)
+        private void PersonalStorageTabButton_Click(object sender, EventArgs e)
         {
-            tabControl2.SelectedIndex = 10;
+            ExpansionSettingsTabPage.SelectedIndex = 10;
+            if (ExpansionSettingsTabPage.SelectedIndex == 10)
+                PersonalStorageTabButton.Checked = true;
         }
-        private void toolStripButton18_Click(object sender, EventArgs e)
+        private void RaidTabButton_Click(object sender, EventArgs e)
         {
-            tabControl2.SelectedIndex = 11;
+            ExpansionSettingsTabPage.SelectedIndex = 11;
+            if (ExpansionSettingsTabPage.SelectedIndex == 11)
+                RaidTabButton.Checked = true;
         }
-        private void toolStripButton20_Click(object sender, EventArgs e)
+        private void SafeZoneTabButton_Click(object sender, EventArgs e)
         {
-            tabControl2.SelectedIndex = 12;
+            ExpansionSettingsTabPage.SelectedIndex = 12;
+            if (ExpansionSettingsTabPage.SelectedIndex == 12)
+                SafeZoneTabButton.Checked = true;
         }
-        private void toolStripButton21_Click(object sender, EventArgs e)
+        private void SpawnTabButton_Click(object sender, EventArgs e)
         {
-            tabControl2.SelectedIndex = 13;
+            ExpansionSettingsTabPage.SelectedIndex = 13;
+            if (ExpansionSettingsTabPage.SelectedIndex == 13)
+                SpawnTabButton.Checked = true;
+        }
+        private void VehicleTabButton_Click(object sender, EventArgs e)
+        {
+            ExpansionSettingsTabPage.SelectedIndex = 14;
+            if (ExpansionSettingsTabPage.SelectedIndex == 14)
+                VehicleTabButton.Checked = true;
         }
         private void expansionsettings_Load(object sender, EventArgs e)
         {
             Projectname = currentproject.ProjectName;
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
+
+            Factions = new BindingList<string>(File.ReadAllLines(Application.StartupPath + "\\TraderNPCs\\Factions.txt").ToList());
 
             bool needtosave = false;
 
@@ -513,6 +483,7 @@ namespace DayZeEditor
                     needtosave = true;
             }
             MissionSettings.Filename = MissionSettingsPath;
+            Console.WriteLine("Loading Expansion Mission files....");
             MissionSettings.LoadIndividualMissions(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath);
             loadMissionSettings();
 
@@ -607,6 +578,35 @@ namespace DayZeEditor
             }
             PartySettings.Filename = PartySettingsPath;
             loadpartysettings();
+
+
+
+            PersonalStorageSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\PersonalStorageNewSettings.json";
+            if (!File.Exists(PersonalStorageSettingsPath))
+            {
+                PersonalStorageSettings = new PersonalStorageSettings();
+                needtosave = true;
+                Console.WriteLine(Path.GetFileName(PersonalStorageSettingsPath) + " File not found, Creating new....");
+            }
+            else
+            {
+                Console.WriteLine("serializing " + Path.GetFileName(PartySettingsPath));
+                PersonalStorageSettings = JsonSerializer.Deserialize<PersonalStorageSettings>(File.ReadAllText(PersonalStorageSettingsPath));
+                PersonalStorageSettings.isDirty = false;
+                if (PersonalStorageSettings.checkver())
+                    needtosave = true;
+            }
+            PersonalStorageSettings.Filename = PersonalStorageSettingsPath;
+           
+
+
+
+            Console.WriteLine("Loading Personal Storage files....");
+            PersonalStoragePath = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\personalstorage";
+            PersonalStorageList = new PersonalStorageList(PersonalStoragePath);
+            loadPersonalStorageSettings();
+
+
 
             PlayerListsettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\PlayerListSettings.json";
             if (!File.Exists(PlayerListsettingsPath))
@@ -746,9 +746,6 @@ namespace DayZeEditor
                 savefiles(true);
             }
         }
-
-
-
         public ContainerTypes getContainertype(string container)
         {
             switch (container)
@@ -811,6 +808,31 @@ namespace DayZeEditor
                     return "ExpansionAirdropContainer_Military_WinterCamo";
                 default:
                     return "ExpansionAirdropContainer";
+            }
+        }
+        private void importDZEToMapFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    string DestFile = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\objects\\" + Path.GetFileNameWithoutExtension(filePath) + ".map";
+                    StringBuilder sb = new StringBuilder();
+                    DZE importfile = DZEHelpers.LoadFile(filePath);
+                    foreach (Editordeletedobject eod in importfile.EditorDeletedObjects)
+                    {
+                        sb.AppendLine("-" + eod.Type + "|" + eod.Position[0].ToString("R") + " " + eod.Position[1].ToString("R") + " " + eod.Position[2].ToString("R") + "|0.000000 0.000000 0.000000");
+                    }
+                    foreach (Editorobject eo in importfile.EditorObjects)
+                    {
+                        sb.AppendLine(eo.Type + "|" + eo.Position[0].ToString("R") + " " + eo.Position[1].ToString("R") + " " + eo.Position[2].ToString("R") + "|" + eo.Orientation[0].ToString("R") + " " + eo.Orientation[1].ToString("R") + " " + eo.Orientation[2].ToString("R"));
+                    }
+                    File.WriteAllText(DestFile, sb.ToString());
+                    MessageBox.Show("File written to " + DestFile);
+                }
+
             }
         }
         #endregion GeneralsettingFunctions
@@ -1122,6 +1144,39 @@ namespace DayZeEditor
                 File.WriteAllText(PartySettings.Filename, jsonString);
                 midifiedfiles.Add(Path.GetFileName(PartySettings.Filename));
             }
+
+            if (PersonalStorageSettings.isDirty)
+            {
+                PersonalStorageSettings.isDirty = false;
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                string jsonString = JsonSerializer.Serialize(PersonalStorageSettings, options);
+                if (File.Exists(PersonalStorageSettings.Filename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(PersonalStorageSettings.Filename) + "\\Backup\\" + SaveTime);
+                    File.Copy(PersonalStorageSettings.Filename, Path.GetDirectoryName(PersonalStorageSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(PersonalStorageSettings.Filename) + ".bak", true);
+                }
+                File.WriteAllText(PersonalStorageSettings.Filename, jsonString);
+                midifiedfiles.Add(Path.GetFileName(PersonalStorageSettings.Filename));
+            }
+            foreach (PersonalStorage ps in PersonalStorageList.personalstorageList)
+            {
+                if (ps.isDirty)
+                {
+                    ps.isDirty = false;
+                    var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                    string jsonString = JsonSerializer.Serialize(ps, options);
+                    if (currentproject.Createbackups && File.Exists(ps.Filename))
+                    {
+                        Directory.CreateDirectory(Path.GetDirectoryName(ps.Filename) + "\\Backup\\" + SaveTime);
+                        File.Copy(ps.Filename, Path.GetDirectoryName(ps.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(ps.Filename) + ".bak", true);
+                    }
+                    File.WriteAllText(ps.Filename, jsonString);
+                    midifiedfiles.Add(Path.GetFileName(ps.Filename));
+                }
+            }
+
+
+
             if (PlayerListSettings.isDirty)
             {
                 PlayerListSettings.isDirty = false;
@@ -1215,6 +1270,7 @@ namespace DayZeEditor
                 File.WriteAllText(VehicleSettings.Filename, jsonString);
                 midifiedfiles.Add(Path.GetFileName(VehicleSettings.Filename));
             }
+            bool RemovedOnly = true;
             string message = "The Following Files were saved....\n";
             if(updated)
             {
@@ -1223,6 +1279,7 @@ namespace DayZeEditor
             int i = 0;
             foreach (string l in midifiedfiles)
             {
+                RemovedOnly = false;
                 if (i == 5)
                 {
                     message += l + "\n";
@@ -1235,10 +1292,174 @@ namespace DayZeEditor
                 }
 
             }
+            if(RemovedOnly)
+            {
+                message = "";
+            }
+            else
+            {
+                message += "\n";
+            }
+            if (PersonalStorageList.Markedfordelete != null)
+            {
+                message += "The following Personal Storage configs were Removed\n";
+                i = 0;
+                foreach (PersonalStorage del in PersonalStorageList.Markedfordelete)
+                {
+                    del.backupandDelete(PersonalStoragePath);
+                    midifiedfiles.Add(del.Filename);
+                    if (i == 5)
+                    {
+                        message += del.Filename + "\n";
+                        i = 0;
+                    }
+                    else
+                    {
+                        message += del.Filename + ", ";
+                        i++;
+                    }
+                    PersonalStorageList.UsedIDS.Remove(del.StorageID);
+                }
+                PersonalStorageList.Markedfordelete = null;
+            }
             if (midifiedfiles.Count > 0)
                 MessageBox.Show(message, "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             else
                 MessageBox.Show("No changes were made.", "Nothing Saved", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+        }
+        private void ExpansionSettings_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            bool needtosave = false;
+            if (AirdropsettingsJson.isDirty)
+            {
+                needtosave = true;
+            }
+            if (BaseBuildingSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (BookSettings.isDirty)
+            {
+                needtosave = true; ;
+            }
+            if (ChatSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (DamageSystemSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (DebugSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (GeneralSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (HardLineSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (LogSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (MapSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (MissionSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            foreach (object msf in MissionSettings.MissionSettingFiles)
+            {
+                if (msf is AirdropMissionSettingFiles)
+                {
+                    AirdropMissionSettingFiles amsf = msf as AirdropMissionSettingFiles;
+                    if (amsf.isDirty)
+                    {
+                        needtosave = true;
+                    }
+                }
+                else if (msf is ContaminatedAreaMissionSettingFiles)
+                {
+                    ContaminatedAreaMissionSettingFiles camsf = msf as ContaminatedAreaMissionSettingFiles;
+                    if (camsf.isDirty)
+                    {
+                        needtosave = true;
+                    }
+                }
+            }
+            if (MonitoringSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (NameTagSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (NotificationSchedulerSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (NotificationSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (PersonalStorageSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            foreach (PersonalStorage ps in PersonalStorageList.personalstorageList)
+            {
+                if (ps.isDirty)
+                {
+                    needtosave = true;
+                }
+            }
+            if (PartySettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (PlayerListSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (RaidSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (SafeZoneSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (SocialMediaSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (SpawnSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (TerritorySettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (VehicleSettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (needtosave)
+            {
+                DialogResult dialogResult = MessageBox.Show("You have Unsaved Changes, do you wish to save", "Unsaved Changes found", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    savefiles();
+                }
+            }
         }
         #endregion savefiles
 
@@ -1305,7 +1526,7 @@ namespace DayZeEditor
         }
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            switch (tabControl2.SelectedIndex)
+            switch (ExpansionSettingsTabPage.SelectedIndex)
             {
                 case 0:
                 case 1:
@@ -2337,13 +2558,11 @@ namespace DayZeEditor
                 }
             }
         }
-
         private void darkButton76_Click(object sender, EventArgs e)
         {
             BaseBuildingSettings.VirtualStorageExcludedContainers.Remove(VirtualStorageExcludedContainersLB.GetItemText(VirtualStorageExcludedContainersLB.SelectedItem));
             BaseBuildingSettings.isDirty = true;
         }
-
         private void EnableVirtualStorageCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -2760,7 +2979,6 @@ namespace DayZeEditor
             listBox19.DataSource = BookSettings.CraftingCategories;
             BookSettings.isDirty = true;
         }
-
         #endregion Booksettings
 
         #region ChatSettings
@@ -3206,7 +3424,6 @@ namespace DayZeEditor
             HardLineSettings.EnableFactionPersistence = EnableFactionPersistenceCB.Checked == true ? 1 : 0;
             HardLineSettings.isDirty = true;
         }
-
         private void UseFactionReputationCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
@@ -4645,7 +4862,6 @@ namespace DayZeEditor
         #endregion Missionsettings
 
         #region monitoringSettings
-
         public void LoadMonitoringSettingss()
         {
             useraction = false;
@@ -4840,7 +5056,11 @@ namespace DayZeEditor
                 NotificationSchedulerSettings.isDirty = true;
             }
         }
-
+        private void darkButton81_Click(object sender, EventArgs e)
+        {
+            DateTime localtime = dateTimePicker1.Value;
+            darkLabel252.Text = "UTC Time : " + TimeZoneInfo.ConvertTimeToUtc(localtime, TimeZoneInfo.Local).ToString();
+        }
         private void pictureBox5_Paint(object sender, PaintEventArgs e)
         {
             if (currentNotification == null) { return; }
@@ -4883,7 +5103,6 @@ namespace DayZeEditor
             NotificationSchedulerSettings.Notifications.Add(newnotification);
             NotificationSchedulerSettings.isDirty = true;
         }
-
         private void darkButton60_Click(object sender, EventArgs e)
         {
             NotificationSchedulerSettings.Notifications.Remove(SchedulerNotificaionLB.SelectedItem as Notification);
@@ -5226,7 +5445,6 @@ namespace DayZeEditor
             RaidSettings.Schedule.Add(newschedule);
             RaidSettings.isDirty = true;
         }
-
         private void darkButton82_Click(object sender, EventArgs e)
         {
             Schedule removeschedule = ScheduleLB.SelectedItem as Schedule;
@@ -5589,7 +5807,6 @@ namespace DayZeEditor
                 }
             }
         }
-
         private void darkButton53_Click(object sender, EventArgs e)
         {
             SafeZoneSettings.ForceSZCleanup_ExcludedItems.Remove(ForceSZCleanup_ExcludedItemsLB.GetItemText(ForceSZCleanup_ExcludedItemsLB.SelectedItem));
@@ -6930,7 +7147,6 @@ namespace DayZeEditor
             SpawnSettings.isDirty = true;
             pictureBox4.Invalidate();
         }
-
         private void SpawnYNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
@@ -6938,7 +7154,6 @@ namespace DayZeEditor
             SpawnSettings.isDirty = true;
             pictureBox4.Invalidate();
         }
-
         private void SpawnZNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
@@ -7293,139 +7508,6 @@ namespace DayZeEditor
         }
         #endregion VehicleSettings
 
-        private void darkLabel235_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ExpansionSettings_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            bool needtosave = false;
-            if (AirdropsettingsJson.isDirty)
-            {
-                needtosave = true;
-            }
-            if (BaseBuildingSettings.isDirty)
-            {
-                needtosave = true;
-            }
-            if (BookSettings.isDirty)
-            {
-                needtosave = true; ;
-            }
-            if (ChatSettings.isDirty)
-            {
-                needtosave = true;
-            }
-            if (DamageSystemSettings.isDirty)
-            {
-                needtosave = true;
-            }
-            if (DebugSettings.isDirty)
-            {
-                needtosave = true;
-            }
-            if (GeneralSettings.isDirty)
-            {
-                needtosave = true;
-            }
-            if (HardLineSettings.isDirty)
-            {
-                needtosave = true;
-            }
-            if (LogSettings.isDirty)
-            {
-                needtosave = true;
-            }
-            if (MapSettings.isDirty)
-            {
-                needtosave = true;
-            }
-            if (MissionSettings.isDirty)
-            {
-                needtosave = true;
-            }
-            foreach (object msf in MissionSettings.MissionSettingFiles)
-            {
-                if (msf is AirdropMissionSettingFiles)
-                {
-                    AirdropMissionSettingFiles amsf = msf as AirdropMissionSettingFiles;
-                    if (amsf.isDirty)
-                    {
-                        needtosave = true;
-                    }
-                }
-                else if (msf is ContaminatedAreaMissionSettingFiles)
-                {
-                    ContaminatedAreaMissionSettingFiles camsf = msf as ContaminatedAreaMissionSettingFiles;
-                    if (camsf.isDirty)
-                    {
-                        needtosave = true;
-                    }
-                }
-            }
-            if (MonitoringSettings.isDirty)
-            {
-                needtosave = true;
-            }
-            if (NameTagSettings.isDirty)
-            {
-                needtosave = true;
-            }
-            if (NotificationSchedulerSettings.isDirty)
-            {
-                needtosave = true;
-            }
-            if (NotificationSettings.isDirty)
-            {
-                needtosave = true;
-            }
-
-            if (PartySettings.isDirty)
-            {
-                needtosave = true;
-            }
-            if (PlayerListSettings.isDirty)
-            {
-                needtosave = true;
-            }
-            if (RaidSettings.isDirty)
-            {
-                needtosave = true;
-            }
-            if (SafeZoneSettings.isDirty)
-            {
-                needtosave = true;
-            }
-            if (SocialMediaSettings.isDirty)
-            {
-                needtosave = true;
-            }
-            if (SpawnSettings.isDirty)
-            {
-                needtosave = true;
-            }
-            if (TerritorySettings.isDirty)
-            {
-                needtosave = true;
-            }
-            if (VehicleSettings.isDirty)
-            {
-                needtosave = true;
-            }
-            if (needtosave)
-            {
-                DialogResult dialogResult = MessageBox.Show("You have Unsaved Changes, do you wish to save", "Unsaved Changes found", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    savefiles();
-                }
-            }
-        }
-
-
-
-
         #region Garegesettings
         private void loadgaragesettings()
         {
@@ -7631,47 +7713,148 @@ namespace DayZeEditor
         }
         #endregion Garagesettings
 
-        private void importDZEToMapFileToolStripMenuItem_Click(object sender, EventArgs e)
+        #region pertsonalstorage
+        private void loadPersonalStorageSettings()
         {
-            
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            SetupFactionsDropDownBoxes();
+            listBox31.DisplayMember = "DisplayName";
+            listBox31.ValueMember = "Value";
+            listBox31.DataSource = PersonalStorageList.personalstorageList;
+        }
+        private void SetupFactionsDropDownBoxes()
+        {
+            useraction = false;
+
+            List<string> questrequiredfaction = new List<string>();
+            questrequiredfaction.Add("");
+            foreach (string rf in Factions)
             {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string filePath = openFileDialog.FileName;
-                    string DestFile = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\objects\\" + Path.GetFileNameWithoutExtension(filePath) + ".map";
-                    StringBuilder sb = new StringBuilder();
-                    DZE importfile = DZEHelpers.LoadFile(filePath);
-                    foreach (Editordeletedobject eod in importfile.EditorDeletedObjects)
-                    {
-                        sb.AppendLine("-" + eod.Type + "|" + eod.Position[0].ToString("R") + " " + eod.Position[1].ToString("R") + " " + eod.Position[2].ToString("R") + "|0.000000 0.000000 0.000000");
-                    }
-                    foreach (Editorobject eo in importfile.EditorObjects)
-                    {
-                        sb.AppendLine(eo.Type + "|" + eo.Position[0].ToString("R") + " " + eo.Position[1].ToString("R") + " " + eo.Position[2].ToString("R") + "|" + eo.Orientation[0].ToString("R") + " " + eo.Orientation[1].ToString("R") + " " + eo.Orientation[2].ToString("R"));
-                    }
-                    File.WriteAllText(DestFile, sb.ToString());
-                    MessageBox.Show("File written to " + DestFile);
-                }
-
+                questrequiredfaction.Add(rf);
             }
-        }
+            FactionCB.DataSource = new BindingList<string>(questrequiredfaction);
 
-        private void darkButton81_Click(object sender, EventArgs e)
+            useraction = true;
+        }
+        private void listBox31_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DateTime localtime = dateTimePicker1.Value;
-            darkLabel252.Text = "UTC Time : " + TimeZoneInfo.ConvertTimeToUtc(localtime, TimeZoneInfo.Local).ToString();
+            if (listBox31.SelectedItems.Count < 1) return;
+            CurrentPersonalStorage = listBox31.SelectedItem as PersonalStorage;
+            useraction = false;
+            ConfigVersionlabel.Text = CurrentPersonalStorage.ConfigVersion.ToString();
+            StorageIDNUD.Value = CurrentPersonalStorage.StorageID;
+            PSClassNameTB.Text = CurrentPersonalStorage.ClassName;
+            PSDisplayNameTB.Text = CurrentPersonalStorage.DisplayName;
+            PSDiplayIconTB.Text = CurrentPersonalStorage.DisplayIcon;
+            PSpositionXNUD.Value = CurrentPersonalStorage.Position[0];
+            PSpositionYNUD.Value = CurrentPersonalStorage.Position[1];
+            PSpositionZNUD.Value = CurrentPersonalStorage.Position[2];
+            PSorientaionXNUD.Value = CurrentPersonalStorage.Orientation[0];
+            PSorientaionYNUD.Value = CurrentPersonalStorage.Orientation[1];
+            PSorientaionZNUD.Value = CurrentPersonalStorage.Orientation[2];
+            QuestIDNUD.Value = CurrentPersonalStorage.QuestID;
+            ReputationNUD.Value = CurrentPersonalStorage.Reputation;
+            FactionCB.SelectedIndex = FactionCB.FindStringExact(CurrentPersonalStorage.Faction);
+            IsGlobalStorageCB.Checked = CurrentPersonalStorage.IsGlobalStorage == 1 ? true : false;
+            useraction = true;
         }
-
-        private void listBox4_SelectedIndexChanged(object sender, EventArgs e)
+        private void darkButton98_Click(object sender, EventArgs e)
         {
-
+            int Newid = PersonalStorageList.GetNextID();
+            PersonalStorageList.AddNewStorage(Newid);
         }
-
-        private void listBox29_SelectedIndexChanged(object sender, EventArgs e)
+        private void darkButton99_Click(object sender, EventArgs e)
         {
+            if (CurrentPersonalStorage == null) return;
+            if (MessageBox.Show("This Will Remove The All reference to this Personal storage, Are you sure you want to do this?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                PersonalStorageList.RemovePS(CurrentPersonalStorage);
+                if (listBox31.Items.Count == 0)
+                    listBox31.SelectedIndex = -1;
+                else
+                    listBox31.SelectedIndex = 0;
+            }
 
         }
+        private void PSClassNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPersonalStorage.ClassName = PSClassNameTB.Text;
+            listBox31.Invalidate();
+            CurrentPersonalStorage.isDirty = true;
+        }
+        private void PSDisplayNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPersonalStorage.DisplayName = PSDisplayNameTB.Text;
+            CurrentPersonalStorage.isDirty = true;
+        }
+        private void PSDiplayIconTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPersonalStorage.DisplayIcon = PSDiplayIconTB.Text;
+            CurrentPersonalStorage.isDirty = true;
+        }
+        private void PSpositionXNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPersonalStorage.Position[0] = PSpositionXNUD.Value;
+            CurrentPersonalStorage.isDirty = true;
+        }
+        private void PSpositionYNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPersonalStorage.Position[1] = PSpositionYNUD.Value;
+            CurrentPersonalStorage.isDirty = true;
+        }
+        private void PSpositionZNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPersonalStorage.Position[2] = PSpositionZNUD.Value;
+            CurrentPersonalStorage.isDirty = true;
+        }
+        private void PSorientaionXNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPersonalStorage.Orientation[0] = PSorientaionXNUD.Value;
+            CurrentPersonalStorage.isDirty = true;
+        }
+        private void PSorientaionYNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPersonalStorage.Orientation[1] = PSorientaionYNUD.Value;
+            CurrentPersonalStorage.isDirty = true;
+        }
+        private void PSorientaionZNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPersonalStorage.Orientation[2] = PSorientaionZNUD.Value;
+            CurrentPersonalStorage.isDirty = true;
+        }
+        private void QuestIDNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPersonalStorage.QuestID = (int)QuestIDNUD.Value;
+            CurrentPersonalStorage.isDirty = true;
+        }
+        private void ReputationNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPersonalStorage.Reputation = (int)ReputationNUD.Value;
+            CurrentPersonalStorage.isDirty = true;
+        }
+        private void FactionCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPersonalStorage.Faction = FactionCB.GetItemText(FactionCB.SelectedItem);
+            CurrentPersonalStorage.isDirty = true;
+        }
+        private void IsGlobalStorageCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPersonalStorage.IsGlobalStorage = IsGlobalStorageCB.Checked == true ? 1 : 0;
+            CurrentPersonalStorage.isDirty = true;
+        }
+        #endregion personalstroage
 
 
     }
