@@ -30,7 +30,7 @@ namespace DayZeLib
     };
     public class GeneralSettings
     {
-        static int CurrentVersion = 10;
+        static int CurrentVersion = 12;
 
         public int m_Version { get; set; }
         public int DisableShootToUnlock { get; set; }
@@ -112,6 +112,12 @@ namespace DayZeLib
                     return HUDColors.NotifiersHalfColor;
                 case "NotifiersLowColorPB":
                     return HUDColors.NotifiersLowColor;
+                case "ReputationBaseColorPB":
+                    return HUDColors.ReputationBaseColor;
+                case "ReputationMedColorPB":
+                    return HUDColors.ReputationMedColor;
+                case "ReputationHighColorPB":
+                    return HUDColors.ReputationHighColor;
             }
             return "";
         }
@@ -150,6 +156,15 @@ namespace DayZeLib
                 case "NotifiersLowColorPB":
                     HUDColors.NotifiersLowColor = Colour;
                     break;
+                case "ReputationBaseColorPB":
+                    HUDColors.ReputationBaseColor = Colour;
+                    break;
+                case "ReputationMedColorPB":
+                    HUDColors.ReputationMedColor = Colour;
+                    break;
+                case "ReputationHighColorPB":
+                    HUDColors.ReputationHighColor = Colour;
+                    break;
             }
         }
     }
@@ -184,6 +199,9 @@ namespace DayZeLib
         public string NotifiersIdealColor { get; set; }
         public string NotifiersHalfColor { get; set; }
         public string NotifiersLowColor { get; set; }
+        public string ReputationBaseColor { get; set; }
+        public string ReputationMedColor { get; set; }
+        public string ReputationHighColor { get; set; }
 
         public Hudcolors()
         {
@@ -197,6 +215,9 @@ namespace DayZeLib
             NotifiersIdealColor = "DCDCDCFF";
             NotifiersHalfColor = "DCDC00FF";
             NotifiersLowColor = "DC0000FF";
+            ReputationBaseColor = "DCDCDCFF";
+            ReputationMedColor = "DCDC00FF";
+            ReputationHighColor = "DC0000FF";
         }
     }
 }

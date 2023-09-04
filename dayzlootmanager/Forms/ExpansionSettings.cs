@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
@@ -65,6 +66,7 @@ namespace DayZeEditor
         public string NotificationssettingsPath;
         public string PartySettingsPath;
         public string PersonalStoragePath;
+        public string PersonalStorageSettingsPathNew;
         public string PersonalStorageSettingsPath;
         public string PlayerListsettingsPath;
         public string RaidSettingsPath;
@@ -94,6 +96,7 @@ namespace DayZeEditor
         public NotificationSettings NotificationSettings;
         public PartySettings PartySettings;
         public PersonalStorageList PersonalStorageList;
+        public PersonalStorageSettingsNew PersonalStorageSettingsNew;
         public PersonalStorageSettings PersonalStorageSettings;
         public PlayerListSettings PlayerListSettings;
         public RaidSettings RaidSettings;
@@ -139,6 +142,9 @@ namespace DayZeEditor
             NotificationschedularTabButton.AutoSize = true;
             HardlineTabButton.AutoSize = true;
         }
+
+
+
         private void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
         {
             VariousTabButton.Checked = false;
@@ -173,7 +179,11 @@ namespace DayZeEditor
         {
             ExpansionSettingsTabPage.SelectedIndex = 2;
             if (ExpansionSettingsTabPage.SelectedIndex == 2)
+            {
                 BaseBuildingTabButton.Checked = true;
+                toolStripButton8.AutoSize = true;
+                toolStripButton7.AutoSize = true;
+            }
         }
         private void BookTabButton_Click(object sender, EventArgs e)
         {
@@ -221,7 +231,12 @@ namespace DayZeEditor
         {
             ExpansionSettingsTabPage.SelectedIndex = 10;
             if (ExpansionSettingsTabPage.SelectedIndex == 10)
+            {
                 PersonalStorageTabButton.Checked = true;
+                toolStripButton3.AutoSize = true;
+                toolStripButton1.AutoSize = true;
+                toolStripButton4.AutoSize = true;
+            }
         }
         private void RaidTabButton_Click(object sender, EventArgs e)
         {
@@ -239,7 +254,13 @@ namespace DayZeEditor
         {
             ExpansionSettingsTabPage.SelectedIndex = 13;
             if (ExpansionSettingsTabPage.SelectedIndex == 13)
+            {
                 SpawnTabButton.Checked = true;
+                toolStripButton15.AutoSize = true;
+                toolStripButton16.AutoSize = true;
+                toolStripButton17.AutoSize = true;
+                toolStripButton19.AutoSize = true;
+            }
         }
         private void VehicleTabButton_Click(object sender, EventArgs e)
         {
@@ -483,7 +504,7 @@ namespace DayZeEditor
                     needtosave = true;
             }
             MissionSettings.Filename = MissionSettingsPath;
-            Console.WriteLine("Loading Expansion Mission files....");
+            Console.WriteLine("Loading Mission files....");
             MissionSettings.LoadIndividualMissions(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath);
             loadMissionSettings();
 
@@ -581,7 +602,24 @@ namespace DayZeEditor
 
 
 
-            PersonalStorageSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\PersonalStorageNewSettings.json";
+            PersonalStorageSettingsPathNew = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\PersonalStorageNewSettings.json";
+            if (!File.Exists(PersonalStorageSettingsPathNew))
+            {
+                PersonalStorageSettingsNew = new PersonalStorageSettingsNew();
+                needtosave = true;
+                Console.WriteLine(Path.GetFileName(PersonalStorageSettingsPathNew) + " File not found, Creating new....");
+            }
+            else
+            {
+                Console.WriteLine("serializing " + Path.GetFileName(PersonalStorageSettingsPathNew));
+                PersonalStorageSettingsNew = JsonSerializer.Deserialize<PersonalStorageSettingsNew>(File.ReadAllText(PersonalStorageSettingsPathNew));
+                PersonalStorageSettingsNew.isDirty = false;
+                if (PersonalStorageSettingsNew.checkver())
+                    needtosave = true;
+            }
+            PersonalStorageSettingsNew.Filename = PersonalStorageSettingsPathNew;
+
+            PersonalStorageSettingsPath = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings\\PersonalStorageSettings.json";
             if (!File.Exists(PersonalStorageSettingsPath))
             {
                 PersonalStorageSettings = new PersonalStorageSettings();
@@ -590,15 +628,17 @@ namespace DayZeEditor
             }
             else
             {
-                Console.WriteLine("serializing " + Path.GetFileName(PartySettingsPath));
-                PersonalStorageSettings = JsonSerializer.Deserialize<PersonalStorageSettings>(File.ReadAllText(PersonalStorageSettingsPath));
+                Console.WriteLine("serializing " + Path.GetFileName(PersonalStorageSettingsPath));
+                var options = new JsonSerializerOptions
+                {
+                    Converters = { new BoolConverter() },
+                };
+                PersonalStorageSettings = JsonSerializer.Deserialize<PersonalStorageSettings>(File.ReadAllText(PersonalStorageSettingsPath), options);
                 PersonalStorageSettings.isDirty = false;
                 if (PersonalStorageSettings.checkver())
                     needtosave = true;
             }
             PersonalStorageSettings.Filename = PersonalStorageSettingsPath;
-           
-
 
 
             Console.WriteLine("Loading Personal Storage files....");
@@ -1148,7 +1188,12 @@ namespace DayZeEditor
             if (PersonalStorageSettings.isDirty)
             {
                 PersonalStorageSettings.isDirty = false;
-                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                var options = new JsonSerializerOptions
+                {
+                    Converters = { new BoolConverter() },
+                    WriteIndented = true,
+                    Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+                };
                 string jsonString = JsonSerializer.Serialize(PersonalStorageSettings, options);
                 if (File.Exists(PersonalStorageSettings.Filename))
                 {
@@ -1158,12 +1203,31 @@ namespace DayZeEditor
                 File.WriteAllText(PersonalStorageSettings.Filename, jsonString);
                 midifiedfiles.Add(Path.GetFileName(PersonalStorageSettings.Filename));
             }
+
+            if (PersonalStorageSettingsNew.isDirty)
+            {
+                PersonalStorageSettingsNew.isDirty = false;
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                string jsonString = JsonSerializer.Serialize(PersonalStorageSettingsNew, options);
+                if (File.Exists(PersonalStorageSettingsNew.Filename))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(PersonalStorageSettingsNew.Filename) + "\\Backup\\" + SaveTime);
+                    File.Copy(PersonalStorageSettingsNew.Filename, Path.GetDirectoryName(PersonalStorageSettingsNew.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(PersonalStorageSettingsNew.Filename) + ".bak", true);
+                }
+                File.WriteAllText(PersonalStorageSettingsNew.Filename, jsonString);
+                midifiedfiles.Add(Path.GetFileName(PersonalStorageSettingsNew.Filename));
+            }
             foreach (PersonalStorage ps in PersonalStorageList.personalstorageList)
             {
                 if (ps.isDirty)
                 {
                     ps.isDirty = false;
-                    var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                    var options = new JsonSerializerOptions 
+                    {
+                        Converters = { new BoolConverter() },
+                        WriteIndented = true, 
+                        Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping 
+                    };
                     string jsonString = JsonSerializer.Serialize(ps, options);
                     if (currentproject.Createbackups && File.Exists(ps.Filename))
                     {
@@ -1409,7 +1473,7 @@ namespace DayZeEditor
             {
                 needtosave = true;
             }
-            if (PersonalStorageSettings.isDirty)
+            if (PersonalStorageSettingsNew.isDirty)
             {
                 needtosave = true;
             }
@@ -2870,7 +2934,6 @@ namespace DayZeEditor
             cpick.Color = Color.FromArgb(-1);
             if (cpick.ShowDialog() == DialogResult.OK)
             {
-
                 currentLink.IconColor = cpick.Color.ToArgb();
                 LinkIconColour.Invalidate();
                 MapSettings.isDirty = true;
@@ -3003,8 +3066,17 @@ namespace DayZeEditor
             cpick.Color = ColorTranslator.FromHtml(col1);
             if (cpick.ShowDialog() == DialogResult.OK)
             {
-
-                ChatSettings.setcolour(pb.Name, cpick.Color.Name.ToUpper());
+                string finalcolour = "";
+                if (cpick.Color.IsNamedColor)
+                {
+                    int ColorValue = Color.FromName(cpick.Color.Name).ToArgb();
+                    finalcolour = string.Format("{0:x6}", ColorValue).ToUpper();
+                }
+                else
+                {
+                    finalcolour = cpick.Color.Name.ToUpper();
+                }
+                ChatSettings.setcolour(pb.Name, finalcolour);
                 pb.Invalidate();
                 ChatSettings.isDirty = true;
             }
@@ -3166,8 +3238,17 @@ namespace DayZeEditor
             cpick.Color = ColorTranslator.FromHtml(col1);
             if (cpick.ShowDialog() == DialogResult.OK)
             {
-
-                GeneralSettings.setcolour(pb.Name, cpick.Color.Name.ToUpper());
+                string finalcolour = "";
+                if (cpick.Color.IsNamedColor)
+                {
+                    int ColorValue = Color.FromName(cpick.Color.Name).ToArgb();
+                    finalcolour = string.Format("{0:x6}", ColorValue).ToUpper();
+                }
+                else
+                {
+                    finalcolour = cpick.Color.Name.ToUpper();
+                }
+                GeneralSettings.setcolour(pb.Name, finalcolour);
                 pb.Invalidate();
                 GeneralSettings.isDirty = true;
             }
@@ -5188,6 +5269,7 @@ namespace DayZeEditor
             ShowHUDMemberStanceCB.Checked = PartySettings.ShowHUDMemberStance == 1 ? true : false;
             ShowPartyMemberMapMarkersCB.Checked = PartySettings.ShowPartyMemberMapMarkers == 1 ? true : false;
             ShowHUDMemberDistanceCB.Checked = PartySettings.ShowHUDMemberDistance == 1 ? true : false;
+            ForcePartyToHaveTagsCB.Checked = PartySettings.ForcePartyToHaveTags == 1 ? true : false;
             useraction = true;
         }
         private void PartySettingsCB_CheckedChanged(object sender, EventArgs e)
@@ -7716,15 +7798,129 @@ namespace DayZeEditor
         #region pertsonalstorage
         private void loadPersonalStorageSettings()
         {
+            useraction = false;
             SetupFactionsDropDownBoxes();
+            SetupPSTreeview1();
+            LoadData();
+            //setupPStreeview2();
+            tabControl2.ItemSize = new Size(0, 1);
+            checkBox9.Checked = PersonalStorageSettings.Enabled == 1 ? true : false;
+            checkBox10.Checked = PersonalStorageSettings.UsePersonalStorageCase == 1 ? true : false;
+            numericUpDown39.Value = PersonalStorageSettings.MaxItemsPerStorage;
+
+            listBox32.DataSource = PersonalStorageSettings.ExcludedClassNames;
+
             listBox31.DisplayMember = "DisplayName";
             listBox31.ValueMember = "Value";
             listBox31.DataSource = PersonalStorageList.personalstorageList;
+
+            useraction = true;
         }
+        private void LoadData()
+        {
+            TreeNode rootNode = new TreeNode("PersonalStorageSettingsNew");
+            rootNode.Tag = "PersonalStorageSettingsNewParent";
+            PopulateNode(rootNode, PersonalStorageSettingsNew);
+            treeViewMS3.Nodes.Add(rootNode);
+        }
+        private void PopulateNode(TreeNode parentNode, object obj)
+        {
+            if (obj == null)
+                return;
+
+            Type type = obj.GetType();
+            PropertyInfo[] properties = type.GetProperties().Where(prop => !Attribute.IsDefined(prop, typeof(JsonIgnoreAttribute))).ToArray();
+
+            foreach (PropertyInfo property in properties)
+            {
+                object value = property.GetValue(obj, null);
+
+                if (value == null)
+                    continue;
+
+                TreeNode childNode = new TreeNode(property.Name);
+                parentNode.Nodes.Add(childNode);
+                if (value.GetType().IsClass && !(value is IEnumerable<string> stringList) && value.GetType() != typeof(string))
+                {
+                    PopulateNode(childNode, value);
+                    childNode.Tag = value;
+                }
+  
+                else
+                {
+                    childNode.Tag = property.Name;
+                }
+            }
+        }
+
+        private void SetupPSTreeview1()
+        {
+            treeViewMS1.Nodes.Clear();
+            TreeNode root = new TreeNode(Path.GetFileNameWithoutExtension(PersonalStorageSettings.Filename))
+            {
+                Tag = "Parent"
+            };
+            TreeNode MenuCategories = new TreeNode("MenuCategories")
+            {
+                Tag = "MenuCategoriesParent"
+            };
+            foreach (Menucategory mc in PersonalStorageSettings.MenuCategories)
+            {
+                TreeNode mctreenode = new TreeNode(mc.DisplayName)
+                {
+                    Tag = mc
+                };
+                mctreenode.Nodes.AddRange(new TreeNode[]
+                {
+                        new TreeNode("IconPath")
+                        {
+                            Tag = "MCIconPath"
+                        },
+                        new TreeNode("Included")
+                        {
+                            Tag = "MCIncluded"
+                        },
+                        new TreeNode("Excluded")
+                        {
+                            Tag = "MCExcluded"
+                        }
+                });
+                TreeNode mcsctreenode = new TreeNode("SubCategories")
+                {
+                    Tag = "SubCategoriesParent"
+                };
+                foreach (Subcategory tctn in mc.SubCategories)
+                {
+                    TreeNode sctreenode = new TreeNode(tctn.DisplayName)
+                    {
+                        Tag = tctn
+                    };
+                    sctreenode.Nodes.AddRange(new TreeNode[]
+                    {
+                        new TreeNode("IconPath")
+                        {
+                            Tag = "SCIconPath"
+                        },
+                        new TreeNode("Included")
+                        {
+                            Tag = "SCIncluded"
+                        },
+                        new TreeNode("Excluded")
+                        {
+                            Tag = "SCExcluded"
+                        }
+                    });
+                    mcsctreenode.Nodes.Add(sctreenode);
+                }
+                mctreenode.Nodes.Add(mcsctreenode);
+                MenuCategories.Nodes.Add(mctreenode);
+            }
+            root.Nodes.Add(MenuCategories);
+            treeViewMS1.Nodes.Add(root);
+        }
+        
         private void SetupFactionsDropDownBoxes()
         {
-            useraction = false;
-
             List<string> questrequiredfaction = new List<string>();
             questrequiredfaction.Add("");
             foreach (string rf in Factions)
@@ -7732,8 +7928,352 @@ namespace DayZeEditor
                 questrequiredfaction.Add(rf);
             }
             FactionCB.DataSource = new BindingList<string>(questrequiredfaction);
-
+        }
+        public Menucategory CurrentMenucategory;
+        public Subcategory CurrentSubCategory;
+        public StorageLevel currentstoragelevel;
+        private void treeViewMS1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            useraction = false;
+            treeViewMS1.SelectedNode = e.Node;
+            if (e.Node.Tag is string)
+            {
+                switch (e.Node.Tag.ToString())
+                {
+                    case "Parent":
+                        groupBox89.Visible = false;
+                        groupBox90.Visible = false;
+                        CurrentMenucategory = null;
+                        CurrentSubCategory = null;
+                        return;
+                    case "MenuCategoriesParent":
+                        groupBox89.Visible = false;
+                        groupBox90.Visible = false;
+                        CurrentMenucategory = null;
+                        CurrentSubCategory = null;
+                        if (e.Button == MouseButtons.Right)
+                        {
+                            addNewSubMenuCategoryToolStripMenuItem.Visible = false;
+                            addNewMenuCategoryToolStripMenuItem.Visible = true;
+                            removeMenuCategoryToolStripMenuItem.Visible = false;
+                            removeSubMenuCategoryToolStripMenuItem.Visible = false;
+                            contextMenuStrip1.Show(Cursor.Position);
+                        }
+                        return;
+                    case "SubCategoriesParent":
+                        groupBox89.Visible = false;
+                        groupBox90.Visible = false;
+                        CurrentMenucategory = e.Node.Parent.Tag as Menucategory;
+                        CurrentSubCategory = null;
+                        if (e.Button == MouseButtons.Right)
+                        {
+                            addNewSubMenuCategoryToolStripMenuItem.Visible = true;
+                            addNewMenuCategoryToolStripMenuItem.Visible = false;
+                            removeMenuCategoryToolStripMenuItem.Visible = false;
+                            removeSubMenuCategoryToolStripMenuItem.Visible = false;
+                            contextMenuStrip1.Show(Cursor.Position);
+                        }
+                        return;
+                    case "MCIncluded":
+                        groupBox89.Visible = false;
+                        groupBox90.Visible = true;
+                        CurrentMenucategory = e.Node.Parent.Tag as Menucategory;
+                        CurrentSubCategory = null;
+                        listBox33.DataSource = CurrentMenucategory.Included;
+                        break;
+                    case "MCExcluded":
+                        groupBox89.Visible = false;
+                        groupBox90.Visible = true;
+                        CurrentMenucategory = e.Node.Parent.Tag as Menucategory;
+                        CurrentSubCategory = null;
+                        listBox33.DataSource = CurrentMenucategory.Excluded;
+                        break;
+                    case "MCIconPath":
+                        groupBox89.Visible = true;
+                        groupBox90.Visible = false;
+                        CurrentMenucategory = e.Node.Parent.Tag as Menucategory;
+                        CurrentSubCategory = null;
+                        textBox26.Text = CurrentMenucategory.IconPath;
+                        break;
+                    case "SCIncluded":
+                        groupBox89.Visible = false;
+                        groupBox90.Visible = true;
+                        CurrentMenucategory = null;
+                        CurrentSubCategory = e.Node.Parent.Tag as Subcategory;
+                        listBox33.DataSource = CurrentSubCategory.Included;
+                        break;
+                    case "SCExcluded":
+                        groupBox89.Visible = false;
+                        groupBox90.Visible = true;
+                        CurrentMenucategory = null;
+                        CurrentSubCategory = e.Node.Parent.Tag as Subcategory;
+                        listBox33.DataSource = CurrentSubCategory.Excluded;
+                        break;
+                    case "SCIconPath":
+                        groupBox89.Visible = true;
+                        groupBox90.Visible = false;
+                        CurrentMenucategory = null;
+                        CurrentSubCategory = e.Node.Parent.Tag as Subcategory;
+                        textBox26.Text = CurrentSubCategory.IconPath;
+                        break;
+                }
+            }
+            else if (e.Node.Tag is Menucategory)
+            {
+                groupBox89.Visible = true;
+                groupBox90.Visible = false;
+                CurrentMenucategory = e.Node.Tag as Menucategory;
+                textBox26.Text = CurrentMenucategory.DisplayName;
+                if (e.Button == MouseButtons.Right)
+                {
+                    addNewSubMenuCategoryToolStripMenuItem.Visible = false;
+                    addNewMenuCategoryToolStripMenuItem.Visible = false;
+                    removeMenuCategoryToolStripMenuItem.Visible = true;
+                    removeSubMenuCategoryToolStripMenuItem.Visible = false;
+                    contextMenuStrip1.Show(Cursor.Position);
+                }
+            }
+            else if (e.Node.Tag is Subcategory)
+            {
+                groupBox89.Visible = true;
+                groupBox90.Visible = false;
+                CurrentSubCategory = e.Node.Tag as Subcategory;
+                CurrentMenucategory = e.Node.Parent.Parent.Tag as Menucategory;
+                textBox26.Text = CurrentSubCategory.DisplayName;
+                if (e.Button == MouseButtons.Right)
+                {
+                    addNewSubMenuCategoryToolStripMenuItem.Visible = false;
+                    addNewMenuCategoryToolStripMenuItem.Visible = false;
+                    removeMenuCategoryToolStripMenuItem.Visible = false;
+                    removeSubMenuCategoryToolStripMenuItem.Visible = true;
+                    contextMenuStrip1.Show(Cursor.Position);
+                }
+            }
             useraction = true;
+        }
+        private void textBox26_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if (treeViewMS1.SelectedNode.Parent.Tag is Menucategory)
+            {
+                CurrentMenucategory.IconPath = textBox26.Text;
+            }
+            else if (treeViewMS1.SelectedNode.Tag is Menucategory)
+            {
+                CurrentMenucategory.DisplayName = textBox26.Text;
+                treeViewMS1.SelectedNode.Text = CurrentMenucategory.DisplayName;
+
+            }
+            else if (treeViewMS1.SelectedNode.Parent.Tag is Subcategory)
+            {
+                CurrentSubCategory.IconPath = textBox26.Text;
+            }
+            else if (treeViewMS1.SelectedNode.Tag is Subcategory)
+            {
+                CurrentSubCategory.DisplayName = textBox26.Text;
+                treeViewMS1.SelectedNode.Text = CurrentSubCategory.DisplayName;
+            }
+            PersonalStorageSettings.isDirty = true;
+        }
+        private void darkButton104_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseMultipleofSameItem = false
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    switch (treeViewMS1.SelectedNode.Tag.ToString())
+                    {
+                        case "MCIncluded":
+                            if (!CurrentMenucategory.Included.Contains(l))
+                                CurrentMenucategory.Included.Add(l);
+                            break;
+                        case "MCExcluded":
+                            if (!CurrentMenucategory.Excluded.Contains(l))
+                                CurrentMenucategory.Excluded.Add(l);
+                            break;
+                        case "SCIncluded":
+                            if (!CurrentSubCategory.Included.Contains(l))
+                                CurrentSubCategory.Included.Add(l);
+                            break;
+                        case "SCExcluded":
+                            if (!CurrentSubCategory.Excluded.Contains(l))
+                                CurrentSubCategory.Excluded.Add(l);
+                            break;
+                    }
+                    PersonalStorageSettings.isDirty = true;
+                }
+            }
+        }
+        private void darkButton103_Click(object sender, EventArgs e)
+        {
+            AddItemfromString form = new AddItemfromString();
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    switch (treeViewMS1.SelectedNode.Tag.ToString())
+                    {
+                        case "MCIncluded":
+                            if (!CurrentMenucategory.Included.Contains(l))
+                                CurrentMenucategory.Included.Add(l);
+                            break;
+                        case "MCExcluded":
+                            if (!CurrentMenucategory.Excluded.Contains(l))
+                                CurrentMenucategory.Excluded.Add(l);
+                            break;
+                        case "SCIncluded":
+                            if (!CurrentSubCategory.Included.Contains(l))
+                                CurrentSubCategory.Included.Add(l);
+                            break;
+                        case "SCExcluded":
+                            if (!CurrentSubCategory.Excluded.Contains(l))
+                                CurrentSubCategory.Excluded.Add(l);
+                            break;
+                    }
+                    PersonalStorageSettings.isDirty = true;
+                }
+            }
+        }
+        private void darkButton105_Click(object sender, EventArgs e)
+        {
+            switch (treeViewMS1.SelectedNode.Tag.ToString())
+            {
+                case "MCIncluded":
+                    CurrentMenucategory.Included.Remove(listBox2.GetItemText(listBox2.SelectedItem));
+                    break;
+                case "MCExcluded":
+                    CurrentMenucategory.Excluded.Remove(listBox2.GetItemText(listBox2.SelectedItem));
+                    break;
+                case "SCIncluded":
+                    CurrentSubCategory.Included.Remove(listBox2.GetItemText(listBox2.SelectedItem));
+                    break;
+                case "SCExcluded":
+                    CurrentSubCategory.Excluded.Remove(listBox2.GetItemText(listBox2.SelectedItem));
+                    break;
+            }
+            PersonalStorageSettings.isDirty = true;
+        }
+        private void addNewMenuCategoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Menucategory bewmc = new Menucategory();
+            TreeNode mctreenode = new TreeNode(bewmc.DisplayName)
+            {
+                Tag = bewmc
+            };
+            mctreenode.Nodes.AddRange(new TreeNode[]
+                {
+                        new TreeNode("IconPath")
+                        {
+                            Tag = "MCIconPath"
+                        },
+                        new TreeNode("Included")
+                        {
+                            Tag = "MCIncluded"
+                        },
+                        new TreeNode("Excluded")
+                        {
+                            Tag = "MCExcluded"
+                        }
+                });
+            TreeNode mcsctreenode = new TreeNode("SubCategories")
+            {
+                Tag = "SubCategoriesParent"
+            };
+            mctreenode.Nodes.Add(mcsctreenode);
+            PersonalStorageSettings.MenuCategories.Add(bewmc);
+            treeViewMS1.SelectedNode.Nodes.Add(mctreenode);
+            PersonalStorageSettings.isDirty = true;
+        }
+        private void addNewSubMenuCategoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Subcategory bewmc = new Subcategory();
+            TreeNode mctreenode = new TreeNode(bewmc.DisplayName)
+            {
+                Tag = bewmc
+            };
+            mctreenode.Nodes.AddRange(new TreeNode[]
+                {
+                        new TreeNode("IconPath")
+                        {
+                            Tag = "SCIconPath"
+                        },
+                        new TreeNode("Included")
+                        {
+                            Tag = "SCIncluded"
+                        },
+                        new TreeNode("Excluded")
+                        {
+                            Tag = "SCExcluded"
+                        }
+                });
+            CurrentMenucategory.SubCategories.Add(bewmc);
+            treeViewMS1.SelectedNode.Nodes.Add(mctreenode);
+            PersonalStorageSettings.isDirty = true;
+
+        }
+        private void removeMenuCategoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PersonalStorageSettings.MenuCategories.Remove(CurrentMenucategory);
+            treeViewMS1.SelectedNode.Remove();
+            PersonalStorageSettings.isDirty = true;
+        }
+        private void removeSubMenuCategoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CurrentMenucategory.SubCategories.Remove(CurrentSubCategory);
+            treeViewMS1.SelectedNode.Remove();
+            PersonalStorageSettings.isDirty = true;
+        }
+        private void darkButton101_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseMultipleofSameItem = false
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    if (!PersonalStorageSettings.ExcludedClassNames.Contains(l))
+                        PersonalStorageSettings.ExcludedClassNames.Add(l);
+                }
+                PersonalStorageSettings.isDirty = true;
+            }
+        }
+        private void darkButton100_Click(object sender, EventArgs e)
+        {
+            AddItemfromString form = new AddItemfromString();
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    if (!PersonalStorageSettings.ExcludedClassNames.Contains(l))
+                        PersonalStorageSettings.ExcludedClassNames.Add(l);
+                }
+                PersonalStorageSettings.isDirty = true;
+            }
+        }
+        private void darkButton102_Click(object sender, EventArgs e)
+        {
+            PersonalStorageSettings.ExcludedClassNames.Remove(listBox1.GetItemText(listBox1.SelectedItem));
+            PersonalStorageSettings.isDirty = true;
         }
         private void listBox31_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -7854,9 +8394,160 @@ namespace DayZeEditor
             CurrentPersonalStorage.IsGlobalStorage = IsGlobalStorageCB.Checked == true ? 1 : 0;
             CurrentPersonalStorage.isDirty = true;
         }
+        private void checkBox9_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            PersonalStorageSettings.Enabled = checkBox9.Checked == true ? 1 : 0;
+            PersonalStorageSettings.isDirty = true;
+        }
+        private void checkBox10_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            PersonalStorageSettings.UsePersonalStorageCase = checkBox10.Checked == true ? 1 : 0;
+            PersonalStorageSettings.isDirty = true;
+        }
+        private void numericUpDown39_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            PersonalStorageSettings.MaxItemsPerStorage = (int)numericUpDown39.Value;
+            PersonalStorageSettings.isDirty = true;
+        }
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            tabControl2.SelectedIndex = 1;
+            if (tabControl2.SelectedIndex == 1)
+                toolStripButton1.Checked = true;
+        }
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            tabControl2.SelectedIndex = 0;
+            if (tabControl2.SelectedIndex == 0)
+                toolStripButton3.Checked = true;
+        }
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            tabControl2.SelectedIndex = 2;
+            if (tabControl2.SelectedIndex == 2)
+                toolStripButton4.Checked = true;
+        }
+        private void tabControl2_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            toolStripButton1.Checked = false;
+            toolStripButton3.Checked = false;
+            toolStripButton4.Checked = false;
+        }
+        private void treeViewMS3_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            useraction = false;
+            treeViewMS3.SelectedNode = e.Node;
+            if (e.Node.Tag is string)
+            {
+                switch (e.Node.Tag.ToString())
+                {
+                    case "PersonalStorageSettingsNewParent":
+                    case "StorageLevesParent":
+                        groupBox91.Visible = false;
+                        groupBox92.Visible = false;
+                        groupBox93.Visible = false;
+                        groupBox94.Visible = false;
+                        currentstoragelevel = null;
+                        break;
+                    case "UseCategoryMenu":
+                        groupBox91.Visible = false;
+                        groupBox92.Visible = false;
+                        groupBox93.Visible = true;
+                        groupBox94.Visible = false;
+                        currentstoragelevel = null;
+                        comboBox6.SelectedIndex = PersonalStorageSettingsNew.UseCategoryMenu;
+                        break;
+                    case "ReputationRequirement":
+                        groupBox91.Visible = false;
+                        groupBox92.Visible = false;
+                        groupBox93.Visible = false;
+                        groupBox94.Visible = true;
+                        currentstoragelevel = e.Node.Parent.Tag as StorageLevel;
+                        numericUpDown40.Value = currentstoragelevel.ReputationRequirement;
+                        break;
+                    case "ExcludedSlots":
+                        groupBox91.Visible = false;
+                        groupBox92.Visible = true;
+                        groupBox93.Visible = false;
+                        groupBox94.Visible = false;
+                        currentstoragelevel = e.Node.Parent.Tag as StorageLevel;
+                        listBox34.DataSource = currentstoragelevel.ExcludedSlots;
+                        break;
+                    case "AllowAttachmentCargo":
+                        groupBox91.Visible = false;
+                        groupBox92.Visible = false;
+                        groupBox93.Visible = true;
+                        groupBox94.Visible = false;
+                        currentstoragelevel = e.Node.Parent.Tag as StorageLevel;
+                        comboBox6.SelectedIndex = currentstoragelevel.AllowAttachmentCargo;
+                        break;
+                }
+            }
+            else if (e.Node.Tag is StorageLevel || e.Node.Tag is Storagelevels)
+            {
+                groupBox91.Visible = false;
+                groupBox92.Visible = false;
+                groupBox93.Visible = false;
+                groupBox94.Visible = false;
+                currentstoragelevel = null;
+            }
+            useraction = true;
+        }
+        private void numericUpDown40_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if (currentstoragelevel != null)
+            {
+                currentstoragelevel.ReputationRequirement = (int)numericUpDown40.Value;
+            }
+            PersonalStorageSettingsNew.isDirty = true;
+        }
+        private void darkButton106_Click(object sender, EventArgs e)
+        {
+            AddItemfromString form = new AddItemfromString();
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    if (!currentstoragelevel.ExcludedSlots.Contains(l))
+                        currentstoragelevel.ExcludedSlots.Add(l);
+                }
+                PersonalStorageSettingsNew.isDirty = true;
+            }
+        }
+        private void darkButton108_Click(object sender, EventArgs e)
+        {
+            currentstoragelevel.ExcludedSlots.Remove(listBox34.GetItemText(listBox34.SelectedItem));
+            PersonalStorageSettingsNew.isDirty = true;
+        }
+        private void comboBox6_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if(currentstoragelevel != null)
+            {
+                currentstoragelevel.AllowAttachmentCargo = comboBox6.SelectedIndex;
+            }
+            else if (currentstoragelevel == null)
+            {
+                PersonalStorageSettingsNew.UseCategoryMenu = comboBox6.SelectedIndex;
+            }
+            PersonalStorageSettingsNew.isDirty = true;
+        }
+
         #endregion personalstroage
 
-
+        private void darkButton107_Click(object sender, EventArgs e)
+        {
+            string Slot = StorageSlotCB.GetItemText(StorageSlotCB.SelectedItem);
+            if (!currentstoragelevel.ExcludedSlots.Contains(Slot))
+                currentstoragelevel.ExcludedSlots.Add(Slot);
+            PersonalStorageSettingsNew.isDirty = true;
+        }
     }
     public class NullToEmptyGearConverter : JsonConverter<Gear>
     {

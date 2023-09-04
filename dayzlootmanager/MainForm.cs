@@ -36,7 +36,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.7.7.6";
+        public string VersionNumber = "0.7.7.7";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -309,9 +309,15 @@ namespace DayZeEditor
                     TraderManButton.Visible = false;
 
                 if (Projects.getActiveProject().usingexpansionMarket)
+                {
+                    P2PButton.Visible = true;
                     MarketButton.Visible = true;
+                }
                 else
+                {
+                    P2PButton.Visible = false;
                     MarketButton.Visible = false;
+                }
 
                 if (Projects.getActiveProject().usingtraderplus)
                     TraderPlusButton.Visible = true;
@@ -359,11 +365,11 @@ namespace DayZeEditor
                 else
                     BreachingChargeManagerButton.Visible = false;
 
-                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KOTH\\" + Projects.getActiveProject().mpmissionpath.Split('.').Last() + ".json") &&
-                    File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KOTH\\Loot.json"))
-                    KOTHManagerButton.Visible = true;
-                else
-                    KOTHManagerButton.Visible = false;
+                //if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KOTH\\" + Projects.getActiveProject().mpmissionpath.Split('.').Last() + ".json") &&
+                //    File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KOTH\\Loot.json"))
+                //    KOTHManagerButton.Visible = true;
+                //else
+                KOTHManagerButton.Visible = false;
 
                 if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KosZone\\KZConfig\\KosZoneConfig.json") &&
                     File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KosZone\\KZConfig\\PurgeConfigV1.json"))
@@ -560,6 +566,31 @@ namespace DayZeEditor
             {
                 closemdichildren();
                 _TM = new ExpansionMarket
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+                };
+                _TM.Show();
+                Console.WriteLine("loading Expansion Market manager....");
+            }
+            timer1.Start();
+        }
+        private void P2PButton_Click(object sender, EventArgs e)
+        {
+            ExpansionP2pMarket _TM = Application.OpenForms["ExpansionP2pMarket"] as ExpansionP2pMarket;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new ExpansionP2pMarket
                 {
                     MdiParent = this,
                     Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
@@ -957,6 +988,8 @@ namespace DayZeEditor
                 }
             }
         }
+
+
     }
 }
 

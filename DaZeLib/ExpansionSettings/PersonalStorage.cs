@@ -103,7 +103,7 @@ namespace DayZeLib
             if (Markedfordelete == null) Markedfordelete = new List<PersonalStorage>();
             Markedfordelete.Add(PSfordelete);
             personalstorageList.Remove(PSfordelete);
-           
+            UsedIDS.Remove(PSfordelete.StorageID);
         }
     }
 

@@ -88,11 +88,11 @@ namespace DayZeLib
                 ID = NEWID,
                 ClassName = "ExpansionQuestNPCDenis",
                 IsAI = 0,
-                Position = new float[] { 0, 0, 0 },
-                Orientation = new float[] { 0, 0, 0 },
+                Position = new decimal[] { 0, 0, 0 },
+                Orientation = new decimal[] { 0, 0, 0 },
                 NPCName = "Phil McCracken",
                 DefaultNPCText = "You Looking at me!!!",
-                Waypoints = new BindingList<float[]>(),
+                Waypoints = new BindingList<decimal[]>(),
                 NPCEmoteID = 46,
                 NPCEmoteIsStatic = 0,
                 NPCLoadoutFile = "NBCLoadout",
@@ -129,11 +129,11 @@ namespace DayZeLib
         public int ID { get; set; }
         public string ClassName { get; set; }
         public int IsAI { get; set; }
-        public float[] Position { get; set; }
-        public float[] Orientation { get; set; }
+        public decimal[] Position { get; set; }
+        public decimal[] Orientation { get; set; }
         public string NPCName { get; set; }
         public string DefaultNPCText { get; set; }
-        public BindingList<float[]> Waypoints { get; set; }
+        public BindingList<decimal[]> Waypoints { get; set; }
         public int NPCEmoteID { get; set; }
         public int NPCEmoteIsStatic { get; set; }
         public string NPCLoadoutFile { get; set; }

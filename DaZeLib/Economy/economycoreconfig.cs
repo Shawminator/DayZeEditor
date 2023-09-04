@@ -19,7 +19,7 @@ namespace DayZeLib
     public class BoolConverter : JsonConverter<bool>
     {
         public override void Write(Utf8JsonWriter writer, bool value, JsonSerializerOptions options) =>
-            writer.WriteBooleanValue(value);
+            writer.WriteNumberValue(value ? 1: 0);
 
         public override bool Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {

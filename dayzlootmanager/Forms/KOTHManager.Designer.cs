@@ -381,6 +381,7 @@ namespace DayZeEditor
             this.crateLifeTimeNUD.Size = new System.Drawing.Size(115, 20);
             this.crateLifeTimeNUD.TabIndex = 209;
             this.crateLifeTimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.crateLifeTimeNUD.ValueChanged += new System.EventHandler(this.crateLifeTimeNUD_ValueChanged);
             // 
             // darkLabel13
             // 
@@ -401,6 +402,7 @@ namespace DayZeEditor
             this.lootCrateTB.Size = new System.Drawing.Size(369, 20);
             this.lootCrateTB.TabIndex = 208;
             this.lootCrateTB.Tag = "MsgEnterZone";
+            this.lootCrateTB.TextChanged += new System.EventHandler(this.lootCrateTB_TextChanged);
             // 
             // darkLabel11
             // 
@@ -421,6 +423,7 @@ namespace DayZeEditor
             this.flagClassnameTB.Size = new System.Drawing.Size(369, 20);
             this.flagClassnameTB.TabIndex = 206;
             this.flagClassnameTB.Tag = "MsgEnterZone";
+            this.flagClassnameTB.TextChanged += new System.EventHandler(this.flagClassnameTB_TextChanged);
             // 
             // darkLabel16
             // 
@@ -446,6 +449,7 @@ namespace DayZeEditor
             this.rewardCountNUD.Size = new System.Drawing.Size(102, 20);
             this.rewardCountNUD.TabIndex = 203;
             this.rewardCountNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.rewardCountNUD.ValueChanged += new System.EventHandler(this.rewardCountNUD_ValueChanged);
             // 
             // darkLabel15
             // 
@@ -471,6 +475,7 @@ namespace DayZeEditor
             this.maximumPlayersNUD.Size = new System.Drawing.Size(102, 20);
             this.maximumPlayersNUD.TabIndex = 201;
             this.maximumPlayersNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.maximumPlayersNUD.ValueChanged += new System.EventHandler(this.maximumPlayersNUD_ValueChanged);
             // 
             // darkLabel2
             // 
@@ -496,6 +501,7 @@ namespace DayZeEditor
             this.minimumPlayersNUD.Size = new System.Drawing.Size(102, 20);
             this.minimumPlayersNUD.TabIndex = 199;
             this.minimumPlayersNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.minimumPlayersNUD.ValueChanged += new System.EventHandler(this.minimumPlayersNUD_ValueChanged);
             // 
             // darkLabel12
             // 
@@ -521,6 +527,7 @@ namespace DayZeEditor
             this.minimumDeathsNUD.Size = new System.Drawing.Size(102, 20);
             this.minimumDeathsNUD.TabIndex = 197;
             this.minimumDeathsNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.minimumDeathsNUD.ValueChanged += new System.EventHandler(this.minimumDeathsNUD_ValueChanged);
             // 
             // darkLabel14
             // 
@@ -541,6 +548,7 @@ namespace DayZeEditor
             this.maxEventsNUD.Size = new System.Drawing.Size(102, 20);
             this.maxEventsNUD.TabIndex = 195;
             this.maxEventsNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.maxEventsNUD.ValueChanged += new System.EventHandler(this.maxEventsNUD_ValueChanged);
             // 
             // darkLabel22
             // 
@@ -566,6 +574,7 @@ namespace DayZeEditor
             this.minEnemyCountNUD.Size = new System.Drawing.Size(102, 20);
             this.minEnemyCountNUD.TabIndex = 193;
             this.minEnemyCountNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.minEnemyCountNUD.ValueChanged += new System.EventHandler(this.minEnemyCountNUD_ValueChanged);
             // 
             // darkLabel21
             // 
@@ -591,6 +600,7 @@ namespace DayZeEditor
             this.maxEnemyCountNUD.Size = new System.Drawing.Size(102, 20);
             this.maxEnemyCountNUD.TabIndex = 191;
             this.maxEnemyCountNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.maxEnemyCountNUD.ValueChanged += new System.EventHandler(this.maxEnemyCountNUD_ValueChanged);
             // 
             // darkLabel20
             // 
@@ -611,6 +621,7 @@ namespace DayZeEditor
             this.minPlayerCountNUD.Size = new System.Drawing.Size(102, 20);
             this.minPlayerCountNUD.TabIndex = 189;
             this.minPlayerCountNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.minPlayerCountNUD.ValueChanged += new System.EventHandler(this.minPlayerCountNUD_ValueChanged);
             // 
             // darkLabel19
             // 
@@ -642,6 +653,7 @@ namespace DayZeEditor
             this.timeZoneCooldownNUD.Size = new System.Drawing.Size(102, 20);
             this.timeZoneCooldownNUD.TabIndex = 187;
             this.timeZoneCooldownNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.timeZoneCooldownNUD.ValueChanged += new System.EventHandler(this.timeZoneCooldownNUD_ValueChanged);
             // 
             // darkLabel17
             // 
@@ -673,6 +685,7 @@ namespace DayZeEditor
             this.timeSpawnNUD.Size = new System.Drawing.Size(102, 20);
             this.timeSpawnNUD.TabIndex = 185;
             this.timeSpawnNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.timeSpawnNUD.ValueChanged += new System.EventHandler(this.timeSpawnNUD_ValueChanged);
             // 
             // darkLabel18
             // 
@@ -696,6 +709,7 @@ namespace DayZeEditor
             this.punishLossCB.Text = "punishLoss";
             this.punishLossCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.punishLossCB.UseVisualStyleBackColor = true;
+            this.punishLossCB.CheckedChanged += new System.EventHandler(this.punishLossCB_CheckedChanged);
             // 
             // celebrateWinCB
             // 
@@ -709,6 +723,7 @@ namespace DayZeEditor
             this.celebrateWinCB.Text = "celebrateWin";
             this.celebrateWinCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.celebrateWinCB.UseVisualStyleBackColor = true;
+            this.celebrateWinCB.CheckedChanged += new System.EventHandler(this.celebrateWinCB_CheckedChanged);
             // 
             // estimateLocationCB
             // 
@@ -722,6 +737,7 @@ namespace DayZeEditor
             this.estimateLocationCB.Text = "estimateLocation";
             this.estimateLocationCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.estimateLocationCB.UseVisualStyleBackColor = true;
+            this.estimateLocationCB.CheckedChanged += new System.EventHandler(this.estimateLocationCB_CheckedChanged);
             // 
             // reduceProgressOnDeathFromOutsideCB
             // 
@@ -735,6 +751,7 @@ namespace DayZeEditor
             this.reduceProgressOnDeathFromOutsideCB.Text = "reduceProgressOnDeathFromOutside";
             this.reduceProgressOnDeathFromOutsideCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.reduceProgressOnDeathFromOutsideCB.UseVisualStyleBackColor = true;
+            this.reduceProgressOnDeathFromOutsideCB.CheckedChanged += new System.EventHandler(this.reduceProgressOnDeathFromOutsideCB_CheckedChanged);
             // 
             // requireFlagConstructionCB
             // 
@@ -748,6 +765,7 @@ namespace DayZeEditor
             this.requireFlagConstructionCB.Text = "requireFlagConstruction";
             this.requireFlagConstructionCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.requireFlagConstructionCB.UseVisualStyleBackColor = true;
+            this.requireFlagConstructionCB.CheckedChanged += new System.EventHandler(this.requireFlagConstructionCB_CheckedChanged);
             // 
             // reduceProgressOnAbandonedCB
             // 
@@ -761,6 +779,7 @@ namespace DayZeEditor
             this.reduceProgressOnAbandonedCB.Text = "reduceProgressOnAbandoned";
             this.reduceProgressOnAbandonedCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.reduceProgressOnAbandonedCB.UseVisualStyleBackColor = true;
+            this.reduceProgressOnAbandonedCB.CheckedChanged += new System.EventHandler(this.reduceProgressOnAbandonedCB_CheckedChanged);
             // 
             // useNotificationsCB
             // 
@@ -774,6 +793,7 @@ namespace DayZeEditor
             this.useNotificationsCB.Text = "useNotifications";
             this.useNotificationsCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.useNotificationsCB.UseVisualStyleBackColor = true;
+            this.useNotificationsCB.CheckedChanged += new System.EventHandler(this.useNotificationsCB_CheckedChanged);
             // 
             // useMapMarkerCB
             // 
@@ -787,6 +807,7 @@ namespace DayZeEditor
             this.useMapMarkerCB.Text = "useMapMarker";
             this.useMapMarkerCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.useMapMarkerCB.UseVisualStyleBackColor = true;
+            this.useMapMarkerCB.CheckedChanged += new System.EventHandler(this.useMapMarkerCB_CheckedChanged);
             // 
             // useLocationTextCB
             // 
@@ -800,6 +821,7 @@ namespace DayZeEditor
             this.useLocationTextCB.Text = "useLocationText";
             this.useLocationTextCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.useLocationTextCB.UseVisualStyleBackColor = true;
+            this.useLocationTextCB.CheckedChanged += new System.EventHandler(this.useLocationTextCB_CheckedChanged);
             // 
             // baseCaptureTimeNUD
             // 
@@ -816,7 +838,7 @@ namespace DayZeEditor
             this.baseCaptureTimeNUD.Size = new System.Drawing.Size(102, 20);
             this.baseCaptureTimeNUD.TabIndex = 163;
             this.baseCaptureTimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.baseCaptureTimeNUD.ValueChanged += new System.EventHandler(this.m_MaxEventsNUD_ValueChanged);
+            this.baseCaptureTimeNUD.ValueChanged += new System.EventHandler(this.baseCaptureTimeNUD_ValueChanged);
             // 
             // darkLabel10
             // 
@@ -853,7 +875,7 @@ namespace DayZeEditor
             this.maxTimeBetweenEventsNUD.Size = new System.Drawing.Size(102, 20);
             this.maxTimeBetweenEventsNUD.TabIndex = 150;
             this.maxTimeBetweenEventsNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.maxTimeBetweenEventsNUD.ValueChanged += new System.EventHandler(this.m_CaptureTimeNUD_ValueChanged);
+            this.maxTimeBetweenEventsNUD.ValueChanged += new System.EventHandler(this.maxTimeBetweenEventsNUD_ValueChanged);
             // 
             // minTimeBetweenEventsNUD
             // 
@@ -870,7 +892,7 @@ namespace DayZeEditor
             this.minTimeBetweenEventsNUD.Size = new System.Drawing.Size(102, 20);
             this.minTimeBetweenEventsNUD.TabIndex = 148;
             this.minTimeBetweenEventsNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.minTimeBetweenEventsNUD.ValueChanged += new System.EventHandler(this.m_UpdateIntervalNUD_ValueChanged);
+            this.minTimeBetweenEventsNUD.ValueChanged += new System.EventHandler(this.minTimeBetweenEventsNUD_ValueChanged);
             // 
             // loggingLevelNUD
             // 
@@ -886,7 +908,7 @@ namespace DayZeEditor
             this.loggingLevelNUD.Size = new System.Drawing.Size(102, 20);
             this.loggingLevelNUD.TabIndex = 161;
             this.loggingLevelNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.loggingLevelNUD.ValueChanged += new System.EventHandler(this.m_PlayerPopulationToStartEventsNUD_ValueChanged);
+            this.loggingLevelNUD.ValueChanged += new System.EventHandler(this.loggingLevelNUD_ValueChanged);
             // 
             // darkLabel3
             // 
@@ -930,7 +952,7 @@ namespace DayZeEditor
             this.enabledCB.Text = "enabled";
             this.enabledCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.enabledCB.UseVisualStyleBackColor = true;
-            this.enabledCB.CheckedChanged += new System.EventHandler(this.m_DoLogsToCFCB_CheckedChanged);
+            this.enabledCB.CheckedChanged += new System.EventHandler(this.enabledCB_CheckedChanged);
             // 
             // playerTimeMultiplierNUD
             // 
@@ -947,7 +969,7 @@ namespace DayZeEditor
             this.playerTimeMultiplierNUD.Size = new System.Drawing.Size(102, 20);
             this.playerTimeMultiplierNUD.TabIndex = 154;
             this.playerTimeMultiplierNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.playerTimeMultiplierNUD.ValueChanged += new System.EventHandler(this.m_ServerStartDelayNUD_ValueChanged);
+            this.playerTimeMultiplierNUD.ValueChanged += new System.EventHandler(this.playerTimeMultiplierNUD_ValueChanged);
             // 
             // timeStartNUD
             // 
@@ -964,7 +986,7 @@ namespace DayZeEditor
             this.timeStartNUD.Size = new System.Drawing.Size(102, 20);
             this.timeStartNUD.TabIndex = 158;
             this.timeStartNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.timeStartNUD.ValueChanged += new System.EventHandler(this.m_EventPreStartNUD_ValueChanged);
+            this.timeStartNUD.ValueChanged += new System.EventHandler(this.timeStartNUD_ValueChanged);
             // 
             // darkLabel7
             // 
@@ -991,7 +1013,7 @@ namespace DayZeEditor
             this.timeDespawnNUD.Size = new System.Drawing.Size(102, 20);
             this.timeDespawnNUD.TabIndex = 156;
             this.timeDespawnNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.timeDespawnNUD.ValueChanged += new System.EventHandler(this.m_HillEventIntervalNUD_ValueChanged);
+            this.timeDespawnNUD.ValueChanged += new System.EventHandler(this.timeDespawnNUD_ValueChanged);
             // 
             // darkLabel8
             // 
@@ -1018,7 +1040,7 @@ namespace DayZeEditor
             this.timeLimitNUD.Size = new System.Drawing.Size(102, 20);
             this.timeLimitNUD.TabIndex = 152;
             this.timeLimitNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.timeLimitNUD.ValueChanged += new System.EventHandler(this.m_EventCleanupTimeNUD_ValueChanged);
+            this.timeLimitNUD.ValueChanged += new System.EventHandler(this.timeLimitNUD_ValueChanged);
             // 
             // darkLabel6
             // 

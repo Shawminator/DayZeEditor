@@ -227,88 +227,203 @@ namespace DayZeEditor
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void m_UpdateIntervalNUD_ValueChanged(object sender, EventArgs e)
+        private void minTimeBetweenEventsNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-
+            MDCKOTHConfig.minTimeBetweenEvents = minTimeBetweenEventsNUD.Value;
             MDCKOTHConfig.isDirty = true;
         }
-        private void m_ServerStartDelayNUD_ValueChanged(object sender, EventArgs e)
+        private void playerTimeMultiplierNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-
+            MDCKOTHConfig.playerTimeMultiplier = playerTimeMultiplierNUD.Value;
             MDCKOTHConfig.isDirty = true;
         }
-        private void m_CaptureTimeNUD_ValueChanged(object sender, EventArgs e)
+        private void maxTimeBetweenEventsNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-
+            MDCKOTHConfig.maxTimeBetweenEvents = maxTimeBetweenEventsNUD.Value;
             MDCKOTHConfig.isDirty = true;
         }
-        private void m_HillEventIntervalNUD_ValueChanged(object sender, EventArgs e)
+        private void timeDespawnNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-
+            MDCKOTHConfig.timeDespawn = timeDespawnNUD.Value;
             MDCKOTHConfig.isDirty = true;
         }
-        private void m_EventCleanupTimeNUD_ValueChanged(object sender, EventArgs e)
+        private void timeLimitNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-
+            MDCKOTHConfig.timeLimit = timeLimitNUD.Value;
             MDCKOTHConfig.isDirty = true;
         }
-        private void m_EventPreStartNUD_ValueChanged(object sender, EventArgs e)
+        private void timeStartNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-
+            MDCKOTHConfig.timeStart = timeStartNUD.Value;
             MDCKOTHConfig.isDirty = true;
         }
-        private void m_PlayerPopulationToStartEventsNUD_ValueChanged(object sender, EventArgs e)
+        private void loggingLevelNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-
+            MDCKOTHConfig.loggingLevel = (int)loggingLevelNUD.Value;
             MDCKOTHConfig.isDirty = true;
         }
-        private void m_MaxEventsNUD_ValueChanged(object sender, EventArgs e)
+        private void baseCaptureTimeNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-
+            MDCKOTHConfig.baseCaptureTime = baseCaptureTimeNUD.Value;
             MDCKOTHConfig.isDirty = true;
         }
-        private void m_DoLogsToCFCB_CheckedChanged(object sender, EventArgs e)
+        private void enabledCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-
+            MDCKOTHConfig.enabled = enabledCB.Checked == true ? 1 : 0;
             MDCKOTHConfig.isDirty = true;
         }
-        private void m_EventPreStartMessageTB_TextChanged(object sender, EventArgs e)
+        private void useLocationTextCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-
+            MDCKOTHConfig.useLocationText = useLocationTextCB.Checked == true ? 1 : 0;
             MDCKOTHConfig.isDirty = true;
         }
-        private void m_EventCapturedMessageTB_TextChanged(object sender, EventArgs e)
+        private void useMapMarkerCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-
+            MDCKOTHConfig.useMapMarker = useMapMarkerCB.Checked == true ? 1 : 0;
             MDCKOTHConfig.isDirty = true;
         }
-        private void m_EventDespawnedMessageTB_TextChanged(object sender, EventArgs e)
+        private void useNotificationsCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-
+            MDCKOTHConfig.useNotifications = useNotificationsCB.Checked == true ? 1 : 0;
             MDCKOTHConfig.isDirty = true;
         }
-        private void m_EventStartMessageTB_TextChanged(object sender, EventArgs e)
+        private void reduceProgressOnAbandonedCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-
+            MDCKOTHConfig.reduceProgressOnAbandoned = reduceProgressOnAbandonedCB.Checked == true ? 1 : 0;
             MDCKOTHConfig.isDirty = true;
         }
-        private void m_FlagNameTB_TextChanged(object sender, EventArgs e)
+        private void reduceProgressOnDeathFromOutsideCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
+            MDCKOTHConfig.reduceProgressOnDeathFromOutside = reduceProgressOnDeathFromOutsideCB.Checked == true ? 1 : 0;
+            MDCKOTHConfig.isDirty = true;
+        }
+        private void celebrateWinCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            MDCKOTHConfig.celebrateWin = celebrateWinCB.Checked == true ? 1 : 0;
+            MDCKOTHConfig.isDirty = true;
+        }
+        private void punishLossCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            MDCKOTHConfig.punishLoss = punishLossCB.Checked == true ? 1 : 0;
+            MDCKOTHConfig.isDirty = true;
+        }
+        private void requireFlagConstructionCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            MDCKOTHConfig.requireFlagConstruction = requireFlagConstructionCB.Checked == true ? 1 : 0;
+            MDCKOTHConfig.isDirty = true;
+        }
+        private void estimateLocationCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            MDCKOTHConfig.estimateLocation = estimateLocationCB.Checked == true ? 1 : 0;
+            MDCKOTHConfig.isDirty = true;
+        }
+        private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
+        {
 
+        }
+        private void pictureBox2_MouseEnter(object sender, EventArgs e)
+        {
+
+        }
+        private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
+        {
+
+        }
+        private void timeSpawnNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            MDCKOTHConfig.timeSpawn = (int)timeSpawnNUD.Value;
+            MDCKOTHConfig.isDirty = true;
+        }
+        private void timeZoneCooldownNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            MDCKOTHConfig.timeZoneCooldown = (int)timeZoneCooldownNUD.Value;
+            MDCKOTHConfig.isDirty = true;
+        }
+        private void minPlayerCountNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            MDCKOTHConfig.minPlayerCount = (int)minPlayerCountNUD.Value;
+            MDCKOTHConfig.isDirty = true;
+        }
+        private void maxEnemyCountNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            MDCKOTHConfig.maxEnemyCount = (int)maxEnemyCountNUD.Value;
+            MDCKOTHConfig.isDirty = true;
+        }
+        private void minEnemyCountNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            MDCKOTHConfig.minEnemyCount = (int)minEnemyCountNUD.Value;
+            MDCKOTHConfig.isDirty = true;
+
+        }
+        private void maxEventsNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            MDCKOTHConfig.maxEvents = (int)maxEventsNUD.Value;
+            MDCKOTHConfig.isDirty = true;
+        }
+        private void minimumDeathsNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            MDCKOTHConfig.minimumDeaths = (int)minimumDeathsNUD.Value;
+            MDCKOTHConfig.isDirty = true;
+        }
+        private void minimumPlayersNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            MDCKOTHConfig.minimumPlayers = (int)minimumPlayersNUD.Value;
+            MDCKOTHConfig.isDirty = true;
+        }
+        private void maximumPlayersNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            MDCKOTHConfig.maximumPlayers = (int)maximumPlayersNUD.Value;
+            MDCKOTHConfig.isDirty = true;
+        }
+        private void rewardCountNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            MDCKOTHConfig.timeDespawn = timeDespawnNUD.Value;
+            MDCKOTHConfig.isDirty = true;
+        }
+        private void flagClassnameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            MDCKOTHConfig.flagClassname = flagClassnameTB.Text;
+            MDCKOTHConfig.isDirty = true;
+        }
+        private void lootCrateTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            MDCKOTHConfig.lootCrate = lootCrateTB.Text;
+            MDCKOTHConfig.isDirty = true;
+        }
+        private void crateLifeTimeNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            MDCKOTHConfig.crateLifeTime = (int)crateLifeTimeNUD.Value;
             MDCKOTHConfig.isDirty = true;
         }
 
@@ -486,8 +601,6 @@ namespace DayZeEditor
             }
             MDCKOTHConfig.isDirty = true;
         }
-
-
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath);
@@ -534,7 +647,6 @@ namespace DayZeEditor
             else
                 MessageBox.Show("No changes were made.", "Nothing Saved", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
-
         private void KOTHManager_FormClosing(object sender, FormClosingEventArgs e)
         {
             bool needtosave = false;
@@ -552,19 +664,6 @@ namespace DayZeEditor
             }
         }
 
-        private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_MouseEnter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
-        {
-
-        }
+ 
     }
 }

@@ -1,106 +1,58 @@
 ﻿using System;
-using System.Windows.Forms;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
-using System.Text.Json.Serialization;
-using System.Text.Json;
-using System.ComponentModel.Design;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using DarkUI.Forms;
 
 namespace DayZeEditor
 {
-    public class MyRenderer : ToolStripProfessionalRenderer
+    public partial class P2PMarketInfo : DarkForm
     {
-        protected override void OnRenderButtonBackground(ToolStripItemRenderEventArgs e)
+        public P2PMarketInfo()
         {
-            var g = e.Graphics;
-
-            var rect = new Rectangle(0, 1, e.Item.Width, e.Item.Height - 2);
-
-            if (e.Item.Selected || e.Item.Pressed)
-            {
-                using (var b = new SolidBrush(Color.DarkGray))
-                {
-                    g.FillRectangle(b, rect);
-                }
-            }
-
+            InitializeComponent();
+            InitializeForm_Controls
+            (
+                this,
+                panel1,
+                TitleLabel
+            );
         }
-    }
-    public static class Form_Controls
-    {
         public static Size Formsize;
         private static Button B;
-        private static Button B1;
         private static Panel P;
-        private static Panel P2;
         private static Label L;
         private static Form F;
         private static bool mouseDown;
         private static Point lastLocation;
-        private static Size LastSize;
-        private static Point LastMousePositon;
-
-
-        public static int Height { get; private set; }
-
-        public static void InitializeForm_Controls(Form _F, Panel _P, Panel _P2, Label _L, Button _B = null, Button _B1 = null)
+        public static void InitializeForm_Controls(Form _F, Panel _P, Label _L, Button _B = null)
         {
             F = _F;
             P = _P;
-            P2 = _P2;
+
             B = _B;
-            B1 = _B1;
             L = _L;
             P.MouseDoubleClick += new MouseEventHandler(FormMax_MouseDoubleClick);
             P.MouseDown += new MouseEventHandler(FormMove_MouseDown);
             P.MouseMove += new MouseEventHandler(FormMove_MouseMove);
             P.MouseUp += new MouseEventHandler(FormMove_MouseUp);
-            P2.MouseDown += new MouseEventHandler(FormResize_MouseDown);
-            P2.MouseMove += new MouseEventHandler(FormResize_MouseMove);
-            P2.MouseUp += new MouseEventHandler(FormResize_MouseUp);
             L.MouseDoubleClick += new MouseEventHandler(FormMax_MouseDoubleClick);
             L.MouseDown += new MouseEventHandler(FormMove_MouseDown);
             L.MouseMove += new MouseEventHandler(FormMove_MouseMove);
             L.MouseUp += new MouseEventHandler(FormMove_MouseUp);
             if (_B != null)
                 B.Click += new System.EventHandler(FormClose_Click);
-            if (_B1 != null)
-                B1.Click += new System.EventHandler(MinimiseForm_Click);
             Formsize = F.Size;
         }
-
-
-
-        private static void FormResize_MouseUp(object sender, MouseEventArgs e)
-        {
-            mouseDown = false;
-            Formsize = F.Size;
-        }
-
-        private static void FormResize_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (mouseDown == true && F.WindowState == System.Windows.Forms.FormWindowState.Normal)
-            {
-                F.Size = new Size(LastSize.Width + e.X, LastSize.Height + e.Y);
-                LastSize = F.Size;
-
-            }
-            F.Update();
-        }
-
-        private static void FormResize_MouseDown(object sender, MouseEventArgs e)
-        {
-            mouseDown = true;
-            LastSize = F.Size;
-            LastMousePositon = e.Location;
-            Console.WriteLine(F.Size.ToString());
-            Console.WriteLine(e.X.ToString() + " , " + e.Y.ToString());
-        }
-
         private static void FormMove_MouseDown(object sender, MouseEventArgs e)
         {
             mouseDown = true;
             lastLocation = e.Location;
-   
         }
         private static void FormMove_MouseMove(object sender, MouseEventArgs e)
         {
@@ -117,7 +69,6 @@ namespace DayZeEditor
         private static void FormMove_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
-   
         }
         private static void FormMax_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -134,7 +85,7 @@ namespace DayZeEditor
                     Rectangle rect = Screen.FromHandle(F.Handle).WorkingArea;
                     rect.Location = new Point(0, 0);
                     F.MaximumSize = rect.Size;
-                    F.WindowState = FormWindowState.Maximized;
+                    F.WindowState = FormWindowState.Maximized; ;
                     Formsize = F.Size;
                 }
                 F.Refresh();
@@ -143,10 +94,6 @@ namespace DayZeEditor
         private static void FormClose_Click(object sender, EventArgs e)
         {
             F.Close();
-        }
-        private static void MinimiseForm_Click(object sender, EventArgs e)
-        {
-            F.WindowState = FormWindowState.Minimized;
         }
     }
 }

@@ -50,6 +50,7 @@ namespace DayZeEditor
             this.TraderManButton = new System.Windows.Forms.ToolStripButton();
             this.ExpansionSettingsButton = new System.Windows.Forms.ToolStripButton();
             this.MarketButton = new System.Windows.Forms.ToolStripButton();
+            this.P2PButton = new System.Windows.Forms.ToolStripButton();
             this.ExpansionLoadoutManagerButton = new System.Windows.Forms.ToolStripButton();
             this.ExpansionAIButton = new System.Windows.Forms.ToolStripButton();
             this.ExpansionQuestsButton = new System.Windows.Forms.ToolStripButton();
@@ -179,7 +180,6 @@ namespace DayZeEditor
             // 
             // ToolStrip1
             // 
-            this.ToolStrip1.Renderer = new MyRenderer();
             this.ToolStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.ToolStrip1.AutoSize = false;
@@ -196,6 +196,7 @@ namespace DayZeEditor
             this.TraderManButton,
             this.ExpansionSettingsButton,
             this.MarketButton,
+            this.P2PButton,
             this.ExpansionLoadoutManagerButton,
             this.ExpansionAIButton,
             this.ExpansionQuestsButton,
@@ -312,6 +313,18 @@ namespace DayZeEditor
             this.MarketButton.Text = "Expansion Market";
             this.MarketButton.Visible = false;
             this.MarketButton.Click += new System.EventHandler(this.MarketButton_Click);
+            // 
+            // P2PButton
+            // 
+            this.P2PButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.P2PButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.P2PButton.Image = ((System.Drawing.Image)(resources.GetObject("P2PButton.Image")));
+            this.P2PButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.P2PButton.Name = "P2PButton";
+            this.P2PButton.Size = new System.Drawing.Size(123, 19);
+            this.P2PButton.Text = "Expansion P2P Market";
+            this.P2PButton.Visible = false;
+            this.P2PButton.Click += new System.EventHandler(this.P2PButton_Click);
             // 
             // ExpansionLoadoutManagerButton
             // 
@@ -652,6 +665,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton RHLootBoxManagerButton;
         private System.Windows.Forms.ToolStripButton ExpansionLoadoutManagerButton;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton P2PButton;
     }
 }
 

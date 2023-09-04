@@ -3766,6 +3766,7 @@ namespace DayZeEditor
             this.ObjectivesCollectionGB.TabIndex = 231;
             this.ObjectivesCollectionGB.TabStop = false;
             this.ObjectivesCollectionGB.Text = "Collection";
+            this.ObjectivesCollectionGB.Visible = false;
             // 
             // checkBox5
             // 
@@ -3971,6 +3972,7 @@ namespace DayZeEditor
             this.ObjectivesTravelGB.TabIndex = 235;
             this.ObjectivesTravelGB.TabStop = false;
             this.ObjectivesTravelGB.Text = "Travel";
+            this.ObjectivesTravelGB.Visible = false;
             // 
             // checkBox9
             // 
@@ -4207,6 +4209,7 @@ namespace DayZeEditor
             this.ObjectivesTresureHuntGB.TabIndex = 236;
             this.ObjectivesTresureHuntGB.TabStop = false;
             this.ObjectivesTresureHuntGB.Text = "Treasure Hunt";
+            this.ObjectivesTresureHuntGB.Visible = false;
             // 
             // groupBox7
             // 
@@ -4223,7 +4226,7 @@ namespace DayZeEditor
             this.groupBox7.Controls.Add(this.darkButton70);
             this.groupBox7.Controls.Add(this.darkButton69);
             this.groupBox7.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox7.Location = new System.Drawing.Point(357, 21);
+            this.groupBox7.Location = new System.Drawing.Point(342, 19);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(565, 465);
             this.groupBox7.TabIndex = 359;
@@ -4896,6 +4899,7 @@ namespace DayZeEditor
             this.ObjectivesTargetGB.TabIndex = 234;
             this.ObjectivesTargetGB.TabStop = false;
             this.ObjectivesTargetGB.Text = "Target";
+            this.ObjectivesTargetGB.Visible = false;
             // 
             // checkBox7
             // 
@@ -5247,6 +5251,7 @@ namespace DayZeEditor
             this.ObejctiovesDeliveryGB.TabIndex = 233;
             this.ObejctiovesDeliveryGB.TabStop = false;
             this.ObejctiovesDeliveryGB.Text = "Delivery";
+            this.ObejctiovesDeliveryGB.Visible = false;
             // 
             // checkBox6
             // 
@@ -5440,6 +5445,7 @@ namespace DayZeEditor
             this.ObjectivesAIVIPGB.TabIndex = 230;
             this.ObjectivesAIVIPGB.TabStop = false;
             this.ObjectivesAIVIPGB.Text = "AI VIP";
+            this.ObjectivesAIVIPGB.Visible = false;
             // 
             // QuestObjectivesAIVIPShowDistanceCB
             // 
@@ -5646,6 +5652,7 @@ namespace DayZeEditor
             this.ObjectivesCraftingGB.TabIndex = 232;
             this.ObjectivesCraftingGB.TabStop = false;
             this.ObjectivesCraftingGB.Text = "Crafting";
+            this.ObjectivesCraftingGB.Visible = false;
             // 
             // darkLabel101
             // 
@@ -5761,6 +5768,7 @@ namespace DayZeEditor
             this.ObjectivesAIPatrolGB.TabIndex = 229;
             this.ObjectivesAIPatrolGB.TabStop = false;
             this.ObjectivesAIPatrolGB.Text = "AI Patrol";
+            this.ObjectivesAIPatrolGB.Visible = false;
             // 
             // ObjectivesAIPatrolNPCFormationCB
             // 
@@ -6407,6 +6415,7 @@ namespace DayZeEditor
             this.ObjectivesAICampGB.TabIndex = 228;
             this.ObjectivesAICampGB.TabStop = false;
             this.ObjectivesAICampGB.Text = "AI Camp";
+            this.ObjectivesAICampGB.Visible = false;
             // 
             // darkLabel100
             // 
@@ -7006,6 +7015,7 @@ namespace DayZeEditor
             this.ObjectiveActionGB.TabIndex = 227;
             this.ObjectiveActionGB.TabStop = false;
             this.ObjectiveActionGB.Text = "Actions";
+            this.ObjectiveActionGB.Visible = false;
             // 
             // darkButton71
             // 
@@ -7993,7 +8003,7 @@ namespace DayZeEditor
             this.deleteObjectiveToolStripMenuItem,
             this.addNewCraftingObjectiveToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(253, 268);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(253, 246);
             // 
             // addNewActionObjectiveToolStripMenuItem
             // 

@@ -610,7 +610,7 @@ namespace DayZeEditor
         {
             useraction = false;
 
-            string[] boolignorenames = new string[] { "m_Version", "DailyResetMinute", "DailyResetHour", "WeeklyResetHour", "WeeklyResetMinute", "GroupQuestMode" };
+            string[] boolignorenames = new string[] { "m_Version", "DailyResetMinute", "DailyResetHour", "WeeklyResetHour", "WeeklyResetMinute", "GroupQuestMode", "MaxActiveQuests" };
             List<string> questbools = Helper.GetPropertiesNameOfClass<int>(QuestSettings, boolignorenames);
             QuestBoolsLB.DisplayMember = "DisplayName";
             QuestBoolsLB.ValueMember = "Value";
@@ -663,8 +663,9 @@ namespace DayZeEditor
             if (QuestStringsLB.SelectedItems.Count < 1) return;
             useraction = false;
             QuestStringTB.Text = Helper.GetPropValue(QuestSettings, QuestStringsLB.GetItemText(QuestStringsLB.SelectedItem)).ToString();
+            groupBox8.Text = "String Info";
             InfoLabel.Text = "";
-           useraction = true;
+            useraction = true;
         }
         private void QuestIntsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -688,6 +689,9 @@ namespace DayZeEditor
                     break;
                 case "WeeklyResetHour":
                     InfoLabel.Text = "Integer.\n\nHour at when the quest reset will happend for all weekly quests.";
+                    break;
+                case "MaxActiveQuests":
+                    InfoLabel.Text = "";
                     break;
             }
             useraction = true;
@@ -845,7 +849,7 @@ namespace DayZeEditor
         private void QuestNPCWaypointsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (QuestNPCWaypointsLB.SelectedItems.Count < 1) return;
-            float[] waypoint = QuestNPCWaypointsLB.SelectedItem as float[];
+            decimal[] waypoint = QuestNPCWaypointsLB.SelectedItem as decimal[];
             useraction = false;
             QuestNPCWaypointXNUD.Value = (decimal)waypoint[0];
             QuestNPCWaypointYNUD.Value = (decimal)waypoint[1];
@@ -905,7 +909,7 @@ namespace DayZeEditor
             groupBox6.Visible = QuestNPCIsAICB.Checked;
             if (!useraction) return;
             currentQuestNPC.IsAI = QuestNPCIsAICB.Checked == true ? 1 : 0;
-            currentQuestNPC.Waypoints = new BindingList<float[]>();
+            currentQuestNPC.Waypoints = new BindingList<decimal[]>();
             QuestNPCWaypointsLB.DisplayMember = "DisplayName";
             QuestNPCWaypointsLB.ValueMember = "Value";
             QuestNPCWaypointsLB.DataSource = currentQuestNPC.Waypoints;
@@ -926,47 +930,47 @@ namespace DayZeEditor
         private void QuestNPCsPOSXNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentQuestNPC.Position[0] = (float)QuestNPCsPOSXNUD.Value;
+            currentQuestNPC.Position[0] =QuestNPCsPOSXNUD.Value;
             currentQuestNPC.isDirty = true;
         }
         private void QuestNPCsPOSYNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentQuestNPC.Position[1] = (float)QuestNPCsPOSYNUD.Value;
+            currentQuestNPC.Position[1] = QuestNPCsPOSYNUD.Value;
             currentQuestNPC.isDirty = true;
         }
         private void QuestNPCsPOSZNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentQuestNPC.Position[2] = (float)QuestNPCsPOSZNUD.Value;
+            currentQuestNPC.Position[2] = QuestNPCsPOSZNUD.Value;
             currentQuestNPC.isDirty = true;
         }
         private void QuestNPCsOXNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentQuestNPC.Orientation[0] = (float)QuestNPCsOXNUD.Value;
+            currentQuestNPC.Orientation[0] = QuestNPCsOXNUD.Value;
             currentQuestNPC.isDirty = true;
         }
         private void QuestNPCsOYNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentQuestNPC.Orientation[1] = (float)QuestNPCsOYNUD.Value;
+            currentQuestNPC.Orientation[1] = QuestNPCsOYNUD.Value;
             currentQuestNPC.isDirty = true;
         }
         private void QuestNPCsOZNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentQuestNPC.Orientation[2] = (float)QuestNPCsOZNUD.Value;
+            currentQuestNPC.Orientation[2] =QuestNPCsOZNUD.Value;
             currentQuestNPC.isDirty = true;
         }
         private void darkButton8_Click(object sender, EventArgs e)
         {
-            currentQuestNPC.Waypoints.Add(new float[] { 0, 0, 0 });
+            currentQuestNPC.Waypoints.Add(new decimal[] { 0, 0, 0 });
             currentQuestNPC.isDirty = true;
         }
         private void darkButton5_Click(object sender, EventArgs e)
         {
-            currentQuestNPC.Waypoints.Remove(QuestNPCWaypointsLB.SelectedItem as float[]);
+            currentQuestNPC.Waypoints.Remove(QuestNPCWaypointsLB.SelectedItem as decimal[]);
             currentQuestNPC.isDirty = true;
         }
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
@@ -1004,14 +1008,14 @@ namespace DayZeEditor
                     filePath = openFileDialog.FileName;
                     var fileStream = openFileDialog.OpenFile();
                     fileContent = File.ReadAllLines(filePath);
-                    currentQuestNPC.Waypoints = new BindingList<float[]>();
+                    currentQuestNPC.Waypoints = new BindingList<decimal[]>();
                     for (int i = 0; i < fileContent.Length; i++)
                     {
                         if (fileContent[i] == "") continue;
                         string[] linesplit = fileContent[i].Split('|');
                         string[] XYZ = linesplit[1].Split(' ');
 
-                        currentQuestNPC.Waypoints.Add(new float[] { Convert.ToSingle(XYZ[0]), Convert.ToSingle(XYZ[1]), Convert.ToSingle(XYZ[2]) });
+                        currentQuestNPC.Waypoints.Add(new decimal[] { Convert.ToDecimal(XYZ[0]), Convert.ToDecimal(XYZ[1]), Convert.ToDecimal(XYZ[2]) });
                     }
                     QuestNPCWaypointsLB.SelectedIndex = -1;
                     QuestNPCWaypointsLB.SelectedIndex = QuestNPCWaypointsLB.Items.Count - 1;
@@ -1024,7 +1028,7 @@ namespace DayZeEditor
         {
             StringBuilder SB = new StringBuilder();
             SB.AppendLine(currentQuestNPC.NPCName + "|" + currentQuestNPC.Position[0].ToString("F6") + " " + currentQuestNPC.Position[1].ToString("F6") + " " + currentQuestNPC.Position[2].ToString("F6") + "|0.0 0.0 0.0");
-            foreach (float[] vec3 in currentQuestNPC.Waypoints)
+            foreach (decimal[] vec3 in currentQuestNPC.Waypoints)
             {
                 SB.AppendLine(currentQuestNPC.NPCName + "|" + vec3[0].ToString("F6") + " " + vec3[1].ToString("F6") + " " + vec3[2].ToString("F6") + "|0.0 0.0 0.0");
             }
@@ -1052,14 +1056,14 @@ namespace DayZeEditor
                         int i = 0;
                         if (i == 0)
                         {
-                            currentQuestNPC.Position = eo.Position;
+                            currentQuestNPC.Position = new decimal[] { (decimal)eo.Position[0], (decimal)eo.Position[1], (decimal)eo.Position[2] };
                             QuestNPCsPOSXNUD.Value = (decimal)currentQuestNPC.Position[0];
                             QuestNPCsPOSYNUD.Value = (decimal)currentQuestNPC.Position[1];
                             QuestNPCsPOSZNUD.Value = (decimal)currentQuestNPC.Position[2];
                         }
                         else
                         {
-                            currentQuestNPC.Waypoints.Add(eo.Position);
+                            currentQuestNPC.Waypoints.Add(new decimal[] { (decimal)eo.Position[0], (decimal)eo.Position[1], (decimal)eo.Position[2] });
                         }
                     }
                     QuestNPCWaypointsLB.SelectedIndex = -1;
@@ -1075,13 +1079,13 @@ namespace DayZeEditor
             {
                 MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
             };
-            foreach (float[] array in currentQuestNPC.Waypoints)
+            foreach (decimal[] array in currentQuestNPC.Waypoints)
             {
                 Editorobject eo = new Editorobject()
                 {
                     Type = currentQuestNPC.NPCName,
                     DisplayName = currentQuestNPC.NPCName,
-                    Position = array,
+                    Position = new float[] { (float)array[0], (float)array[1], (float)array[2] },
                     Orientation = new float[] { 0, 0, 0 },
                     Scale = 1.0f,
                     Flags = 2147483647

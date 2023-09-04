@@ -191,6 +191,7 @@ namespace DayZeLib
         public Traders()
         {
             m_Version = TradersList.CurrentVersion;
+            DisplayName = "";
             TraderIcon = "";
             Currencies = new BindingList<string>();
             Items = new Dictionary<string, int>();
@@ -208,11 +209,13 @@ namespace DayZeLib
             Items = new Dictionary<string, int>();
             ListItems = new BindingList<TradersItem>();
             Categories = new BindingList<string>();
+            RequiredFaction = "";
+            RequiredCompletedQuestID = -1;
         }
         public override string ToString()
         {
             if (SortByDisplayName)
-                return DisplayName;
+                return DisplayName.Replace("#STR_EXPANSION_MARKET_TRADER_", "");
             else
                 return Filename;
         }

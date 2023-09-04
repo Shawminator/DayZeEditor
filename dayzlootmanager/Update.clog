@@ -1,8 +1,17 @@
-﻿Version 0.7.7.4
+﻿Version 0.7.7.7
+[Fixed] 
+Various bugs that had been reported
+[Added]
+Expansion P2P Market config manager
+Expansion Personal Storage Config manager
+[Updated]
+Updated all expansion settings to latest expansion release.
+
+Version 0.7.7.6
 [Fixed]
 Wrong values assigned to numeric boxes in territories
 
-Version 0.7.7.4
+Version 0.7.7.5
 [Added]
 Territories to economy manager
 mapgrouporoto to economy manager

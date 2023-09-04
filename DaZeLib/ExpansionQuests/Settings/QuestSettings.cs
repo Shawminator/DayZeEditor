@@ -12,7 +12,7 @@ namespace DayZeLib
     public class QuestSettings
     {
         [JsonIgnore]
-        public const int CurrentVersion = 9;
+        public const int CurrentVersion = 10;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -50,8 +50,12 @@ namespace DayZeLib
         public int DailyResetMinute { get; set; }
         public int UseUTCTime { get; set; }
         public int UseQuestNPCIndicators { get; set; }
+        public int MaxActiveQuests { get; set; }
 
-        public QuestSettings() { }
+        public QuestSettings() 
+        {
+            MaxActiveQuests = -1;
+        }
 
 
         public bool checkver()
@@ -65,20 +69,4 @@ namespace DayZeLib
             return false;
         }
     }
-    public class QuestActions
-    {
-        public string ActionName { get; set; }
-        public string MethodName { get; set; }
-
-        public QuestActions()
-        {
-
-        }
-
-        public override string ToString()
-        {
-            return ActionName;
-        }
-    }
-
 }

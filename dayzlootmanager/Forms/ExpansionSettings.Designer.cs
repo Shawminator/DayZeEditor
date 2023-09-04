@@ -29,6 +29,7 @@ namespace DayZeEditor
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExpansionSettings));
             this.darkToolStrip21 = new DarkUI.Controls.DarkToolStrip2();
             this.SaveFileButton = new System.Windows.Forms.ToolStripButton();
@@ -234,6 +235,7 @@ namespace DayZeEditor
             this.EnablePlayerListCB = new System.Windows.Forms.CheckBox();
             this.EnableTooltipCB = new System.Windows.Forms.CheckBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.ForcePartyToHaveTagsCB = new System.Windows.Forms.CheckBox();
             this.ShowHUDMemberDistanceCB = new System.Windows.Forms.CheckBox();
             this.ShowPartyMemberMapMarkersCB = new System.Windows.Forms.CheckBox();
             this.ShowHUDMemberStanceCB = new System.Windows.Forms.CheckBox();
@@ -472,14 +474,20 @@ namespace DayZeEditor
             this.darkLabel245 = new DarkUI.Controls.DarkLabel();
             this.InGameMenuLogoPathTB = new System.Windows.Forms.TextBox();
             this.groupBox69 = new System.Windows.Forms.GroupBox();
+            this.ReputationHighColorPB = new System.Windows.Forms.PictureBox();
             this.TemperatureBurningColorPB = new System.Windows.Forms.PictureBox();
             this.darkLabel193 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel284 = new DarkUI.Controls.DarkLabel();
             this.NotifierDividerColorPB = new System.Windows.Forms.PictureBox();
             this.darkLabel194 = new DarkUI.Controls.DarkLabel();
+            this.ReputationMedColorPB = new System.Windows.Forms.PictureBox();
             this.StaminaBarColorPB = new System.Windows.Forms.PictureBox();
             this.darkLabel195 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel285 = new DarkUI.Controls.DarkLabel();
             this.NotifiersLowColorPB = new System.Windows.Forms.PictureBox();
             this.darkLabel185 = new DarkUI.Controls.DarkLabel();
+            this.ReputationBaseColorPB = new System.Windows.Forms.PictureBox();
+            this.darkLabel286 = new DarkUI.Controls.DarkLabel();
             this.NotifiersHalfColorPB = new System.Windows.Forms.PictureBox();
             this.darkLabel187 = new DarkUI.Controls.DarkLabel();
             this.NotifiersIdealColorPB = new System.Windows.Forms.PictureBox();
@@ -811,35 +819,58 @@ namespace DayZeEditor
             this.UTCTimeCB = new System.Windows.Forms.CheckBox();
             this.SchedulerEnabledCB = new System.Windows.Forms.CheckBox();
             this.PersonalStorageTabPage = new System.Windows.Forms.TabPage();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.checkBox10 = new System.Windows.Forms.CheckBox();
+            this.darkLabel289 = new DarkUI.Controls.DarkLabel();
+            this.darkButton100 = new DarkUI.Controls.DarkButton();
+            this.darkButton101 = new DarkUI.Controls.DarkButton();
+            this.darkButton102 = new DarkUI.Controls.DarkButton();
+            this.label10 = new System.Windows.Forms.Label();
+            this.listBox32 = new System.Windows.Forms.ListBox();
+            this.checkBox9 = new System.Windows.Forms.CheckBox();
+            this.darkLabel287 = new DarkUI.Controls.DarkLabel();
+            this.numericUpDown39 = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel288 = new DarkUI.Controls.DarkLabel();
+            this.groupBox88 = new System.Windows.Forms.GroupBox();
+            this.treeViewMS1 = new TreeViewMS.TreeViewMS();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.listBox31 = new System.Windows.Forms.ListBox();
+            this.darkButton99 = new DarkUI.Controls.DarkButton();
             this.FactionCB = new System.Windows.Forms.ComboBox();
+            this.darkButton98 = new DarkUI.Controls.DarkButton();
             this.darkLabel283 = new DarkUI.Controls.DarkLabel();
-            this.IsGlobalStorageCB = new System.Windows.Forms.CheckBox();
-            this.darkLabel282 = new DarkUI.Controls.DarkLabel();
-            this.ReputationNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel281 = new DarkUI.Controls.DarkLabel();
-            this.QuestIDNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel280 = new DarkUI.Controls.DarkLabel();
-            this.PSorientaionZNUD = new System.Windows.Forms.NumericUpDown();
-            this.PSorientaionYNUD = new System.Windows.Forms.NumericUpDown();
-            this.PSorientaionXNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel279 = new DarkUI.Controls.DarkLabel();
-            this.PSpositionZNUD = new System.Windows.Forms.NumericUpDown();
-            this.PSpositionYNUD = new System.Windows.Forms.NumericUpDown();
-            this.PSpositionXNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel278 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel277 = new DarkUI.Controls.DarkLabel();
-            this.PSDiplayIconTB = new System.Windows.Forms.TextBox();
-            this.darkLabel276 = new DarkUI.Controls.DarkLabel();
-            this.PSDisplayNameTB = new System.Windows.Forms.TextBox();
-            this.darkLabel275 = new DarkUI.Controls.DarkLabel();
-            this.PSClassNameTB = new System.Windows.Forms.TextBox();
-            this.StorageIDNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel274 = new DarkUI.Controls.DarkLabel();
+            this.IsGlobalStorageCB = new System.Windows.Forms.CheckBox();
+            this.StorageIDNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel282 = new DarkUI.Controls.DarkLabel();
+            this.PSClassNameTB = new System.Windows.Forms.TextBox();
+            this.ReputationNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel275 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel281 = new DarkUI.Controls.DarkLabel();
+            this.PSDisplayNameTB = new System.Windows.Forms.TextBox();
+            this.QuestIDNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel276 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel280 = new DarkUI.Controls.DarkLabel();
+            this.PSDiplayIconTB = new System.Windows.Forms.TextBox();
+            this.PSorientaionZNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel277 = new DarkUI.Controls.DarkLabel();
+            this.PSorientaionYNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel278 = new DarkUI.Controls.DarkLabel();
+            this.PSorientaionXNUD = new System.Windows.Forms.NumericUpDown();
+            this.PSpositionXNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel279 = new DarkUI.Controls.DarkLabel();
+            this.PSpositionYNUD = new System.Windows.Forms.NumericUpDown();
+            this.PSpositionZNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkToolStrip27 = new DarkUI.Controls.DarkToolStrip2();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.ConfigVersionlabel = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.darkButton98 = new DarkUI.Controls.DarkButton();
-            this.darkButton99 = new DarkUI.Controls.DarkButton();
-            this.listBox31 = new System.Windows.Forms.ListBox();
             this.RaidSettingsTabPage = new System.Windows.Forms.TabPage();
             this.groupBox84 = new System.Windows.Forms.GroupBox();
             this.WeekdayTB = new System.Windows.Forms.TextBox();
@@ -1284,6 +1315,31 @@ namespace DayZeEditor
             this.SpawnTabButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator32 = new System.Windows.Forms.ToolStripSeparator();
             this.VehicleTabButton = new System.Windows.Forms.ToolStripButton();
+            this.groupBox89 = new System.Windows.Forms.GroupBox();
+            this.textBox26 = new System.Windows.Forms.TextBox();
+            this.groupBox90 = new System.Windows.Forms.GroupBox();
+            this.listBox33 = new System.Windows.Forms.ListBox();
+            this.darkButton103 = new DarkUI.Controls.DarkButton();
+            this.darkButton104 = new DarkUI.Controls.DarkButton();
+            this.darkButton105 = new DarkUI.Controls.DarkButton();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.addNewMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewSubMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeSubMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.treeViewMS3 = new TreeViewMS.TreeViewMS();
+            this.groupBox91 = new System.Windows.Forms.GroupBox();
+            this.textBox27 = new System.Windows.Forms.TextBox();
+            this.groupBox92 = new System.Windows.Forms.GroupBox();
+            this.listBox34 = new System.Windows.Forms.ListBox();
+            this.darkButton106 = new DarkUI.Controls.DarkButton();
+            this.darkButton108 = new DarkUI.Controls.DarkButton();
+            this.groupBox93 = new System.Windows.Forms.GroupBox();
+            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.groupBox94 = new System.Windows.Forms.GroupBox();
+            this.numericUpDown40 = new System.Windows.Forms.NumericUpDown();
+            this.StorageSlotCB = new System.Windows.Forms.ComboBox();
+            this.darkButton107 = new DarkUI.Controls.DarkButton();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -1378,10 +1434,13 @@ namespace DayZeEditor
             this.GeneralSettingsTabPage.SuspendLayout();
             this.groupBox77.SuspendLayout();
             this.groupBox69.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ReputationHighColorPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TemperatureBurningColorPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotifierDividerColorPB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReputationMedColorPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaminaBarColorPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotifiersLowColorPB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReputationBaseColorPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotifiersHalfColorPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotifiersIdealColorPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TemperatureFreezingColorPB)).BeginInit();
@@ -1498,15 +1557,22 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.groupBox63.SuspendLayout();
             this.PersonalStorageTabPage.SuspendLayout();
+            this.tabControl2.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown39)).BeginInit();
+            this.groupBox88.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StorageIDNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReputationNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.QuestIDNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PSorientaionZNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PSorientaionYNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PSorientaionXNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PSpositionZNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PSpositionYNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PSpositionXNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StorageIDNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PSpositionYNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PSpositionZNUD)).BeginInit();
+            this.darkToolStrip27.SuspendLayout();
             this.RaidSettingsTabPage.SuspendLayout();
             this.groupBox84.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DurationMinutesNUD)).BeginInit();
@@ -1629,6 +1695,14 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.ChangeLockTimeSecondsNUD)).BeginInit();
             this.darkToolStrip22.SuspendLayout();
             this.darkToolStrip26.SuspendLayout();
+            this.groupBox89.SuspendLayout();
+            this.groupBox90.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
+            this.groupBox91.SuspendLayout();
+            this.groupBox92.SuspendLayout();
+            this.groupBox93.SuspendLayout();
+            this.groupBox94.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown40)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -4212,6 +4286,7 @@ namespace DayZeEditor
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.ForcePartyToHaveTagsCB);
             this.groupBox9.Controls.Add(this.ShowHUDMemberDistanceCB);
             this.groupBox9.Controls.Add(this.ShowPartyMemberMapMarkersCB);
             this.groupBox9.Controls.Add(this.ShowHUDMemberStanceCB);
@@ -4236,6 +4311,19 @@ namespace DayZeEditor
             this.groupBox9.TabIndex = 2;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Party Settings";
+            // 
+            // ForcePartyToHaveTagsCB
+            // 
+            this.ForcePartyToHaveTagsCB.AutoSize = true;
+            this.ForcePartyToHaveTagsCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ForcePartyToHaveTagsCB.Location = new System.Drawing.Point(23, 305);
+            this.ForcePartyToHaveTagsCB.Name = "ForcePartyToHaveTagsCB";
+            this.ForcePartyToHaveTagsCB.Size = new System.Drawing.Size(152, 17);
+            this.ForcePartyToHaveTagsCB.TabIndex = 35;
+            this.ForcePartyToHaveTagsCB.Text = "Force Party To Have Tags";
+            this.ForcePartyToHaveTagsCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ForcePartyToHaveTagsCB.UseVisualStyleBackColor = true;
+            this.ForcePartyToHaveTagsCB.CheckedChanged += new System.EventHandler(this.PartySettingsCB_CheckedChanged);
             // 
             // ShowHUDMemberDistanceCB
             // 
@@ -5901,13 +5989,12 @@ namespace DayZeEditor
             // 
             // toolStripButton8
             // 
-            this.toolStripButton8.AutoSize = false;
             this.toolStripButton8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripButton8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton8.Name = "toolStripButton8";
-            this.toolStripButton8.Size = new System.Drawing.Size(96, 22);
+            this.toolStripButton8.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton8.Text = "General Settings";
             this.toolStripButton8.Click += new System.EventHandler(this.toolStripButton8_Click);
             // 
@@ -5921,13 +6008,12 @@ namespace DayZeEditor
             // 
             // toolStripButton7
             // 
-            this.toolStripButton7.AutoSize = false;
             this.toolStripButton7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.toolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripButton7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(73, 22);
+            this.toolStripButton7.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton7.Text = "Build Zones";
             this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
             // 
@@ -7252,7 +7338,7 @@ namespace DayZeEditor
             this.groupBox77.Controls.Add(this.darkLabel245);
             this.groupBox77.Controls.Add(this.InGameMenuLogoPathTB);
             this.groupBox77.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox77.Location = new System.Drawing.Point(228, 239);
+            this.groupBox77.Location = new System.Drawing.Point(228, 303);
             this.groupBox77.Name = "groupBox77";
             this.groupBox77.Size = new System.Drawing.Size(553, 58);
             this.groupBox77.TabIndex = 109;
@@ -7281,14 +7367,20 @@ namespace DayZeEditor
             // 
             // groupBox69
             // 
+            this.groupBox69.Controls.Add(this.ReputationHighColorPB);
             this.groupBox69.Controls.Add(this.TemperatureBurningColorPB);
             this.groupBox69.Controls.Add(this.darkLabel193);
+            this.groupBox69.Controls.Add(this.darkLabel284);
             this.groupBox69.Controls.Add(this.NotifierDividerColorPB);
             this.groupBox69.Controls.Add(this.darkLabel194);
+            this.groupBox69.Controls.Add(this.ReputationMedColorPB);
             this.groupBox69.Controls.Add(this.StaminaBarColorPB);
             this.groupBox69.Controls.Add(this.darkLabel195);
+            this.groupBox69.Controls.Add(this.darkLabel285);
             this.groupBox69.Controls.Add(this.NotifiersLowColorPB);
             this.groupBox69.Controls.Add(this.darkLabel185);
+            this.groupBox69.Controls.Add(this.ReputationBaseColorPB);
+            this.groupBox69.Controls.Add(this.darkLabel286);
             this.groupBox69.Controls.Add(this.NotifiersHalfColorPB);
             this.groupBox69.Controls.Add(this.darkLabel187);
             this.groupBox69.Controls.Add(this.NotifiersIdealColorPB);
@@ -7304,10 +7396,21 @@ namespace DayZeEditor
             this.groupBox69.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox69.Location = new System.Drawing.Point(496, 3);
             this.groupBox69.Name = "groupBox69";
-            this.groupBox69.Size = new System.Drawing.Size(285, 230);
+            this.groupBox69.Size = new System.Drawing.Size(285, 294);
             this.groupBox69.TabIndex = 6;
             this.groupBox69.TabStop = false;
             this.groupBox69.Text = "HUD";
+            // 
+            // ReputationHighColorPB
+            // 
+            this.ReputationHighColorPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ReputationHighColorPB.BackgroundImage")));
+            this.ReputationHighColorPB.Location = new System.Drawing.Point(154, 262);
+            this.ReputationHighColorPB.Name = "ReputationHighColorPB";
+            this.ReputationHighColorPB.Size = new System.Drawing.Size(121, 13);
+            this.ReputationHighColorPB.TabIndex = 144;
+            this.ReputationHighColorPB.TabStop = false;
+            this.ReputationHighColorPB.Click += new System.EventHandler(this.HudColourPB_Click);
+            this.ReputationHighColorPB.Paint += new System.Windows.Forms.PaintEventHandler(this.HUDColourPB_Paint);
             // 
             // TemperatureBurningColorPB
             // 
@@ -7330,6 +7433,16 @@ namespace DayZeEditor
             this.darkLabel193.TabIndex = 137;
             this.darkLabel193.Text = "Temperature Burning Color";
             // 
+            // darkLabel284
+            // 
+            this.darkLabel284.AutoSize = true;
+            this.darkLabel284.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel284.Location = new System.Drawing.Point(6, 262);
+            this.darkLabel284.Name = "darkLabel284";
+            this.darkLabel284.Size = new System.Drawing.Size(111, 13);
+            this.darkLabel284.TabIndex = 143;
+            this.darkLabel284.Text = "Reputation High Color";
+            // 
             // NotifierDividerColorPB
             // 
             this.NotifierDividerColorPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("NotifierDividerColorPB.BackgroundImage")));
@@ -7350,6 +7463,17 @@ namespace DayZeEditor
             this.darkLabel194.Size = new System.Drawing.Size(103, 13);
             this.darkLabel194.TabIndex = 135;
             this.darkLabel194.Text = "Notifier Divider Color";
+            // 
+            // ReputationMedColorPB
+            // 
+            this.ReputationMedColorPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ReputationMedColorPB.BackgroundImage")));
+            this.ReputationMedColorPB.Location = new System.Drawing.Point(154, 241);
+            this.ReputationMedColorPB.Name = "ReputationMedColorPB";
+            this.ReputationMedColorPB.Size = new System.Drawing.Size(121, 13);
+            this.ReputationMedColorPB.TabIndex = 142;
+            this.ReputationMedColorPB.TabStop = false;
+            this.ReputationMedColorPB.Click += new System.EventHandler(this.HudColourPB_Click);
+            this.ReputationMedColorPB.Paint += new System.Windows.Forms.PaintEventHandler(this.HUDColourPB_Paint);
             // 
             // StaminaBarColorPB
             // 
@@ -7372,6 +7496,16 @@ namespace DayZeEditor
             this.darkLabel195.TabIndex = 133;
             this.darkLabel195.Text = "Stamina Bar Color";
             // 
+            // darkLabel285
+            // 
+            this.darkLabel285.AutoSize = true;
+            this.darkLabel285.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel285.Location = new System.Drawing.Point(6, 241);
+            this.darkLabel285.Name = "darkLabel285";
+            this.darkLabel285.Size = new System.Drawing.Size(110, 13);
+            this.darkLabel285.TabIndex = 141;
+            this.darkLabel285.Text = "Reputation Med Color";
+            // 
             // NotifiersLowColorPB
             // 
             this.NotifiersLowColorPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("NotifiersLowColorPB.BackgroundImage")));
@@ -7392,6 +7526,27 @@ namespace DayZeEditor
             this.darkLabel185.Size = new System.Drawing.Size(95, 13);
             this.darkLabel185.TabIndex = 131;
             this.darkLabel185.Text = "Notifiers Low Color";
+            // 
+            // ReputationBaseColorPB
+            // 
+            this.ReputationBaseColorPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ReputationBaseColorPB.BackgroundImage")));
+            this.ReputationBaseColorPB.Location = new System.Drawing.Point(154, 222);
+            this.ReputationBaseColorPB.Name = "ReputationBaseColorPB";
+            this.ReputationBaseColorPB.Size = new System.Drawing.Size(121, 13);
+            this.ReputationBaseColorPB.TabIndex = 140;
+            this.ReputationBaseColorPB.TabStop = false;
+            this.ReputationBaseColorPB.Click += new System.EventHandler(this.HudColourPB_Click);
+            this.ReputationBaseColorPB.Paint += new System.Windows.Forms.PaintEventHandler(this.HUDColourPB_Paint);
+            // 
+            // darkLabel286
+            // 
+            this.darkLabel286.AutoSize = true;
+            this.darkLabel286.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel286.Location = new System.Drawing.Point(6, 222);
+            this.darkLabel286.Name = "darkLabel286";
+            this.darkLabel286.Size = new System.Drawing.Size(113, 13);
+            this.darkLabel286.TabIndex = 139;
+            this.darkLabel286.Text = "Reputation Base Color";
             // 
             // NotifiersHalfColorPB
             // 
@@ -7527,7 +7682,7 @@ namespace DayZeEditor
             this.groupBox37.Controls.Add(this.BuildingInteriorsCB);
             this.groupBox37.Controls.Add(this.UseCustomMappingModuleCB);
             this.groupBox37.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox37.Location = new System.Drawing.Point(228, 303);
+            this.groupBox37.Location = new System.Drawing.Point(228, 367);
             this.groupBox37.Name = "groupBox37";
             this.groupBox37.Size = new System.Drawing.Size(262, 162);
             this.groupBox37.TabIndex = 5;
@@ -7714,7 +7869,7 @@ namespace DayZeEditor
             this.groupBox34.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox34.Location = new System.Drawing.Point(228, 3);
             this.groupBox34.Name = "groupBox34";
-            this.groupBox34.Size = new System.Drawing.Size(262, 230);
+            this.groupBox34.Size = new System.Drawing.Size(262, 294);
             this.groupBox34.TabIndex = 2;
             this.groupBox34.TabStop = false;
             this.groupBox34.Text = "Chat";
@@ -11855,35 +12010,10 @@ namespace DayZeEditor
             // PersonalStorageTabPage
             // 
             this.PersonalStorageTabPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.PersonalStorageTabPage.Controls.Add(this.FactionCB);
-            this.PersonalStorageTabPage.Controls.Add(this.darkLabel283);
-            this.PersonalStorageTabPage.Controls.Add(this.IsGlobalStorageCB);
-            this.PersonalStorageTabPage.Controls.Add(this.darkLabel282);
-            this.PersonalStorageTabPage.Controls.Add(this.ReputationNUD);
-            this.PersonalStorageTabPage.Controls.Add(this.darkLabel281);
-            this.PersonalStorageTabPage.Controls.Add(this.QuestIDNUD);
-            this.PersonalStorageTabPage.Controls.Add(this.darkLabel280);
-            this.PersonalStorageTabPage.Controls.Add(this.PSorientaionZNUD);
-            this.PersonalStorageTabPage.Controls.Add(this.PSorientaionYNUD);
-            this.PersonalStorageTabPage.Controls.Add(this.PSorientaionXNUD);
-            this.PersonalStorageTabPage.Controls.Add(this.darkLabel279);
-            this.PersonalStorageTabPage.Controls.Add(this.PSpositionZNUD);
-            this.PersonalStorageTabPage.Controls.Add(this.PSpositionYNUD);
-            this.PersonalStorageTabPage.Controls.Add(this.PSpositionXNUD);
-            this.PersonalStorageTabPage.Controls.Add(this.darkLabel278);
-            this.PersonalStorageTabPage.Controls.Add(this.darkLabel277);
-            this.PersonalStorageTabPage.Controls.Add(this.PSDiplayIconTB);
-            this.PersonalStorageTabPage.Controls.Add(this.darkLabel276);
-            this.PersonalStorageTabPage.Controls.Add(this.PSDisplayNameTB);
-            this.PersonalStorageTabPage.Controls.Add(this.darkLabel275);
-            this.PersonalStorageTabPage.Controls.Add(this.PSClassNameTB);
-            this.PersonalStorageTabPage.Controls.Add(this.StorageIDNUD);
-            this.PersonalStorageTabPage.Controls.Add(this.darkLabel274);
+            this.PersonalStorageTabPage.Controls.Add(this.tabControl2);
+            this.PersonalStorageTabPage.Controls.Add(this.darkToolStrip27);
             this.PersonalStorageTabPage.Controls.Add(this.ConfigVersionlabel);
             this.PersonalStorageTabPage.Controls.Add(this.label5);
-            this.PersonalStorageTabPage.Controls.Add(this.darkButton98);
-            this.PersonalStorageTabPage.Controls.Add(this.darkButton99);
-            this.PersonalStorageTabPage.Controls.Add(this.listBox31);
             this.PersonalStorageTabPage.ForeColor = System.Drawing.SystemColors.Control;
             this.PersonalStorageTabPage.Location = new System.Drawing.Point(4, 25);
             this.PersonalStorageTabPage.Name = "PersonalStorageTabPage";
@@ -11891,52 +12021,367 @@ namespace DayZeEditor
             this.PersonalStorageTabPage.TabIndex = 14;
             this.PersonalStorageTabPage.Text = "Personal Storage";
             // 
+            // tabControl2
+            // 
+            this.tabControl2.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
+            this.tabControl2.Controls.Add(this.tabPage2);
+            this.tabControl2.Controls.Add(this.tabPage1);
+            this.tabControl2.Controls.Add(this.tabPage3);
+            this.tabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl2.Location = new System.Drawing.Point(0, 25);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(1373, 631);
+            this.tabControl2.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.tabControl2.TabIndex = 245;
+            this.tabControl2.SelectedIndexChanged += new System.EventHandler(this.tabControl2_SelectedIndexChanged_1);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage1.Controls.Add(this.groupBox89);
+            this.tabPage1.Controls.Add(this.groupBox90);
+            this.tabPage1.Controls.Add(this.checkBox10);
+            this.tabPage1.Controls.Add(this.darkLabel289);
+            this.tabPage1.Controls.Add(this.darkButton100);
+            this.tabPage1.Controls.Add(this.darkButton101);
+            this.tabPage1.Controls.Add(this.darkButton102);
+            this.tabPage1.Controls.Add(this.label10);
+            this.tabPage1.Controls.Add(this.listBox32);
+            this.tabPage1.Controls.Add(this.checkBox9);
+            this.tabPage1.Controls.Add(this.darkLabel287);
+            this.tabPage1.Controls.Add(this.numericUpDown39);
+            this.tabPage1.Controls.Add(this.darkLabel288);
+            this.tabPage1.Controls.Add(this.groupBox88);
+            this.tabPage1.ForeColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1365, 602);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            // 
+            // checkBox10
+            // 
+            this.checkBox10.AutoSize = true;
+            this.checkBox10.Location = new System.Drawing.Point(156, 36);
+            this.checkBox10.Name = "checkBox10";
+            this.checkBox10.Size = new System.Drawing.Size(15, 14);
+            this.checkBox10.TabIndex = 321;
+            this.checkBox10.UseVisualStyleBackColor = true;
+            this.checkBox10.CheckedChanged += new System.EventHandler(this.checkBox10_CheckedChanged);
+            // 
+            // darkLabel289
+            // 
+            this.darkLabel289.AutoSize = true;
+            this.darkLabel289.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel289.Location = new System.Drawing.Point(13, 36);
+            this.darkLabel289.Name = "darkLabel289";
+            this.darkLabel289.Size = new System.Drawing.Size(137, 13);
+            this.darkLabel289.TabIndex = 320;
+            this.darkLabel289.Text = "Use Personal Storage Case";
+            // 
+            // darkButton100
+            // 
+            this.darkButton100.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton100.Location = new System.Drawing.Point(142, 541);
+            this.darkButton100.Name = "darkButton100";
+            this.darkButton100.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton100.Size = new System.Drawing.Size(118, 23);
+            this.darkButton100.TabIndex = 319;
+            this.darkButton100.Text = "Add From Text";
+            this.darkButton100.Click += new System.EventHandler(this.darkButton100_Click);
+            // 
+            // darkButton101
+            // 
+            this.darkButton101.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton101.Location = new System.Drawing.Point(16, 540);
+            this.darkButton101.Name = "darkButton101";
+            this.darkButton101.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton101.Size = new System.Drawing.Size(118, 23);
+            this.darkButton101.TabIndex = 317;
+            this.darkButton101.Text = "Add from Types";
+            this.darkButton101.Click += new System.EventHandler(this.darkButton101_Click);
+            // 
+            // darkButton102
+            // 
+            this.darkButton102.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton102.Location = new System.Drawing.Point(16, 569);
+            this.darkButton102.Name = "darkButton102";
+            this.darkButton102.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton102.Size = new System.Drawing.Size(244, 23);
+            this.darkButton102.TabIndex = 318;
+            this.darkButton102.Text = "Remove";
+            this.darkButton102.Click += new System.EventHandler(this.darkButton102_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(13, 96);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(109, 13);
+            this.label10.TabIndex = 316;
+            this.label10.Text = "Excluded classnames";
+            // 
+            // listBox32
+            // 
+            this.listBox32.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.listBox32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.listBox32.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.listBox32.ForeColor = System.Drawing.SystemColors.Control;
+            this.listBox32.FormattingEnabled = true;
+            this.listBox32.Location = new System.Drawing.Point(16, 112);
+            this.listBox32.Name = "listBox32";
+            this.listBox32.Size = new System.Drawing.Size(244, 420);
+            this.listBox32.TabIndex = 315;
+            this.listBox32.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            // 
+            // checkBox9
+            // 
+            this.checkBox9.AutoSize = true;
+            this.checkBox9.Location = new System.Drawing.Point(156, 16);
+            this.checkBox9.Name = "checkBox9";
+            this.checkBox9.Size = new System.Drawing.Size(15, 14);
+            this.checkBox9.TabIndex = 314;
+            this.checkBox9.UseVisualStyleBackColor = true;
+            this.checkBox9.CheckedChanged += new System.EventHandler(this.checkBox9_CheckedChanged);
+            // 
+            // darkLabel287
+            // 
+            this.darkLabel287.AutoSize = true;
+            this.darkLabel287.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel287.Location = new System.Drawing.Point(13, 16);
+            this.darkLabel287.Name = "darkLabel287";
+            this.darkLabel287.Size = new System.Drawing.Size(46, 13);
+            this.darkLabel287.TabIndex = 313;
+            this.darkLabel287.Text = "Enabled";
+            // 
+            // numericUpDown39
+            // 
+            this.numericUpDown39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown39.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericUpDown39.Location = new System.Drawing.Point(133, 59);
+            this.numericUpDown39.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            0});
+            this.numericUpDown39.Name = "numericUpDown39";
+            this.numericUpDown39.ReadOnly = true;
+            this.numericUpDown39.Size = new System.Drawing.Size(127, 20);
+            this.numericUpDown39.TabIndex = 312;
+            this.numericUpDown39.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown39.ValueChanged += new System.EventHandler(this.numericUpDown39_ValueChanged);
+            // 
+            // darkLabel288
+            // 
+            this.darkLabel288.AutoSize = true;
+            this.darkLabel288.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel288.Location = new System.Drawing.Point(13, 61);
+            this.darkLabel288.Name = "darkLabel288";
+            this.darkLabel288.Size = new System.Drawing.Size(114, 13);
+            this.darkLabel288.TabIndex = 311;
+            this.darkLabel288.Text = "Max Items Per Storage";
+            // 
+            // groupBox88
+            // 
+            this.groupBox88.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox88.Controls.Add(this.treeViewMS1);
+            this.groupBox88.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox88.Location = new System.Drawing.Point(282, 6);
+            this.groupBox88.Name = "groupBox88";
+            this.groupBox88.Size = new System.Drawing.Size(398, 590);
+            this.groupBox88.TabIndex = 304;
+            this.groupBox88.TabStop = false;
+            this.groupBox88.Text = "Personal Storage Menu Categories";
+            // 
+            // treeViewMS1
+            // 
+            this.treeViewMS1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.treeViewMS1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeViewMS1.ForeColor = System.Drawing.SystemColors.Control;
+            this.treeViewMS1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.treeViewMS1.Location = new System.Drawing.Point(3, 16);
+            this.treeViewMS1.Name = "treeViewMS1";
+            this.treeViewMS1.SelectedNodes = ((System.Collections.ArrayList)(resources.GetObject("treeViewMS1.SelectedNodes")));
+            this.treeViewMS1.SetMultiselect = true;
+            this.treeViewMS1.Size = new System.Drawing.Size(392, 571);
+            this.treeViewMS1.TabIndex = 213;
+            this.treeViewMS1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewMS1_NodeMouseClick);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage2.Controls.Add(this.groupBox93);
+            this.tabPage2.Controls.Add(this.groupBox91);
+            this.tabPage2.Controls.Add(this.groupBox92);
+            this.tabPage2.Controls.Add(this.treeViewMS3);
+            this.tabPage2.Controls.Add(this.groupBox94);
+            this.tabPage2.ForeColor = System.Drawing.SystemColors.Control;
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1365, 602);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage3.Controls.Add(this.listBox31);
+            this.tabPage3.Controls.Add(this.darkButton99);
+            this.tabPage3.Controls.Add(this.FactionCB);
+            this.tabPage3.Controls.Add(this.darkButton98);
+            this.tabPage3.Controls.Add(this.darkLabel283);
+            this.tabPage3.Controls.Add(this.darkLabel274);
+            this.tabPage3.Controls.Add(this.IsGlobalStorageCB);
+            this.tabPage3.Controls.Add(this.StorageIDNUD);
+            this.tabPage3.Controls.Add(this.darkLabel282);
+            this.tabPage3.Controls.Add(this.PSClassNameTB);
+            this.tabPage3.Controls.Add(this.ReputationNUD);
+            this.tabPage3.Controls.Add(this.darkLabel275);
+            this.tabPage3.Controls.Add(this.darkLabel281);
+            this.tabPage3.Controls.Add(this.PSDisplayNameTB);
+            this.tabPage3.Controls.Add(this.QuestIDNUD);
+            this.tabPage3.Controls.Add(this.darkLabel276);
+            this.tabPage3.Controls.Add(this.darkLabel280);
+            this.tabPage3.Controls.Add(this.PSDiplayIconTB);
+            this.tabPage3.Controls.Add(this.PSorientaionZNUD);
+            this.tabPage3.Controls.Add(this.darkLabel277);
+            this.tabPage3.Controls.Add(this.PSorientaionYNUD);
+            this.tabPage3.Controls.Add(this.darkLabel278);
+            this.tabPage3.Controls.Add(this.PSorientaionXNUD);
+            this.tabPage3.Controls.Add(this.PSpositionXNUD);
+            this.tabPage3.Controls.Add(this.darkLabel279);
+            this.tabPage3.Controls.Add(this.PSpositionYNUD);
+            this.tabPage3.Controls.Add(this.PSpositionZNUD);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1365, 602);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
+            // 
+            // listBox31
+            // 
+            this.listBox31.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.listBox31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.listBox31.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.listBox31.ForeColor = System.Drawing.SystemColors.Control;
+            this.listBox31.FormattingEnabled = true;
+            this.listBox31.Location = new System.Drawing.Point(3, 3);
+            this.listBox31.Name = "listBox31";
+            this.listBox31.Size = new System.Drawing.Size(226, 563);
+            this.listBox31.TabIndex = 89;
+            this.listBox31.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.listBox31.SelectedIndexChanged += new System.EventHandler(this.listBox31_SelectedIndexChanged);
+            // 
+            // darkButton99
+            // 
+            this.darkButton99.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton99.Location = new System.Drawing.Point(117, 573);
+            this.darkButton99.Name = "darkButton99";
+            this.darkButton99.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton99.Size = new System.Drawing.Size(112, 23);
+            this.darkButton99.TabIndex = 143;
+            this.darkButton99.Text = "Remove";
+            this.darkButton99.Click += new System.EventHandler(this.darkButton99_Click);
+            // 
             // FactionCB
             // 
             this.FactionCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.FactionCB.ForeColor = System.Drawing.SystemColors.Control;
             this.FactionCB.FormattingEnabled = true;
-            this.FactionCB.Location = new System.Drawing.Point(346, 245);
+            this.FactionCB.Location = new System.Drawing.Point(341, 225);
             this.FactionCB.Name = "FactionCB";
             this.FactionCB.Size = new System.Drawing.Size(312, 21);
             this.FactionCB.TabIndex = 243;
             this.FactionCB.SelectedIndexChanged += new System.EventHandler(this.FactionCB_SelectedIndexChanged);
             // 
+            // darkButton98
+            // 
+            this.darkButton98.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton98.Location = new System.Drawing.Point(3, 573);
+            this.darkButton98.Name = "darkButton98";
+            this.darkButton98.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton98.Size = new System.Drawing.Size(108, 23);
+            this.darkButton98.TabIndex = 142;
+            this.darkButton98.Text = "Add New";
+            this.darkButton98.Click += new System.EventHandler(this.darkButton98_Click);
+            // 
             // darkLabel283
             // 
             this.darkLabel283.AutoSize = true;
             this.darkLabel283.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel283.Location = new System.Drawing.Point(252, 268);
+            this.darkLabel283.Location = new System.Drawing.Point(247, 252);
             this.darkLabel283.Name = "darkLabel283";
             this.darkLabel283.Size = new System.Drawing.Size(88, 13);
             this.darkLabel283.TabIndex = 168;
             this.darkLabel283.Text = "Is Global Storage";
             // 
+            // darkLabel274
+            // 
+            this.darkLabel274.AutoSize = true;
+            this.darkLabel274.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel274.Location = new System.Drawing.Point(245, 16);
+            this.darkLabel274.Name = "darkLabel274";
+            this.darkLabel274.Size = new System.Drawing.Size(55, 13);
+            this.darkLabel274.TabIndex = 146;
+            this.darkLabel274.Text = "StorageID";
+            // 
             // IsGlobalStorageCB
             // 
             this.IsGlobalStorageCB.AutoSize = true;
-            this.IsGlobalStorageCB.Location = new System.Drawing.Point(346, 268);
+            this.IsGlobalStorageCB.Location = new System.Drawing.Point(341, 252);
             this.IsGlobalStorageCB.Name = "IsGlobalStorageCB";
             this.IsGlobalStorageCB.Size = new System.Drawing.Size(15, 14);
             this.IsGlobalStorageCB.TabIndex = 169;
             this.IsGlobalStorageCB.UseVisualStyleBackColor = true;
             this.IsGlobalStorageCB.CheckedChanged += new System.EventHandler(this.IsGlobalStorageCB_CheckedChanged);
             // 
+            // StorageIDNUD
+            // 
+            this.StorageIDNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StorageIDNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.StorageIDNUD.Location = new System.Drawing.Point(341, 14);
+            this.StorageIDNUD.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.StorageIDNUD.Name = "StorageIDNUD";
+            this.StorageIDNUD.ReadOnly = true;
+            this.StorageIDNUD.Size = new System.Drawing.Size(100, 20);
+            this.StorageIDNUD.TabIndex = 147;
+            this.StorageIDNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // darkLabel282
             // 
             this.darkLabel282.AutoSize = true;
             this.darkLabel282.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel282.Location = new System.Drawing.Point(252, 245);
+            this.darkLabel282.Location = new System.Drawing.Point(247, 225);
             this.darkLabel282.Name = "darkLabel282";
             this.darkLabel282.Size = new System.Drawing.Size(42, 13);
             this.darkLabel282.TabIndex = 167;
             this.darkLabel282.Text = "Faction";
             // 
+            // PSClassNameTB
+            // 
+            this.PSClassNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PSClassNameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PSClassNameTB.Location = new System.Drawing.Point(341, 40);
+            this.PSClassNameTB.Name = "PSClassNameTB";
+            this.PSClassNameTB.Size = new System.Drawing.Size(312, 20);
+            this.PSClassNameTB.TabIndex = 148;
+            this.PSClassNameTB.TextChanged += new System.EventHandler(this.PSClassNameTB_TextChanged);
+            // 
             // ReputationNUD
             // 
             this.ReputationNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ReputationNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ReputationNUD.Location = new System.Drawing.Point(346, 216);
+            this.ReputationNUD.Location = new System.Drawing.Point(341, 196);
             this.ReputationNUD.Maximum = new decimal(new int[] {
             2147483647,
             0,
@@ -11948,21 +12393,41 @@ namespace DayZeEditor
             this.ReputationNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ReputationNUD.ValueChanged += new System.EventHandler(this.ReputationNUD_ValueChanged);
             // 
+            // darkLabel275
+            // 
+            this.darkLabel275.AutoSize = true;
+            this.darkLabel275.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel275.Location = new System.Drawing.Point(247, 43);
+            this.darkLabel275.Name = "darkLabel275";
+            this.darkLabel275.Size = new System.Drawing.Size(60, 13);
+            this.darkLabel275.TabIndex = 149;
+            this.darkLabel275.Text = "ClassName";
+            // 
             // darkLabel281
             // 
             this.darkLabel281.AutoSize = true;
             this.darkLabel281.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel281.Location = new System.Drawing.Point(252, 218);
+            this.darkLabel281.Location = new System.Drawing.Point(247, 198);
             this.darkLabel281.Name = "darkLabel281";
             this.darkLabel281.Size = new System.Drawing.Size(59, 13);
             this.darkLabel281.TabIndex = 164;
             this.darkLabel281.Text = "Reputation";
             // 
+            // PSDisplayNameTB
+            // 
+            this.PSDisplayNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PSDisplayNameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PSDisplayNameTB.Location = new System.Drawing.Point(341, 66);
+            this.PSDisplayNameTB.Name = "PSDisplayNameTB";
+            this.PSDisplayNameTB.Size = new System.Drawing.Size(312, 20);
+            this.PSDisplayNameTB.TabIndex = 150;
+            this.PSDisplayNameTB.TextChanged += new System.EventHandler(this.PSDisplayNameTB_TextChanged);
+            // 
             // QuestIDNUD
             // 
             this.QuestIDNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.QuestIDNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.QuestIDNUD.Location = new System.Drawing.Point(346, 190);
+            this.QuestIDNUD.Location = new System.Drawing.Point(341, 170);
             this.QuestIDNUD.Maximum = new decimal(new int[] {
             2147483647,
             0,
@@ -11979,22 +12444,42 @@ namespace DayZeEditor
             this.QuestIDNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.QuestIDNUD.ValueChanged += new System.EventHandler(this.QuestIDNUD_ValueChanged);
             // 
+            // darkLabel276
+            // 
+            this.darkLabel276.AutoSize = true;
+            this.darkLabel276.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel276.Location = new System.Drawing.Point(247, 69);
+            this.darkLabel276.Name = "darkLabel276";
+            this.darkLabel276.Size = new System.Drawing.Size(69, 13);
+            this.darkLabel276.TabIndex = 151;
+            this.darkLabel276.Text = "DisplayName";
+            // 
             // darkLabel280
             // 
             this.darkLabel280.AutoSize = true;
             this.darkLabel280.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel280.Location = new System.Drawing.Point(252, 192);
+            this.darkLabel280.Location = new System.Drawing.Point(247, 172);
             this.darkLabel280.Name = "darkLabel280";
             this.darkLabel280.Size = new System.Drawing.Size(46, 13);
             this.darkLabel280.TabIndex = 162;
             this.darkLabel280.Text = "QuestID";
+            // 
+            // PSDiplayIconTB
+            // 
+            this.PSDiplayIconTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PSDiplayIconTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PSDiplayIconTB.Location = new System.Drawing.Point(341, 92);
+            this.PSDiplayIconTB.Name = "PSDiplayIconTB";
+            this.PSDiplayIconTB.Size = new System.Drawing.Size(312, 20);
+            this.PSDiplayIconTB.TabIndex = 152;
+            this.PSDiplayIconTB.TextChanged += new System.EventHandler(this.PSDiplayIconTB_TextChanged);
             // 
             // PSorientaionZNUD
             // 
             this.PSorientaionZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.PSorientaionZNUD.DecimalPlaces = 3;
             this.PSorientaionZNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.PSorientaionZNUD.Location = new System.Drawing.Point(558, 164);
+            this.PSorientaionZNUD.Location = new System.Drawing.Point(553, 144);
             this.PSorientaionZNUD.Maximum = new decimal(new int[] {
             360,
             0,
@@ -12011,12 +12496,22 @@ namespace DayZeEditor
             this.PSorientaionZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PSorientaionZNUD.ValueChanged += new System.EventHandler(this.PSorientaionZNUD_ValueChanged);
             // 
+            // darkLabel277
+            // 
+            this.darkLabel277.AutoSize = true;
+            this.darkLabel277.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel277.Location = new System.Drawing.Point(247, 95);
+            this.darkLabel277.Name = "darkLabel277";
+            this.darkLabel277.Size = new System.Drawing.Size(62, 13);
+            this.darkLabel277.TabIndex = 153;
+            this.darkLabel277.Text = "DisplayIcon";
+            // 
             // PSorientaionYNUD
             // 
             this.PSorientaionYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.PSorientaionYNUD.DecimalPlaces = 3;
             this.PSorientaionYNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.PSorientaionYNUD.Location = new System.Drawing.Point(452, 164);
+            this.PSorientaionYNUD.Location = new System.Drawing.Point(447, 144);
             this.PSorientaionYNUD.Maximum = new decimal(new int[] {
             360,
             0,
@@ -12033,12 +12528,22 @@ namespace DayZeEditor
             this.PSorientaionYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PSorientaionYNUD.ValueChanged += new System.EventHandler(this.PSorientaionYNUD_ValueChanged);
             // 
+            // darkLabel278
+            // 
+            this.darkLabel278.AutoSize = true;
+            this.darkLabel278.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel278.Location = new System.Drawing.Point(247, 121);
+            this.darkLabel278.Name = "darkLabel278";
+            this.darkLabel278.Size = new System.Drawing.Size(44, 13);
+            this.darkLabel278.TabIndex = 157;
+            this.darkLabel278.Text = "Position";
+            // 
             // PSorientaionXNUD
             // 
             this.PSorientaionXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.PSorientaionXNUD.DecimalPlaces = 3;
             this.PSorientaionXNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.PSorientaionXNUD.Location = new System.Drawing.Point(346, 164);
+            this.PSorientaionXNUD.Location = new System.Drawing.Point(341, 144);
             this.PSorientaionXNUD.Maximum = new decimal(new int[] {
             360,
             0,
@@ -12055,66 +12560,12 @@ namespace DayZeEditor
             this.PSorientaionXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PSorientaionXNUD.ValueChanged += new System.EventHandler(this.PSorientaionXNUD_ValueChanged);
             // 
-            // darkLabel279
-            // 
-            this.darkLabel279.AutoSize = true;
-            this.darkLabel279.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel279.Location = new System.Drawing.Point(252, 167);
-            this.darkLabel279.Name = "darkLabel279";
-            this.darkLabel279.Size = new System.Drawing.Size(58, 13);
-            this.darkLabel279.TabIndex = 161;
-            this.darkLabel279.Text = "Orientation";
-            // 
-            // PSpositionZNUD
-            // 
-            this.PSpositionZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.PSpositionZNUD.DecimalPlaces = 3;
-            this.PSpositionZNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.PSpositionZNUD.Location = new System.Drawing.Point(558, 138);
-            this.PSpositionZNUD.Maximum = new decimal(new int[] {
-            30000,
-            0,
-            0,
-            0});
-            this.PSpositionZNUD.Minimum = new decimal(new int[] {
-            30000,
-            0,
-            0,
-            -2147483648});
-            this.PSpositionZNUD.Name = "PSpositionZNUD";
-            this.PSpositionZNUD.Size = new System.Drawing.Size(100, 20);
-            this.PSpositionZNUD.TabIndex = 155;
-            this.PSpositionZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.PSpositionZNUD.ValueChanged += new System.EventHandler(this.PSpositionZNUD_ValueChanged);
-            // 
-            // PSpositionYNUD
-            // 
-            this.PSpositionYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.PSpositionYNUD.DecimalPlaces = 3;
-            this.PSpositionYNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.PSpositionYNUD.Location = new System.Drawing.Point(452, 138);
-            this.PSpositionYNUD.Maximum = new decimal(new int[] {
-            30000,
-            0,
-            0,
-            0});
-            this.PSpositionYNUD.Minimum = new decimal(new int[] {
-            30000,
-            0,
-            0,
-            -2147483648});
-            this.PSpositionYNUD.Name = "PSpositionYNUD";
-            this.PSpositionYNUD.Size = new System.Drawing.Size(100, 20);
-            this.PSpositionYNUD.TabIndex = 154;
-            this.PSpositionYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.PSpositionYNUD.ValueChanged += new System.EventHandler(this.PSpositionYNUD_ValueChanged);
-            // 
             // PSpositionXNUD
             // 
             this.PSpositionXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.PSpositionXNUD.DecimalPlaces = 3;
             this.PSpositionXNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.PSpositionXNUD.Location = new System.Drawing.Point(346, 138);
+            this.PSpositionXNUD.Location = new System.Drawing.Point(341, 118);
             this.PSpositionXNUD.Maximum = new decimal(new int[] {
             30000,
             0,
@@ -12131,101 +12582,126 @@ namespace DayZeEditor
             this.PSpositionXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PSpositionXNUD.ValueChanged += new System.EventHandler(this.PSpositionXNUD_ValueChanged);
             // 
-            // darkLabel278
+            // darkLabel279
             // 
-            this.darkLabel278.AutoSize = true;
-            this.darkLabel278.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel278.Location = new System.Drawing.Point(252, 141);
-            this.darkLabel278.Name = "darkLabel278";
-            this.darkLabel278.Size = new System.Drawing.Size(44, 13);
-            this.darkLabel278.TabIndex = 157;
-            this.darkLabel278.Text = "Position";
+            this.darkLabel279.AutoSize = true;
+            this.darkLabel279.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel279.Location = new System.Drawing.Point(247, 147);
+            this.darkLabel279.Name = "darkLabel279";
+            this.darkLabel279.Size = new System.Drawing.Size(58, 13);
+            this.darkLabel279.TabIndex = 161;
+            this.darkLabel279.Text = "Orientation";
             // 
-            // darkLabel277
+            // PSpositionYNUD
             // 
-            this.darkLabel277.AutoSize = true;
-            this.darkLabel277.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel277.Location = new System.Drawing.Point(252, 115);
-            this.darkLabel277.Name = "darkLabel277";
-            this.darkLabel277.Size = new System.Drawing.Size(62, 13);
-            this.darkLabel277.TabIndex = 153;
-            this.darkLabel277.Text = "DisplayIcon";
-            // 
-            // PSDiplayIconTB
-            // 
-            this.PSDiplayIconTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.PSDiplayIconTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.PSDiplayIconTB.Location = new System.Drawing.Point(346, 112);
-            this.PSDiplayIconTB.Name = "PSDiplayIconTB";
-            this.PSDiplayIconTB.Size = new System.Drawing.Size(312, 20);
-            this.PSDiplayIconTB.TabIndex = 152;
-            this.PSDiplayIconTB.TextChanged += new System.EventHandler(this.PSDiplayIconTB_TextChanged);
-            // 
-            // darkLabel276
-            // 
-            this.darkLabel276.AutoSize = true;
-            this.darkLabel276.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel276.Location = new System.Drawing.Point(252, 89);
-            this.darkLabel276.Name = "darkLabel276";
-            this.darkLabel276.Size = new System.Drawing.Size(69, 13);
-            this.darkLabel276.TabIndex = 151;
-            this.darkLabel276.Text = "DisplayName";
-            // 
-            // PSDisplayNameTB
-            // 
-            this.PSDisplayNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.PSDisplayNameTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.PSDisplayNameTB.Location = new System.Drawing.Point(346, 86);
-            this.PSDisplayNameTB.Name = "PSDisplayNameTB";
-            this.PSDisplayNameTB.Size = new System.Drawing.Size(312, 20);
-            this.PSDisplayNameTB.TabIndex = 150;
-            this.PSDisplayNameTB.TextChanged += new System.EventHandler(this.PSDisplayNameTB_TextChanged);
-            // 
-            // darkLabel275
-            // 
-            this.darkLabel275.AutoSize = true;
-            this.darkLabel275.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel275.Location = new System.Drawing.Point(252, 63);
-            this.darkLabel275.Name = "darkLabel275";
-            this.darkLabel275.Size = new System.Drawing.Size(60, 13);
-            this.darkLabel275.TabIndex = 149;
-            this.darkLabel275.Text = "ClassName";
-            // 
-            // PSClassNameTB
-            // 
-            this.PSClassNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.PSClassNameTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.PSClassNameTB.Location = new System.Drawing.Point(346, 60);
-            this.PSClassNameTB.Name = "PSClassNameTB";
-            this.PSClassNameTB.Size = new System.Drawing.Size(312, 20);
-            this.PSClassNameTB.TabIndex = 148;
-            this.PSClassNameTB.TextChanged += new System.EventHandler(this.PSClassNameTB_TextChanged);
-            // 
-            // StorageIDNUD
-            // 
-            this.StorageIDNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StorageIDNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StorageIDNUD.Location = new System.Drawing.Point(346, 34);
-            this.StorageIDNUD.Maximum = new decimal(new int[] {
-            500,
+            this.PSpositionYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PSpositionYNUD.DecimalPlaces = 3;
+            this.PSpositionYNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.PSpositionYNUD.Location = new System.Drawing.Point(447, 118);
+            this.PSpositionYNUD.Maximum = new decimal(new int[] {
+            30000,
             0,
             0,
             0});
-            this.StorageIDNUD.Name = "StorageIDNUD";
-            this.StorageIDNUD.ReadOnly = true;
-            this.StorageIDNUD.Size = new System.Drawing.Size(100, 20);
-            this.StorageIDNUD.TabIndex = 147;
-            this.StorageIDNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PSpositionYNUD.Minimum = new decimal(new int[] {
+            30000,
+            0,
+            0,
+            -2147483648});
+            this.PSpositionYNUD.Name = "PSpositionYNUD";
+            this.PSpositionYNUD.Size = new System.Drawing.Size(100, 20);
+            this.PSpositionYNUD.TabIndex = 154;
+            this.PSpositionYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PSpositionYNUD.ValueChanged += new System.EventHandler(this.PSpositionYNUD_ValueChanged);
             // 
-            // darkLabel274
+            // PSpositionZNUD
             // 
-            this.darkLabel274.AutoSize = true;
-            this.darkLabel274.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel274.Location = new System.Drawing.Point(250, 36);
-            this.darkLabel274.Name = "darkLabel274";
-            this.darkLabel274.Size = new System.Drawing.Size(55, 13);
-            this.darkLabel274.TabIndex = 146;
-            this.darkLabel274.Text = "StorageID";
+            this.PSpositionZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PSpositionZNUD.DecimalPlaces = 3;
+            this.PSpositionZNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.PSpositionZNUD.Location = new System.Drawing.Point(553, 118);
+            this.PSpositionZNUD.Maximum = new decimal(new int[] {
+            30000,
+            0,
+            0,
+            0});
+            this.PSpositionZNUD.Minimum = new decimal(new int[] {
+            30000,
+            0,
+            0,
+            -2147483648});
+            this.PSpositionZNUD.Name = "PSpositionZNUD";
+            this.PSpositionZNUD.Size = new System.Drawing.Size(100, 20);
+            this.PSpositionZNUD.TabIndex = 155;
+            this.PSpositionZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PSpositionZNUD.ValueChanged += new System.EventHandler(this.PSpositionZNUD_ValueChanged);
+            // 
+            // darkToolStrip27
+            // 
+            this.darkToolStrip27.AutoSize = false;
+            this.darkToolStrip27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.darkToolStrip27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkToolStrip27.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton3,
+            this.toolStripSeparator8,
+            this.toolStripButton1,
+            this.toolStripSeparator9,
+            this.toolStripButton4});
+            this.darkToolStrip27.Location = new System.Drawing.Point(0, 0);
+            this.darkToolStrip27.Name = "darkToolStrip27";
+            this.darkToolStrip27.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
+            this.darkToolStrip27.Size = new System.Drawing.Size(1373, 25);
+            this.darkToolStrip27.TabIndex = 244;
+            this.darkToolStrip27.Text = "darkToolStrip27";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(144, 22);
+            this.toolStripButton1.Text = "Storage Menu Categories";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripSeparator8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripSeparator8.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(106, 22);
+            this.toolStripButton3.Text = "Storage Container";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripSeparator9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripSeparator9.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(95, 22);
+            this.toolStripButton4.Text = "Storage Configs";
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // ConfigVersionlabel
             // 
@@ -12243,43 +12719,6 @@ namespace DayZeEditor
             this.label5.Size = new System.Drawing.Size(81, 13);
             this.label5.TabIndex = 144;
             this.label5.Text = "ConfigVersion :-";
-            // 
-            // darkButton98
-            // 
-            this.darkButton98.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton98.Location = new System.Drawing.Point(8, 627);
-            this.darkButton98.Name = "darkButton98";
-            this.darkButton98.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton98.Size = new System.Drawing.Size(108, 23);
-            this.darkButton98.TabIndex = 142;
-            this.darkButton98.Text = "Add New";
-            this.darkButton98.Click += new System.EventHandler(this.darkButton98_Click);
-            // 
-            // darkButton99
-            // 
-            this.darkButton99.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton99.Location = new System.Drawing.Point(122, 627);
-            this.darkButton99.Name = "darkButton99";
-            this.darkButton99.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton99.Size = new System.Drawing.Size(112, 23);
-            this.darkButton99.TabIndex = 143;
-            this.darkButton99.Text = "Remove";
-            this.darkButton99.Click += new System.EventHandler(this.darkButton99_Click);
-            // 
-            // listBox31
-            // 
-            this.listBox31.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.listBox31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.listBox31.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.listBox31.ForeColor = System.Drawing.SystemColors.Control;
-            this.listBox31.FormattingEnabled = true;
-            this.listBox31.Location = new System.Drawing.Point(8, 10);
-            this.listBox31.Name = "listBox31";
-            this.listBox31.Size = new System.Drawing.Size(226, 615);
-            this.listBox31.TabIndex = 89;
-            this.listBox31.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.listBox31.SelectedIndexChanged += new System.EventHandler(this.listBox31_SelectedIndexChanged);
             // 
             // RaidSettingsTabPage
             // 
@@ -16572,14 +17011,13 @@ namespace DayZeEditor
             // 
             // toolStripButton15
             // 
-            this.toolStripButton15.AutoSize = false;
             this.toolStripButton15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.toolStripButton15.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripButton15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton15.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton15.Image")));
             this.toolStripButton15.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton15.Name = "toolStripButton15";
-            this.toolStripButton15.Size = new System.Drawing.Size(101, 22);
+            this.toolStripButton15.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton15.Text = "Starting Clothing";
             this.toolStripButton15.Click += new System.EventHandler(this.toolStripButton15_Click);
             // 
@@ -16593,14 +17031,13 @@ namespace DayZeEditor
             // 
             // toolStripButton16
             // 
-            this.toolStripButton16.AutoSize = false;
             this.toolStripButton16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.toolStripButton16.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripButton16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton16.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton16.Image")));
             this.toolStripButton16.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton16.Name = "toolStripButton16";
-            this.toolStripButton16.Size = new System.Drawing.Size(79, 22);
+            this.toolStripButton16.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton16.Text = "Starting Gear";
             this.toolStripButton16.Click += new System.EventHandler(this.toolStripButton16_Click);
             // 
@@ -16614,14 +17051,13 @@ namespace DayZeEditor
             // 
             // toolStripButton17
             // 
-            this.toolStripButton17.AutoSize = false;
             this.toolStripButton17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.toolStripButton17.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripButton17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton17.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton17.Image")));
             this.toolStripButton17.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton17.Name = "toolStripButton17";
-            this.toolStripButton17.Size = new System.Drawing.Size(51, 22);
+            this.toolStripButton17.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton17.Text = "Spawns";
             this.toolStripButton17.Click += new System.EventHandler(this.toolStripButton17_Click);
             // 
@@ -16635,14 +17071,13 @@ namespace DayZeEditor
             // 
             // toolStripButton19
             // 
-            this.toolStripButton19.AutoSize = false;
             this.toolStripButton19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.toolStripButton19.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripButton19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton19.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton19.Image")));
             this.toolStripButton19.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton19.Name = "toolStripButton19";
-            this.toolStripButton19.Size = new System.Drawing.Size(60, 22);
+            this.toolStripButton19.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton19.Text = "Loadouts";
             this.toolStripButton19.Click += new System.EventHandler(this.toolStripButton19_Click);
             // 
@@ -18076,6 +18511,301 @@ namespace DayZeEditor
             this.VehicleTabButton.Text = "Vehicle Settings";
             this.VehicleTabButton.Click += new System.EventHandler(this.VehicleTabButton_Click);
             // 
+            // groupBox89
+            // 
+            this.groupBox89.Controls.Add(this.textBox26);
+            this.groupBox89.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox89.Location = new System.Drawing.Point(686, 6);
+            this.groupBox89.Name = "groupBox89";
+            this.groupBox89.Size = new System.Drawing.Size(329, 50);
+            this.groupBox89.TabIndex = 323;
+            this.groupBox89.TabStop = false;
+            this.groupBox89.Visible = false;
+            // 
+            // textBox26
+            // 
+            this.textBox26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.textBox26.ForeColor = System.Drawing.SystemColors.Control;
+            this.textBox26.Location = new System.Drawing.Point(6, 17);
+            this.textBox26.Name = "textBox26";
+            this.textBox26.Size = new System.Drawing.Size(312, 20);
+            this.textBox26.TabIndex = 304;
+            this.textBox26.TextChanged += new System.EventHandler(this.textBox26_TextChanged);
+            // 
+            // groupBox90
+            // 
+            this.groupBox90.Controls.Add(this.listBox33);
+            this.groupBox90.Controls.Add(this.darkButton103);
+            this.groupBox90.Controls.Add(this.darkButton104);
+            this.groupBox90.Controls.Add(this.darkButton105);
+            this.groupBox90.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox90.Location = new System.Drawing.Point(686, 6);
+            this.groupBox90.Name = "groupBox90";
+            this.groupBox90.Size = new System.Drawing.Size(329, 231);
+            this.groupBox90.TabIndex = 322;
+            this.groupBox90.TabStop = false;
+            this.groupBox90.Visible = false;
+            // 
+            // listBox33
+            // 
+            this.listBox33.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.listBox33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.listBox33.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.listBox33.ForeColor = System.Drawing.SystemColors.Control;
+            this.listBox33.FormattingEnabled = true;
+            this.listBox33.Location = new System.Drawing.Point(6, 17);
+            this.listBox33.Name = "listBox33";
+            this.listBox33.Size = new System.Drawing.Size(312, 147);
+            this.listBox33.TabIndex = 303;
+            this.listBox33.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            // 
+            // darkButton103
+            // 
+            this.darkButton103.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton103.Location = new System.Drawing.Point(164, 172);
+            this.darkButton103.Name = "darkButton103";
+            this.darkButton103.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton103.Size = new System.Drawing.Size(154, 23);
+            this.darkButton103.TabIndex = 307;
+            this.darkButton103.Text = "Add From Text";
+            this.darkButton103.Click += new System.EventHandler(this.darkButton103_Click);
+            // 
+            // darkButton104
+            // 
+            this.darkButton104.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton104.Location = new System.Drawing.Point(6, 172);
+            this.darkButton104.Name = "darkButton104";
+            this.darkButton104.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton104.Size = new System.Drawing.Size(154, 23);
+            this.darkButton104.TabIndex = 305;
+            this.darkButton104.Text = "Add From Types";
+            this.darkButton104.Click += new System.EventHandler(this.darkButton104_Click);
+            // 
+            // darkButton105
+            // 
+            this.darkButton105.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton105.Location = new System.Drawing.Point(6, 202);
+            this.darkButton105.Name = "darkButton105";
+            this.darkButton105.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton105.Size = new System.Drawing.Size(317, 23);
+            this.darkButton105.TabIndex = 306;
+            this.darkButton105.Text = "Remove.";
+            this.darkButton105.Click += new System.EventHandler(this.darkButton105_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addNewMenuCategoryToolStripMenuItem,
+            this.addNewSubMenuCategoryToolStripMenuItem,
+            this.removeMenuCategoryToolStripMenuItem,
+            this.removeSubMenuCategoryToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(232, 92);
+            // 
+            // addNewMenuCategoryToolStripMenuItem
+            // 
+            this.addNewMenuCategoryToolStripMenuItem.Name = "addNewMenuCategoryToolStripMenuItem";
+            this.addNewMenuCategoryToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.addNewMenuCategoryToolStripMenuItem.Text = "Add New Menu Category";
+            this.addNewMenuCategoryToolStripMenuItem.Click += new System.EventHandler(this.addNewMenuCategoryToolStripMenuItem_Click);
+            // 
+            // addNewSubMenuCategoryToolStripMenuItem
+            // 
+            this.addNewSubMenuCategoryToolStripMenuItem.Name = "addNewSubMenuCategoryToolStripMenuItem";
+            this.addNewSubMenuCategoryToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.addNewSubMenuCategoryToolStripMenuItem.Text = "Add New Sub menu Category";
+            this.addNewSubMenuCategoryToolStripMenuItem.Click += new System.EventHandler(this.addNewSubMenuCategoryToolStripMenuItem_Click);
+            // 
+            // removeMenuCategoryToolStripMenuItem
+            // 
+            this.removeMenuCategoryToolStripMenuItem.Name = "removeMenuCategoryToolStripMenuItem";
+            this.removeMenuCategoryToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.removeMenuCategoryToolStripMenuItem.Text = "Remove Menu Category";
+            this.removeMenuCategoryToolStripMenuItem.Click += new System.EventHandler(this.removeMenuCategoryToolStripMenuItem_Click);
+            // 
+            // removeSubMenuCategoryToolStripMenuItem
+            // 
+            this.removeSubMenuCategoryToolStripMenuItem.Name = "removeSubMenuCategoryToolStripMenuItem";
+            this.removeSubMenuCategoryToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.removeSubMenuCategoryToolStripMenuItem.Text = "Remove Sub Menu Category";
+            this.removeSubMenuCategoryToolStripMenuItem.Click += new System.EventHandler(this.removeSubMenuCategoryToolStripMenuItem_Click);
+            // 
+            // treeViewMS3
+            // 
+            this.treeViewMS3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.treeViewMS3.ForeColor = System.Drawing.SystemColors.Control;
+            this.treeViewMS3.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.treeViewMS3.Location = new System.Drawing.Point(6, 6);
+            this.treeViewMS3.Name = "treeViewMS3";
+            this.treeViewMS3.SelectedNodes = ((System.Collections.ArrayList)(resources.GetObject("treeViewMS3.SelectedNodes")));
+            this.treeViewMS3.SetMultiselect = true;
+            this.treeViewMS3.Size = new System.Drawing.Size(392, 590);
+            this.treeViewMS3.TabIndex = 214;
+            this.treeViewMS3.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewMS3_NodeMouseClick);
+            // 
+            // groupBox91
+            // 
+            this.groupBox91.Controls.Add(this.textBox27);
+            this.groupBox91.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox91.Location = new System.Drawing.Point(404, 6);
+            this.groupBox91.Name = "groupBox91";
+            this.groupBox91.Size = new System.Drawing.Size(329, 50);
+            this.groupBox91.TabIndex = 325;
+            this.groupBox91.TabStop = false;
+            this.groupBox91.Visible = false;
+            // 
+            // textBox27
+            // 
+            this.textBox27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.textBox27.ForeColor = System.Drawing.SystemColors.Control;
+            this.textBox27.Location = new System.Drawing.Point(6, 17);
+            this.textBox27.Name = "textBox27";
+            this.textBox27.Size = new System.Drawing.Size(312, 20);
+            this.textBox27.TabIndex = 304;
+            // 
+            // groupBox92
+            // 
+            this.groupBox92.Controls.Add(this.darkButton107);
+            this.groupBox92.Controls.Add(this.StorageSlotCB);
+            this.groupBox92.Controls.Add(this.listBox34);
+            this.groupBox92.Controls.Add(this.darkButton106);
+            this.groupBox92.Controls.Add(this.darkButton108);
+            this.groupBox92.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox92.Location = new System.Drawing.Point(404, 6);
+            this.groupBox92.Name = "groupBox92";
+            this.groupBox92.Size = new System.Drawing.Size(329, 269);
+            this.groupBox92.TabIndex = 324;
+            this.groupBox92.TabStop = false;
+            this.groupBox92.Visible = false;
+            // 
+            // listBox34
+            // 
+            this.listBox34.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.listBox34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.listBox34.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.listBox34.ForeColor = System.Drawing.SystemColors.Control;
+            this.listBox34.FormattingEnabled = true;
+            this.listBox34.Location = new System.Drawing.Point(6, 17);
+            this.listBox34.Name = "listBox34";
+            this.listBox34.Size = new System.Drawing.Size(312, 160);
+            this.listBox34.TabIndex = 303;
+            this.listBox34.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            // 
+            // darkButton106
+            // 
+            this.darkButton106.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton106.Location = new System.Drawing.Point(6, 208);
+            this.darkButton106.Name = "darkButton106";
+            this.darkButton106.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton106.Size = new System.Drawing.Size(312, 23);
+            this.darkButton106.TabIndex = 307;
+            this.darkButton106.Text = "Add From Text";
+            this.darkButton106.Click += new System.EventHandler(this.darkButton106_Click);
+            // 
+            // darkButton108
+            // 
+            this.darkButton108.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton108.Location = new System.Drawing.Point(6, 240);
+            this.darkButton108.Name = "darkButton108";
+            this.darkButton108.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton108.Size = new System.Drawing.Size(312, 23);
+            this.darkButton108.TabIndex = 306;
+            this.darkButton108.Text = "Remove.";
+            this.darkButton108.Click += new System.EventHandler(this.darkButton108_Click);
+            // 
+            // groupBox93
+            // 
+            this.groupBox93.Controls.Add(this.comboBox6);
+            this.groupBox93.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox93.Location = new System.Drawing.Point(404, 6);
+            this.groupBox93.Name = "groupBox93";
+            this.groupBox93.Size = new System.Drawing.Size(329, 50);
+            this.groupBox93.TabIndex = 326;
+            this.groupBox93.TabStop = false;
+            this.groupBox93.Visible = false;
+            // 
+            // comboBox6
+            // 
+            this.comboBox6.FormattingEnabled = true;
+            this.comboBox6.Items.AddRange(new object[] {
+            "False",
+            "True"});
+            this.comboBox6.Location = new System.Drawing.Point(9, 16);
+            this.comboBox6.Name = "comboBox6";
+            this.comboBox6.Size = new System.Drawing.Size(121, 21);
+            this.comboBox6.TabIndex = 0;
+            this.comboBox6.SelectedIndexChanged += new System.EventHandler(this.comboBox6_SelectedIndexChanged);
+            // 
+            // groupBox94
+            // 
+            this.groupBox94.Controls.Add(this.numericUpDown40);
+            this.groupBox94.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox94.Location = new System.Drawing.Point(404, 6);
+            this.groupBox94.Name = "groupBox94";
+            this.groupBox94.Size = new System.Drawing.Size(329, 50);
+            this.groupBox94.TabIndex = 327;
+            this.groupBox94.TabStop = false;
+            this.groupBox94.Visible = false;
+            // 
+            // numericUpDown40
+            // 
+            this.numericUpDown40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown40.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericUpDown40.Location = new System.Drawing.Point(6, 19);
+            this.numericUpDown40.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            0});
+            this.numericUpDown40.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown40.Name = "numericUpDown40";
+            this.numericUpDown40.ReadOnly = true;
+            this.numericUpDown40.Size = new System.Drawing.Size(127, 20);
+            this.numericUpDown40.TabIndex = 313;
+            this.numericUpDown40.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown40.ValueChanged += new System.EventHandler(this.numericUpDown40_ValueChanged);
+            // 
+            // StorageSlotCB
+            // 
+            this.StorageSlotCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StorageSlotCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.StorageSlotCB.FormattingEnabled = true;
+            this.StorageSlotCB.Items.AddRange(new object[] {
+            "Back",
+            "Body",
+            "Eyes",
+            "Feet",
+            "Gloves",
+            "Hands",
+            "Headgear",
+            "Hips",
+            "Legs",
+            "Mask",
+            "Melee",
+            "Shoulder",
+            "Vest"});
+            this.StorageSlotCB.Location = new System.Drawing.Point(6, 181);
+            this.StorageSlotCB.Name = "StorageSlotCB";
+            this.StorageSlotCB.Size = new System.Drawing.Size(279, 21);
+            this.StorageSlotCB.TabIndex = 308;
+            // 
+            // darkButton107
+            // 
+            this.darkButton107.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton107.Location = new System.Drawing.Point(291, 181);
+            this.darkButton107.Name = "darkButton107";
+            this.darkButton107.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton107.Size = new System.Drawing.Size(27, 21);
+            this.darkButton107.TabIndex = 309;
+            this.darkButton107.Text = "+";
+            this.darkButton107.Click += new System.EventHandler(this.darkButton107_Click);
+            // 
             // ExpansionSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -18216,10 +18946,13 @@ namespace DayZeEditor
             this.groupBox77.PerformLayout();
             this.groupBox69.ResumeLayout(false);
             this.groupBox69.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ReputationHighColorPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TemperatureBurningColorPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotifierDividerColorPB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReputationMedColorPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaminaBarColorPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotifiersLowColorPB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReputationBaseColorPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotifiersHalfColorPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotifiersIdealColorPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TemperatureFreezingColorPB)).EndInit();
@@ -18366,15 +19099,25 @@ namespace DayZeEditor
             this.groupBox63.PerformLayout();
             this.PersonalStorageTabPage.ResumeLayout(false);
             this.PersonalStorageTabPage.PerformLayout();
+            this.tabControl2.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown39)).EndInit();
+            this.groupBox88.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StorageIDNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReputationNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.QuestIDNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PSorientaionZNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PSorientaionYNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PSorientaionXNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PSpositionZNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PSpositionYNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PSpositionXNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StorageIDNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PSpositionYNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PSpositionZNUD)).EndInit();
+            this.darkToolStrip27.ResumeLayout(false);
+            this.darkToolStrip27.PerformLayout();
             this.RaidSettingsTabPage.ResumeLayout(false);
             this.groupBox84.ResumeLayout(false);
             this.groupBox84.PerformLayout();
@@ -18530,6 +19273,16 @@ namespace DayZeEditor
             this.darkToolStrip22.PerformLayout();
             this.darkToolStrip26.ResumeLayout(false);
             this.darkToolStrip26.PerformLayout();
+            this.groupBox89.ResumeLayout(false);
+            this.groupBox89.PerformLayout();
+            this.groupBox90.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
+            this.groupBox91.ResumeLayout(false);
+            this.groupBox91.PerformLayout();
+            this.groupBox92.ResumeLayout(false);
+            this.groupBox93.ResumeLayout(false);
+            this.groupBox94.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown40)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -19790,5 +20543,60 @@ namespace DayZeEditor
         private System.Windows.Forms.TextBox PSClassNameTB;
         private System.Windows.Forms.ListBox listBox31;
         private System.Windows.Forms.ComboBox FactionCB;
+        private System.Windows.Forms.CheckBox ForcePartyToHaveTagsCB;
+        private System.Windows.Forms.PictureBox ReputationHighColorPB;
+        private DarkUI.Controls.DarkLabel darkLabel284;
+        private System.Windows.Forms.PictureBox ReputationMedColorPB;
+        private DarkUI.Controls.DarkLabel darkLabel285;
+        private System.Windows.Forms.PictureBox ReputationBaseColorPB;
+        private DarkUI.Controls.DarkLabel darkLabel286;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private DarkUI.Controls.DarkToolStrip2 darkToolStrip27;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.GroupBox groupBox88;
+        private TreeViewMS.TreeViewMS treeViewMS1;
+        private System.Windows.Forms.CheckBox checkBox10;
+        private DarkUI.Controls.DarkLabel darkLabel289;
+        private DarkUI.Controls.DarkButton darkButton100;
+        private DarkUI.Controls.DarkButton darkButton101;
+        private DarkUI.Controls.DarkButton darkButton102;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ListBox listBox32;
+        private System.Windows.Forms.CheckBox checkBox9;
+        private DarkUI.Controls.DarkLabel darkLabel287;
+        private System.Windows.Forms.NumericUpDown numericUpDown39;
+        private DarkUI.Controls.DarkLabel darkLabel288;
+        private System.Windows.Forms.GroupBox groupBox89;
+        private System.Windows.Forms.TextBox textBox26;
+        private System.Windows.Forms.GroupBox groupBox90;
+        private System.Windows.Forms.ListBox listBox33;
+        private DarkUI.Controls.DarkButton darkButton103;
+        private DarkUI.Controls.DarkButton darkButton104;
+        private DarkUI.Controls.DarkButton darkButton105;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem addNewMenuCategoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addNewSubMenuCategoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeMenuCategoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeSubMenuCategoryToolStripMenuItem;
+        private TreeViewMS.TreeViewMS treeViewMS3;
+        private System.Windows.Forms.GroupBox groupBox93;
+        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.GroupBox groupBox91;
+        private System.Windows.Forms.TextBox textBox27;
+        private System.Windows.Forms.GroupBox groupBox92;
+        private System.Windows.Forms.ListBox listBox34;
+        private DarkUI.Controls.DarkButton darkButton106;
+        private DarkUI.Controls.DarkButton darkButton108;
+        private System.Windows.Forms.GroupBox groupBox94;
+        private System.Windows.Forms.NumericUpDown numericUpDown40;
+        private DarkUI.Controls.DarkButton darkButton107;
+        private System.Windows.Forms.ComboBox StorageSlotCB;
     }
 }

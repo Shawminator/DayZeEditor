@@ -67,6 +67,7 @@
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -142,6 +143,12 @@
     </Compile>
     <Compile Include="Forms\ExpansionLoadoutsManager.Designer.cs">
       <DependentUpon>ExpansionLoadoutsManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ExpansionP2pMarket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ExpansionP2pMarket.Designer.cs">
+      <DependentUpon>ExpansionP2pMarket.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ExpansionQuests.cs">
       <SubType>Form</SubType>
@@ -282,6 +289,12 @@
     <Compile Include="HelperForms\ChangeLog.Designer.cs">
       <DependentUpon>ChangeLog.cs</DependentUpon>
     </Compile>
+    <Compile Include="HelperForms\P2PMarketInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelperForms\P2PMarketInfo.Designer.cs">
+      <DependentUpon>P2PMarketInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="HelperForms\NewProjectFTP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -379,6 +392,9 @@
     <EmbeddedResource Include="Forms\ExpansionLoadoutsManager.resx">
       <DependentUpon>ExpansionLoadoutsManager.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ExpansionP2pMarket.resx">
+      <DependentUpon>ExpansionP2pMarket.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ExpansionQuests.resx">
       <DependentUpon>ExpansionQuests.cs</DependentUpon>
     </EmbeddedResource>
@@ -447,6 +463,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HelperForms\ChangeLog.resx">
       <DependentUpon>ChangeLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelperForms\P2PMarketInfo.resx">
+      <DependentUpon>P2PMarketInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HelperForms\NewProjectFTP.resx">
       <DependentUpon>NewProjectFTP.cs</DependentUpon>
