@@ -188,7 +188,7 @@ namespace DayZeEditor
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.label12 = new System.Windows.Forms.Label();
             this.trackBar4 = new System.Windows.Forms.TrackBar();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel2 = new TreeViewMS.PanelEx();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.darkLabel71 = new DarkUI.Controls.DarkLabel();
@@ -269,7 +269,7 @@ namespace DayZeEditor
             this.listBox13 = new System.Windows.Forms.ListBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label11 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1 = new TreeViewMS.PanelEx();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
@@ -2396,6 +2396,7 @@ namespace DayZeEditor
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(794, 525);
             this.panel2.TabIndex = 63;
+            this.panel2.MouseEnter += new System.EventHandler(this.pictureBox2_MouseEnter);
             // 
             // pictureBox2
             // 
@@ -3527,6 +3528,7 @@ namespace DayZeEditor
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(512, 578);
             this.panel1.TabIndex = 62;
+            this.panel1.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
             // 
             // pictureBox1
             // 
@@ -5547,7 +5549,7 @@ namespace DayZeEditor
         private System.Windows.Forms.TextBox textBox17;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TrackBar trackBar2;
-        private System.Windows.Forms.Panel panel1;
+        private TreeViewMS.PanelEx panel1;
         private DarkUI.Controls.DarkToolStrip2 darkToolStrip22;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
@@ -5588,7 +5590,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripMenuItem setMaxPriceForSelectedCategoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setMinPriceForSelectedCategoryToolStripMenuItem;
         private System.Windows.Forms.TrackBar trackBar4;
-        private System.Windows.Forms.Panel panel2;
+        private TreeViewMS.PanelEx panel2;
         private DarkUI.Controls.DarkLabel darkLabel71;
         private DarkUI.Controls.DarkLabel darkLabel72;
         private DarkUI.Controls.DarkLabel darkLabel73;

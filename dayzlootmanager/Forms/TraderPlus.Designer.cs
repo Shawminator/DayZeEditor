@@ -267,6 +267,10 @@ namespace DayZeEditor
             this.darkButton50 = new DarkUI.Controls.DarkButton();
             this.AvailabeCurrenciesLB = new System.Windows.Forms.ListBox();
             this.MoveToCatGroupBox = new System.Windows.Forms.TabPage();
+            this.MoveToCategoryGroupBox = new System.Windows.Forms.GroupBox();
+            this.darkButton59 = new DarkUI.Controls.DarkButton();
+            this.darkButton57 = new DarkUI.Controls.DarkButton();
+            this.MoveToCatLB = new System.Windows.Forms.ListBox();
             this.ItemInfoGroupBox = new System.Windows.Forms.GroupBox();
             this.darkLabel29 = new DarkUI.Controls.DarkLabel();
             this.darkLabel28 = new DarkUI.Controls.DarkLabel();
@@ -289,9 +293,6 @@ namespace DayZeEditor
             this.Coefficientlabel = new DarkUI.Controls.DarkLabel();
             this.darkLabel10 = new DarkUI.Controls.DarkLabel();
             this.darkLabel9 = new DarkUI.Controls.DarkLabel();
-            this.MoveToCategoryGroupBox = new System.Windows.Forms.GroupBox();
-            this.darkButton57 = new DarkUI.Controls.DarkButton();
-            this.MoveToCatLB = new System.Windows.Forms.ListBox();
             this.darkButton55 = new DarkUI.Controls.DarkButton();
             this.darkLabel56 = new DarkUI.Controls.DarkLabel();
             this.EnableDefaultTraderStockCB = new System.Windows.Forms.ComboBox();
@@ -372,7 +373,6 @@ namespace DayZeEditor
             this.VehiclePartPartsLB = new System.Windows.Forms.ListBox();
             this.VehiclePartLB = new System.Windows.Forms.ListBox();
             this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.darkButton59 = new DarkUI.Controls.DarkButton();
             this.darkToolStrip21.SuspendLayout();
             this.darkToolStrip22.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -428,6 +428,7 @@ namespace DayZeEditor
             this.TraderInfoGroupBox.SuspendLayout();
             this.AvailablecurrenciesGroupBox.SuspendLayout();
             this.MoveToCatGroupBox.SuspendLayout();
+            this.MoveToCategoryGroupBox.SuspendLayout();
             this.ItemInfoGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DestockCoeffTB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CoefficientTB)).BeginInit();
@@ -435,7 +436,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.MaxStockNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BuyPriceNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SellpriceNUD)).BeginInit();
-            this.MoveToCategoryGroupBox.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage5.SuspendLayout();
@@ -3518,6 +3518,58 @@ namespace DayZeEditor
             this.MoveToCatGroupBox.TabIndex = 4;
             this.MoveToCatGroupBox.Text = "tabPage5";
             // 
+            // MoveToCategoryGroupBox
+            // 
+            this.MoveToCategoryGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.MoveToCategoryGroupBox.Controls.Add(this.darkButton59);
+            this.MoveToCategoryGroupBox.Controls.Add(this.darkButton57);
+            this.MoveToCategoryGroupBox.Controls.Add(this.MoveToCatLB);
+            this.MoveToCategoryGroupBox.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.MoveToCategoryGroupBox.Location = new System.Drawing.Point(734, 17);
+            this.MoveToCategoryGroupBox.Name = "MoveToCategoryGroupBox";
+            this.MoveToCategoryGroupBox.Size = new System.Drawing.Size(294, 585);
+            this.MoveToCategoryGroupBox.TabIndex = 150;
+            this.MoveToCategoryGroupBox.TabStop = false;
+            this.MoveToCategoryGroupBox.Text = "Move To Category";
+            this.MoveToCategoryGroupBox.Visible = false;
+            // 
+            // darkButton59
+            // 
+            this.darkButton59.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton59.Location = new System.Drawing.Point(6, 530);
+            this.darkButton59.Name = "darkButton59";
+            this.darkButton59.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton59.Size = new System.Drawing.Size(282, 23);
+            this.darkButton59.TabIndex = 2;
+            this.darkButton59.Text = "Copy  to Selected";
+            this.darkButton59.Click += new System.EventHandler(this.darkButton59_Click);
+            // 
+            // darkButton57
+            // 
+            this.darkButton57.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton57.Location = new System.Drawing.Point(6, 557);
+            this.darkButton57.Name = "darkButton57";
+            this.darkButton57.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton57.Size = new System.Drawing.Size(282, 23);
+            this.darkButton57.TabIndex = 1;
+            this.darkButton57.Text = "Move  to Selected";
+            this.darkButton57.Click += new System.EventHandler(this.darkButton57_Click);
+            // 
+            // MoveToCatLB
+            // 
+            this.MoveToCatLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.MoveToCatLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MoveToCatLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.MoveToCatLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.MoveToCatLB.FormattingEnabled = true;
+            this.MoveToCatLB.Location = new System.Drawing.Point(7, 26);
+            this.MoveToCatLB.Name = "MoveToCatLB";
+            this.MoveToCatLB.Size = new System.Drawing.Size(281, 498);
+            this.MoveToCatLB.TabIndex = 0;
+            this.MoveToCatLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            // 
             // ItemInfoGroupBox
             // 
             this.ItemInfoGroupBox.Controls.Add(this.darkLabel29);
@@ -3813,47 +3865,6 @@ namespace DayZeEditor
             this.darkLabel9.Size = new System.Drawing.Size(58, 13);
             this.darkLabel9.TabIndex = 79;
             this.darkLabel9.Text = "Max Stock";
-            // 
-            // MoveToCategoryGroupBox
-            // 
-            this.MoveToCategoryGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.MoveToCategoryGroupBox.Controls.Add(this.darkButton59);
-            this.MoveToCategoryGroupBox.Controls.Add(this.darkButton57);
-            this.MoveToCategoryGroupBox.Controls.Add(this.MoveToCatLB);
-            this.MoveToCategoryGroupBox.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.MoveToCategoryGroupBox.Location = new System.Drawing.Point(734, 17);
-            this.MoveToCategoryGroupBox.Name = "MoveToCategoryGroupBox";
-            this.MoveToCategoryGroupBox.Size = new System.Drawing.Size(294, 585);
-            this.MoveToCategoryGroupBox.TabIndex = 150;
-            this.MoveToCategoryGroupBox.TabStop = false;
-            this.MoveToCategoryGroupBox.Text = "Move To Category";
-            this.MoveToCategoryGroupBox.Visible = false;
-            // 
-            // darkButton57
-            // 
-            this.darkButton57.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton57.Location = new System.Drawing.Point(6, 557);
-            this.darkButton57.Name = "darkButton57";
-            this.darkButton57.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton57.Size = new System.Drawing.Size(282, 23);
-            this.darkButton57.TabIndex = 1;
-            this.darkButton57.Text = "Move  to Selected";
-            this.darkButton57.Click += new System.EventHandler(this.darkButton57_Click);
-            // 
-            // MoveToCatLB
-            // 
-            this.MoveToCatLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.MoveToCatLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.MoveToCatLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.MoveToCatLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.MoveToCatLB.FormattingEnabled = true;
-            this.MoveToCatLB.Location = new System.Drawing.Point(7, 26);
-            this.MoveToCatLB.Name = "MoveToCatLB";
-            this.MoveToCatLB.Size = new System.Drawing.Size(281, 498);
-            this.MoveToCatLB.TabIndex = 0;
-            this.MoveToCatLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
             // darkButton55
             // 
@@ -4867,17 +4878,6 @@ namespace DayZeEditor
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "tabPage8";
             // 
-            // darkButton59
-            // 
-            this.darkButton59.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton59.Location = new System.Drawing.Point(6, 530);
-            this.darkButton59.Name = "darkButton59";
-            this.darkButton59.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton59.Size = new System.Drawing.Size(282, 23);
-            this.darkButton59.TabIndex = 2;
-            this.darkButton59.Text = "Copy  to Selected";
-            this.darkButton59.Click += new System.EventHandler(this.darkButton59_Click);
-            // 
             // TraderPlus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4958,6 +4958,7 @@ namespace DayZeEditor
             this.AvailablecurrenciesGroupBox.ResumeLayout(false);
             this.MoveToCatGroupBox.ResumeLayout(false);
             this.MoveToCatGroupBox.PerformLayout();
+            this.MoveToCategoryGroupBox.ResumeLayout(false);
             this.ItemInfoGroupBox.ResumeLayout(false);
             this.ItemInfoGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DestockCoeffTB)).EndInit();
@@ -4966,7 +4967,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.MaxStockNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BuyPriceNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SellpriceNUD)).EndInit();
-            this.MoveToCategoryGroupBox.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
             this.tabControl2.ResumeLayout(false);

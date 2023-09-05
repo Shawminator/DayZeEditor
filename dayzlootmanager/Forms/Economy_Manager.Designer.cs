@@ -268,7 +268,7 @@ namespace DayZeEditor
             this.EventSpawnTV = new TreeViewMS.TreeViewMS();
             this.IsYvalueusedCB = new System.Windows.Forms.CheckBox();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1 = new TreeViewMS.PanelEx();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.EventSpawnInfoGB = new System.Windows.Forms.GroupBox();
             this.EventspawnUseZoneCB = new System.Windows.Forms.CheckBox();
@@ -485,7 +485,7 @@ namespace DayZeEditor
             this.PlayerSpawnsTab = new System.Windows.Forms.TabPage();
             this.label156 = new System.Windows.Forms.Label();
             this.trackBar4 = new System.Windows.Forms.TrackBar();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel2 = new TreeViewMS.PanelEx();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabControl16 = new System.Windows.Forms.TabControl();
             this.tabPage13 = new System.Windows.Forms.TabPage();
@@ -2977,7 +2977,7 @@ namespace DayZeEditor
             this.economySearchNextButton.Image = ((System.Drawing.Image)(resources.GetObject("economySearchNextButton.Image")));
             this.economySearchNextButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.economySearchNextButton.Name = "economySearchNextButton";
-            this.economySearchNextButton.Size = new System.Drawing.Size(62, 42);
+            this.economySearchNextButton.Size = new System.Drawing.Size(24, 24);
             this.economySearchNextButton.Text = "Find Next";
             this.economySearchNextButton.Visible = false;
             this.economySearchNextButton.Click += new System.EventHandler(this.toolStripButton2_Click);
@@ -7146,6 +7146,7 @@ namespace DayZeEditor
             // pictureBox2
             // 
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(512, 512);
@@ -15039,7 +15040,6 @@ namespace DayZeEditor
         private System.Windows.Forms.NumericUpDown EventSpawnPosXNUD;
         private System.Windows.Forms.CheckBox IsYvalueusedCB;
         private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.TextBox EventSpawnGroupTB;
@@ -15364,7 +15364,6 @@ namespace DayZeEditor
         private System.Windows.Forms.TabPage PlayerSpawnsTab;
         private System.Windows.Forms.Label label156;
         private System.Windows.Forms.TrackBar trackBar4;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TabControl tabControl16;
         private System.Windows.Forms.TabPage tabPage13;
@@ -15428,5 +15427,7 @@ namespace DayZeEditor
         private System.Windows.Forms.TabPage tabPage17;
         private System.Windows.Forms.ListBox PlayerspawntravelLB;
         private System.Windows.Forms.Label label157;
+        private TreeViewMS.PanelEx panel2;
+        private TreeViewMS.PanelEx panel1;
     }
 }

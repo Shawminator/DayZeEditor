@@ -2633,6 +2633,110 @@ namespace DayZeEditor
             BaseBuildingSettings.EnableVirtualStorage = EnableVirtualStorageCB.Checked == true ? 1 : 0;
             BaseBuildingSettings.isDirty = true;
         }
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                _mouseLastPosition = e.Location;
+            }
+        }
+
+        private void pictureBox1_MouseEnter(object sender, EventArgs e)
+        {
+            if (pictureBox1.Focused == false)
+            {
+                pictureBox1.Focus();
+                panel3.AutoScrollPosition = _newscrollPosition;
+                pictureBox1.Invalidate();
+            }
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Point changePoint = new Point(e.Location.X - _mouseLastPosition.X, e.Location.Y - _mouseLastPosition.Y);
+                _newscrollPosition = new Point(-panel3.AutoScrollPosition.X - changePoint.X, -panel3.AutoScrollPosition.Y - changePoint.Y);
+                if (_newscrollPosition.X <= 0)
+                    _newscrollPosition.X = 0;
+                if (_newscrollPosition.Y <= 0)
+                    _newscrollPosition.Y = 0;
+                panel3.AutoScrollPosition = _newscrollPosition;
+                pictureBox1.Invalidate();
+            }
+            decimal scalevalue = BaseBuildingMapscale * (decimal)0.05;
+            decimal mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            darkLabel291.Text = Decimal.Round((decimal)(e.X / scalevalue), 4) + "," + Decimal.Round((decimal)((newsize - e.Y) / scalevalue), 4);
+        }
+        private void pictureBox1_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta < 0)
+            {
+                pictureBox1_ZoomOut();
+            }
+            else
+            {
+                pictureBox1_ZoomIn();
+            }
+
+        }
+        private void pictureBox1_ZoomIn()
+        {
+            int oldpictureboxhieght = pictureBox1.Height;
+            int oldpitureboxwidht = pictureBox1.Width;
+            Point oldscrollpos = panel3.AutoScrollPosition;
+            int tbv = trackBar2.Value;
+            int newval = tbv + 1;
+            if (newval >= 20)
+                newval = 20;
+            trackBar2.Value = newval;
+            BaseBuildingMapscale = trackBar2.Value;
+            SetsBBcale();
+            if (pictureBox1.Height > panel3.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox1.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panel3.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox1.Width > panel3.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox1.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panel3.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox1.Invalidate();
+        }
+        private void pictureBox1_ZoomOut()
+        {
+            int oldpictureboxhieght = pictureBox1.Height;
+            int oldpitureboxwidht = pictureBox1.Width;
+            Point oldscrollpos = panel3.AutoScrollPosition;
+            int tbv = trackBar2.Value;
+            int newval = tbv - 1;
+            if (newval <= 1)
+                newval = 1;
+            trackBar2.Value = newval;
+            BaseBuildingMapscale = trackBar2.Value;
+            SetsBBcale();
+            if (pictureBox1.Height > panel3.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox1.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panel3.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox1.Width > panel3.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox1.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panel3.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox1.Invalidate();
+        }
         #endregion basebuildingsettings
 
         #region BookSettings
@@ -3990,6 +4094,110 @@ namespace DayZeEditor
                 e.Graphics.FillRectangle(brush, region);
             }
             e.Graphics.DrawRectangle(SystemPens.ControlText, region.Left, region.Top, region.Width - 1, region.Height - 1);
+        }
+        private void pictureBox3_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                _mouseLastPosition = e.Location;
+            }
+        }
+
+        private void pictureBox3_MouseEnter(object sender, EventArgs e)
+        {
+            if (pictureBox3.Focused == false)
+            {
+                pictureBox3.Focus();
+                panel2.AutoScrollPosition = _newscrollPosition;
+                pictureBox3.Invalidate();
+            }
+           
+        }
+        private void pictureBox3_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Point changePoint = new Point(e.Location.X - _mouseLastPosition.X, e.Location.Y - _mouseLastPosition.Y);
+                _newscrollPosition = new Point(-panel2.AutoScrollPosition.X - changePoint.X, -panel2.AutoScrollPosition.Y - changePoint.Y);
+                if (_newscrollPosition.X <= 0)
+                    _newscrollPosition.X = 0;
+                if (_newscrollPosition.Y <= 0)
+                    _newscrollPosition.Y = 0;
+                panel2.AutoScrollPosition = _newscrollPosition;
+                pictureBox3.Invalidate();
+            }
+            decimal scalevalue = MissionMapscale * (decimal)0.05;
+            decimal mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            darkLabel290.Text = Decimal.Round((decimal)(e.X / scalevalue), 4) + "," + Decimal.Round((decimal)((newsize - e.Y) / scalevalue), 4);
+        }
+        private void pictureBox3_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta < 0)
+            {
+                pictureBox3_ZoomOut();
+            }
+            else
+            {
+                pictureBox3_ZoomIn();
+            }
+
+        }
+        private void pictureBox3_ZoomIn()
+        {
+            int oldpictureboxhieght = pictureBox3.Height;
+            int oldpitureboxwidht = pictureBox3.Width;
+            Point oldscrollpos = panel2.AutoScrollPosition;
+            int tbv = trackBar4.Value;
+            int newval = tbv + 1;
+            if (newval >= 20)
+                newval = 20;
+            trackBar4.Value = newval;
+            markerScale = trackBar4.Value;
+            SetNMarkermapscale();
+            if (pictureBox3.Height > panel2.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox3.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panel2.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox3.Width > panel2.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox3.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panel2.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox3.Invalidate();
+        }
+        private void pictureBox3_ZoomOut()
+        {
+            int oldpictureboxhieght = pictureBox3.Height;
+            int oldpitureboxwidht = pictureBox3.Width;
+            Point oldscrollpos = panel2.AutoScrollPosition;
+            int tbv = trackBar4.Value;
+            int newval = tbv - 1;
+            if (newval <= 1)
+                newval = 1;
+            trackBar4.Value = newval;
+            markerScale = trackBar4.Value;
+            SetNMarkermapscale();
+            if (pictureBox3.Height > panel2.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox3.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panel2.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox3.Width > panel2.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox3.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panel2.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox3.Invalidate();
         }
         #endregion mapsettings
 
@@ -5541,7 +5749,118 @@ namespace DayZeEditor
         public Polygonpoints currentpolygonpoint;
         public string CurrentSafeZoneType;
         public int ZoneScale = 1;
+        private void darkButton107_Click(object sender, EventArgs e)
+        {
+            string Slot = StorageSlotCB.GetItemText(StorageSlotCB.SelectedItem);
+            if (!currentstoragelevel.ExcludedSlots.Contains(Slot))
+                currentstoragelevel.ExcludedSlots.Add(Slot);
+            PersonalStorageSettingsNew.isDirty = true;
+        }
 
+        private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                _mouseLastPosition = e.Location;
+            }
+        }
+
+        private void pictureBox2_MouseEnter(object sender, EventArgs e)
+        {
+            if (pictureBox2.Focused == false)
+            {
+                pictureBox2.Focus();
+                panel1.AutoScrollPosition = _newscrollPosition;
+                pictureBox2.Invalidate();
+            }
+        }
+
+        private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Point changePoint = new Point(e.Location.X - _mouseLastPosition.X, e.Location.Y - _mouseLastPosition.Y);
+                _newscrollPosition = new Point(-panel1.AutoScrollPosition.X - changePoint.X, -panel1.AutoScrollPosition.Y - changePoint.Y);
+                if (_newscrollPosition.X <= 0)
+                    _newscrollPosition.X = 0;
+                if (_newscrollPosition.Y <= 0)
+                    _newscrollPosition.Y = 0;
+                panel1.AutoScrollPosition = _newscrollPosition;
+                pictureBox2.Invalidate();
+            }
+            decimal scalevalue = ZoneScale * (decimal)0.05;
+            decimal mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            label19.Text = Decimal.Round((decimal)(e.X / scalevalue), 4) + "," + Decimal.Round((decimal)((newsize - e.Y) / scalevalue), 4);
+        }
+        private void pictureBox2_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta < 0)
+            {
+                pictureBox2_ZoomOut();
+            }
+            else
+            {
+                pictureBox2_ZoomIn();
+            }
+
+        }
+        private void pictureBox2_ZoomIn()
+        {
+            int oldpictureboxhieght = pictureBox2.Height;
+            int oldpitureboxwidht = pictureBox2.Width;
+            Point oldscrollpos = panel1.AutoScrollPosition;
+            int tbv = trackBar3.Value;
+            int newval = tbv + 1;
+            if (newval >= 20)
+                newval = 20;
+            trackBar3.Value = newval;
+            ZoneScale = trackBar3.Value;
+            Setscale();
+            if (pictureBox2.Height > panel1.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox2.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panel1.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox2.Width > panel1.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox2.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panel1.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox2.Invalidate();
+        }
+        private void pictureBox2_ZoomOut()
+        {
+            int oldpictureboxhieght = pictureBox2.Height;
+            int oldpitureboxwidht = pictureBox2.Width;
+            Point oldscrollpos = panel1.AutoScrollPosition;
+            int tbv = trackBar3.Value;
+            int newval = tbv - 1;
+            if (newval <= 1)
+                newval = 1;
+            trackBar3.Value = newval;
+            ZoneScale = trackBar3.Value;
+            Setscale();
+            if (pictureBox2.Height > panel1.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox2.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panel1.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox2.Width > panel1.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox2.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panel1.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox2.Invalidate();
+        }
         private void LoadSafeZonesettings()
         {
             useraction = false;
@@ -6297,6 +6616,110 @@ namespace DayZeEditor
                 SpawnYNUD.Value = (decimal)currentSpawnPosition[1];
                 SpawnZNUD.Value = (decimal)currentSpawnPosition[2];
             }
+        }
+        private void pictureBox4_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                _mouseLastPosition = e.Location;
+            }
+        }
+
+        private void pictureBox4_MouseEnter(object sender, EventArgs e)
+        {
+            if (pictureBox4.Focused == false)
+            {
+                pictureBox4.Focus();
+                panel4.AutoScrollPosition = _newscrollPosition;
+                pictureBox4.Invalidate();
+            }
+        }
+
+        private void pictureBox4_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Point changePoint = new Point(e.Location.X - _mouseLastPosition.X, e.Location.Y - _mouseLastPosition.Y);
+                _newscrollPosition = new Point(-panel4.AutoScrollPosition.X - changePoint.X, -panel4.AutoScrollPosition.Y - changePoint.Y);
+                if (_newscrollPosition.X <= 0)
+                    _newscrollPosition.X = 0;
+                if (_newscrollPosition.Y <= 0)
+                    _newscrollPosition.Y = 0;
+                panel4.AutoScrollPosition = _newscrollPosition;
+                pictureBox4.Invalidate();
+            }
+            decimal scalevalue = SpawnScale * (decimal)0.05;
+            decimal mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            darkLabel292.Text = Decimal.Round((decimal)(e.X / scalevalue), 4) + "," + Decimal.Round((decimal)((newsize - e.Y) / scalevalue), 4);
+        }
+        private void pictureBox4_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta < 0)
+            {
+                pictureBox4_ZoomOut();
+            }
+            else
+            {
+                pictureBox4_ZoomIn();
+            }
+
+        }
+        private void pictureBox4_ZoomIn()
+        {
+            int oldpictureboxhieght = pictureBox4.Height;
+            int oldpitureboxwidht = pictureBox4.Width;
+            Point oldscrollpos = panel4.AutoScrollPosition;
+            int tbv = trackBar5.Value;
+            int newval = tbv + 1;
+            if (newval >= 20)
+                newval = 20;
+            trackBar5.Value = newval;
+            SpawnScale = trackBar5.Value;
+            SetSpawnScale();
+            if (pictureBox4.Height > panel4.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox4.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panel4.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox4.Width > panel4.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox4.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panel4.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox4.Invalidate();
+        }
+        private void pictureBox4_ZoomOut()
+        {
+            int oldpictureboxhieght = pictureBox4.Height;
+            int oldpitureboxwidht = pictureBox4.Width;
+            Point oldscrollpos = panel4.AutoScrollPosition;
+            int tbv = trackBar5.Value;
+            int newval = tbv - 1;
+            if (newval <= 1)
+                newval = 1;
+            trackBar5.Value = newval;
+            SpawnScale = trackBar5.Value;
+            SetSpawnScale();
+            if (pictureBox4.Height > panel4.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox4.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panel4.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox4.Width > panel4.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox4.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panel4.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox4.Invalidate();
         }
         private void darkButton48_Click(object sender, EventArgs e)
         {
@@ -8539,15 +8962,10 @@ namespace DayZeEditor
             PersonalStorageSettingsNew.isDirty = true;
         }
 
+
         #endregion personalstroage
 
-        private void darkButton107_Click(object sender, EventArgs e)
-        {
-            string Slot = StorageSlotCB.GetItemText(StorageSlotCB.SelectedItem);
-            if (!currentstoragelevel.ExcludedSlots.Contains(Slot))
-                currentstoragelevel.ExcludedSlots.Add(Slot);
-            PersonalStorageSettingsNew.isDirty = true;
-        }
+
     }
     public class NullToEmptyGearConverter : JsonConverter<Gear>
     {

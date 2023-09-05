@@ -64,6 +64,19 @@ namespace DayZeEditor
             this.label1 = new System.Windows.Forms.Label();
             this.IsKosZoneActiveCB = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.SaturdayDOWCB = new System.Windows.Forms.CheckBox();
+            this.FridayDOWCB = new System.Windows.Forms.CheckBox();
+            this.ThursdayDOWCB = new System.Windows.Forms.CheckBox();
+            this.SundayDOWCB = new System.Windows.Forms.CheckBox();
+            this.MondayDOWCB = new System.Windows.Forms.CheckBox();
+            this.TuesdayDOWCB = new System.Windows.Forms.CheckBox();
+            this.WednesdayDOWCB = new System.Windows.Forms.CheckBox();
+            this.DynamicPurgeWeeknumberGB = new System.Windows.Forms.GroupBox();
+            this.Week1CB = new System.Windows.Forms.CheckBox();
+            this.Week2CB = new System.Windows.Forms.CheckBox();
+            this.Week3CB = new System.Windows.Forms.CheckBox();
+            this.Week4CB = new System.Windows.Forms.CheckBox();
             this.DPEndDT = new System.Windows.Forms.DateTimePicker();
             this.DPStartDT = new System.Windows.Forms.DateTimePicker();
             this.label15 = new System.Windows.Forms.Label();
@@ -101,19 +114,6 @@ namespace DayZeEditor
             this.label18 = new System.Windows.Forms.Label();
             this.IsDynPurgeActiveCB = new System.Windows.Forms.CheckBox();
             this.IsPurgeActiveCB = new System.Windows.Forms.CheckBox();
-            this.DynamicPurgeWeeknumberGB = new System.Windows.Forms.GroupBox();
-            this.Week4CB = new System.Windows.Forms.CheckBox();
-            this.Week3CB = new System.Windows.Forms.CheckBox();
-            this.Week2CB = new System.Windows.Forms.CheckBox();
-            this.Week1CB = new System.Windows.Forms.CheckBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.SundayDOWCB = new System.Windows.Forms.CheckBox();
-            this.MondayDOWCB = new System.Windows.Forms.CheckBox();
-            this.TuesdayDOWCB = new System.Windows.Forms.CheckBox();
-            this.WednesdayDOWCB = new System.Windows.Forms.CheckBox();
-            this.ThursdayDOWCB = new System.Windows.Forms.CheckBox();
-            this.FridayDOWCB = new System.Windows.Forms.CheckBox();
-            this.SaturdayDOWCB = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             this.darkToolStrip22.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -126,13 +126,13 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KOSCheckNUD)).BeginInit();
             this.tabPage2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.DynamicPurgeWeeknumberGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DynamicPurgeDurationMaxNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ServerrestartCycleNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DynamicPurgeDurationMinNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ScheduleCycleNUD)).BeginInit();
-            this.DynamicPurgeWeeknumberGB.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -619,6 +619,180 @@ namespace DayZeEditor
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.SaturdayDOWCB);
+            this.groupBox1.Controls.Add(this.FridayDOWCB);
+            this.groupBox1.Controls.Add(this.ThursdayDOWCB);
+            this.groupBox1.Controls.Add(this.SundayDOWCB);
+            this.groupBox1.Controls.Add(this.MondayDOWCB);
+            this.groupBox1.Controls.Add(this.TuesdayDOWCB);
+            this.groupBox1.Controls.Add(this.WednesdayDOWCB);
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox1.Location = new System.Drawing.Point(487, 331);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(211, 138);
+            this.groupBox1.TabIndex = 154;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Day of the Week";
+            // 
+            // SaturdayDOWCB
+            // 
+            this.SaturdayDOWCB.AutoSize = true;
+            this.SaturdayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SaturdayDOWCB.Location = new System.Drawing.Point(6, 115);
+            this.SaturdayDOWCB.Name = "SaturdayDOWCB";
+            this.SaturdayDOWCB.Size = new System.Drawing.Size(68, 17);
+            this.SaturdayDOWCB.TabIndex = 138;
+            this.SaturdayDOWCB.Tag = "4";
+            this.SaturdayDOWCB.Text = "Saturday";
+            this.SaturdayDOWCB.UseVisualStyleBackColor = true;
+            this.SaturdayDOWCB.CheckedChanged += new System.EventHandler(this.SaturdayDOWCB_CheckedChanged);
+            // 
+            // FridayDOWCB
+            // 
+            this.FridayDOWCB.AutoSize = true;
+            this.FridayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.FridayDOWCB.Location = new System.Drawing.Point(6, 99);
+            this.FridayDOWCB.Name = "FridayDOWCB";
+            this.FridayDOWCB.Size = new System.Drawing.Size(54, 17);
+            this.FridayDOWCB.TabIndex = 137;
+            this.FridayDOWCB.Tag = "4";
+            this.FridayDOWCB.Text = "Friday";
+            this.FridayDOWCB.UseVisualStyleBackColor = true;
+            this.FridayDOWCB.CheckedChanged += new System.EventHandler(this.FridayDOWCB_CheckedChanged);
+            // 
+            // ThursdayDOWCB
+            // 
+            this.ThursdayDOWCB.AutoSize = true;
+            this.ThursdayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ThursdayDOWCB.Location = new System.Drawing.Point(6, 83);
+            this.ThursdayDOWCB.Name = "ThursdayDOWCB";
+            this.ThursdayDOWCB.Size = new System.Drawing.Size(70, 17);
+            this.ThursdayDOWCB.TabIndex = 136;
+            this.ThursdayDOWCB.Tag = "4";
+            this.ThursdayDOWCB.Text = "Thursday";
+            this.ThursdayDOWCB.UseVisualStyleBackColor = true;
+            this.ThursdayDOWCB.CheckedChanged += new System.EventHandler(this.ThursdayDOWCB_CheckedChanged);
+            // 
+            // SundayDOWCB
+            // 
+            this.SundayDOWCB.AutoSize = true;
+            this.SundayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SundayDOWCB.Location = new System.Drawing.Point(6, 19);
+            this.SundayDOWCB.Name = "SundayDOWCB";
+            this.SundayDOWCB.Size = new System.Drawing.Size(62, 17);
+            this.SundayDOWCB.TabIndex = 135;
+            this.SundayDOWCB.Tag = "1";
+            this.SundayDOWCB.Text = "Sunday";
+            this.SundayDOWCB.UseVisualStyleBackColor = true;
+            this.SundayDOWCB.CheckedChanged += new System.EventHandler(this.SundayDOWCB_CheckedChanged);
+            // 
+            // MondayDOWCB
+            // 
+            this.MondayDOWCB.AutoSize = true;
+            this.MondayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.MondayDOWCB.Location = new System.Drawing.Point(6, 35);
+            this.MondayDOWCB.Name = "MondayDOWCB";
+            this.MondayDOWCB.Size = new System.Drawing.Size(64, 17);
+            this.MondayDOWCB.TabIndex = 134;
+            this.MondayDOWCB.Tag = "2";
+            this.MondayDOWCB.Text = "Monday";
+            this.MondayDOWCB.UseVisualStyleBackColor = true;
+            this.MondayDOWCB.CheckedChanged += new System.EventHandler(this.MondayDOWCB_CheckedChanged);
+            // 
+            // TuesdayDOWCB
+            // 
+            this.TuesdayDOWCB.AutoSize = true;
+            this.TuesdayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.TuesdayDOWCB.Location = new System.Drawing.Point(6, 51);
+            this.TuesdayDOWCB.Name = "TuesdayDOWCB";
+            this.TuesdayDOWCB.Size = new System.Drawing.Size(67, 17);
+            this.TuesdayDOWCB.TabIndex = 133;
+            this.TuesdayDOWCB.Tag = "3";
+            this.TuesdayDOWCB.Text = "Tuesday";
+            this.TuesdayDOWCB.UseVisualStyleBackColor = true;
+            this.TuesdayDOWCB.CheckedChanged += new System.EventHandler(this.TuesdayDOWCB_CheckedChanged);
+            // 
+            // WednesdayDOWCB
+            // 
+            this.WednesdayDOWCB.AutoSize = true;
+            this.WednesdayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.WednesdayDOWCB.Location = new System.Drawing.Point(6, 67);
+            this.WednesdayDOWCB.Name = "WednesdayDOWCB";
+            this.WednesdayDOWCB.Size = new System.Drawing.Size(83, 17);
+            this.WednesdayDOWCB.TabIndex = 132;
+            this.WednesdayDOWCB.Tag = "4";
+            this.WednesdayDOWCB.Text = "Wednesday";
+            this.WednesdayDOWCB.UseVisualStyleBackColor = true;
+            this.WednesdayDOWCB.CheckedChanged += new System.EventHandler(this.WednesdayDOWCB_CheckedChanged);
+            // 
+            // DynamicPurgeWeeknumberGB
+            // 
+            this.DynamicPurgeWeeknumberGB.Controls.Add(this.Week1CB);
+            this.DynamicPurgeWeeknumberGB.Controls.Add(this.Week2CB);
+            this.DynamicPurgeWeeknumberGB.Controls.Add(this.Week3CB);
+            this.DynamicPurgeWeeknumberGB.Controls.Add(this.Week4CB);
+            this.DynamicPurgeWeeknumberGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.DynamicPurgeWeeknumberGB.Location = new System.Drawing.Point(408, 331);
+            this.DynamicPurgeWeeknumberGB.Name = "DynamicPurgeWeeknumberGB";
+            this.DynamicPurgeWeeknumberGB.Size = new System.Drawing.Size(73, 138);
+            this.DynamicPurgeWeeknumberGB.TabIndex = 153;
+            this.DynamicPurgeWeeknumberGB.TabStop = false;
+            this.DynamicPurgeWeeknumberGB.Text = "Week Number";
+            // 
+            // Week1CB
+            // 
+            this.Week1CB.AutoSize = true;
+            this.Week1CB.ForeColor = System.Drawing.SystemColors.Control;
+            this.Week1CB.Location = new System.Drawing.Point(21, 35);
+            this.Week1CB.Name = "Week1CB";
+            this.Week1CB.Size = new System.Drawing.Size(32, 17);
+            this.Week1CB.TabIndex = 135;
+            this.Week1CB.Tag = "1";
+            this.Week1CB.Text = "1";
+            this.Week1CB.UseVisualStyleBackColor = true;
+            this.Week1CB.CheckedChanged += new System.EventHandler(this.Week1CB_CheckedChanged);
+            // 
+            // Week2CB
+            // 
+            this.Week2CB.AutoSize = true;
+            this.Week2CB.ForeColor = System.Drawing.SystemColors.Control;
+            this.Week2CB.Location = new System.Drawing.Point(21, 58);
+            this.Week2CB.Name = "Week2CB";
+            this.Week2CB.Size = new System.Drawing.Size(32, 17);
+            this.Week2CB.TabIndex = 134;
+            this.Week2CB.Tag = "2";
+            this.Week2CB.Text = "2";
+            this.Week2CB.UseVisualStyleBackColor = true;
+            this.Week2CB.CheckedChanged += new System.EventHandler(this.Week2CB_CheckedChanged);
+            // 
+            // Week3CB
+            // 
+            this.Week3CB.AutoSize = true;
+            this.Week3CB.ForeColor = System.Drawing.SystemColors.Control;
+            this.Week3CB.Location = new System.Drawing.Point(21, 81);
+            this.Week3CB.Name = "Week3CB";
+            this.Week3CB.Size = new System.Drawing.Size(32, 17);
+            this.Week3CB.TabIndex = 133;
+            this.Week3CB.Tag = "3";
+            this.Week3CB.Text = "3";
+            this.Week3CB.UseVisualStyleBackColor = true;
+            this.Week3CB.CheckedChanged += new System.EventHandler(this.Week3CB_CheckedChanged);
+            // 
+            // Week4CB
+            // 
+            this.Week4CB.AutoSize = true;
+            this.Week4CB.ForeColor = System.Drawing.SystemColors.Control;
+            this.Week4CB.Location = new System.Drawing.Point(21, 104);
+            this.Week4CB.Name = "Week4CB";
+            this.Week4CB.Size = new System.Drawing.Size(32, 17);
+            this.Week4CB.TabIndex = 132;
+            this.Week4CB.Tag = "4";
+            this.Week4CB.Text = "4";
+            this.Week4CB.UseVisualStyleBackColor = true;
+            this.Week4CB.CheckedChanged += new System.EventHandler(this.Week4CB_CheckedChanged);
+            // 
             // DPEndDT
             // 
             this.DPEndDT.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
@@ -1057,180 +1231,6 @@ namespace DayZeEditor
             this.IsPurgeActiveCB.UseVisualStyleBackColor = true;
             this.IsPurgeActiveCB.CheckedChanged += new System.EventHandler(this.IsPurgeActiveCB_CheckedChanged);
             // 
-            // DynamicPurgeWeeknumberGB
-            // 
-            this.DynamicPurgeWeeknumberGB.Controls.Add(this.Week1CB);
-            this.DynamicPurgeWeeknumberGB.Controls.Add(this.Week2CB);
-            this.DynamicPurgeWeeknumberGB.Controls.Add(this.Week3CB);
-            this.DynamicPurgeWeeknumberGB.Controls.Add(this.Week4CB);
-            this.DynamicPurgeWeeknumberGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.DynamicPurgeWeeknumberGB.Location = new System.Drawing.Point(408, 331);
-            this.DynamicPurgeWeeknumberGB.Name = "DynamicPurgeWeeknumberGB";
-            this.DynamicPurgeWeeknumberGB.Size = new System.Drawing.Size(73, 138);
-            this.DynamicPurgeWeeknumberGB.TabIndex = 153;
-            this.DynamicPurgeWeeknumberGB.TabStop = false;
-            this.DynamicPurgeWeeknumberGB.Text = "Week Number";
-            // 
-            // Week4CB
-            // 
-            this.Week4CB.AutoSize = true;
-            this.Week4CB.ForeColor = System.Drawing.SystemColors.Control;
-            this.Week4CB.Location = new System.Drawing.Point(21, 104);
-            this.Week4CB.Name = "Week4CB";
-            this.Week4CB.Size = new System.Drawing.Size(32, 17);
-            this.Week4CB.TabIndex = 132;
-            this.Week4CB.Tag = "4";
-            this.Week4CB.Text = "4";
-            this.Week4CB.UseVisualStyleBackColor = true;
-            this.Week4CB.CheckedChanged += new System.EventHandler(this.Week4CB_CheckedChanged);
-            // 
-            // Week3CB
-            // 
-            this.Week3CB.AutoSize = true;
-            this.Week3CB.ForeColor = System.Drawing.SystemColors.Control;
-            this.Week3CB.Location = new System.Drawing.Point(21, 81);
-            this.Week3CB.Name = "Week3CB";
-            this.Week3CB.Size = new System.Drawing.Size(32, 17);
-            this.Week3CB.TabIndex = 133;
-            this.Week3CB.Tag = "3";
-            this.Week3CB.Text = "3";
-            this.Week3CB.UseVisualStyleBackColor = true;
-            this.Week3CB.CheckedChanged += new System.EventHandler(this.Week3CB_CheckedChanged);
-            // 
-            // Week2CB
-            // 
-            this.Week2CB.AutoSize = true;
-            this.Week2CB.ForeColor = System.Drawing.SystemColors.Control;
-            this.Week2CB.Location = new System.Drawing.Point(21, 58);
-            this.Week2CB.Name = "Week2CB";
-            this.Week2CB.Size = new System.Drawing.Size(32, 17);
-            this.Week2CB.TabIndex = 134;
-            this.Week2CB.Tag = "2";
-            this.Week2CB.Text = "2";
-            this.Week2CB.UseVisualStyleBackColor = true;
-            this.Week2CB.CheckedChanged += new System.EventHandler(this.Week2CB_CheckedChanged);
-            // 
-            // Week1CB
-            // 
-            this.Week1CB.AutoSize = true;
-            this.Week1CB.ForeColor = System.Drawing.SystemColors.Control;
-            this.Week1CB.Location = new System.Drawing.Point(21, 35);
-            this.Week1CB.Name = "Week1CB";
-            this.Week1CB.Size = new System.Drawing.Size(32, 17);
-            this.Week1CB.TabIndex = 135;
-            this.Week1CB.Tag = "1";
-            this.Week1CB.Text = "1";
-            this.Week1CB.UseVisualStyleBackColor = true;
-            this.Week1CB.CheckedChanged += new System.EventHandler(this.Week1CB_CheckedChanged);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.SaturdayDOWCB);
-            this.groupBox1.Controls.Add(this.FridayDOWCB);
-            this.groupBox1.Controls.Add(this.ThursdayDOWCB);
-            this.groupBox1.Controls.Add(this.SundayDOWCB);
-            this.groupBox1.Controls.Add(this.MondayDOWCB);
-            this.groupBox1.Controls.Add(this.TuesdayDOWCB);
-            this.groupBox1.Controls.Add(this.WednesdayDOWCB);
-            this.groupBox1.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox1.Location = new System.Drawing.Point(487, 331);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(211, 138);
-            this.groupBox1.TabIndex = 154;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Day of the Week";
-            // 
-            // SundayDOWCB
-            // 
-            this.SundayDOWCB.AutoSize = true;
-            this.SundayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SundayDOWCB.Location = new System.Drawing.Point(6, 19);
-            this.SundayDOWCB.Name = "SundayDOWCB";
-            this.SundayDOWCB.Size = new System.Drawing.Size(62, 17);
-            this.SundayDOWCB.TabIndex = 135;
-            this.SundayDOWCB.Tag = "1";
-            this.SundayDOWCB.Text = "Sunday";
-            this.SundayDOWCB.UseVisualStyleBackColor = true;
-            this.SundayDOWCB.CheckedChanged += new System.EventHandler(this.SundayDOWCB_CheckedChanged);
-            // 
-            // MondayDOWCB
-            // 
-            this.MondayDOWCB.AutoSize = true;
-            this.MondayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.MondayDOWCB.Location = new System.Drawing.Point(6, 35);
-            this.MondayDOWCB.Name = "MondayDOWCB";
-            this.MondayDOWCB.Size = new System.Drawing.Size(64, 17);
-            this.MondayDOWCB.TabIndex = 134;
-            this.MondayDOWCB.Tag = "2";
-            this.MondayDOWCB.Text = "Monday";
-            this.MondayDOWCB.UseVisualStyleBackColor = true;
-            this.MondayDOWCB.CheckedChanged += new System.EventHandler(this.MondayDOWCB_CheckedChanged);
-            // 
-            // TuesdayDOWCB
-            // 
-            this.TuesdayDOWCB.AutoSize = true;
-            this.TuesdayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.TuesdayDOWCB.Location = new System.Drawing.Point(6, 51);
-            this.TuesdayDOWCB.Name = "TuesdayDOWCB";
-            this.TuesdayDOWCB.Size = new System.Drawing.Size(67, 17);
-            this.TuesdayDOWCB.TabIndex = 133;
-            this.TuesdayDOWCB.Tag = "3";
-            this.TuesdayDOWCB.Text = "Tuesday";
-            this.TuesdayDOWCB.UseVisualStyleBackColor = true;
-            this.TuesdayDOWCB.CheckedChanged += new System.EventHandler(this.TuesdayDOWCB_CheckedChanged);
-            // 
-            // WednesdayDOWCB
-            // 
-            this.WednesdayDOWCB.AutoSize = true;
-            this.WednesdayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.WednesdayDOWCB.Location = new System.Drawing.Point(6, 67);
-            this.WednesdayDOWCB.Name = "WednesdayDOWCB";
-            this.WednesdayDOWCB.Size = new System.Drawing.Size(83, 17);
-            this.WednesdayDOWCB.TabIndex = 132;
-            this.WednesdayDOWCB.Tag = "4";
-            this.WednesdayDOWCB.Text = "Wednesday";
-            this.WednesdayDOWCB.UseVisualStyleBackColor = true;
-            this.WednesdayDOWCB.CheckedChanged += new System.EventHandler(this.WednesdayDOWCB_CheckedChanged);
-            // 
-            // ThursdayDOWCB
-            // 
-            this.ThursdayDOWCB.AutoSize = true;
-            this.ThursdayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ThursdayDOWCB.Location = new System.Drawing.Point(6, 83);
-            this.ThursdayDOWCB.Name = "ThursdayDOWCB";
-            this.ThursdayDOWCB.Size = new System.Drawing.Size(70, 17);
-            this.ThursdayDOWCB.TabIndex = 136;
-            this.ThursdayDOWCB.Tag = "4";
-            this.ThursdayDOWCB.Text = "Thursday";
-            this.ThursdayDOWCB.UseVisualStyleBackColor = true;
-            this.ThursdayDOWCB.CheckedChanged += new System.EventHandler(this.ThursdayDOWCB_CheckedChanged);
-            // 
-            // FridayDOWCB
-            // 
-            this.FridayDOWCB.AutoSize = true;
-            this.FridayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.FridayDOWCB.Location = new System.Drawing.Point(6, 99);
-            this.FridayDOWCB.Name = "FridayDOWCB";
-            this.FridayDOWCB.Size = new System.Drawing.Size(54, 17);
-            this.FridayDOWCB.TabIndex = 137;
-            this.FridayDOWCB.Tag = "4";
-            this.FridayDOWCB.Text = "Friday";
-            this.FridayDOWCB.UseVisualStyleBackColor = true;
-            this.FridayDOWCB.CheckedChanged += new System.EventHandler(this.FridayDOWCB_CheckedChanged);
-            // 
-            // SaturdayDOWCB
-            // 
-            this.SaturdayDOWCB.AutoSize = true;
-            this.SaturdayDOWCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SaturdayDOWCB.Location = new System.Drawing.Point(6, 115);
-            this.SaturdayDOWCB.Name = "SaturdayDOWCB";
-            this.SaturdayDOWCB.Size = new System.Drawing.Size(68, 17);
-            this.SaturdayDOWCB.TabIndex = 138;
-            this.SaturdayDOWCB.Tag = "4";
-            this.SaturdayDOWCB.Text = "Saturday";
-            this.SaturdayDOWCB.UseVisualStyleBackColor = true;
-            this.SaturdayDOWCB.CheckedChanged += new System.EventHandler(this.SaturdayDOWCB_CheckedChanged);
-            // 
             // KOSZonemanager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1260,15 +1260,15 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.KOSCheckNUD)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.DynamicPurgeWeeknumberGB.ResumeLayout(false);
+            this.DynamicPurgeWeeknumberGB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DynamicPurgeDurationMaxNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ServerrestartCycleNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DynamicPurgeDurationMinNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ScheduleCycleNUD)).EndInit();
-            this.DynamicPurgeWeeknumberGB.ResumeLayout(false);
-            this.DynamicPurgeWeeknumberGB.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }

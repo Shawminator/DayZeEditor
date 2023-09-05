@@ -50,7 +50,7 @@ namespace DayZeEditor
             this.darkLabel28 = new DarkUI.Controls.DarkLabel();
             this.Crash_MessageTB = new System.Windows.Forms.TextBox();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel3 = new TreeViewMS.PanelEx();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.darkButton5 = new DarkUI.Controls.DarkButton();
             this.darkButton6 = new DarkUI.Controls.DarkButton();
@@ -1245,7 +1245,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.TrackBar trackBar2;
-        private System.Windows.Forms.Panel panel3;
+        private TreeViewMS.PanelEx panel3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private DarkUI.Controls.DarkLabel darkLabel28;
         private System.Windows.Forms.TextBox Crash_MessageTB;

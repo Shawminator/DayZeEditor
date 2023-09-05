@@ -3418,6 +3418,10 @@ namespace DayZeEditor
         }
         private void darkButton32_Click(object sender, EventArgs e)
         {
+            foreach (Tradermap tm in tradermaps.maps)
+            {
+                tm.IsInAZone = false;
+            }
             foreach (Zones zone in Zones.ZoneList)
             {
                 foreach (Tradermap tm in tradermaps.maps)
@@ -3432,6 +3436,13 @@ namespace DayZeEditor
                 }
             }
             setTraderzonelist();
+            NoZoneTraders = new BindingList<Tradermap>();
+            foreach (Tradermap tm in tradermaps.maps)
+            {
+                if (!tm.IsInAZone)
+                    NoZoneTraders.Add(tm);
+            }
+            listBox18.DataSource = NoZoneTraders;
         }
         private void darkButton37_Click(object sender, EventArgs e)
         {
