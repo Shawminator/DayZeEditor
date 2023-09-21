@@ -3645,6 +3645,7 @@ namespace DayZeEditor
                 ItemAttachmentchanceNUD.Visible = true;
                 AttachmemtItemChanceLabel.Visible = true;
                 AttachmentchanceNUD.Visible = true;
+                AttachemntTB.Visible = false;
                 AttachmentchanceNUD.Value = currentAttchment.chance;
                 AttachmentItemLB.DisplayMember = "DisplayName";
                 AttachmentItemLB.ValueMember = "Value";
@@ -3658,6 +3659,7 @@ namespace DayZeEditor
                 chancAttachmentselabel.Visible = false;
                 AttachmentchanceNUD.Visible = false;
                 ItemAttachmentchanceNUD.Visible = false;
+                AttachemntTB.Visible = true;
                 AttachmemtItemChanceLabel.Visible = false;
                 AttachmentChangeItemButton.Visible = false;
                 AttachmentPresetGB.Visible = true;

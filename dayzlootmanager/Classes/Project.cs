@@ -94,6 +94,9 @@ namespace DayZeEditor
         public string mpmissionpath { get; set; }
         public bool Createbackups { get; set; }
 
+
+        [JsonIgnore]
+        public bool haswarnings { get; set; }
         [JsonIgnore]
         public economycoreconfig EconomyCore { get; set; }
         [JsonIgnore]
@@ -123,7 +126,7 @@ namespace DayZeEditor
         [JsonIgnore]
         public weatherconfig weatherconfig { get; set; }
         [JsonIgnore]
-        public PlayerDB PlayerDB { get; set; }
+        public PlayerDataBase PlayerDB { get; set; }
         [JsonIgnore]
         public mapgroupproto mapgroupproto { get; set; }
         [JsonIgnore]
@@ -185,7 +188,7 @@ namespace DayZeEditor
             bool needsave = false;
             ModTypesList = new BindingList<TypesFile>();
             if (EconomyCore.economycore == null) return;
-            Console.WriteLine("\nSerializing custom types from Economycore");
+            Console.WriteLine("\n***Starting custom types from Economycore***");
             foreach (economycoreCE mods in EconomyCore.economycore.ce)
             {
                 if(mods.folder.Contains("\\"))
@@ -196,6 +199,10 @@ namespace DayZeEditor
                 string path = projectFullName + "\\mpmissions\\" + mpmissionpath + "\\" + mods.folder;
                 if (!Directory.Exists(path))
                 {
+                    haswarnings = true;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(Environment.NewLine + "### Warning ### ");
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine(mods.folder + " does not exis, please remove full ce section from economy core." + Environment.NewLine);
                     continue;
                 }
@@ -203,6 +210,10 @@ namespace DayZeEditor
                 {
                     if (!File.Exists(path + "\\" + file.name))
                     {
+                        haswarnings = true;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine(Environment.NewLine + "### Warning ### ");
+                        Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine(file.name + " Does not exist, please remove from economy core."+ Environment.NewLine);
                         continue;
                     }
@@ -210,7 +221,9 @@ namespace DayZeEditor
                         SetmodTypes(path + "\\" + file.name);
                 }
             }
-            if(needsave)
+            Console.WriteLine("***End custom types from Economycore***");
+            Console.WriteLine(Environment.NewLine);
+            if (needsave)
             {
                 EconomyCore.SaveEconomycore();
             }
@@ -292,6 +305,10 @@ namespace DayZeEditor
                 string path = projectFullName + "\\mpmissions\\" + mpmissionpath + "\\" + mods.folder;
                 if (!Directory.Exists(path))
                 {
+                    haswarnings = true;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(Environment.NewLine + "### Warning ### ");
+                    Console.ForegroundColor = ConsoleColor.White; 
                     Console.WriteLine(mods.folder + " Does not exist. please remove full ce section from economycore" + Environment.NewLine);
                     continue;
                 }
@@ -301,6 +318,10 @@ namespace DayZeEditor
                     {
                         if (!File.Exists(path + "\\" + file.name))
                         {
+                            haswarnings = true;
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine(Environment.NewLine + "### Warning ### ");
+                            Console.ForegroundColor = ConsoleColor.White;
                             Console.WriteLine(mods.folder  + "\\" + file.name + " Does not exist, please remove from economy core." + Environment.NewLine);
                             continue;
                         }
@@ -313,12 +334,13 @@ namespace DayZeEditor
         {
             territoriesList = new BindingList<territoriesConfig>();
             string[] Territoryfiles = Directory.GetFiles(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\env");
-            Console.WriteLine("\nSerializing Territory files.....");
+            Console.WriteLine("****Starting Territory files****");
             foreach (string file in Territoryfiles)
             {
                 if(Path.GetExtension(file) == ".xml")
                     territoriesList.Add(new territoriesConfig(file));
             }
+            Console.WriteLine("****End Territory files****");
         }
         internal void SetRandompresets()
         {
@@ -431,7 +453,11 @@ namespace DayZeEditor
         }
         internal void GetPlayerDB()
         {
-            //PlayerDB = new PlayerDB(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\storage_1\\players.db");
+            OpenFileDialog playerdb = new OpenFileDialog();
+            if (playerdb.ShowDialog() == DialogResult.OK)
+            {
+                PlayerDB = new PlayerDataBase(playerdb.FileName);
+            }
         }
     }
 }

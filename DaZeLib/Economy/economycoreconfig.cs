@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -44,17 +45,26 @@ namespace DayZeLib
             Filename = filename;
             var mySerializer = new XmlSerializer(typeof(economycore));
             // To read the file, create a FileStream.
-            Console.WriteLine("serializing " + Path.GetFileName(Filename));
+            Console.Write("serializing " + Path.GetFileName(Filename));
             try
             {
                 using (var myFileStream = new FileStream(filename, FileMode.Open))
                 {
                     // Call the Deserialize method and cast to the object type.
                     economycore = (economycore)mySerializer.Deserialize(myFileStream);
+                    if(economycore != null)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("  OK....");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
                 }
             }
             catch (Exception ex)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("  Failed....");
+                Console.ForegroundColor = ConsoleColor.White;
                 var form = Application.OpenForms["SplashForm"];
                 if (form != null)
                 {
@@ -168,13 +178,22 @@ namespace DayZeLib
                 }
                 using (Stream ms = Helper.GenerateStreamFromString(sb.ToString()))
                 {
-                    Console.WriteLine("serializing " + Path.GetFileName(Filename));
+                    Console.Write("serializing " + Path.GetFileName(Filename));
                     try
                     {
                         spawnabletypes = (spawnabletypes)mySerializer.Deserialize(ms);
+                        if (spawnabletypes != null)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("  OK....");
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
                     }
                     catch (Exception ex)
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("  Failed....");
+                        Console.ForegroundColor = ConsoleColor.White;
                         var form = Application.OpenForms["SplashForm"];
                         if (form != null)
                         {
@@ -235,13 +254,22 @@ namespace DayZeLib
             }
             using (Stream ms = Helper.GenerateStreamFromString(sb.ToString()))
             {
-                Console.WriteLine("serializing " + Path.GetFileName(Filename));
+                Console.Write("\tserializing " + Path.GetFileName(Filename));
                 try
                 {
                     territorytype = (territorytype)mySerializer.Deserialize(ms);
+                    if (territorytype != null)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("  OK....");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
                 }
                 catch (Exception ex)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("  Failed....");
+                    Console.ForegroundColor = ConsoleColor.White;
                     var form = Application.OpenForms["SplashForm"];
                     if (form != null)
                     {
@@ -354,14 +382,23 @@ namespace DayZeLib
                 // To read the file, create a FileStream.
                 using (var myFileStream = new FileStream(filename, FileMode.Open))
                 {
-                    Console.WriteLine("serializing " + Path.GetFileName(Filename));
+                    Console.Write("serializing " + Path.GetFileName(Filename));
                     try
                     {
                         // Call the Deserialize method and cast to the object type.
                         prototypeGroup = (prototype)mySerializer.Deserialize(myFileStream);
+                        if (prototypeGroup != null)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("  OK....");
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
                     }
                     catch (Exception ex)
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("  Failed....");
+                        Console.ForegroundColor = ConsoleColor.White;
                         var form = Application.OpenForms["SplashForm"];
                         if (form != null)
                         {
@@ -409,14 +446,23 @@ namespace DayZeLib
                 // To read the file, create a FileStream.
                 using (var myFileStream = new FileStream(filename, FileMode.Open))
                 {
-                    Console.WriteLine("serializing " + Path.GetFileName(Filename));
+                    Console.Write("serializing " + Path.GetFileName(Filename));
                     try
                     {
                         // Call the Deserialize method and cast to the object type.
                         map = (map)mySerializer.Deserialize(myFileStream);
+                        if (map != null)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("  OK....");
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
                     }
                     catch (Exception ex)
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("  Failed....");
+                        Console.ForegroundColor = ConsoleColor.White;
                         var form = Application.OpenForms["SplashForm"];
                         if (form != null)
                         {
@@ -447,14 +493,23 @@ namespace DayZeLib
                 // To read the file, create a FileStream.
                 using (var myFileStream = new FileStream(filename, FileMode.Open))
                 {
-                    Console.WriteLine("serializing " + Path.GetFileName(Filename));
+                    Console.Write("serializing " + Path.GetFileName(Filename));
                     try
                     {
                         // Call the Deserialize method and cast to the object type.
                         events = (events)mySerializer.Deserialize(myFileStream);
+                        if (events != null)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("  OK....");
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
                     }
                     catch (Exception ex)
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("  Failed....");
+                        Console.ForegroundColor = ConsoleColor.White;
                         var form = Application.OpenForms["SplashForm"];
                         if (form != null)
                         {
@@ -508,14 +563,23 @@ namespace DayZeLib
                 // To read the file, create a FileStream.
                 using (var myFileStream = new FileStream(filename, FileMode.Open))
                 {
-                    Console.WriteLine("serializing " + Path.GetFileName(Filename));
+                    Console.Write("serializing " + Path.GetFileName(Filename));
                     try
                     {
                         // Call the Deserialize method and cast to the object type.
                         eventposdef = (eventposdef)mySerializer.Deserialize(myFileStream);
+                        if (eventposdef != null)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("  OK....");
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
                     }
                     catch (Exception ex)
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("  Failed....");
+                        Console.ForegroundColor = ConsoleColor.White;
                         var form = Application.OpenForms["SplashForm"];
                         if (form != null)
                         {
@@ -569,14 +633,23 @@ namespace DayZeLib
             {
                 using (var myFileStream = new FileStream(filename, FileMode.Open))
                 {
-                    Console.WriteLine("serializing " + Path.GetFileName(Filename));
+                    Console.Write("serializing " + Path.GetFileName(Filename));
                     try
                     {
                         // Call the Deserialize method and cast to the object type.
                         eventgroupdef = (eventgroupdef)mySerializer.Deserialize(myFileStream);
+                        if (eventgroupdef != null)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("  OK....");
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
                     }
                     catch (Exception ex)
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("  Failed....");
+                        Console.ForegroundColor = ConsoleColor.White;
                         var form = Application.OpenForms["SplashForm"];
                         if (form != null)
                         {
@@ -629,14 +702,23 @@ namespace DayZeLib
                 // To read the file, create a FileStream.
                 using (var myFileStream = new FileStream(filename, FileMode.Open))
                 {
-                    Console.WriteLine("serializing " + Path.GetFileName(Filename));
+                    Console.Write("serializing " + Path.GetFileName(Filename));
                     try
                     {
                         // Call the Deserialize method and cast to the object type.
                         variables = (variables)mySerializer.Deserialize(myFileStream);
+                        if (variables != null)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("  OK....");
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
                     }
                     catch (Exception ex)
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("  Failed....");
+                        Console.ForegroundColor = ConsoleColor.White;
                         var form = Application.OpenForms["SplashForm"];
                         if (form != null)
                         {
@@ -684,14 +766,23 @@ namespace DayZeLib
             {
                 using (var myFileStream = new FileStream(filename, FileMode.Open))
                 {
-                    Console.WriteLine("serializing " + Path.GetFileName(Filename));
+                    Console.Write("serializing " + Path.GetFileName(Filename));
                     try
                     {
                         // Call the Deserialize method and cast to the object type.
                         ignore = (ignore)mySerializer.Deserialize(myFileStream);
+                        if (ignore != null)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("  OK....");
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
                     }
                     catch (Exception ex)
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("  Failed....");
+                        Console.ForegroundColor = ConsoleColor.White;
                         var form = Application.OpenForms["SplashForm"];
                         if (form != null)
                         {
@@ -747,13 +838,22 @@ namespace DayZeLib
                 var mySerializer = new XmlSerializer(typeof(playerspawnpoints));
                 using (var myFileStream = new FileStream(filename, FileMode.Open))
                 {
-                    Console.WriteLine("serializing " + Path.GetFileName(Filename));
+                    Console.Write("serializing " + Path.GetFileName(Filename));
                     try
                     {
                         playerspawnpoints = (playerspawnpoints)mySerializer.Deserialize(myFileStream);
+                        if (playerspawnpoints != null)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("  OK....");
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
                     }
                     catch (Exception ex)
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("  Failed....");
+                        Console.ForegroundColor = ConsoleColor.White;
                         var form = Application.OpenForms["SplashForm"];
                         if (form != null)
                         {
@@ -807,7 +907,7 @@ namespace DayZeLib
             System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
             if (File.Exists(Filename))
             {
-                Console.WriteLine("serializing " + Path.GetFileName(Filename));
+                Console.Write("serializing " + Path.GetFileName(Filename));
                 try
                 {
                     var options = new JsonSerializerOptions
@@ -820,10 +920,18 @@ namespace DayZeLib
                         SaveCFGGameplay();
                         Console.WriteLine("CFGGameplayConfig Version Updated........\n");
                     }
-
+                    if (cfggameplay != null)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("  OK....");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
                 }
                 catch (Exception ex)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("  Failed....");
+                    Console.ForegroundColor = ConsoleColor.White;
                     var form = Application.OpenForms["SplashForm"];
                     if (form != null)
                     {
@@ -861,14 +969,23 @@ namespace DayZeLib
             System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
             if (File.Exists(Filename))
             {
-                Console.WriteLine("serializing " + Path.GetFileName(Filename));
+                Console.Write("serializing " + Path.GetFileName(Filename));
                 try
                 {
                     cfgEffectArea = JsonSerializer.Deserialize<cfgEffectArea>(File.ReadAllText(Filename));
                     cfgEffectArea.convertpositionstolist();
+                    if (cfgEffectArea != null)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("  OK....");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
                 }
                 catch (Exception ex)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("  Failed....");
+                    Console.ForegroundColor = ConsoleColor.White;
                     var form = Application.OpenForms["SplashForm"];
                     if (form != null)
                     {
@@ -879,7 +996,9 @@ namespace DayZeLib
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine(Path.GetFileName(Filename) + " File not found, Creating new....");
+                Console.ForegroundColor = ConsoleColor.White;
                 cfgEffectArea = new cfgEffectArea();
                 SavecfgEffectArea();
                 cfgEffectArea.convertpositionstolist();
@@ -907,14 +1026,23 @@ namespace DayZeLib
                 // To read the file, create a FileStream.
                 using (var myFileStream = new FileStream(filename, FileMode.Open))
                 {
-                    Console.WriteLine("serializing " + Path.GetFileName(Filename));
+                    Console.Write("serializing " + Path.GetFileName(Filename));
                     try
                     {
                         // Call the Deserialize method and cast to the object type.
                         weather = (weather)mySerializer.Deserialize(myFileStream);
+                        if (weather != null)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("  OK....");
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
                     }
                     catch (Exception ex)
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("  Failed....");
+                        Console.ForegroundColor = ConsoleColor.White;
                         var form = Application.OpenForms["SplashForm"];
                         if (form != null)
                         {
@@ -949,15 +1077,69 @@ namespace DayZeLib
             File.WriteAllText(Filename, sw.ToString());
         }
     }
-    public class PlayerDB
+    public class PlayerDataBase
     {
         private SQLiteConnection sqlite;
 
-        public DataTable PlayerTable;
-        public PlayerDB(string filename)
+        public DataSet m_DataSet { get; set; }
+        public PlayerDataBase(string filename)
         {
-            
+            sqlite = new SQLiteConnection("Data Source=" + filename);
+            m_DataSet = new DataSet();
+            foreach (string tableName in GetTables())
+            {
+                m_DataSet.Tables.Add(GetDataTable("select * from " + tableName));
+            }
+
+        }
+        public List<string> GetTables()
+        {
+            List<string> list = new List<string>();
+
+            // executes query that select names of all tables in master table of the database
+            String query = "SELECT name FROM sqlite_master WHERE type = 'table'ORDER BY 1";
+            try
+            {
+
+                DataTable table = GetDataTable(query);
+
+                // Return all table names in the ArrayList
+
+                foreach (DataRow row in table.Rows)
+                {
+                    list.Add(row.ItemArray[0].ToString());
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return list;
         }
 
+        public DataTable GetDataTable(string sql)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                using (var c = new SQLiteConnection(sqlite))
+                {
+                    c.Open();
+                    using (SQLiteCommand cmd = new SQLiteCommand(sql, c))
+                    {
+                        using (SQLiteDataReader rdr = cmd.ExecuteReader())
+                        {
+                            dt.Load(rdr);
+                            return dt;
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
     }
 }

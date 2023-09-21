@@ -47,7 +47,10 @@ namespace DayZeEditor
         {
             base.OnLoad(e);
             OnLoadCompleted(EventArgs.Empty);
-            
+            if(Projects.getActiveProject().haswarnings)
+            {
+                MessageBox.Show("Warnings detected. please see console.....");
+            }
         }
 
         private void CheckChangeLog()
@@ -91,6 +94,7 @@ namespace DayZeEditor
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Current Version : " + VersionNumber);
             var culture = CultureInfo.GetCultureInfo("en-GB");
             CultureInfo.DefaultThreadCurrentCulture = culture;
@@ -118,6 +122,10 @@ namespace DayZeEditor
                     Projects.getActiveProject().seteconomycore();
                     Projects.getActiveProject().seteconomydefinitions();
                     Projects.getActiveProject().setuserdefinitions();
+                    Projects.getActiveProject().setVanillaTypes();
+                    Projects.getActiveProject().SetModListtypes();
+                    Projects.getActiveProject().SetTotNomCount();
+                    Projects.getActiveProject().SetSpawnabletypes();
                     Projects.getActiveProject().setplayerspawns();
                     Projects.getActiveProject().SetCFGGameplayConfig();
                     Projects.getActiveProject().SetcfgEffectAreaConfig();
@@ -125,17 +133,12 @@ namespace DayZeEditor
                     Projects.getActiveProject().seteventspawns();
                     Projects.getActiveProject().seteventgroups();
                     Projects.getActiveProject().SetRandompresets();
-                    Projects.getActiveProject().SetSpawnabletypes();
                     Projects.getActiveProject().SetGlobals();
                     Projects.getActiveProject().SetWeather();
                     Projects.getActiveProject().SetIgnoreList();
-                    Projects.getActiveProject().setVanillaTypes();
-                    Projects.getActiveProject().SetModListtypes();
-                    Projects.getActiveProject().SetTotNomCount();
                     Projects.getActiveProject().Setmapgrouproto();
                     Projects.getActiveProject().Setmapgroupos();
                     Projects.getActiveProject().SetTerritories();
-                    //Projects.getActiveProject().GetPlayerDB();
                     Console.WriteLine("Project is Running Dr Jones Trader...." + Projects.getActiveProject().usingDrJoneTrader.ToString());
                     Console.WriteLine("Project is Running Expansion Market...." + Projects.getActiveProject().usingexpansionMarket.ToString());
                     Console.WriteLine("Project is Running Trader Plus...." + Projects.getActiveProject().usingtraderplus.ToString());
@@ -965,6 +968,33 @@ namespace DayZeEditor
                 };
                 _TM.Show();
                 Console.WriteLine("loading AdvancedWorkBenchManager manager....");
+            }
+            timer1.Start();
+        }
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            Projects.getActiveProject().GetPlayerDB();
+            PlayerDB _TM = Application.OpenForms["PlayerDB"] as PlayerDB;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new PlayerDB
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+                    
+            };
+                _TM.Show();
+                Console.WriteLine("loading Player Databaser manager....");
             }
             timer1.Start();
         }

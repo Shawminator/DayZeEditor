@@ -19,6 +19,7 @@ namespace DayZeLib
         {
             Filename = filename;
             var mySerializer = new XmlSerializer(typeof(lists));
+            Console.Write("serializing " + Path.GetFileName(Filename));
             // To read the file, create a FileStream.
             try
             {
@@ -26,10 +27,19 @@ namespace DayZeLib
                 {
                     // Call the Deserialize method and cast to the object type.
                     lists = (lists)mySerializer.Deserialize(myFileStream);
+                    if (lists != null)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("  OK....");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
                 }
             }
             catch (Exception ex)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("  Failed....");
+                Console.ForegroundColor = ConsoleColor.White;
                 var form = Application.OpenForms["SplashForm"];
                 if (form != null)
                 {
@@ -48,6 +58,7 @@ namespace DayZeLib
         {
             Filename = filename;
             var mySerializer = new XmlSerializer(typeof(user_lists));
+            Console.Write("serializing " + Path.GetFileName(Filename));
             // To read the file, create a FileStream.
             try
             {
@@ -55,10 +66,19 @@ namespace DayZeLib
                 {
                     // Call the Deserialize method and cast to the object type.
                     user_lists = (user_lists)mySerializer.Deserialize(myFileStream);
+                    if (user_lists != null)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("  OK....");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
                 }
             }
             catch (Exception ex)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("  Failed....");
+                Console.ForegroundColor = ConsoleColor.White;
                 var form = Application.OpenForms["SplashForm"];
                 if (form != null)
                 {

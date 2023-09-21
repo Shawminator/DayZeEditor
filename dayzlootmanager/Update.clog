@@ -1,4 +1,11 @@
-﻿Version 0.7.7.7
+﻿Version 0.7.7.8
+[Update]
+all in editor maps now use the mouse wheel for zoom and holdright click and drag to move
+[added]
+added pretty colours to console when loading
+added warning message box if any economy core errors are detected duruing startup
+
+Version 0.7.7.7
 [Fixed] 
 Various bugs that had been reported
 [Added]

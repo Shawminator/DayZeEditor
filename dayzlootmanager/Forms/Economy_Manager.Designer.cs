@@ -412,20 +412,6 @@ namespace DayZeEditor
             this.darkButton38 = new DarkUI.Controls.DarkButton();
             this.SpawnabletpesLB = new System.Windows.Forms.ListBox();
             this.groupBox21 = new System.Windows.Forms.GroupBox();
-            this.CargoGB = new System.Windows.Forms.GroupBox();
-            this.checkBox49 = new System.Windows.Forms.CheckBox();
-            this.CargoItemLB = new System.Windows.Forms.ListBox();
-            this.cargoItemRemoveButton = new DarkUI.Controls.DarkButton();
-            this.CargoItemAddButton = new DarkUI.Controls.DarkButton();
-            this.CargoChangeItemButton = new DarkUI.Controls.DarkButton();
-            this.CargoPresetTB = new System.Windows.Forms.TextBox();
-            this.CargoItemchanceNUD = new System.Windows.Forms.NumericUpDown();
-            this.CarcgoChanceNUD = new System.Windows.Forms.NumericUpDown();
-            this.cargochanceLabel = new System.Windows.Forms.Label();
-            this.CargochanceCB = new System.Windows.Forms.CheckBox();
-            this.CargoPresetGB = new System.Windows.Forms.GroupBox();
-            this.CargoPresetComboBox = new System.Windows.Forms.ComboBox();
-            this.darkButton36 = new DarkUI.Controls.DarkButton();
             this.AttachmentGB = new System.Windows.Forms.GroupBox();
             this.CargoAttachmentRemoveButton = new DarkUI.Controls.DarkButton();
             this.AttachmentItemLB = new System.Windows.Forms.ListBox();
@@ -445,6 +431,20 @@ namespace DayZeEditor
             this.groupBox24 = new System.Windows.Forms.GroupBox();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.darkButton29 = new DarkUI.Controls.DarkButton();
+            this.CargoGB = new System.Windows.Forms.GroupBox();
+            this.checkBox49 = new System.Windows.Forms.CheckBox();
+            this.CargoItemLB = new System.Windows.Forms.ListBox();
+            this.cargoItemRemoveButton = new DarkUI.Controls.DarkButton();
+            this.CargoItemAddButton = new DarkUI.Controls.DarkButton();
+            this.CargoChangeItemButton = new DarkUI.Controls.DarkButton();
+            this.CargoPresetTB = new System.Windows.Forms.TextBox();
+            this.CargoItemchanceNUD = new System.Windows.Forms.NumericUpDown();
+            this.CarcgoChanceNUD = new System.Windows.Forms.NumericUpDown();
+            this.cargochanceLabel = new System.Windows.Forms.Label();
+            this.CargochanceCB = new System.Windows.Forms.CheckBox();
+            this.CargoPresetGB = new System.Windows.Forms.GroupBox();
+            this.CargoPresetComboBox = new System.Windows.Forms.ComboBox();
+            this.darkButton36 = new DarkUI.Controls.DarkButton();
             this.RandomPresetsTab = new System.Windows.Forms.TabPage();
             this.tabControl20 = new System.Windows.Forms.TabControl();
             this.tabPage19 = new System.Windows.Forms.TabPage();
@@ -1119,16 +1119,16 @@ namespace DayZeEditor
             this.tabControl10.SuspendLayout();
             this.tabPage7.SuspendLayout();
             this.groupBox21.SuspendLayout();
-            this.CargoGB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CargoItemchanceNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CarcgoChanceNUD)).BeginInit();
-            this.CargoPresetGB.SuspendLayout();
             this.AttachmentGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemAttachmentchanceNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AttachmentchanceNUD)).BeginInit();
             this.AttachmentPresetGB.SuspendLayout();
             this.Spaenabletypestagbox.SuspendLayout();
             this.groupBox24.SuspendLayout();
+            this.CargoGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CargoItemchanceNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CarcgoChanceNUD)).BeginInit();
+            this.CargoPresetGB.SuspendLayout();
             this.RandomPresetsTab.SuspendLayout();
             this.tabControl20.SuspendLayout();
             this.tabPage19.SuspendLayout();
@@ -6195,15 +6195,246 @@ namespace DayZeEditor
             // 
             this.groupBox21.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox21.Controls.Add(this.CargoGB);
             this.groupBox21.Controls.Add(this.AttachmentGB);
             this.groupBox21.Controls.Add(this.Spaenabletypestagbox);
+            this.groupBox21.Controls.Add(this.CargoGB);
             this.groupBox21.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox21.Location = new System.Drawing.Point(814, 14);
             this.groupBox21.Name = "groupBox21";
             this.groupBox21.Size = new System.Drawing.Size(254, 505);
             this.groupBox21.TabIndex = 60;
             this.groupBox21.TabStop = false;
+            // 
+            // AttachmentGB
+            // 
+            this.AttachmentGB.Controls.Add(this.CargoAttachmentRemoveButton);
+            this.AttachmentGB.Controls.Add(this.AttachmentItemLB);
+            this.AttachmentGB.Controls.Add(this.cargoattachemntAddButton);
+            this.AttachmentGB.Controls.Add(this.AttachmentChangeItemButton);
+            this.AttachmentGB.Controls.Add(this.AttachemntTB);
+            this.AttachmentGB.Controls.Add(this.ItemAttachmentchanceNUD);
+            this.AttachmentGB.Controls.Add(this.AttachmemtItemChanceLabel);
+            this.AttachmentGB.Controls.Add(this.AttachmentchanceNUD);
+            this.AttachmentGB.Controls.Add(this.chancAttachmentselabel);
+            this.AttachmentGB.Controls.Add(this.AttchmentIsPresetCB);
+            this.AttachmentGB.Controls.Add(this.AttachmentPresetGB);
+            this.AttachmentGB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.AttachmentGB.Location = new System.Drawing.Point(6, 8);
+            this.AttachmentGB.Name = "AttachmentGB";
+            this.AttachmentGB.Size = new System.Drawing.Size(242, 512);
+            this.AttachmentGB.TabIndex = 66;
+            this.AttachmentGB.TabStop = false;
+            this.AttachmentGB.Text = "Attachments";
+            this.AttachmentGB.Visible = false;
+            // 
+            // CargoAttachmentRemoveButton
+            // 
+            this.CargoAttachmentRemoveButton.Location = new System.Drawing.Point(9, 299);
+            this.CargoAttachmentRemoveButton.Name = "CargoAttachmentRemoveButton";
+            this.CargoAttachmentRemoveButton.Padding = new System.Windows.Forms.Padding(5);
+            this.CargoAttachmentRemoveButton.Size = new System.Drawing.Size(218, 27);
+            this.CargoAttachmentRemoveButton.TabIndex = 74;
+            this.CargoAttachmentRemoveButton.Text = "Remove Item";
+            this.CargoAttachmentRemoveButton.Click += new System.EventHandler(this.darkButton35_Click_2);
+            // 
+            // AttachmentItemLB
+            // 
+            this.AttachmentItemLB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AttachmentItemLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.AttachmentItemLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.AttachmentItemLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.AttachmentItemLB.FormattingEnabled = true;
+            this.AttachmentItemLB.Location = new System.Drawing.Point(9, 67);
+            this.AttachmentItemLB.Name = "AttachmentItemLB";
+            this.AttachmentItemLB.Size = new System.Drawing.Size(218, 134);
+            this.AttachmentItemLB.TabIndex = 70;
+            this.AttachmentItemLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.AttachmentItemLB.SelectedIndexChanged += new System.EventHandler(this.AttachmentItemLB_SelectedIndexChanged);
+            // 
+            // cargoattachemntAddButton
+            // 
+            this.cargoattachemntAddButton.Location = new System.Drawing.Point(9, 266);
+            this.cargoattachemntAddButton.Name = "cargoattachemntAddButton";
+            this.cargoattachemntAddButton.Padding = new System.Windows.Forms.Padding(5);
+            this.cargoattachemntAddButton.Size = new System.Drawing.Size(218, 27);
+            this.cargoattachemntAddButton.TabIndex = 73;
+            this.cargoattachemntAddButton.Text = "Add New Item";
+            this.cargoattachemntAddButton.Click += new System.EventHandler(this.darkButton38_Click_1);
+            // 
+            // AttachmentChangeItemButton
+            // 
+            this.AttachmentChangeItemButton.Location = new System.Drawing.Point(9, 233);
+            this.AttachmentChangeItemButton.Name = "AttachmentChangeItemButton";
+            this.AttachmentChangeItemButton.Padding = new System.Windows.Forms.Padding(5);
+            this.AttachmentChangeItemButton.Size = new System.Drawing.Size(218, 27);
+            this.AttachmentChangeItemButton.TabIndex = 5;
+            this.AttachmentChangeItemButton.Text = "Change Item";
+            this.AttachmentChangeItemButton.Click += new System.EventHandler(this.AttachmentChangeItemButton_Click);
+            // 
+            // AttachemntTB
+            // 
+            this.AttachemntTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.AttachemntTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.AttachemntTB.Location = new System.Drawing.Point(10, 39);
+            this.AttachemntTB.Name = "AttachemntTB";
+            this.AttachemntTB.ReadOnly = true;
+            this.AttachemntTB.Size = new System.Drawing.Size(218, 20);
+            this.AttachemntTB.TabIndex = 71;
+            // 
+            // ItemAttachmentchanceNUD
+            // 
+            this.ItemAttachmentchanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ItemAttachmentchanceNUD.DecimalPlaces = 2;
+            this.ItemAttachmentchanceNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.ItemAttachmentchanceNUD.Location = new System.Drawing.Point(159, 207);
+            this.ItemAttachmentchanceNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.ItemAttachmentchanceNUD.Name = "ItemAttachmentchanceNUD";
+            this.ItemAttachmentchanceNUD.Size = new System.Drawing.Size(68, 20);
+            this.ItemAttachmentchanceNUD.TabIndex = 66;
+            this.ItemAttachmentchanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ItemAttachmentchanceNUD.ValueChanged += new System.EventHandler(this.ItemAttachmentchanceNUD_ValueChanged);
+            // 
+            // AttachmemtItemChanceLabel
+            // 
+            this.AttachmemtItemChanceLabel.AutoSize = true;
+            this.AttachmemtItemChanceLabel.ForeColor = System.Drawing.SystemColors.Control;
+            this.AttachmemtItemChanceLabel.Location = new System.Drawing.Point(87, 211);
+            this.AttachmemtItemChanceLabel.Name = "AttachmemtItemChanceLabel";
+            this.AttachmemtItemChanceLabel.Size = new System.Drawing.Size(67, 13);
+            this.AttachmemtItemChanceLabel.TabIndex = 65;
+            this.AttachmemtItemChanceLabel.Text = "Item Chance";
+            // 
+            // AttachmentchanceNUD
+            // 
+            this.AttachmentchanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.AttachmentchanceNUD.DecimalPlaces = 2;
+            this.AttachmentchanceNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.AttachmentchanceNUD.Location = new System.Drawing.Point(159, 39);
+            this.AttachmentchanceNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.AttachmentchanceNUD.Name = "AttachmentchanceNUD";
+            this.AttachmentchanceNUD.Size = new System.Drawing.Size(68, 20);
+            this.AttachmentchanceNUD.TabIndex = 64;
+            this.AttachmentchanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.AttachmentchanceNUD.ValueChanged += new System.EventHandler(this.AttachmentchanceNUD_ValueChanged);
+            // 
+            // chancAttachmentselabel
+            // 
+            this.chancAttachmentselabel.AutoSize = true;
+            this.chancAttachmentselabel.ForeColor = System.Drawing.SystemColors.Control;
+            this.chancAttachmentselabel.Location = new System.Drawing.Point(109, 43);
+            this.chancAttachmentselabel.Name = "chancAttachmentselabel";
+            this.chancAttachmentselabel.Size = new System.Drawing.Size(44, 13);
+            this.chancAttachmentselabel.TabIndex = 63;
+            this.chancAttachmentselabel.Text = "Chance";
+            // 
+            // AttchmentIsPresetCB
+            // 
+            this.AttchmentIsPresetCB.AutoSize = true;
+            this.AttchmentIsPresetCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.AttchmentIsPresetCB.Location = new System.Drawing.Point(9, 19);
+            this.AttchmentIsPresetCB.Name = "AttchmentIsPresetCB";
+            this.AttchmentIsPresetCB.Size = new System.Drawing.Size(110, 17);
+            this.AttchmentIsPresetCB.TabIndex = 62;
+            this.AttchmentIsPresetCB.Text = "Is Random Preset";
+            this.AttchmentIsPresetCB.UseVisualStyleBackColor = true;
+            this.AttchmentIsPresetCB.CheckedChanged += new System.EventHandler(this.AttchmentIsPresetCB_CheckedChanged);
+            // 
+            // AttachmentPresetGB
+            // 
+            this.AttachmentPresetGB.Controls.Add(this.AttachmentPresetComboBox);
+            this.AttachmentPresetGB.Controls.Add(this.darkButton37);
+            this.AttachmentPresetGB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.AttachmentPresetGB.Location = new System.Drawing.Point(9, 67);
+            this.AttachmentPresetGB.Name = "AttachmentPresetGB";
+            this.AttachmentPresetGB.Size = new System.Drawing.Size(218, 100);
+            this.AttachmentPresetGB.TabIndex = 8;
+            this.AttachmentPresetGB.TabStop = false;
+            this.AttachmentPresetGB.Text = "Change Attachment Preset";
+            // 
+            // AttachmentPresetComboBox
+            // 
+            this.AttachmentPresetComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.AttachmentPresetComboBox.ForeColor = System.Drawing.SystemColors.Control;
+            this.AttachmentPresetComboBox.FormattingEnabled = true;
+            this.AttachmentPresetComboBox.Location = new System.Drawing.Point(10, 25);
+            this.AttachmentPresetComboBox.Name = "AttachmentPresetComboBox";
+            this.AttachmentPresetComboBox.Size = new System.Drawing.Size(202, 21);
+            this.AttachmentPresetComboBox.TabIndex = 1;
+            // 
+            // darkButton37
+            // 
+            this.darkButton37.Location = new System.Drawing.Point(8, 52);
+            this.darkButton37.Name = "darkButton37";
+            this.darkButton37.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton37.Size = new System.Drawing.Size(204, 27);
+            this.darkButton37.TabIndex = 5;
+            this.darkButton37.Text = "Change Preset";
+            this.darkButton37.Click += new System.EventHandler(this.darkButton37_Click);
+            // 
+            // Spaenabletypestagbox
+            // 
+            this.Spaenabletypestagbox.Controls.Add(this.textBox2);
+            this.Spaenabletypestagbox.Controls.Add(this.groupBox24);
+            this.Spaenabletypestagbox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Spaenabletypestagbox.Location = new System.Drawing.Point(6, 8);
+            this.Spaenabletypestagbox.Name = "Spaenabletypestagbox";
+            this.Spaenabletypestagbox.Size = new System.Drawing.Size(242, 154);
+            this.Spaenabletypestagbox.TabIndex = 64;
+            this.Spaenabletypestagbox.TabStop = false;
+            this.Spaenabletypestagbox.Text = "Tags";
+            this.Spaenabletypestagbox.Visible = false;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.textBox2.ForeColor = System.Drawing.SystemColors.Control;
+            this.textBox2.Location = new System.Drawing.Point(9, 19);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(218, 20);
+            this.textBox2.TabIndex = 8;
+            // 
+            // groupBox24
+            // 
+            this.groupBox24.Controls.Add(this.comboBox5);
+            this.groupBox24.Controls.Add(this.darkButton29);
+            this.groupBox24.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox24.Location = new System.Drawing.Point(9, 45);
+            this.groupBox24.Name = "groupBox24";
+            this.groupBox24.Size = new System.Drawing.Size(218, 100);
+            this.groupBox24.TabIndex = 7;
+            this.groupBox24.TabStop = false;
+            this.groupBox24.Text = "Change Tag";
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.comboBox5.ForeColor = System.Drawing.SystemColors.Control;
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Location = new System.Drawing.Point(10, 25);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(202, 21);
+            this.comboBox5.TabIndex = 1;
+            // 
+            // darkButton29
+            // 
+            this.darkButton29.Location = new System.Drawing.Point(8, 52);
+            this.darkButton29.Name = "darkButton29";
+            this.darkButton29.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton29.Size = new System.Drawing.Size(204, 27);
+            this.darkButton29.TabIndex = 5;
+            this.darkButton29.Text = "Change Tag";
+            this.darkButton29.Click += new System.EventHandler(this.darkButton29_Click);
             // 
             // CargoGB
             // 
@@ -6382,237 +6613,6 @@ namespace DayZeEditor
             this.darkButton36.TabIndex = 5;
             this.darkButton36.Text = "Change Preset";
             this.darkButton36.Click += new System.EventHandler(this.darkButton36_Click);
-            // 
-            // AttachmentGB
-            // 
-            this.AttachmentGB.Controls.Add(this.CargoAttachmentRemoveButton);
-            this.AttachmentGB.Controls.Add(this.AttachmentItemLB);
-            this.AttachmentGB.Controls.Add(this.cargoattachemntAddButton);
-            this.AttachmentGB.Controls.Add(this.AttachmentChangeItemButton);
-            this.AttachmentGB.Controls.Add(this.AttachemntTB);
-            this.AttachmentGB.Controls.Add(this.ItemAttachmentchanceNUD);
-            this.AttachmentGB.Controls.Add(this.AttachmemtItemChanceLabel);
-            this.AttachmentGB.Controls.Add(this.AttachmentchanceNUD);
-            this.AttachmentGB.Controls.Add(this.chancAttachmentselabel);
-            this.AttachmentGB.Controls.Add(this.AttchmentIsPresetCB);
-            this.AttachmentGB.Controls.Add(this.AttachmentPresetGB);
-            this.AttachmentGB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.AttachmentGB.Location = new System.Drawing.Point(6, 8);
-            this.AttachmentGB.Name = "AttachmentGB";
-            this.AttachmentGB.Size = new System.Drawing.Size(242, 512);
-            this.AttachmentGB.TabIndex = 66;
-            this.AttachmentGB.TabStop = false;
-            this.AttachmentGB.Text = "Attachments";
-            this.AttachmentGB.Visible = false;
-            // 
-            // CargoAttachmentRemoveButton
-            // 
-            this.CargoAttachmentRemoveButton.Location = new System.Drawing.Point(9, 299);
-            this.CargoAttachmentRemoveButton.Name = "CargoAttachmentRemoveButton";
-            this.CargoAttachmentRemoveButton.Padding = new System.Windows.Forms.Padding(5);
-            this.CargoAttachmentRemoveButton.Size = new System.Drawing.Size(218, 27);
-            this.CargoAttachmentRemoveButton.TabIndex = 74;
-            this.CargoAttachmentRemoveButton.Text = "Remove Item";
-            this.CargoAttachmentRemoveButton.Click += new System.EventHandler(this.darkButton35_Click_2);
-            // 
-            // AttachmentItemLB
-            // 
-            this.AttachmentItemLB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.AttachmentItemLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.AttachmentItemLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.AttachmentItemLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.AttachmentItemLB.FormattingEnabled = true;
-            this.AttachmentItemLB.Location = new System.Drawing.Point(9, 67);
-            this.AttachmentItemLB.Name = "AttachmentItemLB";
-            this.AttachmentItemLB.Size = new System.Drawing.Size(218, 134);
-            this.AttachmentItemLB.TabIndex = 70;
-            this.AttachmentItemLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.AttachmentItemLB.SelectedIndexChanged += new System.EventHandler(this.AttachmentItemLB_SelectedIndexChanged);
-            // 
-            // cargoattachemntAddButton
-            // 
-            this.cargoattachemntAddButton.Location = new System.Drawing.Point(9, 266);
-            this.cargoattachemntAddButton.Name = "cargoattachemntAddButton";
-            this.cargoattachemntAddButton.Padding = new System.Windows.Forms.Padding(5);
-            this.cargoattachemntAddButton.Size = new System.Drawing.Size(218, 27);
-            this.cargoattachemntAddButton.TabIndex = 73;
-            this.cargoattachemntAddButton.Text = "Add New Item";
-            this.cargoattachemntAddButton.Click += new System.EventHandler(this.darkButton38_Click_1);
-            // 
-            // AttachmentChangeItemButton
-            // 
-            this.AttachmentChangeItemButton.Location = new System.Drawing.Point(9, 233);
-            this.AttachmentChangeItemButton.Name = "AttachmentChangeItemButton";
-            this.AttachmentChangeItemButton.Padding = new System.Windows.Forms.Padding(5);
-            this.AttachmentChangeItemButton.Size = new System.Drawing.Size(218, 27);
-            this.AttachmentChangeItemButton.TabIndex = 5;
-            this.AttachmentChangeItemButton.Text = "Change Item";
-            this.AttachmentChangeItemButton.Click += new System.EventHandler(this.AttachmentChangeItemButton_Click);
-            // 
-            // AttachemntTB
-            // 
-            this.AttachemntTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.AttachemntTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.AttachemntTB.Location = new System.Drawing.Point(9, 39);
-            this.AttachemntTB.Name = "AttachemntTB";
-            this.AttachemntTB.ReadOnly = true;
-            this.AttachemntTB.Size = new System.Drawing.Size(218, 20);
-            this.AttachemntTB.TabIndex = 71;
-            // 
-            // ItemAttachmentchanceNUD
-            // 
-            this.ItemAttachmentchanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ItemAttachmentchanceNUD.DecimalPlaces = 2;
-            this.ItemAttachmentchanceNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ItemAttachmentchanceNUD.Location = new System.Drawing.Point(159, 207);
-            this.ItemAttachmentchanceNUD.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.ItemAttachmentchanceNUD.Name = "ItemAttachmentchanceNUD";
-            this.ItemAttachmentchanceNUD.Size = new System.Drawing.Size(68, 20);
-            this.ItemAttachmentchanceNUD.TabIndex = 66;
-            this.ItemAttachmentchanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ItemAttachmentchanceNUD.ValueChanged += new System.EventHandler(this.ItemAttachmentchanceNUD_ValueChanged);
-            // 
-            // AttachmemtItemChanceLabel
-            // 
-            this.AttachmemtItemChanceLabel.AutoSize = true;
-            this.AttachmemtItemChanceLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.AttachmemtItemChanceLabel.Location = new System.Drawing.Point(87, 211);
-            this.AttachmemtItemChanceLabel.Name = "AttachmemtItemChanceLabel";
-            this.AttachmemtItemChanceLabel.Size = new System.Drawing.Size(67, 13);
-            this.AttachmemtItemChanceLabel.TabIndex = 65;
-            this.AttachmemtItemChanceLabel.Text = "Item Chance";
-            // 
-            // AttachmentchanceNUD
-            // 
-            this.AttachmentchanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.AttachmentchanceNUD.DecimalPlaces = 2;
-            this.AttachmentchanceNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.AttachmentchanceNUD.Location = new System.Drawing.Point(159, 39);
-            this.AttachmentchanceNUD.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.AttachmentchanceNUD.Name = "AttachmentchanceNUD";
-            this.AttachmentchanceNUD.Size = new System.Drawing.Size(68, 20);
-            this.AttachmentchanceNUD.TabIndex = 64;
-            this.AttachmentchanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.AttachmentchanceNUD.ValueChanged += new System.EventHandler(this.AttachmentchanceNUD_ValueChanged);
-            // 
-            // chancAttachmentselabel
-            // 
-            this.chancAttachmentselabel.AutoSize = true;
-            this.chancAttachmentselabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.chancAttachmentselabel.Location = new System.Drawing.Point(109, 43);
-            this.chancAttachmentselabel.Name = "chancAttachmentselabel";
-            this.chancAttachmentselabel.Size = new System.Drawing.Size(44, 13);
-            this.chancAttachmentselabel.TabIndex = 63;
-            this.chancAttachmentselabel.Text = "Chance";
-            // 
-            // AttchmentIsPresetCB
-            // 
-            this.AttchmentIsPresetCB.AutoSize = true;
-            this.AttchmentIsPresetCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.AttchmentIsPresetCB.Location = new System.Drawing.Point(9, 19);
-            this.AttchmentIsPresetCB.Name = "AttchmentIsPresetCB";
-            this.AttchmentIsPresetCB.Size = new System.Drawing.Size(110, 17);
-            this.AttchmentIsPresetCB.TabIndex = 62;
-            this.AttchmentIsPresetCB.Text = "Is Random Preset";
-            this.AttchmentIsPresetCB.UseVisualStyleBackColor = true;
-            this.AttchmentIsPresetCB.CheckedChanged += new System.EventHandler(this.AttchmentIsPresetCB_CheckedChanged);
-            // 
-            // AttachmentPresetGB
-            // 
-            this.AttachmentPresetGB.Controls.Add(this.AttachmentPresetComboBox);
-            this.AttachmentPresetGB.Controls.Add(this.darkButton37);
-            this.AttachmentPresetGB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.AttachmentPresetGB.Location = new System.Drawing.Point(9, 67);
-            this.AttachmentPresetGB.Name = "AttachmentPresetGB";
-            this.AttachmentPresetGB.Size = new System.Drawing.Size(218, 100);
-            this.AttachmentPresetGB.TabIndex = 8;
-            this.AttachmentPresetGB.TabStop = false;
-            this.AttachmentPresetGB.Text = "Change Attachment Preset";
-            // 
-            // AttachmentPresetComboBox
-            // 
-            this.AttachmentPresetComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.AttachmentPresetComboBox.ForeColor = System.Drawing.SystemColors.Control;
-            this.AttachmentPresetComboBox.FormattingEnabled = true;
-            this.AttachmentPresetComboBox.Location = new System.Drawing.Point(10, 25);
-            this.AttachmentPresetComboBox.Name = "AttachmentPresetComboBox";
-            this.AttachmentPresetComboBox.Size = new System.Drawing.Size(202, 21);
-            this.AttachmentPresetComboBox.TabIndex = 1;
-            // 
-            // darkButton37
-            // 
-            this.darkButton37.Location = new System.Drawing.Point(8, 52);
-            this.darkButton37.Name = "darkButton37";
-            this.darkButton37.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton37.Size = new System.Drawing.Size(204, 27);
-            this.darkButton37.TabIndex = 5;
-            this.darkButton37.Text = "Change Preset";
-            this.darkButton37.Click += new System.EventHandler(this.darkButton37_Click);
-            // 
-            // Spaenabletypestagbox
-            // 
-            this.Spaenabletypestagbox.Controls.Add(this.textBox2);
-            this.Spaenabletypestagbox.Controls.Add(this.groupBox24);
-            this.Spaenabletypestagbox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Spaenabletypestagbox.Location = new System.Drawing.Point(6, 8);
-            this.Spaenabletypestagbox.Name = "Spaenabletypestagbox";
-            this.Spaenabletypestagbox.Size = new System.Drawing.Size(242, 154);
-            this.Spaenabletypestagbox.TabIndex = 64;
-            this.Spaenabletypestagbox.TabStop = false;
-            this.Spaenabletypestagbox.Text = "Tags";
-            this.Spaenabletypestagbox.Visible = false;
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.textBox2.ForeColor = System.Drawing.SystemColors.Control;
-            this.textBox2.Location = new System.Drawing.Point(9, 19);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(218, 20);
-            this.textBox2.TabIndex = 8;
-            // 
-            // groupBox24
-            // 
-            this.groupBox24.Controls.Add(this.comboBox5);
-            this.groupBox24.Controls.Add(this.darkButton29);
-            this.groupBox24.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox24.Location = new System.Drawing.Point(9, 45);
-            this.groupBox24.Name = "groupBox24";
-            this.groupBox24.Size = new System.Drawing.Size(218, 100);
-            this.groupBox24.TabIndex = 7;
-            this.groupBox24.TabStop = false;
-            this.groupBox24.Text = "Change Tag";
-            // 
-            // comboBox5
-            // 
-            this.comboBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.comboBox5.ForeColor = System.Drawing.SystemColors.Control;
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(10, 25);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(202, 21);
-            this.comboBox5.TabIndex = 1;
-            // 
-            // darkButton29
-            // 
-            this.darkButton29.Location = new System.Drawing.Point(8, 52);
-            this.darkButton29.Name = "darkButton29";
-            this.darkButton29.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton29.Size = new System.Drawing.Size(204, 27);
-            this.darkButton29.TabIndex = 5;
-            this.darkButton29.Text = "Change Tag";
-            this.darkButton29.Click += new System.EventHandler(this.darkButton29_Click);
             // 
             // RandomPresetsTab
             // 
@@ -14142,11 +14142,6 @@ namespace DayZeEditor
             this.tabControl10.ResumeLayout(false);
             this.tabPage7.ResumeLayout(false);
             this.groupBox21.ResumeLayout(false);
-            this.CargoGB.ResumeLayout(false);
-            this.CargoGB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CargoItemchanceNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CarcgoChanceNUD)).EndInit();
-            this.CargoPresetGB.ResumeLayout(false);
             this.AttachmentGB.ResumeLayout(false);
             this.AttachmentGB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemAttachmentchanceNUD)).EndInit();
@@ -14155,6 +14150,11 @@ namespace DayZeEditor
             this.Spaenabletypestagbox.ResumeLayout(false);
             this.Spaenabletypestagbox.PerformLayout();
             this.groupBox24.ResumeLayout(false);
+            this.CargoGB.ResumeLayout(false);
+            this.CargoGB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CargoItemchanceNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CarcgoChanceNUD)).EndInit();
+            this.CargoPresetGB.ResumeLayout(false);
             this.RandomPresetsTab.ResumeLayout(false);
             this.tabControl20.ResumeLayout(false);
             this.tabPage19.ResumeLayout(false);

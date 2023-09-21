@@ -35,7 +35,7 @@ namespace DayZeLib
         public TypesFile (string filename)
         {
             Filename = filename;
-            Console.WriteLine("serializing " + Path.GetFileName(Filename));
+            Console.Write("serializing " + Path.GetFileName(Filename));
             try
             {
                 bool savefile = false;
@@ -45,6 +45,12 @@ namespace DayZeLib
                     try
                     {
                         types = (types)mySerializer.Deserialize(myFileStream);
+                        if (types != null)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("  OK....");
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
                         types.type = new BindingList<typesType>(types.type.OrderBy(x => x.name).ToList());
                         List<string> typeslist = new List<string>();
                         foreach (typesType type in types.type)
@@ -67,10 +73,6 @@ namespace DayZeLib
                                     }
                                 }
 
-                            }
-                            if(type.name == "HDSN_C4Stick")
-                            {
-                                string stop = "";
                             }
                             if (type.value.Count > 0)
                             {
@@ -96,12 +98,18 @@ namespace DayZeLib
                         }
                         if(typeslist.Count > 0)
                         {
-                            Console.WriteLine("Some Items within " + Path.GetFileName(filename) + " have as greater min than nominal, please fix\n " + Path.GetFileNameWithoutExtension(filename) + "_Noms.txt has been saved to\n " + Path.GetDirectoryName(filename) + "\n");
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine(Environment.NewLine + "### Warning ### ");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("Some Items within " + Path.GetFileName(filename) + " have as greater min than nominal, please fix\n" + Path.GetFileNameWithoutExtension(filename) + "_Noms.txt has been saved to\n" + Path.GetDirectoryName(filename) + "\n");
                             File.WriteAllLines(Path.GetDirectoryName(filename) + "\\" + Path.GetFileNameWithoutExtension(filename) + "_Noms.txt", typeslist.ToArray());
                         }
                     }
                     catch (Exception ex)
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("  Failed....");
+                        Console.ForegroundColor = ConsoleColor.White;
                         var form = Application.OpenForms["SplashForm"];
                         if (form != null)
                         {
