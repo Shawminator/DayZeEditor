@@ -1,4 +1,14 @@
-﻿Version 0.7.7.8
+﻿Version 0.7.7.9
+[Update]
+All Expansion Configs to match latest Expandion release
+updated territory map to allow click on desired circle with left mouse to select that zone.
+[Added]
+Added init.c text editor to the economy manager
+[fixed]
+fixed and issue when starting the editor without an active project
+various other bits and bobs i cant remember......
+
+Version 0.7.7.8
 [Update]
 all in editor maps now use the mouse wheel for zoom and holdright click and drag to move
 [added]

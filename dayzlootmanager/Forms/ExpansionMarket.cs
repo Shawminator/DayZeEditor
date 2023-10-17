@@ -155,10 +155,10 @@ namespace DayZeEditor
             {
                 marketsettings = JsonSerializer.Deserialize<MarketSettings>(File.ReadAllText(MarketSettingsPath));
                 marketsettings.isDirty = false;
-                if (marketsettings.m_Version != 11)
+                if (marketsettings.m_Version != 12)
                 {
                     MessageBox.Show("MarketSettings Version number not up to date, updating to latest version....");
-                    marketsettings.m_Version = 11;
+                    marketsettings.m_Version = 12;
                     marketsettings.isDirty = true;
                     needtosave = true;
                 }
@@ -726,6 +726,8 @@ namespace DayZeEditor
             NetworkBatchSizeNUD.Value = marketsettings.NetworkBatchSize;
             MaxVehicleDistanceToTraderNUD.Value = (decimal)marketsettings.MaxVehicleDistanceToTrader;
             MaxLargeVehicleDistanceToTraderNUD.Value = (decimal)marketsettings.MaxLargeVehicleDistanceToTrader;
+            MaxSZVehicleParkingTimeNUD.Value = (decimal)marketsettings.MaxSZVehicleParkingTime;
+            SZVehicleParkingTicketFineNUD.Value = marketsettings.SZVehicleParkingTicketFine;
 
             listBox7.DisplayMember = "Name";
             listBox7.ValueMember = "Value";
@@ -1348,11 +1350,23 @@ namespace DayZeEditor
                 }
             }
         }
-
         private void darkButton43_Click(object sender, EventArgs e)
         {
             string removeitem = listBox20.GetItemText(listBox20.SelectedItem);
             marketsettings.VehicleKeys.Remove(removeitem);
+            marketsettings.isDirty = true;
+        }
+        private void MaxSZVehicleParkingTimeNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (action) return;
+            marketsettings.MaxSZVehicleParkingTime = (int)MaxSZVehicleParkingTimeNUD.Value;
+            marketsettings.isDirty = true;
+        }
+
+        private void SZVehicleParkingTicketFineNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (action) return;
+            marketsettings.SZVehicleParkingTicketFine = (int)SZVehicleParkingTicketFineNUD.Value;
             marketsettings.isDirty = true;
         }
         #endregion MarketSettings

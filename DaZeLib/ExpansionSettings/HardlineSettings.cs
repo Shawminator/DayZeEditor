@@ -12,14 +12,10 @@ namespace DayZeLib
 {
     public class HardLineSettings
     {
-        const int CurrentVersion = 8;
+        const int CurrentVersion = 10;
 
         public int m_Version { get; set; }
-        public int ReputationOnKillInfected { get; set; }
-        public int ReputationOnKillPlayer { get; set; }
-        public int ReputationOnKillAnimal { get; set; }
-        public int ReputationOnKillAI { get; set; }
-        public int ReputationLossOnDeath { get; set; }
+      
         public int PoorItemRequirement { get; set; }
         public int CommonItemRequirement { get; set; }
         public int UncommonItemRequirement { get; set; }
@@ -33,9 +29,13 @@ namespace DayZeLib
         public int UseFactionReputation { get; set;}
         public int EnableFactionPersistence { get; set; }
         public int EnableItemRarity { get; set; }
+        public int UseItemRarityOnInventoryIcons { get; set; }
         public int UseItemRarityForMarketPurchase { get; set; }
         public int UseItemRarityForMarketSell { get; set; }
         public int MaxReputation { get; set; }
+        public int ReputationLossOnDeath { get; set; }
+        public int DefaultItemRarity { get; set; }
+        public Dictionary<string, int> EntityReputation { get; set; }
         public Dictionary<string, int> ItemRarity { get; set; }
 
         [JsonIgnore]
@@ -58,6 +58,8 @@ namespace DayZeLib
         public BindingList<string> MythicItems { get; set; }
         [JsonIgnore]
         public BindingList<string> ExoticItems { get; set; }
+        [JsonIgnore]
+        public BindingList<EntityReputationlevels> entityreps { get; set; }
 
         public HardLineSettings()
         {
@@ -267,6 +269,45 @@ namespace DayZeLib
         {
             GetType().GetProperty(v).SetValue(this, value, null);
         }
+
+        public void COnvertReputationDictionarytolist()
+        {
+            entityreps = new BindingList<EntityReputationlevels>();
+            if (EntityReputation == null)
+                EntityReputation = new Dictionary<string, int>();
+            foreach (KeyValuePair<string, int> item in EntityReputation)
+            {
+                string classaname = item.Key;
+                int level = item.Value;
+                entityreps.Add(new EntityReputationlevels(classaname, level));
+            }
+        }
+
+        public void convertreplisttodict()
+        {
+            EntityReputation = new Dictionary<string, int>();
+            foreach (EntityReputationlevels item in entityreps)
+            {
+                ItemRarity.Add(item.Classname, item.Level);
+            }
+        }
+    }
+    public class EntityReputationlevels
+    {
+        public string Classname { get; set; }
+        public int Level { get; set; }
+
+        public EntityReputationlevels(string _classname, int _level)
+        {
+            Classname = _classname;
+            Level = _level;
+        }
+
+        public override string ToString()
+        {
+            return Classname;
+        }
+
     }
     public class ExpansionHardlinePlayerDataList
     {

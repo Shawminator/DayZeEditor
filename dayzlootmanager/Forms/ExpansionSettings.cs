@@ -441,6 +441,7 @@ namespace DayZeEditor
                     needtosave = true;
             }
             HardLineSettings.ConvertDictionarytoLevels();
+            HardLineSettings.COnvertReputationDictionarytolist();
             HardLineSettings.Filename = HArdlineSettingsPath;
             loadHardlineSettings();
 
@@ -623,6 +624,7 @@ namespace DayZeEditor
             if (!File.Exists(PersonalStorageSettingsPath))
             {
                 PersonalStorageSettings = new PersonalStorageSettings();
+                PersonalStorageSettings.DefaultMenuCategories();
                 needtosave = true;
                 Console.WriteLine(Path.GetFileName(PersonalStorageSettingsPath) + " File not found, Creating new....");
             }
@@ -1003,6 +1005,7 @@ namespace DayZeEditor
                 HardLineSettings.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 HardLineSettings.convertliststoDict();
+                HardLineSettings.convertreplisttodict();
                 string jsonString = JsonSerializer.Serialize(HardLineSettings, options);
                 if (currentproject.Createbackups && File.Exists(HardLineSettings.Filename))
                 {
@@ -2281,7 +2284,7 @@ namespace DayZeEditor
             BaseBuildingSettings.GetTerritoryFlagKitAfterBuild = GetTerritoryFlagKitAfterBuildCB.Checked == true ? 1 : 0;
             BaseBuildingSettings.isDirty = true;
         }
-        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        private void CodelockAttachModeCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             canattacchcodelock cacl = (canattacchcodelock)CodelockAttachModeCB.SelectedItem;
@@ -3427,23 +3430,21 @@ namespace DayZeEditor
         }
         #endregion Generalsettings
 
-        #region Hartdline
+        #region Hardline
         private void loadHardlineSettings()
         {
             useraction = false;
             ShowHardlineHUDCB.Checked = HardLineSettings.ShowHardlineHUD == 1 ? true : false;
             UseReputationCB.Checked = HardLineSettings.UseReputation == 1 ? true : false;
+            UseFactionReputationCB.Checked = HardLineSettings.UseFactionReputation == 1 ? true : false;
+            EnableFactionPersistenceCB.Checked = HardLineSettings.EnableFactionPersistence == 1 ? true : false;
             EnableItemRarityCB.Checked = HardLineSettings.EnableItemRarity == 1 ? true : false;
+            UseItemRarityOnInventoryIconsCB.Checked = HardLineSettings.UseItemRarityOnInventoryIcons == 1 ? true : false;
             UseItemRarityForMarketPurchaseNCB.Checked = HardLineSettings.UseItemRarityForMarketPurchase == 1 ? true : false;
             UseItemRarityForMarketSellCB.Checked = HardLineSettings.UseItemRarityForMarketSell == 1 ? true : false;
-            EnableFactionPersistenceCB.Checked = HardLineSettings.EnableFactionPersistence == 1 ? true : false;
-            UseFactionReputationCB.Checked = HardLineSettings.UseFactionReputation == 1 ? true : false;
             ReputationMaxReputationNUD.Value = HardLineSettings.MaxReputation;
             ReputationLossOnDeathNUD.Value = HardLineSettings.ReputationLossOnDeath;
-            ReputationOnKillInfectedNUD.Value = HardLineSettings.ReputationOnKillInfected;
-            ReputationOnKillPlayerNUD.Value = HardLineSettings.ReputationOnKillPlayer;
-            ReputationOnKillAnimalNUD.Value = HardLineSettings.ReputationOnKillAnimal;
-            ReputationOnKillAINUD.Value = HardLineSettings.ReputationOnKillAI;
+            DefaultItemRarityNUD.Value = HardLineSettings.DefaultItemRarity;
 
             HardlinePlayerDataPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Hardline\\PlayerData";
             if(!Directory.Exists(HardlinePlayerDataPath))
@@ -3452,6 +3453,10 @@ namespace DayZeEditor
             }
             ExpansionHardlinePlayerDataList = new ExpansionHardlinePlayerDataList(HardlinePlayerDataPath);
             setupExpansionHardlinePlayerData();
+
+            EntityReputationLB.DisplayMember = "DisplayName";
+            EntityReputationLB.ValueMember = "Value";
+            EntityReputationLB.DataSource = HardLineSettings.entityreps;
 
             useraction = true;
         }
@@ -3504,10 +3509,10 @@ namespace DayZeEditor
             HardLineSettings.ReputationLossOnDeath = (int)ReputationLossOnDeathNUD.Value;
             HardLineSettings.isDirty = true;
         }
-        private void comboBox4_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void ItemRarityCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
-            string Type = comboBox4.GetItemText(comboBox4.SelectedItem);
+            string Type = ItemRarityCB.GetItemText(ItemRarityCB.SelectedItem);
             useraction = false;
 
             ItemRequirementNUD.Value = HardLineSettings.getRequirment(Type);
@@ -3520,7 +3525,7 @@ namespace DayZeEditor
         private void ItemRequirementNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
-            HardLineSettings.SetRequirment(comboBox4.GetItemText(comboBox4.SelectedItem), (int)ItemRequirementNUD.Value);
+            HardLineSettings.SetRequirment(ItemRarityCB.GetItemText(ItemRarityCB.SelectedItem), (int)ItemRequirementNUD.Value);
             HardLineSettings.isDirty = true;
         }
         private void darkButton71_Click(object sender, EventArgs e)
@@ -3535,7 +3540,7 @@ namespace DayZeEditor
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
-                string Type = comboBox4.GetItemText(comboBox4.SelectedItem);
+                string Type = ItemRarityCB.GetItemText(ItemRarityCB.SelectedItem);
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
@@ -3549,11 +3554,25 @@ namespace DayZeEditor
         }
         private void darkButton72_Click(object sender, EventArgs e)
         {
-
+            AddItemfromString form = new AddItemfromString();
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string Type = ItemRarityCB.GetItemText(ItemRarityCB.SelectedItem);
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    if (!HardLineSettings.getlist(Type).Contains(l))
+                    {
+                        HardLineSettings.getlist(Type).Add(l);
+                    }
+                    HardLineSettings.isDirty = true;
+                }
+            }
         }
         private void darkButton70_Click(object sender, EventArgs e)
         {
-            string Type = comboBox4.GetItemText(comboBox4.SelectedItem);
+            string Type = ItemRarityCB.GetItemText(ItemRarityCB.SelectedItem);
             HardLineSettings.getlist(Type).Remove(ItemRarityLB.GetItemText(ItemRarityLB.SelectedItem));
             HardLineSettings.isDirty = true;
         }
@@ -3613,6 +3632,82 @@ namespace DayZeEditor
         {
             if (!useraction) { return; }
             HardLineSettings.UseFactionReputation = UseFactionReputationCB.Checked == true ? 1 : 0;
+            HardLineSettings.isDirty = true;
+        }
+        private void EntityReputationLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CurrentEntityrep = EntityReputationLB.SelectedItem as EntityReputationlevels;
+            if (CurrentEntityrep == null) { return; }
+            useraction = false;
+            EntityReputationNUD.Value = CurrentEntityrep.Level;
+            useraction = true;
+        }
+        private void darkButton111_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseOnlySingleitem = true
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    if (!HardLineSettings.entityreps.Any(x => x.Classname == l))
+                    {
+                        HardLineSettings.entityreps.Add(new EntityReputationlevels(l, 0));
+                    }
+                    HardLineSettings.isDirty = true;
+                }
+            }
+        }
+        private void darkButton109_Click(object sender, EventArgs e)
+        {
+            AddItemfromString form = new AddItemfromString();
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    if (!HardLineSettings.entityreps.Any(x => x.Classname == l))
+                    {
+                        HardLineSettings.entityreps.Add(new EntityReputationlevels(l, 0));
+                    }
+                    HardLineSettings.isDirty = true;
+                }
+            }
+        }
+        private void darkButton110_Click(object sender, EventArgs e)
+        {
+            EntityReputationlevels erl = HardLineSettings.entityreps.First(x => x.Classname == EntityReputationLB.GetItemText(EntityReputationLB.SelectedItem));
+            if (erl != null)
+            {
+                HardLineSettings.entityreps.Remove(erl);
+                HardLineSettings.isDirty = true;
+            }
+        }
+        private void EntityReputationNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            CurrentEntityrep.Level = (int)EntityReputationNUD.Value;
+            HardLineSettings.isDirty = true;
+        }
+        private void UseItemRarityOnInventoryIconsCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            HardLineSettings.UseItemRarityOnInventoryIcons = UseItemRarityOnInventoryIconsCB.Checked == true ? 1 : 0;
+            HardLineSettings.isDirty = true;
+        }
+        private void DefaultItemRarityNUD_ValueChanged(object sender, EventArgs e)
+        {
+
+            if (!useraction) { return; }
+            HardLineSettings.DefaultItemRarity = (int)DefaultItemRarityNUD.Value;
             HardLineSettings.isDirty = true;
         }
         #endregion
@@ -5000,6 +5095,8 @@ namespace DayZeEditor
         }
         //Contaminated Area missions
         public ContaminatedAreaMissionSettingFiles currentContaminatedAreaMissionFile { get; private set; }
+        public EntityReputationlevels CurrentEntityrep { get; private set; }
+
         private void PosXNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
@@ -5756,7 +5853,6 @@ namespace DayZeEditor
                 currentstoragelevel.ExcludedSlots.Add(Slot);
             PersonalStorageSettingsNew.isDirty = true;
         }
-
         private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -5764,7 +5860,6 @@ namespace DayZeEditor
                 _mouseLastPosition = e.Location;
             }
         }
-
         private void pictureBox2_MouseEnter(object sender, EventArgs e)
         {
             if (pictureBox2.Focused == false)
@@ -5774,7 +5869,6 @@ namespace DayZeEditor
                 pictureBox2.Invalidate();
             }
         }
-
         private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -5874,7 +5968,8 @@ namespace DayZeEditor
             EnableForceSZCleanupCB.Checked = SafeZoneSettings.EnableForceSZCleanup == 1 ? true : false;
             ItemLifetimeInSafeZoneNUD.Value = (decimal)SafeZoneSettings.ItemLifetimeInSafeZone;
             ActorsPerTickNUD.Value = SafeZoneSettings.ActorsPerTick;
-
+            EnableForceSZCleanupVehiclesCB.Checked = SafeZoneSettings.EnableForceSZCleanupVehicles == 1 ? true : false;
+            VehicleLifetimeInSafeZoneNUD.Value = (decimal)SafeZoneSettings.VehicleLifetimeInSafeZone;
 
             listBox14.DisplayMember = "DisplayName";
             listBox14.ValueMember = "Value";
@@ -6084,7 +6179,19 @@ namespace DayZeEditor
         private void ItemLifetimeInSafeZoneNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            SafeZoneSettings.ItemLifetimeInSafeZone = (float)ItemLifetimeInSafeZoneNUD.Value;
+            SafeZoneSettings.ItemLifetimeInSafeZone = (decimal)ItemLifetimeInSafeZoneNUD.Value;
+            SafeZoneSettings.isDirty = true;
+        }
+        private void EnableForceSZCleanupVehiclesCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            SafeZoneSettings.EnableForceSZCleanupVehicles = EnableForceSZCleanupVehiclesCB.Checked == true ? 1 : 0;
+            SafeZoneSettings.isDirty = true;
+        }
+        private void VehicleLifetimeInSafeZoneNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            SafeZoneSettings.VehicleLifetimeInSafeZone = (decimal)VehicleLifetimeInSafeZoneNUD.Value;
             SafeZoneSettings.isDirty = true;
         }
         private void numericUpDown18_ValueChanged(object sender, EventArgs e)
@@ -6540,15 +6647,34 @@ namespace DayZeEditor
         {
             if(currentSpawnPosition == null) { return; }
             float scalevalue = SpawnScale * 0.05f;
-            foreach (float[] position in currentSpawnLocation.Positions)
+            if (TerritorieszonesCB.Checked)
             {
-                int centerX = (int)(Math.Round(position[0], 0) * scalevalue);
-                int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(position[2], 0) * scalevalue);
-                Point center = new Point(centerX, centerY);
-                Pen pen = new Pen(Color.Red, 4);
-                if (position == currentSpawnPosition)
-                    pen.Color = Color.LimeGreen;
-                getCircle(e.Graphics, pen, center, 4);
+                foreach (SpawnLocations sl in SpawnSettings.SpawnLocations)
+                {
+                    foreach (float[] position in sl.Positions)
+                    {
+                        int centerX = (int)(Math.Round(position[0], 0) * scalevalue);
+                        int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(position[2], 0) * scalevalue);
+                        Point center = new Point(centerX, centerY);
+                        Pen pen = new Pen(Color.Red, 4);
+                        if (position == currentSpawnPosition)
+                            pen.Color = Color.LimeGreen;
+                        getCircle(e.Graphics, pen, center, 4);
+                    }
+                }
+            }
+            else
+            {
+                foreach (float[] position in currentSpawnLocation.Positions)
+                    {
+                        int centerX = (int)(Math.Round(position[0], 0) * scalevalue);
+                        int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(position[2], 0) * scalevalue);
+                        Point center = new Point(centerX, centerY);
+                        Pen pen = new Pen(Color.Red, 4);
+                        if (position == currentSpawnPosition)
+                            pen.Color = Color.LimeGreen;
+                        getCircle(e.Graphics, pen, center, 4);
+                }
             }
         }
         private void BackgroundImagePathTB_TextChanged(object sender, EventArgs e)
@@ -6624,7 +6750,6 @@ namespace DayZeEditor
                 _mouseLastPosition = e.Location;
             }
         }
-
         private void pictureBox4_MouseEnter(object sender, EventArgs e)
         {
             if (pictureBox4.Focused == false)
@@ -6634,7 +6759,6 @@ namespace DayZeEditor
                 pictureBox4.Invalidate();
             }
         }
-
         private void pictureBox4_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -7666,6 +7790,10 @@ namespace DayZeEditor
             SpawnSettings.isDirty = true;
             pictureBox4.Invalidate();
         }
+        private void TerritorieszonesCB_CheckedChanged(object sender, EventArgs e)
+        {
+            pictureBox4.Invalidate();
+        }
         #endregion SpawnSettings
 
         #region TerritorySettings
@@ -8287,7 +8415,7 @@ namespace DayZeEditor
             {
                 Tag = "MenuCategoriesParent"
             };
-            foreach (Menucategory mc in PersonalStorageSettings.MenuCategories)
+            foreach (ExpansionMenuCategory mc in PersonalStorageSettings.MenuCategories)
             {
                 TreeNode mctreenode = new TreeNode(mc.DisplayName)
                 {
@@ -8312,7 +8440,7 @@ namespace DayZeEditor
                 {
                     Tag = "SubCategoriesParent"
                 };
-                foreach (Subcategory tctn in mc.SubCategories)
+                foreach (ExpansionMenuSubCategory tctn in mc.SubCategories)
                 {
                     TreeNode sctreenode = new TreeNode(tctn.DisplayName)
                     {
@@ -8352,8 +8480,8 @@ namespace DayZeEditor
             }
             FactionCB.DataSource = new BindingList<string>(questrequiredfaction);
         }
-        public Menucategory CurrentMenucategory;
-        public Subcategory CurrentSubCategory;
+        public ExpansionMenuCategory CurrentMenucategory;
+        public ExpansionMenuSubCategory CurrentSubCategory;
         public StorageLevel currentstoragelevel;
         private void treeViewMS1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
@@ -8386,7 +8514,7 @@ namespace DayZeEditor
                     case "SubCategoriesParent":
                         groupBox89.Visible = false;
                         groupBox90.Visible = false;
-                        CurrentMenucategory = e.Node.Parent.Tag as Menucategory;
+                        CurrentMenucategory = e.Node.Parent.Tag as ExpansionMenuCategory;
                         CurrentSubCategory = null;
                         if (e.Button == MouseButtons.Right)
                         {
@@ -8400,21 +8528,21 @@ namespace DayZeEditor
                     case "MCIncluded":
                         groupBox89.Visible = false;
                         groupBox90.Visible = true;
-                        CurrentMenucategory = e.Node.Parent.Tag as Menucategory;
+                        CurrentMenucategory = e.Node.Parent.Tag as ExpansionMenuCategory;
                         CurrentSubCategory = null;
                         listBox33.DataSource = CurrentMenucategory.Included;
                         break;
                     case "MCExcluded":
                         groupBox89.Visible = false;
                         groupBox90.Visible = true;
-                        CurrentMenucategory = e.Node.Parent.Tag as Menucategory;
+                        CurrentMenucategory = e.Node.Parent.Tag as ExpansionMenuCategory;
                         CurrentSubCategory = null;
                         listBox33.DataSource = CurrentMenucategory.Excluded;
                         break;
                     case "MCIconPath":
                         groupBox89.Visible = true;
                         groupBox90.Visible = false;
-                        CurrentMenucategory = e.Node.Parent.Tag as Menucategory;
+                        CurrentMenucategory = e.Node.Parent.Tag as ExpansionMenuCategory;
                         CurrentSubCategory = null;
                         textBox26.Text = CurrentMenucategory.IconPath;
                         break;
@@ -8422,30 +8550,30 @@ namespace DayZeEditor
                         groupBox89.Visible = false;
                         groupBox90.Visible = true;
                         CurrentMenucategory = null;
-                        CurrentSubCategory = e.Node.Parent.Tag as Subcategory;
+                        CurrentSubCategory = e.Node.Parent.Tag as ExpansionMenuSubCategory;
                         listBox33.DataSource = CurrentSubCategory.Included;
                         break;
                     case "SCExcluded":
                         groupBox89.Visible = false;
                         groupBox90.Visible = true;
                         CurrentMenucategory = null;
-                        CurrentSubCategory = e.Node.Parent.Tag as Subcategory;
+                        CurrentSubCategory = e.Node.Parent.Tag as ExpansionMenuSubCategory;
                         listBox33.DataSource = CurrentSubCategory.Excluded;
                         break;
                     case "SCIconPath":
                         groupBox89.Visible = true;
                         groupBox90.Visible = false;
                         CurrentMenucategory = null;
-                        CurrentSubCategory = e.Node.Parent.Tag as Subcategory;
+                        CurrentSubCategory = e.Node.Parent.Tag as ExpansionMenuSubCategory;
                         textBox26.Text = CurrentSubCategory.IconPath;
                         break;
                 }
             }
-            else if (e.Node.Tag is Menucategory)
+            else if (e.Node.Tag is ExpansionMenuCategory)
             {
                 groupBox89.Visible = true;
                 groupBox90.Visible = false;
-                CurrentMenucategory = e.Node.Tag as Menucategory;
+                CurrentMenucategory = e.Node.Tag as ExpansionMenuCategory;
                 textBox26.Text = CurrentMenucategory.DisplayName;
                 if (e.Button == MouseButtons.Right)
                 {
@@ -8456,12 +8584,12 @@ namespace DayZeEditor
                     contextMenuStrip1.Show(Cursor.Position);
                 }
             }
-            else if (e.Node.Tag is Subcategory)
+            else if (e.Node.Tag is ExpansionMenuSubCategory)
             {
                 groupBox89.Visible = true;
                 groupBox90.Visible = false;
-                CurrentSubCategory = e.Node.Tag as Subcategory;
-                CurrentMenucategory = e.Node.Parent.Parent.Tag as Menucategory;
+                CurrentSubCategory = e.Node.Tag as ExpansionMenuSubCategory;
+                CurrentMenucategory = e.Node.Parent.Parent.Tag as ExpansionMenuCategory;
                 textBox26.Text = CurrentSubCategory.DisplayName;
                 if (e.Button == MouseButtons.Right)
                 {
@@ -8477,21 +8605,21 @@ namespace DayZeEditor
         private void textBox26_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            if (treeViewMS1.SelectedNode.Parent.Tag is Menucategory)
+            if (treeViewMS1.SelectedNode.Parent.Tag is ExpansionMenuCategory)
             {
                 CurrentMenucategory.IconPath = textBox26.Text;
             }
-            else if (treeViewMS1.SelectedNode.Tag is Menucategory)
+            else if (treeViewMS1.SelectedNode.Tag is ExpansionMenuCategory)
             {
                 CurrentMenucategory.DisplayName = textBox26.Text;
                 treeViewMS1.SelectedNode.Text = CurrentMenucategory.DisplayName;
 
             }
-            else if (treeViewMS1.SelectedNode.Parent.Tag is Subcategory)
+            else if (treeViewMS1.SelectedNode.Parent.Tag is ExpansionMenuSubCategory)
             {
                 CurrentSubCategory.IconPath = textBox26.Text;
             }
-            else if (treeViewMS1.SelectedNode.Tag is Subcategory)
+            else if (treeViewMS1.SelectedNode.Tag is ExpansionMenuSubCategory)
             {
                 CurrentSubCategory.DisplayName = textBox26.Text;
                 treeViewMS1.SelectedNode.Text = CurrentSubCategory.DisplayName;
@@ -8589,7 +8717,7 @@ namespace DayZeEditor
         }
         private void addNewMenuCategoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Menucategory bewmc = new Menucategory();
+            ExpansionMenuCategory bewmc = new ExpansionMenuCategory();
             TreeNode mctreenode = new TreeNode(bewmc.DisplayName)
             {
                 Tag = bewmc
@@ -8620,7 +8748,7 @@ namespace DayZeEditor
         }
         private void addNewSubMenuCategoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Subcategory bewmc = new Subcategory();
+            ExpansionMenuSubCategory bewmc = new ExpansionMenuSubCategory();
             TreeNode mctreenode = new TreeNode(bewmc.DisplayName)
             {
                 Tag = bewmc
@@ -8963,7 +9091,17 @@ namespace DayZeEditor
         }
 
 
+
+
+
+
+
         #endregion personalstroage
+
+        private void ItemRarityLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
 
 
     }

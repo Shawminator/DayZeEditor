@@ -12,7 +12,7 @@ namespace DayZeLib
 {
     public class MarketSettings
     {
-        public int m_Version { get; set; } //Current Version 11
+        public int m_Version { get; set; } //Current Version 12
         public int MarketSystemEnabled { get; set; }
         public BindingList<string[]> NetworkCategories { get; set; } //empty atm
         public string CurrencyIcon { get; set; }
@@ -26,8 +26,8 @@ namespace DayZeLib
         public int UseWholeMapForATMPlayerList { get; set; }
         public decimal SellPricePercent { get; set; }
         public int NetworkBatchSize { get; set; }
-        public float MaxVehicleDistanceToTrader { get; set; }
-        public float MaxLargeVehicleDistanceToTrader { get; set; }
+        public decimal MaxVehicleDistanceToTrader { get; set; }
+        public decimal MaxLargeVehicleDistanceToTrader { get; set; }
 
         public BindingList<string> LargeVehicles { get; set; }
         public BindingList<SpawnPositions> LandSpawnPositions { get; set; }
@@ -37,6 +37,9 @@ namespace DayZeLib
         public BindingList<string> Currencies { get; set; }
         public BindingList<string> VehicleKeys { get; set; }
 
+        public decimal MaxSZVehicleParkingTime { get; set; }
+        public int SZVehicleParkingTicketFine { get; set; }
+
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -44,7 +47,7 @@ namespace DayZeLib
 
         public MarketSettings()
         {
-            m_Version = 11;
+            m_Version = 12;
             CurrencyIcon = "DayZExpansion/Market/GUI/icons/coinstack2_64x64.edds";
             NetworkCategories = new BindingList<string[]>();
             //MarketVIPs = new BindingList<string[]>();
@@ -58,7 +61,7 @@ namespace DayZeLib
         public MarketSettings(string name)
         {
             Filename = name;
-            m_Version = 11;
+            m_Version = 12;
             MarketSystemEnabled = 0;
             CurrencyIcon = "DayZExpansion/Market/GUI/icons/coinstack2_64x64.edds";
             ATMSystemEnabled = 0;
@@ -144,10 +147,8 @@ namespace DayZeLib
                     return MarketMenuColors.BaseColorCheckboxes;
                 case "BaseColorInfoSectionBackgroundColour":
                     return MarketMenuColors.BaseColorInfoSectionBackground;
-                case "BaseColorTooltipsCornersColour":
-                    return MarketMenuColors.BaseColorTooltipsCorners;
-                case "BaseColorTooltipsSeperatorLineColour":
-                    return MarketMenuColors.BaseColorTooltipsSeperatorLine;
+                case "BaseColorTooltipsHeadersColour":
+                    return MarketMenuColors.BaseColorTooltipsHeaders;
                 case "BaseColorTooltipsBackgroundColour":
                     return MarketMenuColors.BaseColorTooltipsBackground;
                 case "ColorDecreaseQuantityButtonColour":
@@ -232,11 +233,8 @@ namespace DayZeLib
                 case "BaseColorInfoSectionBackgroundColour":
                     MarketMenuColors.BaseColorInfoSectionBackground = Colour;
                     break;
-                case "BaseColorTooltipsCornersColour":
-                    MarketMenuColors.BaseColorTooltipsCorners = Colour;
-                    break;
-                case "BaseColorTooltipsSeperatorLineColour":
-                    MarketMenuColors.BaseColorTooltipsSeperatorLine = Colour;
+                case "BaseColorTooltipsHeadersColour":
+                    MarketMenuColors.BaseColorTooltipsHeaders = Colour;
                     break;
                 case "BaseColorTooltipsBackgroundColour":
                     MarketMenuColors.BaseColorTooltipsBackground = Colour;
@@ -365,8 +363,7 @@ namespace DayZeLib
         public string BaseColorText { get; set; }
         public string BaseColorCheckboxes { get; set; }
         public string BaseColorInfoSectionBackground { get; set; }
-        public string BaseColorTooltipsCorners { get; set; }
-        public string BaseColorTooltipsSeperatorLine { get; set; }
+        public string BaseColorTooltipsHeaders { get; set; }
         public string BaseColorTooltipsBackground { get; set; }
         public string ColorDecreaseQuantityButton { get; set; }
         public string ColorDecreaseQuantityIcon { get; set; }
@@ -405,9 +402,8 @@ namespace DayZeLib
             BaseColorText = "FBFCFEFF";
             BaseColorCheckboxes = "FBFCFEFF";
             BaseColorInfoSectionBackground = "2225268C";
-            BaseColorTooltipsCorners = "FBFCFEFF";
-            BaseColorTooltipsSeperatorLine = "FFB418FF";
-            BaseColorTooltipsBackground = "27272DFF";
+            BaseColorTooltipsHeaders = "000000F0";
+            BaseColorTooltipsBackground = "000000DC";
             ColorDecreaseQuantityButton = "DD262614";
             ColorDecreaseQuantityIcon = "DD262628";
             ColorSetQuantityButton = "C7265114";

@@ -1,4 +1,6 @@
 ﻿
+using FastColoredTextBoxNS;
+
 namespace DayZeEditor
 {
     partial class Economy_Manager
@@ -960,6 +962,18 @@ namespace DayZeEditor
             this.label149 = new System.Windows.Forms.Label();
             this.TerritoriesZonesRadiusNUD = new System.Windows.Forms.NumericUpDown();
             this.label151 = new System.Windows.Forms.Label();
+            this.InitCTab = new System.Windows.Forms.TabPage();
+            this.label158 = new System.Windows.Forms.Label();
+            this.fastColoredTextBox1 = new FastColoredTextBoxNS.FastColoredTextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.findToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.replaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.commentSelectedLinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uncommentSelectedLinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
+            this.autoIndentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TypesContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.DeleteTypesTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.AddTypesTSMI = new System.Windows.Forms.ToolStripMenuItem();
@@ -1004,9 +1018,24 @@ namespace DayZeEditor
             this.MapGroupProtoTabButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.TerritoriesTabButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.InitCTabButton = new System.Windows.Forms.ToolStripButton();
             this.TerritoryContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addNewTerritoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeTerritoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.miniToolStrip = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -1362,12 +1391,18 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesDynamicMaxNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesDynamicMinNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesRadiusNUD)).BeginInit();
+            this.InitCTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox1)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.TypesContextMenu.SuspendLayout();
             this.EventSpawnContextMenu.SuspendLayout();
             this.EventgroupContextMenu.SuspendLayout();
             this.CFGIgnoreContextMenu.SuspendLayout();
             this.darkToolStrip23.SuspendLayout();
             this.TerritoryContextMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.miniToolStrip)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
+            this.bindingNavigator1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -3205,6 +3240,7 @@ namespace DayZeEditor
             this.EconomyTabPage.Controls.Add(this.cfgIgnorelistTab);
             this.EconomyTabPage.Controls.Add(this.MapgroupProtoTab);
             this.EconomyTabPage.Controls.Add(this.TerritoriesTab);
+            this.EconomyTabPage.Controls.Add(this.InitCTab);
             this.EconomyTabPage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.EconomyTabPage.Location = new System.Drawing.Point(0, 95);
             this.EconomyTabPage.Name = "EconomyTabPage";
@@ -13165,6 +13201,7 @@ namespace DayZeEditor
             this.pictureBox6.Size = new System.Drawing.Size(512, 512);
             this.pictureBox6.TabIndex = 0;
             this.pictureBox6.TabStop = false;
+            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
             this.pictureBox6.DoubleClick += new System.EventHandler(this.pictureBox6_DoubleClick);
             this.pictureBox6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox6_MouseDown);
             this.pictureBox6.MouseEnter += new System.EventHandler(this.pictureBox6_MouseEnter);
@@ -13572,6 +13609,142 @@ namespace DayZeEditor
             this.label151.TabIndex = 134;
             this.label151.Text = "Radius - ";
             // 
+            // InitCTab
+            // 
+            this.InitCTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.InitCTab.Controls.Add(this.label158);
+            this.InitCTab.Controls.Add(this.fastColoredTextBox1);
+            this.InitCTab.Controls.Add(this.menuStrip1);
+            this.InitCTab.ForeColor = System.Drawing.SystemColors.Control;
+            this.InitCTab.Location = new System.Drawing.Point(4, 25);
+            this.InitCTab.Name = "InitCTab";
+            this.InitCTab.Size = new System.Drawing.Size(1218, 553);
+            this.InitCTab.TabIndex = 16;
+            this.InitCTab.Text = "Init C";
+            // 
+            // label158
+            // 
+            this.label158.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label158.AutoSize = true;
+            this.label158.BackColor = System.Drawing.SystemColors.Control;
+            this.label158.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label158.Location = new System.Drawing.Point(732, 5);
+            this.label158.Name = "label158";
+            this.label158.Size = new System.Drawing.Size(473, 13);
+            this.label158.TabIndex = 7;
+            this.label158.Text = "Save button will only save the init.c when the init.c tab is active. No other sec" +
+    "tions will be saved.....";
+            // 
+            // fastColoredTextBox1
+            // 
+            this.fastColoredTextBox1.AutoCompleteBracketsList = new char[] {
+        '(',
+        ')',
+        '{',
+        '}',
+        '[',
+        ']',
+        '\"',
+        '\"',
+        '\'',
+        '\''};
+            this.fastColoredTextBox1.AutoIndentCharsPatterns = "^\\s*[\\w\\.]+(\\s\\w+)?\\s*(?<range>=)\\s*(?<range>[^;=]+);\n^\\s*(case|default)\\s*[^:]*(" +
+    "?<range>:)\\s*(?<range>[^;]+);";
+            this.fastColoredTextBox1.AutoScrollMinSize = new System.Drawing.Size(2, 14);
+            this.fastColoredTextBox1.BackBrush = null;
+            this.fastColoredTextBox1.BackColor = System.Drawing.Color.FloralWhite;
+            this.fastColoredTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.fastColoredTextBox1.CharHeight = 14;
+            this.fastColoredTextBox1.CharWidth = 8;
+            this.fastColoredTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.fastColoredTextBox1.DefaultMarkerSize = 8;
+            this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.fastColoredTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fastColoredTextBox1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.fastColoredTextBox1.IsReplaceMode = false;
+            this.fastColoredTextBox1.Location = new System.Drawing.Point(0, 24);
+            this.fastColoredTextBox1.Name = "fastColoredTextBox1";
+            this.fastColoredTextBox1.Paddings = new System.Windows.Forms.Padding(0);
+            this.fastColoredTextBox1.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.fastColoredTextBox1.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("fastColoredTextBox1.ServiceColors")));
+            this.fastColoredTextBox1.Size = new System.Drawing.Size(1218, 529);
+            this.fastColoredTextBox1.TabIndex = 6;
+            this.fastColoredTextBox1.Zoom = 100;
+            this.fastColoredTextBox1.TextChanged += new System.EventHandler<FastColoredTextBoxNS.TextChangedEventArgs>(this.fastColoredTextBox1_TextChanged);
+            this.fastColoredTextBox1.SelectionChangedDelayed += new System.EventHandler(this.fastColoredTextBox1_SelectionChangedDelayed);
+            this.fastColoredTextBox1.AutoIndentNeeded += new System.EventHandler<FastColoredTextBoxNS.AutoIndentEventArgs>(this.fastColoredTextBox1_AutoIndentNeeded);
+            this.fastColoredTextBox1.CustomAction += new System.EventHandler<FastColoredTextBoxNS.CustomActionEventArgs>(this.fastColoredTextBox1_CustomAction);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1218, 24);
+            this.menuStrip1.TabIndex = 5;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.findToolStripMenuItem,
+            this.replaceToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.commentSelectedLinesToolStripMenuItem,
+            this.uncommentSelectedLinesToolStripMenuItem,
+            this.toolStripMenuItem4,
+            this.autoIndentToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Text = "&Edit";
+            // 
+            // findToolStripMenuItem
+            // 
+            this.findToolStripMenuItem.Name = "findToolStripMenuItem";
+            this.findToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.findToolStripMenuItem.Text = "&Find [Ctrl+F]";
+            this.findToolStripMenuItem.Click += new System.EventHandler(this.findToolStripMenuItem_Click);
+            // 
+            // replaceToolStripMenuItem
+            // 
+            this.replaceToolStripMenuItem.Name = "replaceToolStripMenuItem";
+            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.replaceToolStripMenuItem.Text = "&Replace [Ctrl+H]";
+            this.replaceToolStripMenuItem.Click += new System.EventHandler(this.replaceToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(211, 6);
+            // 
+            // commentSelectedLinesToolStripMenuItem
+            // 
+            this.commentSelectedLinesToolStripMenuItem.Name = "commentSelectedLinesToolStripMenuItem";
+            this.commentSelectedLinesToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.commentSelectedLinesToolStripMenuItem.Text = "Comment selected lines";
+            this.commentSelectedLinesToolStripMenuItem.Click += new System.EventHandler(this.commentSelectedLinesToolStripMenuItem_Click);
+            // 
+            // uncommentSelectedLinesToolStripMenuItem
+            // 
+            this.uncommentSelectedLinesToolStripMenuItem.Name = "uncommentSelectedLinesToolStripMenuItem";
+            this.uncommentSelectedLinesToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.uncommentSelectedLinesToolStripMenuItem.Text = "Uncomment selected lines";
+            this.uncommentSelectedLinesToolStripMenuItem.Click += new System.EventHandler(this.uncommentSelectedLinesToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(211, 6);
+            // 
+            // autoIndentToolStripMenuItem
+            // 
+            this.autoIndentToolStripMenuItem.Name = "autoIndentToolStripMenuItem";
+            this.autoIndentToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.autoIndentToolStripMenuItem.Text = "Auto Indent selected text";
+            this.autoIndentToolStripMenuItem.Click += new System.EventHandler(this.autoIndentToolStripMenuItem_Click);
+            // 
             // TypesContextMenu
             // 
             this.TypesContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -13809,7 +13982,9 @@ namespace DayZeEditor
             this.toolStripSeparator6,
             this.MapGroupProtoTabButton,
             this.toolStripSeparator7,
-            this.TerritoriesTabButton});
+            this.TerritoriesTabButton,
+            this.toolStripSeparator8,
+            this.InitCTabButton});
             this.darkToolStrip23.Location = new System.Drawing.Point(0, 70);
             this.darkToolStrip23.Name = "darkToolStrip23";
             this.darkToolStrip23.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
@@ -13969,6 +14144,26 @@ namespace DayZeEditor
             this.TerritoriesTabButton.Text = "Territories";
             this.TerritoriesTabButton.Click += new System.EventHandler(this.TerritoriesTabButton_Click);
             // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripSeparator8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripSeparator8.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
+            // 
+            // InitCTabButton
+            // 
+            this.InitCTabButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.InitCTabButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.InitCTabButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.InitCTabButton.Image = ((System.Drawing.Image)(resources.GetObject("InitCTabButton.Image")));
+            this.InitCTabButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.InitCTabButton.Name = "InitCTabButton";
+            this.InitCTabButton.Size = new System.Drawing.Size(39, 22);
+            this.InitCTabButton.Text = "Init C";
+            this.InitCTabButton.Click += new System.EventHandler(this.InitCTabButton_Click);
+            // 
             // TerritoryContextMenu
             // 
             this.TerritoryContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -13990,6 +14185,141 @@ namespace DayZeEditor
             this.removeTerritoryToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.removeTerritoryToolStripMenuItem.Text = "Remove Territory";
             this.removeTerritoryToolStripMenuItem.Click += new System.EventHandler(this.removeTerritoryToolStripMenuItem_Click);
+            // 
+            // miniToolStrip
+            // 
+            this.miniToolStrip.AccessibleName = "New item selection";
+            this.miniToolStrip.AccessibleRole = System.Windows.Forms.AccessibleRole.ButtonDropDown;
+            this.miniToolStrip.AddNewItem = null;
+            this.miniToolStrip.AutoSize = false;
+            this.miniToolStrip.CanOverflow = false;
+            this.miniToolStrip.CountItem = null;
+            this.miniToolStrip.DeleteItem = null;
+            this.miniToolStrip.Dock = System.Windows.Forms.DockStyle.None;
+            this.miniToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.miniToolStrip.Location = new System.Drawing.Point(252, 3);
+            this.miniToolStrip.MoveFirstItem = null;
+            this.miniToolStrip.MoveLastItem = null;
+            this.miniToolStrip.MoveNextItem = null;
+            this.miniToolStrip.MovePreviousItem = null;
+            this.miniToolStrip.Name = "miniToolStrip";
+            this.miniToolStrip.PositionItem = null;
+            this.miniToolStrip.Size = new System.Drawing.Size(1218, 25);
+            this.miniToolStrip.TabIndex = 0;
+            // 
+            // bindingNavigatorMoveFirstItem
+            // 
+            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
+            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
+            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveFirstItem.Text = "Move first";
+            // 
+            // bindingNavigatorMovePreviousItem
+            // 
+            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
+            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
+            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
+            // 
+            // bindingNavigatorSeparator
+            // 
+            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorPositionItem
+            // 
+            this.bindingNavigatorPositionItem.AccessibleName = "Position";
+            this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
+            this.bindingNavigatorPositionItem.Text = "0";
+            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
+            // bindingNavigatorSeparator1
+            // 
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorMoveNextItem
+            // 
+            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
+            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
+            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveNextItem.Text = "Move next";
+            // 
+            // bindingNavigatorMoveLastItem
+            // 
+            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
+            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
+            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveLastItem.Text = "Move last";
+            // 
+            // bindingNavigatorSeparator2
+            // 
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Add new";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "Delete";
+            // 
+            // bindingNavigator1
+            // 
+            this.bindingNavigator1.AddNewItem = this.bindingNavigatorAddNewItem;
+            this.bindingNavigator1.CountItem = this.bindingNavigatorCountItem;
+            this.bindingNavigator1.DeleteItem = this.bindingNavigatorDeleteItem;
+            this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bindingNavigatorMoveFirstItem,
+            this.bindingNavigatorMovePreviousItem,
+            this.bindingNavigatorSeparator,
+            this.bindingNavigatorPositionItem,
+            this.bindingNavigatorCountItem,
+            this.bindingNavigatorSeparator1,
+            this.bindingNavigatorMoveNextItem,
+            this.bindingNavigatorMoveLastItem,
+            this.bindingNavigatorSeparator2,
+            this.bindingNavigatorAddNewItem,
+            this.bindingNavigatorDeleteItem});
+            this.bindingNavigator1.Location = new System.Drawing.Point(0, 0);
+            this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
+            this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
+            this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
+            this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
+            this.bindingNavigator1.Name = "bindingNavigator1";
+            this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
+            this.bindingNavigator1.Size = new System.Drawing.Size(1218, 25);
+            this.bindingNavigator1.TabIndex = 0;
+            this.bindingNavigator1.Text = "bindingNavigator1";
             // 
             // Economy_Manager
             // 
@@ -14441,6 +14771,11 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesDynamicMaxNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesDynamicMinNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TerritoriesZonesRadiusNUD)).EndInit();
+            this.InitCTab.ResumeLayout(false);
+            this.InitCTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox1)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.TypesContextMenu.ResumeLayout(false);
             this.EventSpawnContextMenu.ResumeLayout(false);
             this.EventgroupContextMenu.ResumeLayout(false);
@@ -14448,6 +14783,10 @@ namespace DayZeEditor
             this.darkToolStrip23.ResumeLayout(false);
             this.darkToolStrip23.PerformLayout();
             this.TerritoryContextMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.miniToolStrip)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
+            this.bindingNavigator1.ResumeLayout(false);
+            this.bindingNavigator1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -15429,5 +15768,32 @@ namespace DayZeEditor
         private System.Windows.Forms.Label label157;
         private TreeViewMS.PanelEx panel2;
         private TreeViewMS.PanelEx panel1;
+        private System.Windows.Forms.TabPage InitCTab;
+        private System.Windows.Forms.BindingNavigator miniToolStrip;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
+        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
+        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
+        private System.Windows.Forms.BindingNavigator bindingNavigator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripButton InitCTabButton;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem findToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem replaceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem commentSelectedLinesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem uncommentSelectedLinesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
+        private FastColoredTextBox fastColoredTextBox1;
+        private System.Windows.Forms.ToolStripMenuItem autoIndentToolStripMenuItem;
+        private System.Windows.Forms.Label label158;
     }
 }

@@ -26,7 +26,7 @@ namespace DayZeEditor
         public List<TypesFile> ModTypes;
 
         public BindingList<string> Factions { get; private set; }
-        public float[] CurrentWapypoint { get; private set; }
+        public decimal[] CurrentWapypoint { get; private set; }
         public treasurehunitemvarients LootVarients { get; private set; }
 
         private bool useraction;
@@ -778,7 +778,6 @@ namespace DayZeEditor
             QuestNPCConfigVersionNUD.Value = currentQuestNPC.ConfigVersion;
             QuestNPCIDNUD.Value = currentQuestNPC.ID;
             QuestNPCsClassNameCB.SelectedIndex = QuestNPCsClassNameCB.FindStringExact(currentQuestNPC.ClassName);
-            QuestNPCIsAICB.Checked = currentQuestNPC.IsAI == 1 ? true : false;
             QuestNPCsPOSXNUD.Value = (decimal)currentQuestNPC.Position[0];
             QuestNPCsPOSYNUD.Value = (decimal)currentQuestNPC.Position[1];
             QuestNPCsPOSZNUD.Value = (decimal)currentQuestNPC.Position[2];
@@ -796,7 +795,7 @@ namespace DayZeEditor
             QuestNPCIsEmoteStaticCB.Checked = currentQuestNPC.NPCEmoteIsStatic == 1 ? true : false;
             QuestNPCsLoadoutsCB.SelectedIndex = QuestNPCsLoadoutsCB.FindStringExact(currentQuestNPC.NPCLoadoutFile);
             QuestNPCFactionLB.SelectedIndex = QuestNPCFactionLB.FindStringExact(currentQuestNPC.NPCFaction);
-            QuestNPCsIsStaticCB.Checked = currentQuestNPC.IsStatic == 1 ? true:false;
+            NPCQuestNPCTypeCB.SelectedIndex = currentQuestNPC.NPCType;
 
             QuestNPCWaypointsLB.DisplayMember = "DisplayName";
             QuestNPCWaypointsLB.ValueMember = "Value";
@@ -902,23 +901,6 @@ namespace DayZeEditor
             if (!useraction) return;
             Emote emote = NPCQuestCompleteEmoteIDCB.SelectedItem as Emote;
             currentQuestNPC.NPCQuestCompleteEmoteID = emote.Value;
-            currentQuestNPC.isDirty = true;
-        }
-        private void QuestNPCIsAICB_CheckedChanged(object sender, EventArgs e)
-        {
-            groupBox6.Visible = QuestNPCIsAICB.Checked;
-            if (!useraction) return;
-            currentQuestNPC.IsAI = QuestNPCIsAICB.Checked == true ? 1 : 0;
-            currentQuestNPC.Waypoints = new BindingList<decimal[]>();
-            QuestNPCWaypointsLB.DisplayMember = "DisplayName";
-            QuestNPCWaypointsLB.ValueMember = "Value";
-            QuestNPCWaypointsLB.DataSource = currentQuestNPC.Waypoints;
-            currentQuestNPC.isDirty = true;
-        }
-        private void QuestNPCsIsStaticCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            currentQuestNPC.IsStatic = QuestNPCsIsStaticCB.Checked == true ? 1 : 0;
             currentQuestNPC.isDirty = true;
         }
         private void QuestNPCIsEmoteStaticCB_CheckedChanged(object sender, EventArgs e)
@@ -1101,6 +1083,12 @@ namespace DayZeEditor
                 File.WriteAllText(save.FileName + ".dze", jsonString);
             }
         }
+        private void NPCQuestNPCTypeCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentQuestNPC.NPCType = NPCQuestNPCTypeCB.SelectedIndex;
+            currentQuestNPC.isDirty = true;
+        }
         #endregion npc
         #region quests
         public Quests CurrentQuest { get; private set; }
@@ -1221,6 +1209,9 @@ namespace DayZeEditor
             QuestRewardsForGroupOwnerOnlyCB.Checked = CurrentQuest.RewardsForGroupOwnerOnly == 1 ? true : false;
             QuestReputationRewardNUD.Value = CurrentQuest.ReputationReward;
             QuestReputationRequirmentNUD.Value = CurrentQuest.ReputationRequirement;
+            QuestRandomRewardCB.Checked = CurrentQuest.RandomReward == 1 ? true : false;
+            QuestRandomRewardAmountNUD.Value = CurrentQuest.RandomRewardAmount;
+            QuestSequentialObjectivesCB.Checked = CurrentQuest.SequentialObjectives == 1 ? true : false;
 
             QuestPreQuestIDsLB.DisplayMember = "DisplayName";
             QuestPreQuestIDsLB.ValueMember = "Value";
@@ -1774,7 +1765,24 @@ namespace DayZeEditor
             CurrentQuest.DeleteQuestItems = QuestDeleteQuestItemsCB.Checked == true ? 1 : 0;
             CurrentQuest.isDirty = true;
         }
-
+        private void QuestRandomRewardCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentQuest.RandomReward = QuestRandomRewardCB.Checked == true ? 1 : 0;
+            CurrentQuest.isDirty = true;
+        }
+        private void QuestRandomRewardAmountNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentQuest.RandomRewardAmount = (int)QuestRandomRewardAmountNUD.Value;
+            CurrentQuest.isDirty = true;
+        }
+        private void QuestSequentialObjectivesCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentQuest.SequentialObjectives = QuestSequentialObjectivesCB.Checked == true ? 1 : 0;
+            CurrentQuest.isDirty = true;
+        }
         #endregion quests
         #region objectives
         public QuestObjectivesBase CurrentTreeNodeTag;
@@ -2239,7 +2247,7 @@ namespace DayZeEditor
                 TimeLimit = -1,
                 AICamp = new Aicamp()
                 {
-                    Positions = new BindingList<float[]>(),
+                    Positions = new BindingList<decimal[]>(),
                     NPCSpeed = "JOG",
                     NPCMode = "HALT",
                     NPCFaction = "West",
@@ -2279,7 +2287,7 @@ namespace DayZeEditor
                 AIPatrol = new AIPatrol()
                 {
                     NPCUnits = 4,
-                    Waypoints = new BindingList<float[]>(),
+                    Waypoints = new BindingList<decimal[]>(),
                     NPCSpeed = "JOG",
                     NPCMode = "HALT",
                     NPCFaction = "West",
@@ -2311,12 +2319,12 @@ namespace DayZeEditor
             {
                 ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
-                Filename = "Objective_AIVIP_" + newid.ToString(),
+                Filename = "Objective_AIESCORT_" + newid.ToString(),
                 ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.AIVIP,
                 _ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.AIVIP,
-                ObjectiveText = "New AIVIP Objective",
+                ObjectiveText = "New AIESCORT Objective",
                 TimeLimit = -1,
-                Position = new float[] { 0,0,0},
+                Position = new decimal[] { 0,0,0},
                 MaxDistance = -1,
                 AIVIP = new AIVIP()
                 {
@@ -2421,7 +2429,7 @@ namespace DayZeEditor
                 _ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.TARGET,
                 ObjectiveText = "New Target Objective",
                 TimeLimit = -1,
-                Position = new float[] { 0,0,0},
+                Position = new decimal[] { 0,0,0},
                 MaxDistance = -1,
                 Target = new Target()
                 {
@@ -2454,7 +2462,7 @@ namespace DayZeEditor
                 _ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.TRAVEL,
                 ObjectiveText = "New Travel Objective",
                 TimeLimit = -1,
-                Position = new float[] { 0, 0, 0 },
+                Position = new decimal[] { 0, 0, 0 },
                 MaxDistance = -1,
                 MarkerName = "",
                 ShowDistance = 0,
@@ -2486,7 +2494,7 @@ namespace DayZeEditor
                 DigInStash = 1,
                 MarkerName = "???",
                 MarkerVisibility = 4,
-                Positions = new BindingList<float[]>(),
+                Positions = new BindingList<decimal[]>(),
                 Loot = new BindingList<TreasureHuntItems>(),
                 LootItemsAmount = 2,
                 MaxDistance= 10,
@@ -2668,7 +2676,7 @@ namespace DayZeEditor
         private void ObjectivesAICampPositionsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ObjectivesAICampPositionsLB.SelectedItems.Count < 1) return;
-            CurrentWapypoint = ObjectivesAICampPositionsLB.SelectedItem as float[];
+            CurrentWapypoint = ObjectivesAICampPositionsLB.SelectedItem as decimal[];
             useraction = false;
             numericUpDown9.Value = (decimal)CurrentWapypoint[0];
             numericUpDown11.Value = (decimal)CurrentWapypoint[1];
@@ -2679,7 +2687,7 @@ namespace DayZeEditor
         private void darkButton20_Click(object sender, EventArgs e)
         {
             QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
-            CurrentAICam.AICamp.Positions.Add(new float[] { 0, 0, 0 });
+            CurrentAICam.AICamp.Positions.Add(new decimal[] { 0, 0, 0 });
             CurrentAICam.isDirty = true;
         }
         private void darkButton19_Click(object sender, EventArgs e)
@@ -2712,7 +2720,7 @@ namespace DayZeEditor
                         if (fileContent[i] == "") continue;
                         string[] linesplit = fileContent[i].Split('|');
                         string[] XYZ = linesplit[1].Split(' ');
-                        float[] newfloatarray = new float[] { Convert.ToSingle(XYZ[0]), Convert.ToSingle(XYZ[1]), Convert.ToSingle(XYZ[2]) };
+                        decimal[] newfloatarray = new decimal[] { Convert.ToDecimal(XYZ[0]), Convert.ToDecimal(XYZ[1]), Convert.ToDecimal(XYZ[2]) };
                         CurrentAICam.AICamp.Positions.Add(newfloatarray);
 
                     }
@@ -2727,7 +2735,7 @@ namespace DayZeEditor
         {
             QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
             StringBuilder SB = new StringBuilder();
-            foreach (float[] array in CurrentAICam.AICamp.Positions)
+            foreach (decimal[] array in CurrentAICam.AICamp.Positions)
             {
                 SB.AppendLine("eAI_SurvivorM_Lewis|" + array[0].ToString() + " " + array[1].ToString() + " " + array[2].ToString() + "|0.0 0.0 0.0");
             }
@@ -2753,7 +2761,7 @@ namespace DayZeEditor
                     }
                     foreach (Editorobject eo in importfile.EditorObjects)
                     {
-                        float[] newfloatarray = new float[] { Convert.ToSingle(eo.Position[0]), Convert.ToSingle(eo.Position[1]), Convert.ToSingle(eo.Position[2]) };
+                        decimal[] newfloatarray = new decimal[] { Convert.ToDecimal(eo.Position[0]), Convert.ToDecimal(eo.Position[1]), Convert.ToDecimal(eo.Position[2]) };
                         CurrentAICam.AICamp.Positions.Add(newfloatarray);
                     }
                     ObjectivesAICampPositionsLB.SelectedIndex = -1;
@@ -2770,13 +2778,13 @@ namespace DayZeEditor
             {
                 MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
             };
-            foreach (float[] array in CurrentAICam.AICamp.Positions)
+            foreach (decimal[] array in CurrentAICam.AICamp.Positions)
             {
                 Editorobject eo = new Editorobject()
                 {
                     Type = "eAI_SurvivorM_Jose",
                     DisplayName = "eAI_SurvivorM_Jose",
-                    Position = array,
+                    Position = new float[] { Convert.ToSingle(array[0]), Convert.ToSingle(array[1]), Convert.ToSingle(array[2])},
                     Orientation = new float[] { 0, 0, 0 },
                     Scale = 1.0f,
                     Flags = 2147483647
@@ -2796,7 +2804,7 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
-            CurrentWapypoint[0] = (float)numericUpDown9.Value;
+            CurrentWapypoint[0] = (decimal)numericUpDown9.Value;
             CurrentAICam.isDirty = true;
         }
         private void QuestObjectovesInfectedDeletionRadiusNUD_ValueChanged(object sender, EventArgs e)
@@ -2810,14 +2818,14 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
-            CurrentWapypoint[1] = (float)numericUpDown11.Value;
+            CurrentWapypoint[1] = (decimal)numericUpDown11.Value;
             CurrentAICam.isDirty = true;
         }
         private void numericUpDown12_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
-            CurrentWapypoint[2] = (float)numericUpDown12.Value;
+            CurrentWapypoint[2] = (decimal)numericUpDown12.Value;
             CurrentAICam.isDirty = true;
         }
         private void ObjectiovesAICampNPCSpeedCB_SelectedIndexChanged(object sender, EventArgs e)
@@ -2998,7 +3006,7 @@ namespace DayZeEditor
         private void ObjectivesAIPatrolWaypointsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ObjectivesAIPatrolWaypointsLB.SelectedItems.Count < 1) return;
-            CurrentWapypoint = ObjectivesAIPatrolWaypointsLB.SelectedItem as float[];
+            CurrentWapypoint = ObjectivesAIPatrolWaypointsLB.SelectedItem as decimal[];
             useraction = false;
             numericUpDown20.Value = (decimal)CurrentWapypoint[0];
             numericUpDown21.Value = (decimal)CurrentWapypoint[1];
@@ -3008,7 +3016,7 @@ namespace DayZeEditor
         private void darkButton48_Click(object sender, EventArgs e)
         {
             QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            CurrentAIPatrol.AIPatrol.Waypoints.Add(new float[] { 0, 0, 0 });
+            CurrentAIPatrol.AIPatrol.Waypoints.Add(new decimal[] { 0, 0, 0 });
             CurrentAIPatrol.isDirty = true;
         }
         private void darkButton47_Click(object sender, EventArgs e)
@@ -3040,7 +3048,7 @@ namespace DayZeEditor
                         if (fileContent[i] == "") continue;
                         string[] linesplit = fileContent[i].Split('|');
                         string[] XYZ = linesplit[1].Split(' ');
-                        float[] newfloatarray = new float[] { Convert.ToSingle(XYZ[0]), Convert.ToSingle(XYZ[1]), Convert.ToSingle(XYZ[2]) };
+                        decimal[] newfloatarray = new decimal[] { Convert.ToDecimal(XYZ[0]), Convert.ToDecimal(XYZ[1]), Convert.ToDecimal(XYZ[2]) };
                         CurrentAIPatrol.AIPatrol.Waypoints.Add(newfloatarray);
 
                     }
@@ -3055,7 +3063,7 @@ namespace DayZeEditor
         {
             QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
             StringBuilder SB = new StringBuilder();
-            foreach (float[] array in CurrentAIPatrol.AIPatrol.Waypoints)
+            foreach (decimal[] array in CurrentAIPatrol.AIPatrol.Waypoints)
             {
                 SB.AppendLine("eAI_SurvivorM_Lewis|" + array[0].ToString() + " " + array[1].ToString() + " " + array[2].ToString() + "|0.0 0.0 0.0");
             }
@@ -3081,7 +3089,7 @@ namespace DayZeEditor
                     }
                     foreach (Editorobject eo in importfile.EditorObjects)
                     {
-                        float[] newfloatarray = new float[] { Convert.ToSingle(eo.Position[0]), Convert.ToSingle(eo.Position[1]), Convert.ToSingle(eo.Position[2]) };
+                        decimal[] newfloatarray = new decimal[] { Convert.ToDecimal(eo.Position[0]), Convert.ToDecimal(eo.Position[1]), Convert.ToDecimal(eo.Position[2]) };
                         CurrentAIPatrol.AIPatrol.Waypoints.Add(newfloatarray);
                     }
                     ObjectivesAIPatrolWaypointsLB.SelectedIndex = -1;
@@ -3098,13 +3106,13 @@ namespace DayZeEditor
             {
                 MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
             };
-            foreach (float[] array in CurrentAIPatrol.AIPatrol.Waypoints)
+            foreach (decimal[] array in CurrentAIPatrol.AIPatrol.Waypoints)
             {
                 Editorobject eo = new Editorobject()
                 {
                     Type = "eAI_SurvivorM_Jose",
                     DisplayName = "eAI_SurvivorM_Jose",
-                    Position = array,
+                    Position = new float[] { Convert.ToSingle(array[0]), Convert.ToSingle(array[1]), Convert.ToSingle(array[2]) },
                     Orientation = new float[] { 0, 0, 0 },
                     Scale = 1.0f,
                     Flags = 2147483647
@@ -3124,21 +3132,21 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            CurrentWapypoint[0] = (float)numericUpDown20.Value;
+            CurrentWapypoint[0] = (decimal)numericUpDown20.Value;
             CurrentAIPatrol.isDirty = true;
         }
         private void numericUpDown21_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            CurrentWapypoint[1] = (float)numericUpDown21.Value;
+            CurrentWapypoint[1] = (decimal)numericUpDown21.Value;
             CurrentAIPatrol.isDirty = true;
         }
         private void numericUpDown22_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            CurrentWapypoint[2] = (float)numericUpDown22.Value;
+            CurrentWapypoint[2] = (decimal)numericUpDown22.Value;
             CurrentAIPatrol.isDirty = true;
         }
         private void ObjectivesAIPatrolNPCUnitsNUD_ValueChanged(object sender, EventArgs e)
@@ -3312,27 +3320,29 @@ namespace DayZeEditor
             ObjectivesAIVIPNPCLoadoutFileCB.SelectedIndex = ObjectivesAIVIPNPCLoadoutFileCB.FindStringExact(CurrentAIVIP.AIVIP.NPCLoadoutFile);
             ObjectivesAIVIPMarkerNameTB.Text = CurrentAIVIP.MarkerName;
             QuestObjectivesAIVIPShowDistanceCB.Checked = CurrentAIVIP.ShowDistance == 1 ? true : false;
+            QuestObjectivesAIVIPCanLootAICB.Checked = CurrentAIVIP.CanLootAI == 1 ? true : false;
+            ObjectivesAIVIPNPCNPCClassnameTB.Text = CurrentAIVIP.AIVIP.NPCClassName;
             useraction = true;
         }
         private void ObjectivesAIVIPPositionXNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
-            CurrentAIVIP.Position[0] = (float)ObjectivesAIVIPPositionXNUD.Value;
+            CurrentAIVIP.Position[0] = (decimal)ObjectivesAIVIPPositionXNUD.Value;
             CurrentAIVIP.isDirty = true;
         }
         private void ObjectivesAIVIPPositionYNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
-            CurrentAIVIP.Position[1] = (float)ObjectivesAIVIPPositionYNUD.Value;
+            CurrentAIVIP.Position[1] = (decimal)ObjectivesAIVIPPositionYNUD.Value;
             CurrentAIVIP.isDirty = true;
         }
         private void ObjectivesAIVIPPositionZNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
-            CurrentAIVIP.Position[2] = (float)ObjectivesAIVIPPositionZNUD.Value;
+            CurrentAIVIP.Position[2] = (decimal)ObjectivesAIVIPPositionZNUD.Value;
             CurrentAIVIP.isDirty = true;
         }
         private void ObjectivesAIVIPMaxDistanceNUD_ValueChanged(object sender, EventArgs e)
@@ -3363,6 +3373,20 @@ namespace DayZeEditor
             CurrentAIVIP.ShowDistance = QuestObjectivesAIVIPShowDistanceCB.Checked == true ? 1 : 0;
             CurrentAIVIP.isDirty = true;
         }
+        private void QuestObjectivesAIVIPCanLootAICB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
+            CurrentAIVIP.CanLootAI = QuestObjectivesAIVIPCanLootAICB.Checked == true ? 1 : 0;
+            CurrentAIVIP.isDirty = true;
+        }
+        private void ObjectivesAIVIPNPCNPCClassnameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
+            CurrentAIVIP.AIVIP.NPCClassName = ObjectivesAIVIPNPCNPCClassnameTB.Text;
+            CurrentAIVIP.isDirty = true;
+        }
         /// <summary>
         /// Collection
         /// </summary>
@@ -3377,6 +3401,7 @@ namespace DayZeEditor
             ObjectivesCollectionShowDistanceCB.Checked = CurrentCollection.ShowDistance == 1 ? true : false;
             checkBox1.Checked = CurrentCollection.AddItemsToNearbyMarketZone == 1 ? true : false;
             checkBox5.Checked = CurrentCollection.NeedAnyCollection == 1 ? true : false;
+            
 
             ObjectivesCollectionCollectionsLB.DisplayMember = "DisplayName";
             ObjectivesCollectionCollectionsLB.ValueMember = "Value";
@@ -3392,6 +3417,7 @@ namespace DayZeEditor
             useraction = false;
             ObjectivesCollectionClassnameTB.Text = CurrentCollections.ClassName;
             ObjectivesCollectionAmountNUD.Value = CurrentCollections.Amount;
+            ObjectivesCollectionQuantityPercentNUD.Value = CurrentCollections.QuantityPercent;
             useraction = true;
         }
         private void ObjectivesCollectionMaxDistanceNUD_ValueChanged(object sender, EventArgs e)
@@ -3504,6 +3530,13 @@ namespace DayZeEditor
             CurrentCollection.NeedAnyCollection = checkBox5.Checked == true ? 1 : 0;
             CurrentCollection.isDirty = true;
         }
+        private void ObjectivesCollectionQuantityPercentNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesCollection CurrentCollection = CurrentTreeNodeTag as QuestObjectivesCollection;
+            CurrentCollections.QuantityPercent = (int)ObjectivesCollectionQuantityPercentNUD.Value;
+            CurrentCollection.isDirty = true;
+        }
         /// <summary>
         /// Crafting
         /// </summary>
@@ -3592,6 +3625,7 @@ namespace DayZeEditor
             useraction = false;
             ObjectivesDeliveryClassnameTB.Text = CurrentDeliveries.ClassName;
             ObjectivesDeliveryAmountNUD.Value = CurrentDeliveries.Amount;
+            ObjectivesDeliveryQuantityPercentNUD.Value = CurrentDeliveries.QuantityPercent;
             useraction = true;
         }
         private void ObjectivesDeliveryMaxDistanceNUD_ValueChanged(object sender, EventArgs e)
@@ -3697,6 +3731,13 @@ namespace DayZeEditor
                 return;
             }
         }
+        private void ObjectivesDeliveryQuantityPercentNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesDelivery CurrentDelivery = CurrentTreeNodeTag as QuestObjectivesDelivery;
+            CurrentDeliveries.QuantityPercent = (int)ObjectivesDeliveryQuantityPercentNUD.Value;
+            CurrentDelivery.isDirty = true;
+        }
         /// <summary>
         /// Target
         /// </summary>
@@ -3727,6 +3768,10 @@ namespace DayZeEditor
             ObjectivesTargetExcludedClassnamesLB.ValueMember = "Value";
             ObjectivesTargetExcludedClassnamesLB.DataSource = CurrentTarget.Target.ExcludedClassNames;
 
+            ObjectivesTargetExcludedAllowedTargetFactionsLB.DisplayMember = "DisplayName";
+            ObjectivesTargetExcludedAllowedTargetFactionsLB.ValueMember = "Value";
+            ObjectivesTargetExcludedAllowedTargetFactionsLB.DataSource = CurrentTarget.Target.AllowedTargetFactions;
+
             useraction = true;
 
         }
@@ -3734,21 +3779,21 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
-            CurrentTarget.Position[0] = (float)ObjectivesTargetPositionXNUD.Value;
+            CurrentTarget.Position[0] = (decimal)ObjectivesTargetPositionXNUD.Value;
             CurrentTarget.isDirty = true;
         }
         private void ObjectivesTargetPositionYNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
-            CurrentTarget.Position[1] = (float)ObjectivesTargetPositionYNUD.Value;
+            CurrentTarget.Position[1] = (decimal)ObjectivesTargetPositionYNUD.Value;
             CurrentTarget.isDirty = true;
         }
         private void ObjectivesTargetPositionZNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
-            CurrentTarget.Position[2] = (float)ObjectivesTargetPositionZNUD.Value;
+            CurrentTarget.Position[2] = (decimal)ObjectivesTargetPositionZNUD.Value;
             CurrentTarget.isDirty = true;
         }
         private void ObjectivesTargetMaxDistanceNUD_ValueChanged(object sender, EventArgs e)
@@ -3877,6 +3922,33 @@ namespace DayZeEditor
             }
             CurrentTarget.isDirty = true;
         }
+        private void darkButton81_Click(object sender, EventArgs e)
+        {
+            QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
+            AddItemfromString form = new AddItemfromString();
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    if (!CurrentTarget.Target.AllowedTargetFactions.Contains(l))
+                        CurrentTarget.Target.AllowedTargetFactions.Add(l);
+                }
+            }
+            CurrentTarget.isDirty = true;
+        }
+
+        private void darkButton80_Click(object sender, EventArgs e)
+        {
+            if (ObjectivesTargetExcludedAllowedTargetFactionsLB.SelectedItems.Count < 1) return;
+            QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
+            for (int i = 0; i < ObjectivesTargetExcludedAllowedTargetFactionsLB.SelectedItems.Count; i++)
+            {
+                CurrentTarget.Target.AllowedTargetFactions.Remove(ObjectivesTargetExcludedAllowedTargetFactionsLB.GetItemText(ObjectivesTargetExcludedAllowedTargetFactionsLB.SelectedItems[0]));
+            }
+            CurrentTarget.isDirty = true;
+        }
         /// <summary>
         /// Travel
         /// </summary>
@@ -3898,21 +3970,21 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             QuestObjectivesTravel CurrentTravel = CurrentTreeNodeTag as QuestObjectivesTravel;
-            CurrentTravel.Position[0] = (float)ObjectivesTravelPositionXNUD.Value;
+            CurrentTravel.Position[0] = (decimal)ObjectivesTravelPositionXNUD.Value;
             CurrentTravel.isDirty = true;
         }
         private void ObjectivesTravelPositionYNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             QuestObjectivesTravel CurrentTravel = CurrentTreeNodeTag as QuestObjectivesTravel;
-            CurrentTravel.Position[1] = (float)ObjectivesTravelPositionYNUD.Value;
+            CurrentTravel.Position[1] = (decimal)ObjectivesTravelPositionYNUD.Value;
             CurrentTravel.isDirty = true;
         }
         private void ObjectivesTravelPositionZNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             QuestObjectivesTravel CurrentTravel = CurrentTreeNodeTag as QuestObjectivesTravel;
-            CurrentTravel.Position[2] = (float)ObjectivesTravelPositionZNUD.Value;
+            CurrentTravel.Position[2] = (decimal)ObjectivesTravelPositionZNUD.Value;
             CurrentTravel.isDirty = true;
         }
         private void ObjectivesTravelShowDistanceCB_CheckedChanged(object sender, EventArgs e)
@@ -3956,6 +4028,7 @@ namespace DayZeEditor
         public TreasureHuntItems CurrentTreasureHuntItems;
         private void SetupobjectiveTreasueHunt(TreeNodeMouseClickEventArgs e)
         {
+            useraction = false;
             QuestObjectivesTreasureHunt CurrentTreasureHunt = e.Node.Tag as QuestObjectivesTreasureHunt;
             QuestObjectivesObjectiveTextTB.Text = CurrentTreasureHunt.ObjectiveText;
             QuestObjectivesTimeLimitNUD.Value = CurrentTreasureHunt.TimeLimit;
@@ -3974,11 +4047,13 @@ namespace DayZeEditor
             ObjectivesTreasureHuntItemsLB.DisplayMember = "DisplayName";
             ObjectivesTreasureHuntItemsLB.ValueMember = "Value";
             ObjectivesTreasureHuntItemsLB.DataSource = CurrentTreasureHunt.Loot;
+
+            useraction = true;
         }
         private void ObjectivesTreasureHuntPositionsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ObjectivesTreasureHuntPositionsLB.SelectedItems.Count < 1) return;
-            CurrentWapypoint = ObjectivesTreasureHuntPositionsLB.SelectedItem as float[];
+            CurrentWapypoint = ObjectivesTreasureHuntPositionsLB.SelectedItem as decimal[];
             useraction = false;
             ObjectivesTreasureHuntPositionsXNUD.Value = (decimal)CurrentWapypoint[0];
             ObjectivesTreasureHuntPositionsYNUD.Value = (decimal)CurrentWapypoint[1];
@@ -3996,6 +4071,7 @@ namespace DayZeEditor
             ObjectivesTreasureHuntChanceTB.Value = (int)(CurrentTreasureHuntItems.Chance * 1000);
             darkLabel147.Text = ((decimal)(ObjectivesTreasureHuntChanceTB.Value) / 10).ToString() + "%";
             ObjectivesTreasureHuntMaxCountNUD.Value = CurrentTreasureHuntItems.Max;
+            ObjectivesTreasureHuntMinCountNUD.Value = CurrentTreasureHuntItems.Min;
             ObjectivesTreasureHuntQualityPercentNUD.Value = CurrentTreasureHuntItems.QuantityPercent;
 
             ObjectivesTreasureHuntAttachmentsLB.DisplayMember = "DisplayName";
@@ -4030,7 +4106,7 @@ namespace DayZeEditor
         private void darkButton68_Click(object sender, EventArgs e)
         {
             QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
-            CurrentTreasureHunt.Positions.Add(new float[] { 0, 0, 0 });
+            CurrentTreasureHunt.Positions.Add(new decimal[] { 0, 0, 0 });
             CurrentTreasureHunt.isDirty = true;
         }
         private void darkButton67_Click(object sender, EventArgs e)
@@ -4063,7 +4139,7 @@ namespace DayZeEditor
                         if (fileContent[i] == "") continue;
                         string[] linesplit = fileContent[i].Split('|');
                         string[] XYZ = linesplit[1].Split(' ');
-                        float[] newfloatarray = new float[] { Convert.ToSingle(XYZ[0]), Convert.ToSingle(XYZ[1]), Convert.ToSingle(XYZ[2]) };
+                        decimal[] newfloatarray = new decimal[] { Convert.ToDecimal(XYZ[0]), Convert.ToDecimal(XYZ[1]), Convert.ToDecimal(XYZ[2]) };
                         CurrentTreasureHunt.Positions.Add(newfloatarray);
 
                     }
@@ -4078,7 +4154,7 @@ namespace DayZeEditor
         {
             QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
             StringBuilder SB = new StringBuilder();
-            foreach (float[] array in CurrentTreasureHunt.Positions)
+            foreach (decimal[] array in CurrentTreasureHunt.Positions)
             {
                 SB.AppendLine("UndergroundStash|" + array[0].ToString() + " " + array[1].ToString() + " " + array[2].ToString() + "|0.0 0.0 0.0");
             }
@@ -4104,7 +4180,7 @@ namespace DayZeEditor
                     }
                     foreach (Editorobject eo in importfile.EditorObjects)
                     {
-                        float[] newfloatarray = new float[] { Convert.ToSingle(eo.Position[0]), Convert.ToSingle(eo.Position[1]), Convert.ToSingle(eo.Position[2]) };
+                        decimal[] newfloatarray = new decimal[] { Convert.ToDecimal(eo.Position[0]), Convert.ToDecimal(eo.Position[1]), Convert.ToDecimal(eo.Position[2]) };
                         CurrentTreasureHunt.Positions.Add(newfloatarray);
                     }
                     ObjectivesTreasureHuntPositionsLB.SelectedIndex = -1;
@@ -4121,13 +4197,13 @@ namespace DayZeEditor
             {
                 MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
             };
-            foreach (float[] array in CurrentTreasureHunt.Positions)
+            foreach (decimal[] array in CurrentTreasureHunt.Positions)
             {
                 Editorobject eo = new Editorobject()
                 {
                     Type = "UndergroundStash",
                     DisplayName = "UndergroundStash",
-                    Position = array,
+                    Position = new float[] { Convert.ToSingle(array[0]), Convert.ToSingle(array[1]), Convert.ToSingle(array[2]) },
                     Orientation = new float[] { 0, 0, 0 },
                     Scale = 1.0f,
                     Flags = 2147483647
@@ -4147,21 +4223,21 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
-            CurrentWapypoint[0] = (float)ObjectivesTreasureHuntPositionsXNUD.Value;
+            CurrentWapypoint[0] = (decimal)ObjectivesTreasureHuntPositionsXNUD.Value;
             CurrentTreasureHunt.isDirty = true;
         }
         private void ObjectivesTreasureHuntPositionsYNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
-            CurrentWapypoint[1] = (float)ObjectivesTreasureHuntPositionsYNUD.Value;
+            CurrentWapypoint[1] = (decimal)ObjectivesTreasureHuntPositionsYNUD.Value;
             CurrentTreasureHunt.isDirty = true;
         }
         private void ObjectivesTreasureHuntPositionsZNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
-            CurrentWapypoint[2] = (float)ObjectivesTreasureHuntPositionsZNUD.Value;
+            CurrentWapypoint[2] = (decimal)ObjectivesTreasureHuntPositionsZNUD.Value;
             CurrentTreasureHunt.isDirty = true;
         }
         private void ObjectivesTreasureHuntShowdistanceCB_CheckedChanged(object sender, EventArgs e)
@@ -4363,6 +4439,7 @@ namespace DayZeEditor
         }
         private void ObjectivesTreasureHuntChanceTB_MouseUp(object sender, MouseEventArgs e)
         {
+            if (!useraction) return;
             if (CurrentTreasureHuntItems == null) return;
             QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
             CurrentTreasureHuntItems.Chance = (((decimal)ObjectivesTreasureHuntChanceTB.Value) / 1000);
@@ -4374,6 +4451,7 @@ namespace DayZeEditor
         }
         private void ObjectivesTreasureHuntQualityPercentNUD_ValueChanged(object sender, EventArgs e)
         {
+            if (!useraction) return;
             if (CurrentTreasureHuntItems == null) return;
             QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
             CurrentTreasureHuntItems.QuantityPercent = (int)ObjectivesTreasureHuntQualityPercentNUD.Value;
@@ -4381,6 +4459,7 @@ namespace DayZeEditor
         }
         private void ObjectivesTreasureHuntMaxCountNUD_ValueChanged(object sender, EventArgs e)
         {
+            if (!useraction) return;
             if (CurrentTreasureHuntItems == null) return;
             QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
             CurrentTreasureHuntItems.Max = (int)ObjectivesTreasureHuntMaxCountNUD.Value;
@@ -4388,6 +4467,7 @@ namespace DayZeEditor
         }
         private void VarientChanceTrackBar_MouseUp(object sender, MouseEventArgs e)
         {
+            if (!useraction) return;
             if (LootVarients == null) return;
             QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
             LootVarients.Chance = (float)(((decimal)VarientChanceTrackBar.Value) / 1000);
@@ -4396,6 +4476,14 @@ namespace DayZeEditor
         private void VarientChanceTrackBar_Scroll(object sender, EventArgs e)
         {
             darkLabel159.Text = ((decimal)(VarientChanceTrackBar.Value) / 10).ToString() + "%";
+        }
+        private void ObjectivesTreasureHuntMinCountNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if (CurrentTreasureHuntItems == null) return;
+            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
+            CurrentTreasureHuntItems.Min = (int)ObjectivesTreasureHuntMinCountNUD.Value;
+            CurrentTreasureHunt.isDirty = true;
         }
         #endregion objectives
 
@@ -4550,6 +4638,13 @@ namespace DayZeEditor
         {
 
         }
+
+
+
+
+
+
+
 
 
         #endregion Persistant Player Data

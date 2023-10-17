@@ -14,7 +14,7 @@ namespace DayZeLib
 {
     public class QuestNPCLists
     {
-        const int m_NPCConfigVersion = 4;
+        const int m_NPCConfigVersion = 5;
         public static int getNPCConfigVersion
         {
             get { return m_NPCConfigVersion; }
@@ -87,7 +87,6 @@ namespace DayZeLib
                 ConfigVersion = m_NPCConfigVersion,
                 ID = NEWID,
                 ClassName = "ExpansionQuestNPCDenis",
-                IsAI = 0,
                 Position = new decimal[] { 0, 0, 0 },
                 Orientation = new decimal[] { 0, 0, 0 },
                 NPCName = "Phil McCracken",
@@ -96,12 +95,12 @@ namespace DayZeLib
                 NPCEmoteID = 46,
                 NPCEmoteIsStatic = 0,
                 NPCLoadoutFile = "NBCLoadout",
-                IsStatic = 0,
                 NPCInteractionEmoteID = 1,
                 NPCQuestCancelEmoteID = 60,
                 NPCQuestStartEmoteID = 58,
                 NPCQuestCompleteEmoteID = 39,
-                NPCFaction = "InvincibleObservers"
+                NPCFaction = "InvincibleObservers",
+                NPCType = 0,
             };
             NPCList.Add(newnpc);
         }
@@ -128,7 +127,6 @@ namespace DayZeLib
         public int ConfigVersion { get; set; }
         public int ID { get; set; }
         public string ClassName { get; set; }
-        public int IsAI { get; set; }
         public decimal[] Position { get; set; }
         public decimal[] Orientation { get; set; }
         public string NPCName { get; set; }
@@ -137,12 +135,12 @@ namespace DayZeLib
         public int NPCEmoteID { get; set; }
         public int NPCEmoteIsStatic { get; set; }
         public string NPCLoadoutFile { get; set; }
-        public int IsStatic { get; set; }
         public int NPCInteractionEmoteID { get; set; }
         public int NPCQuestCancelEmoteID { get; set; }
         public int NPCQuestStartEmoteID { get; set; }
         public int NPCQuestCompleteEmoteID { get; set; }
         public string NPCFaction { get; set; }
+        public int NPCType { get; set; }
 
         public ExpansionQuestNPCs()
         {

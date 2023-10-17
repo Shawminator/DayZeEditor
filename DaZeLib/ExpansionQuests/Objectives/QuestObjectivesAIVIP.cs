@@ -12,11 +12,12 @@ namespace DayZeLib
     {
         public string ObjectiveText { get; set; }
         public int TimeLimit { get; set; }
-        public float[] Position { get; set; }
+        public decimal[] Position { get; set; }
         public decimal MaxDistance { get; set; }
         public AIVIP AIVIP { get; set; }
         public string MarkerName { get; set; }
         public int ShowDistance { get; set; }
+        public int CanLootAI { get; set; }
 
         public QuestObjectivesAIVIP()
         {
@@ -31,7 +32,7 @@ namespace DayZeLib
     public class AIVIP
     {
         public string NPCLoadoutFile { get; set; }
-
+        public string NPCClassName { get; set; }
         public AIVIP(){ }
     }
 

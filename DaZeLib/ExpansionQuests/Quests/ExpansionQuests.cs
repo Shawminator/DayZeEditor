@@ -18,7 +18,7 @@ namespace DayZeLib
     }
     public class ExpansioQuestList
     {
-        const int m_QuestConfigVersion = 15;
+        const int m_QuestConfigVersion = 19;
         public static int getQuestConfigVersion
         {
             get { return m_QuestConfigVersion; }
@@ -252,6 +252,8 @@ namespace DayZeLib
         public BindingList<Questitem> QuestItems { get; set; }
         public BindingList<QuestReward> Rewards { get; set; }
         public int NeedToSelectReward { get; set; }
+        public int RandomReward { get; set; }
+        public int RandomRewardAmount { get; set; }
         public int RewardsForGroupOwnerOnly { get; set; }
         public BindingList<int> QuestGiverIDs { get; set; }
         public BindingList<int> QuestTurnInIDs { get; set; }
@@ -265,6 +267,7 @@ namespace DayZeLib
         public string FactionReward { get; set; }
         public int PlayerNeedQuestItems { get; set; }
         public int DeleteQuestItems { get; set; }
+        public int SequentialObjectives { get; set; }
 
         public Quests()
         {

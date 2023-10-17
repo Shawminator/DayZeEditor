@@ -94,6 +94,8 @@ namespace DayZeEditor
             if (!File.Exists(P2PSettingsPath))
             {
                 P2PMarketSettings = new P2PMarketSettings(P2PSettingsPath);
+                P2PMarketSettings.DefaultMenuCategories();
+                P2PMarketSettings.DefaultExcludedClassNames();
                 needtosave = true;
             }
             else
@@ -300,7 +302,7 @@ namespace DayZeEditor
             {
                 Tag = "MenuCategoriesParent"
             };
-            foreach (Menucategory mc in P2PMarketSettings.MenuCategories)
+            foreach (ExpansionMenuCategory mc in P2PMarketSettings.MenuCategories)
             {
                 TreeNode mctreenode = new TreeNode(mc.DisplayName)
                 {
@@ -325,7 +327,7 @@ namespace DayZeEditor
                 {
                     Tag = "SubCategoriesParent"
                 };
-                foreach (Subcategory tctn in mc.SubCategories)
+                foreach (ExpansionMenuSubCategory tctn in mc.SubCategories)
                 {
                     TreeNode sctreenode = new TreeNode(tctn.DisplayName)
                     {
@@ -354,8 +356,8 @@ namespace DayZeEditor
             root.Nodes.Add(MenuCategories);
             treeViewMS1.Nodes.Add(root);
         }
-        public Menucategory CurrentMenucategory;
-        public Subcategory CurrentSubCategory;
+        public ExpansionMenuCategory CurrentMenucategory;
+        public ExpansionMenuSubCategory CurrentSubCategory;
         private void treeViewMS1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             useraction = false;
@@ -387,7 +389,7 @@ namespace DayZeEditor
                     case "SubCategoriesParent":
                         groupBox2.Visible = false;
                         groupBox1.Visible = false;
-                        CurrentMenucategory = e.Node.Parent.Tag as Menucategory;
+                        CurrentMenucategory = e.Node.Parent.Tag as ExpansionMenuCategory;
                         CurrentSubCategory = null;
                         if (e.Button == MouseButtons.Right)
                         {
@@ -401,21 +403,21 @@ namespace DayZeEditor
                     case "MCIncluded":
                         groupBox2.Visible = false;
                         groupBox1.Visible = true;
-                        CurrentMenucategory = e.Node.Parent.Tag as Menucategory;
+                        CurrentMenucategory = e.Node.Parent.Tag as ExpansionMenuCategory;
                         CurrentSubCategory = null;
                         listBox2.DataSource = CurrentMenucategory.Included;
                         break;
                     case "MCExcluded":
                         groupBox2.Visible = false;
                         groupBox1.Visible = true;
-                        CurrentMenucategory = e.Node.Parent.Tag as Menucategory;
+                        CurrentMenucategory = e.Node.Parent.Tag as ExpansionMenuCategory;
                         CurrentSubCategory = null;
                         listBox2.DataSource = CurrentMenucategory.Excluded;
                         break;
                     case "MCIconPath":
                         groupBox2.Visible = true;
                         groupBox1.Visible = false;
-                        CurrentMenucategory = e.Node.Parent.Tag as Menucategory;
+                        CurrentMenucategory = e.Node.Parent.Tag as ExpansionMenuCategory;
                         CurrentSubCategory = null;
                         textBox1.Text = CurrentMenucategory.IconPath;
                         break;
@@ -423,30 +425,30 @@ namespace DayZeEditor
                         groupBox2.Visible = false;
                         groupBox1.Visible = true;
                         CurrentMenucategory = null;
-                        CurrentSubCategory = e.Node.Parent.Tag as Subcategory;
+                        CurrentSubCategory = e.Node.Parent.Tag as ExpansionMenuSubCategory;
                         listBox2.DataSource = CurrentSubCategory.Included;
                         break;
                     case "SCExcluded":
                         groupBox2.Visible = false;
                         groupBox1.Visible = true;
                         CurrentMenucategory = null;
-                        CurrentSubCategory = e.Node.Parent.Tag as Subcategory;
+                        CurrentSubCategory = e.Node.Parent.Tag as ExpansionMenuSubCategory;
                         listBox2.DataSource = CurrentSubCategory.Excluded;
                         break;
                     case "SCIconPath":
                         groupBox2.Visible = true;
                         groupBox1.Visible = false;
                         CurrentMenucategory = null;
-                        CurrentSubCategory = e.Node.Parent.Tag as Subcategory;
+                        CurrentSubCategory = e.Node.Parent.Tag as ExpansionMenuSubCategory;
                         textBox1.Text = CurrentSubCategory.IconPath;
                         break;
                 }
             }
-            else if (e.Node.Tag is Menucategory)
+            else if (e.Node.Tag is ExpansionMenuCategory)
             {
                 groupBox2.Visible = true;
                 groupBox1.Visible = false;
-                CurrentMenucategory = e.Node.Tag as Menucategory;
+                CurrentMenucategory = e.Node.Tag as ExpansionMenuCategory;
                 textBox1.Text = CurrentMenucategory.DisplayName;
                 if (e.Button == MouseButtons.Right)
                 {
@@ -457,12 +459,12 @@ namespace DayZeEditor
                     contextMenuStrip1.Show(Cursor.Position);
                 }
             }
-            else if (e.Node.Tag is Subcategory)
+            else if (e.Node.Tag is ExpansionMenuSubCategory)
             {
                 groupBox2.Visible = true;
                 groupBox1.Visible = false;
-                CurrentSubCategory = e.Node.Tag as Subcategory;
-                CurrentMenucategory = e.Node.Parent.Parent.Tag as Menucategory;
+                CurrentSubCategory = e.Node.Tag as ExpansionMenuSubCategory;
+                CurrentMenucategory = e.Node.Parent.Parent.Tag as ExpansionMenuCategory;
                 textBox1.Text = CurrentSubCategory.DisplayName;
                 if (e.Button == MouseButtons.Right)
                 {
@@ -478,21 +480,21 @@ namespace DayZeEditor
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            if (treeViewMS1.SelectedNode.Parent.Tag is Menucategory)
+            if (treeViewMS1.SelectedNode.Parent.Tag is ExpansionMenuCategory)
             {
                 CurrentMenucategory.IconPath = textBox1.Text;
             }
-            else if (treeViewMS1.SelectedNode.Tag is Menucategory)
+            else if (treeViewMS1.SelectedNode.Tag is ExpansionMenuCategory)
             {
                 CurrentMenucategory.DisplayName = textBox1.Text;
                 treeViewMS1.SelectedNode.Text = CurrentMenucategory.DisplayName;
 
             }
-            else if (treeViewMS1.SelectedNode.Parent.Tag is Subcategory)
+            else if (treeViewMS1.SelectedNode.Parent.Tag is ExpansionMenuSubCategory)
             {
                 CurrentSubCategory.IconPath = textBox1.Text;
             }
-            else if (treeViewMS1.SelectedNode.Tag is Subcategory)
+            else if (treeViewMS1.SelectedNode.Tag is ExpansionMenuSubCategory)
             {
                 CurrentSubCategory.DisplayName = textBox1.Text;
                 treeViewMS1.SelectedNode.Text = CurrentSubCategory.DisplayName;
@@ -590,7 +592,7 @@ namespace DayZeEditor
         }
         private void addNewMenuCategoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Menucategory bewmc = new Menucategory();
+            ExpansionMenuCategory bewmc = new ExpansionMenuCategory();
             TreeNode mctreenode = new TreeNode(bewmc.DisplayName)
             {
                 Tag = bewmc
@@ -621,7 +623,7 @@ namespace DayZeEditor
         }
         private void addNewSubMenuCategoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Subcategory bewmc = new Subcategory();
+            ExpansionMenuSubCategory bewmc = new ExpansionMenuSubCategory();
             TreeNode mctreenode = new TreeNode(bewmc.DisplayName)
             {
                 Tag = bewmc

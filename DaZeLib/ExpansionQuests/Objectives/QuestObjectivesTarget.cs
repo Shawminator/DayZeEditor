@@ -12,7 +12,7 @@ namespace DayZeLib
     {
         public string ObjectiveText { get; set; }
         public int TimeLimit { get; set; }
-        public float[] Position { get; set; }
+        public decimal[] Position { get; set; }
         public decimal MaxDistance { get; set; }
         public Target Target { get; set; }
 
@@ -38,10 +38,13 @@ namespace DayZeLib
         public BindingList<string> AllowedWeapons { get; set; }
         public BindingList<string> ExcludedClassNames{ get; set; }
         public int CountAIPlayers { get; set; }
+        public BindingList<string> AllowedTargetFactions { get; set; }
+
         public Target() 
         {
             ClassNames = new BindingList<string>();
             AllowedWeapons = new BindingList<string>();
+            AllowedTargetFactions = new BindingList<string>();
         }
         public override string ToString()
         {

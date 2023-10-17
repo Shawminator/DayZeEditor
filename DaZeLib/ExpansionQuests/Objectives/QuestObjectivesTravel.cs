@@ -11,7 +11,7 @@ namespace DayZeLib
     {
         public string ObjectiveText { get; set; }
         public int TimeLimit { get; set; }
-        public float[] Position { get; set; }
+        public decimal[] Position { get; set; }
         public decimal MaxDistance { get; set; }
         public string MarkerName { get; set; }
         public int ShowDistance { get; set; }

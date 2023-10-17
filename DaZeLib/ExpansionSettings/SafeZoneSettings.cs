@@ -10,17 +10,19 @@ namespace DayZeLib
 {
     public class SafeZoneSettings
     {
-        const int CurrentVersion = 8;
+        const int CurrentVersion = 9;
 
         public int m_Version { get; set; }
         public int Enabled { get; set; }
-        public float FrameRateCheckSafeZoneInMs { get; set; }
+        public int FrameRateCheckSafeZoneInMs { get; set; }
         public BindingList<CircleZones> CircleZones { get; set; }
         public BindingList<PolygonZones> PolygonZones { get; set; }
         public int ActorsPerTick { get; set; }
         public int DisableVehicleDamageInSafeZone { get; set; }
         public int EnableForceSZCleanup { get; set; }
-        public float ItemLifetimeInSafeZone { get; set; }
+        public decimal ItemLifetimeInSafeZone { get; set; }
+        public int EnableForceSZCleanupVehicles { get; set; }
+        public decimal VehicleLifetimeInSafeZone { get; set; }
         public BindingList<string> ForceSZCleanup_ExcludedItems { get; set; }
 
 

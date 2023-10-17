@@ -12,12 +12,13 @@ namespace DayZeLib
     {
         public string ObjectiveText { get; set; }
         public int TimeLimit { get; set; }
+        public BindingList<Collections> Collections { get; set; }
         public decimal MaxDistance { get; set; }
         public string MarkerName { get; set; }
         public int ShowDistance { get; set; }
         public int AddItemsToNearbyMarketZone { get; set; }
         public int NeedAnyCollection { get; set; }
-        public BindingList<Collections> Collections { get; set; }
+
 
         public QuestObjectivesCollection()
         {
@@ -33,6 +34,7 @@ namespace DayZeLib
     {
         public int Amount { get; set; }
         public string ClassName { get; set; }
+        public int QuantityPercent { get; set; }
 
         public Collections()
         { }

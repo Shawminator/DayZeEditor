@@ -36,7 +36,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.7.7.8";
+        public string VersionNumber = "0.7.7.9";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -47,7 +47,7 @@ namespace DayZeEditor
         {
             base.OnLoad(e);
             OnLoadCompleted(EventArgs.Empty);
-            if(Projects.getActiveProject().haswarnings)
+            if(Projects.ActiveProject != null && Projects.getActiveProject().haswarnings)
             {
                 MessageBox.Show("Warnings detected. please see console.....");
             }

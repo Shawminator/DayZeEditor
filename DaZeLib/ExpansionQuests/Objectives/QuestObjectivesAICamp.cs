@@ -32,7 +32,7 @@ namespace DayZeLib
 
     public class Aicamp
     {
-        public BindingList<float[]> Positions { get; set; }
+        public BindingList<decimal[]> Positions { get; set; }
         public string NPCSpeed { get; set; }
         public string NPCMode { get; set; }
         public string NPCFaction { get; set; }
@@ -45,7 +45,7 @@ namespace DayZeLib
 
         public Aicamp()
         {
-            Positions = new BindingList<float[]>();
+            Positions = new BindingList<decimal[]>();
             ClassNames = new BindingList<string>();
             AllowedWeapons = new BindingList<string>();
         }

@@ -31,7 +31,7 @@ namespace DayZeLib
     public class AIPatrol
     {
         public int NPCUnits { get; set; }
-        public BindingList<float[]> Waypoints { get; set; }
+        public BindingList<decimal[]> Waypoints { get; set; }
         public string NPCSpeed { get; set; }
         public string NPCMode { get; set; }
         public string NPCFaction { get; set; }
@@ -45,7 +45,7 @@ namespace DayZeLib
 
         public AIPatrol()
         {
-            Waypoints = new BindingList<float[]>();
+            Waypoints = new BindingList<decimal[]>();
             ClassNames = new BindingList<string>();
             AllowedWeapons = new BindingList<string>();
         }

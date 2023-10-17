@@ -18,7 +18,7 @@ namespace DayZeLib
         public int DigInStash { get; set; }
         public string MarkerName { get; set; }
         public int MarkerVisibility { get; set; }
-        public BindingList<float[]> Positions { get; set; }
+        public BindingList<decimal[]> Positions { get; set; }
         public BindingList<TreasureHuntItems> Loot { get; set; }
         public int LootItemsAmount { get; set; }
         public decimal MaxDistance { get; set; }
@@ -35,8 +35,10 @@ namespace DayZeLib
         public BindingList<string> Attachments { get; set; }
         public decimal Chance { get; set; }
         public int QuantityPercent { get; set; }
-        public BindingList<treasurehunitemvarients> Variants { get; set; }
         public int Max { get; set; }
+        public int Min { get; set; }
+        public BindingList<treasurehunitemvarients> Variants { get; set; }
+        
 
 
         public TreasureHuntItems() { }

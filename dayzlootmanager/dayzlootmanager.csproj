@@ -545,7 +545,9 @@
     <None Include="Maps\melkart_Map.png.xyz" />
     <None Include="Maps\namalsk_Map.png.xyz" />
     <None Include="Maps\pripyat_Map.png.xyz" />
-    <None Include="Maps\rostow_Map.png.xyz" />
+    <None Include="Maps\rostow_Map.png.xyz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Maps\takistanplus_Map.png.xyz" />
     <None Include="Maps\vela_Map.png.xyz" />
     <None Include="Maps\yiprit_map.png.xyz">
@@ -581,6 +583,10 @@
     <ProjectReference Include="..\DaZeLib\DayZeLib.csproj">
       <Project>{0bf2117f-7239-4b9b-9279-3b47ea65615c}</Project>
       <Name>DayZeLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FastColoredTextBox\FastColoredTextBox.csproj">
+      <Project>{6dd14a85-ccfc-4774-bd26-0f5772512319}</Project>
+      <Name>FastColoredTextBox</Name>
     </ProjectReference>
     <ProjectReference Include="..\Updater\Updater.csproj">
       <Project>{88262141-9e16-4f46-b021-aade25decb85}</Project>
@@ -673,7 +679,9 @@
     <Content Include="Maps\melkart_Map.png" />
     <Content Include="Maps\namalsk_Map.png" />
     <Content Include="Maps\pripyat_Map.png" />
-    <Content Include="Maps\rostow_Map.png" />
+    <Content Include="Maps\rostow_Map.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Maps\takistanplus_Map.png" />
     <Content Include="depositphotos_20788183_stock_illustration_cartoon_thief_running_with_a_Cw8_icon.ico" />
     <Content Include="Maps\valning_Map.png" />

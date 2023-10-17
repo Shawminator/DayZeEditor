@@ -17,6 +17,7 @@ using System.Xml.Xsl;
 using Cyotek.Windows.Forms;
 using DarkUI.Forms;
 using DayZeLib;
+using FastColoredTextBoxNS;
 
 namespace DayZeEditor
 {
@@ -28,6 +29,8 @@ namespace DayZeEditor
 
         public TypesFile vanillatypes;
         public List<TypesFile> ModTypes;
+        private TimeSpan _doubleClickMaxTime;
+        private Timer _clickTimer;
         public TypesFile currentTypesFile;
         public typesType currentlootpart;
         public string currentcollection;
@@ -78,6 +81,10 @@ namespace DayZeEditor
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
 
+            doubleClickTimer.Interval = 100;
+            doubleClickTimer.Tick += new EventHandler(doubleClickTimer_Tick);
+
+
             listsCategory nullcat = new listsCategory()
             {
                 name = "other"
@@ -120,6 +127,7 @@ namespace DayZeEditor
             Loadignorelist();
             LoadMapgrouProto();
             LoadTerritories();
+            loadinitC();
             SetSummarytiers();
             
             
@@ -202,7 +210,35 @@ namespace DayZeEditor
         {
             List<string> midifiedfiles = new List<string>();
             string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
-            SaveEconomyFiles(midifiedfiles, SaveTime);
+            if (EconomyTabPage.SelectedIndex == 16)
+            {
+                File.WriteAllText(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\init.c", fastColoredTextBox1.Text);
+                midifiedfiles.Add("init.c");
+                string message = "The Following Files were saved....\n";
+                int i = 0;
+                foreach (string l in midifiedfiles)
+                {
+                    if (i == 5)
+                    {
+                        message += l + "\n";
+                        i = 0;
+                    }
+                    else
+                    {
+                        message += l + ", ";
+                        i++;
+                    }
+
+                }
+                if (midifiedfiles.Count > 0)
+                    MessageBox.Show(message, "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                else
+                    MessageBox.Show("No changes were made.", "Nothing Saved", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+            else
+            {
+                SaveEconomyFiles(midifiedfiles, SaveTime);
+            }
         }
         private void SaveEconomyFiles(List<string> midifiedfiles, string SaveTime)
         {
@@ -388,6 +424,7 @@ namespace DayZeEditor
                     }
                 }
             }
+
             string message = "The Following Files were saved....\n";
             int i = 0;
             foreach (string l in midifiedfiles)
@@ -635,6 +672,12 @@ namespace DayZeEditor
             if (EconomyTabPage.SelectedIndex == 15)
                 TerritoriesTabButton.Checked = true;
         }
+        private void InitCTabButton_Click(object sender, EventArgs e)
+        {
+            EconomyTabPage.SelectedIndex = 16;
+            if (EconomyTabPage.SelectedIndex == 16)
+                InitCTabButton.Checked = true;
+        }
         private void EconomyTabPage_SelectedIndexChanged(object sender, EventArgs e)
         {
             EventsTabButton.Checked = false;
@@ -656,6 +699,7 @@ namespace DayZeEditor
             EconomySearchBoxTB.Visible = false;
             EconomyFindButton.Visible = false;
             economySearchNextButton.Visible = false;
+            InitCTabButton.Checked = false;
 
         }
         #endregion formsstuff
@@ -1315,6 +1359,7 @@ namespace DayZeEditor
         }
         private void PopulateLootPartInfo()
         {
+            if (currentlootpart == null) return;
             isUserInteraction = false;
             textBox1.Text = currentlootpart.name;
             if (currentlootpart.category == null)
@@ -6727,11 +6772,109 @@ namespace DayZeEditor
         }
         private Point _mouseLastPosition;
         private Point _newscrollPosition;
+
+        private Rectangle hitTestRectangle = new Rectangle();
+        private Rectangle doubleClickRectangle = new Rectangle();
+        private Timer doubleClickTimer = new Timer();
+        private bool isFirstClick = true;
+        private bool isDoubleClick = false;
+        private int milliseconds = 0;
+        private MouseEventArgs mouseeventargs;
         private void pictureBox6_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
                 _mouseLastPosition = e.Location;
+            }
+            else if (e.Button == MouseButtons.Left)
+            {
+                mouseeventargs = e;
+                // This is the first mouse click.
+                if (isFirstClick)
+                {
+                    isFirstClick = false;
+
+                    // Determine the location and size of the double click
+                    // rectangle area to draw around the cursor point.
+                    doubleClickRectangle = new Rectangle(
+                        e.X - (SystemInformation.DoubleClickSize.Width / 2),
+                        e.Y - (SystemInformation.DoubleClickSize.Height / 2),
+                        SystemInformation.DoubleClickSize.Width,
+                        SystemInformation.DoubleClickSize.Height);
+                    Invalidate();
+
+                    // Start the double click timer.
+                    doubleClickTimer.Start();
+                }
+
+                // This is the second mouse click.
+                else
+                {
+                    // Verify that the mouse click is within the double click
+                    // rectangle and is within the system-defined double
+                    // click period.
+                    if (doubleClickRectangle.Contains(e.Location) &&
+                        milliseconds < SystemInformation.DoubleClickTime)
+                    {
+                        isDoubleClick = true;
+                    }
+                }
+            }
+        }
+        void doubleClickTimer_Tick(object sender, EventArgs e)
+        {
+            milliseconds += 100;
+
+            // The timer has reached the double click time limit.
+            if (milliseconds >= SystemInformation.DoubleClickTime)
+            {
+                doubleClickTimer.Stop();
+
+                if (isDoubleClick)
+                {
+                    //Console.WriteLine("Perform double click action");
+                    if (currentterritorytypeTerritoryZone == null) return;
+                    //if (e is MouseEventArgs mouseEventArgs)
+                    //{
+                        Cursor.Current = Cursors.WaitCursor;
+                        decimal scalevalue = MissionMapscale * (decimal)0.05;
+                        decimal mapsize = currentproject.MapSize;
+                        int newsize = (int)(mapsize * scalevalue);
+                        currentterritorytypeTerritoryZone.x = Decimal.Round((decimal)(mouseeventargs.X / scalevalue), 4);
+                        currentterritorytypeTerritoryZone.z = Decimal.Round((decimal)((newsize - mouseeventargs.Y) / scalevalue), 4);
+                        Cursor.Current = Cursors.Default;
+                        currentterritoriesConfig.isDirty = true;
+                        pictureBox6.Invalidate();
+                    //}
+                }
+                else
+                {
+                    //Console.WriteLine("Perform single click action");
+                    if (currentterritorytypeTerritory == null) return;
+                    if (currentterritorytypeTerritoryZone == null) return;
+                    //if (e is MouseEventArgs mouseEventArgs)
+                    //{
+                        decimal scalevalue = MissionMapscale * (decimal)0.05;
+                        decimal mapsize = currentproject.MapSize;
+                        int newsize = (int)(mapsize * scalevalue);
+                        PointF pC = new PointF((float)Decimal.Round((decimal)(mouseeventargs.X / scalevalue), 4), (float)Decimal.Round((decimal)((newsize - mouseeventargs.Y) / scalevalue), 4));
+                        foreach (territorytypeTerritoryZone tz in currentterritorytypeTerritory.zone)
+                        {
+                            PointF pP = new PointF((float)tz.x, (float)tz.z);
+                            if (IsWithinCircle(pC, pP, (float)tz.r))
+                            {
+                                TerritoriesZonesLB.SelectedItem = tz;
+                                TerritoriesZonesLB.Refresh();
+                                continue;
+                            }
+                        }
+                    //}
+                }
+
+                // Allow the MouseDown event handler to process clicks again.
+                isFirstClick = true;
+                isDoubleClick = false;
+                milliseconds = 0;
             }
         }
         private void pictureBox6_MouseMove(object sender, MouseEventArgs e)
@@ -6924,18 +7067,23 @@ namespace DayZeEditor
         }
         private void pictureBox6_DoubleClick(object sender, EventArgs e)
         {
-            if (e is MouseEventArgs mouseEventArgs)
-            {
-                Cursor.Current = Cursors.WaitCursor;
-                decimal scalevalue = MissionMapscale * (decimal)0.05;
-                decimal mapsize = currentproject.MapSize;
-                int newsize = (int)(mapsize * scalevalue);
-                currentterritorytypeTerritoryZone.x = Decimal.Round((decimal)(mouseEventArgs.X / scalevalue),4);
-                currentterritorytypeTerritoryZone.z = Decimal.Round((decimal)((newsize - mouseEventArgs.Y) / scalevalue),4);
-                Cursor.Current = Cursors.Default;
-                currentterritoriesConfig.isDirty = true;
-                pictureBox6.Invalidate();
-            }
+            
+        }
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            
+        }
+        public bool IsWithinCircle(PointF pC, PointF pP, Single fRadius)
+        {
+            return Distance(pC, pP) <= fRadius;
+        }
+        public Single Distance(PointF p1, PointF p2)
+        {
+            Single dX = p1.X - p2.X;
+            Single dY = p1.Y - p2.Y;
+            Single multi = dX * dX + dY * dY;
+            Single dist = (Single)Math.Round((Single)Math.Sqrt(multi), 3);
+            return (Single)dist;
         }
         private void trackBar6_MouseUp(object sender, MouseEventArgs e)
         {
@@ -7022,7 +7170,6 @@ namespace DayZeEditor
             pictureBox6.Invalidate();
             pictureBox3.Invalidate();
         }
-
         private void TerritoryPaintAllCB_CheckedChanged(object sender, EventArgs e)
         {
             pictureBox6.Invalidate();
@@ -7210,7 +7357,148 @@ namespace DayZeEditor
 
 
 
+
         #endregion territories
+
+        #region initc
+        //styles
+        TextStyle BlueStyle = new TextStyle(Brushes.Blue, null, FontStyle.Regular);
+        TextStyle BoldStyle = new TextStyle(null, null, FontStyle.Bold | FontStyle.Underline);
+        TextStyle GrayStyle = new TextStyle(Brushes.Gray, null, FontStyle.Regular);
+        TextStyle MagentaStyle = new TextStyle(Brushes.Magenta, null, FontStyle.Regular);
+        TextStyle GreenStyle = new TextStyle(Brushes.Green, null, FontStyle.Italic);
+        TextStyle BrownStyle = new TextStyle(Brushes.Brown, null, FontStyle.Italic);
+        TextStyle MaroonStyle = new TextStyle(Brushes.Maroon, null, FontStyle.Regular);
+        MarkerStyle SameWordsStyle = new MarkerStyle(new SolidBrush(Color.FromArgb(40, Color.Gray)));
+        bool initcisdirty = false;
+        private void loadinitC()
+        {
+            isUserInteraction = false;
+            fastColoredTextBox1.Text = File.ReadAllText(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\init.c");
+            isUserInteraction = true;
+        }
+        private void InitStylesPriority()
+        {
+            //add this style explicitly for drawing under other styles
+            fastColoredTextBox1.AddStyle(SameWordsStyle);
+        }
+        private void fastColoredTextBox1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CSharpSyntaxHighlight(e);//custom highlighting
+        }
+        private void CSharpSyntaxHighlight(TextChangedEventArgs e)
+        {
+            fastColoredTextBox1.LeftBracket = '(';
+            fastColoredTextBox1.RightBracket = ')';
+            fastColoredTextBox1.LeftBracket2 = '\x0';
+            fastColoredTextBox1.RightBracket2 = '\x0';
+            //clear style of changed range
+            e.ChangedRange.ClearStyle(BlueStyle, BoldStyle, GrayStyle, MagentaStyle, GreenStyle, BrownStyle);
+
+            //string highlighting
+            e.ChangedRange.SetStyle(BrownStyle, @"""""|@""""|''|@"".*?""|(?<!@)(?<range>"".*?[^\\]"")|'.*?[^\\]'");
+            //comment highlighting
+            e.ChangedRange.SetStyle(GreenStyle, @"//.*$", RegexOptions.Multiline);
+            e.ChangedRange.SetStyle(GreenStyle, @"(/\*.*?\*/)|(/\*.*)", RegexOptions.Singleline);
+            e.ChangedRange.SetStyle(GreenStyle, @"(/\*.*?\*/)|(.*\*/)", RegexOptions.Singleline | RegexOptions.RightToLeft);
+            //number highlighting
+            e.ChangedRange.SetStyle(MagentaStyle, @"\b\d+[\.]?\d*([eE]\-?\d+)?[lLdDfF]?\b|\b0x[a-fA-F\d]+\b");
+            //attribute highlighting
+            e.ChangedRange.SetStyle(GrayStyle, @"^\s*(?<range>\[.+?\])\s*$", RegexOptions.Multiline);
+            //class name highlighting
+            e.ChangedRange.SetStyle(BoldStyle, @"\b(class|struct|enum|interface)\s+(?<range>\w+?)\b");
+            //keyword highlighting
+            e.ChangedRange.SetStyle(BlueStyle, @"\b(abstract|as|base|bool|break|byte|case|catch|char|checked|class|const|continue|decimal|default|delegate|do|double|else|enum|event|explicit|extern|false|finally|fixed|float|for|foreach|goto|if|implicit|in|int|interface|internal|is|lock|long|namespace|new|null|object|operator|out|override|params|private|protected|public|readonly|ref|return|sbyte|sealed|short|sizeof|stackalloc|static|string|struct|switch|this|throw|true|try|typeof|uint|ulong|unchecked|unsafe|ushort|using|virtual|void|volatile|while|add|alias|ascending|descending|dynamic|from|get|global|group|into|join|let|orderby|partial|remove|select|set|value|var|where|yield)\b|#region\b|#endregion\b");
+
+            //clear folding markers
+            e.ChangedRange.ClearFoldingMarkers();
+
+            //set folding markers
+            e.ChangedRange.SetFoldingMarkers("{", "}");//allow to collapse brackets block
+            e.ChangedRange.SetFoldingMarkers(@"#region\b", @"#endregion\b");//allow to collapse #region blocks
+            e.ChangedRange.SetFoldingMarkers(@"/\*", @"\*/");//allow to collapse comment block
+        }
+        private void fastColoredTextBox1_AutoIndentNeeded(object sender, AutoIndentEventArgs args)
+        {
+            //block {}
+            if (Regex.IsMatch(args.LineText, @"^[^""']*\{.*\}[^""']*$"))
+                return;
+            //start of block {}
+            if (Regex.IsMatch(args.LineText, @"^[^""']*\{"))
+            {
+                args.ShiftNextLines = args.TabLength;
+                return;
+            }
+            //end of block {}
+            if (Regex.IsMatch(args.LineText, @"}[^""']*$"))
+            {
+                args.Shift = -args.TabLength;
+                args.ShiftNextLines = -args.TabLength;
+                return;
+            }
+            //label
+            if (Regex.IsMatch(args.LineText, @"^\s*\w+\s*:\s*($|//)") &&
+                !Regex.IsMatch(args.LineText, @"^\s*default\s*:"))
+            {
+                args.Shift = -args.TabLength;
+                return;
+            }
+            //some statements: case, default
+            if (Regex.IsMatch(args.LineText, @"^\s*(case|default)\b.*:\s*($|//)"))
+            {
+                args.Shift = -args.TabLength / 2;
+                return;
+            }
+            //is unclosed operator in previous line ?
+            if (Regex.IsMatch(args.PrevLineText, @"^\s*(if|for|foreach|while|[\}\s]*else)\b[^{]*$"))
+                if (!Regex.IsMatch(args.PrevLineText, @"(;\s*$)|(;\s*//)"))//operator is unclosed
+                {
+                    args.Shift = args.TabLength;
+                    return;
+                }
+        }
+        private void fastColoredTextBox1_SelectionChangedDelayed(object sender, EventArgs e)
+        {
+            fastColoredTextBox1.VisibleRange.ClearStyle(SameWordsStyle);
+            if (!fastColoredTextBox1.Selection.IsEmpty)
+                return;//user selected diapason
+
+            //get fragment around caret
+            var fragment = fastColoredTextBox1.Selection.GetFragment(@"\w");
+            string text = fragment.Text;
+            if (text.Length == 0)
+                return;
+            //highlight same words
+            var ranges = fastColoredTextBox1.VisibleRange.GetRanges("\\b" + text + "\\b").ToArray();
+            if (ranges.Length > 1)
+                foreach (var r in ranges)
+                    r.SetStyle(SameWordsStyle);
+        }
+        private void fastColoredTextBox1_CustomAction(object sender, CustomActionEventArgs e)
+        {
+            MessageBox.Show(e.Action.ToString());
+        }
+        private void findToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fastColoredTextBox1.ShowFindDialog();
+        }
+        private void replaceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fastColoredTextBox1.ShowReplaceDialog();
+        }
+        private void commentSelectedLinesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fastColoredTextBox1.InsertLinePrefix(fastColoredTextBox1.CommentPrefix);
+        }
+        private void uncommentSelectedLinesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fastColoredTextBox1.RemoveLinePrefix(fastColoredTextBox1.CommentPrefix);
+        }
+        private void autoIndentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fastColoredTextBox1.DoAutoIndent();
+        }
+        #endregion initc
 
 
     }

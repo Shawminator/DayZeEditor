@@ -32,6 +32,7 @@ namespace DayZeLib
     {
         public int Amount { get; set; }
         public string ClassName { get; set; }
+        public int QuantityPercent { get; set; }
 
         public Delivery() { }
         public override string ToString()
