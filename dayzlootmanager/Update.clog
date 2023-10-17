@@ -1,4 +1,8 @@
-﻿Version 0.7.7.9
+﻿Version 0.7.8.0
+[fixed]
+woopsy on my part missed config files to allow the editor to run....
+
+Version 0.7.7.9
 [Update]
 All Expansion Configs to match latest Expandion release
 updated territory map to allow click on desired circle with left mouse to select that zone.
