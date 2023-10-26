@@ -47,7 +47,7 @@ namespace DayZeEditor
         {
             base.OnLoad(e);
             OnLoadCompleted(EventArgs.Empty);
-            if(Projects.ActiveProject != null && Projects.getActiveProject().haswarnings)
+            if((Projects.ActiveProject != null && Projects.ActiveProject != "") && Projects.getActiveProject().haswarnings)
             {
                 MessageBox.Show("Warnings detected. please see console.....");
             }

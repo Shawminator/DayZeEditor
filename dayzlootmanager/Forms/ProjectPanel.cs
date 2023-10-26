@@ -417,13 +417,16 @@ namespace DayZeEditor
         }
         private void darkButton5_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("This Will Remove The All Projects files, Are you sure you want to do this?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (MessageBox.Show("This Will Remove The All Projects files.\nAre you sure you want to do this?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 string profilename = listBox1.GetItemText(listBox1.SelectedItem);
                 listBox1.Items.Remove(profilename);
                 Project p = projects.getprojectfromname(profilename);
                 projects.DeleteProject(profilename);
-                Directory.Delete(p.projectFullName, true);
+                if (MessageBox.Show("Double checking you want to remove all files\nselecting no will still remove the project from the editor but keep all files in the project folder\nAre you sure you want to do this?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    Directory.Delete(p.projectFullName, true);
+                }
                 if (ActiveProject == p)
                 {
                     ActiveProject = null;
