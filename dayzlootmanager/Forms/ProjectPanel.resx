@@ -141,6 +141,23 @@
         cO58aVyw2MKiYuzNyMXGpG2yuWNRJLaWrIitvwH8AH4xYf4DkBnMAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="darkLabel7.Text" xml:space="preserve">
+    <value>-Project Name:               The project name is what you want to call your project
+
+-Select project folder:    This is where you want the project folder to be created, I usually create a folder within my c drive called dayzProjects, you can select this 
+                                      by press the plus button to the side of the textbox
+
+-Setup Type:                 Blank/Existing when manaully copying files from server or setting up for existing files,   
+                                     FTP / SFTP to download files from host server to local 
+
+-Profile Name:               This we use to setup the profile folder, If you Use Omega Manager the profile folder is called profiles.  GTX Hosting
+                                     default profile is Called "SC". the profiles folder is what ever folder is used to store all the mod jsons and script logs etc......
+
+-Mission folder to use:   This is where you put the name of the mission you are planning to work on, eg dayzOffline.chernarusplus</value>
+  </data>
+  <metadata name="darkToolStrip22.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>565, 17</value>
+  </metadata>
   <metadata name="imageList1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>300, 17</value>
   </metadata>
@@ -149,7 +166,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAB0
-        BgAAAk1TRnQBSQFMAgEBAgEAAQgBAQEIAQEBEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        BgAAAk1TRnQBSQFMAgEBAgEAARABAQEQAQEBEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABEAMAAQEBAAEgBgABEP8ASwADAQECFAADAgEDAwIBAwMCAQMDAgEDAwIBAwMCAQMDAgEDAwIBA5gA
         AwEBAgMqAUEDKgFBAyoBQQMqAUEDKgFBAyoBQQMqAUEDKgFBAyoBQQMqAUEDEQEXFAADEgEZA18B6Bz/
         AcMBwAG8Af+UAAHZAbQBiQH/AfMB2AG1Af8B8wHYAbUB/wHzAdgBtQH/AfMB2AG1Af8B8wHYAbUB/wHz
@@ -162,15 +179,15 @@
         AdgBtQH/AfMB2AG1Af8B8wHYAbUB/wNSAacQAAHKAccBwwX/AdABwAGnAf8ByQGwAY4B/wHLAbABjgH/
         AcsBsAGOAf8BywGwAY4B/wHLAa8Bjwn/kwABAQHzAdgBtQH/AfMB2AG1Af8B8wHYAbUB/wHzAdgBtQH/
         AfMB2AG1Af8B8wHYAbUB/wHzAdgBtQH/AfMB2AG1Af8B8wHYAbUB/wHzAdgBtQH/AfMB2AG1Af8B8wHY
-        AbUB/wGaAZEBfgH8EAABygHHAcMF/wHQAcABpwH/AckBsAGPAf8BywGwAY4B/wHLAbABjgH/AcsBsAGO
+        AbUB/wGXAY4BfQH8EAABygHHAcMF/wHQAcABpwH/AckBsAGPAf8BywGwAY4B/wHLAbABjgH/AcsBsAGO
         Af8BywGvAY8J/5MAAQEB8wHYAbUB/wHzAdgBtQH/AfMB2AG1Af8B8wHYAbUB/wHzAdgBtQH/AfMB2AG1
         Af8B8wHYAbUB/wHzAdgBtQH/AfMB2AG1Af8B8wHYAbUB/wHzAdgBtQH/AfMB2AG1Af8B+wHaAbQB/xAA
         AcoBxwHDJf+TAAEBAfMB2AG1Af8B8wHYAbUB/wHzAdgBtQH/AfMB2AG1Af8B8wHYAbUB/wHzAdgBtQH/
         AfMB2AG1Af8B8wHYAbUB/wHzAdgBtQH/AfMB2AG1Af8B8wHYAbUB/wHzAdgBtQH/Ae4BygGgAf8QAAHK
-        AccBwxH/A18B6Az/A0wBkJQAAeIBrwFUAf8B4AHCAZoB/wHhAcIBnAH/AeEBwgGcAf8B4QHCAZwB/wHh
+        AccBwxH/A18B6Az/A0wBkJQAAeIBrwFTAf8B4AHCAZoB/wHhAcIBnAH/AeEBwgGcAf8B4QHCAZwB/wHh
         AcIBnAH/AeEBwgGcAf8B4QHCAZwB/wHhAcIBnAH/AeEBwgGcAf8B4QHCAZwB/wHcAbUBhwH/AwEBAhAA
-        AcoBxwHDFf8BzAHJAcUJ/wG/Ab0BtwH/lAAB3gGwAVsB/wHzAdgBtQH/AfMB2AG1Af8B8wHYAbUB/wHx
-        AdgBtQH/AfwB1wGrAv8B1wGpAv8B1wGpAv8B1wGpAv8B1wGpAv8B1wGpAf8B2gGsAVkB/xQAAcoBxwHD
+        AcoBxwHDFf8BzAHJAcUJ/wG/Ab0BtwH/lAAB3gGwAVoB/wHzAdgBtQH/AfMB2AG1Af8B8wHYAbUB/wHx
+        AdgBtQH/AfwB1wGrAv8B1wGpAv8B1wGpAv8B1wGpAv8B1wGpAv8B1wGpAf8B2gGsAVgB/xQAAcoBxwHD
         Ff8BygHHAcMF/wHBAb0BuQH/mAAB+AHhAccB/wH4AdcBrQH/AfgB1gGuAf8B+AHVAbAB/wHYAbIBgQH/
         AwEEAgEDAwIBAwMCAQMDAgEDAwIBAwMBBAIBAxAAA1wB3xT/AcoBxwHDAf8BvwG9AbcB/6gAAwIBAwMC
         AQM0AAMBAQIDCwEPAwsBDwMLAQ8DCwEPAwcBCv8A/wCaAAFCAU0BPgcAAT4DAAEoAwABQAMAARADAAEB

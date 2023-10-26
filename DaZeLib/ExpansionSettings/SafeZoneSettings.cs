@@ -10,13 +10,14 @@ namespace DayZeLib
 {
     public class SafeZoneSettings
     {
-        const int CurrentVersion = 9;
+        const int CurrentVersion = 10;
 
         public int m_Version { get; set; }
         public int Enabled { get; set; }
         public int FrameRateCheckSafeZoneInMs { get; set; }
         public BindingList<CircleZones> CircleZones { get; set; }
         public BindingList<PolygonZones> PolygonZones { get; set; }
+        public BindingList<CylinderZones> CylinderZones { get; set; }
         public int ActorsPerTick { get; set; }
         public int DisableVehicleDamageInSafeZone { get; set; }
         public int EnableForceSZCleanup { get; set; }
@@ -36,6 +37,7 @@ namespace DayZeLib
             m_Version = CurrentVersion;
             CircleZones = new BindingList<CircleZones>();
             PolygonZones = new BindingList<PolygonZones>();
+            CylinderZones = new BindingList<CylinderZones>();
             isDirty = true;
         }
         public bool checkver()
@@ -66,6 +68,15 @@ namespace DayZeLib
                 i++;
             }
         }
+        public void SetCylinderNames()
+        {
+            int i = 0;
+            foreach (CylinderZones PZ in CylinderZones)
+            {
+                PZ.CylinderSafeZoneName = "Cylinder Zone " + i.ToString();
+                i++;
+            }
+        }
         public void Convertpolygonarrays()
         {
             foreach (PolygonZones PZ in PolygonZones)
@@ -89,8 +100,6 @@ namespace DayZeLib
                 {
                     PZ.Positions.Add(PGP.points);
                 }
-                if (PZ.CenterPolygon == null)
-                    PZ.CenterPolygon = new float[] {0,0,0};
             }
         }
         public void RemoveCircleZone(CircleZones currentZone)
@@ -109,10 +118,17 @@ namespace DayZeLib
             SetCircleNames();
             isDirty = true;
         }
+
+        public void RemovecylinderZone(CylinderZones currentcylenderzones)
+        {
+            CylinderZones.Remove(currentcylenderzones);
+            isDirty = true;
+        }
     }
     // Zone types 
     // 1 = Circle
     // 2 = polygon
+    // 3 = Cylinder
     public class CircleZones
     {
         public float[] Center { get; set; }
@@ -128,8 +144,7 @@ namespace DayZeLib
     }
     public class PolygonZones
     {
-        public BindingList<float[]> Positions { get; set; } 
-        public float[] CenterPolygon { get; set; }
+        public BindingList<float[]> Positions { get; set; }
         public float RadiusPolygon { get; set; }
 
         [JsonIgnore]
@@ -163,6 +178,20 @@ namespace DayZeLib
         public override string ToString()
         {
             return name;
+        }
+    }
+    public class CylinderZones
+    {
+        public float[] Center { get; set; }
+        public float Radius { get; set; }
+        public float Height { get; set; }
+
+        [JsonIgnore]
+        public string CylinderSafeZoneName { get; set; }
+
+        public override string ToString()
+        {
+            return CylinderSafeZoneName;
         }
     }
 }

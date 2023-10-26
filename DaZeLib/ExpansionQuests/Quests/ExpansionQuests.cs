@@ -18,7 +18,7 @@ namespace DayZeLib
     }
     public class ExpansioQuestList
     {
-        const int m_QuestConfigVersion = 19;
+        const int m_QuestConfigVersion = 20;
         public static int getQuestConfigVersion
         {
             get { return m_QuestConfigVersion; }
@@ -52,6 +52,7 @@ namespace DayZeLib
                     Console.WriteLine("serializing " + file.Name);
                     Quests Quest = JsonSerializer.Deserialize<Quests>(File.ReadAllText(file.FullName));
                     Quest.Filename = Path.GetFileNameWithoutExtension(file.Name);
+                    Quest.CreateLists();
                     QuestList.Add(Quest);
                     if (Quest.ConfigVersion != getQuestConfigVersion)
                     {
@@ -234,6 +235,10 @@ namespace DayZeLib
         public BindingList<ExpansionQuestNPCs> QuestTurnIns;
         [JsonIgnore]
         public BindingList<Quests> PreQuests;
+        [JsonIgnore]
+        public BindingList<FactionQuestReps> FactionReputationRequirementsList;
+        [JsonIgnore]
+        public BindingList<FactionQuestReps> FactionReputationRewardsList;
 
         public int ConfigVersion { get; set; }
         public int ID { get; set; }
@@ -268,6 +273,8 @@ namespace DayZeLib
         public int PlayerNeedQuestItems { get; set; }
         public int DeleteQuestItems { get; set; }
         public int SequentialObjectives { get; set; }
+        public Dictionary<string, int> FactionReputationRequirements { get; set; }
+        public Dictionary<string, int> FactionReputationRewards {get;set;}
 
         public Quests()
         {
@@ -276,6 +283,8 @@ namespace DayZeLib
             Objectives = new BindingList<QuestObjectivesBase>();
             QuestItems = new BindingList<Questitem>();
             Rewards = new BindingList<QuestReward>();
+            FactionReputationRequirements = new Dictionary<string, int>();
+            FactionReputationRewards = new Dictionary<string, int>();
         }
         public override string ToString()
         {
@@ -341,6 +350,40 @@ namespace DayZeLib
                 PreQuestIDs.Add(q.ID);
             }
         }
+        internal void CreateLists()
+        {
+            FactionReputationRequirementsList = new BindingList<FactionQuestReps>();
+            foreach (KeyValuePair<string, int> keyValuePair in FactionReputationRequirements)
+            {
+                FactionReputationRequirementsList.Add(new FactionQuestReps()
+                {
+                    faction = keyValuePair.Key,
+                    rep = keyValuePair.Value
+                });
+            }
+            FactionReputationRewardsList = new BindingList<FactionQuestReps>();
+            foreach (KeyValuePair<string, int> keyValuePair in FactionReputationRewards)
+            {
+                FactionReputationRewardsList.Add(new FactionQuestReps()
+                {
+                    faction = keyValuePair.Key,
+                    rep = keyValuePair.Value
+                });
+    }
+        }
+        public void SetLists()
+        {
+            FactionReputationRequirements = new Dictionary<string, int>();
+            foreach(FactionQuestReps fqr in FactionReputationRequirementsList)
+            {
+                FactionReputationRequirements.Add(fqr.faction, fqr.rep);
+            }
+            FactionReputationRewards = new Dictionary<string, int>();
+            foreach (FactionQuestReps fqr in FactionReputationRewardsList)
+            {
+                FactionReputationRewards.Add(fqr.faction, fqr.rep);
+            }
+        }
     }
 
     public class Questitem
@@ -373,6 +416,21 @@ namespace DayZeLib
         public override string ToString()
         {
             return ClassName;
+        }
+    }
+    public class FactionQuestReps
+    {
+        public string faction { get; set; }
+        public int rep { get; set; }
+
+        public FactionQuestReps()
+        {
+
+        }
+
+        public override string ToString()
+        {
+            return faction;
         }
     }
 

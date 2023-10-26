@@ -50,7 +50,6 @@ namespace DayZeEditor
             this.darkButton2 = new DarkUI.Controls.DarkButton();
             this.darkLabel12 = new DarkUI.Controls.DarkLabel();
             this.ProjectProfileTB = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -106,6 +105,8 @@ namespace DayZeEditor
             this.darkToolStrip23 = new DarkUI.Controls.DarkToolStrip2();
             this.ProjectTSB = new System.Windows.Forms.ToolStripButton();
             this.FTPTSB = new System.Windows.Forms.ToolStripButton();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.darkLabel7 = new DarkUI.Controls.DarkLabel();
             this.darkToolStrip21.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -122,6 +123,7 @@ namespace DayZeEditor
             this.FTPUploadMenu.SuspendLayout();
             this.FTPDownloadMenu.SuspendLayout();
             this.darkToolStrip23.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -168,12 +170,11 @@ namespace DayZeEditor
             this.ProjectTypeComboBox.ForeColor = System.Drawing.SystemColors.Control;
             this.ProjectTypeComboBox.FormattingEnabled = true;
             this.ProjectTypeComboBox.Items.AddRange(new object[] {
-            "Blank project",
-            "Exisitng mission files",
-            "Get from FTP"});
-            this.ProjectTypeComboBox.Location = new System.Drawing.Point(124, 77);
+            "Create Blank / Use Exisitng Files",
+            "Create from FTP / SFTP"});
+            this.ProjectTypeComboBox.Location = new System.Drawing.Point(122, 77);
             this.ProjectTypeComboBox.Name = "ProjectTypeComboBox";
-            this.ProjectTypeComboBox.Size = new System.Drawing.Size(614, 21);
+            this.ProjectTypeComboBox.Size = new System.Drawing.Size(657, 21);
             this.ProjectTypeComboBox.TabIndex = 48;
             this.ProjectTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.ProjectTypeComboBox_SelectedIndexChanged);
             // 
@@ -191,16 +192,16 @@ namespace DayZeEditor
             // 
             this.ProjectFolderTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ProjectFolderTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ProjectFolderTB.Location = new System.Drawing.Point(124, 51);
+            this.ProjectFolderTB.Location = new System.Drawing.Point(122, 51);
             this.ProjectFolderTB.Name = "ProjectFolderTB";
-            this.ProjectFolderTB.Size = new System.Drawing.Size(587, 20);
+            this.ProjectFolderTB.Size = new System.Drawing.Size(630, 20);
             this.ProjectFolderTB.TabIndex = 50;
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(717, 50);
+            this.button1.Location = new System.Drawing.Point(758, 50);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(21, 21);
             this.button1.TabIndex = 51;
@@ -264,7 +265,6 @@ namespace DayZeEditor
             this.groupBox2.Controls.Add(this.ProjectTypeComboBox);
             this.groupBox2.Controls.Add(this.ProjectProfileTB);
             this.groupBox2.Controls.Add(this.darkLabel1);
-            this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.darkLabel2);
             this.groupBox2.Controls.Add(this.ProjectFolderTB);
@@ -272,7 +272,7 @@ namespace DayZeEditor
             this.groupBox2.Location = new System.Drawing.Point(226, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(5);
-            this.groupBox2.Size = new System.Drawing.Size(767, 193);
+            this.groupBox2.Size = new System.Drawing.Size(788, 193);
             this.groupBox2.TabIndex = 54;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Create New";
@@ -291,9 +291,9 @@ namespace DayZeEditor
             // 
             this.ProjectMissionFolderTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ProjectMissionFolderTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ProjectMissionFolderTB.Location = new System.Drawing.Point(124, 130);
+            this.ProjectMissionFolderTB.Location = new System.Drawing.Point(122, 128);
             this.ProjectMissionFolderTB.Name = "ProjectMissionFolderTB";
-            this.ProjectMissionFolderTB.Size = new System.Drawing.Size(587, 20);
+            this.ProjectMissionFolderTB.Size = new System.Drawing.Size(657, 20);
             this.ProjectMissionFolderTB.TabIndex = 75;
             // 
             // darkLabel5
@@ -310,14 +310,14 @@ namespace DayZeEditor
             // 
             this.ProjectNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ProjectNameTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ProjectNameTB.Location = new System.Drawing.Point(124, 25);
+            this.ProjectNameTB.Location = new System.Drawing.Point(122, 25);
             this.ProjectNameTB.Name = "ProjectNameTB";
-            this.ProjectNameTB.Size = new System.Drawing.Size(614, 20);
+            this.ProjectNameTB.Size = new System.Drawing.Size(657, 20);
             this.ProjectNameTB.TabIndex = 54;
             // 
             // darkButton2
             // 
-            this.darkButton2.Location = new System.Drawing.Point(360, 156);
+            this.darkButton2.Location = new System.Drawing.Point(401, 156);
             this.darkButton2.Name = "darkButton2";
             this.darkButton2.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton2.Size = new System.Drawing.Size(378, 23);
@@ -339,22 +339,10 @@ namespace DayZeEditor
             // 
             this.ProjectProfileTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ProjectProfileTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ProjectProfileTB.Location = new System.Drawing.Point(124, 104);
+            this.ProjectProfileTB.Location = new System.Drawing.Point(122, 104);
             this.ProjectProfileTB.Name = "ProjectProfileTB";
-            this.ProjectProfileTB.Size = new System.Drawing.Size(614, 20);
+            this.ProjectProfileTB.Size = new System.Drawing.Size(657, 20);
             this.ProjectProfileTB.TabIndex = 69;
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button3.Location = new System.Drawing.Point(717, 129);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(21, 21);
-            this.button3.TabIndex = 67;
-            this.button3.Text = "+";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // groupBox3
             // 
@@ -479,6 +467,7 @@ namespace DayZeEditor
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage1.Controls.Add(this.groupBox4);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.groupBox3);
@@ -673,7 +662,7 @@ namespace DayZeEditor
             this.FTPConnectTSB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.FTPConnectTSB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.FTPConnectTSB.Name = "FTPConnectTSB";
-            this.FTPConnectTSB.Size = new System.Drawing.Size(180, 22);
+            this.FTPConnectTSB.Size = new System.Drawing.Size(161, 22);
             this.FTPConnectTSB.Text = "Connect to FTP";
             this.FTPConnectTSB.Click += new System.EventHandler(this.FTPConnectTSB_Click);
             // 
@@ -682,7 +671,7 @@ namespace DayZeEditor
             this.SFTPConnectTSB1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.SFTPConnectTSB1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.SFTPConnectTSB1.Name = "SFTPConnectTSB1";
-            this.SFTPConnectTSB1.Size = new System.Drawing.Size(180, 22);
+            this.SFTPConnectTSB1.Size = new System.Drawing.Size(161, 22);
             this.SFTPConnectTSB1.Text = "Connect to SFTP";
             this.SFTPConnectTSB1.Click += new System.EventHandler(this.SFTPConnectTSB1_Click);
             // 
@@ -691,7 +680,7 @@ namespace DayZeEditor
             this.FTPDisconnectTSB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.FTPDisconnectTSB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.FTPDisconnectTSB.Name = "FTPDisconnectTSB";
-            this.FTPDisconnectTSB.Size = new System.Drawing.Size(180, 22);
+            this.FTPDisconnectTSB.Size = new System.Drawing.Size(161, 22);
             this.FTPDisconnectTSB.Text = "Disconnect";
             this.FTPDisconnectTSB.Click += new System.EventHandler(this.FTPDisconnectTSB_Click);
             // 
@@ -906,6 +895,27 @@ namespace DayZeEditor
             this.FTPTSB.Text = "FTP/SFTP";
             this.FTPTSB.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.darkLabel7);
+            this.groupBox4.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox4.Location = new System.Drawing.Point(226, 205);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(788, 228);
+            this.groupBox4.TabIndex = 56;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Example";
+            // 
+            // darkLabel7
+            // 
+            this.darkLabel7.AutoSize = true;
+            this.darkLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel7.Location = new System.Drawing.Point(5, 35);
+            this.darkLabel7.Name = "darkLabel7";
+            this.darkLabel7.Size = new System.Drawing.Size(762, 156);
+            this.darkLabel7.TabIndex = 54;
+            this.darkLabel7.Text = resources.GetString("darkLabel7.Text");
+            // 
             // ProjectPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -940,6 +950,8 @@ namespace DayZeEditor
             this.FTPDownloadMenu.ResumeLayout(false);
             this.darkToolStrip23.ResumeLayout(false);
             this.darkToolStrip23.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1015,11 +1027,12 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripMenuItem deleteFolderToolStripMenuItem1;
         private DarkUI.Controls.DarkLabel darkLabel12;
         private System.Windows.Forms.TextBox ProjectProfileTB;
-        private System.Windows.Forms.Button button3;
         private DarkUI.Controls.DarkLabel darkLabel6;
         private System.Windows.Forms.TextBox ProjectMissionFolderTB;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.ToolStripMenuItem SFTPConnectTSB1;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private DarkUI.Controls.DarkLabel darkLabel7;
     }
 }

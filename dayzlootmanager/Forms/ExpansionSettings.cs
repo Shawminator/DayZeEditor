@@ -3431,6 +3431,7 @@ namespace DayZeEditor
         #endregion Generalsettings
 
         #region Hardline
+        public FactionReps currentFactionReps;
         private void loadHardlineSettings()
         {
             useraction = false;
@@ -3606,10 +3607,13 @@ namespace DayZeEditor
             {
                 currentExpansionHardlinePlayerData = e.Node.Tag as ExpansionHardlinePlayerData;
                 HardlineReputationNUD.Value = currentExpansionHardlinePlayerData.GetReputation();
-                HardlinePlayerKillsNUD.Value = currentExpansionHardlinePlayerData.GetPlayerKills();
-                HardlineAIKillsNUD.Value = currentExpansionHardlinePlayerData.GetAIKills();
-                HardLineInfectedKillsNUD.Value = currentExpansionHardlinePlayerData.GetInfectedKills();
-                hardLinePlayerDeathsNUD.Value = currentExpansionHardlinePlayerData.GetPlayerDeaths();
+                HardlineFactionIDNUD.Value = currentExpansionHardlinePlayerData.FactionID;
+                hardLinePersonalStorageLevelNUD.Value = currentExpansionHardlinePlayerData.PersonalStorageLevel;
+                HardLineFactionReputationLB.DisplayMember = "DisplayName";
+                HardLineFactionReputationLB.ValueMember = "Value";
+                HardLineFactionReputationLB.DataSource = currentExpansionHardlinePlayerData.FactionReputation;
+
+
             }
             useraction = true;
         }
@@ -3709,6 +3713,13 @@ namespace DayZeEditor
             if (!useraction) { return; }
             HardLineSettings.DefaultItemRarity = (int)DefaultItemRarityNUD.Value;
             HardLineSettings.isDirty = true;
+        }
+        private void listBox35_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            useraction = false;
+            currentFactionReps = HardLineFactionReputationLB.SelectedItem as FactionReps;
+            HardLineFactionReputationNUD.Value = currentFactionReps.FactionRep;
+            useraction = true;
         }
         #endregion
 
@@ -5844,6 +5855,7 @@ namespace DayZeEditor
         public CircleZones currentcircleZone;
         public PolygonZones currentpolygonZones;
         public Polygonpoints currentpolygonpoint;
+        public CylinderZones currentcylenderzones;
         public string CurrentSafeZoneType;
         public int ZoneScale = 1;
         private void darkButton107_Click(object sender, EventArgs e)
@@ -5960,6 +5972,7 @@ namespace DayZeEditor
             useraction = false;
             SafeZoneSettings.SetCircleNames();
             SafeZoneSettings.SetPolygonNames();
+            SafeZoneSettings.SetCylinderNames();
             SafeZoneSettings.Convertpolygonarrays();
 
             EnabledCB.Checked = SafeZoneSettings.Enabled == 1 ? true : false;
@@ -5978,6 +5991,10 @@ namespace DayZeEditor
             listBox15.DisplayMember = "DisplayName";
             listBox15.ValueMember = "Value";
             listBox15.DataSource = SafeZoneSettings.PolygonZones;
+
+            listBox35.DisplayMember = "DisplayName";
+            listBox35.ValueMember = "Value";
+            listBox35.DataSource = SafeZoneSettings.CylinderZones;
 
             ForceSZCleanup_ExcludedItemsLB.DisplayMember = "DisplayName";
             ForceSZCleanup_ExcludedItemsLB.ValueMember = "Value";
@@ -6013,7 +6030,7 @@ namespace DayZeEditor
                 int radius = (int)(Math.Round(zones.Radius, 0) * scalevalue);
                 Point center = new Point(centerX, centerY);
                 Pen pen = new Pen(Color.Red, 4);
-                if (currentcircleZone != null && currentcircleZone.CircleSafeZoneName == zones.CircleSafeZoneName)
+                if (currentcircleZone != null && currentcircleZone.CircleSafeZoneName == zones.CircleSafeZoneName && CurrentSafeZoneType == "Circle")
                     pen.Color = Color.LimeGreen;
                 getCircle(e.Graphics, pen, center, radius);
             }
@@ -6024,7 +6041,7 @@ namespace DayZeEditor
                     float scalevalue = ZoneScale * 0.05f;
                     for (int i = 0; i < pz.Polygonpoints.Count; i++)
                     {
-                        Pen pen = new Pen(Color.Blue, 4);
+                        Pen pen = new Pen(Color.Purple, 4);
                         int ax = (int)(Math.Round(pz.Polygonpoints[i].points[0], 0) * scalevalue);
                         int ay = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(pz.Polygonpoints[i].points[2], 0) * scalevalue);
                         int bx = 0;
@@ -6039,11 +6056,23 @@ namespace DayZeEditor
                             bx = (int)(Math.Round(pz.Polygonpoints[i + 1].points[0], 0) * scalevalue);
                             by = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(pz.Polygonpoints[i + 1].points[2], 0) * scalevalue);
                         }
-                        if (pz.polygonSafeZoneName == currentpolygonZones.polygonSafeZoneName)
-                            pen.Color = Color.Purple;
+                        if (pz.polygonSafeZoneName == currentpolygonZones.polygonSafeZoneName && CurrentSafeZoneType == "Polygon")
+                            pen.Color = Color.LimeGreen;
                         e.Graphics.DrawLine(pen, ax, ay, bx, by);
                     }
                 }
+            }
+            foreach(CylinderZones cyz in SafeZoneSettings.CylinderZones)
+            {
+                float scalevalue = ZoneScale * 0.05f;
+                int centerX = (int)(Math.Round(cyz.Center[0], 0) * scalevalue);
+                int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(cyz.Center[2], 0) * scalevalue);
+                int radius = (int)(Math.Round(cyz.Radius, 0) * scalevalue);
+                Point center = new Point(centerX, centerY);
+                Pen pen = new Pen(Color.Blue, 4);
+                if (currentcylenderzones != null && currentcylenderzones.CylinderSafeZoneName == cyz.CylinderSafeZoneName && CurrentSafeZoneType == "Cylinder")
+                    pen.Color = Color.LimeGreen;
+                getCircle(e.Graphics, pen, center, radius);
             }
         }
         private void listBox14_SelectedIndexChanged(object sender, EventArgs e)
@@ -6108,7 +6137,7 @@ namespace DayZeEditor
                     SafeZoneSettings.isDirty = true;
                     pictureBox2.Invalidate();
                 }
-                if (CurrentSafeZoneType == "Polygon" && currentpolygonpoint != null)
+                else if (CurrentSafeZoneType == "Polygon" && currentpolygonpoint != null)
                 {
                     Cursor.Current = Cursors.WaitCursor;
                     numericUpDown21.Value = (decimal)(mouseEventArgs.X / scalevalue);
@@ -6116,6 +6145,19 @@ namespace DayZeEditor
                     if (MapData.FileExists)
                     {
                         numericUpDown22.Value = (decimal)(MapData.gethieght(currentpolygonpoint.points[0], currentpolygonpoint.points[2]));
+                    }
+                    Cursor.Current = Cursors.Default;
+                    SafeZoneSettings.isDirty = true;
+                    pictureBox2.Invalidate();
+                }
+                else if (CurrentSafeZoneType == "Cylinder" && currentcylenderzones != null)
+                {
+                    Cursor.Current = Cursors.WaitCursor;
+                    numericUpDown43.Value = (decimal)(mouseEventArgs.X / scalevalue);
+                    numericUpDown41.Value = (decimal)((newsize - mouseEventArgs.Y) / scalevalue);
+                    if (MapData.FileExists)
+                    {
+                        numericUpDown42.Value = (decimal)(MapData.gethieght(currentcylenderzones.Center[0], currentcylenderzones.Center[2]));
                     }
                     Cursor.Current = Cursors.Default;
                     SafeZoneSettings.isDirty = true;
@@ -6132,12 +6174,21 @@ namespace DayZeEditor
                     if (currentcircleZone != null)
                     {
                         CurrentSafeZoneType = "Circle";
+                        tabControl5.SelectedIndex = 0;
                     }
                     break;
                 case "Polygon":
                     if (currentpolygonZones != null)
                     {
                         CurrentSafeZoneType = "Polygon";
+                        tabControl5.SelectedIndex = 1;
+                    }
+                    break;
+                case "Cylinder":
+                    if (currentpolygonZones != null)
+                    {
+                        CurrentSafeZoneType = "Cylinder";
+                        tabControl5.SelectedIndex = 2;
                     }
                     break;
                 default:
@@ -6320,6 +6371,94 @@ namespace DayZeEditor
             SafeZoneSettings.ForceSZCleanup_ExcludedItems.Remove(ForceSZCleanup_ExcludedItemsLB.GetItemText(ForceSZCleanup_ExcludedItemsLB.SelectedItem));
             SafeZoneSettings.isDirty = true;
         }
+        private void listBox35_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (listBox35.SelectedItems.Count < 1) return;
+            currentcylenderzones = listBox35.SelectedItem as CylinderZones;
+            useraction = false;
+            CurrentSafeZoneType = "Cylinder";
+            radioButton1.Checked = false;
+            radioButton2.Checked = false;
+            radioButton3.Checked = true;
+            numericUpDown43.Value = (decimal)currentcylenderzones.Center[0];
+            numericUpDown42.Value = (decimal)currentcylenderzones.Center[1];
+            numericUpDown41.Value = (decimal)currentcylenderzones.Center[2];
+            numericUpDown44.Value = (decimal)currentcylenderzones.Radius;
+            numericUpDown45.Value = (decimal)currentcylenderzones.Height;
+            useraction = true;
+            pictureBox2.Invalidate();
+        }
+        private void darkButton112_Click(object sender, EventArgs e)
+        {
+            CylinderZones newcylinder = new CylinderZones();
+            newcylinder.Center = new float[] { currentproject.MapSize / 2, 0, currentproject.MapSize / 2 };
+            newcylinder.Radius = 500;
+            newcylinder.Height = 500;
+            newcylinder.CylinderSafeZoneName = "New cylinder Zone";
+            SafeZoneSettings.CylinderZones.Add(newcylinder);
+            SafeZoneSettings.SetCylinderNames();
+            listBox35.SelectedIndex = listBox35.Items.Count - 1;
+            pictureBox2.Invalidate();
+            SafeZoneSettings.isDirty = true;
+        }
+        private void darkButton113_Click(object sender, EventArgs e)
+        {
+            SafeZoneSettings.RemovecylinderZone(currentcylenderzones);
+            SafeZoneSettings.SetCylinderNames();
+            pictureBox2.Invalidate();
+            SafeZoneSettings.isDirty = true;
+        }
+        private void numericUpDown43_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentcylenderzones.Center[0] = (float)numericUpDown43.Value;
+            SafeZoneSettings.isDirty = true;
+            pictureBox2.Invalidate();
+        }
+        private void numericUpDown42_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentcylenderzones.Center[1] = (float)numericUpDown42.Value;
+            SafeZoneSettings.isDirty = true;
+            pictureBox2.Invalidate();
+        }
+        private void numericUpDown41_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentcylenderzones.Center[2] = (float)numericUpDown41.Value;
+            SafeZoneSettings.isDirty = true;
+            pictureBox2.Invalidate();
+        }
+        private void numericUpDown44_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentcylenderzones.Radius = (float)numericUpDown44.Value;
+            SafeZoneSettings.isDirty = true;
+            pictureBox2.Invalidate();
+        }
+        private void numericUpDown45_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentcylenderzones.Height = (float)numericUpDown45.Value;
+            SafeZoneSettings.isDirty = true;
+            pictureBox2.Invalidate();
+        }
+        private void tabControl5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (tabControl5.SelectedIndex)
+            {
+                case 0:
+                    radioButton1.Checked = true;
+                    break;
+                case 1:
+                    radioButton2.Checked = true;
+                    break;
+                case 2:
+                    radioButton3.Checked = true;
+                    break;
+            }
+            pictureBox2.Invalidate();
+        }
         #endregion SafeZonesettings
 
         #region SocialMediaSettings
@@ -6419,9 +6558,19 @@ namespace DayZeEditor
             if (listBox25.SelectedItems.Count < 1) return;
             currentNewsfeedlink = listBox25.SelectedItem as Newsfeedlink;
             useraction = false;
-            textBox23.Text = currentNewsfeedlink.m_Label;
-            textBox24.Text = currentNewsfeedlink.m_Icon;
-            textBox25.Text = currentNewsfeedlink.m_URL;
+            toolStripButton22.AutoSize = false;
+            toolStripButton22.AutoSize = true;
+            toolStripButton23.AutoSize = false;
+            toolStripButton23.AutoSize = true;
+
+
+            listBox23.DisplayMember = "DisplayName";
+            listBox23.ValueMember = "Value";
+            listBox23.DataSource = SocialMediaSettings.NewsFeedTexts;
+
+            listBox25.DisplayMember = "DisplayName";
+            listBox25.ValueMember = "Value";
+            listBox25.DataSource = SocialMediaSettings.NewsFeedLinks;
 
             useraction = true;
         }
@@ -6845,7 +6994,7 @@ namespace DayZeEditor
             }
             pictureBox4.Invalidate();
         }
-        private void darkButton48_Click(object sender, EventArgs e)
+         private void darkButton48_Click(object sender, EventArgs e)
         {
             SpawnLocations newspawnLocations = new SpawnLocations();
             newspawnLocations.Name = "New Locations";
@@ -6949,12 +7098,6 @@ namespace DayZeEditor
             SpawnSettings.SpawnOnTerritory = SpawnOnTerritoryCB.Checked == true ? 1 : 0;
             SpawnSettings.isDirty = true;
         }
-        //private void numericUpDown27_ValueChanged(object sender, EventArgs e)
-        //{
-        //    if (!useraction) return;
-        //    SpawnSettings.SpawnSelectionScreenMenuID = (int)SpawnSelectionIDNUD.Value;
-        //    SpawnSettings.isDirty = true;
-        //}
         private void EnableSpawnSelectionCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -7851,6 +7994,7 @@ namespace DayZeEditor
 
 
 
+
             PickLockChancePercentNUD.Value = (decimal)VehicleSettings.PickLockChancePercent;
             PickLockTimeSecondsNUD.Value = (decimal)VehicleSettings.PickLockTimeSeconds;
             PickLockToolDamagePercentNUD.Value = (decimal)VehicleSettings.PickLockToolDamagePercent;
@@ -7884,6 +8028,14 @@ namespace DayZeEditor
             VehicleHeliCoverIconNameTB.Text = VehicleSettings.CFToolsHeliCoverIconName;
             VehicleBoatCoverIconNameTB.Text = VehicleSettings.CFToolsBoatCoverIconName;
             VehicleCarCoverIconNameTB.Text = VehicleSettings.CFToolsCarCoverIconName;
+
+            ChangeLockToolsLB.DisplayMember = "DisplayName";
+            ChangeLockToolsLB.ValueMember = "Value";
+            ChangeLockToolsLB.DataSource = VehicleSettings.ChangeLockTools;
+
+            PickLockToolsLB.DisplayMember = "DisplayName";
+            PickLockToolsLB.ValueMember = "Value";
+            PickLockToolsLB.DataSource = VehicleSettings.PickLockTools;
 
             ChangeLockToolsLB.DisplayMember = "DisplayName";
             ChangeLockToolsLB.ValueMember = "Value";
@@ -8613,7 +8765,6 @@ namespace DayZeEditor
             {
                 CurrentMenucategory.DisplayName = textBox26.Text;
                 treeViewMS1.SelectedNode.Text = CurrentMenucategory.DisplayName;
-
             }
             else if (treeViewMS1.SelectedNode.Parent.Tag is ExpansionMenuSubCategory)
             {
@@ -9089,20 +9240,7 @@ namespace DayZeEditor
             }
             PersonalStorageSettingsNew.isDirty = true;
         }
-
-
-
-
-
-
-
         #endregion personalstroage
-
-        private void ItemRarityLB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
 
     }
     public class NullToEmptyGearConverter : JsonConverter<Gear>

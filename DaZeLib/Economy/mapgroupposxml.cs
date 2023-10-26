@@ -47,7 +47,7 @@ namespace DayZeLib
 
         private string rpyField;
 
-        private decimal aField;
+        private float aField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -93,7 +93,7 @@ namespace DayZeLib
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public decimal a
+        public float a
         {
             get
             {

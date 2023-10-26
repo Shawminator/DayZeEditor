@@ -133,7 +133,7 @@ namespace DayZeEditor
             Directory.CreateDirectory(ProjectPath);
 
             string projecttype = ProjectTypeComboBox.GetItemText(ProjectTypeComboBox.SelectedItem);
-            if (projecttype == "Blank project")
+            if (projecttype == "Create Blank / Use Exisitng Files")
             {
                 if (ProjectProfileTB.Text == "" || ProjectMissionFolderTB.Text == "")
                 {
@@ -157,38 +157,9 @@ namespace DayZeEditor
                 project.ProfilePath = profilefolder;
                 projects.addtoprojects(project, false);
                 LoadProjectstoList();
-                MessageBox.Show("Blank Project created, Please Close the editor and populate the missions files before trying to load this project...");
+                MessageBox.Show("Project created, Please Close the editor and populate the missions files before trying to load this project if not using existing files...");
             }
-            else if (projecttype == "Exisitng mission files")
-            {
-                if (ProjectProfileTB.Text == "" || ProjectMissionFolderTB.Text == "")
-                {
-                    MessageBox.Show("Please select both a Profile name and a mpmission folder.");
-                    return;
-                }
-                string missionsfolder = ProjectMissionFolderTB.Text;
-                string profilefolder = ProjectProfileTB.Text;
-                string mpmissionpath = Path.GetFileName(missionsfolder);
-                string PmissionFolder = ProjectPath + "\\mpmissions\\" + Path.GetFileName(missionsfolder);
-                string Pprofilefolder = ProjectPath + "\\" + profilefolder;
-
-                Directory.CreateDirectory(PmissionFolder);
-                Directory.CreateDirectory(Pprofilefolder);
-
-                Helper.CopyFilesRecursively(missionsfolder, PmissionFolder);
-
-
-                Project project = new Project();
-                project.AddNames(ProjectName, ProjectPath);
-                project.MapSize = Getmapsizefrommissionpath(mpmissionpath);
-                project.mpmissionpath = mpmissionpath;
-                project.MapPath = "\\Maps\\" + mpmissionpath.ToLower().Split('.')[1] + "_Map.png";
-                project.ProfilePath = profilefolder;
-                projects.addtoprojects(project);
-                LoadProjectstoList();
-                SetActiveProject(ProjectName);
-            }
-            else if (projecttype == "Get from FTP")
+            else if (projecttype == "Create from FTP / SFTP")
             {
                 try
                 {
@@ -387,36 +358,22 @@ namespace DayZeEditor
         private void ProjectTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             string projecttype = ProjectTypeComboBox.GetItemText(ProjectTypeComboBox.SelectedItem);
-            if (projecttype == "Get from FTP")
+            if (projecttype == "Create from FTP / SFTP")
             {
                 darkLabel12.Visible = false;
                 darkLabel6.Visible = false;
                 ProjectProfileTB.Visible = false;
                 ProjectMissionFolderTB.Visible = false;
-                button3.Visible = false;
-                darkButton2.Location = new Point(360, 105);
+                darkButton2.Location = new Point(401, 105);
             }
-            else if (projecttype == "Blank project")
+            else if (projecttype == "Create Blank / Use Exisitng Files")
             {
-                darkLabel6.Text = "Exact Name of mission";
-                button3.Visible = false;
                 darkLabel12.Visible = true;
                 darkLabel6.Visible = true;
                 ProjectProfileTB.Visible = true;
                 ProjectMissionFolderTB.Visible = true;
-                ProjectMissionFolderTB.Size = new Size(614, 20);
-                darkButton2.Location = new Point(360, 156);
-            }
-            else
-            {
-                darkLabel6.Text = "Mission Folder to use";
-                darkLabel12.Visible = true;
-                darkLabel6.Visible = true;
-                ProjectProfileTB.Visible = true;
-                ProjectMissionFolderTB.Visible = true;
-                ProjectMissionFolderTB.Size = new Size(587,20);
-                button3.Visible = true;
-                darkButton2.Location = new Point(360, 156);
+                ProjectMissionFolderTB.Size = new Size(657, 20);
+                darkButton2.Location = new Point(401, 156);
             }
         }
         private void darkButton1_Click(object sender, EventArgs e)

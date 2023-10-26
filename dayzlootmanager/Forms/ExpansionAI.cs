@@ -522,7 +522,7 @@ namespace DayZeEditor
         private void CrashMinDistRadiusNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            CurrentEventcrashpatrol.MaxDistRadius = CrashMinDistRadiusNUD.Value;
+            CurrentEventcrashpatrol.MinDistRadius = CrashMinDistRadiusNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
         private void CrashMaxDistRadiusNUD_ValueChanged(object sender, EventArgs e)
@@ -1137,6 +1137,9 @@ namespace DayZeEditor
             }
         }
 
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
 
     }
+}
 }

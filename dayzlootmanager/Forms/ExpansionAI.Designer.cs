@@ -389,7 +389,7 @@ namespace DayZeEditor
             131072});
             this.AIGeneralDanageMultiplierNUD.Location = new System.Drawing.Point(119, 262);
             this.AIGeneralDanageMultiplierNUD.Maximum = new decimal(new int[] {
-            1,
+            1000000,
             0,
             0,
             0});
@@ -416,7 +416,7 @@ namespace DayZeEditor
             131072});
             this.AIGeneralThreatDistanceLimitNUD.Location = new System.Drawing.Point(119, 236);
             this.AIGeneralThreatDistanceLimitNUD.Maximum = new decimal(new int[] {
-            1,
+            1000000,
             0,
             0,
             0});
@@ -781,7 +781,7 @@ namespace DayZeEditor
             131072});
             this.DamageMultiplierNUD.Location = new System.Drawing.Point(152, 90);
             this.DamageMultiplierNUD.Maximum = new decimal(new int[] {
-            1,
+            1000000,
             0,
             0,
             0});
@@ -813,7 +813,7 @@ namespace DayZeEditor
             131072});
             this.ThreatDistanceLimitNUD.Location = new System.Drawing.Point(152, 66);
             this.ThreatDistanceLimitNUD.Maximum = new decimal(new int[] {
-            5000,
+            1000000,
             0,
             0,
             0});
@@ -1125,6 +1125,7 @@ namespace DayZeEditor
             this.groupBox4.TabIndex = 134;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Object Patrols";
+            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
             // 
             // CrashEventNameTB
             // 

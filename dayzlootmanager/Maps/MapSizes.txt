@@ -16,3 +16,5 @@ barrington:10240
 vela:10240
 chiemsee:10240
 melkart:20480
+thezone:20480
+capare:20480

@@ -35,6 +35,7 @@ namespace DayZeLib
         public int Amount { get; set; }
         public string ClassName { get; set; }
         public int QuantityPercent { get; set; }
+        public int MinQuantityPercent { get; set; }
 
         public Collections()
         { }

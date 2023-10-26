@@ -288,7 +288,7 @@ namespace DayZeLib
             EntityReputation = new Dictionary<string, int>();
             foreach (EntityReputationlevels item in entityreps)
             {
-                ItemRarity.Add(item.Classname, item.Level);
+                EntityReputation.Add(item.Classname, item.Level);
             }
         }
     }
@@ -342,25 +342,30 @@ namespace DayZeLib
         public string Filename { get; set; }
         public bool isDirty { get; set; }
 
-        const int CONFIGVERSION = 4;
+        const int CONFIGVERSION = 8;
 
-        private int Reputation;
-        private int PlayerKills;
-        private int AIKills;
-        private int InfectedKills;
-        private int PlayerDeaths;
+        public int Reputation;
+        public int factionRepCount;
+        public BindingList<FactionReps> FactionReputation;
+        public int FactionID;
+        public int PersonalStorageLevel;
+
 
         public ExpansionHardlinePlayerData(string fileName)
         {
+            FactionReputation = new BindingList<FactionReps>();
             using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read))
             using (BinaryReader br = new BinaryReader(fs))
             {
                 if (br.ReadInt32() != CONFIGVERSION) return;
                 Reputation = br.ReadInt32();
-                PlayerKills = br.ReadInt32();
-                AIKills = br.ReadInt32();
-                InfectedKills = br.ReadInt32();
-                PlayerDeaths = br.ReadInt32();
+                factionRepCount = br.ReadInt32();
+                for (int i = 0; i < factionRepCount; i++)
+                {
+                    FactionReputation.Add(new FactionReps(br));
+                }
+                FactionID = br.ReadInt32();
+                PersonalStorageLevel = br.ReadInt32();
             }
         }
         public void SaveFIle(string path)
@@ -370,10 +375,14 @@ namespace DayZeLib
             {
                 bw.Write(CONFIGVERSION);
                 bw.Write(Reputation);
-                bw.Write(PlayerKills);
-                bw.Write(AIKills);
-                bw.Write(InfectedKills);
-                bw.Write(PlayerDeaths);
+                bw.Write(FactionReputation.Count());
+                foreach (FactionReps fr in FactionReputation)
+                {
+                    bw.Write(fr.FactionID);
+                    bw.Write(fr.FactionID);
+                }
+                bw.Write(FactionID);
+                bw.Write(PersonalStorageLevel);
             }
         }
         public override string ToString()
@@ -399,21 +408,20 @@ namespace DayZeLib
         {
             Reputation = value;
         }
-        public int GetPlayerKills()
+    }
+    public class FactionReps
         {
-            return PlayerKills;
+        public int FactionID;
+        public int FactionRep;
+
+        public FactionReps(BinaryReader br)
+        {
+            FactionID = br.ReadInt32();
+            FactionRep = br.ReadInt32();
         }
-        public int GetAIKills()
+        public override string ToString()
         {
-            return AIKills;
-        }
-        public int GetInfectedKills()
-        {
-            return InfectedKills;
-        }
-        public int GetPlayerDeaths()
-        {
-            return PlayerDeaths;
+            return FactionID.ToString();
         }
     }
 }

@@ -197,6 +197,8 @@ namespace DayZeEditor
 
             QuestObjectivesPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Quests\\Objectives";
             QuestObjectives = new QuestObjectives(QuestObjectivesPath);
+            setupobjectives();
+            QuestObjectives.Checkver();
             if (QuestObjectives.Objectives.Any(x => x.isDirty == true))
                 needtosave = true;
             setupobjectives();
@@ -250,6 +252,8 @@ namespace DayZeEditor
             }
             QuestRequiredFactionCB.DataSource = new BindingList<string>(questrequiredfaction);
             QuestFactionRewardCB.DataSource = new BindingList<string>(questrequiredfaction);
+            QuestsFactionReputationRequirementsCB.DataSource = new BindingList<string>(questrequiredfaction);
+            QuestFactionReputationRewardsCB.DataSource = new BindingList<string>(questrequiredfaction);
 
             useraction = true;
         }
@@ -388,6 +392,7 @@ namespace DayZeEditor
                 Quest.isDirty = false;
                 Quest.SetNPCList();
                 Quest.SetPreQuests();
+                Quest.SetLists();
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(Quest, options);
                 if (currentproject.Createbackups && File.Exists(QuestsPath + "\\" + Quest.Filename + ".json"))
@@ -1085,6 +1090,11 @@ namespace DayZeEditor
         }
         private void NPCQuestNPCTypeCB_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (NPCQuestNPCTypeCB.SelectedIndex == 2)
+                groupBox6.Visible = true;
+            else
+                groupBox6.Visible = false;
+
             if (!useraction) return;
             currentQuestNPC.NPCType = NPCQuestNPCTypeCB.SelectedIndex;
             currentQuestNPC.isDirty = true;
@@ -1236,6 +1246,14 @@ namespace DayZeEditor
             QuestRewardsLB.DisplayMember = "DisplayName";
             QuestRewardsLB.ValueMember = "Value";
             QuestRewardsLB.DataSource = CurrentQuest.Rewards;
+
+            QuestsFactionReputationRequirementsLB.DisplayMember = "Value";
+            QuestsFactionReputationRequirementsLB.ValueMember = "Key";
+            QuestsFactionReputationRequirementsLB.DataSource = CurrentQuest.FactionReputationRequirementsList;
+
+            QuestFactionReputationRewardsLB.DisplayMember = "Value";
+            QuestFactionReputationRewardsLB.ValueMember = "Key";
+            QuestFactionReputationRewardsLB.DataSource = CurrentQuest.FactionReputationRewardsList;
 
             QuestColour.Invalidate();
 
@@ -1782,6 +1800,99 @@ namespace DayZeEditor
             if (!useraction) return;
             CurrentQuest.SequentialObjectives = QuestSequentialObjectivesCB.Checked == true ? 1 : 0;
             CurrentQuest.isDirty = true;
+        }
+        private void QuestsFactionReputationRequirementsLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (QuestsFactionReputationRequirementsLB.SelectedItems.Count < 1) return;
+            FactionQuestReps fqr = QuestsFactionReputationRequirementsLB.SelectedItem as FactionQuestReps;
+            useraction = false;
+            QuestsFactionReputationRequirementsNUD.Value = fqr.rep;
+            useraction = true;
+        }
+        private void QuestFactionReputationRewardsLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (QuestFactionReputationRewardsLB.SelectedItems.Count < 1) return;
+            FactionQuestReps fqr = QuestFactionReputationRewardsLB.SelectedItem as FactionQuestReps;
+            useraction = false;
+            QuestFactionReputationRewardsNUD.Value = fqr.rep;
+            useraction = true;
+        }
+        private void QuestsFactionReputationRequirementsNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (QuestsFactionReputationRequirementsLB.SelectedItems.Count < 1) return;
+            FactionQuestReps fqr = QuestsFactionReputationRequirementsLB.SelectedItem as FactionQuestReps;
+            useraction = false;
+            fqr.rep = (int)QuestsFactionReputationRequirementsNUD.Value;
+            useraction = true;
+        }
+        private void QuestFactionReputationRewardsNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (QuestFactionReputationRewardsLB.SelectedItems.Count < 1) return;
+            FactionQuestReps fqr = QuestFactionReputationRewardsLB.SelectedItem as FactionQuestReps;
+            useraction = false;
+            fqr.rep = (int)QuestFactionReputationRewardsNUD.Value;
+            useraction = true;
+        }
+        private void darkButton82_Click(object sender, EventArgs e)
+        {
+            FactionQuestReps newrep = new FactionQuestReps()
+            {
+                faction = QuestsFactionReputationRequirementsCB.GetItemText(QuestsFactionReputationRequirementsCB.SelectedItem),
+                rep = 100
+            };
+            if(!CurrentQuest.FactionReputationRequirementsList.Any(x => x.faction == newrep.faction))
+            {
+                CurrentQuest.FactionReputationRequirementsList.Add(newrep);
+                CurrentQuest.isDirty = true;
+                QuestsFactionReputationRequirementsCB.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("Faction allready exists in list......");
+            }
+
+        }
+        private void darkButton83_Click(object sender, EventArgs e)
+        {
+            if (QuestsFactionReputationRequirementsLB.SelectedItems.Count < 1) return;
+            FactionQuestReps fqr = QuestsFactionReputationRequirementsLB.SelectedItem as FactionQuestReps;
+            CurrentQuest.FactionReputationRequirementsList.Remove(fqr);
+            CurrentQuest.isDirty = true;
+            QuestsFactionReputationRequirementsLB.Refresh();
+            if (QuestsFactionReputationRequirementsLB.Items.Count == 0)
+                QuestsFactionReputationRequirementsLB.SelectedIndex = -1;
+            else
+                QuestsFactionReputationRequirementsLB.SelectedIndex = 0;
+        }
+        private void darkButton84_Click(object sender, EventArgs e)
+        {
+            FactionQuestReps newrep = new FactionQuestReps()
+            {
+                faction = QuestFactionReputationRewardsCB.GetItemText(QuestFactionReputationRewardsCB.SelectedItem),
+                rep = 100
+            };
+            if (!CurrentQuest.FactionReputationRewardsList.Any(x => x.faction == newrep.faction))
+            {
+                CurrentQuest.FactionReputationRewardsList.Add(newrep);
+                CurrentQuest.isDirty = true;
+                QuestFactionReputationRewardsLB.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("Faction allready exists in list......");
+            }
+        }
+        private void darkButton85_Click(object sender, EventArgs e)
+        {
+            if (QuestFactionReputationRewardsLB.SelectedItems.Count < 1) return;
+            FactionQuestReps fqr = QuestFactionReputationRewardsLB.SelectedItem as FactionQuestReps;
+            CurrentQuest.FactionReputationRewardsList.Remove(fqr);
+            CurrentQuest.isDirty = true;
+            QuestFactionReputationRewardsLB.Refresh();
+            if (QuestFactionReputationRewardsLB.Items.Count == 0)
+                QuestFactionReputationRewardsLB.SelectedIndex = -1;
+            else
+                QuestFactionReputationRewardsLB.SelectedIndex = 0;
         }
         #endregion quests
         #region objectives
@@ -3418,6 +3529,7 @@ namespace DayZeEditor
             ObjectivesCollectionClassnameTB.Text = CurrentCollections.ClassName;
             ObjectivesCollectionAmountNUD.Value = CurrentCollections.Amount;
             ObjectivesCollectionQuantityPercentNUD.Value = CurrentCollections.QuantityPercent;
+            ObjectivesCollectionMinQuantityPercentNUD.Value = CurrentCollections.MinQuantityPercent;
             useraction = true;
         }
         private void ObjectivesCollectionMaxDistanceNUD_ValueChanged(object sender, EventArgs e)
@@ -3537,6 +3649,13 @@ namespace DayZeEditor
             CurrentCollections.QuantityPercent = (int)ObjectivesCollectionQuantityPercentNUD.Value;
             CurrentCollection.isDirty = true;
         }
+        private void ObjectivesCollectionMinQuantityPercentNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesCollection CurrentCollection = CurrentTreeNodeTag as QuestObjectivesCollection;
+            CurrentCollections.MinQuantityPercent = (int)ObjectivesCollectionMinQuantityPercentNUD.Value;
+            CurrentCollection.isDirty = true;
+        }
         /// <summary>
         /// Crafting
         /// </summary>
@@ -3626,6 +3745,7 @@ namespace DayZeEditor
             ObjectivesDeliveryClassnameTB.Text = CurrentDeliveries.ClassName;
             ObjectivesDeliveryAmountNUD.Value = CurrentDeliveries.Amount;
             ObjectivesDeliveryQuantityPercentNUD.Value = CurrentDeliveries.QuantityPercent;
+            ObjectivesDeliveryMinQuantityPerentNUD.Value = CurrentDeliveries.MinQuantityPercent;
             useraction = true;
         }
         private void ObjectivesDeliveryMaxDistanceNUD_ValueChanged(object sender, EventArgs e)
@@ -3736,6 +3856,13 @@ namespace DayZeEditor
             if (!useraction) return;
             QuestObjectivesDelivery CurrentDelivery = CurrentTreeNodeTag as QuestObjectivesDelivery;
             CurrentDeliveries.QuantityPercent = (int)ObjectivesDeliveryQuantityPercentNUD.Value;
+            CurrentDelivery.isDirty = true;
+        }
+        private void ObjectivesDeliveryMinQuantityPerentNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesDelivery CurrentDelivery = CurrentTreeNodeTag as QuestObjectivesDelivery;
+            CurrentDeliveries.MinQuantityPercent = (int)ObjectivesDeliveryMinQuantityPerentNUD.Value;
             CurrentDelivery.isDirty = true;
         }
         /// <summary>
@@ -4638,6 +4765,11 @@ namespace DayZeEditor
         {
 
         }
+
+
+
+
+
 
 
 

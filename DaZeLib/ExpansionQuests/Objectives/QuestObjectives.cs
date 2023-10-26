@@ -27,7 +27,7 @@ namespace DayZeLib
 
     public class QuestObjectivesBase : IEquatable<QuestObjectivesBase>
     {
-        const int m_currentConfigVersion = 21;
+        const int m_currentConfigVersion = 22;
 
         [JsonIgnore]
         public static readonly string[] Objectvetypesname = {"","", "Target", "Travel", "Collection", "Delivery", "TreasureHunt", "AIPatrol", "AICamp", "AIVIP", "Action", "Crafting"};
@@ -160,6 +160,18 @@ namespace DayZeLib
             if ( Markedfordelete == null)  Markedfordelete = new List<QuestObjectivesBase>();
              Markedfordelete.Add(quest);
             Objectives.Remove(quest);
+        }
+
+        public void Checkver()
+        {
+            foreach (QuestObjectivesBase obj in Objectives)
+            {
+                if (obj.ConfigVersion != QuestObjectivesBase.GetconfigVersion)
+                {
+                    obj.ConfigVersion = QuestObjectivesBase.GetconfigVersion;
+                    obj.isDirty = true;
+                }
+            }
         }
     }
 }

@@ -36,7 +36,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.7.8.0";
+        public string VersionNumber = "0.7.8.2";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -99,7 +99,7 @@ namespace DayZeEditor
             var culture = CultureInfo.GetCultureInfo("en-GB");
             CultureInfo.DefaultThreadCurrentCulture = culture;
             CultureInfo.DefaultThreadCurrentUICulture = culture;
-            TitleLabel.Text = "DayZeEditor " + VersionNumber + " by Shawminator";
+            TitleLabel.Text = "DayZeEditor " + VersionNumber + " by Shawminator ";
             if(CheckForUpdate())
             {
                 Application.Exit();
@@ -154,7 +154,18 @@ namespace DayZeEditor
                     MarketButton.Visible = false;
                     TraderPlusButton.Visible = false;
                     Console.WriteLine("No Active Project Found, Please Load a Project from the Projects panel.....");
-                    toolStripStatusLabel1.Text = "No Active Project Found, Please Load a Project from the Projects panel.....";
+                    toolStripStatusLabel1.Text = "No Active Project Found, Please Load/Create a Project from the Projects panel.....";
+                    ProjectPanel _TM = Application.OpenForms["ProjectPanel"] as ProjectPanel;
+                    _TM = new ProjectPanel
+                    {
+                        MdiParent = this,
+                        Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                        Location = new System.Drawing.Point(30, 0),
+                        Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                        projects = Projects
+                    };
+                    _TM.Show();
+                    Console.WriteLine("loading Project manager....");
                 }
             }
             else
@@ -167,6 +178,17 @@ namespace DayZeEditor
                 MarketButton.Visible = false;
                 Console.WriteLine("No Projects Found, Please Create a new Project from the Projects panel.....");
                 toolStripStatusLabel1.Text = "No Projects Found, Please Create a new Project from the Projects panel.....";
+                ProjectPanel _TM = Application.OpenForms["ProjectPanel"] as ProjectPanel;
+                _TM = new ProjectPanel
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    projects = Projects
+                };
+                _TM.Show();
+                Console.WriteLine("loading Project manager....");
             }
             CheckChangeLog();
         }
@@ -655,6 +677,7 @@ namespace DayZeEditor
                 Console.WriteLine("loading expansion Loadout manager....");
             }
             timer1.Start();
+            Console.WriteLine("loading Expasion Quest manager....");
         }
         private void ExpansionQuestsButton_Click(object sender, EventArgs e)
         {
