@@ -3248,7 +3248,7 @@ namespace DayZeEditor
             this.tabControl4.Size = new System.Drawing.Size(295, 287);
             this.tabControl4.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl4.TabIndex = 0;
-            this.tabControl4.SelectedIndexChanged += new System.EventHandler(this.tabControl4_SelectedIndexChanged_1);
+            this.tabControl4.SelectedIndexChanged += new System.EventHandler(this.tabControl4_SelectedIndexChanged);
             // 
             // tabPage18
             // 
@@ -15063,7 +15063,7 @@ namespace DayZeEditor
             this.SpawnTabControl.Size = new System.Drawing.Size(1373, 631);
             this.SpawnTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.SpawnTabControl.TabIndex = 104;
-            this.SpawnTabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl4_SelectedIndexChanged);
+            this.SpawnTabControl.SelectedIndexChanged += new System.EventHandler(this.SpawnTabControl_SelectedIndexChanged);
             // 
             // TabPageStartingclothes
             // 

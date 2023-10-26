@@ -6462,6 +6462,8 @@ namespace DayZeEditor
         #endregion SafeZonesettings
 
         #region SocialMediaSettings
+        public Newsfeedtext currentNewsfeedtext;
+        public Newsfeedlink currentNewsfeedlink;
         private void LoadsocialMediaSettings()
         {
             useraction = false;
@@ -6493,7 +6495,7 @@ namespace DayZeEditor
             if (tabControl4.SelectedIndex == 1)
                 toolStripButton23.Checked = true;
         }
-        private void tabControl4_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void tabControl4_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (tabControl4.SelectedIndex)
             {
@@ -6512,8 +6514,6 @@ namespace DayZeEditor
                     break;
             }
         }
-        public Newsfeedtext currentNewsfeedtext;
-        public Newsfeedlink currentNewsfeedlink;
         private void listBox23_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             if (listBox23.SelectedItems.Count < 1) return;
@@ -6558,19 +6558,10 @@ namespace DayZeEditor
             if (listBox25.SelectedItems.Count < 1) return;
             currentNewsfeedlink = listBox25.SelectedItem as Newsfeedlink;
             useraction = false;
-            toolStripButton22.AutoSize = false;
-            toolStripButton22.AutoSize = true;
-            toolStripButton23.AutoSize = false;
-            toolStripButton23.AutoSize = true;
 
-
-            listBox23.DisplayMember = "DisplayName";
-            listBox23.ValueMember = "Value";
-            listBox23.DataSource = SocialMediaSettings.NewsFeedTexts;
-
-            listBox25.DisplayMember = "DisplayName";
-            listBox25.ValueMember = "Value";
-            listBox25.DataSource = SocialMediaSettings.NewsFeedLinks;
+            textBox23.Text = currentNewsfeedlink.m_Label;
+            textBox24.Text = currentNewsfeedlink.m_Icon;
+            textBox25.Text = currentNewsfeedlink.m_URL;
 
             useraction = true;
         }
@@ -6620,7 +6611,7 @@ namespace DayZeEditor
         public Gear currentbackpackgear;
         public Gear currentvestgear;
 
-        private void tabControl4_SelectedIndexChanged(object sender, EventArgs e)
+        private void SpawnTabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             toolStripButton15.Checked = false;
             toolStripButton15.ForeColor = Color.FromArgb(75, 110, 175);
