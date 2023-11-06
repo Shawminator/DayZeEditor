@@ -204,6 +204,8 @@ namespace DayZeLib
         {
             m_Version = TradersList.CurrentVersion;
             DisplayName = filename;
+            MinRequiredReputation = 0;
+            MaxRequiredReputation = 2147483647;
             TraderIcon = "Questionmark";
             Currencies = new BindingList<string>();
             Items = new Dictionary<string, int>();
@@ -211,6 +213,7 @@ namespace DayZeLib
             Categories = new BindingList<string>();
             RequiredFaction = "";
             RequiredCompletedQuestID = -1;
+            TraderIcon = "Trader";
         }
         public override string ToString()
         {

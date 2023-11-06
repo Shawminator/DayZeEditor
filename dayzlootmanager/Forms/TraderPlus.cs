@@ -2819,6 +2819,228 @@ namespace DayZeEditor
             }
         }
 
+        private void ExporttoexpansionMarket_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            List<marketItem> checklist = new List<marketItem>();
+            MarketCategories MarketCats = new MarketCategories();
+            TradersList traders = new TradersList();
+            TraderModelMapping maps = new TraderModelMapping();
+            TraderZones zone = new TraderZones();
 
+            //Setup currency Market Category
+            Categories newccat = new Categories();
+            newccat.DisplayName = "#STR_EXPANSION_MARKET_CATEGORY_EXCHANGE";
+            newccat.Filename = "EXCHANGE.json";
+            newccat.IsExchange = 1;
+            foreach (Currency currency in TraderPlusGeneralConfig.Currencies)
+            {
+                foreach (string c in currency.CurrenciesNames)
+                {
+                    marketItem newitem = new marketItem() 
+                    { 
+                        ClassName = c.ToLower(),
+                        MaxPriceThreshold = currency.Value,
+                        MinPriceThreshold = currency.Value,
+                        MaxStockThreshold = 1,
+                        MinStockThreshold = 1 
+                    };
+                    checklist.Add(newitem);
+                    newccat.Items.Add(newitem);
+                }
+            }
+            MarketCats.CatList.Add(newccat);
+
+            foreach (Tradercategory cat in TraderPlusPriceConfig.TraderCategories)
+            {
+                Categories newcat = MarketCats.GetCatFromDisplayName(cat.CategoryName);
+                if (newcat == null)
+                {
+                    newcat = new Categories();
+                    newcat.DisplayName = cat.CategoryName;
+                    newcat.Filename = ReplaceInvalidChars(newcat.DisplayName) + ".json";
+                    newcat.Filename = newcat.Filename.Replace(" ", "_");
+                    newcat.Filename = newcat.Filename.ToUpper();
+                }
+                foreach (ItemProducts item in cat.itemProducts)
+                {
+                    marketItem newitem = new marketItem();
+                    //expansion classname
+                    newitem.ClassName = item.Classname.ToLower();
+                    if (TraderPlusVehiclesConfig.VehiclesParts.Any(x => x.VehicleName.ToLower() == newitem.ClassName))
+                    {
+                        Vehiclespart v = TraderPlusVehiclesConfig.VehiclesParts.FirstOrDefault(x => x.VehicleName.ToLower() == newitem.ClassName);
+                        foreach (string Part in v.VehicleParts)
+                        {
+                            newitem.SpawnAttachments.Add(Part.ToLower());
+                        }
+                    }
+                    //expansion max/min price and sell price percent
+                    if(item.BuyPrice == -1)
+                    {
+                        newitem.MaxPriceThreshold = (int)item.Sellprice;
+                        newitem.MinPriceThreshold = (int)item.Sellprice;
+                        newitem.SellPricePercent = 100;
+                    }
+                    else
+                    {
+                        newitem.MaxPriceThreshold = item.BuyPrice;
+                        newitem.MinPriceThreshold = (int)(((float)item.BuyPrice / 100) * item.Coefficient);
+                        if(item.Sellprice < 1)
+                        {
+                            newitem.SellPricePercent = (int)(item.Sellprice * 100);
+                            if (newitem.SellPricePercent == -100)
+                                newitem.SellPricePercent = 100;
+                        }
+                        else
+                        {
+                            int newsellprice = (int)((item.Sellprice / (float)newitem.MaxPriceThreshold) * 100);
+                            newitem.SellPricePercent = newsellprice;
+                        }
+                    }
+                    //expansion max and min stock
+                    if (item.MaxStock == -1)
+                    {
+                        newitem.MaxStockThreshold = 1;
+                    }
+                    else
+                    {
+                        newitem.MaxStockThreshold = item.MaxStock;
+                    }
+                    newitem.MinStockThreshold = 1;
+                    //exansion quantity
+                    if (item.TradeQuantity <= 1)
+                    {
+                        newitem.QuantityPercent = (int)(item.TradeQuantity * 100);
+                        if (newitem.QuantityPercent == 100)
+                            newitem.QuantityPercent = -1;
+                    }
+                    else
+                    {
+                        newitem.QuantityPercent = -1;
+                    }
+
+                    if (newitem.MaxPriceThreshold < newitem.MinPriceThreshold)
+                        newitem.MinPriceThreshold = newitem.MaxPriceThreshold;
+                    
+                    if (newitem.MaxStockThreshold < newitem.MinStockThreshold)
+                        newitem.MinStockThreshold = newitem.MaxStockThreshold;
+
+
+                    marketItem checkitem = checklist.FirstOrDefault(x => x.ClassName == newitem.ClassName);
+                    //if (!checklist.Any(x => x.ClassName == newitem.ClassName))
+                    
+                    if (checkitem == null)
+                    {
+                        checklist.Add(newitem);
+                        newcat.Items.Add(newitem);
+                    }
+                    else
+                    {
+                        sb.AppendLine(newitem.ClassName + " is allready in " + MarketCats.GetCatNameFromItemName(newitem.ClassName) + "\n will not be added to " + newcat.DisplayName + "\n");
+                    }
+                }
+                MarketCats.CatList.Add(newcat);
+                
+            }
+
+
+            if (sb.Length != 0)
+                MessageBox.Show(sb.ToString());
+
+            
+            Traders exchangetrader = new Traders("Exchange");
+            exchangetrader.DisplayName = "#STR_EXPANSION_MARKET_TRADER_EXCHANGE";
+            exchangetrader.Filename = "EXCHANGE";
+            foreach (Currency currency in TraderPlusGeneralConfig.Currencies)
+            {
+                foreach (string c in currency.CurrenciesNames)
+                {
+                    exchangetrader.Currencies.Add(c);
+                }
+            }
+            exchangetrader.Categories.Add("EXCHANGE");
+            traders.Traderlist.Add(exchangetrader);
+
+            foreach(Trader trader in TraderPlusGeneralConfig.Traders)
+            {
+                Traders newtrader = new Traders(trader.Role);
+                newtrader.Filename = trader.Role.Replace(" ", "_").ToUpper();
+                IDs newid = TraderPlusIDsConfig.getTraderbyID(trader.Id);
+
+                foreach (string CurrenciesAccepted in  newid.CurrenciesAccepted)
+                {
+                    newtrader.Currencies.Add(CurrenciesAccepted);
+                }
+                foreach (string cats in newid.Categories)
+                {
+                    newtrader.Categories.Add(cats.Replace(" ", "_").ToUpper());
+                }
+                traders.Traderlist.Add(newtrader);
+
+                Tradermap newmap = new Tradermap();
+                newmap.NPCName = "ExpansionTrader" + trader.Name.Split('_')[1];
+                newmap.NPCTrade = trader.Role.Replace(" ", "_").ToUpper();
+                newmap.position = new Vec3(new string[] {trader.Position[0].ToString(), trader.Position[2].ToString(), trader.Position[2].ToString() });
+                newmap.roattions = new Vec3(new string[] { trader.Orientation[0].ToString(), trader.Orientation[2].ToString(), trader.Orientation[2].ToString() });
+                newmap.Attachments = new BindingList<string>(trader.Clothes.ToList());
+                maps.maps.Add(newmap);
+            }
+
+            zone.NewTraderZone("WORLD", currentproject.MapSize, false);
+
+            string ExpansionPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod_Market_Convert_from_TraderPlus";
+            if (!Directory.Exists(ExpansionPath))
+            {
+                Directory.CreateDirectory(ExpansionPath);
+            }
+            else
+            {
+                Directory.Delete(ExpansionPath);
+;            }
+            foreach (Traders trader in traders.Traderlist)
+            {
+                Directory.CreateDirectory(ExpansionPath + "\\Traders");
+                string traderFilename = ExpansionPath + "\\Traders\\" + trader.Filename + ".json";
+                var options = new JsonSerializerOptions();
+                options.WriteIndented = true;
+                options.Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping;
+                string jsonString = JsonSerializer.Serialize(trader, options);
+                File.WriteAllText(traderFilename, jsonString);
+            }
+            foreach (Categories cat in MarketCats.CatList)
+            {
+                Directory.CreateDirectory(ExpansionPath + "\\Market");
+                string catFilename = ExpansionPath + "\\Market\\" + cat.Filename;
+                var options = new JsonSerializerOptions();
+                options.WriteIndented = true;
+                options.Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping;
+                string jsonString = JsonSerializer.Serialize(cat, options);
+                File.WriteAllText(catFilename, jsonString);
+            }
+
+            foreach (Zones zones in zone.ZoneList)
+            {
+                Directory.CreateDirectory(ExpansionPath + "\\traderzones");
+                string ZoneFilename = ExpansionPath + "\\traderzones\\" + zones.Filename + ".json";
+                var options = new JsonSerializerOptions();
+                options.WriteIndented = true;
+                options.Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping;
+                string jsonString = JsonSerializer.Serialize(zones, options);
+                File.WriteAllText(ZoneFilename, jsonString);
+            }
+
+            maps.TradermapsPath = ExpansionPath;
+            foreach(Tradermap map in maps.maps)
+            {
+                map.Filename = ExpansionPath + "\\TraderMaps.map";
+            }
+            maps.savefiles();
+            MessageBox.Show("Convertion Complete...\nfiles stored in folder called\nExpansionMod_Market_Convert_from_TraderPlus\nWithin the project profiles folder.");
+        }
+        public string ReplaceInvalidChars(string filename)
+        {
+            return string.Join("_", filename.Split(Path.GetInvalidFileNameChars()));
+        }
     }
 }

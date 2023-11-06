@@ -983,6 +983,7 @@ namespace DayZeEditor
             this.ExplosionTimeNUD = new System.Windows.Forms.NumericUpDown();
             this.EnableExplosiveWhitelistCB = new System.Windows.Forms.CheckBox();
             this.SafeZoneSettingsTabPage = new System.Windows.Forms.TabPage();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.label19 = new System.Windows.Forms.Label();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -1014,6 +1015,8 @@ namespace DayZeEditor
             this.numericUpDown21 = new System.Windows.Forms.NumericUpDown();
             this.darkLabel46 = new DarkUI.Controls.DarkLabel();
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.numericUpDown45 = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel294 = new DarkUI.Controls.DarkLabel();
             this.listBox35 = new System.Windows.Forms.ListBox();
             this.numericUpDown41 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown42 = new System.Windows.Forms.NumericUpDown();
@@ -1362,9 +1365,6 @@ namespace DayZeEditor
             this.addNewSubMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeSubMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.numericUpDown45 = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel294 = new DarkUI.Controls.DarkLabel();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -1645,6 +1645,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown21)).BeginInit();
             this.tabPage8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown45)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown41)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown42)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown43)).BeginInit();
@@ -1734,7 +1735,6 @@ namespace DayZeEditor
             this.darkToolStrip22.SuspendLayout();
             this.darkToolStrip26.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown45)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -2056,10 +2056,15 @@ namespace DayZeEditor
             this.numericUpDown7.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown7.Location = new System.Drawing.Point(669, 62);
             this.numericUpDown7.Maximum = new decimal(new int[] {
-            1000,
+            2147483647,
             0,
             0,
             0});
+            this.numericUpDown7.Minimum = new decimal(new int[] {
+            2147483647,
+            0,
+            0,
+            -2147483648});
             this.numericUpDown7.Name = "numericUpDown7";
             this.numericUpDown7.Size = new System.Drawing.Size(120, 20);
             this.numericUpDown7.TabIndex = 68;
@@ -2754,12 +2759,12 @@ namespace DayZeEditor
             this.numericUpDown10.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown10.Location = new System.Drawing.Point(327, 117);
             this.numericUpDown10.Maximum = new decimal(new int[] {
-            1000,
+            2147483647,
             0,
             0,
             0});
             this.numericUpDown10.Minimum = new decimal(new int[] {
-            1000,
+            2147483647,
             0,
             0,
             -2147483648});
@@ -14185,6 +14190,20 @@ namespace DayZeEditor
             this.SafeZoneSettingsTabPage.TabIndex = 4;
             this.SafeZoneSettingsTabPage.Text = "Safe Zone Settings";
             // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.ForeColor = System.Drawing.SystemColors.Control;
+            this.radioButton3.Location = new System.Drawing.Point(715, 9);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(95, 17);
+            this.radioButton3.TabIndex = 129;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Tag = "Cylinder";
+            this.radioButton3.Text = "Cylinder Zones";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.Zones_CheckedChanged);
+            // 
             // label19
             // 
             this.label19.AutoSize = true;
@@ -14631,6 +14650,38 @@ namespace DayZeEditor
             this.tabPage8.Size = new System.Drawing.Size(293, 372);
             this.tabPage8.TabIndex = 2;
             this.tabPage8.Text = "Cylinder";
+            // 
+            // numericUpDown45
+            // 
+            this.numericUpDown45.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown45.DecimalPlaces = 3;
+            this.numericUpDown45.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericUpDown45.Location = new System.Drawing.Point(78, 339);
+            this.numericUpDown45.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.numericUpDown45.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown45.Name = "numericUpDown45";
+            this.numericUpDown45.Size = new System.Drawing.Size(71, 20);
+            this.numericUpDown45.TabIndex = 120;
+            this.numericUpDown45.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown45.ValueChanged += new System.EventHandler(this.numericUpDown45_ValueChanged);
+            // 
+            // darkLabel294
+            // 
+            this.darkLabel294.AutoSize = true;
+            this.darkLabel294.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel294.Location = new System.Drawing.Point(7, 341);
+            this.darkLabel294.Name = "darkLabel294";
+            this.darkLabel294.Size = new System.Drawing.Size(38, 13);
+            this.darkLabel294.TabIndex = 121;
+            this.darkLabel294.Text = "Height";
             // 
             // listBox35
             // 
@@ -19134,52 +19185,6 @@ namespace DayZeEditor
             this.removeSubMenuCategoryToolStripMenuItem.Text = "Remove Sub Menu Category";
             this.removeSubMenuCategoryToolStripMenuItem.Click += new System.EventHandler(this.removeSubMenuCategoryToolStripMenuItem_Click);
             // 
-            // numericUpDown45
-            // 
-            this.numericUpDown45.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown45.DecimalPlaces = 3;
-            this.numericUpDown45.ForeColor = System.Drawing.SystemColors.Control;
-            this.numericUpDown45.Location = new System.Drawing.Point(78, 339);
-            this.numericUpDown45.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.numericUpDown45.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown45.Name = "numericUpDown45";
-            this.numericUpDown45.Size = new System.Drawing.Size(71, 20);
-            this.numericUpDown45.TabIndex = 120;
-            this.numericUpDown45.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown45.ValueChanged += new System.EventHandler(this.numericUpDown45_ValueChanged);
-            // 
-            // darkLabel294
-            // 
-            this.darkLabel294.AutoSize = true;
-            this.darkLabel294.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel294.Location = new System.Drawing.Point(7, 341);
-            this.darkLabel294.Name = "darkLabel294";
-            this.darkLabel294.Size = new System.Drawing.Size(38, 13);
-            this.darkLabel294.TabIndex = 121;
-            this.darkLabel294.Text = "Height";
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.ForeColor = System.Drawing.SystemColors.Control;
-            this.radioButton3.Location = new System.Drawing.Point(715, 9);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(95, 17);
-            this.radioButton3.TabIndex = 129;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Tag = "Cylinder";
-            this.radioButton3.Text = "Cylinder Zones";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.CheckedChanged += new System.EventHandler(this.Zones_CheckedChanged);
-            // 
             // ExpansionSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -19554,6 +19559,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown21)).EndInit();
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown45)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown41)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown42)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown43)).EndInit();
@@ -19667,7 +19673,6 @@ namespace DayZeEditor
             this.darkToolStrip26.ResumeLayout(false);
             this.darkToolStrip26.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown45)).EndInit();
             this.ResumeLayout(false);
 
         }

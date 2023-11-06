@@ -2606,7 +2606,8 @@ namespace DayZeEditor
             {
                 int centerX = (int)(Math.Round(zones.Position[0], 0) * scalevalue);
                 int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(zones.Position[2], 0) * scalevalue);
-                int radius = ((int)zones.Radius / (currentproject.MapSize / 512)) * TraderZoneMapScale;
+                //int radius = ((int)zones.Radius / (currentproject.MapSize / 512)) * TraderZoneMapScale;
+                int radius = (int)((float)zones.Radius * scalevalue);
                 Point center = new Point(centerX, centerY);
                 Pen pen = new Pen(Color.Red);
                 if (currentZone.Filename == zones.Filename)

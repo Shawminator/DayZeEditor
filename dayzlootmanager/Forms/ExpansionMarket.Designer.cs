@@ -31,9 +31,9 @@ namespace DayZeEditor
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExpansionMarket));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.darkToolStrip21 = new DarkUI.Controls.DarkToolStrip2();
             this.SaveFileButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -77,6 +77,10 @@ namespace DayZeEditor
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.SZVehicleParkingTicketFineNUD = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.MaxSZVehicleParkingTimeNUD = new System.Windows.Forms.NumericUpDown();
             this.SellPricePercentNUD = new System.Windows.Forms.NumericUpDown();
             this.darkButton30 = new DarkUI.Controls.DarkButton();
             this.darkButton31 = new DarkUI.Controls.DarkButton();
@@ -395,10 +399,6 @@ namespace DayZeEditor
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
-            this.label13 = new System.Windows.Forms.Label();
-            this.MaxSZVehicleParkingTimeNUD = new System.Windows.Forms.NumericUpDown();
-            this.label14 = new System.Windows.Forms.Label();
-            this.SZVehicleParkingTicketFineNUD = new System.Windows.Forms.NumericUpDown();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -406,6 +406,8 @@ namespace DayZeEditor
             this.tabPage9.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SZVehicleParkingTicketFineNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxSZVehicleParkingTimeNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SellPricePercentNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxLargeVehicleDistanceToTraderNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxVehicleDistanceToTraderNUD)).BeginInit();
@@ -515,8 +517,6 @@ namespace DayZeEditor
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.darkToolStrip22.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MaxSZVehicleParkingTimeNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SZVehicleParkingTicketFineNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -1014,6 +1014,57 @@ namespace DayZeEditor
             this.groupBox7.TabIndex = 9;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "General Settings";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 406);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(154, 13);
+            this.label14.TabIndex = 102;
+            this.label14.Text = "SZ Vehicle Parking Ticket Fine";
+            // 
+            // SZVehicleParkingTicketFineNUD
+            // 
+            this.SZVehicleParkingTicketFineNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SZVehicleParkingTicketFineNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SZVehicleParkingTicketFineNUD.Location = new System.Drawing.Point(6, 422);
+            this.SZVehicleParkingTicketFineNUD.Maximum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            0});
+            this.SZVehicleParkingTicketFineNUD.Name = "SZVehicleParkingTicketFineNUD";
+            this.SZVehicleParkingTicketFineNUD.Size = new System.Drawing.Size(120, 20);
+            this.SZVehicleParkingTicketFineNUD.TabIndex = 101;
+            this.SZVehicleParkingTicketFineNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SZVehicleParkingTicketFineNUD.ValueChanged += new System.EventHandler(this.SZVehicleParkingTicketFineNUD_ValueChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 366);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(147, 13);
+            this.label13.TabIndex = 100;
+            this.label13.Text = "Max SZ Vehicle Parking Time";
+            // 
+            // MaxSZVehicleParkingTimeNUD
+            // 
+            this.MaxSZVehicleParkingTimeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MaxSZVehicleParkingTimeNUD.DecimalPlaces = 1;
+            this.MaxSZVehicleParkingTimeNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.MaxSZVehicleParkingTimeNUD.Location = new System.Drawing.Point(6, 383);
+            this.MaxSZVehicleParkingTimeNUD.Maximum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            0});
+            this.MaxSZVehicleParkingTimeNUD.Name = "MaxSZVehicleParkingTimeNUD";
+            this.MaxSZVehicleParkingTimeNUD.Size = new System.Drawing.Size(120, 20);
+            this.MaxSZVehicleParkingTimeNUD.TabIndex = 99;
+            this.MaxSZVehicleParkingTimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MaxSZVehicleParkingTimeNUD.ValueChanged += new System.EventHandler(this.MaxSZVehicleParkingTimeNUD_ValueChanged);
             // 
             // SellPricePercentNUD
             // 
@@ -3573,34 +3624,34 @@ namespace DayZeEditor
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(9, 246);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Size = new System.Drawing.Size(518, 356);
             this.dataGridView1.TabIndex = 87;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
@@ -5152,57 +5203,6 @@ namespace DayZeEditor
             this.toolStripButton6.Text = "Market Items";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 366);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(147, 13);
-            this.label13.TabIndex = 100;
-            this.label13.Text = "Max SZ Vehicle Parking Time";
-            // 
-            // MaxSZVehicleParkingTimeNUD
-            // 
-            this.MaxSZVehicleParkingTimeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.MaxSZVehicleParkingTimeNUD.DecimalPlaces = 1;
-            this.MaxSZVehicleParkingTimeNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.MaxSZVehicleParkingTimeNUD.Location = new System.Drawing.Point(6, 383);
-            this.MaxSZVehicleParkingTimeNUD.Maximum = new decimal(new int[] {
-            -727379969,
-            232,
-            0,
-            0});
-            this.MaxSZVehicleParkingTimeNUD.Name = "MaxSZVehicleParkingTimeNUD";
-            this.MaxSZVehicleParkingTimeNUD.Size = new System.Drawing.Size(120, 20);
-            this.MaxSZVehicleParkingTimeNUD.TabIndex = 99;
-            this.MaxSZVehicleParkingTimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.MaxSZVehicleParkingTimeNUD.ValueChanged += new System.EventHandler(this.MaxSZVehicleParkingTimeNUD_ValueChanged);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 406);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(154, 13);
-            this.label14.TabIndex = 102;
-            this.label14.Text = "SZ Vehicle Parking Ticket Fine";
-            // 
-            // SZVehicleParkingTicketFineNUD
-            // 
-            this.SZVehicleParkingTicketFineNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.SZVehicleParkingTicketFineNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.SZVehicleParkingTicketFineNUD.Location = new System.Drawing.Point(6, 422);
-            this.SZVehicleParkingTicketFineNUD.Maximum = new decimal(new int[] {
-            -727379969,
-            232,
-            0,
-            0});
-            this.SZVehicleParkingTicketFineNUD.Name = "SZVehicleParkingTicketFineNUD";
-            this.SZVehicleParkingTicketFineNUD.Size = new System.Drawing.Size(120, 20);
-            this.SZVehicleParkingTicketFineNUD.TabIndex = 101;
-            this.SZVehicleParkingTicketFineNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.SZVehicleParkingTicketFineNUD.ValueChanged += new System.EventHandler(this.SZVehicleParkingTicketFineNUD_ValueChanged);
-            // 
             // ExpansionMarket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5225,6 +5225,8 @@ namespace DayZeEditor
             this.flowLayoutPanel1.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SZVehicleParkingTicketFineNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxSZVehicleParkingTimeNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SellPricePercentNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxLargeVehicleDistanceToTraderNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxVehicleDistanceToTraderNUD)).EndInit();
@@ -5348,8 +5350,6 @@ namespace DayZeEditor
             this.groupBox3.ResumeLayout(false);
             this.darkToolStrip22.ResumeLayout(false);
             this.darkToolStrip22.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MaxSZVehicleParkingTimeNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SZVehicleParkingTicketFineNUD)).EndInit();
             this.ResumeLayout(false);
 
         }

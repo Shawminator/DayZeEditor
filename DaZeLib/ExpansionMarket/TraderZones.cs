@@ -19,7 +19,10 @@ namespace DayZeLib
         public BindingList<Zones> ZoneList { get; set; }
         public string ZonesPath { get; set; }
 
-
+        public TraderZones()
+        {
+            ZoneList = new BindingList<Zones>();
+        }
         public TraderZones(string Path)
         {
             ZoneList = new BindingList<Zones>();
@@ -63,11 +66,12 @@ namespace DayZeLib
                 z.ConvertlisttoDict();
             }
         }
-        public void NewTraderZone(string zonename, int mapsize)
+        public void NewTraderZone(string zonename, int mapsize, bool showmessage = true)
         {
             string newZonename = zonename.ToUpper();
             Zones z = new Zones(newZonename);
             z.Position = new float[] { mapsize/2, 0, mapsize/2 };
+            z.Radius = mapsize / 2;
             z.isDirty = true;
             z.Filename = newZonename;
             if (ZoneList.Any(x => x.Filename == zonename))
@@ -78,8 +82,11 @@ namespace DayZeLib
             else
             {
                 ZoneList.Add(z);
-                z.isDirty = true;
-                MessageBox.Show(zonename = " added to list of Zones....");
+                if (showmessage == true)
+                {
+                    z.isDirty = true;
+                    MessageBox.Show(zonename = " added to list of Zones....");
+                }
             }
         }
         public void removeZone(Zones removeitem)
@@ -108,6 +115,18 @@ namespace DayZeLib
         public BindingList<StockItem> StockItems {get;set;}
         [JsonIgnore]
         public bool isDirty = false;
+
+        public Zones()
+        {
+            m_Version = TraderZones.CurrentVersion;
+            m_DisplayName = "World Zone";
+            Position = new float[] { 0, 0, 0 };
+            Radius = 1000;
+            BuyPricePercent = 100;
+            SellPricePercent = -1;
+            Stock = new Dictionary<string, int>();
+            StockItems = new BindingList<StockItem>();
+        }
 
         public Zones (string filename)
         {

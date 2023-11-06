@@ -181,6 +181,10 @@ namespace DayZeLib
                 t.TraderCategoryList = traderPlusIDsConfig.getTraderbyID(t.Id);
             }
         }
+        public Trader GetTraderbyID(int ID)
+        {
+            return Traders.FirstOrDefault(x => x.Id == ID);
+        }
         public void SaveIDS(TraderPlusIDsConfig traderPlusIDsConfig)
         {
             traderPlusIDsConfig.IDs = new BindingList<IDs>();

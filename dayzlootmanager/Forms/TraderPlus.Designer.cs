@@ -38,6 +38,7 @@ namespace DayZeEditor
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
@@ -241,14 +242,6 @@ namespace DayZeEditor
             this.darkButton33 = new DarkUI.Controls.DarkButton();
             this.darkLabel18 = new DarkUI.Controls.DarkLabel();
             this.TraderPlusTradersLB = new System.Windows.Forms.ListBox();
-            this.AvailalbeLicneseGrouBox = new System.Windows.Forms.GroupBox();
-            this.darkButton47 = new DarkUI.Controls.DarkButton();
-            this.darkButton48 = new DarkUI.Controls.DarkButton();
-            this.AvailableLicenseLB = new System.Windows.Forms.ListBox();
-            this.AddFromCategoryGroupBox = new System.Windows.Forms.GroupBox();
-            this.darkButton37 = new DarkUI.Controls.DarkButton();
-            this.darkButton22 = new DarkUI.Controls.DarkButton();
-            this.addfromCatLB = new System.Windows.Forms.ListBox();
             this.TraderInfoGroupBox = new System.Windows.Forms.GroupBox();
             this.TPCategoriesLB = new System.Windows.Forms.ListBox();
             this.darkButton24 = new DarkUI.Controls.DarkButton();
@@ -266,11 +259,15 @@ namespace DayZeEditor
             this.darkButton49 = new DarkUI.Controls.DarkButton();
             this.darkButton50 = new DarkUI.Controls.DarkButton();
             this.AvailabeCurrenciesLB = new System.Windows.Forms.ListBox();
+            this.AvailalbeLicneseGrouBox = new System.Windows.Forms.GroupBox();
+            this.darkButton47 = new DarkUI.Controls.DarkButton();
+            this.darkButton48 = new DarkUI.Controls.DarkButton();
+            this.AvailableLicenseLB = new System.Windows.Forms.ListBox();
+            this.AddFromCategoryGroupBox = new System.Windows.Forms.GroupBox();
+            this.darkButton37 = new DarkUI.Controls.DarkButton();
+            this.darkButton22 = new DarkUI.Controls.DarkButton();
+            this.addfromCatLB = new System.Windows.Forms.ListBox();
             this.MoveToCatGroupBox = new System.Windows.Forms.TabPage();
-            this.MoveToCategoryGroupBox = new System.Windows.Forms.GroupBox();
-            this.darkButton59 = new DarkUI.Controls.DarkButton();
-            this.darkButton57 = new DarkUI.Controls.DarkButton();
-            this.MoveToCatLB = new System.Windows.Forms.ListBox();
             this.ItemInfoGroupBox = new System.Windows.Forms.GroupBox();
             this.darkLabel29 = new DarkUI.Controls.DarkLabel();
             this.darkLabel28 = new DarkUI.Controls.DarkLabel();
@@ -307,6 +304,10 @@ namespace DayZeEditor
             this.TraderCategoriesLB = new System.Windows.Forms.ListBox();
             this.EnableAutoDestockAtRestartCB = new System.Windows.Forms.CheckBox();
             this.EnableAutoCalculationCB = new System.Windows.Forms.CheckBox();
+            this.MoveToCategoryGroupBox = new System.Windows.Forms.GroupBox();
+            this.darkButton59 = new DarkUI.Controls.DarkButton();
+            this.darkButton57 = new DarkUI.Controls.DarkButton();
+            this.MoveToCatLB = new System.Windows.Forms.ListBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
@@ -423,12 +424,11 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.TraderNPCPositionZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TraderNPCPositionX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TraderNPCPositionY)).BeginInit();
-            this.AvailalbeLicneseGrouBox.SuspendLayout();
-            this.AddFromCategoryGroupBox.SuspendLayout();
             this.TraderInfoGroupBox.SuspendLayout();
             this.AvailablecurrenciesGroupBox.SuspendLayout();
+            this.AvailalbeLicneseGrouBox.SuspendLayout();
+            this.AddFromCategoryGroupBox.SuspendLayout();
             this.MoveToCatGroupBox.SuspendLayout();
-            this.MoveToCategoryGroupBox.SuspendLayout();
             this.ItemInfoGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DestockCoeffTB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CoefficientTB)).BeginInit();
@@ -436,6 +436,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.MaxStockNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BuyPriceNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SellpriceNUD)).BeginInit();
+            this.MoveToCategoryGroupBox.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage5.SuspendLayout();
@@ -544,6 +545,7 @@ namespace DayZeEditor
             this.toolStripMenuItem3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.toolStripMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem6,
+            this.toolStripMenuItem9,
             this.toolStripMenuItem4,
             this.toolStripMenuItem8,
             this.toolStripMenuItem7,
@@ -561,6 +563,15 @@ namespace DayZeEditor
             this.toolStripMenuItem6.Size = new System.Drawing.Size(230, 22);
             this.toolStripMenuItem6.Text = "Import from expnsion Market";
             this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
+            // 
+            // toolStripMenuItem9
+            // 
+            this.toolStripMenuItem9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripMenuItem9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(230, 22);
+            this.toolStripMenuItem9.Text = "Export to Expansion Market";
+            this.toolStripMenuItem9.Click += new System.EventHandler(this.ExporttoexpansionMarket_Click);
             // 
             // toolStripMenuItem4
             // 
@@ -2829,10 +2840,10 @@ namespace DayZeEditor
             this.tabPage4.Controls.Add(this.darkButton33);
             this.tabPage4.Controls.Add(this.darkLabel18);
             this.tabPage4.Controls.Add(this.TraderPlusTradersLB);
-            this.tabPage4.Controls.Add(this.AvailalbeLicneseGrouBox);
-            this.tabPage4.Controls.Add(this.AddFromCategoryGroupBox);
             this.tabPage4.Controls.Add(this.TraderInfoGroupBox);
             this.tabPage4.Controls.Add(this.AvailablecurrenciesGroupBox);
+            this.tabPage4.Controls.Add(this.AvailalbeLicneseGrouBox);
+            this.tabPage4.Controls.Add(this.AddFromCategoryGroupBox);
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(1062, 693);
@@ -3176,112 +3187,6 @@ namespace DayZeEditor
             this.TraderPlusTradersLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.TraderPlusTradersLB.SelectedIndexChanged += new System.EventHandler(this.TraderPlusTradersLB_SelectedIndexChanged);
             // 
-            // AvailalbeLicneseGrouBox
-            // 
-            this.AvailalbeLicneseGrouBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.AvailalbeLicneseGrouBox.Controls.Add(this.darkButton47);
-            this.AvailalbeLicneseGrouBox.Controls.Add(this.darkButton48);
-            this.AvailalbeLicneseGrouBox.Controls.Add(this.AvailableLicenseLB);
-            this.AvailalbeLicneseGrouBox.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.AvailalbeLicneseGrouBox.Location = new System.Drawing.Point(445, 6);
-            this.AvailalbeLicneseGrouBox.Name = "AvailalbeLicneseGrouBox";
-            this.AvailalbeLicneseGrouBox.Size = new System.Drawing.Size(294, 439);
-            this.AvailalbeLicneseGrouBox.TabIndex = 150;
-            this.AvailalbeLicneseGrouBox.TabStop = false;
-            this.AvailalbeLicneseGrouBox.Text = "Available Licenses";
-            this.AvailalbeLicneseGrouBox.Visible = false;
-            // 
-            // darkButton47
-            // 
-            this.darkButton47.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton47.Location = new System.Drawing.Point(159, 410);
-            this.darkButton47.Name = "darkButton47";
-            this.darkButton47.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton47.Size = new System.Drawing.Size(129, 23);
-            this.darkButton47.TabIndex = 2;
-            this.darkButton47.Text = "Cancel";
-            this.darkButton47.Click += new System.EventHandler(this.darkButton47_Click);
-            // 
-            // darkButton48
-            // 
-            this.darkButton48.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton48.Location = new System.Drawing.Point(6, 411);
-            this.darkButton48.Name = "darkButton48";
-            this.darkButton48.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton48.Size = new System.Drawing.Size(129, 23);
-            this.darkButton48.TabIndex = 1;
-            this.darkButton48.Text = "Add Selected";
-            this.darkButton48.Click += new System.EventHandler(this.darkButton48_Click);
-            // 
-            // AvailableLicenseLB
-            // 
-            this.AvailableLicenseLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.AvailableLicenseLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.AvailableLicenseLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.AvailableLicenseLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.AvailableLicenseLB.FormattingEnabled = true;
-            this.AvailableLicenseLB.Location = new System.Drawing.Point(7, 18);
-            this.AvailableLicenseLB.Name = "AvailableLicenseLB";
-            this.AvailableLicenseLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.AvailableLicenseLB.Size = new System.Drawing.Size(281, 381);
-            this.AvailableLicenseLB.TabIndex = 0;
-            this.AvailableLicenseLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            // 
-            // AddFromCategoryGroupBox
-            // 
-            this.AddFromCategoryGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.AddFromCategoryGroupBox.Controls.Add(this.darkButton37);
-            this.AddFromCategoryGroupBox.Controls.Add(this.darkButton22);
-            this.AddFromCategoryGroupBox.Controls.Add(this.addfromCatLB);
-            this.AddFromCategoryGroupBox.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.AddFromCategoryGroupBox.Location = new System.Drawing.Point(445, 6);
-            this.AddFromCategoryGroupBox.Name = "AddFromCategoryGroupBox";
-            this.AddFromCategoryGroupBox.Size = new System.Drawing.Size(294, 439);
-            this.AddFromCategoryGroupBox.TabIndex = 149;
-            this.AddFromCategoryGroupBox.TabStop = false;
-            this.AddFromCategoryGroupBox.Text = "Add From Category";
-            this.AddFromCategoryGroupBox.Visible = false;
-            // 
-            // darkButton37
-            // 
-            this.darkButton37.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton37.Location = new System.Drawing.Point(159, 410);
-            this.darkButton37.Name = "darkButton37";
-            this.darkButton37.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton37.Size = new System.Drawing.Size(129, 23);
-            this.darkButton37.TabIndex = 2;
-            this.darkButton37.Text = "Cancel";
-            this.darkButton37.Click += new System.EventHandler(this.darkButton37_Click);
-            // 
-            // darkButton22
-            // 
-            this.darkButton22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton22.Location = new System.Drawing.Point(6, 411);
-            this.darkButton22.Name = "darkButton22";
-            this.darkButton22.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton22.Size = new System.Drawing.Size(129, 23);
-            this.darkButton22.TabIndex = 1;
-            this.darkButton22.Text = "Add Selected";
-            this.darkButton22.Click += new System.EventHandler(this.darkButton22_Click);
-            // 
-            // addfromCatLB
-            // 
-            this.addfromCatLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.addfromCatLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.addfromCatLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.addfromCatLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.addfromCatLB.FormattingEnabled = true;
-            this.addfromCatLB.Location = new System.Drawing.Point(7, 18);
-            this.addfromCatLB.Name = "addfromCatLB";
-            this.addfromCatLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.addfromCatLB.Size = new System.Drawing.Size(281, 381);
-            this.addfromCatLB.TabIndex = 0;
-            this.addfromCatLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            // 
             // TraderInfoGroupBox
             // 
             this.TraderInfoGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -3493,10 +3398,115 @@ namespace DayZeEditor
             this.AvailabeCurrenciesLB.TabIndex = 0;
             this.AvailabeCurrenciesLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
+            // AvailalbeLicneseGrouBox
+            // 
+            this.AvailalbeLicneseGrouBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.AvailalbeLicneseGrouBox.Controls.Add(this.darkButton47);
+            this.AvailalbeLicneseGrouBox.Controls.Add(this.darkButton48);
+            this.AvailalbeLicneseGrouBox.Controls.Add(this.AvailableLicenseLB);
+            this.AvailalbeLicneseGrouBox.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.AvailalbeLicneseGrouBox.Location = new System.Drawing.Point(445, 6);
+            this.AvailalbeLicneseGrouBox.Name = "AvailalbeLicneseGrouBox";
+            this.AvailalbeLicneseGrouBox.Size = new System.Drawing.Size(294, 439);
+            this.AvailalbeLicneseGrouBox.TabIndex = 150;
+            this.AvailalbeLicneseGrouBox.TabStop = false;
+            this.AvailalbeLicneseGrouBox.Text = "Available Licenses";
+            this.AvailalbeLicneseGrouBox.Visible = false;
+            // 
+            // darkButton47
+            // 
+            this.darkButton47.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton47.Location = new System.Drawing.Point(159, 410);
+            this.darkButton47.Name = "darkButton47";
+            this.darkButton47.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton47.Size = new System.Drawing.Size(129, 23);
+            this.darkButton47.TabIndex = 2;
+            this.darkButton47.Text = "Cancel";
+            this.darkButton47.Click += new System.EventHandler(this.darkButton47_Click);
+            // 
+            // darkButton48
+            // 
+            this.darkButton48.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton48.Location = new System.Drawing.Point(6, 411);
+            this.darkButton48.Name = "darkButton48";
+            this.darkButton48.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton48.Size = new System.Drawing.Size(129, 23);
+            this.darkButton48.TabIndex = 1;
+            this.darkButton48.Text = "Add Selected";
+            this.darkButton48.Click += new System.EventHandler(this.darkButton48_Click);
+            // 
+            // AvailableLicenseLB
+            // 
+            this.AvailableLicenseLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.AvailableLicenseLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.AvailableLicenseLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.AvailableLicenseLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.AvailableLicenseLB.FormattingEnabled = true;
+            this.AvailableLicenseLB.Location = new System.Drawing.Point(7, 18);
+            this.AvailableLicenseLB.Name = "AvailableLicenseLB";
+            this.AvailableLicenseLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.AvailableLicenseLB.Size = new System.Drawing.Size(281, 381);
+            this.AvailableLicenseLB.TabIndex = 0;
+            this.AvailableLicenseLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            // 
+            // AddFromCategoryGroupBox
+            // 
+            this.AddFromCategoryGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddFromCategoryGroupBox.Controls.Add(this.darkButton37);
+            this.AddFromCategoryGroupBox.Controls.Add(this.darkButton22);
+            this.AddFromCategoryGroupBox.Controls.Add(this.addfromCatLB);
+            this.AddFromCategoryGroupBox.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.AddFromCategoryGroupBox.Location = new System.Drawing.Point(445, 6);
+            this.AddFromCategoryGroupBox.Name = "AddFromCategoryGroupBox";
+            this.AddFromCategoryGroupBox.Size = new System.Drawing.Size(294, 439);
+            this.AddFromCategoryGroupBox.TabIndex = 149;
+            this.AddFromCategoryGroupBox.TabStop = false;
+            this.AddFromCategoryGroupBox.Text = "Add From Category";
+            this.AddFromCategoryGroupBox.Visible = false;
+            // 
+            // darkButton37
+            // 
+            this.darkButton37.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton37.Location = new System.Drawing.Point(159, 410);
+            this.darkButton37.Name = "darkButton37";
+            this.darkButton37.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton37.Size = new System.Drawing.Size(129, 23);
+            this.darkButton37.TabIndex = 2;
+            this.darkButton37.Text = "Cancel";
+            this.darkButton37.Click += new System.EventHandler(this.darkButton37_Click);
+            // 
+            // darkButton22
+            // 
+            this.darkButton22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton22.Location = new System.Drawing.Point(6, 411);
+            this.darkButton22.Name = "darkButton22";
+            this.darkButton22.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton22.Size = new System.Drawing.Size(129, 23);
+            this.darkButton22.TabIndex = 1;
+            this.darkButton22.Text = "Add Selected";
+            this.darkButton22.Click += new System.EventHandler(this.darkButton22_Click);
+            // 
+            // addfromCatLB
+            // 
+            this.addfromCatLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.addfromCatLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.addfromCatLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.addfromCatLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.addfromCatLB.FormattingEnabled = true;
+            this.addfromCatLB.Location = new System.Drawing.Point(7, 18);
+            this.addfromCatLB.Name = "addfromCatLB";
+            this.addfromCatLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.addfromCatLB.Size = new System.Drawing.Size(281, 381);
+            this.addfromCatLB.TabIndex = 0;
+            this.addfromCatLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            // 
             // MoveToCatGroupBox
             // 
             this.MoveToCatGroupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.MoveToCatGroupBox.Controls.Add(this.MoveToCategoryGroupBox);
             this.MoveToCatGroupBox.Controls.Add(this.ItemInfoGroupBox);
             this.MoveToCatGroupBox.Controls.Add(this.darkButton55);
             this.MoveToCatGroupBox.Controls.Add(this.darkLabel56);
@@ -3512,63 +3522,12 @@ namespace DayZeEditor
             this.MoveToCatGroupBox.Controls.Add(this.TraderCategoriesLB);
             this.MoveToCatGroupBox.Controls.Add(this.EnableAutoDestockAtRestartCB);
             this.MoveToCatGroupBox.Controls.Add(this.EnableAutoCalculationCB);
+            this.MoveToCatGroupBox.Controls.Add(this.MoveToCategoryGroupBox);
             this.MoveToCatGroupBox.Location = new System.Drawing.Point(4, 25);
             this.MoveToCatGroupBox.Name = "MoveToCatGroupBox";
             this.MoveToCatGroupBox.Size = new System.Drawing.Size(1062, 693);
             this.MoveToCatGroupBox.TabIndex = 4;
             this.MoveToCatGroupBox.Text = "tabPage5";
-            // 
-            // MoveToCategoryGroupBox
-            // 
-            this.MoveToCategoryGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.MoveToCategoryGroupBox.Controls.Add(this.darkButton59);
-            this.MoveToCategoryGroupBox.Controls.Add(this.darkButton57);
-            this.MoveToCategoryGroupBox.Controls.Add(this.MoveToCatLB);
-            this.MoveToCategoryGroupBox.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.MoveToCategoryGroupBox.Location = new System.Drawing.Point(734, 17);
-            this.MoveToCategoryGroupBox.Name = "MoveToCategoryGroupBox";
-            this.MoveToCategoryGroupBox.Size = new System.Drawing.Size(294, 585);
-            this.MoveToCategoryGroupBox.TabIndex = 150;
-            this.MoveToCategoryGroupBox.TabStop = false;
-            this.MoveToCategoryGroupBox.Text = "Move To Category";
-            this.MoveToCategoryGroupBox.Visible = false;
-            // 
-            // darkButton59
-            // 
-            this.darkButton59.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton59.Location = new System.Drawing.Point(6, 530);
-            this.darkButton59.Name = "darkButton59";
-            this.darkButton59.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton59.Size = new System.Drawing.Size(282, 23);
-            this.darkButton59.TabIndex = 2;
-            this.darkButton59.Text = "Copy  to Selected";
-            this.darkButton59.Click += new System.EventHandler(this.darkButton59_Click);
-            // 
-            // darkButton57
-            // 
-            this.darkButton57.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton57.Location = new System.Drawing.Point(6, 557);
-            this.darkButton57.Name = "darkButton57";
-            this.darkButton57.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton57.Size = new System.Drawing.Size(282, 23);
-            this.darkButton57.TabIndex = 1;
-            this.darkButton57.Text = "Move  to Selected";
-            this.darkButton57.Click += new System.EventHandler(this.darkButton57_Click);
-            // 
-            // MoveToCatLB
-            // 
-            this.MoveToCatLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.MoveToCatLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.MoveToCatLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.MoveToCatLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.MoveToCatLB.FormattingEnabled = true;
-            this.MoveToCatLB.Location = new System.Drawing.Point(7, 26);
-            this.MoveToCatLB.Name = "MoveToCatLB";
-            this.MoveToCatLB.Size = new System.Drawing.Size(281, 498);
-            this.MoveToCatLB.TabIndex = 0;
-            this.MoveToCatLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
             // ItemInfoGroupBox
             // 
@@ -4029,6 +3988,58 @@ namespace DayZeEditor
             this.EnableAutoCalculationCB.Text = "Enable Auto Calculation";
             this.EnableAutoCalculationCB.UseVisualStyleBackColor = true;
             this.EnableAutoCalculationCB.CheckedChanged += new System.EventHandler(this.EnableAutoCalculationCB_CheckedChanged);
+            // 
+            // MoveToCategoryGroupBox
+            // 
+            this.MoveToCategoryGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.MoveToCategoryGroupBox.Controls.Add(this.darkButton59);
+            this.MoveToCategoryGroupBox.Controls.Add(this.darkButton57);
+            this.MoveToCategoryGroupBox.Controls.Add(this.MoveToCatLB);
+            this.MoveToCategoryGroupBox.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.MoveToCategoryGroupBox.Location = new System.Drawing.Point(734, 17);
+            this.MoveToCategoryGroupBox.Name = "MoveToCategoryGroupBox";
+            this.MoveToCategoryGroupBox.Size = new System.Drawing.Size(294, 585);
+            this.MoveToCategoryGroupBox.TabIndex = 150;
+            this.MoveToCategoryGroupBox.TabStop = false;
+            this.MoveToCategoryGroupBox.Text = "Move To Category";
+            this.MoveToCategoryGroupBox.Visible = false;
+            // 
+            // darkButton59
+            // 
+            this.darkButton59.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton59.Location = new System.Drawing.Point(6, 530);
+            this.darkButton59.Name = "darkButton59";
+            this.darkButton59.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton59.Size = new System.Drawing.Size(282, 23);
+            this.darkButton59.TabIndex = 2;
+            this.darkButton59.Text = "Copy  to Selected";
+            this.darkButton59.Click += new System.EventHandler(this.darkButton59_Click);
+            // 
+            // darkButton57
+            // 
+            this.darkButton57.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton57.Location = new System.Drawing.Point(6, 557);
+            this.darkButton57.Name = "darkButton57";
+            this.darkButton57.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton57.Size = new System.Drawing.Size(282, 23);
+            this.darkButton57.TabIndex = 1;
+            this.darkButton57.Text = "Move  to Selected";
+            this.darkButton57.Click += new System.EventHandler(this.darkButton57_Click);
+            // 
+            // MoveToCatLB
+            // 
+            this.MoveToCatLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.MoveToCatLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MoveToCatLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.MoveToCatLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.MoveToCatLB.FormattingEnabled = true;
+            this.MoveToCatLB.Location = new System.Drawing.Point(7, 26);
+            this.MoveToCatLB.Name = "MoveToCatLB";
+            this.MoveToCatLB.Size = new System.Drawing.Size(281, 498);
+            this.MoveToCatLB.TabIndex = 0;
+            this.MoveToCatLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
             // tabPage6
             // 
@@ -4951,14 +4962,13 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.TraderNPCPositionZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TraderNPCPositionX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TraderNPCPositionY)).EndInit();
-            this.AvailalbeLicneseGrouBox.ResumeLayout(false);
-            this.AddFromCategoryGroupBox.ResumeLayout(false);
             this.TraderInfoGroupBox.ResumeLayout(false);
             this.TraderInfoGroupBox.PerformLayout();
             this.AvailablecurrenciesGroupBox.ResumeLayout(false);
+            this.AvailalbeLicneseGrouBox.ResumeLayout(false);
+            this.AddFromCategoryGroupBox.ResumeLayout(false);
             this.MoveToCatGroupBox.ResumeLayout(false);
             this.MoveToCatGroupBox.PerformLayout();
-            this.MoveToCategoryGroupBox.ResumeLayout(false);
             this.ItemInfoGroupBox.ResumeLayout(false);
             this.ItemInfoGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DestockCoeffTB)).EndInit();
@@ -4967,6 +4977,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.MaxStockNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BuyPriceNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SellpriceNUD)).EndInit();
+            this.MoveToCategoryGroupBox.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
             this.tabControl2.ResumeLayout(false);
@@ -5341,5 +5352,6 @@ namespace DayZeEditor
         private System.Windows.Forms.NumericUpDown WornCoeffNUD;
         private System.Windows.Forms.Label label39;
         private DarkUI.Controls.DarkButton darkButton59;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
     }
 }

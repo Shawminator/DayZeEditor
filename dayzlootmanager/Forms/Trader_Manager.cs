@@ -646,10 +646,6 @@ namespace DayZeEditor
             MarketCategories MarketCats = new MarketCategories();
             foreach (DRJonesCategories cat in drjonestraderconfig.m_categories)
             {
-                if(cat.m_Trader_Categorys == "Vest Storage")
-                {
-                    string s = "";
-                }
                 //check if cat has been created allready
                 Categories newcat = MarketCats.GetCatFromDisplayName(cat.m_Trader_Categorys);
                 if (newcat == null)
@@ -688,11 +684,7 @@ namespace DayZeEditor
                     newitem.MinPriceThreshold = newitem.MaxPriceThreshold;
                     newitem.MaxStockThreshold = 1;
                     newitem.MinStockThreshold = 1;
-                    if (!checklist.Any(x => x.ClassName == newitem.ClassName))
-                    {
-                        checklist.Add(newitem);
-                        newcat.Items.Add(newitem);
-                    }
+                    
                 }
                 //if (newcat.Items.Count > 0)
                 MarketCats.CatList.Add(newcat);

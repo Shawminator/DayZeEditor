@@ -13,6 +13,10 @@ namespace DayZeLib
         public BindingList<Tradermap> maps = new BindingList<Tradermap>();
         public bool isDirty { get; set; }
 
+        public TraderModelMapping()
+        {
+            maps = new BindingList<Tradermap>();
+        }
         public TraderModelMapping(string pathname)
         {
             TradermapsPath = pathname;
@@ -137,6 +141,8 @@ namespace DayZeLib
 
         public Tradermap()
         {
+            Roamingpoints = new BindingList<Vec3>();
+            Attachments = new BindingList<string>();
 
         }
         public Tradermap(string[] array)

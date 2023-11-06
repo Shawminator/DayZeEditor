@@ -276,8 +276,8 @@ namespace DayZeLib
 
         [JsonIgnore]
         public string Filename { get; set; }
+        [JsonIgnore]
         public bool SortByDisplayName { get; internal set; }
-
         [JsonIgnore]
         public bool isDirty = false;
 
