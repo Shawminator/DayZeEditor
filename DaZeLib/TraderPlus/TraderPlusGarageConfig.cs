@@ -45,6 +45,34 @@ namespace DayZeLib
         public string TradeVehicleWarning { get; set; }
         public string TradeVehicleHasBeenDeleted { get; set; }
 
+        public TraderPlusGarageConfig()
+        {
+            Version = m_version;
+            UseGarageOnlyToTrade = 1;
+            VehicleMustHaveLock = 1;
+            SaveVehicleCargo = 1;
+            SaveVehicleHealth = 1;
+            SaveVehicleFuel = 1;
+            SavedVehicleInGarageForTradeInHour = 1;
+            MaxVehicleStored = 5;
+            ParkInCost = 0;
+            ParkOutCost = 0;
+            PayWithBankAccount = 0;
+            WhitelistedObjects = new BindingList<string>();
+            NPCs = new BindingList<Npc>();
+            ParkingNotAvailable = "The parking area is blocked!";
+            NotEnoughMoney = "You don't have enough money";
+            NotRightToPark = "You don't have the right to park this vehicle!";
+            CarHasMember = "Your vehicle still has a player inside!";
+            ParkInFail = "Your vehicle was not able to be stored correctly";
+            ParkInSuccess = "Your vehicle was successfully stored";
+            ParkOutFail = "Your vehicle was not able to retrieved!";
+            ParkOutSuccess = "Youre vehicle was retrieved successfully!";
+            MaxVehicleStoredReached = "Max number of vehicle reached!";
+            TradeVehicleWarning = "The vehicle has been stored for %1 hour; passed this point it will be lost so trade it or get it fast";
+            TradeVehicleHasBeenDeleted = "The vehicle stored for trade reached his inactivity and has been deleted!";
+        }
+
         public bool CheckVersion()
         {
             if (Version != m_version)

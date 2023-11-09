@@ -578,7 +578,6 @@ namespace DayZeEditor
         {
             saveMarketfiles();
         }
-
         private void saveMarketfiles()
         {
             List<string> midifiedfiles = new List<string>();
@@ -663,7 +662,6 @@ namespace DayZeEditor
             else
                 MessageBox.Show("No changes were made.", "Nothing Saved", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
-
         private void SaveMarketSettings(List<string> midifiedfiles = null, string SaveTime = null)
         {
             if (marketsettings.isDirty)
@@ -3823,8 +3821,113 @@ namespace DayZeEditor
                 }
             }
         }
+        private bool Checkifincat(ItemProducts item, Tradercategory tradercat)
+        {
+            if (tradercat.itemProducts.Any(x => x.Classname == item.Classname))
+            {
+                return true;
+            }
+            return false;
+        }
+        private bool Checkifincatlist(TraderPlusPriceConfig TraderPlusPriceConfig , Tradercategory tradercat)
+        {
+            if (TraderPlusPriceConfig.TraderCategories.Any(x => x.CategoryName == tradercat.CategoryName))
+            {
+                return true;
+            }
+            return false;
+        }
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            string TraderplusPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\TraderPlus_Market_Convert_from_ExpansionMarket";
+            if (!Directory.Exists(TraderplusPath))
+            {
+                Directory.CreateDirectory(TraderplusPath);
+            }
+            else
+            {
+                Directory.Delete(TraderplusPath);
+            }
+            string TraderPlusBankingConfigPat = TraderplusPath + "\\TraderPlusBankingConfig.json";
+            TraderPlusBankingConfig TraderPlusBankingConfig = new TraderPlusBankingConfig();
+            string TraderPlusGarageConfigPath = TraderplusPath + "\\TraderPlusGarageConfig.json";
+            TraderPlusGarageConfig TraderPlusGarageConfig = new TraderPlusGarageConfig();
+            string TraderPlusGeneralConfigPath = TraderplusPath + "\\TraderPlusGeneralConfig.json";
+            TraderPlusGeneralConfig TraderPlusGeneralConfig = new TraderPlusGeneralConfig();
+            string TraderPlusVehiclesConfigPath = TraderplusPath + "\\TraderPlusVehiclesConfig.json";
+            TraderPlusVehiclesConfig TraderPlusVehiclesConfig = new TraderPlusVehiclesConfig();
+            string TraderPlusSafeZoneConfigPath = TraderplusPath + "\\TraderPlusSafeZoneConfig.json";
+            TraderPlusSafeZoneConfig TraderPlusSafeZoneConfig = new TraderPlusSafeZoneConfig();
+            string TraderPlusPriceConfigPath = TraderplusPath + "\\TraderPlusPriceConfig.json";
+            TraderPlusPriceConfig TraderPlusPriceConfig = new TraderPlusPriceConfig();
+            string TraderPlusIDsConfigPath = TraderplusPath + "\\TraderPlusIDsConfig.json";
+            TraderPlusIDsConfig TraderPlusIDsConfig = new TraderPlusIDsConfig();
+            string TraderPlusInsuranceConfigPath = TraderplusPath + "\\TraderPlusInsuranceConfig.json";
+            TraderPlusInsuranceConfig TraderPlusInsuranceConfig = new TraderPlusInsuranceConfig();
 
-
+            foreach(Categories cat in MarketCats.CatList)
+            {
+                Tradercategory newcat = new Tradercategory()
+                {
+                    CategoryName = cat.Filename,
+                    Products = new BindingList<string>(),
+                    itemProducts = new BindingList<ItemProducts>()
+                };
+                foreach (marketItem item in cat.Items)
+                {
+                    string propperclassname = currentproject.getcorrectclassamefromtypes(item.ClassName);
+                    ItemProducts NewContainer = new ItemProducts();
+                    NewContainer.Classname = propperclassname;
+                    NewContainer.Coefficient = (int)((float)item.MinPriceThreshold/(float)item.MaxPriceThreshold*100);
+                    NewContainer.MaxStock = item.MaxStockThreshold;
+                    NewContainer.TradeQuantity = -1;
+                    NewContainer.BuyPrice = item.MaxPriceThreshold;
+                    if (item.SellPricePercent == -1)
+                    {
+                        NewContainer.Sellprice = (float)marketsettings.SellPricePercent/100;
+                    }
+                    else
+                    {
+                        NewContainer.Sellprice = (float)item.SellPricePercent / 100;
+                    }
+                    NewContainer.destockCoefficent = 100;
+                    NewContainer.UseDestockCoeff = false;
+                    if (!Checkifincat(NewContainer, newcat))
+                    {
+                        newcat.AdditemProduct(NewContainer);
+                    }
+                    if (item.Variants != null && item.Variants.Count > 0)
+                    {
+                        foreach (String itemv in item.Variants)
+                        {
+                            string propperclassnamev = currentproject.getcorrectclassamefromtypes(itemv);
+                            ItemProducts NewContainerv = new ItemProducts();
+                            NewContainerv.Classname = propperclassnamev;
+                            NewContainerv.Coefficient = (int)((float)item.MinPriceThreshold / (float)item.MaxPriceThreshold * 100);
+                            NewContainerv.MaxStock = item.MaxStockThreshold;
+                            NewContainerv.TradeQuantity = -1;
+                            NewContainerv.BuyPrice = item.MaxPriceThreshold;
+                            NewContainerv.Sellprice = NewContainer.Sellprice;
+                            NewContainerv.destockCoefficent = 100;
+                            NewContainerv.UseDestockCoeff = false;
+                            if (!Checkifincat(NewContainerv, newcat))
+                            {
+                                newcat.AdditemProduct(NewContainerv);
+                            }
+                        }
+                    }
+                }
+                if (!Checkifincatlist(TraderPlusPriceConfig, newcat))
+                {
+                    TraderPlusPriceConfig.TraderCategories.Add(newcat);
+                    TraderPlusPriceConfig.isDirty = true;
+                }
+                else
+                {
+                    MessageBox.Show("Allready added...\nExpansion json - " + cat.DisplayName);
+                }
+            }
+        }
     }
 }
 

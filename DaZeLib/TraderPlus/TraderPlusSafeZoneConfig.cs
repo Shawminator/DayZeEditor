@@ -35,6 +35,25 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty;
 
+
+        public TraderPlusSafeZoneConfig()
+        {
+            Version = m_Version;
+            IsHideOutActive = 0;
+            EnableAfkDisconnect = 0;
+            KickAfterDelay = 30;
+            MsgEnterZone = "SafeZone Entered.";
+            MsgExitZone = "You have left SafeZoe";
+            MsgOnLeavingZone = "LEAVING ZONE IN:";
+            MustRemoveArmband = "You must remove your armband in order to make your stash appear !";
+            SafeAreaLocation = new BindingList<Safearealocation>();
+            CleanUpTimer = 300;
+            WhitelistEntities = new BindingList<string>();
+            ObjectsToDelete = new BindingList<string>();
+            SZSteamUIDs = new BindingList<string>();
+            BlackListedItemInStash = new BindingList<string>();
+        }
+
         public bool CheckVersion()
         {
             if (Version != m_Version)

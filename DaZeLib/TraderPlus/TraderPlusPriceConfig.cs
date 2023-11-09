@@ -36,6 +36,10 @@ namespace DayZeLib
 
         public TraderPlusPriceConfig()
         {
+            Version = m_Version;
+            EnableAutoCalculation = 0;
+            EnableAutoDestockAtRestart = 0;
+            EnableDefaultTraderStock = 0;
             TraderCategories = new BindingList<Tradercategory>();
         }
 

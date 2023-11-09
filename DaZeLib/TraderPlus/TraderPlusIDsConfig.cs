@@ -24,6 +24,12 @@ namespace DayZeLib
         [JsonIgnore]
         public string FullFilename { get; set; }
 
+        public TraderPlusIDsConfig()
+        {
+            Version = m_Version;
+            IDs = new BindingList<IDs>();
+        }
+
         public bool CheckVersion()
         {
             if (Version != m_Version)

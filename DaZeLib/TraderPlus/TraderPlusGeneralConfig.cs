@@ -17,7 +17,7 @@ namespace DayZeLib
         [Description("each product will be added to the stock based on the max stock value.")]
         Max_Stock_Filling = 1,
         [Description("each product will be added to the stock based on a random value between 0 and max stock value.")]
-        Random_Filling_between_Min_Max = 2,
+        Random_Filling_between_Min_Max = 2
     }
 
 
@@ -66,6 +66,40 @@ namespace DayZeLib
         public BindingList<Currency> Currencies { get; set; }
         public BindingList<Trader> Traders { get; set; }
         public BindingList<Traderobject> TraderObjects { get; set; }
+
+        public TraderPlusGeneralConfig()
+        {
+            Version = m_Version;
+            ConvertTraderConfigToTraderPlus = 0;
+            ConvertTraderConfigToTraderPlusWithStockBasedOnCE = 0;
+            UseGarageToTradeCar = 0;
+            DisableHeightFailSafeForReceiptDeployment = 0;
+            HideInsuranceBtn = 1;
+            HideGarageBtn = 1;
+            HideLicenceBtn = 1;
+            EnableShowAllPrices = 1;
+            EnableShowAllCheckBox = 1;
+            IsReceiptTraderOnly = 1;
+            IsReceiptSaveLock = 0;
+            IsReceiptSaveAttachment = 0;
+            IsReceiptSaveCargo = 0;
+            LockPickChance = 0;
+            LicenceKeyWord = "Licence";
+            Licences = new BindingList<string>();
+            AcceptedStates = new Acceptedstates()
+            {
+                AcceptWorn = 1,
+                AcceptDamaged = 1,
+                AcceptBadlyDamaged = 1,
+                CoefficientWorn = (decimal)0.75,
+                CoefficientDamaged = (decimal)0.5,
+                CoefficientBadlyDamaged = (decimal) 0.25
+            };
+            StoreOnlyToPristineState = 0;
+            Currencies = new BindingList<Currency>();
+            Traders = new BindingList<Trader>();
+            TraderObjects = new BindingList<Traderobject>();
+        }
 
         public bool CheckVersion()
         {

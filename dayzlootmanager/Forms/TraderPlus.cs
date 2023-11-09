@@ -2648,9 +2648,6 @@ namespace DayZeEditor
                
             TraderPlusPriceConfig.isDirty = true;
         }
-
-
-
         private void toolStripMenuItem6_Click(object sender, EventArgs e)
         {
             OpenFileDialog openfile = new OpenFileDialog();
@@ -2719,7 +2716,6 @@ namespace DayZeEditor
                 }
             }
         }
-
         private bool Checkifincatlist(Tradercategory tradercat)
         {
             if (TraderPlusPriceConfig.TraderCategories.Any(x => x.CategoryName == tradercat.CategoryName))
@@ -2728,7 +2724,6 @@ namespace DayZeEditor
             }
             return false;
         }
-
         private void toolStripMenuItem5_Click(object sender, EventArgs e)
         {
             TraderPlusPriceConfig.TraderCategories = new BindingList<Tradercategory>();
@@ -2736,7 +2731,6 @@ namespace DayZeEditor
             CurrentTraderCatLB.DataSource = null;
             SetupTraderPlusPriceConfig();
         }
-
         private void toolStripMenuItem7_Click(object sender, EventArgs e)
         {
             foreach (Tradercategory tc in TraderPlusPriceConfig.TraderCategories)
@@ -2757,12 +2751,10 @@ namespace DayZeEditor
                 }
             }
         }
-
         private void toolStripButton9_Click(object sender, EventArgs e)
         {
 
         }
-
         private void toolStripMenuItem8_Click(object sender, EventArgs e)
         {
             foreach (Tradercategory tc in TraderPlusPriceConfig.TraderCategories)
@@ -2773,7 +2765,6 @@ namespace DayZeEditor
                 }
             }
         }
-
         private void TraderPlus_FormClosing(object sender, FormClosingEventArgs e)
         {
             bool needtosave = false;
@@ -2818,7 +2809,6 @@ namespace DayZeEditor
                 }
             }
         }
-
         private void ExporttoexpansionMarket_Click(object sender, EventArgs e)
         {
             StringBuilder sb = new StringBuilder();
@@ -2997,7 +2987,7 @@ namespace DayZeEditor
             else
             {
                 Directory.Delete(ExpansionPath);
-;            }
+            }
             foreach (Traders trader in traders.Traderlist)
             {
                 Directory.CreateDirectory(ExpansionPath + "\\Traders");

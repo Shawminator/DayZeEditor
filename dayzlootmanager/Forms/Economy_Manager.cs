@@ -4989,6 +4989,7 @@ namespace DayZeEditor
             disableBaseDamageCB.Checked = cfggameplay.GeneralData.disableBaseDamage;
             disableContainerDamageCB.Checked = cfggameplay.GeneralData.disableContainerDamage;
             disableRespawnDialogCB.Checked = cfggameplay.GeneralData.disableRespawnDialog;
+            disableRespawnInUnconsciousnessCB.Checked = cfggameplay.GeneralData.disableRespawnInUnconsciousness;
 
             disablePersonalLightCB.Checked = cfggameplay.PlayerData.disablePersonalLight;
             sprintStaminaModifierErcNUD.Value = cfggameplay.PlayerData.StaminaData.sprintStaminaModifierErc;
@@ -5080,6 +5081,11 @@ namespace DayZeEditor
             ignoreNavItemsOwnershipCB.Checked = cfggameplay.MapData.ignoreNavItemsOwnership;
             displayPlayerPositionCB.Checked = cfggameplay.MapData.displayPlayerPosition;
             displayNavInfoCB.Checked = cfggameplay.MapData.displayNavInfo;
+
+            CFGGameplayDisallowedtypesLB.DisplayMember = "DisplayName";
+            CFGGameplayDisallowedtypesLB.ValueMember = "Value";
+            CFGGameplayDisallowedtypesLB.DataSource = cfggameplay.BaseBuildingData.HologramData.disallowedTypesInUnderground;
+
             isUserInteraction = true;
         }
         private void m_Color_Click(object sender, EventArgs e)
@@ -5125,6 +5131,12 @@ namespace DayZeEditor
         {
             if (!isUserInteraction) { return; }
             cfggameplay.GeneralData.disableRespawnDialog = disableRespawnDialogCB.Checked;
+            currentproject.CFGGameplayConfig.isDirty = true;
+        }
+        private void disableRespawnInUnconsciousnessCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) { return; }
+            cfggameplay.GeneralData.disableRespawnInUnconsciousness = disableRespawnInUnconsciousnessCB.Checked;
             currentproject.CFGGameplayConfig.isDirty = true;
         }
         private void disablePersonalLightCB_CheckedChanged(object sender, EventArgs e)
@@ -5471,6 +5483,31 @@ namespace DayZeEditor
             if (!isUserInteraction) { return; }
             cfggameplay.MapData.displayNavInfo = displayNavInfoCB.Checked;
             currentproject.CFGGameplayConfig.isDirty = true;
+        }
+        private void darkButton66_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    if(!cfggameplay.BaseBuildingData.HologramData.disallowedTypesInUnderground.Contains(l))
+                        cfggameplay.BaseBuildingData.HologramData.disallowedTypesInUnderground.Add(l);
+                }
+                currentproject.CFGGameplayConfig.isDirty = true;
+
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
         }
         #endregion cfggameplayconfig
         #region cfgrandompresets
@@ -7498,6 +7535,8 @@ namespace DayZeEditor
         {
             fastColoredTextBox1.DoAutoIndent();
         }
+
+
         #endregion initc
 
 

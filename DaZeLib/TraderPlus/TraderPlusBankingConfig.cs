@@ -31,7 +31,15 @@ namespace DayZeLib
 
         public TraderPlusBankingConfig()
         {
+            Version = m_version;
+            BankingLogs = 1;
+            IsCreditCarNeededForTransaction = 0;
+            TransactionFees = 0;
+            DefaultStartCurrency = 0;
+            DefaultMaxCurrency = 1000000;
             CurrenciesAccepted = new BindingList<string>();
+            TheAmountErrorTransferAccount = "You have successfully transferred the amount to another player.";
+            TheAmountErrorTransferAccount = "The transaction could not be completed. Check you have the right details.";
         }
         public int getIntValue(string mytype)
         {

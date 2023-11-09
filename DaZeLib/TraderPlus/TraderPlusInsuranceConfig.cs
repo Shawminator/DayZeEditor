@@ -22,6 +22,13 @@ namespace DayZeLib
         public string Version { get; set; }
         public int[] AuthorizedIDInsurance { get; set; }
         public BindingList<Insurance> Insurances { get; set; }
+        
+        public TraderPlusInsuranceConfig()
+        {
+            Version = m_Version;
+            Insurances = new BindingList<Insurance>();
+        }
+
         internal Insurance getinsurancebyCar(string vehicleName)
         {
             Insurance insurance = Insurances.Where(x => x.VehicleName == vehicleName).FirstOrDefault();

@@ -20,8 +20,8 @@ namespace DayZeLib
         public CFGGameplayMapData MapData { get; set; }
 
         [JsonIgnore]
-        const int currentversion = 120;
-        
+        const int currentversion = 122;
+
         public cfggameplay()
         {
             GeneralData = new Generaldata();
@@ -48,18 +48,21 @@ namespace DayZeLib
         public bool disableBaseDamage { get; set; }
         public bool disableContainerDamage { get; set; }
         public bool disableRespawnDialog { get; set; }
+        public bool disableRespawnInUnconsciousness { get; set; }
 
-        public Generaldata() 
+        public Generaldata()
         {
             disableBaseDamage = false;
             disableContainerDamage = false;
             disableRespawnDialog = false;
+            disableRespawnInUnconsciousness = false;
         }
     }
 
     public class Playerdata
     {
         public bool disablePersonalLight { get; set; }
+        public BindingList<string> spawnGearPresetFiles { get; set; }
         public Staminadata StaminaData { get; set; }
         public Shockhandlingdata ShockHandlingData { get; set; }
         public MovementData MovementData { get; set; }
@@ -68,6 +71,7 @@ namespace DayZeLib
         public Playerdata()
         {
             disablePersonalLight = true;
+            spawnGearPresetFiles = new BindingList<string>();
             StaminaData = new Staminadata();
             ShockHandlingData = new Shockhandlingdata();
             MovementData = new MovementData();
@@ -88,7 +92,7 @@ namespace DayZeLib
         public decimal obstacleTraversalStaminaModifier { get; set; }
         public decimal holdBreathStaminaModifier { get; set; }
 
-        public Staminadata() 
+        public Staminadata()
         {
             sprintStaminaModifierErc = (decimal)1.0;
             sprintStaminaModifierCro = (decimal)1.0;
@@ -109,11 +113,11 @@ namespace DayZeLib
         public decimal shockRefillSpeedUnconscious { get; set; }
         public bool allowRefillSpeedModifier { get; set; }
 
-        public Shockhandlingdata() 
+        public Shockhandlingdata()
         {
             shockRefillSpeedConscious = (decimal)5.0;
-			shockRefillSpeedUnconscious = (decimal)1.0;
-			allowRefillSpeedModifier = true;
+            shockRefillSpeedUnconscious = (decimal)1.0;
+            allowRefillSpeedModifier = true;
         }
     }
     public class MovementData
@@ -125,13 +129,13 @@ namespace DayZeLib
         public decimal rotationSpeedSprint { get; set; }
         public bool allowStaminaAffectInertia { get; set; }
 
-        public MovementData() 
+        public MovementData()
         {
             timeToStrafeJog = (decimal)0.1;
-			rotationSpeedJog = (decimal)0.3;
-			timeToSprint = (decimal)0.45;
-			timeToStrafeSprint = (decimal)0.3;
-			rotationSpeedSprint = (decimal)0.15;
+            rotationSpeedJog = (decimal)0.3;
+            timeToSprint = (decimal)0.45;
+            timeToStrafeSprint = (decimal)0.3;
+            rotationSpeedSprint = (decimal)0.15;
             allowStaminaAffectInertia = true;
         }
     }
@@ -141,11 +145,11 @@ namespace DayZeLib
         public decimal healthDepletionSpeed { get; set; }
         public decimal shockDepletionSpeed { get; set; }
 
-        public DrowningData() 
+        public DrowningData()
         {
             staminaDepletionSpeed = (decimal)10.0;
-			healthDepletionSpeed = (decimal)10.0;
-			shockDepletionSpeed = (decimal)10.0;
+            healthDepletionSpeed = (decimal)10.0;
+            shockDepletionSpeed = (decimal)10.0;
         }
     }
 
@@ -160,6 +164,8 @@ namespace DayZeLib
 
         public Worldsdata()
         {
+            lightingConfig = 1;
+            objectSpawnersArr = new BindingList<object>();
             decimal[] mintemp = new decimal[] { -3, -2, 0, 4, 9, 14, 18, 17, 12, 7, 4, 0 };
             decimal[] maxtemp = new decimal[] { 3, 5, 7, 14, 19, 24, 26, 25, 21, 16, 10, 5 };
             decimal[] wetness = new decimal[] { (decimal)1.0, (decimal)1.0, (decimal)1.33, (decimal)1.66, (decimal)2.0 };
@@ -193,12 +199,35 @@ namespace DayZeLib
         public bool disableHeightPlacementCheck { get; set; }
         public bool disableIsUnderwaterCheck { get; set; }
         public bool disableIsInTerrainCheck { get; set; }
+        public BindingList<string> disallowedTypesInUnderground { get; set; }
+
+        public Hologramdata()
+        {
+            disableIsCollidingBBoxCheck = false;
+            disableIsCollidingPlayerCheck = false;
+            disableIsClippingRoofCheck = false;
+            disableIsBaseViableCheck = false;
+            disableIsCollidingGPlotCheck = false;
+            disableIsCollidingAngleCheck = false;
+            disableIsPlacementPermittedCheck = false;
+            disableHeightPlacementCheck = false;
+            disableIsUnderwaterCheck = false;
+            disableIsInTerrainCheck = false;
+            disallowedTypesInUnderground = new BindingList<string>(new string[] { "FenceKit", "TerritoryFlagKit", "WatchtowerKit" });
+        }
     }
     public class Constructiondata
     {
         public bool disablePerformRoofCheck { get; set; }
         public bool disableIsCollidingCheck { get; set; }
         public bool disableDistanceCheck { get; set; }
+
+        public Constructiondata()
+        {
+            disablePerformRoofCheck = false;
+            disableIsCollidingCheck = false;
+            disableDistanceCheck = false;
+        }
     }
 
     public class Uidata
@@ -208,6 +237,7 @@ namespace DayZeLib
 
         public Uidata()
         {
+            use3DMap = false;
             HitIndicationData = new Hitindicationdata();
         }
     }
@@ -225,10 +255,10 @@ namespace DayZeLib
         public Hitindicationdata()
         {
             hitDirectionOverrideEnabled = false;
-			hitDirectionBehaviour = 1;
-			hitDirectionStyle = 0;
-			hitDirectionIndicatorColorStr = "0xffbb0a1e";
-			hitDirectionMaxDuration = (decimal)2.0;
+            hitDirectionBehaviour = 1;
+            hitDirectionStyle = 0;
+            hitDirectionIndicatorColorStr = "0xffbb0a1e";
+            hitDirectionMaxDuration = (decimal)2.0;
             hitDirectionBreakPointRelative = (decimal)0.2;
             hitDirectionScatter = (decimal)10.0;
             hitIndicationPostProcessEnabled = true;
@@ -242,13 +272,88 @@ namespace DayZeLib
         public bool displayPlayerPosition { get; set; }
         public bool displayNavInfo { get; set; }
 
-        public CFGGameplayMapData() 
+        public CFGGameplayMapData()
         {
             ignoreMapOwnership = false;
             ignoreNavItemsOwnership = false;
             displayPlayerPosition = false;
-		    displayNavInfo = true;
+            displayNavInfo = true;
         }
     }
+
+    public class SpawnGearPresetFiles
+    {
+        public int spawnWeight { get; set; }
+        public string name { get; set; }
+        public BindingList<string> characterTypes { get; set; }
+        public BindingList<Attachmentslotitemset> attachmentSlotItemSets { get; set; }
+        public BindingList<Discreteunsorteditemset> discreteUnsortedItemSets { get; set; }
+
+        [JsonIgnore]
+        public string Filename { get; set; }
+
+        public SpawnGearPresetFiles()
+        {
+            spawnWeight = 1;
+            name = "";
+            characterTypes = new BindingList<string>();
+            attachmentSlotItemSets = new BindingList<Attachmentslotitemset>();
+            discreteUnsortedItemSets = new BindingList<Discreteunsorteditemset>();
+        }
+    }
+
+    public class Attachmentslotitemset
+    {
+        public string slotName { get; set; }
+        public BindingList<Discreteitemset> discreteItemSets { get; set; }
+    }
+
+    public class Discreteitemset
+    {
+        public string itemType { get; set; }
+        public int spawnWeight { get; set; }
+        public Attributes attributes { get; set; }
+        public int quickBarSlot { get; set; }
+        public BindingList<Complexchildrentype> complexChildrenTypes { get; set; }
+        public bool simpleChildrenUseDefaultAttributes { get; set; }
+        public BindingList<string> simpleChildrenTypes { get; set; }
+    }
+
+    public class Attributes
+    {
+        public decimal healthMin { get; set; }
+        public decimal healthMax { get; set; }
+        public decimal quantityMin { get; set; }
+        public decimal quantityMax { get; set; }
+    }
+
+    public class Complexchildrentype
+    {
+        public string itemType { get; set; }
+        public Attributes attributes { get; set; }
+        public int quickBarSlot { get; set; }
+        public bool simpleChildrenUseDefaultAttributes { get; set; }
+        public BindingList<string> simpleChildrenTypes { get; set; }
+    }
+
+    public class Discreteunsorteditemset
+    {
+        public string name { get; set; }
+        public int spawnWeight { get; set; }
+        public Attributes attributes { get; set; }
+        public BindingList<Complexchildrentype1> complexChildrenTypes { get; set; }
+        public bool simpleChildrenUseDefaultAttributes { get; set; }
+        public BindingList<string> simpleChildrenTypes { get; set; }
+    }
+
+    public class Complexchildrentype1
+    {
+        public string itemType { get; set; }
+        public Attributes attributes { get; set; }
+        public int quickBarSlot { get; set; }
+        public bool simpleChildrenUseDefaultAttributes { get; set; }
+        public BindingList<string> simpleChildrenTypes { get; set; }
+    }
+
 
 }

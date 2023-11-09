@@ -24,6 +24,7 @@ namespace DayZeLib
 
         public TraderPlusVehiclesConfig()
         {
+            Version = m_Version;
             VehiclesParts = new BindingList<Vehiclespart>();
         }
         public bool getInsurance(TraderPlusInsuranceConfig traderPlusInsuranceConfig)

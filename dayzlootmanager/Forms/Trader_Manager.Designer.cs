@@ -196,6 +196,7 @@ namespace DayZeEditor
             this.convertToExpansionMarketToolStripMenuItem.Name = "convertToExpansionMarketToolStripMenuItem";
             this.convertToExpansionMarketToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.convertToExpansionMarketToolStripMenuItem.Text = "Convert to Expansion Market";
+            this.convertToExpansionMarketToolStripMenuItem.Visible = false;
             this.convertToExpansionMarketToolStripMenuItem.Click += new System.EventHandler(this.convertToExpansionMarketToolStripMenuItem_Click);
             // 
             // exportClassnameAndBuyPriceToolStripMenuItem

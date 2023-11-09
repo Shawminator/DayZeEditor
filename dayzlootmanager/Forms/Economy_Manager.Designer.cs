@@ -624,6 +624,10 @@ namespace DayZeEditor
             this.disableIsCollidingCheckCB = new System.Windows.Forms.CheckBox();
             this.disablePerformRoofCheckCB = new System.Windows.Forms.CheckBox();
             this.groupBox29 = new System.Windows.Forms.GroupBox();
+            this.darkButton67 = new DarkUI.Controls.DarkButton();
+            this.darkButton66 = new DarkUI.Controls.DarkButton();
+            this.CFGGameplayDisallowedtypesLB = new System.Windows.Forms.ListBox();
+            this.label159 = new System.Windows.Forms.Label();
             this.disableIsInTerrainCheckCB = new System.Windows.Forms.CheckBox();
             this.disableIsUnderwaterCheckCB = new System.Windows.Forms.CheckBox();
             this.disableHeightPlacementCheckCB = new System.Windows.Forms.CheckBox();
@@ -686,6 +690,7 @@ namespace DayZeEditor
             this.label46 = new System.Windows.Forms.Label();
             this.disablePersonalLightCB = new System.Windows.Forms.CheckBox();
             this.groupBox23 = new System.Windows.Forms.GroupBox();
+            this.disableRespawnInUnconsciousnessCB = new System.Windows.Forms.CheckBox();
             this.disableRespawnDialogCB = new System.Windows.Forms.CheckBox();
             this.disableContainerDamageCB = new System.Windows.Forms.CheckBox();
             this.disableBaseDamageCB = new System.Windows.Forms.CheckBox();
@@ -3012,7 +3017,7 @@ namespace DayZeEditor
             this.economySearchNextButton.Image = ((System.Drawing.Image)(resources.GetObject("economySearchNextButton.Image")));
             this.economySearchNextButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.economySearchNextButton.Name = "economySearchNextButton";
-            this.economySearchNextButton.Size = new System.Drawing.Size(24, 24);
+            this.economySearchNextButton.Size = new System.Drawing.Size(62, 42);
             this.economySearchNextButton.Text = "Find Next";
             this.economySearchNextButton.Visible = false;
             this.economySearchNextButton.Click += new System.EventHandler(this.toolStripButton2_Click);
@@ -8134,7 +8139,7 @@ namespace DayZeEditor
             this.groupBox27.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox27.Location = new System.Drawing.Point(620, 12);
             this.groupBox27.Name = "groupBox27";
-            this.groupBox27.Size = new System.Drawing.Size(199, 535);
+            this.groupBox27.Size = new System.Drawing.Size(199, 556);
             this.groupBox27.TabIndex = 81;
             this.groupBox27.TabStop = false;
             this.groupBox27.Text = "Worlds Data";
@@ -8815,9 +8820,9 @@ namespace DayZeEditor
             this.groupBox59.Controls.Add(this.ignoreNavItemsOwnershipCB);
             this.groupBox59.Controls.Add(this.ignoreMapOwnershipCB);
             this.groupBox59.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox59.Location = new System.Drawing.Point(210, 460);
+            this.groupBox59.Location = new System.Drawing.Point(251, 460);
             this.groupBox59.Name = "groupBox59";
-            this.groupBox59.Size = new System.Drawing.Size(396, 87);
+            this.groupBox59.Size = new System.Drawing.Size(355, 108);
             this.groupBox59.TabIndex = 84;
             this.groupBox59.TabStop = false;
             this.groupBox59.Text = "Map Data";
@@ -8871,9 +8876,9 @@ namespace DayZeEditor
             this.groupBox31.Controls.Add(this.use3DMapCB);
             this.groupBox31.Controls.Add(this.groupBox32);
             this.groupBox31.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox31.Location = new System.Drawing.Point(1067, 12);
+            this.groupBox31.Location = new System.Drawing.Point(825, 391);
             this.groupBox31.Name = "groupBox31";
-            this.groupBox31.Size = new System.Drawing.Size(273, 286);
+            this.groupBox31.Size = new System.Drawing.Size(536, 177);
             this.groupBox31.TabIndex = 83;
             this.groupBox31.TabStop = false;
             this.groupBox31.Text = "UI Data";
@@ -8906,7 +8911,7 @@ namespace DayZeEditor
             this.groupBox32.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox32.Location = new System.Drawing.Point(6, 36);
             this.groupBox32.Name = "groupBox32";
-            this.groupBox32.Size = new System.Drawing.Size(262, 243);
+            this.groupBox32.Size = new System.Drawing.Size(524, 131);
             this.groupBox32.TabIndex = 84;
             this.groupBox32.TabStop = false;
             this.groupBox32.Text = "Hit Indication Data";
@@ -8937,7 +8942,7 @@ namespace DayZeEditor
             this.hitDirectionScatterNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.hitDirectionScatterNUD.DecimalPlaces = 1;
             this.hitDirectionScatterNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.hitDirectionScatterNUD.Location = new System.Drawing.Point(185, 185);
+            this.hitDirectionScatterNUD.Location = new System.Drawing.Point(436, 70);
             this.hitDirectionScatterNUD.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -8953,7 +8958,7 @@ namespace DayZeEditor
             // 
             this.label55.AutoSize = true;
             this.label55.ForeColor = System.Drawing.SystemColors.Control;
-            this.label55.Location = new System.Drawing.Point(17, 189);
+            this.label55.Location = new System.Drawing.Point(268, 74);
             this.label55.Name = "label55";
             this.label55.Size = new System.Drawing.Size(102, 13);
             this.label55.TabIndex = 75;
@@ -8962,7 +8967,7 @@ namespace DayZeEditor
             // hitIndicationPostProcessEnabledCB
             // 
             this.hitIndicationPostProcessEnabledCB.AutoSize = true;
-            this.hitIndicationPostProcessEnabledCB.Location = new System.Drawing.Point(17, 213);
+            this.hitIndicationPostProcessEnabledCB.Location = new System.Drawing.Point(268, 98);
             this.hitIndicationPostProcessEnabledCB.Name = "hitIndicationPostProcessEnabledCB";
             this.hitIndicationPostProcessEnabledCB.Size = new System.Drawing.Size(195, 17);
             this.hitIndicationPostProcessEnabledCB.TabIndex = 74;
@@ -9008,7 +9013,7 @@ namespace DayZeEditor
             this.hitDirectionMaxDurationNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.hitDirectionMaxDurationNUD.DecimalPlaces = 1;
             this.hitDirectionMaxDurationNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.hitDirectionMaxDurationNUD.Location = new System.Drawing.Point(185, 132);
+            this.hitDirectionMaxDurationNUD.Location = new System.Drawing.Point(436, 17);
             this.hitDirectionMaxDurationNUD.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -9025,7 +9030,7 @@ namespace DayZeEditor
             this.hitDirectionBreakPointRelativeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.hitDirectionBreakPointRelativeNUD.DecimalPlaces = 1;
             this.hitDirectionBreakPointRelativeNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.hitDirectionBreakPointRelativeNUD.Location = new System.Drawing.Point(185, 159);
+            this.hitDirectionBreakPointRelativeNUD.Location = new System.Drawing.Point(436, 44);
             this.hitDirectionBreakPointRelativeNUD.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -9041,7 +9046,7 @@ namespace DayZeEditor
             // 
             this.label53.AutoSize = true;
             this.label53.ForeColor = System.Drawing.SystemColors.Control;
-            this.label53.Location = new System.Drawing.Point(17, 163);
+            this.label53.Location = new System.Drawing.Point(268, 48);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(165, 13);
             this.label53.TabIndex = 69;
@@ -9051,7 +9056,7 @@ namespace DayZeEditor
             // 
             this.label54.AutoSize = true;
             this.label54.ForeColor = System.Drawing.SystemColors.Control;
-            this.label54.Location = new System.Drawing.Point(17, 134);
+            this.label54.Location = new System.Drawing.Point(268, 19);
             this.label54.Name = "label54";
             this.label54.Size = new System.Drawing.Size(131, 13);
             this.label54.TabIndex = 69;
@@ -9064,7 +9069,7 @@ namespace DayZeEditor
             this.groupBox28.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox28.Location = new System.Drawing.Point(825, 9);
             this.groupBox28.Name = "groupBox28";
-            this.groupBox28.Size = new System.Drawing.Size(236, 378);
+            this.groupBox28.Size = new System.Drawing.Size(536, 378);
             this.groupBox28.TabIndex = 82;
             this.groupBox28.TabStop = false;
             this.groupBox28.Text = "BaseBuilding Data";
@@ -9117,6 +9122,10 @@ namespace DayZeEditor
             // 
             // groupBox29
             // 
+            this.groupBox29.Controls.Add(this.darkButton67);
+            this.groupBox29.Controls.Add(this.darkButton66);
+            this.groupBox29.Controls.Add(this.CFGGameplayDisallowedtypesLB);
+            this.groupBox29.Controls.Add(this.label159);
             this.groupBox29.Controls.Add(this.disableIsInTerrainCheckCB);
             this.groupBox29.Controls.Add(this.disableIsUnderwaterCheckCB);
             this.groupBox29.Controls.Add(this.disableHeightPlacementCheckCB);
@@ -9130,10 +9139,55 @@ namespace DayZeEditor
             this.groupBox29.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox29.Location = new System.Drawing.Point(6, 15);
             this.groupBox29.Name = "groupBox29";
-            this.groupBox29.Size = new System.Drawing.Size(224, 255);
+            this.groupBox29.Size = new System.Drawing.Size(530, 255);
             this.groupBox29.TabIndex = 1;
             this.groupBox29.TabStop = false;
             this.groupBox29.Text = "Hologram Data";
+            // 
+            // darkButton67
+            // 
+            this.darkButton67.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton67.Location = new System.Drawing.Point(380, 215);
+            this.darkButton67.Name = "darkButton67";
+            this.darkButton67.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton67.Size = new System.Drawing.Size(124, 27);
+            this.darkButton67.TabIndex = 134;
+            this.darkButton67.Text = "Remove Selected";
+            // 
+            // darkButton66
+            // 
+            this.darkButton66.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton66.Location = new System.Drawing.Point(237, 215);
+            this.darkButton66.Name = "darkButton66";
+            this.darkButton66.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton66.Size = new System.Drawing.Size(124, 27);
+            this.darkButton66.TabIndex = 133;
+            this.darkButton66.Text = "Add from Types";
+            this.darkButton66.Click += new System.EventHandler(this.darkButton66_Click);
+            // 
+            // CFGGameplayDisallowedtypesLB
+            // 
+            this.CFGGameplayDisallowedtypesLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.CFGGameplayDisallowedtypesLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CFGGameplayDisallowedtypesLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.CFGGameplayDisallowedtypesLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CFGGameplayDisallowedtypesLB.FormattingEnabled = true;
+            this.CFGGameplayDisallowedtypesLB.Location = new System.Drawing.Point(237, 36);
+            this.CFGGameplayDisallowedtypesLB.Name = "CFGGameplayDisallowedtypesLB";
+            this.CFGGameplayDisallowedtypesLB.Size = new System.Drawing.Size(267, 173);
+            this.CFGGameplayDisallowedtypesLB.TabIndex = 132;
+            this.CFGGameplayDisallowedtypesLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            // 
+            // label159
+            // 
+            this.label159.AutoSize = true;
+            this.label159.ForeColor = System.Drawing.SystemColors.Control;
+            this.label159.Location = new System.Drawing.Point(234, 19);
+            this.label159.Name = "label159";
+            this.label159.Size = new System.Drawing.Size(165, 13);
+            this.label159.TabIndex = 70;
+            this.label159.Text = "disallowed Types In Underground";
             // 
             // disableIsInTerrainCheckCB
             // 
@@ -9956,16 +10010,28 @@ namespace DayZeEditor
             // 
             // groupBox23
             // 
+            this.groupBox23.Controls.Add(this.disableRespawnInUnconsciousnessCB);
             this.groupBox23.Controls.Add(this.disableRespawnDialogCB);
             this.groupBox23.Controls.Add(this.disableContainerDamageCB);
             this.groupBox23.Controls.Add(this.disableBaseDamageCB);
             this.groupBox23.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox23.Location = new System.Drawing.Point(3, 460);
             this.groupBox23.Name = "groupBox23";
-            this.groupBox23.Size = new System.Drawing.Size(201, 87);
+            this.groupBox23.Size = new System.Drawing.Size(242, 108);
             this.groupBox23.TabIndex = 80;
             this.groupBox23.TabStop = false;
             this.groupBox23.Text = "General Data";
+            // 
+            // disableRespawnInUnconsciousnessCB
+            // 
+            this.disableRespawnInUnconsciousnessCB.AutoSize = true;
+            this.disableRespawnInUnconsciousnessCB.Location = new System.Drawing.Point(11, 84);
+            this.disableRespawnInUnconsciousnessCB.Name = "disableRespawnInUnconsciousnessCB";
+            this.disableRespawnInUnconsciousnessCB.Size = new System.Drawing.Size(203, 17);
+            this.disableRespawnInUnconsciousnessCB.TabIndex = 3;
+            this.disableRespawnInUnconsciousnessCB.Text = "disable RespawnIn Unconsciousness";
+            this.disableRespawnInUnconsciousnessCB.UseVisualStyleBackColor = true;
+            this.disableRespawnInUnconsciousnessCB.CheckedChanged += new System.EventHandler(this.disableRespawnInUnconsciousnessCB_CheckedChanged);
             // 
             // disableRespawnDialogCB
             // 
@@ -13660,6 +13726,7 @@ namespace DayZeEditor
             this.fastColoredTextBox1.DefaultMarkerSize = 8;
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.fastColoredTextBox1.IsReplaceMode = false;
             this.fastColoredTextBox1.Location = new System.Drawing.Point(0, 24);
@@ -15795,5 +15862,10 @@ namespace DayZeEditor
         private FastColoredTextBox fastColoredTextBox1;
         private System.Windows.Forms.ToolStripMenuItem autoIndentToolStripMenuItem;
         private System.Windows.Forms.Label label158;
+        private System.Windows.Forms.CheckBox disableRespawnInUnconsciousnessCB;
+        private DarkUI.Controls.DarkButton darkButton67;
+        private DarkUI.Controls.DarkButton darkButton66;
+        private System.Windows.Forms.ListBox CFGGameplayDisallowedtypesLB;
+        private System.Windows.Forms.Label label159;
     }
 }

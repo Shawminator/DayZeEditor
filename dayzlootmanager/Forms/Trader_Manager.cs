@@ -641,9 +641,24 @@ namespace DayZeEditor
         }
         private void convertToExpansionMarketToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            StringBuilder sb = new StringBuilder();
+
             //set up market items list first.
             List<marketItem> checklist = new List<marketItem>();
             MarketCategories MarketCats = new MarketCategories();
+
+
+            //Setup currency Market Category
+            Categories newccat = new Categories();
+            newccat.DisplayName = "#STR_EXPANSION_MARKET_CATEGORY_EXCHANGE";
+            newccat.Filename = "EXCHANGE.json";
+            newccat.IsExchange = 1;
+            foreach (DRJonesCurrency drjc in drjonestraderconfig.CurrencyConfig.currencyList)
+            {
+                newccat.Items.Add(new marketItem() { ClassName = drjc.m_Trader_CurrencyClassnames, MaxPriceThreshold = drjc.m_Trader_CurrencyValues, MinPriceThreshold = drjc.m_Trader_CurrencyValues, MaxStockThreshold = 1, MinStockThreshold = 1 });
+            }
+            MarketCats.CatList.Add(newccat);
+
             foreach (DRJonesCategories cat in drjonestraderconfig.m_categories)
             {
                 //check if cat has been created allready
@@ -684,21 +699,26 @@ namespace DayZeEditor
                     newitem.MinPriceThreshold = newitem.MaxPriceThreshold;
                     newitem.MaxStockThreshold = 1;
                     newitem.MinStockThreshold = 1;
-                    
+                    marketItem checkitem = checklist.FirstOrDefault(x => x.ClassName == newitem.ClassName);
+                    //if (!checklist.Any(x => x.ClassName == newitem.ClassName))
+
+                    if (checkitem == null)
+                    {
+                        checklist.Add(newitem);
+                        newcat.Items.Add(newitem);
+                    }
+                    else
+                    {
+                        sb.AppendLine(newitem.ClassName + " is allready in " + MarketCats.GetCatNameFromItemName(newitem.ClassName) + "\n will not be added to " + newcat.DisplayName + "\n");
+                    }
                 }
+                
                 //if (newcat.Items.Count > 0)
                 MarketCats.CatList.Add(newcat);
             }
+            if (sb.Length != 0)
+                MessageBox.Show(sb.ToString());
 
-            //Setup currency Market Category
-            Categories newccat = new Categories();
-            newccat.DisplayName = "#STR_EXPANSION_MARKET_CATEGORY_EXCHANGE";
-            newccat.Filename = "EXCHANGE.json";
-            foreach(DRJonesCurrency drjc in  drjonestraderconfig.CurrencyConfig.currencyList)
-            {
-                newccat.Items.Add(new marketItem() { ClassName = drjc.m_Trader_CurrencyClassnames, MaxPriceThreshold = drjc.m_Trader_CurrencyValues, MinPriceThreshold = drjc.m_Trader_CurrencyValues, MaxStockThreshold = 1, MinStockThreshold = 1 });
-            }
-            MarketCats.CatList.Add(newccat);
             TradersList traders = new TradersList();
 
 
@@ -708,8 +728,8 @@ namespace DayZeEditor
             foreach (DRJonesCurrency drjc in drjonestraderconfig.CurrencyConfig.currencyList)
             {
                 exchangetrader.Currencies.Add(drjc.m_Trader_CurrencyClassnames);
-                exchangetrader.ListItems.Add(new TradersItem() { ClassName = drjc.m_Trader_CurrencyClassnames, CatName = "EXCHANGE", buysell = canBuyCansell.CanBuyAndsell });
             }
+            exchangetrader.Categories.Add("EXCHANGE");
             traders.Traderlist.Add(exchangetrader);
 
 
@@ -722,29 +742,11 @@ namespace DayZeEditor
                 {
                     newtrader.Currencies.Add(drjc.m_Trader_CurrencyClassnames);
                 }
-
                 foreach (TraderCats tcats in trader.cats)
                 {
-                    foreach (TraderItems titems in tcats.ItemList)
-                    {
-                        marketItem mitem = MarketCats.getitemfromcategory(titems.m_Trader_ItemsClassnames.ToLower());
-                        if(mitem == null) { continue; }
-                        TradersItem ti = new TradersItem();
-                        ti.ClassName = mitem.ClassName;
-                        ti.CatName = ReplaceInvalidChars(tcats.CatName).Replace(" ", "_").ToUpper();
-                        if (titems.m_Trader_ItemsBuyValue == -1 && titems.m_Trader_ItemsSellValue > 0)
-                            ti.buysell = canBuyCansell.CanOnlySell;
-                        else if (titems.m_Trader_ItemsBuyValue > 0 && titems.m_Trader_ItemsSellValue == -1)
-                            ti.buysell = canBuyCansell.CanOnlyBuy;
-                        else
-                            ti.buysell = canBuyCansell.CanBuyAndsell;
-                        if (!newtrader.ListItems.Any(x => x.ClassName == ti.ClassName))
-                            newtrader.ListItems.Add(ti);
-                    }
+                    newtrader.Categories.Add(tcats.CatName.Replace(" ", "_").ToUpper());
                 }
                 traders.Traderlist.Add(newtrader);
-
-
             }
 
             string ExpansionPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod";
@@ -754,7 +756,6 @@ namespace DayZeEditor
             }
             foreach (Traders trader in traders.Traderlist)
             {
-                trader.ConvertToDict(MarketCats);
                 Directory.CreateDirectory(ExpansionPath + "\\Traders");
                 string traderFilename = ExpansionPath + "\\Traders\\" + trader.Filename + ".json";
                 var options = new JsonSerializerOptions();
@@ -789,7 +790,6 @@ namespace DayZeEditor
 
             return false;
         }
-
         private void exportClassnameAndBuyPriceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             List<string> list = new List<string>();
@@ -807,7 +807,6 @@ namespace DayZeEditor
             }
             File.WriteAllText("PriceExport.txt", String.Join("\n", list.ToArray()));
         }
-
         private void DRJonesTrader_Manager_FormClosing(object sender, FormClosingEventArgs e)
         {
         }
