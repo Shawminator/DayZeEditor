@@ -5,9 +5,11 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Xml;
@@ -85,12 +87,13 @@ namespace DayZeEditor
             doubleClickTimer.Tick += new EventHandler(doubleClickTimer_Tick);
 
 
-            listsCategory nullcat = new listsCategory()
+            BindingList<listsCategory> newlist = new BindingList<listsCategory>
             {
-                name = "other"
+                new listsCategory()
+                {
+                    name = "other"
+                }
             };
-            BindingList<listsCategory> newlist = new BindingList<listsCategory>();
-            newlist.Add(nullcat);
             foreach (listsCategory cat in currentproject.limitfefinitions.lists.categories)
             {
                 newlist.Add(cat);
@@ -121,6 +124,7 @@ namespace DayZeEditor
             populateEconmyTreeview();
             LoadPlayerSpawns();
             LoadCFGGamelplay();
+            LoadSpawnGear();
             LoadContaminatoedArea();
             LoadGlobals();
             Loadweather();
@@ -154,8 +158,6 @@ namespace DayZeEditor
             EconomyFindButton.Visible = true;
             isUserInteraction = true;
         }
-
-
 
         private void SetuprandomPresetsForSpawnabletypes()
         {
@@ -347,10 +349,20 @@ namespace DayZeEditor
                 if (currentproject.CFGGameplayConfig.isDirty)
                 {
                     currentproject.CFGGameplayConfig.SaveCFGGameplay();
+                    
                     currentproject.CFGGameplayConfig.isDirty = false;
                     midifiedfiles.Add(Path.GetFileName(currentproject.CFGGameplayConfig.Filename) + " Saved....");
                 }
+                foreach(SpawnGearPresetFiles SGPF in currentproject.CFGGameplayConfig.cfggameplay.SpawnGearPresetFiles)
+                {
+                    if(SGPF.isDirty)
+                    {
+                        midifiedfiles.Add(SGPF.Filename + " Saved....");
+                    }
+                }
+                currentproject.CFGGameplayConfig.SaveSpawnGearPresetFiles(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\");
             }
+            
             if (currentproject.cfgEffectAreaConfig != null)
             {
                 if (currentproject.cfgEffectAreaConfig.isDirty)
@@ -527,6 +539,13 @@ namespace DayZeEditor
                 {
                     needtosave = true;
                 }
+                foreach (SpawnGearPresetFiles SGPF in currentproject.CFGGameplayConfig.cfggameplay.SpawnGearPresetFiles)
+                {
+                    if (SGPF.isDirty)
+                    {
+                        needtosave = true;
+                    }
+                }
             }
             //contaminatioedarea
             if (currentproject.cfgEffectAreaConfig != null)
@@ -678,6 +697,12 @@ namespace DayZeEditor
             if (EconomyTabPage.SelectedIndex == 16)
                 InitCTabButton.Checked = true;
         }
+        private void SpawnGearTabButton_Click(object sender, EventArgs e)
+        {
+            EconomyTabPage.SelectedIndex = 17;
+            if (EconomyTabPage.SelectedIndex == 17)
+                SpawnGearTabButton.Checked = true;
+        }
         private void EconomyTabPage_SelectedIndexChanged(object sender, EventArgs e)
         {
             EventsTabButton.Checked = false;
@@ -700,7 +725,7 @@ namespace DayZeEditor
             EconomyFindButton.Visible = false;
             economySearchNextButton.Visible = false;
             InitCTabButton.Checked = false;
-
+            SpawnGearTabButton.Checked = false;
         }
         #endregion formsstuff
         #region Types
@@ -2401,10 +2426,12 @@ namespace DayZeEditor
                 string path = form.CustomLocation;
                 string modname = form.TypesName;
                 Directory.CreateDirectory(path);
-                List<string> Eventfile = new List<string>();
-                Eventfile.Add("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
-                Eventfile.Add("<events>");
-                Eventfile.Add("</events>");
+                List<string> Eventfile = new List<string>
+                {
+                    "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>",
+                    "<events>",
+                    "</events>"
+                };
                 File.WriteAllLines(path + "\\" + modname + "_events.xml", Eventfile);
                 eventscofig test = new eventscofig(path + "\\" + modname + "_events.xml");
                 test.SaveEvent();
@@ -2769,7 +2796,6 @@ namespace DayZeEditor
                 _mouseLastPosition = e.Location;
             }
         }
-
         private void pictureBox1_MouseEnter(object sender, EventArgs e)
         {
             if (pictureBox1.Focused == false)
@@ -2779,7 +2805,6 @@ namespace DayZeEditor
                 pictureBox1.Invalidate();
             }
         }
-
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -3790,14 +3815,15 @@ namespace DayZeEditor
         private void darkButton30_Click(object sender, EventArgs e)
         {
             if (SpawnabletpesLB.SelectedItem == null) { return; }
-            spawnabletypesTypeHoarder newhoarder = new spawnabletypesTypeHoarder();
             if (CurrentspawnabletypesType.Items == null)
             {
-                CurrentspawnabletypesType.Items = new BindingList<object>();
-                CurrentspawnabletypesType.Items.Add(newhoarder);
+                CurrentspawnabletypesType.Items = new BindingList<object>
+                {
+                    new spawnabletypesTypeHoarder()
+                };
             }
             else
-                CurrentspawnabletypesType.Items.Insert(0, newhoarder);
+                CurrentspawnabletypesType.Items.Insert(0, new spawnabletypesTypeHoarder());
             listBox6.SelectedIndex = -1;
             listBox6.SelectedIndex = 0;
             currentspawnabletypesfile.isDirty = true;
@@ -3806,14 +3832,15 @@ namespace DayZeEditor
         private void darkButton31_Click(object sender, EventArgs e)
         {
             if (SpawnabletpesLB.SelectedItem == null) { return; }
-            spawnabletypesTypeTag newtag = new spawnabletypesTypeTag();
             if (CurrentspawnabletypesType.Items == null)
             {
-                CurrentspawnabletypesType.Items = new BindingList<object>();
-                CurrentspawnabletypesType.Items.Add(newtag);
+                CurrentspawnabletypesType.Items = new BindingList<object>
+                {
+                     new spawnabletypesTypeTag()
+                };
             }
             else
-                CurrentspawnabletypesType.Items.Insert(0, newtag);
+                CurrentspawnabletypesType.Items.Insert(0, new spawnabletypesTypeTag());
             listBox6.SelectedIndex = -1;
             listBox6.SelectedIndex = 0;
             currentspawnabletypesfile.isDirty = true;
@@ -4073,10 +4100,12 @@ namespace DayZeEditor
                 string path = form.CustomLocation;
                 string modname = form.TypesName;
                 Directory.CreateDirectory(path);
-                List<string> Spawnabletypesfile = new List<string>();
-                Spawnabletypesfile.Add("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
-                Spawnabletypesfile.Add("<spawnabletypes>");
-                Spawnabletypesfile.Add("</spawnabletypes>");
+                List<string> Spawnabletypesfile = new List<string>
+                {
+                    "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>",
+                    "<spawnabletypes>",
+                    "</spawnabletypes>"
+                };
                 File.WriteAllLines(path + "\\" + modname + "_spawnabletypes.xml", Spawnabletypesfile);
                 Spawnabletypesconfig test = new Spawnabletypesconfig(path + "\\" + modname + "_spawnabletypes.xml");
                 test.Savespawnabletypes();
@@ -4520,99 +4549,219 @@ namespace DayZeEditor
         #region PlayerSpawnPoints
         public int PlayerSpawnScale = 1;
         public playerspawnpoints playerspawnpoints;
+        public playerspawnpointssection Currentplayerspawnpointssection;
+        public playerspawnpointsGroup currentplayerspawnpointsGroup;
+        public playerspawnpointsGroupPos currentpos;
+        private void PlayerSpawnFreshButton_Click(object sender, EventArgs e)
+        {
+            PlayerSpawnFreshButton.Checked = true;
+            PlayerSpawnHopButton.Checked = false;
+            PlayerSpawnTravelButton.Checked = false;
+            Currentplayerspawnpointssection = playerspawnpoints.fresh;
+            SetPlayerSpawnLists();
+        }
+        private void PlayerSpawnHopButton_Click(object sender, EventArgs e)
+        {
+            PlayerSpawnFreshButton.Checked = false;
+            PlayerSpawnHopButton.Checked = true;
+            PlayerSpawnTravelButton.Checked = false;
+            Currentplayerspawnpointssection = playerspawnpoints.hop;
+            SetPlayerSpawnLists();
+        }
+        private void PlayerSpawnTravelButton_Click(object sender, EventArgs e)
+        {
+            PlayerSpawnFreshButton.Checked = false;
+            PlayerSpawnHopButton.Checked = false;
+            PlayerSpawnTravelButton.Checked = true;
+            Currentplayerspawnpointssection = playerspawnpoints.travel;
+            SetPlayerSpawnLists();
+        }
         public void LoadPlayerSpawns()
         {
             Console.WriteLine("Loading PlayerSpawn");
             isUserInteraction = false;
 
             playerspawnpoints = currentproject.cfgplayerspawnpoints.playerspawnpoints;
-
-            min_dist_infectedNUD.Value = (decimal)playerspawnpoints.fresh.spawn_params.min_dist_infected;
-            max_dist_infectedNUD.Value = (decimal)playerspawnpoints.fresh.spawn_params.max_dist_infected;
-            min_dist_playerNUD.Value = (decimal)playerspawnpoints.fresh.spawn_params.min_dist_player;
-            max_dist_playerNUD.Value = (decimal)playerspawnpoints.fresh.spawn_params.max_dist_player;
-            min_dist_staticNUD.Value = (decimal)playerspawnpoints.fresh.spawn_params.min_dist_static;
-            max_dist_staticNUD.Value = (decimal)playerspawnpoints.fresh.spawn_params.max_dist_static;
-
-            grid_densityNUD.Value = (decimal)playerspawnpoints.fresh.generator_params.grid_density;
-            grid_widthNUD.Value = (decimal)playerspawnpoints.fresh.generator_params.grid_width;
-            grid_heightNUD.Value = (decimal)playerspawnpoints.fresh.generator_params.grid_height;
-            GPmin_dist_staticNUD.Value = (decimal)playerspawnpoints.fresh.generator_params.min_dist_static;
-            GPmax_dist_staticNUD.Value = (decimal)playerspawnpoints.fresh.generator_params.max_dist_static;
-            min_steepnessNUD.Value = (decimal)playerspawnpoints.fresh.generator_params.min_steepness;
-            max_steepnessNUD.Value = (decimal)playerspawnpoints.fresh.generator_params.max_steepness;
+            Currentplayerspawnpointssection = playerspawnpoints.fresh;
+            PlayerSpawnFreshButton.Checked = true;
             SetPlayerSpawnLists();
             isUserInteraction = true;
         }
         private void SetPlayerSpawnLists()
         {
-            if (playerspawnpoints.fresh != null)
-            {
-                PlayerFGreshSpawnLB.DisplayMember = "DisplayName";
-                PlayerFGreshSpawnLB.ValueMember = "Value";
-                PlayerFGreshSpawnLB.DataSource = playerspawnpoints.fresh.generator_posbubbles;
-            }
-            if (playerspawnpoints.hop != null)
-            {
-                PlayerSpanHopLB.DisplayMember = "DisplayName";
-                PlayerSpanHopLB.ValueMember = "Value";
-                PlayerSpanHopLB.DataSource = playerspawnpoints.hop.generator_posbubbles;
-            }
-            if (playerspawnpoints.travel != null)
-            {
-                PlayerspawntravelLB.DisplayMember = "DisplayName";
-                PlayerspawntravelLB.ValueMember = "Value";
-                PlayerspawntravelLB.DataSource = playerspawnpoints.travel.generator_posbubbles;
-            }
-        }
-        private void PlayerFGreshSpawnLB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (PlayerFGreshSpawnLB.SelectedItems.Count == 0) return;
-            playerspawnpointsFreshPos currentpos = PlayerFGreshSpawnLB.SelectedItem as playerspawnpointsFreshPos;
             isUserInteraction = false;
-            FreshPosXNUD.Value = (decimal)currentpos.x;
-            FreshPosZNUD.Value = (decimal)currentpos.z;
+            SpawnParamsmin_dist_infectedNUD.Value = (decimal)Currentplayerspawnpointssection.spawn_params.min_dist_infected;
+            SpawnParamsmax_dist_infectedNUD.Value = (decimal)Currentplayerspawnpointssection.spawn_params.max_dist_infected;
+            SpawnParamsmin_dist_playerNUD.Value = (decimal)Currentplayerspawnpointssection.spawn_params.min_dist_player;
+            SpawnParamsmax_dist_playerNUD.Value = (decimal)Currentplayerspawnpointssection.spawn_params.max_dist_player;
+            SpawnParamsmin_dist_staticNUD.Value = (decimal)Currentplayerspawnpointssection.spawn_params.min_dist_static;
+            SpawnParamsmax_dist_staticNUD.Value = (decimal)Currentplayerspawnpointssection.spawn_params.max_dist_static;
+
+            generatorparamsgrid_densityNUD.Value = (decimal)Currentplayerspawnpointssection.generator_params.grid_density;
+            generatorparamsgrid_widthNUD.Value = (decimal)Currentplayerspawnpointssection.generator_params.grid_width;
+            generatorparamsgrid_heightNUD.Value = (decimal)Currentplayerspawnpointssection.generator_params.grid_height;
+            generatorparamsmin_dist_staticNUD.Value = (decimal)Currentplayerspawnpointssection.generator_params.min_dist_static;
+            generatorparamsmax_dist_staticNUD.Value = (decimal)Currentplayerspawnpointssection.generator_params.max_dist_static;
+            generatorparamsmin_steepnessNUD.Value = (decimal)Currentplayerspawnpointssection.generator_params.min_steepness;
+            generatorparamsmax_steepnessNUD.Value = (decimal)Currentplayerspawnpointssection.generator_params.max_steepness;
+
+            GroupParamsenablegroupsCB.Checked = Currentplayerspawnpointssection.group_params.enablegroups;
+            GroupParamslifetimeNUD.Value = Currentplayerspawnpointssection.group_params.lifetime;
+            GroupParamscounterNUD.Value = Currentplayerspawnpointssection.group_params.counter;
+            generatorposbubblesLB.DisplayMember = "DisplayName";
+            generatorposbubblesLB.ValueMember = "Value";
+            generatorposbubblesLB.DataSource = Currentplayerspawnpointssection.generator_posbubbles;
             isUserInteraction = true;
 
+        }
+        private void generatorposbubblesLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (generatorposbubblesLB.SelectedItems.Count == 0) return;
+            currentplayerspawnpointsGroup = generatorposbubblesLB.SelectedItem as playerspawnpointsGroup;
+            isUserInteraction = false;
+            generatorposbubblesGroupnameTB.Text = currentplayerspawnpointsGroup.name;
+            if (generatorposbubblesUseLifetimeCB.Checked = currentplayerspawnpointsGroup.lifetimeSpecified == true)
+            {
+                generatorposbubbleslifetiemNUD.Value = currentplayerspawnpointsGroup.lifetime;
+            }
+            if(generatorposbubblesusecounterCB.Checked = currentplayerspawnpointsGroup.counterSpecified == true)
+            {
+                generatorposbubblescounterNUD.Value = currentplayerspawnpointsGroup.counter;
+            }
+            generatorposbubblesPosLB.DisplayMember = "DisplayName";
+            generatorposbubblesPosLB.ValueMember = "Value";
+            generatorposbubblesPosLB.DataSource = currentplayerspawnpointsGroup.pos;
+
+            isUserInteraction = true;
             pictureBox2.Invalidate();
+        }
+        private void generatorposbubblesGroupnameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            currentplayerspawnpointsGroup.name = generatorposbubblesGroupnameTB.Text;
+            generatorposbubblesLB.Refresh();
+            currentproject.cfgplayerspawnpoints.isDirty = true;
+        }
+        private void generatorposbubbleslifetiemNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            currentplayerspawnpointsGroup.lifetime = (int)generatorposbubbleslifetiemNUD.Value;
+            currentproject.cfgplayerspawnpoints.isDirty = true;
+        }
+        private void generatorposbubblescounterNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            currentplayerspawnpointsGroup.counter = (int)generatorposbubblescounterNUD.Value;
+            currentproject.cfgplayerspawnpoints.isDirty = true;
+        }
+        private void generatorposbubblesUseLifetimeCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (generatorposbubblesUseLifetimeCB.Checked == true)
+            {
+                generatorposbubbleslifetiemNUD.Visible = true;
+                label42.Visible = true;
+                if (isUserInteraction)
+                {
+                    currentplayerspawnpointsGroup.lifetimeSpecified = true;
+                    currentplayerspawnpointsGroup.lifetime = 0;
+                }
+            }
+            else
+            {
+                generatorposbubbleslifetiemNUD.Visible = false;
+                label42.Visible = false;
+                if (isUserInteraction)
+                {
+                    currentplayerspawnpointsGroup.lifetimeSpecified = false;
+                }
+            }
+            
+        }
+        private void generatorposbubblesusecounterCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (generatorposbubblesusecounterCB.Checked == true)
+            {
+                generatorposbubblescounterNUD.Visible = true;
+                label43.Visible = true;
+                if (isUserInteraction)
+                {
+                    currentplayerspawnpointsGroup.counterSpecified = true;
+                    currentplayerspawnpointsGroup.counter = 0;
+                }
+            }
+            else
+            {
+                generatorposbubblescounterNUD.Visible = false;
+                label43.Visible = false;
+                if (isUserInteraction)
+                {
+                    currentplayerspawnpointsGroup.counterSpecified = false;
+                }
+            }
+        }
+        private void darkButton24_Click(object sender, EventArgs e)
+        {
+            playerspawnpointsGroup newgroup = new playerspawnpointsGroup()
+            {
+                name = "Change Me",
+                lifetimeSpecified = false,
+                counterSpecified = false,
+                pos = new BindingList<playerspawnpointsGroupPos>()
+            };
+            Currentplayerspawnpointssection.generator_posbubbles.Add(newgroup);
+            generatorposbubblesLB.SelectedIndex = generatorposbubblesLB.Items.Count - 1;
+            currentproject.cfgplayerspawnpoints.isDirty = true;
+        }
+        private void darkButton25_Click(object sender, EventArgs e)
+        {
+            if (generatorposbubblesLB.SelectedItems.Count < 0) return;
+            Currentplayerspawnpointssection.generator_posbubbles.Remove(currentplayerspawnpointsGroup);
+            currentproject.cfgplayerspawnpoints.isDirty = true;
+        }
+        private void generatorposbubblesPosLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (generatorposbubblesPosLB.SelectedItems.Count < 1) return;
+            currentpos = generatorposbubblesPosLB.SelectedItem as playerspawnpointsGroupPos;
+            pictureBox2.Invalidate();
+            isUserInteraction = false;
+            FreshPosXNUD.Value = currentpos.x;
+            FreshPosZNUD.Value = currentpos.z;
+            isUserInteraction = true;
         }
         private void FreshPosXNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            playerspawnpointsFreshPos currentpos = PlayerFGreshSpawnLB.SelectedItem as playerspawnpointsFreshPos;
-            currentpos.x = (float)FreshPosXNUD.Value;
-            PlayerFGreshSpawnLB.Invalidate();
+            currentpos.x = (decimal)FreshPosXNUD.Value;
+            generatorposbubblesPosLB.Invalidate();
             currentproject.cfgplayerspawnpoints.isDirty = true;
             pictureBox2.Invalidate();
         }
         private void FreshPosZNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            playerspawnpointsFreshPos currentpos = PlayerFGreshSpawnLB.SelectedItem as playerspawnpointsFreshPos;
-            currentpos.z = (float)FreshPosZNUD.Value;
-            PlayerFGreshSpawnLB.Invalidate();
+            currentpos.z = (decimal)FreshPosZNUD.Value;
+            generatorposbubblesPosLB.Invalidate();
             currentproject.cfgplayerspawnpoints.isDirty = true;
             pictureBox2.Invalidate();
         }
         private void darkButton23_Click(object sender, EventArgs e)
         {
-            playerspawnpointsFreshPos newpos = new playerspawnpointsFreshPos()
+            playerspawnpointsGroupPos newpos = new playerspawnpointsGroupPos()
             {
-                x = currentproject.MapSize / 2,
+               x = currentproject.MapSize / 2,
                 z = currentproject.MapSize / 2
             };
-            playerspawnpoints.fresh.generator_posbubbles.Add(newpos);
-            PlayerFGreshSpawnLB.Invalidate();
-            PlayerFGreshSpawnLB.SelectedIndex = PlayerFGreshSpawnLB.Items.Count - 1;
+            currentplayerspawnpointsGroup.pos.Add(newpos);
+            generatorposbubblesPosLB.Invalidate();
+            generatorposbubblesPosLB.SelectedIndex = generatorposbubblesPosLB.Items.Count - 1;
             currentproject.cfgplayerspawnpoints.isDirty = true;
             pictureBox2.Invalidate();
         }
         private void darkButton22_Click(object sender, EventArgs e)
         {
-            if (PlayerFGreshSpawnLB.SelectedItems.Count == 0) return;
-            playerspawnpointsFreshPos currentpos = PlayerFGreshSpawnLB.SelectedItem as playerspawnpointsFreshPos;
-            playerspawnpoints.fresh.generator_posbubbles.Remove(currentpos);
-            PlayerFGreshSpawnLB.Invalidate();
+            if (generatorposbubblesPosLB.SelectedItems.Count == 0) return;
+            currentplayerspawnpointsGroup.pos.Remove(currentpos);
+            generatorposbubblesPosLB.Invalidate();
             currentproject.cfgplayerspawnpoints.isDirty = true;
             pictureBox2.Invalidate();
         }
@@ -4624,159 +4773,98 @@ namespace DayZeEditor
         private void min_dist_infectedNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            playerspawnpoints.fresh.spawn_params.min_dist_infected = min_dist_infectedNUD.Value;
+            Currentplayerspawnpointssection.spawn_params.min_dist_infected = SpawnParamsmin_dist_infectedNUD.Value;
             currentproject.cfgplayerspawnpoints.isDirty = true;
         }
         private void min_dist_playerNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            playerspawnpoints.fresh.spawn_params.min_dist_player = min_dist_playerNUD.Value;
+            Currentplayerspawnpointssection.spawn_params.min_dist_player = SpawnParamsmin_dist_playerNUD.Value;
             currentproject.cfgplayerspawnpoints.isDirty = true;
         }
         private void min_dist_staticNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            playerspawnpoints.fresh.spawn_params.min_dist_static = min_dist_staticNUD.Value;
+            Currentplayerspawnpointssection.spawn_params.min_dist_static = SpawnParamsmin_dist_staticNUD.Value;
             currentproject.cfgplayerspawnpoints.isDirty = true;
         }
         private void max_dist_infectedNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            playerspawnpoints.fresh.spawn_params.max_dist_infected = max_dist_infectedNUD.Value;
+            Currentplayerspawnpointssection.spawn_params.max_dist_infected = SpawnParamsmax_dist_infectedNUD.Value;
             currentproject.cfgplayerspawnpoints.isDirty = true;
         }
         private void max_dist_playerNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            playerspawnpoints.fresh.spawn_params.max_dist_player = max_dist_playerNUD.Value;
+            Currentplayerspawnpointssection.spawn_params.max_dist_player = SpawnParamsmax_dist_playerNUD.Value;
             currentproject.cfgplayerspawnpoints.isDirty = true;
         }
         private void max_dist_staticNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            playerspawnpoints.fresh.spawn_params.max_dist_static = max_dist_staticNUD.Value;
+            Currentplayerspawnpointssection.spawn_params.max_dist_static = SpawnParamsmax_dist_staticNUD.Value;
             currentproject.cfgplayerspawnpoints.isDirty = true;
         }
         private void grid_densityNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            playerspawnpoints.fresh.generator_params.grid_density = (int)grid_densityNUD.Value;
+            Currentplayerspawnpointssection.generator_params.grid_density = (int)generatorparamsgrid_densityNUD.Value;
             currentproject.cfgplayerspawnpoints.isDirty = true;
         }
         private void grid_widthNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            playerspawnpoints.fresh.generator_params.grid_width = grid_widthNUD.Value;
+            Currentplayerspawnpointssection.generator_params.grid_width = (int)generatorparamsgrid_widthNUD.Value;
             currentproject.cfgplayerspawnpoints.isDirty = true;
         }
         private void GPmin_dist_staticNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            playerspawnpoints.fresh.generator_params.min_dist_static = GPmin_dist_staticNUD.Value;
+            Currentplayerspawnpointssection.generator_params.min_dist_static = (int)generatorparamsmin_dist_staticNUD.Value;
             currentproject.cfgplayerspawnpoints.isDirty = true;
         }
         private void min_steepnessNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            playerspawnpoints.fresh.generator_params.min_steepness = (int)min_steepnessNUD.Value;
+            Currentplayerspawnpointssection.generator_params.min_steepness = (int)generatorparamsmin_steepnessNUD.Value;
             currentproject.cfgplayerspawnpoints.isDirty = true;
         }
         private void grid_heightNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            playerspawnpoints.fresh.generator_params.grid_height = grid_heightNUD.Value;
+            Currentplayerspawnpointssection.generator_params.grid_height = (int)generatorparamsgrid_heightNUD.Value;
             currentproject.cfgplayerspawnpoints.isDirty = true;
         }
         private void GPmax_dist_staticNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            playerspawnpoints.fresh.generator_params.max_dist_static = GPmax_dist_staticNUD.Value;
+            Currentplayerspawnpointssection.generator_params.max_dist_static = (int)generatorparamsmax_dist_staticNUD.Value;
             currentproject.cfgplayerspawnpoints.isDirty = true;
         }
         private void max_steepnessNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            playerspawnpoints.fresh.generator_params.max_steepness = (int)max_steepnessNUD.Value;
+            Currentplayerspawnpointssection.generator_params.max_steepness = (int)generatorparamsmax_steepnessNUD.Value;
             currentproject.cfgplayerspawnpoints.isDirty = true;
         }
-        private void tabControl16_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            pictureBox2.Invalidate();
-        }
-        private void hopPosXNUD_ValueChanged(object sender, EventArgs e)
+        private void GroupParamsenablegroupsCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            playerspawnpointsHopPos currentpos = PlayerSpanHopLB.SelectedItem as playerspawnpointsHopPos;
-            currentpos.x = (float)hopPosXNUD.Value;
-            PlayerSpanHopLB.Invalidate();
+            Currentplayerspawnpointssection.group_params.enablegroups = GroupParamsenablegroupsCB.Checked;
             currentproject.cfgplayerspawnpoints.isDirty = true;
-            pictureBox2.Invalidate();
         }
-        private void hopPosZNUD_ValueChanged(object sender, EventArgs e)
+        private void GroupParamslifetimeNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            playerspawnpointsHopPos currentpos = PlayerSpanHopLB.SelectedItem as playerspawnpointsHopPos;
-            currentpos.z = (float)hopPosZNUD.Value;
-            PlayerSpanHopLB.Invalidate();
+            Currentplayerspawnpointssection.group_params.lifetime = (int)GroupParamslifetimeNUD.Value;
             currentproject.cfgplayerspawnpoints.isDirty = true;
-            pictureBox2.Invalidate();
         }
-        private void travelPosXNUD_ValueChanged(object sender, EventArgs e)
+        private void GroupParamscounterNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            playerspawnpointsTravelPos currentpos = PlayerspawntravelLB.SelectedItem as playerspawnpointsTravelPos;
-            currentpos.x = (float)travelPosXNUD.Value;
-            PlayerspawntravelLB.Invalidate();
+            Currentplayerspawnpointssection.group_params.counter = (int)GroupParamscounterNUD.Value;
             currentproject.cfgplayerspawnpoints.isDirty = true;
-            pictureBox2.Invalidate();
-        }
-        private void travelPosZNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!isUserInteraction) return;
-            playerspawnpointsTravelPos currentpos = PlayerspawntravelLB.SelectedItem as playerspawnpointsTravelPos;
-            currentpos.z = (float)travelPosZNUD.Value;
-            PlayerspawntravelLB.Invalidate();
-            currentproject.cfgplayerspawnpoints.isDirty = true;
-            pictureBox2.Invalidate();
-        }
-        private void darkButton25_Click(object sender, EventArgs e)
-        {
-            playerspawnpointsHopPos newpos = new playerspawnpointsHopPos()
-            {
-                x = currentproject.MapSize / 2,
-                z = currentproject.MapSize / 2
-            };
-            if (playerspawnpoints.hop == null)
-            {
-                playerspawnpoints.hop = new playerspawnpointsHop()
-                {
-                    generator_posbubbles = new BindingList<playerspawnpointsHopPos>()
-                };
-            }
-            playerspawnpoints.hop.generator_posbubbles.Add(newpos);
-            PlayerSpanHopLB.Invalidate();
-            PlayerSpanHopLB.SelectedIndex = PlayerSpanHopLB.Items.Count - 1;
-            currentproject.cfgplayerspawnpoints.isDirty = true;
-            pictureBox2.Invalidate();
-        }
-        private void darkButton24_Click(object sender, EventArgs e)
-        {
-            if (PlayerSpanHopLB.SelectedItems.Count == 0) return;
-            playerspawnpointsHopPos currentpos = PlayerSpanHopLB.SelectedItem as playerspawnpointsHopPos;
-            playerspawnpoints.hop.generator_posbubbles.Remove(currentpos);
-            PlayerSpanHopLB.Invalidate();
-            currentproject.cfgplayerspawnpoints.isDirty = true;
-            pictureBox2.Invalidate();
-        }
-        private void PlayerSpanHopLB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (PlayerSpanHopLB.SelectedItems.Count == 0) return;
-            playerspawnpointsHopPos currentpos = PlayerSpanHopLB.SelectedItem as playerspawnpointsHopPos;
-            isUserInteraction = false;
-            hopPosXNUD.Value = (decimal)currentpos.x;
-            hopPosZNUD.Value = (decimal)currentpos.z;
-            isUserInteraction = true;
-            pictureBox2.Invalidate();
         }
         private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
         {
@@ -4888,21 +4976,8 @@ namespace DayZeEditor
                 float scalevalue = PlayerSpawnScale * 0.05f;
                 float mapsize = currentproject.MapSize;
                 int newsize = (int)(mapsize * scalevalue);
-                switch (tabControl16.SelectedIndex)
-                {
-                    case 0:
-                        FreshPosXNUD.Value = Decimal.Round((decimal)(mouseEventArgs.X / scalevalue),4);
-                        FreshPosZNUD.Value = Decimal.Round((decimal)((newsize - mouseEventArgs.Y) / scalevalue),4);
-                        break;
-                    case 1:
-                        hopPosXNUD.Value = Decimal.Round((decimal)(mouseEventArgs.X / scalevalue),4);
-                        hopPosZNUD.Value = Decimal.Round((decimal)((newsize - mouseEventArgs.Y) / scalevalue),4);
-                        break;
-                    case 2:
-                        travelPosXNUD.Value = Decimal.Round((decimal)(mouseEventArgs.X / scalevalue),4);
-                        travelPosZNUD.Value = Decimal.Round((decimal)((newsize - mouseEventArgs.Y) / scalevalue),4);
-                        break;
-                }
+                FreshPosXNUD.Value = Decimal.Round((decimal)(mouseEventArgs.X / scalevalue),4);
+                FreshPosZNUD.Value = Decimal.Round((decimal)((newsize - mouseEventArgs.Y) / scalevalue),4);
                 Cursor.Current = Cursors.Default;
                 currentproject.cfgplayerspawnpoints.isDirty = true;
                 pictureBox2.Invalidate();
@@ -4910,16 +4985,15 @@ namespace DayZeEditor
         }
         private void DrawAllPlayerSpawns(object sender, PaintEventArgs e)
         {
-            switch (tabControl16.SelectedIndex)
+            if (PlayerSpawnAllGroupsCB.Checked == true)
             {
-                case 0:
-                    if (playerspawnpoints.fresh == null) return;
-                    playerspawnpointsFreshPos currentpos = PlayerFGreshSpawnLB.SelectedItem as playerspawnpointsFreshPos;
-                    foreach (playerspawnpointsFreshPos newpos in playerspawnpoints.fresh.generator_posbubbles)
+                foreach (playerspawnpointsGroup pointgroup in Currentplayerspawnpointssection.generator_posbubbles)
+                {
+                    foreach (playerspawnpointsGroupPos newpos in pointgroup.pos)
                     {
                         float scalevalue = PlayerSpawnScale * 0.05f;
-                        int centerX = (int)(Math.Round(newpos.x) * scalevalue);
-                        int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(newpos.z, 0) * scalevalue);
+                        int centerX = (int)(Math.Round(newpos.x) * (decimal)scalevalue);
+                        int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(newpos.z, 0) * (decimal)scalevalue);
                         int radius = (int)(Math.Round(1f, 0) * scalevalue);
                         Point center = new Point(centerX, centerY);
                         Pen pen = new Pen(Color.Red, 4);
@@ -4927,41 +5001,27 @@ namespace DayZeEditor
                             pen.Color = Color.LimeGreen;
                         getCircle(e.Graphics, pen, center, radius);
                     }
-                    break;
-                case 1:
-                    if (playerspawnpoints.hop == null) return;
-                    playerspawnpointsHopPos currenthoppos = PlayerSpanHopLB.SelectedItem as playerspawnpointsHopPos;
-                    foreach (playerspawnpointsHopPos newpos in playerspawnpoints.hop.generator_posbubbles)
-                    {
-                        float scalevalue = PlayerSpawnScale * 0.05f;
-                        int centerX = (int)(Math.Round(newpos.x) * scalevalue);
-                        int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(newpos.z, 0) * scalevalue);
-                        int radius = (int)(Math.Round(1f, 0) * scalevalue);
-                        Point center = new Point(centerX, centerY);
-                        Pen pen = new Pen(Color.Red, 4);
-                        if (newpos == currenthoppos)
-                            pen.Color = Color.LimeGreen;
-                        getCircle(e.Graphics, pen, center, radius);
-                    }
-                    break;
-                case 2:
-                    if (playerspawnpoints.travel == null) return;
-                    playerspawnpointsTravelPos currenttravelpos = PlayerspawntravelLB.SelectedItem as playerspawnpointsTravelPos;
-                    foreach (playerspawnpointsTravelPos newpos in playerspawnpoints.travel.generator_posbubbles)
-                    {
-                        float scalevalue = PlayerSpawnScale * 0.05f;
-                        int centerX = (int)(Math.Round(newpos.x) * scalevalue);
-                        int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(newpos.z, 0) * scalevalue);
-                        int radius = (int)(Math.Round(1f, 0) * scalevalue);
-                        Point center = new Point(centerX, centerY);
-                        Pen pen = new Pen(Color.Red, 4);
-                        if (newpos == currenttravelpos)
-                            pen.Color = Color.LimeGreen;
-                        getCircle(e.Graphics, pen, center, radius);
-                    }
-                    break;
+                }
             }
-
+            else
+            {
+                foreach (playerspawnpointsGroupPos newpos in currentplayerspawnpointsGroup.pos)
+                {
+                    float scalevalue = PlayerSpawnScale * 0.05f;
+                    int centerX = (int)(Math.Round(newpos.x) * (decimal)scalevalue);
+                    int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(newpos.z, 0) * (decimal)scalevalue);
+                    int radius = (int)(Math.Round(1f, 0) * scalevalue);
+                    Point center = new Point(centerX, centerY);
+                    Pen pen = new Pen(Color.Red, 4);
+                    if (newpos == currentpos)
+                        pen.Color = Color.LimeGreen;
+                    getCircle(e.Graphics, pen, center, radius);
+                }
+            }
+        }
+        private void PlayerSpawnAllGroupsCB_CheckedChanged(object sender, EventArgs e)
+        {
+            pictureBox2.Invalidate();
         }
         private void SetSpawnScale()
         {
@@ -5508,6 +5568,11 @@ namespace DayZeEditor
             {
                 return;
             }
+        }
+        private void darkButton67_Click(object sender, EventArgs e)
+        {
+            cfggameplay.BaseBuildingData.HologramData.disallowedTypesInUnderground.Remove(CFGGameplayDisallowedtypesLB.GetItemText(CFGGameplayDisallowedtypesLB.SelectedItem));
+            currentproject.CFGGameplayConfig.isDirty = true;
         }
         #endregion cfggameplayconfig
         #region cfgrandompresets
@@ -6340,8 +6405,6 @@ namespace DayZeEditor
             weather.storm.timeout = (int)StimeoutNUD.Value;
             currentproject.weatherconfig.isDirty = true;
         }
-
-
         #endregion weather
         #region ignorelist
         public ignore ignore;
@@ -6505,8 +6568,6 @@ namespace DayZeEditor
             }
         }
         #endregion ignorelist
-
-
         #region mapgroupproto
         public prototype prototype;
         public prototypeGroup currentmapgroupprotoGroup;
@@ -6781,7 +6842,6 @@ namespace DayZeEditor
             currentproject.mapgroupproto.isDirty = true;
         }
         #endregion
-
         #region territories
         public decimal MissionMapscale = 1;
         public territoriesConfig currentterritoriesConfig;
@@ -7396,7 +7456,6 @@ namespace DayZeEditor
 
 
         #endregion territories
-
         #region initc
         //styles
         TextStyle BlueStyle = new TextStyle(Brushes.Blue, null, FontStyle.Regular);
@@ -7537,8 +7596,858 @@ namespace DayZeEditor
         }
 
 
+
+
+
         #endregion initc
+        #region spawngear
+        public SpawnGearPresetFiles currentspawnGearPresetFiles;
+        public Attachmentslotitemset CurrentAttachmentslotitemset;
+        public Discreteitemset CurrentDiscreteitemset;
+        public Complexchildrentype CurrentComplexchildrentype;
+        public Discreteunsorteditemset CurrentDiscreteunsorteditemset;
+        public TreeNode CurrentTreeNode { get; private set; }
+        private void LoadSpawnGear()
+        {
+            isUserInteraction = false;
+            SpawnGearPresetFilesLB.DisplayMember = "DisplayName";
+            SpawnGearPresetFilesLB.ValueMember = "Value";
+            SpawnGearPresetFilesLB.DataSource = cfggameplay.SpawnGearPresetFiles;
+            isUserInteraction = true;
+        }
+        private void listBox7_SelectedIndexChanged_2(object sender, EventArgs e)
+        {
+            if (SpawnGearPresetFilesLB.SelectedItems.Count < 1) return;
+            currentspawnGearPresetFiles = SpawnGearPresetFilesLB.SelectedItem as SpawnGearPresetFiles;
+            isUserInteraction = false;
+            LoadSpawnGearTreeView();
+            isUserInteraction = true;
+        }
+        private void LoadSpawnGearTreeView()
+        {
+            treeViewMS3.Nodes.Clear();
+            TreeNode rootNode = new TreeNode(currentspawnGearPresetFiles.Filename)
+            {
+                Tag = "SpawnGearPresetFilesParent"
+            };
+            rootNode.Nodes.Add(new TreeNode("Name")
+            {
+                Tag = "name"
+            });
+            rootNode.Nodes.Add(new TreeNode("Spawn Weight")
+            {
+                Tag = "spawnWeight"
+            });
+            rootNode.Nodes.Add(new TreeNode("Character Types")
+            {
+                Tag = "characterTypes"
+            });
+            TreeNode AttachmentslotitemsetNode = new TreeNode("Attachment slot item set")
+            {
+                Tag = "attachmentSlotItemSetsParent"
+            };
+            foreach (Attachmentslotitemset Slot in currentspawnGearPresetFiles.attachmentSlotItemSets)
+            {
+                AttachmentslotitemsetNode.Nodes.Add(AttachmentslotitemsetNodeTN(Slot));
+            }
+            rootNode.Nodes.Add(AttachmentslotitemsetNode);
+            TreeNode discreteUnsortedItemSets = new TreeNode("Discrete Unsorted Item Sets")
+            {
+                Tag = "discreteUnsortedItemSetsParent"
+            };
+            foreach (Discreteunsorteditemset DUIS in currentspawnGearPresetFiles.discreteUnsortedItemSets)
+            {
+                discreteUnsortedItemSets.Nodes.Add(DiscreteunsorteditemsetTN(DUIS));
+            }
+            rootNode.Nodes.Add(discreteUnsortedItemSets);
+            treeViewMS3.Nodes.Add(rootNode);
+        }
+        private TreeNode DiscreteunsorteditemsetTN(Discreteunsorteditemset dUIS)
+        {
+            TreeNode DUIS = new TreeNode(dUIS.name)
+            {
+                Tag = dUIS
+            };
+            DUIS.Nodes.Add(new TreeNode("Spawn Weight")
+            {
+                Tag = "spawnWeight"
+            });
+            DUIS.Nodes.Add(new TreeNode("Attributes")
+            {
+                Tag = "attributes"
+            });
+            TreeNode ComplexChildrenTypes = new TreeNode("Complex Children Types")
+            {
+                Tag = "complexChildrenTypes"
+            };
+            foreach (Complexchildrentype CCT in dUIS.complexChildrenTypes)
+            {
+                ComplexChildrenTypes.Nodes.Add(ComplexChildrenTypesNodeTN(CCT));
+            }
+            DUIS.Nodes.Add(ComplexChildrenTypes);
+            DUIS.Nodes.Add(new TreeNode("Simple Children Use Default Attributes")
+            {
+                Tag = "simpleChildrenUseDefaultAttributes"
+            });
+            DUIS.Nodes.Add(new TreeNode("Simple Children Types")
+            {
+                Tag = "simpleChildrenTypes"
+            });
 
+            return DUIS;
+        }
+        private TreeNode AttachmentslotitemsetNodeTN(Attachmentslotitemset slot)
+        {
+            string slotname = slot.slotName;
+            TreeNode ASISnode = new TreeNode(slotname)
+            {
+                Tag = slot
+            };
+            foreach (Discreteitemset DIS in slot.discreteItemSets)
+            {
+                ASISnode.Nodes.Add(DiscreetItemSetsTN(DIS));
+            }
+            return ASISnode;
+        }
+        private TreeNode DiscreetItemSetsTN( Discreteitemset DIS)
+        {
+            TreeNode DISNode = new TreeNode(DIS.itemType)
+            {
+                Tag = DIS
+            };
+            DISNode.Nodes.Add(new TreeNode("Spawn Weight")
+            {
+                Tag = "spawnWeight"
+            });
+            DISNode.Nodes.Add(new TreeNode("Attributes")
+            {
+                Tag = "attributes"
+            });
+            DISNode.Nodes.Add(new TreeNode("Quick Bar Slot")
+            {
+                Tag = "quickBarSlot"
+            });
+            TreeNode ComplexChildrenTypes = new TreeNode("Complex Children Types")
+            {
+                Tag = "complexChildrenTypes"
+            };
+            foreach (Complexchildrentype CCT in DIS.complexChildrenTypes)
+            {
+                ComplexChildrenTypes.Nodes.Add(ComplexChildrenTypesNodeTN(CCT));
+            }
+            DISNode.Nodes.Add(ComplexChildrenTypes);
+            DISNode.Nodes.Add(new TreeNode("Simple Children Use Default Attributes")
+            {
+                Tag = "simpleChildrenUseDefaultAttributes"
+            });
+            DISNode.Nodes.Add(new TreeNode("Simple Children Types")
+            {
+                Tag = "simpleChildrenTypes"
+            });
 
+            return DISNode;
+        }
+        private TreeNode ComplexChildrenTypesNodeTN(Complexchildrentype cCT)
+        {
+            string slotname = cCT.itemType;
+            TreeNode CCTNode = new TreeNode(slotname)
+            {
+                Tag = cCT
+            };
+            CCTNode.Nodes.Add(new TreeNode("Attributes")
+            {
+                Tag = "attributes"
+            });
+            CCTNode.Nodes.Add(new TreeNode("Quick Bar Slot")
+            {
+                Tag = "quickBarSlot"
+            });
+            CCTNode.Nodes.Add(new TreeNode("Simple Children Use Default Attributes")
+            {
+                Tag = "simpleChildrenUseDefaultAttributes"
+            });
+            CCTNode.Nodes.Add(new TreeNode("Simple Children Types")
+            {
+                Tag = "simpleChildrenTypes"
+            });
+            return CCTNode;
+        }
+        private void darkButton68_Click(object sender, EventArgs e)
+        {
+            AddNeweventFile form = new AddNeweventFile
+            {
+                currentproject = currentproject,
+                newlocation = true,
+                SetTitle = "Add New Spawn Gear File",
+                settype = "Spawn Gear Preset File Name",
+                SetFolderName = "Select folder where File will created, must be in mpmission folder....",
+                setbuttontest = "Add Spawn Gear Preset"
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string path = form.CustomLocation;
+                string modname = form.TypesName;
+                Directory.CreateDirectory(path);
+                cfggameplay.Addnewspawngearfile(path.Replace(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\", "") + "/" + modname + ".json");
+                currentproject.CFGGameplayConfig.isDirty = true;
+            }
+        }
+        private void darkButton69_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("This Will Remove The All reference to this SpawnGearPreset, Are you sure you want to do this?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                if (File.Exists(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\" + currentspawnGearPresetFiles.Filename))
+                {
+                    File.Delete(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\" + currentspawnGearPresetFiles.Filename);
+                }
+                cfggameplay.SpawnGearPresetFiles.Remove(currentspawnGearPresetFiles);
+                currentproject.CFGGameplayConfig.isDirty = true;
+            }
+        }
+        private void treeViewMS3_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            isUserInteraction = false;
+            treeViewMS3.SelectedNode = e.Node;
+            CurrentTreeNode = e.Node;
+
+            SpawnGearNameGB.Visible = false;
+            characterTypesGB.Visible = false;
+            attachmentSlotItemSetsGB.Visible = false;
+            itemTypeGB.Visible = false;
+            spawnWeightGB.Visible = false;
+            SpawnGearAttributesGB.Visible = false;
+            quickBarSlotGB.Visible = false;
+            simpleChildrenUseDefaultAttributesGB.Visible = false;
+            simpleChildrenTypesGB.Visible = false;
+
+            addNewAttachmentSlotItemSet.Visible = false;
+            deleteAttachmentSlotItemSetToolStripMenuItem.Visible = false;
+            addNewDisctreetItemSetToolStripMenuItem.Visible = false;
+            deleteDiscreetItemSetToolStripMenuItem.Visible = false;
+            addNewComplexChildSetToolStripMenuItem.Visible = false;
+            deleteComplexChildSetToolStripMenuItem.Visible = false;
+            addNewDiscreetUnsortedSetToolStripMenuItem.Visible = false;
+            deleteDiscreetUnsortedItemSetToolStripMenuItem.Visible = false;
+
+            if (e.Node.Tag is string)
+            {
+                if (e.Node.Tag.ToString() == "SpawnGearPresetFilesParent")
+                {
+                    isUserInteraction = true;
+                    return;
+                }
+                if (e.Node.Tag.ToString() is "attachmentSlotItemSetsParent")
+                {
+                    if (e.Button == MouseButtons.Right)
+                    {
+                        addNewAttachmentSlotItemSet.Visible = true;
+                        SpawnGearCMS.Show(Cursor.Position);
+                    }
+                }
+                else if (e.Node.Tag.ToString() == "discreteUnsortedItemSetsParent")
+                {
+                    if (e.Button == MouseButtons.Right)
+                    {
+                        addNewDiscreetUnsortedSetToolStripMenuItem.Visible = true;
+                        SpawnGearCMS.Show(Cursor.Position);
+                    }
+                }
+                else if (e.Node.Parent.Tag.ToString() == "SpawnGearPresetFilesParent")
+                {
+                    if (e.Node.Tag.ToString() == "spawnWeight")
+                    {
+                        spawnWeightGB.Visible = true;
+                        spawnWeightNUD.Value = currentspawnGearPresetFiles.spawnWeight;
+                    }
+                    else if (e.Node.Tag.ToString() == "name")
+                    {
+                        SpawnGearNameGB.Visible = true;
+                        SpawnGearNameTB.Text = currentspawnGearPresetFiles.name;
+                    }
+                    else if (e.Node.Tag.ToString() == "characterTypes")
+                    {
+                        characterTypesGB.Visible = true;
+                        characterTypesLB.DisplayMember = "DisplayName";
+                        characterTypesLB.ValueMember = "Value";
+                        characterTypesLB.DataSource = currentspawnGearPresetFiles.characterTypes;
+                    }
+                }
+                else if (e.Node.Parent.Tag is Discreteitemset)
+                {
+                    CurrentDiscreteitemset = e.Node.Parent.Tag as Discreteitemset;
+                    if (e.Node.Tag.ToString() == "spawnWeight")
+                    {
+                        spawnWeightGB.Visible = true;
+                        spawnWeightNUD.Value = CurrentDiscreteitemset.spawnWeight;
+                    }
+                    else if (e.Node.Tag.ToString() == "attributes")
+                    {
+                        SpawnGearAttributesGB.Visible = true;
+                        SpawnGearhealthMinNUD.Value = CurrentDiscreteitemset.attributes.healthMin;
+                        SpawnGearhealthMaxNUD.Value = CurrentDiscreteitemset.attributes.healthMax;
+                        SpawnGearQuanityMinNUD.Value = CurrentDiscreteitemset.attributes.quantityMin;
+                        SpawnGearQuanityMaxNUD.Value = CurrentDiscreteitemset.attributes.quantityMax;
+                    }
+                    else if (e.Node.Tag.ToString() == "quickBarSlot")
+                    {
+                        quickBarSlotGB.Visible = true;
+                        quickBarSlotNUD.Value = CurrentDiscreteitemset.quickBarSlot;
+                    }
+                    else if (e.Node.Tag.ToString() == "simpleChildrenUseDefaultAttributes")
+                    {
+                        simpleChildrenUseDefaultAttributesGB.Visible = true;
+                        simpleChildrenUseDefaultAttributesCB.Checked = CurrentDiscreteitemset.simpleChildrenUseDefaultAttributes;
+                    }
+                    else if (e.Node.Tag.ToString() == "simpleChildrenTypes")
+                    {
+                        simpleChildrenTypesGB.Visible = true;
+                        simpleChildrenTypesLB.DisplayMember = "DisplayName";
+                        simpleChildrenTypesLB.ValueMember = "Value";
+                        simpleChildrenTypesLB.DataSource = CurrentDiscreteitemset.simpleChildrenTypes;
+                    }
+                    else if (e.Node.Tag.ToString() == "complexChildrenTypes")
+                    {
+                        if (e.Button == MouseButtons.Right)
+                        {
+                            addNewComplexChildSetToolStripMenuItem.Visible = true;
+                            SpawnGearCMS.Show(Cursor.Position);
+                        }
+                    }
+                }
+                else if (e.Node.Parent.Tag is Complexchildrentype)
+                {
+                    CurrentComplexchildrentype = e.Node.Parent.Tag as Complexchildrentype;
+                    if (e.Node.Tag.ToString() == "attributes")
+                    {
+                        SpawnGearAttributesGB.Visible = true;
+                        SpawnGearhealthMinNUD.Value = CurrentComplexchildrentype.attributes.healthMin;
+                        SpawnGearhealthMaxNUD.Value = CurrentComplexchildrentype.attributes.healthMax;
+                        SpawnGearQuanityMinNUD.Value = CurrentComplexchildrentype.attributes.quantityMin;
+                        SpawnGearQuanityMaxNUD.Value = CurrentComplexchildrentype.attributes.quantityMax;
+                    }
+                    else if (e.Node.Tag.ToString() == "quickBarSlot")
+                    {
+                        quickBarSlotGB.Visible = true;
+                        quickBarSlotNUD.Value = CurrentComplexchildrentype.quickBarSlot;
+                    }
+                    else if (e.Node.Tag.ToString() == "simpleChildrenUseDefaultAttributes")
+                    {
+                        simpleChildrenUseDefaultAttributesGB.Visible = true;
+                        simpleChildrenUseDefaultAttributesCB.Checked = CurrentComplexchildrentype.simpleChildrenUseDefaultAttributes;
+                    }
+                    else if (e.Node.Tag.ToString() == "simpleChildrenTypes")
+                    {
+                        simpleChildrenTypesGB.Visible = true;
+                        simpleChildrenTypesLB.DisplayMember = "DisplayName";
+                        simpleChildrenTypesLB.ValueMember = "Value";
+                        simpleChildrenTypesLB.DataSource = CurrentComplexchildrentype.simpleChildrenTypes;
+                    }
+                }
+                else if (e.Node.Parent.Tag is Discreteunsorteditemset)
+                {
+                    CurrentDiscreteunsorteditemset = e.Node.Parent.Tag as Discreteunsorteditemset;
+                    if (e.Node.Tag.ToString() == "spawnWeight")
+                    {
+                        spawnWeightGB.Visible = true;
+                        spawnWeightNUD.Value = CurrentDiscreteunsorteditemset.spawnWeight;
+                    }
+                    else if (e.Node.Tag.ToString() == "attributes")
+                    {
+                        SpawnGearAttributesGB.Visible = true;
+                        SpawnGearhealthMinNUD.Value = CurrentDiscreteunsorteditemset.attributes.healthMin;
+                        SpawnGearhealthMaxNUD.Value = CurrentDiscreteunsorteditemset.attributes.healthMax;
+                        SpawnGearQuanityMinNUD.Value = CurrentDiscreteunsorteditemset.attributes.quantityMin;
+                        SpawnGearQuanityMaxNUD.Value = CurrentDiscreteunsorteditemset.attributes.quantityMax;
+                    }
+                    else if (e.Node.Tag.ToString() == "simpleChildrenUseDefaultAttributes")
+                    {
+                        simpleChildrenUseDefaultAttributesGB.Visible = true;
+                        simpleChildrenUseDefaultAttributesCB.Checked = CurrentDiscreteunsorteditemset.simpleChildrenUseDefaultAttributes;
+                    }
+                    else if (e.Node.Tag.ToString() == "simpleChildrenTypes")
+                    {
+                        simpleChildrenTypesGB.Visible = true;
+                        simpleChildrenTypesLB.DisplayMember = "DisplayName";
+                        simpleChildrenTypesLB.ValueMember = "Value";
+                        simpleChildrenTypesLB.DataSource = CurrentDiscreteunsorteditemset.simpleChildrenTypes;
+                    }
+                    else if (e.Node.Tag.ToString() == "complexChildrenTypes")
+                    {
+                        if (e.Button == MouseButtons.Right)
+                        {
+                            addNewComplexChildSetToolStripMenuItem.Visible = true;
+                            SpawnGearCMS.Show(Cursor.Position);
+                        }
+                    }
+                }
+            }
+            else if (e.Node.Tag is Attachmentslotitemset)
+            {
+                attachmentSlotItemSetsGB.Visible = true;
+                CurrentAttachmentslotitemset = e.Node.Tag as Attachmentslotitemset;
+                string slotname = CurrentAttachmentslotitemset.slotName;
+                ItemAttachmentSlotNameCB.SelectedIndex = ItemAttachmentSlotNameCB.FindStringExact(slotname);
+                if (e.Button == MouseButtons.Right)
+                {
+                    deleteAttachmentSlotItemSetToolStripMenuItem.Visible = true;
+                    addNewDisctreetItemSetToolStripMenuItem.Visible = true;
+                    SpawnGearCMS.Show(Cursor.Position);
+                }
+            }
+            else if (e.Node.Tag is Discreteitemset)
+            {
+                CurrentDiscreteitemset = e.Node.Tag as Discreteitemset;
+                itemTypeGB.Visible = true;
+                SpawnGearItemTypeTB.Text = CurrentDiscreteitemset.itemType;
+                if (e.Button == MouseButtons.Right)
+                {
+                    deleteDiscreetItemSetToolStripMenuItem.Visible = true;
+                    SpawnGearCMS.Show(Cursor.Position);
+                }
+            }
+            else if (e.Node.Tag is Complexchildrentype)
+            {
+                CurrentComplexchildrentype = e.Node.Tag as Complexchildrentype;
+                itemTypeGB.Visible = true;
+                SpawnGearItemTypeTB.Text = CurrentComplexchildrentype.itemType;
+                if (e.Button == MouseButtons.Right)
+                {
+                    deleteComplexChildSetToolStripMenuItem.Visible = true;
+                    SpawnGearCMS.Show(Cursor.Position);
+                }
+            }
+            else if (e.Node.Tag is Discreteunsorteditemset)
+            {
+                CurrentDiscreteunsorteditemset = e.Node.Tag as Discreteunsorteditemset;
+                SpawnGearNameGB.Visible = true;
+                SpawnGearNameTB.Text = CurrentDiscreteunsorteditemset.name;
+                if (e.Button == MouseButtons.Right)
+                {
+                    deleteDiscreetUnsortedItemSetToolStripMenuItem.Visible = true;
+                    SpawnGearCMS.Show(Cursor.Position);
+                }
+            }
+            isUserInteraction = true;
+        }
+        private void darkButton71_Click(object sender, EventArgs e)
+        {
+            string NPCClassname = characterTypesCB.GetItemText(characterTypesCB.SelectedItem);
+            if (!currentspawnGearPresetFiles.characterTypes.Contains(NPCClassname))
+            {
+                currentspawnGearPresetFiles.characterTypes.Add(NPCClassname);
+                currentspawnGearPresetFiles.isDirty = true;
+            }
+        }
+        private void darkButton75_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < characterTypesCB.Items.Count; i++)
+            {
+                string NPCClassname = characterTypesCB.GetItemText(characterTypesCB.Items[i]);
+                if (!currentspawnGearPresetFiles.characterTypes.Contains(NPCClassname))
+                {
+                    currentspawnGearPresetFiles.characterTypes.Add(NPCClassname);
+                    currentspawnGearPresetFiles.isDirty = true;
+                }
+            }
+        }
+        private void darkButton72_Click(object sender, EventArgs e)
+        {
+            if (characterTypesLB.SelectedItems.Count < 1) return;
+            List<String> lstitems = new List<String>();
+            foreach (int i in characterTypesLB.SelectedIndices)
+            {
+                lstitems.Add(characterTypesLB.GetItemText(characterTypesLB.Items[i]));
+            }
+            foreach (var item in lstitems)
+            {
+                currentspawnGearPresetFiles.characterTypes.Remove(item.ToString());
+                currentspawnGearPresetFiles.isDirty = true;
+            }
+            
+        }
+        private void darkButton73_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                if (CurrentTreeNode.Parent.Tag is Discreteitemset)
+                {
+                    foreach (string l in addedtypes)
+                    {
+                        if (!CurrentDiscreteitemset.simpleChildrenTypes.Contains(l))
+                        {
+                            CurrentDiscreteitemset.simpleChildrenTypes.Add(l);
+                            simpleChildrenTypesLB.Refresh();
+                            currentspawnGearPresetFiles.isDirty = true;
+                        }
+                    }
+                }
+                else if (CurrentTreeNode.Parent.Tag is Complexchildrentype)
+                {
+                    foreach (string l in addedtypes)
+                    {
+                        if (!CurrentComplexchildrentype.simpleChildrenTypes.Contains(l))
+                        {
+                            CurrentComplexchildrentype.simpleChildrenTypes.Add(l);
+                            simpleChildrenTypesLB.Refresh();
+                            currentspawnGearPresetFiles.isDirty = true;
+                        }
+                    }
+                }
+                else if (CurrentTreeNode.Parent.Tag is Discreteunsorteditemset)
+                {
+                    foreach (string l in addedtypes)
+                    {
+                        if (!CurrentDiscreteunsorteditemset.simpleChildrenTypes.Contains(l))
+                        {
+                            CurrentDiscreteunsorteditemset.simpleChildrenTypes.Add(l);
+                            simpleChildrenTypesLB.Refresh();
+                            currentspawnGearPresetFiles.isDirty = true;
+                        }
+                    }
+                }
+               
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+        }
+        private void darkButton74_Click(object sender, EventArgs e)
+        {
+            if (CurrentTreeNode.Parent.Tag is Discreteitemset)
+            {
+                CurrentDiscreteitemset.simpleChildrenTypes.Remove(simpleChildrenTypesLB.GetItemText(simpleChildrenTypesLB.SelectedItem));
+            }
+            else if (CurrentTreeNode.Parent.Tag is Complexchildrentype)
+            {
+                CurrentComplexchildrentype.simpleChildrenTypes.Remove(simpleChildrenTypesLB.GetItemText(simpleChildrenTypesLB.SelectedItem));
+            }
+            else if (CurrentTreeNode.Parent.Tag is Discreteunsorteditemset)
+            {
+                CurrentDiscreteunsorteditemset.simpleChildrenTypes.Remove(simpleChildrenTypesLB.GetItemText(simpleChildrenTypesLB.SelectedItem));
+            }
+            currentspawnGearPresetFiles.isDirty = true;
+            simpleChildrenTypesLB.Refresh();
+        }
+        private void quickBarSlotNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            if(CurrentTreeNode.Parent.Tag is Discreteitemset)
+            {
+                CurrentDiscreteitemset.quickBarSlot = (int)quickBarSlotNUD.Value;
+                currentspawnGearPresetFiles.isDirty = true;
+            }
+            else if (CurrentTreeNode.Parent.Tag is Complexchildrentype)
+            {
+                CurrentComplexchildrentype.quickBarSlot = (int)quickBarSlotNUD.Value;
+                currentspawnGearPresetFiles.isDirty = true;
+            }
+        }
+        private void spawnWeightNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            if(CurrentTreeNode.Parent.Tag is string && CurrentTreeNode.Parent.Tag.ToString() == "SpawnGearPresetFilesParent")
+            {
+                currentspawnGearPresetFiles.spawnWeight = (int)spawnWeightNUD.Value;
+                currentspawnGearPresetFiles.isDirty = true;
+            }
+            else if (CurrentTreeNode.Parent.Tag is Discreteitemset)
+            {
+                CurrentDiscreteitemset.spawnWeight = (int)spawnWeightNUD.Value;
+                currentspawnGearPresetFiles.isDirty = true;
+            }
+            else if (CurrentTreeNode.Parent.Tag is Discreteunsorteditemset)
+            {
+                CurrentDiscreteunsorteditemset.spawnWeight = (int)spawnWeightNUD.Value;
+                currentspawnGearPresetFiles.isDirty = true;
+            }
+        }
+        private void darkButton70_Click(object sender, EventArgs e)
+        {
+            string Classname = "";
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseOnlySingleitem = true
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    Classname = l;
+                }
+                if (CurrentTreeNode.Tag is Discreteitemset)
+                {
+                    CurrentDiscreteitemset.itemType = SpawnGearItemTypeTB.Text = CurrentTreeNode.Text = Classname;
+                    currentspawnGearPresetFiles.isDirty = true;
+                }
+                else if (CurrentTreeNode.Tag is Complexchildrentype)
+                {
+                    CurrentComplexchildrentype.itemType = SpawnGearItemTypeTB.Text = CurrentTreeNode.Text = Classname;
+                    currentspawnGearPresetFiles.isDirty = true;
+                }
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+        }
+        private void ItemAttachmentSlotNameCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            if(CurrentTreeNode.Parent.Tag.ToString() == "attachmentSlotItemSetsParent")
+            {
+                string Slotname = ItemAttachmentSlotNameCB.GetItemText(ItemAttachmentSlotNameCB.SelectedItem);
+                if(!currentspawnGearPresetFiles.attachmentSlotItemSets.Any(x => x.slotName == Slotname))
+                {
+                    CurrentAttachmentslotitemset.slotName = CurrentTreeNode.Text = ItemAttachmentSlotNameCB.GetItemText(ItemAttachmentSlotNameCB.SelectedItem);
+                    currentspawnGearPresetFiles.isDirty = true;
+                }
+                else
+                {
+                    MessageBox.Show("Slot Name allready in Use.....");
+                }
+            }
+        }
+        private void SpawnGearhealthMinNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            if (CurrentTreeNode.Parent.Tag is Discreteitemset)
+            {
+                CurrentDiscreteitemset.attributes.healthMin = SpawnGearhealthMinNUD.Value;
+                currentspawnGearPresetFiles.isDirty = true;
+            }
+            else if (CurrentTreeNode.Parent.Tag is Complexchildrentype)
+            {
+                CurrentComplexchildrentype.attributes.healthMin = SpawnGearhealthMinNUD.Value;
+                currentspawnGearPresetFiles.isDirty = true;
+            }
+            else if (CurrentTreeNode.Parent.Tag is Discreteunsorteditemset)
+            {
+                CurrentDiscreteunsorteditemset.attributes.healthMin = SpawnGearhealthMinNUD.Value;
+                currentspawnGearPresetFiles.isDirty = true;
+            }
+        }
+        private void SpawnGearhealthMaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            if (CurrentTreeNode.Parent.Tag is Discreteitemset)
+            {
+                CurrentDiscreteitemset.attributes.healthMax = SpawnGearhealthMaxNUD.Value;
+                currentspawnGearPresetFiles.isDirty = true;
+            }
+            else if (CurrentTreeNode.Parent.Tag is Complexchildrentype)
+            {
+                CurrentComplexchildrentype.attributes.healthMax = SpawnGearhealthMaxNUD.Value;
+                currentspawnGearPresetFiles.isDirty = true;
+            }
+            else if (CurrentTreeNode.Parent.Tag is Discreteunsorteditemset)
+            {
+                CurrentDiscreteunsorteditemset.attributes.healthMax = SpawnGearhealthMaxNUD.Value;
+                currentspawnGearPresetFiles.isDirty = true;
+            }
+        }
+        private void SpawnGearQuanityMinNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            if (CurrentTreeNode.Parent.Tag is Discreteitemset)
+            {
+                CurrentDiscreteitemset.attributes.quantityMin = SpawnGearQuanityMinNUD.Value;
+                currentspawnGearPresetFiles.isDirty = true;
+            }
+            else if (CurrentTreeNode.Parent.Tag is Complexchildrentype)
+            {
+                CurrentComplexchildrentype.attributes.quantityMin = SpawnGearQuanityMinNUD.Value;
+                currentspawnGearPresetFiles.isDirty = true;
+            }
+            else if (CurrentTreeNode.Parent.Tag is Discreteunsorteditemset)
+            {
+                CurrentDiscreteunsorteditemset.attributes.quantityMin = SpawnGearQuanityMinNUD.Value;
+                currentspawnGearPresetFiles.isDirty = true;
+            }
+        }
+        private void SpawnGearQuanityMaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            if (CurrentTreeNode.Parent.Tag is Discreteitemset)
+            {
+                CurrentDiscreteitemset.attributes.quantityMax = SpawnGearQuanityMaxNUD.Value;
+                currentspawnGearPresetFiles.isDirty = true;
+            }
+            else if (CurrentTreeNode.Parent.Tag is Complexchildrentype)
+            {
+                CurrentComplexchildrentype.attributes.quantityMax = SpawnGearQuanityMaxNUD.Value;
+                currentspawnGearPresetFiles.isDirty = true;
+            }
+            else if (CurrentTreeNode.Parent.Tag is Discreteunsorteditemset)
+            {
+                CurrentDiscreteunsorteditemset.attributes.quantityMax = SpawnGearQuanityMaxNUD.Value;
+                currentspawnGearPresetFiles.isDirty = true;
+            }
+        }
+        private void SpawnGearNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            if (CurrentTreeNode.Parent.Tag is string && CurrentTreeNode.Parent.Tag.ToString() == "SpawnGearPresetFilesParent")
+            {
+                currentspawnGearPresetFiles.name = CurrentTreeNode.Text = SpawnGearNameTB.Text;
+                currentspawnGearPresetFiles.isDirty = true;
+            }
+            else if (CurrentTreeNode.Tag is Discreteunsorteditemset)
+            {
+                CurrentDiscreteunsorteditemset.name = CurrentTreeNode.Text = SpawnGearNameTB.Text;
+                currentspawnGearPresetFiles.isDirty = true;
+            }
+        }
+        private void simpleChildrenUseDefaultAttributesCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            if (CurrentTreeNode.Parent.Tag is Discreteitemset)
+            {
+                CurrentDiscreteitemset.simpleChildrenUseDefaultAttributes = simpleChildrenUseDefaultAttributesCB.Checked;
+                currentspawnGearPresetFiles.isDirty = true;
+            }
+            else if (CurrentTreeNode.Parent.Tag is Complexchildrentype)
+            {
+                CurrentComplexchildrentype.simpleChildrenUseDefaultAttributes = simpleChildrenUseDefaultAttributesCB.Checked;
+                currentspawnGearPresetFiles.isDirty = true;
+            }
+            else if (CurrentTreeNode.Parent.Tag is Discreteunsorteditemset)
+            {
+                CurrentDiscreteunsorteditemset.simpleChildrenUseDefaultAttributes = simpleChildrenUseDefaultAttributesCB.Checked;
+                currentspawnGearPresetFiles.isDirty = true;
+            }
+        }
+        private void addNewAttachmentSlotItemSet_Click(object sender, EventArgs e)
+        {
+            Attachmentslotitemset newASIS = new Attachmentslotitemset()
+            {
+                slotName = "CHANGE ME",
+                discreteItemSets = new BindingList<Discreteitemset>()
+            };
+            currentspawnGearPresetFiles.attachmentSlotItemSets.Add(newASIS);
+            CurrentTreeNode.Nodes.Add(AttachmentslotitemsetNodeTN(newASIS));
+            currentspawnGearPresetFiles.isDirty = true;
+        }
+        private void deleteAttachmentSlotItemSetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentspawnGearPresetFiles.attachmentSlotItemSets.Remove(CurrentAttachmentslotitemset);
+            treeViewMS3.SelectedNode.Remove();
+            currentspawnGearPresetFiles.isDirty = true;
+        }
+        private void addNewDisctreetItemSetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Discreteitemset newDIS = new Discreteitemset()
+            {
+                itemType = "CHANGE ME",
+                spawnWeight = 1,
+                attributes = new Attributes()
+                {
+                    healthMin = 1,
+                    healthMax = 1,
+                    quantityMin = 1,
+                    quantityMax = 1
+                },
+                quickBarSlot = -1,
+                complexChildrenTypes = new BindingList<Complexchildrentype>(),
+                simpleChildrenUseDefaultAttributes = false,
+                simpleChildrenTypes = new BindingList<string>()
+            };
+            CurrentAttachmentslotitemset.discreteItemSets.Add(newDIS);
+            CurrentTreeNode.Nodes.Add(DiscreetItemSetsTN(newDIS));
+            currentspawnGearPresetFiles.isDirty = true;
+        }
+        private void deleteDiscreetItemSetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CurrentAttachmentslotitemset.discreteItemSets.Remove(CurrentDiscreteitemset);
+            treeViewMS3.SelectedNode.Remove();
+            currentspawnGearPresetFiles.isDirty = true;
+        }
+        private void addNewComplexChildSetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Complexchildrentype newCCIS = new Complexchildrentype()
+            {
+                itemType = "CHANGE ME",
+                attributes = new Attributes()
+                {
+                    healthMin = 1,
+                    healthMax = 1,
+                    quantityMin = 1,
+                    quantityMax = 1
+                },
+                quickBarSlot = -1,
+                simpleChildrenUseDefaultAttributes = false,
+                simpleChildrenTypes = new BindingList<string>()
+            };
+            if (CurrentTreeNode.Parent.Tag is Discreteunsorteditemset)
+            {
+                CurrentDiscreteunsorteditemset.complexChildrenTypes.Add(newCCIS);
+                CurrentTreeNode.Nodes.Add(ComplexChildrenTypesNodeTN(newCCIS));
+                currentspawnGearPresetFiles.isDirty = true;
+
+            }
+            else if (CurrentTreeNode.Parent.Tag is Discreteitemset)
+            {
+                CurrentDiscreteitemset.complexChildrenTypes.Add(newCCIS);
+                CurrentTreeNode.Nodes.Add(ComplexChildrenTypesNodeTN(newCCIS));
+                currentspawnGearPresetFiles.isDirty = true;
+            }
+        }
+        private void deleteComplexChildSetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (CurrentTreeNode.Parent.Parent.Tag is Discreteunsorteditemset)
+            {
+                CurrentDiscreteunsorteditemset.complexChildrenTypes.Remove(CurrentComplexchildrentype);
+                treeViewMS3.SelectedNode.Remove();
+                currentspawnGearPresetFiles.isDirty = true;
+            }
+            else if (CurrentTreeNode.Parent.Parent.Tag is Discreteitemset)
+            {
+                CurrentDiscreteitemset.complexChildrenTypes.Remove(CurrentComplexchildrentype);
+                treeViewMS3.SelectedNode.Remove();
+                currentspawnGearPresetFiles.isDirty = true;
+            }
+        }
+        private void addNewDiscreetUnsortedSetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Discreteunsorteditemset newDUIS = new Discreteunsorteditemset()
+            {
+                name = "New Cargo - Change me",
+                spawnWeight = 1,
+                attributes = new Attributes()
+                {
+                    healthMin = 1,
+                    healthMax = 1,
+                    quantityMin = 1,
+                    quantityMax = 1
+                },
+                complexChildrenTypes = new BindingList<Complexchildrentype>(),
+                simpleChildrenUseDefaultAttributes = false,
+                simpleChildrenTypes = new BindingList<string>()
+            };
+            currentspawnGearPresetFiles.discreteUnsortedItemSets.Add(newDUIS);
+            CurrentTreeNode.Nodes.Add(DiscreteunsorteditemsetTN(newDUIS));
+            currentspawnGearPresetFiles.isDirty = true;
+        }
+        private void deleteDiscreetUnsortedItemSetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentspawnGearPresetFiles.discreteUnsortedItemSets.Remove(CurrentDiscreteunsorteditemset);
+            treeViewMS3.SelectedNode.Remove();
+            currentspawnGearPresetFiles.isDirty = true;
+        }
+        #endregion spawngear
     }
 }

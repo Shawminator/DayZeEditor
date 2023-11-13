@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace DayZeLib
 {
-
     // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.
     /// <remarks/>
     [System.SerializableAttribute()]
@@ -16,20 +15,12 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
     public partial class playerspawnpoints
     {
-        public playerspawnpoints()
-        {
-            fresh = new playerspawnpointsFresh();
-            hop = new playerspawnpointsHop();
-            travel = new playerspawnpointsTravel();
-        }
-        private playerspawnpointsFresh freshField;
-
-        private playerspawnpointsHop hopField;
-
-        private playerspawnpointsTravel travelField;
+        private playerspawnpointssection freshField;
+        private playerspawnpointssection hopField;
+        private playerspawnpointssection travelField;
 
         /// <remarks/>
-        public playerspawnpointsFresh fresh
+        public playerspawnpointssection fresh
         {
             get
             {
@@ -42,7 +33,7 @@ namespace DayZeLib
         }
 
         /// <remarks/>
-        public playerspawnpointsHop hop
+        public playerspawnpointssection hop
         {
             get
             {
@@ -55,7 +46,7 @@ namespace DayZeLib
         }
 
         /// <remarks/>
-        public playerspawnpointsTravel travel
+        public playerspawnpointssection travel
         {
             get
             {
@@ -66,29 +57,28 @@ namespace DayZeLib
                 this.travelField = value;
             }
         }
+
+        public playerspawnpoints()
+        {
+            fresh = new playerspawnpointssection();
+            hop = new playerspawnpointssection();
+            travel = new playerspawnpointssection();
+        }
     }
 
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class playerspawnpointsFresh
+    public partial class playerspawnpointssection
     {
-        public playerspawnpointsFresh()
-        {
-            spawn_params = new playerspawnpointsFreshSpawn_params();
-            generator_params = new playerspawnpointsFreshGenerator_params();
-            generator_posbubbles = new BindingList<playerspawnpointsFreshPos>();
-        }
-
-        private playerspawnpointsFreshSpawn_params spawn_paramsField;
-
-        private playerspawnpointsFreshGenerator_params generator_paramsField;
-
-        private BindingList<playerspawnpointsFreshPos> generator_posbubblesField;
+        private playerspawnpointsSpawn_params spawn_paramsField;
+        private playerspawnpointsGenerator_params generator_paramsField;
+        private playerspawnpointsGroup_params group_paramsField;
+        private BindingList<playerspawnpointsGroup> generator_posbubblesField;
 
         /// <remarks/>
-        public playerspawnpointsFreshSpawn_params spawn_params
+        public playerspawnpointsSpawn_params spawn_params
         {
             get
             {
@@ -101,7 +91,7 @@ namespace DayZeLib
         }
 
         /// <remarks/>
-        public playerspawnpointsFreshGenerator_params generator_params
+        public playerspawnpointsGenerator_params generator_params
         {
             get
             {
@@ -114,8 +104,21 @@ namespace DayZeLib
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlArrayItemAttribute("pos", IsNullable = false)]
-        public BindingList<playerspawnpointsFreshPos> generator_posbubbles
+        public playerspawnpointsGroup_params group_params
+        {
+            get
+            {
+                return this.group_paramsField;
+            }
+            set
+            {
+                this.group_paramsField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("group", IsNullable = false)]
+        public BindingList<playerspawnpointsGroup> generator_posbubbles
         {
             get
             {
@@ -127,33 +130,25 @@ namespace DayZeLib
             }
         }
 
+        public playerspawnpointssection()
+        {
+            spawn_params = new playerspawnpointsSpawn_params();
+            generator_params = new playerspawnpointsGenerator_params();
+            group_paramsField = new playerspawnpointsGroup_params();
+            generator_posbubblesField = new BindingList<playerspawnpointsGroup>();
+        }
     }
-
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class playerspawnpointsFreshSpawn_params
+    public partial class playerspawnpointsSpawn_params
     {
-        public playerspawnpointsFreshSpawn_params()
-        {
-            min_dist_infected = (decimal)30.0;
-            max_dist_infected = (decimal)70.0;
-            min_dist_player = (decimal)25.0;
-            max_dist_player = (decimal)70.0;
-            min_dist_static = (decimal)0.5;
-            max_dist_static = (decimal)2.0;
-        }
         private decimal min_dist_infectedField;
-
         private decimal max_dist_infectedField;
-
         private decimal min_dist_playerField;
-
         private decimal max_dist_playerField;
-
         private decimal min_dist_staticField;
-
         private decimal max_dist_staticField;
 
         /// <remarks/>
@@ -239,31 +234,14 @@ namespace DayZeLib
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class playerspawnpointsFreshGenerator_params
+    public partial class playerspawnpointsGenerator_params
     {
-        public playerspawnpointsFreshGenerator_params()
-        {
-            grid_density = 8;
-            grid_width = (decimal)40.0;
-            grid_height = (decimal)40.0;
-            min_dist_static = (decimal)0.5;
-            max_dist_static = (decimal)2.0;
-            min_steepness = -45;
-            max_steepness = 45;
-        }
-
         private int grid_densityField;
-
-        private decimal grid_widthField;
-
-        private decimal grid_heightField;
-
-        private decimal min_dist_staticField;
-
-        private decimal max_dist_staticField;
-
+        private int grid_widthField;
+        private int grid_heightField;
+        private int min_dist_staticField;
+        private int max_dist_staticField;
         private int min_steepnessField;
-
         private int max_steepnessField;
 
         /// <remarks/>
@@ -280,7 +258,7 @@ namespace DayZeLib
         }
 
         /// <remarks/>
-        public decimal grid_width
+        public int grid_width
         {
             get
             {
@@ -293,7 +271,7 @@ namespace DayZeLib
         }
 
         /// <remarks/>
-        public decimal grid_height
+        public int grid_height
         {
             get
             {
@@ -306,7 +284,7 @@ namespace DayZeLib
         }
 
         /// <remarks/>
-        public decimal min_dist_static
+        public int min_dist_static
         {
             get
             {
@@ -319,7 +297,7 @@ namespace DayZeLib
         }
 
         /// <remarks/>
-        public decimal max_dist_static
+        public int max_dist_static
         {
             get
             {
@@ -362,16 +340,168 @@ namespace DayZeLib
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class playerspawnpointsFreshPos
+    public partial class playerspawnpointsGroup_params
     {
+        private bool enablegroupsField;
+        private int lifetimeField;
+        private int counterField;
 
-        private float xField;
+        /// <remarks/>
+        public bool enablegroups
+        {
+            get
+            {
+                return this.enablegroupsField;
+            }
+            set
+            {
+                this.enablegroupsField = value;
+            }
+        }
 
-        private float zField;
+        /// <remarks/>
+        public int lifetime
+        {
+            get
+            {
+                return this.lifetimeField;
+            }
+            set
+            {
+                this.lifetimeField = value;
+            }
+        }
+
+        /// <remarks/>
+        public int counter
+        {
+            get
+            {
+                return this.counterField;
+            }
+            set
+            {
+                this.counterField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class playerspawnpointsGroup
+    {
+        private BindingList<playerspawnpointsGroupPos> posField;
+        private string nameField;
+        private int lifetimeField;
+        private bool lifetimeFieldSpecified;
+        private int counterField;
+        private bool counterFieldSpecified;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("pos")]
+        public BindingList<playerspawnpointsGroupPos> pos
+        {
+            get
+            {
+                return this.posField;
+            }
+            set
+            {
+                this.posField = value;
+            }
+        }
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public float x
+        public string name
+        {
+            get
+            {
+                return this.nameField;
+            }
+            set
+            {
+                this.nameField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int lifetime
+        {
+            get
+            {
+                return this.lifetimeField;
+            }
+            set
+            {
+                this.lifetimeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool lifetimeSpecified
+        {
+            get
+            {
+                return this.lifetimeFieldSpecified;
+            }
+            set
+            {
+                this.lifetimeFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int counter
+        {
+            get
+            {
+                return this.counterField;
+            }
+            set
+            {
+                this.counterField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool counterSpecified
+        {
+            get
+            {
+                return this.counterFieldSpecified;
+            }
+            set
+            {
+                this.counterFieldSpecified = value;
+            }
+        }
+
+        public override string ToString()
+        {
+            return name;
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class playerspawnpointsGroupPos
+    {
+
+        private decimal xField;
+        private decimal zField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal x
         {
             get
             {
@@ -385,7 +515,7 @@ namespace DayZeLib
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public float z
+        public decimal z
         {
             get
             {
@@ -401,153 +531,6 @@ namespace DayZeLib
         {
             return "X:" + xField.ToString() + " , Z:" + zField.ToString();
         }
+
     }
-
-    /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class playerspawnpointsHop
-    {
-
-        public playerspawnpointsHop()
-        {
-            generator_posbubbles = new BindingList<playerspawnpointsHopPos>();
-        }
-
-        private BindingList<playerspawnpointsHopPos> generator_posbubblesField;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayItemAttribute("pos", IsNullable = false)]
-        public BindingList<playerspawnpointsHopPos> generator_posbubbles
-        {
-            get
-            {
-                return this.generator_posbubblesField;
-            }
-            set
-            {
-                this.generator_posbubblesField = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class playerspawnpointsHopPos
-    {
-
-        private float xField;
-
-        private float zField;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public float x
-        {
-            get
-            {
-                return this.xField;
-            }
-            set
-            {
-                this.xField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public float z
-        {
-            get
-            {
-                return this.zField;
-            }
-            set
-            {
-                this.zField = value;
-            }
-        }
-
-        public override string ToString()
-        {
-            return "X:" + xField.ToString() + " , Z:" + zField.ToString();
-        }
-    }
-
-    /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class playerspawnpointsTravel
-    {
-        public playerspawnpointsTravel()
-        {
-            generator_posbubbles = new BindingList<playerspawnpointsTravelPos>();
-        }
-        private BindingList<playerspawnpointsTravelPos> generator_posbubblesField;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayItemAttribute("pos", IsNullable = false)]
-        public BindingList<playerspawnpointsTravelPos> generator_posbubbles
-        {
-            get
-            {
-                return this.generator_posbubblesField;
-            }
-            set
-            {
-                this.generator_posbubblesField = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class playerspawnpointsTravelPos
-    {
-
-        private float xField;
-
-        private float zField;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public float x
-        {
-            get
-            {
-                return this.xField;
-            }
-            set
-            {
-                this.xField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public float z
-        {
-            get
-            {
-                return this.zField;
-            }
-            set
-            {
-                this.zField = value;
-            }
-        }
-
-        public override string ToString()
-        {
-            return "X:" + xField.ToString() + " , Z:" + zField.ToString();
-        }
-    }
-
-
 }

@@ -950,9 +950,68 @@ namespace DayZeLib
         }
         public void SaveCFGGameplay()
         {
+            SetSpawnGearFiles();
             var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
             string jsonString = JsonSerializer.Serialize(cfggameplay, options);
             File.WriteAllText(Filename, jsonString);
+        }
+        public void SetSpawnGearFiles()
+        {
+            cfggameplay.PlayerData.spawnGearPresetFiles = new BindingList<string>();
+            foreach (SpawnGearPresetFiles SGPF in cfggameplay.SpawnGearPresetFiles)
+            {
+                cfggameplay.PlayerData.spawnGearPresetFiles.Add(SGPF.Filename);
+            }
+        }
+        public void GetSpawnGearFiles(string SpawnGearPath)
+        {
+            cfggameplay.SpawnGearPresetFiles = new BindingList<SpawnGearPresetFiles>();
+            Console.Write("## Starting SpawnGearPresets ##" + Environment.NewLine);
+            foreach (string file in cfggameplay.PlayerData.spawnGearPresetFiles)
+            {
+                SpawnGearPresetFiles SpawnGearPresetFiles;
+
+                Console.Write("\tserializing " + file);
+                try
+                {
+                    SpawnGearPresetFiles = JsonSerializer.Deserialize<SpawnGearPresetFiles>(File.ReadAllText(SpawnGearPath + "/" + file));
+                    if (SpawnGearPresetFiles != null)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("  OK....");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    SpawnGearPresetFiles.Filename = file;
+                    cfggameplay.SpawnGearPresetFiles.Add(SpawnGearPresetFiles);
+                }
+                catch (Exception ex)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("  Failed....");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    var form = Application.OpenForms["SplashForm"];
+                    if (form != null)
+                    {
+                        form.Invoke(new Action(() => { form.Close(); }));
+                    }
+                    MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                }
+            }
+            Console.Write("## End  SpawnGearPresets ##" + Environment.NewLine);
+        }
+
+        public void SaveSpawnGearPresetFiles(string MissionPath)
+        {
+            foreach (SpawnGearPresetFiles SGFP in cfggameplay.SpawnGearPresetFiles)
+            {
+                if (SGFP.isDirty == true)
+                {
+                    var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                    string jsonString = JsonSerializer.Serialize(SGFP, options);
+                    File.WriteAllText(MissionPath + SGFP.Filename, jsonString);
+                    SGFP.isDirty = false;
+                }
+            }
         }
     }
     public class cfgEffectAreaConfig
@@ -1079,7 +1138,7 @@ namespace DayZeLib
     }
     public class PlayerDataBase
     {
-        private SQLiteConnection sqlite;
+        public SQLiteConnection sqlite;
 
         public DataSet m_DataSet { get; set; }
         public PlayerDataBase(string filename)
@@ -1092,6 +1151,7 @@ namespace DayZeLib
             }
 
         }
+
         public List<string> GetTables()
         {
             List<string> list = new List<string>();

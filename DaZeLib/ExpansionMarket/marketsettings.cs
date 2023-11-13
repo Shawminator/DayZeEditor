@@ -55,6 +55,8 @@ namespace DayZeLib
             AirSpawnPositions = new BindingList<SpawnPositions>();
             WaterSpawnPositions = new BindingList<SpawnPositions>();
             MarketMenuColors = new MarketMenuColours();
+            Currencies = new BindingList<string>();
+            VehicleKeys = new BindingList<string>();
             isDirty = true;
 
         }
@@ -77,6 +79,8 @@ namespace DayZeLib
             AirSpawnPositions = new BindingList<SpawnPositions>();
             WaterSpawnPositions = new BindingList<SpawnPositions>();
             MarketMenuColors = new MarketMenuColours();
+            Currencies = new BindingList<string>();
+            VehicleKeys = new BindingList<string>();
             isDirty = true;
         }
         public void setspawnnames()

@@ -63,8 +63,6 @@ namespace DayZeEditor
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
 
-            bool needtosave = false;
-
             LoadoutList = new BindingList<AILoadouts>();
             AILoadoutsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Loadouts";
             DirectoryInfo dinfo = new DirectoryInfo(AILoadoutsPath);

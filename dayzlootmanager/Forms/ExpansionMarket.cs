@@ -739,7 +739,7 @@ namespace DayZeEditor
             listBox9.ValueMember = "Value";
             listBox9.DataSource = marketsettings.WaterSpawnPositions;
 
-           
+
             listBox17.DisplayMember = "DisplayName";
             listBox17.ValueMember = "Value";
             listBox17.DataSource = marketsettings.LargeVehicles;
@@ -751,7 +751,12 @@ namespace DayZeEditor
             listBox12.DisplayMember = "DisplayName";
             listBox12.ValueMember = "Value";
             listBox12.DataSource = marketsettings.Currencies;
+            Loadcurreny();
+            action = false;
+        }
 
+        private void Loadcurreny()
+        {
             List<Categories> cats = MarketCats.GetexchangeCats();
             if (cats != null || cats.Count != 0)
             {
@@ -773,8 +778,8 @@ namespace DayZeEditor
                 items.Sort();
                 listBox19.Items.AddRange(items.ToArray());
             }
-            action = false;
         }
+
         private void BackGround_Paint(object sender, PaintEventArgs e)
         {
             PictureBox pb = sender as PictureBox;
@@ -3721,6 +3726,10 @@ namespace DayZeEditor
             }
             return;
         }
+        private void darkButton50_Click(object sender, EventArgs e)
+        {
+            Loadcurreny();
+        }
         private void chnageAttchmentsToLowerCaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             foreach (marketItem item in currentCat.Items)
@@ -3928,6 +3937,8 @@ namespace DayZeEditor
                 }
             }
         }
+
+
     }
 }
 

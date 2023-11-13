@@ -1,4 +1,23 @@
-﻿Version 0.7.8.0
+﻿Version 0.7.8.3
+[Updated]
+cfggameplay json updated to 1.22
+playerspawns updated to match dayz v.1.23
+[Added]
+added playerspawngear to economy manager
+[fixed]
+fixed various bugs reported
+
+Version 0.7.8.2
+[Updated]
+Updated to match latest expansion update.
+
+Version 0.7.8.1
+[Fixed]
+Various Issues reported.
+[Updated]
+Hardline player data
+
+Version 0.7.8.0
 [fixed]
 woopsy on my part missed config files to allow the editor to run....
 

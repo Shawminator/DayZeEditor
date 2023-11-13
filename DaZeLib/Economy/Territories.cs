@@ -93,6 +93,10 @@ namespace DayZeLib
 
         private decimal xField;
 
+        private decimal yField;
+
+        private bool yFieldSpecified;
+
         private decimal zField;
 
         private decimal rField;
@@ -181,6 +185,34 @@ namespace DayZeLib
             }
         }
 
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal y
+        {
+            get
+            {
+                return this.yField;
+            }
+            set
+            {
+                this.yField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool ySpecified
+        {
+            get
+            {
+                return this.yFieldSpecified;
+            }
+            set
+            {
+                this.yFieldSpecified = value;
+            }
+        }
+        
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public decimal z

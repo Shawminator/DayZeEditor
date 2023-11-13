@@ -123,7 +123,12 @@ namespace DayZeLib
                 RequiredFaction = "",
                 FactionReward = "",
                 PlayerNeedQuestItems = 0,
-                DeleteQuestItems = 0
+                DeleteQuestItems = 0,
+                FactionReputationRequirements = new Dictionary<string, int>(),
+                FactionReputationRewards = new Dictionary<string, int>(),
+                FactionReputationRequirementsList = new BindingList<FactionQuestReps>(),
+                FactionReputationRewardsList = new BindingList<FactionQuestReps>()
+
             };
             QuestList.Add(newquest);
         }

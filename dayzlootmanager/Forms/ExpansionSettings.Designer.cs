@@ -2747,6 +2747,11 @@ namespace DayZeEditor
             this.numericUpDown11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.numericUpDown11.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown11.Location = new System.Drawing.Point(327, 143);
+            this.numericUpDown11.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.numericUpDown11.Name = "numericUpDown11";
             this.numericUpDown11.Size = new System.Drawing.Size(176, 20);
             this.numericUpDown11.TabIndex = 81;

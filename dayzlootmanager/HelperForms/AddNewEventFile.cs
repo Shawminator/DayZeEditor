@@ -14,7 +14,7 @@ namespace DayZeEditor
 {
     public partial class AddNeweventFile : DarkForm
     {
-        public Project currentproject { get;  set; }
+        public Project currentproject { get; set; }
         public string TypesName { get; private set; }
         public string CustomLocation { get; private set; }
         public bool newlocation { get; set; }
@@ -67,6 +67,10 @@ namespace DayZeEditor
         public string SetTitle
         {
             set { TitleLabel.Text = value; }
+        }
+        public string SetFolderName
+        {
+            set { darkLabel2.Text = value; } 
         }
         public string settype
         {

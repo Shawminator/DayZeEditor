@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -21,15 +22,33 @@ namespace DayZeLib
 
         [JsonIgnore]
         const int currentversion = 122;
+        [JsonIgnore]
+        public BindingList<SpawnGearPresetFiles> SpawnGearPresetFiles { get; set; }
 
         public cfggameplay()
         {
+            version = currentversion;
             GeneralData = new Generaldata();
             PlayerData = new Playerdata();
             WorldsData = new Worldsdata();
             BaseBuildingData = new Basebuildingdata();
             UIData = new Uidata();
             MapData = new CFGGameplayMapData();
+        }
+
+        public void Addnewspawngearfile(string filename)
+        {
+            SpawnGearPresetFiles newSGPF = new SpawnGearPresetFiles()
+            {
+                isDirty = true,
+                Filename = filename,
+                name = Path.GetFileNameWithoutExtension(filename),
+                spawnWeight = 1,
+                characterTypes = new BindingList<string>(),
+                attachmentSlotItemSets = new BindingList<Attachmentslotitemset>(),
+                discreteUnsortedItemSets = new BindingList<Discreteunsorteditemset>(),
+            };
+            SpawnGearPresetFiles.Add(newSGPF);
         }
 
         internal bool checkver()
@@ -152,7 +171,6 @@ namespace DayZeLib
             shockDepletionSpeed = (decimal)10.0;
         }
     }
-
 
     public class Worldsdata
     {
@@ -291,6 +309,8 @@ namespace DayZeLib
 
         [JsonIgnore]
         public string Filename { get; set; }
+        [JsonIgnore]
+        public bool isDirty { get; set; }
 
         public SpawnGearPresetFiles()
         {
@@ -299,6 +319,14 @@ namespace DayZeLib
             characterTypes = new BindingList<string>();
             attachmentSlotItemSets = new BindingList<Attachmentslotitemset>();
             discreteUnsortedItemSets = new BindingList<Discreteunsorteditemset>();
+        }
+        public void SaveFile()
+        {
+
+        }
+        public override string ToString()
+        {
+            return name;
         }
     }
 
@@ -317,6 +345,13 @@ namespace DayZeLib
         public BindingList<Complexchildrentype> complexChildrenTypes { get; set; }
         public bool simpleChildrenUseDefaultAttributes { get; set; }
         public BindingList<string> simpleChildrenTypes { get; set; }
+
+        public Discreteitemset()
+        {
+            attributes = new Attributes();
+            complexChildrenTypes = new BindingList<Complexchildrentype>();
+            simpleChildrenTypes = new BindingList<string>();
+        }
     }
 
     public class Attributes
@@ -334,6 +369,12 @@ namespace DayZeLib
         public int quickBarSlot { get; set; }
         public bool simpleChildrenUseDefaultAttributes { get; set; }
         public BindingList<string> simpleChildrenTypes { get; set; }
+
+        public Complexchildrentype()
+        {
+            attributes = new Attributes();
+            simpleChildrenTypes = new BindingList<string>();
+        }
     }
 
     public class Discreteunsorteditemset
@@ -341,19 +382,15 @@ namespace DayZeLib
         public string name { get; set; }
         public int spawnWeight { get; set; }
         public Attributes attributes { get; set; }
-        public BindingList<Complexchildrentype1> complexChildrenTypes { get; set; }
+        public BindingList<Complexchildrentype> complexChildrenTypes { get; set; }
         public bool simpleChildrenUseDefaultAttributes { get; set; }
         public BindingList<string> simpleChildrenTypes { get; set; }
+
+        public Discreteunsorteditemset()
+        {
+            attributes = new Attributes();
+            complexChildrenTypes = new BindingList<Complexchildrentype>();
+            simpleChildrenTypes = new BindingList<string>();
+        }
     }
-
-    public class Complexchildrentype1
-    {
-        public string itemType { get; set; }
-        public Attributes attributes { get; set; }
-        public int quickBarSlot { get; set; }
-        public bool simpleChildrenUseDefaultAttributes { get; set; }
-        public BindingList<string> simpleChildrenTypes { get; set; }
-    }
-
-
 }

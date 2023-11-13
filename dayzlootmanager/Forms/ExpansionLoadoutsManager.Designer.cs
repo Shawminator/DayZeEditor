@@ -631,14 +631,14 @@ namespace DayZeEditor
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(856, 508);
-            this.Controls.Add(this.InventoryattchemntGB);
-            this.Controls.Add(this.LoadOutGB);
             this.Controls.Add(this.treeViewMS1);
             this.Controls.Add(this.darkButton15);
             this.Controls.Add(this.darkButton16);
             this.Controls.Add(this.darkLabel5);
             this.Controls.Add(this.loadoutsLB);
             this.Controls.Add(this.darkToolStrip21);
+            this.Controls.Add(this.LoadOutGB);
+            this.Controls.Add(this.InventoryattchemntGB);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ExpansionLoadoutsManager";
             this.Text = "ExpansionLoadoutsManager";
