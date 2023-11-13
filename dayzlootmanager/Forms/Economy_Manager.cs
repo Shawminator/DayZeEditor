@@ -4580,7 +4580,6 @@ namespace DayZeEditor
         {
             Console.WriteLine("Loading PlayerSpawn");
             isUserInteraction = false;
-
             playerspawnpoints = currentproject.cfgplayerspawnpoints.playerspawnpoints;
             Currentplayerspawnpointssection = playerspawnpoints.fresh;
             PlayerSpawnFreshButton.Checked = true;

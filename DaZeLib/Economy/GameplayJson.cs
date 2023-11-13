@@ -34,6 +34,7 @@ namespace DayZeLib
             BaseBuildingData = new Basebuildingdata();
             UIData = new Uidata();
             MapData = new CFGGameplayMapData();
+            SpawnGearPresetFiles = new BindingList<SpawnGearPresetFiles>();
         }
 
         public void Addnewspawngearfile(string filename)

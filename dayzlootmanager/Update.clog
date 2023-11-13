@@ -1,4 +1,8 @@
-﻿Version 0.7.8.3
+﻿Version 0.7.8.4
+[Fix]
+small fix for auto update of the cfggameplay file.
+
+Version 0.7.8.3
 [Updated]
 cfggameplay json updated to 1.22
 playerspawns updated to match dayz v.1.23
