@@ -203,7 +203,7 @@ namespace DayZeEditor
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(Environment.NewLine + "### Warning ### ");
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine(mods.folder + " does not exis, please remove full ce section from economy core." + Environment.NewLine);
+                    Console.WriteLine(path + " does not exis, please remove full ce section from economy core." + Environment.NewLine);
                     continue;
                 }
                 foreach(economycoreCEFile file in mods.file)
@@ -214,7 +214,7 @@ namespace DayZeEditor
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine(Environment.NewLine + "### Warning ### ");
                         Console.ForegroundColor = ConsoleColor.White;
-                        Console.WriteLine(file.name + " Does not exist, please remove from economy core."+ Environment.NewLine);
+                        Console.WriteLine(path + "\\" + file.name + " Does not exist, please remove from economy core."+ Environment.NewLine);
                         continue;
                     }
                     if (file.type == "types")
@@ -265,14 +265,25 @@ namespace DayZeEditor
                 string path = projectFullName + "\\mpmissions\\" + mpmissionpath + "\\" + mods.folder;
                 foreach (economycoreCEFile file in mods.file)
                 {
+                    if (!Directory.Exists(path))
+                    {
+                        haswarnings = true;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine(Environment.NewLine + "### Warning ### ");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine(path + " does not exis, please remove full ce section from economy core." + Environment.NewLine);
+                        continue;
+                    }
                     if (file.type == "events")
                     {
                         if(!File.Exists(path + "\\" + file.name))
                         {
-                            XDocument xmlFile = new XDocument(new XDeclaration("1.0", "utf-8", "yes"));
-                            xmlFile.Add(new XElement("events"));
-                            xmlFile.Save(path + "\\" + file.name);
-                            Console.WriteLine("Custom " + file.name + " events file not found.... Creating blank XML");
+                            haswarnings = true;
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine(Environment.NewLine + "### Warning ### ");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine(path + "\\" + file.name + " Does not exist, please remove from economy core." + Environment.NewLine);
+                            continue;
                         }
                         ModEventsList.Add(new eventscofig(path + "\\" + file.name));
                     }
@@ -309,7 +320,7 @@ namespace DayZeEditor
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(Environment.NewLine + "### Warning ### ");
                     Console.ForegroundColor = ConsoleColor.White; 
-                    Console.WriteLine(mods.folder + " Does not exist. please remove full ce section from economycore" + Environment.NewLine);
+                    Console.WriteLine(path + " Does not exist. please remove full ce section from economycore" + Environment.NewLine);
                     continue;
                 }
                 foreach (economycoreCEFile file in mods.file)
@@ -322,7 +333,7 @@ namespace DayZeEditor
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine(Environment.NewLine + "### Warning ### ");
                             Console.ForegroundColor = ConsoleColor.White;
-                            Console.WriteLine(mods.folder  + "\\" + file.name + " Does not exist, please remove from economy core." + Environment.NewLine);
+                            Console.WriteLine(path + "\\" + file.name + "\\" + file.name + " Does not exist, please remove from economy core." + Environment.NewLine);
                             continue;
                         }
                         spawnabletypesList.Add(new Spawnabletypesconfig(path + "\\" + file.name));

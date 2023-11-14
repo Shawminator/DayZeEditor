@@ -26,6 +26,8 @@ namespace DayZeEditor
     public partial class Economy_Manager : DarkForm
     {
         public bool isUserInteraction = true;
+
+
         public Project currentproject { get; set; }
 
 
@@ -86,7 +88,6 @@ namespace DayZeEditor
             doubleClickTimer.Interval = 100;
             doubleClickTimer.Tick += new EventHandler(doubleClickTimer_Tick);
 
-
             BindingList<listsCategory> newlist = new BindingList<listsCategory>
             {
                 new listsCategory()
@@ -130,6 +131,7 @@ namespace DayZeEditor
             Loadweather();
             Loadignorelist();
             LoadMapgrouProto();
+            LoadMapGroupPos();
             LoadTerritories();
             loadinitC();
             SetSummarytiers();
@@ -421,6 +423,18 @@ namespace DayZeEditor
                     midifiedfiles.Add(Path.GetFileName(currentproject.mapgroupproto.Filename));
                 }
             }
+            if(currentproject.mapgrouppos != null)
+            {
+                if(currentproject.mapgrouppos.isDirty)
+                {
+                    if (currentproject.Createbackups)
+                        currentproject.mapgrouppos.Savemapgrouppos(SaveTime);
+                    else
+                        currentproject.mapgrouppos.Savemapgrouppos();
+                    currentproject.mapgrouppos.isDirty = false;
+                    midifiedfiles.Add(Path.GetFileName(currentproject.mapgrouppos.Filename));
+                }
+            }
             if (currentproject.territoriesList != null)
             {
                 foreach (territoriesConfig territoriesConfig in currentproject.territoriesList)
@@ -571,9 +585,18 @@ namespace DayZeEditor
                     needtosave = true;
                 }
             }
+            //mapgroupproto
             if (currentproject.mapgroupproto != null)
             {
                 if (currentproject.mapgroupproto.isDirty)
+                {
+                    needtosave = true;
+                }
+            }
+            //mapgrouppos
+            if (currentproject.mapgrouppos != null)
+            {
+                if (currentproject.mapgrouppos.isDirty)
                 {
                     needtosave = true;
                 }
@@ -651,6 +674,9 @@ namespace DayZeEditor
         private void PlayerSpawnPointsTabButton_Click(object sender, EventArgs e)
         {
             EconomyTabPage.SelectedIndex = 9;
+            PlayerSpawnFreshButton.AutoSize = true;
+            PlayerSpawnHopButton.AutoSize = true;
+            PlayerSpawnTravelButton.AutoSize = true;
             if (EconomyTabPage.SelectedIndex == 9)
                 PlayerSpawnPointsTabButton.Checked = true;
         }
@@ -684,6 +710,12 @@ namespace DayZeEditor
             if (EconomyTabPage.SelectedIndex == 14)
                 MapGroupProtoTabButton.Checked = true;
 
+        }
+        private void MapGroupPosTabButton_Click(object sender, EventArgs e)
+        {
+            EconomyTabPage.SelectedIndex = 18;
+            if (EconomyTabPage.SelectedIndex == 18)
+                MapGroupPosTabButton.Checked = true;
         }
         private void TerritoriesTabButton_Click(object sender, EventArgs e)
         {
@@ -726,6 +758,7 @@ namespace DayZeEditor
             economySearchNextButton.Visible = false;
             InitCTabButton.Checked = false;
             SpawnGearTabButton.Checked = false;
+            MapGroupPosTabButton.Checked = false;
         }
         #endregion formsstuff
         #region Types
@@ -6490,7 +6523,6 @@ namespace DayZeEditor
             IgnoreTreeView.Nodes.SetExpansionState(savedExpansionState);
             IgnoreTreeView.EndUpdate();
         }
-
         private void addClassnameFromTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddItemfromTypes form = new AddItemfromTypes
@@ -6763,7 +6795,6 @@ namespace DayZeEditor
             MapgroupProtopopulateUsage();
             isUserInteraction = true;
         }
-
         private void MapgroupProtoGroupPopulatecategory()
         {
             MapGroupProtoGroupContainerCategroyLB.DisplayMember = "DisplayName";
@@ -6868,7 +6899,6 @@ namespace DayZeEditor
         }
         private Point _mouseLastPosition;
         private Point _newscrollPosition;
-
         private Rectangle hitTestRectangle = new Rectangle();
         private Rectangle doubleClickRectangle = new Rectangle();
         private Timer doubleClickTimer = new Timer();
@@ -7450,10 +7480,6 @@ namespace DayZeEditor
             TerritoriesZonesLB.Refresh();
             currentterritoriesConfig.isDirty = true;
         }
-
-
-
-
         #endregion territories
         #region initc
         //styles
@@ -7593,11 +7619,6 @@ namespace DayZeEditor
         {
             fastColoredTextBox1.DoAutoIndent();
         }
-
-
-
-
-
         #endregion initc
         #region spawngear
         public SpawnGearPresetFiles currentspawnGearPresetFiles;
@@ -8448,5 +8469,246 @@ namespace DayZeEditor
             currentspawnGearPresetFiles.isDirty = true;
         }
         #endregion spawngear
+        #region mapgrouppos
+        public decimal mapgroupposMapscale = 1;
+        private map mapgroupposmap;
+        private mapGroup currentmapgroup;
+        public TreeNode currentmapgrouptreenode;
+        private void LoadMapGroupPos()
+        {
+            Console.WriteLine("Loading MapgroupPos");
+            isUserInteraction = false;
+
+            mapgroupposmap = currentproject.mapgrouppos.map;
+            LoadeMapGroupPosTreeview();
+
+            pictureBox4.BackgroundImage = Image.FromFile(Application.StartupPath + currentproject.MapPath); // Map Size is 15360 x 15360, 0,0 bottom left, middle 7680 x 7680
+            pictureBox4.Size = new Size(currentproject.MapSize, currentproject.MapSize);
+            pictureBox4.Paint += new PaintEventHandler(DrawMapGrouPro);
+
+            trackBar2.Value = 1;
+            SetsMapGroupposScale();
+            panel1.AutoScrollPosition = new Point(0, 0);
+
+            isUserInteraction = true;
+        }
+        private void DrawMapGrouPro(object sender, PaintEventArgs e)
+        {
+            decimal scalevalue = mapgroupposMapscale * (decimal)0.05;
+            foreach (mapGroup MGPMG in mapgroupposmap.group)
+            {
+                decimal xx = Convert.ToDecimal(MGPMG.pos.Split(' ')[0]);
+                decimal yy = Convert.ToDecimal(MGPMG.pos.Split(' ')[2]);
+                int centerX = (int)(Math.Round(xx, 0) * scalevalue);
+                int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(yy, 0) * scalevalue);
+
+                int radius = (int)(5 * scalevalue);
+                Point center = new Point(centerX, centerY);
+                Pen pen = new Pen(Color.Red)
+                {
+                    Width = 4
+                };
+                if (currentmapgroup == MGPMG)
+                {
+                    pen.Color = Color.LimeGreen;
+                }
+                getCircle(e.Graphics, pen, center, radius);
+                
+            }
+        }
+        private void LoadeMapGroupPosTreeview()
+        {
+            treeViewMS2.Nodes.Clear();
+            TreeNode rootNode = new TreeNode(Path.GetFileNameWithoutExtension(currentproject.mapgrouppos.Filename))
+            {
+                Tag = "MapGrouPosParent"
+            };
+            foreach(mapGroup MGPM in mapgroupposmap.group)
+            {
+                if (!rootNode.Nodes.ContainsKey(MGPM.name))
+                {
+                    rootNode.Nodes.Add(new TreeNode(MGPM.name)
+                    {
+                        Name = MGPM.name
+                    });
+                }
+                rootNode.Nodes[MGPM.name].Nodes.Add(new TreeNode(MGPM.name) { Tag = MGPM });
+            }
+            treeViewMS2.Nodes.Add(rootNode);
+            treeViewMS2.Sort();
+        }
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            if (e is MouseEventArgs mouseEventArgs)
+            {
+                decimal scalevalue = mapgroupposMapscale * (decimal)0.05;
+                decimal mapsize = currentproject.MapSize;
+                int newsize = (int)(mapsize * scalevalue);
+                PointF pC = new PointF((float)Decimal.Round((decimal)(mouseEventArgs.X / scalevalue), 4), (float)Decimal.Round((decimal)((newsize - mouseEventArgs.Y) / scalevalue), 4));
+                foreach (mapGroup MGPMG in mapgroupposmap.group)
+                {
+                    PointF pP = new PointF(Convert.ToSingle(MGPMG.pos.Split(' ')[0]), Convert.ToSingle(MGPMG.pos.Split(' ')[2]));
+                    if (IsWithinCircle(pC, pP, (float)5))
+                    {
+                        foreach (TreeNode node in treeViewMS2.Nodes)
+                        {
+                            foreach (TreeNode nnode in node.Nodes)
+                            {
+                                foreach (TreeNode nnnodes in nnode.Nodes)
+                                {
+                                    if (nnnodes.Tag.Equals(MGPMG))
+                                    {
+                                        currentmapgroup = MGPMG;
+                                        treeViewMS2.SelectedNode = nnnodes;
+                                        currentmapgrouptreenode = nnnodes;
+                                        treeViewMS2.Focus();
+                                        pictureBox4.Invalidate();
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+        private void pictureBox4_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                _mouseLastPosition = e.Location;
+            }
+        }
+        private void pictureBox4_MouseEnter(object sender, EventArgs e)
+        {
+            if (pictureBox4.Focused == false)
+            {
+                pictureBox4.Focus();
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+                pictureBox4.Invalidate();
+            }
+        }
+        private void pictureBox4_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Point changePoint = new Point(e.Location.X - _mouseLastPosition.X, e.Location.Y - _mouseLastPosition.Y);
+                _newscrollPosition = new Point(-panelEx1.AutoScrollPosition.X - changePoint.X, -panelEx1.AutoScrollPosition.Y - changePoint.Y);
+                if (_newscrollPosition.X <= 0)
+                    _newscrollPosition.X = 0;
+                if (_newscrollPosition.Y <= 0)
+                    _newscrollPosition.Y = 0;
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+                pictureBox4.Invalidate();
+            }
+            decimal scalevalue = mapgroupposMapscale * (decimal)0.05;
+            decimal mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            label44.Text = Decimal.Round((decimal)(e.X / scalevalue), 4) + "," + Decimal.Round((decimal)((newsize - e.Y) / scalevalue), 4);
+        }
+        private void pictureBox4_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta < 0)
+            {
+                pictureBox4_ZoomOut();
+            }
+            else
+            {
+                pictureBox4_ZoomIn();
+            }
+
+        }
+        private void pictureBox4_ZoomIn()
+        {
+            int oldpictureboxhieght = pictureBox4.Height;
+            int oldpitureboxwidht = pictureBox4.Width;
+            Point oldscrollpos = panelEx1.AutoScrollPosition;
+            int tbv = trackBar2.Value;
+            int newval = tbv + 1;
+            if (newval >= 20)
+                newval = 20;
+            trackBar2.Value = newval;
+            mapgroupposMapscale = trackBar2.Value;
+            SetsMapGroupposScale();
+            if (pictureBox4.Height > panelEx1.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox4.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox4.Width > panelEx1.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox4.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox4.Invalidate();
+        }
+        private void pictureBox4_ZoomOut()
+        {
+            int oldpictureboxhieght = pictureBox4.Height;
+            int oldpitureboxwidht = pictureBox4.Width;
+            Point oldscrollpos = panelEx1.AutoScrollPosition;
+            int tbv = trackBar2.Value;
+            int newval = tbv - 1;
+            if (newval <= 1)
+                newval = 1;
+            trackBar2.Value = newval;
+            mapgroupposMapscale = trackBar2.Value;
+            SetsMapGroupposScale();
+            if (pictureBox4.Height > panelEx1.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox4.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox4.Width > panelEx1.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox4.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox4.Invalidate();
+        }
+        private void SetsMapGroupposScale()
+        {
+
+            decimal scalevalue = mapgroupposMapscale * (decimal)0.05;
+            decimal mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            pictureBox4.Size = new Size(newsize, newsize);
+        }
+        private void treeViewMS2_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            currentmapgrouptreenode = e.Node;
+            currentmapgroup = e.Node.Tag as mapGroup;
+            pictureBox4.Invalidate();
+            if (e.Button == MouseButtons.Right)
+            {
+                if(e.Node.Tag is mapGroup)
+                    mapgroupposcontextMenu.Show(Cursor.Position);
+            }
+        }
+        private void trackBar2_MouseUp(object sender, MouseEventArgs e)
+        {
+            mapgroupposMapscale = trackBar2.Value;
+            SetsMapGroupposScale();
+        }
+        private void removeMapToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            mapgroupposmap.group.Remove(currentmapgroup);
+            TreeNode Parent = currentmapgrouptreenode.Parent;
+            treeViewMS2.Nodes.Remove(currentmapgrouptreenode);
+            if (Parent.Nodes.Count == 0)
+                treeViewMS2.Nodes.Remove(Parent);
+            currentproject.mapgrouppos.isDirty = true;
+            pictureBox4.Invalidate();
+        }
+        #endregion mapgrouppos
     }
 }

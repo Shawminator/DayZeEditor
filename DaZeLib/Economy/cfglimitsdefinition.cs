@@ -17,13 +17,9 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
     public partial class lists
     {
-
         private BindingList<listsCategory> categoriesField;
-
         private BindingList<listsTag> tagsField;
-
         private BindingList<listsUsage> usageflagsField;
-
         private BindingList<listsValue> valueflagsField;
 
         /// <remarks/>
@@ -89,7 +85,6 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class listsCategory
     {
-
         private string nameField;
 
         /// <remarks/>
@@ -118,7 +113,6 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class listsTag
     {
-
         private string nameField;
 
         /// <remarks/>
@@ -147,7 +141,6 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class listsUsage
     {
-
         private string nameField;
 
         /// <remarks/>
@@ -175,7 +168,6 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class listsValue
     {
-
         private string nameField;
 
         /// <remarks/>

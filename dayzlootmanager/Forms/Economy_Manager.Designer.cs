@@ -1020,6 +1020,12 @@ namespace DayZeEditor
             this.itemTypeGB = new System.Windows.Forms.GroupBox();
             this.darkButton70 = new DarkUI.Controls.DarkButton();
             this.SpawnGearItemTypeTB = new System.Windows.Forms.TextBox();
+            this.MapGroupPosTab = new System.Windows.Forms.TabPage();
+            this.label44 = new System.Windows.Forms.Label();
+            this.trackBar2 = new System.Windows.Forms.TrackBar();
+            this.panelEx1 = new TreeViewMS.PanelEx();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.treeViewMS2 = new TreeViewMS.TreeViewMS();
             this.TypesContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.DeleteTypesTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.AddTypesTSMI = new System.Windows.Forms.ToolStripMenuItem();
@@ -1065,6 +1071,8 @@ namespace DayZeEditor
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.MapGroupProtoTabButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.MapGroupPosTabButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
             this.TerritoriesTabButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.InitCTabButton = new System.Windows.Forms.ToolStripButton();
@@ -1093,6 +1101,8 @@ namespace DayZeEditor
             this.deleteComplexChildSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewDiscreetUnsortedSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteDiscreetUnsortedItemSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mapgroupposcontextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.removeMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -1460,6 +1470,10 @@ namespace DayZeEditor
             this.spawnWeightGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spawnWeightNUD)).BeginInit();
             this.itemTypeGB.SuspendLayout();
+            this.MapGroupPosTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
+            this.panelEx1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.TypesContextMenu.SuspendLayout();
             this.EventSpawnContextMenu.SuspendLayout();
             this.EventgroupContextMenu.SuspendLayout();
@@ -1470,6 +1484,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             this.SpawnGearCMS.SuspendLayout();
+            this.mapgroupposcontextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -3079,7 +3094,7 @@ namespace DayZeEditor
             this.economySearchNextButton.Image = ((System.Drawing.Image)(resources.GetObject("economySearchNextButton.Image")));
             this.economySearchNextButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.economySearchNextButton.Name = "economySearchNextButton";
-            this.economySearchNextButton.Size = new System.Drawing.Size(24, 24);
+            this.economySearchNextButton.Size = new System.Drawing.Size(62, 42);
             this.economySearchNextButton.Text = "Find Next";
             this.economySearchNextButton.Visible = false;
             this.economySearchNextButton.Click += new System.EventHandler(this.toolStripButton2_Click);
@@ -3309,6 +3324,7 @@ namespace DayZeEditor
             this.EconomyTabPage.Controls.Add(this.TerritoriesTab);
             this.EconomyTabPage.Controls.Add(this.InitCTab);
             this.EconomyTabPage.Controls.Add(this.SpawnGearTab);
+            this.EconomyTabPage.Controls.Add(this.MapGroupPosTab);
             this.EconomyTabPage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.EconomyTabPage.Location = new System.Drawing.Point(0, 95);
             this.EconomyTabPage.Name = "EconomyTabPage";
@@ -8047,7 +8063,7 @@ namespace DayZeEditor
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Location = new System.Drawing.Point(305, 33);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(842, 516);
+            this.panel2.Size = new System.Drawing.Size(913, 520);
             this.panel2.TabIndex = 67;
             this.panel2.MouseEnter += new System.EventHandler(this.pictureBox2_MouseEnter);
             // 
@@ -13795,7 +13811,6 @@ namespace DayZeEditor
             this.fastColoredTextBox1.DefaultMarkerSize = 8;
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.fastColoredTextBox1.IsReplaceMode = false;
             this.fastColoredTextBox1.Location = new System.Drawing.Point(0, 24);
@@ -14461,6 +14476,86 @@ namespace DayZeEditor
             this.SpawnGearItemTypeTB.Size = new System.Drawing.Size(240, 20);
             this.SpawnGearItemTypeTB.TabIndex = 180;
             // 
+            // MapGroupPosTab
+            // 
+            this.MapGroupPosTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MapGroupPosTab.Controls.Add(this.label44);
+            this.MapGroupPosTab.Controls.Add(this.trackBar2);
+            this.MapGroupPosTab.Controls.Add(this.panelEx1);
+            this.MapGroupPosTab.Controls.Add(this.treeViewMS2);
+            this.MapGroupPosTab.ForeColor = System.Drawing.SystemColors.Control;
+            this.MapGroupPosTab.Location = new System.Drawing.Point(4, 25);
+            this.MapGroupPosTab.Name = "MapGroupPosTab";
+            this.MapGroupPosTab.Size = new System.Drawing.Size(1218, 553);
+            this.MapGroupPosTab.TabIndex = 18;
+            this.MapGroupPosTab.Text = "MapGroupPos";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.ForeColor = System.Drawing.SystemColors.Control;
+            this.label44.Location = new System.Drawing.Point(468, 6);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(41, 13);
+            this.label44.TabIndex = 222;
+            this.label44.Text = "label44";
+            // 
+            // trackBar2
+            // 
+            this.trackBar2.AutoSize = false;
+            this.trackBar2.LargeChange = 1;
+            this.trackBar2.Location = new System.Drawing.Point(306, 3);
+            this.trackBar2.Maximum = 20;
+            this.trackBar2.Minimum = 1;
+            this.trackBar2.Name = "trackBar2";
+            this.trackBar2.Size = new System.Drawing.Size(156, 16);
+            this.trackBar2.TabIndex = 221;
+            this.trackBar2.Value = 1;
+            this.trackBar2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackBar2_MouseUp);
+            // 
+            // panelEx1
+            // 
+            this.panelEx1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelEx1.AutoScroll = true;
+            this.panelEx1.Controls.Add(this.pictureBox4);
+            this.panelEx1.Location = new System.Drawing.Point(306, 24);
+            this.panelEx1.Name = "panelEx1";
+            this.panelEx1.Size = new System.Drawing.Size(909, 526);
+            this.panelEx1.TabIndex = 220;
+            this.panelEx1.MouseEnter += new System.EventHandler(this.pictureBox4_MouseEnter);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox4.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(512, 512);
+            this.pictureBox4.TabIndex = 0;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            this.pictureBox4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox4_MouseDown);
+            this.pictureBox4.MouseEnter += new System.EventHandler(this.pictureBox4_MouseEnter);
+            this.pictureBox4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox4_MouseMove);
+            this.pictureBox4.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.pictureBox4_MouseWheel);
+            // 
+            // treeViewMS2
+            // 
+            this.treeViewMS2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.treeViewMS2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.treeViewMS2.ForeColor = System.Drawing.SystemColors.Control;
+            this.treeViewMS2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.treeViewMS2.Location = new System.Drawing.Point(8, 12);
+            this.treeViewMS2.Name = "treeViewMS2";
+            this.treeViewMS2.SelectedNodes = ((System.Collections.ArrayList)(resources.GetObject("treeViewMS2.SelectedNodes")));
+            this.treeViewMS2.SetMultiselect = true;
+            this.treeViewMS2.Size = new System.Drawing.Size(292, 514);
+            this.treeViewMS2.TabIndex = 216;
+            this.treeViewMS2.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewMS2_NodeMouseClick);
+            // 
             // TypesContextMenu
             // 
             this.TypesContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -14700,6 +14795,8 @@ namespace DayZeEditor
             this.toolStripSeparator6,
             this.MapGroupProtoTabButton,
             this.toolStripSeparator7,
+            this.MapGroupPosTabButton,
+            this.toolStripSeparator14,
             this.TerritoriesTabButton,
             this.toolStripSeparator8,
             this.InitCTabButton});
@@ -14869,6 +14966,26 @@ namespace DayZeEditor
             this.toolStripSeparator7.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
+            // 
+            // MapGroupPosTabButton
+            // 
+            this.MapGroupPosTabButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.MapGroupPosTabButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.MapGroupPosTabButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.MapGroupPosTabButton.Image = ((System.Drawing.Image)(resources.GetObject("MapGroupPosTabButton.Image")));
+            this.MapGroupPosTabButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MapGroupPosTabButton.Name = "MapGroupPosTabButton";
+            this.MapGroupPosTabButton.Size = new System.Drawing.Size(87, 22);
+            this.MapGroupPosTabButton.Text = "MapGroupPos";
+            this.MapGroupPosTabButton.Click += new System.EventHandler(this.MapGroupPosTabButton_Click);
+            // 
+            // toolStripSeparator14
+            // 
+            this.toolStripSeparator14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripSeparator14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripSeparator14.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStripSeparator14.Name = "toolStripSeparator14";
+            this.toolStripSeparator14.Size = new System.Drawing.Size(6, 25);
             // 
             // TerritoriesTabButton
             // 
@@ -15128,6 +15245,20 @@ namespace DayZeEditor
             this.deleteDiscreetUnsortedItemSetToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
             this.deleteDiscreetUnsortedItemSetToolStripMenuItem.Text = "Delete Discreet Unsorted Item Set";
             this.deleteDiscreetUnsortedItemSetToolStripMenuItem.Click += new System.EventHandler(this.deleteDiscreetUnsortedItemSetToolStripMenuItem_Click);
+            // 
+            // mapgroupposcontextMenu
+            // 
+            this.mapgroupposcontextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.removeMapToolStripMenuItem});
+            this.mapgroupposcontextMenu.Name = "contextMenuStrip1";
+            this.mapgroupposcontextMenu.Size = new System.Drawing.Size(181, 48);
+            // 
+            // removeMapToolStripMenuItem
+            // 
+            this.removeMapToolStripMenuItem.Name = "removeMapToolStripMenuItem";
+            this.removeMapToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removeMapToolStripMenuItem.Text = "Remove Map Group";
+            this.removeMapToolStripMenuItem.Click += new System.EventHandler(this.removeMapToolStripMenuItem_Click);
             // 
             // Economy_Manager
             // 
@@ -15599,6 +15730,11 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.spawnWeightNUD)).EndInit();
             this.itemTypeGB.ResumeLayout(false);
             this.itemTypeGB.PerformLayout();
+            this.MapGroupPosTab.ResumeLayout(false);
+            this.MapGroupPosTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
+            this.panelEx1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.TypesContextMenu.ResumeLayout(false);
             this.EventSpawnContextMenu.ResumeLayout(false);
             this.EventgroupContextMenu.ResumeLayout(false);
@@ -15611,6 +15747,7 @@ namespace DayZeEditor
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
             this.SpawnGearCMS.ResumeLayout(false);
+            this.mapgroupposcontextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -16676,5 +16813,15 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton darkButton24;
         private System.Windows.Forms.ListBox generatorposbubblesPosLB;
         private System.Windows.Forms.CheckBox PlayerSpawnAllGroupsCB;
+        private System.Windows.Forms.TabPage MapGroupPosTab;
+        private System.Windows.Forms.ToolStripButton MapGroupPosTabButton;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
+        private TreeViewMS.TreeViewMS treeViewMS2;
+        private System.Windows.Forms.TrackBar trackBar2;
+        public TreeViewMS.PanelEx panelEx1;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.ContextMenuStrip mapgroupposcontextMenu;
+        private System.Windows.Forms.ToolStripMenuItem removeMapToolStripMenuItem;
     }
 }

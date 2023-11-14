@@ -16,7 +16,6 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
     public partial class map
     {
-
         private BindingList<mapGroup> groupField;
 
         /// <remarks/>
@@ -40,13 +39,9 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class mapGroup
     {
-
         private string nameField;
-
         private string posField;
-
         private string rpyField;
-
         private float aField;
 
         /// <remarks/>
