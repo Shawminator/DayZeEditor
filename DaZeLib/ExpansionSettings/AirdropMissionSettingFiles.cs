@@ -21,8 +21,8 @@ namespace DayZeLib
         public decimal Height { get; set; }
         public decimal Speed { get; set; }
         public string Container { get; set; }
-        public DropLocation DropLocation { get; set; }
-        public BindingList<containerLoot> Loot { get; set; }
+        public ExpansionAirdropLocation DropLocation { get; set; }
+        public BindingList<ExpansionLoot> Loot { get; set; }
         public BindingList<string> Infected { get; set; }
         public int ItemCount { get; set; }
         public int InfectedCount { get; set; }
@@ -37,8 +37,8 @@ namespace DayZeLib
 
         public AirdropMissionSettingFiles()
         {
-            DropLocation = new DropLocation();
-            Loot = new BindingList<containerLoot>();
+            DropLocation = new ExpansionAirdropLocation();
+            Loot = new BindingList<ExpansionLoot>();
             Infected = new BindingList<string>();
             isDirty = true;
             ItemCount = -1;
@@ -57,7 +57,7 @@ namespace DayZeLib
             return MissionName;
         }
     }
-    public class DropLocation
+    public class ExpansionAirdropLocation
     {
         public decimal x { get; set; }
         public decimal z { get; set; }

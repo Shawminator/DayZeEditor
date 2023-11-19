@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace DayZeLib
 {
 
-    public class NotificationSchedulerSettings
+    public class ExpansionNotificationSchedulerSettings
     {
         const int CurrentVersion = 2;
 
@@ -17,23 +17,47 @@ namespace DayZeLib
         public int Enabled { get; set; }
         public int UTC { get; set; }
         public int UseMissionTime { get; set; }
-        public BindingList<Notification> Notifications { get; set; }
+        public BindingList<ExpansionNotificationSchedule> Notifications { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
         public bool isDirty { get; set; }
 
-        public NotificationSchedulerSettings()
+        public ExpansionNotificationSchedulerSettings()
         {
             m_Version = CurrentVersion;
-            Notifications = new BindingList<Notification>(); 
-            isDirty = true;
+            Enabled = 0;
+            UTC = 0;
+            UseMissionTime = 0;
+            Notifications = new BindingList<ExpansionNotificationSchedule>()
+            {
+                new ExpansionNotificationSchedule()
+                {
+                    Hour = 22,
+                    Minute = 00,
+                    Second = 0,
+                    Title = "Notification Schedule Test 1",
+                    Text = "Lorem ipsum dolor sit amet",
+                    Icon = "Info",
+                    Color = "FFFFFFFF"
+                },
+                new ExpansionNotificationSchedule()
+                {
+                    Hour = 22,
+                    Minute = 01,
+                    Second = 0,
+                    Title = "Notification Schedule Test 2",
+                    Text = "Lorem ipsum dolor sit amet",
+                    Icon = "Info",
+                    Color = "FFFFFFFF"
+                }
+            };
         }
         public bool checknotificationcols()
         {
             bool returntype = false;
-            foreach(Notification not in Notifications)
+            foreach(ExpansionNotificationSchedule not in Notifications)
             {
                 if (not.Color == "")
                 {
@@ -57,7 +81,7 @@ namespace DayZeLib
         }
     }
 
-    public class Notification
+    public class ExpansionNotificationSchedule
     {
         public int Hour { get; set; }
         public int Minute { get; set; }
@@ -67,7 +91,7 @@ namespace DayZeLib
         public string Icon { get; set; }
         public string Color { get; set; }
 
-        public Notification()
+        public ExpansionNotificationSchedule()
         {
             Color = "FFFFFFFF";
         }

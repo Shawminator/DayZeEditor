@@ -2,7 +2,7 @@
 
 namespace DayZeLib
 {
-    public class PartySettings
+    public class ExpansionPartySettings
     {
         const int CurrentVersion = 6;
 
@@ -30,10 +30,38 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty { get; set; }
 
-        public PartySettings()
+        public ExpansionPartySettings()
         {
             m_Version = CurrentVersion;
-            isDirty = true;
+            //! Added with version 1
+            EnableParties = 1;
+            MaxMembersInParty = 10;
+            UseWholeMapForInviteList = 0;
+
+            ShowPartyMember3DMarkers = 1;
+            ShowDistanceUnderPartyMembersMarkers = 1;
+            ShowNameOnPartyMembersMarkers = 1;
+            EnableQuickMarker = 1;
+            ShowDistanceUnderQuickMarkers = 1;
+            ShowNameOnQuickMarkers = 1;
+            CanCreatePartyMarkers = 1;
+
+            //! Added with version 2
+            ShowPartyMemberHUD = 1;
+
+            //! Added with version 3
+            ShowHUDMemberBlood = 1;
+            ShowHUDMemberStates = 1;
+            ShowHUDMemberStance = 1;
+
+            //! Added with version 4
+            ShowPartyMemberMapMarkers = 1;
+
+            //! Added with version 5
+            ShowHUDMemberDistance = 1;
+
+            //! Added with version 6
+            ForcePartyToHaveTags = 0;
         }
         public bool checkver()
         {

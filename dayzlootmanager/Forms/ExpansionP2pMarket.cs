@@ -371,7 +371,7 @@ namespace DayZeEditor
                         groupBox1.Visible = false;
                         CurrentMenucategory = null;
                         CurrentSubCategory = null;
-                        return;
+                        break;
                     case "MenuCategoriesParent":
                         groupBox2.Visible = false;
                         groupBox1.Visible = false;
@@ -385,7 +385,7 @@ namespace DayZeEditor
                             removeSubMenuCategoryToolStripMenuItem.Visible = false;
                             contextMenuStrip1.Show(Cursor.Position);
                         }
-                        return;
+                        break;
                     case "SubCategoriesParent":
                         groupBox2.Visible = false;
                         groupBox1.Visible = false;
@@ -399,7 +399,7 @@ namespace DayZeEditor
                             removeSubMenuCategoryToolStripMenuItem.Visible = false;
                             contextMenuStrip1.Show(Cursor.Position);
                         }
-                        return;
+                        break;
                     case "MCIncluded":
                         groupBox2.Visible = false;
                         groupBox1.Visible = true;

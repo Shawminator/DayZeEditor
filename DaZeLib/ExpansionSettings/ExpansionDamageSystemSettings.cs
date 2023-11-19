@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DayZeLib
 {
-    public class DamageSystemSettings
+    public class ExpansionDamageSystemSettings
     {
         static int CurrentVersion = 1;
 
@@ -25,7 +25,14 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty;
 
-
+        public ExpansionDamageSystemSettings()
+        {
+            m_Version = CurrentVersion;
+            Enabled = 0;
+            CheckForBlockingObjects = 1;
+            ExplosiveProjectiles = new Dictionary<string, string>();
+            ExplosiveProjectiles.Add("Bullet_40mm_Explosive", "Explosion_40mm_Ammo");
+        }
         public void ConvertDicttolist()
         {
             explosinvesList = new BindingList<ExplosiveProjectiles>();

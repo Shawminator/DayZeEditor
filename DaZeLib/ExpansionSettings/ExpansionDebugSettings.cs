@@ -2,23 +2,28 @@
 
 namespace DayZeLib
 {
-    public class DebugSettings
+    public class ExpansionDebugSettings
     {
-        const int CurrentVersion = 2;
+        const int CurrentVersion = 3;
 
         public int m_Version { get; set; }
         public int DebugVehiclePlayerNetworkBubbleMode { get; set; }
         public int ServerUpdateRateLimit { get; set; }
+        public int EnableProneDeathHandItemDropFix { get; set; }
+        public int EnableItemDropPlacementFix { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
         public bool isDirty { get; set; }
 
-        public DebugSettings()
+        public ExpansionDebugSettings()
         {
             m_Version = CurrentVersion;
-            isDirty = true;
+            DebugVehiclePlayerNetworkBubbleMode = 0;
+            ServerUpdateRateLimit = 0;
+            EnableProneDeathHandItemDropFix = 0;
+            EnableItemDropPlacementFix = 0;
         }
 
         public bool checkver()

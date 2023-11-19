@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace DayZeLib
 {
-    public enum Lamps
+    public enum LampModeEnum
     {
         [Description("The streets lights are off")]
         Disabled = 0,
         [Description("Currently unused. Would require you to fix a generator to make street lights work. - CURRENTLY DOESNT WORK")]
-        Generators = 1,
+        RequireGenerator = 1,
         [Description("Street lights are emitting lights but some of them will stay off intentionnaly")]
         AlwaysOn = 2,
         [Description("Force every lights to be turned on")]
@@ -28,7 +28,7 @@ namespace DayZeLib
         [Description("on all buildings on the map, not just predefined areas")]
         All_Buildings = 2,
     };
-    public class GeneralSettings
+    public class ExpansionGeneralSettings
     {
         static int CurrentVersion = 12;
 
@@ -38,7 +38,7 @@ namespace DayZeLib
         public int GravecrossDeleteBody { get; set; }
         public decimal GravecrossTimeThreshold { get; set; }
         public decimal GravecrossSpawnTimeDelay { get; set; }
-        public CustomMapping Mapping { get; set; }
+        public ExpansionMapping Mapping { get; set; }
         public int EnableLamps { get; set; }
         public int EnableGenerators { get; set; }
         public int EnableLighthouses { get; set; }
@@ -48,8 +48,11 @@ namespace DayZeLib
         public int UnlimitedStamina { get; set; }
         public int UseDeathScreen { get; set; }
         public int UseDeathScreenStatistics { get; set; }
+        public int UseExpansionMainMenuLogo { get; set; }
+        public int UseExpansionMainMenuIcons { get; set; }
+        public int UseExpansionMainMenuIntroScene { get; set; }
         public int UseNewsFeedInGameMenu { get; set; }
-        public Hudcolors HUDColors { get; set; }
+        public ExpansionHudIndicatorColors HUDColors { get; set; }
         public int EnableEarPlugs { get; set; }
         public string InGameMenuLogoPath { get; set; }
 
@@ -58,12 +61,39 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty { get; set; }
 
-        public GeneralSettings()
+        public ExpansionGeneralSettings()
         {
             m_Version = CurrentVersion;
-            Mapping = new CustomMapping();
-            isDirty = true;
-            HUDColors = new Hudcolors();
+            DisableShootToUnlock = 0;
+            EnableGravecross = 0;
+            GravecrossDeleteBody = 1;
+            GravecrossTimeThreshold = 1200;
+            GravecrossSpawnTimeDelay = 180;
+
+            Mapping = new ExpansionMapping();
+
+            EnableLamps = (int)LampModeEnum.AlwaysOnEverywhere;
+            EnableGenerators = 0;
+            EnableLighthouses = 1;
+
+            EnableHUDNightvisionOverlay = 1;
+
+            DisableMagicCrosshair = 1;
+
+            EnableAutoRun = 1;
+            UnlimitedStamina = 1;
+
+            UseDeathScreen = 1;
+            UseDeathScreenStatistics = 1;
+
+            UseExpansionMainMenuLogo = 1;
+            UseExpansionMainMenuIcons = 1;
+            UseExpansionMainMenuIntroScene = 1;
+            UseNewsFeedInGameMenu = 0;
+
+            HUDColors = new ExpansionHudIndicatorColors();
+
+            EnableEarPlugs = 1;
             InGameMenuLogoPath = "set:expansion_iconset image:logo_expansion_white";
         }
 
@@ -74,7 +104,7 @@ namespace DayZeLib
                 m_Version = CurrentVersion;
                 isDirty = true;
                 if (HUDColors == null)
-                    HUDColors = new Hudcolors();
+                    HUDColors = new ExpansionHudIndicatorColors();
                 return true;
             }
             return false;
@@ -168,7 +198,7 @@ namespace DayZeLib
             }
         }
     }
-    public class CustomMapping
+    public class ExpansionMapping
     {
         public int UseCustomMappingModule { get; set; }
         public BindingList<string> Mapping { get; set; }
@@ -176,10 +206,91 @@ namespace DayZeLib
         public BindingList<string> Interiors { get; set; }
         public int BuildingIvys { get; set; }
 
-        public CustomMapping()
+        public ExpansionMapping()
         {
-            Mapping = new BindingList<string>();
-            Interiors = new BindingList<string>();
+            UseCustomMappingModule = 0;
+            BuildingInteriors = 0;
+            BuildingIvys = 0;
+            Mapping = new BindingList<string>()
+            {
+                "BerezhkiCave",
+                "Berezino",
+                "Chernogorsk_Enhancement1",
+                "Chernogorsk_Enhancement2",
+                "Chernogorsk_Forest1",
+                "Chernogorsk_Forest2",
+                "Chernogorsk_Highschool",
+                "Elektrozavodsk",
+                "Evacuation",
+                "Factory",
+                "Gorka",
+                "Kamenka",
+                "Kamyshovo",
+                "Krutoy_Cap",
+                "Myshkino",
+                "Nadezhdino",
+                "Novodmitrovsk",
+                "Radom_Stuff",
+                "Roads",
+                "Sea_Platform",
+                "Solnechniy",
+                "Staroye",
+                "StaryYarBkr",
+                "Svetloyarsk",
+                "Tisy",
+                "BerezinoNoCollision",
+                "Chernogorsk_Enhancement1NoCollision",
+                "Chernogorsk_Enhancement2NoCollision",
+                "Chernogorsk_Forest1NoCollision",
+                "Chernogorsk_Forest2NoCollision",
+                "Chernogorsk_Grass1NoCollision",
+                "Chernogorsk_Grass2NoCollision",
+                "Chernogorsk_HighschoolNoCollision",
+                "DebugIslandNoCollision",
+                "ElektrozavodskNoCollision",
+                "EvacuationNoCollision",
+                "GorkaNoCollision",
+                "GrassNoCollision",
+                "KamenkaNoCollision",
+                "Kamyshovo_GrassNoCollision",
+                "KamyshovoNoCollision",
+                "Krutoy_CapNoCollision",
+                "MyshkinoNoCollision",
+                "NWAFenhanced",
+                "NadezhdinoNoCollision",
+                "Radom_StuffNoCollision",
+                "RoadsNoCollision",
+                "Solnechniy_GrassNoCollision",
+                "StaroyeNoCollision",
+                "StaryYarBkrNoCollision",
+                "SvetloyarskNoCollision",
+                "SvetRoadForestNoCollision",
+                "TisyNoCollision"
+            };
+            Interiors = new BindingList<string>()
+            {
+                "Land_Barn_Brick2",
+                "Land_Barn_Metal_Big",
+                "Land_Barn_Wood2",
+                "Land_BarnMetal_Big_Grey",
+                "Land_City_Hospital",
+                "Land_Garage_Big",
+                "Land_Garage_Row_Big",
+                "Land_Shed_Closed",
+                "Land_House_1W01",
+                "Land_House_1W02",
+                "Land_House_1W06",
+                "Land_House_1W07",
+                "Land_House_1W11",
+                "Land_House_2B01",
+                "Land_House_2B02",
+                "Land_House_2B03",
+                "Land_House_2B04",
+                "Land_House_2W01",
+                "Land_House_2W02",
+                "Land_House_2W03",
+                "Land_Rail_Station_Big"
+            };
         }
         public void SetIntValue(string mytype, int myvalue)
         {
@@ -187,23 +298,27 @@ namespace DayZeLib
         }
     }
 
-    public class Hudcolors
+    public class ExpansionHudIndicatorColors
     {
         public string StaminaBarColor { get; set; }
+       
         public string NotifierDividerColor { get; set; }
+        
         public string TemperatureBurningColor { get; set; }
         public string TemperatureHotColor { get; set; }
         public string TemperatureIdealColor { get; set; }
         public string TemperatureColdColor { get; set; }
         public string TemperatureFreezingColor { get; set; }
+       
         public string NotifiersIdealColor { get; set; }
         public string NotifiersHalfColor { get; set; }
         public string NotifiersLowColor { get; set; }
+       
         public string ReputationBaseColor { get; set; }
         public string ReputationMedColor { get; set; }
         public string ReputationHighColor { get; set; }
 
-        public Hudcolors()
+        public ExpansionHudIndicatorColors()
         {
             StaminaBarColor = "FFFFFFFF";
             NotifierDividerColor = "DCDCDCFF";

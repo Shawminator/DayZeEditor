@@ -43,10 +43,11 @@ namespace DayZeLib
         [Description(" Only on server restarts")]
         Restarts_Only = 2,
     }
-    public class VehicleSettings
+    public class ExpansionVehicleSettings
     {
-        const int CurrentVersion = 18;
-        public int m_Version { get; set; } // current version 18
+        const int CurrentVersion = 19;
+
+        public int m_Version { get; set; }
         public int VehicleSync { get; set; }
         public int VehicleRequireKeyToStart { get; set; }
         public int VehicleRequireAllDoors { get; set; }
@@ -61,7 +62,6 @@ namespace DayZeLib
         public decimal PickLockToolDamagePercent { get; set; }
         public int EnableWindAerodynamics { get; set; }
         public int EnableTailRotorDamage { get; set; }
-        //public int PlayerAttachment { get; set; } removed in version 16/17
         public int Towing { get; set; }
         public int EnableHelicopterExplosions { get; set; }
         public int DisableVehicleDamage { get; set; }
@@ -78,7 +78,6 @@ namespace DayZeLib
         public int RevvingOverMaxRPMRuinsEngineInstantly { get; set; }
         public int VehicleDropsRuinedDoors { get; set; }
         public int ExplodingVehicleDropsAttachments { get; set; }
-        //public float ForcePilotSyncIntervalSeconds { get; set; }
         public decimal DesyncInvulnerabilityTimeoutSeconds { get; set; }
         public decimal DamagedEngineStartupChancePercent { get; set; }
         public int EnableVehicleCovers { get; set; }
@@ -91,20 +90,117 @@ namespace DayZeLib
         public string CFToolsHeliCoverIconName { get; set; }
         public string CFToolsBoatCoverIconName { get; set; }
         public string CFToolsCarCoverIconName { get; set; }
-        public BindingList<VConfigs> VehiclesConfig { get; set; }
+        public int ShowVehicleOwners { get; set; }
+        public BindingList<ExpansionVehiclesConfig> VehiclesConfig { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
         public bool isDirty { get; set; }
 
-        public VehicleSettings()
+        public ExpansionVehicleSettings()
         {
             m_Version = CurrentVersion;
-            PickLockTools = new BindingList<string>();
-            ChangeLockTools = new BindingList<string>();
-            VehiclesConfig = new BindingList<VConfigs>();
-            isDirty = true;
+            VehicleSync = 0;
+            VehicleRequireKeyToStart = 1;
+            VehicleRequireAllDoors = 1;
+            VehicleLockedAllowInventoryAccess = 0;
+            VehicleLockedAllowInventoryAccessWithoutDoors = 1;
+            MasterKeyPairingMode = 2;
+            MasterKeyUses = 2;
+            CanPickLock = 0;
+            PickLockTools = new BindingList<string>() {
+                "Lockpick"
+                };
+            PickLockChancePercent = (decimal)40.0;
+            PickLockTimeSeconds = 120;
+            PickLockToolDamagePercent = (decimal)10.0;
+            EnableWindAerodynamics = 0;
+            EnableTailRotorDamage = 1;
+            Towing = 1;
+            EnableHelicopterExplosions = 1;
+            DisableVehicleDamage = 0;
+            VehicleCrewDamageMultiplier = (decimal)1.0;
+            VehicleSpeedDamageMultiplier = (decimal)1.0;
+            VehicleRoadKillDamageMultiplier = (decimal)1.0;
+            CollisionDamageIfEngineOff = 0;
+            CollisionDamageMinSpeedKmh = (decimal)30.0;
+            CanChangeLock = 0;
+            ChangeLockTools = new BindingList<string>() {
+                "Screwdriver"
+                };
+            ChangeLockTimeSeconds = 120;
+            ChangeLockToolDamagePercent = (decimal)10.0;
+            PlacePlayerOnGroundOnReconnectInVehicle = 2;
+            RevvingOverMaxRPMRuinsEngineInstantly = 0;
+            VehicleDropsRuinedDoors = 1;
+            ExplodingVehicleDropsAttachments = 1;
+            DesyncInvulnerabilityTimeoutSeconds = (decimal)3.0;
+            DamagedEngineStartupChancePercent = (decimal)100.0;
+            EnableVehicleCovers = 1;
+            AllowCoveringDEVehicles = 0;
+            CanCoverWithCargo = 1;
+            UseVirtualStorageForCoverCargo = 0;
+            VehicleAutoCoverTimeSeconds = (decimal)0.0;
+            VehicleAutoCoverRequireCamonet = 0;
+            EnableAutoCoveringDEVehicles = 0;
+            CFToolsHeliCoverIconName = "helicopter";
+            CFToolsBoatCoverIconName = "ship";
+            CFToolsCarCoverIconName = "car";
+            ShowVehicleOwners = 0;
+            VehiclesConfig = new BindingList<ExpansionVehiclesConfig>()
+            {
+                new ExpansionVehiclesConfig(){
+                ClassName = "ExpansionUAZCargoRoofless",
+                CanPlayerAttach = 1,
+                LockComplexity = (decimal)1.0
+                },
+                new ExpansionVehiclesConfig(){
+                ClassName = "ExpansionUAZ",
+                CanPlayerAttach = 0,
+                LockComplexity = (decimal)1.0
+                },
+                new ExpansionVehiclesConfig() {
+                ClassName = "ExpansionBus",
+                CanPlayerAttach = 1,
+                LockComplexity = (decimal)1.5
+                },
+                new ExpansionVehiclesConfig() {
+                ClassName = "ExpansionVodnik",
+                CanPlayerAttach = 1,
+                LockComplexity = (decimal)2.0
+                },
+                new ExpansionVehiclesConfig() {
+                ClassName = "ExpansionUtilityBoat",
+                CanPlayerAttach = 1,
+                LockComplexity = (decimal)1.25
+                },
+                new ExpansionVehiclesConfig(){
+                ClassName = "ExpansionZodiacBoat",
+                CanPlayerAttach = 1,
+                LockComplexity = (decimal)0.5
+                },
+                new ExpansionVehiclesConfig(){
+                ClassName = "ExpansionLHD",
+                CanPlayerAttach = 1,
+                LockComplexity = (decimal)100.0
+                },
+                new ExpansionVehiclesConfig(){
+                ClassName = "ExpansionMerlin",
+                CanPlayerAttach = 1,
+                LockComplexity = (decimal)4.0
+                },
+                new ExpansionVehiclesConfig(){
+                ClassName = "ExpansionMh6",
+                CanPlayerAttach = 0,
+                LockComplexity = (decimal)3.0
+                },
+                new ExpansionVehiclesConfig(){
+                ClassName = "ExpansionUh1h",
+                CanPlayerAttach = 0,
+                LockComplexity = (decimal)2.5
+                }
+            };
         }
         public bool checkver()
         {
@@ -125,7 +221,7 @@ namespace DayZeLib
             GetType().GetProperty(mytype).SetValue(this, myvalue, null);
         }
     }
-    public class VConfigs
+    public class ExpansionVehiclesConfig
     {
         public string ClassName { get; set; }
         public int CanPlayerAttach { get; set; }

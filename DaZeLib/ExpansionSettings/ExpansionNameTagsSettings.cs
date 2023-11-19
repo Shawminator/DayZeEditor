@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DayZeLib
 {
-    public class NameTagsettings
+    public class ExpansionNameTagsSettings
     {
         const int CurrentVersion = 4;
 
@@ -29,10 +29,20 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty { get; set; }
 
-        public NameTagsettings()
+        public ExpansionNameTagsSettings()
         {
             m_Version = CurrentVersion;
-            isDirty = true;
+            EnablePlayerTags = 0;
+            PlayerTagViewRange = 5;
+            PlayerTagsIcon = "Persona";
+            PlayerTagsColor = -1;
+            PlayerNameColor = -1;
+            OnlyInSafeZones = 0;
+            OnlyInTerritories = 0;
+            ShowPlayerItemInHands = 0;
+            ShowNPCTags = 0;
+            ShowPlayerFaction = 0;
+            UseRarityColorForItemInHands = 0;
         }
 
         public bool checkver()

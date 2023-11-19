@@ -21,8 +21,8 @@ namespace DayZeEditor
     {
         public Project currentproject { get; internal set; }
 
-        public AISettings AISettings { get; set; }
-        public AIPatrolSettings AIPatrolSettings { get; set; }
+        public ExpansionAISettings AISettings { get; set; }
+        public ExpansionAIPatrolSettings AIPatrolSettings { get; set; }
         public BindingList<AILoadouts> LoadoutList { get; private set; }
         public BindingList<string> LoadoutNameList1 { get; private set; }
         public BindingList<string> LoadoutNameList2 { get; private set; }
@@ -91,14 +91,15 @@ namespace DayZeEditor
             AISettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Settings\\AISettings.json";
             if (!File.Exists(AISettingsPath))
             {
-                AISettings = new AISettings();
+                AISettings = new ExpansionAISettings();
+                AISettings.isDirty = true;
                 needtosave = true;
                 Console.WriteLine(Path.GetFileName(AISettingsPath) + " File not found, Creating new....");
             }
             else
             {
                 Console.WriteLine("serializing " + Path.GetFileName(AISettingsPath));
-                AISettings = JsonSerializer.Deserialize<AISettings>(File.ReadAllText(AISettingsPath));
+                AISettings = JsonSerializer.Deserialize<ExpansionAISettings>(File.ReadAllText(AISettingsPath));
                 AISettings.isDirty = false;
                 if (AISettings.checkver())
                     needtosave = true;
@@ -111,14 +112,15 @@ namespace DayZeEditor
             AIPatrolSettingsPath = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings\\AIPatrolSettings.json";
             if (!File.Exists(AIPatrolSettingsPath))
             {
-                AIPatrolSettings = new AIPatrolSettings();
+                AIPatrolSettings = new ExpansionAIPatrolSettings();
+                AIPatrolSettings.isDirty = true;
                 needtosave = true;
                 Console.WriteLine(Path.GetFileName(AIPatrolSettingsPath) + " File not found, Creating new....");
             }
             else
             {
                 Console.WriteLine("serializing " + Path.GetFileName(AIPatrolSettingsPath));
-                AIPatrolSettings = JsonSerializer.Deserialize<AIPatrolSettings>(File.ReadAllText(AIPatrolSettingsPath));
+                AIPatrolSettings = JsonSerializer.Deserialize<ExpansionAIPatrolSettings>(File.ReadAllText(AIPatrolSettingsPath));
                 AIPatrolSettings.isDirty = false;
                 if (AIPatrolSettings.checkver())
                     needtosave = true;
@@ -138,7 +140,34 @@ namespace DayZeEditor
 
 
         }
+        private void ExpansionAI_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            bool needtosave = false;
+            if (AISettings.isDirty)
+            {
+                needtosave = true;
+            }
+            if (AIPatrolSettings.isDirty)
+            {
+                needtosave = true;
+            }
 
+            foreach (AILoadouts AILO in LoadoutList)
+            {
+                if (AILO.isDirty)
+                {
+                    needtosave = true;
+                }
+            }
+            if (needtosave)
+            {
+                DialogResult dialogResult = MessageBox.Show("You have Unsaved Changes, do you wish to save", "Unsaved Changes found", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    savefiles();
+                }
+            }
+        }
         private void SetupFactionsDropDownBoxes()
         {
             useraction = false;
@@ -300,8 +329,8 @@ namespace DayZeEditor
         }
 
         #region aipatrolsettings
-        public ObjectPatrols CurrentEventcrashpatrol;
-        public Patrols CurrentPatrol;
+        public ExpansionAIObjectPatrol CurrentEventcrashpatrol;
+        public ExpansionAIPatrol CurrentPatrol;
         public float[] CurrentWapypoint;
         private void SetupAIPatrolSettings()
         {
@@ -385,13 +414,13 @@ namespace DayZeEditor
             AIPatrolSettings.ThreatDistanceLimit = AIGeneralThreatDistanceLimitNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
-
         private void AIGeneralDanageMultiplierNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             AIPatrolSettings.DamageMultiplier = AIGeneralDanageMultiplierNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
+
         /// <summary>
         /// Event Crash Settings
         /// </summary>
@@ -400,7 +429,7 @@ namespace DayZeEditor
         private void EventCrachPatrolLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (EventCrachPatrolLB.SelectedItems.Count < 1) return;
-            CurrentEventcrashpatrol = EventCrachPatrolLB.SelectedItem as ObjectPatrols;
+            CurrentEventcrashpatrol = EventCrachPatrolLB.SelectedItem as ExpansionAIObjectPatrol;
             useraction = false;
             CrashEventNameTB.Text = CurrentEventcrashpatrol.Name;
             CrashEventClassNameTB.Text = CurrentEventcrashpatrol.ClassName;
@@ -432,7 +461,7 @@ namespace DayZeEditor
         }
         private void darkButton7_Click(object sender, EventArgs e)
         {
-            ObjectPatrols newpatrol = new ObjectPatrols()
+            ExpansionAIObjectPatrol newpatrol = new ExpansionAIObjectPatrol()
             {
                 Name = "NewName",
                 Faction = "WEST",
@@ -635,7 +664,7 @@ namespace DayZeEditor
         private void StaticPatrolLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (StaticPatrolLB.SelectedItems.Count < 1) return;
-            CurrentPatrol = StaticPatrolLB.SelectedItem as Patrols;
+            CurrentPatrol = StaticPatrolLB.SelectedItem as ExpansionAIPatrol;
             useraction = false;
             StaticPatrolNameTB.Text = CurrentPatrol.Name;
             StaticPatrolFactionCB.SelectedIndex = StaticPatrolFactionCB.FindStringExact(CurrentPatrol.Faction);
@@ -913,7 +942,7 @@ namespace DayZeEditor
         }
         private void darkButton4_Click(object sender, EventArgs e)
         {
-            Patrols newpatrol = new Patrols()
+            ExpansionAIPatrol newpatrol = new ExpansionAIPatrol()
             {
                 Name = "NewPatrol",
                 Faction = "WEST",
@@ -1010,7 +1039,7 @@ namespace DayZeEditor
             VaultingCB.Checked = AISettings.Vaulting == 1 ? true : false;
             MannersCB.Checked = AISettings.Manners == 1 ? true : false;
             CanRecruitGuardsCB.Checked = AISettings.CanRecruitGuards == 1 ? true : false;
-
+            CanRecruitFriendlyCB.Checked = AISettings.CanRecruitFriendly == 1 ? true : false;
             AISettingsAdminsLB.DisplayMember = "DisplayName";
             AISettingsAdminsLB.ValueMember = "Value";
             AISettingsAdminsLB.DataSource = AISettings.Admins;
@@ -1018,6 +1047,10 @@ namespace DayZeEditor
             PlayerFactionsLB.DisplayMember = "DisplayName";
             PlayerFactionsLB.ValueMember = "Value";
             PlayerFactionsLB.DataSource = AISettings.PlayerFactions;
+
+            PreventClimbLB.DisplayMember = "DisplayName";
+            PreventClimbLB.ValueMember = "Value";
+            PreventClimbLB.DataSource = AISettings.PreventClimb;
 
             useraction = true;
         }
@@ -1039,7 +1072,6 @@ namespace DayZeEditor
             AISettings.ThreatDistanceLimit = ThreatDistanceLimitNUD.Value;
             AISettings.isDirty = true;
         }
-
         private void DamageMultiplierNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -1070,6 +1102,12 @@ namespace DayZeEditor
             AISettings.CanRecruitGuards = CanRecruitGuardsCB.Checked == true ? 1 : 0;
             AISettings.isDirty = true;
 
+        }
+        private void CanRecruitFriendlyCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AISettings.CanRecruitFriendly = CanRecruitFriendlyCB.Checked == true ? 1 : 0;
+            AISettings.isDirty = true;
         }
         private void darkButton1_Click(object sender, EventArgs e)
         {
@@ -1106,40 +1144,31 @@ namespace DayZeEditor
             AISettings.SniperProneDistanceThreshold = SniperProneDistanceThresholdNUD.Value;
             AISettings.isDirty = true;
         }
-        #endregion AISettings
-
-        private void ExpansionAI_FormClosing(object sender, FormClosingEventArgs e)
+        private void darkButton9_Click(object sender, EventArgs e)
         {
-            bool needtosave = false;
-            if (AISettings.isDirty)
+            string classname = PreventClimbTB.Text;
+            if (!AISettings.PreventClimb.Contains(classname))
             {
-                needtosave = true;
-            }
-            if (AIPatrolSettings.isDirty)
-            {
-                needtosave = true;
-            }
-
-            foreach (AILoadouts AILO in LoadoutList)
-            {
-                if (AILO.isDirty)
-                {
-                    needtosave = true;
-                }
-            }
-            if (needtosave)
-            {
-                DialogResult dialogResult = MessageBox.Show("You have Unsaved Changes, do you wish to save", "Unsaved Changes found", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    savefiles();
-                }
+                AISettings.PreventClimb.Add(classname);
+                AIPatrolSettings.isDirty = true;
+                PreventClimbLB.Refresh();
             }
         }
+        private void darkButton8_Click(object sender, EventArgs e)
+        {
+            AISettings.PreventClimb.Remove(PreventClimbLB.GetItemText(PreventClimbLB.SelectedItem));
+            AISettings.isDirty = true;
+            PreventClimbLB.Refresh();
+        }
+        #endregion AISettings
+
+
 
         private void groupBox4_Enter(object sender, EventArgs e)
         {
 
     }
-}
+
+
+    }
 }

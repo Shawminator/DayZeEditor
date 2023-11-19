@@ -2,7 +2,7 @@
 
 namespace DayZeLib
 {
-    public class TerritorySettings
+    public class ExpansionTerritorySettings
     {
         const int CurrentVersion = 2;
         public int m_Version { get; set; }
@@ -19,10 +19,16 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty { get; set; }
 
-        public TerritorySettings()
+        public ExpansionTerritorySettings()
         {
             m_Version = CurrentVersion;
-            isDirty = true;
+            EnableTerritories = 1;
+            UseWholeMapForInviteList = 1;
+            TerritorySize = (decimal)150.0;
+            TerritoryPerimeterSize = (decimal)150.0;
+            MaxMembersInTerritory = 10;
+            MaxTerritoryPerPlayer = 1;
+            TerritoryAuthenticationRadius = (decimal)150.0;
         }
         public bool checkver()
         {

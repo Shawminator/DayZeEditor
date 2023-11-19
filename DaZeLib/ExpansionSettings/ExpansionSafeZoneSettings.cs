@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace DayZeLib
 {
-    public class SafeZoneSettings
+    public class ExpansionSafeZoneSettings
     {
         const int CurrentVersion = 10;
 
         public int m_Version { get; set; }
         public int Enabled { get; set; }
         public int FrameRateCheckSafeZoneInMs { get; set; }
-        public BindingList<CircleZones> CircleZones { get; set; }
-        public BindingList<PolygonZones> PolygonZones { get; set; }
-        public BindingList<CylinderZones> CylinderZones { get; set; }
+        public BindingList<ExpansionSafeZoneCircle> CircleZones { get; set; }
+        public BindingList<ExpansionSafeZonePolygon> PolygonZones { get; set; }
+        public BindingList<ExpansionSafeZoneCylinder> CylinderZones { get; set; }
         public int ActorsPerTick { get; set; }
         public int DisableVehicleDamageInSafeZone { get; set; }
         public int EnableForceSZCleanup { get; set; }
@@ -32,13 +32,49 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty { get; set; }
 
-        public SafeZoneSettings()
+        public ExpansionSafeZoneSettings()
         {
             m_Version = CurrentVersion;
-            CircleZones = new BindingList<CircleZones>();
-            PolygonZones = new BindingList<PolygonZones>();
-            CylinderZones = new BindingList<CylinderZones>();
-            isDirty = true;
+            Enabled = 1;
+            DisableVehicleDamageInSafeZone = 1;
+            FrameRateCheckSafeZoneInMs = 0;
+            ActorsPerTick = 5;
+            EnableForceSZCleanup = 1;
+            ItemLifetimeInSafeZone = 15 * 60;  //! 15 Minutes
+            EnableForceSZCleanupVehicles = 1;
+            VehicleLifetimeInSafeZone = 60 * 60;  //! 60 Minutes
+            CircleZones = new BindingList<ExpansionSafeZoneCircle>();
+            PolygonZones = new BindingList<ExpansionSafeZonePolygon>();
+            CylinderZones = new BindingList<ExpansionSafeZoneCylinder>();
+            ForceSZCleanup_ExcludedItems = new BindingList<string>() { "CarCoverBase", "ExpansionVehicleCover"};
+            DefaultChernarusSafeZones();
+        }
+        void DefaultChernarusSafeZones()
+        {
+            //! Krasnostav Trader Camp
+            PolygonZones.Add(new ExpansionSafeZonePolygon()
+            {
+                Positions = new BindingList<float[]>()
+                {
+                    new float[] { 12288.9f, 142.4f, 12804.4f },
+                    new float[] { 12068.4f, 139.8f, 12923.4f },
+                    new float[] { 11680.6f, 141.1f, 12650.6f },
+                    new float[] { 11805.3f, 146.3f, 12258.9f },
+                    new float[] { 12327.7f, 140.0f, 12453.8f }
+                }
+            });
+            //! Green Mountain Trader Camp
+            CircleZones.Add(new ExpansionSafeZoneCircle()
+            {
+                Center = new float[] { 3728.27f, 403f, 6003.6f },
+                Radius = 500
+            });
+            //! Kamenka Trader Camp
+            CircleZones.Add(new ExpansionSafeZoneCircle()
+            {
+                Center = new float[] { 1143.14f, 6.9f, 2423.27f },
+                Radius = 700
+            });
         }
         public bool checkver()
         {
@@ -53,7 +89,7 @@ namespace DayZeLib
         public void SetCircleNames()
         {
             int i = 0;
-            foreach (CircleZones CZ in CircleZones)
+            foreach (ExpansionSafeZoneCircle CZ in CircleZones)
             {
                 CZ.CircleSafeZoneName = "Circle Zone " + i.ToString();
                 i++;
@@ -62,7 +98,7 @@ namespace DayZeLib
         public void SetPolygonNames()
         {
             int i = 0;
-            foreach (PolygonZones PZ in PolygonZones)
+            foreach (ExpansionSafeZonePolygon PZ in PolygonZones)
             {
                 PZ.polygonSafeZoneName = "Polygon Zone " + i.ToString();
                 i++;
@@ -71,7 +107,7 @@ namespace DayZeLib
         public void SetCylinderNames()
         {
             int i = 0;
-            foreach (CylinderZones PZ in CylinderZones)
+            foreach (ExpansionSafeZoneCylinder PZ in CylinderZones)
             {
                 PZ.CylinderSafeZoneName = "Cylinder Zone " + i.ToString();
                 i++;
@@ -79,7 +115,7 @@ namespace DayZeLib
         }
         public void Convertpolygonarrays()
         {
-            foreach (PolygonZones PZ in PolygonZones)
+            foreach (ExpansionSafeZonePolygon PZ in PolygonZones)
             {
                 PZ.Polygonpoints = new BindingList<Polygonpoints>();
                 for(int i = 0; i < PZ.Positions.Count; i++ )
@@ -93,7 +129,7 @@ namespace DayZeLib
         }
         public void convertpointstoarray()
         {
-            foreach (PolygonZones PZ in PolygonZones)
+            foreach (ExpansionSafeZonePolygon PZ in PolygonZones)
             {
                 PZ.Positions = new BindingList<float[]>();
                 foreach(Polygonpoints PGP in PZ.Polygonpoints)
@@ -102,24 +138,24 @@ namespace DayZeLib
                 }
             }
         }
-        public void RemoveCircleZone(CircleZones currentZone)
+        public void RemoveCircleZone(ExpansionSafeZoneCircle currentZone)
         {
             CircleZones.Remove(currentZone);
             isDirty = true;
         }
-        public void RemovePolygonZone(PolygonZones currentpolygonZones)
+        public void RemovePolygonZone(ExpansionSafeZonePolygon currentpolygonZones)
         {
             PolygonZones.Remove(currentpolygonZones);
             isDirty = true;
         }
         public void AddNewCircleZones()
         {
-            CircleZones.Add(new CircleZones() {Center = new float[] {0,0,0 }, Radius = 100 });
+            CircleZones.Add(new ExpansionSafeZoneCircle() {Center = new float[] {0,0,0 }, Radius = 100 });
             SetCircleNames();
             isDirty = true;
         }
 
-        public void RemovecylinderZone(CylinderZones currentcylenderzones)
+        public void RemovecylinderZone(ExpansionSafeZoneCylinder currentcylenderzones)
         {
             CylinderZones.Remove(currentcylenderzones);
             isDirty = true;
@@ -129,7 +165,7 @@ namespace DayZeLib
     // 1 = Circle
     // 2 = polygon
     // 3 = Cylinder
-    public class CircleZones
+    public class ExpansionSafeZoneCircle
     {
         public float[] Center { get; set; }
         public float Radius { get; set; }
@@ -142,7 +178,7 @@ namespace DayZeLib
             return CircleSafeZoneName;
         }
     }
-    public class PolygonZones
+    public class ExpansionSafeZonePolygon
     {
         public BindingList<float[]> Positions { get; set; }
         public float RadiusPolygon { get; set; }
@@ -180,7 +216,7 @@ namespace DayZeLib
             return name;
         }
     }
-    public class CylinderZones
+    public class ExpansionSafeZoneCylinder
     {
         public float[] Center { get; set; }
         public float Radius { get; set; }

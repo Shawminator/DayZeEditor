@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace DayZeLib
 {
-    public class LogSettings
+    public class ExpansionLogSettings
     {
         const int CurrentVersion = 7;
 
@@ -45,10 +45,46 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty { get; set; }
 
-        public LogSettings()
+        public ExpansionLogSettings()
         {
             m_Version = CurrentVersion;
-            isDirty = true;
+            Safezone = 1;
+            AdminTools = 1;
+            ExplosionDamageSystem = 1;
+
+            LogToScripts = 0;
+            LogToADM = 0;
+
+            VehicleDestroyed = 1;
+            VehicleCarKey = 1;
+            VehicleTowing = 1;
+            VehicleLockPicking = 1;
+            VehicleAttachments = 1;
+            VehicleEnter = 1;
+            VehicleLeave = 1;
+            VehicleDeleted = 1;
+            VehicleEngine = 1;
+            BaseBuildingRaiding = 1;
+            CodeLockRaiding = 1;
+            Territory = 1;
+            Killfeed = 1;
+            SpawnSelection = 1;
+
+            MissionAirdrop = 1;
+            //MissionHorde = true;
+            Party = 1;
+
+            Chat = 1;
+            AIGeneral = 1;
+            AIPatrol = 1;
+            AIObjectPatrol = 1;
+            Market = 1;
+            ATM = 1;
+            Hardline = 1;
+            Garage = 1;
+            VehicleCover = 1;
+
+            EntityStorage = 1;
         }
 
         public bool checkver()

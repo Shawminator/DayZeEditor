@@ -2,7 +2,7 @@
 
 namespace DayZeLib
 {
-    public class PlayerListSettings
+    public class ExpansionPlayerListSettings
     {
         const int CurrentVersion = 0;
 
@@ -15,10 +15,11 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty { get; set; }
 
-        public PlayerListSettings()
+        public ExpansionPlayerListSettings()
         {
             m_Version = CurrentVersion;
-            isDirty = true;
+            EnablePlayerList = 1;
+            EnableTooltip = 1;
         }
         public bool checkver()
         {

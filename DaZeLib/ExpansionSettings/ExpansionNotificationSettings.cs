@@ -2,7 +2,13 @@
 
 namespace DayZeLib
 {
-    public class NotificationSettings
+    public enum ExpansionAnnouncementType
+    {
+        CHAT = 0,
+        NOTIFICATION,
+        MUTEDNOTIFICATION
+    };
+    public class ExpansionNotificationSettings
     {
         const int CurrentVersion = 4;
 
@@ -50,17 +56,74 @@ namespace DayZeLib
         public int KillFeedAnimal { get; set; }
         public int KillFeedKilledUnknown { get; set; }
         public int KillFeedDiedUnknown { get; set; }
-
+        public int EnableKillFeedDiscordMsg { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
         public bool isDirty { get; set; }
 
-        public NotificationSettings()
+        public ExpansionNotificationSettings()
         {
             m_Version = CurrentVersion;
-            isDirty = true;
+            EnableNotification = 1;
+
+            ShowPlayerJoinServer = 1;
+            JoinMessageType = (int)ExpansionAnnouncementType.NOTIFICATION;
+            ShowPlayerLeftServer = 1;
+            LeftMessageType = (int)ExpansionAnnouncementType.NOTIFICATION;
+
+            ShowAirdropStarted = 1;
+            ShowAirdropClosingOn = 1;
+            ShowAirdropDropped = 1;
+            ShowAirdropEnded = 1;
+            ShowPlayerAirdropStarted = 1;
+            ShowPlayerAirdropClosingOn = 1;
+            ShowPlayerAirdropDropped = 1;
+            ShowTerritoryNotifications = 1;
+            EnableKillFeed = 1;
+            KillFeedMessageType = (int)ExpansionAnnouncementType.NOTIFICATION;
+
+            //! These are not implemented, uncomment once done
+            //ShowDistanceOnKillFeed = true;
+            //ShowVictimOnKillFeed = true;
+            //ShowKillerOnKillFeed = true;
+            //ShowWeaponOnKillFeed = true;
+
+            KillFeedFall = 1;
+            KillFeedCarHitDriver = 1;
+            KillFeedCarHitNoDriver = 1;
+            KillFeedCarCrash = 1;
+            KillFeedCarCrashCrew = 1;
+            KillFeedHeliHitDriver = 1;
+            KillFeedHeliHitNoDriver = 1;
+            KillFeedHeliCrash = 1;
+            KillFeedHeliCrashCrew = 1;
+            KillFeedBoatHitDriver = 1;
+            KillFeedBoatHitNoDriver = 1;
+            KillFeedBoatCrash = 1;
+            KillFeedBoatCrashCrew = 1;
+            /*KillFeedPlaneHitDriver = true;
+            KillFeedPlaneHitNoDriver = true;
+            KillFeedBikeHitDriver = true;
+            KillFeedBikeHitNoDriver = true;*/
+            KillFeedBarbedWire = 1;
+            KillFeedFire = 1;
+            KillFeedWeaponExplosion = 1;
+            KillFeedDehydration = 1;
+            KillFeedStarvation = 1;
+            KillFeedBleeding = 1;
+            KillFeedStatusEffects = 1;
+            KillFeedSuicide = 1;
+            KillFeedWeapon = 1;
+            KillFeedMeleeWeapon = 1;
+            KillFeedBarehands = 1;
+            KillFeedInfected = 1;
+            KillFeedAnimal = 1;
+            KillFeedKilledUnknown = 1;
+            KillFeedDiedUnknown = 1;
+
+            EnableKillFeedDiscordMsg = 0;
         }
 
         public bool checkver()

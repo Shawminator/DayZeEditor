@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace DayZeLib
 {
-    public class AISettings
+    public class ExpansionAISettings
     {
         [JsonIgnore]
-        const int CurrentVersion = 6;
+        const int CurrentVersion = 7;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -27,7 +27,10 @@ namespace DayZeLib
         public int Vaulting { get; set; }
         public decimal SniperProneDistanceThreshold { get; set; }
         public int Manners { get; set; }
+        public int MemeLevel { get; set; }
+        public int CanRecruitFriendly { get; set; }
         public int CanRecruitGuards { get; set; }
+        public BindingList<string> PreventClimb { get; set; }
         public BindingList<string> PlayerFactions { get; set; }
 
         public bool checkver()
@@ -41,10 +44,23 @@ namespace DayZeLib
             return false;
         }
 
-        public AISettings()
+        public ExpansionAISettings()
         {
             m_Version = CurrentVersion;
-            Admins = new BindingList<string>();
+            AccuracyMin = (decimal)0.15000000596046449;
+            AccuracyMax = (decimal)0.75;
+            ThreatDistanceLimit = (decimal)1000.0;
+            DamageMultiplier = (decimal) 1.0;
+            Admins = new BindingList<string> ();
+            MaximumDynamicPatrols = -1;
+            Vaulting = 1;
+            SniperProneDistanceThreshold = (decimal)0.0;
+            Manners = 0;
+            MemeLevel = 0;
+            CanRecruitFriendly = 1;
+            CanRecruitGuards = 0;
+            PreventClimb = new BindingList<string> ();
+            PlayerFactions = new BindingList<string>();
         }
     }
 

@@ -11,7 +11,7 @@ using System.Drawing.Design;
 
 namespace DayZeLib
 {
-    public class PersonalStorageSettings
+    public class ExpansionPersonalStorageSettings
     {
         const int CurrentVersion = 1;
 
@@ -32,16 +32,15 @@ namespace DayZeLib
         public BindingList<string> ExcludedClassNames { get; set; }
         public BindingList<ExpansionMenuCategory> MenuCategories { get; set; }
 
-        public PersonalStorageSettings()
+        public ExpansionPersonalStorageSettings()
         {
             m_Version = CurrentVersion;
-            Enabled = 1;
-            UsePersonalStorageCase = 1;
-            MaxItemsPerStorage = 15;
-            ExcludedClassNames = new BindingList<string>();
-            MenuCategories = new BindingList<ExpansionMenuCategory>();
-			isDirty = true;
-        }
+			Enabled = 1;
+			UsePersonalStorageCase = 1;
+			MaxItemsPerStorage = 15;
+			DefaultMenuCategories();
+			DefaultExcludedClassNames();
+		}
 
         public bool checkver()
         {
@@ -53,9 +52,16 @@ namespace DayZeLib
             }
             return false;
         }
-
+		public void DefaultExcludedClassNames()
+		{
+			ExcludedClassNames = new BindingList<string>();
+			ExcludedClassNames.Add("SurvivorBase");
+			ExcludedClassNames.Add("ExpansionMoneyBase");
+		}
 		public void DefaultMenuCategories()
         {
+			MenuCategories = new BindingList<ExpansionMenuCategory>();
+
 			ExpansionMenuCategory cat_Ammo = new ExpansionMenuCategory();
 			cat_Ammo.SetDisplayName("Ammo");
 			cat_Ammo.SetIconPath("set:dayz_inventory image:bullets");
@@ -568,26 +574,25 @@ namespace DayZeLib
 		}
     }
 
-     public class PersonalStorageSettingsNew
+    public class ExpansionPersonalStorageNewSettings
     {
         const int CurrentVersion = 2;
 
         public int m_Version { get; set; }
         public int UseCategoryMenu { get; set; }
-        public Storagelevels StorageLevels { get; set; }
+		public Storagelevels StorageLevels { get; set; }
 
-        [JsonIgnore]
+		[JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
         public bool isDirty { get; set; }
 
 
-        public PersonalStorageSettingsNew()
+        public ExpansionPersonalStorageNewSettings()
         {
             m_Version = CurrentVersion;
             UseCategoryMenu = 0;
-            StorageLevels = new Storagelevels();
-			isDirty = true;
+			StorageLevels = new Storagelevels();
 		}
 
         public bool checkver()
@@ -601,74 +606,72 @@ namespace DayZeLib
             return false;
         }
     }
+	public class Storagelevels
+	{
+		[JsonPropertyName("1")]
+		public ExpansionPersonalStorageLevel StorageLevel01 { get; set; }
+		[JsonPropertyName("2")]
+		public ExpansionPersonalStorageLevel StorageLevel02 { get; set; }
+		[JsonPropertyName("3")]
+		public ExpansionPersonalStorageLevel StorageLevel03 { get; set; }
+		[JsonPropertyName("4")]
+		public ExpansionPersonalStorageLevel StorageLevel04 { get; set; }
+		[JsonPropertyName("5")]
+		public ExpansionPersonalStorageLevel StorageLevel05 { get; set; }
+		[JsonPropertyName("6")]
+		public ExpansionPersonalStorageLevel StorageLevel06 { get; set; }
+		[JsonPropertyName("7")]
+		public ExpansionPersonalStorageLevel StorageLevel07 { get; set; }
+		[JsonPropertyName("8")]
+		public ExpansionPersonalStorageLevel StorageLevel08 { get; set; }
+		[JsonPropertyName("9")]
+		public ExpansionPersonalStorageLevel StorageLevel09 { get; set; }
+		[JsonPropertyName("10")]
+		public ExpansionPersonalStorageLevel StorageLevel10 { get; set; }
 
-    public class Storagelevels
+		public Storagelevels()
+		{
+			StorageLevel01 = new ExpansionPersonalStorageLevel()
+			{
+				ExcludedSlots = new BindingList<string>() { "Vest", "Body", "Hips", "Legs", "Back" }
+			};
+			StorageLevel02 = new ExpansionPersonalStorageLevel()
+			{
+				ExcludedSlots = new BindingList<string>() { "Vest", "Body", "Hips", "Legs", "Back" }
+			};
+			StorageLevel03 = new ExpansionPersonalStorageLevel()
+			{
+				ExcludedSlots = new BindingList<string>() { "Vest", "Body", "Hips", "Legs", "Back" }
+			};
+			StorageLevel04 = new ExpansionPersonalStorageLevel()
+			{
+				ExcludedSlots = new BindingList<string>() { "Vest", "Body", "Hips", "Legs", "Back" }
+			};
+			StorageLevel05 = new ExpansionPersonalStorageLevel()
+			{
+				ExcludedSlots = new BindingList<string>() { "Vest", "Body", "Hips", "Legs", "Back" }
+			};
+			StorageLevel06 = new ExpansionPersonalStorageLevel();
+			StorageLevel07 = new ExpansionPersonalStorageLevel();
+			StorageLevel08 = new ExpansionPersonalStorageLevel();
+			StorageLevel09 = new ExpansionPersonalStorageLevel();
+			StorageLevel10 = new ExpansionPersonalStorageLevel()
+			{
+				AllowAttachmentCargo = 1
+			};
+		}
+	}
+	public class ExpansionPersonalStorageLevel
     {
-        [JsonPropertyName("1")]
-        public StorageLevel StorageLevel01 { get; set; }
-        [JsonPropertyName("2")]
-        public StorageLevel StorageLevel02 { get; set; }
-        [JsonPropertyName("3")]
-        public StorageLevel StorageLevel03 { get; set; }
-        [JsonPropertyName("4")]
-        public StorageLevel StorageLevel04 { get; set; }
-        [JsonPropertyName("5")]
-        public StorageLevel StorageLevel05 { get; set; }
-        [JsonPropertyName("6")]
-        public StorageLevel StorageLevel06 { get; set; }
-        [JsonPropertyName("7")]
-        public StorageLevel StorageLevel07 { get; set; }
-        [JsonPropertyName("8")]
-        public StorageLevel StorageLevel08 { get; set; }
-        [JsonPropertyName("9")]
-        public StorageLevel StorageLevel09 { get; set; }
-        [JsonPropertyName("10")]
-        public StorageLevel StorageLevel10 { get; set; }
+		public int ReputationRequirement { get; set; }
+		public BindingList<string> ExcludedSlots { get; set; }
+		public int AllowAttachmentCargo { get; set; }
 
-        public Storagelevels()
-        {
-            StorageLevel01 = new StorageLevel()
-            {
-                ExcludedSlots = new BindingList<string>() { "Vest", "Body", "Hips", "Legs", "Back" }
-            };
-            StorageLevel02 = new StorageLevel()
-            {
-                ExcludedSlots = new BindingList<string>() { "Vest", "Body", "Hips", "Legs", "Back" }
-            };
-            StorageLevel03 = new StorageLevel()
-            {
-                ExcludedSlots = new BindingList<string>() { "Vest", "Body", "Hips", "Legs", "Back" }
-            };
-            StorageLevel04 = new StorageLevel()
-            {
-                ExcludedSlots = new BindingList<string>() { "Vest", "Body", "Hips", "Legs", "Back" }
-            };
-            StorageLevel05 = new StorageLevel()
-            {
-                ExcludedSlots = new BindingList<string>() { "Vest", "Body", "Hips", "Legs", "Back" }
-            };
-            StorageLevel06 = new StorageLevel();
-            StorageLevel07 = new StorageLevel();
-            StorageLevel08 = new StorageLevel();
-            StorageLevel09 = new StorageLevel();
-            StorageLevel10 = new StorageLevel()
-            {
-                AllowAttachmentCargo = 1
-            };
-        }
-    }
-
-    public class StorageLevel
-    {
-        public int ReputationRequirement { get; set; }
-        public BindingList<string> ExcludedSlots { get; set; }
-        public int AllowAttachmentCargo { get; set; }
-
-        public StorageLevel()
-        {
-            ReputationRequirement = -1;
-            ExcludedSlots = new BindingList<string>();
-            AllowAttachmentCargo = 0;
-        }
-    }
+		public ExpansionPersonalStorageLevel()
+		{
+			ReputationRequirement = -1;
+			ExcludedSlots = new BindingList<string>();
+			AllowAttachmentCargo = 0;
+		}
+	}
 }

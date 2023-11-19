@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 
 namespace DayZeLib
 { 
-    public class MissionSettings
+    public class ExpansionMissionSettings
     {
         const int CurrentVersion = 2;
 
@@ -25,10 +25,18 @@ namespace DayZeLib
         [JsonIgnore]
         public BindingList<object> MissionSettingFiles { get; set; }
 
-        public MissionSettings()
+        public ExpansionMissionSettings()
         {
             m_Version = CurrentVersion;
-            isDirty = true;
+            Enabled = 1;
+
+            InitialMissionStartDelay = 300000; // 5 minutes
+            TimeBetweenMissions = 3600000; // 1 hour
+
+            MinMissions = 0;
+            MaxMissions = 1;
+
+            MinPlayersToStartMissions = 0;
         }
 
         public bool checkver()

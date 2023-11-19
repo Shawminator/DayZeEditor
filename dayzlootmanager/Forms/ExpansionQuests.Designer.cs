@@ -4474,9 +4474,9 @@ namespace DayZeEditor
             this.ObjectivesAICampSpecialWeaponCB.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesAICampSpecialWeaponCB.Location = new System.Drawing.Point(349, 153);
             this.ObjectivesAICampSpecialWeaponCB.Name = "ObjectivesAICampSpecialWeaponCB";
-            this.ObjectivesAICampSpecialWeaponCB.Size = new System.Drawing.Size(111, 17);
+            this.ObjectivesAICampSpecialWeaponCB.Size = new System.Drawing.Size(105, 17);
             this.ObjectivesAICampSpecialWeaponCB.TabIndex = 258;
-            this.ObjectivesAICampSpecialWeaponCB.Text = "Speacial Weapon";
+            this.ObjectivesAICampSpecialWeaponCB.Text = "Special Weapon";
             this.ObjectivesAICampSpecialWeaponCB.UseVisualStyleBackColor = true;
             this.ObjectivesAICampSpecialWeaponCB.CheckedChanged += new System.EventHandler(this.ObjectivesAICampSpecialWeaponCB_CheckedChanged);
             // 

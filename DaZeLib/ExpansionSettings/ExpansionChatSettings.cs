@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace DayZeLib
 {
 
-    public class ChatSettings
+    public class ExpansionChatSettings
     {
         const int CurrentVersion = 2;
 
@@ -16,18 +16,20 @@ namespace DayZeLib
         public int EnableGlobalChat { get; set; }
         public int EnablePartyChat { get; set; }
         public int EnableTransportChat { get; set; }
-        public Chatcolors ChatColors { get; set; }
+        public ExpansionChatColors ChatColors { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
         public bool isDirty { get; set; }
 
-        public ChatSettings()
+        public ExpansionChatSettings()
         {
             m_Version = CurrentVersion;
-            ChatColors = new Chatcolors();
-            isDirty = true;
+            EnableGlobalChat = 1;
+            EnablePartyChat = 0;
+            EnableTransportChat = 1;
+            ChatColors = new ExpansionChatColors();
         }
 
         public bool checkver()
@@ -92,7 +94,7 @@ namespace DayZeLib
         }
     }
 
-    public class Chatcolors
+    public class ExpansionChatColors
     {
         public string SystemChatColor { get; set; }
         public string AdminChatColor { get; set; }
@@ -102,7 +104,7 @@ namespace DayZeLib
         public string PartyChatColor { get; set; }
         public string TransmitterChatColor { get; set; }
 
-        public Chatcolors()
+        public ExpansionChatColors()
         {
             SystemChatColor = "BA45BAFF";
             AdminChatColor = "C0392BFF";

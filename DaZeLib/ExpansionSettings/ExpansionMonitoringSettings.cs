@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace DayZeLib
 {
-
-    public class MonitoringSettings
+    public class ExpansionMonitoringSettings
     {
         const int CurrentVersion = 1;
 
@@ -20,10 +19,10 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty { get; set; }
 
-        public MonitoringSettings()
+        public ExpansionMonitoringSettings()
         {
             m_Version = CurrentVersion;
-            isDirty = true;
+            Enabled = 0;
         }
 
         public bool checkver()

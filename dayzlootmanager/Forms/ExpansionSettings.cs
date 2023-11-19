@@ -31,8 +31,8 @@ namespace DayZeEditor
         public string Projectname;
         private bool _useraction = false;
 
-        public containerLoot SCL { get; private set; }
-        public lootVarients SLootVarients { get; private set; }
+        public ExpansionLoot SCL { get; private set; }
+        public ExpansionLootVariant SLootVarients { get; private set; }
         public PersonalStorage CurrentPersonalStorage { get; private set; }
 
         public bool useraction
@@ -76,35 +76,35 @@ namespace DayZeEditor
         public string TerritorySettingsPath;
         public string VehicleSettingsPath;
 
-        public AirdropsettingsJson AirdropsettingsJson;
-        public BaseBuildingSettings BaseBuildingSettings;
-        public BookSettings BookSettings;
-        public ChatSettings ChatSettings;
-        public DamageSystemSettings DamageSystemSettings;
-        public DebugSettings DebugSettings;
-        public GarageSettings GarageSettings;
-        public GeneralSettings GeneralSettings;
-        public HardLineSettings HardLineSettings;
+        public ExpansionAirdropSettings AirdropsettingsJson;
+        public ExpansionBaseBuildingSettings BaseBuildingSettings;
+        public ExpansionBookSettings BookSettings;
+        public ExpansionChatSettings ChatSettings;
+        public ExpansionDamageSystemSettings DamageSystemSettings;
+        public ExpansionDebugSettings DebugSettings;
+        public ExpansionGarageSettings GarageSettings;
+        public ExpansionGeneralSettings GeneralSettings;
+        public ExpansionHardlineSettings HardLineSettings;
         public ExpansionHardlinePlayerDataList ExpansionHardlinePlayerDataList;
-        public LogSettings LogSettings;
-        public MapSettings MapSettings;
+        public ExpansionLogSettings LogSettings;
+        public ExpansionMapSettings MapSettings;
         //public MarketSettings marketsettings;
-        public MissionSettings MissionSettings;
-        public MonitoringSettings MonitoringSettings;
-        public NameTagsettings NameTagSettings;
-        public NotificationSchedulerSettings NotificationSchedulerSettings;
-        public NotificationSettings NotificationSettings;
-        public PartySettings PartySettings;
+        public ExpansionMissionSettings MissionSettings;
+        public ExpansionMonitoringSettings MonitoringSettings;
+        public ExpansionNameTagsSettings NameTagSettings;
+        public ExpansionNotificationSchedulerSettings NotificationSchedulerSettings;
+        public ExpansionNotificationSettings NotificationSettings;
+        public ExpansionPartySettings PartySettings;
         public PersonalStorageList PersonalStorageList;
-        public PersonalStorageSettingsNew PersonalStorageSettingsNew;
-        public PersonalStorageSettings PersonalStorageSettings;
-        public PlayerListSettings PlayerListSettings;
-        public RaidSettings RaidSettings;
-        public SafeZoneSettings SafeZoneSettings;
-        public SocialMediaSettings SocialMediaSettings;
-        public SpawnSettings SpawnSettings;
-        public TerritorySettings TerritorySettings;
-        public VehicleSettings VehicleSettings;
+        public ExpansionPersonalStorageNewSettings PersonalStorageSettingsNew;
+        public ExpansionPersonalStorageSettings PersonalStorageSettings;
+        public ExpansionPlayerListSettings PlayerListSettings;
+        public ExpansionRaidSettings RaidSettings;
+        public ExpansionSafeZoneSettings SafeZoneSettings;
+        public ExpansionSocialMediaSettings SocialMediaSettings;
+        public ExpansionSpawnSettings SpawnSettings;
+        public ExpansionTerritorySettings TerritorySettings;
+        public ExpansionVehicleSettings VehicleSettings;
  
         public MapData MapData;
 
@@ -132,7 +132,7 @@ namespace DayZeEditor
             InitializeComponent();
             ExpansionSettingsTabPage.ItemSize = new Size(0, 1);
             comboBox2.DataSource = Enum.GetValues(typeof(ContainerTypes));
-            EnableLampsComboBox.DataSource = Enum.GetValues(typeof(Lamps));
+            EnableLampsComboBox.DataSource = Enum.GetValues(typeof(LampModeEnum));
             BuildingIvysComboBox.DataSource = Enum.GetValues(typeof(buildingIvy));
             VariousTabButton.AutoSize = true;
             AirdropsTabButton.AutoSize = true;
@@ -282,13 +282,15 @@ namespace DayZeEditor
             if (!File.Exists(DamageSystemSettingsPath))
             {
                 Console.WriteLine(Path.GetFileName(DamageSystemSettingsPath) + " File not found, Creating new....");
-                DamageSystemSettings = new DamageSystemSettings();
+                DamageSystemSettings = new ExpansionDamageSystemSettings();
+                DamageSystemSettings.ConvertDicttolist();
+                DamageSystemSettings.isDirty = true;
                 needtosave = true;
             }
             else
             {
                 Console.WriteLine("serializing " + Path.GetFileName(DamageSystemSettingsPath));
-                DamageSystemSettings = JsonSerializer.Deserialize<DamageSystemSettings>(File.ReadAllText(DamageSystemSettingsPath));
+                DamageSystemSettings = JsonSerializer.Deserialize<ExpansionDamageSystemSettings>(File.ReadAllText(DamageSystemSettingsPath));
                 DamageSystemSettings.ConvertDicttolist();
                 DamageSystemSettings.isDirty = false;
                 if (DamageSystemSettings.checkver())
@@ -301,13 +303,14 @@ namespace DayZeEditor
             if (!File.Exists(AirdropsettingPath))
             {
                 Console.WriteLine(Path.GetFileName(AirdropsettingPath) + " File not found, Creating new....");
-                AirdropsettingsJson = new AirdropsettingsJson();
+                AirdropsettingsJson = new ExpansionAirdropSettings();
+                AirdropsettingsJson.isDirty = true;
                 needtosave = true;
             }
             else
             {
                 Console.WriteLine("serializing " + Path.GetFileName(AirdropsettingPath));
-                AirdropsettingsJson = JsonSerializer.Deserialize<AirdropsettingsJson>(File.ReadAllText(AirdropsettingPath));
+                AirdropsettingsJson = JsonSerializer.Deserialize<ExpansionAirdropSettings>(File.ReadAllText(AirdropsettingPath));
                 AirdropsettingsJson.isDirty = false;
                 if (AirdropsettingsJson.checkver())
                     needtosave = true;
@@ -318,14 +321,15 @@ namespace DayZeEditor
             BaseBUildignsettingsPath = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings\\BaseBuildingSettings.json";
             if (!File.Exists(BaseBUildignsettingsPath))
             {
-                BaseBuildingSettings = new BaseBuildingSettings();
+                BaseBuildingSettings = new ExpansionBaseBuildingSettings();
+                BaseBuildingSettings.isDirty = true;
                 needtosave = true;
                 Console.WriteLine(Path.GetFileName(BaseBUildignsettingsPath) + " File not found, Creating new....");
             }
             else
             {
                 Console.WriteLine("serializing " + Path.GetFileName(BaseBUildignsettingsPath));
-                BaseBuildingSettings = JsonSerializer.Deserialize<BaseBuildingSettings>(File.ReadAllText(BaseBUildignsettingsPath));
+                BaseBuildingSettings = JsonSerializer.Deserialize<ExpansionBaseBuildingSettings>(File.ReadAllText(BaseBUildignsettingsPath));
                 BaseBuildingSettings.isDirty = false;
                 if (BaseBuildingSettings.checkver())
                     needtosave = true;
@@ -337,14 +341,15 @@ namespace DayZeEditor
             BookSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\BookSettings.json";
             if (!File.Exists(BookSettingsPath))
             {
-                BookSettings = new BookSettings();
+                BookSettings = new ExpansionBookSettings();
+                BookSettings.isDirty = true;
                 needtosave = true;
                 Console.WriteLine(Path.GetFileName(BookSettingsPath) + " File not found, Creating new....");
             }
             else
             {
                 Console.WriteLine("serializing " + Path.GetFileName(BookSettingsPath));
-                BookSettings = JsonSerializer.Deserialize<BookSettings>(File.ReadAllText(BookSettingsPath));
+                BookSettings = JsonSerializer.Deserialize<ExpansionBookSettings>(File.ReadAllText(BookSettingsPath));
                 BookSettings.isDirty = false;
                 if (BookSettings.checkver())
                     needtosave = true;
@@ -355,14 +360,15 @@ namespace DayZeEditor
             ChatSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\ChatSettings.json";
             if (!File.Exists(ChatSettingsPath))
             {
-                ChatSettings = new ChatSettings();
+                ChatSettings = new ExpansionChatSettings();
+                ChatSettings.isDirty = true;
                 needtosave = true;
                 Console.WriteLine(Path.GetFileName(ChatSettingsPath) + " File not found, Creating new....");
             }
             else
             {
                 Console.WriteLine("serializing " + Path.GetFileName(ChatSettingsPath));
-                ChatSettings = JsonSerializer.Deserialize<ChatSettings>(File.ReadAllText(ChatSettingsPath));
+                ChatSettings = JsonSerializer.Deserialize<ExpansionChatSettings>(File.ReadAllText(ChatSettingsPath));
                 ChatSettings.isDirty = false;
                 if (ChatSettings.checkver())
                     needtosave = true;
@@ -373,14 +379,15 @@ namespace DayZeEditor
             DebugSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\DebugSettings.json";
             if (!File.Exists(DebugSettingsPath))
             {
-                DebugSettings = new DebugSettings();
+                DebugSettings = new ExpansionDebugSettings();
+                DebugSettings.isDirty = true;
                 needtosave = true;
                 Console.WriteLine(Path.GetFileName(DebugSettingsPath) + " File not found, Creating new....");
             }
             else
             {
                 Console.WriteLine("serializing " + Path.GetFileName(DebugSettingsPath));
-                DebugSettings = JsonSerializer.Deserialize<DebugSettings>(File.ReadAllText(DebugSettingsPath));
+                DebugSettings = JsonSerializer.Deserialize<ExpansionDebugSettings>(File.ReadAllText(DebugSettingsPath));
                 DebugSettings.isDirty = false;
                 if (DebugSettings.checkver())
                     needtosave = true;
@@ -391,14 +398,15 @@ namespace DayZeEditor
             GarageSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\GarageSettings.json";
             if (!File.Exists(GarageSettingsPath))
             {
-                GarageSettings = new GarageSettings();
+                GarageSettings = new ExpansionGarageSettings();
+                GarageSettings.isDirty = true;
                 needtosave = true;
                 Console.WriteLine(Path.GetFileName(GarageSettingsPath) + " File not found, Creating new....");
             }
             else
             {
                 Console.WriteLine("serializing " + Path.GetFileName(GarageSettingsPath));
-                GarageSettings = JsonSerializer.Deserialize<GarageSettings>(File.ReadAllText(GarageSettingsPath));
+                GarageSettings = JsonSerializer.Deserialize<ExpansionGarageSettings>(File.ReadAllText(GarageSettingsPath));
                 GarageSettings.isDirty = false;
                 if (GarageSettings.checkver())
                     needtosave = true;
@@ -410,14 +418,15 @@ namespace DayZeEditor
             GeneralSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\GeneralSettings.json";
             if (!File.Exists(GeneralSettingsPath))
             {
-                GeneralSettings = new GeneralSettings();
+                GeneralSettings = new ExpansionGeneralSettings();
+                GeneralSettings.isDirty = true;
                 needtosave = true;
                 Console.WriteLine(Path.GetFileName(GeneralSettingsPath) + " File not found, Creating new....");
             }
             else
             {
                 Console.WriteLine("serializing " + Path.GetFileName(GeneralSettingsPath));
-                GeneralSettings = JsonSerializer.Deserialize<GeneralSettings>(File.ReadAllText(GeneralSettingsPath));
+                GeneralSettings = JsonSerializer.Deserialize<ExpansionGeneralSettings>(File.ReadAllText(GeneralSettingsPath));
                 GeneralSettings.isDirty = false;
                 if (GeneralSettings.checkver())
                     needtosave = true;
@@ -428,14 +437,15 @@ namespace DayZeEditor
             HArdlineSettingsPath = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings\\HardlineSettings.json";
             if (!File.Exists(HArdlineSettingsPath))
             {
-                HardLineSettings = new HardLineSettings();
+                HardLineSettings = new ExpansionHardlineSettings();
+                HardLineSettings.isDirty = true;
                 needtosave = true;
                 Console.WriteLine(Path.GetFileName(HArdlineSettingsPath) + " File not found, Creating new....");
             }
             else
             {
                 Console.WriteLine("serializing " + Path.GetFileName(HArdlineSettingsPath));
-                HardLineSettings = JsonSerializer.Deserialize<HardLineSettings>(File.ReadAllText(HArdlineSettingsPath));
+                HardLineSettings = JsonSerializer.Deserialize<ExpansionHardlineSettings>(File.ReadAllText(HArdlineSettingsPath));
                 HardLineSettings.isDirty = false;
                 if (HardLineSettings.checkver())
                     needtosave = true;
@@ -448,14 +458,15 @@ namespace DayZeEditor
             LogsSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\LogsSettings.json";
             if (!File.Exists(LogsSettingsPath))
             {
-                LogSettings = new LogSettings();
+                LogSettings = new ExpansionLogSettings();
+                LogSettings.isDirty = true;
                 needtosave = true;
                 Console.WriteLine(Path.GetFileName(LogsSettingsPath) + " File not found, Creating new....");
             }
             else
             {
                 Console.WriteLine("serializing " + Path.GetFileName(LogsSettingsPath));
-                LogSettings = JsonSerializer.Deserialize<LogSettings>(File.ReadAllText(LogsSettingsPath));
+                LogSettings = JsonSerializer.Deserialize<ExpansionLogSettings>(File.ReadAllText(LogsSettingsPath));
                 LogSettings.isDirty = false;
                 if (GeneralSettings.checkver())
                     needtosave = true;
@@ -466,14 +477,15 @@ namespace DayZeEditor
             MapSettingsPath = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings\\mapSettings.json";
             if (!File.Exists(MapSettingsPath))
             {
-                MapSettings = new MapSettings();
+                MapSettings = new ExpansionMapSettings();
+                MapSettings.isDirty = true;
                 needtosave = true;
                 Console.WriteLine(Path.GetFileName(MapSettingsPath) + " File not found, Creating new....");
             }
             else
             {
                 Console.WriteLine("serializing " + Path.GetFileName(MapSettingsPath));
-                MapSettings = JsonSerializer.Deserialize<MapSettings>(File.ReadAllText(MapSettingsPath));
+                MapSettings = JsonSerializer.Deserialize<ExpansionMapSettings>(File.ReadAllText(MapSettingsPath));
                 MapSettings.isDirty = false;
                 if (MapSettings.checkver())
                     needtosave = true;
@@ -492,14 +504,14 @@ namespace DayZeEditor
             MissionSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\MissionSettings.json";
             if (!File.Exists(MissionSettingsPath))
             {
-                MissionSettings = new MissionSettings();
+                MissionSettings = new ExpansionMissionSettings();
                 needtosave = true;
                 Console.WriteLine(Path.GetFileName(MissionSettingsPath) + " File not found, Creating new....");
             }
             else
             {
                 Console.WriteLine("serializing " + Path.GetFileName(MissionSettingsPath));
-                MissionSettings = JsonSerializer.Deserialize<MissionSettings>(File.ReadAllText(MissionSettingsPath));
+                MissionSettings = JsonSerializer.Deserialize<ExpansionMissionSettings>(File.ReadAllText(MissionSettingsPath));
                 MissionSettings.isDirty = false;
                 if (MissionSettings.checkver())
                     needtosave = true;
@@ -512,14 +524,15 @@ namespace DayZeEditor
             MonitoringSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\MonitoringSettings.json";
             if (!File.Exists(MonitoringSettingsPath))
             {
-                MonitoringSettings = new MonitoringSettings();
+                MonitoringSettings = new ExpansionMonitoringSettings();
+                MonitoringSettings.isDirty = true;
                 needtosave = true;
                 Console.WriteLine(Path.GetFileName(MonitoringSettingsPath) + " File not found, Creating new....");
             }
             else
             {
                 Console.WriteLine("serializing " + Path.GetFileName(MonitoringSettingsPath));
-                MonitoringSettings = JsonSerializer.Deserialize<MonitoringSettings>(File.ReadAllText(MonitoringSettingsPath));
+                MonitoringSettings = JsonSerializer.Deserialize<ExpansionMonitoringSettings>(File.ReadAllText(MonitoringSettingsPath));
                 MonitoringSettings.isDirty = false;
                 if (MonitoringSettings.checkver())
                     needtosave = true;
@@ -530,14 +543,15 @@ namespace DayZeEditor
             NameTagsettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\NameTagsSettings.json";
             if (!File.Exists(NameTagsettingsPath))
             {
-                NameTagSettings = new NameTagsettings();
+                NameTagSettings = new ExpansionNameTagsSettings();
+                NameTagSettings.isDirty = true;
                 needtosave = true;
                 Console.WriteLine(Path.GetFileName(NameTagsettingsPath) + " File not found, Creating new....");
             }
             else
             {
                 Console.WriteLine("serializing " + Path.GetFileName(NameTagsettingsPath));
-                NameTagSettings = JsonSerializer.Deserialize<NameTagsettings>(File.ReadAllText(NameTagsettingsPath));
+                NameTagSettings = JsonSerializer.Deserialize<ExpansionNameTagsSettings>(File.ReadAllText(NameTagsettingsPath));
                 NameTagSettings.isDirty = false;
                 if (NameTagSettings.checkver())
                     needtosave = true;
@@ -548,14 +562,15 @@ namespace DayZeEditor
             NotificationSchedulerSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\NotificationSchedulerSettings.json";
             if (!File.Exists(NotificationSchedulerSettingsPath))
             {
-                NotificationSchedulerSettings = new NotificationSchedulerSettings();
+                NotificationSchedulerSettings = new ExpansionNotificationSchedulerSettings();
+                NotificationSchedulerSettings.isDirty = true;
                 needtosave = true;
                 Console.WriteLine(Path.GetFileName(NotificationSchedulerSettingsPath) + " File not found, Creating new....");
             }
             else
             {
                 Console.WriteLine("serializing " + Path.GetFileName(NotificationSchedulerSettingsPath));
-                NotificationSchedulerSettings = JsonSerializer.Deserialize<NotificationSchedulerSettings>(File.ReadAllText(NotificationSchedulerSettingsPath));
+                NotificationSchedulerSettings = JsonSerializer.Deserialize<ExpansionNotificationSchedulerSettings>(File.ReadAllText(NotificationSchedulerSettingsPath));
                 NotificationSchedulerSettings.isDirty = false;
                 if (NotificationSchedulerSettings.checkver())
                     needtosave = true;
@@ -568,14 +583,15 @@ namespace DayZeEditor
             NotificationssettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\NotificationSettings.json";
             if (!File.Exists(NotificationssettingsPath))
             {
-                NotificationSettings = new NotificationSettings();
+                NotificationSettings = new ExpansionNotificationSettings();
+                NotificationSettings.isDirty = true;
                 needtosave = true;
                 Console.WriteLine(Path.GetFileName(NotificationssettingsPath) + " File not found, Creating new....");
             }
             else
             {
                 Console.WriteLine("serializing " + Path.GetFileName(NotificationssettingsPath));
-                NotificationSettings = JsonSerializer.Deserialize<NotificationSettings>(File.ReadAllText(NotificationssettingsPath));
+                NotificationSettings = JsonSerializer.Deserialize<ExpansionNotificationSettings>(File.ReadAllText(NotificationssettingsPath));
                 NotificationSettings.isDirty = false;
                 if (NotificationSettings.checkver())
                     needtosave = true;
@@ -586,14 +602,15 @@ namespace DayZeEditor
             PartySettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\PartySettings.json";
             if (!File.Exists(PartySettingsPath))
             {
-                PartySettings = new PartySettings();
+                PartySettings = new ExpansionPartySettings();
+                PartySettings.isDirty = true;
                 needtosave = true;
                 Console.WriteLine(Path.GetFileName(PartySettingsPath) + " File not found, Creating new....");
             }
             else
             {
                 Console.WriteLine("serializing " + Path.GetFileName(PartySettingsPath));
-                PartySettings = JsonSerializer.Deserialize<PartySettings>(File.ReadAllText(PartySettingsPath));
+                PartySettings = JsonSerializer.Deserialize<ExpansionPartySettings>(File.ReadAllText(PartySettingsPath));
                 PartySettings.isDirty = false;
                 if (PartySettings.checkver())
                     needtosave = true;
@@ -606,14 +623,15 @@ namespace DayZeEditor
             PersonalStorageSettingsPathNew = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\PersonalStorageNewSettings.json";
             if (!File.Exists(PersonalStorageSettingsPathNew))
             {
-                PersonalStorageSettingsNew = new PersonalStorageSettingsNew();
+                PersonalStorageSettingsNew = new ExpansionPersonalStorageNewSettings();
+                PersonalStorageSettingsNew.isDirty = true;
                 needtosave = true;
                 Console.WriteLine(Path.GetFileName(PersonalStorageSettingsPathNew) + " File not found, Creating new....");
             }
             else
             {
                 Console.WriteLine("serializing " + Path.GetFileName(PersonalStorageSettingsPathNew));
-                PersonalStorageSettingsNew = JsonSerializer.Deserialize<PersonalStorageSettingsNew>(File.ReadAllText(PersonalStorageSettingsPathNew));
+                PersonalStorageSettingsNew = JsonSerializer.Deserialize<ExpansionPersonalStorageNewSettings>(File.ReadAllText(PersonalStorageSettingsPathNew));
                 PersonalStorageSettingsNew.isDirty = false;
                 if (PersonalStorageSettingsNew.checkver())
                     needtosave = true;
@@ -623,8 +641,8 @@ namespace DayZeEditor
             PersonalStorageSettingsPath = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings\\PersonalStorageSettings.json";
             if (!File.Exists(PersonalStorageSettingsPath))
             {
-                PersonalStorageSettings = new PersonalStorageSettings();
-                PersonalStorageSettings.DefaultMenuCategories();
+                PersonalStorageSettings = new ExpansionPersonalStorageSettings();
+                PersonalStorageSettings.isDirty = true;
                 needtosave = true;
                 Console.WriteLine(Path.GetFileName(PersonalStorageSettingsPath) + " File not found, Creating new....");
             }
@@ -635,7 +653,7 @@ namespace DayZeEditor
                 {
                     Converters = { new BoolConverter() },
                 };
-                PersonalStorageSettings = JsonSerializer.Deserialize<PersonalStorageSettings>(File.ReadAllText(PersonalStorageSettingsPath), options);
+                PersonalStorageSettings = JsonSerializer.Deserialize<ExpansionPersonalStorageSettings>(File.ReadAllText(PersonalStorageSettingsPath), options);
                 PersonalStorageSettings.isDirty = false;
                 if (PersonalStorageSettings.checkver())
                     needtosave = true;
@@ -653,14 +671,15 @@ namespace DayZeEditor
             PlayerListsettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\PlayerListSettings.json";
             if (!File.Exists(PlayerListsettingsPath))
             {
-                PlayerListSettings = new PlayerListSettings();
+                PlayerListSettings = new ExpansionPlayerListSettings();
+                PlayerListSettings.isDirty = true;
                 needtosave = true;
                 Console.WriteLine(Path.GetFileName(PlayerListsettingsPath) + " File not found, Creating new....");
             }
             else
             {
                 Console.WriteLine("serializing " + Path.GetFileName(PlayerListsettingsPath));
-                PlayerListSettings = JsonSerializer.Deserialize<PlayerListSettings>(File.ReadAllText(PlayerListsettingsPath));
+                PlayerListSettings = JsonSerializer.Deserialize<ExpansionPlayerListSettings>(File.ReadAllText(PlayerListsettingsPath));
                 PlayerListSettings.isDirty = false;
                 if (PlayerListSettings.checkver())
                     needtosave = true;
@@ -671,14 +690,15 @@ namespace DayZeEditor
             RaidSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\Raidsettings.json";
             if (!File.Exists(RaidSettingsPath))
             {
-                RaidSettings = new RaidSettings();
+                RaidSettings = new ExpansionRaidSettings();
+                RaidSettings.isDirty = true;
                 needtosave = true;
                 Console.WriteLine(Path.GetFileName(RaidSettingsPath) + " File not found, Creating new....");
             }
             else
             {
                 Console.WriteLine("serializing " + Path.GetFileName(RaidSettingsPath));
-                RaidSettings = JsonSerializer.Deserialize<RaidSettings>(File.ReadAllText(RaidSettingsPath));
+                RaidSettings = JsonSerializer.Deserialize<ExpansionRaidSettings>(File.ReadAllText(RaidSettingsPath));
                 RaidSettings.isDirty = false;
                 if (RaidSettings.checkver())
                     needtosave = true;
@@ -689,14 +709,15 @@ namespace DayZeEditor
             SafeZoneSettingspath = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings\\SafeZonesettings.json";
             if (!File.Exists(SafeZoneSettingspath))
             {
-                SafeZoneSettings = new SafeZoneSettings();
+                SafeZoneSettings = new ExpansionSafeZoneSettings();
+                SafeZoneSettings.isDirty = true;
                 needtosave = true;
                 Console.WriteLine(Path.GetFileName(SafeZoneSettingspath) + " File not found, Creating new....");
             }
             else
             {
                 Console.WriteLine("serializing " + Path.GetFileName(SafeZoneSettingspath));
-                SafeZoneSettings = JsonSerializer.Deserialize<SafeZoneSettings>(File.ReadAllText(SafeZoneSettingspath));
+                SafeZoneSettings = JsonSerializer.Deserialize<ExpansionSafeZoneSettings>(File.ReadAllText(SafeZoneSettingspath));
                 SafeZoneSettings.isDirty = false;
                 if (SafeZoneSettings.checkver())
                     needtosave = true;
@@ -707,14 +728,15 @@ namespace DayZeEditor
             SocialMediaSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\SocialMediaSettings.json";
             if (!File.Exists(SocialMediaSettingsPath))
             {
-                SocialMediaSettings = new SocialMediaSettings();
+                SocialMediaSettings = new ExpansionSocialMediaSettings();
+                SocialMediaSettings.isDirty = true;
                 needtosave = true;
                 Console.WriteLine(Path.GetFileName(SocialMediaSettingsPath) + " File not found, Creating new....");
             }
             else
             {
                 Console.WriteLine("serializing " + Path.GetFileName(SocialMediaSettingsPath));
-                SocialMediaSettings = JsonSerializer.Deserialize<SocialMediaSettings>(File.ReadAllText(SocialMediaSettingsPath));
+                SocialMediaSettings = JsonSerializer.Deserialize<ExpansionSocialMediaSettings>(File.ReadAllText(SocialMediaSettingsPath));
                 SocialMediaSettings.isDirty = false;
                 if (SocialMediaSettings.checkver())
                     needtosave = true;
@@ -725,7 +747,8 @@ namespace DayZeEditor
             SpawnSettingsPath = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings\\SpawnSettings.json";
             if (!File.Exists(SpawnSettingsPath))
             {
-                SpawnSettings = new SpawnSettings();
+                SpawnSettings = new ExpansionSpawnSettings();
+                SpawnSettings.isDirty = true;
                 SpawnSettings.SetStartingWeapons();
                 needtosave = true;
                 Console.WriteLine(Path.GetFileName(SpawnSettingsPath) + " File not found, Creating new....");
@@ -733,7 +756,7 @@ namespace DayZeEditor
             else
             {
                 Console.WriteLine("serializing " + Path.GetFileName(SpawnSettingsPath));
-                SpawnSettings = JsonSerializer.Deserialize<SpawnSettings>(File.ReadAllText(SpawnSettingsPath));
+                SpawnSettings = JsonSerializer.Deserialize<ExpansionSpawnSettings>(File.ReadAllText(SpawnSettingsPath));
                 SpawnSettings.SetStartingWeapons();
                 SpawnSettings.isDirty = false;
                 if (SpawnSettings.checkver())
@@ -745,14 +768,15 @@ namespace DayZeEditor
             TerritorySettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\TerritorySettings.json";
             if (!File.Exists(TerritorySettingsPath))
             {
-                TerritorySettings = new TerritorySettings();
+                TerritorySettings = new ExpansionTerritorySettings();
+                TerritorySettings.isDirty = true;
                 needtosave = true;
                 Console.WriteLine(Path.GetFileName(TerritorySettingsPath) + " File not found, Creating new....");
             }
             else
             {
                 Console.WriteLine("serializing " + Path.GetFileName(TerritorySettingsPath));
-                TerritorySettings = JsonSerializer.Deserialize<TerritorySettings>(File.ReadAllText(TerritorySettingsPath));
+                TerritorySettings = JsonSerializer.Deserialize<ExpansionTerritorySettings>(File.ReadAllText(TerritorySettingsPath));
                 TerritorySettings.isDirty = false;
                 if (TerritorySettings.checkver())
                     needtosave = true;
@@ -763,14 +787,15 @@ namespace DayZeEditor
             VehicleSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\VehicleSettings.json";
             if (!File.Exists(VehicleSettingsPath))
             {
-                VehicleSettings = new VehicleSettings();
+                VehicleSettings = new ExpansionVehicleSettings();
+                VehicleSettings.isDirty = true;
                 needtosave = true;
                 Console.WriteLine(Path.GetFileName(VehicleSettingsPath) + " File not found, Creating new....");
             }
             else
             {
                 Console.WriteLine("serializing " + Path.GetFileName(VehicleSettingsPath));
-                VehicleSettings = JsonSerializer.Deserialize<VehicleSettings>(File.ReadAllText(VehicleSettingsPath));
+                VehicleSettings = JsonSerializer.Deserialize<ExpansionVehicleSettings>(File.ReadAllText(VehicleSettingsPath));
                 VehicleSettings.isDirty = false;
                 if (VehicleSettings.checkver())
                     needtosave = true;
@@ -1531,10 +1556,10 @@ namespace DayZeEditor
         #endregion savefiles
 
         #region Airdropsettings
-        public AirdropContainers CurrentAirdropContainer;
-        public containerLoot CurrentAirdropContainerLoot;
-        private NoBuildZones currentZone;
-        public lootVarients LootVarients;
+        public ExpansionLootContainer CurrentAirdropContainer;
+        public ExpansionLoot CurrentAirdropContainerLoot;
+        private ExpansionBuildNoBuildZone currentZone;
+        public ExpansionLootVariant LootVarients;
 
         private void SetupAirdropsettings()
         {
@@ -1642,7 +1667,7 @@ namespace DayZeEditor
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBox2.SelectedItems.Count < 1) return;
-            CurrentAirdropContainer = listBox2.SelectedItem as AirdropContainers;
+            CurrentAirdropContainer = listBox2.SelectedItem as ExpansionLootContainer;
             useraction = false;
             comboBox2.SelectedItem = getContainertype(CurrentAirdropContainer.Container);
             numericUpDown8.Value = CurrentAirdropContainer.Usage;
@@ -1672,7 +1697,7 @@ namespace DayZeEditor
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBox1.SelectedItems.Count < 1) return;
-            CurrentAirdropContainerLoot = listBox1.SelectedItem as containerLoot;
+            CurrentAirdropContainerLoot = listBox1.SelectedItem as ExpansionLoot;
             useraction = false;
             textBox1.Text = CurrentAirdropContainerLoot.Name;
             if (CurrentAirdropContainerLoot.Chance > 1)
@@ -1699,7 +1724,7 @@ namespace DayZeEditor
         private void listBox21_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBox21.SelectedItems.Count < 1) return;
-            LootVarients = listBox21.SelectedItem as lootVarients;
+            LootVarients = listBox21.SelectedItem as ExpansionLootVariant;
             useraction = false;
 
             VarientChanceTrackBar.Value = (int)(LootVarients.Chance * 1000);
@@ -1770,7 +1795,7 @@ namespace DayZeEditor
         }
         private void darkButton7_Click(object sender, EventArgs e)
         {
-            AirdropContainers NewContainer = new AirdropContainers();
+            ExpansionLootContainer NewContainer = new ExpansionLootContainer();
             Add_new_container anc = new Add_new_container();
             DialogResult result = anc.ShowDialog();
             if (result == DialogResult.OK)
@@ -1779,7 +1804,7 @@ namespace DayZeEditor
                 NewContainer.FallSpeed = anc.getFallspeedValue;
                 NewContainer.Usage = anc.getUsagevalue;
                 NewContainer.Weight = (decimal)anc.getWeightValue;
-                NewContainer.Loot = new BindingList<containerLoot>();
+                NewContainer.Loot = new BindingList<ExpansionLoot>();
                 NewContainer.Infected = new BindingList<string>();
                 NewContainer.ItemCount = anc.getItemevalue;
                 NewContainer.InfectedCount = anc.getinfectedcountValue;
@@ -1807,14 +1832,14 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    containerLoot Newloot = new containerLoot()
+                    ExpansionLoot Newloot = new ExpansionLoot()
                     {
                         Name = l,
                         Attachments = new BindingList<string>(),
                         Chance = (decimal)0.5,
                         Max = -1,
                         Min = 0,
-                        Variants = new BindingList<lootVarients>()
+                        Variants = new BindingList<ExpansionLootVariant>()
                     };
                     CurrentAirdropContainer.Loot.Add(Newloot);
                     AirdropsettingsJson.isDirty = true;
@@ -2042,7 +2067,7 @@ namespace DayZeEditor
         }
         private void darkButton52_Click(object sender, EventArgs e)
         {
-            foreach (containerLoot cl in CurrentAirdropContainer.Loot)
+            foreach (ExpansionLoot cl in CurrentAirdropContainer.Loot)
             {
                 cl.Chance = ((decimal)trackBar1.Value) / 1000;
             }
@@ -2082,7 +2107,7 @@ namespace DayZeEditor
                 }
                 foreach (string l in addedtypes)
                 {
-                    lootVarients newlootVarients = new lootVarients()
+                    ExpansionLootVariant newlootVarients = new ExpansionLootVariant()
                     {
                         Name = l,
                         Attachments = new BindingList<string>(),
@@ -2162,19 +2187,19 @@ namespace DayZeEditor
         private void Setupbasebuildingsettings()
         {
             useraction = false;
-            CodelockAttachModeCB.DataSource = Enum.GetValues(typeof(canattacchcodelock));
-            FlagMenuModeComboBox.DataSource = Enum.GetValues(typeof(FlagMenuMode));
-            DismantleFlagModeComboBox.DataSource = Enum.GetValues(typeof(DismantleFlagMode));
+            CodelockAttachModeCB.DataSource = Enum.GetValues(typeof(ExpansionCodelockAttachMode));
+            FlagMenuModeComboBox.DataSource = Enum.GetValues(typeof(ExpansionFlagMenuMode));
+            DismantleFlagModeComboBox.DataSource = Enum.GetValues(typeof(ExpansionDismantleFlagMode));
             CanBuildAnywhereCB.Checked = BaseBuildingSettings.CanBuildAnywhere == 1 ? true : false;
             AllowBuildingWithoutATerritoryCB.Checked = BaseBuildingSettings.AllowBuildingWithoutATerritory == 1 ? true : false;
             CanCraftVanillaBasebuildingCB.Checked = BaseBuildingSettings.CanCraftVanillaBasebuilding == 1 ? true : false;
             CanCraftExpansionBasebuildingCB.Checked = BaseBuildingSettings.CanCraftExpansionBasebuilding == 1 ? true : false;
             DestroyFlagOnDismantleCB.Checked = BaseBuildingSettings.DestroyFlagOnDismantle == 1 ? true : false;
-            DismantleFlagModeComboBox.SelectedItem = (DismantleFlagMode)BaseBuildingSettings.DismantleFlagMode;
+            DismantleFlagModeComboBox.SelectedItem = (ExpansionDismantleFlagMode)BaseBuildingSettings.DismantleFlagMode;
             DismantleOutsideTerritoryCB.Checked = BaseBuildingSettings.DismantleOutsideTerritory == 1 ? true : false;
             DismantleInsideTerritoryCB.Checked = BaseBuildingSettings.DismantleInsideTerritory == 1 ? true : false;
             DismantleAnywhereCB.Checked = BaseBuildingSettings.DismantleAnywhere == 1 ? true : false;
-            CodelockAttachModeCB.SelectedItem = (canattacchcodelock)BaseBuildingSettings.CodelockAttachMode;
+            CodelockAttachModeCB.SelectedItem = (ExpansionCodelockAttachMode)BaseBuildingSettings.CodelockAttachMode;
             CodelockActionsAnywhereCB.Checked = BaseBuildingSettings.CodelockActionsAnywhere == 1 ? true : false;
             CodeLockLengthNUD.Value = BaseBuildingSettings.CodeLockLength;
             DoDamageWhenEnterWrongCodeLockCB.Checked = BaseBuildingSettings.DoDamageWhenEnterWrongCodeLock == 1 ? true : false;
@@ -2183,11 +2208,12 @@ namespace DayZeEditor
             CanCraftTerritoryFlagKitCB.Checked = BaseBuildingSettings.CanCraftTerritoryFlagKit == 1 ? true : false;
             SimpleTerritoryCB.Checked = BaseBuildingSettings.SimpleTerritory == 1 ? true : false;
             AutomaticFlagOnCreationCB.Checked = BaseBuildingSettings.AutomaticFlagOnCreation == 1 ? true : false;
-            FlagMenuModeComboBox.SelectedItem = (FlagMenuMode)BaseBuildingSettings.FlagMenuMode;
+            FlagMenuModeComboBox.SelectedItem = (ExpansionFlagMenuMode)BaseBuildingSettings.FlagMenuMode;
             GetTerritoryFlagKitAfterBuildCB.Checked = BaseBuildingSettings.GetTerritoryFlagKitAfterBuild == 1 ? true : false;
             textBox2.Text = BaseBuildingSettings.BuildZoneRequiredCustomMessage;
             ZonesAreNoBuildZonesCB.Checked = BaseBuildingSettings.ZonesAreNoBuildZones == 1 ? true : false;
             EnableVirtualStorageCB.Checked = BaseBuildingSettings.EnableVirtualStorage == 1 ? true : false;
+            OverrideVanillaEntityPlacementCB.Checked = BaseBuildingSettings.OverrideVanillaEntityPlacement == 1 ? true : false;
 
             listBox6.DisplayMember = "DisplayName";
             listBox6.ValueMember = "Value";
@@ -2287,7 +2313,7 @@ namespace DayZeEditor
         private void CodelockAttachModeCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            canattacchcodelock cacl = (canattacchcodelock)CodelockAttachModeCB.SelectedItem;
+            ExpansionCodelockAttachMode cacl = (ExpansionCodelockAttachMode)CodelockAttachModeCB.SelectedItem;
             BaseBuildingSettings.CodelockAttachMode = (int)cacl;
             BaseBuildingSettings.isDirty = true;
         }
@@ -2312,7 +2338,7 @@ namespace DayZeEditor
         private void DamageWhenEnterWrongCodeLockNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            BaseBuildingSettings.DamageWhenEnterWrongCodeLock = (float)DamageWhenEnterWrongCodeLockNUD.Value;
+            BaseBuildingSettings.DamageWhenEnterWrongCodeLock = (decimal)DamageWhenEnterWrongCodeLockNUD.Value;
             BaseBuildingSettings.isDirty = true;
         }
         private void RememberCodeCB_CheckedChanged(object sender, EventArgs e)
@@ -2390,7 +2416,7 @@ namespace DayZeEditor
         private void listBox8_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            currentZone = listBox8.SelectedItem as NoBuildZones;
+            currentZone = listBox8.SelectedItem as ExpansionBuildNoBuildZone;
             if(currentZone == null) { return; }
             useraction = false;
             textBox3.Text = currentZone.Name;
@@ -2423,7 +2449,7 @@ namespace DayZeEditor
         private void DrawAll(object sender, PaintEventArgs e)
         {
             float scalevalue = BaseBuildingMapscale * 0.05f;
-            foreach (NoBuildZones zones in BaseBuildingSettings.Zones)
+            foreach (ExpansionBuildNoBuildZone zones in BaseBuildingSettings.Zones)
             {
                 int centerX = (int)(Math.Round(zones.Center[0], 0) * scalevalue);
                 int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(zones.Center[2], 0) * scalevalue);
@@ -2477,7 +2503,7 @@ namespace DayZeEditor
         }
         private void darkButton13_Click(object sender, EventArgs e)
         {
-            NoBuildZones newzone = new NoBuildZones()
+            ExpansionBuildNoBuildZone newzone = new ExpansionBuildNoBuildZone()
             {
                 Name = "new No Build Zone",
                 CustomMessage = "",
@@ -2592,14 +2618,14 @@ namespace DayZeEditor
         private void FlagMenuModeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            FlagMenuMode cacl = (FlagMenuMode)FlagMenuModeComboBox.SelectedItem;
+            ExpansionFlagMenuMode cacl = (ExpansionFlagMenuMode)FlagMenuModeComboBox.SelectedItem;
             BaseBuildingSettings.FlagMenuMode = (int)cacl;
             BaseBuildingSettings.isDirty = true;
         }
         private void DismantleFlagModeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            DismantleFlagMode cacl = (DismantleFlagMode)DismantleFlagModeComboBox.SelectedItem;
+            ExpansionDismantleFlagMode cacl = (ExpansionDismantleFlagMode)DismantleFlagModeComboBox.SelectedItem;
             BaseBuildingSettings.DismantleFlagMode = (int)cacl;
             BaseBuildingSettings.isDirty = true;
         }
@@ -2634,6 +2660,12 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             BaseBuildingSettings.EnableVirtualStorage = EnableVirtualStorageCB.Checked == true ? 1 : 0;
+            BaseBuildingSettings.isDirty = true;
+        }
+        private void OverrideVanillaEntityPlacementCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            BaseBuildingSettings.OverrideVanillaEntityPlacement = OverrideVanillaEntityPlacementCB.Checked == true ? 1 : 0;
             BaseBuildingSettings.isDirty = true;
         }
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
@@ -2743,12 +2775,12 @@ namespace DayZeEditor
         #endregion basebuildingsettings
 
         #region BookSettings
-        public Rulecats CurrentRulecat;
-        public Rules currentRules;
-        public Descript currentDescription;
-        public DT currentdecriptiontext;
-        public Links currentLink;
-        public CraftingCategories CurrentCraftingCategory;
+        public ExpansionBookRuleCategory CurrentRulecat;
+        public ExpansionBookRule currentRules;
+        public ExpansionBookDescriptionCategory currentDescription;
+        public ExpansionBookDescription currentdecriptiontext;
+        public ExpansionBookLink currentLink;
+        public ExpansionBookCraftingCategory CurrentCraftingCategory;
 
         public void loadBookSettings()
         {
@@ -2791,7 +2823,7 @@ namespace DayZeEditor
         private void listBox10_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(listBox10.SelectedIndex == -1 ){ return; }
-            CurrentRulecat = listBox10.SelectedItem as Rulecats;
+            CurrentRulecat = listBox10.SelectedItem as ExpansionBookRuleCategory;
             useraction = false;
             textBox6.Text = "";
             textBox7.Text = "";
@@ -2805,7 +2837,7 @@ namespace DayZeEditor
         {
             if (listBox11.Items.Count == 0) { return; }
             if (listBox11.SelectedIndex == -1) { return; }
-            currentRules = listBox11.SelectedItem as Rules;
+            currentRules = listBox11.SelectedItem as ExpansionBookRule;
             useraction = false;
             textBox6.Text = currentRules.RuleParagraph;
             textBox7.Text = currentRules.RuleText;
@@ -2814,14 +2846,14 @@ namespace DayZeEditor
         }
         private void listBox13_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(listBox13.SelectedItem as Descript == currentDescription) { return; }
+            if(listBox13.SelectedItem as ExpansionBookDescriptionCategory == currentDescription) { return; }
             if(listBox13.SelectedIndex == -1) { return; }
-            currentDescription = listBox13.SelectedItem as Descript;
+            currentDescription = listBox13.SelectedItem as ExpansionBookDescriptionCategory;
             useraction = false;
             textBox10.Text = currentDescription.CategoryName;
 
             int i = 0;
-            foreach(DT dt in currentDescription.Descriptions)
+            foreach(ExpansionBookDescription dt in currentDescription.Descriptions)
             {
                 dt.DTName = "Decription Text " + i.ToString();
                 i++;
@@ -2841,14 +2873,14 @@ namespace DayZeEditor
             if (listBox12.Items.Count == 0 ){ return; }
             if (listBox12.SelectedItem == null) { return; }
 
-            currentdecriptiontext = listBox12.SelectedItem as DT;
+            currentdecriptiontext = listBox12.SelectedItem as ExpansionBookDescription;
             useraction = false;
             textBox8.Text = currentdecriptiontext.DescriptionText.Replace("<p>", "").Replace("</p>", "");
             useraction = true;
         }
         private void darkButton17_Click(object sender, EventArgs e)
         {
-            BookSettings.Descriptions.Add(new Descript() { CategoryName = "New Category", Descriptions = new BindingList<DT>() });
+            BookSettings.Descriptions.Add(new ExpansionBookDescriptionCategory() { CategoryName = "New Category", Descriptions = new BindingList<ExpansionBookDescription>() });
             BookSettings.isDirty = true;
             listBox13.SelectedIndex = -1;
             listBox13.SelectedIndex = listBox13.Items.Count - 1;
@@ -2868,9 +2900,9 @@ namespace DayZeEditor
         }
         private void darkButton20_Click(object sender, EventArgs e)
         {
-            currentDescription.Descriptions.Add(new DT() { DescriptionText = "New DescriptionText", DTName = "New DescriptionText"});
+            currentDescription.Descriptions.Add(new ExpansionBookDescription() { DescriptionText = "New DescriptionText", DTName = "New DescriptionText"});
             int i = 0;
-            foreach (DT dt in currentDescription.Descriptions)
+            foreach (ExpansionBookDescription dt in currentDescription.Descriptions)
             {
                 dt.DTName = "Decription Text " + i.ToString();
                 i++;
@@ -2887,7 +2919,7 @@ namespace DayZeEditor
         }
         private void darkButton22_Click(object sender, EventArgs e)
         {
-            BookSettings.RuleCategories.Add(new Rulecats() { CategoryName = "New Rule", Rules = new BindingList<Rules>() });
+            BookSettings.RuleCategories.Add(new ExpansionBookRuleCategory() { CategoryName = "New Rule", Rules = new BindingList<ExpansionBookRule>() });
             BookSettings.isDirty = true;
             listBox10.SelectedIndex = -1;
             listBox10.SelectedIndex = listBox10.Items.Count - 1;
@@ -2905,7 +2937,7 @@ namespace DayZeEditor
         }
         private void darkButton24_Click(object sender, EventArgs e)
         {
-            CurrentRulecat.Rules.Add(new Rules() { RuleParagraph = "new paragraph", RuleText = "NewText"});
+            CurrentRulecat.Rules.Add(new ExpansionBookRule() { RuleParagraph = "new paragraph", RuleText = "NewText"});
             BookSettings.RenameRules();
             BookSettings.isDirty = true;
             listBox11.SelectedIndex = -1;
@@ -3006,7 +3038,7 @@ namespace DayZeEditor
         private void listBox18_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(listBox18.SelectedIndex == -1) { return; }
-            currentLink = listBox18.SelectedItem as Links;
+            currentLink = listBox18.SelectedItem as ExpansionBookLink;
             useraction = false;
             textBox12.Text = currentLink.Name;
             textBox13.Text = currentLink.URL;
@@ -3061,7 +3093,7 @@ namespace DayZeEditor
         }
         private void darkButton34_Click(object sender, EventArgs e)
         {
-            BookSettings.Links.Add(new Links() {Name = "New link", URL = "Some Url", IconColor = -1, IconName = "Homepage" });
+            BookSettings.Links.Add(new ExpansionBookLink() {Name = "New link", URL = "Some Url", IconColor = -1, IconName = "Homepage" });
             BookSettings.isDirty = true;
             listBox18.SelectedIndex = -1;
             listBox18.SelectedIndex = listBox18.Items.Count - 1;
@@ -3084,7 +3116,7 @@ namespace DayZeEditor
         private void listBox19_SelectedIndexChanged(object sender, EventArgs e)
         {
             
-            CurrentCraftingCategory = listBox19.SelectedItem as CraftingCategories;
+            CurrentCraftingCategory = listBox19.SelectedItem as ExpansionBookCraftingCategory;
             if (CurrentCraftingCategory == null) { return; }
             useraction = false;
             textBox14.Text = CurrentCraftingCategory.CategoryName;
@@ -3098,7 +3130,7 @@ namespace DayZeEditor
         }
         private void darkButton38_Click(object sender, EventArgs e)
         {
-            BookSettings.CraftingCategories.Add(new CraftingCategories() { CategoryName = "New Crafting Category", Results = new BindingList<string>() });
+            BookSettings.CraftingCategories.Add(new ExpansionBookCraftingCategory() { CategoryName = "New Crafting Category", Results = new BindingList<string>() });
             BookSettings.isDirty = true;
             listBox19.SelectedIndex = -1;
             listBox19.SelectedIndex = listBox19.Items.Count - 1;
@@ -3143,7 +3175,7 @@ namespace DayZeEditor
         }
         private void darkButton39_Click(object sender, EventArgs e)
         {
-            BookSettings.CraftingCategories = new BindingList<CraftingCategories>(BookSettings.CraftingCategories.OrderBy(x => x.CategoryName).ToList());
+            BookSettings.CraftingCategories = new BindingList<ExpansionBookCraftingCategory>(BookSettings.CraftingCategories.OrderBy(x => x.CategoryName).ToList());
             listBox19.DisplayMember = "DisplayName";
             listBox19.ValueMember = "Value";
             listBox19.DataSource = BookSettings.CraftingCategories;
@@ -3288,6 +3320,8 @@ namespace DayZeEditor
             useraction = false;
             DebugVehiclePlayerNetworkBubbleModeNUD.Value = DebugSettings.DebugVehiclePlayerNetworkBubbleMode;
             ServerUpdateRateLimitNUD.Value = DebugSettings.ServerUpdateRateLimit;
+            EnableItemDropPlacementFixCB.Checked = DebugSettings.EnableItemDropPlacementFix == 1 ? true : false;
+            EnableProneDeathHandItemDropFixCB.Checked = DebugSettings.EnableProneDeathHandItemDropFix == 1 ? true : false;
             useraction = true;
         }
         private void DebugVehiclePlayerNetworkBubbleModeNUD_ValueChanged(object sender, EventArgs e)
@@ -3302,6 +3336,18 @@ namespace DayZeEditor
 
             if (!useraction) return;
             DebugSettings.ServerUpdateRateLimit = (int)ServerUpdateRateLimitNUD.Value;
+            DebugSettings.isDirty = true;
+        }
+        private void EnableProneDeathHandItemDropFixCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            DebugSettings.EnableProneDeathHandItemDropFix = EnableProneDeathHandItemDropFixCB.Checked == true ? 1 : 0;
+            DebugSettings.isDirty = true;
+        }
+        private void EnableItemDropPlacementFixCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            DebugSettings.EnableItemDropPlacementFix = EnableItemDropPlacementFixCB.Checked == true ? 1 : 0;
             DebugSettings.isDirty = true;
         }
         #endregion debugsettings
@@ -3319,7 +3365,7 @@ namespace DayZeEditor
             UseCustomMappingModuleCB.Checked = GeneralSettings.Mapping.UseCustomMappingModule == 1 ? true : false;
             BuildingInteriorsCB.Checked = GeneralSettings.Mapping.BuildingInteriors == 1 ? true : false;
             BuildingIvysComboBox.SelectedItem = (buildingIvy)GeneralSettings.Mapping.BuildingIvys;
-            EnableLampsComboBox.SelectedItem = (Lamps)GeneralSettings.EnableLamps;
+            EnableLampsComboBox.SelectedItem = (LampModeEnum)GeneralSettings.EnableLamps;
             EnableGeneratorsCB.Checked = GeneralSettings.EnableGenerators == 1 ? true : false;
             EnableLighthousesCB.Checked = GeneralSettings.EnableLighthouses == 1 ? true : false;
             EnableHUDNightvisionOverlayCB.Checked = GeneralSettings.EnableHUDNightvisionOverlay == 1 ? true : false;
@@ -3328,6 +3374,9 @@ namespace DayZeEditor
             UnlimitedStaminaCB.Checked = GeneralSettings.UnlimitedStamina == 1 ? true : false;
             UseDeathScreenCB.Checked = GeneralSettings.UseDeathScreen == 1 ? true : false;
             UseDeathScreenStatisticsCB.Checked = GeneralSettings.UseDeathScreenStatistics == 1 ? true : false;
+            UseExpansionMainMenuLogoCB.Checked = GeneralSettings.UseExpansionMainMenuLogo == 1 ? true : false;
+            UseExpansionMainMenuIconsCB.Checked = GeneralSettings.UseExpansionMainMenuIcons == 1 ? true : false;
+            UseExpansionMainMenuIntroSceneCB.Checked = GeneralSettings.UseExpansionMainMenuIntroScene == 1 ? true : false;
             UseNewsFeedInGameMenuCB.Checked = GeneralSettings.UseNewsFeedInGameMenu == 1 ? true : false;
             EnableEarPlugsCB.Checked = GeneralSettings.EnableEarPlugs == 1 ? true : false;
             InGameMenuLogoPathTB.Text = GeneralSettings.InGameMenuLogoPath;
@@ -3417,7 +3466,7 @@ namespace DayZeEditor
         private void EnableLampsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            Lamps lamp = (Lamps)EnableLampsComboBox.SelectedItem;
+            LampModeEnum lamp = (LampModeEnum)EnableLampsComboBox.SelectedItem;
             GeneralSettings.EnableLamps = (int)lamp;
             GeneralSettings.isDirty = true;
         }
@@ -3773,7 +3822,7 @@ namespace DayZeEditor
 
         #region mapsettings
         public int markerScale = 1;
-        public ServerMarkers currentmapmapmarker;
+        public ExpansionServerMarkerData currentmapmapmarker;
 
         private void loadmapsettings()
         {
@@ -3834,7 +3883,7 @@ namespace DayZeEditor
         private void DrawMapIcons(object sender, PaintEventArgs e)
         {
             float scalevalue = markerScale * 0.05f;
-            foreach (ServerMarkers marker in MapSettings.ServerMarkers)
+            foreach (ExpansionServerMarkerData marker in MapSettings.ServerMarkers)
             {
                 Bitmap image;
                 if(File.Exists(Application.StartupPath + "\\Maps\\Icons\\" + marker.m_IconName + ".png"))
@@ -3861,7 +3910,7 @@ namespace DayZeEditor
         }
         private void listBox17_SelectedIndexChanged(object sender, EventArgs e)
         {
-            currentmapmapmarker = listBox17.SelectedItem as ServerMarkers;
+            currentmapmapmarker = listBox17.SelectedItem as ExpansionServerMarkerData;
             if(currentmapmapmarker == null ) { return; }
             useraction = false;
             comboBox1.SelectedValue = (MapMarkerVisibility)currentmapmapmarker.m_Visibility;
@@ -3873,6 +3922,7 @@ namespace DayZeEditor
             numericUpDown26.Value = (decimal)currentmapmapmarker.m_Position[2];
             m_Is3DCB.Checked = currentmapmapmarker.m_Is3D == 1 ? true : false;
             m_LockedCB.Checked = currentmapmapmarker.m_Locked == 1 ? true : false;
+            m_PersistCB.Checked = currentmapmapmarker.m_Persist == 1 ? true : false;
             m_Color.Invalidate();
             pictureBox3.Invalidate();
             useraction = true;
@@ -3917,7 +3967,7 @@ namespace DayZeEditor
         private void darkButton32_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-            ServerMarkers newmarker = new ServerMarkers()
+            ExpansionServerMarkerData newmarker = new ExpansionServerMarkerData()
             {
                 m_UID = "New Marker",
                 m_Color = -1,
@@ -3926,6 +3976,8 @@ namespace DayZeEditor
                 m_Is3D = 0,
                 m_Visibility = 0,
                 m_Position = new float[] { currentproject.MapSize / 2, MapData.gethieght(currentproject.MapSize / 2, currentproject.MapSize / 2), currentproject.MapSize / 2 },
+                m_Locked = 0,
+                m_Persist = 1
             };
             MapSettings.ServerMarkers.Add(newmarker);
             listBox17.SelectedIndex = -1;
@@ -3948,6 +4000,12 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             currentmapmapmarker.m_Is3D = m_Is3DCB.Checked == true ? 1 : 0;
+            MapSettings.isDirty = true;
+        }
+        private void m_PersistCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentmapmapmarker.m_Persist = m_PersistCB.Checked == true ? 1 : 0;
             MapSettings.isDirty = true;
         }
         private void textBox9_TextChanged(object sender, EventArgs e)
@@ -4741,14 +4799,14 @@ namespace DayZeEditor
                 Height = 0,
                 Speed = 0,
                 Container = "Random",
-                DropLocation = new DropLocation()
+                DropLocation = new ExpansionAirdropLocation()
                 {
                     Name = "New Drop Location",
                     Radius = 100,
                     x = currentproject.MapSize / 2,
                     z = currentproject.MapSize / 2
                 },
-                Loot = new BindingList<containerLoot>(),
+                Loot = new BindingList<ExpansionLoot>(),
                 Infected = new BindingList<string>(),
                 ItemCount = -1,
                 InfectedCount = -1
@@ -4872,7 +4930,7 @@ namespace DayZeEditor
         private void listBox30_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBox30.SelectedItems.Count < 1) return;
-            SCL = listBox30.SelectedItem as containerLoot;
+            SCL = listBox30.SelectedItem as ExpansionLoot;
             useraction = false;
             textBox22.Text = SCL.Name;
             if (SCL.Chance > 1)
@@ -4910,14 +4968,14 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    containerLoot Newloot = new containerLoot()
+                    ExpansionLoot Newloot = new ExpansionLoot()
                     {
                         Name = l,
                         Attachments = new BindingList<string>(),
                         Chance = (decimal)0.5,
                         Max = -1,
                         Min = 0,
-                        Variants = new BindingList<lootVarients>()
+                        Variants = new BindingList<ExpansionLootVariant>()
                     };
                     currentAirdropmissionfile.Loot.Add(Newloot);
                     currentAirdropmissionfile.isDirty = true;
@@ -5000,7 +5058,7 @@ namespace DayZeEditor
         }
         private void darkButton92_Click(object sender, EventArgs e)
         {
-            foreach (containerLoot scl in currentAirdropmissionfile.Loot)
+            foreach (ExpansionLoot scl in currentAirdropmissionfile.Loot)
             {
                 scl.Chance = ((decimal)trackBar1.Value) / 1000;
             }
@@ -5009,7 +5067,7 @@ namespace DayZeEditor
         private void listBox28_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBox28.SelectedItems.Count < 1) return;
-            SLootVarients = listBox28.SelectedItem as lootVarients;
+            SLootVarients = listBox28.SelectedItem as ExpansionLootVariant;
             useraction = false;
 
             VarientChanceTrackBar.Value = (int)(SLootVarients.Chance * 1000);
@@ -5038,7 +5096,7 @@ namespace DayZeEditor
                 }
                 foreach (string l in addedtypes)
                 {
-                    lootVarients newlootVarients = new lootVarients()
+                    ExpansionLootVariant newlootVarients = new ExpansionLootVariant()
                     {
                         Name = l,
                         Attachments = new BindingList<string>(),
@@ -5371,7 +5429,7 @@ namespace DayZeEditor
         #endregion nametagsettings
 
         #region NortificationSchedulerSettings
-        public Notification currentNotification;
+        public ExpansionNotificationSchedule currentNotification;
         public void LoadNotificationSchedulerSettings()
         {
             useraction = false;
@@ -5388,7 +5446,7 @@ namespace DayZeEditor
         private void SchedulerNotificaionLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (SchedulerNotificaionLB.SelectedItems.Count < 1) return;
-            currentNotification = SchedulerNotificaionLB.SelectedItem as Notification;
+            currentNotification = SchedulerNotificaionLB.SelectedItem as ExpansionNotificationSchedule;
             useraction = false;
             NSTitleTB.Text = currentNotification.Title;
             DateTime Dtime = DateTime.Now.Date;
@@ -5487,7 +5545,7 @@ namespace DayZeEditor
         }
         private void darkButton59_Click(object sender, EventArgs e)
         {
-            Notification newnotification = new Notification()
+            ExpansionNotificationSchedule newnotification = new ExpansionNotificationSchedule()
             {
                 Title = "New Notification",
                 Hour = 00,
@@ -5502,7 +5560,7 @@ namespace DayZeEditor
         }
         private void darkButton60_Click(object sender, EventArgs e)
         {
-            NotificationSchedulerSettings.Notifications.Remove(SchedulerNotificaionLB.SelectedItem as Notification);
+            NotificationSchedulerSettings.Notifications.Remove(SchedulerNotificaionLB.SelectedItem as ExpansionNotificationSchedule);
             NotificationSchedulerSettings.isDirty = true;
         }
         #endregion NotificatioSchedulerSettings
@@ -5511,11 +5569,14 @@ namespace DayZeEditor
         private void LoadNotificationSettings()
         {
             useraction = false;
+            JoinMessageTypeCB.DataSource = Enum.GetValues(typeof(ExpansionAnnouncementType));
+            LeftMessageTypeCB.DataSource = Enum.GetValues(typeof(ExpansionAnnouncementType));
+            KillFeedMessageTypeCB.DataSource = Enum.GetValues(typeof(ExpansionAnnouncementType));
             EnableNotificationCB.Checked = NotificationSettings.EnableNotification == 1 ? true : false;
             ShowPlayerJoinServerCB.Checked = NotificationSettings.ShowPlayerJoinServer == 1 ? true : false;
-            JoinMessageTypeCB.Checked = NotificationSettings.JoinMessageType == 1 ? true : false;
+            JoinMessageTypeCB.SelectedItem = (ExpansionAnnouncementType)NotificationSettings.JoinMessageType;
             ShowPlayerLeftServerCB.Checked = NotificationSettings.ShowPlayerLeftServer == 1 ? true : false;
-            LeftMessageTypeCB.Checked = NotificationSettings.LeftMessageType == 1 ? true : false;
+            LeftMessageTypeCB.SelectedItem = (ExpansionAnnouncementType)NotificationSettings.LeftMessageType;
             ShowAirdropStartedCB.Checked = NotificationSettings.ShowAirdropStarted == 1 ? true : false;
             ShowAirdropClosingOnCB.Checked = NotificationSettings.ShowAirdropClosingOn == 1 ? true : false;
             ShowAirdropDroppedCB.Checked = NotificationSettings.ShowAirdropDropped == 1 ? true : false;
@@ -5525,7 +5586,7 @@ namespace DayZeEditor
             ShowPlayerAirdropDroppedCB.Checked = NotificationSettings.ShowPlayerAirdropDropped == 1 ? true : false;
             ShowTerritoryNotificationsCB.Checked = NotificationSettings.ShowTerritoryNotifications == 1 ? true : false;
             EnableKillFeedCB.Checked = NotificationSettings.EnableKillFeed == 1 ? true : false;
-            KillFeedMessageTypeCB.Checked = NotificationSettings.KillFeedMessageType == 1 ? true : false;
+            KillFeedMessageTypeCB.SelectedItem = (ExpansionAnnouncementType)NotificationSettings.KillFeedMessageType;
             KillFeedFallCB.Checked = NotificationSettings.KillFeedFall == 1 ? true : false;
             KillFeedCarHitDriverCB.Checked = NotificationSettings.KillFeedCarHitDriver == 1 ? true : false;
             KillFeedCarHitNoDriverCB.Checked = NotificationSettings.KillFeedCarHitNoDriver == 1 ? true : false;
@@ -5561,6 +5622,27 @@ namespace DayZeEditor
             if (!useraction) { return; }
             CheckBox cb = sender as CheckBox;
             NotificationSettings.SetIntValue(cb.Name.Substring(0, cb.Name.Length - 2), cb.Checked == true ? 1 : 0);
+            NotificationSettings.isDirty = true;
+        }
+        private void JoinMessageTypeCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            ExpansionAnnouncementType cacl = (ExpansionAnnouncementType)JoinMessageTypeCB.SelectedItem;
+            NotificationSettings.JoinMessageType = (int)cacl;
+            NotificationSettings.isDirty = true;
+        }
+        private void LeftMessageTypeCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            ExpansionAnnouncementType cacl = (ExpansionAnnouncementType)LeftMessageTypeCB.SelectedItem;
+            NotificationSettings.LeftMessageType = (int)cacl;
+            NotificationSettings.isDirty = true;
+        }
+        private void KillFeedMessageTypeCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            ExpansionAnnouncementType cacl = (ExpansionAnnouncementType)KillFeedMessageTypeCB.SelectedItem;
+            NotificationSettings.KillFeedMessageType = (int)cacl;
             NotificationSettings.isDirty = true;
         }
         #endregion notifications
@@ -5630,8 +5712,10 @@ namespace DayZeEditor
         private void loadRaidSettings()
         {
             useraction = false;
-            BaseBuildingRaidModeComboBox.DataSource = Enum.GetValues(typeof(BaseRaidMode));
-            BaseBuildingRaidModeComboBox.SelectedItem = (BaseRaidMode)RaidSettings.BaseBuildingRaidMode;
+            BaseBuildingRaidModeComboBox.DataSource = Enum.GetValues(typeof(BaseBuildingRaidMode));
+            CanRaidLocksOnWallsCB.DataSource = Enum.GetValues(typeof(RaidLocksOnWallsEnum));
+            BaseBuildingRaidModeComboBox.SelectedItem = (BaseBuildingRaidMode)RaidSettings.BaseBuildingRaidMode;
+            CanRaidLocksOnWallsCB.SelectedItem = (RaidLocksOnWallsEnum)RaidSettings.CanRaidLocksOnWalls;
             ExplosionTimeNUD.Value = (decimal)RaidSettings.ExplosionTime;
 
             EnableExplosiveWhitelistCB.Checked = RaidSettings.EnableExplosiveWhitelist == 1 ? true : false;
@@ -5648,7 +5732,6 @@ namespace DayZeEditor
             BarbedWireRaidToolTimeSecondsNUD.Value = (decimal)RaidSettings.BarbedWireRaidToolTimeSeconds;
             BarbedWireRaidToolCyclesNUD.Value = (decimal)RaidSettings.BarbedWireRaidToolCycles;
             BarbedWireRaidToolDamagePercentNUD.Value = (decimal)RaidSettings.BarbedWireRaidToolDamagePercent;
-            CanRaidLocksOnWallsCB.Checked = RaidSettings.CanRaidLocksOnWalls == 1 ? true : false;
             CanRaidLocksOnFencesCB.Checked = RaidSettings.CanRaidLocksOnFences == 1 ? true : false;
             CanRaidLocksOnTentsCB.Checked = RaidSettings.CanRaidLocksOnTents == 1 ? true : false;
             LockOnWallRaidToolTimeSecondsNUD.Value = (decimal)RaidSettings.LockOnWallRaidToolTimeSeconds;
@@ -5657,9 +5740,11 @@ namespace DayZeEditor
             LockRaidToolCyclesNUD.Value = (decimal)RaidSettings.LockRaidToolCycles;
             LockRaidToolDamagePercentNUD.Value = (decimal)RaidSettings.LockRaidToolDamagePercent;
             CanRaidLocksOnContainersCB.Checked = RaidSettings.CanRaidLocksOnContainers == 1 ? true : false;
+            LockOnContainerRaidUseScheduleCB.Checked = RaidSettings.LockOnContainerRaidUseSchedule == 1 ? true : false;
             LockOnContainerRaidToolTimeSecondsNUD.Value = (decimal)RaidSettings.LockOnContainerRaidToolTimeSeconds;
             LockOnContainerRaidToolCyclesNUD.Value = (decimal)RaidSettings.LockOnContainerRaidToolCycles;
             LockOnContainerRaidToolDamagePercentNUD.Value = (decimal)RaidSettings.LockOnContainerRaidToolDamagePercent;
+
 
             ExplosiveDamageWhitelistLB.DisplayMember = "DisplayName";
             ExplosiveDamageWhitelistLB.ValueMember = "Value";
@@ -5694,8 +5779,7 @@ namespace DayZeEditor
         private void BaseBuildingRaidModeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            BaseRaidMode brm = (BaseRaidMode)BaseBuildingRaidModeComboBox.SelectedItem;
-            int br = (int)brm;
+            BaseBuildingRaidMode brm = (BaseBuildingRaidMode)BaseBuildingRaidModeComboBox.SelectedItem;
             RaidSettings.BaseBuildingRaidMode = (int)brm;
             RaidSettings.isDirty = true;
         }
@@ -5795,11 +5879,11 @@ namespace DayZeEditor
             }
             RaidSettings.isDirty = true;
         }
-        public Schedule currentSchedule;
+        public ExpansionRaidSchedule currentSchedule;
         private void ScheduleLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ScheduleLB.SelectedItems.Count < 1) return;
-            currentSchedule = ScheduleLB.SelectedItem as Schedule;
+            currentSchedule = ScheduleLB.SelectedItem as ExpansionRaidSchedule;
             useraction = false;
             WeekdayTB.Text = currentSchedule.Weekday;
             StartHourNUD.Value = currentSchedule.StartHour;
@@ -5811,51 +5895,52 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             currentSchedule.Weekday = WeekdayTB.Text;
-            SafeZoneSettings.isDirty = true;
+            RaidSettings.isDirty = true;
         }
         private void StartHourNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             currentSchedule.StartHour = (int)StartMinuteNUD.Value;
-            SafeZoneSettings.isDirty = true;
+            RaidSettings.isDirty = true;
         }
         private void StartMinuteNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             currentSchedule.StartMinute = (int)StartMinuteNUD.Value;
-            SafeZoneSettings.isDirty = true;
+            RaidSettings.isDirty = true;
         }
         private void DurationMinutesNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             currentSchedule.DurationMinutes = (int)DurationMinutesNUD.Value;
-            SafeZoneSettings.isDirty = true;
+            RaidSettings.isDirty = true;
         }
         private void darkButton83_Click(object sender, EventArgs e)
         {
-            Schedule newschedule = new Schedule()
-            {
-                Weekday = "Weekday",
-                StartHour = 0,
-                StartMinute = 0,
-                DurationMinutes = 60
-            };
+            ExpansionRaidSchedule newschedule = new ExpansionRaidSchedule() { Weekday = "Weekday", StartHour = 0, StartMinute = 0, DurationMinutes = 60 };
             RaidSettings.Schedule.Add(newschedule);
             RaidSettings.isDirty = true;
         }
         private void darkButton82_Click(object sender, EventArgs e)
         {
-            Schedule removeschedule = ScheduleLB.SelectedItem as Schedule;
+            ExpansionRaidSchedule removeschedule = ScheduleLB.SelectedItem as ExpansionRaidSchedule;
             RaidSettings.Schedule.Remove(removeschedule);
+            RaidSettings.isDirty = true;
+        }
+        private void CanRaidLocksOnWallsCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            RaidLocksOnWallsEnum brm = (RaidLocksOnWallsEnum)CanRaidLocksOnWallsCB.SelectedItem;
+            RaidSettings.CanRaidLocksOnWalls = (int)brm;
             RaidSettings.isDirty = true;
         }
         #endregion Raid Settigns
 
         #region SafeZoneSettings
-        public CircleZones currentcircleZone;
-        public PolygonZones currentpolygonZones;
+        public ExpansionSafeZoneCircle currentcircleZone;
+        public ExpansionSafeZonePolygon currentpolygonZones;
         public Polygonpoints currentpolygonpoint;
-        public CylinderZones currentcylenderzones;
+        public ExpansionSafeZoneCylinder currentcylenderzones;
         public string CurrentSafeZoneType;
         public int ZoneScale = 1;
         private void darkButton107_Click(object sender, EventArgs e)
@@ -6022,7 +6107,7 @@ namespace DayZeEditor
         }
         private void DrawSafeZones(object sender, PaintEventArgs e)
         {
-            foreach (CircleZones zones in SafeZoneSettings.CircleZones)
+            foreach (ExpansionSafeZoneCircle zones in SafeZoneSettings.CircleZones)
             {
                 float scalevalue = ZoneScale * 0.05f;
                 int centerX = (int)(Math.Round(zones.Center[0], 0) * scalevalue);
@@ -6034,7 +6119,7 @@ namespace DayZeEditor
                     pen.Color = Color.LimeGreen;
                 getCircle(e.Graphics, pen, center, radius);
             }
-            foreach (PolygonZones pz in SafeZoneSettings.PolygonZones)
+            foreach (ExpansionSafeZonePolygon pz in SafeZoneSettings.PolygonZones)
             {
                 if (pz.Polygonpoints.Count > 1)
                 {
@@ -6062,7 +6147,7 @@ namespace DayZeEditor
                     }
                 }
             }
-            foreach(CylinderZones cyz in SafeZoneSettings.CylinderZones)
+            foreach(ExpansionSafeZoneCylinder cyz in SafeZoneSettings.CylinderZones)
             {
                 float scalevalue = ZoneScale * 0.05f;
                 int centerX = (int)(Math.Round(cyz.Center[0], 0) * scalevalue);
@@ -6078,7 +6163,7 @@ namespace DayZeEditor
         private void listBox14_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBox14.SelectedItems.Count < 1) return;
-            currentcircleZone = listBox14.SelectedItem as CircleZones;
+            currentcircleZone = listBox14.SelectedItem as ExpansionSafeZoneCircle;
             useraction = false;
             CurrentSafeZoneType = "Circle";
             radioButton1.Checked = true;
@@ -6093,7 +6178,7 @@ namespace DayZeEditor
         private void listBox15_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBox15.SelectedItems.Count < 1) return;
-            currentpolygonZones = listBox15.SelectedItem as PolygonZones;
+            currentpolygonZones = listBox15.SelectedItem as ExpansionSafeZonePolygon;
             useraction = false;
             CurrentSafeZoneType = "Polygon";
             radioButton1.Checked = false;
@@ -6297,7 +6382,7 @@ namespace DayZeEditor
         }
         private void darkButton26_Click(object sender, EventArgs e)
         {
-            CircleZones newcircle = new CircleZones();
+            ExpansionSafeZoneCircle newcircle = new ExpansionSafeZoneCircle();
             newcircle.Center = new float[] { currentproject.MapSize / 2, 0, currentproject.MapSize / 2 };
             newcircle.Radius = 500;
             newcircle.CircleSafeZoneName = "New circle Zone";
@@ -6316,7 +6401,7 @@ namespace DayZeEditor
         }
         private void darkButton28_Click(object sender, EventArgs e)
         {
-            PolygonZones newpzone = new PolygonZones();
+            ExpansionSafeZonePolygon newpzone = new ExpansionSafeZonePolygon();
             newpzone.Polygonpoints = new BindingList<Polygonpoints>();
             newpzone.polygonSafeZoneName = "New polygon Zone";
             SafeZoneSettings.PolygonZones.Add(newpzone);
@@ -6374,7 +6459,7 @@ namespace DayZeEditor
         private void listBox35_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             if (listBox35.SelectedItems.Count < 1) return;
-            currentcylenderzones = listBox35.SelectedItem as CylinderZones;
+            currentcylenderzones = listBox35.SelectedItem as ExpansionSafeZoneCylinder;
             useraction = false;
             CurrentSafeZoneType = "Cylinder";
             radioButton1.Checked = false;
@@ -6390,7 +6475,7 @@ namespace DayZeEditor
         }
         private void darkButton112_Click(object sender, EventArgs e)
         {
-            CylinderZones newcylinder = new CylinderZones();
+            ExpansionSafeZoneCylinder newcylinder = new ExpansionSafeZoneCylinder();
             newcylinder.Center = new float[] { currentproject.MapSize / 2, 0, currentproject.MapSize / 2 };
             newcylinder.Radius = 500;
             newcylinder.Height = 500;
@@ -6462,8 +6547,8 @@ namespace DayZeEditor
         #endregion SafeZonesettings
 
         #region SocialMediaSettings
-        public Newsfeedtext currentNewsfeedtext;
-        public Newsfeedlink currentNewsfeedlink;
+        public ExpansionNewsFeedTextSetting currentNewsfeedtext;
+        public ExpansionNewsFeedLinkSetting currentNewsfeedlink;
         private void LoadsocialMediaSettings()
         {
             useraction = false;
@@ -6517,7 +6602,7 @@ namespace DayZeEditor
         private void listBox23_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             if (listBox23.SelectedItems.Count < 1) return;
-            currentNewsfeedtext = listBox23.SelectedItem as Newsfeedtext;
+            currentNewsfeedtext = listBox23.SelectedItem as ExpansionNewsFeedTextSetting;
             useraction = false;
             textBox19.Text = currentNewsfeedtext.m_Title;
             DiscordTB.Text = currentNewsfeedtext.m_Text;
@@ -6525,7 +6610,7 @@ namespace DayZeEditor
         }
         private void darkButton80_Click(object sender, EventArgs e)
         {
-            Newsfeedtext newfeedtext = new Newsfeedtext()
+            ExpansionNewsFeedTextSetting newfeedtext = new ExpansionNewsFeedTextSetting()
             {
                 m_Title = "New Title",
                 m_Text = "New Text"
@@ -6556,7 +6641,7 @@ namespace DayZeEditor
         private void listBox25_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBox25.SelectedItems.Count < 1) return;
-            currentNewsfeedlink = listBox25.SelectedItem as Newsfeedlink;
+            currentNewsfeedlink = listBox25.SelectedItem as ExpansionNewsFeedLinkSetting;
             useraction = false;
 
             textBox23.Text = currentNewsfeedlink.m_Label;
@@ -6567,7 +6652,7 @@ namespace DayZeEditor
         }
         private void darkButton77_Click(object sender, EventArgs e)
         {
-            Newsfeedlink newNewsfeedlink = new Newsfeedlink()
+            ExpansionNewsFeedLinkSetting newNewsfeedlink = new ExpansionNewsFeedLinkSetting()
             {
                 m_Label = "New label",
                 m_Icon = "New icon",
@@ -6604,12 +6689,12 @@ namespace DayZeEditor
 
         #region SpawnSettings
         public int SpawnScale = 1;
-        public SpawnLocations currentSpawnLocation;
+        public ExpansionSpawnLocation currentSpawnLocation;
         public float[] currentSpawnPosition;
-        public Gear currentuppergear;
-        public Gear currentpantsgear;
-        public Gear currentbackpackgear;
-        public Gear currentvestgear;
+        public ExpansionStartingGearItem currentuppergear;
+        public ExpansionStartingGearItem currentpantsgear;
+        public ExpansionStartingGearItem currentbackpackgear;
+        public ExpansionStartingGearItem currentvestgear;
 
         private void SpawnTabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -6789,7 +6874,7 @@ namespace DayZeEditor
             float scalevalue = SpawnScale * 0.05f;
             if (TerritorieszonesCB.Checked)
             {
-                foreach (SpawnLocations sl in SpawnSettings.SpawnLocations)
+                foreach (ExpansionSpawnLocation sl in SpawnSettings.SpawnLocations)
                 {
                     foreach (float[] position in sl.Positions)
                     {
@@ -6826,7 +6911,7 @@ namespace DayZeEditor
         private void SpawnLocationLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (SpawnLocationLB.SelectedItems.Count < 1) return;
-            currentSpawnLocation = SpawnLocationLB.SelectedItem as SpawnLocations;
+            currentSpawnLocation = SpawnLocationLB.SelectedItem as ExpansionSpawnLocation;
             useraction = false;
             SpawnLocationNameTB.Text = currentSpawnLocation.Name;
             UseCooldownCB.Checked = currentSpawnLocation.UseCooldown == 1 ? true : false;
@@ -6987,7 +7072,7 @@ namespace DayZeEditor
         }
          private void darkButton48_Click(object sender, EventArgs e)
         {
-            SpawnLocations newspawnLocations = new SpawnLocations();
+            ExpansionSpawnLocation newspawnLocations = new ExpansionSpawnLocation();
             newspawnLocations.Name = "New Locations";
             newspawnLocations.Positions = new BindingList<float[]>();
             SpawnSettings.SpawnLocations.Add(newspawnLocations);
@@ -7403,7 +7488,7 @@ namespace DayZeEditor
         private void UpperGearLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (UpperGearLB.SelectedItems.Count < 1) return;
-            currentuppergear = UpperGearLB.SelectedItem as Gear;
+            currentuppergear = UpperGearLB.SelectedItem as ExpansionStartingGearItem;
             useraction = false;
             UGClassNameTB.Text = currentuppergear.ClassName;
             UGQuantityNUD.Value = (decimal)currentuppergear.Quantity;
@@ -7424,10 +7509,7 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    Gear newuppergear = new Gear();
-                    newuppergear.ClassName = l;
-                    newuppergear.Quantity = -1;
-                    newuppergear.Attachments = new BindingList<string>();
+                    ExpansionStartingGearItem newuppergear = new ExpansionStartingGearItem(l, -1, new List<string>());
                     SpawnSettings.StartingGear.UpperGear.Add(newuppergear);
                     SpawnSettings.isDirty = true;
                 }
@@ -7470,7 +7552,7 @@ namespace DayZeEditor
         private void PantsGearLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (PantsGearLB.SelectedItems.Count < 1) return;
-            currentpantsgear = PantsGearLB.SelectedItem as Gear;
+            currentpantsgear = PantsGearLB.SelectedItem as ExpansionStartingGearItem;
             useraction = false;
             PantsGearNameBT.Text = currentpantsgear.ClassName;
             PantsGearQuantityNUD.Value = (decimal)currentpantsgear.Quantity;
@@ -7491,10 +7573,7 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    Gear newgear = new Gear();
-                    newgear.ClassName = l;
-                    newgear.Quantity = -1;
-                    newgear.Attachments = new BindingList<string>();
+                    ExpansionStartingGearItem newgear = new ExpansionStartingGearItem(l, -1, new List<string>());
                     SpawnSettings.StartingGear.PantsGear.Add(newgear);
                     SpawnSettings.isDirty = true;
                 }
@@ -7537,7 +7616,7 @@ namespace DayZeEditor
         private void BackpackGearLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (BackpackGearLB.SelectedItems.Count < 1) return;
-            currentbackpackgear = BackpackGearLB.SelectedItem as Gear;
+            currentbackpackgear = BackpackGearLB.SelectedItem as ExpansionStartingGearItem;
             useraction = false;
             BackpackGearNameTB.Text = currentbackpackgear.ClassName;
             BackpackGearQuantityNUD.Value = (decimal)currentbackpackgear.Quantity;
@@ -7558,10 +7637,7 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    Gear newgear = new Gear();
-                    newgear.ClassName = l;
-                    newgear.Quantity = -1;
-                    newgear.Attachments = new BindingList<string>();
+                    ExpansionStartingGearItem newgear = new ExpansionStartingGearItem(l, -1, new List<string>());
                     SpawnSettings.StartingGear.BackpackGear.Add(newgear);
                     SpawnSettings.isDirty = true;
                 }
@@ -7605,7 +7681,7 @@ namespace DayZeEditor
         private void VestGearLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (VestGearLB.SelectedItems.Count < 1) return;
-            currentvestgear = VestGearLB.SelectedItem as Gear;
+            currentvestgear = VestGearLB.SelectedItem as ExpansionStartingGearItem;
             useraction = false;
             VestGearNameTB.Text = currentvestgear.ClassName;
             VestGearQuantityNUD.Value = (decimal)currentvestgear.Quantity;
@@ -7626,10 +7702,7 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    Gear newgear = new Gear();
-                    newgear.ClassName = l;
-                    newgear.Quantity = -1;
-                    newgear.Attachments = new BindingList<string>();
+                    ExpansionStartingGearItem newgear = new ExpansionStartingGearItem(l, -1, new List<string>());
                     SpawnSettings.StartingGear.VestGear.Add(newgear);
                     SpawnSettings.isDirty = true;
                 }
@@ -7683,10 +7756,7 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    Gear newgear = new Gear();
-                    newgear.ClassName = l;
-                    newgear.Quantity = -1;
-                    newgear.Attachments = new BindingList<string>();
+                    ExpansionStartingGearItem newgear = new ExpansionStartingGearItem(l, -1, new List<string>());
                     SpawnSettings.StartingGear.PrimaryWeapon = newgear;
                     SpawnSettings.isDirty = true;
                 }
@@ -7757,10 +7827,7 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    Gear newgear = new Gear();
-                    newgear.ClassName = l;
-                    newgear.Quantity = -1;
-                    newgear.Attachments = new BindingList<string>();
+                    ExpansionStartingGearItem newgear = new ExpansionStartingGearItem(l, -1, new List<string>());
                     SpawnSettings.StartingGear.SecondaryWeapon = newgear;
                     SpawnSettings.isDirty = true;
                 }
@@ -7819,8 +7886,8 @@ namespace DayZeEditor
             SpawnSettings.isDirty = true;
         }
 
-        public SpawnLoadouts CurrentMaleLoaouts;
-        public SpawnLoadouts CurrentFemaleLoaouts;
+        public ExpansionSpawnGearLoadouts CurrentMaleLoaouts;
+        public ExpansionSpawnGearLoadouts CurrentFemaleLoaouts;
         private void UseLoadoutsCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
@@ -7832,7 +7899,7 @@ namespace DayZeEditor
         private void listBox24_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (MaleLoadoutLB.SelectedItems.Count < 1) return;
-            CurrentMaleLoaouts = MaleLoadoutLB.SelectedItem as SpawnLoadouts;
+            CurrentMaleLoaouts = MaleLoadoutLB.SelectedItem as ExpansionSpawnGearLoadouts;
             useraction = false;
 
             MaleNameTB.Text = CurrentMaleLoaouts.Loadout;
@@ -7843,7 +7910,7 @@ namespace DayZeEditor
         private void listBox23_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (FemaleLoadoutLB.SelectedItems.Count < 1) return;
-            CurrentFemaleLoaouts = FemaleLoadoutLB.SelectedItem as SpawnLoadouts;
+            CurrentFemaleLoaouts = FemaleLoadoutLB.SelectedItem as ExpansionSpawnGearLoadouts;
             useraction = false;
             FemaleNameTB.Text = CurrentFemaleLoaouts.Loadout;
             FemaleChanceNUD.Value = CurrentFemaleLoaouts.Chance;
@@ -7875,8 +7942,7 @@ namespace DayZeEditor
         }
         private void darkButton63_Click(object sender, EventArgs e)
         {
-            SpawnLoadouts newloadout = new SpawnLoadouts()
-            { Chance = (decimal)1.0, Loadout = "Player" };
+            ExpansionSpawnGearLoadouts newloadout = new ExpansionSpawnGearLoadouts("Player",(decimal)1.0 );
             SpawnSettings.MaleLoadouts.Add(newloadout);
             SpawnSettings.isDirty = true;
         }
@@ -7890,8 +7956,7 @@ namespace DayZeEditor
         }
         private void darkButton61_Click(object sender, EventArgs e)
         {
-            SpawnLoadouts newloadout = new SpawnLoadouts()
-            { Chance = (decimal)1.0, Loadout = "Player" };
+            ExpansionSpawnGearLoadouts newloadout = new ExpansionSpawnGearLoadouts("Player", (decimal)1.0);
             SpawnSettings.FemaleLoadouts.Add(newloadout);
             SpawnSettings.isDirty = true;
         }
@@ -7963,7 +8028,7 @@ namespace DayZeEditor
         #endregion Territory settings
 
         #region VehicleSettings
-        public VConfigs CurrentCVehicleConfig;
+        public ExpansionVehiclesConfig CurrentCVehicleConfig;
 
         private void LoadvehicleSettings()
         {
@@ -8016,6 +8081,7 @@ namespace DayZeEditor
             VehicleAutoCoverTimeSecondsNUD.Value = VehicleSettings.VehicleAutoCoverTimeSeconds;
             VehicleAutoCoverRequireCamonetCB.Checked = VehicleSettings.VehicleAutoCoverRequireCamonet == 1 ? true : false;
             EnableAutoCoveringDEVehiclesCB.Checked = VehicleSettings.EnableAutoCoveringDEVehicles == 1 ? true : false;
+            ShowVehicleOwnersCB.Checked = VehicleSettings.ShowVehicleOwners == 1 ? true : false;
             VehicleHeliCoverIconNameTB.Text = VehicleSettings.CFToolsHeliCoverIconName;
             VehicleBoatCoverIconNameTB.Text = VehicleSettings.CFToolsBoatCoverIconName;
             VehicleCarCoverIconNameTB.Text = VehicleSettings.CFToolsCarCoverIconName;
@@ -8056,7 +8122,7 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    VConfigs newvcofig = new VConfigs();
+                    ExpansionVehiclesConfig newvcofig = new ExpansionVehiclesConfig();
                     newvcofig.ClassName = l;
                     newvcofig.CanPlayerAttach = 0;
 
@@ -8126,7 +8192,7 @@ namespace DayZeEditor
         private void VehiclesConfigLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (VehiclesConfigLB.SelectedItems.Count < 1) return;
-            CurrentCVehicleConfig = VehiclesConfigLB.SelectedItem as VConfigs;
+            CurrentCVehicleConfig = VehiclesConfigLB.SelectedItem as ExpansionVehiclesConfig;
             useraction = false;
             ClassNameTB.Text = CurrentCVehicleConfig.ClassName;
             CanPlayerAttachCB.Checked = CurrentCVehicleConfig.CanPlayerAttach == 1 ? true : false;
@@ -8140,7 +8206,7 @@ namespace DayZeEditor
             {
                 foreach (var item in VehiclesConfigLB.SelectedItems)
                 {
-                    VConfigs pitem = item as VConfigs;
+                    ExpansionVehiclesConfig pitem = item as ExpansionVehiclesConfig;
                     pitem.CanPlayerAttach = CanPlayerAttachCB.Checked == true ? 1 : 0;
                 }
                 VehicleSettings.isDirty = true;
@@ -8198,7 +8264,7 @@ namespace DayZeEditor
             {
                 foreach (var item in VehiclesConfigLB.SelectedItems)
                 {
-                    VConfigs pitem = item as VConfigs;
+                    ExpansionVehiclesConfig pitem = item as ExpansionVehiclesConfig;
                     pitem.LockComplexity = LockComplexityNUD.Value;
                 }
                 VehicleSettings.isDirty = true;
@@ -8282,22 +8348,28 @@ namespace DayZeEditor
             VehicleSettings.EnableAutoCoveringDEVehicles = EnableAutoCoveringDEVehiclesCB.Checked == true ? 1 : 0;
             VehicleSettings.isDirty = true;
         }
+        private void ShowVehicleOwnersCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            VehicleSettings.ShowVehicleOwners = ShowVehicleOwnersCB.Checked == true ? 1 : 0;
+            VehicleSettings.isDirty = true;
+        }
         #endregion VehicleSettings
 
         #region Garegesettings
         private void loadgaragesettings()
         {
             useraction = false;
-            GarageModeCB.DataSource = Enum.GetValues(typeof(GarageMode));
-            GarageStoreModeCB.DataSource = Enum.GetValues(typeof(GarageStoreMode));
-            GarageRetrieveModeCB.DataSource = Enum.GetValues(typeof(GarageRetrieveMode));
-            GarageGroupStoreModeCB.DataSource = Enum.GetValues(typeof(GroupStoreMode));
+            GarageModeCB.DataSource = Enum.GetValues(typeof(ExpansionGarageMode));
+            GarageStoreModeCB.DataSource = Enum.GetValues(typeof(ExpansionGarageStoreMode));
+            GarageRetrieveModeCB.DataSource = Enum.GetValues(typeof(ExpansionGarageRetrieveMode));
+            GarageGroupStoreModeCB.DataSource = Enum.GetValues(typeof(ExpansionGarageGroupStoreMode));
 
             GarageEnabledCB.Checked = GarageSettings.Enabled == 1 ? true:false;
             AllowStoringDEVehiclesCB.Checked = GarageSettings.AllowStoringDEVehicles == 1 ? true : false;
-            GarageModeCB.SelectedItem = (GarageMode)GarageSettings.GarageMode;
-            GarageStoreModeCB.SelectedItem = (GarageStoreMode)GarageSettings.GarageStoreMode;
-            GarageRetrieveModeCB.SelectedItem = (GarageRetrieveMode)GarageSettings.GarageRetrieveMode;
+            GarageModeCB.SelectedItem = (ExpansionGarageMode)GarageSettings.GarageMode;
+            GarageStoreModeCB.SelectedItem = (ExpansionGarageStoreMode)GarageSettings.GarageStoreMode;
+            GarageRetrieveModeCB.SelectedItem = (ExpansionGarageRetrieveMode)GarageSettings.GarageRetrieveMode;
             MaxStorableVehiclesNUD.Value = GarageSettings.MaxStorableVehicles;
             GarageVehicleSearchRadiusNUD.Value = GarageSettings.VehicleSearchRadius;
             GarageMaxDistanceFromStoredPositionNUD.Value = GarageSettings.MaxDistanceFromStoredPosition;
@@ -8305,7 +8377,7 @@ namespace DayZeEditor
             GarageUseVirtualStorageForCargoCB.Checked = GarageSettings.UseVirtualStorageForCargo == 1 ? true : false;
             GarageNeedKeyToStoreCB.Checked = GarageSettings.NeedKeyToStore == 1 ? true : false;
             GarageEnableGroupFeaturesCB.Checked = GarageSettings.EnableGroupFeatures == 1 ? true : false;
-            GarageGroupStoreModeCB.SelectedItem = (GroupStoreMode)GarageSettings.GroupStoreMode;
+            GarageGroupStoreModeCB.SelectedItem = (ExpansionGarageGroupStoreMode)GarageSettings.GroupStoreMode;
             GarageEnableMarketFeaturesCB.Checked = GarageSettings.EnableMarketFeatures == 1 ? true : false;
             GarageStorePricePercentNUD.Value = GarageSettings.StorePricePercent;
             GarageStaticStorePriceNUD.Value = GarageSettings.StaticStorePrice;
@@ -8331,21 +8403,21 @@ namespace DayZeEditor
         private void GarageModeCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            GarageMode cacl = (GarageMode)GarageModeCB.SelectedItem;
+            ExpansionGarageMode cacl = (ExpansionGarageMode)GarageModeCB.SelectedItem;
             GarageSettings.GarageMode = (int)cacl;
             GarageSettings.isDirty = true;
         }
         private void GarageStoreModeCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            GarageStoreMode cacl = (GarageStoreMode)GarageStoreModeCB.SelectedItem;
+            ExpansionGarageStoreMode cacl = (ExpansionGarageStoreMode)GarageStoreModeCB.SelectedItem;
             GarageSettings.GarageStoreMode = (int)cacl;
             GarageSettings.isDirty = true;
         }
         private void GarageRetrieveModeCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            GarageRetrieveMode cacl = (GarageRetrieveMode)GarageRetrieveModeCB.SelectedItem;
+            ExpansionGarageRetrieveMode cacl = (ExpansionGarageRetrieveMode)GarageRetrieveModeCB.SelectedItem;
             GarageSettings.GarageRetrieveMode = (int)cacl;
             GarageSettings.isDirty = true;
         }
@@ -8417,7 +8489,7 @@ namespace DayZeEditor
         private void GarageGroupStoreModeCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            GroupStoreMode cacl = (GroupStoreMode)GarageGroupStoreModeCB.SelectedItem;
+            ExpansionGarageGroupStoreMode cacl = (ExpansionGarageGroupStoreMode)GarageGroupStoreModeCB.SelectedItem;
             GarageSettings.GroupStoreMode = (int)cacl;
             GarageSettings.isDirty = true;
         }
@@ -8625,7 +8697,7 @@ namespace DayZeEditor
         }
         public ExpansionMenuCategory CurrentMenucategory;
         public ExpansionMenuSubCategory CurrentSubCategory;
-        public StorageLevel currentstoragelevel;
+        public ExpansionPersonalStorageLevel currentstoragelevel;
         private void treeViewMS1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             useraction = false;
@@ -8639,7 +8711,7 @@ namespace DayZeEditor
                         groupBox90.Visible = false;
                         CurrentMenucategory = null;
                         CurrentSubCategory = null;
-                        return;
+                        break;
                     case "MenuCategoriesParent":
                         groupBox89.Visible = false;
                         groupBox90.Visible = false;
@@ -8653,7 +8725,7 @@ namespace DayZeEditor
                             removeSubMenuCategoryToolStripMenuItem.Visible = false;
                             contextMenuStrip1.Show(Cursor.Position);
                         }
-                        return;
+                        break;
                     case "SubCategoriesParent":
                         groupBox89.Visible = false;
                         groupBox90.Visible = false;
@@ -8667,7 +8739,7 @@ namespace DayZeEditor
                             removeSubMenuCategoryToolStripMenuItem.Visible = false;
                             contextMenuStrip1.Show(Cursor.Position);
                         }
-                        return;
+                        break;
                     case "MCIncluded":
                         groupBox89.Visible = false;
                         groupBox90.Visible = true;
@@ -9158,7 +9230,7 @@ namespace DayZeEditor
                         groupBox92.Visible = false;
                         groupBox93.Visible = false;
                         groupBox94.Visible = true;
-                        currentstoragelevel = e.Node.Parent.Tag as StorageLevel;
+                        currentstoragelevel = e.Node.Parent.Tag as ExpansionPersonalStorageLevel;
                         numericUpDown40.Value = currentstoragelevel.ReputationRequirement;
                         break;
                     case "ExcludedSlots":
@@ -9166,7 +9238,7 @@ namespace DayZeEditor
                         groupBox92.Visible = true;
                         groupBox93.Visible = false;
                         groupBox94.Visible = false;
-                        currentstoragelevel = e.Node.Parent.Tag as StorageLevel;
+                        currentstoragelevel = e.Node.Parent.Tag as ExpansionPersonalStorageLevel;
                         listBox34.DataSource = currentstoragelevel.ExcludedSlots;
                         break;
                     case "AllowAttachmentCargo":
@@ -9174,12 +9246,12 @@ namespace DayZeEditor
                         groupBox92.Visible = false;
                         groupBox93.Visible = true;
                         groupBox94.Visible = false;
-                        currentstoragelevel = e.Node.Parent.Tag as StorageLevel;
+                        currentstoragelevel = e.Node.Parent.Tag as ExpansionPersonalStorageLevel;
                         comboBox6.SelectedIndex = currentstoragelevel.AllowAttachmentCargo;
                         break;
                 }
             }
-            else if (e.Node.Tag is StorageLevel || e.Node.Tag is Storagelevels)
+            else if (e.Node.Tag is ExpansionPersonalStorageLevel)
             {
                 groupBox91.Visible = false;
                 groupBox92.Visible = false;
@@ -9231,26 +9303,33 @@ namespace DayZeEditor
             }
             PersonalStorageSettingsNew.isDirty = true;
         }
+
+
+
+
+
+
         #endregion personalstroage
 
+
     }
-    public class NullToEmptyGearConverter : JsonConverter<Gear>
+    public class NullToEmptyGearConverter : JsonConverter<ExpansionStartingGearItem>
     {
         // Override default null handling
         public override bool HandleNull => true;
         // Check the type
         public override bool CanConvert(Type typeToConvert)
         {
-            return typeToConvert == typeof(Gear);
+            return typeToConvert == typeof(ExpansionStartingGearItem);
         }
 
-        public override Gear Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override ExpansionStartingGearItem Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             throw new NotImplementedException();
         }
 
         // 
-        public override void Write(Utf8JsonWriter writer, Gear value, JsonSerializerOptions options)
+        public override void Write(Utf8JsonWriter writer, ExpansionStartingGearItem value, JsonSerializerOptions options)
         {
             if (value == null)
             {

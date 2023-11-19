@@ -8,34 +8,34 @@ using System.Threading.Tasks;
 
 namespace DayZeLib
 {
-    public enum GarageMode
+    public enum ExpansionGarageMode
     {
-        Territory_Mode,
-        Personal_Mode
+        Territory = 0,
+        Personal
     }
-    public enum GarageStoreMode
+    public enum ExpansionGarageStoreMode
     {
-        Personal_Mode,
-        Shared_Mode,
-        Tyrannical_Mode
+        Personal = 0,
+        TerritoryShared,
+        TerritoryTyrannical
     }
-    public enum GarageRetrieveMode
+    public enum ExpansionGarageRetrieveMode
     {
-        Personal_Mode,
-        Shared_Mode,
-        Tyrannical_Mode
+        Personal = 0,
+        TerritoryShared,
+        TerritoryTyrannical
     }
-    public enum GroupStoreMode
+    public enum ExpansionGarageGroupStoreMode
     {
         [Description("Group members can only store vehicles of other group members")]
-        Only_Store_other_Memebers_Vehicles,
+        StoreOnly = 0,
         [Description("Group members can only retrieve vehicles of other group members")]
-        Only_retrieve_other_memebers_vehicles,
+        RetrieveOnly,
         [Description("Group members can store and retrieve vehicles of other group members.")]
-        Both_of_the_above
+        StoreAndRetrieve
     }
 
-    public class GarageSettings
+    public class ExpansionGarageSettings
     {
         const int CurrentVersion = 6;
 
@@ -69,6 +69,41 @@ namespace DayZeLib
         public string Filename { get; set; }
         [JsonIgnore]
         public bool isDirty { get; set; }
+
+        public ExpansionGarageSettings()
+        {
+            m_Version = CurrentVersion;
+            Enabled = 1;
+            AllowStoringDEVehicles = 0;
+
+            GarageMode = (int)ExpansionGarageMode.Personal;
+
+            GarageStoreMode = 0;
+            GarageRetrieveMode = 0;
+            MaxStorableVehicles = 2;
+
+            VehicleSearchRadius = (decimal)20.0;
+            MaxDistanceFromStoredPosition = (decimal)150.0;
+            CanStoreWithCargo = 1;
+            NeedKeyToStore = 1;
+
+            EntityWhitelist = new BindingList<string>() { "ExpansionParkingMeter" };
+
+            EnableGroupFeatures = 0;
+            GroupStoreMode = 2;
+
+            EnableMarketFeatures = 0;
+            StorePricePercent = (decimal)5.0;
+            StaticStorePrice = 0;
+
+            MaxStorableTier1 = 2;
+            MaxStorableTier2 = 4;
+            MaxStorableTier3 = 6;
+            MaxRangeTier1 = (decimal)20.0;
+            MaxRangeTier2 = (decimal)30.0;
+            MaxRangeTier3 = (decimal)40.0;
+            ParkingMeterEnableFlavor = 0;
+        }
 
         public bool checkver()
         {

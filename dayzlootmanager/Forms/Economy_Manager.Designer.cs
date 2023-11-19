@@ -3094,7 +3094,7 @@ namespace DayZeEditor
             this.economySearchNextButton.Image = ((System.Drawing.Image)(resources.GetObject("economySearchNextButton.Image")));
             this.economySearchNextButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.economySearchNextButton.Name = "economySearchNextButton";
-            this.economySearchNextButton.Size = new System.Drawing.Size(62, 42);
+            this.economySearchNextButton.Size = new System.Drawing.Size(24, 24);
             this.economySearchNextButton.Text = "Find Next";
             this.economySearchNextButton.Visible = false;
             this.economySearchNextButton.Click += new System.EventHandler(this.toolStripButton2_Click);
@@ -12294,7 +12294,7 @@ namespace DayZeEditor
             this.MapGroupProtoGroupContainersLB.FormattingEnabled = true;
             this.MapGroupProtoGroupContainersLB.Location = new System.Drawing.Point(13, 19);
             this.MapGroupProtoGroupContainersLB.Name = "MapGroupProtoGroupContainersLB";
-            this.MapGroupProtoGroupContainersLB.Size = new System.Drawing.Size(161, 69);
+            this.MapGroupProtoGroupContainersLB.Size = new System.Drawing.Size(201, 69);
             this.MapGroupProtoGroupContainersLB.TabIndex = 50;
             this.MapGroupProtoGroupContainersLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.MapGroupProtoGroupContainersLB.SelectedIndexChanged += new System.EventHandler(this.MapGroupProtoGroupContainersLB_SelectedIndexChanged);
@@ -15251,7 +15251,7 @@ namespace DayZeEditor
             this.mapgroupposcontextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.removeMapToolStripMenuItem});
             this.mapgroupposcontextMenu.Name = "contextMenuStrip1";
-            this.mapgroupposcontextMenu.Size = new System.Drawing.Size(181, 48);
+            this.mapgroupposcontextMenu.Size = new System.Drawing.Size(181, 26);
             // 
             // removeMapToolStripMenuItem
             // 
