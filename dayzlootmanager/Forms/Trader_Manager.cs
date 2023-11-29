@@ -83,6 +83,7 @@ namespace DayZeEditor
         public DrJonesvehicleParts drjonesvehicleparts { get; set; }
         public VehicleParts CurrentVehicleParts { get; set; }
         public DRJonesTraderConfig drjonestraderconfig { get; set; }
+        public DrJonesObjects drjonesobjects { get; set; }
 
         public DRJonesCurrency CurrentCurrency { get; set; }
         public DrjonesFullTraderconfig CurrentTrader { get; set; }
@@ -120,6 +121,8 @@ namespace DayZeEditor
             listBox6.DisplayMember = "Name";
             listBox6.ValueMember = "Value";
             listBox6.DataSource = drjonesvehicleparts.Vehicles;
+
+            drjonesobjects = new DrJonesObjects(DrJonesPath + "\\TraderObjects.txt");
 
             drjonestraderconfig = new DRJonesTraderConfig(DrJonesPath + "\\TraderConfig.txt");
             drjonestraderconfig.SetupFullTraderList();
@@ -646,7 +649,12 @@ namespace DayZeEditor
             //set up market items list first.
             List<marketItem> checklist = new List<marketItem>();
             MarketCategories MarketCats = new MarketCategories();
+            TradersList traders = new TradersList();
+            TraderModelMapping maps = new TraderModelMapping();
+            TraderZones zone = new TraderZones();
 
+            //set up world zone
+            zone.NewTraderZone("WORLD", currentproject.MapSize, false);
 
             //Setup currency Market Category
             Categories newccat = new Categories();
@@ -655,27 +663,44 @@ namespace DayZeEditor
             newccat.IsExchange = 1;
             foreach (DRJonesCurrency drjc in drjonestraderconfig.CurrencyConfig.currencyList)
             {
-                newccat.Items.Add(new marketItem() { ClassName = drjc.m_Trader_CurrencyClassnames, MaxPriceThreshold = drjc.m_Trader_CurrencyValues, MinPriceThreshold = drjc.m_Trader_CurrencyValues, MaxStockThreshold = 1, MinStockThreshold = 1 });
+                marketItem newitem = new marketItem()
+                { 
+                    ClassName = drjc.m_Trader_CurrencyClassnames,
+                    MaxPriceThreshold = drjc.m_Trader_CurrencyValues,
+                    MinPriceThreshold = drjc.m_Trader_CurrencyValues,
+                    MaxStockThreshold = 1, MinStockThreshold = 1 
+                };
+                checklist.Add(newitem);
+                newccat.Items.Add(newitem);
             }
             MarketCats.CatList.Add(newccat);
 
             foreach (DRJonesCategories cat in drjonestraderconfig.m_categories)
             {
+                if(cat.m_Trader_Categorys == "Keys&Supplies")
+                {
+                    string stop = "";
+                }
                 //check if cat has been created allready
-                Categories newcat = MarketCats.GetCatFromDisplayName(cat.m_Trader_Categorys);
+                string Displayname = ReplaceInvalidChars(cat.m_Trader_Categorys);
+                Displayname = Displayname.Replace(" ", "_");
+                Displayname = Displayname.ToUpper();
+                Categories newcat = MarketCats.GetCatFromDisplayName(Displayname);
                 if (newcat == null)
                 {
                     newcat = new Categories();
-                    newcat.DisplayName = cat.m_Trader_Categorys;
-                    newcat.Filename = ReplaceInvalidChars(newcat.DisplayName) + ".json";
+                    newcat.DisplayName = Displayname;
+                    newcat.Filename = ReplaceInvalidChars(newcat.DisplayName);
                     newcat.Filename = newcat.Filename.Replace(" ", "_");
                     newcat.Filename = newcat.Filename.ToUpper();
                 }
                 List<DrjonesItems> dritems = drjonestraderconfig.getItems(cat.m_Trader_CategoryID);
                 foreach (DrjonesItems item in dritems)
                 {
-                    //if (!CheckIfInTypes(item)) { continue; }
-
+                    if (item.m_Trader_ItemsClassnames.ToLower() == "carbattery")
+                    {
+                        string stop = "";
+                    }
                     //create new item with default stock values of 1/1
                     marketItem newitem = new marketItem();
                     newitem.ClassName = item.m_Trader_ItemsClassnames.ToLower();
@@ -717,9 +742,9 @@ namespace DayZeEditor
                 MarketCats.CatList.Add(newcat);
             }
             if (sb.Length != 0)
-                MessageBox.Show(sb.ToString());
+                Console.Write(sb.ToString());
 
-            TradersList traders = new TradersList();
+            
 
 
             Traders exchangetrader = new Traders("Exchange");
@@ -729,14 +754,23 @@ namespace DayZeEditor
             {
                 exchangetrader.Currencies.Add(drjc.m_Trader_CurrencyClassnames);
             }
-            exchangetrader.Categories.Add("EXCHANGE");
+            Categories mcat = MarketCats.GetCatFromDisplayName("EXCHANGE");
+            foreach(marketItem mitem in mcat.Items)
+            {
+                TradersItem ti = new TradersItem();
+                ti.ClassName = mitem.ClassName.ToLower();
+                ti.buysell = canBuyCansell.CanBuyAndsell;
+                ti.CatName = "EXCHANGE";
+                exchangetrader.ListItems.Add(ti);
+            }
             traders.Traderlist.Add(exchangetrader);
 
 
 
-            foreach (DrjonesFullTraderconfig trader in drjonestraderconfig.drjonesfullList)
+            for (int i = 0; i < drjonestraderconfig.drjonesfullList.Count; i++ )
             {
-                Traders newtrader = new Traders(trader.Tradername);
+                DrjonesFullTraderconfig trader = drjonestraderconfig.drjonesfullList[i];
+                Traders newtrader = new Traders(trader.Tradername.Replace(" ", "_").ToUpper());
                 newtrader.Filename = trader.Tradername.Replace(" ", "_").ToUpper();
                 foreach (DRJonesCurrency drjc in drjonestraderconfig.CurrencyConfig.currencyList)
                 {
@@ -744,12 +778,59 @@ namespace DayZeEditor
                 }
                 foreach (TraderCats tcats in trader.cats)
                 {
-                    newtrader.Categories.Add(tcats.CatName.Replace(" ", "_").ToUpper());
+                    foreach(TraderItems item in tcats.ItemList)
+                    {
+                        marketItem mitem = MarketCats.getitemfromcategory(item.m_Trader_ItemsClassnames.ToLower());
+                        TradersItem ti = new TradersItem();
+                        ti.ClassName = item.m_Trader_ItemsClassnames.ToLower();
+                        if (item.m_Trader_ItemsSellValue == -1)
+                            ti.buysell = canBuyCansell.CanOnlyBuy;
+                        else if (item.m_Trader_ItemsBuyValue == -1)
+                            ti.buysell = canBuyCansell.CanOnlySell;
+                        else
+                            ti.buysell = canBuyCansell.CanBuyAndsell;
+
+                        if(mitem.SpawnAttachments.Count != 0)
+                        {
+                            ti.HasAttachemnts = true;
+                        }
+
+                        ti.CatName = ReplaceInvalidChars(tcats.CatName);
+                        ti.CatName = ti.CatName.Replace(" ", "_");
+                        ti.CatName = ti.CatName.ToUpper();
+                        if (!newtrader.ListItems.Any(x => x.ClassName.ToLower() == ti.ClassName.ToLower()))
+                        {
+                            newtrader.ListItems.Add(ti);
+                            newtrader.isDirty = true;
+                        }
+                        else
+                        {
+                            TradersItem eti = newtrader.ListItems.First(x => x.ClassName.ToLower() == ti.ClassName.ToLower());
+                            eti.buysell = ti.buysell;
+
+                        }
+                    }
                 }
                 traders.Traderlist.Add(newtrader);
+
+                DrJonesObject drjonesobject = drjonesobjects.DrJonesobjectslist[i];
+                Tradermap newmap = new Tradermap();
+                if(drjonesobject.DrJonesNPCClassname.Contains("Survivor"))
+                {
+                    newmap.NPCName = "ExpansionTrader" + drjonesobject.DrJonesNPCClassname.Split('_')[1];
+                }
+                else
+                {
+                    newmap.NPCName = drjonesobject.DrJonesNPCClassname;
+                }
+                newmap.NPCTrade = newtrader.Filename;
+                newmap.position = new Vec3(drjonesobject.DrJonesNPCPosition);
+                newmap.roattions = new Vec3(drjonesobject.DrJonesNPCOrientaion);
+                newmap.Attachments = new BindingList<string>(drjonesobject.DrJonesAttchments);
+                maps.maps.Add(newmap);
             }
 
-            string ExpansionPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod";
+            string ExpansionPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\drJonestoExpansionMarket";
             if(!Directory.Exists(ExpansionPath))
             {
                 Directory.CreateDirectory(ExpansionPath);
@@ -761,19 +842,41 @@ namespace DayZeEditor
                 var options = new JsonSerializerOptions();
                 options.WriteIndented = true;
                 options.Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping;
+                trader.isDirty = false;
+                trader.ConvertToDict(MarketCats);
                 string jsonString = JsonSerializer.Serialize(trader, options);
                 File.WriteAllText(traderFilename, jsonString);
             }
             foreach (Categories cat in MarketCats.CatList)
             {
                 Directory.CreateDirectory(ExpansionPath + "\\Market");
-                string catFilename = ExpansionPath + "\\Market\\" + cat.Filename;
+                string catFilename = ExpansionPath + "\\Market\\" + cat.Filename + ".json";
                 var options = new JsonSerializerOptions();
                 options.WriteIndented = true;
                 options.Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping;
                 string jsonString = JsonSerializer.Serialize(cat, options);
                 File.WriteAllText(catFilename, jsonString);
             }
+            foreach (Zones zones in zone.ZoneList)
+            {
+                Directory.CreateDirectory(ExpansionPath + "\\traderzones");
+                string ZoneFilename = ExpansionPath + "\\traderzones\\" + zones.Filename + ".json";
+                var options = new JsonSerializerOptions();
+                options.WriteIndented = true;
+                options.Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping;
+                zones.isDirty = false;
+                zones.ConvertlisttoDict();
+                string jsonString = JsonSerializer.Serialize(zones, options);
+                File.WriteAllText(ZoneFilename, jsonString);
+            }
+
+            maps.TradermapsPath = ExpansionPath;
+            foreach (Tradermap map in maps.maps)
+            {
+                map.Filename = ExpansionPath + "\\TraderMaps.map";
+            }
+            maps.savefiles();
+            MessageBox.Show("Convertion Complete...\nfiles stored in folder called\nExpansionMod_Market_Convert_from_TraderPlus\nWithin the project profiles folder.");
         }
 
         private bool CheckIfInTypes(DrjonesItems item)

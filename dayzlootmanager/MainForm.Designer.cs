@@ -527,6 +527,7 @@ namespace DayZeEditor
             this.toolStripButton4.Name = "toolStripButton4";
             this.toolStripButton4.Size = new System.Drawing.Size(123, 19);
             this.toolStripButton4.Text = "Player DB Manager";
+            this.toolStripButton4.Visible = false;
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // HidePBox

@@ -62,7 +62,10 @@ namespace DayZeLib
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("there is an error in the following file\n" + file.FullName + Environment.NewLine + ex.InnerException.Message);
+                    if (ex.InnerException != null)
+                        MessageBox.Show("there is an error in the following file\n" + file.FullName + Environment.NewLine + ex.InnerException.Message);
+                    else
+                        MessageBox.Show(ex.Message);
 
                 }
             }
@@ -231,7 +234,13 @@ namespace DayZeLib
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
-        public bool isDirty = false;
+        private bool _isDirty;
+        [JsonIgnore]
+        public bool isDirty
+        {
+            get { return _isDirty; }
+            set { _isDirty = value; }
+        }
         [JsonIgnore]
         public bool isusingdescription { get; set; }
         [JsonIgnore]

@@ -418,6 +418,7 @@ namespace DayZeEditor
             GeneralSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Expansionmod\\settings\\GeneralSettings.json";
             if (!File.Exists(GeneralSettingsPath))
             {
+                
                 GeneralSettings = new ExpansionGeneralSettings();
                 GeneralSettings.isDirty = true;
                 needtosave = true;
@@ -908,6 +909,227 @@ namespace DayZeEditor
         private void SaveFileButton_Click(object sender, EventArgs e)
         {
             savefiles();
+        }
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+            if (!Directory.Exists(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Settings"))
+                Directory.CreateDirectory(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Settings");
+            if (!Directory.Exists(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings"))
+                Directory.CreateDirectory(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings");
+
+            List<string> midifiedfiles = new List<string>();
+            AirdropsettingsJson.isDirty = false;
+            var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            string jsonString = JsonSerializer.Serialize(AirdropsettingsJson, options);
+            File.WriteAllText(AirdropsettingsJson.Filename, jsonString);
+            midifiedfiles.Add(Path.GetFileName(AirdropsettingsJson.Filename));
+
+            BaseBuildingSettings.isDirty = false;
+            options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            jsonString = JsonSerializer.Serialize(BaseBuildingSettings, options);
+            File.WriteAllText(BaseBuildingSettings.Filename, jsonString);
+            midifiedfiles.Add(Path.GetFileName(BaseBuildingSettings.Filename));
+
+            BookSettings.isDirty = false;
+            options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            jsonString = JsonSerializer.Serialize(BookSettings, options);
+            if (currentproject.Createbackups && File.Exists(BookSettings.Filename))
+                File.WriteAllText(BookSettings.Filename, jsonString);
+            midifiedfiles.Add(Path.GetFileName(BookSettings.Filename));
+
+            ChatSettings.isDirty = false;
+            options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            jsonString = JsonSerializer.Serialize(ChatSettings, options);
+            File.WriteAllText(ChatSettings.Filename, jsonString);
+            midifiedfiles.Add(Path.GetFileName(ChatSettings.Filename));
+
+            DamageSystemSettings.isDirty = false;
+            options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            jsonString = JsonSerializer.Serialize(DamageSystemSettings, options);
+            DamageSystemSettings.ConvertListtodict();
+            File.WriteAllText(DamageSystemSettings.Filename, jsonString);
+            midifiedfiles.Add(Path.GetFileName(DamageSystemSettings.Filename));
+
+            DebugSettings.isDirty = false;
+            options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            jsonString = JsonSerializer.Serialize(DebugSettings, options);
+            File.WriteAllText(DebugSettings.Filename, jsonString);
+            midifiedfiles.Add(Path.GetFileName(DebugSettings.Filename));
+
+            GarageSettings.isDirty = false;
+            options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            jsonString = JsonSerializer.Serialize(GarageSettings, options);
+            File.WriteAllText(GarageSettings.Filename, jsonString);
+            midifiedfiles.Add(Path.GetFileName(GarageSettings.Filename));
+
+            GeneralSettings.isDirty = false;
+            options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            jsonString = JsonSerializer.Serialize(GeneralSettings, options);
+            File.WriteAllText(GeneralSettings.Filename, jsonString);
+            midifiedfiles.Add(Path.GetFileName(GeneralSettings.Filename));
+
+            HardLineSettings.isDirty = false;
+            options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            HardLineSettings.convertliststoDict();
+            HardLineSettings.convertreplisttodict();
+            jsonString = JsonSerializer.Serialize(HardLineSettings, options);
+            File.WriteAllText(HardLineSettings.Filename, jsonString);
+            midifiedfiles.Add(Path.GetFileName(HardLineSettings.Filename));
+
+            foreach (ExpansionHardlinePlayerData qpd in ExpansionHardlinePlayerDataList.HardlinePlayerDataList)
+            {
+                    qpd.isDirty = false;
+                    qpd.SaveFIle(HardlinePlayerDataPath);
+                    midifiedfiles.Add(Path.GetFileName(qpd.Filename));
+
+            }
+
+            LogSettings.isDirty = false;
+            options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            jsonString = JsonSerializer.Serialize(LogSettings, options);
+            File.WriteAllText(LogSettings.Filename, jsonString);
+            midifiedfiles.Add(Path.GetFileName(LogSettings.Filename));
+
+            MapSettings.isDirty = false;
+            options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            jsonString = JsonSerializer.Serialize(MapSettings, options);
+            File.WriteAllText(MapSettings.Filename, jsonString);
+            midifiedfiles.Add(Path.GetFileName(MapSettings.Filename));
+
+            MissionSettings.isDirty = false;
+            options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            jsonString = JsonSerializer.Serialize(MissionSettings, options);
+            File.WriteAllText(MissionSettings.Filename, jsonString);
+            midifiedfiles.Add(Path.GetFileName(MissionSettings.Filename));
+
+            foreach (object msf in MissionSettings.MissionSettingFiles)
+            {
+                if (msf is AirdropMissionSettingFiles)
+                {
+                    AirdropMissionSettingFiles amsf = msf as AirdropMissionSettingFiles;
+                    amsf.isDirty = false;
+                    options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                    jsonString = JsonSerializer.Serialize(amsf, options);
+                    File.WriteAllText(amsf.Filename, jsonString);
+                    midifiedfiles.Add(Path.GetFileName(amsf.Filename));
+                }
+                else if (msf is ContaminatedAreaMissionSettingFiles)
+                {
+                    ContaminatedAreaMissionSettingFiles camsf = msf as ContaminatedAreaMissionSettingFiles;
+                    camsf.isDirty = false;
+                    options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                    jsonString = JsonSerializer.Serialize(camsf, options);
+                    File.WriteAllText(camsf.Filename, jsonString);
+                    midifiedfiles.Add(Path.GetFileName(camsf.Filename));
+                }
+            }
+
+            MonitoringSettings.isDirty = false;
+            options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            jsonString = JsonSerializer.Serialize(MonitoringSettings, options);
+            File.WriteAllText(MonitoringSettings.Filename, jsonString);
+            midifiedfiles.Add(Path.GetFileName(MonitoringSettings.Filename));
+
+            NameTagSettings.isDirty = false;
+            options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            jsonString = JsonSerializer.Serialize(NameTagSettings, options);
+            File.WriteAllText(NameTagSettings.Filename, jsonString);
+            midifiedfiles.Add(Path.GetFileName(NameTagSettings.Filename));
+
+            NotificationSchedulerSettings.isDirty = false;
+            options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            jsonString = JsonSerializer.Serialize(NotificationSchedulerSettings, options);
+            File.WriteAllText(NotificationSchedulerSettings.Filename, jsonString);
+            midifiedfiles.Add(Path.GetFileName(NotificationSchedulerSettings.Filename));
+
+            NotificationSettings.isDirty = false;
+            options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            jsonString = JsonSerializer.Serialize(NotificationSettings, options);
+            File.WriteAllText(NotificationSettings.Filename, jsonString);
+            midifiedfiles.Add(Path.GetFileName(NotificationSettings.Filename));
+
+            PartySettings.isDirty = false;
+            options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            jsonString = JsonSerializer.Serialize(PartySettings, options);
+            File.WriteAllText(PartySettings.Filename, jsonString);
+            midifiedfiles.Add(Path.GetFileName(PartySettings.Filename));
+
+            PersonalStorageSettings.isDirty = false;
+            options = new JsonSerializerOptions
+            {
+                Converters = { new BoolConverter() },
+                WriteIndented = true,
+                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+            };
+            jsonString = JsonSerializer.Serialize(PersonalStorageSettings, options);
+            File.WriteAllText(PersonalStorageSettings.Filename, jsonString);
+            midifiedfiles.Add(Path.GetFileName(PersonalStorageSettings.Filename));
+
+            PersonalStorageSettingsNew.isDirty = false;
+            options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            jsonString = JsonSerializer.Serialize(PersonalStorageSettingsNew, options);
+            File.WriteAllText(PersonalStorageSettingsNew.Filename, jsonString);
+            midifiedfiles.Add(Path.GetFileName(PersonalStorageSettingsNew.Filename));
+
+            foreach (PersonalStorage ps in PersonalStorageList.personalstorageList)
+            {
+                    ps.isDirty = false;
+                    options = new JsonSerializerOptions
+                    {
+                        Converters = { new BoolConverter() },
+                        WriteIndented = true,
+                        Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+                    };
+                    jsonString = JsonSerializer.Serialize(ps, options);
+                    File.WriteAllText(ps.Filename, jsonString);
+                    midifiedfiles.Add(Path.GetFileName(ps.Filename));
+            }
+
+            PlayerListSettings.isDirty = false;
+            options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            jsonString = JsonSerializer.Serialize(PlayerListSettings, options);
+            File.WriteAllText(PlayerListSettings.Filename, jsonString);
+            midifiedfiles.Add(Path.GetFileName(PlayerListSettings.Filename));
+
+            RaidSettings.isDirty = false;
+            options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            jsonString = JsonSerializer.Serialize(RaidSettings, options);
+            File.WriteAllText(RaidSettings.Filename, jsonString);
+            midifiedfiles.Add(Path.GetFileName(RaidSettings.Filename));
+
+            SafeZoneSettings.isDirty = false;
+            SafeZoneSettings.convertpointstoarray();
+            options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            jsonString = JsonSerializer.Serialize(SafeZoneSettings, options);
+            File.WriteAllText(SafeZoneSettings.Filename, jsonString);
+            midifiedfiles.Add(Path.GetFileName(SafeZoneSettings.Filename));
+
+            SocialMediaSettings.isDirty = false;
+            options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            jsonString = JsonSerializer.Serialize(SocialMediaSettings, options);
+            File.WriteAllText(SocialMediaSettings.Filename, jsonString);
+            midifiedfiles.Add(Path.GetFileName(SocialMediaSettings.Filename));
+
+            SpawnSettings.isDirty = false;
+            options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            options.Converters.Add(new NullToEmptyGearConverter());
+            jsonString = JsonSerializer.Serialize(SpawnSettings, options);
+            File.WriteAllText(SpawnSettings.Filename, jsonString);
+            midifiedfiles.Add(Path.GetFileName(SpawnSettings.Filename));
+
+            TerritorySettings.isDirty = false;
+            options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            jsonString = JsonSerializer.Serialize(TerritorySettings, options);
+            File.WriteAllText(TerritorySettings.Filename, jsonString);
+            midifiedfiles.Add(Path.GetFileName(TerritorySettings.Filename));
+
+            VehicleSettings.isDirty = false;
+            options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            jsonString = JsonSerializer.Serialize(VehicleSettings, options);
+            File.WriteAllText(VehicleSettings.Filename, jsonString);
+            midifiedfiles.Add(Path.GetFileName(VehicleSettings.Filename));
+
+            MessageBox.Show("All Expansion Settings files saved....");
         }
         public void savefiles(bool updated = false)
         {
@@ -3594,6 +3816,9 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
+                    string Typelist = HardLineSettings.GetListfromitem(l);
+                    if(Typelist != "none")
+                        HardLineSettings.getlist(Typelist).Remove(l);
                     if (!HardLineSettings.getlist(Type).Contains(l))
                     {
                         HardLineSettings.getlist(Type).Add(l);
@@ -7892,7 +8117,31 @@ namespace DayZeEditor
         {
             if (!useraction) { return; }
             SpawnSettings.UseLoadouts = UseLoadoutsCB.Checked == true ? 1 : 0;
+            if (SpawnSettings.UseLoadouts == 1)
+            {
+                if (!Directory.Exists(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Loadouts"))
+                {
+                    MessageBox.Show("Loadouts folder not found....");
+                    SpawnSettings.UseLoadouts = 0;
+                    UseLoadoutsCB.Checked = false;
+                }
+                else
+                {
+                    List<string> loadouts = new List<string>();
+                    string AILoadoutsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Loadouts";
+                    DirectoryInfo dinfo = new DirectoryInfo(AILoadoutsPath);
+                    FileInfo[] Files = dinfo.GetFiles("*.json");
+                    foreach (FileInfo file in Files)
+                    {
+                        loadouts.Add(Path.GetFileNameWithoutExtension(file.FullName));
+                    }
+                    SpawnLoadoutsLB.DisplayMember = "DisplayName";
+                    SpawnLoadoutsLB.ValueMember = "Value";
+                    SpawnLoadoutsLB.DataSource = loadouts;
+                }
+            }
             groupBox66.Visible = SpawnSettings.UseLoadouts == 1 ? true : false;
+            groupBox95.Visible = SpawnSettings.UseLoadouts == 1 ? true : false;
             groupBox67.Visible = SpawnSettings.UseLoadouts == 1 ? true : false;
             SpawnSettings.isDirty = true;
         }
@@ -7942,7 +8191,7 @@ namespace DayZeEditor
         }
         private void darkButton63_Click(object sender, EventArgs e)
         {
-            ExpansionSpawnGearLoadouts newloadout = new ExpansionSpawnGearLoadouts("Player",(decimal)1.0 );
+            ExpansionSpawnGearLoadouts newloadout = new ExpansionSpawnGearLoadouts(SpawnLoadoutsLB.GetItemText(SpawnLoadoutsLB.SelectedItem), (decimal)1.0 );
             SpawnSettings.MaleLoadouts.Add(newloadout);
             SpawnSettings.isDirty = true;
         }
@@ -7956,7 +8205,7 @@ namespace DayZeEditor
         }
         private void darkButton61_Click(object sender, EventArgs e)
         {
-            ExpansionSpawnGearLoadouts newloadout = new ExpansionSpawnGearLoadouts("Player", (decimal)1.0);
+            ExpansionSpawnGearLoadouts newloadout = new ExpansionSpawnGearLoadouts(SpawnLoadoutsLB.GetItemText(SpawnLoadoutsLB.SelectedItem), (decimal)1.0);
             SpawnSettings.FemaleLoadouts.Add(newloadout);
             SpawnSettings.isDirty = true;
         }
@@ -9303,6 +9552,7 @@ namespace DayZeEditor
             }
             PersonalStorageSettingsNew.isDirty = true;
         }
+
 
 
 

@@ -252,6 +252,27 @@ namespace DayZeLib
             }
             return new BindingList<string>();
         }
+        public string GetListfromitem(string item)
+        {
+            if (PoorItems.Contains(item))
+                return "Poor";
+            if (CommonItems.Contains(item))
+                return "Common";
+            if (UncommonItems.Contains(item))
+                return "Uncommon";
+            if (RareItems.Contains(item))
+                return "RareItems";
+            if (EpicItems.Contains(item))
+                return "EpicItems";
+            if (LegendaryItems.Contains(item))
+                return "Legendary";
+            if (MythicItems.Contains(item))
+                return "MythicItems";
+            if (ExoticItems.Contains(item))
+                return "Exotic";
+            return "none";
+
+        }
         public int getRequirment(string type)
         {
             switch (type)

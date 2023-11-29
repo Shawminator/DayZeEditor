@@ -7385,6 +7385,7 @@ namespace DayZeEditor
             // generatorparamsmax_steepnessNUD
             // 
             this.generatorparamsmax_steepnessNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.generatorparamsmax_steepnessNUD.DecimalPlaces = 1;
             this.generatorparamsmax_steepnessNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.generatorparamsmax_steepnessNUD.Location = new System.Drawing.Point(105, 177);
             this.generatorparamsmax_steepnessNUD.Maximum = new decimal(new int[] {
@@ -7406,6 +7407,7 @@ namespace DayZeEditor
             // generatorparamsgrid_densityNUD
             // 
             this.generatorparamsgrid_densityNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.generatorparamsgrid_densityNUD.DecimalPlaces = 1;
             this.generatorparamsgrid_densityNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.generatorparamsgrid_densityNUD.Location = new System.Drawing.Point(105, 19);
             this.generatorparamsgrid_densityNUD.Maximum = new decimal(new int[] {
@@ -7550,6 +7552,7 @@ namespace DayZeEditor
             // generatorparamsmin_steepnessNUD
             // 
             this.generatorparamsmin_steepnessNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.generatorparamsmin_steepnessNUD.DecimalPlaces = 1;
             this.generatorparamsmin_steepnessNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.generatorparamsmin_steepnessNUD.Location = new System.Drawing.Point(105, 151);
             this.generatorparamsmin_steepnessNUD.Maximum = new decimal(new int[] {
@@ -8109,7 +8112,7 @@ namespace DayZeEditor
             this.PlayerSpawnFreshButton.Image = ((System.Drawing.Image)(resources.GetObject("PlayerSpawnFreshButton.Image")));
             this.PlayerSpawnFreshButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PlayerSpawnFreshButton.Name = "PlayerSpawnFreshButton";
-            this.PlayerSpawnFreshButton.Size = new System.Drawing.Size(24, 24);
+            this.PlayerSpawnFreshButton.Size = new System.Drawing.Size(39, 22);
             this.PlayerSpawnFreshButton.Text = "Fresh";
             this.PlayerSpawnFreshButton.Click += new System.EventHandler(this.PlayerSpawnFreshButton_Click);
             // 
@@ -8129,7 +8132,7 @@ namespace DayZeEditor
             this.PlayerSpawnHopButton.Image = ((System.Drawing.Image)(resources.GetObject("PlayerSpawnHopButton.Image")));
             this.PlayerSpawnHopButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PlayerSpawnHopButton.Name = "PlayerSpawnHopButton";
-            this.PlayerSpawnHopButton.Size = new System.Drawing.Size(24, 24);
+            this.PlayerSpawnHopButton.Size = new System.Drawing.Size(34, 22);
             this.PlayerSpawnHopButton.Text = "Hop";
             this.PlayerSpawnHopButton.Click += new System.EventHandler(this.PlayerSpawnHopButton_Click);
             // 
@@ -8149,7 +8152,7 @@ namespace DayZeEditor
             this.PlayerSpawnTravelButton.Image = ((System.Drawing.Image)(resources.GetObject("PlayerSpawnTravelButton.Image")));
             this.PlayerSpawnTravelButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PlayerSpawnTravelButton.Name = "PlayerSpawnTravelButton";
-            this.PlayerSpawnTravelButton.Size = new System.Drawing.Size(24, 24);
+            this.PlayerSpawnTravelButton.Size = new System.Drawing.Size(41, 22);
             this.PlayerSpawnTravelButton.Text = "Travel";
             this.PlayerSpawnTravelButton.Click += new System.EventHandler(this.PlayerSpawnTravelButton_Click);
             // 
@@ -13811,6 +13814,7 @@ namespace DayZeEditor
             this.fastColoredTextBox1.DefaultMarkerSize = 8;
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.fastColoredTextBox1.IsReplaceMode = false;
             this.fastColoredTextBox1.Location = new System.Drawing.Point(0, 24);

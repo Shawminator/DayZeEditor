@@ -119,7 +119,10 @@ namespace DayZeLib
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show("there is an error in the following file\n" + file.FullName + Environment.NewLine + ex.InnerException.Message);
+                            if(ex.InnerException != null)
+                                MessageBox.Show("there is an error in the following file\n" + file.FullName + Environment.NewLine + ex.InnerException.Message);
+                            else
+                                MessageBox.Show(ex.Message);
                         }
                     }
                 }

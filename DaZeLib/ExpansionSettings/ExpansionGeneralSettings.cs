@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -96,7 +97,22 @@ namespace DayZeLib
             EnableEarPlugs = 1;
             InGameMenuLogoPath = "set:expansion_iconset image:logo_expansion_white";
         }
-
+        public bool checkfornull()
+        {
+            bool check = false;
+            foreach (PropertyInfo pi in this.GetType().GetProperties())
+            {
+                if (pi.Name != "Filename" && pi.Name != "isDirty")
+                    if (pi.GetValue(this) == null)
+                    {
+                        CustomAttributeData[] attrs = pi.GetCustomAttributesData().ToArray();
+                        pi.SetValue(this, attrs[0].ConstructorArguments[0].Value);
+                        Console.WriteLine(pi.Name + ", " + pi.GetValue(this));
+                        check = true;
+                    }
+            }
+            return check;
+        }
         public bool checkver()
         {
             if (m_Version != CurrentVersion)

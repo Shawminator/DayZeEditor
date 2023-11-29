@@ -29,7 +29,13 @@ namespace DayZeEditor
         public decimal[] CurrentWapypoint { get; private set; }
         public treasurehunitemvarients LootVarients { get; private set; }
 
-        private bool useraction;
+        private bool _useraction;
+
+        private bool useraction
+        {
+            get { return _useraction; }
+            set { _useraction = value; }
+        }
 
         public string QuestsSettingsPath { get; set; }
         public string QuestObjectivesPath { get; set; }
@@ -217,9 +223,31 @@ namespace DayZeEditor
             if (QuestsList.QuestList.Any(x => x.isDirty == true))
                 needtosave = true;
             setupquests();
-              
+
             SetupSharedLists();
 
+            foreach (Quests quest in QuestsList.QuestList)
+            { 
+                for (int i = 0; i < quest.Objectives.Count; i++)
+                {
+                    QuestObjectivesBase checkobj = QuestObjectives.CheckObjectiveExists(quest.Objectives[i]);
+                    if (checkobj == null)
+                    {
+                        MessageBox.Show("Type " + quest.Objectives[i]._ObjectiveTypeEnum.ToString() + ",Objective ID " + quest.Objectives[i].ID.ToString() + " does not exist in the list of objectives,\nplease check\n manually remove the objective from the quest and save.");
+                        Console.WriteLine("Quest " + quest.ID.ToString() + " objective type " + quest.Objectives[i]._ObjectiveTypeEnum.ToString() + ",Objective ID " + quest.Objectives[i].ID.ToString() + " does not exist in the list of objectives,\nplease check\nmanually remove the objective from the quest and save.\n");
+                    }
+                    else
+                    {
+                        if (quest.Objectives[i].ConfigVersion != checkobj.ConfigVersion)
+                        {
+                            quest.Objectives[i].ConfigVersion = checkobj.ConfigVersion;
+                            quest.isDirty = true;
+                            needtosave = true;
+                        }
+
+                    }
+                }
+            }
 
             QuestPlayerDataPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Quests\\PlayerData";
             if (!Directory.Exists(QuestPlayerDataPath))
@@ -320,7 +348,10 @@ namespace DayZeEditor
             }
             catch (Exception ex)
             {
-                MessageBox.Show("there is an error in the following file\n" + filename + Environment.NewLine + ex.InnerException.Message);
+                if(ex.InnerException != null)
+                    MessageBox.Show("there is an error in the following file\n" + filename + Environment.NewLine + ex.InnerException.Message);
+                else
+                    MessageBox.Show(ex.Message);
                 return null;
             }
         }
@@ -1197,24 +1228,7 @@ namespace DayZeEditor
             QuestPlayerNeedQuestItemsCB.Checked = CurrentQuest.PlayerNeedQuestItems == 1 ? true : false;
             QuestDeleteQuestItemsCB.Checked = CurrentQuest.DeleteQuestItems == 1 ? true : false;
 
-            for ( int i = 0; i < CurrentQuest.Objectives.Count; i++)
-            {
-                QuestObjectivesBase checkobj = QuestObjectives.CheckObjectiveExists(CurrentQuest.Objectives[i]);
-                if (checkobj == null)
-                {
-                    MessageBox.Show("Type " + CurrentQuest.Objectives[i]._ObjectiveTypeEnum.ToString() + ",Objective ID " + CurrentQuest.Objectives[i].ID.ToString() + " does not exist in the list of objectives,\nplease check\n manually remove the objective from the quest and save.");
-                    Console.WriteLine("Quest " + CurrentQuest.ID.ToString() + " objective type " + CurrentQuest.Objectives[i]._ObjectiveTypeEnum.ToString() + ",Objective ID " + CurrentQuest.Objectives[i].ID.ToString() + " does not exist in the list of objectives,\nplease check\nmanually remove the objective from the quest and save.\n");
-                }
-                else
-                {
-                    if (CurrentQuest.Objectives[i].ConfigVersion != checkobj.ConfigVersion)
-                    {
-                        CurrentQuest.Objectives[i].ConfigVersion = checkobj.ConfigVersion;
-                        CurrentQuest.isDirty = true;
-                    }
-
-                }
-            }
+            
             QuestNeedToSelectRewardCB.Checked = CurrentQuest.NeedToSelectReward == 1 ? true : false;
             QuestRewardsForGroupOwnerOnlyCB.Checked = CurrentQuest.RewardsForGroupOwnerOnly == 1 ? true : false;
             QuestReputationRewardNUD.Value = CurrentQuest.ReputationReward;

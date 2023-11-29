@@ -236,16 +236,16 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class playerspawnpointsGenerator_params
     {
-        private int grid_densityField;
-        private int grid_widthField;
-        private int grid_heightField;
-        private int min_dist_staticField;
-        private int max_dist_staticField;
-        private int min_steepnessField;
-        private int max_steepnessField;
+        private decimal grid_densityField;
+        private decimal grid_widthField;
+        private decimal grid_heightField;
+        private decimal min_dist_staticField;
+        private decimal max_dist_staticField;
+        private decimal min_steepnessField;
+        private decimal max_steepnessField;
 
         /// <remarks/>
-        public int grid_density
+        public decimal grid_density
         {
             get
             {
@@ -258,7 +258,7 @@ namespace DayZeLib
         }
 
         /// <remarks/>
-        public int grid_width
+        public decimal grid_width
         {
             get
             {
@@ -271,7 +271,7 @@ namespace DayZeLib
         }
 
         /// <remarks/>
-        public int grid_height
+        public decimal grid_height
         {
             get
             {
@@ -284,7 +284,7 @@ namespace DayZeLib
         }
 
         /// <remarks/>
-        public int min_dist_static
+        public decimal min_dist_static
         {
             get
             {
@@ -297,7 +297,7 @@ namespace DayZeLib
         }
 
         /// <remarks/>
-        public int max_dist_static
+        public decimal max_dist_static
         {
             get
             {
@@ -310,7 +310,7 @@ namespace DayZeLib
         }
 
         /// <remarks/>
-        public int min_steepness
+        public decimal min_steepness
         {
             get
             {
@@ -323,7 +323,7 @@ namespace DayZeLib
         }
 
         /// <remarks/>
-        public int max_steepness
+        public decimal max_steepness
         {
             get
             {

@@ -103,6 +103,7 @@
     <Compile Include="DNAKeycards\Basic\DNABasicConfig.cs" />
     <Compile Include="DNAKeycards\Basic\DNAProprietaryConfig.cs" />
     <Compile Include="DRJonesTrader\DrJonesAdmins.cs" />
+    <Compile Include="DRJonesTrader\DrJonesObjects.cs" />
     <Compile Include="DRJonesTrader\DrJonesTrader.cs" />
     <Compile Include="DRJonesTrader\DRJonesVariables.cs" />
     <Compile Include="DRJonesTrader\DrJonesvehicleParts.cs" />
