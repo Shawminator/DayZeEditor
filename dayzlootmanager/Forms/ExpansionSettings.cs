@@ -3542,8 +3542,6 @@ namespace DayZeEditor
             useraction = false;
             DebugVehiclePlayerNetworkBubbleModeNUD.Value = DebugSettings.DebugVehiclePlayerNetworkBubbleMode;
             ServerUpdateRateLimitNUD.Value = DebugSettings.ServerUpdateRateLimit;
-            EnableItemDropPlacementFixCB.Checked = DebugSettings.EnableItemDropPlacementFix == 1 ? true : false;
-            EnableProneDeathHandItemDropFixCB.Checked = DebugSettings.EnableProneDeathHandItemDropFix == 1 ? true : false;
             useraction = true;
         }
         private void DebugVehiclePlayerNetworkBubbleModeNUD_ValueChanged(object sender, EventArgs e)
@@ -3558,18 +3556,6 @@ namespace DayZeEditor
 
             if (!useraction) return;
             DebugSettings.ServerUpdateRateLimit = (int)ServerUpdateRateLimitNUD.Value;
-            DebugSettings.isDirty = true;
-        }
-        private void EnableProneDeathHandItemDropFixCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            DebugSettings.EnableProneDeathHandItemDropFix = EnableProneDeathHandItemDropFixCB.Checked == true ? 1 : 0;
-            DebugSettings.isDirty = true;
-        }
-        private void EnableItemDropPlacementFixCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            DebugSettings.EnableItemDropPlacementFix = EnableItemDropPlacementFixCB.Checked == true ? 1 : 0;
             DebugSettings.isDirty = true;
         }
         #endregion debugsettings
@@ -3593,7 +3579,6 @@ namespace DayZeEditor
             EnableHUDNightvisionOverlayCB.Checked = GeneralSettings.EnableHUDNightvisionOverlay == 1 ? true : false;
             DisableMagicCrosshairCB.Checked = GeneralSettings.DisableMagicCrosshair == 1 ? true : false;
             EnableAutoRunCB.Checked = GeneralSettings.EnableAutoRun == 1 ? true : false;
-            UnlimitedStaminaCB.Checked = GeneralSettings.UnlimitedStamina == 1 ? true : false;
             UseDeathScreenCB.Checked = GeneralSettings.UseDeathScreen == 1 ? true : false;
             UseDeathScreenStatisticsCB.Checked = GeneralSettings.UseDeathScreenStatistics == 1 ? true : false;
             UseExpansionMainMenuLogoCB.Checked = GeneralSettings.UseExpansionMainMenuLogo == 1 ? true : false;
@@ -8255,6 +8240,7 @@ namespace DayZeEditor
             MaxMembersInTerritoryTNUD.Value = TerritorySettings.MaxMembersInTerritory;
             MaxTerritoryPerPlayerTNUD.Value = TerritorySettings.MaxTerritoryPerPlayer;
             TerritoryAuthenticationRadiusNUD.Value = TerritorySettings.TerritoryAuthenticationRadius;
+            AuthenticateCodeLockIfTerritoryMemberCB.Checked = TerritorySettings.AuthenticateCodeLockIfTerritoryMember == 1 ? true: false;
             useraction = true;
         }
         private void TerritoriesTCB_CheckedChanged(object sender, EventArgs e)
@@ -9559,9 +9545,8 @@ namespace DayZeEditor
 
 
 
+
         #endregion personalstroage
-
-
     }
     public class NullToEmptyGearConverter : JsonConverter<ExpansionStartingGearItem>
     {

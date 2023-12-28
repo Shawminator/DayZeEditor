@@ -4,7 +4,7 @@ namespace DayZeLib
 {
     public class ExpansionTerritorySettings
     {
-        const int CurrentVersion = 2;
+        const int CurrentVersion = 3;
         public int m_Version { get; set; }
         public int EnableTerritories { get; set; }
         public int UseWholeMapForInviteList { get; set; }
@@ -13,6 +13,7 @@ namespace DayZeLib
         public int MaxMembersInTerritory { get; set; }
         public int MaxTerritoryPerPlayer { get; set; }
         public decimal TerritoryAuthenticationRadius { get; set; }
+        public int AuthenticateCodeLockIfTerritoryMember { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }
@@ -29,6 +30,7 @@ namespace DayZeLib
             MaxMembersInTerritory = 10;
             MaxTerritoryPerPlayer = 1;
             TerritoryAuthenticationRadius = (decimal)150.0;
+            AuthenticateCodeLockIfTerritoryMember = 0; //added in version 3
         }
         public bool checkver()
         {

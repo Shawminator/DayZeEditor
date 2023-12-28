@@ -443,9 +443,13 @@ namespace DayZeLib
             ClassName = className;
             Quantity = quantity;
 
-            if (attachments != null)
+            if (attachments == null)
             {
-                Attachments = new BindingList<string>(attachments);
+                Attachments = new BindingList<string>();
+            }
+            else
+            {
+                Attachments = new BindingList<string>(attachments); ;
             }
         }
 

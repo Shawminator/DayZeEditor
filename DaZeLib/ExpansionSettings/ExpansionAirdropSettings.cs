@@ -479,10 +479,11 @@ namespace DayZeLib
             else
                 Attachments = new BindingList<string>();
             Chance = chance;
-            if (variants != null)
-                Variants = Variants;
-            else
+            if (variants == null)
                 Variants = new BindingList<ExpansionLootVariant>();
+            else
+                Variants = variants;
+
             QuantityPercent = quantityPercent;
             Max = max;
             Min = min;

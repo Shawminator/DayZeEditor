@@ -149,17 +149,15 @@ namespace DayZeEditor
             if (!File.Exists(MarketSettingsPath))
             {
                 marketsettings = new MarketSettings(MarketSettingsPath);
+                marketsettings.isDirty = true;
                 needtosave = true;
             }
             else
             {
                 marketsettings = JsonSerializer.Deserialize<MarketSettings>(File.ReadAllText(MarketSettingsPath));
                 marketsettings.isDirty = false;
-                if (marketsettings.m_Version != 12)
+                if (marketsettings.checkver())
                 {
-                    MessageBox.Show("MarketSettings Version number not up to date, updating to latest version....");
-                    marketsettings.m_Version = 12;
-                    marketsettings.isDirty = true;
                     needtosave = true;
                 }
                 Console.WriteLine("Serializing " + MarketSettingsPath);
@@ -872,7 +870,7 @@ namespace DayZeEditor
             pictureBox2.Invalidate();
             action = false;
         }
-        public void Setvalues(SpawnPositions pos)
+        public void Setvalues(ExpansionMarketSpawnPosition pos)
         {
             if (pos == null) return;
             action = true;
@@ -897,7 +895,7 @@ namespace DayZeEditor
             {
                 case 0:
                     int index = listBox7.SelectedIndex;
-                    SpawnPositions sp = marketsettings.getSpawnbyindex(0, index);
+                    ExpansionMarketSpawnPosition sp = marketsettings.getSpawnbyindex(0, index);
                     Setvalues(sp);
                     break;
                 case 1:
@@ -1019,7 +1017,7 @@ namespace DayZeEditor
                     Cursor.Current = Cursors.WaitCursor;
                     marketsettings.AddnewSpawn(0);
                     listBox7.SelectedIndex = listBox7.Items.Count - 1;
-                    SpawnPositions sp = marketsettings.getSpawnbyindex(0, listBox7.Items.Count - 1);
+                    ExpansionMarketSpawnPosition sp = marketsettings.getSpawnbyindex(0, listBox7.Items.Count - 1);
                     sp.Position[0] = currentproject.MapSize / 2;
                     sp.Position[2] = currentproject.MapSize / 2;
                     sp.Position[1] = data.gethieght(sp.Position[0], sp.Position[2]);
@@ -1087,7 +1085,7 @@ namespace DayZeEditor
                     for (int i = 0; i < listBox7.Items.Count; i++)
                     {
                         if (i == Selectedindex) continue;
-                        SpawnPositions sp = marketsettings.getSpawnbyindex(0, i);
+                        ExpansionMarketSpawnPosition sp = marketsettings.getSpawnbyindex(0, i);
 
                         
                         int centerX = (int)(Math.Round(sp.Position[0], 0) * scalevalue);
@@ -1099,7 +1097,7 @@ namespace DayZeEditor
                         };
                         getCircle(e.Graphics, pen, center, 10);
                     }
-                    SpawnPositions sp1 = marketsettings.getSpawnbyindex(0, Selectedindex);
+                    ExpansionMarketSpawnPosition sp1 = marketsettings.getSpawnbyindex(0, Selectedindex);
                     int centerX1 = (int)(Math.Round(sp1.Position[0], 0) * scalevalue);
                     int centerY1 = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(sp1.Position[2], 0) * scalevalue);
 
@@ -1115,7 +1113,7 @@ namespace DayZeEditor
                     if (Selectedindex == -1) break;
                     for (int i = 0; i < listBox8.Items.Count; i++)
                     {
-                        SpawnPositions sp = marketsettings.getSpawnbyindex(1, i);
+                        ExpansionMarketSpawnPosition sp = marketsettings.getSpawnbyindex(1, i);
                         int centerX = (int)(Math.Round(sp.Position[0], 0) * scalevalue);
                         int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(sp.Position[2], 0) * scalevalue);
                         Point center = new Point(centerX, centerY);
@@ -1141,7 +1139,7 @@ namespace DayZeEditor
                     if (Selectedindex == -1) break;
                     for (int i = 0; i < listBox9.Items.Count; i++)
                     {
-                        SpawnPositions sp = marketsettings.getSpawnbyindex(2, i);
+                        ExpansionMarketSpawnPosition sp = marketsettings.getSpawnbyindex(2, i);
                         int centerX = (int)(Math.Round(sp.Position[0], 0) * scalevalue);
                         int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(sp.Position[2], 0) * scalevalue);
 
@@ -1172,7 +1170,7 @@ namespace DayZeEditor
             {
                 case 0:
                     int index = listBox7.SelectedIndex;
-                    SpawnPositions sp = marketsettings.getSpawnbyindex(0, index);
+                    ExpansionMarketSpawnPosition sp = marketsettings.getSpawnbyindex(0, index);
                     SetPositions(sp);
                     break;
                 case 1:
@@ -1188,7 +1186,7 @@ namespace DayZeEditor
             }
             pictureBox2.Invalidate();
         }
-        private void SetPositions(SpawnPositions pos)
+        private void SetPositions(ExpansionMarketSpawnPosition pos)
         {
             if (pos == null) return;
             action = true;
@@ -3510,7 +3508,6 @@ namespace DayZeEditor
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     filePath = openFileDialog.FileName;
-                    var fileStream = openFileDialog.OpenFile();
                     fileContent = File.ReadAllLines(filePath);
                     currenttradermap.Roamingpoints = new BindingList<Vec3>();
                     for (int i = 0; i < fileContent.Length; i++)

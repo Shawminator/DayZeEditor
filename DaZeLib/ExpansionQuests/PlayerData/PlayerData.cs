@@ -64,7 +64,7 @@ namespace DayZeLib
 
        public QuestPlayerData(string fileName)
         {
-            using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+            using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read))
             using (BinaryReader br = new BinaryReader(fs))
             {
                 if (br.ReadInt32() != DATAVERSION) return;
@@ -96,7 +96,7 @@ namespace DayZeLib
 
         public void SaveFIle(string path)
         {
-            using (FileStream fs = new FileStream(path + "//" + Filename + ".bin", FileMode.Open, FileAccess.ReadWrite))
+            using (FileStream fs = new FileStream(path + "//" + Filename + ".bin", FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
             using (BinaryWriter bw = new BinaryWriter(fs))
             {
                 bw.Write(DATAVERSION);

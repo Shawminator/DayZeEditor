@@ -19,19 +19,19 @@ namespace DayZeEditor
     public partial class LootPoolManager : DarkForm
     {
         public Project currentproject { get; set; }
-        public Rhlprewardtable CurrentRHLPRewardTables { get; private set; }
-        public RHLPAttachment currentRHLPAttachment { get; private set; }
+        public caparelprewardtable CurrentRHLPRewardTables { get; private set; }
+        public capareLPAttachment currentRHLPAttachment { get; private set; }
 
         public TypesFile vanillatypes;
         public TypesFile Expansiontypes;
         public List<TypesFile> ModTypes;
         private string LootPoolConfigPath;
         public string Projectname;
-        private RHLPdefinedItems currentRHPredefineditems;
-        private Rhlploottable currentRhlploottable;
+        private capareLPdefinedItems currentRHPredefineditems;
+        private caparelploottable currentRhlploottable;
         private bool useraction = false;
 
-        public LootPool LootPool;
+        public CapareLootPool LootPool;
 
         public LootPoolManager()
         {
@@ -105,8 +105,8 @@ namespace DayZeEditor
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
 
-            LootPoolConfigPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\LootPool\\LootPoolConfig.json";
-            LootPool = JsonSerializer.Deserialize<LootPool>(File.ReadAllText(LootPoolConfigPath));
+            LootPoolConfigPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Capare\\CapareLootPool\\CapareLootPoolConfig.json";
+            LootPool = JsonSerializer.Deserialize<CapareLootPool>(File.ReadAllText(LootPoolConfigPath));
             LootPool.isDirty = false;
             LootPool.Filename = LootPoolConfigPath;
 
@@ -121,15 +121,15 @@ namespace DayZeEditor
 
             LootChestsLocationsLB.DisplayMember = "DisplayName";
             LootChestsLocationsLB.ValueMember = "Value";
-            LootChestsLocationsLB.DataSource = LootPool.RHLPRewardTables;
+            LootChestsLocationsLB.DataSource = LootPool.CapareLPRewardTables;
 
             LootCategoriesLB.DisplayMember = "DisplayName";
             LootCategoriesLB.ValueMember = "Value";
-            LootCategoriesLB.DataSource = LootPool.RHLPLootTables;
+            LootCategoriesLB.DataSource = LootPool.CapareLPLootTables;
 
             LCPredefinedWeaponsLB.DisplayMember = "DisplayName";
             LCPredefinedWeaponsLB.ValueMember = "Value";
-            LCPredefinedWeaponsLB.DataSource = LootPool.RHLPdefinedItems;
+            LCPredefinedWeaponsLB.DataSource = LootPool.CapareLPdefinedItems;
 
             useraction = true;
         }
@@ -137,7 +137,7 @@ namespace DayZeEditor
         private void LCPredefinedWeaponsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (LCPredefinedWeaponsLB.SelectedItems.Count < 1) return;
-            currentRHPredefineditems = LCPredefinedWeaponsLB.SelectedItem as RHLPdefinedItems;
+            currentRHPredefineditems = LCPredefinedWeaponsLB.SelectedItem as capareLPdefinedItems;
             useraction = false;
             SetItemInfo();
             useraction = true;
@@ -177,7 +177,7 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    if (!LootPool.RHLPdefinedItems.Any(x => x.DefineName == "Defined_" + l))
+                    if (!LootPool.CapareLPdefinedItems.Any(x => x.DefineName == "Defined_" + l))
                     {
                         currentRHPredefineditems.DefineName = "Defined_" + l;
                         currentRHPredefineditems.Item = l;
@@ -215,7 +215,7 @@ namespace DayZeEditor
         }
         private void darkButton10_Click(object sender, EventArgs e)
         {
-            RHLPAttachment newattachemnt = new RHLPAttachment()
+            capareLPAttachment newattachemnt = new capareLPAttachment()
             {
                 attachments = new BindingList<string>()
             };
@@ -261,12 +261,12 @@ namespace DayZeEditor
         }
         private void darkButton15_Click(object sender, EventArgs e)
         {
-            LootPool.RHLPdefinedItems.Add(new RHLPdefinedItems()
+            LootPool.CapareLPdefinedItems.Add(new capareLPdefinedItems()
             {
                 DefineName = "Defined_New_Item",
                 Item = "",
                 magazines = new BindingList<string>(),
-                attachments = new BindingList<RHLPAttachment>()
+                attachments = new BindingList<capareLPAttachment>()
             });
             LCPredefinedWeaponsLB.SelectedIndex = -1;
             LCPredefinedWeaponsLB.SelectedIndex = LCPredefinedWeaponsLB.Items.Count - 1;
@@ -275,7 +275,7 @@ namespace DayZeEditor
         {
             if (LCPredefinedWeaponsLB.SelectedItems.Count < 1) return;
             int index = LCPredefinedWeaponsLB.SelectedIndex;
-            LootPool.RHLPdefinedItems.Remove(currentRHPredefineditems);
+            LootPool.CapareLPdefinedItems.Remove(currentRHPredefineditems);
             LootPool.isDirty = true;
             LCPredefinedWeaponsLB.SelectedIndex = -1;
             if (index - 1 == -1)
@@ -292,7 +292,7 @@ namespace DayZeEditor
         private void attachmentsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (attachmentsLB.SelectedItems.Count < 1) return;
-            currentRHLPAttachment = attachmentsLB.SelectedItem as RHLPAttachment;
+            currentRHLPAttachment = attachmentsLB.SelectedItem as capareLPAttachment;
 
             attatchmentslistLB.DisplayMember = "DisplayName";
             attatchmentslistLB.ValueMember = "Value";
@@ -303,7 +303,7 @@ namespace DayZeEditor
         private void LootCategoriesLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (LootCategoriesLB.SelectedItems.Count < 1) return;
-            currentRhlploottable = LootCategoriesLB.SelectedItem as Rhlploottable;
+            currentRhlploottable = LootCategoriesLB.SelectedItem as caparelploottable;
             useraction = false;
 
             LootCatNameTB.Text = currentRhlploottable.TableName;
@@ -327,7 +327,7 @@ namespace DayZeEditor
         {
             AddfromPredefinedItems form = new AddfromPredefinedItems
             {
-                RHLPdefinedItems = LootPool.RHLPdefinedItems,
+                RHLPdefinedItems = LootPool.CapareLPdefinedItems,
                 titellabel = "Add Items from Predefined Weapons",
                 isLootList = false,
                 isRHTableList = false,
@@ -380,7 +380,7 @@ namespace DayZeEditor
         {
             if (LootCategoriesLB.SelectedItems.Count < 1) return;
             int index = LootCategoriesLB.SelectedIndex;
-            LootPool.RHLPLootTables.Remove(currentRhlploottable);
+            LootPool.CapareLPLootTables.Remove(currentRhlploottable);
             LootPool.isDirty = true;
             LootCategoriesLB.SelectedIndex = -1;
             if (index - 1 == -1)
@@ -395,7 +395,7 @@ namespace DayZeEditor
         }
         private void darkButton19_Click(object sender, EventArgs e)
         {
-            LootPool.RHLPLootTables.Add(new Rhlploottable()
+            LootPool.CapareLPLootTables.Add(new caparelploottable()
             {
                 TableName = "Loot_Table_",
                 LootItems = new BindingList<string>()
@@ -407,7 +407,7 @@ namespace DayZeEditor
         private void LootChestsLocationsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (LootChestsLocationsLB.SelectedItems.Count < 1) return;
-            CurrentRHLPRewardTables = LootChestsLocationsLB.SelectedItem as Rhlprewardtable;
+            CurrentRHLPRewardTables = LootChestsLocationsLB.SelectedItem as caparelprewardtable;
             useraction = false;
 
             RewardTableNameTB.Text = CurrentRHLPRewardTables.RewardName;
@@ -427,7 +427,7 @@ namespace DayZeEditor
         }
         private void darkButton5_Click(object sender, EventArgs e)
         {
-            LootPool.RHLPRewardTables.Add(new Rhlprewardtable()
+            LootPool.CapareLPRewardTables.Add(new caparelprewardtable()
             {
                 RewardName = "Reward_Table_NewReward",
                 Rewards = new BindingList<string>()
@@ -440,7 +440,7 @@ namespace DayZeEditor
         {
             if (LootChestsLocationsLB.SelectedItems.Count < 1) return;
             int index = LootChestsLocationsLB.SelectedIndex;
-            LootPool.RHLPRewardTables.Remove(CurrentRHLPRewardTables);
+            LootPool.CapareLPRewardTables.Remove(CurrentRHLPRewardTables);
             LootPool.isDirty = true;
             LootChestsLocationsLB.SelectedIndex = -1;
             if (index - 1 == -1)
@@ -496,7 +496,7 @@ namespace DayZeEditor
         {
             AddfromPredefinedItems form = new AddfromPredefinedItems
             {
-                RHLPdefinedItems = LootPool.RHLPdefinedItems,
+                RHLPdefinedItems = LootPool.CapareLPdefinedItems,
                 titellabel = "Add Items from Predefined Weapons",
                 isLootList = false,
                 isRHTableList = false,
@@ -521,7 +521,7 @@ namespace DayZeEditor
         {
             AddfromPredefinedItems form = new AddfromPredefinedItems
             {
-                LootTables = LootPool.RHLPLootTables,
+                LootTables = LootPool.CapareLPLootTables,
                 titellabel = "Add Items from Loot list",
                 isLootList = false,
                 isRHTableList = true,
@@ -699,7 +699,7 @@ namespace DayZeEditor
                 if (item is spawnabletypesTypeAttachments)
                 {
                     spawnabletypesTypeAttachments attachments = item as spawnabletypesTypeAttachments;
-                    RHLPAttachment NEWLIST = new RHLPAttachment();
+                    capareLPAttachment NEWLIST = new capareLPAttachment();
                     NEWLIST.attachments = new BindingList<string>();
                     foreach (spawnabletypesTypeAttachmentsItem attitem in attachments.item)
                     {
@@ -721,7 +721,7 @@ namespace DayZeEditor
                 else if (item is spawnabletypesTypeCargo)
                 {
                     spawnabletypesTypeCargo attachments = item as spawnabletypesTypeCargo;
-                    RHLPAttachment NEWLIST = new RHLPAttachment();
+                    capareLPAttachment NEWLIST = new capareLPAttachment();
                     NEWLIST.attachments = new BindingList<string>();
                     foreach (spawnabletypesTypeCargoItem attitem in attachments.item)
                     {
@@ -762,19 +762,19 @@ namespace DayZeEditor
             }
             foreach(spawnabletypesType sp in ST)
             {
-                RHLPdefinedItems newitem = new RHLPdefinedItems()
+                capareLPdefinedItems newitem = new capareLPdefinedItems()
                 {
                     DefineName = "Defined_" + sp.name,
                     Item = sp.name,
                     magazines = new BindingList<string>(),
-                    attachments = new BindingList<RHLPAttachment>()
+                    attachments = new BindingList<capareLPAttachment>()
                 };
                 foreach (var item in sp.Items)
                 {
                     if (item is spawnabletypesTypeAttachments)
                     {
                         spawnabletypesTypeAttachments attachments = item as spawnabletypesTypeAttachments;
-                        RHLPAttachment NEWLIST = new RHLPAttachment();
+                        capareLPAttachment NEWLIST = new capareLPAttachment();
                         NEWLIST.attachments = new BindingList<string>();
                         foreach (spawnabletypesTypeAttachmentsItem attitem in attachments.item)
                         {
@@ -796,7 +796,7 @@ namespace DayZeEditor
                     else if (item is spawnabletypesTypeCargo)
                     {
                         spawnabletypesTypeCargo attachments = item as spawnabletypesTypeCargo;
-                        RHLPAttachment NEWLIST = new RHLPAttachment();
+                        capareLPAttachment NEWLIST = new capareLPAttachment();
                         NEWLIST.attachments = new BindingList<string>();
                         foreach (spawnabletypesTypeCargoItem attitem in attachments.item)
                         {
@@ -808,7 +808,7 @@ namespace DayZeEditor
                         }
                     }
                 }
-                LootPool.RHLPdefinedItems.Add(newitem);
+                LootPool.CapareLPdefinedItems.Add(newitem);
                 LootPool.isDirty = true;
             }
         }

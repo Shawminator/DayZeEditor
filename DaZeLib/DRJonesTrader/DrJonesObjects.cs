@@ -24,7 +24,7 @@ namespace DayZeLib
 
             DrJonesobjectslist = new BindingList<DrJonesObject>();
 
-            FileStream fs = new FileStream(Filename, FileMode.Open, FileAccess.Read);
+            FileStream fs = new FileStream(Filename, FileMode.Open, FileAccess.Read, FileShare.Read);
             StreamReader reader = new StreamReader(fs);
             string line_content = "";
             Console.WriteLine("trader Objects Found, Begin Parsing......");

@@ -40,7 +40,7 @@ namespace DayZeLib
             {
                 bool savefile = false;
                 var mySerializer = new XmlSerializer(typeof(types));
-                using (var myFileStream = new FileStream(filename, FileMode.Open))
+                using (var myFileStream = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
                     try
                     {

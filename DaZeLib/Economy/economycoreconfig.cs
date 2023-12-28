@@ -13,6 +13,8 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using System.Xml.Linq;
+using System.Xml.Schema;
 using System.Xml.Serialization;
 
 namespace DayZeLib
@@ -48,7 +50,7 @@ namespace DayZeLib
             Console.Write("serializing " + Path.GetFileName(Filename));
             try
             {
-                using (var myFileStream = new FileStream(filename, FileMode.Open))
+                using (var myFileStream = new FileStream(filename, FileMode.Open, FileAccess.Read ,FileShare.Read))
                 {
                     // Call the Deserialize method and cast to the object type.
                     economycore = (economycore)mySerializer.Deserialize(myFileStream);
@@ -383,7 +385,7 @@ namespace DayZeLib
             {
                 var mySerializer = new XmlSerializer(typeof(prototype));
                 // To read the file, create a FileStream.
-                using (var myFileStream = new FileStream(filename, FileMode.Open))
+                using (var myFileStream = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
                     Console.Write("serializing " + Path.GetFileName(Filename));
                     try
@@ -447,7 +449,7 @@ namespace DayZeLib
             {
                 var mySerializer = new XmlSerializer(typeof(map));
                 // To read the file, create a FileStream.
-                using (var myFileStream = new FileStream(filename, FileMode.Open))
+                using (var myFileStream = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
                     Console.Write("serializing " + Path.GetFileName(Filename));
                     try
@@ -511,7 +513,7 @@ namespace DayZeLib
             {
                 var mySerializer = new XmlSerializer(typeof(events));
                 // To read the file, create a FileStream.
-                using (var myFileStream = new FileStream(filename, FileMode.Open))
+                using (var myFileStream = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
                     Console.Write("serializing " + Path.GetFileName(Filename));
                     try
@@ -581,7 +583,7 @@ namespace DayZeLib
             {
                 var mySerializer = new XmlSerializer(typeof(eventposdef));
                 // To read the file, create a FileStream.
-                using (var myFileStream = new FileStream(filename, FileMode.Open))
+                using (var myFileStream = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
                     Console.Write("serializing " + Path.GetFileName(Filename));
                     try
@@ -651,7 +653,7 @@ namespace DayZeLib
             // To read the file, create a FileStream.
             if (File.Exists(Filename))
             {
-                using (var myFileStream = new FileStream(filename, FileMode.Open))
+                using (var myFileStream = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
                     Console.Write("serializing " + Path.GetFileName(Filename));
                     try
@@ -720,7 +722,7 @@ namespace DayZeLib
             {
                 var mySerializer = new XmlSerializer(typeof(variables));
                 // To read the file, create a FileStream.
-                using (var myFileStream = new FileStream(filename, FileMode.Open))
+                using (var myFileStream = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
                     Console.Write("serializing " + Path.GetFileName(Filename));
                     try
@@ -784,7 +786,7 @@ namespace DayZeLib
             // To read the file, create a FileStream.
             if (File.Exists(Filename))
             {
-                using (var myFileStream = new FileStream(filename, FileMode.Open))
+                using (var myFileStream = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
                     Console.Write("serializing " + Path.GetFileName(Filename));
                     try
@@ -850,37 +852,75 @@ namespace DayZeLib
         public playerspawnpoints playerspawnpoints { get; set; }
         public string Filename { get; set; }
         public bool isDirty { get; set; }
+        public bool ValidateSchema(string xmlPath, string xsdPath)
+        {
+            XmlDocument xml = new XmlDocument();
+            xml.Load(xmlPath);
+
+            xml.Schemas.Add(null, xsdPath);
+
+            try
+            {
+                xml.Validate(null);
+            }
+            catch (XmlSchemaValidationException)
+            {
+                return false;
+            }
+            return true;
+        }
         public cfgplayerspawnpoints(string filename)
         {
             Filename = filename;
             if (File.Exists(Filename))
             {
-                var mySerializer = new XmlSerializer(typeof(playerspawnpoints));
-                using (var myFileStream = new FileStream(filename, FileMode.Open))
+                if (!ValidateSchema(Filename, Application.StartupPath + "\\TraderNPCs\\PlayerSpawnSchema.xml"))
                 {
-                    Console.Write("serializing " + Path.GetFileName(Filename));
-                    try
+                    Console.Write("Old PlayerSpawnPoint file found converting to new.......");
+                    var myoldSerializer = new XmlSerializer(typeof(playerspawnpoints_old));
+                    using (var myFileStream = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read))
                     {
-                        playerspawnpoints = (playerspawnpoints)mySerializer.Deserialize(myFileStream);
-                        if (playerspawnpoints != null)
-                        {
-                            Console.ForegroundColor = ConsoleColor.Green;
-                            Console.WriteLine("  OK....");
-                            Console.ForegroundColor = ConsoleColor.White;
-                        }
+                        playerspawnpoints_old PSPOld = (playerspawnpoints_old)myoldSerializer.Deserialize(myFileStream);
+                        playerspawnpoints = PSPOld.convertToNewFormat();
                     }
-                    catch (Exception ex)
+                    if (playerspawnpoints != null)
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("  Failed....");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("  OK....");
                         Console.ForegroundColor = ConsoleColor.White;
-                        var form = Application.OpenForms["SplashForm"];
-                        if (form != null)
+                        Savecfgplayerspawnpoints();
+                    }
+                    
+                }
+                else
+                {
+                    var mySerializer = new XmlSerializer(typeof(playerspawnpoints));
+                    using (var myFileStream = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read))
+                    {
+                        Console.Write("serializing " + Path.GetFileName(Filename));
+                        try
                         {
-                            form.Invoke(new Action(() => { form.Close(); }));
+                            playerspawnpoints = (playerspawnpoints)mySerializer.Deserialize(myFileStream);
+                            if (playerspawnpoints != null)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("  OK....");
+                                Console.ForegroundColor = ConsoleColor.White;
+                            }
                         }
-                        MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
-                        Console.WriteLine("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString() + "\n***** Please Fix this before continuing to use the editor *****\n");
+                        catch (Exception ex)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("  Failed....");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            var form = Application.OpenForms["SplashForm"];
+                            if (form != null)
+                            {
+                                form.Invoke(new Action(() => { form.Close(); }));
+                            }
+                            MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                            Console.WriteLine("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString() + "\n***** Please Fix this before continuing to use the editor *****\n");
+                        }
                     }
                 }
             }
@@ -1103,7 +1143,7 @@ namespace DayZeLib
             {
                 var mySerializer = new XmlSerializer(typeof(weather));
                 // To read the file, create a FileStream.
-                using (var myFileStream = new FileStream(filename, FileMode.Open))
+                using (var myFileStream = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
                     Console.Write("serializing " + Path.GetFileName(Filename));
                     try

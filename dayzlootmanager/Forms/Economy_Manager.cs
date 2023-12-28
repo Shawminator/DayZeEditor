@@ -4595,6 +4595,9 @@ namespace DayZeEditor
         }
         private void PlayerSpawnHopButton_Click(object sender, EventArgs e)
         {
+            generatorposbubblesPosLB.DataSource = null;
+            currentplayerspawnpointsGroup = null;
+            pictureBox2.Invalidate();
             PlayerSpawnFreshButton.Checked = false;
             PlayerSpawnHopButton.Checked = true;
             PlayerSpawnTravelButton.Checked = false;
@@ -5037,17 +5040,23 @@ namespace DayZeEditor
             }
             else
             {
-                foreach (playerspawnpointsGroupPos newpos in currentplayerspawnpointsGroup.pos)
+                if (currentplayerspawnpointsGroup != null)
                 {
-                    float scalevalue = PlayerSpawnScale * 0.05f;
-                    int centerX = (int)(Math.Round(newpos.x) * (decimal)scalevalue);
-                    int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(newpos.z, 0) * (decimal)scalevalue);
-                    int radius = (int)(Math.Round(1f, 0) * scalevalue);
-                    Point center = new Point(centerX, centerY);
-                    Pen pen = new Pen(Color.Red, 4);
-                    if (newpos == currentpos)
-                        pen.Color = Color.LimeGreen;
-                    getCircle(e.Graphics, pen, center, radius);
+                    if (currentplayerspawnpointsGroup.pos != null)
+                    {
+                        foreach (playerspawnpointsGroupPos newpos in currentplayerspawnpointsGroup.pos)
+                        {
+                            float scalevalue = PlayerSpawnScale * 0.05f;
+                            int centerX = (int)(Math.Round(newpos.x) * (decimal)scalevalue);
+                            int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(newpos.z, 0) * (decimal)scalevalue);
+                            int radius = (int)(Math.Round(1f, 0) * scalevalue);
+                            Point center = new Point(centerX, centerY);
+                            Pen pen = new Pen(Color.Red, 4);
+                            if (newpos == currentpos)
+                                pen.Color = Color.LimeGreen;
+                            getCircle(e.Graphics, pen, center, radius);
+                        }
+                    }
                 }
             }
         }

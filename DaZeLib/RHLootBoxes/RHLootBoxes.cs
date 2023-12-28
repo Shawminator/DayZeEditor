@@ -15,12 +15,12 @@ namespace DayZeLib
         public bool isDirty;
 
         public int LootBoxLifetime { get; set; }
-        public BindingList<Rhlootboxconfig> RHLootBoxConfigs { get; set; }
+        public BindingList<caparelootboxconfig> CapareLootBoxConfigs { get; set; }
         public int StaticLootBoxEnabled { get; set; }
-        public BindingList<Rhlootboxstaticbox> RHLootBoxStaticBoxes { get; set; }
+        public BindingList<caparelootboxstaticbox> CapareLootBoxStaticBoxes { get; set; }
     }
 
-    public class Rhlootboxconfig
+    public class caparelootboxconfig
     {
         public string LootBoxName { get; set; }
         public BindingList<string> PossibleLootList { get; set; }
@@ -33,7 +33,7 @@ namespace DayZeLib
 
     }
 
-    public class Rhlootboxstaticbox
+    public class caparelootboxstaticbox
     {
         public string LootBoxSetName { get; set; }
         public BindingList<string> PossibleLootBoxNames { get; set; }

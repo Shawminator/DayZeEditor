@@ -36,7 +36,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.7.8.6";
+        public string VersionNumber = "0.7.8.7";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -119,6 +119,7 @@ namespace DayZeEditor
                     }
                     Console.WriteLine(Projects.ActiveProject + " is the Current Active Project");
                     Console.WriteLine("Will now serialize base economy files from Project " + Projects.ActiveProject);
+                    Projects.getActiveProject().Setmappedrive();
                     Projects.getActiveProject().seteconomycore();
                     Projects.getActiveProject().seteconomydefinitions();
                     Projects.getActiveProject().setuserdefinitions();
@@ -359,18 +360,18 @@ namespace DayZeEditor
                 else
                     LootchestButton.Visible = false;
 
-                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\LootPool\\LootPoolConfig.json"))
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\Capare\\CapareLootPool\\CapareLootPoolConfig.json"))
                     LootPoolManagerButton.Visible = true;
                 else
                     LootPoolManagerButton.Visible = false;
 
-                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\RH_LootBox\\RHLootBoxConfig.json") &&
-                    File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\LootPool\\LootPoolConfig.json"))
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\Capare\\CapareLootBox\\CapareLootBoxConfig.json") &&
+                    File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\Capare\\CapareLootPool\\CapareLootPoolConfig.json"))
                     RHLootBoxManagerButton.Visible = true;
                 else
                     RHLootBoxManagerButton.Visible = false;
 
-                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\HeliCrash\\HCConfig\\HCConfig.json"))
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\Capare\\CapareHCConfig\\CapareHCConfig.json"))
                     HelicrashManagerButton.Visible = true;
                 else
                     HelicrashManagerButton.Visible = false;
@@ -428,6 +429,12 @@ namespace DayZeEditor
                     MysteryBoxButton.Visible = true;
                 else
                     MysteryBoxButton.Visible = false;
+
+                // Cant be arsed with this, fucking stupid config........
+                //if (Directory.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\DNA_Keycards"))
+                //    DNAKeyCardsButton.Visible = true;
+                //else
+                //    DNAKeyCardsButton.Visible = false;
             }
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -968,6 +975,32 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
+        private void DNAKeyCardsButton_Click(object sender, EventArgs e)
+        {
+            DNAKeyCardsManager _TM = Application.OpenForms["DNAKeyCardsManager"] as DNAKeyCardsManager;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new DNAKeyCardsManager
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+
+                };
+                _TM.Show();
+                Console.WriteLine("loading DNAKeyCards manager....");
+            }
+            timer1.Start();
+        }
         private void MysteryBoxButton_Click(object sender, EventArgs e)
         {
             MysteryBoxManager _TM = Application.OpenForms["MysteryBoxManager"] as MysteryBoxManager;
@@ -994,33 +1027,6 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
-        private void toolStripButton4_Click(object sender, EventArgs e)
-        {
-            Projects.getActiveProject().GetPlayerDB();
-            PlayerDB _TM = Application.OpenForms["PlayerDB"] as PlayerDB;
-            if (_TM != null)
-            {
-                _TM.WindowState = FormWindowState.Normal;
-                _TM.BringToFront();
-                _TM.Activate();
-            }
-            else
-            {
-                closemdichildren();
-                _TM = new PlayerDB
-                {
-                    MdiParent = this,
-                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
-                    Location = new System.Drawing.Point(30, 0),
-                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
-                    currentproject = Projects.getActiveProject()
-                    
-            };
-                _TM.Show();
-                Console.WriteLine("loading Player Databaser manager....");
-            }
-            timer1.Start();
-        }
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -1038,6 +1044,17 @@ namespace DayZeEditor
                     {
                         File.WriteAllText(savefile.FileName, jsonString);
                     }
+                }
+            }
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (Projects.getActiveProject() != null)
+            {
+                if (Projects.getActiveProject().MapNetworkDrive == true)
+                {
+                    NetworkDrive.DisconnectNetworkDrive(Projects.getActiveProject().Networkdriveletter, true);
                 }
             }
         }

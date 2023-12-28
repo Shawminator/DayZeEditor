@@ -35,11 +35,11 @@ namespace DayZeEditor
         }
 
         public BindingList<LCPredefinedWeapons> LCPredefinedWeapons { get; set; }
-        public BindingList<RHLPdefinedItems> RHLPdefinedItems { get; set; }
+        public BindingList<capareLPdefinedItems> RHLPdefinedItems { get; set; }
         public BindingList<LootCategories> LootCategories { get; set; }
-        public BindingList<Rhlploottable> LootTables { get; set; }
-        public BindingList<Rhlprewardtable> Rhlprewardtable { get; set; }
-        public BindingList<Rhlootboxconfig> Rhlootboxconfig { get; set; }
+        public BindingList<caparelploottable> LootTables { get; set; }
+        public BindingList<caparelprewardtable> Rhlprewardtable { get; set; }
+        public BindingList<caparelootboxconfig> Rhlootboxconfig { get; set; }
         public string predefweapon { get; set; }
         public List<string>WeaponList { get; set; }
         public bool ispredefinedweapon { get; set; }
@@ -123,7 +123,7 @@ namespace DayZeEditor
             {
                 foreach (var item in LCPredefinedWeaponsLB.SelectedItems)
                 {
-                    RHLPdefinedItems predefweaponclass = item as RHLPdefinedItems;
+                    capareLPdefinedItems predefweaponclass = item as capareLPdefinedItems;
                     WeaponList.Add(predefweaponclass.DefineName);
                 }
             }
@@ -139,7 +139,7 @@ namespace DayZeEditor
             {
                 foreach (var item in LCPredefinedWeaponsLB.SelectedItems)
                 {
-                    Rhlploottable predefweaponclass = item as Rhlploottable;
+                    caparelploottable predefweaponclass = item as caparelploottable;
                     WeaponList.Add(predefweaponclass.TableName);
                 }
             }
@@ -147,7 +147,7 @@ namespace DayZeEditor
             {
                 foreach (var item in LCPredefinedWeaponsLB.SelectedItems)
                 {
-                    Rhlprewardtable predefweaponclass = item as Rhlprewardtable;
+                    caparelprewardtable predefweaponclass = item as caparelprewardtable;
                     WeaponList.Add(predefweaponclass.RewardName);
                 }
             }
@@ -155,7 +155,7 @@ namespace DayZeEditor
             {
                 foreach (var item in LCPredefinedWeaponsLB.SelectedItems)
                 {
-                    Rhlootboxconfig predefweaponclass = item as Rhlootboxconfig;
+                    caparelootboxconfig predefweaponclass = item as caparelootboxconfig;
                     WeaponList.Add(predefweaponclass.LootBoxName);
                 }
             }

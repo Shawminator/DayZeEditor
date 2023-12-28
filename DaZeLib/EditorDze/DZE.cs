@@ -28,7 +28,7 @@ namespace DayZeLib
         }
         public DZE(string fileName)
         {
-            using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+            using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read))
             using (BinaryReader br = new BinaryReader(fs))
             {
                 int Length = br.ReadInt32();

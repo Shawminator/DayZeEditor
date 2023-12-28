@@ -47,6 +47,8 @@ namespace DayZeEditor
             this.darkButton2 = new DarkUI.Controls.DarkButton();
             this.darkButton3 = new DarkUI.Controls.DarkButton();
             this.IsConsoleCB = new System.Windows.Forms.CheckBox();
+            this.darkLabel3 = new DarkUI.Controls.DarkLabel();
+            this.darkComboBox1 = new DarkUI.Controls.DarkComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -199,6 +201,7 @@ namespace DayZeEditor
             this.darkButton3.Size = new System.Drawing.Size(113, 23);
             this.darkButton3.TabIndex = 108;
             this.darkButton3.Text = "Continue";
+            this.darkButton3.Click += new System.EventHandler(this.darkButton3_Click);
             // 
             // IsConsoleCB
             // 
@@ -212,11 +215,34 @@ namespace DayZeEditor
             this.IsConsoleCB.UseVisualStyleBackColor = true;
             this.IsConsoleCB.CheckedChanged += new System.EventHandler(this.IsConsoleCB_CheckedChanged);
             // 
+            // darkLabel3
+            // 
+            this.darkLabel3.AutoSize = true;
+            this.darkLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel3.Location = new System.Drawing.Point(400, 114);
+            this.darkLabel3.Name = "darkLabel3";
+            this.darkLabel3.Size = new System.Drawing.Size(62, 13);
+            this.darkLabel3.TabIndex = 110;
+            this.darkLabel3.Text = "Drive Letter";
+            this.darkLabel3.Visible = false;
+            // 
+            // darkComboBox1
+            // 
+            this.darkComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.darkComboBox1.FormattingEnabled = true;
+            this.darkComboBox1.Location = new System.Drawing.Point(475, 111);
+            this.darkComboBox1.Name = "darkComboBox1";
+            this.darkComboBox1.Size = new System.Drawing.Size(84, 21);
+            this.darkComboBox1.TabIndex = 111;
+            this.darkComboBox1.Visible = false;
+            // 
             // NewProjectFTP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.darkComboBox1);
+            this.Controls.Add(this.darkLabel3);
             this.Controls.Add(this.IsConsoleCB);
             this.Controls.Add(this.darkButton3);
             this.Controls.Add(this.darkButton2);
@@ -257,5 +283,7 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton darkButton3;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.CheckBox IsConsoleCB;
+        private DarkUI.Controls.DarkLabel darkLabel3;
+        private DarkUI.Controls.DarkComboBox darkComboBox1;
     }
 }

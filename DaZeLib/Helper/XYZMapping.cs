@@ -72,7 +72,7 @@ namespace DayZeLib
             savefiel.InitialDirectory = Application.StartupPath + "\\Maps";
             if (savefiel.ShowDialog() == DialogResult.OK)
             {
-                using (FileStream writeStream = new FileStream(savefiel.FileName + ".xyz", FileMode.Create))
+                using (FileStream writeStream = new FileStream(savefiel.FileName + ".xyz", FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite))
                 using (BinaryWriter writeBinay = new BinaryWriter(writeStream))
                 {
                     writeBinay.Write((long)points.Count());

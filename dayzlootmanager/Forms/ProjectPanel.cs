@@ -99,16 +99,16 @@ namespace DayZeEditor
                 radioButton1.Checked = true;
 
             if(ActiveProject != null)
-                ((MainForm)this.MdiParent).toolStripStatusLabel1.Text = ActiveProject.ProjectName + " is the Current Active Project"; ;
+                ((MainForm)this.MdiParent).toolStripStatusLabel1.Text = ActiveProject.ProjectName + ":" + ActiveProject.mpmissionpath.Split('.')[1] + " is the Current Active Project"; ;
 
         }
         private void LoadProjectstoList()
         {
-            listBox1.Items.Clear();
-            foreach (Project p in projects.Projects)
-            {
-                listBox1.Items.Add(p.ProjectName);
-            }
+            listBox1.DataSource = projects.Projects;
+            //foreach (Project p in projects.Projects)
+            //{
+            //    listBox1.Items.Add(p.ProjectName);
+            //}
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -122,19 +122,19 @@ namespace DayZeEditor
         }
         private void darkButton2_Click(object sender, EventArgs e)
         {
-            string ProjectFolder = ProjectFolderTB.Text;
-            string ProjectName = ProjectNameTB.Text;
-            if(ProjectFolder == "" || ProjectName == "")
-            {
-                MessageBox.Show("Please select both a Project name and a directory where to save it.");
-                return;
-            }
-            string ProjectPath = ProjectFolder + "\\" + ProjectName;
-            Directory.CreateDirectory(ProjectPath);
-
             string projecttype = ProjectTypeComboBox.GetItemText(ProjectTypeComboBox.SelectedItem);
             if (projecttype == "Create Blank / Use Exisitng Files")
             {
+                string ProjectFolder = ProjectFolderTB.Text;
+                string ProjectName = ProjectNameTB.Text;
+                if (ProjectFolder == "" || ProjectName == "")
+                {
+                    MessageBox.Show("Please select both a Project name and a directory where to save it.");
+                    return;
+                }
+                string ProjectPath = ProjectFolder + "\\" + ProjectName;
+                Directory.CreateDirectory(ProjectPath);
+
                 if (ProjectProfileTB.Text == "" || ProjectMissionFolderTB.Text == "")
                 {
                     MessageBox.Show("Please select both a Profile name and an exact mpmission name.");
@@ -159,7 +159,93 @@ namespace DayZeEditor
                 LoadProjectstoList();
                 MessageBox.Show("Project created, Please Close the editor and populate the missions files before trying to load this project if not using existing files...");
             }
-            else if (projecttype == "Create from FTP / SFTP")
+            else if (projecttype == "Create Local from FT / SFTP")
+            {
+                try
+                {
+                    if (session == null || !session.Opened)
+                    {
+                        if (FTPHostNameTB.Text == "" || FTPHostNameTB.Text == null)
+                        {
+                            MessageBox.Show("Please fill in FTP Connection info in the FTP Tab....");
+                            return;
+                        }
+                        SessionOptions sessionOptions = new SessionOptions
+                        {
+                            Protocol = Protocol.Ftp,
+                            HostName = FTPHostNameTB.Text,
+                            PortNumber = Convert.ToInt32(FTPPortTB.Text),
+                            UserName = FTPUSernameTB.Text,
+                            Password = FTPPasswordTB.Text,
+                        };
+                        session = new Session();
+                        session.Open(sessionOptions);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Please check connection info.....");
+                    return;
+                }
+
+                string ProjectFolder = ProjectFolderTB.Text;
+                string ProjectName = ProjectNameTB.Text;
+                if (ProjectFolder == "" || ProjectName == "")
+                {
+                    MessageBox.Show("Please select both a Project name and a directory where to save it.");
+                    return;
+                }
+                string ProjectPath = ProjectFolder + "\\" + ProjectName;
+                Directory.CreateDirectory(ProjectPath);
+
+                NewProjectFTP ftpproject = new NewProjectFTP();
+                ftpproject.session = session;
+                DialogResult result = ftpproject.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    Thread load = new Thread(new ThreadStart(showLoading));
+                    load.Start();
+                    Project project = new Project();
+                    if (ftpproject.Isconsole)
+                    {
+                        string mpmissiondirectory = ftpproject.MpMissionDirectory;
+                        string mpmissionpath = Path.GetFileName(mpmissiondirectory);
+
+                        Directory.CreateDirectory(ProjectPath + "\\mpmissions\\" + mpmissionpath);
+                        session.GetFilesToDirectory(mpmissiondirectory, ProjectPath + "\\mpmissions\\" + mpmissionpath);
+
+                        project.AddNames(ProjectName, ProjectPath);
+                        project.MapSize = Getmapsizefrommissionpath(mpmissionpath);
+                        project.mpmissionpath = mpmissionpath;
+                        project.MapPath = "\\Maps\\" + mpmissionpath.ToLower().Split('.')[1] + "_Map.png";
+                        project.ProfilePath = "";
+                        projects.addtoprojects(project);
+                    }
+                    else
+                    {
+                        string profiledir = ftpproject.ProfileDirecrtory;
+                        string mpmissiondirectory = ftpproject.MpMissionDirectory;
+                        string mpmissionpath = Path.GetFileName(mpmissiondirectory);
+                        string profile = Path.GetFileName(profiledir);
+
+                        Directory.CreateDirectory(ProjectPath + "\\" + profile);
+                        Directory.CreateDirectory(ProjectPath + "\\mpmissions\\" + mpmissionpath);
+                        session.GetFilesToDirectory(profiledir, ProjectPath + "\\" + profile);
+                        session.GetFilesToDirectory(mpmissiondirectory, ProjectPath + "\\mpmissions\\" + mpmissionpath);
+
+                        project.AddNames(ProjectName, ProjectPath);
+                        project.MapSize = Getmapsizefrommissionpath(mpmissionpath);
+                        project.mpmissionpath = mpmissionpath;
+                        project.MapPath = "\\Maps\\" + mpmissionpath.ToLower().Split('.')[1] + "_Map.png";
+                        project.ProfilePath = profile;
+                        projects.addtoprojects(project);
+                    }
+                    LoadProjectstoList();
+                    SetActiveProject(project);
+                    load.Abort();
+                }
+            }
+            else if (projecttype == "Connect Direct to FTP / SFTP through Mapped Drive")
             {
                 try
                 {
@@ -189,126 +275,57 @@ namespace DayZeEditor
                 }
                 NewProjectFTP ftpproject = new NewProjectFTP();
                 ftpproject.session = session;
+                ftpproject.hideConsole = false;
+                ftpproject.showDriveletter = true;
                 DialogResult result = ftpproject.ShowDialog();
                 if (result == DialogResult.OK)
                 {
                     Thread load = new Thread(new ThreadStart(showLoading));
                     load.Start();
-                    if (ftpproject.Isconsole)
+                    string profiledir = ftpproject.ProfileDirecrtory;
+                    string mpmissiondirectory = ftpproject.MpMissionDirectory;
+                    string mpmissionpath = Path.GetFileName(mpmissiondirectory);
+                    string profile = Path.GetFileName(profiledir);
+                    string rootdir = session.HomePath;
+                    string Driveletter = ftpproject.GetdriveLetter;
+                    rootdir = profiledir.Replace(rootdir, "");
+                    rootdir = rootdir.Replace(profile, "");
+                    string ProjectName = "";
+                    if (rootdir.Contains("/"))
+                        ProjectName = rootdir.Split('/')[1];
+                    else
+                        ProjectName = rootdir;
+
+                    string ProjectPath = Driveletter + @":\" + ProjectName;
+                    NetworkDrive.MapNetworkDrive(Driveletter, @"\\sshfs\" + FTPUSernameTB.Text + "@" + FTPHostNameTB.Text + "!" + FTPPortTB.Text);
+                    if(!NetworkDrive.IsDriveMapped(Driveletter))
                     {
-                        string mpmissiondirectory = ftpproject.MpMissionDirectory;
-                        string mpmissionpath = Path.GetFileName(mpmissiondirectory);
-
-                        Directory.CreateDirectory(ProjectPath + "\\mpmissions\\" + mpmissionpath);
-                        session.GetFilesToDirectory(mpmissiondirectory, ProjectPath + "\\mpmissions\\" + mpmissionpath);
-
-                        Project project = new Project();
-                        project.AddNames(ProjectName, ProjectPath);
-                        project.MapSize = Getmapsizefrommissionpath(mpmissionpath);
-                        project.mpmissionpath = mpmissionpath;
-                        project.MapPath = "\\Maps\\" + mpmissionpath.ToLower().Split('.')[1] + "_Map.png";
-                        project.ProfilePath = "";
-                        projects.addtoprojects(project);
+                        Console.WriteLine("[INFO] SFTP / FTP drive not mapped");
+                        load.Abort();
+                        return;
                     }
                     else
                     {
-                        string profiledir = ftpproject.ProfileDirecrtory;
-                        string mpmissiondirectory = ftpproject.MpMissionDirectory;
-                        string mpmissionpath = Path.GetFileName(mpmissiondirectory);
-                        string profile = Path.GetFileName(profiledir);
-
-                        Directory.CreateDirectory(ProjectPath + "\\" + profile);
-                        Directory.CreateDirectory(ProjectPath + "\\mpmissions\\" + mpmissionpath);
-                        session.GetFilesToDirectory(profiledir, ProjectPath + "\\" + profile);
-                        session.GetFilesToDirectory(mpmissiondirectory, ProjectPath + "\\mpmissions\\" + mpmissionpath);
-
-                        Project project = new Project();
-                        project.AddNames(ProjectName, ProjectPath);
-                        project.MapSize = Getmapsizefrommissionpath(mpmissionpath);
-                        project.mpmissionpath = mpmissionpath;
-                        project.MapPath = "\\Maps\\" + mpmissionpath.ToLower().Split('.')[1] + "_Map.png";
-                        project.ProfilePath = profile;
-                        projects.addtoprojects(project);
+                        Console.WriteLine("[INFO] SFTP / FTP drive is able to be mapped.");
+                        NetworkDrive.DisconnectNetworkDrive(Driveletter, true);
                     }
+
+                    Project project = new Project();
+                    project.AddNames(ProjectName, ProjectPath);
+                    project.MapSize = Getmapsizefrommissionpath(mpmissionpath);
+                    project.mpmissionpath = mpmissionpath;
+                    project.MapPath = "\\Maps\\" + mpmissionpath.ToLower().Split('.')[1] + "_Map.png";
+                    project.ProfilePath = profile;
+                    project.MapNetworkDrive = true;
+                    project.NetworkUsername = FTPUSernameTB.Text;
+                    project.NetworkHost = "@" + FTPHostNameTB.Text + "!" + FTPPortTB.Text;
+                    project.Networkdriveletter = Driveletter;
+                    projects.addtoprojects(project);
                     LoadProjectstoList();
-                    SetActiveProject(ProjectName);
+                    SetActiveProject(project);
+                    string stop = "";
+
                     load.Abort();
-                }
-                else if (projecttype == "Get from SFTP")
-                {
-                    try
-                    {
-                        if (session == null || !session.Opened)
-                        {
-                            if (FTPHostNameTB.Text == "" || FTPHostNameTB.Text == null)
-                            {
-                                MessageBox.Show("Please fill in SFTP Connection info in the FTP Tab....");
-                                return;
-                            }
-                            SessionOptions sessionOptions = new SessionOptions
-                            {
-                                Protocol = Protocol.Sftp,
-                                HostName = FTPHostNameTB.Text,
-                                PortNumber = Convert.ToInt32(FTPPortTB.Text),
-                                UserName = FTPUSernameTB.Text,
-                                Password = FTPPasswordTB.Text,
-                            };
-                            session = new Session();
-                            session.Open(sessionOptions);
-                        }
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Please check connection info.....");
-                        return;
-                    }
-                    ftpproject = new NewProjectFTP();
-                    ftpproject.session = session;
-                    result = ftpproject.ShowDialog();
-                    if (result == DialogResult.OK)
-                    {
-                        Thread load = new Thread(new ThreadStart(showLoading));
-                        load.Start();
-                        if (ftpproject.Isconsole)
-                        {
-                            string mpmissiondirectory = ftpproject.MpMissionDirectory;
-                            string mpmissionpath = Path.GetFileName(mpmissiondirectory);
-
-                            Directory.CreateDirectory(ProjectPath + "\\mpmissions\\" + mpmissionpath);
-                            session.GetFilesToDirectory(mpmissiondirectory, ProjectPath + "\\mpmissions\\" + mpmissionpath);
-
-                            Project project = new Project();
-                            project.AddNames(ProjectName, ProjectPath);
-                            project.MapSize = Getmapsizefrommissionpath(mpmissionpath);
-                            project.mpmissionpath = mpmissionpath;
-                            project.MapPath = "\\Maps\\" + mpmissionpath.ToLower().Split('.')[1] + "_Map.png";
-                            project.ProfilePath = "";
-                            projects.addtoprojects(project);
-                        }
-                        else
-                        {
-                            string profiledir = ftpproject.ProfileDirecrtory;
-                            string mpmissiondirectory = ftpproject.MpMissionDirectory;
-                            string mpmissionpath = Path.GetFileName(mpmissiondirectory);
-                            string profile = Path.GetFileName(profiledir);
-
-                            Directory.CreateDirectory(ProjectPath + "\\" + profile);
-                            Directory.CreateDirectory(ProjectPath + "\\mpmissions\\" + mpmissionpath);
-                            session.GetFilesToDirectory(profiledir, ProjectPath + "\\" + profile);
-                            session.GetFilesToDirectory(mpmissiondirectory, ProjectPath + "\\mpmissions\\" + mpmissionpath);
-
-                            Project project = new Project();
-                            project.AddNames(ProjectName, ProjectPath);
-                            project.MapSize = Getmapsizefrommissionpath(mpmissionpath);
-                            project.mpmissionpath = mpmissionpath;
-                            project.MapPath = "\\Maps\\" + mpmissionpath.ToLower().Split('.')[1] + "_Map.png";
-                            project.ProfilePath = profile;
-                            projects.addtoprojects(project);
-                        }
-                        LoadProjectstoList();
-                        SetActiveProject(ProjectName);
-                        load.Abort();
-                    }
                 }
             }
         }
@@ -358,35 +375,72 @@ namespace DayZeEditor
         private void ProjectTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             string projecttype = ProjectTypeComboBox.GetItemText(ProjectTypeComboBox.SelectedItem);
-            if (projecttype == "Create from FTP / SFTP")
+            if (projecttype == "Create Local from FT / SFTP")
             {
                 darkLabel12.Visible = false;
                 darkLabel6.Visible = false;
                 ProjectProfileTB.Visible = false;
                 ProjectMissionFolderTB.Visible = false;
+                darkLabel5.Visible = true;
+                darkLabel2.Visible = true;
+                button1.Visible = true;
+                ProjectNameTB.Visible = true;
+                ProjectFolderTB.Visible = true;
                 darkButton2.Location = new Point(401, 105);
             }
             else if (projecttype == "Create Blank / Use Exisitng Files")
             {
                 darkLabel12.Visible = true;
                 darkLabel6.Visible = true;
+                darkLabel5.Visible = true;
+                darkLabel2.Visible = true;
                 ProjectProfileTB.Visible = true;
                 ProjectMissionFolderTB.Visible = true;
+                button1.Visible = true;
+                ProjectNameTB.Visible = true;
+                ProjectFolderTB.Visible = true;
                 ProjectMissionFolderTB.Size = new Size(657, 20);
                 darkButton2.Location = new Point(401, 156);
+            }
+            else if (projecttype == "Connect Direct to FTP / SFTP through Mapped Drive")
+            {
+                darkLabel12.Visible = false;
+                darkLabel6.Visible = false;
+                darkLabel5.Visible = false;
+                darkLabel2.Visible = false;
+                ProjectNameTB.Visible = false;
+                ProjectFolderTB.Visible = false;
+                ProjectProfileTB.Visible = false;
+                ProjectMissionFolderTB.Visible = false;
+                button1.Visible = false;
+                darkButton2.Location = new Point(401, 46);
             }
         }
         private void darkButton1_Click(object sender, EventArgs e)
         {
             if(listBox1.SelectedItem == null) { return; }
+
+            //Remove current drive mapping for project we are closing.
+            if (projects.getActiveProject() != null && projects.getActiveProject().MapNetworkDrive == true)
+            {
+                NetworkDrive.DisconnectNetworkDrive(projects.getActiveProject().Networkdriveletter, true);
+                while (NetworkDrive.IsDriveMapped(projects.getActiveProject().Networkdriveletter))
+                {
+
+                }
+                Console.WriteLine("INFO: Mapped drive Disconnected : " + projects.getActiveProject().Networkdriveletter);
+            }
+
+
             string profilename = listBox1.GetItemText(listBox1.SelectedItem);
-            SetActiveProject(profilename);
+            Project p = listBox1.SelectedItem as Project;
+            SetActiveProject(p);
             Console.WriteLine("The Current Active Project is " + projects.ActiveProject);
             Console.WriteLine("Please click the select section to get the pop out menu");
         }
-        private void SetActiveProject(string profilename)
+        private void SetActiveProject(Project p)
         {
-            projects.SetActiveProject(profilename);
+            projects.SetActiveProject(p);
             darkLabel4.Text = projects.ActiveProject;
             projects.getActiveProject().seteconomycore();
             projects.getActiveProject().seteconomydefinitions();
@@ -530,7 +584,7 @@ namespace DayZeEditor
         }
         private void FTPDisconnectTSB_Click(object sender, EventArgs e)
         {
-            if (session.Opened)
+            if (session != null && session.Opened)
             {
                 listView1.Items.Clear();
                 session.Close();

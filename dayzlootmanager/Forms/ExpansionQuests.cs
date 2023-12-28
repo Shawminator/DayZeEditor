@@ -1024,7 +1024,6 @@ namespace DayZeEditor
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     filePath = openFileDialog.FileName;
-                    var fileStream = openFileDialog.OpenFile();
                     fileContent = File.ReadAllLines(filePath);
                     currentQuestNPC.Waypoints = new BindingList<decimal[]>();
                     for (int i = 0; i < fileContent.Length; i++)
@@ -2833,7 +2832,6 @@ namespace DayZeEditor
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     filePath = openFileDialog.FileName;
-                    var fileStream = openFileDialog.OpenFile();
                     fileContent = File.ReadAllLines(filePath);
                     DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
@@ -3161,7 +3159,6 @@ namespace DayZeEditor
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     filePath = openFileDialog.FileName;
-                    var fileStream = openFileDialog.OpenFile();
                     fileContent = File.ReadAllLines(filePath);
                     DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
@@ -4268,7 +4265,6 @@ namespace DayZeEditor
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     filePath = openFileDialog.FileName;
-                    var fileStream = openFileDialog.OpenFile();
                     fileContent = File.ReadAllLines(filePath);
                     DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)

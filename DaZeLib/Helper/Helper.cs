@@ -428,7 +428,7 @@ namespace DayZeLib
         static string BIN_CHECK = "EditorBinned";
         public static bool IsBinnedFile(string file)
         {
-            using (FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read))
+            using (FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read))
             using (BinaryReader br = new BinaryReader(fs))
             {
                 int Length = br.ReadInt32();

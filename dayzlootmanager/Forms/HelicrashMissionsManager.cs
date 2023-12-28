@@ -28,7 +28,7 @@ namespace DayZeEditor
         public string Projectname;
         private bool _useraction = false;
         public string LootPoolConfigPath { get; private set; }
-        public LootPool LootPool { get; private set; }
+        public CapareLootPool LootPool { get; private set; }
 
         private Crashpoint currentCrashpoint;
 
@@ -101,10 +101,10 @@ namespace DayZeEditor
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
 
-            LootPoolConfigPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\LootPool\\LootPoolConfig.json";
-            LootPool = JsonSerializer.Deserialize<LootPool>(File.ReadAllText(LootPoolConfigPath));
+            LootPoolConfigPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Capare\\CapareLootPool\\CapareLootPoolConfig.json";
+            LootPool = JsonSerializer.Deserialize<CapareLootPool>(File.ReadAllText(LootPoolConfigPath));
 
-            HelicrashMissionsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\HeliCrash\\HCConfig\\HCConfig.json";
+            HelicrashMissionsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Capare\\CapareHCConfig\\CapareHCConfig.json";
             Helicrash = JsonSerializer.Deserialize<Helicrash>(File.ReadAllText(HelicrashMissionsPath));
             Helicrash.isDirty = false;
             Helicrash.FullFilename = HelicrashMissionsPath;
@@ -314,7 +314,7 @@ namespace DayZeEditor
         {
             AddfromPredefinedItems form = new AddfromPredefinedItems
             {
-                Rhlprewardtable = LootPool.RHLPRewardTables,
+                Rhlprewardtable = LootPool.CapareLPRewardTables,
                 titellabel = "Add Items from Loot list",
                 isLootList = false,
                 isRHTableList = false,
@@ -476,7 +476,7 @@ namespace DayZeEditor
         {
             AddfromPredefinedItems form = new AddfromPredefinedItems
             {
-                Rhlprewardtable = LootPool.RHLPRewardTables,
+                Rhlprewardtable = LootPool.CapareLPRewardTables,
                 titellabel = "Add Items from Loot list",
                 isLootList = false,
                 isRHTableList = false,

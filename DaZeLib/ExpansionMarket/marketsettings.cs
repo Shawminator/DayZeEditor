@@ -12,6 +12,8 @@ namespace DayZeLib
 {
     public class MarketSettings
     {
+        const int CurrentVersion = 12;
+
         public int m_Version { get; set; } //Current Version 12
         public int MarketSystemEnabled { get; set; }
         public BindingList<string[]> NetworkCategories { get; set; } //empty atm
@@ -30,9 +32,9 @@ namespace DayZeLib
         public decimal MaxLargeVehicleDistanceToTrader { get; set; }
 
         public BindingList<string> LargeVehicles { get; set; }
-        public BindingList<SpawnPositions> LandSpawnPositions { get; set; }
-        public BindingList<SpawnPositions> AirSpawnPositions { get; set; }
-        public BindingList<SpawnPositions> WaterSpawnPositions { get; set; }
+        public BindingList<ExpansionMarketSpawnPosition> LandSpawnPositions { get; set; }
+        public BindingList<ExpansionMarketSpawnPosition> AirSpawnPositions { get; set; }
+        public BindingList<ExpansionMarketSpawnPosition> WaterSpawnPositions { get; set; }
         public MarketMenuColours MarketMenuColors { get; set; }
         public BindingList<string> Currencies { get; set; }
         public BindingList<string> VehicleKeys { get; set; }
@@ -51,9 +53,9 @@ namespace DayZeLib
             CurrencyIcon = "DayZExpansion/Market/GUI/icons/coinstack2_64x64.edds";
             NetworkCategories = new BindingList<string[]>();
             //MarketVIPs = new BindingList<string[]>();
-            LandSpawnPositions = new BindingList<SpawnPositions>();
-            AirSpawnPositions = new BindingList<SpawnPositions>();
-            WaterSpawnPositions = new BindingList<SpawnPositions>();
+            LandSpawnPositions = new BindingList<ExpansionMarketSpawnPosition>();
+            AirSpawnPositions = new BindingList<ExpansionMarketSpawnPosition>();
+            WaterSpawnPositions = new BindingList<ExpansionMarketSpawnPosition>();
             MarketMenuColors = new MarketMenuColours();
             Currencies = new BindingList<string>();
             VehicleKeys = new BindingList<string>();
@@ -63,48 +65,164 @@ namespace DayZeLib
         public MarketSettings(string name)
         {
             Filename = name;
-            m_Version = 12;
-            MarketSystemEnabled = 0;
-            CurrencyIcon = "DayZExpansion/Market/GUI/icons/coinstack2_64x64.edds";
-            ATMSystemEnabled = 0;
-            MaxDepositMoney = 0;
-            DefaultDepositMoney = 0;
-            ATMPlayerTransferEnabled = 0;
-            ATMPartyLockerEnabled = 0;
-            MaxPartyDepositMoney = 0;
-            SellPricePercent = 50;
+            m_Version = CurrentVersion;
+            MarketSystemEnabled = 1;
             NetworkCategories = new BindingList<string[]>();
-            //MarketVIPs = new BindingList<string[]>();
-            LandSpawnPositions = new BindingList<SpawnPositions>();
-            AirSpawnPositions = new BindingList<SpawnPositions>();
-            WaterSpawnPositions = new BindingList<SpawnPositions>();
+            MaxVehicleDistanceToTrader = 120;
+            MaxLargeVehicleDistanceToTrader = 744;
+            LargeVehicles = new BindingList<string>()
+            {
+                "expansionlhd"
+            };
+            LandSpawnPositions = new BindingList<ExpansionMarketSpawnPosition>();
+            AirSpawnPositions = new BindingList<ExpansionMarketSpawnPosition>();
+            WaterSpawnPositions = new BindingList<ExpansionMarketSpawnPosition>();
+            Deafultspawnspositions();
             MarketMenuColors = new MarketMenuColours();
-            Currencies = new BindingList<string>();
-            VehicleKeys = new BindingList<string>();
-            isDirty = true;
+
+            CurrencyIcon = "DayZExpansion/Core/GUI/icons/misc/coinstack2_64x64.edds";
+            SellPricePercent = 75;
+            NetworkBatchSize = 100;  //! Sync at most n items per batch
+
+            ATMSystemEnabled = 1;
+            MaxDepositMoney = 100000;
+            DefaultDepositMoney = 10000;
+            ATMPlayerTransferEnabled = 1;
+            ATMPartyLockerEnabled = 1;
+            MaxPartyDepositMoney = 100000;
+            UseWholeMapForATMPlayerList = 0;
+            Currencies = new BindingList<string>()
+            {
+                "expansionbanknotehryvnia"
+            };
+            MaxSZVehicleParkingTime = 30 * 60;  //! 30 minutes
+            SZVehicleParkingTicketFine = 0;
+
+            VehicleKeys = new BindingList<string>()
+            {
+                "ExpansionCarKey"
+            };
+
         }
+
+        private void Deafultspawnspositions()
+        {
+            ExpansionMarketSpawnPosition position = new ExpansionMarketSpawnPosition();
+            position.Position = new float[] { 11903.4f, 140.0f, 12455.1f };
+            position.Orientation = new float[] { 24.0f, 0.0f, 0.0f };
+            LandSpawnPositions.Add(position);
+
+            position = new ExpansionMarketSpawnPosition();
+            position.Position = new float[] { 11898.4f, 140.0f, 12481.6f };
+            position.Orientation = new float[] { 24.0f, 0.0f, 0.0f };
+            LandSpawnPositions.Add(position);
+
+            position = new ExpansionMarketSpawnPosition();
+            position.Position = new float[] { 11878.0f, 140.0f, 12482.8f };
+            position.Orientation = new float[] { 24.0f, 0.0f, 0.0f };
+            LandSpawnPositions.Add(position);
+
+            //! Cars - Vehicle Trader - Kamenka
+            position = new ExpansionMarketSpawnPosition();
+            position.Position = new float[] { 1145.0f, 6.0f, 2405.0f };
+            position.Orientation = new float[] { 0.0f, 0.0f, 0.0f };
+            LandSpawnPositions.Add(position);
+
+            // Cars - Vehicle Trader - Green Mountain Trader
+            position = new ExpansionMarketSpawnPosition();
+            position.Position = new float[] { 3722.77f, 402.0f, 6018.93f };
+            position.Orientation = new float[] { 138.0f, 0.0f, 0.0f };
+            LandSpawnPositions.Add(position);
+
+            position = new ExpansionMarketSpawnPosition();
+            position.Position = new float[] { 3737.19f, 402.7f, 6001.95f };
+            position.Orientation = new float[] { 138.0f, 0.0f, 0.0f };
+            LandSpawnPositions.Add(position);
+
+            //! Aircraft - Aircraft Trader - Krasno
+            position = new ExpansionMarketSpawnPosition();
+            position.Position = new float[] { 12178.9f, 140.0f, 12638.4f };
+            position.Orientation = new float[] { -157.2f, 0.0f, 0.0f };
+            AirSpawnPositions.Add(position);
+
+            position = new ExpansionMarketSpawnPosition();
+            position.Position = new float[] { 12126.7f, 140.0f, 12664.7f };
+            position.Orientation = new float[] { -66.6f, 0.0f, 0.0f };
+            AirSpawnPositions.Add(position);
+
+            //! Aircraft - Aircraft Trader - Balota
+            position = new ExpansionMarketSpawnPosition();
+            position.Position = new float[] { 5006.27f, 9.5f, 2491.1f };
+            position.Orientation = new float[] { -131.7f, 0.0f, 0.0f };
+            AirSpawnPositions.Add(position);
+
+            position = new ExpansionMarketSpawnPosition();
+            position.Position = new float[] { 4982.0f, 9.5f, 2468.0f };
+            position.Orientation = new float[] { -131.7f, 0.0f, 0.0f };
+            AirSpawnPositions.Add(position);
+
+            position = new ExpansionMarketSpawnPosition();
+            position.Position = new float[] { 4968.0f, 9.5f, 2513.0f };
+            position.Orientation = new float[] { -131.7f, 0.0f, 0.0f };
+            AirSpawnPositions.Add(position);
+
+            //! Water - Boats Trader - Kamenka
+            position = new ExpansionMarketSpawnPosition();
+            position.Position = new float[] { 1759.0f, 0.0f, 1994.0f };
+            position.Orientation = new float[] { 0.0f, 0.0f, 0.0f };
+            WaterSpawnPositions.Add(position);
+
+            //! Water - Boats Trader - Sventlo
+            position = new ExpansionMarketSpawnPosition();
+            position.Position = new float[] { 14347.8f, 0.0f, 13235.8f };
+            position.Orientation = new float[] { -147.5f, 0.0f, 0.0f };
+            WaterSpawnPositions.Add(position);
+
+            position = new ExpansionMarketSpawnPosition();
+            position.Position = new float[] { 14344.1f, 0.0f, 13219.7f };
+            position.Orientation = new float[] { -147.5f, 0.0f, 0.0f };
+            WaterSpawnPositions.Add(position);
+
+            position = new ExpansionMarketSpawnPosition();
+            position.Position = new float[] { 14360.9f, 0.0f, 13246.7f };
+            position.Orientation = new float[] { -147.5f, 0.0f, 0.0f };
+            WaterSpawnPositions.Add(position);
+
+            //! Water - LHD - Boats Trader - Kamenka
+            position = new ExpansionMarketSpawnPosition();
+            position.Position = new float[] { 1760.0f, 0.0f, 1730.0f };
+            position.Orientation = new float[] { 0.0f, 0.0f, 0.0f };
+            WaterSpawnPositions.Add(position);
+
+            //! Water - LHD - Boats Trader - Sventlo
+            position = new ExpansionMarketSpawnPosition();
+            position.Position = new float[] { 14540.0f, 0.0f, 12995.0f };
+            position.Orientation = new float[] { 0.0f, 0.0f, 0.0f };
+            WaterSpawnPositions.Add(position);
+        }
+
         public void setspawnnames()
         {
             int i = 0;
-            foreach (SpawnPositions sp in LandSpawnPositions)
+            foreach (ExpansionMarketSpawnPosition sp in LandSpawnPositions)
             {
                 sp.name = "Land Spawn position " + i.ToString();
                 i++;
             }
             i = 0;
-            foreach (SpawnPositions sp in AirSpawnPositions)
+            foreach (ExpansionMarketSpawnPosition sp in AirSpawnPositions)
             {
                 sp.name = "Air Spawn position " + i.ToString();
                 i++;
             }
             i = 0;
-            foreach (SpawnPositions sp in WaterSpawnPositions)
+            foreach (ExpansionMarketSpawnPosition sp in WaterSpawnPositions)
             {
                 sp.name = "Water Spawn position " + i.ToString();
                 i++;
             }
         }
-        public SpawnPositions getSpawnbyindex(int type, int index)
+        public ExpansionMarketSpawnPosition getSpawnbyindex(int type, int index)
         {
             if (index == -1) return null;
             switch (type)
@@ -334,13 +452,13 @@ namespace DayZeLib
             switch (v)
             {
                 case 0:
-                    LandSpawnPositions.Add(new SpawnPositions() { name = getnewname(0), Position = new float[] { 0, 0, 0 }, Orientation = new float[] { 0, 0, 0 } });
+                    LandSpawnPositions.Add(new ExpansionMarketSpawnPosition() { name = getnewname(0), Position = new float[] { 0, 0, 0 }, Orientation = new float[] { 0, 0, 0 } });
                     break;
                 case 1:
-                    AirSpawnPositions.Add(new SpawnPositions() { name = getnewname(1), Position = new float[] { 0, 0, 0 }, Orientation = new float[] { 0, 0, 0 } });
+                    AirSpawnPositions.Add(new ExpansionMarketSpawnPosition() { name = getnewname(1), Position = new float[] { 0, 0, 0 }, Orientation = new float[] { 0, 0, 0 } });
                     break;
                 case 2:
-                    WaterSpawnPositions.Add(new SpawnPositions() { name = getnewname(2), Position = new float[] { 0, 0, 0 }, Orientation = new float[] { 0, 0, 0 } });
+                    WaterSpawnPositions.Add(new ExpansionMarketSpawnPosition() { name = getnewname(2), Position = new float[] { 0, 0, 0 }, Orientation = new float[] { 0, 0, 0 } });
                     break;
             }
         }
@@ -357,6 +475,16 @@ namespace DayZeLib
                 default:
                     return "";
             }
+        }
+        public bool checkver()
+        {
+            if (m_Version != CurrentVersion)
+            {
+                m_Version = CurrentVersion;
+                isDirty = true;
+                return true;
+            }
+            return false;
         }
     }
     public class MarketMenuColours
@@ -438,7 +566,7 @@ namespace DayZeLib
             ColorCategoryBackground = "222526FF";
         }
     }
-    public class SpawnPositions
+    public class ExpansionMarketSpawnPosition
     {
         public float[] Position { get; set; }
         public float[] Orientation { get; set; }

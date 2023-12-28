@@ -26,7 +26,6 @@ namespace DayZeEditor
     }
     public class ProjectList
     {
-        //public BindingList<MissionTemplate> AvailableTemplates { get; set; }
         public bool ShowChangeLog { get; set; }
         public string ActiveProject { get; set; }
         public List<Project> Projects { get; set; }
@@ -44,7 +43,20 @@ namespace DayZeEditor
         }
         public Project getprojectfromname(string name)
         {
-            return Projects.FirstOrDefault(x => x.ProjectName == name);
+            if (name == null)
+                return null;
+            Project p = new Project();
+            if (name.Contains(":"))
+            {
+                string[] stuff = name.Split(':');
+                p = Projects.FirstOrDefault(x => x.ProjectName == stuff[0] && x.mpmissionpath.Split('.')[1] == stuff[1]);
+            }
+            else
+            {
+                p = Projects.FirstOrDefault(x => x.ProjectName == name);
+                SaveProject(false, false);
+            }
+            return p;
         }
         public void SaveProject(bool create = false, bool showmessage = true)
         {
@@ -65,10 +77,19 @@ namespace DayZeEditor
                     MessageBox.Show("Projects Config Saved.");
             }
         }
-        public void SetActiveProject(string profilename)
+        public void SetActiveProject(Project p)
         {
-            Project p = getprojectfromname(profilename);
-            ActiveProject = profilename;
+            if(p.MapNetworkDrive == true)
+            {
+                NetworkDrive.MapNetworkDrive(p.Networkdriveletter , @"\\sshfs\" + p.NetworkUsername + p.NetworkHost);
+                while (!NetworkDrive.IsDriveMapped(p.Networkdriveletter))
+                {
+
+                }
+            }
+           
+            Console.WriteLine("INFO Network drive Mapped : " + p.Networkdriveletter);
+            ActiveProject = p.ProjectName + ":" + p.mpmissionpath.Split('.')[1];
             SaveProject();
         }
         public Project getActiveProject()
@@ -93,6 +114,10 @@ namespace DayZeEditor
         public int MapSize { get; set; }
         public string mpmissionpath { get; set; }
         public bool Createbackups { get; set; }
+        public bool MapNetworkDrive { get; set; }
+        public string Networkdriveletter { get; set; }
+        public string NetworkUsername { get; set; }
+        public string NetworkHost { get; set; }
 
 
         [JsonIgnore]
@@ -135,15 +160,30 @@ namespace DayZeEditor
         [JsonIgnore]
         public int TotalNomCount { get; set; }
 
-
-
         private TypesFile vanillaTypes;
         private BindingList<TypesFile> ModTypesList;
         public BindingList<territoriesConfig> territoriesList;
 
         public Project()
         {
-   
+            ProjectName = "";
+            projectFullName = "";
+            ProfilePath = "";
+            MapPath = "";
+            MapSize = 0;
+            mpmissionpath = "";
+            Createbackups = false;
+            MapNetworkDrive = false;
+            NetworkHost = "";
+            NetworkUsername = "";
+            Networkdriveletter = "";
+            usingDrJoneTrader = false;
+            usingexpansionMarket = false;
+            usingtraderplus = false;
+        }
+        public override string ToString()
+        {
+            return ProjectName + ":" + mpmissionpath.Split('.')[1];
         }
 
         public void AddNames(string _ProjectName, string fullname)
@@ -290,7 +330,6 @@ namespace DayZeEditor
                 }
             }
         }
-
         internal bool isUsingExpansion()
         {
             if (Directory.Exists(projectFullName + "\\" + ProfilePath + "\\ExpansionMod"))
@@ -298,7 +337,6 @@ namespace DayZeEditor
             else
                 return false;
         }
-
         internal void SetSpawnabletypes()
         {
             spawnabletypesList = new BindingList<Spawnabletypesconfig>();
@@ -469,6 +507,18 @@ namespace DayZeEditor
             if (playerdb.ShowDialog() == DialogResult.OK)
             {
                 PlayerDB = new PlayerDataBase(playerdb.FileName);
+            }
+        }
+        internal void Setmappedrive()
+        {
+            if (MapNetworkDrive == true)
+            {
+                NetworkDrive.MapNetworkDrive(Networkdriveletter, @"\\sshfs\" + NetworkUsername + NetworkHost);
+                while (!NetworkDrive.IsDriveMapped(Networkdriveletter))
+                {
+
+                }
+                Console.WriteLine("INFO: Network Drive Mapped : " + Networkdriveletter);
             }
         }
     }

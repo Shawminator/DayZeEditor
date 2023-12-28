@@ -18,3 +18,4 @@ chiemsee:10240
 melkart:20480
 thezone:20480
 capare:20480
+NHChernobyl:20480

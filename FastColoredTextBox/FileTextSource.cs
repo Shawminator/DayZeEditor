@@ -79,7 +79,7 @@ namespace FastColoredTextBoxNS
             SaveEOL = Environment.NewLine;
 
             //read lines of file
-            fs = new FileStream(fileName, FileMode.Open);
+            fs = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
             var length = fs.Length;
             //read signature
             enc = DefineEncoding(enc, fs);
@@ -265,7 +265,7 @@ namespace FastColoredTextBoxNS
             var tempFileName = Path.Combine(dir, Path.GetFileNameWithoutExtension(fileName) + ".tmp");
 
             StreamReader sr = new StreamReader(fs, fileEncoding);
-            using (FileStream tempFs = new FileStream(tempFileName, FileMode.Create))
+            using (FileStream tempFs = new FileStream(tempFileName, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite))
             using (StreamWriter sw = new StreamWriter(tempFs, enc))
             {
                 sw.Flush();
@@ -318,7 +318,7 @@ namespace FastColoredTextBoxNS
 
             //binding to new file
             sourceFileLinePositions = newLinePos;
-            fs = new FileStream(fileName, FileMode.Open);
+            fs = new FileStream(fileName, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite);
             this.fileEncoding = enc;
         }
 

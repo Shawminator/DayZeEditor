@@ -24,7 +24,7 @@ namespace DayZeEditor
         public List<TypesFile> ModTypes;
 
         public string LootPoolConfigPath { get; private set; }
-        public LootPool LootPool { get; private set; }
+        public CapareLootPool LootPool { get; private set; }
 
         private string LootBoxConfigPath;
 
@@ -32,8 +32,8 @@ namespace DayZeEditor
 
         public string Projectname;
 
-        public Rhlootboxconfig CurrentRhlootboxconfig { get; private set; }
-        public Rhlootboxstaticbox CurrentRhlootboxstaticbox { get; private set; }
+        public caparelootboxconfig CurrentRhlootboxconfig { get; private set; }
+        public caparelootboxstaticbox CurrentRhlootboxstaticbox { get; private set; }
 
         private Staticboxposition currentposition;
         private bool useraction = false;
@@ -100,10 +100,10 @@ namespace DayZeEditor
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
 
-            LootPoolConfigPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\LootPool\\LootPoolConfig.json";
-            LootPool = JsonSerializer.Deserialize<LootPool>(File.ReadAllText(LootPoolConfigPath));
+            LootPoolConfigPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Capare\\CapareLootPool\\CapareLootPoolConfig.json";
+            LootPool = JsonSerializer.Deserialize<CapareLootPool>(File.ReadAllText(LootPoolConfigPath));
 
-            LootBoxConfigPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\RH_LootBox\\RHLootBoxConfig.json";
+            LootBoxConfigPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Capare\\CapareLootBox\\CapareLootBoxConfig.json";
             LootBoxConfig = JsonSerializer.Deserialize<RHLootBoxes>(File.ReadAllText(LootBoxConfigPath));
             LootBoxConfig.isDirty = false;
             LootBoxConfig.Filename = LootBoxConfigPath;
@@ -119,18 +119,18 @@ namespace DayZeEditor
 
             listBox1.DisplayMember = "DisplayName";
             listBox1.ValueMember = "Value";
-            listBox1.DataSource = LootBoxConfig.RHLootBoxConfigs;
+            listBox1.DataSource = LootBoxConfig.CapareLootBoxConfigs;
 
             LootBoxLocationsLB.DisplayMember = "DisplayName";
             LootBoxLocationsLB.ValueMember = "Value";
-            LootBoxLocationsLB.DataSource = LootBoxConfig.RHLootBoxStaticBoxes;
+            LootBoxLocationsLB.DataSource = LootBoxConfig.CapareLootBoxStaticBoxes;
 
             useraction = true;
         }
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBox1.SelectedItems.Count < 1) return;
-            CurrentRhlootboxconfig = listBox1.SelectedItem as Rhlootboxconfig;
+            CurrentRhlootboxconfig = listBox1.SelectedItem as caparelootboxconfig;
             useraction = false;
 
             listBox2.DisplayMember = "DisplayName";
@@ -141,7 +141,7 @@ namespace DayZeEditor
         }
         private void darkButton7_Click(object sender, EventArgs e)
         {
-            LootBoxConfig.RHLootBoxConfigs.Add(new Rhlootboxconfig()
+            LootBoxConfig.CapareLootBoxConfigs.Add(new caparelootboxconfig()
             {
                 LootBoxName = "Replace with LootBox Name",
                 PossibleLootList = new BindingList<string>()
@@ -155,7 +155,7 @@ namespace DayZeEditor
 
             if (listBox1.SelectedItems.Count < 1) return;
             int index = listBox1.SelectedIndex;
-            LootBoxConfig.RHLootBoxConfigs.Remove(CurrentRhlootboxconfig);
+            LootBoxConfig.CapareLootBoxConfigs.Remove(CurrentRhlootboxconfig);
             LootBoxConfig.isDirty = true;
             listBox1.SelectedIndex = -1;
             if (index - 1 == -1)
@@ -172,7 +172,7 @@ namespace DayZeEditor
         {
             AddfromPredefinedItems form = new AddfromPredefinedItems
             {
-                Rhlprewardtable = LootPool.RHLPRewardTables,
+                Rhlprewardtable = LootPool.CapareLPRewardTables,
                 titellabel = "Add Items from Loot list",
                 isLootList = false,
                 isRHTableList = false,
@@ -212,7 +212,7 @@ namespace DayZeEditor
         private void LootChestsLocationsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (LootBoxLocationsLB.SelectedItems.Count < 1) return;
-            CurrentRhlootboxstaticbox = LootBoxLocationsLB.SelectedItem as Rhlootboxstaticbox;
+            CurrentRhlootboxstaticbox = LootBoxLocationsLB.SelectedItem as caparelootboxstaticbox;
             useraction = false;
 
             nameTB.Text = CurrentRhlootboxstaticbox.LootBoxSetName;
@@ -244,7 +244,7 @@ namespace DayZeEditor
         }
         private void darkButton5_Click(object sender, EventArgs e)
         {
-            LootBoxConfig.RHLootBoxStaticBoxes.Add(new Rhlootboxstaticbox()
+            LootBoxConfig.CapareLootBoxStaticBoxes.Add(new caparelootboxstaticbox()
             {
                 LootBoxSetName = "New_LootBox-set",
                 NumberOfPositions = 1,
@@ -260,7 +260,7 @@ namespace DayZeEditor
         {
             if (LootBoxLocationsLB.SelectedItems.Count < 1) return;
             int index = LootBoxLocationsLB.SelectedIndex;
-            LootBoxConfig.RHLootBoxStaticBoxes.Remove(CurrentRhlootboxstaticbox);
+            LootBoxConfig.CapareLootBoxStaticBoxes.Remove(CurrentRhlootboxstaticbox);
             LootBoxConfig.isDirty = true;
             LootBoxLocationsLB.SelectedIndex = -1;
             if (index - 1 == -1)
@@ -295,7 +295,7 @@ namespace DayZeEditor
         {
             AddfromPredefinedItems form = new AddfromPredefinedItems
             {
-                Rhlootboxconfig = LootBoxConfig.RHLootBoxConfigs,
+                Rhlootboxconfig = LootBoxConfig.CapareLootBoxConfigs,
                 titellabel = "Add Items from Loot list",
                 isLootList = false,
                 isRHTableList = false,
@@ -332,7 +332,7 @@ namespace DayZeEditor
             }
             AddfromPredefinedItems form = new AddfromPredefinedItems
             {
-                Rhlprewardtable = LootPool.RHLPRewardTables,
+                Rhlprewardtable = LootPool.CapareLPRewardTables,
                 titellabel = "Add Items from Loot list",
                 isLootList = false,
                 isRewardTable = true,

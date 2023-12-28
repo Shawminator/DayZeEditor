@@ -31,7 +31,7 @@ namespace DayZeLib
     };
     public class ExpansionGeneralSettings
     {
-        static int CurrentVersion = 12;
+        static int CurrentVersion = 13;
 
         public int m_Version { get; set; }
         public int DisableShootToUnlock { get; set; }
@@ -46,7 +46,7 @@ namespace DayZeLib
         public int EnableHUDNightvisionOverlay { get; set; }
         public int DisableMagicCrosshair { get; set; }
         public int EnableAutoRun { get; set; }
-        public int UnlimitedStamina { get; set; }
+        //public int UnlimitedStamina { get; set; } Removed in version 13
         public int UseDeathScreen { get; set; }
         public int UseDeathScreenStatistics { get; set; }
         public int UseExpansionMainMenuLogo { get; set; }
@@ -82,7 +82,6 @@ namespace DayZeLib
             DisableMagicCrosshair = 1;
 
             EnableAutoRun = 1;
-            UnlimitedStamina = 1;
 
             UseDeathScreen = 1;
             UseDeathScreenStatistics = 1;

@@ -28,7 +28,7 @@ namespace DayZeLib
             line_content = line_content.Replace("<OpenFile>", "");
             line_content = Helper.TrimComment(line_content);
 
-            fs = new FileStream(path + "\\" + line_content, FileMode.Open, FileAccess.Read);
+            fs = new FileStream(path + "\\" + line_content, FileMode.Open, FileAccess.Read, FileShare.Read);
             reader1 = new StreamReader(fs);
             if (reader1 == null)
             {
@@ -43,7 +43,7 @@ namespace DayZeLib
             traderfilename = filename;
             path = Path.GetDirectoryName(filename);
             isDirty = false;
-            FileStream fs = new FileStream(Filename, FileMode.Open, FileAccess.Read);
+            FileStream fs = new FileStream(Filename, FileMode.Open, FileAccess.Read, FileShare.Read);
             StreamReader reader = new StreamReader(fs);
             string line_content = "";
             Console.WriteLine("trader Config Found, Begin Parsing......");

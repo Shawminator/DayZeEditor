@@ -23,7 +23,7 @@ namespace DayZeLib
             // To read the file, create a FileStream.
             try
             {
-                using (var myFileStream = new FileStream(filename, FileMode.Open))
+                using (var myFileStream = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
                     // Call the Deserialize method and cast to the object type.
                     lists = (lists)mySerializer.Deserialize(myFileStream);
@@ -62,7 +62,7 @@ namespace DayZeLib
             // To read the file, create a FileStream.
             try
             {
-                using (var myFileStream = new FileStream(filename, FileMode.Open))
+                using (var myFileStream = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
                     // Call the Deserialize method and cast to the object type.
                     user_lists = (user_lists)mySerializer.Deserialize(myFileStream);

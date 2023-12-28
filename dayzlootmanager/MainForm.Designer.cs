@@ -67,7 +67,7 @@ namespace DayZeEditor
             this.AdvancedWorkbenchButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.DNAKeyCardsButton = new System.Windows.Forms.ToolStripButton();
             this.HidePBox = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -212,14 +212,14 @@ namespace DayZeEditor
             this.KOSzoneManagerButton,
             this.MysteryBoxButton,
             this.AdvancedWorkbenchButton,
+            this.DNAKeyCardsButton,
             this.toolStripButton1,
-            this.toolStripButton3,
-            this.toolStripButton4});
+            this.toolStripButton3});
             this.ToolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.ToolStrip1.Location = new System.Drawing.Point(26, 29);
             this.ToolStrip1.Name = "ToolStrip1";
             this.ToolStrip1.Padding = new System.Windows.Forms.Padding(5);
-            this.ToolStrip1.Size = new System.Drawing.Size(134, 629);
+            this.ToolStrip1.Size = new System.Drawing.Size(134, 610);
             this.ToolStrip1.TabIndex = 39;
             this.ToolStrip1.Text = "toolStrip4";
             // 
@@ -518,17 +518,17 @@ namespace DayZeEditor
             this.toolStripButton3.Text = "De bin DZE file";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
-            // toolStripButton4
+            // DNAKeyCardsButton
             // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton4.ForeColor = System.Drawing.SystemColors.Control;
-            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(123, 19);
-            this.toolStripButton4.Text = "Player DB Manager";
-            this.toolStripButton4.Visible = false;
-            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
+            this.DNAKeyCardsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.DNAKeyCardsButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.DNAKeyCardsButton.Image = ((System.Drawing.Image)(resources.GetObject("DNAKeyCardsButton.Image")));
+            this.DNAKeyCardsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DNAKeyCardsButton.Name = "DNAKeyCardsButton";
+            this.DNAKeyCardsButton.Size = new System.Drawing.Size(123, 19);
+            this.DNAKeyCardsButton.Text = "DNA KeyCards";
+            this.DNAKeyCardsButton.Visible = false;
+            this.DNAKeyCardsButton.Click += new System.EventHandler(this.DNAKeyCardsButton_Click);
             // 
             // HidePBox
             // 
@@ -620,6 +620,7 @@ namespace DayZeEditor
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -680,7 +681,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton ExpansionLoadoutManagerButton;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripButton P2PButton;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripButton DNAKeyCardsButton;
     }
 }
 
