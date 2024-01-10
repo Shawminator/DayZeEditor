@@ -11,7 +11,7 @@ namespace DayZeLib
     public class ExpansionAISettings
     {
         [JsonIgnore]
-        const int CurrentVersion = 7;
+        const int CurrentVersion = 8;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -21,6 +21,7 @@ namespace DayZeLib
         public decimal AccuracyMin { get; set; }
         public decimal AccuracyMax { get; set; }
         public decimal ThreatDistanceLimit { get; set; }
+        public decimal NoiseInvestigationDistanceLimit { get; set; }
         public decimal DamageMultiplier { get; set; }
         public BindingList<string> Admins { get; set; }
         public int MaximumDynamicPatrols { get; set; }
@@ -47,16 +48,17 @@ namespace DayZeLib
         public ExpansionAISettings()
         {
             m_Version = CurrentVersion;
-            AccuracyMin = (decimal)0.15000000596046449;
-            AccuracyMax = (decimal)0.75;
+            AccuracyMin = (decimal)0.35;
+            AccuracyMax = (decimal)0.95;
             ThreatDistanceLimit = (decimal)1000.0;
-            DamageMultiplier = (decimal) 1.0;
-            Admins = new BindingList<string> ();
+            NoiseInvestigationDistanceLimit = (decimal)500.0;
+            DamageMultiplier = (decimal)1.0;
+            Admins = new BindingList<string>();
             MaximumDynamicPatrols = -1;
             Vaulting = 1;
             SniperProneDistanceThreshold = (decimal)0.0;
             Manners = 0;
-            MemeLevel = 0;
+            MemeLevel = 1;
             CanRecruitFriendly = 1;
             CanRecruitGuards = 0;
             PreventClimb = new BindingList<string> ();

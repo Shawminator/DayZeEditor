@@ -176,6 +176,7 @@ namespace DayZeEditor
             this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton23 = new System.Windows.Forms.ToolStripButton();
             this.groupBox28 = new System.Windows.Forms.GroupBox();
+            this.AuthenticateCodeLockIfTerritoryMemberCB = new System.Windows.Forms.CheckBox();
             this.darkLabel176 = new DarkUI.Controls.DarkLabel();
             this.TerritoryAuthenticationRadiusNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel82 = new DarkUI.Controls.DarkLabel();
@@ -1375,7 +1376,6 @@ namespace DayZeEditor
             this.addNewSubMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeSubMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AuthenticateCodeLockIfTerritoryMemberCB = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -3557,15 +3557,28 @@ namespace DayZeEditor
             this.groupBox28.TabStop = false;
             this.groupBox28.Text = "Territories";
             // 
+            // AuthenticateCodeLockIfTerritoryMemberCB
+            // 
+            this.AuthenticateCodeLockIfTerritoryMemberCB.AutoSize = true;
+            this.AuthenticateCodeLockIfTerritoryMemberCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.AuthenticateCodeLockIfTerritoryMemberCB.Location = new System.Drawing.Point(23, 186);
+            this.AuthenticateCodeLockIfTerritoryMemberCB.Name = "AuthenticateCodeLockIfTerritoryMemberCB";
+            this.AuthenticateCodeLockIfTerritoryMemberCB.Size = new System.Drawing.Size(229, 17);
+            this.AuthenticateCodeLockIfTerritoryMemberCB.TabIndex = 40;
+            this.AuthenticateCodeLockIfTerritoryMemberCB.Text = "Authenticate CodeLock If Territory Member";
+            this.AuthenticateCodeLockIfTerritoryMemberCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.AuthenticateCodeLockIfTerritoryMemberCB.UseVisualStyleBackColor = true;
+            this.AuthenticateCodeLockIfTerritoryMemberCB.CheckedChanged += new System.EventHandler(this.TerritoriesTCB_CheckedChanged);
+            // 
             // darkLabel176
             // 
             this.darkLabel176.AutoSize = true;
             this.darkLabel176.ForeColor = System.Drawing.SystemColors.Control;
             this.darkLabel176.Location = new System.Drawing.Point(94, 161);
             this.darkLabel176.Name = "darkLabel176";
-            this.darkLabel176.Size = new System.Drawing.Size(152, 13);
+            this.darkLabel176.Size = new System.Drawing.Size(147, 13);
             this.darkLabel176.TabIndex = 39;
-            this.darkLabel176.Text = "Territory Authentication Radius";
+            this.darkLabel176.Text = "Territory Invite Accept Radius";
             // 
             // TerritoryAuthenticationRadiusNUD
             // 
@@ -19319,19 +19332,6 @@ namespace DayZeEditor
             this.removeSubMenuCategoryToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
             this.removeSubMenuCategoryToolStripMenuItem.Text = "Remove Sub Menu Category";
             this.removeSubMenuCategoryToolStripMenuItem.Click += new System.EventHandler(this.removeSubMenuCategoryToolStripMenuItem_Click);
-            // 
-            // AuthenticateCodeLockIfTerritoryMemberCB
-            // 
-            this.AuthenticateCodeLockIfTerritoryMemberCB.AutoSize = true;
-            this.AuthenticateCodeLockIfTerritoryMemberCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.AuthenticateCodeLockIfTerritoryMemberCB.Location = new System.Drawing.Point(23, 186);
-            this.AuthenticateCodeLockIfTerritoryMemberCB.Name = "AuthenticateCodeLockIfTerritoryMemberCB";
-            this.AuthenticateCodeLockIfTerritoryMemberCB.Size = new System.Drawing.Size(229, 17);
-            this.AuthenticateCodeLockIfTerritoryMemberCB.TabIndex = 40;
-            this.AuthenticateCodeLockIfTerritoryMemberCB.Text = "Authenticate CodeLock If Territory Member";
-            this.AuthenticateCodeLockIfTerritoryMemberCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.AuthenticateCodeLockIfTerritoryMemberCB.UseVisualStyleBackColor = true;
-            this.AuthenticateCodeLockIfTerritoryMemberCB.CheckedChanged += new System.EventHandler(this.TerritoriesTCB_CheckedChanged);
             // 
             // ExpansionSettings
             // 

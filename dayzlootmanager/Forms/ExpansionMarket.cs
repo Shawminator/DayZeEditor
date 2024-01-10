@@ -3935,7 +3935,22 @@ namespace DayZeEditor
             }
         }
 
-
+        private void toolStripMenuItem3_Click_1(object sender, EventArgs e)
+        {
+            string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("input perecentage to Increase Price by\neg. 50 for 50%", "Price", "");
+            if (UserAnswer == "") return;
+            int value = Convert.ToInt32(UserAnswer) ;
+            foreach (marketItem item in currentCat.Items)
+            {
+                decimal num1 = (decimal)value / 100;
+                decimal num2 = num1 + 1;
+                decimal num3 = item.MinPriceThreshold * num2;
+                item.MinPriceThreshold = (int)Math.Round(num3, MidpointRounding.AwayFromZero);
+                decimal num4 = item.MaxPriceThreshold * num2;
+                item.MaxPriceThreshold = (int)Math.Round(num4, MidpointRounding.AwayFromZero);
+            }
+            currentCat.isDirty = true;
+        }
     }
 }
 

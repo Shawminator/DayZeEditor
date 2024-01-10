@@ -7429,6 +7429,7 @@ namespace DayZeEditor
         }
         private void darkButton65_Click(object sender, EventArgs e)
         {
+            if (currentterritoriesConfig == null) { return; }
             territorytypeTerritoryZone newzone = new territorytypeTerritoryZone()
             {
                 name = "Graze",

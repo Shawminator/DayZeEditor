@@ -72,9 +72,20 @@ namespace DayZeEditor
             this.darkLabel13 = new DarkUI.Controls.DarkLabel();
             this.LootCategoriesLB = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.darkButton21 = new DarkUI.Controls.DarkButton();
             this.darkButton15 = new DarkUI.Controls.DarkButton();
             this.darkButton16 = new DarkUI.Controls.DarkButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.darkButton14 = new DarkUI.Controls.DarkButton();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.attatchmentslistLB = new System.Windows.Forms.ListBox();
+            this.darkButton4 = new DarkUI.Controls.DarkButton();
+            this.darkButton3 = new DarkUI.Controls.DarkButton();
+            this.darkLabel6 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel3 = new DarkUI.Controls.DarkLabel();
+            this.SpawnExactCB = new System.Windows.Forms.CheckBox();
+            this.magazinesLB = new System.Windows.Forms.ListBox();
+            this.darkButton12 = new DarkUI.Controls.DarkButton();
             this.darkButton11 = new DarkUI.Controls.DarkButton();
             this.darkButton8 = new DarkUI.Controls.DarkButton();
             this.weaponTB = new System.Windows.Forms.TextBox();
@@ -88,17 +99,6 @@ namespace DayZeEditor
             this.defnameTB = new System.Windows.Forms.TextBox();
             this.darkLabel5 = new DarkUI.Controls.DarkLabel();
             this.LCPredefinedWeaponsLB = new System.Windows.Forms.ListBox();
-            this.darkButton3 = new DarkUI.Controls.DarkButton();
-            this.darkButton4 = new DarkUI.Controls.DarkButton();
-            this.attatchmentslistLB = new System.Windows.Forms.ListBox();
-            this.darkButton12 = new DarkUI.Controls.DarkButton();
-            this.magazinesLB = new System.Windows.Forms.ListBox();
-            this.SpawnExactCB = new System.Windows.Forms.CheckBox();
-            this.darkLabel3 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel6 = new DarkUI.Controls.DarkLabel();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.darkButton14 = new DarkUI.Controls.DarkButton();
-            this.darkButton21 = new DarkUI.Controls.DarkButton();
             this.darkToolStrip21.SuspendLayout();
             this.darkToolStrip23.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -635,6 +635,17 @@ namespace DayZeEditor
             this.tabPage3.ToolTipText = "\"LC_Table_xxxxxx\" for all Items // \"LC_Table_Weapons_xxxxxx\" for Weapons and pred" +
     "ifinied Weapons ONLY!";
             // 
+            // darkButton21
+            // 
+            this.darkButton21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton21.Location = new System.Drawing.Point(8, 494);
+            this.darkButton21.Name = "darkButton21";
+            this.darkButton21.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton21.Size = new System.Drawing.Size(225, 23);
+            this.darkButton21.TabIndex = 98;
+            this.darkButton21.Text = "Create all from Spawnabletypes";
+            this.darkButton21.Click += new System.EventHandler(this.darkButton21_Click);
+            // 
             // darkButton15
             // 
             this.darkButton15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -684,6 +695,117 @@ namespace DayZeEditor
             this.groupBox2.TabIndex = 95;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Pre defined Weapon";
+            // 
+            // darkButton14
+            // 
+            this.darkButton14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton14.Location = new System.Drawing.Point(6, 460);
+            this.darkButton14.Name = "darkButton14";
+            this.darkButton14.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton14.Size = new System.Drawing.Size(353, 23);
+            this.darkButton14.TabIndex = 98;
+            this.darkButton14.Text = "Update from Spawnable types";
+            this.darkButton14.Click += new System.EventHandler(this.darkButton14_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.attatchmentslistLB);
+            this.groupBox3.Controls.Add(this.darkButton4);
+            this.groupBox3.Controls.Add(this.darkButton3);
+            this.groupBox3.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox3.Location = new System.Drawing.Point(10, 295);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(338, 158);
+            this.groupBox3.TabIndex = 98;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Attachments List";
+            // 
+            // attatchmentslistLB
+            // 
+            this.attatchmentslistLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.attatchmentslistLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.attatchmentslistLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.attatchmentslistLB.FormattingEnabled = true;
+            this.attatchmentslistLB.Location = new System.Drawing.Point(6, 19);
+            this.attatchmentslistLB.Name = "attatchmentslistLB";
+            this.attatchmentslistLB.Size = new System.Drawing.Size(291, 134);
+            this.attatchmentslistLB.TabIndex = 136;
+            this.attatchmentslistLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            // 
+            // darkButton4
+            // 
+            this.darkButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton4.Location = new System.Drawing.Point(303, 19);
+            this.darkButton4.Name = "darkButton4";
+            this.darkButton4.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton4.Size = new System.Drawing.Size(20, 20);
+            this.darkButton4.TabIndex = 138;
+            this.darkButton4.Text = "+";
+            this.darkButton4.Click += new System.EventHandler(this.darkButton4_Click);
+            // 
+            // darkButton3
+            // 
+            this.darkButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton3.Location = new System.Drawing.Point(303, 45);
+            this.darkButton3.Name = "darkButton3";
+            this.darkButton3.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton3.Size = new System.Drawing.Size(20, 20);
+            this.darkButton3.TabIndex = 139;
+            this.darkButton3.Text = "-";
+            this.darkButton3.Click += new System.EventHandler(this.darkButton3_Click);
+            // 
+            // darkLabel6
+            // 
+            this.darkLabel6.AutoSize = true;
+            this.darkLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel6.Location = new System.Drawing.Point(114, 71);
+            this.darkLabel6.Name = "darkLabel6";
+            this.darkLabel6.Size = new System.Drawing.Size(207, 13);
+            this.darkLabel6.TabIndex = 144;
+            this.darkLabel6.Text = "Note, Only have 1 item per attatchment list";
+            // 
+            // darkLabel3
+            // 
+            this.darkLabel3.AutoSize = true;
+            this.darkLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel3.Location = new System.Drawing.Point(7, 71);
+            this.darkLabel3.Name = "darkLabel3";
+            this.darkLabel3.Size = new System.Drawing.Size(70, 13);
+            this.darkLabel3.TabIndex = 143;
+            this.darkLabel3.Text = "Spawn Exact";
+            // 
+            // SpawnExactCB
+            // 
+            this.SpawnExactCB.AutoSize = true;
+            this.SpawnExactCB.Location = new System.Drawing.Point(93, 70);
+            this.SpawnExactCB.Name = "SpawnExactCB";
+            this.SpawnExactCB.Size = new System.Drawing.Size(15, 14);
+            this.SpawnExactCB.TabIndex = 142;
+            this.SpawnExactCB.UseVisualStyleBackColor = true;
+            this.SpawnExactCB.CheckedChanged += new System.EventHandler(this.SpawnExactCB_CheckedChanged);
+            // 
+            // magazinesLB
+            // 
+            this.magazinesLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.magazinesLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.magazinesLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.magazinesLB.FormattingEnabled = true;
+            this.magazinesLB.Location = new System.Drawing.Point(93, 93);
+            this.magazinesLB.Name = "magazinesLB";
+            this.magazinesLB.Size = new System.Drawing.Size(229, 95);
+            this.magazinesLB.TabIndex = 141;
+            this.magazinesLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            // 
+            // darkButton12
+            // 
+            this.darkButton12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton12.Location = new System.Drawing.Point(328, 120);
+            this.darkButton12.Name = "darkButton12";
+            this.darkButton12.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton12.Size = new System.Drawing.Size(20, 20);
+            this.darkButton12.TabIndex = 140;
+            this.darkButton12.Text = "-";
+            this.darkButton12.Click += new System.EventHandler(this.darkButton12_Click_1);
             // 
             // darkButton11
             // 
@@ -821,132 +943,11 @@ namespace DayZeEditor
             this.LCPredefinedWeaponsLB.FormattingEnabled = true;
             this.LCPredefinedWeaponsLB.Location = new System.Drawing.Point(7, 28);
             this.LCPredefinedWeaponsLB.Name = "LCPredefinedWeaponsLB";
+            this.LCPredefinedWeaponsLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.LCPredefinedWeaponsLB.Size = new System.Drawing.Size(226, 433);
             this.LCPredefinedWeaponsLB.TabIndex = 93;
             this.LCPredefinedWeaponsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.LCPredefinedWeaponsLB.SelectedIndexChanged += new System.EventHandler(this.LCPredefinedWeaponsLB_SelectedIndexChanged);
-            // 
-            // darkButton3
-            // 
-            this.darkButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton3.Location = new System.Drawing.Point(303, 45);
-            this.darkButton3.Name = "darkButton3";
-            this.darkButton3.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton3.Size = new System.Drawing.Size(20, 20);
-            this.darkButton3.TabIndex = 139;
-            this.darkButton3.Text = "-";
-            this.darkButton3.Click += new System.EventHandler(this.darkButton3_Click);
-            // 
-            // darkButton4
-            // 
-            this.darkButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton4.Location = new System.Drawing.Point(303, 19);
-            this.darkButton4.Name = "darkButton4";
-            this.darkButton4.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton4.Size = new System.Drawing.Size(20, 20);
-            this.darkButton4.TabIndex = 138;
-            this.darkButton4.Text = "+";
-            this.darkButton4.Click += new System.EventHandler(this.darkButton4_Click);
-            // 
-            // attatchmentslistLB
-            // 
-            this.attatchmentslistLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.attatchmentslistLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.attatchmentslistLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.attatchmentslistLB.FormattingEnabled = true;
-            this.attatchmentslistLB.Location = new System.Drawing.Point(6, 19);
-            this.attatchmentslistLB.Name = "attatchmentslistLB";
-            this.attatchmentslistLB.Size = new System.Drawing.Size(291, 134);
-            this.attatchmentslistLB.TabIndex = 136;
-            this.attatchmentslistLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            // 
-            // darkButton12
-            // 
-            this.darkButton12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton12.Location = new System.Drawing.Point(328, 120);
-            this.darkButton12.Name = "darkButton12";
-            this.darkButton12.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton12.Size = new System.Drawing.Size(20, 20);
-            this.darkButton12.TabIndex = 140;
-            this.darkButton12.Text = "-";
-            this.darkButton12.Click += new System.EventHandler(this.darkButton12_Click_1);
-            // 
-            // magazinesLB
-            // 
-            this.magazinesLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.magazinesLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.magazinesLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.magazinesLB.FormattingEnabled = true;
-            this.magazinesLB.Location = new System.Drawing.Point(93, 93);
-            this.magazinesLB.Name = "magazinesLB";
-            this.magazinesLB.Size = new System.Drawing.Size(229, 95);
-            this.magazinesLB.TabIndex = 141;
-            this.magazinesLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            // 
-            // SpawnExactCB
-            // 
-            this.SpawnExactCB.AutoSize = true;
-            this.SpawnExactCB.Location = new System.Drawing.Point(93, 70);
-            this.SpawnExactCB.Name = "SpawnExactCB";
-            this.SpawnExactCB.Size = new System.Drawing.Size(15, 14);
-            this.SpawnExactCB.TabIndex = 142;
-            this.SpawnExactCB.UseVisualStyleBackColor = true;
-            this.SpawnExactCB.CheckedChanged += new System.EventHandler(this.SpawnExactCB_CheckedChanged);
-            // 
-            // darkLabel3
-            // 
-            this.darkLabel3.AutoSize = true;
-            this.darkLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel3.Location = new System.Drawing.Point(7, 71);
-            this.darkLabel3.Name = "darkLabel3";
-            this.darkLabel3.Size = new System.Drawing.Size(70, 13);
-            this.darkLabel3.TabIndex = 143;
-            this.darkLabel3.Text = "Spawn Exact";
-            // 
-            // darkLabel6
-            // 
-            this.darkLabel6.AutoSize = true;
-            this.darkLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel6.Location = new System.Drawing.Point(114, 71);
-            this.darkLabel6.Name = "darkLabel6";
-            this.darkLabel6.Size = new System.Drawing.Size(207, 13);
-            this.darkLabel6.TabIndex = 144;
-            this.darkLabel6.Text = "Note, Only have 1 item per attatchment list";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.attatchmentslistLB);
-            this.groupBox3.Controls.Add(this.darkButton4);
-            this.groupBox3.Controls.Add(this.darkButton3);
-            this.groupBox3.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox3.Location = new System.Drawing.Point(10, 295);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(338, 158);
-            this.groupBox3.TabIndex = 98;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Attachments List";
-            // 
-            // darkButton14
-            // 
-            this.darkButton14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton14.Location = new System.Drawing.Point(6, 460);
-            this.darkButton14.Name = "darkButton14";
-            this.darkButton14.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton14.Size = new System.Drawing.Size(353, 23);
-            this.darkButton14.TabIndex = 98;
-            this.darkButton14.Text = "Update from Spawnable types";
-            this.darkButton14.Click += new System.EventHandler(this.darkButton14_Click);
-            // 
-            // darkButton21
-            // 
-            this.darkButton21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton21.Location = new System.Drawing.Point(8, 494);
-            this.darkButton21.Name = "darkButton21";
-            this.darkButton21.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton21.Size = new System.Drawing.Size(225, 23);
-            this.darkButton21.TabIndex = 98;
-            this.darkButton21.Text = "Create all from Spawnabletypes";
-            this.darkButton21.Click += new System.EventHandler(this.darkButton21_Click);
             // 
             // LootPoolManager
             // 

@@ -491,7 +491,7 @@ namespace DayZeEditor
 
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
-            Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\RH_LootBox");
+            Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Capare\\CapareLootBox");
         }
 
         private void LifetimeNUD_ValueChanged(object sender, EventArgs e)

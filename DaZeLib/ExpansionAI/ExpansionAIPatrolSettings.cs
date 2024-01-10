@@ -12,7 +12,7 @@ namespace DayZeLib
     public class ExpansionAIPatrolSettings
     {
         [JsonIgnore]
-        const int CurrentVersion = 15;
+        const int CurrentVersion = 16;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -28,6 +28,7 @@ namespace DayZeLib
         public decimal AccuracyMin { get; set; }
         public decimal AccuracyMax { get; set; }
         public decimal ThreatDistanceLimit { get; set; }
+        public decimal NoiseInvestigationDistanceLimit { get; set; }
         public decimal DamageMultiplier { get; set; }
         public BindingList<ExpansionAIObjectPatrol> ObjectPatrols { get; set; }
         public BindingList<ExpansionAIPatrol> Patrols { get; set; }
@@ -46,6 +47,7 @@ namespace DayZeLib
             AccuracyMax = (decimal)-1.0;
             ThreatDistanceLimit = (decimal)-1.0;
             DamageMultiplier = (decimal)-1.0;
+            NoiseInvestigationDistanceLimit = (decimal)-1.0;
             ObjectPatrols = new BindingList<ExpansionAIObjectPatrol>();
             Patrols = new BindingList<ExpansionAIPatrol>();
             DefaultCrashPatrols();
@@ -226,6 +228,7 @@ namespace DayZeLib
         public ExpansionAIPatrol() { }
         public ExpansionAIPatrol(int bod = 1, string spd = "JOG", string threatspd = "SPRINT", string beh = "ALTERNATE", string fac = "WEST", string loa = "HumanLoadout", bool canbelooted = true, bool unlimitedreload = false, decimal chance = (decimal)1.0, float mindistradius = -2, float maxdistradius = -2, decimal respawntime = -2, decimal wprnd = 0, List<float[]> way = null)
         {
+            Name = "";
             NumberOfAI = bod;
             Speed = spd;
             UnderThreatSpeed = threatspd;

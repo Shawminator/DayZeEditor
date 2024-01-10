@@ -8239,7 +8239,7 @@ namespace DayZeEditor
             TerritoryPerimeterSizeTNUD.Value = (decimal)TerritorySettings.TerritoryPerimeterSize;
             MaxMembersInTerritoryTNUD.Value = TerritorySettings.MaxMembersInTerritory;
             MaxTerritoryPerPlayerTNUD.Value = TerritorySettings.MaxTerritoryPerPlayer;
-            TerritoryAuthenticationRadiusNUD.Value = TerritorySettings.TerritoryAuthenticationRadius;
+            TerritoryAuthenticationRadiusNUD.Value = TerritorySettings.TerritoryInviteAcceptRadius;
             AuthenticateCodeLockIfTerritoryMemberCB.Checked = TerritorySettings.AuthenticateCodeLockIfTerritoryMember == 1 ? true: false;
             useraction = true;
         }

@@ -274,18 +274,26 @@ namespace DayZeEditor
         private void darkButton16_Click(object sender, EventArgs e)
         {
             if (LCPredefinedWeaponsLB.SelectedItems.Count < 1) return;
-            int index = LCPredefinedWeaponsLB.SelectedIndex;
-            LootPool.CapareLPdefinedItems.Remove(currentRHPredefineditems);
-            LootPool.isDirty = true;
-            LCPredefinedWeaponsLB.SelectedIndex = -1;
-            if (index - 1 == -1)
+            List<capareLPdefinedItems> removeitems = new List<capareLPdefinedItems>();
+            foreach (var item in LCPredefinedWeaponsLB.SelectedItems)
             {
-                if (LCPredefinedWeaponsLB.Items.Count > 0)
-                    LCPredefinedWeaponsLB.SelectedIndex = 0;
+                removeitems.Add(item as capareLPdefinedItems);
             }
-            else
+            foreach (capareLPdefinedItems removeitem in removeitems)
             {
-                LCPredefinedWeaponsLB.SelectedIndex = index - 1;
+                int index = LCPredefinedWeaponsLB.SelectedIndex;
+                LootPool.CapareLPdefinedItems.Remove(currentRHPredefineditems);
+                LootPool.isDirty = true;
+                LCPredefinedWeaponsLB.SelectedIndex = -1;
+                if (index - 1 == -1)
+                {
+                    if (LCPredefinedWeaponsLB.Items.Count > 0)
+                        LCPredefinedWeaponsLB.SelectedIndex = 0;
+                }
+                else
+                {
+                    LCPredefinedWeaponsLB.SelectedIndex = index - 1;
+                }
             }
         }
 
@@ -610,7 +618,7 @@ namespace DayZeEditor
 
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
-            Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\LootPool");
+            Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Capare\\CapareLootPool");
         }
         private void LootCatNameTB_TextChanged(object sender, EventArgs e)
         {
@@ -808,6 +816,7 @@ namespace DayZeEditor
                         }
                     }
                 }
+                
                 LootPool.CapareLPdefinedItems.Add(newitem);
                 LootPool.isDirty = true;
             }

@@ -4675,12 +4675,6 @@ namespace DayZeEditor
             "JOG",
             "SPRINT",
             "RANDOM",
-            "RANDOM_NONSTATIC",
-            "STATIC",
-            "WALK",
-            "JOG",
-            "SPRINT",
-            "RANDOM",
             "RANDOM_NONSTATIC"});
             this.ObjectiovesAICampNPCSpeedCB.Location = new System.Drawing.Point(109, 266);
             this.ObjectiovesAICampNPCSpeedCB.Name = "ObjectiovesAICampNPCSpeedCB";
@@ -4704,11 +4698,6 @@ namespace DayZeEditor
             this.ObjectivesAICampNPCModeCB.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesAICampNPCModeCB.FormattingEnabled = true;
             this.ObjectivesAICampNPCModeCB.Items.AddRange(new object[] {
-            "HALT",
-            "LOOP",
-            "ALTERNATE",
-            "HALT_OR_LOOP",
-            "HALT_OR_ALTERNATE",
             "HALT",
             "LOOP",
             "ALTERNATE",
@@ -4980,11 +4969,6 @@ namespace DayZeEditor
             this.ObjectivesAIPatrolNPCFormationCB.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesAIPatrolNPCFormationCB.FormattingEnabled = true;
             this.ObjectivesAIPatrolNPCFormationCB.Items.AddRange(new object[] {
-            "Column",
-            "File",
-            "Vee",
-            "Wall",
-            "RANDOM",
             "Column",
             "File",
             "Vee",
@@ -5321,12 +5305,6 @@ namespace DayZeEditor
             "JOG",
             "SPRINT",
             "RANDOM",
-            "RANDOM_NONSTATIC",
-            "STATIC",
-            "WALK",
-            "JOG",
-            "SPRINT",
-            "RANDOM",
             "RANDOM_NONSTATIC"});
             this.ObjectiovesAIPatrolNPCSpeedCB.Location = new System.Drawing.Point(112, 266);
             this.ObjectiovesAIPatrolNPCSpeedCB.Name = "ObjectiovesAIPatrolNPCSpeedCB";
@@ -5350,11 +5328,6 @@ namespace DayZeEditor
             this.ObjectivesAIPatrolNPCModeCB.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesAIPatrolNPCModeCB.FormattingEnabled = true;
             this.ObjectivesAIPatrolNPCModeCB.Items.AddRange(new object[] {
-            "HALT",
-            "LOOP",
-            "ALTERNATE",
-            "HALT_OR_LOOP",
-            "HALT_OR_ALTERNATE",
             "HALT",
             "LOOP",
             "ALTERNATE",

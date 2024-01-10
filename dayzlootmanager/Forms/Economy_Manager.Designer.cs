@@ -8112,7 +8112,7 @@ namespace DayZeEditor
             this.PlayerSpawnFreshButton.Image = ((System.Drawing.Image)(resources.GetObject("PlayerSpawnFreshButton.Image")));
             this.PlayerSpawnFreshButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PlayerSpawnFreshButton.Name = "PlayerSpawnFreshButton";
-            this.PlayerSpawnFreshButton.Size = new System.Drawing.Size(39, 22);
+            this.PlayerSpawnFreshButton.Size = new System.Drawing.Size(24, 24);
             this.PlayerSpawnFreshButton.Text = "Fresh";
             this.PlayerSpawnFreshButton.Click += new System.EventHandler(this.PlayerSpawnFreshButton_Click);
             // 
@@ -8132,7 +8132,7 @@ namespace DayZeEditor
             this.PlayerSpawnHopButton.Image = ((System.Drawing.Image)(resources.GetObject("PlayerSpawnHopButton.Image")));
             this.PlayerSpawnHopButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PlayerSpawnHopButton.Name = "PlayerSpawnHopButton";
-            this.PlayerSpawnHopButton.Size = new System.Drawing.Size(34, 22);
+            this.PlayerSpawnHopButton.Size = new System.Drawing.Size(24, 24);
             this.PlayerSpawnHopButton.Text = "Hop";
             this.PlayerSpawnHopButton.Click += new System.EventHandler(this.PlayerSpawnHopButton_Click);
             // 
@@ -8152,7 +8152,7 @@ namespace DayZeEditor
             this.PlayerSpawnTravelButton.Image = ((System.Drawing.Image)(resources.GetObject("PlayerSpawnTravelButton.Image")));
             this.PlayerSpawnTravelButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PlayerSpawnTravelButton.Name = "PlayerSpawnTravelButton";
-            this.PlayerSpawnTravelButton.Size = new System.Drawing.Size(41, 22);
+            this.PlayerSpawnTravelButton.Size = new System.Drawing.Size(24, 24);
             this.PlayerSpawnTravelButton.Text = "Travel";
             this.PlayerSpawnTravelButton.Click += new System.EventHandler(this.PlayerSpawnTravelButton_Click);
             // 

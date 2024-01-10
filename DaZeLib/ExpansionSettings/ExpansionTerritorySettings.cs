@@ -12,7 +12,7 @@ namespace DayZeLib
         public decimal TerritoryPerimeterSize { get; set; }
         public int MaxMembersInTerritory { get; set; }
         public int MaxTerritoryPerPlayer { get; set; }
-        public decimal TerritoryAuthenticationRadius { get; set; }
+        public decimal TerritoryInviteAcceptRadius { get; set; }
         public int AuthenticateCodeLockIfTerritoryMember { get; set; }
 
         [JsonIgnore]
@@ -29,7 +29,7 @@ namespace DayZeLib
             TerritoryPerimeterSize = (decimal)150.0;
             MaxMembersInTerritory = 10;
             MaxTerritoryPerPlayer = 1;
-            TerritoryAuthenticationRadius = (decimal)150.0;
+            TerritoryInviteAcceptRadius = (decimal)150.0;
             AuthenticateCodeLockIfTerritoryMember = 0; //added in version 3
         }
         public bool checkver()

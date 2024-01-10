@@ -114,6 +114,7 @@ namespace DayZeEditor
             {
                 AIPatrolSettings = new ExpansionAIPatrolSettings();
                 AIPatrolSettings.isDirty = true;
+                AIPatrolSettings.SetPatrolNames();
                 needtosave = true;
                 Console.WriteLine(Path.GetFileName(AIPatrolSettingsPath) + " File not found, Creating new....");
             }
@@ -345,7 +346,9 @@ namespace DayZeEditor
             AIGeneralAccuracyMinNUD.Value = AIPatrolSettings.AccuracyMin;
             AIGeneralAccuracyMaxNUD.Value = AIPatrolSettings.AccuracyMax;
             AIGeneralThreatDistanceLimitNUD.Value = AIPatrolSettings.ThreatDistanceLimit;
+            AINoiseInvestigationDistanceLimitNUD.Value = AIPatrolSettings.NoiseInvestigationDistanceLimit;
             AIGeneralDanageMultiplierNUD.Value = AIPatrolSettings.DamageMultiplier;
+
 
             EventCrachPatrolLB.DisplayMember = "DisplayName";
             EventCrachPatrolLB.ValueMember = "Value";
@@ -418,6 +421,12 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             AIPatrolSettings.DamageMultiplier = AIGeneralDanageMultiplierNUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
+        private void NoiseInvestigationDistanceLimitNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AIPatrolSettings.NoiseInvestigationDistanceLimit = AINoiseInvestigationDistanceLimitNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
 
@@ -1032,6 +1041,7 @@ namespace DayZeEditor
             AccuracyMinNUD.Value = AISettings.AccuracyMin;
             AccuracyMaxNUD.Value = AISettings.AccuracyMax;
             ThreatDistanceLimitNUD.Value = AISettings.ThreatDistanceLimit;
+            NoiseInvestigationDistanceLimitNUD.Value = AISettings.NoiseInvestigationDistanceLimit;
             DamageMultiplierNUD.Value = AISettings.DamageMultiplier;
             MaximumDynamicPatrolsNUD.Value = AISettings.MaximumDynamicPatrols;
             SniperProneDistanceThresholdNUD.Value = AISettings.SniperProneDistanceThreshold;
@@ -1159,15 +1169,20 @@ namespace DayZeEditor
             AISettings.isDirty = true;
             PreventClimbLB.Refresh();
         }
+        private void NoiseInvestigationDistanceLimitNUD_ValueChanged_1(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AISettings.NoiseInvestigationDistanceLimit = (int)NoiseInvestigationDistanceLimitNUD.Value;
+            AISettings.isDirty = true;
+        }
         #endregion AISettings
 
 
 
         private void groupBox4_Enter(object sender, EventArgs e)
         {
+            
 
-    }
-
-
+        }
     }
 }

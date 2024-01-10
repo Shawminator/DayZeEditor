@@ -77,8 +77,9 @@ namespace DayZeEditor
                 TextBox tb = this.FTPPasswordTB.Control as TextBox;
                 tb.PasswordChar = '*';
             }
-            LoadProjectstoList();
+            
             getActiveProject();
+            LoadProjectstoList();
             LoadFileExplorer();
             tabControl1.ItemSize = new Size(0, 1);
         }
@@ -104,11 +105,10 @@ namespace DayZeEditor
         }
         private void LoadProjectstoList()
         {
+            listBox1.DataSource = null;
             listBox1.DataSource = projects.Projects;
-            //foreach (Project p in projects.Projects)
-            //{
-            //    listBox1.Items.Add(p.ProjectName);
-            //}
+            listBox1.Invalidate();
+            listBox1.SelectedItem = ActiveProject;
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -240,8 +240,9 @@ namespace DayZeEditor
                         project.ProfilePath = profile;
                         projects.addtoprojects(project);
                     }
-                    LoadProjectstoList();
                     SetActiveProject(project);
+                    LoadProjectstoList();
+                    
                     load.Abort();
                 }
             }
@@ -321,8 +322,8 @@ namespace DayZeEditor
                     project.NetworkHost = "@" + FTPHostNameTB.Text + "!" + FTPPortTB.Text;
                     project.Networkdriveletter = Driveletter;
                     projects.addtoprojects(project);
-                    LoadProjectstoList();
                     SetActiveProject(project);
+                    LoadProjectstoList();
                     string stop = "";
 
                     load.Abort();
@@ -471,7 +472,8 @@ namespace DayZeEditor
         }
         private void darkButton5_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("This Will Remove The All Projects files.\nAre you sure you want to do this?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            DialogResult result = MessageBox.Show("Yes will remove project and all files in the project folder\nNo will only remove the project from the editor\nCancel will return with no changes" , "Delete All Files.....", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
             {
                 string profilename = listBox1.GetItemText(listBox1.SelectedItem);
                 listBox1.Items.Remove(profilename);
@@ -483,11 +485,49 @@ namespace DayZeEditor
                 }
                 if (ActiveProject == p)
                 {
+                    if (p.MapNetworkDrive == true)
+                    {
+                        NetworkDrive.DisconnectNetworkDrive(p.Networkdriveletter, true);
+                        while (NetworkDrive.IsDriveMapped(p.Networkdriveletter))
+                        {
+
+                        }
+                        Console.WriteLine("INFO: Mapped drive Disconnected : " + p.Networkdriveletter);
+                    }
                     ActiveProject = null;
                     projects.ActiveProject = "";
                 }
-                projects.SaveProject();
+                projects.SaveProject(false, false);
+                LoadProjectstoList();
+                MessageBox.Show("Project and files Removed....", "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+            else if (result == DialogResult.No)
+            {
+                string profilename = listBox1.GetItemText(listBox1.SelectedItem);
+                listBox1.Items.Remove(profilename);
+                Project p = projects.getprojectfromname(profilename);
+                projects.DeleteProject(profilename);
+                if (ActiveProject == p)
+                {
+                    if (p.MapNetworkDrive == true)
+                    {
+                        NetworkDrive.DisconnectNetworkDrive(p.Networkdriveletter, true);
+                        while (NetworkDrive.IsDriveMapped(p.Networkdriveletter))
+                        {
+
+                        }
+                        Console.WriteLine("INFO: Mapped drive Disconnected : " + p.Networkdriveletter);
+                    }
+                    ActiveProject = null;
+                    projects.ActiveProject = "";
+                }
+                projects.SaveProject(false, false);
+                LoadProjectstoList();
                 MessageBox.Show("Project Removed....", "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
             }
         }
         private void TraderRadioButton_CheckedChanged(object sender, EventArgs e)
@@ -569,18 +609,25 @@ namespace DayZeEditor
         }
         private void SFTPConnectTSB1_Click(object sender, EventArgs e)
         {
-            SessionOptions sessionOptions = new SessionOptions
+            try
             {
-                Protocol = Protocol.Sftp,
-                HostName = FTPHostNameTB.Text,
-                PortNumber = Convert.ToInt32(FTPPortTB.Text),
-                SshHostKeyPolicy = SshHostKeyPolicy.GiveUpSecurityAndAcceptAny,
-                UserName = FTPUSernameTB.Text,
-                Password = FTPPasswordTB.Text
-            };
-            session = new Session();
-            session.Open(sessionOptions);
-            getrootdir();
+                SessionOptions sessionOptions = new SessionOptions
+                {
+                    Protocol = Protocol.Sftp,
+                    HostName = FTPHostNameTB.Text,
+                    PortNumber = Convert.ToInt32(FTPPortTB.Text),
+                    SshHostKeyPolicy = SshHostKeyPolicy.GiveUpSecurityAndAcceptAny,
+                    UserName = FTPUSernameTB.Text,
+                    Password = FTPPasswordTB.Text
+                };
+                session = new Session();
+                session.Open(sessionOptions);
+                getrootdir();
+            }
+            catch (Exception excep)
+            {
+                MessageBox.Show("Error: " + excep.Message.ToString());
+            }
         }
         private void FTPDisconnectTSB_Click(object sender, EventArgs e)
         {
@@ -896,6 +943,37 @@ namespace DayZeEditor
             {
                 ProjectFolderTB.Text = fb.SelectedPath;
             }
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItems.Count < 1) return;
+            Project p = listBox1.SelectedItem as Project;
+            EditProjectNameTB.Text = p.ProjectName;
+            EditProfileNameTB.Text = p.ProfilePath;
+            EditPathTB.Text = p.projectFullName;
+            EditMapPathTB.Text = p.MapPath;
+            EditMapSizeNUD.Value = p.MapSize;
+            EditMissionPathTB.Text = p.mpmissionpath;
+        }
+
+        private void darkButton3_Click(object sender, EventArgs e)
+        {
+            
+            Project p = listBox1.SelectedItem as Project;
+            if (ActiveProject == p)
+            {
+                MessageBox.Show("Cant edit active projects.....");
+                return;
+            }
+            p.ProjectName = EditProjectNameTB.Text;
+            p.ProfilePath = EditProfileNameTB.Text;
+            p.projectFullName = EditPathTB.Text;
+            p.MapPath = EditMapPathTB.Text;
+            p.MapSize = (int)EditMapSizeNUD.Value;
+            p.mpmissionpath = EditMissionPathTB.Text;
+            projects.SaveProject(false, true);
+            listBox1.Invalidate();
         }
     }
 }

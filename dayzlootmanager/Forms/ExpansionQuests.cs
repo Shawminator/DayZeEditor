@@ -4245,6 +4245,14 @@ namespace DayZeEditor
         {
             QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
             CurrentTreasureHunt.Positions.Add(new decimal[] { 0, 0, 0 });
+            if (ObjectivesTreasureHuntPositionsLB.Items.Count > 0)
+            {
+                ObjectivesTreasureHuntPositionsLB.SelectedIndex = ObjectivesTreasureHuntPositionsLB.Items.Count - 1;
+            }
+            else
+            {
+                ObjectivesTreasureHuntPositionsLB.SelectedIndex = 0;
+            }
             CurrentTreasureHunt.isDirty = true;
         }
         private void darkButton67_Click(object sender, EventArgs e)
@@ -4253,6 +4261,14 @@ namespace DayZeEditor
             CurrentTreasureHunt.Positions.Remove(CurrentWapypoint);
             CurrentTreasureHunt.isDirty = true;
             ObjectivesTreasureHuntPositionsLB.Refresh();
+            if(ObjectivesTreasureHuntPositionsLB.Items.Count > 0)
+            {
+                ObjectivesTreasureHuntPositionsLB.SelectedIndex = 0;
+            }
+            else
+            {
+                CurrentWapypoint = null;
+            }
         }
         private void darkButton66_Click(object sender, EventArgs e)
         {
@@ -4359,6 +4375,7 @@ namespace DayZeEditor
         private void ObjectivesTreasureHuntPositionsXNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
+            if (CurrentWapypoint == null) return;
             QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
             CurrentWapypoint[0] = (decimal)ObjectivesTreasureHuntPositionsXNUD.Value;
             CurrentTreasureHunt.isDirty = true;
@@ -4366,6 +4383,7 @@ namespace DayZeEditor
         private void ObjectivesTreasureHuntPositionsYNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
+            if (CurrentWapypoint == null) return;
             QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
             CurrentWapypoint[1] = (decimal)ObjectivesTreasureHuntPositionsYNUD.Value;
             CurrentTreasureHunt.isDirty = true;
@@ -4373,6 +4391,7 @@ namespace DayZeEditor
         private void ObjectivesTreasureHuntPositionsZNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
+            if (CurrentWapypoint == null) return;
             QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
             CurrentWapypoint[2] = (decimal)ObjectivesTreasureHuntPositionsZNUD.Value;
             CurrentTreasureHunt.isDirty = true;

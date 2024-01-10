@@ -39,11 +39,11 @@ namespace DayZeEditor
             Projects.Add(project);
             if(setactive)
                 ActiveProject = project.ProjectName;
-            SaveProject();
+            SaveProject(false, false);
         }
         public Project getprojectfromname(string name)
         {
-            if (name == null)
+            if (name == null || name == "")
                 return null;
             Project p = new Project();
             if (name.Contains(":"))
@@ -54,6 +54,7 @@ namespace DayZeEditor
             else
             {
                 p = Projects.FirstOrDefault(x => x.ProjectName == name);
+                ActiveProject = p.ProjectName + ":" + p.mpmissionpath.Split('.')[1];
                 SaveProject(false, false);
             }
             return p;
@@ -90,7 +91,7 @@ namespace DayZeEditor
            
             Console.WriteLine("INFO Network drive Mapped : " + p.Networkdriveletter);
             ActiveProject = p.ProjectName + ":" + p.mpmissionpath.Split('.')[1];
-            SaveProject();
+            SaveProject(false, false);
         }
         public Project getActiveProject()
         {
