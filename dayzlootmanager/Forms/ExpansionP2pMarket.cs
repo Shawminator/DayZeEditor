@@ -70,6 +70,8 @@ namespace DayZeEditor
             }
             m_FactionCB.DataSource = new BindingList<string>(questrequiredfaction);
 
+            m_ClassNameCB.DataSource = new BindingList<string>(File.ReadAllLines(Application.StartupPath + "\\TraderNPCs\\P2PNPCs.txt").ToList());
+
             LoadoutList = new BindingList<AILoadouts>();
             AILoadoutsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Loadouts";
             DirectoryInfo dinfo = new DirectoryInfo(AILoadoutsPath);
@@ -753,7 +755,7 @@ namespace DayZeEditor
             useraction = false;
             m_Versionlabel.Text = currentp2pmarket.m_Version.ToString();
             m_TraderIDNUD.Value = currentp2pmarket.m_TraderID;
-            m_ClassNameTB.Text = currentp2pmarket.m_ClassName;
+            m_ClassNameCB.SelectedIndex = m_ClassNameCB.FindStringExact(currentp2pmarket.m_ClassName);
             positionXNUD.Value = currentp2pmarket.m_Position[0];
             positionYNUD.Value = currentp2pmarket.m_Position[1];
             positionZNUD.Value = currentp2pmarket.m_Position[2];
@@ -805,12 +807,14 @@ namespace DayZeEditor
                     P2PMarketLB.SelectedIndex = 0;
             }
         }
-        private void m_ClassNameTB_TextChanged(object sender, EventArgs e)
+
+        private void m_ClassNameCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentp2pmarket.m_ClassName = m_ClassNameTB.Text;
+            currentp2pmarket.m_ClassName = m_ClassNameCB.GetItemText(m_ClassNameCB.SelectedItem);
             currentp2pmarket.isDirty = true;
         }
+
         private void positionXNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -949,9 +953,10 @@ namespace DayZeEditor
 
 
 
+
+
+
         #endregion p2pmarket
-
-
 
 
     }

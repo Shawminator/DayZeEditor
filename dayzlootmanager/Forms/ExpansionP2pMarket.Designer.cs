@@ -106,7 +106,6 @@ namespace DayZeEditor
             this.darkLabel276 = new DarkUI.Controls.DarkLabel();
             this.m_DisplayNameTB = new System.Windows.Forms.TextBox();
             this.darkLabel275 = new DarkUI.Controls.DarkLabel();
-            this.m_ClassNameTB = new System.Windows.Forms.TextBox();
             this.m_TraderIDNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel274 = new DarkUI.Controls.DarkLabel();
             this.m_Versionlabel = new System.Windows.Forms.Label();
@@ -117,6 +116,7 @@ namespace DayZeEditor
             this.addNewSubMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeSubMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.m_ClassNameCB = new System.Windows.Forms.ComboBox();
             this.darkToolStrip21.SuspendLayout();
             this.darkToolStrip23.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -627,6 +627,7 @@ namespace DayZeEditor
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage2.Controls.Add(this.m_ClassNameCB);
             this.tabPage2.Controls.Add(this.darkButton98);
             this.tabPage2.Controls.Add(this.darkButton99);
             this.tabPage2.Controls.Add(this.m_EmoteIsStaticCB);
@@ -664,7 +665,6 @@ namespace DayZeEditor
             this.tabPage2.Controls.Add(this.darkLabel276);
             this.tabPage2.Controls.Add(this.m_DisplayNameTB);
             this.tabPage2.Controls.Add(this.darkLabel275);
-            this.tabPage2.Controls.Add(this.m_ClassNameTB);
             this.tabPage2.Controls.Add(this.m_TraderIDNUD);
             this.tabPage2.Controls.Add(this.darkLabel274);
             this.tabPage2.Controls.Add(this.m_Versionlabel);
@@ -1242,16 +1242,6 @@ namespace DayZeEditor
             this.darkLabel275.TabIndex = 247;
             this.darkLabel275.Text = "ClassName";
             // 
-            // m_ClassNameTB
-            // 
-            this.m_ClassNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.m_ClassNameTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.m_ClassNameTB.Location = new System.Drawing.Point(420, 53);
-            this.m_ClassNameTB.Name = "m_ClassNameTB";
-            this.m_ClassNameTB.Size = new System.Drawing.Size(312, 20);
-            this.m_ClassNameTB.TabIndex = 246;
-            this.m_ClassNameTB.TextChanged += new System.EventHandler(this.m_ClassNameTB_TextChanged);
-            // 
             // m_TraderIDNUD
             // 
             this.m_TraderIDNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
@@ -1347,6 +1337,48 @@ namespace DayZeEditor
             this.removeSubMenuCategoryToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
             this.removeSubMenuCategoryToolStripMenuItem.Text = "Remove Sub Menu Category";
             this.removeSubMenuCategoryToolStripMenuItem.Click += new System.EventHandler(this.removeSubMenuCategoryToolStripMenuItem_Click);
+            // 
+            // m_ClassNameCB
+            // 
+            this.m_ClassNameCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.m_ClassNameCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.m_ClassNameCB.FormattingEnabled = true;
+            this.m_ClassNameCB.Items.AddRange(new object[] {
+            "ExpansionP2PTraderMirek",
+            "ExpansionP2PTraderDenis",
+            "ExpansionP2PTraderBoris",
+            "ExpansionP2PTraderCyril",
+            "ExpansionP2PTraderElias",
+            "ExpansionP2PTraderFrancis",
+            "ExpansionP2PTraderGuo",
+            "ExpansionP2PTraderHassan",
+            "ExpansionP2PTraderIndar",
+            "ExpansionP2PTraderJose",
+            "ExpansionP2PTraderKaito",
+            "ExpansionP2PTraderLewis",
+            "ExpansionP2PTraderManua",
+            "ExpansionP2PTraderNiki",
+            "ExpansionP2PTraderOliver",
+            "ExpansionP2PTraderPeter",
+            "ExpansionP2PTraderQuinn",
+            "ExpansionP2PTraderRolf",
+            "ExpansionP2PTraderSeth",
+            "ExpansionP2PTraderTaiki",
+            "ExpansionP2PTraderLinda",
+            "ExpansionP2PTraderMaria",
+            "ExpansionP2PTraderFrida",
+            "ExpansionP2PTraderGabi",
+            "ExpansionP2PTraderHelga",
+            "ExpansionP2PTraderIrena",
+            "ExpansionP2PTraderJudy",
+            "ExpansionP2PTraderKeiko",
+            "ExpansionP2PTraderEva",
+            "ExpansionP2PTraderNaomi"});
+            this.m_ClassNameCB.Location = new System.Drawing.Point(420, 53);
+            this.m_ClassNameCB.Name = "m_ClassNameCB";
+            this.m_ClassNameCB.Size = new System.Drawing.Size(312, 21);
+            this.m_ClassNameCB.TabIndex = 285;
+            this.m_ClassNameCB.SelectedIndexChanged += new System.EventHandler(this.m_ClassNameCB_SelectedIndexChanged);
             // 
             // ExpansionP2pMarket
             // 
@@ -1449,7 +1481,6 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkLabel darkLabel276;
         private System.Windows.Forms.TextBox m_DisplayNameTB;
         private DarkUI.Controls.DarkLabel darkLabel275;
-        private System.Windows.Forms.TextBox m_ClassNameTB;
         private System.Windows.Forms.NumericUpDown m_TraderIDNUD;
         private DarkUI.Controls.DarkLabel darkLabel274;
         private DarkUI.Controls.DarkLabel darkLabel283;
@@ -1490,5 +1521,6 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripMenuItem removeSubMenuCategoryToolStripMenuItem;
         private DarkUI.Controls.DarkButton darkButton5;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ComboBox m_ClassNameCB;
     }
 }

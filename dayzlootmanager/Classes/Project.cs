@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.Encodings.Web;
@@ -78,8 +79,13 @@ namespace DayZeEditor
                     MessageBox.Show("Projects Config Saved.");
             }
         }
-        public void SetActiveProject(Project p)
+        public void SetActiveProject(Project p = null)
         {
+            if (p == null)
+            {
+                ActiveProject = "";
+                return;
+            }
             if(p.MapNetworkDrive == true)
             {
                 NetworkDrive.MapNetworkDrive(p.Networkdriveletter , @"\\sshfs\" + p.NetworkUsername + p.NetworkHost);
@@ -510,17 +516,27 @@ namespace DayZeEditor
                 PlayerDB = new PlayerDataBase(playerdb.FileName);
             }
         }
-        internal void Setmappedrive()
+        internal bool Setmappedrive()
         {
             if (MapNetworkDrive == true)
             {
                 NetworkDrive.MapNetworkDrive(Networkdriveletter, @"\\sshfs\" + NetworkUsername + NetworkHost);
-                while (!NetworkDrive.IsDriveMapped(Networkdriveletter))
+                Stopwatch s = new Stopwatch();
+                s.Start();
+                while (!NetworkDrive.IsDriveMapped(Networkdriveletter) && s.Elapsed < TimeSpan.FromSeconds(30))
                 {
-
+                    
+                }
+                if (s.Elapsed >= TimeSpan.FromSeconds(30))
+                {
+                    s.Stop();
+                    Console.WriteLine("ERROR: Network Drive Not Mapped : " + Networkdriveletter);
+                    return false;
                 }
                 Console.WriteLine("INFO: Network Drive Mapped : " + Networkdriveletter);
+                return true;
             }
+            return true;
         }
     }
 }

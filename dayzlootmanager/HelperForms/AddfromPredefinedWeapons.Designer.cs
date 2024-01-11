@@ -82,8 +82,6 @@ namespace DayZeEditor
             this.LCPredefinedWeaponsLB.ForeColor = System.Drawing.SystemColors.Control;
             this.LCPredefinedWeaponsLB.FormattingEnabled = true;
             this.LCPredefinedWeaponsLB.Items.AddRange(new object[] {
-            "CJ_LootChest_CashRegister_Old",
-            "CJ_LootChest_CashRegister_New",
             "CJ_LootChest_Brown_Small",
             "CJ_LootChest_Brown_Medium",
             "CJ_LootChest_Brown_Large",
@@ -125,7 +123,23 @@ namespace DayZeEditor
             "CJ_LootChest_Wood_Green_Medics_Medium",
             "CJ_LootChest_Wood_Green_Tools_Large",
             "CJ_LootChest_Wood_Green_Foods_Large",
-            "CJ_LootChest_Wood_Green_Medics_Large"});
+            "CJ_LootChest_Wood_Green_Medics_Large",
+            "CJ_LootChest_Ammo_Small_Brown",
+            "CJ_LootChest_Ammo_Small_Green",
+            "CJ_LootChest_Ammo_Large_Brown\t\t",
+            "CJ_LootChest_Ammo_Large_Green",
+            "CJ_LootChest_MoneySafe_Old",
+            "CJ_LootChest_MoneySafe_New",
+            "CJ_LootChest_MoneySafe_New_Card",
+            "CJ_LootChest_MoneySafe_New_Card_L1",
+            "CJ_LootChest_MoneySafe_New_Card_L2",
+            "CJ_LootChest_MoneySafe_New_Card_L3",
+            "CJ_LootChest_MoneySafe_New_Card_L4",
+            "CJ_LootChest_CashRegister_Old",
+            "CJ_LootChest_CashRegister_New",
+            "CJ_LootChest_HiddenStash_Small",
+            "CJ_LootChest_HiddenStash_Medium",
+            "CJ_LootChest_HiddenStash_Large"});
             this.LCPredefinedWeaponsLB.Location = new System.Drawing.Point(8, 33);
             this.LCPredefinedWeaponsLB.Name = "LCPredefinedWeaponsLB";
             this.LCPredefinedWeaponsLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
@@ -145,7 +159,7 @@ namespace DayZeEditor
             this.darkButton1.Text = "Select";
             this.darkButton1.Click += new System.EventHandler(this.darkButton1_Click);
             // 
-            // AddfromPredefinedWeapons
+            // AddfromPredefinedItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -154,7 +168,7 @@ namespace DayZeEditor
             this.Controls.Add(this.LCPredefinedWeaponsLB);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "AddfromPredefinedWeapons";
+            this.Name = "AddfromPredefinedItems";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddfromPredefinedWeapons";
             this.Load += new System.EventHandler(this.AddfromPredefinedWeapons_Load);

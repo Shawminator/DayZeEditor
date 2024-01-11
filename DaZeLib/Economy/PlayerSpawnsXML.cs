@@ -625,7 +625,7 @@ namespace DayZeLib
                     pos = new BindingList<playerspawnpointsGroupPos>(fresh.generator_posbubbles)
                 });
             }
-            if (travel.generator_posbubbles.Count > 0)
+            if (travel != null && travel.generator_posbubbles.Count > 0)
             {
                 newsp.travel.generator_posbubbles.Add(new playerspawnpointsGroup()
                 {
@@ -633,7 +633,7 @@ namespace DayZeLib
                     pos = new BindingList<playerspawnpointsGroupPos>(travel.generator_posbubbles)
                 });
             }
-            if (hop.generator_posbubbles.Count > 0)
+            if (hop != null && hop.generator_posbubbles.Count > 0)
             {
                 newsp.hop.generator_posbubbles.Add(new playerspawnpointsGroup()
                 {

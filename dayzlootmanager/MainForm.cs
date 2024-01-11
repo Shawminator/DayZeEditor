@@ -36,7 +36,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.7.8.8";
+        public string VersionNumber = "0.7.8.7";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -119,33 +119,58 @@ namespace DayZeEditor
                     }
                     Console.WriteLine(Projects.ActiveProject + " is the Current Active Project");
                     Console.WriteLine("Will now serialize base economy files from Project " + Projects.ActiveProject);
-                    Projects.getActiveProject().Setmappedrive();
-                    Projects.getActiveProject().seteconomycore();
-                    Projects.getActiveProject().seteconomydefinitions();
-                    Projects.getActiveProject().setuserdefinitions();
-                    Projects.getActiveProject().setVanillaTypes();
-                    Projects.getActiveProject().SetModListtypes();
-                    Projects.getActiveProject().SetTotNomCount();
-                    Projects.getActiveProject().SetSpawnabletypes();
-                    Projects.getActiveProject().setplayerspawns();
-                    Projects.getActiveProject().SetCFGGameplayConfig();
-                    Projects.getActiveProject().SetcfgEffectAreaConfig();
-                    Projects.getActiveProject().SetEvents();
-                    Projects.getActiveProject().seteventspawns();
-                    Projects.getActiveProject().seteventgroups();
-                    Projects.getActiveProject().SetRandompresets();
-                    Projects.getActiveProject().SetGlobals();
-                    Projects.getActiveProject().SetWeather();
-                    Projects.getActiveProject().SetIgnoreList();
-                    Projects.getActiveProject().Setmapgrouproto();
-                    Projects.getActiveProject().Setmapgroupos();
-                    Projects.getActiveProject().SetTerritories();
-                    Console.WriteLine("Project is Running Dr Jones Trader...." + Projects.getActiveProject().usingDrJoneTrader.ToString());
-                    Console.WriteLine("Project is Running Expansion Market...." + Projects.getActiveProject().usingexpansionMarket.ToString());
-                    Console.WriteLine("Project is Running Trader Plus...." + Projects.getActiveProject().usingtraderplus.ToString());
-                    Console.WriteLine("The Current Active Project is " + Projects.ActiveProject);
-                    Console.WriteLine("Please click the select section to get the pop out menu");
-                    toolStripStatusLabel1.Text = Projects.ActiveProject + " is the Current Active Project";
+                    if(Projects.getActiveProject().Setmappedrive())
+                    {
+                        Projects.getActiveProject().seteconomycore();
+                        Projects.getActiveProject().seteconomydefinitions();
+                        Projects.getActiveProject().setuserdefinitions();
+                        Projects.getActiveProject().setVanillaTypes();
+                        Projects.getActiveProject().SetModListtypes();
+                        Projects.getActiveProject().SetTotNomCount();
+                        Projects.getActiveProject().SetSpawnabletypes();
+                        Projects.getActiveProject().setplayerspawns();
+                        Projects.getActiveProject().SetCFGGameplayConfig();
+                        Projects.getActiveProject().SetcfgEffectAreaConfig();
+                        Projects.getActiveProject().SetEvents();
+                        Projects.getActiveProject().seteventspawns();
+                        Projects.getActiveProject().seteventgroups();
+                        Projects.getActiveProject().SetRandompresets();
+                        Projects.getActiveProject().SetGlobals();
+                        Projects.getActiveProject().SetWeather();
+                        Projects.getActiveProject().SetIgnoreList();
+                        Projects.getActiveProject().Setmapgrouproto();
+                        Projects.getActiveProject().Setmapgroupos();
+                        Projects.getActiveProject().SetTerritories();
+                        Console.WriteLine("Project is Running Dr Jones Trader...." + Projects.getActiveProject().usingDrJoneTrader.ToString());
+                        Console.WriteLine("Project is Running Expansion Market...." + Projects.getActiveProject().usingexpansionMarket.ToString());
+                        Console.WriteLine("Project is Running Trader Plus...." + Projects.getActiveProject().usingtraderplus.ToString());
+                        Console.WriteLine("The Current Active Project is " + Projects.ActiveProject);
+                        Console.WriteLine("Please click the select section to get the pop out menu");
+                        toolStripStatusLabel1.Text = Projects.ActiveProject + " is the Current Active Project";
+                    }
+                    else
+                    {
+                        var form = Application.OpenForms["SplashForm"];
+                        if (form != null)
+                        {
+                            form.Invoke(new Action(() => { form.Close(); }));
+                        }
+                        string project = Projects.ActiveProject;
+                        Projects.SetActiveProject();
+                        ProjectPanel _TM = Application.OpenForms["ProjectPanel"] as ProjectPanel;
+                        _TM = new ProjectPanel
+                        {
+                            MdiParent = this,
+                            Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                            Location = new System.Drawing.Point(30, 0),
+                            Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                            projects = Projects
+                        };
+                        _TM.Show();
+                        Console.WriteLine("loading Project manager....");
+                        MessageBox.Show("The Project " + project + " could not be loaded, please load another project...." );
+                    }
+                    
                 }
                 else
                 {

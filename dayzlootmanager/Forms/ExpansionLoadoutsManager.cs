@@ -353,7 +353,7 @@ namespace DayZeEditor
         }
         private void RemoveAttachemtItemToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CurrentAIloadouts.InventoryAttachments.Remove(CurrentInventoryattachment);
+            CurrentAILoadoutsFile.InventoryAttachments.Remove(CurrentInventoryattachment);
             treeViewMS1.SelectedNode.Remove();
             CurrentAILoadoutsFile.isDirty = true;
         }
