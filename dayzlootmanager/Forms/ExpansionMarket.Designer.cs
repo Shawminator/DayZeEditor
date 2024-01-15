@@ -315,13 +315,17 @@ namespace DayZeEditor
             this.darkLabel78 = new DarkUI.Controls.DarkLabel();
             this.MinRequiredHumanityNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel70 = new DarkUI.Controls.DarkLabel();
-            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.TraderIconTB = new System.Windows.Forms.TextBox();
             this.CanOnlySellRB = new System.Windows.Forms.RadioButton();
             this.CanBuySellRB = new System.Windows.Forms.RadioButton();
             this.CanOnlyBuyRB = new System.Windows.Forms.RadioButton();
             this.darkLabel57 = new DarkUI.Controls.DarkLabel();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.darkLabel83 = new DarkUI.Controls.DarkLabel();
+            this.DisplayCurrencyNameTB = new System.Windows.Forms.TextBox();
+            this.darkLabel22 = new DarkUI.Controls.DarkLabel();
+            this.DisplayCurrencyValueNUD = new System.Windows.Forms.NumericUpDown();
             this.darkButton12 = new DarkUI.Controls.DarkButton();
             this.darkButton13 = new DarkUI.Controls.DarkButton();
             this.listBox10 = new System.Windows.Forms.ListBox();
@@ -402,6 +406,8 @@ namespace DayZeEditor
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.darkLabel84 = new DarkUI.Controls.DarkLabel();
+            this.CurrencyIconTB = new System.Windows.Forms.TextBox();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -505,6 +511,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.MaxRequiredHumanityNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinRequiredHumanityNUD)).BeginInit();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DisplayCurrencyValueNUD)).BeginInit();
             this.AddFromCategoryListBox.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.InitStockPercentNUD)).BeginInit();
@@ -1375,6 +1382,8 @@ namespace DayZeEditor
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.darkLabel84);
+            this.groupBox2.Controls.Add(this.CurrencyIconTB);
             this.groupBox2.Controls.Add(this.ColorItemInfoTitleColour);
             this.groupBox2.Controls.Add(this.darkLabel64);
             this.groupBox2.Controls.Add(this.ColorCurrencyDenominationTextColour);
@@ -3995,7 +4004,7 @@ namespace DayZeEditor
             this.tabPage2.Controls.Add(this.darkLabel78);
             this.tabPage2.Controls.Add(this.MinRequiredHumanityNUD);
             this.tabPage2.Controls.Add(this.darkLabel70);
-            this.tabPage2.Controls.Add(this.textBox17);
+            this.tabPage2.Controls.Add(this.TraderIconTB);
             this.tabPage2.Controls.Add(this.CanOnlySellRB);
             this.tabPage2.Controls.Add(this.CanBuySellRB);
             this.tabPage2.Controls.Add(this.CanOnlyBuyRB);
@@ -4017,6 +4026,7 @@ namespace DayZeEditor
             this.tabPage2.Size = new System.Drawing.Size(1239, 617);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Traders";
+            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // darkLabel81
             // 
@@ -4052,7 +4062,7 @@ namespace DayZeEditor
             // 
             this.darkLabel80.AutoSize = true;
             this.darkLabel80.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel80.Location = new System.Drawing.Point(233, 175);
+            this.darkLabel80.Location = new System.Drawing.Point(230, 175);
             this.darkLabel80.Name = "darkLabel80";
             this.darkLabel80.Size = new System.Drawing.Size(145, 13);
             this.darkLabel80.TabIndex = 171;
@@ -4104,7 +4114,7 @@ namespace DayZeEditor
             // 
             this.AttachmentRB.AutoSize = true;
             this.AttachmentRB.ForeColor = System.Drawing.SystemColors.Control;
-            this.AttachmentRB.Location = new System.Drawing.Point(307, 245);
+            this.AttachmentRB.Location = new System.Drawing.Point(299, 252);
             this.AttachmentRB.Name = "AttachmentRB";
             this.AttachmentRB.Size = new System.Drawing.Size(167, 17);
             this.AttachmentRB.TabIndex = 104;
@@ -4179,27 +4189,27 @@ namespace DayZeEditor
             // 
             this.darkLabel70.AutoSize = true;
             this.darkLabel70.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel70.Location = new System.Drawing.Point(233, 201);
+            this.darkLabel70.Location = new System.Drawing.Point(230, 201);
             this.darkLabel70.Name = "darkLabel70";
             this.darkLabel70.Size = new System.Drawing.Size(62, 13);
             this.darkLabel70.TabIndex = 99;
             this.darkLabel70.Text = "Trader Icon";
             // 
-            // textBox17
+            // TraderIconTB
             // 
-            this.textBox17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.textBox17.ForeColor = System.Drawing.SystemColors.Control;
-            this.textBox17.Location = new System.Drawing.Point(316, 198);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(220, 20);
-            this.textBox17.TabIndex = 98;
-            this.textBox17.TextChanged += new System.EventHandler(this.textBox17_TextChanged);
+            this.TraderIconTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TraderIconTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.TraderIconTB.Location = new System.Drawing.Point(316, 198);
+            this.TraderIconTB.Name = "TraderIconTB";
+            this.TraderIconTB.Size = new System.Drawing.Size(220, 20);
+            this.TraderIconTB.TabIndex = 98;
+            this.TraderIconTB.TextChanged += new System.EventHandler(this.textBox17_TextChanged);
             // 
             // CanOnlySellRB
             // 
             this.CanOnlySellRB.AutoSize = true;
             this.CanOnlySellRB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CanOnlySellRB.Location = new System.Drawing.Point(448, 222);
+            this.CanOnlySellRB.Location = new System.Drawing.Point(440, 229);
             this.CanOnlySellRB.Name = "CanOnlySellRB";
             this.CanOnlySellRB.Size = new System.Drawing.Size(88, 17);
             this.CanOnlySellRB.TabIndex = 97;
@@ -4212,7 +4222,7 @@ namespace DayZeEditor
             // 
             this.CanBuySellRB.AutoSize = true;
             this.CanBuySellRB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CanBuySellRB.Location = new System.Drawing.Point(336, 222);
+            this.CanBuySellRB.Location = new System.Drawing.Point(328, 229);
             this.CanBuySellRB.Name = "CanBuySellRB";
             this.CanBuySellRB.Size = new System.Drawing.Size(106, 17);
             this.CanBuySellRB.TabIndex = 96;
@@ -4225,7 +4235,7 @@ namespace DayZeEditor
             // 
             this.CanOnlyBuyRB.AutoSize = true;
             this.CanOnlyBuyRB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CanOnlyBuyRB.Location = new System.Drawing.Point(245, 222);
+            this.CanOnlyBuyRB.Location = new System.Drawing.Point(237, 229);
             this.CanOnlyBuyRB.Name = "CanOnlyBuyRB";
             this.CanOnlyBuyRB.Size = new System.Drawing.Size(89, 17);
             this.CanOnlyBuyRB.TabIndex = 95;
@@ -4238,7 +4248,7 @@ namespace DayZeEditor
             // 
             this.darkLabel57.AutoSize = true;
             this.darkLabel57.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel57.Location = new System.Drawing.Point(233, 47);
+            this.darkLabel57.Location = new System.Drawing.Point(230, 47);
             this.darkLabel57.Name = "darkLabel57";
             this.darkLabel57.Size = new System.Drawing.Size(51, 13);
             this.darkLabel57.TabIndex = 94;
@@ -4256,21 +4266,77 @@ namespace DayZeEditor
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.darkLabel83);
+            this.groupBox5.Controls.Add(this.DisplayCurrencyNameTB);
+            this.groupBox5.Controls.Add(this.darkLabel22);
+            this.groupBox5.Controls.Add(this.DisplayCurrencyValueNUD);
             this.groupBox5.Controls.Add(this.darkButton12);
             this.groupBox5.Controls.Add(this.darkButton13);
             this.groupBox5.Controls.Add(this.listBox10);
             this.groupBox5.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox5.Location = new System.Drawing.Point(554, 14);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(294, 150);
+            this.groupBox5.Size = new System.Drawing.Size(294, 200);
             this.groupBox5.TabIndex = 92;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Currencies:-";
             // 
+            // darkLabel83
+            // 
+            this.darkLabel83.AutoSize = true;
+            this.darkLabel83.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel83.Location = new System.Drawing.Point(8, 43);
+            this.darkLabel83.Name = "darkLabel83";
+            this.darkLabel83.Size = new System.Drawing.Size(117, 13);
+            this.darkLabel83.TabIndex = 105;
+            this.darkLabel83.Text = "Display Currency Name";
+            // 
+            // DisplayCurrencyNameTB
+            // 
+            this.DisplayCurrencyNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.DisplayCurrencyNameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.DisplayCurrencyNameTB.Location = new System.Drawing.Point(130, 43);
+            this.DisplayCurrencyNameTB.Name = "DisplayCurrencyNameTB";
+            this.DisplayCurrencyNameTB.ReadOnly = true;
+            this.DisplayCurrencyNameTB.Size = new System.Drawing.Size(157, 20);
+            this.DisplayCurrencyNameTB.TabIndex = 104;
+            this.DisplayCurrencyNameTB.TextChanged += new System.EventHandler(this.DisplayCurrencyNameTB_TextChanged);
+            // 
+            // darkLabel22
+            // 
+            this.darkLabel22.AutoSize = true;
+            this.darkLabel22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel22.Location = new System.Drawing.Point(8, 19);
+            this.darkLabel22.Name = "darkLabel22";
+            this.darkLabel22.Size = new System.Drawing.Size(116, 13);
+            this.darkLabel22.TabIndex = 103;
+            this.darkLabel22.Text = "Display Currency Value";
+            // 
+            // DisplayCurrencyValueNUD
+            // 
+            this.DisplayCurrencyValueNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.DisplayCurrencyValueNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.DisplayCurrencyValueNUD.Location = new System.Drawing.Point(130, 17);
+            this.DisplayCurrencyValueNUD.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            0});
+            this.DisplayCurrencyValueNUD.Minimum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            -2147483648});
+            this.DisplayCurrencyValueNUD.Name = "DisplayCurrencyValueNUD";
+            this.DisplayCurrencyValueNUD.Size = new System.Drawing.Size(157, 20);
+            this.DisplayCurrencyValueNUD.TabIndex = 102;
+            this.DisplayCurrencyValueNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DisplayCurrencyValueNUD.ValueChanged += new System.EventHandler(this.DisplayCurrencyValueNUD_ValueChanged);
+            // 
             // darkButton12
             // 
             this.darkButton12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton12.Location = new System.Drawing.Point(151, 120);
+            this.darkButton12.Location = new System.Drawing.Point(151, 170);
             this.darkButton12.Name = "darkButton12";
             this.darkButton12.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton12.Size = new System.Drawing.Size(136, 23);
@@ -4281,7 +4347,7 @@ namespace DayZeEditor
             // darkButton13
             // 
             this.darkButton13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton13.Location = new System.Drawing.Point(6, 120);
+            this.darkButton13.Location = new System.Drawing.Point(6, 170);
             this.darkButton13.Name = "darkButton13";
             this.darkButton13.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton13.Size = new System.Drawing.Size(139, 23);
@@ -4295,7 +4361,7 @@ namespace DayZeEditor
             this.listBox10.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.listBox10.ForeColor = System.Drawing.SystemColors.Control;
             this.listBox10.FormattingEnabled = true;
-            this.listBox10.Location = new System.Drawing.Point(7, 19);
+            this.listBox10.Location = new System.Drawing.Point(6, 69);
             this.listBox10.Name = "listBox10";
             this.listBox10.Size = new System.Drawing.Size(281, 95);
             this.listBox10.TabIndex = 60;
@@ -4327,7 +4393,7 @@ namespace DayZeEditor
             // 
             this.darkLabel49.AutoSize = true;
             this.darkLabel49.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel49.Location = new System.Drawing.Point(233, 21);
+            this.darkLabel49.Location = new System.Drawing.Point(230, 21);
             this.darkLabel49.Name = "darkLabel49";
             this.darkLabel49.Size = new System.Drawing.Size(42, 13);
             this.darkLabel49.TabIndex = 76;
@@ -4337,7 +4403,7 @@ namespace DayZeEditor
             // 
             this.darkLabel50.AutoSize = true;
             this.darkLabel50.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel50.Location = new System.Drawing.Point(233, 70);
+            this.darkLabel50.Location = new System.Drawing.Point(230, 70);
             this.darkLabel50.Name = "darkLabel50";
             this.darkLabel50.Size = new System.Drawing.Size(72, 13);
             this.darkLabel50.TabIndex = 75;
@@ -4350,9 +4416,9 @@ namespace DayZeEditor
             this.AddFromCategoryListBox.Controls.Add(this.darkButton5);
             this.AddFromCategoryListBox.Controls.Add(this.listBox3);
             this.AddFromCategoryListBox.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.AddFromCategoryListBox.Location = new System.Drawing.Point(554, 170);
+            this.AddFromCategoryListBox.Location = new System.Drawing.Point(554, 222);
             this.AddFromCategoryListBox.Name = "AddFromCategoryListBox";
-            this.AddFromCategoryListBox.Size = new System.Drawing.Size(294, 439);
+            this.AddFromCategoryListBox.Size = new System.Drawing.Size(294, 387);
             this.AddFromCategoryListBox.TabIndex = 58;
             this.AddFromCategoryListBox.TabStop = false;
             this.AddFromCategoryListBox.Text = "Add From Category";
@@ -4361,7 +4427,7 @@ namespace DayZeEditor
             // darkButton5
             // 
             this.darkButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton5.Location = new System.Drawing.Point(6, 411);
+            this.darkButton5.Location = new System.Drawing.Point(6, 359);
             this.darkButton5.Name = "darkButton5";
             this.darkButton5.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton5.Size = new System.Drawing.Size(281, 23);
@@ -4380,7 +4446,7 @@ namespace DayZeEditor
             this.listBox3.Location = new System.Drawing.Point(7, 13);
             this.listBox3.Name = "listBox3";
             this.listBox3.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBox3.Size = new System.Drawing.Size(281, 381);
+            this.listBox3.Size = new System.Drawing.Size(281, 342);
             this.listBox3.TabIndex = 0;
             this.listBox3.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
@@ -4392,10 +4458,10 @@ namespace DayZeEditor
             this.treeView1.ForeColor = System.Drawing.SystemColors.Control;
             this.treeView1.FullRowSelect = true;
             this.treeView1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.treeView1.Location = new System.Drawing.Point(238, 268);
+            this.treeView1.Location = new System.Drawing.Point(230, 275);
             this.treeView1.Name = "treeView1";
             this.treeView1.ShowPlusMinus = false;
-            this.treeView1.Size = new System.Drawing.Size(298, 341);
+            this.treeView1.Size = new System.Drawing.Size(306, 334);
             this.treeView1.TabIndex = 57;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
             // 
@@ -4945,7 +5011,7 @@ namespace DayZeEditor
             this.listBox6.FormattingEnabled = true;
             this.listBox6.Location = new System.Drawing.Point(6, 22);
             this.listBox6.Name = "listBox6";
-            this.listBox6.Size = new System.Drawing.Size(268, 82);
+            this.listBox6.Size = new System.Drawing.Size(268, 95);
             this.listBox6.TabIndex = 70;
             this.listBox6.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
@@ -5238,6 +5304,26 @@ namespace DayZeEditor
             this.toolStripButton6.Text = "Market Items";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
+            // darkLabel84
+            // 
+            this.darkLabel84.AutoSize = true;
+            this.darkLabel84.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel84.Location = new System.Drawing.Point(19, 374);
+            this.darkLabel84.Name = "darkLabel84";
+            this.darkLabel84.Size = new System.Drawing.Size(73, 13);
+            this.darkLabel84.TabIndex = 101;
+            this.darkLabel84.Text = "Currency Icon";
+            // 
+            // CurrencyIconTB
+            // 
+            this.CurrencyIconTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CurrencyIconTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CurrencyIconTB.Location = new System.Drawing.Point(105, 371);
+            this.CurrencyIconTB.Name = "CurrencyIconTB";
+            this.CurrencyIconTB.Size = new System.Drawing.Size(507, 20);
+            this.CurrencyIconTB.TabIndex = 100;
+            this.CurrencyIconTB.TextChanged += new System.EventHandler(this.CurrencyIconTB_TextChanged);
+            // 
             // ExpansionMarket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5367,6 +5453,8 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.MaxRequiredHumanityNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinRequiredHumanityNUD)).EndInit();
             this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DisplayCurrencyValueNUD)).EndInit();
             this.AddFromCategoryListBox.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
@@ -5613,7 +5701,7 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton darkButton23;
         private DarkUI.Controls.DarkButton darkButton24;
         private DarkUI.Controls.DarkLabel darkLabel70;
-        private System.Windows.Forms.TextBox textBox17;
+        private System.Windows.Forms.TextBox TraderIconTB;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TrackBar trackBar2;
         private TreeViewMS.PanelEx panel1;
@@ -5759,5 +5847,11 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private DarkUI.Controls.DarkButton darkButton50;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private DarkUI.Controls.DarkLabel darkLabel83;
+        private System.Windows.Forms.TextBox DisplayCurrencyNameTB;
+        private DarkUI.Controls.DarkLabel darkLabel22;
+        private System.Windows.Forms.NumericUpDown DisplayCurrencyValueNUD;
+        private DarkUI.Controls.DarkLabel darkLabel84;
+        private System.Windows.Forms.TextBox CurrencyIconTB;
     }
 }

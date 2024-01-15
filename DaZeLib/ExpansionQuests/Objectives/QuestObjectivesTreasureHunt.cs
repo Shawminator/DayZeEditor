@@ -13,6 +13,7 @@ namespace DayZeLib
     {
         public string ObjectiveText { get; set; }
         public int TimeLimit { get; set; }
+        public int Active { get; set; }
         public int ShowDistance { get; set; }
         public string ContainerName { get; set; }
         public int DigInStash { get; set; }

@@ -12,25 +12,25 @@ using System.Windows.Forms;
 
 namespace DayZeLib
 {
-    public class PersonalStorageList
+    public class ExpansionPersonalStorageList
     {
         public const int CurrentVersion = 2;
-        public BindingList<PersonalStorage> personalstorageList { get; set; }
+        public BindingList<ExpansionPersonalStorage> personalstorageList { get; set; }
         public string ExpansionPersonalStoragePath { get; set; }
-        public List<PersonalStorage> Markedfordelete { get; set; }
+        public List<ExpansionPersonalStorage> Markedfordelete { get; set; }
 
         public List<int> UsedIDS = new List<int>();
 
-        public PersonalStorageList()
+        public ExpansionPersonalStorageList()
         {
-            personalstorageList = new BindingList<PersonalStorage>();
+            personalstorageList = new BindingList<ExpansionPersonalStorage>();
         }
-        public PersonalStorageList(string Path)
+        public ExpansionPersonalStorageList(string Path)
         {
             ExpansionPersonalStoragePath = Path;
             if (!Directory.Exists(Path))
                 Directory.CreateDirectory(Path);
-            personalstorageList = new BindingList<PersonalStorage>();
+            personalstorageList = new BindingList<ExpansionPersonalStorage>();
             DirectoryInfo dinfo = new DirectoryInfo(Path);
             FileInfo[] Files = dinfo.GetFiles("*.json");
             Console.WriteLine("Getting personal storage Objects....");
@@ -41,7 +41,7 @@ namespace DayZeLib
                 {
                     bool savefile = false;
                     Console.WriteLine("\tserializing " + file.Name);
-                    PersonalStorage ps = JsonSerializer.Deserialize<PersonalStorage>(File.ReadAllText(file.FullName));
+                    ExpansionPersonalStorage ps = JsonSerializer.Deserialize<ExpansionPersonalStorage>(File.ReadAllText(file.FullName));
                     ps.Filename = file.FullName;
                     if (ps.ConfigVersion != CurrentVersion)
                     {
@@ -79,7 +79,7 @@ namespace DayZeLib
         public void AddNewStorage(int newid)
         {
             UsedIDS.Add(newid);
-            PersonalStorage newps = new PersonalStorage()
+            ExpansionPersonalStorage newps = new ExpansionPersonalStorage()
             {
                 ConfigVersion = CurrentVersion,
                 StorageID = newid,
@@ -98,16 +98,16 @@ namespace DayZeLib
             personalstorageList.Add(newps);
         }
 
-        public void RemovePS(PersonalStorage PSfordelete)
+        public void RemovePS(ExpansionPersonalStorage PSfordelete)
         {
-            if (Markedfordelete == null) Markedfordelete = new List<PersonalStorage>();
+            if (Markedfordelete == null) Markedfordelete = new List<ExpansionPersonalStorage>();
             Markedfordelete.Add(PSfordelete);
             personalstorageList.Remove(PSfordelete);
             UsedIDS.Remove(PSfordelete.StorageID);
         }
     }
 
-    public class PersonalStorage
+    public class ExpansionPersonalStorage
     {
         public int ConfigVersion { get; set; }
         public int StorageID { get; set; }

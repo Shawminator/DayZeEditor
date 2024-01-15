@@ -12,44 +12,26 @@ namespace DayZeLib
     {
         public string ObjectiveText { get; set; }
         public int TimeLimit { get; set; }
+        public int Active { get; set; }
         public decimal[] Position { get; set; }
         public decimal MaxDistance { get; set; }
-        public Target Target { get; set; }
+        public decimal MinDistance { get; set; }
+        public int Amount { get; set; }
+        public BindingList<string> ClassNames { get; set; }
+        public int CountSelfKill { get; set; }
+        public BindingList<string> AllowedWeapons { get; set; }
+        public BindingList<string> ExcludedClassNames { get; set; }
+        public int CountAIPlayers { get; set; }
+        public BindingList<string> AllowedTargetFactions { get; set; }
+        public BindingList<string> AllowedDamageZones { get; set; }
 
         public QuestObjectivesTarget()
         {
-            Target = new Target();
+            
         }
         public override string ToString()
         {
             return ObjectiveText;
         }
     }
-
-    public class Target
-    {
-        [JsonIgnore]
-        string TargetName { get; set; }
-
-        public int Amount { get; set; }
-        public BindingList<string> ClassNames { get; set; }
-        public int CountSelfKill { get; set; }
-        public int SpecialWeapon { get; set; }
-        public BindingList<string> AllowedWeapons { get; set; }
-        public BindingList<string> ExcludedClassNames{ get; set; }
-        public int CountAIPlayers { get; set; }
-        public BindingList<string> AllowedTargetFactions { get; set; }
-
-        public Target() 
-        {
-            ClassNames = new BindingList<string>();
-            AllowedWeapons = new BindingList<string>();
-            AllowedTargetFactions = new BindingList<string>();
-        }
-        public override string ToString()
-        {
-            return TargetName;
-        }
-    }
-
 }

@@ -363,6 +363,12 @@ namespace DayZeEditor
             ResumeLayout();
             useraction = true;
         }
+        private void AIGeneralDamageReceivedMultiplierNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AIPatrolSettings.DamageReceivedMultiplier = AIGeneralDamageReceivedMultiplierNUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
         private void AIGeneralEnabledCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -460,6 +466,7 @@ namespace DayZeEditor
             CrashMaxSpreadRadiusNUD.Value = CurrentEventcrashpatrol.MaxSpreadRadius;
             CrashRespawnTimeNUD.Value = CurrentEventcrashpatrol.RespawnTime;
             CrashChanceNUD.Value = CurrentEventcrashpatrol.Chance;
+            CrashDamageReceivedMultiplierNUD.Value = CurrentEventcrashpatrol.DamageReceivedMultiplier;
             CrashCanBeLootedCB.Checked = CurrentEventcrashpatrol.CanBeLooted == 1 ? true : false;
             CrashUnlimitedReloadCB.Checked = CurrentEventcrashpatrol.UnlimitedReload == 1 ? true : false;
             CrashLoadoutFileCB.SelectedIndex = CrashLoadoutFileCB.FindStringExact(CurrentEventcrashpatrol.LoadoutFile);
@@ -665,6 +672,12 @@ namespace DayZeEditor
             CurrentEventcrashpatrol.FormationLooseness = crashFormationLoosenessNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
+        private void CrashDamageReceivedMultiplierNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentEventcrashpatrol.DamageReceivedMultiplier = CrashDamageReceivedMultiplierNUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
         /// <summary>
         /// Stataic Patrol Settings
         /// </summary>
@@ -688,6 +701,7 @@ namespace DayZeEditor
             StaticPatrolDespawnRadiusNUD.Value = CurrentPatrol.DespawnRadius;
             StaticPatrolAccuracyMinNUD.Value = CurrentPatrol.AccuracyMin;
             StaticPatrolAccuracyMaxNUD.Value = CurrentPatrol.AccuracyMax;
+            StaticPatrolDamageReceivedMultiplierNUD.Value = CurrentPatrol.DamageReceivedMultiplier;
             StaticPatrolThreatDistanceLimitNUD.Value = CurrentPatrol.ThreatDistanceLimit;
             StaticPatrolSniperProneDistanceThresholdNUD.Value = CurrentPatrol.SniperProneDistanceThreshold;
             StaticPatrolDamageMultiplierNUD.Value = CurrentPatrol.DamageMultiplier;
@@ -838,6 +852,12 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             CurrentPatrol.MinDistRadius = StaticPatrolMinDistRadiusNUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
+        private void StaticPatrolDamageReceivedMultiplierNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPatrol.DamageReceivedMultiplier = StaticPatrolDamageReceivedMultiplierNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
         private void StaticPatrolMaxDistRadiusNUD_ValueChanged(object sender, EventArgs e)
@@ -1045,6 +1065,7 @@ namespace DayZeEditor
             DamageMultiplierNUD.Value = AISettings.DamageMultiplier;
             MaximumDynamicPatrolsNUD.Value = AISettings.MaximumDynamicPatrols;
             SniperProneDistanceThresholdNUD.Value = AISettings.SniperProneDistanceThreshold;
+            DamageReceivedMultiplierNUD.Value = AISettings.DamageReceivedMultiplier;
             VaultingCB.Checked = AISettings.Vaulting == 1 ? true : false;
             MannersCB.Checked = AISettings.Manners == 1 ? true : false;
             CanRecruitGuardsCB.Checked = AISettings.CanRecruitGuards == 1 ? true : false;
@@ -1091,6 +1112,12 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             AISettings.MaximumDynamicPatrols = (int)MaximumDynamicPatrolsNUD.Value;
+            AISettings.isDirty = true;
+        }
+        private void DamageReceivedMultiplierNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AISettings.DamageReceivedMultiplier = DamageReceivedMultiplierNUD.Value;
             AISettings.isDirty = true;
         }
         private void MannersCB_CheckedChanged(object sender, EventArgs e)
@@ -1156,6 +1183,7 @@ namespace DayZeEditor
         private void darkButton9_Click(object sender, EventArgs e)
         {
             string classname = PreventClimbTB.Text;
+            if (classname == "") return;
             if (!AISettings.PreventClimb.Contains(classname))
             {
                 AISettings.PreventClimb.Add(classname);
@@ -1184,5 +1212,7 @@ namespace DayZeEditor
             
 
         }
+
+
     }
 }

@@ -12,6 +12,7 @@ namespace DayZeLib
     {
         public string ObjectiveText { get; set; }
         public int TimeLimit { get; set; }
+        public int Active { get; set; }
         public BindingList<string> ActionNames { get; set; }
         public BindingList<string> AllowedClassNames { get; set; }
         public BindingList<string> ExcludedClassNames { get; set; }

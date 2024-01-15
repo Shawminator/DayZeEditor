@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace DayZeEditor
+namespace DayZeLib
 {
     public static class Form_Controls_AddfromType
     {

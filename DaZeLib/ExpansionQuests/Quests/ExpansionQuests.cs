@@ -18,7 +18,7 @@ namespace DayZeLib
     }
     public class ExpansioQuestList
     {
-        const int m_QuestConfigVersion = 20;
+        const int m_QuestConfigVersion = 21;
         public static int getQuestConfigVersion
         {
             get { return m_QuestConfigVersion; }
@@ -289,6 +289,8 @@ namespace DayZeLib
         public int SequentialObjectives { get; set; }
         public Dictionary<string, int> FactionReputationRequirements { get; set; }
         public Dictionary<string, int> FactionReputationRewards {get;set;}
+        public int SuppressQuestLogOnCompetion { get; set; }
+        public int Active { get; set; }
 
         public Quests()
         {

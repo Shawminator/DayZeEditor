@@ -12,7 +12,7 @@ namespace DayZeLib
 {
     public class MarketSettings
     {
-        const int CurrentVersion = 12;
+        const int CurrentVersion = 13;
 
         public int m_Version { get; set; } //Current Version 12
         public int MarketSystemEnabled { get; set; }
@@ -50,7 +50,7 @@ namespace DayZeLib
         public MarketSettings()
         {
             m_Version = 12;
-            CurrencyIcon = "DayZExpansion/Market/GUI/icons/coinstack2_64x64.edds";
+            CurrencyIcon = "DayZExpansion/Core/GUI/icons/misc/coinstack2_64x64.edds";
             NetworkCategories = new BindingList<string[]>();
             //MarketVIPs = new BindingList<string[]>();
             LandSpawnPositions = new BindingList<ExpansionMarketSpawnPosition>();

@@ -17,6 +17,7 @@ namespace DayZeLib
         public string MarkerName { get; set; }
         public int ShowDistance { get; set; }
         public int AddItemsToNearbyMarketZone { get; set; }
+        public int Active { get; set; }
 
         public QuestObjectivesDelivery()
         {

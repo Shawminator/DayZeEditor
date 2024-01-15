@@ -14,7 +14,7 @@ namespace DayZeLib
 {
     public class P2PMarketList
     {
-        public const int CurrentVersion = 5;
+        public const int CurrentVersion = 7;
         public BindingList<p2pmarket> p2pmarketList { get; set; }
         public string Expansionp2pmarketPath { get; set; }
         public List<p2pmarket> Markedfordelete { get; set; }
@@ -132,6 +132,9 @@ namespace DayZeLib
         public int m_EmoteID { get; set; }
         public int m_EmoteIsStatic { get; set; }
         public int m_IsGlobalTrader { get; set; }
+        public BindingList<string> m_Currencies { get; set; }
+        public int m_DisplayCurrencyValue { get; set; }
+        public string m_DisplayCurrencyName { get; set; }
 
         public p2pmarket()
         {

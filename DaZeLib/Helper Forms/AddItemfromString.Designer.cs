@@ -1,5 +1,5 @@
 ﻿
-namespace DayZeEditor
+namespace DayZeLib
 {
     partial class AddItemfromString
     {

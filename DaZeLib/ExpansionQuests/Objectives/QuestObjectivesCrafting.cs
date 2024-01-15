@@ -13,6 +13,7 @@ namespace DayZeLib
         public int TimeLimit { get; set; }
         public BindingList<string> ItemNames { get; set; }
         public int ExecutionAmount { get; set; }
+        public int Active { get; set; }
 
         public override string ToString()
         {

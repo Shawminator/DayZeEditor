@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DayZeEditor
+namespace DayZeLib
 {
     public partial class AddItemfromString : DarkForm
     {

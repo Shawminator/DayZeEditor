@@ -14,7 +14,7 @@ namespace DayZeLib
 {
     public class QuestNPCLists
     {
-        const int m_NPCConfigVersion = 5;
+        const int m_NPCConfigVersion = 6;
         public static int getNPCConfigVersion
         {
             get { return m_NPCConfigVersion; }
@@ -104,6 +104,7 @@ namespace DayZeLib
                 NPCQuestCompleteEmoteID = 39,
                 NPCFaction = "InvincibleObservers",
                 NPCType = 0,
+                Active = 1
             };
             NPCList.Add(newnpc);
         }
@@ -144,6 +145,7 @@ namespace DayZeLib
         public int NPCQuestCompleteEmoteID { get; set; }
         public string NPCFaction { get; set; }
         public int NPCType { get; set; }
+        public int Active { get; set; }
 
         public ExpansionQuestNPCs()
         {

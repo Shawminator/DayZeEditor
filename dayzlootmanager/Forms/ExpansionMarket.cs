@@ -724,6 +724,7 @@ namespace DayZeEditor
             MaxLargeVehicleDistanceToTraderNUD.Value = (decimal)marketsettings.MaxLargeVehicleDistanceToTrader;
             MaxSZVehicleParkingTimeNUD.Value = (decimal)marketsettings.MaxSZVehicleParkingTime;
             SZVehicleParkingTicketFineNUD.Value = marketsettings.SZVehicleParkingTicketFine;
+            CurrencyIconTB.Text = marketsettings.CurrencyIcon;
 
             listBox7.DisplayMember = "Name";
             listBox7.ValueMember = "Value";
@@ -1370,6 +1371,13 @@ namespace DayZeEditor
             marketsettings.SZVehicleParkingTicketFine = (int)SZVehicleParkingTicketFineNUD.Value;
             marketsettings.isDirty = true;
         }
+
+        private void CurrencyIconTB_TextChanged(object sender, EventArgs e)
+        {
+            if (action) return;
+            marketsettings.CurrencyIcon = CurrencyIconTB.Text;
+            marketsettings.isDirty = true;
+        }
         #endregion MarketSettings
 
         #region trader
@@ -1400,7 +1408,10 @@ namespace DayZeEditor
             MaxRequiredHumanityNUD.Value = currentTrader.MaxRequiredReputation;
             RequiredFactionLB.SelectedIndex = RequiredFactionLB.FindStringExact(currentTrader.RequiredFaction);
             RequiredCompletedQuestIDNUD.Value = currentTrader.RequiredCompletedQuestID;
-            textBox17.Text = currentTrader.TraderIcon;
+            TraderIconTB.Text = currentTrader.TraderIcon;
+            DisplayCurrencyValueNUD.Value = currentTrader.DisplayCurrencyValue;
+            DisplayCurrencyNameTB.Text = currentTrader.DisplayCurrencyName;
+
             listBox10.DisplayMember = "Name";
             listBox10.ValueMember = "Value";
             listBox10.DataSource = currentTrader.Currencies;
@@ -1893,7 +1904,19 @@ namespace DayZeEditor
         {
             if (action) return;
             currentTrader.isDirty = true;
-            currentTrader.TraderIcon = textBox17.Text;
+            currentTrader.TraderIcon = TraderIconTB.Text;
+        }
+        private void DisplayCurrencyValueNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (action) return;
+            currentTrader.DisplayCurrencyValue = (int)DisplayCurrencyValueNUD.Value;
+            currentTrader.isDirty = true;
+        }
+        private void DisplayCurrencyNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (action) return;
+            currentTrader.DisplayCurrencyName = DisplayCurrencyNameTB.Text;
+            currentTrader.isDirty = true;
         }
         #endregion trader
 
@@ -3951,6 +3974,12 @@ namespace DayZeEditor
             }
             currentCat.isDirty = true;
         }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
 

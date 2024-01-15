@@ -27,7 +27,7 @@ namespace DayZeLib
 
     public class QuestObjectivesBase : IEquatable<QuestObjectivesBase>
     {
-        const int m_currentConfigVersion = 22;
+        const int m_currentConfigVersion = 26;
 
         [JsonIgnore]
         public static readonly string[] Objectvetypesname = {"","", "Target", "Travel", "Collection", "Delivery", "TreasureHunt", "AIPatrol", "AICamp", "AIVIP", "Action", "Crafting"};
@@ -41,6 +41,7 @@ namespace DayZeLib
         public int ConfigVersion { get; set; }
         public int ID { get; set; }
         public int ObjectiveType { get; set; }
+
 
 
         static public int GetconfigVersion

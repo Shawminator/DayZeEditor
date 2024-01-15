@@ -12,7 +12,7 @@ namespace DayZeLib
     public class ExpansionAIPatrolSettings
     {
         [JsonIgnore]
-        const int CurrentVersion = 16;
+        const int CurrentVersion = 18;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -30,6 +30,7 @@ namespace DayZeLib
         public decimal ThreatDistanceLimit { get; set; }
         public decimal NoiseInvestigationDistanceLimit { get; set; }
         public decimal DamageMultiplier { get; set; }
+        public decimal DamageReceivedMultiplier { get; set; }
         public BindingList<ExpansionAIObjectPatrol> ObjectPatrols { get; set; }
         public BindingList<ExpansionAIPatrol> Patrols { get; set; }
 
@@ -48,6 +49,7 @@ namespace DayZeLib
             ThreatDistanceLimit = (decimal)-1.0;
             DamageMultiplier = (decimal)-1.0;
             NoiseInvestigationDistanceLimit = (decimal)-1.0;
+            DamageReceivedMultiplier = (decimal)-1.0;
             ObjectPatrols = new BindingList<ExpansionAIObjectPatrol>();
             Patrols = new BindingList<ExpansionAIPatrol>();
             DefaultCrashPatrols();
@@ -131,6 +133,7 @@ namespace DayZeLib
         public decimal AccuracyMax { get; set; }
         public decimal ThreatDistanceLimit { get; set; }
         public decimal DamageMultiplier { get; set; }
+        public decimal DamageReceivedMultiplier { get; set; }
         public decimal MinDistRadius { get; set; }
         public decimal MaxDistRadius { get; set; }
         public decimal DespawnRadius { get; set; }
@@ -157,6 +160,8 @@ namespace DayZeLib
             AccuracyMax = -1;
             ThreatDistanceLimit = -1;
             DamageMultiplier = -1;
+            DamageReceivedMultiplier = -1;
+            SniperProneDistanceThreshold = (decimal)0.0;
             ClassName = classname;
             DefaultSpread();
         }
@@ -213,6 +218,7 @@ namespace DayZeLib
         public decimal AccuracyMax { get; set; }
         public decimal ThreatDistanceLimit { get; set; }
         public decimal DamageMultiplier { get; set; }
+        public decimal DamageReceivedMultiplier { get; set; }
         public decimal MinDistRadius { get; set; }
         public decimal MaxDistRadius { get; set; }
         public decimal DespawnRadius { get; set;  }
@@ -245,6 +251,8 @@ namespace DayZeLib
             MinSpreadRadius = 1;
             MaxSpreadRadius = wprnd;
             UseRandomWaypointAsStartPoint = 1;
+            DamageReceivedMultiplier = (decimal)-1.0;
+            SniperProneDistanceThreshold = (decimal)0.0;
             Waypoints = new BindingList<float[]>(way);
             Waypoints = new BindingList<float[]>();
         }

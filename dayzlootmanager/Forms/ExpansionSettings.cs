@@ -33,7 +33,7 @@ namespace DayZeEditor
 
         public ExpansionLoot SCL { get; private set; }
         public ExpansionLootVariant SLootVarients { get; private set; }
-        public PersonalStorage CurrentPersonalStorage { get; private set; }
+        public ExpansionPersonalStorage CurrentPersonalStorage { get; private set; }
 
         public bool useraction
         {
@@ -95,7 +95,7 @@ namespace DayZeEditor
         public ExpansionNotificationSchedulerSettings NotificationSchedulerSettings;
         public ExpansionNotificationSettings NotificationSettings;
         public ExpansionPartySettings PartySettings;
-        public PersonalStorageList PersonalStorageList;
+        public ExpansionPersonalStorageList PersonalStorageList;
         public ExpansionPersonalStorageNewSettings PersonalStorageSettingsNew;
         public ExpansionPersonalStorageSettings PersonalStorageSettings;
         public ExpansionPlayerListSettings PlayerListSettings;
@@ -664,7 +664,7 @@ namespace DayZeEditor
 
             Console.WriteLine("Loading Personal Storage files....");
             PersonalStoragePath = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\personalstorage";
-            PersonalStorageList = new PersonalStorageList(PersonalStoragePath);
+            PersonalStorageList = new ExpansionPersonalStorageList(PersonalStoragePath);
             loadPersonalStorageSettings();
 
 
@@ -1071,7 +1071,7 @@ namespace DayZeEditor
             File.WriteAllText(PersonalStorageSettingsNew.Filename, jsonString);
             midifiedfiles.Add(Path.GetFileName(PersonalStorageSettingsNew.Filename));
 
-            foreach (PersonalStorage ps in PersonalStorageList.personalstorageList)
+            foreach (ExpansionPersonalStorage ps in PersonalStorageList.personalstorageList)
             {
                     ps.isDirty = false;
                     options = new JsonSerializerOptions
@@ -1467,7 +1467,7 @@ namespace DayZeEditor
                 File.WriteAllText(PersonalStorageSettingsNew.Filename, jsonString);
                 midifiedfiles.Add(Path.GetFileName(PersonalStorageSettingsNew.Filename));
             }
-            foreach (PersonalStorage ps in PersonalStorageList.personalstorageList)
+            foreach (ExpansionPersonalStorage ps in PersonalStorageList.personalstorageList)
             {
                 if (ps.isDirty)
                 {
@@ -1618,7 +1618,7 @@ namespace DayZeEditor
             {
                 message += "The following Personal Storage configs were Removed\n";
                 i = 0;
-                foreach (PersonalStorage del in PersonalStorageList.Markedfordelete)
+                foreach (ExpansionPersonalStorage del in PersonalStorageList.Markedfordelete)
                 {
                     del.backupandDelete(PersonalStoragePath);
                     midifiedfiles.Add(del.Filename);
@@ -1727,7 +1727,7 @@ namespace DayZeEditor
             {
                 needtosave = true;
             }
-            foreach (PersonalStorage ps in PersonalStorageList.personalstorageList)
+            foreach (ExpansionPersonalStorage ps in PersonalStorageList.personalstorageList)
             {
                 if (ps.isDirty)
                 {
@@ -3017,6 +3017,7 @@ namespace DayZeEditor
             DisplayServerSettingsInServerInfoTabCB.Checked = BookSettings.DisplayServerSettingsInServerInfoTab == 1 ? true : false;
             ShowHaBStatsCB.Checked = BookSettings.ShowHaBStats == 1 ? true : false;
             ShowPlayerFactionCB.Checked = BookSettings.ShowPlayerFaction == 1 ? true : false;
+            EnableCraftingRecipesTabCB.Checked = BookSettings.EnableCraftingRecipesTab == 1 ? true : false;
 
             listBox10.DisplayMember = "DisplayName";
             listBox10.ValueMember = "Value";
@@ -3213,6 +3214,12 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             BookSettings.EnableServerInfoTab = EnableServerInfoTabCB.Checked == true ? 1 : 0;
+            BookSettings.isDirty = true;
+        }
+        private void EnableCraftingRecipesTabCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            BookSettings.EnableCraftingRecipesTab = EnableCraftingRecipesTabCB.Checked == true ? 1 : 0;
             BookSettings.isDirty = true;
         }
         private void EnableServerRulesTabCB_CheckedChanged(object sender, EventArgs e)
@@ -3542,6 +3549,7 @@ namespace DayZeEditor
             useraction = false;
             DebugVehiclePlayerNetworkBubbleModeNUD.Value = DebugSettings.DebugVehiclePlayerNetworkBubbleMode;
             ServerUpdateRateLimitNUD.Value = DebugSettings.ServerUpdateRateLimit;
+            EnableProneDeathHandItemDropFixCB.Checked = DebugSettings.EnableProneDeathHandItemDropFix == 1 ? true : false;
             useraction = true;
         }
         private void DebugVehiclePlayerNetworkBubbleModeNUD_ValueChanged(object sender, EventArgs e)
@@ -3556,6 +3564,12 @@ namespace DayZeEditor
 
             if (!useraction) return;
             DebugSettings.ServerUpdateRateLimit = (int)ServerUpdateRateLimitNUD.Value;
+            DebugSettings.isDirty = true;
+        }
+        private void EnableProneDeathHandItemDropFixCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            DebugSettings.EnableProneDeathHandItemDropFix = EnableProneDeathHandItemDropFixCB.Checked == true ? 1 : 0;
             DebugSettings.isDirty = true;
         }
         #endregion debugsettings
@@ -9278,7 +9292,7 @@ namespace DayZeEditor
         private void listBox31_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBox31.SelectedItems.Count < 1) return;
-            CurrentPersonalStorage = listBox31.SelectedItem as PersonalStorage;
+            CurrentPersonalStorage = listBox31.SelectedItem as ExpansionPersonalStorage;
             useraction = false;
             ConfigVersionlabel.Text = CurrentPersonalStorage.ConfigVersion.ToString();
             StorageIDNUD.Value = CurrentPersonalStorage.StorageID;
@@ -9546,7 +9560,10 @@ namespace DayZeEditor
 
 
 
+
         #endregion personalstroage
+
+
     }
     public class NullToEmptyGearConverter : JsonConverter<ExpansionStartingGearItem>
     {

@@ -100,6 +100,12 @@
     <Compile Include="Cannabisplus\CannabisPlus.cs" />
     <Compile Include="CarePackagev2\CarePackagev2.cs" />
     <Compile Include="CJ187LootTable\LootChestTable.cs" />
+    <Compile Include="Controls\ExpansionQuestAISpawnControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ExpansionQuestAISpawnControl.Designer.cs">
+      <DependentUpon>ExpansionQuestAISpawnControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="DNAKeycards\DNA_Keycards.cs" />
     <Compile Include="DNAKeycards\Loot\DNA_CrateSmol_Data.cs" />
     <Compile Include="DNAKeycards\Loot\KeyCard_Clothing_Config.cs" />
@@ -145,8 +151,9 @@
     <Compile Include="ExpansionMarket\marketsettings.cs" />
     <Compile Include="ExpansionMarket\p2pmarket.cs" />
     <Compile Include="ExpansionMarket\P2PMarketSettings.cs" />
+    <Compile Include="ExpansionQuests\ExpansionQuestAISpawn.cs" />
     <Compile Include="ExpansionSettings\ExpansionLootDefaults.cs" />
-    <Compile Include="ExpansionSettings\PersonalStorage.cs" />
+    <Compile Include="ExpansionSettings\ExpansionPersonalStorage.cs" />
     <Compile Include="ExpansionMarket\TraderModelMapping.cs" />
     <Compile Include="ExpansionMarket\Traders.cs" />
     <Compile Include="ExpansionMarket\TraderZones.cs" />
@@ -193,6 +200,13 @@
     <Compile Include="ExpansionSettings\ExpansionSpawnSettings.cs" />
     <Compile Include="ExpansionSettings\ExpansionTerritorySettings.cs" />
     <Compile Include="ExpansionSettings\ExpansionVehicleSettings.cs" />
+    <Compile Include="Helper Forms\AddItemfromString.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Helper Forms\AddItemfromString.Designer.cs">
+      <DependentUpon>AddItemfromString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper Forms\Form_Controls_AddfromType.cs" />
     <Compile Include="Helper\Helper.cs" />
     <Compile Include="Helper\XYZMapping.cs" />
     <Compile Include="KingOfTheHill\KOTH.cs" />
@@ -222,7 +236,20 @@
   <ItemGroup>
     <Compile Include="ExpansionQuests\NPCs\NPCEmotes.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\ExpansionQuestAISpawnControl.resx">
+      <DependentUpon>ExpansionQuestAISpawnControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Helper Forms\AddItemfromString.resx">
+      <DependentUpon>AddItemfromString.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DarkUI-master\DarkUI-master\DarkUI\DarkUI.csproj">
+      <Project>{f19472f5-8c44-4c51-a8a0-b9de5f555255}</Project>
+      <Name>DarkUI</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

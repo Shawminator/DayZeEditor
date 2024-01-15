@@ -13,16 +13,18 @@ namespace DayZeLib
     {
         public string ObjectiveText { get; set; }
         public int TimeLimit { get; set; }
-        public Aicamp AICamp { get; set; }
-        public decimal MinDistRadius { get; set; }
-        public decimal MaxDistRadius { get; set; }
-        public decimal DespawnRadius { get; set; }
-        public int CanLootAI { get; set; }
-        public int InfectedDeletionRadius { get; set; }
+        public int Active { get; set; }
+        public decimal InfectedDeletionRadius { get; set; }
+        public BindingList<ExpansionQuestAISpawn> AISpawns { get; set; }
+        public decimal MaxDistance { get; set; }
+        public decimal MinDistance { get; set; }
+        public BindingList<string> AllowedWeapons { get; set; }
+        public BindingList<string> AllowedDamageZones { get; set; }
+
 
         public QuestObjectivesAICamp() 
         {
-            AICamp = new Aicamp();
+            AISpawns = new BindingList<ExpansionQuestAISpawn>();
         }
         public override string ToString()
         {
@@ -30,29 +32,6 @@ namespace DayZeLib
         }
     }
 
-    public class Aicamp
-    {
-        public BindingList<decimal[]> Positions { get; set; }
-        public string NPCSpeed { get; set; }
-        public string NPCMode { get; set; }
-        public string NPCFaction { get; set; }
-        public string NPCLoadoutFile { get; set; }
-        public decimal NPCAccuracyMin { get; set; }
-        public decimal NPCAccuracyMax { get; set; }
-        public BindingList<string> ClassNames { get; set; }
-        public int SpecialWeapon { get; set; }
-        public BindingList<string> AllowedWeapons { get; set; }
-
-        public Aicamp()
-        {
-            Positions = new BindingList<decimal[]>();
-            ClassNames = new BindingList<string>();
-            AllowedWeapons = new BindingList<string>();
-        }
-        public override string ToString()
-        {
-            return NPCFaction;
-        }
-    }
+   
 
 }

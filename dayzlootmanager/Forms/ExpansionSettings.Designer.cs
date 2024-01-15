@@ -288,6 +288,7 @@ namespace DayZeEditor
             this.SafezoneCB = new System.Windows.Forms.CheckBox();
             this.VehicleCarKeyCB = new System.Windows.Forms.CheckBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.EnableProneDeathHandItemDropFixCB = new System.Windows.Forms.CheckBox();
             this.darkLabel215 = new DarkUI.Controls.DarkLabel();
             this.ServerUpdateRateLimitNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel216 = new DarkUI.Controls.DarkLabel();
@@ -1376,6 +1377,7 @@ namespace DayZeEditor
             this.addNewSubMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeSubMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.EnableCraftingRecipesTabCB = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -5043,6 +5045,7 @@ namespace DayZeEditor
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.EnableProneDeathHandItemDropFixCB);
             this.groupBox7.Controls.Add(this.darkLabel215);
             this.groupBox7.Controls.Add(this.ServerUpdateRateLimitNUD);
             this.groupBox7.Controls.Add(this.darkLabel216);
@@ -5054,6 +5057,19 @@ namespace DayZeEditor
             this.groupBox7.TabIndex = 0;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Debug";
+            // 
+            // EnableProneDeathHandItemDropFixCB
+            // 
+            this.EnableProneDeathHandItemDropFixCB.AutoSize = true;
+            this.EnableProneDeathHandItemDropFixCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.EnableProneDeathHandItemDropFixCB.Location = new System.Drawing.Point(6, 75);
+            this.EnableProneDeathHandItemDropFixCB.Name = "EnableProneDeathHandItemDropFixCB";
+            this.EnableProneDeathHandItemDropFixCB.Size = new System.Drawing.Size(216, 17);
+            this.EnableProneDeathHandItemDropFixCB.TabIndex = 40;
+            this.EnableProneDeathHandItemDropFixCB.Text = "Enable Prone Death Hand Item Drop Fix";
+            this.EnableProneDeathHandItemDropFixCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.EnableProneDeathHandItemDropFixCB.UseVisualStyleBackColor = true;
+            this.EnableProneDeathHandItemDropFixCB.CheckedChanged += new System.EventHandler(this.EnableProneDeathHandItemDropFixCB_CheckedChanged);
             // 
             // darkLabel215
             // 
@@ -6684,6 +6700,7 @@ namespace DayZeEditor
             // 
             // groupBox11
             // 
+            this.groupBox11.Controls.Add(this.EnableCraftingRecipesTabCB);
             this.groupBox11.Controls.Add(this.ShowPlayerFactionCB);
             this.groupBox11.Controls.Add(this.ShowHaBStatsCB);
             this.groupBox11.Controls.Add(this.DisplayServerSettingsInServerInfoTabCB);
@@ -19333,6 +19350,19 @@ namespace DayZeEditor
             this.removeSubMenuCategoryToolStripMenuItem.Text = "Remove Sub Menu Category";
             this.removeSubMenuCategoryToolStripMenuItem.Click += new System.EventHandler(this.removeSubMenuCategoryToolStripMenuItem_Click);
             // 
+            // EnableCraftingRecipesTabCB
+            // 
+            this.EnableCraftingRecipesTabCB.AutoSize = true;
+            this.EnableCraftingRecipesTabCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.EnableCraftingRecipesTabCB.Location = new System.Drawing.Point(320, 23);
+            this.EnableCraftingRecipesTabCB.Name = "EnableCraftingRecipesTabCB";
+            this.EnableCraftingRecipesTabCB.Size = new System.Drawing.Size(162, 17);
+            this.EnableCraftingRecipesTabCB.TabIndex = 25;
+            this.EnableCraftingRecipesTabCB.Text = "Enable Crafting Recipes Tab";
+            this.EnableCraftingRecipesTabCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.EnableCraftingRecipesTabCB.UseVisualStyleBackColor = true;
+            this.EnableCraftingRecipesTabCB.CheckedChanged += new System.EventHandler(this.EnableCraftingRecipesTabCB_CheckedChanged);
+            // 
             // ExpansionSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -21173,5 +21203,7 @@ namespace DayZeEditor
         private System.Windows.Forms.GroupBox groupBox95;
         private System.Windows.Forms.ListBox SpawnLoadoutsLB;
         private System.Windows.Forms.CheckBox AuthenticateCodeLockIfTerritoryMemberCB;
+        private System.Windows.Forms.CheckBox EnableProneDeathHandItemDropFixCB;
+        private System.Windows.Forms.CheckBox EnableCraftingRecipesTabCB;
     }
 }

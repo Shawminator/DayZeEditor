@@ -782,9 +782,16 @@ namespace DayZeEditor
 
             m_EmoteIsStaticCB.Checked = currentp2pmarket.m_EmoteIsStatic == 1 ? true : false;
             m_IsGlobalTraderCB.Checked = currentp2pmarket.m_IsGlobalTrader == 1 ? true : false;
+            m_DisplayCurrencyValueNUD.Value = currentp2pmarket.m_DisplayCurrencyValue;
+            m_DisplayCurrencyNameTB.Text = currentp2pmarket.m_DisplayCurrencyName;
 
             m_LoadoutFileCB.SelectedIndex = m_LoadoutFileCB.FindStringExact(currentp2pmarket.m_LoadoutFile);
             m_FactionCB.SelectedIndex = m_FactionCB.FindStringExact(currentp2pmarket.m_Faction);
+
+            m_CurrenciesLB.DisplayMember = "DisplayName";
+            m_CurrenciesLB.ValueMember = "Value";
+            m_CurrenciesLB.DataSource = currentp2pmarket.m_Currencies;
+
             useraction = true;
 
 
@@ -947,17 +954,42 @@ namespace DayZeEditor
             currentp2pmarket.m_IsGlobalTrader = m_IsGlobalTraderCB.Checked == true ? 1 : 0;
             currentp2pmarket.isDirty = true;
         }
-
-
-
-
-
-
-
-
-
+        private void m_DisplayCurrencyValueNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentp2pmarket.m_DisplayCurrencyValue = (int)m_DisplayCurrencyValueNUD.Value;
+            currentp2pmarket.isDirty = true;
+        }
+        private void m_DisplayCurrencyNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentp2pmarket.m_DisplayCurrencyName = m_DisplayCurrencyNameTB.Text;
+            currentp2pmarket.isDirty = true;
+        }
+        private void darkButton14_Click(object sender, EventArgs e)
+        {
+            AddItemfromString form = new AddItemfromString();
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    if(!currentp2pmarket.m_Currencies.Contains(l))
+                        currentp2pmarket.m_Currencies.Add(l);
+                }
+            }
+            currentp2pmarket.isDirty = true;
+        }
+        private void darkButton13_Click(object sender, EventArgs e)
+        {
+            if (m_CurrenciesLB.SelectedItems.Count < 1) return;
+            for (int i = 0; i < m_CurrenciesLB.SelectedItems.Count; i++)
+            {
+                currentp2pmarket.m_Currencies.Remove(m_CurrenciesLB.GetItemText(m_CurrenciesLB.SelectedItems[0]));
+            }
+            currentp2pmarket.isDirty = true;
+        }
         #endregion p2pmarket
-
-
     }
 }

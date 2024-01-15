@@ -11,7 +11,7 @@ namespace DayZeLib
 {
     public class ExpansionBookSettings
     {
-        const int CurrentVersion = 4;
+        const int CurrentVersion = 5;
 
         public int m_Version { get; set; } //currently 3
         public int EnableStatusTab { get; set; }
@@ -29,6 +29,7 @@ namespace DayZeLib
         public BindingList<ExpansionBookLink> Links { get; set; }
         public BindingList<ExpansionBookDescriptionCategory> Descriptions { get; set; }
         public BindingList<ExpansionBookCraftingCategory> CraftingCategories { get; set; }
+        public int EnableCraftingRecipesTab { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }
@@ -52,6 +53,7 @@ namespace DayZeLib
             DefaultLinks();
             DefaultDescriptions();
             DefaultCraftingCategories();
+            EnableCraftingRecipesTab = 0;
         }
         public bool checkver()
         {

@@ -152,18 +152,16 @@ namespace DayZeEditor
                 }
                 catch { }
             }
-            ObjectivesAICampNPCLoadoutFileCB.DisplayMember = "DisplayName";
-            ObjectivesAICampNPCLoadoutFileCB.ValueMember = "Value";
-            ObjectivesAICampNPCLoadoutFileCB.DataSource = LoadoutList;
+            expansionQuestAISpawnControlAICamp.LoadoutList = LoadoutList;
+            expansionQuestAISpawnControlAICamp.setuplists();
 
             ObjectivesAIVIPNPCLoadoutFileCB.DisplayMember = "DisplayName";
             ObjectivesAIVIPNPCLoadoutFileCB.ValueMember = "Value";
             ObjectivesAIVIPNPCLoadoutFileCB.DataSource = LoadoutList;
 
-            ObjectivesAIPatrolNPCLoadoutFileCB.DisplayMember = "DisplayName";
-            ObjectivesAIPatrolNPCLoadoutFileCB.ValueMember = "Value";
-            ObjectivesAIPatrolNPCLoadoutFileCB.DataSource = LoadoutList;
 
+            expansionQuestAISpawnControlAIPatrol.LoadoutList = LoadoutList;
+            expansionQuestAISpawnControlAIPatrol.setuplists();
 
             QuestsSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Settings\\QuestSettings.json";
             if (!File.Exists(QuestsSettingsPath))
@@ -268,8 +266,8 @@ namespace DayZeEditor
         private void SetupFactionsDropDownBoxes()
         {
             useraction = false;
-            ObjectivesAICampNPCFactionCB.DataSource = new BindingList<string>(Factions);
-            ObjectivesAIPatrolNPCFactionCB.DataSource = new BindingList<string>(Factions);
+            expansionQuestAISpawnControlAICamp.Factions = Factions;
+            expansionQuestAISpawnControlAIPatrol.Factions = Factions;
             QuestNPCFactionLB.DataSource = new BindingList<string>(Factions);
 
             List<string> questrequiredfaction = new List<string>();
@@ -811,6 +809,7 @@ namespace DayZeEditor
             currentQuestNPC = QuestNPCListLB.SelectedItem as ExpansionQuestNPCs;
             useraction = false;
             QuestNPCFilenameTB.Text = currentQuestNPC.Filename;
+            QuestNPCActiveCB.Checked = currentQuestNPC.Active == 1 ? true : false;
             QuestNPCConfigVersionNUD.Value = currentQuestNPC.ConfigVersion;
             QuestNPCIDNUD.Value = currentQuestNPC.ID;
             QuestNPCsClassNameCB.SelectedIndex = QuestNPCsClassNameCB.FindStringExact(currentQuestNPC.ClassName);
@@ -862,6 +861,12 @@ namespace DayZeEditor
                 else
                     QuestNPCListLB.SelectedIndex = 0;
             }
+        }
+        private void QuestNPCActiveCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentQuestNPC.Active = QuestNPCActiveCB.Checked == true ? 1 : 0;
+            currentQuestNPC.isDirty = true;
         }
         private void QuestNPCsClassNameCB_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1216,6 +1221,9 @@ namespace DayZeEditor
             QuestFactionRewardCB.SelectedIndex = QuestFactionRewardCB.FindStringExact(CurrentQuest.FactionReward);
             QuestRequiredFactionCB.SelectedIndex = QuestRequiredFactionCB.FindStringExact(CurrentQuest.RequiredFaction);
 
+            QuestActiveCB.Checked = CurrentQuest.Active == 1 ? true : false;
+            QuestSuppressQuestLogOnCompetionCB.Checked = CurrentQuest.SuppressQuestLogOnCompetion == 1 ? true : false;
+
             QuestIsAchievementCB.Checked = CurrentQuest.IsAchievement == 1 ? true : false;
             QuestRepeatableCB.Checked = CurrentQuest.Repeatable == 1 ? true : false;
             QuestIsDailyQuestCB.Checked = CurrentQuest.IsDailyQuest == 1 ? true : false;
@@ -1271,6 +1279,19 @@ namespace DayZeEditor
             QuestColour.Invalidate();
 
             useraction = true;
+        }
+        private void QuestActiveCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentQuest.Active = QuestActiveCB.Checked == true ? 1 : 0;
+            CurrentQuest.isDirty = true;
+        }
+
+        private void QuestSuppressQuestLogOnCompetionCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentQuest.SuppressQuestLogOnCompetion = QuestSuppressQuestLogOnCompetionCB.Checked == true ? 1 : 0;
+            CurrentQuest.isDirty = true;
         }
         private void QuestTypeCB_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -2328,7 +2349,65 @@ namespace DayZeEditor
                     break;
             }
         }
-
+        private void QuestObjectivesActiveCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            switch (CurrentTreeNodeTag._ObjectiveTypeEnum)
+            {
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
+                    QuestObjectivesTarget t = CurrentTreeNodeTag as QuestObjectivesTarget;
+                    t.Active = QuestObjectivesActiveCB.Checked == true ? 1 : 0;
+                    t.isDirty = true;
+                    break;
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
+                    QuestObjectivesTravel tr = CurrentTreeNodeTag as QuestObjectivesTravel;
+                    tr.Active = QuestObjectivesActiveCB.Checked == true ? 1 : 0;
+                    tr.isDirty = true;
+                    break;
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
+                    QuestObjectivesCollection coll = CurrentTreeNodeTag as QuestObjectivesCollection;
+                    coll.Active = QuestObjectivesActiveCB.Checked == true ? 1 : 0;
+                    coll.isDirty = true;
+                    break;
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
+                    QuestObjectivesDelivery del = CurrentTreeNodeTag as QuestObjectivesDelivery;
+                    del.Active = QuestObjectivesActiveCB.Checked == true ? 1 : 0;
+                    del.isDirty = true;
+                    break;
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
+                    QuestObjectivesTreasureHunt th = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
+                    th.Active = QuestObjectivesActiveCB.Checked == true ? 1 : 0;
+                    th.isDirty = true;
+                    break;
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
+                    QuestObjectivesAIPatrol aip = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+                    aip.Active = QuestObjectivesActiveCB.Checked == true ? 1 : 0;
+                    aip.isDirty = true;
+                    break;
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
+                    QuestObjectivesAICamp aic = CurrentTreeNodeTag as QuestObjectivesAICamp;
+                    aic.Active = QuestObjectivesActiveCB.Checked == true ? 1 : 0;
+                    aic.isDirty = true;
+                    break;
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
+                    QuestObjectivesAIVIP aivip = CurrentTreeNodeTag as QuestObjectivesAIVIP;
+                    aivip.Active = QuestObjectivesActiveCB.Checked == true ? 1 : 0;
+                    aivip.isDirty = true;
+                    break;
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
+                    QuestObjectivesAction a = CurrentTreeNodeTag as QuestObjectivesAction;
+                    a.Active = QuestObjectivesActiveCB.Checked == true ? 1 : 0;
+                    a.isDirty = true;
+                    break;
+                case QuExpansionQuestObjectiveTypeestType.CRAFTING:
+                    QuestObjectivesCrafting c = CurrentTreeNodeTag as QuestObjectivesCrafting;
+                    c.Active = QuestObjectivesActiveCB.Checked == true ? 1 : 0;
+                    c.isDirty = true;
+                    break;
+                default:
+                    break;
+            }
+        }
         /// <summary>
         /// Objective actions
         /// </summary>
@@ -2344,6 +2423,7 @@ namespace DayZeEditor
                 _ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.ACTION,
                 ObjectiveText = "New Action Objective",
                 TimeLimit = -1,
+                Active = 1,
                 ActionNames = new BindingList<string>(),
                 AllowedClassNames = new BindingList<string>(),
                 ExcludedClassNames = new BindingList<string>(),
@@ -2369,24 +2449,73 @@ namespace DayZeEditor
                 _ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.AICAMP,
                 ObjectiveText = "New AICamp Objective",
                 TimeLimit = -1,
-                AICamp = new Aicamp()
+                Active = 1,
+                InfectedDeletionRadius = (decimal)500.0,
+                AISpawns = new BindingList<ExpansionQuestAISpawn>()
                 {
-                    Positions = new BindingList<decimal[]>(),
-                    NPCSpeed = "JOG",
-                    NPCMode = "HALT",
-                    NPCFaction = "West",
-                    NPCLoadoutFile = "BanditLoadout",
-                    NPCAccuracyMin = 0,
-                    NPCAccuracyMax = 0,
-                    ClassNames = new BindingList<string>(),
-                    SpecialWeapon = 0,
-                    AllowedWeapons = new BindingList<string>()
+                    new ExpansionQuestAISpawn()
+                    {
+                        NumberOfAI = 1,
+                        NPCName = "Quest Target",
+                        Waypoints = new BindingList<decimal[]>(),
+                        Behaviour = 0,
+                        Formation = "RANDOM",
+                        Loadout = "BanditLoadout",
+                        Faction = "West",
+                        Speed = (decimal)0.0,
+                        ThreatSpeed = (decimal)3.0,
+                        MinAccuracy = (decimal)0.0,
+                        MaxAccuracy = (decimal)0.0,
+                        CanBeLooted = 1,
+                        UnlimitedReload = 1,
+                        ThreatDistanceLimit = (decimal)1000.0,
+                        DamageMultiplier = (decimal)1.0,
+                        DamageReceivedMultiplier = (decimal)1.0,
+                        ClassNames = new BindingList<string>() {
+                            "eAI_SurvivorF_Eva",
+                            "eAI_SurvivorF_Frida",
+                            "eAI_SurvivorF_Gabi",
+                            "eAI_SurvivorF_Helga",
+                            "eAI_SurvivorF_Irena",
+                            "eAI_SurvivorF_Judy",
+                            "eAI_SurvivorF_Keiko",
+                            "eAI_SurvivorF_Linda",
+                            "eAI_SurvivorF_Maria",
+                            "eAI_SurvivorF_Naomi",
+                            "eAI_SurvivorF_Baty",
+                            "eAI_SurvivorM_Boris",
+                            "eAI_SurvivorM_Cyril",
+                            "eAI_SurvivorM_Denis",
+                            "eAI_SurvivorM_Elias",
+                            "eAI_SurvivorM_Francis",
+                            "eAI_SurvivorM_Guo",
+                            "eAI_SurvivorM_Hassan",
+                            "eAI_SurvivorM_Indar",
+                            "eAI_SurvivorM_Jose",
+                            "eAI_SurvivorM_Kaito",
+                            "eAI_SurvivorM_Lewis",
+                            "eAI_SurvivorM_Manua",
+                            "eAI_SurvivorM_Mirek",
+                            "eAI_SurvivorM_Niki",
+                            "eAI_SurvivorM_Oliver",
+                            "eAI_SurvivorM_Peter",
+                            "eAI_SurvivorM_Quinn",
+                            "eAI_SurvivorM_Rolf",
+                            "eAI_SurvivorM_Seth",
+                            "eAI_SurvivorM_Taiki"
+                        },
+                        SniperProneDistanceThreshold = (decimal)300.0,
+                        RespawnTime = (decimal)1.0,
+                        DespawnTime = (decimal)1.0,
+                        MinDistanceRadius = (decimal)50.0,
+                        MaxDistanceRadius = (decimal)150.0,
+                        DespawnRadius = (decimal)500.0
+                    }
                 },
-                MinDistRadius = 50,
-                MaxDistRadius = 150,
-                DespawnRadius = 880,
-                CanLootAI = 1,
-                InfectedDeletionRadius = 500,
+                MinDistance = (decimal)-1.0,
+                MaxDistance = (decimal)-1.0,
+                AllowedWeapons = new BindingList<string>(),
+                AllowedDamageZones = new BindingList<string>(),
                 isDirty = true
             };
             QuestObjectives.Objectives.Add(newAICampobjective);
@@ -2408,25 +2537,6 @@ namespace DayZeEditor
                 _ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.AIPATROL,
                 ObjectiveText = "New AIPatrol Objective",
                 TimeLimit = -1,
-                AIPatrol = new AIPatrol()
-                {
-                    NPCUnits = 4,
-                    Waypoints = new BindingList<decimal[]>(),
-                    NPCSpeed = "JOG",
-                    NPCMode = "HALT",
-                    NPCFaction = "West",
-                    NPCFormation = "RANDOM",
-                    NPCLoadoutFile = "BanditLoadout",
-                    NPCAccuracyMin = 0,
-                    NPCAccuracyMax = 0,
-                    ClassNames = new BindingList<string>(),
-                    SpecialWeapon = 0,
-                    AllowedWeapons = new BindingList<string>()
-                },
-                MinDistRadius = 50,
-                MaxDistRadius = 150,
-                DespawnRadius = 880,
-                CanLootAI = 1,
                 isDirty = true
             };
             QuestObjectives.Objectives.Add(newAIPatrolobjective);
@@ -2448,12 +2558,12 @@ namespace DayZeEditor
                 _ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.AIVIP,
                 ObjectiveText = "New AIESCORT Objective",
                 TimeLimit = -1,
+                Active = 1,
                 Position = new decimal[] { 0,0,0},
                 MaxDistance = -1,
-                AIVIP = new AIVIP()
-                {
-                    NPCLoadoutFile = "BanditLoadout",
-                },
+                NPCLoadoutFile = "BanditLoadout",
+                NPCClassName = "eAI_SurvivorF_Maria",
+                NPCName = "Survivior",
                 MarkerName = "",
                 ShowDistance = 0,
                 isDirty = true
@@ -2553,18 +2663,16 @@ namespace DayZeEditor
                 _ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.TARGET,
                 ObjectiveText = "New Target Objective",
                 TimeLimit = -1,
-                Position = new decimal[] { 0,0,0},
+                Position = new decimal[] { 0, 0, 0 },
                 MaxDistance = -1,
-                Target = new Target()
-                {
-                    Amount = 0,
-                    ClassNames = new BindingList<string>(),
-                    CountSelfKill = 0,
-                    CountAIPlayers = 0,
-                    SpecialWeapon = 0,
-                    AllowedWeapons = new BindingList<string>(),
-                    ExcludedClassNames = new BindingList<string>()
-                },
+                Amount = 0,
+                ClassNames = new BindingList<string>(),
+                CountSelfKill = 0,
+                CountAIPlayers = 0,
+                AllowedWeapons = new BindingList<string>(),
+                ExcludedClassNames = new BindingList<string>(),
+                AllowedDamageZones = new BindingList<string>(),
+                AllowedTargetFactions = new BindingList<string>(),
                 isDirty = true
             };
             QuestObjectives.Objectives.Add(newTargetobjective);
@@ -2771,164 +2879,24 @@ namespace DayZeEditor
             QuestObjectivesAICamp CurrentAICamp = e.Node.Tag as QuestObjectivesAICamp;
             QuestObjectivesObjectiveTextTB.Text = CurrentAICamp.ObjectiveText;
             QuestObjectivesTimeLimitNUD.Value = CurrentAICamp.TimeLimit;
-            ObjectiovesAICampNPCSpeedCB.SelectedIndex = ObjectiovesAICampNPCSpeedCB.FindStringExact(CurrentAICamp.AICamp.NPCSpeed);
-            ObjectivesAICampNPCModeCB.SelectedIndex = ObjectivesAICampNPCModeCB.FindStringExact(CurrentAICamp.AICamp.NPCMode);
-            ObjectivesAICampNPCFactionCB.SelectedIndex = ObjectivesAICampNPCFactionCB.FindStringExact(CurrentAICamp.AICamp.NPCFaction);
-            ObjectivesAICampNPCLoadoutFileCB.SelectedIndex = ObjectivesAICampNPCLoadoutFileCB.FindStringExact(CurrentAICamp.AICamp.NPCLoadoutFile);
-            ObjectivesAICampNPCAccuracyMaxNUD.Value = CurrentAICamp.AICamp.NPCAccuracyMax;
-            ObjectivesAICampNPCAccuracyMinNUD.Value = CurrentAICamp.AICamp.NPCAccuracyMin;
-            ObjectivesAICampSpecialWeaponCB.Checked = CurrentAICamp.AICamp.SpecialWeapon == 1 ? true : false;
-            ObjectivesAICampMinDistRadiusNUD.Value = CurrentAICamp.MinDistRadius;
-            ObjectivesAICampMaxDistRadiusNUD.Value = CurrentAICamp.MaxDistRadius;
-            ObjectivesAICampDespawnRadiusNUD.Value = CurrentAICamp.DespawnRadius;
-            ObjectiovesAICampCanLootAICB.Checked = CurrentAICamp.CanLootAI == 1 ? true : false;
+            QuestObjectivesActiveCB.Checked = CurrentAICamp.Active == 1 ? true : false;
             QuestObjectovesInfectedDeletionRadiusNUD.Value = CurrentAICamp.InfectedDeletionRadius;
+            ObjectivesAICampMaxDistanceNUD.Value = CurrentAICamp.MaxDistance;
+            ObjectivesAICampMinDistanceNUD.Value = CurrentAICamp.MinDistance;
 
-            ObjectivesAICampPositionsLB.DisplayMember = "DisplayName";
-            ObjectivesAICampPositionsLB.ValueMember = "Value";
-            ObjectivesAICampPositionsLB.DataSource = CurrentAICamp.AICamp.Positions;
-
-            ObjectivesAiCampClassnamesLB.DisplayMember = "DisplayName";
-            ObjectivesAiCampClassnamesLB.ValueMember = "Value";
-            ObjectivesAiCampClassnamesLB.DataSource = CurrentAICamp.AICamp.ClassNames;
+            ObjectivesAICampAISpawnsLB.DisplayMember = "DisplayName";
+            ObjectivesAICampAISpawnsLB.ValueMember = "Value";
+            ObjectivesAICampAISpawnsLB.DataSource = CurrentAICamp.AISpawns;
 
             ObjectivesAICampAllowedWeaponsLB.DisplayMember = "DisplayName";
             ObjectivesAICampAllowedWeaponsLB.ValueMember = "Value";
-            ObjectivesAICampAllowedWeaponsLB.DataSource = CurrentAICamp.AICamp.AllowedWeapons;
+            ObjectivesAICampAllowedWeaponsLB.DataSource = CurrentAICamp.AllowedWeapons;
+
+            ObjectivesAICampAllowedDamageZonesLB.DisplayMember = "DisplayName";
+            ObjectivesAICampAllowedDamageZonesLB.ValueMember = "Value";
+            ObjectivesAICampAllowedDamageZonesLB.DataSource = CurrentAICamp.AllowedDamageZones;
+
             useraction = true;
-        }
-        private void ObjectivesAICampPositionsLB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ObjectivesAICampPositionsLB.SelectedItems.Count < 1) return;
-            CurrentWapypoint = ObjectivesAICampPositionsLB.SelectedItem as decimal[];
-            useraction = false;
-            numericUpDown9.Value = (decimal)CurrentWapypoint[0];
-            numericUpDown11.Value = (decimal)CurrentWapypoint[1];
-            numericUpDown12.Value = (decimal)CurrentWapypoint[2];
-            useraction = true;
-
-        }
-        private void darkButton20_Click(object sender, EventArgs e)
-        {
-            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
-            CurrentAICam.AICamp.Positions.Add(new decimal[] { 0, 0, 0 });
-            CurrentAICam.isDirty = true;
-        }
-        private void darkButton19_Click(object sender, EventArgs e)
-        {
-            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
-
-            CurrentAICam.AICamp.Positions.Remove(CurrentWapypoint);
-            CurrentAICam.isDirty = true;
-            ObjectivesAICampPositionsLB.Refresh();
-        }
-        private void darkButton18_Click(object sender, EventArgs e)
-        {
-            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
-            string[] fileContent = new string[] { };
-            var filePath = string.Empty;
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    filePath = openFileDialog.FileName;
-                    fileContent = File.ReadAllLines(filePath);
-                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        CurrentAICam.AICamp.Positions.Clear();
-                    }
-                    for (int i = 0; i < fileContent.Length; i++)
-                    {
-                        if (fileContent[i] == "") continue;
-                        string[] linesplit = fileContent[i].Split('|');
-                        string[] XYZ = linesplit[1].Split(' ');
-                        decimal[] newfloatarray = new decimal[] { Convert.ToDecimal(XYZ[0]), Convert.ToDecimal(XYZ[1]), Convert.ToDecimal(XYZ[2]) };
-                        CurrentAICam.AICamp.Positions.Add(newfloatarray);
-
-                    }
-                    ObjectivesAICampPositionsLB.SelectedIndex = -1;
-                    ObjectivesAICampPositionsLB.SelectedIndex = ObjectivesAICampPositionsLB.Items.Count - 1;
-                    ObjectivesAICampPositionsLB.Refresh();
-                    CurrentAICam.isDirty = true;
-                }
-            }
-        }
-        private void darkButton17_Click(object sender, EventArgs e)
-        {
-            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
-            StringBuilder SB = new StringBuilder();
-            foreach (decimal[] array in CurrentAICam.AICamp.Positions)
-            {
-                SB.AppendLine("eAI_SurvivorM_Lewis|" + array[0].ToString() + " " + array[1].ToString() + " " + array[2].ToString() + "|0.0 0.0 0.0");
-            }
-            SaveFileDialog save = new SaveFileDialog();
-            if (save.ShowDialog() == DialogResult.OK)
-            {
-                File.WriteAllText(save.FileName + ".map", SB.ToString());
-            }
-        }
-        private void darkButton16_Click(object sender, EventArgs e)
-        {
-            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string filePath = openFileDialog.FileName;
-                    DZE importfile = DZEHelpers.LoadFile(filePath);
-                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        CurrentAICam.AICamp.Positions.Clear();
-                    }
-                    foreach (Editorobject eo in importfile.EditorObjects)
-                    {
-                        decimal[] newfloatarray = new decimal[] { Convert.ToDecimal(eo.Position[0]), Convert.ToDecimal(eo.Position[1]), Convert.ToDecimal(eo.Position[2]) };
-                        CurrentAICam.AICamp.Positions.Add(newfloatarray);
-                    }
-                    ObjectivesAICampPositionsLB.SelectedIndex = -1;
-                    ObjectivesAICampPositionsLB.SelectedIndex = ObjectivesAICampPositionsLB.Items.Count - 1;
-                    ObjectivesAICampPositionsLB.Refresh();
-                    CurrentAICam.isDirty = true;
-                }
-            }
-        }
-        private void darkButton15_Click(object sender, EventArgs e)
-        {
-            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
-            DZE newdze = new DZE()
-            {
-                MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
-            };
-            foreach (decimal[] array in CurrentAICam.AICamp.Positions)
-            {
-                Editorobject eo = new Editorobject()
-                {
-                    Type = "eAI_SurvivorM_Jose",
-                    DisplayName = "eAI_SurvivorM_Jose",
-                    Position = new float[] { Convert.ToSingle(array[0]), Convert.ToSingle(array[1]), Convert.ToSingle(array[2])},
-                    Orientation = new float[] { 0, 0, 0 },
-                    Scale = 1.0f,
-                    Flags = 2147483647
-                };
-                newdze.EditorObjects.Add(eo);
-            }
-            newdze.CameraPosition = newdze.EditorObjects[0].Position;
-            SaveFileDialog save = new SaveFileDialog();
-            if (save.ShowDialog() == DialogResult.OK)
-            {
-                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-                string jsonString = JsonSerializer.Serialize(newdze, options);
-                File.WriteAllText(save.FileName + ".dze", jsonString);
-            }
-        }
-        private void numericUpDown9_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
-            CurrentWapypoint[0] = (decimal)numericUpDown9.Value;
-            CurrentAICam.isDirty = true;
         }
         private void QuestObjectovesInfectedDeletionRadiusNUD_ValueChanged(object sender, EventArgs e)
         {
@@ -2937,96 +2905,21 @@ namespace DayZeEditor
             CurrentAICam.InfectedDeletionRadius = (int)QuestObjectovesInfectedDeletionRadiusNUD.Value;
             CurrentAICam.isDirty = true;
         }
-        private void numericUpDown11_ValueChanged(object sender, EventArgs e)
+        private void ObjectivesAICampMinDistanceNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
-            CurrentWapypoint[1] = (decimal)numericUpDown11.Value;
+            CurrentAICam.MinDistance = ObjectivesAICampMinDistanceNUD.Value;
             CurrentAICam.isDirty = true;
         }
-        private void numericUpDown12_ValueChanged(object sender, EventArgs e)
+        private void ObjectivesAICampMaxDistanceNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
-            CurrentWapypoint[2] = (decimal)numericUpDown12.Value;
+            CurrentAICam.MaxDistance = ObjectivesAICampMaxDistanceNUD.Value;
             CurrentAICam.isDirty = true;
         }
-        private void ObjectiovesAICampNPCSpeedCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
-            CurrentAICam.AICamp.NPCSpeed = ObjectiovesAICampNPCSpeedCB.GetItemText(ObjectiovesAICampNPCSpeedCB.SelectedItem);
-            CurrentAICam.isDirty = true;
-        }
-        private void ObjectivesAICampNPCModeCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
-            CurrentAICam.AICamp.NPCMode = ObjectivesAICampNPCModeCB.GetItemText(ObjectivesAICampNPCModeCB.SelectedItem);
-            CurrentAICam.isDirty = true;
-        }
-        private void ObjectivesAICampNPCFactionCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
-            CurrentAICam.AICamp.NPCFaction = ObjectivesAICampNPCFactionCB.GetItemText(ObjectivesAICampNPCFactionCB.SelectedItem);
-            CurrentAICam.isDirty = true;
-        }
-        private void ObjectivesAICampNPCLoadoutFileCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
-            CurrentAICam.AICamp.NPCLoadoutFile = ObjectivesAICampNPCLoadoutFileCB.GetItemText(ObjectivesAICampNPCLoadoutFileCB.SelectedItem);
-            CurrentAICam.isDirty = true;
-        }
-        private void ObjectivesAICampNPCAccuracyMinNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
-            CurrentAICam.AICamp.NPCAccuracyMin = ObjectivesAICampNPCAccuracyMinNUD.Value;
-            CurrentAICam.isDirty = true;
-        }
-        private void ObjectivesAICampNPCAccuracyMaxNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
-            CurrentAICam.AICamp.NPCAccuracyMax = ObjectivesAICampNPCAccuracyMaxNUD.Value;
-            CurrentAICam.isDirty = true;
-        }
-        private void darkButton22_Click(object sender, EventArgs e)
-        {
-            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
-            AddItemfromString form = new AddItemfromString();
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                List<string> addedtypes = form.addedtypes.ToList();
-                foreach (string l in addedtypes)
-                {
-                    if(!CurrentAICam.AICamp.ClassNames.Contains(l))
-                    CurrentAICam.AICamp.ClassNames.Add(l);
-                }
-            }
-            CurrentAICam.isDirty = true;
-        }
-        private void darkButton21_Click(object sender, EventArgs e)
-        {
-            if (ObjectivesAiCampClassnamesLB.SelectedItems.Count < 1) return;
-            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
-            for (int i = 0; i < ObjectivesAiCampClassnamesLB.SelectedItems.Count; i++)
-            {
-                CurrentAICam.AICamp.ClassNames.Remove(ObjectivesAiCampClassnamesLB.GetItemText(ObjectivesAiCampClassnamesLB.SelectedItems[0]));
-            }
-            CurrentAICam.isDirty = true;
-        }
-        private void ObjectivesAICampSpecialWeaponCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
-            CurrentAICam.AICamp.SpecialWeapon = ObjectivesAICampSpecialWeaponCB.Checked == true ? 1 : 0;
-            CurrentAICam.isDirty = true;
-        }
-        private void darkButton31_Click(object sender, EventArgs e)
+        private void ObjectivesAICampAllowedWeaponsAddButton_Click(object sender, EventArgs e)
         {
             AddItemfromTypes form = new AddItemfromTypes
             {
@@ -3041,9 +2934,9 @@ namespace DayZeEditor
                 QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
                 foreach (string l in addedtypes)
                 {
-                    if (!CurrentAICam.AICamp.AllowedWeapons.Contains(l))
+                    if (!CurrentAICam.AllowedWeapons.Contains(l))
                     {
-                        CurrentAICam.AICamp.AllowedWeapons.Add(l);
+                        CurrentAICam.AllowedWeapons.Add(l);
                         CurrentAICam.isDirty = true;
                     }
                 }
@@ -3054,313 +2947,17 @@ namespace DayZeEditor
                 return;
             }
         }
-        private void darkButton29_Click(object sender, EventArgs e)
+        private void ObjectivesAICampAllowedWeaponsRemoveButton_Click(object sender, EventArgs e)
         {
             if (ObjectivesAICampAllowedWeaponsLB.SelectedItems.Count < 1) return;
             QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
             for (int i = 0; i < ObjectivesAICampAllowedWeaponsLB.SelectedItems.Count; i++)
             {
-                CurrentAICam.AICamp.AllowedWeapons.Remove(ObjectivesAICampAllowedWeaponsLB.GetItemText(ObjectivesAICampAllowedWeaponsLB.SelectedItems[0]));
+                CurrentAICam.AllowedWeapons.Remove(ObjectivesAICampAllowedWeaponsLB.GetItemText(ObjectivesAICampAllowedWeaponsLB.SelectedItems[0]));
             }
             CurrentAICam.isDirty = true;
         }
-        private void ObjectivesAICampMinDistRadiusNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
-            CurrentAICam.MinDistRadius = ObjectivesAICampMinDistRadiusNUD.Value;
-            CurrentAICam.isDirty = true;
-        }
-        private void ObjectivesAICampMaxDistRadiusNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
-            CurrentAICam.MaxDistRadius = ObjectivesAICampMaxDistRadiusNUD.Value;
-            CurrentAICam.isDirty = true;
-        }
-        private void ObjectivesAICampDespawnRadiusNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
-            CurrentAICam.DespawnRadius = ObjectivesAICampDespawnRadiusNUD.Value;
-            CurrentAICam.isDirty = true;
-        }
-        private void ObjectiovesAICampCanLootAICB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
-            CurrentAICam.CanLootAI = ObjectiovesAICampCanLootAICB.Checked == true ? 1:0;
-            CurrentAICam.isDirty = true;
-        }
-        /// <summary>
-        /// AI Patrol
-        /// </summary>
-        private void SetupobjectiveAIPatrol(TreeNodeMouseClickEventArgs e)
-        {
-            useraction = false;
-            QuestObjectivesAIPatrol CurrentAIPatrol = e.Node.Tag as QuestObjectivesAIPatrol;
-            ObjectivesAIPatrolNPCUnitsNUD.Value = CurrentAIPatrol.AIPatrol.NPCUnits;
-            ObjectiovesAIPatrolNPCSpeedCB.SelectedIndex = ObjectiovesAIPatrolNPCSpeedCB.FindStringExact(CurrentAIPatrol.AIPatrol.NPCSpeed);
-            ObjectivesAIPatrolNPCModeCB.SelectedIndex = ObjectivesAIPatrolNPCModeCB.FindStringExact(CurrentAIPatrol.AIPatrol.NPCMode);
-            ObjectivesAIPatrolNPCFactionCB.SelectedIndex = ObjectivesAIPatrolNPCFactionCB.FindStringExact(CurrentAIPatrol.AIPatrol.NPCFaction);
-            ObjectivesAIPatrolNPCFormationCB.SelectedIndex = ObjectivesAIPatrolNPCFormationCB.FindStringExact(CurrentAIPatrol.AIPatrol.NPCFormation);
-            ObjectivesAIPatrolNPCLoadoutFileCB.SelectedIndex = ObjectivesAIPatrolNPCLoadoutFileCB.FindStringExact(CurrentAIPatrol.AIPatrol.NPCLoadoutFile);
-            ObjectivesAIPatrolNPCAccuracyMaxNUD.Value = CurrentAIPatrol.AIPatrol.NPCAccuracyMax;
-            ObjectivesAIPatrolNPCAccuracyMinNUD.Value = CurrentAIPatrol.AIPatrol.NPCAccuracyMin;
-            ObjectivesAIPatrolSpecialWeaponCB.Checked = CurrentAIPatrol.AIPatrol.SpecialWeapon == 1 ? true : false;
-            ObjectivesAIPatrolMinDistRadiusNUD.Value = CurrentAIPatrol.MinDistRadius;
-            ObjectivesAIPatrolMaxDistRadiusNUD.Value = CurrentAIPatrol.MaxDistRadius;
-            ObjectivesAIPatrolDespawnRadiusNUD.Value = CurrentAIPatrol.DespawnRadius;
-            ObjectiovesAIPatrolCanLootAICB.Checked = CurrentAIPatrol.CanLootAI == 1 ? true : false;
-
-            ObjectivesAIPatrolWaypointsLB.DisplayMember = "DisplayName";
-            ObjectivesAIPatrolWaypointsLB.ValueMember = "Value";
-            ObjectivesAIPatrolWaypointsLB.DataSource = CurrentAIPatrol.AIPatrol.Waypoints;
-
-            ObjectivesAiPatrolClassnamesLB.DisplayMember = "DisplayName";
-            ObjectivesAiPatrolClassnamesLB.ValueMember = "Value";
-            ObjectivesAiPatrolClassnamesLB.DataSource = CurrentAIPatrol.AIPatrol.ClassNames;
-
-            ObjectivesAIPatrolAllowedWeaponsLB.DisplayMember = "DisplayName";
-            ObjectivesAIPatrolAllowedWeaponsLB.ValueMember = "Value";
-            ObjectivesAIPatrolAllowedWeaponsLB.DataSource = CurrentAIPatrol.AIPatrol.AllowedWeapons;
-            useraction = true;
-        }
-        private void ObjectivesAIPatrolWaypointsLB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ObjectivesAIPatrolWaypointsLB.SelectedItems.Count < 1) return;
-            CurrentWapypoint = ObjectivesAIPatrolWaypointsLB.SelectedItem as decimal[];
-            useraction = false;
-            numericUpDown20.Value = (decimal)CurrentWapypoint[0];
-            numericUpDown21.Value = (decimal)CurrentWapypoint[1];
-            numericUpDown22.Value = (decimal)CurrentWapypoint[2];
-            useraction = true;
-        }
-        private void darkButton48_Click(object sender, EventArgs e)
-        {
-            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            CurrentAIPatrol.AIPatrol.Waypoints.Add(new decimal[] { 0, 0, 0 });
-            CurrentAIPatrol.isDirty = true;
-        }
-        private void darkButton47_Click(object sender, EventArgs e)
-        {
-            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            CurrentAIPatrol.AIPatrol.Waypoints.Remove(CurrentWapypoint);
-            CurrentAIPatrol.isDirty = true;
-            ObjectivesAIPatrolWaypointsLB.Refresh();
-        }
-        private void darkButton46_Click(object sender, EventArgs e)
-        {
-            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            string[] fileContent = new string[] { };
-            var filePath = string.Empty;
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    filePath = openFileDialog.FileName;
-                    fileContent = File.ReadAllLines(filePath);
-                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        CurrentAIPatrol.AIPatrol.Waypoints.Clear();
-                    }
-                    for (int i = 0; i < fileContent.Length; i++)
-                    {
-                        if (fileContent[i] == "") continue;
-                        string[] linesplit = fileContent[i].Split('|');
-                        string[] XYZ = linesplit[1].Split(' ');
-                        decimal[] newfloatarray = new decimal[] { Convert.ToDecimal(XYZ[0]), Convert.ToDecimal(XYZ[1]), Convert.ToDecimal(XYZ[2]) };
-                        CurrentAIPatrol.AIPatrol.Waypoints.Add(newfloatarray);
-
-                    }
-                    ObjectivesAIPatrolWaypointsLB.SelectedIndex = -1;
-                    ObjectivesAIPatrolWaypointsLB.SelectedIndex = ObjectivesAIPatrolWaypointsLB.Items.Count - 1;
-                    ObjectivesAIPatrolWaypointsLB.Refresh();
-                    CurrentAIPatrol.isDirty = true;
-                }
-            }
-        }
-        private void darkButton45_Click(object sender, EventArgs e)
-        {
-            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            StringBuilder SB = new StringBuilder();
-            foreach (decimal[] array in CurrentAIPatrol.AIPatrol.Waypoints)
-            {
-                SB.AppendLine("eAI_SurvivorM_Lewis|" + array[0].ToString() + " " + array[1].ToString() + " " + array[2].ToString() + "|0.0 0.0 0.0");
-            }
-            SaveFileDialog save = new SaveFileDialog();
-            if (save.ShowDialog() == DialogResult.OK)
-            {
-                File.WriteAllText(save.FileName + ".map", SB.ToString());
-            }
-        }
-        private void darkButton44_Click(object sender, EventArgs e)
-        {
-            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string filePath = openFileDialog.FileName;
-                    DZE importfile = DZEHelpers.LoadFile(filePath);
-                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        CurrentAIPatrol.AIPatrol.Waypoints.Clear();
-                    }
-                    foreach (Editorobject eo in importfile.EditorObjects)
-                    {
-                        decimal[] newfloatarray = new decimal[] { Convert.ToDecimal(eo.Position[0]), Convert.ToDecimal(eo.Position[1]), Convert.ToDecimal(eo.Position[2]) };
-                        CurrentAIPatrol.AIPatrol.Waypoints.Add(newfloatarray);
-                    }
-                    ObjectivesAIPatrolWaypointsLB.SelectedIndex = -1;
-                    ObjectivesAIPatrolWaypointsLB.SelectedIndex = ObjectivesAIPatrolWaypointsLB.Items.Count - 1;
-                    ObjectivesAIPatrolWaypointsLB.Refresh();
-                    CurrentAIPatrol.isDirty = true;
-                }
-            }
-        }
-        private void darkButton43_Click(object sender, EventArgs e)
-        {
-            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            DZE newdze = new DZE()
-            {
-                MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
-            };
-            foreach (decimal[] array in CurrentAIPatrol.AIPatrol.Waypoints)
-            {
-                Editorobject eo = new Editorobject()
-                {
-                    Type = "eAI_SurvivorM_Jose",
-                    DisplayName = "eAI_SurvivorM_Jose",
-                    Position = new float[] { Convert.ToSingle(array[0]), Convert.ToSingle(array[1]), Convert.ToSingle(array[2]) },
-                    Orientation = new float[] { 0, 0, 0 },
-                    Scale = 1.0f,
-                    Flags = 2147483647
-                };
-                newdze.EditorObjects.Add(eo);
-            }
-            newdze.CameraPosition = newdze.EditorObjects[0].Position;
-            SaveFileDialog save = new SaveFileDialog();
-            if (save.ShowDialog() == DialogResult.OK)
-            {
-                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-                string jsonString = JsonSerializer.Serialize(newdze, options);
-                File.WriteAllText(save.FileName + ".dze", jsonString);
-            }
-        }
-        private void numericUpDown20_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            CurrentWapypoint[0] = (decimal)numericUpDown20.Value;
-            CurrentAIPatrol.isDirty = true;
-        }
-        private void numericUpDown21_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            CurrentWapypoint[1] = (decimal)numericUpDown21.Value;
-            CurrentAIPatrol.isDirty = true;
-        }
-        private void numericUpDown22_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            CurrentWapypoint[2] = (decimal)numericUpDown22.Value;
-            CurrentAIPatrol.isDirty = true;
-        }
-        private void ObjectivesAIPatrolNPCUnitsNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            CurrentAIPatrol.AIPatrol.NPCUnits = (int)ObjectivesAIPatrolNPCUnitsNUD.Value;
-            CurrentAIPatrol.isDirty = true;
-        }
-        private void ObjectiovesAIPatrolNPCSpeedCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            CurrentAIPatrol.AIPatrol.NPCSpeed = ObjectiovesAIPatrolNPCSpeedCB.GetItemText(ObjectiovesAIPatrolNPCSpeedCB.SelectedItem);
-            CurrentAIPatrol.isDirty = true;
-        }
-        private void ObjectivesAIPatrolNPCModeCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            CurrentAIPatrol.AIPatrol.NPCMode = ObjectivesAIPatrolNPCModeCB.GetItemText(ObjectivesAIPatrolNPCModeCB.SelectedItem);
-            CurrentAIPatrol.isDirty = true;
-        }
-        private void ObjectivesAIPatrolNPCFactionCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            CurrentAIPatrol.AIPatrol.NPCFaction = ObjectivesAIPatrolNPCFactionCB.GetItemText(ObjectivesAIPatrolNPCFactionCB.SelectedItem);
-            CurrentAIPatrol.isDirty = true;
-        }
-        private void ObjectivesAIPatrolNPCFormationCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            CurrentAIPatrol.AIPatrol.NPCFormation = ObjectivesAIPatrolNPCFormationCB.GetItemText(ObjectivesAIPatrolNPCFormationCB.SelectedItem);
-            CurrentAIPatrol.isDirty = true;
-        }
-        private void ObjectivesAIPatrolNPCLoadoutFileCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            CurrentAIPatrol.AIPatrol.NPCLoadoutFile = ObjectivesAIPatrolNPCLoadoutFileCB.GetItemText(ObjectivesAIPatrolNPCLoadoutFileCB.SelectedItem);
-            CurrentAIPatrol.isDirty = true;
-        }
-        private void ObjectivesAIPatrolNPCAccuracyMinNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            CurrentAIPatrol.AIPatrol.NPCAccuracyMin = ObjectivesAIPatrolNPCAccuracyMinNUD.Value;
-            CurrentAIPatrol.isDirty = true;
-        }
-        private void ObjectivesAIPatrolNPCAccuracyMaxNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            CurrentAIPatrol.AIPatrol.NPCAccuracyMax = ObjectivesAIPatrolNPCAccuracyMaxNUD.Value;
-            CurrentAIPatrol.isDirty = true;
-        }
-        private void darkButton42_Click(object sender, EventArgs e)
-        {
-            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            AddItemfromString form = new AddItemfromString();
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                List<string> addedtypes = form.addedtypes.ToList();
-                foreach (string l in addedtypes)
-                {
-                    if (!CurrentAIPatrol.AIPatrol.ClassNames.Contains(l))
-                        CurrentAIPatrol.AIPatrol.ClassNames.Add(l);
-                }
-            }
-            CurrentAIPatrol.isDirty = true;
-        }
-        private void darkButton41_Click(object sender, EventArgs e)
-        {
-            if (ObjectivesAiPatrolClassnamesLB.SelectedItems.Count < 1) return;
-            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            for (int i = 0; i < ObjectivesAiPatrolClassnamesLB.SelectedItems.Count; i++)
-            {
-                CurrentAIPatrol.AIPatrol.ClassNames.Remove(ObjectivesAiPatrolClassnamesLB.GetItemText(ObjectivesAiPatrolClassnamesLB.SelectedItems[0]));
-            }
-            CurrentAIPatrol.isDirty = true;
-        }
-        private void ObjectivesAIPatrolSpecialWeaponCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            CurrentAIPatrol.AIPatrol.SpecialWeapon = ObjectivesAIPatrolSpecialWeaponCB.Checked == true ? 1 : 0;
-            CurrentAIPatrol.isDirty = true;
-        }
-        private void darkButton40_Click(object sender, EventArgs e)
+        private void ObjectivesAICampAllowedDamageZonesAddButton_Click(object sender, EventArgs e)
         {
             AddItemfromTypes form = new AddItemfromTypes
             {
@@ -3372,13 +2969,108 @@ namespace DayZeEditor
             if (result == DialogResult.OK)
             {
                 List<string> addedtypes = form.addedtypes.ToList();
-                QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+                QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
                 foreach (string l in addedtypes)
                 {
-                    if (!CurrentAIPatrol.AIPatrol.AllowedWeapons.Contains(l))
+                    if (!CurrentAICam.AllowedDamageZones.Contains(l))
                     {
-                        CurrentAIPatrol.AIPatrol.AllowedWeapons.Add(l);
-                        CurrentAIPatrol.isDirty = true;
+                        CurrentAICam.AllowedDamageZones.Add(l);
+                        CurrentAICam.isDirty = true;
+                    }
+                }
+                ObjectivesAICampAllowedDamageZonesLB.Refresh();
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+        }
+        private void ObjectivesAICampAllowedDamageZonesRemoveButton_Click(object sender, EventArgs e)
+        {
+            if (ObjectivesAICampAllowedDamageZonesLB.SelectedItems.Count < 1) return;
+            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
+            for (int i = 0; i < ObjectivesAICampAllowedDamageZonesLB.SelectedItems.Count; i++)
+            {
+                CurrentAICam.AllowedDamageZones.Remove(ObjectivesAICampAllowedDamageZonesLB.GetItemText(ObjectivesAICampAllowedDamageZonesLB.SelectedItems[0]));
+            }
+            CurrentAICam.isDirty = true;
+        }
+        private void ObjectivesAICampAISpawnsLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ObjectivesAICampAISpawnsLB.SelectedItems.Count < 1) return;
+            ExpansionQuestAISpawn currentaispawns = ObjectivesAICampAISpawnsLB.SelectedItem as ExpansionQuestAISpawn;
+            expansionQuestAISpawnControlAICamp.currentAISpawn = ObjectivesAICampAISpawnsLB.SelectedItem as ExpansionQuestAISpawn;
+            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
+            expansionQuestAISpawnControlAICamp.isDirty = CurrentAICam.isDirty;
+        }
+        private void expansionQuestAISpawnControlAICamp_IsDirtyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
+            CurrentAICam.isDirty = expansionQuestAISpawnControlAICamp.isDirty;
+        }
+        /// <summary>
+        /// AI Patrol
+        /// </summary>
+        private void SetupobjectiveAIPatrol(TreeNodeMouseClickEventArgs e)
+        {
+            useraction = false;
+            QuestObjectivesAIPatrol CurrentAIPatrol = e.Node.Tag as QuestObjectivesAIPatrol;
+            QuestObjectivesObjectiveTextTB.Text = CurrentAIPatrol.ObjectiveText;
+            QuestObjectivesTimeLimitNUD.Value = CurrentAIPatrol.TimeLimit;
+            QuestObjectivesActiveCB.Checked = CurrentAIPatrol.Active == 1 ? true : false;
+            ObjectivesAIPatrolMaxDistanceNUD.Value = CurrentAIPatrol.MaxDistance;
+            ObjectivesAIPatrolMinDistanceNUD.Value = CurrentAIPatrol.MinDistance;
+
+            expansionQuestAISpawnControlAIPatrol.currentAISpawn = CurrentAIPatrol.AISpawn;
+            expansionQuestAISpawnControlAIPatrol.isDirty = CurrentAIPatrol.isDirty;
+
+            ObjectivesAIPatrolAllowedWeaponsLB.DisplayMember = "DisplayName";
+            ObjectivesAIPatrolAllowedWeaponsLB.ValueMember = "Value";
+            ObjectivesAIPatrolAllowedWeaponsLB.DataSource = CurrentAIPatrol.AllowedWeapons;
+
+            ObjectivesAIPatrolAllowedDamageZonesLB.DisplayMember = "DisplayName";
+            ObjectivesAIPatrolAllowedDamageZonesLB.ValueMember = "Value";
+            ObjectivesAIPatrolAllowedDamageZonesLB.DataSource = CurrentAIPatrol.AllowedDamageZones;
+            useraction = true;
+        }
+        private void expansionQuestAISpawnControlAIPatrol_IsDirtyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            CurrentAIPatrol.isDirty = expansionQuestAISpawnControlAIPatrol.isDirty;
+        }
+        private void ObjectivesAIPatrolMinDistanceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIPatrol CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            CurrentAICam.MinDistance = ObjectivesAIPatrolMinDistanceNUD.Value;
+            CurrentAICam.isDirty = true;
+        }
+        private void ObjectivesAIPatrolMaxDistanceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIPatrol CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            CurrentAICam.MaxDistance = ObjectivesAIPatrolMaxDistanceNUD.Value;
+            CurrentAICam.isDirty = true;
+        }
+        private void ObjectivesAIPatrolAllowedWeaponsAddButton_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                QuestObjectivesAIPatrol CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+                foreach (string l in addedtypes)
+                {
+                    if (!CurrentAICam.AllowedWeapons.Contains(l))
+                    {
+                        CurrentAICam.AllowedWeapons.Add(l);
+                        CurrentAICam.isDirty = true;
                     }
                 }
                 ObjectivesAIPatrolAllowedWeaponsLB.Refresh();
@@ -3388,43 +3080,53 @@ namespace DayZeEditor
                 return;
             }
         }
-        private void darkButton32_Click(object sender, EventArgs e)
+        private void ObjectivesAIPatrolAllowedWeaponsRemoveButton_Click(object sender, EventArgs e)
         {
             if (ObjectivesAIPatrolAllowedWeaponsLB.SelectedItems.Count < 1) return;
-            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            QuestObjectivesAIPatrol CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
             for (int i = 0; i < ObjectivesAIPatrolAllowedWeaponsLB.SelectedItems.Count; i++)
             {
-                CurrentAIPatrol.AIPatrol.AllowedWeapons.Remove(ObjectivesAIPatrolAllowedWeaponsLB.GetItemText(ObjectivesAIPatrolAllowedWeaponsLB.SelectedItems[0]));
+                CurrentAICam.AllowedWeapons.Remove(ObjectivesAIPatrolAllowedWeaponsLB.GetItemText(ObjectivesAIPatrolAllowedWeaponsLB.SelectedItems[0]));
             }
-            CurrentAIPatrol.isDirty = true;
+            CurrentAICam.isDirty = true;
         }
-        private void ObjectivesAIPatrolMinDistRadiusNUD_ValueChanged(object sender, EventArgs e)
+        private void ObjectivesAIPatrolAllowedDamageZonesAddButton_Click(object sender, EventArgs e)
         {
-            if (!useraction) return;
-            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            CurrentAIPatrol.MinDistRadius = ObjectivesAIPatrolMinDistRadiusNUD.Value;
-            CurrentAIPatrol.isDirty = true;
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                QuestObjectivesAIPatrol CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+                foreach (string l in addedtypes)
+                {
+                    if (!CurrentAICam.AllowedDamageZones.Contains(l))
+                    {
+                        CurrentAICam.AllowedDamageZones.Add(l);
+                        CurrentAICam.isDirty = true;
+                    }
+                }
+                ObjectivesAIPatrolAllowedDamageZonesLB.Refresh();
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
         }
-        private void ObjectivesAIPatrolMaxDistRadiusNUD_ValueChanged(object sender, EventArgs e)
+        private void ObjectivesAIPatrolAllowedDamageZonesRemoveButton_Click(object sender, EventArgs e)
         {
-            if (!useraction) return;
-            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            CurrentAIPatrol.MaxDistRadius = ObjectivesAIPatrolMaxDistRadiusNUD.Value;
-            CurrentAIPatrol.isDirty = true;
-        }
-        private void ObjectivesAIPatrolDespawnRadiusNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            CurrentAIPatrol.DespawnRadius = ObjectivesAIPatrolDespawnRadiusNUD.Value;
-            CurrentAIPatrol.isDirty = true;
-        }
-        private void ObjectiovesAIPatrolCanLootAICB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestObjectivesAIPatrol CurrentAIPatrol = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
-            CurrentAIPatrol.CanLootAI = ObjectiovesAIPatrolCanLootAICB.Checked == true ? 1 : 0;
-            CurrentAIPatrol.isDirty = true;
+            if (ObjectivesAIPatrolAllowedDamageZonesLB.SelectedItems.Count < 1) return;
+            QuestObjectivesAIPatrol CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+            for (int i = 0; i < ObjectivesAIPatrolAllowedDamageZonesLB.SelectedItems.Count; i++)
+            {
+                CurrentAICam.AllowedDamageZones.Remove(ObjectivesAIPatrolAllowedDamageZonesLB.GetItemText(ObjectivesAIPatrolAllowedDamageZonesLB.SelectedItems[0]));
+            }
+            CurrentAICam.isDirty = true;
         }
         /// <summary>
         /// AI VIP
@@ -3439,11 +3141,12 @@ namespace DayZeEditor
             ObjectivesAIVIPPositionYNUD.Value = (decimal)CurrentAIVIP.Position[1];
             ObjectivesAIVIPPositionZNUD.Value = (decimal)CurrentAIVIP.Position[2];
             ObjectivesAIVIPMaxDistanceNUD.Value = CurrentAIVIP.MaxDistance;
-            ObjectivesAIVIPNPCLoadoutFileCB.SelectedIndex = ObjectivesAIVIPNPCLoadoutFileCB.FindStringExact(CurrentAIVIP.AIVIP.NPCLoadoutFile);
+            ObjectivesAIVIPNPCLoadoutFileCB.SelectedIndex = ObjectivesAIVIPNPCLoadoutFileCB.FindStringExact(CurrentAIVIP.NPCLoadoutFile);
             ObjectivesAIVIPMarkerNameTB.Text = CurrentAIVIP.MarkerName;
             QuestObjectivesAIVIPShowDistanceCB.Checked = CurrentAIVIP.ShowDistance == 1 ? true : false;
             QuestObjectivesAIVIPCanLootAICB.Checked = CurrentAIVIP.CanLootAI == 1 ? true : false;
-            ObjectivesAIVIPNPCNPCClassnameTB.Text = CurrentAIVIP.AIVIP.NPCClassName;
+            ObjectivesAIVIPNPCNPCClassnameTB.Text = CurrentAIVIP.NPCClassName;
+            ObjectivesAIVIPNPCNameTB.Text = CurrentAIVIP.NPCName;
             useraction = true;
         }
         private void ObjectivesAIVIPPositionXNUD_ValueChanged(object sender, EventArgs e)
@@ -3478,7 +3181,7 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
-            CurrentAIVIP.AIVIP.NPCLoadoutFile = ObjectivesAIVIPNPCLoadoutFileCB.GetItemText(ObjectivesAIVIPNPCLoadoutFileCB.SelectedItem);
+            CurrentAIVIP.NPCLoadoutFile = ObjectivesAIVIPNPCLoadoutFileCB.GetItemText(ObjectivesAIVIPNPCLoadoutFileCB.SelectedItem);
             CurrentAIVIP.isDirty = true;
         }
         private void ObjectivesAIVIPMarkerNameTB_TextChanged(object sender, EventArgs e)
@@ -3506,7 +3209,14 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
-            CurrentAIVIP.AIVIP.NPCClassName = ObjectivesAIVIPNPCNPCClassnameTB.Text;
+            CurrentAIVIP.NPCClassName = ObjectivesAIVIPNPCNPCClassnameTB.Text;
+            CurrentAIVIP.isDirty = true;
+        }
+        private void ObjectivesAIVIPNPCNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesAIVIP CurrentAIVIP = CurrentTreeNodeTag as QuestObjectivesAIVIP;
+            CurrentAIVIP.NPCName = ObjectivesAIVIPNPCNameTB.Text;
             CurrentAIVIP.isDirty = true;
         }
         /// <summary>
@@ -3889,26 +3599,29 @@ namespace DayZeEditor
             ObjectivesTargetPositionYNUD.Value = (decimal)CurrentTarget.Position[1];
             ObjectivesTargetPositionZNUD.Value = (decimal)CurrentTarget.Position[2];
             ObjectivesTargetMaxDistanceNUD.Value = CurrentTarget.MaxDistance;
-            ObjectivesTargetAmountNUD.Value = CurrentTarget.Target.Amount;
-            ObjectivesTargetCountSelfKillCB.Checked = CurrentTarget.Target.CountSelfKill == 1 ? true : false;
-            ObjectivesTargetSpecialWeaponCB.Checked = CurrentTarget.Target.SpecialWeapon == 1 ? true : false;
-            checkBox7.Checked = CurrentTarget.Target.CountAIPlayers == 1 ? true : false;
+            ObjectivesTargetAmountNUD.Value = CurrentTarget.Amount;
+            ObjectivesTargetCountSelfKillCB.Checked = CurrentTarget.CountSelfKill == 1 ? true : false;
+            checkBox7.Checked = CurrentTarget.CountAIPlayers == 1 ? true : false;
 
             ObjectivesTargetClassnameLB.DisplayMember = "DisplayName";
             ObjectivesTargetClassnameLB.ValueMember = "Value";
-            ObjectivesTargetClassnameLB.DataSource = CurrentTarget.Target.ClassNames;
+            ObjectivesTargetClassnameLB.DataSource = CurrentTarget.ClassNames;
 
             ObjectivesTargetAllowedWeaponsLB.DisplayMember = "DisplayName";
             ObjectivesTargetAllowedWeaponsLB.ValueMember = "Value";
-            ObjectivesTargetAllowedWeaponsLB.DataSource = CurrentTarget.Target.AllowedWeapons;
+            ObjectivesTargetAllowedWeaponsLB.DataSource = CurrentTarget.AllowedWeapons;
 
             ObjectivesTargetExcludedClassnamesLB.DisplayMember = "DisplayName";
             ObjectivesTargetExcludedClassnamesLB.ValueMember = "Value";
-            ObjectivesTargetExcludedClassnamesLB.DataSource = CurrentTarget.Target.ExcludedClassNames;
+            ObjectivesTargetExcludedClassnamesLB.DataSource = CurrentTarget.ExcludedClassNames;
 
-            ObjectivesTargetExcludedAllowedTargetFactionsLB.DisplayMember = "DisplayName";
-            ObjectivesTargetExcludedAllowedTargetFactionsLB.ValueMember = "Value";
-            ObjectivesTargetExcludedAllowedTargetFactionsLB.DataSource = CurrentTarget.Target.AllowedTargetFactions;
+            ObjectivesTargetAllowedTargetFactionsLB.DisplayMember = "DisplayName";
+            ObjectivesTargetAllowedTargetFactionsLB.ValueMember = "Value";
+            ObjectivesTargetAllowedTargetFactionsLB.DataSource = CurrentTarget.AllowedTargetFactions;
+
+            ObjectivesTargetAllowedDamageZonesLB.DisplayMember = "DisplayName";
+            ObjectivesTargetAllowedDamageZonesLB.ValueMember = "Value";
+            ObjectivesTargetAllowedDamageZonesLB.DataSource = CurrentTarget.AllowedDamageZones;
 
             useraction = true;
 
@@ -3941,11 +3654,18 @@ namespace DayZeEditor
             CurrentTarget.MaxDistance = ObjectivesTargetMaxDistanceNUD.Value;
             CurrentTarget.isDirty = true;
         }
+        private void ObjectivesTargetMinDistanceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
+            CurrentTarget.MinDistance = ObjectivesTargetMinDistanceNUD.Value;
+            CurrentTarget.isDirty = true;
+        }
         private void ObjectivesTargetAmountNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
-            CurrentTarget.Target.Amount = (int)ObjectivesTargetAmountNUD.Value;
+            CurrentTarget.Amount = (int)ObjectivesTargetAmountNUD.Value;
             CurrentTarget.isDirty = true;
         }
         private void darkButton58_Click(object sender, EventArgs e)
@@ -3958,8 +3678,8 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    if (!CurrentTarget.Target.ClassNames.Contains(l))
-                        CurrentTarget.Target.ClassNames.Add(l);
+                    if (!CurrentTarget.ClassNames.Contains(l))
+                        CurrentTarget.ClassNames.Add(l);
                 }
             }
             CurrentTarget.isDirty = true;
@@ -3970,7 +3690,7 @@ namespace DayZeEditor
             QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
             for (int i = 0; i < ObjectivesTargetClassnameLB.SelectedItems.Count; i++)
             {
-                CurrentTarget.Target.ClassNames.Remove(ObjectivesTargetClassnameLB.GetItemText(ObjectivesTargetClassnameLB.SelectedItems[0]));
+                CurrentTarget.ClassNames.Remove(ObjectivesTargetClassnameLB.GetItemText(ObjectivesTargetClassnameLB.SelectedItems[0]));
             }
             CurrentTarget.isDirty = true;
         }
@@ -3978,21 +3698,14 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
-            CurrentTarget.Target.CountSelfKill = ObjectivesTargetCountSelfKillCB.Checked == true ? 1 : 0;
-            CurrentTarget.isDirty = true;
-        }
-        private void ObjectivesTargetSpecialWeaponCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
-            CurrentTarget.Target.SpecialWeapon = ObjectivesTargetSpecialWeaponCB.Checked == true ? 1 : 0;
+            CurrentTarget.CountSelfKill = ObjectivesTargetCountSelfKillCB.Checked == true ? 1 : 0;
             CurrentTarget.isDirty = true;
         }
         private void checkBox7_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
-            CurrentTarget.Target.CountAIPlayers = checkBox7.Checked == true ? 1 : 0;
+            CurrentTarget.CountAIPlayers = checkBox7.Checked == true ? 1 : 0;
             CurrentTarget.isDirty = true;
         }
         private void darkButton60_Click(object sender, EventArgs e)
@@ -4010,13 +3723,13 @@ namespace DayZeEditor
                 QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
                 foreach (string l in addedtypes)
                 {
-                    if (!CurrentTarget.Target.AllowedWeapons.Contains(l))
+                    if (!CurrentTarget.AllowedWeapons.Contains(l))
                     {
-                        CurrentTarget.Target.AllowedWeapons.Add(l);
+                        CurrentTarget.AllowedWeapons.Add(l);
                         CurrentTarget.isDirty = true;
                     }
                 }
-                ObjectivesAICampAllowedWeaponsLB.Refresh();
+                ObjectivesTargetAllowedWeaponsLB.Refresh();
             }
             else if (result == DialogResult.Cancel)
             {
@@ -4030,7 +3743,7 @@ namespace DayZeEditor
             QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
             for (int i = 0; i < ObjectivesTargetAllowedWeaponsLB.SelectedItems.Count; i++)
             {
-                CurrentTarget.Target.AllowedWeapons.Remove(ObjectivesTargetAllowedWeaponsLB.GetItemText(ObjectivesTargetAllowedWeaponsLB.SelectedItems[0]));
+                CurrentTarget.AllowedWeapons.Remove(ObjectivesTargetAllowedWeaponsLB.GetItemText(ObjectivesTargetAllowedWeaponsLB.SelectedItems[0]));
             }
             CurrentTarget.isDirty = true;
         }
@@ -4044,8 +3757,8 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    if (!CurrentTarget.Target.ExcludedClassNames.Contains(l))
-                        CurrentTarget.Target.ExcludedClassNames.Add(l);
+                    if (!CurrentTarget.ExcludedClassNames.Contains(l))
+                        CurrentTarget.ExcludedClassNames.Add(l);
                 }
             }
             CurrentTarget.isDirty = true;
@@ -4056,7 +3769,7 @@ namespace DayZeEditor
             QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
             for (int i = 0; i < ObjectivesTargetExcludedClassnamesLB.SelectedItems.Count; i++)
             {
-                CurrentTarget.Target.ExcludedClassNames.Remove(ObjectivesTargetExcludedClassnamesLB.GetItemText(ObjectivesTargetExcludedClassnamesLB.SelectedItems[0]));
+                CurrentTarget.ExcludedClassNames.Remove(ObjectivesTargetExcludedClassnamesLB.GetItemText(ObjectivesTargetExcludedClassnamesLB.SelectedItems[0]));
             }
             CurrentTarget.isDirty = true;
         }
@@ -4070,20 +3783,45 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    if (!CurrentTarget.Target.AllowedTargetFactions.Contains(l))
-                        CurrentTarget.Target.AllowedTargetFactions.Add(l);
+                    if (!CurrentTarget.AllowedTargetFactions.Contains(l))
+                        CurrentTarget.AllowedTargetFactions.Add(l);
                 }
             }
             CurrentTarget.isDirty = true;
         }
-
         private void darkButton80_Click(object sender, EventArgs e)
         {
-            if (ObjectivesTargetExcludedAllowedTargetFactionsLB.SelectedItems.Count < 1) return;
+            if (ObjectivesTargetAllowedTargetFactionsLB.SelectedItems.Count < 1) return;
             QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
-            for (int i = 0; i < ObjectivesTargetExcludedAllowedTargetFactionsLB.SelectedItems.Count; i++)
+            for (int i = 0; i < ObjectivesTargetAllowedTargetFactionsLB.SelectedItems.Count; i++)
             {
-                CurrentTarget.Target.AllowedTargetFactions.Remove(ObjectivesTargetExcludedAllowedTargetFactionsLB.GetItemText(ObjectivesTargetExcludedAllowedTargetFactionsLB.SelectedItems[0]));
+                CurrentTarget.AllowedTargetFactions.Remove(ObjectivesTargetAllowedTargetFactionsLB.GetItemText(ObjectivesTargetAllowedTargetFactionsLB.SelectedItems[0]));
+            }
+            CurrentTarget.isDirty = true;
+        }
+        private void darkButton20_Click(object sender, EventArgs e)
+        {
+            QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
+            AddItemfromString form = new AddItemfromString();
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    if (!CurrentTarget.AllowedDamageZones.Contains(l))
+                        CurrentTarget.AllowedDamageZones.Add(l);
+                }
+            }
+            CurrentTarget.isDirty = true;
+        }
+        private void darkButton19_Click(object sender, EventArgs e)
+        {
+            if (ObjectivesTargetAllowedDamageZonesLB.SelectedItems.Count < 1) return;
+            QuestObjectivesTarget CurrentTarget = CurrentTreeNodeTag as QuestObjectivesTarget;
+            for (int i = 0; i < ObjectivesTargetAllowedDamageZonesLB.SelectedItems.Count; i++)
+            {
+                CurrentTarget.AllowedDamageZones.Remove(ObjectivesTargetAllowedDamageZonesLB.GetItemText(ObjectivesTargetAllowedDamageZonesLB.SelectedItems[0]));
             }
             CurrentTarget.isDirty = true;
         }
@@ -4808,7 +4546,22 @@ namespace DayZeEditor
 
 
 
+
+
+
         #endregion Persistant Player Data
+
+        private void ObjectivesAICampGB_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+        private void darkLabel189_Click(object sender, EventArgs e)
+        {
+
+        }
 
 
     }
