@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="playerspawnpoints">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="fresh">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="1" name="spawn_params">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="1" maxOccurs="1" name="min_dist_infected" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="max_dist_infected" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="min_dist_player" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="max_dist_player" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="min_dist_static" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="max_dist_static" type="xs:decimal" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" maxOccurs="1" name="generator_params">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="1" maxOccurs="1" name="grid_density" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="grid_width" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="grid_height" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="min_dist_static" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="max_dist_static" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="min_steepness" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="max_steepness" type="xs:decimal" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" maxOccurs="1" name="group_params">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="1" maxOccurs="1" name="enablegroups" type="xs:boolean" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="lifetime" type="xs:int" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="counter" type="xs:int" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" maxOccurs="1" name="generator_posbubbles" type="ArrayOfPlayerspawnpointsGroup" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" maxOccurs="1" name="hop">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="1" name="spawn_params">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="1" maxOccurs="1" name="min_dist_infected" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="max_dist_infected" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="min_dist_player" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="max_dist_player" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="min_dist_static" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="max_dist_static" type="xs:decimal" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" maxOccurs="1" name="generator_params">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="1" maxOccurs="1" name="grid_density" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="grid_width" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="grid_height" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="min_dist_static" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="max_dist_static" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="min_steepness" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="max_steepness" type="xs:decimal" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" maxOccurs="1" name="group_params">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="1" maxOccurs="1" name="enablegroups" type="xs:boolean" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="lifetime" type="xs:int" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="counter" type="xs:int" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" maxOccurs="1" name="generator_posbubbles" type="ArrayOfPlayerspawnpointsGroup" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" maxOccurs="1" name="travel">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="1" name="spawn_params">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="1" maxOccurs="1" name="min_dist_infected" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="max_dist_infected" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="min_dist_player" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="max_dist_player" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="min_dist_static" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="max_dist_static" type="xs:decimal" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" maxOccurs="1" name="generator_params">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="1" maxOccurs="1" name="grid_density" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="grid_width" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="grid_height" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="min_dist_static" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="max_dist_static" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="min_steepness" type="xs:decimal" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="max_steepness" type="xs:decimal" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" maxOccurs="1" name="group_params">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="1" maxOccurs="1" name="enablegroups" type="xs:boolean" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="lifetime" type="xs:int" />
+                    <xs:element minOccurs="1" maxOccurs="1" name="counter" type="xs:int" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" maxOccurs="1" name="generator_posbubbles" type="ArrayOfPlayerspawnpointsGroup" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ArrayOfPlayerspawnpointsGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="group">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="pos">
+              <xs:complexType>
+                <xs:attribute name="x" type="xs:decimal" use="required" />
+                <xs:attribute name="z" type="xs:decimal" use="required" />
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute name="name" type="xs:string" />
+          <xs:attribute name="lifetime" type="xs:int" />
+          <xs:attribute name="counter" type="xs:int" />
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

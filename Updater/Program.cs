@@ -17,6 +17,7 @@ namespace Updater
             Console.WriteLine("Update File : " + zipfile);
             System.Threading.Thread.Sleep(2000);
             string outputpath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            Directory.Delete(outputpath + "\\lib", true);
             using (FileStream fs = File.OpenRead(zipfile))
             {
                 using (ZipArchive zip = new ZipArchive(fs))
@@ -45,7 +46,7 @@ namespace Updater
                 Console.WriteLine("Extracting : " + completeFileName);
                 if (!completeFileName.StartsWith(destinationDirectoryFullPath, StringComparison.OrdinalIgnoreCase))
                 {
-                    throw new IOException("Trying to extract file outside of destination directory. See this link for more info: https://snyk.io/research/zip-slip-vulnerability");
+                    throw new IOException("Trying to extract file outside of destination directory");
                 }
 
                 if (file.Name == "")
