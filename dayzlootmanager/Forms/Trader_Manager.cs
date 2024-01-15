@@ -677,10 +677,6 @@ namespace DayZeEditor
 
             foreach (DRJonesCategories cat in drjonestraderconfig.m_categories)
             {
-                if(cat.m_Trader_Categorys == "Keys&Supplies")
-                {
-                    string stop = "";
-                }
                 //check if cat has been created allready
                 string Displayname = ReplaceInvalidChars(cat.m_Trader_Categorys);
                 Displayname = Displayname.Replace(" ", "_");
@@ -697,10 +693,6 @@ namespace DayZeEditor
                 List<DrjonesItems> dritems = drjonestraderconfig.getItems(cat.m_Trader_CategoryID);
                 foreach (DrjonesItems item in dritems)
                 {
-                    if (item.m_Trader_ItemsClassnames.ToLower() == "carbattery")
-                    {
-                        string stop = "";
-                    }
                     //create new item with default stock values of 1/1
                     marketItem newitem = new marketItem();
                     newitem.ClassName = item.m_Trader_ItemsClassnames.ToLower();

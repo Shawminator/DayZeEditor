@@ -67,7 +67,7 @@ namespace DayZeLib
                         File.WriteAllText(TraderPath + "\\" + t.Filename + ".json", jsonString);
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                      MessageBox.Show("there is An error in the following file\n" + file.FullName);
 
@@ -278,7 +278,7 @@ namespace DayZeLib
 
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                     MessageBox.Show(Path.GetFileName(Filename) + " Conatins and category enrty for " + results[0] + " That doesn not exist in the market folder");
                 }

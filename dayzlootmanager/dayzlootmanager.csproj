@@ -58,6 +58,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\Cyotek.Windows.Forms.ColorPicker.dll</HintPath>
     </Reference>
+    <Reference Include="FastColoredTextBox, Version=2.16.26.0, Culture=neutral, PublicKeyToken=fb8aa12b994ef61b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\FastColoredTextBox.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -132,12 +136,6 @@
     </Compile>
     <Compile Include="Forms\AdvancedWorkBenchManager.Designer.cs">
       <DependentUpon>AdvancedWorkBenchManager.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\PlayerDB.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\PlayerDB.Designer.cs">
-      <DependentUpon>PlayerDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\BaseBuildingPlus.cs">
       <SubType>Form</SubType>
@@ -393,9 +391,6 @@
     <EmbeddedResource Include="Forms\AdvancedWorkBenchManager.resx">
       <DependentUpon>AdvancedWorkBenchManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PlayerDB.resx">
-      <DependentUpon>PlayerDB.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\BaseBuildingPlus.resx">
       <DependentUpon>BaseBuildingPlus.cs</DependentUpon>
     </EmbeddedResource>
@@ -515,6 +510,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Economy_Manager.resx">
       <DependentUpon>Economy_Manager.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -585,10 +581,6 @@
       <Project>{0bf2117f-7239-4b9b-9279-3b47ea65615c}</Project>
       <Name>DayZeLib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FastColoredTextBox\FastColoredTextBox.csproj">
-      <Project>{6dd14a85-ccfc-4774-bd26-0f5772512319}</Project>
-      <Name>FastColoredTextBox</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Updater\Updater.csproj">
       <Project>{88262141-9e16-4f46-b021-aade25decb85}</Project>
       <Name>Updater</Name>
@@ -601,6 +593,9 @@
     <None Include="defaultss.xsl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Content Include="FastColoredTextBox.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Maps\barrington_Map.png" />
     <Content Include="Maps\Capare_Map.png" />
     <Content Include="Maps\chiemsee_Map.png" />

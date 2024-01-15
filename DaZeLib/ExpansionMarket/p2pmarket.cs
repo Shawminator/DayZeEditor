@@ -57,7 +57,7 @@ namespace DayZeLib
                         File.WriteAllText(Expansionp2pmarketPath + "\\" + p2pm.Filename + ".json", jsonString);
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                     MessageBox.Show("there is An error in the following file\n" + file.FullName);
 

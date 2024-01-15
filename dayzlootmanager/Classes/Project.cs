@@ -158,8 +158,6 @@ namespace DayZeEditor
         [JsonIgnore]
         public weatherconfig weatherconfig { get; set; }
         [JsonIgnore]
-        public PlayerDataBase PlayerDB { get; set; }
-        [JsonIgnore]
         public mapgroupproto mapgroupproto { get; set; }
         [JsonIgnore]
         public mapgrouppos mapgrouppos { get; set; }
@@ -507,14 +505,6 @@ namespace DayZeEditor
         internal void SetcfgEffectAreaConfig()
         {
             cfgEffectAreaConfig = new cfgEffectAreaConfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgEffectArea.json");
-        }
-        internal void GetPlayerDB()
-        {
-            OpenFileDialog playerdb = new OpenFileDialog();
-            if (playerdb.ShowDialog() == DialogResult.OK)
-            {
-                PlayerDB = new PlayerDataBase(playerdb.FileName);
-            }
         }
         internal bool Setmappedrive()
         {

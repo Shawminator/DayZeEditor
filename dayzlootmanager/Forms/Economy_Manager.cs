@@ -33,8 +33,6 @@ namespace DayZeEditor
 
         public TypesFile vanillatypes;
         public List<TypesFile> ModTypes;
-        private TimeSpan _doubleClickMaxTime;
-        private Timer _clickTimer;
         public TypesFile currentTypesFile;
         public typesType currentlootpart;
         public string currentcollection;
@@ -54,7 +52,7 @@ namespace DayZeEditor
         {
             InitializeComponent();
             isUserInteraction = false;
-
+            EconomyTabPage.ItemSize = new Size(0, 1);
             isUserInteraction = true;
 
         }
@@ -79,8 +77,7 @@ namespace DayZeEditor
         private void Economy_Manager_Load(object sender, EventArgs e)
         {
             isUserInteraction = false;
-            EconomyTabPage.ItemSize = new Size(0, 1);
-
+            
             filename = currentproject.ProjectName;
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
@@ -6908,7 +6905,6 @@ namespace DayZeEditor
         }
         private Point _mouseLastPosition;
         private Point _newscrollPosition;
-        private Rectangle hitTestRectangle = new Rectangle();
         private Rectangle doubleClickRectangle = new Rectangle();
         private Timer doubleClickTimer = new Timer();
         private bool isFirstClick = true;
@@ -7501,7 +7497,6 @@ namespace DayZeEditor
         TextStyle BrownStyle = new TextStyle(Brushes.Brown, null, FontStyle.Italic);
         TextStyle MaroonStyle = new TextStyle(Brushes.Maroon, null, FontStyle.Regular);
         MarkerStyle SameWordsStyle = new MarkerStyle(new SolidBrush(Color.FromArgb(40, Color.Gray)));
-        bool initcisdirty = false;
         private void loadinitC()
         {
             isUserInteraction = false;

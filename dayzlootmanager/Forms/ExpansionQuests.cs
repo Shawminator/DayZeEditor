@@ -82,6 +82,7 @@ namespace DayZeEditor
         public ExpansionQuests()
         {
             InitializeComponent();
+            tabControl1.ItemSize = new Size(0, 1);
         }
         private void toolStripButton8_Click(object sender, EventArgs e)
         {
@@ -255,7 +256,7 @@ namespace DayZeEditor
             QuestPlayerDataList = new QuestPersistantDataPlayersList(QuestPlayerDataPath);
             setupplayerdata();
 
-            tabControl1.ItemSize = new Size(0, 1);
+           
 
             if (needtosave)
             {

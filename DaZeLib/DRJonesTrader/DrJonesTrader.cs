@@ -210,7 +210,7 @@ namespace DayZeLib
                     Console.WriteLine("Item Found.... " + item.m_Trader_ItemsClassnames + ", " + item.m_Trader_ItemsQuantity + ", " + item.m_Trader_ItemsSellValue + ", " + item.m_Trader_ItemsBuyValue);
                     itemCounter++;
                 }
-                catch(Exception e)
+                catch
                 {
                     MessageBox.Show("There is an error in the following line.\n" + line_content.ToString());
                 }

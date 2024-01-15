@@ -1,4 +1,28 @@
-﻿Version 0.7.8.4
+﻿Version 0.7.8.8
+[Update]
+Updated all Expansion managers to latest expansion update.
+
+Version 0.7.8.7
+[Update]
+Expansion configs up to date.
+Updated project names to inculde the mission name automatically.
+[Fixed]
+Few bugs fixed behind the scenes.
+[added]
+project edit added to change project name,map size etc, use carefully......
+
+Version 0.7.8.6
+[Updated]
+Updated dr jones trader to expansion convertion.
+some other small bits and bobs, spelling etc.....
+
+Version 0.7.8.5
+[Fix]
+various fixes and spelling corrections
+[Updated]
+Updated expansion setting to latest configs, NOT. i found a few settings i nmissed out, please use the save ALL button the first time you load expansion settings to catch all changes
+
+Version 0.7.8.4
 [Fix]
 small fix for auto update of the cfggameplay file.
 

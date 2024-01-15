@@ -58,7 +58,7 @@ namespace DayZeLib
                         File.WriteAllText(ExpansionPersonalStoragePath + "\\" + ps.Filename + ".json", jsonString);
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                     MessageBox.Show("there is An error in the following file\n" + file.FullName);
 

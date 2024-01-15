@@ -324,8 +324,6 @@ namespace DayZeEditor
                     projects.addtoprojects(project);
                     SetActiveProject(project);
                     LoadProjectstoList();
-                    string stop = "";
-
                     load.Abort();
                 }
             }
@@ -463,7 +461,6 @@ namespace DayZeEditor
             projects.getActiveProject().Setmapgrouproto();
             projects.getActiveProject().Setmapgroupos();
             projects.getActiveProject().SetTerritories();
-            //projects.getActiveProject().GetPlayerDB();
             getActiveProject();
         }
         private void SaveFileButton_Click(object sender, EventArgs e)
