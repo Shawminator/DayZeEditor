@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
@@ -56,11 +57,11 @@ namespace DayZeLib
         public string zoneName { get; set; }
         public float[] zonePosition { get; set; }
         public int zoneRadius { get; set; }
-        public float baseCaptureTime { get; set; }
-        public float playerTimeMultiplier { get; set; }
-        public float timeDespawn { get; set; }
-        public float timeLimit { get; set; }
-        public float timeStart { get; set; }
+        public decimal baseCaptureTime { get; set; }
+        public decimal playerTimeMultiplier { get; set; }
+        public decimal timeDespawn { get; set; }
+        public decimal timeLimit { get; set; }
+        public decimal timeStart { get; set; }
         public int maxEnemyCount { get; set; }
         public int minEnemyCount { get; set; }
         public int minimumDeaths { get; set; }
@@ -74,6 +75,30 @@ namespace DayZeLib
         public int crateLifeTime { get; set; }
         public BindingList<KOTHLootset> lootSets { get; set; }
 
+        public MDCKOTHZones()
+        {
+            zoneName = "";
+            zonePosition = new float[] { 0, 0, 0 };
+            zoneRadius = 50;
+            baseCaptureTime = -1;
+            playerTimeMultiplier = -1;
+            timeDespawn = -1;
+            timeLimit = -1;
+            timeStart = -1;
+            maxEnemyCount = -1;
+            minEnemyCount = -1;
+            minimumDeaths = -1;
+            minimumPlayers = -1;
+            maximumPlayers = -1;
+            rewardCount = -1;
+            flagClassname = "";
+            lootCrate = "";
+            crateLifeTime = -1;
+            objects = new BindingList<KOTHObject>();
+            enemies = new BindingList<string>();
+            lootSets = new BindingList<KOTHLootset>();
+        }
+
         public override string ToString()
         {
             return zoneName;
@@ -83,11 +108,16 @@ namespace DayZeLib
     public class KOTHObject
     {
         public string classname { get; set; }
-        public float[] position { get; set; }
-        public float[] orientation { get; set; }
+        public decimal[] position { get; set; }
+        public decimal[] orientation { get; set; }
         public int absolutePlacement { get; set; }
         public int alignToTerrain { get; set; }
         public int placeOnSurface { get; set; }
+
+        public override string ToString()
+        {
+            return classname;
+        }
     }
 
 
@@ -99,13 +129,23 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty { get; set; }
 
-        public KOTHLootset[] lootSets { get; set; }
+        public BindingList<KOTHLootset> lootSets { get; set; }
     }
 
     public class KOTHLootset
     {
         public string name { get; set; }
         public BindingList<KOTHItem> items { get; set; }
+
+        public override string ToString()
+        {
+            return name;
+        }
+        public KOTHLootset Clone()
+        {
+            var clonedJson = JsonSerializer.Serialize(this);
+            return JsonSerializer.Deserialize<KOTHLootset>(clonedJson);
+        }
     }
 
     public class KOTHItem

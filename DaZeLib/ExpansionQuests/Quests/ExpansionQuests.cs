@@ -228,6 +228,21 @@ namespace DayZeLib
                 }
             }
         }
+
+        public List<Quests> GetallQuests(QuestObjectivesBase objective)
+        {
+            List<Quests> quests = new List<Quests>();
+
+            foreach(Quests q in QuestList)
+            {
+                foreach(QuestObjectivesBase obj in q.Objectives)
+                {
+                    if (objective.ID == obj.ID && objective.ObjectiveType == obj.ObjectiveType)
+                        quests.Add(q);
+                }
+            }
+            return quests;
+        }
     }
     public class Quests
     {

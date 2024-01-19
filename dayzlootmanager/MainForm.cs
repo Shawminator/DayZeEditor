@@ -86,8 +86,10 @@ namespace DayZeEditor
                 panel1,
                 panel2,
                 TitleLabel,
+                label1,
                 CloseButton,
                 MinimiseButton
+                
             );
             SlidePanel.Width = 30;
             hidden = true;
@@ -416,10 +418,10 @@ namespace DayZeEditor
                 else
                     BreachingChargeManagerButton.Visible = false;
 
-                //if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KOTH\\" + Projects.getActiveProject().mpmissionpath.Split('.').Last() + ".json") &&
-                //    File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KOTH\\Loot.json"))
-                //    KOTHManagerButton.Visible = true;
-                //else
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KOTH\\" + Projects.getActiveProject().mpmissionpath.Split('.').Last() + ".json") &&
+                    File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KOTH\\Loot.json"))
+                    KOTHManagerButton.Visible = true;
+                else
                 KOTHManagerButton.Visible = false;
 
                 if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KosZone\\KZConfig\\KosZoneConfig.json") &&
@@ -507,6 +509,7 @@ namespace DayZeEditor
                 };
                 _TM.Show();
                 Console.WriteLine("loading Project manager....");
+                label1.Text = "Project Manager";
             }
             timer1.Start();
         }
@@ -532,6 +535,7 @@ namespace DayZeEditor
                 };
                 _TM.Show();
                 Console.WriteLine("loading Economy manager....");
+                label1.Text = "Economy Manager";
             }
             timer1.Start();
         }
@@ -557,6 +561,7 @@ namespace DayZeEditor
                 };
                 _TM.Show();
                 Console.WriteLine("loading Dr Jones Trader manager....");
+                label1.Text = "DR Jones Trader Manager";
             }
             timer1.Start();
         }
@@ -582,6 +587,7 @@ namespace DayZeEditor
                 };
                 _TM.Show();
                 Console.WriteLine("loading TraderPlus manager....");
+                label1.Text = "Trader Plus Manager";
             }
             timer1.Start();
         }
@@ -607,6 +613,7 @@ namespace DayZeEditor
                 };
                 _TM.Show();
                 Console.WriteLine("loading Expansion Settings manager....");
+                label1.Text = "Expansion Settings Manager";
             }
             timer1.Start();
         }
@@ -632,6 +639,7 @@ namespace DayZeEditor
                 };
                 _TM.Show();
                 Console.WriteLine("loading Expansion Market manager....");
+                label1.Text = "Expansion Market manager";
             }
             timer1.Start();
         }
@@ -657,6 +665,7 @@ namespace DayZeEditor
                 };
                 _TM.Show();
                 Console.WriteLine("loading Expansion Market manager....");
+                label1.Text = "Expansion P2P Market manager";
             }
             timer1.Start();
         }
@@ -682,6 +691,7 @@ namespace DayZeEditor
                 };
                 _TM.Show();
                 Console.WriteLine("loading expansion AI manager....");
+                label1.Text = "Expansion AI manager";
             }
             timer1.Start();
         }
@@ -707,9 +717,9 @@ namespace DayZeEditor
                 };
                 _TM.Show();
                 Console.WriteLine("loading expansion Loadout manager....");
+                label1.Text = "Expansion Loadouts manager";
             }
             timer1.Start();
-            Console.WriteLine("loading Expasion Quest manager....");
         }
         private void ExpansionQuestsButton_Click(object sender, EventArgs e)
         {
@@ -732,9 +742,11 @@ namespace DayZeEditor
                     currentproject = Projects.getActiveProject()
                 };
                 _TM.Show();
+                Console.WriteLine("loading Expasion Quest manager....");
+                label1.Text = "Expansion Quests manager";
             }
             timer1.Start();
-            Console.WriteLine("loading Expasion Quest manager....");
+            
         }
         private void Lootchest_Click(object sender, EventArgs e)
         {
@@ -758,6 +770,7 @@ namespace DayZeEditor
                 };
                 _TM.Show();
                 Console.WriteLine("loading Loot Chest manager....");
+                label1.Text = "CJ Loot Chests manager";
             }
             timer1.Start();
         }
@@ -783,6 +796,7 @@ namespace DayZeEditor
                 };
                 _TM.Show();
                 Console.WriteLine("loading Loot Pool manager....");
+                label1.Text = "Capare LootBox manager";
             }
             timer1.Start();
         }
@@ -808,6 +822,7 @@ namespace DayZeEditor
                 };
                 _TM.Show();
                 Console.WriteLine("loading Loot Pool manager....");
+                label1.Text = "Capare Loot Pool manager";
             }
             timer1.Start();
         }
@@ -834,6 +849,7 @@ namespace DayZeEditor
                 };
                 _TM.Show();
                 Console.WriteLine("loading Heli crash Mission manager....");
+                label1.Text = "Capare Heli Crash manager";
             }
             timer1.Start();
         }
@@ -859,6 +875,7 @@ namespace DayZeEditor
                 };
                 _TM.Show();
                 Console.WriteLine("loading KOTH manager....");
+                label1.Text = "MDC KOTH manager";
             }
             timer1.Start();
         }
@@ -884,6 +901,7 @@ namespace DayZeEditor
                 };
                 _TM.Show();
                 Console.WriteLine("loading Base Building Plus manager....");
+                label1.Text = "Base Building Plus manager";
             }
             timer1.Start();
         }
@@ -909,6 +927,7 @@ namespace DayZeEditor
                 };
                 _TM.Show();
                 Console.WriteLine("loading KOSZone manager....");
+                label1.Text = "RH KOS Zone manager";
             }
             timer1.Start();
         }
@@ -945,6 +964,7 @@ namespace DayZeEditor
                 };
                 _TM.Show();
                 Console.WriteLine("loading Abandoned Vehicle Remover manager....");
+                label1.Text = "Abandoned Vehicle manager";
             }
             timer1.Start();
         }
@@ -970,7 +990,8 @@ namespace DayZeEditor
 
                 };
                 _TM.Show();
-                Console.WriteLine("loading KOSZone manager....");
+                Console.WriteLine("loading breaching charge manager....");
+                label1.Text = "Breaching charge manager";
             }
             timer1.Start();
         }
@@ -997,6 +1018,7 @@ namespace DayZeEditor
                 };
                 _TM.Show();
                 Console.WriteLine("loading AdvancedWorkBenchManager manager....");
+                label1.Text = "RH Advanced Workbench manager";
             }
             timer1.Start();
         }
@@ -1023,6 +1045,7 @@ namespace DayZeEditor
                 };
                 _TM.Show();
                 Console.WriteLine("loading DNAKeyCards manager....");
+                label1.Text = "DNA Keycards manager";
             }
             timer1.Start();
         }
@@ -1048,7 +1071,8 @@ namespace DayZeEditor
 
                 };
                 _TM.Show();
-                Console.WriteLine("loading AdvancedWorkBenchManager manager....");
+                Console.WriteLine("loading Mystery Box manager....");
+                label1.Text = "Mystery Box manager";
             }
             timer1.Start();
         }

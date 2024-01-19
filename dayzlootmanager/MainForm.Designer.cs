@@ -65,9 +65,9 @@ namespace DayZeEditor
             this.KOSzoneManagerButton = new System.Windows.Forms.ToolStripButton();
             this.MysteryBoxButton = new System.Windows.Forms.ToolStripButton();
             this.AdvancedWorkbenchButton = new System.Windows.Forms.ToolStripButton();
+            this.DNAKeyCardsButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.DNAKeyCardsButton = new System.Windows.Forms.ToolStripButton();
             this.HidePBox = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -75,6 +75,7 @@ namespace DayZeEditor
             this.darkStatusStrip1 = new DarkUI.Controls.DarkStatusStrip();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SlidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Slidelabel)).BeginInit();
@@ -89,6 +90,7 @@ namespace DayZeEditor
             this.panel1.Controls.Add(this.MinimiseButton);
             this.panel1.Controls.Add(this.CloseButton);
             this.panel1.Controls.Add(this.TitleLabel);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -288,7 +290,7 @@ namespace DayZeEditor
             this.TraderManButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TraderManButton.Name = "TraderManButton";
             this.TraderManButton.Size = new System.Drawing.Size(123, 19);
-            this.TraderManButton.Text = "Trader Manager";
+            this.TraderManButton.Text = "DR Jones Trader";
             this.TraderManButton.Visible = false;
             this.TraderManButton.Click += new System.EventHandler(this.TraderManButton_Click);
             // 
@@ -372,7 +374,7 @@ namespace DayZeEditor
             this.HelicrashManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.HelicrashManagerButton.Name = "HelicrashManagerButton";
             this.HelicrashManagerButton.Size = new System.Drawing.Size(123, 19);
-            this.HelicrashManagerButton.Text = "HeliCrash Missions";
+            this.HelicrashManagerButton.Text = "Capare Heli Crash";
             this.HelicrashManagerButton.Visible = false;
             this.HelicrashManagerButton.Click += new System.EventHandler(this.HelicrashManagerButton_Click);
             // 
@@ -384,7 +386,7 @@ namespace DayZeEditor
             this.LootPoolManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.LootPoolManagerButton.Name = "LootPoolManagerButton";
             this.LootPoolManagerButton.Size = new System.Drawing.Size(123, 19);
-            this.LootPoolManagerButton.Text = "Loot Pool Manager";
+            this.LootPoolManagerButton.Text = "Capare Loot Pool";
             this.LootPoolManagerButton.Visible = false;
             this.LootPoolManagerButton.Click += new System.EventHandler(this.LootPoolManagerButton_Click);
             // 
@@ -396,7 +398,7 @@ namespace DayZeEditor
             this.RHLootBoxManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.RHLootBoxManagerButton.Name = "RHLootBoxManagerButton";
             this.RHLootBoxManagerButton.Size = new System.Drawing.Size(123, 19);
-            this.RHLootBoxManagerButton.Text = "LootBox Manager";
+            this.RHLootBoxManagerButton.Text = "Capare loot Box";
             this.RHLootBoxManagerButton.Visible = false;
             this.RHLootBoxManagerButton.Click += new System.EventHandler(this.RHLootBoxManagerButton_Click);
             // 
@@ -408,7 +410,7 @@ namespace DayZeEditor
             this.LootchestButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.LootchestButton.Name = "LootchestButton";
             this.LootchestButton.Size = new System.Drawing.Size(123, 19);
-            this.LootchestButton.Text = "Loot Chest Table";
+            this.LootchestButton.Text = "CJ Loot Chest";
             this.LootchestButton.Visible = false;
             this.LootchestButton.Click += new System.EventHandler(this.Lootchest_Click);
             // 
@@ -420,7 +422,7 @@ namespace DayZeEditor
             this.KOTHManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.KOTHManagerButton.Name = "KOTHManagerButton";
             this.KOTHManagerButton.Size = new System.Drawing.Size(123, 19);
-            this.KOTHManagerButton.Text = "King of the Hill";
+            this.KOTHManagerButton.Text = "MDC KOTH";
             this.KOTHManagerButton.Visible = false;
             this.KOTHManagerButton.Click += new System.EventHandler(this.KOTHManagerButton_Click);
             // 
@@ -468,7 +470,7 @@ namespace DayZeEditor
             this.KOSzoneManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.KOSzoneManagerButton.Name = "KOSzoneManagerButton";
             this.KOSzoneManagerButton.Size = new System.Drawing.Size(123, 19);
-            this.KOSzoneManagerButton.Text = "KOS Zone";
+            this.KOSzoneManagerButton.Text = "RH KOS Zone";
             this.KOSzoneManagerButton.Visible = false;
             this.KOSzoneManagerButton.Click += new System.EventHandler(this.KOSzoneManagerButton_Click);
             // 
@@ -492,9 +494,21 @@ namespace DayZeEditor
             this.AdvancedWorkbenchButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AdvancedWorkbenchButton.Name = "AdvancedWorkbenchButton";
             this.AdvancedWorkbenchButton.Size = new System.Drawing.Size(123, 19);
-            this.AdvancedWorkbenchButton.Text = "Advanced WB";
+            this.AdvancedWorkbenchButton.Text = "RH Advanced WB";
             this.AdvancedWorkbenchButton.Visible = false;
             this.AdvancedWorkbenchButton.Click += new System.EventHandler(this.AdvancedWB_Click);
+            // 
+            // DNAKeyCardsButton
+            // 
+            this.DNAKeyCardsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.DNAKeyCardsButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.DNAKeyCardsButton.Image = ((System.Drawing.Image)(resources.GetObject("DNAKeyCardsButton.Image")));
+            this.DNAKeyCardsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DNAKeyCardsButton.Name = "DNAKeyCardsButton";
+            this.DNAKeyCardsButton.Size = new System.Drawing.Size(123, 19);
+            this.DNAKeyCardsButton.Text = "DNA KeyCards";
+            this.DNAKeyCardsButton.Visible = false;
+            this.DNAKeyCardsButton.Click += new System.EventHandler(this.DNAKeyCardsButton_Click);
             // 
             // toolStripButton1
             // 
@@ -517,18 +531,6 @@ namespace DayZeEditor
             this.toolStripButton3.Size = new System.Drawing.Size(123, 19);
             this.toolStripButton3.Text = "De bin DZE file";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
-            // 
-            // DNAKeyCardsButton
-            // 
-            this.DNAKeyCardsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.DNAKeyCardsButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.DNAKeyCardsButton.Image = ((System.Drawing.Image)(resources.GetObject("DNAKeyCardsButton.Image")));
-            this.DNAKeyCardsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.DNAKeyCardsButton.Name = "DNAKeyCardsButton";
-            this.DNAKeyCardsButton.Size = new System.Drawing.Size(123, 19);
-            this.DNAKeyCardsButton.Text = "DNA KeyCards";
-            this.DNAKeyCardsButton.Visible = false;
-            this.DNAKeyCardsButton.Click += new System.EventHandler(this.DNAKeyCardsButton_Click);
             // 
             // HidePBox
             // 
@@ -603,6 +605,17 @@ namespace DayZeEditor
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(25, 25);
             this.panel2.TabIndex = 45;
+            // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(1148, 28);
+            this.label1.TabIndex = 8;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MainForm
             // 
@@ -682,6 +695,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripButton P2PButton;
         private System.Windows.Forms.ToolStripButton DNAKeyCardsButton;
+        private System.Windows.Forms.Label label1;
     }
 }
 

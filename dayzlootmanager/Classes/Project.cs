@@ -14,17 +14,6 @@ using System.Xml.Linq;
 
 namespace DayZeEditor
 {
-    public class MissionTemplate
-    {
-        public string m_TemplatePath { get; set; }
-        public string m_DisplayName { get; set; }
-        public string m_mpmissionName { get; set; }
-        public int m_Mapsize { get; set; }
-        public override string ToString()
-        {
-            return m_DisplayName;
-        }
-    }
     public class ProjectList
     {
         public bool ShowChangeLog { get; set; }

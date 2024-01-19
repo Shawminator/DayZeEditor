@@ -3290,15 +3290,15 @@ namespace DayZeEditor
                 {
                     Type = Classname,
                     DisplayName = Classname,
-                    Position = new float[] { (float)array.x, 0f, (float)array.z },
+                    Position = new float[] { Convert.ToSingle(array.x), 0f, Convert.ToSingle(array.z) },
                     Orientation = new float[] { 0, 0, 0 },
                     Scale = 1.0f,
                     Flags = 2147483647
                 };
                 if (array.ySpecified)
-                    eo.Position[1] = (float)array.y;
+                    eo.Position[1] = Convert.ToSingle(array.y);
                 if (array.aSpecified)
-                    eo.Orientation[0] = (float)array.a;
+                    eo.Orientation[0] = Convert.ToSingle(array.a);
                 newdze.EditorObjects.Add(eo);
             }
             newdze.CameraPosition = newdze.EditorObjects[0].Position;
@@ -7195,14 +7195,6 @@ namespace DayZeEditor
                     getSquare(e.Graphics, pen, center, radius);
                 }
             }
-        }
-        private void pictureBox6_DoubleClick(object sender, EventArgs e)
-        {
-            
-        }
-        private void pictureBox6_Click(object sender, EventArgs e)
-        {
-            
         }
         public bool IsWithinCircle(PointF pC, PointF pP, Single fRadius)
         {

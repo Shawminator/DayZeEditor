@@ -33,6 +33,7 @@ namespace DayZeEditor
         private static Panel P;
         private static Panel P2;
         private static Label L;
+        private static Label L2;
         private static Form F;
         private static bool mouseDown;
         private static Point lastLocation;
@@ -42,7 +43,7 @@ namespace DayZeEditor
 
         public static int Height { get; private set; }
 
-        public static void InitializeForm_Controls(Form _F, Panel _P, Panel _P2, Label _L, Button _B = null, Button _B1 = null)
+        public static void InitializeForm_Controls(Form _F, Panel _P, Panel _P2, Label _L, Label _L2,  Button _B = null, Button _B1 = null)
         {
             F = _F;
             P = _P;
@@ -50,6 +51,7 @@ namespace DayZeEditor
             B = _B;
             B1 = _B1;
             L = _L;
+            L2 = _L2;
             P.MouseDoubleClick += new MouseEventHandler(FormMax_MouseDoubleClick);
             P.MouseDown += new MouseEventHandler(FormMove_MouseDown);
             P.MouseMove += new MouseEventHandler(FormMove_MouseMove);
@@ -61,6 +63,10 @@ namespace DayZeEditor
             L.MouseDown += new MouseEventHandler(FormMove_MouseDown);
             L.MouseMove += new MouseEventHandler(FormMove_MouseMove);
             L.MouseUp += new MouseEventHandler(FormMove_MouseUp);
+            L2.MouseDoubleClick += new MouseEventHandler(FormMax_MouseDoubleClick);
+            L2.MouseDown += new MouseEventHandler(FormMove_MouseDown);
+            L2.MouseMove += new MouseEventHandler(FormMove_MouseMove);
+            L2.MouseUp += new MouseEventHandler(FormMove_MouseUp);
             if (_B != null)
                 B.Click += new System.EventHandler(FormClose_Click);
             if (_B1 != null)

@@ -2172,6 +2172,7 @@ namespace DayZeEditor
                 QuestObjectivesConfigVersionNUD.Value = CurrentTreeNodeTag.ConfigVersion;
                 QuestsObjectivesIDNUD.Value = CurrentTreeNodeTag.ID;
                 QuestObjectivesObjectiveTypeCB.SelectedItem = (QuExpansionQuestObjectiveTypeestType)CurrentTreeNodeTag.ObjectiveType;
+                ObjectivesQuestsListLB.DataSource = QuestsList.GetallQuests(CurrentTreeNodeTag);
                 foreach (GroupBox gpBox in flowLayoutPanel3.Controls.OfType<GroupBox>())
                 {
                     if (gpBox.Name == "QuestObjectivesBaseInfoGB") continue;

@@ -405,7 +405,7 @@ namespace DayZeEditor
                     DisplayName = "eAI_SurvivorM_Jose",
                     Position = new float[] { Convert.ToSingle(array[0]), Convert.ToSingle(array[1]), Convert.ToSingle(array[2]) },
                     Orientation = new float[] { 0, 0, 0 },
-                    Scale = 1.0f,
+                    Scale = (float)1.0,
                     Flags = 2147483647
                 };
                 newdze.EditorObjects.Add(eo);

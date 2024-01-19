@@ -620,6 +620,9 @@ namespace DayZeEditor
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.removeQuestFromPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removePlayerSaveDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel83 = new System.Windows.Forms.Panel();
+            this.darkLabel53 = new DarkUI.Controls.DarkLabel();
+            this.ObjectivesQuestsListLB = new System.Windows.Forms.ListBox();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -820,6 +823,7 @@ namespace DayZeEditor
             this.darkToolStrip23.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
+            this.panel83.SuspendLayout();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -3904,6 +3908,7 @@ namespace DayZeEditor
             // 
             // QuestObjectivesBaseInfoGB
             // 
+            this.QuestObjectivesBaseInfoGB.Controls.Add(this.panel83);
             this.QuestObjectivesBaseInfoGB.Controls.Add(this.panel82);
             this.QuestObjectivesBaseInfoGB.Controls.Add(this.panel40);
             this.QuestObjectivesBaseInfoGB.Controls.Add(this.panel41);
@@ -3914,7 +3919,7 @@ namespace DayZeEditor
             this.QuestObjectivesBaseInfoGB.ForeColor = System.Drawing.SystemColors.Control;
             this.QuestObjectivesBaseInfoGB.Location = new System.Drawing.Point(3, 3);
             this.QuestObjectivesBaseInfoGB.Name = "QuestObjectivesBaseInfoGB";
-            this.QuestObjectivesBaseInfoGB.Size = new System.Drawing.Size(358, 243);
+            this.QuestObjectivesBaseInfoGB.Size = new System.Drawing.Size(358, 339);
             this.QuestObjectivesBaseInfoGB.TabIndex = 215;
             this.QuestObjectivesBaseInfoGB.TabStop = false;
             this.QuestObjectivesBaseInfoGB.Text = "Base Objective Info";
@@ -3923,7 +3928,7 @@ namespace DayZeEditor
             // 
             this.panel82.Controls.Add(this.label2);
             this.panel82.Controls.Add(this.QuestObjectivesActiveCB);
-            this.panel82.Location = new System.Drawing.Point(5, 216);
+            this.panel82.Location = new System.Drawing.Point(6, 216);
             this.panel82.Name = "panel82";
             this.panel82.Size = new System.Drawing.Size(349, 20);
             this.panel82.TabIndex = 208;
@@ -8059,6 +8064,37 @@ namespace DayZeEditor
             this.removePlayerSaveDataToolStripMenuItem.Text = "Remove Player Save Data";
             this.removePlayerSaveDataToolStripMenuItem.Click += new System.EventHandler(this.removePlayerSaveDataToolStripMenuItem_Click);
             // 
+            // panel83
+            // 
+            this.panel83.Controls.Add(this.ObjectivesQuestsListLB);
+            this.panel83.Controls.Add(this.darkLabel53);
+            this.panel83.Location = new System.Drawing.Point(6, 239);
+            this.panel83.Name = "panel83";
+            this.panel83.Size = new System.Drawing.Size(349, 94);
+            this.panel83.TabIndex = 209;
+            // 
+            // darkLabel53
+            // 
+            this.darkLabel53.AutoSize = true;
+            this.darkLabel53.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel53.Location = new System.Drawing.Point(2, 3);
+            this.darkLabel53.Name = "darkLabel53";
+            this.darkLabel53.Size = new System.Drawing.Size(60, 13);
+            this.darkLabel53.TabIndex = 161;
+            this.darkLabel53.Text = "Quests info";
+            // 
+            // ObjectivesQuestsListLB
+            // 
+            this.ObjectivesQuestsListLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ObjectivesQuestsListLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ObjectivesQuestsListLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ObjectivesQuestsListLB.FormattingEnabled = true;
+            this.ObjectivesQuestsListLB.Location = new System.Drawing.Point(92, 7);
+            this.ObjectivesQuestsListLB.Name = "ObjectivesQuestsListLB";
+            this.ObjectivesQuestsListLB.Size = new System.Drawing.Size(248, 82);
+            this.ObjectivesQuestsListLB.TabIndex = 231;
+            this.ObjectivesQuestsListLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            // 
             // ExpansionQuests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -8374,6 +8410,8 @@ namespace DayZeEditor
             this.darkToolStrip23.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
             this.contextMenuStrip2.ResumeLayout(false);
+            this.panel83.ResumeLayout(false);
+            this.panel83.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -8967,5 +9005,8 @@ namespace DayZeEditor
         private System.Windows.Forms.ListBox ObjectivesAIPatrolAllowedWeaponsLB;
         private DarkUI.Controls.DarkButton darkButton21;
         private DarkUI.Controls.DarkButton darkButton22;
+        private System.Windows.Forms.Panel panel83;
+        private System.Windows.Forms.ListBox ObjectivesQuestsListLB;
+        private DarkUI.Controls.DarkLabel darkLabel53;
     }
 }

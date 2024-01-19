@@ -254,7 +254,6 @@ namespace DayZeLib
             DamageReceivedMultiplier = (decimal)-1.0;
             SniperProneDistanceThreshold = (decimal)0.0;
             Waypoints = new BindingList<float[]>(way);
-            Waypoints = new BindingList<float[]>();
         }
         public override string ToString()
         {

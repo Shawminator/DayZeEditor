@@ -165,7 +165,7 @@ namespace DayZeLib
             if (exact)
                 return types.type.Where(x => x.name == Searchterm).ToList();
             else
-                return types.type.Where(x => x.name.ToLower().Contains(Searchterm)).ToList();
+                return types.type.Where(x => x.name.ToLower().Contains(Searchterm.ToLower())).ToList();
             
         }
         public List<typesType> SerachTypes(string[] Searchterm, bool exact = false)

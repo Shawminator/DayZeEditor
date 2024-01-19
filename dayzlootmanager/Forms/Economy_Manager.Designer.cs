@@ -8112,7 +8112,7 @@ namespace DayZeEditor
             this.PlayerSpawnFreshButton.Image = ((System.Drawing.Image)(resources.GetObject("PlayerSpawnFreshButton.Image")));
             this.PlayerSpawnFreshButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PlayerSpawnFreshButton.Name = "PlayerSpawnFreshButton";
-            this.PlayerSpawnFreshButton.Size = new System.Drawing.Size(24, 24);
+            this.PlayerSpawnFreshButton.Size = new System.Drawing.Size(39, 22);
             this.PlayerSpawnFreshButton.Text = "Fresh";
             this.PlayerSpawnFreshButton.Click += new System.EventHandler(this.PlayerSpawnFreshButton_Click);
             // 
@@ -8132,7 +8132,7 @@ namespace DayZeEditor
             this.PlayerSpawnHopButton.Image = ((System.Drawing.Image)(resources.GetObject("PlayerSpawnHopButton.Image")));
             this.PlayerSpawnHopButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PlayerSpawnHopButton.Name = "PlayerSpawnHopButton";
-            this.PlayerSpawnHopButton.Size = new System.Drawing.Size(24, 24);
+            this.PlayerSpawnHopButton.Size = new System.Drawing.Size(34, 22);
             this.PlayerSpawnHopButton.Text = "Hop";
             this.PlayerSpawnHopButton.Click += new System.EventHandler(this.PlayerSpawnHopButton_Click);
             // 
@@ -8152,7 +8152,7 @@ namespace DayZeEditor
             this.PlayerSpawnTravelButton.Image = ((System.Drawing.Image)(resources.GetObject("PlayerSpawnTravelButton.Image")));
             this.PlayerSpawnTravelButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PlayerSpawnTravelButton.Name = "PlayerSpawnTravelButton";
-            this.PlayerSpawnTravelButton.Size = new System.Drawing.Size(24, 24);
+            this.PlayerSpawnTravelButton.Size = new System.Drawing.Size(41, 22);
             this.PlayerSpawnTravelButton.Text = "Travel";
             this.PlayerSpawnTravelButton.Click += new System.EventHandler(this.PlayerSpawnTravelButton_Click);
             // 
@@ -13355,8 +13355,6 @@ namespace DayZeEditor
             this.pictureBox6.Size = new System.Drawing.Size(512, 512);
             this.pictureBox6.TabIndex = 0;
             this.pictureBox6.TabStop = false;
-            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
-            this.pictureBox6.DoubleClick += new System.EventHandler(this.pictureBox6_DoubleClick);
             this.pictureBox6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox6_MouseDown);
             this.pictureBox6.MouseEnter += new System.EventHandler(this.pictureBox6_MouseEnter);
             this.pictureBox6.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox6_MouseMove);
@@ -13804,7 +13802,7 @@ namespace DayZeEditor
         '\''};
             this.fastColoredTextBox1.AutoIndentCharsPatterns = "^\\s*[\\w\\.]+(\\s\\w+)?\\s*(?<range>=)\\s*(?<range>[^;=]+);\n^\\s*(case|default)\\s*[^:]*(" +
     "?<range>:)\\s*(?<range>[^;]+);";
-            this.fastColoredTextBox1.AutoScrollMinSize = new System.Drawing.Size(27, 14);
+            this.fastColoredTextBox1.AutoScrollMinSize = new System.Drawing.Size(2, 14);
             this.fastColoredTextBox1.BackBrush = null;
             this.fastColoredTextBox1.BackColor = System.Drawing.Color.FloralWhite;
             this.fastColoredTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -13814,7 +13812,6 @@ namespace DayZeEditor
             this.fastColoredTextBox1.DefaultMarkerSize = 8;
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.fastColoredTextBox1.IsReplaceMode = false;
             this.fastColoredTextBox1.Location = new System.Drawing.Point(0, 24);

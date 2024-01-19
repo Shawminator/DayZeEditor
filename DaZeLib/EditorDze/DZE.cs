@@ -40,7 +40,7 @@ namespace DayZeLib
                 CameraPosition = new float[3];
                 for (int i = 0; i < loop; i++)
                 {
-                    CameraPosition[i] = br.ReadSingle();
+                    CameraPosition[i] = (float)br.ReadSingle();
                 }
                 int EditorobjectCount = br.ReadInt32();
                 EditorObjects = new BindingList<Editorobject>();
