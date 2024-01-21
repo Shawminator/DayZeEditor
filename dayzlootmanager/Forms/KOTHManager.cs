@@ -809,9 +809,16 @@ namespace DayZeEditor
         private void darkButton11_Click(object sender, EventArgs e)
         {
             int index = HillsLB.SelectedIndex;
-            MDCKOTHConfig.zones.Remove(currentKOTHZoneAreaLocation);
-            MDCKOTHConfig.isDirty = true;
-            pictureBox2.Invalidate();
+            List<MDCKOTHZones> removeKOTHZones = new List<MDCKOTHZones>();
+            foreach (var item in HillsLB.SelectedItems)
+            {
+                removeKOTHZones.Add(item as MDCKOTHZones);
+            }
+            foreach (MDCKOTHZones KOTHz in removeKOTHZones)
+            {
+                MDCKOTHConfig.zones.Remove(KOTHz);
+                MDCKOTHConfig.isDirty = true;
+            }
             if (HillsLB.SelectedIndex != -1)
             {
                 HillsLB.SelectedIndex = -1;
@@ -825,7 +832,7 @@ namespace DayZeEditor
             {
                 tabControl2.Visible = false;
             }
-            
+            pictureBox2.Invalidate();
         }
         private void ZobneenemiesAddBT_Click(object sender, EventArgs e)
         {
@@ -839,6 +846,8 @@ namespace DayZeEditor
         }
         private void ZoneenemiesRemoveBT_Click(object sender, EventArgs e)
         {
+            int index = ZoneenemiesLB.SelectedIndex;
+
             List<string> removezombies = new List<string>();
             foreach (var item in ZoneenemiesLB.SelectedItems)
             {
@@ -847,6 +856,15 @@ namespace DayZeEditor
             foreach (string s in removezombies)
             {
                 currentKOTHZoneAreaLocation.enemies.Remove(s);
+            }
+            if (ZoneenemiesLB.SelectedIndex != -1)
+            {
+                ZoneenemiesLB.SelectedIndex = -1;
+                int newindex = index - 1;
+                if (newindex == -1)
+                    ZoneenemiesLB.SelectedIndex = 0;
+                else
+                    ZoneenemiesLB.SelectedIndex = index - 1;
             }
             MDCKOTHConfig.isDirty = true;
         }
@@ -1128,8 +1146,17 @@ namespace DayZeEditor
         private void darkButton13_Click(object sender, EventArgs e)
         {
             int index = ZoneLootSetsLB.SelectedIndex;
-            currentKOTHZoneAreaLocation.lootSets.Remove(currentZonelootset);
-            MDCKOTHConfig.isDirty = true;
+
+            List<KOTHLootset> removelootsets = new List<KOTHLootset>();
+            foreach (var item in ZoneLootSetsLB.SelectedItems)
+            {
+                removelootsets.Add(item as KOTHLootset);
+            }
+            foreach (KOTHLootset Zonels in removelootsets)
+            {
+                currentKOTHZoneAreaLocation.lootSets.Remove(Zonels);
+                MDCKOTHConfig.isDirty = true;
+            }
             if (ZoneLootSetsLB.SelectedIndex != -1)
             {
                 ZoneLootSetsLB.SelectedIndex = -1;
@@ -1139,6 +1166,7 @@ namespace DayZeEditor
                 else
                     ZoneLootSetsLB.SelectedIndex = index - 1;
             }
+
         }
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -1391,8 +1419,28 @@ namespace DayZeEditor
         private void darkButton5_Click(object sender, EventArgs e)
         {
             if (ZoneObjectsLB.SelectedItems.Count < 1) return;
-            currentKOTHZoneAreaLocation.objects.Remove(currentKOTHillZOneObjects);
-            if(currentKOTHZoneAreaLocation.objects.Count ==0)
+
+            int index = ZoneObjectsLB.SelectedIndex;
+
+            List<KOTHObject> KOTHObject = new List<KOTHObject>();
+            foreach (var item in ZoneObjectsLB.SelectedItems)
+            {
+                KOTHObject.Add(item as KOTHObject);
+            }
+            foreach (KOTHObject KO in KOTHObject)
+            {
+                currentKOTHZoneAreaLocation.objects.Remove(KO);
+            }
+            if (ZoneObjectsLB.SelectedIndex != -1)
+            {
+                ZoneObjectsLB.SelectedIndex = -1;
+                int newindex = index - 1;
+                if (newindex == -1)
+                    ZoneObjectsLB.SelectedIndex = 0;
+                else
+                    ZoneObjectsLB.SelectedIndex = index - 1;
+            }
+            if (currentKOTHZoneAreaLocation.objects.Count ==0)
             {
                 useraction = false;
                 currentKOTHillZOneObjects = null;
@@ -1564,6 +1612,7 @@ namespace DayZeEditor
         }
         private void darkButton8_Click(object sender, EventArgs e)
         {
+            int index = ZombiesClassNamesLB.SelectedIndex;
             List<string> removezombies = new List<string>();
             foreach (var item in ZombiesClassNamesLB.SelectedItems)
             {
@@ -1572,7 +1621,16 @@ namespace DayZeEditor
             foreach (string s in removezombies)
             {
                 MDCKOTHConfig.enemies.Remove(s);
-             }
+            }
+            if (ZombiesClassNamesLB.SelectedIndex != -1)
+            {
+                ZombiesClassNamesLB.SelectedIndex = -1;
+                int newindex = index - 1;
+                if (newindex == -1)
+                    ZombiesClassNamesLB.SelectedIndex = 0;
+                else
+                    ZombiesClassNamesLB.SelectedIndex = index - 1;
+            }
             MDCKOTHConfig.isDirty = true;
         }
         private void darkButton7_Click(object sender, EventArgs e)
@@ -1669,13 +1727,22 @@ namespace DayZeEditor
         private void darkButton2_Click(object sender, EventArgs e)
         {
             int index = LootSetsLB.SelectedIndex;
-            MDCKOTHLoot.lootSets.Remove(currentlootset);
-            MDCKOTHLoot.isDirty = true;
-            if(LootSetsLB.SelectedIndex != -1)
+
+            List<KOTHLootset> removelootsets = new List<KOTHLootset>();
+            foreach (var item in LootSetsLB.SelectedItems)
+            {
+                removelootsets.Add(item as KOTHLootset);
+            }
+            foreach(KOTHLootset ls in removelootsets)
+            {
+                MDCKOTHLoot.lootSets.Remove(ls);
+                MDCKOTHLoot.isDirty = true;
+            }
+            if (LootSetsLB.SelectedIndex != -1)
             {
                 LootSetsLB.SelectedIndex = -1;
                 int newindex = index - 1;
-                if(newindex == -1)
+                if (newindex == -1)
                     LootSetsLB.SelectedIndex = 0;
                 else
                     LootSetsLB.SelectedIndex = index - 1;
@@ -1929,18 +1996,16 @@ namespace DayZeEditor
             {
                 copiedlootsets.Add(item as KOTHLootset);
             }
+            Console.WriteLine("\nCopied to Clipboard:\n" + string.Join(Environment.NewLine, copiedlootsets.Cast<object>().Select(o => o.ToString()).ToArray()));
         }
-
         private void darkButton17_Click(object sender, EventArgs e)
         {
             foreach(KOTHLootset SET in copiedlootsets)
             {
                 currentKOTHZoneAreaLocation.lootSets.Add(SET.Clone());
             }
-            copiedlootsets = new List<KOTHLootset>();
             MDCKOTHConfig.isDirty = true;
         }
-
         private void darkButton19_Click(object sender, EventArgs e)
         {
             copiedlootsets = new List<KOTHLootset>();
@@ -1948,15 +2013,14 @@ namespace DayZeEditor
             {
                 copiedlootsets.Add(item as KOTHLootset);
             }
+            Console.WriteLine("\nCopied to Clipboard:\n" + string.Join(Environment.NewLine, copiedlootsets.Cast<object>().Select(o => o.ToString()).ToArray()));
         }
-
         private void darkButton18_Click(object sender, EventArgs e)
         {
             foreach (KOTHLootset SET in copiedlootsets)
             {
                 MDCKOTHLoot.lootSets.Add(SET.Clone());
             }
-            copiedlootsets = new List<KOTHLootset>();
             MDCKOTHLoot.isDirty = true;
         }
     }

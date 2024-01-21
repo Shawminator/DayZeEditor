@@ -166,15 +166,17 @@ namespace DayZeEditor
             this.darkLabel24 = new DarkUI.Controls.DarkLabel();
             this.ZonetimeDespawnNUD = new System.Windows.Forms.NumericUpDown();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.darkButton17 = new DarkUI.Controls.DarkButton();
+            this.darkButton16 = new DarkUI.Controls.DarkButton();
             this.darkButton13 = new DarkUI.Controls.DarkButton();
             this.darkButton14 = new DarkUI.Controls.DarkButton();
             this.ZoneLootSetsLB = new System.Windows.Forms.ListBox();
             this.ZoneLootSetTV = new TreeViewMS.TreeViewMS();
-            this.ZoneLootSetQuantityGB = new System.Windows.Forms.GroupBox();
-            this.ZoneLootItemQuantityNUD = new System.Windows.Forms.NumericUpDown();
             this.ZoneLootSetNameGB = new System.Windows.Forms.GroupBox();
             this.darkButton15 = new DarkUI.Controls.DarkButton();
             this.ZoneLootitemNameTB = new System.Windows.Forms.TextBox();
+            this.ZoneLootSetQuantityGB = new System.Windows.Forms.GroupBox();
+            this.ZoneLootItemQuantityNUD = new System.Windows.Forms.NumericUpDown();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new TreeViewMS.PanelEx();
@@ -185,6 +187,8 @@ namespace DayZeEditor
             this.darkButton12 = new DarkUI.Controls.DarkButton();
             this.HillsLB = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.darkButton18 = new DarkUI.Controls.DarkButton();
+            this.darkButton19 = new DarkUI.Controls.DarkButton();
             this.darkButton2 = new DarkUI.Controls.DarkButton();
             this.darkButton3 = new DarkUI.Controls.DarkButton();
             this.LootSetQuantityGB = new System.Windows.Forms.GroupBox();
@@ -208,10 +212,6 @@ namespace DayZeEditor
             this.ZoneremoveCargoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ZoneaddLootItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ZoneremoveLootItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.darkButton16 = new DarkUI.Controls.DarkButton();
-            this.darkButton17 = new DarkUI.Controls.DarkButton();
-            this.darkButton18 = new DarkUI.Controls.DarkButton();
-            this.darkButton19 = new DarkUI.Controls.DarkButton();
             this.darkToolStrip22.SuspendLayout();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -265,9 +265,9 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.ZonetimeLimitNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ZonetimeDespawnNUD)).BeginInit();
             this.tabPage6.SuspendLayout();
+            this.ZoneLootSetNameGB.SuspendLayout();
             this.ZoneLootSetQuantityGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ZoneLootItemQuantityNUD)).BeginInit();
-            this.ZoneLootSetNameGB.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -2250,6 +2250,28 @@ namespace DayZeEditor
             this.tabPage6.TabIndex = 2;
             this.tabPage6.Text = "Loot sets";
             // 
+            // darkButton17
+            // 
+            this.darkButton17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton17.Location = new System.Drawing.Point(120, 445);
+            this.darkButton17.Name = "darkButton17";
+            this.darkButton17.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton17.Size = new System.Drawing.Size(111, 23);
+            this.darkButton17.TabIndex = 115;
+            this.darkButton17.Text = "Paste Copied";
+            this.darkButton17.Click += new System.EventHandler(this.darkButton17_Click);
+            // 
+            // darkButton16
+            // 
+            this.darkButton16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton16.Location = new System.Drawing.Point(3, 445);
+            this.darkButton16.Name = "darkButton16";
+            this.darkButton16.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton16.Size = new System.Drawing.Size(111, 23);
+            this.darkButton16.TabIndex = 114;
+            this.darkButton16.Text = "Copy Selected";
+            this.darkButton16.Click += new System.EventHandler(this.darkButton16_Click);
+            // 
             // darkButton13
             // 
             this.darkButton13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -2304,38 +2326,6 @@ namespace DayZeEditor
             this.ZoneLootSetTV.TabIndex = 108;
             this.ZoneLootSetTV.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.ZoneLootSetTV_NodeMouseClick);
             // 
-            // ZoneLootSetQuantityGB
-            // 
-            this.ZoneLootSetQuantityGB.Controls.Add(this.ZoneLootItemQuantityNUD);
-            this.ZoneLootSetQuantityGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ZoneLootSetQuantityGB.Location = new System.Drawing.Point(551, 9);
-            this.ZoneLootSetQuantityGB.Name = "ZoneLootSetQuantityGB";
-            this.ZoneLootSetQuantityGB.Size = new System.Drawing.Size(229, 62);
-            this.ZoneLootSetQuantityGB.TabIndex = 110;
-            this.ZoneLootSetQuantityGB.TabStop = false;
-            this.ZoneLootSetQuantityGB.Text = "Quantity";
-            // 
-            // ZoneLootItemQuantityNUD
-            // 
-            this.ZoneLootItemQuantityNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ZoneLootItemQuantityNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ZoneLootItemQuantityNUD.Location = new System.Drawing.Point(15, 23);
-            this.ZoneLootItemQuantityNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.ZoneLootItemQuantityNUD.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.ZoneLootItemQuantityNUD.Name = "ZoneLootItemQuantityNUD";
-            this.ZoneLootItemQuantityNUD.Size = new System.Drawing.Size(91, 20);
-            this.ZoneLootItemQuantityNUD.TabIndex = 116;
-            this.ZoneLootItemQuantityNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ZoneLootItemQuantityNUD.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
-            // 
             // ZoneLootSetNameGB
             // 
             this.ZoneLootSetNameGB.Controls.Add(this.darkButton15);
@@ -2369,6 +2359,38 @@ namespace DayZeEditor
             this.ZoneLootitemNameTB.TabIndex = 118;
             this.ZoneLootitemNameTB.Tag = "MsgEnterZone";
             this.ZoneLootitemNameTB.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // ZoneLootSetQuantityGB
+            // 
+            this.ZoneLootSetQuantityGB.Controls.Add(this.ZoneLootItemQuantityNUD);
+            this.ZoneLootSetQuantityGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ZoneLootSetQuantityGB.Location = new System.Drawing.Point(551, 9);
+            this.ZoneLootSetQuantityGB.Name = "ZoneLootSetQuantityGB";
+            this.ZoneLootSetQuantityGB.Size = new System.Drawing.Size(229, 62);
+            this.ZoneLootSetQuantityGB.TabIndex = 110;
+            this.ZoneLootSetQuantityGB.TabStop = false;
+            this.ZoneLootSetQuantityGB.Text = "Quantity";
+            // 
+            // ZoneLootItemQuantityNUD
+            // 
+            this.ZoneLootItemQuantityNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ZoneLootItemQuantityNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.ZoneLootItemQuantityNUD.Location = new System.Drawing.Point(15, 23);
+            this.ZoneLootItemQuantityNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.ZoneLootItemQuantityNUD.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.ZoneLootItemQuantityNUD.Name = "ZoneLootItemQuantityNUD";
+            this.ZoneLootItemQuantityNUD.Size = new System.Drawing.Size(91, 20);
+            this.ZoneLootItemQuantityNUD.TabIndex = 116;
+            this.ZoneLootItemQuantityNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ZoneLootItemQuantityNUD.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // tabPage5
             // 
@@ -2471,6 +2493,7 @@ namespace DayZeEditor
             this.HillsLB.FormattingEnabled = true;
             this.HillsLB.Location = new System.Drawing.Point(5, 33);
             this.HillsLB.Name = "HillsLB";
+            this.HillsLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.HillsLB.Size = new System.Drawing.Size(228, 264);
             this.HillsLB.TabIndex = 60;
             this.HillsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
@@ -2493,6 +2516,28 @@ namespace DayZeEditor
             this.tabPage3.Size = new System.Drawing.Size(1010, 566);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
+            // 
+            // darkButton18
+            // 
+            this.darkButton18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton18.Location = new System.Drawing.Point(125, 467);
+            this.darkButton18.Name = "darkButton18";
+            this.darkButton18.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton18.Size = new System.Drawing.Size(111, 23);
+            this.darkButton18.TabIndex = 117;
+            this.darkButton18.Text = "Paste Copied";
+            this.darkButton18.Click += new System.EventHandler(this.darkButton18_Click);
+            // 
+            // darkButton19
+            // 
+            this.darkButton19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton19.Location = new System.Drawing.Point(8, 467);
+            this.darkButton19.Name = "darkButton19";
+            this.darkButton19.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton19.Size = new System.Drawing.Size(111, 23);
+            this.darkButton19.TabIndex = 116;
+            this.darkButton19.Text = "Copy Selected";
+            this.darkButton19.Click += new System.EventHandler(this.darkButton19_Click);
             // 
             // darkButton2
             // 
@@ -2722,50 +2767,6 @@ namespace DayZeEditor
             this.ZoneremoveLootItemToolStripMenuItem.Text = "Remove Loot Item";
             this.ZoneremoveLootItemToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
             // 
-            // darkButton16
-            // 
-            this.darkButton16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton16.Location = new System.Drawing.Point(3, 445);
-            this.darkButton16.Name = "darkButton16";
-            this.darkButton16.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton16.Size = new System.Drawing.Size(111, 23);
-            this.darkButton16.TabIndex = 114;
-            this.darkButton16.Text = "Copy Selected";
-            this.darkButton16.Click += new System.EventHandler(this.darkButton16_Click);
-            // 
-            // darkButton17
-            // 
-            this.darkButton17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton17.Location = new System.Drawing.Point(120, 445);
-            this.darkButton17.Name = "darkButton17";
-            this.darkButton17.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton17.Size = new System.Drawing.Size(111, 23);
-            this.darkButton17.TabIndex = 115;
-            this.darkButton17.Text = "Paste Copied";
-            this.darkButton17.Click += new System.EventHandler(this.darkButton17_Click);
-            // 
-            // darkButton18
-            // 
-            this.darkButton18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton18.Location = new System.Drawing.Point(125, 467);
-            this.darkButton18.Name = "darkButton18";
-            this.darkButton18.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton18.Size = new System.Drawing.Size(111, 23);
-            this.darkButton18.TabIndex = 117;
-            this.darkButton18.Text = "Paste Copied";
-            this.darkButton18.Click += new System.EventHandler(this.darkButton18_Click);
-            // 
-            // darkButton19
-            // 
-            this.darkButton19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton19.Location = new System.Drawing.Point(8, 467);
-            this.darkButton19.Name = "darkButton19";
-            this.darkButton19.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton19.Size = new System.Drawing.Size(111, 23);
-            this.darkButton19.TabIndex = 116;
-            this.darkButton19.Text = "Copy Selected";
-            this.darkButton19.Click += new System.EventHandler(this.darkButton19_Click);
-            // 
             // KOTHManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2838,10 +2839,10 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.ZonetimeLimitNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ZonetimeDespawnNUD)).EndInit();
             this.tabPage6.ResumeLayout(false);
-            this.ZoneLootSetQuantityGB.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ZoneLootItemQuantityNUD)).EndInit();
             this.ZoneLootSetNameGB.ResumeLayout(false);
             this.ZoneLootSetNameGB.PerformLayout();
+            this.ZoneLootSetQuantityGB.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ZoneLootItemQuantityNUD)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
             this.panel2.ResumeLayout(false);

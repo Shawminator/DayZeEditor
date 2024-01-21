@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,9 +9,9 @@ namespace DayZeLib
 {
     public class CarePackagev2
     {
-        public Locations[] Locations { get; set; }
-        public Packages[] Packages { get; set; }
-        public string[] InfectedTypes { get; set; }
+        public BindingList<Locations> Locations { get; set; }
+        public BindingList<Packages> Packages { get; set; }
+        public BindingList<string> InfectedTypes { get; set; }
         public int LootSpawnType { get; set; }
         public int MinutesBetweenPackages { get; set; }
         public int DropHeight { get; set; }
@@ -21,7 +22,7 @@ namespace DayZeLib
         public int MinutesAway { get; set; }
         public int ZombiesToSpawn { get; set; }
         public int LocationHistoryCheckRange { get; set; }
-        public bool LockPackages { get; set; }
+        public int LockPackages { get; set; }
         public string Title { get; set; }
         public string DroppedMessage { get; set; }
         public string StartMessage { get; set; }
@@ -34,7 +35,12 @@ namespace DayZeLib
         public string Name { get; set; }
         public int[] Location { get; set; }
         public int Accuracy { get; set; }
-        public int[] AllowedPackageIDs { get; set; }
+        public BindingList<int> AllowedPackageIDs { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 
     public class Packages
@@ -46,9 +52,14 @@ namespace DayZeLib
         public int MaxWeapons { get; set; }
         public int MinMiscItems { get; set; }
         public int MaxMiscItems { get; set; }
-        public int[] AllowedPackageIDs { get; set; }
-        public Items[] Items { get; set; }
-        public Weapons[] Weapons { get; set; }
+        public BindingList<int> AllowedPackageIDs { get; set; }
+        public BindingList<Items> Items { get; set; }
+        public BindingList<Weapons> Weapons { get; set; }
+
+        public override string ToString()
+        {
+            return Package_name;
+        }
     }
 
     public class Items
@@ -56,13 +67,23 @@ namespace DayZeLib
         public string Item { get; set; }
         public int MinQty { get; set; }
         public int MaxQty { get; set; }
-        public object[] Attachments { get; set; }
+        public BindingList<string> Attachments { get; set; }
+        
+        public override string ToString()
+        {
+            return Item;
+        }
     }
 
     public class Weapons
     {
         public string Item { get; set; }
-        public string[] Attachments { get; set; }
+        public BindingList<string> Attachments { get; set; }
+
+        public override string ToString()
+        {
+            return Item;
+        }
     }
 
 }
