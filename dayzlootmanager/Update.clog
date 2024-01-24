@@ -1,4 +1,9 @@
-﻿Version 0.7.8.9
+﻿Version 0.7.9.0
+[Fixed]
+KOTH - Zone lootsets now correct as string array.
+AI Patrol - Fixed general damagerecieved multiplier not updating.
+
+Version 0.7.8.9
 [Added]
 Added KOth Manager
 

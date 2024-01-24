@@ -48,7 +48,7 @@ namespace DayZeLib
         public BindingList<string> enemies { get; set; }
         public string lootCrate { get; set; }
         public int crateLifeTime { get; set; }
-        public BindingList<object> lootSets { get; set; }
+        public BindingList<string> lootSets { get; set; }
         public BindingList<MDCKOTHZones> zones { get; set; }
     }
 
@@ -73,7 +73,7 @@ namespace DayZeLib
         public BindingList<string> enemies { get; set; }
         public string lootCrate { get; set; }
         public int crateLifeTime { get; set; }
-        public BindingList<KOTHLootset> lootSets { get; set; }
+        public BindingList<String> lootSets { get; set; }
 
         public MDCKOTHZones()
         {
@@ -96,7 +96,7 @@ namespace DayZeLib
             crateLifeTime = -1;
             objects = new BindingList<KOTHObject>();
             enemies = new BindingList<string>();
-            lootSets = new BindingList<KOTHLootset>();
+            lootSets = new BindingList<string>();
         }
 
         public override string ToString()
@@ -130,6 +130,11 @@ namespace DayZeLib
         public bool isDirty { get; set; }
 
         public BindingList<KOTHLootset> lootSets { get; set; }
+
+        public KOTHLootset getlootsetbyname(string name)
+        {
+            return lootSets.FirstOrDefault(x => x.name == name);
+        }
     }
 
     public class KOTHLootset

@@ -348,7 +348,7 @@ namespace DayZeEditor
             AIGeneralThreatDistanceLimitNUD.Value = AIPatrolSettings.ThreatDistanceLimit;
             AINoiseInvestigationDistanceLimitNUD.Value = AIPatrolSettings.NoiseInvestigationDistanceLimit;
             AIGeneralDanageMultiplierNUD.Value = AIPatrolSettings.DamageMultiplier;
-
+            AIGeneralDamageReceivedMultiplierNUD.Value = AIPatrolSettings.DamageReceivedMultiplier;
 
             EventCrachPatrolLB.DisplayMember = "DisplayName";
             EventCrachPatrolLB.ValueMember = "Value";

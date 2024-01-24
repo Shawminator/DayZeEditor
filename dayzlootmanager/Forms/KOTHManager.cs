@@ -229,6 +229,7 @@ namespace DayZeEditor
             ZombiesClassNamesLB.DataSource = MDCKOTHConfig.enemies;
             HillsLB.DataSource = MDCKOTHConfig.zones;
             LootSetsLB.DataSource = MDCKOTHLoot.lootSets;
+            ZoneAvailabeLootSetsLB.DataSource = new BindingList<KOTHLootset>(MDCKOTHLoot.lootSets);
 
             useraction = true;
         }
@@ -518,12 +519,12 @@ namespace DayZeEditor
                         PointF pP = new PointF(tz.zonePosition[0], tz.zonePosition[2]);
                         if (IsWithinCircle(pC, pP, (float)tz.zoneRadius))
                         {
+                            HillsLB.SelectedIndex = -1;
                             HillsLB.SelectedItem = tz;
                             HillsLB.Refresh();
                             continue;
                         }
                     }
-                    //}
                 }
 
                 // Allow the MouseDown event handler to process clicks again.
@@ -751,7 +752,6 @@ namespace DayZeEditor
             ZonecrateLifeTimeNUD.Value = (int)currentKOTHZoneAreaLocation.crateLifeTime == -1 ? MDCKOTHConfig.crateLifeTime : (int)currentKOTHZoneAreaLocation.crateLifeTime;
             ZoneenemiesLB.DataSource = currentKOTHZoneAreaLocation.enemies;
             ZoneObjectsLB.DataSource = currentKOTHZoneAreaLocation.objects;
-            ZoneLootSetTV.Nodes.Clear();
             ZoneLootSetsLB.DataSource = currentKOTHZoneAreaLocation.lootSets;
             if (ZoneObjectsLB.SelectedItems.Count < 1)
             {
@@ -794,7 +794,7 @@ namespace DayZeEditor
                 enemies = new BindingList<string>(),
                 lootCrate = "",
                 crateLifeTime = -1,
-                lootSets = new BindingList<KOTHLootset>()
+                lootSets = new BindingList<string>()
             };
             MDCKOTHConfig.zones.Add(newzone);
             MDCKOTHConfig.isDirty = true;
@@ -1119,23 +1119,14 @@ namespace DayZeEditor
         public object CurrentZoneTreeNodeTag;
         public KOTHLootset currentZoneLootSet;
         public KOTHItem currentZoneLootitem;
-        private void ZoneLootSetsLB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ZoneLootSetTV.Nodes.Clear();
-            if (ZoneLootSetsLB.SelectedItems.Count < 1) return;
-            
-            useraction = false;
-            currentZonelootset = ZoneLootSetsLB.SelectedItem as KOTHLootset;
-            SetupLootTreeview(ZoneLootSetTV, currentZonelootset);
-            useraction = true;
-        }
         private void darkButton14_Click(object sender, EventArgs e)
         {
-            currentKOTHZoneAreaLocation.lootSets.Add(new KOTHLootset()
+            foreach (var item in ZoneAvailabeLootSetsLB.SelectedItems)
             {
-                name = "New Loot Set",
-                items = new BindingList<KOTHItem>()
-            });
+                KOTHLootset kls = item as KOTHLootset;
+                if(!currentKOTHZoneAreaLocation.lootSets.Contains(kls.name))
+                    currentKOTHZoneAreaLocation.lootSets.Add(kls.name);
+            }
             MDCKOTHConfig.isDirty = true;
             if (currentKOTHZoneAreaLocation.lootSets.Count == 1)
             {
@@ -1147,12 +1138,12 @@ namespace DayZeEditor
         {
             int index = ZoneLootSetsLB.SelectedIndex;
 
-            List<KOTHLootset> removelootsets = new List<KOTHLootset>();
+            List<string> removelootsets = new List<string>();
             foreach (var item in ZoneLootSetsLB.SelectedItems)
             {
-                removelootsets.Add(item as KOTHLootset);
+                removelootsets.Add(item as string);
             }
-            foreach (KOTHLootset Zonels in removelootsets)
+            foreach (string Zonels in removelootsets)
             {
                 currentKOTHZoneAreaLocation.lootSets.Remove(Zonels);
                 MDCKOTHConfig.isDirty = true;
@@ -1165,232 +1156,6 @@ namespace DayZeEditor
                     ZoneLootSetsLB.SelectedIndex = 0;
                 else
                     ZoneLootSetsLB.SelectedIndex = index - 1;
-            }
-
-        }
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            AddItemfromTypes form = new AddItemfromTypes
-            {
-                vanillatypes = vanillatypes,
-                ModTypes = ModTypes,
-                currentproject = currentproject,
-                UseOnlySingleitem = false
-            };
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                List<string> addedtypes = form.addedtypes.ToList();
-                foreach (string l in addedtypes)
-                {
-                    KOTHItem newkothattachment = new KOTHItem()
-                    {
-                        name = l,
-                        quantity = -1,
-                        attachments = new BindingList<KOTHItem>(),
-                        cargo = new BindingList<KOTHItem>()
-                    };
-                    ZoneLootSetTV.SelectedNode.Nodes.Add(Kothitems(newkothattachment));
-                    ZoneLootSetTV.SelectedNode.Expand();
-                    currentZoneLootitem.attachments.Add(newkothattachment);
-                    MDCKOTHConfig.isDirty = true;
-                }
-            }
-        }
-        private void toolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            KOTHItem parent = ZoneLootSetTV.SelectedNode.Parent.Parent.Tag as KOTHItem;
-            parent.attachments.Remove(currentZoneLootitem);
-            ZoneLootSetTV.SelectedNode.Remove();
-            MDCKOTHConfig.isDirty = true;
-        }
-        private void toolStripMenuItem3_Click(object sender, EventArgs e)
-        {
-            AddItemfromTypes form = new AddItemfromTypes
-            {
-                vanillatypes = vanillatypes,
-                ModTypes = ModTypes,
-                currentproject = currentproject,
-                UseOnlySingleitem = false
-            };
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                List<string> addedtypes = form.addedtypes.ToList();
-                foreach (string l in addedtypes)
-                {
-                    KOTHItem newkothcargo = new KOTHItem()
-                    {
-                        name = l,
-                        quantity = -1,
-                        attachments = new BindingList<KOTHItem>(),
-                        cargo = new BindingList<KOTHItem>()
-                    };
-                    ZoneLootSetTV.SelectedNode.Nodes.Add(Kothitems(newkothcargo));
-                    ZoneLootSetTV.SelectedNode.Expand();
-                    currentZoneLootitem.cargo.Add(newkothcargo);
-                    MDCKOTHConfig.isDirty = true;
-                }
-            }
-        }
-        private void toolStripMenuItem4_Click(object sender, EventArgs e)
-        {
-            KOTHItem parent = ZoneLootSetTV.SelectedNode.Parent.Parent.Tag as KOTHItem;
-            parent.cargo.Remove(currentZoneLootitem);
-            ZoneLootSetTV.SelectedNode.Remove();
-            MDCKOTHConfig.isDirty = true;
-        }
-        private void toolStripMenuItem5_Click(object sender, EventArgs e)
-        {
-            AddItemfromTypes form = new AddItemfromTypes
-            {
-                vanillatypes = vanillatypes,
-                ModTypes = ModTypes,
-                currentproject = currentproject,
-                UseOnlySingleitem = false
-            };
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                List<string> addedtypes = form.addedtypes.ToList();
-                foreach (string l in addedtypes)
-                {
-                    KOTHItem newkothitem = new KOTHItem()
-                    {
-                        name = l,
-                        quantity = -1,
-                        attachments = new BindingList<KOTHItem>(),
-                        cargo = new BindingList<KOTHItem>()
-                    };
-                    ZoneLootSetTV.SelectedNode.Nodes.Add(Kothitems(newkothitem));
-                    ZoneLootSetTV.SelectedNode.Expand();
-                    currentZonelootset.items.Add(newkothitem);
-                    MDCKOTHConfig.isDirty = true;
-                }
-            }
-        }
-        private void toolStripMenuItem6_Click(object sender, EventArgs e)
-        {
-            currentZonelootset.items.Remove(currentZoneLootitem);
-            ZoneLootSetTV.SelectedNode.Remove();
-            MDCKOTHConfig.isDirty = true;
-        }
-        private void ZoneLootSetTV_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
-        {
-            useraction = false;
-            ZoneLootSetTV.SelectedNode = e.Node;
-            CurrentZoneTreeNodeTag = e.Node.Tag;
-            ZoneLootSetNameGB.Visible = false;
-            ZoneLootSetQuantityGB.Visible = false;
-            currentZoneLootSet = null;
-            currentZoneLootitem = null;
-
-            ZoneaddAttchmentToolStripMenuItem.Visible = false;
-            ZoneremoveAttachmentToolStripMenuItem.Visible = false;
-            ZoneaddCargoToolStripMenuItem.Visible = false;
-            ZoneremoveCargoToolStripMenuItem.Visible = false;
-            ZoneaddLootItemToolStripMenuItem.Visible = false;
-            ZoneremoveLootItemToolStripMenuItem.Visible = false;
-
-            if (e.Node.Tag is KOTHLootset)
-            {
-                currentZoneLootSet = e.Node.Tag as KOTHLootset;
-                ZoneLootSetNameGB.Visible = true;
-                darkButton15.Visible = false;
-                ZoneLootitemNameTB.Text = currentZoneLootSet.name;
-                if (e.Button == MouseButtons.Right)
-                {
-                    ZoneaddLootItemToolStripMenuItem.Visible = true;
-                    contextMenuStrip2.Show(Cursor.Position);
-                }
-            }
-            else if (e.Node.Tag is KOTHItem)
-            {
-                currentZoneLootitem = e.Node.Tag as KOTHItem;
-                ZoneLootSetNameGB.Visible = true;
-                darkButton15.Visible = true;
-                ZoneLootitemNameTB.Text = currentZoneLootitem.name;
-                if (e.Button == MouseButtons.Right)
-                {
-                    if (e.Node.Parent.Tag is KOTHLootset)
-                        ZoneremoveLootItemToolStripMenuItem.Visible = true;
-                    else
-                    {
-                        if (e.Node.Parent.Tag.ToString() == "Cargo")
-                            ZoneremoveCargoToolStripMenuItem.Visible = true;
-                        else if (e.Node.Parent.Tag.ToString() == "Attachments")
-                            ZoneremoveAttachmentToolStripMenuItem.Visible = true;
-                    }
-                    contextMenuStrip2.Show(Cursor.Position);
-                }
-            }
-            else if (e.Node.Tag is string)
-            {
-                switch (e.Node.Tag.ToString())
-                {
-                    case "Quantity":
-                        currentZoneLootitem = e.Node.Parent.Tag as KOTHItem;
-                        ZoneLootSetQuantityGB.Visible = true;
-                        ZoneLootItemQuantityNUD.Value = currentZoneLootitem.quantity;
-                        break;
-                    case "Attachments":
-                        if (e.Button == MouseButtons.Right)
-                        {
-                            currentZoneLootitem = e.Node.Parent.Tag as KOTHItem;
-                            ZoneaddAttchmentToolStripMenuItem.Visible = true;
-                            ZoneaddAttchmentToolStripMenuItem.Text = "Add Attachment";
-                            contextMenuStrip2.Show(Cursor.Position);
-                        }
-                        break;
-                    case "Cargo":
-                        if (e.Button == MouseButtons.Right)
-                        {
-                            currentZoneLootitem = e.Node.Parent.Tag as KOTHItem;
-                            ZoneaddCargoToolStripMenuItem.Visible = true;
-                            contextMenuStrip2.Show(Cursor.Position);
-                        }
-                        break;
-                }
-            }
-
-            useraction = true;
-        }
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            currentZoneLootitem.quantity = (int)ZoneLootItemQuantityNUD.Value;
-            MDCKOTHConfig.isDirty = true;
-        }
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-
-            if (currentZoneLootSet != null && currentZoneLootitem == null)
-            {
-                currentZoneLootSet.name = ZoneLootSetTV.SelectedNode.Text = ZoneLootitemNameTB.Text;
-                ZoneLootSetsLB.Refresh();
-            }
-            else if (currentZoneLootSet == null && currentZoneLootitem != null)
-                currentZoneLootitem.name = ZoneLootSetTV.SelectedNode.Text = ZoneLootitemNameTB.Text;
-            MDCKOTHConfig.isDirty = true;
-        }
-        private void darkButton15_Click(object sender, EventArgs e)
-        {
-            AddItemfromTypes form = new AddItemfromTypes
-            {
-                vanillatypes = vanillatypes,
-                ModTypes = ModTypes,
-                currentproject = currentproject,
-                UseOnlySingleitem = true
-            };
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                List<string> addedtypes = form.addedtypes.ToList();
-                foreach (string l in addedtypes)
-                {
-                    ZoneLootitemNameTB.Text = l;
-                }
             }
         }
         /// <summary>
@@ -1972,55 +1737,6 @@ namespace DayZeEditor
         {
             currentlootset.items.Remove(currentLootitem);
             LootSetTV.SelectedNode.Remove();
-            MDCKOTHLoot.isDirty = true;
-        }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-
-        /// <summary>
-        /// Copy/paste lootsets between loot config and zone config.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public List<KOTHLootset> copiedlootsets;
-        private void darkButton16_Click(object sender, EventArgs e)
-        {
-            copiedlootsets = new List<KOTHLootset>();
-            foreach (var item in ZoneLootSetsLB.SelectedItems)
-            {
-                copiedlootsets.Add(item as KOTHLootset);
-            }
-            Console.WriteLine("\nCopied to Clipboard:\n" + string.Join(Environment.NewLine, copiedlootsets.Cast<object>().Select(o => o.ToString()).ToArray()));
-        }
-        private void darkButton17_Click(object sender, EventArgs e)
-        {
-            foreach(KOTHLootset SET in copiedlootsets)
-            {
-                currentKOTHZoneAreaLocation.lootSets.Add(SET.Clone());
-            }
-            MDCKOTHConfig.isDirty = true;
-        }
-        private void darkButton19_Click(object sender, EventArgs e)
-        {
-            copiedlootsets = new List<KOTHLootset>();
-            foreach(var item in LootSetsLB.SelectedItems)
-            {
-                copiedlootsets.Add(item as KOTHLootset);
-            }
-            Console.WriteLine("\nCopied to Clipboard:\n" + string.Join(Environment.NewLine, copiedlootsets.Cast<object>().Select(o => o.ToString()).ToArray()));
-        }
-        private void darkButton18_Click(object sender, EventArgs e)
-        {
-            foreach (KOTHLootset SET in copiedlootsets)
-            {
-                MDCKOTHLoot.lootSets.Add(SET.Clone());
-            }
             MDCKOTHLoot.isDirty = true;
         }
     }
