@@ -314,6 +314,9 @@ namespace DayZeEditor
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
 
+            doubleClickTimer.Interval = 100;
+            doubleClickTimer.Tick += new EventHandler(doubleClickTimer_Tick);
+
             TraderPlusBankingConfigPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\TraderPlus\\TraderPlusConfig\\TraderPlusBankingConfig.json";
             if (!File.Exists(TraderPlusBankingConfigPath))
             {
@@ -623,6 +626,9 @@ namespace DayZeEditor
             ParkInSuccessTB.Text = TraderPlusGarageConfig.ParkInSuccess;
             ParkOutFailTB.Text = TraderPlusGarageConfig.ParkOutFail;
             ParkOutSuccessTB.Text = TraderPlusGarageConfig.ParkOutSuccess;
+            MaxVehicleStoredReachedTB.Text = TraderPlusGarageConfig.MaxVehicleStoredReached;
+            TradeVehicleWarningTB.Text = TraderPlusGarageConfig.TradeVehicleWarning;
+            TradeVehicleHasBeenDeletedTB.Text = TraderPlusGarageConfig.TradeVehicleHasBeenDeleted;
 
             GarageWhiteListLB.DisplayMember = "Name";
             GarageWhiteListLB.ValueMember = "Value";
@@ -2148,6 +2154,14 @@ namespace DayZeEditor
         #region SafeZone
         public Safearealocation currentsafezone;
         public int ZoneScale = 1;
+        private Point _mouseLastPosition;
+        private Point _newscrollPosition;
+        private Rectangle doubleClickRectangle = new Rectangle();
+        private Timer doubleClickTimer = new Timer();
+        private bool isFirstClick = true;
+        private bool isDoubleClick = false;
+        private int milliseconds = 0;
+        private MouseEventArgs mouseeventargs;
 
         private void SetupTraderPlusSafeZoneConfig()
         {
@@ -2309,20 +2323,204 @@ namespace DayZeEditor
 
             pictureBox2.Invalidate();
         }
-        private void pictureBox2_DoubleClick(object sender, EventArgs e)
+        private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e is MouseEventArgs mouseEventArgs)
+            if (e.Button == MouseButtons.Right)
             {
-                Cursor.Current = Cursors.WaitCursor;
-                float scalevalue = ZoneScale * 0.05f;
-                float mapsize = currentproject.MapSize;
-                int newsize = (int)(mapsize * scalevalue);
-                SafeZoneXNUD.Value = (decimal)(mouseEventArgs.X / scalevalue);
-                safeZoneZNUD.Value = (decimal)((newsize - mouseEventArgs.Y) / scalevalue);
-                Cursor.Current = Cursors.Default;
-                TraderPlusSafeZoneConfig.isDirty = true;
+                Cursor.Current = Cursors.SizeAll;
+                _mouseLastPosition = e.Location;
+            }
+            else if (e.Button == MouseButtons.Left)
+            {
+                mouseeventargs = e;
+                // This is the first mouse click.
+                if (isFirstClick)
+                {
+                    isFirstClick = false;
+
+                    // Determine the location and size of the double click
+                    // rectangle area to draw around the cursor point.
+                    doubleClickRectangle = new Rectangle(
+                        e.X - (SystemInformation.DoubleClickSize.Width / 2),
+                        e.Y - (SystemInformation.DoubleClickSize.Height / 2),
+                        SystemInformation.DoubleClickSize.Width,
+                        SystemInformation.DoubleClickSize.Height);
+                    Invalidate();
+
+                    // Start the double click timer.
+                    doubleClickTimer.Start();
+                }
+
+                // This is the second mouse click.
+                else
+                {
+                    // Verify that the mouse click is within the double click
+                    // rectangle and is within the system-defined double
+                    // click period.
+                    if (doubleClickRectangle.Contains(e.Location) &&
+                        milliseconds < SystemInformation.DoubleClickTime)
+                    {
+                        isDoubleClick = true;
+                    }
+                }
+            }
+        }
+        void doubleClickTimer_Tick(object sender, EventArgs e)
+        {
+            milliseconds += 100;
+            // The timer has reached the double click time limit.
+            if (milliseconds >= SystemInformation.DoubleClickTime)
+            {
+                doubleClickTimer.Stop();
+
+                if (isDoubleClick)
+                {
+                    //Console.WriteLine("Perform double click action");
+                    if (currentsafezone == null) return;
+                    Cursor.Current = Cursors.WaitCursor;
+                    decimal scalevalue = ZoneScale * (decimal)0.05;
+                    decimal mapsize = currentproject.MapSize;
+                    int newsize = (int)(mapsize * scalevalue);
+                    currentsafezone.X = (float)Decimal.Round((decimal)(mouseeventargs.X / scalevalue), 4);
+                    currentsafezone.Y = (float)Decimal.Round((decimal)((newsize - mouseeventargs.Y) / scalevalue), 4);
+                    Cursor.Current = Cursors.Default;
+                    TraderPlusSafeZoneConfig.isDirty = true;
+                    pictureBox2.Invalidate();
+                }
+                else
+                {
+                    //Console.WriteLine("Perform single click action");
+                    if (currentsafezone == null) return;
+                    decimal scalevalue = ZoneScale * (decimal)0.05;
+                    decimal mapsize = currentproject.MapSize;
+                    int newsize = (int)(mapsize * scalevalue);
+                    PointF pC = new PointF((float)Decimal.Round((decimal)(mouseeventargs.X / scalevalue), 4), (float)Decimal.Round((decimal)((newsize - mouseeventargs.Y) / scalevalue), 4));
+                    foreach (Safearealocation tz in TraderPlusSafeZoneConfig.SafeAreaLocation)
+                    {
+                        PointF pP = new PointF(tz.X, tz.Y);
+                        if (IsWithinCircle(pC, pP, (float)tz.Radius))
+                        {
+                            SafeAreaLocationLB.SelectedIndex = -1;
+                            SafeAreaLocationLB.SelectedItem = tz;
+                            SafeAreaLocationLB.Refresh();
+                            continue;
+                        }
+                    }
+                }
+
+                // Allow the MouseDown event handler to process clicks again.
+                isFirstClick = true;
+                isDoubleClick = false;
+                milliseconds = 0;
+            }
+        }
+        public bool IsWithinCircle(PointF pC, PointF pP, Single fRadius)
+        {
+            return Distance(pC, pP) <= fRadius;
+        }
+        public Single Distance(PointF p1, PointF p2)
+        {
+            Single dX = p1.X - p2.X;
+            Single dY = p1.Y - p2.Y;
+            Single multi = dX * dX + dY * dY;
+            Single dist = (Single)Math.Round((Single)Math.Sqrt(multi), 3);
+            return (Single)dist;
+        }
+        private void pictureBox2_MouseEnter(object sender, EventArgs e)
+        {
+            if (pictureBox2.Focused == false)
+            {
+                pictureBox2.Focus();
+                panel2.AutoScrollPosition = _newscrollPosition;
                 pictureBox2.Invalidate();
             }
+        }
+        private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Point changePoint = new Point(e.Location.X - _mouseLastPosition.X, e.Location.Y - _mouseLastPosition.Y);
+                _newscrollPosition = new Point(-panel2.AutoScrollPosition.X - changePoint.X, -panel2.AutoScrollPosition.Y - changePoint.Y);
+                if (_newscrollPosition.X <= 0)
+                    _newscrollPosition.X = 0;
+                if (_newscrollPosition.Y <= 0)
+                    _newscrollPosition.Y = 0;
+                panel2.AutoScrollPosition = _newscrollPosition;
+                pictureBox2.Invalidate();
+            }
+            decimal scalevalue = ZoneScale * (decimal)0.05;
+            decimal mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            label43.Text = Decimal.Round((decimal)(e.X / scalevalue), 4) + "," + Decimal.Round((decimal)((newsize - e.Y) / scalevalue), 4);
+        }
+
+        private void pictureBox2_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta < 0)
+            {
+                pictureBox2_ZoomOut();
+            }
+            else
+            {
+                pictureBox2_ZoomIn();
+            }
+
+        }
+        private void pictureBox2_ZoomIn()
+        {
+            int oldpictureboxhieght = pictureBox2.Height;
+            int oldpitureboxwidht = pictureBox2.Width;
+            Point oldscrollpos = panel2.AutoScrollPosition;
+            int tbv = trackBar4.Value;
+            int newval = tbv + 1;
+            if (newval >= 20)
+                newval = 20;
+            trackBar4.Value = newval;
+            ZoneScale = trackBar4.Value;
+            SetSafeZonescale();
+            if (pictureBox2.Height > panel2.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox2.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panel2.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox2.Width > panel2.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox2.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panel2.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox2.Invalidate();
+        }
+        private void pictureBox2_ZoomOut()
+        {
+            int oldpictureboxhieght = pictureBox2.Height;
+            int oldpitureboxwidht = pictureBox2.Width;
+            Point oldscrollpos = panel2.AutoScrollPosition;
+            int tbv = trackBar4.Value;
+            int newval = tbv - 1;
+            if (newval <= 1)
+                newval = 1;
+            trackBar4.Value = newval;
+            ZoneScale = trackBar4.Value;
+            SetSafeZonescale();
+            if (pictureBox2.Height > panel2.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox2.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panel2.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox2.Width > panel2.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox2.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panel2.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox2.Invalidate();
         }
         private void SetSafeZonescale()
         {
@@ -3032,5 +3230,7 @@ namespace DayZeEditor
         {
             return string.Join("_", filename.Split(Path.GetInvalidFileNameChars()));
         }
+
+
     }
 }

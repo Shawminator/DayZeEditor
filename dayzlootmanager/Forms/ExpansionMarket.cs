@@ -1235,6 +1235,7 @@ namespace DayZeEditor
         {
             if (e.Button == MouseButtons.Right)
             {
+                Cursor.Current = Cursors.SizeAll;
                 _mouseLastPosition = e.Location;
             }
         }

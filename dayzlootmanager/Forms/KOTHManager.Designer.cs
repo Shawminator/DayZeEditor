@@ -166,6 +166,7 @@ namespace DayZeEditor
             this.darkLabel24 = new DarkUI.Controls.DarkLabel();
             this.ZonetimeDespawnNUD = new System.Windows.Forms.NumericUpDown();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.ZoneAvailabeLootSetsLB = new System.Windows.Forms.ListBox();
             this.darkButton13 = new DarkUI.Controls.DarkButton();
             this.darkButton14 = new DarkUI.Controls.DarkButton();
             this.ZoneLootSetsLB = new System.Windows.Forms.ListBox();
@@ -195,7 +196,6 @@ namespace DayZeEditor
             this.removeCargoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addLootItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeLootItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ZoneAvailabeLootSetsLB = new System.Windows.Forms.ListBox();
             this.darkToolStrip22.SuspendLayout();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -2225,6 +2225,21 @@ namespace DayZeEditor
             this.tabPage6.TabIndex = 2;
             this.tabPage6.Text = "Loot sets";
             // 
+            // ZoneAvailabeLootSetsLB
+            // 
+            this.ZoneAvailabeLootSetsLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.ZoneAvailabeLootSetsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ZoneAvailabeLootSetsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ZoneAvailabeLootSetsLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ZoneAvailabeLootSetsLB.FormattingEnabled = true;
+            this.ZoneAvailabeLootSetsLB.Location = new System.Drawing.Point(237, 3);
+            this.ZoneAvailabeLootSetsLB.Name = "ZoneAvailabeLootSetsLB";
+            this.ZoneAvailabeLootSetsLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.ZoneAvailabeLootSetsLB.Size = new System.Drawing.Size(228, 498);
+            this.ZoneAvailabeLootSetsLB.TabIndex = 114;
+            this.ZoneAvailabeLootSetsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            // 
             // darkButton13
             // 
             this.darkButton13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -2558,21 +2573,6 @@ namespace DayZeEditor
             this.removeLootItemToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.removeLootItemToolStripMenuItem.Text = "Remove Loot Item";
             this.removeLootItemToolStripMenuItem.Click += new System.EventHandler(this.removeLootItemToolStripMenuItem_Click);
-            // 
-            // ZoneAvailabeLootSetsLB
-            // 
-            this.ZoneAvailabeLootSetsLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.ZoneAvailabeLootSetsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ZoneAvailabeLootSetsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.ZoneAvailabeLootSetsLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ZoneAvailabeLootSetsLB.FormattingEnabled = true;
-            this.ZoneAvailabeLootSetsLB.Location = new System.Drawing.Point(237, 3);
-            this.ZoneAvailabeLootSetsLB.Name = "ZoneAvailabeLootSetsLB";
-            this.ZoneAvailabeLootSetsLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.ZoneAvailabeLootSetsLB.Size = new System.Drawing.Size(228, 498);
-            this.ZoneAvailabeLootSetsLB.TabIndex = 114;
-            this.ZoneAvailabeLootSetsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
             // KOTHManager
             // 

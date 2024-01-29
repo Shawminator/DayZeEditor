@@ -352,7 +352,7 @@ namespace DayZeEditor
             this.EnableAfkDisconnectCB = new System.Windows.Forms.CheckBox();
             this.IsHideOutActiveCB = new System.Windows.Forms.CheckBox();
             this.trackBar4 = new System.Windows.Forms.TrackBar();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel2 = new TreeViewMS.PanelEx();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.darkLabel27 = new DarkUI.Controls.DarkLabel();
@@ -374,6 +374,7 @@ namespace DayZeEditor
             this.VehiclePartPartsLB = new System.Windows.Forms.ListBox();
             this.VehiclePartLB = new System.Windows.Forms.ListBox();
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.label43 = new System.Windows.Forms.Label();
             this.darkToolStrip21.SuspendLayout();
             this.darkToolStrip22.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -835,7 +836,7 @@ namespace DayZeEditor
             this.toolStripButton10.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton10.Image")));
             this.toolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton10.Name = "toolStripButton10";
-            this.toolStripButton10.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton10.Size = new System.Drawing.Size(106, 25);
             this.toolStripButton10.Text = "Stock level Config";
             this.toolStripButton10.Visible = false;
             this.toolStripButton10.Click += new System.EventHandler(this.toolStripButton10_Click);
@@ -1409,12 +1410,12 @@ namespace DayZeEditor
             this.numericUpDown10.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown10.Location = new System.Drawing.Point(144, 257);
             this.numericUpDown10.Maximum = new decimal(new int[] {
-            15000,
+            30000,
             0,
             0,
             0});
             this.numericUpDown10.Minimum = new decimal(new int[] {
-            10000,
+            30000,
             0,
             0,
             -2147483648});
@@ -1431,12 +1432,12 @@ namespace DayZeEditor
             this.numericUpDown11.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown11.Location = new System.Drawing.Point(249, 257);
             this.numericUpDown11.Maximum = new decimal(new int[] {
-            15000,
+            30000,
             0,
             0,
             0});
             this.numericUpDown11.Minimum = new decimal(new int[] {
-            10000,
+            30000,
             0,
             0,
             -2147483648});
@@ -1453,12 +1454,12 @@ namespace DayZeEditor
             this.numericUpDown12.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown12.Location = new System.Drawing.Point(349, 257);
             this.numericUpDown12.Maximum = new decimal(new int[] {
-            15000,
+            30000,
             0,
             0,
             0});
             this.numericUpDown12.Minimum = new decimal(new int[] {
-            10000,
+            30000,
             0,
             0,
             -2147483648});
@@ -1485,10 +1486,15 @@ namespace DayZeEditor
             this.numericUpDown7.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown7.Location = new System.Drawing.Point(144, 231);
             this.numericUpDown7.Maximum = new decimal(new int[] {
-            15000,
+            30000,
             0,
             0,
             0});
+            this.numericUpDown7.Minimum = new decimal(new int[] {
+            30000,
+            0,
+            0,
+            -2147483648});
             this.numericUpDown7.Name = "numericUpDown7";
             this.numericUpDown7.Size = new System.Drawing.Size(88, 20);
             this.numericUpDown7.TabIndex = 91;
@@ -1502,10 +1508,15 @@ namespace DayZeEditor
             this.numericUpDown8.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown8.Location = new System.Drawing.Point(249, 231);
             this.numericUpDown8.Maximum = new decimal(new int[] {
-            15000,
+            30000,
             0,
             0,
             0});
+            this.numericUpDown8.Minimum = new decimal(new int[] {
+            30000,
+            0,
+            0,
+            -2147483648});
             this.numericUpDown8.Name = "numericUpDown8";
             this.numericUpDown8.Size = new System.Drawing.Size(86, 20);
             this.numericUpDown8.TabIndex = 89;
@@ -1519,10 +1530,15 @@ namespace DayZeEditor
             this.numericUpDown9.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown9.Location = new System.Drawing.Point(349, 231);
             this.numericUpDown9.Maximum = new decimal(new int[] {
-            15000,
+            30000,
             0,
             0,
             0});
+            this.numericUpDown9.Minimum = new decimal(new int[] {
+            30000,
+            0,
+            0,
+            -2147483648});
             this.numericUpDown9.Name = "numericUpDown9";
             this.numericUpDown9.Size = new System.Drawing.Size(88, 20);
             this.numericUpDown9.TabIndex = 90;
@@ -1546,12 +1562,12 @@ namespace DayZeEditor
             this.numericUpDown4.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown4.Location = new System.Drawing.Point(144, 205);
             this.numericUpDown4.Maximum = new decimal(new int[] {
-            15000,
+            30000,
             0,
             0,
             0});
             this.numericUpDown4.Minimum = new decimal(new int[] {
-            10000,
+            30000,
             0,
             0,
             -2147483648});
@@ -1568,12 +1584,12 @@ namespace DayZeEditor
             this.numericUpDown5.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown5.Location = new System.Drawing.Point(249, 205);
             this.numericUpDown5.Maximum = new decimal(new int[] {
-            15000,
+            30000,
             0,
             0,
             0});
             this.numericUpDown5.Minimum = new decimal(new int[] {
-            10000,
+            30000,
             0,
             0,
             -2147483648});
@@ -1590,12 +1606,12 @@ namespace DayZeEditor
             this.numericUpDown6.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown6.Location = new System.Drawing.Point(349, 205);
             this.numericUpDown6.Maximum = new decimal(new int[] {
-            15000,
+            30000,
             0,
             0,
             0});
             this.numericUpDown6.Minimum = new decimal(new int[] {
-            10000,
+            30000,
             0,
             0,
             -2147483648});
@@ -1622,10 +1638,15 @@ namespace DayZeEditor
             this.numericUpDown3.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown3.Location = new System.Drawing.Point(349, 179);
             this.numericUpDown3.Maximum = new decimal(new int[] {
-            15000,
+            30000,
             0,
             0,
             0});
+            this.numericUpDown3.Minimum = new decimal(new int[] {
+            30000,
+            0,
+            0,
+            -2147483648});
             this.numericUpDown3.Name = "numericUpDown3";
             this.numericUpDown3.Size = new System.Drawing.Size(88, 20);
             this.numericUpDown3.TabIndex = 83;
@@ -1639,10 +1660,15 @@ namespace DayZeEditor
             this.numericUpDown1.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown1.Location = new System.Drawing.Point(144, 179);
             this.numericUpDown1.Maximum = new decimal(new int[] {
-            15000,
+            30000,
             0,
             0,
             0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            30000,
+            0,
+            0,
+            -2147483648});
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(88, 20);
             this.numericUpDown1.TabIndex = 81;
@@ -1656,10 +1682,15 @@ namespace DayZeEditor
             this.numericUpDown2.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown2.Location = new System.Drawing.Point(249, 179);
             this.numericUpDown2.Maximum = new decimal(new int[] {
-            15000,
+            30000,
             0,
             0,
             0});
+            this.numericUpDown2.Minimum = new decimal(new int[] {
+            30000,
+            0,
+            0,
+            -2147483648});
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(86, 20);
             this.numericUpDown2.TabIndex = 82;
@@ -2096,6 +2127,11 @@ namespace DayZeEditor
             0,
             0,
             0});
+            this.ObjectOrientationZNUD.Minimum = new decimal(new int[] {
+            15000,
+            0,
+            0,
+            -2147483648});
             this.ObjectOrientationZNUD.Name = "ObjectOrientationZNUD";
             this.ObjectOrientationZNUD.Size = new System.Drawing.Size(88, 20);
             this.ObjectOrientationZNUD.TabIndex = 111;
@@ -2113,6 +2149,11 @@ namespace DayZeEditor
             0,
             0,
             0});
+            this.ObjectOrientationXNUD.Minimum = new decimal(new int[] {
+            15000,
+            0,
+            0,
+            -2147483648});
             this.ObjectOrientationXNUD.Name = "ObjectOrientationXNUD";
             this.ObjectOrientationXNUD.Size = new System.Drawing.Size(88, 20);
             this.ObjectOrientationXNUD.TabIndex = 109;
@@ -2130,6 +2171,11 @@ namespace DayZeEditor
             0,
             0,
             0});
+            this.ObjectOrientationYNUD.Minimum = new decimal(new int[] {
+            15000,
+            0,
+            0,
+            -2147483648});
             this.ObjectOrientationYNUD.Name = "ObjectOrientationYNUD";
             this.ObjectOrientationYNUD.Size = new System.Drawing.Size(88, 20);
             this.ObjectOrientationYNUD.TabIndex = 110;
@@ -2153,10 +2199,15 @@ namespace DayZeEditor
             this.ObjectPositionZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectPositionZNUD.Location = new System.Drawing.Point(233, 137);
             this.ObjectPositionZNUD.Maximum = new decimal(new int[] {
-            15000,
+            30000,
             0,
             0,
             0});
+            this.ObjectPositionZNUD.Minimum = new decimal(new int[] {
+            30000,
+            0,
+            0,
+            -2147483648});
             this.ObjectPositionZNUD.Name = "ObjectPositionZNUD";
             this.ObjectPositionZNUD.Size = new System.Drawing.Size(88, 20);
             this.ObjectPositionZNUD.TabIndex = 107;
@@ -2170,10 +2221,15 @@ namespace DayZeEditor
             this.ObjectPositionXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectPositionXNUD.Location = new System.Drawing.Point(233, 85);
             this.ObjectPositionXNUD.Maximum = new decimal(new int[] {
-            15000,
+            30000,
             0,
             0,
             0});
+            this.ObjectPositionXNUD.Minimum = new decimal(new int[] {
+            30000,
+            0,
+            0,
+            -2147483648});
             this.ObjectPositionXNUD.Name = "ObjectPositionXNUD";
             this.ObjectPositionXNUD.Size = new System.Drawing.Size(88, 20);
             this.ObjectPositionXNUD.TabIndex = 105;
@@ -2187,10 +2243,15 @@ namespace DayZeEditor
             this.ObjectPositionYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectPositionYNUD.Location = new System.Drawing.Point(233, 111);
             this.ObjectPositionYNUD.Maximum = new decimal(new int[] {
-            15000,
+            30000,
             0,
             0,
             0});
+            this.ObjectPositionYNUD.Minimum = new decimal(new int[] {
+            30000,
+            0,
+            0,
+            -2147483648});
             this.ObjectPositionYNUD.Name = "ObjectPositionYNUD";
             this.ObjectPositionYNUD.Size = new System.Drawing.Size(88, 20);
             this.ObjectPositionYNUD.TabIndex = 106;
@@ -2984,12 +3045,12 @@ namespace DayZeEditor
             this.TraderNPCOrientationX.ForeColor = System.Drawing.SystemColors.Control;
             this.TraderNPCOrientationX.Location = new System.Drawing.Point(344, 198);
             this.TraderNPCOrientationX.Maximum = new decimal(new int[] {
-            15000,
+            30000,
             0,
             0,
             0});
             this.TraderNPCOrientationX.Minimum = new decimal(new int[] {
-            10000,
+            30000,
             0,
             0,
             -2147483648});
@@ -3006,12 +3067,12 @@ namespace DayZeEditor
             this.TraderNPCOrientationY.ForeColor = System.Drawing.SystemColors.Control;
             this.TraderNPCOrientationY.Location = new System.Drawing.Point(344, 224);
             this.TraderNPCOrientationY.Maximum = new decimal(new int[] {
-            15000,
+            30000,
             0,
             0,
             0});
             this.TraderNPCOrientationY.Minimum = new decimal(new int[] {
-            10000,
+            30000,
             0,
             0,
             -2147483648});
@@ -3028,12 +3089,12 @@ namespace DayZeEditor
             this.TraderNPCOrientationZ.ForeColor = System.Drawing.SystemColors.Control;
             this.TraderNPCOrientationZ.Location = new System.Drawing.Point(344, 250);
             this.TraderNPCOrientationZ.Maximum = new decimal(new int[] {
-            15000,
+            30000,
             0,
             0,
             0});
             this.TraderNPCOrientationZ.Minimum = new decimal(new int[] {
-            10000,
+            30000,
             0,
             0,
             -2147483648});
@@ -4044,6 +4105,7 @@ namespace DayZeEditor
             // tabPage6
             // 
             this.tabPage6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage6.Controls.Add(this.label43);
             this.tabPage6.Controls.Add(this.tabControl2);
             this.tabPage6.Controls.Add(this.MustRemoveArmbandTB);
             this.tabPage6.Controls.Add(this.label31);
@@ -4371,15 +4433,10 @@ namespace DayZeEditor
             this.SafeZoneradiusNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.SafeZoneradiusNUD.Location = new System.Drawing.Point(79, 172);
             this.SafeZoneradiusNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
-            this.SafeZoneradiusNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
             this.SafeZoneradiusNUD.Name = "SafeZoneradiusNUD";
             this.SafeZoneradiusNUD.Size = new System.Drawing.Size(71, 20);
             this.SafeZoneradiusNUD.TabIndex = 96;
@@ -4403,12 +4460,12 @@ namespace DayZeEditor
             this.SafeZoneXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.SafeZoneXNUD.Location = new System.Drawing.Point(68, 146);
             this.SafeZoneXNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
             this.SafeZoneXNUD.Minimum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             -2147483648});
@@ -4425,12 +4482,12 @@ namespace DayZeEditor
             this.safeZoneZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.safeZoneZNUD.Location = new System.Drawing.Point(145, 146);
             this.safeZoneZNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
             this.safeZoneZNUD.Minimum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             -2147483648});
@@ -4615,12 +4672,16 @@ namespace DayZeEditor
             // pictureBox2
             // 
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(512, 512);
             this.pictureBox2.TabIndex = 62;
             this.pictureBox2.TabStop = false;
-            this.pictureBox2.DoubleClick += new System.EventHandler(this.pictureBox2_DoubleClick);
+            this.pictureBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseDown);
+            this.pictureBox2.MouseEnter += new System.EventHandler(this.pictureBox2_MouseEnter);
+            this.pictureBox2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseMove);
+            this.pictureBox2.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseWheel);
             // 
             // tabPage7
             // 
@@ -4889,6 +4950,15 @@ namespace DayZeEditor
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "tabPage8";
             // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(427, 8);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(41, 13);
+            this.label43.TabIndex = 140;
+            this.label43.Text = "label43";
+            // 
             // TraderPlus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5112,7 +5182,7 @@ namespace DayZeEditor
         private System.Windows.Forms.TabPage tabPage7;
         private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.TrackBar trackBar4;
-        private System.Windows.Forms.Panel panel2;
+        private TreeViewMS.PanelEx panel2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.NumericUpDown CleanUpTimerNUD;
         private System.Windows.Forms.Label label22;
@@ -5353,5 +5423,6 @@ namespace DayZeEditor
         private System.Windows.Forms.Label label39;
         private DarkUI.Controls.DarkButton darkButton59;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
+        private System.Windows.Forms.Label label43;
     }
 }
