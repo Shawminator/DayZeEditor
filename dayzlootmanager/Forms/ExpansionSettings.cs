@@ -1143,6 +1143,7 @@ namespace DayZeEditor
             if (AirdropsettingsJson.isDirty)
             {
                 AirdropsettingsJson.isDirty = false;
+                ExpansionLootAirdropsettings.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(AirdropsettingsJson, options);
                 if (currentproject.Createbackups && File.Exists(AirdropsettingsJson.Filename))
@@ -1339,6 +1340,7 @@ namespace DayZeEditor
                     if (amsf.isDirty)
                     {
                         amsf.isDirty = false;
+                        expansionLootControlMissions.isDirty = false;
                         var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                         string jsonString = JsonSerializer.Serialize(amsf, options);
                         if (currentproject.Createbackups && File.Exists(amsf.Filename))
@@ -1906,56 +1908,17 @@ namespace DayZeEditor
         }
         private void populatelistbox()
         {
-            listBox1.DisplayMember = "DisplayName";
-            listBox1.ValueMember = "Value";
-            listBox1.DataSource = CurrentAirdropContainer.Loot;
+            ExpansionLootAirdropsettings.LootparentName = CurrentAirdropContainer.Container;
+            ExpansionLootAirdropsettings.currentExpansionLoot = CurrentAirdropContainer.Loot;
+            ExpansionLootAirdropsettings.vanillatypes = vanillatypes;
+            ExpansionLootAirdropsettings.ModTypes = ModTypes;
+            ExpansionLootAirdropsettings.currentproject = currentproject;
         }
         private void populateZombies()
         {
             listBox3.DisplayMember = "DisplayName";
             listBox3.ValueMember = "Value";
             listBox3.DataSource = CurrentAirdropContainer.Infected;
-        }
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listBox1.SelectedItems.Count < 1) return;
-            CurrentAirdropContainerLoot = listBox1.SelectedItem as ExpansionLoot;
-            useraction = false;
-            textBox1.Text = CurrentAirdropContainerLoot.Name;
-            if (CurrentAirdropContainerLoot.Chance > 1)
-                CurrentAirdropContainerLoot.Chance = 1;
-            trackBar1.Value = (int)(CurrentAirdropContainerLoot.Chance * 1000);
-            numericUpDown12.Value = CurrentAirdropContainerLoot.Max;
-            numericUpDown33.Value = CurrentAirdropContainerLoot.Min;
-            numericUpDown31.Value = CurrentAirdropContainerLoot.QuantityPercent;
-            listBox4.DisplayMember = "DisplayName";
-            listBox4.ValueMember = "Value";
-            listBox4.DataSource = CurrentAirdropContainerLoot.Attachments;
-
-            listBox21.DataSource = null;
-            listBox22.DataSource = null;
-
-            if (CurrentAirdropContainerLoot.Variants.Count > 0)
-            {
-                listBox21.DisplayMember = "DisplayName";
-                listBox21.ValueMember = "Value";
-                listBox21.DataSource = CurrentAirdropContainerLoot.Variants;
-            }
-            useraction = true;
-        }
-        private void listBox21_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listBox21.SelectedItems.Count < 1) return;
-            LootVarients = listBox21.SelectedItem as ExpansionLootVariant;
-            useraction = false;
-
-            VarientChanceTrackBar.Value = (int)(LootVarients.Chance * 1000);
-
-            listBox22.DisplayMember = "DisplayName";
-            listBox22.ValueMember = "Value";
-            listBox22.DataSource = LootVarients.Attachments;
-
-            useraction = true;
         }
         private void darkButton2_Click(object sender, EventArgs e)
         {
@@ -2057,7 +2020,7 @@ namespace DayZeEditor
                     ExpansionLoot Newloot = new ExpansionLoot()
                     {
                         Name = l,
-                        Attachments = new BindingList<string>(),
+                        Attachments = new BindingList<ExpansionLootVariant>(),
                         Chance = (decimal)0.5,
                         Max = -1,
                         Min = 0,
@@ -2083,9 +2046,9 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    if (!CurrentAirdropContainerLoot.Attachments.Contains(l))
+                    if (CurrentAirdropContainerLoot.Attachments.First(x => x.Name == l) == null)
                     {
-                        CurrentAirdropContainerLoot.Attachments.Add(l);
+                        CurrentAirdropContainerLoot.Attachments.Add(new ExpansionLootVariant(l));
                         AirdropsettingsJson.isDirty = true;
                     }
                     else
@@ -2095,8 +2058,8 @@ namespace DayZeEditor
         }
         private void darkButton10_Click(object sender, EventArgs e)
         {
-            CurrentAirdropContainerLoot.Attachments.Remove(listBox4.GetItemText(listBox4.SelectedItem));
-            AirdropsettingsJson.isDirty = true;
+            //CurrentAirdropContainerLoot.Attachments.Remove(listBox4.GetItemText(listBox4.SelectedItem));
+            //AirdropsettingsJson.isDirty = true;
         }
         private void numericUpDown11_ValueChanged(object sender, EventArgs e)
         {
@@ -2152,30 +2115,6 @@ namespace DayZeEditor
             if (!useraction) return;
             CurrentAirdropContainer.SpawnInfectedForPlayerCalledDrops = checkBox5.Checked == true ? 1 : 0;
             AirdropsettingsJson.isDirty = true;
-        }
-        private void numericUpDown12_ValueChanged(object sender, EventArgs e)
-        {
-            if (useraction)
-            {
-                CurrentAirdropContainerLoot.Max = (int)numericUpDown12.Value;
-                AirdropsettingsJson.isDirty = true;
-            }
-        }
-        private void numericUpDown33_ValueChanged(object sender, EventArgs e)
-        {
-            if (useraction)
-            {
-                CurrentAirdropContainerLoot.Min = (int)numericUpDown33.Value;
-                AirdropsettingsJson.isDirty = true;
-            }
-        }
-        private void numericUpDown31_ValueChanged(object sender, EventArgs e)
-        {
-            if (useraction)
-            {
-                CurrentAirdropContainerLoot.QuantityPercent = (int)numericUpDown31.Value;
-                AirdropsettingsJson.isDirty = true;
-            }
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -2273,134 +2212,10 @@ namespace DayZeEditor
                 AirdropsettingsJson.isDirty = true;
             }
         }
-        private void trackBar1_ValueChanged(object sender, EventArgs e)
+        private void ExpansionLootAirdropsettings_IsDirtyChanged(object sender, PropertyChangedEventArgs e)
         {
-            darkLabel23.Text = ((decimal)(trackBar1.Value) / 10).ToString() + "%";
+            AirdropsettingsJson.isDirty = ExpansionLootAirdropsettings.isDirty;
         }
-        private void trackBar1_Scroll(object sender, EventArgs e)
-        {
-            darkLabel23.Text = ((decimal)(trackBar1.Value) / 10).ToString() + "%";
-        }
-        private void trackBar1_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (CurrentAirdropContainerLoot == null) return;
-            CurrentAirdropContainerLoot.Chance = ((decimal)trackBar1.Value) / 1000;
-            AirdropsettingsJson.isDirty = true;
-        }
-        private void darkButton52_Click(object sender, EventArgs e)
-        {
-            foreach (ExpansionLoot cl in CurrentAirdropContainer.Loot)
-            {
-                cl.Chance = ((decimal)trackBar1.Value) / 1000;
-            }
-            AirdropsettingsJson.isDirty = true;
-        }
-        private void VarientChanceTrackBar_ValueChanged(object sender, EventArgs e)
-        {
-            darkLabel159.Text = ((decimal)(VarientChanceTrackBar.Value) / 10).ToString() + "%";
-        }
-        private void VarientChanceTrackBar_Scroll(object sender, EventArgs e)
-        {
-            darkLabel159.Text = ((decimal)(VarientChanceTrackBar.Value) / 10).ToString() + "%";
-        }
-        private void VarientChanceTrackBar_MouseUp(object sender, MouseEventArgs e)
-        { 
-            if(LootVarients == null)return;
-            LootVarients.Chance =((decimal)VarientChanceTrackBar.Value) / 1000;
-            AirdropsettingsJson.isDirty = true;
-        }
-        private void darkButton55_Click(object sender, EventArgs e)
-        {
-            AddItemfromTypes form = new AddItemfromTypes
-            {
-                vanillatypes = vanillatypes,
-                ModTypes = ModTypes,
-                currentproject = currentproject
-            };
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                List<string> addedtypes = form.addedtypes.ToList();
-                if (CurrentAirdropContainerLoot.Variants.Count == 0)
-                {
-                    listBox21.DisplayMember = "DisplayName";
-                    listBox21.ValueMember = "Value";
-                    listBox21.DataSource = CurrentAirdropContainerLoot.Variants;
-                }
-                foreach (string l in addedtypes)
-                {
-                    ExpansionLootVariant newlootVarients = new ExpansionLootVariant()
-                    {
-                        Name = l,
-                        Attachments = new BindingList<string>(),
-                        Chance = (decimal)0.5,
-                    };
-                    CurrentAirdropContainerLoot.Variants.Add(newlootVarients);
-                    AirdropsettingsJson.isDirty = true;
-                }
-               
-            }
-        }
-        private void darkButton56_Click(object sender, EventArgs e)
-        {
-            CurrentAirdropContainerLoot.Variants.Remove(LootVarients);
-            listBox22.DataSource = null;
-            listBox21.SelectedIndex = -1;
-            if (CurrentAirdropContainerLoot.Variants.Count > 0)
-            {
-                listBox21.SelectedIndex = 0;
-            }
-            AirdropsettingsJson.isDirty = true;
-        }
-        private void darkButton57_Click(object sender, EventArgs e)
-        {
-            AddItemfromTypes form = new AddItemfromTypes
-            {
-                vanillatypes = vanillatypes,
-                ModTypes = ModTypes,
-                currentproject = currentproject
-            };
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                List<string> addedtypes = form.addedtypes.ToList();
-                foreach (string l in addedtypes)
-                {
-                    if (!LootVarients.Attachments.Contains(l))
-                    {
-                        LootVarients.Attachments.Add(l);
-                        AirdropsettingsJson.isDirty = true;
-                    }
-                    else
-                        MessageBox.Show("Attachments Type allready in the Varients list.....");
-                }
-            }
-        }
-        private void darkButton58_Click(object sender, EventArgs e)
-        {
-            LootVarients.Attachments.Remove(listBox22.GetItemText(listBox22.SelectedItem));
-            AirdropsettingsJson.isDirty = true;
-        }
-        private void darkButton97_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void darkButton97_Click_1(object sender, EventArgs e)
-        {
-            string lootitem = CurrentAirdropContainerLoot.Name;
-            BindingList<Spawnabletypesconfig> spawnabletypes = currentproject.spawnabletypesList;
-            foreach(Spawnabletypesconfig stc in spawnabletypes)
-            {
-                foreach(spawnabletypesType st in stc.spawnabletypes.type)
-                {
-                    if(st.name == lootitem)
-                    {
-                        
-                    }
-                }
-            }
-        }
-
         #endregion Airdropsettings
 
         #region basebuildingsettings
@@ -4842,6 +4657,7 @@ namespace DayZeEditor
                 MissionMissionMaxTimeNUD.Value = (decimal)Helper.ConvertSecondsToMinutes(currentAirdropmissionfile.MissionMaxTime);
                 MissionHeightNUD.Value = (decimal)currentAirdropmissionfile.Height;
                 MissionSpeedNUD.Value = (decimal)currentAirdropmissionfile.Speed;
+                MissionFallSpeedNUD.Value = (decimal)currentAirdropmissionfile.FallSpeed;
                 MissionDropXNUD.Value = (decimal)currentAirdropmissionfile.DropLocation.x;
                 MissionDropYNUD.Value = (decimal)currentAirdropmissionfile.DropLocation.z;
                 MissionDropRadiusNUD.Value = (decimal)currentAirdropmissionfile.DropLocation.Radius;
@@ -4888,9 +4704,15 @@ namespace DayZeEditor
         //Airdrop Missions
         private void Specificpopulatelistbox()
         {
-            listBox30.DisplayMember = "DisplayName";
-            listBox30.ValueMember = "Value";
-            listBox30.DataSource = currentAirdropmissionfile.Loot;
+            expansionLootControlMissions.LootparentName = currentAirdropmissionfile.MissionName;
+            expansionLootControlMissions.currentExpansionLoot = currentAirdropmissionfile.Loot;
+            expansionLootControlMissions.vanillatypes = vanillatypes;
+            expansionLootControlMissions.ModTypes = ModTypes;
+            expansionLootControlMissions.currentproject = currentproject;
+        }
+        private void expansionLootControlMissions_IsDirtyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            currentAirdropmissionfile.isDirty = expansionLootControlMissions.isDirty;
         }
         private void SpecificpopulateZombies()
         {
@@ -4963,6 +4785,13 @@ namespace DayZeEditor
             currentAirdropmissionfile.MissionName = MissionNameTB.Text;
             currentAirdropmissionfile.isDirty = true;
         }
+        private void MissionFallSpeedNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            NumericUpDown nud = sender as NumericUpDown;
+            currentAirdropmissionfile.SetdecimalValue(nud.Tag as string, (decimal)nud.Value);
+            currentAirdropmissionfile.isDirty = true;
+        }
         private void MIssionContainerCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
@@ -5005,9 +4834,14 @@ namespace DayZeEditor
         }
         private void numericUpDown37_ValueChanged(object sender, EventArgs e)
         {
-            SpecifcLootAirdropsGB.Visible = numericUpDown37.Value == -1 ? false : true;
+            expansionLootControlMissions.Visible = numericUpDown37.Value == -1 ? false : true;
             if (!useraction) { return; }
             currentAirdropmissionfile.ItemCount = (int)numericUpDown37.Value;
+            if (currentAirdropmissionfile.ItemCount == -1)
+            {
+                currentAirdropmissionfile.Loot = new BindingList<ExpansionLoot>();
+                Specificpopulatelistbox();
+            }
             currentAirdropmissionfile.isDirty = true;
         }
         private void darkButton40_Click(object sender, EventArgs e)
@@ -5154,241 +4988,7 @@ namespace DayZeEditor
                 MessageBox.Show("Infected Type allready in the list.....");
             }
         }
-        private void listBox30_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listBox30.SelectedItems.Count < 1) return;
-            SCL = listBox30.SelectedItem as ExpansionLoot;
-            useraction = false;
-            textBox22.Text = SCL.Name;
-            if (SCL.Chance > 1)
-                SCL.Chance = 1;
-            trackBar8.Value = (int)(SCL.Chance * 1000);
-            numericUpDown36.Value = SCL.Max;
-            numericUpDown34.Value = SCL.Min;
-            numericUpDown35.Value = SCL.QuantityPercent;
-            listBox29.DisplayMember = "DisplayName";
-            listBox29.ValueMember = "Value";
-            listBox29.DataSource = SCL.Attachments;
 
-            listBox28.DataSource = null;
-            listBox27.DataSource = null;
-
-            if (SCL.Variants.Count > 0)
-            {
-                listBox28.DisplayMember = "DisplayName";
-                listBox28.ValueMember = "Value";
-                listBox28.DataSource = SCL.Variants;
-            }
-            useraction = true;
-        }
-        private void darkButton95_Click(object sender, EventArgs e)
-        {
-            AddItemfromTypes form = new AddItemfromTypes
-            {
-                vanillatypes = vanillatypes,
-                ModTypes = ModTypes,
-                currentproject = currentproject
-            };
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                List<string> addedtypes = form.addedtypes.ToList();
-                foreach (string l in addedtypes)
-                {
-                    ExpansionLoot Newloot = new ExpansionLoot()
-                    {
-                        Name = l,
-                        Attachments = new BindingList<string>(),
-                        Chance = (decimal)0.5,
-                        Max = -1,
-                        Min = 0,
-                        Variants = new BindingList<ExpansionLootVariant>()
-                    };
-                    currentAirdropmissionfile.Loot.Add(Newloot);
-                    currentAirdropmissionfile.isDirty = true;
-                }
-            }
-        }
-        private void darkButton96_Click(object sender, EventArgs e)
-        {
-            currentAirdropmissionfile.Loot.Remove(CurrentAirdropContainerLoot);
-            currentAirdropmissionfile.isDirty = true;
-            Specificpopulatelistbox();
-        }
-        private void trackBar8_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (SCL == null) return;
-            SCL.Chance = ((decimal)trackBar8.Value) / 1000;
-            currentAirdropmissionfile.isDirty = true;
-        }
-        private void trackBar8_Scroll(object sender, EventArgs e)
-        {
-            darkLabel266.Text = ((decimal)(trackBar8.Value) / 10).ToString() + "%";
-        }
-        private void trackBar8_ValueChanged(object sender, EventArgs e)
-        {
-            darkLabel266.Text = ((decimal)(trackBar8.Value) / 10).ToString() + "%";
-        }
-        private void darkButton93_Click(object sender, EventArgs e)
-        {
-            AddItemfromTypes form = new AddItemfromTypes
-            {
-                vanillatypes = vanillatypes,
-                ModTypes = ModTypes,
-                currentproject = currentproject
-            };
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                List<string> addedtypes = form.addedtypes.ToList();
-                foreach (string l in addedtypes)
-                {
-                    if (!SCL.Attachments.Contains(l))
-                    {
-                        SCL.Attachments.Add(l);
-                        currentAirdropmissionfile.isDirty = true;
-                    }
-                    else
-                        MessageBox.Show("Attachments Type allready in the list.....");
-                }
-            }
-        }
-        private void darkButton94_Click(object sender, EventArgs e)
-        {
-            SCL.Attachments.Remove(listBox29.GetItemText(listBox29.SelectedItem));
-            currentAirdropmissionfile.isDirty = true;
-        }
-        private void numericUpDown35_ValueChanged(object sender, EventArgs e)
-        {
-            if (useraction)
-            {
-                SCL.QuantityPercent = (int)numericUpDown35.Value;
-                currentAirdropmissionfile.isDirty = true;
-            }
-        }
-        private void numericUpDown34_ValueChanged(object sender, EventArgs e)
-        {
-            if (useraction)
-            {
-                SCL.Min = (int)numericUpDown34.Value;
-                currentAirdropmissionfile.isDirty = true;
-            }
-        }
-        private void numericUpDown36_ValueChanged(object sender, EventArgs e)
-        {
-
-            if (useraction)
-            {
-                SCL.Max = (int)numericUpDown36.Value;
-                currentAirdropmissionfile.isDirty = true;
-            }
-        }
-        private void darkButton92_Click(object sender, EventArgs e)
-        {
-            foreach (ExpansionLoot scl in currentAirdropmissionfile.Loot)
-            {
-                scl.Chance = ((decimal)trackBar1.Value) / 1000;
-            }
-            currentAirdropmissionfile.isDirty = true;
-        }
-        private void listBox28_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listBox28.SelectedItems.Count < 1) return;
-            SLootVarients = listBox28.SelectedItem as ExpansionLootVariant;
-            useraction = false;
-
-            VarientChanceTrackBar.Value = (int)(SLootVarients.Chance * 1000);
-
-            listBox27.DisplayMember = "DisplayName";
-            listBox27.ValueMember = "Value";
-            listBox27.DataSource = SLootVarients.Attachments;
-        }
-        private void darkButton90_Click(object sender, EventArgs e)
-        {
-            AddItemfromTypes form = new AddItemfromTypes
-            {
-                vanillatypes = vanillatypes,
-                ModTypes = ModTypes,
-                currentproject = currentproject
-            };
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                List<string> addedtypes = form.addedtypes.ToList();
-                if (CurrentAirdropContainerLoot.Variants.Count == 0)
-                {
-                    listBox28.DisplayMember = "DisplayName";
-                    listBox28.ValueMember = "Value";
-                    listBox28.DataSource = CurrentAirdropContainerLoot.Variants;
-                }
-                foreach (string l in addedtypes)
-                {
-                    ExpansionLootVariant newlootVarients = new ExpansionLootVariant()
-                    {
-                        Name = l,
-                        Attachments = new BindingList<string>(),
-                        Chance = (decimal)0.5,
-                    };
-                    SCL.Variants.Add(newlootVarients);
-                    currentAirdropmissionfile.isDirty = true;
-                }
-
-            }
-        }
-        private void darkButton91_Click(object sender, EventArgs e)
-        {
-            SCL.Variants.Remove(SLootVarients);
-            listBox28.DataSource = null;
-            listBox28.SelectedIndex = -1;
-            if (SCL.Variants.Count > 0)
-            {
-                listBox28.SelectedIndex = 0;
-            }
-            currentAirdropmissionfile.isDirty = true;
-        }
-        private void trackBar7_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (SLootVarients == null) return;
-            SLootVarients.Chance = ((decimal)trackBar7.Value) / 1000;
-            currentAirdropmissionfile.isDirty = true;
-        }
-        private void trackBar7_Scroll(object sender, EventArgs e)
-        {
-            darkLabel263.Text = ((decimal)(trackBar7.Value) / 10).ToString() + "%";
-        }
-        private void trackBar7_ValueChanged(object sender, EventArgs e)
-        {
-            darkLabel263.Text = ((decimal)(trackBar7.Value) / 10).ToString() + "%";
-        }
-        private void darkButton88_Click(object sender, EventArgs e)
-        {
-            AddItemfromTypes form = new AddItemfromTypes
-            {
-                vanillatypes = vanillatypes,
-                ModTypes = ModTypes,
-                currentproject = currentproject
-            };
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                List<string> addedtypes = form.addedtypes.ToList();
-                foreach (string l in addedtypes)
-                {
-                    if (!SLootVarients.Attachments.Contains(l))
-                    {
-                        SLootVarients.Attachments.Add(l);
-                        currentAirdropmissionfile.isDirty = true;
-                    }
-                    else
-                        MessageBox.Show("Attachments Type allready in the Varients list.....");
-                }
-            }
-        }
-        private void darkButton89_Click(object sender, EventArgs e)
-        {
-            SLootVarients.Attachments.Remove(listBox28.GetItemText(listBox28.SelectedItem));
-            currentAirdropmissionfile.isDirty = true;
-        }
         //Contaminated Area missions
         public ContaminatedAreaMissionSettingFiles currentContaminatedAreaMissionFile { get; private set; }
         public EntityReputationlevels CurrentEntityrep { get; private set; }
@@ -9291,7 +8891,7 @@ namespace DayZeEditor
         }
         private void darkButton102_Click(object sender, EventArgs e)
         {
-            PersonalStorageSettings.ExcludedClassNames.Remove(listBox1.GetItemText(listBox1.SelectedItem));
+            PersonalStorageSettings.ExcludedClassNames.Remove(listBox32.GetItemText(listBox32.SelectedItem));
             PersonalStorageSettings.isDirty = true;
         }
         private void listBox31_SelectedIndexChanged(object sender, EventArgs e)
@@ -9557,6 +9157,9 @@ namespace DayZeEditor
             }
             PersonalStorageSettingsNew.isDirty = true;
         }
+
+
+
 
 
 

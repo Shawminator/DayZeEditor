@@ -10,7 +10,7 @@ namespace DayZeLib
 
     public class ExpansionChatSettings
     {
-        const int CurrentVersion = 2;
+        const int CurrentVersion = 3;
 
         public int m_Version { get; set; }
         public int EnableGlobalChat { get; set; }
@@ -27,7 +27,7 @@ namespace DayZeLib
         {
             m_Version = CurrentVersion;
             EnableGlobalChat = 1;
-            EnablePartyChat = 0;
+            EnablePartyChat = 1;
             EnableTransportChat = 1;
             ChatColors = new ExpansionChatColors();
         }
@@ -61,6 +61,16 @@ namespace DayZeLib
                     return ChatColors.PartyChatColor;
                 case "TransmitterChatColorPB":
                     return ChatColors.TransmitterChatColor;
+                case "StatusMessageColorPB":
+                    return ChatColors.StatusMessageColor;
+                case "ActionMessageColorPB":
+                    return ChatColors.ActionMessageColor;
+                case "FriendlyMessageColorPB":
+                    return ChatColors.FriendlyMessageColor;
+                case "ImportantMessageColorPB":
+                    return ChatColors.ImportantMessageColor;
+                case "DefaultMessageColorPB":
+                    return ChatColors.DefaultMessageColor;
             }
             return "";
         }
@@ -90,6 +100,21 @@ namespace DayZeLib
                 case "TransmitterChatColorPB":
                     ChatColors.TransmitterChatColor = Colour;
                     break;
+                case "StatusMessageColorPB":
+                    ChatColors.StatusMessageColor = Colour;
+                    break;
+                case "ActionMessageColorPB":
+                    ChatColors.ActionMessageColor = Colour;
+                    break;
+                case "FriendlyMessageColorPB":
+                    ChatColors.FriendlyMessageColor = Colour;
+                    break;
+                case "ImportantMessageColorPB":
+                    ChatColors.ImportantMessageColor = Colour;
+                    break;
+                case "DefaultMessageColorPB":
+                    ChatColors.DefaultMessageColor = Colour;
+                    break;
             }
         }
     }
@@ -103,6 +128,12 @@ namespace DayZeLib
         public string TransportChatColor { get; set; }
         public string PartyChatColor { get; set; }
         public string TransmitterChatColor { get; set; }
+        public string StatusMessageColor { get; set; }
+        public string ActionMessageColor { get; set; }
+        public string FriendlyMessageColor { get; set; }
+        public string ImportantMessageColor { get; set; }
+        public string DefaultMessageColor { get; set; }
+
 
         public ExpansionChatColors()
         {
@@ -113,6 +144,11 @@ namespace DayZeLib
             TransportChatColor = "FFCE09FF";
             PartyChatColor = "FFCE09FF";
             TransmitterChatColor = "F9FF49FF";
+            StatusMessageColor = "4B77BEFF";
+            ActionMessageColor = "F7CA18FF";
+            FriendlyMessageColor = "2ECC71FF";
+            ImportantMessageColor = "F22613FF";
+            DefaultMessageColor = "FFFFFFFF";
         }
     }
 

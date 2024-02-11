@@ -10,7 +10,7 @@ namespace DayZeLib
 {
     public class ExpansionAirdropSettings
     {
-        const int CurrentVersion = 4; 
+        const int CurrentVersion = 5; 
 
         public int m_Version { get; set; }
         public int ServerMarkerOnDropLocation { get; set; }
@@ -464,20 +464,20 @@ namespace DayZeLib
     public class ExpansionLoot
     {
         public string Name { get; set; }
-        public BindingList<string> Attachments { get; set; }
+        public BindingList<ExpansionLootVariant> Attachments { get; set; }
         public decimal Chance { get; set; }
         public int QuantityPercent { get; set; }
         public int Max { get; set; }
         public int Min { get; set; }
         public BindingList<ExpansionLootVariant> Variants { get; set; }
 
-        public ExpansionLoot(string name, BindingList<string> attachments = null, decimal chance = 1, int quantityPercent = -1, BindingList<ExpansionLootVariant> variants = null, int max = -1, int min = 0)
+        public ExpansionLoot(string name, BindingList<ExpansionLootVariant> attachments = null, decimal chance = 1, int quantityPercent = -1, BindingList<ExpansionLootVariant> variants = null, int max = -1, int min = 0)
         {
             Name = name;
             if (attachments != null)
                 Attachments = attachments;
             else
-                Attachments = new BindingList<string>();
+                Attachments = new BindingList<ExpansionLootVariant>();
             Chance = chance;
             if (variants == null)
                 Variants = new BindingList<ExpansionLootVariant>();
@@ -494,7 +494,7 @@ namespace DayZeLib
             QuantityPercent = -1;
             Max = -1;
             Min = 0;
-            Attachments = new BindingList<string>();
+            Attachments = new BindingList<ExpansionLootVariant>();
             Variants = new BindingList<ExpansionLootVariant>();
         }
         public override string ToString()
@@ -505,22 +505,22 @@ namespace DayZeLib
     public class ExpansionLootVariant
     {
         public string Name { get; set; }
-        public BindingList<string> Attachments { get; set; }
+        public BindingList<ExpansionLootVariant> Attachments { get; set; }
         public decimal Chance { get; set; }
 
-        public ExpansionLootVariant(string _name, BindingList<string> _Attachments = null , decimal _Chance = 1)
+        public ExpansionLootVariant(string _name, BindingList<ExpansionLootVariant> _Attachments = null , decimal _Chance = 1)
         {
             Name = _name;
             if (_Attachments != null)
                 Attachments = _Attachments;
             else
-                Attachments = new BindingList<string>();
+                Attachments = new BindingList<ExpansionLootVariant>();
             Chance = _Chance;
         }
         public ExpansionLootVariant()
         {
             Chance = (decimal)0.2;
-            Attachments = new BindingList<string>();
+            Attachments = new BindingList<ExpansionLootVariant>();
         }
 
         public override string ToString()

@@ -36,7 +36,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.7.9.0";
+        public string VersionNumber = "0.7.9.1";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -456,6 +456,11 @@ namespace DayZeEditor
                     MysteryBoxButton.Visible = true;
                 else
                     MysteryBoxButton.Visible = false;
+
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\UtopiaAirdrop\\Config\\UtopiaAirdropSettings.json"))
+                    UtopiaAirdropButton.Visible = true;
+                else
+                    UtopiaAirdropButton.Visible = false;
 
                 // Cant be arsed with this, fucking stupid config........
                 //if (Directory.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\DNA_Keycards"))
@@ -1046,6 +1051,33 @@ namespace DayZeEditor
                 _TM.Show();
                 Console.WriteLine("loading DNAKeyCards manager....");
                 label1.Text = "DNA Keycards manager";
+            }
+            timer1.Start();
+        }
+        private void UtopiaAirdropButton_Click(object sender, EventArgs e)
+        {
+            UtopiaAirdropManager _TM = Application.OpenForms["UtopiaAirdropManager"] as UtopiaAirdropManager;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new UtopiaAirdropManager
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+
+                };
+                _TM.Show();
+                Console.WriteLine("loading Utopia Airdrop manager....");
+                label1.Text = "Utopia Airdrop Manager";
             }
             timer1.Start();
         }

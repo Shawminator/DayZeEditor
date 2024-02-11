@@ -1,4 +1,9 @@
-﻿Version 0.7.9.0
+﻿Version 0.7.9.1
+[Updated]
+DR Jones Trader - Updated to match latest release.
+Expansion - Updated to match latest release.
+
+Version 0.7.9.0
 [Fixed]
 KOTH - Zone lootsets now correct as string array.
 AI Patrol - Fixed general damagerecieved multiplier not updating.

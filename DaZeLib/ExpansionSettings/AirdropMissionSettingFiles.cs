@@ -10,6 +10,9 @@ namespace DayZeLib
 {
     public class AirdropMissionSettingFiles
     {
+        const int CurrentVersion = 1;
+
+        public int m_Version { get; set; }
         public int Enabled { get; set; }
         public decimal Weight { get; set; }
         public int MissionMaxTime { get; set; }
@@ -21,6 +24,7 @@ namespace DayZeLib
         public decimal Height { get; set; }
         public decimal Speed { get; set; }
         public string Container { get; set; }
+        public decimal FallSpeed { get; set; }
         public ExpansionAirdropLocation DropLocation { get; set; }
         public BindingList<ExpansionLoot> Loot { get; set; }
         public BindingList<string> Infected { get; set; }
@@ -37,6 +41,19 @@ namespace DayZeLib
 
         public AirdropMissionSettingFiles()
         {
+            m_Version = CurrentVersion;
+            Enabled = 1;
+            Weight = (decimal)1.0;
+            MissionMaxTime = 1200;
+            MissionName = "";
+            Difficulty = 0;
+            Objective = 0;
+            Reward = "";
+            ShowNotification = 1;
+            Height = (decimal)450.0;
+            Speed = (decimal)25.0;
+            Container = "Random";
+            FallSpeed = (decimal)4.5;
             DropLocation = new ExpansionAirdropLocation();
             Loot = new BindingList<ExpansionLoot>();
             Infected = new BindingList<string>();

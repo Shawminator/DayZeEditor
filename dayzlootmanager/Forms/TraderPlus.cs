@@ -2846,6 +2846,23 @@ namespace DayZeEditor
                
             TraderPlusPriceConfig.isDirty = true;
         }
+        private void toolStripMenuItem10_Click(object sender, EventArgs e)
+        {
+            string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Input Percentage to change current category ", "Price change by perecntage", "");
+            if (UserAnswer == "") return;
+            int value = Convert.ToInt32(UserAnswer);
+            foreach (ItemProducts item in currentTradercategory.itemProducts)
+            {
+                decimal percent = (decimal)value / 100;
+                percent += 1;
+                item.BuyPrice = (int)((decimal)item.BuyPrice * percent);
+                if(item.Sellprice > 1.0)
+                {
+                    item.Sellprice = (int)((decimal)item.Sellprice * percent);
+                }
+            }
+            TraderPlusPriceConfig.isDirty = true;
+        }
         private void toolStripMenuItem6_Click(object sender, EventArgs e)
         {
             OpenFileDialog openfile = new OpenFileDialog();

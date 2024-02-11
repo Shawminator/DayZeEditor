@@ -243,51 +243,19 @@ namespace DayZeEditor
         private void populateVariables()
         {
             IsUser = false;
-            BuySellTimerUpDown.Value = (decimal)drJonesVariables.BuySellTimer;
-            StatUpdateTimerUpDown.Value = (decimal)drJonesVariables.StatUpdateTimer;
-            FireBarrelUpdateTimerUpDown.Value = (decimal)drJonesVariables.FireBarrelUpdateTimer;
-            ZombieCleanupTimerUpDown.Value = (decimal)drJonesVariables.ZombieCleanupTimer;
-            SafezoneTimeoutUpDown.Value = (decimal)drJonesVariables.SafezoneTimeout;
-            VehicleCleanupTimerUpDown.Value = (decimal)drJonesVariables.VehicleCleanupTimer;
+            BuySellTimerUpDown.Value = drJonesVariables.BuySellTimer;
+            SafezoneTimeoutUpDown.Value = drJonesVariables.SafezoneTimeout;
+            VehicleCleanupTimerUpDown.Value = drJonesVariables.VehicleCleanupTimer;
+            comboBox1.SelectedText = drJonesVariables.SafezoneRemoveAnimals;
+            comboBox2.SelectedText = drJonesVariables.SafezoneRemoveInfected;
+            TradingDistanceUpDown.Value = drJonesVariables.TradingDistance;
             IsUser = true;
         }
         private void BuySellTimerUpDown_ValueChanged(object sender, EventArgs e)
         {
             if (IsUser)
             {
-                drJonesVariables.BuySellTimer = (float)BuySellTimerUpDown.Value;
-                drJonesVariables.isDirty = true;
-            }
-        }
-        private void StatUpdateTimerUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            if (IsUser)
-            {
-                drJonesVariables.StatUpdateTimer = (float)StatUpdateTimerUpDown.Value;
-                drJonesVariables.isDirty = true;
-            }
-        }
-        private void FireBarrelUpdateTimerUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            if (IsUser)
-            {
-                drJonesVariables.FireBarrelUpdateTimer = (float)FireBarrelUpdateTimerUpDown.Value;
-                drJonesVariables.isDirty = true;
-            }
-        }
-        private void ZombieCleanupTimerUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            if (IsUser)
-            {
-                drJonesVariables.ZombieCleanupTimer = (float)ZombieCleanupTimerUpDown.Value;
-                drJonesVariables.isDirty = true;
-            }
-        }
-        private void SafezoneTimeoutUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            if (IsUser)
-            {
-                drJonesVariables.SafezoneTimeout = (float)SafezoneTimeoutUpDown.Value;
+                drJonesVariables.BuySellTimer = BuySellTimerUpDown.Value;
                 drJonesVariables.isDirty = true;
             }
         }
@@ -295,7 +263,39 @@ namespace DayZeEditor
         {
             if (IsUser)
             {
-                drJonesVariables.StatUpdateTimer = (float)VehicleCleanupTimerUpDown.Value;
+                drJonesVariables.VehicleCleanupTimer = VehicleCleanupTimerUpDown.Value;
+                drJonesVariables.isDirty = true;
+            }
+        }
+        private void SafezoneTimeoutUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (IsUser)
+            {
+                drJonesVariables.SafezoneTimeout = SafezoneTimeoutUpDown.Value;
+                drJonesVariables.isDirty = true;
+            }
+        }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (IsUser)
+            {
+                drJonesVariables.SafezoneRemoveAnimals = comboBox1.GetItemText(comboBox1.SelectedItem);
+                drJonesVariables.isDirty = true;
+            }
+        }
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (IsUser)
+            {
+                drJonesVariables.SafezoneRemoveInfected = comboBox2.GetItemText(comboBox2.SelectedItem);
+                drJonesVariables.isDirty = true;
+            }
+        }
+        private void TradingDistanceUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (IsUser)
+            {
+                drJonesVariables.TradingDistance = TradingDistanceUpDown.Value;
                 drJonesVariables.isDirty = true;
             }
         }
@@ -905,5 +905,7 @@ namespace DayZeEditor
         private void DRJonesTrader_Manager_FormClosing(object sender, FormClosingEventArgs e)
         {
         }
+
+
     }
 }

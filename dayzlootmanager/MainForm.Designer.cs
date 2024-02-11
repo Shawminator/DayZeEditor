@@ -35,6 +35,7 @@ namespace DayZeEditor
             this.MinimiseButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
             this.TitleLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -75,7 +76,7 @@ namespace DayZeEditor
             this.darkStatusStrip1 = new DarkUI.Controls.DarkStatusStrip();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.UtopiaAirdropButton = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.SlidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Slidelabel)).BeginInit();
@@ -135,6 +136,17 @@ namespace DayZeEditor
             this.TitleLabel.Size = new System.Drawing.Size(165, 15);
             this.TitleLabel.TabIndex = 6;
             this.TitleLabel.Text = "DayZeEditor by Shawminator";
+            // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(1148, 28);
+            this.label1.TabIndex = 8;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // columnHeader1
             // 
@@ -214,6 +226,7 @@ namespace DayZeEditor
             this.KOSzoneManagerButton,
             this.MysteryBoxButton,
             this.AdvancedWorkbenchButton,
+            this.UtopiaAirdropButton,
             this.DNAKeyCardsButton,
             this.toolStripButton1,
             this.toolStripButton3});
@@ -528,7 +541,7 @@ namespace DayZeEditor
             this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(123, 19);
+            this.toolStripButton3.Size = new System.Drawing.Size(88, 19);
             this.toolStripButton3.Text = "De bin DZE file";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
@@ -606,16 +619,16 @@ namespace DayZeEditor
             this.panel2.Size = new System.Drawing.Size(25, 25);
             this.panel2.TabIndex = 45;
             // 
-            // label1
+            // UtopiaAirdropButton
             // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1148, 28);
-            this.label1.TabIndex = 8;
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.UtopiaAirdropButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.UtopiaAirdropButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.UtopiaAirdropButton.Image = ((System.Drawing.Image)(resources.GetObject("UtopiaAirdropButton.Image")));
+            this.UtopiaAirdropButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.UtopiaAirdropButton.Name = "UtopiaAirdropButton";
+            this.UtopiaAirdropButton.Size = new System.Drawing.Size(123, 19);
+            this.UtopiaAirdropButton.Text = "Utopia AD Manager";
+            this.UtopiaAirdropButton.Click += new System.EventHandler(this.UtopiaAirdropButton_Click);
             // 
             // MainForm
             // 
@@ -696,6 +709,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton P2PButton;
         private System.Windows.Forms.ToolStripButton DNAKeyCardsButton;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripButton UtopiaAirdropButton;
     }
 }
 

@@ -9,12 +9,12 @@ namespace DayZeLib
 {
     public class DRJonesVariables
     {
-        public float BuySellTimer { get; set; }
-        public float StatUpdateTimer { get; set; }
-        public float FireBarrelUpdateTimer { get; set; }
-        public float ZombieCleanupTimer { get; set; }
-        public float VehicleCleanupTimer { get; set; }
-        public float SafezoneTimeout { get; set; }
+        public decimal BuySellTimer { get; set; }
+        public decimal VehicleCleanupTimer { get; set; }
+        public decimal SafezoneTimeout { get; set; }
+        public string SafezoneRemoveAnimals { get; set; }
+        public string SafezoneRemoveInfected { get; set; }
+        public decimal TradingDistance { get; set; }
         public string Filename { get; set; }
         public bool isDirty { get; set; }
 
@@ -35,36 +35,36 @@ namespace DayZeLib
                 if (index != -1)
                     variable = adminline.Remove(index, adminline.Length - index);
 
-                if(variable.StartsWith("<BuySellTimer>"))
+                if (variable.StartsWith("<BuySellTimer>"))
                 {
-                    BuySellTimer = Convert.ToSingle(variable.Replace("<BuySellTimer>", ""));
+                    BuySellTimer = Convert.ToDecimal(variable.Replace("<BuySellTimer>", ""));
                     Console.WriteLine("BuySellTimer " + BuySellTimer.ToString());
 
                 }
-                else if (variable.StartsWith("<StatUpdateTimer>"))
-                {
-                    StatUpdateTimer = Convert.ToSingle(variable.Replace("<StatUpdateTimer>", ""));
-                    Console.WriteLine("StatUpdateTimer " + StatUpdateTimer.ToString());
-                }
-                else if (variable.StartsWith("<FireBarrelUpdateTimer>"))
-                {
-                    FireBarrelUpdateTimer = Convert.ToSingle(variable.Replace("<FireBarrelUpdateTimer>", ""));
-                    Console.WriteLine("FireBarrelUpdateTimer " + FireBarrelUpdateTimer.ToString());
-                }
-                else if (variable.StartsWith("<ZombieCleanupTimer>"))
-                {
-                    ZombieCleanupTimer = Convert.ToSingle(variable.Replace("<ZombieCleanupTimer>", ""));
-                    Console.WriteLine("ZombieCleanupTimer " + ZombieCleanupTimer.ToString());
-                }
                 else if (variable.StartsWith("<VehicleCleanupTimer>"))
                 {
-                    VehicleCleanupTimer = Convert.ToSingle(variable.Replace("<VehicleCleanupTimer>", ""));
+                    VehicleCleanupTimer = Convert.ToDecimal(variable.Replace("<VehicleCleanupTimer>", ""));
                     Console.WriteLine("VehicleCleanupTimer " + VehicleCleanupTimer.ToString());
                 }
                 else if (variable.StartsWith("<SafezoneTimeout>"))
                 {
-                    SafezoneTimeout = Convert.ToSingle(variable.Replace("<SafezoneTimeout>", ""));
+                    SafezoneTimeout = Convert.ToDecimal(variable.Replace("<SafezoneTimeout>", ""));
                     Console.WriteLine("SafezoneTimeout " + SafezoneTimeout.ToString());
+                }
+                else if (variable.StartsWith("<SafezoneRemoveAnimals>"))
+                {
+                    SafezoneRemoveAnimals = variable.Replace("<SafezoneRemoveAnimals>", "").ToLower();
+                    Console.WriteLine("SafezoneRemoveAnimals " + SafezoneRemoveAnimals.ToString());
+                }
+                else if (variable.StartsWith("<SafezoneRemoveInfected>"))
+                {
+                    SafezoneRemoveInfected = variable.Replace("<SafezoneRemoveInfected>", "").ToLower();
+                    Console.WriteLine("SafezoneRemoveInfected " + SafezoneRemoveInfected.ToString());
+                }
+                else if (variable.StartsWith("<TradingDistance>"))
+                {
+                    TradingDistance = Convert.ToDecimal(variable.Replace("<TradingDistance>", ""));
+                    Console.WriteLine("TradingDistance " + TradingDistance.ToString());
                 }
             }
         }
@@ -74,11 +74,11 @@ namespace DayZeLib
             if (!isDirty) return false;
             StringBuilder sb = new StringBuilder();
             sb.Append("<BuySellTimer> " + BuySellTimer.ToString("0.0") + Environment.NewLine);
-            sb.Append("<StatUpdateTimer> " + StatUpdateTimer.ToString("0.0") + Environment.NewLine);
-            sb.Append("<FireBarrelUpdateTimer> " + FireBarrelUpdateTimer.ToString("0.0") + Environment.NewLine);
-            sb.Append("<ZombieCleanupTimer> " + ZombieCleanupTimer.ToString("0.0") + Environment.NewLine);
             sb.Append("<VehicleCleanupTimer> " + VehicleCleanupTimer.ToString("0.0") + Environment.NewLine);
             sb.Append("<SafezoneTimeout> " + SafezoneTimeout.ToString("0.0") + Environment.NewLine);
+            sb.Append("<SafezoneRemoveAnimals> " + SafezoneRemoveAnimals + Environment.NewLine);
+            sb.Append("<SafezoneRemoveInfected> " + SafezoneRemoveInfected + Environment.NewLine);
+            sb.Append("<TradingDistance> " + TradingDistance.ToString("0.0") + Environment.NewLine);
             sb.Append(Environment.NewLine);
             sb.Append("<FileEnd> // This has to be on the End of this File and is very importand!");
             Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + SaveTime);

@@ -178,5 +178,9 @@ namespace DayZeLib
             return list;
 
         }
+        public typesType Gettypebyname(string name)
+        { 
+            return types.type.FirstOrDefault(x => x.name == name); 
+        }
     }
 }

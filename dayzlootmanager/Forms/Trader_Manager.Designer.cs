@@ -39,24 +39,24 @@ namespace DayZeEditor
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.darkLabel6 = new DarkUI.Controls.DarkLabel();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.VehicleCleanupTimerUpDown = new System.Windows.Forms.NumericUpDown();
             this.darkLabel20 = new DarkUI.Controls.DarkLabel();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.SafezoneTimeoutUpDown = new System.Windows.Forms.NumericUpDown();
             this.darkLabel19 = new DarkUI.Controls.DarkLabel();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.ZombieCleanupTimerUpDown = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel18 = new DarkUI.Controls.DarkLabel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.FireBarrelUpdateTimerUpDown = new System.Windows.Forms.NumericUpDown();
+            this.TradingDistanceUpDown = new System.Windows.Forms.NumericUpDown();
             this.darkLabel17 = new DarkUI.Controls.DarkLabel();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.StatUpdateTimerUpDown = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel16 = new DarkUI.Controls.DarkLabel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.BuySellTimerUpDown = new System.Windows.Forms.NumericUpDown();
             this.darkLabel15 = new DarkUI.Controls.DarkLabel();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.darkLabel16 = new DarkUI.Controls.DarkLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.darkButton15 = new DarkUI.Controls.DarkButton();
             this.darkButton14 = new DarkUI.Controls.DarkButton();
@@ -104,18 +104,16 @@ namespace DayZeEditor
             this.tabControl3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox12.SuspendLayout();
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VehicleCleanupTimerUpDown)).BeginInit();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SafezoneTimeoutUpDown)).BeginInit();
-            this.groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ZombieCleanupTimerUpDown)).BeginInit();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.FireBarrelUpdateTimerUpDown)).BeginInit();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.StatUpdateTimerUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TradingDistanceUpDown)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BuySellTimerUpDown)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.groupBox11.SuspendLayout();
@@ -237,12 +235,12 @@ namespace DayZeEditor
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.groupBox12);
             this.groupBox2.Controls.Add(this.groupBox9);
             this.groupBox2.Controls.Add(this.groupBox7);
-            this.groupBox2.Controls.Add(this.groupBox6);
             this.groupBox2.Controls.Add(this.groupBox5);
-            this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.groupBox3);
+            this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox2.Location = new System.Drawing.Point(214, 6);
             this.groupBox2.Name = "groupBox2";
@@ -251,12 +249,48 @@ namespace DayZeEditor
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Settings";
             // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.comboBox2);
+            this.groupBox12.Controls.Add(this.darkLabel6);
+            this.groupBox12.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox12.Location = new System.Drawing.Point(285, 116);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(273, 90);
+            this.groupBox12.TabIndex = 13;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "Safezone Remove Infected";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.comboBox2.ForeColor = System.Drawing.SystemColors.Control;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "yes",
+            "no"});
+            this.comboBox2.Location = new System.Drawing.Point(16, 46);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.comboBox2.TabIndex = 1;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            // 
+            // darkLabel6
+            // 
+            this.darkLabel6.AutoSize = true;
+            this.darkLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel6.Location = new System.Drawing.Point(13, 16);
+            this.darkLabel6.Name = "darkLabel6";
+            this.darkLabel6.Size = new System.Drawing.Size(194, 26);
+            this.darkLabel6.TabIndex = 0;
+            this.darkLabel6.Text = "yes to remove the infected in safezones\r\nno to not remove them";
+            // 
             // groupBox9
             // 
             this.groupBox9.Controls.Add(this.VehicleCleanupTimerUpDown);
             this.groupBox9.Controls.Add(this.darkLabel20);
             this.groupBox9.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox9.Location = new System.Drawing.Point(285, 236);
+            this.groupBox9.Location = new System.Drawing.Point(6, 137);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(273, 115);
             this.groupBox9.TabIndex = 12;
@@ -302,7 +336,7 @@ namespace DayZeEditor
             this.groupBox7.Controls.Add(this.SafezoneTimeoutUpDown);
             this.groupBox7.Controls.Add(this.darkLabel19);
             this.groupBox7.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox7.Location = new System.Drawing.Point(285, 137);
+            this.groupBox7.Location = new System.Drawing.Point(6, 261);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(273, 90);
             this.groupBox7.TabIndex = 11;
@@ -342,84 +376,49 @@ namespace DayZeEditor
             this.darkLabel19.Text = "Time in Seconds that the Player still gets\r\nsecured after they have left the Safe" +
     "zone.";
             // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.ZombieCleanupTimerUpDown);
-            this.groupBox6.Controls.Add(this.darkLabel18);
-            this.groupBox6.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox6.Location = new System.Drawing.Point(285, 19);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(273, 112);
-            this.groupBox6.TabIndex = 10;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Zombie Cleanup Timer";
-            // 
-            // ZombieCleanupTimerUpDown
-            // 
-            this.ZombieCleanupTimerUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ZombieCleanupTimerUpDown.DecimalPlaces = 1;
-            this.ZombieCleanupTimerUpDown.ForeColor = System.Drawing.SystemColors.Control;
-            this.ZombieCleanupTimerUpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.ZombieCleanupTimerUpDown.Location = new System.Drawing.Point(16, 71);
-            this.ZombieCleanupTimerUpDown.Maximum = new decimal(new int[] {
-            10000000,
-            0,
-            0,
-            0});
-            this.ZombieCleanupTimerUpDown.Name = "ZombieCleanupTimerUpDown";
-            this.ZombieCleanupTimerUpDown.Size = new System.Drawing.Size(120, 20);
-            this.ZombieCleanupTimerUpDown.TabIndex = 6;
-            this.ZombieCleanupTimerUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ZombieCleanupTimerUpDown.ValueChanged += new System.EventHandler(this.ZombieCleanupTimerUpDown_ValueChanged);
-            // 
-            // darkLabel18
-            // 
-            this.darkLabel18.AutoSize = true;
-            this.darkLabel18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel18.Location = new System.Drawing.Point(13, 16);
-            this.darkLabel18.Name = "darkLabel18";
-            this.darkLabel18.Size = new System.Drawing.Size(254, 39);
-            this.darkLabel18.TabIndex = 0;
-            this.darkLabel18.Text = "Time in Seconds Interval of Zombie Cleanup in \r\nSafezones \r\n(smaller Values can c" +
-    "ause bad Server-Performance).";
-            // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.FireBarrelUpdateTimerUpDown);
+            this.groupBox5.Controls.Add(this.TradingDistanceUpDown);
             this.groupBox5.Controls.Add(this.darkLabel17);
             this.groupBox5.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox5.Location = new System.Drawing.Point(6, 236);
+            this.groupBox5.Location = new System.Drawing.Point(285, 212);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(273, 115);
             this.groupBox5.TabIndex = 9;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Fire Barrel Update Timer";
+            this.groupBox5.Text = "Trading Distance";
             // 
-            // FireBarrelUpdateTimerUpDown
+            // TradingDistanceUpDown
             // 
-            this.FireBarrelUpdateTimerUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.FireBarrelUpdateTimerUpDown.DecimalPlaces = 1;
-            this.FireBarrelUpdateTimerUpDown.ForeColor = System.Drawing.SystemColors.Control;
-            this.FireBarrelUpdateTimerUpDown.Increment = new decimal(new int[] {
+            this.TradingDistanceUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TradingDistanceUpDown.DecimalPlaces = 1;
+            this.TradingDistanceUpDown.ForeColor = System.Drawing.SystemColors.Control;
+            this.TradingDistanceUpDown.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.FireBarrelUpdateTimerUpDown.Location = new System.Drawing.Point(16, 89);
-            this.FireBarrelUpdateTimerUpDown.Maximum = new decimal(new int[] {
-            10000000,
+            this.TradingDistanceUpDown.Location = new System.Drawing.Point(16, 80);
+            this.TradingDistanceUpDown.Maximum = new decimal(new int[] {
+            3,
             0,
             0,
             0});
-            this.FireBarrelUpdateTimerUpDown.Name = "FireBarrelUpdateTimerUpDown";
-            this.FireBarrelUpdateTimerUpDown.Size = new System.Drawing.Size(120, 20);
-            this.FireBarrelUpdateTimerUpDown.TabIndex = 6;
-            this.FireBarrelUpdateTimerUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.FireBarrelUpdateTimerUpDown.ValueChanged += new System.EventHandler(this.FireBarrelUpdateTimerUpDown_ValueChanged);
+            this.TradingDistanceUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.TradingDistanceUpDown.Name = "TradingDistanceUpDown";
+            this.TradingDistanceUpDown.Size = new System.Drawing.Size(120, 20);
+            this.TradingDistanceUpDown.TabIndex = 6;
+            this.TradingDistanceUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TradingDistanceUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.TradingDistanceUpDown.ValueChanged += new System.EventHandler(this.TradingDistanceUpDown_ValueChanged);
             // 
             // darkLabel17
             // 
@@ -427,54 +426,10 @@ namespace DayZeEditor
             this.darkLabel17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.darkLabel17.Location = new System.Drawing.Point(13, 16);
             this.darkLabel17.Name = "darkLabel17";
-            this.darkLabel17.Size = new System.Drawing.Size(255, 65);
+            this.darkLabel17.Size = new System.Drawing.Size(214, 52);
             this.darkLabel17.TabIndex = 0;
-            this.darkLabel17.Text = resources.GetString("darkLabel17.Text");
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.StatUpdateTimerUpDown);
-            this.groupBox4.Controls.Add(this.darkLabel16);
-            this.groupBox4.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox4.Location = new System.Drawing.Point(6, 137);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(273, 90);
-            this.groupBox4.TabIndex = 8;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Stat Update Timer";
-            // 
-            // StatUpdateTimerUpDown
-            // 
-            this.StatUpdateTimerUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StatUpdateTimerUpDown.DecimalPlaces = 1;
-            this.StatUpdateTimerUpDown.ForeColor = System.Drawing.SystemColors.Control;
-            this.StatUpdateTimerUpDown.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.StatUpdateTimerUpDown.Location = new System.Drawing.Point(16, 58);
-            this.StatUpdateTimerUpDown.Maximum = new decimal(new int[] {
-            10000000,
-            0,
-            0,
-            0});
-            this.StatUpdateTimerUpDown.Name = "StatUpdateTimerUpDown";
-            this.StatUpdateTimerUpDown.Size = new System.Drawing.Size(120, 20);
-            this.StatUpdateTimerUpDown.TabIndex = 6;
-            this.StatUpdateTimerUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StatUpdateTimerUpDown.ValueChanged += new System.EventHandler(this.StatUpdateTimerUpDown_ValueChanged);
-            // 
-            // darkLabel16
-            // 
-            this.darkLabel16.AutoSize = true;
-            this.darkLabel16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel16.Location = new System.Drawing.Point(13, 16);
-            this.darkLabel16.Name = "darkLabel16";
-            this.darkLabel16.Size = new System.Drawing.Size(237, 39);
-            this.darkLabel16.TabIndex = 0;
-            this.darkLabel16.Text = "Time in Seconds on how often the Player/Trader\r\nStats gets updated in Safezones\r\n" +
-    "(bigger Value may improve Server-Performance).";
+            this.darkLabel17.Text = "1.0 to 3.0 allowed. Don\'t put higher than 3.0\r\n as it won\'t work. \r\nTrading dista" +
+    "nce from a trader to \r\nget the prompt to trade.";
             // 
             // groupBox3
             // 
@@ -521,6 +476,42 @@ namespace DayZeEditor
             this.darkLabel15.Text = "Time in Seconds that the Player has to wait untill \r\nthey can buy or sell a new I" +
     "tem \r\n(bigger Values may reduce Server-Crashes/Errors \r\nand Server-Performance)." +
     "";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.comboBox1);
+            this.groupBox4.Controls.Add(this.darkLabel16);
+            this.groupBox4.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox4.Location = new System.Drawing.Point(285, 20);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(273, 90);
+            this.groupBox4.TabIndex = 8;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Safezone Remove Animals";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.comboBox1.ForeColor = System.Drawing.SystemColors.Control;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "yes",
+            "no"});
+            this.comboBox1.Location = new System.Drawing.Point(16, 46);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 1;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // darkLabel16
+            // 
+            this.darkLabel16.AutoSize = true;
+            this.darkLabel16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel16.Location = new System.Drawing.Point(13, 16);
+            this.darkLabel16.Name = "darkLabel16";
+            this.darkLabel16.Size = new System.Drawing.Size(191, 26);
+            this.darkLabel16.TabIndex = 0;
+            this.darkLabel16.Text = "yes to remove the animals in safezones\r\nno to not remove them";
             // 
             // groupBox1
             // 
@@ -1077,24 +1068,22 @@ namespace DayZeEditor
             this.tabControl3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VehicleCleanupTimerUpDown)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SafezoneTimeoutUpDown)).EndInit();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ZombieCleanupTimerUpDown)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.FireBarrelUpdateTimerUpDown)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.StatUpdateTimerUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TradingDistanceUpDown)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BuySellTimerUpDown)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.tabPage8.ResumeLayout(false);
             this.groupBox11.ResumeLayout(false);
@@ -1134,14 +1123,10 @@ namespace DayZeEditor
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.NumericUpDown SafezoneTimeoutUpDown;
         private DarkUI.Controls.DarkLabel darkLabel19;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.NumericUpDown ZombieCleanupTimerUpDown;
-        private DarkUI.Controls.DarkLabel darkLabel18;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.NumericUpDown FireBarrelUpdateTimerUpDown;
+        private System.Windows.Forms.NumericUpDown TradingDistanceUpDown;
         private DarkUI.Controls.DarkLabel darkLabel17;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.NumericUpDown StatUpdateTimerUpDown;
         private DarkUI.Controls.DarkLabel darkLabel16;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.NumericUpDown BuySellTimerUpDown;
@@ -1186,5 +1171,9 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton toolStripButton4;
         private System.Windows.Forms.ToolStripMenuItem exportClassnameAndBuyPriceToolStripMenuItem;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private DarkUI.Controls.DarkLabel darkLabel6;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

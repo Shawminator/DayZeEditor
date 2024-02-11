@@ -118,7 +118,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\GitHub.cs" />
-    <Compile Include="Classes\Utilities.cs" />
+    <Compile Include="Forms\UtopiaAirdropManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UtopiaAirdropManager.Designer.cs">
+      <DependentUpon>UtopiaAirdropManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DNAKeyCardsManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,12 +190,6 @@
     <Compile Include="Forms\RHLootBoxManager.Designer.cs">
       <DependentUpon>RHLootBoxManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="HelperForms\Add new container.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="HelperForms\Add new container.Designer.cs">
-      <DependentUpon>Add new container.cs</DependentUpon>
-    </Compile>
     <Compile Include="HelperForms\AddnewQuestID.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,12 +207,6 @@
     </Compile>
     <Compile Include="HelperForms\AddfromPredefinedWeapons.Designer.cs">
       <DependentUpon>AddfromPredefinedWeapons.cs</DependentUpon>
-    </Compile>
-    <Compile Include="HelperForms\AddItemfromTypes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="HelperForms\AddItemfromTypes.Designer.cs">
-      <DependentUpon>AddItemfromTypes.cs</DependentUpon>
     </Compile>
     <Compile Include="HelperForms\AddNewEventFile.cs">
       <SubType>Form</SubType>
@@ -361,7 +354,6 @@
       <DependentUpon>ExpansionMarket.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Mytreeview.cs" />
-    <Compile Include="Classes\Project.cs" />
     <Compile Include="Forms\ProjectPanel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -382,6 +374,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\UtopiaAirdropManager.resx">
+      <DependentUpon>UtopiaAirdropManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DNAKeyCardsManager.resx">
       <DependentUpon>DNAKeyCardsManager.cs</DependentUpon>
     </EmbeddedResource>
@@ -415,9 +410,6 @@
     <EmbeddedResource Include="Forms\RHLootBoxManager.resx">
       <DependentUpon>RHLootBoxManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HelperForms\Add new container.resx">
-      <DependentUpon>Add new container.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="HelperForms\AddnewQuestID.resx">
       <DependentUpon>AddnewQuestID.cs</DependentUpon>
     </EmbeddedResource>
@@ -426,9 +418,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HelperForms\AddfromPredefinedWeapons.resx">
       <DependentUpon>AddfromPredefinedWeapons.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HelperForms\AddItemfromTypes.resx">
-      <DependentUpon>AddItemfromTypes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HelperForms\AddNewEventFile.resx">
       <DependentUpon>AddNewEventFile.cs</DependentUpon>
@@ -593,7 +582,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Maps\barrington_Map.png" />
-    <Content Include="Maps\Capare_Map.png" />
+    <Content Include="Maps\Capare_Map.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Maps\chiemsee_Map.png" />
     <Content Include="Maps\chernarusplus_Map.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

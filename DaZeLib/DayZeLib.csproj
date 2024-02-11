@@ -92,6 +92,12 @@
     <Compile Include="Cannabisplus\CannabisPlus.cs" />
     <Compile Include="CarePackagev2\CarePackagev2.cs" />
     <Compile Include="CJ187LootTable\LootChestTable.cs" />
+    <Compile Include="Controls\ExpansionLootControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ExpansionLootControl.Designer.cs">
+      <DependentUpon>ExpansionLootControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ExpansionQuestAISpawnControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -192,14 +198,28 @@
     <Compile Include="ExpansionSettings\ExpansionSpawnSettings.cs" />
     <Compile Include="ExpansionSettings\ExpansionTerritorySettings.cs" />
     <Compile Include="ExpansionSettings\ExpansionVehicleSettings.cs" />
+    <Compile Include="Helper Forms\Add new container.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Helper Forms\Add new container.Designer.cs">
+      <DependentUpon>Add new container.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper Forms\AddItemfromString.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Helper Forms\AddItemfromString.Designer.cs">
       <DependentUpon>AddItemfromString.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper Forms\AddItemfromTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Helper Forms\AddItemfromTypes.Designer.cs">
+      <DependentUpon>AddItemfromTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper Forms\Form_Controls_AddfromType.cs" />
     <Compile Include="Helper\Helper.cs" />
+    <Compile Include="Helper\Project.cs" />
+    <Compile Include="Helper\Utilities.cs" />
     <Compile Include="Helper\XYZMapping.cs" />
     <Compile Include="KingOfTheHill\KOTH.cs" />
     <Compile Include="KOSZone\KOSZone.cs" />
@@ -217,6 +237,7 @@
     <Compile Include="TraderPlus\TraderPlusPriceConfig.cs" />
     <Compile Include="TraderPlus\TraderPlusSafeZoneConfig.cs" />
     <Compile Include="TraderPlus\TraderPlusVehiclesConfig.cs" />
+    <Compile Include="UtopiaAirdrop\UtopiaAirdropSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -229,17 +250,30 @@
     <Compile Include="ExpansionQuests\NPCs\NPCEmotes.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\ExpansionLootControl.resx">
+      <DependentUpon>ExpansionLootControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\ExpansionQuestAISpawnControl.resx">
       <DependentUpon>ExpansionQuestAISpawnControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Helper Forms\Add new container.resx">
+      <DependentUpon>Add new container.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Helper Forms\AddItemfromString.resx">
       <DependentUpon>AddItemfromString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Helper Forms\AddItemfromTypes.resx">
+      <DependentUpon>AddItemfromTypes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\DarkUI-master\DarkUI-master\DarkUI\DarkUI.csproj">
       <Project>{f19472f5-8c44-4c51-a8a0-b9de5f555255}</Project>
       <Name>DarkUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\TreeViewMS\TreeViewMS.csproj">
+      <Project>{7C2CCE0A-A288-4869-A7B7-CC0D18AF3B8C}</Project>
+      <Name>TreeViewMS</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -46,6 +46,7 @@ namespace DayZeEditor
             this.categoriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setMaxStockForSelectedCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setCooefToMinPercentageOfBuyPriceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
             this.darkToolStrip22 = new DarkUI.Controls.DarkToolStrip2();
@@ -309,6 +310,7 @@ namespace DayZeEditor
             this.darkButton57 = new DarkUI.Controls.DarkButton();
             this.MoveToCatLB = new System.Windows.Forms.ListBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.label43 = new System.Windows.Forms.Label();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.label23 = new System.Windows.Forms.Label();
@@ -374,7 +376,6 @@ namespace DayZeEditor
             this.VehiclePartPartsLB = new System.Windows.Forms.ListBox();
             this.VehiclePartLB = new System.Windows.Forms.ListBox();
             this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.label43 = new System.Windows.Forms.Label();
             this.darkToolStrip21.SuspendLayout();
             this.darkToolStrip22.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -615,7 +616,8 @@ namespace DayZeEditor
             this.categoriesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.categoriesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.setMaxStockForSelectedCategoryToolStripMenuItem,
-            this.setCooefToMinPercentageOfBuyPriceToolStripMenuItem});
+            this.setCooefToMinPercentageOfBuyPriceToolStripMenuItem,
+            this.toolStripMenuItem10});
             this.categoriesToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.categoriesToolStripMenuItem.Name = "categoriesToolStripMenuItem";
             this.categoriesToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
@@ -639,6 +641,15 @@ namespace DayZeEditor
             this.setCooefToMinPercentageOfBuyPriceToolStripMenuItem.Size = new System.Drawing.Size(286, 22);
             this.setCooefToMinPercentageOfBuyPriceToolStripMenuItem.Text = "Set Coeff To Min Percentage of BuyPrice";
             this.setCooefToMinPercentageOfBuyPriceToolStripMenuItem.Click += new System.EventHandler(this.setCooefToMinPercentageOfBuyPriceToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem10
+            // 
+            this.toolStripMenuItem10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripMenuItem10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.toolStripMenuItem10.Name = "toolStripMenuItem10";
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(286, 22);
+            this.toolStripMenuItem10.Text = "Set Buy Price by Percentage";
+            this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem10_Click);
             // 
             // toolStripTextBox1
             // 
@@ -836,7 +847,7 @@ namespace DayZeEditor
             this.toolStripButton10.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton10.Image")));
             this.toolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton10.Name = "toolStripButton10";
-            this.toolStripButton10.Size = new System.Drawing.Size(106, 25);
+            this.toolStripButton10.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton10.Text = "Stock level Config";
             this.toolStripButton10.Visible = false;
             this.toolStripButton10.Click += new System.EventHandler(this.toolStripButton10_Click);
@@ -4131,6 +4142,15 @@ namespace DayZeEditor
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "tabPage6";
             // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(427, 8);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(41, 13);
+            this.label43.TabIndex = 140;
+            this.label43.Text = "label43";
+            // 
             // tabControl2
             // 
             this.tabControl2.Controls.Add(this.tabPage5);
@@ -4950,15 +4970,6 @@ namespace DayZeEditor
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "tabPage8";
             // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(427, 8);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(41, 13);
-            this.label43.TabIndex = 140;
-            this.label43.Text = "label43";
-            // 
             // TraderPlus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5424,5 +5435,6 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton darkButton59;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
         private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
     }
 }

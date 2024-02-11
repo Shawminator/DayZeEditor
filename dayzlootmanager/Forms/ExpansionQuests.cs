@@ -27,7 +27,6 @@ namespace DayZeEditor
 
         public BindingList<string> Factions { get; private set; }
         public decimal[] CurrentWapypoint { get; private set; }
-        public treasurehunitemvarients LootVarients { get; private set; }
 
         private bool _useraction;
 
@@ -2729,7 +2728,7 @@ namespace DayZeEditor
                 MarkerName = "???",
                 MarkerVisibility = 4,
                 Positions = new BindingList<decimal[]>(),
-                Loot = new BindingList<TreasureHuntItems>(),
+                Loot = new BindingList<ExpansionLoot>(),
                 LootItemsAmount = 2,
                 MaxDistance= 10,
                 isDirty = true
@@ -3903,7 +3902,6 @@ namespace DayZeEditor
         /// <summary>
         /// TreasureHunt
         /// </summary>
-        public TreasureHuntItems CurrentTreasureHuntItems;
         private void SetupobjectiveTreasueHunt(TreeNodeMouseClickEventArgs e)
         {
             useraction = false;
@@ -3922,9 +3920,11 @@ namespace DayZeEditor
             ObjectivesTreasureHuntPositionsLB.ValueMember = "Value";
             ObjectivesTreasureHuntPositionsLB.DataSource = CurrentTreasureHunt.Positions;
 
-            ObjectivesTreasureHuntItemsLB.DisplayMember = "DisplayName";
-            ObjectivesTreasureHuntItemsLB.ValueMember = "Value";
-            ObjectivesTreasureHuntItemsLB.DataSource = CurrentTreasureHunt.Loot;
+            expansionLootControlTH.LootparentName = CurrentTreasureHunt.ObjectiveText;
+            expansionLootControlTH.currentExpansionLoot = CurrentTreasureHunt.Loot;
+            expansionLootControlTH.vanillatypes = vanillatypes;
+            expansionLootControlTH.ModTypes = ModTypes;
+            expansionLootControlTH.currentproject = currentproject;
 
             useraction = true;
         }
@@ -3937,49 +3937,6 @@ namespace DayZeEditor
             ObjectivesTreasureHuntPositionsYNUD.Value = (decimal)CurrentWapypoint[1];
             ObjectivesTreasureHuntPositionsZNUD.Value = (decimal)CurrentWapypoint[2];
             useraction = true;
-        }
-        private void ObjectivesTreasureHuntItemsLB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ObjectivesTreasureHuntItemsLB.SelectedItems.Count < 1) return;
-            CurrentTreasureHuntItems = ObjectivesTreasureHuntItemsLB.SelectedItem as TreasureHuntItems;
-            useraction = false;
-
-            if (CurrentTreasureHuntItems.Chance > 1)
-                CurrentTreasureHuntItems.Chance = 1;
-            ObjectivesTreasureHuntChanceTB.Value = (int)(CurrentTreasureHuntItems.Chance * 1000);
-            darkLabel147.Text = ((decimal)(ObjectivesTreasureHuntChanceTB.Value) / 10).ToString() + "%";
-            ObjectivesTreasureHuntMaxCountNUD.Value = CurrentTreasureHuntItems.Max;
-            ObjectivesTreasureHuntMinCountNUD.Value = CurrentTreasureHuntItems.Min;
-            ObjectivesTreasureHuntQualityPercentNUD.Value = CurrentTreasureHuntItems.QuantityPercent;
-
-            ObjectivesTreasureHuntAttachmentsLB.DisplayMember = "DisplayName";
-            ObjectivesTreasureHuntAttachmentsLB.ValueMember = "Value";
-            ObjectivesTreasureHuntAttachmentsLB.DataSource = CurrentTreasureHuntItems.Attachments;
-
-            listBox21.DataSource = null;
-            listBox22.DataSource = null;
-
-            if (CurrentTreasureHuntItems.Variants.Count > 0)
-            {
-                listBox21.DisplayMember = "DisplayName";
-                listBox21.ValueMember = "Value";
-                listBox21.DataSource = CurrentTreasureHuntItems.Variants;
-            }
-            useraction = true;
-        }
-        private void listBox21_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listBox21.SelectedItems.Count < 1) return;
-            LootVarients = listBox21.SelectedItem as treasurehunitemvarients;
-            useraction = false;
-            VarientChanceTrackBar.Value = (int)(LootVarients.Chance * 1000);
-            darkLabel159.Text = ((decimal)(VarientChanceTrackBar.Value) / 10).ToString() + "%";
-
-            listBox22.DisplayMember = "DisplayName";
-            listBox22.ValueMember = "Value";
-            listBox22.DataSource = LootVarients.Attachments;
-            useraction = true;
-
         }
         private void darkButton68_Click(object sender, EventArgs e)
         {
@@ -4143,47 +4100,6 @@ namespace DayZeEditor
             CurrentTreasureHunt.ShowDistance = ObjectivesTreasureHuntShowdistanceCB.Checked == true ? 1 : 0;
             CurrentTreasureHunt.isDirty = true;
         }
-        private void darkButton70_Click(object sender, EventArgs e)
-        {
-            AddItemfromTypes form = new AddItemfromTypes
-            {
-                vanillatypes = vanillatypes,
-                ModTypes = ModTypes,
-                currentproject = currentproject
-            };
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                List<string> addedtypes = form.addedtypes.ToList();
-                QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
-                foreach (string l in addedtypes)
-                {
-                    TreasureHuntItems newcollection = new TreasureHuntItems()
-                    {
-                        Name = l,
-                        Attachments = new BindingList<string>(),
-                        Chance = (decimal)0.5,
-                        QuantityPercent = -1,
-                        Max = -1,
-                        Variants = new BindingList<treasurehunitemvarients>()
-                    };
-                    CurrentTreasureHunt.Loot.Add(newcollection);
-                    ObjectivesTreasureHuntItemsLB.Refresh();
-                }
-                CurrentTreasureHunt.isDirty = true;
-            }
-            else if (result == DialogResult.Cancel)
-            {
-                return;
-            }
-        }
-        private void darkButton69_Click(object sender, EventArgs e)
-        {
-            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
-            CurrentTreasureHunt.Loot.Remove(CurrentTreasureHuntItems);
-            CurrentTreasureHunt.isDirty = true;
-            ObjectivesTreasureHuntItemsLB.Refresh();
-        }
         private void ObjectivesTreasureHuntAmountNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -4226,160 +4142,10 @@ namespace DayZeEditor
             CurrentTreasureHunt.MarkerVisibility = (int)numericUpDown17.Value;
             CurrentTreasureHunt.isDirty = true;
         }
-        private void ObjectivesTreasureHuntAttADDButton_Click(object sender, EventArgs e)
-        {
-            AddItemfromTypes form = new AddItemfromTypes
-            {
-                vanillatypes = vanillatypes,
-                ModTypes = ModTypes,
-                currentproject = currentproject
-            };
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
-                List<string> addedtypes = form.addedtypes.ToList();
-                foreach (string l in addedtypes)
-                {
-                    if (!CurrentTreasureHuntItems.Attachments.Contains(l))
-                    {
-                        CurrentTreasureHuntItems.Attachments.Add(l);
-                        CurrentTreasureHunt.isDirty = true;
-                    }
-                    else
-                        MessageBox.Show("Attachments Type allready in the list.....");
-                }
-            }
-        }
-        private void ObjectivesTreasureHuntAttREMButton_Click(object sender, EventArgs e)
+        private void expansionLootControlTH_IsDirtyChanged(object sender, PropertyChangedEventArgs e)
         {
             QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
-            CurrentTreasureHuntItems.Attachments.Remove(ObjectivesTreasureHuntAttachmentsLB.GetItemText(ObjectivesTreasureHuntAttachmentsLB.SelectedItem));
-            CurrentTreasureHunt.isDirty = true;
-        }
-        private void darkButton78_Click(object sender, EventArgs e)
-        {
-            AddItemfromTypes form = new AddItemfromTypes
-            {
-                vanillatypes = vanillatypes,
-                ModTypes = ModTypes,
-                currentproject = currentproject
-            };
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
-                List<string> addedtypes = form.addedtypes.ToList();
-                if (CurrentTreasureHuntItems.Variants.Count == 0)
-                {
-                    listBox21.DisplayMember = "DisplayName";
-                    listBox21.ValueMember = "Value";
-                    listBox21.DataSource = CurrentTreasureHuntItems.Variants;
-                }
-                foreach (string l in addedtypes)
-                {
-                    treasurehunitemvarients newlootVarients = new treasurehunitemvarients()
-                    {
-                        Name = l,
-                        Attachments = new BindingList<string>(),
-                        Chance = 0.5f,
-                    };
-                    CurrentTreasureHuntItems.Variants.Add(newlootVarients);
-                    CurrentTreasureHunt.isDirty = true;
-                }
-
-            }
-        }
-        private void darkButton79_Click(object sender, EventArgs e)
-        {
-            CurrentTreasureHuntItems.Variants.Remove(LootVarients);
-            listBox22.DataSource = null;
-            listBox21.SelectedIndex = -1;
-            if (CurrentTreasureHuntItems.Variants.Count > 0)
-            {
-                listBox21.SelectedIndex = 0;
-            }
-            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
-            CurrentTreasureHunt.isDirty = true;
-        }
-        private void darkButton6_Click(object sender, EventArgs e)
-        {
-            AddItemfromTypes form = new AddItemfromTypes
-            {
-                vanillatypes = vanillatypes,
-                ModTypes = ModTypes,
-                currentproject = currentproject
-            };
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
-                List<string> addedtypes = form.addedtypes.ToList();
-                foreach (string l in addedtypes)
-                {
-                    if (!LootVarients.Attachments.Contains(l))
-                    {
-                        LootVarients.Attachments.Add(l);
-                        CurrentTreasureHunt.isDirty = true;
-                    }
-                    else
-                        MessageBox.Show("Attachments Type allready in the Varients list.....");
-                }
-            }
-        }
-        private void darkButton7_Click(object sender, EventArgs e)
-        {
-            LootVarients.Attachments.Remove(listBox22.GetItemText(listBox22.SelectedItem));
-            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
-            CurrentTreasureHunt.isDirty = true;
-        }
-        private void ObjectivesTreasureHuntChanceTB_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (!useraction) return;
-            if (CurrentTreasureHuntItems == null) return;
-            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
-            CurrentTreasureHuntItems.Chance = (((decimal)ObjectivesTreasureHuntChanceTB.Value) / 1000);
-            CurrentTreasureHunt.isDirty = true;
-        }
-        private void ObjectivesTreasureHuntChanceTB_Scroll(object sender, EventArgs e)
-        {
-            darkLabel147.Text = ((decimal)(ObjectivesTreasureHuntChanceTB.Value) / 10).ToString() + "%";
-        }
-        private void ObjectivesTreasureHuntQualityPercentNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            if (CurrentTreasureHuntItems == null) return;
-            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
-            CurrentTreasureHuntItems.QuantityPercent = (int)ObjectivesTreasureHuntQualityPercentNUD.Value;
-            CurrentTreasureHunt.isDirty = true;
-        }
-        private void ObjectivesTreasureHuntMaxCountNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            if (CurrentTreasureHuntItems == null) return;
-            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
-            CurrentTreasureHuntItems.Max = (int)ObjectivesTreasureHuntMaxCountNUD.Value;
-            CurrentTreasureHunt.isDirty = true;
-        }
-        private void VarientChanceTrackBar_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (!useraction) return;
-            if (LootVarients == null) return;
-            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
-            LootVarients.Chance = (float)(((decimal)VarientChanceTrackBar.Value) / 1000);
-            CurrentTreasureHunt.isDirty = true;
-        }
-        private void VarientChanceTrackBar_Scroll(object sender, EventArgs e)
-        {
-            darkLabel159.Text = ((decimal)(VarientChanceTrackBar.Value) / 10).ToString() + "%";
-        }
-        private void ObjectivesTreasureHuntMinCountNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            if (CurrentTreasureHuntItems == null) return;
-            QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
-            CurrentTreasureHuntItems.Min = (int)ObjectivesTreasureHuntMinCountNUD.Value;
-            CurrentTreasureHunt.isDirty = true;
+            CurrentTreasureHunt.isDirty = expansionLootControlTH.isDirty;
         }
         #endregion objectives
 
@@ -4534,23 +4300,6 @@ namespace DayZeEditor
         {
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         #endregion Persistant Player Data
 
         private void ObjectivesAICampGB_Enter(object sender, EventArgs e)
