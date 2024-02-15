@@ -733,7 +733,7 @@ namespace DayZeEditor
         private void QuestBoolsCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            Helper.SetBoolValue(QuestSettings, QuestBoolsLB.GetItemText(QuestBoolsLB.SelectedItem), QuestBoolsCB.Checked);
+            Helper.SetFakeBoolValue(QuestSettings, QuestBoolsLB.GetItemText(QuestBoolsLB.SelectedItem), QuestBoolsCB.Checked);
             QuestSettings.isDirty = true;
         }
         private void QuestStringTB_TextChanged(object sender, EventArgs e)

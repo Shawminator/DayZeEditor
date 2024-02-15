@@ -227,6 +227,7 @@
     <Compile Include="MagicBox\MysteryBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Economy\TypesFile.cs" />
+    <Compile Include="Rag\RagBasebuilding.cs" />
     <Compile Include="RHCaptureTheFlag\RHCaptureTheFlag.cs" />
     <Compile Include="RHLootBoxes\RHLootBoxes.cs" />
     <Compile Include="TraderPlus\TraderPlusBankingConfig.cs" />

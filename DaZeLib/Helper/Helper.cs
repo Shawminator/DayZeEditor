@@ -312,10 +312,14 @@ namespace DayZeLib
         {
             src.GetType().GetProperty(mytype).SetValue(src, myvalue, null);
         }
-        public static void SetBoolValue(object src, string mytype, bool myvalue)
+        public static void SetFakeBoolValue(object src, string mytype, bool myvalue)
         {
             int myvalueasint = myvalue == true ? 1 : 0;
             src.GetType().GetProperty(mytype).SetValue(src, myvalueasint, null);
+        }
+        public static void SetBoolValue(object src, string mytype, bool myvalue)
+        {
+            src.GetType().GetProperty(mytype).SetValue(src, myvalue, null);
         }
         public static string ReadCString(BinaryReader br, int MaxLength = -1, long lOffset = -1, Encoding enc = null)
         {

@@ -20,7 +20,6 @@ namespace DayZeEditor
     {
         public Project currentproject { get; set; }
         public TypesFile vanillatypes;
-        public TypesFile Expansiontypes;
         public List<TypesFile> ModTypes;
         public BindingList<string> CurrentList { get; set; }
         public BBP_Cementmixerlocations BBP_Cementmixerlocations { get; set; }
@@ -121,7 +120,7 @@ namespace DayZeEditor
         private void BBPBoolsCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            Helper.SetBoolValue(BBPSettings, BBPBoolsLB.GetItemText(BBPBoolsLB.SelectedItem), BBPBoolsCB.Checked);
+            Helper.SetFakeBoolValue(BBPSettings, BBPBoolsLB.GetItemText(BBPBoolsLB.SelectedItem), BBPBoolsCB.Checked);
             BBPSettings.isDirty = true;
         }
         private void BBPIntsLB_SelectedIndexChanged(object sender, EventArgs e)
@@ -325,7 +324,6 @@ namespace DayZeEditor
             BBP_Cementmixerlocations.orientation[2] = (float)BBPMixerOZNUD.Value;
             BBPSettings.isDirty = true;
         }
-
         private void BaseBuildingPlus_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (BBPSettings.isDirty)

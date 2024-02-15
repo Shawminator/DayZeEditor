@@ -66,6 +66,7 @@ namespace DayZeEditor
             this.KOSzoneManagerButton = new System.Windows.Forms.ToolStripButton();
             this.MysteryBoxButton = new System.Windows.Forms.ToolStripButton();
             this.AdvancedWorkbenchButton = new System.Windows.Forms.ToolStripButton();
+            this.UtopiaAirdropButton = new System.Windows.Forms.ToolStripButton();
             this.DNAKeyCardsButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
@@ -76,7 +77,7 @@ namespace DayZeEditor
             this.darkStatusStrip1 = new DarkUI.Controls.DarkStatusStrip();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.UtopiaAirdropButton = new System.Windows.Forms.ToolStripButton();
+            this.RAGTysonBBManagerButton = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.SlidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Slidelabel)).BeginInit();
@@ -220,6 +221,7 @@ namespace DayZeEditor
             this.RHLootBoxManagerButton,
             this.LootchestButton,
             this.KOTHManagerButton,
+            this.RAGTysonBBManagerButton,
             this.BBPManagerButton,
             this.AbandonedVehicleRemoverManagerButton,
             this.BreachingChargeManagerButton,
@@ -511,6 +513,17 @@ namespace DayZeEditor
             this.AdvancedWorkbenchButton.Visible = false;
             this.AdvancedWorkbenchButton.Click += new System.EventHandler(this.AdvancedWB_Click);
             // 
+            // UtopiaAirdropButton
+            // 
+            this.UtopiaAirdropButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.UtopiaAirdropButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.UtopiaAirdropButton.Image = ((System.Drawing.Image)(resources.GetObject("UtopiaAirdropButton.Image")));
+            this.UtopiaAirdropButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.UtopiaAirdropButton.Name = "UtopiaAirdropButton";
+            this.UtopiaAirdropButton.Size = new System.Drawing.Size(123, 19);
+            this.UtopiaAirdropButton.Text = "Utopia AD Manager";
+            this.UtopiaAirdropButton.Click += new System.EventHandler(this.UtopiaAirdropButton_Click);
+            // 
             // DNAKeyCardsButton
             // 
             this.DNAKeyCardsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -530,7 +543,7 @@ namespace DayZeEditor
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(123, 19);
+            this.toolStripButton1.Size = new System.Drawing.Size(111, 19);
             this.toolStripButton1.Text = "MapOutput to XYZ";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
@@ -619,16 +632,17 @@ namespace DayZeEditor
             this.panel2.Size = new System.Drawing.Size(25, 25);
             this.panel2.TabIndex = 45;
             // 
-            // UtopiaAirdropButton
+            // RAGTysonBBManagerButton
             // 
-            this.UtopiaAirdropButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.UtopiaAirdropButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.UtopiaAirdropButton.Image = ((System.Drawing.Image)(resources.GetObject("UtopiaAirdropButton.Image")));
-            this.UtopiaAirdropButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.UtopiaAirdropButton.Name = "UtopiaAirdropButton";
-            this.UtopiaAirdropButton.Size = new System.Drawing.Size(123, 19);
-            this.UtopiaAirdropButton.Text = "Utopia AD Manager";
-            this.UtopiaAirdropButton.Click += new System.EventHandler(this.UtopiaAirdropButton_Click);
+            this.RAGTysonBBManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.RAGTysonBBManagerButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.RAGTysonBBManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("RAGTysonBBManagerButton.Image")));
+            this.RAGTysonBBManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.RAGTysonBBManagerButton.Name = "RAGTysonBBManagerButton";
+            this.RAGTysonBBManagerButton.Size = new System.Drawing.Size(123, 19);
+            this.RAGTysonBBManagerButton.Text = "RAG Tyson BB";
+            this.RAGTysonBBManagerButton.Visible = false;
+            this.RAGTysonBBManagerButton.Click += new System.EventHandler(this.RAGTysonBBManagerButton_Click);
             // 
             // MainForm
             // 
@@ -710,6 +724,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton DNAKeyCardsButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripButton UtopiaAirdropButton;
+        private System.Windows.Forms.ToolStripButton RAGTysonBBManagerButton;
     }
 }
 

@@ -118,6 +118,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\GitHub.cs" />
+    <Compile Include="Forms\RagTysonBaseBuildingManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RagTysonBaseBuildingManager.Designer.cs">
+      <DependentUpon>RagTysonBaseBuildingManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\UtopiaAirdropManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -374,6 +380,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\RagTysonBaseBuildingManager.resx">
+      <DependentUpon>RagTysonBaseBuildingManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\UtopiaAirdropManager.resx">
       <DependentUpon>UtopiaAirdropManager.cs</DependentUpon>
     </EmbeddedResource>

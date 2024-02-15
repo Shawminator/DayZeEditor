@@ -408,6 +408,11 @@ namespace DayZeEditor
                 else
                     BBPManagerButton.Visible = false;
 
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\RaG_BaseBuilding\\RaG_BaseBuilding.json"))
+                    RAGTysonBBManagerButton.Visible = true;
+                else
+                    RAGTysonBBManagerButton.Visible = false;
+
                 if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\AbandonedVehicleRemover\\Settings.json"))
                     AbandonedVehicleRemoverManagerButton.Visible = true;
                 else
@@ -910,6 +915,32 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
+        private void RAGTysonBBManagerButton_Click(object sender, EventArgs e)
+        {
+            RagTysonBaseBuildingManager _TM = Application.OpenForms["RagTysonBaseBuildingManager"] as RagTysonBaseBuildingManager;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new RagTysonBaseBuildingManager
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+                };
+                _TM.Show();
+                Console.WriteLine("loading Rag Tyson Base Building manager....");
+                label1.Text = "Rag Tyson Base Building manager";
+            }
+            timer1.Start();
+        }
         private void KOSzoneManagerButton_Click(object sender, EventArgs e)
         {
             KOSZonemanager _TM = Application.OpenForms["KOSZone"] as KOSZonemanager;
@@ -1128,7 +1159,6 @@ namespace DayZeEditor
                 }
             }
         }
-
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (Projects.getActiveProject() != null)
@@ -1139,8 +1169,6 @@ namespace DayZeEditor
                 }
             }
         }
-
-
     }
 }
 
