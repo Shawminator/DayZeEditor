@@ -105,6 +105,35 @@ namespace DayZeEditor
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
 
+            BindingList<listsCategory> newlist = new BindingList<listsCategory>
+            {
+                new listsCategory()
+                {
+                    name = "other"
+                }
+            };
+            foreach (listsCategory cat in currentproject.limitfefinitions.lists.categories)
+            {
+                newlist.Add(cat);
+            }
+            comboBox1.DataSource = newlist;
+
+            BindingList<listsUsage> newlist2 = new BindingList<listsUsage>
+            {
+                new listsUsage()
+                {
+                    name = "None"
+                }
+            };
+            foreach (listsUsage cat in currentproject.limitfefinitions.lists.usageflags)
+            {
+                newlist2.Add(cat);
+            }
+            comboBox2.DataSource = newlist2;
+
+
+
+
             LootPoolConfigPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Capare\\CapareLootPool\\CapareLootPoolConfig.json";
             LootPool = JsonSerializer.Deserialize<CapareLootPool>(File.ReadAllText(LootPoolConfigPath));
             LootPool.isDirty = false;
@@ -281,19 +310,8 @@ namespace DayZeEditor
             }
             foreach (capareLPdefinedItems removeitem in removeitems)
             {
-                int index = LCPredefinedWeaponsLB.SelectedIndex;
-                LootPool.CapareLPdefinedItems.Remove(currentRHPredefineditems);
+                LootPool.CapareLPdefinedItems.Remove(removeitem);
                 LootPool.isDirty = true;
-                LCPredefinedWeaponsLB.SelectedIndex = -1;
-                if (index - 1 == -1)
-                {
-                    if (LCPredefinedWeaponsLB.Items.Count > 0)
-                        LCPredefinedWeaponsLB.SelectedIndex = 0;
-                }
-                else
-                {
-                    LCPredefinedWeaponsLB.SelectedIndex = index - 1;
-                }
             }
         }
 
@@ -819,6 +837,217 @@ namespace DayZeEditor
                 
                 LootPool.CapareLPdefinedItems.Add(newitem);
                 LootPool.isDirty = true;
+            }
+        }
+
+        private void darkButton22_Click(object sender, EventArgs e)
+        {
+            listsCategory c = comboBox1.SelectedItem as listsCategory;
+            listsUsage u = comboBox2.SelectedItem as listsUsage;
+            List<typesType> catlist = new List<typesType>();
+            catlist.AddRange(vanillatypes.getallfromcat(c));
+            foreach (TypesFile tf in ModTypes)
+            {
+                catlist.AddRange(tf.getallfromcat(c));
+            }
+            caparelploottable newtable = new caparelploottable()
+            {
+                LootItems = new BindingList<string>()
+
+            };
+            caparelploottable newtableAmmo = new caparelploottable()
+            {
+                LootItems = new BindingList<string>()
+
+            };
+            if (u.name == "None")
+                newtable.TableName = "Loot_Table_" + c.name + "_NoTier";
+            else
+                newtable.TableName = "Loot_Table_" + c.name + "_NoTier_" + u.name;
+            if (u.name == "None")
+                newtableAmmo.TableName = "Loot_Table_" + c.name + "_NoTier_AMMO";
+            else
+                newtableAmmo.TableName = "Loot_Table_" + c.name + "_NoTier_AMMO_" + u.name;
+            foreach (typesType tt in catlist)
+            {
+                if (tt.name.ToLower().Contains("ammo"))
+                {
+                    if (tt.name.ToLower().Contains("ammobox"))
+                    {
+                        if (tt.value.Count == 0)
+                        {
+                            if (u.name == "None" || tt.usage.Any(x => x.name == u.name))
+                            {
+                                if (tt.nominal == 0)
+                                {
+                                    if (checkBox1.Checked)
+                                    {
+                                        if (LootPool.CapareLPdefinedItems.Any(x => x.DefineName.Split(new[] { '_' }, 2)[1].ToLower() == tt.name.ToLower()))
+                                        {
+                                            capareLPdefinedItems item = LootPool.CapareLPdefinedItems.First(x => x.DefineName.Split(new[] { '_' }, 2)[1].ToLower() == tt.name.ToLower());
+                                            newtableAmmo.LootItems.Add(item.DefineName);
+                                        }
+                                        else
+                                            newtableAmmo.LootItems.Add(tt.name);
+                                    }
+                                }
+                                else
+                                {
+                                    if (LootPool.CapareLPdefinedItems.Any(x => x.DefineName.Split(new[] { '_' }, 2)[1].ToLower() == tt.name.ToLower()))
+                                    {
+                                        capareLPdefinedItems item = LootPool.CapareLPdefinedItems.First(x => x.DefineName.Split(new[] { '_' }, 2)[1].ToLower() == tt.name.ToLower());
+                                        newtableAmmo.LootItems.Add(item.DefineName);
+                                    }
+                                    else
+                                        newtableAmmo.LootItems.Add(tt.name);
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    if (tt.value.Count == 0)
+                    {
+                        if (u.name == "None" || tt.usage.Any(x => x.name == u.name))
+                        {
+                            if (tt.nominal == 0)
+                            {
+                                if (checkBox1.Checked)
+                                {
+                                    if (LootPool.CapareLPdefinedItems.Any(x => x.DefineName.Split(new[] { '_' }, 2)[1].ToLower() == tt.name.ToLower()))
+                                    {
+                                        capareLPdefinedItems item = LootPool.CapareLPdefinedItems.First(x => x.DefineName.Split(new[] { '_' }, 2)[1].ToLower() == tt.name.ToLower());
+                                        newtable.LootItems.Add(item.DefineName);
+                                    }
+                                    else
+                                        newtable.LootItems.Add(tt.name);
+                                }
+                            }
+                            else
+                            {
+                                if (LootPool.CapareLPdefinedItems.Any(x => x.DefineName.Split(new[] { '_' }, 2)[1].ToLower() == tt.name.ToLower()))
+                                {
+                                    capareLPdefinedItems item = LootPool.CapareLPdefinedItems.First(x => x.DefineName.Split(new[] { '_' }, 2)[1].ToLower() == tt.name.ToLower());
+                                    newtable.LootItems.Add(item.DefineName);
+                                }
+                                else
+                                    newtable.LootItems.Add(tt.name);
+                            }
+                        }
+                    }
+                }
+            }
+            if (newtable.LootItems.Count > 0)
+                LootPool.CapareLPLootTables.Add(newtable);
+            if (newtableAmmo.LootItems.Count > 0)
+                LootPool.CapareLPLootTables.Add(newtableAmmo);
+
+
+
+
+
+            foreach (listsValue lv in currentproject.limitfefinitions.lists.valueflags)
+            {
+                string tier = lv.name;
+                caparelploottable newtable1 = new caparelploottable()
+                {
+                    LootItems = new BindingList<string>()
+                    
+                };
+                caparelploottable newtable1Ammo = new caparelploottable()
+                {
+                    LootItems = new BindingList<string>()
+
+                };
+                if (u.name == "None")
+                    newtable1.TableName = "Loot_Table_" + c.name + "_" + lv.name;
+                else
+                    newtable1.TableName = "Loot_Table_" + c.name + "_" + lv.name + "_" + u.name;
+                if (u.name == "None")
+                    newtable1Ammo.TableName = "Loot_Table_" + c.name + "_" + lv.name + "_Ammo";
+                else
+                    newtable1Ammo.TableName = "Loot_Table_" + c.name + "_" + lv.name + "_AMMO_" + u.name;
+                foreach (typesType tt in catlist)
+                {
+                    if (tt.name.ToLower().Contains("ammo"))
+                    {
+                        if (tt.name.ToLower().Contains("ammobox"))
+                        {
+                            if (tt.value.Count != 0)
+                            {
+                                if (tt.value.Any(x => x.name == tier))
+                                {
+                                    if (u.name == "None" || tt.usage.Any(x => x.name == u.name))
+                                    {
+                                        if (tt.nominal == 0)
+                                        {
+                                            if (checkBox1.Checked)
+                                            {
+                                                if (LootPool.CapareLPdefinedItems.Any(x => x.DefineName.Split(new[] { '_' }, 2)[1].ToLower() == tt.name.ToLower()))
+                                                {
+                                                    capareLPdefinedItems item = LootPool.CapareLPdefinedItems.First(x => x.DefineName.Split(new[] { '_' }, 2)[1].ToLower() == tt.name.ToLower());
+                                                    newtable1Ammo.LootItems.Add(item.DefineName);
+                                                }
+                                                else
+                                                    newtable1Ammo.LootItems.Add(tt.name);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (LootPool.CapareLPdefinedItems.Any(x => x.DefineName.Split(new[] { '_' }, 2)[1].ToLower() == tt.name.ToLower()))
+                                            {
+                                                capareLPdefinedItems item = LootPool.CapareLPdefinedItems.First(x => x.DefineName.Split(new[] { '_' }, 2)[1].ToLower() == tt.name.ToLower());
+                                                newtable1Ammo.LootItems.Add(item.DefineName);
+                                            }
+                                            else
+                                                newtable1Ammo.LootItems.Add(tt.name);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (tt.value.Count != 0)
+                        {
+                            if (tt.value.Any(x => x.name == tier))
+                            {
+                                if (u.name == "None" || tt.usage.Any(x => x.name == u.name))
+                                {
+                                    if (tt.nominal == 0)
+                                    {
+                                        if (checkBox1.Checked)
+                                        {
+                                            if (LootPool.CapareLPdefinedItems.Any(x => x.DefineName.Split(new[] { '_' }, 2)[1].ToLower() == tt.name.ToLower()))
+                                            {
+                                                capareLPdefinedItems item = LootPool.CapareLPdefinedItems.First(x => x.DefineName.Split(new[] { '_' }, 2)[1].ToLower() == tt.name.ToLower());
+                                                newtable1.LootItems.Add(item.DefineName);
+                                            }
+                                            else
+                                                newtable1.LootItems.Add(tt.name);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (LootPool.CapareLPdefinedItems.Any(x => x.DefineName.Split(new[] { '_' }, 2)[1].ToLower() == tt.name.ToLower()))
+                                        {
+                                            capareLPdefinedItems item = LootPool.CapareLPdefinedItems.First(x => x.DefineName.Split(new[] { '_' }, 2)[1].ToLower() == tt.name.ToLower());
+                                            newtable1.LootItems.Add(item.DefineName);
+                                        }
+                                        else
+                                            newtable1.LootItems.Add(tt.name);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                if(newtable1.LootItems.Count > 0)
+                    LootPool.CapareLPLootTables.Add(newtable1);
+                if (newtable1Ammo.LootItems.Count > 0)
+                    LootPool.CapareLPLootTables.Add(newtable1Ammo);
             }
         }
     }

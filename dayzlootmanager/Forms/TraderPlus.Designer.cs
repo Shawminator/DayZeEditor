@@ -2912,10 +2912,10 @@ namespace DayZeEditor
             this.tabPage4.Controls.Add(this.darkButton33);
             this.tabPage4.Controls.Add(this.darkLabel18);
             this.tabPage4.Controls.Add(this.TraderPlusTradersLB);
+            this.tabPage4.Controls.Add(this.AddFromCategoryGroupBox);
             this.tabPage4.Controls.Add(this.TraderInfoGroupBox);
             this.tabPage4.Controls.Add(this.AvailablecurrenciesGroupBox);
             this.tabPage4.Controls.Add(this.AvailalbeLicneseGrouBox);
-            this.tabPage4.Controls.Add(this.AddFromCategoryGroupBox);
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(1062, 693);

@@ -19,3 +19,4 @@ melkart:20480
 thezone:20480
 capare:20480
 NHChernobyl:20480
+NukeZZonE:15360

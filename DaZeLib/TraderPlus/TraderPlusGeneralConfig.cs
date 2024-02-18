@@ -126,7 +126,7 @@ namespace DayZeLib
                 else
                 {
                     t.Id = tempindex;
-
+                    t.TraderCategoryList.Id = t.Id;
                     tempindex++;
                 }
             }

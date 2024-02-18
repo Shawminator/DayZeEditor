@@ -8711,5 +8711,10 @@ namespace DayZeEditor
             pictureBox4.Invalidate();
         }
         #endregion mapgrouppos
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

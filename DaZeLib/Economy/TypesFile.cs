@@ -182,5 +182,13 @@ namespace DayZeLib
         { 
             return types.type.FirstOrDefault(x => x.name == name); 
         }
+
+        public IEnumerable<typesType> getallfromcat(listsCategory c)
+        {
+            if(c.name == "Other")
+                return types.type.Where(x => x.category == null);
+            else
+                return types.type.Where(x => (x.category != null) && (x.category.name.ToLower() == c.name.ToLower()));
+        }
     }
 }

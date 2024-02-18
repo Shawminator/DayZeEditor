@@ -331,13 +331,22 @@ namespace DayZeLib
                 }
                 using (Stream ms = Helper.GenerateStreamFromString(sb.ToString()))
                 {
-                    Console.WriteLine("serializing " + Path.GetFileName(Filename));
+                    Console.Write("serializing " + Path.GetFileName(Filename));
                     try
                     {
                         randompresets = (randompresets)mySerializer.Deserialize(ms);
+                        if (randompresets != null)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("  OK....");
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
                     }
                     catch (Exception ex)
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("  Failed....");
+                        Console.ForegroundColor = ConsoleColor.White;
                         var form = Application.OpenForms["SplashForm"];
                         if (form != null)
                         {

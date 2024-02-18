@@ -1,4 +1,10 @@
-﻿Version 0.7.9.1
+﻿Version 0.7.9.2
+[Fixed]
+Trader plus removing NPC did not update the IDS from the ID LIst so ended up with a miss match upon restarting.
+[ADDED]
+Added RAG BAse Building COnifg Manager
+
+Version 0.7.9.1
 [Updated]
 DR Jones Trader - Updated to match latest release.
 Expansion - Updated to match latest release.

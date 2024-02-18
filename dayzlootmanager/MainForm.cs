@@ -36,7 +36,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.7.9.1";
+        public string VersionNumber = "0.7.9.2";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -256,7 +256,8 @@ namespace DayZeEditor
                     Projects.ShowChangeLog = true;
                     Projects.SaveProject(false, false);
                 }
-                System.Diagnostics.Process.Start("Updater.exe", zipfile);
+                string updatepath = Application.StartupPath + "\\Updater.exe";
+                System.Diagnostics.Process.Start(updatepath, zipfile);
                 return true;
             }
             else if (result == 0)
