@@ -154,7 +154,8 @@ namespace DayZeEditor
                 ispredefinedweapon = false,
                 isRHPredefinedWeapon = false,
                 isLootchest = true,
-                isLootBoxList = false
+                isLootBoxList = false,
+                isUtopiaAirdroplootPools = false
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -176,7 +177,8 @@ namespace DayZeEditor
                 ispredefinedweapon = false,
                 isRHPredefinedWeapon = false,
                 isLootchest = false,
-                isLootBoxList = false
+                isLootBoxList = false,
+                isUtopiaAirdroplootPools = false
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -544,7 +546,8 @@ namespace DayZeEditor
                 ispredefinedweapon = true,
                 isRHPredefinedWeapon = false,
                 isLootchest = false,
-                isLootBoxList = false
+                isLootBoxList = false,
+                isUtopiaAirdroplootPools = false
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)

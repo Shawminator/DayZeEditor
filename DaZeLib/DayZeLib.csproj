@@ -86,6 +86,8 @@
   <ItemGroup>
     <Compile Include="AbandonedVehicleremover\AVR.cs" />
     <Compile Include="AdvancedWorkbench\AdvancedWorkBenchConfig.cs" />
+    <Compile Include="AirdropUpgraded\AirdropUpgraded.cs" />
+    <Compile Include="AirdropUpgraded\AirdropUpgradedSafeZones.cs" />
     <Compile Include="AnimatedHeliCrashes\Helicrash.cs" />
     <Compile Include="BaseBuildingPlus\BBP.cs" />
     <Compile Include="BreachingCharge\BreachingChargeSettigns.cs" />

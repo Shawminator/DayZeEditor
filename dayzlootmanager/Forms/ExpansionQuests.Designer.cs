@@ -4190,10 +4190,11 @@ namespace DayZeEditor
             this.ObjectivesActionsCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.ObjectivesActionsCB.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesActionsCB.FormattingEnabled = true;
-            this.ObjectivesActionsCB.Location = new System.Drawing.Point(6, 21);
+            this.ObjectivesActionsCB.Location = new System.Drawing.Point(6, 22);
             this.ObjectivesActionsCB.Name = "ObjectivesActionsCB";
             this.ObjectivesActionsCB.Size = new System.Drawing.Size(320, 21);
             this.ObjectivesActionsCB.TabIndex = 251;
+            this.ObjectivesActionsCB.SelectedIndexChanged += new System.EventHandler(this.ObjectivesActionsCB_SelectedIndexChanged);
             // 
             // darkLabel99
             // 

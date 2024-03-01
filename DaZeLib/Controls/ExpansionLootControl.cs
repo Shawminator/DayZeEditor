@@ -436,7 +436,6 @@ namespace DayZeLib
             ExpansionLootTV.SelectedNode.Remove();
             isDirty = true;
         }
-
         private void ExpansionLootitemSetAllChanceButton_Click(object sender, EventArgs e)
         {
             foreach(ExpansionLoot el in _currentExpansionLoot)
@@ -445,7 +444,6 @@ namespace DayZeLib
             }
             isDirty = true;
         }
-
         private void ExpansionLootitemSetAllRandomChanceButton_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();

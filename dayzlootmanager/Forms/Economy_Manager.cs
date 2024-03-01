@@ -4639,6 +4639,7 @@ namespace DayZeEditor
             generatorparamsmax_steepnessNUD.Value = (decimal)Currentplayerspawnpointssection.generator_params.max_steepness;
 
             GroupParamsenablegroupsCB.Checked = Currentplayerspawnpointssection.group_params.enablegroups;
+            GroupParamgroups_as_regularCB.Checked = Currentplayerspawnpointssection.group_params.groups_as_regular;
             GroupParamslifetimeNUD.Value = Currentplayerspawnpointssection.group_params.lifetime;
             GroupParamscounterNUD.Value = Currentplayerspawnpointssection.group_params.counter;
             generatorposbubblesLB.DisplayMember = "DisplayName";
@@ -4885,6 +4886,12 @@ namespace DayZeEditor
         {
             if (!isUserInteraction) return;
             Currentplayerspawnpointssection.group_params.enablegroups = GroupParamsenablegroupsCB.Checked;
+            currentproject.cfgplayerspawnpoints.isDirty = true;
+        }
+        private void GroupParamgroups_as_regularCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            Currentplayerspawnpointssection.group_params.groups_as_regular = GroupParamgroups_as_regularCB.Checked;
             currentproject.cfgplayerspawnpoints.isDirty = true;
         }
         private void GroupParamslifetimeNUD_ValueChanged(object sender, EventArgs e)
@@ -8716,5 +8723,7 @@ namespace DayZeEditor
         {
 
         }
+
+
     }
 }

@@ -60,6 +60,8 @@ namespace DayZeEditor
             this.RHLootBoxManagerButton = new System.Windows.Forms.ToolStripButton();
             this.LootchestButton = new System.Windows.Forms.ToolStripButton();
             this.KOTHManagerButton = new System.Windows.Forms.ToolStripButton();
+            this.AirdropUpgradedManagerButton = new System.Windows.Forms.ToolStripButton();
+            this.RAGTysonBBManagerButton = new System.Windows.Forms.ToolStripButton();
             this.BBPManagerButton = new System.Windows.Forms.ToolStripButton();
             this.AbandonedVehicleRemoverManagerButton = new System.Windows.Forms.ToolStripButton();
             this.BreachingChargeManagerButton = new System.Windows.Forms.ToolStripButton();
@@ -77,7 +79,6 @@ namespace DayZeEditor
             this.darkStatusStrip1 = new DarkUI.Controls.DarkStatusStrip();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.RAGTysonBBManagerButton = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.SlidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Slidelabel)).BeginInit();
@@ -221,6 +222,8 @@ namespace DayZeEditor
             this.RHLootBoxManagerButton,
             this.LootchestButton,
             this.KOTHManagerButton,
+            this.AirdropUpgradedManagerButton,
+            this.UtopiaAirdropButton,
             this.RAGTysonBBManagerButton,
             this.BBPManagerButton,
             this.AbandonedVehicleRemoverManagerButton,
@@ -228,7 +231,6 @@ namespace DayZeEditor
             this.KOSzoneManagerButton,
             this.MysteryBoxButton,
             this.AdvancedWorkbenchButton,
-            this.UtopiaAirdropButton,
             this.DNAKeyCardsButton,
             this.toolStripButton1,
             this.toolStripButton3});
@@ -441,6 +443,30 @@ namespace DayZeEditor
             this.KOTHManagerButton.Visible = false;
             this.KOTHManagerButton.Click += new System.EventHandler(this.KOTHManagerButton_Click);
             // 
+            // AirdropUpgradedManagerButton
+            // 
+            this.AirdropUpgradedManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.AirdropUpgradedManagerButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.AirdropUpgradedManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("AirdropUpgradedManagerButton.Image")));
+            this.AirdropUpgradedManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AirdropUpgradedManagerButton.Name = "AirdropUpgradedManagerButton";
+            this.AirdropUpgradedManagerButton.Size = new System.Drawing.Size(123, 19);
+            this.AirdropUpgradedManagerButton.Text = "Airdrop upgraded";
+            this.AirdropUpgradedManagerButton.Visible = false;
+            this.AirdropUpgradedManagerButton.Click += new System.EventHandler(this.AirdropUpgradedManagerButton_Click);
+            // 
+            // RAGTysonBBManagerButton
+            // 
+            this.RAGTysonBBManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.RAGTysonBBManagerButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.RAGTysonBBManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("RAGTysonBBManagerButton.Image")));
+            this.RAGTysonBBManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.RAGTysonBBManagerButton.Name = "RAGTysonBBManagerButton";
+            this.RAGTysonBBManagerButton.Size = new System.Drawing.Size(123, 19);
+            this.RAGTysonBBManagerButton.Text = "RAG Tyson BB";
+            this.RAGTysonBBManagerButton.Visible = false;
+            this.RAGTysonBBManagerButton.Click += new System.EventHandler(this.RAGTysonBBManagerButton_Click);
+            // 
             // BBPManagerButton
             // 
             this.BBPManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -522,6 +548,7 @@ namespace DayZeEditor
             this.UtopiaAirdropButton.Name = "UtopiaAirdropButton";
             this.UtopiaAirdropButton.Size = new System.Drawing.Size(123, 19);
             this.UtopiaAirdropButton.Text = "Utopia AD Manager";
+            this.UtopiaAirdropButton.Visible = false;
             this.UtopiaAirdropButton.Click += new System.EventHandler(this.UtopiaAirdropButton_Click);
             // 
             // DNAKeyCardsButton
@@ -531,7 +558,7 @@ namespace DayZeEditor
             this.DNAKeyCardsButton.Image = ((System.Drawing.Image)(resources.GetObject("DNAKeyCardsButton.Image")));
             this.DNAKeyCardsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DNAKeyCardsButton.Name = "DNAKeyCardsButton";
-            this.DNAKeyCardsButton.Size = new System.Drawing.Size(123, 19);
+            this.DNAKeyCardsButton.Size = new System.Drawing.Size(88, 19);
             this.DNAKeyCardsButton.Text = "DNA KeyCards";
             this.DNAKeyCardsButton.Visible = false;
             this.DNAKeyCardsButton.Click += new System.EventHandler(this.DNAKeyCardsButton_Click);
@@ -632,18 +659,6 @@ namespace DayZeEditor
             this.panel2.Size = new System.Drawing.Size(25, 25);
             this.panel2.TabIndex = 45;
             // 
-            // RAGTysonBBManagerButton
-            // 
-            this.RAGTysonBBManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.RAGTysonBBManagerButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.RAGTysonBBManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("RAGTysonBBManagerButton.Image")));
-            this.RAGTysonBBManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.RAGTysonBBManagerButton.Name = "RAGTysonBBManagerButton";
-            this.RAGTysonBBManagerButton.Size = new System.Drawing.Size(123, 19);
-            this.RAGTysonBBManagerButton.Text = "RAG Tyson BB";
-            this.RAGTysonBBManagerButton.Visible = false;
-            this.RAGTysonBBManagerButton.Click += new System.EventHandler(this.RAGTysonBBManagerButton_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -725,6 +740,7 @@ namespace DayZeEditor
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripButton UtopiaAirdropButton;
         private System.Windows.Forms.ToolStripButton RAGTysonBBManagerButton;
+        private System.Windows.Forms.ToolStripButton AirdropUpgradedManagerButton;
     }
 }
 

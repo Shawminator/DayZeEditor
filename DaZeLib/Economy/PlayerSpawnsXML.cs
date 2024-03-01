@@ -343,6 +343,7 @@ namespace DayZeLib
     public partial class playerspawnpointsGroup_params
     {
         private bool enablegroupsField;
+        private bool groups_as_regularField;
         private int lifetimeField;
         private int counterField;
 
@@ -356,6 +357,18 @@ namespace DayZeLib
             set
             {
                 this.enablegroupsField = value;
+            }
+        }
+        /// <remarks/>
+        public bool groups_as_regular
+        {
+            get
+            {
+                return this.groups_as_regularField;
+            }
+            set
+            {
+                this.groups_as_regularField = value;
             }
         }
 
@@ -383,6 +396,11 @@ namespace DayZeLib
             {
                 this.counterField = value;
             }
+        }
+
+        public playerspawnpointsGroup_params()
+        {
+            groups_as_regular = true;
         }
     }
 
@@ -533,6 +551,12 @@ namespace DayZeLib
         }
 
     }
+
+
+
+
+
+
 
 
     //Old Format of playerspanfile, we will use this to convert to new format....

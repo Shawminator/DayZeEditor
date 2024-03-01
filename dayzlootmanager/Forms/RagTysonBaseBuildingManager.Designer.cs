@@ -40,16 +40,16 @@ namespace DayZeEditor
             this.CurrentBBPListLB = new System.Windows.Forms.ListBox();
             this.BBPlistsLB = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.BBPIntsNUD = new System.Windows.Forms.NumericUpDown();
             this.BBPIntsLB = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.BBPBoolsCB = new System.Windows.Forms.CheckBox();
             this.BBPBoolsLB = new System.Windows.Forms.ListBox();
-            this.BBPIntsNUD = new System.Windows.Forms.NumericUpDown();
             this.darkToolStrip21.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BBPIntsNUD)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -149,6 +149,7 @@ namespace DayZeEditor
             this.CurrentBBPListLB.FormattingEnabled = true;
             this.CurrentBBPListLB.Location = new System.Drawing.Point(6, 188);
             this.CurrentBBPListLB.Name = "CurrentBBPListLB";
+            this.CurrentBBPListLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.CurrentBBPListLB.Size = new System.Drawing.Size(199, 199);
             this.CurrentBBPListLB.TabIndex = 91;
             this.CurrentBBPListLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
@@ -177,6 +178,27 @@ namespace DayZeEditor
             this.groupBox2.TabIndex = 102;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "RAG BB  ints";
+            // 
+            // BBPIntsNUD
+            // 
+            this.BBPIntsNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BBPIntsNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.BBPIntsNUD.Location = new System.Drawing.Point(6, 391);
+            this.BBPIntsNUD.Maximum = new decimal(new int[] {
+            99999999,
+            0,
+            0,
+            0});
+            this.BBPIntsNUD.Minimum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            -2147483648});
+            this.BBPIntsNUD.Name = "BBPIntsNUD";
+            this.BBPIntsNUD.Size = new System.Drawing.Size(199, 20);
+            this.BBPIntsNUD.TabIndex = 127;
+            this.BBPIntsNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BBPIntsNUD.ValueChanged += new System.EventHandler(this.BBPIntsNUD_ValueChanged);
             // 
             // BBPIntsLB
             // 
@@ -227,27 +249,6 @@ namespace DayZeEditor
             this.BBPBoolsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.BBPBoolsLB.SelectedIndexChanged += new System.EventHandler(this.BBPBoolsLB_SelectedIndexChanged);
             // 
-            // BBPIntsNUD
-            // 
-            this.BBPIntsNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.BBPIntsNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.BBPIntsNUD.Location = new System.Drawing.Point(6, 391);
-            this.BBPIntsNUD.Maximum = new decimal(new int[] {
-            99999999,
-            0,
-            0,
-            0});
-            this.BBPIntsNUD.Minimum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            -2147483648});
-            this.BBPIntsNUD.Name = "BBPIntsNUD";
-            this.BBPIntsNUD.Size = new System.Drawing.Size(199, 20);
-            this.BBPIntsNUD.TabIndex = 127;
-            this.BBPIntsNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.BBPIntsNUD.ValueChanged += new System.EventHandler(this.BBPIntsNUD_ValueChanged);
-            // 
             // RagTysonBaseBuildingManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -267,9 +268,9 @@ namespace DayZeEditor
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.BBPIntsNUD)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BBPIntsNUD)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -32,6 +32,13 @@ namespace DayZeLib
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExpansionLootControl));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.expansionLootVarientGB = new System.Windows.Forms.GroupBox();
+            this.ExpansionLootitemSetAllRandomChanceButton = new DarkUI.Controls.DarkButton();
+            this.ExpansionLootitemSetAllChanceButton = new DarkUI.Controls.DarkButton();
+            this.darkLabel1 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel2 = new DarkUI.Controls.DarkLabel();
+            this.trackBar2 = new System.Windows.Forms.TrackBar();
+            this.ExpansionLootTV = new TreeViewMS.TreeViewMS();
             this.expansionLootItemGB = new System.Windows.Forms.GroupBox();
             this.numericUpDown31 = new System.Windows.Forms.NumericUpDown();
             this.darkLabel23 = new DarkUI.Controls.DarkLabel();
@@ -42,11 +49,6 @@ namespace DayZeLib
             this.darkLabel12 = new DarkUI.Controls.DarkLabel();
             this.numericUpDown12 = new System.Windows.Forms.NumericUpDown();
             this.darkLabel251 = new DarkUI.Controls.DarkLabel();
-            this.expansionLootVarientGB = new System.Windows.Forms.GroupBox();
-            this.darkLabel1 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel2 = new DarkUI.Controls.DarkLabel();
-            this.trackBar2 = new System.Windows.Forms.TrackBar();
-            this.ExpansionLootTV = new TreeViewMS.TreeViewMS();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addLootItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addLootVariantsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,24 +56,22 @@ namespace DayZeLib
             this.removeLootItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeLootAttachemntToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeLootVariantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ExpansionLootitemSetAllChanceButton = new DarkUI.Controls.DarkButton();
-            this.ExpansionLootitemSetAllRandomChanceButton = new DarkUI.Controls.DarkButton();
             this.groupBox1.SuspendLayout();
+            this.expansionLootVarientGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.expansionLootItemGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown31)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown33)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).BeginInit();
-            this.expansionLootVarientGB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.expansionLootVarientGB);
             this.groupBox1.Controls.Add(this.ExpansionLootTV);
             this.groupBox1.Controls.Add(this.expansionLootItemGB);
+            this.groupBox1.Controls.Add(this.expansionLootVarientGB);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
@@ -80,6 +80,91 @@ namespace DayZeLib
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Expansion Loot";
+            // 
+            // expansionLootVarientGB
+            // 
+            this.expansionLootVarientGB.Controls.Add(this.ExpansionLootitemSetAllRandomChanceButton);
+            this.expansionLootVarientGB.Controls.Add(this.ExpansionLootitemSetAllChanceButton);
+            this.expansionLootVarientGB.Controls.Add(this.darkLabel1);
+            this.expansionLootVarientGB.Controls.Add(this.darkLabel2);
+            this.expansionLootVarientGB.Controls.Add(this.trackBar2);
+            this.expansionLootVarientGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.expansionLootVarientGB.Location = new System.Drawing.Point(277, 19);
+            this.expansionLootVarientGB.Name = "expansionLootVarientGB";
+            this.expansionLootVarientGB.Size = new System.Drawing.Size(276, 154);
+            this.expansionLootVarientGB.TabIndex = 225;
+            this.expansionLootVarientGB.TabStop = false;
+            this.expansionLootVarientGB.Text = "Expansion Loot Varient";
+            this.expansionLootVarientGB.Visible = false;
+            // 
+            // ExpansionLootitemSetAllRandomChanceButton
+            // 
+            this.ExpansionLootitemSetAllRandomChanceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ExpansionLootitemSetAllRandomChanceButton.Location = new System.Drawing.Point(8, 95);
+            this.ExpansionLootitemSetAllRandomChanceButton.Name = "ExpansionLootitemSetAllRandomChanceButton";
+            this.ExpansionLootitemSetAllRandomChanceButton.Padding = new System.Windows.Forms.Padding(5);
+            this.ExpansionLootitemSetAllRandomChanceButton.Size = new System.Drawing.Size(261, 23);
+            this.ExpansionLootitemSetAllRandomChanceButton.TabIndex = 225;
+            this.ExpansionLootitemSetAllRandomChanceButton.Text = "Set All Random Chance";
+            this.ExpansionLootitemSetAllRandomChanceButton.Click += new System.EventHandler(this.ExpansionLootitemSetAllRandomChanceButton_Click);
+            // 
+            // ExpansionLootitemSetAllChanceButton
+            // 
+            this.ExpansionLootitemSetAllChanceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ExpansionLootitemSetAllChanceButton.Location = new System.Drawing.Point(8, 66);
+            this.ExpansionLootitemSetAllChanceButton.Name = "ExpansionLootitemSetAllChanceButton";
+            this.ExpansionLootitemSetAllChanceButton.Padding = new System.Windows.Forms.Padding(5);
+            this.ExpansionLootitemSetAllChanceButton.Size = new System.Drawing.Size(261, 23);
+            this.ExpansionLootitemSetAllChanceButton.TabIndex = 224;
+            this.ExpansionLootitemSetAllChanceButton.Text = "Set All Selected Chance";
+            this.ExpansionLootitemSetAllChanceButton.Click += new System.EventHandler(this.ExpansionLootitemSetAllChanceButton_Click);
+            // 
+            // darkLabel1
+            // 
+            this.darkLabel1.AutoSize = true;
+            this.darkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel1.Location = new System.Drawing.Point(172, 43);
+            this.darkLabel1.Name = "darkLabel1";
+            this.darkLabel1.Size = new System.Drawing.Size(15, 13);
+            this.darkLabel1.TabIndex = 223;
+            this.darkLabel1.Text = "%";
+            // 
+            // darkLabel2
+            // 
+            this.darkLabel2.AutoSize = true;
+            this.darkLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel2.Location = new System.Drawing.Point(4, 22);
+            this.darkLabel2.Name = "darkLabel2";
+            this.darkLabel2.Size = new System.Drawing.Size(50, 13);
+            this.darkLabel2.TabIndex = 215;
+            this.darkLabel2.Text = "Chance :";
+            // 
+            // trackBar2
+            // 
+            this.trackBar2.LargeChange = 1;
+            this.trackBar2.Location = new System.Drawing.Point(82, 13);
+            this.trackBar2.Maximum = 100;
+            this.trackBar2.Name = "trackBar2";
+            this.trackBar2.Size = new System.Drawing.Size(191, 45);
+            this.trackBar2.TabIndex = 216;
+            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
+            this.trackBar2.ValueChanged += new System.EventHandler(this.trackBar2_ValueChanged);
+            this.trackBar2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackBar2_MouseUp);
+            // 
+            // ExpansionLootTV
+            // 
+            this.ExpansionLootTV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.ExpansionLootTV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ExpansionLootTV.ForeColor = System.Drawing.SystemColors.Control;
+            this.ExpansionLootTV.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.ExpansionLootTV.Location = new System.Drawing.Point(6, 19);
+            this.ExpansionLootTV.Name = "ExpansionLootTV";
+            this.ExpansionLootTV.SelectedNodes = ((System.Collections.ArrayList)(resources.GetObject("ExpansionLootTV.SelectedNodes")));
+            this.ExpansionLootTV.SetMultiselect = false;
+            this.ExpansionLootTV.Size = new System.Drawing.Size(265, 485);
+            this.ExpansionLootTV.TabIndex = 214;
+            this.ExpansionLootTV.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.ExpansionLootTV_NodeMouseClick);
             // 
             // expansionLootItemGB
             // 
@@ -211,69 +296,6 @@ namespace DayZeLib
             this.darkLabel251.TabIndex = 219;
             this.darkLabel251.Text = "Quantity Percent";
             // 
-            // expansionLootVarientGB
-            // 
-            this.expansionLootVarientGB.Controls.Add(this.ExpansionLootitemSetAllRandomChanceButton);
-            this.expansionLootVarientGB.Controls.Add(this.ExpansionLootitemSetAllChanceButton);
-            this.expansionLootVarientGB.Controls.Add(this.darkLabel1);
-            this.expansionLootVarientGB.Controls.Add(this.darkLabel2);
-            this.expansionLootVarientGB.Controls.Add(this.trackBar2);
-            this.expansionLootVarientGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.expansionLootVarientGB.Location = new System.Drawing.Point(277, 19);
-            this.expansionLootVarientGB.Name = "expansionLootVarientGB";
-            this.expansionLootVarientGB.Size = new System.Drawing.Size(276, 154);
-            this.expansionLootVarientGB.TabIndex = 225;
-            this.expansionLootVarientGB.TabStop = false;
-            this.expansionLootVarientGB.Text = "Expansion Loot Varient";
-            this.expansionLootVarientGB.Visible = false;
-            // 
-            // darkLabel1
-            // 
-            this.darkLabel1.AutoSize = true;
-            this.darkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel1.Location = new System.Drawing.Point(172, 43);
-            this.darkLabel1.Name = "darkLabel1";
-            this.darkLabel1.Size = new System.Drawing.Size(15, 13);
-            this.darkLabel1.TabIndex = 223;
-            this.darkLabel1.Text = "%";
-            // 
-            // darkLabel2
-            // 
-            this.darkLabel2.AutoSize = true;
-            this.darkLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel2.Location = new System.Drawing.Point(4, 22);
-            this.darkLabel2.Name = "darkLabel2";
-            this.darkLabel2.Size = new System.Drawing.Size(50, 13);
-            this.darkLabel2.TabIndex = 215;
-            this.darkLabel2.Text = "Chance :";
-            // 
-            // trackBar2
-            // 
-            this.trackBar2.LargeChange = 1;
-            this.trackBar2.Location = new System.Drawing.Point(82, 13);
-            this.trackBar2.Maximum = 100;
-            this.trackBar2.Name = "trackBar2";
-            this.trackBar2.Size = new System.Drawing.Size(191, 45);
-            this.trackBar2.TabIndex = 216;
-            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
-            this.trackBar2.ValueChanged += new System.EventHandler(this.trackBar2_ValueChanged);
-            this.trackBar2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackBar2_MouseUp);
-            // 
-            // ExpansionLootTV
-            // 
-            this.ExpansionLootTV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.ExpansionLootTV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ExpansionLootTV.ForeColor = System.Drawing.SystemColors.Control;
-            this.ExpansionLootTV.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.ExpansionLootTV.Location = new System.Drawing.Point(6, 19);
-            this.ExpansionLootTV.Name = "ExpansionLootTV";
-            this.ExpansionLootTV.SelectedNodes = ((System.Collections.ArrayList)(resources.GetObject("ExpansionLootTV.SelectedNodes")));
-            this.ExpansionLootTV.SetMultiselect = false;
-            this.ExpansionLootTV.Size = new System.Drawing.Size(265, 485);
-            this.ExpansionLootTV.TabIndex = 214;
-            this.ExpansionLootTV.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.ExpansionLootTV_NodeMouseClick);
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -328,28 +350,6 @@ namespace DayZeLib
             this.removeLootVariantToolStripMenuItem.Text = "Remove Loot Variant";
             this.removeLootVariantToolStripMenuItem.Click += new System.EventHandler(this.removeLootVariantToolStripMenuItem_Click);
             // 
-            // ExpansionLootitemSetAllChanceButton
-            // 
-            this.ExpansionLootitemSetAllChanceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ExpansionLootitemSetAllChanceButton.Location = new System.Drawing.Point(8, 66);
-            this.ExpansionLootitemSetAllChanceButton.Name = "ExpansionLootitemSetAllChanceButton";
-            this.ExpansionLootitemSetAllChanceButton.Padding = new System.Windows.Forms.Padding(5);
-            this.ExpansionLootitemSetAllChanceButton.Size = new System.Drawing.Size(261, 23);
-            this.ExpansionLootitemSetAllChanceButton.TabIndex = 224;
-            this.ExpansionLootitemSetAllChanceButton.Text = "Set All Selected Chance";
-            this.ExpansionLootitemSetAllChanceButton.Click += new System.EventHandler(this.ExpansionLootitemSetAllChanceButton_Click);
-            // 
-            // ExpansionLootitemSetAllRandomChanceButton
-            // 
-            this.ExpansionLootitemSetAllRandomChanceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ExpansionLootitemSetAllRandomChanceButton.Location = new System.Drawing.Point(8, 95);
-            this.ExpansionLootitemSetAllRandomChanceButton.Name = "ExpansionLootitemSetAllRandomChanceButton";
-            this.ExpansionLootitemSetAllRandomChanceButton.Padding = new System.Windows.Forms.Padding(5);
-            this.ExpansionLootitemSetAllRandomChanceButton.Size = new System.Drawing.Size(261, 23);
-            this.ExpansionLootitemSetAllRandomChanceButton.TabIndex = 225;
-            this.ExpansionLootitemSetAllRandomChanceButton.Text = "Set All Random Chance";
-            this.ExpansionLootitemSetAllRandomChanceButton.Click += new System.EventHandler(this.ExpansionLootitemSetAllRandomChanceButton_Click);
-            // 
             // ExpansionLootControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -360,15 +360,15 @@ namespace DayZeLib
             this.Name = "ExpansionLootControl";
             this.Size = new System.Drawing.Size(561, 510);
             this.groupBox1.ResumeLayout(false);
+            this.expansionLootVarientGB.ResumeLayout(false);
+            this.expansionLootVarientGB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             this.expansionLootItemGB.ResumeLayout(false);
             this.expansionLootItemGB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown31)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown33)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown12)).EndInit();
-            this.expansionLootVarientGB.ResumeLayout(false);
-            this.expansionLootVarientGB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 

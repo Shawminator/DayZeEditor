@@ -882,7 +882,41 @@ namespace DayZeLib
             Filename = filename;
             if (File.Exists(Filename))
             {
-                if (!ValidateSchema(Filename, Application.StartupPath + "\\TraderNPCs\\PlayerSpawnSchema.xml"))
+                if (ValidateSchema(Filename, Application.StartupPath + "\\TraderNPCs\\PlayerSpawnSchemaPre1.24.xml"))
+                {
+                    Console.Write("Updating PlayerSpawnPoint file.......");
+                    var mySerializer = new XmlSerializer(typeof(playerspawnpoints));
+                    using (var myFileStream = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read))
+                    {
+                        Console.Write("serializing " + Path.GetFileName(Filename));
+                        try
+                        {
+                            playerspawnpoints = (playerspawnpoints)mySerializer.Deserialize(myFileStream);
+                            
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("  Failed....");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            var form = Application.OpenForms["SplashForm"];
+                            if (form != null)
+                            {
+                                form.Invoke(new Action(() => { form.Close(); }));
+                            }
+                            MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                            Console.WriteLine("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString() + "\n***** Please Fix this before continuing to use the editor *****\n");
+                        }
+                    }
+                    if (playerspawnpoints != null)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("  OK....");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Savecfgplayerspawnpoints();
+                    }
+                }
+                else if (!ValidateSchema(Filename, Application.StartupPath + "\\TraderNPCs\\PlayerSpawnSchema.xml"))
                 {
                     Console.Write("Old PlayerSpawnPoint file found converting to new.......");
                     var myoldSerializer = new XmlSerializer(typeof(playerspawnpoints_old));
@@ -898,7 +932,7 @@ namespace DayZeLib
                         Console.ForegroundColor = ConsoleColor.White;
                         Savecfgplayerspawnpoints();
                     }
-                    
+
                 }
                 else
                 {

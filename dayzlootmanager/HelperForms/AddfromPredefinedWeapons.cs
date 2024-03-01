@@ -40,6 +40,7 @@ namespace DayZeEditor
         public BindingList<caparelploottable> LootTables { get; set; }
         public BindingList<caparelprewardtable> Rhlprewardtable { get; set; }
         public BindingList<caparelootboxconfig> Rhlootboxconfig { get; set; }
+        public BindingList<Lootpool> UtopiaAirdropLootPools { get; set; }
         public string predefweapon { get; set; }
         public List<string>WeaponList { get; set; }
         public bool ispredefinedweapon { get; set; }
@@ -48,8 +49,13 @@ namespace DayZeEditor
         public bool isRHTableList { get; set; }
         public bool isRewardTable { get; set; }
         public string titellabel { get; set; }
+        public string _titlellabel
+        {
+            set { TitleLabel.Text = value; }
+        }
         public bool isLootchest { get; set; }
         public bool isLootBoxList { get; set; }
+        public bool isUtopiaAirdroplootPools { get; set; }
         public AddfromPredefinedItems()
         {
             InitializeComponent();
@@ -70,6 +76,14 @@ namespace DayZeEditor
                 LCPredefinedWeaponsLB.DisplayMember = "DisplayName";
                 LCPredefinedWeaponsLB.ValueMember = "Value";
                 LCPredefinedWeaponsLB.DataSource = LCPredefinedWeapons;
+                WeaponList = new List<string>();
+            }
+
+            else if (isUtopiaAirdroplootPools)
+            {
+                LCPredefinedWeaponsLB.DisplayMember = "DisplayName";
+                LCPredefinedWeaponsLB.ValueMember = "Value";
+                LCPredefinedWeaponsLB.DataSource = UtopiaAirdropLootPools;
                 WeaponList = new List<string>();
             }
             else if (isRHPredefinedWeapon)
@@ -108,7 +122,6 @@ namespace DayZeEditor
                 WeaponList = new List<string>();
             }
         }
-
         private void darkButton1_Click(object sender, EventArgs e)
         {
             if (ispredefinedweapon)
@@ -117,6 +130,14 @@ namespace DayZeEditor
                 {
                     LCPredefinedWeapons predefweaponclass = item as LCPredefinedWeapons;
                     WeaponList.Add(predefweaponclass.defname);
+                }
+            }
+            else if (isUtopiaAirdroplootPools)
+            {
+                foreach (var item in LCPredefinedWeaponsLB.SelectedItems)
+                {
+                    Lootpool predefweaponclass = item as Lootpool;
+                    WeaponList.Add(predefweaponclass.lootPoolName);
                 }
             }
             else if (isRHPredefinedWeapon)
@@ -160,7 +181,6 @@ namespace DayZeEditor
                 }
             }
         }
-
         private void LCPredefinedWeaponsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (isLootchest)

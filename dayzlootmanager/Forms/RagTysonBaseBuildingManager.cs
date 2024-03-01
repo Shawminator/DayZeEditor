@@ -215,13 +215,17 @@ namespace DayZeEditor
         private void darkButton19_Click(object sender, EventArgs e)
         {
             if (CurrentBBPListLB.SelectedItems.Count < 1) return;
-            CurrentList.Remove(CurrentBBPListLB.GetItemText(CurrentBBPListLB.SelectedItems[0]));
-            RagBasebuilding.isDirty = true;
+            List<string> removeitems = new List<string>();
+            foreach (var item in CurrentBBPListLB.SelectedItems)
+            {
+                removeitems.Add(item.ToString());
+            }
+            foreach (string removeitem in removeitems)
+            {
+                CurrentList.Remove(removeitem);
+                RagBasebuilding.isDirty = true;
+            }
             CurrentBBPListLB.Refresh();
-            if (CurrentBBPListLB.Items.Count == 0)
-                CurrentBBPListLB.SelectedIndex = -1;
-            else
-                CurrentBBPListLB.SelectedIndex = 0;
         }
     }
 }

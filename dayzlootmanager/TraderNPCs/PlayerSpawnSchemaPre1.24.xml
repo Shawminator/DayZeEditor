@@ -35,7 +35,6 @@
                 <xs:complexType>
                   <xs:sequence>
                     <xs:element minOccurs="1" maxOccurs="1" name="enablegroups" type="xs:boolean" />
-                    <xs:element minOccurs="1" maxOccurs="1" name="groups_as_regular" type="xs:boolean" />
                     <xs:element minOccurs="1" maxOccurs="1" name="lifetime" type="xs:int" />
                     <xs:element minOccurs="1" maxOccurs="1" name="counter" type="xs:int" />
                   </xs:sequence>
@@ -77,7 +76,6 @@
                 <xs:complexType>
                   <xs:sequence>
                     <xs:element minOccurs="1" maxOccurs="1" name="enablegroups" type="xs:boolean" />
-                    <xs:element minOccurs="1" maxOccurs="1" name="groups_as_regular" type="xs:boolean" />
                     <xs:element minOccurs="1" maxOccurs="1" name="lifetime" type="xs:int" />
                     <xs:element minOccurs="1" maxOccurs="1" name="counter" type="xs:int" />
                   </xs:sequence>
@@ -119,7 +117,6 @@
                 <xs:complexType>
                   <xs:sequence>
                     <xs:element minOccurs="1" maxOccurs="1" name="enablegroups" type="xs:boolean" />
-                    <xs:element minOccurs="1" maxOccurs="1" name="groups_as_regular" type="xs:boolean" />
                     <xs:element minOccurs="1" maxOccurs="1" name="lifetime" type="xs:int" />
                     <xs:element minOccurs="1" maxOccurs="1" name="counter" type="xs:int" />
                   </xs:sequence>

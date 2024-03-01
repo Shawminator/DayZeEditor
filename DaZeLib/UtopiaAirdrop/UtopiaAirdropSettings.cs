@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace DayZeLib
 {
@@ -29,21 +30,10 @@ namespace DayZeLib
         public int showMarkerForFlareDrop { get; set; }
         public decimal[] leftBottomCornerMap { get; set; }
         public decimal[] rightUpCornerMap { get; set; }
-        public BindingList<Flareairdropcontainer> flareAirdropContainers { get; set; }
+        public BindingList<Airdropcontainer> flareAirdropContainers { get; set; }
         public BindingList<Droplocation> dropLocations { get; set; }
         public BindingList<Lootpool> lootPools { get; set; }
         public BindingList<string> spawnCreatures { get; set; }
-    }
-
-    public class Flareairdropcontainer
-    {
-        public string containerName { get; set; }
-        public BindingList<string> lootPools { get; set; }
-
-        public override string ToString()
-        {
-            return containerName;
-        }
     }
 
     public class Droplocation
@@ -61,6 +51,7 @@ namespace DayZeLib
 
     public class Airdropcontainer
     {
+        public int isCarDrop { get; set; }
         public string containerName { get; set; }
         public BindingList<string> lootPools { get; set; }
 
@@ -87,7 +78,7 @@ namespace DayZeLib
     {
         public string name { get; set; }
         public int quantity { get; set; }
-        public BindingList<string> attachments { get; set; }
+        public BindingList<attachments> attachments { get; set; }
 
         public override string ToString()
         {
@@ -95,6 +86,16 @@ namespace DayZeLib
         }
     }
 
+    public class attachments
+    {
+        public string attachName { get; set; }
+        public int quantity { get; set; }
+
+        public override string ToString()
+        {
+            return attachName;
+        }
+    }
 
     public class UtopiaAirdropLoggingsettings
     {

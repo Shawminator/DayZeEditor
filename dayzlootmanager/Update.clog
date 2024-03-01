@@ -1,4 +1,11 @@
-﻿Version 0.7.9.2
+﻿Version 0.7.9.3
+[Updated]
+Update player spawn filr for latest 1.24 update, should auto update your file
+[ADDED]
+Added Utopia Airdrops Manager
+Added Airdrop Upgraded Manager
+
+Version 0.7.9.2
 [Fixed]
 Trader plus removing NPC did not update the IDS from the ID LIst so ended up with a miss match upon restarting.
 [ADDED]

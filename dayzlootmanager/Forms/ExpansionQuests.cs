@@ -4314,6 +4314,9 @@ namespace DayZeEditor
 
         }
 
+        private void ObjectivesActionsCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }
