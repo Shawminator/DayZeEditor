@@ -1048,14 +1048,14 @@ namespace DayZeEditor
             this.flowLayoutPanel1.Controls.Add(this.panel27);
             this.flowLayoutPanel1.Controls.Add(this.panel65);
             this.flowLayoutPanel1.Controls.Add(this.panel66);
-            this.flowLayoutPanel1.Controls.Add(this.panel71);
-            this.flowLayoutPanel1.Controls.Add(this.panel73);
             this.flowLayoutPanel1.Controls.Add(this.panel70);
             this.flowLayoutPanel1.Controls.Add(this.panel72);
             this.flowLayoutPanel1.Controls.Add(this.panel76);
             this.flowLayoutPanel1.Controls.Add(this.panel77);
             this.flowLayoutPanel1.Controls.Add(this.panel78);
+            this.flowLayoutPanel1.Controls.Add(this.panel71);
             this.flowLayoutPanel1.Controls.Add(this.panel36);
+            this.flowLayoutPanel1.Controls.Add(this.panel73);
             this.flowLayoutPanel1.Controls.Add(this.panel37);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(194, 8);
@@ -2372,7 +2372,7 @@ namespace DayZeEditor
             this.panel66.Controls.Add(this.darkLabel139);
             this.panel66.Location = new System.Drawing.Point(1371, 3);
             this.panel66.Name = "panel66";
-            this.panel66.Size = new System.Drawing.Size(336, 20);
+            this.panel66.Size = new System.Drawing.Size(349, 20);
             this.panel66.TabIndex = 244;
             // 
             // QuestReputationRequirmentNUD
@@ -2415,7 +2415,7 @@ namespace DayZeEditor
             // 
             this.panel71.Controls.Add(this.QuestRequiredFactionCB);
             this.panel71.Controls.Add(this.darkLabel149);
-            this.panel71.Location = new System.Drawing.Point(1371, 29);
+            this.panel71.Location = new System.Drawing.Point(1371, 159);
             this.panel71.Name = "panel71";
             this.panel71.Size = new System.Drawing.Size(349, 23);
             this.panel71.TabIndex = 250;
@@ -2445,7 +2445,7 @@ namespace DayZeEditor
             // 
             this.panel73.Controls.Add(this.QuestFactionRewardCB);
             this.panel73.Controls.Add(this.darkLabel151);
-            this.panel73.Location = new System.Drawing.Point(1371, 58);
+            this.panel73.Location = new System.Drawing.Point(1371, 400);
             this.panel73.Name = "panel73";
             this.panel73.Size = new System.Drawing.Size(349, 23);
             this.panel73.TabIndex = 253;
@@ -2475,9 +2475,9 @@ namespace DayZeEditor
             // 
             this.panel70.Controls.Add(this.QuestPlayerNeedQuestItemsCB);
             this.panel70.Controls.Add(this.darkLabel148);
-            this.panel70.Location = new System.Drawing.Point(1371, 87);
+            this.panel70.Location = new System.Drawing.Point(1371, 29);
             this.panel70.Name = "panel70";
-            this.panel70.Size = new System.Drawing.Size(336, 20);
+            this.panel70.Size = new System.Drawing.Size(349, 20);
             this.panel70.TabIndex = 251;
             // 
             // QuestPlayerNeedQuestItemsCB
@@ -2505,9 +2505,9 @@ namespace DayZeEditor
             // 
             this.panel72.Controls.Add(this.QuestDeleteQuestItemsCB);
             this.panel72.Controls.Add(this.darkLabel150);
-            this.panel72.Location = new System.Drawing.Point(1371, 113);
+            this.panel72.Location = new System.Drawing.Point(1371, 55);
             this.panel72.Name = "panel72";
-            this.panel72.Size = new System.Drawing.Size(336, 20);
+            this.panel72.Size = new System.Drawing.Size(349, 20);
             this.panel72.TabIndex = 252;
             // 
             // QuestDeleteQuestItemsCB
@@ -2535,9 +2535,9 @@ namespace DayZeEditor
             // 
             this.panel76.Controls.Add(this.QuestRandomRewardCB);
             this.panel76.Controls.Add(this.darkLabel154);
-            this.panel76.Location = new System.Drawing.Point(1371, 139);
+            this.panel76.Location = new System.Drawing.Point(1371, 81);
             this.panel76.Name = "panel76";
-            this.panel76.Size = new System.Drawing.Size(336, 20);
+            this.panel76.Size = new System.Drawing.Size(349, 20);
             this.panel76.TabIndex = 254;
             // 
             // QuestRandomRewardCB
@@ -2565,9 +2565,9 @@ namespace DayZeEditor
             // 
             this.panel77.Controls.Add(this.QuestRandomRewardAmountNUD);
             this.panel77.Controls.Add(this.darkLabel155);
-            this.panel77.Location = new System.Drawing.Point(1371, 165);
+            this.panel77.Location = new System.Drawing.Point(1371, 107);
             this.panel77.Name = "panel77";
-            this.panel77.Size = new System.Drawing.Size(336, 20);
+            this.panel77.Size = new System.Drawing.Size(349, 20);
             this.panel77.TabIndex = 255;
             // 
             // QuestRandomRewardAmountNUD
@@ -2610,9 +2610,9 @@ namespace DayZeEditor
             // 
             this.panel78.Controls.Add(this.QuestSequentialObjectivesCB);
             this.panel78.Controls.Add(this.darkLabel156);
-            this.panel78.Location = new System.Drawing.Point(1371, 191);
+            this.panel78.Location = new System.Drawing.Point(1371, 133);
             this.panel78.Name = "panel78";
-            this.panel78.Size = new System.Drawing.Size(336, 20);
+            this.panel78.Size = new System.Drawing.Size(349, 20);
             this.panel78.TabIndex = 256;
             // 
             // QuestSequentialObjectivesCB
@@ -2645,9 +2645,9 @@ namespace DayZeEditor
             this.panel36.Controls.Add(this.darkButton83);
             this.panel36.Controls.Add(this.darkLabel167);
             this.panel36.Controls.Add(this.QuestsFactionReputationRequirementsLB);
-            this.panel36.Location = new System.Drawing.Point(1371, 217);
+            this.panel36.Location = new System.Drawing.Point(1371, 188);
             this.panel36.Name = "panel36";
-            this.panel36.Size = new System.Drawing.Size(336, 233);
+            this.panel36.Size = new System.Drawing.Size(349, 206);
             this.panel36.TabIndex = 257;
             // 
             // QuestsFactionReputationRequirementsCB

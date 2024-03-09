@@ -36,7 +36,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.7.9.3";
+        public string VersionNumber = "0.7.9.5";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -220,7 +220,13 @@ namespace DayZeEditor
             }
             CheckChangeLog();
         }
-
+        public string AddQuotesIfRequired(string path)
+        {
+            return !string.IsNullOrWhiteSpace(path) ?
+                path.Contains(" ") && (!path.StartsWith("\"") && !path.EndsWith("\"")) ?
+                    "\"" + path + "\"" : path :
+                    string.Empty;
+        }
         private bool CheckForUpdate()
         {
             Console.WriteLine("Checking GitHub For Newest Release.....");
@@ -257,7 +263,7 @@ namespace DayZeEditor
                     Projects.SaveProject(false, false);
                 }
                 string updatepath = Application.StartupPath + "\\Updater.exe";
-                System.Diagnostics.Process.Start(updatepath, zipfile);
+                System.Diagnostics.Process.Start(updatepath, AddQuotesIfRequired(zipfile));
                 return true;
             }
             else if (result == 0)

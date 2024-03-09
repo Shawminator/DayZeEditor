@@ -467,6 +467,7 @@ namespace DayZeEditor
             "Default Slot",
             "Back",
             "Body",
+            "Dogtag",
             "Eyes",
             "Feet",
             "Gloves",
@@ -637,8 +638,8 @@ namespace DayZeEditor
             this.Controls.Add(this.darkLabel5);
             this.Controls.Add(this.loadoutsLB);
             this.Controls.Add(this.darkToolStrip21);
-            this.Controls.Add(this.LoadOutGB);
             this.Controls.Add(this.InventoryattchemntGB);
+            this.Controls.Add(this.LoadOutGB);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ExpansionLoadoutsManager";
             this.Text = "ExpansionLoadoutsManager";

@@ -205,7 +205,7 @@ namespace DayZeEditor
             QuestObjectives.Checkver();
             if (QuestObjectives.Objectives.Any(x => x.isDirty == true))
                 needtosave = true;
-            setupobjectives();
+            //setupobjectives();
 
             QuestNPCPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Quests\\NPCs";
             QuestNPCs = new QuestNPCLists(QuestNPCPath);
@@ -2766,6 +2766,7 @@ namespace DayZeEditor
             useraction = false;
 
             ObjectivesActionsExecutionAmountNUD.Value = CurrentAction.ExecutionAmount;
+            QuestObjectivesActiveCB.Checked = CurrentAction.Active == 1 ? true : false;
 
             QuestObjectivesObjectiveTextTB.Text = CurrentAction.ObjectiveText;
             QuestObjectivesTimeLimitNUD.Value = CurrentAction.TimeLimit;
@@ -3138,6 +3139,7 @@ namespace DayZeEditor
             QuestObjectivesAIVIP CurrentAIVIP = e.Node.Tag as QuestObjectivesAIVIP;
             QuestObjectivesObjectiveTextTB.Text = CurrentAIVIP.ObjectiveText;
             QuestObjectivesTimeLimitNUD.Value = CurrentAIVIP.TimeLimit;
+            QuestObjectivesActiveCB.Checked = CurrentAIVIP.Active == 1 ? true : false;
             ObjectivesAIVIPPositionXNUD.Value = (decimal)CurrentAIVIP.Position[0];
             ObjectivesAIVIPPositionYNUD.Value = (decimal)CurrentAIVIP.Position[1];
             ObjectivesAIVIPPositionZNUD.Value = (decimal)CurrentAIVIP.Position[2];
@@ -3229,6 +3231,7 @@ namespace DayZeEditor
             QuestObjectivesCollection CurrentCollection = e.Node.Tag as QuestObjectivesCollection;
             QuestObjectivesObjectiveTextTB.Text = CurrentCollection.ObjectiveText;
             QuestObjectivesTimeLimitNUD.Value = CurrentCollection.TimeLimit;
+            QuestObjectivesActiveCB.Checked = CurrentCollection.Active == 1 ? true : false;
             ObjectivesCollectionMaxDistanceNUD.Value = CurrentCollection.MaxDistance;
             ObjectivesCollectionMarkernameTB.Text = CurrentCollection.MarkerName;
             ObjectivesCollectionShowDistanceCB.Checked = CurrentCollection.ShowDistance == 1 ? true : false;
@@ -3387,6 +3390,7 @@ namespace DayZeEditor
             QuestObjectivesCrafting CurrentCrafting = e.Node.Tag as QuestObjectivesCrafting;
             QuestObjectivesObjectiveTextTB.Text = CurrentCrafting.ObjectiveText;
             QuestObjectivesTimeLimitNUD.Value = CurrentCrafting.TimeLimit;
+            QuestObjectivesActiveCB.Checked = CurrentCrafting.Active == 1 ? true : false;
             numericUpDown15.Value = CurrentCrafting.ExecutionAmount;
             ObjectivesCraftingLB.DisplayMember = "DisplayName";
             ObjectivesCraftingLB.ValueMember = "Value";
@@ -3448,6 +3452,7 @@ namespace DayZeEditor
             QuestObjectivesDelivery CurrentDelivery = e.Node.Tag as QuestObjectivesDelivery;
             QuestObjectivesObjectiveTextTB.Text = CurrentDelivery.ObjectiveText;
             QuestObjectivesTimeLimitNUD.Value = CurrentDelivery.TimeLimit;
+            QuestObjectivesActiveCB.Checked = CurrentDelivery.Active == 1 ? true : false;
             ObjectivesDeliveryMaxDistanceNUD.Value = CurrentDelivery.MaxDistance;
             ObjectivesDeliveryMarkerNameTB.Text = CurrentDelivery.MarkerName;
             ObjectivesDeliveryShowDistanceCB.Checked = CurrentDelivery.ShowDistance == 1 ? true : false;
@@ -3596,6 +3601,7 @@ namespace DayZeEditor
             QuestObjectivesTarget CurrentTarget = e.Node.Tag as QuestObjectivesTarget;
             QuestObjectivesObjectiveTextTB.Text = CurrentTarget.ObjectiveText;
             QuestObjectivesTimeLimitNUD.Value = CurrentTarget.TimeLimit;
+            QuestObjectivesActiveCB.Checked = CurrentTarget.Active == 1 ? true : false;
             ObjectivesTargetPositionXNUD.Value = (decimal)CurrentTarget.Position[0];
             ObjectivesTargetPositionYNUD.Value = (decimal)CurrentTarget.Position[1];
             ObjectivesTargetPositionZNUD.Value = (decimal)CurrentTarget.Position[2];
@@ -3834,6 +3840,7 @@ namespace DayZeEditor
             QuestObjectivesTravel CurrentTravel = e.Node.Tag as QuestObjectivesTravel;
             QuestObjectivesObjectiveTextTB.Text = CurrentTravel.ObjectiveText;
             QuestObjectivesTimeLimitNUD.Value = CurrentTravel.TimeLimit;
+            QuestObjectivesActiveCB.Checked = CurrentTravel.Active == 1 ? true : false;
             ObjectivesTravelPositionXNUD.Value = (decimal)CurrentTravel.Position[0];
             ObjectivesTravelPositionYNUD.Value = (decimal)CurrentTravel.Position[1];
             ObjectivesTravelPositionZNUD.Value = (decimal)CurrentTravel.Position[2];
@@ -3908,6 +3915,7 @@ namespace DayZeEditor
             QuestObjectivesTreasureHunt CurrentTreasureHunt = e.Node.Tag as QuestObjectivesTreasureHunt;
             QuestObjectivesObjectiveTextTB.Text = CurrentTreasureHunt.ObjectiveText;
             QuestObjectivesTimeLimitNUD.Value = CurrentTreasureHunt.TimeLimit;
+            QuestObjectivesActiveCB.Checked = CurrentTreasureHunt.Active == 1 ? true : false;
             ObjectivesTreasureHuntShowdistanceCB.Checked = CurrentTreasureHunt.ShowDistance == 1 ? true : false;
             ObjectivesTreasureHuntAmountNUD.Value = CurrentTreasureHunt.LootItemsAmount;
             checkBox10.Checked = CurrentTreasureHunt.DigInStash == 1 ? true : false;

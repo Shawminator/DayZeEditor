@@ -5,6 +5,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Updater
 {
@@ -12,21 +13,36 @@ namespace Updater
     {
         static void Main(string[] args)
         {
-            string zipfile = args[0];
-            Console.WriteLine("Sleeping for 2 seconds to make sure Application is fully closed");
-            Console.WriteLine("Update File : " + zipfile);
-            System.Threading.Thread.Sleep(2000);
-            string outputpath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            Directory.Delete(outputpath + "\\lib", true);
-            using (FileStream fs = File.OpenRead(zipfile))
+            try
             {
-                using (ZipArchive zip = new ZipArchive(fs))
+                string zipfile = args[0];
+                Console.WriteLine("Sleeping for 2 seconds to make sure Application is fully closed");
+                Console.WriteLine("Update File : " + zipfile);
+                System.Threading.Thread.Sleep(2000);
+                string outputpath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                Directory.Delete(outputpath + "\\lib", true);
+                using (FileStream fs = File.OpenRead(zipfile))
                 {
-                    ExtractToDirectory(zip, outputpath, true);
+                    using (ZipArchive zip = new ZipArchive(fs))
+                    {
+                        ExtractToDirectory(zip, outputpath, true);
+                    }
                 }
+                File.Delete(zipfile);
+                System.Diagnostics.Process.Start("DayZeEditor.exe");
             }
-            File.Delete(zipfile);
-            System.Diagnostics.Process.Start("DayZeEditor.exe");
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+                
+            }
+        }
+        public static string AddQuotesIfRequired(string path)
+        {
+            return !string.IsNullOrWhiteSpace(path) ?
+                path.Contains(" ") && (!path.StartsWith("\"") && !path.EndsWith("\"")) ?
+                    "\"" + path + "\"" : path :
+                    string.Empty;
         }
         public static void ExtractToDirectory(ZipArchive archive, string destinationDirectoryName, bool overwrite)
         {

@@ -1310,7 +1310,7 @@ namespace DayZeEditor
             this.LootPoolItemGB.Controls.Add(this.darkButton13);
             this.LootPoolItemGB.Controls.Add(this.LootPoolItemTB);
             this.LootPoolItemGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.LootPoolItemGB.Location = new System.Drawing.Point(510, 216);
+            this.LootPoolItemGB.Location = new System.Drawing.Point(510, 36);
             this.LootPoolItemGB.Name = "LootPoolItemGB";
             this.LootPoolItemGB.Size = new System.Drawing.Size(251, 54);
             this.LootPoolItemGB.TabIndex = 246;
@@ -1343,7 +1343,7 @@ namespace DayZeEditor
             // 
             this.LootPoolQuantityGB.Controls.Add(this.LootPoolQuantityNUD);
             this.LootPoolQuantityGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.LootPoolQuantityGB.Location = new System.Drawing.Point(510, 156);
+            this.LootPoolQuantityGB.Location = new System.Drawing.Point(510, 36);
             this.LootPoolQuantityGB.Name = "LootPoolQuantityGB";
             this.LootPoolQuantityGB.Size = new System.Drawing.Size(251, 54);
             this.LootPoolQuantityGB.TabIndex = 245;
@@ -1376,7 +1376,7 @@ namespace DayZeEditor
             // 
             this.LootPoolMaxItemsGB.Controls.Add(this.LootPoolMaxItemsNUD);
             this.LootPoolMaxItemsGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.LootPoolMaxItemsGB.Location = new System.Drawing.Point(510, 96);
+            this.LootPoolMaxItemsGB.Location = new System.Drawing.Point(510, 36);
             this.LootPoolMaxItemsGB.Name = "LootPoolMaxItemsGB";
             this.LootPoolMaxItemsGB.Size = new System.Drawing.Size(251, 54);
             this.LootPoolMaxItemsGB.TabIndex = 245;
