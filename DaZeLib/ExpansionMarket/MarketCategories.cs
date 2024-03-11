@@ -262,6 +262,20 @@ namespace DayZeLib
             CatList = sortedListInstance;
             SortedbyDisplayName = false;
         }
+        public void SortItemlistbyitemName(bool AtoZ)
+        {
+            foreach(Categories t in CatList)
+            {
+                t.SortbyitemName(AtoZ);
+            }
+        }
+        public void SortItemlistbyitemPrice(bool MintoMax)
+        {
+            foreach (Categories t in CatList)
+            {
+                t.SortByprice(MintoMax);
+            }
+        }
     }
     public class Categories
     {
@@ -337,6 +351,35 @@ namespace DayZeLib
                 Directory.CreateDirectory(marketpath + "\\Backup\\" + SaveTime);
                 File.Copy(Fullfilename, marketpath + "\\Backup\\" + SaveTime + "\\" + Filename + ".bak");
                 File.Delete(Fullfilename);
+            }
+        }
+
+        public void SortbyitemName(bool atoZ)
+        {
+            if (atoZ)
+            {
+                var sortedListInstance = new BindingList<marketItem>(Items.OrderBy(x => x.ClassName).ToList());
+                Items = sortedListInstance;
+            }
+            else if (!atoZ)
+            {
+                var sortedListInstance = new BindingList<marketItem>(Items.OrderByDescending(x => x.ClassName).ToList());
+                Items = sortedListInstance;
+            }
+            
+        }
+
+        public void SortByprice(bool mintoMax)
+        {
+            if (mintoMax)
+            {
+                var sortedListInstance = new BindingList<marketItem>(Items.OrderBy(x => x.MaxPriceThreshold).ThenBy(x => x.ClassName).ToList());
+                Items = sortedListInstance;
+            }
+            else if (!mintoMax)
+            {
+                var sortedListInstance = new BindingList<marketItem>(Items.OrderByDescending(x => x.MaxPriceThreshold).ThenBy(x => x.ClassName).ToList());
+                Items = sortedListInstance;
             }
         }
     }

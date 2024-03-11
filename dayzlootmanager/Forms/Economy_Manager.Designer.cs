@@ -489,6 +489,8 @@ namespace DayZeEditor
             this.tabControl26 = new System.Windows.Forms.TabControl();
             this.tabPage26 = new System.Windows.Forms.TabPage();
             this.groupBox77 = new System.Windows.Forms.GroupBox();
+            this.label160 = new System.Windows.Forms.Label();
+            this.GroupParamgroups_as_regularCB = new System.Windows.Forms.CheckBox();
             this.GroupParamsenablegroupsCB = new System.Windows.Forms.CheckBox();
             this.label165 = new System.Windows.Forms.Label();
             this.GroupParamscounterNUD = new System.Windows.Forms.NumericUpDown();
@@ -1103,8 +1105,6 @@ namespace DayZeEditor
             this.deleteDiscreetUnsortedItemSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mapgroupposcontextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.removeMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.GroupParamgroups_as_regularCB = new System.Windows.Forms.CheckBox();
-            this.label160 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -7287,6 +7287,26 @@ namespace DayZeEditor
             this.groupBox77.TabStop = false;
             this.groupBox77.Text = "Group Params";
             // 
+            // label160
+            // 
+            this.label160.AutoSize = true;
+            this.label160.ForeColor = System.Drawing.SystemColors.Control;
+            this.label160.Location = new System.Drawing.Point(7, 36);
+            this.label160.Name = "label160";
+            this.label160.Size = new System.Drawing.Size(88, 13);
+            this.label160.TabIndex = 13;
+            this.label160.Text = "groups as regular";
+            // 
+            // GroupParamgroups_as_regularCB
+            // 
+            this.GroupParamgroups_as_regularCB.AutoSize = true;
+            this.GroupParamgroups_as_regularCB.Location = new System.Drawing.Point(106, 36);
+            this.GroupParamgroups_as_regularCB.Name = "GroupParamgroups_as_regularCB";
+            this.GroupParamgroups_as_regularCB.Size = new System.Drawing.Size(15, 14);
+            this.GroupParamgroups_as_regularCB.TabIndex = 12;
+            this.GroupParamgroups_as_regularCB.UseVisualStyleBackColor = true;
+            this.GroupParamgroups_as_regularCB.CheckedChanged += new System.EventHandler(this.GroupParamgroups_as_regularCB_CheckedChanged);
+            // 
             // GroupParamsenablegroupsCB
             // 
             this.GroupParamsenablegroupsCB.AutoSize = true;
@@ -8118,7 +8138,7 @@ namespace DayZeEditor
             this.PlayerSpawnFreshButton.Image = ((System.Drawing.Image)(resources.GetObject("PlayerSpawnFreshButton.Image")));
             this.PlayerSpawnFreshButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PlayerSpawnFreshButton.Name = "PlayerSpawnFreshButton";
-            this.PlayerSpawnFreshButton.Size = new System.Drawing.Size(39, 22);
+            this.PlayerSpawnFreshButton.Size = new System.Drawing.Size(24, 24);
             this.PlayerSpawnFreshButton.Text = "Fresh";
             this.PlayerSpawnFreshButton.Click += new System.EventHandler(this.PlayerSpawnFreshButton_Click);
             // 
@@ -8138,7 +8158,7 @@ namespace DayZeEditor
             this.PlayerSpawnHopButton.Image = ((System.Drawing.Image)(resources.GetObject("PlayerSpawnHopButton.Image")));
             this.PlayerSpawnHopButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PlayerSpawnHopButton.Name = "PlayerSpawnHopButton";
-            this.PlayerSpawnHopButton.Size = new System.Drawing.Size(34, 22);
+            this.PlayerSpawnHopButton.Size = new System.Drawing.Size(24, 24);
             this.PlayerSpawnHopButton.Text = "Hop";
             this.PlayerSpawnHopButton.Click += new System.EventHandler(this.PlayerSpawnHopButton_Click);
             // 
@@ -8158,7 +8178,7 @@ namespace DayZeEditor
             this.PlayerSpawnTravelButton.Image = ((System.Drawing.Image)(resources.GetObject("PlayerSpawnTravelButton.Image")));
             this.PlayerSpawnTravelButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PlayerSpawnTravelButton.Name = "PlayerSpawnTravelButton";
-            this.PlayerSpawnTravelButton.Size = new System.Drawing.Size(41, 22);
+            this.PlayerSpawnTravelButton.Size = new System.Drawing.Size(24, 24);
             this.PlayerSpawnTravelButton.Text = "Travel";
             this.PlayerSpawnTravelButton.Click += new System.EventHandler(this.PlayerSpawnTravelButton_Click);
             // 
@@ -13818,7 +13838,6 @@ namespace DayZeEditor
             this.fastColoredTextBox1.DefaultMarkerSize = 8;
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.fastColoredTextBox1.IsReplaceMode = false;
             this.fastColoredTextBox1.Location = new System.Drawing.Point(0, 24);
@@ -15267,26 +15286,6 @@ namespace DayZeEditor
             this.removeMapToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.removeMapToolStripMenuItem.Text = "Remove Map Group";
             this.removeMapToolStripMenuItem.Click += new System.EventHandler(this.removeMapToolStripMenuItem_Click);
-            // 
-            // GroupParamgroups_as_regularCB
-            // 
-            this.GroupParamgroups_as_regularCB.AutoSize = true;
-            this.GroupParamgroups_as_regularCB.Location = new System.Drawing.Point(106, 36);
-            this.GroupParamgroups_as_regularCB.Name = "GroupParamgroups_as_regularCB";
-            this.GroupParamgroups_as_regularCB.Size = new System.Drawing.Size(15, 14);
-            this.GroupParamgroups_as_regularCB.TabIndex = 12;
-            this.GroupParamgroups_as_regularCB.UseVisualStyleBackColor = true;
-            this.GroupParamgroups_as_regularCB.CheckedChanged += new System.EventHandler(this.GroupParamgroups_as_regularCB_CheckedChanged);
-            // 
-            // label160
-            // 
-            this.label160.AutoSize = true;
-            this.label160.ForeColor = System.Drawing.SystemColors.Control;
-            this.label160.Location = new System.Drawing.Point(7, 36);
-            this.label160.Name = "label160";
-            this.label160.Size = new System.Drawing.Size(88, 13);
-            this.label160.TabIndex = 13;
-            this.label160.Text = "groups as regular";
             // 
             // Economy_Manager
             // 

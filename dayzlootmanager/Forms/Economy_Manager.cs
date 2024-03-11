@@ -209,6 +209,7 @@ namespace DayZeEditor
         }
         private void SaveFileButton_Click(object sender, EventArgs e) //empty
         {
+            Cursor.Current = Cursors.WaitCursor;
             List<string> midifiedfiles = new List<string>();
             string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
             if (EconomyTabPage.SelectedIndex == 16)
@@ -240,6 +241,7 @@ namespace DayZeEditor
             {
                 SaveEconomyFiles(midifiedfiles, SaveTime);
             }
+            Cursor.Current = Cursors.Default;
         }
         private void SaveEconomyFiles(List<string> midifiedfiles, string SaveTime)
         {
@@ -1488,13 +1490,11 @@ namespace DayZeEditor
             foreach (TreeNode tn in treeViewMS1.SelectedNodes)
             {
                 typesType looptype = tn.Tag as typesType;
-                if (typeNomCountNUD.Visible = looptype.nominalSpecified = NomCountCB.Checked)
-                {
-                    typeNomCountNUD.Value = 0;
-                    looptype.nominal = (int)typeNomCountNUD.Value;
-                    currentTypesFile.isDirty = true;
-                    currentproject.SetTotNomCount();
-                }
+                typeNomCountNUD.Visible = looptype.nominalSpecified = NomCountCB.Checked;
+                typeNomCountNUD.Value = 0;
+                looptype.nominal = (int)typeNomCountNUD.Value;
+                currentTypesFile.isDirty = true;
+                currentproject.SetTotNomCount();
             }
             NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
         }
@@ -1504,12 +1504,10 @@ namespace DayZeEditor
             foreach (TreeNode tn in treeViewMS1.SelectedNodes)
             {
                 typesType looptype = tn.Tag as typesType;
-                if (typeMinCountNUD.Visible = looptype.minSpecified = MinCountCB.Checked)
-                {
-                    typeMinCountNUD.Value = 0;
-                    looptype.min = (int)typeMinCountNUD.Value;
-                    currentTypesFile.isDirty = true;
-                }
+                typeMinCountNUD.Visible = looptype.minSpecified = MinCountCB.Checked;
+                typeMinCountNUD.Value = 0;
+                looptype.min = (int)typeMinCountNUD.Value;
+                currentTypesFile.isDirty = true;
             }
         }
         private void RestockCB_CheckedChanged(object sender, EventArgs e)
@@ -1518,12 +1516,10 @@ namespace DayZeEditor
             foreach (TreeNode tn in treeViewMS1.SelectedNodes)
             {
                 typesType looptype = tn.Tag as typesType;
-                if (typeRestockNUD.Visible = looptype.restockSpecified = RestockCB.Checked)
-                {
-                    typeRestockNUD.Value = 900;
-                    looptype.restock = (int)typeRestockNUD.Value;
-                    currentTypesFile.isDirty = true;
-                }
+                typeRestockNUD.Visible = looptype.restockSpecified = RestockCB.Checked;
+                typeRestockNUD.Value = 900;
+                looptype.restock = (int)typeRestockNUD.Value;
+                currentTypesFile.isDirty = true;
             }
         }
         private void QuanMinCB_CheckedChanged(object sender, EventArgs e)
@@ -1532,12 +1528,10 @@ namespace DayZeEditor
             foreach (TreeNode tn in treeViewMS1.SelectedNodes)
             {
                 typesType looptype = tn.Tag as typesType;
-                if (typeQuantMINNUD.Visible = looptype.minSpecified = QuanMinCB.Checked)
-                {
-                    typeQuantMINNUD.Value = -1;
-                    looptype.quantmin = (int)typeQuantMINNUD.Value;
-                    currentTypesFile.isDirty = true;
-                }
+                typeQuantMINNUD.Visible = looptype.minSpecified = QuanMinCB.Checked;
+                typeQuantMINNUD.Value = -1;
+                looptype.quantmin = (int)typeQuantMINNUD.Value;
+                currentTypesFile.isDirty = true;
             }
         }
         private void QuanMaxCB_CheckedChanged(object sender, EventArgs e)
@@ -1546,12 +1540,10 @@ namespace DayZeEditor
             foreach (TreeNode tn in treeViewMS1.SelectedNodes)
             {
                 typesType looptype = tn.Tag as typesType;
-                if (typeQuantMAXNUD.Visible = looptype.quantmaxSpecified = QuanMaxCB.Checked)
-                {
-                    typeQuantMAXNUD.Value = -1;
-                    looptype.quantmax = (int)typeQuantMAXNUD.Value;
-                    currentTypesFile.isDirty = true;
-                }
+                typeQuantMAXNUD.Visible = looptype.quantmaxSpecified = QuanMaxCB.Checked;
+                typeQuantMAXNUD.Value = -1;
+                looptype.quantmax = (int)typeQuantMAXNUD.Value;
+                currentTypesFile.isDirty = true;
             }
         }
         private void costCB_CheckedChanged(object sender, EventArgs e)
@@ -1560,12 +1552,10 @@ namespace DayZeEditor
             foreach (TreeNode tn in treeViewMS1.SelectedNodes)
             {
                 typesType looptype = tn.Tag as typesType;
-                if (typeCostNUD.Visible = looptype.costSpecified = costCB.Checked)
-                {
-                    typeCostNUD.Value = 100;
-                    looptype.cost = (int)typeCostNUD.Value; ;
-                    currentTypesFile.isDirty = true;
-                }
+                typeCostNUD.Visible = looptype.costSpecified = costCB.Checked;
+                typeCostNUD.Value = 100;
+                looptype.cost = (int)typeCostNUD.Value; ;
+                currentTypesFile.isDirty = true;
             }
         }
         private void populateUsage()

@@ -14,6 +14,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DayZeLib;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DayZeEditor
 {
@@ -849,7 +850,7 @@ namespace DayZeEditor
             if(sender is PictureBox)
             {
                 PictureBox pb = sender as PictureBox;
-                ttpShow = new ToolTip
+                ttpShow = new System.Windows.Forms.ToolTip
                 {
                     AutoPopDelay = 2000,
                     InitialDelay = 1000,
@@ -1436,8 +1437,11 @@ namespace DayZeEditor
                     Categories cat = MarketCats.GetCat(mitem);
                     if (cat == null)
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("[Error] : ");
+                        Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine(currentTrader.DisplayName + " has an Item that could not be found int the market files:- " + name.ClassName);
-                        MessageBox.Show("Item could not be found :- " + name.ClassName);
+                        MessageBox.Show("Item could not be found :- " + name.ClassName + "\nsee console for more details.");
                         continue;
                     }
                     String CatName = cat.DisplayName.Replace("#STR_EXPANSION_MARKET_CATEGORY_", "");
@@ -3273,7 +3277,7 @@ namespace DayZeEditor
             if (sender is Panel)
             {
                 Panel p = sender as Panel;
-                ttpShow = new ToolTip
+                ttpShow = new System.Windows.Forms.ToolTip
                 {
                     AutoPopDelay = 2000,
                     InitialDelay = 1000,
@@ -3976,14 +3980,33 @@ namespace DayZeEditor
             currentCat.isDirty = true;
         }
 
-        private void tabPage2_Click(object sender, EventArgs e)
-        {
 
+        public bool AtoZ = true;
+        public bool MintoMax = true;
+        private void ItemSortAZLabel_Click(object sender, EventArgs e)
+        {
+            AtoZ = !AtoZ;
+            MarketCats.SortItemlistbyitemName(AtoZ);
+            listBox4.DataSource = currentCat.Items;
+            darkLabel90.Font = new Font(darkLabel90.Font, FontStyle.Regular);
+            darkLabel88.Font = new Font(darkLabel88.Font, FontStyle.Bold);
+            if (AtoZ)
+                darkLabel88.Text = "A-Z";
+            else
+                darkLabel88.Text = "Z-A";
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void ItemSortPriceLabel_Click(object sender, EventArgs e)
         {
-
+            MintoMax = !MintoMax;
+            MarketCats.SortItemlistbyitemPrice(MintoMax);
+            listBox4.DataSource = currentCat.Items;
+            darkLabel90.Font = new Font(darkLabel90.Font, FontStyle.Bold);
+            darkLabel88.Font = new Font(darkLabel88.Font, FontStyle.Regular);
+            if (MintoMax)
+                darkLabel90.Text = "Min - Max";
+            else
+                darkLabel90.Text = "Max - Min";
         }
     }
 }

@@ -96,6 +96,8 @@ namespace DayZeEditor
             this.darkLabel17 = new DarkUI.Controls.DarkLabel();
             this.TabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.darkLabel75 = new DarkUI.Controls.DarkLabel();
+            this.CrashDamageReceivedMultiplierNUD = new System.Windows.Forms.NumericUpDown();
             this.CrashEventNameTB = new System.Windows.Forms.TextBox();
             this.darkLabel69 = new DarkUI.Controls.DarkLabel();
             this.CrashSniperProneDistanceThresholdNUD = new System.Windows.Forms.NumericUpDown();
@@ -151,6 +153,8 @@ namespace DayZeEditor
             this.EventCrachPatrolLB = new System.Windows.Forms.ListBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.darkLabel76 = new DarkUI.Controls.DarkLabel();
+            this.StaticPatrolDamageReceivedMultiplierNUD = new System.Windows.Forms.NumericUpDown();
             this.StaticPatrolSniperProneDistanceThresholdNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel68 = new DarkUI.Controls.DarkLabel();
             this.StaticPatrolNameTB = new System.Windows.Forms.TextBox();
@@ -222,10 +226,8 @@ namespace DayZeEditor
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.darkLabel75 = new DarkUI.Controls.DarkLabel();
-            this.CrashDamageReceivedMultiplierNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel76 = new DarkUI.Controls.DarkLabel();
-            this.StaticPatrolDamageReceivedMultiplierNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkButton21 = new DarkUI.Controls.DarkButton();
+            this.darkButton22 = new DarkUI.Controls.DarkButton();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.TabPage1.SuspendLayout();
@@ -252,6 +254,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.MaximumDynamicPatrolsNUD)).BeginInit();
             this.TabPage2.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CrashDamageReceivedMultiplierNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrashSniperProneDistanceThresholdNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.crashFormationLoosenessNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrashDamageMultiplierNUD)).BeginInit();
@@ -269,6 +272,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.CrashNumberOfAINUD)).BeginInit();
             this.tabPage6.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolDamageReceivedMultiplierNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolSniperProneDistanceThresholdNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolFormationLoosenessNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolWaypointPOSXNUD)).BeginInit();
@@ -288,8 +292,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolMinSpreadRadiusNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolNumberOfAINUD)).BeginInit();
             this.darkToolStrip23.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CrashDamageReceivedMultiplierNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolDamageReceivedMultiplierNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -1379,7 +1381,38 @@ namespace DayZeEditor
             this.groupBox4.TabIndex = 134;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Object Patrols";
-            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
+            // 
+            // darkLabel75
+            // 
+            this.darkLabel75.AutoSize = true;
+            this.darkLabel75.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel75.Location = new System.Drawing.Point(449, 357);
+            this.darkLabel75.Name = "darkLabel75";
+            this.darkLabel75.Size = new System.Drawing.Size(96, 26);
+            this.darkLabel75.TabIndex = 199;
+            this.darkLabel75.Text = "Damage Received\r\nMultiplier";
+            // 
+            // CrashDamageReceivedMultiplierNUD
+            // 
+            this.CrashDamageReceivedMultiplierNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CrashDamageReceivedMultiplierNUD.DecimalPlaces = 2;
+            this.CrashDamageReceivedMultiplierNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.CrashDamageReceivedMultiplierNUD.Location = new System.Drawing.Point(558, 360);
+            this.CrashDamageReceivedMultiplierNUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.CrashDamageReceivedMultiplierNUD.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            -2147483648});
+            this.CrashDamageReceivedMultiplierNUD.Name = "CrashDamageReceivedMultiplierNUD";
+            this.CrashDamageReceivedMultiplierNUD.Size = new System.Drawing.Size(105, 20);
+            this.CrashDamageReceivedMultiplierNUD.TabIndex = 198;
+            this.CrashDamageReceivedMultiplierNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.CrashDamageReceivedMultiplierNUD.ValueChanged += new System.EventHandler(this.CrashDamageReceivedMultiplierNUD_ValueChanged);
             // 
             // CrashEventNameTB
             // 
@@ -2162,7 +2195,9 @@ namespace DayZeEditor
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.darkButton21);
             this.groupBox5.Controls.Add(this.darkLabel76);
+            this.groupBox5.Controls.Add(this.darkButton22);
             this.groupBox5.Controls.Add(this.StaticPatrolDamageReceivedMultiplierNUD);
             this.groupBox5.Controls.Add(this.StaticPatrolSniperProneDistanceThresholdNUD);
             this.groupBox5.Controls.Add(this.darkLabel68);
@@ -2236,6 +2271,38 @@ namespace DayZeEditor
             this.groupBox5.TabIndex = 133;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "AI Patrols";
+            // 
+            // darkLabel76
+            // 
+            this.darkLabel76.AutoSize = true;
+            this.darkLabel76.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel76.Location = new System.Drawing.Point(463, 340);
+            this.darkLabel76.Name = "darkLabel76";
+            this.darkLabel76.Size = new System.Drawing.Size(96, 26);
+            this.darkLabel76.TabIndex = 199;
+            this.darkLabel76.Text = "Damage Received\r\nMultiplier";
+            // 
+            // StaticPatrolDamageReceivedMultiplierNUD
+            // 
+            this.StaticPatrolDamageReceivedMultiplierNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolDamageReceivedMultiplierNUD.DecimalPlaces = 2;
+            this.StaticPatrolDamageReceivedMultiplierNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolDamageReceivedMultiplierNUD.Location = new System.Drawing.Point(572, 342);
+            this.StaticPatrolDamageReceivedMultiplierNUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.StaticPatrolDamageReceivedMultiplierNUD.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            -2147483648});
+            this.StaticPatrolDamageReceivedMultiplierNUD.Name = "StaticPatrolDamageReceivedMultiplierNUD";
+            this.StaticPatrolDamageReceivedMultiplierNUD.Size = new System.Drawing.Size(105, 20);
+            this.StaticPatrolDamageReceivedMultiplierNUD.TabIndex = 198;
+            this.StaticPatrolDamageReceivedMultiplierNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.StaticPatrolDamageReceivedMultiplierNUD.ValueChanged += new System.EventHandler(this.StaticPatrolDamageReceivedMultiplierNUD_ValueChanged);
             // 
             // StaticPatrolSniperProneDistanceThresholdNUD
             // 
@@ -2425,7 +2492,7 @@ namespace DayZeEditor
             this.StaticPatrolWayPointsLB.FormattingEnabled = true;
             this.StaticPatrolWayPointsLB.Location = new System.Drawing.Point(726, 19);
             this.StaticPatrolWayPointsLB.Name = "StaticPatrolWayPointsLB";
-            this.StaticPatrolWayPointsLB.Size = new System.Drawing.Size(211, 251);
+            this.StaticPatrolWayPointsLB.Size = new System.Drawing.Size(188, 251);
             this.StaticPatrolWayPointsLB.TabIndex = 143;
             this.StaticPatrolWayPointsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.StaticPatrolWayPointsLB.SelectedIndexChanged += new System.EventHandler(this.StaticPatrolWayPointsLB_SelectedIndexChanged);
@@ -3246,69 +3313,27 @@ namespace DayZeEditor
             this.toolStripButton1.Text = "AI Patrols";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
-            // darkLabel75
+            // darkButton21
             // 
-            this.darkLabel75.AutoSize = true;
-            this.darkLabel75.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel75.Location = new System.Drawing.Point(449, 357);
-            this.darkLabel75.Name = "darkLabel75";
-            this.darkLabel75.Size = new System.Drawing.Size(96, 26);
-            this.darkLabel75.TabIndex = 199;
-            this.darkLabel75.Text = "Damage Received\r\nMultiplier";
+            this.darkButton21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton21.Location = new System.Drawing.Point(917, 250);
+            this.darkButton21.Name = "darkButton21";
+            this.darkButton21.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton21.Size = new System.Drawing.Size(20, 20);
+            this.darkButton21.TabIndex = 281;
+            this.darkButton21.Text = "-";
+            this.darkButton21.Click += new System.EventHandler(this.darkButton21_Click);
             // 
-            // CrashDamageReceivedMultiplierNUD
+            // darkButton22
             // 
-            this.CrashDamageReceivedMultiplierNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.CrashDamageReceivedMultiplierNUD.DecimalPlaces = 2;
-            this.CrashDamageReceivedMultiplierNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.CrashDamageReceivedMultiplierNUD.Location = new System.Drawing.Point(558, 360);
-            this.CrashDamageReceivedMultiplierNUD.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.CrashDamageReceivedMultiplierNUD.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            -2147483648});
-            this.CrashDamageReceivedMultiplierNUD.Name = "CrashDamageReceivedMultiplierNUD";
-            this.CrashDamageReceivedMultiplierNUD.Size = new System.Drawing.Size(105, 20);
-            this.CrashDamageReceivedMultiplierNUD.TabIndex = 198;
-            this.CrashDamageReceivedMultiplierNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.CrashDamageReceivedMultiplierNUD.ValueChanged += new System.EventHandler(this.CrashDamageReceivedMultiplierNUD_ValueChanged);
-            // 
-            // darkLabel76
-            // 
-            this.darkLabel76.AutoSize = true;
-            this.darkLabel76.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel76.Location = new System.Drawing.Point(463, 340);
-            this.darkLabel76.Name = "darkLabel76";
-            this.darkLabel76.Size = new System.Drawing.Size(96, 26);
-            this.darkLabel76.TabIndex = 199;
-            this.darkLabel76.Text = "Damage Received\r\nMultiplier";
-            // 
-            // StaticPatrolDamageReceivedMultiplierNUD
-            // 
-            this.StaticPatrolDamageReceivedMultiplierNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolDamageReceivedMultiplierNUD.DecimalPlaces = 2;
-            this.StaticPatrolDamageReceivedMultiplierNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolDamageReceivedMultiplierNUD.Location = new System.Drawing.Point(572, 342);
-            this.StaticPatrolDamageReceivedMultiplierNUD.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.StaticPatrolDamageReceivedMultiplierNUD.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            -2147483648});
-            this.StaticPatrolDamageReceivedMultiplierNUD.Name = "StaticPatrolDamageReceivedMultiplierNUD";
-            this.StaticPatrolDamageReceivedMultiplierNUD.Size = new System.Drawing.Size(105, 20);
-            this.StaticPatrolDamageReceivedMultiplierNUD.TabIndex = 198;
-            this.StaticPatrolDamageReceivedMultiplierNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StaticPatrolDamageReceivedMultiplierNUD.ValueChanged += new System.EventHandler(this.StaticPatrolDamageReceivedMultiplierNUD_ValueChanged);
+            this.darkButton22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton22.Location = new System.Drawing.Point(917, 19);
+            this.darkButton22.Name = "darkButton22";
+            this.darkButton22.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton22.Size = new System.Drawing.Size(20, 20);
+            this.darkButton22.TabIndex = 280;
+            this.darkButton22.Text = "+";
+            this.darkButton22.Click += new System.EventHandler(this.darkButton22_Click);
             // 
             // ExpansionAI
             // 
@@ -3353,6 +3378,7 @@ namespace DayZeEditor
             this.TabPage2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CrashDamageReceivedMultiplierNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrashSniperProneDistanceThresholdNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.crashFormationLoosenessNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrashDamageMultiplierNUD)).EndInit();
@@ -3371,6 +3397,7 @@ namespace DayZeEditor
             this.tabPage6.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolDamageReceivedMultiplierNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolSniperProneDistanceThresholdNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolFormationLoosenessNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolWaypointPOSXNUD)).EndInit();
@@ -3391,8 +3418,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolNumberOfAINUD)).EndInit();
             this.darkToolStrip23.ResumeLayout(false);
             this.darkToolStrip23.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CrashDamageReceivedMultiplierNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolDamageReceivedMultiplierNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3595,5 +3620,7 @@ namespace DayZeEditor
         private System.Windows.Forms.NumericUpDown CrashDamageReceivedMultiplierNUD;
         private DarkUI.Controls.DarkLabel darkLabel76;
         private System.Windows.Forms.NumericUpDown StaticPatrolDamageReceivedMultiplierNUD;
+        private DarkUI.Controls.DarkButton darkButton21;
+        private DarkUI.Controls.DarkButton darkButton22;
     }
 }

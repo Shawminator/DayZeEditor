@@ -720,6 +720,19 @@ namespace DayZeEditor
             StaticPatrolWayPointsLB.ValueMember = "Value";
             StaticPatrolWayPointsLB.DataSource = CurrentPatrol.Waypoints;
 
+            if(CurrentPatrol.Waypoints.Count == 0 )
+            {
+                StaticPatrolWaypointPOSXNUD.Visible = false;
+                StaticPatrolWaypointPOSYNUD.Visible = false;
+                StaticPatrolWaypointPOSZNUD.Visible = false;
+            }
+            else
+            {
+                StaticPatrolWaypointPOSXNUD.Visible = true;
+                StaticPatrolWaypointPOSYNUD.Visible = true;
+                StaticPatrolWaypointPOSZNUD.Visible = true;
+            }
+
             useraction = true;
         }
         private void StaticPatrolWayPointsLB_SelectedIndexChanged(object sender, EventArgs e)
@@ -1053,6 +1066,45 @@ namespace DayZeEditor
             }
 
         }
+        private void darkButton22_Click(object sender, EventArgs e)
+        {
+            if (CurrentPatrol.Waypoints == null)
+                CurrentPatrol.Waypoints = new BindingList<float[]>();
+            CurrentPatrol.Waypoints.Add(new float[] { 0, 0, 0 });
+            AIPatrolSettings.isDirty = true;
+            StaticPatrolWayPointsLB.Refresh();
+            StaticPatrolWaypointPOSXNUD.Visible = true;
+            StaticPatrolWaypointPOSYNUD.Visible = true;
+            StaticPatrolWaypointPOSZNUD.Visible = true;
+            StaticPatrolWayPointsLB.SelectedIndex = -1;
+            StaticPatrolWayPointsLB.SelectedIndex = StaticPatrolWayPointsLB.Items.Count - 1;
+        }
+        private void darkButton21_Click(object sender, EventArgs e)
+        {
+            int index = StaticPatrolWayPointsLB.SelectedIndex;
+            CurrentPatrol.Waypoints.Remove(CurrentWapypoint);
+            AIPatrolSettings.isDirty = true;
+            StaticPatrolWayPointsLB.Refresh();
+            StaticPatrolWayPointsLB.SelectedIndex = -1;
+            if (StaticPatrolWayPointsLB.Items.Count > 0)
+            { 
+                if (StaticPatrolWayPointsLB.Items.Count == index)
+                {
+                    StaticPatrolWayPointsLB.SelectedIndex = index -1;
+                }
+                else
+                {
+                    StaticPatrolWayPointsLB.SelectedIndex = index;
+                }
+            }
+            else
+            {
+                StaticPatrolWayPointsLB.SelectedIndex = -1;
+                StaticPatrolWaypointPOSXNUD.Visible = false;
+                StaticPatrolWaypointPOSYNUD.Visible = false;
+                StaticPatrolWaypointPOSZNUD.Visible = false;
+            }
+        }
         #endregion aipatrolsettings
         #region AISettings
         private void SetupAISettings()
@@ -1204,14 +1256,6 @@ namespace DayZeEditor
             AISettings.isDirty = true;
         }
         #endregion AISettings
-
-
-
-        private void groupBox4_Enter(object sender, EventArgs e)
-        {
-            
-
-        }
 
 
     }
