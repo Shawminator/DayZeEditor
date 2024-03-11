@@ -153,7 +153,9 @@ namespace DayZeEditor
             this.EventCrachPatrolLB = new System.Windows.Forms.ListBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.darkButton21 = new DarkUI.Controls.DarkButton();
             this.darkLabel76 = new DarkUI.Controls.DarkLabel();
+            this.darkButton22 = new DarkUI.Controls.DarkButton();
             this.StaticPatrolDamageReceivedMultiplierNUD = new System.Windows.Forms.NumericUpDown();
             this.StaticPatrolSniperProneDistanceThresholdNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel68 = new DarkUI.Controls.DarkLabel();
@@ -226,8 +228,6 @@ namespace DayZeEditor
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.darkButton21 = new DarkUI.Controls.DarkButton();
-            this.darkButton22 = new DarkUI.Controls.DarkButton();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.TabPage1.SuspendLayout();
@@ -2272,6 +2272,17 @@ namespace DayZeEditor
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "AI Patrols";
             // 
+            // darkButton21
+            // 
+            this.darkButton21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton21.Location = new System.Drawing.Point(917, 250);
+            this.darkButton21.Name = "darkButton21";
+            this.darkButton21.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton21.Size = new System.Drawing.Size(20, 20);
+            this.darkButton21.TabIndex = 281;
+            this.darkButton21.Text = "-";
+            this.darkButton21.Click += new System.EventHandler(this.darkButton21_Click);
+            // 
             // darkLabel76
             // 
             this.darkLabel76.AutoSize = true;
@@ -2281,6 +2292,17 @@ namespace DayZeEditor
             this.darkLabel76.Size = new System.Drawing.Size(96, 26);
             this.darkLabel76.TabIndex = 199;
             this.darkLabel76.Text = "Damage Received\r\nMultiplier";
+            // 
+            // darkButton22
+            // 
+            this.darkButton22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton22.Location = new System.Drawing.Point(917, 19);
+            this.darkButton22.Name = "darkButton22";
+            this.darkButton22.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton22.Size = new System.Drawing.Size(20, 20);
+            this.darkButton22.TabIndex = 280;
+            this.darkButton22.Text = "+";
+            this.darkButton22.Click += new System.EventHandler(this.darkButton22_Click);
             // 
             // StaticPatrolDamageReceivedMultiplierNUD
             // 
@@ -2463,10 +2485,10 @@ namespace DayZeEditor
             // darkButton17
             // 
             this.darkButton17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton17.Location = new System.Drawing.Point(726, 416);
+            this.darkButton17.Location = new System.Drawing.Point(715, 416);
             this.darkButton17.Name = "darkButton17";
             this.darkButton17.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton17.Size = new System.Drawing.Size(100, 23);
+            this.darkButton17.Size = new System.Drawing.Size(111, 23);
             this.darkButton17.TabIndex = 165;
             this.darkButton17.Text = "Import From DZE";
             this.darkButton17.Click += new System.EventHandler(this.darkButton17_Click);
@@ -2474,10 +2496,10 @@ namespace DayZeEditor
             // darkButton14
             // 
             this.darkButton14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton14.Location = new System.Drawing.Point(726, 445);
+            this.darkButton14.Location = new System.Drawing.Point(715, 445);
             this.darkButton14.Name = "darkButton14";
             this.darkButton14.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton14.Size = new System.Drawing.Size(100, 23);
+            this.darkButton14.Size = new System.Drawing.Size(111, 23);
             this.darkButton14.TabIndex = 166;
             this.darkButton14.Text = "Export to DZE";
             this.darkButton14.Click += new System.EventHandler(this.darkButton14_Click);
@@ -3312,28 +3334,6 @@ namespace DayZeEditor
             this.toolStripButton1.Size = new System.Drawing.Size(61, 25);
             this.toolStripButton1.Text = "AI Patrols";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
-            // darkButton21
-            // 
-            this.darkButton21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton21.Location = new System.Drawing.Point(917, 250);
-            this.darkButton21.Name = "darkButton21";
-            this.darkButton21.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton21.Size = new System.Drawing.Size(20, 20);
-            this.darkButton21.TabIndex = 281;
-            this.darkButton21.Text = "-";
-            this.darkButton21.Click += new System.EventHandler(this.darkButton21_Click);
-            // 
-            // darkButton22
-            // 
-            this.darkButton22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton22.Location = new System.Drawing.Point(917, 19);
-            this.darkButton22.Name = "darkButton22";
-            this.darkButton22.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton22.Size = new System.Drawing.Size(20, 20);
-            this.darkButton22.TabIndex = 280;
-            this.darkButton22.Text = "+";
-            this.darkButton22.Click += new System.EventHandler(this.darkButton22_Click);
             // 
             // ExpansionAI
             // 

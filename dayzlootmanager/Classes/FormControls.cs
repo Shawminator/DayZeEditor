@@ -74,7 +74,10 @@ namespace DayZeEditor
             Formsize = F.Size;
         }
 
-
+        public static void Setfromsize()
+        {
+            Formsize = F.Size;
+        }
 
         private static void FormResize_MouseUp(object sender, MouseEventArgs e)
         {

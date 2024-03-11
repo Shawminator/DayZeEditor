@@ -232,6 +232,7 @@
     <Compile Include="Rag\RagBasebuilding.cs" />
     <Compile Include="RHCaptureTheFlag\RHCaptureTheFlag.cs" />
     <Compile Include="RHLootBoxes\RHLootBoxes.cs" />
+    <Compile Include="SpawnerBubaku\SpawnerBubaku.cs" />
     <Compile Include="TraderPlus\TraderPlusBankingConfig.cs" />
     <Compile Include="TraderPlus\TraderPlusGeneralConfig.cs" />
     <Compile Include="TraderPlus\TraderPlusGarageConfig.cs" />
@@ -279,6 +280,7 @@
       <Name>TreeViewMS</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

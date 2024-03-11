@@ -60,7 +60,9 @@ namespace DayZeEditor
             this.RHLootBoxManagerButton = new System.Windows.Forms.ToolStripButton();
             this.LootchestButton = new System.Windows.Forms.ToolStripButton();
             this.KOTHManagerButton = new System.Windows.Forms.ToolStripButton();
+            this.SpawnerBukakuManagerButton = new System.Windows.Forms.ToolStripButton();
             this.AirdropUpgradedManagerButton = new System.Windows.Forms.ToolStripButton();
+            this.UtopiaAirdropButton = new System.Windows.Forms.ToolStripButton();
             this.RAGTysonBBManagerButton = new System.Windows.Forms.ToolStripButton();
             this.BBPManagerButton = new System.Windows.Forms.ToolStripButton();
             this.AbandonedVehicleRemoverManagerButton = new System.Windows.Forms.ToolStripButton();
@@ -68,7 +70,6 @@ namespace DayZeEditor
             this.KOSzoneManagerButton = new System.Windows.Forms.ToolStripButton();
             this.MysteryBoxButton = new System.Windows.Forms.ToolStripButton();
             this.AdvancedWorkbenchButton = new System.Windows.Forms.ToolStripButton();
-            this.UtopiaAirdropButton = new System.Windows.Forms.ToolStripButton();
             this.DNAKeyCardsButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
@@ -222,6 +223,7 @@ namespace DayZeEditor
             this.RHLootBoxManagerButton,
             this.LootchestButton,
             this.KOTHManagerButton,
+            this.SpawnerBukakuManagerButton,
             this.AirdropUpgradedManagerButton,
             this.UtopiaAirdropButton,
             this.RAGTysonBBManagerButton,
@@ -443,6 +445,18 @@ namespace DayZeEditor
             this.KOTHManagerButton.Visible = false;
             this.KOTHManagerButton.Click += new System.EventHandler(this.KOTHManagerButton_Click);
             // 
+            // SpawnerBukakuManagerButton
+            // 
+            this.SpawnerBukakuManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.SpawnerBukakuManagerButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.SpawnerBukakuManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("SpawnerBukakuManagerButton.Image")));
+            this.SpawnerBukakuManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SpawnerBukakuManagerButton.Name = "SpawnerBukakuManagerButton";
+            this.SpawnerBukakuManagerButton.Size = new System.Drawing.Size(123, 19);
+            this.SpawnerBukakuManagerButton.Text = "Spawner Bubaku";
+            this.SpawnerBukakuManagerButton.Visible = false;
+            this.SpawnerBukakuManagerButton.Click += new System.EventHandler(this.SpawnerBukakuManagerButton_Click);
+            // 
             // AirdropUpgradedManagerButton
             // 
             this.AirdropUpgradedManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -454,6 +468,18 @@ namespace DayZeEditor
             this.AirdropUpgradedManagerButton.Text = "Airdrop upgraded";
             this.AirdropUpgradedManagerButton.Visible = false;
             this.AirdropUpgradedManagerButton.Click += new System.EventHandler(this.AirdropUpgradedManagerButton_Click);
+            // 
+            // UtopiaAirdropButton
+            // 
+            this.UtopiaAirdropButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.UtopiaAirdropButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.UtopiaAirdropButton.Image = ((System.Drawing.Image)(resources.GetObject("UtopiaAirdropButton.Image")));
+            this.UtopiaAirdropButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.UtopiaAirdropButton.Name = "UtopiaAirdropButton";
+            this.UtopiaAirdropButton.Size = new System.Drawing.Size(123, 19);
+            this.UtopiaAirdropButton.Text = "Utopia AD Manager";
+            this.UtopiaAirdropButton.Visible = false;
+            this.UtopiaAirdropButton.Click += new System.EventHandler(this.UtopiaAirdropButton_Click);
             // 
             // RAGTysonBBManagerButton
             // 
@@ -534,22 +560,10 @@ namespace DayZeEditor
             this.AdvancedWorkbenchButton.Image = ((System.Drawing.Image)(resources.GetObject("AdvancedWorkbenchButton.Image")));
             this.AdvancedWorkbenchButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AdvancedWorkbenchButton.Name = "AdvancedWorkbenchButton";
-            this.AdvancedWorkbenchButton.Size = new System.Drawing.Size(123, 19);
+            this.AdvancedWorkbenchButton.Size = new System.Drawing.Size(104, 19);
             this.AdvancedWorkbenchButton.Text = "RH Advanced WB";
             this.AdvancedWorkbenchButton.Visible = false;
             this.AdvancedWorkbenchButton.Click += new System.EventHandler(this.AdvancedWB_Click);
-            // 
-            // UtopiaAirdropButton
-            // 
-            this.UtopiaAirdropButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.UtopiaAirdropButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.UtopiaAirdropButton.Image = ((System.Drawing.Image)(resources.GetObject("UtopiaAirdropButton.Image")));
-            this.UtopiaAirdropButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.UtopiaAirdropButton.Name = "UtopiaAirdropButton";
-            this.UtopiaAirdropButton.Size = new System.Drawing.Size(123, 19);
-            this.UtopiaAirdropButton.Text = "Utopia AD Manager";
-            this.UtopiaAirdropButton.Visible = false;
-            this.UtopiaAirdropButton.Click += new System.EventHandler(this.UtopiaAirdropButton_Click);
             // 
             // DNAKeyCardsButton
             // 
@@ -741,6 +755,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton UtopiaAirdropButton;
         private System.Windows.Forms.ToolStripButton RAGTysonBBManagerButton;
         private System.Windows.Forms.ToolStripButton AirdropUpgradedManagerButton;
+        private System.Windows.Forms.ToolStripButton SpawnerBukakuManagerButton;
     }
 }
 

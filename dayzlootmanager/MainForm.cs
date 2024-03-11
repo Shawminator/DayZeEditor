@@ -74,6 +74,22 @@ namespace DayZeEditor
         protected virtual void OnLoadCompleted(EventArgs e)
         {
             LoadCompleted?.Invoke(this, e);
+            if (Properties.Settings.Default.FormSize.Width == 0 || Properties.Settings.Default.FormSize.Height == 0)
+            {
+                // first start
+                // optional: add default values
+            }
+            else
+            {
+                this.WindowState = Properties.Settings.Default.FormState;
+
+                // we don't want a minimized window at startup
+                if (this.WindowState == FormWindowState.Minimized) this.WindowState = FormWindowState.Normal;
+
+                this.Location = Properties.Settings.Default.FormLocation;
+                this.Size = Properties.Settings.Default.FormSize;
+            }
+            Form_Controls.Setfromsize();
         }
         public MainForm(SplashForm form)
         {
@@ -419,6 +435,11 @@ namespace DayZeEditor
                     RAGTysonBBManagerButton.Visible = true;
                 else
                     RAGTysonBBManagerButton.Visible = false;
+
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\SpawnerBubaku\\SpawnerBubaku.json"))
+                    SpawnerBukakuManagerButton.Visible = true;
+                else
+                    SpawnerBukakuManagerButton.Visible = false;
 
                 if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\Airdrop\\AirdropSettings.json") &&
                     File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\Airdrop\\AirdropSafezones.json"))
@@ -1178,6 +1199,34 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
+
+        private void SpawnerBukakuManagerButton_Click(object sender, EventArgs e)
+        {
+            SpawnerBubakuManager _TM = Application.OpenForms["SpawnerBukakuManager"] as SpawnerBubakuManager;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new SpawnerBubakuManager
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+
+                };
+                _TM.Show();
+                Console.WriteLine("loadingSpawner Bubaku Manager....");
+                label1.Text = "Spawner Bubaku Manager";
+            }
+            timer1.Start();
+        }
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -1200,6 +1249,18 @@ namespace DayZeEditor
         }
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            Properties.Settings.Default.FormState = this.WindowState;
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                Properties.Settings.Default.FormLocation = this.Location;
+                Properties.Settings.Default.FormSize = this.Size;
+            }
+            else
+            {
+                Properties.Settings.Default.FormLocation = this.RestoreBounds.Location;
+                Properties.Settings.Default.FormSize = this.RestoreBounds.Size;
+            }
+            Properties.Settings.Default.Save();
             if (Projects.getActiveProject() != null)
             {
                 if (Projects.getActiveProject().MapNetworkDrive == true)
@@ -1208,8 +1269,6 @@ namespace DayZeEditor
                 }
             }
         }
-
-
     }
 }
 
