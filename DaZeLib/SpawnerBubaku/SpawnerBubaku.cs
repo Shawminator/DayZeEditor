@@ -38,19 +38,7 @@ namespace DayZeLib
         public void AddNewLocation(DZE Importfile)
         {
             Bubaklocation newlocation = new Bubaklocation();
-            foreach (Editorobject eo in Importfile.EditorObjects)
-            {
-                if(eo.DisplayName == "")
-                {
-                    string floatarry = eo.Position[0].ToString() + " " + eo.Position[1].ToString() + " " + eo.Position[2];
-                    newlocation.triggerpos = floatarry;
-                }
-                else if(eo.DisplayName == "")
-                {
-                    string floatarry = eo.Position[0].ToString() + " " + eo.Position[1].ToString() + " " + eo.Position[2];
-                    newlocation.spawnerpos.Add(floatarry);
-                }
-            }
+            newlocation.ImportDZE(Importfile);
             BubakLocations.Add(newlocation);
             isDirty = true;
         }
@@ -81,6 +69,9 @@ namespace DayZeLib
         public int itemrandomdmg { get; set; }
         public BindingList<string> bubaci { get; set; }
         public BindingList<string> bubakinventory { get; set; }
+
+        [JsonIgnore]
+        public bool needtosetdirty {get;set;}
 
 
         public Bubaklocation() 
@@ -162,6 +153,20 @@ namespace DayZeLib
         }
         public decimal[] gettriggermins()
         {
+            if (triggermins == "")
+            {
+                var result = MessageBox.Show("TriggerMins is blank, do you want me to add default value?", "Blank Trigger Mins", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if(result == DialogResult.Yes)
+                {
+                    triggermins = "-1 -0.2 -1";
+                    needtosetdirty = true;
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
             string[] fasplit = triggermins.Split(' ');
             return new decimal[] { Convert.ToDecimal(fasplit[0]), Convert.ToDecimal(fasplit[1]), Convert.ToDecimal(fasplit[2]) };
         }
@@ -171,6 +176,20 @@ namespace DayZeLib
         }
         public decimal[] gettriggermaxs()
         {
+            if (triggermaxs == "")
+            {
+                var result = MessageBox.Show("TriggerMaxs is blank, do you want me to add default value?", "Blank Trigger Maxs", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    triggermaxs = "1 1 1";
+                    needtosetdirty = true;
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
             string[] fasplit = triggermaxs.Split(' ');
             return new decimal[] { Convert.ToDecimal(fasplit[0]), Convert.ToDecimal(fasplit[1]), Convert.ToDecimal(fasplit[2]) };
         }
@@ -197,7 +216,7 @@ namespace DayZeLib
         }
         public BukakuPosRot getPosRot(int index)
         {
-            string posrot = bubaci[index].ToString();
+            string posrot = spawnerpos[index].ToString();
             decimal[] Pos = new decimal[] { 0, 0, 0 };
             decimal[] Rot = new decimal[] { 0, 0, 0 };
             bool rotspecified = false;
@@ -234,7 +253,34 @@ namespace DayZeLib
             {
                 posrot = _posrot.Position[0] + " " + _posrot.Position[1] + " " + _posrot.Position[2];
             }
-            bubaci[index] = posrot;
+            spawnerpos[index] = posrot;
+        }
+        public void ImportDZE(DZE Importfile, bool AddTrigger = true)
+        {
+            foreach (Editorobject eo in Importfile.EditorObjects)
+            {
+                if (eo.DisplayName == "GiftBox_Large_1")
+                {
+                    if (AddTrigger)
+                    {
+                        string floatarry = eo.Position[0].ToString() + " " + eo.Position[1].ToString() + " " + eo.Position[2];
+                        if (eo.Orientation[0] != 0 || eo.Orientation[1] != 0 || eo.Orientation[2] != 0)
+                        {
+                            floatarry += "|" + eo.Orientation[0].ToString() + " " + eo.Orientation[1].ToString() + " " + eo.Orientation[2];
+                        }
+                        triggerpos = floatarry;
+                    }
+                }
+                else if (eo.DisplayName == "GiftBox_Small_1")
+                {
+                    string floatarry = eo.Position[0].ToString() + " " + eo.Position[1].ToString() + " " + eo.Position[2];
+                    if (eo.Orientation[0] != 0 || eo.Orientation[1] != 0 || eo.Orientation[2] != 0)
+                    {
+                        floatarry += "|" + eo.Orientation[0].ToString() + " " + eo.Orientation[1].ToString() + " " + eo.Orientation[2];
+                    }
+                    spawnerpos.Add(floatarry);
+                }
+            }
         }
         public override string ToString()
         {

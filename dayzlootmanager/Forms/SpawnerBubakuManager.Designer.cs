@@ -41,65 +41,153 @@ namespace DayZeEditor
             this.darkButton4 = new DarkUI.Controls.DarkButton();
             this.darkButton1 = new DarkUI.Controls.DarkButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.AIGeneralDamageReceivedMultiplierNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel74 = new DarkUI.Controls.DarkLabel();
-            this.AINoiseInvestigationDistanceLimitNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel71 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel61 = new DarkUI.Controls.DarkLabel();
-            this.AIGeneralDanageMultiplierNUD = new System.Windows.Forms.NumericUpDown();
-            this.AIGeneralThreatDistanceLimitNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel62 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel59 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel51 = new DarkUI.Controls.DarkLabel();
-            this.AIGeneralAccuracyMaxNUD = new System.Windows.Forms.NumericUpDown();
-            this.AIGeneralAccuracyMinNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel52 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel37 = new DarkUI.Controls.DarkLabel();
-            this.BubakLocationWorkingHoursStartNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel15 = new DarkUI.Controls.DarkLabel();
-            this.AIGeneralMaxDistRadiusNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel14 = new DarkUI.Controls.DarkLabel();
-            this.AIGeneralMinDistRadiusNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel1 = new DarkUI.Controls.DarkLabel();
-            this.AIGeneralRespawnTimeNUD = new System.Windows.Forms.NumericUpDown();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.BubakLocationNameTB = new System.Windows.Forms.TextBox();
             this.darkLabel65 = new DarkUI.Controls.DarkLabel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.darkLabel37 = new DarkUI.Controls.DarkLabel();
+            this.BubakLocationWorkingHoursStartNUD = new System.Windows.Forms.NumericUpDown();
             this.BubakLocationWorkingHoursEndNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel2 = new DarkUI.Controls.DarkLabel();
             this.darkLabel4 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel46 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel45 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel44 = new DarkUI.Controls.DarkLabel();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.BubakLocationTriggerPosXNUD = new System.Windows.Forms.NumericUpDown();
-            this.BubakLocationTriggerPosYNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel59 = new DarkUI.Controls.DarkLabel();
             this.BubakLocationTriggerPosZNUD = new System.Windows.Forms.NumericUpDown();
-            this.BubakLocationTriggerRotXNUD = new System.Windows.Forms.NumericUpDown();
-            this.BubakLocationTriggerRotYNUD = new System.Windows.Forms.NumericUpDown();
+            this.BubakLocationTriggerPosYNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel44 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel45 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel46 = new DarkUI.Controls.DarkLabel();
             this.BubakLocationTriggerRotZNUD = new System.Windows.Forms.NumericUpDown();
+            this.BubakLocationTriggerRotYNUD = new System.Windows.Forms.NumericUpDown();
+            this.BubakLocationTriggerRotXNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel8 = new DarkUI.Controls.DarkLabel();
             this.TrigerposRotationLabel = new DarkUI.Controls.DarkLabel();
             this.BubakLocationTriggerPositionRotSpecifiedCB = new System.Windows.Forms.CheckBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.BubakLocationTriggerMaxXNUD = new System.Windows.Forms.NumericUpDown();
+            this.BubakLocationTriggerMinZNUD = new System.Windows.Forms.NumericUpDown();
+            this.BubakLocationTriggerMinYNUD = new System.Windows.Forms.NumericUpDown();
+            this.BubakLocationTriggerMinXNUD = new System.Windows.Forms.NumericUpDown();
+            this.BubakLocationTriggerMaxZNUD = new System.Windows.Forms.NumericUpDown();
+            this.BubakLocationTriggerMaxYNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel5 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel1 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel6 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel10 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel9 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel7 = new DarkUI.Controls.DarkLabel();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.BubakLocationnotificationtimeNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel16 = new DarkUI.Controls.DarkLabel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.BubakLocationnotificationTB = new System.Windows.Forms.TextBox();
+            this.darkLabel14 = new DarkUI.Controls.DarkLabel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.BubakLocationtriggerdelayNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel15 = new DarkUI.Controls.DarkLabel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.BukabLocationtriggerradiusNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel11 = new DarkUI.Controls.DarkLabel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.BubakLocationtriggercylheightNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel13 = new DarkUI.Controls.DarkLabel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.darkLabel12 = new DarkUI.Controls.DarkLabel();
+            this.BubakLocationtriggercylradiusNUD = new System.Windows.Forms.NumericUpDown();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.darkButton12 = new DarkUI.Controls.DarkButton();
+            this.darkButton11 = new DarkUI.Controls.DarkButton();
+            this.darkButton10 = new DarkUI.Controls.DarkButton();
+            this.darkButton8 = new DarkUI.Controls.DarkButton();
+            this.darkButton9 = new DarkUI.Controls.DarkButton();
+            this.darkButton7 = new DarkUI.Controls.DarkButton();
+            this.darkLabel28 = new DarkUI.Controls.DarkLabel();
+            this.BubakLocationbubakinventoryLB = new System.Windows.Forms.ListBox();
+            this.darkButton6 = new DarkUI.Controls.DarkButton();
+            this.darkButton5 = new DarkUI.Controls.DarkButton();
+            this.darkLabel27 = new DarkUI.Controls.DarkLabel();
+            this.BubakLocationBubaciLB = new System.Windows.Forms.ListBox();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.BubakLocationSpawnPositionXNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel22 = new DarkUI.Controls.DarkLabel();
+            this.BubakLocationSpawnPositionZNUD = new System.Windows.Forms.NumericUpDown();
+            this.BubakLocationSpawnPositionYNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel23 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel24 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel25 = new DarkUI.Controls.DarkLabel();
+            this.BubakLocationSpawnRotationZNUD = new System.Windows.Forms.NumericUpDown();
+            this.BubakLocationSpawnRotationYNUD = new System.Windows.Forms.NumericUpDown();
+            this.BubakLocationSpawnRotationXNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel26 = new DarkUI.Controls.DarkLabel();
+            this.BubakLocationSpawnPositionRotaionLabel = new DarkUI.Controls.DarkLabel();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.BubakLocationitemrandomdmgCB = new System.Windows.Forms.CheckBox();
+            this.BubakLocationonlyfilluptobubaknumNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel21 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel20 = new DarkUI.Controls.DarkLabel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.BubakLocationbubaknumNUD = new System.Windows.Forms.NumericUpDown();
+            this.BubakLocationspawnradiusNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel19 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel18 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel17 = new DarkUI.Controls.DarkLabel();
+            this.BubakLocationSpawnerPosLB = new System.Windows.Forms.ListBox();
+            this.darkButton2 = new DarkUI.Controls.DarkButton();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.darkLabel29 = new DarkUI.Controls.DarkLabel();
             this.darkToolStrip21.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogLevelNUD)).BeginInit();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AIGeneralDamageReceivedMultiplierNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AINoiseInvestigationDistanceLimitNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AIGeneralDanageMultiplierNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AIGeneralThreatDistanceLimitNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AIGeneralAccuracyMaxNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AIGeneralAccuracyMinNUD)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BubakLocationWorkingHoursStartNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AIGeneralMaxDistRadiusNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AIGeneralMinDistRadiusNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AIGeneralRespawnTimeNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubakLocationWorkingHoursEndNUD)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerPosXNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerPosYNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerPosZNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerRotXNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerRotYNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerPosYNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerRotZNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerRotYNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerRotXNUD)).BeginInit();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerMaxXNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerMinZNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerMinYNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerMinXNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerMaxZNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerMaxYNUD)).BeginInit();
+            this.panel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationnotificationtimeNUD)).BeginInit();
+            this.panel9.SuspendLayout();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationtriggerdelayNUD)).BeginInit();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BukabLocationtriggerradiusNUD)).BeginInit();
+            this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationtriggercylheightNUD)).BeginInit();
+            this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationtriggercylradiusNUD)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            this.panel15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationSpawnPositionXNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationSpawnPositionZNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationSpawnPositionYNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationSpawnRotationZNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationSpawnRotationYNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationSpawnRotationXNUD)).BeginInit();
+            this.panel13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationonlyfilluptobubaknumNUD)).BeginInit();
+            this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationbubaknumNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationspawnradiusNUD)).BeginInit();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -113,7 +201,7 @@ namespace DayZeEditor
             this.darkToolStrip21.Location = new System.Drawing.Point(0, 0);
             this.darkToolStrip21.Name = "darkToolStrip21";
             this.darkToolStrip21.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
-            this.darkToolStrip21.Size = new System.Drawing.Size(1075, 45);
+            this.darkToolStrip21.Size = new System.Drawing.Size(1234, 45);
             this.darkToolStrip21.TabIndex = 48;
             this.darkToolStrip21.Text = "darkToolStrip21";
             // 
@@ -143,6 +231,7 @@ namespace DayZeEditor
             this.toolStripButton2.Size = new System.Drawing.Size(42, 42);
             this.toolStripButton2.Text = "toolStripButton2";
             this.toolStripButton2.ToolTipText = "Open Settings folder";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // groupBox1
             // 
@@ -187,7 +276,7 @@ namespace DayZeEditor
             this.SpawnerBukakuLocationsLB.FormattingEnabled = true;
             this.SpawnerBukakuLocationsLB.Location = new System.Drawing.Point(12, 105);
             this.SpawnerBukakuLocationsLB.Name = "SpawnerBukakuLocationsLB";
-            this.SpawnerBukakuLocationsLB.Size = new System.Drawing.Size(218, 407);
+            this.SpawnerBukakuLocationsLB.Size = new System.Drawing.Size(218, 576);
             this.SpawnerBukakuLocationsLB.TabIndex = 90;
             this.SpawnerBukakuLocationsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.SpawnerBukakuLocationsLB.SelectedIndexChanged += new System.EventHandler(this.SpawnerBukakuLocationsLB_SelectedIndexChanged);
@@ -195,10 +284,10 @@ namespace DayZeEditor
             // darkButton3
             // 
             this.darkButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton3.Location = new System.Drawing.Point(12, 547);
+            this.darkButton3.Location = new System.Drawing.Point(12, 728);
             this.darkButton3.Name = "darkButton3";
             this.darkButton3.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton3.Size = new System.Drawing.Size(218, 23);
+            this.darkButton3.Size = new System.Drawing.Size(119, 23);
             this.darkButton3.TabIndex = 93;
             this.darkButton3.Text = "Removed Selected";
             this.darkButton3.Click += new System.EventHandler(this.darkButton3_Click);
@@ -206,7 +295,7 @@ namespace DayZeEditor
             // darkButton4
             // 
             this.darkButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton4.Location = new System.Drawing.Point(12, 518);
+            this.darkButton4.Location = new System.Drawing.Point(12, 699);
             this.darkButton4.Name = "darkButton4";
             this.darkButton4.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton4.Size = new System.Drawing.Size(73, 23);
@@ -217,7 +306,7 @@ namespace DayZeEditor
             // darkButton1
             // 
             this.darkButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton1.Location = new System.Drawing.Point(91, 518);
+            this.darkButton1.Location = new System.Drawing.Point(91, 699);
             this.darkButton1.Name = "darkButton1";
             this.darkButton1.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton1.Size = new System.Drawing.Size(139, 23);
@@ -227,285 +316,79 @@ namespace DayZeEditor
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox3.Controls.Add(this.BubakLocationTriggerPositionRotSpecifiedCB);
-            this.groupBox3.Controls.Add(this.TrigerposRotationLabel);
-            this.groupBox3.Controls.Add(this.darkLabel8);
-            this.groupBox3.Controls.Add(this.BubakLocationTriggerRotXNUD);
-            this.groupBox3.Controls.Add(this.BubakLocationTriggerRotYNUD);
-            this.groupBox3.Controls.Add(this.BubakLocationTriggerRotZNUD);
-            this.groupBox3.Controls.Add(this.darkLabel46);
-            this.groupBox3.Controls.Add(this.darkLabel45);
-            this.groupBox3.Controls.Add(this.darkLabel44);
-            this.groupBox3.Controls.Add(this.BubakLocationTriggerPosXNUD);
-            this.groupBox3.Controls.Add(this.BubakLocationTriggerPosYNUD);
-            this.groupBox3.Controls.Add(this.BubakLocationTriggerPosZNUD);
-            this.groupBox3.Controls.Add(this.darkLabel4);
-            this.groupBox3.Controls.Add(this.darkLabel2);
-            this.groupBox3.Controls.Add(this.BubakLocationWorkingHoursEndNUD);
-            this.groupBox3.Controls.Add(this.BubakLocationNameTB);
-            this.groupBox3.Controls.Add(this.darkLabel65);
-            this.groupBox3.Controls.Add(this.AIGeneralDamageReceivedMultiplierNUD);
-            this.groupBox3.Controls.Add(this.darkLabel74);
-            this.groupBox3.Controls.Add(this.AINoiseInvestigationDistanceLimitNUD);
-            this.groupBox3.Controls.Add(this.darkLabel71);
-            this.groupBox3.Controls.Add(this.darkLabel61);
-            this.groupBox3.Controls.Add(this.AIGeneralDanageMultiplierNUD);
-            this.groupBox3.Controls.Add(this.AIGeneralThreatDistanceLimitNUD);
-            this.groupBox3.Controls.Add(this.darkLabel62);
-            this.groupBox3.Controls.Add(this.darkLabel59);
-            this.groupBox3.Controls.Add(this.darkLabel51);
-            this.groupBox3.Controls.Add(this.AIGeneralAccuracyMaxNUD);
-            this.groupBox3.Controls.Add(this.AIGeneralAccuracyMinNUD);
-            this.groupBox3.Controls.Add(this.darkLabel52);
-            this.groupBox3.Controls.Add(this.darkLabel37);
-            this.groupBox3.Controls.Add(this.BubakLocationWorkingHoursStartNUD);
-            this.groupBox3.Controls.Add(this.darkLabel15);
-            this.groupBox3.Controls.Add(this.AIGeneralMaxDistRadiusNUD);
-            this.groupBox3.Controls.Add(this.darkLabel14);
-            this.groupBox3.Controls.Add(this.AIGeneralMinDistRadiusNUD);
-            this.groupBox3.Controls.Add(this.darkLabel1);
-            this.groupBox3.Controls.Add(this.AIGeneralRespawnTimeNUD);
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.flowLayoutPanel1);
             this.groupBox3.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox3.Location = new System.Drawing.Point(236, 48);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(462, 522);
+            this.groupBox3.Size = new System.Drawing.Size(986, 703);
             this.groupBox3.TabIndex = 136;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Bubak Locations";
             // 
-            // AIGeneralDamageReceivedMultiplierNUD
+            // flowLayoutPanel1
             // 
-            this.AIGeneralDamageReceivedMultiplierNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.AIGeneralDamageReceivedMultiplierNUD.DecimalPlaces = 2;
-            this.AIGeneralDamageReceivedMultiplierNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.AIGeneralDamageReceivedMultiplierNUD.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
-            this.AIGeneralDamageReceivedMultiplierNUD.Location = new System.Drawing.Point(119, 494);
-            this.AIGeneralDamageReceivedMultiplierNUD.Maximum = new decimal(new int[] {
-            200000,
-            0,
-            0,
-            0});
-            this.AIGeneralDamageReceivedMultiplierNUD.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            -2147483648});
-            this.AIGeneralDamageReceivedMultiplierNUD.Name = "AIGeneralDamageReceivedMultiplierNUD";
-            this.AIGeneralDamageReceivedMultiplierNUD.Size = new System.Drawing.Size(105, 20);
-            this.AIGeneralDamageReceivedMultiplierNUD.TabIndex = 202;
-            this.AIGeneralDamageReceivedMultiplierNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Controls.Add(this.panel1);
+            this.flowLayoutPanel1.Controls.Add(this.panel2);
+            this.flowLayoutPanel1.Controls.Add(this.groupBox4);
+            this.flowLayoutPanel1.Controls.Add(this.groupBox5);
+            this.flowLayoutPanel1.Controls.Add(this.groupBox2);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 16);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(980, 684);
+            this.flowLayoutPanel1.TabIndex = 255;
             // 
-            // darkLabel74
+            // panel1
             // 
-            this.darkLabel74.AutoSize = true;
-            this.darkLabel74.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel74.Location = new System.Drawing.Point(7, 488);
-            this.darkLabel74.Name = "darkLabel74";
-            this.darkLabel74.Size = new System.Drawing.Size(96, 26);
-            this.darkLabel74.TabIndex = 203;
-            this.darkLabel74.Text = "Damage Received\r\nMultiplier";
+            this.panel1.Controls.Add(this.BubakLocationNameTB);
+            this.panel1.Controls.Add(this.darkLabel65);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(457, 20);
+            this.panel1.TabIndex = 249;
             // 
-            // AINoiseInvestigationDistanceLimitNUD
+            // BubakLocationNameTB
             // 
-            this.AINoiseInvestigationDistanceLimitNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.AINoiseInvestigationDistanceLimitNUD.DecimalPlaces = 2;
-            this.AINoiseInvestigationDistanceLimitNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.AINoiseInvestigationDistanceLimitNUD.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
-            this.AINoiseInvestigationDistanceLimitNUD.Location = new System.Drawing.Point(119, 468);
-            this.AINoiseInvestigationDistanceLimitNUD.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.AINoiseInvestigationDistanceLimitNUD.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            -2147483648});
-            this.AINoiseInvestigationDistanceLimitNUD.Name = "AINoiseInvestigationDistanceLimitNUD";
-            this.AINoiseInvestigationDistanceLimitNUD.Size = new System.Drawing.Size(105, 20);
-            this.AINoiseInvestigationDistanceLimitNUD.TabIndex = 146;
-            this.AINoiseInvestigationDistanceLimitNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BubakLocationNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BubakLocationNameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationNameTB.Location = new System.Drawing.Point(117, 1);
+            this.BubakLocationNameTB.Name = "BubakLocationNameTB";
+            this.BubakLocationNameTB.Size = new System.Drawing.Size(326, 20);
+            this.BubakLocationNameTB.TabIndex = 204;
+            this.BubakLocationNameTB.TextChanged += new System.EventHandler(this.BubakLocationNameTB_TextChanged);
             // 
-            // darkLabel71
+            // darkLabel65
             // 
-            this.darkLabel71.AutoSize = true;
-            this.darkLabel71.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel71.Location = new System.Drawing.Point(6, 464);
-            this.darkLabel71.Name = "darkLabel71";
-            this.darkLabel71.Size = new System.Drawing.Size(97, 26);
-            this.darkLabel71.TabIndex = 145;
-            this.darkLabel71.Text = "Noise Investigation\r\nDistance Limit";
+            this.darkLabel65.AutoSize = true;
+            this.darkLabel65.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel65.Location = new System.Drawing.Point(5, 3);
+            this.darkLabel65.Name = "darkLabel65";
+            this.darkLabel65.Size = new System.Drawing.Size(77, 13);
+            this.darkLabel65.TabIndex = 205;
+            this.darkLabel65.Text = "Location name";
             // 
-            // darkLabel61
+            // panel2
             // 
-            this.darkLabel61.AutoSize = true;
-            this.darkLabel61.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel61.Location = new System.Drawing.Point(6, 418);
-            this.darkLabel61.Name = "darkLabel61";
-            this.darkLabel61.Size = new System.Drawing.Size(107, 13);
-            this.darkLabel61.TabIndex = 142;
-            this.darkLabel61.Text = "Threat Distance Limit";
-            // 
-            // AIGeneralDanageMultiplierNUD
-            // 
-            this.AIGeneralDanageMultiplierNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.AIGeneralDanageMultiplierNUD.DecimalPlaces = 2;
-            this.AIGeneralDanageMultiplierNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.AIGeneralDanageMultiplierNUD.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
-            this.AIGeneralDanageMultiplierNUD.Location = new System.Drawing.Point(119, 442);
-            this.AIGeneralDanageMultiplierNUD.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.AIGeneralDanageMultiplierNUD.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            -2147483648});
-            this.AIGeneralDanageMultiplierNUD.Name = "AIGeneralDanageMultiplierNUD";
-            this.AIGeneralDanageMultiplierNUD.Size = new System.Drawing.Size(105, 20);
-            this.AIGeneralDanageMultiplierNUD.TabIndex = 143;
-            this.AIGeneralDanageMultiplierNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // AIGeneralThreatDistanceLimitNUD
-            // 
-            this.AIGeneralThreatDistanceLimitNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.AIGeneralThreatDistanceLimitNUD.DecimalPlaces = 2;
-            this.AIGeneralThreatDistanceLimitNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.AIGeneralThreatDistanceLimitNUD.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
-            this.AIGeneralThreatDistanceLimitNUD.Location = new System.Drawing.Point(119, 416);
-            this.AIGeneralThreatDistanceLimitNUD.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.AIGeneralThreatDistanceLimitNUD.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            -2147483648});
-            this.AIGeneralThreatDistanceLimitNUD.Name = "AIGeneralThreatDistanceLimitNUD";
-            this.AIGeneralThreatDistanceLimitNUD.Size = new System.Drawing.Size(105, 20);
-            this.AIGeneralThreatDistanceLimitNUD.TabIndex = 141;
-            this.AIGeneralThreatDistanceLimitNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // darkLabel62
-            // 
-            this.darkLabel62.AutoSize = true;
-            this.darkLabel62.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel62.Location = new System.Drawing.Point(4, 444);
-            this.darkLabel62.Name = "darkLabel62";
-            this.darkLabel62.Size = new System.Drawing.Size(91, 13);
-            this.darkLabel62.TabIndex = 144;
-            this.darkLabel62.Text = "Damage Multiplier";
-            // 
-            // darkLabel59
-            // 
-            this.darkLabel59.AutoSize = true;
-            this.darkLabel59.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel59.Location = new System.Drawing.Point(4, 82);
-            this.darkLabel59.Name = "darkLabel59";
-            this.darkLabel59.Size = new System.Drawing.Size(80, 13);
-            this.darkLabel59.TabIndex = 140;
-            this.darkLabel59.Text = "Trigger Position";
-            // 
-            // darkLabel51
-            // 
-            this.darkLabel51.AutoSize = true;
-            this.darkLabel51.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel51.Location = new System.Drawing.Point(6, 366);
-            this.darkLabel51.Name = "darkLabel51";
-            this.darkLabel51.Size = new System.Drawing.Size(72, 13);
-            this.darkLabel51.TabIndex = 136;
-            this.darkLabel51.Text = "Accuracy Min";
-            // 
-            // AIGeneralAccuracyMaxNUD
-            // 
-            this.AIGeneralAccuracyMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.AIGeneralAccuracyMaxNUD.DecimalPlaces = 2;
-            this.AIGeneralAccuracyMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.AIGeneralAccuracyMaxNUD.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
-            this.AIGeneralAccuracyMaxNUD.Location = new System.Drawing.Point(119, 390);
-            this.AIGeneralAccuracyMaxNUD.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.AIGeneralAccuracyMaxNUD.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            -2147483648});
-            this.AIGeneralAccuracyMaxNUD.Name = "AIGeneralAccuracyMaxNUD";
-            this.AIGeneralAccuracyMaxNUD.Size = new System.Drawing.Size(105, 20);
-            this.AIGeneralAccuracyMaxNUD.TabIndex = 137;
-            this.AIGeneralAccuracyMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // AIGeneralAccuracyMinNUD
-            // 
-            this.AIGeneralAccuracyMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.AIGeneralAccuracyMinNUD.DecimalPlaces = 2;
-            this.AIGeneralAccuracyMinNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.AIGeneralAccuracyMinNUD.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
-            this.AIGeneralAccuracyMinNUD.Location = new System.Drawing.Point(119, 364);
-            this.AIGeneralAccuracyMinNUD.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.AIGeneralAccuracyMinNUD.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            -2147483648});
-            this.AIGeneralAccuracyMinNUD.Name = "AIGeneralAccuracyMinNUD";
-            this.AIGeneralAccuracyMinNUD.Size = new System.Drawing.Size(105, 20);
-            this.AIGeneralAccuracyMinNUD.TabIndex = 135;
-            this.AIGeneralAccuracyMinNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // darkLabel52
-            // 
-            this.darkLabel52.AutoSize = true;
-            this.darkLabel52.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel52.Location = new System.Drawing.Point(4, 392);
-            this.darkLabel52.Name = "darkLabel52";
-            this.darkLabel52.Size = new System.Drawing.Size(75, 13);
-            this.darkLabel52.TabIndex = 138;
-            this.darkLabel52.Text = "Accuracy Max";
+            this.panel2.Controls.Add(this.darkLabel37);
+            this.panel2.Controls.Add(this.BubakLocationWorkingHoursStartNUD);
+            this.panel2.Controls.Add(this.BubakLocationWorkingHoursEndNUD);
+            this.panel2.Controls.Add(this.darkLabel2);
+            this.panel2.Controls.Add(this.darkLabel4);
+            this.panel2.Location = new System.Drawing.Point(3, 29);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(457, 20);
+            this.panel2.TabIndex = 250;
             // 
             // darkLabel37
             // 
             this.darkLabel37.AutoSize = true;
             this.darkLabel37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel37.Location = new System.Drawing.Point(3, 56);
+            this.darkLabel37.Location = new System.Drawing.Point(5, 2);
             this.darkLabel37.Name = "darkLabel37";
             this.darkLabel37.Size = new System.Drawing.Size(78, 13);
             this.darkLabel37.TabIndex = 134;
@@ -515,7 +398,7 @@ namespace DayZeEditor
             // 
             this.BubakLocationWorkingHoursStartNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.BubakLocationWorkingHoursStartNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.BubakLocationWorkingHoursStartNUD.Location = new System.Drawing.Point(165, 54);
+            this.BubakLocationWorkingHoursStartNUD.Location = new System.Drawing.Point(159, 0);
             this.BubakLocationWorkingHoursStartNUD.Maximum = new decimal(new int[] {
             24,
             0,
@@ -525,124 +408,13 @@ namespace DayZeEditor
             this.BubakLocationWorkingHoursStartNUD.Size = new System.Drawing.Size(123, 20);
             this.BubakLocationWorkingHoursStartNUD.TabIndex = 133;
             this.BubakLocationWorkingHoursStartNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // darkLabel15
-            // 
-            this.darkLabel15.AutoSize = true;
-            this.darkLabel15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel15.Location = new System.Drawing.Point(5, 340);
-            this.darkLabel15.Name = "darkLabel15";
-            this.darkLabel15.Size = new System.Drawing.Size(84, 13);
-            this.darkLabel15.TabIndex = 132;
-            this.darkLabel15.Text = "Max Dist Radius";
-            // 
-            // AIGeneralMaxDistRadiusNUD
-            // 
-            this.AIGeneralMaxDistRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.AIGeneralMaxDistRadiusNUD.DecimalPlaces = 2;
-            this.AIGeneralMaxDistRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.AIGeneralMaxDistRadiusNUD.Location = new System.Drawing.Point(119, 338);
-            this.AIGeneralMaxDistRadiusNUD.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.AIGeneralMaxDistRadiusNUD.Minimum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            -2147483648});
-            this.AIGeneralMaxDistRadiusNUD.Name = "AIGeneralMaxDistRadiusNUD";
-            this.AIGeneralMaxDistRadiusNUD.Size = new System.Drawing.Size(105, 20);
-            this.AIGeneralMaxDistRadiusNUD.TabIndex = 131;
-            this.AIGeneralMaxDistRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // darkLabel14
-            // 
-            this.darkLabel14.AutoSize = true;
-            this.darkLabel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel14.Location = new System.Drawing.Point(5, 314);
-            this.darkLabel14.Name = "darkLabel14";
-            this.darkLabel14.Size = new System.Drawing.Size(81, 13);
-            this.darkLabel14.TabIndex = 130;
-            this.darkLabel14.Text = "Min Dist Radius";
-            // 
-            // AIGeneralMinDistRadiusNUD
-            // 
-            this.AIGeneralMinDistRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.AIGeneralMinDistRadiusNUD.DecimalPlaces = 2;
-            this.AIGeneralMinDistRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.AIGeneralMinDistRadiusNUD.Location = new System.Drawing.Point(119, 312);
-            this.AIGeneralMinDistRadiusNUD.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.AIGeneralMinDistRadiusNUD.Minimum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            -2147483648});
-            this.AIGeneralMinDistRadiusNUD.Name = "AIGeneralMinDistRadiusNUD";
-            this.AIGeneralMinDistRadiusNUD.Size = new System.Drawing.Size(105, 20);
-            this.AIGeneralMinDistRadiusNUD.TabIndex = 129;
-            this.AIGeneralMinDistRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // darkLabel1
-            // 
-            this.darkLabel1.AutoSize = true;
-            this.darkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel1.Location = new System.Drawing.Point(4, 288);
-            this.darkLabel1.Name = "darkLabel1";
-            this.darkLabel1.Size = new System.Drawing.Size(78, 13);
-            this.darkLabel1.TabIndex = 122;
-            this.darkLabel1.Text = "Respawn Time";
-            // 
-            // AIGeneralRespawnTimeNUD
-            // 
-            this.AIGeneralRespawnTimeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.AIGeneralRespawnTimeNUD.DecimalPlaces = 2;
-            this.AIGeneralRespawnTimeNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.AIGeneralRespawnTimeNUD.Location = new System.Drawing.Point(119, 286);
-            this.AIGeneralRespawnTimeNUD.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.AIGeneralRespawnTimeNUD.Minimum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            -2147483648});
-            this.AIGeneralRespawnTimeNUD.Name = "AIGeneralRespawnTimeNUD";
-            this.AIGeneralRespawnTimeNUD.Size = new System.Drawing.Size(105, 20);
-            this.AIGeneralRespawnTimeNUD.TabIndex = 121;
-            this.AIGeneralRespawnTimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // BubakLocationNameTB
-            // 
-            this.BubakLocationNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.BubakLocationNameTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.BubakLocationNameTB.Location = new System.Drawing.Point(119, 28);
-            this.BubakLocationNameTB.Name = "BubakLocationNameTB";
-            this.BubakLocationNameTB.Size = new System.Drawing.Size(330, 20);
-            this.BubakLocationNameTB.TabIndex = 204;
-            // 
-            // darkLabel65
-            // 
-            this.darkLabel65.AutoSize = true;
-            this.darkLabel65.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel65.Location = new System.Drawing.Point(5, 31);
-            this.darkLabel65.Name = "darkLabel65";
-            this.darkLabel65.Size = new System.Drawing.Size(77, 13);
-            this.darkLabel65.TabIndex = 205;
-            this.darkLabel65.Text = "Location name";
+            this.BubakLocationWorkingHoursStartNUD.ValueChanged += new System.EventHandler(this.BubakLocationSetWorkingHours_ValueChanged);
             // 
             // BubakLocationWorkingHoursEndNUD
             // 
             this.BubakLocationWorkingHoursEndNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.BubakLocationWorkingHoursEndNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.BubakLocationWorkingHoursEndNUD.Location = new System.Drawing.Point(326, 54);
+            this.BubakLocationWorkingHoursEndNUD.Location = new System.Drawing.Point(320, 0);
             this.BubakLocationWorkingHoursEndNUD.Maximum = new decimal(new int[] {
             24,
             0,
@@ -652,12 +424,13 @@ namespace DayZeEditor
             this.BubakLocationWorkingHoursEndNUD.Size = new System.Drawing.Size(123, 20);
             this.BubakLocationWorkingHoursEndNUD.TabIndex = 206;
             this.BubakLocationWorkingHoursEndNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BubakLocationWorkingHoursEndNUD.ValueChanged += new System.EventHandler(this.BubakLocationSetWorkingHours_ValueChanged);
             // 
             // darkLabel2
             // 
             this.darkLabel2.AutoSize = true;
             this.darkLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel2.Location = new System.Drawing.Point(116, 57);
+            this.darkLabel2.Location = new System.Drawing.Point(114, 3);
             this.darkLabel2.Name = "darkLabel2";
             this.darkLabel2.Size = new System.Drawing.Size(29, 13);
             this.darkLabel2.TabIndex = 207;
@@ -667,48 +440,56 @@ namespace DayZeEditor
             // 
             this.darkLabel4.AutoSize = true;
             this.darkLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel4.Location = new System.Drawing.Point(294, 56);
+            this.darkLabel4.Location = new System.Drawing.Point(288, 2);
             this.darkLabel4.Name = "darkLabel4";
             this.darkLabel4.Size = new System.Drawing.Size(26, 13);
             this.darkLabel4.TabIndex = 208;
             this.darkLabel4.Text = "End";
             // 
-            // darkLabel46
+            // groupBox4
             // 
-            this.darkLabel46.AutoSize = true;
-            this.darkLabel46.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel46.Location = new System.Drawing.Point(116, 159);
-            this.darkLabel46.Name = "darkLabel46";
-            this.darkLabel46.Size = new System.Drawing.Size(20, 13);
-            this.darkLabel46.TabIndex = 214;
-            this.darkLabel46.Text = "Z:-";
+            this.groupBox4.Controls.Add(this.panel3);
+            this.groupBox4.Controls.Add(this.panel4);
+            this.groupBox4.Controls.Add(this.panel10);
+            this.groupBox4.Controls.Add(this.panel9);
+            this.groupBox4.Controls.Add(this.panel5);
+            this.groupBox4.Controls.Add(this.panel6);
+            this.groupBox4.Controls.Add(this.panel8);
+            this.groupBox4.Controls.Add(this.panel7);
+            this.groupBox4.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox4.Location = new System.Drawing.Point(3, 55);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(463, 397);
+            this.groupBox4.TabIndex = 256;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Trigger Stuff";
             // 
-            // darkLabel45
+            // panel3
             // 
-            this.darkLabel45.AutoSize = true;
-            this.darkLabel45.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel45.Location = new System.Drawing.Point(116, 133);
-            this.darkLabel45.Name = "darkLabel45";
-            this.darkLabel45.Size = new System.Drawing.Size(20, 13);
-            this.darkLabel45.TabIndex = 213;
-            this.darkLabel45.Text = "Y:-";
-            // 
-            // darkLabel44
-            // 
-            this.darkLabel44.AutoSize = true;
-            this.darkLabel44.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel44.Location = new System.Drawing.Point(116, 107);
-            this.darkLabel44.Name = "darkLabel44";
-            this.darkLabel44.Size = new System.Drawing.Size(20, 13);
-            this.darkLabel44.TabIndex = 212;
-            this.darkLabel44.Text = "X:-";
+            this.panel3.Controls.Add(this.BubakLocationTriggerPosXNUD);
+            this.panel3.Controls.Add(this.darkLabel59);
+            this.panel3.Controls.Add(this.BubakLocationTriggerPosZNUD);
+            this.panel3.Controls.Add(this.BubakLocationTriggerPosYNUD);
+            this.panel3.Controls.Add(this.darkLabel44);
+            this.panel3.Controls.Add(this.darkLabel45);
+            this.panel3.Controls.Add(this.darkLabel46);
+            this.panel3.Controls.Add(this.BubakLocationTriggerRotZNUD);
+            this.panel3.Controls.Add(this.BubakLocationTriggerRotYNUD);
+            this.panel3.Controls.Add(this.BubakLocationTriggerRotXNUD);
+            this.panel3.Controls.Add(this.darkLabel8);
+            this.panel3.Controls.Add(this.TrigerposRotationLabel);
+            this.panel3.Controls.Add(this.BubakLocationTriggerPositionRotSpecifiedCB);
+            this.panel3.Location = new System.Drawing.Point(3, 16);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(457, 109);
+            this.panel3.TabIndex = 251;
             // 
             // BubakLocationTriggerPosXNUD
             // 
             this.BubakLocationTriggerPosXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.BubakLocationTriggerPosXNUD.DecimalPlaces = 6;
             this.BubakLocationTriggerPosXNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.BubakLocationTriggerPosXNUD.Location = new System.Drawing.Point(142, 105);
+            this.BubakLocationTriggerPosXNUD.Location = new System.Drawing.Point(136, 29);
             this.BubakLocationTriggerPosXNUD.Maximum = new decimal(new int[] {
             20000,
             0,
@@ -723,34 +504,24 @@ namespace DayZeEditor
             this.BubakLocationTriggerPosXNUD.Size = new System.Drawing.Size(146, 20);
             this.BubakLocationTriggerPosXNUD.TabIndex = 209;
             this.BubakLocationTriggerPosXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BubakLocationTriggerPosXNUD.ValueChanged += new System.EventHandler(this.BubakLocationSetTrigger_ValueChanged);
             // 
-            // BubakLocationTriggerPosYNUD
+            // darkLabel59
             // 
-            this.BubakLocationTriggerPosYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.BubakLocationTriggerPosYNUD.DecimalPlaces = 6;
-            this.BubakLocationTriggerPosYNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.BubakLocationTriggerPosYNUD.Location = new System.Drawing.Point(142, 131);
-            this.BubakLocationTriggerPosYNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.BubakLocationTriggerPosYNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.BubakLocationTriggerPosYNUD.Name = "BubakLocationTriggerPosYNUD";
-            this.BubakLocationTriggerPosYNUD.Size = new System.Drawing.Size(146, 20);
-            this.BubakLocationTriggerPosYNUD.TabIndex = 210;
-            this.BubakLocationTriggerPosYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.darkLabel59.AutoSize = true;
+            this.darkLabel59.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel59.Location = new System.Drawing.Point(-2, 6);
+            this.darkLabel59.Name = "darkLabel59";
+            this.darkLabel59.Size = new System.Drawing.Size(80, 13);
+            this.darkLabel59.TabIndex = 140;
+            this.darkLabel59.Text = "Trigger Position";
             // 
             // BubakLocationTriggerPosZNUD
             // 
             this.BubakLocationTriggerPosZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.BubakLocationTriggerPosZNUD.DecimalPlaces = 6;
             this.BubakLocationTriggerPosZNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.BubakLocationTriggerPosZNUD.Location = new System.Drawing.Point(142, 157);
+            this.BubakLocationTriggerPosZNUD.Location = new System.Drawing.Point(136, 81);
             this.BubakLocationTriggerPosZNUD.Maximum = new decimal(new int[] {
             20000,
             0,
@@ -765,57 +536,66 @@ namespace DayZeEditor
             this.BubakLocationTriggerPosZNUD.Size = new System.Drawing.Size(146, 20);
             this.BubakLocationTriggerPosZNUD.TabIndex = 211;
             this.BubakLocationTriggerPosZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BubakLocationTriggerPosZNUD.ValueChanged += new System.EventHandler(this.BubakLocationSetTrigger_ValueChanged);
             // 
-            // BubakLocationTriggerRotXNUD
+            // BubakLocationTriggerPosYNUD
             // 
-            this.BubakLocationTriggerRotXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.BubakLocationTriggerRotXNUD.DecimalPlaces = 6;
-            this.BubakLocationTriggerRotXNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.BubakLocationTriggerRotXNUD.Location = new System.Drawing.Point(303, 105);
-            this.BubakLocationTriggerRotXNUD.Maximum = new decimal(new int[] {
+            this.BubakLocationTriggerPosYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BubakLocationTriggerPosYNUD.DecimalPlaces = 6;
+            this.BubakLocationTriggerPosYNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationTriggerPosYNUD.Location = new System.Drawing.Point(136, 55);
+            this.BubakLocationTriggerPosYNUD.Maximum = new decimal(new int[] {
             20000,
             0,
             0,
             0});
-            this.BubakLocationTriggerRotXNUD.Minimum = new decimal(new int[] {
+            this.BubakLocationTriggerPosYNUD.Minimum = new decimal(new int[] {
             20000,
             0,
             0,
             -2147483648});
-            this.BubakLocationTriggerRotXNUD.Name = "BubakLocationTriggerRotXNUD";
-            this.BubakLocationTriggerRotXNUD.Size = new System.Drawing.Size(146, 20);
-            this.BubakLocationTriggerRotXNUD.TabIndex = 215;
-            this.BubakLocationTriggerRotXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.BubakLocationTriggerRotXNUD.Visible = false;
+            this.BubakLocationTriggerPosYNUD.Name = "BubakLocationTriggerPosYNUD";
+            this.BubakLocationTriggerPosYNUD.Size = new System.Drawing.Size(146, 20);
+            this.BubakLocationTriggerPosYNUD.TabIndex = 210;
+            this.BubakLocationTriggerPosYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BubakLocationTriggerPosYNUD.ValueChanged += new System.EventHandler(this.BubakLocationSetTrigger_ValueChanged);
             // 
-            // BubakLocationTriggerRotYNUD
+            // darkLabel44
             // 
-            this.BubakLocationTriggerRotYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.BubakLocationTriggerRotYNUD.DecimalPlaces = 6;
-            this.BubakLocationTriggerRotYNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.BubakLocationTriggerRotYNUD.Location = new System.Drawing.Point(303, 131);
-            this.BubakLocationTriggerRotYNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.BubakLocationTriggerRotYNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.BubakLocationTriggerRotYNUD.Name = "BubakLocationTriggerRotYNUD";
-            this.BubakLocationTriggerRotYNUD.Size = new System.Drawing.Size(146, 20);
-            this.BubakLocationTriggerRotYNUD.TabIndex = 216;
-            this.BubakLocationTriggerRotYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.BubakLocationTriggerRotYNUD.Visible = false;
+            this.darkLabel44.AutoSize = true;
+            this.darkLabel44.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel44.Location = new System.Drawing.Point(114, 31);
+            this.darkLabel44.Name = "darkLabel44";
+            this.darkLabel44.Size = new System.Drawing.Size(20, 13);
+            this.darkLabel44.TabIndex = 212;
+            this.darkLabel44.Text = "X:-";
+            // 
+            // darkLabel45
+            // 
+            this.darkLabel45.AutoSize = true;
+            this.darkLabel45.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel45.Location = new System.Drawing.Point(114, 57);
+            this.darkLabel45.Name = "darkLabel45";
+            this.darkLabel45.Size = new System.Drawing.Size(20, 13);
+            this.darkLabel45.TabIndex = 213;
+            this.darkLabel45.Text = "Y:-";
+            // 
+            // darkLabel46
+            // 
+            this.darkLabel46.AutoSize = true;
+            this.darkLabel46.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel46.Location = new System.Drawing.Point(114, 83);
+            this.darkLabel46.Name = "darkLabel46";
+            this.darkLabel46.Size = new System.Drawing.Size(20, 13);
+            this.darkLabel46.TabIndex = 214;
+            this.darkLabel46.Text = "Z:-";
             // 
             // BubakLocationTriggerRotZNUD
             // 
             this.BubakLocationTriggerRotZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.BubakLocationTriggerRotZNUD.DecimalPlaces = 6;
             this.BubakLocationTriggerRotZNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.BubakLocationTriggerRotZNUD.Location = new System.Drawing.Point(303, 157);
+            this.BubakLocationTriggerRotZNUD.Location = new System.Drawing.Point(297, 81);
             this.BubakLocationTriggerRotZNUD.Maximum = new decimal(new int[] {
             20000,
             0,
@@ -831,12 +611,59 @@ namespace DayZeEditor
             this.BubakLocationTriggerRotZNUD.TabIndex = 217;
             this.BubakLocationTriggerRotZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.BubakLocationTriggerRotZNUD.Visible = false;
+            this.BubakLocationTriggerRotZNUD.ValueChanged += new System.EventHandler(this.BubakLocationSetTrigger_ValueChanged);
+            // 
+            // BubakLocationTriggerRotYNUD
+            // 
+            this.BubakLocationTriggerRotYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BubakLocationTriggerRotYNUD.DecimalPlaces = 6;
+            this.BubakLocationTriggerRotYNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationTriggerRotYNUD.Location = new System.Drawing.Point(297, 55);
+            this.BubakLocationTriggerRotYNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.BubakLocationTriggerRotYNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.BubakLocationTriggerRotYNUD.Name = "BubakLocationTriggerRotYNUD";
+            this.BubakLocationTriggerRotYNUD.Size = new System.Drawing.Size(146, 20);
+            this.BubakLocationTriggerRotYNUD.TabIndex = 216;
+            this.BubakLocationTriggerRotYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BubakLocationTriggerRotYNUD.Visible = false;
+            this.BubakLocationTriggerRotYNUD.ValueChanged += new System.EventHandler(this.BubakLocationSetTrigger_ValueChanged);
+            // 
+            // BubakLocationTriggerRotXNUD
+            // 
+            this.BubakLocationTriggerRotXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BubakLocationTriggerRotXNUD.DecimalPlaces = 6;
+            this.BubakLocationTriggerRotXNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationTriggerRotXNUD.Location = new System.Drawing.Point(297, 29);
+            this.BubakLocationTriggerRotXNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.BubakLocationTriggerRotXNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.BubakLocationTriggerRotXNUD.Name = "BubakLocationTriggerRotXNUD";
+            this.BubakLocationTriggerRotXNUD.Size = new System.Drawing.Size(146, 20);
+            this.BubakLocationTriggerRotXNUD.TabIndex = 215;
+            this.BubakLocationTriggerRotXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BubakLocationTriggerRotXNUD.Visible = false;
+            this.BubakLocationTriggerRotXNUD.ValueChanged += new System.EventHandler(this.BubakLocationSetTrigger_ValueChanged);
             // 
             // darkLabel8
             // 
             this.darkLabel8.AutoSize = true;
             this.darkLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel8.Location = new System.Drawing.Point(180, 82);
+            this.darkLabel8.Location = new System.Drawing.Point(174, 6);
             this.darkLabel8.Name = "darkLabel8";
             this.darkLabel8.Size = new System.Drawing.Size(44, 13);
             this.darkLabel8.TabIndex = 221;
@@ -846,7 +673,7 @@ namespace DayZeEditor
             // 
             this.TrigerposRotationLabel.AutoSize = true;
             this.TrigerposRotationLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.TrigerposRotationLabel.Location = new System.Drawing.Point(348, 82);
+            this.TrigerposRotationLabel.Location = new System.Drawing.Point(342, 6);
             this.TrigerposRotationLabel.Name = "TrigerposRotationLabel";
             this.TrigerposRotationLabel.Size = new System.Drawing.Size(47, 13);
             this.TrigerposRotationLabel.TabIndex = 222;
@@ -858,7 +685,7 @@ namespace DayZeEditor
             this.BubakLocationTriggerPositionRotSpecifiedCB.AutoSize = true;
             this.BubakLocationTriggerPositionRotSpecifiedCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BubakLocationTriggerPositionRotSpecifiedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.BubakLocationTriggerPositionRotSpecifiedCB.Location = new System.Drawing.Point(7, 103);
+            this.BubakLocationTriggerPositionRotSpecifiedCB.Location = new System.Drawing.Point(1, 27);
             this.BubakLocationTriggerPositionRotSpecifiedCB.Name = "BubakLocationTriggerPositionRotSpecifiedCB";
             this.BubakLocationTriggerPositionRotSpecifiedCB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.BubakLocationTriggerPositionRotSpecifiedCB.Size = new System.Drawing.Size(88, 17);
@@ -868,11 +695,1045 @@ namespace DayZeEditor
             this.BubakLocationTriggerPositionRotSpecifiedCB.UseVisualStyleBackColor = true;
             this.BubakLocationTriggerPositionRotSpecifiedCB.CheckedChanged += new System.EventHandler(this.BubakLocationTriggerPositionRotSpecifiedCB_CheckedChanged);
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.BubakLocationTriggerMaxXNUD);
+            this.panel4.Controls.Add(this.BubakLocationTriggerMinZNUD);
+            this.panel4.Controls.Add(this.BubakLocationTriggerMinYNUD);
+            this.panel4.Controls.Add(this.BubakLocationTriggerMinXNUD);
+            this.panel4.Controls.Add(this.BubakLocationTriggerMaxZNUD);
+            this.panel4.Controls.Add(this.BubakLocationTriggerMaxYNUD);
+            this.panel4.Controls.Add(this.darkLabel5);
+            this.panel4.Controls.Add(this.darkLabel1);
+            this.panel4.Controls.Add(this.darkLabel6);
+            this.panel4.Controls.Add(this.darkLabel10);
+            this.panel4.Controls.Add(this.darkLabel9);
+            this.panel4.Controls.Add(this.darkLabel7);
+            this.panel4.Location = new System.Drawing.Point(3, 129);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(457, 101);
+            this.panel4.TabIndex = 252;
+            // 
+            // BubakLocationTriggerMaxXNUD
+            // 
+            this.BubakLocationTriggerMaxXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BubakLocationTriggerMaxXNUD.DecimalPlaces = 1;
+            this.BubakLocationTriggerMaxXNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationTriggerMaxXNUD.Location = new System.Drawing.Point(297, 26);
+            this.BubakLocationTriggerMaxXNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.BubakLocationTriggerMaxXNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.BubakLocationTriggerMaxXNUD.Name = "BubakLocationTriggerMaxXNUD";
+            this.BubakLocationTriggerMaxXNUD.Size = new System.Drawing.Size(146, 20);
+            this.BubakLocationTriggerMaxXNUD.TabIndex = 227;
+            this.BubakLocationTriggerMaxXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BubakLocationTriggerMaxXNUD.ValueChanged += new System.EventHandler(this.BubakLocationSetTriggerMaxs_ValueChanged);
+            // 
+            // BubakLocationTriggerMinZNUD
+            // 
+            this.BubakLocationTriggerMinZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BubakLocationTriggerMinZNUD.DecimalPlaces = 1;
+            this.BubakLocationTriggerMinZNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationTriggerMinZNUD.Location = new System.Drawing.Point(136, 78);
+            this.BubakLocationTriggerMinZNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.BubakLocationTriggerMinZNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.BubakLocationTriggerMinZNUD.Name = "BubakLocationTriggerMinZNUD";
+            this.BubakLocationTriggerMinZNUD.Size = new System.Drawing.Size(146, 20);
+            this.BubakLocationTriggerMinZNUD.TabIndex = 226;
+            this.BubakLocationTriggerMinZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BubakLocationTriggerMinZNUD.ValueChanged += new System.EventHandler(this.BubakLocationSetTriggerMins_ValueChanged);
+            // 
+            // BubakLocationTriggerMinYNUD
+            // 
+            this.BubakLocationTriggerMinYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BubakLocationTriggerMinYNUD.DecimalPlaces = 1;
+            this.BubakLocationTriggerMinYNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationTriggerMinYNUD.Location = new System.Drawing.Point(136, 52);
+            this.BubakLocationTriggerMinYNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.BubakLocationTriggerMinYNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.BubakLocationTriggerMinYNUD.Name = "BubakLocationTriggerMinYNUD";
+            this.BubakLocationTriggerMinYNUD.Size = new System.Drawing.Size(146, 20);
+            this.BubakLocationTriggerMinYNUD.TabIndex = 225;
+            this.BubakLocationTriggerMinYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BubakLocationTriggerMinYNUD.ValueChanged += new System.EventHandler(this.BubakLocationSetTriggerMins_ValueChanged);
+            // 
+            // BubakLocationTriggerMinXNUD
+            // 
+            this.BubakLocationTriggerMinXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BubakLocationTriggerMinXNUD.DecimalPlaces = 1;
+            this.BubakLocationTriggerMinXNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationTriggerMinXNUD.Location = new System.Drawing.Point(136, 26);
+            this.BubakLocationTriggerMinXNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.BubakLocationTriggerMinXNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.BubakLocationTriggerMinXNUD.Name = "BubakLocationTriggerMinXNUD";
+            this.BubakLocationTriggerMinXNUD.Size = new System.Drawing.Size(146, 20);
+            this.BubakLocationTriggerMinXNUD.TabIndex = 224;
+            this.BubakLocationTriggerMinXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BubakLocationTriggerMinXNUD.ValueChanged += new System.EventHandler(this.BubakLocationSetTriggerMins_ValueChanged);
+            // 
+            // BubakLocationTriggerMaxZNUD
+            // 
+            this.BubakLocationTriggerMaxZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BubakLocationTriggerMaxZNUD.DecimalPlaces = 1;
+            this.BubakLocationTriggerMaxZNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationTriggerMaxZNUD.Location = new System.Drawing.Point(297, 78);
+            this.BubakLocationTriggerMaxZNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.BubakLocationTriggerMaxZNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.BubakLocationTriggerMaxZNUD.Name = "BubakLocationTriggerMaxZNUD";
+            this.BubakLocationTriggerMaxZNUD.Size = new System.Drawing.Size(146, 20);
+            this.BubakLocationTriggerMaxZNUD.TabIndex = 229;
+            this.BubakLocationTriggerMaxZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BubakLocationTriggerMaxZNUD.ValueChanged += new System.EventHandler(this.BubakLocationSetTriggerMaxs_ValueChanged);
+            // 
+            // BubakLocationTriggerMaxYNUD
+            // 
+            this.BubakLocationTriggerMaxYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BubakLocationTriggerMaxYNUD.DecimalPlaces = 1;
+            this.BubakLocationTriggerMaxYNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationTriggerMaxYNUD.Location = new System.Drawing.Point(297, 52);
+            this.BubakLocationTriggerMaxYNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.BubakLocationTriggerMaxYNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.BubakLocationTriggerMaxYNUD.Name = "BubakLocationTriggerMaxYNUD";
+            this.BubakLocationTriggerMaxYNUD.Size = new System.Drawing.Size(146, 20);
+            this.BubakLocationTriggerMaxYNUD.TabIndex = 228;
+            this.BubakLocationTriggerMaxYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BubakLocationTriggerMaxYNUD.ValueChanged += new System.EventHandler(this.BubakLocationSetTriggerMaxs_ValueChanged);
+            // 
+            // darkLabel5
+            // 
+            this.darkLabel5.AutoSize = true;
+            this.darkLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel5.Location = new System.Drawing.Point(184, 9);
+            this.darkLabel5.Name = "darkLabel5";
+            this.darkLabel5.Size = new System.Drawing.Size(29, 13);
+            this.darkLabel5.TabIndex = 230;
+            this.darkLabel5.Text = "Mins";
+            // 
+            // darkLabel1
+            // 
+            this.darkLabel1.AutoSize = true;
+            this.darkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel1.Location = new System.Drawing.Point(347, 9);
+            this.darkLabel1.Name = "darkLabel1";
+            this.darkLabel1.Size = new System.Drawing.Size(32, 13);
+            this.darkLabel1.TabIndex = 231;
+            this.darkLabel1.Text = "Maxs";
+            // 
+            // darkLabel6
+            // 
+            this.darkLabel6.AutoSize = true;
+            this.darkLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel6.Location = new System.Drawing.Point(-1, 9);
+            this.darkLabel6.Name = "darkLabel6";
+            this.darkLabel6.Size = new System.Drawing.Size(90, 13);
+            this.darkLabel6.TabIndex = 232;
+            this.darkLabel6.Text = "Trigger Mins/Max";
+            // 
+            // darkLabel10
+            // 
+            this.darkLabel10.AutoSize = true;
+            this.darkLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel10.Location = new System.Drawing.Point(114, 28);
+            this.darkLabel10.Name = "darkLabel10";
+            this.darkLabel10.Size = new System.Drawing.Size(20, 13);
+            this.darkLabel10.TabIndex = 233;
+            this.darkLabel10.Text = "X:-";
+            // 
+            // darkLabel9
+            // 
+            this.darkLabel9.AutoSize = true;
+            this.darkLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel9.Location = new System.Drawing.Point(114, 54);
+            this.darkLabel9.Name = "darkLabel9";
+            this.darkLabel9.Size = new System.Drawing.Size(20, 13);
+            this.darkLabel9.TabIndex = 234;
+            this.darkLabel9.Text = "Y:-";
+            // 
+            // darkLabel7
+            // 
+            this.darkLabel7.AutoSize = true;
+            this.darkLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel7.Location = new System.Drawing.Point(114, 80);
+            this.darkLabel7.Name = "darkLabel7";
+            this.darkLabel7.Size = new System.Drawing.Size(20, 13);
+            this.darkLabel7.TabIndex = 235;
+            this.darkLabel7.Text = "Z:-";
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.BubakLocationnotificationtimeNUD);
+            this.panel10.Controls.Add(this.darkLabel16);
+            this.panel10.Location = new System.Drawing.Point(3, 340);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(457, 20);
+            this.panel10.TabIndex = 254;
+            // 
+            // BubakLocationnotificationtimeNUD
+            // 
+            this.BubakLocationnotificationtimeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BubakLocationnotificationtimeNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationnotificationtimeNUD.Location = new System.Drawing.Point(136, 0);
+            this.BubakLocationnotificationtimeNUD.Maximum = new decimal(new int[] {
+            3888000,
+            0,
+            0,
+            0});
+            this.BubakLocationnotificationtimeNUD.Name = "BubakLocationnotificationtimeNUD";
+            this.BubakLocationnotificationtimeNUD.Size = new System.Drawing.Size(146, 20);
+            this.BubakLocationnotificationtimeNUD.TabIndex = 244;
+            this.BubakLocationnotificationtimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BubakLocationnotificationtimeNUD.ValueChanged += new System.EventHandler(this.BubakLocationnotificationtimeNUD_ValueChanged);
+            // 
+            // darkLabel16
+            // 
+            this.darkLabel16.AutoSize = true;
+            this.darkLabel16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel16.Location = new System.Drawing.Point(0, 2);
+            this.darkLabel16.Name = "darkLabel16";
+            this.darkLabel16.Size = new System.Drawing.Size(86, 13);
+            this.darkLabel16.TabIndex = 247;
+            this.darkLabel16.Text = "Notification Time";
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.BubakLocationnotificationTB);
+            this.panel9.Controls.Add(this.darkLabel14);
+            this.panel9.Location = new System.Drawing.Point(3, 314);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(457, 20);
+            this.panel9.TabIndex = 254;
+            // 
+            // BubakLocationnotificationTB
+            // 
+            this.BubakLocationnotificationTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BubakLocationnotificationTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationnotificationTB.Location = new System.Drawing.Point(117, 0);
+            this.BubakLocationnotificationTB.Name = "BubakLocationnotificationTB";
+            this.BubakLocationnotificationTB.Size = new System.Drawing.Size(326, 20);
+            this.BubakLocationnotificationTB.TabIndex = 242;
+            this.BubakLocationnotificationTB.TextChanged += new System.EventHandler(this.BubakLocationnotificationTB_TextChanged);
+            // 
+            // darkLabel14
+            // 
+            this.darkLabel14.AutoSize = true;
+            this.darkLabel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel14.Location = new System.Drawing.Point(-1, 3);
+            this.darkLabel14.Name = "darkLabel14";
+            this.darkLabel14.Size = new System.Drawing.Size(60, 13);
+            this.darkLabel14.TabIndex = 243;
+            this.darkLabel14.Text = "Notification";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.BubakLocationtriggerdelayNUD);
+            this.panel5.Controls.Add(this.darkLabel15);
+            this.panel5.Location = new System.Drawing.Point(3, 366);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(457, 20);
+            this.panel5.TabIndex = 253;
+            // 
+            // BubakLocationtriggerdelayNUD
+            // 
+            this.BubakLocationtriggerdelayNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BubakLocationtriggerdelayNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationtriggerdelayNUD.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.BubakLocationtriggerdelayNUD.Location = new System.Drawing.Point(136, 0);
+            this.BubakLocationtriggerdelayNUD.Maximum = new decimal(new int[] {
+            3888000,
+            0,
+            0,
+            0});
+            this.BubakLocationtriggerdelayNUD.Name = "BubakLocationtriggerdelayNUD";
+            this.BubakLocationtriggerdelayNUD.Size = new System.Drawing.Size(146, 20);
+            this.BubakLocationtriggerdelayNUD.TabIndex = 245;
+            this.BubakLocationtriggerdelayNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BubakLocationtriggerdelayNUD.ValueChanged += new System.EventHandler(this.BubakLocationtriggerdelayNUD_ValueChanged);
+            // 
+            // darkLabel15
+            // 
+            this.darkLabel15.AutoSize = true;
+            this.darkLabel15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel15.Location = new System.Drawing.Point(-2, 2);
+            this.darkLabel15.Name = "darkLabel15";
+            this.darkLabel15.Size = new System.Drawing.Size(70, 13);
+            this.darkLabel15.TabIndex = 246;
+            this.darkLabel15.Text = "Trigger Delay";
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.BukabLocationtriggerradiusNUD);
+            this.panel6.Controls.Add(this.darkLabel11);
+            this.panel6.Location = new System.Drawing.Point(3, 236);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(457, 20);
+            this.panel6.TabIndex = 254;
+            // 
+            // BukabLocationtriggerradiusNUD
+            // 
+            this.BukabLocationtriggerradiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BukabLocationtriggerradiusNUD.DecimalPlaces = 1;
+            this.BukabLocationtriggerradiusNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.BukabLocationtriggerradiusNUD.Location = new System.Drawing.Point(136, 0);
+            this.BukabLocationtriggerradiusNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.BukabLocationtriggerradiusNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.BukabLocationtriggerradiusNUD.Name = "BukabLocationtriggerradiusNUD";
+            this.BukabLocationtriggerradiusNUD.Size = new System.Drawing.Size(146, 20);
+            this.BukabLocationtriggerradiusNUD.TabIndex = 236;
+            this.BukabLocationtriggerradiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BukabLocationtriggerradiusNUD.ValueChanged += new System.EventHandler(this.BukabLocationtriggerradiusNUD_ValueChanged);
+            // 
+            // darkLabel11
+            // 
+            this.darkLabel11.AutoSize = true;
+            this.darkLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel11.Location = new System.Drawing.Point(-2, 2);
+            this.darkLabel11.Name = "darkLabel11";
+            this.darkLabel11.Size = new System.Drawing.Size(76, 13);
+            this.darkLabel11.TabIndex = 237;
+            this.darkLabel11.Text = "Trigger Radius";
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.BubakLocationtriggercylheightNUD);
+            this.panel8.Controls.Add(this.darkLabel13);
+            this.panel8.Location = new System.Drawing.Point(3, 288);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(457, 20);
+            this.panel8.TabIndex = 254;
+            // 
+            // BubakLocationtriggercylheightNUD
+            // 
+            this.BubakLocationtriggercylheightNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BubakLocationtriggercylheightNUD.DecimalPlaces = 1;
+            this.BubakLocationtriggercylheightNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationtriggercylheightNUD.Location = new System.Drawing.Point(136, 0);
+            this.BubakLocationtriggercylheightNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.BubakLocationtriggercylheightNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.BubakLocationtriggercylheightNUD.Name = "BubakLocationtriggercylheightNUD";
+            this.BubakLocationtriggercylheightNUD.Size = new System.Drawing.Size(146, 20);
+            this.BubakLocationtriggercylheightNUD.TabIndex = 240;
+            this.BubakLocationtriggercylheightNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BubakLocationtriggercylheightNUD.ValueChanged += new System.EventHandler(this.BubakLocationtriggercylheightNUD_ValueChanged);
+            // 
+            // darkLabel13
+            // 
+            this.darkLabel13.AutoSize = true;
+            this.darkLabel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel13.Location = new System.Drawing.Point(-2, 2);
+            this.darkLabel13.Name = "darkLabel13";
+            this.darkLabel13.Size = new System.Drawing.Size(114, 13);
+            this.darkLabel13.TabIndex = 241;
+            this.darkLabel13.Text = "Trigger Cylinder Height";
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.darkLabel12);
+            this.panel7.Controls.Add(this.BubakLocationtriggercylradiusNUD);
+            this.panel7.Location = new System.Drawing.Point(3, 262);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(457, 20);
+            this.panel7.TabIndex = 254;
+            // 
+            // darkLabel12
+            // 
+            this.darkLabel12.AutoSize = true;
+            this.darkLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel12.Location = new System.Drawing.Point(-2, 2);
+            this.darkLabel12.Name = "darkLabel12";
+            this.darkLabel12.Size = new System.Drawing.Size(116, 13);
+            this.darkLabel12.TabIndex = 239;
+            this.darkLabel12.Text = "Trigger Cylinder Radius";
+            // 
+            // BubakLocationtriggercylradiusNUD
+            // 
+            this.BubakLocationtriggercylradiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BubakLocationtriggercylradiusNUD.DecimalPlaces = 1;
+            this.BubakLocationtriggercylradiusNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationtriggercylradiusNUD.Location = new System.Drawing.Point(136, 0);
+            this.BubakLocationtriggercylradiusNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.BubakLocationtriggercylradiusNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.BubakLocationtriggercylradiusNUD.Name = "BubakLocationtriggercylradiusNUD";
+            this.BubakLocationtriggercylradiusNUD.Size = new System.Drawing.Size(146, 20);
+            this.BubakLocationtriggercylradiusNUD.TabIndex = 238;
+            this.BubakLocationtriggercylradiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BubakLocationtriggercylradiusNUD.ValueChanged += new System.EventHandler(this.BubakLocationtriggercylradiusNUD_ValueChanged);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.darkButton12);
+            this.groupBox2.Controls.Add(this.darkButton11);
+            this.groupBox2.Controls.Add(this.darkButton10);
+            this.groupBox2.Controls.Add(this.darkButton8);
+            this.groupBox2.Controls.Add(this.darkButton9);
+            this.groupBox2.Controls.Add(this.darkButton7);
+            this.groupBox2.Controls.Add(this.darkLabel28);
+            this.groupBox2.Controls.Add(this.BubakLocationbubakinventoryLB);
+            this.groupBox2.Controls.Add(this.darkButton6);
+            this.groupBox2.Controls.Add(this.darkButton5);
+            this.groupBox2.Controls.Add(this.darkLabel27);
+            this.groupBox2.Controls.Add(this.BubakLocationBubaciLB);
+            this.groupBox2.Controls.Add(this.panel15);
+            this.groupBox2.Controls.Add(this.panel13);
+            this.groupBox2.Controls.Add(this.panel11);
+            this.groupBox2.Controls.Add(this.darkLabel17);
+            this.groupBox2.Controls.Add(this.BubakLocationSpawnerPosLB);
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox2.Location = new System.Drawing.Point(472, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(777, 449);
+            this.groupBox2.TabIndex = 255;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Spawner Stuff";
+            // 
+            // darkButton12
+            // 
+            this.darkButton12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton12.Location = new System.Drawing.Point(158, 389);
+            this.darkButton12.Name = "darkButton12";
+            this.darkButton12.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton12.Size = new System.Drawing.Size(145, 23);
+            this.darkButton12.TabIndex = 269;
+            this.darkButton12.Text = "Import from DZE";
+            this.darkButton12.Click += new System.EventHandler(this.darkButton12_Click);
+            // 
+            // darkButton11
+            // 
+            this.darkButton11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton11.Location = new System.Drawing.Point(158, 418);
+            this.darkButton11.Name = "darkButton11";
+            this.darkButton11.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton11.Size = new System.Drawing.Size(145, 23);
+            this.darkButton11.TabIndex = 138;
+            this.darkButton11.Text = "Export to DZE";
+            this.darkButton11.Click += new System.EventHandler(this.darkButton11_Click);
+            // 
+            // darkButton10
+            // 
+            this.darkButton10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton10.Location = new System.Drawing.Point(6, 418);
+            this.darkButton10.Name = "darkButton10";
+            this.darkButton10.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton10.Size = new System.Drawing.Size(146, 23);
+            this.darkButton10.TabIndex = 268;
+            this.darkButton10.Text = "Remove Selected";
+            this.darkButton10.Click += new System.EventHandler(this.darkButton10_Click);
+            // 
+            // darkButton8
+            // 
+            this.darkButton8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton8.Location = new System.Drawing.Point(620, 418);
+            this.darkButton8.Name = "darkButton8";
+            this.darkButton8.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton8.Size = new System.Drawing.Size(132, 23);
+            this.darkButton8.TabIndex = 267;
+            this.darkButton8.Text = "Remove Selected";
+            this.darkButton8.Click += new System.EventHandler(this.darkButton8_Click);
+            // 
+            // darkButton9
+            // 
+            this.darkButton9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton9.Location = new System.Drawing.Point(534, 418);
+            this.darkButton9.Name = "darkButton9";
+            this.darkButton9.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton9.Size = new System.Drawing.Size(80, 23);
+            this.darkButton9.TabIndex = 266;
+            this.darkButton9.Text = "Add New";
+            this.darkButton9.Click += new System.EventHandler(this.darkButton9_Click);
+            // 
+            // darkButton7
+            // 
+            this.darkButton7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton7.Location = new System.Drawing.Point(395, 418);
+            this.darkButton7.Name = "darkButton7";
+            this.darkButton7.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton7.Size = new System.Drawing.Size(132, 23);
+            this.darkButton7.TabIndex = 265;
+            this.darkButton7.Text = "Remove Selected";
+            this.darkButton7.Click += new System.EventHandler(this.darkButton7_Click);
+            // 
+            // darkLabel28
+            // 
+            this.darkLabel28.AutoSize = true;
+            this.darkLabel28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel28.Location = new System.Drawing.Point(541, 172);
+            this.darkLabel28.Name = "darkLabel28";
+            this.darkLabel28.Size = new System.Drawing.Size(85, 13);
+            this.darkLabel28.TabIndex = 264;
+            this.darkLabel28.Text = "Bubak Inventory";
+            // 
+            // BubakLocationbubakinventoryLB
+            // 
+            this.BubakLocationbubakinventoryLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.BubakLocationbubakinventoryLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BubakLocationbubakinventoryLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.BubakLocationbubakinventoryLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationbubakinventoryLB.FormattingEnabled = true;
+            this.BubakLocationbubakinventoryLB.Location = new System.Drawing.Point(535, 187);
+            this.BubakLocationbubakinventoryLB.Name = "BubakLocationbubakinventoryLB";
+            this.BubakLocationbubakinventoryLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.BubakLocationbubakinventoryLB.Size = new System.Drawing.Size(217, 225);
+            this.BubakLocationbubakinventoryLB.TabIndex = 263;
+            this.BubakLocationbubakinventoryLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            // 
+            // darkButton6
+            // 
+            this.darkButton6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton6.Location = new System.Drawing.Point(6, 389);
+            this.darkButton6.Name = "darkButton6";
+            this.darkButton6.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton6.Size = new System.Drawing.Size(146, 23);
+            this.darkButton6.TabIndex = 262;
+            this.darkButton6.Text = "Add New";
+            this.darkButton6.Click += new System.EventHandler(this.darkButton6_Click);
+            // 
+            // darkButton5
+            // 
+            this.darkButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton5.Location = new System.Drawing.Point(309, 418);
+            this.darkButton5.Name = "darkButton5";
+            this.darkButton5.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton5.Size = new System.Drawing.Size(80, 23);
+            this.darkButton5.TabIndex = 261;
+            this.darkButton5.Text = "Add New";
+            this.darkButton5.Click += new System.EventHandler(this.darkButton5_Click);
+            // 
+            // darkLabel27
+            // 
+            this.darkLabel27.AutoSize = true;
+            this.darkLabel27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel27.Location = new System.Drawing.Point(309, 171);
+            this.darkLabel27.Name = "darkLabel27";
+            this.darkLabel27.Size = new System.Drawing.Size(40, 13);
+            this.darkLabel27.TabIndex = 224;
+            this.darkLabel27.Text = "Bubaci";
+            // 
+            // BubakLocationBubaciLB
+            // 
+            this.BubakLocationBubaciLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.BubakLocationBubaciLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BubakLocationBubaciLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.BubakLocationBubaciLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationBubaciLB.FormattingEnabled = true;
+            this.BubakLocationBubaciLB.Location = new System.Drawing.Point(310, 187);
+            this.BubakLocationBubaciLB.Name = "BubakLocationBubaciLB";
+            this.BubakLocationBubaciLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.BubakLocationBubaciLB.Size = new System.Drawing.Size(217, 225);
+            this.BubakLocationBubaciLB.TabIndex = 260;
+            this.BubakLocationBubaciLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            // 
+            // panel15
+            // 
+            this.panel15.Controls.Add(this.BubakLocationSpawnPositionXNUD);
+            this.panel15.Controls.Add(this.darkLabel22);
+            this.panel15.Controls.Add(this.BubakLocationSpawnPositionZNUD);
+            this.panel15.Controls.Add(this.BubakLocationSpawnPositionYNUD);
+            this.panel15.Controls.Add(this.darkLabel23);
+            this.panel15.Controls.Add(this.darkLabel24);
+            this.panel15.Controls.Add(this.darkLabel25);
+            this.panel15.Controls.Add(this.BubakLocationSpawnRotationZNUD);
+            this.panel15.Controls.Add(this.BubakLocationSpawnRotationYNUD);
+            this.panel15.Controls.Add(this.BubakLocationSpawnRotationXNUD);
+            this.panel15.Controls.Add(this.darkLabel26);
+            this.panel15.Controls.Add(this.BubakLocationSpawnPositionRotaionLabel);
+            this.panel15.Controls.Add(this.checkBox1);
+            this.panel15.Location = new System.Drawing.Point(309, 8);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(457, 109);
+            this.panel15.TabIndex = 259;
+            // 
+            // BubakLocationSpawnPositionXNUD
+            // 
+            this.BubakLocationSpawnPositionXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BubakLocationSpawnPositionXNUD.DecimalPlaces = 6;
+            this.BubakLocationSpawnPositionXNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationSpawnPositionXNUD.Location = new System.Drawing.Point(136, 29);
+            this.BubakLocationSpawnPositionXNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.BubakLocationSpawnPositionXNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.BubakLocationSpawnPositionXNUD.Name = "BubakLocationSpawnPositionXNUD";
+            this.BubakLocationSpawnPositionXNUD.Size = new System.Drawing.Size(146, 20);
+            this.BubakLocationSpawnPositionXNUD.TabIndex = 209;
+            this.BubakLocationSpawnPositionXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BubakLocationSpawnPositionXNUD.ValueChanged += new System.EventHandler(this.BubakLocationSetSpawnPosition_ValueChanged);
+            // 
+            // darkLabel22
+            // 
+            this.darkLabel22.AutoSize = true;
+            this.darkLabel22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel22.Location = new System.Drawing.Point(-2, 6);
+            this.darkLabel22.Name = "darkLabel22";
+            this.darkLabel22.Size = new System.Drawing.Size(80, 13);
+            this.darkLabel22.TabIndex = 140;
+            this.darkLabel22.Text = "Spawn Position";
+            // 
+            // BubakLocationSpawnPositionZNUD
+            // 
+            this.BubakLocationSpawnPositionZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BubakLocationSpawnPositionZNUD.DecimalPlaces = 6;
+            this.BubakLocationSpawnPositionZNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationSpawnPositionZNUD.Location = new System.Drawing.Point(136, 81);
+            this.BubakLocationSpawnPositionZNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.BubakLocationSpawnPositionZNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.BubakLocationSpawnPositionZNUD.Name = "BubakLocationSpawnPositionZNUD";
+            this.BubakLocationSpawnPositionZNUD.Size = new System.Drawing.Size(146, 20);
+            this.BubakLocationSpawnPositionZNUD.TabIndex = 211;
+            this.BubakLocationSpawnPositionZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BubakLocationSpawnPositionZNUD.ValueChanged += new System.EventHandler(this.BubakLocationSetSpawnPosition_ValueChanged);
+            // 
+            // BubakLocationSpawnPositionYNUD
+            // 
+            this.BubakLocationSpawnPositionYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BubakLocationSpawnPositionYNUD.DecimalPlaces = 6;
+            this.BubakLocationSpawnPositionYNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationSpawnPositionYNUD.Location = new System.Drawing.Point(136, 55);
+            this.BubakLocationSpawnPositionYNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.BubakLocationSpawnPositionYNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.BubakLocationSpawnPositionYNUD.Name = "BubakLocationSpawnPositionYNUD";
+            this.BubakLocationSpawnPositionYNUD.Size = new System.Drawing.Size(146, 20);
+            this.BubakLocationSpawnPositionYNUD.TabIndex = 210;
+            this.BubakLocationSpawnPositionYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BubakLocationSpawnPositionYNUD.ValueChanged += new System.EventHandler(this.BubakLocationSetSpawnPosition_ValueChanged);
+            // 
+            // darkLabel23
+            // 
+            this.darkLabel23.AutoSize = true;
+            this.darkLabel23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel23.Location = new System.Drawing.Point(114, 31);
+            this.darkLabel23.Name = "darkLabel23";
+            this.darkLabel23.Size = new System.Drawing.Size(20, 13);
+            this.darkLabel23.TabIndex = 212;
+            this.darkLabel23.Text = "X:-";
+            // 
+            // darkLabel24
+            // 
+            this.darkLabel24.AutoSize = true;
+            this.darkLabel24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel24.Location = new System.Drawing.Point(114, 57);
+            this.darkLabel24.Name = "darkLabel24";
+            this.darkLabel24.Size = new System.Drawing.Size(20, 13);
+            this.darkLabel24.TabIndex = 213;
+            this.darkLabel24.Text = "Y:-";
+            // 
+            // darkLabel25
+            // 
+            this.darkLabel25.AutoSize = true;
+            this.darkLabel25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel25.Location = new System.Drawing.Point(114, 83);
+            this.darkLabel25.Name = "darkLabel25";
+            this.darkLabel25.Size = new System.Drawing.Size(20, 13);
+            this.darkLabel25.TabIndex = 214;
+            this.darkLabel25.Text = "Z:-";
+            // 
+            // BubakLocationSpawnRotationZNUD
+            // 
+            this.BubakLocationSpawnRotationZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BubakLocationSpawnRotationZNUD.DecimalPlaces = 6;
+            this.BubakLocationSpawnRotationZNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationSpawnRotationZNUD.Location = new System.Drawing.Point(297, 81);
+            this.BubakLocationSpawnRotationZNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.BubakLocationSpawnRotationZNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.BubakLocationSpawnRotationZNUD.Name = "BubakLocationSpawnRotationZNUD";
+            this.BubakLocationSpawnRotationZNUD.Size = new System.Drawing.Size(146, 20);
+            this.BubakLocationSpawnRotationZNUD.TabIndex = 217;
+            this.BubakLocationSpawnRotationZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BubakLocationSpawnRotationZNUD.Visible = false;
+            this.BubakLocationSpawnRotationZNUD.ValueChanged += new System.EventHandler(this.BubakLocationSetSpawnPosition_ValueChanged);
+            // 
+            // BubakLocationSpawnRotationYNUD
+            // 
+            this.BubakLocationSpawnRotationYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BubakLocationSpawnRotationYNUD.DecimalPlaces = 6;
+            this.BubakLocationSpawnRotationYNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationSpawnRotationYNUD.Location = new System.Drawing.Point(297, 55);
+            this.BubakLocationSpawnRotationYNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.BubakLocationSpawnRotationYNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.BubakLocationSpawnRotationYNUD.Name = "BubakLocationSpawnRotationYNUD";
+            this.BubakLocationSpawnRotationYNUD.Size = new System.Drawing.Size(146, 20);
+            this.BubakLocationSpawnRotationYNUD.TabIndex = 216;
+            this.BubakLocationSpawnRotationYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BubakLocationSpawnRotationYNUD.Visible = false;
+            this.BubakLocationSpawnRotationYNUD.ValueChanged += new System.EventHandler(this.BubakLocationSetSpawnPosition_ValueChanged);
+            // 
+            // BubakLocationSpawnRotationXNUD
+            // 
+            this.BubakLocationSpawnRotationXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BubakLocationSpawnRotationXNUD.DecimalPlaces = 6;
+            this.BubakLocationSpawnRotationXNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationSpawnRotationXNUD.Location = new System.Drawing.Point(297, 29);
+            this.BubakLocationSpawnRotationXNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.BubakLocationSpawnRotationXNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.BubakLocationSpawnRotationXNUD.Name = "BubakLocationSpawnRotationXNUD";
+            this.BubakLocationSpawnRotationXNUD.Size = new System.Drawing.Size(146, 20);
+            this.BubakLocationSpawnRotationXNUD.TabIndex = 215;
+            this.BubakLocationSpawnRotationXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BubakLocationSpawnRotationXNUD.Visible = false;
+            this.BubakLocationSpawnRotationXNUD.ValueChanged += new System.EventHandler(this.BubakLocationSetSpawnPosition_ValueChanged);
+            // 
+            // darkLabel26
+            // 
+            this.darkLabel26.AutoSize = true;
+            this.darkLabel26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel26.Location = new System.Drawing.Point(174, 6);
+            this.darkLabel26.Name = "darkLabel26";
+            this.darkLabel26.Size = new System.Drawing.Size(44, 13);
+            this.darkLabel26.TabIndex = 221;
+            this.darkLabel26.Text = "Position";
+            // 
+            // BubakLocationSpawnPositionRotaionLabel
+            // 
+            this.BubakLocationSpawnPositionRotaionLabel.AutoSize = true;
+            this.BubakLocationSpawnPositionRotaionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.BubakLocationSpawnPositionRotaionLabel.Location = new System.Drawing.Point(342, 6);
+            this.BubakLocationSpawnPositionRotaionLabel.Name = "BubakLocationSpawnPositionRotaionLabel";
+            this.BubakLocationSpawnPositionRotaionLabel.Size = new System.Drawing.Size(47, 13);
+            this.BubakLocationSpawnPositionRotaionLabel.TabIndex = 222;
+            this.BubakLocationSpawnPositionRotaionLabel.Text = "Rotation";
+            this.BubakLocationSpawnPositionRotaionLabel.Visible = false;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBox1.ForeColor = System.Drawing.SystemColors.Control;
+            this.checkBox1.Location = new System.Drawing.Point(1, 27);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.checkBox1.Size = new System.Drawing.Size(88, 17);
+            this.checkBox1.TabIndex = 223;
+            this.checkBox1.Text = "Use Rotation";
+            this.checkBox1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // panel13
+            // 
+            this.panel13.Controls.Add(this.BubakLocationitemrandomdmgCB);
+            this.panel13.Controls.Add(this.BubakLocationonlyfilluptobubaknumNUD);
+            this.panel13.Controls.Add(this.darkLabel21);
+            this.panel13.Controls.Add(this.darkLabel20);
+            this.panel13.Location = new System.Drawing.Point(309, 149);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(457, 20);
+            this.panel13.TabIndex = 257;
+            // 
+            // BubakLocationitemrandomdmgCB
+            // 
+            this.BubakLocationitemrandomdmgCB.AutoSize = true;
+            this.BubakLocationitemrandomdmgCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BubakLocationitemrandomdmgCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationitemrandomdmgCB.Location = new System.Drawing.Point(428, 3);
+            this.BubakLocationitemrandomdmgCB.Name = "BubakLocationitemrandomdmgCB";
+            this.BubakLocationitemrandomdmgCB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.BubakLocationitemrandomdmgCB.Size = new System.Drawing.Size(15, 14);
+            this.BubakLocationitemrandomdmgCB.TabIndex = 260;
+            this.BubakLocationitemrandomdmgCB.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.BubakLocationitemrandomdmgCB.UseVisualStyleBackColor = true;
+            this.BubakLocationitemrandomdmgCB.CheckedChanged += new System.EventHandler(this.BubakLocationitemrandomdmgCB_CheckedChanged);
+            // 
+            // BubakLocationonlyfilluptobubaknumNUD
+            // 
+            this.BubakLocationonlyfilluptobubaknumNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BubakLocationonlyfilluptobubaknumNUD.DecimalPlaces = 1;
+            this.BubakLocationonlyfilluptobubaknumNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationonlyfilluptobubaknumNUD.Location = new System.Drawing.Point(136, 0);
+            this.BubakLocationonlyfilluptobubaknumNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.BubakLocationonlyfilluptobubaknumNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.BubakLocationonlyfilluptobubaknumNUD.Name = "BubakLocationonlyfilluptobubaknumNUD";
+            this.BubakLocationonlyfilluptobubaknumNUD.Size = new System.Drawing.Size(146, 20);
+            this.BubakLocationonlyfilluptobubaknumNUD.TabIndex = 236;
+            this.BubakLocationonlyfilluptobubaknumNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BubakLocationonlyfilluptobubaknumNUD.ValueChanged += new System.EventHandler(this.BubakLocationonlyfilluptobubaknumNUD_ValueChanged);
+            // 
+            // darkLabel21
+            // 
+            this.darkLabel21.AutoSize = true;
+            this.darkLabel21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel21.Location = new System.Drawing.Point(294, 2);
+            this.darkLabel21.Name = "darkLabel21";
+            this.darkLabel21.Size = new System.Drawing.Size(95, 13);
+            this.darkLabel21.TabIndex = 237;
+            this.darkLabel21.Text = "Item Random Dmg";
+            // 
+            // darkLabel20
+            // 
+            this.darkLabel20.AutoSize = true;
+            this.darkLabel20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel20.Location = new System.Drawing.Point(-2, 2);
+            this.darkLabel20.Name = "darkLabel20";
+            this.darkLabel20.Size = new System.Drawing.Size(135, 13);
+            this.darkLabel20.TabIndex = 237;
+            this.darkLabel20.Text = "Only Fill Up To Bubak Num";
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.BubakLocationbubaknumNUD);
+            this.panel11.Controls.Add(this.BubakLocationspawnradiusNUD);
+            this.panel11.Controls.Add(this.darkLabel19);
+            this.panel11.Controls.Add(this.darkLabel18);
+            this.panel11.Location = new System.Drawing.Point(309, 123);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(457, 20);
+            this.panel11.TabIndex = 255;
+            // 
+            // BubakLocationbubaknumNUD
+            // 
+            this.BubakLocationbubaknumNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BubakLocationbubaknumNUD.DecimalPlaces = 1;
+            this.BubakLocationbubaknumNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationbubaknumNUD.Location = new System.Drawing.Point(311, 0);
+            this.BubakLocationbubaknumNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.BubakLocationbubaknumNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.BubakLocationbubaknumNUD.Name = "BubakLocationbubaknumNUD";
+            this.BubakLocationbubaknumNUD.Size = new System.Drawing.Size(132, 20);
+            this.BubakLocationbubaknumNUD.TabIndex = 236;
+            this.BubakLocationbubaknumNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BubakLocationbubaknumNUD.ValueChanged += new System.EventHandler(this.BubakLocationbubaknumNUD_ValueChanged);
+            // 
+            // BubakLocationspawnradiusNUD
+            // 
+            this.BubakLocationspawnradiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BubakLocationspawnradiusNUD.DecimalPlaces = 1;
+            this.BubakLocationspawnradiusNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationspawnradiusNUD.Location = new System.Drawing.Point(86, 0);
+            this.BubakLocationspawnradiusNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.BubakLocationspawnradiusNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.BubakLocationspawnradiusNUD.Name = "BubakLocationspawnradiusNUD";
+            this.BubakLocationspawnradiusNUD.Size = new System.Drawing.Size(132, 20);
+            this.BubakLocationspawnradiusNUD.TabIndex = 236;
+            this.BubakLocationspawnradiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BubakLocationspawnradiusNUD.ValueChanged += new System.EventHandler(this.BubakLocationspawnradiusNUD_ValueChanged);
+            // 
+            // darkLabel19
+            // 
+            this.darkLabel19.AutoSize = true;
+            this.darkLabel19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel19.Location = new System.Drawing.Point(232, 2);
+            this.darkLabel19.Name = "darkLabel19";
+            this.darkLabel19.Size = new System.Drawing.Size(78, 13);
+            this.darkLabel19.TabIndex = 237;
+            this.darkLabel19.Text = "Bubak Number";
+            // 
+            // darkLabel18
+            // 
+            this.darkLabel18.AutoSize = true;
+            this.darkLabel18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel18.Location = new System.Drawing.Point(-2, 2);
+            this.darkLabel18.Name = "darkLabel18";
+            this.darkLabel18.Size = new System.Drawing.Size(76, 13);
+            this.darkLabel18.TabIndex = 237;
+            this.darkLabel18.Text = "Spawn Radius";
+            // 
+            // darkLabel17
+            // 
+            this.darkLabel17.AutoSize = true;
+            this.darkLabel17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel17.Location = new System.Drawing.Point(6, 16);
+            this.darkLabel17.Name = "darkLabel17";
+            this.darkLabel17.Size = new System.Drawing.Size(49, 13);
+            this.darkLabel17.TabIndex = 222;
+            this.darkLabel17.Text = "Positions";
+            // 
+            // BubakLocationSpawnerPosLB
+            // 
+            this.BubakLocationSpawnerPosLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.BubakLocationSpawnerPosLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BubakLocationSpawnerPosLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.BubakLocationSpawnerPosLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationSpawnerPosLB.FormattingEnabled = true;
+            this.BubakLocationSpawnerPosLB.Location = new System.Drawing.Point(6, 30);
+            this.BubakLocationSpawnerPosLB.Name = "BubakLocationSpawnerPosLB";
+            this.BubakLocationSpawnerPosLB.Size = new System.Drawing.Size(297, 355);
+            this.BubakLocationSpawnerPosLB.TabIndex = 137;
+            this.BubakLocationSpawnerPosLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.BubakLocationSpawnerPosLB.SelectedIndexChanged += new System.EventHandler(this.BubakLocationSpawnerPosLB_SelectedIndexChanged);
+            // 
+            // darkButton2
+            // 
+            this.darkButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton2.Location = new System.Drawing.Point(137, 728);
+            this.darkButton2.Name = "darkButton2";
+            this.darkButton2.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton2.Size = new System.Drawing.Size(93, 23);
+            this.darkButton2.TabIndex = 137;
+            this.darkButton2.Text = "Export to DZE";
+            this.darkButton2.Click += new System.EventHandler(this.darkButton2_Click);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.darkLabel29);
+            this.groupBox5.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox5.Location = new System.Drawing.Point(3, 458);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(463, 103);
+            this.groupBox5.TabIndex = 257;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Import Info";
+            // 
+            // darkLabel29
+            // 
+            this.darkLabel29.AutoSize = true;
+            this.darkLabel29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel29.Location = new System.Drawing.Point(6, 16);
+            this.darkLabel29.Name = "darkLabel29";
+            this.darkLabel29.Size = new System.Drawing.Size(426, 78);
+            this.darkLabel29.TabIndex = 206;
+            this.darkLabel29.Text = resources.GetString("darkLabel29.Text");
+            // 
             // SpawnerBubakuManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1075, 579);
+            this.ClientSize = new System.Drawing.Size(1234, 760);
+            this.Controls.Add(this.darkButton2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.darkButton1);
             this.Controls.Add(this.darkButton3);
@@ -882,8 +1743,8 @@ namespace DayZeEditor
             this.Controls.Add(this.darkToolStrip21);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SpawnerBubakuManager";
-            this.Text = "MysteryBoxManager";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MysteryBoxManager_FormClosing);
+            this.Text = "SpawnerBubakuManager";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SpawnerBukakuManager_FormClosing);
             this.Load += new System.EventHandler(this.SpawnerBukakuManager_Load);
             this.darkToolStrip21.ResumeLayout(false);
             this.darkToolStrip21.PerformLayout();
@@ -891,24 +1752,66 @@ namespace DayZeEditor
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogLevelNUD)).EndInit();
             this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AIGeneralDamageReceivedMultiplierNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AINoiseInvestigationDistanceLimitNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AIGeneralDanageMultiplierNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AIGeneralThreatDistanceLimitNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AIGeneralAccuracyMaxNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AIGeneralAccuracyMinNUD)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BubakLocationWorkingHoursStartNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AIGeneralMaxDistRadiusNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AIGeneralMinDistRadiusNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AIGeneralRespawnTimeNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubakLocationWorkingHoursEndNUD)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerPosXNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerPosYNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerPosZNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerRotXNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerRotYNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerPosYNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerRotZNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerRotYNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerRotXNUD)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerMaxXNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerMinZNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerMinYNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerMinXNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerMaxZNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationTriggerMaxYNUD)).EndInit();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationnotificationtimeNUD)).EndInit();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationtriggerdelayNUD)).EndInit();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BukabLocationtriggerradiusNUD)).EndInit();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationtriggercylheightNUD)).EndInit();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationtriggercylradiusNUD)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.panel15.ResumeLayout(false);
+            this.panel15.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationSpawnPositionXNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationSpawnPositionZNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationSpawnPositionYNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationSpawnRotationZNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationSpawnRotationYNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationSpawnRotationXNUD)).EndInit();
+            this.panel13.ResumeLayout(false);
+            this.panel13.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationonlyfilluptobubaknumNUD)).EndInit();
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationbubaknumNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BubakLocationspawnradiusNUD)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -926,27 +1829,9 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton darkButton4;
         private DarkUI.Controls.DarkButton darkButton1;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.NumericUpDown AIGeneralDamageReceivedMultiplierNUD;
-        private DarkUI.Controls.DarkLabel darkLabel74;
-        private System.Windows.Forms.NumericUpDown AINoiseInvestigationDistanceLimitNUD;
-        private DarkUI.Controls.DarkLabel darkLabel71;
-        private DarkUI.Controls.DarkLabel darkLabel61;
-        private System.Windows.Forms.NumericUpDown AIGeneralDanageMultiplierNUD;
-        private System.Windows.Forms.NumericUpDown AIGeneralThreatDistanceLimitNUD;
-        private DarkUI.Controls.DarkLabel darkLabel62;
         private DarkUI.Controls.DarkLabel darkLabel59;
-        private DarkUI.Controls.DarkLabel darkLabel51;
-        private System.Windows.Forms.NumericUpDown AIGeneralAccuracyMaxNUD;
-        private System.Windows.Forms.NumericUpDown AIGeneralAccuracyMinNUD;
-        private DarkUI.Controls.DarkLabel darkLabel52;
         private DarkUI.Controls.DarkLabel darkLabel37;
         private System.Windows.Forms.NumericUpDown BubakLocationWorkingHoursStartNUD;
-        private DarkUI.Controls.DarkLabel darkLabel15;
-        private System.Windows.Forms.NumericUpDown AIGeneralMaxDistRadiusNUD;
-        private DarkUI.Controls.DarkLabel darkLabel14;
-        private System.Windows.Forms.NumericUpDown AIGeneralMinDistRadiusNUD;
-        private DarkUI.Controls.DarkLabel darkLabel1;
-        private System.Windows.Forms.NumericUpDown AIGeneralRespawnTimeNUD;
         private System.Windows.Forms.TextBox BubakLocationNameTB;
         private DarkUI.Controls.DarkLabel darkLabel65;
         private DarkUI.Controls.DarkLabel darkLabel4;
@@ -964,5 +1849,83 @@ namespace DayZeEditor
         private System.Windows.Forms.NumericUpDown BubakLocationTriggerRotYNUD;
         private System.Windows.Forms.NumericUpDown BubakLocationTriggerRotZNUD;
         private System.Windows.Forms.CheckBox BubakLocationTriggerPositionRotSpecifiedCB;
+        private DarkUI.Controls.DarkLabel darkLabel7;
+        private DarkUI.Controls.DarkLabel darkLabel9;
+        private DarkUI.Controls.DarkLabel darkLabel10;
+        private DarkUI.Controls.DarkLabel darkLabel6;
+        private DarkUI.Controls.DarkLabel darkLabel1;
+        private DarkUI.Controls.DarkLabel darkLabel5;
+        private System.Windows.Forms.NumericUpDown BubakLocationTriggerMaxXNUD;
+        private System.Windows.Forms.NumericUpDown BubakLocationTriggerMaxYNUD;
+        private System.Windows.Forms.NumericUpDown BubakLocationTriggerMaxZNUD;
+        private System.Windows.Forms.NumericUpDown BubakLocationTriggerMinXNUD;
+        private System.Windows.Forms.NumericUpDown BubakLocationTriggerMinYNUD;
+        private System.Windows.Forms.NumericUpDown BubakLocationTriggerMinZNUD;
+        private DarkUI.Controls.DarkLabel darkLabel11;
+        private System.Windows.Forms.NumericUpDown BukabLocationtriggerradiusNUD;
+        private DarkUI.Controls.DarkLabel darkLabel16;
+        private DarkUI.Controls.DarkLabel darkLabel15;
+        private System.Windows.Forms.NumericUpDown BubakLocationtriggerdelayNUD;
+        private System.Windows.Forms.NumericUpDown BubakLocationnotificationtimeNUD;
+        private System.Windows.Forms.TextBox BubakLocationnotificationTB;
+        private DarkUI.Controls.DarkLabel darkLabel14;
+        private DarkUI.Controls.DarkLabel darkLabel13;
+        private System.Windows.Forms.NumericUpDown BubakLocationtriggercylheightNUD;
+        private DarkUI.Controls.DarkLabel darkLabel12;
+        private System.Windows.Forms.NumericUpDown BubakLocationtriggercylradiusNUD;
+        private System.Windows.Forms.ListBox BubakLocationSpawnerPosLB;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.NumericUpDown BubakLocationspawnradiusNUD;
+        private DarkUI.Controls.DarkLabel darkLabel18;
+        private DarkUI.Controls.DarkLabel darkLabel17;
+        private System.Windows.Forms.Panel panel15;
+        private System.Windows.Forms.NumericUpDown BubakLocationSpawnPositionXNUD;
+        private DarkUI.Controls.DarkLabel darkLabel22;
+        private System.Windows.Forms.NumericUpDown BubakLocationSpawnPositionZNUD;
+        private System.Windows.Forms.NumericUpDown BubakLocationSpawnPositionYNUD;
+        private DarkUI.Controls.DarkLabel darkLabel23;
+        private DarkUI.Controls.DarkLabel darkLabel24;
+        private DarkUI.Controls.DarkLabel darkLabel25;
+        private System.Windows.Forms.NumericUpDown BubakLocationSpawnRotationZNUD;
+        private System.Windows.Forms.NumericUpDown BubakLocationSpawnRotationYNUD;
+        private System.Windows.Forms.NumericUpDown BubakLocationSpawnRotationXNUD;
+        private DarkUI.Controls.DarkLabel darkLabel26;
+        private DarkUI.Controls.DarkLabel BubakLocationSpawnPositionRotaionLabel;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox BubakLocationitemrandomdmgCB;
+        private DarkUI.Controls.DarkLabel darkLabel21;
+        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.NumericUpDown BubakLocationonlyfilluptobubaknumNUD;
+        private DarkUI.Controls.DarkLabel darkLabel20;
+        private System.Windows.Forms.NumericUpDown BubakLocationbubaknumNUD;
+        private DarkUI.Controls.DarkLabel darkLabel19;
+        private DarkUI.Controls.DarkButton darkButton2;
+        private DarkUI.Controls.DarkLabel darkLabel27;
+        private System.Windows.Forms.ListBox BubakLocationBubaciLB;
+        private DarkUI.Controls.DarkButton darkButton10;
+        private DarkUI.Controls.DarkButton darkButton8;
+        private DarkUI.Controls.DarkButton darkButton9;
+        private DarkUI.Controls.DarkButton darkButton7;
+        private DarkUI.Controls.DarkLabel darkLabel28;
+        private System.Windows.Forms.ListBox BubakLocationbubakinventoryLB;
+        private DarkUI.Controls.DarkButton darkButton6;
+        private DarkUI.Controls.DarkButton darkButton5;
+        private DarkUI.Controls.DarkButton darkButton12;
+        private DarkUI.Controls.DarkButton darkButton11;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private DarkUI.Controls.DarkLabel darkLabel29;
     }
 }

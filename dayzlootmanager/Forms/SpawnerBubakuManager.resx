@@ -158,4 +158,16 @@
         /leFDGil9L2UOcWgy6NNWcGAXre/Yn+L/2Ji+S528AJfABNI4SEA3AqDAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="darkLabel29.Text" xml:space="preserve">
+    <value>The Classnames to use when placing in DayZ Editor are as follows:-
+GiftBox_Large_1    Trigger (Use One only)
+GiftBox_Small_1    SpawnPoints(Can have Multiple)
+
+These CLassNames will be used when Exporting to DZE if you wish to check and tweak 
+any existing Bubak Locations.
+</value>
+  </data>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>25</value>
+  </metadata>
 </root>

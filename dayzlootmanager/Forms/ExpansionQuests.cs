@@ -4310,21 +4310,5 @@ namespace DayZeEditor
         }
         #endregion Persistant Player Data
 
-        private void ObjectivesAICampGB_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-        private void darkLabel189_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ObjectivesActionsCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -25,8 +25,6 @@ namespace DayZeEditor
         public string SpawnerBubakuConfigPath { get; private set; }
         public SpawnerBubaku SpawnerBubakuConfig;
         public string Projectname;
-        private Possibleboxitem currentPossibleboxitem;
-        private Possibleboxposition currentPossibleboxposition;
 
         public Bubaklocation CurrentBubaklocation { get; private set; }
 
@@ -84,7 +82,7 @@ namespace DayZeEditor
 
             useraction = true;
         }
-        private void MysteryBoxManager_FormClosing(object sender, FormClosingEventArgs e)
+        private void SpawnerBukakuManager_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (SpawnerBubakuConfig.isDirty)
             {
@@ -95,7 +93,11 @@ namespace DayZeEditor
                 }
             }
         }
-        private void Savefiles()
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\SpawnerBubaku");
+        }
+        private void Savefiles(bool shownotification = true)
         {
             List<string> midifiedfiles = new List<string>();
             string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
@@ -112,25 +114,28 @@ namespace DayZeEditor
                 File.WriteAllText(SpawnerBubakuConfig.Filename, jsonString);
                 midifiedfiles.Add(Path.GetFileName(SpawnerBubakuConfig.Filename));
             }
-            string message = "The Following Files were saved....\n";
-            int i = 0;
-            foreach (string l in midifiedfiles)
+            if (shownotification)
             {
-                if (i == 5)
+                string message = "The Following Files were saved....\n";
+                int i = 0;
+                foreach (string l in midifiedfiles)
                 {
-                    message += l + "\n";
-                    i = 0;
+                    if (i == 5)
+                    {
+                        message += l + "\n";
+                        i = 0;
+                    }
+                    else
+                    {
+                        message += l + ", ";
+                        i++;
+                    }
                 }
+                if (midifiedfiles.Count > 0)
+                    MessageBox.Show(message, "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 else
-                {
-                    message += l + ", ";
-                    i++;
-                }
+                    MessageBox.Show("No changes were made.", "Nothing Saved", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
-            if (midifiedfiles.Count > 0)
-                MessageBox.Show(message, "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            else
-                MessageBox.Show("No changes were made.", "Nothing Saved", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
         private void SaveFileButton_Click(object sender, EventArgs e)
         {
@@ -166,7 +171,48 @@ namespace DayZeEditor
             SpawnerBubakuConfig.removeLocation(SpawnerBukakuLocationsLB.SelectedItem as Bubaklocation);
             SpawnerBukakuLocationsLB.Refresh();
         }
+        private void darkButton2_Click(object sender, EventArgs e)
+        {
+            DZE newdze = new DZE()
+            {
+                MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
+            };
+            BukakuPosRot triggerposrot = CurrentBubaklocation.gettriggerposition();
+            Editorobject Triggerobject = new Editorobject()
+            {
+                Type = "GiftBox_Large_1",
+                DisplayName = "GiftBox_Large_1",
+                Position = new float[] { Convert.ToSingle(triggerposrot.Position[0]), Convert.ToSingle(triggerposrot.Position[1]), Convert.ToSingle(triggerposrot.Position[2]) },
+                Orientation = new float[] { Convert.ToSingle(triggerposrot.Rotation[0]), Convert.ToSingle(triggerposrot.Rotation[1]), Convert.ToSingle(triggerposrot.Rotation[2]) },
+                Scale = 1.0f,
+                Flags = 2147483647
+            };
+            newdze.EditorObjects.Add(Triggerobject);
 
+            for (int i = 0; i < CurrentBubaklocation.spawnerpos.Count; i++)
+            {
+                BukakuPosRot spawnposrot = CurrentBubaklocation.getPosRot(i);
+                Editorobject SpawnObject = new Editorobject()
+                {
+                    Type = "GiftBox_Small_1",
+                    DisplayName = "GiftBox_Small_1",
+                    Position = new float[] { Convert.ToSingle(spawnposrot.Position[0]), Convert.ToSingle(spawnposrot.Position[1]), Convert.ToSingle(spawnposrot.Position[2]) },
+                    Orientation = new float[] { Convert.ToSingle(spawnposrot.Rotation[0]), Convert.ToSingle(spawnposrot.Rotation[1]), Convert.ToSingle(spawnposrot.Rotation[2]) },
+                    Scale = 1.0f,
+                    Flags = 2147483647
+                };
+                newdze.EditorObjects.Add(SpawnObject);
+            }
+            newdze.CameraPosition = newdze.EditorObjects[0].Position;
+            SaveFileDialog save = new SaveFileDialog();
+            save.FileName = CurrentBubaklocation.name;
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                string jsonString = JsonSerializer.Serialize(newdze, options);
+                File.WriteAllText(save.FileName + ".dze", jsonString);
+            }
+        }
         private void SpawnerBukakuLocationsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (SpawnerBukakuLocationsLB.SelectedItems.Count < 1) return;
@@ -179,18 +225,48 @@ namespace DayZeEditor
             BubakLocationTriggerPosXNUD.Value = posrot.Position[0];
             BubakLocationTriggerPosYNUD.Value = posrot.Position[1];
             BubakLocationTriggerPosZNUD.Value = posrot.Position[2];
-            
             if (BubakLocationTriggerPositionRotSpecifiedCB.Checked = posrot.RotationSpecifioed)
             {
                 BubakLocationTriggerRotXNUD.Value = posrot.Rotation[0];
                 BubakLocationTriggerRotYNUD.Value = posrot.Rotation[1];
                 BubakLocationTriggerRotZNUD.Value = posrot.Rotation[2];
             }
+            BubakLocationTriggerMinXNUD.Value = CurrentBubaklocation.gettriggermins()[0];
+            BubakLocationTriggerMinYNUD.Value = CurrentBubaklocation.gettriggermins()[1];
+            BubakLocationTriggerMinZNUD.Value = CurrentBubaklocation.gettriggermins()[2];
+            BubakLocationTriggerMaxXNUD.Value = CurrentBubaklocation.gettriggermaxs()[0];
+            BubakLocationTriggerMaxYNUD.Value = CurrentBubaklocation.gettriggermaxs()[1];
+            BubakLocationTriggerMaxZNUD.Value = CurrentBubaklocation.gettriggermaxs()[2];
+            BukabLocationtriggerradiusNUD.Value = CurrentBubaklocation.triggerradius;
+            BubakLocationtriggercylradiusNUD.Value = CurrentBubaklocation.triggercylradius;
+            BubakLocationtriggercylheightNUD.Value = CurrentBubaklocation.triggercylheight;
+            BubakLocationnotificationTB.Text = CurrentBubaklocation.notification;
+            BubakLocationnotificationtimeNUD.Value = CurrentBubaklocation.notificationtime;
+            BubakLocationtriggerdelayNUD.Value = CurrentBubaklocation.triggerdelay;
+            BubakLocationspawnradiusNUD.Value = CurrentBubaklocation.spawnradius; 
+            BubakLocationbubaknumNUD.Value = CurrentBubaklocation.bubaknum;
+            BubakLocationonlyfilluptobubaknumNUD.Value = CurrentBubaklocation.onlyfilluptobubaknum;
+            BubakLocationitemrandomdmgCB.Checked = CurrentBubaklocation.itemrandomdmg == 1 ? true : false;
 
 
+            BubakLocationSpawnerPosLB.DisplayMember = "DisplayName";
+            BubakLocationSpawnerPosLB.ValueMember = "Value";
+            BubakLocationSpawnerPosLB.DataSource = CurrentBubaklocation.spawnerpos;
+
+            BubakLocationBubaciLB.DisplayMember = "DisplayName";
+            BubakLocationBubaciLB.ValueMember = "Value";
+            BubakLocationBubaciLB.DataSource = CurrentBubaklocation.bubaci;
+
+            BubakLocationbubakinventoryLB.DisplayMember = "DisplayName";
+            BubakLocationbubakinventoryLB.ValueMember = "Value";
+            BubakLocationbubakinventoryLB.DataSource = CurrentBubaklocation.bubakinventory;
+
+            SpawnerBubakuConfig.isDirty = CurrentBubaklocation.needtosetdirty;
+            CurrentBubaklocation.needtosetdirty = false;
+            if (SpawnerBubakuConfig.isDirty)
+                Savefiles(false);
             useraction = true;
         }
-
         private void BubakLocationTriggerPositionRotSpecifiedCB_CheckedChanged(object sender, EventArgs e)
         {
             BukakuPosRot posrot = CurrentBubaklocation.gettriggerposition();
@@ -217,5 +293,344 @@ namespace DayZeEditor
             CurrentBubaklocation.setTriggerposition(posrot);
             SpawnerBubakuConfig.isDirty = true;
         }
+        private void BubakLocationSpawnerPosLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (BubakLocationSpawnerPosLB.SelectedItems.Count <= 0) return;
+            BukakuPosRot currentSpawnPosRot = CurrentBubaklocation.getPosRot(BubakLocationSpawnerPosLB.SelectedIndex);
+            useraction = false;
+            BubakLocationSpawnPositionXNUD.Value = currentSpawnPosRot.Position[0];
+            BubakLocationSpawnPositionYNUD.Value = currentSpawnPosRot.Position[1];
+            BubakLocationSpawnPositionZNUD.Value = currentSpawnPosRot.Position[2];
+            if (checkBox1.Checked = currentSpawnPosRot.RotationSpecifioed)
+            {
+                BubakLocationSpawnRotationXNUD.Value = currentSpawnPosRot.Rotation[0];
+                BubakLocationSpawnRotationYNUD.Value = currentSpawnPosRot.Rotation[1];
+                BubakLocationSpawnRotationZNUD.Value = currentSpawnPosRot.Rotation[2];
+            }
+            useraction = true;
+        }
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            BukakuPosRot posrot = CurrentBubaklocation.getPosRot(BubakLocationSpawnerPosLB.SelectedIndex);
+            if (checkBox1.Checked)
+            {
+                BubakLocationSpawnPositionRotaionLabel.Visible = true;
+                BubakLocationSpawnRotationXNUD.Visible = true;
+                BubakLocationSpawnRotationYNUD.Visible = true;
+                BubakLocationSpawnRotationZNUD.Visible = true;
+                posrot.RotationSpecifioed = true;
+                BubakLocationSpawnRotationXNUD.Value = posrot.Rotation[0];
+                BubakLocationSpawnRotationYNUD.Value = posrot.Rotation[1];
+                BubakLocationSpawnRotationZNUD.Value = posrot.Rotation[2];
+
+            }
+            else
+            {
+                posrot.RotationSpecifioed = false;
+                BubakLocationSpawnPositionRotaionLabel.Visible = false;
+                BubakLocationSpawnRotationXNUD.Visible = false;
+                BubakLocationSpawnRotationYNUD.Visible = false;
+                BubakLocationSpawnRotationZNUD.Visible = false;
+            }
+            CurrentBubaklocation.setPosRot(BubakLocationSpawnerPosLB.SelectedIndex, posrot);
+            SpawnerBubakuConfig.isDirty = true;
+        }
+
+        private void darkButton6_Click(object sender, EventArgs e)
+        {
+            CurrentBubaklocation.spawnerpos.Add("0 0 0");
+            BubakLocationSpawnerPosLB.Refresh();
+            SpawnerBubakuConfig.isDirty = true;
+        }
+        private void darkButton12_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    DZE importfile = DZEHelpers.LoadFile(filePath);
+                    bool ImportTrigger = false;
+                    var result = MessageBox.Show("Would you like to import the trigger as well?", "Import options", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if(result == DialogResult.Yes)
+                        ImportTrigger = true;
+                    result = MessageBox.Show("Would you like to clear existing Spawn Points??", "Import options", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                    if ((result == DialogResult.Cancel))
+                    {
+                        return;
+                    }
+                    else if (result == DialogResult.Yes)
+                    {
+                        CurrentBubaklocation.spawnerpos = new BindingList<string>();
+                    }
+                    CurrentBubaklocation.ImportDZE(importfile, ImportTrigger);
+                    if(ImportTrigger)
+                    {
+                        BukakuPosRot posrot = CurrentBubaklocation.gettriggerposition();
+                        BubakLocationTriggerPosXNUD.Value = posrot.Position[0];
+                        BubakLocationTriggerPosYNUD.Value = posrot.Position[1];
+                        BubakLocationTriggerPosZNUD.Value = posrot.Position[2];
+                        if (BubakLocationTriggerPositionRotSpecifiedCB.Checked = posrot.RotationSpecifioed)
+                        {
+                            BubakLocationTriggerRotXNUD.Value = posrot.Rotation[0];
+                            BubakLocationTriggerRotYNUD.Value = posrot.Rotation[1];
+                            BubakLocationTriggerRotZNUD.Value = posrot.Rotation[2];
+                        }
+                    }
+                    BubakLocationSpawnerPosLB.DataSource = CurrentBubaklocation.spawnerpos;
+                    SpawnerBubakuConfig.isDirty = true;
+                }
+            }
+        }
+        private void darkButton10_Click(object sender, EventArgs e)
+        {
+            if (BubakLocationSpawnerPosLB.SelectedItems.Count <= 0) return;
+            List<string> removelist = new List<string>();
+            int index = BubakLocationSpawnerPosLB.SelectedIndex;
+            CurrentBubaklocation.spawnerpos.RemoveAt(index);
+            SpawnerBubakuConfig.isDirty = true;
+        }
+        private void darkButton11_Click(object sender, EventArgs e)
+        {
+            DZE newdze = new DZE()
+            {
+                MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
+            };
+            var result = MessageBox.Show("Would yo ulike to export the trigger as well?", "Export options", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            if(result == DialogResult.Cancel)
+            {
+                return;
+            }
+            else if (result == DialogResult.Yes)
+            {
+                BukakuPosRot triggerposrot = CurrentBubaklocation.gettriggerposition();
+                Editorobject Triggerobject = new Editorobject()
+                {
+                    Type = "GiftBox_Large_1",
+                    DisplayName = "GiftBox_Large_1",
+                    Position = new float[] { Convert.ToSingle(triggerposrot.Position[0]), Convert.ToSingle(triggerposrot.Position[1]), Convert.ToSingle(triggerposrot.Position[2]) },
+                    Orientation = new float[] { Convert.ToSingle(triggerposrot.Rotation[0]), Convert.ToSingle(triggerposrot.Rotation[1]), Convert.ToSingle(triggerposrot.Rotation[2]) },
+                    Scale = 1.0f,
+                    Flags = 2147483647
+                };
+                newdze.EditorObjects.Add(Triggerobject);
+            }
+            for (int i = 0; i < CurrentBubaklocation.spawnerpos.Count; i++)
+            {
+                BukakuPosRot spawnposrot = CurrentBubaklocation.getPosRot(i);
+                Editorobject SpawnObject = new Editorobject()
+                {
+                    Type = "GiftBox_Small_1",
+                    DisplayName = "GiftBox_Small_1",
+                    Position = new float[] { Convert.ToSingle(spawnposrot.Position[0]), Convert.ToSingle(spawnposrot.Position[1]), Convert.ToSingle(spawnposrot.Position[2]) },
+                    Orientation = new float[] { Convert.ToSingle(spawnposrot.Rotation[0]), Convert.ToSingle(spawnposrot.Rotation[1]), Convert.ToSingle(spawnposrot.Rotation[2]) },
+                    Scale = 1.0f,
+                    Flags = 2147483647
+                };
+                newdze.EditorObjects.Add(SpawnObject);
+            }
+            newdze.CameraPosition = newdze.EditorObjects[0].Position;
+            SaveFileDialog save = new SaveFileDialog();
+            save.FileName = CurrentBubaklocation.name;
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                string jsonString = JsonSerializer.Serialize(newdze, options);
+                File.WriteAllText(save.FileName + ".dze", jsonString);
+            }
+        }
+        private void darkButton5_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseOnlySingleitem = false
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    if (!CurrentBubaklocation.bubaci.Contains(l))
+                    {
+                        CurrentBubaklocation.bubaci.Add(l);
+                        SpawnerBubakuConfig.isDirty = true;
+                    }
+                }
+                BubakLocationBubaciLB.Refresh();
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+        }
+        private void darkButton7_Click(object sender, EventArgs e)
+        {
+            if (BubakLocationBubaciLB.SelectedItems.Count < 1) return;
+            List<string> removelist = new List<string>();
+            foreach (var item in BubakLocationBubaciLB.SelectedItems)
+            {
+                removelist.Add(BubakLocationBubaciLB.GetItemText(item));
+            }
+            foreach(string bubac in removelist)
+            {
+                CurrentBubaklocation.bubaci.Remove(bubac);
+            }
+            SpawnerBubakuConfig.isDirty = true;
+        }
+        private void darkButton9_Click(object sender, EventArgs e)
+        {
+            AddItemfromTypes form = new AddItemfromTypes
+            {
+                vanillatypes = vanillatypes,
+                ModTypes = ModTypes,
+                currentproject = currentproject,
+                UseOnlySingleitem = false
+            };
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    if (!CurrentBubaklocation.bubakinventory.Contains(l))
+                    {
+                        CurrentBubaklocation.bubakinventory.Add(l);
+                        SpawnerBubakuConfig.isDirty = true;
+                    }
+                }
+                BubakLocationBubaciLB.Refresh();
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+        }
+        private void darkButton8_Click(object sender, EventArgs e)
+        {
+            if (BubakLocationbubakinventoryLB.SelectedItems.Count < 1) return;
+            List<string> removelist = new List<string>();
+            foreach (var item in BubakLocationbubakinventoryLB.SelectedItems)
+            {
+                removelist.Add(BubakLocationbubakinventoryLB.GetItemText(item));
+            }
+            foreach (string item in removelist)
+            {
+                CurrentBubaklocation.bubakinventory.Remove(item);
+            }
+            SpawnerBubakuConfig.isDirty = true;
+        }
+        private void BubakLocationNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentBubaklocation.Setname(BubakLocationNameTB.Text);
+            SpawnerBubakuConfig.isDirty = true;
+        }
+        private void BubakLocationSetWorkingHours_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentBubaklocation.setworkinghours(new int[] { (int)BubakLocationWorkingHoursStartNUD.Value, (int)BubakLocationWorkingHoursEndNUD.Value });
+            SpawnerBubakuConfig.isDirty = true;
+        }
+        private void BubakLocationSetTrigger_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            BukakuPosRot posrot = new BukakuPosRot();
+            if(posrot.RotationSpecifioed = BubakLocationTriggerPositionRotSpecifiedCB.Checked)
+            {
+                posrot.Rotation = new decimal[] { BubakLocationTriggerRotXNUD.Value, BubakLocationTriggerRotYNUD.Value, BubakLocationSpawnRotationZNUD.Value };
+            }
+            posrot.Position = new decimal[] { BubakLocationTriggerPosXNUD.Value, BubakLocationTriggerPosYNUD.Value, BubakLocationTriggerPosZNUD.Value };
+            CurrentBubaklocation.setTriggerposition(posrot);
+            SpawnerBubakuConfig.isDirty = true;
+        }
+        private void BubakLocationSetTriggerMins_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentBubaklocation.setTriggermins(new decimal[] {BubakLocationTriggerMinXNUD.Value, BubakLocationTriggerMinYNUD.Value, BubakLocationTriggerMinZNUD.Value });
+            SpawnerBubakuConfig.isDirty = true;
+        }
+        private void BubakLocationSetTriggerMaxs_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentBubaklocation.setTriggermaxs(new decimal[] { BubakLocationTriggerMaxXNUD.Value, BubakLocationTriggerMaxYNUD.Value, BubakLocationTriggerMaxZNUD.Value });
+            SpawnerBubakuConfig.isDirty = true;
+        }
+        private void BukabLocationtriggerradiusNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentBubaklocation.triggercylradius = BukabLocationtriggerradiusNUD.Value;
+            SpawnerBubakuConfig.isDirty = true;
+        }
+        private void BubakLocationtriggercylradiusNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentBubaklocation.triggercylradius = BubakLocationtriggercylradiusNUD.Value;
+            SpawnerBubakuConfig.isDirty = true;
+        }
+        private void BubakLocationtriggercylheightNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentBubaklocation.triggercylheight = BubakLocationtriggercylheightNUD.Value;
+            SpawnerBubakuConfig.isDirty = true;
+        }
+        private void BubakLocationnotificationTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentBubaklocation.notification = BubakLocationnotificationTB.Text;
+            SpawnerBubakuConfig.isDirty = true;
+        }
+        private void BubakLocationnotificationtimeNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentBubaklocation.notificationtime = (int)BubakLocationnotificationtimeNUD.Value;
+            SpawnerBubakuConfig.isDirty = true;
+        }
+        private void BubakLocationtriggerdelayNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentBubaklocation.triggerdelay = (int)BubakLocationtriggerdelayNUD.Value;
+            SpawnerBubakuConfig.isDirty = true;
+        }
+        private void BubakLocationSetSpawnPosition_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            BukakuPosRot posrot = new BukakuPosRot();
+            if (posrot.RotationSpecifioed = checkBox1.Checked)
+            {
+                posrot.Rotation = new decimal[] { BubakLocationSpawnRotationXNUD.Value, BubakLocationSpawnRotationYNUD.Value, BubakLocationSpawnRotationZNUD.Value };
+            }
+            posrot.Position = new decimal[] { BubakLocationSpawnPositionXNUD.Value, BubakLocationSpawnPositionYNUD.Value, BubakLocationSpawnPositionZNUD.Value };
+            CurrentBubaklocation.setPosRot(BubakLocationSpawnerPosLB.SelectedIndex, posrot);
+            SpawnerBubakuConfig.isDirty = true;
+        }
+        private void BubakLocationspawnradiusNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentBubaklocation.spawnradius = BubakLocationspawnradiusNUD.Value;
+            SpawnerBubakuConfig.isDirty = true;
+        }
+        private void BubakLocationbubaknumNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentBubaklocation.bubaknum = (int)BubakLocationbubaknumNUD.Value;
+            SpawnerBubakuConfig.isDirty = true;
+        }
+        private void BubakLocationonlyfilluptobubaknumNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentBubaklocation.onlyfilluptobubaknum = (int)BubakLocationonlyfilluptobubaknumNUD.Value;   
+            SpawnerBubakuConfig.isDirty = true;
+        }
+        private void BubakLocationitemrandomdmgCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentBubaklocation.itemrandomdmg = BubakLocationitemrandomdmgCB.Checked == true ? 1 : 0;
+            SpawnerBubakuConfig.isDirty = true;
+        }
+
     }
 }
