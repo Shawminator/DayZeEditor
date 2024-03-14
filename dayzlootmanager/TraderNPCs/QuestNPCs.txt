@@ -1,4 +1,7 @@
-﻿ExpansionQuestBoardLarge
+﻿ExpansionQuestObjectBoard
+ExpansionQuestBoardSmall
+ExpansionQuestBoardLarge
+ExpansionQuestObjectLocker
 ExpansionQuestNPCMirek
 ExpansionQuestNPCDenis
 ExpansionQuestNPCBoris
@@ -61,4 +64,3 @@ ExpansionQuestNPCAIKeiko
 ExpansionQuestNPCAIEva
 ExpansionQuestNPCAINaomi
 ExpansionQuestNPCAIBaty
-ExpansionQuestObjectBoard
