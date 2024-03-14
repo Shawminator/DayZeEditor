@@ -61,6 +61,20 @@ namespace DayZeEditor
             this.darkLabel3 = new DarkUI.Controls.DarkLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.EditMissionPathTB = new System.Windows.Forms.TextBox();
+            this.darkLabel14 = new DarkUI.Controls.DarkLabel();
+            this.darkButton3 = new DarkUI.Controls.DarkButton();
+            this.EditMapSizeNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel13 = new DarkUI.Controls.DarkLabel();
+            this.EditMapPathTB = new System.Windows.Forms.TextBox();
+            this.darkLabel11 = new DarkUI.Controls.DarkLabel();
+            this.EditPathTB = new System.Windows.Forms.TextBox();
+            this.darkLabel10 = new DarkUI.Controls.DarkLabel();
+            this.EditProfileNameTB = new System.Windows.Forms.TextBox();
+            this.darkLabel9 = new DarkUI.Controls.DarkLabel();
+            this.EditProjectNameTB = new System.Windows.Forms.TextBox();
+            this.darkLabel8 = new DarkUI.Controls.DarkLabel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.darkLabel7 = new DarkUI.Controls.DarkLabel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -107,20 +121,6 @@ namespace DayZeEditor
             this.darkToolStrip23 = new DarkUI.Controls.DarkToolStrip2();
             this.ProjectTSB = new System.Windows.Forms.ToolStripButton();
             this.FTPTSB = new System.Windows.Forms.ToolStripButton();
-            this.EditProjectNameTB = new System.Windows.Forms.TextBox();
-            this.darkLabel8 = new DarkUI.Controls.DarkLabel();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.EditProfileNameTB = new System.Windows.Forms.TextBox();
-            this.darkLabel9 = new DarkUI.Controls.DarkLabel();
-            this.EditPathTB = new System.Windows.Forms.TextBox();
-            this.darkLabel10 = new DarkUI.Controls.DarkLabel();
-            this.EditMapPathTB = new System.Windows.Forms.TextBox();
-            this.darkLabel11 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel13 = new DarkUI.Controls.DarkLabel();
-            this.EditMapSizeNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkButton3 = new DarkUI.Controls.DarkButton();
-            this.EditMissionPathTB = new System.Windows.Forms.TextBox();
-            this.darkLabel14 = new DarkUI.Controls.DarkLabel();
             this.darkToolStrip21.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -128,6 +128,8 @@ namespace DayZeEditor
             this.groupBox5.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EditMapSizeNUD)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -138,8 +140,6 @@ namespace DayZeEditor
             this.FTPUploadMenu.SuspendLayout();
             this.FTPDownloadMenu.SuspendLayout();
             this.darkToolStrip23.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EditMapSizeNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -187,7 +187,6 @@ namespace DayZeEditor
             this.ProjectTypeComboBox.FormattingEnabled = true;
             this.ProjectTypeComboBox.Items.AddRange(new object[] {
             "Create Blank / Use Exisitng Files",
-            "Connect Direct to FTP / SFTP through Mapped Drive",
             "Create Local from FT / SFTP"});
             this.ProjectTypeComboBox.Location = new System.Drawing.Point(123, 19);
             this.ProjectTypeComboBox.Name = "ProjectTypeComboBox";
@@ -496,6 +495,159 @@ namespace DayZeEditor
             this.tabPage1.Size = new System.Drawing.Size(1176, 566);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.EditMissionPathTB);
+            this.groupBox6.Controls.Add(this.darkLabel14);
+            this.groupBox6.Controls.Add(this.darkButton3);
+            this.groupBox6.Controls.Add(this.EditMapSizeNUD);
+            this.groupBox6.Controls.Add(this.darkLabel13);
+            this.groupBox6.Controls.Add(this.EditMapPathTB);
+            this.groupBox6.Controls.Add(this.darkLabel11);
+            this.groupBox6.Controls.Add(this.EditPathTB);
+            this.groupBox6.Controls.Add(this.darkLabel10);
+            this.groupBox6.Controls.Add(this.EditProfileNameTB);
+            this.groupBox6.Controls.Add(this.darkLabel9);
+            this.groupBox6.Controls.Add(this.EditProjectNameTB);
+            this.groupBox6.Controls.Add(this.darkLabel8);
+            this.groupBox6.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox6.Location = new System.Drawing.Point(6, 439);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(1106, 121);
+            this.groupBox6.TabIndex = 63;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Edit Project";
+            // 
+            // EditMissionPathTB
+            // 
+            this.EditMissionPathTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.EditMissionPathTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.EditMissionPathTB.Location = new System.Drawing.Point(441, 72);
+            this.EditMissionPathTB.Name = "EditMissionPathTB";
+            this.EditMissionPathTB.Size = new System.Drawing.Size(300, 20);
+            this.EditMissionPathTB.TabIndex = 72;
+            // 
+            // darkLabel14
+            // 
+            this.darkLabel14.AutoSize = true;
+            this.darkLabel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel14.Location = new System.Drawing.Point(445, 56);
+            this.darkLabel14.Name = "darkLabel14";
+            this.darkLabel14.Size = new System.Drawing.Size(67, 13);
+            this.darkLabel14.TabIndex = 73;
+            this.darkLabel14.Text = "Mission Path";
+            // 
+            // darkButton3
+            // 
+            this.darkButton3.Location = new System.Drawing.Point(6, 94);
+            this.darkButton3.Name = "darkButton3";
+            this.darkButton3.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton3.Size = new System.Drawing.Size(149, 23);
+            this.darkButton3.TabIndex = 71;
+            this.darkButton3.Text = "Apply Changes";
+            this.darkButton3.Click += new System.EventHandler(this.darkButton3_Click);
+            // 
+            // EditMapSizeNUD
+            // 
+            this.EditMapSizeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
+            this.EditMapSizeNUD.ForeColor = System.Drawing.SystemColors.Window;
+            this.EditMapSizeNUD.Location = new System.Drawing.Point(312, 74);
+            this.EditMapSizeNUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.EditMapSizeNUD.Name = "EditMapSizeNUD";
+            this.EditMapSizeNUD.Size = new System.Drawing.Size(120, 20);
+            this.EditMapSizeNUD.TabIndex = 70;
+            this.EditMapSizeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // darkLabel13
+            // 
+            this.darkLabel13.AutoSize = true;
+            this.darkLabel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel13.Location = new System.Drawing.Point(316, 58);
+            this.darkLabel13.Name = "darkLabel13";
+            this.darkLabel13.Size = new System.Drawing.Size(51, 13);
+            this.darkLabel13.TabIndex = 69;
+            this.darkLabel13.Text = "Map Size";
+            // 
+            // EditMapPathTB
+            // 
+            this.EditMapPathTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.EditMapPathTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.EditMapPathTB.Location = new System.Drawing.Point(6, 72);
+            this.EditMapPathTB.Name = "EditMapPathTB";
+            this.EditMapPathTB.Size = new System.Drawing.Size(300, 20);
+            this.EditMapPathTB.TabIndex = 67;
+            // 
+            // darkLabel11
+            // 
+            this.darkLabel11.AutoSize = true;
+            this.darkLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel11.Location = new System.Drawing.Point(10, 56);
+            this.darkLabel11.Name = "darkLabel11";
+            this.darkLabel11.Size = new System.Drawing.Size(53, 13);
+            this.darkLabel11.TabIndex = 68;
+            this.darkLabel11.Text = "Map Path";
+            // 
+            // EditPathTB
+            // 
+            this.EditPathTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.EditPathTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.EditPathTB.Location = new System.Drawing.Point(312, 35);
+            this.EditPathTB.Name = "EditPathTB";
+            this.EditPathTB.Size = new System.Drawing.Size(300, 20);
+            this.EditPathTB.TabIndex = 65;
+            // 
+            // darkLabel10
+            // 
+            this.darkLabel10.AutoSize = true;
+            this.darkLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel10.Location = new System.Drawing.Point(316, 19);
+            this.darkLabel10.Name = "darkLabel10";
+            this.darkLabel10.Size = new System.Drawing.Size(29, 13);
+            this.darkLabel10.TabIndex = 66;
+            this.darkLabel10.Text = "Path";
+            // 
+            // EditProfileNameTB
+            // 
+            this.EditProfileNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.EditProfileNameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.EditProfileNameTB.Location = new System.Drawing.Point(618, 35);
+            this.EditProfileNameTB.Name = "EditProfileNameTB";
+            this.EditProfileNameTB.Size = new System.Drawing.Size(300, 20);
+            this.EditProfileNameTB.TabIndex = 63;
+            // 
+            // darkLabel9
+            // 
+            this.darkLabel9.AutoSize = true;
+            this.darkLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel9.Location = new System.Drawing.Point(622, 19);
+            this.darkLabel9.Name = "darkLabel9";
+            this.darkLabel9.Size = new System.Drawing.Size(67, 13);
+            this.darkLabel9.TabIndex = 64;
+            this.darkLabel9.Text = "Profile Name";
+            // 
+            // EditProjectNameTB
+            // 
+            this.EditProjectNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.EditProjectNameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.EditProjectNameTB.Location = new System.Drawing.Point(6, 35);
+            this.EditProjectNameTB.Name = "EditProjectNameTB";
+            this.EditProjectNameTB.Size = new System.Drawing.Size(300, 20);
+            this.EditProjectNameTB.TabIndex = 61;
+            // 
+            // darkLabel8
+            // 
+            this.darkLabel8.AutoSize = true;
+            this.darkLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel8.Location = new System.Drawing.Point(10, 19);
+            this.darkLabel8.Name = "darkLabel8";
+            this.darkLabel8.Size = new System.Drawing.Size(71, 13);
+            this.darkLabel8.TabIndex = 62;
+            this.darkLabel8.Text = "Project Name";
             // 
             // groupBox4
             // 
@@ -935,159 +1087,6 @@ namespace DayZeEditor
             this.FTPTSB.Text = "FTP/SFTP";
             this.FTPTSB.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
-            // EditProjectNameTB
-            // 
-            this.EditProjectNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.EditProjectNameTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.EditProjectNameTB.Location = new System.Drawing.Point(6, 35);
-            this.EditProjectNameTB.Name = "EditProjectNameTB";
-            this.EditProjectNameTB.Size = new System.Drawing.Size(300, 20);
-            this.EditProjectNameTB.TabIndex = 61;
-            // 
-            // darkLabel8
-            // 
-            this.darkLabel8.AutoSize = true;
-            this.darkLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel8.Location = new System.Drawing.Point(10, 19);
-            this.darkLabel8.Name = "darkLabel8";
-            this.darkLabel8.Size = new System.Drawing.Size(71, 13);
-            this.darkLabel8.TabIndex = 62;
-            this.darkLabel8.Text = "Project Name";
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.EditMissionPathTB);
-            this.groupBox6.Controls.Add(this.darkLabel14);
-            this.groupBox6.Controls.Add(this.darkButton3);
-            this.groupBox6.Controls.Add(this.EditMapSizeNUD);
-            this.groupBox6.Controls.Add(this.darkLabel13);
-            this.groupBox6.Controls.Add(this.EditMapPathTB);
-            this.groupBox6.Controls.Add(this.darkLabel11);
-            this.groupBox6.Controls.Add(this.EditPathTB);
-            this.groupBox6.Controls.Add(this.darkLabel10);
-            this.groupBox6.Controls.Add(this.EditProfileNameTB);
-            this.groupBox6.Controls.Add(this.darkLabel9);
-            this.groupBox6.Controls.Add(this.EditProjectNameTB);
-            this.groupBox6.Controls.Add(this.darkLabel8);
-            this.groupBox6.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox6.Location = new System.Drawing.Point(6, 439);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(1106, 121);
-            this.groupBox6.TabIndex = 63;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Edit Project";
-            // 
-            // EditProfileNameTB
-            // 
-            this.EditProfileNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.EditProfileNameTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.EditProfileNameTB.Location = new System.Drawing.Point(618, 35);
-            this.EditProfileNameTB.Name = "EditProfileNameTB";
-            this.EditProfileNameTB.Size = new System.Drawing.Size(300, 20);
-            this.EditProfileNameTB.TabIndex = 63;
-            // 
-            // darkLabel9
-            // 
-            this.darkLabel9.AutoSize = true;
-            this.darkLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel9.Location = new System.Drawing.Point(622, 19);
-            this.darkLabel9.Name = "darkLabel9";
-            this.darkLabel9.Size = new System.Drawing.Size(67, 13);
-            this.darkLabel9.TabIndex = 64;
-            this.darkLabel9.Text = "Profile Name";
-            // 
-            // EditPathTB
-            // 
-            this.EditPathTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.EditPathTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.EditPathTB.Location = new System.Drawing.Point(312, 35);
-            this.EditPathTB.Name = "EditPathTB";
-            this.EditPathTB.Size = new System.Drawing.Size(300, 20);
-            this.EditPathTB.TabIndex = 65;
-            // 
-            // darkLabel10
-            // 
-            this.darkLabel10.AutoSize = true;
-            this.darkLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel10.Location = new System.Drawing.Point(316, 19);
-            this.darkLabel10.Name = "darkLabel10";
-            this.darkLabel10.Size = new System.Drawing.Size(29, 13);
-            this.darkLabel10.TabIndex = 66;
-            this.darkLabel10.Text = "Path";
-            // 
-            // EditMapPathTB
-            // 
-            this.EditMapPathTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.EditMapPathTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.EditMapPathTB.Location = new System.Drawing.Point(6, 72);
-            this.EditMapPathTB.Name = "EditMapPathTB";
-            this.EditMapPathTB.Size = new System.Drawing.Size(300, 20);
-            this.EditMapPathTB.TabIndex = 67;
-            // 
-            // darkLabel11
-            // 
-            this.darkLabel11.AutoSize = true;
-            this.darkLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel11.Location = new System.Drawing.Point(10, 56);
-            this.darkLabel11.Name = "darkLabel11";
-            this.darkLabel11.Size = new System.Drawing.Size(53, 13);
-            this.darkLabel11.TabIndex = 68;
-            this.darkLabel11.Text = "Map Path";
-            // 
-            // darkLabel13
-            // 
-            this.darkLabel13.AutoSize = true;
-            this.darkLabel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel13.Location = new System.Drawing.Point(316, 58);
-            this.darkLabel13.Name = "darkLabel13";
-            this.darkLabel13.Size = new System.Drawing.Size(51, 13);
-            this.darkLabel13.TabIndex = 69;
-            this.darkLabel13.Text = "Map Size";
-            // 
-            // EditMapSizeNUD
-            // 
-            this.EditMapSizeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            this.EditMapSizeNUD.ForeColor = System.Drawing.SystemColors.Window;
-            this.EditMapSizeNUD.Location = new System.Drawing.Point(312, 74);
-            this.EditMapSizeNUD.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.EditMapSizeNUD.Name = "EditMapSizeNUD";
-            this.EditMapSizeNUD.Size = new System.Drawing.Size(120, 20);
-            this.EditMapSizeNUD.TabIndex = 70;
-            this.EditMapSizeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // darkButton3
-            // 
-            this.darkButton3.Location = new System.Drawing.Point(6, 94);
-            this.darkButton3.Name = "darkButton3";
-            this.darkButton3.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton3.Size = new System.Drawing.Size(149, 23);
-            this.darkButton3.TabIndex = 71;
-            this.darkButton3.Text = "Apply Changes";
-            this.darkButton3.Click += new System.EventHandler(this.darkButton3_Click);
-            // 
-            // EditMissionPathTB
-            // 
-            this.EditMissionPathTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.EditMissionPathTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.EditMissionPathTB.Location = new System.Drawing.Point(441, 72);
-            this.EditMissionPathTB.Name = "EditMissionPathTB";
-            this.EditMissionPathTB.Size = new System.Drawing.Size(300, 20);
-            this.EditMissionPathTB.TabIndex = 72;
-            // 
-            // darkLabel14
-            // 
-            this.darkLabel14.AutoSize = true;
-            this.darkLabel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel14.Location = new System.Drawing.Point(445, 56);
-            this.darkLabel14.Name = "darkLabel14";
-            this.darkLabel14.Size = new System.Drawing.Size(67, 13);
-            this.darkLabel14.TabIndex = 73;
-            this.darkLabel14.Text = "Mission Path";
-            // 
             // ProjectPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1111,6 +1110,9 @@ namespace DayZeEditor
             this.groupBox5.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EditMapSizeNUD)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.tabPage2.ResumeLayout(false);
@@ -1124,9 +1126,6 @@ namespace DayZeEditor
             this.FTPDownloadMenu.ResumeLayout(false);
             this.darkToolStrip23.ResumeLayout(false);
             this.darkToolStrip23.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EditMapSizeNUD)).EndInit();
             this.ResumeLayout(false);
 
         }

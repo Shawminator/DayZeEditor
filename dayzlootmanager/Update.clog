@@ -1,4 +1,26 @@
-﻿Version 0.7.9.3
+﻿Version 0.7.9.6
+[Added]
+Spawner Bubaku Manager added.
+Expansion AI Patrols added function to add individual waypoints.
+[Updated]
+Main form will now save size, location and window state on close.
+Added sort mechanic to MExpansion market items, A-Z, Z-A, MIn Price - Max Price and Max Price - Min Price.
+[Fixed]
+Parameter check box in types editor when switching off didnt trigger the function to save.
+[Removed]
+Removed setup roject with mapped drive as this was not complete, left in by mistake.
+
+Version 0.7.9.5
+[Fixed]
+Fixed Quest Objectives active not showing correct value.
+Fixed Quest Objectives not updating the config version.
+[Added]
+Added Dogtag to expansion loadout slot.
+
+Version 0.7.9.4
+Attempting to fix issue with spaces in path when doing update. this will only reslove during the next update.
+
+Version 0.7.9.3
 [Updated]
 Update player spawn filr for latest 1.24 update, should auto update your file
 [ADDED]
