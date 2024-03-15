@@ -1,4 +1,12 @@
-﻿Version 0.7.9.6
+﻿Version 0.7.9.7
+[Added]
+more deatil to the Console when loading expansion quests.
+added more checking when loading quests that should eithe rnotify you of an issue or fix it.
+Added a reload all quests data to the toolbar under the tools button,
+Added missing quest boards to quest npc names list
+add ability to change filename for quests, npc and objectives
+
+Version 0.7.9.6
 [Added]
 Spawner Bubaku Manager added.
 Expansion AI Patrols added function to add individual waypoints.

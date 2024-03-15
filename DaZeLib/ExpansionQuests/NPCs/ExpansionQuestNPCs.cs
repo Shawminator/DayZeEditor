@@ -39,15 +39,16 @@ namespace DayZeLib
             }
             DirectoryInfo dinfo = new DirectoryInfo(m_Path);
             FileInfo[] Files = dinfo.GetFiles("*.json");
-            Console.WriteLine("Getting expansion Quests");
+            Console.WriteLine("\nGetting expansion Quests NPCs");
             Console.WriteLine(Files.Length.ToString() + " Found");
             foreach (FileInfo file in Files)
             {
                 try
                 {
-                    Console.WriteLine("serializing " + file.Name);
+                    Console.WriteLine("\tserializing " + file.Name);
                     ExpansionQuestNPCs NPC = JsonSerializer.Deserialize<ExpansionQuestNPCs>(File.ReadAllText(file.FullName));
                     NPC.Filename = Path.GetFileNameWithoutExtension(file.Name);
+                    NPC.OriginalFilename = Path.GetFileNameWithoutExtension(file.Name);
                     if (NPC.ConfigVersion != QuestNPCLists.getNPCConfigVersion)
                     {
                         NPC.ConfigVersion = QuestNPCLists.getNPCConfigVersion;
@@ -58,9 +59,15 @@ namespace DayZeLib
                 catch (Exception ex)
                 {
                     if (ex.InnerException != null)
+                    {
+                        Console.WriteLine("\t\tthere is an error in the following file\n" + file.FullName + Environment.NewLine + ex.InnerException.Message);
                         MessageBox.Show("there is an error in the following file\n" + file.FullName + Environment.NewLine + ex.InnerException.Message);
+                    }
                     else
+                    {
+                        Console.WriteLine("\t\t" + ex.Message);
                         MessageBox.Show(ex.Message);
+                    }
 
                 }
             }
@@ -87,6 +94,7 @@ namespace DayZeLib
             {
                 isDirty = true,
                 Filename = "QuestNPC_" + NEWID.ToString(),
+                OriginalFilename = "QuestNPC_" + NEWID.ToString(),
                 ConfigVersion = m_NPCConfigVersion,
                 ID = NEWID,
                 ClassName = "ExpansionQuestNPCDenis",
@@ -125,6 +133,8 @@ namespace DayZeLib
     {
         [JsonIgnore]
         public string Filename { get; set; }
+        [JsonIgnore]
+        public string OriginalFilename { get; set; }
         [JsonIgnore]
         public bool isDirty = false;
 

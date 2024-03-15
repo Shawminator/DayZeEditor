@@ -43,15 +43,16 @@ namespace DayZeLib
             }
             DirectoryInfo dinfo = new DirectoryInfo(m_Path);
             FileInfo[] Files = dinfo.GetFiles("*.json");
-            Console.WriteLine("Getting expansion Quests");
+            Console.WriteLine("\nGetting expansion Quests");
             Console.WriteLine(Files.Length.ToString() + " Found");
             foreach (FileInfo file in Files)
             {
                 try
                 {
-                    Console.WriteLine("serializing " + file.Name);
+                    Console.WriteLine("\tserializing " + file.Name);
                     Quests Quest = JsonSerializer.Deserialize<Quests>(File.ReadAllText(file.FullName));
                     Quest.Filename = Path.GetFileNameWithoutExtension(file.Name);
+                    Quest.OriginalFilename = Path.GetFileNameWithoutExtension(file.Name);
                     Quest.CreateLists();
                     QuestList.Add(Quest);
                     if (Quest.ConfigVersion != getQuestConfigVersion)
@@ -63,9 +64,15 @@ namespace DayZeLib
                 catch (Exception ex)
                 {
                     if (ex.InnerException != null)
+                    {
+                        Console.WriteLine("\t\tthere is an error in the following file\n" + file.FullName + Environment.NewLine + ex.InnerException.Message);
                         MessageBox.Show("there is an error in the following file\n" + file.FullName + Environment.NewLine + ex.InnerException.Message);
+                    }
                     else
+                    { 
+                        Console.WriteLine("\t\t" + ex.Message);
                         MessageBox.Show(ex.Message);
+                    }
 
                 }
             }
@@ -94,6 +101,7 @@ namespace DayZeLib
             {
                 isDirty = true,
                 Filename = "Quest_" + id.ToString(),
+                OriginalFilename = "Quest_" + id.ToString(),
                 ConfigVersion = m_QuestConfigVersion,
                 ID = id,
                 Type = 1,
@@ -190,24 +198,32 @@ namespace DayZeLib
         {
             return QuestList.FirstOrDefault(x => x.ID == id);
         }
-        public void GetNPCLists(QuestNPCLists questNPCs)
+        public bool GetNPCLists(QuestNPCLists questNPCs)
         {
+            Console.WriteLine("\nSetting up Quest Giver and Quest Turn in NPCs");
+            bool needtosave = false;
             foreach(Quests q in QuestList)
             {
-                q.GetNPCLists(questNPCs);
+                needtosave = q.GetNPCLists(questNPCs);
             }
+            return needtosave;
         }
         public void GetPreQuests()
         {
+            Console.WriteLine("\nsetting up Pre Quests.");
             foreach(Quests q in QuestList)
             {
                 List<int> toberemoved = new List<int>();
                 q.PreQuests = new BindingList<Quests>();
                 foreach(int prequest in q.PreQuestIDs)
                 {
-                    Quests quest = QuestList.First(x => x.ID == prequest);
+                    Quests quest = QuestList.FirstOrDefault(x => x.ID == prequest);
                     if (quest == null)
+                    {
+                        Console.WriteLine("\t\tQuest Title:" + q.Title + " Quest ID:" + q.ID.ToString() + " has a pre quest (Quest Id:" + prequest.ToString() + ") that doesnt exist,\nit will be removed from the pre quest list and the file saved.");
+                        MessageBox.Show("Quest Title:" + q.Title + " Quest ID:" + q.ID.ToString() + " has a pre quest (Quest ID:" + prequest.ToString() + ") that doesnt exist,\nit will be removed from the pre quest list and the file saved.");
                         toberemoved.Add(prequest);
+                    }
                     else
                         q.PreQuests.Add(quest);
                 }
@@ -220,6 +236,7 @@ namespace DayZeLib
         }
         public void setobjectiveenums()
         {
+            Console.WriteLine("\nSetting up Objective Enums.");
             foreach (Quests q in QuestList)
             {
                 foreach(QuestObjectivesBase obj in q.Objectives)
@@ -248,6 +265,8 @@ namespace DayZeLib
     {
         [JsonIgnore]
         public string Filename { get; set; }
+        [JsonIgnore]
+        public string OriginalFilename { get; set; }
         [JsonIgnore]
         private bool _isDirty;
         [JsonIgnore]
@@ -321,8 +340,9 @@ namespace DayZeLib
         {
             return Title;
         }
-        public void GetNPCLists(QuestNPCLists questNPCs)
+        public bool GetNPCLists(QuestNPCLists questNPCs)
         {
+            bool needtosave = false;
             QuestGivers = new BindingList<ExpansionQuestNPCs>();
             QuestTurnIns = new BindingList<ExpansionQuestNPCs>();
             foreach (int id in QuestGiverIDs)
@@ -332,8 +352,10 @@ namespace DayZeLib
                     QuestGivers.Add(questNPCs.GetNPCFromID(id));
                 else
                 {
-                    MessageBox.Show("Quest " + ID + " Has a quest giver npc id (" + id.ToString() + ") that doesnt exist.\n the id will be removed and the file marked as dirty.\nIf you save this will remove the id from the physical file.");
-                    Console.WriteLine("Quest " + ID + " Has a quest giver npc id (" + id.ToString() + ") that doesnt exist.\n the id will be removed and the file marked as dirty.\nIf you save this will remove the id from the physical file.\n");
+                    MessageBox.Show("Quest Title:" + Title + " Quest ID:" + ID.ToString() + " Has a quest giver npc id (" + id.ToString() + ") that doesnt exist.\n the id will be removed and the file saved");
+                    Console.WriteLine("\t\tQuest Title:" + Title + " Quest ID:" + ID.ToString() + " Has a quest giver npc id (" + id.ToString() + ") that doesnt exist.\n the id will be removed and the file saved");
+                    isDirty = true;
+                    needtosave = true;
                 }
              }
             foreach (int id in QuestTurnInIDs)
@@ -343,10 +365,13 @@ namespace DayZeLib
                     QuestTurnIns.Add(npc);
                 else
                 {
-                    MessageBox.Show("Quest " + ID + " Has a quest turn in npc id (" + id.ToString() + ") that doesnt exist.\n the id will be removed and the file marked as dirty.\nIf you save this will remove the id from the physical file.");
-                    Console.WriteLine("Quest " + ID + " Has a quest turn in npc id (" + id.ToString() + ") that doesnt exist.\n the id will be removed and the file marked as dirty.\nIf you save this will remove the id from the physical file.\n");
+                    MessageBox.Show("Quest Title:" + Title + " Quest ID:" + ID.ToString() + " Has a quest turn in npc id (" + id.ToString() + ") that doesnt exist.\n the id will be removed and the file saved");
+                    Console.WriteLine("\t\tQuest Title:" + Title + " Quest ID:" + ID.ToString() + " Has a quest turn in npc id (" + id.ToString() + ") that doesnt exist.\n the id will be removed and the file saved");
+                    isDirty = true;
+                    needtosave = true;
                 }
             }
+            return needtosave;
         }
         public void SetNPCList()
         {

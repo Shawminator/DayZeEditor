@@ -28,10 +28,12 @@ namespace DayZeLib
             QuestPlayerDataList = new BindingList<QuestPlayerData>();
             DirectoryInfo d = new DirectoryInfo(m_questPlayerDataPath);
             FileInfo[] Files = d.GetFiles();
+            Console.WriteLine("Getting Quest Player Data Files.");
             foreach (FileInfo file in Files)
             {
                 try
                 {
+                    Console.WriteLine("\tserializing" + Path.GetFileName(file.FullName));
                     QuestPlayerData QuestPlayerData = new QuestPlayerData(file.FullName);
                     QuestPlayerData.Filename = Path.GetFileNameWithoutExtension(file.Name); ;
                     QuestPlayerData.isDirty = false;
@@ -39,6 +41,7 @@ namespace DayZeLib
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine("\t\tthere is an error in the following file\n" + file.FullName + Environment.NewLine + ex.InnerException.Message);
                     MessageBox.Show("there is an error in the following file\n" + file.FullName + Environment.NewLine + ex.InnerException.Message);
                 }
             }

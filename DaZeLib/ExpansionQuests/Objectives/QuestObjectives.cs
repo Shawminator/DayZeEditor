@@ -34,6 +34,8 @@ namespace DayZeLib
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
+        public string OriginalFilename { get; set; }
+        [JsonIgnore]
         public bool isDirty = false;
         [JsonIgnore]
         public QuExpansionQuestObjectiveTypeestType _ObjectiveTypeEnum { get; set; }
@@ -101,18 +103,20 @@ namespace DayZeLib
                 {
                     DirectoryInfo dinfo = new DirectoryInfo(QuestObjectiovesPath + "\\" + m_type);
                     FileInfo[] Files = dinfo.GetFiles("*.json");
-                    Console.WriteLine("Getting Quest Objectives");
+                    Console.WriteLine("\nGetting Quest Objective Base");
                     Console.WriteLine(Files.Length.ToString() + " Found");
                     foreach (FileInfo file in Files)
                     {
                         try
                         {
-                            Console.WriteLine("serializing " + file.Name);
+                            Console.WriteLine("\tserializing " + file.Name);
                             QuestObjectivesBase newobjective = JsonSerializer.Deserialize<QuestObjectivesBase>(File.ReadAllText(file.FullName));
                             newobjective.Filename = Path.GetFileNameWithoutExtension(file.Name);
+                            newobjective.OriginalFilename = Path.GetFileNameWithoutExtension(file.Name);
                             newobjective._ObjectiveTypeEnum = (QuExpansionQuestObjectiveTypeestType)newobjective.ObjectiveType;
                             if(newobjective.ConfigVersion != QuestObjectivesBase.GetconfigVersion)
                             {
+                                Console.WriteLine("\t\tUpdating " + file.Name + " to latest version " + QuestObjectivesBase.GetconfigVersion.ToString());
                                 newobjective.ConfigVersion = QuestObjectivesBase.GetconfigVersion;
                                 newobjective.isDirty = true;
                             }    
@@ -120,10 +124,16 @@ namespace DayZeLib
                         }
                         catch (Exception ex)
                         {
-                            if(ex.InnerException != null)
+                            if (ex.InnerException != null)
+                            {
+                                Console.WriteLine("there is an error in the following file\n" + file.FullName + Environment.NewLine + ex.InnerException.Message);
                                 MessageBox.Show("there is an error in the following file\n" + file.FullName + Environment.NewLine + ex.InnerException.Message);
+                            }
                             else
+                            {
+                                Console.WriteLine(ex.Message);
                                 MessageBox.Show(ex.Message);
+                            }
                         }
                     }
                 }

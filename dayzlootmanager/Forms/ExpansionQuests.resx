@@ -158,6 +158,28 @@
         /leFDGil9L2UOcWgy6NNWcGAXre/Yn+L/2Ji+S528AJfABNI4SEA3AqDAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="toolStripDropDownButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACYAAAAWCAYAAACsR+4DAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAO7SURBVEhLzZZZU1pXAMf9AO1M16/Q5qXpTJ46mXRiRImo
+        XCNBrVrXiYmoSAQEZEkEwlKE6B0EWWVzicZIhKRq4kJN2iZPfe1nsB/Amcb038OdQEO4eoWHjnfmB/ee
+        8z+H35ztUoEzejFily5fOVOULcYX1KOeupZ/5vFrIbmtgMpkh9zkwJjRhvau3oI2pVCWWGhxBYn0MzzY
+        2EVk+RH6bkowrDWjS2tHN6FDbUWv3sE8qwxG1j64KEtModFiIb2FpZ93sLRBIN+SkVGmrvF6C+44aCgm
+        fZBa3ejROaA3WYv64KIssRwu9ywWnm4jntqCJxjOl1+uqobW5cOYyw/V/SDEMj1qG0UFbblgxN6+/Ye1
+        kgt/JMFMaXbUPOQ+V87jC6CnQ1BPhdCns6GmV4pqYVNBWy5OLTZhdcAw6cb3lVXMs0QqQ2x9C+nMb8xU
+        Ot3efPYuyUptHnSPWyC4cRvCASVuKHToJ+hMlnzuJBix7Adb5fsotQYMmGlMRZYgU2thmgnBGlxEcvcF
+        Vrb2YHHRTG5Yrobc4UMzmb5LbTeJ2CgoyRh+VJmhmQ6DGtJhRKkp6v9DTi1WU1sHR2ierJsAjLMJ/DS3
+        DGtoEVOJRwgnN7D6bA+z0XncuusEr0eGOjJSzZ29ELV1Qjwyjk61GbcmXLg2pCHHSA/rb7zPqcWyNLd1
+        4J5nDs7oCqbiD2ELPYAmkIIlkkRyO4ONl69h9sUgkighFImZNq0dXajqHsbFH/rB6xoE9a6ci5LEcjSI
+        WiAUtzP3Br0aBv9DWONP8Xgng1TmVwQSSwV5qc6Imj4ZBML/DmQuyhLLwa+9ij9DX+OPRDvk0Vewx9aJ
+        3D6e7P+O+GqSOTayuSvVfFQSPmx/EmWLUVQ9/op+C0Q+BmYqkHFWY9SbwmT8Mda297G8uYv4WhqCBoq1
+        PRdliVFCAQ4iF4jUZ/jb+ymOFBVI3/kOeuskRulFuOKrSO6Q3bq5h4XUJsStbaz9nETJYpSwDgfh80D0
+        cxx5PsGhsgKvTOfz9baZMBROH7Nb17ZfIEbeCrH1TfQPDBb0w0VJYo1k+g6C54jUl3jjfSd170JRzu7N
+        yvlxn4ycg56BOzDHjCDVdL0oexwlib2ermTW05HvCxyOZUfqG9ZcdrHbA/MYp8PgXRUwZcnnv2BIrirK
+        HkdJYvKRfryZ/giHw0Rq4ivWTI6GxibYyQE8QQdgcfvJX6Qdpowty0ZJYlk0g614rj2HGj739m8St8Do
+        DkJHB9HR3ceaOY6Sxf4v8mJn7wL+BQ2wXOkHWQxKAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="treeViewMS1.SelectedNodes" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAEAQAAABxTeXN0ZW0uQ29sbGVjdGlvbnMuQXJyYXlMaXN0AwAAAAZfaXRl
@@ -177,7 +199,7 @@ Integer.
   <data name="QuestColour.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAIAAABLbSncAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTAw9HKhAAAAHElEQVQYV2M4
+        vAAADrwBlbxySQAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTAw9HKhAAAAHElEQVQYV2M4
         gAT+IwFqSkBpMIDKgwHVJA4cAAB/F6ehJwDSGgAAAABJRU5ErkJggg==
 </value>
   </data>

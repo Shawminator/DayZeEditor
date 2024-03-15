@@ -2,6 +2,7 @@
 using DarkUI.Forms;
 using DayZeLib;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -125,7 +126,15 @@ namespace DayZeEditor
         {
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
-
+            Setupallquests();
+        }
+        private void reloadAllQuestsDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("\nReloading all Quest Data......");
+            Setupallquests();
+        }
+        private void Setupallquests()
+        {
             Factions = new BindingList<string>(File.ReadAllLines(Application.StartupPath + "\\TraderNPCs\\Factions.txt").ToList());
             SetupFactionsDropDownBoxes();
 
@@ -139,11 +148,12 @@ namespace DayZeEditor
             AILoadoutsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Loadouts";
             DirectoryInfo dinfo = new DirectoryInfo(AILoadoutsPath);
             FileInfo[] Files = dinfo.GetFiles("*.json");
+            Console.WriteLine("\nserializing AI Loadouts.");
             foreach (FileInfo file in Files)
             {
                 try
                 {
-                    Console.WriteLine("serializing " + Path.GetFileName(file.FullName));
+                    Console.WriteLine("\tserializing " + Path.GetFileName(file.FullName));
                     AILoadouts AILoadouts = JsonSerializer.Deserialize<AILoadouts>(File.ReadAllText(file.FullName));
                     AILoadouts.Filename = file.FullName;
                     AILoadouts.Setname();
@@ -166,15 +176,18 @@ namespace DayZeEditor
             QuestsSettingsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Settings\\QuestSettings.json";
             if (!File.Exists(QuestsSettingsPath))
             {
+                Console.WriteLine(Path.GetFileName(QuestsSettingsPath) + "Not found, Creating new...");
                 QuestSettings = new QuestSettings();
                 needtosave = true;
             }
             else
             {
+                Console.WriteLine("\nserializing " + Path.GetFileName(QuestsSettingsPath));
                 QuestSettings = JsonSerializer.Deserialize<QuestSettings>(File.ReadAllText(QuestsSettingsPath));
                 QuestSettings.isDirty = false;
                 if (QuestSettings.checkver())
                 {
+                    Console.WriteLine("Updating " + Path.GetFileName(QuestsSettingsPath) + " version " + QuestSettings.CurrentVersion.ToString());
                     QuestSettings.isDirty = true;
                     needtosave = true;
                 }
@@ -185,15 +198,18 @@ namespace DayZeEditor
             QuestPersistantServerDataPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Quests\\PersistentServerData.json";
             if (!File.Exists(QuestPersistantServerDataPath))
             {
+                Console.WriteLine(Path.GetFileName(QuestPersistantServerDataPath)+ "Not found, Creating new...");
                 QuestPersistentServerData = new QuestPersistentServerData();
                 needtosave = true;
             }
             else
             {
+                Console.WriteLine("\nserializing " + Path.GetFileName(QuestPersistantServerDataPath));
                 QuestPersistentServerData = JsonSerializer.Deserialize<QuestPersistentServerData>(File.ReadAllText(QuestPersistantServerDataPath));
                 QuestPersistentServerData.isDirty = false;
                 if (QuestPersistentServerData.checkver())
                 {
+                    Console.WriteLine("Updating " + Path.GetFileName(QuestPersistantServerDataPath) + " version " + QuestSettings.CurrentVersion.ToString());
                     QuestPersistentServerData.isDirty = true;
                     needtosave = true;
                 }
@@ -216,7 +232,7 @@ namespace DayZeEditor
             QuestsPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Quests\\Quests";
             QuestsList = new ExpansioQuestList(QuestsPath);
             QuestsList.setobjectiveenums();
-            QuestsList.GetNPCLists(QuestNPCs);
+            needtosave = QuestsList.GetNPCLists(QuestNPCs);
             QuestsList.GetPreQuests();
             if (QuestsList.QuestList.Any(x => x.isDirty == true))
                 needtosave = true;
@@ -224,20 +240,22 @@ namespace DayZeEditor
 
             SetupSharedLists();
 
+            Console.WriteLine("\nChecking Objectives against Quests.");
             foreach (Quests quest in QuestsList.QuestList)
-            { 
+            {
                 for (int i = 0; i < quest.Objectives.Count; i++)
                 {
                     QuestObjectivesBase checkobj = QuestObjectives.CheckObjectiveExists(quest.Objectives[i]);
                     if (checkobj == null)
                     {
-                        MessageBox.Show("Type " + quest.Objectives[i]._ObjectiveTypeEnum.ToString() + ",Objective ID " + quest.Objectives[i].ID.ToString() + " does not exist in the list of objectives,\nplease check\n manually remove the objective from the quest and save.");
+                        MessageBox.Show("Quest " + quest.ID.ToString() + " objective type " + quest.Objectives[i]._ObjectiveTypeEnum.ToString() + ",Objective ID " + quest.Objectives[i].ID.ToString() + " does not exist in the list of objectives,\nplease check\nmanually remove the objective from the quest and save.\n");
                         Console.WriteLine("Quest " + quest.ID.ToString() + " objective type " + quest.Objectives[i]._ObjectiveTypeEnum.ToString() + ",Objective ID " + quest.Objectives[i].ID.ToString() + " does not exist in the list of objectives,\nplease check\nmanually remove the objective from the quest and save.\n");
                     }
                     else
                     {
                         if (quest.Objectives[i].ConfigVersion != checkobj.ConfigVersion)
                         {
+                            Console.WriteLine("\tUpdating objective config in quest to match version " + QuestObjectivesBase.GetconfigVersion);
                             quest.Objectives[i].ConfigVersion = checkobj.ConfigVersion;
                             quest.isDirty = true;
                             needtosave = true;
@@ -255,7 +273,7 @@ namespace DayZeEditor
             QuestPlayerDataList = new QuestPersistantDataPlayersList(QuestPlayerDataPath);
             setupplayerdata();
 
-           
+
 
             if (needtosave)
             {
@@ -341,15 +359,21 @@ namespace DayZeEditor
         {
             try
             {
-                Console.WriteLine("serializing " + filename);
+                Console.WriteLine("\tserializing Full Objective" + filename);
                 return JsonSerializer.Deserialize<T>(File.ReadAllText(filename));
             }
             catch (Exception ex)
             {
-                if(ex.InnerException != null)
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine("there is an error in the following file\n" + filename + Environment.NewLine + ex.InnerException.Message);
                     MessageBox.Show("there is an error in the following file\n" + filename + Environment.NewLine + ex.InnerException.Message);
+                }
                 else
+                {
+                    Console.WriteLine(ex.Message);
                     MessageBox.Show(ex.Message);
+                }
                 return null;
             }
         }
@@ -412,6 +436,12 @@ namespace DayZeEditor
                     Directory.CreateDirectory(QuestNPCPath + "\\Backup\\" + SaveTime);
                     File.Copy(QuestNPCPath + "\\" + npcs.Filename + ".json", QuestNPCPath + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(npcs.Filename) + ".bak", true);
                 }
+                if (npcs.Filename != npcs.OriginalFilename)
+                {
+                    if (File.Exists(QuestNPCPath + "\\" + npcs.OriginalFilename + ".json"))
+                        File.Delete(QuestNPCPath + "\\" + npcs.OriginalFilename + ".json");
+                    npcs.OriginalFilename = npcs.Filename;
+                }
                 File.WriteAllText(QuestNPCPath + "\\" + npcs.Filename + ".json", jsonString);
                 midifiedfiles.Add(Path.GetFileName(npcs.Filename));
             }
@@ -428,6 +458,12 @@ namespace DayZeEditor
                 {
                     Directory.CreateDirectory(QuestsPath + "\\Backup\\" + SaveTime);
                     File.Copy(QuestsPath + "\\" + Quest.Filename + ".json", QuestsPath + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(Quest.Filename) + ".bak", true);
+                }
+                if(Quest.Filename != Quest.OriginalFilename)
+                {
+                    if(File.Exists(QuestsPath + "\\" + Quest.OriginalFilename + ".json"))
+                        File.Delete(QuestsPath + "\\" + Quest.OriginalFilename + ".json");
+                    Quest.OriginalFilename = Quest.Filename;
                 }
                 File.WriteAllText(QuestsPath + "\\" + Quest.Filename + ".json", jsonString);
                 midifiedfiles.Add(Path.GetFileName(Quest.Filename));
@@ -488,6 +524,12 @@ namespace DayZeEditor
                 {
                     Directory.CreateDirectory(filepath + "\\Backup\\" + SaveTime);
                     File.Copy(filepath + "\\" + obj.Filename + ".json", filepath + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(obj.Filename) + ".bak", true);
+                }
+                if (obj.Filename != obj.OriginalFilename)
+                {
+                    if (File.Exists(filepath + "\\" + obj.OriginalFilename + ".json"))
+                        File.Delete(filepath + "\\" + obj.OriginalFilename + ".json");
+                    obj.OriginalFilename = obj.Filename;
                 }
                 File.WriteAllText(filepath + "\\" + obj.Filename + ".json", jsonString);
                 midifiedfiles.Add(Path.GetFileName(obj.Filename));
@@ -638,7 +680,6 @@ namespace DayZeEditor
                     break;
             }
         }
-
         #region questsettings
         private void setupQuestsettings()
         {
@@ -853,14 +894,21 @@ namespace DayZeEditor
         {
             if (MessageBox.Show("This Will Remove The All reference to this NPC, Are you sure you want to do this?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                QuestNPCs.RemoveNPC(currentQuestNPC);
-                QuestsList.RemoveNPCFromQuests(currentQuestNPC);
+                ExpansionQuestNPCs removingnpc = currentQuestNPC;
+                QuestNPCs.RemoveNPC(removingnpc);
+                QuestsList.RemoveNPCFromQuests(removingnpc);
                 SetupSharedLists();
                 if (QuestNPCListLB.Items.Count == 0)
                     QuestNPCListLB.SelectedIndex = -1;
                 else
                     QuestNPCListLB.SelectedIndex = 0;
             }
+        }
+        private void QuestNPCFilenameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentQuestNPC.Filename = QuestNPCFilenameTB.Text;
+            currentQuestNPC.isDirty = true;
         }
         private void QuestNPCActiveCB_CheckedChanged(object sender, EventArgs e)
         {
@@ -1142,7 +1190,19 @@ namespace DayZeEditor
         public void setupquests()
         {
             useraction = false;
+            SetupFollowupCombobox();
 
+            QuestTypeCB.DataSource = Enum.GetValues(typeof(ExpansionQuestsQuestType));
+
+            QuestsListLB.DisplayMember = "DisplayName";
+            QuestsListLB.ValueMember = "Value";
+            QuestsListLB.DataSource = QuestsList.QuestList;
+
+            useraction = true;
+        }
+
+        private void SetupFollowupCombobox()
+        {
             Quests emptyquest = new Quests()
             {
                 ID = -1,
@@ -1160,15 +1220,8 @@ namespace DayZeEditor
             QuestFollowupQuestCB.DisplayMember = "DisplayName";
             QuestFollowupQuestCB.ValueMember = "Value";
             QuestFollowupQuestCB.DataSource = questlist;
-
-            QuestTypeCB.DataSource = Enum.GetValues(typeof(ExpansionQuestsQuestType));
-
-            QuestsListLB.DisplayMember = "DisplayName";
-            QuestsListLB.ValueMember = "Value";
-            QuestsListLB.DataSource = QuestsList.QuestList;
-
-            useraction = true; 
         }
+
         private void QuestsListLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (QuestsListLB.SelectedItems.Count < 1) return;
@@ -1280,13 +1333,18 @@ namespace DayZeEditor
 
             useraction = true;
         }
+        private void QuestFileNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentQuest.Filename = QuestFileNameTB.Text;
+            CurrentQuest.isDirty = true;
+        }
         private void QuestActiveCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             CurrentQuest.Active = QuestActiveCB.Checked == true ? 1 : 0;
             CurrentQuest.isDirty = true;
         }
-
         private void QuestSuppressQuestLogOnCompetionCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -1401,6 +1459,7 @@ namespace DayZeEditor
             {
                 QuestsList.CreateNewQuest(form.SelectedID);
             }
+            SetupFollowupCombobox();
             QuestsListLB.SelectedIndex = -1;
             if (QuestsListLB.Items.Count == 0)
                 QuestsListLB.SelectedIndex = QuestsListLB.Items.Count - 1;
@@ -1422,6 +1481,7 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             CurrentQuest.Title = QuestTitleTB.Text;
+            QuestsListLB.Invalidate();
             CurrentQuest.isDirty = true;
 
         }
@@ -1928,11 +1988,14 @@ namespace DayZeEditor
             else
                 QuestFactionReputationRewardsLB.SelectedIndex = 0;
         }
+
         #endregion quests
         #region objectives
         public QuestObjectivesBase CurrentTreeNodeTag;
+        public TreeNode currenttreenode;
         private void setupobjectives()
         {
+            Console.WriteLine("\nserializing Full Objectives");
             QuestObjectivesObjectiveTypeCB.DataSource = Enum.GetValues(typeof(QuExpansionQuestObjectiveTypeestType));
             treeViewMS1.Nodes.Clear();
             TreeNode root = new TreeNode("Objectives")
@@ -1987,6 +2050,7 @@ namespace DayZeEditor
                         TreeNode newnode = new TreeNode(QuestObjectives.Objectives[i].Filename);
                         QuestObjectives.Objectives[i] = ReadJson<QuestObjectivesTarget>(QuestObjectivesPath + "\\Target\\" + QuestObjectives.Objectives[i].Filename + ".json") as QuestObjectivesTarget;
                         QuestObjectives.Objectives[i].Filename = newnode.Text;
+                        QuestObjectives.Objectives[i].OriginalFilename = newnode.Text;
                         QuestObjectives.Objectives[i]._ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.TARGET;
                         newnode.Tag = QuestObjectives.Objectives[i];
                         ObjectivesTarget.Nodes.Add(newnode);
@@ -1995,6 +2059,7 @@ namespace DayZeEditor
                         newnode = new TreeNode(QuestObjectives.Objectives[i].Filename);
                         QuestObjectives.Objectives[i] = ReadJson<QuestObjectivesTravel>(QuestObjectivesPath + "\\Travel\\" + QuestObjectives.Objectives[i].Filename + ".json") as QuestObjectivesTravel;
                         QuestObjectives.Objectives[i].Filename = newnode.Text;
+                        QuestObjectives.Objectives[i].OriginalFilename = newnode.Text;
                         QuestObjectives.Objectives[i]._ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.TRAVEL;
                         newnode.Tag = QuestObjectives.Objectives[i];
                         ObjectivesTravel.Nodes.Add(newnode);
@@ -2003,6 +2068,7 @@ namespace DayZeEditor
                         newnode = new TreeNode(QuestObjectives.Objectives[i].Filename);
                         QuestObjectives.Objectives[i] = ReadJson<QuestObjectivesCollection>(QuestObjectivesPath + "\\Collection\\" + QuestObjectives.Objectives[i].Filename + ".json") as QuestObjectivesCollection;
                         QuestObjectives.Objectives[i].Filename = newnode.Text;
+                        QuestObjectives.Objectives[i].OriginalFilename = newnode.Text;
                         QuestObjectives.Objectives[i]._ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.COLLECT;
                         newnode.Tag = QuestObjectives.Objectives[i];
                         ObjectivesCollection.Nodes.Add(newnode);
@@ -2011,6 +2077,7 @@ namespace DayZeEditor
                         newnode = new TreeNode(QuestObjectives.Objectives[i].Filename);
                         QuestObjectives.Objectives[i] = ReadJson<QuestObjectivesCrafting>(QuestObjectivesPath + "\\Crafting\\" + QuestObjectives.Objectives[i].Filename + ".json") as QuestObjectivesCrafting;
                         QuestObjectives.Objectives[i].Filename = newnode.Text;
+                        QuestObjectives.Objectives[i].OriginalFilename = newnode.Text;
                         QuestObjectives.Objectives[i]._ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.CRAFTING;
                         newnode.Tag = QuestObjectives.Objectives[i];
                         ObjectivesCrafting.Nodes.Add(newnode);
@@ -2019,6 +2086,7 @@ namespace DayZeEditor
                         newnode = new TreeNode(QuestObjectives.Objectives[i].Filename);
                         QuestObjectives.Objectives[i] = ReadJson<QuestObjectivesDelivery>(QuestObjectivesPath + "\\Delivery\\" + QuestObjectives.Objectives[i].Filename + ".json") as QuestObjectivesDelivery;
                         QuestObjectives.Objectives[i].Filename = newnode.Text;
+                        QuestObjectives.Objectives[i].OriginalFilename = newnode.Text;
                         QuestObjectives.Objectives[i]._ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.DELIVERY;
                         newnode.Tag = QuestObjectives.Objectives[i];
                         ObjectivesDelivery.Nodes.Add(newnode);
@@ -2027,6 +2095,7 @@ namespace DayZeEditor
                         newnode = new TreeNode(QuestObjectives.Objectives[i].Filename);
                         QuestObjectives.Objectives[i] = ReadJson<QuestObjectivesTreasureHunt>(QuestObjectivesPath + "\\TreasureHunt\\" + QuestObjectives.Objectives[i].Filename + ".json") as QuestObjectivesTreasureHunt;
                         QuestObjectives.Objectives[i].Filename = newnode.Text;
+                        QuestObjectives.Objectives[i].OriginalFilename = newnode.Text;
                         QuestObjectives.Objectives[i]._ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.TREASUREHUNT;
                         QuestObjectivesTreasureHunt qoth = QuestObjectives.Objectives[i] as QuestObjectivesTreasureHunt;
                         newnode.Tag = QuestObjectives.Objectives[i];
@@ -2036,6 +2105,7 @@ namespace DayZeEditor
                         newnode = new TreeNode(QuestObjectives.Objectives[i].Filename);
                         QuestObjectives.Objectives[i] = ReadJson<QuestObjectivesAIPatrol>(QuestObjectivesPath + "\\AIPatrol\\" + QuestObjectives.Objectives[i].Filename + ".json") as QuestObjectivesAIPatrol;
                         QuestObjectives.Objectives[i].Filename = newnode.Text;
+                        QuestObjectives.Objectives[i].OriginalFilename = newnode.Text;
                         QuestObjectives.Objectives[i]._ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.AIPATROL;
                         newnode.Tag = QuestObjectives.Objectives[i];
                         ObjectivesAIPatrol.Nodes.Add(newnode);
@@ -2044,6 +2114,7 @@ namespace DayZeEditor
                         newnode = new TreeNode(QuestObjectives.Objectives[i].Filename);
                         QuestObjectives.Objectives[i] = ReadJson<QuestObjectivesAICamp>(QuestObjectivesPath + "\\AICamp\\" + QuestObjectives.Objectives[i].Filename + ".json") as QuestObjectivesAICamp;
                         QuestObjectives.Objectives[i].Filename = newnode.Text;
+                        QuestObjectives.Objectives[i].OriginalFilename = newnode.Text;
                         QuestObjectives.Objectives[i]._ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.AICAMP;
                         newnode.Tag = QuestObjectives.Objectives[i];
                         ObjectivesAICamp.Nodes.Add(newnode);
@@ -2052,6 +2123,7 @@ namespace DayZeEditor
                         newnode = new TreeNode(QuestObjectives.Objectives[i].Filename);
                         QuestObjectives.Objectives[i] = ReadJson<QuestObjectivesAIVIP>(QuestObjectivesPath + "\\AIVIP\\" + QuestObjectives.Objectives[i].Filename + ".json") as QuestObjectivesAIVIP;
                         QuestObjectives.Objectives[i].Filename = newnode.Text;
+                        QuestObjectives.Objectives[i].OriginalFilename = newnode.Text;
                         QuestObjectives.Objectives[i]._ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.AIVIP;
                         newnode.Tag = QuestObjectives.Objectives[i];
                         ObjectivesAIVIP.Nodes.Add(newnode);
@@ -2060,6 +2132,7 @@ namespace DayZeEditor
                         newnode = new TreeNode(QuestObjectives.Objectives[i].Filename);
                         QuestObjectives.Objectives[i] = ReadJson<QuestObjectivesAction>(QuestObjectivesPath + "\\Action\\" + QuestObjectives.Objectives[i].Filename + ".json") as QuestObjectivesAction;
                         QuestObjectives.Objectives[i].Filename = newnode.Text;
+                        QuestObjectives.Objectives[i].OriginalFilename = newnode.Text;
                         QuestObjectives.Objectives[i]._ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.ACTION;
                         newnode.Tag = QuestObjectives.Objectives[i];
                         ObjectivesAction.Nodes.Add(newnode);
@@ -2084,6 +2157,7 @@ namespace DayZeEditor
         {
             useraction = false;
             treeViewMS1.SelectedNode = e.Node;
+            currenttreenode = e.Node;
             if (e.Node.Tag is string)
             {
                 foreach (ToolStripMenuItem TSMI in contextMenuStrip1.Items)
@@ -2230,6 +2304,75 @@ namespace DayZeEditor
 
             }
             useraction = true;
+        }
+        private void QuestObjectivesFilenameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            switch (CurrentTreeNodeTag._ObjectiveTypeEnum)
+            {
+                case QuExpansionQuestObjectiveTypeestType.TARGET:
+                    QuestObjectivesTarget t = CurrentTreeNodeTag as QuestObjectivesTarget;
+                    t.Filename = QuestObjectivesFilenameTB.Text;
+                    currenttreenode.Text = t.Filename;
+                    t.isDirty = true;
+                    break;
+                case QuExpansionQuestObjectiveTypeestType.TRAVEL:
+                    QuestObjectivesTravel tr = CurrentTreeNodeTag as QuestObjectivesTravel;
+                    tr.Filename = QuestObjectivesFilenameTB.Text;
+                    currenttreenode.Text = tr.Filename;
+                    tr.isDirty = true;
+                    break;
+                case QuExpansionQuestObjectiveTypeestType.COLLECT:
+                    QuestObjectivesCollection coll = CurrentTreeNodeTag as QuestObjectivesCollection;
+                    coll.Filename = QuestObjectivesFilenameTB.Text;
+                    currenttreenode.Text = coll.Filename;
+                    coll.isDirty = true;
+                    break;
+                case QuExpansionQuestObjectiveTypeestType.DELIVERY:
+                    QuestObjectivesDelivery del = CurrentTreeNodeTag as QuestObjectivesDelivery;
+                    del.Filename = QuestObjectivesFilenameTB.Text;
+                    currenttreenode.Text = del.Filename;
+                    del.isDirty = true;
+                    break;
+                case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
+                    QuestObjectivesTreasureHunt th = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
+                    th.Filename = QuestObjectivesFilenameTB.Text;
+                    currenttreenode.Text = th.Filename;
+                    th.isDirty = true;
+                    break;
+                case QuExpansionQuestObjectiveTypeestType.AIPATROL:
+                    QuestObjectivesAIPatrol aip = CurrentTreeNodeTag as QuestObjectivesAIPatrol;
+                    aip.Filename = QuestObjectivesFilenameTB.Text;
+                    currenttreenode.Text = aip.Filename;
+                    aip.isDirty = true;
+                    break;
+                case QuExpansionQuestObjectiveTypeestType.AICAMP:
+                    QuestObjectivesAICamp aic = CurrentTreeNodeTag as QuestObjectivesAICamp;
+                    aic.Filename = QuestObjectivesFilenameTB.Text;
+                    currenttreenode.Text = aic.Filename;
+                    aic.isDirty = true;
+                    break;
+                case QuExpansionQuestObjectiveTypeestType.AIVIP:
+                    QuestObjectivesAIVIP aivip = CurrentTreeNodeTag as QuestObjectivesAIVIP;
+                    aivip.Filename = QuestObjectivesFilenameTB.Text;
+                    currenttreenode.Text = aivip.Filename;
+                    aivip.isDirty = true;
+                    break;
+                case QuExpansionQuestObjectiveTypeestType.ACTION:
+                    QuestObjectivesAction a = CurrentTreeNodeTag as QuestObjectivesAction;
+                    a.Filename = QuestObjectivesFilenameTB.Text;
+                    currenttreenode.Text = a.Filename;
+                    a.isDirty = true;
+                    break;
+                case QuExpansionQuestObjectiveTypeestType.CRAFTING:
+                    QuestObjectivesCrafting c = CurrentTreeNodeTag as QuestObjectivesCrafting;
+                    c.Filename = QuestObjectivesFilenameTB.Text;
+                    currenttreenode.Text = c.Filename;
+                    c.isDirty = true;
+                    break;
+                default:
+                    break;
+            }
         }
         private void QuestObjectivesObjectiveTextTB_TextChanged(object sender, EventArgs e)
         {
@@ -2420,6 +2563,7 @@ namespace DayZeEditor
                 ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
                 Filename = "Objective_A_" + newid.ToString(),
+                OriginalFilename = "Objective_A_" + newid.ToString(),
                 ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.ACTION,
                 _ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.ACTION,
                 ObjectiveText = "New Action Objective",
@@ -2446,6 +2590,7 @@ namespace DayZeEditor
                 ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
                 Filename = "Objective_AIC_" + newid.ToString(),
+                OriginalFilename = "Objective_AIC_" + newid.ToString(),
                 ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.AICAMP,
                 _ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.AICAMP,
                 ObjectiveText = "New AICamp Objective",
@@ -2534,6 +2679,7 @@ namespace DayZeEditor
                 ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
                 Filename = "Objective_AIP_" + newid.ToString(),
+                OriginalFilename = "Objective_AIP_" + newid.ToString(),
                 ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.AIPATROL,
                 _ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.AIPATROL,
                 ObjectiveText = "New AIPatrol Objective",
@@ -2555,6 +2701,7 @@ namespace DayZeEditor
                 ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
                 Filename = "Objective_AIESCORT_" + newid.ToString(),
+                OriginalFilename = "Objective_AIESCORT_" + newid.ToString(),
                 ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.AIVIP,
                 _ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.AIVIP,
                 ObjectiveText = "New AIESCORT Objective",
@@ -2584,6 +2731,7 @@ namespace DayZeEditor
                 ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
                 Filename = "Objective_C_" + newid.ToString(),
+                OriginalFilename = "Objective_C_" + newid.ToString(),
                 ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.COLLECT,
                 _ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.COLLECT,
                 ObjectiveText = "New Collection Objective",
@@ -2611,6 +2759,7 @@ namespace DayZeEditor
                 ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
                 Filename = "Objective_CR_" + newid.ToString(),
+                OriginalFilename = "Objective_CR_" + newid.ToString(),
                 ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.CRAFTING,
                 _ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.CRAFTING,
                 ObjectiveText = "New Crafting Objective",
@@ -2634,6 +2783,7 @@ namespace DayZeEditor
                 ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
                 Filename = "Objective_D_" + newid.ToString(),
+                OriginalFilename = "Objective_D_" + newid.ToString(),
                 ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.DELIVERY,
                 _ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.DELIVERY,
                 ObjectiveText = "New Delivery Objective",
@@ -2660,6 +2810,7 @@ namespace DayZeEditor
                 ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
                 Filename = "Objective_TA_" + newid.ToString(),
+                OriginalFilename = "Objective_TA_" + newid.ToString(),
                 ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.TARGET,
                 _ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.TARGET,
                 ObjectiveText = "New Target Objective",
@@ -2691,6 +2842,7 @@ namespace DayZeEditor
                 ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
                 Filename = "Objective_T_" + newid.ToString(),
+                OriginalFilename = "Objective_T_" + newid.ToString(),
                 ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.TRAVEL,
                 _ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.TRAVEL,
                 ObjectiveText = "New Travel Objective",
@@ -2718,6 +2870,7 @@ namespace DayZeEditor
                 ConfigVersion = QuestObjectivesBase.GetconfigVersion,
                 ID = newid,
                 Filename = "Objective_TH_" + newid.ToString(),
+                OriginalFilename = "Objective_TH_" + newid.ToString(),
                 ObjectiveType = (int)QuExpansionQuestObjectiveTypeestType.TREASUREHUNT,
                 _ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.TREASUREHUNT,
                 ObjectiveText = "New TreasureHunt Objective",
@@ -4308,7 +4461,11 @@ namespace DayZeEditor
         {
 
         }
-        #endregion Persistant Player Data
 
+
+
+
+
+        #endregion Persistant Player Data
     }
 }
