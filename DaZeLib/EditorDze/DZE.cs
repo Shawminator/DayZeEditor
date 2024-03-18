@@ -77,6 +77,7 @@ namespace DayZeLib
                 for (int j = 0; j < EditorobjectCount; j++)
                 {
                     Editorobject obj = new Editorobject(br);
+                    obj.Uuid = "";
                     obj.m_Id = j;
                     EditorObjects.Add(obj);
                 }
