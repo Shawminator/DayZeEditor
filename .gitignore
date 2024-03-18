@@ -362,3 +362,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/dayzlootmanager/Maps/BearIslandMapAddon.rar
+/dayzlootmanager/Maps/fogfallMapAddon.rar
+/dayzlootmanager/Maps/LuxMapAddon.rar
+/dayzlootmanager/Maps/NHChernobylMapAddon.rar
+/dayzlootmanager/Maps/Vis_IslandMapAddon.rar
