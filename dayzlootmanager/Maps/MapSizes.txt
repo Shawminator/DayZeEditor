@@ -18,5 +18,9 @@ chiemsee:10240
 melkart:20480
 thezone:20480
 capare:20480
-NHChernobyl:20480
+nhchernobyl:20480
 NukeZZonE:15360
+lux:15360
+vis_island:20480
+bearisland:10240
+fogfall:20480

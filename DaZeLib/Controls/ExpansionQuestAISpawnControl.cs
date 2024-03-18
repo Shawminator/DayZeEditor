@@ -397,6 +397,7 @@ namespace DayZeEditor
             {
                 MapName = ""
             };
+            int m_Id = 0;
             foreach (decimal[] array in _currentAISpawn.Waypoints)
             {
                 Editorobject eo = new Editorobject()
@@ -406,9 +407,11 @@ namespace DayZeEditor
                     Position = new float[] { Convert.ToSingle(array[0]), Convert.ToSingle(array[1]), Convert.ToSingle(array[2]) },
                     Orientation = new float[] { 0, 0, 0 },
                     Scale = (float)1.0,
-                    Flags = 2147483647
+                    Flags = 2147483647,
+                    m_Id = m_Id
                 };
                 newdze.EditorObjects.Add(eo);
+                m_Id++;
             }
             newdze.CameraPosition = newdze.EditorObjects[0].Position;
             SaveFileDialog save = new SaveFileDialog();

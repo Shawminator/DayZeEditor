@@ -561,6 +561,7 @@
     </None>
     <None Include="Maps\takistanplus_Map.png.xyz" />
     <None Include="Maps\vela_Map.png.xyz" />
+    <None Include="Maps\vis_island_Map.png.xyz" />
     <None Include="Maps\yiprit_map.png.xyz">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -611,6 +612,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Maps\barrington_Map.png" />
+    <Content Include="Maps\bearisland_Map.png" />
     <Content Include="Maps\Capare_Map.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -619,6 +621,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Maps\esseker_Map.png" />
+    <Content Include="Maps\fogfall_Map.png" />
     <Content Include="Maps\Icons\Airdrop.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -684,11 +687,13 @@
     <Content Include="Maps\deerisle_map.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Maps\lux_Map.png" />
     <Content Include="Maps\MapSizes.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Maps\melkart_Map.png" />
     <Content Include="Maps\namalsk_Map.png" />
+    <Content Include="Maps\nhchernobyl_Map.png" />
     <Content Include="Maps\pripyat_Map.png" />
     <Content Include="Maps\rostow_Map.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -697,6 +702,7 @@
     <Content Include="depositphotos_20788183_stock_illustration_cartoon_thief_running_with_a_Cw8_icon.ico" />
     <Content Include="Maps\valning_Map.png" />
     <Content Include="Maps\vela_Map.png" />
+    <Content Include="Maps\vis_island_Map.png" />
     <Content Include="Maps\yiprit_map.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

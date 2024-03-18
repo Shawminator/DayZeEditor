@@ -1043,6 +1043,7 @@ namespace DayZeEditor
             {
                 MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
             };
+            int m_Id = 0;
             foreach (float[] array in CurrentPatrol.Waypoints)
             {
                 Editorobject eo = new Editorobject()
@@ -1052,9 +1053,11 @@ namespace DayZeEditor
                     Position = array,
                     Orientation = new float[] {0,0,0},
                     Scale = 1.0f,
-                    Flags = 2147483647
+                    Flags = 2147483647,
+                    m_Id = m_Id
                 };
                 newdze.EditorObjects.Add(eo);
+                m_Id++;
             }
             newdze.CameraPosition = newdze.EditorObjects[0].Position;
             SaveFileDialog save = new SaveFileDialog();

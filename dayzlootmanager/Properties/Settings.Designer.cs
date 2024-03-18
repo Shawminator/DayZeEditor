@@ -58,5 +58,17 @@ namespace DayZeEditor.Properties {
                 this["FormSize"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowConsole {
+            get {
+                return ((bool)(this["ShowConsole"]));
+            }
+            set {
+                this["ShowConsole"] = value;
+            }
+        }
     }
 }

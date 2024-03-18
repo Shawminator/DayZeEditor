@@ -36,7 +36,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.7.9.6";
+        public string VersionNumber = "0.7.9.7";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -90,6 +90,7 @@ namespace DayZeEditor
                 this.Size = Properties.Settings.Default.FormSize;
             }
             Form_Controls.Setfromsize();
+            checkBox1.Checked = Properties.Settings.Default.ShowConsole;
         }
         public MainForm(SplashForm form)
         {
@@ -357,12 +358,18 @@ namespace DayZeEditor
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
+            HideConsole(checkBox1.Checked);
+        }
+
+        private void HideConsole(bool Hide)
+        {
             var handle = GetConsoleWindow();
-            if (checkBox1.Checked)
+            if (Hide)
                 ShowWindow(handle, SW_SHOW);
             else
                 ShowWindow(handle, SW_HIDE);
         }
+
         private void DiscordButton_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://discord.gg/5EHE49Kjsv");
@@ -1260,6 +1267,7 @@ namespace DayZeEditor
                 Properties.Settings.Default.FormLocation = this.RestoreBounds.Location;
                 Properties.Settings.Default.FormSize = this.RestoreBounds.Size;
             }
+            Properties.Settings.Default.ShowConsole = checkBox1.Checked;
             Properties.Settings.Default.Save();
             if (Projects.getActiveProject() != null)
             {

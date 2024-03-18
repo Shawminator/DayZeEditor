@@ -177,6 +177,7 @@ namespace DayZeEditor
             {
                 MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
             };
+            int m_Id = 0;
             BukakuPosRot triggerposrot = CurrentBubaklocation.gettriggerposition();
             Editorobject Triggerobject = new Editorobject()
             {
@@ -185,10 +186,11 @@ namespace DayZeEditor
                 Position = new float[] { Convert.ToSingle(triggerposrot.Position[0]), Convert.ToSingle(triggerposrot.Position[1]), Convert.ToSingle(triggerposrot.Position[2]) },
                 Orientation = new float[] { Convert.ToSingle(triggerposrot.Rotation[0]), Convert.ToSingle(triggerposrot.Rotation[1]), Convert.ToSingle(triggerposrot.Rotation[2]) },
                 Scale = 1.0f,
-                Flags = 2147483647
+                Flags = 2147483647,
+                m_Id = m_Id
             };
             newdze.EditorObjects.Add(Triggerobject);
-
+            m_Id++;
             for (int i = 0; i < CurrentBubaklocation.spawnerpos.Count; i++)
             {
                 BukakuPosRot spawnposrot = CurrentBubaklocation.getPosRot(i);
@@ -199,9 +201,11 @@ namespace DayZeEditor
                     Position = new float[] { Convert.ToSingle(spawnposrot.Position[0]), Convert.ToSingle(spawnposrot.Position[1]), Convert.ToSingle(spawnposrot.Position[2]) },
                     Orientation = new float[] { Convert.ToSingle(spawnposrot.Rotation[0]), Convert.ToSingle(spawnposrot.Rotation[1]), Convert.ToSingle(spawnposrot.Rotation[2]) },
                     Scale = 1.0f,
-                    Flags = 2147483647
+                    Flags = 2147483647,
+                    m_Id = m_Id
                 };
                 newdze.EditorObjects.Add(SpawnObject);
+                m_Id++;
             }
             newdze.CameraPosition = newdze.EditorObjects[0].Position;
             SaveFileDialog save = new SaveFileDialog();
@@ -396,6 +400,7 @@ namespace DayZeEditor
             {
                 MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
             };
+            int m_Id = 0;
             var result = MessageBox.Show("Would yo ulike to export the trigger as well?", "Export options", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
             if(result == DialogResult.Cancel)
             {
@@ -411,9 +416,11 @@ namespace DayZeEditor
                     Position = new float[] { Convert.ToSingle(triggerposrot.Position[0]), Convert.ToSingle(triggerposrot.Position[1]), Convert.ToSingle(triggerposrot.Position[2]) },
                     Orientation = new float[] { Convert.ToSingle(triggerposrot.Rotation[0]), Convert.ToSingle(triggerposrot.Rotation[1]), Convert.ToSingle(triggerposrot.Rotation[2]) },
                     Scale = 1.0f,
-                    Flags = 2147483647
+                    Flags = 2147483647,
+                    m_Id = m_Id
                 };
                 newdze.EditorObjects.Add(Triggerobject);
+                m_Id++;
             }
             for (int i = 0; i < CurrentBubaklocation.spawnerpos.Count; i++)
             {
@@ -425,9 +432,11 @@ namespace DayZeEditor
                     Position = new float[] { Convert.ToSingle(spawnposrot.Position[0]), Convert.ToSingle(spawnposrot.Position[1]), Convert.ToSingle(spawnposrot.Position[2]) },
                     Orientation = new float[] { Convert.ToSingle(spawnposrot.Rotation[0]), Convert.ToSingle(spawnposrot.Rotation[1]), Convert.ToSingle(spawnposrot.Rotation[2]) },
                     Scale = 1.0f,
-                    Flags = 2147483647
+                    Flags = 2147483647,
+                    m_Id = m_Id
                 };
                 newdze.EditorObjects.Add(SpawnObject);
+                m_Id++;
             }
             newdze.CameraPosition = newdze.EditorObjects[0].Position;
             SaveFileDialog save = new SaveFileDialog();

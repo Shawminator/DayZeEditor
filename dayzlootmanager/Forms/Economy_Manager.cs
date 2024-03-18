@@ -3255,10 +3255,11 @@ namespace DayZeEditor
         }
         private void exportPositionTodzeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             DZE newdze = new DZE()
             {
                 EditorObjects = new BindingList<Editorobject>(),
-                EditorDeletedObjects = new BindingList<Editordeletedobject>(),
+                EditorHiddenObjects = new BindingList<Editordeletedobject>(),
                 MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
             };
             string Classname = "";
@@ -3275,30 +3276,48 @@ namespace DayZeEditor
                     }
                 }
             }
+            int m_Id = 0;
             foreach (eventposdefEventPos array in eventposdefEvent.pos)
             {
+                float y = 0f;
+                if (array.ySpecified)
+                {
+                    y = Convert.ToSingle(array.y);
+                }
+                else
+                {
+                    if (MapData.FileExists)
+                    {
+                        y = (float)Decimal.Round((decimal)(MapData.gethieght((float)array.x, (float)array.z)), 4);
+                    }
+                }
                 Editorobject eo = new Editorobject()
                 {
                     Type = Classname,
                     DisplayName = Classname,
-                    Position = new float[] { Convert.ToSingle(array.x), 0f, Convert.ToSingle(array.z) },
+                    
+                    Position = new float[] { Convert.ToSingle(array.x), y, Convert.ToSingle(array.z) },
                     Orientation = new float[] { 0, 0, 0 },
                     Scale = 1.0f,
-                    Flags = 2147483647
+                    Flags = 2147483647,
+                    m_Id = m_Id
                 };
                 if (array.ySpecified)
                     eo.Position[1] = Convert.ToSingle(array.y);
                 if (array.aSpecified)
                     eo.Orientation[0] = Convert.ToSingle(array.a);
                 newdze.EditorObjects.Add(eo);
+                m_Id++;
             }
             newdze.CameraPosition = newdze.EditorObjects[0].Position;
+            Cursor.Current = Cursors.Default;
             SaveFileDialog save = new SaveFileDialog();
+            save.DefaultExt = "dze";
             if (save.ShowDialog() == DialogResult.OK)
             {
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(newdze, options);
-                File.WriteAllText(save.FileName + ".dze", jsonString);
+                File.WriteAllText(save.FileName, jsonString);
             }
         }
         private void addNewPosirtionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -3349,9 +3368,10 @@ namespace DayZeEditor
                 CameraPosition = new float[] { (float)eventposdefEventPos.x, (float)(eventposdefEventPos.y + 8), (float)eventposdefEventPos.z },
                 MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath.Split('_')[0]),
                 EditorObjects = new BindingList<Editorobject>(),
-                EditorDeletedObjects = new BindingList<Editordeletedobject>()
+                EditorHiddenObjects = new BindingList<Editordeletedobject>()
             };
-            foreach(eventgroupdefGroupChild eventgroupdefGroupChild in eventgroupdefGroup.child)
+            int m_Id = 0;
+            foreach (eventgroupdefGroupChild eventgroupdefGroupChild in eventgroupdefGroup.child)
             {
                 Editorobject newobject = new Editorobject()
                 {
@@ -3370,9 +3390,11 @@ namespace DayZeEditor
                     DisplayName = eventgroupdefGroupChild.type,
                     Type = eventgroupdefGroupChild.type,
                     Scale = 1.0f,
-                    Flags = 2147483647
+                    Flags = 2147483647,
+                    m_Id = m_Id
                 };
                 newdze.EditorObjects.Add(newobject);
+                m_Id++;
             }
             SaveFileDialog save = new SaveFileDialog();
             save.FileName = eventgroupdefGroup.name;

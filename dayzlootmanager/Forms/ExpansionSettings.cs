@@ -889,7 +889,7 @@ namespace DayZeEditor
                     string DestFile = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\objects\\" + Path.GetFileNameWithoutExtension(filePath) + ".map";
                     StringBuilder sb = new StringBuilder();
                     DZE importfile = DZEHelpers.LoadFile(filePath);
-                    foreach (Editordeletedobject eod in importfile.EditorDeletedObjects)
+                    foreach (Editordeletedobject eod in importfile.EditorHiddenObjects)
                     {
                         sb.AppendLine("-" + eod.Type + "|" + eod.Position[0].ToString("R") + " " + eod.Position[1].ToString("R") + " " + eod.Position[2].ToString("R") + "|0.000000 0.000000 0.000000");
                     }

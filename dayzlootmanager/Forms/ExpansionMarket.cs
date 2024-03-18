@@ -3616,9 +3616,10 @@ namespace DayZeEditor
             DZE newdze = new DZE()
             {
                 EditorObjects = new BindingList<Editorobject>(),
-                EditorDeletedObjects = new BindingList<Editordeletedobject>(),
+                EditorHiddenObjects = new BindingList<Editordeletedobject>(),
                 MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
             };
+            int m_Id = 0;
             Editorobject eo = new Editorobject()
             {
                 Type = currenttradermap.NPCName,
@@ -3626,9 +3627,11 @@ namespace DayZeEditor
                 Position = new float[] {currenttradermap.position.X, currenttradermap.position.Y, currenttradermap.position.X },
                 Orientation = new float[] { 0, 0, 0 },
                 Scale = 1.0f,
-                Flags = 2147483647
+                Flags = 2147483647,
+                m_Id = m_Id
             };
             newdze.EditorObjects.Add(eo);
+            m_Id++;
             foreach (Vec3 array in currenttradermap.Roamingpoints)
             {
                 eo = new Editorobject()
@@ -3638,9 +3641,11 @@ namespace DayZeEditor
                     Position = new float[] { array.X, array.Y, array.Z },
                     Orientation = new float[] { 0, 0, 0 },
                     Scale = 1.0f,
-                    Flags = 2147483647
+                    Flags = 2147483647,
+                    m_Id = m_Id
                 };
                 newdze.EditorObjects.Add(eo);
+                m_Id++;
             }
             newdze.CameraPosition = newdze.EditorObjects[0].Position;
             SaveFileDialog save = new SaveFileDialog();

@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DayZeLib
 {
@@ -14,17 +15,35 @@ namespace DayZeLib
     public class DZE
     {
         [JsonIgnore]
-        const int Version = 3;
+        const int Version = 4;
 
         public string MapName { get; set; }
         public float[] CameraPosition { get; set; }
+        public int Year { get; set; }
+        public int Month { get; set; }
+        public int Day { get; set; }
+        public int Hour { get; set; }
+        public int Minute { get; set; }
+        public int Second { get; set; }
+        public decimal Overcast0 { get; set; }
+        public decimal Fog0 { get; set; }
+        public decimal Rain0 { get; set; }
         public BindingList<Editorobject> EditorObjects { get; set; }
-        public BindingList<Editordeletedobject> EditorDeletedObjects { get; set; }
+        public BindingList<Editordeletedobject> EditorHiddenObjects { get; set; }
 
         public DZE()
         {
+            Year = 0;
+            Month = 0;
+            Day = 0;
+            Hour = 0;
+            Minute = 0;
+            Second = 0;
+            Overcast0 = (decimal)0.0;
+            Fog0 = (decimal)0.0;
+            Rain0 = (decimal)0.0;
             EditorObjects = new BindingList<Editorobject>();
-            EditorDeletedObjects = new BindingList<Editordeletedobject>();
+            EditorHiddenObjects = new BindingList<Editordeletedobject>();
         }
         public DZE(string fileName)
         {
@@ -33,8 +52,19 @@ namespace DayZeLib
             {
                 int Length = br.ReadInt32();
                 string bincheck = Helper.ReadCString(br, 12);
-                if (br.ReadInt32() != Version)
+                int fileversion = br.ReadInt32();
+                if (fileversion != Version)
+                {
+                    if (fileversion > Version)
+                    {
+                        MessageBox.Show("The version number of the this dze file Newer\nPlease let me know to update the DayZeEditor");
+                    }
+                    else if (fileversion < Version)
+                    {
+                        MessageBox.Show("You are using and older version of the DZE format, please update your file..");
+                    }
                     return;
+                }
                 MapName = Helper.ReadCString(br, br.ReadInt32());
                 int loop = br.ReadInt32();
                 CameraPosition = new float[3];
@@ -46,13 +76,15 @@ namespace DayZeLib
                 EditorObjects = new BindingList<Editorobject>();
                 for (int j = 0; j < EditorobjectCount; j++)
                 {
-                    EditorObjects.Add(new Editorobject(br));
+                    Editorobject obj = new Editorobject(br);
+                    obj.m_Id = j;
+                    EditorObjects.Add(obj);
                 }
                 int EditorDeletedObjectsCount = br.ReadInt32();
-                EditorDeletedObjects = new BindingList<Editordeletedobject>();
+                EditorHiddenObjects = new BindingList<Editordeletedobject>();
                 for (int j = 0; j < EditorDeletedObjectsCount; j++)
                 {
-                    EditorDeletedObjects.Add(new Editordeletedobject(br));
+                    EditorHiddenObjects.Add(new Editordeletedobject(br));
                 }
             }
         }
@@ -60,19 +92,15 @@ namespace DayZeLib
 
     public class Editorobject
     {
+        public string Uuid { get; set; }
         public string Type { get; set; }
         public string DisplayName { get; set; }
         public float[] Position { get; set; }
         public float[] Orientation { get; set; }
         public float Scale { get; set; }
         public int Flags { get; set; }
+        public int m_Id { get; set; }
 
-        [JsonIgnore]
-        public List<String> Attachments { get; set; }
-        [JsonIgnore]
-        public int attachments_count { get; set; }
-        [JsonIgnore]
-        public int params_count { get; set; }
         [JsonIgnore]
         public bool EditorOnly { get; set; }
         [JsonIgnore]
@@ -81,9 +109,19 @@ namespace DayZeLib
         public bool AllowDamage { get; set; }
         [JsonIgnore]
         public bool Simulate { get; set; }
+        [JsonIgnore]
+        public List<String> Attachments { get; set; }
+        [JsonIgnore]
+        public int attachments_count { get; set; }
+        [JsonIgnore]
+        public int params_count { get; set; }
+
+
+
 
         public Editorobject()
         {
+            Uuid = "";
             Scale = 1;
             Flags = 2147483647;
         }
