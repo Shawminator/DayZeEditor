@@ -141,6 +141,7 @@ namespace DayZeEditor
             QuestActions = new BindingList<string>(File.ReadAllLines(Application.StartupPath + "\\TraderNPCs\\Vanilla_Quest_Actions.txt").ToList());
             ObjectivesActionsCB.DataSource = new BindingList<string>(QuestActions);
 
+            
 
             bool needtosave = false;
 
@@ -1230,7 +1231,7 @@ namespace DayZeEditor
             if (QuestsListLB.SelectedItems.Count < 1) return;
             CurrentQuest = QuestsListLB.SelectedItem as Quests;
             useraction = false;
-
+            QuestRewardBehavorCB.DataSource = Enum.GetValues(typeof(ExpansionQuestRewardBehavior));
             QuestFileNameTB.Text = CurrentQuest.Filename;
             QuestConfigVersionNUD.Value = CurrentQuest.ConfigVersion;
             QuestIDNUD.Value = CurrentQuest.ID;
@@ -1298,6 +1299,7 @@ namespace DayZeEditor
             QuestReputationRequirmentNUD.Value = CurrentQuest.ReputationRequirement;
             QuestRandomRewardCB.Checked = CurrentQuest.RandomReward == 1 ? true : false;
             QuestRandomRewardAmountNUD.Value = CurrentQuest.RandomRewardAmount;
+            QuestRewardBehavorCB.SelectedItem = (ExpansionQuestRewardBehavior)CurrentQuest.RewardBehavior;
             QuestSequentialObjectivesCB.Checked = CurrentQuest.SequentialObjectives == 1 ? true : false;
 
             QuestPreQuestIDsLB.DisplayMember = "DisplayName";
@@ -1581,6 +1583,13 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             CurrentQuest.RewardsForGroupOwnerOnly = QuestRewardsForGroupOwnerOnlyCB.Checked == true ? 1 : 0;
+            CurrentQuest.isDirty = true;
+        }
+        private void QuestRewardBehavorCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            ExpansionQuestRewardBehavior cacl = (ExpansionQuestRewardBehavior)QuestRewardBehavorCB.SelectedItem;
+            CurrentQuest.RewardBehavior = (int)cacl;
             CurrentQuest.isDirty = true;
         }
         private void darkButton26_Click(object sender, EventArgs e)
@@ -3156,10 +3165,31 @@ namespace DayZeEditor
         private void ObjectivesAICampAISpawnsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ObjectivesAICampAISpawnsLB.SelectedItems.Count < 1) return;
-            ExpansionQuestAISpawn currentaispawns = ObjectivesAICampAISpawnsLB.SelectedItem as ExpansionQuestAISpawn;
             expansionQuestAISpawnControlAICamp.currentAISpawn = ObjectivesAICampAISpawnsLB.SelectedItem as ExpansionQuestAISpawn;
             QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
             expansionQuestAISpawnControlAICamp.isDirty = CurrentAICam.isDirty;
+        }
+
+        private void darkButton89_Click(object sender, EventArgs e)
+        {
+            ExpansionQuestAISpawn newAISpawn = new ExpansionQuestAISpawn();
+            newAISpawn.CreateDefaultAISpawn();
+            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
+            if (CurrentAICam.AISpawns.Count <= 0) CurrentAICam.AISpawns = new BindingList<ExpansionQuestAISpawn>();
+            CurrentAICam.AISpawns.Add(newAISpawn);
+            ObjectivesAICampAISpawnsLB.Invalidate();
+            expansionQuestAISpawnControlAICamp.isDirty = true;
+        }
+
+        private void darkButton88_Click(object sender, EventArgs e)
+        {
+            if (ObjectivesAICampAISpawnsLB.SelectedItems.Count < 1) return;
+            QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
+            ExpansionQuestAISpawn currentAISpawn = ObjectivesAICampAISpawnsLB.SelectedItem as ExpansionQuestAISpawn;
+            CurrentAICam.AISpawns.Remove(currentAISpawn);
+            ObjectivesAICampAISpawnsLB.Invalidate();
+            CurrentAICam.isDirty = true;
+
         }
         private void expansionQuestAISpawnControlAICamp_IsDirtyChanged(object sender, PropertyChangedEventArgs e)
         {
@@ -4473,5 +4503,7 @@ namespace DayZeEditor
 
 
         #endregion Persistant Player Data
+
+
     }
 }

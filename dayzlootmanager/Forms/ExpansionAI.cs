@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
@@ -27,6 +28,8 @@ namespace DayZeEditor
         public BindingList<string> LoadoutNameList1 { get; private set; }
         public BindingList<string> LoadoutNameList2 { get; private set; }
         public BindingList<string> Factions { get; set; }
+        public MapData MapData { get; private set; }
+        public int AIPatrolScale = 1;
 
         public string AISettingsPath;
         public string AILoadoutsPath;
@@ -132,6 +135,14 @@ namespace DayZeEditor
             AIPatrolSettings.Filename = AIPatrolSettingsPath;
             SetupAIPatrolSettings();
 
+            MapData = new MapData(Application.StartupPath + currentproject.MapPath + ".xyz");
+
+            pictureBox2.BackgroundImage = Image.FromFile(Application.StartupPath + currentproject.MapPath); // Livonia maop size is 12800 x 12800, 0,0 bottom left, center 6400 x 6400
+            pictureBox2.Size = new Size(currentproject.MapSize, currentproject.MapSize);
+            pictureBox2.Paint += new PaintEventHandler(DrawAIPAtrols);
+            trackBar4.Value = 1;
+            SetAIPatrolZonescale();
+
             tabControl1.ItemSize = new Size(0, 1);
 
             if (needtosave)
@@ -141,6 +152,9 @@ namespace DayZeEditor
 
 
         }
+
+
+
         private void ExpansionAI_FormClosing(object sender, FormClosingEventArgs e)
         {
             bool needtosave = false;
@@ -732,7 +746,7 @@ namespace DayZeEditor
                 StaticPatrolWaypointPOSYNUD.Visible = true;
                 StaticPatrolWaypointPOSZNUD.Visible = true;
             }
-
+            pictureBox2.Invalidate();
             useraction = true;
         }
         private void StaticPatrolWayPointsLB_SelectedIndexChanged(object sender, EventArgs e)
@@ -1258,8 +1272,148 @@ namespace DayZeEditor
             AISettings.NoiseInvestigationDistanceLimit = (int)NoiseInvestigationDistanceLimitNUD.Value;
             AISettings.isDirty = true;
         }
+
         #endregion AISettings
+        private Point _mouseLastPosition;
+        private Point _newscrollPosition;
+        private void trackBar4_MouseUp(object sender, MouseEventArgs e)
+        {
+            AIPatrolScale = trackBar4.Value;
+            SetAIPatrolZonescale();
+        }
 
+        private void SetAIPatrolZonescale()
+        {
+            float scalevalue = AIPatrolScale * 0.05f;
+            float mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            pictureBox2.Size = new Size(newsize, newsize);
+        }
+        private void DrawAIPAtrols(object sender, PaintEventArgs e)
+        {
+            int c = 1;
+            foreach (float[] waypoints in CurrentPatrol.Waypoints)
+            {
+                float scalevalue = AIPatrolScale * 0.05f;
+                int centerX = (int)(Math.Round(waypoints[0]) * scalevalue);
+                int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(waypoints[2], 0) * scalevalue);
+                int eventradius = (int)(Math.Round(1f, 0) * scalevalue);
+                Point center = new Point(centerX, centerY);
+                Pen pen = new Pen(Color.Red, 4);
+                getCircle(e.Graphics, pen, center, eventradius, c);
+                c++;
+            }
+        }
+        private void getCircle(Graphics drawingArea, Pen penToUse, Point center, int radius, int c)
+        {
+            Rectangle rect = new Rectangle(center.X - 1, center.Y - 1, 2, 2);
+            drawingArea.DrawEllipse(penToUse, rect);
+            Rectangle rect2 = new Rectangle(center.X - radius, center.Y - radius, radius * 2, radius * 2);
+            drawingArea.DrawEllipse(penToUse, rect2);
+            drawingArea.DrawString(c.ToString(), new Font("Tahoma", 9), Brushes.White, rect2);
+        }
+        private void pictureBox2_MouseEnter(object sender, EventArgs e)
+        {
+            if (pictureBox2.Focused == false)
+            {
+                pictureBox2.Focus();
+                panel2.AutoScrollPosition = _newscrollPosition;
+                pictureBox2.Invalidate();
+            }
+        }
+        private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Point changePoint = new Point(e.Location.X - _mouseLastPosition.X, e.Location.Y - _mouseLastPosition.Y);
+                _newscrollPosition = new Point(-panel2.AutoScrollPosition.X - changePoint.X, -panel2.AutoScrollPosition.Y - changePoint.Y);
+                if (_newscrollPosition.X <= 0)
+                    _newscrollPosition.X = 0;
+                if (_newscrollPosition.Y <= 0)
+                    _newscrollPosition.Y = 0;
+                panel2.AutoScrollPosition = _newscrollPosition;
+                pictureBox2.Invalidate();
+            }
+            decimal scalevalue = AIPatrolScale * (decimal)0.05;
+            decimal mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            label1.Text = Decimal.Round((decimal)(e.X / scalevalue), 4) + "," + Decimal.Round((decimal)((newsize - e.Y) / scalevalue), 4);
+        }
+        private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Cursor.Current = Cursors.SizeAll;
+                _mouseLastPosition = e.Location;
+            }
+        }
+        private void pictureBox2_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta < 0)
+            {
+                pictureBox2_ZoomOut();
+            }
+            else
+            {
+                pictureBox2_ZoomIn();
+            }
 
+        }
+        private void pictureBox2_ZoomIn()
+        {
+            int oldpictureboxhieght = pictureBox2.Height;
+            int oldpitureboxwidht = pictureBox2.Width;
+            Point oldscrollpos = panel2.AutoScrollPosition;
+            int tbv = trackBar4.Value;
+            int newval = tbv + 1;
+            if (newval >= 20)
+                newval = 20;
+            trackBar4.Value = newval;
+            AIPatrolScale = trackBar4.Value;
+            SetAIPatrolZonescale();
+            if (pictureBox2.Height > panel2.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox2.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panel2.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox2.Width > panel2.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox2.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panel2.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox2.Invalidate();
+        }
+        private void pictureBox2_ZoomOut()
+        {
+            int oldpictureboxhieght = pictureBox2.Height;
+            int oldpitureboxwidht = pictureBox2.Width;
+            Point oldscrollpos = panel2.AutoScrollPosition;
+            int tbv = trackBar4.Value;
+            int newval = tbv - 1;
+            if (newval <= 1)
+                newval = 1;
+            trackBar4.Value = newval;
+            AIPatrolScale = trackBar4.Value;
+            SetAIPatrolZonescale();
+            if (pictureBox2.Height > panel2.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox2.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panel2.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox2.Width > panel2.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox2.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panel2.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox2.Invalidate();
+        }
     }
 }

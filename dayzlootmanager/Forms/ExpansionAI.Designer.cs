@@ -152,73 +152,79 @@ namespace DayZeEditor
             this.darkButton7 = new DarkUI.Controls.DarkButton();
             this.EventCrachPatrolLB = new System.Windows.Forms.ListBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.darkButton21 = new DarkUI.Controls.DarkButton();
-            this.darkLabel76 = new DarkUI.Controls.DarkLabel();
-            this.darkButton22 = new DarkUI.Controls.DarkButton();
-            this.StaticPatrolDamageReceivedMultiplierNUD = new System.Windows.Forms.NumericUpDown();
-            this.StaticPatrolSniperProneDistanceThresholdNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel68 = new DarkUI.Controls.DarkLabel();
-            this.StaticPatrolNameTB = new System.Windows.Forms.TextBox();
             this.darkLabel65 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel64 = new DarkUI.Controls.DarkLabel();
-            this.StaticPatrolFormationLoosenessNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel46 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel36 = new DarkUI.Controls.DarkLabel();
-            this.StaticPatrolUseRandomWaypointAsStartPointCB = new System.Windows.Forms.CheckBox();
-            this.darkLabel45 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel44 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel42 = new DarkUI.Controls.DarkLabel();
-            this.darkButton17 = new DarkUI.Controls.DarkButton();
-            this.darkButton14 = new DarkUI.Controls.DarkButton();
-            this.StaticPatrolWayPointsLB = new System.Windows.Forms.ListBox();
-            this.darkLabel35 = new DarkUI.Controls.DarkLabel();
-            this.StaticPatrolWaypointPOSXNUD = new System.Windows.Forms.NumericUpDown();
-            this.StaticPatrolDamageMultiplierNUD = new System.Windows.Forms.NumericUpDown();
-            this.StaticPatrolWaypointPOSYNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel54 = new DarkUI.Controls.DarkLabel();
-            this.StaticPatrolWaypointPOSZNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel43 = new DarkUI.Controls.DarkLabel();
-            this.darkButton5 = new DarkUI.Controls.DarkButton();
-            this.StaticPatrolAccuracyMaxNUD = new System.Windows.Forms.NumericUpDown();
-            this.StaticPatrolThreatDistanceLimitNUD = new System.Windows.Forms.NumericUpDown();
-            this.StaticPatrolExporttoMapButton = new DarkUI.Controls.DarkButton();
-            this.StaticPatrolAccuracyMinNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel55 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel53 = new DarkUI.Controls.DarkLabel();
-            this.StaticPatrolDespawnTimeNUD = new System.Windows.Forms.NumericUpDown();
-            this.StaticPatrolWaypointInterpolationCB = new System.Windows.Forms.ComboBox();
-            this.darkLabel48 = new DarkUI.Controls.DarkLabel();
-            this.StaticPatrolFormationCB = new System.Windows.Forms.ComboBox();
-            this.darkLabel47 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel39 = new DarkUI.Controls.DarkLabel();
-            this.StaticPatrolChanceCB = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel12 = new DarkUI.Controls.DarkLabel();
-            this.StaticPatrolMinDistRadiusNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel27 = new DarkUI.Controls.DarkLabel();
-            this.StaticPatrolDespawnRadiusNUD = new System.Windows.Forms.NumericUpDown();
-            this.StaticPatrolMaxDistRadiusNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel8 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel26 = new DarkUI.Controls.DarkLabel();
-            this.StaticPatrolMaxSpreadRadiusNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel6 = new DarkUI.Controls.DarkLabel();
-            this.StaticPatrolRespawnTimeNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel13 = new DarkUI.Controls.DarkLabel();
-            this.StaticPatrolMinSpreadRadiusNUD = new System.Windows.Forms.NumericUpDown();
-            this.StaticPatrolCanBeLotedCB = new System.Windows.Forms.CheckBox();
-            this.StaticPatrolUnlimitedReloadCB = new System.Windows.Forms.CheckBox();
-            this.darkLabel28 = new DarkUI.Controls.DarkLabel();
-            this.StaticPatrolUnderThreatSpeedCB = new System.Windows.Forms.ComboBox();
-            this.darkLabel29 = new DarkUI.Controls.DarkLabel();
-            this.StaticPatrolSpeedCB = new System.Windows.Forms.ComboBox();
-            this.darkLabel30 = new DarkUI.Controls.DarkLabel();
-            this.StaticPatrolBehaviorCB = new System.Windows.Forms.ComboBox();
-            this.darkLabel31 = new DarkUI.Controls.DarkLabel();
-            this.StaticPatrolNumberOfAINUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel32 = new DarkUI.Controls.DarkLabel();
-            this.StaticPatrolLoadoutsCB = new System.Windows.Forms.ComboBox();
-            this.StaticPatrolFactionCB = new System.Windows.Forms.ComboBox();
+            this.darkLabel76 = new DarkUI.Controls.DarkLabel();
             this.darkLabel34 = new DarkUI.Controls.DarkLabel();
+            this.darkButton22 = new DarkUI.Controls.DarkButton();
+            this.StaticPatrolFactionCB = new System.Windows.Forms.ComboBox();
+            this.StaticPatrolDamageReceivedMultiplierNUD = new System.Windows.Forms.NumericUpDown();
+            this.StaticPatrolLoadoutsCB = new System.Windows.Forms.ComboBox();
+            this.StaticPatrolSniperProneDistanceThresholdNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel32 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel68 = new DarkUI.Controls.DarkLabel();
+            this.StaticPatrolNumberOfAINUD = new System.Windows.Forms.NumericUpDown();
+            this.StaticPatrolNameTB = new System.Windows.Forms.TextBox();
+            this.darkLabel31 = new DarkUI.Controls.DarkLabel();
+            this.StaticPatrolBehaviorCB = new System.Windows.Forms.ComboBox();
+            this.darkLabel64 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel30 = new DarkUI.Controls.DarkLabel();
+            this.StaticPatrolFormationLoosenessNUD = new System.Windows.Forms.NumericUpDown();
+            this.StaticPatrolSpeedCB = new System.Windows.Forms.ComboBox();
+            this.darkLabel46 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel29 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel36 = new DarkUI.Controls.DarkLabel();
+            this.StaticPatrolUnderThreatSpeedCB = new System.Windows.Forms.ComboBox();
+            this.StaticPatrolUseRandomWaypointAsStartPointCB = new System.Windows.Forms.CheckBox();
+            this.darkLabel28 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel45 = new DarkUI.Controls.DarkLabel();
+            this.StaticPatrolUnlimitedReloadCB = new System.Windows.Forms.CheckBox();
+            this.darkLabel44 = new DarkUI.Controls.DarkLabel();
+            this.StaticPatrolCanBeLotedCB = new System.Windows.Forms.CheckBox();
+            this.darkLabel42 = new DarkUI.Controls.DarkLabel();
+            this.StaticPatrolMinSpreadRadiusNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkButton17 = new DarkUI.Controls.DarkButton();
+            this.darkLabel13 = new DarkUI.Controls.DarkLabel();
+            this.darkButton14 = new DarkUI.Controls.DarkButton();
+            this.StaticPatrolRespawnTimeNUD = new System.Windows.Forms.NumericUpDown();
+            this.StaticPatrolWayPointsLB = new System.Windows.Forms.ListBox();
+            this.darkLabel6 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel35 = new DarkUI.Controls.DarkLabel();
+            this.StaticPatrolMaxSpreadRadiusNUD = new System.Windows.Forms.NumericUpDown();
+            this.StaticPatrolWaypointPOSXNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel26 = new DarkUI.Controls.DarkLabel();
+            this.StaticPatrolDamageMultiplierNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel8 = new DarkUI.Controls.DarkLabel();
+            this.StaticPatrolWaypointPOSYNUD = new System.Windows.Forms.NumericUpDown();
+            this.StaticPatrolMaxDistRadiusNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel54 = new DarkUI.Controls.DarkLabel();
+            this.StaticPatrolDespawnRadiusNUD = new System.Windows.Forms.NumericUpDown();
+            this.StaticPatrolWaypointPOSZNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel27 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel43 = new DarkUI.Controls.DarkLabel();
+            this.StaticPatrolMinDistRadiusNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkButton5 = new DarkUI.Controls.DarkButton();
+            this.darkLabel12 = new DarkUI.Controls.DarkLabel();
+            this.StaticPatrolAccuracyMaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.StaticPatrolChanceCB = new System.Windows.Forms.NumericUpDown();
+            this.StaticPatrolThreatDistanceLimitNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel39 = new DarkUI.Controls.DarkLabel();
+            this.StaticPatrolExporttoMapButton = new DarkUI.Controls.DarkButton();
+            this.darkLabel47 = new DarkUI.Controls.DarkLabel();
+            this.StaticPatrolAccuracyMinNUD = new System.Windows.Forms.NumericUpDown();
+            this.StaticPatrolFormationCB = new System.Windows.Forms.ComboBox();
+            this.darkLabel55 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel48 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel53 = new DarkUI.Controls.DarkLabel();
+            this.StaticPatrolWaypointInterpolationCB = new System.Windows.Forms.ComboBox();
+            this.StaticPatrolDespawnTimeNUD = new System.Windows.Forms.NumericUpDown();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.panel2 = new TreeViewMS.PanelEx();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.trackBar4 = new System.Windows.Forms.TrackBar();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.darkButton3 = new DarkUI.Controls.DarkButton();
             this.darkButton4 = new DarkUI.Controls.DarkButton();
             this.StaticPatrolLB = new System.Windows.Forms.ListBox();
@@ -228,6 +234,7 @@ namespace DayZeEditor
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.TabPage1.SuspendLayout();
@@ -271,26 +278,32 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.CrashMinDistRadiusNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrashNumberOfAINUD)).BeginInit();
             this.tabPage6.SuspendLayout();
-            this.groupBox5.SuspendLayout();
+            this.tabControl2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolDamageReceivedMultiplierNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolSniperProneDistanceThresholdNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolNumberOfAINUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolFormationLoosenessNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolMinSpreadRadiusNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolRespawnTimeNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolMaxSpreadRadiusNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolWaypointPOSXNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolDamageMultiplierNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolWaypointPOSYNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolMaxDistRadiusNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolDespawnRadiusNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolWaypointPOSZNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolMinDistRadiusNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolAccuracyMaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolChanceCB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolThreatDistanceLimitNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolAccuracyMinNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolDespawnTimeNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolChanceCB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolMinDistRadiusNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolDespawnRadiusNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolMaxDistRadiusNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolMaxSpreadRadiusNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolRespawnTimeNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolMinSpreadRadiusNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolNumberOfAINUD)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).BeginInit();
+            this.groupBox5.SuspendLayout();
             this.darkToolStrip23.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -2185,6 +2198,7 @@ namespace DayZeEditor
             // tabPage6
             // 
             this.tabPage6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage6.Controls.Add(this.tabControl2);
             this.tabPage6.Controls.Add(this.groupBox5);
             this.tabPage6.ForeColor = System.Drawing.SystemColors.Control;
             this.tabPage6.Location = new System.Drawing.Point(4, 25);
@@ -2193,89 +2207,100 @@ namespace DayZeEditor
             this.tabPage6.TabIndex = 2;
             this.tabPage6.Text = "tabPage6";
             // 
-            // groupBox5
+            // tabControl2
             // 
-            this.groupBox5.Controls.Add(this.darkButton21);
-            this.groupBox5.Controls.Add(this.darkLabel76);
-            this.groupBox5.Controls.Add(this.darkButton22);
-            this.groupBox5.Controls.Add(this.StaticPatrolDamageReceivedMultiplierNUD);
-            this.groupBox5.Controls.Add(this.StaticPatrolSniperProneDistanceThresholdNUD);
-            this.groupBox5.Controls.Add(this.darkLabel68);
-            this.groupBox5.Controls.Add(this.StaticPatrolNameTB);
-            this.groupBox5.Controls.Add(this.darkLabel65);
-            this.groupBox5.Controls.Add(this.darkLabel64);
-            this.groupBox5.Controls.Add(this.StaticPatrolFormationLoosenessNUD);
-            this.groupBox5.Controls.Add(this.darkLabel46);
-            this.groupBox5.Controls.Add(this.darkLabel36);
-            this.groupBox5.Controls.Add(this.StaticPatrolUseRandomWaypointAsStartPointCB);
-            this.groupBox5.Controls.Add(this.darkLabel45);
-            this.groupBox5.Controls.Add(this.darkLabel44);
-            this.groupBox5.Controls.Add(this.darkLabel42);
-            this.groupBox5.Controls.Add(this.darkButton17);
-            this.groupBox5.Controls.Add(this.darkButton14);
-            this.groupBox5.Controls.Add(this.StaticPatrolWayPointsLB);
-            this.groupBox5.Controls.Add(this.darkLabel35);
-            this.groupBox5.Controls.Add(this.StaticPatrolWaypointPOSXNUD);
-            this.groupBox5.Controls.Add(this.StaticPatrolDamageMultiplierNUD);
-            this.groupBox5.Controls.Add(this.StaticPatrolWaypointPOSYNUD);
-            this.groupBox5.Controls.Add(this.darkLabel54);
-            this.groupBox5.Controls.Add(this.StaticPatrolWaypointPOSZNUD);
-            this.groupBox5.Controls.Add(this.darkLabel43);
-            this.groupBox5.Controls.Add(this.darkButton5);
-            this.groupBox5.Controls.Add(this.StaticPatrolAccuracyMaxNUD);
-            this.groupBox5.Controls.Add(this.StaticPatrolThreatDistanceLimitNUD);
-            this.groupBox5.Controls.Add(this.StaticPatrolExporttoMapButton);
-            this.groupBox5.Controls.Add(this.StaticPatrolAccuracyMinNUD);
-            this.groupBox5.Controls.Add(this.darkLabel55);
-            this.groupBox5.Controls.Add(this.darkLabel53);
-            this.groupBox5.Controls.Add(this.StaticPatrolDespawnTimeNUD);
-            this.groupBox5.Controls.Add(this.StaticPatrolWaypointInterpolationCB);
-            this.groupBox5.Controls.Add(this.darkLabel48);
-            this.groupBox5.Controls.Add(this.StaticPatrolFormationCB);
-            this.groupBox5.Controls.Add(this.darkLabel47);
-            this.groupBox5.Controls.Add(this.darkLabel39);
-            this.groupBox5.Controls.Add(this.StaticPatrolChanceCB);
-            this.groupBox5.Controls.Add(this.darkLabel12);
-            this.groupBox5.Controls.Add(this.StaticPatrolMinDistRadiusNUD);
-            this.groupBox5.Controls.Add(this.darkLabel27);
-            this.groupBox5.Controls.Add(this.StaticPatrolDespawnRadiusNUD);
-            this.groupBox5.Controls.Add(this.StaticPatrolMaxDistRadiusNUD);
-            this.groupBox5.Controls.Add(this.darkLabel8);
-            this.groupBox5.Controls.Add(this.darkLabel26);
-            this.groupBox5.Controls.Add(this.StaticPatrolMaxSpreadRadiusNUD);
-            this.groupBox5.Controls.Add(this.darkLabel6);
-            this.groupBox5.Controls.Add(this.StaticPatrolRespawnTimeNUD);
-            this.groupBox5.Controls.Add(this.darkLabel13);
-            this.groupBox5.Controls.Add(this.StaticPatrolMinSpreadRadiusNUD);
-            this.groupBox5.Controls.Add(this.StaticPatrolCanBeLotedCB);
-            this.groupBox5.Controls.Add(this.StaticPatrolUnlimitedReloadCB);
-            this.groupBox5.Controls.Add(this.darkLabel28);
-            this.groupBox5.Controls.Add(this.StaticPatrolUnderThreatSpeedCB);
-            this.groupBox5.Controls.Add(this.darkLabel29);
-            this.groupBox5.Controls.Add(this.StaticPatrolSpeedCB);
-            this.groupBox5.Controls.Add(this.darkLabel30);
-            this.groupBox5.Controls.Add(this.StaticPatrolBehaviorCB);
-            this.groupBox5.Controls.Add(this.darkLabel31);
-            this.groupBox5.Controls.Add(this.StaticPatrolNumberOfAINUD);
-            this.groupBox5.Controls.Add(this.darkLabel32);
-            this.groupBox5.Controls.Add(this.StaticPatrolLoadoutsCB);
-            this.groupBox5.Controls.Add(this.StaticPatrolFactionCB);
-            this.groupBox5.Controls.Add(this.darkLabel34);
-            this.groupBox5.Controls.Add(this.darkButton3);
-            this.groupBox5.Controls.Add(this.darkButton4);
-            this.groupBox5.Controls.Add(this.StaticPatrolLB);
-            this.groupBox5.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox5.Location = new System.Drawing.Point(3, 3);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(956, 659);
-            this.groupBox5.TabIndex = 133;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "AI Patrols";
+            this.tabControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl2.Controls.Add(this.tabPage3);
+            this.tabControl2.Controls.Add(this.tabPage4);
+            this.tabControl2.Location = new System.Drawing.Point(235, 8);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(969, 659);
+            this.tabControl2.TabIndex = 134;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage3.Controls.Add(this.darkButton21);
+            this.tabPage3.Controls.Add(this.darkLabel65);
+            this.tabPage3.Controls.Add(this.darkLabel76);
+            this.tabPage3.Controls.Add(this.darkLabel34);
+            this.tabPage3.Controls.Add(this.darkButton22);
+            this.tabPage3.Controls.Add(this.StaticPatrolFactionCB);
+            this.tabPage3.Controls.Add(this.StaticPatrolDamageReceivedMultiplierNUD);
+            this.tabPage3.Controls.Add(this.StaticPatrolLoadoutsCB);
+            this.tabPage3.Controls.Add(this.StaticPatrolSniperProneDistanceThresholdNUD);
+            this.tabPage3.Controls.Add(this.darkLabel32);
+            this.tabPage3.Controls.Add(this.darkLabel68);
+            this.tabPage3.Controls.Add(this.StaticPatrolNumberOfAINUD);
+            this.tabPage3.Controls.Add(this.StaticPatrolNameTB);
+            this.tabPage3.Controls.Add(this.darkLabel31);
+            this.tabPage3.Controls.Add(this.StaticPatrolBehaviorCB);
+            this.tabPage3.Controls.Add(this.darkLabel64);
+            this.tabPage3.Controls.Add(this.darkLabel30);
+            this.tabPage3.Controls.Add(this.StaticPatrolFormationLoosenessNUD);
+            this.tabPage3.Controls.Add(this.StaticPatrolSpeedCB);
+            this.tabPage3.Controls.Add(this.darkLabel46);
+            this.tabPage3.Controls.Add(this.darkLabel29);
+            this.tabPage3.Controls.Add(this.darkLabel36);
+            this.tabPage3.Controls.Add(this.StaticPatrolUnderThreatSpeedCB);
+            this.tabPage3.Controls.Add(this.StaticPatrolUseRandomWaypointAsStartPointCB);
+            this.tabPage3.Controls.Add(this.darkLabel28);
+            this.tabPage3.Controls.Add(this.darkLabel45);
+            this.tabPage3.Controls.Add(this.StaticPatrolUnlimitedReloadCB);
+            this.tabPage3.Controls.Add(this.darkLabel44);
+            this.tabPage3.Controls.Add(this.StaticPatrolCanBeLotedCB);
+            this.tabPage3.Controls.Add(this.darkLabel42);
+            this.tabPage3.Controls.Add(this.StaticPatrolMinSpreadRadiusNUD);
+            this.tabPage3.Controls.Add(this.darkButton17);
+            this.tabPage3.Controls.Add(this.darkLabel13);
+            this.tabPage3.Controls.Add(this.darkButton14);
+            this.tabPage3.Controls.Add(this.StaticPatrolRespawnTimeNUD);
+            this.tabPage3.Controls.Add(this.StaticPatrolWayPointsLB);
+            this.tabPage3.Controls.Add(this.darkLabel6);
+            this.tabPage3.Controls.Add(this.darkLabel35);
+            this.tabPage3.Controls.Add(this.StaticPatrolMaxSpreadRadiusNUD);
+            this.tabPage3.Controls.Add(this.StaticPatrolWaypointPOSXNUD);
+            this.tabPage3.Controls.Add(this.darkLabel26);
+            this.tabPage3.Controls.Add(this.StaticPatrolDamageMultiplierNUD);
+            this.tabPage3.Controls.Add(this.darkLabel8);
+            this.tabPage3.Controls.Add(this.StaticPatrolWaypointPOSYNUD);
+            this.tabPage3.Controls.Add(this.StaticPatrolMaxDistRadiusNUD);
+            this.tabPage3.Controls.Add(this.darkLabel54);
+            this.tabPage3.Controls.Add(this.StaticPatrolDespawnRadiusNUD);
+            this.tabPage3.Controls.Add(this.StaticPatrolWaypointPOSZNUD);
+            this.tabPage3.Controls.Add(this.darkLabel27);
+            this.tabPage3.Controls.Add(this.darkLabel43);
+            this.tabPage3.Controls.Add(this.StaticPatrolMinDistRadiusNUD);
+            this.tabPage3.Controls.Add(this.darkButton5);
+            this.tabPage3.Controls.Add(this.darkLabel12);
+            this.tabPage3.Controls.Add(this.StaticPatrolAccuracyMaxNUD);
+            this.tabPage3.Controls.Add(this.StaticPatrolChanceCB);
+            this.tabPage3.Controls.Add(this.StaticPatrolThreatDistanceLimitNUD);
+            this.tabPage3.Controls.Add(this.darkLabel39);
+            this.tabPage3.Controls.Add(this.StaticPatrolExporttoMapButton);
+            this.tabPage3.Controls.Add(this.darkLabel47);
+            this.tabPage3.Controls.Add(this.StaticPatrolAccuracyMinNUD);
+            this.tabPage3.Controls.Add(this.StaticPatrolFormationCB);
+            this.tabPage3.Controls.Add(this.darkLabel55);
+            this.tabPage3.Controls.Add(this.darkLabel48);
+            this.tabPage3.Controls.Add(this.darkLabel53);
+            this.tabPage3.Controls.Add(this.StaticPatrolWaypointInterpolationCB);
+            this.tabPage3.Controls.Add(this.StaticPatrolDespawnTimeNUD);
+            this.tabPage3.ForeColor = System.Drawing.SystemColors.Control;
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(961, 633);
+            this.tabPage3.TabIndex = 0;
+            this.tabPage3.Text = "AI PAtrol Settings";
             // 
             // darkButton21
             // 
             this.darkButton21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton21.Location = new System.Drawing.Point(917, 250);
+            this.darkButton21.Location = new System.Drawing.Point(686, 240);
             this.darkButton21.Name = "darkButton21";
             this.darkButton21.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton21.Size = new System.Drawing.Size(20, 20);
@@ -2283,20 +2308,40 @@ namespace DayZeEditor
             this.darkButton21.Text = "-";
             this.darkButton21.Click += new System.EventHandler(this.darkButton21_Click);
             // 
+            // darkLabel65
+            // 
+            this.darkLabel65.AutoSize = true;
+            this.darkLabel65.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel65.Location = new System.Drawing.Point(6, 12);
+            this.darkLabel65.Name = "darkLabel65";
+            this.darkLabel65.Size = new System.Drawing.Size(65, 13);
+            this.darkLabel65.TabIndex = 195;
+            this.darkLabel65.Text = "Patrol Name";
+            // 
             // darkLabel76
             // 
             this.darkLabel76.AutoSize = true;
             this.darkLabel76.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel76.Location = new System.Drawing.Point(463, 340);
+            this.darkLabel76.Location = new System.Drawing.Point(232, 330);
             this.darkLabel76.Name = "darkLabel76";
             this.darkLabel76.Size = new System.Drawing.Size(96, 26);
             this.darkLabel76.TabIndex = 199;
             this.darkLabel76.Text = "Damage Received\r\nMultiplier";
             // 
+            // darkLabel34
+            // 
+            this.darkLabel34.AutoSize = true;
+            this.darkLabel34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel34.Location = new System.Drawing.Point(6, 38);
+            this.darkLabel34.Name = "darkLabel34";
+            this.darkLabel34.Size = new System.Drawing.Size(42, 13);
+            this.darkLabel34.TabIndex = 93;
+            this.darkLabel34.Text = "Faction";
+            // 
             // darkButton22
             // 
             this.darkButton22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton22.Location = new System.Drawing.Point(917, 19);
+            this.darkButton22.Location = new System.Drawing.Point(686, 9);
             this.darkButton22.Name = "darkButton22";
             this.darkButton22.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton22.Size = new System.Drawing.Size(20, 20);
@@ -2304,12 +2349,23 @@ namespace DayZeEditor
             this.darkButton22.Text = "+";
             this.darkButton22.Click += new System.EventHandler(this.darkButton22_Click);
             // 
+            // StaticPatrolFactionCB
+            // 
+            this.StaticPatrolFactionCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolFactionCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolFactionCB.FormattingEnabled = true;
+            this.StaticPatrolFactionCB.Location = new System.Drawing.Point(116, 35);
+            this.StaticPatrolFactionCB.Name = "StaticPatrolFactionCB";
+            this.StaticPatrolFactionCB.Size = new System.Drawing.Size(330, 21);
+            this.StaticPatrolFactionCB.TabIndex = 94;
+            this.StaticPatrolFactionCB.SelectedIndexChanged += new System.EventHandler(this.StaticPatrolFactionCB_SelectedIndexChanged);
+            // 
             // StaticPatrolDamageReceivedMultiplierNUD
             // 
             this.StaticPatrolDamageReceivedMultiplierNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.StaticPatrolDamageReceivedMultiplierNUD.DecimalPlaces = 2;
             this.StaticPatrolDamageReceivedMultiplierNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolDamageReceivedMultiplierNUD.Location = new System.Drawing.Point(572, 342);
+            this.StaticPatrolDamageReceivedMultiplierNUD.Location = new System.Drawing.Point(341, 332);
             this.StaticPatrolDamageReceivedMultiplierNUD.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -2326,6 +2382,17 @@ namespace DayZeEditor
             this.StaticPatrolDamageReceivedMultiplierNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.StaticPatrolDamageReceivedMultiplierNUD.ValueChanged += new System.EventHandler(this.StaticPatrolDamageReceivedMultiplierNUD_ValueChanged);
             // 
+            // StaticPatrolLoadoutsCB
+            // 
+            this.StaticPatrolLoadoutsCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolLoadoutsCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolLoadoutsCB.FormattingEnabled = true;
+            this.StaticPatrolLoadoutsCB.Location = new System.Drawing.Point(116, 115);
+            this.StaticPatrolLoadoutsCB.Name = "StaticPatrolLoadoutsCB";
+            this.StaticPatrolLoadoutsCB.Size = new System.Drawing.Size(330, 21);
+            this.StaticPatrolLoadoutsCB.TabIndex = 98;
+            this.StaticPatrolLoadoutsCB.SelectedIndexChanged += new System.EventHandler(this.StaticPatrolLoadoutsCB_SelectedIndexChanged);
+            // 
             // StaticPatrolSniperProneDistanceThresholdNUD
             // 
             this.StaticPatrolSniperProneDistanceThresholdNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
@@ -2336,7 +2403,7 @@ namespace DayZeEditor
             0,
             0,
             131072});
-            this.StaticPatrolSniperProneDistanceThresholdNUD.Location = new System.Drawing.Point(572, 314);
+            this.StaticPatrolSniperProneDistanceThresholdNUD.Location = new System.Drawing.Point(341, 304);
             this.StaticPatrolSniperProneDistanceThresholdNUD.Maximum = new decimal(new int[] {
             200000,
             0,
@@ -2353,830 +2420,31 @@ namespace DayZeEditor
             this.StaticPatrolSniperProneDistanceThresholdNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.StaticPatrolSniperProneDistanceThresholdNUD.ValueChanged += new System.EventHandler(this.StaticPatrolSniperProneDistanceThresholdNUD_ValueChanged);
             // 
+            // darkLabel32
+            // 
+            this.darkLabel32.AutoSize = true;
+            this.darkLabel32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel32.Location = new System.Drawing.Point(6, 118);
+            this.darkLabel32.Name = "darkLabel32";
+            this.darkLabel32.Size = new System.Drawing.Size(65, 13);
+            this.darkLabel32.TabIndex = 99;
+            this.darkLabel32.Text = "Loadout File";
+            // 
             // darkLabel68
             // 
             this.darkLabel68.AutoSize = true;
             this.darkLabel68.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel68.Location = new System.Drawing.Point(462, 311);
+            this.darkLabel68.Location = new System.Drawing.Point(231, 301);
             this.darkLabel68.Name = "darkLabel68";
             this.darkLabel68.Size = new System.Drawing.Size(116, 26);
             this.darkLabel68.TabIndex = 197;
             this.darkLabel68.Text = "Sniper Prone Distance \r\nThreshold";
             // 
-            // StaticPatrolNameTB
-            // 
-            this.StaticPatrolNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolNameTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolNameTB.Location = new System.Drawing.Point(347, 19);
-            this.StaticPatrolNameTB.Name = "StaticPatrolNameTB";
-            this.StaticPatrolNameTB.Size = new System.Drawing.Size(330, 20);
-            this.StaticPatrolNameTB.TabIndex = 194;
-            this.StaticPatrolNameTB.TextChanged += new System.EventHandler(this.StaticPatrolNameTB_TextChanged);
-            // 
-            // darkLabel65
-            // 
-            this.darkLabel65.AutoSize = true;
-            this.darkLabel65.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel65.Location = new System.Drawing.Point(237, 22);
-            this.darkLabel65.Name = "darkLabel65";
-            this.darkLabel65.Size = new System.Drawing.Size(65, 13);
-            this.darkLabel65.TabIndex = 195;
-            this.darkLabel65.Text = "Patrol Name";
-            // 
-            // darkLabel64
-            // 
-            this.darkLabel64.AutoSize = true;
-            this.darkLabel64.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel64.Location = new System.Drawing.Point(237, 101);
-            this.darkLabel64.Name = "darkLabel64";
-            this.darkLabel64.Size = new System.Drawing.Size(107, 13);
-            this.darkLabel64.TabIndex = 193;
-            this.darkLabel64.Text = "Formation Looseness";
-            // 
-            // StaticPatrolFormationLoosenessNUD
-            // 
-            this.StaticPatrolFormationLoosenessNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolFormationLoosenessNUD.DecimalPlaces = 1;
-            this.StaticPatrolFormationLoosenessNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolFormationLoosenessNUD.Location = new System.Drawing.Point(347, 99);
-            this.StaticPatrolFormationLoosenessNUD.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.StaticPatrolFormationLoosenessNUD.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            -2147483648});
-            this.StaticPatrolFormationLoosenessNUD.Name = "StaticPatrolFormationLoosenessNUD";
-            this.StaticPatrolFormationLoosenessNUD.Size = new System.Drawing.Size(105, 20);
-            this.StaticPatrolFormationLoosenessNUD.TabIndex = 192;
-            this.StaticPatrolFormationLoosenessNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StaticPatrolFormationLoosenessNUD.ValueChanged += new System.EventHandler(this.StaticPatrolFormationLoosenessNUD_ValueChanged);
-            // 
-            // darkLabel46
-            // 
-            this.darkLabel46.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkLabel46.AutoSize = true;
-            this.darkLabel46.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel46.Location = new System.Drawing.Point(739, 368);
-            this.darkLabel46.Name = "darkLabel46";
-            this.darkLabel46.Size = new System.Drawing.Size(20, 13);
-            this.darkLabel46.TabIndex = 191;
-            this.darkLabel46.Text = "Z:-";
-            // 
-            // darkLabel36
-            // 
-            this.darkLabel36.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkLabel36.AutoSize = true;
-            this.darkLabel36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel36.Location = new System.Drawing.Point(731, 471);
-            this.darkLabel36.Name = "darkLabel36";
-            this.darkLabel36.Size = new System.Drawing.Size(183, 104);
-            this.darkLabel36.TabIndex = 153;
-            this.darkLabel36.Text = resources.GetString("darkLabel36.Text");
-            // 
-            // StaticPatrolUseRandomWaypointAsStartPointCB
-            // 
-            this.StaticPatrolUseRandomWaypointAsStartPointCB.AutoSize = true;
-            this.StaticPatrolUseRandomWaypointAsStartPointCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.StaticPatrolUseRandomWaypointAsStartPointCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolUseRandomWaypointAsStartPointCB.Location = new System.Drawing.Point(734, 276);
-            this.StaticPatrolUseRandomWaypointAsStartPointCB.Name = "StaticPatrolUseRandomWaypointAsStartPointCB";
-            this.StaticPatrolUseRandomWaypointAsStartPointCB.Size = new System.Drawing.Size(203, 17);
-            this.StaticPatrolUseRandomWaypointAsStartPointCB.TabIndex = 173;
-            this.StaticPatrolUseRandomWaypointAsStartPointCB.Text = "Use Random Waypoint As Start Point";
-            this.StaticPatrolUseRandomWaypointAsStartPointCB.UseVisualStyleBackColor = true;
-            this.StaticPatrolUseRandomWaypointAsStartPointCB.CheckedChanged += new System.EventHandler(this.StaticPatrolUseRandomWaypointAsStartPointCB_CheckedChanged);
-            // 
-            // darkLabel45
-            // 
-            this.darkLabel45.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkLabel45.AutoSize = true;
-            this.darkLabel45.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel45.Location = new System.Drawing.Point(739, 342);
-            this.darkLabel45.Name = "darkLabel45";
-            this.darkLabel45.Size = new System.Drawing.Size(20, 13);
-            this.darkLabel45.TabIndex = 190;
-            this.darkLabel45.Text = "Y:-";
-            // 
-            // darkLabel44
-            // 
-            this.darkLabel44.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkLabel44.AutoSize = true;
-            this.darkLabel44.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel44.Location = new System.Drawing.Point(739, 316);
-            this.darkLabel44.Name = "darkLabel44";
-            this.darkLabel44.Size = new System.Drawing.Size(20, 13);
-            this.darkLabel44.TabIndex = 189;
-            this.darkLabel44.Text = "X:-";
-            // 
-            // darkLabel42
-            // 
-            this.darkLabel42.AutoSize = true;
-            this.darkLabel42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel42.Location = new System.Drawing.Point(238, 342);
-            this.darkLabel42.Name = "darkLabel42";
-            this.darkLabel42.Size = new System.Drawing.Size(91, 13);
-            this.darkLabel42.TabIndex = 188;
-            this.darkLabel42.Text = "Damage Multiplier";
-            // 
-            // darkButton17
-            // 
-            this.darkButton17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton17.Location = new System.Drawing.Point(715, 416);
-            this.darkButton17.Name = "darkButton17";
-            this.darkButton17.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton17.Size = new System.Drawing.Size(111, 23);
-            this.darkButton17.TabIndex = 165;
-            this.darkButton17.Text = "Import From DZE";
-            this.darkButton17.Click += new System.EventHandler(this.darkButton17_Click);
-            // 
-            // darkButton14
-            // 
-            this.darkButton14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton14.Location = new System.Drawing.Point(715, 445);
-            this.darkButton14.Name = "darkButton14";
-            this.darkButton14.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton14.Size = new System.Drawing.Size(111, 23);
-            this.darkButton14.TabIndex = 166;
-            this.darkButton14.Text = "Export to DZE";
-            this.darkButton14.Click += new System.EventHandler(this.darkButton14_Click);
-            // 
-            // StaticPatrolWayPointsLB
-            // 
-            this.StaticPatrolWayPointsLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.StaticPatrolWayPointsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolWayPointsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.StaticPatrolWayPointsLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolWayPointsLB.FormattingEnabled = true;
-            this.StaticPatrolWayPointsLB.Location = new System.Drawing.Point(726, 19);
-            this.StaticPatrolWayPointsLB.Name = "StaticPatrolWayPointsLB";
-            this.StaticPatrolWayPointsLB.Size = new System.Drawing.Size(188, 251);
-            this.StaticPatrolWayPointsLB.TabIndex = 143;
-            this.StaticPatrolWayPointsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.StaticPatrolWayPointsLB.SelectedIndexChanged += new System.EventHandler(this.StaticPatrolWayPointsLB_SelectedIndexChanged);
-            // 
-            // darkLabel35
-            // 
-            this.darkLabel35.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkLabel35.AutoSize = true;
-            this.darkLabel35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel35.Location = new System.Drawing.Point(725, 299);
-            this.darkLabel35.Name = "darkLabel35";
-            this.darkLabel35.Size = new System.Drawing.Size(52, 13);
-            this.darkLabel35.TabIndex = 151;
-            this.darkLabel35.Text = "Waypoint";
-            // 
-            // StaticPatrolWaypointPOSXNUD
-            // 
-            this.StaticPatrolWaypointPOSXNUD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.StaticPatrolWaypointPOSXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolWaypointPOSXNUD.DecimalPlaces = 6;
-            this.StaticPatrolWaypointPOSXNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolWaypointPOSXNUD.Location = new System.Drawing.Point(765, 314);
-            this.StaticPatrolWaypointPOSXNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.StaticPatrolWaypointPOSXNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.StaticPatrolWaypointPOSXNUD.Name = "StaticPatrolWaypointPOSXNUD";
-            this.StaticPatrolWaypointPOSXNUD.Size = new System.Drawing.Size(172, 20);
-            this.StaticPatrolWaypointPOSXNUD.TabIndex = 148;
-            this.StaticPatrolWaypointPOSXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StaticPatrolWaypointPOSXNUD.ValueChanged += new System.EventHandler(this.StaticPatrolWaypointPOSXNUD_ValueChanged);
-            // 
-            // StaticPatrolDamageMultiplierNUD
-            // 
-            this.StaticPatrolDamageMultiplierNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolDamageMultiplierNUD.DecimalPlaces = 2;
-            this.StaticPatrolDamageMultiplierNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolDamageMultiplierNUD.Location = new System.Drawing.Point(347, 340);
-            this.StaticPatrolDamageMultiplierNUD.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.StaticPatrolDamageMultiplierNUD.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            -2147483648});
-            this.StaticPatrolDamageMultiplierNUD.Name = "StaticPatrolDamageMultiplierNUD";
-            this.StaticPatrolDamageMultiplierNUD.Size = new System.Drawing.Size(105, 20);
-            this.StaticPatrolDamageMultiplierNUD.TabIndex = 187;
-            this.StaticPatrolDamageMultiplierNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StaticPatrolDamageMultiplierNUD.ValueChanged += new System.EventHandler(this.StaticPatrolDamageMultiplierNUD_ValueChanged);
-            // 
-            // StaticPatrolWaypointPOSYNUD
-            // 
-            this.StaticPatrolWaypointPOSYNUD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.StaticPatrolWaypointPOSYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolWaypointPOSYNUD.DecimalPlaces = 6;
-            this.StaticPatrolWaypointPOSYNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolWaypointPOSYNUD.Location = new System.Drawing.Point(765, 340);
-            this.StaticPatrolWaypointPOSYNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.StaticPatrolWaypointPOSYNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.StaticPatrolWaypointPOSYNUD.Name = "StaticPatrolWaypointPOSYNUD";
-            this.StaticPatrolWaypointPOSYNUD.Size = new System.Drawing.Size(172, 20);
-            this.StaticPatrolWaypointPOSYNUD.TabIndex = 149;
-            this.StaticPatrolWaypointPOSYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StaticPatrolWaypointPOSYNUD.ValueChanged += new System.EventHandler(this.StaticPatrolWaypointPOSYNUD_ValueChanged);
-            // 
-            // darkLabel54
-            // 
-            this.darkLabel54.AutoSize = true;
-            this.darkLabel54.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel54.Location = new System.Drawing.Point(238, 260);
-            this.darkLabel54.Name = "darkLabel54";
-            this.darkLabel54.Size = new System.Drawing.Size(72, 13);
-            this.darkLabel54.TabIndex = 170;
-            this.darkLabel54.Text = "Accuracy Min";
-            // 
-            // StaticPatrolWaypointPOSZNUD
-            // 
-            this.StaticPatrolWaypointPOSZNUD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.StaticPatrolWaypointPOSZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolWaypointPOSZNUD.DecimalPlaces = 6;
-            this.StaticPatrolWaypointPOSZNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolWaypointPOSZNUD.Location = new System.Drawing.Point(765, 366);
-            this.StaticPatrolWaypointPOSZNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.StaticPatrolWaypointPOSZNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.StaticPatrolWaypointPOSZNUD.Name = "StaticPatrolWaypointPOSZNUD";
-            this.StaticPatrolWaypointPOSZNUD.Size = new System.Drawing.Size(172, 20);
-            this.StaticPatrolWaypointPOSZNUD.TabIndex = 150;
-            this.StaticPatrolWaypointPOSZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StaticPatrolWaypointPOSZNUD.ValueChanged += new System.EventHandler(this.StaticPatrolWaypointPOSZNUD_ValueChanged);
-            // 
-            // darkLabel43
-            // 
-            this.darkLabel43.AutoSize = true;
-            this.darkLabel43.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel43.Location = new System.Drawing.Point(237, 314);
-            this.darkLabel43.Name = "darkLabel43";
-            this.darkLabel43.Size = new System.Drawing.Size(107, 13);
-            this.darkLabel43.TabIndex = 186;
-            this.darkLabel43.Text = "Threat Distance Limit";
-            // 
-            // darkButton5
-            // 
-            this.darkButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton5.Location = new System.Drawing.Point(832, 416);
-            this.darkButton5.Name = "darkButton5";
-            this.darkButton5.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton5.Size = new System.Drawing.Size(105, 23);
-            this.darkButton5.TabIndex = 152;
-            this.darkButton5.Text = "Import From Map";
-            this.darkButton5.Click += new System.EventHandler(this.darkButton5_Click);
-            // 
-            // StaticPatrolAccuracyMaxNUD
-            // 
-            this.StaticPatrolAccuracyMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolAccuracyMaxNUD.DecimalPlaces = 2;
-            this.StaticPatrolAccuracyMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolAccuracyMaxNUD.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
-            this.StaticPatrolAccuracyMaxNUD.Location = new System.Drawing.Point(347, 286);
-            this.StaticPatrolAccuracyMaxNUD.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.StaticPatrolAccuracyMaxNUD.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            -2147483648});
-            this.StaticPatrolAccuracyMaxNUD.Name = "StaticPatrolAccuracyMaxNUD";
-            this.StaticPatrolAccuracyMaxNUD.Size = new System.Drawing.Size(105, 20);
-            this.StaticPatrolAccuracyMaxNUD.TabIndex = 171;
-            this.StaticPatrolAccuracyMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StaticPatrolAccuracyMaxNUD.ValueChanged += new System.EventHandler(this.StaticPatrolAccuracyMaxNUD_ValueChanged);
-            // 
-            // StaticPatrolThreatDistanceLimitNUD
-            // 
-            this.StaticPatrolThreatDistanceLimitNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolThreatDistanceLimitNUD.DecimalPlaces = 2;
-            this.StaticPatrolThreatDistanceLimitNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolThreatDistanceLimitNUD.Location = new System.Drawing.Point(347, 312);
-            this.StaticPatrolThreatDistanceLimitNUD.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.StaticPatrolThreatDistanceLimitNUD.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            -2147483648});
-            this.StaticPatrolThreatDistanceLimitNUD.Name = "StaticPatrolThreatDistanceLimitNUD";
-            this.StaticPatrolThreatDistanceLimitNUD.Size = new System.Drawing.Size(105, 20);
-            this.StaticPatrolThreatDistanceLimitNUD.TabIndex = 185;
-            this.StaticPatrolThreatDistanceLimitNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StaticPatrolThreatDistanceLimitNUD.ValueChanged += new System.EventHandler(this.StaticPatrolThreatDistanceLimitNUD_ValueChanged);
-            // 
-            // StaticPatrolExporttoMapButton
-            // 
-            this.StaticPatrolExporttoMapButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.StaticPatrolExporttoMapButton.Location = new System.Drawing.Point(832, 445);
-            this.StaticPatrolExporttoMapButton.Name = "StaticPatrolExporttoMapButton";
-            this.StaticPatrolExporttoMapButton.Padding = new System.Windows.Forms.Padding(5);
-            this.StaticPatrolExporttoMapButton.Size = new System.Drawing.Size(105, 23);
-            this.StaticPatrolExporttoMapButton.TabIndex = 156;
-            this.StaticPatrolExporttoMapButton.Text = "Export to Map";
-            this.StaticPatrolExporttoMapButton.Click += new System.EventHandler(this.darkButton10_Click);
-            // 
-            // StaticPatrolAccuracyMinNUD
-            // 
-            this.StaticPatrolAccuracyMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolAccuracyMinNUD.DecimalPlaces = 2;
-            this.StaticPatrolAccuracyMinNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolAccuracyMinNUD.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
-            this.StaticPatrolAccuracyMinNUD.Location = new System.Drawing.Point(347, 260);
-            this.StaticPatrolAccuracyMinNUD.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.StaticPatrolAccuracyMinNUD.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            -2147483648});
-            this.StaticPatrolAccuracyMinNUD.Name = "StaticPatrolAccuracyMinNUD";
-            this.StaticPatrolAccuracyMinNUD.Size = new System.Drawing.Size(105, 20);
-            this.StaticPatrolAccuracyMinNUD.TabIndex = 169;
-            this.StaticPatrolAccuracyMinNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StaticPatrolAccuracyMinNUD.ValueChanged += new System.EventHandler(this.StaticPatrolAccuracyMinNUD_ValueChanged);
-            // 
-            // darkLabel55
-            // 
-            this.darkLabel55.AutoSize = true;
-            this.darkLabel55.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel55.Location = new System.Drawing.Point(236, 288);
-            this.darkLabel55.Name = "darkLabel55";
-            this.darkLabel55.Size = new System.Drawing.Size(75, 13);
-            this.darkLabel55.TabIndex = 172;
-            this.darkLabel55.Text = "Accuracy Max";
-            // 
-            // darkLabel53
-            // 
-            this.darkLabel53.AutoSize = true;
-            this.darkLabel53.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel53.Location = new System.Drawing.Point(462, 396);
-            this.darkLabel53.Name = "darkLabel53";
-            this.darkLabel53.Size = new System.Drawing.Size(78, 13);
-            this.darkLabel53.TabIndex = 168;
-            this.darkLabel53.Text = "Despawn Time";
-            // 
-            // StaticPatrolDespawnTimeNUD
-            // 
-            this.StaticPatrolDespawnTimeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolDespawnTimeNUD.DecimalPlaces = 2;
-            this.StaticPatrolDespawnTimeNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolDespawnTimeNUD.Location = new System.Drawing.Point(572, 394);
-            this.StaticPatrolDespawnTimeNUD.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.StaticPatrolDespawnTimeNUD.Minimum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            -2147483648});
-            this.StaticPatrolDespawnTimeNUD.Name = "StaticPatrolDespawnTimeNUD";
-            this.StaticPatrolDespawnTimeNUD.Size = new System.Drawing.Size(105, 20);
-            this.StaticPatrolDespawnTimeNUD.TabIndex = 167;
-            this.StaticPatrolDespawnTimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StaticPatrolDespawnTimeNUD.ValueChanged += new System.EventHandler(this.StaticPatrolDespawnTimeNUD_ValueChanged);
-            // 
-            // StaticPatrolWaypointInterpolationCB
-            // 
-            this.StaticPatrolWaypointInterpolationCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolWaypointInterpolationCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolWaypointInterpolationCB.FormattingEnabled = true;
-            this.StaticPatrolWaypointInterpolationCB.Items.AddRange(new object[] {
-            "",
-            "CatmullRom",
-            "NaturalCubic",
-            "UniformCubic"});
-            this.StaticPatrolWaypointInterpolationCB.Location = new System.Drawing.Point(347, 475);
-            this.StaticPatrolWaypointInterpolationCB.Name = "StaticPatrolWaypointInterpolationCB";
-            this.StaticPatrolWaypointInterpolationCB.Size = new System.Drawing.Size(330, 21);
-            this.StaticPatrolWaypointInterpolationCB.TabIndex = 164;
-            this.StaticPatrolWaypointInterpolationCB.SelectedIndexChanged += new System.EventHandler(this.StaticPatrolWaypointInterpolationCB_SelectedIndexChanged);
-            // 
-            // darkLabel48
-            // 
-            this.darkLabel48.AutoSize = true;
-            this.darkLabel48.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel48.Location = new System.Drawing.Point(237, 478);
-            this.darkLabel48.Name = "darkLabel48";
-            this.darkLabel48.Size = new System.Drawing.Size(113, 13);
-            this.darkLabel48.TabIndex = 163;
-            this.darkLabel48.Text = "Waypoint Interpolation";
-            // 
-            // StaticPatrolFormationCB
-            // 
-            this.StaticPatrolFormationCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolFormationCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolFormationCB.FormattingEnabled = true;
-            this.StaticPatrolFormationCB.Items.AddRange(new object[] {
-            "Column",
-            "File",
-            "Vee",
-            "Wall",
-            "RANDOM"});
-            this.StaticPatrolFormationCB.Location = new System.Drawing.Point(347, 72);
-            this.StaticPatrolFormationCB.Name = "StaticPatrolFormationCB";
-            this.StaticPatrolFormationCB.Size = new System.Drawing.Size(330, 21);
-            this.StaticPatrolFormationCB.TabIndex = 162;
-            this.StaticPatrolFormationCB.SelectedIndexChanged += new System.EventHandler(this.StaticPatrolFormationCB_SelectedIndexChanged);
-            // 
-            // darkLabel47
-            // 
-            this.darkLabel47.AutoSize = true;
-            this.darkLabel47.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel47.Location = new System.Drawing.Point(237, 75);
-            this.darkLabel47.Name = "darkLabel47";
-            this.darkLabel47.Size = new System.Drawing.Size(53, 13);
-            this.darkLabel47.TabIndex = 161;
-            this.darkLabel47.Text = "Formation";
-            // 
-            // darkLabel39
-            // 
-            this.darkLabel39.AutoSize = true;
-            this.darkLabel39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel39.Location = new System.Drawing.Point(236, 421);
-            this.darkLabel39.Name = "darkLabel39";
-            this.darkLabel39.Size = new System.Drawing.Size(88, 13);
-            this.darkLabel39.TabIndex = 160;
-            this.darkLabel39.Text = "Despawn Radius";
-            // 
-            // StaticPatrolChanceCB
-            // 
-            this.StaticPatrolChanceCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolChanceCB.DecimalPlaces = 2;
-            this.StaticPatrolChanceCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolChanceCB.Location = new System.Drawing.Point(572, 421);
-            this.StaticPatrolChanceCB.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.StaticPatrolChanceCB.Name = "StaticPatrolChanceCB";
-            this.StaticPatrolChanceCB.Size = new System.Drawing.Size(105, 20);
-            this.StaticPatrolChanceCB.TabIndex = 139;
-            this.StaticPatrolChanceCB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StaticPatrolChanceCB.ValueChanged += new System.EventHandler(this.StaticPatrolChanceCB_ValueChanged);
-            // 
-            // darkLabel12
-            // 
-            this.darkLabel12.AutoSize = true;
-            this.darkLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel12.Location = new System.Drawing.Point(463, 423);
-            this.darkLabel12.Name = "darkLabel12";
-            this.darkLabel12.Size = new System.Drawing.Size(44, 13);
-            this.darkLabel12.TabIndex = 140;
-            this.darkLabel12.Text = "Chance";
-            // 
-            // StaticPatrolMinDistRadiusNUD
-            // 
-            this.StaticPatrolMinDistRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolMinDistRadiusNUD.DecimalPlaces = 2;
-            this.StaticPatrolMinDistRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolMinDistRadiusNUD.Location = new System.Drawing.Point(347, 447);
-            this.StaticPatrolMinDistRadiusNUD.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.StaticPatrolMinDistRadiusNUD.Minimum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            -2147483648});
-            this.StaticPatrolMinDistRadiusNUD.Name = "StaticPatrolMinDistRadiusNUD";
-            this.StaticPatrolMinDistRadiusNUD.Size = new System.Drawing.Size(105, 20);
-            this.StaticPatrolMinDistRadiusNUD.TabIndex = 133;
-            this.StaticPatrolMinDistRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StaticPatrolMinDistRadiusNUD.ValueChanged += new System.EventHandler(this.StaticPatrolMinDistRadiusNUD_ValueChanged);
-            // 
-            // darkLabel27
-            // 
-            this.darkLabel27.AutoSize = true;
-            this.darkLabel27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel27.Location = new System.Drawing.Point(237, 449);
-            this.darkLabel27.Name = "darkLabel27";
-            this.darkLabel27.Size = new System.Drawing.Size(81, 13);
-            this.darkLabel27.TabIndex = 134;
-            this.darkLabel27.Text = "Min Dist Radius";
-            // 
-            // StaticPatrolDespawnRadiusNUD
-            // 
-            this.StaticPatrolDespawnRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolDespawnRadiusNUD.DecimalPlaces = 2;
-            this.StaticPatrolDespawnRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolDespawnRadiusNUD.Location = new System.Drawing.Point(347, 421);
-            this.StaticPatrolDespawnRadiusNUD.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.StaticPatrolDespawnRadiusNUD.Minimum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            -2147483648});
-            this.StaticPatrolDespawnRadiusNUD.Name = "StaticPatrolDespawnRadiusNUD";
-            this.StaticPatrolDespawnRadiusNUD.Size = new System.Drawing.Size(105, 20);
-            this.StaticPatrolDespawnRadiusNUD.TabIndex = 159;
-            this.StaticPatrolDespawnRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StaticPatrolDespawnRadiusNUD.ValueChanged += new System.EventHandler(this.StaticPatrolDespawnRadiusNUD_ValueChanged);
-            // 
-            // StaticPatrolMaxDistRadiusNUD
-            // 
-            this.StaticPatrolMaxDistRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolMaxDistRadiusNUD.DecimalPlaces = 2;
-            this.StaticPatrolMaxDistRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolMaxDistRadiusNUD.Location = new System.Drawing.Point(572, 449);
-            this.StaticPatrolMaxDistRadiusNUD.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.StaticPatrolMaxDistRadiusNUD.Minimum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            -2147483648});
-            this.StaticPatrolMaxDistRadiusNUD.Name = "StaticPatrolMaxDistRadiusNUD";
-            this.StaticPatrolMaxDistRadiusNUD.Size = new System.Drawing.Size(105, 20);
-            this.StaticPatrolMaxDistRadiusNUD.TabIndex = 135;
-            this.StaticPatrolMaxDistRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StaticPatrolMaxDistRadiusNUD.ValueChanged += new System.EventHandler(this.StaticPatrolMaxDistRadiusNUD_ValueChanged);
-            // 
-            // darkLabel8
-            // 
-            this.darkLabel8.AutoSize = true;
-            this.darkLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel8.Location = new System.Drawing.Point(461, 370);
-            this.darkLabel8.Name = "darkLabel8";
-            this.darkLabel8.Size = new System.Drawing.Size(95, 13);
-            this.darkLabel8.TabIndex = 158;
-            this.darkLabel8.Text = "Max Spread radius";
-            // 
-            // darkLabel26
-            // 
-            this.darkLabel26.AutoSize = true;
-            this.darkLabel26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel26.Location = new System.Drawing.Point(463, 451);
-            this.darkLabel26.Name = "darkLabel26";
-            this.darkLabel26.Size = new System.Drawing.Size(84, 13);
-            this.darkLabel26.TabIndex = 136;
-            this.darkLabel26.Text = "Max Dist Radius";
-            // 
-            // StaticPatrolMaxSpreadRadiusNUD
-            // 
-            this.StaticPatrolMaxSpreadRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolMaxSpreadRadiusNUD.DecimalPlaces = 2;
-            this.StaticPatrolMaxSpreadRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolMaxSpreadRadiusNUD.Location = new System.Drawing.Point(572, 368);
-            this.StaticPatrolMaxSpreadRadiusNUD.Maximum = new decimal(new int[] {
-            10000000,
-            0,
-            0,
-            0});
-            this.StaticPatrolMaxSpreadRadiusNUD.Minimum = new decimal(new int[] {
-            10000000,
-            0,
-            0,
-            -2147483648});
-            this.StaticPatrolMaxSpreadRadiusNUD.Name = "StaticPatrolMaxSpreadRadiusNUD";
-            this.StaticPatrolMaxSpreadRadiusNUD.Size = new System.Drawing.Size(105, 20);
-            this.StaticPatrolMaxSpreadRadiusNUD.TabIndex = 157;
-            this.StaticPatrolMaxSpreadRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StaticPatrolMaxSpreadRadiusNUD.ValueChanged += new System.EventHandler(this.StaticPatrolMaxSpreadRadiusNUD_ValueChanged);
-            // 
-            // darkLabel6
-            // 
-            this.darkLabel6.AutoSize = true;
-            this.darkLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel6.Location = new System.Drawing.Point(237, 396);
-            this.darkLabel6.Name = "darkLabel6";
-            this.darkLabel6.Size = new System.Drawing.Size(78, 13);
-            this.darkLabel6.TabIndex = 155;
-            this.darkLabel6.Text = "Respawn Time";
-            // 
-            // StaticPatrolRespawnTimeNUD
-            // 
-            this.StaticPatrolRespawnTimeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolRespawnTimeNUD.DecimalPlaces = 2;
-            this.StaticPatrolRespawnTimeNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolRespawnTimeNUD.Location = new System.Drawing.Point(347, 394);
-            this.StaticPatrolRespawnTimeNUD.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.StaticPatrolRespawnTimeNUD.Minimum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            -2147483648});
-            this.StaticPatrolRespawnTimeNUD.Name = "StaticPatrolRespawnTimeNUD";
-            this.StaticPatrolRespawnTimeNUD.Size = new System.Drawing.Size(105, 20);
-            this.StaticPatrolRespawnTimeNUD.TabIndex = 154;
-            this.StaticPatrolRespawnTimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StaticPatrolRespawnTimeNUD.ValueChanged += new System.EventHandler(this.StaticPatrolRespawnTimeNUD_ValueChanged);
-            // 
-            // darkLabel13
-            // 
-            this.darkLabel13.AutoSize = true;
-            this.darkLabel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel13.Location = new System.Drawing.Point(236, 368);
-            this.darkLabel13.Name = "darkLabel13";
-            this.darkLabel13.Size = new System.Drawing.Size(92, 13);
-            this.darkLabel13.TabIndex = 142;
-            this.darkLabel13.Text = "Min Spread radius";
-            // 
-            // StaticPatrolMinSpreadRadiusNUD
-            // 
-            this.StaticPatrolMinSpreadRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolMinSpreadRadiusNUD.DecimalPlaces = 2;
-            this.StaticPatrolMinSpreadRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolMinSpreadRadiusNUD.Location = new System.Drawing.Point(347, 366);
-            this.StaticPatrolMinSpreadRadiusNUD.Maximum = new decimal(new int[] {
-            10000000,
-            0,
-            0,
-            0});
-            this.StaticPatrolMinSpreadRadiusNUD.Minimum = new decimal(new int[] {
-            10000000,
-            0,
-            0,
-            -2147483648});
-            this.StaticPatrolMinSpreadRadiusNUD.Name = "StaticPatrolMinSpreadRadiusNUD";
-            this.StaticPatrolMinSpreadRadiusNUD.Size = new System.Drawing.Size(105, 20);
-            this.StaticPatrolMinSpreadRadiusNUD.TabIndex = 141;
-            this.StaticPatrolMinSpreadRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StaticPatrolMinSpreadRadiusNUD.ValueChanged += new System.EventHandler(this.StaticPatrolMinSpreadRadiusNUD_ValueChanged);
-            // 
-            // StaticPatrolCanBeLotedCB
-            // 
-            this.StaticPatrolCanBeLotedCB.AutoSize = true;
-            this.StaticPatrolCanBeLotedCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.StaticPatrolCanBeLotedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolCanBeLotedCB.Location = new System.Drawing.Point(479, 287);
-            this.StaticPatrolCanBeLotedCB.Name = "StaticPatrolCanBeLotedCB";
-            this.StaticPatrolCanBeLotedCB.Size = new System.Drawing.Size(97, 17);
-            this.StaticPatrolCanBeLotedCB.TabIndex = 138;
-            this.StaticPatrolCanBeLotedCB.Text = "Can Be Looted";
-            this.StaticPatrolCanBeLotedCB.UseVisualStyleBackColor = true;
-            this.StaticPatrolCanBeLotedCB.CheckedChanged += new System.EventHandler(this.StaticPatrolCanBeLotedCB_CheckedChanged);
-            // 
-            // StaticPatrolUnlimitedReloadCB
-            // 
-            this.StaticPatrolUnlimitedReloadCB.AutoSize = true;
-            this.StaticPatrolUnlimitedReloadCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.StaticPatrolUnlimitedReloadCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolUnlimitedReloadCB.Location = new System.Drawing.Point(470, 261);
-            this.StaticPatrolUnlimitedReloadCB.Name = "StaticPatrolUnlimitedReloadCB";
-            this.StaticPatrolUnlimitedReloadCB.Size = new System.Drawing.Size(106, 17);
-            this.StaticPatrolUnlimitedReloadCB.TabIndex = 137;
-            this.StaticPatrolUnlimitedReloadCB.Text = "Unlimited Reload";
-            this.StaticPatrolUnlimitedReloadCB.UseVisualStyleBackColor = true;
-            this.StaticPatrolUnlimitedReloadCB.CheckedChanged += new System.EventHandler(this.StaticPatrolUnlimitedReloadCB_CheckedChanged);
-            // 
-            // darkLabel28
-            // 
-            this.darkLabel28.AutoSize = true;
-            this.darkLabel28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel28.Location = new System.Drawing.Point(237, 234);
-            this.darkLabel28.Name = "darkLabel28";
-            this.darkLabel28.Size = new System.Drawing.Size(104, 13);
-            this.darkLabel28.TabIndex = 132;
-            this.darkLabel28.Text = "Under Threat Speed";
-            // 
-            // StaticPatrolUnderThreatSpeedCB
-            // 
-            this.StaticPatrolUnderThreatSpeedCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolUnderThreatSpeedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolUnderThreatSpeedCB.FormattingEnabled = true;
-            this.StaticPatrolUnderThreatSpeedCB.Items.AddRange(new object[] {
-            "STATIC",
-            "WALK",
-            "JOG",
-            "SPRINT",
-            "RANDOM",
-            "RANDOM_NONSTATIC "});
-            this.StaticPatrolUnderThreatSpeedCB.Location = new System.Drawing.Point(347, 231);
-            this.StaticPatrolUnderThreatSpeedCB.Name = "StaticPatrolUnderThreatSpeedCB";
-            this.StaticPatrolUnderThreatSpeedCB.Size = new System.Drawing.Size(330, 21);
-            this.StaticPatrolUnderThreatSpeedCB.TabIndex = 131;
-            this.StaticPatrolUnderThreatSpeedCB.SelectedIndexChanged += new System.EventHandler(this.StaticPatrolUnderThreatSpeedCB_SelectedIndexChanged);
-            // 
-            // darkLabel29
-            // 
-            this.darkLabel29.AutoSize = true;
-            this.darkLabel29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel29.Location = new System.Drawing.Point(237, 207);
-            this.darkLabel29.Name = "darkLabel29";
-            this.darkLabel29.Size = new System.Drawing.Size(38, 13);
-            this.darkLabel29.TabIndex = 130;
-            this.darkLabel29.Text = "Speed";
-            // 
-            // StaticPatrolSpeedCB
-            // 
-            this.StaticPatrolSpeedCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolSpeedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolSpeedCB.FormattingEnabled = true;
-            this.StaticPatrolSpeedCB.Items.AddRange(new object[] {
-            "STATIC",
-            "WALK",
-            "JOG",
-            "SPRINT",
-            "RANDOM",
-            "RANDOM_NONSTATIC "});
-            this.StaticPatrolSpeedCB.Location = new System.Drawing.Point(347, 204);
-            this.StaticPatrolSpeedCB.Name = "StaticPatrolSpeedCB";
-            this.StaticPatrolSpeedCB.Size = new System.Drawing.Size(330, 21);
-            this.StaticPatrolSpeedCB.TabIndex = 129;
-            this.StaticPatrolSpeedCB.SelectedIndexChanged += new System.EventHandler(this.StaticPatrolSpeedCB_SelectedIndexChanged);
-            // 
-            // darkLabel30
-            // 
-            this.darkLabel30.AutoSize = true;
-            this.darkLabel30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel30.Location = new System.Drawing.Point(237, 180);
-            this.darkLabel30.Name = "darkLabel30";
-            this.darkLabel30.Size = new System.Drawing.Size(55, 13);
-            this.darkLabel30.TabIndex = 128;
-            this.darkLabel30.Text = "Behaviour";
-            // 
-            // StaticPatrolBehaviorCB
-            // 
-            this.StaticPatrolBehaviorCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolBehaviorCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolBehaviorCB.FormattingEnabled = true;
-            this.StaticPatrolBehaviorCB.Items.AddRange(new object[] {
-            "HALT",
-            "LOOP",
-            "ALTERNATE",
-            "HALT_OR_LOOP",
-            "HALT_OR_ALTERNATE"});
-            this.StaticPatrolBehaviorCB.Location = new System.Drawing.Point(347, 177);
-            this.StaticPatrolBehaviorCB.Name = "StaticPatrolBehaviorCB";
-            this.StaticPatrolBehaviorCB.Size = new System.Drawing.Size(330, 21);
-            this.StaticPatrolBehaviorCB.TabIndex = 127;
-            this.StaticPatrolBehaviorCB.SelectedIndexChanged += new System.EventHandler(this.StaticPatrolBehaviorCB_SelectedIndexChanged);
-            // 
-            // darkLabel31
-            // 
-            this.darkLabel31.AutoSize = true;
-            this.darkLabel31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel31.Location = new System.Drawing.Point(236, 153);
-            this.darkLabel31.Name = "darkLabel31";
-            this.darkLabel31.Size = new System.Drawing.Size(71, 13);
-            this.darkLabel31.TabIndex = 126;
-            this.darkLabel31.Text = "Number Of AI";
-            // 
             // StaticPatrolNumberOfAINUD
             // 
             this.StaticPatrolNumberOfAINUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.StaticPatrolNumberOfAINUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolNumberOfAINUD.Location = new System.Drawing.Point(347, 151);
+            this.StaticPatrolNumberOfAINUD.Location = new System.Drawing.Point(116, 141);
             this.StaticPatrolNumberOfAINUD.Maximum = new decimal(new int[] {
             50,
             0,
@@ -3193,47 +2461,871 @@ namespace DayZeEditor
             this.StaticPatrolNumberOfAINUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.StaticPatrolNumberOfAINUD.ValueChanged += new System.EventHandler(this.StaticPatrolNumberOfAINUD_ValueChanged);
             // 
-            // darkLabel32
+            // StaticPatrolNameTB
             // 
-            this.darkLabel32.AutoSize = true;
-            this.darkLabel32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel32.Location = new System.Drawing.Point(237, 128);
-            this.darkLabel32.Name = "darkLabel32";
-            this.darkLabel32.Size = new System.Drawing.Size(65, 13);
-            this.darkLabel32.TabIndex = 99;
-            this.darkLabel32.Text = "Loadout File";
+            this.StaticPatrolNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolNameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolNameTB.Location = new System.Drawing.Point(116, 9);
+            this.StaticPatrolNameTB.Name = "StaticPatrolNameTB";
+            this.StaticPatrolNameTB.Size = new System.Drawing.Size(330, 20);
+            this.StaticPatrolNameTB.TabIndex = 194;
+            this.StaticPatrolNameTB.TextChanged += new System.EventHandler(this.StaticPatrolNameTB_TextChanged);
             // 
-            // StaticPatrolLoadoutsCB
+            // darkLabel31
             // 
-            this.StaticPatrolLoadoutsCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolLoadoutsCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolLoadoutsCB.FormattingEnabled = true;
-            this.StaticPatrolLoadoutsCB.Location = new System.Drawing.Point(347, 125);
-            this.StaticPatrolLoadoutsCB.Name = "StaticPatrolLoadoutsCB";
-            this.StaticPatrolLoadoutsCB.Size = new System.Drawing.Size(330, 21);
-            this.StaticPatrolLoadoutsCB.TabIndex = 98;
-            this.StaticPatrolLoadoutsCB.SelectedIndexChanged += new System.EventHandler(this.StaticPatrolLoadoutsCB_SelectedIndexChanged);
+            this.darkLabel31.AutoSize = true;
+            this.darkLabel31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel31.Location = new System.Drawing.Point(5, 143);
+            this.darkLabel31.Name = "darkLabel31";
+            this.darkLabel31.Size = new System.Drawing.Size(71, 13);
+            this.darkLabel31.TabIndex = 126;
+            this.darkLabel31.Text = "Number Of AI";
             // 
-            // StaticPatrolFactionCB
+            // StaticPatrolBehaviorCB
             // 
-            this.StaticPatrolFactionCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolFactionCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolFactionCB.FormattingEnabled = true;
-            this.StaticPatrolFactionCB.Location = new System.Drawing.Point(347, 45);
-            this.StaticPatrolFactionCB.Name = "StaticPatrolFactionCB";
-            this.StaticPatrolFactionCB.Size = new System.Drawing.Size(330, 21);
-            this.StaticPatrolFactionCB.TabIndex = 94;
-            this.StaticPatrolFactionCB.SelectedIndexChanged += new System.EventHandler(this.StaticPatrolFactionCB_SelectedIndexChanged);
+            this.StaticPatrolBehaviorCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolBehaviorCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolBehaviorCB.FormattingEnabled = true;
+            this.StaticPatrolBehaviorCB.Items.AddRange(new object[] {
+            "HALT",
+            "LOOP",
+            "ALTERNATE",
+            "HALT_OR_LOOP",
+            "HALT_OR_ALTERNATE"});
+            this.StaticPatrolBehaviorCB.Location = new System.Drawing.Point(116, 167);
+            this.StaticPatrolBehaviorCB.Name = "StaticPatrolBehaviorCB";
+            this.StaticPatrolBehaviorCB.Size = new System.Drawing.Size(330, 21);
+            this.StaticPatrolBehaviorCB.TabIndex = 127;
+            this.StaticPatrolBehaviorCB.SelectedIndexChanged += new System.EventHandler(this.StaticPatrolBehaviorCB_SelectedIndexChanged);
             // 
-            // darkLabel34
+            // darkLabel64
             // 
-            this.darkLabel34.AutoSize = true;
-            this.darkLabel34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel34.Location = new System.Drawing.Point(237, 48);
-            this.darkLabel34.Name = "darkLabel34";
-            this.darkLabel34.Size = new System.Drawing.Size(42, 13);
-            this.darkLabel34.TabIndex = 93;
-            this.darkLabel34.Text = "Faction";
+            this.darkLabel64.AutoSize = true;
+            this.darkLabel64.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel64.Location = new System.Drawing.Point(6, 91);
+            this.darkLabel64.Name = "darkLabel64";
+            this.darkLabel64.Size = new System.Drawing.Size(107, 13);
+            this.darkLabel64.TabIndex = 193;
+            this.darkLabel64.Text = "Formation Looseness";
+            // 
+            // darkLabel30
+            // 
+            this.darkLabel30.AutoSize = true;
+            this.darkLabel30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel30.Location = new System.Drawing.Point(6, 170);
+            this.darkLabel30.Name = "darkLabel30";
+            this.darkLabel30.Size = new System.Drawing.Size(55, 13);
+            this.darkLabel30.TabIndex = 128;
+            this.darkLabel30.Text = "Behaviour";
+            // 
+            // StaticPatrolFormationLoosenessNUD
+            // 
+            this.StaticPatrolFormationLoosenessNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolFormationLoosenessNUD.DecimalPlaces = 1;
+            this.StaticPatrolFormationLoosenessNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolFormationLoosenessNUD.Location = new System.Drawing.Point(116, 89);
+            this.StaticPatrolFormationLoosenessNUD.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.StaticPatrolFormationLoosenessNUD.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            -2147483648});
+            this.StaticPatrolFormationLoosenessNUD.Name = "StaticPatrolFormationLoosenessNUD";
+            this.StaticPatrolFormationLoosenessNUD.Size = new System.Drawing.Size(105, 20);
+            this.StaticPatrolFormationLoosenessNUD.TabIndex = 192;
+            this.StaticPatrolFormationLoosenessNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.StaticPatrolFormationLoosenessNUD.ValueChanged += new System.EventHandler(this.StaticPatrolFormationLoosenessNUD_ValueChanged);
+            // 
+            // StaticPatrolSpeedCB
+            // 
+            this.StaticPatrolSpeedCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolSpeedCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolSpeedCB.FormattingEnabled = true;
+            this.StaticPatrolSpeedCB.Items.AddRange(new object[] {
+            "STATIC",
+            "WALK",
+            "JOG",
+            "SPRINT",
+            "RANDOM",
+            "RANDOM_NONSTATIC "});
+            this.StaticPatrolSpeedCB.Location = new System.Drawing.Point(116, 194);
+            this.StaticPatrolSpeedCB.Name = "StaticPatrolSpeedCB";
+            this.StaticPatrolSpeedCB.Size = new System.Drawing.Size(330, 21);
+            this.StaticPatrolSpeedCB.TabIndex = 129;
+            this.StaticPatrolSpeedCB.SelectedIndexChanged += new System.EventHandler(this.StaticPatrolSpeedCB_SelectedIndexChanged);
+            // 
+            // darkLabel46
+            // 
+            this.darkLabel46.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkLabel46.AutoSize = true;
+            this.darkLabel46.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel46.Location = new System.Drawing.Point(508, 358);
+            this.darkLabel46.Name = "darkLabel46";
+            this.darkLabel46.Size = new System.Drawing.Size(20, 13);
+            this.darkLabel46.TabIndex = 191;
+            this.darkLabel46.Text = "Z:-";
+            // 
+            // darkLabel29
+            // 
+            this.darkLabel29.AutoSize = true;
+            this.darkLabel29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel29.Location = new System.Drawing.Point(6, 197);
+            this.darkLabel29.Name = "darkLabel29";
+            this.darkLabel29.Size = new System.Drawing.Size(38, 13);
+            this.darkLabel29.TabIndex = 130;
+            this.darkLabel29.Text = "Speed";
+            // 
+            // darkLabel36
+            // 
+            this.darkLabel36.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkLabel36.AutoSize = true;
+            this.darkLabel36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel36.Location = new System.Drawing.Point(500, 461);
+            this.darkLabel36.Name = "darkLabel36";
+            this.darkLabel36.Size = new System.Drawing.Size(183, 104);
+            this.darkLabel36.TabIndex = 153;
+            this.darkLabel36.Text = resources.GetString("darkLabel36.Text");
+            // 
+            // StaticPatrolUnderThreatSpeedCB
+            // 
+            this.StaticPatrolUnderThreatSpeedCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolUnderThreatSpeedCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolUnderThreatSpeedCB.FormattingEnabled = true;
+            this.StaticPatrolUnderThreatSpeedCB.Items.AddRange(new object[] {
+            "STATIC",
+            "WALK",
+            "JOG",
+            "SPRINT",
+            "RANDOM",
+            "RANDOM_NONSTATIC "});
+            this.StaticPatrolUnderThreatSpeedCB.Location = new System.Drawing.Point(116, 221);
+            this.StaticPatrolUnderThreatSpeedCB.Name = "StaticPatrolUnderThreatSpeedCB";
+            this.StaticPatrolUnderThreatSpeedCB.Size = new System.Drawing.Size(330, 21);
+            this.StaticPatrolUnderThreatSpeedCB.TabIndex = 131;
+            this.StaticPatrolUnderThreatSpeedCB.SelectedIndexChanged += new System.EventHandler(this.StaticPatrolUnderThreatSpeedCB_SelectedIndexChanged);
+            // 
+            // StaticPatrolUseRandomWaypointAsStartPointCB
+            // 
+            this.StaticPatrolUseRandomWaypointAsStartPointCB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.StaticPatrolUseRandomWaypointAsStartPointCB.AutoSize = true;
+            this.StaticPatrolUseRandomWaypointAsStartPointCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.StaticPatrolUseRandomWaypointAsStartPointCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolUseRandomWaypointAsStartPointCB.Location = new System.Drawing.Point(503, 266);
+            this.StaticPatrolUseRandomWaypointAsStartPointCB.Name = "StaticPatrolUseRandomWaypointAsStartPointCB";
+            this.StaticPatrolUseRandomWaypointAsStartPointCB.Size = new System.Drawing.Size(203, 17);
+            this.StaticPatrolUseRandomWaypointAsStartPointCB.TabIndex = 173;
+            this.StaticPatrolUseRandomWaypointAsStartPointCB.Text = "Use Random Waypoint As Start Point";
+            this.StaticPatrolUseRandomWaypointAsStartPointCB.UseVisualStyleBackColor = true;
+            this.StaticPatrolUseRandomWaypointAsStartPointCB.CheckedChanged += new System.EventHandler(this.StaticPatrolUseRandomWaypointAsStartPointCB_CheckedChanged);
+            // 
+            // darkLabel28
+            // 
+            this.darkLabel28.AutoSize = true;
+            this.darkLabel28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel28.Location = new System.Drawing.Point(6, 224);
+            this.darkLabel28.Name = "darkLabel28";
+            this.darkLabel28.Size = new System.Drawing.Size(104, 13);
+            this.darkLabel28.TabIndex = 132;
+            this.darkLabel28.Text = "Under Threat Speed";
+            // 
+            // darkLabel45
+            // 
+            this.darkLabel45.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkLabel45.AutoSize = true;
+            this.darkLabel45.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel45.Location = new System.Drawing.Point(508, 332);
+            this.darkLabel45.Name = "darkLabel45";
+            this.darkLabel45.Size = new System.Drawing.Size(20, 13);
+            this.darkLabel45.TabIndex = 190;
+            this.darkLabel45.Text = "Y:-";
+            // 
+            // StaticPatrolUnlimitedReloadCB
+            // 
+            this.StaticPatrolUnlimitedReloadCB.AutoSize = true;
+            this.StaticPatrolUnlimitedReloadCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.StaticPatrolUnlimitedReloadCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolUnlimitedReloadCB.Location = new System.Drawing.Point(239, 251);
+            this.StaticPatrolUnlimitedReloadCB.Name = "StaticPatrolUnlimitedReloadCB";
+            this.StaticPatrolUnlimitedReloadCB.Size = new System.Drawing.Size(106, 17);
+            this.StaticPatrolUnlimitedReloadCB.TabIndex = 137;
+            this.StaticPatrolUnlimitedReloadCB.Text = "Unlimited Reload";
+            this.StaticPatrolUnlimitedReloadCB.UseVisualStyleBackColor = true;
+            this.StaticPatrolUnlimitedReloadCB.CheckedChanged += new System.EventHandler(this.StaticPatrolUnlimitedReloadCB_CheckedChanged);
+            // 
+            // darkLabel44
+            // 
+            this.darkLabel44.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkLabel44.AutoSize = true;
+            this.darkLabel44.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel44.Location = new System.Drawing.Point(508, 306);
+            this.darkLabel44.Name = "darkLabel44";
+            this.darkLabel44.Size = new System.Drawing.Size(20, 13);
+            this.darkLabel44.TabIndex = 189;
+            this.darkLabel44.Text = "X:-";
+            // 
+            // StaticPatrolCanBeLotedCB
+            // 
+            this.StaticPatrolCanBeLotedCB.AutoSize = true;
+            this.StaticPatrolCanBeLotedCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.StaticPatrolCanBeLotedCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolCanBeLotedCB.Location = new System.Drawing.Point(248, 277);
+            this.StaticPatrolCanBeLotedCB.Name = "StaticPatrolCanBeLotedCB";
+            this.StaticPatrolCanBeLotedCB.Size = new System.Drawing.Size(97, 17);
+            this.StaticPatrolCanBeLotedCB.TabIndex = 138;
+            this.StaticPatrolCanBeLotedCB.Text = "Can Be Looted";
+            this.StaticPatrolCanBeLotedCB.UseVisualStyleBackColor = true;
+            this.StaticPatrolCanBeLotedCB.CheckedChanged += new System.EventHandler(this.StaticPatrolCanBeLotedCB_CheckedChanged);
+            // 
+            // darkLabel42
+            // 
+            this.darkLabel42.AutoSize = true;
+            this.darkLabel42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel42.Location = new System.Drawing.Point(7, 332);
+            this.darkLabel42.Name = "darkLabel42";
+            this.darkLabel42.Size = new System.Drawing.Size(91, 13);
+            this.darkLabel42.TabIndex = 188;
+            this.darkLabel42.Text = "Damage Multiplier";
+            // 
+            // StaticPatrolMinSpreadRadiusNUD
+            // 
+            this.StaticPatrolMinSpreadRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolMinSpreadRadiusNUD.DecimalPlaces = 2;
+            this.StaticPatrolMinSpreadRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolMinSpreadRadiusNUD.Location = new System.Drawing.Point(116, 356);
+            this.StaticPatrolMinSpreadRadiusNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.StaticPatrolMinSpreadRadiusNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.StaticPatrolMinSpreadRadiusNUD.Name = "StaticPatrolMinSpreadRadiusNUD";
+            this.StaticPatrolMinSpreadRadiusNUD.Size = new System.Drawing.Size(105, 20);
+            this.StaticPatrolMinSpreadRadiusNUD.TabIndex = 141;
+            this.StaticPatrolMinSpreadRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.StaticPatrolMinSpreadRadiusNUD.ValueChanged += new System.EventHandler(this.StaticPatrolMinSpreadRadiusNUD_ValueChanged);
+            // 
+            // darkButton17
+            // 
+            this.darkButton17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton17.Location = new System.Drawing.Point(484, 406);
+            this.darkButton17.Name = "darkButton17";
+            this.darkButton17.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton17.Size = new System.Drawing.Size(111, 23);
+            this.darkButton17.TabIndex = 165;
+            this.darkButton17.Text = "Import From DZE";
+            this.darkButton17.Click += new System.EventHandler(this.darkButton17_Click);
+            // 
+            // darkLabel13
+            // 
+            this.darkLabel13.AutoSize = true;
+            this.darkLabel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel13.Location = new System.Drawing.Point(5, 358);
+            this.darkLabel13.Name = "darkLabel13";
+            this.darkLabel13.Size = new System.Drawing.Size(92, 13);
+            this.darkLabel13.TabIndex = 142;
+            this.darkLabel13.Text = "Min Spread radius";
+            // 
+            // darkButton14
+            // 
+            this.darkButton14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton14.Location = new System.Drawing.Point(484, 435);
+            this.darkButton14.Name = "darkButton14";
+            this.darkButton14.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton14.Size = new System.Drawing.Size(111, 23);
+            this.darkButton14.TabIndex = 166;
+            this.darkButton14.Text = "Export to DZE";
+            this.darkButton14.Click += new System.EventHandler(this.darkButton14_Click);
+            // 
+            // StaticPatrolRespawnTimeNUD
+            // 
+            this.StaticPatrolRespawnTimeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolRespawnTimeNUD.DecimalPlaces = 2;
+            this.StaticPatrolRespawnTimeNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolRespawnTimeNUD.Location = new System.Drawing.Point(116, 384);
+            this.StaticPatrolRespawnTimeNUD.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.StaticPatrolRespawnTimeNUD.Minimum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            -2147483648});
+            this.StaticPatrolRespawnTimeNUD.Name = "StaticPatrolRespawnTimeNUD";
+            this.StaticPatrolRespawnTimeNUD.Size = new System.Drawing.Size(105, 20);
+            this.StaticPatrolRespawnTimeNUD.TabIndex = 154;
+            this.StaticPatrolRespawnTimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.StaticPatrolRespawnTimeNUD.ValueChanged += new System.EventHandler(this.StaticPatrolRespawnTimeNUD_ValueChanged);
+            // 
+            // StaticPatrolWayPointsLB
+            // 
+            this.StaticPatrolWayPointsLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.StaticPatrolWayPointsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolWayPointsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.StaticPatrolWayPointsLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolWayPointsLB.FormattingEnabled = true;
+            this.StaticPatrolWayPointsLB.Location = new System.Drawing.Point(495, 9);
+            this.StaticPatrolWayPointsLB.Name = "StaticPatrolWayPointsLB";
+            this.StaticPatrolWayPointsLB.Size = new System.Drawing.Size(188, 251);
+            this.StaticPatrolWayPointsLB.TabIndex = 143;
+            this.StaticPatrolWayPointsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.StaticPatrolWayPointsLB.SelectedIndexChanged += new System.EventHandler(this.StaticPatrolWayPointsLB_SelectedIndexChanged);
+            // 
+            // darkLabel6
+            // 
+            this.darkLabel6.AutoSize = true;
+            this.darkLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel6.Location = new System.Drawing.Point(6, 386);
+            this.darkLabel6.Name = "darkLabel6";
+            this.darkLabel6.Size = new System.Drawing.Size(78, 13);
+            this.darkLabel6.TabIndex = 155;
+            this.darkLabel6.Text = "Respawn Time";
+            // 
+            // darkLabel35
+            // 
+            this.darkLabel35.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkLabel35.AutoSize = true;
+            this.darkLabel35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel35.Location = new System.Drawing.Point(494, 289);
+            this.darkLabel35.Name = "darkLabel35";
+            this.darkLabel35.Size = new System.Drawing.Size(52, 13);
+            this.darkLabel35.TabIndex = 151;
+            this.darkLabel35.Text = "Waypoint";
+            // 
+            // StaticPatrolMaxSpreadRadiusNUD
+            // 
+            this.StaticPatrolMaxSpreadRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolMaxSpreadRadiusNUD.DecimalPlaces = 2;
+            this.StaticPatrolMaxSpreadRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolMaxSpreadRadiusNUD.Location = new System.Drawing.Point(341, 358);
+            this.StaticPatrolMaxSpreadRadiusNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.StaticPatrolMaxSpreadRadiusNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.StaticPatrolMaxSpreadRadiusNUD.Name = "StaticPatrolMaxSpreadRadiusNUD";
+            this.StaticPatrolMaxSpreadRadiusNUD.Size = new System.Drawing.Size(105, 20);
+            this.StaticPatrolMaxSpreadRadiusNUD.TabIndex = 157;
+            this.StaticPatrolMaxSpreadRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.StaticPatrolMaxSpreadRadiusNUD.ValueChanged += new System.EventHandler(this.StaticPatrolMaxSpreadRadiusNUD_ValueChanged);
+            // 
+            // StaticPatrolWaypointPOSXNUD
+            // 
+            this.StaticPatrolWaypointPOSXNUD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.StaticPatrolWaypointPOSXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolWaypointPOSXNUD.DecimalPlaces = 6;
+            this.StaticPatrolWaypointPOSXNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolWaypointPOSXNUD.Location = new System.Drawing.Point(534, 304);
+            this.StaticPatrolWaypointPOSXNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.StaticPatrolWaypointPOSXNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.StaticPatrolWaypointPOSXNUD.Name = "StaticPatrolWaypointPOSXNUD";
+            this.StaticPatrolWaypointPOSXNUD.Size = new System.Drawing.Size(172, 20);
+            this.StaticPatrolWaypointPOSXNUD.TabIndex = 148;
+            this.StaticPatrolWaypointPOSXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.StaticPatrolWaypointPOSXNUD.ValueChanged += new System.EventHandler(this.StaticPatrolWaypointPOSXNUD_ValueChanged);
+            // 
+            // darkLabel26
+            // 
+            this.darkLabel26.AutoSize = true;
+            this.darkLabel26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel26.Location = new System.Drawing.Point(232, 441);
+            this.darkLabel26.Name = "darkLabel26";
+            this.darkLabel26.Size = new System.Drawing.Size(84, 13);
+            this.darkLabel26.TabIndex = 136;
+            this.darkLabel26.Text = "Max Dist Radius";
+            // 
+            // StaticPatrolDamageMultiplierNUD
+            // 
+            this.StaticPatrolDamageMultiplierNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolDamageMultiplierNUD.DecimalPlaces = 2;
+            this.StaticPatrolDamageMultiplierNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolDamageMultiplierNUD.Location = new System.Drawing.Point(116, 330);
+            this.StaticPatrolDamageMultiplierNUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.StaticPatrolDamageMultiplierNUD.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            -2147483648});
+            this.StaticPatrolDamageMultiplierNUD.Name = "StaticPatrolDamageMultiplierNUD";
+            this.StaticPatrolDamageMultiplierNUD.Size = new System.Drawing.Size(105, 20);
+            this.StaticPatrolDamageMultiplierNUD.TabIndex = 187;
+            this.StaticPatrolDamageMultiplierNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.StaticPatrolDamageMultiplierNUD.ValueChanged += new System.EventHandler(this.StaticPatrolDamageMultiplierNUD_ValueChanged);
+            // 
+            // darkLabel8
+            // 
+            this.darkLabel8.AutoSize = true;
+            this.darkLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel8.Location = new System.Drawing.Point(230, 360);
+            this.darkLabel8.Name = "darkLabel8";
+            this.darkLabel8.Size = new System.Drawing.Size(95, 13);
+            this.darkLabel8.TabIndex = 158;
+            this.darkLabel8.Text = "Max Spread radius";
+            // 
+            // StaticPatrolWaypointPOSYNUD
+            // 
+            this.StaticPatrolWaypointPOSYNUD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.StaticPatrolWaypointPOSYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolWaypointPOSYNUD.DecimalPlaces = 6;
+            this.StaticPatrolWaypointPOSYNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolWaypointPOSYNUD.Location = new System.Drawing.Point(534, 330);
+            this.StaticPatrolWaypointPOSYNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.StaticPatrolWaypointPOSYNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.StaticPatrolWaypointPOSYNUD.Name = "StaticPatrolWaypointPOSYNUD";
+            this.StaticPatrolWaypointPOSYNUD.Size = new System.Drawing.Size(172, 20);
+            this.StaticPatrolWaypointPOSYNUD.TabIndex = 149;
+            this.StaticPatrolWaypointPOSYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.StaticPatrolWaypointPOSYNUD.ValueChanged += new System.EventHandler(this.StaticPatrolWaypointPOSYNUD_ValueChanged);
+            // 
+            // StaticPatrolMaxDistRadiusNUD
+            // 
+            this.StaticPatrolMaxDistRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolMaxDistRadiusNUD.DecimalPlaces = 2;
+            this.StaticPatrolMaxDistRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolMaxDistRadiusNUD.Location = new System.Drawing.Point(341, 439);
+            this.StaticPatrolMaxDistRadiusNUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.StaticPatrolMaxDistRadiusNUD.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
+            this.StaticPatrolMaxDistRadiusNUD.Name = "StaticPatrolMaxDistRadiusNUD";
+            this.StaticPatrolMaxDistRadiusNUD.Size = new System.Drawing.Size(105, 20);
+            this.StaticPatrolMaxDistRadiusNUD.TabIndex = 135;
+            this.StaticPatrolMaxDistRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.StaticPatrolMaxDistRadiusNUD.ValueChanged += new System.EventHandler(this.StaticPatrolMaxDistRadiusNUD_ValueChanged);
+            // 
+            // darkLabel54
+            // 
+            this.darkLabel54.AutoSize = true;
+            this.darkLabel54.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel54.Location = new System.Drawing.Point(7, 250);
+            this.darkLabel54.Name = "darkLabel54";
+            this.darkLabel54.Size = new System.Drawing.Size(72, 13);
+            this.darkLabel54.TabIndex = 170;
+            this.darkLabel54.Text = "Accuracy Min";
+            // 
+            // StaticPatrolDespawnRadiusNUD
+            // 
+            this.StaticPatrolDespawnRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolDespawnRadiusNUD.DecimalPlaces = 2;
+            this.StaticPatrolDespawnRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolDespawnRadiusNUD.Location = new System.Drawing.Point(116, 411);
+            this.StaticPatrolDespawnRadiusNUD.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.StaticPatrolDespawnRadiusNUD.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
+            this.StaticPatrolDespawnRadiusNUD.Name = "StaticPatrolDespawnRadiusNUD";
+            this.StaticPatrolDespawnRadiusNUD.Size = new System.Drawing.Size(105, 20);
+            this.StaticPatrolDespawnRadiusNUD.TabIndex = 159;
+            this.StaticPatrolDespawnRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.StaticPatrolDespawnRadiusNUD.ValueChanged += new System.EventHandler(this.StaticPatrolDespawnRadiusNUD_ValueChanged);
+            // 
+            // StaticPatrolWaypointPOSZNUD
+            // 
+            this.StaticPatrolWaypointPOSZNUD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.StaticPatrolWaypointPOSZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolWaypointPOSZNUD.DecimalPlaces = 6;
+            this.StaticPatrolWaypointPOSZNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolWaypointPOSZNUD.Location = new System.Drawing.Point(534, 356);
+            this.StaticPatrolWaypointPOSZNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.StaticPatrolWaypointPOSZNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.StaticPatrolWaypointPOSZNUD.Name = "StaticPatrolWaypointPOSZNUD";
+            this.StaticPatrolWaypointPOSZNUD.Size = new System.Drawing.Size(172, 20);
+            this.StaticPatrolWaypointPOSZNUD.TabIndex = 150;
+            this.StaticPatrolWaypointPOSZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.StaticPatrolWaypointPOSZNUD.ValueChanged += new System.EventHandler(this.StaticPatrolWaypointPOSZNUD_ValueChanged);
+            // 
+            // darkLabel27
+            // 
+            this.darkLabel27.AutoSize = true;
+            this.darkLabel27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel27.Location = new System.Drawing.Point(6, 439);
+            this.darkLabel27.Name = "darkLabel27";
+            this.darkLabel27.Size = new System.Drawing.Size(81, 13);
+            this.darkLabel27.TabIndex = 134;
+            this.darkLabel27.Text = "Min Dist Radius";
+            // 
+            // darkLabel43
+            // 
+            this.darkLabel43.AutoSize = true;
+            this.darkLabel43.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel43.Location = new System.Drawing.Point(6, 304);
+            this.darkLabel43.Name = "darkLabel43";
+            this.darkLabel43.Size = new System.Drawing.Size(107, 13);
+            this.darkLabel43.TabIndex = 186;
+            this.darkLabel43.Text = "Threat Distance Limit";
+            // 
+            // StaticPatrolMinDistRadiusNUD
+            // 
+            this.StaticPatrolMinDistRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolMinDistRadiusNUD.DecimalPlaces = 2;
+            this.StaticPatrolMinDistRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolMinDistRadiusNUD.Location = new System.Drawing.Point(116, 437);
+            this.StaticPatrolMinDistRadiusNUD.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.StaticPatrolMinDistRadiusNUD.Minimum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            -2147483648});
+            this.StaticPatrolMinDistRadiusNUD.Name = "StaticPatrolMinDistRadiusNUD";
+            this.StaticPatrolMinDistRadiusNUD.Size = new System.Drawing.Size(105, 20);
+            this.StaticPatrolMinDistRadiusNUD.TabIndex = 133;
+            this.StaticPatrolMinDistRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.StaticPatrolMinDistRadiusNUD.ValueChanged += new System.EventHandler(this.StaticPatrolMinDistRadiusNUD_ValueChanged);
+            // 
+            // darkButton5
+            // 
+            this.darkButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton5.Location = new System.Drawing.Point(601, 406);
+            this.darkButton5.Name = "darkButton5";
+            this.darkButton5.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton5.Size = new System.Drawing.Size(105, 23);
+            this.darkButton5.TabIndex = 152;
+            this.darkButton5.Text = "Import From Map";
+            this.darkButton5.Click += new System.EventHandler(this.darkButton5_Click);
+            // 
+            // darkLabel12
+            // 
+            this.darkLabel12.AutoSize = true;
+            this.darkLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel12.Location = new System.Drawing.Point(232, 413);
+            this.darkLabel12.Name = "darkLabel12";
+            this.darkLabel12.Size = new System.Drawing.Size(44, 13);
+            this.darkLabel12.TabIndex = 140;
+            this.darkLabel12.Text = "Chance";
+            // 
+            // StaticPatrolAccuracyMaxNUD
+            // 
+            this.StaticPatrolAccuracyMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolAccuracyMaxNUD.DecimalPlaces = 2;
+            this.StaticPatrolAccuracyMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolAccuracyMaxNUD.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+            this.StaticPatrolAccuracyMaxNUD.Location = new System.Drawing.Point(116, 276);
+            this.StaticPatrolAccuracyMaxNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.StaticPatrolAccuracyMaxNUD.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            -2147483648});
+            this.StaticPatrolAccuracyMaxNUD.Name = "StaticPatrolAccuracyMaxNUD";
+            this.StaticPatrolAccuracyMaxNUD.Size = new System.Drawing.Size(105, 20);
+            this.StaticPatrolAccuracyMaxNUD.TabIndex = 171;
+            this.StaticPatrolAccuracyMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.StaticPatrolAccuracyMaxNUD.ValueChanged += new System.EventHandler(this.StaticPatrolAccuracyMaxNUD_ValueChanged);
+            // 
+            // StaticPatrolChanceCB
+            // 
+            this.StaticPatrolChanceCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolChanceCB.DecimalPlaces = 2;
+            this.StaticPatrolChanceCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolChanceCB.Location = new System.Drawing.Point(341, 411);
+            this.StaticPatrolChanceCB.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.StaticPatrolChanceCB.Name = "StaticPatrolChanceCB";
+            this.StaticPatrolChanceCB.Size = new System.Drawing.Size(105, 20);
+            this.StaticPatrolChanceCB.TabIndex = 139;
+            this.StaticPatrolChanceCB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.StaticPatrolChanceCB.ValueChanged += new System.EventHandler(this.StaticPatrolChanceCB_ValueChanged);
+            // 
+            // StaticPatrolThreatDistanceLimitNUD
+            // 
+            this.StaticPatrolThreatDistanceLimitNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolThreatDistanceLimitNUD.DecimalPlaces = 2;
+            this.StaticPatrolThreatDistanceLimitNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolThreatDistanceLimitNUD.Location = new System.Drawing.Point(116, 302);
+            this.StaticPatrolThreatDistanceLimitNUD.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.StaticPatrolThreatDistanceLimitNUD.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            -2147483648});
+            this.StaticPatrolThreatDistanceLimitNUD.Name = "StaticPatrolThreatDistanceLimitNUD";
+            this.StaticPatrolThreatDistanceLimitNUD.Size = new System.Drawing.Size(105, 20);
+            this.StaticPatrolThreatDistanceLimitNUD.TabIndex = 185;
+            this.StaticPatrolThreatDistanceLimitNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.StaticPatrolThreatDistanceLimitNUD.ValueChanged += new System.EventHandler(this.StaticPatrolThreatDistanceLimitNUD_ValueChanged);
+            // 
+            // darkLabel39
+            // 
+            this.darkLabel39.AutoSize = true;
+            this.darkLabel39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel39.Location = new System.Drawing.Point(5, 411);
+            this.darkLabel39.Name = "darkLabel39";
+            this.darkLabel39.Size = new System.Drawing.Size(88, 13);
+            this.darkLabel39.TabIndex = 160;
+            this.darkLabel39.Text = "Despawn Radius";
+            // 
+            // StaticPatrolExporttoMapButton
+            // 
+            this.StaticPatrolExporttoMapButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.StaticPatrolExporttoMapButton.Location = new System.Drawing.Point(601, 435);
+            this.StaticPatrolExporttoMapButton.Name = "StaticPatrolExporttoMapButton";
+            this.StaticPatrolExporttoMapButton.Padding = new System.Windows.Forms.Padding(5);
+            this.StaticPatrolExporttoMapButton.Size = new System.Drawing.Size(105, 23);
+            this.StaticPatrolExporttoMapButton.TabIndex = 156;
+            this.StaticPatrolExporttoMapButton.Text = "Export to Map";
+            this.StaticPatrolExporttoMapButton.Click += new System.EventHandler(this.darkButton10_Click);
+            // 
+            // darkLabel47
+            // 
+            this.darkLabel47.AutoSize = true;
+            this.darkLabel47.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel47.Location = new System.Drawing.Point(6, 65);
+            this.darkLabel47.Name = "darkLabel47";
+            this.darkLabel47.Size = new System.Drawing.Size(53, 13);
+            this.darkLabel47.TabIndex = 161;
+            this.darkLabel47.Text = "Formation";
+            // 
+            // StaticPatrolAccuracyMinNUD
+            // 
+            this.StaticPatrolAccuracyMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolAccuracyMinNUD.DecimalPlaces = 2;
+            this.StaticPatrolAccuracyMinNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolAccuracyMinNUD.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+            this.StaticPatrolAccuracyMinNUD.Location = new System.Drawing.Point(116, 250);
+            this.StaticPatrolAccuracyMinNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.StaticPatrolAccuracyMinNUD.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            -2147483648});
+            this.StaticPatrolAccuracyMinNUD.Name = "StaticPatrolAccuracyMinNUD";
+            this.StaticPatrolAccuracyMinNUD.Size = new System.Drawing.Size(105, 20);
+            this.StaticPatrolAccuracyMinNUD.TabIndex = 169;
+            this.StaticPatrolAccuracyMinNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.StaticPatrolAccuracyMinNUD.ValueChanged += new System.EventHandler(this.StaticPatrolAccuracyMinNUD_ValueChanged);
+            // 
+            // StaticPatrolFormationCB
+            // 
+            this.StaticPatrolFormationCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolFormationCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolFormationCB.FormattingEnabled = true;
+            this.StaticPatrolFormationCB.Items.AddRange(new object[] {
+            "Column",
+            "File",
+            "Vee",
+            "Wall",
+            "RANDOM"});
+            this.StaticPatrolFormationCB.Location = new System.Drawing.Point(116, 62);
+            this.StaticPatrolFormationCB.Name = "StaticPatrolFormationCB";
+            this.StaticPatrolFormationCB.Size = new System.Drawing.Size(330, 21);
+            this.StaticPatrolFormationCB.TabIndex = 162;
+            this.StaticPatrolFormationCB.SelectedIndexChanged += new System.EventHandler(this.StaticPatrolFormationCB_SelectedIndexChanged);
+            // 
+            // darkLabel55
+            // 
+            this.darkLabel55.AutoSize = true;
+            this.darkLabel55.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel55.Location = new System.Drawing.Point(5, 278);
+            this.darkLabel55.Name = "darkLabel55";
+            this.darkLabel55.Size = new System.Drawing.Size(75, 13);
+            this.darkLabel55.TabIndex = 172;
+            this.darkLabel55.Text = "Accuracy Max";
+            // 
+            // darkLabel48
+            // 
+            this.darkLabel48.AutoSize = true;
+            this.darkLabel48.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel48.Location = new System.Drawing.Point(3, 468);
+            this.darkLabel48.Name = "darkLabel48";
+            this.darkLabel48.Size = new System.Drawing.Size(113, 13);
+            this.darkLabel48.TabIndex = 163;
+            this.darkLabel48.Text = "Waypoint Interpolation";
+            // 
+            // darkLabel53
+            // 
+            this.darkLabel53.AutoSize = true;
+            this.darkLabel53.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel53.Location = new System.Drawing.Point(231, 386);
+            this.darkLabel53.Name = "darkLabel53";
+            this.darkLabel53.Size = new System.Drawing.Size(78, 13);
+            this.darkLabel53.TabIndex = 168;
+            this.darkLabel53.Text = "Despawn Time";
+            // 
+            // StaticPatrolWaypointInterpolationCB
+            // 
+            this.StaticPatrolWaypointInterpolationCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolWaypointInterpolationCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolWaypointInterpolationCB.FormattingEnabled = true;
+            this.StaticPatrolWaypointInterpolationCB.Items.AddRange(new object[] {
+            "",
+            "CatmullRom",
+            "NaturalCubic",
+            "UniformCubic"});
+            this.StaticPatrolWaypointInterpolationCB.Location = new System.Drawing.Point(116, 465);
+            this.StaticPatrolWaypointInterpolationCB.Name = "StaticPatrolWaypointInterpolationCB";
+            this.StaticPatrolWaypointInterpolationCB.Size = new System.Drawing.Size(330, 21);
+            this.StaticPatrolWaypointInterpolationCB.TabIndex = 164;
+            this.StaticPatrolWaypointInterpolationCB.SelectedIndexChanged += new System.EventHandler(this.StaticPatrolWaypointInterpolationCB_SelectedIndexChanged);
+            // 
+            // StaticPatrolDespawnTimeNUD
+            // 
+            this.StaticPatrolDespawnTimeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolDespawnTimeNUD.DecimalPlaces = 2;
+            this.StaticPatrolDespawnTimeNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolDespawnTimeNUD.Location = new System.Drawing.Point(341, 384);
+            this.StaticPatrolDespawnTimeNUD.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.StaticPatrolDespawnTimeNUD.Minimum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            -2147483648});
+            this.StaticPatrolDespawnTimeNUD.Name = "StaticPatrolDespawnTimeNUD";
+            this.StaticPatrolDespawnTimeNUD.Size = new System.Drawing.Size(105, 20);
+            this.StaticPatrolDespawnTimeNUD.TabIndex = 167;
+            this.StaticPatrolDespawnTimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.StaticPatrolDespawnTimeNUD.ValueChanged += new System.EventHandler(this.StaticPatrolDespawnTimeNUD_ValueChanged);
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage4.Controls.Add(this.label1);
+            this.tabPage4.Controls.Add(this.panel2);
+            this.tabPage4.Controls.Add(this.trackBar4);
+            this.tabPage4.ForeColor = System.Drawing.SystemColors.Control;
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(961, 633);
+            this.tabPage4.TabIndex = 1;
+            this.tabPage4.Text = "AI Patrol Map Visualisation";
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.pictureBox2);
+            this.panel2.Location = new System.Drawing.Point(6, 34);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(955, 603);
+            this.panel2.TabIndex = 109;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox2.Location = new System.Drawing.Point(0, -1);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(512, 512);
+            this.pictureBox2.TabIndex = 62;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseDown);
+            this.pictureBox2.MouseEnter += new System.EventHandler(this.pictureBox2_MouseEnter);
+            this.pictureBox2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseMove);
+            this.pictureBox2.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseWheel);
+            // 
+            // trackBar4
+            // 
+            this.trackBar4.AutoSize = false;
+            this.trackBar4.LargeChange = 1;
+            this.trackBar4.Location = new System.Drawing.Point(9, 7);
+            this.trackBar4.Maximum = 20;
+            this.trackBar4.Minimum = 1;
+            this.trackBar4.Name = "trackBar4";
+            this.trackBar4.Size = new System.Drawing.Size(134, 24);
+            this.trackBar4.TabIndex = 110;
+            this.trackBar4.Value = 1;
+            this.trackBar4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackBar4_MouseUp);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.darkButton3);
+            this.groupBox5.Controls.Add(this.darkButton4);
+            this.groupBox5.Controls.Add(this.StaticPatrolLB);
+            this.groupBox5.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox5.Location = new System.Drawing.Point(3, 3);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(226, 659);
+            this.groupBox5.TabIndex = 133;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "AI Patrols";
             // 
             // darkButton3
             // 
@@ -3335,6 +3427,14 @@ namespace DayZeEditor
             this.toolStripButton1.Text = "AI Patrols";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(167, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.TabIndex = 111;
+            // 
             // ExpansionAI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3395,27 +3495,34 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.CrashMinDistRadiusNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrashNumberOfAINUD)).EndInit();
             this.tabPage6.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
+            this.tabControl2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolDamageReceivedMultiplierNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolSniperProneDistanceThresholdNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolNumberOfAINUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolFormationLoosenessNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolMinSpreadRadiusNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolRespawnTimeNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolMaxSpreadRadiusNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolWaypointPOSXNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolDamageMultiplierNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolWaypointPOSYNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolMaxDistRadiusNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolDespawnRadiusNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolWaypointPOSZNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolMinDistRadiusNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolAccuracyMaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolChanceCB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolThreatDistanceLimitNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolAccuracyMinNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolDespawnTimeNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolChanceCB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolMinDistRadiusNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolDespawnRadiusNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolMaxDistRadiusNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolMaxSpreadRadiusNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolRespawnTimeNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolMinSpreadRadiusNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolNumberOfAINUD)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).EndInit();
+            this.groupBox5.ResumeLayout(false);
             this.darkToolStrip23.ResumeLayout(false);
             this.darkToolStrip23.PerformLayout();
             this.ResumeLayout(false);
@@ -3622,5 +3729,12 @@ namespace DayZeEditor
         private System.Windows.Forms.NumericUpDown StaticPatrolDamageReceivedMultiplierNUD;
         private DarkUI.Controls.DarkButton darkButton21;
         private DarkUI.Controls.DarkButton darkButton22;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPage4;
+        private TreeViewMS.PanelEx panel2;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.TrackBar trackBar4;
+        private System.Windows.Forms.Label label1;
     }
 }

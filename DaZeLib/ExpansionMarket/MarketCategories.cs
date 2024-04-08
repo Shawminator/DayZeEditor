@@ -19,6 +19,7 @@ namespace DayZeLib
         public BindingList<Categories> CatList { get; set; }
         public bool SortedbyDisplayName { get; private set; }
         public string MarketCatsPath {get;set;}
+        public List<Categories> Markedfordelete { get; set; }
 
         public MarketCategories()
         {
@@ -143,7 +144,8 @@ namespace DayZeLib
         }
         public void RemoveCat(Categories catfordelete)
         {
-            catfordelete.backupandDelete(MarketCatsPath);
+            if (Markedfordelete == null) Markedfordelete = new List<Categories>();
+            Markedfordelete.Add(catfordelete);
             CatList.Remove(catfordelete);
             
         }
@@ -276,6 +278,11 @@ namespace DayZeLib
                 t.SortByprice(MintoMax);
             }
         }
+
+        public void RemoveMarkedCats()
+        {
+            throw new NotImplementedException();
+        }
     }
     public class Categories
     {
@@ -348,7 +355,8 @@ namespace DayZeLib
             string Fullfilename = marketpath + "\\" + Filename + ".json";
             if (File.Exists(Fullfilename))
             {
-                Directory.CreateDirectory(marketpath + "\\Backup\\" + SaveTime);
+                if(!Directory.Exists(marketpath + "\\Backup\\" + SaveTime))
+                    Directory.CreateDirectory(marketpath + "\\Backup\\" + SaveTime);
                 File.Copy(Fullfilename, marketpath + "\\Backup\\" + SaveTime + "\\" + Filename + ".bak");
                 File.Delete(Fullfilename);
             }

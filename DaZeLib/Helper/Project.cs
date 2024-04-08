@@ -197,6 +197,13 @@ namespace DayZeEditor
             tf.modname = Path.GetFileNameWithoutExtension(filename);
             ModTypesList.Add(tf);
         }
+        public TypesFile GetTypesfilebyname(string v)
+        {
+            if (v == "VanillaTypes")
+                return getvanillatypes();
+            else
+                return GetModTypebyname(v);
+        }
         public TypesFile getvanillatypes()
         {
             return vanillaTypes;

@@ -175,6 +175,7 @@ namespace DayZeEditor
                 if(p2pmarket.isDirty)
                 {
                     p2pmarket.isDirty = false;
+                    p2pmarket.setRoamingwaypoints();
                     var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                     string jsonString = JsonSerializer.Serialize(p2pmarket, options);
                     if (currentproject.Createbackups && File.Exists(p2pmarket.Filename))
@@ -792,6 +793,10 @@ namespace DayZeEditor
             m_CurrenciesLB.ValueMember = "Value";
             m_CurrenciesLB.DataSource = currentp2pmarket.m_Currencies;
 
+            RoamingTraderWaypointsLB.DisplayMember = "DisplayName";
+            RoamingTraderWaypointsLB.ValueMember = "Value";
+            RoamingTraderWaypointsLB.DataSource = currentp2pmarket.Roamingwaypoints;
+
             useraction = true;
 
 
@@ -821,7 +826,6 @@ namespace DayZeEditor
             currentp2pmarket.m_ClassName = m_ClassNameCB.GetItemText(m_ClassNameCB.SelectedItem);
             currentp2pmarket.isDirty = true;
         }
-
         private void positionXNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -990,6 +994,151 @@ namespace DayZeEditor
             }
             currentp2pmarket.isDirty = true;
         }
+        private void RoamingTraderWaypointsLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (RoamingTraderWaypointsLB.SelectedItems.Count < 1) return;
+            useraction = true;
+            Vec3 currentwaypoint = RoamingTraderWaypointsLB.SelectedItem as Vec3;
+            if (currentwaypoint == null) return;
+            TraderRoamingWaypointXNUD.Value = (decimal)currentwaypoint.X;
+            TraderRoamingWaypointYNUD.Value = (decimal)currentwaypoint.Y;
+            TraderRoamingWaypointZNUD.Value = (decimal)currentwaypoint.Z;
+            useraction = false;
+        }
+
+        private void TraderRoamingWaypointXNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (useraction) return;
+            Vec3 currentwaypoint = RoamingTraderWaypointsLB.SelectedItem as Vec3;
+            currentwaypoint.X = (float)TraderRoamingWaypointXNUD.Value;
+            RoamingTraderWaypointsLB.Invalidate();
+            currentp2pmarket.isDirty = true;
+        }
+        private void TraderRoamingWaypointYNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (useraction) return;
+            Vec3 currentwaypoint = RoamingTraderWaypointsLB.SelectedItem as Vec3;
+            currentwaypoint.Y = (float)TraderRoamingWaypointYNUD.Value;
+            RoamingTraderWaypointsLB.Invalidate();
+            currentp2pmarket.isDirty = true;
+        }
+        private void TraderRoamingWaypointZNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (useraction) return;
+            Vec3 currentwaypoint = RoamingTraderWaypointsLB.SelectedItem as Vec3;
+            currentwaypoint.Z = (float)TraderRoamingWaypointZNUD.Value;
+            RoamingTraderWaypointsLB.Invalidate();
+            currentp2pmarket.isDirty = true;
+        }
         #endregion p2pmarket
+
+        private void darkButton37_Click(object sender, EventArgs e)
+        {
+            if (currentp2pmarket == null) return;
+            if (currentp2pmarket.Roamingwaypoints == null)
+                currentp2pmarket.Roamingwaypoints = new BindingList<Vec3>();
+            currentp2pmarket.Roamingwaypoints.Add(new Vec3());
+            RoamingTraderWaypointsLB.Invalidate();
+            currentp2pmarket.isDirty = true;
+        }
+
+        private void darkButton35_Click(object sender, EventArgs e)
+        {
+            if (currentp2pmarket == null) return;
+            currentp2pmarket.Roamingwaypoints.Remove(RoamingTraderWaypointsLB.SelectedItem as Vec3);
+            currentp2pmarket.isDirty = true;
+        }
+
+        private void darkButton41_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    DZE importfile = DZEHelpers.LoadFile(filePath);
+                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        currentp2pmarket.Roamingwaypoints = new BindingList<Vec3>();
+                    }
+                    int i = 0;
+                    foreach (Editorobject eo in importfile.EditorObjects)
+                    {
+                        Vec3 newvec3 = new Vec3()
+                        {
+                            X = Convert.ToSingle(eo.Position[0]),
+                            Y = Convert.ToSingle(eo.Position[1]),
+                            Z = Convert.ToSingle(eo.Position[2])
+                        };
+                        if (i == 0)
+                        {
+                            positionXNUD.Value = (decimal)newvec3.X;
+                            positionYNUD.Value = (decimal)newvec3.Y;
+                            positionZNUD.Value = (decimal)newvec3.Z;
+                        }
+                        else
+                        {
+                            currentp2pmarket.Roamingwaypoints.Add(newvec3);
+                        }
+                        i++;
+                    }
+                    RoamingTraderWaypointsLB.DisplayMember = "Name";
+                    RoamingTraderWaypointsLB.ValueMember = "Value";
+                    RoamingTraderWaypointsLB.DataSource = currentp2pmarket.Roamingwaypoints;
+                    RoamingTraderWaypointsLB.Refresh();
+                    currentp2pmarket.isDirty = true;
+                }
+            }
+        }
+
+        private void darkButton42_Click(object sender, EventArgs e)
+        {
+            DZE newdze = new DZE()
+            {
+                EditorObjects = new BindingList<Editorobject>(),
+                EditorHiddenObjects = new BindingList<Editordeletedobject>(),
+                MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
+            };
+            int m_Id = 0;
+            Editorobject eo = new Editorobject()
+            {
+                Type = currentp2pmarket.m_ClassName,
+                DisplayName = currentp2pmarket.m_ClassName,
+                Position = new float[] { (float)currentp2pmarket.m_Position[0], (float)currentp2pmarket.m_Position[1], (float)currentp2pmarket.m_Position[2] },
+                Orientation = new float[]{ (float)currentp2pmarket.m_Orientation[0],
+                (float)currentp2pmarket.m_Orientation[1],
+                (float)currentp2pmarket.m_Orientation[2]
+            },
+                Scale = 1.0f,
+                Flags = 2147483647,
+                m_Id = m_Id
+            };
+            newdze.EditorObjects.Add(eo);
+            m_Id++;
+            foreach (Vec3 array in currentp2pmarket.Roamingwaypoints)
+            {
+                eo = new Editorobject()
+                {
+                    Type = currentp2pmarket.m_ClassName,
+                    DisplayName = currentp2pmarket.m_ClassName,
+                    Position = new float[] { array.X, array.Y, array.Z },
+                    Orientation = new float[] { 0, 0, 0 },
+                    Scale = 1.0f,
+                    Flags = 2147483647,
+                    m_Id = m_Id
+                };
+                newdze.EditorObjects.Add(eo);
+                m_Id++;
+            }
+            newdze.CameraPosition = newdze.EditorObjects[0].Position;
+            SaveFileDialog save = new SaveFileDialog();
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                string jsonString = JsonSerializer.Serialize(newdze, options);
+                File.WriteAllText(save.FileName + ".dze", jsonString);
+            }
+        }
     }
 }

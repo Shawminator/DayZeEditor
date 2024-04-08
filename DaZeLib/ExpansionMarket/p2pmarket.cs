@@ -47,6 +47,7 @@ namespace DayZeLib
                         p2pm.m_Version = CurrentVersion;
                         savefile = true;
                     }
+                    p2pm.getroamingWaypoint();
                     p2pmarketList.Add(p2pm);
                     UsedIDS.Add(p2pm.m_TraderID);
                     if (savefile)
@@ -93,6 +94,7 @@ namespace DayZeLib
                 m_AircraftSpawnPosition = new decimal[] { 0, 0, 0 },
                 m_Faction = "InvincibleObservers",
                 m_Waypoints = new BindingList<decimal[]>(),
+                Roamingwaypoints = new BindingList<Vec3>(),
                 m_EmoteID = 46,
                 m_EmoteIsStatic = 0,
                 m_IsGlobalTrader = 0,
@@ -115,6 +117,8 @@ namespace DayZeLib
         public string Filename { get; set; }
         [JsonIgnore]
         public bool isDirty = false;
+        [JsonIgnore]
+        public BindingList<Vec3> Roamingwaypoints { get; set; }
 
         public int m_Version { get; set; }
         public int m_TraderID { get; set; }
@@ -139,6 +143,7 @@ namespace DayZeLib
         public p2pmarket()
         {
             m_Waypoints = new BindingList<decimal[]>();
+            Roamingwaypoints = new BindingList<Vec3>();
         }
 
         public override string ToString()
@@ -158,6 +163,32 @@ namespace DayZeLib
                 File.Delete(Fullfilename);
             }
         }
-    }
 
+        internal void getroamingWaypoint()
+        {
+            Roamingwaypoints = new BindingList<Vec3>();
+            foreach (decimal[] array in m_Waypoints)
+            {
+                Roamingwaypoints.Add( new Vec3()
+                {
+                    X = Convert.ToSingle(array[0]),
+                    Y = Convert.ToSingle(array[1]),
+                    Z = Convert.ToSingle(array[2])
+                });
+            }
+        }
+        public void setRoamingwaypoints()
+        {
+            m_Waypoints = new BindingList<decimal[]>();
+            foreach(Vec3 vec3 in Roamingwaypoints)
+            {
+                m_Waypoints.Add(new decimal[]
+                {
+                    Convert.ToDecimal(vec3.X),
+                    Convert.ToDecimal(vec3.Y),
+                    Convert.ToDecimal(vec3.Z)
+                });
+            }
+        }
+    }
 }

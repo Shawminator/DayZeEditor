@@ -467,9 +467,15 @@ namespace DayZeEditor
 
             }
             if (midifiedfiles.Count > 0)
+            {
+                Console.WriteLine("\n" + message);
                 MessageBox.Show(message, "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
             else
+            {
+                Console.WriteLine("\nNo changes were made. Nothing Saved");
                 MessageBox.Show("No changes were made.", "Nothing Saved", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
         }
         private void Economy_Manager_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -1599,7 +1605,7 @@ namespace DayZeEditor
                 typesType looptype = tn.Tag as typesType;
                 looptype.AddnewUsage(u);
                 populateUsage();
-                currentTypesFile.isDirty = true;
+                currentproject.GetTypesfilebyname(tn.Parent.Parent.Tag.ToString()).isDirty = true;
             }
         }
         private void darkButton1_Click(object sender, EventArgs e)
@@ -1609,7 +1615,7 @@ namespace DayZeEditor
             {
                 typesType looptype = tn.Tag as typesType;
                 looptype.removeusage(u);
-                currentTypesFile.isDirty = true;
+                currentproject.GetTypesfilebyname(tn.Parent.Parent.Tag.ToString()).isDirty = true;
             }
         }
         private void darkButton8_Click(object sender, EventArgs e)
@@ -1619,7 +1625,7 @@ namespace DayZeEditor
             {
                 typesType looptype = tn.Tag as typesType;
                 looptype.Addnewtag(t);
-                currentTypesFile.isDirty = true;
+                currentproject.GetTypesfilebyname(tn.Parent.Parent.Tag.ToString()).isDirty = true;
                 PopulateTags();
             }
         }
@@ -1630,7 +1636,7 @@ namespace DayZeEditor
             {
                 typesType looptype = tn.Tag as typesType;
                 looptype.removetag(t);
-                currentTypesFile.isDirty = true;
+                currentproject.GetTypesfilebyname(tn.Parent.Parent.Tag.ToString()).isDirty = true;
             }
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -1642,8 +1648,8 @@ namespace DayZeEditor
                 {
                     typesType looptype = tn.Tag as typesType;
                     looptype.changecategory(c);
+                    currentproject.GetTypesfilebyname(tn.Parent.Parent.Tag.ToString()).isDirty = true;
                 }
-                currentTypesFile.isDirty = true;
                 PopulateTreeView();
                 isUserInteraction = false;
             }
@@ -1658,10 +1664,10 @@ namespace DayZeEditor
                     if (looptype.nominalSpecified)
                     {
                         looptype.nominal = (int)typeNomCountNUD.Value;
-                        currentTypesFile.isDirty = true;
-                        currentproject.SetTotNomCount();
+                        currentproject.GetTypesfilebyname(tn.Parent.Parent.Tag.ToString()).isDirty = true;
                     }
                 }
+                currentproject.SetTotNomCount();
                 NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
             }
         }
@@ -1675,7 +1681,7 @@ namespace DayZeEditor
                     if (looptype.minSpecified)
                     {
                         looptype.min = (int)typeMinCountNUD.Value;
-                        currentTypesFile.isDirty = true;
+                        currentproject.GetTypesfilebyname(tn.Parent.Parent.Tag.ToString()).isDirty = true;
                     }
                 }
             }
@@ -1690,7 +1696,7 @@ namespace DayZeEditor
                     if (looptype.lifetimeSpecified)
                     {
                         looptype.lifetime = (int)typeLifetimeNUD.Value;
-                        currentTypesFile.isDirty = true;
+                        currentproject.GetTypesfilebyname(tn.Parent.Parent.Tag.ToString()).isDirty = true;
                     }
                 }
             }
@@ -1705,7 +1711,7 @@ namespace DayZeEditor
                     if (looptype.restockSpecified)
                     {
                         looptype.restock = (int)typeRestockNUD.Value;
-                        currentTypesFile.isDirty = true;
+                        currentproject.GetTypesfilebyname(tn.Parent.Parent.Tag.ToString()).isDirty = true;
                     }
                 }
             }
@@ -1721,7 +1727,7 @@ namespace DayZeEditor
                     if (looptype.quantminSpecified)
                     {
                         looptype.quantmin = (int)typeQuantMINNUD.Value;
-                        currentTypesFile.isDirty = true;
+                        currentproject.GetTypesfilebyname(tn.Parent.Parent.Tag.ToString()).isDirty = true;
                     }
                 }
             }
@@ -1736,7 +1742,7 @@ namespace DayZeEditor
                     if (looptype.quantmaxSpecified)
                     {
                         looptype.quantmax = (int)typeQuantMAXNUD.Value;
-                        currentTypesFile.isDirty = true;
+                        currentproject.GetTypesfilebyname(tn.Parent.Parent.Tag.ToString()).isDirty = true;
                     }
                 }
             }
@@ -1751,7 +1757,7 @@ namespace DayZeEditor
                     if (looptype.costSpecified)
                     {
                         looptype.cost = (int)typeCostNUD.Value; ;
-                        currentTypesFile.isDirty = true;
+                        currentproject.GetTypesfilebyname(tn.Parent.Parent.Tag.ToString()).isDirty = true;
                     }
                 }
             }
@@ -1785,7 +1791,7 @@ namespace DayZeEditor
                             looptype.flags.deloot = checkBox6.Checked == true ? 1 : 0;
                             break;
                     }
-                    currentTypesFile.isDirty = true;
+                    currentproject.GetTypesfilebyname(tn.Parent.Parent.Tag.ToString()).isDirty = true;
                 }
             }
         }
@@ -1802,7 +1808,7 @@ namespace DayZeEditor
                         looptype.AddTier(tier);
                     else
                         looptype.removetier(tier);
-                    currentTypesFile.isDirty = true;
+                    currentproject.GetTypesfilebyname(tn.Parent.Parent.Tag.ToString()).isDirty = true;
                 }
                 PopulateLootPartInfo();
             }
@@ -1826,8 +1832,9 @@ namespace DayZeEditor
                     }
                     else
                         looptype.removeusertier(tier);
+
+                    currentproject.GetTypesfilebyname(tn.Parent.Parent.Tag.ToString()).isDirty = true;
                 }
-                currentTypesFile.isDirty = true;
                 PopulateLootPartInfo();
             }
         }

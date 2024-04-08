@@ -1,4 +1,22 @@
-﻿Version 0.7.9.7
+﻿Version 0.7.9.9
+[Fixed]
+Expansion Damage config buttons fixed, no code was added but all functional now.
+Expansion Map setting map Zoom was referenciong the wriong scale when zooming giving wrong coords when not at outermodt zoom.
+p2p settings were all set to read only.
+[added]
+added waypoints for p2p trader, import/exports to/from dze
+Added map visualisation fo AI Patrols in the expansion AI Manager.
+
+
+Version 0.7.9.8
+[Updated]
+Update dze import to match latest version
+[Added]
+added various new maps sizes
+added save state of console
+added scroll bar to expansion quest description textboxes
+
+Version 0.7.9.7
 [Added]
 more deatil to the Console when loading expansion quests.
 added more checking when loading quests that should eithe rnotify you of an issue or fix it.

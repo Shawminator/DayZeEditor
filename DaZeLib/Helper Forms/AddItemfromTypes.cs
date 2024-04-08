@@ -204,8 +204,6 @@ namespace DayZeEditor
                 addedtypes.Remove(item);
                 if (listBox1.Items.Count == 0)
                     listBox1.SelectedIndex = -1;
-                else
-                    listBox1.SelectedIndex = 0;
             }
         }
 

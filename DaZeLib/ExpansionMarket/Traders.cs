@@ -19,6 +19,8 @@ namespace DayZeLib
         public BindingList<Traders> Traderlist { get; set; }
         public string TraderPath { get; set; }
         public bool SortedbyDisplayName { get; set; }
+        public List<Traders> Markedfordelete { get; set; }
+
         public TradersList()
         {
             Traderlist = new BindingList<Traders>();
@@ -95,6 +97,7 @@ namespace DayZeLib
             }
         }
 
+
         public void RemoveItemFromTrader(string removeitem)
         {
             foreach (Traders t in Traderlist)
@@ -118,7 +121,8 @@ namespace DayZeLib
         }
         public void removeTrader(Traders removeitem)
         {
-            removeitem.backupandDelete(TraderPath);
+            if (Markedfordelete == null) Markedfordelete = new List<Traders>();
+            Markedfordelete.Add(removeitem);
             Traderlist.Remove(removeitem);
         }
         public void AddNewTrader(string m_fileName)

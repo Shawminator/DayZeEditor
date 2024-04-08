@@ -1196,6 +1196,7 @@ namespace DayZeEditor
             if (DamageSystemSettings.isDirty)
             {
                 DamageSystemSettings.isDirty = false;
+                DamageSystemSettings.ConvertListtodict();
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(DamageSystemSettings, options);
                 if (currentproject.Createbackups && File.Exists(DamageSystemSettings.Filename))
@@ -1203,7 +1204,6 @@ namespace DayZeEditor
                     Directory.CreateDirectory(Path.GetDirectoryName(DamageSystemSettings.Filename) + "\\Backup\\" + SaveTime);
                     File.Copy(DamageSystemSettings.Filename, Path.GetDirectoryName(DamageSystemSettings.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(DamageSystemSettings.Filename) + ".bak", true);
                 }
-                DamageSystemSettings.ConvertListtodict();
                 File.WriteAllText(DamageSystemSettings.Filename, jsonString);
                 midifiedfiles.Add(Path.GetFileName(DamageSystemSettings.Filename));
             }
@@ -3302,6 +3302,7 @@ namespace DayZeEditor
         #endregion chatSettings
 
         #region dfamagesystemsettigns
+        public ExplosiveProjectiles CurrentExplosiveProjectiles { get; set; }
         private void loadDamageSystemSettings()
         {
             useraction = false;
@@ -3320,7 +3321,12 @@ namespace DayZeEditor
         }
         private void ExplosiveProjectilesLB_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (ExplosiveProjectilesLB.SelectedIndex == -1) { return; }
+            CurrentExplosiveProjectiles = ExplosiveProjectilesLB.SelectedItem as ExplosiveProjectiles;
+            useraction = false;
+            textBox18.Text = CurrentExplosiveProjectiles.explosion;
+            textBox17.Text = CurrentExplosiveProjectiles.ammo;
+            useraction = true;
         }
         private void DSEnabledCB_CheckedChanged(object sender, EventArgs e)
         {
@@ -3336,27 +3342,51 @@ namespace DayZeEditor
         }
         private void darkButton67_Click(object sender, EventArgs e)
         {
-
+            AddItemfromString form = new AddItemfromString();
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    DamageSystemSettings.ExplosionTargets.Add(l);
+                    DamageSystemSettings.isDirty = true;
+                }
+            }
         }
         private void darkButton66_Click(object sender, EventArgs e)
         {
-
+            if (ExplosionTargetsLB.SelectedIndex == -1) { return; }
+            DamageSystemSettings.ExplosionTargets.Remove(ExplosionTargetsLB.GetItemText(ExplosionTargetsLB.SelectedItem));
+            DamageSystemSettings.isDirty = true;
         }
         private void darkButton69_Click(object sender, EventArgs e)
         {
-
+            ExplosiveProjectiles newExplosiveProjectiles = new ExplosiveProjectiles()
+            {
+                explosion = "New explosion",
+                ammo = "New Ammo"
+            };
+            DamageSystemSettings.explosinvesList.Add(newExplosiveProjectiles);
+            DamageSystemSettings.isDirty = true;
         }
         private void darkButton68_Click(object sender, EventArgs e)
         {
-
+            if (ExplosiveProjectilesLB.SelectedIndex == -1) { return; }
+            DamageSystemSettings.explosinvesList.Remove(CurrentExplosiveProjectiles);
+            DamageSystemSettings.isDirty = true;
         }
         private void textBox18_TextChanged(object sender, EventArgs e)
         {
-
+            if (!useraction) { return; }
+            CurrentExplosiveProjectiles.explosion = textBox18.Text;
+            DamageSystemSettings.isDirty = true;
         }
         private void textBox17_TextChanged(object sender, EventArgs e)
         {
-
+            if (!useraction) { return; }
+            CurrentExplosiveProjectiles.ammo = textBox17.Text;  
+            DamageSystemSettings.isDirty = true;
         }
         #endregion damagesystemsettings
         #region debugsettings
@@ -4331,7 +4361,7 @@ namespace DayZeEditor
                 panel2.AutoScrollPosition = _newscrollPosition;
                 pictureBox3.Invalidate();
             }
-            decimal scalevalue = MissionMapscale * (decimal)0.05;
+            decimal scalevalue = markerScale * (decimal)0.05;
             decimal mapsize = currentproject.MapSize;
             int newsize = (int)(mapsize * scalevalue);
             darkLabel290.Text = Decimal.Round((decimal)(e.X / scalevalue), 4) + "," + Decimal.Round((decimal)((newsize - e.Y) / scalevalue), 4);

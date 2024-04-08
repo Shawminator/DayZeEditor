@@ -640,6 +640,7 @@ namespace DayZeEditor
                 File.WriteAllText(CatPath + "\\" + cat.Filename + ".json", jsonString);
                 midifiedfiles.Add(Path.GetFileName(cat.Filename));
             }
+            
             string message = "The Following Files were saved....\n";
             int i = 0;
             foreach (string l in midifiedfiles)
@@ -656,6 +657,51 @@ namespace DayZeEditor
                 }
 
             }
+            
+            if (MarketCats.Markedfordelete != null)
+            {
+                message += "\nThe following Market Category files were Removed\n";
+                i = 0;
+                foreach (Categories del in MarketCats.Markedfordelete)
+                {
+                    del.backupandDelete(CatPath);
+                    midifiedfiles.Add(del.Filename);
+                    if (i == 5)
+                    {
+                        message += del.Filename + "\n";
+                        i = 0;
+                    }
+                    else
+                    {
+                        message += del.Filename + ", ";
+                        i++;
+                    }
+                }
+                MarketCats.Markedfordelete = null;
+            }
+
+            if (Traders.Markedfordelete != null)
+            {
+                message += "\nThe following Market Category files were Removed\n";
+                i = 0;
+                foreach (Traders del in Traders.Markedfordelete)
+                {
+                    del.backupandDelete(TradersPath);
+                    midifiedfiles.Add(del.Filename);
+                    if (i == 5)
+                    {
+                        message += del.Filename + "\n";
+                        i = 0;
+                    }
+                    else
+                    {
+                        message += del.Filename + ", ";
+                        i++;
+                    }
+                }
+                Traders.Markedfordelete = null;
+            }
+
             if (midifiedfiles.Count > 0)
                 MessageBox.Show(message, "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             else
@@ -1930,7 +1976,21 @@ namespace DayZeEditor
         private void listBox5_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBox5.SelectedItems.Count < 1) return;
-            currentCat = listBox5.SelectedItem as Categories;
+            Categories cat = listBox5.SelectedItem as Categories;
+            if(cat != currentCat)
+            {
+                action = true;
+                currentitem = null;
+                textBox10.Text = "";
+                numericUpDown6.Value = 0;
+                numericUpDown7.Value = 0;
+                numericUpDown23.Value = 0;
+                numericUpDown8.Value = 0;
+                numericUpDown9.Value = 0;
+                numericUpDown24.Value = 0;
+                action = false;
+            }
+            currentCat = cat;
             action = true;
             textBox12.Text = currentCat.m_Version.ToString();
             textBox11.Text = currentCat.Filename;
@@ -1939,6 +1999,8 @@ namespace DayZeEditor
             InitStockPercentNUD.Value = (decimal)currentCat.InitStockPercent;
             IsExchangeCB.Checked = currentCat.IsExchange == 1 ? true : false;
             CategorycolourPB.Invalidate();
+
+            
 
             listBox4.DisplayMember = "Name";
             listBox4.ValueMember = "Value";
@@ -2184,9 +2246,19 @@ namespace DayZeEditor
                     currentCat.isDirty = true;
                 }
                 if (listBox4.Items.Count == 0)
+                {
                     listBox4.SelectedIndex = -1;
-                else
-                   listBox4.SelectedIndex = 0;
+                    currentitem = null;
+                    action = true;
+                    textBox10.Text = "";
+                    numericUpDown6.Value = 0;
+                    numericUpDown7.Value = 0;
+                    numericUpDown23.Value = 0;
+                    numericUpDown8.Value = 0;
+                    numericUpDown9.Value = 0;
+                    numericUpDown24.Value = 0;
+                    action = true;
+                }
                 MessageBox.Show("items removed", "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
         }
@@ -2336,8 +2408,6 @@ namespace DayZeEditor
                 MessageBox.Show(message, "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 if (listBox5.Items.Count == 0)
                     listBox5.SelectedIndex = -1;
-                else
-                    listBox5.SelectedIndex = 0;
             }
 
         }
@@ -2788,8 +2858,6 @@ namespace DayZeEditor
                 Zones.removeZone(currentZone);
                 if (Zones.ZoneList.Count == 0)
                     listBox1.SelectedIndex = -1;
-                else
-                    listBox1.SelectedIndex = 0;
             }
         }
         private void darkButton15_Click(object sender, EventArgs e)
@@ -3624,7 +3692,7 @@ namespace DayZeEditor
             {
                 Type = currenttradermap.NPCName,
                 DisplayName = currenttradermap.NPCName,
-                Position = new float[] {currenttradermap.position.X, currenttradermap.position.Y, currenttradermap.position.X },
+                Position = new float[] {currenttradermap.position.X, currenttradermap.position.Y, currenttradermap.position.Z},
                 Orientation = new float[] { 0, 0, 0 },
                 Scale = 1.0f,
                 Flags = 2147483647,

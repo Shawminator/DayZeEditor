@@ -16,9 +16,14 @@ namespace DayZeLib
     {
         NORMAL = 1
     }
+    public enum ExpansionQuestRewardBehavior
+    {
+        RANDOMIZED_ON_COMPLETION = 0,
+        RANDOMIZED_ON_START = 1
+    };
     public class ExpansioQuestList
     {
-        const int m_QuestConfigVersion = 21;
+        const int m_QuestConfigVersion = 22;
         public static int getQuestConfigVersion
         {
             get { return m_QuestConfigVersion; }
@@ -119,7 +124,10 @@ namespace DayZeLib
                 QuestItems = new BindingList<Questitem>(),
                 Rewards = new BindingList<QuestReward>(),
                 NeedToSelectReward = 0,
+                RandomReward = 0,
+                RandomRewardAmount = -1,
                 RewardsForGroupOwnerOnly = 1,
+                RewardBehavior = 0,
                 QuestGiverIDs = new BindingList<int>(),
                 QuestGivers = new BindingList<ExpansionQuestNPCs>(),
                 QuestTurnInIDs = new BindingList<int>(),
@@ -135,11 +143,13 @@ namespace DayZeLib
                 FactionReward = "",
                 PlayerNeedQuestItems = 0,
                 DeleteQuestItems = 0,
+                SequentialObjectives = 0,
                 FactionReputationRequirements = new Dictionary<string, int>(),
                 FactionReputationRewards = new Dictionary<string, int>(),
                 FactionReputationRequirementsList = new BindingList<FactionQuestReps>(),
-                FactionReputationRewardsList = new BindingList<FactionQuestReps>()
-
+                FactionReputationRewardsList = new BindingList<FactionQuestReps>(),
+                SuppressQuestLogOnCompetion = 0,
+                Active = 1
             };
             QuestList.Add(newquest);
         }
@@ -308,6 +318,7 @@ namespace DayZeLib
         public int RandomReward { get; set; }
         public int RandomRewardAmount { get; set; }
         public int RewardsForGroupOwnerOnly { get; set; }
+        public int RewardBehavior { get; set; }
         public BindingList<int> QuestGiverIDs { get; set; }
         public BindingList<int> QuestTurnInIDs { get; set; }
         public int IsAchievement { get; set; }
