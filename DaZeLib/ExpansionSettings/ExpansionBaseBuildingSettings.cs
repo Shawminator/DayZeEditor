@@ -5,33 +5,23 @@ namespace DayZeLib
 {
     public enum ExpansionCodelockAttachMode
     {
-        [Description("Only on Expansion Builds")]
-        Only_on_expansion_basebuilding = 0,
-        [Description("Expansion Builds and Tents")]
-        Expansion_basebuilding_and_Tents = 1,
-        [Description("Expansion builds and Fences")]
-        Expansion_basebuilding_and_Fences = 3,
-        [Description("Expansion Builds, Tents and Fences")]
-        Expansion_basebuilding_Tents_Fences = 2
+        ExpansionOnly = 0,
+        ExpansionAndFence,
+        ExpansionAndFenceAndTents,
+        ExpansionAndTents
     }
     public enum ExpansionFlagMenuMode
     {
-        [Description("he player will not be able to create a territory")]
         Disabled = 0,
-        [Description("The player will be able to create a territory to protect his base.")]
-        Create_Territory = 1,
-        [Description("The player will be able to create a territory to protect his base but he won't be able to customize his flag from the flag menu")]
-        Create_Territory_No_Custom_Flags = 2,
-    }
+        Enabled,
+        NoFlagChoice
+    };
     public enum ExpansionDismantleFlagMode
     {
-        [Description("Only territory members can dismantle the flag pole.")]
-        OnlyMembers = -1,
-        [Description("You can dismantle the flag pole with your hands.")]
-        Dismantle_With_Hands = 0,
-        [Description("You need tools to dismantle the flag pole.")]
-        Dismantle_With_Tools = 1,
-    }
+        TerritoryMembersWithHands = -1,
+        AnyoneWithHands = 0,
+        AnyoneWithTools = 1
+    };
     public class ExpansionBaseBuildingSettings
     {
         const int CurrentVersion = 4;
@@ -113,12 +103,12 @@ namespace DayZeLib
             CanCraftVanillaBasebuilding = 0;
             CanCraftExpansionBasebuilding = 1;
             DestroyFlagOnDismantle = 1;
-            DismantleFlagMode = (int)ExpansionDismantleFlagMode.Dismantle_With_Tools;
+            DismantleFlagMode = (int)ExpansionDismantleFlagMode.AnyoneWithTools;
             DismantleOutsideTerritory = 0;
             DismantleInsideTerritory = 0;
             DismantleAnywhere = 0;
 
-            CodelockAttachMode = (int)ExpansionCodelockAttachMode.Expansion_basebuilding_and_Fences;  //! Will also allow BBP if installed
+            CodelockAttachMode = (int)ExpansionCodelockAttachMode.ExpansionAndFence;  //! Will also allow BBP if installed
             CodelockActionsAnywhere = 0;
             CodeLockLength = 4;
             DoDamageWhenEnterWrongCodeLock = 1;
@@ -128,7 +118,7 @@ namespace DayZeLib
             CanCraftTerritoryFlagKit = 1;
             SimpleTerritory = 1;
             AutomaticFlagOnCreation = 1;
-            FlagMenuMode = (int)ExpansionFlagMenuMode.Create_Territory_No_Custom_Flags;
+            FlagMenuMode = (int)ExpansionFlagMenuMode.NoFlagChoice;
             GetTerritoryFlagKitAfterBuild = 0;
 
             VirtualStorageExcludedContainers = new BindingList<string>() { "ExpansionAirdropContainerBase" };

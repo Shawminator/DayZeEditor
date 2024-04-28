@@ -364,7 +364,17 @@ namespace DayZeLib
                 }
                 ExpansionLootTV.SelectedNode = FocusNode;
                 ExpansionLootTV.Focus();
+                expansionLootVarientGB.Visible = true;
+                CurrentLootVArient = ExpansionLootTV.SelectedNode.Tag as ExpansionLootVariant;
                 setvarient();
+                if (ExpansionLootTV.SelectedNode.Parent.Tag.ToString() == "Attachments")
+                {
+                    expansionLootVarientGB.Text = "Expansion Loot Attachment";
+                }
+                else if (ExpansionLootTV.SelectedNode.Parent.Tag.ToString() == "Variants")
+                {
+                    expansionLootVarientGB.Text = "Expansion Loot Variant";
+                }
             }
         }
         private void addLootAttachmentsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -404,7 +414,17 @@ namespace DayZeLib
                 }
                 ExpansionLootTV.SelectedNode = FocusNode;
                 ExpansionLootTV.Focus();
+                expansionLootVarientGB.Visible = true;
+                CurrentLootVArient = ExpansionLootTV.SelectedNode.Tag as ExpansionLootVariant;
                 setvarient();
+                if (ExpansionLootTV.SelectedNode.Parent.Tag.ToString() == "Attachments")
+                {
+                    expansionLootVarientGB.Text = "Expansion Loot Attachment";
+                }
+                else if (ExpansionLootTV.SelectedNode.Parent.Tag.ToString() == "Variants")
+                {
+                    expansionLootVarientGB.Text = "Expansion Loot Variant";
+                }
             }
         }
         private void removeLootItemToolStripMenuItem_Click(object sender, EventArgs e)

@@ -39,5 +39,6 @@ namespace DayZeLib
         {
             addedtypes = richTextBox1.Lines.ToList();
         }
+
     }
 }

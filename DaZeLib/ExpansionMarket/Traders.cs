@@ -222,6 +222,8 @@ namespace DayZeLib
             RequiredFaction = "";
             RequiredCompletedQuestID = -1;
             TraderIcon = "Trader";
+            DisplayCurrencyName = "";
+            DisplayCurrencyValue = 1;
         }
         public override string ToString()
         {

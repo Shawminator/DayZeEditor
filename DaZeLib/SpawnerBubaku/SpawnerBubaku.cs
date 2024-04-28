@@ -110,7 +110,7 @@ namespace DayZeLib
         }
         public void setworkinghours(int[] _workinghours)
         {
-            workinghours = _workinghours[0].ToString() + "-" + workinghours[1].ToString();
+            workinghours = _workinghours[0].ToString() + "-" + _workinghours[1].ToString();
         }
         public BukakuPosRot gettriggerposition()
         {

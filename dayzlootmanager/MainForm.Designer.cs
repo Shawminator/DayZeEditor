@@ -80,6 +80,7 @@ namespace DayZeEditor
             this.darkStatusStrip1 = new DarkUI.Controls.DarkStatusStrip();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.MPGSpawnerButton = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.SlidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Slidelabel)).BeginInit();
@@ -222,6 +223,7 @@ namespace DayZeEditor
             this.LootPoolManagerButton,
             this.RHLootBoxManagerButton,
             this.LootchestButton,
+            this.MPGSpawnerButton,
             this.KOTHManagerButton,
             this.SpawnerBukakuManagerButton,
             this.AirdropUpgradedManagerButton,
@@ -548,7 +550,7 @@ namespace DayZeEditor
             this.MysteryBoxButton.Image = ((System.Drawing.Image)(resources.GetObject("MysteryBoxButton.Image")));
             this.MysteryBoxButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.MysteryBoxButton.Name = "MysteryBoxButton";
-            this.MysteryBoxButton.Size = new System.Drawing.Size(123, 19);
+            this.MysteryBoxButton.Size = new System.Drawing.Size(76, 19);
             this.MysteryBoxButton.Text = "Mystery Box";
             this.MysteryBoxButton.Visible = false;
             this.MysteryBoxButton.Click += new System.EventHandler(this.MysteryBoxButton_Click);
@@ -673,6 +675,18 @@ namespace DayZeEditor
             this.panel2.Size = new System.Drawing.Size(25, 25);
             this.panel2.TabIndex = 45;
             // 
+            // MPGSpawnerButton
+            // 
+            this.MPGSpawnerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.MPGSpawnerButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.MPGSpawnerButton.Image = ((System.Drawing.Image)(resources.GetObject("MPGSpawnerButton.Image")));
+            this.MPGSpawnerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MPGSpawnerButton.Name = "MPGSpawnerButton";
+            this.MPGSpawnerButton.Size = new System.Drawing.Size(123, 19);
+            this.MPGSpawnerButton.Text = "MPG Spawn Manager";
+            this.MPGSpawnerButton.Visible = false;
+            this.MPGSpawnerButton.Click += new System.EventHandler(this.MPGSpawnerButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -756,6 +770,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton RAGTysonBBManagerButton;
         private System.Windows.Forms.ToolStripButton AirdropUpgradedManagerButton;
         private System.Windows.Forms.ToolStripButton SpawnerBukakuManagerButton;
+        private System.Windows.Forms.ToolStripButton MPGSpawnerButton;
     }
 }
 

@@ -785,6 +785,10 @@ namespace DayZeEditor
             listBox9.ValueMember = "Value";
             listBox9.DataSource = marketsettings.WaterSpawnPositions;
 
+            listBox21.DisplayMember = "Name";
+            listBox21.ValueMember = "Value";
+            listBox21.DataSource = marketsettings.TrainSpawnPositions;
+
 
             listBox17.DisplayMember = "DisplayName";
             listBox17.ValueMember = "Value";
@@ -956,6 +960,11 @@ namespace DayZeEditor
                     sp = marketsettings.getSpawnbyindex(2, index);
                     Setvalues(sp);
                     break;
+                case 3:
+                    index = listBox21.SelectedIndex;
+                    sp = marketsettings.getSpawnbyindex(3, index);
+                    Setvalues(sp);
+                    break;
             }
         }
         private void UseWholeMapForATMPlayerListCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -1059,32 +1068,32 @@ namespace DayZeEditor
         }
         private void darkButton19_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             switch (tabControl2.SelectedIndex)
             {
                 case 0:
-                    Cursor.Current = Cursors.WaitCursor;
                     marketsettings.AddnewSpawn(0);
                     listBox7.SelectedIndex = listBox7.Items.Count - 1;
-                    ExpansionMarketSpawnPosition sp = marketsettings.getSpawnbyindex(0, listBox7.Items.Count - 1);
-                    sp.Position[0] = currentproject.MapSize / 2;
-                    sp.Position[2] = currentproject.MapSize / 2;
-                    sp.Position[1] = data.gethieght(sp.Position[0], sp.Position[2]);
                     marketsettings.isDirty = true;
-                    Cursor.Current = Cursors.Default;
                     break;
                 case 1:
                     marketsettings.AddnewSpawn(1);
-                    marketsettings.isDirty = true;
                     listBox8.SelectedIndex = listBox8.Items.Count - 1;
-
+                    marketsettings.isDirty = true;
                     break;
                 case 2:
                     marketsettings.AddnewSpawn(2);
-                    marketsettings.isDirty = true;
                     listBox9.SelectedIndex = listBox9.Items.Count - 1;
+                    marketsettings.isDirty = true;
+                    break;
+                case 3:
+                    marketsettings.AddnewSpawn(3);
+                    listBox21.SelectedIndex = listBox21.Items.Count - 1;
+                    marketsettings.isDirty = true;
                     break;
             }
             SetPositions();
+            Cursor.Current = Cursors.Default;
         }
         private void darkButton18_Click(object sender, EventArgs e)
         {
@@ -1118,6 +1127,16 @@ namespace DayZeEditor
                     listBox9.SelectedIndex = -1;
                     if (listBox9.Items.Count > 0)
                         listBox9.SelectedIndex = 0;
+                    action = false;
+                    break;
+                case 3:
+                    action = true;
+                    index = listBox21.SelectedIndex;
+                    marketsettings.RemoveSpawn(3, index);
+                    marketsettings.isDirty = true;
+                    listBox21.SelectedIndex = -1;
+                    if (listBox21.Items.Count > 0)
+                        listBox21.SelectedIndex = 0;
                     action = false;
                     break;
             }
@@ -1209,6 +1228,33 @@ namespace DayZeEditor
                     };
                     getCircle(e.Graphics, pen1, center1, 10);
                     break;
+                case 3:
+                    Selectedindex = listBox21.SelectedIndex;
+                    if (Selectedindex == -1) break;
+                    for (int i = 0; i < listBox21.Items.Count; i++)
+                    {
+                        ExpansionMarketSpawnPosition sp = marketsettings.getSpawnbyindex(3, i);
+                        int centerX = (int)(Math.Round(sp.Position[0], 0) * scalevalue);
+                        int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(sp.Position[2], 0) * scalevalue);
+
+                        Point center = new Point(centerX, centerY);
+                        Pen pen = new Pen(Color.Red)
+                        {
+                            Width = 1
+                        };
+                        getCircle(e.Graphics, pen, center, 10);
+                    }
+                    sp1 = marketsettings.getSpawnbyindex(3, Selectedindex);
+                    centerX1 = (int)(Math.Round(sp1.Position[0], 0) * scalevalue);
+                    centerY1 = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(sp1.Position[2], 0) * scalevalue);
+
+                    center1 = new Point(centerX1, centerY1);
+                    pen1 = new Pen(Color.LimeGreen)
+                    {
+                        Width = 1
+                    };
+                    getCircle(e.Graphics, pen1, center1, 10);
+                    break;
             }
         }
         private void SpawnLocation_ValueChanged(object sender, EventArgs e)
@@ -1229,6 +1275,11 @@ namespace DayZeEditor
                 case 2:
                     index = listBox9.SelectedIndex;
                     sp = marketsettings.getSpawnbyindex(2, index);
+                    SetPositions(sp);
+                    break;
+                case 3:
+                    index = listBox21.SelectedIndex;
+                    sp = marketsettings.getSpawnbyindex(3, index);
                     SetPositions(sp);
                     break;
             }
@@ -4081,6 +4132,7 @@ namespace DayZeEditor
             else
                 darkLabel90.Text = "Max - Min";
         }
+
     }
 }
 

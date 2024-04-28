@@ -644,6 +644,7 @@ namespace DayZeEditor
         }
         private void convertToExpansionMarketToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             StringBuilder sb = new StringBuilder();
 
             //set up market items list first.
@@ -868,6 +869,7 @@ namespace DayZeEditor
                 map.Filename = ExpansionPath + "\\TraderMaps.map";
             }
             maps.savefiles();
+            Cursor.Current = Cursors.Default;
             MessageBox.Show("Convertion Complete...\nfiles stored in folder called\nExpansionMod_Market_Convert_from_TraderPlus\nWithin the project profiles folder.");
         }
 

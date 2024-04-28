@@ -13,6 +13,7 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace DayZeEditor
 {
@@ -236,7 +237,7 @@ namespace DayZeEditor
 
             LoadOutGB.Visible = false;
             InventoryattchemntGB.Visible = false;
-            HealthGB.Visible = false;
+            //HealthGB.Visible = false;
             LoadOutGB.Visible = false;
 
             if (e.Node.Tag is string)
@@ -306,10 +307,10 @@ namespace DayZeEditor
                 numericUpDown2.Value = CurrentAIloadouts.Quantity.Min;
                 numericUpDown3.Value = CurrentAIloadouts.Quantity.Max;
 
-                if (CurrentAIloadouts.Health.Count > 0)
-                {
-                    HealthGB.Visible = true;
-                }
+                //if (CurrentAIloadouts.Health.Count > 0)
+                //{
+                //    HealthGB.Visible = true;
+                //}
 
                 listBox1.DisplayMember = "DisplayName";
                 listBox1.ValueMember = "Value";
@@ -567,11 +568,20 @@ namespace DayZeEditor
             };
             CurrentAIloadouts.Health.Add(newhealth);
             CurrentAILoadoutsFile.isDirty = true;
+            groupBox1.Visible = true;
+            listBox1.SelectedIndex = -1;
+            listBox1.SelectedIndex = CurrentAIloadouts.Health.Count - 1;
         }
         private void darkButton9_Click(object sender, EventArgs e)
         {
+            int index = listBox1.SelectedIndex;
             CurrentAIloadouts.Health.Remove(Currenthealth);
             CurrentAILoadoutsFile.isDirty = true;
+            listBox1.SelectedIndex = -1;
+            if (CurrentAIloadouts.Health.Count > 0)
+                listBox1.SelectedIndex = index - 1;
+            else
+                groupBox1.Visible = false;
         }
         private void numericUpDown4_ValueChanged(object sender, EventArgs e)
         {

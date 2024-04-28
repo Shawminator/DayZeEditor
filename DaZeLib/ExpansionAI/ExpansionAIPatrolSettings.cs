@@ -113,6 +113,28 @@ namespace DayZeLib
             }
             return needtosave;
         }
+        public void SetAIPatrolWaypoints()
+        {
+            foreach (ExpansionAIPatrol pat in Patrols)
+            {
+                pat.Waypoints = new BindingList<float[]>();
+                foreach (Vec3 point in pat._waypoints)
+                {
+                    pat.Waypoints.Add(point.getfloatarray());
+                }
+            }
+        }
+        public void GetAIPatrolWaypoints()
+        {
+            foreach (ExpansionAIPatrol pat in Patrols)
+            {
+                pat._waypoints = new BindingList<Vec3>();
+                foreach (float[] point in pat.Waypoints)
+                {
+                    pat._waypoints.Add(new Vec3(point));
+                }
+            }
+        }
     }
 
     public class ExpansionAIObjectPatrol
@@ -122,6 +144,7 @@ namespace DayZeLib
         public string Formation { get; set; }
         public decimal FormationLooseness { get; set; }
         public string LoadoutFile { get; set; }
+        public BindingList<string> Units { get; set; }
         public int NumberOfAI { get; set; }
         public string Behaviour { get; set; }
         public string Speed { get; set; }
@@ -132,6 +155,7 @@ namespace DayZeLib
         public decimal AccuracyMin { get; set; }
         public decimal AccuracyMax { get; set; }
         public decimal ThreatDistanceLimit { get; set; }
+        public decimal NoiseInvestigationDistanceLimit { get; set; }
         public decimal DamageMultiplier { get; set; }
         public decimal DamageReceivedMultiplier { get; set; }
         public decimal MinDistRadius { get; set; }
@@ -202,11 +226,15 @@ namespace DayZeLib
 
     public class ExpansionAIPatrol
     {
+        [JsonIgnore]
+        public BindingList<Vec3> _waypoints { get;set; }
+
         public string Name { get; set; }
         public string Faction { get; set; }
         public string Formation { get; set; }
         public decimal FormationLooseness { get; set; }
         public string LoadoutFile { get; set; }
+        public BindingList<string> Units { get; set; }
         public int NumberOfAI { get; set; }
         public string Behaviour { get; set; }
         public string Speed { get; set; }
@@ -217,6 +245,7 @@ namespace DayZeLib
         public decimal AccuracyMin { get; set; }
         public decimal AccuracyMax { get; set; }
         public decimal ThreatDistanceLimit { get; set; }
+        public decimal NoiseInvestigationDistanceLimit { get; set; }
         public decimal DamageMultiplier { get; set; }
         public decimal DamageReceivedMultiplier { get; set; }
         public decimal MinDistRadius { get; set; }
@@ -235,24 +264,34 @@ namespace DayZeLib
         public ExpansionAIPatrol(int bod = 1, string spd = "JOG", string threatspd = "SPRINT", string beh = "ALTERNATE", string fac = "WEST", string loa = "HumanLoadout", bool canbelooted = true, bool unlimitedreload = false, decimal chance = (decimal)1.0, float mindistradius = -2, float maxdistradius = -2, decimal respawntime = -2, decimal wprnd = 0, List<float[]> way = null)
         {
             Name = "";
+            Faction = fac;
+            Formation = "";
+            FormationLooseness = (decimal)0.0;
+            LoadoutFile = loa;
+            Units = new BindingList<string>();
             NumberOfAI = bod;
+            Behaviour = beh;
             Speed = spd;
             UnderThreatSpeed = threatspd;
-            Behaviour = beh;
-            Faction = fac;
-            LoadoutFile = loa;
             CanBeLooted = canbelooted == true ? 1 : 0;
             UnlimitedReload = unlimitedreload == true ? 1 : 0; ;
+            SniperProneDistanceThreshold = (decimal)0.0;
             AccuracyMin = -1;
             AccuracyMax = -1;
             ThreatDistanceLimit = -1;
+            NoiseInvestigationDistanceLimit = -1;
             DamageMultiplier = -1;
-            RespawnTime = respawntime;
+            DamageReceivedMultiplier = (decimal)-1.0;
+            MinDistRadius = -1;
+            MaxDistRadius = -1;
+            DespawnRadius = -1;
             MinSpreadRadius = 1;
             MaxSpreadRadius = wprnd;
+            Chance = -1;
+            WaypointInterpolation = "";
+            DespawnTime = -1;
+            RespawnTime = respawntime;
             UseRandomWaypointAsStartPoint = 1;
-            DamageReceivedMultiplier = (decimal)-1.0;
-            SniperProneDistanceThreshold = (decimal)0.0;
             Waypoints = new BindingList<float[]>(way);
         }
         public override string ToString()

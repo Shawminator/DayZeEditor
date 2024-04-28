@@ -4502,8 +4502,8 @@ namespace DayZeEditor
 
 
 
-        #endregion Persistant Player Data
 
+        #endregion Persistant Player Data
 
     }
 }

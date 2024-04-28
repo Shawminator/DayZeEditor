@@ -70,6 +70,7 @@ namespace DayZeEditor
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Loot = new System.Windows.Forms.TabPage();
+            this.ExpansionLootAirdropsettings = new DayZeLib.ExpansionLootControl();
             this.Infected = new System.Windows.Forms.TabPage();
             this.darkButton84 = new DarkUI.Controls.DarkButton();
             this.darkLabel217 = new DarkUI.Controls.DarkLabel();
@@ -145,9 +146,9 @@ namespace DayZeEditor
             this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton23 = new System.Windows.Forms.ToolStripButton();
             this.groupBox28 = new System.Windows.Forms.GroupBox();
-            this.AuthenticateCodeLockIfTerritoryMemberCB = new System.Windows.Forms.CheckBox();
+            this.AuthenticateCodeLockIfTerritoryMemberTCB = new System.Windows.Forms.CheckBox();
             this.darkLabel176 = new DarkUI.Controls.DarkLabel();
-            this.TerritoryAuthenticationRadiusNUD = new System.Windows.Forms.NumericUpDown();
+            this.TerritoryInviteAcceptRadiusTNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel82 = new DarkUI.Controls.DarkLabel();
             this.TerritorySizeTNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel81 = new DarkUI.Controls.DarkLabel();
@@ -494,6 +495,16 @@ namespace DayZeEditor
             this.EnableLighthousesCB = new System.Windows.Forms.CheckBox();
             this.EnableLampsComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox34 = new System.Windows.Forms.GroupBox();
+            this.DefaultMessageColorPB = new System.Windows.Forms.PictureBox();
+            this.darkLabel159 = new DarkUI.Controls.DarkLabel();
+            this.ImportantMessageColorPB = new System.Windows.Forms.PictureBox();
+            this.darkLabel158 = new DarkUI.Controls.DarkLabel();
+            this.FriendlyMessageColorPB = new System.Windows.Forms.PictureBox();
+            this.darkLabel23 = new DarkUI.Controls.DarkLabel();
+            this.ActionMessageColorPB = new System.Windows.Forms.PictureBox();
+            this.darkLabel22 = new DarkUI.Controls.DarkLabel();
+            this.StatusMessageColorPB = new System.Windows.Forms.PictureBox();
+            this.darkLabel21 = new DarkUI.Controls.DarkLabel();
             this.TransmitterChatColorPB = new System.Windows.Forms.PictureBox();
             this.darkLabel98 = new DarkUI.Controls.DarkLabel();
             this.PartyChatColorPB = new System.Windows.Forms.PictureBox();
@@ -633,6 +644,9 @@ namespace DayZeEditor
             this.tabControl6 = new System.Windows.Forms.TabControl();
             this.tabPage22 = new System.Windows.Forms.TabPage();
             this.AirdropMissionGB = new System.Windows.Forms.GroupBox();
+            this.MissionFallSpeedNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel12 = new DarkUI.Controls.DarkLabel();
+            this.expansionLootControlMissions = new DayZeLib.ExpansionLootControl();
             this.numericUpDown38 = new System.Windows.Forms.NumericUpDown();
             this.darkLabel271 = new DarkUI.Controls.DarkLabel();
             this.numericUpDown37 = new System.Windows.Forms.NumericUpDown();
@@ -1316,20 +1330,11 @@ namespace DayZeEditor
             this.addNewSubMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeSubMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MissionFallSpeedNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel12 = new DarkUI.Controls.DarkLabel();
-            this.StatusMessageColorPB = new System.Windows.Forms.PictureBox();
-            this.darkLabel21 = new DarkUI.Controls.DarkLabel();
-            this.ActionMessageColorPB = new System.Windows.Forms.PictureBox();
-            this.darkLabel22 = new DarkUI.Controls.DarkLabel();
-            this.FriendlyMessageColorPB = new System.Windows.Forms.PictureBox();
-            this.darkLabel23 = new DarkUI.Controls.DarkLabel();
-            this.ImportantMessageColorPB = new System.Windows.Forms.PictureBox();
-            this.darkLabel158 = new DarkUI.Controls.DarkLabel();
-            this.DefaultMessageColorPB = new System.Windows.Forms.PictureBox();
-            this.darkLabel159 = new DarkUI.Controls.DarkLabel();
-            this.ExpansionLootAirdropsettings = new DayZeLib.ExpansionLootControl();
-            this.expansionLootControlMissions = new DayZeLib.ExpansionLootControl();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.darkToolStrip28 = new DarkUI.Controls.DarkToolStrip2();
+            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -1361,7 +1366,7 @@ namespace DayZeEditor
             this.tabPage19.SuspendLayout();
             this.darkToolStrip25.SuspendLayout();
             this.groupBox28.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TerritoryAuthenticationRadiusNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TerritoryInviteAcceptRadiusTNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TerritorySizeTNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxTerritoryPerPlayerTNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxMembersInTerritoryTNUD)).BeginInit();
@@ -1433,6 +1438,11 @@ namespace DayZeEditor
             this.groupBox36.SuspendLayout();
             this.groupBox35.SuspendLayout();
             this.groupBox34.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DefaultMessageColorPB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImportantMessageColorPB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FriendlyMessageColorPB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ActionMessageColorPB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StatusMessageColorPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TransmitterChatColorPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PartyChatColorPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TransportChatColorPB)).BeginInit();
@@ -1480,6 +1490,7 @@ namespace DayZeEditor
             this.tabControl6.SuspendLayout();
             this.tabPage22.SuspendLayout();
             this.AirdropMissionGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MissionFallSpeedNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown38)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown37)).BeginInit();
             this.SpecificInfectedAirdropGB.SuspendLayout();
@@ -1684,12 +1695,8 @@ namespace DayZeEditor
             this.darkToolStrip22.SuspendLayout();
             this.darkToolStrip26.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MissionFallSpeedNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StatusMessageColorPB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ActionMessageColorPB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FriendlyMessageColorPB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ImportantMessageColorPB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DefaultMessageColorPB)).BeginInit();
+            this.panel6.SuspendLayout();
+            this.darkToolStrip28.SuspendLayout();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -2188,6 +2195,23 @@ namespace DayZeEditor
             this.Loot.Size = new System.Drawing.Size(838, 598);
             this.Loot.TabIndex = 0;
             this.Loot.Text = "Loot";
+            // 
+            // ExpansionLootAirdropsettings
+            // 
+            this.ExpansionLootAirdropsettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ExpansionLootAirdropsettings.currentExpansionLoot = null;
+            this.ExpansionLootAirdropsettings.currentproject = null;
+            this.ExpansionLootAirdropsettings.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpansionLootAirdropsettings.ForeColor = System.Drawing.SystemColors.Control;
+            this.ExpansionLootAirdropsettings.isDirty = false;
+            this.ExpansionLootAirdropsettings.Location = new System.Drawing.Point(3, 3);
+            this.ExpansionLootAirdropsettings.LootparentName = null;
+            this.ExpansionLootAirdropsettings.ModTypes = null;
+            this.ExpansionLootAirdropsettings.Name = "ExpansionLootAirdropsettings";
+            this.ExpansionLootAirdropsettings.Size = new System.Drawing.Size(832, 592);
+            this.ExpansionLootAirdropsettings.TabIndex = 102;
+            this.ExpansionLootAirdropsettings.vanillatypes = null;
+            this.ExpansionLootAirdropsettings.IsDirtyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.ExpansionLootAirdropsettings_IsDirtyChanged);
             // 
             // Infected
             // 
@@ -3087,9 +3111,9 @@ namespace DayZeEditor
             // 
             // groupBox28
             // 
-            this.groupBox28.Controls.Add(this.AuthenticateCodeLockIfTerritoryMemberCB);
+            this.groupBox28.Controls.Add(this.AuthenticateCodeLockIfTerritoryMemberTCB);
             this.groupBox28.Controls.Add(this.darkLabel176);
-            this.groupBox28.Controls.Add(this.TerritoryAuthenticationRadiusNUD);
+            this.groupBox28.Controls.Add(this.TerritoryInviteAcceptRadiusTNUD);
             this.groupBox28.Controls.Add(this.darkLabel82);
             this.groupBox28.Controls.Add(this.TerritorySizeTNUD);
             this.groupBox28.Controls.Add(this.darkLabel81);
@@ -3108,18 +3132,18 @@ namespace DayZeEditor
             this.groupBox28.TabStop = false;
             this.groupBox28.Text = "Territories";
             // 
-            // AuthenticateCodeLockIfTerritoryMemberCB
+            // AuthenticateCodeLockIfTerritoryMemberTCB
             // 
-            this.AuthenticateCodeLockIfTerritoryMemberCB.AutoSize = true;
-            this.AuthenticateCodeLockIfTerritoryMemberCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.AuthenticateCodeLockIfTerritoryMemberCB.Location = new System.Drawing.Point(23, 186);
-            this.AuthenticateCodeLockIfTerritoryMemberCB.Name = "AuthenticateCodeLockIfTerritoryMemberCB";
-            this.AuthenticateCodeLockIfTerritoryMemberCB.Size = new System.Drawing.Size(229, 17);
-            this.AuthenticateCodeLockIfTerritoryMemberCB.TabIndex = 40;
-            this.AuthenticateCodeLockIfTerritoryMemberCB.Text = "Authenticate CodeLock If Territory Member";
-            this.AuthenticateCodeLockIfTerritoryMemberCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.AuthenticateCodeLockIfTerritoryMemberCB.UseVisualStyleBackColor = true;
-            this.AuthenticateCodeLockIfTerritoryMemberCB.CheckedChanged += new System.EventHandler(this.TerritoriesTCB_CheckedChanged);
+            this.AuthenticateCodeLockIfTerritoryMemberTCB.AutoSize = true;
+            this.AuthenticateCodeLockIfTerritoryMemberTCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.AuthenticateCodeLockIfTerritoryMemberTCB.Location = new System.Drawing.Point(23, 186);
+            this.AuthenticateCodeLockIfTerritoryMemberTCB.Name = "AuthenticateCodeLockIfTerritoryMemberTCB";
+            this.AuthenticateCodeLockIfTerritoryMemberTCB.Size = new System.Drawing.Size(229, 17);
+            this.AuthenticateCodeLockIfTerritoryMemberTCB.TabIndex = 40;
+            this.AuthenticateCodeLockIfTerritoryMemberTCB.Text = "Authenticate CodeLock If Territory Member";
+            this.AuthenticateCodeLockIfTerritoryMemberTCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.AuthenticateCodeLockIfTerritoryMemberTCB.UseVisualStyleBackColor = true;
+            this.AuthenticateCodeLockIfTerritoryMemberTCB.CheckedChanged += new System.EventHandler(this.TerritoriesTCB_CheckedChanged);
             // 
             // darkLabel176
             // 
@@ -3131,22 +3155,22 @@ namespace DayZeEditor
             this.darkLabel176.TabIndex = 39;
             this.darkLabel176.Text = "Territory Invite Accept Radius";
             // 
-            // TerritoryAuthenticationRadiusNUD
+            // TerritoryInviteAcceptRadiusTNUD
             // 
-            this.TerritoryAuthenticationRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.TerritoryAuthenticationRadiusNUD.DecimalPlaces = 1;
-            this.TerritoryAuthenticationRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.TerritoryAuthenticationRadiusNUD.Location = new System.Drawing.Point(23, 157);
-            this.TerritoryAuthenticationRadiusNUD.Maximum = new decimal(new int[] {
+            this.TerritoryInviteAcceptRadiusTNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TerritoryInviteAcceptRadiusTNUD.DecimalPlaces = 1;
+            this.TerritoryInviteAcceptRadiusTNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.TerritoryInviteAcceptRadiusTNUD.Location = new System.Drawing.Point(23, 157);
+            this.TerritoryInviteAcceptRadiusTNUD.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
-            this.TerritoryAuthenticationRadiusNUD.Name = "TerritoryAuthenticationRadiusNUD";
-            this.TerritoryAuthenticationRadiusNUD.Size = new System.Drawing.Size(65, 20);
-            this.TerritoryAuthenticationRadiusNUD.TabIndex = 38;
-            this.TerritoryAuthenticationRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TerritoryAuthenticationRadiusNUD.ValueChanged += new System.EventHandler(this.TerritoryTNUD_ValueChanged);
+            this.TerritoryInviteAcceptRadiusTNUD.Name = "TerritoryInviteAcceptRadiusTNUD";
+            this.TerritoryInviteAcceptRadiusTNUD.Size = new System.Drawing.Size(65, 20);
+            this.TerritoryInviteAcceptRadiusTNUD.TabIndex = 38;
+            this.TerritoryInviteAcceptRadiusTNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TerritoryInviteAcceptRadiusTNUD.ValueChanged += new System.EventHandler(this.TerritoryTNUD_ValueChanged);
             // 
             // darkLabel82
             // 
@@ -7602,6 +7626,111 @@ namespace DayZeEditor
             this.groupBox34.TabStop = false;
             this.groupBox34.Text = "Chat";
             // 
+            // DefaultMessageColorPB
+            // 
+            this.DefaultMessageColorPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DefaultMessageColorPB.BackgroundImage")));
+            this.DefaultMessageColorPB.Location = new System.Drawing.Point(132, 293);
+            this.DefaultMessageColorPB.Name = "DefaultMessageColorPB";
+            this.DefaultMessageColorPB.Size = new System.Drawing.Size(121, 13);
+            this.DefaultMessageColorPB.TabIndex = 142;
+            this.DefaultMessageColorPB.TabStop = false;
+            this.DefaultMessageColorPB.Click += new System.EventHandler(this.SystemChatColorPB_Click);
+            this.DefaultMessageColorPB.Paint += new System.Windows.Forms.PaintEventHandler(this.ChatColorPB_Paint);
+            // 
+            // darkLabel159
+            // 
+            this.darkLabel159.AutoSize = true;
+            this.darkLabel159.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel159.Location = new System.Drawing.Point(6, 293);
+            this.darkLabel159.Name = "darkLabel159";
+            this.darkLabel159.Size = new System.Drawing.Size(114, 13);
+            this.darkLabel159.TabIndex = 141;
+            this.darkLabel159.Text = "Default Message Color";
+            // 
+            // ImportantMessageColorPB
+            // 
+            this.ImportantMessageColorPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ImportantMessageColorPB.BackgroundImage")));
+            this.ImportantMessageColorPB.Location = new System.Drawing.Point(132, 274);
+            this.ImportantMessageColorPB.Name = "ImportantMessageColorPB";
+            this.ImportantMessageColorPB.Size = new System.Drawing.Size(121, 13);
+            this.ImportantMessageColorPB.TabIndex = 140;
+            this.ImportantMessageColorPB.TabStop = false;
+            this.ImportantMessageColorPB.Click += new System.EventHandler(this.SystemChatColorPB_Click);
+            this.ImportantMessageColorPB.Paint += new System.Windows.Forms.PaintEventHandler(this.ChatColorPB_Paint);
+            // 
+            // darkLabel158
+            // 
+            this.darkLabel158.AutoSize = true;
+            this.darkLabel158.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel158.Location = new System.Drawing.Point(6, 274);
+            this.darkLabel158.Name = "darkLabel158";
+            this.darkLabel158.Size = new System.Drawing.Size(124, 13);
+            this.darkLabel158.TabIndex = 139;
+            this.darkLabel158.Text = "Important Message Color";
+            // 
+            // FriendlyMessageColorPB
+            // 
+            this.FriendlyMessageColorPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FriendlyMessageColorPB.BackgroundImage")));
+            this.FriendlyMessageColorPB.Location = new System.Drawing.Point(132, 255);
+            this.FriendlyMessageColorPB.Name = "FriendlyMessageColorPB";
+            this.FriendlyMessageColorPB.Size = new System.Drawing.Size(121, 13);
+            this.FriendlyMessageColorPB.TabIndex = 138;
+            this.FriendlyMessageColorPB.TabStop = false;
+            this.FriendlyMessageColorPB.Click += new System.EventHandler(this.SystemChatColorPB_Click);
+            this.FriendlyMessageColorPB.Paint += new System.Windows.Forms.PaintEventHandler(this.ChatColorPB_Paint);
+            // 
+            // darkLabel23
+            // 
+            this.darkLabel23.AutoSize = true;
+            this.darkLabel23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel23.Location = new System.Drawing.Point(6, 255);
+            this.darkLabel23.Name = "darkLabel23";
+            this.darkLabel23.Size = new System.Drawing.Size(116, 13);
+            this.darkLabel23.TabIndex = 137;
+            this.darkLabel23.Text = "Friendly Message Color";
+            // 
+            // ActionMessageColorPB
+            // 
+            this.ActionMessageColorPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ActionMessageColorPB.BackgroundImage")));
+            this.ActionMessageColorPB.Location = new System.Drawing.Point(132, 237);
+            this.ActionMessageColorPB.Name = "ActionMessageColorPB";
+            this.ActionMessageColorPB.Size = new System.Drawing.Size(121, 13);
+            this.ActionMessageColorPB.TabIndex = 136;
+            this.ActionMessageColorPB.TabStop = false;
+            this.ActionMessageColorPB.Click += new System.EventHandler(this.SystemChatColorPB_Click);
+            this.ActionMessageColorPB.Paint += new System.Windows.Forms.PaintEventHandler(this.ChatColorPB_Paint);
+            // 
+            // darkLabel22
+            // 
+            this.darkLabel22.AutoSize = true;
+            this.darkLabel22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel22.Location = new System.Drawing.Point(6, 237);
+            this.darkLabel22.Name = "darkLabel22";
+            this.darkLabel22.Size = new System.Drawing.Size(110, 13);
+            this.darkLabel22.TabIndex = 135;
+            this.darkLabel22.Text = "Action Message Color";
+            // 
+            // StatusMessageColorPB
+            // 
+            this.StatusMessageColorPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("StatusMessageColorPB.BackgroundImage")));
+            this.StatusMessageColorPB.Location = new System.Drawing.Point(132, 218);
+            this.StatusMessageColorPB.Name = "StatusMessageColorPB";
+            this.StatusMessageColorPB.Size = new System.Drawing.Size(121, 13);
+            this.StatusMessageColorPB.TabIndex = 134;
+            this.StatusMessageColorPB.TabStop = false;
+            this.StatusMessageColorPB.Click += new System.EventHandler(this.SystemChatColorPB_Click);
+            this.StatusMessageColorPB.Paint += new System.Windows.Forms.PaintEventHandler(this.ChatColorPB_Paint);
+            // 
+            // darkLabel21
+            // 
+            this.darkLabel21.AutoSize = true;
+            this.darkLabel21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel21.Location = new System.Drawing.Point(6, 218);
+            this.darkLabel21.Name = "darkLabel21";
+            this.darkLabel21.Size = new System.Drawing.Size(110, 13);
+            this.darkLabel21.TabIndex = 133;
+            this.darkLabel21.Text = "Status Message Color";
+            // 
             // TransmitterChatColorPB
             // 
             this.TransmitterChatColorPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TransmitterChatColorPB.BackgroundImage")));
@@ -9376,7 +9505,7 @@ namespace DayZeEditor
             // MissionsSettingsTabPage
             // 
             this.MissionsSettingsTabPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.MissionsSettingsTabPage.Controls.Add(this.tabControl6);
+            this.MissionsSettingsTabPage.Controls.Add(this.panel6);
             this.MissionsSettingsTabPage.Controls.Add(this.groupBox39);
             this.MissionsSettingsTabPage.Controls.Add(this.groupBox38);
             this.MissionsSettingsTabPage.ForeColor = System.Drawing.SystemColors.Control;
@@ -9388,26 +9517,27 @@ namespace DayZeEditor
             // 
             // tabControl6
             // 
-            this.tabControl6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl6.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabControl6.Controls.Add(this.tabPage22);
             this.tabControl6.Controls.Add(this.tabPage23);
-            this.tabControl6.Location = new System.Drawing.Point(180, 3);
+            this.tabControl6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl6.Location = new System.Drawing.Point(0, 25);
             this.tabControl6.Name = "tabControl6";
             this.tabControl6.SelectedIndex = 0;
-            this.tabControl6.Size = new System.Drawing.Size(1197, 764);
+            this.tabControl6.Size = new System.Drawing.Size(1195, 739);
+            this.tabControl6.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl6.TabIndex = 130;
+            this.tabControl6.SelectedIndexChanged += new System.EventHandler(this.tabControl6_SelectedIndexChanged);
             // 
             // tabPage22
             // 
             this.tabPage22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.tabPage22.Controls.Add(this.AirdropMissionGB);
             this.tabPage22.Controls.Add(this.ContaminatedAreaGB);
-            this.tabPage22.Location = new System.Drawing.Point(4, 22);
+            this.tabPage22.Location = new System.Drawing.Point(4, 25);
             this.tabPage22.Name = "tabPage22";
             this.tabPage22.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage22.Size = new System.Drawing.Size(1189, 738);
+            this.tabPage22.Size = new System.Drawing.Size(1187, 710);
             this.tabPage22.TabIndex = 0;
             this.tabPage22.Text = "Locations";
             // 
@@ -9446,6 +9576,50 @@ namespace DayZeEditor
             this.AirdropMissionGB.TabStop = false;
             this.AirdropMissionGB.Text = "Airdrop Mission";
             this.AirdropMissionGB.Visible = false;
+            // 
+            // MissionFallSpeedNUD
+            // 
+            this.MissionFallSpeedNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.MissionFallSpeedNUD.DecimalPlaces = 1;
+            this.MissionFallSpeedNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.MissionFallSpeedNUD.Location = new System.Drawing.Point(279, 175);
+            this.MissionFallSpeedNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.MissionFallSpeedNUD.Name = "MissionFallSpeedNUD";
+            this.MissionFallSpeedNUD.Size = new System.Drawing.Size(101, 20);
+            this.MissionFallSpeedNUD.TabIndex = 159;
+            this.MissionFallSpeedNUD.Tag = "Speed";
+            this.MissionFallSpeedNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.MissionFallSpeedNUD.ValueChanged += new System.EventHandler(this.MissionFallSpeedNUD_ValueChanged);
+            // 
+            // darkLabel12
+            // 
+            this.darkLabel12.AutoSize = true;
+            this.darkLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel12.Location = new System.Drawing.Point(204, 178);
+            this.darkLabel12.Name = "darkLabel12";
+            this.darkLabel12.Size = new System.Drawing.Size(57, 13);
+            this.darkLabel12.TabIndex = 160;
+            this.darkLabel12.Text = "Fall Speed";
+            // 
+            // expansionLootControlMissions
+            // 
+            this.expansionLootControlMissions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.expansionLootControlMissions.currentExpansionLoot = null;
+            this.expansionLootControlMissions.currentproject = null;
+            this.expansionLootControlMissions.ForeColor = System.Drawing.SystemColors.Control;
+            this.expansionLootControlMissions.isDirty = false;
+            this.expansionLootControlMissions.Location = new System.Drawing.Point(392, 8);
+            this.expansionLootControlMissions.LootparentName = null;
+            this.expansionLootControlMissions.ModTypes = null;
+            this.expansionLootControlMissions.Name = "expansionLootControlMissions";
+            this.expansionLootControlMissions.Size = new System.Drawing.Size(561, 637);
+            this.expansionLootControlMissions.TabIndex = 158;
+            this.expansionLootControlMissions.vanillatypes = null;
+            this.expansionLootControlMissions.IsDirtyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.expansionLootControlMissions_IsDirtyChanged);
             // 
             // numericUpDown38
             // 
@@ -10601,10 +10775,10 @@ namespace DayZeEditor
             this.tabPage23.Controls.Add(this.darkLabel269);
             this.tabPage23.Controls.Add(this.panel5);
             this.tabPage23.Controls.Add(this.trackBar6);
-            this.tabPage23.Location = new System.Drawing.Point(4, 22);
+            this.tabPage23.Location = new System.Drawing.Point(4, 25);
             this.tabPage23.Name = "tabPage23";
             this.tabPage23.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage23.Size = new System.Drawing.Size(1189, 738);
+            this.tabPage23.Size = new System.Drawing.Size(2150, 735);
             this.tabPage23.TabIndex = 1;
             this.tabPage23.Text = "Map";
             // 
@@ -10653,7 +10827,7 @@ namespace DayZeEditor
             this.panel5.Controls.Add(this.pictureBox6);
             this.panel5.Location = new System.Drawing.Point(3, 29);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1186, 709);
+            this.panel5.Size = new System.Drawing.Size(2147, 706);
             this.panel5.TabIndex = 99;
             this.panel5.MouseEnter += new System.EventHandler(this.pictureBox6_MouseEnter);
             // 
@@ -18534,171 +18708,63 @@ namespace DayZeEditor
             this.removeSubMenuCategoryToolStripMenuItem.Text = "Remove Sub Menu Category";
             this.removeSubMenuCategoryToolStripMenuItem.Click += new System.EventHandler(this.removeSubMenuCategoryToolStripMenuItem_Click);
             // 
-            // MissionFallSpeedNUD
+            // panel6
             // 
-            this.MissionFallSpeedNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.MissionFallSpeedNUD.DecimalPlaces = 1;
-            this.MissionFallSpeedNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.MissionFallSpeedNUD.Location = new System.Drawing.Point(279, 175);
-            this.MissionFallSpeedNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.MissionFallSpeedNUD.Name = "MissionFallSpeedNUD";
-            this.MissionFallSpeedNUD.Size = new System.Drawing.Size(101, 20);
-            this.MissionFallSpeedNUD.TabIndex = 159;
-            this.MissionFallSpeedNUD.Tag = "Speed";
-            this.MissionFallSpeedNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.MissionFallSpeedNUD.ValueChanged += new System.EventHandler(this.MissionFallSpeedNUD_ValueChanged);
+            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel6.Controls.Add(this.tabControl6);
+            this.panel6.Controls.Add(this.darkToolStrip28);
+            this.panel6.Location = new System.Drawing.Point(178, 3);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(1195, 764);
+            this.panel6.TabIndex = 131;
             // 
-            // darkLabel12
+            // darkToolStrip28
             // 
-            this.darkLabel12.AutoSize = true;
-            this.darkLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel12.Location = new System.Drawing.Point(204, 178);
-            this.darkLabel12.Name = "darkLabel12";
-            this.darkLabel12.Size = new System.Drawing.Size(57, 13);
-            this.darkLabel12.TabIndex = 160;
-            this.darkLabel12.Text = "Fall Speed";
+            this.darkToolStrip28.AutoSize = false;
+            this.darkToolStrip28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.darkToolStrip28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkToolStrip28.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton6,
+            this.toolStripSeparator10,
+            this.toolStripButton9});
+            this.darkToolStrip28.Location = new System.Drawing.Point(0, 0);
+            this.darkToolStrip28.Name = "darkToolStrip28";
+            this.darkToolStrip28.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
+            this.darkToolStrip28.Size = new System.Drawing.Size(1195, 25);
+            this.darkToolStrip28.TabIndex = 131;
+            this.darkToolStrip28.Text = "darkToolStrip28";
             // 
-            // StatusMessageColorPB
+            // toolStripButton6
             // 
-            this.StatusMessageColorPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("StatusMessageColorPB.BackgroundImage")));
-            this.StatusMessageColorPB.Location = new System.Drawing.Point(132, 218);
-            this.StatusMessageColorPB.Name = "StatusMessageColorPB";
-            this.StatusMessageColorPB.Size = new System.Drawing.Size(121, 13);
-            this.StatusMessageColorPB.TabIndex = 134;
-            this.StatusMessageColorPB.TabStop = false;
-            this.StatusMessageColorPB.Click += new System.EventHandler(this.SystemChatColorPB_Click);
-            this.StatusMessageColorPB.Paint += new System.Windows.Forms.PaintEventHandler(this.ChatColorPB_Paint);
+            this.toolStripButton6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton6.Name = "toolStripButton6";
+            this.toolStripButton6.Size = new System.Drawing.Size(62, 22);
+            this.toolStripButton6.Text = "Locations";
+            this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
-            // darkLabel21
+            // toolStripSeparator10
             // 
-            this.darkLabel21.AutoSize = true;
-            this.darkLabel21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel21.Location = new System.Drawing.Point(6, 218);
-            this.darkLabel21.Name = "darkLabel21";
-            this.darkLabel21.Size = new System.Drawing.Size(110, 13);
-            this.darkLabel21.TabIndex = 133;
-            this.darkLabel21.Text = "Status Message Color";
+            this.toolStripSeparator10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripSeparator10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripSeparator10.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 25);
             // 
-            // ActionMessageColorPB
+            // toolStripButton9
             // 
-            this.ActionMessageColorPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ActionMessageColorPB.BackgroundImage")));
-            this.ActionMessageColorPB.Location = new System.Drawing.Point(132, 237);
-            this.ActionMessageColorPB.Name = "ActionMessageColorPB";
-            this.ActionMessageColorPB.Size = new System.Drawing.Size(121, 13);
-            this.ActionMessageColorPB.TabIndex = 136;
-            this.ActionMessageColorPB.TabStop = false;
-            this.ActionMessageColorPB.Click += new System.EventHandler(this.SystemChatColorPB_Click);
-            this.ActionMessageColorPB.Paint += new System.Windows.Forms.PaintEventHandler(this.ChatColorPB_Paint);
-            // 
-            // darkLabel22
-            // 
-            this.darkLabel22.AutoSize = true;
-            this.darkLabel22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel22.Location = new System.Drawing.Point(6, 237);
-            this.darkLabel22.Name = "darkLabel22";
-            this.darkLabel22.Size = new System.Drawing.Size(110, 13);
-            this.darkLabel22.TabIndex = 135;
-            this.darkLabel22.Text = "Action Message Color";
-            // 
-            // FriendlyMessageColorPB
-            // 
-            this.FriendlyMessageColorPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FriendlyMessageColorPB.BackgroundImage")));
-            this.FriendlyMessageColorPB.Location = new System.Drawing.Point(132, 255);
-            this.FriendlyMessageColorPB.Name = "FriendlyMessageColorPB";
-            this.FriendlyMessageColorPB.Size = new System.Drawing.Size(121, 13);
-            this.FriendlyMessageColorPB.TabIndex = 138;
-            this.FriendlyMessageColorPB.TabStop = false;
-            this.FriendlyMessageColorPB.Click += new System.EventHandler(this.SystemChatColorPB_Click);
-            this.FriendlyMessageColorPB.Paint += new System.Windows.Forms.PaintEventHandler(this.ChatColorPB_Paint);
-            // 
-            // darkLabel23
-            // 
-            this.darkLabel23.AutoSize = true;
-            this.darkLabel23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel23.Location = new System.Drawing.Point(6, 255);
-            this.darkLabel23.Name = "darkLabel23";
-            this.darkLabel23.Size = new System.Drawing.Size(116, 13);
-            this.darkLabel23.TabIndex = 137;
-            this.darkLabel23.Text = "Friendly Message Color";
-            // 
-            // ImportantMessageColorPB
-            // 
-            this.ImportantMessageColorPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ImportantMessageColorPB.BackgroundImage")));
-            this.ImportantMessageColorPB.Location = new System.Drawing.Point(132, 274);
-            this.ImportantMessageColorPB.Name = "ImportantMessageColorPB";
-            this.ImportantMessageColorPB.Size = new System.Drawing.Size(121, 13);
-            this.ImportantMessageColorPB.TabIndex = 140;
-            this.ImportantMessageColorPB.TabStop = false;
-            this.ImportantMessageColorPB.Click += new System.EventHandler(this.SystemChatColorPB_Click);
-            this.ImportantMessageColorPB.Paint += new System.Windows.Forms.PaintEventHandler(this.ChatColorPB_Paint);
-            // 
-            // darkLabel158
-            // 
-            this.darkLabel158.AutoSize = true;
-            this.darkLabel158.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel158.Location = new System.Drawing.Point(6, 274);
-            this.darkLabel158.Name = "darkLabel158";
-            this.darkLabel158.Size = new System.Drawing.Size(124, 13);
-            this.darkLabel158.TabIndex = 139;
-            this.darkLabel158.Text = "Important Message Color";
-            // 
-            // DefaultMessageColorPB
-            // 
-            this.DefaultMessageColorPB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DefaultMessageColorPB.BackgroundImage")));
-            this.DefaultMessageColorPB.Location = new System.Drawing.Point(132, 293);
-            this.DefaultMessageColorPB.Name = "DefaultMessageColorPB";
-            this.DefaultMessageColorPB.Size = new System.Drawing.Size(121, 13);
-            this.DefaultMessageColorPB.TabIndex = 142;
-            this.DefaultMessageColorPB.TabStop = false;
-            this.DefaultMessageColorPB.Click += new System.EventHandler(this.SystemChatColorPB_Click);
-            this.DefaultMessageColorPB.Paint += new System.Windows.Forms.PaintEventHandler(this.ChatColorPB_Paint);
-            // 
-            // darkLabel159
-            // 
-            this.darkLabel159.AutoSize = true;
-            this.darkLabel159.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel159.Location = new System.Drawing.Point(6, 293);
-            this.darkLabel159.Name = "darkLabel159";
-            this.darkLabel159.Size = new System.Drawing.Size(114, 13);
-            this.darkLabel159.TabIndex = 141;
-            this.darkLabel159.Text = "Default Message Color";
-            // 
-            // ExpansionLootAirdropsettings
-            // 
-            this.ExpansionLootAirdropsettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ExpansionLootAirdropsettings.currentExpansionLoot = null;
-            this.ExpansionLootAirdropsettings.currentproject = null;
-            this.ExpansionLootAirdropsettings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpansionLootAirdropsettings.ForeColor = System.Drawing.SystemColors.Control;
-            this.ExpansionLootAirdropsettings.isDirty = false;
-            this.ExpansionLootAirdropsettings.Location = new System.Drawing.Point(3, 3);
-            this.ExpansionLootAirdropsettings.LootparentName = null;
-            this.ExpansionLootAirdropsettings.ModTypes = null;
-            this.ExpansionLootAirdropsettings.Name = "ExpansionLootAirdropsettings";
-            this.ExpansionLootAirdropsettings.Size = new System.Drawing.Size(832, 592);
-            this.ExpansionLootAirdropsettings.TabIndex = 102;
-            this.ExpansionLootAirdropsettings.vanillatypes = null;
-            this.ExpansionLootAirdropsettings.IsDirtyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.ExpansionLootAirdropsettings_IsDirtyChanged);
-            // 
-            // expansionLootControlMissions
-            // 
-            this.expansionLootControlMissions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.expansionLootControlMissions.currentExpansionLoot = null;
-            this.expansionLootControlMissions.currentproject = null;
-            this.expansionLootControlMissions.ForeColor = System.Drawing.SystemColors.Control;
-            this.expansionLootControlMissions.isDirty = false;
-            this.expansionLootControlMissions.Location = new System.Drawing.Point(392, 8);
-            this.expansionLootControlMissions.LootparentName = null;
-            this.expansionLootControlMissions.ModTypes = null;
-            this.expansionLootControlMissions.Name = "expansionLootControlMissions";
-            this.expansionLootControlMissions.Size = new System.Drawing.Size(561, 637);
-            this.expansionLootControlMissions.TabIndex = 158;
-            this.expansionLootControlMissions.vanillatypes = null;
-            this.expansionLootControlMissions.IsDirtyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.expansionLootControlMissions_IsDirtyChanged);
+            this.toolStripButton9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripButton9.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton9.Name = "toolStripButton9";
+            this.toolStripButton9.Size = new System.Drawing.Size(35, 22);
+            this.toolStripButton9.Text = "Map";
+            this.toolStripButton9.Click += new System.EventHandler(this.toolStripButton9_Click);
             // 
             // ExpansionSettings
             // 
@@ -18755,7 +18821,7 @@ namespace DayZeEditor
             this.darkToolStrip25.PerformLayout();
             this.groupBox28.ResumeLayout(false);
             this.groupBox28.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TerritoryAuthenticationRadiusNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TerritoryInviteAcceptRadiusTNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TerritorySizeTNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxTerritoryPerPlayerTNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxMembersInTerritoryTNUD)).EndInit();
@@ -18851,6 +18917,11 @@ namespace DayZeEditor
             this.groupBox35.PerformLayout();
             this.groupBox34.ResumeLayout(false);
             this.groupBox34.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DefaultMessageColorPB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImportantMessageColorPB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FriendlyMessageColorPB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ActionMessageColorPB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StatusMessageColorPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TransmitterChatColorPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PartyChatColorPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TransportChatColorPB)).EndInit();
@@ -18913,6 +18984,7 @@ namespace DayZeEditor
             this.tabPage22.ResumeLayout(false);
             this.AirdropMissionGB.ResumeLayout(false);
             this.AirdropMissionGB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MissionFallSpeedNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown38)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown37)).EndInit();
             this.SpecificInfectedAirdropGB.ResumeLayout(false);
@@ -19168,12 +19240,9 @@ namespace DayZeEditor
             this.darkToolStrip26.ResumeLayout(false);
             this.darkToolStrip26.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.MissionFallSpeedNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StatusMessageColorPB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ActionMessageColorPB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FriendlyMessageColorPB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ImportantMessageColorPB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DefaultMessageColorPB)).EndInit();
+            this.panel6.ResumeLayout(false);
+            this.darkToolStrip28.ResumeLayout(false);
+            this.darkToolStrip28.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -20008,7 +20077,7 @@ namespace DayZeEditor
         private System.Windows.Forms.TrackBar trackBar6;
         private System.Windows.Forms.GroupBox AirdropMissionGB;
         private DarkUI.Controls.DarkLabel darkLabel176;
-        private System.Windows.Forms.NumericUpDown TerritoryAuthenticationRadiusNUD;
+        private System.Windows.Forms.NumericUpDown TerritoryInviteAcceptRadiusTNUD;
         private System.Windows.Forms.GroupBox ContaminatedAreaGB;
         private System.Windows.Forms.NumericUpDown numericUpDown27;
         private DarkUI.Controls.DarkLabel darkLabel179;
@@ -20462,7 +20531,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton toolStripButton5;
         private System.Windows.Forms.GroupBox groupBox95;
         private System.Windows.Forms.ListBox SpawnLoadoutsLB;
-        private System.Windows.Forms.CheckBox AuthenticateCodeLockIfTerritoryMemberCB;
+        private System.Windows.Forms.CheckBox AuthenticateCodeLockIfTerritoryMemberTCB;
         private System.Windows.Forms.CheckBox EnableProneDeathHandItemDropFixCB;
         private System.Windows.Forms.CheckBox EnableCraftingRecipesTabCB;
         private DayZeLib.ExpansionLootControl ExpansionLootAirdropsettings;
@@ -20479,5 +20548,10 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkLabel darkLabel22;
         private System.Windows.Forms.PictureBox StatusMessageColorPB;
         private DarkUI.Controls.DarkLabel darkLabel21;
+        private System.Windows.Forms.Panel panel6;
+        private DarkUI.Controls.DarkToolStrip2 darkToolStrip28;
+        private System.Windows.Forms.ToolStripButton toolStripButton6;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
+        private System.Windows.Forms.ToolStripButton toolStripButton9;
     }
 }

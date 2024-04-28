@@ -14,7 +14,7 @@ namespace DayZeLib
     {
         const int CurrentVersion = 13;
 
-        public int m_Version { get; set; } //Current Version 12
+        public int m_Version { get; set; }
         public int MarketSystemEnabled { get; set; }
         public BindingList<string[]> NetworkCategories { get; set; } //empty atm
         public string CurrencyIcon { get; set; }
@@ -35,6 +35,7 @@ namespace DayZeLib
         public BindingList<ExpansionMarketSpawnPosition> LandSpawnPositions { get; set; }
         public BindingList<ExpansionMarketSpawnPosition> AirSpawnPositions { get; set; }
         public BindingList<ExpansionMarketSpawnPosition> WaterSpawnPositions { get; set; }
+        public BindingList<ExpansionMarketSpawnPosition> TrainSpawnPositions { get; set; }
         public MarketMenuColours MarketMenuColors { get; set; }
         public BindingList<string> Currencies { get; set; }
         public BindingList<string> VehicleKeys { get; set; }
@@ -56,6 +57,7 @@ namespace DayZeLib
             LandSpawnPositions = new BindingList<ExpansionMarketSpawnPosition>();
             AirSpawnPositions = new BindingList<ExpansionMarketSpawnPosition>();
             WaterSpawnPositions = new BindingList<ExpansionMarketSpawnPosition>();
+            TrainSpawnPositions = new BindingList<ExpansionMarketSpawnPosition>();
             MarketMenuColors = new MarketMenuColours();
             Currencies = new BindingList<string>();
             VehicleKeys = new BindingList<string>();
@@ -77,6 +79,7 @@ namespace DayZeLib
             LandSpawnPositions = new BindingList<ExpansionMarketSpawnPosition>();
             AirSpawnPositions = new BindingList<ExpansionMarketSpawnPosition>();
             WaterSpawnPositions = new BindingList<ExpansionMarketSpawnPosition>();
+            TrainSpawnPositions = new BindingList<ExpansionMarketSpawnPosition>();
             Deafultspawnspositions();
             MarketMenuColors = new MarketMenuColours();
 
@@ -221,6 +224,12 @@ namespace DayZeLib
                 sp.name = "Water Spawn position " + i.ToString();
                 i++;
             }
+            i = 0;
+            foreach (ExpansionMarketSpawnPosition sp in TrainSpawnPositions)
+            {
+                sp.name = "Train Spawn position " + i.ToString();
+                i++;
+            }
         }
         public ExpansionMarketSpawnPosition getSpawnbyindex(int type, int index)
         {
@@ -233,6 +242,8 @@ namespace DayZeLib
                     return AirSpawnPositions[index];
                 case 2:
                     return WaterSpawnPositions[index];
+                case 3:
+                    return TrainSpawnPositions[index];
             }
             return null;
         }
@@ -248,6 +259,9 @@ namespace DayZeLib
                     break;
                 case 2:
                     WaterSpawnPositions.RemoveAt(index);
+                    break;
+                case 3:
+                    TrainSpawnPositions.RemoveAt(index);
                     break;
             }
             setspawnnames();
@@ -460,6 +474,9 @@ namespace DayZeLib
                 case 2:
                     WaterSpawnPositions.Add(new ExpansionMarketSpawnPosition() { name = getnewname(2), Position = new float[] { 0, 0, 0 }, Orientation = new float[] { 0, 0, 0 } });
                     break;
+                case 3:
+                    TrainSpawnPositions.Add(new ExpansionMarketSpawnPosition() { name = getnewname(3), Position = new float[] { 0, 0, 0 }, Orientation = new float[] { 0, 0, 0 } });
+                    break;
             }
         }
         public string getnewname(int v)
@@ -472,6 +489,8 @@ namespace DayZeLib
                     return "Air Spawn position " + AirSpawnPositions.Count.ToString();
                 case 2:
                     return "Water Spawn position " + WaterSpawnPositions.Count.ToString();
+                case 3:
+                    return "Train Spawn position " + TrainSpawnPositions.Count.ToString();
                 default:
                     return "";
             }

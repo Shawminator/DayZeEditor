@@ -92,7 +92,6 @@ namespace DayZeLib
             {
                 if(Quests.PreQuests.Any(x => x.ID == Questfordelete.ID ))
                 {
-                    Quests.isDirty = true;
                     Quests.PreQuestIDs.Remove(Questfordelete.ID);
                     Quests.PreQuests.Remove(Questfordelete);
                     Quests.isDirty = true;

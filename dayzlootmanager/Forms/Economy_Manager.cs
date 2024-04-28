@@ -156,6 +156,52 @@ namespace DayZeEditor
             EconomySearchBoxTB.Visible = true;
             EconomyFindButton.Visible = true;
             isUserInteraction = true;
+
+            gettotalnumber();
+        }
+
+        private void gettotalnumber()
+        {
+            //List<int> totalnumberlist = new List<int>();
+            //foreach (typesType type in vanillatypes.types.type)
+            //{
+            //    if(!totalnumberlist.Contains(type.nominal))
+            //        totalnumberlist.Add(type.nominal);
+            //}
+            //if (ModTypes.Count > 0)
+            //{
+            //    foreach (TypesFile tf in ModTypes)
+            //    {
+            //        foreach (typesType type in tf.types.type)
+            //        {
+            //            if (!totalnumberlist.Contains(type.nominal))
+            //                totalnumberlist.Add(type.nominal);
+            //        }
+            //    }
+            //}
+            //totalnumberlist.Sort();
+            //List<int> list = new List<int>();
+            //foreach(int i in totalnumberlist)
+            //{
+            //    int tn = 0;
+            //    foreach (typesType type in vanillatypes.types.type)
+            //    {
+            //        if (type.nominal == i)
+            //            tn += 1;
+            //    }
+            //    if (ModTypes.Count > 0)
+            //    {
+            //        foreach (TypesFile tf in ModTypes)
+            //        {
+            //            foreach (typesType type in tf.types.type)
+            //            {
+            //                if (type.nominal == i)
+            //                    tn += 1;
+            //            }
+            //        }
+            //    }
+            //    list.Add(tn * i);
+            //}
         }
 
         private void SetuprandomPresetsForSpawnabletypes()

@@ -85,19 +85,26 @@ namespace DayZeLib
                 List<string> Attchments = new List<string>();
                 while (attachmentCounter <= 1000 && line_content.Contains("<Object>") == false)
                 {
+                    line_content = Helper.SearchForNextTermsInFile(reader, new string[] { "<ObjectAttachment>", "<OpenFile>" }, "<Object>");
                     if (line_content == string.Empty || line_content == "")
                     {
                         line_content = "<FileEnd>";
                         break;
                     }
-
+                    //if (line_content.Contains("<OpenFile>"))
+                    //{
+                    //    if (OpenNewFileForReading(line_content, file_index))
+                    //        continue;
+                    //    else
+                    //        return;
+                    //}
                     if (line_content.Contains("<Object>"))
                     {
                         skipDirEntry = true;
                         markerCounter++;
                         break;
                     }
-                    line_content = Helper.SearchForNextTermsInFile(reader,new string[] { "<ObjectAttachment>", "<OpenFile>"}, "<Object>");
+                    
                     line_content = line_content.Replace("<ObjectAttachment>", "");
                     line_content = Helper.TrimComment(line_content);
 

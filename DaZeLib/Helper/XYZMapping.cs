@@ -1,14 +1,89 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeLib
 {
+    public class Vec3PandR
+    {
+        public bool rotspecified { get; set; }
+        public Vec3 Position { get;set; }
+        public Vec3 Rotation { get;set; }
+
+        public Vec3PandR() { }
+        public Vec3PandR(float[] position, float[] rotaion, bool _rotspecified)
+        {
+            Position = new Vec3(position);
+            rotspecified = _rotspecified;
+            if (rotspecified)
+                Rotation = new Vec3(rotaion);
+            else
+                Rotation = new Vec3(0,0,0);
+        }
+        public Vec3PandR(string Stuff)
+        {
+            rotspecified = false;
+            if (Stuff.Contains('|'))
+            {
+                string[] posrotstring = Stuff.Split('|');
+                string[] possplit = posrotstring[0].Split(' ');
+                Position = new Vec3(Convert.ToSingle(possplit[0]), Convert.ToSingle(possplit[1]), Convert.ToSingle(possplit[2]));
+                string[] rotsplit = posrotstring[1].Split(' ');
+                Rotation = new Vec3(Convert.ToSingle(rotsplit[0]), Convert.ToSingle(rotsplit[1]), Convert.ToSingle(rotsplit[2]));
+                rotspecified = true;
+            }
+            else
+            {
+                string[] possplit = Stuff.Split(' ');
+                Position = new Vec3(Convert.ToSingle(possplit[0]), Convert.ToSingle(possplit[1]), Convert.ToSingle(possplit[2]));
+                Rotation = new Vec3(0, 0, 0);
+            }
+        }
+        public string GetString()
+        {
+            string posrot = "";
+            if (rotspecified)
+            {
+                posrot = Position.X + " " + Position.Y + " " + Position.Z + "|" + Rotation.X + " " + Rotation.Y + " " + Rotation.Z;
+            }
+            else
+            {
+                posrot = Position.X + " " + Position.Y + " " + Position.Z;
+            }
+            return posrot;
+        }
+        public float[] GetPositionFloatArray()
+        {
+            return new float[] { (float)Position.X, (float)Position.Y, (float)Position.Z };
+        }
+        public float[] GetRotationFloatArray()
+        {
+            if (rotspecified)
+            {
+                return new float[] { (float)Rotation.X, (float)Rotation.Y, (float)Rotation.Z };
+            }
+            else return new float[] { 0, 0, 0 };
+        }
+        public override string ToString()
+        {
+            if(rotspecified)
+            {
+                return Position.X + " " + Position.Y + " " + Position.Z + "|" + Rotation.X + " " + Rotation.Y + " " + Rotation.Z; ;
+            }
+            else
+            {
+                return Position.X + " " + Position.Y + " " + Position.Z;
+            }
+        }
+    }
+
     public class Vec3
     {
         public float X { get; set; }
@@ -23,11 +98,28 @@ namespace DayZeLib
             Y = Convert.ToSingle(floats[1], format);
             Z = Convert.ToSingle(floats[2], format);
         }
+        public Vec3(float[] floats)
+        {
+            X = floats[0];
+            Y = floats[1];
+            Z = floats[2];
+        }
+        public Vec3(float x, float y, float z)
+        {
+            X = x;
+            Y = y;
+            Z = z;
+        }
         public Vec3() { }
 
         public override string ToString()
         {
             return X.ToString() + ","+ Y.ToString() + "," + Z.ToString();
+        }
+
+        public float[] getfloatarray()
+        {
+            return new float[] { X, Y, Z };
         }
     }
     public class MapData
@@ -51,15 +143,6 @@ namespace DayZeLib
             string[] lines = File.ReadAllLines(FileName);
             foreach (string line in lines)
             {
-                //string line1 = Helper.TrimSpaces(line);
-                //line1 = line1.Replace(" ", ",");
-                //int firstindex = line1.IndexOf(",");
-                //int lastindex = line1.LastIndexOf(',');
-                //StringBuilder sb = new StringBuilder(line);
-                //sb[firstindex] = '|';
-                //sb[lastindex] = '|';
-                //line1 = sb.ToString();
-                //line1 = line1.Replace(",", "");
                 string[] split = line.Split(' ');
                 string[] newaary = new string[3];
                 newaary[0] = split[0];

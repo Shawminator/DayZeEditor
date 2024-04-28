@@ -4439,6 +4439,31 @@ namespace DayZeEditor
         #region MissionSettings
         public AirdropMissionSettingFiles currentAirdropmissionfile;
         public decimal MissionMapscale = 1;
+        private void toolStripButton6_Click(object sender, EventArgs e)
+        {
+            tabControl6.SelectedIndex = 0;
+        }
+
+        private void toolStripButton9_Click(object sender, EventArgs e)
+        {
+            tabControl6.SelectedIndex = 1;
+        }
+
+        private void tabControl6_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            toolStripButton6.Checked = false;
+            toolStripButton9.Checked = false;
+            switch (tabControl6.SelectedIndex)
+            {
+                case 0:
+                    toolStripButton6.Checked = true;
+                    break;
+                case 1:
+                    toolStripButton9.Checked = true;
+                    break;
+
+            }
+        }
         private void loadMissionSettings()
         {
             useraction = false;
@@ -4457,6 +4482,7 @@ namespace DayZeEditor
             pictureBox6.Size = new Size(currentproject.MapSize, currentproject.MapSize);
             pictureBox6.Paint += new PaintEventHandler(DrawAllMissions);
             trackBar6.Value = 1;
+            tabControl6.ItemSize = new Size(0, 1);
             SetsMissionScale();
             panel5.AutoScrollPosition = new Point(0, 0);
             useraction = true;
@@ -4876,77 +4902,88 @@ namespace DayZeEditor
         }
         private void darkButton40_Click(object sender, EventArgs e)
         {
-            AirdropMissionSettingFiles newmission = new AirdropMissionSettingFiles()
+            AddNewfileName form = new AddNewfileName();
+            if (form.ShowDialog() == DialogResult.OK)
             {
-                Filename = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\missions\\Airdrop_NewMission.json",
-                MissionName = "NewMission",
-                Difficulty = 0,
-                Objective = 0,
-                Reward = "",
-                Enabled = 1,
-                ShowNotification = 1,
-                Weight = 0,
-                MissionMaxTime = 0,
-                Height = 0,
-                Speed = 0,
-                Container = "Random",
-                DropLocation = new ExpansionAirdropLocation()
+                AirdropMissionSettingFiles newmission = new AirdropMissionSettingFiles()
                 {
-                    Name = "New Drop Location",
-                    Radius = 100,
-                    x = currentproject.MapSize / 2,
-                    z = currentproject.MapSize / 2
-                },
-                Loot = new BindingList<ExpansionLoot>(),
-                Infected = new BindingList<string>(),
-                ItemCount = -1,
-                InfectedCount = -1
-            };
-            MissionSettings.MissionSettingFiles.Add(newmission);
-            MissionsLB.SelectedIndex = -1;
-            MissionsLB.SelectedIndex = MissionsLB.Items.Count - 1;
-            pictureBox6.Invalidate();
+                    Filename = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\missions\\Airdrop_" + form.NewFileName + ".json",
+                    m_Version = 1,
+                    Enabled = 1,
+                    Weight = 0,
+                    MissionMaxTime = 0,
+                    MissionName = form.NewFileName,
+                    Difficulty = 0,
+                    Objective = 0,
+                    Reward = "",
+                    ShowNotification = 1,
+                    Height = 0,
+                    Speed = 0,
+                    Container = "Random",
+                    FallSpeed = (decimal)4.5,
+                    DropLocation = new ExpansionAirdropLocation()
+                    {
+                        Name = "New Drop Location",
+                        Radius = 100,
+                        x = currentproject.MapSize / 2,
+                        z = currentproject.MapSize / 2
+                    },
+                    Infected = new BindingList<string>(),
+                    ItemCount = -1,
+                    InfectedCount = -1,
+                    Loot = new BindingList<ExpansionLoot>()
+                };
+                MissionSettings.MissionSettingFiles.Add(newmission);
+                MissionsLB.SelectedIndex = -1;
+                MissionsLB.SelectedIndex = MissionsLB.Items.Count - 1;
+                pictureBox6.Invalidate();
+            }
         }
         private void darkButton65_Click(object sender, EventArgs e)
         {
-            ContaminatedAreaMissionSettingFiles newcasf = new ContaminatedAreaMissionSettingFiles()
+            AddNewfileName form = new AddNewfileName();
+            if (form.ShowDialog() == DialogResult.OK)
             {
-                Filename = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\missions\\ContaminatedArea_NewMission.json",
-                MissionName = "NewMission",
-                Difficulty = 0,
-                Objective = 0,
-                Reward = "",
-                Enabled = 1,
-                Weight = 0,
-                MissionMaxTime = 0,
-                Data = new ContaminatedAreaMissionData()
+                ContaminatedAreaMissionSettingFiles newcasf = new ContaminatedAreaMissionSettingFiles()
                 {
-                    Pos = new decimal[] { currentproject.MapSize / 2,0, currentproject.MapSize / 2, },
-                    Radius = 100,
-                    PosHeight = 25,
-                    NegHeight = 20,
-                    InnerRingCount = 2,
-                    InnerPartDist = 50,
-                    OuterRingToggle = 1,
-                    OuterPartDist = 40,
-                    OuterOffset = 0,
-                    VerticalLayers = 0,
-                    VerticalOffset = 0,
-                    ParticleName = "graphics/particles/contaminated_area_gas_bigass"
-                },
-                PlayerData = new ContaminatedAreaMissionPlayerdata()
-                {
-                    AroundPartName = "graphics/particles/contaminated_area_gas_around",
-                    TinyPartName = "graphics/particles/contaminated_area_gas_around_tiny",
-                    PPERequesterType = "PPERequester_ContaminatedAreaTint"
-                },
-                StartDecayLifetime = 600,
-                FinishDecayLifetime = 300
-            };
-            MissionSettings.MissionSettingFiles.Add(newcasf);
-            MissionsLB.SelectedIndex = -1;
-            MissionsLB.SelectedIndex = MissionsLB.Items.Count - 1;
-            pictureBox6.Invalidate();
+                    Filename = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\missions\\ContaminatedArea_" + form.NewFileName + ".json",
+                    m_Version = 0,
+                    Enabled = 1,
+                    Weight = 0,
+                    MissionMaxTime = 0,
+                    MissionName = form.NewFileName,
+                    Difficulty = 0,
+                    Objective = 0,
+                    Reward = "",
+                    Data = new ContaminatedAreaMissionData()
+                    {
+                        Pos = new decimal[] { currentproject.MapSize / 2, 0, currentproject.MapSize / 2, },
+                        Radius = 100,
+                        PosHeight = 25,
+                        NegHeight = 20,
+                        InnerRingCount = 2,
+                        InnerPartDist = 50,
+                        OuterRingToggle = 1,
+                        OuterPartDist = 40,
+                        OuterOffset = 0,
+                        VerticalLayers = 0,
+                        VerticalOffset = 0,
+                        ParticleName = "graphics/particles/contaminated_area_gas_bigass"
+                    },
+                    PlayerData = new ContaminatedAreaMissionPlayerdata()
+                    {
+                        AroundPartName = "graphics/particles/contaminated_area_gas_around",
+                        TinyPartName = "graphics/particles/contaminated_area_gas_around_tiny",
+                        PPERequesterType = "PPERequester_ContaminatedAreaTint"
+                    },
+                    StartDecayLifetime = 600,
+                    FinishDecayLifetime = 300
+                };
+                MissionSettings.MissionSettingFiles.Add(newcasf);
+                MissionsLB.SelectedIndex = -1;
+                MissionsLB.SelectedIndex = MissionsLB.Items.Count - 1;
+                pictureBox6.Invalidate();
+            }
         }
         private void darkButton41_Click(object sender, EventArgs e)
         {
@@ -7888,8 +7925,8 @@ namespace DayZeEditor
             TerritoryPerimeterSizeTNUD.Value = (decimal)TerritorySettings.TerritoryPerimeterSize;
             MaxMembersInTerritoryTNUD.Value = TerritorySettings.MaxMembersInTerritory;
             MaxTerritoryPerPlayerTNUD.Value = TerritorySettings.MaxTerritoryPerPlayer;
-            TerritoryAuthenticationRadiusNUD.Value = TerritorySettings.TerritoryInviteAcceptRadius;
-            AuthenticateCodeLockIfTerritoryMemberCB.Checked = TerritorySettings.AuthenticateCodeLockIfTerritoryMember == 1 ? true: false;
+            TerritoryInviteAcceptRadiusTNUD.Value = TerritorySettings.TerritoryInviteAcceptRadius;
+            AuthenticateCodeLockIfTerritoryMemberTCB.Checked = TerritorySettings.AuthenticateCodeLockIfTerritoryMember == 1 ? true: false;
             useraction = true;
         }
         private void TerritoriesTCB_CheckedChanged(object sender, EventArgs e)
@@ -9187,6 +9224,7 @@ namespace DayZeEditor
             }
             PersonalStorageSettingsNew.isDirty = true;
         }
+
 
 
 

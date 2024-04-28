@@ -151,6 +151,8 @@ namespace DayZeEditor
         {
             SpawnerBubakuConfig.AddNewLocation();
             SpawnerBukakuLocationsLB.Refresh();
+            SpawnerBukakuLocationsLB.SelectedIndex = -1;
+            SpawnerBukakuLocationsLB.SelectedIndex = SpawnerBukakuLocationsLB.Items.Count - 1;
         }
         private void darkButton1_Click(object sender, EventArgs e)
         {
@@ -170,6 +172,8 @@ namespace DayZeEditor
             if (SpawnerBukakuLocationsLB.Items.Count <= 0) return;
             SpawnerBubakuConfig.removeLocation(SpawnerBukakuLocationsLB.SelectedItem as Bubaklocation);
             SpawnerBukakuLocationsLB.Refresh();
+            if(SpawnerBukakuLocationsLB.Items.Count <= 0)
+                BubakLocationGB.Visible = false;
         }
         private void darkButton2_Click(object sender, EventArgs e)
         {
@@ -220,6 +224,7 @@ namespace DayZeEditor
         private void SpawnerBukakuLocationsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (SpawnerBukakuLocationsLB.SelectedItems.Count < 1) return;
+            BubakLocationGB.Visible = true;
             CurrentBubaklocation = SpawnerBukakuLocationsLB.SelectedItem as Bubaklocation;
             useraction = false;
             BubakLocationNameTB.Text = CurrentBubaklocation.GetName();
@@ -537,6 +542,7 @@ namespace DayZeEditor
             if (!useraction) return;
             CurrentBubaklocation.Setname(BubakLocationNameTB.Text);
             SpawnerBubakuConfig.isDirty = true;
+            SpawnerBukakuLocationsLB.Invalidate();
         }
         private void BubakLocationSetWorkingHours_ValueChanged(object sender, EventArgs e)
         {

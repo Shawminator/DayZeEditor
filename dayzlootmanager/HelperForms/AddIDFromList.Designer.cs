@@ -1,7 +1,7 @@
 ﻿
 namespace DayZeEditor
 {
-    partial class PossibleAmmoBoxes
+    partial class AddIDFromList
     {
         /// <summary>
         /// Required designer variable.
@@ -70,9 +70,9 @@ namespace DayZeEditor
             this.TitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.TitleLabel.Location = new System.Drawing.Point(5, 6);
             this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(127, 15);
+            this.TitleLabel.Size = new System.Drawing.Size(96, 15);
             this.TitleLabel.TabIndex = 6;
-            this.TitleLabel.Text = "Multiple Ammo Boxes";
+            this.TitleLabel.Text = "Add exisitng IDS";
             // 
             // listBox1
             // 
@@ -82,10 +82,10 @@ namespace DayZeEditor
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(12, 60);
             this.listBox1.Name = "listBox1";
+            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBox1.Size = new System.Drawing.Size(180, 238);
             this.listBox1.TabIndex = 10;
             this.listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // darkButton1
             // 
@@ -96,6 +96,7 @@ namespace DayZeEditor
             this.darkButton1.Size = new System.Drawing.Size(180, 23);
             this.darkButton1.TabIndex = 11;
             this.darkButton1.Text = "Choose Selected";
+            this.darkButton1.Click += new System.EventHandler(this.darkButton1_Click);
             // 
             // darkLabel1
             // 
@@ -104,10 +105,10 @@ namespace DayZeEditor
             this.darkLabel1.Name = "darkLabel1";
             this.darkLabel1.Size = new System.Drawing.Size(180, 23);
             this.darkLabel1.TabIndex = 12;
-            this.darkLabel1.Text = "darkLabel1";
+            this.darkLabel1.Text = "Select All Exisitng IDS to add";
             this.darkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // PossibleAmmoBoxes
+            // AddIDFromList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -117,10 +118,10 @@ namespace DayZeEditor
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "PossibleAmmoBoxes";
+            this.Name = "AddIDFromList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "PossibleAmmoBoxes";
-            this.Load += new System.EventHandler(this.PossibleAmmoBoxes_Load);
+            this.Load += new System.EventHandler(this.AddIDFromList_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

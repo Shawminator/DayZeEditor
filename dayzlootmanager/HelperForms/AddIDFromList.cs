@@ -12,11 +12,10 @@ using System.Windows.Forms;
 
 namespace DayZeEditor
 {
-    public partial class PossibleAmmoBoxes : DarkForm
+    public partial class AddIDFromList : DarkForm
     {
-        public string AmmoName { get; set; }
-        public BindingList<string> ammoboxes { get; set; }
-        public string chosenAmmoBox { get; set; }
+        public BindingList<MPG_Spawner_PointConfig> IDlist { get; set; }
+        public BindingList<MPG_Spawner_PointConfig> Selectedids { get; set; }
         public string SetLabel
         {
             get
@@ -45,7 +44,7 @@ namespace DayZeEditor
             e.Graphics.DrawString(lb.Items[e.Index].ToString(), e.Font, myBrush, e.Bounds);
             e.DrawFocusRectangle();
         }
-        public PossibleAmmoBoxes()
+        public AddIDFromList()
         {
             InitializeComponent();
             Form_Controls_AddfromType.InitializeForm_Controls
@@ -57,17 +56,25 @@ namespace DayZeEditor
             );
         }
 
-        private void PossibleAmmoBoxes_Load(object sender, EventArgs e)
+        private void AddIDFromList_Load(object sender, EventArgs e)
         {
             listBox1.DisplayMember = "Name";
             listBox1.ValueMember = "Value";
-            listBox1.DataSource = ammoboxes;
+            listBox1.DataSource = IDlist;
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void darkButton1_Click(object sender, EventArgs e)
         {
-            if (listBox1.SelectedItems.Count < 1) return;
-            chosenAmmoBox = listBox1.SelectedItem as string;
+            Selectedids = new BindingList<MPG_Spawner_PointConfig>();
+            if (listBox1.SelectedItems.Count <= 0)
+            {
+                MessageBox.Show("No IDS Were selected");
+                return;
+            };
+            foreach (var item in listBox1.SelectedItems)
+            {
+                Selectedids.Add(item as MPG_Spawner_PointConfig);
+            }
         }
     }
 }

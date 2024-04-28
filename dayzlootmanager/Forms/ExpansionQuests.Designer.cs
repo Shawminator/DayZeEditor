@@ -190,6 +190,9 @@ namespace DayZeEditor
             this.panel77 = new System.Windows.Forms.Panel();
             this.QuestRandomRewardAmountNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel155 = new DarkUI.Controls.DarkLabel();
+            this.panel84 = new System.Windows.Forms.Panel();
+            this.QuestRewardBehavorCB = new System.Windows.Forms.ComboBox();
+            this.darkLabel56 = new DarkUI.Controls.DarkLabel();
             this.panel78 = new System.Windows.Forms.Panel();
             this.QuestSequentialObjectivesCB = new System.Windows.Forms.CheckBox();
             this.darkLabel156 = new DarkUI.Controls.DarkLabel();
@@ -598,9 +601,6 @@ namespace DayZeEditor
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.removeQuestFromPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removePlayerSaveDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel84 = new System.Windows.Forms.Panel();
-            this.QuestRewardBehavorCB = new System.Windows.Forms.ComboBox();
-            this.darkLabel56 = new DarkUI.Controls.DarkLabel();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -661,6 +661,7 @@ namespace DayZeEditor
             this.panel76.SuspendLayout();
             this.panel77.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.QuestRandomRewardAmountNUD)).BeginInit();
+            this.panel84.SuspendLayout();
             this.panel78.SuspendLayout();
             this.panel71.SuspendLayout();
             this.panel36.SuspendLayout();
@@ -793,7 +794,6 @@ namespace DayZeEditor
             this.darkToolStrip23.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
-            this.panel84.SuspendLayout();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -2579,6 +2579,36 @@ namespace DayZeEditor
             this.darkLabel155.Size = new System.Drawing.Size(126, 13);
             this.darkLabel155.TabIndex = 171;
             this.darkLabel155.Text = "Random Reward Amount";
+            // 
+            // panel84
+            // 
+            this.panel84.Controls.Add(this.QuestRewardBehavorCB);
+            this.panel84.Controls.Add(this.darkLabel56);
+            this.panel84.Location = new System.Drawing.Point(1371, 133);
+            this.panel84.Name = "panel84";
+            this.panel84.Size = new System.Drawing.Size(349, 23);
+            this.panel84.TabIndex = 251;
+            // 
+            // QuestRewardBehavorCB
+            // 
+            this.QuestRewardBehavorCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.QuestRewardBehavorCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.QuestRewardBehavorCB.FormattingEnabled = true;
+            this.QuestRewardBehavorCB.Location = new System.Drawing.Point(93, 0);
+            this.QuestRewardBehavorCB.Name = "QuestRewardBehavorCB";
+            this.QuestRewardBehavorCB.Size = new System.Drawing.Size(248, 21);
+            this.QuestRewardBehavorCB.TabIndex = 166;
+            this.QuestRewardBehavorCB.SelectedIndexChanged += new System.EventHandler(this.QuestRewardBehavorCB_SelectedIndexChanged);
+            // 
+            // darkLabel56
+            // 
+            this.darkLabel56.AutoSize = true;
+            this.darkLabel56.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel56.Location = new System.Drawing.Point(3, 3);
+            this.darkLabel56.Name = "darkLabel56";
+            this.darkLabel56.Size = new System.Drawing.Size(89, 13);
+            this.darkLabel56.TabIndex = 167;
+            this.darkLabel56.Text = "Reward Behavior";
             // 
             // panel78
             // 
@@ -7766,36 +7796,6 @@ namespace DayZeEditor
             this.removePlayerSaveDataToolStripMenuItem.Text = "Remove Player Save Data";
             this.removePlayerSaveDataToolStripMenuItem.Click += new System.EventHandler(this.removePlayerSaveDataToolStripMenuItem_Click);
             // 
-            // panel84
-            // 
-            this.panel84.Controls.Add(this.QuestRewardBehavorCB);
-            this.panel84.Controls.Add(this.darkLabel56);
-            this.panel84.Location = new System.Drawing.Point(1371, 133);
-            this.panel84.Name = "panel84";
-            this.panel84.Size = new System.Drawing.Size(349, 23);
-            this.panel84.TabIndex = 251;
-            // 
-            // QuestRewardBehavorCB
-            // 
-            this.QuestRewardBehavorCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.QuestRewardBehavorCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.QuestRewardBehavorCB.FormattingEnabled = true;
-            this.QuestRewardBehavorCB.Location = new System.Drawing.Point(93, 0);
-            this.QuestRewardBehavorCB.Name = "QuestRewardBehavorCB";
-            this.QuestRewardBehavorCB.Size = new System.Drawing.Size(248, 21);
-            this.QuestRewardBehavorCB.TabIndex = 166;
-            this.QuestRewardBehavorCB.SelectedIndexChanged += new System.EventHandler(this.QuestRewardBehavorCB_SelectedIndexChanged);
-            // 
-            // darkLabel56
-            // 
-            this.darkLabel56.AutoSize = true;
-            this.darkLabel56.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel56.Location = new System.Drawing.Point(3, 3);
-            this.darkLabel56.Name = "darkLabel56";
-            this.darkLabel56.Size = new System.Drawing.Size(89, 13);
-            this.darkLabel56.TabIndex = 167;
-            this.darkLabel56.Text = "Reward Behavior";
-            // 
             // ExpansionQuests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -7912,6 +7912,8 @@ namespace DayZeEditor
             this.panel77.ResumeLayout(false);
             this.panel77.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.QuestRandomRewardAmountNUD)).EndInit();
+            this.panel84.ResumeLayout(false);
+            this.panel84.PerformLayout();
             this.panel78.ResumeLayout(false);
             this.panel78.PerformLayout();
             this.panel71.ResumeLayout(false);
@@ -8102,8 +8104,6 @@ namespace DayZeEditor
             this.darkToolStrip23.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
             this.contextMenuStrip2.ResumeLayout(false);
-            this.panel84.ResumeLayout(false);
-            this.panel84.PerformLayout();
             this.ResumeLayout(false);
 
         }

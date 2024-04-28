@@ -503,6 +503,11 @@ namespace DayZeEditor
                 else
                     MysteryBoxButton.Visible = false;
 
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\MPG_Spawner\\Config.json"))
+                    MPGSpawnerButton.Visible = true;
+                else
+                    MPGSpawnerButton.Visible = false;
+
                 if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\UtopiaAirdrop\\Config\\UtopiaAirdropSettings.json"))
                     UtopiaAirdropButton.Visible = true;
                 else
@@ -1206,7 +1211,33 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
+        private void MPGSpawnerButton_Click(object sender, EventArgs e)
+        {
+            MPGSpawnerManager _TM = Application.OpenForms["MPGSpawnerManager"] as MPGSpawnerManager;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new MPGSpawnerManager
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
 
+                };
+                _TM.Show();
+                Console.WriteLine("loading MPG Spawner Manager....");
+                label1.Text = "MPG Spawner Manager";
+            }
+            timer1.Start();
+        }
         private void SpawnerBukakuManagerButton_Click(object sender, EventArgs e)
         {
             SpawnerBubakuManager _TM = Application.OpenForms["SpawnerBukakuManager"] as SpawnerBubakuManager;
@@ -1277,6 +1308,8 @@ namespace DayZeEditor
                 }
             }
         }
+
+
     }
 }
 

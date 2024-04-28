@@ -40,7 +40,7 @@ namespace DayZeEditor
             this.darkButton3 = new DarkUI.Controls.DarkButton();
             this.darkButton4 = new DarkUI.Controls.DarkButton();
             this.darkButton1 = new DarkUI.Controls.DarkButton();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.BubakLocationGB = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.BubakLocationNameTB = new System.Windows.Forms.TextBox();
@@ -97,6 +97,8 @@ namespace DayZeEditor
             this.panel7 = new System.Windows.Forms.Panel();
             this.darkLabel12 = new DarkUI.Controls.DarkLabel();
             this.BubakLocationtriggercylradiusNUD = new System.Windows.Forms.NumericUpDown();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.darkLabel29 = new DarkUI.Controls.DarkLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.darkButton12 = new DarkUI.Controls.DarkButton();
             this.darkButton11 = new DarkUI.Controls.DarkButton();
@@ -137,12 +139,10 @@ namespace DayZeEditor
             this.darkLabel17 = new DarkUI.Controls.DarkLabel();
             this.BubakLocationSpawnerPosLB = new System.Windows.Forms.ListBox();
             this.darkButton2 = new DarkUI.Controls.DarkButton();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.darkLabel29 = new DarkUI.Controls.DarkLabel();
             this.darkToolStrip21.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogLevelNUD)).BeginInit();
-            this.groupBox3.SuspendLayout();
+            this.BubakLocationGB.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -174,6 +174,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.BubakLocationtriggercylheightNUD)).BeginInit();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BubakLocationtriggercylradiusNUD)).BeginInit();
+            this.groupBox5.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BubakLocationSpawnPositionXNUD)).BeginInit();
@@ -187,7 +188,6 @@ namespace DayZeEditor
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BubakLocationbubaknumNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubakLocationspawnradiusNUD)).BeginInit();
-            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -314,19 +314,20 @@ namespace DayZeEditor
             this.darkButton1.Text = "Add New From Dze";
             this.darkButton1.Click += new System.EventHandler(this.darkButton1_Click);
             // 
-            // groupBox3
+            // BubakLocationGB
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.BubakLocationGB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.flowLayoutPanel1);
-            this.groupBox3.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox3.Location = new System.Drawing.Point(236, 48);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(986, 703);
-            this.groupBox3.TabIndex = 136;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Bubak Locations";
+            this.BubakLocationGB.Controls.Add(this.flowLayoutPanel1);
+            this.BubakLocationGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.BubakLocationGB.Location = new System.Drawing.Point(236, 48);
+            this.BubakLocationGB.Name = "BubakLocationGB";
+            this.BubakLocationGB.Size = new System.Drawing.Size(986, 703);
+            this.BubakLocationGB.TabIndex = 136;
+            this.BubakLocationGB.TabStop = false;
+            this.BubakLocationGB.Text = "Bubak Locations";
+            this.BubakLocationGB.Visible = false;
             // 
             // flowLayoutPanel1
             // 
@@ -1133,6 +1134,27 @@ namespace DayZeEditor
             this.BubakLocationtriggercylradiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.BubakLocationtriggercylradiusNUD.ValueChanged += new System.EventHandler(this.BubakLocationtriggercylradiusNUD_ValueChanged);
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.darkLabel29);
+            this.groupBox5.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox5.Location = new System.Drawing.Point(3, 458);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(463, 103);
+            this.groupBox5.TabIndex = 257;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Import Info";
+            // 
+            // darkLabel29
+            // 
+            this.darkLabel29.AutoSize = true;
+            this.darkLabel29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel29.Location = new System.Drawing.Point(6, 16);
+            this.darkLabel29.Name = "darkLabel29";
+            this.darkLabel29.Size = new System.Drawing.Size(422, 78);
+            this.darkLabel29.TabIndex = 206;
+            this.darkLabel29.Text = resources.GetString("darkLabel29.Text");
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.darkButton12);
@@ -1707,34 +1729,13 @@ namespace DayZeEditor
             this.darkButton2.Text = "Export to DZE";
             this.darkButton2.Click += new System.EventHandler(this.darkButton2_Click);
             // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.darkLabel29);
-            this.groupBox5.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox5.Location = new System.Drawing.Point(3, 458);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(463, 103);
-            this.groupBox5.TabIndex = 257;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Import Info";
-            // 
-            // darkLabel29
-            // 
-            this.darkLabel29.AutoSize = true;
-            this.darkLabel29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel29.Location = new System.Drawing.Point(6, 16);
-            this.darkLabel29.Name = "darkLabel29";
-            this.darkLabel29.Size = new System.Drawing.Size(426, 78);
-            this.darkLabel29.TabIndex = 206;
-            this.darkLabel29.Text = resources.GetString("darkLabel29.Text");
-            // 
             // SpawnerBubakuManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1234, 760);
             this.Controls.Add(this.darkButton2);
-            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.BubakLocationGB);
             this.Controls.Add(this.darkButton1);
             this.Controls.Add(this.darkButton3);
             this.Controls.Add(this.darkButton4);
@@ -1751,7 +1752,7 @@ namespace DayZeEditor
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogLevelNUD)).EndInit();
-            this.groupBox3.ResumeLayout(false);
+            this.BubakLocationGB.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -1793,6 +1794,8 @@ namespace DayZeEditor
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BubakLocationtriggercylradiusNUD)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.panel15.ResumeLayout(false);
@@ -1810,8 +1813,6 @@ namespace DayZeEditor
             this.panel11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BubakLocationbubaknumNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubakLocationspawnradiusNUD)).EndInit();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1828,7 +1829,7 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton darkButton3;
         private DarkUI.Controls.DarkButton darkButton4;
         private DarkUI.Controls.DarkButton darkButton1;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox BubakLocationGB;
         private DarkUI.Controls.DarkLabel darkLabel59;
         private DarkUI.Controls.DarkLabel darkLabel37;
         private System.Windows.Forms.NumericUpDown BubakLocationWorkingHoursStartNUD;

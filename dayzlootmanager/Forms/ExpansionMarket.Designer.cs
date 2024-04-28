@@ -221,6 +221,8 @@ namespace DayZeEditor
             this.listBox8 = new System.Windows.Forms.ListBox();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.listBox9 = new System.Windows.Forms.ListBox();
+            this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.listBox21 = new System.Windows.Forms.ListBox();
             this.darkToolStrip23 = new DarkUI.Controls.DarkToolStrip2();
             this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -486,6 +488,7 @@ namespace DayZeEditor
             this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.tabPage7.SuspendLayout();
+            this.tabPage11.SuspendLayout();
             this.darkToolStrip23.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.groupBox11.SuspendLayout();
@@ -2785,6 +2788,7 @@ namespace DayZeEditor
             this.tabControl2.Controls.Add(this.tabPage5);
             this.tabControl2.Controls.Add(this.tabPage6);
             this.tabControl2.Controls.Add(this.tabPage7);
+            this.tabControl2.Controls.Add(this.tabPage11);
             this.tabControl2.Location = new System.Drawing.Point(12, 19);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
@@ -2855,15 +2859,40 @@ namespace DayZeEditor
             // listBox9
             // 
             this.listBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.listBox9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBox9.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.listBox9.ForeColor = System.Drawing.SystemColors.Control;
             this.listBox9.FormattingEnabled = true;
-            this.listBox9.Location = new System.Drawing.Point(4, 3);
+            this.listBox9.Location = new System.Drawing.Point(0, 0);
             this.listBox9.Name = "listBox9";
-            this.listBox9.Size = new System.Drawing.Size(209, 303);
+            this.listBox9.Size = new System.Drawing.Size(216, 334);
             this.listBox9.TabIndex = 5;
             this.listBox9.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.listBox9.SelectedIndexChanged += new System.EventHandler(this.SpawnPosition_SelectedIndexChanged);
+            // 
+            // tabPage11
+            // 
+            this.tabPage11.Controls.Add(this.listBox21);
+            this.tabPage11.Location = new System.Drawing.Point(4, 22);
+            this.tabPage11.Name = "tabPage11";
+            this.tabPage11.Size = new System.Drawing.Size(216, 334);
+            this.tabPage11.TabIndex = 3;
+            this.tabPage11.Text = "Train";
+            this.tabPage11.UseVisualStyleBackColor = true;
+            // 
+            // listBox21
+            // 
+            this.listBox21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.listBox21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox21.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.listBox21.ForeColor = System.Drawing.SystemColors.Control;
+            this.listBox21.FormattingEnabled = true;
+            this.listBox21.Location = new System.Drawing.Point(0, 0);
+            this.listBox21.Name = "listBox21";
+            this.listBox21.Size = new System.Drawing.Size(216, 334);
+            this.listBox21.TabIndex = 4;
+            this.listBox21.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.listBox21.SelectedIndexChanged += new System.EventHandler(this.SpawnPosition_SelectedIndexChanged);
             // 
             // darkToolStrip23
             // 
@@ -4345,7 +4374,6 @@ namespace DayZeEditor
             this.DisplayCurrencyNameTB.ForeColor = System.Drawing.SystemColors.Control;
             this.DisplayCurrencyNameTB.Location = new System.Drawing.Point(130, 43);
             this.DisplayCurrencyNameTB.Name = "DisplayCurrencyNameTB";
-            this.DisplayCurrencyNameTB.ReadOnly = true;
             this.DisplayCurrencyNameTB.Size = new System.Drawing.Size(157, 20);
             this.DisplayCurrencyNameTB.TabIndex = 104;
             this.DisplayCurrencyNameTB.TextChanged += new System.EventHandler(this.DisplayCurrencyNameTB_TextChanged);
@@ -5503,6 +5531,7 @@ namespace DayZeEditor
             this.tabPage5.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             this.tabPage7.ResumeLayout(false);
+            this.tabPage11.ResumeLayout(false);
             this.darkToolStrip23.ResumeLayout(false);
             this.darkToolStrip23.PerformLayout();
             this.tabPage8.ResumeLayout(false);
@@ -5950,5 +5979,7 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkLabel darkLabel90;
         private DarkUI.Controls.DarkLabel darkLabel89;
         private DarkUI.Controls.DarkLabel darkLabel88;
+        private System.Windows.Forms.TabPage tabPage11;
+        private System.Windows.Forms.ListBox listBox21;
     }
 }

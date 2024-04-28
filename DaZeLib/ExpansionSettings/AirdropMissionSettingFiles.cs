@@ -84,6 +84,7 @@ namespace DayZeLib
 
     public class ContaminatedAreaMissionSettingFiles
     {
+        const int CurrentVersion = 0;
         [JsonIgnore]
         public string MissionPath { get; set; }
         [JsonIgnore]
@@ -91,6 +92,7 @@ namespace DayZeLib
         [JsonIgnore]
         public bool isDirty { get; set; }
 
+        public int m_Version { get; set; }
         public int Enabled { get; set; }
         public decimal Weight { get; set; }
         public int MissionMaxTime { get; set; }
