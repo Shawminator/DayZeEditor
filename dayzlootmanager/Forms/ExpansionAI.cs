@@ -594,7 +594,10 @@ namespace DayZeEditor
                     Process.Start(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings");
                     break;
                 case 2:
-                    Process.Start(AILoadoutsPath);
+                    Process.Start(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings");
+                    break;
+                case 3:
+                    Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\AI\\Spatial");
                     break;
             }
         }
@@ -1462,29 +1465,64 @@ namespace DayZeEditor
             int newsize = (int)(mapsize * scalevalue);
             pictureBox2.Size = new Size(newsize, newsize);
         }
+        private void checkBox10_CheckedChanged(object sender, EventArgs e)
+        {
+            pictureBox2.Invalidate();
+        }
         private void DrawAIPAtrols(object sender, PaintEventArgs e)
         {
-            int c = 1;
-            foreach (Vec3 waypoints in CurrentPatrol._waypoints)
+            if (checkBox10.Checked)
             {
-                float scalevalue = AIPatrolScale * 0.05f;
-                int centerX = (int)(Math.Round(waypoints.X) * scalevalue);
-                int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(waypoints.Z, 0) * scalevalue);
-                int eventradius = (int)(Math.Round(1f, 0) * scalevalue);
-                Point center = new Point(centerX, centerY);
-                Pen pen = new Pen(Color.Red, 4);
-                getCircle(e.Graphics, pen, center, eventradius, c);
-                c++;
+                foreach(ExpansionAIPatrol aipatrol in AIPatrolSettings.Patrols)
+                {
+                    int c = 1;
+                    foreach (Vec3 waypoints in aipatrol._waypoints)
+                    {
+                        float scalevalue = AIPatrolScale * 0.05f;
+                        int centerX = (int)(Math.Round(waypoints.X) * scalevalue);
+                        int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(waypoints.Z, 0) * scalevalue);
+                        int eventradius = (int)(Math.Round(1f, 0) * scalevalue);
+                        Point center = new Point(centerX, centerY);
+                        Pen pen = new Pen(Color.Red, 4);
+                        if(aipatrol == CurrentPatrol)
+                            pen = new Pen(Color.Green, 4);
+                        string num = c.ToString();
+                        if (c == 1)
+                            getCircle(e.Graphics, pen, center, eventradius, aipatrol.Name + "\n" + num);
+                        else
+                            getCircle(e.Graphics, pen, center, eventradius, "\n" + num);
+                        c++;
+                    }
+                }
+            }
+            else
+            {
+                int c = 1;
+                foreach (Vec3 waypoints in CurrentPatrol._waypoints)
+                {
+                    float scalevalue = AIPatrolScale * 0.05f;
+                    int centerX = (int)(Math.Round(waypoints.X) * scalevalue);
+                    int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(waypoints.Z, 0) * scalevalue);
+                    int eventradius = (int)(Math.Round(1f, 0) * scalevalue);
+                    Point center = new Point(centerX, centerY);
+                    Pen pen = new Pen(Color.Red, 4);
+                    string num = c.ToString();
+                    if (c == 1)
+                        getCircle(e.Graphics, pen, center, eventradius, CurrentPatrol.Name + "\n" + num);
+                    else
+                        getCircle(e.Graphics, pen, center, eventradius, "\n" + num);
+                    c++;
+                }
             }
         }
-        private void getCircle(Graphics drawingArea, Pen penToUse, Point center, int radius, int c)
+        private void getCircle(Graphics drawingArea, Pen penToUse, Point center, int radius, string c)
         {
             Rectangle rect = new Rectangle(center.X - 1, center.Y - 1, 2, 2);
             drawingArea.DrawEllipse(penToUse, rect);
             Rectangle rect2 = new Rectangle(center.X - radius, center.Y - radius, radius * 2, radius * 2);
             drawingArea.DrawEllipse(penToUse, rect2);
-            Rectangle rect3 = new Rectangle(center.X - 10, center.Y - 20, 200, 20);
-            drawingArea.DrawString(c.ToString(), new Font("Tahoma", 9), Brushes.White, rect3);
+            Rectangle rect3 = new Rectangle(center.X - radius, center.Y - (radius + 30), 200, 40);
+            drawingArea.DrawString(c, new Font("Tahoma", 9), Brushes.White, rect3);
         }
         private void pictureBox2_MouseEnter(object sender, EventArgs e)
         {
@@ -3386,5 +3424,7 @@ namespace DayZeEditor
             SetupFactionsDropDownBoxes();
             File.WriteAllLines(Application.StartupPath + "\\TraderNPCs\\Factions.txt", Factions);
         }
+
+
     }
 }

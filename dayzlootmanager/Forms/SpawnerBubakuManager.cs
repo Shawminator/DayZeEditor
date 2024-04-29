@@ -13,6 +13,7 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace DayZeEditor
 {
@@ -28,6 +29,7 @@ namespace DayZeEditor
 
         public Bubaklocation CurrentBubaklocation { get; private set; }
 
+        public Vec3PandR currentspawnPosition;
         private bool useraction = false;
         private void listBox_DrawItem(object sender, DrawItemEventArgs e)
         {
@@ -71,6 +73,7 @@ namespace DayZeEditor
             useraction = false;
             SpawnerBubakuConfigPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\SpawnerBubaku\\SpawnerBubaku.json";
             SpawnerBubakuConfig = JsonSerializer.Deserialize<SpawnerBubaku>(File.ReadAllText(SpawnerBubakuConfigPath));
+            SpawnerBubakuConfig.Getalllists();
             SpawnerBubakuConfig.isDirty = false;
             SpawnerBubakuConfig.Filename = SpawnerBubakuConfigPath;
 
@@ -79,6 +82,15 @@ namespace DayZeEditor
             SpawnerBukakuLocationsLB.DisplayMember = "DisplayName";
             SpawnerBukakuLocationsLB.ValueMember = "Value";
             SpawnerBukakuLocationsLB.DataSource = SpawnerBubakuConfig.BubakLocations;
+
+            pictureBox1.BackgroundImage = Image.FromFile(Application.StartupPath + currentproject.MapPath); // Livonia maop size is 12800 x 12800, 0,0 bottom left, center 6400 x 6400
+            pictureBox1.Size = new Size(currentproject.MapSize, currentproject.MapSize);
+            pictureBox1.Paint += new PaintEventHandler(DrawSpawnerBubakuSpawner);
+            trackBar1.Value = 1;
+            SetSpawnerBubakuScale();
+
+            tabControl1.ItemSize = new Size(0, 1);
+            toolStripButton12.Checked = true;
 
             useraction = true;
         }
@@ -97,6 +109,28 @@ namespace DayZeEditor
         {
             Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\SpawnerBubaku");
         }
+        private void toolStripButton12_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 0;
+        }
+        private void toolStripButton13_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 1;
+        }
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            toolStripButton12.Checked = false;
+            toolStripButton13.Checked = false;
+            switch (tabControl1.SelectedIndex)
+            {
+                case 0:
+                    toolStripButton12.Checked = true;
+                    break;
+                case 1:
+                    toolStripButton13.Checked = true;
+                    break;
+            }
+        }
         private void Savefiles(bool shownotification = true)
         {
             List<string> midifiedfiles = new List<string>();
@@ -108,6 +142,7 @@ namespace DayZeEditor
                     Directory.CreateDirectory(Path.GetDirectoryName(SpawnerBubakuConfig.Filename) + "\\Backup\\" + SaveTime);
                     File.Copy(SpawnerBubakuConfig.Filename, Path.GetDirectoryName(SpawnerBubakuConfig.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(SpawnerBubakuConfig.Filename) + ".bak", true);
                 }
+                SpawnerBubakuConfig.SetSpawnerPointFiles();
                 SpawnerBubakuConfig.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(SpawnerBubakuConfig, options);
@@ -182,28 +217,35 @@ namespace DayZeEditor
                 MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
             };
             int m_Id = 0;
-            BukakuPosRot triggerposrot = CurrentBubaklocation.gettriggerposition();
-            Editorobject Triggerobject = new Editorobject()
+            string filename = "";
+            var result = MessageBox.Show("Would yo ulike to export the trigger as well?", "Export options", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.Cancel)
             {
-                Type = "GiftBox_Large_1",
-                DisplayName = "GiftBox_Large_1",
-                Position = new float[] { Convert.ToSingle(triggerposrot.Position[0]), Convert.ToSingle(triggerposrot.Position[1]), Convert.ToSingle(triggerposrot.Position[2]) },
-                Orientation = new float[] { Convert.ToSingle(triggerposrot.Rotation[0]), Convert.ToSingle(triggerposrot.Rotation[1]), Convert.ToSingle(triggerposrot.Rotation[2]) },
-                Scale = 1.0f,
-                Flags = 2147483647,
-                m_Id = m_Id
-            };
-            newdze.EditorObjects.Add(Triggerobject);
-            m_Id++;
-            for (int i = 0; i < CurrentBubaklocation.spawnerpos.Count; i++)
+                return;
+            }
+            else if (result == DialogResult.Yes)
             {
-                BukakuPosRot spawnposrot = CurrentBubaklocation.getPosRot(i);
+                Editorobject Triggerobject = new Editorobject()
+                {
+                    Type = "GiftBox_Large_1",
+                    DisplayName = "GiftBox_Large_1",
+                    Position = CurrentBubaklocation._triggerpos.GetPositionFloatArray(),
+                    Orientation = CurrentBubaklocation._triggerpos.GetRotationFloatArray(),
+                    Scale = 1.0f,
+                    Flags = 2147483647,
+                    m_Id = m_Id
+                };
+                newdze.EditorObjects.Add(Triggerobject);
+                m_Id++;
+            }
+            foreach (Vec3PandR vec3pandr in CurrentBubaklocation._spawnerpos)
+            {
                 Editorobject SpawnObject = new Editorobject()
                 {
                     Type = "GiftBox_Small_1",
                     DisplayName = "GiftBox_Small_1",
-                    Position = new float[] { Convert.ToSingle(spawnposrot.Position[0]), Convert.ToSingle(spawnposrot.Position[1]), Convert.ToSingle(spawnposrot.Position[2]) },
-                    Orientation = new float[] { Convert.ToSingle(spawnposrot.Rotation[0]), Convert.ToSingle(spawnposrot.Rotation[1]), Convert.ToSingle(spawnposrot.Rotation[2]) },
+                    Position = vec3pandr.GetPositionFloatArray(),
+                    Orientation = vec3pandr.GetRotationFloatArray(),
                     Scale = 1.0f,
                     Flags = 2147483647,
                     m_Id = m_Id
@@ -211,9 +253,10 @@ namespace DayZeEditor
                 newdze.EditorObjects.Add(SpawnObject);
                 m_Id++;
             }
+            filename = "Bubaku Spawner Location - " + CurrentBubaklocation.name;
             newdze.CameraPosition = newdze.EditorObjects[0].Position;
             SaveFileDialog save = new SaveFileDialog();
-            save.FileName = CurrentBubaklocation.name;
+            save.FileName = filename;
             if (save.ShowDialog() == DialogResult.OK)
             {
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
@@ -230,15 +273,14 @@ namespace DayZeEditor
             BubakLocationNameTB.Text = CurrentBubaklocation.GetName();
             BubakLocationWorkingHoursStartNUD.Value = CurrentBubaklocation.getworkinghours()[0];
             BubakLocationWorkingHoursEndNUD.Value = CurrentBubaklocation.getworkinghours()[1];
-            BukakuPosRot posrot = CurrentBubaklocation.gettriggerposition();
-            BubakLocationTriggerPosXNUD.Value = posrot.Position[0];
-            BubakLocationTriggerPosYNUD.Value = posrot.Position[1];
-            BubakLocationTriggerPosZNUD.Value = posrot.Position[2];
-            if (BubakLocationTriggerPositionRotSpecifiedCB.Checked = posrot.RotationSpecifioed)
+            BubakLocationTriggerPosXNUD.Value = (decimal)CurrentBubaklocation._triggerpos.Position.X;
+            BubakLocationTriggerPosYNUD.Value = (decimal)CurrentBubaklocation._triggerpos.Position.Y;
+            BubakLocationTriggerPosZNUD.Value = (decimal)CurrentBubaklocation._triggerpos.Position.Z;
+            if (BubakLocationTriggerPositionRotSpecifiedCB.Checked = CurrentBubaklocation._triggerpos.rotspecified)
             {
-                BubakLocationTriggerRotXNUD.Value = posrot.Rotation[0];
-                BubakLocationTriggerRotYNUD.Value = posrot.Rotation[1];
-                BubakLocationTriggerRotZNUD.Value = posrot.Rotation[2];
+                BubakLocationTriggerRotXNUD.Value = (decimal)CurrentBubaklocation._triggerpos.Rotation.X;
+                BubakLocationTriggerRotYNUD.Value = (decimal)CurrentBubaklocation._triggerpos.Rotation.Y;
+                BubakLocationTriggerRotZNUD.Value = (decimal)CurrentBubaklocation._triggerpos.Rotation.Z;
             }
             BubakLocationTriggerMinXNUD.Value = CurrentBubaklocation.gettriggermins()[0];
             BubakLocationTriggerMinYNUD.Value = CurrentBubaklocation.gettriggermins()[1];
@@ -260,7 +302,7 @@ namespace DayZeEditor
 
             BubakLocationSpawnerPosLB.DisplayMember = "DisplayName";
             BubakLocationSpawnerPosLB.ValueMember = "Value";
-            BubakLocationSpawnerPosLB.DataSource = CurrentBubaklocation.spawnerpos;
+            BubakLocationSpawnerPosLB.DataSource = CurrentBubaklocation._spawnerpos;
 
             BubakLocationBubaciLB.DisplayMember = "DisplayName";
             BubakLocationBubaciLB.ValueMember = "Value";
@@ -275,74 +317,74 @@ namespace DayZeEditor
             if (SpawnerBubakuConfig.isDirty)
                 Savefiles(false);
             useraction = true;
+
+            pictureBox1.Invalidate();
         }
         private void BubakLocationTriggerPositionRotSpecifiedCB_CheckedChanged(object sender, EventArgs e)
         {
-            BukakuPosRot posrot = CurrentBubaklocation.gettriggerposition();
             if (BubakLocationTriggerPositionRotSpecifiedCB.Checked)
             {
                 TrigerposRotationLabel.Visible = true;
                 BubakLocationTriggerRotXNUD.Visible = true;
                 BubakLocationTriggerRotYNUD.Visible = true;
                 BubakLocationTriggerRotZNUD.Visible = true;
-                posrot.RotationSpecifioed = true;
-                BubakLocationTriggerRotXNUD.Value = posrot.Rotation[0];
-                BubakLocationTriggerRotYNUD.Value = posrot.Rotation[1];
-                BubakLocationTriggerRotZNUD.Value = posrot.Rotation[2];
-                   
+                CurrentBubaklocation._triggerpos.rotspecified = true;
+                BubakLocationTriggerRotXNUD.Value = (decimal)CurrentBubaklocation._triggerpos.Rotation.X;
+                BubakLocationTriggerRotYNUD.Value = (decimal)CurrentBubaklocation._triggerpos.Rotation.Y;
+                BubakLocationTriggerRotZNUD.Value = (decimal)CurrentBubaklocation._triggerpos.Rotation.Z;
+
             }
             else
             {
-                posrot.RotationSpecifioed = false;
+                CurrentBubaklocation._triggerpos.rotspecified = false;
                 TrigerposRotationLabel.Visible = false;
                 BubakLocationTriggerRotXNUD.Visible = false;
                 BubakLocationTriggerRotYNUD.Visible = false;
                 BubakLocationTriggerRotZNUD.Visible = false;
             }
-            CurrentBubaklocation.setTriggerposition(posrot);
             SpawnerBubakuConfig.isDirty = true;
         }
         private void BubakLocationSpawnerPosLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (BubakLocationSpawnerPosLB.SelectedItems.Count <= 0) return;
-            BukakuPosRot currentSpawnPosRot = CurrentBubaklocation.getPosRot(BubakLocationSpawnerPosLB.SelectedIndex);
+            currentspawnPosition = BubakLocationSpawnerPosLB.SelectedItem as Vec3PandR;
             useraction = false;
-            BubakLocationSpawnPositionXNUD.Value = currentSpawnPosRot.Position[0];
-            BubakLocationSpawnPositionYNUD.Value = currentSpawnPosRot.Position[1];
-            BubakLocationSpawnPositionZNUD.Value = currentSpawnPosRot.Position[2];
-            if (checkBox1.Checked = currentSpawnPosRot.RotationSpecifioed)
+            BubakLocationSpawnPositionXNUD.Value = (decimal)currentspawnPosition.Position.X;
+            BubakLocationSpawnPositionYNUD.Value = (decimal)currentspawnPosition.Position.Y;
+            BubakLocationSpawnPositionZNUD.Value = (decimal)currentspawnPosition.Position.Z;
+            if (checkBox1.Checked = currentspawnPosition.rotspecified)
             {
-                BubakLocationSpawnRotationXNUD.Value = currentSpawnPosRot.Rotation[0];
-                BubakLocationSpawnRotationYNUD.Value = currentSpawnPosRot.Rotation[1];
-                BubakLocationSpawnRotationZNUD.Value = currentSpawnPosRot.Rotation[2];
+                BubakLocationSpawnRotationXNUD.Value = (decimal)currentspawnPosition.Rotation.X;
+                BubakLocationSpawnRotationYNUD.Value = (decimal)currentspawnPosition.Rotation.Y;
+                BubakLocationSpawnRotationZNUD.Value = (decimal)currentspawnPosition.Rotation.Z;
             }
             useraction = true;
+
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            BukakuPosRot posrot = CurrentBubaklocation.getPosRot(BubakLocationSpawnerPosLB.SelectedIndex);
             if (checkBox1.Checked)
             {
                 BubakLocationSpawnPositionRotaionLabel.Visible = true;
                 BubakLocationSpawnRotationXNUD.Visible = true;
                 BubakLocationSpawnRotationYNUD.Visible = true;
                 BubakLocationSpawnRotationZNUD.Visible = true;
-                posrot.RotationSpecifioed = true;
-                BubakLocationSpawnRotationXNUD.Value = posrot.Rotation[0];
-                BubakLocationSpawnRotationYNUD.Value = posrot.Rotation[1];
-                BubakLocationSpawnRotationZNUD.Value = posrot.Rotation[2];
+                currentspawnPosition.rotspecified = true;
+                BubakLocationSpawnRotationXNUD.Value = (decimal)currentspawnPosition.Rotation.X;
+                BubakLocationSpawnRotationYNUD.Value = (decimal)currentspawnPosition.Rotation.Y;
+                BubakLocationSpawnRotationZNUD.Value = (decimal)currentspawnPosition.Rotation.Z;
 
             }
             else
             {
-                posrot.RotationSpecifioed = false;
+                currentspawnPosition.rotspecified = false;
                 BubakLocationSpawnPositionRotaionLabel.Visible = false;
                 BubakLocationSpawnRotationXNUD.Visible = false;
                 BubakLocationSpawnRotationYNUD.Visible = false;
                 BubakLocationSpawnRotationZNUD.Visible = false;
             }
-            CurrentBubaklocation.setPosRot(BubakLocationSpawnerPosLB.SelectedIndex, posrot);
             SpawnerBubakuConfig.isDirty = true;
+            BubakLocationSpawnerPosLB.Invalidate();
         }
 
         private void darkButton6_Click(object sender, EventArgs e)
@@ -361,8 +403,12 @@ namespace DayZeEditor
                     DZE importfile = DZEHelpers.LoadFile(filePath);
                     bool ImportTrigger = false;
                     var result = MessageBox.Show("Would you like to import the trigger as well?", "Import options", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if(result == DialogResult.Yes)
+                    if (result == DialogResult.Yes)
                         ImportTrigger = true;
+                    bool importrtotation = false;
+                    result = MessageBox.Show("Would you like to import rotations?", "Import options", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                        importrtotation = true;
                     result = MessageBox.Show("Would you like to clear existing Spawn Points??", "Import options", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                     if ((result == DialogResult.Cancel))
                     {
@@ -370,24 +416,18 @@ namespace DayZeEditor
                     }
                     else if (result == DialogResult.Yes)
                     {
-                        CurrentBubaklocation.spawnerpos = new BindingList<string>();
+                        CurrentBubaklocation._spawnerpos = new BindingList<Vec3PandR>();
                     }
-                    CurrentBubaklocation.ImportDZE(importfile, ImportTrigger);
-                    if(ImportTrigger)
-                    {
-                        BukakuPosRot posrot = CurrentBubaklocation.gettriggerposition();
-                        BubakLocationTriggerPosXNUD.Value = posrot.Position[0];
-                        BubakLocationTriggerPosYNUD.Value = posrot.Position[1];
-                        BubakLocationTriggerPosZNUD.Value = posrot.Position[2];
-                        if (BubakLocationTriggerPositionRotSpecifiedCB.Checked = posrot.RotationSpecifioed)
-                        {
-                            BubakLocationTriggerRotXNUD.Value = posrot.Rotation[0];
-                            BubakLocationTriggerRotYNUD.Value = posrot.Rotation[1];
-                            BubakLocationTriggerRotZNUD.Value = posrot.Rotation[2];
-                        }
-                    }
-                    BubakLocationSpawnerPosLB.DataSource = CurrentBubaklocation.spawnerpos;
+                    CurrentBubaklocation.ImportDZE(importfile, ImportTrigger, importrtotation);
+                    useraction = false;
+
+                    BubakLocationTriggerPosXNUD.Value = (decimal)CurrentBubaklocation._triggerpos.Position.X;
+                    BubakLocationTriggerPosYNUD.Value = (decimal)CurrentBubaklocation._triggerpos.Position.Y;
+                    BubakLocationTriggerPosZNUD.Value = (decimal)CurrentBubaklocation._triggerpos.Position.Z;
+                    BubakLocationSpawnerPosLB.DataSource = CurrentBubaklocation._spawnerpos;
                     SpawnerBubakuConfig.isDirty = true;
+                    useraction = true;
+                    BubakLocationTriggerPositionRotSpecifiedCB.Checked = importrtotation;
                 }
             }
         }
@@ -406,6 +446,7 @@ namespace DayZeEditor
                 MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
             };
             int m_Id = 0;
+            string filename = "";
             var result = MessageBox.Show("Would yo ulike to export the trigger as well?", "Export options", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
             if(result == DialogResult.Cancel)
             {
@@ -413,13 +454,12 @@ namespace DayZeEditor
             }
             else if (result == DialogResult.Yes)
             {
-                BukakuPosRot triggerposrot = CurrentBubaklocation.gettriggerposition();
                 Editorobject Triggerobject = new Editorobject()
                 {
                     Type = "GiftBox_Large_1",
                     DisplayName = "GiftBox_Large_1",
-                    Position = new float[] { Convert.ToSingle(triggerposrot.Position[0]), Convert.ToSingle(triggerposrot.Position[1]), Convert.ToSingle(triggerposrot.Position[2]) },
-                    Orientation = new float[] { Convert.ToSingle(triggerposrot.Rotation[0]), Convert.ToSingle(triggerposrot.Rotation[1]), Convert.ToSingle(triggerposrot.Rotation[2]) },
+                    Position = CurrentBubaklocation._triggerpos.GetPositionFloatArray(),
+                    Orientation = CurrentBubaklocation._triggerpos.GetRotationFloatArray(),
                     Scale = 1.0f,
                     Flags = 2147483647,
                     m_Id = m_Id
@@ -427,15 +467,14 @@ namespace DayZeEditor
                 newdze.EditorObjects.Add(Triggerobject);
                 m_Id++;
             }
-            for (int i = 0; i < CurrentBubaklocation.spawnerpos.Count; i++)
+            foreach (Vec3PandR vec3pandr in CurrentBubaklocation._spawnerpos)
             {
-                BukakuPosRot spawnposrot = CurrentBubaklocation.getPosRot(i);
                 Editorobject SpawnObject = new Editorobject()
                 {
                     Type = "GiftBox_Small_1",
                     DisplayName = "GiftBox_Small_1",
-                    Position = new float[] { Convert.ToSingle(spawnposrot.Position[0]), Convert.ToSingle(spawnposrot.Position[1]), Convert.ToSingle(spawnposrot.Position[2]) },
-                    Orientation = new float[] { Convert.ToSingle(spawnposrot.Rotation[0]), Convert.ToSingle(spawnposrot.Rotation[1]), Convert.ToSingle(spawnposrot.Rotation[2]) },
+                    Position = vec3pandr.GetPositionFloatArray(),
+                    Orientation = vec3pandr.GetRotationFloatArray(),
                     Scale = 1.0f,
                     Flags = 2147483647,
                     m_Id = m_Id
@@ -443,9 +482,10 @@ namespace DayZeEditor
                 newdze.EditorObjects.Add(SpawnObject);
                 m_Id++;
             }
+            filename = "Bubaku Spawner Location - " + CurrentBubaklocation.name;
             newdze.CameraPosition = newdze.EditorObjects[0].Position;
             SaveFileDialog save = new SaveFileDialog();
-            save.FileName = CurrentBubaklocation.name;
+            save.FileName = filename;
             if (save.ShowDialog() == DialogResult.OK)
             {
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
@@ -553,13 +593,11 @@ namespace DayZeEditor
         private void BubakLocationSetTrigger_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            BukakuPosRot posrot = new BukakuPosRot();
-            if(posrot.RotationSpecifioed = BubakLocationTriggerPositionRotSpecifiedCB.Checked)
+            if(CurrentBubaklocation._triggerpos.rotspecified = BubakLocationTriggerPositionRotSpecifiedCB.Checked)
             {
-                posrot.Rotation = new decimal[] { BubakLocationTriggerRotXNUD.Value, BubakLocationTriggerRotYNUD.Value, BubakLocationSpawnRotationZNUD.Value };
+                CurrentBubaklocation._triggerpos.Rotation = new Vec3((float)BubakLocationTriggerRotXNUD.Value, (float)BubakLocationTriggerRotYNUD.Value, (float)BubakLocationSpawnRotationZNUD.Value);
             }
-            posrot.Position = new decimal[] { BubakLocationTriggerPosXNUD.Value, BubakLocationTriggerPosYNUD.Value, BubakLocationTriggerPosZNUD.Value };
-            CurrentBubaklocation.setTriggerposition(posrot);
+            CurrentBubaklocation._triggerpos.Position = new Vec3((float)BubakLocationTriggerPosXNUD.Value, (float)BubakLocationTriggerPosYNUD.Value, (float)BubakLocationTriggerPosZNUD.Value);
             SpawnerBubakuConfig.isDirty = true;
         }
         private void BubakLocationSetTriggerMins_ValueChanged(object sender, EventArgs e)
@@ -613,14 +651,13 @@ namespace DayZeEditor
         private void BubakLocationSetSpawnPosition_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            BukakuPosRot posrot = new BukakuPosRot();
-            if (posrot.RotationSpecifioed = checkBox1.Checked)
+            if (currentspawnPosition.rotspecified)
             {
-                posrot.Rotation = new decimal[] { BubakLocationSpawnRotationXNUD.Value, BubakLocationSpawnRotationYNUD.Value, BubakLocationSpawnRotationZNUD.Value };
+                currentspawnPosition.Rotation = new Vec3((float)BubakLocationSpawnRotationXNUD.Value, (float)BubakLocationSpawnRotationYNUD.Value, (float)BubakLocationSpawnRotationZNUD.Value);
             }
-            posrot.Position = new decimal[] { BubakLocationSpawnPositionXNUD.Value, BubakLocationSpawnPositionYNUD.Value, BubakLocationSpawnPositionZNUD.Value };
-            CurrentBubaklocation.setPosRot(BubakLocationSpawnerPosLB.SelectedIndex, posrot);
+            currentspawnPosition.Position = new Vec3((float)BubakLocationSpawnPositionXNUD.Value, (float)BubakLocationSpawnPositionYNUD.Value, (float)BubakLocationSpawnPositionZNUD.Value);
             SpawnerBubakuConfig.isDirty = true;
+            BubakLocationSpawnerPosLB.Invalidate();
         }
         private void BubakLocationspawnradiusNUD_ValueChanged(object sender, EventArgs e)
         {
@@ -647,5 +684,186 @@ namespace DayZeEditor
             SpawnerBubakuConfig.isDirty = true;
         }
 
+        public int SpawnerBubakuScale = 1;
+        private Point _mouseLastPosition;
+        private Point _newscrollPosition;
+
+        private void trackBar1_MouseUp(object sender, MouseEventArgs e)
+        {
+            SpawnerBubakuScale = trackBar1.Value;
+            SetSpawnerBubakuScale();
+        }
+        private void SetSpawnerBubakuScale()
+        {
+            float scalevalue = SpawnerBubakuScale * 0.05f;
+            float mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            pictureBox1.Size = new Size(newsize, newsize);
+        }
+        private void DrawSpawnerBubakuSpawner(object sender, PaintEventArgs e)
+        {
+            if (checkBox9.Checked == true)
+            {
+                foreach (Bubaklocation spc in SpawnerBubakuConfig.BubakLocations)
+                {
+                    float scalevalue = SpawnerBubakuScale * 0.05f;
+                    int centerX = (int)(Math.Round(spc._triggerpos.Position.X) * scalevalue);
+                    int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(spc._triggerpos.Position.Z, 0) * scalevalue);
+                    int eventradius = (int)((float)spc.triggerradius * scalevalue);
+                    Point center = new Point(centerX, centerY);
+                    Pen pen = new Pen(Color.Red, 4);
+                    if (spc == CurrentBubaklocation)
+                        pen = new Pen(Color.Green, 4);
+                    getCircleDynamicAI(e.Graphics, pen, center, eventradius, "\n" + spc.name);
+                    foreach (Vec3PandR v3pandr in spc._spawnerpos)
+                    {
+                        scalevalue = SpawnerBubakuScale * 0.05f;
+                        centerX = (int)(Math.Round(v3pandr.Position.X) * scalevalue);
+                        centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(v3pandr.Position.Z, 0) * scalevalue);
+                        eventradius = (int)((float)spc.spawnradius * scalevalue);
+                        center = new Point(centerX, centerY);
+                        pen = new Pen(Color.Yellow, 4);
+                        getCircleDynamicAI(e.Graphics, pen, center, eventradius, "");
+                    }
+                }
+            }
+            else
+            {
+                if (CurrentBubaklocation == null) return;
+                float scalevalue = SpawnerBubakuScale * 0.05f;
+                int centerX = (int)(Math.Round((float)CurrentBubaklocation._triggerpos.Position.X) * scalevalue);
+                int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round((float)CurrentBubaklocation._triggerpos.Position.Z, 0) * scalevalue);
+                int eventradius = (int)((float)CurrentBubaklocation.triggerradius * scalevalue);
+                Point center = new Point(centerX, centerY);
+                Pen pen = new Pen(Color.Green, 4);
+                getCircleDynamicAI(e.Graphics, pen, center, eventradius, "\n" + CurrentBubaklocation.name);
+                foreach (Vec3PandR v3pandr in CurrentBubaklocation._spawnerpos)
+                {
+                    scalevalue = SpawnerBubakuScale * 0.05f;
+                    centerX = (int)(Math.Round(v3pandr.Position.X) * scalevalue);
+                    centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(v3pandr.Position.Z, 0) * scalevalue);
+                    eventradius = (int)((float)CurrentBubaklocation.spawnradius * scalevalue);
+                    center = new Point(centerX, centerY);
+                    pen = new Pen(Color.Yellow, 4);
+                    getCircleDynamicAI(e.Graphics, pen, center, eventradius, "");
+                }
+            }
+        }
+        private void getCircleDynamicAI(Graphics drawingArea, Pen penToUse, Point center, int radius, string c)
+        {
+            Rectangle rect = new Rectangle(center.X - 1, center.Y - 1, 2, 2);
+            drawingArea.DrawEllipse(penToUse, rect);
+            Rectangle rect2 = new Rectangle(center.X - radius, center.Y - radius, radius * 2, radius * 2);
+            drawingArea.DrawEllipse(penToUse, rect2);
+            Rectangle rect3 = new Rectangle(center.X - radius, center.Y - (radius + 30), 200, 40);
+            drawingArea.DrawString(c, new Font("Tahoma", 9), Brushes.White, rect3);
+        }
+        private void pictureBox1_MouseEnter(object sender, EventArgs e)
+        {
+            if (pictureBox1.Focused == false)
+            {
+                pictureBox1.Focus();
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+                pictureBox1.Invalidate();
+            }
+        }
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Point changePoint = new Point(e.Location.X - _mouseLastPosition.X, e.Location.Y - _mouseLastPosition.Y);
+                _newscrollPosition = new Point(-panelEx1.AutoScrollPosition.X - changePoint.X, -panelEx1.AutoScrollPosition.Y - changePoint.Y);
+                if (_newscrollPosition.X <= 0)
+                    _newscrollPosition.X = 0;
+                if (_newscrollPosition.Y <= 0)
+                    _newscrollPosition.Y = 0;
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+                pictureBox1.Invalidate();
+            }
+            decimal scalevalue = SpawnerBubakuScale * (decimal)0.05;
+            decimal mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            label2.Text = Decimal.Round((decimal)(e.X / scalevalue), 4) + "," + Decimal.Round((decimal)((newsize - e.Y) / scalevalue), 4);
+        }
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Cursor.Current = Cursors.SizeAll;
+                _mouseLastPosition = e.Location;
+            }
+        }
+        private void pictureBox1_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta < 0)
+            {
+                pictureBox1_ZoomOut();
+            }
+            else
+            {
+                pictureBox1_ZoomIn();
+            }
+
+        }
+        private void pictureBox1_ZoomIn()
+        {
+            int oldpictureboxhieght = pictureBox1.Height;
+            int oldpitureboxwidht = pictureBox1.Width;
+            Point oldscrollpos = panelEx1.AutoScrollPosition;
+            int tbv = trackBar1.Value;
+            int newval = tbv + 1;
+            if (newval >= 20)
+                newval = 20;
+            trackBar1.Value = newval;
+            SpawnerBubakuScale = trackBar1.Value;
+            SetSpawnerBubakuScale();
+            if (pictureBox1.Height > panelEx1.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox1.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox1.Width > panelEx1.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox1.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox1.Invalidate();
+        }
+        private void pictureBox1_ZoomOut()
+        {
+            int oldpictureboxhieght = pictureBox1.Height;
+            int oldpitureboxwidht = pictureBox1.Width;
+            Point oldscrollpos = panelEx1.AutoScrollPosition;
+            int tbv = trackBar1.Value;
+            int newval = tbv - 1;
+            if (newval <= 1)
+                newval = 1;
+            trackBar1.Value = newval;
+            SpawnerBubakuScale = trackBar1.Value;
+            SetSpawnerBubakuScale();
+            if (pictureBox1.Height > panelEx1.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox1.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox1.Width > panelEx1.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox1.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox1.Invalidate();
+        }
+        private void checkBox9_CheckedChanged(object sender, EventArgs e)
+        {
+            pictureBox1.Invalidate();
+        }
     }
 }

@@ -35,6 +35,13 @@ namespace DayZeEditor
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.TabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.darkButton37 = new DarkUI.Controls.DarkButton();
+            this.darkLabel177 = new DarkUI.Controls.DarkLabel();
+            this.FactionEditTB = new System.Windows.Forms.TextBox();
+            this.darkButton34 = new DarkUI.Controls.DarkButton();
+            this.darkButton36 = new DarkUI.Controls.DarkButton();
+            this.FactionEditLB = new System.Windows.Forms.ListBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.AIGeneralDamageReceivedMultiplierNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel74 = new DarkUI.Controls.DarkLabel();
@@ -342,6 +349,57 @@ namespace DayZeEditor
             this.panel3 = new System.Windows.Forms.Panel();
             this.tabControl4 = new System.Windows.Forms.TabControl();
             this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.SpatialGroupImportGB = new System.Windows.Forms.GroupBox();
+            this.darkButton32 = new DarkUI.Controls.DarkButton();
+            this.darkButton33 = new DarkUI.Controls.DarkButton();
+            this.darkLabel176 = new DarkUI.Controls.DarkLabel();
+            this.SpawnPositionGB = new System.Windows.Forms.GroupBox();
+            this.darkButton30 = new DarkUI.Controls.DarkButton();
+            this.darkButton31 = new DarkUI.Controls.DarkButton();
+            this.SpatialGroupsSpatial_SpawnPositionXNUD = new System.Windows.Forms.NumericUpDown();
+            this.SpatialGroupsSpatial_SpawnPositionZNUD = new System.Windows.Forms.NumericUpDown();
+            this.SpatialGroupsSpatial_SpawnPositionYNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel173 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel174 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel175 = new DarkUI.Controls.DarkLabel();
+            this.SpatialGroupsSpawnPositionLB = new System.Windows.Forms.ListBox();
+            this.SpatialAudioGB = new System.Windows.Forms.GroupBox();
+            this.darkLabel172 = new DarkUI.Controls.DarkLabel();
+            this.SpatialGroupsAudioSpatial_SensitivityNUD = new System.Windows.Forms.NumericUpDown();
+            this.SpatialGroupsAudioSpatial_TriggerPositionXNUD = new System.Windows.Forms.NumericUpDown();
+            this.SpatialGroupsAudioSpatial_TriggerPositionZNUD = new System.Windows.Forms.NumericUpDown();
+            this.SpatialGroupsAudioSpatial_TriggerPositionYNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel169 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel170 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel171 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel151 = new DarkUI.Controls.DarkLabel();
+            this.SpatialGroupsAudioSpatial_SpawnModeCB = new System.Windows.Forms.ComboBox();
+            this.SpatialGroupsAudioSpatial_HuntModeCB = new System.Windows.Forms.ComboBox();
+            this.darkLabel150 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel149 = new DarkUI.Controls.DarkLabel();
+            this.SpatialGroupsAudioSpatial_TriggerRadiusNUD = new System.Windows.Forms.NumericUpDown();
+            this.SpatialGroupsAudioSpatial_ZoneLoadoutCB = new System.Windows.Forms.ComboBox();
+            this.SpatialGroupsAudioSpatial_ChanceNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel127 = new DarkUI.Controls.DarkLabel();
+            this.SpatialGroupsAudioSpatial_UnlimitedReloadCB = new System.Windows.Forms.CheckBox();
+            this.darkLabel128 = new DarkUI.Controls.DarkLabel();
+            this.SpatialGroupsAudioSpatial_MaxAccuracyNUD = new System.Windows.Forms.NumericUpDown();
+            this.SpatialGroupsAudioSpatial_MinAccuracyNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel129 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel134 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel138 = new DarkUI.Controls.DarkLabel();
+            this.SpatialGroupsAudioSpatial_LootableCB = new System.Windows.Forms.ComboBox();
+            this.darkLabel143 = new DarkUI.Controls.DarkLabel();
+            this.SpatialGroupsAudioSpatial_FactionCB = new System.Windows.Forms.ComboBox();
+            this.SpatialGroupsAudioSpatial_MaxCountNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel144 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel145 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel146 = new DarkUI.Controls.DarkLabel();
+            this.SpatialGroupsAudioSpatial_MinCountNUD = new System.Windows.Forms.NumericUpDown();
+            this.SpatialGroupsAudioSpatial_NameTB = new System.Windows.Forms.TextBox();
+            this.darkLabel147 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel148 = new DarkUI.Controls.DarkLabel();
+            this.SpatialGroupsAudioSpatial_TimerNUD = new System.Windows.Forms.NumericUpDown();
             this.SpatialGroupGB = new System.Windows.Forms.GroupBox();
             this.SpatialGroupsGroupSpatial_LoadoutCB = new System.Windows.Forms.ComboBox();
             this.SpatialGroupsGroupSpatial_ChanceNUD = new System.Windows.Forms.NumericUpDown();
@@ -400,16 +458,6 @@ namespace DayZeEditor
             this.darkLabel164 = new DarkUI.Controls.DarkLabel();
             this.darkLabel165 = new DarkUI.Controls.DarkLabel();
             this.SpatialGroupsLocationSpatial_TimerNUD = new System.Windows.Forms.NumericUpDown();
-            this.SpawnPositionGB = new System.Windows.Forms.GroupBox();
-            this.darkButton30 = new DarkUI.Controls.DarkButton();
-            this.darkButton31 = new DarkUI.Controls.DarkButton();
-            this.SpatialGroupsSpatial_SpawnPositionXNUD = new System.Windows.Forms.NumericUpDown();
-            this.SpatialGroupsSpatial_SpawnPositionZNUD = new System.Windows.Forms.NumericUpDown();
-            this.SpatialGroupsSpatial_SpawnPositionYNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel173 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel174 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel175 = new DarkUI.Controls.DarkLabel();
-            this.SpatialGroupsSpawnPositionLB = new System.Windows.Forms.ListBox();
             this.SpatialPointGB = new System.Windows.Forms.GroupBox();
             this.SpatialGroupsPointSpatial_ChanceNUD = new System.Windows.Forms.NumericUpDown();
             this.darkButton28 = new DarkUI.Controls.DarkButton();
@@ -445,44 +493,9 @@ namespace DayZeEditor
             this.darkLabel113 = new DarkUI.Controls.DarkLabel();
             this.darkLabel114 = new DarkUI.Controls.DarkLabel();
             this.SpatialGroupsPointSpatial_RadiusNUD = new System.Windows.Forms.NumericUpDown();
-            this.SpatialAudioGB = new System.Windows.Forms.GroupBox();
-            this.darkLabel172 = new DarkUI.Controls.DarkLabel();
-            this.SpatialGroupsAudioSpatial_SensitivityNUD = new System.Windows.Forms.NumericUpDown();
-            this.SpatialGroupsAudioSpatial_TriggerPositionXNUD = new System.Windows.Forms.NumericUpDown();
-            this.SpatialGroupsAudioSpatial_TriggerPositionZNUD = new System.Windows.Forms.NumericUpDown();
-            this.SpatialGroupsAudioSpatial_TriggerPositionYNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel169 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel170 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel171 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel151 = new DarkUI.Controls.DarkLabel();
-            this.SpatialGroupsAudioSpatial_SpawnModeCB = new System.Windows.Forms.ComboBox();
-            this.SpatialGroupsAudioSpatial_HuntModeCB = new System.Windows.Forms.ComboBox();
-            this.darkLabel150 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel149 = new DarkUI.Controls.DarkLabel();
-            this.SpatialGroupsAudioSpatial_TriggerRadiusNUD = new System.Windows.Forms.NumericUpDown();
-            this.SpatialGroupsAudioSpatial_ZoneLoadoutCB = new System.Windows.Forms.ComboBox();
-            this.SpatialGroupsAudioSpatial_ChanceNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel127 = new DarkUI.Controls.DarkLabel();
-            this.SpatialGroupsAudioSpatial_UnlimitedReloadCB = new System.Windows.Forms.CheckBox();
-            this.darkLabel128 = new DarkUI.Controls.DarkLabel();
-            this.SpatialGroupsAudioSpatial_MaxAccuracyNUD = new System.Windows.Forms.NumericUpDown();
-            this.SpatialGroupsAudioSpatial_MinAccuracyNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel129 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel134 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel138 = new DarkUI.Controls.DarkLabel();
-            this.SpatialGroupsAudioSpatial_LootableCB = new System.Windows.Forms.ComboBox();
-            this.darkLabel143 = new DarkUI.Controls.DarkLabel();
-            this.SpatialGroupsAudioSpatial_FactionCB = new System.Windows.Forms.ComboBox();
-            this.SpatialGroupsAudioSpatial_MaxCountNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel144 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel145 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel146 = new DarkUI.Controls.DarkLabel();
-            this.SpatialGroupsAudioSpatial_MinCountNUD = new System.Windows.Forms.NumericUpDown();
-            this.SpatialGroupsAudioSpatial_NameTB = new System.Windows.Forms.TextBox();
-            this.darkLabel147 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel148 = new DarkUI.Controls.DarkLabel();
-            this.SpatialGroupsAudioSpatial_TimerNUD = new System.Windows.Forms.NumericUpDown();
             this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.checkBox9 = new System.Windows.Forms.CheckBox();
+            this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panelEx1 = new TreeViewMS.PanelEx();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -493,6 +506,7 @@ namespace DayZeEditor
             this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.SpatialGroupsCB = new System.Windows.Forms.ComboBox();
+            this.darkButton35 = new DarkUI.Controls.DarkButton();
             this.darkButton26 = new DarkUI.Controls.DarkButton();
             this.darkButton27 = new DarkUI.Controls.DarkButton();
             this.SpatialGroupsLB = new System.Windows.Forms.ListBox();
@@ -512,23 +526,11 @@ namespace DayZeEditor
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
-            this.checkBox9 = new System.Windows.Forms.CheckBox();
-            this.SpatialGroupImportGB = new System.Windows.Forms.GroupBox();
-            this.darkLabel176 = new DarkUI.Controls.DarkLabel();
-            this.darkButton32 = new DarkUI.Controls.DarkButton();
-            this.darkButton33 = new DarkUI.Controls.DarkButton();
-            this.darkButton35 = new DarkUI.Controls.DarkButton();
-            this.groupBox15 = new System.Windows.Forms.GroupBox();
-            this.darkButton34 = new DarkUI.Controls.DarkButton();
-            this.darkButton36 = new DarkUI.Controls.DarkButton();
-            this.FactionEditLB = new System.Windows.Forms.ListBox();
-            this.FactionEditTB = new System.Windows.Forms.TextBox();
-            this.darkLabel177 = new DarkUI.Controls.DarkLabel();
-            this.darkButton37 = new DarkUI.Controls.DarkButton();
+            this.checkBox10 = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.TabPage1.SuspendLayout();
+            this.groupBox15.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AIGeneralDamageReceivedMultiplierNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AIGeneralNoiseInvestigationDistanceLimitNUD)).BeginInit();
@@ -634,6 +636,23 @@ namespace DayZeEditor
             this.panel3.SuspendLayout();
             this.tabControl4.SuspendLayout();
             this.tabPage11.SuspendLayout();
+            this.SpatialGroupImportGB.SuspendLayout();
+            this.SpawnPositionGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsSpatial_SpawnPositionXNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsSpatial_SpawnPositionZNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsSpatial_SpawnPositionYNUD)).BeginInit();
+            this.SpatialAudioGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_SensitivityNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_TriggerPositionXNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_TriggerPositionZNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_TriggerPositionYNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_TriggerRadiusNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_ChanceNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_MaxAccuracyNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_MinAccuracyNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_MaxCountNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_MinCountNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_TimerNUD)).BeginInit();
             this.SpatialGroupGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsGroupSpatial_ChanceNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsGroupSpatial_MaxAccuracyNUD)).BeginInit();
@@ -652,10 +671,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsLocationSpatial_MaxCountNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsLocationSpatial_MinCountNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsLocationSpatial_TimerNUD)).BeginInit();
-            this.SpawnPositionGB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsSpatial_SpawnPositionXNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsSpatial_SpawnPositionZNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsSpatial_SpawnPositionYNUD)).BeginInit();
             this.SpatialPointGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsPointSpatial_ChanceNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsPointSpatial_PositionXNUD)).BeginInit();
@@ -666,18 +681,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsPointSpatial_MaxCountNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsPointSpatial_MinCountNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsPointSpatial_RadiusNUD)).BeginInit();
-            this.SpatialAudioGB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_SensitivityNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_TriggerPositionXNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_TriggerPositionZNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_TriggerPositionYNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_TriggerRadiusNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_ChanceNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_MaxAccuracyNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_MinAccuracyNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_MaxCountNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_MinCountNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_TimerNUD)).BeginInit();
             this.tabPage12.SuspendLayout();
             this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -686,8 +689,6 @@ namespace DayZeEditor
             this.groupBox14.SuspendLayout();
             this.darkToolStrip24.SuspendLayout();
             this.darkToolStrip23.SuspendLayout();
-            this.SpatialGroupImportGB.SuspendLayout();
-            this.groupBox15.SuspendLayout();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -761,6 +762,88 @@ namespace DayZeEditor
             this.TabPage1.Size = new System.Drawing.Size(1212, 675);
             this.TabPage1.TabIndex = 0;
             this.TabPage1.Text = "tabPage1";
+            // 
+            // groupBox15
+            // 
+            this.groupBox15.Controls.Add(this.darkButton37);
+            this.groupBox15.Controls.Add(this.darkLabel177);
+            this.groupBox15.Controls.Add(this.FactionEditTB);
+            this.groupBox15.Controls.Add(this.darkButton34);
+            this.groupBox15.Controls.Add(this.darkButton36);
+            this.groupBox15.Controls.Add(this.FactionEditLB);
+            this.groupBox15.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox15.Location = new System.Drawing.Point(721, 6);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(298, 360);
+            this.groupBox15.TabIndex = 136;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "Edit Factions";
+            // 
+            // darkButton37
+            // 
+            this.darkButton37.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton37.Location = new System.Drawing.Point(6, 328);
+            this.darkButton37.Name = "darkButton37";
+            this.darkButton37.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton37.Size = new System.Drawing.Size(283, 23);
+            this.darkButton37.TabIndex = 220;
+            this.darkButton37.Text = "Save and Update Changes";
+            this.darkButton37.Click += new System.EventHandler(this.darkButton37_Click);
+            // 
+            // darkLabel177
+            // 
+            this.darkLabel177.AutoSize = true;
+            this.darkLabel177.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel177.Location = new System.Drawing.Point(6, 288);
+            this.darkLabel177.Name = "darkLabel177";
+            this.darkLabel177.Size = new System.Drawing.Size(42, 13);
+            this.darkLabel177.TabIndex = 143;
+            this.darkLabel177.Text = "Faction";
+            // 
+            // FactionEditTB
+            // 
+            this.FactionEditTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.FactionEditTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.FactionEditTB.Location = new System.Drawing.Point(7, 304);
+            this.FactionEditTB.Name = "FactionEditTB";
+            this.FactionEditTB.Size = new System.Drawing.Size(282, 20);
+            this.FactionEditTB.TabIndex = 198;
+            this.FactionEditTB.TextChanged += new System.EventHandler(this.FactionEditTB_TextChanged);
+            // 
+            // darkButton34
+            // 
+            this.darkButton34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton34.Location = new System.Drawing.Point(266, 260);
+            this.darkButton34.Name = "darkButton34";
+            this.darkButton34.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton34.Size = new System.Drawing.Size(23, 23);
+            this.darkButton34.TabIndex = 128;
+            this.darkButton34.Text = "-";
+            this.darkButton34.Click += new System.EventHandler(this.darkButton34_Click);
+            // 
+            // darkButton36
+            // 
+            this.darkButton36.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton36.Location = new System.Drawing.Point(266, 19);
+            this.darkButton36.Name = "darkButton36";
+            this.darkButton36.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton36.Size = new System.Drawing.Size(23, 23);
+            this.darkButton36.TabIndex = 127;
+            this.darkButton36.Text = "+";
+            this.darkButton36.Click += new System.EventHandler(this.darkButton36_Click);
+            // 
+            // FactionEditLB
+            // 
+            this.FactionEditLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.FactionEditLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.FactionEditLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.FactionEditLB.FormattingEnabled = true;
+            this.FactionEditLB.Location = new System.Drawing.Point(6, 19);
+            this.FactionEditLB.Name = "FactionEditLB";
+            this.FactionEditLB.Size = new System.Drawing.Size(254, 264);
+            this.FactionEditLB.TabIndex = 126;
+            this.FactionEditLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.FactionEditLB.SelectedIndexChanged += new System.EventHandler(this.FactionEditLB_SelectedIndexChanged);
             // 
             // groupBox3
             // 
@@ -3840,6 +3923,7 @@ namespace DayZeEditor
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage4.Controls.Add(this.checkBox10);
             this.tabPage4.Controls.Add(this.label1);
             this.tabPage4.Controls.Add(this.panel2);
             this.tabPage4.Controls.Add(this.trackBar4);
@@ -3900,6 +3984,7 @@ namespace DayZeEditor
             // 
             // darkToolStrip22
             // 
+            this.darkToolStrip22.AllowMerge = false;
             this.darkToolStrip22.AutoSize = false;
             this.darkToolStrip22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.darkToolStrip22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
@@ -5354,6 +5439,783 @@ namespace DayZeEditor
             this.tabPage11.TabIndex = 0;
             this.tabPage11.Text = "AI PAtrol Settings";
             // 
+            // SpatialGroupImportGB
+            // 
+            this.SpatialGroupImportGB.Controls.Add(this.darkButton32);
+            this.SpatialGroupImportGB.Controls.Add(this.darkButton33);
+            this.SpatialGroupImportGB.Controls.Add(this.darkLabel176);
+            this.SpatialGroupImportGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SpatialGroupImportGB.Location = new System.Drawing.Point(787, 6);
+            this.SpatialGroupImportGB.Name = "SpatialGroupImportGB";
+            this.SpatialGroupImportGB.Size = new System.Drawing.Size(463, 139);
+            this.SpatialGroupImportGB.TabIndex = 258;
+            this.SpatialGroupImportGB.TabStop = false;
+            this.SpatialGroupImportGB.Text = "Import";
+            // 
+            // darkButton32
+            // 
+            this.darkButton32.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton32.Location = new System.Drawing.Point(6, 110);
+            this.darkButton32.Name = "darkButton32";
+            this.darkButton32.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton32.Size = new System.Drawing.Size(145, 23);
+            this.darkButton32.TabIndex = 271;
+            this.darkButton32.Text = "Import from DZE";
+            this.darkButton32.Click += new System.EventHandler(this.darkButton32_Click);
+            // 
+            // darkButton33
+            // 
+            this.darkButton33.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton33.Location = new System.Drawing.Point(157, 109);
+            this.darkButton33.Name = "darkButton33";
+            this.darkButton33.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton33.Size = new System.Drawing.Size(145, 23);
+            this.darkButton33.TabIndex = 270;
+            this.darkButton33.Text = "Export to DZE";
+            this.darkButton33.Click += new System.EventHandler(this.darkButton33_Click);
+            // 
+            // darkLabel176
+            // 
+            this.darkLabel176.AutoSize = true;
+            this.darkLabel176.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel176.Location = new System.Drawing.Point(6, 16);
+            this.darkLabel176.Name = "darkLabel176";
+            this.darkLabel176.Size = new System.Drawing.Size(422, 78);
+            this.darkLabel176.TabIndex = 206;
+            this.darkLabel176.Text = resources.GetString("darkLabel176.Text");
+            // 
+            // SpawnPositionGB
+            // 
+            this.SpawnPositionGB.Controls.Add(this.darkButton30);
+            this.SpawnPositionGB.Controls.Add(this.darkButton31);
+            this.SpawnPositionGB.Controls.Add(this.SpatialGroupsSpatial_SpawnPositionXNUD);
+            this.SpawnPositionGB.Controls.Add(this.SpatialGroupsSpatial_SpawnPositionZNUD);
+            this.SpawnPositionGB.Controls.Add(this.SpatialGroupsSpatial_SpawnPositionYNUD);
+            this.SpawnPositionGB.Controls.Add(this.darkLabel173);
+            this.SpawnPositionGB.Controls.Add(this.darkLabel174);
+            this.SpawnPositionGB.Controls.Add(this.darkLabel175);
+            this.SpawnPositionGB.Controls.Add(this.SpatialGroupsSpawnPositionLB);
+            this.SpawnPositionGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SpawnPositionGB.Location = new System.Drawing.Point(496, 6);
+            this.SpawnPositionGB.Name = "SpawnPositionGB";
+            this.SpawnPositionGB.Size = new System.Drawing.Size(284, 496);
+            this.SpawnPositionGB.TabIndex = 224;
+            this.SpawnPositionGB.TabStop = false;
+            this.SpawnPositionGB.Text = "Spawn Positions";
+            // 
+            // darkButton30
+            // 
+            this.darkButton30.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton30.Location = new System.Drawing.Point(251, 20);
+            this.darkButton30.Name = "darkButton30";
+            this.darkButton30.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton30.Size = new System.Drawing.Size(20, 20);
+            this.darkButton30.TabIndex = 288;
+            this.darkButton30.Text = "+";
+            this.darkButton30.Click += new System.EventHandler(this.darkButton30_Click);
+            // 
+            // darkButton31
+            // 
+            this.darkButton31.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton31.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton31.Location = new System.Drawing.Point(251, 380);
+            this.darkButton31.Name = "darkButton31";
+            this.darkButton31.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton31.Size = new System.Drawing.Size(20, 20);
+            this.darkButton31.TabIndex = 289;
+            this.darkButton31.Text = "-";
+            this.darkButton31.Click += new System.EventHandler(this.darkButton31_Click);
+            // 
+            // SpatialGroupsSpatial_SpawnPositionXNUD
+            // 
+            this.SpatialGroupsSpatial_SpawnPositionXNUD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.SpatialGroupsSpatial_SpawnPositionXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SpatialGroupsSpatial_SpawnPositionXNUD.DecimalPlaces = 6;
+            this.SpatialGroupsSpatial_SpawnPositionXNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SpatialGroupsSpatial_SpawnPositionXNUD.Location = new System.Drawing.Point(44, 414);
+            this.SpatialGroupsSpatial_SpawnPositionXNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.SpatialGroupsSpatial_SpawnPositionXNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.SpatialGroupsSpatial_SpawnPositionXNUD.Name = "SpatialGroupsSpatial_SpawnPositionXNUD";
+            this.SpatialGroupsSpatial_SpawnPositionXNUD.Size = new System.Drawing.Size(172, 20);
+            this.SpatialGroupsSpatial_SpawnPositionXNUD.TabIndex = 282;
+            this.SpatialGroupsSpatial_SpawnPositionXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SpatialGroupsSpatial_SpawnPositionXNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsSpatial_SpawnPositionXNUD_ValueChanged);
+            // 
+            // SpatialGroupsSpatial_SpawnPositionZNUD
+            // 
+            this.SpatialGroupsSpatial_SpawnPositionZNUD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.SpatialGroupsSpatial_SpawnPositionZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SpatialGroupsSpatial_SpawnPositionZNUD.DecimalPlaces = 6;
+            this.SpatialGroupsSpatial_SpawnPositionZNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SpatialGroupsSpatial_SpawnPositionZNUD.Location = new System.Drawing.Point(44, 466);
+            this.SpatialGroupsSpatial_SpawnPositionZNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.SpatialGroupsSpatial_SpawnPositionZNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.SpatialGroupsSpatial_SpawnPositionZNUD.Name = "SpatialGroupsSpatial_SpawnPositionZNUD";
+            this.SpatialGroupsSpatial_SpawnPositionZNUD.Size = new System.Drawing.Size(172, 20);
+            this.SpatialGroupsSpatial_SpawnPositionZNUD.TabIndex = 284;
+            this.SpatialGroupsSpatial_SpawnPositionZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SpatialGroupsSpatial_SpawnPositionZNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsSpatial_SpawnPositionZNUD_ValueChanged);
+            // 
+            // SpatialGroupsSpatial_SpawnPositionYNUD
+            // 
+            this.SpatialGroupsSpatial_SpawnPositionYNUD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.SpatialGroupsSpatial_SpawnPositionYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SpatialGroupsSpatial_SpawnPositionYNUD.DecimalPlaces = 6;
+            this.SpatialGroupsSpatial_SpawnPositionYNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SpatialGroupsSpatial_SpawnPositionYNUD.Location = new System.Drawing.Point(44, 440);
+            this.SpatialGroupsSpatial_SpawnPositionYNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.SpatialGroupsSpatial_SpawnPositionYNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.SpatialGroupsSpatial_SpawnPositionYNUD.Name = "SpatialGroupsSpatial_SpawnPositionYNUD";
+            this.SpatialGroupsSpatial_SpawnPositionYNUD.Size = new System.Drawing.Size(172, 20);
+            this.SpatialGroupsSpatial_SpawnPositionYNUD.TabIndex = 283;
+            this.SpatialGroupsSpatial_SpawnPositionYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SpatialGroupsSpatial_SpawnPositionYNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsSpatial_SpawnPositionYNUD_ValueChanged);
+            // 
+            // darkLabel173
+            // 
+            this.darkLabel173.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkLabel173.AutoSize = true;
+            this.darkLabel173.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel173.Location = new System.Drawing.Point(18, 416);
+            this.darkLabel173.Name = "darkLabel173";
+            this.darkLabel173.Size = new System.Drawing.Size(20, 13);
+            this.darkLabel173.TabIndex = 285;
+            this.darkLabel173.Text = "X:-";
+            // 
+            // darkLabel174
+            // 
+            this.darkLabel174.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkLabel174.AutoSize = true;
+            this.darkLabel174.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel174.Location = new System.Drawing.Point(18, 442);
+            this.darkLabel174.Name = "darkLabel174";
+            this.darkLabel174.Size = new System.Drawing.Size(20, 13);
+            this.darkLabel174.TabIndex = 286;
+            this.darkLabel174.Text = "Y:-";
+            // 
+            // darkLabel175
+            // 
+            this.darkLabel175.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkLabel175.AutoSize = true;
+            this.darkLabel175.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel175.Location = new System.Drawing.Point(18, 468);
+            this.darkLabel175.Name = "darkLabel175";
+            this.darkLabel175.Size = new System.Drawing.Size(20, 13);
+            this.darkLabel175.TabIndex = 287;
+            this.darkLabel175.Text = "Z:-";
+            // 
+            // SpatialGroupsSpawnPositionLB
+            // 
+            this.SpatialGroupsSpawnPositionLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.SpatialGroupsSpawnPositionLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SpatialGroupsSpawnPositionLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.SpatialGroupsSpawnPositionLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SpatialGroupsSpawnPositionLB.FormattingEnabled = true;
+            this.SpatialGroupsSpawnPositionLB.Location = new System.Drawing.Point(6, 19);
+            this.SpatialGroupsSpawnPositionLB.Name = "SpatialGroupsSpawnPositionLB";
+            this.SpatialGroupsSpawnPositionLB.Size = new System.Drawing.Size(239, 381);
+            this.SpatialGroupsSpawnPositionLB.TabIndex = 210;
+            this.SpatialGroupsSpawnPositionLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.SpatialGroupsSpawnPositionLB.SelectedIndexChanged += new System.EventHandler(this.SpatialGroupsSpawnPositionLB_SelectedIndexChanged);
+            // 
+            // SpatialAudioGB
+            // 
+            this.SpatialAudioGB.Controls.Add(this.darkLabel172);
+            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_SensitivityNUD);
+            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_TriggerPositionXNUD);
+            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_TriggerPositionZNUD);
+            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_TriggerPositionYNUD);
+            this.SpatialAudioGB.Controls.Add(this.darkLabel169);
+            this.SpatialAudioGB.Controls.Add(this.darkLabel170);
+            this.SpatialAudioGB.Controls.Add(this.darkLabel171);
+            this.SpatialAudioGB.Controls.Add(this.darkLabel151);
+            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_SpawnModeCB);
+            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_HuntModeCB);
+            this.SpatialAudioGB.Controls.Add(this.darkLabel150);
+            this.SpatialAudioGB.Controls.Add(this.darkLabel149);
+            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_TriggerRadiusNUD);
+            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_ZoneLoadoutCB);
+            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_ChanceNUD);
+            this.SpatialAudioGB.Controls.Add(this.darkLabel127);
+            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_UnlimitedReloadCB);
+            this.SpatialAudioGB.Controls.Add(this.darkLabel128);
+            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_MaxAccuracyNUD);
+            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_MinAccuracyNUD);
+            this.SpatialAudioGB.Controls.Add(this.darkLabel129);
+            this.SpatialAudioGB.Controls.Add(this.darkLabel134);
+            this.SpatialAudioGB.Controls.Add(this.darkLabel138);
+            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_LootableCB);
+            this.SpatialAudioGB.Controls.Add(this.darkLabel143);
+            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_FactionCB);
+            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_MaxCountNUD);
+            this.SpatialAudioGB.Controls.Add(this.darkLabel144);
+            this.SpatialAudioGB.Controls.Add(this.darkLabel145);
+            this.SpatialAudioGB.Controls.Add(this.darkLabel146);
+            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_MinCountNUD);
+            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_NameTB);
+            this.SpatialAudioGB.Controls.Add(this.darkLabel147);
+            this.SpatialAudioGB.Controls.Add(this.darkLabel148);
+            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_TimerNUD);
+            this.SpatialAudioGB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SpatialAudioGB.Location = new System.Drawing.Point(6, 6);
+            this.SpatialAudioGB.Name = "SpatialAudioGB";
+            this.SpatialAudioGB.Size = new System.Drawing.Size(475, 496);
+            this.SpatialAudioGB.TabIndex = 222;
+            this.SpatialAudioGB.TabStop = false;
+            this.SpatialAudioGB.Text = "Audio";
+            // 
+            // darkLabel172
+            // 
+            this.darkLabel172.AutoSize = true;
+            this.darkLabel172.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel172.Location = new System.Drawing.Point(12, 338);
+            this.darkLabel172.Name = "darkLabel172";
+            this.darkLabel172.Size = new System.Drawing.Size(54, 13);
+            this.darkLabel172.TabIndex = 257;
+            this.darkLabel172.Text = "Sensitivity";
+            // 
+            // SpatialGroupsAudioSpatial_SensitivityNUD
+            // 
+            this.SpatialGroupsAudioSpatial_SensitivityNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SpatialGroupsAudioSpatial_SensitivityNUD.DecimalPlaces = 1;
+            this.SpatialGroupsAudioSpatial_SensitivityNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SpatialGroupsAudioSpatial_SensitivityNUD.Location = new System.Drawing.Point(122, 336);
+            this.SpatialGroupsAudioSpatial_SensitivityNUD.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.SpatialGroupsAudioSpatial_SensitivityNUD.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            -2147483648});
+            this.SpatialGroupsAudioSpatial_SensitivityNUD.Name = "SpatialGroupsAudioSpatial_SensitivityNUD";
+            this.SpatialGroupsAudioSpatial_SensitivityNUD.Size = new System.Drawing.Size(105, 20);
+            this.SpatialGroupsAudioSpatial_SensitivityNUD.TabIndex = 256;
+            this.SpatialGroupsAudioSpatial_SensitivityNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SpatialGroupsAudioSpatial_SensitivityNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_SensitivityNUD_ValueChanged);
+            // 
+            // SpatialGroupsAudioSpatial_TriggerPositionXNUD
+            // 
+            this.SpatialGroupsAudioSpatial_TriggerPositionXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SpatialGroupsAudioSpatial_TriggerPositionXNUD.DecimalPlaces = 6;
+            this.SpatialGroupsAudioSpatial_TriggerPositionXNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SpatialGroupsAudioSpatial_TriggerPositionXNUD.Location = new System.Drawing.Point(122, 412);
+            this.SpatialGroupsAudioSpatial_TriggerPositionXNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.SpatialGroupsAudioSpatial_TriggerPositionXNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.SpatialGroupsAudioSpatial_TriggerPositionXNUD.Name = "SpatialGroupsAudioSpatial_TriggerPositionXNUD";
+            this.SpatialGroupsAudioSpatial_TriggerPositionXNUD.Size = new System.Drawing.Size(172, 20);
+            this.SpatialGroupsAudioSpatial_TriggerPositionXNUD.TabIndex = 250;
+            this.SpatialGroupsAudioSpatial_TriggerPositionXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SpatialGroupsAudioSpatial_TriggerPositionXNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_TriggerPositionXNUD_ValueChanged);
+            // 
+            // SpatialGroupsAudioSpatial_TriggerPositionZNUD
+            // 
+            this.SpatialGroupsAudioSpatial_TriggerPositionZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SpatialGroupsAudioSpatial_TriggerPositionZNUD.DecimalPlaces = 6;
+            this.SpatialGroupsAudioSpatial_TriggerPositionZNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SpatialGroupsAudioSpatial_TriggerPositionZNUD.Location = new System.Drawing.Point(122, 464);
+            this.SpatialGroupsAudioSpatial_TriggerPositionZNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.SpatialGroupsAudioSpatial_TriggerPositionZNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.SpatialGroupsAudioSpatial_TriggerPositionZNUD.Name = "SpatialGroupsAudioSpatial_TriggerPositionZNUD";
+            this.SpatialGroupsAudioSpatial_TriggerPositionZNUD.Size = new System.Drawing.Size(172, 20);
+            this.SpatialGroupsAudioSpatial_TriggerPositionZNUD.TabIndex = 252;
+            this.SpatialGroupsAudioSpatial_TriggerPositionZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SpatialGroupsAudioSpatial_TriggerPositionZNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_TriggerPositionZNUD_ValueChanged);
+            // 
+            // SpatialGroupsAudioSpatial_TriggerPositionYNUD
+            // 
+            this.SpatialGroupsAudioSpatial_TriggerPositionYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SpatialGroupsAudioSpatial_TriggerPositionYNUD.DecimalPlaces = 6;
+            this.SpatialGroupsAudioSpatial_TriggerPositionYNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SpatialGroupsAudioSpatial_TriggerPositionYNUD.Location = new System.Drawing.Point(122, 438);
+            this.SpatialGroupsAudioSpatial_TriggerPositionYNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.SpatialGroupsAudioSpatial_TriggerPositionYNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.SpatialGroupsAudioSpatial_TriggerPositionYNUD.Name = "SpatialGroupsAudioSpatial_TriggerPositionYNUD";
+            this.SpatialGroupsAudioSpatial_TriggerPositionYNUD.Size = new System.Drawing.Size(172, 20);
+            this.SpatialGroupsAudioSpatial_TriggerPositionYNUD.TabIndex = 251;
+            this.SpatialGroupsAudioSpatial_TriggerPositionYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SpatialGroupsAudioSpatial_TriggerPositionYNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_TriggerPositionYNUD_ValueChanged);
+            // 
+            // darkLabel169
+            // 
+            this.darkLabel169.AutoSize = true;
+            this.darkLabel169.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel169.Location = new System.Drawing.Point(13, 414);
+            this.darkLabel169.Name = "darkLabel169";
+            this.darkLabel169.Size = new System.Drawing.Size(87, 13);
+            this.darkLabel169.TabIndex = 253;
+            this.darkLabel169.Text = "Tigger Position X";
+            // 
+            // darkLabel170
+            // 
+            this.darkLabel170.AutoSize = true;
+            this.darkLabel170.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel170.Location = new System.Drawing.Point(13, 440);
+            this.darkLabel170.Name = "darkLabel170";
+            this.darkLabel170.Size = new System.Drawing.Size(87, 13);
+            this.darkLabel170.TabIndex = 254;
+            this.darkLabel170.Text = "Tigger Position Y";
+            // 
+            // darkLabel171
+            // 
+            this.darkLabel171.AutoSize = true;
+            this.darkLabel171.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel171.Location = new System.Drawing.Point(13, 466);
+            this.darkLabel171.Name = "darkLabel171";
+            this.darkLabel171.Size = new System.Drawing.Size(87, 13);
+            this.darkLabel171.TabIndex = 255;
+            this.darkLabel171.Text = "Tigger Position Z";
+            // 
+            // darkLabel151
+            // 
+            this.darkLabel151.AutoSize = true;
+            this.darkLabel151.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel151.Location = new System.Drawing.Point(12, 366);
+            this.darkLabel151.Name = "darkLabel151";
+            this.darkLabel151.Size = new System.Drawing.Size(67, 13);
+            this.darkLabel151.TabIndex = 242;
+            this.darkLabel151.Text = "SpawnMode";
+            // 
+            // SpatialGroupsAudioSpatial_SpawnModeCB
+            // 
+            this.SpatialGroupsAudioSpatial_SpawnModeCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SpatialGroupsAudioSpatial_SpawnModeCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SpatialGroupsAudioSpatial_SpawnModeCB.FormattingEnabled = true;
+            this.SpatialGroupsAudioSpatial_SpawnModeCB.Items.AddRange(new object[] {
+            "Single spawnposition or random if more than 1.",
+            "All spawnpositions"});
+            this.SpatialGroupsAudioSpatial_SpawnModeCB.Location = new System.Drawing.Point(122, 363);
+            this.SpatialGroupsAudioSpatial_SpawnModeCB.Name = "SpatialGroupsAudioSpatial_SpawnModeCB";
+            this.SpatialGroupsAudioSpatial_SpawnModeCB.Size = new System.Drawing.Size(330, 21);
+            this.SpatialGroupsAudioSpatial_SpawnModeCB.TabIndex = 243;
+            this.SpatialGroupsAudioSpatial_SpawnModeCB.SelectedIndexChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_SpawnModeCB_SelectedIndexChanged);
+            // 
+            // SpatialGroupsAudioSpatial_HuntModeCB
+            // 
+            this.SpatialGroupsAudioSpatial_HuntModeCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SpatialGroupsAudioSpatial_HuntModeCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SpatialGroupsAudioSpatial_HuntModeCB.FormattingEnabled = true;
+            this.SpatialGroupsAudioSpatial_HuntModeCB.Items.AddRange(new object[] {
+            "Hunt player aggressively.",
+            "Go to players location when ai spawned.",
+            "Idle.",
+            "Run around a bit then stand still.",
+            "12 ai waypoints per 2.5m on the timers.",
+            "Follows the player 80-100m, closer 35-50m if player idle."});
+            this.SpatialGroupsAudioSpatial_HuntModeCB.Location = new System.Drawing.Point(122, 151);
+            this.SpatialGroupsAudioSpatial_HuntModeCB.Name = "SpatialGroupsAudioSpatial_HuntModeCB";
+            this.SpatialGroupsAudioSpatial_HuntModeCB.Size = new System.Drawing.Size(330, 21);
+            this.SpatialGroupsAudioSpatial_HuntModeCB.TabIndex = 241;
+            this.SpatialGroupsAudioSpatial_HuntModeCB.SelectedIndexChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_HuntModeCB_SelectedIndexChanged);
+            // 
+            // darkLabel150
+            // 
+            this.darkLabel150.AutoSize = true;
+            this.darkLabel150.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel150.Location = new System.Drawing.Point(12, 154);
+            this.darkLabel150.Name = "darkLabel150";
+            this.darkLabel150.Size = new System.Drawing.Size(60, 13);
+            this.darkLabel150.TabIndex = 240;
+            this.darkLabel150.Text = "Hunt Mode";
+            // 
+            // darkLabel149
+            // 
+            this.darkLabel149.AutoSize = true;
+            this.darkLabel149.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel149.Location = new System.Drawing.Point(12, 48);
+            this.darkLabel149.Name = "darkLabel149";
+            this.darkLabel149.Size = new System.Drawing.Size(40, 13);
+            this.darkLabel149.TabIndex = 239;
+            this.darkLabel149.Text = "Radius";
+            // 
+            // SpatialGroupsAudioSpatial_TriggerRadiusNUD
+            // 
+            this.SpatialGroupsAudioSpatial_TriggerRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SpatialGroupsAudioSpatial_TriggerRadiusNUD.DecimalPlaces = 1;
+            this.SpatialGroupsAudioSpatial_TriggerRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SpatialGroupsAudioSpatial_TriggerRadiusNUD.Location = new System.Drawing.Point(122, 46);
+            this.SpatialGroupsAudioSpatial_TriggerRadiusNUD.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.SpatialGroupsAudioSpatial_TriggerRadiusNUD.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            -2147483648});
+            this.SpatialGroupsAudioSpatial_TriggerRadiusNUD.Name = "SpatialGroupsAudioSpatial_TriggerRadiusNUD";
+            this.SpatialGroupsAudioSpatial_TriggerRadiusNUD.Size = new System.Drawing.Size(105, 20);
+            this.SpatialGroupsAudioSpatial_TriggerRadiusNUD.TabIndex = 238;
+            this.SpatialGroupsAudioSpatial_TriggerRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SpatialGroupsAudioSpatial_TriggerRadiusNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_TriggerRadiusNUD_ValueChanged);
+            // 
+            // SpatialGroupsAudioSpatial_ZoneLoadoutCB
+            // 
+            this.SpatialGroupsAudioSpatial_ZoneLoadoutCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SpatialGroupsAudioSpatial_ZoneLoadoutCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SpatialGroupsAudioSpatial_ZoneLoadoutCB.FormattingEnabled = true;
+            this.SpatialGroupsAudioSpatial_ZoneLoadoutCB.Location = new System.Drawing.Point(122, 72);
+            this.SpatialGroupsAudioSpatial_ZoneLoadoutCB.Name = "SpatialGroupsAudioSpatial_ZoneLoadoutCB";
+            this.SpatialGroupsAudioSpatial_ZoneLoadoutCB.Size = new System.Drawing.Size(330, 21);
+            this.SpatialGroupsAudioSpatial_ZoneLoadoutCB.TabIndex = 237;
+            this.SpatialGroupsAudioSpatial_ZoneLoadoutCB.SelectedIndexChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_ZoneLoadoutCB_SelectedIndexChanged);
+            // 
+            // SpatialGroupsAudioSpatial_ChanceNUD
+            // 
+            this.SpatialGroupsAudioSpatial_ChanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SpatialGroupsAudioSpatial_ChanceNUD.DecimalPlaces = 2;
+            this.SpatialGroupsAudioSpatial_ChanceNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SpatialGroupsAudioSpatial_ChanceNUD.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+            this.SpatialGroupsAudioSpatial_ChanceNUD.Location = new System.Drawing.Point(122, 232);
+            this.SpatialGroupsAudioSpatial_ChanceNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.SpatialGroupsAudioSpatial_ChanceNUD.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            -2147483648});
+            this.SpatialGroupsAudioSpatial_ChanceNUD.Name = "SpatialGroupsAudioSpatial_ChanceNUD";
+            this.SpatialGroupsAudioSpatial_ChanceNUD.Size = new System.Drawing.Size(105, 20);
+            this.SpatialGroupsAudioSpatial_ChanceNUD.TabIndex = 236;
+            this.SpatialGroupsAudioSpatial_ChanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SpatialGroupsAudioSpatial_ChanceNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_ChanceNUD_ValueChanged);
+            // 
+            // darkLabel127
+            // 
+            this.darkLabel127.AutoSize = true;
+            this.darkLabel127.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel127.Location = new System.Drawing.Point(13, 392);
+            this.darkLabel127.Name = "darkLabel127";
+            this.darkLabel127.Size = new System.Drawing.Size(87, 13);
+            this.darkLabel127.TabIndex = 229;
+            this.darkLabel127.Text = "Unlimited Reload";
+            // 
+            // SpatialGroupsAudioSpatial_UnlimitedReloadCB
+            // 
+            this.SpatialGroupsAudioSpatial_UnlimitedReloadCB.AutoSize = true;
+            this.SpatialGroupsAudioSpatial_UnlimitedReloadCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.SpatialGroupsAudioSpatial_UnlimitedReloadCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SpatialGroupsAudioSpatial_UnlimitedReloadCB.Location = new System.Drawing.Point(123, 392);
+            this.SpatialGroupsAudioSpatial_UnlimitedReloadCB.Name = "SpatialGroupsAudioSpatial_UnlimitedReloadCB";
+            this.SpatialGroupsAudioSpatial_UnlimitedReloadCB.Size = new System.Drawing.Size(15, 14);
+            this.SpatialGroupsAudioSpatial_UnlimitedReloadCB.TabIndex = 224;
+            this.SpatialGroupsAudioSpatial_UnlimitedReloadCB.UseVisualStyleBackColor = true;
+            this.SpatialGroupsAudioSpatial_UnlimitedReloadCB.CheckedChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_UnlimitedReloadCB_CheckedChanged);
+            // 
+            // darkLabel128
+            // 
+            this.darkLabel128.AutoSize = true;
+            this.darkLabel128.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel128.Location = new System.Drawing.Point(13, 260);
+            this.darkLabel128.Name = "darkLabel128";
+            this.darkLabel128.Size = new System.Drawing.Size(72, 13);
+            this.darkLabel128.TabIndex = 226;
+            this.darkLabel128.Text = "Accuracy Min";
+            // 
+            // SpatialGroupsAudioSpatial_MaxAccuracyNUD
+            // 
+            this.SpatialGroupsAudioSpatial_MaxAccuracyNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SpatialGroupsAudioSpatial_MaxAccuracyNUD.DecimalPlaces = 2;
+            this.SpatialGroupsAudioSpatial_MaxAccuracyNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SpatialGroupsAudioSpatial_MaxAccuracyNUD.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+            this.SpatialGroupsAudioSpatial_MaxAccuracyNUD.Location = new System.Drawing.Point(122, 284);
+            this.SpatialGroupsAudioSpatial_MaxAccuracyNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.SpatialGroupsAudioSpatial_MaxAccuracyNUD.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            -2147483648});
+            this.SpatialGroupsAudioSpatial_MaxAccuracyNUD.Name = "SpatialGroupsAudioSpatial_MaxAccuracyNUD";
+            this.SpatialGroupsAudioSpatial_MaxAccuracyNUD.Size = new System.Drawing.Size(105, 20);
+            this.SpatialGroupsAudioSpatial_MaxAccuracyNUD.TabIndex = 227;
+            this.SpatialGroupsAudioSpatial_MaxAccuracyNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SpatialGroupsAudioSpatial_MaxAccuracyNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_MaxAccuracyNUD_ValueChanged);
+            // 
+            // SpatialGroupsAudioSpatial_MinAccuracyNUD
+            // 
+            this.SpatialGroupsAudioSpatial_MinAccuracyNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SpatialGroupsAudioSpatial_MinAccuracyNUD.DecimalPlaces = 2;
+            this.SpatialGroupsAudioSpatial_MinAccuracyNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SpatialGroupsAudioSpatial_MinAccuracyNUD.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+            this.SpatialGroupsAudioSpatial_MinAccuracyNUD.Location = new System.Drawing.Point(122, 258);
+            this.SpatialGroupsAudioSpatial_MinAccuracyNUD.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.SpatialGroupsAudioSpatial_MinAccuracyNUD.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            -2147483648});
+            this.SpatialGroupsAudioSpatial_MinAccuracyNUD.Name = "SpatialGroupsAudioSpatial_MinAccuracyNUD";
+            this.SpatialGroupsAudioSpatial_MinAccuracyNUD.Size = new System.Drawing.Size(105, 20);
+            this.SpatialGroupsAudioSpatial_MinAccuracyNUD.TabIndex = 225;
+            this.SpatialGroupsAudioSpatial_MinAccuracyNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SpatialGroupsAudioSpatial_MinAccuracyNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_MinAccuracyNUD_ValueChanged);
+            // 
+            // darkLabel129
+            // 
+            this.darkLabel129.AutoSize = true;
+            this.darkLabel129.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel129.Location = new System.Drawing.Point(13, 286);
+            this.darkLabel129.Name = "darkLabel129";
+            this.darkLabel129.Size = new System.Drawing.Size(75, 13);
+            this.darkLabel129.TabIndex = 228;
+            this.darkLabel129.Text = "Accuracy Max";
+            // 
+            // darkLabel134
+            // 
+            this.darkLabel134.AutoSize = true;
+            this.darkLabel134.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel134.Location = new System.Drawing.Point(13, 234);
+            this.darkLabel134.Name = "darkLabel134";
+            this.darkLabel134.Size = new System.Drawing.Size(44, 13);
+            this.darkLabel134.TabIndex = 223;
+            this.darkLabel134.Text = "Chance";
+            // 
+            // darkLabel138
+            // 
+            this.darkLabel138.AutoSize = true;
+            this.darkLabel138.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel138.Location = new System.Drawing.Point(12, 208);
+            this.darkLabel138.Name = "darkLabel138";
+            this.darkLabel138.Size = new System.Drawing.Size(48, 13);
+            this.darkLabel138.TabIndex = 212;
+            this.darkLabel138.Text = "Lootable";
+            // 
+            // SpatialGroupsAudioSpatial_LootableCB
+            // 
+            this.SpatialGroupsAudioSpatial_LootableCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SpatialGroupsAudioSpatial_LootableCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SpatialGroupsAudioSpatial_LootableCB.FormattingEnabled = true;
+            this.SpatialGroupsAudioSpatial_LootableCB.Items.AddRange(new object[] {
+            "Not Lootable",
+            "All Lootable",
+            "Randomly Lootable",
+            "Leader Lootable"});
+            this.SpatialGroupsAudioSpatial_LootableCB.Location = new System.Drawing.Point(122, 205);
+            this.SpatialGroupsAudioSpatial_LootableCB.Name = "SpatialGroupsAudioSpatial_LootableCB";
+            this.SpatialGroupsAudioSpatial_LootableCB.Size = new System.Drawing.Size(330, 21);
+            this.SpatialGroupsAudioSpatial_LootableCB.TabIndex = 213;
+            this.SpatialGroupsAudioSpatial_LootableCB.SelectedIndexChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_LootableCB_SelectedIndexChanged);
+            // 
+            // darkLabel143
+            // 
+            this.darkLabel143.AutoSize = true;
+            this.darkLabel143.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel143.Location = new System.Drawing.Point(12, 181);
+            this.darkLabel143.Name = "darkLabel143";
+            this.darkLabel143.Size = new System.Drawing.Size(42, 13);
+            this.darkLabel143.TabIndex = 210;
+            this.darkLabel143.Text = "Faction";
+            // 
+            // SpatialGroupsAudioSpatial_FactionCB
+            // 
+            this.SpatialGroupsAudioSpatial_FactionCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SpatialGroupsAudioSpatial_FactionCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SpatialGroupsAudioSpatial_FactionCB.FormattingEnabled = true;
+            this.SpatialGroupsAudioSpatial_FactionCB.Location = new System.Drawing.Point(122, 178);
+            this.SpatialGroupsAudioSpatial_FactionCB.Name = "SpatialGroupsAudioSpatial_FactionCB";
+            this.SpatialGroupsAudioSpatial_FactionCB.Size = new System.Drawing.Size(330, 21);
+            this.SpatialGroupsAudioSpatial_FactionCB.TabIndex = 211;
+            this.SpatialGroupsAudioSpatial_FactionCB.SelectedIndexChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_FactionCB_SelectedIndexChanged);
+            // 
+            // SpatialGroupsAudioSpatial_MaxCountNUD
+            // 
+            this.SpatialGroupsAudioSpatial_MaxCountNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SpatialGroupsAudioSpatial_MaxCountNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SpatialGroupsAudioSpatial_MaxCountNUD.Location = new System.Drawing.Point(122, 125);
+            this.SpatialGroupsAudioSpatial_MaxCountNUD.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.SpatialGroupsAudioSpatial_MaxCountNUD.Minimum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            -2147483648});
+            this.SpatialGroupsAudioSpatial_MaxCountNUD.Name = "SpatialGroupsAudioSpatial_MaxCountNUD";
+            this.SpatialGroupsAudioSpatial_MaxCountNUD.Size = new System.Drawing.Size(105, 20);
+            this.SpatialGroupsAudioSpatial_MaxCountNUD.TabIndex = 206;
+            this.SpatialGroupsAudioSpatial_MaxCountNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SpatialGroupsAudioSpatial_MaxCountNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_MaxCountNUD_ValueChanged);
+            // 
+            // darkLabel144
+            // 
+            this.darkLabel144.AutoSize = true;
+            this.darkLabel144.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel144.Location = new System.Drawing.Point(11, 127);
+            this.darkLabel144.Name = "darkLabel144";
+            this.darkLabel144.Size = new System.Drawing.Size(94, 13);
+            this.darkLabel144.TabIndex = 207;
+            this.darkLabel144.Text = "Max Number Of AI";
+            // 
+            // darkLabel145
+            // 
+            this.darkLabel145.AutoSize = true;
+            this.darkLabel145.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel145.Location = new System.Drawing.Point(12, 23);
+            this.darkLabel145.Name = "darkLabel145";
+            this.darkLabel145.Size = new System.Drawing.Size(35, 13);
+            this.darkLabel145.TabIndex = 203;
+            this.darkLabel145.Text = "Name";
+            // 
+            // darkLabel146
+            // 
+            this.darkLabel146.AutoSize = true;
+            this.darkLabel146.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel146.Location = new System.Drawing.Point(11, 75);
+            this.darkLabel146.Name = "darkLabel146";
+            this.darkLabel146.Size = new System.Drawing.Size(65, 13);
+            this.darkLabel146.TabIndex = 197;
+            this.darkLabel146.Text = "Loadout File";
+            // 
+            // SpatialGroupsAudioSpatial_MinCountNUD
+            // 
+            this.SpatialGroupsAudioSpatial_MinCountNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SpatialGroupsAudioSpatial_MinCountNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SpatialGroupsAudioSpatial_MinCountNUD.Location = new System.Drawing.Point(122, 99);
+            this.SpatialGroupsAudioSpatial_MinCountNUD.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.SpatialGroupsAudioSpatial_MinCountNUD.Minimum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            -2147483648});
+            this.SpatialGroupsAudioSpatial_MinCountNUD.Name = "SpatialGroupsAudioSpatial_MinCountNUD";
+            this.SpatialGroupsAudioSpatial_MinCountNUD.Size = new System.Drawing.Size(105, 20);
+            this.SpatialGroupsAudioSpatial_MinCountNUD.TabIndex = 198;
+            this.SpatialGroupsAudioSpatial_MinCountNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SpatialGroupsAudioSpatial_MinCountNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_MinCountNUD_ValueChanged);
+            // 
+            // SpatialGroupsAudioSpatial_NameTB
+            // 
+            this.SpatialGroupsAudioSpatial_NameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SpatialGroupsAudioSpatial_NameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.SpatialGroupsAudioSpatial_NameTB.Location = new System.Drawing.Point(122, 20);
+            this.SpatialGroupsAudioSpatial_NameTB.Name = "SpatialGroupsAudioSpatial_NameTB";
+            this.SpatialGroupsAudioSpatial_NameTB.Size = new System.Drawing.Size(330, 20);
+            this.SpatialGroupsAudioSpatial_NameTB.TabIndex = 202;
+            this.SpatialGroupsAudioSpatial_NameTB.TextChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_NameTB_TextChanged);
+            // 
+            // darkLabel147
+            // 
+            this.darkLabel147.AutoSize = true;
+            this.darkLabel147.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel147.Location = new System.Drawing.Point(11, 101);
+            this.darkLabel147.Name = "darkLabel147";
+            this.darkLabel147.Size = new System.Drawing.Size(91, 13);
+            this.darkLabel147.TabIndex = 199;
+            this.darkLabel147.Text = "Min Number Of AI";
+            // 
+            // darkLabel148
+            // 
+            this.darkLabel148.AutoSize = true;
+            this.darkLabel148.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel148.Location = new System.Drawing.Point(12, 312);
+            this.darkLabel148.Name = "darkLabel148";
+            this.darkLabel148.Size = new System.Drawing.Size(33, 13);
+            this.darkLabel148.TabIndex = 201;
+            this.darkLabel148.Text = "Timer";
+            // 
+            // SpatialGroupsAudioSpatial_TimerNUD
+            // 
+            this.SpatialGroupsAudioSpatial_TimerNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SpatialGroupsAudioSpatial_TimerNUD.DecimalPlaces = 1;
+            this.SpatialGroupsAudioSpatial_TimerNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SpatialGroupsAudioSpatial_TimerNUD.Location = new System.Drawing.Point(122, 310);
+            this.SpatialGroupsAudioSpatial_TimerNUD.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.SpatialGroupsAudioSpatial_TimerNUD.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            -2147483648});
+            this.SpatialGroupsAudioSpatial_TimerNUD.Name = "SpatialGroupsAudioSpatial_TimerNUD";
+            this.SpatialGroupsAudioSpatial_TimerNUD.Size = new System.Drawing.Size(105, 20);
+            this.SpatialGroupsAudioSpatial_TimerNUD.TabIndex = 200;
+            this.SpatialGroupsAudioSpatial_TimerNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SpatialGroupsAudioSpatial_TimerNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_TimerNUD_ValueChanged);
+            // 
             // SpatialGroupGB
             // 
             this.SpatialGroupGB.Controls.Add(this.SpatialGroupsGroupSpatial_LoadoutCB);
@@ -6240,165 +7102,6 @@ namespace DayZeEditor
             this.SpatialGroupsLocationSpatial_TimerNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.SpatialGroupsLocationSpatial_TimerNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsLocationSpatial_TimerNUD_ValueChanged);
             // 
-            // SpawnPositionGB
-            // 
-            this.SpawnPositionGB.Controls.Add(this.darkButton30);
-            this.SpawnPositionGB.Controls.Add(this.darkButton31);
-            this.SpawnPositionGB.Controls.Add(this.SpatialGroupsSpatial_SpawnPositionXNUD);
-            this.SpawnPositionGB.Controls.Add(this.SpatialGroupsSpatial_SpawnPositionZNUD);
-            this.SpawnPositionGB.Controls.Add(this.SpatialGroupsSpatial_SpawnPositionYNUD);
-            this.SpawnPositionGB.Controls.Add(this.darkLabel173);
-            this.SpawnPositionGB.Controls.Add(this.darkLabel174);
-            this.SpawnPositionGB.Controls.Add(this.darkLabel175);
-            this.SpawnPositionGB.Controls.Add(this.SpatialGroupsSpawnPositionLB);
-            this.SpawnPositionGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SpawnPositionGB.Location = new System.Drawing.Point(496, 6);
-            this.SpawnPositionGB.Name = "SpawnPositionGB";
-            this.SpawnPositionGB.Size = new System.Drawing.Size(284, 496);
-            this.SpawnPositionGB.TabIndex = 224;
-            this.SpawnPositionGB.TabStop = false;
-            this.SpawnPositionGB.Text = "Spawn Positions";
-            // 
-            // darkButton30
-            // 
-            this.darkButton30.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton30.Location = new System.Drawing.Point(251, 20);
-            this.darkButton30.Name = "darkButton30";
-            this.darkButton30.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton30.Size = new System.Drawing.Size(20, 20);
-            this.darkButton30.TabIndex = 288;
-            this.darkButton30.Text = "+";
-            this.darkButton30.Click += new System.EventHandler(this.darkButton30_Click);
-            // 
-            // darkButton31
-            // 
-            this.darkButton31.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton31.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton31.Location = new System.Drawing.Point(251, 380);
-            this.darkButton31.Name = "darkButton31";
-            this.darkButton31.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton31.Size = new System.Drawing.Size(20, 20);
-            this.darkButton31.TabIndex = 289;
-            this.darkButton31.Text = "-";
-            this.darkButton31.Click += new System.EventHandler(this.darkButton31_Click);
-            // 
-            // SpatialGroupsSpatial_SpawnPositionXNUD
-            // 
-            this.SpatialGroupsSpatial_SpawnPositionXNUD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.SpatialGroupsSpatial_SpawnPositionXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.SpatialGroupsSpatial_SpawnPositionXNUD.DecimalPlaces = 6;
-            this.SpatialGroupsSpatial_SpawnPositionXNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.SpatialGroupsSpatial_SpawnPositionXNUD.Location = new System.Drawing.Point(44, 414);
-            this.SpatialGroupsSpatial_SpawnPositionXNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.SpatialGroupsSpatial_SpawnPositionXNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.SpatialGroupsSpatial_SpawnPositionXNUD.Name = "SpatialGroupsSpatial_SpawnPositionXNUD";
-            this.SpatialGroupsSpatial_SpawnPositionXNUD.Size = new System.Drawing.Size(172, 20);
-            this.SpatialGroupsSpatial_SpawnPositionXNUD.TabIndex = 282;
-            this.SpatialGroupsSpatial_SpawnPositionXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.SpatialGroupsSpatial_SpawnPositionXNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsSpatial_SpawnPositionXNUD_ValueChanged);
-            // 
-            // SpatialGroupsSpatial_SpawnPositionZNUD
-            // 
-            this.SpatialGroupsSpatial_SpawnPositionZNUD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.SpatialGroupsSpatial_SpawnPositionZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.SpatialGroupsSpatial_SpawnPositionZNUD.DecimalPlaces = 6;
-            this.SpatialGroupsSpatial_SpawnPositionZNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.SpatialGroupsSpatial_SpawnPositionZNUD.Location = new System.Drawing.Point(44, 466);
-            this.SpatialGroupsSpatial_SpawnPositionZNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.SpatialGroupsSpatial_SpawnPositionZNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.SpatialGroupsSpatial_SpawnPositionZNUD.Name = "SpatialGroupsSpatial_SpawnPositionZNUD";
-            this.SpatialGroupsSpatial_SpawnPositionZNUD.Size = new System.Drawing.Size(172, 20);
-            this.SpatialGroupsSpatial_SpawnPositionZNUD.TabIndex = 284;
-            this.SpatialGroupsSpatial_SpawnPositionZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.SpatialGroupsSpatial_SpawnPositionZNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsSpatial_SpawnPositionZNUD_ValueChanged);
-            // 
-            // SpatialGroupsSpatial_SpawnPositionYNUD
-            // 
-            this.SpatialGroupsSpatial_SpawnPositionYNUD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.SpatialGroupsSpatial_SpawnPositionYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.SpatialGroupsSpatial_SpawnPositionYNUD.DecimalPlaces = 6;
-            this.SpatialGroupsSpatial_SpawnPositionYNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.SpatialGroupsSpatial_SpawnPositionYNUD.Location = new System.Drawing.Point(44, 440);
-            this.SpatialGroupsSpatial_SpawnPositionYNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.SpatialGroupsSpatial_SpawnPositionYNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.SpatialGroupsSpatial_SpawnPositionYNUD.Name = "SpatialGroupsSpatial_SpawnPositionYNUD";
-            this.SpatialGroupsSpatial_SpawnPositionYNUD.Size = new System.Drawing.Size(172, 20);
-            this.SpatialGroupsSpatial_SpawnPositionYNUD.TabIndex = 283;
-            this.SpatialGroupsSpatial_SpawnPositionYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.SpatialGroupsSpatial_SpawnPositionYNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsSpatial_SpawnPositionYNUD_ValueChanged);
-            // 
-            // darkLabel173
-            // 
-            this.darkLabel173.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkLabel173.AutoSize = true;
-            this.darkLabel173.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel173.Location = new System.Drawing.Point(18, 416);
-            this.darkLabel173.Name = "darkLabel173";
-            this.darkLabel173.Size = new System.Drawing.Size(20, 13);
-            this.darkLabel173.TabIndex = 285;
-            this.darkLabel173.Text = "X:-";
-            // 
-            // darkLabel174
-            // 
-            this.darkLabel174.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkLabel174.AutoSize = true;
-            this.darkLabel174.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel174.Location = new System.Drawing.Point(18, 442);
-            this.darkLabel174.Name = "darkLabel174";
-            this.darkLabel174.Size = new System.Drawing.Size(20, 13);
-            this.darkLabel174.TabIndex = 286;
-            this.darkLabel174.Text = "Y:-";
-            // 
-            // darkLabel175
-            // 
-            this.darkLabel175.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkLabel175.AutoSize = true;
-            this.darkLabel175.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel175.Location = new System.Drawing.Point(18, 468);
-            this.darkLabel175.Name = "darkLabel175";
-            this.darkLabel175.Size = new System.Drawing.Size(20, 13);
-            this.darkLabel175.TabIndex = 287;
-            this.darkLabel175.Text = "Z:-";
-            // 
-            // SpatialGroupsSpawnPositionLB
-            // 
-            this.SpatialGroupsSpawnPositionLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.SpatialGroupsSpawnPositionLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.SpatialGroupsSpawnPositionLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.SpatialGroupsSpawnPositionLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SpatialGroupsSpawnPositionLB.FormattingEnabled = true;
-            this.SpatialGroupsSpawnPositionLB.Location = new System.Drawing.Point(6, 19);
-            this.SpatialGroupsSpawnPositionLB.Name = "SpatialGroupsSpawnPositionLB";
-            this.SpatialGroupsSpawnPositionLB.Size = new System.Drawing.Size(239, 381);
-            this.SpatialGroupsSpawnPositionLB.TabIndex = 210;
-            this.SpatialGroupsSpawnPositionLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.SpatialGroupsSpawnPositionLB.SelectedIndexChanged += new System.EventHandler(this.SpatialGroupsSpawnPositionLB_SelectedIndexChanged);
-            // 
             // SpatialPointGB
             // 
             this.SpatialPointGB.Controls.Add(this.SpatialGroupsPointSpatial_ChanceNUD);
@@ -6927,579 +7630,6 @@ namespace DayZeEditor
             this.SpatialGroupsPointSpatial_RadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.SpatialGroupsPointSpatial_RadiusNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsPointSpatial_RadiusNUD_ValueChanged);
             // 
-            // SpatialAudioGB
-            // 
-            this.SpatialAudioGB.Controls.Add(this.darkLabel172);
-            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_SensitivityNUD);
-            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_TriggerPositionXNUD);
-            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_TriggerPositionZNUD);
-            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_TriggerPositionYNUD);
-            this.SpatialAudioGB.Controls.Add(this.darkLabel169);
-            this.SpatialAudioGB.Controls.Add(this.darkLabel170);
-            this.SpatialAudioGB.Controls.Add(this.darkLabel171);
-            this.SpatialAudioGB.Controls.Add(this.darkLabel151);
-            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_SpawnModeCB);
-            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_HuntModeCB);
-            this.SpatialAudioGB.Controls.Add(this.darkLabel150);
-            this.SpatialAudioGB.Controls.Add(this.darkLabel149);
-            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_TriggerRadiusNUD);
-            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_ZoneLoadoutCB);
-            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_ChanceNUD);
-            this.SpatialAudioGB.Controls.Add(this.darkLabel127);
-            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_UnlimitedReloadCB);
-            this.SpatialAudioGB.Controls.Add(this.darkLabel128);
-            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_MaxAccuracyNUD);
-            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_MinAccuracyNUD);
-            this.SpatialAudioGB.Controls.Add(this.darkLabel129);
-            this.SpatialAudioGB.Controls.Add(this.darkLabel134);
-            this.SpatialAudioGB.Controls.Add(this.darkLabel138);
-            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_LootableCB);
-            this.SpatialAudioGB.Controls.Add(this.darkLabel143);
-            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_FactionCB);
-            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_MaxCountNUD);
-            this.SpatialAudioGB.Controls.Add(this.darkLabel144);
-            this.SpatialAudioGB.Controls.Add(this.darkLabel145);
-            this.SpatialAudioGB.Controls.Add(this.darkLabel146);
-            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_MinCountNUD);
-            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_NameTB);
-            this.SpatialAudioGB.Controls.Add(this.darkLabel147);
-            this.SpatialAudioGB.Controls.Add(this.darkLabel148);
-            this.SpatialAudioGB.Controls.Add(this.SpatialGroupsAudioSpatial_TimerNUD);
-            this.SpatialAudioGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SpatialAudioGB.Location = new System.Drawing.Point(6, 6);
-            this.SpatialAudioGB.Name = "SpatialAudioGB";
-            this.SpatialAudioGB.Size = new System.Drawing.Size(475, 496);
-            this.SpatialAudioGB.TabIndex = 222;
-            this.SpatialAudioGB.TabStop = false;
-            this.SpatialAudioGB.Text = "Audio";
-            // 
-            // darkLabel172
-            // 
-            this.darkLabel172.AutoSize = true;
-            this.darkLabel172.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel172.Location = new System.Drawing.Point(12, 338);
-            this.darkLabel172.Name = "darkLabel172";
-            this.darkLabel172.Size = new System.Drawing.Size(54, 13);
-            this.darkLabel172.TabIndex = 257;
-            this.darkLabel172.Text = "Sensitivity";
-            // 
-            // SpatialGroupsAudioSpatial_SensitivityNUD
-            // 
-            this.SpatialGroupsAudioSpatial_SensitivityNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.SpatialGroupsAudioSpatial_SensitivityNUD.DecimalPlaces = 1;
-            this.SpatialGroupsAudioSpatial_SensitivityNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.SpatialGroupsAudioSpatial_SensitivityNUD.Location = new System.Drawing.Point(122, 336);
-            this.SpatialGroupsAudioSpatial_SensitivityNUD.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.SpatialGroupsAudioSpatial_SensitivityNUD.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            -2147483648});
-            this.SpatialGroupsAudioSpatial_SensitivityNUD.Name = "SpatialGroupsAudioSpatial_SensitivityNUD";
-            this.SpatialGroupsAudioSpatial_SensitivityNUD.Size = new System.Drawing.Size(105, 20);
-            this.SpatialGroupsAudioSpatial_SensitivityNUD.TabIndex = 256;
-            this.SpatialGroupsAudioSpatial_SensitivityNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.SpatialGroupsAudioSpatial_SensitivityNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_SensitivityNUD_ValueChanged);
-            // 
-            // SpatialGroupsAudioSpatial_TriggerPositionXNUD
-            // 
-            this.SpatialGroupsAudioSpatial_TriggerPositionXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.SpatialGroupsAudioSpatial_TriggerPositionXNUD.DecimalPlaces = 6;
-            this.SpatialGroupsAudioSpatial_TriggerPositionXNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.SpatialGroupsAudioSpatial_TriggerPositionXNUD.Location = new System.Drawing.Point(122, 412);
-            this.SpatialGroupsAudioSpatial_TriggerPositionXNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.SpatialGroupsAudioSpatial_TriggerPositionXNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.SpatialGroupsAudioSpatial_TriggerPositionXNUD.Name = "SpatialGroupsAudioSpatial_TriggerPositionXNUD";
-            this.SpatialGroupsAudioSpatial_TriggerPositionXNUD.Size = new System.Drawing.Size(172, 20);
-            this.SpatialGroupsAudioSpatial_TriggerPositionXNUD.TabIndex = 250;
-            this.SpatialGroupsAudioSpatial_TriggerPositionXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.SpatialGroupsAudioSpatial_TriggerPositionXNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_TriggerPositionXNUD_ValueChanged);
-            // 
-            // SpatialGroupsAudioSpatial_TriggerPositionZNUD
-            // 
-            this.SpatialGroupsAudioSpatial_TriggerPositionZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.SpatialGroupsAudioSpatial_TriggerPositionZNUD.DecimalPlaces = 6;
-            this.SpatialGroupsAudioSpatial_TriggerPositionZNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.SpatialGroupsAudioSpatial_TriggerPositionZNUD.Location = new System.Drawing.Point(122, 464);
-            this.SpatialGroupsAudioSpatial_TriggerPositionZNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.SpatialGroupsAudioSpatial_TriggerPositionZNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.SpatialGroupsAudioSpatial_TriggerPositionZNUD.Name = "SpatialGroupsAudioSpatial_TriggerPositionZNUD";
-            this.SpatialGroupsAudioSpatial_TriggerPositionZNUD.Size = new System.Drawing.Size(172, 20);
-            this.SpatialGroupsAudioSpatial_TriggerPositionZNUD.TabIndex = 252;
-            this.SpatialGroupsAudioSpatial_TriggerPositionZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.SpatialGroupsAudioSpatial_TriggerPositionZNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_TriggerPositionZNUD_ValueChanged);
-            // 
-            // SpatialGroupsAudioSpatial_TriggerPositionYNUD
-            // 
-            this.SpatialGroupsAudioSpatial_TriggerPositionYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.SpatialGroupsAudioSpatial_TriggerPositionYNUD.DecimalPlaces = 6;
-            this.SpatialGroupsAudioSpatial_TriggerPositionYNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.SpatialGroupsAudioSpatial_TriggerPositionYNUD.Location = new System.Drawing.Point(122, 438);
-            this.SpatialGroupsAudioSpatial_TriggerPositionYNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.SpatialGroupsAudioSpatial_TriggerPositionYNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.SpatialGroupsAudioSpatial_TriggerPositionYNUD.Name = "SpatialGroupsAudioSpatial_TriggerPositionYNUD";
-            this.SpatialGroupsAudioSpatial_TriggerPositionYNUD.Size = new System.Drawing.Size(172, 20);
-            this.SpatialGroupsAudioSpatial_TriggerPositionYNUD.TabIndex = 251;
-            this.SpatialGroupsAudioSpatial_TriggerPositionYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.SpatialGroupsAudioSpatial_TriggerPositionYNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_TriggerPositionYNUD_ValueChanged);
-            // 
-            // darkLabel169
-            // 
-            this.darkLabel169.AutoSize = true;
-            this.darkLabel169.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel169.Location = new System.Drawing.Point(13, 414);
-            this.darkLabel169.Name = "darkLabel169";
-            this.darkLabel169.Size = new System.Drawing.Size(87, 13);
-            this.darkLabel169.TabIndex = 253;
-            this.darkLabel169.Text = "Tigger Position X";
-            // 
-            // darkLabel170
-            // 
-            this.darkLabel170.AutoSize = true;
-            this.darkLabel170.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel170.Location = new System.Drawing.Point(13, 440);
-            this.darkLabel170.Name = "darkLabel170";
-            this.darkLabel170.Size = new System.Drawing.Size(87, 13);
-            this.darkLabel170.TabIndex = 254;
-            this.darkLabel170.Text = "Tigger Position Y";
-            // 
-            // darkLabel171
-            // 
-            this.darkLabel171.AutoSize = true;
-            this.darkLabel171.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel171.Location = new System.Drawing.Point(13, 466);
-            this.darkLabel171.Name = "darkLabel171";
-            this.darkLabel171.Size = new System.Drawing.Size(87, 13);
-            this.darkLabel171.TabIndex = 255;
-            this.darkLabel171.Text = "Tigger Position Z";
-            // 
-            // darkLabel151
-            // 
-            this.darkLabel151.AutoSize = true;
-            this.darkLabel151.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel151.Location = new System.Drawing.Point(12, 366);
-            this.darkLabel151.Name = "darkLabel151";
-            this.darkLabel151.Size = new System.Drawing.Size(67, 13);
-            this.darkLabel151.TabIndex = 242;
-            this.darkLabel151.Text = "SpawnMode";
-            // 
-            // SpatialGroupsAudioSpatial_SpawnModeCB
-            // 
-            this.SpatialGroupsAudioSpatial_SpawnModeCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.SpatialGroupsAudioSpatial_SpawnModeCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SpatialGroupsAudioSpatial_SpawnModeCB.FormattingEnabled = true;
-            this.SpatialGroupsAudioSpatial_SpawnModeCB.Items.AddRange(new object[] {
-            "Single spawnposition or random if more than 1.",
-            "All spawnpositions"});
-            this.SpatialGroupsAudioSpatial_SpawnModeCB.Location = new System.Drawing.Point(122, 363);
-            this.SpatialGroupsAudioSpatial_SpawnModeCB.Name = "SpatialGroupsAudioSpatial_SpawnModeCB";
-            this.SpatialGroupsAudioSpatial_SpawnModeCB.Size = new System.Drawing.Size(330, 21);
-            this.SpatialGroupsAudioSpatial_SpawnModeCB.TabIndex = 243;
-            this.SpatialGroupsAudioSpatial_SpawnModeCB.SelectedIndexChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_SpawnModeCB_SelectedIndexChanged);
-            // 
-            // SpatialGroupsAudioSpatial_HuntModeCB
-            // 
-            this.SpatialGroupsAudioSpatial_HuntModeCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.SpatialGroupsAudioSpatial_HuntModeCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SpatialGroupsAudioSpatial_HuntModeCB.FormattingEnabled = true;
-            this.SpatialGroupsAudioSpatial_HuntModeCB.Items.AddRange(new object[] {
-            "Hunt player aggressively.",
-            "Go to players location when ai spawned.",
-            "Idle.",
-            "Run around a bit then stand still.",
-            "12 ai waypoints per 2.5m on the timers.",
-            "Follows the player 80-100m, closer 35-50m if player idle."});
-            this.SpatialGroupsAudioSpatial_HuntModeCB.Location = new System.Drawing.Point(122, 151);
-            this.SpatialGroupsAudioSpatial_HuntModeCB.Name = "SpatialGroupsAudioSpatial_HuntModeCB";
-            this.SpatialGroupsAudioSpatial_HuntModeCB.Size = new System.Drawing.Size(330, 21);
-            this.SpatialGroupsAudioSpatial_HuntModeCB.TabIndex = 241;
-            this.SpatialGroupsAudioSpatial_HuntModeCB.SelectedIndexChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_HuntModeCB_SelectedIndexChanged);
-            // 
-            // darkLabel150
-            // 
-            this.darkLabel150.AutoSize = true;
-            this.darkLabel150.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel150.Location = new System.Drawing.Point(12, 154);
-            this.darkLabel150.Name = "darkLabel150";
-            this.darkLabel150.Size = new System.Drawing.Size(60, 13);
-            this.darkLabel150.TabIndex = 240;
-            this.darkLabel150.Text = "Hunt Mode";
-            // 
-            // darkLabel149
-            // 
-            this.darkLabel149.AutoSize = true;
-            this.darkLabel149.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel149.Location = new System.Drawing.Point(12, 48);
-            this.darkLabel149.Name = "darkLabel149";
-            this.darkLabel149.Size = new System.Drawing.Size(40, 13);
-            this.darkLabel149.TabIndex = 239;
-            this.darkLabel149.Text = "Radius";
-            // 
-            // SpatialGroupsAudioSpatial_TriggerRadiusNUD
-            // 
-            this.SpatialGroupsAudioSpatial_TriggerRadiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.SpatialGroupsAudioSpatial_TriggerRadiusNUD.DecimalPlaces = 1;
-            this.SpatialGroupsAudioSpatial_TriggerRadiusNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.SpatialGroupsAudioSpatial_TriggerRadiusNUD.Location = new System.Drawing.Point(122, 46);
-            this.SpatialGroupsAudioSpatial_TriggerRadiusNUD.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.SpatialGroupsAudioSpatial_TriggerRadiusNUD.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            -2147483648});
-            this.SpatialGroupsAudioSpatial_TriggerRadiusNUD.Name = "SpatialGroupsAudioSpatial_TriggerRadiusNUD";
-            this.SpatialGroupsAudioSpatial_TriggerRadiusNUD.Size = new System.Drawing.Size(105, 20);
-            this.SpatialGroupsAudioSpatial_TriggerRadiusNUD.TabIndex = 238;
-            this.SpatialGroupsAudioSpatial_TriggerRadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.SpatialGroupsAudioSpatial_TriggerRadiusNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_TriggerRadiusNUD_ValueChanged);
-            // 
-            // SpatialGroupsAudioSpatial_ZoneLoadoutCB
-            // 
-            this.SpatialGroupsAudioSpatial_ZoneLoadoutCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.SpatialGroupsAudioSpatial_ZoneLoadoutCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SpatialGroupsAudioSpatial_ZoneLoadoutCB.FormattingEnabled = true;
-            this.SpatialGroupsAudioSpatial_ZoneLoadoutCB.Location = new System.Drawing.Point(122, 72);
-            this.SpatialGroupsAudioSpatial_ZoneLoadoutCB.Name = "SpatialGroupsAudioSpatial_ZoneLoadoutCB";
-            this.SpatialGroupsAudioSpatial_ZoneLoadoutCB.Size = new System.Drawing.Size(330, 21);
-            this.SpatialGroupsAudioSpatial_ZoneLoadoutCB.TabIndex = 237;
-            this.SpatialGroupsAudioSpatial_ZoneLoadoutCB.SelectedIndexChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_ZoneLoadoutCB_SelectedIndexChanged);
-            // 
-            // SpatialGroupsAudioSpatial_ChanceNUD
-            // 
-            this.SpatialGroupsAudioSpatial_ChanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.SpatialGroupsAudioSpatial_ChanceNUD.DecimalPlaces = 2;
-            this.SpatialGroupsAudioSpatial_ChanceNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.SpatialGroupsAudioSpatial_ChanceNUD.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
-            this.SpatialGroupsAudioSpatial_ChanceNUD.Location = new System.Drawing.Point(122, 232);
-            this.SpatialGroupsAudioSpatial_ChanceNUD.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.SpatialGroupsAudioSpatial_ChanceNUD.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            -2147483648});
-            this.SpatialGroupsAudioSpatial_ChanceNUD.Name = "SpatialGroupsAudioSpatial_ChanceNUD";
-            this.SpatialGroupsAudioSpatial_ChanceNUD.Size = new System.Drawing.Size(105, 20);
-            this.SpatialGroupsAudioSpatial_ChanceNUD.TabIndex = 236;
-            this.SpatialGroupsAudioSpatial_ChanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.SpatialGroupsAudioSpatial_ChanceNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_ChanceNUD_ValueChanged);
-            // 
-            // darkLabel127
-            // 
-            this.darkLabel127.AutoSize = true;
-            this.darkLabel127.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel127.Location = new System.Drawing.Point(13, 392);
-            this.darkLabel127.Name = "darkLabel127";
-            this.darkLabel127.Size = new System.Drawing.Size(87, 13);
-            this.darkLabel127.TabIndex = 229;
-            this.darkLabel127.Text = "Unlimited Reload";
-            // 
-            // SpatialGroupsAudioSpatial_UnlimitedReloadCB
-            // 
-            this.SpatialGroupsAudioSpatial_UnlimitedReloadCB.AutoSize = true;
-            this.SpatialGroupsAudioSpatial_UnlimitedReloadCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.SpatialGroupsAudioSpatial_UnlimitedReloadCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SpatialGroupsAudioSpatial_UnlimitedReloadCB.Location = new System.Drawing.Point(123, 392);
-            this.SpatialGroupsAudioSpatial_UnlimitedReloadCB.Name = "SpatialGroupsAudioSpatial_UnlimitedReloadCB";
-            this.SpatialGroupsAudioSpatial_UnlimitedReloadCB.Size = new System.Drawing.Size(15, 14);
-            this.SpatialGroupsAudioSpatial_UnlimitedReloadCB.TabIndex = 224;
-            this.SpatialGroupsAudioSpatial_UnlimitedReloadCB.UseVisualStyleBackColor = true;
-            this.SpatialGroupsAudioSpatial_UnlimitedReloadCB.CheckedChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_UnlimitedReloadCB_CheckedChanged);
-            // 
-            // darkLabel128
-            // 
-            this.darkLabel128.AutoSize = true;
-            this.darkLabel128.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel128.Location = new System.Drawing.Point(13, 260);
-            this.darkLabel128.Name = "darkLabel128";
-            this.darkLabel128.Size = new System.Drawing.Size(72, 13);
-            this.darkLabel128.TabIndex = 226;
-            this.darkLabel128.Text = "Accuracy Min";
-            // 
-            // SpatialGroupsAudioSpatial_MaxAccuracyNUD
-            // 
-            this.SpatialGroupsAudioSpatial_MaxAccuracyNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.SpatialGroupsAudioSpatial_MaxAccuracyNUD.DecimalPlaces = 2;
-            this.SpatialGroupsAudioSpatial_MaxAccuracyNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.SpatialGroupsAudioSpatial_MaxAccuracyNUD.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
-            this.SpatialGroupsAudioSpatial_MaxAccuracyNUD.Location = new System.Drawing.Point(122, 284);
-            this.SpatialGroupsAudioSpatial_MaxAccuracyNUD.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.SpatialGroupsAudioSpatial_MaxAccuracyNUD.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            -2147483648});
-            this.SpatialGroupsAudioSpatial_MaxAccuracyNUD.Name = "SpatialGroupsAudioSpatial_MaxAccuracyNUD";
-            this.SpatialGroupsAudioSpatial_MaxAccuracyNUD.Size = new System.Drawing.Size(105, 20);
-            this.SpatialGroupsAudioSpatial_MaxAccuracyNUD.TabIndex = 227;
-            this.SpatialGroupsAudioSpatial_MaxAccuracyNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.SpatialGroupsAudioSpatial_MaxAccuracyNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_MaxAccuracyNUD_ValueChanged);
-            // 
-            // SpatialGroupsAudioSpatial_MinAccuracyNUD
-            // 
-            this.SpatialGroupsAudioSpatial_MinAccuracyNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.SpatialGroupsAudioSpatial_MinAccuracyNUD.DecimalPlaces = 2;
-            this.SpatialGroupsAudioSpatial_MinAccuracyNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.SpatialGroupsAudioSpatial_MinAccuracyNUD.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
-            this.SpatialGroupsAudioSpatial_MinAccuracyNUD.Location = new System.Drawing.Point(122, 258);
-            this.SpatialGroupsAudioSpatial_MinAccuracyNUD.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.SpatialGroupsAudioSpatial_MinAccuracyNUD.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            -2147483648});
-            this.SpatialGroupsAudioSpatial_MinAccuracyNUD.Name = "SpatialGroupsAudioSpatial_MinAccuracyNUD";
-            this.SpatialGroupsAudioSpatial_MinAccuracyNUD.Size = new System.Drawing.Size(105, 20);
-            this.SpatialGroupsAudioSpatial_MinAccuracyNUD.TabIndex = 225;
-            this.SpatialGroupsAudioSpatial_MinAccuracyNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.SpatialGroupsAudioSpatial_MinAccuracyNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_MinAccuracyNUD_ValueChanged);
-            // 
-            // darkLabel129
-            // 
-            this.darkLabel129.AutoSize = true;
-            this.darkLabel129.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel129.Location = new System.Drawing.Point(13, 286);
-            this.darkLabel129.Name = "darkLabel129";
-            this.darkLabel129.Size = new System.Drawing.Size(75, 13);
-            this.darkLabel129.TabIndex = 228;
-            this.darkLabel129.Text = "Accuracy Max";
-            // 
-            // darkLabel134
-            // 
-            this.darkLabel134.AutoSize = true;
-            this.darkLabel134.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel134.Location = new System.Drawing.Point(13, 234);
-            this.darkLabel134.Name = "darkLabel134";
-            this.darkLabel134.Size = new System.Drawing.Size(44, 13);
-            this.darkLabel134.TabIndex = 223;
-            this.darkLabel134.Text = "Chance";
-            // 
-            // darkLabel138
-            // 
-            this.darkLabel138.AutoSize = true;
-            this.darkLabel138.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel138.Location = new System.Drawing.Point(12, 208);
-            this.darkLabel138.Name = "darkLabel138";
-            this.darkLabel138.Size = new System.Drawing.Size(48, 13);
-            this.darkLabel138.TabIndex = 212;
-            this.darkLabel138.Text = "Lootable";
-            // 
-            // SpatialGroupsAudioSpatial_LootableCB
-            // 
-            this.SpatialGroupsAudioSpatial_LootableCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.SpatialGroupsAudioSpatial_LootableCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SpatialGroupsAudioSpatial_LootableCB.FormattingEnabled = true;
-            this.SpatialGroupsAudioSpatial_LootableCB.Items.AddRange(new object[] {
-            "Not Lootable",
-            "All Lootable",
-            "Randomly Lootable",
-            "Leader Lootable"});
-            this.SpatialGroupsAudioSpatial_LootableCB.Location = new System.Drawing.Point(122, 205);
-            this.SpatialGroupsAudioSpatial_LootableCB.Name = "SpatialGroupsAudioSpatial_LootableCB";
-            this.SpatialGroupsAudioSpatial_LootableCB.Size = new System.Drawing.Size(330, 21);
-            this.SpatialGroupsAudioSpatial_LootableCB.TabIndex = 213;
-            this.SpatialGroupsAudioSpatial_LootableCB.SelectedIndexChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_LootableCB_SelectedIndexChanged);
-            // 
-            // darkLabel143
-            // 
-            this.darkLabel143.AutoSize = true;
-            this.darkLabel143.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel143.Location = new System.Drawing.Point(12, 181);
-            this.darkLabel143.Name = "darkLabel143";
-            this.darkLabel143.Size = new System.Drawing.Size(42, 13);
-            this.darkLabel143.TabIndex = 210;
-            this.darkLabel143.Text = "Faction";
-            // 
-            // SpatialGroupsAudioSpatial_FactionCB
-            // 
-            this.SpatialGroupsAudioSpatial_FactionCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.SpatialGroupsAudioSpatial_FactionCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SpatialGroupsAudioSpatial_FactionCB.FormattingEnabled = true;
-            this.SpatialGroupsAudioSpatial_FactionCB.Location = new System.Drawing.Point(122, 178);
-            this.SpatialGroupsAudioSpatial_FactionCB.Name = "SpatialGroupsAudioSpatial_FactionCB";
-            this.SpatialGroupsAudioSpatial_FactionCB.Size = new System.Drawing.Size(330, 21);
-            this.SpatialGroupsAudioSpatial_FactionCB.TabIndex = 211;
-            this.SpatialGroupsAudioSpatial_FactionCB.SelectedIndexChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_FactionCB_SelectedIndexChanged);
-            // 
-            // SpatialGroupsAudioSpatial_MaxCountNUD
-            // 
-            this.SpatialGroupsAudioSpatial_MaxCountNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.SpatialGroupsAudioSpatial_MaxCountNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.SpatialGroupsAudioSpatial_MaxCountNUD.Location = new System.Drawing.Point(122, 125);
-            this.SpatialGroupsAudioSpatial_MaxCountNUD.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.SpatialGroupsAudioSpatial_MaxCountNUD.Minimum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            -2147483648});
-            this.SpatialGroupsAudioSpatial_MaxCountNUD.Name = "SpatialGroupsAudioSpatial_MaxCountNUD";
-            this.SpatialGroupsAudioSpatial_MaxCountNUD.Size = new System.Drawing.Size(105, 20);
-            this.SpatialGroupsAudioSpatial_MaxCountNUD.TabIndex = 206;
-            this.SpatialGroupsAudioSpatial_MaxCountNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.SpatialGroupsAudioSpatial_MaxCountNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_MaxCountNUD_ValueChanged);
-            // 
-            // darkLabel144
-            // 
-            this.darkLabel144.AutoSize = true;
-            this.darkLabel144.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel144.Location = new System.Drawing.Point(11, 127);
-            this.darkLabel144.Name = "darkLabel144";
-            this.darkLabel144.Size = new System.Drawing.Size(94, 13);
-            this.darkLabel144.TabIndex = 207;
-            this.darkLabel144.Text = "Max Number Of AI";
-            // 
-            // darkLabel145
-            // 
-            this.darkLabel145.AutoSize = true;
-            this.darkLabel145.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel145.Location = new System.Drawing.Point(12, 23);
-            this.darkLabel145.Name = "darkLabel145";
-            this.darkLabel145.Size = new System.Drawing.Size(35, 13);
-            this.darkLabel145.TabIndex = 203;
-            this.darkLabel145.Text = "Name";
-            // 
-            // darkLabel146
-            // 
-            this.darkLabel146.AutoSize = true;
-            this.darkLabel146.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel146.Location = new System.Drawing.Point(11, 75);
-            this.darkLabel146.Name = "darkLabel146";
-            this.darkLabel146.Size = new System.Drawing.Size(65, 13);
-            this.darkLabel146.TabIndex = 197;
-            this.darkLabel146.Text = "Loadout File";
-            // 
-            // SpatialGroupsAudioSpatial_MinCountNUD
-            // 
-            this.SpatialGroupsAudioSpatial_MinCountNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.SpatialGroupsAudioSpatial_MinCountNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.SpatialGroupsAudioSpatial_MinCountNUD.Location = new System.Drawing.Point(122, 99);
-            this.SpatialGroupsAudioSpatial_MinCountNUD.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.SpatialGroupsAudioSpatial_MinCountNUD.Minimum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            -2147483648});
-            this.SpatialGroupsAudioSpatial_MinCountNUD.Name = "SpatialGroupsAudioSpatial_MinCountNUD";
-            this.SpatialGroupsAudioSpatial_MinCountNUD.Size = new System.Drawing.Size(105, 20);
-            this.SpatialGroupsAudioSpatial_MinCountNUD.TabIndex = 198;
-            this.SpatialGroupsAudioSpatial_MinCountNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.SpatialGroupsAudioSpatial_MinCountNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_MinCountNUD_ValueChanged);
-            // 
-            // SpatialGroupsAudioSpatial_NameTB
-            // 
-            this.SpatialGroupsAudioSpatial_NameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.SpatialGroupsAudioSpatial_NameTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SpatialGroupsAudioSpatial_NameTB.Location = new System.Drawing.Point(122, 20);
-            this.SpatialGroupsAudioSpatial_NameTB.Name = "SpatialGroupsAudioSpatial_NameTB";
-            this.SpatialGroupsAudioSpatial_NameTB.Size = new System.Drawing.Size(330, 20);
-            this.SpatialGroupsAudioSpatial_NameTB.TabIndex = 202;
-            this.SpatialGroupsAudioSpatial_NameTB.TextChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_NameTB_TextChanged);
-            // 
-            // darkLabel147
-            // 
-            this.darkLabel147.AutoSize = true;
-            this.darkLabel147.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel147.Location = new System.Drawing.Point(11, 101);
-            this.darkLabel147.Name = "darkLabel147";
-            this.darkLabel147.Size = new System.Drawing.Size(91, 13);
-            this.darkLabel147.TabIndex = 199;
-            this.darkLabel147.Text = "Min Number Of AI";
-            // 
-            // darkLabel148
-            // 
-            this.darkLabel148.AutoSize = true;
-            this.darkLabel148.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel148.Location = new System.Drawing.Point(12, 312);
-            this.darkLabel148.Name = "darkLabel148";
-            this.darkLabel148.Size = new System.Drawing.Size(33, 13);
-            this.darkLabel148.TabIndex = 201;
-            this.darkLabel148.Text = "Timer";
-            // 
-            // SpatialGroupsAudioSpatial_TimerNUD
-            // 
-            this.SpatialGroupsAudioSpatial_TimerNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.SpatialGroupsAudioSpatial_TimerNUD.DecimalPlaces = 1;
-            this.SpatialGroupsAudioSpatial_TimerNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.SpatialGroupsAudioSpatial_TimerNUD.Location = new System.Drawing.Point(122, 310);
-            this.SpatialGroupsAudioSpatial_TimerNUD.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.SpatialGroupsAudioSpatial_TimerNUD.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            -2147483648});
-            this.SpatialGroupsAudioSpatial_TimerNUD.Name = "SpatialGroupsAudioSpatial_TimerNUD";
-            this.SpatialGroupsAudioSpatial_TimerNUD.Size = new System.Drawing.Size(105, 20);
-            this.SpatialGroupsAudioSpatial_TimerNUD.TabIndex = 200;
-            this.SpatialGroupsAudioSpatial_TimerNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.SpatialGroupsAudioSpatial_TimerNUD.ValueChanged += new System.EventHandler(this.SpatialGroupsAudioSpatial_TimerNUD_ValueChanged);
-            // 
             // tabPage12
             // 
             this.tabPage12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
@@ -7515,6 +7645,28 @@ namespace DayZeEditor
             this.tabPage12.Size = new System.Drawing.Size(940, 562);
             this.tabPage12.TabIndex = 1;
             this.tabPage12.Text = "AI Patrol Map Visualisation";
+            // 
+            // checkBox9
+            // 
+            this.checkBox9.AutoSize = true;
+            this.checkBox9.Location = new System.Drawing.Point(438, 10);
+            this.checkBox9.Name = "checkBox9";
+            this.checkBox9.Size = new System.Drawing.Size(104, 17);
+            this.checkBox9.TabIndex = 113;
+            this.checkBox9.Text = "Show All Groups";
+            this.checkBox9.UseVisualStyleBackColor = true;
+            this.checkBox9.CheckedChanged += new System.EventHandler(this.checkBox9_CheckedChanged);
+            // 
+            // checkBox8
+            // 
+            this.checkBox8.AutoSize = true;
+            this.checkBox8.Location = new System.Drawing.Point(308, 11);
+            this.checkBox8.Name = "checkBox8";
+            this.checkBox8.Size = new System.Drawing.Size(108, 17);
+            this.checkBox8.TabIndex = 112;
+            this.checkBox8.Text = "Show All in group";
+            this.checkBox8.UseVisualStyleBackColor = true;
+            this.checkBox8.CheckedChanged += new System.EventHandler(this.checkBox8_CheckedChanged);
             // 
             // label2
             // 
@@ -7642,6 +7794,17 @@ namespace DayZeEditor
             this.SpatialGroupsCB.TabIndex = 222;
             this.SpatialGroupsCB.SelectedIndexChanged += new System.EventHandler(this.SpatialGroupsCB_SelectedIndexChanged);
             // 
+            // darkButton35
+            // 
+            this.darkButton35.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton35.Location = new System.Drawing.Point(105, 550);
+            this.darkButton35.Name = "darkButton35";
+            this.darkButton35.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton35.Size = new System.Drawing.Size(139, 23);
+            this.darkButton35.TabIndex = 259;
+            this.darkButton35.Text = "Add New From Dze";
+            this.darkButton35.Click += new System.EventHandler(this.darkButton35_Click);
+            // 
             // darkButton26
             // 
             this.darkButton26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -7681,6 +7844,7 @@ namespace DayZeEditor
             // 
             // darkToolStrip24
             // 
+            this.darkToolStrip24.AllowMerge = false;
             this.darkToolStrip24.AutoSize = false;
             this.darkToolStrip24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.darkToolStrip24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
@@ -7769,6 +7933,7 @@ namespace DayZeEditor
             // 
             // darkToolStrip23
             // 
+            this.darkToolStrip23.AllowMerge = false;
             this.darkToolStrip23.AutoSize = false;
             this.darkToolStrip23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.darkToolStrip23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
@@ -7855,165 +8020,16 @@ namespace DayZeEditor
             this.toolStripButton6.Text = "Dynamic AI Addon";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
-            // checkBox8
+            // checkBox10
             // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(308, 11);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(108, 17);
-            this.checkBox8.TabIndex = 112;
-            this.checkBox8.Text = "Show All in group";
-            this.checkBox8.UseVisualStyleBackColor = true;
-            this.checkBox8.CheckedChanged += new System.EventHandler(this.checkBox8_CheckedChanged);
-            // 
-            // checkBox9
-            // 
-            this.checkBox9.AutoSize = true;
-            this.checkBox9.Location = new System.Drawing.Point(438, 10);
-            this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size(104, 17);
-            this.checkBox9.TabIndex = 113;
-            this.checkBox9.Text = "Show All Groups";
-            this.checkBox9.UseVisualStyleBackColor = true;
-            this.checkBox9.CheckedChanged += new System.EventHandler(this.checkBox9_CheckedChanged);
-            // 
-            // SpatialGroupImportGB
-            // 
-            this.SpatialGroupImportGB.Controls.Add(this.darkButton32);
-            this.SpatialGroupImportGB.Controls.Add(this.darkButton33);
-            this.SpatialGroupImportGB.Controls.Add(this.darkLabel176);
-            this.SpatialGroupImportGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.SpatialGroupImportGB.Location = new System.Drawing.Point(787, 6);
-            this.SpatialGroupImportGB.Name = "SpatialGroupImportGB";
-            this.SpatialGroupImportGB.Size = new System.Drawing.Size(463, 139);
-            this.SpatialGroupImportGB.TabIndex = 258;
-            this.SpatialGroupImportGB.TabStop = false;
-            this.SpatialGroupImportGB.Text = "Import";
-            // 
-            // darkLabel176
-            // 
-            this.darkLabel176.AutoSize = true;
-            this.darkLabel176.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel176.Location = new System.Drawing.Point(6, 16);
-            this.darkLabel176.Name = "darkLabel176";
-            this.darkLabel176.Size = new System.Drawing.Size(422, 78);
-            this.darkLabel176.TabIndex = 206;
-            this.darkLabel176.Text = resources.GetString("darkLabel176.Text");
-            // 
-            // darkButton32
-            // 
-            this.darkButton32.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton32.Location = new System.Drawing.Point(6, 110);
-            this.darkButton32.Name = "darkButton32";
-            this.darkButton32.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton32.Size = new System.Drawing.Size(145, 23);
-            this.darkButton32.TabIndex = 271;
-            this.darkButton32.Text = "Import from DZE";
-            this.darkButton32.Click += new System.EventHandler(this.darkButton32_Click);
-            // 
-            // darkButton33
-            // 
-            this.darkButton33.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton33.Location = new System.Drawing.Point(157, 109);
-            this.darkButton33.Name = "darkButton33";
-            this.darkButton33.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton33.Size = new System.Drawing.Size(145, 23);
-            this.darkButton33.TabIndex = 270;
-            this.darkButton33.Text = "Export to DZE";
-            this.darkButton33.Click += new System.EventHandler(this.darkButton33_Click);
-            // 
-            // darkButton35
-            // 
-            this.darkButton35.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton35.Location = new System.Drawing.Point(105, 550);
-            this.darkButton35.Name = "darkButton35";
-            this.darkButton35.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton35.Size = new System.Drawing.Size(139, 23);
-            this.darkButton35.TabIndex = 259;
-            this.darkButton35.Text = "Add New From Dze";
-            this.darkButton35.Click += new System.EventHandler(this.darkButton35_Click);
-            // 
-            // groupBox15
-            // 
-            this.groupBox15.Controls.Add(this.darkButton37);
-            this.groupBox15.Controls.Add(this.darkLabel177);
-            this.groupBox15.Controls.Add(this.FactionEditTB);
-            this.groupBox15.Controls.Add(this.darkButton34);
-            this.groupBox15.Controls.Add(this.darkButton36);
-            this.groupBox15.Controls.Add(this.FactionEditLB);
-            this.groupBox15.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox15.Location = new System.Drawing.Point(721, 6);
-            this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(298, 360);
-            this.groupBox15.TabIndex = 136;
-            this.groupBox15.TabStop = false;
-            this.groupBox15.Text = "Edit Factions";
-            // 
-            // darkButton34
-            // 
-            this.darkButton34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton34.Location = new System.Drawing.Point(266, 260);
-            this.darkButton34.Name = "darkButton34";
-            this.darkButton34.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton34.Size = new System.Drawing.Size(23, 23);
-            this.darkButton34.TabIndex = 128;
-            this.darkButton34.Text = "-";
-            this.darkButton34.Click += new System.EventHandler(this.darkButton34_Click);
-            // 
-            // darkButton36
-            // 
-            this.darkButton36.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton36.Location = new System.Drawing.Point(266, 19);
-            this.darkButton36.Name = "darkButton36";
-            this.darkButton36.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton36.Size = new System.Drawing.Size(23, 23);
-            this.darkButton36.TabIndex = 127;
-            this.darkButton36.Text = "+";
-            this.darkButton36.Click += new System.EventHandler(this.darkButton36_Click);
-            // 
-            // FactionEditLB
-            // 
-            this.FactionEditLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.FactionEditLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.FactionEditLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.FactionEditLB.FormattingEnabled = true;
-            this.FactionEditLB.Location = new System.Drawing.Point(6, 19);
-            this.FactionEditLB.Name = "FactionEditLB";
-            this.FactionEditLB.Size = new System.Drawing.Size(254, 264);
-            this.FactionEditLB.TabIndex = 126;
-            this.FactionEditLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.FactionEditLB.SelectedIndexChanged += new System.EventHandler(this.FactionEditLB_SelectedIndexChanged);
-            // 
-            // FactionEditTB
-            // 
-            this.FactionEditTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.FactionEditTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.FactionEditTB.Location = new System.Drawing.Point(7, 304);
-            this.FactionEditTB.Name = "FactionEditTB";
-            this.FactionEditTB.Size = new System.Drawing.Size(282, 20);
-            this.FactionEditTB.TabIndex = 198;
-            this.FactionEditTB.TextChanged += new System.EventHandler(this.FactionEditTB_TextChanged);
-            // 
-            // darkLabel177
-            // 
-            this.darkLabel177.AutoSize = true;
-            this.darkLabel177.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel177.Location = new System.Drawing.Point(6, 288);
-            this.darkLabel177.Name = "darkLabel177";
-            this.darkLabel177.Size = new System.Drawing.Size(42, 13);
-            this.darkLabel177.TabIndex = 143;
-            this.darkLabel177.Text = "Faction";
-            // 
-            // darkButton37
-            // 
-            this.darkButton37.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton37.Location = new System.Drawing.Point(6, 328);
-            this.darkButton37.Name = "darkButton37";
-            this.darkButton37.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton37.Size = new System.Drawing.Size(283, 23);
-            this.darkButton37.TabIndex = 220;
-            this.darkButton37.Text = "Save and Update Changes";
-            this.darkButton37.Click += new System.EventHandler(this.darkButton37_Click);
+            this.checkBox10.AutoSize = true;
+            this.checkBox10.Location = new System.Drawing.Point(270, 10);
+            this.checkBox10.Name = "checkBox10";
+            this.checkBox10.Size = new System.Drawing.Size(102, 17);
+            this.checkBox10.TabIndex = 113;
+            this.checkBox10.Text = "Show All Patrols";
+            this.checkBox10.UseVisualStyleBackColor = true;
+            this.checkBox10.CheckedChanged += new System.EventHandler(this.checkBox10_CheckedChanged);
             // 
             // ExpansionAI
             // 
@@ -8032,6 +8048,8 @@ namespace DayZeEditor
             this.darkToolStrip21.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.TabPage1.ResumeLayout(false);
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox15.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AIGeneralDamageReceivedMultiplierNUD)).EndInit();
@@ -8148,6 +8166,26 @@ namespace DayZeEditor
             this.panel3.ResumeLayout(false);
             this.tabControl4.ResumeLayout(false);
             this.tabPage11.ResumeLayout(false);
+            this.SpatialGroupImportGB.ResumeLayout(false);
+            this.SpatialGroupImportGB.PerformLayout();
+            this.SpawnPositionGB.ResumeLayout(false);
+            this.SpawnPositionGB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsSpatial_SpawnPositionXNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsSpatial_SpawnPositionZNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsSpatial_SpawnPositionYNUD)).EndInit();
+            this.SpatialAudioGB.ResumeLayout(false);
+            this.SpatialAudioGB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_SensitivityNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_TriggerPositionXNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_TriggerPositionZNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_TriggerPositionYNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_TriggerRadiusNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_ChanceNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_MaxAccuracyNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_MinAccuracyNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_MaxCountNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_MinCountNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_TimerNUD)).EndInit();
             this.SpatialGroupGB.ResumeLayout(false);
             this.SpatialGroupGB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsGroupSpatial_ChanceNUD)).EndInit();
@@ -8168,11 +8206,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsLocationSpatial_MaxCountNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsLocationSpatial_MinCountNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsLocationSpatial_TimerNUD)).EndInit();
-            this.SpawnPositionGB.ResumeLayout(false);
-            this.SpawnPositionGB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsSpatial_SpawnPositionXNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsSpatial_SpawnPositionZNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsSpatial_SpawnPositionYNUD)).EndInit();
             this.SpatialPointGB.ResumeLayout(false);
             this.SpatialPointGB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsPointSpatial_ChanceNUD)).EndInit();
@@ -8184,19 +8217,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsPointSpatial_MaxCountNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsPointSpatial_MinCountNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsPointSpatial_RadiusNUD)).EndInit();
-            this.SpatialAudioGB.ResumeLayout(false);
-            this.SpatialAudioGB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_SensitivityNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_TriggerPositionXNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_TriggerPositionZNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_TriggerPositionYNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_TriggerRadiusNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_ChanceNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_MaxAccuracyNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_MinAccuracyNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_MaxCountNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_MinCountNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpatialGroupsAudioSpatial_TimerNUD)).EndInit();
             this.tabPage12.ResumeLayout(false);
             this.tabPage12.PerformLayout();
             this.panelEx1.ResumeLayout(false);
@@ -8209,10 +8229,6 @@ namespace DayZeEditor
             this.darkToolStrip24.PerformLayout();
             this.darkToolStrip23.ResumeLayout(false);
             this.darkToolStrip23.PerformLayout();
-            this.SpatialGroupImportGB.ResumeLayout(false);
-            this.SpatialGroupImportGB.PerformLayout();
-            this.groupBox15.ResumeLayout(false);
-            this.groupBox15.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -8715,5 +8731,6 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton darkButton36;
         private System.Windows.Forms.ListBox FactionEditLB;
         private DarkUI.Controls.DarkButton darkButton37;
+        private System.Windows.Forms.CheckBox checkBox10;
     }
 }

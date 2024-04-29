@@ -1,4 +1,21 @@
-﻿Version 0.7.9.9
+﻿Version 0.8.0.0
+[Fixed] 
+Expansion Territories - Authenicate Codelock checkbox was producing an error when checked.
+Expansion Market - Trader - DisplayCurrency name was not picking up changes.
+Expansion Market - Spawn Positions - Missing train spawns added.
+Expansion Missions - Missing Config version
+Expansion Base Building - Codelock attchmode was wrong order
+Expansion AI - Fixed waypoints not saving new values.
+[Added]
+MPG Spawner Manager
+Dolphins Dynamic AI Manager added to the expansion AI Manager, will be visable if you have the files installed
+Expansion AI - Missing options added plus a general tidy up.
+Spawner Babuka - Fields will now be hidden when no location is selected.
+[Removed]
+removed some internal code releated drive mapping, decinded to not go down that road.
+
+
+Version 0.7.9.9
 [Fixed]
 Expansion Damage config buttons fixed, no code was added but all functional now.
 Expansion Map setting map Zoom was referenciong the wriong scale when zooming giving wrong coords when not at outermodt zoom.

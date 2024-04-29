@@ -75,16 +75,6 @@ namespace DayZeEditor
                 ActiveProject = "";
                 return;
             }
-            if(p.MapNetworkDrive == true)
-            {
-                NetworkDrive.MapNetworkDrive(p.Networkdriveletter , @"\\sshfs\" + p.NetworkUsername + p.NetworkHost);
-                while (!NetworkDrive.IsDriveMapped(p.Networkdriveletter))
-                {
-
-                }
-            }
-           
-            Console.WriteLine("INFO Network drive Mapped : " + p.Networkdriveletter);
             ActiveProject = p.ProjectName + ":" + p.mpmissionpath.Split('.')[1];
             SaveProject(false, false);
         }
@@ -110,10 +100,6 @@ namespace DayZeEditor
         public int MapSize { get; set; }
         public string mpmissionpath { get; set; }
         public bool Createbackups { get; set; }
-        public bool MapNetworkDrive { get; set; }
-        public string Networkdriveletter { get; set; }
-        public string NetworkUsername { get; set; }
-        public string NetworkHost { get; set; }
 
 
         [JsonIgnore]
@@ -167,10 +153,6 @@ namespace DayZeEditor
             MapSize = 0;
             mpmissionpath = "";
             Createbackups = false;
-            MapNetworkDrive = false;
-            NetworkHost = "";
-            NetworkUsername = "";
-            Networkdriveletter = "";
             usingDrJoneTrader = false;
             usingexpansionMarket = false;
             usingtraderplus = false;
@@ -501,28 +483,6 @@ namespace DayZeEditor
         public void SetcfgEffectAreaConfig()
         {
             cfgEffectAreaConfig = new cfgEffectAreaConfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgEffectArea.json");
-        }
-        public bool Setmappedrive()
-        {
-            if (MapNetworkDrive == true)
-            {
-                NetworkDrive.MapNetworkDrive(Networkdriveletter, @"\\sshfs\" + NetworkUsername + NetworkHost);
-                Stopwatch s = new Stopwatch();
-                s.Start();
-                while (!NetworkDrive.IsDriveMapped(Networkdriveletter) && s.Elapsed < TimeSpan.FromSeconds(30))
-                {
-                    
-                }
-                if (s.Elapsed >= TimeSpan.FromSeconds(30))
-                {
-                    s.Stop();
-                    Console.WriteLine("ERROR: Network Drive Not Mapped : " + Networkdriveletter);
-                    return false;
-                }
-                Console.WriteLine("INFO: Network Drive Mapped : " + Networkdriveletter);
-                return true;
-            }
-            return true;
         }
     }
 }

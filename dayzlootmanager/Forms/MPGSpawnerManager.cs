@@ -14,6 +14,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Web.UI.Design.WebControls;
 using System.Windows.Forms;
 
 namespace DayZeEditor
@@ -223,6 +224,7 @@ namespace DayZeEditor
         {
             if (SpawnerPointfilesLB.SelectedItems.Count < 1) return;
             currentSpawnerPointsFile = SpawnerPointfilesLB.SelectedItem as MPG_Spawner_PointsConfig;
+            currentSpawnerPoint = null;
             useraction = false;
             SpawnerPointsLB.DisplayMember = "DisplayName";
             SpawnerPointsLB.ValueMember = "Value";
@@ -245,13 +247,26 @@ namespace DayZeEditor
                 MPG_SPWNR_ModConfig.MPG_Spawner_PointsConfigs.Add(newMPG_Spawner_PointsConfig);
                 MPG_SPWNR_ModConfig.isDirty = true;
                 SpawnerPointfilesLB.Invalidate();
+                SpawnerPointfilesLB.SelectedIndex = -1;
+                SpawnerPointfilesLB.SelectedIndex = MPG_SPWNR_ModConfig.MPG_Spawner_PointsConfigs.Count - 1;
+                pictureBox1.Invalidate();
             }
         }
         private void darkButton6_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("This Will Remove All reference to this SpawnerPointsfile, Are you sure you want to do this?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
+                if (SpawnerPointfilesLB.Items.Count <= 0) return;
                 MPG_SPWNR_ModConfig.RemovePointsfile(currentSpawnerPointsFile);
+                SpawnerPointfilesLB.Invalidate();
+                if (SpawnerPointfilesLB.Items.Count <= 0)
+                {
+                    groupBox4.Visible = false;
+                    SpawnerPointsLB.DataSource = null;
+                    currentSpawnerPoint = null;
+                }
+                SpawnerPointsLB.Invalidate();
+                pictureBox1.Invalidate();
             }
         }
         private void isModDisabledCB_CheckedChanged(object sender, EventArgs e)
@@ -272,6 +287,7 @@ namespace DayZeEditor
             if (SpawnerPointsLB.SelectedItems.Count < 1) return;
             currentSpawnerPoint = SpawnerPointsLB.SelectedItem as MPG_Spawner_PointConfig;
             useraction = false;
+            groupBox4.Visible = true;
             PointConfigisDebugEnabledCB.Checked = currentSpawnerPoint.isDebugEnabled == 1 ? true : false;
             PointConfigWorkingHoursStartNUD.Value = currentSpawnerPoint.getworkinghours()[0];
             PointConfigWorkingHoursEndNUD.Value = currentSpawnerPoint.getworkinghours()[1];
@@ -336,6 +352,7 @@ namespace DayZeEditor
         }
         private void darkButton1_Click(object sender, EventArgs e)
         {
+            if (currentSpawnerPointsFile == null) return;
             List<int> AllspawnerIDS = MPG_SPWNR_ModConfig.GetAllSpawnerIDS();
             AddNewQuestID form = new AddNewQuestID
             {
@@ -383,6 +400,9 @@ namespace DayZeEditor
                 currentSpawnerPointsFile.Points.Add(newMPG_Spawner_PointConfig);
                 currentSpawnerPointsFile.isDirty = true;
                 SpawnerPointsLB.Invalidate();
+                SpawnerPointsLB.SelectedIndex = -1;
+                SpawnerPointsLB.SelectedIndex = currentSpawnerPointsFile.Points.Count - 1;
+                pictureBox1.Invalidate();
             }
             
         }
@@ -391,6 +411,10 @@ namespace DayZeEditor
             if (MessageBox.Show("This Will Remove All reference to this SpawnerPoint, Are you sure you want to do this?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 MPG_SPWNR_ModConfig.RemovePointfile(currentSpawnerPoint);
+                if (SpawnerPointsLB.Items.Count <= 0)
+                    groupBox4.Visible = false;
+
+                pictureBox1.Invalidate();
             }
         }
         private void PointConfigisDebugEnabledCB_CheckedChanged(object sender, EventArgs e)
@@ -970,6 +994,7 @@ namespace DayZeEditor
                 }
                 else
                 {
+                    if (currentSpawnerPoint == null) return;
                     float scalevalue = MPGSpawnerScale * 0.05f;
                     int centerX = (int)(Math.Round(currentSpawnerPoint._triggerPosition.Position.X) * scalevalue);
                     int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(currentSpawnerPoint._triggerPosition.Position.Z, 0) * scalevalue);

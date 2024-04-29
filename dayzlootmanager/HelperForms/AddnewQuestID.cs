@@ -68,9 +68,15 @@ namespace DayZeEditor
 
         private void AddNewQuestID_Load(object sender, EventArgs e)
         {
-            List<int> result = Enumerable.Range(1, NumberofquestsIDs.Max() + 1).Except(NumberofquestsIDs).ToList();
-            result.Sort();
-            numericUpDown1.Value =  result[0];
+            List<int> result = new List<int>();
+            if (NumberofquestsIDs.Count > 0)
+            {
+                result = Enumerable.Range(1, NumberofquestsIDs.Max() + 1).Except(NumberofquestsIDs).ToList();
+                result.Sort();
+                numericUpDown1.Value = result[0];
+            }
+            else
+                numericUpDown1.Value = 1;
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)

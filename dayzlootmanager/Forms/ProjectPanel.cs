@@ -298,18 +298,6 @@ namespace DayZeEditor
                         ProjectName = rootdir;
 
                     string ProjectPath = Driveletter + @":\" + ProjectName;
-                    NetworkDrive.MapNetworkDrive(Driveletter, @"\\sshfs\" + FTPUSernameTB.Text + "@" + FTPHostNameTB.Text + "!" + FTPPortTB.Text);
-                    if(!NetworkDrive.IsDriveMapped(Driveletter))
-                    {
-                        Console.WriteLine("[INFO] SFTP / FTP drive not mapped");
-                        load.Abort();
-                        return;
-                    }
-                    else
-                    {
-                        Console.WriteLine("[INFO] SFTP / FTP drive is able to be mapped.");
-                        NetworkDrive.DisconnectNetworkDrive(Driveletter, true);
-                    }
 
                     Project project = new Project();
                     project.AddNames(ProjectName, ProjectPath);
@@ -317,10 +305,6 @@ namespace DayZeEditor
                     project.mpmissionpath = mpmissionpath;
                     project.MapPath = "\\Maps\\" + mpmissionpath.ToLower().Split('.')[1] + "_Map.png";
                     project.ProfilePath = profile;
-                    project.MapNetworkDrive = true;
-                    project.NetworkUsername = FTPUSernameTB.Text;
-                    project.NetworkHost = "@" + FTPHostNameTB.Text + "!" + FTPPortTB.Text;
-                    project.Networkdriveletter = Driveletter;
                     projects.addtoprojects(project);
                     SetActiveProject(project);
                     LoadProjectstoList();
@@ -401,35 +385,10 @@ namespace DayZeEditor
                 ProjectMissionFolderTB.Size = new Size(657, 20);
                 darkButton2.Location = new Point(401, 156);
             }
-            else if (projecttype == "Connect Direct to FTP / SFTP through Mapped Drive")
-            {
-                darkLabel12.Visible = false;
-                darkLabel6.Visible = false;
-                darkLabel5.Visible = false;
-                darkLabel2.Visible = false;
-                ProjectNameTB.Visible = false;
-                ProjectFolderTB.Visible = false;
-                ProjectProfileTB.Visible = false;
-                ProjectMissionFolderTB.Visible = false;
-                button1.Visible = false;
-                darkButton2.Location = new Point(401, 46);
-            }
         }
         private void darkButton1_Click(object sender, EventArgs e)
         {
             if(listBox1.SelectedItem == null) { return; }
-
-            //Remove current drive mapping for project we are closing.
-            if (projects.getActiveProject() != null && projects.getActiveProject().MapNetworkDrive == true)
-            {
-                NetworkDrive.DisconnectNetworkDrive(projects.getActiveProject().Networkdriveletter, true);
-                while (NetworkDrive.IsDriveMapped(projects.getActiveProject().Networkdriveletter))
-                {
-
-                }
-                Console.WriteLine("INFO: Mapped drive Disconnected : " + projects.getActiveProject().Networkdriveletter);
-            }
-
 
             string profilename = listBox1.GetItemText(listBox1.SelectedItem);
             Project p = listBox1.SelectedItem as Project;
@@ -482,15 +441,6 @@ namespace DayZeEditor
                 }
                 if (ActiveProject == p)
                 {
-                    if (p.MapNetworkDrive == true)
-                    {
-                        NetworkDrive.DisconnectNetworkDrive(p.Networkdriveletter, true);
-                        while (NetworkDrive.IsDriveMapped(p.Networkdriveletter))
-                        {
-
-                        }
-                        Console.WriteLine("INFO: Mapped drive Disconnected : " + p.Networkdriveletter);
-                    }
                     ActiveProject = null;
                     projects.ActiveProject = "";
                 }
@@ -506,15 +456,6 @@ namespace DayZeEditor
                 projects.DeleteProject(profilename);
                 if (ActiveProject == p)
                 {
-                    if (p.MapNetworkDrive == true)
-                    {
-                        NetworkDrive.DisconnectNetworkDrive(p.Networkdriveletter, true);
-                        while (NetworkDrive.IsDriveMapped(p.Networkdriveletter))
-                        {
-
-                        }
-                        Console.WriteLine("INFO: Mapped drive Disconnected : " + p.Networkdriveletter);
-                    }
                     ActiveProject = null;
                     projects.ActiveProject = "";
                 }

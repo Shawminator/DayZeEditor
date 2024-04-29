@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace DayZeLib
 {
@@ -38,7 +39,7 @@ namespace DayZeLib
         public void AddNewLocation(DZE Importfile)
         {
             Bubaklocation newlocation = new Bubaklocation();
-            newlocation.ImportDZE(Importfile);
+            newlocation.ImportDZE(Importfile, true, false);
             BubakLocations.Add(newlocation);
             isDirty = true;
         }
@@ -46,6 +47,24 @@ namespace DayZeLib
         {
             BubakLocations.Remove(location);
             isDirty = true;
+        }
+
+        public void Getalllists()
+        {
+            foreach (Bubaklocation bubaklocation in BubakLocations)
+            {
+                bubaklocation.getTriggerposition();
+                bubaklocation.getSpawnpositions();
+            }
+        }
+
+        public void SetSpawnerPointFiles()
+        {
+            foreach (Bubaklocation bubaklocation in BubakLocations)
+            {
+                bubaklocation.setTriggerposition();
+                bubaklocation.setSpawnpositions();
+            }
         }
     }
 
@@ -72,7 +91,10 @@ namespace DayZeLib
 
         [JsonIgnore]
         public bool needtosetdirty {get;set;}
-
+        [JsonIgnore] 
+        public Vec3PandR _triggerpos { get; set; }
+        [JsonIgnore]
+        public BindingList<Vec3PandR> _spawnerpos { get; set; }
 
         public Bubaklocation() 
         {
@@ -112,44 +134,29 @@ namespace DayZeLib
         {
             workinghours = _workinghours[0].ToString() + "-" + _workinghours[1].ToString();
         }
-        public BukakuPosRot gettriggerposition()
+        public void getTriggerposition()
         {
-            decimal[] Pos = new decimal[] { 0, 0, 0 };
-            decimal[] Rot = new decimal[] { 0, 0, 0 };
-            bool rotspecified = false;
-            if (triggerpos.Contains('|'))
-            {
-                string[] posrotstring = triggerpos.Split('|');
-                string[] possplit = posrotstring[0].Split(' ');
-                Pos = new decimal[] { Convert.ToDecimal(possplit[0]), Convert.ToDecimal(possplit[1]), Convert.ToDecimal(possplit[2]) };
-                string[] rotsplit = posrotstring[1].Split(' ');
-                Rot = new decimal[] { Convert.ToDecimal(rotsplit[0]), Convert.ToDecimal(rotsplit[1]), Convert.ToDecimal(rotsplit[2]) };
-                rotspecified = true;
-            }
-            else
-            {
-                string[] possplit = triggerpos.Split(' ');
-                Pos = new decimal[] { Convert.ToDecimal(possplit[0]), Convert.ToDecimal(possplit[1]), Convert.ToDecimal(possplit[2]) };
-            }
-            return new BukakuPosRot()
-            {
-                Position = Pos,
-                RotationSpecifioed = rotspecified,
-                Rotation = Rot
-            };
+            _triggerpos = new Vec3PandR(triggerpos);
         }
-        public void setTriggerposition(BukakuPosRot _posrot)
+        public void setTriggerposition()
         {
-            string posrot = "";
-            if (_posrot.RotationSpecifioed)
+            triggerpos = _triggerpos.GetString();
+        }
+        public void getSpawnpositions()
+        {
+            _spawnerpos = new BindingList<Vec3PandR>();
+            foreach (string s in spawnerpos)
             {
-                posrot = _posrot.Position[0] + " " + _posrot.Position[1] + " " + _posrot.Position[2] + "|" + _posrot.Rotation[0] + " " + _posrot.Rotation[1] + " " + _posrot.Rotation[2];
+                _spawnerpos.Add(new Vec3PandR(s));
             }
-            else
+        }
+        public void setSpawnpositions()
+        {
+            spawnerpos = new BindingList<string>();
+            foreach (Vec3PandR vec3PandR in _spawnerpos)
             {
-                posrot = _posrot.Position[0] + " " + _posrot.Position[1] + " " + _posrot.Position[2];
+                spawnerpos.Add(vec3PandR.GetString());
             }
-            triggerpos = posrot;
         }
         public decimal[] gettriggermins()
         {
@@ -214,71 +221,22 @@ namespace DayZeLib
                 }
             }
         }
-        public BukakuPosRot getPosRot(int index)
+        public void ImportDZE(DZE Importfile, bool importTrigger, bool importrotation)
         {
-            string posrot = spawnerpos[index].ToString();
-            decimal[] Pos = new decimal[] { 0, 0, 0 };
-            decimal[] Rot = new decimal[] { 0, 0, 0 };
-            bool rotspecified = false;
-            if (posrot.Contains('|'))
-            {
-                string[] posrotstring = posrot.Split('|');
-                string[] possplit = posrotstring[0].Split(' ');
-                Pos = new decimal[] { Convert.ToDecimal(possplit[0]), Convert.ToDecimal(possplit[1]), Convert.ToDecimal(possplit[2]) };
-                string[] rotsplit = posrotstring[1].Split(' ');
-                Rot = new decimal[] { Convert.ToDecimal(rotsplit[0]), Convert.ToDecimal(rotsplit[1]), Convert.ToDecimal(rotsplit[2]) };
-                rotspecified = true;
-            }
-            else
-            {
-                string[] fasplit = posrot.Split(' ');
-                Pos = new decimal[] { Convert.ToDecimal(fasplit[0]), Convert.ToDecimal(fasplit[1]), Convert.ToDecimal(fasplit[2]) };
-            }
-            return new BukakuPosRot()
-            {
-                Position = Pos,
-                RotationSpecifioed = rotspecified,
-                Rotation = Rot
-            };
-            
-        }
-        public void setPosRot(int index, BukakuPosRot _posrot)
-        {
-            string posrot = "";
-            if(_posrot.RotationSpecifioed)
-            {
-                posrot = _posrot.Position[0] + " " + _posrot.Position[1] + " " + _posrot.Position[2] + "|" + _posrot.Rotation[0] + " " + _posrot.Rotation[1] + " " + _posrot.Rotation[2];
-            }
-            else
-            {
-                posrot = _posrot.Position[0] + " " + _posrot.Position[1] + " " + _posrot.Position[2];
-            }
-            spawnerpos[index] = posrot;
-        }
-        public void ImportDZE(DZE Importfile, bool AddTrigger = true)
-        {
+            if (_spawnerpos == null)
+                _spawnerpos = new BindingList<Vec3PandR>();
             foreach (Editorobject eo in Importfile.EditorObjects)
             {
                 if (eo.DisplayName == "GiftBox_Large_1")
                 {
-                    if (AddTrigger)
+                    if (importTrigger)
                     {
-                        string floatarry = eo.Position[0].ToString() + " " + eo.Position[1].ToString() + " " + eo.Position[2];
-                        if (eo.Orientation[0] != 0 || eo.Orientation[1] != 0 || eo.Orientation[2] != 0)
-                        {
-                            floatarry += "|" + eo.Orientation[0].ToString() + " " + eo.Orientation[1].ToString() + " " + eo.Orientation[2];
-                        }
-                        triggerpos = floatarry;
+                        _triggerpos = new Vec3PandR(eo.Position, eo.Orientation, importrotation);
                     }
                 }
                 else if (eo.DisplayName == "GiftBox_Small_1")
                 {
-                    string floatarry = eo.Position[0].ToString() + " " + eo.Position[1].ToString() + " " + eo.Position[2];
-                    if (eo.Orientation[0] != 0 || eo.Orientation[1] != 0 || eo.Orientation[2] != 0)
-                    {
-                        floatarry += "|" + eo.Orientation[0].ToString() + " " + eo.Orientation[1].ToString() + " " + eo.Orientation[2];
-                    }
-                    spawnerpos.Add(floatarry);
+                    _spawnerpos.Add(new Vec3PandR(eo.Position, eo.Orientation, importrotation));
                 }
             }
         }

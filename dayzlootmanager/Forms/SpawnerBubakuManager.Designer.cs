@@ -139,6 +139,19 @@ namespace DayZeEditor
             this.darkLabel17 = new DarkUI.Controls.DarkLabel();
             this.BubakLocationSpawnerPosLB = new System.Windows.Forms.ListBox();
             this.darkButton2 = new DarkUI.Controls.DarkButton();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.checkBox9 = new System.Windows.Forms.CheckBox();
+            this.panelEx1 = new TreeViewMS.PanelEx();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.darkToolStrip25 = new DarkUI.Controls.DarkToolStrip2();
+            this.toolStripButton12 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
             this.darkToolStrip21.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogLevelNUD)).BeginInit();
@@ -188,6 +201,14 @@ namespace DayZeEditor
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BubakLocationbubaknumNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubakLocationspawnradiusNUD)).BeginInit();
+            this.panel12.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.panelEx1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            this.darkToolStrip25.SuspendLayout();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -316,14 +337,12 @@ namespace DayZeEditor
             // 
             // BubakLocationGB
             // 
-            this.BubakLocationGB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.BubakLocationGB.Controls.Add(this.flowLayoutPanel1);
+            this.BubakLocationGB.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BubakLocationGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.BubakLocationGB.Location = new System.Drawing.Point(236, 48);
+            this.BubakLocationGB.Location = new System.Drawing.Point(3, 3);
             this.BubakLocationGB.Name = "BubakLocationGB";
-            this.BubakLocationGB.Size = new System.Drawing.Size(986, 703);
+            this.BubakLocationGB.Size = new System.Drawing.Size(984, 662);
             this.BubakLocationGB.TabIndex = 136;
             this.BubakLocationGB.TabStop = false;
             this.BubakLocationGB.Text = "Bubak Locations";
@@ -341,7 +360,7 @@ namespace DayZeEditor
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 16);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(980, 684);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(978, 643);
             this.flowLayoutPanel1.TabIndex = 255;
             // 
             // panel1
@@ -1729,13 +1748,170 @@ namespace DayZeEditor
             this.darkButton2.Text = "Export to DZE";
             this.darkButton2.Click += new System.EventHandler(this.darkButton2_Click);
             // 
+            // panel12
+            // 
+            this.panel12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel12.Controls.Add(this.tabControl1);
+            this.panel12.Controls.Add(this.darkToolStrip25);
+            this.panel12.Location = new System.Drawing.Point(236, 35);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(998, 725);
+            this.panel12.TabIndex = 138;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 28);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(998, 697);
+            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.tabControl1.TabIndex = 228;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage1.Controls.Add(this.BubakLocationGB);
+            this.tabPage1.ForeColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(990, 668);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage2.Controls.Add(this.label2);
+            this.tabPage2.Controls.Add(this.checkBox9);
+            this.tabPage2.Controls.Add(this.panelEx1);
+            this.tabPage2.Controls.Add(this.trackBar1);
+            this.tabPage2.ForeColor = System.Drawing.SystemColors.Control;
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(990, 668);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(162, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 13);
+            this.label2.TabIndex = 122;
+            // 
+            // checkBox9
+            // 
+            this.checkBox9.AutoSize = true;
+            this.checkBox9.Location = new System.Drawing.Point(301, 8);
+            this.checkBox9.Name = "checkBox9";
+            this.checkBox9.Size = new System.Drawing.Size(67, 17);
+            this.checkBox9.TabIndex = 121;
+            this.checkBox9.Text = "Show All";
+            this.checkBox9.UseVisualStyleBackColor = true;
+            this.checkBox9.CheckedChanged += new System.EventHandler(this.checkBox9_CheckedChanged);
+            // 
+            // panelEx1
+            // 
+            this.panelEx1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelEx1.AutoScroll = true;
+            this.panelEx1.Controls.Add(this.pictureBox1);
+            this.panelEx1.Location = new System.Drawing.Point(6, 31);
+            this.panelEx1.Name = "panelEx1";
+            this.panelEx1.Size = new System.Drawing.Size(988, 638);
+            this.panelEx1.TabIndex = 119;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Location = new System.Drawing.Point(0, -1);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(512, 512);
+            this.pictureBox1.TabIndex = 62;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.pictureBox1.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
+            this.pictureBox1.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseWheel);
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.AutoSize = false;
+            this.trackBar1.LargeChange = 1;
+            this.trackBar1.Location = new System.Drawing.Point(9, 4);
+            this.trackBar1.Maximum = 20;
+            this.trackBar1.Minimum = 1;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(134, 24);
+            this.trackBar1.TabIndex = 120;
+            this.trackBar1.Value = 1;
+            this.trackBar1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackBar1_MouseUp);
+            // 
+            // darkToolStrip25
+            // 
+            this.darkToolStrip25.AutoSize = false;
+            this.darkToolStrip25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.darkToolStrip25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkToolStrip25.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton12,
+            this.toolStripSeparator8,
+            this.toolStripButton13});
+            this.darkToolStrip25.Location = new System.Drawing.Point(0, 0);
+            this.darkToolStrip25.Name = "darkToolStrip25";
+            this.darkToolStrip25.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
+            this.darkToolStrip25.Size = new System.Drawing.Size(998, 28);
+            this.darkToolStrip25.TabIndex = 227;
+            this.darkToolStrip25.Text = "darkToolStrip25";
+            // 
+            // toolStripButton12
+            // 
+            this.toolStripButton12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripButton12.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripButton12.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton12.Name = "toolStripButton12";
+            this.toolStripButton12.Size = new System.Drawing.Size(83, 25);
+            this.toolStripButton12.Text = "Point settings";
+            this.toolStripButton12.Click += new System.EventHandler(this.toolStripButton12_Click);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripSeparator8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripSeparator8.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 28);
+            // 
+            // toolStripButton13
+            // 
+            this.toolStripButton13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripButton13.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripButton13.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton13.Name = "toolStripButton13";
+            this.toolStripButton13.Size = new System.Drawing.Size(104, 25);
+            this.toolStripButton13.Text = "Map Visualisation";
+            this.toolStripButton13.Click += new System.EventHandler(this.toolStripButton13_Click);
+            // 
             // SpawnerBubakuManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1234, 760);
+            this.Controls.Add(this.panel12);
             this.Controls.Add(this.darkButton2);
-            this.Controls.Add(this.BubakLocationGB);
             this.Controls.Add(this.darkButton1);
             this.Controls.Add(this.darkButton3);
             this.Controls.Add(this.darkButton4);
@@ -1813,6 +1989,16 @@ namespace DayZeEditor
             this.panel11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BubakLocationbubaknumNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BubakLocationspawnradiusNUD)).EndInit();
+            this.panel12.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.panelEx1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            this.darkToolStrip25.ResumeLayout(false);
+            this.darkToolStrip25.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1928,5 +2114,18 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton darkButton11;
         private System.Windows.Forms.GroupBox groupBox5;
         private DarkUI.Controls.DarkLabel darkLabel29;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private DarkUI.Controls.DarkToolStrip2 darkToolStrip25;
+        private System.Windows.Forms.ToolStripButton toolStripButton12;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripButton toolStripButton13;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox checkBox9;
+        private TreeViewMS.PanelEx panelEx1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TrackBar trackBar1;
     }
 }
