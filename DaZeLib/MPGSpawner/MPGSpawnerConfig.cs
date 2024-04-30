@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Security.Cryptography;
 using System.Security.Policy;
 using System.Text.Json;
@@ -331,7 +332,6 @@ namespace DayZeLib
         [JsonIgnore]
         public BindingList<Vec3PandR> _spawnPositions { get; set; }
 
-
         public MPG_Spawner_PointConfig()
         {
 
@@ -429,7 +429,6 @@ namespace DayZeLib
                 ListtriggersToEnableOnLeave.Add(mPG_Spawner_PointConfigs.FirstOrDefault(x => x.pointId == id));
             }
         }
-
         public void ImportDZE(DZE Importfile, bool importTrigger, bool importrotation)
         {
             if (_spawnPositions == null)
@@ -462,13 +461,43 @@ namespace DayZeLib
         public int removeOnWin { get; set; }
         public decimal removeDelay { get; set; }
         public BindingList<ITEM_SpawnerObject> mappingObjects { get; set; }
+        public void ImportDze(DZE Importfile, bool wipeobjects = false)
+        {
+            if (mappingObjects == null)
+                mappingObjects = new BindingList<ITEM_SpawnerObject>();
+            if (wipeobjects)
+                mappingObjects = new BindingList<ITEM_SpawnerObject>();
+            foreach (Editorobject eo in Importfile.EditorObjects)
+            {
+                ITEM_SpawnerObject newobject = new ITEM_SpawnerObject()
+                {
+                    name = eo.DisplayName,
+                    pos = eo.Position,
+                    ypr = eo.Orientation,
+                    scale = eo.Scale
+                };
+                mappingObjects.Add(newobject);
+            }
+        }
+
+        public MPG_Spawner_mappingData()
+        {
+            mappingObjects = new BindingList<ITEM_SpawnerObject>();
+        }
     };
     public class ITEM_SpawnerObject
     {
         public string name { get; set; }
-        public decimal[] pos { get; set; }
-        public decimal[] ypr { get; set; }
-        public decimal scal { get; set; }
-        public bool enableCEPersistency { get; set; }
+        public float[] pos { get; set; }
+        public float[] ypr { get; set; }
+        public float scale { get; set; }
+        //public bool enableCEPersistency { get; set; }
+
+        
+        public override string ToString()
+        {
+            return name;
+        }
     };
+    
 }

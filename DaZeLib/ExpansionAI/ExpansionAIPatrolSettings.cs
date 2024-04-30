@@ -287,7 +287,7 @@ namespace DayZeLib
             DespawnRadius = -1;
             MinSpreadRadius = 1;
             MaxSpreadRadius = wprnd;
-            Chance = -1;
+            Chance = 1;
             WaypointInterpolation = "";
             DespawnTime = -1;
             RespawnTime = respawntime;

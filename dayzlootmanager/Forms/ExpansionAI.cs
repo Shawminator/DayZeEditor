@@ -1325,7 +1325,7 @@ namespace DayZeEditor
                 DespawnRadius = -1,
                 MinSpreadRadius = 1,
                 MaxSpreadRadius = 100,
-                Chance = -1,
+                Chance = 1,
                 WaypointInterpolation = "",
                 DespawnTime = -1,
                 RespawnTime = -2,

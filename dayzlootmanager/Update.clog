@@ -1,4 +1,10 @@
-﻿Version 0.8.0.0
+﻿Version 0.8.0.1
+[Fixed]
+Expansion Ai Patrol, Chance was getting set to -1 when adding new patrol cause error
+[Added]
+MPG Spawner Object spawner section with import from DZE.
+
+Version 0.8.0.0
 [Fixed] 
 Expansion Territories - Authenicate Codelock checkbox was producing an error when checked.
 Expansion Market - Trader - DisplayCurrency name was not picking up changes.

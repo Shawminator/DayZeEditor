@@ -188,11 +188,61 @@ namespace DayZeEditor
             this.panelEx1 = new TreeViewMS.PanelEx();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.darkButton13 = new DarkUI.Controls.DarkButton();
+            this.darkButton14 = new DarkUI.Controls.DarkButton();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.PointConfigItemmappingDataSpawnerObjectposXNUD = new System.Windows.Forms.NumericUpDown();
+            this.PointConfigItemmappingDataSpawnerObjectposZNUD = new System.Windows.Forms.NumericUpDown();
+            this.PointConfigItemmappingDataSpawnerObjectNameTB = new System.Windows.Forms.TextBox();
+            this.PointConfigItemmappingDataSpawnerObjectposYNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel65 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel66 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel63 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel67 = new DarkUI.Controls.DarkLabel();
+            this.PointConfigItemmappingDataSpawnerObjectenableCEPersistencyCB = new System.Windows.Forms.CheckBox();
+            this.darkLabel68 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel64 = new DarkUI.Controls.DarkLabel();
+            this.PointConfigItemmappingDataSpawnerObjectyprZNUD = new System.Windows.Forms.NumericUpDown();
+            this.PointConfigItemmappingDataSpawnerObjectscalNUD = new System.Windows.Forms.NumericUpDown();
+            this.PointConfigItemmappingDataSpawnerObjectyprYNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel70 = new DarkUI.Controls.DarkLabel();
+            this.PointConfigItemmappingDataSpawnerObjectyprXNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel69 = new DarkUI.Controls.DarkLabel();
+            this.PointConfigItemmappingDataItemSpawnerLB = new System.Windows.Forms.ListBox();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.darkButton15 = new DarkUI.Controls.DarkButton();
+            this.darkButton8 = new DarkUI.Controls.DarkButton();
+            this.darkButton9 = new DarkUI.Controls.DarkButton();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.darkLabel55 = new DarkUI.Controls.DarkLabel();
+            this.PointConfigItemmappingDataRemovedelayNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel56 = new DarkUI.Controls.DarkLabel();
+            this.PointConfigItemmappingDataRemoveOnWinCB = new System.Windows.Forms.CheckBox();
+            this.darkLabel57 = new DarkUI.Controls.DarkLabel();
+            this.PointConfigItemmappingDataRemoveOnFirstSpawnCB = new System.Windows.Forms.CheckBox();
+            this.darkLabel58 = new DarkUI.Controls.DarkLabel();
+            this.PointConfigItemmappingDataRemoveOnEnterCB = new System.Windows.Forms.CheckBox();
+            this.darkLabel54 = new DarkUI.Controls.DarkLabel();
+            this.PointConfigItemmappingDataAdddelayNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel50 = new DarkUI.Controls.DarkLabel();
+            this.PointConfigItemmappingDataAddOnWinCB = new System.Windows.Forms.CheckBox();
+            this.darkLabel51 = new DarkUI.Controls.DarkLabel();
+            this.PointConfigItemmappingDataAddOnFirstSpawnCB = new System.Windows.Forms.CheckBox();
+            this.darkLabel52 = new DarkUI.Controls.DarkLabel();
+            this.PointConfigItemmappingDataaddOnEnterCB = new System.Windows.Forms.CheckBox();
+            this.darkLabel53 = new DarkUI.Controls.DarkLabel();
+            this.PointConfigItemmappingDataaddOnStartupCB = new System.Windows.Forms.CheckBox();
+            this.PointConfigItemmappingDataLB = new System.Windows.Forms.ListBox();
             this.darkToolStrip25 = new DarkUI.Controls.DarkToolStrip2();
             this.toolStripButton12 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
             this.panel17 = new System.Windows.Forms.Panel();
+            this.darkButton16 = new DarkUI.Controls.DarkButton();
             this.darkToolStrip21.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.configVersionNUD)).BeginInit();
@@ -260,6 +310,20 @@ namespace DayZeEditor
             this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            this.panel19.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PointConfigItemmappingDataSpawnerObjectposXNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PointConfigItemmappingDataSpawnerObjectposZNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PointConfigItemmappingDataSpawnerObjectposYNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PointConfigItemmappingDataSpawnerObjectyprZNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PointConfigItemmappingDataSpawnerObjectscalNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PointConfigItemmappingDataSpawnerObjectyprYNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PointConfigItemmappingDataSpawnerObjectyprXNUD)).BeginInit();
+            this.groupBox9.SuspendLayout();
+            this.panel18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PointConfigItemmappingDataRemovedelayNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PointConfigItemmappingDataAdddelayNUD)).BeginInit();
             this.darkToolStrip25.SuspendLayout();
             this.panel17.SuspendLayout();
             this.SuspendLayout();
@@ -497,9 +561,8 @@ namespace DayZeEditor
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.splitContainer1.ForeColor = System.Drawing.SystemColors.Control;
             this.splitContainer1.Location = new System.Drawing.Point(13, 151);
             this.splitContainer1.Name = "splitContainer1";
@@ -2307,6 +2370,7 @@ namespace DayZeEditor
             this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 28);
             this.tabControl1.Name = "tabControl1";
@@ -2413,6 +2477,647 @@ namespace DayZeEditor
             this.trackBar1.Value = 1;
             this.trackBar1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackBar1_MouseUp);
             // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage3.Controls.Add(this.groupBox10);
+            this.tabPage3.Controls.Add(this.groupBox9);
+            this.tabPage3.ForeColor = System.Drawing.SystemColors.Control;
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(867, 681);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.darkButton16);
+            this.groupBox10.Controls.Add(this.darkButton15);
+            this.groupBox10.Controls.Add(this.darkButton13);
+            this.groupBox10.Controls.Add(this.darkButton14);
+            this.groupBox10.Controls.Add(this.panel19);
+            this.groupBox10.Controls.Add(this.PointConfigItemmappingDataItemSpawnerLB);
+            this.groupBox10.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox10.Location = new System.Drawing.Point(3, 232);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(747, 196);
+            this.groupBox10.TabIndex = 261;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Item Spawner Objects";
+            // 
+            // darkButton13
+            // 
+            this.darkButton13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton13.Location = new System.Drawing.Point(238, 15);
+            this.darkButton13.Name = "darkButton13";
+            this.darkButton13.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton13.Size = new System.Drawing.Size(20, 20);
+            this.darkButton13.TabIndex = 295;
+            this.darkButton13.Text = "+";
+            this.darkButton13.Click += new System.EventHandler(this.darkButton13_Click);
+            // 
+            // darkButton14
+            // 
+            this.darkButton14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton14.Location = new System.Drawing.Point(238, 168);
+            this.darkButton14.Name = "darkButton14";
+            this.darkButton14.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton14.Size = new System.Drawing.Size(20, 20);
+            this.darkButton14.TabIndex = 296;
+            this.darkButton14.Text = "-";
+            this.darkButton14.Click += new System.EventHandler(this.darkButton14_Click);
+            // 
+            // panel19
+            // 
+            this.panel19.Controls.Add(this.PointConfigItemmappingDataSpawnerObjectposXNUD);
+            this.panel19.Controls.Add(this.PointConfigItemmappingDataSpawnerObjectposZNUD);
+            this.panel19.Controls.Add(this.PointConfigItemmappingDataSpawnerObjectNameTB);
+            this.panel19.Controls.Add(this.PointConfigItemmappingDataSpawnerObjectposYNUD);
+            this.panel19.Controls.Add(this.darkLabel65);
+            this.panel19.Controls.Add(this.darkLabel66);
+            this.panel19.Controls.Add(this.darkLabel63);
+            this.panel19.Controls.Add(this.darkLabel67);
+            this.panel19.Controls.Add(this.PointConfigItemmappingDataSpawnerObjectenableCEPersistencyCB);
+            this.panel19.Controls.Add(this.darkLabel68);
+            this.panel19.Controls.Add(this.darkLabel64);
+            this.panel19.Controls.Add(this.PointConfigItemmappingDataSpawnerObjectyprZNUD);
+            this.panel19.Controls.Add(this.PointConfigItemmappingDataSpawnerObjectscalNUD);
+            this.panel19.Controls.Add(this.PointConfigItemmappingDataSpawnerObjectyprYNUD);
+            this.panel19.Controls.Add(this.darkLabel70);
+            this.panel19.Controls.Add(this.PointConfigItemmappingDataSpawnerObjectyprXNUD);
+            this.panel19.Controls.Add(this.darkLabel69);
+            this.panel19.Location = new System.Drawing.Point(273, 15);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(467, 173);
+            this.panel19.TabIndex = 294;
+            // 
+            // PointConfigItemmappingDataSpawnerObjectposXNUD
+            // 
+            this.PointConfigItemmappingDataSpawnerObjectposXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PointConfigItemmappingDataSpawnerObjectposXNUD.DecimalPlaces = 6;
+            this.PointConfigItemmappingDataSpawnerObjectposXNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigItemmappingDataSpawnerObjectposXNUD.Location = new System.Drawing.Point(46, 48);
+            this.PointConfigItemmappingDataSpawnerObjectposXNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.PointConfigItemmappingDataSpawnerObjectposXNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.PointConfigItemmappingDataSpawnerObjectposXNUD.Name = "PointConfigItemmappingDataSpawnerObjectposXNUD";
+            this.PointConfigItemmappingDataSpawnerObjectposXNUD.Size = new System.Drawing.Size(146, 20);
+            this.PointConfigItemmappingDataSpawnerObjectposXNUD.TabIndex = 262;
+            this.PointConfigItemmappingDataSpawnerObjectposXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PointConfigItemmappingDataSpawnerObjectposXNUD.ValueChanged += new System.EventHandler(this.PointConfigItemmappingDataSpawnerObjectposXNUD_ValueChanged);
+            // 
+            // PointConfigItemmappingDataSpawnerObjectposZNUD
+            // 
+            this.PointConfigItemmappingDataSpawnerObjectposZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PointConfigItemmappingDataSpawnerObjectposZNUD.DecimalPlaces = 6;
+            this.PointConfigItemmappingDataSpawnerObjectposZNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigItemmappingDataSpawnerObjectposZNUD.Location = new System.Drawing.Point(46, 100);
+            this.PointConfigItemmappingDataSpawnerObjectposZNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.PointConfigItemmappingDataSpawnerObjectposZNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.PointConfigItemmappingDataSpawnerObjectposZNUD.Name = "PointConfigItemmappingDataSpawnerObjectposZNUD";
+            this.PointConfigItemmappingDataSpawnerObjectposZNUD.Size = new System.Drawing.Size(146, 20);
+            this.PointConfigItemmappingDataSpawnerObjectposZNUD.TabIndex = 264;
+            this.PointConfigItemmappingDataSpawnerObjectposZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PointConfigItemmappingDataSpawnerObjectposZNUD.ValueChanged += new System.EventHandler(this.PointConfigItemmappingDataSpawnerObjectposZNUD_ValueChanged);
+            // 
+            // PointConfigItemmappingDataSpawnerObjectNameTB
+            // 
+            this.PointConfigItemmappingDataSpawnerObjectNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PointConfigItemmappingDataSpawnerObjectNameTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigItemmappingDataSpawnerObjectNameTB.Location = new System.Drawing.Point(46, 3);
+            this.PointConfigItemmappingDataSpawnerObjectNameTB.Name = "PointConfigItemmappingDataSpawnerObjectNameTB";
+            this.PointConfigItemmappingDataSpawnerObjectNameTB.Size = new System.Drawing.Size(405, 20);
+            this.PointConfigItemmappingDataSpawnerObjectNameTB.TabIndex = 250;
+            this.PointConfigItemmappingDataSpawnerObjectNameTB.TextChanged += new System.EventHandler(this.PointConfigItemmappingDataSpawnerObjectNameTB_TextChanged);
+            // 
+            // PointConfigItemmappingDataSpawnerObjectposYNUD
+            // 
+            this.PointConfigItemmappingDataSpawnerObjectposYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PointConfigItemmappingDataSpawnerObjectposYNUD.DecimalPlaces = 6;
+            this.PointConfigItemmappingDataSpawnerObjectposYNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigItemmappingDataSpawnerObjectposYNUD.Location = new System.Drawing.Point(46, 74);
+            this.PointConfigItemmappingDataSpawnerObjectposYNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.PointConfigItemmappingDataSpawnerObjectposYNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.PointConfigItemmappingDataSpawnerObjectposYNUD.Name = "PointConfigItemmappingDataSpawnerObjectposYNUD";
+            this.PointConfigItemmappingDataSpawnerObjectposYNUD.Size = new System.Drawing.Size(146, 20);
+            this.PointConfigItemmappingDataSpawnerObjectposYNUD.TabIndex = 263;
+            this.PointConfigItemmappingDataSpawnerObjectposYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PointConfigItemmappingDataSpawnerObjectposYNUD.ValueChanged += new System.EventHandler(this.PointConfigItemmappingDataSpawnerObjectposYNUD_ValueChanged);
+            // 
+            // darkLabel65
+            // 
+            this.darkLabel65.AutoSize = true;
+            this.darkLabel65.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel65.Location = new System.Drawing.Point(5, 6);
+            this.darkLabel65.Name = "darkLabel65";
+            this.darkLabel65.Size = new System.Drawing.Size(35, 13);
+            this.darkLabel65.TabIndex = 251;
+            this.darkLabel65.Text = "Name";
+            // 
+            // darkLabel66
+            // 
+            this.darkLabel66.AutoSize = true;
+            this.darkLabel66.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel66.Location = new System.Drawing.Point(5, 55);
+            this.darkLabel66.Name = "darkLabel66";
+            this.darkLabel66.Size = new System.Drawing.Size(20, 13);
+            this.darkLabel66.TabIndex = 265;
+            this.darkLabel66.Text = "X:-";
+            // 
+            // darkLabel63
+            // 
+            this.darkLabel63.AutoSize = true;
+            this.darkLabel63.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel63.Location = new System.Drawing.Point(3, 152);
+            this.darkLabel63.Name = "darkLabel63";
+            this.darkLabel63.Size = new System.Drawing.Size(114, 13);
+            this.darkLabel63.TabIndex = 242;
+            this.darkLabel63.Text = "Enable CE Persistency";
+            this.darkLabel63.Visible = false;
+            // 
+            // darkLabel67
+            // 
+            this.darkLabel67.AutoSize = true;
+            this.darkLabel67.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel67.Location = new System.Drawing.Point(5, 81);
+            this.darkLabel67.Name = "darkLabel67";
+            this.darkLabel67.Size = new System.Drawing.Size(20, 13);
+            this.darkLabel67.TabIndex = 266;
+            this.darkLabel67.Text = "Y:-";
+            // 
+            // PointConfigItemmappingDataSpawnerObjectenableCEPersistencyCB
+            // 
+            this.PointConfigItemmappingDataSpawnerObjectenableCEPersistencyCB.AutoSize = true;
+            this.PointConfigItemmappingDataSpawnerObjectenableCEPersistencyCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigItemmappingDataSpawnerObjectenableCEPersistencyCB.Location = new System.Drawing.Point(177, 152);
+            this.PointConfigItemmappingDataSpawnerObjectenableCEPersistencyCB.Name = "PointConfigItemmappingDataSpawnerObjectenableCEPersistencyCB";
+            this.PointConfigItemmappingDataSpawnerObjectenableCEPersistencyCB.Size = new System.Drawing.Size(15, 14);
+            this.PointConfigItemmappingDataSpawnerObjectenableCEPersistencyCB.TabIndex = 243;
+            this.PointConfigItemmappingDataSpawnerObjectenableCEPersistencyCB.UseVisualStyleBackColor = true;
+            this.PointConfigItemmappingDataSpawnerObjectenableCEPersistencyCB.Visible = false;
+            // 
+            // darkLabel68
+            // 
+            this.darkLabel68.AutoSize = true;
+            this.darkLabel68.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel68.Location = new System.Drawing.Point(5, 107);
+            this.darkLabel68.Name = "darkLabel68";
+            this.darkLabel68.Size = new System.Drawing.Size(20, 13);
+            this.darkLabel68.TabIndex = 267;
+            this.darkLabel68.Text = "Z:-";
+            // 
+            // darkLabel64
+            // 
+            this.darkLabel64.AutoSize = true;
+            this.darkLabel64.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel64.Location = new System.Drawing.Point(3, 128);
+            this.darkLabel64.Name = "darkLabel64";
+            this.darkLabel64.Size = new System.Drawing.Size(34, 13);
+            this.darkLabel64.TabIndex = 241;
+            this.darkLabel64.Text = "Scale";
+            // 
+            // PointConfigItemmappingDataSpawnerObjectyprZNUD
+            // 
+            this.PointConfigItemmappingDataSpawnerObjectyprZNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PointConfigItemmappingDataSpawnerObjectyprZNUD.DecimalPlaces = 6;
+            this.PointConfigItemmappingDataSpawnerObjectyprZNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigItemmappingDataSpawnerObjectyprZNUD.Location = new System.Drawing.Point(207, 100);
+            this.PointConfigItemmappingDataSpawnerObjectyprZNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.PointConfigItemmappingDataSpawnerObjectyprZNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.PointConfigItemmappingDataSpawnerObjectyprZNUD.Name = "PointConfigItemmappingDataSpawnerObjectyprZNUD";
+            this.PointConfigItemmappingDataSpawnerObjectyprZNUD.Size = new System.Drawing.Size(146, 20);
+            this.PointConfigItemmappingDataSpawnerObjectyprZNUD.TabIndex = 270;
+            this.PointConfigItemmappingDataSpawnerObjectyprZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PointConfigItemmappingDataSpawnerObjectyprZNUD.ValueChanged += new System.EventHandler(this.PointConfigItemmappingDataSpawnerObjectyprZNUD_ValueChanged);
+            // 
+            // PointConfigItemmappingDataSpawnerObjectscalNUD
+            // 
+            this.PointConfigItemmappingDataSpawnerObjectscalNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PointConfigItemmappingDataSpawnerObjectscalNUD.DecimalPlaces = 1;
+            this.PointConfigItemmappingDataSpawnerObjectscalNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigItemmappingDataSpawnerObjectscalNUD.Location = new System.Drawing.Point(82, 126);
+            this.PointConfigItemmappingDataSpawnerObjectscalNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.PointConfigItemmappingDataSpawnerObjectscalNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.PointConfigItemmappingDataSpawnerObjectscalNUD.Name = "PointConfigItemmappingDataSpawnerObjectscalNUD";
+            this.PointConfigItemmappingDataSpawnerObjectscalNUD.Size = new System.Drawing.Size(110, 20);
+            this.PointConfigItemmappingDataSpawnerObjectscalNUD.TabIndex = 240;
+            this.PointConfigItemmappingDataSpawnerObjectscalNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PointConfigItemmappingDataSpawnerObjectscalNUD.ValueChanged += new System.EventHandler(this.PointConfigItemmappingDataSpawnerObjectscalNUD_ValueChanged);
+            // 
+            // PointConfigItemmappingDataSpawnerObjectyprYNUD
+            // 
+            this.PointConfigItemmappingDataSpawnerObjectyprYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PointConfigItemmappingDataSpawnerObjectyprYNUD.DecimalPlaces = 6;
+            this.PointConfigItemmappingDataSpawnerObjectyprYNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigItemmappingDataSpawnerObjectyprYNUD.Location = new System.Drawing.Point(207, 74);
+            this.PointConfigItemmappingDataSpawnerObjectyprYNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.PointConfigItemmappingDataSpawnerObjectyprYNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.PointConfigItemmappingDataSpawnerObjectyprYNUD.Name = "PointConfigItemmappingDataSpawnerObjectyprYNUD";
+            this.PointConfigItemmappingDataSpawnerObjectyprYNUD.Size = new System.Drawing.Size(146, 20);
+            this.PointConfigItemmappingDataSpawnerObjectyprYNUD.TabIndex = 269;
+            this.PointConfigItemmappingDataSpawnerObjectyprYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PointConfigItemmappingDataSpawnerObjectyprYNUD.ValueChanged += new System.EventHandler(this.PointConfigItemmappingDataSpawnerObjectyprYNUD_ValueChanged);
+            // 
+            // darkLabel70
+            // 
+            this.darkLabel70.AutoSize = true;
+            this.darkLabel70.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel70.Location = new System.Drawing.Point(252, 28);
+            this.darkLabel70.Name = "darkLabel70";
+            this.darkLabel70.Size = new System.Drawing.Size(47, 13);
+            this.darkLabel70.TabIndex = 272;
+            this.darkLabel70.Text = "Rotation";
+            // 
+            // PointConfigItemmappingDataSpawnerObjectyprXNUD
+            // 
+            this.PointConfigItemmappingDataSpawnerObjectyprXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PointConfigItemmappingDataSpawnerObjectyprXNUD.DecimalPlaces = 6;
+            this.PointConfigItemmappingDataSpawnerObjectyprXNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigItemmappingDataSpawnerObjectyprXNUD.Location = new System.Drawing.Point(207, 48);
+            this.PointConfigItemmappingDataSpawnerObjectyprXNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.PointConfigItemmappingDataSpawnerObjectyprXNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.PointConfigItemmappingDataSpawnerObjectyprXNUD.Name = "PointConfigItemmappingDataSpawnerObjectyprXNUD";
+            this.PointConfigItemmappingDataSpawnerObjectyprXNUD.Size = new System.Drawing.Size(146, 20);
+            this.PointConfigItemmappingDataSpawnerObjectyprXNUD.TabIndex = 268;
+            this.PointConfigItemmappingDataSpawnerObjectyprXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PointConfigItemmappingDataSpawnerObjectyprXNUD.ValueChanged += new System.EventHandler(this.PointConfigItemmappingDataSpawnerObjectyprXNUD_ValueChanged);
+            // 
+            // darkLabel69
+            // 
+            this.darkLabel69.AutoSize = true;
+            this.darkLabel69.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel69.Location = new System.Drawing.Point(84, 28);
+            this.darkLabel69.Name = "darkLabel69";
+            this.darkLabel69.Size = new System.Drawing.Size(44, 13);
+            this.darkLabel69.TabIndex = 271;
+            this.darkLabel69.Text = "Position";
+            // 
+            // PointConfigItemmappingDataItemSpawnerLB
+            // 
+            this.PointConfigItemmappingDataItemSpawnerLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PointConfigItemmappingDataItemSpawnerLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.PointConfigItemmappingDataItemSpawnerLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigItemmappingDataItemSpawnerLB.FormattingEnabled = true;
+            this.PointConfigItemmappingDataItemSpawnerLB.Location = new System.Drawing.Point(6, 15);
+            this.PointConfigItemmappingDataItemSpawnerLB.Name = "PointConfigItemmappingDataItemSpawnerLB";
+            this.PointConfigItemmappingDataItemSpawnerLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.PointConfigItemmappingDataItemSpawnerLB.Size = new System.Drawing.Size(226, 147);
+            this.PointConfigItemmappingDataItemSpawnerLB.TabIndex = 261;
+            this.PointConfigItemmappingDataItemSpawnerLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.PointConfigItemmappingDataItemSpawnerLB.SelectedIndexChanged += new System.EventHandler(this.PointConfigItemmappingDataItemSpawnerLB_SelectedIndexChanged);
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.darkButton8);
+            this.groupBox9.Controls.Add(this.darkButton9);
+            this.groupBox9.Controls.Add(this.panel18);
+            this.groupBox9.Controls.Add(this.PointConfigItemmappingDataLB);
+            this.groupBox9.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox9.Location = new System.Drawing.Point(3, 3);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(503, 223);
+            this.groupBox9.TabIndex = 260;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Object Mapping Data";
+            // 
+            // darkButton15
+            // 
+            this.darkButton15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton15.Location = new System.Drawing.Point(6, 165);
+            this.darkButton15.Name = "darkButton15";
+            this.darkButton15.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton15.Size = new System.Drawing.Size(116, 23);
+            this.darkButton15.TabIndex = 297;
+            this.darkButton15.Text = "Import from DZE";
+            this.darkButton15.Click += new System.EventHandler(this.darkButton15_Click);
+            // 
+            // darkButton8
+            // 
+            this.darkButton8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton8.Location = new System.Drawing.Point(238, 15);
+            this.darkButton8.Name = "darkButton8";
+            this.darkButton8.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton8.Size = new System.Drawing.Size(20, 20);
+            this.darkButton8.TabIndex = 295;
+            this.darkButton8.Text = "+";
+            this.darkButton8.Click += new System.EventHandler(this.darkButton8_Click);
+            // 
+            // darkButton9
+            // 
+            this.darkButton9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton9.Location = new System.Drawing.Point(238, 194);
+            this.darkButton9.Name = "darkButton9";
+            this.darkButton9.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton9.Size = new System.Drawing.Size(20, 20);
+            this.darkButton9.TabIndex = 296;
+            this.darkButton9.Text = "-";
+            this.darkButton9.Click += new System.EventHandler(this.darkButton9_Click);
+            // 
+            // panel18
+            // 
+            this.panel18.Controls.Add(this.darkLabel55);
+            this.panel18.Controls.Add(this.PointConfigItemmappingDataRemovedelayNUD);
+            this.panel18.Controls.Add(this.darkLabel56);
+            this.panel18.Controls.Add(this.PointConfigItemmappingDataRemoveOnWinCB);
+            this.panel18.Controls.Add(this.darkLabel57);
+            this.panel18.Controls.Add(this.PointConfigItemmappingDataRemoveOnFirstSpawnCB);
+            this.panel18.Controls.Add(this.darkLabel58);
+            this.panel18.Controls.Add(this.PointConfigItemmappingDataRemoveOnEnterCB);
+            this.panel18.Controls.Add(this.darkLabel54);
+            this.panel18.Controls.Add(this.PointConfigItemmappingDataAdddelayNUD);
+            this.panel18.Controls.Add(this.darkLabel50);
+            this.panel18.Controls.Add(this.PointConfigItemmappingDataAddOnWinCB);
+            this.panel18.Controls.Add(this.darkLabel51);
+            this.panel18.Controls.Add(this.PointConfigItemmappingDataAddOnFirstSpawnCB);
+            this.panel18.Controls.Add(this.darkLabel52);
+            this.panel18.Controls.Add(this.PointConfigItemmappingDataaddOnEnterCB);
+            this.panel18.Controls.Add(this.darkLabel53);
+            this.panel18.Controls.Add(this.PointConfigItemmappingDataaddOnStartupCB);
+            this.panel18.Location = new System.Drawing.Point(273, 15);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(224, 199);
+            this.panel18.TabIndex = 294;
+            // 
+            // darkLabel55
+            // 
+            this.darkLabel55.AutoSize = true;
+            this.darkLabel55.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel55.Location = new System.Drawing.Point(5, 172);
+            this.darkLabel55.Name = "darkLabel55";
+            this.darkLabel55.Size = new System.Drawing.Size(77, 13);
+            this.darkLabel55.TabIndex = 249;
+            this.darkLabel55.Text = "Remove Delay";
+            // 
+            // PointConfigItemmappingDataRemovedelayNUD
+            // 
+            this.PointConfigItemmappingDataRemovedelayNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PointConfigItemmappingDataRemovedelayNUD.DecimalPlaces = 1;
+            this.PointConfigItemmappingDataRemovedelayNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigItemmappingDataRemovedelayNUD.Location = new System.Drawing.Point(107, 170);
+            this.PointConfigItemmappingDataRemovedelayNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.PointConfigItemmappingDataRemovedelayNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.PointConfigItemmappingDataRemovedelayNUD.Name = "PointConfigItemmappingDataRemovedelayNUD";
+            this.PointConfigItemmappingDataRemovedelayNUD.Size = new System.Drawing.Size(110, 20);
+            this.PointConfigItemmappingDataRemovedelayNUD.TabIndex = 248;
+            this.PointConfigItemmappingDataRemovedelayNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PointConfigItemmappingDataRemovedelayNUD.ValueChanged += new System.EventHandler(this.PointConfigItemmappingDataRemovedelayNUD_ValueChanged);
+            // 
+            // darkLabel56
+            // 
+            this.darkLabel56.AutoSize = true;
+            this.darkLabel56.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel56.Location = new System.Drawing.Point(5, 149);
+            this.darkLabel56.Name = "darkLabel56";
+            this.darkLabel56.Size = new System.Drawing.Size(86, 13);
+            this.darkLabel56.TabIndex = 246;
+            this.darkLabel56.Text = "Remove On Win";
+            // 
+            // PointConfigItemmappingDataRemoveOnWinCB
+            // 
+            this.PointConfigItemmappingDataRemoveOnWinCB.AutoSize = true;
+            this.PointConfigItemmappingDataRemoveOnWinCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigItemmappingDataRemoveOnWinCB.Location = new System.Drawing.Point(202, 150);
+            this.PointConfigItemmappingDataRemoveOnWinCB.Name = "PointConfigItemmappingDataRemoveOnWinCB";
+            this.PointConfigItemmappingDataRemoveOnWinCB.Size = new System.Drawing.Size(15, 14);
+            this.PointConfigItemmappingDataRemoveOnWinCB.TabIndex = 247;
+            this.PointConfigItemmappingDataRemoveOnWinCB.UseVisualStyleBackColor = true;
+            this.PointConfigItemmappingDataRemoveOnWinCB.CheckedChanged += new System.EventHandler(this.PointConfigItemmappingDataRemoveOnWinCB_CheckedChanged);
+            // 
+            // darkLabel57
+            // 
+            this.darkLabel57.AutoSize = true;
+            this.darkLabel57.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel57.Location = new System.Drawing.Point(5, 129);
+            this.darkLabel57.Name = "darkLabel57";
+            this.darkLabel57.Size = new System.Drawing.Size(122, 13);
+            this.darkLabel57.TabIndex = 244;
+            this.darkLabel57.Text = "Remove On First Spawn";
+            // 
+            // PointConfigItemmappingDataRemoveOnFirstSpawnCB
+            // 
+            this.PointConfigItemmappingDataRemoveOnFirstSpawnCB.AutoSize = true;
+            this.PointConfigItemmappingDataRemoveOnFirstSpawnCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigItemmappingDataRemoveOnFirstSpawnCB.Location = new System.Drawing.Point(202, 130);
+            this.PointConfigItemmappingDataRemoveOnFirstSpawnCB.Name = "PointConfigItemmappingDataRemoveOnFirstSpawnCB";
+            this.PointConfigItemmappingDataRemoveOnFirstSpawnCB.Size = new System.Drawing.Size(15, 14);
+            this.PointConfigItemmappingDataRemoveOnFirstSpawnCB.TabIndex = 245;
+            this.PointConfigItemmappingDataRemoveOnFirstSpawnCB.UseVisualStyleBackColor = true;
+            this.PointConfigItemmappingDataRemoveOnFirstSpawnCB.CheckedChanged += new System.EventHandler(this.PointConfigItemmappingDataRemoveOnFirstSpawnCB_CheckedChanged);
+            // 
+            // darkLabel58
+            // 
+            this.darkLabel58.AutoSize = true;
+            this.darkLabel58.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel58.Location = new System.Drawing.Point(5, 109);
+            this.darkLabel58.Name = "darkLabel58";
+            this.darkLabel58.Size = new System.Drawing.Size(92, 13);
+            this.darkLabel58.TabIndex = 242;
+            this.darkLabel58.Text = "Remove On Enter";
+            // 
+            // PointConfigItemmappingDataRemoveOnEnterCB
+            // 
+            this.PointConfigItemmappingDataRemoveOnEnterCB.AutoSize = true;
+            this.PointConfigItemmappingDataRemoveOnEnterCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigItemmappingDataRemoveOnEnterCB.Location = new System.Drawing.Point(202, 110);
+            this.PointConfigItemmappingDataRemoveOnEnterCB.Name = "PointConfigItemmappingDataRemoveOnEnterCB";
+            this.PointConfigItemmappingDataRemoveOnEnterCB.Size = new System.Drawing.Size(15, 14);
+            this.PointConfigItemmappingDataRemoveOnEnterCB.TabIndex = 243;
+            this.PointConfigItemmappingDataRemoveOnEnterCB.UseVisualStyleBackColor = true;
+            this.PointConfigItemmappingDataRemoveOnEnterCB.CheckedChanged += new System.EventHandler(this.PointConfigItemmappingDataRemoveOnEnterCB_CheckedChanged);
+            // 
+            // darkLabel54
+            // 
+            this.darkLabel54.AutoSize = true;
+            this.darkLabel54.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel54.Location = new System.Drawing.Point(5, 85);
+            this.darkLabel54.Name = "darkLabel54";
+            this.darkLabel54.Size = new System.Drawing.Size(56, 13);
+            this.darkLabel54.TabIndex = 241;
+            this.darkLabel54.Text = "Add Delay";
+            // 
+            // PointConfigItemmappingDataAdddelayNUD
+            // 
+            this.PointConfigItemmappingDataAdddelayNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PointConfigItemmappingDataAdddelayNUD.DecimalPlaces = 1;
+            this.PointConfigItemmappingDataAdddelayNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigItemmappingDataAdddelayNUD.Location = new System.Drawing.Point(107, 83);
+            this.PointConfigItemmappingDataAdddelayNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.PointConfigItemmappingDataAdddelayNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.PointConfigItemmappingDataAdddelayNUD.Name = "PointConfigItemmappingDataAdddelayNUD";
+            this.PointConfigItemmappingDataAdddelayNUD.Size = new System.Drawing.Size(110, 20);
+            this.PointConfigItemmappingDataAdddelayNUD.TabIndex = 240;
+            this.PointConfigItemmappingDataAdddelayNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PointConfigItemmappingDataAdddelayNUD.ValueChanged += new System.EventHandler(this.PointConfigItemmappingDataAdddelayNUD_ValueChanged);
+            // 
+            // darkLabel50
+            // 
+            this.darkLabel50.AutoSize = true;
+            this.darkLabel50.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel50.Location = new System.Drawing.Point(5, 62);
+            this.darkLabel50.Name = "darkLabel50";
+            this.darkLabel50.Size = new System.Drawing.Size(65, 13);
+            this.darkLabel50.TabIndex = 127;
+            this.darkLabel50.Text = "Add On Win";
+            // 
+            // PointConfigItemmappingDataAddOnWinCB
+            // 
+            this.PointConfigItemmappingDataAddOnWinCB.AutoSize = true;
+            this.PointConfigItemmappingDataAddOnWinCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigItemmappingDataAddOnWinCB.Location = new System.Drawing.Point(202, 63);
+            this.PointConfigItemmappingDataAddOnWinCB.Name = "PointConfigItemmappingDataAddOnWinCB";
+            this.PointConfigItemmappingDataAddOnWinCB.Size = new System.Drawing.Size(15, 14);
+            this.PointConfigItemmappingDataAddOnWinCB.TabIndex = 128;
+            this.PointConfigItemmappingDataAddOnWinCB.UseVisualStyleBackColor = true;
+            this.PointConfigItemmappingDataAddOnWinCB.CheckedChanged += new System.EventHandler(this.PointConfigItemmappingDataAddOnWinCB_CheckedChanged);
+            // 
+            // darkLabel51
+            // 
+            this.darkLabel51.AutoSize = true;
+            this.darkLabel51.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel51.Location = new System.Drawing.Point(5, 42);
+            this.darkLabel51.Name = "darkLabel51";
+            this.darkLabel51.Size = new System.Drawing.Size(101, 13);
+            this.darkLabel51.TabIndex = 125;
+            this.darkLabel51.Text = "Add On First Spawn";
+            // 
+            // PointConfigItemmappingDataAddOnFirstSpawnCB
+            // 
+            this.PointConfigItemmappingDataAddOnFirstSpawnCB.AutoSize = true;
+            this.PointConfigItemmappingDataAddOnFirstSpawnCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigItemmappingDataAddOnFirstSpawnCB.Location = new System.Drawing.Point(202, 43);
+            this.PointConfigItemmappingDataAddOnFirstSpawnCB.Name = "PointConfigItemmappingDataAddOnFirstSpawnCB";
+            this.PointConfigItemmappingDataAddOnFirstSpawnCB.Size = new System.Drawing.Size(15, 14);
+            this.PointConfigItemmappingDataAddOnFirstSpawnCB.TabIndex = 126;
+            this.PointConfigItemmappingDataAddOnFirstSpawnCB.UseVisualStyleBackColor = true;
+            this.PointConfigItemmappingDataAddOnFirstSpawnCB.CheckedChanged += new System.EventHandler(this.PointConfigItemmappingDataAddOnFirstSpawnCB_CheckedChanged);
+            // 
+            // darkLabel52
+            // 
+            this.darkLabel52.AutoSize = true;
+            this.darkLabel52.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel52.Location = new System.Drawing.Point(5, 22);
+            this.darkLabel52.Name = "darkLabel52";
+            this.darkLabel52.Size = new System.Drawing.Size(71, 13);
+            this.darkLabel52.TabIndex = 121;
+            this.darkLabel52.Text = "Add On Enter";
+            // 
+            // PointConfigItemmappingDataaddOnEnterCB
+            // 
+            this.PointConfigItemmappingDataaddOnEnterCB.AutoSize = true;
+            this.PointConfigItemmappingDataaddOnEnterCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigItemmappingDataaddOnEnterCB.Location = new System.Drawing.Point(202, 23);
+            this.PointConfigItemmappingDataaddOnEnterCB.Name = "PointConfigItemmappingDataaddOnEnterCB";
+            this.PointConfigItemmappingDataaddOnEnterCB.Size = new System.Drawing.Size(15, 14);
+            this.PointConfigItemmappingDataaddOnEnterCB.TabIndex = 122;
+            this.PointConfigItemmappingDataaddOnEnterCB.UseVisualStyleBackColor = true;
+            this.PointConfigItemmappingDataaddOnEnterCB.CheckedChanged += new System.EventHandler(this.PointConfigItemmappingDataaddOnEnterCB_CheckedChanged);
+            // 
+            // darkLabel53
+            // 
+            this.darkLabel53.AutoSize = true;
+            this.darkLabel53.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel53.Location = new System.Drawing.Point(5, 2);
+            this.darkLabel53.Name = "darkLabel53";
+            this.darkLabel53.Size = new System.Drawing.Size(80, 13);
+            this.darkLabel53.TabIndex = 119;
+            this.darkLabel53.Text = "Add On Startup";
+            // 
+            // PointConfigItemmappingDataaddOnStartupCB
+            // 
+            this.PointConfigItemmappingDataaddOnStartupCB.AutoSize = true;
+            this.PointConfigItemmappingDataaddOnStartupCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigItemmappingDataaddOnStartupCB.Location = new System.Drawing.Point(202, 3);
+            this.PointConfigItemmappingDataaddOnStartupCB.Name = "PointConfigItemmappingDataaddOnStartupCB";
+            this.PointConfigItemmappingDataaddOnStartupCB.Size = new System.Drawing.Size(15, 14);
+            this.PointConfigItemmappingDataaddOnStartupCB.TabIndex = 120;
+            this.PointConfigItemmappingDataaddOnStartupCB.UseVisualStyleBackColor = true;
+            this.PointConfigItemmappingDataaddOnStartupCB.CheckedChanged += new System.EventHandler(this.PointConfigItemmappingDataaddOnStartupCB_CheckedChanged);
+            // 
+            // PointConfigItemmappingDataLB
+            // 
+            this.PointConfigItemmappingDataLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PointConfigItemmappingDataLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.PointConfigItemmappingDataLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigItemmappingDataLB.FormattingEnabled = true;
+            this.PointConfigItemmappingDataLB.Location = new System.Drawing.Point(6, 15);
+            this.PointConfigItemmappingDataLB.Name = "PointConfigItemmappingDataLB";
+            this.PointConfigItemmappingDataLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.PointConfigItemmappingDataLB.Size = new System.Drawing.Size(226, 199);
+            this.PointConfigItemmappingDataLB.TabIndex = 261;
+            this.PointConfigItemmappingDataLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.PointConfigItemmappingDataLB.SelectedIndexChanged += new System.EventHandler(this.PointConfigItemmappingDataLB_SelectedIndexChanged);
+            // 
             // darkToolStrip25
             // 
             this.darkToolStrip25.AutoSize = false;
@@ -2421,6 +3126,8 @@ namespace DayZeEditor
             this.darkToolStrip25.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton12,
             this.toolStripSeparator8,
+            this.toolStripButton1,
+            this.toolStripSeparator1,
             this.toolStripButton13});
             this.darkToolStrip25.Location = new System.Drawing.Point(0, 0);
             this.darkToolStrip25.Name = "darkToolStrip25";
@@ -2448,6 +3155,25 @@ namespace DayZeEditor
             this.toolStripSeparator8.Name = "toolStripSeparator8";
             this.toolStripSeparator8.Size = new System.Drawing.Size(6, 28);
             // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(94, 25);
+            this.toolStripButton1.Text = "Object Spawner";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripSeparator1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripSeparator1.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
+            // 
             // toolStripButton13
             // 
             this.toolStripButton13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -2470,6 +3196,17 @@ namespace DayZeEditor
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(875, 738);
             this.panel17.TabIndex = 101;
+            // 
+            // darkButton16
+            // 
+            this.darkButton16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton16.Location = new System.Drawing.Point(128, 165);
+            this.darkButton16.Name = "darkButton16";
+            this.darkButton16.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton16.Size = new System.Drawing.Size(104, 23);
+            this.darkButton16.TabIndex = 298;
+            this.darkButton16.Text = "Export DZE";
+            this.darkButton16.Click += new System.EventHandler(this.darkButton16_Click);
             // 
             // MPGSpawnerManager
             // 
@@ -2575,6 +3312,22 @@ namespace DayZeEditor
             this.panelEx1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.groupBox10.ResumeLayout(false);
+            this.panel19.ResumeLayout(false);
+            this.panel19.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PointConfigItemmappingDataSpawnerObjectposXNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PointConfigItemmappingDataSpawnerObjectposZNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PointConfigItemmappingDataSpawnerObjectposYNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PointConfigItemmappingDataSpawnerObjectyprZNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PointConfigItemmappingDataSpawnerObjectscalNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PointConfigItemmappingDataSpawnerObjectyprYNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PointConfigItemmappingDataSpawnerObjectyprXNUD)).EndInit();
+            this.groupBox9.ResumeLayout(false);
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PointConfigItemmappingDataRemovedelayNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PointConfigItemmappingDataAdddelayNUD)).EndInit();
             this.darkToolStrip25.ResumeLayout(false);
             this.darkToolStrip25.PerformLayout();
             this.panel17.ResumeLayout(false);
@@ -2747,5 +3500,55 @@ namespace DayZeEditor
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.GroupBox groupBox8;
         private DarkUI.Controls.DarkLabel darkLabel42;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private DarkUI.Controls.DarkButton darkButton8;
+        private DarkUI.Controls.DarkButton darkButton9;
+        private System.Windows.Forms.Panel panel18;
+        private DarkUI.Controls.DarkLabel darkLabel55;
+        private System.Windows.Forms.NumericUpDown PointConfigItemmappingDataRemovedelayNUD;
+        private DarkUI.Controls.DarkLabel darkLabel56;
+        private System.Windows.Forms.CheckBox PointConfigItemmappingDataRemoveOnWinCB;
+        private DarkUI.Controls.DarkLabel darkLabel57;
+        private System.Windows.Forms.CheckBox PointConfigItemmappingDataRemoveOnFirstSpawnCB;
+        private DarkUI.Controls.DarkLabel darkLabel58;
+        private System.Windows.Forms.CheckBox PointConfigItemmappingDataRemoveOnEnterCB;
+        private DarkUI.Controls.DarkLabel darkLabel54;
+        private System.Windows.Forms.NumericUpDown PointConfigItemmappingDataAdddelayNUD;
+        private DarkUI.Controls.DarkLabel darkLabel50;
+        private System.Windows.Forms.CheckBox PointConfigItemmappingDataAddOnWinCB;
+        private DarkUI.Controls.DarkLabel darkLabel51;
+        private System.Windows.Forms.CheckBox PointConfigItemmappingDataAddOnFirstSpawnCB;
+        private DarkUI.Controls.DarkLabel darkLabel52;
+        private System.Windows.Forms.CheckBox PointConfigItemmappingDataaddOnEnterCB;
+        private DarkUI.Controls.DarkLabel darkLabel53;
+        private System.Windows.Forms.CheckBox PointConfigItemmappingDataaddOnStartupCB;
+        private System.Windows.Forms.ListBox PointConfigItemmappingDataLB;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private DarkUI.Controls.DarkButton darkButton13;
+        private DarkUI.Controls.DarkButton darkButton14;
+        private System.Windows.Forms.Panel panel19;
+        private DarkUI.Controls.DarkLabel darkLabel63;
+        private System.Windows.Forms.CheckBox PointConfigItemmappingDataSpawnerObjectenableCEPersistencyCB;
+        private DarkUI.Controls.DarkLabel darkLabel64;
+        private System.Windows.Forms.NumericUpDown PointConfigItemmappingDataSpawnerObjectscalNUD;
+        private System.Windows.Forms.ListBox PointConfigItemmappingDataItemSpawnerLB;
+        private System.Windows.Forms.NumericUpDown PointConfigItemmappingDataSpawnerObjectposXNUD;
+        private System.Windows.Forms.NumericUpDown PointConfigItemmappingDataSpawnerObjectposZNUD;
+        private System.Windows.Forms.TextBox PointConfigItemmappingDataSpawnerObjectNameTB;
+        private System.Windows.Forms.NumericUpDown PointConfigItemmappingDataSpawnerObjectposYNUD;
+        private DarkUI.Controls.DarkLabel darkLabel65;
+        private DarkUI.Controls.DarkLabel darkLabel66;
+        private DarkUI.Controls.DarkLabel darkLabel67;
+        private DarkUI.Controls.DarkLabel darkLabel68;
+        private System.Windows.Forms.NumericUpDown PointConfigItemmappingDataSpawnerObjectyprZNUD;
+        private System.Windows.Forms.NumericUpDown PointConfigItemmappingDataSpawnerObjectyprYNUD;
+        private DarkUI.Controls.DarkLabel darkLabel70;
+        private System.Windows.Forms.NumericUpDown PointConfigItemmappingDataSpawnerObjectyprXNUD;
+        private DarkUI.Controls.DarkLabel darkLabel69;
+        private DarkUI.Controls.DarkButton darkButton15;
+        private DarkUI.Controls.DarkButton darkButton16;
     }
 }

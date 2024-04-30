@@ -206,10 +206,15 @@ namespace DayZeEditor
         {
             tabControl1.SelectedIndex = 1;
         }
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 2;
+        }
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             toolStripButton12.Checked = false;
             toolStripButton13.Checked = false;
+            toolStripButton1.Checked = false;
             switch (tabControl1.SelectedIndex)
             {
                 case 0:
@@ -218,13 +223,15 @@ namespace DayZeEditor
                 case 1:
                     toolStripButton13.Checked = true;
                     break;
+                case 2:
+                    toolStripButton1.Checked = true;
+                    break;
             }
         }
         private void SpawnerPointfilesLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (SpawnerPointfilesLB.SelectedItems.Count < 1) return;
             currentSpawnerPointsFile = SpawnerPointfilesLB.SelectedItem as MPG_Spawner_PointsConfig;
-            currentSpawnerPoint = null;
             useraction = false;
             SpawnerPointsLB.DisplayMember = "DisplayName";
             SpawnerPointsLB.ValueMember = "Value";
@@ -347,6 +354,10 @@ namespace DayZeEditor
             PointConfigSpawnListLB.ValueMember = "Value";
             PointConfigSpawnListLB.DataSource = currentSpawnerPoint.spawnList;
 
+            PointConfigItemmappingDataLB.DisplayMember = "DisplayName";
+            PointConfigItemmappingDataLB.ValueMember = "Value";
+            PointConfigItemmappingDataLB.DataSource = currentSpawnerPoint.mappingData;
+
             pictureBox1.Invalidate();
             useraction = true;
         }
@@ -366,11 +377,11 @@ namespace DayZeEditor
                     pointId = form.SelectedID,
                     _triggerPosition = new Vec3PandR("0 0 0"),
                     _spawnPositions = new BindingList<Vec3PandR>(),
-                    triggerDependencies = new BindingList<int>(),
-                    triggersToEnableOnEnter = new BindingList<int>(),
-                    triggersToEnableOnFirstSpawn = new BindingList<int>(),
-                    triggersToEnableOnLeave = new BindingList<int>(),
-                    triggersToEnableOnWin = new BindingList<int>(),
+                    ListtriggerDependencies = new BindingList<MPG_Spawner_PointConfig>(),
+                    ListtriggersToEnableOnEnter = new BindingList<MPG_Spawner_PointConfig>(),
+                    ListtriggersToEnableOnFirstSpawn = new BindingList<MPG_Spawner_PointConfig>(),
+                    ListtriggersToEnableOnLeave = new BindingList<MPG_Spawner_PointConfig>(),
+                    ListtriggersToEnableOnWin = new BindingList<MPG_Spawner_PointConfig>(),
                     spawnList = new BindingList<string>(),
                     mappingData = new BindingList<MPG_Spawner_mappingData>(),
                     isDebugEnabled = 1,
@@ -1160,6 +1171,256 @@ namespace DayZeEditor
         private void checkBox9_CheckedChanged(object sender, EventArgs e)
         {
             pictureBox1.Invalidate();
+        }
+
+
+        public MPG_Spawner_mappingData currentMappingData;
+        public ITEM_SpawnerObject currentITEM_SpawnerObject;
+        private void PointConfigItemmappingDataLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (PointConfigItemmappingDataLB.SelectedItems.Count < 1) return;
+            currentMappingData = PointConfigItemmappingDataLB.SelectedItem as MPG_Spawner_mappingData;
+            useraction = false;
+            PointConfigItemmappingDataaddOnStartupCB.Checked = currentMappingData.addOnStartup == 1 ? true : false;
+            PointConfigItemmappingDataaddOnEnterCB.Checked = currentMappingData.addOnEnter == 1 ? true : false;
+            PointConfigItemmappingDataAddOnFirstSpawnCB.Checked = currentMappingData.addOnFirstSpawn == 1 ? true : false;
+            PointConfigItemmappingDataAddOnWinCB.Checked = currentMappingData.addOnWin == 1 ? true : false;
+            PointConfigItemmappingDataAdddelayNUD.Value = currentMappingData.addDelay;
+            PointConfigItemmappingDataRemoveOnEnterCB.Checked = currentMappingData.removeOnEnter == 1 ? true: false;
+            PointConfigItemmappingDataRemoveOnEnterCB.Checked = currentMappingData.removeOnEnter == 1 ? true : false;
+            PointConfigItemmappingDataRemoveOnEnterCB.Checked = currentMappingData.removeOnEnter == 1 ? true : false;
+            PointConfigItemmappingDataAdddelayNUD.Value = currentMappingData.addDelay;
+
+            PointConfigItemmappingDataItemSpawnerLB.DisplayMember = "DisplayName";
+            PointConfigItemmappingDataItemSpawnerLB.ValueMember = "Value";
+            PointConfigItemmappingDataItemSpawnerLB.DataSource = currentMappingData.mappingObjects;
+
+            useraction = true;
+        }
+        private void darkButton8_Click(object sender, EventArgs e)
+        {
+            currentSpawnerPoint.mappingData.Add(new MPG_Spawner_mappingData());
+            PointConfigItemmappingDataLB.Invalidate();
+            currentSpawnerPointsFile.isDirty = true;
+            PointConfigItemmappingDataLB.SelectedIndex = -1;
+            PointConfigItemmappingDataLB.SelectedIndex = currentSpawnerPoint.mappingData.Count - 1;
+        }
+        private void darkButton9_Click(object sender, EventArgs e)
+        {
+            currentSpawnerPoint.mappingData.Remove(currentMappingData);
+            PointConfigItemmappingDataLB.Invalidate();
+            currentSpawnerPointsFile.isDirty = true;
+            if (currentSpawnerPoint.mappingData.Count == 0)
+            {
+                currentMappingData = null;
+                PointConfigItemmappingDataItemSpawnerLB.DataSource = null;
+            }
+        }
+        private void PointConfigItemmappingDataItemSpawnerLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (PointConfigItemmappingDataItemSpawnerLB.SelectedItems.Count < 1) return;
+            currentITEM_SpawnerObject = PointConfigItemmappingDataItemSpawnerLB.SelectedItem as ITEM_SpawnerObject;
+            useraction = false;
+
+            PointConfigItemmappingDataSpawnerObjectNameTB.Text = currentITEM_SpawnerObject.name;
+            PointConfigItemmappingDataSpawnerObjectposXNUD.Value = (decimal)currentITEM_SpawnerObject.pos[0];
+            PointConfigItemmappingDataSpawnerObjectposYNUD.Value = (decimal)currentITEM_SpawnerObject.pos[1];
+            PointConfigItemmappingDataSpawnerObjectposZNUD.Value = (decimal)currentITEM_SpawnerObject.pos[2];
+            PointConfigItemmappingDataSpawnerObjectyprXNUD.Value = (decimal)currentITEM_SpawnerObject.ypr[0];
+            PointConfigItemmappingDataSpawnerObjectyprYNUD.Value = (decimal)currentITEM_SpawnerObject.ypr[1];
+            PointConfigItemmappingDataSpawnerObjectyprZNUD.Value = (decimal)currentITEM_SpawnerObject.ypr[2];
+            PointConfigItemmappingDataSpawnerObjectscalNUD.Value = (decimal)currentITEM_SpawnerObject.scale;
+            //PointConfigItemmappingDataSpawnerObjectenableCEPersistencyCB.Checked = currentITEM_SpawnerObject.enableCEPersistency;
+            useraction = true;
+        }
+        private void PointConfigItemmappingDataaddOnStartupCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentMappingData.addOnStartup = PointConfigItemmappingDataaddOnStartupCB.Checked == true ? 1 : 0;
+            currentSpawnerPointsFile.isDirty = true;
+        }
+        private void PointConfigItemmappingDataaddOnEnterCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentMappingData.addOnEnter = PointConfigItemmappingDataaddOnEnterCB.Checked == true ? 1 : 0;
+            currentSpawnerPointsFile.isDirty = true;
+        }
+        private void PointConfigItemmappingDataAddOnFirstSpawnCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentMappingData.addOnFirstSpawn = PointConfigItemmappingDataAddOnFirstSpawnCB.Checked == true ? 1 : 0;
+            currentSpawnerPointsFile.isDirty = true;
+        }
+        private void PointConfigItemmappingDataAddOnWinCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentMappingData.addOnWin = PointConfigItemmappingDataAddOnWinCB.Checked == true ? 1 : 0;
+            currentSpawnerPointsFile.isDirty = true;
+        }
+        private void PointConfigItemmappingDataAdddelayNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentMappingData.addDelay = PointConfigItemmappingDataAdddelayNUD.Value;
+            currentSpawnerPointsFile.isDirty = true;
+        }
+        private void PointConfigItemmappingDataRemoveOnEnterCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentMappingData.removeOnEnter = PointConfigItemmappingDataRemoveOnEnterCB.Checked == true ? 1 : 0;
+            currentSpawnerPointsFile.isDirty = true;
+        }
+        private void PointConfigItemmappingDataRemoveOnFirstSpawnCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentMappingData.removeOnFirstSpawn = PointConfigItemmappingDataRemoveOnFirstSpawnCB.Checked == true ? 1 : 0;
+            currentSpawnerPointsFile.isDirty = true;
+        }
+        private void PointConfigItemmappingDataRemoveOnWinCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentMappingData.removeOnWin = PointConfigItemmappingDataRemoveOnWinCB.Checked == true ? 1 : 0;
+            currentSpawnerPointsFile.isDirty = true;
+        }
+        private void PointConfigItemmappingDataRemovedelayNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentMappingData.removeDelay = PointConfigItemmappingDataRemovedelayNUD.Value;
+            currentSpawnerPointsFile.isDirty = true;
+        }
+
+        private void PointConfigItemmappingDataSpawnerObjectNameTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentITEM_SpawnerObject.name = PointConfigItemmappingDataSpawnerObjectNameTB.Text;
+            currentSpawnerPointsFile.isDirty = true;
+        }
+        private void PointConfigItemmappingDataSpawnerObjectposXNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentITEM_SpawnerObject.pos[0] = (float)PointConfigItemmappingDataSpawnerObjectposXNUD.Value;
+            currentSpawnerPointsFile.isDirty = true;
+        }
+        private void PointConfigItemmappingDataSpawnerObjectposYNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentITEM_SpawnerObject.pos[1] = (float)PointConfigItemmappingDataSpawnerObjectposYNUD.Value;
+            currentSpawnerPointsFile.isDirty = true;
+        }
+        private void PointConfigItemmappingDataSpawnerObjectposZNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentITEM_SpawnerObject.pos[2] = (float)PointConfigItemmappingDataSpawnerObjectposZNUD.Value;
+            currentSpawnerPointsFile.isDirty = true;
+        }
+        private void PointConfigItemmappingDataSpawnerObjectyprXNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentITEM_SpawnerObject.ypr[0] = (float)PointConfigItemmappingDataSpawnerObjectposXNUD.Value;
+            currentSpawnerPointsFile.isDirty = true;
+        }
+        private void PointConfigItemmappingDataSpawnerObjectyprYNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentITEM_SpawnerObject.ypr[1] = (float)PointConfigItemmappingDataSpawnerObjectposYNUD.Value;
+            currentSpawnerPointsFile.isDirty = true;
+        }
+        private void PointConfigItemmappingDataSpawnerObjectyprZNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentITEM_SpawnerObject.ypr[2] = (float)PointConfigItemmappingDataSpawnerObjectyprZNUD.Value;
+            currentSpawnerPointsFile.isDirty = true;
+        }
+        private void PointConfigItemmappingDataSpawnerObjectscalNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentITEM_SpawnerObject.scale = (float)PointConfigItemmappingDataSpawnerObjectscalNUD.Value;
+            currentSpawnerPointsFile.isDirty = true;
+        }
+
+        private void darkButton15_Click(object sender, EventArgs e)
+        {
+            if (currentMappingData == null) return;
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    DZE importfile = DZEHelpers.LoadFile(filePath);
+                    bool wipeobjects = false;
+                    var result = MessageBox.Show("Would you like to clear existing Spawn objects??", "Import options", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                    if ((result == DialogResult.Cancel))
+                    {
+                        return;
+                    }
+                    else if (result == DialogResult.Yes)
+                    {
+                        wipeobjects = true;
+                    }
+                    currentMappingData.ImportDze(importfile, wipeobjects);
+                    currentSpawnerPointsFile.isDirty = true;
+                    PointConfigItemmappingDataItemSpawnerLB.Invalidate();
+                    PointConfigItemmappingDataItemSpawnerLB.DataSource = currentMappingData.mappingObjects;
+                }
+
+            }
+        }
+
+        private void darkButton13_Click(object sender, EventArgs e)
+        {
+            ITEM_SpawnerObject newobject = new ITEM_SpawnerObject()
+            {
+                name = "Change Me",
+                pos = new float[] { 0, 0, 0 },
+                ypr = new float[] { 0, 0, 0 },
+                scale = 2
+            };
+            currentMappingData.mappingObjects.Add(newobject);
+            currentSpawnerPointsFile.isDirty = true;
+            PointConfigItemmappingDataItemSpawnerLB.Invalidate();
+        }
+
+        private void darkButton14_Click(object sender, EventArgs e)
+        {
+            currentMappingData.mappingObjects.Remove(currentITEM_SpawnerObject);
+            currentSpawnerPointsFile.isDirty = true;
+            PointConfigItemmappingDataItemSpawnerLB.Invalidate();
+            if (currentMappingData.mappingObjects.Count == 0)
+                PointConfigItemmappingDataItemSpawnerLB.SelectedIndex = -1;
+        }
+
+        private void darkButton16_Click(object sender, EventArgs e)
+        {
+            if (currentMappingData == null || currentMappingData.mappingObjects.Count == 0) return;
+            DZE newdze = new DZE()
+            {
+                MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
+            };
+            int m_Id = 0;
+            foreach (ITEM_SpawnerObject ITEM_SpawnerObject in currentMappingData.mappingObjects)
+            {
+                Editorobject SpawnObject = new Editorobject()
+                {
+                    Type = ITEM_SpawnerObject.name,
+                    DisplayName = ITEM_SpawnerObject.name,
+                    Position = ITEM_SpawnerObject.pos,
+                    Orientation = ITEM_SpawnerObject.pos,
+                    Scale = ITEM_SpawnerObject.scale,
+                    Flags = 2147483647,
+                    m_Id = m_Id
+                };
+                newdze.EditorObjects.Add(SpawnObject);
+                m_Id++;
+            }
+            string filename = "MPG Item Spawner";
+            newdze.CameraPosition = newdze.EditorObjects[0].Position;
+            SaveFileDialog save = new SaveFileDialog();
+            save.FileName = filename;
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                string jsonString = JsonSerializer.Serialize(newdze, options);
+                File.WriteAllText(save.FileName + ".dze", jsonString);
+            }
         }
     }
 }
