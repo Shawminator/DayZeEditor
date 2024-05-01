@@ -232,6 +232,7 @@ namespace DayZeEditor
                     Position = CurrentBubaklocation._triggerpos.GetPositionFloatArray(),
                     Orientation = CurrentBubaklocation._triggerpos.GetRotationFloatArray(),
                     Scale = 1.0f,
+                    Model = "",
                     Flags = 2147483647,
                     m_Id = m_Id
                 };
@@ -247,6 +248,7 @@ namespace DayZeEditor
                     Position = vec3pandr.GetPositionFloatArray(),
                     Orientation = vec3pandr.GetRotationFloatArray(),
                     Scale = 1.0f,
+                    Model = "",
                     Flags = 2147483647,
                     m_Id = m_Id
                 };
@@ -461,6 +463,7 @@ namespace DayZeEditor
                     Position = CurrentBubaklocation._triggerpos.GetPositionFloatArray(),
                     Orientation = CurrentBubaklocation._triggerpos.GetRotationFloatArray(),
                     Scale = 1.0f,
+                    Model = "",
                     Flags = 2147483647,
                     m_Id = m_Id
                 };
@@ -476,6 +479,7 @@ namespace DayZeEditor
                     Position = vec3pandr.GetPositionFloatArray(),
                     Orientation = vec3pandr.GetRotationFloatArray(),
                     Scale = 1.0f,
+                    Model = "",
                     Flags = 2147483647,
                     m_Id = m_Id
                 };

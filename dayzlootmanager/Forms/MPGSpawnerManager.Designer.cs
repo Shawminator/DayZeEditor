@@ -190,6 +190,8 @@ namespace DayZeEditor
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.darkButton16 = new DarkUI.Controls.DarkButton();
+            this.darkButton15 = new DarkUI.Controls.DarkButton();
             this.darkButton13 = new DarkUI.Controls.DarkButton();
             this.darkButton14 = new DarkUI.Controls.DarkButton();
             this.panel19 = new System.Windows.Forms.Panel();
@@ -212,7 +214,6 @@ namespace DayZeEditor
             this.darkLabel69 = new DarkUI.Controls.DarkLabel();
             this.PointConfigItemmappingDataItemSpawnerLB = new System.Windows.Forms.ListBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.darkButton15 = new DarkUI.Controls.DarkButton();
             this.darkButton8 = new DarkUI.Controls.DarkButton();
             this.darkButton9 = new DarkUI.Controls.DarkButton();
             this.panel18 = new System.Windows.Forms.Panel();
@@ -242,7 +243,6 @@ namespace DayZeEditor
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
             this.panel17 = new System.Windows.Forms.Panel();
-            this.darkButton16 = new DarkUI.Controls.DarkButton();
             this.darkToolStrip21.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.configVersionNUD)).BeginInit();
@@ -1515,7 +1515,7 @@ namespace DayZeEditor
             this.PointConfigTriggerPosXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.PointConfigTriggerPosXNUD.Location = new System.Drawing.Point(136, 29);
             this.PointConfigTriggerPosXNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -1547,7 +1547,7 @@ namespace DayZeEditor
             this.PointConfigTriggerPosZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.PointConfigTriggerPosZNUD.Location = new System.Drawing.Point(136, 81);
             this.PointConfigTriggerPosZNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -1569,7 +1569,7 @@ namespace DayZeEditor
             this.PointConfigTriggerPosYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.PointConfigTriggerPosYNUD.Location = new System.Drawing.Point(136, 55);
             this.PointConfigTriggerPosYNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -2001,7 +2001,7 @@ namespace DayZeEditor
             this.PointConfigSpawnPositionXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.PointConfigSpawnPositionXNUD.Location = new System.Drawing.Point(136, 29);
             this.PointConfigSpawnPositionXNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -2033,7 +2033,7 @@ namespace DayZeEditor
             this.PointConfigSpawnPositionZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.PointConfigSpawnPositionZNUD.Location = new System.Drawing.Point(136, 81);
             this.PointConfigSpawnPositionZNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -2055,7 +2055,7 @@ namespace DayZeEditor
             this.PointConfigSpawnPositionYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.PointConfigSpawnPositionYNUD.Location = new System.Drawing.Point(136, 55);
             this.PointConfigSpawnPositionYNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -2505,6 +2505,28 @@ namespace DayZeEditor
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Item Spawner Objects";
             // 
+            // darkButton16
+            // 
+            this.darkButton16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton16.Location = new System.Drawing.Point(128, 165);
+            this.darkButton16.Name = "darkButton16";
+            this.darkButton16.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton16.Size = new System.Drawing.Size(104, 23);
+            this.darkButton16.TabIndex = 298;
+            this.darkButton16.Text = "Export DZE";
+            this.darkButton16.Click += new System.EventHandler(this.darkButton16_Click);
+            // 
+            // darkButton15
+            // 
+            this.darkButton15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton15.Location = new System.Drawing.Point(6, 165);
+            this.darkButton15.Name = "darkButton15";
+            this.darkButton15.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton15.Size = new System.Drawing.Size(116, 23);
+            this.darkButton15.TabIndex = 297;
+            this.darkButton15.Text = "Import from DZE";
+            this.darkButton15.Click += new System.EventHandler(this.darkButton15_Click);
+            // 
             // darkButton13
             // 
             this.darkButton13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2834,17 +2856,6 @@ namespace DayZeEditor
             this.groupBox9.TabIndex = 260;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Object Mapping Data";
-            // 
-            // darkButton15
-            // 
-            this.darkButton15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton15.Location = new System.Drawing.Point(6, 165);
-            this.darkButton15.Name = "darkButton15";
-            this.darkButton15.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton15.Size = new System.Drawing.Size(116, 23);
-            this.darkButton15.TabIndex = 297;
-            this.darkButton15.Text = "Import from DZE";
-            this.darkButton15.Click += new System.EventHandler(this.darkButton15_Click);
             // 
             // darkButton8
             // 
@@ -3196,17 +3207,6 @@ namespace DayZeEditor
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(875, 738);
             this.panel17.TabIndex = 101;
-            // 
-            // darkButton16
-            // 
-            this.darkButton16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton16.Location = new System.Drawing.Point(128, 165);
-            this.darkButton16.Name = "darkButton16";
-            this.darkButton16.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton16.Size = new System.Drawing.Size(104, 23);
-            this.darkButton16.TabIndex = 298;
-            this.darkButton16.Text = "Export DZE";
-            this.darkButton16.Click += new System.EventHandler(this.darkButton16_Click);
             // 
             // MPGSpawnerManager
             // 

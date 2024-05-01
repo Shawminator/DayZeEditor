@@ -121,6 +121,10 @@ namespace DayZeLib
         {
             return new float[] { X, Y, Z };
         }
+        public string GetString()
+        {
+            return X.ToString() + " " + Y.ToString() + " " + Z.ToString();
+        }
     }
     public class MapData
     {

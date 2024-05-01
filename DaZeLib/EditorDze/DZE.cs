@@ -15,33 +15,15 @@ namespace DayZeLib
     public class DZE
     {
         [JsonIgnore]
-        const int Version = 4;
+        const int Version = 5;
 
         public string MapName { get; set; }
         public float[] CameraPosition { get; set; }
-        public int Year { get; set; }
-        public int Month { get; set; }
-        public int Day { get; set; }
-        public int Hour { get; set; }
-        public int Minute { get; set; }
-        public int Second { get; set; }
-        public decimal Overcast0 { get; set; }
-        public decimal Fog0 { get; set; }
-        public decimal Rain0 { get; set; }
         public BindingList<Editorobject> EditorObjects { get; set; }
         public BindingList<Editordeletedobject> EditorHiddenObjects { get; set; }
 
         public DZE()
         {
-            Year = 0;
-            Month = 0;
-            Day = 0;
-            Hour = 0;
-            Minute = 0;
-            Second = 0;
-            Overcast0 = (decimal)0.0;
-            Fog0 = (decimal)0.0;
-            Rain0 = (decimal)0.0;
             EditorObjects = new BindingList<Editorobject>();
             EditorHiddenObjects = new BindingList<Editordeletedobject>();
         }
@@ -53,16 +35,9 @@ namespace DayZeLib
                 int Length = br.ReadInt32();
                 string bincheck = Helper.ReadCString(br, 12);
                 int fileversion = br.ReadInt32();
-                if (fileversion != Version)
+               if (fileversion > Version)
                 {
-                    if (fileversion > Version)
-                    {
-                        MessageBox.Show("The version number of the this dze file Newer\nPlease let me know to update the DayZeEditor");
-                    }
-                    else if (fileversion < Version)
-                    {
-                        MessageBox.Show("You are using and older version of the DZE format, please update your file..");
-                    }
+                    MessageBox.Show("The version number of the this dze file Newer\nPlease let me know to update the DayZeEditor");
                     return;
                 }
                 MapName = Helper.ReadCString(br, br.ReadInt32());
@@ -76,7 +51,7 @@ namespace DayZeLib
                 EditorObjects = new BindingList<Editorobject>();
                 for (int j = 0; j < EditorobjectCount; j++)
                 {
-                    Editorobject obj = new Editorobject(br);
+                    Editorobject obj = new Editorobject(br, fileversion);
                     obj.Uuid = "";
                     obj.m_Id = j;
                     EditorObjects.Add(obj);
@@ -99,6 +74,7 @@ namespace DayZeLib
         public float[] Position { get; set; }
         public float[] Orientation { get; set; }
         public float Scale { get; set; }
+        public string Model { get; set; }
         public int Flags { get; set; }
         public int m_Id { get; set; }
 
@@ -124,9 +100,10 @@ namespace DayZeLib
         {
             Uuid = "";
             Scale = 1;
+            Model = "";
             Flags = 2147483647;
         }
-        public Editorobject(BinaryReader br)
+        public Editorobject(BinaryReader br, int fileversion)
         {
             Type = Helper.ReadCString(br, br.ReadInt32());
             DisplayName = Helper.ReadCString(br, br.ReadInt32());
@@ -144,6 +121,10 @@ namespace DayZeLib
             }
             Scale = br.ReadSingle();
             Flags = br.ReadInt32();
+
+            if(fileversion < 2)
+                return;
+
             attachments_count = br.ReadInt32();
             Attachments = new List<string>();
             for (int k = 0; k < attachments_count; k++)
@@ -172,10 +153,19 @@ namespace DayZeLib
 
 
             }
+
+            if (fileversion < 3)
+                return;
+
             EditorOnly = br.ReadInt32() == 1 ? true : false;
             Locked = br.ReadInt32() == 1 ? true : false;
             AllowDamage = br.ReadInt32() == 1 ? true : false;
             Simulate = br.ReadInt32() == 1 ? true : false;
+
+            if (fileversion < 5)
+                return;
+            
+            Model = Helper.ReadCString(br, br.ReadInt32());
         }
     }
 

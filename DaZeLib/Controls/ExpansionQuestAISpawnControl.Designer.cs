@@ -892,7 +892,7 @@ namespace DayZeEditor
             this.numericUpDown9.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown9.Location = new System.Drawing.Point(197, 367);
             this.numericUpDown9.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -914,7 +914,7 @@ namespace DayZeEditor
             this.numericUpDown11.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown11.Location = new System.Drawing.Point(197, 394);
             this.numericUpDown11.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -936,7 +936,7 @@ namespace DayZeEditor
             this.numericUpDown12.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown12.Location = new System.Drawing.Point(197, 420);
             this.numericUpDown12.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});

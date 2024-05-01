@@ -230,13 +230,28 @@ namespace DayZeEditor
         }
         private void SpawnerPointfilesLB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (SpawnerPointfilesLB.SelectedItems.Count < 1) return;
+            if (SpawnerPointfilesLB.SelectedItems.Count < 1)
+            {
+
+                return;
+            }
             currentSpawnerPointsFile = SpawnerPointfilesLB.SelectedItem as MPG_Spawner_PointsConfig;
             useraction = false;
             SpawnerPointsLB.DisplayMember = "DisplayName";
             SpawnerPointsLB.ValueMember = "Value";
             SpawnerPointsLB.DataSource = currentSpawnerPointsFile.Points;
             pictureBox1.Invalidate();
+            if (currentSpawnerPointsFile.Points.Count < 1)
+            {
+                groupBox4.Visible = false;
+                groupBox9.Visible = false;
+                groupBox10.Visible = false;
+            }
+            else
+            {
+                groupBox4.Visible = true;
+                groupBox9.Visible = true;
+            }
             useraction = true;
         }
         private void darkButton5_Click(object sender, EventArgs e)
@@ -269,6 +284,7 @@ namespace DayZeEditor
                 if (SpawnerPointfilesLB.Items.Count <= 0)
                 {
                     groupBox4.Visible = false;
+                    groupBox9.Visible = false;
                     SpawnerPointsLB.DataSource = null;
                     currentSpawnerPoint = null;
                 }
@@ -295,6 +311,7 @@ namespace DayZeEditor
             currentSpawnerPoint = SpawnerPointsLB.SelectedItem as MPG_Spawner_PointConfig;
             useraction = false;
             groupBox4.Visible = true;
+            groupBox9.Visible = true;
             PointConfigisDebugEnabledCB.Checked = currentSpawnerPoint.isDebugEnabled == 1 ? true : false;
             PointConfigWorkingHoursStartNUD.Value = currentSpawnerPoint.getworkinghours()[0];
             PointConfigWorkingHoursEndNUD.Value = currentSpawnerPoint.getworkinghours()[1];
@@ -358,6 +375,11 @@ namespace DayZeEditor
             PointConfigItemmappingDataLB.ValueMember = "Value";
             PointConfigItemmappingDataLB.DataSource = currentSpawnerPoint.mappingData;
 
+            if (currentSpawnerPoint.mappingData.Count > 0)
+                groupBox10.Visible = true;
+            else
+                groupBox10.Visible = false;
+
             pictureBox1.Invalidate();
             useraction = true;
         }
@@ -419,11 +441,15 @@ namespace DayZeEditor
         }
         private void darkButton2_Click(object sender, EventArgs e)
         {
+            if (SpawnerPointsLB.SelectedItems.Count < 1) return;
             if (MessageBox.Show("This Will Remove All reference to this SpawnerPoint, Are you sure you want to do this?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 MPG_SPWNR_ModConfig.RemovePointfile(currentSpawnerPoint);
                 if (SpawnerPointsLB.Items.Count <= 0)
+                {
+                    groupBox9.Visible = false;
                     groupBox4.Visible = false;
+                }
 
                 pictureBox1.Invalidate();
             }
@@ -883,6 +909,7 @@ namespace DayZeEditor
                     Position = currentSpawnerPoint._triggerPosition.GetPositionFloatArray(),
                     Orientation = currentSpawnerPoint._triggerPosition.GetRotationFloatArray(),
                     Scale = 1.0f,
+                    Model = "",
                     Flags = 2147483647,
                     m_Id = m_Id
                 };
@@ -898,6 +925,7 @@ namespace DayZeEditor
                     Position = vec3pandr.GetPositionFloatArray(),
                     Orientation = vec3pandr.GetRotationFloatArray(),
                     Scale = 1.0f,
+                    Model = "",
                     Flags = 2147483647,
                     m_Id = m_Id
                 };
@@ -1195,6 +1223,8 @@ namespace DayZeEditor
             PointConfigItemmappingDataItemSpawnerLB.ValueMember = "Value";
             PointConfigItemmappingDataItemSpawnerLB.DataSource = currentMappingData.mappingObjects;
 
+            
+
             useraction = true;
         }
         private void darkButton8_Click(object sender, EventArgs e)
@@ -1204,6 +1234,7 @@ namespace DayZeEditor
             currentSpawnerPointsFile.isDirty = true;
             PointConfigItemmappingDataLB.SelectedIndex = -1;
             PointConfigItemmappingDataLB.SelectedIndex = currentSpawnerPoint.mappingData.Count - 1;
+            groupBox10.Visible = true;
         }
         private void darkButton9_Click(object sender, EventArgs e)
         {
@@ -1214,6 +1245,7 @@ namespace DayZeEditor
             {
                 currentMappingData = null;
                 PointConfigItemmappingDataItemSpawnerLB.DataSource = null;
+                groupBox10.Visible = false;
             }
         }
         private void PointConfigItemmappingDataItemSpawnerLB_SelectedIndexChanged(object sender, EventArgs e)
@@ -1336,7 +1368,6 @@ namespace DayZeEditor
             currentITEM_SpawnerObject.scale = (float)PointConfigItemmappingDataSpawnerObjectscalNUD.Value;
             currentSpawnerPointsFile.isDirty = true;
         }
-
         private void darkButton15_Click(object sender, EventArgs e)
         {
             if (currentMappingData == null) return;
@@ -1364,7 +1395,6 @@ namespace DayZeEditor
 
             }
         }
-
         private void darkButton13_Click(object sender, EventArgs e)
         {
             ITEM_SpawnerObject newobject = new ITEM_SpawnerObject()
@@ -1372,13 +1402,13 @@ namespace DayZeEditor
                 name = "Change Me",
                 pos = new float[] { 0, 0, 0 },
                 ypr = new float[] { 0, 0, 0 },
-                scale = 2
+                scale = 1,
+                enableCEPersistency = 0
             };
             currentMappingData.mappingObjects.Add(newobject);
             currentSpawnerPointsFile.isDirty = true;
             PointConfigItemmappingDataItemSpawnerLB.Invalidate();
         }
-
         private void darkButton14_Click(object sender, EventArgs e)
         {
             currentMappingData.mappingObjects.Remove(currentITEM_SpawnerObject);
@@ -1387,7 +1417,6 @@ namespace DayZeEditor
             if (currentMappingData.mappingObjects.Count == 0)
                 PointConfigItemmappingDataItemSpawnerLB.SelectedIndex = -1;
         }
-
         private void darkButton16_Click(object sender, EventArgs e)
         {
             if (currentMappingData == null || currentMappingData.mappingObjects.Count == 0) return;
@@ -1395,7 +1424,7 @@ namespace DayZeEditor
             {
                 MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
             };
-            int m_Id = 0;
+            int m_Id = 1;
             foreach (ITEM_SpawnerObject ITEM_SpawnerObject in currentMappingData.mappingObjects)
             {
                 Editorobject SpawnObject = new Editorobject()
@@ -1403,8 +1432,9 @@ namespace DayZeEditor
                     Type = ITEM_SpawnerObject.name,
                     DisplayName = ITEM_SpawnerObject.name,
                     Position = ITEM_SpawnerObject.pos,
-                    Orientation = ITEM_SpawnerObject.pos,
+                    Orientation = ITEM_SpawnerObject.ypr,
                     Scale = ITEM_SpawnerObject.scale,
+                    Model = "",
                     Flags = 2147483647,
                     m_Id = m_Id
                 };

@@ -3352,6 +3352,7 @@ namespace DayZeEditor
                     Position = new float[] { Convert.ToSingle(array.x), y, Convert.ToSingle(array.z) },
                     Orientation = new float[] { 0, 0, 0 },
                     Scale = 1.0f,
+                    Model = "",
                     Flags = 2147483647,
                     m_Id = m_Id
                 };
@@ -3443,6 +3444,7 @@ namespace DayZeEditor
                     DisplayName = eventgroupdefGroupChild.type,
                     Type = eventgroupdefGroupChild.type,
                     Scale = 1.0f,
+                    Model = "",
                     Flags = 2147483647,
                     m_Id = m_Id
                 };

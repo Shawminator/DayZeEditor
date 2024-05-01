@@ -243,6 +243,7 @@ namespace DayZeEditor
             this.StaticPatrolWaypointInterpolationCB = new System.Windows.Forms.ComboBox();
             this.StaticPatrolDespawnTimeNUD = new System.Windows.Forms.NumericUpDown();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.checkBox10 = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new TreeViewMS.PanelEx();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -526,7 +527,6 @@ namespace DayZeEditor
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
-            this.checkBox10 = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.TabPage1.SuspendLayout();
@@ -3030,7 +3030,7 @@ namespace DayZeEditor
             this.StaticPatrolWaypointPOSXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.StaticPatrolWaypointPOSXNUD.Location = new System.Drawing.Point(260, 39);
             this.StaticPatrolWaypointPOSXNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -3052,7 +3052,7 @@ namespace DayZeEditor
             this.StaticPatrolWaypointPOSZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.StaticPatrolWaypointPOSZNUD.Location = new System.Drawing.Point(260, 91);
             this.StaticPatrolWaypointPOSZNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -3074,7 +3074,7 @@ namespace DayZeEditor
             this.StaticPatrolWaypointPOSYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.StaticPatrolWaypointPOSYNUD.Location = new System.Drawing.Point(260, 65);
             this.StaticPatrolWaypointPOSYNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -3934,6 +3934,17 @@ namespace DayZeEditor
             this.tabPage4.Size = new System.Drawing.Size(966, 615);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "AI Patrol Map Visualisation";
+            // 
+            // checkBox10
+            // 
+            this.checkBox10.AutoSize = true;
+            this.checkBox10.Location = new System.Drawing.Point(270, 10);
+            this.checkBox10.Name = "checkBox10";
+            this.checkBox10.Size = new System.Drawing.Size(102, 17);
+            this.checkBox10.TabIndex = 113;
+            this.checkBox10.Text = "Show All Patrols";
+            this.checkBox10.UseVisualStyleBackColor = true;
+            this.checkBox10.CheckedChanged += new System.EventHandler(this.checkBox10_CheckedChanged);
             // 
             // label1
             // 
@@ -5534,7 +5545,7 @@ namespace DayZeEditor
             this.SpatialGroupsSpatial_SpawnPositionXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.SpatialGroupsSpatial_SpawnPositionXNUD.Location = new System.Drawing.Point(44, 414);
             this.SpatialGroupsSpatial_SpawnPositionXNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -5557,7 +5568,7 @@ namespace DayZeEditor
             this.SpatialGroupsSpatial_SpawnPositionZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.SpatialGroupsSpatial_SpawnPositionZNUD.Location = new System.Drawing.Point(44, 466);
             this.SpatialGroupsSpatial_SpawnPositionZNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -5580,7 +5591,7 @@ namespace DayZeEditor
             this.SpatialGroupsSpatial_SpawnPositionYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.SpatialGroupsSpatial_SpawnPositionYNUD.Location = new System.Drawing.Point(44, 440);
             this.SpatialGroupsSpatial_SpawnPositionYNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -5728,7 +5739,7 @@ namespace DayZeEditor
             this.SpatialGroupsAudioSpatial_TriggerPositionXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.SpatialGroupsAudioSpatial_TriggerPositionXNUD.Location = new System.Drawing.Point(122, 412);
             this.SpatialGroupsAudioSpatial_TriggerPositionXNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -5750,7 +5761,7 @@ namespace DayZeEditor
             this.SpatialGroupsAudioSpatial_TriggerPositionZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.SpatialGroupsAudioSpatial_TriggerPositionZNUD.Location = new System.Drawing.Point(122, 464);
             this.SpatialGroupsAudioSpatial_TriggerPositionZNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -5772,7 +5783,7 @@ namespace DayZeEditor
             this.SpatialGroupsAudioSpatial_TriggerPositionYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.SpatialGroupsAudioSpatial_TriggerPositionYNUD.Location = new System.Drawing.Point(122, 438);
             this.SpatialGroupsAudioSpatial_TriggerPositionYNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -8019,17 +8030,6 @@ namespace DayZeEditor
             this.toolStripButton6.Size = new System.Drawing.Size(111, 25);
             this.toolStripButton6.Text = "Dynamic AI Addon";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
-            // 
-            // checkBox10
-            // 
-            this.checkBox10.AutoSize = true;
-            this.checkBox10.Location = new System.Drawing.Point(270, 10);
-            this.checkBox10.Name = "checkBox10";
-            this.checkBox10.Size = new System.Drawing.Size(102, 17);
-            this.checkBox10.TabIndex = 113;
-            this.checkBox10.Text = "Show All Patrols";
-            this.checkBox10.UseVisualStyleBackColor = true;
-            this.checkBox10.CheckedChanged += new System.EventHandler(this.checkBox10_CheckedChanged);
             // 
             // ExpansionAI
             // 

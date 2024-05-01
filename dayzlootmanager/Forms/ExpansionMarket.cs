@@ -3746,6 +3746,7 @@ namespace DayZeEditor
                 Position = new float[] {currenttradermap.position.X, currenttradermap.position.Y, currenttradermap.position.Z},
                 Orientation = new float[] { 0, 0, 0 },
                 Scale = 1.0f,
+                Model = "",
                 Flags = 2147483647,
                 m_Id = m_Id
             };
@@ -3760,6 +3761,7 @@ namespace DayZeEditor
                     Position = new float[] { array.X, array.Y, array.Z },
                     Orientation = new float[] { 0, 0, 0 },
                     Scale = 1.0f,
+                    Model = "",
                     Flags = 2147483647,
                     m_Id = m_Id
                 };

@@ -474,7 +474,8 @@ namespace DayZeLib
                     name = eo.DisplayName,
                     pos = eo.Position,
                     ypr = eo.Orientation,
-                    scale = eo.Scale
+                    scale = eo.Scale,
+                    enableCEPersistency = 0
                 };
                 mappingObjects.Add(newobject);
             }
@@ -483,6 +484,7 @@ namespace DayZeLib
         public MPG_Spawner_mappingData()
         {
             mappingObjects = new BindingList<ITEM_SpawnerObject>();
+            
         }
     };
     public class ITEM_SpawnerObject
@@ -491,9 +493,8 @@ namespace DayZeLib
         public float[] pos { get; set; }
         public float[] ypr { get; set; }
         public float scale { get; set; }
-        //public bool enableCEPersistency { get; set; }
+        public int enableCEPersistency { get; set; }
 
-        
         public override string ToString()
         {
             return name;

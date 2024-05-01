@@ -5056,7 +5056,7 @@ namespace DayZeEditor
             this.ObjectivesAIVIPPositionXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesAIVIPPositionXNUD.Location = new System.Drawing.Point(35, 32);
             this.ObjectivesAIVIPPositionXNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -5078,7 +5078,7 @@ namespace DayZeEditor
             this.ObjectivesAIVIPPositionYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesAIVIPPositionYNUD.Location = new System.Drawing.Point(35, 60);
             this.ObjectivesAIVIPPositionYNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -5100,7 +5100,7 @@ namespace DayZeEditor
             this.ObjectivesAIVIPPositionZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesAIVIPPositionZNUD.Location = new System.Drawing.Point(35, 85);
             this.ObjectivesAIVIPPositionZNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -6218,7 +6218,7 @@ namespace DayZeEditor
             this.ObjectivesTargetPositionXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesTargetPositionXNUD.Location = new System.Drawing.Point(32, 32);
             this.ObjectivesTargetPositionXNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -6240,7 +6240,7 @@ namespace DayZeEditor
             this.ObjectivesTargetPositionYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesTargetPositionYNUD.Location = new System.Drawing.Point(32, 60);
             this.ObjectivesTargetPositionYNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -6262,7 +6262,7 @@ namespace DayZeEditor
             this.ObjectivesTargetPositionZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesTargetPositionZNUD.Location = new System.Drawing.Point(32, 85);
             this.ObjectivesTargetPositionZNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -6442,7 +6442,7 @@ namespace DayZeEditor
             this.ObjectivesTravelPositionXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesTravelPositionXNUD.Location = new System.Drawing.Point(31, 37);
             this.ObjectivesTravelPositionXNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -6464,7 +6464,7 @@ namespace DayZeEditor
             this.ObjectivesTravelPositionYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesTravelPositionYNUD.Location = new System.Drawing.Point(31, 65);
             this.ObjectivesTravelPositionYNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -6486,7 +6486,7 @@ namespace DayZeEditor
             this.ObjectivesTravelPositionZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesTravelPositionZNUD.Location = new System.Drawing.Point(31, 90);
             this.ObjectivesTravelPositionZNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -6795,7 +6795,7 @@ namespace DayZeEditor
             this.ObjectivesTreasureHuntPositionsXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesTreasureHuntPositionsXNUD.Location = new System.Drawing.Point(230, 161);
             this.ObjectivesTreasureHuntPositionsXNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -6817,7 +6817,7 @@ namespace DayZeEditor
             this.ObjectivesTreasureHuntPositionsYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesTreasureHuntPositionsYNUD.Location = new System.Drawing.Point(230, 188);
             this.ObjectivesTreasureHuntPositionsYNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -6839,7 +6839,7 @@ namespace DayZeEditor
             this.ObjectivesTreasureHuntPositionsZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesTreasureHuntPositionsZNUD.Location = new System.Drawing.Point(230, 214);
             this.ObjectivesTreasureHuntPositionsZNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});

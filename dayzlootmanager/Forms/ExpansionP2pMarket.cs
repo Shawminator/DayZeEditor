@@ -1111,6 +1111,7 @@ namespace DayZeEditor
                 (float)currentp2pmarket.m_Orientation[2]
             },
                 Scale = 1.0f,
+                Model = "",
                 Flags = 2147483647,
                 m_Id = m_Id
             };
@@ -1125,6 +1126,7 @@ namespace DayZeEditor
                     Position = new float[] { array.X, array.Y, array.Z },
                     Orientation = new float[] { 0, 0, 0 },
                     Scale = 1.0f,
+                    Model = "",
                     Flags = 2147483647,
                     m_Id = m_Id
                 };

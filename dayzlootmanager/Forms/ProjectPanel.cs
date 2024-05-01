@@ -14,6 +14,9 @@ using System.Net;
 using System.Text.RegularExpressions;
 using WinSCP;
 using System.Threading;
+using System.Text.Json;
+using System.IO.Compression;
+using SevenZipExtractor;
 
 namespace DayZeEditor
 {
@@ -57,6 +60,12 @@ namespace DayZeEditor
             if (tabControl1.SelectedIndex == 1)
                 FTPTSB.Checked = true;
         }
+        private void toolStripButton1_Click_1(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 2;
+            if (tabControl1.SelectedIndex == 2)
+                toolStripButton1.Checked = true;
+        }
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (tabControl1.SelectedIndex)
@@ -67,6 +76,9 @@ namespace DayZeEditor
                     break;
                 case 1:
                     ProjectTSB.Checked = false;
+                    break;
+                case 2:
+                    toolStripButton1.Checked = false;
                     break;
             }
         }
@@ -81,7 +93,55 @@ namespace DayZeEditor
             getActiveProject();
             LoadProjectstoList();
             LoadFileExplorer();
+            LoadMappAddons();
             tabControl1.ItemSize = new Size(0, 1);
+
+        }
+        public void LoadMappAddons()
+        {
+            Console.WriteLine("Checking GitHub For Newest Release.....");
+            GitHub info = getavaiableMapAddons();
+            foreach(Asset ass in info.assets)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Text = ass.name;
+                item.Tag = ass;
+                string name = ass.name.Split(new string[] { "Map" }, StringSplitOptions.None)[0];
+                if(File.Exists(Application.StartupPath + "\\Maps\\" + name + "_Map.png"))
+                    item.SubItems.Add("Installed");
+                listView3.Items.Add(item);
+            }
+        }
+        public GitHub getavaiableMapAddons()
+        {
+            var getData = GetGithubData();
+            if (getData.StartsWith("Offline"))
+            {
+                return null;
+            }
+            return JsonSerializer.Deserialize<GitHub>(getData);
+        }
+        private string GetGithubData()
+        {
+            var url = "https://api.github.com/repos/Shawminator/DayZeEditor/releases/tags/DayZeEditor_mapAddons";
+
+            HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
+            request.Method = "GET";
+            request.ContentType = "application/json";
+            request.UserAgent = "TestApp";
+
+            try
+            {
+                using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+                {
+                    StreamReader reader = new StreamReader(response.GetResponseStream());
+                    return reader.ReadToEnd();
+                }
+            }
+            catch
+            {
+                return "Offline";
+            }
         }
         public void getActiveProject()
         {
@@ -913,5 +973,42 @@ namespace DayZeEditor
             projects.SaveProject(false, true);
             listBox1.Invalidate();
         }
+
+        private void darkButton6_Click(object sender, EventArgs e)
+        {
+            if (listView3.SelectedItems.Count <= 0) return;
+            ListViewItem item = listView3.SelectedItems[0];
+            int index = listView3.SelectedIndices[0];
+            if (item != null)
+            {
+                if (item.Tag is Asset)
+                {
+                    Asset asset = (Asset)item.Tag;
+                    Console.WriteLine("Downloading Map Addon.....");
+                    string zipfile = Application.StartupPath + "\\Maps\\" + Path.GetFileName(asset.browser_download_url);
+                    using (var client = new WebClient())
+                    {
+                        Console.WriteLine("Downloading Zip file......");
+                        client.DownloadFile(asset.browser_download_url, zipfile);
+                    }
+                    using (ArchiveFile archiveFile = new ArchiveFile(zipfile, Application.StartupPath + "\\lib\\7z.dll"))
+                    {
+                        foreach (Entry entry in archiveFile.Entries)
+                        {
+                            Console.WriteLine(entry.FileName);
+
+                            // extract to file
+                            entry.Extract(Application.StartupPath + "\\Maps\\" + entry.FileName);
+
+                        }
+                    }
+                    File.Delete(zipfile);
+                    item.SubItems.Add("Installed");
+                    listView3.Items[index] = item;
+                    listView3.Refresh();
+                }
+            }
+        }
+
     }
 }

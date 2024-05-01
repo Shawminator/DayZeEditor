@@ -108,6 +108,12 @@ namespace DayZeEditor
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
             this.FTPPasswordTB = new System.Windows.Forms.ToolStripTextBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.listView3 = new System.Windows.Forms.ListView();
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.darkButton6 = new DarkUI.Controls.DarkButton();
             this.FTPUploadMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.UploadFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uploadFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -120,6 +126,7 @@ namespace DayZeEditor
             this.deleteFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.darkToolStrip23 = new DarkUI.Controls.DarkToolStrip2();
             this.ProjectTSB = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.FTPTSB = new System.Windows.Forms.ToolStripButton();
             this.darkToolStrip21.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -137,6 +144,8 @@ namespace DayZeEditor
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.darkToolStrip22.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.FTPUploadMenu.SuspendLayout();
             this.FTPDownloadMenu.SuspendLayout();
             this.darkToolStrip23.SuspendLayout();
@@ -472,6 +481,7 @@ namespace DayZeEditor
             this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 70);
             this.tabControl1.Name = "tabControl1";
@@ -972,6 +982,65 @@ namespace DayZeEditor
             this.FTPPasswordTB.Name = "FTPPasswordTB";
             this.FTPPasswordTB.Size = new System.Drawing.Size(150, 28);
             // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage3.Controls.Add(this.groupBox7);
+            this.tabPage3.ForeColor = System.Drawing.SystemColors.Control;
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1176, 566);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.listView3);
+            this.groupBox7.Controls.Add(this.darkButton6);
+            this.groupBox7.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox7.Location = new System.Drawing.Point(8, 3);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(312, 555);
+            this.groupBox7.TabIndex = 54;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Available Maps";
+            // 
+            // listView3
+            // 
+            this.listView3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.listView3.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader7,
+            this.columnHeader8});
+            this.listView3.ForeColor = System.Drawing.SystemColors.Control;
+            this.listView3.HideSelection = false;
+            this.listView3.Location = new System.Drawing.Point(6, 19);
+            this.listView3.MultiSelect = false;
+            this.listView3.Name = "listView3";
+            this.listView3.Size = new System.Drawing.Size(300, 498);
+            this.listView3.TabIndex = 54;
+            this.listView3.UseCompatibleStateImageBehavior = false;
+            this.listView3.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "MapAddon";
+            this.columnHeader7.Width = 200;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Installed";
+            this.columnHeader8.Width = 119;
+            // 
+            // darkButton6
+            // 
+            this.darkButton6.Location = new System.Drawing.Point(6, 526);
+            this.darkButton6.Name = "darkButton6";
+            this.darkButton6.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton6.Size = new System.Drawing.Size(300, 23);
+            this.darkButton6.TabIndex = 53;
+            this.darkButton6.Text = "Download And Install";
+            this.darkButton6.Click += new System.EventHandler(this.darkButton6_Click);
+            // 
             // FTPUploadMenu
             // 
             this.FTPUploadMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1055,6 +1124,7 @@ namespace DayZeEditor
             this.darkToolStrip23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.darkToolStrip23.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ProjectTSB,
+            this.toolStripButton1,
             this.FTPTSB});
             this.darkToolStrip23.Location = new System.Drawing.Point(0, 45);
             this.darkToolStrip23.Name = "darkToolStrip23";
@@ -1074,6 +1144,18 @@ namespace DayZeEditor
             this.ProjectTSB.Size = new System.Drawing.Size(53, 22);
             this.ProjectTSB.Text = "Projects";
             this.ProjectTSB.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(79, 22);
+            this.toolStripButton1.Text = "Map Addons";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click_1);
             // 
             // FTPTSB
             // 
@@ -1122,6 +1204,8 @@ namespace DayZeEditor
             this.splitContainer1.ResumeLayout(false);
             this.darkToolStrip22.ResumeLayout(false);
             this.darkToolStrip22.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
             this.FTPUploadMenu.ResumeLayout(false);
             this.FTPDownloadMenu.ResumeLayout(false);
             this.darkToolStrip23.ResumeLayout(false);
@@ -1222,5 +1306,12 @@ namespace DayZeEditor
         private System.Windows.Forms.TextBox EditMissionPathTB;
         private DarkUI.Controls.DarkLabel darkLabel14;
         private DarkUI.Controls.DarkButton darkButton3;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private DarkUI.Controls.DarkButton darkButton6;
+        private System.Windows.Forms.ListView listView3;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
     }
 }

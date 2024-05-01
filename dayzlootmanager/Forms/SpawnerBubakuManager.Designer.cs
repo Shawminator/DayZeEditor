@@ -511,7 +511,7 @@ namespace DayZeEditor
             this.BubakLocationTriggerPosXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.BubakLocationTriggerPosXNUD.Location = new System.Drawing.Point(136, 29);
             this.BubakLocationTriggerPosXNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -543,7 +543,7 @@ namespace DayZeEditor
             this.BubakLocationTriggerPosZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.BubakLocationTriggerPosZNUD.Location = new System.Drawing.Point(136, 81);
             this.BubakLocationTriggerPosZNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -565,7 +565,7 @@ namespace DayZeEditor
             this.BubakLocationTriggerPosYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.BubakLocationTriggerPosYNUD.Location = new System.Drawing.Point(136, 55);
             this.BubakLocationTriggerPosYNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -1366,7 +1366,7 @@ namespace DayZeEditor
             this.BubakLocationSpawnPositionXNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.BubakLocationSpawnPositionXNUD.Location = new System.Drawing.Point(136, 29);
             this.BubakLocationSpawnPositionXNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -1398,7 +1398,7 @@ namespace DayZeEditor
             this.BubakLocationSpawnPositionZNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.BubakLocationSpawnPositionZNUD.Location = new System.Drawing.Point(136, 81);
             this.BubakLocationSpawnPositionZNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});
@@ -1420,7 +1420,7 @@ namespace DayZeEditor
             this.BubakLocationSpawnPositionYNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.BubakLocationSpawnPositionYNUD.Location = new System.Drawing.Point(136, 55);
             this.BubakLocationSpawnPositionYNUD.Maximum = new decimal(new int[] {
-            20000,
+            30000,
             0,
             0,
             0});

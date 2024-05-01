@@ -1030,7 +1030,7 @@ namespace DayZeEditor
             StaticPatrolWayPointsLB.ValueMember = "Value";
             StaticPatrolWayPointsLB.DataSource = CurrentPatrol._waypoints;
 
-            if(CurrentPatrol.Waypoints.Count == 0 )
+            if(CurrentPatrol._waypoints.Count == 0 )
             {
                 StaticPatrolWaypointPOSXNUD.Visible = false;
                 StaticPatrolWaypointPOSYNUD.Visible = false;
@@ -1068,20 +1068,22 @@ namespace DayZeEditor
                     DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        CurrentPatrol.Waypoints.Clear();
+                        CurrentPatrol._waypoints.Clear();
                      }
                     for (int i = 0; i < fileContent.Length; i++)
                     {
                         if (fileContent[i] == "") continue;
                         string[] linesplit = fileContent[i].Split('|');
                         string[] XYZ = linesplit[1].Split(' ');
-                        float[] newfloatarray = new float[] { Convert.ToSingle(XYZ[0]), Convert.ToSingle(XYZ[1]), Convert.ToSingle(XYZ[2])};
-                        CurrentPatrol.Waypoints.Add(newfloatarray);
+                        CurrentPatrol._waypoints.Add(new Vec3(XYZ));
 
                     }
                     StaticPatrolWayPointsLB.SelectedIndex = -1;
                     StaticPatrolWayPointsLB.SelectedIndex = StaticPatrolWayPointsLB.Items.Count - 1;
                     StaticPatrolWayPointsLB.Refresh();
+                    StaticPatrolWaypointPOSXNUD.Visible = true;
+                    StaticPatrolWaypointPOSYNUD.Visible = true;
+                    StaticPatrolWaypointPOSZNUD.Visible = true;
                 }
             }
         }
@@ -1096,16 +1098,18 @@ namespace DayZeEditor
                     DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        CurrentPatrol.Waypoints.Clear();
+                        CurrentPatrol._waypoints.Clear();
                     }
                     foreach(Editorobject eo in importfile.EditorObjects)
                     {
-                        float[] newfloatarray = new float[] { Convert.ToSingle(eo.Position[0]), Convert.ToSingle(eo.Position[1]), Convert.ToSingle(eo.Position[2]) };
-                        CurrentPatrol.Waypoints.Add(newfloatarray);
+                        CurrentPatrol._waypoints.Add(new Vec3(eo.Position));
                     }
                     StaticPatrolWayPointsLB.SelectedIndex = -1;
                     StaticPatrolWayPointsLB.SelectedIndex = StaticPatrolWayPointsLB.Items.Count - 1;
                     StaticPatrolWayPointsLB.Refresh();
+                    StaticPatrolWaypointPOSXNUD.Visible = true;
+                    StaticPatrolWaypointPOSYNUD.Visible = true;
+                    StaticPatrolWaypointPOSZNUD.Visible = true;
                     AIPatrolSettings.isDirty = true;
                 }
             }
@@ -1330,7 +1334,8 @@ namespace DayZeEditor
                 DespawnTime = -1,
                 RespawnTime = -2,
                 UseRandomWaypointAsStartPoint = 1,
-                Waypoints = new BindingList<float[]>()
+                Waypoints = new BindingList<float[]>(),
+                _waypoints = new BindingList<Vec3>()
             };
             AIPatrolSettings.Patrols.Add(newpatrol);
             AIPatrolSettings.isDirty = true;
@@ -1348,9 +1353,9 @@ namespace DayZeEditor
         private void darkButton10_Click(object sender, EventArgs e)
         {
             StringBuilder SB = new StringBuilder();
-            foreach (float[] array in CurrentPatrol.Waypoints)
+            foreach (Vec3 array in CurrentPatrol._waypoints)
             {
-                SB.AppendLine("eAI_SurvivorM_Lewis|" + array[0].ToString() + " " + array[1].ToString() + " " + array[2].ToString() + "|0.0 0.0 0.0");
+                SB.AppendLine("eAI_SurvivorM_Lewis|" + array.GetString() +  "|0.0 0.0 0.0");
             }
             SaveFileDialog save = new SaveFileDialog();
             if (save.ShowDialog() == DialogResult.OK)
@@ -1366,15 +1371,16 @@ namespace DayZeEditor
                 MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
             };
             int m_Id = 0;
-            foreach (float[] array in CurrentPatrol.Waypoints)
+            foreach (Vec3 array in CurrentPatrol._waypoints)
             {
                 Editorobject eo = new Editorobject()
                 {
                     Type = "eAI_SurvivorM_Jose",
                     DisplayName = "eAI_SurvivorM_Jose",
-                    Position = array,
+                    Position = array.getfloatarray(),
                     Orientation = new float[] {0,0,0},
                     Scale = 1.0f,
+                    Model = "",
                     Flags = 2147483647,
                     m_Id = m_Id
                 };
@@ -3294,6 +3300,7 @@ namespace DayZeEditor
                         Position = currentSpatialPoint._Spatial_Position.getfloatarray(),
                         Orientation = new float[] { 0,0,0 },
                         Scale = 1.0f,
+                        Model = "",
                         Flags = 2147483647,
                         m_Id = m_Id
                     };
@@ -3316,6 +3323,7 @@ namespace DayZeEditor
                             Position = currentSpatialLocation._Spatial_TriggerPosition.getfloatarray(),
                             Orientation = new float[] {0,0,0},
                             Scale = 1.0f,
+                            Model = "",
                             Flags = 2147483647,
                             m_Id = m_Id
                         };
@@ -3331,6 +3339,7 @@ namespace DayZeEditor
                             Position = vec3.getfloatarray(),
                             Orientation = new float[] { 0,0,0},
                             Scale = 1.0f,
+                            Model = "",
                             Flags = 2147483647,
                             m_Id = m_Id
                         };
@@ -3354,6 +3363,7 @@ namespace DayZeEditor
                             Position = currentSpatialAudio._Spatial_TriggerPosition.getfloatarray(),
                             Orientation = new float[] { 0, 0, 0 },
                             Scale = 1.0f,
+                            Model = "",
                             Flags = 2147483647,
                             m_Id = m_Id
                         };
@@ -3369,6 +3379,7 @@ namespace DayZeEditor
                             Position = vec3.getfloatarray(),
                             Orientation = new float[] { 0, 0, 0 },
                             Scale = 1.0f,
+                            Model = "",
                             Flags = 2147483647,
                             m_Id = m_Id
                         };

@@ -407,6 +407,7 @@ namespace DayZeEditor
                     Position = new float[] { Convert.ToSingle(array[0]), Convert.ToSingle(array[1]), Convert.ToSingle(array[2]) },
                     Orientation = new float[] { 0, 0, 0 },
                     Scale = (float)1.0,
+                    Model = "",
                     Flags = 2147483647,
                     m_Id = m_Id
                 };
