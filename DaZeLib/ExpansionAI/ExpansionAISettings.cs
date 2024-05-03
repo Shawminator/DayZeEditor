@@ -11,7 +11,7 @@ namespace DayZeLib
     public class ExpansionAISettings
     {
         [JsonIgnore]
-        const int CurrentVersion = 9;
+        const int CurrentVersion = 10;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -34,6 +34,8 @@ namespace DayZeLib
         public int CanRecruitGuards { get; set; }
         public BindingList<string> PreventClimb { get; set; }
         public BindingList<string> PlayerFactions { get; set; }
+        public int LogAIHitBy { get; set; }
+        public int LogAIKilled { get; set; }
 
         public bool checkver()
         {
@@ -64,6 +66,8 @@ namespace DayZeLib
             CanRecruitGuards = 0;
             PreventClimb = new BindingList<string> ();
             PlayerFactions = new BindingList<string>();
+            LogAIHitBy = 1; 
+            LogAIKilled = 1;
         }
     }
 

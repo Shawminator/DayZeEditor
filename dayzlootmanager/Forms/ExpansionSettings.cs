@@ -5837,13 +5837,6 @@ namespace DayZeEditor
         public ExpansionSafeZoneCylinder currentcylenderzones;
         public string CurrentSafeZoneType;
         public int ZoneScale = 1;
-        private void darkButton107_Click(object sender, EventArgs e)
-        {
-            string Slot = StorageSlotCB.GetItemText(StorageSlotCB.SelectedItem);
-            if (!currentstoragelevel.ExcludedSlots.Contains(Slot))
-                currentstoragelevel.ExcludedSlots.Add(Slot);
-            PersonalStorageSettingsNew.isDirty = true;
-        }
         private void pictureBox2_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -9130,6 +9123,7 @@ namespace DayZeEditor
             {
                 switch (e.Node.Tag.ToString())
                 {
+                    case "m_Version":
                     case "PersonalStorageSettingsNewParent":
                     case "StorageLevesParent":
                         groupBox91.Visible = false;
@@ -9146,6 +9140,17 @@ namespace DayZeEditor
                         currentstoragelevel = null;
                         comboBox6.SelectedIndex = PersonalStorageSettingsNew.UseCategoryMenu;
                         break;
+                    case "ExcludedItems":
+                        groupBox91.Visible = false;
+                        groupBox92.Visible = true;
+                        groupBox93.Visible = false;
+                        groupBox94.Visible = false;
+                        currentstoragelevel = null;
+                        StorageSlotCB.Visible = false;
+                        darkButton107.Visible = false;
+                        darkButton106.Text = "Add from Types";
+                        listBox34.DataSource = PersonalStorageSettingsNew.ExcludedItems;
+                        break;
                     case "ReputationRequirement":
                         groupBox91.Visible = false;
                         groupBox92.Visible = false;
@@ -9159,6 +9164,9 @@ namespace DayZeEditor
                         groupBox92.Visible = true;
                         groupBox93.Visible = false;
                         groupBox94.Visible = false;
+                        StorageSlotCB.Visible = true;
+                        darkButton107.Visible = true;
+                        darkButton106.Text = "Add from string";
                         currentstoragelevel = e.Node.Parent.Tag as ExpansionPersonalStorageLevel;
                         listBox34.DataSource = currentstoragelevel.ExcludedSlots;
                         break;
@@ -9169,6 +9177,14 @@ namespace DayZeEditor
                         groupBox94.Visible = false;
                         currentstoragelevel = e.Node.Parent.Tag as ExpansionPersonalStorageLevel;
                         comboBox6.SelectedIndex = currentstoragelevel.AllowAttachmentCargo;
+                        break;
+                    case "QuestID":
+                        groupBox91.Visible = false;
+                        groupBox92.Visible = false;
+                        groupBox93.Visible = false;
+                        groupBox94.Visible = true;
+                        currentstoragelevel = e.Node.Parent.Tag as ExpansionPersonalStorageLevel;
+                        numericUpDown40.Value = currentstoragelevel.QuestID;
                         break;
                 }
             }
@@ -9187,28 +9203,59 @@ namespace DayZeEditor
             if (!useraction) return;
             if (currentstoragelevel != null)
             {
-                currentstoragelevel.ReputationRequirement = (int)numericUpDown40.Value;
+                if(treeViewMS3.SelectedNode.Tag.ToString() == "ReputationRequirement")
+                    currentstoragelevel.ReputationRequirement = (int)numericUpDown40.Value;
+                else if (treeViewMS3.SelectedNode.Tag.ToString() == "QuestID")
+                    currentstoragelevel.QuestID = (int)numericUpDown40.Value;
             }
             PersonalStorageSettingsNew.isDirty = true;
         }
         private void darkButton106_Click(object sender, EventArgs e)
         {
-            AddItemfromString form = new AddItemfromString();
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
+            if (treeViewMS3.SelectedNode.Tag.ToString() == "ExcludedSlots")
             {
-                List<string> addedtypes = form.addedtypes.ToList();
-                foreach (string l in addedtypes)
+                AddItemfromString form = new AddItemfromString();
+                DialogResult result = form.ShowDialog();
+                if (result == DialogResult.OK)
                 {
-                    if (!currentstoragelevel.ExcludedSlots.Contains(l))
-                        currentstoragelevel.ExcludedSlots.Add(l);
+                    List<string> addedtypes = form.addedtypes.ToList();
+                    foreach (string l in addedtypes)
+                    {
+                        if (!currentstoragelevel.ExcludedSlots.Contains(l))
+                            currentstoragelevel.ExcludedSlots.Add(l);
+                    }
+                    PersonalStorageSettingsNew.isDirty = true;
                 }
-                PersonalStorageSettingsNew.isDirty = true;
+            }
+            else if (treeViewMS3.SelectedNode.Tag.ToString() == "ExcludedItems")
+            {
+                AddItemfromTypes form = new AddItemfromTypes
+                {
+                    vanillatypes = vanillatypes,
+                    ModTypes = ModTypes,
+                    currentproject = currentproject
+                };
+                DialogResult result = form.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    List<string> addedtypes = form.addedtypes.ToList();
+                    foreach (string l in addedtypes)
+                    {
+                        if (!PersonalStorageSettingsNew.ExcludedItems.Contains(l))
+                        {
+                            PersonalStorageSettingsNew.ExcludedItems.Add(l);
+                            PersonalStorageSettingsNew.isDirty = true;
+                        }
+                    }
+                }
             }
         }
         private void darkButton108_Click(object sender, EventArgs e)
         {
-            currentstoragelevel.ExcludedSlots.Remove(listBox34.GetItemText(listBox34.SelectedItem));
+            if (treeViewMS3.SelectedNode.Tag.ToString() == "ExcludedSlots")
+                currentstoragelevel.ExcludedSlots.Remove(listBox34.GetItemText(listBox34.SelectedItem));
+            else if (treeViewMS3.SelectedNode.Tag.ToString() == "ExcludedItems")
+                PersonalStorageSettingsNew.ExcludedItems.Remove(listBox34.GetItemText(listBox34.SelectedItem));
             PersonalStorageSettingsNew.isDirty = true;
         }
         private void comboBox6_SelectedIndexChanged(object sender, EventArgs e)
@@ -9224,7 +9271,13 @@ namespace DayZeEditor
             }
             PersonalStorageSettingsNew.isDirty = true;
         }
-
+        private void darkButton107_Click(object sender, EventArgs e)
+        {
+            string Slot = StorageSlotCB.GetItemText(StorageSlotCB.SelectedItem);
+            if (!currentstoragelevel.ExcludedSlots.Contains(Slot))
+                currentstoragelevel.ExcludedSlots.Add(Slot);
+            PersonalStorageSettingsNew.isDirty = true;
+        }
 
 
 

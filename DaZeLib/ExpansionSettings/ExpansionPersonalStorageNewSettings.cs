@@ -576,11 +576,12 @@ namespace DayZeLib
 
     public class ExpansionPersonalStorageNewSettings
     {
-        const int CurrentVersion = 2;
+        const int CurrentVersion = 4;
 
         public int m_Version { get; set; }
         public int UseCategoryMenu { get; set; }
-		public Storagelevels StorageLevels { get; set; }
+        public BindingList<string> ExcludedItems { get; set; }
+        public Storagelevels StorageLevels { get; set; }
 
 		[JsonIgnore]
         public string Filename { get; set; }
@@ -664,6 +665,7 @@ namespace DayZeLib
 	public class ExpansionPersonalStorageLevel
     {
 		public int ReputationRequirement { get; set; }
+		public int QuestID { get; set; }
 		public BindingList<string> ExcludedSlots { get; set; }
 		public int AllowAttachmentCargo { get; set; }
 

@@ -1,4 +1,20 @@
-﻿Version 0.8.0.1
+﻿Version 0.8.0.4
+[Fixed]
+Updated Exansion AI settings, geneal settings and Personel Storage to latest expansion update.
+Fixed issue with MPG Spawner saving when yuo have the bcreate backups enabled.
+Fixed Create backups check box not populating when loading a project.
+
+Version 0.8.0.3
+[Fixed]
+Updated Dze import/export to match the latest version
+[Added]
+Projects - Map addon tab added to project which allows you to download the map addon and extract it from within the editor.
+
+Version 0.8.0.2
+[Fixed]
+Expansion AI- Import from Dze/Map was not importing correctly.
+
+Version 0.8.0.1
 [Fixed]
 Expansion Ai Patrol, Chance was getting set to -1 when adding new patrol cause error
 [Added]

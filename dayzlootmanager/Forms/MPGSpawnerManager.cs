@@ -138,8 +138,8 @@ namespace DayZeEditor
                     pointsfile.isDirty = false;
                     if (currentproject.Createbackups && File.Exists(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\MPG_Spawner\\Points\\" + pointsfile.Filename + ".json"))
                     {
-                        Directory.CreateDirectory(MPG_SPWNR_ModConfig + "\\Backup\\" + SaveTime);
-                        File.Copy(MPG_Spawner_PointsConfigPath + pointsfile.Filename + ".json", Path.GetDirectoryName(MPG_SPWNR_ModConfig.Filename) + "\\Backup\\" + SaveTime + "\\" + pointsfile.Filename + ".bak", true);
+                        Directory.CreateDirectory(Path.GetDirectoryName(MPG_Spawner_PointsConfigPath + pointsfile.Filename) + "\\Backup\\" + SaveTime);
+                        File.Copy(MPG_Spawner_PointsConfigPath + pointsfile.Filename + ".json", Path.GetDirectoryName(MPG_Spawner_PointsConfigPath + pointsfile.Filename) + "\\Backup\\" + SaveTime + "\\" + pointsfile.Filename + ".bak", true);
                     }
                     var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                     string jsonString = JsonSerializer.Serialize(pointsfile.Points, options);

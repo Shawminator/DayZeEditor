@@ -14,7 +14,6 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DayZeLib;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DayZeEditor
 {

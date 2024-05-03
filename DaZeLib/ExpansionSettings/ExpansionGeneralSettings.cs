@@ -31,7 +31,7 @@ namespace DayZeLib
     };
     public class ExpansionGeneralSettings
     {
-        static int CurrentVersion = 13;
+        static int CurrentVersion = 14;
 
         public int m_Version { get; set; }
         public int DisableShootToUnlock { get; set; }
@@ -53,6 +53,7 @@ namespace DayZeLib
         public int UseExpansionMainMenuIcons { get; set; }
         public int UseExpansionMainMenuIntroScene { get; set; }
         public int UseNewsFeedInGameMenu { get; set; }
+        public int UseHUDColors { get; set; }
         public ExpansionHudIndicatorColors HUDColors { get; set; }
         public int EnableEarPlugs { get; set; }
         public string InGameMenuLogoPath { get; set; }
@@ -139,6 +140,10 @@ namespace DayZeLib
             {
                 case "StaminaBarColorPB":
                     return HUDColors.StaminaBarColor;
+                case "StaminaBarColorHalfPB":
+                    return HUDColors.StaminaBarColorHalf;
+                case "StaminaBarColorLowPB":
+                    return HUDColors.StaminaBarColorLow;
                 case "NotifierDividerColorPB":
                     return HUDColors.NotifierDividerColor;
                 case "TemperatureBurningColorPB":
@@ -173,6 +178,12 @@ namespace DayZeLib
             {
                 case "StaminaBarColorPB":
                     HUDColors.StaminaBarColor = Colour;
+                    break;
+                case "StaminaBarColorHalfPB":
+                    HUDColors.StaminaBarColorHalf = Colour;
+                    break;
+                case "StaminaBarColorLowPB":
+                    HUDColors.StaminaBarColorLow = Colour;
                     break;
                 case "NotifierDividerColorPB":
                     HUDColors.NotifierDividerColor = Colour;
@@ -316,7 +327,9 @@ namespace DayZeLib
     public class ExpansionHudIndicatorColors
     {
         public string StaminaBarColor { get; set; }
-       
+        public string StaminaBarColorHalf { get; set; }
+        public string StaminaBarColorLow { get; set; }
+
         public string NotifierDividerColor { get; set; }
         
         public string TemperatureBurningColor { get; set; }
@@ -336,6 +349,8 @@ namespace DayZeLib
         public ExpansionHudIndicatorColors()
         {
             StaminaBarColor = "FFFFFFFF";
+            StaminaBarColorHalf = "FFFFFFFF";
+            StaminaBarColorLow = "FFFFFFFF";
             NotifierDividerColor = "DCDCDCFF";
             TemperatureBurningColor = "DC0000FF";
             TemperatureHotColor = "DCDC00FF";

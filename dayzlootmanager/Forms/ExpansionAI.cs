@@ -17,9 +17,6 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
-using System.Windows.Forms.Design.Behavior;
-using System.Reflection;
 
 namespace DayZeEditor
 {
@@ -1650,6 +1647,8 @@ namespace DayZeEditor
             MannersCB.Checked = AISettings.Manners == 1 ? true : false;
             CanRecruitGuardsCB.Checked = AISettings.CanRecruitGuards == 1 ? true : false;
             CanRecruitFriendlyCB.Checked = AISettings.CanRecruitFriendly == 1 ? true : false;
+            LogAIHitByCB.Checked = AISettings.LogAIHitBy == 1 ? true : false;
+            LogAIKilledCB.Checked = AISettings.LogAIKilled == 1 ? true : false;
             AISettingsAdminsLB.DisplayMember = "DisplayName";
             AISettingsAdminsLB.ValueMember = "Value";
             AISettingsAdminsLB.DataSource = AISettings.Admins;
@@ -1723,6 +1722,18 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             AISettings.CanRecruitFriendly = CanRecruitFriendlyCB.Checked == true ? 1 : 0;
+            AISettings.isDirty = true;
+        }
+        private void LogAIHitByCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AISettings.LogAIHitBy = LogAIHitByCB.Checked == true ? 1 : 0;
+            AISettings.isDirty = true;
+        }
+        private void LogAIKilledCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            AISettings.LogAIKilled = LogAIKilledCB.Checked == true ? 1 : 0;
             AISettings.isDirty = true;
         }
         private void darkButton1_Click(object sender, EventArgs e)

@@ -159,6 +159,8 @@ namespace DayZeEditor
             else if (ActiveProject != null)
                 radioButton1.Checked = true;
 
+            checkBox1.Checked = ActiveProject.Createbackups;
+
             if(ActiveProject != null)
                 ((MainForm)this.MdiParent).toolStripStatusLabel1.Text = ActiveProject.ProjectName + ":" + ActiveProject.mpmissionpath.Split('.')[1] + " is the Current Active Project"; ;
 
