@@ -51,34 +51,30 @@ namespace DayZeEditor
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 0;
-            if (tabControl1.SelectedIndex == 0)
-                ProjectTSB.Checked = true;
         }
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 1;
-            if (tabControl1.SelectedIndex == 1)
-                FTPTSB.Checked = true;
         }
         private void toolStripButton1_Click_1(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 2;
-            if (tabControl1.SelectedIndex == 2)
-                toolStripButton1.Checked = true;
         }
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            FTPTSB.Checked = false;
+            ProjectTSB.Checked = false;
+            toolStripButton1.Checked = false;
             switch (tabControl1.SelectedIndex)
             {
                 case 0:
-                    FTPTSB.Checked = false;
-
+                    ProjectTSB.Checked = true;
                     break;
                 case 1:
-                    ProjectTSB.Checked = false;
+                    FTPTSB.Checked = true;
                     break;
                 case 2:
-                    toolStripButton1.Checked = false;
+                    toolStripButton1.Checked = true;
                     break;
             }
         }
@@ -149,20 +145,18 @@ namespace DayZeEditor
             if (ActiveProject != null)
             {
                 darkLabel4.Text = projects.ActiveProject;
-            }
-            if (ActiveProject != null && ActiveProject.usingDrJoneTrader)
-                radioButton3.Checked = true;
-            else if (ActiveProject != null && ActiveProject.usingexpansionMarket)
-                radioButton2.Checked = true;
-            else if (ActiveProject != null && ActiveProject.usingtraderplus)
-                radioButton4.Checked = true;
-            else if (ActiveProject != null)
-                radioButton1.Checked = true;
+                if (ActiveProject.usingDrJoneTrader)
+                    radioButton3.Checked = true;
+                else if (ActiveProject.usingexpansionMarket)
+                    radioButton2.Checked = true;
+                else if (ActiveProject.usingtraderplus)
+                    radioButton4.Checked = true;
+                else
+                    radioButton1.Checked = true;
 
-            checkBox1.Checked = ActiveProject.Createbackups;
-
-            if(ActiveProject != null)
+                checkBox1.Checked = ActiveProject.Createbackups;
                 ((MainForm)this.MdiParent).toolStripStatusLabel1.Text = ActiveProject.ProjectName + ":" + ActiveProject.mpmissionpath.Split('.')[1] + " is the Current Active Project"; ;
+            }
 
         }
         private void LoadProjectstoList()
@@ -944,7 +938,6 @@ namespace DayZeEditor
                 ProjectFolderTB.Text = fb.SelectedPath;
             }
         }
-
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBox1.SelectedItems.Count < 1) return;
@@ -956,7 +949,6 @@ namespace DayZeEditor
             EditMapSizeNUD.Value = p.MapSize;
             EditMissionPathTB.Text = p.mpmissionpath;
         }
-
         private void darkButton3_Click(object sender, EventArgs e)
         {
             
@@ -975,7 +967,6 @@ namespace DayZeEditor
             projects.SaveProject(false, true);
             listBox1.Invalidate();
         }
-
         private void darkButton6_Click(object sender, EventArgs e)
         {
             if (listView3.SelectedItems.Count <= 0) return;

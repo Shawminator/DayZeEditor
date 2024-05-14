@@ -231,7 +231,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Economy\TypesFile.cs" />
     <Compile Include="Rag\RagBasebuilding.cs" />
-    <Compile Include="RHCaptureTheFlag\RHCaptureTheFlag.cs" />
+    <Compile Include="RHCaptureTheFlag\CaptureTheFlag.cs" />
     <Compile Include="RHLootBoxes\RHLootBoxes.cs" />
     <Compile Include="SpawnerBubaku\SpawnerBubaku.cs" />
     <Compile Include="TraderPlus\TraderPlusBankingConfig.cs" />

@@ -27,7 +27,6 @@ namespace DayZeEditor
     {
         public bool isUserInteraction = true;
 
-
         public Project currentproject { get; set; }
 
 
@@ -44,6 +43,7 @@ namespace DayZeEditor
         private List<typesType> foundparts;
 
         public MapData MapData { get; private set; }
+        public Image Map { get; private set; }
 
         public BindingList<randompresetsAttachments> cargoAttachments = new BindingList<randompresetsAttachments>();
         public BindingList<randompresetsCargo> cargoItems = new BindingList<randompresetsCargo>();
@@ -55,6 +55,18 @@ namespace DayZeEditor
             EconomyTabPage.ItemSize = new Size(0, 1);
             isUserInteraction = true;
 
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (EconomyTabPage.SelectedIndex == 3)
+            {
+                if (keyData == (Keys.Control | Keys.Left))
+                {
+                    treeViewMS1.Focus();
+                    return true;
+                }
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
         private void listBox_DrawItem(object sender, DrawItemEventArgs e)
         {
@@ -135,22 +147,47 @@ namespace DayZeEditor
             
             
             NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
+            try
+            {
+                Map = Image.FromFile(Application.StartupPath + currentproject.MapPath);
+                MapData = new MapData(Application.StartupPath + currentproject.MapPath + ".xyz");
 
-            MapData = new MapData(Application.StartupPath + currentproject.MapPath + ".xyz");
 
-            pictureBox2.BackgroundImage = Image.FromFile(Application.StartupPath + currentproject.MapPath); // Livonia maop size is 12800 x 12800, 0,0 bottom left, center 6400 x 6400
-            pictureBox2.Size = new Size(currentproject.MapSize, currentproject.MapSize);
-            pictureBox2.Paint += new PaintEventHandler(DrawAllPlayerSpawns);
-            pictureBox2.Invalidate();
-            trackBar4.Value = 1;
-            SetSpawnScale();
+                pictureBox2.BackgroundImage = Map;
+                pictureBox2.Size = new Size(currentproject.MapSize, currentproject.MapSize);
+                pictureBox2.Paint += new PaintEventHandler(DrawAllPlayerSpawns);
+                pictureBox2.Invalidate();
+                trackBar4.Value = 1;
+                SetSpawnScale();
 
-            pictureBox1.BackgroundImage = Image.FromFile(Application.StartupPath + currentproject.MapPath); // Livonia maop size is 12800 x 12800, 0,0 bottom left, center 6400 x 6400
-            pictureBox1.Size = new Size(currentproject.MapSize, currentproject.MapSize);
-            pictureBox1.Paint += new PaintEventHandler(DrawAllEventSpawns);
-            pictureBox1.Invalidate();
-            trackBar1.Value = 1;
-            SetEventSpawnScale();
+                pictureBox1.BackgroundImage = Map;
+                pictureBox1.Size = new Size(currentproject.MapSize, currentproject.MapSize);
+                pictureBox1.Paint += new PaintEventHandler(DrawAllEventSpawns);
+                pictureBox1.Invalidate();
+                trackBar1.Value = 1;
+                SetEventSpawnScale();
+
+                pictureBox6.BackgroundImage = Map;
+                pictureBox6.Size = new Size(currentproject.MapSize, currentproject.MapSize);
+                pictureBox6.Paint += new PaintEventHandler(DrawTerritories);
+                pictureBox6.Invalidate();
+                trackBar6.Value = 1;
+                SetsMissionScale();
+                panel5.AutoScrollPosition = new Point(0, 0);
+
+                pictureBox4.BackgroundImage = Map;
+                pictureBox4.Size = new Size(currentproject.MapSize, currentproject.MapSize);
+                pictureBox4.Paint += new PaintEventHandler(DrawMapGrouPro);
+                trackBar2.Value = 1;
+                SetsMapGroupposScale();
+                panel1.AutoScrollPosition = new Point(0, 0);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+
             EconomyTabPage.SelectedIndex = 3;
             TypesTabButton.Checked = true;
             EconomySearchBoxTB.Visible = true;
@@ -978,59 +1015,59 @@ namespace DayZeEditor
         }
         private void treeViewMS1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            //TreeNode usingtreenode = e.Node;
-            //if (ModifierKeys.HasFlag(Keys.Control) || ModifierKeys.HasFlag(Keys.Shift))
-            //{
-            //    return;
-            //}
+            TreeNode usingtreenode = e.Node;
+            if (ModifierKeys.HasFlag(Keys.Control) || ModifierKeys.HasFlag(Keys.Shift))
+            {
+                return;
+            }
+            if (usingtreenode.Tag != null && usingtreenode.Tag is typesType)
+            {
+                TreeNode parent = usingtreenode.Parent;
+                TreeNode mainparent = parent.Parent;
+                currentcollection = parent.Text;
+                String typesfile = mainparent.Text;
+                if (typesfile == "Vanilla Types")
+                    currentTypesFile = vanillatypes;
+                else
+                    currentTypesFile = ModTypes.FirstOrDefault(x => x.modname == typesfile);
+                isUserInteraction = false;
+                tabControl1.SelectedIndex = 0;
+                currentlootpart = usingtreenode.Tag as typesType;
+                PopulateLootPartInfo();
+                isUserInteraction = true;
+            }
+            else if (usingtreenode.Tag != null && usingtreenode.Tag is string)
+            {
+                tabControl1.SelectedIndex = 1;
+                currentcollection = usingtreenode.Tag.ToString();
+                darkLabel2.Text = currentcollection;
+                TreeNode parent = usingtreenode.Parent;
 
-            //if (usingtreenode.Tag != null && usingtreenode.Tag is typesType)
-            //{
-            //    TreeNode parent = usingtreenode.Parent;
-            //    TreeNode mainparent = parent.Parent;
-            //    currentcollection = parent.Text;
-            //    String typesfile = mainparent.Text;
-            //    if (typesfile == "Vanilla Types")
-            //        currentTypesFile = vanillatypes;
-            //    else
-            //        currentTypesFile = ModTypes.FirstOrDefault(x => x.modname == typesfile);
-            //    isUserInteraction = false;
-            //    tabControl1.SelectedIndex = 1;
-            //    currentlootpart = usingtreenode.Tag as typesType;
-            //    PopulateLootPartInfo();
-            //    isUserInteraction = true;
-            //}
-            //else if (usingtreenode.Tag != null && usingtreenode.Tag is string)
-            //{
-            //    tabControl1.SelectedIndex = 0;
-            //    currentcollection = usingtreenode.Tag.ToString();
-            //    darkLabel2.Text = currentcollection;
-            //    TreeNode parent = usingtreenode.Parent;
-
-            //    if (parent != null && parent.Tag.ToString() == "Parent")
-            //    {
-            //        FullTypes = true;
-            //        if (currentcollection == "VanillaTypes")
-            //        {
-            //            currentTypesFile = vanillatypes;
-            //        }
-            //        else
-            //        {
-            //            currentTypesFile = ModTypes.FirstOrDefault(x => x.modname == currentcollection);
-            //        }
-            //    }
-            //    else if (parent != null)
-            //    {
-            //        FullTypes = false;
-            //        if (parent.Text == "Vanilla Types")
-            //            currentTypesFile = vanillatypes;
-            //        else
-            //        {
-            //            currentTypesFile = ModTypes.FirstOrDefault(x => x.modname == parent.Text);
-            //        }
-            //    }
-            //}
-            //this.treeViewMS1.SelectedNode = usingtreenode;
+                if (parent != null && parent.Tag.ToString() == "Parent")
+                {
+                    FullTypes = true;
+                    if (currentcollection == "VanillaTypes")
+                    {
+                        currentTypesFile = vanillatypes;
+                    }
+                    else
+                    {
+                        currentTypesFile = ModTypes.FirstOrDefault(x => x.modname == currentcollection);
+                    }
+                }
+                else if (parent != null)
+                {
+                    FullTypes = false;
+                    if (parent.Text == "Vanilla Types")
+                        currentTypesFile = vanillatypes;
+                    else
+                    {
+                        currentTypesFile = ModTypes.FirstOrDefault(x => x.modname == parent.Text);
+                    }
+                }
+            }
+            this.treeViewMS1.SelectedNode = usingtreenode;
+            treeViewMS1.Focus();
         }
         private void treeViewMS1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
@@ -6969,13 +7006,6 @@ namespace DayZeEditor
                 populateterritorytreeview();
 
 
-            pictureBox6.BackgroundImage = Image.FromFile(Application.StartupPath + currentproject.MapPath); // Map Size is 15360 x 15360, 0,0 bottom left, middle 7680 x 7680
-            pictureBox6.Size = new Size(currentproject.MapSize, currentproject.MapSize);
-            pictureBox6.Paint += new PaintEventHandler(DrawTerritories);
-
-            trackBar6.Value = 1;
-            SetsMissionScale();
-            panel5.AutoScrollPosition = new Point(0, 0);
 
             isUserInteraction = true;
         }
@@ -8555,15 +8585,6 @@ namespace DayZeEditor
 
             mapgroupposmap = currentproject.mapgrouppos.map;
             LoadeMapGroupPosTreeview();
-
-            pictureBox4.BackgroundImage = Image.FromFile(Application.StartupPath + currentproject.MapPath); // Map Size is 15360 x 15360, 0,0 bottom left, middle 7680 x 7680
-            pictureBox4.Size = new Size(currentproject.MapSize, currentproject.MapSize);
-            pictureBox4.Paint += new PaintEventHandler(DrawMapGrouPro);
-
-            trackBar2.Value = 1;
-            SetsMapGroupposScale();
-            panel1.AutoScrollPosition = new Point(0, 0);
-
             isUserInteraction = true;
         }
         private void DrawMapGrouPro(object sender, PaintEventArgs e)
@@ -8791,6 +8812,9 @@ namespace DayZeEditor
 
         }
 
+        private void eventspawngroupTV_AfterSelect(object sender, TreeViewEventArgs e)
+        {
 
+        }
     }
 }

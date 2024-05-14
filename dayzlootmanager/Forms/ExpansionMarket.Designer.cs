@@ -236,6 +236,8 @@ namespace DayZeEditor
             this.darkButton20 = new DarkUI.Controls.DarkButton();
             this.darkButton21 = new DarkUI.Controls.DarkButton();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.darkButton52 = new DarkUI.Controls.DarkButton();
+            this.darkButton51 = new DarkUI.Controls.DarkButton();
             this.darkButton45 = new DarkUI.Controls.DarkButton();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.darkButton42 = new DarkUI.Controls.DarkButton();
@@ -3044,6 +3046,8 @@ namespace DayZeEditor
             // 
             this.groupBox11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox11.Controls.Add(this.darkButton52);
+            this.groupBox11.Controls.Add(this.darkButton51);
             this.groupBox11.Controls.Add(this.darkButton45);
             this.groupBox11.Controls.Add(this.groupBox14);
             this.groupBox11.Controls.Add(this.IsRoamingTraderCB);
@@ -3075,6 +3079,26 @@ namespace DayZeEditor
             this.groupBox11.TabIndex = 53;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Tradermap Info";
+            // 
+            // darkButton52
+            // 
+            this.darkButton52.Location = new System.Drawing.Point(53, 169);
+            this.darkButton52.Name = "darkButton52";
+            this.darkButton52.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton52.Size = new System.Drawing.Size(28, 20);
+            this.darkButton52.TabIndex = 103;
+            this.darkButton52.Text = "↑";
+            this.darkButton52.Click += new System.EventHandler(this.darkButton52_Click);
+            // 
+            // darkButton51
+            // 
+            this.darkButton51.Location = new System.Drawing.Point(53, 267);
+            this.darkButton51.Name = "darkButton51";
+            this.darkButton51.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton51.Size = new System.Drawing.Size(28, 20);
+            this.darkButton51.TabIndex = 102;
+            this.darkButton51.Text = "↓";
+            this.darkButton51.Click += new System.EventHandler(this.darkButton51_Click);
             // 
             // darkButton45
             // 
@@ -3327,9 +3351,9 @@ namespace DayZeEditor
             this.groupBox12.Controls.Add(this.darkButton22);
             this.groupBox12.Controls.Add(this.listBox16);
             this.groupBox12.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox12.Location = new System.Drawing.Point(328, 101);
+            this.groupBox12.Location = new System.Drawing.Point(318, 101);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(264, 226);
+            this.groupBox12.Size = new System.Drawing.Size(274, 226);
             this.groupBox12.TabIndex = 92;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "TraderList";
@@ -5981,5 +6005,7 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkLabel darkLabel88;
         private System.Windows.Forms.TabPage tabPage11;
         private System.Windows.Forms.ListBox listBox21;
+        private DarkUI.Controls.DarkButton darkButton52;
+        private DarkUI.Controls.DarkButton darkButton51;
     }
 }

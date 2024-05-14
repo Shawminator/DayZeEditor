@@ -4134,6 +4134,33 @@ namespace DayZeEditor
                 darkLabel90.Text = "Max - Min";
         }
 
+        private void darkButton52_Click(object sender, EventArgs e)
+        {
+            if (listBox15.SelectedItems.Count <= 0) return;
+            int index = listBox15.SelectedIndex;
+            if (index == 0) return;
+            int newindex = index - 1;
+            string attachment = listBox15.GetItemText(listBox15.SelectedItem);
+            currenttradermap.Attachments.RemoveAt(index);
+            currenttradermap.Attachments.Insert(newindex, attachment);
+            listBox15.Refresh();
+            listBox15.SelectedIndex = newindex;
+            tradermaps.isDirty = true;
+        }
+
+        private void darkButton51_Click(object sender, EventArgs e)
+        {
+            if(listBox15.SelectedItems.Count <= 0) return;
+            int index = listBox15.SelectedIndex;
+            if (index == listBox15.Items.Count - 1) return;
+            int newindex = index + 1;
+            string attachment = listBox15.GetItemText(listBox15.SelectedItem);
+            currenttradermap.Attachments.RemoveAt(index);
+            currenttradermap.Attachments.Insert(newindex, attachment);
+            listBox15.Refresh();
+            listBox15.SelectedIndex = newindex;
+            tradermaps.isDirty = true;
+        }
     }
 }
 

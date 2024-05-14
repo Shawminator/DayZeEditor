@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace DayZeLib
@@ -12,22 +13,24 @@ namespace DayZeLib
         public BindingList<Locations> Locations { get; set; }
         public BindingList<Packages> Packages { get; set; }
         public BindingList<string> InfectedTypes { get; set; }
-        public int LootSpawnType { get; set; }
         public int MinutesBetweenPackages { get; set; }
         public int DropHeight { get; set; }
         public int DropTime { get; set; }
-        public int MinimumPlayers { get; set; }
-        public int PackagesBeingRan { get; set; }
         public int PackageCallDelay { get; set; }
         public int MinutesAway { get; set; }
+        public int MinimumPlayers { get; set; }
+        public int PackagesBeingRan { get; set; }
         public int ZombiesToSpawn { get; set; }
         public int LocationHistoryCheckRange { get; set; }
+        public int LootSpawnType { get; set; }
         public int LockPackages { get; set; }
         public string Title { get; set; }
         public string DroppedMessage { get; set; }
         public string StartMessage { get; set; }
         public string MinutesAwayPrefix { get; set; }
         public string MinutesAwaySuffix { get; set; }
+
+      
     }
 
     public class Locations

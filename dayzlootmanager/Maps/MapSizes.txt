@@ -24,3 +24,4 @@ lux:15360
 vis_island:20480
 bearisland:10240
 fogfall:20480
+swansisland:204

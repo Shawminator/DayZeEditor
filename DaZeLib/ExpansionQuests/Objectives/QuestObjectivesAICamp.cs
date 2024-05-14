@@ -21,6 +21,20 @@ namespace DayZeLib
         public BindingList<string> AllowedWeapons { get; set; }
         public BindingList<string> AllowedDamageZones { get; set; }
 
+        public override void SetVec3List()
+        {
+            foreach(ExpansionQuestAISpawn aispawn in AISpawns)
+            {
+                aispawn.SetVec3List();
+            }
+        }
+        public override void GetVec3List()
+        {
+            foreach (ExpansionQuestAISpawn aispawn in AISpawns)
+            {
+                aispawn.GetVec3List();
+            }
+        }
 
         public QuestObjectivesAICamp() 
         {

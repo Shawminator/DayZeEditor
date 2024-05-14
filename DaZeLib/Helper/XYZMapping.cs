@@ -104,6 +104,12 @@ namespace DayZeLib
             Y = floats[1];
             Z = floats[2];
         }
+        public Vec3(decimal[] decimals)
+        {
+            X = (float)decimals[0];
+            Y = (float)decimals[1];
+            Z = (float)decimals[2];
+        }
         public Vec3(float x, float y, float z)
         {
             X = x;
@@ -124,6 +130,11 @@ namespace DayZeLib
         public string GetString()
         {
             return X.ToString() + " " + Y.ToString() + " " + Z.ToString();
+        }
+
+        public decimal[] getDecimalArray()
+        {
+            return new decimal[] { (decimal)X, (decimal)Y, (decimal)Z };
         }
     }
     public class MapData

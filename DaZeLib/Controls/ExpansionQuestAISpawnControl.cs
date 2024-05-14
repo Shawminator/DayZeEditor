@@ -62,6 +62,12 @@ namespace DayZeEditor
         }
         private bool useraction { get; set; }
 
+        public void SetAICountReadOnly(bool ro)
+        {
+            ObjectivesAICampAISpawnsNumberOfAINUD.ReadOnly = ro;
+            ObjectivesAICampAISpawnsNumberOfAINUD.Increment = 0; 
+        }
+
         private ExpansionQuestAISpawn _currentAISpawn { get; set; }
         public ExpansionQuestAISpawn currentAISpawn 
         {
@@ -120,7 +126,7 @@ namespace DayZeEditor
 
             ObjectivesAICampAISpawnsWayPointsLB.DisplayMember = "DisplayName";
             ObjectivesAICampAISpawnsWayPointsLB.ValueMember = "Value";
-            ObjectivesAICampAISpawnsWayPointsLB.DataSource = _currentAISpawn.Waypoints;
+            ObjectivesAICampAISpawnsWayPointsLB.DataSource = _currentAISpawn._Waypoints;
 
             ObjectivesAiCampAISpawnsClassnamesLB.DisplayMember = "DisplayName";
             ObjectivesAiCampAISpawnsClassnamesLB.ValueMember = "Value";
@@ -280,45 +286,44 @@ namespace DayZeEditor
             }
             isDirty = true;
         }
-        public decimal[] CurrentWapypoint;
+        public Vec3 CurrentWapypoint;
         private void ObjectivesAICampAISpawnsWayPointsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ObjectivesAICampAISpawnsWayPointsLB.SelectedItems.Count < 1) return;
-            CurrentWapypoint = ObjectivesAICampAISpawnsWayPointsLB.SelectedItem as decimal[];
+            CurrentWapypoint = ObjectivesAICampAISpawnsWayPointsLB.SelectedItem as Vec3;
             useraction = false;
-            numericUpDown9.Value = (decimal)CurrentWapypoint[0];
-            numericUpDown11.Value = (decimal)CurrentWapypoint[1];
-            numericUpDown12.Value = (decimal)CurrentWapypoint[2];
+            numericUpDown9.Value = (decimal)CurrentWapypoint.X;
+            numericUpDown11.Value = (decimal)CurrentWapypoint.Y;
+            numericUpDown12.Value = (decimal)CurrentWapypoint.Z;
             useraction = true;
 
         }
         private void numericUpDown9_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            CurrentWapypoint[0] = (decimal)numericUpDown9.Value;
+            CurrentWapypoint.X = (float)numericUpDown9.Value;
             isDirty = true;
         }
         private void numericUpDown11_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            CurrentWapypoint[1] = (decimal)numericUpDown11.Value;
+            CurrentWapypoint.Y = (float)numericUpDown11.Value;
             isDirty = true;
         }
         private void numericUpDown12_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            CurrentWapypoint[2] = (decimal)numericUpDown12.Value;
+            CurrentWapypoint.Z = (float)numericUpDown12.Value;
             isDirty = true;
         }
         private void ObjectivesAiCampAISpawnsWaypointAddButton_Click(object sender, EventArgs e)
         {
-            if (ObjectivesAiCampAISpawnsClassnamesLB.SelectedItems.Count <= 0) return;
-            _currentAISpawn.Waypoints.Add(new decimal[] { 0, 0, 0 });
+            _currentAISpawn._Waypoints.Add(new Vec3(0,0,0));
             isDirty = true;
         }
         private void ObjectivesAiCampAISpawnsWaypointRemoveButton_Click(object sender, EventArgs e)
         {
-            _currentAISpawn.Waypoints.Remove(CurrentWapypoint);
+            _currentAISpawn._Waypoints.Remove(CurrentWapypoint);
             isDirty = true;
             ObjectivesAICampAISpawnsWayPointsLB.Refresh();
         }
@@ -335,7 +340,7 @@ namespace DayZeEditor
                     DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        _currentAISpawn.Waypoints.Clear();
+                        _currentAISpawn._Waypoints.Clear();
                     }
                     for (int i = 0; i < fileContent.Length; i++)
                     {
@@ -343,7 +348,7 @@ namespace DayZeEditor
                         string[] linesplit = fileContent[i].Split('|');
                         string[] XYZ = linesplit[1].Split(' ');
                         decimal[] newfloatarray = new decimal[] { Convert.ToDecimal(XYZ[0]), Convert.ToDecimal(XYZ[1]), Convert.ToDecimal(XYZ[2]) };
-                        _currentAISpawn.Waypoints.Add(newfloatarray);
+                        _currentAISpawn._Waypoints.Add(new Vec3(newfloatarray));
 
                     }
                     ObjectivesAICampAISpawnsWayPointsLB.SelectedIndex = -1;
@@ -356,9 +361,9 @@ namespace DayZeEditor
         private void darkButton17_Click(object sender, EventArgs e)
         {
             StringBuilder SB = new StringBuilder();
-            foreach (decimal[] array in _currentAISpawn.Waypoints)
+            foreach (Vec3 v3 in _currentAISpawn._Waypoints)
             {
-                SB.AppendLine("eAI_SurvivorM_Lewis|" + array[0].ToString() + " " + array[1].ToString() + " " + array[2].ToString() + "|0.0 0.0 0.0");
+                SB.AppendLine("eAI_SurvivorM_Lewis|" + v3.GetString() + "|0.0 0.0 0.0");
             }
             SaveFileDialog save = new SaveFileDialog();
             if (save.ShowDialog() == DialogResult.OK)
@@ -377,12 +382,11 @@ namespace DayZeEditor
                     DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        _currentAISpawn.Waypoints.Clear();
+                        _currentAISpawn._Waypoints.Clear();
                     }
                     foreach (Editorobject eo in importfile.EditorObjects)
                     {
-                        decimal[] newfloatarray = new decimal[] { Convert.ToDecimal(eo.Position[0]), Convert.ToDecimal(eo.Position[1]), Convert.ToDecimal(eo.Position[2]) };
-                        _currentAISpawn.Waypoints.Add(newfloatarray);
+                        _currentAISpawn._Waypoints.Add(new Vec3(eo.Position));
                     }
                     ObjectivesAICampAISpawnsWayPointsLB.SelectedIndex = -1;
                     ObjectivesAICampAISpawnsWayPointsLB.SelectedIndex = ObjectivesAICampAISpawnsWayPointsLB.Items.Count - 1;
@@ -398,13 +402,13 @@ namespace DayZeEditor
                 MapName = ""
             };
             int m_Id = 0;
-            foreach (decimal[] array in _currentAISpawn.Waypoints)
+            foreach (Vec3 v3 in _currentAISpawn._Waypoints)
             {
                 Editorobject eo = new Editorobject()
                 {
                     Type = "eAI_SurvivorM_Jose",
                     DisplayName = "eAI_SurvivorM_Jose",
-                    Position = new float[] { Convert.ToSingle(array[0]), Convert.ToSingle(array[1]), Convert.ToSingle(array[2]) },
+                    Position = v3.getfloatarray(),
                     Orientation = new float[] { 0, 0, 0 },
                     Scale = (float)1.0,
                     Model = "",
@@ -427,10 +431,10 @@ namespace DayZeEditor
         {
             if(ObjectivesAICampAISpawnsWayPointsLB.SelectedItems.Count <=0) { return; }
             useraction = false;
-            CurrentWapypoint = ObjectivesAICampAISpawnsWayPointsLB.SelectedItem as decimal[];
-            numericUpDown9.Value = CurrentWapypoint[0];
-            numericUpDown11.Value = CurrentWapypoint[1];
-            numericUpDown12.Value = CurrentWapypoint[2];
+            CurrentWapypoint = ObjectivesAICampAISpawnsWayPointsLB.SelectedItem as Vec3;
+            numericUpDown9.Value = (decimal)CurrentWapypoint.X;
+            numericUpDown11.Value = (decimal)CurrentWapypoint.Y;
+            numericUpDown12.Value = (decimal)CurrentWapypoint.Z;
 
             useraction = true;
 

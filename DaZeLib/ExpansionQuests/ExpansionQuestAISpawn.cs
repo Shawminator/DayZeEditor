@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace DayZeLib
@@ -34,20 +35,32 @@ namespace DayZeLib
         public decimal MaxDistanceRadius { get; set; }
         public decimal DespawnRadius { get; set; }
 
+
+        [JsonIgnore]
+        public BindingList<Vec3> _Waypoints { get; set; }
+
         public ExpansionQuestAISpawn()
         {
             Waypoints = new BindingList<decimal[]>();
+            _Waypoints = new BindingList<Vec3>();
             ClassNames = new BindingList<string>();
         }
 
-        public void CreateDefaultAISpawn()
+        public void CreateDefaultAISpawn(bool createWaypoint = true)
         {
             NumberOfAI = 1;
             NPCName = "Quest Target";
-            Waypoints = new BindingList<decimal[]>()
+            if (createWaypoint == true)
             {
-                new decimal[] {0,0,0}
-            };
+                _Waypoints = new BindingList<Vec3>()
+                {
+                    new Vec3(0,0,0)
+                };
+            }
+            else
+            {
+                _Waypoints = new BindingList<Vec3>();
+            }
             Behaviour = 0;
             Formation = "RANDOM";
             Loadout = "BanditLoadout";
@@ -105,6 +118,24 @@ namespace DayZeLib
         public override string ToString()
         {
             return NPCName;
+        }
+
+        internal void SetVec3List()
+        {
+            Waypoints = new BindingList<decimal[]>();
+            foreach (Vec3 v3 in _Waypoints)
+            {
+                Waypoints.Add(v3.getDecimalArray());
+            }
+        }
+
+        internal void GetVec3List()
+        {
+            _Waypoints = new BindingList<Vec3>();
+            foreach (decimal[] v3 in Waypoints)
+            {
+                _Waypoints.Add(new Vec3(v3));
+            }
         }
     }
 }

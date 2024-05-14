@@ -487,6 +487,11 @@ namespace DayZeEditor
                 else
                     UtopiaAirdropButton.Visible = false;
 
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\CaptureTheFlag\\CTFConfig\\CTFConfig.json"))
+                    UtopiaAirdropButton.Visible = true;
+                else
+                    UtopiaAirdropButton.Visible = false;
+
                 // Cant be arsed with this, fucking stupid config........
                 //if (Directory.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\DNA_Keycards"))
                 //    DNAKeyCardsButton.Visible = true;

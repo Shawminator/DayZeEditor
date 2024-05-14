@@ -4631,8 +4631,8 @@ namespace DayZeEditor
             // 
             this.groupBox58.Controls.Add(this.eventgrouplootmaxNUD);
             this.groupBox58.Controls.Add(this.label129);
-            this.groupBox58.Controls.Add(this.eventgroupLootminNUD);
             this.groupBox58.Controls.Add(this.label130);
+            this.groupBox58.Controls.Add(this.eventgroupLootminNUD);
             this.groupBox58.Controls.Add(this.eventgroupdelootNUD);
             this.groupBox58.Controls.Add(this.label131);
             this.groupBox58.Controls.Add(this.darkLabel26);
@@ -4673,7 +4673,7 @@ namespace DayZeEditor
             // 
             this.label129.AutoSize = true;
             this.label129.ForeColor = System.Drawing.SystemColors.Control;
-            this.label129.Location = new System.Drawing.Point(14, 226);
+            this.label129.Location = new System.Drawing.Point(14, 199);
             this.label129.Name = "label129";
             this.label129.Size = new System.Drawing.Size(57, 13);
             this.label129.TabIndex = 94;
@@ -4699,7 +4699,7 @@ namespace DayZeEditor
             // 
             this.label130.AutoSize = true;
             this.label130.ForeColor = System.Drawing.SystemColors.Control;
-            this.label130.Location = new System.Drawing.Point(13, 199);
+            this.label130.Location = new System.Drawing.Point(13, 225);
             this.label130.Name = "label130";
             this.label130.Size = new System.Drawing.Size(60, 13);
             this.label130.TabIndex = 92;
@@ -4917,6 +4917,7 @@ namespace DayZeEditor
             this.eventspawngroupTV.SetMultiselect = true;
             this.eventspawngroupTV.Size = new System.Drawing.Size(320, 517);
             this.eventspawngroupTV.TabIndex = 0;
+            this.eventspawngroupTV.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.eventspawngroupTV_AfterSelect);
             this.eventspawngroupTV.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.eventspawngroupTV_NodeMouseClick);
             // 
             // TypesTab
@@ -13838,7 +13839,6 @@ namespace DayZeEditor
             this.fastColoredTextBox1.DefaultMarkerSize = 8;
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.fastColoredTextBox1.IsReplaceMode = false;
             this.fastColoredTextBox1.Location = new System.Drawing.Point(0, 24);
@@ -15298,6 +15298,7 @@ namespace DayZeEditor
             this.Controls.Add(this.darkToolStrip22);
             this.Controls.Add(this.darkToolStrip21);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "Economy_Manager";
             this.Text = "Form3";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Economy_Manager_FormClosing);

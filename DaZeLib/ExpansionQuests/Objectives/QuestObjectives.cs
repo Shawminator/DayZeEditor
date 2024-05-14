@@ -63,13 +63,11 @@ namespace DayZeLib
         {
             return "ObjectiveType: " + (QuExpansionQuestObjectiveTypeestType)ObjectiveType + "  ID: "+ID.ToString();
         }
-
         public bool Equals(QuestObjectivesBase other)
         {
             return this.ID == other.ID &&
                    this.ObjectiveType == other.ObjectiveType;
         }
-
         public void backupandDelete(string questObjectivesPath)
         {
             string SaveTime = DateTime.Now.ToString("ddMMyy_HHmmss");
@@ -82,6 +80,8 @@ namespace DayZeLib
                 File.Delete(Fullfilename);
             }
         }
+        public virtual void SetVec3List(){}
+        public virtual void GetVec3List(){}
     }
     
 

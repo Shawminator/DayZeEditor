@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Text.Json.Serialization;
 using System.Text.Json;
 using System.ComponentModel.Design;
+using System.Runtime.InteropServices;
 
 namespace DayZeEditor
 {

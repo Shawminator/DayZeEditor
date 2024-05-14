@@ -93,6 +93,7 @@ namespace DayZeLib
         public float[] ParkingOrientation { get; set; }
         public BindingList<string> Clothes { get; set; }
 
+
         public override string ToString()
         {
             return ClassName;

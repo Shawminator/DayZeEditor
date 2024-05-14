@@ -49,6 +49,7 @@ namespace DayZeLib
                     ExpansionQuestNPCs NPC = JsonSerializer.Deserialize<ExpansionQuestNPCs>(File.ReadAllText(file.FullName));
                     NPC.Filename = Path.GetFileNameWithoutExtension(file.Name);
                     NPC.OriginalFilename = Path.GetFileNameWithoutExtension(file.Name);
+                    NPC.GetVec3Lists();
                     if (NPC.ConfigVersion != QuestNPCLists.getNPCConfigVersion)
                     {
                         NPC.ConfigVersion = QuestNPCLists.getNPCConfigVersion;
@@ -99,10 +100,13 @@ namespace DayZeLib
                 ID = NEWID,
                 ClassName = "ExpansionQuestNPCDenis",
                 Position = new decimal[] { 0, 0, 0 },
+                _Position = new Vec3(0,0,0),
                 Orientation = new decimal[] { 0, 0, 0 },
+                _Orientation = new Vec3(0,0,0),
                 NPCName = "Phil McCracken",
                 DefaultNPCText = "You Looking at me!!!",
                 Waypoints = new BindingList<decimal[]>(),
+                _Waypoints = new BindingList<Vec3>(),
                 NPCEmoteID = 46,
                 NPCEmoteIsStatic = 0,
                 NPCLoadoutFile = "NBCLoadout",
@@ -157,6 +161,13 @@ namespace DayZeLib
         public int NPCType { get; set; }
         public int Active { get; set; }
 
+        [JsonIgnore]
+        public Vec3 _Position { get; set; }
+        [JsonIgnore]
+        public Vec3 _Orientation { get; set; }
+        [JsonIgnore]
+        public BindingList<Vec3> _Waypoints { get; set; }
+
         public ExpansionQuestNPCs()
         {
             ConfigVersion = QuestNPCLists.getNPCConfigVersion;
@@ -177,8 +188,27 @@ namespace DayZeLib
             return NPCName;
         }
 
+        internal void GetVec3Lists()
+        {
+            _Position = new Vec3(Position);
+            _Orientation = new Vec3(Orientation);
+            _Waypoints = new BindingList<Vec3>();
+            foreach (decimal[] array in Waypoints)
+            {
+                _Waypoints.Add(new Vec3(array));
+            }
+        }
 
-
+        public void SetVec3Lists()
+        {
+            Position = _Position.getDecimalArray();
+            Orientation = _Orientation.getDecimalArray();
+            Waypoints = new BindingList<decimal[]>();
+            foreach (Vec3 array in _Waypoints)
+            {
+                Waypoints.Add(array.getDecimalArray());
+            }
+        }
     }
 
 }

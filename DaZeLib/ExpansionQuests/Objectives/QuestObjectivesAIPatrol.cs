@@ -27,5 +27,13 @@ namespace DayZeLib
         {
             return ObjectiveText;
         }
+        public override void SetVec3List()
+        {
+            AISpawn.SetVec3List();
+        }
+        public override void GetVec3List()
+        {
+            AISpawn.GetVec3List();
+        }
     }
 }

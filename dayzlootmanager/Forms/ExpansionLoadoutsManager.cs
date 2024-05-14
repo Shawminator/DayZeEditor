@@ -314,6 +314,10 @@ namespace DayZeEditor
                 listBox1.DisplayMember = "DisplayName";
                 listBox1.ValueMember = "Value";
                 listBox1.DataSource = CurrentAIloadouts.Health;
+                if (CurrentAIloadouts.Health.Count > 0)
+                    groupBox1.Visible = true;
+                else
+                    groupBox1.Visible = false;
                 useraction = false;
 
                 if (e.Button == MouseButtons.Right)
@@ -550,7 +554,7 @@ namespace DayZeEditor
             if (listBox1.SelectedItems.Count < 1) return;
             Currenthealth = listBox1.SelectedItem as Health;
             useraction = false;
-
+            groupBox1.Visible = true;
             numericUpDown4.Value = Currenthealth.Min;
             numericUpDown5.Value = Currenthealth.Max;
             textBox2.Text = Currenthealth.Zone;
@@ -599,6 +603,7 @@ namespace DayZeEditor
             if (!useraction) return;
             Currenthealth.Zone = textBox2.Text;
             CurrentAILoadoutsFile.isDirty = true;
+            listBox1.Invalidate();
         }
         private void ItemAttachmentSlotNameCB_SelectedIndexChanged(object sender, EventArgs e)
         {
