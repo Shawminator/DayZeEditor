@@ -3,18 +3,12 @@ using DayZeLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Reflection.Emit;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Threading.Tasks;
-using System.Web.UI.Design.WebControls;
 using System.Windows.Forms;
 
 namespace DayZeEditor
@@ -28,12 +22,12 @@ namespace DayZeEditor
         public TypesFile Expansiontypes;
         public List<TypesFile> ModTypes;
         public string MPGSpawnexConfigPath { get; private set; }
-        public string MPG_Spawner_PointsConfigPath { get;set;}
+        public string MPG_Spawner_PointsConfigPath { get; set; }
         public MPG_SPWNR_ModConfig MPG_SPWNR_ModConfig;
         public MPG_Spawner_PointsConfig currentSpawnerPointsFile { get; set; }
         public MPG_Spawner_PointConfig currentSpawnerPoint { get; set; }
 
-        public  Vec3PandR currentspawnPosition { get; set; }
+        public Vec3PandR currentspawnPosition { get; set; }
         public bool useraction = false;
         public void listBox_DrawItem(object sender, DrawItemEventArgs e)
         {
@@ -130,7 +124,7 @@ namespace DayZeEditor
                 File.WriteAllText(MPG_SPWNR_ModConfig.Filename, jsonString);
                 midifiedfiles.Add(Path.GetFileName(MPG_SPWNR_ModConfig.Filename));
             }
-            foreach(MPG_Spawner_PointsConfig pointsfile in MPG_SPWNR_ModConfig.MPG_Spawner_PointsConfigs)
+            foreach (MPG_Spawner_PointsConfig pointsfile in MPG_SPWNR_ModConfig.MPG_Spawner_PointsConfigs)
             {
                 if (pointsfile.isDirty)
                 {
@@ -437,7 +431,7 @@ namespace DayZeEditor
                 SpawnerPointsLB.SelectedIndex = currentSpawnerPointsFile.Points.Count - 1;
                 pictureBox1.Invalidate();
             }
-            
+
         }
         private void darkButton2_Click(object sender, EventArgs e)
         {
@@ -540,7 +534,7 @@ namespace DayZeEditor
             {
                 currentSpawnerPoint._triggerPosition.Rotation = new Vec3((float)PointConfigTriggerRotXNUD.Value, (float)PointConfigTriggerRotYNUD.Value, (float)PointConfigSpawnRotationZNUD.Value);
             }
-            currentSpawnerPoint._triggerPosition.Position = new Vec3((float)PointConfigTriggerPosXNUD.Value, (float)PointConfigTriggerPosYNUD.Value, (float)PointConfigTriggerPosZNUD.Value );
+            currentSpawnerPoint._triggerPosition.Position = new Vec3((float)PointConfigTriggerPosXNUD.Value, (float)PointConfigTriggerPosYNUD.Value, (float)PointConfigTriggerPosZNUD.Value);
             currentSpawnerPointsFile.isDirty = true;
         }
         private void PointConfigTrigerdependanciesCB_SelectedIndexChanged(object sender, EventArgs e)
@@ -588,10 +582,10 @@ namespace DayZeEditor
         private void darkButton22_Click(object sender, EventArgs e)
         {
             AddIDFromList form = new AddIDFromList();
-            form.IDlist = new BindingList<MPG_Spawner_PointConfig>( MPG_SPWNR_ModConfig.GetPointlist());
-            if(form.ShowDialog() == DialogResult.OK)
+            form.IDlist = new BindingList<MPG_Spawner_PointConfig>(MPG_SPWNR_ModConfig.GetPointlist());
+            if (form.ShowDialog() == DialogResult.OK)
             {
-                foreach(MPG_Spawner_PointConfig i in form.Selectedids)
+                foreach (MPG_Spawner_PointConfig i in form.Selectedids)
                 {
                     switch (PointConfigTrigerdependanciesCB.SelectedIndex)
                     {
@@ -843,8 +837,8 @@ namespace DayZeEditor
             int index = PointConfigSpawnPositionsLB.SelectedIndex;
             currentSpawnerPoint._spawnPositions.Remove(currentspawnPosition);
             PointConfigSpawnPositionsLB.Invalidate();
-            PointConfigSpawnPositionsLB.SelectedIndex =  -1;
-            if(currentSpawnerPoint._spawnPositions.Count > 0)
+            PointConfigSpawnPositionsLB.SelectedIndex = -1;
+            if (currentSpawnerPoint._spawnPositions.Count > 0)
             {
                 PointConfigSpawnPositionsLB.SelectedIndex = index - 1;
             }
@@ -876,7 +870,7 @@ namespace DayZeEditor
                     }
                     currentSpawnerPoint.ImportDZE(importfile, ImportTrigger, importrtotation);
                     useraction = false;
-                    
+
                     PointConfigTriggerPosXNUD.Value = (decimal)currentSpawnerPoint._triggerPosition.Position.X;
                     PointConfigTriggerPosYNUD.Value = (decimal)currentSpawnerPoint._triggerPosition.Position.Y;
                     PointConfigTriggerPosZNUD.Value = (decimal)currentSpawnerPoint._triggerPosition.Position.Z;
@@ -1056,7 +1050,7 @@ namespace DayZeEditor
             }
             else if (checkBox9.Checked == true)
             {
-                foreach(MPG_Spawner_PointConfig spc in MPG_SPWNR_ModConfig.GetPointlist())
+                foreach (MPG_Spawner_PointConfig spc in MPG_SPWNR_ModConfig.GetPointlist())
                 {
                     float scalevalue = MPGSpawnerScale * 0.05f;
                     int centerX = (int)(Math.Round(spc._triggerPosition.Position.X) * scalevalue);
@@ -1214,7 +1208,7 @@ namespace DayZeEditor
             PointConfigItemmappingDataAddOnFirstSpawnCB.Checked = currentMappingData.addOnFirstSpawn == 1 ? true : false;
             PointConfigItemmappingDataAddOnWinCB.Checked = currentMappingData.addOnWin == 1 ? true : false;
             PointConfigItemmappingDataAdddelayNUD.Value = currentMappingData.addDelay;
-            PointConfigItemmappingDataRemoveOnEnterCB.Checked = currentMappingData.removeOnEnter == 1 ? true: false;
+            PointConfigItemmappingDataRemoveOnEnterCB.Checked = currentMappingData.removeOnEnter == 1 ? true : false;
             PointConfigItemmappingDataRemoveOnEnterCB.Checked = currentMappingData.removeOnEnter == 1 ? true : false;
             PointConfigItemmappingDataRemoveOnEnterCB.Checked = currentMappingData.removeOnEnter == 1 ? true : false;
             PointConfigItemmappingDataAdddelayNUD.Value = currentMappingData.addDelay;
@@ -1223,7 +1217,7 @@ namespace DayZeEditor
             PointConfigItemmappingDataItemSpawnerLB.ValueMember = "Value";
             PointConfigItemmappingDataItemSpawnerLB.DataSource = currentMappingData.mappingObjects;
 
-            
+
 
             useraction = true;
         }

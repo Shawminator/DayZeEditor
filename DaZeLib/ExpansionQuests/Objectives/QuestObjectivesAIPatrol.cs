@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace DayZeLib
 {
-    public class QuestObjectivesAIPatrol: QuestObjectivesBase
+    public class QuestObjectivesAIPatrol : QuestObjectivesBase
     {
         public string ObjectiveText { get; set; }
         public int TimeLimit { get; set; }
@@ -21,7 +15,7 @@ namespace DayZeLib
 
         public QuestObjectivesAIPatrol()
         {
-           
+
         }
         public override string ToString()
         {

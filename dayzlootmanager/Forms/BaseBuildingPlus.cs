@@ -3,15 +3,12 @@ using DayZeLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeEditor
@@ -68,7 +65,7 @@ namespace DayZeEditor
             BBPSettings.isDirty = false;
             BBPSettings.Filename = BBPSettingsPath;
 
-            string[] boolignorenames = new string[] 
+            string[] boolignorenames = new string[]
             {
                 "BBP_BuildTime",
                 "BBP_DismantleTime",
@@ -161,7 +158,7 @@ namespace DayZeEditor
                 foreach (string l in addedtypes)
                 {
                     CurrentList.Add(l);
-                   
+
                 }
                 BBPSettings.isDirty = true;
             }
@@ -201,8 +198,8 @@ namespace DayZeEditor
         {
             BBP_Cementmixerlocations newmixer = new BBP_Cementmixerlocations()
             {
-                position = new float[] {0,0,0 },
-                orientation = new float[] {0,0,0 }
+                position = new float[] { 0, 0, 0 },
+                orientation = new float[] { 0, 0, 0 }
             };
             BBPSettings.BBP_CementMixerLocations.Add(newmixer);
             BBPSettings.isDirty = true;

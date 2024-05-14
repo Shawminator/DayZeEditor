@@ -1,25 +1,22 @@
-﻿using System;
+﻿using Cyotek.Windows.Forms;
+using DarkUI.Forms;
+using DayZeLib;
+using FastColoredTextBoxNS;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Xml;
-using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Xml.Xsl;
-using Cyotek.Windows.Forms;
-using DarkUI.Forms;
-using DayZeLib;
-using FastColoredTextBoxNS;
 
 namespace DayZeEditor
 {
@@ -89,7 +86,7 @@ namespace DayZeEditor
         private void Economy_Manager_Load(object sender, EventArgs e)
         {
             isUserInteraction = false;
-            
+
             filename = currentproject.ProjectName;
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
@@ -124,7 +121,7 @@ namespace DayZeEditor
             comboBox6.DataSource = currentproject.limitfefinitions.lists.tags;
             SetuprandomPresetsForSpawnabletypes();
 
-            
+
             PopulateTreeView();
             Loadevents();
             LoadeventSpawns();
@@ -144,8 +141,8 @@ namespace DayZeEditor
             LoadTerritories();
             loadinitC();
             SetSummarytiers();
-            
-            
+
+
             NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
             try
             {
@@ -433,20 +430,20 @@ namespace DayZeEditor
                 if (currentproject.CFGGameplayConfig.isDirty)
                 {
                     currentproject.CFGGameplayConfig.SaveCFGGameplay();
-                    
+
                     currentproject.CFGGameplayConfig.isDirty = false;
                     midifiedfiles.Add(Path.GetFileName(currentproject.CFGGameplayConfig.Filename) + " Saved....");
                 }
-                foreach(SpawnGearPresetFiles SGPF in currentproject.CFGGameplayConfig.cfggameplay.SpawnGearPresetFiles)
+                foreach (SpawnGearPresetFiles SGPF in currentproject.CFGGameplayConfig.cfggameplay.SpawnGearPresetFiles)
                 {
-                    if(SGPF.isDirty)
+                    if (SGPF.isDirty)
                     {
                         midifiedfiles.Add(SGPF.Filename + " Saved....");
                     }
                 }
                 currentproject.CFGGameplayConfig.SaveSpawnGearPresetFiles(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\");
             }
-            
+
             if (currentproject.cfgEffectAreaConfig != null)
             {
                 if (currentproject.cfgEffectAreaConfig.isDirty)
@@ -505,9 +502,9 @@ namespace DayZeEditor
                     midifiedfiles.Add(Path.GetFileName(currentproject.mapgroupproto.Filename));
                 }
             }
-            if(currentproject.mapgrouppos != null)
+            if (currentproject.mapgrouppos != null)
             {
-                if(currentproject.mapgrouppos.isDirty)
+                if (currentproject.mapgrouppos.isDirty)
                 {
                     if (currentproject.Createbackups)
                         currentproject.mapgrouppos.Savemapgrouppos(SaveTime);
@@ -988,7 +985,7 @@ namespace DayZeEditor
                         string cat = "other";
                         if (type.category != null)
                             cat = type.category.name;
-                        
+
                         TreeNode typenode = new TreeNode(type.name)
                         {
                             Tag = type
@@ -1417,7 +1414,7 @@ namespace DayZeEditor
             StringBuilder sb = new StringBuilder();
             sb.Append("Filename,Classname,Nomainal,min,Lifetime,Restock,QuantMin,QuantMaxm,Cost,CountInCargo,CountInhoarder,CountInMap,CountInPlayer,Crafter,Deloot,Category,Usage,Tag" + Environment.NewLine);
             string filename = Path.GetFileName(vanillatypes.Filename);
-            foreach(typesType type in  vanillatypes.types.type)
+            foreach (typesType type in vanillatypes.types.type)
             {
                 sb.Append(GetStringline(type, filename));
             }
@@ -1430,7 +1427,7 @@ namespace DayZeEditor
                 }
             }
             SaveFileDialog save = new SaveFileDialog();
-            if(save.ShowDialog() == DialogResult.OK)
+            if (save.ShowDialog() == DialogResult.OK)
             {
                 File.WriteAllText(save.FileName, sb.ToString());
             }
@@ -1442,13 +1439,13 @@ namespace DayZeEditor
             line += filename + ",";
             line += type.name;
             line += ",";
-            if(type.nominalSpecified)
+            if (type.nominalSpecified)
                 line += type.nominal;
             line += ",";
-            if(type.minSpecified)
+            if (type.minSpecified)
                 line += type.min;
             line += ",";
-            if(type.lifetimeSpecified)
+            if (type.lifetimeSpecified)
                 line += type.lifetime;
             line += ",";
             if (type.restockSpecified)
@@ -1457,10 +1454,10 @@ namespace DayZeEditor
             if (type.quantminSpecified)
                 line += type.quantmin;
             line += ",";
-            if(type.quantmaxSpecified)
+            if (type.quantmaxSpecified)
                 line += type.quantmax;
             line += ",";
-            if(type.costSpecified)
+            if (type.costSpecified)
                 line += type.cost;
             line += ",";
             if (type.flags != null)
@@ -1482,12 +1479,12 @@ namespace DayZeEditor
             {
                 line += ",,,,,,";
             }
-            if(type.category != null)
+            if (type.category != null)
                 line += type.category.name;
             line += ",";
-            if(type.usage != null || type.usage.Count != 0)
+            if (type.usage != null || type.usage.Count != 0)
             {
-                foreach(typesTypeUsage u in type.usage)
+                foreach (typesTypeUsage u in type.usage)
                 {
                     line += u.name + " ";
                 }
@@ -2605,11 +2602,11 @@ namespace DayZeEditor
             EventSpawnTV.Nodes.Clear();
             TreeNode rootnoot = new TreeNode(Path.GetFileName(currentproject.cfgeventspawns.Filename));
             rootnoot.Tag = "EventSpawnParent";
-            foreach(eventposdefEvent eventspawn in eventposdef.@event)
+            foreach (eventposdefEvent eventspawn in eventposdef.@event)
             {
                 TreeNode newevent = new TreeNode(eventspawn.ToString());
                 newevent.Tag = eventspawn;
-                if(eventspawn.zone!= null)
+                if (eventspawn.zone != null)
                 {
                     eventposdefEventZone zone = eventspawn.zone;
                     TreeNode zonenode = new TreeNode("zone");
@@ -2617,12 +2614,12 @@ namespace DayZeEditor
                     zonenode.Tag = zone;
                     newevent.Nodes.Add(zonenode);
                 }
-                if(eventspawn.pos != null && eventspawn.pos.Count > 0)
+                if (eventspawn.pos != null && eventspawn.pos.Count > 0)
                 {
                     TreeNode eventposnodes = new TreeNode("pos");
                     eventposnodes.Name = "POS";
                     eventposnodes.Tag = "PosParent";
-                    foreach(eventposdefEventPos pos in eventspawn.pos)
+                    foreach (eventposdefEventPos pos in eventspawn.pos)
                     {
                         TreeNode posnodes = new TreeNode(pos.ToString());
                         posnodes.Tag = pos;
@@ -2717,7 +2714,7 @@ namespace DayZeEditor
                 if (e.Button == MouseButtons.Right)
                 {
                     removeSelectedPositionToolStripMenuItem.Visible = true;
-                    if(eventposdefEventPos.group != null)
+                    if (eventposdefEventPos.group != null)
                     {
                         exportGroupSpawnTodzeToolStripMenuItem.Visible = true;
                     }
@@ -3011,7 +3008,7 @@ namespace DayZeEditor
             currentproject.cfgeventspawns.isDirty = true;
             EventSpawnTV.SelectedNode.Text = eventposdefEventPos.ToString();
             pictureBox1.Invalidate();
-            if(eventposdefEventPos.ySpecified)
+            if (eventposdefEventPos.ySpecified)
             {
                 if (MapData.FileExists)
                 {
@@ -3192,11 +3189,11 @@ namespace DayZeEditor
                         {
                             eventposdefEvent.pos = new BindingList<eventposdefEventPos>();
                             eventposnodes.Nodes.Clear();
-                            
+
                         }
                         eventposnodes.Remove();
                     }
-                    
+
                     foreach (Editorobject eo in importfile.EditorObjects)
                     {
                         eventposdefEventPos newpos = new eventposdefEventPos()
@@ -3266,63 +3263,63 @@ namespace DayZeEditor
                         //DialogResult result = form.ShowDialog();
                         //if (result == DialogResult.OK)
                         //{
-                            string Groupname = Path.GetFileNameWithoutExtension(file);
-                            //List<string> addedtypes = form.addedtypes.ToList();
-                            //foreach (string l in addedtypes)
-                            //{
-                            //    Groupname = l;
-                            //}
+                        string Groupname = Path.GetFileNameWithoutExtension(file);
+                        //List<string> addedtypes = form.addedtypes.ToList();
+                        //foreach (string l in addedtypes)
+                        //{
+                        //    Groupname = l;
+                        //}
 
-                            eventposdefEventPos newpos = new eventposdefEventPos()
+                        eventposdefEventPos newpos = new eventposdefEventPos()
+                        {
+                            x = Convert.ToDecimal(importfile.EditorObjects[0].Position[0]),
+                            ySpecified = true,
+                            y = Convert.ToDecimal(importfile.EditorObjects[0].Position[1]),
+                            z = Convert.ToDecimal(importfile.EditorObjects[0].Position[2]),
+                            aSpecified = true,
+                            a = 0,
+                            group = Groupname
+
+                        };
+                        eventposdefEvent.pos.Add(newpos);
+                        TreeNode posnodes = new TreeNode(newpos.ToString());
+                        posnodes.Tag = newpos;
+                        eventposnodes.Nodes.Add(posnodes);
+                        eventgroupdefGroup newvengroup = new eventgroupdefGroup()
+                        {
+                            name = Groupname,
+                            child = new BindingList<eventgroupdefGroupChild>()
+                        };
+
+                        TreeNode neweventspawn = new TreeNode(Groupname);
+                        neweventspawn.Tag = newvengroup;
+                        foreach (Editorobject eo in importfile.EditorObjects)
+                        {
+                            if (eo.Orientation[0] < 0)
+                                eo.Orientation[0] = 360 + eo.Orientation[0];
+                            eventgroupdefGroupChild eventgroupdefGroupChild = new eventgroupdefGroupChild()
                             {
-                                x = Convert.ToDecimal(importfile.EditorObjects[0].Position[0]),
+                                type = eo.Type,
+                                x = (decimal)(eo.Position[0]) - newpos.x,
                                 ySpecified = true,
-                                y = Convert.ToDecimal(importfile.EditorObjects[0].Position[1]),
-                                z = Convert.ToDecimal(importfile.EditorObjects[0].Position[2]),
-                                aSpecified = true,
-                                a = 0,
-                                group = Groupname
-
+                                y = (decimal)(eo.Position[1]) - newpos.y,
+                                z = (decimal)(eo.Position[2]) - newpos.z,
+                                a = (decimal)(eo.Orientation[0]),
+                                delootSpecified = true,
+                                deloot = 0,
+                                lootminSpecified = true,
+                                lootmin = 1,
+                                lootmaxSpecified = true,
+                                lootmax = 3
                             };
-                            eventposdefEvent.pos.Add(newpos);
-                            TreeNode posnodes = new TreeNode(newpos.ToString());
-                            posnodes.Tag = newpos;
-                            eventposnodes.Nodes.Add(posnodes);
-                            eventgroupdefGroup newvengroup = new eventgroupdefGroup()
-                            {
-                                name = Groupname,
-                                child = new BindingList<eventgroupdefGroupChild>()
-                            };
-
-                            TreeNode neweventspawn = new TreeNode(Groupname);
-                            neweventspawn.Tag = newvengroup;
-                            foreach (Editorobject eo in importfile.EditorObjects)
-                            {
-                                if (eo.Orientation[0] < 0)
-                                    eo.Orientation[0] = 360 + eo.Orientation[0];
-                                eventgroupdefGroupChild eventgroupdefGroupChild = new eventgroupdefGroupChild()
-                                {
-                                    type = eo.Type,
-                                    x = (decimal)(eo.Position[0]) - newpos.x,
-                                    ySpecified = true,
-                                    y = (decimal)(eo.Position[1]) - newpos.y,
-                                    z = (decimal)(eo.Position[2]) - newpos.z,
-                                    a = (decimal)(eo.Orientation[0]),
-                                    delootSpecified = true,
-                                    deloot = 0,
-                                    lootminSpecified = true,
-                                    lootmin = 1,
-                                    lootmaxSpecified = true,
-                                    lootmax = 3
-                                };
-                                TreeNode eventgroupchile = new TreeNode(eventgroupdefGroupChild.type);
-                                eventgroupchile.Tag = eventgroupdefGroupChild;
-                                neweventspawn.Nodes.Add(eventgroupchile);
-                                newvengroup.child.Add(eventgroupdefGroupChild);
-                            }
-                            eventgroupdef.group.Add(newvengroup);
-                            eventspawngroupTV.Nodes[0].Nodes.Add(neweventspawn);
-                            currentproject.cfgeventgroups.isDirty = true;
+                            TreeNode eventgroupchile = new TreeNode(eventgroupdefGroupChild.type);
+                            eventgroupchile.Tag = eventgroupdefGroupChild;
+                            neweventspawn.Nodes.Add(eventgroupchile);
+                            newvengroup.child.Add(eventgroupdefGroupChild);
+                        }
+                        eventgroupdef.group.Add(newvengroup);
+                        eventspawngroupTV.Nodes[0].Nodes.Add(neweventspawn);
+                        currentproject.cfgeventgroups.isDirty = true;
                         //}
                     }
                     EventSpawnTV.SelectedNode.Nodes.Add(eventposnodes);
@@ -3357,9 +3354,9 @@ namespace DayZeEditor
             {
                 if (Classname != "")
                     break;
-                foreach(eventsEvent eve in eventconfig.events.@event)
+                foreach (eventsEvent eve in eventconfig.events.@event)
                 {
-                    if(eve.name == eventposdefEvent.name)
+                    if (eve.name == eventposdefEvent.name)
                     {
                         Classname = eve.children[0].type;
                         break;
@@ -3385,7 +3382,7 @@ namespace DayZeEditor
                 {
                     Type = Classname,
                     DisplayName = Classname,
-                    
+
                     Position = new float[] { Convert.ToSingle(array.x), y, Convert.ToSingle(array.z) },
                     Orientation = new float[] { 0, 0, 0 },
                     Scale = 1.0f,
@@ -3440,7 +3437,7 @@ namespace DayZeEditor
             TreeNode posnodes = new TreeNode(newpos.ToString());
             posnodes.Tag = newpos;
             eventposnodes.Nodes.Add(posnodes);
-            
+
             currentproject.cfgeventspawns.isDirty = true;
         }
         private void removeSelectedPositionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -3466,7 +3463,7 @@ namespace DayZeEditor
             {
                 Editorobject newobject = new Editorobject()
                 {
-                    Position = new float[] 
+                    Position = new float[]
                     {
                        (float)(eventposdefEventPos.x + eventgroupdefGroupChild.x),
                        (float)(eventposdefEventPos.y + eventgroupdefGroupChild.y),
@@ -3803,13 +3800,13 @@ namespace DayZeEditor
                 {
                     currentcargo.preset = null;
                     currentcargo.chance = 1;
-                    
+
                 }
                 else
                 {
                     currentcargo.item = new BindingList<spawnabletypesTypeCargoItem>();
                     currentcargo.chance = 0;
-                    
+
                 }
             }
             SetCargo();
@@ -4101,7 +4098,7 @@ namespace DayZeEditor
             if (!isUserInteraction) return;
             spawnabletypesTypeCargoItem currentcargoitem = CargoItemLB.SelectedItem as spawnabletypesTypeCargoItem;
             currentcargoitem.chanceSpecified = checkBox49.Checked;
-            if(currentcargoitem.chanceSpecified)
+            if (currentcargoitem.chanceSpecified)
             {
                 CargoItemchanceNUD.Value = currentcargoitem.chance = 1;
             }
@@ -4762,7 +4759,7 @@ namespace DayZeEditor
             {
                 generatorposbubbleslifetiemNUD.Value = currentplayerspawnpointsGroup.lifetime;
             }
-            if(generatorposbubblesusecounterCB.Checked = currentplayerspawnpointsGroup.counterSpecified == true)
+            if (generatorposbubblesusecounterCB.Checked = currentplayerspawnpointsGroup.counterSpecified == true)
             {
                 generatorposbubblescounterNUD.Value = currentplayerspawnpointsGroup.counter;
             }
@@ -4813,7 +4810,7 @@ namespace DayZeEditor
                     currentplayerspawnpointsGroup.lifetimeSpecified = false;
                 }
             }
-            
+
         }
         private void generatorposbubblesusecounterCB_CheckedChanged(object sender, EventArgs e)
         {
@@ -4886,7 +4883,7 @@ namespace DayZeEditor
         {
             playerspawnpointsGroupPos newpos = new playerspawnpointsGroupPos()
             {
-               x = currentproject.MapSize / 2,
+                x = currentproject.MapSize / 2,
                 z = currentproject.MapSize / 2
             };
             currentplayerspawnpointsGroup.pos.Add(newpos);
@@ -5043,7 +5040,7 @@ namespace DayZeEditor
             decimal scalevalue = PlayerSpawnScale * (decimal)0.05;
             decimal mapsize = currentproject.MapSize;
             int newsize = (int)(mapsize * scalevalue);
-            label156.Text = Decimal.Round((decimal)(e.X / scalevalue),4) + "," + Decimal.Round((decimal)((newsize - e.Y) / scalevalue),4);
+            label156.Text = Decimal.Round((decimal)(e.X / scalevalue), 4) + "," + Decimal.Round((decimal)((newsize - e.Y) / scalevalue), 4);
         }
         private void pictureBox2_MouseWheel(object sender, MouseEventArgs e)
         {
@@ -5121,8 +5118,8 @@ namespace DayZeEditor
                 float scalevalue = PlayerSpawnScale * 0.05f;
                 float mapsize = currentproject.MapSize;
                 int newsize = (int)(mapsize * scalevalue);
-                FreshPosXNUD.Value = Decimal.Round((decimal)(mouseEventArgs.X / scalevalue),4);
-                FreshPosZNUD.Value = Decimal.Round((decimal)((newsize - mouseEventArgs.Y) / scalevalue),4);
+                FreshPosXNUD.Value = Decimal.Round((decimal)(mouseEventArgs.X / scalevalue), 4);
+                FreshPosZNUD.Value = Decimal.Round((decimal)((newsize - mouseEventArgs.Y) / scalevalue), 4);
                 Cursor.Current = Cursors.Default;
                 currentproject.cfgplayerspawnpoints.isDirty = true;
                 pictureBox2.Invalidate();
@@ -5709,7 +5706,7 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    if(!cfggameplay.BaseBuildingData.HologramData.disallowedTypesInUnderground.Contains(l))
+                    if (!cfggameplay.BaseBuildingData.HologramData.disallowedTypesInUnderground.Contains(l))
                         cfggameplay.BaseBuildingData.HologramData.disallowedTypesInUnderground.Add(l);
                 }
                 currentproject.CFGGameplayConfig.isDirty = true;
@@ -5964,7 +5961,7 @@ namespace DayZeEditor
                 name = "NewAttachmentList",
                 chance = 1,
                 item = new BindingList<randompresetsAttachmentsItem>()
-               
+
             };
             if (currentproject.cfgrandompresetsconfig.randompresets.Items == null)
                 currentproject.cfgrandompresetsconfig.randompresets.Items = new BindingList<object>();
@@ -6662,7 +6659,7 @@ namespace DayZeEditor
                     {
                         name = l
                     };
-                    if(!ignore.type.Any(x => x.name == newignoretype.name))
+                    if (!ignore.type.Any(x => x.name == newignoretype.name))
                     {
                         ignore.type.Add(newignoretype);
                     }
@@ -7074,15 +7071,15 @@ namespace DayZeEditor
                     if (currentterritorytypeTerritoryZone == null) return;
                     //if (e is MouseEventArgs mouseEventArgs)
                     //{
-                        Cursor.Current = Cursors.WaitCursor;
-                        decimal scalevalue = MissionMapscale * (decimal)0.05;
-                        decimal mapsize = currentproject.MapSize;
-                        int newsize = (int)(mapsize * scalevalue);
-                        currentterritorytypeTerritoryZone.x = Decimal.Round((decimal)(mouseeventargs.X / scalevalue), 4);
-                        currentterritorytypeTerritoryZone.z = Decimal.Round((decimal)((newsize - mouseeventargs.Y) / scalevalue), 4);
-                        Cursor.Current = Cursors.Default;
-                        currentterritoriesConfig.isDirty = true;
-                        pictureBox6.Invalidate();
+                    Cursor.Current = Cursors.WaitCursor;
+                    decimal scalevalue = MissionMapscale * (decimal)0.05;
+                    decimal mapsize = currentproject.MapSize;
+                    int newsize = (int)(mapsize * scalevalue);
+                    currentterritorytypeTerritoryZone.x = Decimal.Round((decimal)(mouseeventargs.X / scalevalue), 4);
+                    currentterritorytypeTerritoryZone.z = Decimal.Round((decimal)((newsize - mouseeventargs.Y) / scalevalue), 4);
+                    Cursor.Current = Cursors.Default;
+                    currentterritoriesConfig.isDirty = true;
+                    pictureBox6.Invalidate();
                     //}
                 }
                 else
@@ -7092,20 +7089,20 @@ namespace DayZeEditor
                     if (currentterritorytypeTerritoryZone == null) return;
                     //if (e is MouseEventArgs mouseEventArgs)
                     //{
-                        decimal scalevalue = MissionMapscale * (decimal)0.05;
-                        decimal mapsize = currentproject.MapSize;
-                        int newsize = (int)(mapsize * scalevalue);
-                        PointF pC = new PointF((float)Decimal.Round((decimal)(mouseeventargs.X / scalevalue), 4), (float)Decimal.Round((decimal)((newsize - mouseeventargs.Y) / scalevalue), 4));
-                        foreach (territorytypeTerritoryZone tz in currentterritorytypeTerritory.zone)
+                    decimal scalevalue = MissionMapscale * (decimal)0.05;
+                    decimal mapsize = currentproject.MapSize;
+                    int newsize = (int)(mapsize * scalevalue);
+                    PointF pC = new PointF((float)Decimal.Round((decimal)(mouseeventargs.X / scalevalue), 4), (float)Decimal.Round((decimal)((newsize - mouseeventargs.Y) / scalevalue), 4));
+                    foreach (territorytypeTerritoryZone tz in currentterritorytypeTerritory.zone)
+                    {
+                        PointF pP = new PointF((float)tz.x, (float)tz.z);
+                        if (IsWithinCircle(pC, pP, (float)tz.r))
                         {
-                            PointF pP = new PointF((float)tz.x, (float)tz.z);
-                            if (IsWithinCircle(pC, pP, (float)tz.r))
-                            {
-                                TerritoriesZonesLB.SelectedItem = tz;
-                                TerritoriesZonesLB.Refresh();
-                                continue;
-                            }
+                            TerritoriesZonesLB.SelectedItem = tz;
+                            TerritoriesZonesLB.Refresh();
+                            continue;
                         }
+                    }
                     //}
                 }
 
@@ -7127,11 +7124,11 @@ namespace DayZeEditor
                     _newscrollPosition.Y = 0;
                 panel5.AutoScrollPosition = _newscrollPosition;
                 pictureBox6.Invalidate();
-             }
+            }
             decimal scalevalue = MissionMapscale * (decimal)0.05;
             decimal mapsize = currentproject.MapSize;
             int newsize = (int)(mapsize * scalevalue);
-            label155.Text = Decimal.Round((decimal)(e.X / scalevalue),4) + "," + Decimal.Round((decimal)((newsize - e.Y) / scalevalue),4);
+            label155.Text = Decimal.Round((decimal)(e.X / scalevalue), 4) + "," + Decimal.Round((decimal)((newsize - e.Y) / scalevalue), 4);
         }
         private void pictureBox6_MouseEnter(object sender, EventArgs e)
         {
@@ -7232,7 +7229,7 @@ namespace DayZeEditor
         {
             if (currentterritorytypeTerritory == null) return;
             decimal scalevalue = MissionMapscale * (decimal)0.05;
-            if(TerritoryPaintAllCB.Checked)
+            if (TerritoryPaintAllCB.Checked)
             {
                 foreach (territoriesConfig territoriesConfig in currentproject.territoriesList)
                 {
@@ -7259,7 +7256,7 @@ namespace DayZeEditor
                     }
                 }
             }
-            else if(TerritorieszonesCB.Checked)
+            else if (TerritorieszonesCB.Checked)
             {
                 foreach (territorytypeTerritory t in currentterritoriesConfig.territorytype.territory)
                 {
@@ -7474,7 +7471,7 @@ namespace DayZeEditor
         private void TerritoriesZonesStaticMaxNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-           currentterritorytypeTerritoryZone.smax = (int)TerritoriesZonesStaticMaxNUD.Value;
+            currentterritorytypeTerritoryZone.smax = (int)TerritoriesZonesStaticMaxNUD.Value;
             currentterritoriesConfig.isDirty = true;
         }
         private void TerritoriesZonesDynamicMinNUD_ValueChanged(object sender, EventArgs e)
@@ -7519,7 +7516,7 @@ namespace DayZeEditor
                 e.Graphics.FillRectangle(brush, region);
             }
             e.Graphics.DrawRectangle(SystemPens.ControlText, region.Left, region.Top, region.Width - 1, region.Height - 1);
-           
+
 
         }
         private void darkButton65_Click(object sender, EventArgs e)
@@ -7833,7 +7830,7 @@ namespace DayZeEditor
             }
             return ASISnode;
         }
-        private TreeNode DiscreetItemSetsTN( Discreteitemset DIS)
+        private TreeNode DiscreetItemSetsTN(Discreteitemset DIS)
         {
             TreeNode DISNode = new TreeNode(DIS.itemType)
             {
@@ -8188,7 +8185,7 @@ namespace DayZeEditor
                 currentspawnGearPresetFiles.characterTypes.Remove(item.ToString());
                 currentspawnGearPresetFiles.isDirty = true;
             }
-            
+
         }
         private void darkButton73_Click(object sender, EventArgs e)
         {
@@ -8238,7 +8235,7 @@ namespace DayZeEditor
                         }
                     }
                 }
-               
+
             }
             else if (result == DialogResult.Cancel)
             {
@@ -8265,7 +8262,7 @@ namespace DayZeEditor
         private void quickBarSlotNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            if(CurrentTreeNode.Parent.Tag is Discreteitemset)
+            if (CurrentTreeNode.Parent.Tag is Discreteitemset)
             {
                 CurrentDiscreteitemset.quickBarSlot = (int)quickBarSlotNUD.Value;
                 currentspawnGearPresetFiles.isDirty = true;
@@ -8279,7 +8276,7 @@ namespace DayZeEditor
         private void spawnWeightNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            if(CurrentTreeNode.Parent.Tag is string && CurrentTreeNode.Parent.Tag.ToString() == "SpawnGearPresetFilesParent")
+            if (CurrentTreeNode.Parent.Tag is string && CurrentTreeNode.Parent.Tag.ToString() == "SpawnGearPresetFilesParent")
             {
                 currentspawnGearPresetFiles.spawnWeight = (int)spawnWeightNUD.Value;
                 currentspawnGearPresetFiles.isDirty = true;
@@ -8332,10 +8329,10 @@ namespace DayZeEditor
         private void ItemAttachmentSlotNameCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            if(CurrentTreeNode.Parent.Tag.ToString() == "attachmentSlotItemSetsParent")
+            if (CurrentTreeNode.Parent.Tag.ToString() == "attachmentSlotItemSetsParent")
             {
                 string Slotname = ItemAttachmentSlotNameCB.GetItemText(ItemAttachmentSlotNameCB.SelectedItem);
-                if(!currentspawnGearPresetFiles.attachmentSlotItemSets.Any(x => x.slotName == Slotname))
+                if (!currentspawnGearPresetFiles.attachmentSlotItemSets.Any(x => x.slotName == Slotname))
                 {
                     CurrentAttachmentslotitemset.slotName = CurrentTreeNode.Text = ItemAttachmentSlotNameCB.GetItemText(ItemAttachmentSlotNameCB.SelectedItem);
                     currentspawnGearPresetFiles.isDirty = true;
@@ -8608,7 +8605,7 @@ namespace DayZeEditor
                     pen.Color = Color.LimeGreen;
                 }
                 getCircle(e.Graphics, pen, center, radius);
-                
+
             }
         }
         private void LoadeMapGroupPosTreeview()
@@ -8618,7 +8615,7 @@ namespace DayZeEditor
             {
                 Tag = "MapGrouPosParent"
             };
-            foreach(mapGroup MGPM in mapgroupposmap.group)
+            foreach (mapGroup MGPM in mapgroupposmap.group)
             {
                 if (!rootNode.Nodes.ContainsKey(MGPM.name))
                 {
@@ -8786,7 +8783,7 @@ namespace DayZeEditor
             pictureBox4.Invalidate();
             if (e.Button == MouseButtons.Right)
             {
-                if(e.Node.Tag is mapGroup)
+                if (e.Node.Tag is mapGroup)
                     mapgroupposcontextMenu.Show(Cursor.Position);
             }
         }

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace DayZeLib
 {
@@ -27,7 +22,7 @@ namespace DayZeLib
         public decimal DamageMultiplier { get; set; }
         public decimal DamageReceivedMultiplier { get; set; }
         public BindingList<string> ClassNames { get; set; }
-	    public decimal SniperProneDistanceThreshold { get; set; }
+        public decimal SniperProneDistanceThreshold { get; set; }
 
         public decimal RespawnTime { get; set; }
         public decimal DespawnTime { get; set; }

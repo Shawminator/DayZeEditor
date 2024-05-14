@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeLib
@@ -18,7 +16,7 @@ namespace DayZeLib
         public const int CurrentVersion = 12;
         public BindingList<Categories> CatList { get; set; }
         public bool SortedbyDisplayName { get; private set; }
-        public string MarketCatsPath {get;set;}
+        public string MarketCatsPath { get; set; }
         public List<Categories> Markedfordelete { get; set; }
 
         public MarketCategories()
@@ -45,12 +43,12 @@ namespace DayZeLib
                     bool savefile = false;
                     Console.WriteLine("serializing " + file.Name);
                     Categories cat = JsonSerializer.Deserialize<Categories>(File.ReadAllText(file.FullName));
-                    if(cat.Icon == null)
+                    if (cat.Icon == null)
                     {
                         cat.Icon = "Deliver";
                         savefile = true;
                     }
-                    if(cat.Color == null)
+                    if (cat.Color == null)
                     {
                         cat.Color = "FBFCFEFF";
                         savefile = true;
@@ -62,7 +60,7 @@ namespace DayZeLib
                     }
                     foreach (marketItem item in cat.Items)
                     {
-                        if(item.ClassName != item.ClassName.ToLower())
+                        if (item.ClassName != item.ClassName.ToLower())
                         {
                             item.ClassName = item.ClassName.ToLower();
                             savefile = true;
@@ -107,14 +105,14 @@ namespace DayZeLib
                         File.WriteAllText(MarketCatsPath + "\\" + cat.Filename + ".json", jsonString);
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("there is an error in the following file\n" + file.FullName + Environment.NewLine + ex.InnerException.Message); 
+                    MessageBox.Show("there is an error in the following file\n" + file.FullName + Environment.NewLine + ex.InnerException.Message);
 
                 }
 
             }
-           
+
         }
         public marketItem getitemfromcategory(string Itemname)
         {
@@ -133,8 +131,10 @@ namespace DayZeLib
         }
         public Categories GetCat(marketItem item)
         {
-            if(item == null) { 
-                return null; }
+            if (item == null)
+            {
+                return null;
+            }
             foreach (Categories cat in CatList)
             {
                 if (cat.Items.Any(x => x.ClassName == item.ClassName))
@@ -147,7 +147,7 @@ namespace DayZeLib
             if (Markedfordelete == null) Markedfordelete = new List<Categories>();
             Markedfordelete.Add(catfordelete);
             CatList.Remove(catfordelete);
-            
+
         }
         public void CreateNewCat(string catName)
         {
@@ -169,21 +169,21 @@ namespace DayZeLib
         public List<TraderListItem> getallCats()
         {
             List<TraderListItem> returnlist = new List<TraderListItem>();
-            foreach(Categories cat in CatList)
+            foreach (Categories cat in CatList)
             {
                 TraderListItem tli = new TraderListItem();
                 tli.Classname = cat.DisplayName;
                 returnlist.Add(tli);
-               
+
             }
             return returnlist;
         }
         public List<marketItem> searchforitems(string searchterm, bool extact = false)
         {
             List<marketItem> items = new List<marketItem>();
-            foreach(Categories cat in CatList)
+            foreach (Categories cat in CatList)
             {
-                if(extact)
+                if (extact)
                     items.AddRange(cat.Items.Where(x => x.ClassName.Equals(searchterm)));
                 else
                     items.AddRange(cat.Items.Where(x => x.ClassName.Contains(searchterm)));
@@ -214,9 +214,9 @@ namespace DayZeLib
         {
             foreach (Categories cat in CatList)
             {
-                foreach(marketItem mitem in cat.Items)
+                foreach (marketItem mitem in cat.Items)
                 {
-                    if(mitem.Variants.Count > 0)
+                    if (mitem.Variants.Count > 0)
                     {
                         if (mitem.Variants.Contains(item))
                             return true;
@@ -237,7 +237,7 @@ namespace DayZeLib
             {
                 if (cat.Items.Any(x => x.ClassName == className.ToLower()))
                     return Path.GetFileNameWithoutExtension(cat.Filename);
-                if(cat.Items.Any(x => x.Variants.Contains(className.ToLower())))
+                if (cat.Items.Any(x => x.Variants.Contains(className.ToLower())))
                     return Path.GetFileNameWithoutExtension(cat.Filename);
             }
 
@@ -266,7 +266,7 @@ namespace DayZeLib
         }
         public void SortItemlistbyitemName(bool AtoZ)
         {
-            foreach(Categories t in CatList)
+            foreach (Categories t in CatList)
             {
                 t.SortbyitemName(AtoZ);
             }
@@ -343,7 +343,7 @@ namespace DayZeLib
         public List<string> getallItemsasString()
         {
             List<string> items = new List<string>();
-            foreach(marketItem mi in Items)
+            foreach (marketItem mi in Items)
             {
                 items.Add(mi.ClassName);
             }
@@ -355,7 +355,7 @@ namespace DayZeLib
             string Fullfilename = marketpath + "\\" + Filename + ".json";
             if (File.Exists(Fullfilename))
             {
-                if(!Directory.Exists(marketpath + "\\Backup\\" + SaveTime))
+                if (!Directory.Exists(marketpath + "\\Backup\\" + SaveTime))
                     Directory.CreateDirectory(marketpath + "\\Backup\\" + SaveTime);
                 File.Copy(Fullfilename, marketpath + "\\Backup\\" + SaveTime + "\\" + Filename + ".bak");
                 File.Delete(Fullfilename);
@@ -374,7 +374,7 @@ namespace DayZeLib
                 var sortedListInstance = new BindingList<marketItem>(Items.OrderByDescending(x => x.ClassName).ToList());
                 Items = sortedListInstance;
             }
-            
+
         }
 
         public void SortByprice(bool mintoMax)

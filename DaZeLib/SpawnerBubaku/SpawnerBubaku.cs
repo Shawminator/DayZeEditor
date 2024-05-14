@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 
 namespace DayZeLib
 {
@@ -22,19 +16,19 @@ namespace DayZeLib
         public BindingList<Bubaklocation> BubakLocations { get; set; }
 
         public int getLogLevel()
-        { 
-            return loglevel; 
+        {
+            return loglevel;
         }
         public void SetLogLevel(int _level)
-        { 
-            loglevel = _level; 
+        {
+            loglevel = _level;
             isDirty = true;
         }
         public void AddNewLocation()
         {
             Bubaklocation newlocation = new Bubaklocation();
             BubakLocations.Add(newlocation);
-            isDirty = true; 
+            isDirty = true;
         }
         public void AddNewLocation(DZE Importfile)
         {
@@ -43,7 +37,7 @@ namespace DayZeLib
             BubakLocations.Add(newlocation);
             isDirty = true;
         }
-        public void removeLocation(Bubaklocation location) 
+        public void removeLocation(Bubaklocation location)
         {
             BubakLocations.Remove(location);
             isDirty = true;
@@ -90,13 +84,13 @@ namespace DayZeLib
         public BindingList<string> bubakinventory { get; set; }
 
         [JsonIgnore]
-        public bool needtosetdirty {get;set;}
-        [JsonIgnore] 
+        public bool needtosetdirty { get; set; }
+        [JsonIgnore]
         public Vec3PandR _triggerpos { get; set; }
         [JsonIgnore]
         public BindingList<Vec3PandR> _spawnerpos { get; set; }
 
-        public Bubaklocation() 
+        public Bubaklocation()
         {
             name = "New Location";
             workinghours = "0-24";
@@ -106,20 +100,20 @@ namespace DayZeLib
             triggerradius = (decimal)0.0;
             triggercylradius = (decimal)0.0;
             triggercylheight = (decimal)0.0;
-            notification =  "";
+            notification = "";
             notificationtime = 2;
             triggerdelay = 3600;
             spawnerpos = new BindingList<string>();
             spawnradius = (decimal)0.0;
-            bubaknum= 4;
+            bubaknum = 4;
             onlyfilluptobubaknum = 0;
             itemrandomdmg = 0;
             bubaci = new BindingList<string>();
             bubakinventory = new BindingList<string>();
         }
         public string GetName()
-        { 
-            return name; 
+        {
+            return name;
         }
         public void Setname(string _name)
         {
@@ -128,7 +122,7 @@ namespace DayZeLib
         public int[] getworkinghours()
         {
             string[] fasplit = workinghours.Split('-');
-            return new int[] { Convert.ToInt32(fasplit[0]), Convert.ToInt32(fasplit[1])};
+            return new int[] { Convert.ToInt32(fasplit[0]), Convert.ToInt32(fasplit[1]) };
         }
         public void setworkinghours(int[] _workinghours)
         {
@@ -163,7 +157,7 @@ namespace DayZeLib
             if (triggermins == "")
             {
                 var result = MessageBox.Show("TriggerMins is blank, do you want me to add default value?", "Blank Trigger Mins", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if(result == DialogResult.Yes)
+                if (result == DialogResult.Yes)
                 {
                     triggermins = "-1 -0.2 -1";
                     needtosetdirty = true;
@@ -253,7 +247,7 @@ namespace DayZeLib
 
         public BukakuPosRot()
         {
-            Position = new decimal[] { 0, 0, 0};
+            Position = new decimal[] { 0, 0, 0 };
             RotationSpecifioed = false;
             Rotation = new decimal[] { 0, 0, 0 };
         }

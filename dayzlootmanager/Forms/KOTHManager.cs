@@ -3,15 +3,12 @@ using DayZeLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeEditor
@@ -85,7 +82,7 @@ namespace DayZeEditor
                     break;
                 case 1:
                     toolStripButton1.Checked = true;
-                    if(HillsLB.Items.Count <= 0)
+                    if (HillsLB.Items.Count <= 0)
                     {
                         tabControl2.Visible = false;
                     }
@@ -166,7 +163,7 @@ namespace DayZeEditor
                 MDCKOTHConfig.isDirty = false;
             }
             MDCKOTHConfig.FullFilename = KOTHConfigPath;
-            if(!File.Exists(KOTHLootPath))
+            if (!File.Exists(KOTHLootPath))
             {
                 MDCKOTHLoot = new MDCKOTHLoot();
             }
@@ -233,7 +230,7 @@ namespace DayZeEditor
 
             useraction = true;
         }
-        
+
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\KOTH");
@@ -300,7 +297,7 @@ namespace DayZeEditor
             {
                 needtosave = true;
             }
-            if(MDCKOTHLoot.isDirty)
+            if (MDCKOTHLoot.isDirty)
             {
                 needtosave = true;
             }
@@ -481,7 +478,7 @@ namespace DayZeEditor
         void doubleClickTimer_Tick(object sender, EventArgs e)
         {
             milliseconds += 100;
-             // The timer has reached the double click time limit.
+            // The timer has reached the double click time limit.
             if (milliseconds >= SystemInformation.DoubleClickTime)
             {
                 doubleClickTimer.Stop();
@@ -1098,7 +1095,7 @@ namespace DayZeEditor
                             MDCKOTHConfig.zones.Add(newzone);
                         }
                     }
-                    
+
                     MDCKOTHConfig.isDirty = true;
                     pictureBox2.Invalidate();
                     if (MDCKOTHConfig.zones.Count == 1)
@@ -1125,7 +1122,7 @@ namespace DayZeEditor
             foreach (var item in ZoneAvailabeLootSetsLB.SelectedItems)
             {
                 KOTHLootset kls = item as KOTHLootset;
-                if(!currentKOTHZoneAreaLocation.lootSets.Contains(kls.name))
+                if (!currentKOTHZoneAreaLocation.lootSets.Contains(kls.name))
                     currentKOTHZoneAreaLocation.lootSets.Add(kls.name);
             }
             MDCKOTHConfig.isDirty = true;
@@ -1167,7 +1164,7 @@ namespace DayZeEditor
         private KOTHObject currentKOTHillZOneObjects;
         private void ZoneObjectsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ZoneObjectsLB.SelectedItems.Count< 1) return;
+            if (ZoneObjectsLB.SelectedItems.Count < 1) return;
             currentKOTHillZOneObjects = ZoneObjectsLB.SelectedItem as KOTHObject;
             useraction = false;
             ZoneObjectclassnameTB.Text = currentKOTHillZOneObjects.classname;
@@ -1206,7 +1203,7 @@ namespace DayZeEditor
                 else
                     ZoneObjectsLB.SelectedIndex = index - 1;
             }
-            if (currentKOTHZoneAreaLocation.objects.Count ==0)
+            if (currentKOTHZoneAreaLocation.objects.Count == 0)
             {
                 useraction = false;
                 currentKOTHillZOneObjects = null;
@@ -1308,10 +1305,10 @@ namespace DayZeEditor
                         KOTHObject newobject = new KOTHObject()
                         {
                             classname = eo.Type,
-                            position = new decimal[] { (decimal)eo.Position[0], (decimal)eo.Position[1], (decimal)eo.Position[2] } ,
+                            position = new decimal[] { (decimal)eo.Position[0], (decimal)eo.Position[1], (decimal)eo.Position[2] },
                             orientation = new decimal[] { (decimal)eo.Orientation[0], (decimal)eo.Orientation[1], (decimal)eo.Orientation[2] },
                             absolutePlacement = 1,
-                            alignToTerrain  = 0,
+                            alignToTerrain = 0,
                             placeOnSurface = 0
                         };
                         currentKOTHZoneAreaLocation.objects.Add(newobject);
@@ -1325,8 +1322,8 @@ namespace DayZeEditor
             KOTHObject newobject = new KOTHObject()
             {
                 classname = "New Object",
-                position = new decimal[] { 0,0,0 },
-                orientation = new decimal[] {0,0,0 },
+                position = new decimal[] { 0, 0, 0 },
+                orientation = new decimal[] { 0, 0, 0 },
                 absolutePlacement = 0,
                 alignToTerrain = 0,
                 placeOnSurface = 0
@@ -1499,7 +1496,7 @@ namespace DayZeEditor
             {
                 removelootsets.Add(item as KOTHLootset);
             }
-            foreach(KOTHLootset ls in removelootsets)
+            foreach (KOTHLootset ls in removelootsets)
             {
                 MDCKOTHLoot.lootSets.Remove(ls);
                 MDCKOTHLoot.isDirty = true;
@@ -1549,7 +1546,7 @@ namespace DayZeEditor
                 LootSetNameGB.Visible = true;
                 darkButton1.Visible = true;
                 LootitemNameTB.Text = currentLootitem.name;
-                if(e.Button == MouseButtons.Right)
+                if (e.Button == MouseButtons.Right)
                 {
                     if (e.Node.Parent.Tag is KOTHLootset)
                         removeLootItemToolStripMenuItem.Visible = true;
@@ -1560,7 +1557,7 @@ namespace DayZeEditor
                         else if (e.Node.Parent.Tag.ToString() == "Attachments")
                             removeAttachmentToolStripMenuItem.Visible = true;
                     }
-                        
+
                     contextMenuStrip1.Show(Cursor.Position);
                 }
             }
@@ -1574,7 +1571,7 @@ namespace DayZeEditor
                         LootItemQuantityNUD.Value = currentLootitem.quantity;
                         break;
                     case "Attachments":
-                        if(e.Button == MouseButtons.Right)
+                        if (e.Button == MouseButtons.Right)
                         {
                             currentLootitem = e.Node.Parent.Tag as KOTHItem;
                             addAttchmentToolStripMenuItem.Visible = true;
@@ -1583,7 +1580,7 @@ namespace DayZeEditor
                         }
                         break;
                     case "Cargo":
-                        if(e.Button == MouseButtons.Right)
+                        if (e.Button == MouseButtons.Right)
                         {
                             currentLootitem = e.Node.Parent.Tag as KOTHItem;
                             addCargoToolStripMenuItem.Visible = true;

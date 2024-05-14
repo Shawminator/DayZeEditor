@@ -1,13 +1,7 @@
 ﻿using DarkUI.Forms;
 using DayZeLib;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeEditor
@@ -15,7 +9,7 @@ namespace DayZeEditor
     public partial class NewTraderMapForm : DarkForm
     {
         public TraderZones Zones { get; set; }
-        public TraderModelMapping TraderMaps  { get; set; }
+        public TraderModelMapping TraderMaps { get; set; }
         public TradersList Traders { get; set; }
 
         public Zones SelectedZone { get; set; }
@@ -81,7 +75,7 @@ namespace DayZeEditor
         private void darkButton26_Click(object sender, EventArgs e)
         {
             TraderNPCs newtrader = new TraderNPCs();
-            if(newtrader.ShowDialog() == DialogResult.OK)
+            if (newtrader.ShowDialog() == DialogResult.OK)
             {
                 textBox15.Text = newtrader.selectedNPC;
             }

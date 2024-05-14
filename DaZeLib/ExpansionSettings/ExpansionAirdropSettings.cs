@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace DayZeLib
 {
     public class ExpansionAirdropSettings
     {
-        const int CurrentVersion = 5; 
+        const int CurrentVersion = 5;
 
         public int m_Version { get; set; }
         public int ServerMarkerOnDropLocation { get; set; }
@@ -508,7 +503,7 @@ namespace DayZeLib
         public BindingList<ExpansionLootVariant> Attachments { get; set; }
         public decimal Chance { get; set; }
 
-        public ExpansionLootVariant(string _name, BindingList<ExpansionLootVariant> _Attachments = null , decimal _Chance = 1)
+        public ExpansionLootVariant(string _name, BindingList<ExpansionLootVariant> _Attachments = null, decimal _Chance = 1)
         {
             Name = _name;
             if (_Attachments != null)

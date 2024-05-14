@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace DayZeLib
 {
@@ -46,7 +41,7 @@ namespace DayZeLib
             CircleZones = new BindingList<ExpansionSafeZoneCircle>();
             PolygonZones = new BindingList<ExpansionSafeZonePolygon>();
             CylinderZones = new BindingList<ExpansionSafeZoneCylinder>();
-            ForceSZCleanup_ExcludedItems = new BindingList<string>() { "CarCoverBase", "ExpansionVehicleCover"};
+            ForceSZCleanup_ExcludedItems = new BindingList<string>() { "CarCoverBase", "ExpansionVehicleCover" };
             DefaultChernarusSafeZones();
         }
         void DefaultChernarusSafeZones()
@@ -118,7 +113,7 @@ namespace DayZeLib
             foreach (ExpansionSafeZonePolygon PZ in PolygonZones)
             {
                 PZ.Polygonpoints = new BindingList<Polygonpoints>();
-                for(int i = 0; i < PZ.Positions.Count; i++ )
+                for (int i = 0; i < PZ.Positions.Count; i++)
                 {
                     Polygonpoints pgp = new Polygonpoints();
                     pgp.name = "point " + i.ToString();
@@ -132,7 +127,7 @@ namespace DayZeLib
             foreach (ExpansionSafeZonePolygon PZ in PolygonZones)
             {
                 PZ.Positions = new BindingList<float[]>();
-                foreach(Polygonpoints PGP in PZ.Polygonpoints)
+                foreach (Polygonpoints PGP in PZ.Polygonpoints)
                 {
                     PZ.Positions.Add(PGP.points);
                 }
@@ -150,7 +145,7 @@ namespace DayZeLib
         }
         public void AddNewCircleZones()
         {
-            CircleZones.Add(new ExpansionSafeZoneCircle() {Center = new float[] {0,0,0 }, Radius = 100 });
+            CircleZones.Add(new ExpansionSafeZoneCircle() { Center = new float[] { 0, 0, 0 }, Radius = 100 });
             SetCircleNames();
             isDirty = true;
         }

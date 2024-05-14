@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using DarkUI.Forms;
+using DayZeLib;
+using System;
+using System.Globalization;
 using System.IO;
+using System.Linq;
+using System.Net;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Windows.Forms;
-using System.Xml;
-using System.Xml.Linq;
-using DarkUI.Forms;
-using System.Runtime.InteropServices;
-using System.Threading;
-using System.Globalization;
-using DayZeLib;
-using System.Net;
-using System.IO.Compression;
-using System.Text.Encodings.Web;
-using System.Linq;
 
 namespace DayZeEditor
 {
@@ -47,7 +41,7 @@ namespace DayZeEditor
         {
             base.OnLoad(e);
             OnLoadCompleted(EventArgs.Empty);
-            if((Projects.ActiveProject != null && Projects.ActiveProject != "") && Projects.getActiveProject().haswarnings)
+            if ((Projects.ActiveProject != null && Projects.ActiveProject != "") && Projects.getActiveProject().haswarnings)
             {
                 MessageBox.Show("Warnings detected. please see console.....");
             }
@@ -55,7 +49,7 @@ namespace DayZeEditor
 
         private void CheckChangeLog()
         {
-            if(Projects.ShowChangeLog)
+            if (Projects.ShowChangeLog)
             {
                 var form = Application.OpenForms["SplashForm"];
                 if (form != null)
@@ -106,7 +100,7 @@ namespace DayZeEditor
                 label1,
                 CloseButton,
                 MinimiseButton
-                
+
             );
             SlidePanel.Width = 30;
             hidden = true;
@@ -119,7 +113,7 @@ namespace DayZeEditor
             CultureInfo.DefaultThreadCurrentCulture = culture;
             CultureInfo.DefaultThreadCurrentUICulture = culture;
             TitleLabel.Text = "DayZeEditor " + VersionNumber + " by Shawminator ";
-            if(CheckForUpdate())
+            if (CheckForUpdate())
             {
                 Application.Exit();
                 return;
@@ -189,7 +183,7 @@ namespace DayZeEditor
             }
             else
             {
-                Projects = new ProjectList{};
+                Projects = new ProjectList { };
                 Projects.SaveProject(true);
                 TypeManButton.Visible = false;
                 TraderManButton.Visible = false;
@@ -268,7 +262,7 @@ namespace DayZeEditor
         public GitHub Build()
         {
             var getData = GetGithubData();
-            if(getData.StartsWith("Offline"))
+            if (getData.StartsWith("Offline"))
             {
                 return null;
             }
@@ -305,7 +299,7 @@ namespace DayZeEditor
         }
         private void Slide_Click(object sender, EventArgs e)
         {
-            if(sender is PictureBox)
+            if (sender is PictureBox)
             {
                 PictureBox pb = sender as PictureBox;
                 if (pb.Name == "HidePBox")
@@ -442,7 +436,7 @@ namespace DayZeEditor
                     File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KOTH\\Loot.json"))
                     KOTHManagerButton.Visible = true;
                 else
-                KOTHManagerButton.Visible = false;
+                    KOTHManagerButton.Visible = false;
 
                 if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KosZone\\KZConfig\\KosZoneConfig.json") &&
                     File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\KosZone\\KZConfig\\PurgeConfigV1.json"))
@@ -781,7 +775,7 @@ namespace DayZeEditor
                 label1.Text = "Expansion Quests manager";
             }
             timer1.Start();
-            
+
         }
         private void Lootchest_Click(object sender, EventArgs e)
         {

@@ -4,9 +4,6 @@ using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeLib
@@ -14,8 +11,8 @@ namespace DayZeLib
     public class Vec3PandR
     {
         public bool rotspecified { get; set; }
-        public Vec3 Position { get;set; }
-        public Vec3 Rotation { get;set; }
+        public Vec3 Position { get; set; }
+        public Vec3 Rotation { get; set; }
 
         public Vec3PandR() { }
         public Vec3PandR(float[] position, float[] rotaion, bool _rotspecified)
@@ -25,7 +22,7 @@ namespace DayZeLib
             if (rotspecified)
                 Rotation = new Vec3(rotaion);
             else
-                Rotation = new Vec3(0,0,0);
+                Rotation = new Vec3(0, 0, 0);
         }
         public Vec3PandR(string Stuff)
         {
@@ -73,7 +70,7 @@ namespace DayZeLib
         }
         public override string ToString()
         {
-            if(rotspecified)
+            if (rotspecified)
             {
                 return Position.X + " " + Position.Y + " " + Position.Z + "|" + Rotation.X + " " + Rotation.Y + " " + Rotation.Z; ;
             }
@@ -120,7 +117,7 @@ namespace DayZeLib
 
         public override string ToString()
         {
-            return X.ToString() + ","+ Y.ToString() + "," + Z.ToString();
+            return X.ToString() + "," + Y.ToString() + "," + Z.ToString();
         }
 
         public float[] getfloatarray()

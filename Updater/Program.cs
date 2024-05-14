@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Updater
@@ -34,15 +30,8 @@ namespace Updater
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
-                
+
             }
-        }
-        public static string AddQuotesIfRequired(string path)
-        {
-            return !string.IsNullOrWhiteSpace(path) ?
-                path.Contains(" ") && (!path.StartsWith("\"") && !path.EndsWith("\"")) ?
-                    "\"" + path + "\"" : path :
-                    string.Empty;
         }
         public static void ExtractToDirectory(ZipArchive archive, string destinationDirectoryName, bool overwrite)
         {

@@ -3,15 +3,12 @@ using DayZeLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeEditor
@@ -154,7 +151,7 @@ namespace DayZeEditor
             CIresultTB.Text = CurrentCraftItem.Result;
             CIresultCountNUD.Value = CurrentCraftItem.ResultCount;
             CIRecipetypeCB.SelectedIndex = CIRecipetypeCB.FindStringExact(CurrentCraftItem.CraftType);
-            if(CurrentCraftItem.RecipeCategory == "")
+            if (CurrentCraftItem.RecipeCategory == "")
                 CIRecipeCategoryCB.SelectedIndex = CIRecipeCategoryCB.FindStringExact("None");
             else
                 CIRecipeCategoryCB.SelectedIndex = CIRecipeCategoryCB.FindStringExact(CurrentCraftItem.RecipeCategory);
@@ -343,7 +340,7 @@ namespace DayZeEditor
             }
             else
             {
-                if(CurrentCraftItem.AttachmentsNeed.Contains("BPGrinder"))
+                if (CurrentCraftItem.AttachmentsNeed.Contains("BPGrinder"))
                     CurrentCraftItem.AttachmentsNeed.Remove("BPGrinder");
             }
             AdvancedWorkBenchConfig.isDirty = true;

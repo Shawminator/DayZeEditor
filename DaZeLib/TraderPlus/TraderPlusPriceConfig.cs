@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeLib
@@ -117,7 +115,7 @@ namespace DayZeLib
 
                 //product += item.TradeQuantity.ToString() + ",";
                 product += item.BuyPrice.ToString() + ",";
-                if(item.Sellprice > 0 && item.Sellprice < 1)
+                if (item.Sellprice > 0 && item.Sellprice < 1)
                     product += item.Sellprice.ToString("F2");
                 else
                     product += item.Sellprice.ToString("F0");
@@ -155,7 +153,7 @@ namespace DayZeLib
                     }
                     itemProducts.Add(itemProduct);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine(CategoryName + ex.Message + "\n" + item + "\nAll Values will be set to defualt values,\n Please fix asap");
                     MessageBox.Show(ex.Message + "\n" + item + "\nAll Values will be set to defualt values,\n Please fix asap");

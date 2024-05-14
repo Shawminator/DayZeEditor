@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace DayZeLib
 {
@@ -16,10 +11,10 @@ namespace DayZeLib
         [JsonIgnore]
         public const string Filename = "Helicrash.json";
         [JsonIgnore]
-        public bool isDirty 
+        public bool isDirty
         {
             get;
-            set; 
+            set;
         }
         [JsonIgnore]
         public string FullFilename { get; set; }
@@ -41,7 +36,7 @@ namespace DayZeLib
 
         public bool CheckVersion()
         {
-            if(ConfigVersion != CONFIGVERSION)
+            if (ConfigVersion != CONFIGVERSION)
             {
                 return false;
             }

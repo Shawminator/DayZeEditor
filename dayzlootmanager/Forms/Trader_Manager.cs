@@ -1,8 +1,8 @@
 ﻿using DarkUI.Forms;
+using DayZeLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -11,10 +11,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Text.Unicode;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DayZeLib;
 
 namespace DayZeEditor
 {
@@ -227,7 +224,7 @@ namespace DayZeEditor
         {
             string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Enter ID of New Admin ", "Admins", "");
             if (UserAnswer == "") return;
-            if(!drJonesAdmisList.AddnewAdmin(UserAnswer))
+            if (!drJonesAdmisList.AddnewAdmin(UserAnswer))
                 MessageBox.Show(UserAnswer + " is already in the admin list....");
         }
         private void darkButton14_Click(object sender, EventArgs e)
@@ -316,7 +313,7 @@ namespace DayZeEditor
             form.vanillatypes = vanillatypes;
             form.ModTypes = ModTypes;
             form.currentproject = currentproject;
-             DialogResult result = form.ShowDialog();
+            DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
                 List<string> addedtypes = form.addedtypes.ToList();
@@ -403,7 +400,7 @@ namespace DayZeEditor
         private void listBox10_SelectedIndexChanged(object sender, EventArgs e)
         {
             CurrentCurrency = listBox10.SelectedItem as DRJonesCurrency;
-            if(CurrentCurrency != null)
+            if (CurrentCurrency != null)
                 numericUpDown1.Value = CurrentCurrency.m_Trader_CurrencyValues;
 
         }
@@ -455,7 +452,7 @@ namespace DayZeEditor
                 contexMenu.ForeColor = SystemColors.Control;
                 contexMenu.ShowCheckMargin = false;
                 contexMenu.ShowImageMargin = false;
-                
+
 
                 treeView1.SelectedNode = treeView1.GetNodeAt(e.X, e.Y);
                 if (e.Node.Tag is TraderItems)
@@ -502,7 +499,7 @@ namespace DayZeEditor
                     groupBox13.Visible = false;
                 }
             }
-            if(currentnode.Tag is TraderItems)
+            if (currentnode.Tag is TraderItems)
             {
                 currentCat = currentnode.Parent.Tag as TraderCats;
             }
@@ -621,7 +618,7 @@ namespace DayZeEditor
             {
                 string removeitem = listBox8.GetItemText(listBox8.SelectedItem);
 
-               Console.WriteLine(removeitem + " Trader Removed....\n\nThe Following Categories and Items Were Removed:-");
+                Console.WriteLine(removeitem + " Trader Removed....\n\nThe Following Categories and Items Were Removed:-");
                 foreach (TraderCats item in CurrentTrader.cats)
                 {
                     Console.WriteLine("\t" + item.CatName + " Category Removed....");
@@ -665,11 +662,12 @@ namespace DayZeEditor
             foreach (DRJonesCurrency drjc in drjonestraderconfig.CurrencyConfig.currencyList)
             {
                 marketItem newitem = new marketItem()
-                { 
+                {
                     ClassName = drjc.m_Trader_CurrencyClassnames,
                     MaxPriceThreshold = drjc.m_Trader_CurrencyValues,
                     MinPriceThreshold = drjc.m_Trader_CurrencyValues,
-                    MaxStockThreshold = 1, MinStockThreshold = 1 
+                    MaxStockThreshold = 1,
+                    MinStockThreshold = 1
                 };
                 checklist.Add(newitem);
                 newccat.Items.Add(newitem);
@@ -697,7 +695,7 @@ namespace DayZeEditor
                     //create new item with default stock values of 1/1
                     marketItem newitem = new marketItem();
                     newitem.ClassName = item.m_Trader_ItemsClassnames.ToLower();
-                    if(drjonesvehicleparts.Vehicles.Any(x => x.ClasssName.ToLower() == newitem.ClassName))
+                    if (drjonesvehicleparts.Vehicles.Any(x => x.ClasssName.ToLower() == newitem.ClassName))
                     {
                         VehicleParts v = drjonesvehicleparts.Vehicles.FirstOrDefault(x => x.ClasssName.ToLower() == newitem.ClassName);
                         foreach (string Part in v.Parts)
@@ -710,7 +708,7 @@ namespace DayZeEditor
                     else
                         newitem.MaxPriceThreshold = item.m_Trader_ItemsBuyValue;
                     int n;
-                    if(int.TryParse(item.m_Trader_ItemsQuantity, out n))
+                    if (int.TryParse(item.m_Trader_ItemsQuantity, out n))
                     {
                         newitem.MaxPriceThreshold = newitem.MaxPriceThreshold / n;
                     }
@@ -730,14 +728,14 @@ namespace DayZeEditor
                         sb.AppendLine(newitem.ClassName + " is allready in " + MarketCats.GetCatNameFromItemName(newitem.ClassName) + "\n will not be added to " + newcat.DisplayName + "\n");
                     }
                 }
-                
+
                 //if (newcat.Items.Count > 0)
                 MarketCats.CatList.Add(newcat);
             }
             if (sb.Length != 0)
                 Console.Write(sb.ToString());
 
-            
+
 
 
             Traders exchangetrader = new Traders("Exchange");
@@ -748,7 +746,7 @@ namespace DayZeEditor
                 exchangetrader.Currencies.Add(drjc.m_Trader_CurrencyClassnames);
             }
             Categories mcat = MarketCats.GetCatFromDisplayName("EXCHANGE");
-            foreach(marketItem mitem in mcat.Items)
+            foreach (marketItem mitem in mcat.Items)
             {
                 TradersItem ti = new TradersItem();
                 ti.ClassName = mitem.ClassName.ToLower();
@@ -760,7 +758,7 @@ namespace DayZeEditor
 
 
 
-            for (int i = 0; i < drjonestraderconfig.drjonesfullList.Count; i++ )
+            for (int i = 0; i < drjonestraderconfig.drjonesfullList.Count; i++)
             {
                 DrjonesFullTraderconfig trader = drjonestraderconfig.drjonesfullList[i];
                 Traders newtrader = new Traders(trader.Tradername.Replace(" ", "_").ToUpper());
@@ -771,7 +769,7 @@ namespace DayZeEditor
                 }
                 foreach (TraderCats tcats in trader.cats)
                 {
-                    foreach(TraderItems item in tcats.ItemList)
+                    foreach (TraderItems item in tcats.ItemList)
                     {
                         marketItem mitem = MarketCats.getitemfromcategory(item.m_Trader_ItemsClassnames.ToLower());
                         TradersItem ti = new TradersItem();
@@ -783,7 +781,7 @@ namespace DayZeEditor
                         else
                             ti.buysell = canBuyCansell.CanBuyAndsell;
 
-                        if(mitem.SpawnAttachments.Count != 0)
+                        if (mitem.SpawnAttachments.Count != 0)
                         {
                             ti.HasAttachemnts = true;
                         }
@@ -808,7 +806,7 @@ namespace DayZeEditor
 
                 DrJonesObject drjonesobject = drjonesobjects.DrJonesobjectslist[i];
                 Tradermap newmap = new Tradermap();
-                if(drjonesobject.DrJonesNPCClassname.Contains("Survivor"))
+                if (drjonesobject.DrJonesNPCClassname.Contains("Survivor"))
                 {
                     newmap.NPCName = "ExpansionTrader" + drjonesobject.DrJonesNPCClassname.Split('_')[1];
                 }
@@ -824,7 +822,7 @@ namespace DayZeEditor
             }
 
             string ExpansionPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\drJonestoExpansionMarket";
-            if(!Directory.Exists(ExpansionPath))
+            if (!Directory.Exists(ExpansionPath))
             {
                 Directory.CreateDirectory(ExpansionPath);
             }
@@ -896,7 +894,7 @@ namespace DayZeEditor
                 foreach (DrjonesItems item in dritems)
                 {
                     if (list.Any(x => x.Split(',')[0] == item.m_Trader_ItemsClassnames.ToLower())) { continue; }
-                    if(item.m_Trader_ItemsBuyValue == -1)
+                    if (item.m_Trader_ItemsBuyValue == -1)
                         list.Add(item.m_Trader_ItemsClassnames.ToLower() + "," + item.m_Trader_ItemsSellValue.ToString());
                     else
                         list.Add(item.m_Trader_ItemsClassnames.ToLower() + "," + item.m_Trader_ItemsBuyValue.ToString());

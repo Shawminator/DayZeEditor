@@ -1,5 +1,6 @@
 ﻿using Cyotek.Windows.Forms;
 using DarkUI.Forms;
+using DayZeLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,9 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DayZeLib;
 
 namespace DayZeEditor
 {
@@ -184,7 +183,7 @@ namespace DayZeEditor
                 }
             }
             NoZoneTraders = new BindingList<Tradermap>();
-            foreach(Tradermap tm in tradermaps.maps)
+            foreach (Tradermap tm in tradermaps.maps)
             {
                 if (!tm.IsInAZone)
                     NoZoneTraders.Add(tm);
@@ -212,7 +211,7 @@ namespace DayZeEditor
             trackBar4.Value = 1;
             SetSpawnscale();
 
-            if(needtosave)
+            if (needtosave)
             {
                 saveMarketfiles();
             }
@@ -349,7 +348,7 @@ namespace DayZeEditor
                 }
                 cats.isDirty = true;
             }
-           // setzoneprices();
+            // setzoneprices();
         }
         private void setPricesForItemWithZeroToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -639,7 +638,7 @@ namespace DayZeEditor
                 File.WriteAllText(CatPath + "\\" + cat.Filename + ".json", jsonString);
                 midifiedfiles.Add(Path.GetFileName(cat.Filename));
             }
-            
+
             string message = "The Following Files were saved....\n";
             int i = 0;
             foreach (string l in midifiedfiles)
@@ -656,7 +655,7 @@ namespace DayZeEditor
                 }
 
             }
-            
+
             if (MarketCats.Markedfordelete != null)
             {
                 message += "\nThe following Market Category files were Removed\n";
@@ -713,13 +712,13 @@ namespace DayZeEditor
                 marketsettings.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(marketsettings, options);
-                if (currentproject.Createbackups && SaveTime != null &&  File.Exists(marketsettings.Filename))
+                if (currentproject.Createbackups && SaveTime != null && File.Exists(marketsettings.Filename))
                 {
                     Directory.CreateDirectory(Path.GetDirectoryName(MarketSettingsPath) + "\\Backup\\" + SaveTime);
                     File.Copy(marketsettings.Filename, Path.GetDirectoryName(MarketSettingsPath) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(marketsettings.Filename) + ".bak", true);
                 }
                 File.WriteAllText(marketsettings.Filename, jsonString);
-                if(midifiedfiles != null)
+                if (midifiedfiles != null)
                     midifiedfiles.Add(Path.GetFileName(marketsettings.Filename));
             }
         }
@@ -869,7 +868,7 @@ namespace DayZeEditor
             dataGridView1.DataSource = source;
             dataGridView1.Columns[0].ReadOnly = true;
             //dataGridView1.Columns[2].ReadOnly = true;
-           // dataGridView1.Columns[3].ReadOnly = true;
+            // dataGridView1.Columns[3].ReadOnly = true;
             //dataGridView1.Columns[4].ReadOnly = true;
 
             darkLabel56.Text = "Zone Stock Count:- " + currentZone.StockItems.Count().ToString();
@@ -888,7 +887,7 @@ namespace DayZeEditor
             cpick.Color = ColorTranslator.FromHtml(col1);
             if (cpick.ShowDialog() == DialogResult.OK)
             {
-                
+
                 marketsettings.setcolour(pb.Name, cpick.Color.Name.ToUpper());
                 pb.Invalidate();
                 marketsettings.isDirty = true;
@@ -896,7 +895,7 @@ namespace DayZeEditor
         }
         private void BackgroundColour_MouseHover(object sender, EventArgs e)
         {
-            if(sender is PictureBox)
+            if (sender is PictureBox)
             {
                 PictureBox pb = sender as PictureBox;
                 ttpShow = new System.Windows.Forms.ToolTip
@@ -1153,7 +1152,7 @@ namespace DayZeEditor
                         if (i == Selectedindex) continue;
                         ExpansionMarketSpawnPosition sp = marketsettings.getSpawnbyindex(0, i);
 
-                        
+
                         int centerX = (int)(Math.Round(sp.Position[0], 0) * scalevalue);
                         int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(sp.Position[2], 0) * scalevalue);
                         Point center = new Point(centerX, centerY);
@@ -1528,43 +1527,43 @@ namespace DayZeEditor
             {
                 //if (name.buysell != canBuyCansell.Attchment)
                 //{
-                    marketItem mitem = MarketCats.getitemfromcategory(name.ClassName.ToLower().Replace("#STR_EXPANSION_MARKET_CATEGORY_", ""));
+                marketItem mitem = MarketCats.getitemfromcategory(name.ClassName.ToLower().Replace("#STR_EXPANSION_MARKET_CATEGORY_", ""));
 
-                    Categories cat = MarketCats.GetCat(mitem);
-                    if (cat == null)
+                Categories cat = MarketCats.GetCat(mitem);
+                if (cat == null)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("[Error] : ");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine(currentTrader.DisplayName + " has an Item that could not be found int the market files:- " + name.ClassName);
+                    MessageBox.Show("Item could not be found :- " + name.ClassName + "\nsee console for more details.");
+                    continue;
+                }
+                String CatName = cat.DisplayName.Replace("#STR_EXPANSION_MARKET_CATEGORY_", "");
+                MytreeNode cn = NodeExists(tn, CatName);
+                if (cn == null)
+                {
+                    MytreeNode ccn = new MytreeNode(CatName)
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("[Error] : ");
-                        Console.ForegroundColor = ConsoleColor.White;
-                        Console.WriteLine(currentTrader.DisplayName + " has an Item that could not be found int the market files:- " + name.ClassName);
-                        MessageBox.Show("Item could not be found :- " + name.ClassName + "\nsee console for more details.");
-                        continue;
-                    }
-                    String CatName = cat.DisplayName.Replace("#STR_EXPANSION_MARKET_CATEGORY_", "");
-                    MytreeNode cn = NodeExists(tn, CatName);
-                    if (cn == null)
+                        Tag = cat
+                    };
+                    MytreeNode itemnode = new MytreeNode(name.ClassName)
                     {
-                        MytreeNode ccn = new MytreeNode(CatName)
-                        {
-                            Tag = cat
-                        };
-                        MytreeNode itemnode = new MytreeNode(name.ClassName)
-                        {
-                            BuySell = (int)name.buysell,
-                            Tag = name
-                        };
-                        ccn.Nodes.Add(itemnode);
-                        tn.Nodes.Add(ccn);
-                    }
-                    else
+                        BuySell = (int)name.buysell,
+                        Tag = name
+                    };
+                    ccn.Nodes.Add(itemnode);
+                    tn.Nodes.Add(ccn);
+                }
+                else
+                {
+                    MytreeNode itemnode = new MytreeNode(name.ClassName)
                     {
-                        MytreeNode itemnode = new MytreeNode(name.ClassName)
-                        {
-                            BuySell = (int)name.buysell,
-                            Tag = name
-                        };
-                        cn.Nodes.Add(itemnode);
-                    }
+                        BuySell = (int)name.buysell,
+                        Tag = name
+                    };
+                    cn.Nodes.Add(itemnode);
+                }
                 //}
 
             }
@@ -1686,7 +1685,7 @@ namespace DayZeEditor
                     }
                 }
                 else if (e.Node.Tag is Categories)
-                { 
+                {
                     buysellFullCat = true;
                     CanOnlyBuyRB.Visible = true;
                     CanBuySellRB.Visible = true;
@@ -1715,10 +1714,10 @@ namespace DayZeEditor
             switch (text)
             {
                 case "Remove Category and all items":
-                     foreach(TreeNode tn in currentnode.Nodes)
-                     {
+                    foreach (TreeNode tn in currentnode.Nodes)
+                    {
                         currentTrader.removetraderitem(tn.Text);
-                     }
+                    }
                     var savedExpansionState = treeView1.Nodes.GetExpansionState();
                     treeView1.BeginUpdate();
                     Poppulatetreeview();
@@ -1746,14 +1745,14 @@ namespace DayZeEditor
                     AddFromCategoryListBox.Text = "Add from Category List";
                     AddFromCategoryListBox.Tag = "AddFromCat";
                     Categories cat = MarketCats.GetCatFromDisplayName(currentnode.Text);
-                    if(cat == null)
+                    if (cat == null)
                     {
                         MessageBox.Show("there is no cartegory called " + currentnode.Text);
                         return;
                     }
                     listBox3.Items.Clear();
                     List<string> items = new List<string>();
-                    foreach(marketItem item in cat.Items)
+                    foreach (marketItem item in cat.Items)
                     {
                         foreach (string vitem in item.Variants)
                         {
@@ -1860,9 +1859,9 @@ namespace DayZeEditor
                     }
                     else if (buysellFullCat)
                     {
-                        foreach(MytreeNode n in currentnode.Nodes)
+                        foreach (MytreeNode n in currentnode.Nodes)
                         {
-                            n.BuySell =(int)canBuyCansell.CanOnlyBuy;
+                            n.BuySell = (int)canBuyCansell.CanOnlyBuy;
                             TradersItem t = n.Tag as TradersItem;
                             t.buysell = canBuyCansell.CanOnlyBuy;
                         }
@@ -2027,7 +2026,7 @@ namespace DayZeEditor
         {
             if (listBox5.SelectedItems.Count < 1) return;
             Categories cat = listBox5.SelectedItem as Categories;
-            if(cat != currentCat)
+            if (cat != currentCat)
             {
                 action = true;
                 currentitem = null;
@@ -2050,7 +2049,7 @@ namespace DayZeEditor
             IsExchangeCB.Checked = currentCat.IsExchange == 1 ? true : false;
             CategorycolourPB.Invalidate();
 
-            
+
 
             listBox4.DisplayMember = "Name";
             listBox4.ValueMember = "Value";
@@ -2213,10 +2212,10 @@ namespace DayZeEditor
         }
         private void darkButton27_Click(object sender, EventArgs e)
         {
-            if(currentitem == null) { return; }
+            if (currentitem == null) { return; }
             AddItemfromString form = new AddItemfromString();
             DialogResult result = form.ShowDialog();
-            if(result == DialogResult.OK)
+            if (result == DialogResult.OK)
             {
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
@@ -2276,7 +2275,7 @@ namespace DayZeEditor
         }
         private void darkButton3_Click(object sender, EventArgs e)
         {
-            if(currentCat == null) { return; }
+            if (currentCat == null) { return; }
             List<string> removeitems = new List<string>();
             foreach (var item in listBox4.SelectedItems)
             {
@@ -2332,19 +2331,19 @@ namespace DayZeEditor
         }
         private void darkButton4_Click(object sender, EventArgs e)
         {
-            if(currentCat == null) { return;  }
+            if (currentCat == null) { return; }
             Dictionary<string, bool> UsedTypes = new Dictionary<string, bool>();
-            foreach(Categories mc in MarketCats.CatList)
+            foreach (Categories mc in MarketCats.CatList)
             {
-                foreach(marketItem item in mc.Items)
+                foreach (marketItem item in mc.Items)
                 {
                     if (!UsedTypes.ContainsKey(item.ClassName))
                         UsedTypes.Add(item.ClassName, true);
-                    if(item.Variants.Count > 0)
+                    if (item.Variants.Count > 0)
                     {
-                        foreach(string v in item.Variants)
+                        foreach (string v in item.Variants)
                         {
-                            if(!UsedTypes.ContainsKey(v))
+                            if (!UsedTypes.ContainsKey(v))
                                 UsedTypes.Add(v, true);
                         }
                     }
@@ -2429,9 +2428,9 @@ namespace DayZeEditor
         }
         private bool Checkifincat(marketItem item)
         {
-            foreach(Categories cat in  MarketCats.CatList)
+            foreach (Categories cat in MarketCats.CatList)
             {
-                if(cat.Items.Any(x => x.ClassName == item.ClassName))
+                if (cat.Items.Any(x => x.ClassName == item.ClassName))
                 {
                     return true;
                 }
@@ -2464,7 +2463,7 @@ namespace DayZeEditor
         private void darkButton7_Click(object sender, EventArgs e)
         {
             string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Enter Name of New Category\nPlease not that this is the filename, do not use spaces or special characters\nYou can change the display name once its been created ", "Categories", "");
-            if(UserAnswer == "") return;
+            if (UserAnswer == "") return;
             MarketCats.CreateNewCat(UserAnswer);
             listBox5.SelectedIndex = -1;
             if (listBox5.Items.Count == 0)
@@ -2479,7 +2478,7 @@ namespace DayZeEditor
             if (UserAnswer == "") return;
             List<marketItem> varients = MarketCats.searchforitems(UserAnswer);
             bool searchsplit = false;
-            if(UserAnswer.Contains("&"))
+            if (UserAnswer.Contains("&"))
             {
                 searchsplit = true;
             }
@@ -2487,7 +2486,7 @@ namespace DayZeEditor
             //check types files for any variants depending on search term
             if (!searchsplit)
                 vtypesvariaNTS = vanillatypes.SerachTypes(UserAnswer);
-            else if(searchsplit)
+            else if (searchsplit)
                 vtypesvariaNTS = vanillatypes.SerachTypes(UserAnswer.Split('&'));
             foreach (TypesFile tfile in ModTypes)
             {
@@ -2624,7 +2623,7 @@ namespace DayZeEditor
         private void darkButton25_Click(object sender, EventArgs e)
         {
             if (currentitem == null) { return; }
-            if(listBox11.SelectedItem == null) { return; }
+            if (listBox11.SelectedItem == null) { return; }
             string newitem = listBox11.GetItemText(listBox11.SelectedItem);
             marketItem ni = new marketItem()
             {
@@ -2654,7 +2653,7 @@ namespace DayZeEditor
             Rectangle region;
             region = pb.ClientRectangle;
             string col = currentCat.Color;
-            if(col.Length != 8)
+            if (col.Length != 8)
             {
                 MessageBox.Show("Colour string is not the correct length, please choose a new colour.");
                 return;
@@ -2669,7 +2668,7 @@ namespace DayZeEditor
         }
         private void CategorycolourPB_Click(object sender, EventArgs e)
         {
-            if(currentCat == null) { return; }
+            if (currentCat == null) { return; }
             PictureBox pb = sender as PictureBox;
             ColorPickerDialog cpick = new ColorPickerDialog
             {
@@ -2697,7 +2696,7 @@ namespace DayZeEditor
                 currentCat.isDirty = true;
             }
         }
-        
+
         /// <summary>
         /// Added in version 7 item sell price percentage of buy value
         /// </summary>
@@ -3061,15 +3060,15 @@ namespace DayZeEditor
             {
                 PointF pC = new PointF(currentZone.Position[0], currentZone.Position[2]);
                 PointF pP = new PointF(tm.position.X, tm.position.Z);
-                if(IsWithinCircle(pC, pP, (float)currentZone.Radius))
+                if (IsWithinCircle(pC, pP, (float)currentZone.Radius))
                 {
                     ZoneTraders.Add(Traders.GetTraderFromName(tm.NPCTrade));
                 }
             }
             currentZone.StockItems = new BindingList<StockItem>();
-            foreach(Traders t in ZoneTraders)
+            foreach (Traders t in ZoneTraders)
             {
-                foreach(TradersItem ti in t.ListItems)
+                foreach (TradersItem ti in t.ListItems)
                 {
                     Categories cat = MarketCats.GetCatFromDisplayName(ti.ClassName);
                     marketItem i = MarketCats.getitemfromcategory(ti.ClassName);
@@ -3119,7 +3118,7 @@ namespace DayZeEditor
             {
                 Classname = classname,
                 StockValue = Stocknum,
-               // StockCheker = Stocknum
+                // StockCheker = Stocknum
             };
             //float initialvalue = Helper.PowCurveCalc((float)i.MinStockThreshold, (float)i.MaxStockThreshold, i.MaxStockThreshold - si.StockCheker, i.MinPriceThreshold, i.MaxPriceThreshold, 6.0f);
             //si.ZoneBuyPrice = (int)(initialvalue * (currentZone.BuyPricePercent / 100));
@@ -3150,11 +3149,11 @@ namespace DayZeEditor
             foreach (Zones zone in Zones.ZoneList)
             {
                 float zonebuypercentage = (float)zone.BuyPricePercent;
-                
-                foreach(StockItem item in zone.StockItems)
+
+                foreach (StockItem item in zone.StockItems)
                 {
                     marketItem i = MarketCats.getitemfromcategory(item.Classname);
-                    if(i == null) { continue; }
+                    if (i == null) { continue; }
                     //float initialvalue = Helper.PowCurveCalc((float)i.MinStockThreshold, (float)i.MaxStockThreshold,  item.StockCheker, i.MaxPriceThreshold, i.MinPriceThreshold, 6.0f);
                     //item.ZoneBuyPrice = (int)(initialvalue * (zone.BuyPricePercent / 100));
                     //if (zone.SellPricePercent == -1)
@@ -3230,11 +3229,11 @@ namespace DayZeEditor
             pcontroll = true;
 
             pcontroll = false;
-            if(missingitems.Count> 0)
+            if (missingitems.Count > 0)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append("The following items were added to the stock zone:-" + Environment.NewLine);
-                foreach(string s in missingitems)
+                foreach (string s in missingitems)
                 {
                     sb.Append(s + Environment.NewLine);
                 }
@@ -3262,7 +3261,7 @@ namespace DayZeEditor
         }
         private BindingList<Tradermap> GetTradersforzone()
         {
-            if(currentZone == null) { return null; }
+            if (currentZone == null) { return null; }
             BindingList<Tradermap> ZoneTraders = new BindingList<Tradermap>();
             foreach (Tradermap tm in tradermaps.maps)
             {
@@ -3286,7 +3285,7 @@ namespace DayZeEditor
 
             SetNPCTrade();
 
-            
+
             numericUpDown14.Value = (decimal)currenttradermap.position.X;
             numericUpDown15.Value = (decimal)currenttradermap.position.Y;
             numericUpDown16.Value = (decimal)currenttradermap.position.Z;
@@ -3323,7 +3322,7 @@ namespace DayZeEditor
             groupBox14.Visible = IsRoamingTraderCB.Checked;
             if (pcontroll) return;
             if (currenttradermap == null) return;
-            if(IsRoamingTraderCB.Checked)
+            if (IsRoamingTraderCB.Checked)
             {
                 currenttradermap.NPCName = currenttradermap.NPCName.Replace("ExpansionTrader", "ExpansionTraderAI");
                 currenttradermap.Roamingpoints = new BindingList<Vec3>();
@@ -3345,7 +3344,7 @@ namespace DayZeEditor
         {
             if (listBox14.SelectedItems.Count < 1) return;
             currenttradermap = listBox18.SelectedItem as Tradermap;
-            if(currenttradermap == null) { return; }
+            if (currenttradermap == null) { return; }
             pcontroll = true;
             textBox14.Text = currenttradermap.Filename;
             textBox15.Text = currenttradermap.NPCName;
@@ -3363,7 +3362,7 @@ namespace DayZeEditor
             listBox15.DataSource = currenttradermap.Attachments;
 
             IsRoamingTraderCB.Checked = currenttradermap.isroaming;
-            if(currenttradermap.isroaming)
+            if (currenttradermap.isroaming)
             {
                 RoamingTraderWaypointsLB.DisplayMember = "Name";
                 RoamingTraderWaypointsLB.ValueMember = "Value";
@@ -3407,7 +3406,7 @@ namespace DayZeEditor
                 else
                     ttpShow.Show("No Trader of this Name,\nClick cross to assign to exiting trader", p, p.Width, p.Height / 10, 5000);
 
-            }   
+            }
         }
         private void TradercheckPanel_MouseLeave(object sender, EventArgs e)
         {
@@ -3427,7 +3426,7 @@ namespace DayZeEditor
         }
         private void darkButton21_Click(object sender, EventArgs e)
         {
-            if(listBox13.Items.Count == 0)
+            if (listBox13.Items.Count == 0)
             {
                 MessageBox.Show("Please create some trader zones..");
                 return;
@@ -3566,7 +3565,7 @@ namespace DayZeEditor
         private void darkButton26_Click(object sender, EventArgs e)
         {
             TraderNPCs newnpc = new TraderNPCs();
-            if(newnpc.ShowDialog() == DialogResult.OK)
+            if (newnpc.ShowDialog() == DialogResult.OK)
             {
                 textBox15.Text = newnpc.selectedNPC;
             }
@@ -3707,7 +3706,7 @@ namespace DayZeEditor
                             Y = Convert.ToSingle(eo.Position[1]),
                             Z = Convert.ToSingle(eo.Position[2])
                         };
-                        if(i == 0)
+                        if (i == 0)
                         {
                             currenttradermap.position = newvec3;
                             numericUpDown14.Value = (decimal)currenttradermap.position.X;
@@ -3742,7 +3741,7 @@ namespace DayZeEditor
             {
                 Type = currenttradermap.NPCName,
                 DisplayName = currenttradermap.NPCName,
-                Position = new float[] {currenttradermap.position.X, currenttradermap.position.Y, currenttradermap.position.Z},
+                Position = new float[] { currenttradermap.position.X, currenttradermap.position.Y, currenttradermap.position.Z },
                 Orientation = new float[] { 0, 0, 0 },
                 Scale = 1.0f,
                 Model = "",
@@ -3801,14 +3800,14 @@ namespace DayZeEditor
                 if (!IsWithinCircle(pC, pP, (float)currenttradermapzone.Radius))
                 {
                     outsidepoints.Add(vec3);
-                   
+
                 }
             }
-            if(outsidepoints.Count > 0)
+            if (outsidepoints.Count > 0)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append("The folowing points are outside the assigned Zone:-" + Environment.NewLine);
-                foreach(Vec3 v3 in outsidepoints)
+                foreach (Vec3 v3 in outsidepoints)
                 {
                     sb.Append(v3.ToString() + Environment.NewLine);
                 }
@@ -3824,7 +3823,7 @@ namespace DayZeEditor
             {
                 case 4:
                     string found = "";
-                    foreach(Categories cat in MarketCats.CatList)
+                    foreach (Categories cat in MarketCats.CatList)
                     {
                         if (cat.Items.Any(x => x.ClassName.Contains(searchterm)))
                         {
@@ -3884,11 +3883,11 @@ namespace DayZeEditor
         {
             foreach (marketItem item in currentCat.Items)
             {
-                for(int i = 0; i < item.SpawnAttachments.Count(); i++)
+                for (int i = 0; i < item.SpawnAttachments.Count(); i++)
                 {
                     item.SpawnAttachments[i] = item.SpawnAttachments[i].ToLower();
                 }
-                for(int J = 0; J < item.Variants.Count(); J++)
+                for (int J = 0; J < item.Variants.Count(); J++)
                 {
                     item.Variants[J] = item.Variants[J].ToLower();
                 }
@@ -3911,10 +3910,10 @@ namespace DayZeEditor
             StringBuilder sb = new StringBuilder();
             foreach (Categories cats in MarketCats.CatList)
             {
-                foreach(marketItem item in cats.Items)
+                foreach (marketItem item in cats.Items)
                 {
                     item.ClassName = currentproject.getcorrectclassamefromtypes(item.ClassName).ToLower();
-                    if(item.ClassName.ToLower().StartsWith("*** missing item type"))
+                    if (item.ClassName.ToLower().StartsWith("*** missing item type"))
                     {
                         sb.Append(cats.DisplayName + " contains and item not in the types : " + item.ClassName + Environment.NewLine);
                     }
@@ -3958,18 +3957,18 @@ namespace DayZeEditor
             foreach (Zones zones in Zones.ZoneList)
             {
                 if (zones.isDirty)
-                    needtosave = true; 
+                    needtosave = true;
                 continue;
             }
             foreach (Traders trader in Traders.Traderlist)
             {
                 if (trader.isDirty)
-                    needtosave = true; 
+                    needtosave = true;
             }
             foreach (Categories cat in MarketCats.CatList)
             {
                 if (cat.isDirty)
-                    needtosave = true; 
+                    needtosave = true;
             }
             if (needtosave)
             {
@@ -3988,7 +3987,7 @@ namespace DayZeEditor
             }
             return false;
         }
-        private bool Checkifincatlist(TraderPlusPriceConfig TraderPlusPriceConfig , Tradercategory tradercat)
+        private bool Checkifincatlist(TraderPlusPriceConfig TraderPlusPriceConfig, Tradercategory tradercat)
         {
             if (TraderPlusPriceConfig.TraderCategories.Any(x => x.CategoryName == tradercat.CategoryName))
             {
@@ -4024,7 +4023,7 @@ namespace DayZeEditor
             string TraderPlusInsuranceConfigPath = TraderplusPath + "\\TraderPlusInsuranceConfig.json";
             TraderPlusInsuranceConfig TraderPlusInsuranceConfig = new TraderPlusInsuranceConfig();
 
-            foreach(Categories cat in MarketCats.CatList)
+            foreach (Categories cat in MarketCats.CatList)
             {
                 Tradercategory newcat = new Tradercategory()
                 {
@@ -4037,13 +4036,13 @@ namespace DayZeEditor
                     string propperclassname = currentproject.getcorrectclassamefromtypes(item.ClassName);
                     ItemProducts NewContainer = new ItemProducts();
                     NewContainer.Classname = propperclassname;
-                    NewContainer.Coefficient = (int)((float)item.MinPriceThreshold/(float)item.MaxPriceThreshold*100);
+                    NewContainer.Coefficient = (int)((float)item.MinPriceThreshold / (float)item.MaxPriceThreshold * 100);
                     NewContainer.MaxStock = item.MaxStockThreshold;
                     NewContainer.TradeQuantity = -1;
                     NewContainer.BuyPrice = item.MaxPriceThreshold;
                     if (item.SellPricePercent == -1)
                     {
-                        NewContainer.Sellprice = (float)marketsettings.SellPricePercent/100;
+                        NewContainer.Sellprice = (float)marketsettings.SellPricePercent / 100;
                     }
                     else
                     {
@@ -4092,7 +4091,7 @@ namespace DayZeEditor
         {
             string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("input perecentage to Increase Price by\neg. 50 for 50%", "Price", "");
             if (UserAnswer == "") return;
-            int value = Convert.ToInt32(UserAnswer) ;
+            int value = Convert.ToInt32(UserAnswer);
             foreach (marketItem item in currentCat.Items)
             {
                 decimal num1 = (decimal)value / 100;
@@ -4150,7 +4149,7 @@ namespace DayZeEditor
 
         private void darkButton51_Click(object sender, EventArgs e)
         {
-            if(listBox15.SelectedItems.Count <= 0) return;
+            if (listBox15.SelectedItems.Count <= 0) return;
             int index = listBox15.SelectedIndex;
             if (index == listBox15.Items.Count - 1) return;
             int newindex = index + 1;

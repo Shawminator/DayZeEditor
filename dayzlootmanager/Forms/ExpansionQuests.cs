@@ -2,7 +2,6 @@
 using DarkUI.Forms;
 using DayZeLib;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +12,6 @@ using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeEditor
@@ -64,7 +62,7 @@ namespace DayZeEditor
             if (e.Index < 0) return;
             ListBox lb = sender as ListBox;
             var CurrentItemWidth = (int)this.CreateGraphics().MeasureString(lb.Items[lb.Items.Count - 1].ToString(), lb.Font, TextRenderer.MeasureText(lb.Items[lb.Items.Count - 1].ToString(), new Font("Arial", 20.0F))).Width;
-            lb.HorizontalExtent = CurrentItemWidth+5;
+            lb.HorizontalExtent = CurrentItemWidth + 5;
             e.DrawBackground();
             Brush myBrush = Brushes.Black;
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
@@ -141,7 +139,7 @@ namespace DayZeEditor
             QuestActions = new BindingList<string>(File.ReadAllLines(Application.StartupPath + "\\TraderNPCs\\Vanilla_Quest_Actions.txt").ToList());
             ObjectivesActionsCB.DataSource = new BindingList<string>(QuestActions);
 
-            
+
 
             bool needtosave = false;
 
@@ -200,7 +198,7 @@ namespace DayZeEditor
             QuestPersistantServerDataPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Quests\\PersistentServerData.json";
             if (!File.Exists(QuestPersistantServerDataPath))
             {
-                Console.WriteLine(Path.GetFileName(QuestPersistantServerDataPath)+ "Not found, Creating new...");
+                Console.WriteLine(Path.GetFileName(QuestPersistantServerDataPath) + "Not found, Creating new...");
                 QuestPersistentServerData = new QuestPersistentServerData();
                 needtosave = true;
             }
@@ -292,7 +290,7 @@ namespace DayZeEditor
 
             List<string> questrequiredfaction = new List<string>();
             questrequiredfaction.Add("");
-            foreach(string rf in Factions)
+            foreach (string rf in Factions)
             {
                 questrequiredfaction.Add(rf);
             }
@@ -326,7 +324,7 @@ namespace DayZeEditor
                 if (obj.isDirty)
                     needtosave = true;
             }
-            foreach(QuestPlayerData qpd in QuestPlayerDataList.QuestPlayerDataList)
+            foreach (QuestPlayerData qpd in QuestPlayerDataList.QuestPlayerDataList)
             {
                 if (qpd.isDirty)
                     needtosave = true;
@@ -393,7 +391,7 @@ namespace DayZeEditor
             comboBox2.ValueMember = "Value";
             comboBox2.DataSource = Enum.GetValues(typeof(QuExpansionQuestObjectiveTypeestType));
 
-            
+
 
 
             QuestNPCListLB.SelectedIndex = -1;
@@ -427,7 +425,7 @@ namespace DayZeEditor
                 File.WriteAllText(QuestSettings.Filename, jsonString);
                 midifiedfiles.Add(Path.GetFileName(QuestSettings.Filename));
             }
-            foreach(ExpansionQuestNPCs npcs in QuestNPCs.NPCList)
+            foreach (ExpansionQuestNPCs npcs in QuestNPCs.NPCList)
             {
                 if (!npcs.isDirty) continue;
                 npcs.isDirty = false;
@@ -462,9 +460,9 @@ namespace DayZeEditor
                     Directory.CreateDirectory(QuestsPath + "\\Backup\\" + SaveTime);
                     File.Copy(QuestsPath + "\\" + Quest.Filename + ".json", QuestsPath + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(Quest.Filename) + ".bak", true);
                 }
-                if(Quest.Filename != Quest.OriginalFilename)
+                if (Quest.Filename != Quest.OriginalFilename)
                 {
-                    if(File.Exists(QuestsPath + "\\" + Quest.OriginalFilename + ".json"))
+                    if (File.Exists(QuestsPath + "\\" + Quest.OriginalFilename + ".json"))
                         File.Delete(QuestsPath + "\\" + Quest.OriginalFilename + ".json");
                     Quest.OriginalFilename = Quest.Filename;
                 }
@@ -541,9 +539,9 @@ namespace DayZeEditor
                 midifiedfiles.Add(Path.GetFileName(obj.Filename));
             }
 
-            foreach(QuestPlayerData qpd in QuestPlayerDataList.QuestPlayerDataList)
+            foreach (QuestPlayerData qpd in QuestPlayerDataList.QuestPlayerDataList)
             {
-                if(qpd.isDirty)
+                if (qpd.isDirty)
                 {
                     qpd.isDirty = false;
                     if (currentproject.Createbackups && File.Exists(QuestPlayerDataPath + "\\" + qpd.Filename + ".bin"))
@@ -805,7 +803,7 @@ namespace DayZeEditor
             QuestNPCsClassNameCB.DisplayMember = "Name";
             QuestNPCsClassNameCB.ValueMember = "Value";
             QuestNPCsClassNameCB.DataSource = File.ReadAllLines(Application.StartupPath + "\\traderNPCs\\QuestNPCs.txt").ToList();
-            
+
             NPCEmotes = new NPCEmotes(Application.StartupPath + "\\TraderNPCs\\Emotes.txt");
             NPCEmotes1 = new NPCEmotes(Application.StartupPath + "\\TraderNPCs\\Emotes.txt");
             NPCEmotes2 = new NPCEmotes(Application.StartupPath + "\\TraderNPCs\\Emotes.txt");
@@ -1042,7 +1040,7 @@ namespace DayZeEditor
         }
         private void darkButton8_Click(object sender, EventArgs e)
         {
-            currentQuestNPC._Waypoints.Add(new Vec3(0,0,0));
+            currentQuestNPC._Waypoints.Add(new Vec3(0, 0, 0));
             currentQuestNPC.isDirty = true;
         }
         private void darkButton5_Click(object sender, EventArgs e)
@@ -1249,7 +1247,7 @@ namespace DayZeEditor
             }
             if (CurrentQuest.Descriptions.Count != 3)
             {
-                switch(CurrentQuest.Descriptions.Count)
+                switch (CurrentQuest.Descriptions.Count)
                 {
                     case 0:
                         QuestDescription1TB.Text = "";
@@ -1298,7 +1296,7 @@ namespace DayZeEditor
             QuestPlayerNeedQuestItemsCB.Checked = CurrentQuest.PlayerNeedQuestItems == 1 ? true : false;
             QuestDeleteQuestItemsCB.Checked = CurrentQuest.DeleteQuestItems == 1 ? true : false;
 
-            
+
             QuestNeedToSelectRewardCB.Checked = CurrentQuest.NeedToSelectReward == 1 ? true : false;
             QuestRewardsForGroupOwnerOnlyCB.Checked = CurrentQuest.RewardsForGroupOwnerOnly == 1 ? true : false;
             QuestReputationRewardNUD.Value = CurrentQuest.ReputationReward;
@@ -1499,21 +1497,21 @@ namespace DayZeEditor
         private void QuestDescription1TB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            if(CurrentQuest.Descriptions.Count == 3)
+            if (CurrentQuest.Descriptions.Count == 3)
                 CurrentQuest.Descriptions[0] = QuestDescription1TB.Text;
             CurrentQuest.isDirty = true;
         }
         private void QuestDescription2TB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            if(CurrentQuest.Descriptions.Count == 3)
+            if (CurrentQuest.Descriptions.Count == 3)
                 CurrentQuest.Descriptions[1] = QuestDescription2TB.Text;
             CurrentQuest.isDirty = true;
         }
         private void QuestDescription3TB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            if(CurrentQuest.Descriptions.Count == 3)
+            if (CurrentQuest.Descriptions.Count == 3)
                 CurrentQuest.Descriptions[2] = QuestDescription3TB.Text;
             CurrentQuest.isDirty = true;
         }
@@ -1525,7 +1523,7 @@ namespace DayZeEditor
         }
         private void QuestFollowupQuestCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(!useraction) return;
+            if (!useraction) return;
 
             Quests quest = QuestFollowupQuestCB.SelectedItem as Quests;
             CurrentQuest.FollowUpQuest = quest.ID;
@@ -1621,7 +1619,7 @@ namespace DayZeEditor
                         HealthPercent = 0,
                         DamagePercent = 0,
                         QuestID = -1
-                        
+
                     };
                     CurrentQuest.Rewards.Add(newrawrd);
                     CurrentQuest.isDirty = true;
@@ -1797,7 +1795,7 @@ namespace DayZeEditor
                 List<ExpansionQuestNPCs> SelectedNPCs = form.SelectedNPCs;
                 foreach (ExpansionQuestNPCs obj in SelectedNPCs)
                 {
-                    if(!CurrentQuest.QuestGivers.Any(x => x.ID == obj.ID))
+                    if (!CurrentQuest.QuestGivers.Any(x => x.ID == obj.ID))
                         CurrentQuest.QuestGivers.Add(obj);
                 }
                 CurrentQuest.isDirty = true;
@@ -1952,7 +1950,7 @@ namespace DayZeEditor
                 faction = QuestsFactionReputationRequirementsCB.GetItemText(QuestsFactionReputationRequirementsCB.SelectedItem),
                 rep = 100
             };
-            if(!CurrentQuest.FactionReputationRequirementsList.Any(x => x.faction == newrep.faction))
+            if (!CurrentQuest.FactionReputationRequirementsList.Any(x => x.faction == newrep.faction))
             {
                 CurrentQuest.FactionReputationRequirementsList.Add(newrep);
                 CurrentQuest.isDirty = true;
@@ -2060,7 +2058,7 @@ namespace DayZeEditor
             {
                 Tag = "TreasureHunt"
             };
-            for(int i = 0; i < QuestObjectives.Objectives.Count; i++)
+            for (int i = 0; i < QuestObjectives.Objectives.Count; i++)
             {
                 switch (QuestObjectives.Objectives[i]._ObjectiveTypeEnum)
                 {
@@ -2188,32 +2186,32 @@ namespace DayZeEditor
                 {
                     case "Action":
                         if (e.Button == MouseButtons.Right)
-                    {
-                        addNewActionObjectiveToolStripMenuItem.Visible = true;
-                        contextMenuStrip1.Show(Cursor.Position);
-                    }
-                    break;
+                        {
+                            addNewActionObjectiveToolStripMenuItem.Visible = true;
+                            contextMenuStrip1.Show(Cursor.Position);
+                        }
+                        break;
                     case "AICamp":
                         if (e.Button == MouseButtons.Right)
-                    {
-                        addNewAICampObjectiveToolStripMenuItem.Visible = true;
-                        contextMenuStrip1.Show(Cursor.Position);
-                    }
-                    break;
+                        {
+                            addNewAICampObjectiveToolStripMenuItem.Visible = true;
+                            contextMenuStrip1.Show(Cursor.Position);
+                        }
+                        break;
                     case "AIPatrol":
                         if (e.Button == MouseButtons.Right)
-                    {
-                        addNewAIPatrolObjectiveToolStripMenuItem.Visible = true;
-                        contextMenuStrip1.Show(Cursor.Position);
-                    }
-                    break;
+                        {
+                            addNewAIPatrolObjectiveToolStripMenuItem.Visible = true;
+                            contextMenuStrip1.Show(Cursor.Position);
+                        }
+                        break;
                     case "AIVIP":
                         if (e.Button == MouseButtons.Right)
-                    {
-                        addNewAiVIPObjectiveToolStripMenuItem.Visible = true;
-                        contextMenuStrip1.Show(Cursor.Position);
-                    }
-                    break;
+                        {
+                            addNewAiVIPObjectiveToolStripMenuItem.Visible = true;
+                            contextMenuStrip1.Show(Cursor.Position);
+                        }
+                        break;
                     case "Collection":
                         if (e.Button == MouseButtons.Right)
                         {
@@ -2706,7 +2704,7 @@ namespace DayZeEditor
                 TimeLimit = -1,
                 AISpawn = new ExpansionQuestAISpawn(),
                 MaxDistance = -1,
-                MinDistance= -1,
+                MinDistance = -1,
                 AllowedWeapons = new BindingList<string>(),
                 AllowedDamageZones = new BindingList<string>(),
                 isDirty = true
@@ -2733,7 +2731,7 @@ namespace DayZeEditor
                 ObjectiveText = "New AIESCORT Objective",
                 TimeLimit = -1,
                 Active = 1,
-                Position = new decimal[] { 0,0,0},
+                Position = new decimal[] { 0, 0, 0 },
                 MaxDistance = -1,
                 NPCLoadoutFile = "BanditLoadout",
                 NPCClassName = "eAI_SurvivorF_Maria",
@@ -2910,7 +2908,7 @@ namespace DayZeEditor
                 Positions = new BindingList<decimal[]>(),
                 Loot = new BindingList<ExpansionLoot>(),
                 LootItemsAmount = 2,
-                MaxDistance= 10,
+                MaxDistance = 10,
                 isDirty = true
             };
             QuestObjectives.Objectives.Add(newTreasureHuntobjective);
@@ -2924,7 +2922,7 @@ namespace DayZeEditor
         {
             CurrentTreeNodeTag = treeViewMS1.SelectedNode.Tag as QuestObjectivesBase;
             QuestObjectives.deleteObjective(CurrentTreeNodeTag);
-            foreach(Quests quests in QuestsList.QuestList)
+            foreach (Quests quests in QuestsList.QuestList)
             {
                 if (quests.Objectives.Any(x => x.ID == CurrentTreeNodeTag.ID) &&
                    quests.Objectives.Any(y => y.ObjectiveType == CurrentTreeNodeTag.ObjectiveType))
@@ -3232,7 +3230,7 @@ namespace DayZeEditor
                     string objname = "";
                     foreach (Editorobject eo in importfile.EditorObjects)
                     {
-                        if(objname != "" && eo.DisplayName != objname)
+                        if (objname != "" && eo.DisplayName != objname)
                         {
                             CurrentAICam.AISpawns.Add(newAISpawn);
                             newAISpawn = null;
@@ -3483,7 +3481,7 @@ namespace DayZeEditor
             ObjectivesCollectionShowDistanceCB.Checked = CurrentCollection.ShowDistance == 1 ? true : false;
             checkBox1.Checked = CurrentCollection.AddItemsToNearbyMarketZone == 1 ? true : false;
             checkBox5.Checked = CurrentCollection.NeedAnyCollection == 1 ? true : false;
-            
+
 
             ObjectivesCollectionCollectionsLB.DisplayMember = "DisplayName";
             ObjectivesCollectionCollectionsLB.ValueMember = "Value";
@@ -3576,7 +3574,7 @@ namespace DayZeEditor
                 ModTypes = ModTypes,
                 currentproject = currentproject,
                 UseOnlySingleitem = true
-                
+
             };
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
@@ -4196,7 +4194,7 @@ namespace DayZeEditor
         private void darkButton68_Click(object sender, EventArgs e)
         {
             QuestObjectivesTreasureHunt CurrentTreasureHunt = CurrentTreeNodeTag as QuestObjectivesTreasureHunt;
-            CurrentTreasureHunt._Positions.Add(new Vec3(0,0,0));
+            CurrentTreasureHunt._Positions.Add(new Vec3(0, 0, 0));
             if (ObjectivesTreasureHuntPositionsLB.Items.Count > 0)
             {
                 ObjectivesTreasureHuntPositionsLB.SelectedIndex = ObjectivesTreasureHuntPositionsLB.Items.Count - 1;
@@ -4213,7 +4211,7 @@ namespace DayZeEditor
             CurrentTreasureHunt._Positions.Remove(CurrentWapypoint);
             CurrentTreasureHunt.isDirty = true;
             ObjectivesTreasureHuntPositionsLB.Refresh();
-            if(ObjectivesTreasureHuntPositionsLB.Items.Count > 0)
+            if (ObjectivesTreasureHuntPositionsLB.Items.Count > 0)
             {
                 ObjectivesTreasureHuntPositionsLB.SelectedIndex = 0;
             }
@@ -4419,7 +4417,7 @@ namespace DayZeEditor
             {
                 Tag = "Parent"
             };
-            foreach(QuestPlayerData QPD in QuestPlayerDataList.QuestPlayerDataList)
+            foreach (QuestPlayerData QPD in QuestPlayerDataList.QuestPlayerDataList)
             {
                 root.Nodes.Add(treenodeplayerquestdata(QPD));
             }
@@ -4434,7 +4432,7 @@ namespace DayZeEditor
             {
                 Tag = QPD
             };
-            for(int i = 0; i < QPD.ExpansionQuestPersistentQuestDataCount; i++)
+            for (int i = 0; i < QPD.ExpansionQuestPersistentQuestDataCount; i++)
             {
                 TreeNode newquest = new TreeNode(QPD.QuestDatas[i].ToString());
                 newquest.Tag = QPD.QuestDatas[i];

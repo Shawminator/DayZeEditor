@@ -148,7 +148,7 @@ namespace DayZeEditor
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(AirdropUpgradedSettings, options);
                 File.WriteAllText(AirdropUpgradedSettings.Filename, jsonString);
-                midifiedfiles.Add(Path.GetFileName(Path.GetFileName(AirdropUpgradedSettings.Filename))); 
+                midifiedfiles.Add(Path.GetFileName(Path.GetFileName(AirdropUpgradedSettings.Filename)));
             }
 
             if (AirdropUpgradedSafeZone.isDirty)
@@ -192,11 +192,11 @@ namespace DayZeEditor
         private void AirdropUpgradedManager_FormClosing(object sender, FormClosingEventArgs e)
         {
             bool needtosave = false;
-            if(AirdropUpgradedSafeZone.isDirty)
+            if (AirdropUpgradedSafeZone.isDirty)
             {
                 needtosave = true;
             }
-            if(AirdropUpgradedSettings.isDirty)
+            if (AirdropUpgradedSettings.isDirty)
             {
                 needtosave = true;
             }
@@ -260,13 +260,13 @@ namespace DayZeEditor
 
             VersionTB.Text = AirdropUpgradedSettings.Controls.Version;
             IntervalNUD.Value = AirdropUpgradedSettings.Controls.Interval;
-            ModeCB.SelectedIndex = AirdropUpgradedSettings.Controls.Mode -1;
+            ModeCB.SelectedIndex = AirdropUpgradedSettings.Controls.Mode - 1;
             AD_LogManagerCB.Checked = AirdropUpgradedSettings.Controls.AD_LogManager == 1 ? true : false;
             AD_LogAircraftCB.Checked = AirdropUpgradedSettings.Controls.AD_LogContainer == 1 ? true : false;
             AD_LogContainerCB.Checked = AirdropUpgradedSettings.Controls.AD_LogContainer == 1 ? true : false;
             MinimumPlayersNUD.Value = AirdropUpgradedSettings.Controls.MinimumPlayers;
             MaxBackupDaysNUD.Value = AirdropUpgradedSettings.Controls.MaxBackupDays;
-            MaxLogDaysNUD.Value = AirdropUpgradedSettings.Controls .MaxLogDays;
+            MaxLogDaysNUD.Value = AirdropUpgradedSettings.Controls.MaxLogDays;
             SmokeTrailsCB.SelectedIndex = AirdropUpgradedSettings.Controls.SmokeTrails;
 
             HeightNUD.Value = AirdropUpgradedSettings.Map.Height;
@@ -275,7 +275,7 @@ namespace DayZeEditor
 
             AirSpeedKIASNUD.Value = AirdropUpgradedSettings.Aircraft.AirSpeedKIAS;
             StartAltMSLNUD.Value = AirdropUpgradedSettings.Aircraft.StartAltMSL;
-            DropAGLNUD.Value = AirdropUpgradedSettings.Aircraft.DropAGL;    
+            DropAGLNUD.Value = AirdropUpgradedSettings.Aircraft.DropAGL;
             DropOffsetNUD.Value = AirdropUpgradedSettings.Aircraft.DropOffset;
             DropAccuracyNUD.Value = AirdropUpgradedSettings.Aircraft.DropAccuracy;
             TerrainFollowingNUD.Value = AirdropUpgradedSettings.Aircraft.TerrainFollowing;
@@ -356,7 +356,7 @@ namespace DayZeEditor
         }
         private void DropZoneLB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(DropZoneLB.SelectedItems.Count == 0) { return; }
+            if (DropZoneLB.SelectedItems.Count == 0) { return; }
             currentdropZone = DropZoneLB.SelectedItem as Dropzone;
             useraction = false;
             SetupDropZone();
@@ -779,7 +779,7 @@ namespace DayZeEditor
             AirdropUpgradedSettings.Messages.Mode = MessaggesModeCB.SelectedIndex;
             AirdropUpgradedSettings.isDirty = true;
         }
- 
+
         private void TriggerAGLNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -855,7 +855,7 @@ namespace DayZeEditor
             {
                 currentLocation = e.Node.Tag as Location;
                 SetLocation();
-             
+
 
                 if (e.Button == MouseButtons.Right)
                 {
@@ -1112,7 +1112,7 @@ namespace DayZeEditor
             currentsafezone = SafeZoneLB.SelectedItem as Safezone;
             useraction = false;
             SafeZoneTitleTB.Text = currentsafezone.Title;
-            SafeZoneMessageTB.Text = currentsafezone.Message;   
+            SafeZoneMessageTB.Text = currentsafezone.Message;
             SafeZoneXNUD.Value = currentsafezone.X;
             SafeZoneZNUD.Value = currentsafezone.Z;
             SafeZoneRadiusNUD.Value = currentsafezone.Radius;
@@ -1150,7 +1150,7 @@ namespace DayZeEditor
         private void SafeZoneTitleTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentsafezone.Title = SafeZoneTitleTB.Text;    
+            currentsafezone.Title = SafeZoneTitleTB.Text;
             AirdropUpgradedSafeZone.isDirty = true;
         }
         private void darkButton3_Click(object sender, EventArgs e)
@@ -1176,7 +1176,7 @@ namespace DayZeEditor
 
         private void DropTypesLB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(DropTypesLB.SelectedItems.Count <= 0) return;
+            if (DropTypesLB.SelectedItems.Count <= 0) return;
             currentDropType = DropTypesLB.SelectedItem as Droptype;
             useraction = false;
             DropTypeTitleTB.Text = currentDropType.Title;
@@ -1207,7 +1207,7 @@ namespace DayZeEditor
                 Lifespan = 60,
                 Items = new BindingList<string>()
             };
-            AirdropUpgradedSettings.DropTypes.Add(newdroptype); 
+            AirdropUpgradedSettings.DropTypes.Add(newdroptype);
             AirdropUpgradedSettings.isDirty = true;
             UpdateDropTypeCB();
         }

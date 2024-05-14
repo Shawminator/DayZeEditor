@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeLib
@@ -99,8 +94,8 @@ namespace DayZeLib
         {
             int R = (lightColorStart[0] >= 1.0 ? 255 : (lightColorStart[0] <= 0.0 ? 0 : (int)Math.Floor(lightColorStart[0] * 256.0)));
             int G = (lightColorStart[1] >= 1.0 ? 255 : (lightColorStart[1] <= 0.0 ? 0 : (int)Math.Floor(lightColorStart[1] * 256.0)));
-            int B= (lightColorStart[2] >= 1.0 ? 255 : (lightColorStart[2] <= 0.0 ? 0 : (int)Math.Floor(lightColorStart[2] * 256.0)));
-            return Color.FromArgb(R,G,B);
+            int B = (lightColorStart[2] >= 1.0 ? 255 : (lightColorStart[2] <= 0.0 ? 0 : (int)Math.Floor(lightColorStart[2] * 256.0)));
+            return Color.FromArgb(R, G, B);
         }
         public static string SearchForNextTermsInFile(StreamReader reader, string[] searchTerms, string abortTerm)
         {
@@ -282,7 +277,7 @@ namespace DayZeLib
             {
                 foreach (var prop in pObject.GetType().GetProperties())
                 {
-                    if(IgnoreNames == null)
+                    if (IgnoreNames == null)
                     {
                         if (prop.PropertyType == typeof(T))
                             propertyList.Add(prop.Name);
@@ -445,9 +440,9 @@ namespace DayZeLib
         public static DZE LoadFile(string fileName)
         {
             if (IsBinnedFile(fileName))
-                return ReadBinned (fileName);
+                return ReadBinned(fileName);
             else
-               return  ReadJson(fileName);
+                return ReadJson(fileName);
         }
         private static DZE ReadJson(string fileName)
         {

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text.Json.Serialization;
 
@@ -15,9 +14,9 @@ namespace DayZeLib
         public int EnableSpawnSelection { get; set; }
         public int SpawnOnTerritory { get; set; }
         public ExpansionStartingGear StartingGear { get; set; }
-        public int UseLoadouts { get; set;  }
+        public int UseLoadouts { get; set; }
         public BindingList<ExpansionSpawnGearLoadouts> MaleLoadouts { get; set; }
-        public BindingList<ExpansionSpawnGearLoadouts> FemaleLoadouts { get; set;}
+        public BindingList<ExpansionSpawnGearLoadouts> FemaleLoadouts { get; set; }
         public decimal SpawnHealthValue { get; set; }
         public decimal SpawnEnergyValue { get; set; }
         public decimal SpawnWaterValue { get; set; }
@@ -438,7 +437,7 @@ namespace DayZeLib
         {
 
         }
-        public  ExpansionStartingGearItem(string className, int quantity = -1, List<string> attachments = null)
+        public ExpansionStartingGearItem(string className, int quantity = -1, List<string> attachments = null)
         {
             ClassName = className;
             Quantity = quantity;

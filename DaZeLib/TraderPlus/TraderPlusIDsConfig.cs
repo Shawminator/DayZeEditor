@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeLib
@@ -41,7 +37,7 @@ namespace DayZeLib
         }
         public IDs getTraderbyID(int id)
         {
-            if(IDs.Any(x => x.Id == id))
+            if (IDs.Any(x => x.Id == id))
                 return IDs.Where(x => x.Id == id).First();
             MessageBox.Show("The following ID COuld not find matching NPC : " + id.ToString());
             return null;

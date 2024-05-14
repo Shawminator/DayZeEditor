@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace DayZeLib
 {
@@ -331,17 +328,17 @@ namespace DayZeLib
         public string StaminaBarColorLow { get; set; }
 
         public string NotifierDividerColor { get; set; }
-        
+
         public string TemperatureBurningColor { get; set; }
         public string TemperatureHotColor { get; set; }
         public string TemperatureIdealColor { get; set; }
         public string TemperatureColdColor { get; set; }
         public string TemperatureFreezingColor { get; set; }
-       
+
         public string NotifiersIdealColor { get; set; }
         public string NotifiersHalfColor { get; set; }
         public string NotifiersLowColor { get; set; }
-       
+
         public string ReputationBaseColor { get; set; }
         public string ReputationMedColor { get; set; }
         public string ReputationHighColor { get; set; }

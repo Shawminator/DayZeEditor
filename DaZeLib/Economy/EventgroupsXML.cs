@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace DayZeLib
 {
@@ -35,7 +30,7 @@ namespace DayZeLib
 
         public eventgroupdefGroup getassociatedgroup(string name)
         {
-            foreach(eventgroupdefGroup eventgroupdefGroup in group)
+            foreach (eventgroupdefGroup eventgroupdefGroup in group)
             {
                 if (eventgroupdefGroup.name == name)
                     return eventgroupdefGroup;

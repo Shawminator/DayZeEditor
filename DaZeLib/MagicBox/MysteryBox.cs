@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace DayZeLib
 {
@@ -27,7 +23,7 @@ namespace DayZeLib
         public void SetBoxNames()
         {
             int i = 0;
-            foreach(Possibleboxposition pbp in PossibleBoxPositions)
+            foreach (Possibleboxposition pbp in PossibleBoxPositions)
             {
                 pbp.BoxName = "possible Box Position " + i;
                 i++;

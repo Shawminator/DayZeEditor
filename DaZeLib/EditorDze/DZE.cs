@@ -2,11 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeLib
@@ -35,7 +31,7 @@ namespace DayZeLib
                 int Length = br.ReadInt32();
                 string bincheck = Helper.ReadCString(br, 12);
                 int fileversion = br.ReadInt32();
-               if (fileversion > Version)
+                if (fileversion > Version)
                 {
                     MessageBox.Show("The version number of the this dze file Newer\nPlease let me know to update the DayZeEditor");
                     return;
@@ -122,7 +118,7 @@ namespace DayZeLib
             Scale = br.ReadSingle();
             Flags = br.ReadInt32();
 
-            if(fileversion < 2)
+            if (fileversion < 2)
                 return;
 
             attachments_count = br.ReadInt32();
@@ -164,7 +160,7 @@ namespace DayZeLib
 
             if (fileversion < 5)
                 return;
-            
+
             Model = Helper.ReadCString(br, br.ReadInt32());
         }
     }

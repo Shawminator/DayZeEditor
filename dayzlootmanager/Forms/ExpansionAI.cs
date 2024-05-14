@@ -1,21 +1,15 @@
 ﻿using DarkUI.Forms;
 using DayZeLib;
-using FastColoredTextBoxNS;
-using Microsoft.VisualBasic.Logging;
-using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Reflection.Emit;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeEditor
@@ -135,7 +129,7 @@ namespace DayZeEditor
                     needtosave = true;
                 if (AIPatrolSettings.SetPatrolNames())
                     needtosave = true;
-                
+
             }
             AIPatrolSettings.GetAIPatrolWaypoints();
             AIPatrolSettings.Filename = AIPatrolSettingsPath;
@@ -175,7 +169,7 @@ namespace DayZeEditor
                 }
                 m_Spatial_Notifications.Filename = AIDynamicSettingsPath + "\\Notificationsettings.json";
                 SetupSpatialNotifications();
-                
+
                 if (!File.Exists(AIDynamicSettingsPath + "\\SpatialPlayerSettings.json") && IsDynamicAiLoaded == true)
                 {
                     m_Spatial_Players = new Spatial_Players();
@@ -335,7 +329,7 @@ namespace DayZeEditor
                 midifiedfiles.Add(Path.GetFileName(AIPatrolSettings.Filename));
             }
 
-            foreach(AILoadouts AILO in LoadoutList)
+            foreach (AILoadouts AILO in LoadoutList)
             {
                 if (AILO.isDirty)
                 {
@@ -352,7 +346,7 @@ namespace DayZeEditor
                 }
             }
 
-            if(IsDynamicAiLoaded)
+            if (IsDynamicAiLoaded)
             {
                 if (m_Spatial_Notifications.isDirty)
                 {
@@ -425,7 +419,7 @@ namespace DayZeEditor
         {
             useraction = false;
             LoadoutNameList = new BindingList<string>();
-            foreach(AILoadouts lo in LoadoutList)
+            foreach (AILoadouts lo in LoadoutList)
             {
                 LoadoutNameList.Add(Path.GetFileNameWithoutExtension(lo.Filename));
             }
@@ -436,7 +430,7 @@ namespace DayZeEditor
 
             StaticPatrolLoadoutsCB.DisplayMember = "DisplayName";
             StaticPatrolLoadoutsCB.ValueMember = "Value";
-            StaticPatrolLoadoutsCB.DataSource = new BindingList<string>(LoadoutNameList); 
+            StaticPatrolLoadoutsCB.DataSource = new BindingList<string>(LoadoutNameList);
             EventCrachPatrolLB.Refresh();
 
             LoadoutNameList2 = new BindingList<string>();
@@ -778,7 +772,7 @@ namespace DayZeEditor
                 RespawnTime = (decimal)-2.0,
                 ClassName = "Your Classname Goes Here"
             };
-            
+
             AIPatrolSettings.ObjectPatrols.Add(newpatrol);
             AIPatrolSettings.SetPatrolNames();
             AIPatrolSettings.isDirty = true;
@@ -967,7 +961,7 @@ namespace DayZeEditor
                 SetTitle = "Add Unit",
                 Setbutton = "Add"
             };
-            if(form.ShowDialog() == DialogResult.OK)
+            if (form.ShowDialog() == DialogResult.OK)
             {
                 CurrentEventcrashpatrol.Units.Add(form.NewFileName);
                 CrashUnitsLB.Invalidate();
@@ -1027,7 +1021,7 @@ namespace DayZeEditor
             StaticPatrolWayPointsLB.ValueMember = "Value";
             StaticPatrolWayPointsLB.DataSource = CurrentPatrol._waypoints;
 
-            if(CurrentPatrol._waypoints.Count == 0 )
+            if (CurrentPatrol._waypoints.Count == 0)
             {
                 StaticPatrolWaypointPOSXNUD.Visible = false;
                 StaticPatrolWaypointPOSYNUD.Visible = false;
@@ -1066,7 +1060,7 @@ namespace DayZeEditor
                     if (dialogResult == DialogResult.Yes)
                     {
                         CurrentPatrol._waypoints.Clear();
-                     }
+                    }
                     for (int i = 0; i < fileContent.Length; i++)
                     {
                         if (fileContent[i] == "") continue;
@@ -1097,7 +1091,7 @@ namespace DayZeEditor
                     {
                         CurrentPatrol._waypoints.Clear();
                     }
-                    foreach(Editorobject eo in importfile.EditorObjects)
+                    foreach (Editorobject eo in importfile.EditorObjects)
                     {
                         CurrentPatrol._waypoints.Add(new Vec3(eo.Position));
                     }
@@ -1282,7 +1276,7 @@ namespace DayZeEditor
         }
         private void StaticPatrolWaypointPOSZNUD_ValueChanged(object sender, EventArgs e)
         {
-            if(!useraction) return;
+            if (!useraction) return;
             CurrentWapypoint.Z = (float)StaticPatrolWaypointPOSZNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
@@ -1352,7 +1346,7 @@ namespace DayZeEditor
             StringBuilder SB = new StringBuilder();
             foreach (Vec3 array in CurrentPatrol._waypoints)
             {
-                SB.AppendLine("eAI_SurvivorM_Lewis|" + array.GetString() +  "|0.0 0.0 0.0");
+                SB.AppendLine("eAI_SurvivorM_Lewis|" + array.GetString() + "|0.0 0.0 0.0");
             }
             SaveFileDialog save = new SaveFileDialog();
             if (save.ShowDialog() == DialogResult.OK)
@@ -1375,7 +1369,7 @@ namespace DayZeEditor
                     Type = "eAI_SurvivorM_Jose",
                     DisplayName = "eAI_SurvivorM_Jose",
                     Position = array.getfloatarray(),
-                    Orientation = new float[] {0,0,0},
+                    Orientation = new float[] { 0, 0, 0 },
                     Scale = 1.0f,
                     Model = "",
                     Flags = 2147483647,
@@ -1398,7 +1392,7 @@ namespace DayZeEditor
         {
             if (CurrentPatrol._waypoints == null)
                 CurrentPatrol._waypoints = new BindingList<Vec3>();
-            CurrentPatrol._waypoints.Add(new Vec3( 0, 0, 0 ));
+            CurrentPatrol._waypoints.Add(new Vec3(0, 0, 0));
             AIPatrolSettings.isDirty = true;
             StaticPatrolWayPointsLB.Refresh();
             StaticPatrolWaypointPOSXNUD.Visible = true;
@@ -1415,10 +1409,10 @@ namespace DayZeEditor
             StaticPatrolWayPointsLB.Refresh();
             StaticPatrolWayPointsLB.SelectedIndex = -1;
             if (StaticPatrolWayPointsLB.Items.Count > 0)
-            { 
+            {
                 if (StaticPatrolWayPointsLB.Items.Count == index)
                 {
-                    StaticPatrolWayPointsLB.SelectedIndex = index -1;
+                    StaticPatrolWayPointsLB.SelectedIndex = index - 1;
                 }
                 else
                 {
@@ -1476,7 +1470,7 @@ namespace DayZeEditor
         {
             if (checkBox10.Checked)
             {
-                foreach(ExpansionAIPatrol aipatrol in AIPatrolSettings.Patrols)
+                foreach (ExpansionAIPatrol aipatrol in AIPatrolSettings.Patrols)
                 {
                     int c = 1;
                     foreach (Vec3 waypoints in aipatrol._waypoints)
@@ -1487,7 +1481,7 @@ namespace DayZeEditor
                         int eventradius = (int)(Math.Round(1f, 0) * scalevalue);
                         Point center = new Point(centerX, centerY);
                         Pen pen = new Pen(Color.Red, 4);
-                        if(aipatrol == CurrentPatrol)
+                        if (aipatrol == CurrentPatrol)
                             pen = new Pen(Color.Green, 4);
                         string num = c.ToString();
                         if (c == 1)
@@ -1864,7 +1858,7 @@ namespace DayZeEditor
         private void SpatialNotificationsAgeTimeNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            CurrentSpatialNotification.AgeTime = SpatialNotificationsAgeTimeNUD.Value;  
+            CurrentSpatialNotification.AgeTime = SpatialNotificationsAgeTimeNUD.Value;
             m_Spatial_Notifications.isDirty = true;
         }
         private void SpatailNotificationsMessageTypeCB_SelectedIndexChanged(object sender, EventArgs e)
@@ -1881,9 +1875,9 @@ namespace DayZeEditor
         }
         private void SpatialNotificationMessageTextTB_TextChanged(object sender, EventArgs e)
         {
-            if(!useraction) return;
+            if (!useraction) return;
             int index = SpatialNotificationMessageTextLB.SelectedIndex;
-            CurrentSpatialNotification.MessageText[index]  = SpatialNotificationMessageTextTB.Text;
+            CurrentSpatialNotification.MessageText[index] = SpatialNotificationMessageTextTB.Text;
             SpatialNotificationMessageTextLB.Invalidate();
             m_Spatial_Notifications.isDirty = true;
         }
@@ -2097,7 +2091,7 @@ namespace DayZeEditor
         }
         private void SpatialGroupsMessageTypeCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(!useraction) return;
+            if (!useraction) return;
             m_Spatial_Groups.MessageType = SpatialGroupsMessageTypeCB.SelectedIndex;
             m_Spatial_Groups.isDirty = true;
         }
@@ -2169,7 +2163,7 @@ namespace DayZeEditor
                     SpatialGroupsLB.DisplayMember = "DisplayName";
                     SpatialGroupsLB.ValueMember = "Value";
                     SpatialGroupsLB.DataSource = m_Spatial_Groups.Point;
-                    break; 
+                    break;
                 case 2:
                     SpatialGroupsLB.DisplayMember = "DisplayName";
                     SpatialGroupsLB.ValueMember = "Value";
@@ -2182,7 +2176,7 @@ namespace DayZeEditor
                     break;
 
             }
-            
+
         }
         private void SpatialGroupsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -2227,7 +2221,7 @@ namespace DayZeEditor
                 SpatialGroupsPointSpatial_MinCountNUD.Value = currentSpatialPoint.Spatial_MinCount;
                 SpatialGroupsPointSpatial_MaxCountNUD.Value = currentSpatialPoint.Spatial_MaxCount;
                 SpatialGroupsPointSpatial_HuntModeCB.SelectedIndex = currentSpatialPoint.Spatial_HuntMode - 1;
-                SpatialGroupsPointSpatial_FactionCB .SelectedIndex = SpatialGroupsPointSpatial_FactionCB.FindStringExact(currentSpatialPoint.Spatial_Faction);
+                SpatialGroupsPointSpatial_FactionCB.SelectedIndex = SpatialGroupsPointSpatial_FactionCB.FindStringExact(currentSpatialPoint.Spatial_Faction);
                 SpatialGroupsPointSpatial_LootableCB.SelectedIndex = currentSpatialPoint.Spatial_Lootable;
                 SpatialGroupsPointSpatial_ChanceNUD.Value = currentSpatialPoint.Spatial_Chance;
                 SpatialGroupsPointSpatial_MinAccuracyNUD.Value = currentSpatialPoint.Spatial_MinAccuracy;
@@ -2334,14 +2328,14 @@ namespace DayZeEditor
                         },
                         Spatial_MinCount = 0,
                         Spatial_MaxCount = 2,
-                        Spatial_HuntMode =  5,
+                        Spatial_HuntMode = 5,
                         Spatial_Faction = "Mercenaries",
                         Spatial_Lootable = 1,
                         Spatial_Chance = (decimal)0.3,
                         Spatial_MinAccuracy = (decimal)0.5,
                         Spatial_MaxAccuracy = (decimal)0.8,
                         Spatial_UnlimitedReload = 1,
-                        _Spatial_Position = new Vec3(0,0,0)
+                        _Spatial_Position = new Vec3(0, 0, 0)
                     };
                     m_Spatial_Groups.Point.Add(newpoint);
                     break;
@@ -2424,7 +2418,7 @@ namespace DayZeEditor
         }
         private void darkButton30_Click(object sender, EventArgs e)
         {
-            Vec3 newvec3 = new Vec3(0,0,0);
+            Vec3 newvec3 = new Vec3(0, 0, 0);
             switch (SpatialGroupsCB.SelectedIndex)
             {
                 case 2:
@@ -2499,7 +2493,7 @@ namespace DayZeEditor
                     case 1:
                         if (checkBox8.Checked == true)
                         {
-                            foreach(Spatial_Point sp in m_Spatial_Groups.Point)
+                            foreach (Spatial_Point sp in m_Spatial_Groups.Point)
                             {
                                 float scalevalue = DynamicAIPatrolScale * 0.05f;
                                 int centerX = (int)(Math.Round(sp._Spatial_Position.X) * scalevalue);
@@ -2507,7 +2501,7 @@ namespace DayZeEditor
                                 int eventradius = (int)((float)sp.Spatial_Radius * scalevalue);
                                 Point center = new Point(centerX, centerY);
                                 Pen pen = new Pen(Color.Red, 4);
-                                if(sp == currentSpatialPoint)
+                                if (sp == currentSpatialPoint)
                                     pen = new Pen(Color.Green, 4);
                                 getCircleDynamicAI(e.Graphics, pen, center, eventradius, "\n" + sp.Spatial_Name);
                             }
@@ -3207,7 +3201,7 @@ namespace DayZeEditor
                 {
                     string filePath = openFileDialog.FileName;
                     DZE importfile = DZEHelpers.LoadFile(filePath);
-                    switch(SpatialGroupsCB.SelectedIndex)
+                    switch (SpatialGroupsCB.SelectedIndex)
                     {
                         case 0:
                             MessageBox.Show("Spatial Groups dont have a trigger position or and spawn points.");
@@ -3309,7 +3303,7 @@ namespace DayZeEditor
                         Type = "GiftBox_Large_1",
                         DisplayName = "GiftBox_Large_1",
                         Position = currentSpatialPoint._Spatial_Position.getfloatarray(),
-                        Orientation = new float[] { 0,0,0 },
+                        Orientation = new float[] { 0, 0, 0 },
                         Scale = 1.0f,
                         Model = "",
                         Flags = 2147483647,
@@ -3332,7 +3326,7 @@ namespace DayZeEditor
                             Type = "GiftBox_Large_1",
                             DisplayName = "GiftBox_Large_1",
                             Position = currentSpatialLocation._Spatial_TriggerPosition.getfloatarray(),
-                            Orientation = new float[] {0,0,0},
+                            Orientation = new float[] { 0, 0, 0 },
                             Scale = 1.0f,
                             Model = "",
                             Flags = 2147483647,
@@ -3348,7 +3342,7 @@ namespace DayZeEditor
                             Type = "GiftBox_Small_1",
                             DisplayName = "GiftBox_Small_1",
                             Position = vec3.getfloatarray(),
-                            Orientation = new float[] { 0,0,0},
+                            Orientation = new float[] { 0, 0, 0 },
                             Scale = 1.0f,
                             Model = "",
                             Flags = 2147483647,

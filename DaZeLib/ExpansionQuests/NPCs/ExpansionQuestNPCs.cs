@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeLib
@@ -100,9 +97,9 @@ namespace DayZeLib
                 ID = NEWID,
                 ClassName = "ExpansionQuestNPCDenis",
                 Position = new decimal[] { 0, 0, 0 },
-                _Position = new Vec3(0,0,0),
+                _Position = new Vec3(0, 0, 0),
                 Orientation = new decimal[] { 0, 0, 0 },
-                _Orientation = new Vec3(0,0,0),
+                _Orientation = new Vec3(0, 0, 0),
                 NPCName = "Phil McCracken",
                 DefaultNPCText = "You Looking at me!!!",
                 Waypoints = new BindingList<decimal[]>(),
@@ -128,7 +125,7 @@ namespace DayZeLib
         }
         public ExpansionQuestNPCs GetNPCFromID(int id)
         {
-            if(NPCList.Any(x => x.ID == id))
+            if (NPCList.Any(x => x.ID == id))
                 return NPCList.First(x => x.ID == id);
             return null;
         }

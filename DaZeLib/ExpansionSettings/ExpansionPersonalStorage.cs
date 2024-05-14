@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeLib
@@ -87,8 +85,8 @@ namespace DayZeLib
                 ClassName = "ExpansionPersonalStorageChest",
                 DisplayName = "Personal Storage",
                 DisplayIcon = "Backpack",
-                Position = new decimal[] { 0,0,0},
-                Orientation = new decimal[] { 0,0,0},
+                Position = new decimal[] { 0, 0, 0 },
+                Orientation = new decimal[] { 0, 0, 0 },
                 QuestID = -1,
                 Reputation = 0,
                 Faction = "",

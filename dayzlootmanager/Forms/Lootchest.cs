@@ -7,10 +7,8 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeEditor
@@ -91,7 +89,7 @@ namespace DayZeEditor
             LootChestTable.LCPredefinedWeapons = sortedListInstance;
 
             checkBox1.Checked = LootChestTable.EnableDebug == 0 ? false : true;
-            DeleteLogsCB.Checked = LootChestTable.DeleteLogs == 0 ? false : true ;
+            DeleteLogsCB.Checked = LootChestTable.DeleteLogs == 0 ? false : true;
             checkBox2.Checked = LootChestTable.RandomQuantity == 0 ? false : true;
             MaxMagsNUD.Value = LootChestTable.MaxSpareMags;
 
@@ -378,7 +376,7 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                     currentLCPredefinedWeapons.magazine = l;
+                    currentLCPredefinedWeapons.magazine = l;
                     SetweaponInfo();
                     LootChestTable.isDirty = true;
                 }
@@ -430,7 +428,7 @@ namespace DayZeEditor
         }
         private void opticbatteryCB_CheckedChanged(object sender, EventArgs e)
         {
-            if(!useraction) { return; }
+            if (!useraction) { return; }
             currentLCPredefinedWeapons.opticbattery = opticbatteryCB.Checked == true ? 1 : 0;
             SetweaponInfo();
             LootChestTable.isDirty = true;
@@ -744,7 +742,7 @@ namespace DayZeEditor
             {
                 name = "LC_Table_",
                 Loot = new BindingList<string>()
-            }); 
+            });
             LCPredefinedWeaponsLB.SelectedIndex = -1;
             LCPredefinedWeaponsLB.SelectedIndex = LCPredefinedWeaponsLB.Items.Count - 1;
         }
@@ -872,7 +870,7 @@ namespace DayZeEditor
                     }
                     foreach (Editorobject eo in importfile.EditorObjects)
                     {
-                        if(!eo.Type.Contains("CJ_LootChest")) { return; }
+                        if (!eo.Type.Contains("CJ_LootChest")) { return; }
                         CurrentLootChestLocation.pos.Add(eo.Position[0].ToString("F6") + " " + eo.Position[1].ToString("F6") + " " + eo.Position[2].ToString("F6") + "|" + eo.Orientation[0].ToString("F6") + " " + eo.Orientation[1].ToString("F6") + " " + eo.Orientation[2].ToString("F6"));
                         posLB.SelectedIndex = -1;
                         posLB.SelectedIndex = posLB.Items.Count - 1;
@@ -998,7 +996,7 @@ namespace DayZeEditor
             {
                 ItemRarityTableCB.Visible = true;
                 ItemRarityTableCB.Checked = false;
-                
+
             }
             useraction = true;
         }

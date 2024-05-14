@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace DayZeLib
 {
@@ -34,11 +29,11 @@ namespace DayZeLib
 
         public eventposdefEventPos findeventgroup(string eventgroupname)
         {
-            foreach(eventposdefEvent eventposdefEvent in @event)
+            foreach (eventposdefEvent eventposdefEvent in @event)
             {
-                foreach(eventposdefEventPos eventposdefEventPos in eventposdefEvent.pos)
+                foreach (eventposdefEventPos eventposdefEventPos in eventposdefEvent.pos)
                 {
-                    if(eventposdefEventPos.group != null && eventposdefEventPos.group == eventgroupname)
+                    if (eventposdefEventPos.group != null && eventposdefEventPos.group == eventgroupname)
                     {
                         return eventposdefEventPos;
                     }
@@ -125,7 +120,7 @@ namespace DayZeLib
 
         private int rField;
 
-       
+
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public int smin

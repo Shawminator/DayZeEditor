@@ -1,14 +1,6 @@
 ﻿using DarkUI.Forms;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using DayZeLib;
+using System;
 
 namespace DayZeEditor
 {
@@ -20,11 +12,11 @@ namespace DayZeEditor
         }
         public decimal getFallspeedValue
         {
-            get { return numericUpDown1.Value;  }
+            get { return numericUpDown1.Value; }
         }
         public int getUsagevalue
         {
-            get { return (int)numericUpDown8.Value;  }
+            get { return (int)numericUpDown8.Value; }
         }
         public decimal getWeightValue
         {

@@ -3,18 +3,14 @@ using DayZeLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeEditor
 {
     public partial class AddfromPredefinedItems : DarkForm
     {
-        
+
         private void listBox_DrawItem(object sender, DrawItemEventArgs e)
         {
             if (e.Index < 0) return;
@@ -42,7 +38,7 @@ namespace DayZeEditor
         public BindingList<caparelootboxconfig> Rhlootboxconfig { get; set; }
         public BindingList<Lootpool> UtopiaAirdropLootPools { get; set; }
         public string predefweapon { get; set; }
-        public List<string>WeaponList { get; set; }
+        public List<string> WeaponList { get; set; }
         public bool ispredefinedweapon { get; set; }
         public bool isRHPredefinedWeapon { get; set; }
         public bool isLootList { get; set; }
@@ -93,7 +89,7 @@ namespace DayZeEditor
                 LCPredefinedWeaponsLB.DataSource = RHLPdefinedItems;
                 WeaponList = new List<string>();
             }
-            else if(isLootList)
+            else if (isLootList)
             {
                 LCPredefinedWeaponsLB.DisplayMember = "DisplayName";
                 LCPredefinedWeaponsLB.ValueMember = "Value";

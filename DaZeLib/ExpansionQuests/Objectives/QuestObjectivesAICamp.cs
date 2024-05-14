@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace DayZeLib
 {
-    public class QuestObjectivesAICamp: QuestObjectivesBase
+    public class QuestObjectivesAICamp : QuestObjectivesBase
     {
         public string ObjectiveText { get; set; }
         public int TimeLimit { get; set; }
@@ -23,7 +16,7 @@ namespace DayZeLib
 
         public override void SetVec3List()
         {
-            foreach(ExpansionQuestAISpawn aispawn in AISpawns)
+            foreach (ExpansionQuestAISpawn aispawn in AISpawns)
             {
                 aispawn.SetVec3List();
             }
@@ -36,7 +29,7 @@ namespace DayZeLib
             }
         }
 
-        public QuestObjectivesAICamp() 
+        public QuestObjectivesAICamp()
         {
             AISpawns = new BindingList<ExpansionQuestAISpawn>();
         }
@@ -46,6 +39,6 @@ namespace DayZeLib
         }
     }
 
-   
+
 
 }

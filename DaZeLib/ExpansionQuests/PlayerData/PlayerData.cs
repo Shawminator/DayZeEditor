@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeLib
@@ -65,7 +62,7 @@ namespace DayZeLib
         public int ExpansionQuestPersistentQuestDataCount;
         public BindingList<ExpansionQuestPersistentQuestData> QuestDatas;
 
-       public QuestPlayerData(string fileName)
+        public QuestPlayerData(string fileName)
         {
             using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read))
             using (BinaryReader br = new BinaryReader(fs))
@@ -73,7 +70,7 @@ namespace DayZeLib
                 if (br.ReadInt32() != DATAVERSION) return;
                 QuestDatas = new BindingList<ExpansionQuestPersistentQuestData>();
                 ExpansionQuestPersistentQuestDataCount = br.ReadInt32();
-                for(int i = 0; i < ExpansionQuestPersistentQuestDataCount; i ++)
+                for (int i = 0; i < ExpansionQuestPersistentQuestDataCount; i++)
                 {
                     QuestDatas.Add(new ExpansionQuestPersistentQuestData(br));
                 }
@@ -132,7 +129,7 @@ namespace DayZeLib
             Timestamp = br.ReadInt32();
             QuestObjectivesCount = br.ReadInt32();
             QuestObjectives = new BindingList<ExpansionQuestObjectiveData>();
-            for(int i = 0; i < QuestObjectivesCount; i++)
+            for (int i = 0; i < QuestObjectivesCount; i++)
             {
                 QuestObjectives.Add(new ExpansionQuestObjectiveData(br));
             }
@@ -193,10 +190,10 @@ namespace DayZeLib
             }
             ActionState = br.ReadInt32() == 1 ? true : false;
             TimeLimit = br.ReadInt32();
-            if(ObjectiveType == QuExpansionQuestObjectiveTypeestType.COLLECT || ObjectiveType == QuExpansionQuestObjectiveTypeestType.DELIVERY)
+            if (ObjectiveType == QuExpansionQuestObjectiveTypeestType.COLLECT || ObjectiveType == QuExpansionQuestObjectiveTypeestType.DELIVERY)
             {
                 deliveryCount = br.ReadInt32();
-                if(deliveryCount > 0)
+                if (deliveryCount > 0)
                 {
                     ExpansionQuestDeliveryObjectiveData = new BindingList<ExpansionQuestDeliveryObjectiveData>();
                     for (int j = 0; j < deliveryCount; j++)
@@ -205,7 +202,7 @@ namespace DayZeLib
                         {
                             Index = br.ReadInt32(),
                             Count = br.ReadInt32()
-                        }) ;
+                        });
                     }
                 }
 

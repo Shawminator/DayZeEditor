@@ -2,12 +2,8 @@
 using DayZeLib;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinSCP;
 
@@ -37,7 +33,7 @@ namespace DayZeEditor
                 {
                     List<string> alpha = "DEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray().Select(c => c.ToString()).ToList();
                     List<string> DriveList = Environment.GetLogicalDrives().ToList();
-                    for(int i = 0; i < DriveList.Count; i++)
+                    for (int i = 0; i < DriveList.Count; i++)
                     {
                         DriveList[i] = DriveList[i].Replace(":\\", "");
                     }
@@ -53,7 +49,7 @@ namespace DayZeEditor
                 return darkComboBox1.GetItemText(darkComboBox1.SelectedItem);
             }
         }
-        
+
 
         public Session session { get; set; }
         public string CurrentRemoteDirectory { get; private set; }
@@ -152,30 +148,25 @@ namespace DayZeEditor
                 listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             }
         }
-
         private void darkButton1_Click(object sender, EventArgs e)
         {
             darkTextBox1.Text = CurrentRemoteDirectory;
         }
-
         private void darkButton2_Click(object sender, EventArgs e)
         {
             darkTextBox2.Text = CurrentRemoteDirectory;
         }
-
         private void darkTextBox1_TextChanged(object sender, EventArgs e)
         {
             ProfileDirecrtory = darkTextBox1.Text;
         }
-
         private void darkTextBox2_TextChanged(object sender, EventArgs e)
         {
             MpMissionDirectory = darkTextBox2.Text;
         }
-
         private void IsConsoleCB_CheckedChanged(object sender, EventArgs e)
         {
-            if(IsConsoleCB.Checked)
+            if (IsConsoleCB.Checked)
             {
                 Isconsole = true;
                 darkTextBox1.Visible = false;
@@ -186,7 +177,6 @@ namespace DayZeEditor
                 darkTextBox1.Visible = true;
             }
         }
-
         private void darkButton3_Click(object sender, EventArgs e)
         {
 

@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Numerics;
-using System.Security.Cryptography;
-using System.Security.Policy;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Windows.Forms;
@@ -55,7 +51,7 @@ namespace DayZeLib
         {
             MPG_Spawner_PointsConfigs = new BindingList<MPG_Spawner_PointsConfig>();
             Console.Write("## Starting MPG Spawner points files ##" + Environment.NewLine);
-            foreach (string file in pointsConfigs) 
+            foreach (string file in pointsConfigs)
             {
                 MPG_Spawner_PointsConfig MPG_Spawner_PointsConfig = new MPG_Spawner_PointsConfig();
                 try
@@ -90,7 +86,7 @@ namespace DayZeLib
             List<int> NumberofSpanerspoints = new List<int>();
             foreach (MPG_Spawner_PointsConfig Spawnerfile in MPG_Spawner_PointsConfigs)
             {
-                foreach(MPG_Spawner_PointConfig mPG_Spawner_PointConfig in Spawnerfile.Points)
+                foreach (MPG_Spawner_PointConfig mPG_Spawner_PointConfig in Spawnerfile.Points)
                 {
                     NumberofSpanerspoints.Add(mPG_Spawner_PointConfig.pointId);
                 }
@@ -117,7 +113,7 @@ namespace DayZeLib
             MPG_Spawner_PointsConfigs.Remove(MPG_Spawner_PointsConfigfordelete);
             isDirty = true;
             List<int> Removedid = new List<int>();
-            foreach(MPG_Spawner_PointConfig removepoint in MPG_Spawner_PointsConfigfordelete.Points)
+            foreach (MPG_Spawner_PointConfig removepoint in MPG_Spawner_PointsConfigfordelete.Points)
             {
                 Removedid.Add(removepoint.pointId);
             }
@@ -125,7 +121,7 @@ namespace DayZeLib
             {
                 foreach (MPG_Spawner_PointConfig point in Pointsfile.Points)
                 {
-                    if(point.triggerDependencies.Intersect(Removedid).Any())
+                    if (point.triggerDependencies.Intersect(Removedid).Any())
                     {
                         foreach (int i in Removedid)
                         {
@@ -173,7 +169,7 @@ namespace DayZeLib
             int Removedid = currentSpawnerPoint.pointId;
             foreach (MPG_Spawner_PointsConfig Pointsfile in MPG_Spawner_PointsConfigs)
             {
-                if(Pointsfile.Points.Any(x => x.pointId == Removedid))
+                if (Pointsfile.Points.Any(x => x.pointId == Removedid))
                 {
                     Pointsfile.Points.Remove(currentSpawnerPoint);
                     Pointsfile.isDirty = true;
@@ -253,7 +249,7 @@ namespace DayZeLib
 
         public void GetAlllists(List<MPG_Spawner_PointConfig> mPG_Spawner_PointConfigs)
         {
-            foreach(MPG_Spawner_PointConfig file in Points)
+            foreach (MPG_Spawner_PointConfig file in Points)
             {
                 file.getalllists(mPG_Spawner_PointConfigs);
                 file.getTriggerposition();
@@ -360,7 +356,7 @@ namespace DayZeLib
         public void getSpawnpositions()
         {
             _spawnPositions = new BindingList<Vec3PandR>();
-            foreach(string s in spawnPositions)
+            foreach (string s in spawnPositions)
             {
                 _spawnPositions.Add(new Vec3PandR(s));
             }
@@ -368,7 +364,7 @@ namespace DayZeLib
         public void setSpawnpositions()
         {
             spawnPositions = new BindingList<string>();
-            foreach(Vec3PandR vec3PandR in _spawnPositions)
+            foreach (Vec3PandR vec3PandR in _spawnPositions)
             {
                 spawnPositions.Add(vec3PandR.GetString());
             }
@@ -484,7 +480,7 @@ namespace DayZeLib
         public MPG_Spawner_mappingData()
         {
             mappingObjects = new BindingList<ITEM_SpawnerObject>();
-            
+
         }
     };
     public class ITEM_SpawnerObject
@@ -500,5 +496,5 @@ namespace DayZeLib
             return name;
         }
     };
-    
+
 }

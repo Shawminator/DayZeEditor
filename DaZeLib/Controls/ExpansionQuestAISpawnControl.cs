@@ -2,14 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeEditor
@@ -45,7 +43,7 @@ namespace DayZeEditor
         }
 
         private bool _isdirty;
-        public bool isDirty 
+        public bool isDirty
         {
             get
             {
@@ -65,16 +63,16 @@ namespace DayZeEditor
         public void SetAICountReadOnly(bool ro)
         {
             ObjectivesAICampAISpawnsNumberOfAINUD.ReadOnly = ro;
-            ObjectivesAICampAISpawnsNumberOfAINUD.Increment = 0; 
+            ObjectivesAICampAISpawnsNumberOfAINUD.Increment = 0;
         }
 
         private ExpansionQuestAISpawn _currentAISpawn { get; set; }
-        public ExpansionQuestAISpawn currentAISpawn 
+        public ExpansionQuestAISpawn currentAISpawn
         {
             get
             {
                 return _currentAISpawn;
-            } 
+            }
             set
             {
                 _currentAISpawn = value;
@@ -89,7 +87,7 @@ namespace DayZeEditor
         public ExpansionQuestAISpawnControl()
         {
             InitializeComponent();
-            
+
         }
         public void setuplists()
         {
@@ -101,7 +99,7 @@ namespace DayZeEditor
             if (_currentAISpawn == null) return;
 
             useraction = false;
-           
+
             ObjectivesAICampAISpawnsNumberOfAINUD.Value = _currentAISpawn.NumberOfAI;
             ObjectivesAICampAISpawnsNPCNameTB.Text = _currentAISpawn.NPCName;
             ObjectivesAICampAISpawnsBehaviourCB.SelectedIndex = _currentAISpawn.Behaviour;
@@ -318,7 +316,7 @@ namespace DayZeEditor
         }
         private void ObjectivesAiCampAISpawnsWaypointAddButton_Click(object sender, EventArgs e)
         {
-            _currentAISpawn._Waypoints.Add(new Vec3(0,0,0));
+            _currentAISpawn._Waypoints.Add(new Vec3(0, 0, 0));
             isDirty = true;
         }
         private void ObjectivesAiCampAISpawnsWaypointRemoveButton_Click(object sender, EventArgs e)
@@ -429,7 +427,7 @@ namespace DayZeEditor
         }
         private void ObjectivesAICampAISpawnsWayPointsLB_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            if(ObjectivesAICampAISpawnsWayPointsLB.SelectedItems.Count <=0) { return; }
+            if (ObjectivesAICampAISpawnsWayPointsLB.SelectedItems.Count <= 0) { return; }
             useraction = false;
             CurrentWapypoint = ObjectivesAICampAISpawnsWayPointsLB.SelectedItem as Vec3;
             numericUpDown9.Value = (decimal)CurrentWapypoint.X;

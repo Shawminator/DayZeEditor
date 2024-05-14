@@ -2,19 +2,16 @@
 using DayZeLib;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeEditor
 {
     public partial class AddNewTypes : DarkForm
     {
-        public Project currentproject { get;  set; }
+        public Project currentproject { get; set; }
         public string TypesName { get; private set; }
         public string CustomLocation { get; private set; }
         public bool newlocation { get; set; }
@@ -36,7 +33,7 @@ namespace DayZeEditor
             comboBox1.DataSource = currentproject.limitfefinitions.lists.categories;
             if (!newlocation)
             {
-                
+
                 darkButton1.Visible = false;
                 CustomFolderTB.Visible = false;
                 textBox3.Visible = false;
@@ -66,7 +63,7 @@ namespace DayZeEditor
 
         private void darkButton2_Click(object sender, EventArgs e)
         {
-            if(tabControl1.SelectedIndex == 0)
+            if (tabControl1.SelectedIndex == 0)
                 modtypes = richTextBox1.Lines.ToList();
             else
             {
@@ -79,11 +76,11 @@ namespace DayZeEditor
                     sb.Append("<lifetime>" + numericUpDown3.Value.ToString() + "</lifetime>" + Environment.NewLine);
                     sb.Append("<restock>" + numericUpDown4.Value.ToString() + "</restock>" + Environment.NewLine);
                     sb.Append("<min>" + numericUpDown2.Value.ToString() + "</min>" + Environment.NewLine);
-                    sb.Append("<quantmin>" + numericUpDown5.Value.ToString() + "</quantmin>"  + Environment.NewLine);
-                    sb.Append("<quantmax>" + numericUpDown6.Value.ToString() + "</quantmax>"  + Environment.NewLine);
-                    sb.Append("<cost>" + numericUpDown7.Value.ToString() + "</cost>"  + Environment.NewLine);
-                    sb.Append("<flags count_in_cargo = \"0\" count_in_hoarder = \"0\" count_in_map = \"1\" count_in_player = \"0\" crafted = \"0\" deloot = \"0\"/>"  + Environment.NewLine);
-                    sb.Append("<category name=\"" + c.ToString() + "\"/>"  + Environment.NewLine);
+                    sb.Append("<quantmin>" + numericUpDown5.Value.ToString() + "</quantmin>" + Environment.NewLine);
+                    sb.Append("<quantmax>" + numericUpDown6.Value.ToString() + "</quantmax>" + Environment.NewLine);
+                    sb.Append("<cost>" + numericUpDown7.Value.ToString() + "</cost>" + Environment.NewLine);
+                    sb.Append("<flags count_in_cargo = \"0\" count_in_hoarder = \"0\" count_in_map = \"1\" count_in_player = \"0\" crafted = \"0\" deloot = \"0\"/>" + Environment.NewLine);
+                    sb.Append("<category name=\"" + c.ToString() + "\"/>" + Environment.NewLine);
                     sb.Append("</type>");
                 }
                 modtypes = sb.ToString().Split(new string[] { Environment.NewLine }, StringSplitOptions.None).ToList();

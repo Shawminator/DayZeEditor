@@ -1,22 +1,14 @@
 ﻿using DarkUI.Forms;
+using SevenZipExtractor;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DayZeLib;
 using System.Net;
-using System.Text.RegularExpressions;
-using WinSCP;
-using System.Threading;
 using System.Text.Json;
-using System.IO.Compression;
-using SevenZipExtractor;
+using System.Threading;
+using System.Windows.Forms;
+using WinSCP;
 
 namespace DayZeEditor
 {
@@ -46,7 +38,7 @@ namespace DayZeEditor
         public ProjectPanel()
         {
             InitializeComponent();
-            
+
         }
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
@@ -85,7 +77,7 @@ namespace DayZeEditor
                 TextBox tb = this.FTPPasswordTB.Control as TextBox;
                 tb.PasswordChar = '*';
             }
-            
+
             getActiveProject();
             LoadProjectstoList();
             LoadFileExplorer();
@@ -97,13 +89,13 @@ namespace DayZeEditor
         {
             Console.WriteLine("Checking GitHub For Newest Release.....");
             GitHub info = getavaiableMapAddons();
-            foreach(Asset ass in info.assets)
+            foreach (Asset ass in info.assets)
             {
                 ListViewItem item = new ListViewItem();
                 item.Text = ass.name;
                 item.Tag = ass;
                 string name = ass.name.Split(new string[] { "Map" }, StringSplitOptions.None)[0];
-                if(File.Exists(Application.StartupPath + "\\Maps\\" + name + "_Map.png"))
+                if (File.Exists(Application.StartupPath + "\\Maps\\" + name + "_Map.png"))
                     item.SubItems.Add("Installed");
                 listView3.Items.Add(item);
             }
@@ -298,7 +290,7 @@ namespace DayZeEditor
                     }
                     SetActiveProject(project);
                     LoadProjectstoList();
-                    
+
                     load.Abort();
                 }
             }
@@ -377,7 +369,7 @@ namespace DayZeEditor
         {
             string[] MapSizeList = File.ReadAllLines("Maps/MapSizes.txt");
             Dictionary<string, int> maplist = new Dictionary<string, int>();
-            foreach(string line in MapSizeList)
+            foreach (string line in MapSizeList)
             {
                 maplist.Add(line.Split(':')[0], Convert.ToInt32(line.Split(':')[1]));
             }
@@ -388,28 +380,6 @@ namespace DayZeEditor
                 return size;
             }
             return 0;
-
-            //switch (mpmissionpath.ToLower().Split('.')[1])
-            //{
-            //    case "iztek":
-            //        return 8192;
-            //    case "chernarusplus":
-            //    case "chernarusplusgloom":
-            //    case "banov":
-            //        return 15360;
-            //    case "namalsk":
-            //    case "enoch":
-            //    case "enochgloom":
-            //    case "takistanplus":
-            //    case "esseker":
-            //        return 12800;
-            //    case "deerisle":
-            //        return 16384;
-            //    case "rostow":
-            //        return 14336;
-            //    default:
-            //        return 0;
-            //}
         }
         private void ProjectTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -444,7 +414,7 @@ namespace DayZeEditor
         }
         private void darkButton1_Click(object sender, EventArgs e)
         {
-            if(listBox1.SelectedItem == null) { return; }
+            if (listBox1.SelectedItem == null) { return; }
 
             string profilename = listBox1.GetItemText(listBox1.SelectedItem);
             Project p = listBox1.SelectedItem as Project;
@@ -484,7 +454,7 @@ namespace DayZeEditor
         }
         private void darkButton5_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Yes will remove project and all files in the project folder\nNo will only remove the project from the editor\nCancel will return with no changes" , "Delete All Files.....", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+            DialogResult result = MessageBox.Show("Yes will remove project and all files in the project folder\nNo will only remove the project from the editor\nCancel will return with no changes", "Delete All Files.....", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
             {
                 string profilename = listBox1.GetItemText(listBox1.SelectedItem);
@@ -633,13 +603,13 @@ namespace DayZeEditor
         }
         private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if(!session.Opened) { MessageBox.Show("No Remote Session.....");return; }
+            if (!session.Opened) { MessageBox.Show("No Remote Session....."); return; }
             ListViewHitTestInfo info = listView1.HitTest(e.X, e.Y);
             ListViewItem item = info.Item;
 
             if (item != null)
             {
-                
+
                 if (item.Tag is RemoteFileInfo)
                 {
 
@@ -647,7 +617,7 @@ namespace DayZeEditor
                     DisplayFTPLayout(fileinfo);
 
                 }
-                
+
             }
         }
         private void listView2_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -744,7 +714,7 @@ namespace DayZeEditor
         private void LoadFileExplorer()
         {
             listView2.Items.Clear();
-            if(ActiveProject == null) { return; }
+            if (ActiveProject == null) { return; }
             label1.Text = ActiveProject.projectFullName;
             DirectoryInfo dir = new DirectoryInfo(ActiveProject.projectFullName);
             CurrentProjectDirectory = dir;
@@ -796,7 +766,6 @@ namespace DayZeEditor
             }
             listView2.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
-
 
         private void getrootdir()
         {
@@ -890,16 +859,16 @@ namespace DayZeEditor
         {
             TransferOptions option = new TransferOptions();
             option.OverwriteMode = OverwriteMode.Overwrite;
-            session.GetFileToDirectory(focusedremoteItem.FullName, CurrentProjectDirectory.FullName,false, option);
+            session.GetFileToDirectory(focusedremoteItem.FullName, CurrentProjectDirectory.FullName, false, option);
             DisplayDirlayout(CurrentProjectDirectory);
         }
         private void downloadFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!Directory.Exists(CurrentProjectDirectory.FullName + "//" + Path.GetFileNameWithoutExtension(focusedremoteItem.FullName)))
                 Directory.CreateDirectory(CurrentProjectDirectory.FullName + "//" + Path.GetFileNameWithoutExtension(focusedremoteItem.FullName));
-            session.GetFilesToDirectory(focusedremoteItem.FullName, CurrentProjectDirectory.FullName + "//" + Path.GetFileNameWithoutExtension(focusedremoteItem.FullName) );
+            session.GetFilesToDirectory(focusedremoteItem.FullName, CurrentProjectDirectory.FullName + "//" + Path.GetFileNameWithoutExtension(focusedremoteItem.FullName));
             DisplayDirlayout(CurrentProjectDirectory);
-           
+
         }
         private void deleteFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -951,7 +920,7 @@ namespace DayZeEditor
         }
         private void darkButton3_Click(object sender, EventArgs e)
         {
-            
+
             Project p = listBox1.SelectedItem as Project;
             if (ActiveProject == p)
             {

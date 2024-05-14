@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
-using System.Xml.Linq;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
@@ -21,7 +17,7 @@ namespace DayZeLib
     public class BoolConverter : JsonConverter<bool>
     {
         public override void Write(Utf8JsonWriter writer, bool value, JsonSerializerOptions options) =>
-            writer.WriteNumberValue(value ? 1: 0);
+            writer.WriteNumberValue(value ? 1 : 0);
 
         public override bool Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
@@ -49,11 +45,11 @@ namespace DayZeLib
             Console.Write("serializing " + Path.GetFileName(Filename));
             try
             {
-                using (var myFileStream = new FileStream(filename, FileMode.Open, FileAccess.Read ,FileShare.Read))
+                using (var myFileStream = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
                     // Call the Deserialize method and cast to the object type.
                     economycore = (economycore)mySerializer.Deserialize(myFileStream);
-                    if(economycore != null)
+                    if (economycore != null)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("  OK....");
@@ -71,7 +67,7 @@ namespace DayZeLib
                 {
                     form.Invoke(new Action(() => { form.Close(); }));
                 }
-                if(ex.InnerException == null)
+                if (ex.InnerException == null)
                     MessageBox.Show(ex.Message.ToString());
                 else
                     MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
@@ -892,7 +888,7 @@ namespace DayZeLib
                         try
                         {
                             playerspawnpoints = (playerspawnpoints)mySerializer.Deserialize(myFileStream);
-                            
+
                         }
                         catch (Exception ex)
                         {

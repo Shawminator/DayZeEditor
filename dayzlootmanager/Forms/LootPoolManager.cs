@@ -3,15 +3,12 @@ using DayZeLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeEditor
@@ -566,7 +563,7 @@ namespace DayZeEditor
                 List<string> predefweapon = form.WeaponList;
                 foreach (string weapon in predefweapon)
                 {
-                     CurrentRHLPRewardTables.Rewards.Add(weapon);
+                    CurrentRHLPRewardTables.Rewards.Add(weapon);
                     LootPool.isDirty = true;
                 }
             }
@@ -723,7 +720,7 @@ namespace DayZeEditor
             }
             spawnabletypesType useablespantypes = ST.Last();
 
-            foreach(var item in useablespantypes.Items)
+            foreach (var item in useablespantypes.Items)
             {
                 if (item is spawnabletypesTypeAttachments)
                 {
@@ -762,7 +759,7 @@ namespace DayZeEditor
                     }
                 }
             }
-            
+
         }
 
         private void darkButton21_Click(object sender, EventArgs e)
@@ -776,9 +773,9 @@ namespace DayZeEditor
                         continue;
                     if (sp.Items.Count() > 0)
                     {
-                        if(sp.ContainsAttchorcargo())
+                        if (sp.ContainsAttchorcargo())
                         {
-                            if(ST.Any(x => x.name == sp.name))
+                            if (ST.Any(x => x.name == sp.name))
                             {
                                 spawnabletypesType remove = ST.FirstOrDefault(x => x.name == sp.name);
                                 ST.Remove(remove);
@@ -789,7 +786,7 @@ namespace DayZeEditor
                     }
                 }
             }
-            foreach(spawnabletypesType sp in ST)
+            foreach (spawnabletypesType sp in ST)
             {
                 capareLPdefinedItems newitem = new capareLPdefinedItems()
                 {
@@ -837,7 +834,7 @@ namespace DayZeEditor
                         }
                     }
                 }
-                
+
                 LootPool.CapareLPdefinedItems.Add(newitem);
                 LootPool.isDirty = true;
             }
@@ -956,7 +953,7 @@ namespace DayZeEditor
                 caparelploottable newtable1 = new caparelploottable()
                 {
                     LootItems = new BindingList<string>()
-                    
+
                 };
                 caparelploottable newtable1Ammo = new caparelploottable()
                 {
@@ -1047,7 +1044,7 @@ namespace DayZeEditor
                         }
                     }
                 }
-                if(newtable1.LootItems.Count > 0)
+                if (newtable1.LootItems.Count > 0)
                     LootPool.CapareLPLootTables.Add(newtable1);
                 if (newtable1Ammo.LootItems.Count > 0)
                     LootPool.CapareLPLootTables.Add(newtable1Ammo);

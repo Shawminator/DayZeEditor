@@ -30,7 +30,7 @@ namespace DayZeLib
         [Description("limited uses before becoming a normal car key (MasterKeyUses)")]
         Limited_Uses = 1,
         [Description("enewable with a electronicalrepairkit or a keygrinder (will also use MasterKeyUses)")]
-        Renewable = 2, 
+        Renewable = 2,
         [Description("renewable with a keygrinder (will also use MasterKeyUses). Currently only configured for MuchCarKeys, a futur update will also add a Expansion Grinder.")]
         Renewable_With_Grinder = 2,
     };

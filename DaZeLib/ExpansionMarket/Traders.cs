@@ -7,9 +7,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DayZeLib;
 
 namespace DayZeLib
 {
@@ -71,7 +69,7 @@ namespace DayZeLib
                 }
                 catch
                 {
-                     MessageBox.Show("there is An error in the following file\n" + file.FullName);
+                    MessageBox.Show("there is An error in the following file\n" + file.FullName);
 
                 }
             }
@@ -81,17 +79,17 @@ namespace DayZeLib
             bool printmessage = false;
             foreach (Categories cat in marketCats.CatList)
             {
-                foreach(marketItem item in cat.Items)
+                foreach (marketItem item in cat.Items)
                 {
                     if (duplist.Any(x => x.Split(',')[0] == item.ClassName))
                     {
                         printmessage = true;
                         sb.Append(duplist.First(x => x.Split(',')[0] == item.ClassName) + "," + cat.DisplayName + Environment.NewLine);
-                    }                        
+                    }
                     duplist.Add(item.ClassName + "," + cat.DisplayName);
                 }
             }
-            if(printmessage)
+            if (printmessage)
             {
                 MessageBox.Show(sb.ToString());
             }
@@ -102,7 +100,7 @@ namespace DayZeLib
         {
             foreach (Traders t in Traderlist)
             {
-                if(t.ListItems.Any(x => x.ClassName == removeitem))
+                if (t.ListItems.Any(x => x.ClassName == removeitem))
                 {
                     t.removetraderitem(removeitem);
                 }
@@ -110,7 +108,7 @@ namespace DayZeLib
         }
         public void removelistfromtrader(List<string> toremovefromtraders)
         {
-           foreach(string item in toremovefromtraders)
+            foreach (string item in toremovefromtraders)
             {
                 RemoveItemFromTrader(item);
             }
@@ -145,13 +143,13 @@ namespace DayZeLib
         }
         public void CheckCategories(MarketCategories marketCats)
         {
-            
-            
+
+
         }
         public void SortbyDisplayName()
         {
             var sortedListInstance = new BindingList<Traders>(Traderlist.OrderBy(x => x.DisplayName).ToList());
-            foreach(Traders t in sortedListInstance)
+            foreach (Traders t in sortedListInstance)
             {
                 t.SortByDisplayName = true;
             }
@@ -184,7 +182,7 @@ namespace DayZeLib
         public BindingList<string> Categories { get; set; }
         public Dictionary<string, int> Items { get; set; }
 
- 
+
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -264,7 +262,7 @@ namespace DayZeLib
             {
                 string[] results = cat.Split(':');
                 canBuyCansell cbs = canBuyCansell.CanBuyAndsell;
-                if(results.Length == 2)
+                if (results.Length == 2)
                 {
                     cbs = (canBuyCansell)Convert.ToInt32(results[1]);
                 }
@@ -288,11 +286,11 @@ namespace DayZeLib
                 {
                     MessageBox.Show(Path.GetFileName(Filename) + " Conatins and category enrty for " + results[0] + " That doesn not exist in the market folder");
                 }
-                
+
             }
             foreach (KeyValuePair<string, int> item in Items)
             {
-                if(initialList.Any(x => x.ClassName == item.Key))
+                if (initialList.Any(x => x.ClassName == item.Key))
                 {
                     TradersItem eti = initialList.First(x => x.ClassName == item.Key.ToLower());
                     eti.buysell = (canBuyCansell)item.Value;
@@ -303,14 +301,14 @@ namespace DayZeLib
                     TradersItem ti = new TradersItem() { ClassName = item.Key.ToLower(), buysell = (canBuyCansell)item.Value, CatName = catname };
                     initialList.Add(ti);
                 }
-                
+
             }
             ListItems = new BindingList<TradersItem>(new BindingList<TradersItem>(initialList.OrderBy(x => x.ClassName).ToList()));
             return savefile;
         }
         public void SortList()
         {
-            
+
         }
         public void ConvertToDict(MarketCategories MarketCats)
         {
@@ -344,7 +342,7 @@ namespace DayZeLib
                 if (Helper.ContainsAllItems(tItems, TIlist))
                 {
                     List<int> buysell = new List<int>();
-                    foreach(String Bitem in TIlist)
+                    foreach (String Bitem in TIlist)
                     {
                         TradersItem ti = ListItems.First(x => x.ClassName == Bitem);
                         buysell.Add((int)ti.buysell);
@@ -359,33 +357,33 @@ namespace DayZeLib
                     {
                         TradersItem ti = ListItems.First(x => x.ClassName == B2item);
                         marketItem item = MarketCats.getitemfromcategory(ti.ClassName);
-                        foreach(string attach in item.SpawnAttachments)
+                        foreach (string attach in item.SpawnAttachments)
                         {
-                            if(!tItems.Contains(attach) && !Items.ContainsKey(attach))
+                            if (!tItems.Contains(attach) && !Items.ContainsKey(attach))
                             {
                                 bool additem = true;
-                                foreach(string name in tItems)
+                                foreach (string name in tItems)
                                 {
                                     marketItem vitem = MarketCats.getitemfromcategory(attach);
-                                    if(vitem != null && vitem.Variants.Contains(attach))
+                                    if (vitem != null && vitem.Variants.Contains(attach))
                                     {
                                         additem = false;
                                         break;
                                     }
                                 }
-                                if(additem)
+                                if (additem)
                                     Items.Add(attach, (int)canBuyCansell.Attchment);
                             }
                         }
                         donetItems.Add(ti.ClassName);
-                        if(ti.buysell != cbs)
+                        if (ti.buysell != cbs)
                         {
                             Items.Add(ti.ClassName, (int)ti.buysell);
                         }
                     }
                 }
             }
-            foreach(string item in donetItems)
+            foreach (string item in donetItems)
             {
                 tItems.Remove(item);
             }
@@ -393,16 +391,16 @@ namespace DayZeLib
             {
                 TradersItem TI = ListItems.First(x => x.ClassName == litem);
                 marketItem item = MarketCats.getitemfromcategory(TI.ClassName);
-                if(item.SpawnAttachments.Count > 0)
+                if (item.SpawnAttachments.Count > 0)
                 {
                     foreach (string attachment in item.SpawnAttachments)
                     {
                         if (!tItems.Contains(attachment) && !Items.ContainsKey(attachment))
                         {
                             bool isvarient = false;
-                            foreach(string titem in tItems)
+                            foreach (string titem in tItems)
                             {
-                                if(MarketCats.getitemfromcategory(titem).Variants.Contains(attachment))
+                                if (MarketCats.getitemfromcategory(titem).Variants.Contains(attachment))
                                 {
                                     if (tItems.Contains(MarketCats.getitemfromcategory(titem).ClassName))
                                     {
@@ -411,12 +409,12 @@ namespace DayZeLib
                                     }
                                 }
                             }
-                            if(!isvarient)
+                            if (!isvarient)
                                 Items.Add(attachment, 3);
                         }
                     }
                 }
-                if(cats.Contains(TI.CatName) && TI.buysell == canBuyCansell.CanBuyAndsell) { continue; }
+                if (cats.Contains(TI.CatName) && TI.buysell == canBuyCansell.CanBuyAndsell) { continue; }
                 Items.Add(TI.ClassName, (int)TI.buysell);
             }
             Categories = new BindingList<string>(cats.ToList());
@@ -479,7 +477,7 @@ namespace DayZeLib
         CanBuyAndsell = 1,
         CanOnlySell = 2,
         Attchment = 3
-   }
+    }
 
     public class TraderListItem
     {

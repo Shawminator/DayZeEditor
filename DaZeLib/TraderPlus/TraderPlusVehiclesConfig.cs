@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace DayZeLib
 {
@@ -30,7 +25,7 @@ namespace DayZeLib
         public bool getInsurance(TraderPlusInsuranceConfig traderPlusInsuranceConfig)
         {
             bool needtosave = false;
-            foreach(Vehiclespart vehicle in VehiclesParts)
+            foreach (Vehiclespart vehicle in VehiclesParts)
             {
                 Insurance insurance = traderPlusInsuranceConfig.getinsurancebyCar(vehicle.VehicleName);
                 if (insurance == null)

@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace DayZeLib
 {
@@ -89,7 +87,7 @@ namespace DayZeLib
             foreach (VehicleParts Vehicles in Vehicles)
             {
                 sb.Append("<VehicleParts> " + Vehicles.ClasssName + Environment.NewLine);
-                foreach(string vp in Vehicles.Parts)
+                foreach (string vp in Vehicles.Parts)
                 {
                     sb.Append("\t" + vp + Environment.NewLine);
                 }
@@ -107,7 +105,7 @@ namespace DayZeLib
     public class VehicleParts
     {
         public string ClasssName { get; set; }
-        public BindingList<string>Parts { get; set; }
+        public BindingList<string> Parts { get; set; }
 
         public void AddPart(string partname)
         {

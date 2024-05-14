@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace DayZeLib
 {
@@ -15,8 +11,8 @@ namespace DayZeLib
         public int CreateLogs { get; set; }
         public BindingList<Charge> Charges { get; set; }
         public BindingList<Tier> Tiers { get; set; }
-        public Dictionary<string,string> DestroyableObjects { get; set; }
-        
+        public Dictionary<string, string> DestroyableObjects { get; set; }
+
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -41,7 +37,7 @@ namespace DayZeLib
             DestroyableObjects.Clear();
             foreach (Tier t in Tiers)
             {
-                foreach (string  DO in t.TierDestroyableObjectsList)
+                foreach (string DO in t.TierDestroyableObjectsList)
                 {
                     DestroyableObjects.Add(DO, t.Name);
                 }
@@ -82,7 +78,7 @@ namespace DayZeLib
         public BindingList<string> DefuseTools { get; set; }
 
         [JsonIgnore]
-        public Color m_LightColorStart 
+        public Color m_LightColorStart
         {
             get
             {

@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.Encodings.Web;
@@ -27,7 +25,7 @@ namespace DayZeEditor
         public void addtoprojects(Project project, bool setactive = true)
         {
             Projects.Add(project);
-            if(setactive)
+            if (setactive)
                 ActiveProject = project.ProjectName;
             SaveProject(false, false);
         }
@@ -214,7 +212,7 @@ namespace DayZeEditor
             Console.WriteLine("\n***Starting custom types from Economycore***");
             foreach (economycoreCE mods in EconomyCore.economycore.ce)
             {
-                if(mods.folder.Contains("\\"))
+                if (mods.folder.Contains("\\"))
                 {
                     mods.folder = mods.folder.Replace("\\", "/");
                     needsave = true;
@@ -229,7 +227,7 @@ namespace DayZeEditor
                     Console.WriteLine(path + " does not exis, please remove full ce section from economy core." + Environment.NewLine);
                     continue;
                 }
-                foreach(economycoreCEFile file in mods.file)
+                foreach (economycoreCEFile file in mods.file)
                 {
                     if (!File.Exists(path + "\\" + file.name))
                     {
@@ -237,7 +235,7 @@ namespace DayZeEditor
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine(Environment.NewLine + "### Warning ### ");
                         Console.ForegroundColor = ConsoleColor.White;
-                        Console.WriteLine(path + "\\" + file.name + " Does not exist, please remove from economy core."+ Environment.NewLine);
+                        Console.WriteLine(path + "\\" + file.name + " Does not exist, please remove from economy core." + Environment.NewLine);
                         continue;
                     }
                     if (file.type == "types")
@@ -274,7 +272,7 @@ namespace DayZeEditor
         public void SetEvents()
         {
             ModEventsList = new BindingList<eventscofig>();
-            if(!File.Exists(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\db\\events.xml"))
+            if (!File.Exists(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\db\\events.xml"))
             {
                 XDocument xmlFile = new XDocument(new XDeclaration("1.0", "utf-8", "yes"));
                 xmlFile.Add(new XElement("events"));
@@ -299,7 +297,7 @@ namespace DayZeEditor
                     }
                     if (file.type == "events")
                     {
-                        if(!File.Exists(path + "\\" + file.name))
+                        if (!File.Exists(path + "\\" + file.name))
                         {
                             haswarnings = true;
                             Console.ForegroundColor = ConsoleColor.Red;
@@ -340,7 +338,7 @@ namespace DayZeEditor
                     haswarnings = true;
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(Environment.NewLine + "### Warning ### ");
-                    Console.ForegroundColor = ConsoleColor.White; 
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine(path + " Does not exist. please remove full ce section from economycore" + Environment.NewLine);
                     continue;
                 }
@@ -369,7 +367,7 @@ namespace DayZeEditor
             Console.WriteLine("****Starting Territory files****");
             foreach (string file in Territoryfiles)
             {
-                if(Path.GetExtension(file) == ".xml")
+                if (Path.GetExtension(file) == ".xml")
                     territoriesList.Add(new territoriesConfig(file));
             }
             Console.WriteLine("****End Territory files****");
@@ -387,7 +385,7 @@ namespace DayZeEditor
         }
         public void setuserdefinitions()
         {
-            limitfefinitionsuser  = new Limitsdefinitionsuser(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfglimitsdefinitionuser.xml");
+            limitfefinitionsuser = new Limitsdefinitionsuser(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfglimitsdefinitionuser.xml");
         }
         public void setplayerspawns()
         {
@@ -425,11 +423,11 @@ namespace DayZeEditor
         {
             TotalNomCount = 0;
             List<typesType> typelistforcount = new List<typesType>();
-            foreach(typesType _type in vanillaTypes.types.type)
+            foreach (typesType _type in vanillaTypes.types.type)
             {
                 if (_type.nominalSpecified)
                 {
-                    if(typelistforcount.Any(x => x.name == _type.name))
+                    if (typelistforcount.Any(x => x.name == _type.name))
                     {
                         typesType otype = typelistforcount.First(x => x.name == _type.name);
 
@@ -440,9 +438,9 @@ namespace DayZeEditor
                     typelistforcount.Add(_type);
                 }
             }
-            foreach(TypesFile tf in ModTypesList)
+            foreach (TypesFile tf in ModTypesList)
             {
-                foreach(typesType _type in tf.types.type)
+                foreach (typesType _type in tf.types.type)
                 {
                     if (_type.nominalSpecified)
                     {
@@ -466,7 +464,7 @@ namespace DayZeEditor
                 return vantype.name;
             else
             {
-                foreach(TypesFile tfile in ModTypesList)
+                foreach (TypesFile tfile in ModTypesList)
                 {
                     typesType modvantype = tfile.types.type.FirstOrDefault(x => x.name.ToLower() == className.ToLower());
                     if (modvantype != null)

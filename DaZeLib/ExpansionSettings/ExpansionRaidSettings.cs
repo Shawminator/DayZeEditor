@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Text.Json.Serialization;
-using System.ComponentModel;
 
 namespace DayZeLib
 {
@@ -14,7 +9,7 @@ namespace DayZeLib
         public int StartHour { get; set; }
         public int StartMinute { get; set; }
         public int DurationMinutes { get; set; }
-        
+
 
         public override string ToString()
         {

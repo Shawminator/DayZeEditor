@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace DayZeLib
 {
@@ -30,7 +24,7 @@ namespace DayZeLib
         public string MinutesAwayPrefix { get; set; }
         public string MinutesAwaySuffix { get; set; }
 
-      
+
     }
 
     public class Locations
@@ -71,7 +65,7 @@ namespace DayZeLib
         public int MinQty { get; set; }
         public int MaxQty { get; set; }
         public BindingList<string> Attachments { get; set; }
-        
+
         public override string ToString()
         {
             return Item;

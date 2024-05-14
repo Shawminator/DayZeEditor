@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace DayZeLib
 {
@@ -16,7 +12,7 @@ namespace DayZeLib
         public int Enabled { get; set; }
         public int CheckForBlockingObjects { get; set; }
         public BindingList<string> ExplosionTargets { get; set; }
-        public Dictionary<string,string> ExplosiveProjectiles { get; set; }
+        public Dictionary<string, string> ExplosiveProjectiles { get; set; }
 
         [JsonIgnore]
         public BindingList<ExplosiveProjectiles> explosinvesList;
@@ -36,7 +32,7 @@ namespace DayZeLib
         public void ConvertDicttolist()
         {
             explosinvesList = new BindingList<ExplosiveProjectiles>();
-            foreach(KeyValuePair<string,string> e in ExplosiveProjectiles)
+            foreach (KeyValuePair<string, string> e in ExplosiveProjectiles)
             {
                 ExplosiveProjectiles newe = new ExplosiveProjectiles()
                 {

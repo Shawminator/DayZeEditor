@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DayZeLib
 {
@@ -363,7 +359,7 @@ namespace DayZeLib
                 usage = new BindingList<typesTypeUsage>();
             if (!usage.Any(x => x.name == u.name))
             {
-                usage.Add(new typesTypeUsage() { name = u.name});
+                usage.Add(new typesTypeUsage() { name = u.name });
             }
         }
         public void removeusage(typesTypeUsage u)

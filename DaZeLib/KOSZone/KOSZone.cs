@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace DayZeLib
 {
@@ -17,7 +12,7 @@ namespace DayZeLib
         Thursday,
         Friday,
         Saturday
-       
+
 
     };
     public enum WeekNumber
@@ -63,7 +58,7 @@ namespace DayZeLib
         public int RestartCycle { get; set; }
         public BindingList<Purgeschedule> PurgeSchedules { get; set; }
         public BindingList<Dynamicpurgeschedule> DynamicPurgeSchedules { get; set; }
-        public BindingList<LockedDoorLocations> LockedDoorLocations {get;set; }
+        public BindingList<LockedDoorLocations> LockedDoorLocations { get; set; }
 
         [JsonIgnore]
         public string FullFilename { get; set; }

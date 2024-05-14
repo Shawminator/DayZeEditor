@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace DayZeLib
 {
@@ -21,7 +20,7 @@ namespace DayZeLib
             Console.WriteLine("Parsing " + Path.GetFileName(filename) + "....");
             Admins = new BindingList<string>();
             isDirty = false;
-            foreach(string line in file)
+            foreach (string line in file)
             {
                 if (line.Equals("") || line.StartsWith("//")) continue;
                 if (line.StartsWith("<FileEnd>")) continue;
@@ -70,7 +69,7 @@ namespace DayZeLib
             sb.Append("///////////////////////////////////////////////////////////" + Environment.NewLine);
             sb.Append(Environment.NewLine);
             int i = 1;
-            foreach(string admin in Admins)
+            foreach (string admin in Admins)
             {
                 sb.Append(admin + " // Admin No" + i.ToString() + Environment.NewLine);
             }

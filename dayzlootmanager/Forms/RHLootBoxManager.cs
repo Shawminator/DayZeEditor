@@ -3,15 +3,11 @@ using DayZeLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeEditor
@@ -79,7 +75,7 @@ namespace DayZeEditor
             {
                 case 0:
                     toolStripButton3.Checked = false;
-                     break;
+                    break;
                 case 1:
                     toolStripButton8.Checked = false;
                     break;
@@ -200,9 +196,9 @@ namespace DayZeEditor
             List<string> removeitems = new List<string>();
             foreach (var item in listBox2.SelectedItems)
             {
-                removeitems.Add( item as string);
+                removeitems.Add(item as string);
             }
-            foreach(string item in removeitems)
+            foreach (string item in removeitems)
             {
                 CurrentRhlootboxconfig.PossibleLootList.Remove(item);
             }
@@ -219,7 +215,7 @@ namespace DayZeEditor
             nameTB.Text = CurrentRhlootboxstaticbox.LootBoxSetName;
             numberNUD.Value = CurrentRhlootboxstaticbox.NumberOfPositions;
             checkBox2.Checked = CurrentRhlootboxstaticbox.UseCustomLootList == 1 ? true : false;
-           
+
 
             chestLB.DisplayMember = "DisplayName";
             chestLB.ValueMember = "Value";
@@ -378,10 +374,10 @@ namespace DayZeEditor
         }
         private void darkButton13_Click(object sender, EventArgs e)
         {
-            CurrentRhlootboxstaticbox.StaticBoxPositions.Add(new Staticboxposition() 
+            CurrentRhlootboxstaticbox.StaticBoxPositions.Add(new Staticboxposition()
             {
-                Position = new float[] {0,0,0 },
-                Rotation = new float[] {0,0,0 }
+                Position = new float[] { 0, 0, 0 },
+                Rotation = new float[] { 0, 0, 0 }
             });
             posLB.SelectedIndex = -1;
             posLB.SelectedIndex = posLB.Items.Count - 1;
@@ -422,7 +418,7 @@ namespace DayZeEditor
                     }
                     foreach (Editorobject eo in importfile.EditorObjects)
                     {
-                        CurrentRhlootboxstaticbox.StaticBoxPositions.Add(new Staticboxposition() 
+                        CurrentRhlootboxstaticbox.StaticBoxPositions.Add(new Staticboxposition()
                         {
                             Position = eo.Position,
                             Rotation = eo.Orientation

@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace DayZeLib
 {
@@ -67,45 +61,45 @@ namespace DayZeLib
         }
         public void RenameRules()
         {
-            for(int i = 0; i < RuleCategories.Count; i++)
+            for (int i = 0; i < RuleCategories.Count; i++)
             {
-                RuleCategories[i].renamerules(i+1);
+                RuleCategories[i].renamerules(i + 1);
             }
         }
-		void DefaultRules()
-		{
-			RuleCategories = new BindingList<ExpansionBookRuleCategory>()
-			{ 
-				new ExpansionBookRuleCategory()
-				{
-					CategoryName = "General",
-					Rules = new BindingList<ExpansionBookRule>()
-					{
-						new ExpansionBookRule()
-						{
-							RuleParagraph = "1.1.", RuleText = "Insults, discrimination, extremist and racist statements or texts are taboo."
-						},
-						new ExpansionBookRule()
-						{
-							RuleParagraph = "1.2.", RuleText = "We reserve the right to exclude people from the server who share extremist or racist ideas or who clearly disturb the server harmony."
-						},
-						new ExpansionBookRule()
-						{
-							RuleParagraph = "1.3.", RuleText = "Decisions of the team members, both the supporter and the admin are to be accepted without discussion."
-						},
-						new ExpansionBookRule()
-						{
-							RuleParagraph = "1.4.", RuleText = "Provocations and toxic behavior will not be tolerated and punished! Be friendly to fellow players and your team, both in chat and in voice!"
-						},new ExpansionBookRule()
-						{
-							RuleParagraph = "1.5.", RuleText = "The use of external programs, scripts and cheats is not tolerated and is punished with a permanent exclusion."
-						}
-					}
-				}
-			};
-		}
-		void DefaultSettings()
-		{
+        void DefaultRules()
+        {
+            RuleCategories = new BindingList<ExpansionBookRuleCategory>()
+            {
+                new ExpansionBookRuleCategory()
+                {
+                    CategoryName = "General",
+                    Rules = new BindingList<ExpansionBookRule>()
+                    {
+                        new ExpansionBookRule()
+                        {
+                            RuleParagraph = "1.1.", RuleText = "Insults, discrimination, extremist and racist statements or texts are taboo."
+                        },
+                        new ExpansionBookRule()
+                        {
+                            RuleParagraph = "1.2.", RuleText = "We reserve the right to exclude people from the server who share extremist or racist ideas or who clearly disturb the server harmony."
+                        },
+                        new ExpansionBookRule()
+                        {
+                            RuleParagraph = "1.3.", RuleText = "Decisions of the team members, both the supporter and the admin are to be accepted without discussion."
+                        },
+                        new ExpansionBookRule()
+                        {
+                            RuleParagraph = "1.4.", RuleText = "Provocations and toxic behavior will not be tolerated and punished! Be friendly to fellow players and your team, both in chat and in voice!"
+                        },new ExpansionBookRule()
+                        {
+                            RuleParagraph = "1.5.", RuleText = "The use of external programs, scripts and cheats is not tolerated and is punished with a permanent exclusion."
+                        }
+                    }
+                }
+            };
+        }
+        void DefaultSettings()
+        {
             SettingCategories = new BindingList<ExpansionBookSettingCategory>()
             {
                 new ExpansionBookSettingCategory(){
@@ -223,9 +217,9 @@ namespace DayZeLib
                     }
                 }
             };
-		}
-		void DefaultLinks()
-		{
+        }
+        void DefaultLinks()
+        {
             Links = new BindingList<ExpansionBookLink>()
             {
                 new ExpansionBookLink()
@@ -292,9 +286,9 @@ namespace DayZeLib
                     IconColor = -14835214
                 }
             };
-		}
-		void DefaultDescriptions()
-		{
+        }
+        void DefaultDescriptions()
+        {
             Descriptions = new BindingList<ExpansionBookDescriptionCategory>()
             {
                  new ExpansionBookDescriptionCategory()
@@ -336,9 +330,9 @@ namespace DayZeLib
                      }
                  }
             };
-		}
-		void DefaultCraftingCategories()
-		{
+        }
+        void DefaultCraftingCategories()
+        {
             CraftingCategories = new BindingList<ExpansionBookCraftingCategory>()
             {
                 new ExpansionBookCraftingCategory()
@@ -508,8 +502,8 @@ namespace DayZeLib
                      }
                 }
             };
-		}
-	}
+        }
+    }
     public class ExpansionBookRuleCategory
     {
         public string CategoryName { get; set; }
@@ -589,7 +583,7 @@ namespace DayZeLib
         {
             Descriptions = new BindingList<ExpansionBookDescription>();
         }
-       
+
         public override string ToString()
         {
             return CategoryName;

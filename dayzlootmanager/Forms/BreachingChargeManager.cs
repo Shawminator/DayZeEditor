@@ -4,15 +4,12 @@ using DayZeLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeEditor
@@ -127,7 +124,7 @@ namespace DayZeEditor
             BCChargesLB.DisplayMember = "DisplayName";
             BCChargesLB.ValueMember = "Value";
             BCChargesLB.DataSource = Breachingcharge.Charges;
-            
+
             SetupChargelist();
 
             TiersLB.DisplayMember = "DisplayName";
@@ -292,7 +289,7 @@ namespace DayZeEditor
 
             TiersAcceptedChargesLB.DisplayMember = "DisplayName";
             TiersAcceptedChargesLB.ValueMember = "Value";
-            TiersAcceptedChargesLB.DataSource =CurrentTier.AcceptedChargeTypes;
+            TiersAcceptedChargesLB.DataSource = CurrentTier.AcceptedChargeTypes;
 
             DestroyableObjectsLB.DisplayMember = "DisplayName";
             DestroyableObjectsLB.ValueMember = "Value";
@@ -338,7 +335,7 @@ namespace DayZeEditor
         {
             Charge charge = AcceptedChargesCB.SelectedItem as Charge;
             string chargename = charge.Classname;
-            if(!CurrentTier.AcceptedChargeTypes.Contains(chargename))
+            if (!CurrentTier.AcceptedChargeTypes.Contains(chargename))
                 CurrentTier.AcceptedChargeTypes.Add(chargename);
             Breachingcharge.isDirty = true;
         }

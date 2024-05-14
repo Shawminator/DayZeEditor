@@ -2,16 +2,12 @@
 using DayZeLib;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeEditor
@@ -84,7 +80,7 @@ namespace DayZeEditor
             if (tabControl1.SelectedIndex == 1)
                 toolStripButton3.Checked = true;
         }
- 
+
         public HelicrashMissionsManager()
         {
             InitializeComponent();
@@ -164,7 +160,7 @@ namespace DayZeEditor
         }
         private void CrashpointLB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(CrashpointLB.SelectedItems.Count == 0) { return; }
+            if (CrashpointLB.SelectedItems.Count == 0) { return; }
             currentCrashpoint = CrashpointLB.SelectedItem as Crashpoint;
             useraction = false;
             SetupcrashPoint();
@@ -283,8 +279,8 @@ namespace DayZeEditor
             Helicrash.HelicrashDespawnTime = (int)HelicrashDespawnTimeNUD.Value;
             Helicrash.isDirty = true;
         }
-       
-        
+
+
         private void CrashPointXNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;

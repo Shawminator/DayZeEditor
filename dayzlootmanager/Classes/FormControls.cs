@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Drawing;
-using System.Text.Json.Serialization;
-using System.Text.Json;
-using System.ComponentModel.Design;
-using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace DayZeEditor
 {
@@ -44,7 +40,7 @@ namespace DayZeEditor
 
         public static int Height { get; private set; }
 
-        public static void InitializeForm_Controls(Form _F, Panel _P, Panel _P2, Label _L, Label _L2,  Button _B = null, Button _B1 = null)
+        public static void InitializeForm_Controls(Form _F, Panel _P, Panel _P2, Label _L, Label _L2, Button _B = null, Button _B1 = null)
         {
             F = _F;
             P = _P;
@@ -110,7 +106,7 @@ namespace DayZeEditor
         {
             mouseDown = true;
             lastLocation = e.Location;
-   
+
         }
         private static void FormMove_MouseMove(object sender, MouseEventArgs e)
         {
@@ -127,7 +123,7 @@ namespace DayZeEditor
         private static void FormMove_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
-   
+
         }
         private static void FormMax_MouseDoubleClick(object sender, MouseEventArgs e)
         {

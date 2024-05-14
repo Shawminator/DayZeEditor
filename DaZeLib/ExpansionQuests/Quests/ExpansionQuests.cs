@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeLib
@@ -30,7 +27,7 @@ namespace DayZeLib
         }
 
         public BindingList<Quests> QuestList { get; set; }
-        public List<Quests>Markedfordelete { get; set; }
+        public List<Quests> Markedfordelete { get; set; }
         public string QuestsPath { get; set; }
 
         public ExpansioQuestList()
@@ -74,7 +71,7 @@ namespace DayZeLib
                         MessageBox.Show("there is an error in the following file\n" + file.FullName + Environment.NewLine + ex.InnerException.Message);
                     }
                     else
-                    { 
+                    {
                         Console.WriteLine("\t\t" + ex.Message);
                         MessageBox.Show(ex.Message);
                     }
@@ -88,9 +85,9 @@ namespace DayZeLib
             if (Markedfordelete == null) Markedfordelete = new List<Quests>();
             Markedfordelete.Add(Questfordelete);
             QuestList.Remove(Questfordelete);
-            foreach(Quests Quests in QuestList)
+            foreach (Quests Quests in QuestList)
             {
-                if(Quests.PreQuests.Any(x => x.ID == Questfordelete.ID ))
+                if (Quests.PreQuests.Any(x => x.ID == Questfordelete.ID))
                 {
                     Quests.PreQuestIDs.Remove(Questfordelete.ID);
                     Quests.PreQuests.Remove(Questfordelete);
@@ -169,7 +166,7 @@ namespace DayZeLib
         }
         public void RemoveNPCFromQuests(ExpansionQuestNPCs currentQuestNPC)
         {
-            foreach(Quests quest in QuestList)
+            foreach (Quests quest in QuestList)
             {
                 if (quest.QuestGiverIDs.Contains(currentQuestNPC.ID))
                 {
@@ -183,7 +180,7 @@ namespace DayZeLib
                     quest.QuestTurnIns.Remove(currentQuestNPC);
                     quest.isDirty = true;
                 }
-                
+
             }
         }
         public void RemoveObjectivesfromQuests(QuestObjectivesBase basequest)
@@ -196,7 +193,7 @@ namespace DayZeLib
                     if (objective.ObjectiveType == basequest.ObjectiveType && objective.ID == basequest.ID)
                         objectivestoremove.Add(objective);
                 }
-                foreach(QuestObjectivesBase objbase in objectivestoremove)
+                foreach (QuestObjectivesBase objbase in objectivestoremove)
                 {
                     quest.Objectives.Remove(objbase);
                     quest.isDirty = true;
@@ -211,7 +208,7 @@ namespace DayZeLib
         {
             Console.WriteLine("\nSetting up Quest Giver and Quest Turn in NPCs");
             bool needtosave = false;
-            foreach(Quests q in QuestList)
+            foreach (Quests q in QuestList)
             {
                 needtosave = q.GetNPCLists(questNPCs);
             }
@@ -220,11 +217,11 @@ namespace DayZeLib
         public void GetPreQuests()
         {
             Console.WriteLine("\nsetting up Pre Quests.");
-            foreach(Quests q in QuestList)
+            foreach (Quests q in QuestList)
             {
                 List<int> toberemoved = new List<int>();
                 q.PreQuests = new BindingList<Quests>();
-                foreach(int prequest in q.PreQuestIDs)
+                foreach (int prequest in q.PreQuestIDs)
                 {
                     Quests quest = QuestList.FirstOrDefault(x => x.ID == prequest);
                     if (quest == null)
@@ -236,7 +233,7 @@ namespace DayZeLib
                     else
                         q.PreQuests.Add(quest);
                 }
-                foreach(int id in toberemoved)
+                foreach (int id in toberemoved)
                 {
                     q.PreQuestIDs.Remove(id);
                     q.isDirty = true;
@@ -248,7 +245,7 @@ namespace DayZeLib
             Console.WriteLine("\nSetting up Objective Enums.");
             foreach (Quests q in QuestList)
             {
-                foreach(QuestObjectivesBase obj in q.Objectives)
+                foreach (QuestObjectivesBase obj in q.Objectives)
                 {
                     obj._ObjectiveTypeEnum = (QuExpansionQuestObjectiveTypeestType)obj.ObjectiveType;
                 }
@@ -259,9 +256,9 @@ namespace DayZeLib
         {
             List<Quests> quests = new List<Quests>();
 
-            foreach(Quests q in QuestList)
+            foreach (Quests q in QuestList)
             {
-                foreach(QuestObjectivesBase obj in q.Objectives)
+                foreach (QuestObjectivesBase obj in q.Objectives)
                 {
                     if (objective.ID == obj.ID && objective.ObjectiveType == obj.ObjectiveType)
                         quests.Add(q);
@@ -301,7 +298,7 @@ namespace DayZeLib
         public int ID { get; set; }
         public int Type { get; set; }
         public string Title { get; set; }
-        public BindingList<string> Descriptions { get; set; } 
+        public BindingList<string> Descriptions { get; set; }
         public string ObjectiveText { get; set; }
         public int FollowUpQuest { get; set; }
         public int Repeatable { get; set; }
@@ -332,7 +329,7 @@ namespace DayZeLib
         public int DeleteQuestItems { get; set; }
         public int SequentialObjectives { get; set; }
         public Dictionary<string, int> FactionReputationRequirements { get; set; }
-        public Dictionary<string, int> FactionReputationRewards {get;set;}
+        public Dictionary<string, int> FactionReputationRewards { get; set; }
         public int SuppressQuestLogOnCompetion { get; set; }
         public int Active { get; set; }
 
@@ -367,7 +364,7 @@ namespace DayZeLib
                     isDirty = true;
                     needtosave = true;
                 }
-             }
+            }
             foreach (int id in QuestTurnInIDs)
             {
                 ExpansionQuestNPCs npc = questNPCs.GetNPCFromID(id);
@@ -411,7 +408,7 @@ namespace DayZeLib
         public void SetPreQuests()
         {
             PreQuestIDs = new BindingList<int>();
-            foreach(Quests q in PreQuests)
+            foreach (Quests q in PreQuests)
             {
                 PreQuestIDs.Add(q.ID);
             }
@@ -435,12 +432,12 @@ namespace DayZeLib
                     faction = keyValuePair.Key,
                     rep = keyValuePair.Value
                 });
-    }
+            }
         }
         public void SetLists()
         {
             FactionReputationRequirements = new Dictionary<string, int>();
-            foreach(FactionQuestReps fqr in FactionReputationRequirementsList)
+            foreach (FactionQuestReps fqr in FactionReputationRequirementsList)
             {
                 FactionReputationRequirements.Add(fqr.faction, fqr.rep);
             }

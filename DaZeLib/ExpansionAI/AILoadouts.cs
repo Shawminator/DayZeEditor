@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace DayZeLib
 {
@@ -45,7 +40,7 @@ namespace DayZeLib
         }
         public override string ToString()
         {
-            if(ClassName == "")
+            if (ClassName == "")
                 return Name;
 
             return ClassName;

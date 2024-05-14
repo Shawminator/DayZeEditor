@@ -3,15 +3,12 @@ using DayZeLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeEditor
@@ -206,7 +203,7 @@ namespace DayZeEditor
             if (SpawnerBukakuLocationsLB.Items.Count <= 0) return;
             SpawnerBubakuConfig.removeLocation(SpawnerBukakuLocationsLB.SelectedItem as Bubaklocation);
             SpawnerBukakuLocationsLB.Refresh();
-            if(SpawnerBukakuLocationsLB.Items.Count <= 0)
+            if (SpawnerBukakuLocationsLB.Items.Count <= 0)
                 BubakLocationGB.Visible = false;
         }
         private void darkButton2_Click(object sender, EventArgs e)
@@ -295,7 +292,7 @@ namespace DayZeEditor
             BubakLocationnotificationTB.Text = CurrentBubaklocation.notification;
             BubakLocationnotificationtimeNUD.Value = CurrentBubaklocation.notificationtime;
             BubakLocationtriggerdelayNUD.Value = CurrentBubaklocation.triggerdelay;
-            BubakLocationspawnradiusNUD.Value = CurrentBubaklocation.spawnradius; 
+            BubakLocationspawnradiusNUD.Value = CurrentBubaklocation.spawnradius;
             BubakLocationbubaknumNUD.Value = CurrentBubaklocation.bubaknum;
             BubakLocationonlyfilluptobubaknumNUD.Value = CurrentBubaklocation.onlyfilluptobubaknum;
             BubakLocationitemrandomdmgCB.Checked = CurrentBubaklocation.itemrandomdmg == 1 ? true : false;
@@ -449,7 +446,7 @@ namespace DayZeEditor
             int m_Id = 0;
             string filename = "";
             var result = MessageBox.Show("Would yo ulike to export the trigger as well?", "Export options", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-            if(result == DialogResult.Cancel)
+            if (result == DialogResult.Cancel)
             {
                 return;
             }
@@ -532,7 +529,7 @@ namespace DayZeEditor
             {
                 removelist.Add(BubakLocationBubaciLB.GetItemText(item));
             }
-            foreach(string bubac in removelist)
+            foreach (string bubac in removelist)
             {
                 CurrentBubaklocation.bubaci.Remove(bubac);
             }
@@ -596,7 +593,7 @@ namespace DayZeEditor
         private void BubakLocationSetTrigger_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            if(CurrentBubaklocation._triggerpos.rotspecified = BubakLocationTriggerPositionRotSpecifiedCB.Checked)
+            if (CurrentBubaklocation._triggerpos.rotspecified = BubakLocationTriggerPositionRotSpecifiedCB.Checked)
             {
                 CurrentBubaklocation._triggerpos.Rotation = new Vec3((float)BubakLocationTriggerRotXNUD.Value, (float)BubakLocationTriggerRotYNUD.Value, (float)BubakLocationSpawnRotationZNUD.Value);
             }
@@ -606,7 +603,7 @@ namespace DayZeEditor
         private void BubakLocationSetTriggerMins_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            CurrentBubaklocation.setTriggermins(new decimal[] {BubakLocationTriggerMinXNUD.Value, BubakLocationTriggerMinYNUD.Value, BubakLocationTriggerMinZNUD.Value });
+            CurrentBubaklocation.setTriggermins(new decimal[] { BubakLocationTriggerMinXNUD.Value, BubakLocationTriggerMinYNUD.Value, BubakLocationTriggerMinZNUD.Value });
             SpawnerBubakuConfig.isDirty = true;
         }
         private void BubakLocationSetTriggerMaxs_ValueChanged(object sender, EventArgs e)
@@ -677,7 +674,7 @@ namespace DayZeEditor
         private void BubakLocationonlyfilluptobubaknumNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            CurrentBubaklocation.onlyfilluptobubaknum = (int)BubakLocationonlyfilluptobubaknumNUD.Value;   
+            CurrentBubaklocation.onlyfilluptobubaknum = (int)BubakLocationonlyfilluptobubaknumNUD.Value;
             SpawnerBubakuConfig.isDirty = true;
         }
         private void BubakLocationitemrandomdmgCB_CheckedChanged(object sender, EventArgs e)

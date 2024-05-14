@@ -30,7 +30,7 @@ namespace DayZeLib
         const int m_currentConfigVersion = 27;
 
         [JsonIgnore]
-        public static readonly string[] Objectvetypesname = {"","", "Target", "Travel", "Collection", "Delivery", "TreasureHunt", "AIPatrol", "AICamp", "AIVIP", "Action", "Crafting"};
+        public static readonly string[] Objectvetypesname = { "", "", "Target", "Travel", "Collection", "Delivery", "TreasureHunt", "AIPatrol", "AICamp", "AIVIP", "Action", "Crafting" };
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -52,7 +52,7 @@ namespace DayZeLib
             {
                 return m_currentConfigVersion;
             }
-            
+
         }
 
         public string[] getfoldernames()
@@ -61,7 +61,7 @@ namespace DayZeLib
         }
         public override string ToString()
         {
-            return "ObjectiveType: " + (QuExpansionQuestObjectiveTypeestType)ObjectiveType + "  ID: "+ID.ToString();
+            return "ObjectiveType: " + (QuExpansionQuestObjectiveTypeestType)ObjectiveType + "  ID: " + ID.ToString();
         }
         public bool Equals(QuestObjectivesBase other)
         {
@@ -80,10 +80,10 @@ namespace DayZeLib
                 File.Delete(Fullfilename);
             }
         }
-        public virtual void SetVec3List(){}
-        public virtual void GetVec3List(){}
+        public virtual void SetVec3List() { }
+        public virtual void GetVec3List() { }
     }
-    
+
 
     public class QuestObjectives
     {
@@ -96,7 +96,7 @@ namespace DayZeLib
         {
             QuestObjectiovesPath = m_QuestObjectiovesPath;
             Objectives = new BindingList<QuestObjectivesBase>();
-            for (int i = 0; i < Objectvetypesname.Length; i++ )
+            for (int i = 0; i < Objectvetypesname.Length; i++)
             {
                 string m_type = Objectvetypesname[i];
                 if (Directory.Exists(QuestObjectiovesPath + "\\" + m_type))
@@ -114,12 +114,12 @@ namespace DayZeLib
                             newobjective.Filename = Path.GetFileNameWithoutExtension(file.Name);
                             newobjective.OriginalFilename = Path.GetFileNameWithoutExtension(file.Name);
                             newobjective._ObjectiveTypeEnum = (QuExpansionQuestObjectiveTypeestType)newobjective.ObjectiveType;
-                            if(newobjective.ConfigVersion != QuestObjectivesBase.GetconfigVersion)
+                            if (newobjective.ConfigVersion != QuestObjectivesBase.GetconfigVersion)
                             {
                                 Console.WriteLine("\t\tUpdating " + file.Name + " to latest version " + QuestObjectivesBase.GetconfigVersion.ToString());
                                 newobjective.ConfigVersion = QuestObjectivesBase.GetconfigVersion;
                                 newobjective.isDirty = true;
-                            }    
+                            }
                             Objectives.Add(newobjective);
                         }
                         catch (Exception ex)
@@ -145,7 +145,7 @@ namespace DayZeLib
         }
         public QuestObjectivesBase CheckObjectiveExists(QuestObjectivesBase objective)
         {
-            foreach(QuestObjectivesBase obj in Objectives)
+            foreach (QuestObjectivesBase obj in Objectives)
             {
                 if (obj.Equals(objective))
                     return obj;
@@ -159,7 +159,7 @@ namespace DayZeLib
             List<int> Numberofobjectives = new List<int>();
             foreach (QuestObjectivesBase objectives in Objectives)
             {
-                if(objectives._ObjectiveTypeEnum == type)
+                if (objectives._ObjectiveTypeEnum == type)
                     Numberofobjectives.Add(objectives.ID);
             }
             Numberofobjectives.Sort();
@@ -171,8 +171,8 @@ namespace DayZeLib
         }
         public void deleteObjective(QuestObjectivesBase quest)
         {
-            if ( Markedfordelete == null)  Markedfordelete = new List<QuestObjectivesBase>();
-             Markedfordelete.Add(quest);
+            if (Markedfordelete == null) Markedfordelete = new List<QuestObjectivesBase>();
+            Markedfordelete.Add(quest);
             Objectives.Remove(quest);
         }
 

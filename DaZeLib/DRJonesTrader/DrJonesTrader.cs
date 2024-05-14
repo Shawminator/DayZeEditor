@@ -4,8 +4,6 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeLib
@@ -23,7 +21,7 @@ namespace DayZeLib
         public BindingList<DrjonesFullTraderconfig> drjonesfullList { get; set; }
 
         public string traderfilename;
-        public bool OpenNewFileForReading(string line_content, out FileStream fs,  out StreamReader reader1)
+        public bool OpenNewFileForReading(string line_content, out FileStream fs, out StreamReader reader1)
         {
             line_content = line_content.Replace("<OpenFile>", "");
             line_content = Helper.TrimComment(line_content);
@@ -215,7 +213,7 @@ namespace DayZeLib
                     MessageBox.Show("There is an error in the following line.\n" + line_content.ToString());
                 }
 
-                
+
             }
             reader.Close();
             reader.Dispose();
@@ -240,13 +238,13 @@ namespace DayZeLib
             sb.Append("/////////////////////////////////////////////////////////////////////////////////////////////////" + Environment.NewLine);
             sb.Append(Environment.NewLine);
             sb.Append("<CurrencyName> " + CurrencyConfig.m_Trader_CurrencyName + Environment.NewLine);
-            foreach(DRJonesCurrency currency in CurrencyConfig.currencyList)
+            foreach (DRJonesCurrency currency in CurrencyConfig.currencyList)
             {
                 sb.Append("\t<Currency> " + currency.m_Trader_CurrencyClassnames + ", " + currency.m_Trader_CurrencyValues.ToString() + Environment.NewLine);
             }
             sb.Append(Environment.NewLine);
             string TraderFilename = "";
-            foreach(DrjonesFullTraderconfig trader in drjonesfullList)
+            foreach (DrjonesFullTraderconfig trader in drjonesfullList)
             {
                 if (TraderFilename != trader.m_traderpath && TraderFilename != "")
                 {
@@ -310,7 +308,7 @@ namespace DayZeLib
         public List<DRJonesCategories> getCatsfromTraderID(int id)
         {
             List<DRJonesCategories> newlist = new List<DRJonesCategories>();
-            foreach(DRJonesCategories cats in m_categories)
+            foreach (DRJonesCategories cats in m_categories)
             {
                 if (cats.m_Trader_CategorysTraderKey == id)
                     newlist.Add(cats);
@@ -319,12 +317,12 @@ namespace DayZeLib
         }
         public List<DrjonesItems> GetItemsFromCatID(int id)
         {
-            return DrjonesitemList.Where(x => x.m_Trader_ItemsTraderId == id).ToList(); 
+            return DrjonesitemList.Where(x => x.m_Trader_ItemsTraderId == id).ToList();
         }
         public void SetupFullTraderList()
         {
             drjonesfullList = new BindingList<DrjonesFullTraderconfig>();
-            foreach(DRjonesTraders trader in m_Traders)
+            foreach (DRjonesTraders trader in m_Traders)
             {
                 DrjonesFullTraderconfig newtrader = new DrjonesFullTraderconfig();
                 newtrader.cats = new BindingList<TraderCats>();
@@ -332,13 +330,13 @@ namespace DayZeLib
                 newtrader.m_traderpath = trader.m_filename;
                 List<DRJonesCategories> list = getCatsfromTraderID(trader.traderID);
                 List<DrjonesItems> items = GetItemsFromCatID(trader.traderID);
-                foreach(DRJonesCategories cat in list)
+                foreach (DRJonesCategories cat in list)
                 {
                     TraderCats newcat = new TraderCats();
                     newcat.CatName = cat.m_Trader_Categorys;
                     newcat.ItemList = new BindingList<TraderItems>();
                     List<DrjonesItems> catitem = items.Where(x => x.m_Trader_ItemsCategoryId == cat.m_Trader_CategoryID).ToList();
-                    foreach(DrjonesItems litems in catitem)
+                    foreach (DrjonesItems litems in catitem)
                     {
                         TraderItems newitem = new TraderItems();
                         newitem.m_Trader_ItemsClassnames = litems.m_Trader_ItemsClassnames;
@@ -398,7 +396,7 @@ namespace DayZeLib
     {
         public string Tradername { get; set; }
         public string m_traderpath { get; set; }
-        public BindingList<TraderCats> cats {get;set;}
+        public BindingList<TraderCats> cats { get; set; }
         public override string ToString()
         {
             return Tradername;
@@ -408,7 +406,7 @@ namespace DayZeLib
             TraderCats newcat = new TraderCats();
             newcat.CatName = userAnswer;
             newcat.ItemList = new BindingList<TraderItems>();
-            if(!cats.Any(x => x.CatName == userAnswer))
+            if (!cats.Any(x => x.CatName == userAnswer))
                 cats.Add(newcat);
         }
         public void removecatfromtrader(TraderCats currentCat)
@@ -438,7 +436,7 @@ namespace DayZeLib
         }
     }
 
-public class DRjonesTraders
+    public class DRjonesTraders
     {
         public string m_filename { get; set; }
         public string m_Trader_TraderNames { get; set; }

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace DayZeLib
 {
-    public class QuestObjectivesTreasureHunt: QuestObjectivesBase
+    public class QuestObjectivesTreasureHunt : QuestObjectivesBase
     {
         public string ObjectiveText { get; set; }
         public int TimeLimit { get; set; }

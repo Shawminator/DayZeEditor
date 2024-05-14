@@ -5,7 +5,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace DayZeLib
-{ 
+{
     public class ExpansionMissionSettings
     {
         const int CurrentVersion = 2;
@@ -92,7 +92,7 @@ namespace DayZeLib
     {
         public string MissionType { get; set; }
         public string MissionPath { get; set; }
-       
+
         public override string ToString()
         {
             return MissionType;

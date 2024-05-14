@@ -767,7 +767,7 @@
     <Content Include="TraderNPCs\Vanilla_Quest_Actions.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ZYXMapper.txt">
+    <Content Include="Maps\XYZMapper.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="TraderNPCs\TraderPlusNPCs.txt">

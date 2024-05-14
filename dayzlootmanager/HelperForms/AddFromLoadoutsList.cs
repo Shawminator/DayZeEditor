@@ -1,13 +1,8 @@
 ﻿using DarkUI.Forms;
 using DayZeLib;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeEditor
@@ -59,7 +54,7 @@ namespace DayZeEditor
         private void AddIDFromList_Load(object sender, EventArgs e)
         {
             BindingList<string> list = new BindingList<string>();
-            foreach(string l in LoadoutLIst)
+            foreach (string l in LoadoutLIst)
             {
                 list.Add(l + ".json");
             }

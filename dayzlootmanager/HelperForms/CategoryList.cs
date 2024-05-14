@@ -2,17 +2,12 @@
 using DayZeLib;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeEditor
 {
-    
+
     public partial class CategoryList : DarkForm
     {
         public MarketCategories MarketCats { get; set; }
@@ -36,8 +31,8 @@ namespace DayZeEditor
                 {
                     myBrush = Brushes.Red;
                 }
-                else 
-                { 
+                else
+                {
                     myBrush = Brushes.White;
                 }
                 e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(60, 63, 65)), e.Bounds);
@@ -63,7 +58,7 @@ namespace DayZeEditor
             listBox1.ValueMember = "Value";
             listBox1.DataSource = marketitems;
 
-            
+
             comboBox1.DisplayMember = "Name";
             comboBox1.ValueMember = "Value";
             comboBox1.DataSource = MarketCats.CatList;

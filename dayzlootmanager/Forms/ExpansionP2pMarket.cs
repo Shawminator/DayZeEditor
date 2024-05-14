@@ -2,15 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeEditor
@@ -134,7 +131,7 @@ namespace DayZeEditor
             }
             if (P2PMarketSettings.isDirty)
                 needtosave = true;
-            
+
             if (needtosave)
             {
                 DialogResult dialogResult = MessageBox.Show("You have Unsaved Changes, do you wish to save", "Unsaved Changes found", MessageBoxButtons.YesNo);
@@ -170,9 +167,9 @@ namespace DayZeEditor
                 File.WriteAllText(P2PMarketSettings.Filename, jsonString);
                 midifiedfiles.Add(Path.GetFileName(P2PMarketSettings.Filename));
             }
-            foreach(p2pmarket p2pmarket in P2PMarketList.p2pmarketList)
+            foreach (p2pmarket p2pmarket in P2PMarketList.p2pmarketList)
             {
-                if(p2pmarket.isDirty)
+                if (p2pmarket.isDirty)
                 {
                     p2pmarket.isDirty = false;
                     p2pmarket.setRoamingwaypoints();
@@ -255,7 +252,7 @@ namespace DayZeEditor
         }
         private void toolStripButton7_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedIndex =1;
+            tabControl1.SelectedIndex = 1;
             toolStripButton7.Checked = true;
         }
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -979,7 +976,7 @@ namespace DayZeEditor
                 List<string> addedtypes = form.addedtypes.ToList();
                 foreach (string l in addedtypes)
                 {
-                    if(!currentp2pmarket.m_Currencies.Contains(l))
+                    if (!currentp2pmarket.m_Currencies.Contains(l))
                         currentp2pmarket.m_Currencies.Add(l);
                 }
             }

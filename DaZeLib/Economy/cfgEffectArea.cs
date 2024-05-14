@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace DayZeLib
 {
@@ -28,7 +23,7 @@ namespace DayZeLib
                 SafePositions = new BindingList<float[]>();
 
             _positions = new BindingList<Position>();
-            for(int i = 0; i < SafePositions.Count; i++)
+            for (int i = 0; i < SafePositions.Count; i++)
             {
                 _positions.Add(new Position()
                 {
@@ -44,7 +39,7 @@ namespace DayZeLib
             SafePositions = new BindingList<float[]>();
             foreach (Position pos in _positions)
             {
-                SafePositions.Add(new float[] {pos.X, pos.Z });
+                SafePositions.Add(new float[] { pos.X, pos.Z });
             }
         }
     }

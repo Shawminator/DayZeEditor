@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+﻿using System.IO;
 using System.Text.Json;
-using System.Threading.Tasks;
-using DayZeLib;
 
 namespace DayZeLib
 {
@@ -53,7 +47,7 @@ namespace DayZeLib
             //System
             //Main
             dna_MainSystemConfigPath = dna_ProfilePath + dna_ConfigFolderName + "/System/Main/" + dna_ConfigName + "Main_System" + dna_ConfigExtension;
-            if(File.Exists(dna_MainSystemConfigPath))
+            if (File.Exists(dna_MainSystemConfigPath))
                 KeyCard_Main_System_Config = JsonSerializer.Deserialize<KeyCard_Main_System_Config>(File.ReadAllText(dna_MainSystemConfigPath));
             else
             {
@@ -63,7 +57,7 @@ namespace DayZeLib
             KeyCard_Main_System_Config.Filename = dna_MainSystemConfigPath;
             //Lootcontainers
             dna_LootContainersSystemConfigPath = dna_ProfilePath + dna_ConfigFolderName + "/System/LootContainers/" + dna_ConfigName + "LootContainers_System" + dna_ConfigExtension;
-            if(File.Exists(dna_LootContainersSystemConfigPath))
+            if (File.Exists(dna_LootContainersSystemConfigPath))
                 KeyCard_LootContainers_System_Config = JsonSerializer.Deserialize<KeyCard_LootContainers_System_Config>(File.ReadAllText(dna_LootContainersSystemConfigPath));
             else
             {
@@ -101,7 +95,7 @@ namespace DayZeLib
             //Loot
             //general
             dna_LootConfigPath = dna_ProfilePath + dna_ConfigFolderName + "/Loot/General/" + dna_ConfigName + "General" + dna_ConfigExtension;
-            if(File.Exists(dna_LootConfigPath))
+            if (File.Exists(dna_LootConfigPath))
                 KeyCard_General_Config = JsonSerializer.Deserialize<KeyCard_General_Config>(File.ReadAllText(dna_LootConfigPath));
             else
             {
@@ -111,7 +105,7 @@ namespace DayZeLib
             KeyCard_General_Config.Filename = dna_LootConfigPath;
             //Clothes
             dna_ClothingConfigPath = dna_ProfilePath + dna_ConfigFolderName + "/Loot/Clothing/" + dna_ConfigName + "Clothing" + dna_ConfigExtension;
-            if(File.Exists(dna_ClothingConfigPath))
+            if (File.Exists(dna_ClothingConfigPath))
                 KeyCard_Clothing_Config = JsonSerializer.Deserialize<KeyCard_Clothing_Config>(File.ReadAllText(dna_ClothingConfigPath));
             else
             {
@@ -137,7 +131,7 @@ namespace DayZeLib
             SmolCratePurpleConfig = dna_ProfilePath + dna_ConfigFolderName + "/Loot/Other/Smol_Purple" + dna_ConfigExtension;
             SmolCrateRedConfig = dna_ProfilePath + dna_ConfigFolderName + "/Loot/Other/Smol_Red" + dna_ConfigExtension;
             DNA_CrateSmol_Data = new DNA_CrateSmol_Data();
-            if(File.Exists(SmolCrateConfigDescription))
+            if (File.Exists(SmolCrateConfigDescription))
                 DNA_CrateSmol_Data.dna_Description = JsonSerializer.Deserialize<CrateSmol_Settings_Description>(File.ReadAllText(SmolCrateConfigDescription), options);
             else
             {
@@ -145,7 +139,7 @@ namespace DayZeLib
                 DNA_CrateSmol_Data.dna_Description.CreateDefaultConfig();
             }
             DNA_CrateSmol_Data.dna_Description.Filename = SmolCrateConfigDescription;
-            if(File.Exists(SmolCrateYellowConfig))
+            if (File.Exists(SmolCrateYellowConfig))
                 DNA_CrateSmol_Data.dna_YellowSettings = JsonSerializer.Deserialize<CrateSmol_Yellow_Settings>(File.ReadAllText(SmolCrateYellowConfig), options);
             else
             {
@@ -153,7 +147,7 @@ namespace DayZeLib
                 DNA_CrateSmol_Data.dna_YellowSettings.CreateDefaultYellow();
             }
             DNA_CrateSmol_Data.dna_YellowSettings.Filename = SmolCrateYellowConfig;
-            if(File.Exists(SmolCrateGreenConfig))
+            if (File.Exists(SmolCrateGreenConfig))
                 DNA_CrateSmol_Data.dna_GreenSettings = JsonSerializer.Deserialize<CrateSmol_Green_Settings>(File.ReadAllText(SmolCrateGreenConfig), options);
             else
             {
@@ -161,15 +155,15 @@ namespace DayZeLib
                 DNA_CrateSmol_Data.dna_GreenSettings.CreateDefaultGreen();
             }
             DNA_CrateSmol_Data.dna_GreenSettings.Filename = SmolCrateGreenConfig;
-            if(File.Exists(SmolCrateBlueConfig))
+            if (File.Exists(SmolCrateBlueConfig))
                 DNA_CrateSmol_Data.dna_BlueSettings = JsonSerializer.Deserialize<CrateSmol_Blue_Settings>(File.ReadAllText(SmolCrateBlueConfig), options);
             else
             {
                 DNA_CrateSmol_Data.dna_BlueSettings = new CrateSmol_Blue_Settings();
-                    DNA_CrateSmol_Data.dna_BlueSettings.CreateDefaultBlue();
+                DNA_CrateSmol_Data.dna_BlueSettings.CreateDefaultBlue();
             }
             DNA_CrateSmol_Data.dna_BlueSettings.Filename = SmolCrateBlueConfig;
-            if(File.Exists(SmolCratePurpleConfig))
+            if (File.Exists(SmolCratePurpleConfig))
                 DNA_CrateSmol_Data.dna_PurpleSettings = JsonSerializer.Deserialize<CrateSmol_Purple_Settings>(File.ReadAllText(SmolCratePurpleConfig), options);
             else
             {
@@ -177,7 +171,7 @@ namespace DayZeLib
                 DNA_CrateSmol_Data.dna_PurpleSettings.CreateDefaultPurple();
             }
             DNA_CrateSmol_Data.dna_PurpleSettings.Filename = SmolCratePurpleConfig;
-            if(File.Exists(SmolCrateRedConfig))
+            if (File.Exists(SmolCrateRedConfig))
                 DNA_CrateSmol_Data.dna_RedSettings = JsonSerializer.Deserialize<CrateSmol_Red_Settings>(File.ReadAllText(SmolCrateRedConfig), options);
             else
             {
@@ -185,7 +179,7 @@ namespace DayZeLib
                 DNA_CrateSmol_Data.dna_RedSettings.CreateDefaultRed();
             }
             DNA_CrateSmol_Data.dna_RedSettings.Filename = SmolCrateRedConfig;
-            if(File.Exists(SmolCrateConfig))
+            if (File.Exists(SmolCrateConfig))
                 DNA_CrateSmol_Data.dna_TimerSettings = JsonSerializer.Deserialize<CrateSmol_TimerSettings>(File.ReadAllText(SmolCrateConfig), options);
             else
             {

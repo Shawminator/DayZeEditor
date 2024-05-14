@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
 
 namespace DayZeLib
 {
@@ -52,7 +45,7 @@ namespace DayZeLib
         public int UseQuestNPCIndicators { get; set; }
         public int MaxActiveQuests { get; set; }
 
-        public QuestSettings() 
+        public QuestSettings()
         {
             MaxActiveQuests = -1;
         }

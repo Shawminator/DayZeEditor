@@ -3,15 +3,12 @@ using DayZeLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeEditor
@@ -508,7 +505,7 @@ namespace DayZeEditor
             }
             foreach (int dayofweek in currentDynamicpurgeschedule.Day)
             {
-                switch(dayofweek)
+                switch (dayofweek)
                 {
                     case 1:
                         SundayDOWCB.Checked = true;
@@ -534,7 +531,7 @@ namespace DayZeEditor
 
                 }
             }
-            numericUpDown7.Value = (decimal) currentDynamicpurgeschedule.Chance;
+            numericUpDown7.Value = (decimal)currentDynamicpurgeschedule.Chance;
             DynamicPurgeDurationMinNUD.Value = currentDynamicpurgeschedule.DurationMin;
             DynamicPurgeDurationMaxNUD.Value = currentDynamicpurgeschedule.DurationMax;
 
@@ -633,7 +630,7 @@ namespace DayZeEditor
             }
             else
             {
-                if(currentDynamicpurgeschedule.WeekNumber.Contains(1))
+                if (currentDynamicpurgeschedule.WeekNumber.Contains(1))
                 {
                     currentDynamicpurgeschedule.WeekNumber.Remove(1);
                 }

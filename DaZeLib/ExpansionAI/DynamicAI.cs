@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DayZeLib
 {
@@ -191,16 +186,16 @@ namespace DayZeLib
         }
         public void getAllPoints()
         {
-            foreach (Spatial_Point point in Point) 
-            { 
-                point.getSpatialPosition(); 
+            foreach (Spatial_Point point in Point)
+            {
+                point.getSpatialPosition();
             }
             foreach (Spatial_Location point in Location)
             {
                 point.getSpatialTriggerPosition();
                 point.getSpatialSpawnPosition();
-            }   
-            foreach(Spatial_Audio point in Audio)
+            }
+            foreach (Spatial_Audio point in Audio)
             {
                 point.getSpatialTriggerPosition();
                 point.getSpatialSpawnPosition();
@@ -218,7 +213,7 @@ namespace DayZeLib
                 Spatial_MinCount = 1,
                 Spatial_MaxCount = 3,
                 Spatial_HuntMode = 5,
-                Spatial_Faction = "Mercenaries", 
+                Spatial_Faction = "Mercenaries",
                 Spatial_Lootable = 1,
                 Spatial_Chance = (decimal)1.0,
                 Spatial_MinAccuracy = (decimal)0.75,
@@ -246,7 +241,7 @@ namespace DayZeLib
                 Spatial_MinAccuracy = (decimal)0.75,
                 Spatial_MaxAccuracy = (decimal)0.95,
                 Spatial_Timer = (decimal)20,
-                Spatial_SpawnMode = 1,  
+                Spatial_SpawnMode = 1,
                 Spatial_UnlimitedReload = 0
             };
             newlocation.ImportDZE(Importfile, true);
@@ -377,7 +372,7 @@ namespace DayZeLib
         public void setSpatialSpawnPosition()
         {
             Spatial_SpawnPosition = new BindingList<float[]>();
-            foreach(Vec3 v3 in  _Spatial_SpawnPosition)
+            foreach (Vec3 v3 in _Spatial_SpawnPosition)
             {
                 Spatial_SpawnPosition.Add(v3.getfloatarray());
             }

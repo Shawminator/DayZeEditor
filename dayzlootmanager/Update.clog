@@ -1,4 +1,12 @@
-﻿Version 0.8.0.4
+﻿Version 0.8.0.5
+[Added]
+Expansion Market - Trader NPC up and down buttons added to allow sorting of order for npc attchments
+[Fixed]
+fixed issue with creating projects upon first launch
+
+
+
+Version 0.8.0.4
 [Fixed]
 Updated Exansion AI settings, geneal settings and Personel Storage to latest expansion update.
 Fixed issue with MPG Spawner saving when yuo have the bcreate backups enabled.

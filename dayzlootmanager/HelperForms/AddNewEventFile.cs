@@ -2,12 +2,6 @@
 using DayZeLib;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeEditor
@@ -70,7 +64,7 @@ namespace DayZeEditor
         }
         public string SetFolderName
         {
-            set { darkLabel2.Text = value; } 
+            set { darkLabel2.Text = value; }
         }
         public string settype
         {

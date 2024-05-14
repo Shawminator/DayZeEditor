@@ -3,11 +3,7 @@ using DayZeLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeEditor
@@ -55,7 +51,7 @@ namespace DayZeEditor
                 TitleLabel,
                 CloseButton
             );
-            addedtypes = new BindingList<string>();           
+            addedtypes = new BindingList<string>();
         }
         public bool HideUsed = false;
 
@@ -66,7 +62,7 @@ namespace DayZeEditor
             listBox1.DataSource = addedtypes;
             if (usedtypes == null)
                 darkButton5.Visible = false;
-            if(UseOnlySingleitem)
+            if (UseOnlySingleitem)
                 treeViewMS1.SetMultiselect = false;
 
             PopulateTreeView();
@@ -79,7 +75,7 @@ namespace DayZeEditor
             vanilla.Tag = "VanillaTypes";
             foreach (typesType type in vanillatypes.types.type)
             {
-                if(usedtypes != null && usedtypes.ContainsKey(type.name.ToLower()) && HideUsed == true) { continue; }
+                if (usedtypes != null && usedtypes.ContainsKey(type.name.ToLower()) && HideUsed == true) { continue; }
                 string cat = "other";
                 if (type.category != null)
                     cat = type.category.name;
@@ -99,7 +95,7 @@ namespace DayZeEditor
             {
                 foreach (TypesFile tf in ModTypes)
                 {
-                    
+
                     TreeNode ModTypes = new TreeNode(tf.modname);
                     ModTypes.Tag = tf.modname;
                     foreach (typesType type in tf.types.type)
@@ -248,14 +244,14 @@ namespace DayZeEditor
 
         private void darkButton5_Click(object sender, EventArgs e)
         {
-            if(darkButton5.Tag.ToString() == "HideUsed")
+            if (darkButton5.Tag.ToString() == "HideUsed")
             {
                 darkButton5.Text = "Show Used Types";
                 darkButton5.Tag = "ShowUsed";
                 HideUsed = true;
-               
+
             }
-            else if(darkButton5.Tag.ToString() == "ShowUsed")
+            else if (darkButton5.Tag.ToString() == "ShowUsed")
             {
                 darkButton5.Text = "Hide Used Types";
                 darkButton5.Tag = "HideUsed";
@@ -263,7 +259,7 @@ namespace DayZeEditor
             }
             PopulateTreeView();
         }
-        
+
         private void darkButton6_Click(object sender, EventArgs e)
         {
             if (treeViewMS1.Nodes.Count < 1)
@@ -273,9 +269,9 @@ namespace DayZeEditor
             searchtreeNodes = new List<TreeNode>();
             searchtreeparts = new List<TreeNode>();
             foundparts = new List<typesType>();
-            foreach(typesType type in vanillatypes.types.type)
+            foreach (typesType type in vanillatypes.types.type)
             {
-                if(type.name.ToLower().Contains(text.ToLower()))
+                if (type.name.ToLower().Contains(text.ToLower()))
                 {
                     foundparts.Add(type);
                 }
@@ -290,7 +286,7 @@ namespace DayZeEditor
                     }
                 }
             }
-            if(foundparts.Count == 0) { return; }
+            if (foundparts.Count == 0) { return; }
             foreach (typesType obj in foundparts)
             {
                 foreach (TreeNode node in treeViewMS1.Nodes)

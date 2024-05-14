@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeLib
@@ -30,7 +28,7 @@ namespace DayZeLib
         const int CurrentVersion = 10;
 
         public int m_Version { get; set; }
-      
+
         public int PoorItemRequirement { get; set; }
         public int CommonItemRequirement { get; set; }
         public int UncommonItemRequirement { get; set; }
@@ -41,7 +39,7 @@ namespace DayZeLib
         public int ExoticItemRequirement { get; set; }
         public int ShowHardlineHUD { get; set; }
         public int UseReputation { get; set; }
-        public int UseFactionReputation { get; set;}
+        public int UseFactionReputation { get; set; }
         public int EnableFactionPersistence { get; set; }
         public int EnableItemRarity { get; set; }
         public int UseItemRarityOnInventoryIcons { get; set; }
@@ -1951,7 +1949,7 @@ namespace DayZeLib
         }
     }
     public class FactionReps
-        {
+    {
         public int FactionID;
         public int FactionRep;
 

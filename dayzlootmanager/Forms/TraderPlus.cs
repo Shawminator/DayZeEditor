@@ -11,7 +11,6 @@ using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeEditor
@@ -327,7 +326,7 @@ namespace DayZeEditor
             {
                 TraderPlusBankingConfig = JsonSerializer.Deserialize<TraderPlusBankingConfig>(File.ReadAllText(TraderPlusBankingConfigPath));
                 TraderPlusBankingConfig.isDirty = false;
-                if(!TraderPlusBankingConfig.CheckVersion())
+                if (!TraderPlusBankingConfig.CheckVersion())
                 {
                     TraderPlusBankingConfig.isDirty = true;
                     needtosave = true;
@@ -403,7 +402,7 @@ namespace DayZeEditor
             {
                 TraderPlusIDsConfig = JsonSerializer.Deserialize<TraderPlusIDsConfig>(File.ReadAllText(TraderPlusIDsConfigPath));
                 TraderPlusIDsConfig.isDirty = false;
-                if(!TraderPlusIDsConfig.CheckVersion())
+                if (!TraderPlusIDsConfig.CheckVersion())
                 {
                     TraderPlusIDsConfig.isDirty = true;
                     needtosave = true;
@@ -432,7 +431,7 @@ namespace DayZeEditor
                     needtosave = true;
                     TraderPlusGeneralConfig.isDirty = true;
                 }
-                
+
             }
             TraderPlusGeneralConfig.FullFilename = TraderPlusGeneralConfigPath;
             SetupTraderPlusGeneralConfig();
@@ -1491,7 +1490,7 @@ namespace DayZeEditor
         {
             string removeitem = TPCategoriesLB.GetItemText(TPCategoriesLB.SelectedItem);
             currenttrader.TraderCategoryList.Categories.Remove(removeitem);
-            TraderPlusGeneralConfig .isDirty = true;
+            TraderPlusGeneralConfig.isDirty = true;
         }
         private void TraderNPCGivenNameTB_TextChanged(object sender, EventArgs e)
         {
@@ -1650,7 +1649,7 @@ namespace DayZeEditor
         {
             if (TraderCategoriesLB.SelectedItems.Count < 1) return;
             currentTradercategory = TraderCategoriesLB.SelectedItem as Tradercategory;
-           
+
             useraction = false;
 
             CategoryNameTB.Text = currentTradercategory.CategoryName;
@@ -1760,37 +1759,37 @@ namespace DayZeEditor
         {
             if (MessageBox.Show("This Will Remove The All reference to this category, Are you sure you want to do this?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                    string removeitem = TraderCategoriesLB.GetItemText(TraderCategoriesLB.SelectedItem);
+                string removeitem = TraderCategoriesLB.GetItemText(TraderCategoriesLB.SelectedItem);
 
-                    string message = removeitem + " Category Removed....\nThe Following Items Were Removed from both Trader and Market Categories\n";
-                    foreach (ItemProducts item in currentTradercategory.itemProducts)
+                string message = removeitem + " Category Removed....\nThe Following Items Were Removed from both Trader and Market Categories\n";
+                foreach (ItemProducts item in currentTradercategory.itemProducts)
+                {
+                    message += item.Classname + "\n";
+                }
+                foreach (IDs id in TraderPlusIDsConfig.IDs)
+                {
+                    bool remove = false;
+                    foreach (string cat in id.Categories)
                     {
-                        message += item.Classname + "\n";
-                    }
-                    foreach (IDs id in TraderPlusIDsConfig.IDs)
-                    {
-                        bool remove = false;
-                        foreach (string cat in id.Categories)
+                        if (cat == removeitem)
                         {
-                            if (cat == removeitem)
-                            {
-                                remove = true;
-                                break;
-                            }
-                        }
-                        if (remove)
-                        {
-                            id.Categories.Remove(removeitem);
-                            TraderPlusIDsConfig.isDirty = true;
+                            remove = true;
+                            break;
                         }
                     }
-                    TraderPlusPriceConfig.TraderCategories.Remove(currentTradercategory);
-                    TraderPlusPriceConfig.isDirty = true;
-                    MessageBox.Show(message, "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                    if (TraderCategoriesLB.Items.Count == 0)
-                        TraderCategoriesLB.SelectedIndex = -1;
-                    else
-                        TraderCategoriesLB.SelectedIndex = 0;
+                    if (remove)
+                    {
+                        id.Categories.Remove(removeitem);
+                        TraderPlusIDsConfig.isDirty = true;
+                    }
+                }
+                TraderPlusPriceConfig.TraderCategories.Remove(currentTradercategory);
+                TraderPlusPriceConfig.isDirty = true;
+                MessageBox.Show(message, "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                if (TraderCategoriesLB.Items.Count == 0)
+                    TraderCategoriesLB.SelectedIndex = -1;
+                else
+                    TraderCategoriesLB.SelectedIndex = 0;
             }
         }
         private void darkButton14_Click(object sender, EventArgs e)
@@ -1968,7 +1967,7 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             //currentItemProducts.BuyPrice = (int)BuyPriceNUD.Value;
-           
+
             if (CurrentTraderCatLB.SelectedItems.Count > 0)
             {
                 foreach (var item in CurrentTraderCatLB.SelectedItems)
@@ -2035,7 +2034,7 @@ namespace DayZeEditor
 
                         ItemProducts pitem = item as ItemProducts;
                         pitem.UseDestockCoeff = true;
-                        
+
                     }
                     TraderPlusPriceConfig.isDirty = true;
                 }
@@ -2085,7 +2084,7 @@ namespace DayZeEditor
             int value = Convert.ToInt32(UserAnswer);
             foreach (ItemProducts item in currentTradercategory.itemProducts)
             {
-                if(item.Sellprice == -1 || item.BuyPrice == -1) { continue; }
+                if (item.Sellprice == -1 || item.BuyPrice == -1) { continue; }
                 decimal num1 = (decimal)item.BuyPrice / 100;
                 decimal num2 = num1 * value;
                 item.Sellprice = (int)Math.Round(num2, MidpointRounding.AwayFromZero);
@@ -2810,7 +2809,7 @@ namespace DayZeEditor
                 }
             }
             List<string> nottrader = new List<string>();
-            foreach(Tradercategory cat in TraderPlusPriceConfig.TraderCategories)
+            foreach (Tradercategory cat in TraderPlusPriceConfig.TraderCategories)
             {
                 if (!catlist.Contains(cat.CategoryName))
                     nottrader.Add(cat.CategoryName);
@@ -2820,7 +2819,7 @@ namespace DayZeEditor
             else
             {
                 string message = "The following categorys are not assigned to a trader:-";
-                foreach(String s in nottrader)
+                foreach (String s in nottrader)
                 {
                     message += "\n" + s;
                 }
@@ -2843,7 +2842,7 @@ namespace DayZeEditor
                 decimal minBuyPrice = num1 * value;
                 item.Coefficient = (int)(Math.Pow((double)(minBuyPrice / item.BuyPrice), (double)(1 / (float)(item.MaxStock - 1))) * 100);
             }
-               
+
             TraderPlusPriceConfig.isDirty = true;
         }
         private void toolStripMenuItem10_Click(object sender, EventArgs e)
@@ -2856,7 +2855,7 @@ namespace DayZeEditor
                 decimal percent = (decimal)value / 100;
                 percent += 1;
                 item.BuyPrice = (int)((decimal)item.BuyPrice * percent);
-                if(item.Sellprice > 1.0)
+                if (item.Sellprice > 1.0)
                 {
                     item.Sellprice = (int)((decimal)item.Sellprice * percent);
                 }
@@ -2867,7 +2866,7 @@ namespace DayZeEditor
         {
             OpenFileDialog openfile = new OpenFileDialog();
             openfile.Multiselect = true;
-            if(openfile.ShowDialog() == DialogResult.OK)
+            if (openfile.ShowDialog() == DialogResult.OK)
             {
                 foreach (String file in openfile.FileNames)
                 {
@@ -3042,13 +3041,13 @@ namespace DayZeEditor
             {
                 foreach (string c in currency.CurrenciesNames)
                 {
-                    marketItem newitem = new marketItem() 
-                    { 
+                    marketItem newitem = new marketItem()
+                    {
                         ClassName = c.ToLower(),
                         MaxPriceThreshold = currency.Value,
                         MinPriceThreshold = currency.Value,
                         MaxStockThreshold = 1,
-                        MinStockThreshold = 1 
+                        MinStockThreshold = 1
                     };
                     checklist.Add(newitem);
                     newccat.Items.Add(newitem);
@@ -3081,7 +3080,7 @@ namespace DayZeEditor
                         }
                     }
                     //expansion max/min price and sell price percent
-                    if(item.BuyPrice == -1)
+                    if (item.BuyPrice == -1)
                     {
                         newitem.MaxPriceThreshold = (int)item.Sellprice;
                         newitem.MinPriceThreshold = (int)item.Sellprice;
@@ -3091,7 +3090,7 @@ namespace DayZeEditor
                     {
                         newitem.MaxPriceThreshold = item.BuyPrice;
                         newitem.MinPriceThreshold = (int)(((float)item.BuyPrice / 100) * item.Coefficient);
-                        if(item.Sellprice < 1)
+                        if (item.Sellprice < 1)
                         {
                             newitem.SellPricePercent = (int)(item.Sellprice * 100);
                             if (newitem.SellPricePercent == -100)
@@ -3127,14 +3126,14 @@ namespace DayZeEditor
 
                     if (newitem.MaxPriceThreshold < newitem.MinPriceThreshold)
                         newitem.MinPriceThreshold = newitem.MaxPriceThreshold;
-                    
+
                     if (newitem.MaxStockThreshold < newitem.MinStockThreshold)
                         newitem.MinStockThreshold = newitem.MaxStockThreshold;
 
 
                     marketItem checkitem = checklist.FirstOrDefault(x => x.ClassName == newitem.ClassName);
                     //if (!checklist.Any(x => x.ClassName == newitem.ClassName))
-                    
+
                     if (checkitem == null)
                     {
                         checklist.Add(newitem);
@@ -3146,14 +3145,14 @@ namespace DayZeEditor
                     }
                 }
                 MarketCats.CatList.Add(newcat);
-                
+
             }
 
 
             if (sb.Length != 0)
                 MessageBox.Show(sb.ToString());
 
-            
+
             Traders exchangetrader = new Traders("Exchange");
             exchangetrader.DisplayName = "#STR_EXPANSION_MARKET_TRADER_EXCHANGE";
             exchangetrader.Filename = "EXCHANGE";
@@ -3167,13 +3166,13 @@ namespace DayZeEditor
             exchangetrader.Categories.Add("EXCHANGE");
             traders.Traderlist.Add(exchangetrader);
 
-            foreach(Trader trader in TraderPlusGeneralConfig.Traders)
+            foreach (Trader trader in TraderPlusGeneralConfig.Traders)
             {
                 Traders newtrader = new Traders(trader.Role);
                 newtrader.Filename = trader.Role.Replace(" ", "_").ToUpper();
                 IDs newid = TraderPlusIDsConfig.getTraderbyID(trader.Id);
 
-                foreach (string CurrenciesAccepted in  newid.CurrenciesAccepted)
+                foreach (string CurrenciesAccepted in newid.CurrenciesAccepted)
                 {
                     newtrader.Currencies.Add(CurrenciesAccepted);
                 }
@@ -3186,7 +3185,7 @@ namespace DayZeEditor
                 Tradermap newmap = new Tradermap();
                 newmap.NPCName = "ExpansionTrader" + trader.Name.Split('_')[1];
                 newmap.NPCTrade = trader.Role.Replace(" ", "_").ToUpper();
-                newmap.position = new Vec3(new string[] {trader.Position[0].ToString(), trader.Position[2].ToString(), trader.Position[2].ToString() });
+                newmap.position = new Vec3(new string[] { trader.Position[0].ToString(), trader.Position[2].ToString(), trader.Position[2].ToString() });
                 newmap.roattions = new Vec3(new string[] { trader.Orientation[0].ToString(), trader.Orientation[2].ToString(), trader.Orientation[2].ToString() });
                 newmap.Attachments = new BindingList<string>(trader.Clothes.ToList());
                 maps.maps.Add(newmap);
@@ -3236,7 +3235,7 @@ namespace DayZeEditor
             }
 
             maps.TradermapsPath = ExpansionPath;
-            foreach(Tradermap map in maps.maps)
+            foreach (Tradermap map in maps.maps)
             {
                 map.Filename = ExpansionPath + "\\TraderMaps.map";
             }

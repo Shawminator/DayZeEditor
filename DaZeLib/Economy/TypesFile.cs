@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
@@ -32,7 +30,7 @@ namespace DayZeLib
         public bool isDirty { get; set; }
         public string modname { get; set; }
 
-        public TypesFile (string filename)
+        public TypesFile(string filename)
         {
             Filename = filename;
             Console.Write("serializing " + Path.GetFileName(Filename));
@@ -96,7 +94,7 @@ namespace DayZeLib
                                 savefile = true;
                             }
                         }
-                        if(typeslist.Count > 0)
+                        if (typeslist.Count > 0)
                         {
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine(Environment.NewLine + "### Warning ### ");
@@ -121,7 +119,7 @@ namespace DayZeLib
                 if (savefile == true)
                     SaveTyes();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 var form = Application.OpenForms["SplashForm"];
                 if (form != null)
@@ -154,7 +152,7 @@ namespace DayZeLib
             ns.Add("", "");
             var sw = new StringWriter();
             sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
-            var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true ,});
+            var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true, });
             serializer.Serialize(xmlWriter, types, ns);
             //Console.WriteLine(sw.ToString());
             File.WriteAllText(Filename, sw.ToString());
@@ -166,12 +164,12 @@ namespace DayZeLib
                 return types.type.Where(x => x.name == Searchterm).ToList();
             else
                 return types.type.Where(x => x.name.ToLower().Contains(Searchterm.ToLower())).ToList();
-            
+
         }
         public List<typesType> SerachTypes(string[] Searchterm, bool exact = false)
         {
             List<typesType> list = new List<typesType>();
-            foreach(string s in Searchterm)
+            foreach (string s in Searchterm)
             {
                 list.AddRange(types.type.Where(x => x.name.ToLower().Contains(s)).ToList());
             }
@@ -179,13 +177,13 @@ namespace DayZeLib
 
         }
         public typesType Gettypebyname(string name)
-        { 
-            return types.type.FirstOrDefault(x => x.name == name); 
+        {
+            return types.type.FirstOrDefault(x => x.name == name);
         }
 
         public IEnumerable<typesType> getallfromcat(listsCategory c)
         {
-            if(c.name == "Other")
+            if (c.name == "Other")
                 return types.type.Where(x => x.category == null);
             else
                 return types.type.Where(x => (x.category != null) && (x.category.name.ToLower() == c.name.ToLower()));

@@ -148,7 +148,7 @@ namespace DayZeEditor
         private void UtopiaAirdropManager_FormClosing(object sender, FormClosingEventArgs e)
         {
             bool needtosave = false;
-            if(UtopiaAirdropSettings.isDirty)
+            if (UtopiaAirdropSettings.isDirty)
             {
                 needtosave = true;
             }
@@ -233,7 +233,7 @@ namespace DayZeEditor
         }
         private void DropLocationsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(DropLocationsLB.SelectedItems.Count == 0) { return; }
+            if (DropLocationsLB.SelectedItems.Count == 0) { return; }
             currentDroplocation = DropLocationsLB.SelectedItem as Droplocation;
             useraction = false;
             SetupDropZone();
@@ -292,7 +292,7 @@ namespace DayZeEditor
             Droplocation NewDropzone = new Droplocation()
             {
                 name = "New drop location",
-                dropPosition = new decimal[] { currentproject.MapSize / 2 , 0, currentproject.MapSize / 2 },
+                dropPosition = new decimal[] { currentproject.MapSize / 2, 0, currentproject.MapSize / 2 },
                 radius = 50,
                 airdropContainers = new BindingList<Airdropcontainer>()
             };
@@ -344,9 +344,9 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             currentAirdropcontainer.isCarDrop = dropLocationContainerIsCarDropCB.Checked == true ? 1 : 0;
-            if(currentAirdropcontainer.isCarDrop == 1) 
+            if (currentAirdropcontainer.isCarDrop == 1)
             {
-                currentAirdropcontainer.containerName =  "Utopia_Car_Parachute";
+                currentAirdropcontainer.containerName = "Utopia_Car_Parachute";
             }
             else
             {
@@ -355,7 +355,7 @@ namespace DayZeEditor
             useraction = false;
             DropLocationContainerNameCB.SelectedIndex = DropLocationContainerNameCB.FindStringExact(currentAirdropcontainer.containerName);
             DropLocationContainerLB.Invalidate();
-            useraction = true;  
+            useraction = true;
             UtopiaAirdropSettings.isDirty = true;
         }
         private void FlareAirdropContainersLB_SelectedIndexChanged(object sender, EventArgs e)
@@ -828,7 +828,7 @@ namespace DayZeEditor
                 else if (e.Node.Tag.ToString() == "Quantity")
                 {
                     LootPoolQuantityGB.Visible = true;
-                    if(e.Node.Parent.Tag is Item)
+                    if (e.Node.Parent.Tag is Item)
                     {
                         currentitem = e.Node.Parent.Tag as Item;
                         LootPoolQuantityNUD.Value = currentitem.quantity;
@@ -1018,7 +1018,7 @@ namespace DayZeEditor
         }
         private void darkButton10_Click(object sender, EventArgs e)
         {
-            if(LootPoolsLB.SelectedItems.Count <= 0) return;
+            if (LootPoolsLB.SelectedItems.Count <= 0) return;
             UtopiaAirdropSettings.lootPools.Remove(currentlootpool);
             UtopiaAirdropSettings.isDirty = true;
         }

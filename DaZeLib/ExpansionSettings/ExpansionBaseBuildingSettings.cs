@@ -54,7 +54,7 @@ namespace DayZeLib
         public int FlagMenuMode { get; set; }
         public int OverrideVanillaEntityPlacement { get; set; }
         public int EnableVirtualStorage { get; set; }
-        public BindingList<string> VirtualStorageExcludedContainers { get;set;}
+        public BindingList<string> VirtualStorageExcludedContainers { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }
@@ -123,7 +123,7 @@ namespace DayZeLib
 
             VirtualStorageExcludedContainers = new BindingList<string>() { "ExpansionAirdropContainerBase" };
             Zones = new BindingList<ExpansionBuildNoBuildZone>();
-            
+
         }
         public bool checkver()
         {

@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeLib
@@ -169,7 +167,7 @@ namespace DayZeLib
             Roamingwaypoints = new BindingList<Vec3>();
             foreach (decimal[] array in m_Waypoints)
             {
-                Roamingwaypoints.Add( new Vec3()
+                Roamingwaypoints.Add(new Vec3()
                 {
                     X = Convert.ToSingle(array[0]),
                     Y = Convert.ToSingle(array[1]),
@@ -180,7 +178,7 @@ namespace DayZeLib
         public void setRoamingwaypoints()
         {
             m_Waypoints = new BindingList<decimal[]>();
-            foreach(Vec3 vec3 in Roamingwaypoints)
+            foreach (Vec3 vec3 in Roamingwaypoints)
             {
                 m_Waypoints.Add(new decimal[]
                 {

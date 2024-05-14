@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace DayZeLib
 {
@@ -22,7 +19,7 @@ namespace DayZeLib
         public string Version { get; set; }
         public int[] AuthorizedIDInsurance { get; set; }
         public BindingList<Insurance> Insurances { get; set; }
-        
+
         public TraderPlusInsuranceConfig()
         {
             Version = m_Version;
@@ -37,7 +34,7 @@ namespace DayZeLib
         public void setInsurers(TraderPlusGeneralConfig traderPlusGeneralConfig)
         {
             List<int> insurers = new List<int>();
-            foreach(Trader t in traderPlusGeneralConfig.Traders)
+            foreach (Trader t in traderPlusGeneralConfig.Traders)
             {
                 if (t.isInsurer)
                     insurers.Add(t.Id);

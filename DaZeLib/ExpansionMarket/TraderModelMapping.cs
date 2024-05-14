@@ -51,7 +51,7 @@ namespace DayZeLib
             }
             if (savefile)
                 savefiles();
-            
+
         }
         public void savefiles(string saveTime = null)
         {
@@ -87,10 +87,10 @@ namespace DayZeLib
                     mappaths.Add(map.Filename);
                 }
             }
-            foreach(string path in mappaths)
+            foreach (string path in mappaths)
             {
                 StringBuilder sb = new StringBuilder();
-                foreach(Tradermap tm in maps.Where(x => x .Filename == path))
+                foreach (Tradermap tm in maps.Where(x => x.Filename == path))
                 {
                     if (tm.isroaming)
                     {
@@ -149,7 +149,7 @@ namespace DayZeLib
         public Tradermap(string[] array)
         {
             Attachments = new BindingList<string>();
-            if (array[0].StartsWith("//")){ return; }
+            if (array[0].StartsWith("//")) { return; }
             string[] Part1 = array[0].Split('.');
             NPCName = Part1[0];
             NPCTrade = Part1[1];
@@ -158,10 +158,10 @@ namespace DayZeLib
                 isroaming = true;
                 Roamingpoints = new BindingList<Vec3>();
                 int start = 0;
-                foreach(string line in array[1].Split(','))
+                foreach (string line in array[1].Split(','))
                 {
                     string newline = line;
-                    if(line.StartsWith(" "))
+                    if (line.StartsWith(" "))
                     {
                         newline = line.Remove(0, 1);
                     }
@@ -181,9 +181,9 @@ namespace DayZeLib
                 position = new Vec3(array[1].Split(' '));
             }
             roattions = new Vec3(array[2].Split(' '));
-            if(array.Length == 4)
+            if (array.Length == 4)
             {
-                foreach(string s in array[3].Split(','))
+                foreach (string s in array[3].Split(','))
                     Attachments.Add(s);
             }
         }

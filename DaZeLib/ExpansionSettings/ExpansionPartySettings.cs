@@ -77,6 +77,6 @@ namespace DayZeLib
         public void SetIntValue(string mytype, int myvalue)
         {
             GetType().GetProperty(mytype).SetValue(this, myvalue, null);
+        }
     }
-}
 }

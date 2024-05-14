@@ -2,11 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeLib
@@ -57,7 +53,7 @@ namespace DayZeLib
 
         public ExpansionLoot currentExpanionLootItem;
         public ExpansionLootVariant CurrentLootVArient;
-        
+
 
         public ExpansionLootControl()
         {
@@ -102,7 +98,7 @@ namespace DayZeLib
             {
                 Tag = "Attachments"
             };
-            foreach(ExpansionLootVariant elv in eL.Attachments)
+            foreach (ExpansionLootVariant elv in eL.Attachments)
             {
                 AttachmentTN.Nodes.Add(getLootVarients(elv));
             }
@@ -233,7 +229,7 @@ namespace DayZeLib
 
             if (currentExpanionLootItem.Chance > 1)
                 currentExpanionLootItem.Chance = 1;
-            trackBar1.Value = (int)(currentExpanionLootItem.Chance * 100); 
+            trackBar1.Value = (int)(currentExpanionLootItem.Chance * 100);
             numericUpDown31.Value = currentExpanionLootItem.QuantityPercent;
             numericUpDown12.Value = currentExpanionLootItem.Max;
             numericUpDown33.Value = currentExpanionLootItem.Min;
@@ -435,7 +431,7 @@ namespace DayZeLib
         }
         private void removeLootAttachemntToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(ExpansionLootTV.SelectedNode.Parent.Parent.Tag is ExpansionLoot)
+            if (ExpansionLootTV.SelectedNode.Parent.Parent.Tag is ExpansionLoot)
             {
                 ExpansionLoot loot = ExpansionLootTV.SelectedNode.Parent.Parent.Tag as ExpansionLoot;
                 loot.Attachments.Remove(CurrentLootVArient);
@@ -458,7 +454,7 @@ namespace DayZeLib
         }
         private void ExpansionLootitemSetAllChanceButton_Click(object sender, EventArgs e)
         {
-            foreach(ExpansionLoot el in _currentExpansionLoot)
+            foreach (ExpansionLoot el in _currentExpansionLoot)
             {
                 el.Chance = ((decimal)trackBar2.Value) / 100;
             }
@@ -470,7 +466,7 @@ namespace DayZeLib
             foreach (ExpansionLoot el in _currentExpansionLoot)
             {
                 typesType type = vanillatypes.Gettypebyname(el.Name);
-                if(type == null)
+                if (type == null)
                 {
                     foreach (TypesFile tf in ModTypes)
                     {

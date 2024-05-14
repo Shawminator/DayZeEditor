@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace DayZeLib
 {
@@ -57,7 +52,7 @@ namespace DayZeLib
         public bool checknotificationcols()
         {
             bool returntype = false;
-            foreach(ExpansionNotificationSchedule not in Notifications)
+            foreach (ExpansionNotificationSchedule not in Notifications)
             {
                 if (not.Color == "")
                 {

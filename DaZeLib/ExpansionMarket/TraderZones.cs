@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DayZeLib
@@ -70,7 +68,7 @@ namespace DayZeLib
         {
             string newZonename = zonename.ToUpper();
             Zones z = new Zones(newZonename);
-            z.Position = new float[] { mapsize/2, 0, mapsize/2 };
+            z.Position = new float[] { mapsize / 2, 0, mapsize / 2 };
             z.Radius = mapsize / 2;
             z.isDirty = true;
             z.Filename = newZonename;
@@ -112,7 +110,7 @@ namespace DayZeLib
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
-        public BindingList<StockItem> StockItems {get;set;}
+        public BindingList<StockItem> StockItems { get; set; }
         [JsonIgnore]
         public bool isDirty = false;
 
@@ -128,7 +126,7 @@ namespace DayZeLib
             StockItems = new BindingList<StockItem>();
         }
 
-        public Zones (string filename)
+        public Zones(string filename)
         {
             m_Version = TraderZones.CurrentVersion;
             m_DisplayName = filename;
@@ -158,7 +156,7 @@ namespace DayZeLib
         public void ConvertlisttoDict()
         {
             Stock = new Dictionary<string, int>();
-            foreach(StockItem si in StockItems)
+            foreach (StockItem si in StockItems)
             {
                 Stock.Add(si.Classname, si.StockValue);
             }
@@ -170,7 +168,7 @@ namespace DayZeLib
             {
                 string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
                 Directory.CreateDirectory(ZonesPath + "\\Backup\\" + SaveTime);
-                File.Copy(fullfilename, ZonesPath + "\\Backup\\" + SaveTime + "\\" +Filename + ".bak", true);
+                File.Copy(fullfilename, ZonesPath + "\\Backup\\" + SaveTime + "\\" + Filename + ".bak", true);
                 File.Delete(fullfilename);
             }
         }

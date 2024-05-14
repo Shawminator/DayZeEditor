@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace DayZeLib
 {
@@ -64,9 +59,9 @@ namespace DayZeLib
             MemeLevel = 1;
             CanRecruitFriendly = 1;
             CanRecruitGuards = 0;
-            PreventClimb = new BindingList<string> ();
+            PreventClimb = new BindingList<string>();
             PlayerFactions = new BindingList<string>();
-            LogAIHitBy = 1; 
+            LogAIHitBy = 1;
             LogAIKilled = 1;
         }
     }

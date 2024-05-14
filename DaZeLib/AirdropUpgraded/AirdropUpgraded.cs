@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace DayZeLib
 {
@@ -141,7 +136,7 @@ namespace DayZeLib
 
         public override string ToString()
         {
-            return Title; 
+            return Title;
         }
     }
     public class VPP_Map

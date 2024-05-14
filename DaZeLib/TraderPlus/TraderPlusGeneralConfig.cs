@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.ComponentModel;
-using System.IO;
+using System.Linq;
+using System.Text.Json.Serialization;
 
 namespace DayZeLib
 {
@@ -93,7 +89,7 @@ namespace DayZeLib
                 AcceptBadlyDamaged = 1,
                 CoefficientWorn = (decimal)0.75,
                 CoefficientDamaged = (decimal)0.5,
-                CoefficientBadlyDamaged = (decimal) 0.25
+                CoefficientBadlyDamaged = (decimal)0.25
             };
             StoreOnlyToPristineState = 0;
             Currencies = new BindingList<Currency>();
@@ -133,7 +129,7 @@ namespace DayZeLib
         }
         public void getBankers()
         {
-            foreach(Trader t in Traders)
+            foreach (Trader t in Traders)
             {
                 if (t.Id == -2)
                     t.isBanker = true;
@@ -141,7 +137,7 @@ namespace DayZeLib
         }
         public void getInsurers(TraderPlusInsuranceConfig traderPlusInsuranceConfig)
         {
-            foreach(Trader t in Traders)
+            foreach (Trader t in Traders)
             {
                 if (traderPlusInsuranceConfig.AuthorizedIDInsurance.Contains(t.Id))
                     t.isInsurer = true;
@@ -152,7 +148,7 @@ namespace DayZeLib
             int tempindex = 0;
             foreach (Trader t in Traders)
             {
-                if (t.Id == -2){}
+                if (t.Id == -2) { }
                 else
                 {
                     tempindex++;
@@ -162,12 +158,12 @@ namespace DayZeLib
         }
         public void getallcurenciesclassnames()
         {
-            foreach(Currency c in Currencies)
+            foreach (Currency c in Currencies)
             {
                 List<string> newlist = c.ClassName.Split(',').ToList();
                 newlist.Sort();
                 c.CurrenciesNames = new BindingList<string>();
-                foreach(string s in newlist)
+                foreach (string s in newlist)
                 {
                     c.CurrenciesNames.Add(s);
                 }
@@ -191,9 +187,9 @@ namespace DayZeLib
         public List<string> getcurrencies()
         {
             List<string> newlist = new List<string>();
-            foreach(Currency c in Currencies)
+            foreach (Currency c in Currencies)
             {
-                foreach(string currencyname in c.CurrenciesNames)
+                foreach (string currencyname in c.CurrenciesNames)
                 {
                     newlist.Add(currencyname);
                 }
@@ -202,14 +198,14 @@ namespace DayZeLib
         }
         public void SaveCurrencies()
         {
-            foreach(Currency c in Currencies)
+            foreach (Currency c in Currencies)
             {
                 c.ClassName = string.Join(",", c.CurrenciesNames);
             }
         }
         public void GetCategoriesbyID(TraderPlusIDsConfig traderPlusIDsConfig)
         {
-            foreach(Trader t in Traders)
+            foreach (Trader t in Traders)
             {
                 if (t.isBanker) continue;
                 t.TraderCategoryList = traderPlusIDsConfig.getTraderbyID(t.Id);
@@ -222,7 +218,7 @@ namespace DayZeLib
         public void SaveIDS(TraderPlusIDsConfig traderPlusIDsConfig)
         {
             traderPlusIDsConfig.IDs = new BindingList<IDs>();
-            foreach(Trader t in Traders)
+            foreach (Trader t in Traders)
             {
                 if (t.isBanker) continue;
                 traderPlusIDsConfig.IDs.Add(t.TraderCategoryList);
@@ -245,7 +241,7 @@ namespace DayZeLib
     {
         public string ClassName { get; set; }
         public int Value { get; set; }
-        
+
         [JsonIgnore]
         public BindingList<string> CurrenciesNames { get; set; }
 
@@ -289,9 +285,9 @@ namespace DayZeLib
             return ObjectName;
         }
     }
-    
 
-    
+
+
 
 
     /// <summary>

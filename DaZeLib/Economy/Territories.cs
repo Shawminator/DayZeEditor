@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace DayZeLib
 {
@@ -212,7 +207,7 @@ namespace DayZeLib
                 this.yFieldSpecified = value;
             }
         }
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public decimal z
@@ -242,7 +237,7 @@ namespace DayZeLib
         }
         public override string ToString()
         {
-            return name ;
+            return name;
         }
         public bool Equals(territorytypeTerritoryZone p)
         {

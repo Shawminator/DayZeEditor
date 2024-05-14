@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DayZeLib
 {
@@ -41,8 +38,8 @@ namespace DayZeLib
 
                 if (!line_content.Contains("<Object>"))
                     break;
-                
-               
+
+
 
                 line_content = line_content.Replace("<Object>", "");
                 line_content = Helper.TrimComment(line_content);
@@ -66,7 +63,7 @@ namespace DayZeLib
 
                 line_content = Helper.SearchForNextTermInFile(reader, "<ObjectOrientation>", "<FileEnd>");
 
-                line_content =  line_content.Replace("<ObjectOrientation>", "");
+                line_content = line_content.Replace("<ObjectOrientation>", "");
                 line_content = Helper.TrimComment(line_content);
 
                 string[] strsod = line_content.Split(',');
@@ -104,7 +101,7 @@ namespace DayZeLib
                         markerCounter++;
                         break;
                     }
-                    
+
                     line_content = line_content.Replace("<ObjectAttachment>", "");
                     line_content = Helper.TrimComment(line_content);
 
@@ -116,7 +113,7 @@ namespace DayZeLib
                     {
                         Attchments.Add(line_content);
                     }
-                     
+
 
                     attachmentCounter++;
                 }
