@@ -443,6 +443,7 @@ namespace DayZeEditor
             projects.getActiveProject().setVanillaTypes();
             projects.getActiveProject().SetModListtypes();
             projects.getActiveProject().SetTotNomCount();
+            projects.getActiveProject().AssignRarity();
             projects.getActiveProject().Setmapgrouproto();
             projects.getActiveProject().Setmapgroupos();
             projects.getActiveProject().SetTerritories();

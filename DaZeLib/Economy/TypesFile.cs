@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.IO.Ports;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
@@ -9,19 +10,21 @@ using System.Xml.Serialization;
 
 namespace DayZeLib
 {
-    public class LootPart
+    public enum ITEMRARITY
     {
-        public string name, tag;
-        public int Index, nominal, lifetime, restock, min, quantmin, quantmax, cost;
-        public bool count_in_cargo, count_in_hoarder, count_in_map, count_in_player, crafted, deloot, Disabled;
-        public List<string> usage;
-        public List<string> TierValue;
-        public string category;
-
-        public override string ToString()
-        {
-            return name.ToString();
-        }
+        Legendary,
+        Epic,
+        Elite,
+        Exceptional,
+        Unique,
+        ExtremlyRare,
+        VeryRare,
+        Rare,
+        Uncommon,
+        Common,
+        VeryCommon,
+        Everywhere,
+        None
     }
     public class TypesFile
     {
@@ -29,6 +32,8 @@ namespace DayZeLib
         public types types { get; set; }
         public bool isDirty { get; set; }
         public string modname { get; set; }
+
+
 
         public TypesFile(string filename)
         {
@@ -178,7 +183,7 @@ namespace DayZeLib
         }
         public typesType Gettypebyname(string name)
         {
-            return types.type.FirstOrDefault(x => x.name == name);
+            return types.type.FirstOrDefault(x => x.name.ToLower() == name.ToLower());
         }
 
         public IEnumerable<typesType> getallfromcat(listsCategory c)

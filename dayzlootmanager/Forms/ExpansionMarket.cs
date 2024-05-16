@@ -33,7 +33,6 @@ namespace DayZeEditor
         public string tradermapsPath;
 
         public TypesFile vanillatypes;
-        public TypesFile Expansiontypes;
         public List<TypesFile> ModTypes;
 
         public BindingList<string> Factions { get; private set; }
@@ -2065,6 +2064,13 @@ namespace DayZeEditor
             textBox10.Text = currentitem.ClassName;
             if (currentitem.MaxPriceThreshold == -1)
                 currentitem.MaxPriceThreshold = 1;
+            setMarketItem();
+            action = false;
+        }
+
+        private void setMarketItem()
+        {
+            action = true;
             numericUpDown6.Value = currentitem.MaxPriceThreshold;
             numericUpDown7.Value = currentitem.MinPriceThreshold;
             numericUpDown23.Value = currentitem.SellPricePercent;
@@ -2082,6 +2088,7 @@ namespace DayZeEditor
             listBox11.DataSource = currentitem.Variants;
             action = false;
         }
+
         private void textBox9_TextChanged(object sender, EventArgs e)
         {
             if (!action)
@@ -3933,16 +3940,6 @@ namespace DayZeEditor
             File.WriteAllText(currentproject.projectFullName + "//missing_market_types.txt", sb.ToString());
         }
 
-        private void tabPage3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void darkLabel8_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void ExpansionMarket_FormClosing(object sender, FormClosingEventArgs e)
         {
             bool needtosave = false;
@@ -4086,7 +4083,6 @@ namespace DayZeEditor
                 }
             }
         }
-
         private void toolStripMenuItem3_Click_1(object sender, EventArgs e)
         {
             string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("input perecentage to Increase Price by\neg. 50 for 50%", "Price", "");
@@ -4119,7 +4115,6 @@ namespace DayZeEditor
             else
                 darkLabel88.Text = "Z-A";
         }
-
         private void ItemSortPriceLabel_Click(object sender, EventArgs e)
         {
             MintoMax = !MintoMax;
@@ -4132,7 +4127,6 @@ namespace DayZeEditor
             else
                 darkLabel90.Text = "Max - Min";
         }
-
         private void darkButton52_Click(object sender, EventArgs e)
         {
             if (listBox15.SelectedItems.Count <= 0) return;
@@ -4146,7 +4140,6 @@ namespace DayZeEditor
             listBox15.SelectedIndex = newindex;
             tradermaps.isDirty = true;
         }
-
         private void darkButton51_Click(object sender, EventArgs e)
         {
             if (listBox15.SelectedItems.Count <= 0) return;
@@ -4159,6 +4152,202 @@ namespace DayZeEditor
             listBox15.Refresh();
             listBox15.SelectedIndex = newindex;
             tradermaps.isDirty = true;
+        }
+
+
+        private bool Checkifincat(marketItem item, List<Categories> newcats)
+        {
+            foreach (Categories cat in newcats)
+            {
+                if (cat.Items.Any(x => x.ClassName.ToLower() == item.ClassName.ToLower()))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            MarketCats.CreateNewCat("AMMO");
+            MarketCats.CreateNewCat("AMMOBOX");
+            MarketCats.CreateNewCat("MAGS");
+            MarketCats.CreateNewCat("OPTIC");
+            MarketCats.CreateNewCat("SUPPRESSOR");
+            MarketCats.CreateNewCat("OTHER");
+            foreach (listsCategory cat in currentproject.limitfefinitions.lists.categories)
+            {
+                MarketCats.CreateNewCat(cat.name.ToUpper().Replace("_", " "));
+            }
+            foreach (typesType type in vanillatypes.types.type)
+            {
+                if (type.nominal == 0) continue;
+                Categories ccat = null;
+                if (type.category == null)
+                {
+                    ccat = MarketCats.CatList.FirstOrDefault(x => x.DisplayName.ToLower() == "other");
+                }
+                else if (type.name.ToLower().Contains("ammobox_"))
+                {
+                    ccat = MarketCats.CatList.FirstOrDefault(x => x.DisplayName.ToLower() == "ammobox");
+                }
+                else if (type.name.ToLower().Contains("ammo_"))
+                {
+                    ccat = MarketCats.CatList.FirstOrDefault(x => x.DisplayName.ToLower() == "ammo");
+                }
+                else if (type.name.ToLower().StartsWith("mag_"))
+                {
+                    ccat = MarketCats.CatList.FirstOrDefault(x => x.DisplayName.ToLower() == "mags");
+                }
+                else if (type.name.ToLower().Contains("optic"))
+                {
+                    ccat = MarketCats.CatList.FirstOrDefault(x => x.DisplayName.ToLower() == "optic");
+                }
+                else if (type.name.ToLower().Contains("suppressor"))
+                {
+                    ccat = MarketCats.CatList.FirstOrDefault(x => x.DisplayName.ToLower() == "suppressor");
+                }
+                else
+                {
+                    ccat = MarketCats.CatList.FirstOrDefault(x => x.DisplayName.ToLower() == type.category.name.ToLower());
+                }
+                marketItem NewContainer = new marketItem
+                {
+                    ClassName = type.name.ToLower(),
+                    MaxPriceThreshold = 0,
+                    MinPriceThreshold = 0,
+                    MaxStockThreshold = 0,
+                    MinStockThreshold = 0,
+                    SellPricePercent = -1,
+                    QuantityPercent = -1,
+                    SpawnAttachments = new BindingList<string>(),
+                    Variants = new BindingList<string>()
+
+                };
+                if (!Checkifincat(NewContainer))
+                {
+                    ccat.Items.Add(NewContainer);
+                    ccat.isDirty = true;
+                }
+            }
+            if (ModTypes.Count > 0)
+            {
+                foreach (TypesFile tf in ModTypes)
+                {
+                    foreach (typesType type in tf.types.type)
+                    {
+                        if (type.nominal == 0) continue;
+                        Categories ccat = null;
+                        if (type.category == null)
+                        {
+                            ccat = MarketCats.CatList.FirstOrDefault(x => x.DisplayName.ToLower() == "other");
+                        }
+                        else if (type.name.ToLower().Contains("ammobox"))
+                        {
+                            ccat = MarketCats.CatList.FirstOrDefault(x => x.DisplayName.ToLower() == "ammobox");
+                        }
+                        else if (type.name.ToLower().Contains("ammo"))
+                        {
+                            ccat = MarketCats.CatList.FirstOrDefault(x => x.DisplayName.ToLower() == "ammo");
+                        }
+                        else if (type.name.ToLower().StartsWith("mag_"))
+                        {
+                            ccat = MarketCats.CatList.FirstOrDefault(x => x.DisplayName.ToLower() == "mags");
+                        }
+                        else if (type.name.ToLower().Contains("optic"))
+                        {
+                            ccat = MarketCats.CatList.FirstOrDefault(x => x.DisplayName.ToLower() == "optic");
+                        }
+                        else if (type.name.ToLower().Contains("suppressor"))
+                        {
+                            ccat = MarketCats.CatList.FirstOrDefault(x => x.DisplayName.ToLower() == "suppressor");
+                        }
+                        else
+                        {
+                            ccat = MarketCats.CatList.FirstOrDefault(x => x.DisplayName.ToLower() == type.category.name.ToLower());
+                        }
+                        marketItem NewContainer = new marketItem
+                        {
+                            ClassName = type.name.ToLower(),
+                            MaxPriceThreshold = 0,
+                            MinPriceThreshold = 0,
+                            MaxStockThreshold = 0,
+                            MinStockThreshold = 0,
+                            SellPricePercent = -1,
+                            QuantityPercent = -1,
+                            SpawnAttachments = new BindingList<string>(),
+                            Variants = new BindingList<string>()
+
+                        };
+                        if (!Checkifincat(NewContainer))
+                        {
+                            ccat.Items.Add(NewContainer);
+                            ccat.isDirty = true;
+                        }
+                    }
+                }
+            }
+        }
+        private void darkButton53_Click(object sender, EventArgs e)
+        {
+            int maxpricemin = (int)numericUpDown27.Value;
+            int maxpricemax = (int)numericUpDown31.Value;
+            foreach (marketItem item in currentCat.Items)
+            {
+                typesType type = currentproject.gettypebyname(item.ClassName);
+                if (type != null)
+                {
+                    if (rarityMultiplier.TryGetValue(type.Rarity, out decimal rarityMultiplierValue))
+                    {
+                        decimal rarityFactor = rarityMultiplierValue / 20;
+                        decimal baseMaxPrice = maxpricemin + (rarityFactor * (maxpricemax - maxpricemin));
+                        decimal finalMaxPrice = baseMaxPrice - (type.nominal * rarityMultiplierValue);
+                        finalMaxPrice = Math.Max(maxpricemin, Math.Min(maxpricemax, finalMaxPrice));
+                        item.MaxPriceThreshold = (int)finalMaxPrice;
+                    }
+                }
+            }
+            currentCat.isDirty = true;
+            setMarketItem();
+        }
+        private static Dictionary<ITEMRARITY, decimal> rarityMultiplier = new Dictionary<ITEMRARITY, decimal>
+        {
+            { ITEMRARITY.Legendary, 20 },
+            { ITEMRARITY.Epic, 18 },
+            { ITEMRARITY.Elite, 16 },
+            { ITEMRARITY.Exceptional, 14 },
+            { ITEMRARITY.Unique, 12 },
+            { ITEMRARITY.ExtremlyRare, 10 },
+            { ITEMRARITY.VeryRare, 9 },
+            { ITEMRARITY.Rare, 8 },
+            { ITEMRARITY.Uncommon, 7 },
+            { ITEMRARITY.Common, 6 },
+            { ITEMRARITY.VeryCommon, 4 },
+            { ITEMRARITY.Everywhere, 2 }
+        };
+
+        private void darkButton55_Click(object sender, EventArgs e)
+        {
+            string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Input precentage of Max Price ", "Min Price", "");
+            if (UserAnswer == "") return;
+            int value = Convert.ToInt32(UserAnswer);
+            foreach (marketItem item in currentCat.Items)
+            {
+                decimal num1 = (decimal)item.MaxPriceThreshold / 100;
+                decimal num2 = num1 * value;
+                item.MinPriceThreshold = (int)Math.Round(num2, MidpointRounding.AwayFromZero);
+            }
+            currentCat.isDirty = true;
+            setMarketItem();
+        }
+
+        private void darkButton54_Click(object sender, EventArgs e)
+        {
+            foreach (marketItem item in currentCat.Items)
+            {
+                item.MinPriceThreshold = item.MaxPriceThreshold;
+            }
+            setMarketItem();
+            currentCat.isDirty = true;
         }
     }
 }

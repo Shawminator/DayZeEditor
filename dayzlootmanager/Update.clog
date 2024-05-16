@@ -1,6 +1,10 @@
 ﻿Version 0.8.0.5
 [Added]
-Expansion Market - Trader NPC up and down buttons added to allow sorting of order for npc attchments
+Economy Manager - Added a Rarity feature which assigns a rarity based of each items nominal count.
+				  This allows for a blanket refresh of total nominals and each items nominal if assigned a rarity will be recalculted.
+Expansion Market -Trader NPC up and down buttons added to allow sorting of order for npc attchments
+                  can quickly create market items using types with nominals > 0
+				  also can quickly create price based on totals nominals and rarity.
 [Fixed]
 fixed issue with creating projects upon first launch
 

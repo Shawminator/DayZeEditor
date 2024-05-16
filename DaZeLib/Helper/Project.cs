@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing.Drawing2D;
 using System.IO;
+using System.IO.Ports;
 using System.Linq;
 using System.Text.Encodings.Web;
 using System.Text.Json;
@@ -195,6 +197,21 @@ namespace DayZeEditor
         public TypesFile GetModTypebyname(string name)
         {
             return ModTypesList.FirstOrDefault(x => x.modname == name);
+        }
+        public typesType gettypebyname(string classname)
+        {
+            typesType type = vanillaTypes.Gettypebyname(classname);
+            if(type != null) return type;
+            else
+            {
+                foreach(TypesFile tf in ModTypesList)
+                {
+                    type = tf.Gettypebyname(classname);
+                    if (type != null)
+                        return type;
+                }
+            }
+            return null;
         }
         public eventscofig geteventbyname(string name)
         {
@@ -481,6 +498,62 @@ namespace DayZeEditor
         public void SetcfgEffectAreaConfig()
         {
             cfgEffectAreaConfig = new cfgEffectAreaConfig(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfgEffectArea.json");
+        }
+
+        public void AssignRarity()
+        {
+            List<typesType> items = new List<typesType>();
+            foreach(typesType vantype in vanillaTypes.types.type)
+            {
+                if(vantype.nominal == 0)
+                {
+                    vantype.Rarity = ITEMRARITY.None;
+                    continue;
+                }
+                items.Add(vantype);
+            }
+            foreach(TypesFile tfile in ModTypesList)
+            {
+                foreach(typesType typesType in tfile.types.type)
+                {
+                    if (typesType.nominal == 0)
+                    {
+                        typesType.Rarity = ITEMRARITY.None;
+                        continue;
+                    }
+                    items.Add(typesType);
+                }
+            }
+
+            // Sort items by nominal value
+            items = items.OrderBy(i => i.nominal).ToList();
+
+            // Calculate the number of items per rarity bin
+            int binSize = (int)Math.Ceiling(items.Count / 12.0);
+
+            for (int i = 0; i < items.Count; i++)
+            {
+                // Determine the rarity based on the item's position in the sorted list
+                int rarityIndex = i / binSize;
+                if (rarityIndex >= Enum.GetValues(typeof(ITEMRARITY)).Length)
+                {
+                    rarityIndex = Enum.GetValues(typeof(ITEMRARITY)).Length - 1; // Handle any rounding issues
+                }
+
+
+
+                items[i].Rarity = (ITEMRARITY)rarityIndex;
+            }
+
+        }
+
+        public void SetallTypesasDirty()
+        {
+            vanillaTypes.isDirty = true;
+            foreach (TypesFile tfile in ModTypesList)
+            {
+                tfile.isDirty = true;
+            }
         }
     }
 }

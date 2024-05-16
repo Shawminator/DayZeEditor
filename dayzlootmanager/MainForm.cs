@@ -27,7 +27,6 @@ namespace DayZeEditor
             set { toolStripStatusLabel1.Text = value; }
         }
 
-
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
         public string VersionNumber = "0.8.0.5";
@@ -138,6 +137,7 @@ namespace DayZeEditor
                     Projects.getActiveProject().setVanillaTypes();
                     Projects.getActiveProject().SetModListtypes();
                     Projects.getActiveProject().SetTotNomCount();
+                    Projects.getActiveProject().AssignRarity();
                     Projects.getActiveProject().SetSpawnabletypes();
                     Projects.getActiveProject().setplayerspawns();
                     Projects.getActiveProject().SetCFGGameplayConfig();

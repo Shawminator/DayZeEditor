@@ -298,7 +298,7 @@ namespace DayZeLib
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
-        public bool SortByDisplayName { get; internal set; }
+        public bool SortByDisplayName { get; set; }
         [JsonIgnore]
         public bool isDirty = false;
 
@@ -396,10 +396,9 @@ namespace DayZeLib
         public string ClassName { get; set; }
         public int MaxPriceThreshold { get; set; }
         public int MinPriceThreshold { get; set; }
-        public decimal SellPricePercent { get; set; } //Added in Version 7
+        public decimal SellPricePercent { get; set; }
         public int MaxStockThreshold { get; set; }
         public int MinStockThreshold { get; set; }
-        //public int PurchaseType { get; set; }  removed in Version 6
         public int QuantityPercent { get; set; }
         public BindingList<string> SpawnAttachments { get; set; }
         public BindingList<string> Variants { get; set; }

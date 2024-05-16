@@ -1827,19 +1827,6 @@ namespace DayZeEditor
                 }
             }
         }
-        public TreeNode returntreenode(List<LootPart> partlist, string name, bool ignoredisabled = false)
-        {
-            TreeNode tn = new TreeNode(name)
-            {
-                Tag = name
-            };
-            foreach (LootPart lp in partlist)
-            {
-                TreeNode partnod = new TreeNode(lp.name);
-                tn.Nodes.Add(partnod);
-            }
-            return tn;
-        }
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             switch (ExpansionSettingsTabPage.SelectedIndex)

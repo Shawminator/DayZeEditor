@@ -119,25 +119,6 @@ namespace DayZeEditor
                 }
             }
         }
-        public TreeNode returntreenode(List<LootPart> partlist, string name, bool ignoredisabled = false)
-        {
-            TreeNode tn = new TreeNode(name);
-            tn.Tag = name;
-            foreach (LootPart lp in partlist)
-            {
-                if (lp.Disabled == true && ignoredisabled == true)
-                {
-
-                }
-                else
-                {
-                    TreeNode partnod = new TreeNode(lp.name);
-                    partnod.Tag = lp;
-                    tn.Nodes.Add(partnod);
-                }
-            }
-            return tn;
-        }
         private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             if (currentlootpart == null) return;

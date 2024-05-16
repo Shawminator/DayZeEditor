@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Xml.Xsl;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace DayZeEditor
 {
@@ -106,6 +108,7 @@ namespace DayZeEditor
                 newlist.Add(cat);
             }
             comboBox1.DataSource = newlist;
+            comboBox9.DataSource = Enum.GetValues(typeof(ITEMRARITY));
             comboBox2.DataSource = currentproject.limitfefinitions.lists.usageflags;
             if (comboBox2.Items.Count == 0)
                 groupBox2.Visible = false;
@@ -189,6 +192,9 @@ namespace DayZeEditor
             TypesTabButton.Checked = true;
             EconomySearchBoxTB.Visible = true;
             EconomyFindButton.Visible = true;
+            toolStripButton2.Visible = true;
+            toolStripTextBox1.Visible = true;
+            toolStripButton1.Visible = true;
             isUserInteraction = true;
 
             gettotalnumber();
@@ -724,6 +730,9 @@ namespace DayZeEditor
                 EconomySearchBoxTB.Visible = true;
                 EconomyFindButton.Visible = true;
                 TypesTabButton.Checked = true;
+                toolStripButton2.Visible = true;
+                toolStripTextBox1.Visible = true;
+                toolStripButton1.Visible = true;
             }
         }
         private void TypesSummaryTabButton_Click(object sender, EventArgs e)
@@ -844,6 +853,9 @@ namespace DayZeEditor
             InitCTabButton.Checked = false;
             SpawnGearTabButton.Checked = false;
             MapGroupPosTabButton.Checked = false;
+            toolStripButton1.Visible = false;
+            toolStripButton2.Visible = false;
+            toolStripTextBox1.Visible = false;
         }
         #endregion formsstuff
         #region Types
@@ -1509,6 +1521,7 @@ namespace DayZeEditor
                 comboBox1.SelectedIndex = 0;
             else
                 comboBox1.SelectedIndex = comboBox1.FindStringExact(currentlootpart.category.name);
+            comboBox9.SelectedItem = (ITEMRARITY)currentlootpart.Rarity;
             populateUsage();
             PopulateCounts();
             PopulateFlags();
@@ -8808,10 +8821,101 @@ namespace DayZeEditor
         {
 
         }
-
         private void eventspawngroupTV_AfterSelect(object sender, TreeViewEventArgs e)
         {
 
+        }
+        private void toolStripButton2_Click_1(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            List<typesType> items = new List<typesType>();
+            foreach (typesType vantype in vanillatypes.types.type)
+            {
+                if (vantype.Rarity == ITEMRARITY.None)
+                {
+                    vantype.nominal = 0;
+                    vantype.min = 0;
+                    continue;
+                }
+                items.Add(vantype);
+            }
+            foreach (TypesFile tfile in ModTypes)
+            {
+                foreach (typesType typesType in tfile.types.type)
+                {
+                    if (typesType.Rarity == ITEMRARITY.None)
+                    {
+                        typesType.nominal = 0;
+                        typesType.min = 0;
+                        continue;
+                    }
+                    items.Add(typesType);
+                }
+            }
+
+            int totalNominal = items.Sum(item => item.nominal);
+            Dictionary<ITEMRARITY, int> rarities = new Dictionary<ITEMRARITY, int>
+            {
+                { ITEMRARITY.Legendary, 1 },
+                { ITEMRARITY.Epic, 2 },
+                { ITEMRARITY.Elite, 4 },
+                { ITEMRARITY.Exceptional, 6 },
+                { ITEMRARITY.Unique, 8 },
+                { ITEMRARITY.ExtremlyRare, 10 },
+                { ITEMRARITY.VeryRare, 12 },
+                { ITEMRARITY.Rare, 15 },
+                { ITEMRARITY.Uncommon, 20 },
+                { ITEMRARITY.Common, 30 },
+                { ITEMRARITY.VeryCommon, 35 },
+                { ITEMRARITY.Everywhere, 40 },
+                { ITEMRARITY.None, 0 }
+            };
+
+            int targetNominal = Convert.ToInt32(toolStripTextBox1.Text);
+
+            foreach (var item in items)
+            {
+                int multiplier = rarities.ContainsKey(item.Rarity) ? rarities[item.Rarity] : 0;
+                item.nominal = multiplier;
+            }
+            int currentNominal = items.Where(item => item.nominal > 0).Sum(item => item.nominal);
+
+            if (targetNominal != currentNominal)
+            {
+                Random rand = new Random();
+                double ratio = (double)targetNominal / currentNominal;
+                foreach (var item in items)
+                {
+                    double variation = (rand.NextDouble() * 0.2) - 0.1;
+                    item.nominal = Math.Max((int)Math.Round(item.nominal * ratio * (1 + variation)), 1);
+                    item.min = (int)Math.Max(Math.Round(item.nominal / 2.5), 1);
+                }
+            }
+            int newtotalNominal = items.Sum(item => item.nominal);
+            currentproject.SetTotNomCount();
+            NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
+            PopulateLootPartInfo();
+            currentproject.SetallTypesasDirty();
+            Cursor.Current = Cursors.Default;
+        }
+        private void toolStripButton1_Click_1(object sender, EventArgs e)
+        {
+            currentproject.AssignRarity();
+            currentproject.SetTotNomCount();
+            NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
+            PopulateLootPartInfo();
+        }
+        private void comboBox9_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (isUserInteraction)
+            {
+                foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+                {
+                    typesType looptype = tn.Tag as typesType;
+                    looptype.Rarity = (ITEMRARITY)comboBox9.SelectedIndex;
+                }
+               isUserInteraction = false;
+            }
         }
     }
 }

@@ -45,8 +45,9 @@ namespace DayZeEditor
             this.syncMaxToMinPricesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setPricesForItemWithZeroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setMinMaxStockForItemsWith0ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForItemsNotInTypesFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.categoriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setMaxStockForSelectedCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setMinStockForSelectedCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -349,6 +350,15 @@ namespace DayZeEditor
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.darkButton55 = new DarkUI.Controls.DarkButton();
+            this.darkButton54 = new DarkUI.Controls.DarkButton();
+            this.darkButton53 = new DarkUI.Controls.DarkButton();
+            this.darkLabel99 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel94 = new DarkUI.Controls.DarkLabel();
+            this.numericUpDown31 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown27 = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel96 = new DarkUI.Controls.DarkLabel();
             this.darkLabel91 = new DarkUI.Controls.DarkLabel();
             this.darkLabel90 = new DarkUI.Controls.DarkLabel();
             this.darkLabel89 = new DarkUI.Controls.DarkLabel();
@@ -526,6 +536,9 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.DisplayCurrencyValueNUD)).BeginInit();
             this.AddFromCategoryListBox.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.groupBox16.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown31)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InitStockPercentNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CategorycolourPB)).BeginInit();
             this.groupBox6.SuspendLayout();
@@ -617,8 +630,9 @@ namespace DayZeEditor
             this.syncMaxToMinPricesToolStripMenuItem,
             this.setPricesForItemWithZeroToolStripMenuItem,
             this.setMinMaxStockForItemsWith0ToolStripMenuItem,
+            this.checkForItemsNotInTypesFilesToolStripMenuItem,
             this.toolStripMenuItem1,
-            this.checkForItemsNotInTypesFilesToolStripMenuItem});
+            this.toolStripMenuItem4});
             this.itemsToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.itemsToolStripMenuItem.Name = "itemsToolStripMenuItem";
             this.itemsToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
@@ -678,6 +692,15 @@ namespace DayZeEditor
             this.setMinMaxStockForItemsWith0ToolStripMenuItem.Text = "Set Min/Max Stock for items with 0";
             this.setMinMaxStockForItemsWith0ToolStripMenuItem.Click += new System.EventHandler(this.setMinMaxStockForItemsWith0ToolStripMenuItem_Click);
             // 
+            // checkForItemsNotInTypesFilesToolStripMenuItem
+            // 
+            this.checkForItemsNotInTypesFilesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.checkForItemsNotInTypesFilesToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.checkForItemsNotInTypesFilesToolStripMenuItem.Name = "checkForItemsNotInTypesFilesToolStripMenuItem";
+            this.checkForItemsNotInTypesFilesToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
+            this.checkForItemsNotInTypesFilesToolStripMenuItem.Text = "Check for Items Not in Types files";
+            this.checkForItemsNotInTypesFilesToolStripMenuItem.Click += new System.EventHandler(this.checkForItemsNotInTypesFilesToolStripMenuItem_Click);
+            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -687,14 +710,14 @@ namespace DayZeEditor
             this.toolStripMenuItem1.Text = "Set Staring level for all cats";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
-            // checkForItemsNotInTypesFilesToolStripMenuItem
+            // toolStripMenuItem4
             // 
-            this.checkForItemsNotInTypesFilesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.checkForItemsNotInTypesFilesToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.checkForItemsNotInTypesFilesToolStripMenuItem.Name = "checkForItemsNotInTypesFilesToolStripMenuItem";
-            this.checkForItemsNotInTypesFilesToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
-            this.checkForItemsNotInTypesFilesToolStripMenuItem.Text = "Check for Items Not in Types files";
-            this.checkForItemsNotInTypesFilesToolStripMenuItem.Click += new System.EventHandler(this.checkForItemsNotInTypesFilesToolStripMenuItem_Click);
+            this.toolStripMenuItem4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.toolStripMenuItem4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(259, 22);
+            this.toolStripMenuItem4.Text = "Create Categories from types";
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
             // 
             // categoriesToolStripMenuItem
             // 
@@ -4603,6 +4626,7 @@ namespace DayZeEditor
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage3.Controls.Add(this.groupBox16);
             this.tabPage3.Controls.Add(this.darkLabel91);
             this.tabPage3.Controls.Add(this.darkLabel90);
             this.tabPage3.Controls.Add(this.darkLabel89);
@@ -4640,7 +4664,115 @@ namespace DayZeEditor
             this.tabPage3.Size = new System.Drawing.Size(1239, 617);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Categories";
-            this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
+            // 
+            // groupBox16
+            // 
+            this.groupBox16.Controls.Add(this.darkButton55);
+            this.groupBox16.Controls.Add(this.darkButton54);
+            this.groupBox16.Controls.Add(this.darkButton53);
+            this.groupBox16.Controls.Add(this.darkLabel99);
+            this.groupBox16.Controls.Add(this.darkLabel94);
+            this.groupBox16.Controls.Add(this.numericUpDown31);
+            this.groupBox16.Controls.Add(this.numericUpDown27);
+            this.groupBox16.Controls.Add(this.darkLabel96);
+            this.groupBox16.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox16.Location = new System.Drawing.Point(846, 14);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Size = new System.Drawing.Size(327, 208);
+            this.groupBox16.TabIndex = 183;
+            this.groupBox16.TabStop = false;
+            this.groupBox16.Text = "Auto Pricing from Rarity and Nominal Count";
+            // 
+            // darkButton55
+            // 
+            this.darkButton55.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton55.Location = new System.Drawing.Point(151, 87);
+            this.darkButton55.Name = "darkButton55";
+            this.darkButton55.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton55.Size = new System.Drawing.Size(168, 23);
+            this.darkButton55.TabIndex = 97;
+            this.darkButton55.Text = "Sync Min To % of Max";
+            this.darkButton55.Click += new System.EventHandler(this.darkButton55_Click);
+            // 
+            // darkButton54
+            // 
+            this.darkButton54.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton54.Location = new System.Drawing.Point(16, 87);
+            this.darkButton54.Name = "darkButton54";
+            this.darkButton54.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton54.Size = new System.Drawing.Size(129, 23);
+            this.darkButton54.TabIndex = 96;
+            this.darkButton54.Text = "Sync Min To Max";
+            this.darkButton54.Click += new System.EventHandler(this.darkButton54_Click);
+            // 
+            // darkButton53
+            // 
+            this.darkButton53.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton53.Location = new System.Drawing.Point(16, 58);
+            this.darkButton53.Name = "darkButton53";
+            this.darkButton53.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton53.Size = new System.Drawing.Size(303, 23);
+            this.darkButton53.TabIndex = 95;
+            this.darkButton53.Text = "Calculate Prices for current Category";
+            this.darkButton53.Click += new System.EventHandler(this.darkButton53_Click);
+            // 
+            // darkLabel99
+            // 
+            this.darkLabel99.AutoSize = true;
+            this.darkLabel99.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel99.Location = new System.Drawing.Point(121, 16);
+            this.darkLabel99.Name = "darkLabel99";
+            this.darkLabel99.Size = new System.Drawing.Size(24, 13);
+            this.darkLabel99.TabIndex = 94;
+            this.darkLabel99.Text = "Min";
+            // 
+            // darkLabel94
+            // 
+            this.darkLabel94.AutoSize = true;
+            this.darkLabel94.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel94.Location = new System.Drawing.Point(236, 16);
+            this.darkLabel94.Name = "darkLabel94";
+            this.darkLabel94.Size = new System.Drawing.Size(27, 13);
+            this.darkLabel94.TabIndex = 93;
+            this.darkLabel94.Text = "Max";
+            // 
+            // numericUpDown31
+            // 
+            this.numericUpDown31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown31.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericUpDown31.Location = new System.Drawing.Point(199, 32);
+            this.numericUpDown31.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.numericUpDown31.Name = "numericUpDown31";
+            this.numericUpDown31.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown31.TabIndex = 91;
+            // 
+            // numericUpDown27
+            // 
+            this.numericUpDown27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown27.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericUpDown27.Location = new System.Drawing.Point(73, 32);
+            this.numericUpDown27.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.numericUpDown27.Name = "numericUpDown27";
+            this.numericUpDown27.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown27.TabIndex = 66;
+            // 
+            // darkLabel96
+            // 
+            this.darkLabel96.AutoSize = true;
+            this.darkLabel96.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel96.Location = new System.Drawing.Point(13, 35);
+            this.darkLabel96.Name = "darkLabel96";
+            this.darkLabel96.Size = new System.Drawing.Size(54, 13);
+            this.darkLabel96.TabIndex = 78;
+            this.darkLabel96.Text = "Max Price";
             // 
             // darkLabel91
             // 
@@ -5009,7 +5141,6 @@ namespace DayZeEditor
             this.darkLabel8.Size = new System.Drawing.Size(54, 13);
             this.darkLabel8.TabIndex = 78;
             this.darkLabel8.Text = "Max Price";
-            this.darkLabel8.Click += new System.EventHandler(this.darkLabel8_Click);
             // 
             // darkLabel10
             // 
@@ -5601,6 +5732,10 @@ namespace DayZeEditor
             this.AddFromCategoryListBox.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.groupBox16.ResumeLayout(false);
+            this.groupBox16.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown31)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown27)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InitStockPercentNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CategorycolourPB)).EndInit();
             this.groupBox6.ResumeLayout(false);
@@ -6007,5 +6142,15 @@ namespace DayZeEditor
         private System.Windows.Forms.ListBox listBox21;
         private DarkUI.Controls.DarkButton darkButton52;
         private DarkUI.Controls.DarkButton darkButton51;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.GroupBox groupBox16;
+        private DarkUI.Controls.DarkLabel darkLabel99;
+        private DarkUI.Controls.DarkLabel darkLabel94;
+        private System.Windows.Forms.NumericUpDown numericUpDown31;
+        private System.Windows.Forms.NumericUpDown numericUpDown27;
+        private DarkUI.Controls.DarkLabel darkLabel96;
+        private DarkUI.Controls.DarkButton darkButton53;
+        private DarkUI.Controls.DarkButton darkButton55;
+        private DarkUI.Controls.DarkButton darkButton54;
     }
 }

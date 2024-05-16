@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
+using System.IO.Ports;
 using System.Linq;
+using System.Xml.Serialization;
 
 namespace DayZeLib
 {
@@ -37,45 +39,25 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class typesType
     {
-
         private int nominalField;
-
         private bool nominalFieldSpecified;
-
         private int lifetimeField;
-
         private bool lifetimeFieldSpecified;
-
         private int restockField;
-
         private bool restockFieldSpecified;
-
         private int minField;
-
         private bool minFieldSpecified;
-
         private int quantminField;
-
         private bool quantminFieldSpecified;
-
         private int quantmaxField;
-
         private bool quantmaxFieldSpecified;
-
         private int costField;
-
         private bool costFieldSpecified;
-
         private typesTypeFlags flagsField;
-
         private typesTypeCategory categoryField;
-
         private BindingList<typesTypeUsage> usageField;
-
         private BindingList<typesTypeTag> tagField;
-
         private BindingList<typesTypeValue> valueField;
-
         private string nameField;
 
         /// <remarks/>
@@ -349,6 +331,9 @@ namespace DayZeLib
             }
         }
 
+        [XmlIgnore]
+        public ITEMRARITY Rarity { get; set; }
+
         public override string ToString()
         {
             return name;
@@ -446,7 +431,6 @@ namespace DayZeLib
                 value = null;
             }
         }
-
         public void removetiers()
         {
             if (value != null)
