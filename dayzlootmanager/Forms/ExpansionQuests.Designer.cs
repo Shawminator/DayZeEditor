@@ -344,6 +344,8 @@ namespace DayZeEditor
             this.darkButton38 = new DarkUI.Controls.DarkButton();
             this.darkButton39 = new DarkUI.Controls.DarkButton();
             this.ObjectivesAICampGB = new System.Windows.Forms.GroupBox();
+            this.darkButton6 = new DarkUI.Controls.DarkButton();
+            this.expansionQuestAISpawnControlAICamp = new DayZeEditor.ExpansionQuestAISpawnControl();
             this.darkButton89 = new DarkUI.Controls.DarkButton();
             this.darkButton88 = new DarkUI.Controls.DarkButton();
             this.darkLabel175 = new DarkUI.Controls.DarkLabel();
@@ -363,6 +365,7 @@ namespace DayZeEditor
             this.ObjectivesAICampAllowedWeaponsRemoveButton = new DarkUI.Controls.DarkButton();
             this.ObjectivesAICampAllowedWeaponsAddButton = new DarkUI.Controls.DarkButton();
             this.ObjectivesAIPatrolGB = new System.Windows.Forms.GroupBox();
+            this.expansionQuestAISpawnControlAIPatrol = new DayZeEditor.ExpansionQuestAISpawnControl();
             this.darkLabel54 = new DarkUI.Controls.DarkLabel();
             this.darkLabel55 = new DarkUI.Controls.DarkLabel();
             this.darkButton17 = new DarkUI.Controls.DarkButton();
@@ -493,6 +496,7 @@ namespace DayZeEditor
             this.ObjectivesTravelPositionYNUD = new System.Windows.Forms.NumericUpDown();
             this.ObjectivesTravelPositionZNUD = new System.Windows.Forms.NumericUpDown();
             this.ObjectivesTresureHuntGB = new System.Windows.Forms.GroupBox();
+            this.expansionLootControlTH = new DayZeLib.ExpansionLootControl();
             this.darkLabel144 = new DarkUI.Controls.DarkLabel();
             this.numericUpDown17 = new System.Windows.Forms.NumericUpDown();
             this.checkBox10 = new System.Windows.Forms.CheckBox();
@@ -598,10 +602,6 @@ namespace DayZeEditor
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.removeQuestFromPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removePlayerSaveDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.darkButton6 = new DarkUI.Controls.DarkButton();
-            this.expansionQuestAISpawnControlAICamp = new DayZeEditor.ExpansionQuestAISpawnControl();
-            this.expansionQuestAISpawnControlAIPatrol = new DayZeEditor.ExpansionQuestAISpawnControl();
-            this.expansionLootControlTH = new DayZeLib.ExpansionLootControl();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -2967,12 +2967,12 @@ namespace DayZeEditor
             this.flowLayoutPanel2.Controls.Add(this.panel80);
             this.flowLayoutPanel2.Controls.Add(this.panel29);
             this.flowLayoutPanel2.Controls.Add(this.panel30);
+            this.flowLayoutPanel2.Controls.Add(this.panel79);
             this.flowLayoutPanel2.Controls.Add(this.panel31);
             this.flowLayoutPanel2.Controls.Add(this.panel32);
             this.flowLayoutPanel2.Controls.Add(this.panel68);
             this.flowLayoutPanel2.Controls.Add(this.panel33);
             this.flowLayoutPanel2.Controls.Add(this.panel34);
-            this.flowLayoutPanel2.Controls.Add(this.panel79);
             this.flowLayoutPanel2.Controls.Add(this.panel35);
             this.flowLayoutPanel2.Controls.Add(this.panel38);
             this.flowLayoutPanel2.Controls.Add(this.panel5);
@@ -3120,7 +3120,7 @@ namespace DayZeEditor
             // 
             this.panel31.Controls.Add(this.QuestNPCsClassNameCB);
             this.panel31.Controls.Add(this.darkLabel7);
-            this.panel31.Location = new System.Drawing.Point(3, 107);
+            this.panel31.Location = new System.Drawing.Point(3, 133);
             this.panel31.Name = "panel31";
             this.panel31.Size = new System.Drawing.Size(349, 20);
             this.panel31.TabIndex = 172;
@@ -3150,7 +3150,7 @@ namespace DayZeEditor
             // 
             this.panel32.Controls.Add(this.QuestNPCsLoadoutsCB);
             this.panel32.Controls.Add(this.darkLabel10);
-            this.panel32.Location = new System.Drawing.Point(3, 133);
+            this.panel32.Location = new System.Drawing.Point(3, 159);
             this.panel32.Name = "panel32";
             this.panel32.Size = new System.Drawing.Size(349, 20);
             this.panel32.TabIndex = 173;
@@ -3180,7 +3180,7 @@ namespace DayZeEditor
             // 
             this.panel68.Controls.Add(this.QuestNPCFactionLB);
             this.panel68.Controls.Add(this.darkLabel141);
-            this.panel68.Location = new System.Drawing.Point(3, 159);
+            this.panel68.Location = new System.Drawing.Point(3, 185);
             this.panel68.Name = "panel68";
             this.panel68.Size = new System.Drawing.Size(349, 23);
             this.panel68.TabIndex = 183;
@@ -3210,7 +3210,7 @@ namespace DayZeEditor
             // 
             this.panel33.Controls.Add(this.QuestsNPCsNameTB);
             this.panel33.Controls.Add(this.darkLabel12);
-            this.panel33.Location = new System.Drawing.Point(3, 188);
+            this.panel33.Location = new System.Drawing.Point(3, 214);
             this.panel33.Name = "panel33";
             this.panel33.Size = new System.Drawing.Size(349, 20);
             this.panel33.TabIndex = 174;
@@ -3239,7 +3239,7 @@ namespace DayZeEditor
             // 
             this.panel34.Controls.Add(this.QuestsNPCsDefaultNPCTextTB);
             this.panel34.Controls.Add(this.darkLabel13);
-            this.panel34.Location = new System.Drawing.Point(3, 214);
+            this.panel34.Location = new System.Drawing.Point(3, 240);
             this.panel34.Name = "panel34";
             this.panel34.Size = new System.Drawing.Size(349, 83);
             this.panel34.TabIndex = 175;
@@ -3269,7 +3269,7 @@ namespace DayZeEditor
             // 
             this.panel79.Controls.Add(this.NPCQuestNPCTypeCB);
             this.panel79.Controls.Add(this.darkLabel157);
-            this.panel79.Location = new System.Drawing.Point(3, 303);
+            this.panel79.Location = new System.Drawing.Point(3, 107);
             this.panel79.Name = "panel79";
             this.panel79.Size = new System.Drawing.Size(349, 20);
             this.panel79.TabIndex = 184;
@@ -4450,6 +4450,31 @@ namespace DayZeEditor
             this.ObjectivesAICampGB.Text = "AI Camp";
             this.ObjectivesAICampGB.Visible = false;
             // 
+            // darkButton6
+            // 
+            this.darkButton6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.darkButton6.Location = new System.Drawing.Point(268, 292);
+            this.darkButton6.Name = "darkButton6";
+            this.darkButton6.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton6.Size = new System.Drawing.Size(180, 28);
+            this.darkButton6.TabIndex = 305;
+            this.darkButton6.Text = "Import Multiple Ai Spawns";
+            this.darkButton6.Click += new System.EventHandler(this.darkButton6_Click);
+            // 
+            // expansionQuestAISpawnControlAICamp
+            // 
+            this.expansionQuestAISpawnControlAICamp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.expansionQuestAISpawnControlAICamp.currentAISpawn = null;
+            this.expansionQuestAISpawnControlAICamp.Factions = null;
+            this.expansionQuestAISpawnControlAICamp.ForeColor = System.Drawing.SystemColors.Control;
+            this.expansionQuestAISpawnControlAICamp.isDirty = false;
+            this.expansionQuestAISpawnControlAICamp.LoadoutList = null;
+            this.expansionQuestAISpawnControlAICamp.Location = new System.Drawing.Point(454, 12);
+            this.expansionQuestAISpawnControlAICamp.Name = "expansionQuestAISpawnControlAICamp";
+            this.expansionQuestAISpawnControlAICamp.Size = new System.Drawing.Size(556, 472);
+            this.expansionQuestAISpawnControlAICamp.TabIndex = 304;
+            this.expansionQuestAISpawnControlAICamp.IsDirtyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.expansionQuestAISpawnControlAICamp_IsDirtyChanged);
+            // 
             // darkButton89
             // 
             this.darkButton89.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -4701,6 +4726,20 @@ namespace DayZeEditor
             this.ObjectivesAIPatrolGB.TabStop = false;
             this.ObjectivesAIPatrolGB.Text = "AI Patrol";
             this.ObjectivesAIPatrolGB.Visible = false;
+            // 
+            // expansionQuestAISpawnControlAIPatrol
+            // 
+            this.expansionQuestAISpawnControlAIPatrol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.expansionQuestAISpawnControlAIPatrol.currentAISpawn = null;
+            this.expansionQuestAISpawnControlAIPatrol.Factions = null;
+            this.expansionQuestAISpawnControlAIPatrol.ForeColor = System.Drawing.SystemColors.Control;
+            this.expansionQuestAISpawnControlAIPatrol.isDirty = false;
+            this.expansionQuestAISpawnControlAIPatrol.LoadoutList = null;
+            this.expansionQuestAISpawnControlAIPatrol.Location = new System.Drawing.Point(245, 12);
+            this.expansionQuestAISpawnControlAIPatrol.Name = "expansionQuestAISpawnControlAIPatrol";
+            this.expansionQuestAISpawnControlAIPatrol.Size = new System.Drawing.Size(556, 472);
+            this.expansionQuestAISpawnControlAIPatrol.TabIndex = 295;
+            this.expansionQuestAISpawnControlAIPatrol.IsDirtyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.expansionQuestAISpawnControlAIPatrol_IsDirtyChanged);
             // 
             // darkLabel54
             // 
@@ -6513,6 +6552,22 @@ namespace DayZeEditor
             this.ObjectivesTresureHuntGB.Text = "Treasure Hunt";
             this.ObjectivesTresureHuntGB.Visible = false;
             // 
+            // expansionLootControlTH
+            // 
+            this.expansionLootControlTH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.expansionLootControlTH.currentExpansionLoot = null;
+            this.expansionLootControlTH.currentproject = null;
+            this.expansionLootControlTH.ForeColor = System.Drawing.SystemColors.Control;
+            this.expansionLootControlTH.isDirty = false;
+            this.expansionLootControlTH.Location = new System.Drawing.Point(344, 12);
+            this.expansionLootControlTH.LootparentName = null;
+            this.expansionLootControlTH.ModTypes = null;
+            this.expansionLootControlTH.Name = "expansionLootControlTH";
+            this.expansionLootControlTH.Size = new System.Drawing.Size(578, 478);
+            this.expansionLootControlTH.TabIndex = 350;
+            this.expansionLootControlTH.vanillatypes = null;
+            this.expansionLootControlTH.IsDirtyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.expansionLootControlTH_IsDirtyChanged);
+            // 
             // darkLabel144
             // 
             this.darkLabel144.AutoSize = true;
@@ -7753,61 +7808,6 @@ namespace DayZeEditor
             this.removePlayerSaveDataToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
             this.removePlayerSaveDataToolStripMenuItem.Text = "Remove Player Save Data";
             this.removePlayerSaveDataToolStripMenuItem.Click += new System.EventHandler(this.removePlayerSaveDataToolStripMenuItem_Click);
-            // 
-            // darkButton6
-            // 
-            this.darkButton6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton6.Location = new System.Drawing.Point(268, 292);
-            this.darkButton6.Name = "darkButton6";
-            this.darkButton6.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton6.Size = new System.Drawing.Size(180, 28);
-            this.darkButton6.TabIndex = 305;
-            this.darkButton6.Text = "Import Multiple Ai Spawns";
-            this.darkButton6.Click += new System.EventHandler(this.darkButton6_Click);
-            // 
-            // expansionQuestAISpawnControlAICamp
-            // 
-            this.expansionQuestAISpawnControlAICamp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.expansionQuestAISpawnControlAICamp.currentAISpawn = null;
-            this.expansionQuestAISpawnControlAICamp.Factions = null;
-            this.expansionQuestAISpawnControlAICamp.ForeColor = System.Drawing.SystemColors.Control;
-            this.expansionQuestAISpawnControlAICamp.isDirty = false;
-            this.expansionQuestAISpawnControlAICamp.LoadoutList = null;
-            this.expansionQuestAISpawnControlAICamp.Location = new System.Drawing.Point(454, 12);
-            this.expansionQuestAISpawnControlAICamp.Name = "expansionQuestAISpawnControlAICamp";
-            this.expansionQuestAISpawnControlAICamp.Size = new System.Drawing.Size(556, 472);
-            this.expansionQuestAISpawnControlAICamp.TabIndex = 304;
-            this.expansionQuestAISpawnControlAICamp.IsDirtyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.expansionQuestAISpawnControlAICamp_IsDirtyChanged);
-            // 
-            // expansionQuestAISpawnControlAIPatrol
-            // 
-            this.expansionQuestAISpawnControlAIPatrol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.expansionQuestAISpawnControlAIPatrol.currentAISpawn = null;
-            this.expansionQuestAISpawnControlAIPatrol.Factions = null;
-            this.expansionQuestAISpawnControlAIPatrol.ForeColor = System.Drawing.SystemColors.Control;
-            this.expansionQuestAISpawnControlAIPatrol.isDirty = false;
-            this.expansionQuestAISpawnControlAIPatrol.LoadoutList = null;
-            this.expansionQuestAISpawnControlAIPatrol.Location = new System.Drawing.Point(245, 12);
-            this.expansionQuestAISpawnControlAIPatrol.Name = "expansionQuestAISpawnControlAIPatrol";
-            this.expansionQuestAISpawnControlAIPatrol.Size = new System.Drawing.Size(556, 472);
-            this.expansionQuestAISpawnControlAIPatrol.TabIndex = 295;
-            this.expansionQuestAISpawnControlAIPatrol.IsDirtyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.expansionQuestAISpawnControlAIPatrol_IsDirtyChanged);
-            // 
-            // expansionLootControlTH
-            // 
-            this.expansionLootControlTH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.expansionLootControlTH.currentExpansionLoot = null;
-            this.expansionLootControlTH.currentproject = null;
-            this.expansionLootControlTH.ForeColor = System.Drawing.SystemColors.Control;
-            this.expansionLootControlTH.isDirty = false;
-            this.expansionLootControlTH.Location = new System.Drawing.Point(344, 12);
-            this.expansionLootControlTH.LootparentName = null;
-            this.expansionLootControlTH.ModTypes = null;
-            this.expansionLootControlTH.Name = "expansionLootControlTH";
-            this.expansionLootControlTH.Size = new System.Drawing.Size(578, 478);
-            this.expansionLootControlTH.TabIndex = 350;
-            this.expansionLootControlTH.vanillatypes = null;
-            this.expansionLootControlTH.IsDirtyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.expansionLootControlTH_IsDirtyChanged);
             // 
             // ExpansionQuests
             // 

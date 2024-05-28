@@ -1040,6 +1040,7 @@ namespace DayZeEditor
             this.DeleteSpecificTypeTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForDuplicateTypesTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.exportAllToExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateTypesFromFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EventSpawnContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addNewEventSpawnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteSelectedEventSpawnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -13912,6 +13913,7 @@ namespace DayZeEditor
             this.fastColoredTextBox1.DefaultMarkerSize = 8;
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.fastColoredTextBox1.IsReplaceMode = false;
             this.fastColoredTextBox1.Location = new System.Drawing.Point(0, 24);
@@ -14664,9 +14666,10 @@ namespace DayZeEditor
             this.AddTypesTSMI,
             this.DeleteSpecificTypeTSMI,
             this.checkForDuplicateTypesTSMI,
-            this.exportAllToExcelToolStripMenuItem});
+            this.exportAllToExcelToolStripMenuItem,
+            this.updateTypesFromFileToolStripMenuItem});
             this.TypesContextMenu.Name = "TypesContextMenu";
-            this.TypesContextMenu.Size = new System.Drawing.Size(211, 114);
+            this.TypesContextMenu.Size = new System.Drawing.Size(211, 136);
             // 
             // DeleteTypesTSMI
             // 
@@ -14702,6 +14705,13 @@ namespace DayZeEditor
             this.exportAllToExcelToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.exportAllToExcelToolStripMenuItem.Text = "Export All to CSV";
             this.exportAllToExcelToolStripMenuItem.Click += new System.EventHandler(this.exportAllToExcelToolStripMenuItem_Click);
+            // 
+            // updateTypesFromFileToolStripMenuItem
+            // 
+            this.updateTypesFromFileToolStripMenuItem.Name = "updateTypesFromFileToolStripMenuItem";
+            this.updateTypesFromFileToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.updateTypesFromFileToolStripMenuItem.Text = "Update Types from File";
+            this.updateTypesFromFileToolStripMenuItem.Click += new System.EventHandler(this.updateTypesFromFileToolStripMenuItem_Click);
             // 
             // EventSpawnContextMenu
             // 
@@ -16933,5 +16943,6 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripMenuItem updateTypesFromFileToolStripMenuItem;
     }
 }

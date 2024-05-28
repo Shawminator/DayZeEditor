@@ -178,7 +178,7 @@ namespace DayZeEditor
             vanillatypes = currentproject.getvanillatypes();
             ModTypes = currentproject.getModList();
 
-            UtopiaAirdropSettingssPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\UtopiaAirdrop\\Config\\UtopiaAirdropSettings.json";
+            UtopiaAirdropSettingssPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Utopia_Airdrop\\Config\\UtopiaAirdropSettings.json";
             UtopiaAirdropSettings = JsonSerializer.Deserialize<UtopiaAirdropSettings>(File.ReadAllText(UtopiaAirdropSettingssPath));
             UtopiaAirdropSettings.isDirty = false;
             UtopiaAirdropSettings.Filename = UtopiaAirdropSettingssPath;
@@ -1020,6 +1020,92 @@ namespace DayZeEditor
         {
             if (LootPoolsLB.SelectedItems.Count <= 0) return;
             UtopiaAirdropSettings.lootPools.Remove(currentlootpool);
+            UtopiaAirdropSettings.isDirty = true;
+        }
+        
+        private void heliHeightFromGroundNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            UtopiaAirdropSettings.heliHeightFromGround = (int)heliHeightFromGroundNUD.Value;
+            UtopiaAirdropSettings.isDirty = true;
+        }
+        private void heliSpeedNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            UtopiaAirdropSettings.heliSpeed = (int)heliSpeedNUD.Value;
+            UtopiaAirdropSettings.isDirty = true;
+        }
+        private void dropCrateContainerLifetimeInSecondsNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            UtopiaAirdropSettings.dropCrateContainerLifetimeInSeconds = (int)dropCrateContainerLifetimeInSecondsNUD.Value;
+            UtopiaAirdropSettings.isDirty = true;
+        }
+        private void minPlayersToStartAirdropNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            UtopiaAirdropSettings.minPlayersToStartAirdrop = (int)minPlayersToStartAirdropNUD.Value;
+            UtopiaAirdropSettings.isDirty = true;
+        }
+        private void maxCreaturesNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            UtopiaAirdropSettings.maxCreatures = (int)maxCreaturesNUD.Value;
+            UtopiaAirdropSettings.isDirty = true;
+        }
+        private void startDelayMinNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            UtopiaAirdropSettings.startDelayMin = (int)startDelayMinNUD.Value;
+            UtopiaAirdropSettings.isDirty = true;
+        }
+        private void pkgIntervalMinNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            UtopiaAirdropSettings.pkgIntervalMin = (int)pkgIntervalMinNUD.Value;
+            UtopiaAirdropSettings.isDirty = true;
+        }
+        private void awayMinNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            UtopiaAirdropSettings.awayMin = (int)awayMinNUD.Value;
+            UtopiaAirdropSettings.isDirty = true;
+        }
+        private void titleTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            UtopiaAirdropSettings.title = titleTB.Text;
+            UtopiaAirdropSettings.isDirty = true;
+        }
+        private void droppedMsgTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            UtopiaAirdropSettings.droppedMsg = droppedMsgTB.Text;
+            UtopiaAirdropSettings.isDirty = true;
+        }
+        private void startMsgTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            UtopiaAirdropSettings.startMsg = startMsgTB.Text;
+            UtopiaAirdropSettings.isDirty = true;
+        }
+        private void showMarkerForFlareDropCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            UtopiaAirdropSettings.showMarkerForFlareDrop = showMarkerForFlareDropCB.Checked == true ? 1 : 0;
+            UtopiaAirdropSettings.isDirty = true;
+        }
+        private void TopRightXNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            UtopiaAirdropSettings.rightUpCornerMap[0] = TopRightXNUD.Value;
+            UtopiaAirdropSettings.isDirty = true;
+
+        }
+        private void TopRightZNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            UtopiaAirdropSettings.rightUpCornerMap[2] = TopRightZNUD.Value;
             UtopiaAirdropSettings.isDirty = true;
         }
     }

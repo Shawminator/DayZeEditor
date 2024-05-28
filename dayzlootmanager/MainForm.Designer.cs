@@ -59,11 +59,13 @@ namespace DayZeEditor
             this.LootPoolManagerButton = new System.Windows.Forms.ToolStripButton();
             this.RHLootBoxManagerButton = new System.Windows.Forms.ToolStripButton();
             this.LootchestButton = new System.Windows.Forms.ToolStripButton();
+            this.MPGSpawnerButton = new System.Windows.Forms.ToolStripButton();
             this.KOTHManagerButton = new System.Windows.Forms.ToolStripButton();
             this.SpawnerBukakuManagerButton = new System.Windows.Forms.ToolStripButton();
             this.AirdropUpgradedManagerButton = new System.Windows.Forms.ToolStripButton();
             this.UtopiaAirdropButton = new System.Windows.Forms.ToolStripButton();
             this.RAGTysonBBManagerButton = new System.Windows.Forms.ToolStripButton();
+            this.PVZCZManagerButton = new System.Windows.Forms.ToolStripButton();
             this.BBPManagerButton = new System.Windows.Forms.ToolStripButton();
             this.AbandonedVehicleRemoverManagerButton = new System.Windows.Forms.ToolStripButton();
             this.BreachingChargeManagerButton = new System.Windows.Forms.ToolStripButton();
@@ -80,7 +82,6 @@ namespace DayZeEditor
             this.darkStatusStrip1 = new DarkUI.Controls.DarkStatusStrip();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.MPGSpawnerButton = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.SlidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Slidelabel)).BeginInit();
@@ -229,6 +230,7 @@ namespace DayZeEditor
             this.AirdropUpgradedManagerButton,
             this.UtopiaAirdropButton,
             this.RAGTysonBBManagerButton,
+            this.PVZCZManagerButton,
             this.BBPManagerButton,
             this.AbandonedVehicleRemoverManagerButton,
             this.BreachingChargeManagerButton,
@@ -435,6 +437,18 @@ namespace DayZeEditor
             this.LootchestButton.Visible = false;
             this.LootchestButton.Click += new System.EventHandler(this.Lootchest_Click);
             // 
+            // MPGSpawnerButton
+            // 
+            this.MPGSpawnerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.MPGSpawnerButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.MPGSpawnerButton.Image = ((System.Drawing.Image)(resources.GetObject("MPGSpawnerButton.Image")));
+            this.MPGSpawnerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MPGSpawnerButton.Name = "MPGSpawnerButton";
+            this.MPGSpawnerButton.Size = new System.Drawing.Size(123, 19);
+            this.MPGSpawnerButton.Text = "MPG Spawn Manager";
+            this.MPGSpawnerButton.Visible = false;
+            this.MPGSpawnerButton.Click += new System.EventHandler(this.MPGSpawnerButton_Click);
+            // 
             // KOTHManagerButton
             // 
             this.KOTHManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -495,6 +509,18 @@ namespace DayZeEditor
             this.RAGTysonBBManagerButton.Visible = false;
             this.RAGTysonBBManagerButton.Click += new System.EventHandler(this.RAGTysonBBManagerButton_Click);
             // 
+            // PVZCZManagerButton
+            // 
+            this.PVZCZManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.PVZCZManagerButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.PVZCZManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("PVZCZManagerButton.Image")));
+            this.PVZCZManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.PVZCZManagerButton.Name = "PVZCZManagerButton";
+            this.PVZCZManagerButton.Size = new System.Drawing.Size(123, 19);
+            this.PVZCZManagerButton.Text = "PVZ Mods";
+            this.PVZCZManagerButton.Visible = false;
+            this.PVZCZManagerButton.Click += new System.EventHandler(this.PVZCZManagerButton_Click);
+            // 
             // BBPManagerButton
             // 
             this.BBPManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -538,7 +564,7 @@ namespace DayZeEditor
             this.KOSzoneManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("KOSzoneManagerButton.Image")));
             this.KOSzoneManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.KOSzoneManagerButton.Name = "KOSzoneManagerButton";
-            this.KOSzoneManagerButton.Size = new System.Drawing.Size(123, 19);
+            this.KOSzoneManagerButton.Size = new System.Drawing.Size(81, 19);
             this.KOSzoneManagerButton.Text = "RH KOS Zone";
             this.KOSzoneManagerButton.Visible = false;
             this.KOSzoneManagerButton.Click += new System.EventHandler(this.KOSzoneManagerButton_Click);
@@ -675,18 +701,6 @@ namespace DayZeEditor
             this.panel2.Size = new System.Drawing.Size(25, 25);
             this.panel2.TabIndex = 45;
             // 
-            // MPGSpawnerButton
-            // 
-            this.MPGSpawnerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.MPGSpawnerButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.MPGSpawnerButton.Image = ((System.Drawing.Image)(resources.GetObject("MPGSpawnerButton.Image")));
-            this.MPGSpawnerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MPGSpawnerButton.Name = "MPGSpawnerButton";
-            this.MPGSpawnerButton.Size = new System.Drawing.Size(123, 19);
-            this.MPGSpawnerButton.Text = "MPG Spawn Manager";
-            this.MPGSpawnerButton.Visible = false;
-            this.MPGSpawnerButton.Click += new System.EventHandler(this.MPGSpawnerButton_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -771,6 +785,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton AirdropUpgradedManagerButton;
         private System.Windows.Forms.ToolStripButton SpawnerBukakuManagerButton;
         private System.Windows.Forms.ToolStripButton MPGSpawnerButton;
+        private System.Windows.Forms.ToolStripButton PVZCZManagerButton;
     }
 }
 

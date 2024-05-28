@@ -14,6 +14,7 @@ namespace DayZeLib
         public int heliHeightFromGround { get; set; }
         public decimal heliSpeed { get; set; }
         public int dropCrateContainerLifetimeInSeconds { get; set; }
+        public int minPlayersToStartAirdrop { get; set; }
         public int maxCreatures { get; set; }
         public int startDelayMin { get; set; }
         public int pkgIntervalMin { get; set; }

@@ -12,6 +12,7 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
+
 namespace DayZeLib
 {
     public class BoolConverter : JsonConverter<bool>
@@ -1234,4 +1235,6 @@ namespace DayZeLib
             File.WriteAllText(Filename, sw.ToString());
         }
     }
+
+
 }

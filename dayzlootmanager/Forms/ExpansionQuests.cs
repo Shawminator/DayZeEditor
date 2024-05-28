@@ -13,6 +13,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Windows.Forms;
+using TreeViewMS;
 
 namespace DayZeEditor
 {
@@ -800,10 +801,6 @@ namespace DayZeEditor
         {
             useraction = false;
 
-            QuestNPCsClassNameCB.DisplayMember = "Name";
-            QuestNPCsClassNameCB.ValueMember = "Value";
-            QuestNPCsClassNameCB.DataSource = File.ReadAllLines(Application.StartupPath + "\\traderNPCs\\QuestNPCs.txt").ToList();
-
             NPCEmotes = new NPCEmotes(Application.StartupPath + "\\TraderNPCs\\Emotes.txt");
             NPCEmotes1 = new NPCEmotes(Application.StartupPath + "\\TraderNPCs\\Emotes.txt");
             NPCEmotes2 = new NPCEmotes(Application.StartupPath + "\\TraderNPCs\\Emotes.txt");
@@ -1181,11 +1178,61 @@ namespace DayZeEditor
         }
         private void NPCQuestNPCTypeCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (NPCQuestNPCTypeCB.SelectedIndex == 2)
-                groupBox6.Visible = true;
-            else
-                groupBox6.Visible = false;
-
+            List<string> npclist = new List<string>();
+            switch (NPCQuestNPCTypeCB.SelectedIndex)
+            {
+                case 0:
+                    npclist = File.ReadAllLines(Application.StartupPath + "\\traderNPCs\\QuestDefaultNPCs.txt").ToList();
+                    QuestNPCsClassNameCB.DisplayMember = "Name";
+                    QuestNPCsClassNameCB.ValueMember = "Value";
+                    QuestNPCsClassNameCB.DataSource = npclist;
+                    panel35.Visible = false;
+                    panel38.Visible = false;
+                    panel32.Visible = true;
+                    panel5.Visible = false;
+                    panel18.Visible = false;
+                    panel67.Visible = false;
+                    panel19.Visible = false;
+                    panel68.Visible = false;
+                    groupBox6.Visible = false;
+                    break;
+                case 1:
+                    npclist = File.ReadAllLines(Application.StartupPath + "\\traderNPCs\\QuestStaticObject.txt").ToList();
+                    QuestNPCsClassNameCB.DisplayMember = "Name";
+                    QuestNPCsClassNameCB.ValueMember = "Value";
+                    QuestNPCsClassNameCB.DataSource = npclist;
+                    panel35.Visible = false;
+                    panel38.Visible = false;
+                    panel32.Visible = false;
+                    panel5.Visible = false;
+                    panel18.Visible = false;
+                    panel67.Visible = false;
+                    panel19.Visible = false;
+                    panel68.Visible = false;
+                    groupBox6.Visible = false;
+                    break;
+                case 2:
+                    npclist = File.ReadAllLines(Application.StartupPath + "\\traderNPCs\\QuestDefaultAINPCs.txt").ToList();
+                    QuestNPCsClassNameCB.DisplayMember = "Name";
+                    QuestNPCsClassNameCB.ValueMember = "Value";
+                    QuestNPCsClassNameCB.DataSource = npclist;
+                    panel35.Visible = true;
+                    panel38.Visible = true;
+                    panel32.Visible = true;
+                    panel5.Visible = true;
+                    panel18.Visible = true;
+                    panel67.Visible = true;
+                    panel19.Visible = true;
+                    panel68.Visible = true;
+                    groupBox6.Visible = true;
+                    break;
+            }
+            if (!npclist.Contains(currentQuestNPC.ClassName))
+            {
+                currentQuestNPC.ClassName = npclist[0];
+                currentQuestNPC.isDirty = true;
+                MessageBox.Show("NPC CLassname set to first name in list as it was not the correct type.\nPlease save");
+            }
             if (!useraction) return;
             currentQuestNPC.NPCType = NPCQuestNPCTypeCB.SelectedIndex;
             currentQuestNPC.isDirty = true;

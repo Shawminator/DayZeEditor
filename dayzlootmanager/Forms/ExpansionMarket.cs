@@ -1824,7 +1824,7 @@ namespace DayZeEditor
         }
         private void darkButton11_Click(object sender, EventArgs e)
         {
-            string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Enter Name of New Trader(No spaces in name)", "Traders", "");
+            string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Enter Name of New Trader", "Traders", "");
             if (UserAnswer == "") return;
             Traders.AddNewTrader(UserAnswer);
             List<Categories> currencies = MarketCats.GetexchangeCats();
@@ -1833,7 +1833,7 @@ namespace DayZeEditor
                 listBox2.SelectedIndex = listBox2.Items.Count - 1;
             else
                 listBox2.SelectedIndex = 0;
-            Traders newtrader = Traders.GetTraderFromName(UserAnswer.ToUpper());
+            Traders newtrader = Traders.GetTraderFromName(UserAnswer.ToUpper().Replace(" ", "_"));
             foreach (Categories currency in currencies)
             {
                 foreach (marketItem s in currency.Items)
@@ -2469,7 +2469,7 @@ namespace DayZeEditor
         }
         private void darkButton7_Click(object sender, EventArgs e)
         {
-            string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Enter Name of New Category\nPlease not that this is the filename, do not use spaces or special characters\nYou can change the display name once its been created ", "Categories", "");
+            string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Enter Name of New Category\nPlease not that this is the filename, do not use special characters\nYou can change the display name once its been created ", "Categories", "");
             if (UserAnswer == "") return;
             MarketCats.CreateNewCat(UserAnswer);
             listBox5.SelectedIndex = -1;
@@ -4300,7 +4300,7 @@ namespace DayZeEditor
                     {
                         decimal rarityFactor = rarityMultiplierValue / 20;
                         decimal baseMaxPrice = maxpricemin + (rarityFactor * (maxpricemax - maxpricemin));
-                        decimal finalMaxPrice = baseMaxPrice - (type.nominal * rarityMultiplierValue);
+                        decimal finalMaxPrice = baseMaxPrice - (type.nominal * rarityFactor);
                         finalMaxPrice = Math.Max(maxpricemin, Math.Min(maxpricemax, finalMaxPrice));
                         item.MaxPriceThreshold = (int)finalMaxPrice;
                     }
@@ -4322,7 +4322,8 @@ namespace DayZeEditor
             { ITEMRARITY.Uncommon, 7 },
             { ITEMRARITY.Common, 6 },
             { ITEMRARITY.VeryCommon, 4 },
-            { ITEMRARITY.Everywhere, 2 }
+            { ITEMRARITY.Everywhere, 2 },
+            { ITEMRARITY.None, 1 }
         };
 
         private void darkButton55_Click(object sender, EventArgs e)

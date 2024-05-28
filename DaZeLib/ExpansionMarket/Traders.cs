@@ -125,26 +125,20 @@ namespace DayZeLib
         }
         public void AddNewTrader(string m_fileName)
         {
-            string newFilename = m_fileName.ToUpper();
-            Traders t = new Traders(newFilename);
-            t.Filename = newFilename;
+            Traders t = new Traders(m_fileName.ToUpper().Replace("_", " "));
+            t.Filename = m_fileName.ToUpper().Replace(" ", "_");
             t.SortByDisplayName = SortedbyDisplayName;
-            if (Traderlist.Any(x => x.Filename == newFilename))
+            if (Traderlist.Any(x => x.Filename == t.Filename))
             {
-                MessageBox.Show(newFilename = " Allready in list of traders....");
+                MessageBox.Show(t.Filename + " Allready in list of traders....");
                 return;
             }
             else
             {
                 Traderlist.Add(t);
                 t.isDirty = true;
-                MessageBox.Show(newFilename = " added to list of  traders....");
+                MessageBox.Show(t.Filename + " added to list of  traders....");
             }
-        }
-        public void CheckCategories(MarketCategories marketCats)
-        {
-
-
         }
         public void SortbyDisplayName()
         {

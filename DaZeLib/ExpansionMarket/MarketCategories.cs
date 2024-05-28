@@ -152,18 +152,18 @@ namespace DayZeLib
         public void CreateNewCat(string catName)
         {
             Categories NewCat = new Categories(catName.ToUpper().Replace("_", " "));
-            NewCat.Filename = NewCat.DisplayName;
+            NewCat.Filename = catName.ToUpper().Replace(" ", "_");
             NewCat.SortByDisplayName = SortedbyDisplayName;
-            if (CatList.Any(x => x.DisplayName == catName))
+            if (CatList.Any(x => x.Filename == catName.ToUpper().Replace(" ", "_")))
             {
-                MessageBox.Show(catName = " Allready in list of catogories....");
+                MessageBox.Show(NewCat.Filename + " Allready in list of catogories....");
                 return;
             }
             else
             {
                 CatList.Add(NewCat);
                 NewCat.isDirty = true;
-                MessageBox.Show(catName = " added to list of  catogories....");
+                MessageBox.Show(NewCat.Filename + " added to list of  catogories....");
             }
         }
         public List<TraderListItem> getallCats()

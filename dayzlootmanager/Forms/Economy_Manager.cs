@@ -18,7 +18,6 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Xml.Xsl;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace DayZeEditor
 {
@@ -1105,6 +1104,7 @@ namespace DayZeEditor
                     // Display context menu for eg:
                     DeleteTypesTSMI.Visible = false;
                     AddTypesTSMI.Visible = false;
+                    updateTypesFromFileToolStripMenuItem.Visible = false;
                     DeleteSpecificTypeTSMI.Visible = true;
                     exportAllToExcelToolStripMenuItem.Visible = false;
                     DeleteSpecificTypeTSMI.Text = "Delete " + currentlootpart.name + " from " + currentcollection + " in " + typesfile;
@@ -1131,8 +1131,9 @@ namespace DayZeEditor
                             DeleteSpecificTypeTSMI.Visible = false;
                             DeleteTypesTSMI.Visible = false;
                             AddTypesTSMI.Visible = true;
-                            exportAllToExcelToolStripMenuItem.Visible = false;
                             AddTypesTSMI.Text = "Add new Types to Vanilla Types";
+                            updateTypesFromFileToolStripMenuItem.Visible = true;
+                            updateTypesFromFileToolStripMenuItem.Text = "Update Vanilla Types from external file";
                             checkForDuplicateTypesTSMI.Visible = false;
                             TypesContextMenu.Show(Cursor.Position);
 
@@ -1145,13 +1146,12 @@ namespace DayZeEditor
                         {
                             DeleteSpecificTypeTSMI.Visible = false;
                             // Display context menu for eg:
-                            if (currentTypesFile.modname != "expansion_types")
-                                DeleteTypesTSMI.Visible = true;
-                            else
-                                DeleteTypesTSMI.Visible = false;
+                            DeleteTypesTSMI.Visible = true;
                             DeleteTypesTSMI.Text = "Delete " + currentTypesFile.modname;
                             AddTypesTSMI.Visible = true;
                             AddTypesTSMI.Text = "Add new Types to " + currentTypesFile.modname;
+                            updateTypesFromFileToolStripMenuItem.Visible = true;
+                            updateTypesFromFileToolStripMenuItem.Text = "Update " + currentTypesFile.modname + " From external file";
                             checkForDuplicateTypesTSMI.Visible = false;
                             exportAllToExcelToolStripMenuItem.Visible = false;
                             TypesContextMenu.Show(Cursor.Position);
@@ -1172,6 +1172,7 @@ namespace DayZeEditor
                         DeleteSpecificTypeTSMI.Visible = false;
                         DeleteTypesTSMI.Visible = true;
                         AddTypesTSMI.Visible = false;
+                        updateTypesFromFileToolStripMenuItem.Visible = false;
                         checkForDuplicateTypesTSMI.Visible = false;
                         exportAllToExcelToolStripMenuItem.Visible = false;
                         DeleteTypesTSMI.Text = "Delete " + currentcollection + " from " + currentTypesFile.modname;
@@ -1184,6 +1185,7 @@ namespace DayZeEditor
                     {
                         DeleteSpecificTypeTSMI.Visible = false;
                         AddTypesTSMI.Visible = true;
+                        updateTypesFromFileToolStripMenuItem.Visible = false;
                         DeleteTypesTSMI.Visible = false;
                         checkForDuplicateTypesTSMI.Visible = true;
                         exportAllToExcelToolStripMenuItem.Visible = true;
@@ -1363,7 +1365,7 @@ namespace DayZeEditor
                     treeViewMS1.Nodes.SetExpansionState(savedExpansionState);
                     treeViewMS1.EndUpdate();
                 }
-                else if (currentcollection == "VanillaTypes")
+                else
                 {
                     string line1 = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>";
                     string line2 = "<types>";
@@ -1375,39 +1377,14 @@ namespace DayZeEditor
                     File.WriteAllLines("Temp_types.xml", modtypes);
                     TypesFile test = new TypesFile("Temp_types.xml");
                     File.Delete("Temp_types.xml");
-                    Console.WriteLine("The following Types have been added....");
                     foreach (typesType type in test.types.type)
                     {
-                        if (!vanillatypes.types.type.Any(x => x.name.ToLower() == type.name.ToLower()))
+                        if (!currentTypesFile.types.type.Any(x => x.name.ToLower() == type.name.ToLower()))
                         {
                             Addedtypes.Add(type);
                             Console.WriteLine(type.name);
-                            vanillatypes.types.type.Add(type);
+                            currentTypesFile.types.type.Add(type);
                         }
-                    }
-                    vanillatypes.SaveTyes(DateTime.Now.ToString("ddMMyy_HHmm"));
-                    var savedExpansionState = treeViewMS1.Nodes.GetExpansionState();
-                    treeViewMS1.BeginUpdate();
-                    PopulateTreeView();
-                    treeViewMS1.Nodes.SetExpansionState(savedExpansionState);
-                    treeViewMS1.EndUpdate();
-                }
-                else
-                {
-                    currentTypesFile = ModTypes.FirstOrDefault(x => x.modname == currentcollection);
-                    string line1 = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>";
-                    string line2 = "<types>";
-                    List<string> modtypes = form.modtypes;
-                    string last = "</types>";
-                    modtypes.Insert(0, line2);
-                    modtypes.Insert(0, line1);
-                    modtypes.Add(last);
-                    File.WriteAllLines("Temp_types.xml", modtypes);
-                    TypesFile test = new TypesFile("Temp_types.xml");
-                    File.Delete("Temp_types.xml");
-                    foreach (typesType type in test.types.type)
-                    {
-                        currentTypesFile.types.type.Add(type);
                     }
                     currentTypesFile.SaveTyes(DateTime.Now.ToString("ddMMyy_HHmm"));
                     var savedExpansionState = treeViewMS1.Nodes.GetExpansionState();
@@ -1415,11 +1392,43 @@ namespace DayZeEditor
                     PopulateTreeView();
                     treeViewMS1.Nodes.SetExpansionState(savedExpansionState);
                     treeViewMS1.EndUpdate();
+                    Console.WriteLine("The following Types have been added....");
+                    foreach(typesType type in Addedtypes)
+                    {
+                        Console.WriteLine("\t" + type.name);
+                    }
+                    MessageBox.Show("The Following types were added\n" + string.Join(Environment.NewLine, Addedtypes));
                 }
             }
             populateEconmyTreeview();
             currentproject.SetTotNomCount();
             NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
+        }
+        private void updateTypesFromFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openfile = new OpenFileDialog();
+            if(openfile.ShowDialog() == DialogResult.OK)
+            {
+                TypesFile newfile = new TypesFile(openfile.FileName);
+                List<typesType> Addedtypes = new List<typesType>();
+                foreach (typesType type in newfile.types.type)
+                {
+                    if (!currentTypesFile.types.type.Any(x => x.name.ToLower() == type.name.ToLower()))
+                    {
+                        Addedtypes.Add(type);
+                        Console.WriteLine(type.name);
+                        currentTypesFile.types.type.Add(type);
+                    }
+                }
+                currentTypesFile.SaveTyes(DateTime.Now.ToString("ddMMyy_HHmm"));
+                var savedExpansionState = treeViewMS1.Nodes.GetExpansionState();
+                treeViewMS1.BeginUpdate();
+                PopulateTreeView();
+                treeViewMS1.Nodes.SetExpansionState(savedExpansionState);
+                treeViewMS1.EndUpdate();
+
+                MessageBox.Show("The Following types were added\n" + string.Join(Environment.NewLine, Addedtypes));
+            }
         }
         private void exportAllToExcelToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -8917,5 +8926,7 @@ namespace DayZeEditor
                isUserInteraction = false;
             }
         }
+
+
     }
 }

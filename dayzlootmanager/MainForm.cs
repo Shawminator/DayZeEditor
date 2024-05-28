@@ -461,6 +461,13 @@ namespace DayZeEditor
                 else
                     ExpansionQuestsButton.Visible = false;
 
+                if ((File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\PvZmoD_CustomisableZombies_Profile\\PvZmoD_CustomisableZombies_Characteristics.xml") &&
+                    File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\PvZmoD_CustomisableZombies_Profile\\PvZmoD_CustomisableZombies_Globals.xml"))||
+                    File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\PvZmoD_Information_Panel\\PvZmoD_Information_Panel.xml"))
+                    PVZCZManagerButton.Visible = true;
+                else
+                    PVZCZManagerButton.Visible = false;
+
                 if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\Advanced_Workbench\\AdvancedWorkBenchConfig.json"))
                     AdvancedWorkbenchButton.Visible = true;
                 else
@@ -476,15 +483,15 @@ namespace DayZeEditor
                 else
                     MPGSpawnerButton.Visible = false;
 
-                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\UtopiaAirdrop\\Config\\UtopiaAirdropSettings.json"))
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\Utopia_Airdrop\\Config\\UtopiaAirdropSettings.json"))
                     UtopiaAirdropButton.Visible = true;
                 else
                     UtopiaAirdropButton.Visible = false;
 
-                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\CaptureTheFlag\\CTFConfig\\CTFConfig.json"))
-                    UtopiaAirdropButton.Visible = true;
-                else
-                    UtopiaAirdropButton.Visible = false;
+                //if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\CaptureTheFlag\\CTFConfig\\CTFConfig.json"))
+                //    UtopiaAirdropButton.Visible = true;
+                //else
+                //    UtopiaAirdropButton.Visible = false;
 
                 // Cant be arsed with this, fucking stupid config........
                 //if (Directory.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\DNA_Keycards"))
@@ -1235,6 +1242,33 @@ namespace DayZeEditor
                 _TM.Show();
                 Console.WriteLine("loadingSpawner Bubaku Manager....");
                 label1.Text = "Spawner Bubaku Manager";
+            }
+            timer1.Start();
+        }
+        private void PVZCZManagerButton_Click(object sender, EventArgs e)
+        {
+            PVZCZManager _TM = Application.OpenForms["PVZCZManager"] as PVZCZManager;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new PVZCZManager
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+
+                };
+                _TM.Show();
+                Console.WriteLine("loadingSpawner PVZ Mods Manager....");
+                label1.Text = "PVZ Mods Manager";
             }
             timer1.Start();
         }

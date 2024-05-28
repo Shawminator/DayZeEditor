@@ -1,10 +1,23 @@
-﻿Version 0.8.0.5
+﻿Version 0.8.0.6
 [Added]
-Economy Manager - Added a Rarity feature which assigns a rarity based of each items nominal count.
-				  This allows for a blanket refresh of total nominals and each items nominal if assigned a rarity will be recalculted.
-Expansion Market -Trader NPC up and down buttons added to allow sorting of order for npc attchments
-                  can quickly create market items using types with nominals > 0
-				  also can quickly create price based on totals nominals and rarity.
+Economy Manager	-	Added an option to update types files from external file with a right clic k on the type file, 
+					This allows to import a full file where only the missing types will be added to the current types file
+PVezmoD Manager	-	Customizable zombies and darkhorde.
+[Fixed]
+Utopia Airdrop	-	fixed path from utopaiairdrop to utopia_airdrop.
+Expansion MArket-	Fixed wrongly changing underscore and spze when creating a new market category
+
+[Updated]
+Expansion Quests-	updated Quests NPC Page to only show the relevant options depending on the type of npc you choose.
+
+
+Version 0.8.0.5
+[Added]
+Economy Manager	-	Added a Rarity feature which assigns a rarity based of each items nominal count.
+					This allows for a blanket refresh of total nominals and each items nominal if assigned a rarity will be recalculted.
+Expansion Market-	Trader NPC up and down buttons added to allow sorting of order for npc attchments
+					can quickly create market items using types with nominals > 0
+					also can quickly create price based on totals nominals and rarity.
 [Fixed]
 fixed issue with creating projects upon first launch
 

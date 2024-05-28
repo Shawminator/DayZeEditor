@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace DayZeLib
 {
@@ -45,9 +46,12 @@ namespace DayZeLib
                     }
                     Tradermap tmap = new Tradermap(tfilesplit);
                     tmap.Filename = file.FullName;
+                    if(tmap.needtosave == true)
+                    {
+                        savefile = true;
+                    }
                     maps.Add(tmap);
                 }
-
             }
             if (savefile)
                 savefiles();
@@ -132,6 +136,7 @@ namespace DayZeLib
         public string NPCName { get; set; }
         public string NPCTrade { get; set; }
         public bool isroaming = false;
+        public bool needtosave = false;
 
         public Vec3 position { get; set; }
         public Vec3 roattions { get; set; }
@@ -153,7 +158,7 @@ namespace DayZeLib
             string[] Part1 = array[0].Split('.');
             NPCName = Part1[0];
             NPCTrade = Part1[1];
-            if (array[1].Contains(',') && NPCName.StartsWith("ExpansionTraderAI"))
+            if (array[1].Contains(','))
             {
                 isroaming = true;
                 Roamingpoints = new BindingList<Vec3>();
@@ -174,6 +179,13 @@ namespace DayZeLib
                     {
                         Roamingpoints.Add(new Vec3(newline.Split(' ')));
                     }
+                }
+                if (!NPCName.StartsWith("ExpansionTraderAI"))
+                {
+                    string oldname = NPCName;
+                    NPCName.Replace("ExpansionTrader", "ExpansionTraderAI");
+                    needtosave = true;
+                    MessageBox.Show(oldname + "." + NPCTrade + " Was updated as the npc was not marked as an AI, Please save once loaded");
                 }
             }
             else

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PvZmoD>
+  <PvZmoD_CustomisableZombies_Characteristics>
+    <type name="Change me to Your Zombie Class Name">
+      <Health_Points Day="100" Night="100" />
+      <Resistance_to_Bullets Day="1.0" Night="1.0" />
+      <Resistance_to_Melees Day="1.0" Night="1.0" />
+      <Resistance_to_HeavyAttack Day="0.5" Night="0.5" />
+      <Resistance_to_Vehicles Day="1.0" Night="1.0" />
+      <Resistance_to_Explosions Day="0.01" Night="0.01" />
+      <Resistance_to_Stun_Bullets Day="0.2" Night="0.2" />
+      <Resistance_to_HeadShots Day="0.2" Night="0.2" />
+      <Resist_to_Melee_HeadShots Day="0.6" Night="0.6" />
+      <Special_HeadShot_Weapons Day="0" Night="0" />
+      <Move_Speed_Min Day="0.0" Night="0.0" />
+      <Move_Speed_Max Day="3.0" Night="3.0" />
+      <Move_Speed_Adjust_Max Day="0.0" Night="0.0" />
+      <Animation_Type Day="-9" Night="-9" />
+      <Chance_To_Spawn_Crawling Day="0.0" Night="0.0" />
+      <Can_Dodge Day="0" Night="0" />
+      <Hit_Players_On_Obstacles Day="1" Night="1" />
+      <Immune_To_MultiHit Day="0" Night="0" />
+      <Attack_Speed Day="1.0" Night="1.0" />
+      <Ratio_Damage_Health LightAttack_NotBlocked="1.0" LightAttack_Blocked="0.0" HeavyAttack_NotBlocked="1.0" HeavyAttack_Blocked="0.5" NightRatio="1.0" />
+      <Ratio_Damage_Shock LightAttack_NotBlocked="1.0" LightAttack_Blocked="0.0" HeavyAttack_NotBlocked="1.0" HeavyAttack_Blocked="0.5" NightRatio="1.0" />
+      <Bleeding_Chance LightAttack_NotBlocked="-1" LightAttack_Blocked="0.0" HeavyAttack_NotBlocked="-1" HeavyAttack_Blocked="0.0" NightRatio="1.0" />
+      <Damage_Blood LightAttack_NotBlocked="0" LightAttack_Blocked="0" HeavyAttack_NotBlocked="0" HeavyAttack_Blocked="0" NightRatio="1.0" />
+      <Damage_Stamina LightAttack_NotBlocked="0" LightAttack_Blocked="0" HeavyAttack_NotBlocked="0" HeavyAttack_Blocked="0" NightRatio="1.0" />
+      <Vision_Distance_Ratio Day="1.0" Night="1.0" WithBloodyHands="1.0" WithSpecialMask="1.0" MinimumRatioDistance="0.1" />
+      <Can_Be_Backstabbed Day="1" Night="1" />
+      <Resist_Contaminated_Effect Day="0" Night="0" />
+      <Numb_Of_Hit_To_Break_Doors Day="5" Night="5" />
+      <Size_Mini Day="1.0" Night="1.0" />
+      <Size_Maxi Day="1.0" Night="1.0" />
+      <Can_Throw_Stones Day="0" Night="0" />
+    </type>
+  </PvZmoD_CustomisableZombies_Characteristics>
+  <Pvz_TheDarkHorde_CustomZones>
+    <Zone_Data Name="Change Me to your your custom Zone name" Coord_TopLeft_Corner="0/0" Coord_LowRight_Corner="0/0" />
+  </Pvz_TheDarkHorde_CustomZones>
+  <Pvz_TheDarkHorde_SafeZones>
+    <type name="Change Me to your your custom Safe Zone name">
+      <Activated Value="0" />
+      <Corner_UpperLeft Coordinates="0/0" />
+      <Corner_LowerRight Coordinates="0/0" />
+    </type>
+  </Pvz_TheDarkHorde_SafeZones>
+  <Pvz_TheDarkHorde_TerrainLimits>
+    <type Zone_Name="Change me to your Terrain Limit Name">
+      <TopLeft_Corner_Coordinates		Value="100/12500"/>
+      <LowRight_Corner_Coordinates	Value="12500/100"/>
+    </type>
+  </Pvz_TheDarkHorde_TerrainLimits>
+  <Pvz_TheDarkHorde_Waypoints>
+    <type Waypoints_List_Name="Change me to your waypoint Name">
+      <Waypoint_Coordinates Value="0/0" />
+    </type>
+  </Pvz_TheDarkHorde_Waypoints>
+</PvZmoD>
+  
