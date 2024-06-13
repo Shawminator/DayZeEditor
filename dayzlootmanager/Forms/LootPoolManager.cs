@@ -426,6 +426,7 @@ namespace DayZeEditor
             });
             LCPredefinedWeaponsLB.SelectedIndex = -1;
             LCPredefinedWeaponsLB.SelectedIndex = LCPredefinedWeaponsLB.Items.Count - 1;
+            LootPool.isDirty = true;
         }
 
         private void LootChestsLocationsLB_SelectedIndexChanged(object sender, EventArgs e)
@@ -459,6 +460,7 @@ namespace DayZeEditor
            );
             LootChestsLocationsLB.SelectedIndex = -1;
             LootChestsLocationsLB.SelectedIndex = LootChestsLocationsLB.Items.Count - 1;
+            LootPool.isDirty = true;
         }
         private void darkButton6_Click(object sender, EventArgs e)
         {
@@ -1049,6 +1051,7 @@ namespace DayZeEditor
                 if (newtable1Ammo.LootItems.Count > 0)
                     LootPool.CapareLPLootTables.Add(newtable1Ammo);
             }
+            LootPool.isDirty = true;
         }
     }
 }

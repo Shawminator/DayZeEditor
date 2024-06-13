@@ -3553,13 +3553,36 @@ namespace DayZeEditor
             }
             eventspawngroupTV.Nodes.Add(rootnoot);
         }
-        private void eventspawngroupTV_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        private void eventspawngroupTV_AfterSelect(object sender, TreeViewEventArgs e)
         {
             foreach (ToolStripMenuItem TSMI in EventgroupContextMenu.Items)
             {
                 TSMI.Visible = false;
             }
             eventspawngroupTV.SelectedNode = e.Node;
+            isUserInteraction = false;
+            if (e.Node.Tag != null && e.Node.Tag is eventgroupdefGroupChild)
+            {
+                eventgroupdefGroupChild = e.Node.Tag as eventgroupdefGroupChild;
+                eventgroupnameTB.Text = eventgroupdefGroupChild.type;
+                eventgroupXNUD.Value = eventgroupdefGroupChild.x;
+                checkBox112.Checked = eventgroupdefGroupChild.ySpecified;
+                eventgroupYNUD.Value = eventgroupdefGroupChild.y;
+                eventgroupZNUD.Value = eventgroupdefGroupChild.z;
+                eventgroupANUD.Value = eventgroupdefGroupChild.a;
+                checkBox113.Checked = eventgroupdefGroupChild.delootSpecified;
+                eventgroupdelootNUD.Value = eventgroupdefGroupChild.deloot;
+                checkBox114.Checked = eventgroupdefGroupChild.lootminSpecified;
+                eventgroupLootminNUD.Value = eventgroupdefGroupChild.lootmin;
+                checkBox115.Checked = eventgroupdefGroupChild.lootmaxSpecified;
+                eventgrouplootmaxNUD.Value = eventgroupdefGroupChild.lootmax;
+                checkBox116.Checked = eventgroupdefGroupChild.spawnsecondarySpecified;
+                eventgroupSecondarySpawnCB.Checked = eventgroupdefGroupChild.spawnsecondary;
+            }
+            isUserInteraction = true;
+        }
+        private void eventspawngroupTV_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
             isUserInteraction = false;
             if (e.Node.Tag != null && e.Node.Tag is string)
             {
@@ -3585,15 +3608,6 @@ namespace DayZeEditor
             }
             else if (e.Node.Tag != null && e.Node.Tag is eventgroupdefGroupChild)
             {
-                eventgroupdefGroupChild = e.Node.Tag as eventgroupdefGroupChild;
-                eventgroupnameTB.Text = eventgroupdefGroupChild.type;
-                eventgroupXNUD.Value = eventgroupdefGroupChild.x;
-                eventgroupYNUD.Value = eventgroupdefGroupChild.y;
-                eventgroupZNUD.Value = eventgroupdefGroupChild.z;
-                eventgroupANUD.Value = eventgroupdefGroupChild.a;
-                eventgroupdelootNUD.Value = eventgroupdefGroupChild.deloot;
-                eventgroupLootminNUD.Value = eventgroupdefGroupChild.lootmin;
-                eventgrouplootmaxNUD.Value = eventgroupdefGroupChild.lootmax;
                 if (e.Button == MouseButtons.Right)
                 {
                     removeChildToolStripMenuItem.Visible = true;
@@ -3710,6 +3724,60 @@ namespace DayZeEditor
         {
             if (!isUserInteraction) return;
             eventgroupdefGroupChild.lootmax = (int)eventgrouplootmaxNUD.Value;
+            currentproject.cfgeventgroups.isDirty = true;
+        }
+        private void eventgroupSecondarySpawnCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            eventgroupdefGroupChild.spawnsecondary = eventgroupSecondarySpawnCB.Checked;
+            currentproject.cfgeventgroups.isDirty = true;
+        }
+        private void checkBox112_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            foreach (TreeNode tn in eventspawngroupTV.SelectedNodes)
+            {
+                eventgroupdefGroupChild seventgroupdefGroupChild = tn.Tag as eventgroupdefGroupChild;
+                eventgroupYNUD.Visible = seventgroupdefGroupChild.ySpecified = checkBox112.Checked;
+            }
+            currentproject.cfgeventgroups.isDirty = true;
+        }
+
+        private void checkBox113_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            eventgroupdelootNUD.Visible = eventgroupdefGroupChild.delootSpecified = checkBox113.Checked;
+            currentproject.cfgeventgroups.isDirty = true;
+        }
+
+        private void checkBox114_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            eventgrouplootmaxNUD.Visible = eventgroupdefGroupChild.lootmaxSpecified = checkBox114.Checked;
+            currentproject.cfgeventgroups.isDirty = true;
+        }
+
+        private void checkBox115_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            eventgroupLootminNUD.Visible = eventgroupdefGroupChild.lootminSpecified = checkBox115.Checked;
+            currentproject.cfgeventgroups.isDirty = true;
+        }
+
+        private void checkBox116_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction)
+            {
+                eventgroupSecondarySpawnCB.Visible = checkBox116.Checked;
+                eventgroupLootminNUD.Visible = !checkBox116.Checked;
+                eventgrouplootmaxNUD.Visible = !checkBox116.Checked;
+                eventgroupdelootNUD.Visible = !checkBox116.Checked;
+                return;
+            }
+            eventgroupSecondarySpawnCB.Visible = eventgroupdefGroupChild.spawnsecondarySpecified  = checkBox116.Checked;
+            eventgroupLootminNUD.Visible = eventgroupdefGroupChild.lootminSpecified = !checkBox116.Checked;
+            eventgrouplootmaxNUD.Visible = eventgroupdefGroupChild.lootmaxSpecified = !checkBox116.Checked;
+            eventgroupdelootNUD.Visible = eventgroupdefGroupChild.delootSpecified = !checkBox116.Checked;
             currentproject.cfgeventgroups.isDirty = true;
         }
         #endregion eventgroups
@@ -6871,7 +6939,7 @@ namespace DayZeEditor
         private void MapGroupProtoGroupUseLootMaxNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!isUserInteraction) return;
-            currentmapgroupprotoGroup.lootmax = (int)MapgroupProtoGroupcontainerUseLootMaxNUD.Value;
+            currentmapgroupprotoGroup.lootmax = (int)MapGroupProtoGroupUseLootMaxNUD.Value;
             currentproject.mapgroupproto.isDirty = true;
         }
         private void mapgroupprotoTierCheckBoxchanged(object sender, EventArgs e)
@@ -8809,6 +8877,10 @@ namespace DayZeEditor
                     mapgroupposcontextMenu.Show(Cursor.Position);
             }
         }
+        private void treeViewMS2_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            //this.treeViewMS2.SelectedNode = e.Node;
+        }
         private void trackBar2_MouseUp(object sender, MouseEventArgs e)
         {
             mapgroupposMapscale = trackBar2.Value;
@@ -8816,11 +8888,20 @@ namespace DayZeEditor
         }
         private void removeMapToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            mapgroupposmap.group.Remove(currentmapgroup);
-            TreeNode Parent = currentmapgrouptreenode.Parent;
-            treeViewMS2.Nodes.Remove(currentmapgrouptreenode);
-            if (Parent.Nodes.Count == 0)
-                treeViewMS2.Nodes.Remove(Parent);
+            List<TreeNode> nodestoremove = new List<TreeNode>();
+            foreach (TreeNode tn in treeViewMS2.SelectedNodes)
+            {
+                nodestoremove.Add(tn);
+            }
+            foreach(TreeNode tnode in nodestoremove) 
+            { 
+                mapGroup mapGroup = tnode.Tag as mapGroup;
+                mapgroupposmap.group.Remove(mapGroup);
+                TreeNode Parent = tnode.Parent;
+                treeViewMS2.Nodes.Remove(tnode);
+                if (Parent.Nodes.Count == 0)
+                    treeViewMS2.Nodes.Remove(Parent);
+            }
             currentproject.mapgrouppos.isDirty = true;
             pictureBox4.Invalidate();
         }
@@ -8830,10 +8911,7 @@ namespace DayZeEditor
         {
 
         }
-        private void eventspawngroupTV_AfterSelect(object sender, TreeViewEventArgs e)
-        {
 
-        }
         private void toolStripButton2_Click_1(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
@@ -8880,7 +8958,12 @@ namespace DayZeEditor
                 { ITEMRARITY.None, 0 }
             };
 
-            int targetNominal = Convert.ToInt32(toolStripTextBox1.Text);
+            int targetNominal;
+            if(!int.TryParse(toolStripTextBox1.Text, out targetNominal))
+            {
+                MessageBox.Show("Value is not a number");
+                return;
+            }
 
             foreach (var item in items)
             {
@@ -8926,6 +9009,8 @@ namespace DayZeEditor
                isUserInteraction = false;
             }
         }
+
+        
 
 
     }

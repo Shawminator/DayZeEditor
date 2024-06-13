@@ -55,12 +55,6 @@ namespace DayZeEditor
             this.removeSelectedCutomZoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewSafeZoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeSelectedSafeZoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addNewWaypointListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeSelectedWaypointListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeWayPointToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addNewWaypointToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addNewTerrainLimitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeSelectedTerrainLimitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -300,15 +294,9 @@ namespace DayZeEditor
             this.addNewCustomZoneToolStripMenuItem,
             this.removeSelectedCutomZoneToolStripMenuItem,
             this.addNewSafeZoneToolStripMenuItem,
-            this.removeSelectedSafeZoneToolStripMenuItem,
-            this.addNewWaypointListToolStripMenuItem,
-            this.removeSelectedWaypointListToolStripMenuItem,
-            this.removeWayPointToolStripMenuItem,
-            this.addNewWaypointToolStripMenuItem,
-            this.addNewTerrainLimitToolStripMenuItem,
-            this.removeSelectedTerrainLimitToolStripMenuItem});
+            this.removeSelectedSafeZoneToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(240, 290);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(235, 158);
             // 
             // addNewToolStripMenuItem
             // 
@@ -351,42 +339,6 @@ namespace DayZeEditor
             this.removeSelectedSafeZoneToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
             this.removeSelectedSafeZoneToolStripMenuItem.Text = "Remove Selected SafeZone";
             this.removeSelectedSafeZoneToolStripMenuItem.Click += new System.EventHandler(this.removeSelectedSafeZoneToolStripMenuItem_Click);
-            // 
-            // addNewWaypointListToolStripMenuItem
-            // 
-            this.addNewWaypointListToolStripMenuItem.Name = "addNewWaypointListToolStripMenuItem";
-            this.addNewWaypointListToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
-            this.addNewWaypointListToolStripMenuItem.Text = "Add New Waypoint List";
-            // 
-            // removeSelectedWaypointListToolStripMenuItem
-            // 
-            this.removeSelectedWaypointListToolStripMenuItem.Name = "removeSelectedWaypointListToolStripMenuItem";
-            this.removeSelectedWaypointListToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
-            this.removeSelectedWaypointListToolStripMenuItem.Text = "Remove Selected Waypoint List";
-            // 
-            // removeWayPointToolStripMenuItem
-            // 
-            this.removeWayPointToolStripMenuItem.Name = "removeWayPointToolStripMenuItem";
-            this.removeWayPointToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
-            this.removeWayPointToolStripMenuItem.Text = "Remove WayPoint";
-            // 
-            // addNewWaypointToolStripMenuItem
-            // 
-            this.addNewWaypointToolStripMenuItem.Name = "addNewWaypointToolStripMenuItem";
-            this.addNewWaypointToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
-            this.addNewWaypointToolStripMenuItem.Text = "Add New Waypoint";
-            // 
-            // addNewTerrainLimitToolStripMenuItem
-            // 
-            this.addNewTerrainLimitToolStripMenuItem.Name = "addNewTerrainLimitToolStripMenuItem";
-            this.addNewTerrainLimitToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
-            this.addNewTerrainLimitToolStripMenuItem.Text = "Add New Terrain Limit";
-            // 
-            // removeSelectedTerrainLimitToolStripMenuItem
-            // 
-            this.removeSelectedTerrainLimitToolStripMenuItem.Name = "removeSelectedTerrainLimitToolStripMenuItem";
-            this.removeSelectedTerrainLimitToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
-            this.removeSelectedTerrainLimitToolStripMenuItem.Text = "Remove Selected Terrain Limit";
             // 
             // PVZCZManager
             // 
@@ -441,11 +393,5 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripMenuItem removeSelectedCutomZoneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addNewSafeZoneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeSelectedSafeZoneToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addNewWaypointListToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeSelectedWaypointListToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeWayPointToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addNewWaypointToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addNewTerrainLimitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeSelectedTerrainLimitToolStripMenuItem;
     }
 }

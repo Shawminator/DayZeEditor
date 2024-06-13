@@ -324,6 +324,13 @@ namespace DayZeEditor
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
+                if (currentCrashpoint.RewardTables == null)
+                {
+                    currentCrashpoint.RewardTables = new System.ComponentModel.BindingList<string>();
+                    SpecificLootTablesLB.DisplayMember = "DisplayName";
+                    SpecificLootTablesLB.ValueMember = "Value";
+                    SpecificLootTablesLB.DataSource = currentCrashpoint.RewardTables;
+                }
                 List<string> predefweapon = form.WeaponList;
                 foreach (string weapon in predefweapon)
                 {
@@ -507,7 +514,8 @@ namespace DayZeEditor
                 Crash_Message = "New Crash",
                 x = currentproject.MapSize / 2,
                 y = currentproject.MapSize / 2,
-                Radius = 100
+                Radius = 100,
+                RewardTables = new System.ComponentModel.BindingList<string>()
             };
             Helicrash.CrashPoints.Add(newcrashpoint);
             pictureBox1.Invalidate();

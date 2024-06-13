@@ -32,6 +32,8 @@ namespace DayZeEditor
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RHLootBoxManager));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.darkLabel2 = new DarkUI.Controls.DarkLabel();
+            this.LifetimeNUD = new System.Windows.Forms.NumericUpDown();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.darkButton9 = new DarkUI.Controls.DarkButton();
             this.darkButton10 = new DarkUI.Controls.DarkButton();
@@ -82,10 +84,9 @@ namespace DayZeEditor
             this.darkToolStrip21 = new DarkUI.Controls.DarkToolStrip2();
             this.SaveFileButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.LifetimeNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel2 = new DarkUI.Controls.DarkLabel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LifetimeNUD)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -99,7 +100,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.numberNUD)).BeginInit();
             this.darkToolStrip23.SuspendLayout();
             this.darkToolStrip21.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.LifetimeNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -132,6 +132,32 @@ namespace DayZeEditor
             this.tabPage1.Size = new System.Drawing.Size(1015, 496);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
+            // 
+            // darkLabel2
+            // 
+            this.darkLabel2.AutoSize = true;
+            this.darkLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel2.Location = new System.Drawing.Point(100, 5);
+            this.darkLabel2.Name = "darkLabel2";
+            this.darkLabel2.Size = new System.Drawing.Size(43, 13);
+            this.darkLabel2.TabIndex = 118;
+            this.darkLabel2.Text = "Lifetime";
+            // 
+            // LifetimeNUD
+            // 
+            this.LifetimeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.LifetimeNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.LifetimeNUD.Location = new System.Drawing.Point(149, 3);
+            this.LifetimeNUD.Maximum = new decimal(new int[] {
+            3800000,
+            0,
+            0,
+            0});
+            this.LifetimeNUD.Name = "LifetimeNUD";
+            this.LifetimeNUD.Size = new System.Drawing.Size(85, 20);
+            this.LifetimeNUD.TabIndex = 117;
+            this.LifetimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.LifetimeNUD.ValueChanged += new System.EventHandler(this.LifetimeNUD_ValueChanged);
             // 
             // groupBox2
             // 
@@ -580,9 +606,9 @@ namespace DayZeEditor
             this.checkBox2.ForeColor = System.Drawing.SystemColors.Control;
             this.checkBox2.Location = new System.Drawing.Point(6, 159);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(121, 17);
+            this.checkBox2.Size = new System.Drawing.Size(126, 17);
             this.checkBox2.TabIndex = 136;
-            this.checkBox2.Text = "Use Box Loot List    ";
+            this.checkBox2.Text = "Use Custom Loot List";
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
@@ -812,32 +838,6 @@ namespace DayZeEditor
             this.toolStripButton4.ToolTipText = "Open TraderConfig.txt";
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
-            // LifetimeNUD
-            // 
-            this.LifetimeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.LifetimeNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.LifetimeNUD.Location = new System.Drawing.Point(149, 3);
-            this.LifetimeNUD.Maximum = new decimal(new int[] {
-            3800000,
-            0,
-            0,
-            0});
-            this.LifetimeNUD.Name = "LifetimeNUD";
-            this.LifetimeNUD.Size = new System.Drawing.Size(85, 20);
-            this.LifetimeNUD.TabIndex = 117;
-            this.LifetimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.LifetimeNUD.ValueChanged += new System.EventHandler(this.LifetimeNUD_ValueChanged);
-            // 
-            // darkLabel2
-            // 
-            this.darkLabel2.AutoSize = true;
-            this.darkLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel2.Location = new System.Drawing.Point(100, 5);
-            this.darkLabel2.Name = "darkLabel2";
-            this.darkLabel2.Size = new System.Drawing.Size(43, 13);
-            this.darkLabel2.TabIndex = 118;
-            this.darkLabel2.Text = "Lifetime";
-            // 
             // RHLootBoxManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -853,6 +853,7 @@ namespace DayZeEditor
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LifetimeNUD)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
@@ -872,7 +873,6 @@ namespace DayZeEditor
             this.darkToolStrip23.PerformLayout();
             this.darkToolStrip21.ResumeLayout(false);
             this.darkToolStrip21.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.LifetimeNUD)).EndInit();
             this.ResumeLayout(false);
 
         }

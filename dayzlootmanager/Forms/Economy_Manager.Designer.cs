@@ -284,6 +284,12 @@ namespace DayZeEditor
             this.eventSpawnNameTB = new System.Windows.Forms.TextBox();
             this.EventGroupSpawnTab = new System.Windows.Forms.TabPage();
             this.groupBox58 = new System.Windows.Forms.GroupBox();
+            this.eventgroupSecondarySpawnCB = new System.Windows.Forms.CheckBox();
+            this.checkBox116 = new System.Windows.Forms.CheckBox();
+            this.checkBox115 = new System.Windows.Forms.CheckBox();
+            this.checkBox114 = new System.Windows.Forms.CheckBox();
+            this.checkBox113 = new System.Windows.Forms.CheckBox();
+            this.checkBox112 = new System.Windows.Forms.CheckBox();
             this.eventgrouplootmaxNUD = new System.Windows.Forms.NumericUpDown();
             this.label129 = new System.Windows.Forms.Label();
             this.label130 = new System.Windows.Forms.Label();
@@ -3153,7 +3159,7 @@ namespace DayZeEditor
             this.economySearchNextButton.Image = ((System.Drawing.Image)(resources.GetObject("economySearchNextButton.Image")));
             this.economySearchNextButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.economySearchNextButton.Name = "economySearchNextButton";
-            this.economySearchNextButton.Size = new System.Drawing.Size(62, 42);
+            this.economySearchNextButton.Size = new System.Drawing.Size(24, 24);
             this.economySearchNextButton.Text = "Find Next";
             this.economySearchNextButton.Visible = false;
             this.economySearchNextButton.Click += new System.EventHandler(this.toolStripButton2_Click);
@@ -4703,6 +4709,12 @@ namespace DayZeEditor
             // 
             // groupBox58
             // 
+            this.groupBox58.Controls.Add(this.eventgroupSecondarySpawnCB);
+            this.groupBox58.Controls.Add(this.checkBox116);
+            this.groupBox58.Controls.Add(this.checkBox115);
+            this.groupBox58.Controls.Add(this.checkBox114);
+            this.groupBox58.Controls.Add(this.checkBox113);
+            this.groupBox58.Controls.Add(this.checkBox112);
             this.groupBox58.Controls.Add(this.eventgrouplootmaxNUD);
             this.groupBox58.Controls.Add(this.label129);
             this.groupBox58.Controls.Add(this.label130);
@@ -4722,10 +4734,72 @@ namespace DayZeEditor
             this.groupBox58.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox58.Location = new System.Drawing.Point(348, 10);
             this.groupBox58.Name = "groupBox58";
-            this.groupBox58.Size = new System.Drawing.Size(389, 261);
+            this.groupBox58.Size = new System.Drawing.Size(389, 313);
             this.groupBox58.TabIndex = 115;
             this.groupBox58.TabStop = false;
             this.groupBox58.Text = "Child Info";
+            // 
+            // eventgroupSecondarySpawnCB
+            // 
+            this.eventgroupSecondarySpawnCB.AutoSize = true;
+            this.eventgroupSecondarySpawnCB.Location = new System.Drawing.Point(17, 258);
+            this.eventgroupSecondarySpawnCB.Name = "eventgroupSecondarySpawnCB";
+            this.eventgroupSecondarySpawnCB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.eventgroupSecondarySpawnCB.Size = new System.Drawing.Size(113, 17);
+            this.eventgroupSecondarySpawnCB.TabIndex = 101;
+            this.eventgroupSecondarySpawnCB.Text = "Spawn Secondary";
+            this.eventgroupSecondarySpawnCB.UseVisualStyleBackColor = true;
+            this.eventgroupSecondarySpawnCB.CheckedChanged += new System.EventHandler(this.eventgroupSecondarySpawnCB_CheckedChanged);
+            // 
+            // checkBox116
+            // 
+            this.checkBox116.AutoSize = true;
+            this.checkBox116.Location = new System.Drawing.Point(227, 259);
+            this.checkBox116.Name = "checkBox116";
+            this.checkBox116.Size = new System.Drawing.Size(15, 14);
+            this.checkBox116.TabIndex = 100;
+            this.checkBox116.UseVisualStyleBackColor = true;
+            this.checkBox116.CheckedChanged += new System.EventHandler(this.checkBox116_CheckedChanged);
+            // 
+            // checkBox115
+            // 
+            this.checkBox115.AutoSize = true;
+            this.checkBox115.Location = new System.Drawing.Point(227, 224);
+            this.checkBox115.Name = "checkBox115";
+            this.checkBox115.Size = new System.Drawing.Size(15, 14);
+            this.checkBox115.TabIndex = 99;
+            this.checkBox115.UseVisualStyleBackColor = true;
+            this.checkBox115.CheckedChanged += new System.EventHandler(this.checkBox115_CheckedChanged);
+            // 
+            // checkBox114
+            // 
+            this.checkBox114.AutoSize = true;
+            this.checkBox114.Location = new System.Drawing.Point(227, 199);
+            this.checkBox114.Name = "checkBox114";
+            this.checkBox114.Size = new System.Drawing.Size(15, 14);
+            this.checkBox114.TabIndex = 98;
+            this.checkBox114.UseVisualStyleBackColor = true;
+            this.checkBox114.CheckedChanged += new System.EventHandler(this.checkBox114_CheckedChanged);
+            // 
+            // checkBox113
+            // 
+            this.checkBox113.AutoSize = true;
+            this.checkBox113.Location = new System.Drawing.Point(227, 177);
+            this.checkBox113.Name = "checkBox113";
+            this.checkBox113.Size = new System.Drawing.Size(15, 14);
+            this.checkBox113.TabIndex = 97;
+            this.checkBox113.UseVisualStyleBackColor = true;
+            this.checkBox113.CheckedChanged += new System.EventHandler(this.checkBox113_CheckedChanged);
+            // 
+            // checkBox112
+            // 
+            this.checkBox112.AutoSize = true;
+            this.checkBox112.Location = new System.Drawing.Point(227, 82);
+            this.checkBox112.Name = "checkBox112";
+            this.checkBox112.Size = new System.Drawing.Size(15, 14);
+            this.checkBox112.TabIndex = 96;
+            this.checkBox112.UseVisualStyleBackColor = true;
+            this.checkBox112.CheckedChanged += new System.EventHandler(this.checkBox112_CheckedChanged);
             // 
             // eventgrouplootmaxNUD
             // 
@@ -14657,6 +14731,7 @@ namespace DayZeEditor
             this.treeViewMS2.SetMultiselect = true;
             this.treeViewMS2.Size = new System.Drawing.Size(292, 514);
             this.treeViewMS2.TabIndex = 216;
+            this.treeViewMS2.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewMS2_AfterSelect);
             this.treeViewMS2.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewMS2_NodeMouseClick);
             // 
             // TypesContextMenu
@@ -16944,5 +17019,11 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripMenuItem updateTypesFromFileToolStripMenuItem;
+        private System.Windows.Forms.CheckBox checkBox112;
+        private System.Windows.Forms.CheckBox eventgroupSecondarySpawnCB;
+        private System.Windows.Forms.CheckBox checkBox116;
+        private System.Windows.Forms.CheckBox checkBox115;
+        private System.Windows.Forms.CheckBox checkBox114;
+        private System.Windows.Forms.CheckBox checkBox113;
     }
 }

@@ -94,6 +94,10 @@ namespace DayZeLib
 
         private string typeField;
 
+        private bool spawnsecondaryField;
+
+        private bool spawnsecondaryFieldSpecified;
+
         private int delootField;
 
         private bool delootFieldSpecified;
@@ -127,6 +131,34 @@ namespace DayZeLib
             set
             {
                 this.typeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public bool spawnsecondary
+        {
+            get
+            {
+                return this.spawnsecondaryField;
+            }
+            set
+            {
+                this.spawnsecondaryField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool spawnsecondarySpecified
+        {
+            get
+            {
+                return this.spawnsecondaryFieldSpecified;
+            }
+            set
+            {
+                this.spawnsecondaryFieldSpecified = value;
             }
         }
 

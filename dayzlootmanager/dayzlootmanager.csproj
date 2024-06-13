@@ -577,6 +577,7 @@
     <None Include="..\.editorconfig">
       <Link>.editorconfig</Link>
     </None>
+    <None Include="Maps\anastara_Map.png.xyz" />
     <None Include="Maps\barrington_Map.png.xyz" />
     <None Include="Maps\bearisland_Map.png.xyz" />
     <None Include="Maps\Capare_Map.png.xyz" />
@@ -649,6 +650,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <Content Include="FastColoredTextBox.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Maps\anastara_Map.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Maps\barrington_Map.png" />
