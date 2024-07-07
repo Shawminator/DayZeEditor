@@ -462,10 +462,16 @@ namespace DayZeEditor
         }
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
+            toolStripButton4.AutoSize = true;
+            toolStripButton5.AutoSize = true;
             tabControl1.SelectedIndex = 2;
         }
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
+            toolStripButton7.AutoSize = true;
+            toolStripButton9.AutoSize = true;
+            toolStripButton10.AutoSize = true;
+            toolStripButton11.AutoSize = true;
             tabControl1.SelectedIndex = 3;
         }
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)

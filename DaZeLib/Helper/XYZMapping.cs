@@ -199,14 +199,41 @@ namespace DayZeLib
             }
             //points id a List<vec3> containing X,Y,Z values.
 
-            List<Vec3> test = points
-                .OrderBy(x => Math.Abs(v1 - x.X))
-                .ToList();
-            List<Vec3> test2 = test
-                .FindAll(x => x.X == test[0].X)
-                .OrderBy(x => Math.Abs(v2 - x.Y))
-                .ToList();
-            return test2[0].Z;
+            //List<Vec3> test = points
+            //    .OrderBy(x => Math.Abs(v1 - x.X))
+            //    .ToList();
+            //List<Vec3> test2 = test
+            //    .FindAll(x => x.X == test[0].X)
+            //    .OrderBy(x => Math.Abs(v2 - x.Y))
+            //    .ToList();
+            //return test2[0].Z;
+
+            Vec3[] closestPoints = points.OrderBy(p => Math.Abs(v1 - p.X) + Math.Abs(v2 - p.Y)).Take(4).ToArray();
+
+            if (closestPoints.Length < 4)
+            {
+                throw new Exception("Not enough points to perform interpolation.");
+            }
+
+
+            closestPoints = closestPoints.OrderBy(p => p.X).ThenBy(p => p.Y).ToArray();
+            Vec3 p1 = closestPoints[0];
+            Vec3 p2 = closestPoints[1];
+            Vec3 p3 = closestPoints[2];
+            Vec3 p4 = closestPoints[3];
+
+
+            float denom = (p2.X - p1.X) * (p4.Y - p1.Y);
+            if (denom == 0)
+            {
+                return closestPoints.OrderBy(p => Math.Sqrt(Math.Pow(v1 - p.X, 2) + Math.Pow(v2 - p.Y, 2))).First().Z;
+            }
+            float z = (1 / denom) * (p1.Z * (p2.X - v1) * (p4.Y - v2) +
+                                     p2.Z * (v1 - p1.X) * (p4.Y - v2) +
+                                     p3.Z * (p2.X - v1) * (v2 - p1.Y) +
+                                     p4.Z * (v1 - p1.X) * (v2 - p1.Y));
+
+            return z;
 
         }
     }

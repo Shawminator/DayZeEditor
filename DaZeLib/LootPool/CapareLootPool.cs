@@ -60,4 +60,27 @@ namespace DayZeLib
             return "Attachemnts List";
         }
     }
+
+    public class WeaponDump
+    {
+        public BindingList<Hlyngeweapon> HlyngeWeapons { get; set; }
+    }
+
+    public class Hlyngeweapon
+    {
+        public string name { get; set; }
+        public BindingList<string> attachments { get; set; }
+        public BindingList<string> attachmentsBayonet { get; set; }
+        public BindingList<string> attachmentsBipods { get; set; }
+        public BindingList<string> attachmentsButtStocks { get; set; }
+        public BindingList<string> attachmentsHandguards { get; set; }
+        public BindingList<string> attachmentIllumination { get; set; }
+        public BindingList<string> attachmentsOpticsAndSights { get; set; }
+        public BindingList<string> attachmentsMuzzles { get; set; }
+        public BindingList<string> attachmentsWraps { get; set; }
+        public BindingList<string> bullets { get; set; }
+        public BindingList<string> magazines { get; set; }
+    }
+
+
 }

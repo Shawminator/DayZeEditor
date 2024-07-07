@@ -6209,6 +6209,7 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             currentcircleZone.Center[0] = (float)numericUpDown18.Value;
+            numericUpDown19.Value = (decimal)(MapData.gethieght(currentcircleZone.Center[0], currentcircleZone.Center[2]));
             SafeZoneSettings.isDirty = true;
             pictureBox2.Invalidate();
         }
@@ -6223,6 +6224,7 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             currentcircleZone.Center[2] = (float)numericUpDown20.Value;
+            numericUpDown19.Value = (decimal)(MapData.gethieght(currentcircleZone.Center[0], currentcircleZone.Center[2]));
             SafeZoneSettings.isDirty = true;
             pictureBox2.Invalidate();
 

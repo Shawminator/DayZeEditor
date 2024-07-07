@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace DayZeEditor
 {
@@ -797,6 +798,8 @@ namespace DayZeEditor
                     magazines = new BindingList<string>(),
                     attachments = new BindingList<capareLPAttachment>()
                 };
+                if (LootPool.CapareLPdefinedItems.Any(x => x.DefineName == newitem.DefineName))
+                    continue;
                 foreach (var item in sp.Items)
                 {
                     if (item is spawnabletypesTypeAttachments)
@@ -1052,6 +1055,104 @@ namespace DayZeEditor
                     LootPool.CapareLPLootTables.Add(newtable1Ammo);
             }
             LootPool.isDirty = true;
+        }
+
+        private void darkButton23_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            if(open.ShowDialog() == DialogResult.OK)
+            {
+                WeaponDump weapondump = JsonSerializer.Deserialize<WeaponDump>(File.ReadAllText(open.FileName));
+                if(weapondump != null)
+                {
+                    foreach(Hlyngeweapon weapon in weapondump.HlyngeWeapons)
+                    {
+                        capareLPdefinedItems newitem = new capareLPdefinedItems()
+                        {
+                            DefineName = "Defined_" + weapon.name,
+                            Item = weapon.name,
+                            magazines = new BindingList<string>(),
+                            attachments = new BindingList<capareLPAttachment>()
+                        };
+                        foreach(string mags in weapon.magazines)
+                        {
+                            newitem.magazines.Add(mags);
+                        }
+                        if (weapon.attachmentsBayonet.Count > 0)
+                        {
+                            capareLPAttachment NEWLIST = new capareLPAttachment();
+                            NEWLIST.attachments = new BindingList<string>();
+                            foreach (string bay in weapon.attachmentsBayonet)
+                            {
+                                NEWLIST.attachments.Add(bay);
+                            }
+                            newitem.attachments.Add(NEWLIST);
+                        }
+                        if (weapon.attachmentsButtStocks.Count > 0)
+                        {
+                            capareLPAttachment NEWLIST = new capareLPAttachment();
+                            NEWLIST.attachments = new BindingList<string>();
+                            foreach (string bay in weapon.attachmentsButtStocks)
+                            {
+                                NEWLIST.attachments.Add(bay);
+                            }
+                            newitem.attachments.Add(NEWLIST);
+                        }
+                        if (weapon.attachmentsHandguards.Count > 0)
+                        {
+                            capareLPAttachment NEWLIST = new capareLPAttachment();
+                            NEWLIST.attachments = new BindingList<string>();
+                            foreach (string bay in weapon.attachmentsHandguards)
+                            {
+                                NEWLIST.attachments.Add(bay);
+                            }
+                            newitem.attachments.Add(NEWLIST);
+                        }
+                        if (weapon.attachmentIllumination.Count > 0)
+                        {
+                            capareLPAttachment NEWLIST = new capareLPAttachment();
+                            NEWLIST.attachments = new BindingList<string>();
+                            foreach (string bay in weapon.attachmentIllumination)
+                            {
+                                NEWLIST.attachments.Add(bay);
+                            }
+                            newitem.attachments.Add(NEWLIST);
+                        }
+                        if (weapon.attachmentsOpticsAndSights.Count > 0)
+                        {
+                            capareLPAttachment NEWLIST = new capareLPAttachment();
+                            NEWLIST.attachments = new BindingList<string>();
+                            foreach (string bay in weapon.attachmentsOpticsAndSights)
+                            {
+                                NEWLIST.attachments.Add(bay);
+                            }
+                            newitem.attachments.Add(NEWLIST);
+                        }
+                        if (weapon.attachmentsMuzzles.Count > 0)
+                        {
+                            capareLPAttachment NEWLIST = new capareLPAttachment();
+                            NEWLIST.attachments = new BindingList<string>();
+                            foreach (string bay in weapon.attachmentsMuzzles)
+                            {
+                                NEWLIST.attachments.Add(bay);
+                            }
+                            newitem.attachments.Add(NEWLIST);
+                        }
+                        if (weapon.attachmentsWraps.Count > 0)
+                        {
+                            capareLPAttachment NEWLIST = new capareLPAttachment();
+                            NEWLIST.attachments = new BindingList<string>();
+                            foreach (string bay in weapon.attachmentsWraps)
+                            {
+                                NEWLIST.attachments.Add(bay);
+                            }
+                            newitem.attachments.Add(NEWLIST);
+                        }
+                        LootPool.CapareLPdefinedItems.Add(newitem);
+                        LootPool.isDirty = true;
+                    }    
+                }
+            }
         }
     }
 }

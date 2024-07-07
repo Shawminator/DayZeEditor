@@ -57,6 +57,8 @@ namespace DayZeEditor
             this.darkLabel1 = new DarkUI.Controls.DarkLabel();
             this.LootChestsLocationsLB = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.darkLabel11 = new DarkUI.Controls.DarkLabel();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.darkLabel2 = new DarkUI.Controls.DarkLabel();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -105,8 +107,7 @@ namespace DayZeEditor
             this.defnameTB = new System.Windows.Forms.TextBox();
             this.darkLabel5 = new DarkUI.Controls.DarkLabel();
             this.LCPredefinedWeaponsLB = new System.Windows.Forms.ListBox();
-            this.darkLabel11 = new DarkUI.Controls.DarkLabel();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.darkButton23 = new DarkUI.Controls.DarkButton();
             this.darkToolStrip21.SuspendLayout();
             this.darkToolStrip23.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -469,6 +470,25 @@ namespace DayZeEditor
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(799, 161);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(15, 14);
+            this.checkBox2.TabIndex = 148;
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // darkLabel11
+            // 
+            this.darkLabel11.AutoSize = true;
+            this.darkLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel11.Location = new System.Drawing.Point(691, 161);
+            this.darkLabel11.Name = "darkLabel11";
+            this.darkLabel11.Size = new System.Drawing.Size(104, 13);
+            this.darkLabel11.TabIndex = 147;
+            this.darkLabel11.Text = "Exclude loose ammo";
+            // 
             // comboBox2
             // 
             this.comboBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
@@ -696,6 +716,7 @@ namespace DayZeEditor
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage3.Controls.Add(this.darkButton23);
             this.tabPage3.Controls.Add(this.darkButton21);
             this.tabPage3.Controls.Add(this.darkButton15);
             this.tabPage3.Controls.Add(this.darkButton16);
@@ -713,7 +734,7 @@ namespace DayZeEditor
             // darkButton21
             // 
             this.darkButton21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton21.Location = new System.Drawing.Point(8, 494);
+            this.darkButton21.Location = new System.Drawing.Point(8, 468);
             this.darkButton21.Name = "darkButton21";
             this.darkButton21.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton21.Size = new System.Drawing.Size(225, 23);
@@ -724,7 +745,7 @@ namespace DayZeEditor
             // darkButton15
             // 
             this.darkButton15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton15.Location = new System.Drawing.Point(8, 467);
+            this.darkButton15.Location = new System.Drawing.Point(8, 441);
             this.darkButton15.Name = "darkButton15";
             this.darkButton15.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton15.Size = new System.Drawing.Size(110, 23);
@@ -735,7 +756,7 @@ namespace DayZeEditor
             // darkButton16
             // 
             this.darkButton16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton16.Location = new System.Drawing.Point(129, 467);
+            this.darkButton16.Location = new System.Drawing.Point(129, 441);
             this.darkButton16.Name = "darkButton16";
             this.darkButton16.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton16.Size = new System.Drawing.Size(104, 23);
@@ -1019,29 +1040,21 @@ namespace DayZeEditor
             this.LCPredefinedWeaponsLB.Location = new System.Drawing.Point(7, 28);
             this.LCPredefinedWeaponsLB.Name = "LCPredefinedWeaponsLB";
             this.LCPredefinedWeaponsLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.LCPredefinedWeaponsLB.Size = new System.Drawing.Size(226, 433);
+            this.LCPredefinedWeaponsLB.Size = new System.Drawing.Size(226, 407);
             this.LCPredefinedWeaponsLB.TabIndex = 93;
             this.LCPredefinedWeaponsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.LCPredefinedWeaponsLB.SelectedIndexChanged += new System.EventHandler(this.LCPredefinedWeaponsLB_SelectedIndexChanged);
             // 
-            // darkLabel11
+            // darkButton23
             // 
-            this.darkLabel11.AutoSize = true;
-            this.darkLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel11.Location = new System.Drawing.Point(691, 161);
-            this.darkLabel11.Name = "darkLabel11";
-            this.darkLabel11.Size = new System.Drawing.Size(104, 13);
-            this.darkLabel11.TabIndex = 147;
-            this.darkLabel11.Text = "Exclude loose ammo";
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(799, 161);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(15, 14);
-            this.checkBox2.TabIndex = 148;
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.darkButton23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton23.Location = new System.Drawing.Point(7, 494);
+            this.darkButton23.Name = "darkButton23";
+            this.darkButton23.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton23.Size = new System.Drawing.Size(225, 23);
+            this.darkButton23.TabIndex = 99;
+            this.darkButton23.Text = "Create all Weapon Dump";
+            this.darkButton23.Click += new System.EventHandler(this.darkButton23_Click);
             // 
             // LootPoolManager
             // 
@@ -1158,5 +1171,6 @@ namespace DayZeEditor
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.CheckBox checkBox2;
         private DarkUI.Controls.DarkLabel darkLabel11;
+        private DarkUI.Controls.DarkButton darkButton23;
     }
 }
