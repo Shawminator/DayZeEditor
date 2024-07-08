@@ -628,6 +628,8 @@ namespace DayZeEditor
             MaxVehicleStoredReachedTB.Text = TraderPlusGarageConfig.MaxVehicleStoredReached;
             TradeVehicleWarningTB.Text = TraderPlusGarageConfig.TradeVehicleWarning;
             TradeVehicleHasBeenDeletedTB.Text = TraderPlusGarageConfig.TradeVehicleHasBeenDeleted;
+            SavedVehicleInGarageForTradeInHourCB.Checked = TraderPlusGarageConfig.SavedVehicleInGarageForTradeInHour == 1 ? true : false;
+            MaxVehicleStoredNUD.Value = TraderPlusGarageConfig.MaxVehicleStored;
 
             GarageWhiteListLB.DisplayMember = "Name";
             GarageWhiteListLB.ValueMember = "Value";
