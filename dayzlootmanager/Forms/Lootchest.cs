@@ -4,12 +4,15 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace DayZeEditor
 {
@@ -28,12 +31,20 @@ namespace DayZeEditor
         public LootChestsLocations CurrentLootChestLocation;
         public LCPredefinedWeapons currentLCPredefinedWeapons;
         public LootCategories currentLootCategories;
-        public string currentposition;
+        public Vec3PandR currentposition;
 
         public string LootchestToolPath;
         public LootChestTools LootChestTools;
         public LCTools currentLootchestTool;
-
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
+                return cp;
+            }
+        }
         private void listBox_DrawItem(object sender, DrawItemEventArgs e)
         {
             if (e.Index < 0) return;
@@ -60,6 +71,7 @@ namespace DayZeEditor
         private void Lootchest_Load(object sender, EventArgs e)
         {
             tabControl1.ItemSize = new Size(0, 1);
+            tabControl2.ItemSize = new Size(0, 1);
             System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
             customCulture.NumberFormat.NumberDecimalSeparator = ".";
             customCulture.NumberFormat.NumberGroupSeparator = "";
@@ -72,6 +84,7 @@ namespace DayZeEditor
             LootChestTablePath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\CJ_LootChests\\LootChests_V106.json";
             LootChestTable = JsonSerializer.Deserialize<LootChestTable>(File.ReadAllText(LootChestTablePath));
             LootChestTable.isDirty = false;
+            LootChestTable.Getalllists();
             LootChestTable.Filename = LootChestTablePath;
 
             LootchestToolPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\CJ_LootChests\\LootChestsTools_V106.json";
@@ -80,6 +93,12 @@ namespace DayZeEditor
             LootChestTools.Filename = LootchestToolPath;
 
             comboBox2.DataSource = Enum.GetValues(typeof(LootchestOpenable));
+
+            pictureBox1.BackgroundImage = Image.FromFile(Application.StartupPath + currentproject.MapPath); // Livonia maop size is 12800 x 12800, 0,0 bottom left, center 6400 x 6400
+            pictureBox1.Size = new Size(currentproject.MapSize, currentproject.MapSize);
+            pictureBox1.Paint += new PaintEventHandler(DrawLootchests);
+            trackBar1.Value = 1;
+            SetLootChestsScale();
 
             loadlootchestsettings();
         }
@@ -134,10 +153,10 @@ namespace DayZeEditor
 
             posLB.DisplayMember = "DisplayName";
             posLB.ValueMember = "Value";
-            posLB.DataSource = CurrentLootChestLocation.pos;
+            posLB.DataSource = CurrentLootChestLocation._pos;
 
-            darkLabel20.Text = "Location count:" + CurrentLootChestLocation.pos.Count.ToString();
-
+            darkLabel20.Text = "Location count:" + CurrentLootChestLocation._pos.Count.ToString();
+            pictureBox1.Invalidate();
             useraction = true;
         }
         private void darkButton1_Click(object sender, EventArgs e)
@@ -208,7 +227,8 @@ namespace DayZeEditor
                 pos = new BindingList<string>(),
                 keyclass = "",
                 chest = new BindingList<string>(),
-                loot = new BindingList<string>()
+                loot = new BindingList<string>(),
+                _pos = new BindingList<Vec3PandR>()
             }
             );
             LootChestsLocationsLB.SelectedIndex = -1;
@@ -254,51 +274,50 @@ namespace DayZeEditor
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (posLB.SelectedItems.Count < 1) return;
-            currentposition = posLB.SelectedItem as string;
+            currentposition = posLB.SelectedItem as Vec3PandR;
             useraction = false;
-            string[] split = currentposition.Split('|');
-            posXNUD.Value = (decimal)Convert.ToSingle(split[0].Split(' ')[0]);
-            posYNUD.Value = (decimal)Convert.ToSingle(split[0].Split(' ')[1]);
-            posZNUD.Value = (decimal)Convert.ToSingle(split[0].Split(' ')[2]);
+            posXNUD.Value = (decimal)currentposition.Position.X;
+            posYNUD.Value = (decimal)currentposition.Position.Y;
+            posZNUD.Value = (decimal)currentposition.Position.Z;
 
-            posXRNUD.Value = (decimal)Convert.ToSingle(split[1].Split(' ')[0]);
-            posYRNUD.Value = (decimal)Convert.ToSingle(split[1].Split(' ')[1]);
-            posZRNUD.Value = (decimal)Convert.ToSingle(split[1].Split(' ')[2]);
+            posXRNUD.Value = (decimal)currentposition.Rotation.X;
+            posYRNUD.Value = (decimal)currentposition.Rotation.Y;
+            posZRNUD.Value = (decimal)currentposition.Rotation.Z;
 
             useraction = true;
         }
         private void darkButton14_Click(object sender, EventArgs e)
         {
-            if (posLB.SelectedItems.Count < 1) return;
             int index = posLB.SelectedIndex;
-            CurrentLootChestLocation.pos.Remove(posLB.GetItemText(posLB.SelectedItem));
-            LootChestTable.isDirty = true;
+            CurrentLootChestLocation._pos.Remove(currentposition);
+            posLB.Invalidate();
             posLB.SelectedIndex = -1;
-            if (index - 1 == -1)
-            {
-                if (posLB.Items.Count > 0)
-                    posLB.SelectedIndex = 0;
-            }
-            else
+            if (CurrentLootChestLocation._pos.Count > 0)
             {
                 posLB.SelectedIndex = index - 1;
             }
-            darkLabel20.Text = "Location count:" + CurrentLootChestLocation.pos.Count.ToString();
+            pictureBox1.Invalidate();
+            LootChestTable.isDirty = true;
+
+            darkLabel20.Text = "Location count:" + CurrentLootChestLocation._pos.Count.ToString();
         }
         private void darkButton13_Click(object sender, EventArgs e)
         {
-            CurrentLootChestLocation.pos.Add("0.000000 0.000000 0.000000|0.000000 0.000000 0.000000");
+            CurrentLootChestLocation._pos.Add(new Vec3PandR(new float[]{ 0,0,0}, new float[] { 0,0,0}, true));
             posLB.SelectedIndex = -1;
             posLB.SelectedIndex = posLB.Items.Count - 1;
-            darkLabel20.Text = "Location count:" + CurrentLootChestLocation.pos.Count.ToString();
+            darkLabel20.Text = "Location count:" + CurrentLootChestLocation._pos.Count.ToString();
         }
         private void pos_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            string line = posXNUD.Value.ToString("N6") + " " + posYNUD.Value.ToString("N6") + " " + posZNUD.Value.ToString("N6") + "|" + posXRNUD.Value.ToString("N6") + " " + posYRNUD.Value.ToString("N6") + " " + posZRNUD.Value.ToString("N6");
-            currentposition = line;
-            CurrentLootChestLocation.pos[posLB.SelectedIndex] = currentposition;
+            if (currentposition.rotspecified)
+            {
+                currentposition.Rotation = new Vec3((float)posXRNUD.Value, (float)posYRNUD.Value, (float)posZRNUD.Value);
+            }
+            currentposition.Position = new Vec3((float)posXNUD.Value, (float)posYNUD.Value, (float)posZNUD.Value);
             LootChestTable.isDirty = true;
+            posLB.Invalidate();
         }
         private void darkButton15_Click(object sender, EventArgs e)
         {
@@ -606,6 +625,7 @@ namespace DayZeEditor
                     Directory.CreateDirectory(Path.GetDirectoryName(LootChestTable.Filename) + "\\Backup\\" + SaveTime);
                     File.Copy(LootChestTable.Filename, Path.GetDirectoryName(LootChestTable.Filename) + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(LootChestTable.Filename) + ".bak", true);
                 }
+                LootChestTable.SetAllLists();
                 LootChestTable.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(LootChestTable, options);
@@ -701,7 +721,7 @@ namespace DayZeEditor
         }
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
-
+            Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\CJ_LootChests\\");
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -863,21 +883,57 @@ namespace DayZeEditor
                 {
                     filePath = openFileDialog.FileName;
                     DZE importfile = DZEHelpers.LoadFile(filePath);
-                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
+                    DialogResult result = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNoCancel);
+                    if ((result == DialogResult.Cancel))
                     {
-                        CurrentLootChestLocation.pos.Clear();
+                        return;
                     }
-                    foreach (Editorobject eo in importfile.EditorObjects)
+                    else if (result == DialogResult.Yes)
                     {
-                        if (!eo.Type.Contains("CJ_LootChest")) { return; }
-                        CurrentLootChestLocation.pos.Add(eo.Position[0].ToString("F6") + " " + eo.Position[1].ToString("F6") + " " + eo.Position[2].ToString("F6") + "|" + eo.Orientation[0].ToString("F6") + " " + eo.Orientation[1].ToString("F6") + " " + eo.Orientation[2].ToString("F6"));
-                        posLB.SelectedIndex = -1;
-                        posLB.SelectedIndex = posLB.Items.Count - 1;
-                        posLB.Refresh();
+                        CurrentLootChestLocation._pos = new BindingList<Vec3PandR>();
                     }
-                    darkLabel20.Text = "Location count:" + CurrentLootChestLocation.pos.Count.ToString();
+                    CurrentLootChestLocation.ImportDZE(importfile);
+                    useraction = false;
+                    posLB.DataSource = CurrentLootChestLocation._pos;
+                    LootChestTable.isDirty = true;
+                    darkLabel20.Text = "Location count:" + CurrentLootChestLocation._pos.Count.ToString();
+                    useraction = true;
                 }
+            }
+        }
+        private void darkButton26_Click(object sender, EventArgs e)
+        {
+            DZE newdze = new DZE()
+            {
+                MapName = Path.GetFileNameWithoutExtension(currentproject.MapPath).Split('_')[0]
+            };
+            int m_Id = 0;
+            string filename = "";
+            foreach (Vec3PandR vec3pandr in CurrentLootChestLocation._pos)
+            {
+                Editorobject SpawnObject = new Editorobject()
+                {
+                    Type = CurrentLootChestLocation.chest[0],
+                    DisplayName = CurrentLootChestLocation.chest[0],
+                    Position = vec3pandr.GetPositionFloatArray(),
+                    Orientation = vec3pandr.GetRotationFloatArray(),
+                    Scale = 1.0f,
+                    Model = "",
+                    Flags = 2147483647,
+                    m_Id = m_Id
+                };
+                newdze.EditorObjects.Add(SpawnObject);
+                m_Id++;
+            }
+            filename = "CJ Loot Chest - " + CurrentLootChestLocation.name;
+            newdze.CameraPosition = newdze.EditorObjects[0].Position;
+            SaveFileDialog save = new SaveFileDialog();
+            save.FileName = filename;
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                string jsonString = JsonSerializer.Serialize(newdze, options);
+                File.WriteAllText(save.FileName + ".dze", jsonString);
             }
         }
         private void darkButton24_Click(object sender, EventArgs e)
@@ -1000,7 +1056,6 @@ namespace DayZeEditor
             }
             useraction = true;
         }
-
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
             ItemRarityTableNUD.Visible = ItemRarityTableCB.Checked;
@@ -1017,7 +1072,6 @@ namespace DayZeEditor
             currentLootCategories.Loot[LootCatLootLB.SelectedIndex] = loot;
             LootChestTable.isDirty = true;
         }
-
         private void ItemRarityTableNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
@@ -1025,7 +1079,6 @@ namespace DayZeEditor
             currentLootCategories.Loot[LootCatLootLB.SelectedIndex] = loot;
             LootChestTable.isDirty = true;
         }
-
         private void lootLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lootLB.SelectedItems.Count < 1) return;
@@ -1051,7 +1104,6 @@ namespace DayZeEditor
             }
             useraction = true;
         }
-
         private void ItemrarityChestCB_CheckedChanged(object sender, EventArgs e)
         {
             ItemrarityChestNUD.Visible = ItemrarityChestCB.Checked;
@@ -1068,7 +1120,6 @@ namespace DayZeEditor
             CurrentLootChestLocation.loot[lootLB.SelectedIndex] = loot;
             LootChestTable.isDirty = true;
         }
-
         private void ItemrarityChestNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
@@ -1077,9 +1128,201 @@ namespace DayZeEditor
             LootChestTable.isDirty = true;
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        private void toolStripButton12_Click(object sender, EventArgs e)
         {
+            tabControl2.SelectedIndex = 0;
+            if (tabControl2.SelectedIndex == 0)
+                toolStripButton12.Checked = true;
+        }
+        private void toolStripButton13_Click(object sender, EventArgs e)
+        {
+            tabControl2.SelectedIndex = 1;
+            if (tabControl2.SelectedIndex == 1)
+                toolStripButton13.Checked = true;
+        }
+        private void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (tabControl2.SelectedIndex)
+            {
+                case 0:
+                    toolStripButton13.Checked = false;
+                    break;
+                case 1:
+                    toolStripButton12.Checked = false;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        public int LootChestScale = 1;
+        private Point _mouseLastPosition;
+        private Point _newscrollPosition;
+
+        private void trackBar1_MouseUp(object sender, MouseEventArgs e)
+        {
+            LootChestScale = trackBar1.Value;
+            SetLootChestsScale();
+        }
+        private void SetLootChestsScale()
+        {
+            float scalevalue = LootChestScale * 0.05f;
+            float mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            pictureBox1.Size = new Size(newsize, newsize);
+        }
+        private void DrawLootchests(object sender, PaintEventArgs e)
+        {
+            if (checkBox8.Checked == true)
+            {
+                foreach (LootChestsLocations locs in LootChestTable.LootChestsLocations)
+                {
+                    float scalevalue = LootChestScale * 0.05f;
+                    foreach (Vec3PandR v3 in locs._pos)
+                    {
+                        int centerX = (int)(Math.Round(v3.Position.X) * scalevalue);
+                        int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(v3.Position.Z, 0) * scalevalue);
+                        int eventradius = (int)(Math.Round(1f, 0) * scalevalue);
+                        Point center = new Point(centerX, centerY);
+                        Pen pen = new Pen(Color.Red, 4);
+                        if (locs == CurrentLootChestLocation)
+                            pen = new Pen(Color.Yellow, 4);
+                        getCircleLootChest(e.Graphics, pen, center, eventradius, "");
+                    }
+                }
+            }
+            else
+            {
+                if (CurrentLootChestLocation == null) return;
+                float scalevalue = LootChestScale * 0.05f;
+                foreach (Vec3PandR v3 in CurrentLootChestLocation._pos)
+                {
+                    int centerX = (int)(Math.Round(v3.Position.X) * scalevalue);
+                    int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(v3.Position.Z, 0) * scalevalue);
+                    int eventradius = (int)(Math.Round(1f, 0) * scalevalue);
+                    Point center = new Point(centerX, centerY);
+                    Pen pen = new Pen(Color.Yellow, 4);
+                    getCircleLootChest(e.Graphics, pen, center, eventradius, "");
+                }
+            }
+        }
+        private void getCircleLootChest(Graphics drawingArea, Pen penToUse, Point center, int radius, string c)
+        {
+            Rectangle rect = new Rectangle(center.X - 1, center.Y - 1, 2, 2);
+            drawingArea.DrawEllipse(penToUse, rect);
+            Rectangle rect2 = new Rectangle(center.X - radius, center.Y - radius, radius * 2, radius * 2);
+            drawingArea.DrawEllipse(penToUse, rect2);
+            Rectangle rect3 = new Rectangle(center.X - radius, center.Y - (radius + 30), 200, 40);
+            drawingArea.DrawString(c, new Font("Tahoma", 9), Brushes.White, rect3);
+        }
+        private void pictureBox1_MouseEnter(object sender, EventArgs e)
+        {
+            if (pictureBox1.Focused == false)
+            {
+                pictureBox1.Focus();
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+                pictureBox1.Invalidate();
+            }
+        }
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Point changePoint = new Point(e.Location.X - _mouseLastPosition.X, e.Location.Y - _mouseLastPosition.Y);
+                _newscrollPosition = new Point(-panelEx1.AutoScrollPosition.X - changePoint.X, -panelEx1.AutoScrollPosition.Y - changePoint.Y);
+                if (_newscrollPosition.X <= 0)
+                    _newscrollPosition.X = 0;
+                if (_newscrollPosition.Y <= 0)
+                    _newscrollPosition.Y = 0;
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+                pictureBox1.Invalidate();
+            }
+            decimal scalevalue = LootChestScale * (decimal)0.05;
+            decimal mapsize = currentproject.MapSize;
+            int newsize = (int)(mapsize * scalevalue);
+            label2.Text = Decimal.Round((decimal)(e.X / scalevalue), 4) + "," + Decimal.Round((decimal)((newsize - e.Y) / scalevalue), 4);
+        }
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Cursor.Current = Cursors.SizeAll;
+                _mouseLastPosition = e.Location;
+            }
+        }
+        private void pictureBox1_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta < 0)
+            {
+                pictureBox1_ZoomOut();
+            }
+            else
+            {
+                pictureBox1_ZoomIn();
+            }
 
         }
+        private void pictureBox1_ZoomIn()
+        {
+            int oldpictureboxhieght = pictureBox1.Height;
+            int oldpitureboxwidht = pictureBox1.Width;
+            Point oldscrollpos = panelEx1.AutoScrollPosition;
+            int tbv = trackBar1.Value;
+            int newval = tbv + 1;
+            if (newval >= 20)
+                newval = 20;
+            trackBar1.Value = newval;
+            LootChestScale = trackBar1.Value;
+            SetLootChestsScale();
+            if (pictureBox1.Height > panelEx1.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox1.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox1.Width > panelEx1.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox1.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox1.Invalidate();
+        }
+        private void pictureBox1_ZoomOut()
+        {
+            int oldpictureboxhieght = pictureBox1.Height;
+            int oldpitureboxwidht = pictureBox1.Width;
+            Point oldscrollpos = panelEx1.AutoScrollPosition;
+            int tbv = trackBar1.Value;
+            int newval = tbv - 1;
+            if (newval <= 1)
+                newval = 1;
+            trackBar1.Value = newval;
+            LootChestScale = trackBar1.Value;
+            SetLootChestsScale();
+            if (pictureBox1.Height > panelEx1.Height)
+            {
+                decimal newy = ((decimal)oldscrollpos.Y / (decimal)oldpictureboxhieght);
+                int y = (int)(pictureBox1.Height * newy);
+                _newscrollPosition.Y = y * -1;
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+            }
+            if (pictureBox1.Width > panelEx1.Width)
+            {
+                decimal newy = ((decimal)oldscrollpos.X / (decimal)oldpitureboxwidht);
+                int x = (int)(pictureBox1.Width * newy);
+                _newscrollPosition.X = x * -1;
+                panelEx1.AutoScrollPosition = _newscrollPosition;
+            }
+            pictureBox1.Invalidate();
+        }
+        private void checkBox8_CheckedChanged(object sender, EventArgs e)
+        {
+            pictureBox1.Invalidate();
+        }
+
+
     }
 }

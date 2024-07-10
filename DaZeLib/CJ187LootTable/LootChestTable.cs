@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Text.Json.Serialization;
 
 namespace DayZeLib
@@ -45,6 +46,20 @@ namespace DayZeLib
         public string Filename { get; set; }
         [JsonIgnore]
         public bool isDirty { get; set; }
+        public void SetAllLists()
+        {
+            foreach (LootChestsLocations locations in LootChestsLocations)
+            {
+                locations.setSpawnpositions();
+            }
+        }
+        public void Getalllists()
+        {
+            foreach (LootChestsLocations locations in LootChestsLocations)
+            {
+                locations.getSpawnpositions();
+            }
+        }
     }
     public class LootChestsLocations
     {
@@ -58,7 +73,39 @@ namespace DayZeLib
         public int light { get; set; }
         public BindingList<string> loot { get; set; }
 
+        [JsonIgnore]
+        public BindingList<Vec3PandR> _pos { get; set; }
 
+        public void getSpawnpositions()
+        {
+            _pos = new BindingList<Vec3PandR>();
+            foreach (string s in pos)
+            {
+                _pos.Add(new Vec3PandR(s));
+            }
+        }
+
+        public void ImportDZE(DZE Importfile)
+        {
+            if (_pos == null)
+                _pos = new BindingList<Vec3PandR>();
+            foreach (Editorobject eo in Importfile.EditorObjects)
+            {
+                if (eo.DisplayName.Contains("CJ_LootChest"))
+                {
+                    _pos.Add(new Vec3PandR(eo.Position, eo.Orientation, true));
+                }
+            }
+        }
+
+        public void setSpawnpositions()
+        {
+            pos = new BindingList<string>();
+            foreach (Vec3PandR vec3PandR in _pos)
+            {
+                pos.Add(vec3PandR.GetString());
+            }
+        }
         public override string ToString()
         {
             return name;

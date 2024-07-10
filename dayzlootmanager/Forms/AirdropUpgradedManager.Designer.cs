@@ -131,6 +131,7 @@ namespace DayZeEditor
             this.darkLabel19 = new DarkUI.Controls.DarkLabel();
             this.VersionTB = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.darkLabel46 = new DarkUI.Controls.DarkLabel();
             this.LocationZombiesGB = new System.Windows.Forms.GroupBox();
             this.darkButton1 = new DarkUI.Controls.DarkButton();
             this.darkButton2 = new DarkUI.Controls.DarkButton();
@@ -139,6 +140,31 @@ namespace DayZeEditor
             this.LocationTitleTB = new System.Windows.Forms.TextBox();
             this.DropLocationsTV = new TreeViewMS.TreeViewMS();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.darkButton9 = new DarkUI.Controls.DarkButton();
+            this.darkButton10 = new DarkUI.Controls.DarkButton();
+            this.darkLabel55 = new DarkUI.Controls.DarkLabel();
+            this.DropTypeItemsLB = new System.Windows.Forms.ListBox();
+            this.DropTypeLifespanNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel49 = new DarkUI.Controls.DarkLabel();
+            this.DropTypeSpawnOffsetNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel50 = new DarkUI.Controls.DarkLabel();
+            this.DropTypeSpawnMaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel51 = new DarkUI.Controls.DarkLabel();
+            this.DropTypeSpawnMinNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel52 = new DarkUI.Controls.DarkLabel();
+            this.DropTypeAddFlareNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel53 = new DarkUI.Controls.DarkLabel();
+            this.DropTypeQuantityNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel54 = new DarkUI.Controls.DarkLabel();
+            this.DropTypeContainerCB = new System.Windows.Forms.ComboBox();
+            this.darkLabel48 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel47 = new DarkUI.Controls.DarkLabel();
+            this.DropTypeTitleTB = new System.Windows.Forms.TextBox();
+            this.darkButton7 = new DarkUI.Controls.DarkButton();
+            this.darkButton8 = new DarkUI.Controls.DarkButton();
+            this.darkLabel45 = new DarkUI.Controls.DarkLabel();
+            this.DropTypesLB = new System.Windows.Forms.ListBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.SafeZoneZNUD = new System.Windows.Forms.NumericUpDown();
             this.SafeZoneXNUD = new System.Windows.Forms.NumericUpDown();
@@ -169,32 +195,6 @@ namespace DayZeEditor
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addNewLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DropTypesLB = new System.Windows.Forms.ListBox();
-            this.darkLabel45 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel46 = new DarkUI.Controls.DarkLabel();
-            this.darkButton7 = new DarkUI.Controls.DarkButton();
-            this.darkButton8 = new DarkUI.Controls.DarkButton();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.DropTypeTitleTB = new System.Windows.Forms.TextBox();
-            this.darkLabel47 = new DarkUI.Controls.DarkLabel();
-            this.DropTypeContainerCB = new System.Windows.Forms.ComboBox();
-            this.darkLabel48 = new DarkUI.Controls.DarkLabel();
-            this.DropTypeLifespanNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel49 = new DarkUI.Controls.DarkLabel();
-            this.DropTypeSpawnOffsetNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel50 = new DarkUI.Controls.DarkLabel();
-            this.DropTypeSpawnMaxNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel51 = new DarkUI.Controls.DarkLabel();
-            this.DropTypeSpawnMinNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel52 = new DarkUI.Controls.DarkLabel();
-            this.DropTypeAddFlareNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel53 = new DarkUI.Controls.DarkLabel();
-            this.DropTypeQuantityNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel54 = new DarkUI.Controls.DarkLabel();
-            this.DropTypeItemsLB = new System.Windows.Forms.ListBox();
-            this.darkLabel55 = new DarkUI.Controls.DarkLabel();
-            this.darkButton9 = new DarkUI.Controls.DarkButton();
-            this.darkButton10 = new DarkUI.Controls.DarkButton();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -241,6 +241,13 @@ namespace DayZeEditor
             this.LocationZombiesGB.SuspendLayout();
             this.LocationTitleGB.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DropTypeLifespanNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DropTypeSpawnOffsetNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DropTypeSpawnMaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DropTypeSpawnMinNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DropTypeAddFlareNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DropTypeQuantityNUD)).BeginInit();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SafeZoneZNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SafeZoneXNUD)).BeginInit();
@@ -250,13 +257,6 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.darkToolStrip23.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DropTypeLifespanNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DropTypeSpawnOffsetNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DropTypeSpawnMaxNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DropTypeSpawnMinNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DropTypeAddFlareNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DropTypeQuantityNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -1736,6 +1736,16 @@ namespace DayZeEditor
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             // 
+            // darkLabel46
+            // 
+            this.darkLabel46.AutoSize = true;
+            this.darkLabel46.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel46.Location = new System.Drawing.Point(9, 12);
+            this.darkLabel46.Name = "darkLabel46";
+            this.darkLabel46.Size = new System.Drawing.Size(79, 13);
+            this.darkLabel46.TabIndex = 247;
+            this.darkLabel46.Text = "Drop Locations";
+            // 
             // LocationZombiesGB
             // 
             this.LocationZombiesGB.Controls.Add(this.darkButton1);
@@ -1836,6 +1846,347 @@ namespace DayZeEditor
             this.tabPage4.Size = new System.Drawing.Size(984, 552);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "tabPage4";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.darkButton9);
+            this.groupBox6.Controls.Add(this.darkButton10);
+            this.groupBox6.Controls.Add(this.darkLabel55);
+            this.groupBox6.Controls.Add(this.DropTypeItemsLB);
+            this.groupBox6.Controls.Add(this.DropTypeLifespanNUD);
+            this.groupBox6.Controls.Add(this.darkLabel49);
+            this.groupBox6.Controls.Add(this.DropTypeSpawnOffsetNUD);
+            this.groupBox6.Controls.Add(this.darkLabel50);
+            this.groupBox6.Controls.Add(this.DropTypeSpawnMaxNUD);
+            this.groupBox6.Controls.Add(this.darkLabel51);
+            this.groupBox6.Controls.Add(this.DropTypeSpawnMinNUD);
+            this.groupBox6.Controls.Add(this.darkLabel52);
+            this.groupBox6.Controls.Add(this.DropTypeAddFlareNUD);
+            this.groupBox6.Controls.Add(this.darkLabel53);
+            this.groupBox6.Controls.Add(this.DropTypeQuantityNUD);
+            this.groupBox6.Controls.Add(this.darkLabel54);
+            this.groupBox6.Controls.Add(this.DropTypeContainerCB);
+            this.groupBox6.Controls.Add(this.darkLabel48);
+            this.groupBox6.Controls.Add(this.darkLabel47);
+            this.groupBox6.Controls.Add(this.DropTypeTitleTB);
+            this.groupBox6.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox6.Location = new System.Drawing.Point(252, 24);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(316, 520);
+            this.groupBox6.TabIndex = 246;
+            this.groupBox6.TabStop = false;
+            // 
+            // darkButton9
+            // 
+            this.darkButton9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton9.Location = new System.Drawing.Point(9, 491);
+            this.darkButton9.Name = "darkButton9";
+            this.darkButton9.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton9.Size = new System.Drawing.Size(110, 23);
+            this.darkButton9.TabIndex = 248;
+            this.darkButton9.Text = "Add";
+            this.darkButton9.Click += new System.EventHandler(this.darkButton9_Click);
+            // 
+            // darkButton10
+            // 
+            this.darkButton10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton10.Location = new System.Drawing.Point(206, 491);
+            this.darkButton10.Name = "darkButton10";
+            this.darkButton10.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton10.Size = new System.Drawing.Size(104, 23);
+            this.darkButton10.TabIndex = 247;
+            this.darkButton10.Text = "Remove";
+            this.darkButton10.Click += new System.EventHandler(this.darkButton10_Click);
+            // 
+            // darkLabel55
+            // 
+            this.darkLabel55.AutoSize = true;
+            this.darkLabel55.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel55.Location = new System.Drawing.Point(8, 234);
+            this.darkLabel55.Name = "darkLabel55";
+            this.darkLabel55.Size = new System.Drawing.Size(32, 13);
+            this.darkLabel55.TabIndex = 253;
+            this.darkLabel55.Text = "Items";
+            // 
+            // DropTypeItemsLB
+            // 
+            this.DropTypeItemsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.DropTypeItemsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.DropTypeItemsLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.DropTypeItemsLB.FormattingEnabled = true;
+            this.DropTypeItemsLB.Location = new System.Drawing.Point(9, 250);
+            this.DropTypeItemsLB.Name = "DropTypeItemsLB";
+            this.DropTypeItemsLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.DropTypeItemsLB.Size = new System.Drawing.Size(301, 238);
+            this.DropTypeItemsLB.TabIndex = 247;
+            this.DropTypeItemsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            // 
+            // DropTypeLifespanNUD
+            // 
+            this.DropTypeLifespanNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.DropTypeLifespanNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.DropTypeLifespanNUD.Location = new System.Drawing.Point(163, 202);
+            this.DropTypeLifespanNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.DropTypeLifespanNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.DropTypeLifespanNUD.Name = "DropTypeLifespanNUD";
+            this.DropTypeLifespanNUD.Size = new System.Drawing.Size(147, 20);
+            this.DropTypeLifespanNUD.TabIndex = 252;
+            this.DropTypeLifespanNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DropTypeLifespanNUD.ValueChanged += new System.EventHandler(this.DropTypeLifespanNUD_ValueChanged);
+            // 
+            // darkLabel49
+            // 
+            this.darkLabel49.AutoSize = true;
+            this.darkLabel49.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel49.Location = new System.Drawing.Point(6, 204);
+            this.darkLabel49.Name = "darkLabel49";
+            this.darkLabel49.Size = new System.Drawing.Size(47, 13);
+            this.darkLabel49.TabIndex = 251;
+            this.darkLabel49.Text = "Lifespan";
+            // 
+            // DropTypeSpawnOffsetNUD
+            // 
+            this.DropTypeSpawnOffsetNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.DropTypeSpawnOffsetNUD.DecimalPlaces = 2;
+            this.DropTypeSpawnOffsetNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.DropTypeSpawnOffsetNUD.Location = new System.Drawing.Point(163, 176);
+            this.DropTypeSpawnOffsetNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.DropTypeSpawnOffsetNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.DropTypeSpawnOffsetNUD.Name = "DropTypeSpawnOffsetNUD";
+            this.DropTypeSpawnOffsetNUD.Size = new System.Drawing.Size(147, 20);
+            this.DropTypeSpawnOffsetNUD.TabIndex = 250;
+            this.DropTypeSpawnOffsetNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DropTypeSpawnOffsetNUD.ValueChanged += new System.EventHandler(this.DropTypeSpawnOffsetNUD_ValueChanged);
+            // 
+            // darkLabel50
+            // 
+            this.darkLabel50.AutoSize = true;
+            this.darkLabel50.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel50.Location = new System.Drawing.Point(6, 178);
+            this.darkLabel50.Name = "darkLabel50";
+            this.darkLabel50.Size = new System.Drawing.Size(68, 13);
+            this.darkLabel50.TabIndex = 249;
+            this.darkLabel50.Text = "SpawnOffset";
+            // 
+            // DropTypeSpawnMaxNUD
+            // 
+            this.DropTypeSpawnMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.DropTypeSpawnMaxNUD.DecimalPlaces = 1;
+            this.DropTypeSpawnMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.DropTypeSpawnMaxNUD.Location = new System.Drawing.Point(163, 150);
+            this.DropTypeSpawnMaxNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.DropTypeSpawnMaxNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.DropTypeSpawnMaxNUD.Name = "DropTypeSpawnMaxNUD";
+            this.DropTypeSpawnMaxNUD.Size = new System.Drawing.Size(147, 20);
+            this.DropTypeSpawnMaxNUD.TabIndex = 248;
+            this.DropTypeSpawnMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DropTypeSpawnMaxNUD.ValueChanged += new System.EventHandler(this.DropTypeSpawnMaxNUD_ValueChanged);
+            // 
+            // darkLabel51
+            // 
+            this.darkLabel51.AutoSize = true;
+            this.darkLabel51.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel51.Location = new System.Drawing.Point(6, 152);
+            this.darkLabel51.Name = "darkLabel51";
+            this.darkLabel51.Size = new System.Drawing.Size(60, 13);
+            this.darkLabel51.TabIndex = 247;
+            this.darkLabel51.Text = "SpawnMax";
+            // 
+            // DropTypeSpawnMinNUD
+            // 
+            this.DropTypeSpawnMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.DropTypeSpawnMinNUD.DecimalPlaces = 1;
+            this.DropTypeSpawnMinNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.DropTypeSpawnMinNUD.Location = new System.Drawing.Point(163, 124);
+            this.DropTypeSpawnMinNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.DropTypeSpawnMinNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
+            this.DropTypeSpawnMinNUD.Name = "DropTypeSpawnMinNUD";
+            this.DropTypeSpawnMinNUD.Size = new System.Drawing.Size(147, 20);
+            this.DropTypeSpawnMinNUD.TabIndex = 246;
+            this.DropTypeSpawnMinNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DropTypeSpawnMinNUD.ValueChanged += new System.EventHandler(this.DropTypeSpawnMinNUD_ValueChanged);
+            // 
+            // darkLabel52
+            // 
+            this.darkLabel52.AutoSize = true;
+            this.darkLabel52.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel52.Location = new System.Drawing.Point(6, 126);
+            this.darkLabel52.Name = "darkLabel52";
+            this.darkLabel52.Size = new System.Drawing.Size(57, 13);
+            this.darkLabel52.TabIndex = 245;
+            this.darkLabel52.Text = "SpawnMin";
+            // 
+            // DropTypeAddFlareNUD
+            // 
+            this.DropTypeAddFlareNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.DropTypeAddFlareNUD.DecimalPlaces = 1;
+            this.DropTypeAddFlareNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.DropTypeAddFlareNUD.Location = new System.Drawing.Point(163, 98);
+            this.DropTypeAddFlareNUD.Name = "DropTypeAddFlareNUD";
+            this.DropTypeAddFlareNUD.Size = new System.Drawing.Size(147, 20);
+            this.DropTypeAddFlareNUD.TabIndex = 244;
+            this.DropTypeAddFlareNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DropTypeAddFlareNUD.ValueChanged += new System.EventHandler(this.DropTypeAddFlareNUD_ValueChanged);
+            // 
+            // darkLabel53
+            // 
+            this.darkLabel53.AutoSize = true;
+            this.darkLabel53.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel53.Location = new System.Drawing.Point(6, 100);
+            this.darkLabel53.Name = "darkLabel53";
+            this.darkLabel53.Size = new System.Drawing.Size(49, 13);
+            this.darkLabel53.TabIndex = 243;
+            this.darkLabel53.Text = "AddFlare";
+            // 
+            // DropTypeQuantityNUD
+            // 
+            this.DropTypeQuantityNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.DropTypeQuantityNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.DropTypeQuantityNUD.Location = new System.Drawing.Point(163, 72);
+            this.DropTypeQuantityNUD.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.DropTypeQuantityNUD.Name = "DropTypeQuantityNUD";
+            this.DropTypeQuantityNUD.Size = new System.Drawing.Size(147, 20);
+            this.DropTypeQuantityNUD.TabIndex = 242;
+            this.DropTypeQuantityNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DropTypeQuantityNUD.ValueChanged += new System.EventHandler(this.DropTypeQuantityNUD_ValueChanged);
+            // 
+            // darkLabel54
+            // 
+            this.darkLabel54.AutoSize = true;
+            this.darkLabel54.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel54.Location = new System.Drawing.Point(6, 74);
+            this.darkLabel54.Name = "darkLabel54";
+            this.darkLabel54.Size = new System.Drawing.Size(46, 13);
+            this.darkLabel54.TabIndex = 241;
+            this.darkLabel54.Text = "Quantity";
+            // 
+            // DropTypeContainerCB
+            // 
+            this.DropTypeContainerCB.FormattingEnabled = true;
+            this.DropTypeContainerCB.Items.AddRange(new object[] {
+            "AirdropContainer",
+            "AirdropContainer_Blue",
+            "AirdropContainer_Medical",
+            "AirdropContainer_Military",
+            "AirdropContainer_Yellow",
+            "RANDOM"});
+            this.DropTypeContainerCB.Location = new System.Drawing.Point(71, 45);
+            this.DropTypeContainerCB.Name = "DropTypeContainerCB";
+            this.DropTypeContainerCB.Size = new System.Drawing.Size(239, 21);
+            this.DropTypeContainerCB.TabIndex = 240;
+            this.DropTypeContainerCB.SelectedIndexChanged += new System.EventHandler(this.DropTypeContainerCB_SelectedIndexChanged);
+            // 
+            // darkLabel48
+            // 
+            this.darkLabel48.AutoSize = true;
+            this.darkLabel48.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel48.Location = new System.Drawing.Point(6, 48);
+            this.darkLabel48.Name = "darkLabel48";
+            this.darkLabel48.Size = new System.Drawing.Size(34, 13);
+            this.darkLabel48.TabIndex = 239;
+            this.darkLabel48.Text = "Mode";
+            // 
+            // darkLabel47
+            // 
+            this.darkLabel47.AutoSize = true;
+            this.darkLabel47.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel47.Location = new System.Drawing.Point(6, 22);
+            this.darkLabel47.Name = "darkLabel47";
+            this.darkLabel47.Size = new System.Drawing.Size(27, 13);
+            this.darkLabel47.TabIndex = 238;
+            this.darkLabel47.Text = "Title";
+            // 
+            // DropTypeTitleTB
+            // 
+            this.DropTypeTitleTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.DropTypeTitleTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.DropTypeTitleTB.Location = new System.Drawing.Point(71, 19);
+            this.DropTypeTitleTB.Name = "DropTypeTitleTB";
+            this.DropTypeTitleTB.Size = new System.Drawing.Size(239, 20);
+            this.DropTypeTitleTB.TabIndex = 132;
+            this.DropTypeTitleTB.TextChanged += new System.EventHandler(this.DropTypeTitleTB_TextChanged);
+            // 
+            // darkButton7
+            // 
+            this.darkButton7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton7.Location = new System.Drawing.Point(7, 519);
+            this.darkButton7.Name = "darkButton7";
+            this.darkButton7.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton7.Size = new System.Drawing.Size(110, 23);
+            this.darkButton7.TabIndex = 239;
+            this.darkButton7.Text = "Add";
+            this.darkButton7.Click += new System.EventHandler(this.darkButton7_Click);
+            // 
+            // darkButton8
+            // 
+            this.darkButton8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton8.Location = new System.Drawing.Point(142, 519);
+            this.darkButton8.Name = "darkButton8";
+            this.darkButton8.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton8.Size = new System.Drawing.Size(104, 23);
+            this.darkButton8.TabIndex = 238;
+            this.darkButton8.Text = "Remove";
+            this.darkButton8.Click += new System.EventHandler(this.darkButton8_Click);
+            // 
+            // darkLabel45
+            // 
+            this.darkLabel45.AutoSize = true;
+            this.darkLabel45.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel45.Location = new System.Drawing.Point(8, 12);
+            this.darkLabel45.Name = "darkLabel45";
+            this.darkLabel45.Size = new System.Drawing.Size(62, 13);
+            this.darkLabel45.TabIndex = 237;
+            this.darkLabel45.Text = "Drop Types";
+            // 
+            // DropTypesLB
+            // 
+            this.DropTypesLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.DropTypesLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.DropTypesLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.DropTypesLB.FormattingEnabled = true;
+            this.DropTypesLB.Location = new System.Drawing.Point(7, 28);
+            this.DropTypesLB.Name = "DropTypesLB";
+            this.DropTypesLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.DropTypesLB.Size = new System.Drawing.Size(239, 485);
+            this.DropTypesLB.TabIndex = 236;
+            this.DropTypesLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.DropTypesLB.SelectedIndexChanged += new System.EventHandler(this.DropTypesLB_SelectedIndexChanged);
             // 
             // tabPage5
             // 
@@ -2214,357 +2565,6 @@ namespace DayZeEditor
             this.removeLocationToolStripMenuItem.Text = "Remove Location";
             this.removeLocationToolStripMenuItem.Click += new System.EventHandler(this.removeLocationToolStripMenuItem_Click);
             // 
-            // DropTypesLB
-            // 
-            this.DropTypesLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.DropTypesLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.DropTypesLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.DropTypesLB.FormattingEnabled = true;
-            this.DropTypesLB.Location = new System.Drawing.Point(7, 28);
-            this.DropTypesLB.Name = "DropTypesLB";
-            this.DropTypesLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.DropTypesLB.Size = new System.Drawing.Size(239, 485);
-            this.DropTypesLB.TabIndex = 236;
-            this.DropTypesLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.DropTypesLB.SelectedIndexChanged += new System.EventHandler(this.DropTypesLB_SelectedIndexChanged);
-            // 
-            // darkLabel45
-            // 
-            this.darkLabel45.AutoSize = true;
-            this.darkLabel45.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel45.Location = new System.Drawing.Point(8, 12);
-            this.darkLabel45.Name = "darkLabel45";
-            this.darkLabel45.Size = new System.Drawing.Size(62, 13);
-            this.darkLabel45.TabIndex = 237;
-            this.darkLabel45.Text = "Drop Types";
-            // 
-            // darkLabel46
-            // 
-            this.darkLabel46.AutoSize = true;
-            this.darkLabel46.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel46.Location = new System.Drawing.Point(9, 12);
-            this.darkLabel46.Name = "darkLabel46";
-            this.darkLabel46.Size = new System.Drawing.Size(79, 13);
-            this.darkLabel46.TabIndex = 247;
-            this.darkLabel46.Text = "Drop Locations";
-            // 
-            // darkButton7
-            // 
-            this.darkButton7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton7.Location = new System.Drawing.Point(7, 519);
-            this.darkButton7.Name = "darkButton7";
-            this.darkButton7.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton7.Size = new System.Drawing.Size(110, 23);
-            this.darkButton7.TabIndex = 239;
-            this.darkButton7.Text = "Add";
-            this.darkButton7.Click += new System.EventHandler(this.darkButton7_Click);
-            // 
-            // darkButton8
-            // 
-            this.darkButton8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton8.Location = new System.Drawing.Point(142, 519);
-            this.darkButton8.Name = "darkButton8";
-            this.darkButton8.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton8.Size = new System.Drawing.Size(104, 23);
-            this.darkButton8.TabIndex = 238;
-            this.darkButton8.Text = "Remove";
-            this.darkButton8.Click += new System.EventHandler(this.darkButton8_Click);
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.darkButton9);
-            this.groupBox6.Controls.Add(this.darkButton10);
-            this.groupBox6.Controls.Add(this.darkLabel55);
-            this.groupBox6.Controls.Add(this.DropTypeItemsLB);
-            this.groupBox6.Controls.Add(this.DropTypeLifespanNUD);
-            this.groupBox6.Controls.Add(this.darkLabel49);
-            this.groupBox6.Controls.Add(this.DropTypeSpawnOffsetNUD);
-            this.groupBox6.Controls.Add(this.darkLabel50);
-            this.groupBox6.Controls.Add(this.DropTypeSpawnMaxNUD);
-            this.groupBox6.Controls.Add(this.darkLabel51);
-            this.groupBox6.Controls.Add(this.DropTypeSpawnMinNUD);
-            this.groupBox6.Controls.Add(this.darkLabel52);
-            this.groupBox6.Controls.Add(this.DropTypeAddFlareNUD);
-            this.groupBox6.Controls.Add(this.darkLabel53);
-            this.groupBox6.Controls.Add(this.DropTypeQuantityNUD);
-            this.groupBox6.Controls.Add(this.darkLabel54);
-            this.groupBox6.Controls.Add(this.DropTypeContainerCB);
-            this.groupBox6.Controls.Add(this.darkLabel48);
-            this.groupBox6.Controls.Add(this.darkLabel47);
-            this.groupBox6.Controls.Add(this.DropTypeTitleTB);
-            this.groupBox6.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox6.Location = new System.Drawing.Point(252, 24);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(316, 520);
-            this.groupBox6.TabIndex = 246;
-            this.groupBox6.TabStop = false;
-            // 
-            // DropTypeTitleTB
-            // 
-            this.DropTypeTitleTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.DropTypeTitleTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.DropTypeTitleTB.Location = new System.Drawing.Point(71, 19);
-            this.DropTypeTitleTB.Name = "DropTypeTitleTB";
-            this.DropTypeTitleTB.Size = new System.Drawing.Size(239, 20);
-            this.DropTypeTitleTB.TabIndex = 132;
-            this.DropTypeTitleTB.TextChanged += new System.EventHandler(this.DropTypeTitleTB_TextChanged);
-            // 
-            // darkLabel47
-            // 
-            this.darkLabel47.AutoSize = true;
-            this.darkLabel47.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel47.Location = new System.Drawing.Point(6, 22);
-            this.darkLabel47.Name = "darkLabel47";
-            this.darkLabel47.Size = new System.Drawing.Size(27, 13);
-            this.darkLabel47.TabIndex = 238;
-            this.darkLabel47.Text = "Title";
-            // 
-            // DropTypeContainerCB
-            // 
-            this.DropTypeContainerCB.FormattingEnabled = true;
-            this.DropTypeContainerCB.Items.AddRange(new object[] {
-            "AirdropContainer",
-            "AirdropContainer_Blue",
-            "AirdropContainer_Medical",
-            "AirdropContainer_Military",
-            "AirdropContainer_Yellow",
-            "RANDOM"});
-            this.DropTypeContainerCB.Location = new System.Drawing.Point(71, 45);
-            this.DropTypeContainerCB.Name = "DropTypeContainerCB";
-            this.DropTypeContainerCB.Size = new System.Drawing.Size(239, 21);
-            this.DropTypeContainerCB.TabIndex = 240;
-            this.DropTypeContainerCB.SelectedIndexChanged += new System.EventHandler(this.DropTypeContainerCB_SelectedIndexChanged);
-            // 
-            // darkLabel48
-            // 
-            this.darkLabel48.AutoSize = true;
-            this.darkLabel48.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel48.Location = new System.Drawing.Point(6, 48);
-            this.darkLabel48.Name = "darkLabel48";
-            this.darkLabel48.Size = new System.Drawing.Size(34, 13);
-            this.darkLabel48.TabIndex = 239;
-            this.darkLabel48.Text = "Mode";
-            // 
-            // DropTypeLifespanNUD
-            // 
-            this.DropTypeLifespanNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.DropTypeLifespanNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.DropTypeLifespanNUD.Location = new System.Drawing.Point(163, 202);
-            this.DropTypeLifespanNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.DropTypeLifespanNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.DropTypeLifespanNUD.Name = "DropTypeLifespanNUD";
-            this.DropTypeLifespanNUD.Size = new System.Drawing.Size(147, 20);
-            this.DropTypeLifespanNUD.TabIndex = 252;
-            this.DropTypeLifespanNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.DropTypeLifespanNUD.ValueChanged += new System.EventHandler(this.DropTypeLifespanNUD_ValueChanged);
-            // 
-            // darkLabel49
-            // 
-            this.darkLabel49.AutoSize = true;
-            this.darkLabel49.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel49.Location = new System.Drawing.Point(6, 204);
-            this.darkLabel49.Name = "darkLabel49";
-            this.darkLabel49.Size = new System.Drawing.Size(47, 13);
-            this.darkLabel49.TabIndex = 251;
-            this.darkLabel49.Text = "Lifespan";
-            // 
-            // DropTypeSpawnOffsetNUD
-            // 
-            this.DropTypeSpawnOffsetNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.DropTypeSpawnOffsetNUD.DecimalPlaces = 2;
-            this.DropTypeSpawnOffsetNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.DropTypeSpawnOffsetNUD.Location = new System.Drawing.Point(163, 176);
-            this.DropTypeSpawnOffsetNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.DropTypeSpawnOffsetNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.DropTypeSpawnOffsetNUD.Name = "DropTypeSpawnOffsetNUD";
-            this.DropTypeSpawnOffsetNUD.Size = new System.Drawing.Size(147, 20);
-            this.DropTypeSpawnOffsetNUD.TabIndex = 250;
-            this.DropTypeSpawnOffsetNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.DropTypeSpawnOffsetNUD.ValueChanged += new System.EventHandler(this.DropTypeSpawnOffsetNUD_ValueChanged);
-            // 
-            // darkLabel50
-            // 
-            this.darkLabel50.AutoSize = true;
-            this.darkLabel50.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel50.Location = new System.Drawing.Point(6, 178);
-            this.darkLabel50.Name = "darkLabel50";
-            this.darkLabel50.Size = new System.Drawing.Size(68, 13);
-            this.darkLabel50.TabIndex = 249;
-            this.darkLabel50.Text = "SpawnOffset";
-            // 
-            // DropTypeSpawnMaxNUD
-            // 
-            this.DropTypeSpawnMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.DropTypeSpawnMaxNUD.DecimalPlaces = 1;
-            this.DropTypeSpawnMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.DropTypeSpawnMaxNUD.Location = new System.Drawing.Point(163, 150);
-            this.DropTypeSpawnMaxNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.DropTypeSpawnMaxNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.DropTypeSpawnMaxNUD.Name = "DropTypeSpawnMaxNUD";
-            this.DropTypeSpawnMaxNUD.Size = new System.Drawing.Size(147, 20);
-            this.DropTypeSpawnMaxNUD.TabIndex = 248;
-            this.DropTypeSpawnMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.DropTypeSpawnMaxNUD.ValueChanged += new System.EventHandler(this.DropTypeSpawnMaxNUD_ValueChanged);
-            // 
-            // darkLabel51
-            // 
-            this.darkLabel51.AutoSize = true;
-            this.darkLabel51.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel51.Location = new System.Drawing.Point(6, 152);
-            this.darkLabel51.Name = "darkLabel51";
-            this.darkLabel51.Size = new System.Drawing.Size(60, 13);
-            this.darkLabel51.TabIndex = 247;
-            this.darkLabel51.Text = "SpawnMax";
-            // 
-            // DropTypeSpawnMinNUD
-            // 
-            this.DropTypeSpawnMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.DropTypeSpawnMinNUD.DecimalPlaces = 1;
-            this.DropTypeSpawnMinNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.DropTypeSpawnMinNUD.Location = new System.Drawing.Point(163, 124);
-            this.DropTypeSpawnMinNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.DropTypeSpawnMinNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.DropTypeSpawnMinNUD.Name = "DropTypeSpawnMinNUD";
-            this.DropTypeSpawnMinNUD.Size = new System.Drawing.Size(147, 20);
-            this.DropTypeSpawnMinNUD.TabIndex = 246;
-            this.DropTypeSpawnMinNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.DropTypeSpawnMinNUD.ValueChanged += new System.EventHandler(this.DropTypeSpawnMinNUD_ValueChanged);
-            // 
-            // darkLabel52
-            // 
-            this.darkLabel52.AutoSize = true;
-            this.darkLabel52.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel52.Location = new System.Drawing.Point(6, 126);
-            this.darkLabel52.Name = "darkLabel52";
-            this.darkLabel52.Size = new System.Drawing.Size(57, 13);
-            this.darkLabel52.TabIndex = 245;
-            this.darkLabel52.Text = "SpawnMin";
-            // 
-            // DropTypeAddFlareNUD
-            // 
-            this.DropTypeAddFlareNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.DropTypeAddFlareNUD.DecimalPlaces = 1;
-            this.DropTypeAddFlareNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.DropTypeAddFlareNUD.Location = new System.Drawing.Point(163, 98);
-            this.DropTypeAddFlareNUD.Name = "DropTypeAddFlareNUD";
-            this.DropTypeAddFlareNUD.Size = new System.Drawing.Size(147, 20);
-            this.DropTypeAddFlareNUD.TabIndex = 244;
-            this.DropTypeAddFlareNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.DropTypeAddFlareNUD.ValueChanged += new System.EventHandler(this.DropTypeAddFlareNUD_ValueChanged);
-            // 
-            // darkLabel53
-            // 
-            this.darkLabel53.AutoSize = true;
-            this.darkLabel53.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel53.Location = new System.Drawing.Point(6, 100);
-            this.darkLabel53.Name = "darkLabel53";
-            this.darkLabel53.Size = new System.Drawing.Size(49, 13);
-            this.darkLabel53.TabIndex = 243;
-            this.darkLabel53.Text = "AddFlare";
-            // 
-            // DropTypeQuantityNUD
-            // 
-            this.DropTypeQuantityNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.DropTypeQuantityNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.DropTypeQuantityNUD.Location = new System.Drawing.Point(163, 72);
-            this.DropTypeQuantityNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.DropTypeQuantityNUD.Name = "DropTypeQuantityNUD";
-            this.DropTypeQuantityNUD.Size = new System.Drawing.Size(147, 20);
-            this.DropTypeQuantityNUD.TabIndex = 242;
-            this.DropTypeQuantityNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.DropTypeQuantityNUD.ValueChanged += new System.EventHandler(this.DropTypeQuantityNUD_ValueChanged);
-            // 
-            // darkLabel54
-            // 
-            this.darkLabel54.AutoSize = true;
-            this.darkLabel54.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel54.Location = new System.Drawing.Point(6, 74);
-            this.darkLabel54.Name = "darkLabel54";
-            this.darkLabel54.Size = new System.Drawing.Size(46, 13);
-            this.darkLabel54.TabIndex = 241;
-            this.darkLabel54.Text = "Quantity";
-            // 
-            // DropTypeItemsLB
-            // 
-            this.DropTypeItemsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.DropTypeItemsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.DropTypeItemsLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.DropTypeItemsLB.FormattingEnabled = true;
-            this.DropTypeItemsLB.Location = new System.Drawing.Point(9, 250);
-            this.DropTypeItemsLB.Name = "DropTypeItemsLB";
-            this.DropTypeItemsLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.DropTypeItemsLB.Size = new System.Drawing.Size(301, 238);
-            this.DropTypeItemsLB.TabIndex = 247;
-            this.DropTypeItemsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            // 
-            // darkLabel55
-            // 
-            this.darkLabel55.AutoSize = true;
-            this.darkLabel55.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel55.Location = new System.Drawing.Point(8, 234);
-            this.darkLabel55.Name = "darkLabel55";
-            this.darkLabel55.Size = new System.Drawing.Size(32, 13);
-            this.darkLabel55.TabIndex = 253;
-            this.darkLabel55.Text = "Items";
-            // 
-            // darkButton9
-            // 
-            this.darkButton9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton9.Location = new System.Drawing.Point(9, 491);
-            this.darkButton9.Name = "darkButton9";
-            this.darkButton9.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton9.Size = new System.Drawing.Size(110, 23);
-            this.darkButton9.TabIndex = 248;
-            this.darkButton9.Text = "Add";
-            this.darkButton9.Click += new System.EventHandler(this.darkButton9_Click);
-            // 
-            // darkButton10
-            // 
-            this.darkButton10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton10.Location = new System.Drawing.Point(206, 491);
-            this.darkButton10.Name = "darkButton10";
-            this.darkButton10.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton10.Size = new System.Drawing.Size(104, 23);
-            this.darkButton10.TabIndex = 247;
-            this.darkButton10.Text = "Remove";
-            this.darkButton10.Click += new System.EventHandler(this.darkButton10_Click);
-            // 
             // AirdropUpgradedManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2634,6 +2634,14 @@ namespace DayZeEditor
             this.LocationTitleGB.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DropTypeLifespanNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DropTypeSpawnOffsetNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DropTypeSpawnMaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DropTypeSpawnMinNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DropTypeAddFlareNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DropTypeQuantityNUD)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SafeZoneZNUD)).EndInit();
@@ -2645,14 +2653,6 @@ namespace DayZeEditor
             this.darkToolStrip23.ResumeLayout(false);
             this.darkToolStrip23.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DropTypeLifespanNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DropTypeSpawnOffsetNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DropTypeSpawnMaxNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DropTypeSpawnMinNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DropTypeAddFlareNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DropTypeQuantityNUD)).EndInit();
             this.ResumeLayout(false);
 
         }

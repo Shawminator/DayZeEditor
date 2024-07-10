@@ -109,6 +109,15 @@ namespace DayZeEditor
         public MapData MapData;
 
         #region GeneralsettingFunctions
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
+                return cp;
+            }
+        }
         private void listBox_DrawItem(object sender, DrawItemEventArgs e)
         {
             if (e.Index < 0) return;
@@ -219,7 +228,11 @@ namespace DayZeEditor
         {
             ExpansionSettingsTabPage.SelectedIndex = 8;
             if (ExpansionSettingsTabPage.SelectedIndex == 8)
+            {
                 MissionsTabButton.Checked = true;
+                toolStripButton6.AutoSize = true;
+                toolStripButton9.AutoSize = true;
+            }
         }
         private void NotificationschedularTabButton_Click(object sender, EventArgs e)
         {
@@ -1834,20 +1847,37 @@ namespace DayZeEditor
                 case 0:
                 case 1:
                 case 3:
-                case 6:
-                case 7:
-                case 8:
-                case 10:
-                case 11:
-                case 13:
-                    Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\expansionMod\\Settings");
-                    break;
-                case 2:
                 case 4:
                 case 5:
                 case 9:
+                case 11:
+                case 14:
+                    Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\expansionMod\\Settings");
+                    break;
+                case 2:
+                case 6:
+                case 7:
                 case 12:
+                case 13:
                     Process.Start(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings");
+                    break;
+                case 8:
+                    Process.Start(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\missions");
+                    break;
+                case 10:
+                    switch (tabControl2.SelectedIndex)
+                    {
+                        case 0:
+                            Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\expansionMod\\Settings");
+                            break;
+                        case 1:
+                            Process.Start(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\settings");
+                            break;
+                        case 2:
+                            Process.Start(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\expansion\\personalstorage");
+                            break;
+
+                    }
                     break;
             }
         }
@@ -6131,25 +6161,16 @@ namespace DayZeEditor
             switch (rb.Tag.ToString())
             {
                 case "Circle":
-                    if (currentcircleZone != null)
-                    {
-                        CurrentSafeZoneType = "Circle";
-                        tabControl5.SelectedIndex = 0;
-                    }
+                    CurrentSafeZoneType = "Circle";
+                     tabControl5.SelectedIndex = 0;
                     break;
                 case "Polygon":
-                    if (currentpolygonZones != null)
-                    {
-                        CurrentSafeZoneType = "Polygon";
-                        tabControl5.SelectedIndex = 1;
-                    }
+                    CurrentSafeZoneType = "Polygon";
+                    tabControl5.SelectedIndex = 1;
                     break;
                 case "Cylinder":
-                    if (currentpolygonZones != null)
-                    {
-                        CurrentSafeZoneType = "Cylinder";
-                        tabControl5.SelectedIndex = 2;
-                    }
+                    CurrentSafeZoneType = "Cylinder";
+                    tabControl5.SelectedIndex = 2;
                     break;
                 default:
                     break;

@@ -52,7 +52,15 @@ namespace DayZeEditor
             isUserInteraction = false;
             EconomyTabPage.ItemSize = new Size(0, 1);
             isUserInteraction = true;
-
+        }
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
+                return cp;
+            }
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -2864,6 +2872,9 @@ namespace DayZeEditor
             if (eventposdefEvent == null) return;
             eventposdefEventPos currentpos = EventSpawnTV.SelectedNode.Tag as eventposdefEventPos;
             if (currentpos == null) return;
+            e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+
             foreach (eventposdefEventPos newpos in eventposdefEvent.pos)
             {
                 float scalevalue = ZoneEventScale * 0.05f;
@@ -2946,7 +2957,7 @@ namespace DayZeEditor
                 if (_newscrollPosition.Y <= 0)
                     _newscrollPosition.Y = 0;
                 panel1.AutoScrollPosition = _newscrollPosition;
-                pictureBox1.Invalidate();
+               
             }
             decimal scalevalue = ZoneEventScale * (decimal)0.05;
             decimal mapsize = currentproject.MapSize;
@@ -2954,6 +2965,7 @@ namespace DayZeEditor
             decimal x = Decimal.Round((decimal)(e.X / scalevalue), 4);
             decimal y = Decimal.Round((decimal)((newsize - e.Y) / scalevalue), 4);
             label157.Text = x + "," + y;
+            pictureBox1.Invalidate();
         }
         private void pictureBox1_MouseWheel(object sender, MouseEventArgs e)
         {

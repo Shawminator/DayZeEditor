@@ -11,7 +11,7 @@ namespace DayZeLib
 {
     public class MPG_SPWNR_ModConfig
     {
-        const int CurrentVersion = 1;
+        const int CurrentVersion = 3;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -298,12 +298,12 @@ namespace DayZeLib
         public BindingList<int> triggersToEnableOnLeave { get; set; }
         public string triggerPosition { get; set; }
         public string triggerDebugColor { get; set; }
-        public decimal triggerRadius { get; set; }
-        public decimal triggerHeight { get; set; }
-        public decimal triggerWidthX { get; set; }
-        public decimal triggerWidthY { get; set; }
-        public int triggerFirstDelay { get; set; }
-        public decimal triggerCooldown { get; set; }
+        public string triggerRadius { get; set; }
+        public string triggerHeight { get; set; }
+        public string triggerWidthX { get; set; }
+        public string triggerWidthY { get; set; }
+        public string triggerFirstDelay { get; set; }
+        public string triggerCooldown { get; set; }
         public decimal triggerSafeDistance { get; set; }
         public int triggerEnterDelay { get; set; }
         public int triggerCleanupOnLeave { get; set; }

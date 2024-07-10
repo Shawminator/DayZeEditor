@@ -62,6 +62,15 @@ namespace DayZeEditor
         private Point _newscrollPosition;
 
         #region Form Load and populate plus other general Functions
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
+                return cp;
+            }
+        }
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 0;

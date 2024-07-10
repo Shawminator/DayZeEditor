@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace DayZeEditor
@@ -20,6 +21,14 @@ namespace DayZeEditor
                 }
             }
 
+        }
+    }
+    public static class ControlExtensions
+    {
+        public static void SetDoubleBuffered(this Control control, bool enable)
+        {
+            var doubleBufferPropertyInfo = control.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
+            doubleBufferPropertyInfo.SetValue(control, enable, null);
         }
     }
     public static class Form_Controls

@@ -27,8 +27,18 @@ namespace DayZeEditor
         public MPG_Spawner_PointsConfig currentSpawnerPointsFile { get; set; }
         public MPG_Spawner_PointConfig currentSpawnerPoint { get; set; }
 
+        public Random random = new Random();
         public Vec3PandR currentspawnPosition { get; set; }
         public bool useraction = false;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
+                return cp;
+            }
+        }
         public void listBox_DrawItem(object sender, DrawItemEventArgs e)
         {
             if (e.Index < 0) return;
@@ -330,12 +340,12 @@ namespace DayZeEditor
 
             PointConfigtriggerDependenciesAnyOfCB.Checked = currentSpawnerPoint.triggerDependenciesAnyOf == 1 ? true : false;
             PointConfigtriggerDebugColorCB.SelectedIndex = PointConfigtriggerDebugColorCB.FindStringExact(currentSpawnerPoint.triggerDebugColor);
-            PointConfigtriggerradiusNUD.Value = (decimal)currentSpawnerPoint.triggerRadius;
-            PointConfigtriggerHeightNUD.Value = (decimal)currentSpawnerPoint.triggerHeight;
-            PointConfigtriggerWidthXNUD.Value = (decimal)currentSpawnerPoint.triggerWidthX;
-            PointConfigtriggerWidthYNUD.Value = (decimal)currentSpawnerPoint.triggerWidthY;
-            PointConfigtriggerFirstDelayNUD.Value = (decimal)currentSpawnerPoint.triggerFirstDelay;
-            PointConfigtriggerCooldownNUD.Value = (decimal)currentSpawnerPoint.triggerCooldown;
+            PointConfigtriggerradiusTB.Text = currentSpawnerPoint.triggerRadius;
+            PointConfigtriggerHeightTB.Text = currentSpawnerPoint.triggerHeight;
+            PointConfigtriggerWidthXTB.Text = currentSpawnerPoint.triggerWidthX;
+            PointConfigtriggerWidthYTB.Text = currentSpawnerPoint.triggerWidthY;
+            PointConfigtriggerFirstDelayTB.Text = currentSpawnerPoint.triggerFirstDelay;
+            PointConfigtriggerCooldownTB.Text = currentSpawnerPoint.triggerCooldown;
             PointConfigtriggerSafeDistanceNUD.Value = (decimal)currentSpawnerPoint.triggerSafeDistance;
             PointConfigtriggerEnterDelayNUD.Value = (decimal)currentSpawnerPoint.triggerEnterDelay;
             PointConfigtriggerCleanupDelayNUD.Value = (decimal)currentSpawnerPoint.triggerCleanupDelay;
@@ -409,10 +419,10 @@ namespace DayZeEditor
                     notificationTime = 8,
                     notificationIcon = "set:dayz_gui image:iconSkull",
                     triggerDebugColor = "blue",
-                    triggerRadius = 20,
-                    triggerHeight = 0,
-                    triggerFirstDelay = 0,
-                    triggerCooldown = 15,
+                    triggerRadius = "20",
+                    triggerHeight = "0",
+                    triggerFirstDelay = "0",
+                    triggerCooldown = "15",
                     triggerSafeDistance = 25,
                     triggerEnterDelay = 0,
                     triggerWorkingTime = "0-24",
@@ -698,41 +708,40 @@ namespace DayZeEditor
             currentSpawnerPoint.triggerDebugColor = PointConfigtriggerDebugColorCB.GetItemText(PointConfigtriggerDebugColorCB.SelectedItem);
             currentSpawnerPointsFile.isDirty = true;
         }
-        private void PointConfigtriggerradiusNUD_ValueChanged(object sender, EventArgs e)
+        private void PointConfigtriggerradiusTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentSpawnerPoint.triggerRadius = PointConfigtriggerradiusNUD.Value;
-            currentSpawnerPointsFile.isDirty = true;
-            pictureBox1.Invalidate();
-        }
-        private void PointConfigtriggerHeightNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            currentSpawnerPoint.triggerHeight = PointConfigtriggerHeightNUD.Value;
+            currentSpawnerPoint.triggerRadius = PointConfigtriggerradiusTB.Text;
             currentSpawnerPointsFile.isDirty = true;
         }
-        private void PointConfigtriggerWidthXNUD_ValueChanged(object sender, EventArgs e)
+        private void PointConfigtriggerHeightTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentSpawnerPoint.triggerWidthX = PointConfigtriggerWidthXNUD.Value;
+            currentSpawnerPoint.triggerHeight = PointConfigtriggerHeightTB.Text;
             currentSpawnerPointsFile.isDirty = true;
         }
-        private void PointConfigtriggerWidthYNUD_ValueChanged(object sender, EventArgs e)
+        private void PointConfigtriggerWidthXTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentSpawnerPoint.triggerWidthY = PointConfigtriggerWidthYNUD.Value;
+            currentSpawnerPoint.triggerWidthX = PointConfigtriggerWidthXTB.Text;
             currentSpawnerPointsFile.isDirty = true;
         }
-        private void PointConfigtriggerFirstDelayNUD_ValueChanged(object sender, EventArgs e)
+        private void PointConfigtriggerWidthYTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentSpawnerPoint.triggerFirstDelay = (int)PointConfigtriggerFirstDelayNUD.Value;
+            currentSpawnerPoint.triggerWidthY = PointConfigtriggerWidthYTB.Text;
             currentSpawnerPointsFile.isDirty = true;
         }
-        private void PointConfigtriggerCooldownNUD_ValueChanged(object sender, EventArgs e)
+        private void PointConfigtriggerFirstDelayTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            currentSpawnerPoint.triggerCooldown = PointConfigtriggerCooldownNUD.Value;
+            currentSpawnerPoint.triggerFirstDelay = PointConfigtriggerFirstDelayTB.Text;
+            currentSpawnerPointsFile.isDirty = true;
+        }
+        private void PointConfigtriggerCooldownTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentSpawnerPoint.triggerCooldown = PointConfigtriggerCooldownTB.Text;
             currentSpawnerPointsFile.isDirty = true;
         }
         private void PointConfigtriggerSafeDistanceNUD_ValueChanged(object sender, EventArgs e)
@@ -836,6 +845,7 @@ namespace DayZeEditor
         {
             int index = PointConfigSpawnPositionsLB.SelectedIndex;
             currentSpawnerPoint._spawnPositions.Remove(currentspawnPosition);
+            currentSpawnerPointsFile.isDirty = true;
             PointConfigSpawnPositionsLB.Invalidate();
             PointConfigSpawnPositionsLB.SelectedIndex = -1;
             if (currentSpawnerPoint._spawnPositions.Count > 0)
@@ -984,6 +994,20 @@ namespace DayZeEditor
         private Point _mouseLastPosition;
         private Point _newscrollPosition;
 
+        private float GetRandomfloat(string value)
+        {
+            float returnfloat;
+            if (value.Contains("-"))
+            {
+                string[] rFlo = value.Split('-');
+                returnfloat = (float)(random.NextDouble() * (Convert.ToSingle(rFlo[1]) - Convert.ToSingle(rFlo[0])) + Convert.ToSingle(rFlo[0]));
+            }
+            else
+            {
+                returnfloat = Convert.ToSingle(value);
+            }
+            return returnfloat;
+        }
         private void trackBar1_MouseUp(object sender, MouseEventArgs e)
         {
             MPGSpawnerScale = trackBar1.Value;
@@ -1007,7 +1031,7 @@ namespace DayZeEditor
                         float scalevalue = MPGSpawnerScale * 0.05f;
                         int centerX = (int)(Math.Round(spc._triggerPosition.Position.X) * scalevalue);
                         int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(spc._triggerPosition.Position.Z, 0) * scalevalue);
-                        int eventradius = (int)((float)spc.triggerRadius * scalevalue);
+                        int eventradius = (int)(GetRandomfloat(spc.triggerRadius) * scalevalue);
                         Point center = new Point(centerX, centerY);
                         Pen pen = new Pen(Color.Red, 4);
                         if (spc == currentSpawnerPoint)
@@ -1031,7 +1055,7 @@ namespace DayZeEditor
                     float scalevalue = MPGSpawnerScale * 0.05f;
                     int centerX = (int)(Math.Round(currentSpawnerPoint._triggerPosition.Position.X) * scalevalue);
                     int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(currentSpawnerPoint._triggerPosition.Position.Z, 0) * scalevalue);
-                    int eventradius = (int)((float)currentSpawnerPoint.triggerRadius * scalevalue);
+                    int eventradius = (int)(GetRandomfloat(currentSpawnerPoint.triggerRadius) * scalevalue);
                     Point center = new Point(centerX, centerY);
                     Pen pen = new Pen(Color.Green, 4);
                     getCircleDynamicAI(e.Graphics, pen, center, eventradius, "\n" + currentSpawnerPoint.notificationTitle);
@@ -1055,7 +1079,7 @@ namespace DayZeEditor
                     float scalevalue = MPGSpawnerScale * 0.05f;
                     int centerX = (int)(Math.Round(spc._triggerPosition.Position.X) * scalevalue);
                     int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(spc._triggerPosition.Position.Z, 0) * scalevalue);
-                    int eventradius = (int)((float)spc.triggerRadius * scalevalue);
+                    int eventradius = (int)(GetRandomfloat(spc.triggerRadius) * scalevalue);
                     Point center = new Point(centerX, centerY);
                     Pen pen = new Pen(Color.Red, 4);
                     if (spc == currentSpawnerPoint)
@@ -1446,5 +1470,7 @@ namespace DayZeEditor
                 File.WriteAllText(save.FileName + ".dze", jsonString);
             }
         }
+
+
     }
 }

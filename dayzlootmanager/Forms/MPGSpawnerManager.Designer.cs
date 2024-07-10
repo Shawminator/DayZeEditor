@@ -95,17 +95,11 @@ namespace DayZeEditor
             this.darkLabel40 = new DarkUI.Controls.DarkLabel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.darkLabel34 = new DarkUI.Controls.DarkLabel();
-            this.PointConfigtriggerradiusNUD = new System.Windows.Forms.NumericUpDown();
-            this.PointConfigtriggerHeightNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel32 = new DarkUI.Controls.DarkLabel();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.PointConfigtriggerCooldownNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel38 = new DarkUI.Controls.DarkLabel();
-            this.PointConfigtriggerFirstDelayNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel36 = new DarkUI.Controls.DarkLabel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.PointConfigtriggerWidthYNUD = new System.Windows.Forms.NumericUpDown();
-            this.PointConfigtriggerWidthXNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel35 = new DarkUI.Controls.DarkLabel();
             this.darkLabel33 = new DarkUI.Controls.DarkLabel();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -243,6 +237,12 @@ namespace DayZeEditor
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
             this.panel17 = new System.Windows.Forms.Panel();
+            this.PointConfigtriggerradiusTB = new System.Windows.Forms.TextBox();
+            this.PointConfigtriggerHeightTB = new System.Windows.Forms.TextBox();
+            this.PointConfigtriggerWidthXTB = new System.Windows.Forms.TextBox();
+            this.PointConfigtriggerWidthYTB = new System.Windows.Forms.TextBox();
+            this.PointConfigtriggerFirstDelayTB = new System.Windows.Forms.TextBox();
+            this.PointConfigtriggerCooldownTB = new System.Windows.Forms.TextBox();
             this.darkToolStrip21.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.configVersionNUD)).BeginInit();
@@ -268,14 +268,8 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.PointConfigtriggerEnterDelayNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PointConfigtriggerSafeDistanceNUD)).BeginInit();
             this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PointConfigtriggerradiusNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PointConfigtriggerHeightNUD)).BeginInit();
             this.panel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PointConfigtriggerCooldownNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PointConfigtriggerFirstDelayNUD)).BeginInit();
             this.panel10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PointConfigtriggerWidthYNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PointConfigtriggerWidthXNUD)).BeginInit();
             this.panel7.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -1129,10 +1123,10 @@ namespace DayZeEditor
             // 
             // panel8
             // 
+            this.panel8.Controls.Add(this.PointConfigtriggerHeightTB);
             this.panel8.Controls.Add(this.darkLabel34);
-            this.panel8.Controls.Add(this.PointConfigtriggerradiusNUD);
-            this.panel8.Controls.Add(this.PointConfigtriggerHeightNUD);
             this.panel8.Controls.Add(this.darkLabel32);
+            this.panel8.Controls.Add(this.PointConfigtriggerradiusTB);
             this.panel8.Location = new System.Drawing.Point(4, 342);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(457, 20);
@@ -1148,50 +1142,6 @@ namespace DayZeEditor
             this.darkLabel34.TabIndex = 239;
             this.darkLabel34.Text = "Trigger Height";
             // 
-            // PointConfigtriggerradiusNUD
-            // 
-            this.PointConfigtriggerradiusNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.PointConfigtriggerradiusNUD.DecimalPlaces = 1;
-            this.PointConfigtriggerradiusNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.PointConfigtriggerradiusNUD.Location = new System.Drawing.Point(117, 0);
-            this.PointConfigtriggerradiusNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.PointConfigtriggerradiusNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.PointConfigtriggerradiusNUD.Name = "PointConfigtriggerradiusNUD";
-            this.PointConfigtriggerradiusNUD.Size = new System.Drawing.Size(110, 20);
-            this.PointConfigtriggerradiusNUD.TabIndex = 236;
-            this.PointConfigtriggerradiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.PointConfigtriggerradiusNUD.ValueChanged += new System.EventHandler(this.PointConfigtriggerradiusNUD_ValueChanged);
-            // 
-            // PointConfigtriggerHeightNUD
-            // 
-            this.PointConfigtriggerHeightNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.PointConfigtriggerHeightNUD.DecimalPlaces = 1;
-            this.PointConfigtriggerHeightNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.PointConfigtriggerHeightNUD.Location = new System.Drawing.Point(333, 0);
-            this.PointConfigtriggerHeightNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.PointConfigtriggerHeightNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.PointConfigtriggerHeightNUD.Name = "PointConfigtriggerHeightNUD";
-            this.PointConfigtriggerHeightNUD.Size = new System.Drawing.Size(110, 20);
-            this.PointConfigtriggerHeightNUD.TabIndex = 238;
-            this.PointConfigtriggerHeightNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.PointConfigtriggerHeightNUD.ValueChanged += new System.EventHandler(this.PointConfigtriggerHeightNUD_ValueChanged);
-            // 
             // darkLabel32
             // 
             this.darkLabel32.AutoSize = true;
@@ -1204,36 +1154,14 @@ namespace DayZeEditor
             // 
             // panel9
             // 
-            this.panel9.Controls.Add(this.PointConfigtriggerCooldownNUD);
+            this.panel9.Controls.Add(this.PointConfigtriggerCooldownTB);
+            this.panel9.Controls.Add(this.PointConfigtriggerFirstDelayTB);
             this.panel9.Controls.Add(this.darkLabel38);
-            this.panel9.Controls.Add(this.PointConfigtriggerFirstDelayNUD);
             this.panel9.Controls.Add(this.darkLabel36);
             this.panel9.Location = new System.Drawing.Point(4, 394);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(457, 20);
             this.panel9.TabIndex = 290;
-            // 
-            // PointConfigtriggerCooldownNUD
-            // 
-            this.PointConfigtriggerCooldownNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.PointConfigtriggerCooldownNUD.DecimalPlaces = 1;
-            this.PointConfigtriggerCooldownNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.PointConfigtriggerCooldownNUD.Location = new System.Drawing.Point(333, 0);
-            this.PointConfigtriggerCooldownNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.PointConfigtriggerCooldownNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.PointConfigtriggerCooldownNUD.Name = "PointConfigtriggerCooldownNUD";
-            this.PointConfigtriggerCooldownNUD.Size = new System.Drawing.Size(110, 20);
-            this.PointConfigtriggerCooldownNUD.TabIndex = 244;
-            this.PointConfigtriggerCooldownNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.PointConfigtriggerCooldownNUD.ValueChanged += new System.EventHandler(this.PointConfigtriggerCooldownNUD_ValueChanged);
             // 
             // darkLabel38
             // 
@@ -1244,27 +1172,6 @@ namespace DayZeEditor
             this.darkLabel38.Size = new System.Drawing.Size(90, 13);
             this.darkLabel38.TabIndex = 245;
             this.darkLabel38.Text = "Trigger Cooldown";
-            // 
-            // PointConfigtriggerFirstDelayNUD
-            // 
-            this.PointConfigtriggerFirstDelayNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.PointConfigtriggerFirstDelayNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.PointConfigtriggerFirstDelayNUD.Location = new System.Drawing.Point(117, 0);
-            this.PointConfigtriggerFirstDelayNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.PointConfigtriggerFirstDelayNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.PointConfigtriggerFirstDelayNUD.Name = "PointConfigtriggerFirstDelayNUD";
-            this.PointConfigtriggerFirstDelayNUD.Size = new System.Drawing.Size(110, 20);
-            this.PointConfigtriggerFirstDelayNUD.TabIndex = 242;
-            this.PointConfigtriggerFirstDelayNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.PointConfigtriggerFirstDelayNUD.ValueChanged += new System.EventHandler(this.PointConfigtriggerFirstDelayNUD_ValueChanged);
             // 
             // darkLabel36
             // 
@@ -1278,58 +1185,14 @@ namespace DayZeEditor
             // 
             // panel10
             // 
-            this.panel10.Controls.Add(this.PointConfigtriggerWidthYNUD);
-            this.panel10.Controls.Add(this.PointConfigtriggerWidthXNUD);
+            this.panel10.Controls.Add(this.PointConfigtriggerWidthYTB);
+            this.panel10.Controls.Add(this.PointConfigtriggerWidthXTB);
             this.panel10.Controls.Add(this.darkLabel35);
             this.panel10.Controls.Add(this.darkLabel33);
             this.panel10.Location = new System.Drawing.Point(4, 368);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(457, 20);
             this.panel10.TabIndex = 291;
-            // 
-            // PointConfigtriggerWidthYNUD
-            // 
-            this.PointConfigtriggerWidthYNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.PointConfigtriggerWidthYNUD.DecimalPlaces = 1;
-            this.PointConfigtriggerWidthYNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.PointConfigtriggerWidthYNUD.Location = new System.Drawing.Point(333, 0);
-            this.PointConfigtriggerWidthYNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.PointConfigtriggerWidthYNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.PointConfigtriggerWidthYNUD.Name = "PointConfigtriggerWidthYNUD";
-            this.PointConfigtriggerWidthYNUD.Size = new System.Drawing.Size(110, 20);
-            this.PointConfigtriggerWidthYNUD.TabIndex = 243;
-            this.PointConfigtriggerWidthYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.PointConfigtriggerWidthYNUD.ValueChanged += new System.EventHandler(this.PointConfigtriggerWidthYNUD_ValueChanged);
-            // 
-            // PointConfigtriggerWidthXNUD
-            // 
-            this.PointConfigtriggerWidthXNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.PointConfigtriggerWidthXNUD.DecimalPlaces = 1;
-            this.PointConfigtriggerWidthXNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.PointConfigtriggerWidthXNUD.Location = new System.Drawing.Point(117, 0);
-            this.PointConfigtriggerWidthXNUD.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.PointConfigtriggerWidthXNUD.Minimum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            -2147483648});
-            this.PointConfigtriggerWidthXNUD.Name = "PointConfigtriggerWidthXNUD";
-            this.PointConfigtriggerWidthXNUD.Size = new System.Drawing.Size(110, 20);
-            this.PointConfigtriggerWidthXNUD.TabIndex = 240;
-            this.PointConfigtriggerWidthXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.PointConfigtriggerWidthXNUD.ValueChanged += new System.EventHandler(this.PointConfigtriggerWidthXNUD_ValueChanged);
             // 
             // darkLabel35
             // 
@@ -3208,6 +3071,66 @@ namespace DayZeEditor
             this.panel17.Size = new System.Drawing.Size(875, 738);
             this.panel17.TabIndex = 101;
             // 
+            // PointConfigtriggerradiusTB
+            // 
+            this.PointConfigtriggerradiusTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PointConfigtriggerradiusTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigtriggerradiusTB.Location = new System.Drawing.Point(116, 0);
+            this.PointConfigtriggerradiusTB.Name = "PointConfigtriggerradiusTB";
+            this.PointConfigtriggerradiusTB.Size = new System.Drawing.Size(110, 20);
+            this.PointConfigtriggerradiusTB.TabIndex = 259;
+            this.PointConfigtriggerradiusTB.TextChanged += new System.EventHandler(this.PointConfigtriggerradiusTB_TextChanged);
+            // 
+            // PointConfigtriggerHeightTB
+            // 
+            this.PointConfigtriggerHeightTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PointConfigtriggerHeightTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigtriggerHeightTB.Location = new System.Drawing.Point(333, 0);
+            this.PointConfigtriggerHeightTB.Name = "PointConfigtriggerHeightTB";
+            this.PointConfigtriggerHeightTB.Size = new System.Drawing.Size(110, 20);
+            this.PointConfigtriggerHeightTB.TabIndex = 260;
+            this.PointConfigtriggerHeightTB.TextChanged += new System.EventHandler(this.PointConfigtriggerHeightTB_TextChanged);
+            // 
+            // PointConfigtriggerWidthXTB
+            // 
+            this.PointConfigtriggerWidthXTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PointConfigtriggerWidthXTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigtriggerWidthXTB.Location = new System.Drawing.Point(116, -1);
+            this.PointConfigtriggerWidthXTB.Name = "PointConfigtriggerWidthXTB";
+            this.PointConfigtriggerWidthXTB.Size = new System.Drawing.Size(110, 20);
+            this.PointConfigtriggerWidthXTB.TabIndex = 260;
+            this.PointConfigtriggerWidthXTB.TextChanged += new System.EventHandler(this.PointConfigtriggerWidthXTB_TextChanged);
+            // 
+            // PointConfigtriggerWidthYTB
+            // 
+            this.PointConfigtriggerWidthYTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PointConfigtriggerWidthYTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigtriggerWidthYTB.Location = new System.Drawing.Point(333, 0);
+            this.PointConfigtriggerWidthYTB.Name = "PointConfigtriggerWidthYTB";
+            this.PointConfigtriggerWidthYTB.Size = new System.Drawing.Size(110, 20);
+            this.PointConfigtriggerWidthYTB.TabIndex = 261;
+            this.PointConfigtriggerWidthYTB.TextChanged += new System.EventHandler(this.PointConfigtriggerWidthYTB_TextChanged);
+            // 
+            // PointConfigtriggerFirstDelayTB
+            // 
+            this.PointConfigtriggerFirstDelayTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PointConfigtriggerFirstDelayTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigtriggerFirstDelayTB.Location = new System.Drawing.Point(117, -1);
+            this.PointConfigtriggerFirstDelayTB.Name = "PointConfigtriggerFirstDelayTB";
+            this.PointConfigtriggerFirstDelayTB.Size = new System.Drawing.Size(110, 20);
+            this.PointConfigtriggerFirstDelayTB.TabIndex = 260;
+            this.PointConfigtriggerFirstDelayTB.TextChanged += new System.EventHandler(this.PointConfigtriggerFirstDelayTB_TextChanged);
+            // 
+            // PointConfigtriggerCooldownTB
+            // 
+            this.PointConfigtriggerCooldownTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PointConfigtriggerCooldownTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigtriggerCooldownTB.Location = new System.Drawing.Point(333, -1);
+            this.PointConfigtriggerCooldownTB.Name = "PointConfigtriggerCooldownTB";
+            this.PointConfigtriggerCooldownTB.Size = new System.Drawing.Size(110, 20);
+            this.PointConfigtriggerCooldownTB.TabIndex = 261;
+            this.PointConfigtriggerCooldownTB.TextChanged += new System.EventHandler(this.PointConfigtriggerCooldownTB_TextChanged);
+            // 
             // MPGSpawnerManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3257,16 +3180,10 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.PointConfigtriggerSafeDistanceNUD)).EndInit();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PointConfigtriggerradiusNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PointConfigtriggerHeightNUD)).EndInit();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PointConfigtriggerCooldownNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PointConfigtriggerFirstDelayNUD)).EndInit();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PointConfigtriggerWidthYNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PointConfigtriggerWidthXNUD)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -3454,18 +3371,12 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox PointConfigtriggerDependenciesAnyOfCB;
         private System.Windows.Forms.Panel panel8;
         private DarkUI.Controls.DarkLabel darkLabel34;
-        private System.Windows.Forms.NumericUpDown PointConfigtriggerradiusNUD;
-        private System.Windows.Forms.NumericUpDown PointConfigtriggerHeightNUD;
         private DarkUI.Controls.DarkLabel darkLabel32;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.NumericUpDown PointConfigtriggerWidthYNUD;
-        private System.Windows.Forms.NumericUpDown PointConfigtriggerWidthXNUD;
         private DarkUI.Controls.DarkLabel darkLabel35;
         private DarkUI.Controls.DarkLabel darkLabel33;
-        private System.Windows.Forms.NumericUpDown PointConfigtriggerFirstDelayNUD;
         private DarkUI.Controls.DarkLabel darkLabel36;
-        private System.Windows.Forms.NumericUpDown PointConfigtriggerCooldownNUD;
         private DarkUI.Controls.DarkLabel darkLabel38;
         private System.Windows.Forms.Panel panel14;
         private DarkUI.Controls.DarkLabel darkLabel47;
@@ -3550,5 +3461,11 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkLabel darkLabel69;
         private DarkUI.Controls.DarkButton darkButton15;
         private DarkUI.Controls.DarkButton darkButton16;
+        private System.Windows.Forms.TextBox PointConfigtriggerHeightTB;
+        private System.Windows.Forms.TextBox PointConfigtriggerradiusTB;
+        private System.Windows.Forms.TextBox PointConfigtriggerCooldownTB;
+        private System.Windows.Forms.TextBox PointConfigtriggerFirstDelayTB;
+        private System.Windows.Forms.TextBox PointConfigtriggerWidthYTB;
+        private System.Windows.Forms.TextBox PointConfigtriggerWidthXTB;
     }
 }
