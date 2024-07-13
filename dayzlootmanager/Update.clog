@@ -2,6 +2,8 @@
 [Fixed]
 CJ LootChest - fixed tool time allowed to go to -1
 All Maps - should be a lot smoother and have no teraing when zooming or moving the map.
+Trader Plus - fixed a few values in the garage tab not updating when loading the file.
+Expansion Settings - Fixed being unable to switc hbetween safe zone types if one or more was empty.
 [Updated]
 Rag Base Building - updated missing options.
 Economy Manager - Removed some rarity levels as i thougth there was too much, changed to match Expansion Hardline levels as to keep parity across the editor.
