@@ -67,6 +67,8 @@ namespace DayZeEditor
             this.AIGeneralEnabledCB = new System.Windows.Forms.CheckBox();
             this.AIGeneralRespawnTimeNUD = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.LogAIHitByCB = new System.Windows.Forms.CheckBox();
+            this.LogAIKilledCB = new System.Windows.Forms.CheckBox();
             this.DamageReceivedMultiplierNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel73 = new DarkUI.Controls.DarkLabel();
             this.NoiseInvestigationDistanceLimitNUD = new System.Windows.Forms.NumericUpDown();
@@ -527,8 +529,6 @@ namespace DayZeEditor
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
-            this.LogAIHitByCB = new System.Windows.Forms.CheckBox();
-            this.LogAIKilledCB = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.TabPage1.SuspendLayout();
@@ -1322,6 +1322,32 @@ namespace DayZeEditor
             this.groupBox1.TabIndex = 129;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "AI Settings";
+            // 
+            // LogAIHitByCB
+            // 
+            this.LogAIHitByCB.AutoSize = true;
+            this.LogAIHitByCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.LogAIHitByCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.LogAIHitByCB.Location = new System.Drawing.Point(44, 282);
+            this.LogAIHitByCB.Name = "LogAIHitByCB";
+            this.LogAIHitByCB.Size = new System.Drawing.Size(88, 17);
+            this.LogAIHitByCB.TabIndex = 203;
+            this.LogAIHitByCB.Text = "Log AI Hit By";
+            this.LogAIHitByCB.UseVisualStyleBackColor = true;
+            this.LogAIHitByCB.CheckedChanged += new System.EventHandler(this.LogAIHitByCB_CheckedChanged);
+            // 
+            // LogAIKilledCB
+            // 
+            this.LogAIKilledCB.AutoSize = true;
+            this.LogAIKilledCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.LogAIKilledCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.LogAIKilledCB.Location = new System.Drawing.Point(136, 282);
+            this.LogAIKilledCB.Name = "LogAIKilledCB";
+            this.LogAIKilledCB.Size = new System.Drawing.Size(85, 17);
+            this.LogAIKilledCB.TabIndex = 202;
+            this.LogAIKilledCB.Text = "Log AI Killed";
+            this.LogAIKilledCB.UseVisualStyleBackColor = true;
+            this.LogAIKilledCB.CheckedChanged += new System.EventHandler(this.LogAIKilledCB_CheckedChanged);
             // 
             // DamageReceivedMultiplierNUD
             // 
@@ -4021,7 +4047,7 @@ namespace DayZeEditor
             this.toolStripButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton4.Size = new System.Drawing.Size(101, 25);
             this.toolStripButton4.Text = "AI Patrol Settings";
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
@@ -4040,7 +4066,7 @@ namespace DayZeEditor
             this.toolStripButton5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(110)))), ((int)(((byte)(175)))));
             this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton5.Size = new System.Drawing.Size(152, 25);
             this.toolStripButton5.Text = "AI Patrol Map Visualisation";
             this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
@@ -8034,32 +8060,6 @@ namespace DayZeEditor
             this.toolStripButton6.Size = new System.Drawing.Size(111, 25);
             this.toolStripButton6.Text = "Dynamic AI Addon";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
-            // 
-            // LogAIHitByCB
-            // 
-            this.LogAIHitByCB.AutoSize = true;
-            this.LogAIHitByCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.LogAIHitByCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.LogAIHitByCB.Location = new System.Drawing.Point(44, 282);
-            this.LogAIHitByCB.Name = "LogAIHitByCB";
-            this.LogAIHitByCB.Size = new System.Drawing.Size(88, 17);
-            this.LogAIHitByCB.TabIndex = 203;
-            this.LogAIHitByCB.Text = "Log AI Hit By";
-            this.LogAIHitByCB.UseVisualStyleBackColor = true;
-            this.LogAIHitByCB.CheckedChanged += new System.EventHandler(this.LogAIHitByCB_CheckedChanged);
-            // 
-            // LogAIKilledCB
-            // 
-            this.LogAIKilledCB.AutoSize = true;
-            this.LogAIKilledCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.LogAIKilledCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.LogAIKilledCB.Location = new System.Drawing.Point(136, 282);
-            this.LogAIKilledCB.Name = "LogAIKilledCB";
-            this.LogAIKilledCB.Size = new System.Drawing.Size(85, 17);
-            this.LogAIKilledCB.TabIndex = 202;
-            this.LogAIKilledCB.Text = "Log AI Killed";
-            this.LogAIKilledCB.UseVisualStyleBackColor = true;
-            this.LogAIKilledCB.CheckedChanged += new System.EventHandler(this.LogAIKilledCB_CheckedChanged);
             // 
             // ExpansionAI
             // 

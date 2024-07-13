@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -3856,6 +3857,71 @@ namespace DayZeEditor
             currentFactionReps = HardLineFactionReputationLB.SelectedItem as FactionReps;
             HardLineFactionReputationNUD.Value = currentFactionReps.FactionRep;
             useraction = true;
+        }
+        private void darkButton2_Click_1(object sender, EventArgs e)
+        {
+            HardLineSettings.PoorItems = new BindingList<string>();
+            HardLineSettings.CommonItems = new BindingList<string>();
+            HardLineSettings.UncommonItems = new BindingList<string>();
+            HardLineSettings.RareItems = new BindingList<string>();
+            HardLineSettings.EpicItems = new BindingList<string>();
+            HardLineSettings.LegendaryItems = new BindingList<string>();
+            HardLineSettings.MythicItems = new BindingList<string>();
+            HardLineSettings.ExoticItems = new BindingList<string>();
+
+            foreach (typesType vantype in vanillatypes.types.type)
+            {
+                if (vantype.nominalSpecified && vantype.nominal > 0)
+                {
+                    switch (vantype.Rarity)
+                    {
+                        case ITEMRARITY.Legendary:
+                            HardLineSettings.getlist("Legendary").Add(vantype.name);
+                            break;
+                        case ITEMRARITY.Epic:
+                            HardLineSettings.getlist("Epic").Add(vantype.name);
+                            break;
+                        case ITEMRARITY.Rare:
+                            HardLineSettings.getlist("Rare").Add(vantype.name);
+                            break;
+                        case ITEMRARITY.Uncommon:
+                            HardLineSettings.getlist("Uncommon").Add(vantype.name);
+                            break;
+                        case ITEMRARITY.Common:
+                            HardLineSettings.getlist("Common").Add(vantype.name);
+                            break;
+                    }
+                }
+            }
+
+            // Gather mod items
+            foreach (TypesFile tfile in ModTypes)
+            {
+                foreach (typesType typesType in tfile.types.type)
+                {
+                    if (typesType.nominalSpecified && typesType.nominal > 0)
+                    {
+                        switch (typesType.Rarity)
+                        {
+                            case ITEMRARITY.Legendary:
+                                HardLineSettings.getlist("Legendary").Add(typesType.name);
+                                break;
+                            case ITEMRARITY.Epic:
+                                HardLineSettings.getlist("Epic").Add(typesType.name);
+                                break;
+                            case ITEMRARITY.Rare:
+                                HardLineSettings.getlist("Rare").Add(typesType.name);
+                                break;
+                            case ITEMRARITY.Uncommon:
+                                HardLineSettings.getlist("Uncommon").Add(typesType.name);
+                                break;
+                            case ITEMRARITY.Common:
+                                HardLineSettings.getlist("Common").Add(typesType.name);
+                                break;
+                        }
+                    }
+                }
+            }
         }
         #endregion
 
@@ -9288,6 +9354,7 @@ namespace DayZeEditor
                 currentstoragelevel.ExcludedSlots.Add(Slot);
             PersonalStorageSettingsNew.isDirty = true;
         }
+
 
 
 

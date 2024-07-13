@@ -8926,76 +8926,115 @@ namespace DayZeEditor
 
         private void toolStripButton2_Click_1(object sender, EventArgs e)
         {
-            Cursor.Current = Cursors.WaitCursor;
             List<typesType> items = new List<typesType>();
+
+            // Gather vanilla items
             foreach (typesType vantype in vanillatypes.types.type)
             {
-                if (vantype.Rarity == ITEMRARITY.None)
+                if (vantype.nominalSpecified)
                 {
-                    vantype.nominal = 0;
-                    vantype.min = 0;
-                    continue;
+                    if (vantype.nominal == 0)
+                    {
+                        vantype.Rarity = ITEMRARITY.None;
+                        continue;
+                    }
+                    items.Add(vantype);
                 }
-                items.Add(vantype);
             }
+
+            // Gather mod items
             foreach (TypesFile tfile in ModTypes)
             {
                 foreach (typesType typesType in tfile.types.type)
                 {
-                    if (typesType.Rarity == ITEMRARITY.None)
+                    if (typesType.nominalSpecified)
                     {
-                        typesType.nominal = 0;
-                        typesType.min = 0;
-                        continue;
+                        if (typesType.nominal == 0)
+                        {
+                            typesType.Rarity = ITEMRARITY.None;
+                            continue;
+                        }
+                        items.Add(typesType);
                     }
-                    items.Add(typesType);
                 }
             }
 
-            int totalNominal = items.Sum(item => item.nominal);
-            Dictionary<ITEMRARITY, int> rarities = new Dictionary<ITEMRARITY, int>
-            {
-                { ITEMRARITY.Legendary, 1 },
-                { ITEMRARITY.Epic, 2 },
-                { ITEMRARITY.Elite, 4 },
-                { ITEMRARITY.Exceptional, 6 },
-                { ITEMRARITY.Unique, 8 },
-                { ITEMRARITY.ExtremlyRare, 10 },
-                { ITEMRARITY.VeryRare, 12 },
-                { ITEMRARITY.Rare, 15 },
-                { ITEMRARITY.Uncommon, 20 },
-                { ITEMRARITY.Common, 30 },
-                { ITEMRARITY.VeryCommon, 35 },
-                { ITEMRARITY.Everywhere, 40 },
-                { ITEMRARITY.None, 0 }
-            };
+            // Sort items by rarity (descending) and then by nominal value (ascending)
+            items = items.OrderByDescending(i => i.Rarity)
+                         .ThenBy(i => i.nominal)
+                         .ToList();
 
+            // Calculate total nominal count
+            int totalNominalCount = items.Sum(i => i.nominal);
+
+            // Define the min and max nominal values
+            int minNominal = 1;
+            int maxNominal = items.Max(i => i.nominal);
+
+            Console.WriteLine($"Min Nominal: {minNominal}");
+            Console.WriteLine($"Max Nominal: {maxNominal}");
+            Console.WriteLine($"Total Nominal Count: {totalNominalCount}");
+
+            // Calculate the thresholds for each rarity
+            double range = maxNominal - minNominal + 1;
+            double legendaryThreshold = minNominal + 0.05 * range;
+            double epicThreshold = minNominal + 0.25 * range;
+            double rareThreshold = minNominal + 0.5 * range;
+            double uncommonThreshold = minNominal + 0.8 * range;
+
+            Console.WriteLine($"Original Legendary Threshold: {legendaryThreshold}");
+            Console.WriteLine($"Original Epic Threshold: {epicThreshold}");
+            Console.WriteLine($"Original Rare Threshold: {rareThreshold}");
+            Console.WriteLine($"Original Uncommon Threshold: {uncommonThreshold}");
+
+            // Prompt user for target nominal value
             int targetNominal;
-            if(!int.TryParse(toolStripTextBox1.Text, out targetNominal))
+            if (!int.TryParse(toolStripTextBox1.Text, out targetNominal))
             {
                 MessageBox.Show("Value is not a number");
                 return;
             }
 
+            // Calculate adjustments based on the difference between total and target nominal counts
+            double adjustmentFactor = (double)targetNominal / totalNominalCount;
+
+            // Adjust thresholds based on the adjustment factor
+            legendaryThreshold *= adjustmentFactor;
+            epicThreshold *= adjustmentFactor;
+            rareThreshold *= adjustmentFactor;
+            uncommonThreshold *= adjustmentFactor;
+
+            Console.WriteLine($"Adjusted Legendary Threshold: {legendaryThreshold}");
+            Console.WriteLine($"Adjusted Epic Threshold: {epicThreshold}");
+            Console.WriteLine($"Adjusted Rare Threshold: {rareThreshold}");
+            Console.WriteLine($"Adjusted Uncommon Threshold: {uncommonThreshold}");
+
+            Random random = new Random();
+            // Adjust nominal values of items based on adjusted thresholds
             foreach (var item in items)
             {
-                int multiplier = rarities.ContainsKey(item.Rarity) ? rarities[item.Rarity] : 0;
-                item.nominal = multiplier;
-            }
-            int currentNominal = items.Where(item => item.nominal > 0).Sum(item => item.nominal);
-
-            if (targetNominal != currentNominal)
-            {
-                Random rand = new Random();
-                double ratio = (double)targetNominal / currentNominal;
-                foreach (var item in items)
+                if (item.Rarity == ITEMRARITY.Legendary)
                 {
-                    double variation = (rand.NextDouble() * 0.2) - 0.1;
-                    item.nominal = Math.Max((int)Math.Round(item.nominal * ratio * (1 + variation)), 1);
-                    item.min = (int)Math.Max(Math.Round(item.nominal / 2.5), 1);
+                    item.nominal = random.Next(minNominal, (int)Math.Ceiling(legendaryThreshold));
                 }
+                else if (item.Rarity == ITEMRARITY.Epic)
+                {
+                    item.nominal = random.Next((int)Math.Ceiling(legendaryThreshold), (int)Math.Ceiling(epicThreshold));
+                }
+                else if (item.Rarity == ITEMRARITY.Rare)
+                {
+                    item.nominal = random.Next((int)Math.Ceiling(epicThreshold), (int)Math.Ceiling(rareThreshold));
+                }
+                else if (item.Rarity == ITEMRARITY.Uncommon)
+                {
+                    item.nominal = random.Next((int)Math.Ceiling(rareThreshold), (int)Math.Ceiling(uncommonThreshold));
+                }
+                else if (item.Rarity == ITEMRARITY.Common)
+                {
+                    item.nominal = random.Next((int)Math.Ceiling(uncommonThreshold), (int)Math.Ceiling(uncommonThreshold)+20);
+                }
+                item.min = (int)Math.Ceiling((double)item.nominal * 0.6);
             }
-            int newtotalNominal = items.Sum(item => item.nominal);
             currentproject.SetTotNomCount();
             NomCountLabel.Text = "Total Nominal Count :- " + currentproject.TotalNomCount.ToString();
             PopulateLootPartInfo();

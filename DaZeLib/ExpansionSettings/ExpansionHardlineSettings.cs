@@ -259,13 +259,13 @@ namespace DayZeLib
             if (UncommonItems.Contains(item))
                 return "Uncommon";
             if (RareItems.Contains(item))
-                return "RareItems";
+                return "Rare";
             if (EpicItems.Contains(item))
-                return "EpicItems";
+                return "Epic";
             if (LegendaryItems.Contains(item))
                 return "Legendary";
             if (MythicItems.Contains(item))
-                return "MythicItems";
+                return "Mythic";
             if (ExoticItems.Contains(item))
                 return "Exotic";
             return "none";

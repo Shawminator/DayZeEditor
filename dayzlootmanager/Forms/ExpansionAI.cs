@@ -1465,6 +1465,12 @@ namespace DayZeEditor
         }
         private Point _mouseLastPosition;
         private Point _newscrollPosition;
+        private Rectangle doubleClickRectangle = new Rectangle();
+        private Timer doubleClickTimer = new Timer();
+        private bool isFirstClick = true;
+        private bool isDoubleClick = false;
+        private int milliseconds = 0;
+        private MouseEventArgs mouseeventargs;
         private void trackBar4_MouseUp(object sender, MouseEventArgs e)
         {
             AIPatrolScale = trackBar4.Value;
@@ -1493,11 +1499,13 @@ namespace DayZeEditor
                         float scalevalue = AIPatrolScale * 0.05f;
                         int centerX = (int)(Math.Round(waypoints.X) * scalevalue);
                         int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(waypoints.Z, 0) * scalevalue);
-                        int eventradius = (int)(Math.Round(1f, 0) * scalevalue);
+                        int eventradius = (int)(Math.Round(5f, 0) * scalevalue);
                         Point center = new Point(centerX, centerY);
                         Pen pen = new Pen(Color.Red, 4);
                         if (aipatrol == CurrentPatrol)
                             pen = new Pen(Color.Green, 4);
+                        if (CurrentWapypoint == waypoints)
+                            pen = new Pen(Color.Yellow, 4);
                         string num = c.ToString();
                         if (c == 1)
                             getCircle(e.Graphics, pen, center, eventradius, aipatrol.Name + "\n" + num);
@@ -1509,15 +1517,18 @@ namespace DayZeEditor
             }
             else
             {
+                if (CurrentPatrol == null) return;
                 int c = 1;
                 foreach (Vec3 waypoints in CurrentPatrol._waypoints)
                 {
                     float scalevalue = AIPatrolScale * 0.05f;
                     int centerX = (int)(Math.Round(waypoints.X) * scalevalue);
                     int centerY = (int)(currentproject.MapSize * scalevalue) - (int)(Math.Round(waypoints.Z, 0) * scalevalue);
-                    int eventradius = (int)(Math.Round(1f, 0) * scalevalue);
+                    int eventradius = (int)(Math.Round(5f, 0) * scalevalue);
                     Point center = new Point(centerX, centerY);
-                    Pen pen = new Pen(Color.Red, 4);
+                    Pen pen = new Pen(Color.Green, 4);
+                    if (CurrentWapypoint == waypoints)
+                        pen = new Pen(Color.Yellow, 4);
                     string num = c.ToString();
                     if (c == 1)
                         getCircle(e.Graphics, pen, center, eventradius, CurrentPatrol.Name + "\n" + num);
@@ -1570,6 +1581,113 @@ namespace DayZeEditor
                 Cursor.Current = Cursors.SizeAll;
                 _mouseLastPosition = e.Location;
             }
+            else if (e.Button == MouseButtons.Left)
+            {
+                mouseeventargs = e;
+                // This is the first mouse click.
+                if (isFirstClick)
+                {
+                    isFirstClick = false;
+
+                    // Determine the location and size of the double click
+                    // rectangle area to draw around the cursor point.
+                    doubleClickRectangle = new Rectangle(
+                        e.X - (SystemInformation.DoubleClickSize.Width / 2),
+                        e.Y - (SystemInformation.DoubleClickSize.Height / 2),
+                        SystemInformation.DoubleClickSize.Width,
+                        SystemInformation.DoubleClickSize.Height);
+                    Invalidate();
+
+                    // Start the double click timer.
+                    doubleClickTimer.Start();
+                }
+
+                // This is the second mouse click.
+                else
+                {
+                    // Verify that the mouse click is within the double click
+                    // rectangle and is within the system-defined double
+                    // click period.
+                    if (doubleClickRectangle.Contains(e.Location) &&
+                        milliseconds < SystemInformation.DoubleClickTime)
+                    {
+                        isDoubleClick = true;
+                    }
+                }
+            }
+        }
+        void doubleClickTimer_Tick(object sender, EventArgs e)
+        {
+            milliseconds += 100;
+
+            // The timer has reached the double click time limit.
+            if (milliseconds >= SystemInformation.DoubleClickTime)
+            {
+                doubleClickTimer.Stop();
+
+                if (isDoubleClick)
+                {
+                    //Console.WriteLine("Perform double click action");
+                    if (CurrentPatrol == null) return;
+                    if (CurrentWapypoint == null) return;
+                    //if (e is MouseEventArgs mouseEventArgs)
+                    //{
+                    Cursor.Current = Cursors.WaitCursor;
+                    decimal scalevalue = AIPatrolScale * (decimal)0.05;
+                    decimal mapsize = currentproject.MapSize;
+                    int newsize = (int)(mapsize * scalevalue);
+                    StaticPatrolWaypointPOSXNUD.Value = Decimal.Round((decimal)(mouseeventargs.X / scalevalue), 4);
+                    StaticPatrolWaypointPOSZNUD.Value = Decimal.Round((decimal)((newsize - mouseeventargs.Y) / scalevalue), 4);
+                    if (MapData.FileExists)
+                    {
+                        StaticPatrolWaypointPOSYNUD.Value = (decimal)(MapData.gethieght(CurrentWapypoint.X, CurrentWapypoint.Z));
+                    }
+                    Cursor.Current = Cursors.Default;
+                    AIPatrolSettings.isDirty = true;
+                    pictureBox2.Invalidate();
+                    //}
+                }
+                else
+                {
+                    //Console.WriteLine("Perform single click action");
+                    if (CurrentPatrol == null) return;
+                    //if (e is MouseEventArgs mouseEventArgs)
+                    //{
+                    decimal scalevalue = AIPatrolScale * (decimal)0.05;
+                    decimal mapsize = currentproject.MapSize;
+                    int newsize = (int)(mapsize * scalevalue);
+                    PointF pC = new PointF((float)Decimal.Round((decimal)(mouseeventargs.X / scalevalue), 4), (float)Decimal.Round((decimal)((newsize - mouseeventargs.Y) / scalevalue), 4));
+                    foreach (Vec3 waypoints in CurrentPatrol._waypoints)
+                    {
+                        PointF pP = new PointF((float)waypoints.X, (float)waypoints.Z);
+                        if (IsWithinCircle(pC, pP, (float)5))
+                        {
+                            StaticPatrolWayPointsLB.SelectedItem = waypoints;
+                            StaticPatrolWayPointsLB.Refresh();
+                            pictureBox2.Invalidate();
+                            continue;
+                        }
+                    }
+                    //}
+                }
+
+                // Allow the MouseDown event handler to process clicks again.
+                isFirstClick = true;
+                isDoubleClick = false;
+                milliseconds = 0;
+            }
+        }
+        public bool IsWithinCircle(PointF pC, PointF pP, Single fRadius)
+        {
+            return Distance(pC, pP) <= fRadius;
+        }
+        public Single Distance(PointF p1, PointF p2)
+        {
+            Single dX = p1.X - p2.X;
+            Single dY = p1.Y - p2.Y;
+            Single multi = dX * dX + dY * dY;
+            Single dist = (Single)Math.Round((Single)Math.Sqrt(multi), 3);
+            return (Single)dist;
         }
         private void pictureBox2_MouseWheel(object sender, MouseEventArgs e)
         {
@@ -1643,6 +1761,9 @@ namespace DayZeEditor
         #region AISettings
         private void SetupAISettings()
         {
+            doubleClickTimer.Interval = 100;
+            doubleClickTimer.Tick += new EventHandler(doubleClickTimer_Tick);
+
             useraction = false;
             AccuracyMinNUD.Value = AISettings.AccuracyMin;
             AccuracyMaxNUD.Value = AISettings.AccuracyMax;

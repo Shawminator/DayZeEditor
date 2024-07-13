@@ -14,16 +14,9 @@ namespace DayZeLib
     {
         Legendary,
         Epic,
-        Elite,
-        Exceptional,
-        Unique,
-        ExtremlyRare,
-        VeryRare,
         Rare,
         Uncommon,
         Common,
-        VeryCommon,
-        Everywhere,
         None
     }
     public class TypesFile

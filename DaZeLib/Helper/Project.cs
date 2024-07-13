@@ -6,6 +6,7 @@ using System.Drawing.Drawing2D;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -502,50 +503,109 @@ namespace DayZeEditor
 
         public void AssignRarity()
         {
+            int TotalNomCount = 0;
             List<typesType> items = new List<typesType>();
-            foreach(typesType vantype in vanillaTypes.types.type)
+
+            // Gather vanilla items
+            foreach (typesType vantype in vanillaTypes.types.type)
             {
-                if(vantype.nominal == 0)
+                if (vantype.nominalSpecified)
                 {
-                    vantype.Rarity = ITEMRARITY.None;
-                    continue;
-                }
-                items.Add(vantype);
-            }
-            foreach(TypesFile tfile in ModTypesList)
-            {
-                foreach(typesType typesType in tfile.types.type)
-                {
-                    if (typesType.nominal == 0)
+                    if (vantype.nominal == 0)
                     {
-                        typesType.Rarity = ITEMRARITY.None;
+                        vantype.Rarity = ITEMRARITY.None;
                         continue;
                     }
-                    items.Add(typesType);
+                    if (items.Any(x => x.name == vantype.name))
+                    {
+                        typesType otype = items.First(x => x.name == vantype.name);
+
+                        TotalNomCount -= otype.nominal;
+                        items.Remove(otype);
+                    }
+                    TotalNomCount += vantype.nominal;
+                    items.Add(vantype);
+                }
+            }
+
+            // Gather mod items
+            foreach (TypesFile tfile in ModTypesList)
+            {
+                foreach (typesType typesType in tfile.types.type)
+                {
+                    if (typesType.nominalSpecified)
+                    {
+                        if (typesType.nominal == 0)
+                        {
+                            typesType.Rarity = ITEMRARITY.None;
+                            continue;
+                        }
+                        if (items.Any(x => x.name == typesType.name))
+                        {
+                            typesType otype = items.First(x => x.name == typesType.name);
+
+                            TotalNomCount -= otype.nominal;
+                            items.Remove(otype);
+                        }
+                        TotalNomCount += typesType.nominal;
+                        items.Add(typesType);
+                    }
                 }
             }
 
             // Sort items by nominal value
             items = items.OrderBy(i => i.nominal).ToList();
 
-            // Calculate the number of items per rarity bin
-            int binSize = (int)Math.Ceiling(items.Count / 12.0);
+            // Define the min and max nominal values
+            int minNominal = 1;
+            int maxNominal = items.Max(i => i.nominal);
 
-            for (int i = 0; i < items.Count; i++)
+            Console.WriteLine($"Min Nominal: {minNominal}");
+            Console.WriteLine($"Max Nominal: {maxNominal}");
+
+            int totalItems = items.Count;
+            Console.WriteLine($"Total Items Count: {totalItems}");
+            Console.WriteLine($"Total Items Nominal Count: {TotalNomCount}");
+
+            // Calculate the thresholds for each rarity
+            double range = maxNominal - minNominal + 1;
+            double legendaryThreshold = minNominal + 0.05 * range;
+            double epicThreshold = minNominal + 0.25 * range;
+            double rareThreshold = minNominal + 0.5 * range;
+            double uncommonThreshold = minNominal + 0.8 * range;
+
+            Console.WriteLine($"Legendary Threshold: {legendaryThreshold}");
+            Console.WriteLine($"Epic Threshold: {epicThreshold}");
+            Console.WriteLine($"Rare Threshold: {rareThreshold}");
+            Console.WriteLine($"Uncommon Threshold: {uncommonThreshold}");
+
+
+            // Assign rarities based on thresholds
+            foreach (var item in items)
             {
-                // Determine the rarity based on the item's position in the sorted list
-                int rarityIndex = i / binSize;
-                if (rarityIndex >= Enum.GetValues(typeof(ITEMRARITY)).Length)
+                if (item.nominal <= legendaryThreshold)
                 {
-                    rarityIndex = Enum.GetValues(typeof(ITEMRARITY)).Length - 1; // Handle any rounding issues
+                    item.Rarity = ITEMRARITY.Legendary;
                 }
-
-
-
-                items[i].Rarity = (ITEMRARITY)rarityIndex;
+                else if (item.nominal <= epicThreshold)
+                {
+                    item.Rarity = ITEMRARITY.Epic;
+                }
+                else if (item.nominal <= rareThreshold)
+                {
+                    item.Rarity = ITEMRARITY.Rare;
+                }
+                else if (item.nominal <= uncommonThreshold)
+                {
+                    item.Rarity = ITEMRARITY.Uncommon;
+                }
+                else
+                {
+                    item.Rarity = ITEMRARITY.Common;
+                }
             }
-
         }
+
 
         public void SetallTypesasDirty()
         {

@@ -4320,18 +4320,11 @@ namespace DayZeEditor
         }
         private static Dictionary<ITEMRARITY, decimal> rarityMultiplier = new Dictionary<ITEMRARITY, decimal>
         {
-            { ITEMRARITY.Legendary, 20 },
-            { ITEMRARITY.Epic, 18 },
-            { ITEMRARITY.Elite, 16 },
-            { ITEMRARITY.Exceptional, 14 },
-            { ITEMRARITY.Unique, 12 },
-            { ITEMRARITY.ExtremlyRare, 10 },
-            { ITEMRARITY.VeryRare, 9 },
+            { ITEMRARITY.Legendary, 16 },
+            { ITEMRARITY.Epic, 14 },
             { ITEMRARITY.Rare, 8 },
             { ITEMRARITY.Uncommon, 7 },
             { ITEMRARITY.Common, 6 },
-            { ITEMRARITY.VeryCommon, 4 },
-            { ITEMRARITY.Everywhere, 2 },
             { ITEMRARITY.None, 1 }
         };
 

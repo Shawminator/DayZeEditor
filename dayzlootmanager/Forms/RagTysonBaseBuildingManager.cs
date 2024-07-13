@@ -147,6 +147,10 @@ namespace DayZeEditor
             BBPlistsLB.ValueMember = "Value";
             BBPlistsLB.DataSource = bbplists;
 
+            BBMaterailsLB.DisplayMember = "Value";
+            BBMaterailsLB.ValueMember = "Key";
+            BBMaterailsLB.DataSource = new BindingSource(RagBasebuilding.Materials, null);
+
             useraction = true;
         }
         private void BBPBoolsLB_SelectedIndexChanged(object sender, EventArgs e)
@@ -223,6 +227,24 @@ namespace DayZeEditor
                 RagBasebuilding.isDirty = true;
             }
             CurrentBBPListLB.Refresh();
+        }
+
+        private void BBMaterailsLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (BBMaterailsLB.SelectedItems.Count < 1) return;
+            useraction = false;
+            KeyValuePair<string, int> matpart = (KeyValuePair<string, int>)BBMaterailsLB.SelectedItem;
+            BBMaterialsNUD.Value = matpart.Value;
+            useraction = true;
+        }
+
+        private void BBMaterialsNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            KeyValuePair<string, int> matpart = (KeyValuePair<string, int>)BBMaterailsLB.SelectedItem;
+            RagBasebuilding.Materials[matpart.Key] = (int)BBMaterialsNUD.Value;
+            BBMaterailsLB.DataSource = new BindingSource(RagBasebuilding.Materials, null);
+            RagBasebuilding.isDirty = true;
         }
     }
 }

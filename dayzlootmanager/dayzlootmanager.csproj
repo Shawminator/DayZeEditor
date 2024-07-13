@@ -116,6 +116,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\GitHub.cs" />
+    <Compile Include="Forms\InediaManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InediaManager.Designer.cs">
+      <DependentUpon>InediaManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PVZCZManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -414,6 +420,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\InediaManager.resx">
+      <DependentUpon>InediaManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\PVZCZManager.resx">
       <DependentUpon>PVZCZManager.cs</DependentUpon>
     </EmbeddedResource>

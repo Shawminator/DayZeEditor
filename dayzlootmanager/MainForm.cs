@@ -29,7 +29,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.8.0.6";
+        public string VersionNumber = "0.8.0.7";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -487,6 +487,13 @@ namespace DayZeEditor
                     UtopiaAirdropButton.Visible = true;
                 else
                     UtopiaAirdropButton.Visible = false;
+
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\Inedia\\InediaInfectedAIConfig.json") ||
+                    File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\Inedia\\InediaMovementConfig.xml")||
+                    File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\Inedia\\InediaStaminaConfig.xml"))
+                    InediaButton.Visible = true;
+                else
+                    InediaButton.Visible = false;
 
                 //if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\CaptureTheFlag\\CTFConfig\\CTFConfig.json"))
                 //    UtopiaAirdropButton.Visible = true;
@@ -1269,6 +1276,33 @@ namespace DayZeEditor
                 _TM.Show();
                 Console.WriteLine("loadingSpawner PVZ Mods Manager....");
                 label1.Text = "PVZ Mods Manager";
+            }
+            timer1.Start();
+        }
+        private void InediaButton_Click(object sender, EventArgs e)
+        {
+            InediaManager _TM = Application.OpenForms["InediaManager"] as InediaManager;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new InediaManager
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+
+                };
+                _TM.Show();
+                Console.WriteLine("loadingSpawner Inedia Mods Manager....");
+                label1.Text = "Inedia Mods Manager";
             }
             timer1.Start();
         }

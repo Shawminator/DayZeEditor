@@ -210,6 +210,10 @@
     <Compile Include="Helper\Helper.cs" />
     <Compile Include="Helper\Project.cs" />
     <Compile Include="Helper\XYZMapping.cs" />
+    <Compile Include="Inedia\InediaAdminsConfig.cs" />
+    <Compile Include="Inedia\InediaInfectedAIConfig.cs" />
+    <Compile Include="Inedia\InediaMovementConfig.cs" />
+    <Compile Include="Inedia\InediaStaminaConfig.cs" />
     <Compile Include="KingOfTheHill\KOTH.cs" />
     <Compile Include="KOSZone\KOSZone.cs" />
     <Compile Include="LootPool\CapareLootPool.cs" />

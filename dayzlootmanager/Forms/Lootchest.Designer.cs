@@ -74,6 +74,7 @@ namespace DayZeEditor
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.darkButton26 = new DarkUI.Controls.DarkButton();
             this.darkLabel20 = new DarkUI.Controls.DarkLabel();
             this.darkButton23 = new DarkUI.Controls.DarkButton();
             this.darkButton13 = new DarkUI.Controls.DarkButton();
@@ -162,7 +163,6 @@ namespace DayZeEditor
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.darkButton26 = new DarkUI.Controls.DarkButton();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LootRandomizationNUD)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -323,7 +323,7 @@ namespace DayZeEditor
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(365, 455);
+            this.groupBox1.Size = new System.Drawing.Size(365, 438);
             this.groupBox1.TabIndex = 91;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Loot chests";
@@ -339,7 +339,7 @@ namespace DayZeEditor
             0,
             0,
             131072});
-            this.ItemrarityChestNUD.Location = new System.Drawing.Point(93, 388);
+            this.ItemrarityChestNUD.Location = new System.Drawing.Point(93, 371);
             this.ItemrarityChestNUD.Maximum = new decimal(new int[] {
             1,
             0,
@@ -357,7 +357,7 @@ namespace DayZeEditor
             this.ItemrarityChestCB.AutoSize = true;
             this.ItemrarityChestCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.ItemrarityChestCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ItemrarityChestCB.Location = new System.Drawing.Point(9, 391);
+            this.ItemrarityChestCB.Location = new System.Drawing.Point(9, 374);
             this.ItemrarityChestCB.Name = "ItemrarityChestCB";
             this.ItemrarityChestCB.Size = new System.Drawing.Size(71, 17);
             this.ItemrarityChestCB.TabIndex = 135;
@@ -383,7 +383,7 @@ namespace DayZeEditor
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel1.Location = new System.Drawing.Point(328, 414);
+            this.panel1.Location = new System.Drawing.Point(328, 397);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(31, 27);
             this.panel1.TabIndex = 133;
@@ -392,7 +392,7 @@ namespace DayZeEditor
             // darkButton28
             // 
             this.darkButton28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton28.Location = new System.Drawing.Point(214, 414);
+            this.darkButton28.Location = new System.Drawing.Point(214, 397);
             this.darkButton28.Name = "darkButton28";
             this.darkButton28.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton28.Size = new System.Drawing.Size(108, 23);
@@ -403,7 +403,7 @@ namespace DayZeEditor
             // darkButton24
             // 
             this.darkButton24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton24.Location = new System.Drawing.Point(93, 414);
+            this.darkButton24.Location = new System.Drawing.Point(93, 397);
             this.darkButton24.Name = "darkButton24";
             this.darkButton24.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton24.Size = new System.Drawing.Size(115, 23);
@@ -497,7 +497,7 @@ namespace DayZeEditor
             this.lootLB.Location = new System.Drawing.Point(93, 237);
             this.lootLB.Name = "lootLB";
             this.lootLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lootLB.Size = new System.Drawing.Size(229, 134);
+            this.lootLB.Size = new System.Drawing.Size(229, 108);
             this.lootLB.TabIndex = 122;
             this.lootLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.lootLB.SelectedIndexChanged += new System.EventHandler(this.lootLB_SelectedIndexChanged);
@@ -784,6 +784,16 @@ namespace DayZeEditor
             this.groupBox3.TabIndex = 96;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Locations";
+            // 
+            // darkButton26
+            // 
+            this.darkButton26.Location = new System.Drawing.Point(122, 45);
+            this.darkButton26.Name = "darkButton26";
+            this.darkButton26.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton26.Size = new System.Drawing.Size(104, 23);
+            this.darkButton26.TabIndex = 136;
+            this.darkButton26.Text = "Export to .dze";
+            this.darkButton26.Click += new System.EventHandler(this.darkButton26_Click);
             // 
             // darkLabel20
             // 
@@ -1687,11 +1697,6 @@ namespace DayZeEditor
             0,
             0,
             0});
-            this.numericUpDown2.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(71, 20);
             this.numericUpDown2.TabIndex = 137;
@@ -1718,6 +1723,11 @@ namespace DayZeEditor
             0,
             0,
             0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(71, 20);
             this.numericUpDown1.TabIndex = 135;
@@ -1893,16 +1903,6 @@ namespace DayZeEditor
             // 
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
-            // 
-            // darkButton26
-            // 
-            this.darkButton26.Location = new System.Drawing.Point(122, 45);
-            this.darkButton26.Name = "darkButton26";
-            this.darkButton26.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton26.Size = new System.Drawing.Size(104, 23);
-            this.darkButton26.TabIndex = 136;
-            this.darkButton26.Text = "Export to .dze";
-            this.darkButton26.Click += new System.EventHandler(this.darkButton26_Click);
             // 
             // Lootchest
             // 

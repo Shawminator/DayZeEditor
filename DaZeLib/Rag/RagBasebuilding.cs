@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text.Json.Serialization;
 
 namespace DayZeLib
@@ -33,6 +34,10 @@ namespace DayZeLib
         public bool DisableDestroy { get; set; }
         public bool DisableDismantle { get; set; }
         public bool EnableHideShowInventory { get; set; }
+        public bool ReturnKitAfterBuilt { get; set; }
+        public bool EnableBuildHatchLadder { get; set; }
+        public bool EnableAttachPortableGasLamp { get; set; }
+        public Dictionary<string,int> Materials { get; set; }
     }
 
 }

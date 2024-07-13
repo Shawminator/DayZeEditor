@@ -45,11 +45,16 @@ namespace DayZeEditor
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.BBPBoolsCB = new System.Windows.Forms.CheckBox();
             this.BBPBoolsLB = new System.Windows.Forms.ListBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.BBMaterailsLB = new System.Windows.Forms.ListBox();
+            this.BBMaterialsNUD = new System.Windows.Forms.NumericUpDown();
             this.darkToolStrip21.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BBPIntsNUD)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BBMaterialsNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -63,7 +68,7 @@ namespace DayZeEditor
             this.darkToolStrip21.Location = new System.Drawing.Point(0, 0);
             this.darkToolStrip21.Name = "darkToolStrip21";
             this.darkToolStrip21.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
-            this.darkToolStrip21.Size = new System.Drawing.Size(716, 45);
+            this.darkToolStrip21.Size = new System.Drawing.Size(935, 45);
             this.darkToolStrip21.TabIndex = 49;
             this.darkToolStrip21.Text = "darkToolStrip21";
             // 
@@ -249,11 +254,58 @@ namespace DayZeEditor
             this.BBPBoolsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.BBPBoolsLB.SelectedIndexChanged += new System.EventHandler(this.BBPBoolsLB_SelectedIndexChanged);
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.BBMaterialsNUD);
+            this.groupBox4.Controls.Add(this.BBMaterailsLB);
+            this.groupBox4.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox4.Location = new System.Drawing.Point(713, 48);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(211, 422);
+            this.groupBox4.TabIndex = 242;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "RAG BB Materials";
+            // 
+            // BBMaterailsLB
+            // 
+            this.BBMaterailsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BBMaterailsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.BBMaterailsLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.BBMaterailsLB.FormattingEnabled = true;
+            this.BBMaterailsLB.Location = new System.Drawing.Point(6, 19);
+            this.BBMaterailsLB.Name = "BBMaterailsLB";
+            this.BBMaterailsLB.Size = new System.Drawing.Size(199, 368);
+            this.BBMaterailsLB.TabIndex = 90;
+            this.BBMaterailsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.BBMaterailsLB.SelectedIndexChanged += new System.EventHandler(this.BBMaterailsLB_SelectedIndexChanged);
+            // 
+            // BBMaterialsNUD
+            // 
+            this.BBMaterialsNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.BBMaterialsNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.BBMaterialsNUD.Location = new System.Drawing.Point(6, 391);
+            this.BBMaterialsNUD.Maximum = new decimal(new int[] {
+            99999999,
+            0,
+            0,
+            0});
+            this.BBMaterialsNUD.Minimum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            -2147483648});
+            this.BBMaterialsNUD.Name = "BBMaterialsNUD";
+            this.BBMaterialsNUD.Size = new System.Drawing.Size(199, 20);
+            this.BBMaterialsNUD.TabIndex = 128;
+            this.BBMaterialsNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BBMaterialsNUD.ValueChanged += new System.EventHandler(this.BBMaterialsNUD_ValueChanged);
+            // 
             // RagTysonBaseBuildingManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(716, 481);
+            this.ClientSize = new System.Drawing.Size(935, 481);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -271,6 +323,8 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.BBPIntsNUD)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.BBMaterialsNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -292,5 +346,8 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox BBPBoolsCB;
         private System.Windows.Forms.ListBox BBPBoolsLB;
         private System.Windows.Forms.NumericUpDown BBPIntsNUD;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.NumericUpDown BBMaterialsNUD;
+        private System.Windows.Forms.ListBox BBMaterailsLB;
     }
 }

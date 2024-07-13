@@ -1,4 +1,19 @@
-﻿Version 0.8.0.6
+﻿Version 0.8.0.7
+[Fixed]
+CJ LootChest - fixed tool time allowed to go to -1
+All Maps - should be a lot smoother and have no teraing when zooming or moving the map.
+[Updated]
+Rag Base Building - updated missing options.
+Economy Manager - Removed some rarity levels as i thougth there was too much, changed to match Expansion Hardline levels as to keep parity across the editor.
+				- tried to update the distribute nominals from rarity to include more variation, but this leads toa higher count than specified, so take this into consideration.
+[Added]
+CJ Lootchests - Add map visualisation for chest spawn points
+Expansion AI - Added ability to select the point from the map by clicking on the point.
+			   Added Ability to move the current point on the map by double clicking on the map.
+Expansion Hardline - added the ability to create rarity lists from the editors inbuilt rarity manager.(this will create the full list from scratch)
+			   
+
+Version 0.8.0.6
 [Added]
 Economy Manager	-	Added an option to update types files from external file with a right clic k on the type file, 
 					This allows to import a full file where only the missing types will be added to the current types file

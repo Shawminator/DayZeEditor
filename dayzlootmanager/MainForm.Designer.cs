@@ -43,7 +43,7 @@ namespace DayZeEditor
             this.SlidePanel = new System.Windows.Forms.Panel();
             this.Slidelabel = new System.Windows.Forms.PictureBox();
             this.ToolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.DonateButton = new System.Windows.Forms.ToolStripButton();
             this.DiscordButton = new System.Windows.Forms.ToolStripButton();
             this.ProjectsButton = new System.Windows.Forms.ToolStripButton();
             this.TypeManButton = new System.Windows.Forms.ToolStripButton();
@@ -67,14 +67,15 @@ namespace DayZeEditor
             this.RAGTysonBBManagerButton = new System.Windows.Forms.ToolStripButton();
             this.PVZCZManagerButton = new System.Windows.Forms.ToolStripButton();
             this.BBPManagerButton = new System.Windows.Forms.ToolStripButton();
+            this.InediaButton = new System.Windows.Forms.ToolStripButton();
             this.AbandonedVehicleRemoverManagerButton = new System.Windows.Forms.ToolStripButton();
             this.BreachingChargeManagerButton = new System.Windows.Forms.ToolStripButton();
             this.KOSzoneManagerButton = new System.Windows.Forms.ToolStripButton();
             this.MysteryBoxButton = new System.Windows.Forms.ToolStripButton();
             this.AdvancedWorkbenchButton = new System.Windows.Forms.ToolStripButton();
             this.DNAKeyCardsButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.MapOutputtoXYZButton = new System.Windows.Forms.ToolStripButton();
+            this.DebinDZEButton = new System.Windows.Forms.ToolStripButton();
             this.HidePBox = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -208,7 +209,7 @@ namespace DayZeEditor
             this.ToolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.ToolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.ToolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton2,
+            this.DonateButton,
             this.DiscordButton,
             this.ProjectsButton,
             this.TypeManButton,
@@ -232,14 +233,15 @@ namespace DayZeEditor
             this.RAGTysonBBManagerButton,
             this.PVZCZManagerButton,
             this.BBPManagerButton,
+            this.InediaButton,
             this.AbandonedVehicleRemoverManagerButton,
             this.BreachingChargeManagerButton,
             this.KOSzoneManagerButton,
             this.MysteryBoxButton,
             this.AdvancedWorkbenchButton,
             this.DNAKeyCardsButton,
-            this.toolStripButton1,
-            this.toolStripButton3});
+            this.MapOutputtoXYZButton,
+            this.DebinDZEButton});
             this.ToolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.ToolStrip1.Location = new System.Drawing.Point(26, 29);
             this.ToolStrip1.Name = "ToolStrip1";
@@ -248,16 +250,16 @@ namespace DayZeEditor
             this.ToolStrip1.TabIndex = 39;
             this.ToolStrip1.Text = "toolStrip4";
             // 
-            // toolStripButton2
+            // DonateButton
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(123, 19);
-            this.toolStripButton2.Text = "Donate";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            this.DonateButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.DonateButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.DonateButton.Image = ((System.Drawing.Image)(resources.GetObject("DonateButton.Image")));
+            this.DonateButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DonateButton.Name = "DonateButton";
+            this.DonateButton.Size = new System.Drawing.Size(123, 19);
+            this.DonateButton.Text = "Donate";
+            this.DonateButton.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // DiscordButton
             // 
@@ -533,6 +535,18 @@ namespace DayZeEditor
             this.BBPManagerButton.Visible = false;
             this.BBPManagerButton.Click += new System.EventHandler(this.BBPManagerButton_Click);
             // 
+            // InediaButton
+            // 
+            this.InediaButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.InediaButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.InediaButton.Image = ((System.Drawing.Image)(resources.GetObject("InediaButton.Image")));
+            this.InediaButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.InediaButton.Name = "InediaButton";
+            this.InediaButton.Size = new System.Drawing.Size(123, 19);
+            this.InediaButton.Text = "Inedia Manager WIP";
+            this.InediaButton.Visible = false;
+            this.InediaButton.Click += new System.EventHandler(this.InediaButton_Click);
+            // 
             // AbandonedVehicleRemoverManagerButton
             // 
             this.AbandonedVehicleRemoverManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -552,7 +566,7 @@ namespace DayZeEditor
             this.BreachingChargeManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("BreachingChargeManagerButton.Image")));
             this.BreachingChargeManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.BreachingChargeManagerButton.Name = "BreachingChargeManagerButton";
-            this.BreachingChargeManagerButton.Size = new System.Drawing.Size(123, 19);
+            this.BreachingChargeManagerButton.Size = new System.Drawing.Size(105, 19);
             this.BreachingChargeManagerButton.Text = "Breaching Charge";
             this.BreachingChargeManagerButton.Visible = false;
             this.BreachingChargeManagerButton.Click += new System.EventHandler(this.BreachingChargeManagerButton_Click);
@@ -605,27 +619,27 @@ namespace DayZeEditor
             this.DNAKeyCardsButton.Visible = false;
             this.DNAKeyCardsButton.Click += new System.EventHandler(this.DNAKeyCardsButton_Click);
             // 
-            // toolStripButton1
+            // MapOutputtoXYZButton
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton1.ForeColor = System.Drawing.SystemColors.Control;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(111, 19);
-            this.toolStripButton1.Text = "MapOutput to XYZ";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.MapOutputtoXYZButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.MapOutputtoXYZButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.MapOutputtoXYZButton.Image = ((System.Drawing.Image)(resources.GetObject("MapOutputtoXYZButton.Image")));
+            this.MapOutputtoXYZButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MapOutputtoXYZButton.Name = "MapOutputtoXYZButton";
+            this.MapOutputtoXYZButton.Size = new System.Drawing.Size(111, 19);
+            this.MapOutputtoXYZButton.Text = "MapOutput to XYZ";
+            this.MapOutputtoXYZButton.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
-            // toolStripButton3
+            // DebinDZEButton
             // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton3.ForeColor = System.Drawing.SystemColors.Control;
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(88, 19);
-            this.toolStripButton3.Text = "De bin DZE file";
-            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+            this.DebinDZEButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.DebinDZEButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.DebinDZEButton.Image = ((System.Drawing.Image)(resources.GetObject("DebinDZEButton.Image")));
+            this.DebinDZEButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DebinDZEButton.Name = "DebinDZEButton";
+            this.DebinDZEButton.Size = new System.Drawing.Size(88, 19);
+            this.DebinDZEButton.Text = "De bin DZE file";
+            this.DebinDZEButton.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // HidePBox
             // 
@@ -758,12 +772,12 @@ namespace DayZeEditor
         private System.Windows.Forms.PictureBox Slidelabel;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ToolStripButton LootchestButton;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton MapOutputtoXYZButton;
         private System.Windows.Forms.ToolStripButton TraderPlusButton;
         private System.Windows.Forms.ToolStripButton KOSzoneManagerButton;
         private System.Windows.Forms.ToolStripButton HelicrashManagerButton;
         private System.Windows.Forms.ToolStripButton DiscordButton;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton DonateButton;
         private System.Windows.Forms.ToolStripButton KOTHManagerButton;
         private System.Windows.Forms.ToolStripButton ExpansionAIButton;
         private System.Windows.Forms.ToolStripButton ExpansionQuestsButton;
@@ -776,7 +790,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton LootPoolManagerButton;
         private System.Windows.Forms.ToolStripButton RHLootBoxManagerButton;
         private System.Windows.Forms.ToolStripButton ExpansionLoadoutManagerButton;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton DebinDZEButton;
         private System.Windows.Forms.ToolStripButton P2PButton;
         private System.Windows.Forms.ToolStripButton DNAKeyCardsButton;
         private System.Windows.Forms.Label label1;
@@ -786,6 +800,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton SpawnerBukakuManagerButton;
         private System.Windows.Forms.ToolStripButton MPGSpawnerButton;
         private System.Windows.Forms.ToolStripButton PVZCZManagerButton;
+        private System.Windows.Forms.ToolStripButton InediaButton;
     }
 }
 
