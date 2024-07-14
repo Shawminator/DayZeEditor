@@ -1644,7 +1644,7 @@ namespace DayZeEditor
             foreach (TreeNode tn in treeViewMS1.SelectedNodes)
             {
                 typesType looptype = tn.Tag as typesType;
-                typeQuantMINNUD.Visible = looptype.minSpecified = QuanMinCB.Checked;
+                typeQuantMINNUD.Visible = looptype.quantminSpecified = QuanMinCB.Checked;
                 typeQuantMINNUD.Value = -1;
                 looptype.quantmin = (int)typeQuantMINNUD.Value;
                 currentTypesFile.isDirty = true;

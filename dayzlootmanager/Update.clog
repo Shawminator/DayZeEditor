@@ -1,4 +1,8 @@
-﻿Version 0.8.0.7
+﻿Version 0.8.0.8
+[Fixed]
+Economy Manager, unticking the quant min specified checkbox did not remove the quant min from the types.
+
+Version 0.8.0.7
 [Fixed]
 CJ LootChest - fixed tool time allowed to go to -1
 All Maps - should be a lot smoother and have no teraing when zooming or moving the map.
