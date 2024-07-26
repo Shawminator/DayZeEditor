@@ -158,9 +158,6 @@
         /leFDGil9L2UOcWgy6NNWcGAXre/Yn+L/2Ji+S528AJfABNI4SEA3AqDAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="darkToolStrip22.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>292, 21</value>
-  </metadata>
   <data name="darkLabel36.Text" xml:space="preserve">
     <value>Import From .map/.dze
 This Function import a set of coord 
@@ -173,12 +170,6 @@ import to the AIPAtrolSettings.json</value>
   </data>
   <metadata name="darkToolStrip22.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>292, 21</value>
-  </metadata>
-  <metadata name="darkToolStrip24.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>427, 21</value>
-  </metadata>
-  <metadata name="darkToolStrip25.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>562, 21</value>
   </metadata>
   <data name="darkLabel176.Text" xml:space="preserve">
     <value>The Classnames to use when placing in DayZ Editor are as follows:-

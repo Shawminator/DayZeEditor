@@ -21,10 +21,10 @@ namespace DayZeLib
         public string Container { get; set; }
         public decimal FallSpeed { get; set; }
         public ExpansionAirdropLocation DropLocation { get; set; }
-        public BindingList<ExpansionLoot> Loot { get; set; }
         public BindingList<string> Infected { get; set; }
         public int ItemCount { get; set; }
         public int InfectedCount { get; set; }
+        public BindingList<ExpansionLoot> Loot { get; set; }
 
 
         [JsonIgnore]

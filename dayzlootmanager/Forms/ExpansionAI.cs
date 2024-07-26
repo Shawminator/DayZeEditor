@@ -726,6 +726,7 @@ namespace DayZeEditor
             useraction = false;
             CrashEventNameTB.Text = CurrentEventcrashpatrol.Name;
             CrashEventClassNameTB.Text = CurrentEventcrashpatrol.ClassName;
+            CrashPersistCB.Checked = CurrentEventcrashpatrol.Persist == 1 ? true : false;
             CrashFactionCB.SelectedIndex = CrashFactionCB.FindStringExact(CurrentEventcrashpatrol.Faction);
             CrashNumberOfAINUD.Value = CurrentEventcrashpatrol.NumberOfAI;
             CrashBehaviourCB.SelectedIndex = CrashBehaviourCB.FindStringExact(CurrentEventcrashpatrol.Behaviour);
@@ -748,7 +749,7 @@ namespace DayZeEditor
             CrashDamageReceivedMultiplierNUD.Value = CurrentEventcrashpatrol.DamageReceivedMultiplier;
             CrashCanBeLootedCB.Checked = CurrentEventcrashpatrol.CanBeLooted == 1 ? true : false;
             CrashUnlimitedReloadCB.Checked = CurrentEventcrashpatrol.UnlimitedReload == 1 ? true : false;
-            CrashLoadoutFileCB.SelectedIndex = CrashLoadoutFileCB.FindStringExact(CurrentEventcrashpatrol.LoadoutFile);
+            CrashLoadoutFileCB.SelectedIndex = CrashLoadoutFileCB.FindStringExact(CurrentEventcrashpatrol.Loadout);
             CrashFormationCB.SelectedIndex = CrashFormationCB.FindStringExact(CurrentEventcrashpatrol.Formation);
             CrashWaypointInterpolationCB.SelectedIndex = CrashWaypointInterpolationCB.FindStringExact(CurrentEventcrashpatrol.WaypointInterpolation);
             crashFormationLoosenessNUD.Value = CurrentEventcrashpatrol.FormationLooseness;
@@ -765,7 +766,7 @@ namespace DayZeEditor
             {
                 Name = "NewName",
                 Faction = "WEST",
-                LoadoutFile = "",
+                Loadout = "",
                 NumberOfAI = 5,
                 Behaviour = "PATROL",
                 Speed = "WALK",
@@ -821,7 +822,7 @@ namespace DayZeEditor
         private void CrashLoadoutFileCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            CurrentEventcrashpatrol.LoadoutFile = CrashLoadoutFileCB.GetItemText(CrashLoadoutFileCB.SelectedItem);
+            CurrentEventcrashpatrol.Loadout = CrashLoadoutFileCB.GetItemText(CrashLoadoutFileCB.SelectedItem);
             AIPatrolSettings.isDirty = true;
         }
         private void CrashNumberOfAINUD_ValueChanged(object sender, EventArgs e)
@@ -968,6 +969,12 @@ namespace DayZeEditor
             CurrentEventcrashpatrol.DamageReceivedMultiplier = CrashDamageReceivedMultiplierNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
+        private void CrashPersistCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentEventcrashpatrol.Persist = CrashPersistCB.Checked == true ? 1 : 0;
+            AIPatrolSettings.isDirty = true;
+        }
         private void darkButton16_Click(object sender, EventArgs e)
         {
             AddNewfileName form = new AddNewfileName()
@@ -1000,6 +1007,7 @@ namespace DayZeEditor
             CurrentPatrol = StaticPatrolLB.SelectedItem as ExpansionAIPatrol;
             useraction = false;
             StaticPatrolNameTB.Text = CurrentPatrol.Name;
+            StaticPatrolPersistCB.Checked = CurrentPatrol.Persist == 1 ? true : false;
             StaticPatrolFactionCB.SelectedIndex = StaticPatrolFactionCB.FindStringExact(CurrentPatrol.Faction);
             StaticPatrolNumberOfAINUD.Value = CurrentPatrol.NumberOfAI;
             StaticPatrolBehaviorCB.SelectedIndex = StaticPatrolBehaviorCB.FindStringExact(CurrentPatrol.Behaviour);
@@ -1019,7 +1027,7 @@ namespace DayZeEditor
             StaticPatrolChanceCB.Value = CurrentPatrol.Chance;
             StaticPatrolCanBeLotedCB.Checked = CurrentPatrol.CanBeLooted == 1 ? true : false;
             StaticPatrolUnlimitedReloadCB.Checked = CurrentPatrol.UnlimitedReload == 1 ? true : false;
-            StaticPatrolLoadoutsCB.SelectedIndex = StaticPatrolLoadoutsCB.FindStringExact(CurrentPatrol.LoadoutFile);
+            StaticPatrolLoadoutsCB.SelectedIndex = StaticPatrolLoadoutsCB.FindStringExact(CurrentPatrol.Loadout);
             StaticPatrolMinSpreadRadiusNUD.Value = CurrentPatrol.MinSpreadRadius;
             StaticPatrolMaxSpreadRadiusNUD.Value = CurrentPatrol.MaxSpreadRadius;
             StaticPatrolFormationCB.SelectedIndex = StaticPatrolFormationCB.FindStringExact(CurrentPatrol.Formation);
@@ -1090,6 +1098,7 @@ namespace DayZeEditor
                     StaticPatrolWaypointPOSXNUD.Visible = true;
                     StaticPatrolWaypointPOSYNUD.Visible = true;
                     StaticPatrolWaypointPOSZNUD.Visible = true;
+                    AIPatrolSettings.isDirty = true;
                 }
             }
         }
@@ -1136,7 +1145,7 @@ namespace DayZeEditor
         private void StaticPatrolLoadoutsCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            CurrentPatrol.LoadoutFile = StaticPatrolLoadoutsCB.GetItemText(StaticPatrolLoadoutsCB.SelectedItem);
+            CurrentPatrol.Loadout = StaticPatrolLoadoutsCB.GetItemText(StaticPatrolLoadoutsCB.SelectedItem);
             AIPatrolSettings.isDirty = true;
         }
         private void StaticPatrolNumberOfAINUD_ValueChanged(object sender, EventArgs e)
@@ -1172,7 +1181,7 @@ namespace DayZeEditor
         private void StaticPatrolNoiseInvestigationDistanceLimitNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            CurrentPatrol.NoiseInvestigationDistanceLimit = AIGeneralNoiseInvestigationDistanceLimitNUD.Value;
+            CurrentPatrol.NoiseInvestigationDistanceLimit = StaticPatrolNoiseInvestigationDistanceLimitNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
         private void StaticPatrolRespawnTimeNUD_ValueChanged(object sender, EventArgs e)
@@ -1307,6 +1316,12 @@ namespace DayZeEditor
             CurrentPatrol.WaypointInterpolation = StaticPatrolWaypointInterpolationCB.GetItemText(StaticPatrolWaypointInterpolationCB.SelectedItem);
             AIPatrolSettings.isDirty = true;
         }
+        private void StaticPatrolPersistCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPatrol.Persist = StaticPatrolPersistCB.Checked == true ? 1 : 0;
+            AIPatrolSettings.isDirty = true;
+        }
         private void darkButton4_Click(object sender, EventArgs e)
         {
             ExpansionAIPatrol newpatrol = new ExpansionAIPatrol()
@@ -1315,7 +1330,7 @@ namespace DayZeEditor
                 Faction = "West",
                 Formation = "",
                 FormationLooseness = (decimal)0.0,
-                LoadoutFile = "",
+                Loadout = "",
                 Units = new BindingList<string>(),
                 NumberOfAI = -3,
                 Behaviour = "ALTERNATE",

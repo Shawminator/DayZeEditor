@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DayZeEditor;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -1111,6 +1112,12 @@ namespace DayZeLib
                     SGFP.isDirty = false;
                 }
             }
+        }
+
+        public void AddnewObjectSpawner(string v)
+        {
+            cfggameplay.WorldsData.objectSpawnersArr.Add(v);
+            SaveCFGGameplay();
         }
     }
     public class cfgEffectAreaConfig

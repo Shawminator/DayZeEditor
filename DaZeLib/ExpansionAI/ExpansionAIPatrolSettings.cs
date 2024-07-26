@@ -8,7 +8,7 @@ namespace DayZeLib
     public class ExpansionAIPatrolSettings
     {
         [JsonIgnore]
-        const int CurrentVersion = 18;
+        const int CurrentVersion = 20;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -20,13 +20,17 @@ namespace DayZeLib
         public decimal RespawnTime { get; set; }
         public decimal MinDistRadius { get; set; }
         public decimal MaxDistRadius { get; set; }
+
         public decimal DespawnRadius { get; set; }
+
         public decimal AccuracyMin { get; set; }
         public decimal AccuracyMax { get; set; }
+
         public decimal ThreatDistanceLimit { get; set; }
         public decimal NoiseInvestigationDistanceLimit { get; set; }
         public decimal DamageMultiplier { get; set; }
         public decimal DamageReceivedMultiplier { get; set; }
+
         public BindingList<ExpansionAIObjectPatrol> ObjectPatrols { get; set; }
         public BindingList<ExpansionAIPatrol> Patrols { get; set; }
 
@@ -135,11 +139,13 @@ namespace DayZeLib
 
     public class ExpansionAIObjectPatrol
     {
+        //ExpasnionAiPatrolBase
         public string Name { get; set; }
+        public int Persist { get; set; }
         public string Faction { get; set; }
         public string Formation { get; set; }
         public decimal FormationLooseness { get; set; }
-        public string LoadoutFile { get; set; }
+        public string Loadout { get; set; }
         public BindingList<string> Units { get; set; }
         public int NumberOfAI { get; set; }
         public string Behaviour { get; set; }
@@ -163,17 +169,19 @@ namespace DayZeLib
         public string WaypointInterpolation { get; set; }
         public decimal DespawnTime { get; set; }
         public decimal RespawnTime { get; set; }
+
+        //Object Additions
         public string ClassName { get; set; }
 
         public ExpansionAIObjectPatrol() { }
-        public ExpansionAIObjectPatrol(int bod = 1, string spd = "JOG", string threatspd = "SPRINT", string beh = "ALTERNATE", string fac = "WEST", string loa = "", bool canbelooted = true, bool unlimitedreload = false, decimal chance = (decimal)1.0, decimal mindistradius = -2, decimal maxdistradius = -2, string classname = "Wreck_UH1Y")
+        public ExpansionAIObjectPatrol(int bod = 1, string spd = "JOG", string threatspd = "SPRINT", string beh = "ALTERNATE", string fac = "WEST", string loa = "", bool canbelooted = true, bool unlimitedreload = false, decimal chance = (decimal)1.0, decimal mindistradius = -1, decimal maxdistradius = -1, string classname = "Wreck_UH1Y")
         {
             NumberOfAI = bod;
             Speed = spd;
             UnderThreatSpeed = threatspd;
             Behaviour = beh;
             Faction = fac;
-            LoadoutFile = loa;
+            Loadout = loa;
             CanBeLooted = canbelooted == true ? 1 : 0; ;
             UnlimitedReload = unlimitedreload == true ? 1 : 0;
             AccuracyMin = -1;
@@ -225,11 +233,13 @@ namespace DayZeLib
         [JsonIgnore]
         public BindingList<Vec3> _waypoints { get; set; }
 
+        //ExpasnionAiPatrolBase
         public string Name { get; set; }
+        public int Persist { get; set; }
         public string Faction { get; set; }
         public string Formation { get; set; }
         public decimal FormationLooseness { get; set; }
-        public string LoadoutFile { get; set; }
+        public string Loadout { get; set; }
         public BindingList<string> Units { get; set; }
         public int NumberOfAI { get; set; }
         public string Behaviour { get; set; }
@@ -253,6 +263,8 @@ namespace DayZeLib
         public string WaypointInterpolation { get; set; }
         public decimal DespawnTime { get; set; }
         public decimal RespawnTime { get; set; }
+
+        //patrol additions
         public int UseRandomWaypointAsStartPoint { get; set; }
         public BindingList<float[]> Waypoints { get; set; }
 
@@ -263,7 +275,7 @@ namespace DayZeLib
             Faction = fac;
             Formation = "";
             FormationLooseness = (decimal)0.0;
-            LoadoutFile = loa;
+            Loadout = loa;
             Units = new BindingList<string>();
             NumberOfAI = bod;
             Behaviour = beh;

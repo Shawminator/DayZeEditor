@@ -1,17 +1,19 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel;
+using System.Text.Json.Serialization;
 
 namespace DayZeLib
 {
 
     public class ExpansionChatSettings
     {
-        const int CurrentVersion = 3;
+        const int CurrentVersion = 4;
 
         public int m_Version { get; set; }
         public int EnableGlobalChat { get; set; }
         public int EnablePartyChat { get; set; }
         public int EnableTransportChat { get; set; }
         public ExpansionChatColors ChatColors { get; set; }
+        public BindingList<string> BlacklistedWords { get;set; }
 
         [JsonIgnore]
         public string Filename { get; set; }
@@ -25,6 +27,7 @@ namespace DayZeLib
             EnablePartyChat = 1;
             EnableTransportChat = 1;
             ChatColors = new ExpansionChatColors();
+            BlacklistedWords = new BindingList<string>();
         }
 
         public bool checkver()

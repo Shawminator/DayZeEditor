@@ -5,13 +5,15 @@ namespace DayZeLib
 {
     public class ExpansionQuestAISpawn
     {
-        public int NumberOfAI { get; set; }
         public string NPCName { get; set; }
+        public int Persist { get; set; }
+        public string Faction { get; set; }
+        public int NumberOfAI { get; set; }
         public BindingList<decimal[]> Waypoints { get; set; }
         public int Behaviour { get; set; }
         public string Formation { get; set; }
         public string Loadout { get; set; }
-        public string Faction { get; set; }
+       
         public decimal Speed { get; set; }
         public decimal ThreatSpeed { get; set; }
         public decimal MinAccuracy { get; set; }

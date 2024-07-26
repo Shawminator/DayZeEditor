@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
@@ -29,7 +30,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.8.0.7";
+        public string VersionNumber = "0.8.0.8";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -1323,6 +1324,43 @@ namespace DayZeEditor
                     {
                         File.WriteAllText(savefile.FileName, jsonString);
                     }
+                }
+            }
+        }
+        private void dzetoobjectspawnerButton_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    StringBuilder sb = new StringBuilder();
+                    DZE importfile = DZEHelpers.LoadFile(filePath);
+                    ObjectSpawnerArr newobjectspawnerarr = importfile.convertToObjectSpawner();
+
+                    AddNeweventFile form = new AddNeweventFile
+                    {
+                        currentproject = Projects.getActiveProject(),
+                        newlocation = true,
+                        SetTitle = "Add New Object Spawner File",
+                        settype = "Object Spanwer File Name",
+                        SetFolderName = "Select folder where File will created, must be in mpmission folder....",
+                        setbuttontest = "Add Add Object Spawner"
+                    };
+                    DialogResult result = form.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        Project currentproject = Projects.getActiveProject();
+                        string path = form.CustomLocation;
+                        string modname = form.TypesName;
+                        Directory.CreateDirectory(path);
+                        newobjectspawnerarr.Filename = modname + ".json";
+                        currentproject.CFGGameplayConfig.AddnewObjectSpawner(path.Replace(currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\", "") + "/" + modname + ".json");
+                        var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                        string jsonString = JsonSerializer.Serialize(newobjectspawnerarr, options);
+                        File.WriteAllText(path + "\\" + newobjectspawnerarr.Filename, jsonString);
+                    }
+
                 }
             }
         }

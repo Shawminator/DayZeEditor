@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace DayZeLib
 {
-    enum ExpansionHardlineItemRarity
+    public enum ExpansionHardlineItemRarity
     {
         NONE,
         Poor,
@@ -21,11 +21,11 @@ namespace DayZeLib
         Exotic,
         Quest,
         Collectable,
-        Ingredient,
+        Ingredient
     };
     public class ExpansionHardlineSettings
     {
-        const int CurrentVersion = 10;
+        const int CurrentVersion = 11;
 
         public int m_Version { get; set; }
 
@@ -48,6 +48,7 @@ namespace DayZeLib
         public int MaxReputation { get; set; }
         public int ReputationLossOnDeath { get; set; }
         public int DefaultItemRarity { get; set; }
+        public int ItemRarityParentSearch { get; set; }
         public Dictionary<string, int> EntityReputation { get; set; }
         public Dictionary<string, int> ItemRarity { get; set; }
 
@@ -100,6 +101,8 @@ namespace DayZeLib
             ReputationLossOnDeath = 100;
 
             DefaultItemRarity = (int)ExpansionHardlineItemRarity.Common;
+
+            ItemRarityParentSearch = 0;
 
             DefaultEntityReputation();
 

@@ -8,30 +8,38 @@ namespace DayZeLib
         public int TimeLimit { get; set; }
         public int Active { get; set; }
         public decimal InfectedDeletionRadius { get; set; }
-        public BindingList<ExpansionQuestAISpawn> AISpawns { get; set; }
         public decimal MaxDistance { get; set; }
         public decimal MinDistance { get; set; }
         public BindingList<string> AllowedWeapons { get; set; }
         public BindingList<string> AllowedDamageZones { get; set; }
+        public BindingList<ExpansionAIPatrol> AISpawns { get; set; }
 
         public override void SetVec3List()
         {
-            foreach (ExpansionQuestAISpawn aispawn in AISpawns)
+            foreach (ExpansionAIPatrol aispawn in AISpawns)
             {
-                aispawn.SetVec3List();
+                aispawn.Waypoints = new BindingList<float[]>();
+                foreach (Vec3 point in aispawn._waypoints)
+                {
+                    aispawn.Waypoints.Add(point.getfloatarray());
+                }
             }
         }
         public override void GetVec3List()
         {
-            foreach (ExpansionQuestAISpawn aispawn in AISpawns)
+            foreach (ExpansionAIPatrol aispawn in AISpawns)
             {
-                aispawn.GetVec3List();
+                aispawn._waypoints = new BindingList<Vec3>();
+                foreach (float[] point in aispawn.Waypoints)
+                {
+                    aispawn._waypoints.Add(new Vec3(point));
+                }
             }
         }
 
         public QuestObjectivesAICamp()
         {
-            AISpawns = new BindingList<ExpansionQuestAISpawn>();
+            AISpawns = new BindingList<ExpansionAIPatrol>();
         }
         public override string ToString()
         {

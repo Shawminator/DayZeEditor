@@ -3254,6 +3254,7 @@ namespace DayZeEditor
             EnableGlobalChatCB.Checked = ChatSettings.EnableGlobalChat == 1 ? true : false;
             EnablePartyChatCB.Checked = ChatSettings.EnablePartyChat == 1 ? true : false;
             EnableTransportChatCB.Checked = ChatSettings.EnableTransportChat == 1 ? true : false;
+            BlackListWordsLB.DataSource = ChatSettings.BlacklistedWords;
             useraction = true;
         }
         private void SystemChatColorPB_Click(object sender, EventArgs e)
@@ -3283,6 +3284,27 @@ namespace DayZeEditor
                 ChatSettings.isDirty = true;
             }
 
+        }
+        private void darkButton9_Click_1(object sender, EventArgs e)
+        {
+            AddItemfromString form = new AddItemfromString();
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                List<string> addedtypes = form.addedtypes.ToList();
+                foreach (string l in addedtypes)
+                {
+                    ChatSettings.BlacklistedWords.Add(l);
+                    ChatSettings.isDirty = true;
+                }
+            }
+        }
+
+        private void darkButton8_Click_1(object sender, EventArgs e)
+        {
+            if (BlackListWordsLB.SelectedItems.Count <= 0) return;
+            ChatSettings.BlacklistedWords.Remove(BlackListWordsLB.GetItemText(BlackListWordsLB.SelectedItem));
+            ChatSettings.isDirty = true;
         }
         private void ChatColorPB_Paint(object sender, PaintEventArgs e)
         {
@@ -3569,6 +3591,7 @@ namespace DayZeEditor
         private void loadHardlineSettings()
         {
             useraction = false;
+            DefaultItemRarityCB.DataSource = Enum.GetValues(typeof(ExpansionHardlineItemRarity));
             ShowHardlineHUDCB.Checked = HardLineSettings.ShowHardlineHUD == 1 ? true : false;
             UseReputationCB.Checked = HardLineSettings.UseReputation == 1 ? true : false;
             UseFactionReputationCB.Checked = HardLineSettings.UseFactionReputation == 1 ? true : false;
@@ -3579,7 +3602,8 @@ namespace DayZeEditor
             UseItemRarityForMarketSellCB.Checked = HardLineSettings.UseItemRarityForMarketSell == 1 ? true : false;
             ReputationMaxReputationNUD.Value = HardLineSettings.MaxReputation;
             ReputationLossOnDeathNUD.Value = HardLineSettings.ReputationLossOnDeath;
-            DefaultItemRarityNUD.Value = HardLineSettings.DefaultItemRarity;
+            DefaultItemRarityCB.SelectedItem = (ExpansionHardlineItemRarity)HardLineSettings.DefaultItemRarity;
+            ItemRarityParentSearchCB.Checked = HardLineSettings.ItemRarityParentSearch == 1 ? true : false;
 
             HardlinePlayerDataPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\ExpansionMod\\Hardline\\PlayerData";
             if (!Directory.Exists(HardlinePlayerDataPath))
@@ -3844,13 +3868,6 @@ namespace DayZeEditor
             HardLineSettings.UseItemRarityOnInventoryIcons = UseItemRarityOnInventoryIconsCB.Checked == true ? 1 : 0;
             HardLineSettings.isDirty = true;
         }
-        private void DefaultItemRarityNUD_ValueChanged(object sender, EventArgs e)
-        {
-
-            if (!useraction) { return; }
-            HardLineSettings.DefaultItemRarity = (int)DefaultItemRarityNUD.Value;
-            HardLineSettings.isDirty = true;
-        }
         private void listBox35_SelectedIndexChanged(object sender, EventArgs e)
         {
             useraction = false;
@@ -3922,6 +3939,19 @@ namespace DayZeEditor
                     }
                 }
             }
+        }
+        private void DefaultItemRarityCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            ExpansionHardlineItemRarity cacl = (ExpansionHardlineItemRarity)DefaultItemRarityCB.SelectedItem;
+            HardLineSettings.DefaultItemRarity = (int)cacl;
+            HardLineSettings.isDirty = true;
+        }
+        private void ItemRarityParentSearchCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            HardLineSettings.ItemRarityParentSearch = ItemRarityParentSearchCB.Checked == true ? 1 : 0;
+            HardLineSettings.isDirty = true;
         }
         #endregion
 
@@ -5645,6 +5675,7 @@ namespace DayZeEditor
             ShowPartyMemberMapMarkersCB.Checked = PartySettings.ShowPartyMemberMapMarkers == 1 ? true : false;
             ShowHUDMemberDistanceCB.Checked = PartySettings.ShowHUDMemberDistance == 1 ? true : false;
             ForcePartyToHaveTagsCB.Checked = PartySettings.ForcePartyToHaveTags == 1 ? true : false;
+            InviteCooldownNUD.Value = PartySettings.InviteCooldown;
             useraction = true;
         }
         private void PartySettingsCB_CheckedChanged(object sender, EventArgs e)
@@ -9354,6 +9385,9 @@ namespace DayZeEditor
                 currentstoragelevel.ExcludedSlots.Add(Slot);
             PersonalStorageSettingsNew.isDirty = true;
         }
+
+
+
 
 
 

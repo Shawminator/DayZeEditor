@@ -1,6 +1,18 @@
 ﻿Version 0.8.0.8
 [Fixed]
-Economy Manager, unticking the quant min specified checkbox did not remove the quant min from the types.
+Economy Manager - unticking the quant min specified checkbox did not remove the quant min from the types.
+Rag BaseBuilding - Updated/removed Various setting i missed on last update.
+Spawner Babuka - Some changes were not being saved.
+Expansion AI - Noticed small error in AI APtrol Noise Numbox, was updating wrtong value.
+[Added]
+Main form - Added ability to import from Dze to the gameplay ObjectSpawner(Import only), this will automaticlayy save the file and update the cfggameplay json with the correct entry.
+[Update]
+Expansion Chat - add Blacklist Words List
+Expansion Party - Add Invite Cooldown
+Expasnion AI - Add Persist to both patrols and object patrols
+Expansion Hardline - Add ItemRarityParentSearch 
+ExpansionQuests - Updating AiQuestPatrols to match AI Patrols
+
 
 Version 0.8.0.7
 [Fixed]

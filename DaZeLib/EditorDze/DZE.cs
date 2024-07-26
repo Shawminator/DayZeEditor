@@ -60,6 +60,23 @@ namespace DayZeLib
                 }
             }
         }
+
+        public ObjectSpawnerArr convertToObjectSpawner()
+        {
+            ObjectSpawnerArr newobjectspawner = new ObjectSpawnerArr();
+            newobjectspawner.Objects = new BindingList<SpawnObjects>();
+            foreach(Editorobject obj in EditorObjects)
+            {
+                SpawnObjects newobject = new SpawnObjects();
+                newobject.name = obj.Type;
+                newobject.pos = obj.Position;
+                newobject.ypr = obj.Orientation;
+                newobject.scale = obj.Scale;
+                newobject.enableCEPersistency = false;
+                newobjectspawner.Objects.Add(newobject);
+            }
+            return newobjectspawner;
+        }
     }
 
     public class Editorobject

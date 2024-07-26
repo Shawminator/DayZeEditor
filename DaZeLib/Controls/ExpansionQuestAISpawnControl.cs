@@ -58,16 +58,12 @@ namespace DayZeEditor
                 }
             }
         }
+
+        public Vec3 CurrentWapypoint { get; private set; }
         private bool useraction { get; set; }
 
-        public void SetAICountReadOnly(bool ro)
-        {
-            ObjectivesAICampAISpawnsNumberOfAINUD.ReadOnly = ro;
-            ObjectivesAICampAISpawnsNumberOfAINUD.Increment = 0;
-        }
-
-        private ExpansionQuestAISpawn _currentAISpawn { get; set; }
-        public ExpansionQuestAISpawn currentAISpawn
+        private ExpansionAIPatrol _currentAISpawn { get; set; }
+        public ExpansionAIPatrol currentAISpawn
         {
             get
             {
@@ -91,8 +87,8 @@ namespace DayZeEditor
         }
         public void setuplists()
         {
-            ObjectivesAICampAISpawnsFactionCB.DataSource = new BindingList<string>(Factions);
-            ObjectivesAICampAISpawnsLoadoutCB.DataSource = new BindingList<AILoadouts>(LoadoutList);
+            StaticPatrolFactionCB.DataSource = new BindingList<string>(Factions);
+            StaticPatrolLoadoutsCB.DataSource = new BindingList<AILoadouts>(LoadoutList);
         }
         private void updatevalues()
         {
@@ -100,232 +96,346 @@ namespace DayZeEditor
 
             useraction = false;
 
-            ObjectivesAICampAISpawnsNumberOfAINUD.Value = _currentAISpawn.NumberOfAI;
-            ObjectivesAICampAISpawnsNPCNameTB.Text = _currentAISpawn.NPCName;
-            ObjectivesAICampAISpawnsBehaviourCB.SelectedIndex = _currentAISpawn.Behaviour;
-            ObjectivesAICampAISpawnsFormationCB.SelectedIndex = ObjectivesAICampAISpawnsFormationCB.FindStringExact(_currentAISpawn.Formation);
-            ObjectivesAICampAISpawnsLoadoutCB.SelectedIndex = ObjectivesAICampAISpawnsLoadoutCB.FindStringExact(_currentAISpawn.Loadout);
-            ObjectivesAICampAISpawnsFactionCB.SelectedIndex = ObjectivesAICampAISpawnsFactionCB.FindStringExact(_currentAISpawn.Faction);
-            ObjectivesAICampAISpawnsSpeedNUD.Value = _currentAISpawn.Speed;
-            ObjectivesAICampAISpawnsThreatSpeedNUD.Value = _currentAISpawn.ThreatSpeed;
-            ObjectivesAICampAISpawnsMinAccuracyNUD.Value = _currentAISpawn.MinAccuracy;
-            ObjectivesAICampAISpawnsMaxAccuracyNUD.Value = _currentAISpawn.MaxAccuracy;
-            ObjectivesAICampAISpawnsCanBeLootedCB.Checked = _currentAISpawn.CanBeLooted == 1 ? true : false;
-            ObjectivesAICampAISpawnsUnlimitedReloadCB.Checked = _currentAISpawn.UnlimitedReload == 1 ? true : false;
-            ObjectivesAICampAiSpawnsThreatDistanceLimitNUD.Value = _currentAISpawn.ThreatDistanceLimit;
-            ObjectivesAICampAiSpawnsDamageMultiplierNUD.Value = _currentAISpawn.DamageMultiplier;
-            ObjectivesAICampAISpawnsDamageReceivedMultiplierNUD.Value = _currentAISpawn.DamageReceivedMultiplier;
-            ObjectivesAICampAISpawnsSniperProneDistanceThresholdNUD.Value = _currentAISpawn.SniperProneDistanceThreshold;
-            ObjectivesAICampAiSpawnsRespawnTimeNUD.Value = _currentAISpawn.RespawnTime;
-            ObjectivesAICampAiSpawnsDespawnTimeNUD.Value = _currentAISpawn.DespawnTime;
-            ObjectivesAICampAiSpawnsMinDistanceRadiusNUD.Value = _currentAISpawn.MinDistanceRadius;
-            ObjectivesAICampAiSpawnsMaxDistanceRadiusNUD.Value = _currentAISpawn.MaxDistanceRadius;
-            ObjectivesAICampAiSpawnsDespawnRadiusNUD.Value = _currentAISpawn.DespawnRadius;
+            StaticPatrolNameTB.Text = _currentAISpawn.Name;
+            StaticPatrolPersistCB.Checked = _currentAISpawn.Persist == 1 ? true : false;
+            StaticPatrolFactionCB.SelectedIndex = StaticPatrolFactionCB.FindStringExact(_currentAISpawn.Faction);
+            StaticPatrolNumberOfAINUD.Value = _currentAISpawn.NumberOfAI;
+            StaticPatrolBehaviorCB.SelectedIndex = StaticPatrolBehaviorCB.FindStringExact(_currentAISpawn.Behaviour);
+            StaticPatrolSpeedCB.SelectedIndex = StaticPatrolSpeedCB.FindStringExact(_currentAISpawn.Speed);
+            StaticPatrolUnderThreatSpeedCB.SelectedIndex = StaticPatrolUnderThreatSpeedCB.FindStringExact(_currentAISpawn.UnderThreatSpeed);
+            StaticPatrolRespawnTimeNUD.Value = _currentAISpawn.RespawnTime;
+            StaticPatrolDespawnTimeNUD.Value = _currentAISpawn.DespawnTime;
+            StaticPatrolMinDistRadiusNUD.Value = _currentAISpawn.MinDistRadius;
+            StaticPatrolMaxDistRadiusNUD.Value = _currentAISpawn.MaxDistRadius;
+            StaticPatrolDespawnRadiusNUD.Value = _currentAISpawn.DespawnRadius;
+            StaticPatrolAccuracyMinNUD.Value = _currentAISpawn.AccuracyMin;
+            StaticPatrolAccuracyMaxNUD.Value = _currentAISpawn.AccuracyMax;
+            StaticPatrolDamageReceivedMultiplierNUD.Value = _currentAISpawn.DamageReceivedMultiplier;
+            StaticPatrolThreatDistanceLimitNUD.Value = _currentAISpawn.ThreatDistanceLimit;
+            StaticPatrolSniperProneDistanceThresholdNUD.Value = _currentAISpawn.SniperProneDistanceThreshold;
+            StaticPatrolDamageMultiplierNUD.Value = _currentAISpawn.DamageMultiplier;
+            StaticPatrolChanceCB.Value = _currentAISpawn.Chance;
+            StaticPatrolCanBeLotedCB.Checked = _currentAISpawn.CanBeLooted == 1 ? true : false;
+            StaticPatrolUnlimitedReloadCB.Checked = _currentAISpawn.UnlimitedReload == 1 ? true : false;
+            StaticPatrolLoadoutsCB.SelectedIndex = StaticPatrolLoadoutsCB.FindStringExact(_currentAISpawn.Loadout);
+            StaticPatrolMinSpreadRadiusNUD.Value = _currentAISpawn.MinSpreadRadius;
+            StaticPatrolMaxSpreadRadiusNUD.Value = _currentAISpawn.MaxSpreadRadius;
+            StaticPatrolFormationCB.SelectedIndex = StaticPatrolFormationCB.FindStringExact(_currentAISpawn.Formation);
+            StaticPatrolFormationLoosenessNUD.Value = _currentAISpawn.FormationLooseness;
+            StaticPatrolWaypointInterpolationCB.SelectedIndex = StaticPatrolWaypointInterpolationCB.FindStringExact(_currentAISpawn.WaypointInterpolation);
+            StaticPatrolUseRandomWaypointAsStartPointCB.Checked = _currentAISpawn.UseRandomWaypointAsStartPoint == 1 ? true : false;
+            StaticPatrolNoiseInvestigationDistanceLimitNUD.Value = _currentAISpawn.NoiseInvestigationDistanceLimit;
 
-            ObjectivesAICampAISpawnsWayPointsLB.DisplayMember = "DisplayName";
-            ObjectivesAICampAISpawnsWayPointsLB.ValueMember = "Value";
-            ObjectivesAICampAISpawnsWayPointsLB.DataSource = _currentAISpawn._Waypoints;
+            StaticPatrolUnitsLB.DisplayMember = "DisplayName";
+            StaticPatrolUnitsLB.ValueMember = "Value";
+            StaticPatrolUnitsLB.DataSource = _currentAISpawn.Units;
 
-            ObjectivesAiCampAISpawnsClassnamesLB.DisplayMember = "DisplayName";
-            ObjectivesAiCampAISpawnsClassnamesLB.ValueMember = "Value";
-            ObjectivesAiCampAISpawnsClassnamesLB.DataSource = _currentAISpawn.ClassNames;
+            StaticPatrolWayPointsLB.DisplayMember = "DisplayName";
+            StaticPatrolWayPointsLB.ValueMember = "Value";
+            StaticPatrolWayPointsLB.DataSource = _currentAISpawn._waypoints;
+
+            if (_currentAISpawn._waypoints.Count == 0)
+            {
+                StaticPatrolWaypointPOSXNUD.Visible = false;
+                StaticPatrolWaypointPOSYNUD.Visible = false;
+                StaticPatrolWaypointPOSZNUD.Visible = false;
+            }
+            else
+            {
+                StaticPatrolWaypointPOSXNUD.Visible = true;
+                StaticPatrolWaypointPOSYNUD.Visible = true;
+                StaticPatrolWaypointPOSZNUD.Visible = true;
+            }
 
             useraction = true;
         }
-        private void ObjectivesAICampAISpawnsNumberOfAINUD_ValueChanged(object sender, EventArgs e)
+        private void StaticPatrolNameTB_TextChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            _currentAISpawn.NumberOfAI = (int)ObjectivesAICampAISpawnsNumberOfAINUD.Value;
-            isDirty = true;
-        }
-        private void ObjectivesAICampAISpawnsNPCNameTB_TextChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            _currentAISpawn.NPCName = ObjectivesAICampAISpawnsNPCNameTB.Text;
-            isDirty = true;
-        }
-        private void ObjectivesAICampAISpawnsBehaviourCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            _currentAISpawn.Behaviour = ObjectivesAICampAISpawnsBehaviourCB.SelectedIndex;
-            isDirty = true;
-        }
-        private void ObjectivesAICampAISpawnsFormationCB_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            _currentAISpawn.Formation = ObjectivesAICampAISpawnsFormationCB.GetItemText(ObjectivesAICampAISpawnsFormationCB.SelectedItem);
-            isDirty = true;
-        }
-        private void ObjectivesAICampAISpawnsLoadoutCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            _currentAISpawn.Loadout = ObjectivesAICampAISpawnsLoadoutCB.GetItemText(ObjectivesAICampAISpawnsLoadoutCB.SelectedItem);
-            isDirty = true;
-        }
-        private void ObjectivesAICampAISpawnsFactionCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            _currentAISpawn.Faction = ObjectivesAICampAISpawnsFactionCB.GetItemText(ObjectivesAICampAISpawnsFactionCB.SelectedItem);
-            isDirty = true;
-        }
-        private void ObjectivesAICampAISpawnsSpeedNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            _currentAISpawn.Speed = ObjectivesAICampAISpawnsSpeedNUD.Value;
-            isDirty = true;
-        }
-        private void ObjectivesAICampAISpawnsThreatSpeedNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            _currentAISpawn.ThreatSpeed = ObjectivesAICampAISpawnsThreatSpeedNUD.Value;
-            isDirty = true;
-        }
-        private void ObjectivesAICampAISpawnsUnlimitedReloadCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            _currentAISpawn.UnlimitedReload = ObjectivesAICampAISpawnsUnlimitedReloadCB.Checked == true ? 1 : 0;
-            isDirty = true;
-        }
-        private void ObjectiovesAICampAISpawnsCanBeLootedCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            _currentAISpawn.CanBeLooted = ObjectivesAICampAISpawnsCanBeLootedCB.Checked == true ? 1 : 0;
-            isDirty = true;
-        }
-        private void ObjectivesAICampNPCAccuracyMinNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            _currentAISpawn.MinAccuracy = ObjectivesAICampAISpawnsMinAccuracyNUD.Value;
-            isDirty = true;
-        }
-        private void ObjectivesAICampNPCAccuracyMaxNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            _currentAISpawn.MaxAccuracy = ObjectivesAICampAISpawnsMaxAccuracyNUD.Value;
-            isDirty = true;
-        }
-        private void ObjectivesAICampAiSpawnsThreatDistanceLimitNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            _currentAISpawn.ThreatDistanceLimit = ObjectivesAICampAiSpawnsThreatDistanceLimitNUD.Value;
-            isDirty = true;
-        }
-        private void ObjectivesAICampAiSpawnsDamageMultiplierNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            _currentAISpawn.DamageMultiplier = ObjectivesAICampAiSpawnsDamageMultiplierNUD.Value;
-            isDirty = true;
-        }
-        private void ObjectivesAICampAISpawnsDamageReceivedMultiplierNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            _currentAISpawn.DamageReceivedMultiplier = ObjectivesAICampAISpawnsDamageReceivedMultiplierNUD.Value;
-            isDirty = true;
-        }
-        private void ObjectivesAICampAISpawnsSniperProneDistanceThresholdNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            _currentAISpawn.SniperProneDistanceThreshold = ObjectivesAICampAISpawnsSniperProneDistanceThresholdNUD.Value;
-            isDirty = true;
-        }
-        private void ObjectivesAICampAiSpawnsDespawnTimeNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            _currentAISpawn.DespawnTime = ObjectivesAICampAiSpawnsDespawnTimeNUD.Value;
-            isDirty = true;
-        }
-        private void ObjectivesAICampAiSpawnsRespawnTimeNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            _currentAISpawn.RespawnTime = ObjectivesAICampAiSpawnsRespawnTimeNUD.Value;
-            isDirty = true;
-        }
-        private void ObjectivesAICampAiSpawnsMinDistanceRadiusNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            _currentAISpawn.MinDistanceRadius = ObjectivesAICampAiSpawnsMinDistanceRadiusNUD.Value;
-            isDirty = true;
-        }
-        private void ObjectivesAICampAiSpawnsMaxDistanceRadiusNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            _currentAISpawn.MaxDistanceRadius = ObjectivesAICampAiSpawnsMaxDistanceRadiusNUD.Value;
-            isDirty = true;
-        }
-        private void ObjectivesAICampDespawnRadiusNUD_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            _currentAISpawn.DespawnRadius = ObjectivesAICampAiSpawnsDespawnRadiusNUD.Value;
+            _currentAISpawn.Name = StaticPatrolNameTB.Text;
             isDirty = true;
         }
 
-        private void ObjectivesAiCampAiSpawnsClassnamesAddButton_Click(object sender, EventArgs e)
+        private void StaticPatrolFactionCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ObjectivesAiCampAISpawnsClassnamesLB.SelectedItems.Count <= 0) return;
-            AddItemfromString form = new AddItemfromString();
-            DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK)
+            if (!useraction) return;
+            _currentAISpawn.Faction = StaticPatrolFactionCB.GetItemText(StaticPatrolFactionCB.SelectedItem);
+            isDirty = true;
+        }
+
+        private void StaticPatrolFormationCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.Formation = StaticPatrolFormationCB.GetItemText(StaticPatrolFormationCB.SelectedItem);
+            isDirty = true;
+        }
+
+        private void StaticPatrolFormationLoosenessNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.FormationLooseness = (int)StaticPatrolFormationLoosenessNUD.Value;
+            isDirty = true;
+        }
+
+        private void StaticPatrolPersistCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.Persist = StaticPatrolPersistCB.Checked == true ? 1 : 0;
+            isDirty = true;
+        }
+
+        private void StaticPatrolLoadoutsCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.Loadout = StaticPatrolLoadoutsCB.GetItemText(StaticPatrolLoadoutsCB.SelectedItem);
+            isDirty = true;
+        }
+
+        private void StaticPatrolNumberOfAINUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.NumberOfAI = (int)StaticPatrolNumberOfAINUD.Value;
+            isDirty = true;
+        }
+
+        private void StaticPatrolBehaviorCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.Behaviour = StaticPatrolBehaviorCB.GetItemText(StaticPatrolBehaviorCB.SelectedItem);
+            isDirty = true;
+        }
+
+        private void StaticPatrolSpeedCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.Speed = StaticPatrolSpeedCB.GetItemText(StaticPatrolSpeedCB.SelectedItem);
+            isDirty = true;
+        }
+
+        private void StaticPatrolUnderThreatSpeedCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.UnderThreatSpeed = StaticPatrolUnderThreatSpeedCB.GetItemText(StaticPatrolUnderThreatSpeedCB.SelectedItem);
+            isDirty = true;
+        }
+
+        private void StaticPatrolAccuracyMinNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.AccuracyMin = StaticPatrolAccuracyMinNUD.Value;
+            isDirty = true;
+        }
+
+        private void StaticPatrolAccuracyMaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.AccuracyMax = StaticPatrolAccuracyMaxNUD.Value;
+            isDirty = true;
+        }
+
+        private void StaticPatrolThreatDistanceLimitNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.ThreatDistanceLimit = StaticPatrolThreatDistanceLimitNUD.Value;
+            isDirty = true;
+        }
+
+        private void StaticPatrolDamageMultiplierNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.DamageMultiplier = StaticPatrolDamageMultiplierNUD.Value;
+            isDirty = true;
+        }
+
+        private void StaticPatrolMinSpreadRadiusNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.MinSpreadRadius = (int)StaticPatrolMinSpreadRadiusNUD.Value;
+            isDirty = true;
+        }
+
+        private void StaticPatrolRespawnTimeNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.RespawnTime = StaticPatrolRespawnTimeNUD.Value;
+            isDirty = true;
+        }
+
+        private void StaticPatrolDespawnRadiusNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.DespawnRadius = StaticPatrolDespawnRadiusNUD.Value;
+            isDirty = true;
+        }
+
+        private void StaticPatrolMinDistRadiusNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.MinDistRadius = StaticPatrolMinDistRadiusNUD.Value;
+            isDirty = true;
+        }
+
+        private void StaticPatrolCanBeLotedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.CanBeLooted = StaticPatrolCanBeLotedCB.Checked == true ? 1 : 0;
+            isDirty = true;
+        }
+
+        private void StaticPatrolUnlimitedReloadCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.UnlimitedReload = StaticPatrolUnlimitedReloadCB.Checked == true ? 1 : 0;
+            isDirty = true;
+        }
+
+        private void StaticPatrolSniperProneDistanceThresholdNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.SniperProneDistanceThreshold = StaticPatrolSniperProneDistanceThresholdNUD.Value;
+            isDirty = true;
+        }
+
+        private void StaticPatrolDamageReceivedMultiplierNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.DamageReceivedMultiplier = StaticPatrolDamageReceivedMultiplierNUD.Value;
+            isDirty = true;
+        }
+
+        private void StaticPatrolNoiseInvestigationDistanceLimitNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.NoiseInvestigationDistanceLimit = StaticPatrolNoiseInvestigationDistanceLimitNUD.Value;
+            isDirty = true;
+        }
+
+        private void StaticPatrolMaxSpreadRadiusNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.MaxSpreadRadius = (int)StaticPatrolMaxSpreadRadiusNUD.Value;
+            isDirty = true;
+        }
+
+        private void StaticPatrolDespawnTimeNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.DespawnTime = StaticPatrolDespawnTimeNUD.Value;
+            isDirty = true;
+        }
+
+        private void StaticPatrolChanceCB_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.Chance = StaticPatrolChanceCB.Value;
+            isDirty = true;
+        }
+
+        private void StaticPatrolMaxDistRadiusNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.MaxDistRadius = StaticPatrolMaxDistRadiusNUD.Value;
+            isDirty = true;
+        }
+
+        private void StaticPatrolWaypointInterpolationCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.WaypointInterpolation = StaticPatrolWaypointInterpolationCB.GetItemText(StaticPatrolWaypointInterpolationCB.SelectedItem);
+            isDirty = true;
+        }
+
+        private void darkButton11_Click(object sender, EventArgs e)
+        {
+            AddNewfileName form = new AddNewfileName()
             {
-                List<string> addedtypes = form.addedtypes.ToList();
-                foreach (string l in addedtypes)
+                setdescription = "Please enter the Unit you wish to add",
+                SetTitle = "Add Unit",
+                Setbutton = "Add"
+            };
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                _currentAISpawn.Units.Add(form.NewFileName);
+                StaticPatrolUnitsLB.Invalidate();
+                isDirty = true;
+            }
+        }
+
+        private void darkButton10_Click(object sender, EventArgs e)
+        {
+            _currentAISpawn.Units.Remove(StaticPatrolUnitsLB.GetItemText(StaticPatrolUnitsLB.SelectedItem));
+            StaticPatrolUnitsLB.Invalidate();
+            isDirty = true;
+        }
+
+        private void StaticPatrolWayPointsLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (StaticPatrolWayPointsLB.SelectedItems.Count < 1) return;
+            CurrentWapypoint = StaticPatrolWayPointsLB.SelectedItem as Vec3;
+            useraction = false;
+            StaticPatrolWaypointPOSXNUD.Value = (decimal)CurrentWapypoint.X;
+            StaticPatrolWaypointPOSYNUD.Value = (decimal)CurrentWapypoint.Y;
+            StaticPatrolWaypointPOSZNUD.Value = (decimal)CurrentWapypoint.Z;
+            useraction = true;
+        }
+
+        private void StaticPatrolWaypointPOSXNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentWapypoint.X = (float)StaticPatrolWaypointPOSXNUD.Value;
+            isDirty = true;
+        }
+
+        private void StaticPatrolWaypointPOSYNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentWapypoint.Y = (float)StaticPatrolWaypointPOSYNUD.Value;
+            isDirty = true;
+        }
+
+        private void StaticPatrolWaypointPOSZNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentWapypoint.Z = (float)StaticPatrolWaypointPOSZNUD.Value;
+            isDirty = true;
+        }
+
+        private void StaticPatrolUseRandomWaypointAsStartPointCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.UseRandomWaypointAsStartPoint = StaticPatrolUseRandomWaypointAsStartPointCB.Checked == true ? 1 : 0;
+            isDirty = true;
+        }
+
+        private void darkButton17_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    if (!_currentAISpawn.ClassNames.Contains(l))
-                        _currentAISpawn.ClassNames.Add(l);
+                    string filePath = openFileDialog.FileName;
+                    DZE importfile = DZEHelpers.LoadFile(filePath);
+                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        _currentAISpawn._waypoints.Clear();
+                    }
+                    foreach (Editorobject eo in importfile.EditorObjects)
+                    {
+                        _currentAISpawn._waypoints.Add(new Vec3(eo.Position));
+                    }
+                    StaticPatrolWayPointsLB.SelectedIndex = -1;
+                    StaticPatrolWayPointsLB.SelectedIndex = StaticPatrolWayPointsLB.Items.Count - 1;
+                    StaticPatrolWayPointsLB.Refresh();
+                    StaticPatrolWaypointPOSXNUD.Visible = true;
+                    StaticPatrolWaypointPOSYNUD.Visible = true;
+                    StaticPatrolWaypointPOSZNUD.Visible = true;
+                    isDirty = true;
                 }
             }
-            isDirty = true;
         }
-        private void ObjectivesAiCampAiSpawnsClassnamesRemoveButton_Click(object sender, EventArgs e)
-        {
-            if (ObjectivesAiCampAISpawnsClassnamesLB.SelectedItems.Count <= 0) return;
-            for (int i = 0; i < ObjectivesAiCampAISpawnsClassnamesLB.SelectedItems.Count; i++)
-            {
-                _currentAISpawn.ClassNames.Remove(ObjectivesAiCampAISpawnsClassnamesLB.GetItemText(ObjectivesAiCampAISpawnsClassnamesLB.SelectedItems[0]));
-            }
-            isDirty = true;
-        }
-        public Vec3 CurrentWapypoint;
-        private void ObjectivesAICampAISpawnsWayPointsLB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ObjectivesAICampAISpawnsWayPointsLB.SelectedItems.Count < 1) return;
-            CurrentWapypoint = ObjectivesAICampAISpawnsWayPointsLB.SelectedItem as Vec3;
-            useraction = false;
-            numericUpDown9.Value = (decimal)CurrentWapypoint.X;
-            numericUpDown11.Value = (decimal)CurrentWapypoint.Y;
-            numericUpDown12.Value = (decimal)CurrentWapypoint.Z;
-            useraction = true;
 
-        }
-        private void numericUpDown9_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentWapypoint.X = (float)numericUpDown9.Value;
-            isDirty = true;
-        }
-        private void numericUpDown11_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentWapypoint.Y = (float)numericUpDown11.Value;
-            isDirty = true;
-        }
-        private void numericUpDown12_ValueChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentWapypoint.Z = (float)numericUpDown12.Value;
-            isDirty = true;
-        }
-        private void ObjectivesAiCampAISpawnsWaypointAddButton_Click(object sender, EventArgs e)
-        {
-            _currentAISpawn._Waypoints.Add(new Vec3(0, 0, 0));
-            isDirty = true;
-        }
-        private void ObjectivesAiCampAISpawnsWaypointRemoveButton_Click(object sender, EventArgs e)
-        {
-            _currentAISpawn._Waypoints.Remove(CurrentWapypoint);
-            isDirty = true;
-            ObjectivesAICampAISpawnsWayPointsLB.Refresh();
-        }
-        private void darkButton18_Click(object sender, EventArgs e)
+        private void darkButton5_Click(object sender, EventArgs e)
         {
             string[] fileContent = new string[] { };
             var filePath = string.Empty;
@@ -338,77 +448,43 @@ namespace DayZeEditor
                     DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        _currentAISpawn._Waypoints.Clear();
+                        _currentAISpawn._waypoints.Clear();
                     }
                     for (int i = 0; i < fileContent.Length; i++)
                     {
                         if (fileContent[i] == "") continue;
                         string[] linesplit = fileContent[i].Split('|');
                         string[] XYZ = linesplit[1].Split(' ');
-                        decimal[] newfloatarray = new decimal[] { Convert.ToDecimal(XYZ[0]), Convert.ToDecimal(XYZ[1]), Convert.ToDecimal(XYZ[2]) };
-                        _currentAISpawn._Waypoints.Add(new Vec3(newfloatarray));
+                        _currentAISpawn._waypoints.Add(new Vec3(XYZ));
 
                     }
-                    ObjectivesAICampAISpawnsWayPointsLB.SelectedIndex = -1;
-                    ObjectivesAICampAISpawnsWayPointsLB.SelectedIndex = ObjectivesAICampAISpawnsWayPointsLB.Items.Count - 1;
-                    ObjectivesAICampAISpawnsWayPointsLB.Refresh();
+                    StaticPatrolWayPointsLB.SelectedIndex = -1;
+                    StaticPatrolWayPointsLB.SelectedIndex = StaticPatrolWayPointsLB.Items.Count - 1;
+                    StaticPatrolWayPointsLB.Refresh();
+                    StaticPatrolWaypointPOSXNUD.Visible = true;
+                    StaticPatrolWaypointPOSYNUD.Visible = true;
+                    StaticPatrolWaypointPOSZNUD.Visible = true;
                     isDirty = true;
                 }
             }
         }
-        private void darkButton17_Click(object sender, EventArgs e)
-        {
-            StringBuilder SB = new StringBuilder();
-            foreach (Vec3 v3 in _currentAISpawn._Waypoints)
-            {
-                SB.AppendLine("eAI_SurvivorM_Lewis|" + v3.GetString() + "|0.0 0.0 0.0");
-            }
-            SaveFileDialog save = new SaveFileDialog();
-            if (save.ShowDialog() == DialogResult.OK)
-            {
-                File.WriteAllText(save.FileName + ".map", SB.ToString());
-            }
-        }
-        private void darkButton16_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string filePath = openFileDialog.FileName;
-                    DZE importfile = DZEHelpers.LoadFile(filePath);
-                    DialogResult dialogResult = MessageBox.Show("Clear Exisitng Position?", "Clear position", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        _currentAISpawn._Waypoints.Clear();
-                    }
-                    foreach (Editorobject eo in importfile.EditorObjects)
-                    {
-                        _currentAISpawn._Waypoints.Add(new Vec3(eo.Position));
-                    }
-                    ObjectivesAICampAISpawnsWayPointsLB.SelectedIndex = -1;
-                    ObjectivesAICampAISpawnsWayPointsLB.SelectedIndex = ObjectivesAICampAISpawnsWayPointsLB.Items.Count - 1;
-                    ObjectivesAICampAISpawnsWayPointsLB.Refresh();
-                    isDirty = true;
-                }
-            }
-        }
-        private void darkButton15_Click(object sender, EventArgs e)
+
+        private void darkButton14_Click(object sender, EventArgs e)
         {
             DZE newdze = new DZE()
             {
                 MapName = ""
             };
             int m_Id = 0;
-            foreach (Vec3 v3 in _currentAISpawn._Waypoints)
+            foreach (Vec3 array in _currentAISpawn._waypoints)
             {
                 Editorobject eo = new Editorobject()
                 {
                     Type = "eAI_SurvivorM_Jose",
                     DisplayName = "eAI_SurvivorM_Jose",
-                    Position = v3.getfloatarray(),
+                    Position = array.getfloatarray(),
                     Orientation = new float[] { 0, 0, 0 },
-                    Scale = (float)1.0,
+                    Scale = 1.0f,
                     Model = "",
                     Flags = 2147483647,
                     m_Id = m_Id
@@ -425,17 +501,25 @@ namespace DayZeEditor
                 File.WriteAllText(save.FileName + ".dze", jsonString);
             }
         }
-        private void ObjectivesAICampAISpawnsWayPointsLB_SelectedIndexChanged_1(object sender, EventArgs e)
+
+        private void StaticPatrolExporttoMapButton_Click(object sender, EventArgs e)
         {
-            if (ObjectivesAICampAISpawnsWayPointsLB.SelectedItems.Count <= 0) { return; }
-            useraction = false;
-            CurrentWapypoint = ObjectivesAICampAISpawnsWayPointsLB.SelectedItem as Vec3;
-            numericUpDown9.Value = (decimal)CurrentWapypoint.X;
-            numericUpDown11.Value = (decimal)CurrentWapypoint.Y;
-            numericUpDown12.Value = (decimal)CurrentWapypoint.Z;
+            StringBuilder SB = new StringBuilder();
+            foreach (Vec3 array in _currentAISpawn._waypoints)
+            {
+                SB.AppendLine("eAI_SurvivorM_Lewis|" + array.GetString() + "|0.0 0.0 0.0");
+            }
+            SaveFileDialog save = new SaveFileDialog();
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                File.WriteAllText(save.FileName + ".map", SB.ToString());
+            }
+        }
 
-            useraction = true;
-
+        public void setAInumASReadOnly(bool v)
+        {
+            StaticPatrolNumberOfAINUD.ReadOnly = v;
+            StaticPatrolNumberOfAINUD.Increment = 0;
         }
     }
 }

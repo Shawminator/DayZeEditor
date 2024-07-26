@@ -83,6 +83,7 @@ namespace DayZeEditor
             this.darkStatusStrip1 = new DarkUI.Controls.DarkStatusStrip();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.dzetoobjectspawnerButton = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.SlidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Slidelabel)).BeginInit();
@@ -241,7 +242,8 @@ namespace DayZeEditor
             this.AdvancedWorkbenchButton,
             this.DNAKeyCardsButton,
             this.MapOutputtoXYZButton,
-            this.DebinDZEButton});
+            this.DebinDZEButton,
+            this.dzetoobjectspawnerButton});
             this.ToolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.ToolStrip1.Location = new System.Drawing.Point(26, 29);
             this.ToolStrip1.Name = "ToolStrip1";
@@ -715,6 +717,17 @@ namespace DayZeEditor
             this.panel2.Size = new System.Drawing.Size(25, 25);
             this.panel2.TabIndex = 45;
             // 
+            // dzetoobjectspawnerButton
+            // 
+            this.dzetoobjectspawnerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.dzetoobjectspawnerButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.dzetoobjectspawnerButton.Image = ((System.Drawing.Image)(resources.GetObject("dzetoobjectspawnerButton.Image")));
+            this.dzetoobjectspawnerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.dzetoobjectspawnerButton.Name = "dzetoobjectspawnerButton";
+            this.dzetoobjectspawnerButton.Size = new System.Drawing.Size(123, 19);
+            this.dzetoobjectspawnerButton.Text = "Dze to ObjectSpawner";
+            this.dzetoobjectspawnerButton.Click += new System.EventHandler(this.dzetoobjectspawnerButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -801,6 +814,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton MPGSpawnerButton;
         private System.Windows.Forms.ToolStripButton PVZCZManagerButton;
         private System.Windows.Forms.ToolStripButton InediaButton;
+        private System.Windows.Forms.ToolStripButton dzetoobjectspawnerButton;
     }
 }
 

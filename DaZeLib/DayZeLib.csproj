@@ -206,6 +206,12 @@
     <Compile Include="Helper Forms\AddItemfromTypes.Designer.cs">
       <DependentUpon>AddItemfromTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper Forms\AddnewFilename.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Helper Forms\AddnewFilename.Designer.cs">
+      <DependentUpon>AddnewFilename.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper Forms\Form_Controls_AddfromType.cs" />
     <Compile Include="Helper\Helper.cs" />
     <Compile Include="Helper\Project.cs" />
@@ -277,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Helper Forms\AddItemfromTypes.resx">
       <DependentUpon>AddItemfromTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Helper Forms\AddnewFilename.resx">
+      <DependentUpon>AddnewFilename.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

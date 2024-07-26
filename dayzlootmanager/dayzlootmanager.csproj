@@ -230,12 +230,6 @@
     <Compile Include="HelperForms\AddFromLoadoutsList.Designer.cs">
       <DependentUpon>AddFromLoadoutsList.cs</DependentUpon>
     </Compile>
-    <Compile Include="HelperForms\AddnewFilename.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="HelperForms\AddnewFilename.Designer.cs">
-      <DependentUpon>AddnewFilename.cs</DependentUpon>
-    </Compile>
     <Compile Include="HelperForms\AddnewQuestID.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -477,9 +471,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HelperForms\AddFromLoadoutsList.resx">
       <DependentUpon>AddFromLoadoutsList.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HelperForms\AddnewFilename.resx">
-      <DependentUpon>AddnewFilename.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HelperForms\AddnewQuestID.resx">
       <DependentUpon>AddnewQuestID.cs</DependentUpon>

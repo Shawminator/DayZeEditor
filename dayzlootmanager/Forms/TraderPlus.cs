@@ -64,6 +64,11 @@ namespace DayZeEditor
         {
             List<string> midifiedfiles = new List<string>();
             string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
+            string TraderplusconfigPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\TraderPlus\\TraderPlusConfig";
+            if (!Directory.Exists(TraderplusconfigPath))
+            {
+                Directory.CreateDirectory(TraderplusconfigPath);
+            }
             if (TraderPlusBankingConfig.isDirty)
             {
                 if (currentproject.Createbackups && File.Exists(TraderPlusBankingConfig.FullFilename))
@@ -324,11 +329,19 @@ namespace DayZeEditor
             doubleClickTimer.Interval = 100;
             doubleClickTimer.Tick += new EventHandler(doubleClickTimer_Tick);
 
+
+            string TraderplusPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\TraderPlus";
+            if (!Directory.Exists(TraderplusPath))
+            {
+                Directory.CreateDirectory(TraderplusPath);
+            }
+
             TraderPlusBankingConfigPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\TraderPlus\\TraderPlusConfig\\TraderPlusBankingConfig.json";
             if (!File.Exists(TraderPlusBankingConfigPath))
             {
                 TraderPlusBankingConfig = new TraderPlusBankingConfig();
                 needtosave = true;
+                TraderPlusBankingConfig.isDirty = true;
             }
             else
             {
@@ -348,6 +361,7 @@ namespace DayZeEditor
             {
                 TraderPlusGarageConfig = new TraderPlusGarageConfig();
                 needtosave = true;
+                TraderPlusGarageConfig.isDirty = true;
             }
             else
             {
@@ -367,6 +381,7 @@ namespace DayZeEditor
             {
                 TraderPlusInsuranceConfig = new TraderPlusInsuranceConfig();
                 needtosave = true;
+                TraderPlusInsuranceConfig.isDirty = true;
             }
             else
             {
@@ -385,6 +400,7 @@ namespace DayZeEditor
             {
                 TraderPlusPriceConfig = new TraderPlusPriceConfig();
                 needtosave = true;
+                TraderPlusPriceConfig.isDirty = true;
             }
             else
             {
@@ -405,6 +421,7 @@ namespace DayZeEditor
             {
                 TraderPlusIDsConfig = new TraderPlusIDsConfig();
                 needtosave = true;
+                TraderPlusIDsConfig.isDirty = true;
             }
             else
             {
@@ -423,6 +440,7 @@ namespace DayZeEditor
             {
                 TraderPlusGeneralConfig = new TraderPlusGeneralConfig();
                 needtosave = true;
+                TraderPlusGeneralConfig.isDirty = true;
             }
             else
             {
@@ -451,6 +469,7 @@ namespace DayZeEditor
             {
                 TraderPlusSafeZoneConfig = new TraderPlusSafeZoneConfig();
                 needtosave = true;
+                TraderPlusSafeZoneConfig.isDirty = true;
             }
             else
             {
@@ -470,6 +489,7 @@ namespace DayZeEditor
             {
                 TraderPlusVehiclesConfig = new TraderPlusVehiclesConfig();
                 needtosave = true;
+                TraderPlusVehiclesConfig.isDirty = true;
             }
             else
             {
@@ -491,22 +511,24 @@ namespace DayZeEditor
             }
             TraderPlusVehiclesConfig.FullFilename = TraderPlusVehiclesConfigPath;
             SetupTraderPlusVehiclesConfig();
-
-            traderPlusDatabasePath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\TraderPlus\\TraderPlusDatabase";
-            TraderPlusStock = new BindingList<TraderPlusStock>();
-            DirectoryInfo dinfo = new DirectoryInfo(traderPlusDatabasePath);
-            FileInfo[] Files = dinfo.GetFiles("*.json");
-            Console.WriteLine("Getting TraderPlus Stock Database....");
-            Console.WriteLine(Files.Length.ToString() + " Found");
-            foreach (FileInfo file in Files)
+            try
             {
-                TraderPlusStock stock = JsonSerializer.Deserialize<TraderPlusStock>(File.ReadAllText(file.FullName));
-                stock.fileName = file.Name;
-                stock.FullFilename = file.FullName;
-                stock.isDirty = false;
-                TraderPlusStock.Add(stock);
+                traderPlusDatabasePath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\TraderPlus\\TraderPlusDatabase";
+                TraderPlusStock = new BindingList<TraderPlusStock>();
+                DirectoryInfo dinfo = new DirectoryInfo(traderPlusDatabasePath);
+                FileInfo[] Files = dinfo.GetFiles("*.json");
+                Console.WriteLine("Getting TraderPlus Stock Database....");
+                Console.WriteLine(Files.Length.ToString() + " Found");
+                foreach (FileInfo file in Files)
+                {
+                    TraderPlusStock stock = JsonSerializer.Deserialize<TraderPlusStock>(File.ReadAllText(file.FullName));
+                    stock.fileName = file.Name;
+                    stock.FullFilename = file.FullName;
+                    stock.isDirty = false;
+                    TraderPlusStock.Add(stock);
+                }
             }
-
+            catch { }
             MapData = new MapData(Application.StartupPath + currentproject.MapPath + ".xyz");
 
             pictureBox2.BackgroundImage = Image.FromFile(Application.StartupPath + currentproject.MapPath); // Livonia maop size is 12800 x 12800, 0,0 bottom left, center 6400 x 6400
@@ -2883,7 +2905,7 @@ namespace DayZeEditor
                     Categories cat = JsonSerializer.Deserialize<Categories>(File.ReadAllText(file));
                     Tradercategory newcat = new Tradercategory()
                     {
-                        CategoryName = cat.DisplayName,
+                        CategoryName = cat.DisplayName.Replace("#STR_EXPANSION_MARKET_CATEGORY_", ""),
                         Products = new BindingList<string>(),
                         itemProducts = new BindingList<ItemProducts>()
                     };

@@ -203,52 +203,6 @@ namespace DayZeEditor
             toolStripTextBox1.Visible = true;
             toolStripButton1.Visible = true;
             isUserInteraction = true;
-
-            gettotalnumber();
-        }
-
-        private void gettotalnumber()
-        {
-            //List<int> totalnumberlist = new List<int>();
-            //foreach (typesType type in vanillatypes.types.type)
-            //{
-            //    if(!totalnumberlist.Contains(type.nominal))
-            //        totalnumberlist.Add(type.nominal);
-            //}
-            //if (ModTypes.Count > 0)
-            //{
-            //    foreach (TypesFile tf in ModTypes)
-            //    {
-            //        foreach (typesType type in tf.types.type)
-            //        {
-            //            if (!totalnumberlist.Contains(type.nominal))
-            //                totalnumberlist.Add(type.nominal);
-            //        }
-            //    }
-            //}
-            //totalnumberlist.Sort();
-            //List<int> list = new List<int>();
-            //foreach(int i in totalnumberlist)
-            //{
-            //    int tn = 0;
-            //    foreach (typesType type in vanillatypes.types.type)
-            //    {
-            //        if (type.nominal == i)
-            //            tn += 1;
-            //    }
-            //    if (ModTypes.Count > 0)
-            //    {
-            //        foreach (TypesFile tf in ModTypes)
-            //        {
-            //            foreach (typesType type in tf.types.type)
-            //            {
-            //                if (type.nominal == i)
-            //                    tn += 1;
-            //            }
-            //        }
-            //    }
-            //    list.Add(tn * i);
-            //}
         }
 
         private void SetuprandomPresetsForSpawnabletypes()
@@ -270,6 +224,7 @@ namespace DayZeEditor
         }
         private void populateEconmyTreeview()
         {
+            fastColoredTextBox2.Clear();
             var serializer = new XmlSerializer(typeof(economycore));
             var ns = new XmlSerializerNamespaces();
             ns.Add("", "");
@@ -277,24 +232,7 @@ namespace DayZeEditor
             sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
             var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true });
             serializer.Serialize(xmlWriter, currentproject.EconomyCore.economycore, ns);
-
-
-            // Load the xslt used by IE to render the xml
-            XslCompiledTransform xTrans = new XslCompiledTransform();
-            xTrans.Load(Application.StartupPath + "//lib//defaultss.xsl");
-
-            // Read the xml string.
-            StringReader sr = new StringReader(sw.ToString());
-            XmlReader xReader = XmlReader.Create(sr);
-
-            // Transform the XML data
-            MemoryStream ms = new MemoryStream();
-            xTrans.Transform(xReader, null, ms);
-
-            ms.Position = 0;
-
-            // Set to the document stream
-            webBrowser1.DocumentStream = ms;
+            fastColoredTextBox2.Text = sw.ToString();
         }
         private void toolStripButton4_Click(object sender, EventArgs e)
         {

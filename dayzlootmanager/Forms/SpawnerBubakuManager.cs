@@ -396,7 +396,7 @@ namespace DayZeEditor
 
         private void darkButton6_Click(object sender, EventArgs e)
         {
-            CurrentBubaklocation.spawnerpos.Add("0 0 0");
+            CurrentBubaklocation._spawnerpos.Add(new Vec3PandR("0 0 0"));
             BubakLocationSpawnerPosLB.Refresh();
             SpawnerBubakuConfig.isDirty = true;
         }
@@ -443,7 +443,7 @@ namespace DayZeEditor
             if (BubakLocationSpawnerPosLB.SelectedItems.Count <= 0) return;
             List<string> removelist = new List<string>();
             int index = BubakLocationSpawnerPosLB.SelectedIndex;
-            CurrentBubaklocation.spawnerpos.RemoveAt(index);
+            CurrentBubaklocation._spawnerpos.RemoveAt(index);
             SpawnerBubakuConfig.isDirty = true;
         }
         private void darkButton11_Click(object sender, EventArgs e)

@@ -398,7 +398,7 @@ namespace DayZeEditor
             this.checkBox47 = new System.Windows.Forms.CheckBox();
             this.checkBox48 = new System.Windows.Forms.CheckBox();
             this.EconomyCoreTab = new System.Windows.Forms.TabPage();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.fastColoredTextBox2 = new FastColoredTextBoxNS.FastColoredTextBox();
             this.SpawnableTypesTab = new System.Windows.Forms.TabPage();
             this.tabControl12 = new System.Windows.Forms.TabControl();
             this.tabPage9 = new System.Windows.Forms.TabPage();
@@ -1118,6 +1118,7 @@ namespace DayZeEditor
             this.deleteDiscreetUnsortedItemSetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mapgroupposcontextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.removeMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -1218,6 +1219,7 @@ namespace DayZeEditor
             this.groupBox17.SuspendLayout();
             this.groupBox19.SuspendLayout();
             this.EconomyCoreTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox2)).BeginInit();
             this.SpawnableTypesTab.SuspendLayout();
             this.tabControl12.SuspendLayout();
             this.tabPage9.SuspendLayout();
@@ -1500,6 +1502,7 @@ namespace DayZeEditor
             this.bindingNavigator1.SuspendLayout();
             this.SpawnGearCMS.SuspendLayout();
             this.mapgroupposcontextMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -6109,7 +6112,7 @@ namespace DayZeEditor
             // EconomyCoreTab
             // 
             this.EconomyCoreTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.EconomyCoreTab.Controls.Add(this.webBrowser1);
+            this.EconomyCoreTab.Controls.Add(this.fastColoredTextBox2);
             this.EconomyCoreTab.Location = new System.Drawing.Point(4, 25);
             this.EconomyCoreTab.Name = "EconomyCoreTab";
             this.EconomyCoreTab.Padding = new System.Windows.Forms.Padding(3);
@@ -6117,14 +6120,42 @@ namespace DayZeEditor
             this.EconomyCoreTab.TabIndex = 1;
             this.EconomyCoreTab.Text = "Economy Core";
             // 
-            // webBrowser1
+            // fastColoredTextBox2
             // 
-            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser1.Location = new System.Drawing.Point(3, 3);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(1212, 590);
-            this.webBrowser1.TabIndex = 0;
+            this.fastColoredTextBox2.AutoCompleteBracketsList = new char[] {
+        '(',
+        ')',
+        '{',
+        '}',
+        '[',
+        ']',
+        '\"',
+        '\"',
+        '\'',
+        '\''};
+            this.fastColoredTextBox2.AutoIndentCharsPatterns = "^\\s*[\\w\\.]+(\\s\\w+)?\\s*(?<range>=)\\s*(?<range>[^;=]+);\n^\\s*(case|default)\\s*[^:]*(" +
+    "?<range>:)\\s*(?<range>[^;]+);";
+            this.fastColoredTextBox2.AutoScrollMinSize = new System.Drawing.Size(2, 14);
+            this.fastColoredTextBox2.BackBrush = null;
+            this.fastColoredTextBox2.BackColor = System.Drawing.Color.FloralWhite;
+            this.fastColoredTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.fastColoredTextBox2.CharHeight = 14;
+            this.fastColoredTextBox2.CharWidth = 8;
+            this.fastColoredTextBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.fastColoredTextBox2.DefaultMarkerSize = 8;
+            this.fastColoredTextBox2.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.fastColoredTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fastColoredTextBox2.Font = new System.Drawing.Font("Courier New", 9.75F);
+            this.fastColoredTextBox2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.fastColoredTextBox2.IsReplaceMode = false;
+            this.fastColoredTextBox2.Location = new System.Drawing.Point(3, 3);
+            this.fastColoredTextBox2.Name = "fastColoredTextBox2";
+            this.fastColoredTextBox2.Paddings = new System.Windows.Forms.Padding(0);
+            this.fastColoredTextBox2.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.fastColoredTextBox2.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("fastColoredTextBox2.ServiceColors")));
+            this.fastColoredTextBox2.Size = new System.Drawing.Size(1212, 590);
+            this.fastColoredTextBox2.TabIndex = 7;
+            this.fastColoredTextBox2.Zoom = 100;
             // 
             // SpawnableTypesTab
             // 
@@ -8287,7 +8318,7 @@ namespace DayZeEditor
             this.PlayerSpawnFreshButton.Image = ((System.Drawing.Image)(resources.GetObject("PlayerSpawnFreshButton.Image")));
             this.PlayerSpawnFreshButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PlayerSpawnFreshButton.Name = "PlayerSpawnFreshButton";
-            this.PlayerSpawnFreshButton.Size = new System.Drawing.Size(24, 24);
+            this.PlayerSpawnFreshButton.Size = new System.Drawing.Size(39, 22);
             this.PlayerSpawnFreshButton.Text = "Fresh";
             this.PlayerSpawnFreshButton.Click += new System.EventHandler(this.PlayerSpawnFreshButton_Click);
             // 
@@ -8307,7 +8338,7 @@ namespace DayZeEditor
             this.PlayerSpawnHopButton.Image = ((System.Drawing.Image)(resources.GetObject("PlayerSpawnHopButton.Image")));
             this.PlayerSpawnHopButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PlayerSpawnHopButton.Name = "PlayerSpawnHopButton";
-            this.PlayerSpawnHopButton.Size = new System.Drawing.Size(24, 24);
+            this.PlayerSpawnHopButton.Size = new System.Drawing.Size(34, 22);
             this.PlayerSpawnHopButton.Text = "Hop";
             this.PlayerSpawnHopButton.Click += new System.EventHandler(this.PlayerSpawnHopButton_Click);
             // 
@@ -8327,7 +8358,7 @@ namespace DayZeEditor
             this.PlayerSpawnTravelButton.Image = ((System.Drawing.Image)(resources.GetObject("PlayerSpawnTravelButton.Image")));
             this.PlayerSpawnTravelButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PlayerSpawnTravelButton.Name = "PlayerSpawnTravelButton";
-            this.PlayerSpawnTravelButton.Size = new System.Drawing.Size(24, 24);
+            this.PlayerSpawnTravelButton.Size = new System.Drawing.Size(41, 22);
             this.PlayerSpawnTravelButton.Text = "Travel";
             this.PlayerSpawnTravelButton.Click += new System.EventHandler(this.PlayerSpawnTravelButton_Click);
             // 
@@ -15445,6 +15476,11 @@ namespace DayZeEditor
             this.removeMapToolStripMenuItem.Text = "Remove Map Group";
             this.removeMapToolStripMenuItem.Click += new System.EventHandler(this.removeMapToolStripMenuItem_Click);
             // 
+            // fileSystemWatcher1
+            // 
+            this.fileSystemWatcher1.EnableRaisingEvents = true;
+            this.fileSystemWatcher1.SynchronizingObject = this;
+            // 
             // Economy_Manager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -15584,6 +15620,7 @@ namespace DayZeEditor
             this.groupBox19.ResumeLayout(false);
             this.groupBox19.PerformLayout();
             this.EconomyCoreTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox2)).EndInit();
             this.SpawnableTypesTab.ResumeLayout(false);
             this.tabControl12.ResumeLayout(false);
             this.tabPage9.ResumeLayout(false);
@@ -15934,6 +15971,7 @@ namespace DayZeEditor
             this.bindingNavigator1.PerformLayout();
             this.SpawnGearCMS.ResumeLayout(false);
             this.mapgroupposcontextMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -16055,7 +16093,6 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripMenuItem DeleteTypesTSMI;
         private System.Windows.Forms.ToolStripMenuItem AddTypesTSMI;
         private System.Windows.Forms.ToolStripMenuItem DeleteSpecificTypeTSMI;
-        private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.TabPage EventsTab;
         private System.Windows.Forms.TabControl tabControl6;
         private System.Windows.Forms.TabPage tabPage2;
@@ -17024,5 +17061,7 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox checkBox115;
         private System.Windows.Forms.CheckBox checkBox114;
         private System.Windows.Forms.CheckBox checkBox113;
+        private FastColoredTextBox fastColoredTextBox2;
+        private System.IO.FileSystemWatcher fileSystemWatcher1;
     }
 }

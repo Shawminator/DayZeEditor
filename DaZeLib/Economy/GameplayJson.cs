@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text.Json.Serialization;
@@ -57,6 +58,7 @@ namespace DayZeLib
             }
             return false;
         }
+
     }
 
     public class Generaldata
@@ -172,7 +174,7 @@ namespace DayZeLib
     public class Worldsdata
     {
         public int lightingConfig { get; set; }
-        public BindingList<object> objectSpawnersArr { get; set; }
+        public BindingList<string> objectSpawnersArr { get; set; }
         public BindingList<decimal> environmentMinTemps { get; set; }
         public BindingList<decimal> environmentMaxTemps { get; set; }
         public BindingList<decimal> wetnessWeightModifiers { get; set; }
@@ -180,15 +182,16 @@ namespace DayZeLib
         public Worldsdata()
         {
             lightingConfig = 1;
-            objectSpawnersArr = new BindingList<object>();
+            objectSpawnersArr = new BindingList<string>();
             decimal[] mintemp = new decimal[] { -3, -2, 0, 4, 9, 14, 18, 17, 12, 7, 4, 0 };
             decimal[] maxtemp = new decimal[] { 3, 5, 7, 14, 19, 24, 26, 25, 21, 16, 10, 5 };
             decimal[] wetness = new decimal[] { (decimal)1.0, (decimal)1.0, (decimal)1.33, (decimal)1.66, (decimal)2.0 };
             environmentMaxTemps = new BindingList<decimal>(maxtemp.ToArray());
             environmentMinTemps = new BindingList<decimal>(mintemp.ToArray());
             wetnessWeightModifiers = new BindingList<decimal>(wetness.ToArray());
-            objectSpawnersArr = new BindingList<object>();
         }
+
+
     }
 
     public class Basebuildingdata
@@ -390,4 +393,21 @@ namespace DayZeLib
             simpleChildrenTypes = new BindingList<string>();
         }
     }
+
+    public class ObjectSpawnerArr
+    {
+        [JsonIgnore]
+        public string Filename { get; set; }
+        public BindingList<SpawnObjects> Objects { get; set; }
+    }
+
+    public class SpawnObjects
+    {
+        public string name { get; set; }
+        public float[] pos { get; set; }
+        public float[] ypr { get; set; }
+        public float scale { get; set; }
+        public bool enableCEPersistency { get; set; }
+    }
+
 }

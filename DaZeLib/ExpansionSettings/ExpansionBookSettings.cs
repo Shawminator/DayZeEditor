@@ -7,7 +7,7 @@ namespace DayZeLib
     {
         const int CurrentVersion = 5;
 
-        public int m_Version { get; set; } //currently 3
+        public int m_Version { get; set; }
         public int EnableStatusTab { get; set; }
         public int EnablePartyTab { get; set; }
         public int EnableServerInfoTab { get; set; }
@@ -15,10 +15,10 @@ namespace DayZeLib
         public int EnableTerritoryTab { get; set; }
         public int EnableBookMenu { get; set; }
         public int CreateBookmarks { get; set; }
-        public BindingList<ExpansionBookRuleCategory> RuleCategories { get; set; }
-        public int DisplayServerSettingsInServerInfoTab { get; set; }
         public int ShowHaBStats { get; set; }
         public int ShowPlayerFaction { get; set; }
+        public BindingList<ExpansionBookRuleCategory> RuleCategories { get; set; }
+        public int DisplayServerSettingsInServerInfoTab { get; set; }
         public BindingList<ExpansionBookSettingCategory> SettingCategories { get; set; }
         public BindingList<ExpansionBookLink> Links { get; set; }
         public BindingList<ExpansionBookDescriptionCategory> Descriptions { get; set; }

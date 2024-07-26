@@ -163,7 +163,6 @@ namespace DayZeEditor
                 catch { }
             }
             expansionQuestAISpawnControlAICamp.LoadoutList = LoadoutList;
-            expansionQuestAISpawnControlAICamp.SetAICountReadOnly(true);
             expansionQuestAISpawnControlAICamp.setuplists();
 
             ObjectivesAIVIPNPCLoadoutFileCB.DisplayMember = "DisplayName";
@@ -2662,27 +2661,16 @@ namespace DayZeEditor
                 TimeLimit = -1,
                 Active = 1,
                 InfectedDeletionRadius = (decimal)500.0,
-                AISpawns = new BindingList<ExpansionQuestAISpawn>()
+                AISpawns = new BindingList<ExpansionAIPatrol>()
                 {
-                    new ExpansionQuestAISpawn()
+                    new ExpansionAIPatrol()
                     {
-                        NumberOfAI = 1,
-                        NPCName = "Quest Target",
-                        Waypoints = new BindingList<decimal[]>(),
-                        Behaviour = 0,
-                        Formation = "RANDOM",
-                        Loadout = "BanditLoadout",
+                        Name = "NewAICamp",
                         Faction = "West",
-                        Speed = (decimal)0.0,
-                        ThreatSpeed = (decimal)3.0,
-                        MinAccuracy = (decimal)0.0,
-                        MaxAccuracy = (decimal)0.0,
-                        CanBeLooted = 1,
-                        UnlimitedReload = 1,
-                        ThreatDistanceLimit = (decimal)1000.0,
-                        DamageMultiplier = (decimal)1.0,
-                        DamageReceivedMultiplier = (decimal)1.0,
-                        ClassNames = new BindingList<string>() {
+                        Formation = "",
+                        FormationLooseness = (decimal)0.0,
+                        Loadout = "",
+                        Units = new BindingList<string>(){
                             "eAI_SurvivorF_Eva",
                             "eAI_SurvivorF_Frida",
                             "eAI_SurvivorF_Gabi",
@@ -2715,12 +2703,31 @@ namespace DayZeEditor
                             "eAI_SurvivorM_Seth",
                             "eAI_SurvivorM_Taiki"
                         },
-                        SniperProneDistanceThreshold = (decimal)300.0,
-                        RespawnTime = (decimal)1.0,
-                        DespawnTime = (decimal)1.0,
-                        MinDistanceRadius = (decimal)50.0,
-                        MaxDistanceRadius = (decimal)150.0,
-                        DespawnRadius = (decimal)500.0
+                        NumberOfAI = -3,
+                        Behaviour = "ALTERNATE",
+                        Speed = "WALK",
+                        UnderThreatSpeed = "SPRINT",
+                        CanBeLooted = 1,
+                        UnlimitedReload = 1,
+                        SniperProneDistanceThreshold = (decimal)0.0,
+                        AccuracyMin = -1,
+                        AccuracyMax = -1,
+                        ThreatDistanceLimit = -1,
+                        NoiseInvestigationDistanceLimit = -1,
+                        DamageMultiplier = -1,
+                        DamageReceivedMultiplier = -1,
+                        MinDistRadius = -1,
+                        MaxDistRadius = -1,
+                        DespawnRadius = -1,
+                        MinSpreadRadius = 1,
+                        MaxSpreadRadius = 100,
+                        Chance = 1,
+                        WaypointInterpolation = "",
+                        DespawnTime = -1,
+                        RespawnTime = -2,
+                        UseRandomWaypointAsStartPoint = 1,
+                        Waypoints = new BindingList<float[]>(),
+                        _waypoints = new BindingList<Vec3>()
                     }
                 },
                 MinDistance = (decimal)-1.0,
@@ -2749,14 +2756,79 @@ namespace DayZeEditor
                 _ObjectiveTypeEnum = QuExpansionQuestObjectiveTypeestType.AIPATROL,
                 ObjectiveText = "New AIPatrol Objective",
                 TimeLimit = -1,
-                AISpawn = new ExpansionQuestAISpawn(),
+                AISpawn = new ExpansionAIPatrol()
+                {
+                    Name = "NewAICamp",
+                    Faction = "West",
+                    Formation = "",
+                    FormationLooseness = (decimal)0.0,
+                    Loadout = "",
+                    Units = new BindingList<string>()
+                    {
+                            "eAI_SurvivorF_Eva",
+                            "eAI_SurvivorF_Frida",
+                            "eAI_SurvivorF_Gabi",
+                            "eAI_SurvivorF_Helga",
+                            "eAI_SurvivorF_Irena",
+                            "eAI_SurvivorF_Judy",
+                            "eAI_SurvivorF_Keiko",
+                            "eAI_SurvivorF_Linda",
+                            "eAI_SurvivorF_Maria",
+                            "eAI_SurvivorF_Naomi",
+                            "eAI_SurvivorF_Baty",
+                            "eAI_SurvivorM_Boris",
+                            "eAI_SurvivorM_Cyril",
+                            "eAI_SurvivorM_Denis",
+                            "eAI_SurvivorM_Elias",
+                            "eAI_SurvivorM_Francis",
+                            "eAI_SurvivorM_Guo",
+                            "eAI_SurvivorM_Hassan",
+                            "eAI_SurvivorM_Indar",
+                            "eAI_SurvivorM_Jose",
+                            "eAI_SurvivorM_Kaito",
+                            "eAI_SurvivorM_Lewis",
+                            "eAI_SurvivorM_Manua",
+                            "eAI_SurvivorM_Mirek",
+                            "eAI_SurvivorM_Niki",
+                            "eAI_SurvivorM_Oliver",
+                            "eAI_SurvivorM_Peter",
+                            "eAI_SurvivorM_Quinn",
+                            "eAI_SurvivorM_Rolf",
+                            "eAI_SurvivorM_Seth",
+                            "eAI_SurvivorM_Taiki"
+                        },
+                    NumberOfAI = -3,
+                    Behaviour = "ALTERNATE",
+                    Speed = "WALK",
+                    UnderThreatSpeed = "SPRINT",
+                    CanBeLooted = 1,
+                    UnlimitedReload = 1,
+                    SniperProneDistanceThreshold = (decimal)0.0,
+                    AccuracyMin = -1,
+                    AccuracyMax = -1,
+                    ThreatDistanceLimit = -1,
+                    NoiseInvestigationDistanceLimit = -1,
+                    DamageMultiplier = -1,
+                    DamageReceivedMultiplier = -1,
+                    MinDistRadius = -1,
+                    MaxDistRadius = -1,
+                    DespawnRadius = -1,
+                    MinSpreadRadius = 1,
+                    MaxSpreadRadius = 100,
+                    Chance = 1,
+                    WaypointInterpolation = "",
+                    DespawnTime = -1,
+                    RespawnTime = -2,
+                    UseRandomWaypointAsStartPoint = 1,
+                    Waypoints = new BindingList<float[]>(),
+                    _waypoints = new BindingList<Vec3>()
+                },
                 MaxDistance = -1,
                 MinDistance = -1,
                 AllowedWeapons = new BindingList<string>(),
                 AllowedDamageZones = new BindingList<string>(),
                 isDirty = true
             };
-            newAIPatrolobjective.AISpawn.CreateDefaultAISpawn();
             QuestObjectives.Objectives.Add(newAIPatrolobjective);
             TreeNode newnode = new TreeNode(newAIPatrolobjective.Filename)
             {
@@ -3225,18 +3297,84 @@ namespace DayZeEditor
         private void ObjectivesAICampAISpawnsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ObjectivesAICampAISpawnsLB.SelectedItems.Count < 1) return;
-            expansionQuestAISpawnControlAICamp.currentAISpawn = ObjectivesAICampAISpawnsLB.SelectedItem as ExpansionQuestAISpawn;
+            expansionQuestAISpawnControlAICamp.currentAISpawn = ObjectivesAICampAISpawnsLB.SelectedItem as ExpansionAIPatrol;
+            expansionQuestAISpawnControlAICamp.setAInumASReadOnly(true);
             QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
             expansionQuestAISpawnControlAICamp.isDirty = CurrentAICam.isDirty;
         }
         private void darkButton89_Click(object sender, EventArgs e)
         {
-            ExpansionQuestAISpawn newAISpawn = new ExpansionQuestAISpawn();
-            newAISpawn.CreateDefaultAISpawn();
+            ExpansionAIPatrol newAISpawn = new ExpansionAIPatrol()
+            {
+                Name = "NewAICamp",
+                Faction = "West",
+                Formation = "",
+                FormationLooseness = (decimal)0.0,
+                Loadout = "",
+                Units = new BindingList<string>()
+                {
+                            "eAI_SurvivorF_Eva",
+                            "eAI_SurvivorF_Frida",
+                            "eAI_SurvivorF_Gabi",
+                            "eAI_SurvivorF_Helga",
+                            "eAI_SurvivorF_Irena",
+                            "eAI_SurvivorF_Judy",
+                            "eAI_SurvivorF_Keiko",
+                            "eAI_SurvivorF_Linda",
+                            "eAI_SurvivorF_Maria",
+                            "eAI_SurvivorF_Naomi",
+                            "eAI_SurvivorF_Baty",
+                            "eAI_SurvivorM_Boris",
+                            "eAI_SurvivorM_Cyril",
+                            "eAI_SurvivorM_Denis",
+                            "eAI_SurvivorM_Elias",
+                            "eAI_SurvivorM_Francis",
+                            "eAI_SurvivorM_Guo",
+                            "eAI_SurvivorM_Hassan",
+                            "eAI_SurvivorM_Indar",
+                            "eAI_SurvivorM_Jose",
+                            "eAI_SurvivorM_Kaito",
+                            "eAI_SurvivorM_Lewis",
+                            "eAI_SurvivorM_Manua",
+                            "eAI_SurvivorM_Mirek",
+                            "eAI_SurvivorM_Niki",
+                            "eAI_SurvivorM_Oliver",
+                            "eAI_SurvivorM_Peter",
+                            "eAI_SurvivorM_Quinn",
+                            "eAI_SurvivorM_Rolf",
+                            "eAI_SurvivorM_Seth",
+                            "eAI_SurvivorM_Taiki"
+                },
+                NumberOfAI = 1,
+                Behaviour = "ALTERNATE",
+                Speed = "WALK",
+                UnderThreatSpeed = "SPRINT",
+                CanBeLooted = 1,
+                UnlimitedReload = 1,
+                SniperProneDistanceThreshold = (decimal)0.0,
+                AccuracyMin = -1,
+                AccuracyMax = -1,
+                ThreatDistanceLimit = -1,
+                NoiseInvestigationDistanceLimit = -1,
+                DamageMultiplier = -1,
+                DamageReceivedMultiplier = -1,
+                MinDistRadius = -1,
+                MaxDistRadius = -1,
+                DespawnRadius = -1,
+                MinSpreadRadius = 1,
+                MaxSpreadRadius = 100,
+                Chance = 1,
+                WaypointInterpolation = "",
+                DespawnTime = -1,
+                RespawnTime = -2,
+                UseRandomWaypointAsStartPoint = 1,
+                Waypoints = new BindingList<float[]>(),
+                _waypoints = new BindingList<Vec3>()
+            };
             QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
             if (CurrentAICam.AISpawns.Count <= 0)
             {
-                CurrentAICam.AISpawns = new BindingList<ExpansionQuestAISpawn>();
+                CurrentAICam.AISpawns = new BindingList<ExpansionAIPatrol>();
                 ObjectivesAICampAISpawnsLB.DisplayMember = "DisplayName";
                 ObjectivesAICampAISpawnsLB.ValueMember = "Value";
                 ObjectivesAICampAISpawnsLB.DataSource = CurrentAICam.AISpawns;
@@ -3249,7 +3387,7 @@ namespace DayZeEditor
         {
             if (ObjectivesAICampAISpawnsLB.SelectedItems.Count < 1) return;
             QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
-            ExpansionQuestAISpawn currentAISpawn = ObjectivesAICampAISpawnsLB.SelectedItem as ExpansionQuestAISpawn;
+            ExpansionAIPatrol currentAISpawn = ObjectivesAICampAISpawnsLB.SelectedItem as ExpansionAIPatrol;
             CurrentAICam.AISpawns.Remove(currentAISpawn);
             ObjectivesAICampAISpawnsLB.Invalidate();
             CurrentAICam.isDirty = true;
@@ -3258,7 +3396,7 @@ namespace DayZeEditor
         private void darkButton6_Click(object sender, EventArgs e)
         {
             QuestObjectivesAICamp CurrentAICam = CurrentTreeNodeTag as QuestObjectivesAICamp;
-            if (CurrentAICam.AISpawns.Count <= 0) CurrentAICam.AISpawns = new BindingList<ExpansionQuestAISpawn>();
+            if (CurrentAICam.AISpawns.Count <= 0) CurrentAICam.AISpawns = new BindingList<ExpansionAIPatrol>();
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -3268,12 +3406,12 @@ namespace DayZeEditor
                     DialogResult dialogResult = MessageBox.Show("Clear Exisitng AI Spawns?", "Clear Spawns", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        CurrentAICam.AISpawns = new BindingList<ExpansionQuestAISpawn>();
+                        CurrentAICam.AISpawns = new BindingList<ExpansionAIPatrol>();
                         ObjectivesAICampAISpawnsLB.DisplayMember = "DisplayName";
                         ObjectivesAICampAISpawnsLB.ValueMember = "Value";
                         ObjectivesAICampAISpawnsLB.DataSource = CurrentAICam.AISpawns;
                     }
-                    ExpansionQuestAISpawn newAISpawn = null;
+                    ExpansionAIPatrol newAISpawn = null;
                     string objname = "";
                     foreach (Editorobject eo in importfile.EditorObjects)
                     {
@@ -3284,10 +3422,75 @@ namespace DayZeEditor
                         }
                         if (newAISpawn == null)
                         {
-                            newAISpawn = new ExpansionQuestAISpawn();
-                            newAISpawn.CreateDefaultAISpawn(false);
+                            newAISpawn = new ExpansionAIPatrol()
+                            {
+                                Name = "NewAICamp",
+                                Faction = "West",
+                                Formation = "",
+                                FormationLooseness = (decimal)0.0,
+                                Loadout = "",
+                                Units = new BindingList<string>()
+                                {
+                                            "eAI_SurvivorF_Eva",
+                                            "eAI_SurvivorF_Frida",
+                                            "eAI_SurvivorF_Gabi",
+                                            "eAI_SurvivorF_Helga",
+                                            "eAI_SurvivorF_Irena",
+                                            "eAI_SurvivorF_Judy",
+                                            "eAI_SurvivorF_Keiko",
+                                            "eAI_SurvivorF_Linda",
+                                            "eAI_SurvivorF_Maria",
+                                            "eAI_SurvivorF_Naomi",
+                                            "eAI_SurvivorF_Baty",
+                                            "eAI_SurvivorM_Boris",
+                                            "eAI_SurvivorM_Cyril",
+                                            "eAI_SurvivorM_Denis",
+                                            "eAI_SurvivorM_Elias",
+                                            "eAI_SurvivorM_Francis",
+                                            "eAI_SurvivorM_Guo",
+                                            "eAI_SurvivorM_Hassan",
+                                            "eAI_SurvivorM_Indar",
+                                            "eAI_SurvivorM_Jose",
+                                            "eAI_SurvivorM_Kaito",
+                                            "eAI_SurvivorM_Lewis",
+                                            "eAI_SurvivorM_Manua",
+                                            "eAI_SurvivorM_Mirek",
+                                            "eAI_SurvivorM_Niki",
+                                            "eAI_SurvivorM_Oliver",
+                                            "eAI_SurvivorM_Peter",
+                                            "eAI_SurvivorM_Quinn",
+                                            "eAI_SurvivorM_Rolf",
+                                            "eAI_SurvivorM_Seth",
+                                            "eAI_SurvivorM_Taiki"
+                                },
+                                NumberOfAI = 1,
+                                Behaviour = "ALTERNATE",
+                                Speed = "WALK",
+                                UnderThreatSpeed = "SPRINT",
+                                CanBeLooted = 1,
+                                UnlimitedReload = 1,
+                                SniperProneDistanceThreshold = (decimal)0.0,
+                                AccuracyMin = -1,
+                                AccuracyMax = -1,
+                                ThreatDistanceLimit = -1,
+                                NoiseInvestigationDistanceLimit = -1,
+                                DamageMultiplier = -1,
+                                DamageReceivedMultiplier = -1,
+                                MinDistRadius = -1,
+                                MaxDistRadius = -1,
+                                DespawnRadius = -1,
+                                MinSpreadRadius = 1,
+                                MaxSpreadRadius = 100,
+                                Chance = 1,
+                                WaypointInterpolation = "",
+                                DespawnTime = -1,
+                                RespawnTime = -2,
+                                UseRandomWaypointAsStartPoint = 1,
+                                Waypoints = new BindingList<float[]>(),
+                                _waypoints = new BindingList<Vec3>()
+                            };
                         }
-                        newAISpawn._Waypoints.Add(new Vec3(eo.Position));
+                        newAISpawn._waypoints.Add(new Vec3(eo.Position));
                         objname = eo.DisplayName;
                     }
                     CurrentAICam.AISpawns.Add(newAISpawn);

@@ -529,6 +529,8 @@ namespace DayZeEditor
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.CrashPersistCB = new System.Windows.Forms.CheckBox();
+            this.StaticPatrolPersistCB = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.TabPage1.SuspendLayout();
@@ -1825,6 +1827,7 @@ namespace DayZeEditor
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.CrashPersistCB);
             this.groupBox4.Controls.Add(this.groupBox8);
             this.groupBox4.Controls.Add(this.darkLabel78);
             this.groupBox4.Controls.Add(this.crashNoiseInvestigationDistanceLimitNUD);
@@ -2811,6 +2814,7 @@ namespace DayZeEditor
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage3.Controls.Add(this.StaticPatrolPersistCB);
             this.tabPage3.Controls.Add(this.groupBox7);
             this.tabPage3.Controls.Add(this.groupBox2);
             this.tabPage3.Controls.Add(this.darkLabel77);
@@ -8061,6 +8065,32 @@ namespace DayZeEditor
             this.toolStripButton6.Text = "Dynamic AI Addon";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
+            // CrashPersistCB
+            // 
+            this.CrashPersistCB.AutoSize = true;
+            this.CrashPersistCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CrashPersistCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CrashPersistCB.Location = new System.Drawing.Point(604, 118);
+            this.CrashPersistCB.Name = "CrashPersistCB";
+            this.CrashPersistCB.Size = new System.Drawing.Size(57, 17);
+            this.CrashPersistCB.TabIndex = 287;
+            this.CrashPersistCB.Text = "Persist";
+            this.CrashPersistCB.UseVisualStyleBackColor = true;
+            this.CrashPersistCB.CheckedChanged += new System.EventHandler(this.CrashPersistCB_CheckedChanged);
+            // 
+            // StaticPatrolPersistCB
+            // 
+            this.StaticPatrolPersistCB.AutoSize = true;
+            this.StaticPatrolPersistCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.StaticPatrolPersistCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolPersistCB.Location = new System.Drawing.Point(389, 91);
+            this.StaticPatrolPersistCB.Name = "StaticPatrolPersistCB";
+            this.StaticPatrolPersistCB.Size = new System.Drawing.Size(57, 17);
+            this.StaticPatrolPersistCB.TabIndex = 288;
+            this.StaticPatrolPersistCB.Text = "Persist";
+            this.StaticPatrolPersistCB.UseVisualStyleBackColor = true;
+            this.StaticPatrolPersistCB.CheckedChanged += new System.EventHandler(this.StaticPatrolPersistCB_CheckedChanged);
+            // 
             // ExpansionAI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -8764,5 +8794,7 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox checkBox10;
         private System.Windows.Forms.CheckBox LogAIHitByCB;
         private System.Windows.Forms.CheckBox LogAIKilledCB;
+        private System.Windows.Forms.CheckBox CrashPersistCB;
+        private System.Windows.Forms.CheckBox StaticPatrolPersistCB;
     }
 }

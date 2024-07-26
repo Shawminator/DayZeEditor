@@ -9,8 +9,6 @@ namespace DayZeLib
         public int m_Version { get; set; }
         public int DebugVehiclePlayerNetworkBubbleMode { get; set; }
         public int ServerUpdateRateLimit { get; set; }
-        //public int EnableProneDeathHandItemDropFix { get; set; } removed in version 4
-        //public int EnableItemDropPlacementFix { get; set; } removed in version 4
         public int EnableProneDeathHandItemDropFix { get; set; }
 
         [JsonIgnore]

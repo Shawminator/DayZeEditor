@@ -236,6 +236,9 @@ namespace DayZeEditor
             this.panel30 = new System.Windows.Forms.Panel();
             this.QuestNPCIDNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel5 = new DarkUI.Controls.DarkLabel();
+            this.panel79 = new System.Windows.Forms.Panel();
+            this.NPCQuestNPCTypeCB = new System.Windows.Forms.ComboBox();
+            this.darkLabel157 = new DarkUI.Controls.DarkLabel();
             this.panel31 = new System.Windows.Forms.Panel();
             this.QuestNPCsClassNameCB = new System.Windows.Forms.ComboBox();
             this.darkLabel7 = new DarkUI.Controls.DarkLabel();
@@ -251,9 +254,6 @@ namespace DayZeEditor
             this.panel34 = new System.Windows.Forms.Panel();
             this.QuestsNPCsDefaultNPCTextTB = new System.Windows.Forms.TextBox();
             this.darkLabel13 = new DarkUI.Controls.DarkLabel();
-            this.panel79 = new System.Windows.Forms.Panel();
-            this.NPCQuestNPCTypeCB = new System.Windows.Forms.ComboBox();
-            this.darkLabel157 = new DarkUI.Controls.DarkLabel();
             this.panel35 = new System.Windows.Forms.Panel();
             this.questsNPCsNPCEmoteIDCB = new System.Windows.Forms.ComboBox();
             this.darkLabel14 = new DarkUI.Controls.DarkLabel();
@@ -349,7 +349,6 @@ namespace DayZeEditor
             this.darkButton89 = new DarkUI.Controls.DarkButton();
             this.darkButton88 = new DarkUI.Controls.DarkButton();
             this.darkLabel175 = new DarkUI.Controls.DarkLabel();
-            this.ObjectivesAICampAISpawnsLB = new System.Windows.Forms.ListBox();
             this.darkLabel174 = new DarkUI.Controls.DarkLabel();
             this.darkLabel173 = new DarkUI.Controls.DarkLabel();
             this.ObjectivesAICampAllowedDamageZonesRemoveButton = new DarkUI.Controls.DarkButton();
@@ -602,6 +601,7 @@ namespace DayZeEditor
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.removeQuestFromPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removePlayerSaveDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ObjectivesAICampAISpawnsLB = new System.Windows.Forms.ListBox();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -679,12 +679,12 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.QuestNPCConfigVersionNUD)).BeginInit();
             this.panel30.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.QuestNPCIDNUD)).BeginInit();
+            this.panel79.SuspendLayout();
             this.panel31.SuspendLayout();
             this.panel32.SuspendLayout();
             this.panel68.SuspendLayout();
             this.panel33.SuspendLayout();
             this.panel34.SuspendLayout();
-            this.panel79.SuspendLayout();
             this.panel35.SuspendLayout();
             this.panel38.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -3116,6 +3116,40 @@ namespace DayZeEditor
             this.darkLabel5.TabIndex = 108;
             this.darkLabel5.Text = "ID";
             // 
+            // panel79
+            // 
+            this.panel79.Controls.Add(this.NPCQuestNPCTypeCB);
+            this.panel79.Controls.Add(this.darkLabel157);
+            this.panel79.Location = new System.Drawing.Point(3, 107);
+            this.panel79.Name = "panel79";
+            this.panel79.Size = new System.Drawing.Size(349, 20);
+            this.panel79.TabIndex = 184;
+            // 
+            // NPCQuestNPCTypeCB
+            // 
+            this.NPCQuestNPCTypeCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.NPCQuestNPCTypeCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.NPCQuestNPCTypeCB.FormattingEnabled = true;
+            this.NPCQuestNPCTypeCB.Items.AddRange(new object[] {
+            "Normal",
+            "Object",
+            "AI"});
+            this.NPCQuestNPCTypeCB.Location = new System.Drawing.Point(149, 0);
+            this.NPCQuestNPCTypeCB.Name = "NPCQuestNPCTypeCB";
+            this.NPCQuestNPCTypeCB.Size = new System.Drawing.Size(192, 21);
+            this.NPCQuestNPCTypeCB.TabIndex = 166;
+            this.NPCQuestNPCTypeCB.SelectedIndexChanged += new System.EventHandler(this.NPCQuestNPCTypeCB_SelectedIndexChanged);
+            // 
+            // darkLabel157
+            // 
+            this.darkLabel157.AutoSize = true;
+            this.darkLabel157.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel157.Location = new System.Drawing.Point(3, 3);
+            this.darkLabel157.Name = "darkLabel157";
+            this.darkLabel157.Size = new System.Drawing.Size(56, 13);
+            this.darkLabel157.TabIndex = 167;
+            this.darkLabel157.Text = "NPC Type";
+            // 
             // panel31
             // 
             this.panel31.Controls.Add(this.QuestNPCsClassNameCB);
@@ -3264,40 +3298,6 @@ namespace DayZeEditor
             this.darkLabel13.Size = new System.Drawing.Size(90, 13);
             this.darkLabel13.TabIndex = 163;
             this.darkLabel13.Text = "Default NPC Text";
-            // 
-            // panel79
-            // 
-            this.panel79.Controls.Add(this.NPCQuestNPCTypeCB);
-            this.panel79.Controls.Add(this.darkLabel157);
-            this.panel79.Location = new System.Drawing.Point(3, 107);
-            this.panel79.Name = "panel79";
-            this.panel79.Size = new System.Drawing.Size(349, 20);
-            this.panel79.TabIndex = 184;
-            // 
-            // NPCQuestNPCTypeCB
-            // 
-            this.NPCQuestNPCTypeCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.NPCQuestNPCTypeCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.NPCQuestNPCTypeCB.FormattingEnabled = true;
-            this.NPCQuestNPCTypeCB.Items.AddRange(new object[] {
-            "Normal",
-            "Object",
-            "AI"});
-            this.NPCQuestNPCTypeCB.Location = new System.Drawing.Point(149, 0);
-            this.NPCQuestNPCTypeCB.Name = "NPCQuestNPCTypeCB";
-            this.NPCQuestNPCTypeCB.Size = new System.Drawing.Size(192, 21);
-            this.NPCQuestNPCTypeCB.TabIndex = 166;
-            this.NPCQuestNPCTypeCB.SelectedIndexChanged += new System.EventHandler(this.NPCQuestNPCTypeCB_SelectedIndexChanged);
-            // 
-            // darkLabel157
-            // 
-            this.darkLabel157.AutoSize = true;
-            this.darkLabel157.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel157.Location = new System.Drawing.Point(3, 3);
-            this.darkLabel157.Name = "darkLabel157";
-            this.darkLabel157.Size = new System.Drawing.Size(56, 13);
-            this.darkLabel157.TabIndex = 167;
-            this.darkLabel157.Text = "NPC Type";
             // 
             // panel35
             // 
@@ -4444,7 +4444,7 @@ namespace DayZeEditor
             this.ObjectivesAICampGB.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesAICampGB.Location = new System.Drawing.Point(731, 3);
             this.ObjectivesAICampGB.Name = "ObjectivesAICampGB";
-            this.ObjectivesAICampGB.Size = new System.Drawing.Size(1020, 490);
+            this.ObjectivesAICampGB.Size = new System.Drawing.Size(1373, 640);
             this.ObjectivesAICampGB.TabIndex = 228;
             this.ObjectivesAICampGB.TabStop = false;
             this.ObjectivesAICampGB.Text = "AI Camp";
@@ -4453,7 +4453,7 @@ namespace DayZeEditor
             // darkButton6
             // 
             this.darkButton6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton6.Location = new System.Drawing.Point(268, 292);
+            this.darkButton6.Location = new System.Drawing.Point(268, 438);
             this.darkButton6.Name = "darkButton6";
             this.darkButton6.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton6.Size = new System.Drawing.Size(180, 28);
@@ -4471,14 +4471,14 @@ namespace DayZeEditor
             this.expansionQuestAISpawnControlAICamp.LoadoutList = null;
             this.expansionQuestAISpawnControlAICamp.Location = new System.Drawing.Point(454, 12);
             this.expansionQuestAISpawnControlAICamp.Name = "expansionQuestAISpawnControlAICamp";
-            this.expansionQuestAISpawnControlAICamp.Size = new System.Drawing.Size(556, 472);
+            this.expansionQuestAISpawnControlAICamp.Size = new System.Drawing.Size(913, 623);
             this.expansionQuestAISpawnControlAICamp.TabIndex = 304;
             this.expansionQuestAISpawnControlAICamp.IsDirtyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.expansionQuestAISpawnControlAICamp_IsDirtyChanged);
             // 
             // darkButton89
             // 
             this.darkButton89.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton89.Location = new System.Drawing.Point(268, 259);
+            this.darkButton89.Location = new System.Drawing.Point(268, 405);
             this.darkButton89.Name = "darkButton89";
             this.darkButton89.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton89.Size = new System.Drawing.Size(69, 28);
@@ -4489,7 +4489,7 @@ namespace DayZeEditor
             // darkButton88
             // 
             this.darkButton88.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton88.Location = new System.Drawing.Point(343, 258);
+            this.darkButton88.Location = new System.Drawing.Point(343, 406);
             this.darkButton88.Name = "darkButton88";
             this.darkButton88.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton88.Size = new System.Drawing.Size(105, 28);
@@ -4506,21 +4506,6 @@ namespace DayZeEditor
             this.darkLabel175.Size = new System.Drawing.Size(58, 13);
             this.darkLabel175.TabIndex = 274;
             this.darkLabel175.Text = "AI Spawns";
-            // 
-            // ObjectivesAICampAISpawnsLB
-            // 
-            this.ObjectivesAICampAISpawnsLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.ObjectivesAICampAISpawnsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ObjectivesAICampAISpawnsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.ObjectivesAICampAISpawnsLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesAICampAISpawnsLB.FormattingEnabled = true;
-            this.ObjectivesAICampAISpawnsLB.Location = new System.Drawing.Point(268, 31);
-            this.ObjectivesAICampAISpawnsLB.Name = "ObjectivesAICampAISpawnsLB";
-            this.ObjectivesAICampAISpawnsLB.Size = new System.Drawing.Size(180, 225);
-            this.ObjectivesAICampAISpawnsLB.TabIndex = 273;
-            this.ObjectivesAICampAISpawnsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.ObjectivesAICampAISpawnsLB.SelectedIndexChanged += new System.EventHandler(this.ObjectivesAICampAISpawnsLB_SelectedIndexChanged);
             // 
             // darkLabel174
             // 
@@ -4546,7 +4531,7 @@ namespace DayZeEditor
             // 
             this.ObjectivesAICampAllowedDamageZonesRemoveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ObjectivesAICampAllowedDamageZonesRemoveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ObjectivesAICampAllowedDamageZonesRemoveButton.Location = new System.Drawing.Point(231, 436);
+            this.ObjectivesAICampAllowedDamageZonesRemoveButton.Location = new System.Drawing.Point(231, 568);
             this.ObjectivesAICampAllowedDamageZonesRemoveButton.Name = "ObjectivesAICampAllowedDamageZonesRemoveButton";
             this.ObjectivesAICampAllowedDamageZonesRemoveButton.Padding = new System.Windows.Forms.Padding(5);
             this.ObjectivesAICampAllowedDamageZonesRemoveButton.Size = new System.Drawing.Size(20, 20);
@@ -4575,7 +4560,7 @@ namespace DayZeEditor
             this.ObjectivesAICampAllowedDamageZonesLB.FormattingEnabled = true;
             this.ObjectivesAICampAllowedDamageZonesLB.Location = new System.Drawing.Point(18, 285);
             this.ObjectivesAICampAllowedDamageZonesLB.Name = "ObjectivesAICampAllowedDamageZonesLB";
-            this.ObjectivesAICampAllowedDamageZonesLB.Size = new System.Drawing.Size(207, 160);
+            this.ObjectivesAICampAllowedDamageZonesLB.Size = new System.Drawing.Size(207, 303);
             this.ObjectivesAICampAllowedDamageZonesLB.TabIndex = 268;
             this.ObjectivesAICampAllowedDamageZonesLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
@@ -4719,9 +4704,9 @@ namespace DayZeEditor
             this.ObjectivesAIPatrolGB.Controls.Add(this.darkButton21);
             this.ObjectivesAIPatrolGB.Controls.Add(this.darkButton22);
             this.ObjectivesAIPatrolGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesAIPatrolGB.Location = new System.Drawing.Point(1757, 3);
+            this.ObjectivesAIPatrolGB.Location = new System.Drawing.Point(2110, 3);
             this.ObjectivesAIPatrolGB.Name = "ObjectivesAIPatrolGB";
-            this.ObjectivesAIPatrolGB.Size = new System.Drawing.Size(806, 490);
+            this.ObjectivesAIPatrolGB.Size = new System.Drawing.Size(1168, 640);
             this.ObjectivesAIPatrolGB.TabIndex = 229;
             this.ObjectivesAIPatrolGB.TabStop = false;
             this.ObjectivesAIPatrolGB.Text = "AI Patrol";
@@ -4737,7 +4722,7 @@ namespace DayZeEditor
             this.expansionQuestAISpawnControlAIPatrol.LoadoutList = null;
             this.expansionQuestAISpawnControlAIPatrol.Location = new System.Drawing.Point(245, 12);
             this.expansionQuestAISpawnControlAIPatrol.Name = "expansionQuestAISpawnControlAIPatrol";
-            this.expansionQuestAISpawnControlAIPatrol.Size = new System.Drawing.Size(556, 472);
+            this.expansionQuestAISpawnControlAIPatrol.Size = new System.Drawing.Size(915, 623);
             this.expansionQuestAISpawnControlAIPatrol.TabIndex = 295;
             this.expansionQuestAISpawnControlAIPatrol.IsDirtyChanged += new System.ComponentModel.PropertyChangedEventHandler(this.expansionQuestAISpawnControlAIPatrol_IsDirtyChanged);
             // 
@@ -4765,7 +4750,7 @@ namespace DayZeEditor
             // 
             this.darkButton17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.darkButton17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton17.Location = new System.Drawing.Point(219, 429);
+            this.darkButton17.Location = new System.Drawing.Point(219, 579);
             this.darkButton17.Name = "darkButton17";
             this.darkButton17.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton17.Size = new System.Drawing.Size(20, 20);
@@ -4794,7 +4779,7 @@ namespace DayZeEditor
             this.ObjectivesAIPatrolAllowedDamageZonesLB.FormattingEnabled = true;
             this.ObjectivesAIPatrolAllowedDamageZonesLB.Location = new System.Drawing.Point(6, 252);
             this.ObjectivesAIPatrolAllowedDamageZonesLB.Name = "ObjectivesAIPatrolAllowedDamageZonesLB";
-            this.ObjectivesAIPatrolAllowedDamageZonesLB.Size = new System.Drawing.Size(207, 186);
+            this.ObjectivesAIPatrolAllowedDamageZonesLB.Size = new System.Drawing.Size(207, 329);
             this.ObjectivesAIPatrolAllowedDamageZonesLB.TabIndex = 286;
             this.ObjectivesAIPatrolAllowedDamageZonesLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
@@ -4918,7 +4903,7 @@ namespace DayZeEditor
             this.ObjectivesAIVIPGB.Controls.Add(this.ObjectivesAIVIPNPCLoadoutFileCB);
             this.ObjectivesAIVIPGB.Controls.Add(this.darkLabel98);
             this.ObjectivesAIVIPGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesAIVIPGB.Location = new System.Drawing.Point(2569, 3);
+            this.ObjectivesAIVIPGB.Location = new System.Drawing.Point(3284, 3);
             this.ObjectivesAIVIPGB.Name = "ObjectivesAIVIPGB";
             this.ObjectivesAIVIPGB.Size = new System.Drawing.Size(350, 298);
             this.ObjectivesAIVIPGB.TabIndex = 230;
@@ -5191,7 +5176,7 @@ namespace DayZeEditor
             this.ObjectivesCollectionGB.Controls.Add(this.ObjectivesCollectionClassnameTB);
             this.ObjectivesCollectionGB.Controls.Add(this.darkLabel111);
             this.ObjectivesCollectionGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesCollectionGB.Location = new System.Drawing.Point(2925, 3);
+            this.ObjectivesCollectionGB.Location = new System.Drawing.Point(3284, 307);
             this.ObjectivesCollectionGB.Name = "ObjectivesCollectionGB";
             this.ObjectivesCollectionGB.Size = new System.Drawing.Size(358, 336);
             this.ObjectivesCollectionGB.TabIndex = 231;
@@ -5450,7 +5435,7 @@ namespace DayZeEditor
             this.ObjectivesCraftingGB.Controls.Add(this.darkButton52);
             this.ObjectivesCraftingGB.Controls.Add(this.darkButton53);
             this.ObjectivesCraftingGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesCraftingGB.Location = new System.Drawing.Point(2925, 345);
+            this.ObjectivesCraftingGB.Location = new System.Drawing.Point(3648, 3);
             this.ObjectivesCraftingGB.Name = "ObjectivesCraftingGB";
             this.ObjectivesCraftingGB.Size = new System.Drawing.Size(350, 163);
             this.ObjectivesCraftingGB.TabIndex = 232;
@@ -5531,7 +5516,7 @@ namespace DayZeEditor
             this.ObejctiovesDeliveryGB.Controls.Add(this.darkButton55);
             this.ObejctiovesDeliveryGB.Controls.Add(this.ObjectivesDeliveryDeliveriesLB);
             this.ObejctiovesDeliveryGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObejctiovesDeliveryGB.Location = new System.Drawing.Point(3289, 3);
+            this.ObejctiovesDeliveryGB.Location = new System.Drawing.Point(3648, 172);
             this.ObejctiovesDeliveryGB.Name = "ObejctiovesDeliveryGB";
             this.ObejctiovesDeliveryGB.Size = new System.Drawing.Size(358, 336);
             this.ObejctiovesDeliveryGB.TabIndex = 233;
@@ -5827,7 +5812,7 @@ namespace DayZeEditor
             this.ObjectivesTargetGB.Controls.Add(this.ObjectivesTargetPositionYNUD);
             this.ObjectivesTargetGB.Controls.Add(this.ObjectivesTargetPositionZNUD);
             this.ObjectivesTargetGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesTargetGB.Location = new System.Drawing.Point(3653, 3);
+            this.ObjectivesTargetGB.Location = new System.Drawing.Point(4012, 3);
             this.ObjectivesTargetGB.Name = "ObjectivesTargetGB";
             this.ObjectivesTargetGB.Size = new System.Drawing.Size(520, 499);
             this.ObjectivesTargetGB.TabIndex = 234;
@@ -6307,7 +6292,7 @@ namespace DayZeEditor
             this.ObjectivesTravelGB.Controls.Add(this.ObjectivesTravelPositionYNUD);
             this.ObjectivesTravelGB.Controls.Add(this.ObjectivesTravelPositionZNUD);
             this.ObjectivesTravelGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesTravelGB.Location = new System.Drawing.Point(4179, 3);
+            this.ObjectivesTravelGB.Location = new System.Drawing.Point(4538, 3);
             this.ObjectivesTravelGB.Name = "ObjectivesTravelGB";
             this.ObjectivesTravelGB.Size = new System.Drawing.Size(358, 252);
             this.ObjectivesTravelGB.TabIndex = 235;
@@ -6544,7 +6529,7 @@ namespace DayZeEditor
             this.ObjectivesTresureHuntGB.Controls.Add(this.darkButton68);
             this.ObjectivesTresureHuntGB.Controls.Add(this.ObjectivesTreasureHuntPositionsLB);
             this.ObjectivesTresureHuntGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesTresureHuntGB.Location = new System.Drawing.Point(4543, 3);
+            this.ObjectivesTresureHuntGB.Location = new System.Drawing.Point(4902, 3);
             this.ObjectivesTresureHuntGB.Name = "ObjectivesTresureHuntGB";
             this.ObjectivesTresureHuntGB.Size = new System.Drawing.Size(928, 499);
             this.ObjectivesTresureHuntGB.TabIndex = 236;
@@ -7809,6 +7794,21 @@ namespace DayZeEditor
             this.removePlayerSaveDataToolStripMenuItem.Text = "Remove Player Save Data";
             this.removePlayerSaveDataToolStripMenuItem.Click += new System.EventHandler(this.removePlayerSaveDataToolStripMenuItem_Click);
             // 
+            // ObjectivesAICampAISpawnsLB
+            // 
+            this.ObjectivesAICampAISpawnsLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.ObjectivesAICampAISpawnsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ObjectivesAICampAISpawnsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ObjectivesAICampAISpawnsLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ObjectivesAICampAISpawnsLB.FormattingEnabled = true;
+            this.ObjectivesAICampAISpawnsLB.Location = new System.Drawing.Point(268, 31);
+            this.ObjectivesAICampAISpawnsLB.Name = "ObjectivesAICampAISpawnsLB";
+            this.ObjectivesAICampAISpawnsLB.Size = new System.Drawing.Size(180, 368);
+            this.ObjectivesAICampAISpawnsLB.TabIndex = 273;
+            this.ObjectivesAICampAISpawnsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.ObjectivesAICampAISpawnsLB.SelectedIndexChanged += new System.EventHandler(this.ObjectivesAICampAISpawnsLB_SelectedIndexChanged);
+            // 
             // ExpansionQuests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -7952,6 +7952,8 @@ namespace DayZeEditor
             this.panel30.ResumeLayout(false);
             this.panel30.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.QuestNPCIDNUD)).EndInit();
+            this.panel79.ResumeLayout(false);
+            this.panel79.PerformLayout();
             this.panel31.ResumeLayout(false);
             this.panel31.PerformLayout();
             this.panel32.ResumeLayout(false);
@@ -7962,8 +7964,6 @@ namespace DayZeEditor
             this.panel33.PerformLayout();
             this.panel34.ResumeLayout(false);
             this.panel34.PerformLayout();
-            this.panel79.ResumeLayout(false);
-            this.panel79.PerformLayout();
             this.panel35.ResumeLayout(false);
             this.panel35.PerformLayout();
             this.panel38.ResumeLayout(false);
@@ -8657,7 +8657,6 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton darkButton89;
         private DarkUI.Controls.DarkButton darkButton88;
         private DarkUI.Controls.DarkLabel darkLabel175;
-        private System.Windows.Forms.ListBox ObjectivesAICampAISpawnsLB;
         private DarkUI.Controls.DarkLabel darkLabel189;
         private System.Windows.Forms.NumericUpDown ObjectivesTargetMinDistanceNUD;
         private DarkUI.Controls.DarkLabel darkLabel188;
@@ -8692,5 +8691,6 @@ namespace DayZeEditor
         private System.Windows.Forms.ComboBox QuestRewardBehavorCB;
         private DarkUI.Controls.DarkLabel darkLabel56;
         private DarkUI.Controls.DarkButton darkButton6;
+        private System.Windows.Forms.ListBox ObjectivesAICampAISpawnsLB;
     }
 }

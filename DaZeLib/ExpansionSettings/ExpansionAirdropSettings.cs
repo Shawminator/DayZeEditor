@@ -419,11 +419,11 @@ namespace DayZeLib
         public decimal FallSpeed { get; set; }
         public int Usage { get; set; }
         public decimal Weight { get; set; }
-        public BindingList<ExpansionLoot> Loot { get; set; }
         public BindingList<string> Infected { get; set; }
         public int ItemCount { get; set; }
         public int InfectedCount { get; set; }
         public int SpawnInfectedForPlayerCalledDrops { get; set; }
+        public BindingList<ExpansionLoot> Loot { get; set; }
 
         public ExpansionLootContainer(string container, int usage, decimal weight, BindingList<ExpansionLoot> loot, BindingList<string> infected, int itemCount, int infectedCount, bool spawnInfectedForPlayerCalledDrops = false, decimal fallSpeed = (decimal)4.5)
         {

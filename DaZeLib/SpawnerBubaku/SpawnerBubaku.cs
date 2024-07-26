@@ -110,6 +110,9 @@ namespace DayZeLib
             itemrandomdmg = 0;
             bubaci = new BindingList<string>();
             bubakinventory = new BindingList<string>();
+
+            _triggerpos = new Vec3PandR(new float[] { 0,0,0}, new float[]{0,0,0}, false);
+            _spawnerpos = new BindingList<Vec3PandR>();
         }
         public string GetName()
         {
@@ -196,7 +199,7 @@ namespace DayZeLib
         }
         public void setTriggermaxs(decimal[] _triggermaxs)
         {
-            triggerpos = _triggermaxs[0] + " " + _triggermaxs[1] + " " + _triggermaxs[2];
+            triggermaxs = _triggermaxs[0] + " " + _triggermaxs[1] + " " + _triggermaxs[2];
         }
         public void UpdateTriggerAndPositionsfromDze(DZE importFile)
         {

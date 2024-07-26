@@ -43,7 +43,6 @@ namespace DayZeLib
         public int EnableHUDNightvisionOverlay { get; set; }
         public int DisableMagicCrosshair { get; set; }
         public int EnableAutoRun { get; set; }
-        //public int UnlimitedStamina { get; set; } Removed in version 13
         public int UseDeathScreen { get; set; }
         public int UseDeathScreenStatistics { get; set; }
         public int UseExpansionMainMenuLogo { get; set; }
