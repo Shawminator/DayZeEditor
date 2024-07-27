@@ -105,6 +105,7 @@ namespace DayZeEditor
             this.darkLabel17 = new DarkUI.Controls.DarkLabel();
             this.TabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.CrashPersistCB = new System.Windows.Forms.CheckBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.darkButton15 = new DarkUI.Controls.DarkButton();
             this.darkButton16 = new DarkUI.Controls.DarkButton();
@@ -170,6 +171,7 @@ namespace DayZeEditor
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.StaticPatrolPersistCB = new System.Windows.Forms.CheckBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.darkButton10 = new DarkUI.Controls.DarkButton();
             this.darkButton11 = new DarkUI.Controls.DarkButton();
@@ -529,8 +531,6 @@ namespace DayZeEditor
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
-            this.CrashPersistCB = new System.Windows.Forms.CheckBox();
-            this.StaticPatrolPersistCB = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.TabPage1.SuspendLayout();
@@ -1894,6 +1894,19 @@ namespace DayZeEditor
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Object Patrols";
             // 
+            // CrashPersistCB
+            // 
+            this.CrashPersistCB.AutoSize = true;
+            this.CrashPersistCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CrashPersistCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CrashPersistCB.Location = new System.Drawing.Point(604, 118);
+            this.CrashPersistCB.Name = "CrashPersistCB";
+            this.CrashPersistCB.Size = new System.Drawing.Size(57, 17);
+            this.CrashPersistCB.TabIndex = 287;
+            this.CrashPersistCB.Text = "Persist";
+            this.CrashPersistCB.UseVisualStyleBackColor = true;
+            this.CrashPersistCB.CheckedChanged += new System.EventHandler(this.CrashPersistCB_CheckedChanged);
+            // 
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.darkButton15);
@@ -2657,8 +2670,10 @@ namespace DayZeEditor
             "HALT",
             "LOOP",
             "ALTERNATE",
+            "ONCE",
             "HALT_OR_LOOP",
-            "HALT_OR_ALTERNATE"});
+            "HALT_OR_ALTERNATE",
+            "ROAMING"});
             this.CrashBehaviourCB.Location = new System.Drawing.Point(335, 196);
             this.CrashBehaviourCB.Name = "CrashBehaviourCB";
             this.CrashBehaviourCB.Size = new System.Drawing.Size(328, 21);
@@ -2876,6 +2891,19 @@ namespace DayZeEditor
             this.tabPage3.Size = new System.Drawing.Size(966, 615);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "AI PAtrol Settings";
+            // 
+            // StaticPatrolPersistCB
+            // 
+            this.StaticPatrolPersistCB.AutoSize = true;
+            this.StaticPatrolPersistCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.StaticPatrolPersistCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolPersistCB.Location = new System.Drawing.Point(389, 91);
+            this.StaticPatrolPersistCB.Name = "StaticPatrolPersistCB";
+            this.StaticPatrolPersistCB.Size = new System.Drawing.Size(57, 17);
+            this.StaticPatrolPersistCB.TabIndex = 288;
+            this.StaticPatrolPersistCB.Text = "Persist";
+            this.StaticPatrolPersistCB.UseVisualStyleBackColor = true;
+            this.StaticPatrolPersistCB.CheckedChanged += new System.EventHandler(this.StaticPatrolPersistCB_CheckedChanged);
             // 
             // groupBox7
             // 
@@ -3380,8 +3408,10 @@ namespace DayZeEditor
             "HALT",
             "LOOP",
             "ALTERNATE",
+            "ONCE",
             "HALT_OR_LOOP",
-            "HALT_OR_ALTERNATE"});
+            "HALT_OR_ALTERNATE",
+            "ROAMING"});
             this.StaticPatrolBehaviorCB.Location = new System.Drawing.Point(116, 167);
             this.StaticPatrolBehaviorCB.Name = "StaticPatrolBehaviorCB";
             this.StaticPatrolBehaviorCB.Size = new System.Drawing.Size(330, 21);
@@ -8064,32 +8094,6 @@ namespace DayZeEditor
             this.toolStripButton6.Size = new System.Drawing.Size(111, 25);
             this.toolStripButton6.Text = "Dynamic AI Addon";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
-            // 
-            // CrashPersistCB
-            // 
-            this.CrashPersistCB.AutoSize = true;
-            this.CrashPersistCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.CrashPersistCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CrashPersistCB.Location = new System.Drawing.Point(604, 118);
-            this.CrashPersistCB.Name = "CrashPersistCB";
-            this.CrashPersistCB.Size = new System.Drawing.Size(57, 17);
-            this.CrashPersistCB.TabIndex = 287;
-            this.CrashPersistCB.Text = "Persist";
-            this.CrashPersistCB.UseVisualStyleBackColor = true;
-            this.CrashPersistCB.CheckedChanged += new System.EventHandler(this.CrashPersistCB_CheckedChanged);
-            // 
-            // StaticPatrolPersistCB
-            // 
-            this.StaticPatrolPersistCB.AutoSize = true;
-            this.StaticPatrolPersistCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.StaticPatrolPersistCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolPersistCB.Location = new System.Drawing.Point(389, 91);
-            this.StaticPatrolPersistCB.Name = "StaticPatrolPersistCB";
-            this.StaticPatrolPersistCB.Size = new System.Drawing.Size(57, 17);
-            this.StaticPatrolPersistCB.TabIndex = 288;
-            this.StaticPatrolPersistCB.Text = "Persist";
-            this.StaticPatrolPersistCB.UseVisualStyleBackColor = true;
-            this.StaticPatrolPersistCB.CheckedChanged += new System.EventHandler(this.StaticPatrolPersistCB_CheckedChanged);
             // 
             // ExpansionAI
             // 

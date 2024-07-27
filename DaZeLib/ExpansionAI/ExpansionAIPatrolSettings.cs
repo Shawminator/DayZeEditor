@@ -4,7 +4,26 @@ using System.Text.Json.Serialization;
 
 namespace DayZeLib
 {
-
+    public enum eAIWaypointBehavior
+    {
+        HALT,
+        LOOP,
+        ALTERNATE,
+        ONCE,
+        HALT_OR_LOOP,
+        HALT_OR_ALTERNATE,
+        ROAMING,
+        MIXED  //! TODO
+    };
+    public enum eAIMovementSpeed
+    {
+        STATIC,
+        WALK,
+        JOG,
+        SPRINT,
+        RANDOM,
+        RANDOM_NONSTATIC
+    };
     public class ExpansionAIPatrolSettings
     {
         [JsonIgnore]

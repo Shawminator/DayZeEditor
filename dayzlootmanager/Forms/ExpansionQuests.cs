@@ -2666,6 +2666,7 @@ namespace DayZeEditor
                     new ExpansionAIPatrol()
                     {
                         Name = "NewAICamp",
+                        Persist = 0,
                         Faction = "West",
                         Formation = "",
                         FormationLooseness = (decimal)0.0,
@@ -2703,7 +2704,7 @@ namespace DayZeEditor
                             "eAI_SurvivorM_Seth",
                             "eAI_SurvivorM_Taiki"
                         },
-                        NumberOfAI = -3,
+                        NumberOfAI = 1,
                         Behaviour = "ALTERNATE",
                         Speed = "WALK",
                         UnderThreatSpeed = "SPRINT",
@@ -2759,6 +2760,7 @@ namespace DayZeEditor
                 AISpawn = new ExpansionAIPatrol()
                 {
                     Name = "NewAICamp",
+                    Persist = 0,
                     Faction = "West",
                     Formation = "",
                     FormationLooseness = (decimal)0.0,
@@ -3307,6 +3309,7 @@ namespace DayZeEditor
             ExpansionAIPatrol newAISpawn = new ExpansionAIPatrol()
             {
                 Name = "NewAICamp",
+                Persist = 0,
                 Faction = "West",
                 Formation = "",
                 FormationLooseness = (decimal)0.0,

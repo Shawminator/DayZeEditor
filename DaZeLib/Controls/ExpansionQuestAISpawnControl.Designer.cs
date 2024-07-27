@@ -714,8 +714,10 @@ namespace DayZeEditor
             "HALT",
             "LOOP",
             "ALTERNATE",
+            "ONCE",
             "HALT_OR_LOOP",
-            "HALT_OR_ALTERNATE"});
+            "HALT_OR_ALTERNATE",
+            "ROAMING"});
             this.StaticPatrolBehaviorCB.Location = new System.Drawing.Point(116, 171);
             this.StaticPatrolBehaviorCB.Name = "StaticPatrolBehaviorCB";
             this.StaticPatrolBehaviorCB.Size = new System.Drawing.Size(330, 21);

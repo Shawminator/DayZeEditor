@@ -1,4 +1,9 @@
-﻿Version 0.8.0.8
+﻿Version 0.8.0.9
+[Fixed]
+ExpansionAI - Added missing Behaviours to drop down lists
+ExpansionAI - Added missing variables when creating a new object partol, this was resulting in certain ones being null.
+
+Version 0.8.0.8
 [Fixed]
 Economy Manager - unticking the quant min specified checkbox did not remove the quant min from the types.
 Rag BaseBuilding - Updated/removed Various setting i missed on last update.

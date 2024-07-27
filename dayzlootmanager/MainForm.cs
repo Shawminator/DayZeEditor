@@ -30,7 +30,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.8.0.8";
+        public string VersionNumber = "0.8.0.9";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -1323,6 +1323,7 @@ namespace DayZeEditor
                     if (savefile.ShowDialog() == DialogResult.OK)
                     {
                         File.WriteAllText(savefile.FileName, jsonString);
+                        MessageBox.Show(Path.GetFileName(savefile.FileName) + " HAs been saved in JSon format");
                     }
                 }
             }
@@ -1350,6 +1351,7 @@ namespace DayZeEditor
                     DialogResult result = form.ShowDialog();
                     if (result == DialogResult.OK)
                     {
+                        Cursor.Current = Cursors.WaitCursor;
                         Project currentproject = Projects.getActiveProject();
                         string path = form.CustomLocation;
                         string modname = form.TypesName;
@@ -1359,6 +1361,8 @@ namespace DayZeEditor
                         var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                         string jsonString = JsonSerializer.Serialize(newobjectspawnerarr, options);
                         File.WriteAllText(path + "\\" + newobjectspawnerarr.Filename, jsonString);
+                        Cursor.Current = Cursors.Default;
+                        MessageBox.Show("FIle has been created and save as " + modname + ".json\nThe entry has been added to CFGgameplay.json");
                     }
 
                 }
@@ -1380,8 +1384,6 @@ namespace DayZeEditor
             Properties.Settings.Default.ShowConsole = checkBox1.Checked;
             Properties.Settings.Default.Save();
         }
-
-
     }
 }
 

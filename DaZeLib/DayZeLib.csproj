@@ -139,7 +139,6 @@
     <Compile Include="ExpansionMarket\marketsettings.cs" />
     <Compile Include="ExpansionMarket\p2pmarket.cs" />
     <Compile Include="ExpansionMarket\P2PMarketSettings.cs" />
-    <Compile Include="ExpansionQuests\ExpansionQuestAISpawn.cs" />
     <Compile Include="ExpansionSettings\ExpansionLootDefaults.cs" />
     <Compile Include="ExpansionSettings\ExpansionPersonalStorage.cs" />
     <Compile Include="ExpansionMarket\TraderModelMapping.cs" />

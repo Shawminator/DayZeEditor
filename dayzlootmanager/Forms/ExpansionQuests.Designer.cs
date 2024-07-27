@@ -349,6 +349,7 @@ namespace DayZeEditor
             this.darkButton89 = new DarkUI.Controls.DarkButton();
             this.darkButton88 = new DarkUI.Controls.DarkButton();
             this.darkLabel175 = new DarkUI.Controls.DarkLabel();
+            this.ObjectivesAICampAISpawnsLB = new System.Windows.Forms.ListBox();
             this.darkLabel174 = new DarkUI.Controls.DarkLabel();
             this.darkLabel173 = new DarkUI.Controls.DarkLabel();
             this.ObjectivesAICampAllowedDamageZonesRemoveButton = new DarkUI.Controls.DarkButton();
@@ -601,7 +602,6 @@ namespace DayZeEditor
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.removeQuestFromPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removePlayerSaveDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ObjectivesAICampAISpawnsLB = new System.Windows.Forms.ListBox();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -4507,6 +4507,21 @@ namespace DayZeEditor
             this.darkLabel175.TabIndex = 274;
             this.darkLabel175.Text = "AI Spawns";
             // 
+            // ObjectivesAICampAISpawnsLB
+            // 
+            this.ObjectivesAICampAISpawnsLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.ObjectivesAICampAISpawnsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ObjectivesAICampAISpawnsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ObjectivesAICampAISpawnsLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ObjectivesAICampAISpawnsLB.FormattingEnabled = true;
+            this.ObjectivesAICampAISpawnsLB.Location = new System.Drawing.Point(268, 31);
+            this.ObjectivesAICampAISpawnsLB.Name = "ObjectivesAICampAISpawnsLB";
+            this.ObjectivesAICampAISpawnsLB.Size = new System.Drawing.Size(180, 368);
+            this.ObjectivesAICampAISpawnsLB.TabIndex = 273;
+            this.ObjectivesAICampAISpawnsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.ObjectivesAICampAISpawnsLB.SelectedIndexChanged += new System.EventHandler(this.ObjectivesAICampAISpawnsLB_SelectedIndexChanged);
+            // 
             // darkLabel174
             // 
             this.darkLabel174.AutoSize = true;
@@ -4750,7 +4765,7 @@ namespace DayZeEditor
             // 
             this.darkButton17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.darkButton17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton17.Location = new System.Drawing.Point(219, 579);
+            this.darkButton17.Location = new System.Drawing.Point(219, 613);
             this.darkButton17.Name = "darkButton17";
             this.darkButton17.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton17.Size = new System.Drawing.Size(20, 20);
@@ -4779,7 +4794,7 @@ namespace DayZeEditor
             this.ObjectivesAIPatrolAllowedDamageZonesLB.FormattingEnabled = true;
             this.ObjectivesAIPatrolAllowedDamageZonesLB.Location = new System.Drawing.Point(6, 252);
             this.ObjectivesAIPatrolAllowedDamageZonesLB.Name = "ObjectivesAIPatrolAllowedDamageZonesLB";
-            this.ObjectivesAIPatrolAllowedDamageZonesLB.Size = new System.Drawing.Size(207, 329);
+            this.ObjectivesAIPatrolAllowedDamageZonesLB.Size = new System.Drawing.Size(207, 381);
             this.ObjectivesAIPatrolAllowedDamageZonesLB.TabIndex = 286;
             this.ObjectivesAIPatrolAllowedDamageZonesLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
@@ -7693,7 +7708,7 @@ namespace DayZeEditor
             this.deleteObjectiveToolStripMenuItem,
             this.addNewCraftingObjectiveToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(253, 246);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(253, 268);
             // 
             // addNewActionObjectiveToolStripMenuItem
             // 
@@ -7793,21 +7808,6 @@ namespace DayZeEditor
             this.removePlayerSaveDataToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
             this.removePlayerSaveDataToolStripMenuItem.Text = "Remove Player Save Data";
             this.removePlayerSaveDataToolStripMenuItem.Click += new System.EventHandler(this.removePlayerSaveDataToolStripMenuItem_Click);
-            // 
-            // ObjectivesAICampAISpawnsLB
-            // 
-            this.ObjectivesAICampAISpawnsLB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.ObjectivesAICampAISpawnsLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ObjectivesAICampAISpawnsLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.ObjectivesAICampAISpawnsLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ObjectivesAICampAISpawnsLB.FormattingEnabled = true;
-            this.ObjectivesAICampAISpawnsLB.Location = new System.Drawing.Point(268, 31);
-            this.ObjectivesAICampAISpawnsLB.Name = "ObjectivesAICampAISpawnsLB";
-            this.ObjectivesAICampAISpawnsLB.Size = new System.Drawing.Size(180, 368);
-            this.ObjectivesAICampAISpawnsLB.TabIndex = 273;
-            this.ObjectivesAICampAISpawnsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.ObjectivesAICampAISpawnsLB.SelectedIndexChanged += new System.EventHandler(this.ObjectivesAICampAISpawnsLB_SelectedIndexChanged);
             // 
             // ExpansionQuests
             // 
