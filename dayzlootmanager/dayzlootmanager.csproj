@@ -622,17 +622,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DarkUI-master\DarkUI-master\DarkUI\DarkUI.csproj">
-      <Project>{f19472f5-8c44-4c51-a8a0-b9de5f555255}</Project>
+    <ProjectReference Include="..\DarkUI\DarkUI.csproj">
+      <Project>{efac621f-3232-460a-a428-b8645fbd849f}</Project>
       <Name>DarkUI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\TreeViewMS\TreeViewMS.csproj">
-      <Project>{7c2cce0a-a288-4869-a7b7-cc0d18af3b8c}</Project>
-      <Name>TreeViewMS</Name>
     </ProjectReference>
     <ProjectReference Include="..\DaZeLib\DayZeLib.csproj">
       <Project>{0bf2117f-7239-4b9b-9279-3b47ea65615c}</Project>
       <Name>DayZeLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TreeViewMS\TreeViewMS.csproj">
+      <Project>{01294a8f-3ec3-457c-b260-6657daf69ecb}</Project>
+      <Name>TreeViewMS</Name>
     </ProjectReference>
     <ProjectReference Include="..\Updater\Updater.csproj">
       <Project>{88262141-9e16-4f46-b021-aade25decb85}</Project>

@@ -288,15 +288,14 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DarkUI-master\DarkUI-master\DarkUI\DarkUI.csproj">
-      <Project>{f19472f5-8c44-4c51-a8a0-b9de5f555255}</Project>
+    <ProjectReference Include="..\DarkUI\DarkUI.csproj">
+      <Project>{efac621f-3232-460a-a428-b8645fbd849f}</Project>
       <Name>DarkUI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\TreeViewMS\TreeViewMS.csproj">
-      <Project>{7C2CCE0A-A288-4869-A7B7-CC0D18AF3B8C}</Project>
+    <ProjectReference Include="..\TreeViewMS\TreeViewMS.csproj">
+      <Project>{01294A8F-3EC3-457C-B260-6657DAF69ECB}</Project>
       <Name>TreeViewMS</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
