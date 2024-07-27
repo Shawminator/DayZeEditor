@@ -9,14 +9,28 @@ namespace Updater
     {
         static void Main(string[] args)
         {
+            if (args.Length == 0)
+            {
+                MessageBox.Show("No update file specified.");
+                return;
+            }
+            string zipfile = args[0];
+            if (!File.Exists(zipfile))
+            {
+                MessageBox.Show("Update file not found.");
+                return;
+            }
             try
             {
-                string zipfile = args[0];
                 Console.WriteLine("Sleeping for 2 seconds to make sure Application is fully closed");
                 Console.WriteLine("Update File : " + zipfile);
                 System.Threading.Thread.Sleep(2000);
+
                 string outputpath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-                Directory.Delete(outputpath + "\\lib", true);
+                if (Directory.Exists(outputpath + "\\lib"))
+                {
+                    Directory.Delete(outputpath + "\\lib", true);
+                }
                 using (FileStream fs = File.OpenRead(zipfile))
                 {
                     using (ZipArchive zip = new ZipArchive(fs))
@@ -25,6 +39,7 @@ namespace Updater
                     }
                 }
                 File.Delete(zipfile);
+                Console.WriteLine($"Deleted zip file: {zipfile}");
                 System.Diagnostics.Process.Start("DayZeEditor.exe");
             }
             catch (Exception ex)
