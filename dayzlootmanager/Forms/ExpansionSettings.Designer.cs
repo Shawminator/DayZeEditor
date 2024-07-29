@@ -207,6 +207,8 @@ namespace DayZeEditor
             this.EnablePlayerListCB = new System.Windows.Forms.CheckBox();
             this.EnableTooltipCB = new System.Windows.Forms.CheckBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.darkLabel262 = new DarkUI.Controls.DarkLabel();
+            this.InviteCooldownNUD = new System.Windows.Forms.NumericUpDown();
             this.ForcePartyToHaveTagsCB = new System.Windows.Forms.CheckBox();
             this.ShowHUDMemberDistanceCB = new System.Windows.Forms.CheckBox();
             this.ShowPartyMemberMapMarkersCB = new System.Windows.Forms.CheckBox();
@@ -499,6 +501,7 @@ namespace DayZeEditor
             this.EnableLighthousesCB = new System.Windows.Forms.CheckBox();
             this.EnableLampsComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox34 = new System.Windows.Forms.GroupBox();
+            this.EnableExpansionChatCB = new System.Windows.Forms.CheckBox();
             this.darkButton8 = new DarkUI.Controls.DarkButton();
             this.darkButton9 = new DarkUI.Controls.DarkButton();
             this.darkLabel261 = new DarkUI.Controls.DarkLabel();
@@ -580,6 +583,8 @@ namespace DayZeEditor
             this.ReputationMaxReputationNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel221 = new DarkUI.Controls.DarkLabel();
             this.groupBox72 = new System.Windows.Forms.GroupBox();
+            this.ItemRarityParentSearchCB = new System.Windows.Forms.CheckBox();
+            this.DefaultItemRarityCB = new System.Windows.Forms.ComboBox();
             this.darkLabel230 = new DarkUI.Controls.DarkLabel();
             this.UseItemRarityOnInventoryIconsCB = new System.Windows.Forms.CheckBox();
             this.EnableFactionPersistenceCB = new System.Windows.Forms.CheckBox();
@@ -1343,10 +1348,8 @@ namespace DayZeEditor
             this.addNewSubMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeSubMenuCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.InviteCooldownNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel262 = new DarkUI.Controls.DarkLabel();
-            this.DefaultItemRarityCB = new System.Windows.Forms.ComboBox();
-            this.ItemRarityParentSearchCB = new System.Windows.Forms.CheckBox();
+            this.darkLabel263 = new DarkUI.Controls.DarkLabel();
+            this.TerritoryInviteCooldownNUD = new System.Windows.Forms.NumericUpDown();
             this.darkToolStrip21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -1386,6 +1389,7 @@ namespace DayZeEditor
             this.groupBox27.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.InviteCooldownNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxMembersInPartyNUD)).BeginInit();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -1710,7 +1714,7 @@ namespace DayZeEditor
             this.darkToolStrip22.SuspendLayout();
             this.darkToolStrip26.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.InviteCooldownNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TerritoryInviteCooldownNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -2551,7 +2555,7 @@ namespace DayZeEditor
             this.groupBox68.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox68.Location = new System.Drawing.Point(1008, 140);
             this.groupBox68.Name = "groupBox68";
-            this.groupBox68.Size = new System.Drawing.Size(264, 429);
+            this.groupBox68.Size = new System.Drawing.Size(264, 470);
             this.groupBox68.TabIndex = 21;
             this.groupBox68.TabStop = false;
             this.groupBox68.Text = "Damage System Settings";
@@ -2560,7 +2564,7 @@ namespace DayZeEditor
             // 
             this.textBox17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.textBox17.ForeColor = System.Drawing.SystemColors.Control;
-            this.textBox17.Location = new System.Drawing.Point(11, 401);
+            this.textBox17.Location = new System.Drawing.Point(11, 435);
             this.textBox17.Name = "textBox17";
             this.textBox17.Size = new System.Drawing.Size(240, 20);
             this.textBox17.TabIndex = 123;
@@ -2570,7 +2574,7 @@ namespace DayZeEditor
             // 
             this.textBox18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.textBox18.ForeColor = System.Drawing.SystemColors.Control;
-            this.textBox18.Location = new System.Drawing.Point(11, 375);
+            this.textBox18.Location = new System.Drawing.Point(11, 409);
             this.textBox18.Name = "textBox18";
             this.textBox18.Size = new System.Drawing.Size(240, 20);
             this.textBox18.TabIndex = 122;
@@ -2578,7 +2582,7 @@ namespace DayZeEditor
             // 
             // darkButton68
             // 
-            this.darkButton68.Location = new System.Drawing.Point(143, 343);
+            this.darkButton68.Location = new System.Drawing.Point(143, 377);
             this.darkButton68.Name = "darkButton68";
             this.darkButton68.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton68.Size = new System.Drawing.Size(108, 23);
@@ -2588,7 +2592,7 @@ namespace DayZeEditor
             // 
             // darkButton69
             // 
-            this.darkButton69.Location = new System.Drawing.Point(11, 343);
+            this.darkButton69.Location = new System.Drawing.Point(11, 377);
             this.darkButton69.Name = "darkButton69";
             this.darkButton69.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton69.Size = new System.Drawing.Size(108, 23);
@@ -2604,7 +2608,7 @@ namespace DayZeEditor
             this.ExplosiveProjectilesLB.FormattingEnabled = true;
             this.ExplosiveProjectilesLB.Location = new System.Drawing.Point(11, 229);
             this.ExplosiveProjectilesLB.Name = "ExplosiveProjectilesLB";
-            this.ExplosiveProjectilesLB.Size = new System.Drawing.Size(240, 108);
+            this.ExplosiveProjectilesLB.Size = new System.Drawing.Size(240, 134);
             this.ExplosiveProjectilesLB.TabIndex = 119;
             this.ExplosiveProjectilesLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.ExplosiveProjectilesLB.SelectedIndexChanged += new System.EventHandler(this.ExplosiveProjectilesLB_SelectedIndexChanged);
@@ -2725,7 +2729,7 @@ namespace DayZeEditor
             this.groupBox59.Controls.Add(this.PlayerTagViewRangeNUD);
             this.groupBox59.Controls.Add(this.EnablePlayerTagsCB);
             this.groupBox59.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox59.Location = new System.Drawing.Point(315, 575);
+            this.groupBox59.Location = new System.Drawing.Point(314, 616);
             this.groupBox59.Name = "groupBox59";
             this.groupBox59.Size = new System.Drawing.Size(957, 87);
             this.groupBox59.TabIndex = 7;
@@ -2859,7 +2863,7 @@ namespace DayZeEditor
             this.groupBox29.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox29.Location = new System.Drawing.Point(7, 348);
             this.groupBox29.Name = "groupBox29";
-            this.groupBox29.Size = new System.Drawing.Size(301, 311);
+            this.groupBox29.Size = new System.Drawing.Size(301, 355);
             this.groupBox29.TabIndex = 6;
             this.groupBox29.TabStop = false;
             this.groupBox29.Text = "Social Media Settings";
@@ -2873,7 +2877,7 @@ namespace DayZeEditor
             this.tabControl4.Location = new System.Drawing.Point(3, 44);
             this.tabControl4.Name = "tabControl4";
             this.tabControl4.SelectedIndex = 0;
-            this.tabControl4.Size = new System.Drawing.Size(295, 264);
+            this.tabControl4.Size = new System.Drawing.Size(295, 308);
             this.tabControl4.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl4.TabIndex = 0;
             this.tabControl4.SelectedIndexChanged += new System.EventHandler(this.tabControl4_SelectedIndexChanged);
@@ -2891,7 +2895,7 @@ namespace DayZeEditor
             this.tabPage18.Location = new System.Drawing.Point(4, 25);
             this.tabPage18.Name = "tabPage18";
             this.tabPage18.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage18.Size = new System.Drawing.Size(287, 235);
+            this.tabPage18.Size = new System.Drawing.Size(287, 279);
             this.tabPage18.TabIndex = 0;
             this.tabPage18.Text = "tabPage18";
             // 
@@ -3125,6 +3129,8 @@ namespace DayZeEditor
             // 
             // groupBox28
             // 
+            this.groupBox28.Controls.Add(this.darkLabel263);
+            this.groupBox28.Controls.Add(this.TerritoryInviteCooldownNUD);
             this.groupBox28.Controls.Add(this.AuthenticateCodeLockIfTerritoryMemberTCB);
             this.groupBox28.Controls.Add(this.darkLabel176);
             this.groupBox28.Controls.Add(this.TerritoryInviteAcceptRadiusTNUD);
@@ -3141,7 +3147,7 @@ namespace DayZeEditor
             this.groupBox28.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox28.Location = new System.Drawing.Point(710, 364);
             this.groupBox28.Name = "groupBox28";
-            this.groupBox28.Size = new System.Drawing.Size(290, 205);
+            this.groupBox28.Size = new System.Drawing.Size(290, 246);
             this.groupBox28.TabIndex = 5;
             this.groupBox28.TabStop = false;
             this.groupBox28.Text = "Territories";
@@ -3150,7 +3156,7 @@ namespace DayZeEditor
             // 
             this.AuthenticateCodeLockIfTerritoryMemberTCB.AutoSize = true;
             this.AuthenticateCodeLockIfTerritoryMemberTCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.AuthenticateCodeLockIfTerritoryMemberTCB.Location = new System.Drawing.Point(23, 185);
+            this.AuthenticateCodeLockIfTerritoryMemberTCB.Location = new System.Drawing.Point(23, 182);
             this.AuthenticateCodeLockIfTerritoryMemberTCB.Name = "AuthenticateCodeLockIfTerritoryMemberTCB";
             this.AuthenticateCodeLockIfTerritoryMemberTCB.Size = new System.Drawing.Size(229, 17);
             this.AuthenticateCodeLockIfTerritoryMemberTCB.TabIndex = 40;
@@ -3163,7 +3169,7 @@ namespace DayZeEditor
             // 
             this.darkLabel176.AutoSize = true;
             this.darkLabel176.ForeColor = System.Drawing.SystemColors.Control;
-            this.darkLabel176.Location = new System.Drawing.Point(94, 160);
+            this.darkLabel176.Location = new System.Drawing.Point(94, 157);
             this.darkLabel176.Name = "darkLabel176";
             this.darkLabel176.Size = new System.Drawing.Size(147, 13);
             this.darkLabel176.TabIndex = 39;
@@ -3174,7 +3180,7 @@ namespace DayZeEditor
             this.TerritoryInviteAcceptRadiusTNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.TerritoryInviteAcceptRadiusTNUD.DecimalPlaces = 1;
             this.TerritoryInviteAcceptRadiusTNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.TerritoryInviteAcceptRadiusTNUD.Location = new System.Drawing.Point(23, 156);
+            this.TerritoryInviteAcceptRadiusTNUD.Location = new System.Drawing.Point(23, 153);
             this.TerritoryInviteAcceptRadiusTNUD.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -3190,7 +3196,7 @@ namespace DayZeEditor
             // 
             this.darkLabel82.AutoSize = true;
             this.darkLabel82.ForeColor = System.Drawing.SystemColors.Control;
-            this.darkLabel82.Location = new System.Drawing.Point(94, 59);
+            this.darkLabel82.Location = new System.Drawing.Point(94, 56);
             this.darkLabel82.Name = "darkLabel82";
             this.darkLabel82.Size = new System.Drawing.Size(68, 13);
             this.darkLabel82.TabIndex = 37;
@@ -3201,7 +3207,7 @@ namespace DayZeEditor
             this.TerritorySizeTNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.TerritorySizeTNUD.DecimalPlaces = 1;
             this.TerritorySizeTNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.TerritorySizeTNUD.Location = new System.Drawing.Point(23, 55);
+            this.TerritorySizeTNUD.Location = new System.Drawing.Point(23, 52);
             this.TerritorySizeTNUD.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -3217,7 +3223,7 @@ namespace DayZeEditor
             // 
             this.darkLabel81.AutoSize = true;
             this.darkLabel81.ForeColor = System.Drawing.SystemColors.Control;
-            this.darkLabel81.Location = new System.Drawing.Point(94, 135);
+            this.darkLabel81.Location = new System.Drawing.Point(94, 132);
             this.darkLabel81.Name = "darkLabel81";
             this.darkLabel81.Size = new System.Drawing.Size(119, 13);
             this.darkLabel81.TabIndex = 35;
@@ -3227,7 +3233,7 @@ namespace DayZeEditor
             // 
             this.MaxTerritoryPerPlayerTNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.MaxTerritoryPerPlayerTNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.MaxTerritoryPerPlayerTNUD.Location = new System.Drawing.Point(23, 131);
+            this.MaxTerritoryPerPlayerTNUD.Location = new System.Drawing.Point(23, 128);
             this.MaxTerritoryPerPlayerTNUD.Name = "MaxTerritoryPerPlayerTNUD";
             this.MaxTerritoryPerPlayerTNUD.Size = new System.Drawing.Size(65, 20);
             this.MaxTerritoryPerPlayerTNUD.TabIndex = 34;
@@ -3238,7 +3244,7 @@ namespace DayZeEditor
             // 
             this.darkLabel80.AutoSize = true;
             this.darkLabel80.ForeColor = System.Drawing.SystemColors.Control;
-            this.darkLabel80.Location = new System.Drawing.Point(94, 109);
+            this.darkLabel80.Location = new System.Drawing.Point(94, 106);
             this.darkLabel80.Name = "darkLabel80";
             this.darkLabel80.Size = new System.Drawing.Size(126, 13);
             this.darkLabel80.TabIndex = 33;
@@ -3248,7 +3254,7 @@ namespace DayZeEditor
             // 
             this.MaxMembersInTerritoryTNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.MaxMembersInTerritoryTNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.MaxMembersInTerritoryTNUD.Location = new System.Drawing.Point(23, 105);
+            this.MaxMembersInTerritoryTNUD.Location = new System.Drawing.Point(23, 102);
             this.MaxMembersInTerritoryTNUD.Name = "MaxMembersInTerritoryTNUD";
             this.MaxMembersInTerritoryTNUD.Size = new System.Drawing.Size(65, 20);
             this.MaxMembersInTerritoryTNUD.TabIndex = 32;
@@ -3259,7 +3265,7 @@ namespace DayZeEditor
             // 
             this.darkLabel79.AutoSize = true;
             this.darkLabel79.ForeColor = System.Drawing.SystemColors.Control;
-            this.darkLabel79.Location = new System.Drawing.Point(94, 83);
+            this.darkLabel79.Location = new System.Drawing.Point(94, 80);
             this.darkLabel79.Name = "darkLabel79";
             this.darkLabel79.Size = new System.Drawing.Size(115, 13);
             this.darkLabel79.TabIndex = 31;
@@ -3270,7 +3276,7 @@ namespace DayZeEditor
             this.TerritoryPerimeterSizeTNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.TerritoryPerimeterSizeTNUD.DecimalPlaces = 1;
             this.TerritoryPerimeterSizeTNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.TerritoryPerimeterSizeTNUD.Location = new System.Drawing.Point(23, 79);
+            this.TerritoryPerimeterSizeTNUD.Location = new System.Drawing.Point(23, 76);
             this.TerritoryPerimeterSizeTNUD.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -3356,7 +3362,7 @@ namespace DayZeEditor
             this.groupBox27.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox27.Location = new System.Drawing.Point(315, 13);
             this.groupBox27.Name = "groupBox27";
-            this.groupBox27.Size = new System.Drawing.Size(389, 556);
+            this.groupBox27.Size = new System.Drawing.Size(389, 597);
             this.groupBox27.TabIndex = 4;
             this.groupBox27.TabStop = false;
             this.groupBox27.Text = "Notifications";
@@ -3975,6 +3981,32 @@ namespace DayZeEditor
             this.groupBox9.TabIndex = 2;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Party Settings";
+            // 
+            // darkLabel262
+            // 
+            this.darkLabel262.AutoSize = true;
+            this.darkLabel262.ForeColor = System.Drawing.SystemColors.Control;
+            this.darkLabel262.Location = new System.Drawing.Point(137, 319);
+            this.darkLabel262.Name = "darkLabel262";
+            this.darkLabel262.Size = new System.Drawing.Size(83, 13);
+            this.darkLabel262.TabIndex = 37;
+            this.darkLabel262.Text = "Invite Cooldown";
+            // 
+            // InviteCooldownNUD
+            // 
+            this.InviteCooldownNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.InviteCooldownNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.InviteCooldownNUD.Location = new System.Drawing.Point(23, 316);
+            this.InviteCooldownNUD.Maximum = new decimal(new int[] {
+            4000000,
+            0,
+            0,
+            0});
+            this.InviteCooldownNUD.Name = "InviteCooldownNUD";
+            this.InviteCooldownNUD.Size = new System.Drawing.Size(108, 20);
+            this.InviteCooldownNUD.TabIndex = 36;
+            this.InviteCooldownNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.InviteCooldownNUD.ValueChanged += new System.EventHandler(this.PartySettingsNUD_ValueChanged);
             // 
             // ForcePartyToHaveTagsCB
             // 
@@ -7653,6 +7685,7 @@ namespace DayZeEditor
             // 
             // groupBox34
             // 
+            this.groupBox34.Controls.Add(this.EnableExpansionChatCB);
             this.groupBox34.Controls.Add(this.darkButton8);
             this.groupBox34.Controls.Add(this.darkButton9);
             this.groupBox34.Controls.Add(this.darkLabel261);
@@ -7691,6 +7724,17 @@ namespace DayZeEditor
             this.groupBox34.TabIndex = 2;
             this.groupBox34.TabStop = false;
             this.groupBox34.Text = "Chat";
+            // 
+            // EnableExpansionChatCB
+            // 
+            this.EnableExpansionChatCB.AutoSize = true;
+            this.EnableExpansionChatCB.Location = new System.Drawing.Point(9, 56);
+            this.EnableExpansionChatCB.Name = "EnableExpansionChatCB";
+            this.EnableExpansionChatCB.Size = new System.Drawing.Size(136, 17);
+            this.EnableExpansionChatCB.TabIndex = 147;
+            this.EnableExpansionChatCB.Text = "Enable Expansion Chat";
+            this.EnableExpansionChatCB.UseVisualStyleBackColor = true;
+            this.EnableExpansionChatCB.CheckedChanged += new System.EventHandler(this.EnableExpansionChatCB_CheckedChanged);
             // 
             // darkButton8
             // 
@@ -7895,7 +7939,7 @@ namespace DayZeEditor
             // EnableTransportChatCB
             // 
             this.EnableTransportChatCB.AutoSize = true;
-            this.EnableTransportChatCB.Location = new System.Drawing.Point(9, 62);
+            this.EnableTransportChatCB.Location = new System.Drawing.Point(9, 37);
             this.EnableTransportChatCB.Name = "EnableTransportChatCB";
             this.EnableTransportChatCB.Size = new System.Drawing.Size(132, 17);
             this.EnableTransportChatCB.TabIndex = 3;
@@ -7927,7 +7971,7 @@ namespace DayZeEditor
             // EnablePartyChatCB
             // 
             this.EnablePartyChatCB.AutoSize = true;
-            this.EnablePartyChatCB.Location = new System.Drawing.Point(9, 39);
+            this.EnablePartyChatCB.Location = new System.Drawing.Point(142, 18);
             this.EnablePartyChatCB.Name = "EnablePartyChatCB";
             this.EnablePartyChatCB.Size = new System.Drawing.Size(111, 17);
             this.EnablePartyChatCB.TabIndex = 2;
@@ -8727,6 +8771,26 @@ namespace DayZeEditor
             this.groupBox72.TabIndex = 2;
             this.groupBox72.TabStop = false;
             this.groupBox72.Text = "General";
+            // 
+            // ItemRarityParentSearchCB
+            // 
+            this.ItemRarityParentSearchCB.AutoSize = true;
+            this.ItemRarityParentSearchCB.Location = new System.Drawing.Point(18, 206);
+            this.ItemRarityParentSearchCB.Name = "ItemRarityParentSearchCB";
+            this.ItemRarityParentSearchCB.Size = new System.Drawing.Size(147, 17);
+            this.ItemRarityParentSearchCB.TabIndex = 149;
+            this.ItemRarityParentSearchCB.Text = "Item Rarity Parent Search";
+            this.ItemRarityParentSearchCB.UseVisualStyleBackColor = true;
+            this.ItemRarityParentSearchCB.CheckedChanged += new System.EventHandler(this.ItemRarityParentSearchCB_CheckedChanged);
+            // 
+            // DefaultItemRarityCB
+            // 
+            this.DefaultItemRarityCB.FormattingEnabled = true;
+            this.DefaultItemRarityCB.Location = new System.Drawing.Point(18, 179);
+            this.DefaultItemRarityCB.Name = "DefaultItemRarityCB";
+            this.DefaultItemRarityCB.Size = new System.Drawing.Size(190, 21);
+            this.DefaultItemRarityCB.TabIndex = 148;
+            this.DefaultItemRarityCB.SelectedIndexChanged += new System.EventHandler(this.DefaultItemRarityCB_SelectedIndexChanged);
             // 
             // darkLabel230
             // 
@@ -18864,51 +18928,26 @@ namespace DayZeEditor
             this.removeSubMenuCategoryToolStripMenuItem.Text = "Remove Sub Menu Category";
             this.removeSubMenuCategoryToolStripMenuItem.Click += new System.EventHandler(this.removeSubMenuCategoryToolStripMenuItem_Click);
             // 
-            // InviteCooldownNUD
+            // darkLabel263
             // 
-            this.InviteCooldownNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.InviteCooldownNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.InviteCooldownNUD.Location = new System.Drawing.Point(23, 316);
-            this.InviteCooldownNUD.Maximum = new decimal(new int[] {
-            4000000,
-            0,
-            0,
-            0});
-            this.InviteCooldownNUD.Name = "InviteCooldownNUD";
-            this.InviteCooldownNUD.Size = new System.Drawing.Size(108, 20);
-            this.InviteCooldownNUD.TabIndex = 36;
-            this.InviteCooldownNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.InviteCooldownNUD.ValueChanged += new System.EventHandler(this.PartySettingsNUD_ValueChanged);
+            this.darkLabel263.AutoSize = true;
+            this.darkLabel263.ForeColor = System.Drawing.SystemColors.Control;
+            this.darkLabel263.Location = new System.Drawing.Point(94, 209);
+            this.darkLabel263.Name = "darkLabel263";
+            this.darkLabel263.Size = new System.Drawing.Size(83, 13);
+            this.darkLabel263.TabIndex = 42;
+            this.darkLabel263.Text = "Invite Cooldown";
             // 
-            // darkLabel262
+            // TerritoryInviteCooldownNUD
             // 
-            this.darkLabel262.AutoSize = true;
-            this.darkLabel262.ForeColor = System.Drawing.SystemColors.Control;
-            this.darkLabel262.Location = new System.Drawing.Point(137, 319);
-            this.darkLabel262.Name = "darkLabel262";
-            this.darkLabel262.Size = new System.Drawing.Size(83, 13);
-            this.darkLabel262.TabIndex = 37;
-            this.darkLabel262.Text = "Invite Cooldown";
-            // 
-            // DefaultItemRarityCB
-            // 
-            this.DefaultItemRarityCB.FormattingEnabled = true;
-            this.DefaultItemRarityCB.Location = new System.Drawing.Point(18, 179);
-            this.DefaultItemRarityCB.Name = "DefaultItemRarityCB";
-            this.DefaultItemRarityCB.Size = new System.Drawing.Size(190, 21);
-            this.DefaultItemRarityCB.TabIndex = 148;
-            this.DefaultItemRarityCB.SelectedIndexChanged += new System.EventHandler(this.DefaultItemRarityCB_SelectedIndexChanged);
-            // 
-            // ItemRarityParentSearchCB
-            // 
-            this.ItemRarityParentSearchCB.AutoSize = true;
-            this.ItemRarityParentSearchCB.Location = new System.Drawing.Point(18, 206);
-            this.ItemRarityParentSearchCB.Name = "ItemRarityParentSearchCB";
-            this.ItemRarityParentSearchCB.Size = new System.Drawing.Size(147, 17);
-            this.ItemRarityParentSearchCB.TabIndex = 149;
-            this.ItemRarityParentSearchCB.Text = "Item Rarity Parent Search";
-            this.ItemRarityParentSearchCB.UseVisualStyleBackColor = true;
-            this.ItemRarityParentSearchCB.CheckedChanged += new System.EventHandler(this.ItemRarityParentSearchCB_CheckedChanged);
+            this.TerritoryInviteCooldownNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.TerritoryInviteCooldownNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.TerritoryInviteCooldownNUD.Location = new System.Drawing.Point(23, 205);
+            this.TerritoryInviteCooldownNUD.Name = "TerritoryInviteCooldownNUD";
+            this.TerritoryInviteCooldownNUD.Size = new System.Drawing.Size(65, 20);
+            this.TerritoryInviteCooldownNUD.TabIndex = 41;
+            this.TerritoryInviteCooldownNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TerritoryInviteCooldownNUD.ValueChanged += new System.EventHandler(this.TerritoryInviteCooldownNUD_ValueChanged);
             // 
             // ExpansionSettings
             // 
@@ -18976,6 +19015,7 @@ namespace DayZeEditor
             this.groupBox10.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.InviteCooldownNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxMembersInPartyNUD)).EndInit();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
@@ -19388,7 +19428,7 @@ namespace DayZeEditor
             this.darkToolStrip26.ResumeLayout(false);
             this.darkToolStrip26.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.InviteCooldownNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TerritoryInviteCooldownNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -20711,5 +20751,8 @@ namespace DayZeEditor
         private System.Windows.Forms.NumericUpDown InviteCooldownNUD;
         private System.Windows.Forms.CheckBox ItemRarityParentSearchCB;
         private System.Windows.Forms.ComboBox DefaultItemRarityCB;
+        private System.Windows.Forms.CheckBox EnableExpansionChatCB;
+        private DarkUI.Controls.DarkLabel darkLabel263;
+        private System.Windows.Forms.NumericUpDown TerritoryInviteCooldownNUD;
     }
 }

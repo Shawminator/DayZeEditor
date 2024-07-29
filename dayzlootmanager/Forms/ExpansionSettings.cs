@@ -3254,6 +3254,7 @@ namespace DayZeEditor
             EnableGlobalChatCB.Checked = ChatSettings.EnableGlobalChat == 1 ? true : false;
             EnablePartyChatCB.Checked = ChatSettings.EnablePartyChat == 1 ? true : false;
             EnableTransportChatCB.Checked = ChatSettings.EnableTransportChat == 1 ? true : false;
+            EnableExpansionChatCB.Checked = ChatSettings.EnableExpansionChat == 1 ? true : false;
             BlackListWordsLB.DataSource = ChatSettings.BlacklistedWords;
             useraction = true;
         }
@@ -3337,6 +3338,12 @@ namespace DayZeEditor
         {
             if (!useraction) { return; }
             ChatSettings.EnableTransportChat = EnableTransportChatCB.Checked == true ? 1 : 0;
+            ChatSettings.isDirty = true;
+        }
+        private void EnableExpansionChatCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            ChatSettings.EnableExpansionChat = EnableExpansionChatCB.Checked == true ? 1 : 0;
             ChatSettings.isDirty = true;
         }
         #endregion chatSettings
@@ -8027,6 +8034,7 @@ namespace DayZeEditor
             MaxTerritoryPerPlayerTNUD.Value = TerritorySettings.MaxTerritoryPerPlayer;
             TerritoryInviteAcceptRadiusTNUD.Value = TerritorySettings.TerritoryInviteAcceptRadius;
             AuthenticateCodeLockIfTerritoryMemberTCB.Checked = TerritorySettings.AuthenticateCodeLockIfTerritoryMember == 1 ? true : false;
+            TerritoryInviteCooldownNUD.Value = TerritorySettings.InviteCooldown;
             useraction = true;
         }
         private void TerritoriesTCB_CheckedChanged(object sender, EventArgs e)
@@ -8044,6 +8052,13 @@ namespace DayZeEditor
                 TerritorySettings.SetdeciamlValue(nud.Name.Substring(0, nud.Name.Length - 4), nud.Value);
             else
                 TerritorySettings.SetIntValue(nud.Name.Substring(0, nud.Name.Length - 4), (int)nud.Value);
+            TerritorySettings.isDirty = true;
+        }
+
+        private void TerritoryInviteCooldownNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            TerritorySettings.InviteCooldown = (int)TerritoryInviteCooldownNUD.Value;
             TerritorySettings.isDirty = true;
         }
         #endregion Territory settings
@@ -9401,8 +9416,9 @@ namespace DayZeEditor
 
 
 
-        #endregion personalstroage
 
+
+        #endregion personalstroage
 
     }
     public class NullToEmptyGearConverter : JsonConverter<ExpansionStartingGearItem>

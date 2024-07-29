@@ -1,4 +1,13 @@
-﻿Version 0.8.0.9
+﻿Version 0.8.1.1
+forgot to update version number in editor so got update loop.
+
+Version 0.8.1.0
+[Updated]
+Expansion Chat - Missed EnableExpansionChat Addition.
+Expansion Territories - Missed InviteCooldown Addition.
+Expansion AI - Updated Unlimited Reload depending on target type (e.g.can allow unlimited reload against Zs, but not players/AI).
+
+Version 0.8.0.9
 [Fixed]
 ExpansionAI - Added missing Behaviours to drop down lists
 ExpansionAI - Added missing variables when creating a new object partol, this was resulting in certain ones being null.

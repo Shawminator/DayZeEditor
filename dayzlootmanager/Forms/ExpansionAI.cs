@@ -748,7 +748,7 @@ namespace DayZeEditor
             CrashChanceNUD.Value = CurrentEventcrashpatrol.Chance;
             CrashDamageReceivedMultiplierNUD.Value = CurrentEventcrashpatrol.DamageReceivedMultiplier;
             CrashCanBeLootedCB.Checked = CurrentEventcrashpatrol.CanBeLooted == 1 ? true : false;
-            CrashUnlimitedReloadCB.Checked = CurrentEventcrashpatrol.UnlimitedReload == 1 ? true : false;
+            CrashUnlimitedReloadNUD.Value = CurrentEventcrashpatrol.UnlimitedReload;
             CrashLoadoutFileCB.SelectedIndex = CrashLoadoutFileCB.FindStringExact(CurrentEventcrashpatrol.Loadout);
             CrashFormationCB.SelectedIndex = CrashFormationCB.FindStringExact(CurrentEventcrashpatrol.Formation);
             CrashWaypointInterpolationCB.SelectedIndex = CrashWaypointInterpolationCB.FindStringExact(CurrentEventcrashpatrol.WaypointInterpolation);
@@ -934,12 +934,6 @@ namespace DayZeEditor
             CurrentEventcrashpatrol.Chance = CrashChanceNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
-        private void CrashUnlimitedReloadCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentEventcrashpatrol.UnlimitedReload = CrashUnlimitedReloadCB.Checked == true ? 1 : 0;
-            AIPatrolSettings.isDirty = true;
-        }
         private void CrashCanBeLootedCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -980,6 +974,12 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             CurrentEventcrashpatrol.Persist = CrashPersistCB.Checked == true ? 1 : 0;
+            AIPatrolSettings.isDirty = true;
+        }
+        private void CrashUnlimitedReloadNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentEventcrashpatrol.UnlimitedReload = (int)CrashUnlimitedReloadNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
         private void darkButton16_Click(object sender, EventArgs e)
@@ -1033,7 +1033,7 @@ namespace DayZeEditor
             StaticPatrolDamageMultiplierNUD.Value = CurrentPatrol.DamageMultiplier;
             StaticPatrolChanceCB.Value = CurrentPatrol.Chance;
             StaticPatrolCanBeLotedCB.Checked = CurrentPatrol.CanBeLooted == 1 ? true : false;
-            StaticPatrolUnlimitedReloadCB.Checked = CurrentPatrol.UnlimitedReload == 1 ? true : false;
+            StaticPatrolUnlimitedReloadNUD.Value = CurrentPatrol.UnlimitedReload;
             StaticPatrolLoadoutsCB.SelectedIndex = StaticPatrolLoadoutsCB.FindStringExact(CurrentPatrol.Loadout);
             StaticPatrolMinSpreadRadiusNUD.Value = CurrentPatrol.MinSpreadRadius;
             StaticPatrolMaxSpreadRadiusNUD.Value = CurrentPatrol.MaxSpreadRadius;
@@ -1275,12 +1275,6 @@ namespace DayZeEditor
             CurrentPatrol.MaxSpreadRadius = (int)StaticPatrolMaxSpreadRadiusNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
-        private void StaticPatrolUnlimitedReloadCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            CurrentPatrol.UnlimitedReload = StaticPatrolUnlimitedReloadCB.Checked == true ? 1 : 0;
-            AIPatrolSettings.isDirty = true;
-        }
         private void StaticPatrolCanBeLotedCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
@@ -1327,6 +1321,12 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             CurrentPatrol.Persist = StaticPatrolPersistCB.Checked == true ? 1 : 0;
+            AIPatrolSettings.isDirty = true;
+        }
+        private void StaticPatrolUnlimitedReloadNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPatrol.UnlimitedReload = (int)StaticPatrolUnlimitedReloadNUD.Value;
             AIPatrolSettings.isDirty = true;
         }
         private void darkButton4_Click(object sender, EventArgs e)

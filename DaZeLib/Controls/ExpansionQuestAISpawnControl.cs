@@ -116,7 +116,7 @@ namespace DayZeEditor
             StaticPatrolDamageMultiplierNUD.Value = _currentAISpawn.DamageMultiplier;
             StaticPatrolChanceCB.Value = _currentAISpawn.Chance;
             StaticPatrolCanBeLotedCB.Checked = _currentAISpawn.CanBeLooted == 1 ? true : false;
-            StaticPatrolUnlimitedReloadCB.Checked = _currentAISpawn.UnlimitedReload == 1 ? true : false;
+            StaticPatrolUnlimitedReloadNUD.Value = _currentAISpawn.UnlimitedReload;
             StaticPatrolLoadoutsCB.SelectedIndex = StaticPatrolLoadoutsCB.FindStringExact(_currentAISpawn.Loadout);
             StaticPatrolMinSpreadRadiusNUD.Value = _currentAISpawn.MinSpreadRadius;
             StaticPatrolMaxSpreadRadiusNUD.Value = _currentAISpawn.MaxSpreadRadius;
@@ -282,10 +282,10 @@ namespace DayZeEditor
             isDirty = true;
         }
 
-        private void StaticPatrolUnlimitedReloadCB_CheckedChanged(object sender, EventArgs e)
+        private void StaticPatrolUnlimitedReloadNUD_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            _currentAISpawn.UnlimitedReload = StaticPatrolUnlimitedReloadCB.Checked == true ? 1 : 0;
+            _currentAISpawn.UnlimitedReload = (int)StaticPatrolUnlimitedReloadNUD.Value;
             isDirty = true;
         }
 
@@ -521,5 +521,6 @@ namespace DayZeEditor
             StaticPatrolNumberOfAINUD.ReadOnly = v;
             StaticPatrolNumberOfAINUD.Increment = 0;
         }
+
     }
 }

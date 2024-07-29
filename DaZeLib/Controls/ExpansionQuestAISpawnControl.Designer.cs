@@ -76,7 +76,6 @@ namespace DayZeEditor
             this.darkLabel29 = new DarkUI.Controls.DarkLabel();
             this.StaticPatrolUnderThreatSpeedCB = new System.Windows.Forms.ComboBox();
             this.darkLabel28 = new DarkUI.Controls.DarkLabel();
-            this.StaticPatrolUnlimitedReloadCB = new System.Windows.Forms.CheckBox();
             this.StaticPatrolCanBeLotedCB = new System.Windows.Forms.CheckBox();
             this.darkLabel42 = new DarkUI.Controls.DarkLabel();
             this.StaticPatrolMinSpreadRadiusNUD = new System.Windows.Forms.NumericUpDown();
@@ -106,6 +105,8 @@ namespace DayZeEditor
             this.darkLabel53 = new DarkUI.Controls.DarkLabel();
             this.StaticPatrolWaypointInterpolationCB = new System.Windows.Forms.ComboBox();
             this.StaticPatrolDespawnTimeNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel179 = new DarkUI.Controls.DarkLabel();
+            this.StaticPatrolUnlimitedReloadNUD = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -130,10 +131,13 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolThreatDistanceLimitNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolAccuracyMinNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolDespawnTimeNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolUnlimitedReloadNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.darkLabel179);
+            this.groupBox1.Controls.Add(this.StaticPatrolUnlimitedReloadNUD);
             this.groupBox1.Controls.Add(this.StaticPatrolPersistCB);
             this.groupBox1.Controls.Add(this.groupBox7);
             this.groupBox1.Controls.Add(this.groupBox2);
@@ -159,7 +163,6 @@ namespace DayZeEditor
             this.groupBox1.Controls.Add(this.darkLabel29);
             this.groupBox1.Controls.Add(this.StaticPatrolUnderThreatSpeedCB);
             this.groupBox1.Controls.Add(this.darkLabel28);
-            this.groupBox1.Controls.Add(this.StaticPatrolUnlimitedReloadCB);
             this.groupBox1.Controls.Add(this.StaticPatrolCanBeLotedCB);
             this.groupBox1.Controls.Add(this.darkLabel42);
             this.groupBox1.Controls.Add(this.StaticPatrolMinSpreadRadiusNUD);
@@ -822,25 +825,12 @@ namespace DayZeEditor
             this.darkLabel28.TabIndex = 300;
             this.darkLabel28.Text = "Under Threat Speed";
             // 
-            // StaticPatrolUnlimitedReloadCB
-            // 
-            this.StaticPatrolUnlimitedReloadCB.AutoSize = true;
-            this.StaticPatrolUnlimitedReloadCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.StaticPatrolUnlimitedReloadCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolUnlimitedReloadCB.Location = new System.Drawing.Point(802, 18);
-            this.StaticPatrolUnlimitedReloadCB.Name = "StaticPatrolUnlimitedReloadCB";
-            this.StaticPatrolUnlimitedReloadCB.Size = new System.Drawing.Size(106, 17);
-            this.StaticPatrolUnlimitedReloadCB.TabIndex = 305;
-            this.StaticPatrolUnlimitedReloadCB.Text = "Unlimited Reload";
-            this.StaticPatrolUnlimitedReloadCB.UseVisualStyleBackColor = true;
-            this.StaticPatrolUnlimitedReloadCB.CheckedChanged += new System.EventHandler(this.StaticPatrolUnlimitedReloadCB_CheckedChanged);
-            // 
             // StaticPatrolCanBeLotedCB
             // 
             this.StaticPatrolCanBeLotedCB.AutoSize = true;
             this.StaticPatrolCanBeLotedCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.StaticPatrolCanBeLotedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolCanBeLotedCB.Location = new System.Drawing.Point(699, 18);
+            this.StaticPatrolCanBeLotedCB.Location = new System.Drawing.Point(811, 16);
             this.StaticPatrolCanBeLotedCB.Name = "StaticPatrolCanBeLotedCB";
             this.StaticPatrolCanBeLotedCB.Size = new System.Drawing.Size(97, 17);
             this.StaticPatrolCanBeLotedCB.TabIndex = 306;
@@ -1290,6 +1280,32 @@ namespace DayZeEditor
             this.StaticPatrolDespawnTimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.StaticPatrolDespawnTimeNUD.ValueChanged += new System.EventHandler(this.StaticPatrolDespawnTimeNUD_ValueChanged);
             // 
+            // darkLabel179
+            // 
+            this.darkLabel179.AutoSize = true;
+            this.darkLabel179.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel179.Location = new System.Drawing.Point(248, 148);
+            this.darkLabel179.Name = "darkLabel179";
+            this.darkLabel179.Size = new System.Drawing.Size(87, 13);
+            this.darkLabel179.TabIndex = 345;
+            this.darkLabel179.Text = "Unlimited Reload";
+            // 
+            // StaticPatrolUnlimitedReloadNUD
+            // 
+            this.StaticPatrolUnlimitedReloadNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolUnlimitedReloadNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolUnlimitedReloadNUD.Location = new System.Drawing.Point(341, 146);
+            this.StaticPatrolUnlimitedReloadNUD.Maximum = new decimal(new int[] {
+            500000,
+            0,
+            0,
+            0});
+            this.StaticPatrolUnlimitedReloadNUD.Name = "StaticPatrolUnlimitedReloadNUD";
+            this.StaticPatrolUnlimitedReloadNUD.Size = new System.Drawing.Size(105, 20);
+            this.StaticPatrolUnlimitedReloadNUD.TabIndex = 344;
+            this.StaticPatrolUnlimitedReloadNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.StaticPatrolUnlimitedReloadNUD.ValueChanged += new System.EventHandler(this.StaticPatrolUnlimitedReloadNUD_ValueChanged);
+            // 
             // ExpansionQuestAISpawnControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1326,6 +1342,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolThreatDistanceLimitNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolAccuracyMinNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolDespawnTimeNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolUnlimitedReloadNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1378,7 +1395,6 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkLabel darkLabel29;
         private System.Windows.Forms.ComboBox StaticPatrolUnderThreatSpeedCB;
         private DarkUI.Controls.DarkLabel darkLabel28;
-        private System.Windows.Forms.CheckBox StaticPatrolUnlimitedReloadCB;
         private System.Windows.Forms.CheckBox StaticPatrolCanBeLotedCB;
         private DarkUI.Controls.DarkLabel darkLabel42;
         private System.Windows.Forms.NumericUpDown StaticPatrolMinSpreadRadiusNUD;
@@ -1408,5 +1424,7 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkLabel darkLabel53;
         private System.Windows.Forms.ComboBox StaticPatrolWaypointInterpolationCB;
         private System.Windows.Forms.NumericUpDown StaticPatrolDespawnTimeNUD;
+        private DarkUI.Controls.DarkLabel darkLabel179;
+        private System.Windows.Forms.NumericUpDown StaticPatrolUnlimitedReloadNUD;
     }
 }

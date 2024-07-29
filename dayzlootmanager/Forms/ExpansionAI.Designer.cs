@@ -149,7 +149,6 @@ namespace DayZeEditor
             this.darkLabel25 = new DarkUI.Controls.DarkLabel();
             this.CrashMaxDistRadiusNUD = new System.Windows.Forms.NumericUpDown();
             this.CrashChanceNUD = new System.Windows.Forms.NumericUpDown();
-            this.CrashUnlimitedReloadCB = new System.Windows.Forms.CheckBox();
             this.darkLabel24 = new DarkUI.Controls.DarkLabel();
             this.CrashMinDistRadiusNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel22 = new DarkUI.Controls.DarkLabel();
@@ -216,7 +215,6 @@ namespace DayZeEditor
             this.darkLabel29 = new DarkUI.Controls.DarkLabel();
             this.StaticPatrolUnderThreatSpeedCB = new System.Windows.Forms.ComboBox();
             this.darkLabel28 = new DarkUI.Controls.DarkLabel();
-            this.StaticPatrolUnlimitedReloadCB = new System.Windows.Forms.CheckBox();
             this.StaticPatrolCanBeLotedCB = new System.Windows.Forms.CheckBox();
             this.darkLabel42 = new DarkUI.Controls.DarkLabel();
             this.StaticPatrolMinSpreadRadiusNUD = new System.Windows.Forms.NumericUpDown();
@@ -531,6 +529,10 @@ namespace DayZeEditor
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.CrashUnlimitedReloadNUD = new System.Windows.Forms.NumericUpDown();
+            this.darkLabel178 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel179 = new DarkUI.Controls.DarkLabel();
+            this.StaticPatrolUnlimitedReloadNUD = new System.Windows.Forms.NumericUpDown();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.TabPage1.SuspendLayout();
@@ -693,6 +695,8 @@ namespace DayZeEditor
             this.groupBox14.SuspendLayout();
             this.darkToolStrip24.SuspendLayout();
             this.darkToolStrip23.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CrashUnlimitedReloadNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolUnlimitedReloadNUD)).BeginInit();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -1827,6 +1831,8 @@ namespace DayZeEditor
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.darkLabel178);
+            this.groupBox4.Controls.Add(this.CrashUnlimitedReloadNUD);
             this.groupBox4.Controls.Add(this.CrashPersistCB);
             this.groupBox4.Controls.Add(this.groupBox8);
             this.groupBox4.Controls.Add(this.darkLabel78);
@@ -1868,7 +1874,6 @@ namespace DayZeEditor
             this.groupBox4.Controls.Add(this.darkLabel25);
             this.groupBox4.Controls.Add(this.CrashMaxDistRadiusNUD);
             this.groupBox4.Controls.Add(this.CrashChanceNUD);
-            this.groupBox4.Controls.Add(this.CrashUnlimitedReloadCB);
             this.groupBox4.Controls.Add(this.darkLabel24);
             this.groupBox4.Controls.Add(this.CrashMinDistRadiusNUD);
             this.groupBox4.Controls.Add(this.darkLabel22);
@@ -2461,7 +2466,7 @@ namespace DayZeEditor
             this.CrashCanBeLootedCB.AutoSize = true;
             this.CrashCanBeLootedCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.CrashCanBeLootedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CrashCanBeLootedCB.Location = new System.Drawing.Point(452, 278);
+            this.CrashCanBeLootedCB.Location = new System.Drawing.Point(566, 276);
             this.CrashCanBeLootedCB.Name = "CrashCanBeLootedCB";
             this.CrashCanBeLootedCB.Size = new System.Drawing.Size(97, 17);
             this.CrashCanBeLootedCB.TabIndex = 138;
@@ -2549,19 +2554,6 @@ namespace DayZeEditor
             this.CrashChanceNUD.TabIndex = 139;
             this.CrashChanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.CrashChanceNUD.ValueChanged += new System.EventHandler(this.CrashChanceNUD_ValueChanged);
-            // 
-            // CrashUnlimitedReloadCB
-            // 
-            this.CrashUnlimitedReloadCB.AutoSize = true;
-            this.CrashUnlimitedReloadCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.CrashUnlimitedReloadCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CrashUnlimitedReloadCB.Location = new System.Drawing.Point(555, 278);
-            this.CrashUnlimitedReloadCB.Name = "CrashUnlimitedReloadCB";
-            this.CrashUnlimitedReloadCB.Size = new System.Drawing.Size(106, 17);
-            this.CrashUnlimitedReloadCB.TabIndex = 137;
-            this.CrashUnlimitedReloadCB.Text = "Unlimited Reload";
-            this.CrashUnlimitedReloadCB.UseVisualStyleBackColor = true;
-            this.CrashUnlimitedReloadCB.CheckedChanged += new System.EventHandler(this.CrashUnlimitedReloadCB_CheckedChanged);
             // 
             // darkLabel24
             // 
@@ -2829,6 +2821,8 @@ namespace DayZeEditor
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage3.Controls.Add(this.darkLabel179);
+            this.tabPage3.Controls.Add(this.StaticPatrolUnlimitedReloadNUD);
             this.tabPage3.Controls.Add(this.StaticPatrolPersistCB);
             this.tabPage3.Controls.Add(this.groupBox7);
             this.tabPage3.Controls.Add(this.groupBox2);
@@ -2854,7 +2848,6 @@ namespace DayZeEditor
             this.tabPage3.Controls.Add(this.darkLabel29);
             this.tabPage3.Controls.Add(this.StaticPatrolUnderThreatSpeedCB);
             this.tabPage3.Controls.Add(this.darkLabel28);
-            this.tabPage3.Controls.Add(this.StaticPatrolUnlimitedReloadCB);
             this.tabPage3.Controls.Add(this.StaticPatrolCanBeLotedCB);
             this.tabPage3.Controls.Add(this.darkLabel42);
             this.tabPage3.Controls.Add(this.StaticPatrolMinSpreadRadiusNUD);
@@ -3516,25 +3509,12 @@ namespace DayZeEditor
             this.darkLabel28.TabIndex = 132;
             this.darkLabel28.Text = "Under Threat Speed";
             // 
-            // StaticPatrolUnlimitedReloadCB
-            // 
-            this.StaticPatrolUnlimitedReloadCB.AutoSize = true;
-            this.StaticPatrolUnlimitedReloadCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.StaticPatrolUnlimitedReloadCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolUnlimitedReloadCB.Location = new System.Drawing.Point(802, 14);
-            this.StaticPatrolUnlimitedReloadCB.Name = "StaticPatrolUnlimitedReloadCB";
-            this.StaticPatrolUnlimitedReloadCB.Size = new System.Drawing.Size(106, 17);
-            this.StaticPatrolUnlimitedReloadCB.TabIndex = 137;
-            this.StaticPatrolUnlimitedReloadCB.Text = "Unlimited Reload";
-            this.StaticPatrolUnlimitedReloadCB.UseVisualStyleBackColor = true;
-            this.StaticPatrolUnlimitedReloadCB.CheckedChanged += new System.EventHandler(this.StaticPatrolUnlimitedReloadCB_CheckedChanged);
-            // 
             // StaticPatrolCanBeLotedCB
             // 
             this.StaticPatrolCanBeLotedCB.AutoSize = true;
             this.StaticPatrolCanBeLotedCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.StaticPatrolCanBeLotedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolCanBeLotedCB.Location = new System.Drawing.Point(699, 14);
+            this.StaticPatrolCanBeLotedCB.Location = new System.Drawing.Point(811, 11);
             this.StaticPatrolCanBeLotedCB.Name = "StaticPatrolCanBeLotedCB";
             this.StaticPatrolCanBeLotedCB.Size = new System.Drawing.Size(97, 17);
             this.StaticPatrolCanBeLotedCB.TabIndex = 138;
@@ -8095,6 +8075,58 @@ namespace DayZeEditor
             this.toolStripButton6.Text = "Dynamic AI Addon";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
+            // CrashUnlimitedReloadNUD
+            // 
+            this.CrashUnlimitedReloadNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.CrashUnlimitedReloadNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.CrashUnlimitedReloadNUD.Location = new System.Drawing.Point(558, 171);
+            this.CrashUnlimitedReloadNUD.Maximum = new decimal(new int[] {
+            500000,
+            0,
+            0,
+            0});
+            this.CrashUnlimitedReloadNUD.Name = "CrashUnlimitedReloadNUD";
+            this.CrashUnlimitedReloadNUD.Size = new System.Drawing.Size(105, 20);
+            this.CrashUnlimitedReloadNUD.TabIndex = 288;
+            this.CrashUnlimitedReloadNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.CrashUnlimitedReloadNUD.ValueChanged += new System.EventHandler(this.CrashUnlimitedReloadNUD_ValueChanged);
+            // 
+            // darkLabel178
+            // 
+            this.darkLabel178.AutoSize = true;
+            this.darkLabel178.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel178.Location = new System.Drawing.Point(465, 173);
+            this.darkLabel178.Name = "darkLabel178";
+            this.darkLabel178.Size = new System.Drawing.Size(87, 13);
+            this.darkLabel178.TabIndex = 289;
+            this.darkLabel178.Text = "Unlimited Reload";
+            // 
+            // darkLabel179
+            // 
+            this.darkLabel179.AutoSize = true;
+            this.darkLabel179.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel179.Location = new System.Drawing.Point(248, 145);
+            this.darkLabel179.Name = "darkLabel179";
+            this.darkLabel179.Size = new System.Drawing.Size(87, 13);
+            this.darkLabel179.TabIndex = 291;
+            this.darkLabel179.Text = "Unlimited Reload";
+            // 
+            // StaticPatrolUnlimitedReloadNUD
+            // 
+            this.StaticPatrolUnlimitedReloadNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolUnlimitedReloadNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolUnlimitedReloadNUD.Location = new System.Drawing.Point(341, 143);
+            this.StaticPatrolUnlimitedReloadNUD.Maximum = new decimal(new int[] {
+            500000,
+            0,
+            0,
+            0});
+            this.StaticPatrolUnlimitedReloadNUD.Name = "StaticPatrolUnlimitedReloadNUD";
+            this.StaticPatrolUnlimitedReloadNUD.Size = new System.Drawing.Size(105, 20);
+            this.StaticPatrolUnlimitedReloadNUD.TabIndex = 290;
+            this.StaticPatrolUnlimitedReloadNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.StaticPatrolUnlimitedReloadNUD.ValueChanged += new System.EventHandler(this.StaticPatrolUnlimitedReloadNUD_ValueChanged);
+            // 
             // ExpansionAI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -8293,6 +8325,8 @@ namespace DayZeEditor
             this.darkToolStrip24.PerformLayout();
             this.darkToolStrip23.ResumeLayout(false);
             this.darkToolStrip23.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CrashUnlimitedReloadNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolUnlimitedReloadNUD)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -8328,7 +8362,6 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox StaticPatrolCanBeLotedCB;
         private DarkUI.Controls.DarkLabel darkLabel26;
         private System.Windows.Forms.NumericUpDown StaticPatrolMaxDistRadiusNUD;
-        private System.Windows.Forms.CheckBox StaticPatrolUnlimitedReloadCB;
         private DarkUI.Controls.DarkLabel darkLabel27;
         private System.Windows.Forms.NumericUpDown StaticPatrolMinDistRadiusNUD;
         private DarkUI.Controls.DarkLabel darkLabel28;
@@ -8363,7 +8396,6 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox CrashCanBeLootedCB;
         private DarkUI.Controls.DarkLabel darkLabel23;
         private System.Windows.Forms.NumericUpDown CrashMaxDistRadiusNUD;
-        private System.Windows.Forms.CheckBox CrashUnlimitedReloadCB;
         private DarkUI.Controls.DarkLabel darkLabel24;
         private System.Windows.Forms.NumericUpDown CrashMinDistRadiusNUD;
         private DarkUI.Controls.DarkLabel darkLabel22;
@@ -8800,5 +8832,9 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox LogAIKilledCB;
         private System.Windows.Forms.CheckBox CrashPersistCB;
         private System.Windows.Forms.CheckBox StaticPatrolPersistCB;
+        private DarkUI.Controls.DarkLabel darkLabel178;
+        private System.Windows.Forms.NumericUpDown CrashUnlimitedReloadNUD;
+        private DarkUI.Controls.DarkLabel darkLabel179;
+        private System.Windows.Forms.NumericUpDown StaticPatrolUnlimitedReloadNUD;
     }
 }

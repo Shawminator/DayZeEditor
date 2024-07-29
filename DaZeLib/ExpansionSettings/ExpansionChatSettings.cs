@@ -12,6 +12,7 @@ namespace DayZeLib
         public int EnableGlobalChat { get; set; }
         public int EnablePartyChat { get; set; }
         public int EnableTransportChat { get; set; }
+        public int EnableExpansionChat { get; set; }
         public ExpansionChatColors ChatColors { get; set; }
         public BindingList<string> BlacklistedWords { get;set; }
 
@@ -26,6 +27,7 @@ namespace DayZeLib
             EnableGlobalChat = 1;
             EnablePartyChat = 1;
             EnableTransportChat = 1;
+            EnableExpansionChat = 1;
             ChatColors = new ExpansionChatColors();
             BlacklistedWords = new BindingList<string>();
         }
