@@ -748,11 +748,17 @@ namespace DayZeEditor
             CrashChanceNUD.Value = CurrentEventcrashpatrol.Chance;
             CrashDamageReceivedMultiplierNUD.Value = CurrentEventcrashpatrol.DamageReceivedMultiplier;
             CrashCanBeLootedCB.Checked = CurrentEventcrashpatrol.CanBeLooted == 1 ? true : false;
-            CrashUnlimitedReloadNUD.Value = CurrentEventcrashpatrol.UnlimitedReload;
             CrashLoadoutFileCB.SelectedIndex = CrashLoadoutFileCB.FindStringExact(CurrentEventcrashpatrol.Loadout);
             CrashFormationCB.SelectedIndex = CrashFormationCB.FindStringExact(CurrentEventcrashpatrol.Formation);
             CrashWaypointInterpolationCB.SelectedIndex = CrashWaypointInterpolationCB.FindStringExact(CurrentEventcrashpatrol.WaypointInterpolation);
             crashFormationLoosenessNUD.Value = CurrentEventcrashpatrol.FormationLooseness;
+            int CrashUnlimitedReloadBitmask = CurrentEventcrashpatrol.UnlimitedReload;
+            if (CrashUnlimitedReloadBitmask == 1)
+                CrashUnlimitedReloadBitmask = 30;
+            CrashURAnimalsCB.Checked = ((CrashUnlimitedReloadBitmask & 2) != 0) ? true : false;
+            CrashURInfectedCB.Checked = ((CrashUnlimitedReloadBitmask & 4) != 0) ? true : false;
+            CrashURPlayersCB.Checked = ((CrashUnlimitedReloadBitmask & 8) != 0) ? true : false;
+            CrashURVehiclesCB.Checked = ((CrashUnlimitedReloadBitmask & 16) != 0) ? true : false;
 
             CrashUnitsLB.DisplayMember = "DisplayName";
             CrashUnitsLB.ValueMember = "Value";
@@ -976,10 +982,17 @@ namespace DayZeEditor
             CurrentEventcrashpatrol.Persist = CrashPersistCB.Checked == true ? 1 : 0;
             AIPatrolSettings.isDirty = true;
         }
-        private void CrashUnlimitedReloadNUD_ValueChanged(object sender, EventArgs e)
+        private void CrashURBitmaskCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            CurrentEventcrashpatrol.UnlimitedReload = (int)CrashUnlimitedReloadNUD.Value;
+            int CrashUnlimitedReloadBitmask = 0;
+            CrashUnlimitedReloadBitmask |= CrashURAnimalsCB.Checked ? 2 : 0;
+            CrashUnlimitedReloadBitmask |= CrashURInfectedCB.Checked ? 4 : 0;
+            CrashUnlimitedReloadBitmask |= CrashURPlayersCB.Checked ? 8 : 0;
+            CrashUnlimitedReloadBitmask |= CrashURVehiclesCB.Checked ? 16 : 0;
+            if (CrashUnlimitedReloadBitmask == 30)
+                CrashUnlimitedReloadBitmask = 1;
+            CurrentEventcrashpatrol.UnlimitedReload = CrashUnlimitedReloadBitmask;
             AIPatrolSettings.isDirty = true;
         }
         private void darkButton16_Click(object sender, EventArgs e)
@@ -1033,7 +1046,6 @@ namespace DayZeEditor
             StaticPatrolDamageMultiplierNUD.Value = CurrentPatrol.DamageMultiplier;
             StaticPatrolChanceCB.Value = CurrentPatrol.Chance;
             StaticPatrolCanBeLotedCB.Checked = CurrentPatrol.CanBeLooted == 1 ? true : false;
-            StaticPatrolUnlimitedReloadNUD.Value = CurrentPatrol.UnlimitedReload;
             StaticPatrolLoadoutsCB.SelectedIndex = StaticPatrolLoadoutsCB.FindStringExact(CurrentPatrol.Loadout);
             StaticPatrolMinSpreadRadiusNUD.Value = CurrentPatrol.MinSpreadRadius;
             StaticPatrolMaxSpreadRadiusNUD.Value = CurrentPatrol.MaxSpreadRadius;
@@ -1042,6 +1054,13 @@ namespace DayZeEditor
             StaticPatrolWaypointInterpolationCB.SelectedIndex = StaticPatrolWaypointInterpolationCB.FindStringExact(CurrentPatrol.WaypointInterpolation);
             StaticPatrolUseRandomWaypointAsStartPointCB.Checked = CurrentPatrol.UseRandomWaypointAsStartPoint == 1 ? true : false;
             StaticPatrolNoiseInvestigationDistanceLimitNUD.Value = CurrentPatrol.NoiseInvestigationDistanceLimit;
+            int StaticPatrolUnlimitedReloadBitmask = CurrentPatrol.UnlimitedReload;
+            if (StaticPatrolUnlimitedReloadBitmask == 1)
+                StaticPatrolUnlimitedReloadBitmask = 30;
+            StaticPatrolURAnimalsCB.Checked = ((StaticPatrolUnlimitedReloadBitmask & 2) != 0) ? true : false;
+            StaticPatrolURInfectedCB.Checked = ((StaticPatrolUnlimitedReloadBitmask & 4) != 0) ? true : false;
+            StaticPatrolURPlayersCB.Checked = ((StaticPatrolUnlimitedReloadBitmask & 8) != 0) ? true : false;
+            StaticPatrolURVehiclesCB.Checked = ((StaticPatrolUnlimitedReloadBitmask & 16) != 0) ? true : false;
 
             StaticPatrolUnitsLB.DisplayMember = "DisplayName";
             StaticPatrolUnitsLB.ValueMember = "Value";
@@ -1323,10 +1342,17 @@ namespace DayZeEditor
             CurrentPatrol.Persist = StaticPatrolPersistCB.Checked == true ? 1 : 0;
             AIPatrolSettings.isDirty = true;
         }
-        private void StaticPatrolUnlimitedReloadNUD_ValueChanged(object sender, EventArgs e)
+        private void StaticPatrolURBitmaskCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            CurrentPatrol.UnlimitedReload = (int)StaticPatrolUnlimitedReloadNUD.Value;
+            int StaticPatrolUnlimitedReloadBitmask = 0;
+            StaticPatrolUnlimitedReloadBitmask |= StaticPatrolURAnimalsCB.Checked ? 2 : 0;
+            StaticPatrolUnlimitedReloadBitmask |= StaticPatrolURInfectedCB.Checked ? 4 : 0;
+            StaticPatrolUnlimitedReloadBitmask |= StaticPatrolURPlayersCB.Checked ? 8 : 0;
+            StaticPatrolUnlimitedReloadBitmask |= StaticPatrolURVehiclesCB.Checked ? 16 : 0;
+            if (StaticPatrolUnlimitedReloadBitmask == 30)
+                StaticPatrolUnlimitedReloadBitmask = 1;
+            CurrentPatrol.UnlimitedReload = StaticPatrolUnlimitedReloadBitmask;
             AIPatrolSettings.isDirty = true;
         }
         private void darkButton4_Click(object sender, EventArgs e)

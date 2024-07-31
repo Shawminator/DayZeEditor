@@ -170,6 +170,11 @@ namespace DayZeEditor
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.StaticPatrolURVehiclesCB = new System.Windows.Forms.CheckBox();
+            this.StaticPatrolURPlayersCB = new System.Windows.Forms.CheckBox();
+            this.StaticPatrolURInfectedCB = new System.Windows.Forms.CheckBox();
+            this.StaticPatrolURAnimalsCB = new System.Windows.Forms.CheckBox();
             this.StaticPatrolPersistCB = new System.Windows.Forms.CheckBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.darkButton10 = new DarkUI.Controls.DarkButton();
@@ -529,10 +534,11 @@ namespace DayZeEditor
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
-            this.CrashUnlimitedReloadNUD = new System.Windows.Forms.NumericUpDown();
-            this.darkLabel178 = new DarkUI.Controls.DarkLabel();
-            this.darkLabel179 = new DarkUI.Controls.DarkLabel();
-            this.StaticPatrolUnlimitedReloadNUD = new System.Windows.Forms.NumericUpDown();
+            this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.CrashURVehiclesCB = new System.Windows.Forms.CheckBox();
+            this.CrashURPlayersCB = new System.Windows.Forms.CheckBox();
+            this.CrashURInfectedCB = new System.Windows.Forms.CheckBox();
+            this.CrashURAnimalsCB = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.TabPage1.SuspendLayout();
@@ -582,6 +588,7 @@ namespace DayZeEditor
             this.panel1.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.groupBox16.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -695,8 +702,7 @@ namespace DayZeEditor
             this.groupBox14.SuspendLayout();
             this.darkToolStrip24.SuspendLayout();
             this.darkToolStrip23.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CrashUnlimitedReloadNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolUnlimitedReloadNUD)).BeginInit();
+            this.groupBox17.SuspendLayout();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -1831,8 +1837,7 @@ namespace DayZeEditor
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.darkLabel178);
-            this.groupBox4.Controls.Add(this.CrashUnlimitedReloadNUD);
+            this.groupBox4.Controls.Add(this.groupBox17);
             this.groupBox4.Controls.Add(this.CrashPersistCB);
             this.groupBox4.Controls.Add(this.groupBox8);
             this.groupBox4.Controls.Add(this.darkLabel78);
@@ -2821,8 +2826,7 @@ namespace DayZeEditor
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.tabPage3.Controls.Add(this.darkLabel179);
-            this.tabPage3.Controls.Add(this.StaticPatrolUnlimitedReloadNUD);
+            this.tabPage3.Controls.Add(this.groupBox16);
             this.tabPage3.Controls.Add(this.StaticPatrolPersistCB);
             this.tabPage3.Controls.Add(this.groupBox7);
             this.tabPage3.Controls.Add(this.groupBox2);
@@ -2884,6 +2888,72 @@ namespace DayZeEditor
             this.tabPage3.Size = new System.Drawing.Size(966, 615);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "AI PAtrol Settings";
+            // 
+            // groupBox16
+            // 
+            this.groupBox16.Controls.Add(this.StaticPatrolURVehiclesCB);
+            this.groupBox16.Controls.Add(this.StaticPatrolURPlayersCB);
+            this.groupBox16.Controls.Add(this.StaticPatrolURInfectedCB);
+            this.groupBox16.Controls.Add(this.StaticPatrolURAnimalsCB);
+            this.groupBox16.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox16.Location = new System.Drawing.Point(689, 256);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Size = new System.Drawing.Size(219, 74);
+            this.groupBox16.TabIndex = 293;
+            this.groupBox16.TabStop = false;
+            this.groupBox16.Text = "Unlimited Reload";
+            // 
+            // StaticPatrolURVehiclesCB
+            // 
+            this.StaticPatrolURVehiclesCB.AutoSize = true;
+            this.StaticPatrolURVehiclesCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.StaticPatrolURVehiclesCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolURVehiclesCB.Location = new System.Drawing.Point(122, 42);
+            this.StaticPatrolURVehiclesCB.Name = "StaticPatrolURVehiclesCB";
+            this.StaticPatrolURVehiclesCB.Size = new System.Drawing.Size(66, 17);
+            this.StaticPatrolURVehiclesCB.TabIndex = 295;
+            this.StaticPatrolURVehiclesCB.Text = "Vehicles";
+            this.StaticPatrolURVehiclesCB.UseVisualStyleBackColor = true;
+            this.StaticPatrolURVehiclesCB.CheckedChanged += new System.EventHandler(this.StaticPatrolURBitmaskCB_CheckedChanged);
+            // 
+            // StaticPatrolURPlayersCB
+            // 
+            this.StaticPatrolURPlayersCB.AutoSize = true;
+            this.StaticPatrolURPlayersCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.StaticPatrolURPlayersCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolURPlayersCB.Location = new System.Drawing.Point(22, 42);
+            this.StaticPatrolURPlayersCB.Name = "StaticPatrolURPlayersCB";
+            this.StaticPatrolURPlayersCB.Size = new System.Drawing.Size(60, 17);
+            this.StaticPatrolURPlayersCB.TabIndex = 294;
+            this.StaticPatrolURPlayersCB.Text = "Players";
+            this.StaticPatrolURPlayersCB.UseVisualStyleBackColor = true;
+            this.StaticPatrolURPlayersCB.CheckedChanged += new System.EventHandler(this.StaticPatrolURBitmaskCB_CheckedChanged);
+            // 
+            // StaticPatrolURInfectedCB
+            // 
+            this.StaticPatrolURInfectedCB.AutoSize = true;
+            this.StaticPatrolURInfectedCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.StaticPatrolURInfectedCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolURInfectedCB.Location = new System.Drawing.Point(122, 19);
+            this.StaticPatrolURInfectedCB.Name = "StaticPatrolURInfectedCB";
+            this.StaticPatrolURInfectedCB.Size = new System.Drawing.Size(65, 17);
+            this.StaticPatrolURInfectedCB.TabIndex = 293;
+            this.StaticPatrolURInfectedCB.Text = "Infected";
+            this.StaticPatrolURInfectedCB.UseVisualStyleBackColor = true;
+            this.StaticPatrolURInfectedCB.CheckedChanged += new System.EventHandler(this.StaticPatrolURBitmaskCB_CheckedChanged);
+            // 
+            // StaticPatrolURAnimalsCB
+            // 
+            this.StaticPatrolURAnimalsCB.AutoSize = true;
+            this.StaticPatrolURAnimalsCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.StaticPatrolURAnimalsCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolURAnimalsCB.Location = new System.Drawing.Point(20, 19);
+            this.StaticPatrolURAnimalsCB.Name = "StaticPatrolURAnimalsCB";
+            this.StaticPatrolURAnimalsCB.Size = new System.Drawing.Size(62, 17);
+            this.StaticPatrolURAnimalsCB.TabIndex = 292;
+            this.StaticPatrolURAnimalsCB.Text = "Animals";
+            this.StaticPatrolURAnimalsCB.UseVisualStyleBackColor = true;
+            this.StaticPatrolURAnimalsCB.CheckedChanged += new System.EventHandler(this.StaticPatrolURBitmaskCB_CheckedChanged);
             // 
             // StaticPatrolPersistCB
             // 
@@ -8075,57 +8145,71 @@ namespace DayZeEditor
             this.toolStripButton6.Text = "Dynamic AI Addon";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
-            // CrashUnlimitedReloadNUD
+            // groupBox17
             // 
-            this.CrashUnlimitedReloadNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.CrashUnlimitedReloadNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.CrashUnlimitedReloadNUD.Location = new System.Drawing.Point(558, 171);
-            this.CrashUnlimitedReloadNUD.Maximum = new decimal(new int[] {
-            500000,
-            0,
-            0,
-            0});
-            this.CrashUnlimitedReloadNUD.Name = "CrashUnlimitedReloadNUD";
-            this.CrashUnlimitedReloadNUD.Size = new System.Drawing.Size(105, 20);
-            this.CrashUnlimitedReloadNUD.TabIndex = 288;
-            this.CrashUnlimitedReloadNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.CrashUnlimitedReloadNUD.ValueChanged += new System.EventHandler(this.CrashUnlimitedReloadNUD_ValueChanged);
+            this.groupBox17.Controls.Add(this.CrashURVehiclesCB);
+            this.groupBox17.Controls.Add(this.CrashURPlayersCB);
+            this.groupBox17.Controls.Add(this.CrashURInfectedCB);
+            this.groupBox17.Controls.Add(this.CrashURAnimalsCB);
+            this.groupBox17.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox17.Location = new System.Drawing.Point(678, 393);
+            this.groupBox17.Name = "groupBox17";
+            this.groupBox17.Size = new System.Drawing.Size(226, 74);
+            this.groupBox17.TabIndex = 294;
+            this.groupBox17.TabStop = false;
+            this.groupBox17.Text = "Unlimited Reload";
             // 
-            // darkLabel178
+            // CrashURVehiclesCB
             // 
-            this.darkLabel178.AutoSize = true;
-            this.darkLabel178.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel178.Location = new System.Drawing.Point(465, 173);
-            this.darkLabel178.Name = "darkLabel178";
-            this.darkLabel178.Size = new System.Drawing.Size(87, 13);
-            this.darkLabel178.TabIndex = 289;
-            this.darkLabel178.Text = "Unlimited Reload";
+            this.CrashURVehiclesCB.AutoSize = true;
+            this.CrashURVehiclesCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CrashURVehiclesCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CrashURVehiclesCB.Location = new System.Drawing.Point(122, 42);
+            this.CrashURVehiclesCB.Name = "CrashURVehiclesCB";
+            this.CrashURVehiclesCB.Size = new System.Drawing.Size(66, 17);
+            this.CrashURVehiclesCB.TabIndex = 295;
+            this.CrashURVehiclesCB.Text = "Vehicles";
+            this.CrashURVehiclesCB.UseVisualStyleBackColor = true;
+            this.CrashURVehiclesCB.CheckedChanged += new System.EventHandler(this.CrashURBitmaskCB_CheckedChanged);
             // 
-            // darkLabel179
+            // CrashURPlayersCB
             // 
-            this.darkLabel179.AutoSize = true;
-            this.darkLabel179.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel179.Location = new System.Drawing.Point(248, 145);
-            this.darkLabel179.Name = "darkLabel179";
-            this.darkLabel179.Size = new System.Drawing.Size(87, 13);
-            this.darkLabel179.TabIndex = 291;
-            this.darkLabel179.Text = "Unlimited Reload";
+            this.CrashURPlayersCB.AutoSize = true;
+            this.CrashURPlayersCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CrashURPlayersCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CrashURPlayersCB.Location = new System.Drawing.Point(22, 42);
+            this.CrashURPlayersCB.Name = "CrashURPlayersCB";
+            this.CrashURPlayersCB.Size = new System.Drawing.Size(60, 17);
+            this.CrashURPlayersCB.TabIndex = 294;
+            this.CrashURPlayersCB.Text = "Players";
+            this.CrashURPlayersCB.UseVisualStyleBackColor = true;
+            this.CrashURPlayersCB.CheckedChanged += new System.EventHandler(this.CrashURBitmaskCB_CheckedChanged);
             // 
-            // StaticPatrolUnlimitedReloadNUD
+            // CrashURInfectedCB
             // 
-            this.StaticPatrolUnlimitedReloadNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StaticPatrolUnlimitedReloadNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolUnlimitedReloadNUD.Location = new System.Drawing.Point(341, 143);
-            this.StaticPatrolUnlimitedReloadNUD.Maximum = new decimal(new int[] {
-            500000,
-            0,
-            0,
-            0});
-            this.StaticPatrolUnlimitedReloadNUD.Name = "StaticPatrolUnlimitedReloadNUD";
-            this.StaticPatrolUnlimitedReloadNUD.Size = new System.Drawing.Size(105, 20);
-            this.StaticPatrolUnlimitedReloadNUD.TabIndex = 290;
-            this.StaticPatrolUnlimitedReloadNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StaticPatrolUnlimitedReloadNUD.ValueChanged += new System.EventHandler(this.StaticPatrolUnlimitedReloadNUD_ValueChanged);
+            this.CrashURInfectedCB.AutoSize = true;
+            this.CrashURInfectedCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CrashURInfectedCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CrashURInfectedCB.Location = new System.Drawing.Point(122, 19);
+            this.CrashURInfectedCB.Name = "CrashURInfectedCB";
+            this.CrashURInfectedCB.Size = new System.Drawing.Size(65, 17);
+            this.CrashURInfectedCB.TabIndex = 293;
+            this.CrashURInfectedCB.Text = "Infected";
+            this.CrashURInfectedCB.UseVisualStyleBackColor = true;
+            this.CrashURInfectedCB.CheckedChanged += new System.EventHandler(this.CrashURBitmaskCB_CheckedChanged);
+            // 
+            // CrashURAnimalsCB
+            // 
+            this.CrashURAnimalsCB.AutoSize = true;
+            this.CrashURAnimalsCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CrashURAnimalsCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CrashURAnimalsCB.Location = new System.Drawing.Point(20, 19);
+            this.CrashURAnimalsCB.Name = "CrashURAnimalsCB";
+            this.CrashURAnimalsCB.Size = new System.Drawing.Size(62, 17);
+            this.CrashURAnimalsCB.TabIndex = 292;
+            this.CrashURAnimalsCB.Text = "Animals";
+            this.CrashURAnimalsCB.UseVisualStyleBackColor = true;
+            this.CrashURAnimalsCB.CheckedChanged += new System.EventHandler(this.CrashURBitmaskCB_CheckedChanged);
             // 
             // ExpansionAI
             // 
@@ -8195,6 +8279,8 @@ namespace DayZeEditor
             this.tabControl2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.groupBox16.ResumeLayout(false);
+            this.groupBox16.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -8325,8 +8411,8 @@ namespace DayZeEditor
             this.darkToolStrip24.PerformLayout();
             this.darkToolStrip23.ResumeLayout(false);
             this.darkToolStrip23.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CrashUnlimitedReloadNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StaticPatrolUnlimitedReloadNUD)).EndInit();
+            this.groupBox17.ResumeLayout(false);
+            this.groupBox17.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -8832,9 +8918,15 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox LogAIKilledCB;
         private System.Windows.Forms.CheckBox CrashPersistCB;
         private System.Windows.Forms.CheckBox StaticPatrolPersistCB;
-        private DarkUI.Controls.DarkLabel darkLabel178;
-        private System.Windows.Forms.NumericUpDown CrashUnlimitedReloadNUD;
-        private DarkUI.Controls.DarkLabel darkLabel179;
-        private System.Windows.Forms.NumericUpDown StaticPatrolUnlimitedReloadNUD;
+        private System.Windows.Forms.CheckBox StaticPatrolURAnimalsCB;
+        private System.Windows.Forms.GroupBox groupBox16;
+        private System.Windows.Forms.CheckBox StaticPatrolURVehiclesCB;
+        private System.Windows.Forms.CheckBox StaticPatrolURPlayersCB;
+        private System.Windows.Forms.CheckBox StaticPatrolURInfectedCB;
+        private System.Windows.Forms.GroupBox groupBox17;
+        private System.Windows.Forms.CheckBox CrashURVehiclesCB;
+        private System.Windows.Forms.CheckBox CrashURPlayersCB;
+        private System.Windows.Forms.CheckBox CrashURInfectedCB;
+        private System.Windows.Forms.CheckBox CrashURAnimalsCB;
     }
 }

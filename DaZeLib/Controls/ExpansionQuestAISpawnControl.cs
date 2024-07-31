@@ -116,7 +116,6 @@ namespace DayZeEditor
             StaticPatrolDamageMultiplierNUD.Value = _currentAISpawn.DamageMultiplier;
             StaticPatrolChanceCB.Value = _currentAISpawn.Chance;
             StaticPatrolCanBeLotedCB.Checked = _currentAISpawn.CanBeLooted == 1 ? true : false;
-            StaticPatrolUnlimitedReloadNUD.Value = _currentAISpawn.UnlimitedReload;
             StaticPatrolLoadoutsCB.SelectedIndex = StaticPatrolLoadoutsCB.FindStringExact(_currentAISpawn.Loadout);
             StaticPatrolMinSpreadRadiusNUD.Value = _currentAISpawn.MinSpreadRadius;
             StaticPatrolMaxSpreadRadiusNUD.Value = _currentAISpawn.MaxSpreadRadius;
@@ -125,6 +124,14 @@ namespace DayZeEditor
             StaticPatrolWaypointInterpolationCB.SelectedIndex = StaticPatrolWaypointInterpolationCB.FindStringExact(_currentAISpawn.WaypointInterpolation);
             StaticPatrolUseRandomWaypointAsStartPointCB.Checked = _currentAISpawn.UseRandomWaypointAsStartPoint == 1 ? true : false;
             StaticPatrolNoiseInvestigationDistanceLimitNUD.Value = _currentAISpawn.NoiseInvestigationDistanceLimit;
+
+            int StaticPatrolUnlimitedReloadBitmask = _currentAISpawn.UnlimitedReload;
+            if (StaticPatrolUnlimitedReloadBitmask == 1)
+                StaticPatrolUnlimitedReloadBitmask = 30;
+            StaticPatrolURAnimalsCB.Checked = ((StaticPatrolUnlimitedReloadBitmask & 2) != 0) ? true : false;
+            StaticPatrolURInfectedCB.Checked = ((StaticPatrolUnlimitedReloadBitmask & 4) != 0) ? true : false;
+            StaticPatrolURPlayersCB.Checked = ((StaticPatrolUnlimitedReloadBitmask & 8) != 0) ? true : false;
+            StaticPatrolURVehiclesCB.Checked = ((StaticPatrolUnlimitedReloadBitmask & 16) != 0) ? true : false;
 
             StaticPatrolUnitsLB.DisplayMember = "DisplayName";
             StaticPatrolUnitsLB.ValueMember = "Value";
@@ -282,10 +289,17 @@ namespace DayZeEditor
             isDirty = true;
         }
 
-        private void StaticPatrolUnlimitedReloadNUD_ValueChanged(object sender, EventArgs e)
+        private void StaticPatrolURBitmaskCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            _currentAISpawn.UnlimitedReload = (int)StaticPatrolUnlimitedReloadNUD.Value;
+            int StaticPatrolUnlimitedReloadBitmask = 0;
+            StaticPatrolUnlimitedReloadBitmask |= StaticPatrolURAnimalsCB.Checked ? 2 : 0;
+            StaticPatrolUnlimitedReloadBitmask |= StaticPatrolURInfectedCB.Checked ? 4 : 0;
+            StaticPatrolUnlimitedReloadBitmask |= StaticPatrolURPlayersCB.Checked ? 8 : 0;
+            StaticPatrolUnlimitedReloadBitmask |= StaticPatrolURVehiclesCB.Checked ? 16 : 0;
+            if (StaticPatrolUnlimitedReloadBitmask == 30)
+                StaticPatrolUnlimitedReloadBitmask = 1;
+            _currentAISpawn.UnlimitedReload = StaticPatrolUnlimitedReloadBitmask;
             isDirty = true;
         }
 
