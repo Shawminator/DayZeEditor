@@ -10,53 +10,69 @@ namespace DayZeLib
     };
     public class ExpansionNotificationSettings
     {
-        const int CurrentVersion = 4;
+        const int CurrentVersion = 5;
 
         public int m_Version { get; set; }
-        public int EnableNotification { get; set; }
-        public int ShowPlayerJoinServer { get; set; }
-        public int JoinMessageType { get; set; }
-        public int ShowPlayerLeftServer { get; set; }
-        public int LeftMessageType { get; set; }
-        public int ShowAirdropStarted { get; set; }
-        public int ShowAirdropClosingOn { get; set; }
-        public int ShowAirdropDropped { get; set; }
-        public int ShowAirdropEnded { get; set; }
-        public int ShowPlayerAirdropStarted { get; set; }
-        public int ShowPlayerAirdropClosingOn { get; set; }
-        public int ShowPlayerAirdropDropped { get; set; }
-        public int ShowTerritoryNotifications { get; set; }
-        public int EnableKillFeed { get; set; }
-        public int KillFeedMessageType { get; set; }
-        public int KillFeedFall { get; set; }
-        public int KillFeedCarHitDriver { get; set; }
-        public int KillFeedCarHitNoDriver { get; set; }
-        public int KillFeedCarCrash { get; set; }
-        public int KillFeedCarCrashCrew { get; set; }
-        public int KillFeedHeliHitDriver { get; set; }
-        public int KillFeedHeliHitNoDriver { get; set; }
-        public int KillFeedHeliCrash { get; set; }
-        public int KillFeedHeliCrashCrew { get; set; }
-        public int KillFeedBoatHitDriver { get; set; }
-        public int KillFeedBoatHitNoDriver { get; set; }
-        public int KillFeedBoatCrash { get; set; }
-        public int KillFeedBoatCrashCrew { get; set; }
-        public int KillFeedBarbedWire { get; set; }
-        public int KillFeedFire { get; set; }
-        public int KillFeedWeaponExplosion { get; set; }
-        public int KillFeedDehydration { get; set; }
-        public int KillFeedStarvation { get; set; }
-        public int KillFeedBleeding { get; set; }
-        public int KillFeedStatusEffects { get; set; }
-        public int KillFeedSuicide { get; set; }
-        public int KillFeedWeapon { get; set; }
-        public int KillFeedMeleeWeapon { get; set; }
-        public int KillFeedBarehands { get; set; }
-        public int KillFeedInfected { get; set; }
-        public int KillFeedAnimal { get; set; }
-        public int KillFeedKilledUnknown { get; set; }
-        public int KillFeedDiedUnknown { get; set; }
-        public int EnableKillFeedDiscordMsg { get; set; }
+        public bool EnableNotification{ get; set; }
+        public bool ShowPlayerJoinServer{ get; set; }
+        public ExpansionAnnouncementType JoinMessageType{ get; set; }
+        public bool ShowPlayerLeftServer{ get; set; }
+        public ExpansionAnnouncementType LeftMessageType{ get; set; }
+
+        public bool ShowAirdropStarted{ get; set; }
+        public bool ShowAirdropClosingOn{ get; set; }
+        public bool ShowAirdropDropped{ get; set; }
+        public bool ShowAirdropEnded{ get; set; }
+
+        public bool ShowPlayerAirdropStarted{ get; set; }
+        public bool ShowPlayerAirdropClosingOn{ get; set; }
+        public bool ShowPlayerAirdropDropped{ get; set; }
+
+        public bool ShowAIMissionStarted{ get; set; }
+        public bool ShowAIMissionAction{ get; set; }
+        public bool ShowAIMissionEnded{ get; set; }
+
+        public bool ShowTerritoryNotifications{ get; set; }                //! Show the notifications when entering or leaving territory.
+
+        public bool EnableKillFeed{ get; set; }
+        public ExpansionAnnouncementType KillFeedMessageType{ get; set; }
+        public bool KillFeedFall{ get; set; }
+        public bool KillFeedCarHitDriver{ get; set; }
+        public bool KillFeedCarHitNoDriver{ get; set; }
+        public bool KillFeedCarCrash{ get; set; }
+        public bool KillFeedCarCrashCrew{ get; set; }
+
+        public bool KillFeedHeliHitDriver{ get; set; }
+        public bool KillFeedHeliHitNoDriver{ get; set; }
+        public bool KillFeedHeliCrash{ get; set; }
+        public bool KillFeedHeliCrashCrew{ get; set; }
+        public bool KillFeedBoatHitDriver{ get; set; }
+        public bool KillFeedBoatHitNoDriver{ get; set; }
+        public bool KillFeedBoatCrash{ get; set; }
+        public bool KillFeedBoatCrashCrew{ get; set; }
+        /*bool KillFeedPlaneHitDriver{ get; set; }
+        bool KillFeedPlaneHitNoDriver{ get; set; }
+        bool KillFeedBikeHitDriver{ get; set; }
+        bool KillFeedBikeHitNoDriver{ get; set; }*/
+
+        public bool KillFeedBarbedWire{ get; set; }
+        public bool KillFeedFire{ get; set; }
+        public bool KillFeedWeaponExplosion{ get; set; }
+        public bool KillFeedDehydration{ get; set; }
+        public bool KillFeedStarvation{ get; set; }
+        public bool KillFeedBleeding{ get; set; }
+        public bool KillFeedStatusEffects{ get; set; }
+        public bool KillFeedSuicide{ get; set; }
+        public bool KillFeedWeapon{ get; set; }
+        public bool KillFeedMeleeWeapon{ get; set; }
+        public bool KillFeedBarehands{ get; set; }
+        public bool KillFeedInfected{ get; set; }
+        public bool KillFeedAnimal{ get; set; }
+        public bool KillFeedAI{ get; set; }
+        public bool KillFeedKilledUnknown{ get; set; }
+        public bool KillFeedDiedUnknown{ get; set; }
+
+        public bool EnableKillFeedDiscordMsg { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }
@@ -66,23 +82,23 @@ namespace DayZeLib
         public ExpansionNotificationSettings()
         {
             m_Version = CurrentVersion;
-            EnableNotification = 1;
+            EnableNotification = true;
 
-            ShowPlayerJoinServer = 1;
-            JoinMessageType = (int)ExpansionAnnouncementType.NOTIFICATION;
-            ShowPlayerLeftServer = 1;
-            LeftMessageType = (int)ExpansionAnnouncementType.NOTIFICATION;
+            ShowPlayerJoinServer = true;
+            JoinMessageType = ExpansionAnnouncementType.NOTIFICATION;
+            ShowPlayerLeftServer = true;
+            LeftMessageType = ExpansionAnnouncementType.NOTIFICATION;
 
-            ShowAirdropStarted = 1;
-            ShowAirdropClosingOn = 1;
-            ShowAirdropDropped = 1;
-            ShowAirdropEnded = 1;
-            ShowPlayerAirdropStarted = 1;
-            ShowPlayerAirdropClosingOn = 1;
-            ShowPlayerAirdropDropped = 1;
-            ShowTerritoryNotifications = 1;
-            EnableKillFeed = 1;
-            KillFeedMessageType = (int)ExpansionAnnouncementType.NOTIFICATION;
+            ShowAirdropStarted = true;
+            ShowAirdropClosingOn = true;
+            ShowAirdropDropped = true;
+            ShowAirdropEnded = true;
+            ShowPlayerAirdropStarted = true;
+            ShowPlayerAirdropClosingOn = true;
+            ShowPlayerAirdropDropped = true;
+            ShowTerritoryNotifications = true;
+            EnableKillFeed = true;
+            KillFeedMessageType = ExpansionAnnouncementType.NOTIFICATION;
 
             //! These are not implemented, uncomment once done
             //ShowDistanceOnKillFeed = true;
@@ -90,40 +106,40 @@ namespace DayZeLib
             //ShowKillerOnKillFeed = true;
             //ShowWeaponOnKillFeed = true;
 
-            KillFeedFall = 1;
-            KillFeedCarHitDriver = 1;
-            KillFeedCarHitNoDriver = 1;
-            KillFeedCarCrash = 1;
-            KillFeedCarCrashCrew = 1;
-            KillFeedHeliHitDriver = 1;
-            KillFeedHeliHitNoDriver = 1;
-            KillFeedHeliCrash = 1;
-            KillFeedHeliCrashCrew = 1;
-            KillFeedBoatHitDriver = 1;
-            KillFeedBoatHitNoDriver = 1;
-            KillFeedBoatCrash = 1;
-            KillFeedBoatCrashCrew = 1;
+            KillFeedFall = true;
+            KillFeedCarHitDriver = true;
+            KillFeedCarHitNoDriver = true;
+            KillFeedCarCrash = true;
+            KillFeedCarCrashCrew = true;
+            KillFeedHeliHitDriver = true;
+            KillFeedHeliHitNoDriver = true;
+            KillFeedHeliCrash = true;
+            KillFeedHeliCrashCrew = true;
+            KillFeedBoatHitDriver = true;
+            KillFeedBoatHitNoDriver = true;
+            KillFeedBoatCrash = true;
+            KillFeedBoatCrashCrew = true;
             /*KillFeedPlaneHitDriver = true;
             KillFeedPlaneHitNoDriver = true;
             KillFeedBikeHitDriver = true;
             KillFeedBikeHitNoDriver = true;*/
-            KillFeedBarbedWire = 1;
-            KillFeedFire = 1;
-            KillFeedWeaponExplosion = 1;
-            KillFeedDehydration = 1;
-            KillFeedStarvation = 1;
-            KillFeedBleeding = 1;
-            KillFeedStatusEffects = 1;
-            KillFeedSuicide = 1;
-            KillFeedWeapon = 1;
-            KillFeedMeleeWeapon = 1;
-            KillFeedBarehands = 1;
-            KillFeedInfected = 1;
-            KillFeedAnimal = 1;
-            KillFeedKilledUnknown = 1;
-            KillFeedDiedUnknown = 1;
+            KillFeedBarbedWire = true;
+            KillFeedFire = true;
+            KillFeedWeaponExplosion = true;
+            KillFeedDehydration = true;
+            KillFeedStarvation = true;
+            KillFeedBleeding = true;
+            KillFeedStatusEffects = true;
+            KillFeedSuicide = true;
+            KillFeedWeapon = true;
+            KillFeedMeleeWeapon = true;
+            KillFeedBarehands = true;
+            KillFeedInfected = true;
+            KillFeedAnimal = true;
+            KillFeedKilledUnknown = true;
+            KillFeedDiedUnknown = true;
 
-            EnableKillFeedDiscordMsg = 0;
+            EnableKillFeedDiscordMsg = false;
         }
 
         public bool checkver()
@@ -137,7 +153,7 @@ namespace DayZeLib
             return false;
         }
 
-        public void SetIntValue(string mytype, int myvalue)
+        public void SetBoolValue(string mytype, bool myvalue)
         {
             GetType().GetProperty(mytype).SetValue(this, myvalue, null);
         }

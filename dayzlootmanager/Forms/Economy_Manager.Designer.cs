@@ -402,19 +402,13 @@ namespace DayZeEditor
             this.SpawnableTypesTab = new System.Windows.Forms.TabPage();
             this.tabControl12 = new System.Windows.Forms.TabControl();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.darkButton26 = new DarkUI.Controls.DarkButton();
             this.darkButton34 = new DarkUI.Controls.DarkButton();
             this.darkButton33 = new DarkUI.Controls.DarkButton();
             this.darkButton32 = new DarkUI.Controls.DarkButton();
             this.darkButton31 = new DarkUI.Controls.DarkButton();
             this.listBox6 = new System.Windows.Forms.ListBox();
             this.darkButton30 = new DarkUI.Controls.DarkButton();
-            this.tabControl11 = new System.Windows.Forms.TabControl();
-            this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.HasDamageCB = new System.Windows.Forms.CheckBox();
-            this.DamageMaxNUD = new System.Windows.Forms.NumericUpDown();
-            this.label25 = new System.Windows.Forms.Label();
-            this.DamageMinNUD = new System.Windows.Forms.NumericUpDown();
-            this.label24 = new System.Windows.Forms.Label();
             this.tabControl9 = new System.Windows.Forms.TabControl();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.darkButton39 = new DarkUI.Controls.DarkButton();
@@ -426,20 +420,11 @@ namespace DayZeEditor
             this.darkButton38 = new DarkUI.Controls.DarkButton();
             this.SpawnabletpesLB = new System.Windows.Forms.ListBox();
             this.groupBox21 = new System.Windows.Forms.GroupBox();
-            this.AttachmentGB = new System.Windows.Forms.GroupBox();
-            this.CargoAttachmentRemoveButton = new DarkUI.Controls.DarkButton();
-            this.AttachmentItemLB = new System.Windows.Forms.ListBox();
-            this.cargoattachemntAddButton = new DarkUI.Controls.DarkButton();
-            this.AttachmentChangeItemButton = new DarkUI.Controls.DarkButton();
-            this.AttachemntTB = new System.Windows.Forms.TextBox();
-            this.ItemAttachmentchanceNUD = new System.Windows.Forms.NumericUpDown();
-            this.AttachmemtItemChanceLabel = new System.Windows.Forms.Label();
-            this.AttachmentchanceNUD = new System.Windows.Forms.NumericUpDown();
-            this.chancAttachmentselabel = new System.Windows.Forms.Label();
-            this.AttchmentIsPresetCB = new System.Windows.Forms.CheckBox();
-            this.AttachmentPresetGB = new System.Windows.Forms.GroupBox();
-            this.AttachmentPresetComboBox = new System.Windows.Forms.ComboBox();
-            this.darkButton37 = new DarkUI.Controls.DarkButton();
+            this.groupBox78 = new System.Windows.Forms.GroupBox();
+            this.DamageMaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.DamageMinNUD = new System.Windows.Forms.NumericUpDown();
             this.Spaenabletypestagbox = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox24 = new System.Windows.Forms.GroupBox();
@@ -459,6 +444,20 @@ namespace DayZeEditor
             this.CargoPresetGB = new System.Windows.Forms.GroupBox();
             this.CargoPresetComboBox = new System.Windows.Forms.ComboBox();
             this.darkButton36 = new DarkUI.Controls.DarkButton();
+            this.AttachmentGB = new System.Windows.Forms.GroupBox();
+            this.CargoAttachmentRemoveButton = new DarkUI.Controls.DarkButton();
+            this.AttachmentItemLB = new System.Windows.Forms.ListBox();
+            this.cargoattachemntAddButton = new DarkUI.Controls.DarkButton();
+            this.AttachmentChangeItemButton = new DarkUI.Controls.DarkButton();
+            this.AttachemntTB = new System.Windows.Forms.TextBox();
+            this.ItemAttachmentchanceNUD = new System.Windows.Forms.NumericUpDown();
+            this.AttachmemtItemChanceLabel = new System.Windows.Forms.Label();
+            this.AttachmentchanceNUD = new System.Windows.Forms.NumericUpDown();
+            this.chancAttachmentselabel = new System.Windows.Forms.Label();
+            this.AttachmentPresetGB = new System.Windows.Forms.GroupBox();
+            this.AttachmentPresetComboBox = new System.Windows.Forms.ComboBox();
+            this.darkButton37 = new DarkUI.Controls.DarkButton();
+            this.AttchmentIsPresetCB = new System.Windows.Forms.CheckBox();
             this.RandomPresetsTab = new System.Windows.Forms.TabPage();
             this.tabControl20 = new System.Windows.Forms.TabControl();
             this.tabPage19 = new System.Windows.Forms.TabPage();
@@ -1223,25 +1222,24 @@ namespace DayZeEditor
             this.SpawnableTypesTab.SuspendLayout();
             this.tabControl12.SuspendLayout();
             this.tabPage9.SuspendLayout();
-            this.tabControl11.SuspendLayout();
-            this.tabPage8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DamageMaxNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DamageMinNUD)).BeginInit();
             this.tabControl9.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.tabControl10.SuspendLayout();
             this.tabPage7.SuspendLayout();
             this.groupBox21.SuspendLayout();
-            this.AttachmentGB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemAttachmentchanceNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AttachmentchanceNUD)).BeginInit();
-            this.AttachmentPresetGB.SuspendLayout();
+            this.groupBox78.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DamageMaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DamageMinNUD)).BeginInit();
             this.Spaenabletypestagbox.SuspendLayout();
             this.groupBox24.SuspendLayout();
             this.CargoGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CargoItemchanceNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CarcgoChanceNUD)).BeginInit();
             this.CargoPresetGB.SuspendLayout();
+            this.AttachmentGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemAttachmentchanceNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AttachmentchanceNUD)).BeginInit();
+            this.AttachmentPresetGB.SuspendLayout();
             this.RandomPresetsTab.SuspendLayout();
             this.tabControl20.SuspendLayout();
             this.tabPage19.SuspendLayout();
@@ -3162,7 +3160,7 @@ namespace DayZeEditor
             this.economySearchNextButton.Image = ((System.Drawing.Image)(resources.GetObject("economySearchNextButton.Image")));
             this.economySearchNextButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.economySearchNextButton.Name = "economySearchNextButton";
-            this.economySearchNextButton.Size = new System.Drawing.Size(24, 24);
+            this.economySearchNextButton.Size = new System.Drawing.Size(62, 42);
             this.economySearchNextButton.Text = "Find Next";
             this.economySearchNextButton.Visible = false;
             this.economySearchNextButton.Click += new System.EventHandler(this.toolStripButton2_Click);
@@ -6161,7 +6159,6 @@ namespace DayZeEditor
             // 
             this.SpawnableTypesTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.SpawnableTypesTab.Controls.Add(this.tabControl12);
-            this.SpawnableTypesTab.Controls.Add(this.tabControl11);
             this.SpawnableTypesTab.Controls.Add(this.tabControl9);
             this.SpawnableTypesTab.Controls.Add(this.tabControl10);
             this.SpawnableTypesTab.Controls.Add(this.groupBox21);
@@ -6188,6 +6185,7 @@ namespace DayZeEditor
             // tabPage9
             // 
             this.tabPage9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage9.Controls.Add(this.darkButton26);
             this.tabPage9.Controls.Add(this.darkButton34);
             this.tabPage9.Controls.Add(this.darkButton33);
             this.tabPage9.Controls.Add(this.darkButton32);
@@ -6201,10 +6199,21 @@ namespace DayZeEditor
             this.tabPage9.TabIndex = 0;
             this.tabPage9.Text = "tabPage9";
             // 
+            // darkButton26
+            // 
+            this.darkButton26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.darkButton26.Location = new System.Drawing.Point(3, 365);
+            this.darkButton26.Name = "darkButton26";
+            this.darkButton26.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton26.Size = new System.Drawing.Size(250, 27);
+            this.darkButton26.TabIndex = 55;
+            this.darkButton26.Text = "Add Damage";
+            this.darkButton26.Click += new System.EventHandler(this.darkButton26_Click);
+            // 
             // darkButton34
             // 
             this.darkButton34.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton34.Location = new System.Drawing.Point(6, 331);
+            this.darkButton34.Location = new System.Drawing.Point(3, 299);
             this.darkButton34.Name = "darkButton34";
             this.darkButton34.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton34.Size = new System.Drawing.Size(250, 27);
@@ -6256,7 +6265,7 @@ namespace DayZeEditor
             this.listBox6.FormattingEnabled = true;
             this.listBox6.Location = new System.Drawing.Point(3, 3);
             this.listBox6.Name = "listBox6";
-            this.listBox6.Size = new System.Drawing.Size(253, 316);
+            this.listBox6.Size = new System.Drawing.Size(253, 290);
             this.listBox6.TabIndex = 50;
             this.listBox6.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.listBox6.SelectedIndexChanged += new System.EventHandler(this.listBox6_SelectedIndexChanged);
@@ -6264,104 +6273,13 @@ namespace DayZeEditor
             // darkButton30
             // 
             this.darkButton30.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton30.Location = new System.Drawing.Point(6, 364);
+            this.darkButton30.Location = new System.Drawing.Point(3, 332);
             this.darkButton30.Name = "darkButton30";
             this.darkButton30.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton30.Size = new System.Drawing.Size(250, 27);
             this.darkButton30.TabIndex = 4;
             this.darkButton30.Text = "Add Hoarder";
             this.darkButton30.Click += new System.EventHandler(this.darkButton30_Click);
-            // 
-            // tabControl11
-            // 
-            this.tabControl11.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
-            this.tabControl11.Controls.Add(this.tabPage8);
-            this.tabControl11.ItemSize = new System.Drawing.Size(0, 1);
-            this.tabControl11.Location = new System.Drawing.Point(267, 14);
-            this.tabControl11.Name = "tabControl11";
-            this.tabControl11.SelectedIndex = 0;
-            this.tabControl11.Size = new System.Drawing.Size(267, 56);
-            this.tabControl11.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabControl11.TabIndex = 58;
-            // 
-            // tabPage8
-            // 
-            this.tabPage8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.tabPage8.Controls.Add(this.HasDamageCB);
-            this.tabPage8.Controls.Add(this.DamageMaxNUD);
-            this.tabPage8.Controls.Add(this.label25);
-            this.tabPage8.Controls.Add(this.DamageMinNUD);
-            this.tabPage8.Controls.Add(this.label24);
-            this.tabPage8.Location = new System.Drawing.Point(4, 5);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(259, 47);
-            this.tabPage8.TabIndex = 0;
-            this.tabPage8.Text = "tabPage8";
-            // 
-            // HasDamageCB
-            // 
-            this.HasDamageCB.AutoSize = true;
-            this.HasDamageCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.HasDamageCB.Location = new System.Drawing.Point(9, 3);
-            this.HasDamageCB.Name = "HasDamageCB";
-            this.HasDamageCB.Size = new System.Drawing.Size(88, 17);
-            this.HasDamageCB.TabIndex = 75;
-            this.HasDamageCB.Text = "Has Damage";
-            this.HasDamageCB.UseVisualStyleBackColor = true;
-            this.HasDamageCB.CheckedChanged += new System.EventHandler(this.HasDamageCB_CheckedChanged);
-            // 
-            // DamageMaxNUD
-            // 
-            this.DamageMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.DamageMaxNUD.DecimalPlaces = 1;
-            this.DamageMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.DamageMaxNUD.Location = new System.Drawing.Point(175, 21);
-            this.DamageMaxNUD.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.DamageMaxNUD.Name = "DamageMaxNUD";
-            this.DamageMaxNUD.Size = new System.Drawing.Size(68, 20);
-            this.DamageMaxNUD.TabIndex = 8;
-            this.DamageMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.ForeColor = System.Drawing.SystemColors.Control;
-            this.label25.Location = new System.Drawing.Point(145, 23);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(27, 13);
-            this.label25.TabIndex = 7;
-            this.label25.Text = "Max";
-            // 
-            // DamageMinNUD
-            // 
-            this.DamageMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.DamageMinNUD.DecimalPlaces = 1;
-            this.DamageMinNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.DamageMinNUD.Location = new System.Drawing.Point(36, 21);
-            this.DamageMinNUD.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.DamageMinNUD.Name = "DamageMinNUD";
-            this.DamageMinNUD.Size = new System.Drawing.Size(68, 20);
-            this.DamageMinNUD.TabIndex = 6;
-            this.DamageMinNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.ForeColor = System.Drawing.SystemColors.Control;
-            this.label24.Location = new System.Drawing.Point(6, 23);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(24, 13);
-            this.label24.TabIndex = 0;
-            this.label24.Text = "Min";
             // 
             // tabControl9
             // 
@@ -6435,10 +6353,10 @@ namespace DayZeEditor
             this.tabControl10.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabControl10.Controls.Add(this.tabPage7);
             this.tabControl10.ItemSize = new System.Drawing.Size(0, 1);
-            this.tabControl10.Location = new System.Drawing.Point(267, 76);
+            this.tabControl10.Location = new System.Drawing.Point(267, 14);
             this.tabControl10.Name = "tabControl10";
             this.tabControl10.SelectedIndex = 0;
-            this.tabControl10.Size = new System.Drawing.Size(267, 443);
+            this.tabControl10.Size = new System.Drawing.Size(267, 505);
             this.tabControl10.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl10.TabIndex = 56;
             // 
@@ -6451,14 +6369,14 @@ namespace DayZeEditor
             this.tabPage7.Location = new System.Drawing.Point(4, 5);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(259, 434);
+            this.tabPage7.Size = new System.Drawing.Size(259, 496);
             this.tabPage7.TabIndex = 0;
             this.tabPage7.Text = "tabPage7";
             // 
             // darkButton35
             // 
             this.darkButton35.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton35.Location = new System.Drawing.Point(3, 401);
+            this.darkButton35.Location = new System.Drawing.Point(3, 463);
             this.darkButton35.Name = "darkButton35";
             this.darkButton35.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton35.Size = new System.Drawing.Size(123, 27);
@@ -6469,7 +6387,7 @@ namespace DayZeEditor
             // darkButton38
             // 
             this.darkButton38.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton38.Location = new System.Drawing.Point(133, 401);
+            this.darkButton38.Location = new System.Drawing.Point(133, 463);
             this.darkButton38.Name = "darkButton38";
             this.darkButton38.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton38.Size = new System.Drawing.Size(123, 27);
@@ -6488,7 +6406,7 @@ namespace DayZeEditor
             this.SpawnabletpesLB.FormattingEnabled = true;
             this.SpawnabletpesLB.Location = new System.Drawing.Point(3, 3);
             this.SpawnabletpesLB.Name = "SpawnabletpesLB";
-            this.SpawnabletpesLB.Size = new System.Drawing.Size(253, 394);
+            this.SpawnabletpesLB.Size = new System.Drawing.Size(253, 446);
             this.SpawnabletpesLB.TabIndex = 50;
             this.SpawnabletpesLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.SpawnabletpesLB.SelectedIndexChanged += new System.EventHandler(this.SpawnabletpesLB_SelectedIndexChanged);
@@ -6497,9 +6415,10 @@ namespace DayZeEditor
             // 
             this.groupBox21.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox21.Controls.Add(this.AttachmentGB);
+            this.groupBox21.Controls.Add(this.groupBox78);
             this.groupBox21.Controls.Add(this.Spaenabletypestagbox);
             this.groupBox21.Controls.Add(this.CargoGB);
+            this.groupBox21.Controls.Add(this.AttachmentGB);
             this.groupBox21.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox21.Location = new System.Drawing.Point(814, 14);
             this.groupBox21.Name = "groupBox21";
@@ -6507,181 +6426,84 @@ namespace DayZeEditor
             this.groupBox21.TabIndex = 60;
             this.groupBox21.TabStop = false;
             // 
-            // AttachmentGB
+            // groupBox78
             // 
-            this.AttachmentGB.Controls.Add(this.CargoAttachmentRemoveButton);
-            this.AttachmentGB.Controls.Add(this.AttachmentItemLB);
-            this.AttachmentGB.Controls.Add(this.cargoattachemntAddButton);
-            this.AttachmentGB.Controls.Add(this.AttachmentChangeItemButton);
-            this.AttachmentGB.Controls.Add(this.AttachemntTB);
-            this.AttachmentGB.Controls.Add(this.ItemAttachmentchanceNUD);
-            this.AttachmentGB.Controls.Add(this.AttachmemtItemChanceLabel);
-            this.AttachmentGB.Controls.Add(this.AttachmentchanceNUD);
-            this.AttachmentGB.Controls.Add(this.chancAttachmentselabel);
-            this.AttachmentGB.Controls.Add(this.AttchmentIsPresetCB);
-            this.AttachmentGB.Controls.Add(this.AttachmentPresetGB);
-            this.AttachmentGB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.AttachmentGB.Location = new System.Drawing.Point(6, 8);
-            this.AttachmentGB.Name = "AttachmentGB";
-            this.AttachmentGB.Size = new System.Drawing.Size(242, 512);
-            this.AttachmentGB.TabIndex = 66;
-            this.AttachmentGB.TabStop = false;
-            this.AttachmentGB.Text = "Attachments";
-            this.AttachmentGB.Visible = false;
+            this.groupBox78.Controls.Add(this.DamageMaxNUD);
+            this.groupBox78.Controls.Add(this.label24);
+            this.groupBox78.Controls.Add(this.label25);
+            this.groupBox78.Controls.Add(this.DamageMinNUD);
+            this.groupBox78.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox78.Location = new System.Drawing.Point(6, 8);
+            this.groupBox78.Name = "groupBox78";
+            this.groupBox78.Size = new System.Drawing.Size(242, 56);
+            this.groupBox78.TabIndex = 65;
+            this.groupBox78.TabStop = false;
+            this.groupBox78.Text = "Damage";
+            this.groupBox78.Visible = false;
             // 
-            // CargoAttachmentRemoveButton
+            // DamageMaxNUD
             // 
-            this.CargoAttachmentRemoveButton.Location = new System.Drawing.Point(9, 299);
-            this.CargoAttachmentRemoveButton.Name = "CargoAttachmentRemoveButton";
-            this.CargoAttachmentRemoveButton.Padding = new System.Windows.Forms.Padding(5);
-            this.CargoAttachmentRemoveButton.Size = new System.Drawing.Size(218, 27);
-            this.CargoAttachmentRemoveButton.TabIndex = 74;
-            this.CargoAttachmentRemoveButton.Text = "Remove Item";
-            this.CargoAttachmentRemoveButton.Click += new System.EventHandler(this.darkButton35_Click_2);
-            // 
-            // AttachmentItemLB
-            // 
-            this.AttachmentItemLB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.AttachmentItemLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.AttachmentItemLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.AttachmentItemLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.AttachmentItemLB.FormattingEnabled = true;
-            this.AttachmentItemLB.Location = new System.Drawing.Point(9, 67);
-            this.AttachmentItemLB.Name = "AttachmentItemLB";
-            this.AttachmentItemLB.Size = new System.Drawing.Size(218, 134);
-            this.AttachmentItemLB.TabIndex = 70;
-            this.AttachmentItemLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.AttachmentItemLB.SelectedIndexChanged += new System.EventHandler(this.AttachmentItemLB_SelectedIndexChanged);
-            // 
-            // cargoattachemntAddButton
-            // 
-            this.cargoattachemntAddButton.Location = new System.Drawing.Point(9, 266);
-            this.cargoattachemntAddButton.Name = "cargoattachemntAddButton";
-            this.cargoattachemntAddButton.Padding = new System.Windows.Forms.Padding(5);
-            this.cargoattachemntAddButton.Size = new System.Drawing.Size(218, 27);
-            this.cargoattachemntAddButton.TabIndex = 73;
-            this.cargoattachemntAddButton.Text = "Add New Item";
-            this.cargoattachemntAddButton.Click += new System.EventHandler(this.darkButton38_Click_1);
-            // 
-            // AttachmentChangeItemButton
-            // 
-            this.AttachmentChangeItemButton.Location = new System.Drawing.Point(9, 233);
-            this.AttachmentChangeItemButton.Name = "AttachmentChangeItemButton";
-            this.AttachmentChangeItemButton.Padding = new System.Windows.Forms.Padding(5);
-            this.AttachmentChangeItemButton.Size = new System.Drawing.Size(218, 27);
-            this.AttachmentChangeItemButton.TabIndex = 5;
-            this.AttachmentChangeItemButton.Text = "Change Item";
-            this.AttachmentChangeItemButton.Click += new System.EventHandler(this.AttachmentChangeItemButton_Click);
-            // 
-            // AttachemntTB
-            // 
-            this.AttachemntTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.AttachemntTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.AttachemntTB.Location = new System.Drawing.Point(10, 39);
-            this.AttachemntTB.Name = "AttachemntTB";
-            this.AttachemntTB.ReadOnly = true;
-            this.AttachemntTB.Size = new System.Drawing.Size(218, 20);
-            this.AttachemntTB.TabIndex = 71;
-            // 
-            // ItemAttachmentchanceNUD
-            // 
-            this.ItemAttachmentchanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ItemAttachmentchanceNUD.DecimalPlaces = 2;
-            this.ItemAttachmentchanceNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ItemAttachmentchanceNUD.Location = new System.Drawing.Point(159, 207);
-            this.ItemAttachmentchanceNUD.Maximum = new decimal(new int[] {
-            10000,
+            this.DamageMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.DamageMaxNUD.DecimalPlaces = 2;
+            this.DamageMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.DamageMaxNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.DamageMaxNUD.Location = new System.Drawing.Point(159, 22);
+            this.DamageMaxNUD.Maximum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
-            this.ItemAttachmentchanceNUD.Name = "ItemAttachmentchanceNUD";
-            this.ItemAttachmentchanceNUD.Size = new System.Drawing.Size(68, 20);
-            this.ItemAttachmentchanceNUD.TabIndex = 66;
-            this.ItemAttachmentchanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ItemAttachmentchanceNUD.ValueChanged += new System.EventHandler(this.ItemAttachmentchanceNUD_ValueChanged);
+            this.DamageMaxNUD.Name = "DamageMaxNUD";
+            this.DamageMaxNUD.Size = new System.Drawing.Size(68, 20);
+            this.DamageMaxNUD.TabIndex = 8;
+            this.DamageMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DamageMaxNUD.ValueChanged += new System.EventHandler(this.DamageMaxNUD_ValueChanged);
             // 
-            // AttachmemtItemChanceLabel
+            // label24
             // 
-            this.AttachmemtItemChanceLabel.AutoSize = true;
-            this.AttachmemtItemChanceLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.AttachmemtItemChanceLabel.Location = new System.Drawing.Point(87, 211);
-            this.AttachmemtItemChanceLabel.Name = "AttachmemtItemChanceLabel";
-            this.AttachmemtItemChanceLabel.Size = new System.Drawing.Size(67, 13);
-            this.AttachmemtItemChanceLabel.TabIndex = 65;
-            this.AttachmemtItemChanceLabel.Text = "Item Chance";
+            this.label24.AutoSize = true;
+            this.label24.ForeColor = System.Drawing.SystemColors.Control;
+            this.label24.Location = new System.Drawing.Point(21, 24);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(24, 13);
+            this.label24.TabIndex = 0;
+            this.label24.Text = "Min";
             // 
-            // AttachmentchanceNUD
+            // label25
             // 
-            this.AttachmentchanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.AttachmentchanceNUD.DecimalPlaces = 2;
-            this.AttachmentchanceNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.AttachmentchanceNUD.Location = new System.Drawing.Point(159, 39);
-            this.AttachmentchanceNUD.Maximum = new decimal(new int[] {
-            10000,
+            this.label25.AutoSize = true;
+            this.label25.ForeColor = System.Drawing.SystemColors.Control;
+            this.label25.Location = new System.Drawing.Point(129, 24);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(27, 13);
+            this.label25.TabIndex = 7;
+            this.label25.Text = "Max";
+            // 
+            // DamageMinNUD
+            // 
+            this.DamageMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.DamageMinNUD.DecimalPlaces = 2;
+            this.DamageMinNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.DamageMinNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.DamageMinNUD.Location = new System.Drawing.Point(51, 22);
+            this.DamageMinNUD.Maximum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
-            this.AttachmentchanceNUD.Name = "AttachmentchanceNUD";
-            this.AttachmentchanceNUD.Size = new System.Drawing.Size(68, 20);
-            this.AttachmentchanceNUD.TabIndex = 64;
-            this.AttachmentchanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.AttachmentchanceNUD.ValueChanged += new System.EventHandler(this.AttachmentchanceNUD_ValueChanged);
-            // 
-            // chancAttachmentselabel
-            // 
-            this.chancAttachmentselabel.AutoSize = true;
-            this.chancAttachmentselabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.chancAttachmentselabel.Location = new System.Drawing.Point(109, 43);
-            this.chancAttachmentselabel.Name = "chancAttachmentselabel";
-            this.chancAttachmentselabel.Size = new System.Drawing.Size(44, 13);
-            this.chancAttachmentselabel.TabIndex = 63;
-            this.chancAttachmentselabel.Text = "Chance";
-            // 
-            // AttchmentIsPresetCB
-            // 
-            this.AttchmentIsPresetCB.AutoSize = true;
-            this.AttchmentIsPresetCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.AttchmentIsPresetCB.Location = new System.Drawing.Point(9, 19);
-            this.AttchmentIsPresetCB.Name = "AttchmentIsPresetCB";
-            this.AttchmentIsPresetCB.Size = new System.Drawing.Size(110, 17);
-            this.AttchmentIsPresetCB.TabIndex = 62;
-            this.AttchmentIsPresetCB.Text = "Is Random Preset";
-            this.AttchmentIsPresetCB.UseVisualStyleBackColor = true;
-            this.AttchmentIsPresetCB.CheckedChanged += new System.EventHandler(this.AttchmentIsPresetCB_CheckedChanged);
-            // 
-            // AttachmentPresetGB
-            // 
-            this.AttachmentPresetGB.Controls.Add(this.AttachmentPresetComboBox);
-            this.AttachmentPresetGB.Controls.Add(this.darkButton37);
-            this.AttachmentPresetGB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.AttachmentPresetGB.Location = new System.Drawing.Point(9, 67);
-            this.AttachmentPresetGB.Name = "AttachmentPresetGB";
-            this.AttachmentPresetGB.Size = new System.Drawing.Size(218, 100);
-            this.AttachmentPresetGB.TabIndex = 8;
-            this.AttachmentPresetGB.TabStop = false;
-            this.AttachmentPresetGB.Text = "Change Attachment Preset";
-            // 
-            // AttachmentPresetComboBox
-            // 
-            this.AttachmentPresetComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.AttachmentPresetComboBox.ForeColor = System.Drawing.SystemColors.Control;
-            this.AttachmentPresetComboBox.FormattingEnabled = true;
-            this.AttachmentPresetComboBox.Location = new System.Drawing.Point(10, 25);
-            this.AttachmentPresetComboBox.Name = "AttachmentPresetComboBox";
-            this.AttachmentPresetComboBox.Size = new System.Drawing.Size(202, 21);
-            this.AttachmentPresetComboBox.TabIndex = 1;
-            // 
-            // darkButton37
-            // 
-            this.darkButton37.Location = new System.Drawing.Point(8, 52);
-            this.darkButton37.Name = "darkButton37";
-            this.darkButton37.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton37.Size = new System.Drawing.Size(204, 27);
-            this.darkButton37.TabIndex = 5;
-            this.darkButton37.Text = "Change Preset";
-            this.darkButton37.Click += new System.EventHandler(this.darkButton37_Click);
+            this.DamageMinNUD.Name = "DamageMinNUD";
+            this.DamageMinNUD.Size = new System.Drawing.Size(68, 20);
+            this.DamageMinNUD.TabIndex = 6;
+            this.DamageMinNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DamageMinNUD.ValueChanged += new System.EventHandler(this.DamageMinNUD_ValueChanged);
             // 
             // Spaenabletypestagbox
             // 
@@ -6754,7 +6576,7 @@ namespace DayZeEditor
             this.CargoGB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.CargoGB.Location = new System.Drawing.Point(6, 8);
             this.CargoGB.Name = "CargoGB";
-            this.CargoGB.Size = new System.Drawing.Size(242, 512);
+            this.CargoGB.Size = new System.Drawing.Size(242, 340);
             this.CargoGB.TabIndex = 65;
             this.CargoGB.TabStop = false;
             this.CargoGB.Text = "Cargo";
@@ -6783,7 +6605,7 @@ namespace DayZeEditor
             this.CargoItemLB.FormattingEnabled = true;
             this.CargoItemLB.Location = new System.Drawing.Point(10, 66);
             this.CargoItemLB.Name = "CargoItemLB";
-            this.CargoItemLB.Size = new System.Drawing.Size(218, 134);
+            this.CargoItemLB.Size = new System.Drawing.Size(218, 4);
             this.CargoItemLB.TabIndex = 69;
             this.CargoItemLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.CargoItemLB.SelectedIndexChanged += new System.EventHandler(this.listBox7_SelectedIndexChanged);
@@ -6915,6 +6737,182 @@ namespace DayZeEditor
             this.darkButton36.TabIndex = 5;
             this.darkButton36.Text = "Change Preset";
             this.darkButton36.Click += new System.EventHandler(this.darkButton36_Click);
+            // 
+            // AttachmentGB
+            // 
+            this.AttachmentGB.Controls.Add(this.CargoAttachmentRemoveButton);
+            this.AttachmentGB.Controls.Add(this.AttachmentItemLB);
+            this.AttachmentGB.Controls.Add(this.cargoattachemntAddButton);
+            this.AttachmentGB.Controls.Add(this.AttachmentChangeItemButton);
+            this.AttachmentGB.Controls.Add(this.AttachemntTB);
+            this.AttachmentGB.Controls.Add(this.ItemAttachmentchanceNUD);
+            this.AttachmentGB.Controls.Add(this.AttachmemtItemChanceLabel);
+            this.AttachmentGB.Controls.Add(this.AttachmentchanceNUD);
+            this.AttachmentGB.Controls.Add(this.chancAttachmentselabel);
+            this.AttachmentGB.Controls.Add(this.AttachmentPresetGB);
+            this.AttachmentGB.Controls.Add(this.AttchmentIsPresetCB);
+            this.AttachmentGB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.AttachmentGB.Location = new System.Drawing.Point(6, 8);
+            this.AttachmentGB.Name = "AttachmentGB";
+            this.AttachmentGB.Size = new System.Drawing.Size(242, 340);
+            this.AttachmentGB.TabIndex = 66;
+            this.AttachmentGB.TabStop = false;
+            this.AttachmentGB.Text = "Attachments";
+            this.AttachmentGB.Visible = false;
+            // 
+            // CargoAttachmentRemoveButton
+            // 
+            this.CargoAttachmentRemoveButton.Location = new System.Drawing.Point(9, 299);
+            this.CargoAttachmentRemoveButton.Name = "CargoAttachmentRemoveButton";
+            this.CargoAttachmentRemoveButton.Padding = new System.Windows.Forms.Padding(5);
+            this.CargoAttachmentRemoveButton.Size = new System.Drawing.Size(218, 27);
+            this.CargoAttachmentRemoveButton.TabIndex = 74;
+            this.CargoAttachmentRemoveButton.Text = "Remove Item";
+            this.CargoAttachmentRemoveButton.Click += new System.EventHandler(this.darkButton35_Click_2);
+            // 
+            // AttachmentItemLB
+            // 
+            this.AttachmentItemLB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AttachmentItemLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.AttachmentItemLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.AttachmentItemLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.AttachmentItemLB.FormattingEnabled = true;
+            this.AttachmentItemLB.Location = new System.Drawing.Point(9, 67);
+            this.AttachmentItemLB.Name = "AttachmentItemLB";
+            this.AttachmentItemLB.Size = new System.Drawing.Size(218, 4);
+            this.AttachmentItemLB.TabIndex = 70;
+            this.AttachmentItemLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.AttachmentItemLB.SelectedIndexChanged += new System.EventHandler(this.AttachmentItemLB_SelectedIndexChanged);
+            // 
+            // cargoattachemntAddButton
+            // 
+            this.cargoattachemntAddButton.Location = new System.Drawing.Point(9, 266);
+            this.cargoattachemntAddButton.Name = "cargoattachemntAddButton";
+            this.cargoattachemntAddButton.Padding = new System.Windows.Forms.Padding(5);
+            this.cargoattachemntAddButton.Size = new System.Drawing.Size(218, 27);
+            this.cargoattachemntAddButton.TabIndex = 73;
+            this.cargoattachemntAddButton.Text = "Add New Item";
+            this.cargoattachemntAddButton.Click += new System.EventHandler(this.darkButton38_Click_1);
+            // 
+            // AttachmentChangeItemButton
+            // 
+            this.AttachmentChangeItemButton.Location = new System.Drawing.Point(9, 233);
+            this.AttachmentChangeItemButton.Name = "AttachmentChangeItemButton";
+            this.AttachmentChangeItemButton.Padding = new System.Windows.Forms.Padding(5);
+            this.AttachmentChangeItemButton.Size = new System.Drawing.Size(218, 27);
+            this.AttachmentChangeItemButton.TabIndex = 5;
+            this.AttachmentChangeItemButton.Text = "Change Item";
+            this.AttachmentChangeItemButton.Click += new System.EventHandler(this.AttachmentChangeItemButton_Click);
+            // 
+            // AttachemntTB
+            // 
+            this.AttachemntTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.AttachemntTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.AttachemntTB.Location = new System.Drawing.Point(10, 39);
+            this.AttachemntTB.Name = "AttachemntTB";
+            this.AttachemntTB.ReadOnly = true;
+            this.AttachemntTB.Size = new System.Drawing.Size(218, 20);
+            this.AttachemntTB.TabIndex = 71;
+            // 
+            // ItemAttachmentchanceNUD
+            // 
+            this.ItemAttachmentchanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ItemAttachmentchanceNUD.DecimalPlaces = 2;
+            this.ItemAttachmentchanceNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.ItemAttachmentchanceNUD.Location = new System.Drawing.Point(159, 207);
+            this.ItemAttachmentchanceNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.ItemAttachmentchanceNUD.Name = "ItemAttachmentchanceNUD";
+            this.ItemAttachmentchanceNUD.Size = new System.Drawing.Size(68, 20);
+            this.ItemAttachmentchanceNUD.TabIndex = 66;
+            this.ItemAttachmentchanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ItemAttachmentchanceNUD.ValueChanged += new System.EventHandler(this.ItemAttachmentchanceNUD_ValueChanged);
+            // 
+            // AttachmemtItemChanceLabel
+            // 
+            this.AttachmemtItemChanceLabel.AutoSize = true;
+            this.AttachmemtItemChanceLabel.ForeColor = System.Drawing.SystemColors.Control;
+            this.AttachmemtItemChanceLabel.Location = new System.Drawing.Point(87, 211);
+            this.AttachmemtItemChanceLabel.Name = "AttachmemtItemChanceLabel";
+            this.AttachmemtItemChanceLabel.Size = new System.Drawing.Size(67, 13);
+            this.AttachmemtItemChanceLabel.TabIndex = 65;
+            this.AttachmemtItemChanceLabel.Text = "Item Chance";
+            // 
+            // AttachmentchanceNUD
+            // 
+            this.AttachmentchanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.AttachmentchanceNUD.DecimalPlaces = 2;
+            this.AttachmentchanceNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.AttachmentchanceNUD.Location = new System.Drawing.Point(159, 39);
+            this.AttachmentchanceNUD.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.AttachmentchanceNUD.Name = "AttachmentchanceNUD";
+            this.AttachmentchanceNUD.Size = new System.Drawing.Size(68, 20);
+            this.AttachmentchanceNUD.TabIndex = 64;
+            this.AttachmentchanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.AttachmentchanceNUD.ValueChanged += new System.EventHandler(this.AttachmentchanceNUD_ValueChanged);
+            // 
+            // chancAttachmentselabel
+            // 
+            this.chancAttachmentselabel.AutoSize = true;
+            this.chancAttachmentselabel.ForeColor = System.Drawing.SystemColors.Control;
+            this.chancAttachmentselabel.Location = new System.Drawing.Point(109, 43);
+            this.chancAttachmentselabel.Name = "chancAttachmentselabel";
+            this.chancAttachmentselabel.Size = new System.Drawing.Size(44, 13);
+            this.chancAttachmentselabel.TabIndex = 63;
+            this.chancAttachmentselabel.Text = "Chance";
+            // 
+            // AttachmentPresetGB
+            // 
+            this.AttachmentPresetGB.Controls.Add(this.AttachmentPresetComboBox);
+            this.AttachmentPresetGB.Controls.Add(this.darkButton37);
+            this.AttachmentPresetGB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.AttachmentPresetGB.Location = new System.Drawing.Point(9, 67);
+            this.AttachmentPresetGB.Name = "AttachmentPresetGB";
+            this.AttachmentPresetGB.Size = new System.Drawing.Size(218, 100);
+            this.AttachmentPresetGB.TabIndex = 8;
+            this.AttachmentPresetGB.TabStop = false;
+            this.AttachmentPresetGB.Text = "Change Attachment Preset";
+            // 
+            // AttachmentPresetComboBox
+            // 
+            this.AttachmentPresetComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.AttachmentPresetComboBox.ForeColor = System.Drawing.SystemColors.Control;
+            this.AttachmentPresetComboBox.FormattingEnabled = true;
+            this.AttachmentPresetComboBox.Location = new System.Drawing.Point(10, 25);
+            this.AttachmentPresetComboBox.Name = "AttachmentPresetComboBox";
+            this.AttachmentPresetComboBox.Size = new System.Drawing.Size(202, 21);
+            this.AttachmentPresetComboBox.TabIndex = 1;
+            // 
+            // darkButton37
+            // 
+            this.darkButton37.Location = new System.Drawing.Point(8, 52);
+            this.darkButton37.Name = "darkButton37";
+            this.darkButton37.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton37.Size = new System.Drawing.Size(204, 27);
+            this.darkButton37.TabIndex = 5;
+            this.darkButton37.Text = "Change Preset";
+            this.darkButton37.Click += new System.EventHandler(this.darkButton37_Click);
+            // 
+            // AttchmentIsPresetCB
+            // 
+            this.AttchmentIsPresetCB.AutoSize = true;
+            this.AttchmentIsPresetCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.AttchmentIsPresetCB.Location = new System.Drawing.Point(9, 19);
+            this.AttchmentIsPresetCB.Name = "AttchmentIsPresetCB";
+            this.AttchmentIsPresetCB.Size = new System.Drawing.Size(110, 17);
+            this.AttchmentIsPresetCB.TabIndex = 62;
+            this.AttchmentIsPresetCB.Text = "Is Random Preset";
+            this.AttchmentIsPresetCB.UseVisualStyleBackColor = true;
+            this.AttchmentIsPresetCB.CheckedChanged += new System.EventHandler(this.AttchmentIsPresetCB_CheckedChanged);
             // 
             // RandomPresetsTab
             // 
@@ -8318,7 +8316,7 @@ namespace DayZeEditor
             this.PlayerSpawnFreshButton.Image = ((System.Drawing.Image)(resources.GetObject("PlayerSpawnFreshButton.Image")));
             this.PlayerSpawnFreshButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PlayerSpawnFreshButton.Name = "PlayerSpawnFreshButton";
-            this.PlayerSpawnFreshButton.Size = new System.Drawing.Size(39, 22);
+            this.PlayerSpawnFreshButton.Size = new System.Drawing.Size(24, 24);
             this.PlayerSpawnFreshButton.Text = "Fresh";
             this.PlayerSpawnFreshButton.Click += new System.EventHandler(this.PlayerSpawnFreshButton_Click);
             // 
@@ -8338,7 +8336,7 @@ namespace DayZeEditor
             this.PlayerSpawnHopButton.Image = ((System.Drawing.Image)(resources.GetObject("PlayerSpawnHopButton.Image")));
             this.PlayerSpawnHopButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PlayerSpawnHopButton.Name = "PlayerSpawnHopButton";
-            this.PlayerSpawnHopButton.Size = new System.Drawing.Size(34, 22);
+            this.PlayerSpawnHopButton.Size = new System.Drawing.Size(24, 24);
             this.PlayerSpawnHopButton.Text = "Hop";
             this.PlayerSpawnHopButton.Click += new System.EventHandler(this.PlayerSpawnHopButton_Click);
             // 
@@ -8358,7 +8356,7 @@ namespace DayZeEditor
             this.PlayerSpawnTravelButton.Image = ((System.Drawing.Image)(resources.GetObject("PlayerSpawnTravelButton.Image")));
             this.PlayerSpawnTravelButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PlayerSpawnTravelButton.Name = "PlayerSpawnTravelButton";
-            this.PlayerSpawnTravelButton.Size = new System.Drawing.Size(41, 22);
+            this.PlayerSpawnTravelButton.Size = new System.Drawing.Size(24, 24);
             this.PlayerSpawnTravelButton.Text = "Travel";
             this.PlayerSpawnTravelButton.Click += new System.EventHandler(this.PlayerSpawnTravelButton_Click);
             // 
@@ -10676,6 +10674,11 @@ namespace DayZeEditor
             0,
             0,
             0});
+            this.VerticalOffsetNUD.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
             this.VerticalOffsetNUD.Name = "VerticalOffsetNUD";
             this.VerticalOffsetNUD.Size = new System.Drawing.Size(71, 20);
             this.VerticalOffsetNUD.TabIndex = 142;
@@ -10712,6 +10715,11 @@ namespace DayZeEditor
             0,
             0,
             0});
+            this.VerticalLayersNUD.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
             this.VerticalLayersNUD.Name = "VerticalLayersNUD";
             this.VerticalLayersNUD.Size = new System.Drawing.Size(71, 20);
             this.VerticalLayersNUD.TabIndex = 140;
@@ -10738,6 +10746,11 @@ namespace DayZeEditor
             0,
             0,
             0});
+            this.OuterOffsetNUD.Minimum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            -2147483648});
             this.OuterOffsetNUD.Name = "OuterOffsetNUD";
             this.OuterOffsetNUD.Size = new System.Drawing.Size(71, 20);
             this.OuterOffsetNUD.TabIndex = 138;
@@ -10764,6 +10777,11 @@ namespace DayZeEditor
             0,
             0,
             0});
+            this.OuterPartDistNUD.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
             this.OuterPartDistNUD.Name = "OuterPartDistNUD";
             this.OuterPartDistNUD.Size = new System.Drawing.Size(71, 20);
             this.OuterPartDistNUD.TabIndex = 136;
@@ -10800,6 +10818,11 @@ namespace DayZeEditor
             0,
             0,
             0});
+            this.InnerPartDistNUD.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
             this.InnerPartDistNUD.Name = "InnerPartDistNUD";
             this.InnerPartDistNUD.Size = new System.Drawing.Size(71, 20);
             this.InnerPartDistNUD.TabIndex = 132;
@@ -10852,6 +10875,11 @@ namespace DayZeEditor
             0,
             0,
             0});
+            this.NegHeightNUD.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
             this.NegHeightNUD.Name = "NegHeightNUD";
             this.NegHeightNUD.Size = new System.Drawing.Size(71, 20);
             this.NegHeightNUD.TabIndex = 128;
@@ -10878,6 +10906,11 @@ namespace DayZeEditor
             0,
             0,
             0});
+            this.PosHeightNUD.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
             this.PosHeightNUD.Name = "PosHeightNUD";
             this.PosHeightNUD.Size = new System.Drawing.Size(71, 20);
             this.PosHeightNUD.TabIndex = 126;
@@ -10904,6 +10937,11 @@ namespace DayZeEditor
             0,
             0,
             0});
+            this.RadiusNUD.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
             this.RadiusNUD.Name = "RadiusNUD";
             this.RadiusNUD.Size = new System.Drawing.Size(71, 20);
             this.RadiusNUD.TabIndex = 124;
@@ -15624,21 +15662,15 @@ namespace DayZeEditor
             this.SpawnableTypesTab.ResumeLayout(false);
             this.tabControl12.ResumeLayout(false);
             this.tabPage9.ResumeLayout(false);
-            this.tabControl11.ResumeLayout(false);
-            this.tabPage8.ResumeLayout(false);
-            this.tabPage8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DamageMaxNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DamageMinNUD)).EndInit();
             this.tabControl9.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             this.tabControl10.ResumeLayout(false);
             this.tabPage7.ResumeLayout(false);
             this.groupBox21.ResumeLayout(false);
-            this.AttachmentGB.ResumeLayout(false);
-            this.AttachmentGB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemAttachmentchanceNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AttachmentchanceNUD)).EndInit();
-            this.AttachmentPresetGB.ResumeLayout(false);
+            this.groupBox78.ResumeLayout(false);
+            this.groupBox78.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DamageMaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DamageMinNUD)).EndInit();
             this.Spaenabletypestagbox.ResumeLayout(false);
             this.Spaenabletypestagbox.PerformLayout();
             this.groupBox24.ResumeLayout(false);
@@ -15647,6 +15679,11 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.CargoItemchanceNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CarcgoChanceNUD)).EndInit();
             this.CargoPresetGB.ResumeLayout(false);
+            this.AttachmentGB.ResumeLayout(false);
+            this.AttachmentGB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemAttachmentchanceNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AttachmentchanceNUD)).EndInit();
+            this.AttachmentPresetGB.ResumeLayout(false);
             this.RandomPresetsTab.ResumeLayout(false);
             this.tabControl20.ResumeLayout(false);
             this.tabPage19.ResumeLayout(false);
@@ -16158,8 +16195,6 @@ namespace DayZeEditor
         private System.Windows.Forms.TabControl tabControl10;
         private System.Windows.Forms.TabPage tabPage7;
         private System.Windows.Forms.ListBox SpawnabletpesLB;
-        private System.Windows.Forms.TabControl tabControl11;
-        private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.NumericUpDown DamageMaxNUD;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.NumericUpDown DamageMinNUD;
@@ -16222,12 +16257,7 @@ namespace DayZeEditor
         private TreeViewMS.TreeViewMS treeViewMS1;
         private DarkUI.Controls.DarkButton darkButton28;
         private System.Windows.Forms.ToolStripMenuItem checkForDuplicateTypesTSMI;
-        private System.Windows.Forms.GroupBox Spaenabletypestagbox;
-        private System.Windows.Forms.GroupBox groupBox24;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private DarkUI.Controls.DarkButton darkButton29;
         private DarkUI.Controls.DarkButton darkButton30;
-        private System.Windows.Forms.TextBox textBox2;
         private DarkUI.Controls.DarkButton darkButton34;
         private DarkUI.Controls.DarkButton darkButton33;
         private DarkUI.Controls.DarkButton darkButton32;
@@ -16261,7 +16291,6 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton cargoattachemntAddButton;
         private DarkUI.Controls.DarkButton darkButton35;
         private DarkUI.Controls.DarkButton darkButton38;
-        private System.Windows.Forms.CheckBox HasDamageCB;
         private DarkUI.Controls.DarkButton darkButton39;
         private DarkUI.Controls.DarkButton darkButton40;
         private System.Windows.Forms.ToolStripButton RandomPresetsTabButton;
@@ -17063,5 +17092,12 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox checkBox113;
         private FastColoredTextBox fastColoredTextBox2;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
+        private System.Windows.Forms.GroupBox groupBox78;
+        private System.Windows.Forms.GroupBox Spaenabletypestagbox;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.GroupBox groupBox24;
+        private System.Windows.Forms.ComboBox comboBox5;
+        private DarkUI.Controls.DarkButton darkButton29;
+        private DarkUI.Controls.DarkButton darkButton26;
     }
 }

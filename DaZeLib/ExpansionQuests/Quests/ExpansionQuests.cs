@@ -468,11 +468,13 @@ namespace DayZeLib
         public int DamagePercent { get; set; }
         public int HealthPercent { get; set; }
         public int QuestID { get; set; }
+        public decimal Chance { get; set; }
 
         public QuestReward()
         {
             Attachments = new BindingList<string>();
             QuestID = -1;
+            Chance = (decimal)1.0;
         }
 
 

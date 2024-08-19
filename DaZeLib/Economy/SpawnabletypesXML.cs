@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace DayZeLib
 {
-    // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.
-    /// <remarks/>
+// NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.
+/// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
@@ -12,22 +13,7 @@ namespace DayZeLib
     public partial class spawnabletypes
     {
 
-        private spawnabletypesDamage damageField;
-
         private BindingList<spawnabletypesType> typeField;
-
-        /// <remarks/>
-        public spawnabletypesDamage damage
-        {
-            get
-            {
-                return this.damageField;
-            }
-            set
-            {
-                this.damageField = value;
-            }
-        }
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("type")]
@@ -48,46 +34,6 @@ namespace DayZeLib
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class spawnabletypesDamage
-    {
-
-        private decimal minField;
-
-        private decimal maxField;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public decimal min
-        {
-            get
-            {
-                return this.minField;
-            }
-            set
-            {
-                this.minField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public decimal max
-        {
-            get
-            {
-                return this.maxField;
-            }
-            set
-            {
-                this.maxField = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class spawnabletypesType
     {
 
@@ -98,6 +44,7 @@ namespace DayZeLib
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("attachments", typeof(spawnabletypesTypeAttachments))]
         [System.Xml.Serialization.XmlElementAttribute("cargo", typeof(spawnabletypesTypeCargo))]
+        [System.Xml.Serialization.XmlElementAttribute("damage", typeof(spawnabletypesTypeDamage))]
         [System.Xml.Serialization.XmlElementAttribute("hoarder", typeof(spawnabletypesTypeHoarder))]
         [System.Xml.Serialization.XmlElementAttribute("tag", typeof(spawnabletypesTypeTag))]
         public BindingList<object> Items
@@ -125,12 +72,10 @@ namespace DayZeLib
                 this.nameField = value;
             }
         }
-
         public override string ToString()
         {
-            return nameField;
+            return name;
         }
-
         public bool ContainsAttchorcargo()
         {
             foreach (var item in Items)
@@ -423,6 +368,51 @@ namespace DayZeLib
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class spawnabletypesTypeDamage
+    {
+
+        private decimal minField;
+
+        private decimal maxField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal min
+        {
+            get
+            {
+                return this.minField;
+            }
+            set
+            {
+                this.minField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal max
+        {
+            get
+            {
+                return this.maxField;
+            }
+            set
+            {
+                this.maxField = value;
+            }
+        }
+
+        public override string ToString()
+        {
+            return "Damage";
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class spawnabletypesTypeTag
     {
 
@@ -459,4 +449,5 @@ namespace DayZeLib
             return "Hoarder";
         }
     }
+
 }

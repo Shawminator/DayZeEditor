@@ -1422,6 +1422,7 @@ namespace DayZeEditor
             QuestRewardsHealthPercentNUD.Value = qr.HealthPercent;
             QuestRewardsDamagePercentNUD.Value = qr.DamagePercent;
             QuestRewardsQuestIDNUD.Value = qr.QuestID;
+            QuestRewardChanceNUD.Value = qr.Chance;
 
             QuestRewrdsAttchemntsLB.DisplayMember = "DisplayName";
             QuestRewrdsAttchemntsLB.ValueMember = "Value";
@@ -1458,6 +1459,14 @@ namespace DayZeEditor
             if (QuestRewardsLB.SelectedItems.Count < 1) return;
             QuestReward qr = QuestRewardsLB.SelectedItem as QuestReward;
             qr.QuestID = (int)QuestRewardsQuestIDNUD.Value;
+            CurrentQuest.isDirty = true;
+        }
+        private void QuestRewardChanceNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            if (QuestRewardsLB.SelectedItems.Count < 1) return;
+            QuestReward qr = QuestRewardsLB.SelectedItem as QuestReward;
+            qr.Chance = (int)QuestRewardChanceNUD.Value;
             CurrentQuest.isDirty = true;
         }
         private void darkButton34_Click(object sender, EventArgs e)
@@ -4809,6 +4818,7 @@ namespace DayZeEditor
         {
 
         }
+
 
 
 

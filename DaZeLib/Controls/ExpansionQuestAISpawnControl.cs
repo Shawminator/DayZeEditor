@@ -124,6 +124,7 @@ namespace DayZeEditor
             StaticPatrolWaypointInterpolationCB.SelectedIndex = StaticPatrolWaypointInterpolationCB.FindStringExact(_currentAISpawn.WaypointInterpolation);
             StaticPatrolUseRandomWaypointAsStartPointCB.Checked = _currentAISpawn.UseRandomWaypointAsStartPoint == 1 ? true : false;
             StaticPatrolNoiseInvestigationDistanceLimitNUD.Value = _currentAISpawn.NoiseInvestigationDistanceLimit;
+            StaticPatrolCanBeTriggeredByAICB.Checked = _currentAISpawn.CanBeTriggeredByAI == 1 ? true : false;
 
             int StaticPatrolUnlimitedReloadBitmask = _currentAISpawn.UnlimitedReload;
             if (StaticPatrolUnlimitedReloadBitmask == 1)
@@ -300,6 +301,13 @@ namespace DayZeEditor
             if (StaticPatrolUnlimitedReloadBitmask == 30)
                 StaticPatrolUnlimitedReloadBitmask = 1;
             _currentAISpawn.UnlimitedReload = StaticPatrolUnlimitedReloadBitmask;
+            isDirty = true;
+        }
+        
+        private void StaticPatrolCanBeTriggeredByAICB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.CanBeTriggeredByAI = StaticPatrolCanBeTriggeredByAICB.Checked == true ? 1 : 0;
             isDirty = true;
         }
 
@@ -535,6 +543,7 @@ namespace DayZeEditor
             StaticPatrolNumberOfAINUD.ReadOnly = v;
             StaticPatrolNumberOfAINUD.Increment = 0;
         }
+
 
     }
 }

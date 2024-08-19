@@ -28,11 +28,12 @@ namespace DayZeLib
     };
     public class ExpansionGeneralSettings
     {
-        static int CurrentVersion = 14;
+        static int CurrentVersion = 15;
 
         public int m_Version { get; set; }
         public int DisableShootToUnlock { get; set; }
         public int EnableGravecross { get; set; }
+        public int EnableAIGravecross { get; set; }
         public int GravecrossDeleteBody { get; set; }
         public decimal GravecrossTimeThreshold { get; set; }
         public decimal GravecrossSpawnTimeDelay { get; set; }
@@ -64,6 +65,7 @@ namespace DayZeLib
             m_Version = CurrentVersion;
             DisableShootToUnlock = 0;
             EnableGravecross = 0;
+            EnableAIGravecross = 0;
             GravecrossDeleteBody = 1;
             GravecrossTimeThreshold = 1200;
             GravecrossSpawnTimeDelay = 180;

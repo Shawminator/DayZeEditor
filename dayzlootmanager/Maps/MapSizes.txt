@@ -26,3 +26,5 @@ bearisland:10240
 fogfall:20480
 swansisland:2048
 anastara:10240
+alteria:8192
+bitterroot:12288

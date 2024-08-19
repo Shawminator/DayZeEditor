@@ -68,6 +68,14 @@
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK.GLControl, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\OpenTK.GLControl.dll</HintPath>
+    </Reference>
     <Reference Include="SevenZipExtractor, Version=1.0.16.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\SevenZipExtractor.dll</HintPath>
@@ -116,11 +124,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\GitHub.cs" />
-    <Compile Include="Forms\InediaManager.cs">
+    <Compile Include="Forms\ImageConvertor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\InediaManager.Designer.cs">
-      <DependentUpon>InediaManager.cs</DependentUpon>
+    <Compile Include="Forms\ImageConvertor.Designer.cs">
+      <DependentUpon>ImageConvertor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CapareWorkBenchManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CapareWorkBenchManager.Designer.cs">
+      <DependentUpon>CapareWorkBenchManager.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\PVZCZManager.cs">
       <SubType>Form</SubType>
@@ -157,12 +171,6 @@
     </Compile>
     <Compile Include="Forms\RagTysonBaseBuildingManager.Designer.cs">
       <DependentUpon>RagTysonBaseBuildingManager.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\DNAKeyCardsManager.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\DNAKeyCardsManager.Designer.cs">
-      <DependentUpon>DNAKeyCardsManager.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ABVManager.cs">
       <SubType>Form</SubType>
@@ -414,8 +422,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\InediaManager.resx">
-      <DependentUpon>InediaManager.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ImageConvertor.resx">
+      <DependentUpon>ImageConvertor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CapareWorkBenchManager.resx">
+      <DependentUpon>CapareWorkBenchManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PVZCZManager.resx">
       <DependentUpon>PVZCZManager.cs</DependentUpon>
@@ -434,9 +445,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RagTysonBaseBuildingManager.resx">
       <DependentUpon>RagTysonBaseBuildingManager.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DNAKeyCardsManager.resx">
-      <DependentUpon>DNAKeyCardsManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ABVManager.resx">
       <DependentUpon>ABVManager.cs</DependentUpon>
@@ -749,6 +757,12 @@
     <Content Include="Maps\vela_Map.png" />
     <Content Include="Maps\vis_island_Map.png" />
     <Content Include="Maps\yiprit_map.png" />
+    <Content Include="OpenTK.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OpenTK.GLControl.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="SevenZipExtractor.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

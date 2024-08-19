@@ -4,7 +4,7 @@ namespace DayZeLib
 {
     public class ExpansionTerritorySettings
     {
-        const int CurrentVersion = 4;
+        const int CurrentVersion = 5;
         public int m_Version { get; set; }
         public int EnableTerritories { get; set; }
         public int UseWholeMapForInviteList { get; set; }
@@ -15,6 +15,7 @@ namespace DayZeLib
         public decimal TerritoryInviteAcceptRadius { get; set; }
         public int AuthenticateCodeLockIfTerritoryMember { get; set; }
         public int InviteCooldown { get; set; }
+        public int OnlyInviteGroupMember { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }
@@ -33,6 +34,7 @@ namespace DayZeLib
             TerritoryInviteAcceptRadius = (decimal)150.0;
             AuthenticateCodeLockIfTerritoryMember = 0; //added in version 3
             InviteCooldown = 0; //added in version 4
+            OnlyInviteGroupMember = 0;
         }
         public bool checkver()
         {

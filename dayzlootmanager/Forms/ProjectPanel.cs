@@ -72,6 +72,7 @@ namespace DayZeEditor
         }
         private void ProjectPanel_Load(object sender, EventArgs e)
         {
+
             if (this.FTPPasswordTB.Control is TextBox)
             {
                 TextBox tb = this.FTPPasswordTB.Control as TextBox;

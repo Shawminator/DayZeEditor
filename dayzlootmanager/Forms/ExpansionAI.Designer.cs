@@ -105,6 +105,11 @@ namespace DayZeEditor
             this.darkLabel17 = new DarkUI.Controls.DarkLabel();
             this.TabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.CrashURVehiclesCB = new System.Windows.Forms.CheckBox();
+            this.CrashURPlayersCB = new System.Windows.Forms.CheckBox();
+            this.CrashURInfectedCB = new System.Windows.Forms.CheckBox();
+            this.CrashURAnimalsCB = new System.Windows.Forms.CheckBox();
             this.CrashPersistCB = new System.Windows.Forms.CheckBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.darkButton15 = new DarkUI.Controls.DarkButton();
@@ -534,11 +539,8 @@ namespace DayZeEditor
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
-            this.groupBox17 = new System.Windows.Forms.GroupBox();
-            this.CrashURVehiclesCB = new System.Windows.Forms.CheckBox();
-            this.CrashURPlayersCB = new System.Windows.Forms.CheckBox();
-            this.CrashURInfectedCB = new System.Windows.Forms.CheckBox();
-            this.CrashURAnimalsCB = new System.Windows.Forms.CheckBox();
+            this.CrashCanBeTriggeredByAICB = new System.Windows.Forms.CheckBox();
+            this.StaticPatrolCanBeTriggeredByAICB = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.TabPage1.SuspendLayout();
@@ -566,6 +568,7 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.MaximumDynamicPatrolsNUD)).BeginInit();
             this.TabPage2.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox17.SuspendLayout();
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.crashNoiseInvestigationDistanceLimitNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrashDamageReceivedMultiplierNUD)).BeginInit();
@@ -702,7 +705,6 @@ namespace DayZeEditor
             this.groupBox14.SuspendLayout();
             this.darkToolStrip24.SuspendLayout();
             this.darkToolStrip23.SuspendLayout();
-            this.groupBox17.SuspendLayout();
             this.SuspendLayout();
             // 
             // darkToolStrip21
@@ -1837,6 +1839,7 @@ namespace DayZeEditor
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.CrashCanBeTriggeredByAICB);
             this.groupBox4.Controls.Add(this.groupBox17);
             this.groupBox4.Controls.Add(this.CrashPersistCB);
             this.groupBox4.Controls.Add(this.groupBox8);
@@ -1904,12 +1907,78 @@ namespace DayZeEditor
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Object Patrols";
             // 
+            // groupBox17
+            // 
+            this.groupBox17.Controls.Add(this.CrashURVehiclesCB);
+            this.groupBox17.Controls.Add(this.CrashURPlayersCB);
+            this.groupBox17.Controls.Add(this.CrashURInfectedCB);
+            this.groupBox17.Controls.Add(this.CrashURAnimalsCB);
+            this.groupBox17.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox17.Location = new System.Drawing.Point(678, 393);
+            this.groupBox17.Name = "groupBox17";
+            this.groupBox17.Size = new System.Drawing.Size(226, 74);
+            this.groupBox17.TabIndex = 294;
+            this.groupBox17.TabStop = false;
+            this.groupBox17.Text = "Unlimited Reload";
+            // 
+            // CrashURVehiclesCB
+            // 
+            this.CrashURVehiclesCB.AutoSize = true;
+            this.CrashURVehiclesCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CrashURVehiclesCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CrashURVehiclesCB.Location = new System.Drawing.Point(122, 42);
+            this.CrashURVehiclesCB.Name = "CrashURVehiclesCB";
+            this.CrashURVehiclesCB.Size = new System.Drawing.Size(66, 17);
+            this.CrashURVehiclesCB.TabIndex = 295;
+            this.CrashURVehiclesCB.Text = "Vehicles";
+            this.CrashURVehiclesCB.UseVisualStyleBackColor = true;
+            this.CrashURVehiclesCB.CheckedChanged += new System.EventHandler(this.CrashURBitmaskCB_CheckedChanged);
+            // 
+            // CrashURPlayersCB
+            // 
+            this.CrashURPlayersCB.AutoSize = true;
+            this.CrashURPlayersCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CrashURPlayersCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CrashURPlayersCB.Location = new System.Drawing.Point(22, 42);
+            this.CrashURPlayersCB.Name = "CrashURPlayersCB";
+            this.CrashURPlayersCB.Size = new System.Drawing.Size(60, 17);
+            this.CrashURPlayersCB.TabIndex = 294;
+            this.CrashURPlayersCB.Text = "Players";
+            this.CrashURPlayersCB.UseVisualStyleBackColor = true;
+            this.CrashURPlayersCB.CheckedChanged += new System.EventHandler(this.CrashURBitmaskCB_CheckedChanged);
+            // 
+            // CrashURInfectedCB
+            // 
+            this.CrashURInfectedCB.AutoSize = true;
+            this.CrashURInfectedCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CrashURInfectedCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CrashURInfectedCB.Location = new System.Drawing.Point(122, 19);
+            this.CrashURInfectedCB.Name = "CrashURInfectedCB";
+            this.CrashURInfectedCB.Size = new System.Drawing.Size(65, 17);
+            this.CrashURInfectedCB.TabIndex = 293;
+            this.CrashURInfectedCB.Text = "Infected";
+            this.CrashURInfectedCB.UseVisualStyleBackColor = true;
+            this.CrashURInfectedCB.CheckedChanged += new System.EventHandler(this.CrashURBitmaskCB_CheckedChanged);
+            // 
+            // CrashURAnimalsCB
+            // 
+            this.CrashURAnimalsCB.AutoSize = true;
+            this.CrashURAnimalsCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CrashURAnimalsCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CrashURAnimalsCB.Location = new System.Drawing.Point(20, 19);
+            this.CrashURAnimalsCB.Name = "CrashURAnimalsCB";
+            this.CrashURAnimalsCB.Size = new System.Drawing.Size(62, 17);
+            this.CrashURAnimalsCB.TabIndex = 292;
+            this.CrashURAnimalsCB.Text = "Animals";
+            this.CrashURAnimalsCB.UseVisualStyleBackColor = true;
+            this.CrashURAnimalsCB.CheckedChanged += new System.EventHandler(this.CrashURBitmaskCB_CheckedChanged);
+            // 
             // CrashPersistCB
             // 
             this.CrashPersistCB.AutoSize = true;
             this.CrashPersistCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.CrashPersistCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CrashPersistCB.Location = new System.Drawing.Point(604, 118);
+            this.CrashPersistCB.Location = new System.Drawing.Point(604, 119);
             this.CrashPersistCB.Name = "CrashPersistCB";
             this.CrashPersistCB.Size = new System.Drawing.Size(57, 17);
             this.CrashPersistCB.TabIndex = 287;
@@ -2826,6 +2895,7 @@ namespace DayZeEditor
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.tabPage3.Controls.Add(this.StaticPatrolCanBeTriggeredByAICB);
             this.tabPage3.Controls.Add(this.groupBox16);
             this.tabPage3.Controls.Add(this.StaticPatrolPersistCB);
             this.tabPage3.Controls.Add(this.groupBox7);
@@ -8145,71 +8215,31 @@ namespace DayZeEditor
             this.toolStripButton6.Text = "Dynamic AI Addon";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
-            // groupBox17
+            // CrashCanBeTriggeredByAICB
             // 
-            this.groupBox17.Controls.Add(this.CrashURVehiclesCB);
-            this.groupBox17.Controls.Add(this.CrashURPlayersCB);
-            this.groupBox17.Controls.Add(this.CrashURInfectedCB);
-            this.groupBox17.Controls.Add(this.CrashURAnimalsCB);
-            this.groupBox17.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox17.Location = new System.Drawing.Point(678, 393);
-            this.groupBox17.Name = "groupBox17";
-            this.groupBox17.Size = new System.Drawing.Size(226, 74);
-            this.groupBox17.TabIndex = 294;
-            this.groupBox17.TabStop = false;
-            this.groupBox17.Text = "Unlimited Reload";
+            this.CrashCanBeTriggeredByAICB.AutoSize = true;
+            this.CrashCanBeTriggeredByAICB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CrashCanBeTriggeredByAICB.ForeColor = System.Drawing.SystemColors.Control;
+            this.CrashCanBeTriggeredByAICB.Location = new System.Drawing.Point(524, 171);
+            this.CrashCanBeTriggeredByAICB.Name = "CrashCanBeTriggeredByAICB";
+            this.CrashCanBeTriggeredByAICB.Size = new System.Drawing.Size(137, 17);
+            this.CrashCanBeTriggeredByAICB.TabIndex = 295;
+            this.CrashCanBeTriggeredByAICB.Text = "Can Be Triggered By AI";
+            this.CrashCanBeTriggeredByAICB.UseVisualStyleBackColor = true;
+            this.CrashCanBeTriggeredByAICB.CheckedChanged += new System.EventHandler(this.CrashCanBeTriggeredByAICB_CheckedChanged);
             // 
-            // CrashURVehiclesCB
+            // StaticPatrolCanBeTriggeredByAICB
             // 
-            this.CrashURVehiclesCB.AutoSize = true;
-            this.CrashURVehiclesCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.CrashURVehiclesCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CrashURVehiclesCB.Location = new System.Drawing.Point(122, 42);
-            this.CrashURVehiclesCB.Name = "CrashURVehiclesCB";
-            this.CrashURVehiclesCB.Size = new System.Drawing.Size(66, 17);
-            this.CrashURVehiclesCB.TabIndex = 295;
-            this.CrashURVehiclesCB.Text = "Vehicles";
-            this.CrashURVehiclesCB.UseVisualStyleBackColor = true;
-            this.CrashURVehiclesCB.CheckedChanged += new System.EventHandler(this.CrashURBitmaskCB_CheckedChanged);
-            // 
-            // CrashURPlayersCB
-            // 
-            this.CrashURPlayersCB.AutoSize = true;
-            this.CrashURPlayersCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.CrashURPlayersCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CrashURPlayersCB.Location = new System.Drawing.Point(22, 42);
-            this.CrashURPlayersCB.Name = "CrashURPlayersCB";
-            this.CrashURPlayersCB.Size = new System.Drawing.Size(60, 17);
-            this.CrashURPlayersCB.TabIndex = 294;
-            this.CrashURPlayersCB.Text = "Players";
-            this.CrashURPlayersCB.UseVisualStyleBackColor = true;
-            this.CrashURPlayersCB.CheckedChanged += new System.EventHandler(this.CrashURBitmaskCB_CheckedChanged);
-            // 
-            // CrashURInfectedCB
-            // 
-            this.CrashURInfectedCB.AutoSize = true;
-            this.CrashURInfectedCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.CrashURInfectedCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CrashURInfectedCB.Location = new System.Drawing.Point(122, 19);
-            this.CrashURInfectedCB.Name = "CrashURInfectedCB";
-            this.CrashURInfectedCB.Size = new System.Drawing.Size(65, 17);
-            this.CrashURInfectedCB.TabIndex = 293;
-            this.CrashURInfectedCB.Text = "Infected";
-            this.CrashURInfectedCB.UseVisualStyleBackColor = true;
-            this.CrashURInfectedCB.CheckedChanged += new System.EventHandler(this.CrashURBitmaskCB_CheckedChanged);
-            // 
-            // CrashURAnimalsCB
-            // 
-            this.CrashURAnimalsCB.AutoSize = true;
-            this.CrashURAnimalsCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.CrashURAnimalsCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CrashURAnimalsCB.Location = new System.Drawing.Point(20, 19);
-            this.CrashURAnimalsCB.Name = "CrashURAnimalsCB";
-            this.CrashURAnimalsCB.Size = new System.Drawing.Size(62, 17);
-            this.CrashURAnimalsCB.TabIndex = 292;
-            this.CrashURAnimalsCB.Text = "Animals";
-            this.CrashURAnimalsCB.UseVisualStyleBackColor = true;
-            this.CrashURAnimalsCB.CheckedChanged += new System.EventHandler(this.CrashURBitmaskCB_CheckedChanged);
+            this.StaticPatrolCanBeTriggeredByAICB.AutoSize = true;
+            this.StaticPatrolCanBeTriggeredByAICB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.StaticPatrolCanBeTriggeredByAICB.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolCanBeTriggeredByAICB.Location = new System.Drawing.Point(309, 141);
+            this.StaticPatrolCanBeTriggeredByAICB.Name = "StaticPatrolCanBeTriggeredByAICB";
+            this.StaticPatrolCanBeTriggeredByAICB.Size = new System.Drawing.Size(137, 17);
+            this.StaticPatrolCanBeTriggeredByAICB.TabIndex = 296;
+            this.StaticPatrolCanBeTriggeredByAICB.Text = "Can Be Triggered By AI";
+            this.StaticPatrolCanBeTriggeredByAICB.UseVisualStyleBackColor = true;
+            this.StaticPatrolCanBeTriggeredByAICB.CheckedChanged += new System.EventHandler(this.StaticPatrolCanBeTriggeredByAICB_CheckedChanged);
             // 
             // ExpansionAI
             // 
@@ -8256,6 +8286,8 @@ namespace DayZeEditor
             this.TabPage2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox17.ResumeLayout(false);
+            this.groupBox17.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.crashNoiseInvestigationDistanceLimitNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CrashDamageReceivedMultiplierNUD)).EndInit();
@@ -8411,8 +8443,6 @@ namespace DayZeEditor
             this.darkToolStrip24.PerformLayout();
             this.darkToolStrip23.ResumeLayout(false);
             this.darkToolStrip23.PerformLayout();
-            this.groupBox17.ResumeLayout(false);
-            this.groupBox17.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -8928,5 +8958,7 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox CrashURPlayersCB;
         private System.Windows.Forms.CheckBox CrashURInfectedCB;
         private System.Windows.Forms.CheckBox CrashURAnimalsCB;
+        private System.Windows.Forms.CheckBox CrashCanBeTriggeredByAICB;
+        private System.Windows.Forms.CheckBox StaticPatrolCanBeTriggeredByAICB;
     }
 }

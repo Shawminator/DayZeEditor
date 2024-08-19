@@ -24,6 +24,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -34,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="K4os.Compression.LZ4, Version=1.3.8.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.1.3.8\lib\net462\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -77,8 +81,28 @@
     <Compile Include="AirdropUpgraded\AirdropUpgradedSafeZones.cs" />
     <Compile Include="AnimatedHeliCrashes\Helicrash.cs" />
     <Compile Include="BaseBuildingPlus\BBP.cs" />
+    <Compile Include="BIS\Core\ColorP.cs" />
+    <Compile Include="BIS\Core\Compression\LZO.cs" />
+    <Compile Include="BIS\Core\Compression\LZSS.cs" />
+    <Compile Include="BIS\Core\Math\Matrix3P.cs" />
+    <Compile Include="BIS\Core\Math\Matrix4P.cs" />
+    <Compile Include="BIS\Core\Math\Quaternion.cs" />
+    <Compile Include="BIS\Core\Math\ShortFloat.cs" />
+    <Compile Include="BIS\Core\Math\Vector3P.cs" />
+    <Compile Include="BIS\Core\Math\Vector3PCompressed.cs" />
+    <Compile Include="BIS\Core\Methods.cs" />
+    <Compile Include="BIS\Core\PackedColor.cs" />
+    <Compile Include="BIS\Core\QuadTree.cs" />
+    <Compile Include="BIS\Core\Streams\BinaryReaderEx.cs" />
+    <Compile Include="BIS\Core\Streams\BinaryWriterEx.cs" />
+    <Compile Include="BIS\PAA\Mipmap.cs" />
+    <Compile Include="BIS\PAA\PAA.cs" />
+    <Compile Include="BIS\PAA\PAAType.cs" />
+    <Compile Include="BIS\PAA\Palette.cs" />
+    <Compile Include="BIS\PAA\PixelFormatConversion.cs" />
     <Compile Include="BreachingCharge\BreachingChargeSettigns.cs" />
     <Compile Include="Cannabisplus\CannabisPlus.cs" />
+    <Compile Include="CapareWorkBench\CapareWorkBench.cs" />
     <Compile Include="CarePackagev2\CarePackagev2.cs" />
     <Compile Include="CJ187LootTable\LootChestTable.cs" />
     <Compile Include="Controls\ExpansionLootControl.cs">
@@ -93,17 +117,7 @@
     <Compile Include="Controls\ExpansionQuestAISpawnControl.Designer.cs">
       <DependentUpon>ExpansionQuestAISpawnControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="DNAKeycards\DNA_Keycards.cs" />
-    <Compile Include="DNAKeycards\Loot\DNA_CrateSmol_Data.cs" />
-    <Compile Include="DNAKeycards\Loot\KeyCard_Clothing_Config.cs" />
-    <Compile Include="DNAKeycards\Loot\KeyCard_General_Config.cs" />
-    <Compile Include="DNAKeycards\Loot\KeyCard_Weapons_Config.cs" />
-    <Compile Include="DNAKeycards\System\CrateSmol_TimerSettings.cs" />
-    <Compile Include="DNAKeycards\System\NewDoors_AlarmsAndNotifications.cs" />
-    <Compile Include="DNAKeycards\System\DNA_ResetTimer_Settings.cs" />
-    <Compile Include="DNAKeycards\System\KeyCard_LootContainers_System_Config.cs" />
-    <Compile Include="DNAKeycards\System\KeyCard_Main_System_Config.cs" />
-    <Compile Include="DNAKeycards\System\KeyCard_Mob_System_Config.cs" />
+    <Compile Include="DDS\DDS.cs" />
     <Compile Include="DRJonesTrader\DrJonesAdmins.cs" />
     <Compile Include="DRJonesTrader\DrJonesObjects.cs" />
     <Compile Include="DRJonesTrader\DrJonesTrader.cs" />
@@ -215,10 +229,6 @@
     <Compile Include="Helper\Helper.cs" />
     <Compile Include="Helper\Project.cs" />
     <Compile Include="Helper\XYZMapping.cs" />
-    <Compile Include="Inedia\InediaAdminsConfig.cs" />
-    <Compile Include="Inedia\InediaInfectedAIConfig.cs" />
-    <Compile Include="Inedia\InediaMovementConfig.cs" />
-    <Compile Include="Inedia\InediaStaminaConfig.cs" />
     <Compile Include="KingOfTheHill\KOTH.cs" />
     <Compile Include="KOSZone\KOSZone.cs" />
     <Compile Include="LootPool\CapareLootPool.cs" />

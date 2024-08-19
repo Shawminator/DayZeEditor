@@ -30,7 +30,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.8.1.1";
+        public string VersionNumber = "0.8.1.5";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -474,6 +474,11 @@ namespace DayZeEditor
                 else
                     AdvancedWorkbenchButton.Visible = false;
 
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\Capare_Workbench\\CapareWorkBenchConfig.json"))
+                    CapareWorkBenchManagerButton.Visible = true;
+                else
+                    CapareWorkBenchManagerButton.Visible = false;
+
                 if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\MagicCrateManagerSettings.json"))
                     MysteryBoxButton.Visible = true;
                 else
@@ -488,24 +493,6 @@ namespace DayZeEditor
                     UtopiaAirdropButton.Visible = true;
                 else
                     UtopiaAirdropButton.Visible = false;
-
-                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\Inedia\\InediaInfectedAIConfig.json") ||
-                    File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\Inedia\\InediaMovementConfig.xml")||
-                    File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\Inedia\\InediaStaminaConfig.xml"))
-                    InediaButton.Visible = true;
-                else
-                    InediaButton.Visible = false;
-
-                //if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\CaptureTheFlag\\CTFConfig\\CTFConfig.json"))
-                //    UtopiaAirdropButton.Visible = true;
-                //else
-                //    UtopiaAirdropButton.Visible = false;
-
-                // Cant be arsed with this, fucking stupid config........
-                //if (Directory.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\DNA_Keycards"))
-                //    DNAKeyCardsButton.Visible = true;
-                //else
-                //    DNAKeyCardsButton.Visible = false;
             }
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -1118,9 +1105,9 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
-        private void DNAKeyCardsButton_Click(object sender, EventArgs e)
+        private void CapareWorkBenchManagerButton_Click(object sender, EventArgs e)
         {
-            DNAKeyCardsManager _TM = Application.OpenForms["DNAKeyCardsManager"] as DNAKeyCardsManager;
+            CapareWorkBenchManager _TM = Application.OpenForms["CapareWorkBenchManager"] as CapareWorkBenchManager;
             if (_TM != null)
             {
                 _TM.WindowState = FormWindowState.Normal;
@@ -1130,7 +1117,7 @@ namespace DayZeEditor
             else
             {
                 closemdichildren();
-                _TM = new DNAKeyCardsManager
+                _TM = new CapareWorkBenchManager
                 {
                     MdiParent = this,
                     Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
@@ -1140,11 +1127,12 @@ namespace DayZeEditor
 
                 };
                 _TM.Show();
-                Console.WriteLine("loading DNAKeyCards manager....");
-                label1.Text = "DNA Keycards manager";
+                Console.WriteLine("loading capareWorkBenchManager manager....");
+                label1.Text = "Capare Workbench manager";
             }
             timer1.Start();
         }
+
         private void UtopiaAirdropButton_Click(object sender, EventArgs e)
         {
             UtopiaAirdropManager _TM = Application.OpenForms["UtopiaAirdropManager"] as UtopiaAirdropManager;
@@ -1280,9 +1268,9 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
-        private void InediaButton_Click(object sender, EventArgs e)
+        private void toolStripButton2_Click_1(object sender, EventArgs e)
         {
-            InediaManager _TM = Application.OpenForms["InediaManager"] as InediaManager;
+            ImageConvertor _TM = Application.OpenForms["ImageConvertor"] as ImageConvertor;
             if (_TM != null)
             {
                 _TM.WindowState = FormWindowState.Normal;
@@ -1292,20 +1280,21 @@ namespace DayZeEditor
             else
             {
                 closemdichildren();
-                _TM = new InediaManager
+                _TM = new ImageConvertor
                 {
                     MdiParent = this,
                     Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
                     Location = new System.Drawing.Point(30, 0),
                     Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
-                    currentproject = Projects.getActiveProject()
 
                 };
                 _TM.Show();
-                Console.WriteLine("loadingSpawner Inedia Mods Manager....");
-                label1.Text = "Inedia Mods Manager";
+                Console.WriteLine("loading Image Convertor....");
+                label1.Text = "Image Convertor";
             }
             timer1.Start();
+            
+
         }
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
@@ -1328,7 +1317,23 @@ namespace DayZeEditor
                 }
             }
         }
-        private void dzetoobjectspawnerButton_Click(object sender, EventArgs e)
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Properties.Settings.Default.FormState = this.WindowState;
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                Properties.Settings.Default.FormLocation = this.Location;
+                Properties.Settings.Default.FormSize = this.Size;
+            }
+            else
+            {
+                Properties.Settings.Default.FormLocation = this.RestoreBounds.Location;
+                Properties.Settings.Default.FormSize = this.RestoreBounds.Size;
+            }
+            Properties.Settings.Default.ShowConsole = checkBox1.Checked;
+            Properties.Settings.Default.Save();
+        }
+        private void toolStripButton1_Click_1(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
@@ -1367,22 +1372,6 @@ namespace DayZeEditor
 
                 }
             }
-        }
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Properties.Settings.Default.FormState = this.WindowState;
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                Properties.Settings.Default.FormLocation = this.Location;
-                Properties.Settings.Default.FormSize = this.Size;
-            }
-            else
-            {
-                Properties.Settings.Default.FormLocation = this.RestoreBounds.Location;
-                Properties.Settings.Default.FormSize = this.RestoreBounds.Size;
-            }
-            Properties.Settings.Default.ShowConsole = checkBox1.Checked;
-            Properties.Settings.Default.Save();
         }
     }
 }

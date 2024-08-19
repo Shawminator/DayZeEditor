@@ -375,6 +375,72 @@ namespace DayZeLib
 
             return result;
         }
+        public static short SwapEndian(short x)
+        {
+            byte b = (byte)(x & 255);
+            return (short)((int)((byte)(((int)x & 65280) >> 8)) + (int)b * 256);
+        }
+        public static ushort SwapEndian(ushort x)
+        {
+            byte b = (byte)(x & 255);
+            return (ushort)((int)((byte)((x & 65280) >> 8)) + (int)b * 256);
+        }
+        public static int SwapEndian(int x)
+        {
+            int num = x & 255;
+            x >>= 8;
+            int num2 = num * 256 + (x & 255);
+            x >>= 8;
+            int num3 = num2 * 256 + (x & 255);
+            x >>= 8;
+            return num3 * 256 + (x & 255);
+        }
+        public static uint SwapEndian(uint x)
+        {
+            uint num = x & 255u;
+            x >>= 8;
+            uint num2 = num * 256u + (x & 255u);
+            x >>= 8;
+            uint num3 = num2 * 256u + (x & 255u);
+            x >>= 8;
+            return num3 * 256u + (x & 255u);
+        }
+        public static long SwapEndian(long x)
+        {
+            long num = x & 255L;
+            x >>= 8;
+            long num2 = num * 256L + (x & 255L);
+            x >>= 8;
+            long num3 = num2 * 256L + (x & 255L);
+            x >>= 8;
+            long num4 = num3 * 256L + (x & 255L);
+            x >>= 8;
+            long num5 = num4 * 256L + (x & 255L);
+            x >>= 8;
+            long num6 = num5 * 256L + (x & 255L);
+            x >>= 8;
+            long num7 = num6 * 256L + (x & 255L);
+            x >>= 8;
+            return num7 * 256L + (x & 255L);
+        }
+        public static ulong SwapEndian(ulong x)
+        {
+            ulong num = x & 255uL;
+            x >>= 8;
+            ulong num2 = num * 256uL + (x & 255uL);
+            x >>= 8;
+            ulong num3 = num2 * 256uL + (x & 255uL);
+            x >>= 8;
+            ulong num4 = num3 * 256uL + (x & 255uL);
+            x >>= 8;
+            ulong num5 = num4 * 256uL + (x & 255uL);
+            x >>= 8;
+            ulong num6 = num5 * 256uL + (x & 255uL);
+            x >>= 8;
+            ulong num7 = num6 * 256uL + (x & 255uL);
+            x >>= 8;
+            return num7 * 256uL + (x & 255uL);
+        }
         public static bool checkver(int ConfigVersion, int m_currentConfigVersion)
         {
             if (ConfigVersion != m_currentConfigVersion)

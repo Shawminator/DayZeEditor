@@ -70,6 +70,9 @@ namespace DayZeEditor
         {
             InitializeComponent();
         }
+        ~ExpansionAI()
+        {
+        }
         private void ExpansionAI_Load(object sender, EventArgs e)
         {
             vanillatypes = currentproject.getvanillatypes();
@@ -145,6 +148,7 @@ namespace DayZeEditor
             SetupAIPatrolSettings();
 
             MapData = new MapData(Application.StartupPath + currentproject.MapPath + ".xyz");
+            //MapData.loadpoints();
 
             pictureBox2.BackgroundImage = Image.FromFile(Application.StartupPath + currentproject.MapPath); // Livonia maop size is 12800 x 12800, 0,0 bottom left, center 6400 x 6400
             pictureBox2.Size = new Size(currentproject.MapSize, currentproject.MapSize);
@@ -288,6 +292,8 @@ namespace DayZeEditor
                     savefiles();
                 }
             }
+            Form form = sender as Form;
+            form.MdiParent = null;
         }
         private void SetupFactionsDropDownBoxes()
         {
@@ -748,6 +754,7 @@ namespace DayZeEditor
             CrashChanceNUD.Value = CurrentEventcrashpatrol.Chance;
             CrashDamageReceivedMultiplierNUD.Value = CurrentEventcrashpatrol.DamageReceivedMultiplier;
             CrashCanBeLootedCB.Checked = CurrentEventcrashpatrol.CanBeLooted == 1 ? true : false;
+            CrashCanBeTriggeredByAICB.Checked = CurrentEventcrashpatrol.CanBeTriggeredByAI == 1 ? true : false;
             CrashLoadoutFileCB.SelectedIndex = CrashLoadoutFileCB.FindStringExact(CurrentEventcrashpatrol.Loadout);
             CrashFormationCB.SelectedIndex = CrashFormationCB.FindStringExact(CurrentEventcrashpatrol.Formation);
             CrashWaypointInterpolationCB.SelectedIndex = CrashWaypointInterpolationCB.FindStringExact(CurrentEventcrashpatrol.WaypointInterpolation);
@@ -842,6 +849,12 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             CurrentEventcrashpatrol.NumberOfAI = (int)CrashNumberOfAINUD.Value;
+            AIPatrolSettings.isDirty = true;
+        }
+        private void CrashCanBeTriggeredByAICB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentEventcrashpatrol.CanBeTriggeredByAI = CrashCanBeTriggeredByAICB.Checked == true ? 1 : 0;
             AIPatrolSettings.isDirty = true;
         }
         private void CrashBehaviourCB_SelectedIndexChanged(object sender, EventArgs e)
@@ -1053,6 +1066,7 @@ namespace DayZeEditor
             StaticPatrolFormationLoosenessNUD.Value = CurrentPatrol.FormationLooseness;
             StaticPatrolWaypointInterpolationCB.SelectedIndex = StaticPatrolWaypointInterpolationCB.FindStringExact(CurrentPatrol.WaypointInterpolation);
             StaticPatrolUseRandomWaypointAsStartPointCB.Checked = CurrentPatrol.UseRandomWaypointAsStartPoint == 1 ? true : false;
+            StaticPatrolCanBeTriggeredByAICB.Checked = CurrentPatrol.CanBeTriggeredByAI == 1 ? true : false;
             StaticPatrolNoiseInvestigationDistanceLimitNUD.Value = CurrentPatrol.NoiseInvestigationDistanceLimit;
             int StaticPatrolUnlimitedReloadBitmask = CurrentPatrol.UnlimitedReload;
             if (StaticPatrolUnlimitedReloadBitmask == 1)
@@ -1353,6 +1367,12 @@ namespace DayZeEditor
             if (StaticPatrolUnlimitedReloadBitmask == 30)
                 StaticPatrolUnlimitedReloadBitmask = 1;
             CurrentPatrol.UnlimitedReload = StaticPatrolUnlimitedReloadBitmask;
+            AIPatrolSettings.isDirty = true;
+        }
+        private void StaticPatrolCanBeTriggeredByAICB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPatrol.CanBeTriggeredByAI = StaticPatrolCanBeTriggeredByAICB.Checked == true ? 1 : 0;
             AIPatrolSettings.isDirty = true;
         }
         private void darkButton4_Click(object sender, EventArgs e)

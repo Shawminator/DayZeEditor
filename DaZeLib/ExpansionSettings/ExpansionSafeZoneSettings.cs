@@ -5,7 +5,7 @@ namespace DayZeLib
 {
     public class ExpansionSafeZoneSettings
     {
-        const int CurrentVersion = 10;
+        const int CurrentVersion = 11;
 
         public int m_Version { get; set; }
         public int Enabled { get; set; }
@@ -14,6 +14,7 @@ namespace DayZeLib
         public BindingList<ExpansionSafeZonePolygon> PolygonZones { get; set; }
         public BindingList<ExpansionSafeZoneCylinder> CylinderZones { get; set; }
         public int ActorsPerTick { get; set; }
+        public int DisablePlayerCollision { get; set; }
         public int DisableVehicleDamageInSafeZone { get; set; }
         public int EnableForceSZCleanup { get; set; }
         public decimal ItemLifetimeInSafeZone { get; set; }
@@ -31,6 +32,7 @@ namespace DayZeLib
         {
             m_Version = CurrentVersion;
             Enabled = 1;
+            DisablePlayerCollision = 0;
             DisableVehicleDamageInSafeZone = 1;
             FrameRateCheckSafeZoneInMs = 0;
             ActorsPerTick = 5;

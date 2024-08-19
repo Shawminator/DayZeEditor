@@ -283,6 +283,8 @@ namespace DayZeLib
 
         public int pointId { get; set; }
         public int isDebugEnabled { get; set; }
+        public int isDisabled { get; set; }
+        public int showVisualisation { get; set; }
         public string notificationTitle { get; set; }
         public string notificationTextEnter { get; set; }
         public string notificationTextExit { get; set; }

@@ -21,7 +21,7 @@ namespace DayZeEditor
         public TypesFile vanillatypes;
         public TypesFile Expansiontypes;
         public List<TypesFile> ModTypes;
-        public string MPGSpawnexConfigPath { get; private set; }
+        public string MPGSpawnexConfigPath { get; set; }
         public string MPG_Spawner_PointsConfigPath { get; set; }
         public MPG_SPWNR_ModConfig MPG_SPWNR_ModConfig;
         public MPG_Spawner_PointsConfig currentSpawnerPointsFile { get; set; }
@@ -29,6 +29,8 @@ namespace DayZeEditor
 
         public Random random = new Random();
         public Vec3PandR currentspawnPosition { get; set; }
+        public string CurrentPointConfigSpawnEntity { get; set; }
+
         public bool useraction = false;
         protected override CreateParams CreateParams
         {
@@ -319,7 +321,7 @@ namespace DayZeEditor
             PointConfigisDebugEnabledCB.Checked = currentSpawnerPoint.isDebugEnabled == 1 ? true : false;
             PointConfigWorkingHoursStartNUD.Value = currentSpawnerPoint.getworkinghours()[0];
             PointConfigWorkingHoursEndNUD.Value = currentSpawnerPoint.getworkinghours()[1];
-
+            PointConfigshowVisualisationCB.Checked = currentSpawnerPoint.showVisualisation == 1 ? true : false;
             PointConfigNotificationTitleTB.Text = currentSpawnerPoint.notificationTitle;
             PointConfigNotificationTextEnterTB.Text = currentSpawnerPoint.notificationTextEnter;
             PointConfigNotificationTextExitTB.Text = currentSpawnerPoint.notificationTextExit;
@@ -462,6 +464,12 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             currentSpawnerPoint.isDebugEnabled = PointConfigisDebugEnabledCB.Checked == true ? 1 : 0;
+            currentSpawnerPointsFile.isDirty = true;
+        }
+        private void PointConfigshowVisualisationCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentSpawnerPoint.showVisualisation = PointConfigshowVisualisationCB.Checked == true ? 1 : 0;
             currentSpawnerPointsFile.isDirty = true;
         }
         private void PointConfigSetWorkingHours_ValueChanged(object sender, EventArgs e)
@@ -987,6 +995,21 @@ namespace DayZeEditor
             {
                 currentSpawnerPoint.spawnList.Remove(bubac);
             }
+            currentSpawnerPointsFile.isDirty = true;
+        }
+        private void PointConfigSpawnListLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (PointConfigSpawnListLB.SelectedItems.Count < 1) return;
+            CurrentPointConfigSpawnEntity = currentSpawnerPoint.spawnList[PointConfigSpawnListLB.SelectedIndex];
+            useraction = false;
+            PointConfigSpawnListTB.Text = CurrentPointConfigSpawnEntity;
+            useraction = true;
+        }
+        private void PointConfigSpawnListTB_TextChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentSpawnerPoint.spawnList[PointConfigSpawnListLB.SelectedIndex] = PointConfigSpawnListTB.Text;
+            PointConfigSpawnListLB.Invalidate();
             currentSpawnerPointsFile.isDirty = true;
         }
 

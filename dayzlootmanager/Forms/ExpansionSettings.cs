@@ -16,6 +16,7 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Windows.Forms;
+using static System.Windows.Forms.Design.AxImporter;
 
 namespace DayZeEditor
 {
@@ -605,8 +606,12 @@ namespace DayZeEditor
             }
             else
             {
+                var options = new JsonSerializerOptions
+                {
+                    Converters = { new BoolConverter() },
+                };
                 Console.WriteLine("serializing " + Path.GetFileName(NotificationssettingsPath));
-                NotificationSettings = JsonSerializer.Deserialize<ExpansionNotificationSettings>(File.ReadAllText(NotificationssettingsPath));
+                NotificationSettings = JsonSerializer.Deserialize<ExpansionNotificationSettings>(File.ReadAllText(NotificationssettingsPath), options);
                 NotificationSettings.isDirty = false;
                 if (NotificationSettings.checkver())
                     needtosave = true;
@@ -1057,7 +1062,12 @@ namespace DayZeEditor
             midifiedfiles.Add(Path.GetFileName(NotificationSchedulerSettings.Filename));
 
             NotificationSettings.isDirty = false;
-            options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            options = new JsonSerializerOptions
+            {
+                Converters = { new BoolConverter() },
+                WriteIndented = true,
+                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+            };
             jsonString = JsonSerializer.Serialize(NotificationSettings, options);
             File.WriteAllText(NotificationSettings.Filename, jsonString);
             midifiedfiles.Add(Path.GetFileName(NotificationSettings.Filename));
@@ -1426,7 +1436,12 @@ namespace DayZeEditor
             if (NotificationSettings.isDirty)
             {
                 NotificationSettings.isDirty = false;
-                var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+                var options = new JsonSerializerOptions
+                {
+                    Converters = { new BoolConverter() },
+                    WriteIndented = true,
+                    Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+                };
                 string jsonString = JsonSerializer.Serialize(NotificationSettings, options);
                 if (currentproject.Createbackups && File.Exists(NotificationSettings.Filename))
                 {
@@ -3474,6 +3489,7 @@ namespace DayZeEditor
 
             DisableShootToUnlockCB.Checked = GeneralSettings.DisableShootToUnlock == 1 ? true : false;
             EnableGravecrossCB.Checked = GeneralSettings.EnableGravecross == 1 ? true : false;
+            EnableAIGravecrossCB.Checked = GeneralSettings.EnableAIGravecross == 1 ? true : false;
             GravecrossDeleteBodyCB.Checked = GeneralSettings.GravecrossDeleteBody == 1 ? true : false;
             GravecrossTimeThresholdNUD.Value = GeneralSettings.GravecrossTimeThreshold;
             GravecrossSpawnTimeDelayNUD.Value = GeneralSettings.GravecrossSpawnTimeDelay;
@@ -5586,77 +5602,85 @@ namespace DayZeEditor
             JoinMessageTypeCB.DataSource = Enum.GetValues(typeof(ExpansionAnnouncementType));
             LeftMessageTypeCB.DataSource = Enum.GetValues(typeof(ExpansionAnnouncementType));
             KillFeedMessageTypeCB.DataSource = Enum.GetValues(typeof(ExpansionAnnouncementType));
-            EnableNotificationCB.Checked = NotificationSettings.EnableNotification == 1 ? true : false;
-            ShowPlayerJoinServerCB.Checked = NotificationSettings.ShowPlayerJoinServer == 1 ? true : false;
+
+            EnableNotificationCB.Checked = NotificationSettings.EnableNotification;
+            ShowPlayerJoinServerCB.Checked = NotificationSettings.ShowPlayerJoinServer;
             JoinMessageTypeCB.SelectedItem = (ExpansionAnnouncementType)NotificationSettings.JoinMessageType;
-            ShowPlayerLeftServerCB.Checked = NotificationSettings.ShowPlayerLeftServer == 1 ? true : false;
+            ShowPlayerLeftServerCB.Checked = NotificationSettings.ShowPlayerLeftServer;
             LeftMessageTypeCB.SelectedItem = (ExpansionAnnouncementType)NotificationSettings.LeftMessageType;
-            ShowAirdropStartedCB.Checked = NotificationSettings.ShowAirdropStarted == 1 ? true : false;
-            ShowAirdropClosingOnCB.Checked = NotificationSettings.ShowAirdropClosingOn == 1 ? true : false;
-            ShowAirdropDroppedCB.Checked = NotificationSettings.ShowAirdropDropped == 1 ? true : false;
-            ShowAirdropEndedCB.Checked = NotificationSettings.ShowAirdropEnded == 1 ? true : false;
-            ShowPlayerAirdropStartedCB.Checked = NotificationSettings.ShowPlayerAirdropStarted == 1 ? true : false;
-            ShowPlayerAirdropClosingOnCB.Checked = NotificationSettings.ShowPlayerAirdropClosingOn == 1 ? true : false;
-            ShowPlayerAirdropDroppedCB.Checked = NotificationSettings.ShowPlayerAirdropDropped == 1 ? true : false;
-            ShowTerritoryNotificationsCB.Checked = NotificationSettings.ShowTerritoryNotifications == 1 ? true : false;
-            EnableKillFeedCB.Checked = NotificationSettings.EnableKillFeed == 1 ? true : false;
+
+            ShowAirdropStartedCB.Checked = NotificationSettings.ShowAirdropStarted;
+            ShowAirdropClosingOnCB.Checked = NotificationSettings.ShowAirdropClosingOn;
+            ShowAirdropDroppedCB.Checked = NotificationSettings.ShowAirdropDropped;
+            ShowAirdropEndedCB.Checked = NotificationSettings.ShowAirdropEnded;
+
+            ShowPlayerAirdropStartedCB.Checked = NotificationSettings.ShowPlayerAirdropStarted;
+            ShowPlayerAirdropClosingOnCB.Checked = NotificationSettings.ShowPlayerAirdropClosingOn;
+            ShowPlayerAirdropDroppedCB.Checked = NotificationSettings.ShowPlayerAirdropDropped;
+
+            ShowTerritoryNotificationsCB.Checked = NotificationSettings.ShowTerritoryNotifications;
+
+            EnableKillFeedCB.Checked = NotificationSettings.EnableKillFeed;
             KillFeedMessageTypeCB.SelectedItem = (ExpansionAnnouncementType)NotificationSettings.KillFeedMessageType;
-            KillFeedFallCB.Checked = NotificationSettings.KillFeedFall == 1 ? true : false;
-            KillFeedCarHitDriverCB.Checked = NotificationSettings.KillFeedCarHitDriver == 1 ? true : false;
-            KillFeedCarHitNoDriverCB.Checked = NotificationSettings.KillFeedCarHitNoDriver == 1 ? true : false;
-            KillFeedCarCrashCB.Checked = NotificationSettings.KillFeedCarCrash == 1 ? true : false;
-            KillFeedCarCrashCrewCB.Checked = NotificationSettings.KillFeedCarCrashCrew == 1 ? true : false;
-            KillFeedHeliHitDriverCB.Checked = NotificationSettings.KillFeedHeliHitDriver == 1 ? true : false;
-            KillFeedHeliHitNoDriverCB.Checked = NotificationSettings.KillFeedHeliHitNoDriver == 1 ? true : false;
-            KillFeedHeliCrashCB.Checked = NotificationSettings.KillFeedHeliCrash == 1 ? true : false;
-            KillFeedHeliCrashCrewCB.Checked = NotificationSettings.KillFeedHeliCrashCrew == 1 ? true : false;
-            KillFeedBoatHitDriverCB.Checked = NotificationSettings.KillFeedBoatHitDriver == 1 ? true : false;
-            KillFeedBoatHitNoDriverCB.Checked = NotificationSettings.KillFeedBoatHitNoDriver == 1 ? true : false;
-            KillFeedBoatCrashCB.Checked = NotificationSettings.KillFeedBoatCrash == 1 ? true : false;
-            KillFeedBoatCrashCrewCB.Checked = NotificationSettings.KillFeedBoatCrashCrew == 1 ? true : false;
-            KillFeedBarbedWireCB.Checked = NotificationSettings.KillFeedBarbedWire == 1 ? true : false;
-            KillFeedFireCB.Checked = NotificationSettings.KillFeedFire == 1 ? true : false;
-            KillFeedWeaponExplosionCB.Checked = NotificationSettings.KillFeedWeaponExplosion == 1 ? true : false;
-            KillFeedDehydrationCB.Checked = NotificationSettings.KillFeedDehydration == 1 ? true : false;
-            KillFeedStarvationCB.Checked = NotificationSettings.KillFeedStarvation == 1 ? true : false;
-            KillFeedBleedingCB.Checked = NotificationSettings.KillFeedBleeding == 1 ? true : false;
-            KillFeedStatusEffectsCB.Checked = NotificationSettings.KillFeedStatusEffects == 1 ? true : false;
-            KillFeedSuicideCB.Checked = NotificationSettings.KillFeedSuicide == 1 ? true : false;
-            KillFeedWeaponCB.Checked = NotificationSettings.KillFeedWeapon == 1 ? true : false;
-            KillFeedMeleeWeaponCB.Checked = NotificationSettings.KillFeedMeleeWeapon == 1 ? true : false;
-            KillFeedBarehandsCB.Checked = NotificationSettings.KillFeedBarehands == 1 ? true : false;
-            KillFeedInfectedCB.Checked = NotificationSettings.KillFeedInfected == 1 ? true : false;
-            KillFeedAnimalCB.Checked = NotificationSettings.KillFeedAnimal == 1 ? true : false;
-            KillFeedKilledUnknownCB.Checked = NotificationSettings.KillFeedKilledUnknown == 1 ? true : false;
-            KillFeedDiedUnknownCB.Checked = NotificationSettings.KillFeedDiedUnknown == 1 ? true : false;
+            KillFeedFallCB.Checked = NotificationSettings.KillFeedFall;
+            KillFeedCarHitDriverCB.Checked = NotificationSettings.KillFeedCarHitDriver;
+            KillFeedCarHitNoDriverCB.Checked = NotificationSettings.KillFeedCarHitNoDriver;
+            KillFeedCarCrashCB.Checked = NotificationSettings.KillFeedCarCrash;
+            KillFeedCarCrashCrewCB.Checked = NotificationSettings.KillFeedCarCrashCrew;
+
+            KillFeedHeliHitDriverCB.Checked = NotificationSettings.KillFeedHeliHitDriver;
+            KillFeedHeliHitNoDriverCB.Checked = NotificationSettings.KillFeedHeliHitNoDriver;
+            KillFeedHeliCrashCB.Checked = NotificationSettings.KillFeedHeliCrash;
+            KillFeedHeliCrashCrewCB.Checked = NotificationSettings.KillFeedHeliCrashCrew;
+            KillFeedBoatHitDriverCB.Checked = NotificationSettings.KillFeedBoatHitDriver;
+            KillFeedBoatHitNoDriverCB.Checked = NotificationSettings.KillFeedBoatHitNoDriver;
+            KillFeedBoatCrashCB.Checked = NotificationSettings.KillFeedBoatCrash;
+            KillFeedBoatCrashCrewCB.Checked = NotificationSettings.KillFeedBoatCrashCrew;
+
+            KillFeedBarbedWireCB.Checked = NotificationSettings.KillFeedBarbedWire;
+            KillFeedFireCB.Checked = NotificationSettings.KillFeedFire;
+            KillFeedWeaponExplosionCB.Checked = NotificationSettings.KillFeedWeaponExplosion;
+            KillFeedDehydrationCB.Checked = NotificationSettings.KillFeedDehydration;
+            KillFeedStarvationCB.Checked = NotificationSettings.KillFeedStarvation;
+            KillFeedBleedingCB.Checked = NotificationSettings.KillFeedBleeding;
+            KillFeedStatusEffectsCB.Checked = NotificationSettings.KillFeedStatusEffects;
+            KillFeedSuicideCB.Checked = NotificationSettings.KillFeedSuicide;
+            KillFeedWeaponCB.Checked = NotificationSettings.KillFeedWeapon;
+            KillFeedMeleeWeaponCB.Checked = NotificationSettings.KillFeedMeleeWeapon;
+            KillFeedBarehandsCB.Checked = NotificationSettings.KillFeedBarehands;
+            KillFeedInfectedCB.Checked = NotificationSettings.KillFeedInfected;
+            KillFeedAnimalCB.Checked = NotificationSettings.KillFeedAnimal;
+            KillFeedAICB.Checked = NotificationSettings.KillFeedAI;
+            KillFeedKilledUnknownCB.Checked = NotificationSettings.KillFeedKilledUnknown;
+            KillFeedDiedUnknownCB.Checked = NotificationSettings.KillFeedDiedUnknown;
             useraction = true;
         }
         private void NotificationCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
             CheckBox cb = sender as CheckBox;
-            NotificationSettings.SetIntValue(cb.Name.Substring(0, cb.Name.Length - 2), cb.Checked == true ? 1 : 0);
+            NotificationSettings.SetBoolValue(cb.Name.Substring(0, cb.Name.Length - 2), cb.Checked);
             NotificationSettings.isDirty = true;
         }
         private void JoinMessageTypeCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
             ExpansionAnnouncementType cacl = (ExpansionAnnouncementType)JoinMessageTypeCB.SelectedItem;
-            NotificationSettings.JoinMessageType = (int)cacl;
+            NotificationSettings.JoinMessageType = cacl;
             NotificationSettings.isDirty = true;
         }
         private void LeftMessageTypeCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
             ExpansionAnnouncementType cacl = (ExpansionAnnouncementType)LeftMessageTypeCB.SelectedItem;
-            NotificationSettings.LeftMessageType = (int)cacl;
+            NotificationSettings.LeftMessageType = cacl;
             NotificationSettings.isDirty = true;
         }
         private void KillFeedMessageTypeCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) { return; }
             ExpansionAnnouncementType cacl = (ExpansionAnnouncementType)KillFeedMessageTypeCB.SelectedItem;
-            NotificationSettings.KillFeedMessageType = (int)cacl;
+            NotificationSettings.KillFeedMessageType = cacl;
             NotificationSettings.isDirty = true;
         }
         #endregion notifications
@@ -5683,6 +5707,7 @@ namespace DayZeEditor
             ShowHUDMemberDistanceCB.Checked = PartySettings.ShowHUDMemberDistance == 1 ? true : false;
             ForcePartyToHaveTagsCB.Checked = PartySettings.ForcePartyToHaveTags == 1 ? true : false;
             InviteCooldownNUD.Value = PartySettings.InviteCooldown;
+            DisplayPartyTagCB.Checked = PartySettings.DisplayPartyTag == 1 ? true : false;
             useraction = true;
         }
         private void PartySettingsCB_CheckedChanged(object sender, EventArgs e)
@@ -6071,6 +6096,7 @@ namespace DayZeEditor
 
             EnabledCB.Checked = SafeZoneSettings.Enabled == 1 ? true : false;
             FrameRateCheckSafeZoneInMsNUD.Value = (decimal)SafeZoneSettings.FrameRateCheckSafeZoneInMs;
+            DisablePlayerCollisionCB.Checked = SafeZoneSettings.DisablePlayerCollision == 1 ? true : false;
             DisableVehicleDamageInSafeZoneCB.Checked = SafeZoneSettings.DisableVehicleDamageInSafeZone == 1 ? true : false;
             EnableForceSZCleanupCB.Checked = SafeZoneSettings.EnableForceSZCleanup == 1 ? true : false;
             ItemLifetimeInSafeZoneNUD.Value = (decimal)SafeZoneSettings.ItemLifetimeInSafeZone;
@@ -6287,6 +6313,13 @@ namespace DayZeEditor
             SafeZoneSettings.DisableVehicleDamageInSafeZone = DisableVehicleDamageInSafeZoneCB.Checked == true ? 1 : 0;
             SafeZoneSettings.isDirty = true;
 
+        }
+
+        private void DisablePlayerCollisionCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            SafeZoneSettings.DisablePlayerCollision = DisablePlayerCollisionCB.Checked == true ? 1 : 0;
+            SafeZoneSettings.isDirty = true;
         }
         private void EnabledCB_CheckedChanged(object sender, EventArgs e)
         {
@@ -8035,6 +8068,7 @@ namespace DayZeEditor
             TerritoryInviteAcceptRadiusTNUD.Value = TerritorySettings.TerritoryInviteAcceptRadius;
             AuthenticateCodeLockIfTerritoryMemberTCB.Checked = TerritorySettings.AuthenticateCodeLockIfTerritoryMember == 1 ? true : false;
             TerritoryInviteCooldownNUD.Value = TerritorySettings.InviteCooldown;
+            OnlyInviteGroupMemberTCB.Checked = TerritorySettings.OnlyInviteGroupMember == 1 ? true : false;
             useraction = true;
         }
         private void TerritoriesTCB_CheckedChanged(object sender, EventArgs e)
@@ -9400,6 +9434,7 @@ namespace DayZeEditor
                 currentstoragelevel.ExcludedSlots.Add(Slot);
             PersonalStorageSettingsNew.isDirty = true;
         }
+
 
 
 

@@ -52,6 +52,10 @@ namespace DayZeEditor
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.FlowPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.PointConfigshowVisualisationCB = new System.Windows.Forms.CheckBox();
+            this.darkLabel61 = new DarkUI.Controls.DarkLabel();
+            this.PointConfigisDisabledCB = new System.Windows.Forms.CheckBox();
+            this.darkLabel60 = new DarkUI.Controls.DarkLabel();
             this.darkLabel2 = new DarkUI.Controls.DarkLabel();
             this.PointConfigisDebugEnabledCB = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -94,12 +98,18 @@ namespace DayZeEditor
             this.PointConfigtriggerSafeDistanceNUD = new System.Windows.Forms.NumericUpDown();
             this.darkLabel40 = new DarkUI.Controls.DarkLabel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.PointConfigtriggerHeightTB = new System.Windows.Forms.TextBox();
             this.darkLabel34 = new DarkUI.Controls.DarkLabel();
             this.darkLabel32 = new DarkUI.Controls.DarkLabel();
+            this.PointConfigtriggerradiusTB = new System.Windows.Forms.TextBox();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.PointConfigtriggerCooldownTB = new System.Windows.Forms.TextBox();
+            this.PointConfigtriggerFirstDelayTB = new System.Windows.Forms.TextBox();
             this.darkLabel38 = new DarkUI.Controls.DarkLabel();
             this.darkLabel36 = new DarkUI.Controls.DarkLabel();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.PointConfigtriggerWidthYTB = new System.Windows.Forms.TextBox();
+            this.PointConfigtriggerWidthXTB = new System.Windows.Forms.TextBox();
             this.darkLabel35 = new DarkUI.Controls.DarkLabel();
             this.darkLabel33 = new DarkUI.Controls.DarkLabel();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -237,12 +247,7 @@ namespace DayZeEditor
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
             this.panel17 = new System.Windows.Forms.Panel();
-            this.PointConfigtriggerradiusTB = new System.Windows.Forms.TextBox();
-            this.PointConfigtriggerHeightTB = new System.Windows.Forms.TextBox();
-            this.PointConfigtriggerWidthXTB = new System.Windows.Forms.TextBox();
-            this.PointConfigtriggerWidthYTB = new System.Windows.Forms.TextBox();
-            this.PointConfigtriggerFirstDelayTB = new System.Windows.Forms.TextBox();
-            this.PointConfigtriggerCooldownTB = new System.Windows.Forms.TextBox();
+            this.PointConfigSpawnListTB = new System.Windows.Forms.TextBox();
             this.darkToolStrip21.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.configVersionNUD)).BeginInit();
@@ -605,12 +610,57 @@ namespace DayZeEditor
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.PointConfigshowVisualisationCB);
+            this.panel1.Controls.Add(this.darkLabel61);
+            this.panel1.Controls.Add(this.PointConfigisDisabledCB);
+            this.panel1.Controls.Add(this.darkLabel60);
             this.panel1.Controls.Add(this.darkLabel2);
             this.panel1.Controls.Add(this.PointConfigisDebugEnabledCB);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(457, 20);
             this.panel1.TabIndex = 250;
+            // 
+            // PointConfigshowVisualisationCB
+            // 
+            this.PointConfigshowVisualisationCB.AutoSize = true;
+            this.PointConfigshowVisualisationCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigshowVisualisationCB.Location = new System.Drawing.Point(428, 3);
+            this.PointConfigshowVisualisationCB.Name = "PointConfigshowVisualisationCB";
+            this.PointConfigshowVisualisationCB.Size = new System.Drawing.Size(15, 14);
+            this.PointConfigshowVisualisationCB.TabIndex = 124;
+            this.PointConfigshowVisualisationCB.UseVisualStyleBackColor = true;
+            this.PointConfigshowVisualisationCB.CheckedChanged += new System.EventHandler(this.PointConfigshowVisualisationCB_CheckedChanged);
+            // 
+            // darkLabel61
+            // 
+            this.darkLabel61.AutoSize = true;
+            this.darkLabel61.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel61.Location = new System.Drawing.Point(330, 2);
+            this.darkLabel61.Name = "darkLabel61";
+            this.darkLabel61.Size = new System.Drawing.Size(93, 13);
+            this.darkLabel61.TabIndex = 123;
+            this.darkLabel61.Text = "show Visualisation";
+            // 
+            // PointConfigisDisabledCB
+            // 
+            this.PointConfigisDisabledCB.AutoSize = true;
+            this.PointConfigisDisabledCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigisDisabledCB.Location = new System.Drawing.Point(267, 3);
+            this.PointConfigisDisabledCB.Name = "PointConfigisDisabledCB";
+            this.PointConfigisDisabledCB.Size = new System.Drawing.Size(15, 14);
+            this.PointConfigisDisabledCB.TabIndex = 122;
+            this.PointConfigisDisabledCB.UseVisualStyleBackColor = true;
+            // 
+            // darkLabel60
+            // 
+            this.darkLabel60.AutoSize = true;
+            this.darkLabel60.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel60.Location = new System.Drawing.Point(169, 2);
+            this.darkLabel60.Name = "darkLabel60";
+            this.darkLabel60.Size = new System.Drawing.Size(58, 13);
+            this.darkLabel60.TabIndex = 121;
+            this.darkLabel60.Text = "is Disabled";
             // 
             // darkLabel2
             // 
@@ -1132,6 +1182,16 @@ namespace DayZeEditor
             this.panel8.Size = new System.Drawing.Size(457, 20);
             this.panel8.TabIndex = 289;
             // 
+            // PointConfigtriggerHeightTB
+            // 
+            this.PointConfigtriggerHeightTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PointConfigtriggerHeightTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigtriggerHeightTB.Location = new System.Drawing.Point(333, 0);
+            this.PointConfigtriggerHeightTB.Name = "PointConfigtriggerHeightTB";
+            this.PointConfigtriggerHeightTB.Size = new System.Drawing.Size(110, 20);
+            this.PointConfigtriggerHeightTB.TabIndex = 260;
+            this.PointConfigtriggerHeightTB.TextChanged += new System.EventHandler(this.PointConfigtriggerHeightTB_TextChanged);
+            // 
             // darkLabel34
             // 
             this.darkLabel34.AutoSize = true;
@@ -1152,6 +1212,16 @@ namespace DayZeEditor
             this.darkLabel32.TabIndex = 237;
             this.darkLabel32.Text = "Trigger Radius";
             // 
+            // PointConfigtriggerradiusTB
+            // 
+            this.PointConfigtriggerradiusTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PointConfigtriggerradiusTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigtriggerradiusTB.Location = new System.Drawing.Point(116, 0);
+            this.PointConfigtriggerradiusTB.Name = "PointConfigtriggerradiusTB";
+            this.PointConfigtriggerradiusTB.Size = new System.Drawing.Size(110, 20);
+            this.PointConfigtriggerradiusTB.TabIndex = 259;
+            this.PointConfigtriggerradiusTB.TextChanged += new System.EventHandler(this.PointConfigtriggerradiusTB_TextChanged);
+            // 
             // panel9
             // 
             this.panel9.Controls.Add(this.PointConfigtriggerCooldownTB);
@@ -1162,6 +1232,26 @@ namespace DayZeEditor
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(457, 20);
             this.panel9.TabIndex = 290;
+            // 
+            // PointConfigtriggerCooldownTB
+            // 
+            this.PointConfigtriggerCooldownTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PointConfigtriggerCooldownTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigtriggerCooldownTB.Location = new System.Drawing.Point(333, -1);
+            this.PointConfigtriggerCooldownTB.Name = "PointConfigtriggerCooldownTB";
+            this.PointConfigtriggerCooldownTB.Size = new System.Drawing.Size(110, 20);
+            this.PointConfigtriggerCooldownTB.TabIndex = 261;
+            this.PointConfigtriggerCooldownTB.TextChanged += new System.EventHandler(this.PointConfigtriggerCooldownTB_TextChanged);
+            // 
+            // PointConfigtriggerFirstDelayTB
+            // 
+            this.PointConfigtriggerFirstDelayTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PointConfigtriggerFirstDelayTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigtriggerFirstDelayTB.Location = new System.Drawing.Point(117, -1);
+            this.PointConfigtriggerFirstDelayTB.Name = "PointConfigtriggerFirstDelayTB";
+            this.PointConfigtriggerFirstDelayTB.Size = new System.Drawing.Size(110, 20);
+            this.PointConfigtriggerFirstDelayTB.TabIndex = 260;
+            this.PointConfigtriggerFirstDelayTB.TextChanged += new System.EventHandler(this.PointConfigtriggerFirstDelayTB_TextChanged);
             // 
             // darkLabel38
             // 
@@ -1193,6 +1283,26 @@ namespace DayZeEditor
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(457, 20);
             this.panel10.TabIndex = 291;
+            // 
+            // PointConfigtriggerWidthYTB
+            // 
+            this.PointConfigtriggerWidthYTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PointConfigtriggerWidthYTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigtriggerWidthYTB.Location = new System.Drawing.Point(333, 0);
+            this.PointConfigtriggerWidthYTB.Name = "PointConfigtriggerWidthYTB";
+            this.PointConfigtriggerWidthYTB.Size = new System.Drawing.Size(110, 20);
+            this.PointConfigtriggerWidthYTB.TabIndex = 261;
+            this.PointConfigtriggerWidthYTB.TextChanged += new System.EventHandler(this.PointConfigtriggerWidthYTB_TextChanged);
+            // 
+            // PointConfigtriggerWidthXTB
+            // 
+            this.PointConfigtriggerWidthXTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PointConfigtriggerWidthXTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigtriggerWidthXTB.Location = new System.Drawing.Point(116, -1);
+            this.PointConfigtriggerWidthXTB.Name = "PointConfigtriggerWidthXTB";
+            this.PointConfigtriggerWidthXTB.Size = new System.Drawing.Size(110, 20);
+            this.PointConfigtriggerWidthXTB.TabIndex = 260;
+            this.PointConfigtriggerWidthXTB.TextChanged += new System.EventHandler(this.PointConfigtriggerWidthXTB_TextChanged);
             // 
             // darkLabel35
             // 
@@ -1584,6 +1694,7 @@ namespace DayZeEditor
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.PointConfigSpawnListTB);
             this.groupBox7.Controls.Add(this.panel6);
             this.groupBox7.Controls.Add(this.panel5);
             this.groupBox7.Controls.Add(this.darkButton12);
@@ -1782,10 +1893,10 @@ namespace DayZeEditor
             // darkButton7
             // 
             this.darkButton7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton7.Location = new System.Drawing.Point(395, 418);
+            this.darkButton7.Location = new System.Drawing.Point(533, 418);
             this.darkButton7.Name = "darkButton7";
             this.darkButton7.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton7.Size = new System.Drawing.Size(132, 23);
+            this.darkButton7.Size = new System.Drawing.Size(218, 23);
             this.darkButton7.TabIndex = 265;
             this.darkButton7.Text = "Remove Selected";
             this.darkButton7.Click += new System.EventHandler(this.darkButton7_Click);
@@ -1807,7 +1918,7 @@ namespace DayZeEditor
             this.darkButton4.Location = new System.Drawing.Point(309, 418);
             this.darkButton4.Name = "darkButton4";
             this.darkButton4.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton4.Size = new System.Drawing.Size(80, 23);
+            this.darkButton4.Size = new System.Drawing.Size(218, 23);
             this.darkButton4.TabIndex = 261;
             this.darkButton4.Text = "Add New";
             this.darkButton4.Click += new System.EventHandler(this.darkButton4_Click);
@@ -1833,9 +1944,10 @@ namespace DayZeEditor
             this.PointConfigSpawnListLB.Location = new System.Drawing.Point(310, 252);
             this.PointConfigSpawnListLB.Name = "PointConfigSpawnListLB";
             this.PointConfigSpawnListLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.PointConfigSpawnListLB.Size = new System.Drawing.Size(217, 160);
+            this.PointConfigSpawnListLB.Size = new System.Drawing.Size(442, 134);
             this.PointConfigSpawnListLB.TabIndex = 260;
             this.PointConfigSpawnListLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.PointConfigSpawnListLB.SelectedIndexChanged += new System.EventHandler(this.PointConfigSpawnListLB_SelectedIndexChanged);
             // 
             // panel15
             // 
@@ -3071,65 +3183,15 @@ namespace DayZeEditor
             this.panel17.Size = new System.Drawing.Size(875, 738);
             this.panel17.TabIndex = 101;
             // 
-            // PointConfigtriggerradiusTB
+            // PointConfigSpawnListTB
             // 
-            this.PointConfigtriggerradiusTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.PointConfigtriggerradiusTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.PointConfigtriggerradiusTB.Location = new System.Drawing.Point(116, 0);
-            this.PointConfigtriggerradiusTB.Name = "PointConfigtriggerradiusTB";
-            this.PointConfigtriggerradiusTB.Size = new System.Drawing.Size(110, 20);
-            this.PointConfigtriggerradiusTB.TabIndex = 259;
-            this.PointConfigtriggerradiusTB.TextChanged += new System.EventHandler(this.PointConfigtriggerradiusTB_TextChanged);
-            // 
-            // PointConfigtriggerHeightTB
-            // 
-            this.PointConfigtriggerHeightTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.PointConfigtriggerHeightTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.PointConfigtriggerHeightTB.Location = new System.Drawing.Point(333, 0);
-            this.PointConfigtriggerHeightTB.Name = "PointConfigtriggerHeightTB";
-            this.PointConfigtriggerHeightTB.Size = new System.Drawing.Size(110, 20);
-            this.PointConfigtriggerHeightTB.TabIndex = 260;
-            this.PointConfigtriggerHeightTB.TextChanged += new System.EventHandler(this.PointConfigtriggerHeightTB_TextChanged);
-            // 
-            // PointConfigtriggerWidthXTB
-            // 
-            this.PointConfigtriggerWidthXTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.PointConfigtriggerWidthXTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.PointConfigtriggerWidthXTB.Location = new System.Drawing.Point(116, -1);
-            this.PointConfigtriggerWidthXTB.Name = "PointConfigtriggerWidthXTB";
-            this.PointConfigtriggerWidthXTB.Size = new System.Drawing.Size(110, 20);
-            this.PointConfigtriggerWidthXTB.TabIndex = 260;
-            this.PointConfigtriggerWidthXTB.TextChanged += new System.EventHandler(this.PointConfigtriggerWidthXTB_TextChanged);
-            // 
-            // PointConfigtriggerWidthYTB
-            // 
-            this.PointConfigtriggerWidthYTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.PointConfigtriggerWidthYTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.PointConfigtriggerWidthYTB.Location = new System.Drawing.Point(333, 0);
-            this.PointConfigtriggerWidthYTB.Name = "PointConfigtriggerWidthYTB";
-            this.PointConfigtriggerWidthYTB.Size = new System.Drawing.Size(110, 20);
-            this.PointConfigtriggerWidthYTB.TabIndex = 261;
-            this.PointConfigtriggerWidthYTB.TextChanged += new System.EventHandler(this.PointConfigtriggerWidthYTB_TextChanged);
-            // 
-            // PointConfigtriggerFirstDelayTB
-            // 
-            this.PointConfigtriggerFirstDelayTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.PointConfigtriggerFirstDelayTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.PointConfigtriggerFirstDelayTB.Location = new System.Drawing.Point(117, -1);
-            this.PointConfigtriggerFirstDelayTB.Name = "PointConfigtriggerFirstDelayTB";
-            this.PointConfigtriggerFirstDelayTB.Size = new System.Drawing.Size(110, 20);
-            this.PointConfigtriggerFirstDelayTB.TabIndex = 260;
-            this.PointConfigtriggerFirstDelayTB.TextChanged += new System.EventHandler(this.PointConfigtriggerFirstDelayTB_TextChanged);
-            // 
-            // PointConfigtriggerCooldownTB
-            // 
-            this.PointConfigtriggerCooldownTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.PointConfigtriggerCooldownTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.PointConfigtriggerCooldownTB.Location = new System.Drawing.Point(333, -1);
-            this.PointConfigtriggerCooldownTB.Name = "PointConfigtriggerCooldownTB";
-            this.PointConfigtriggerCooldownTB.Size = new System.Drawing.Size(110, 20);
-            this.PointConfigtriggerCooldownTB.TabIndex = 261;
-            this.PointConfigtriggerCooldownTB.TextChanged += new System.EventHandler(this.PointConfigtriggerCooldownTB_TextChanged);
+            this.PointConfigSpawnListTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.PointConfigSpawnListTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.PointConfigSpawnListTB.Location = new System.Drawing.Point(309, 390);
+            this.PointConfigSpawnListTB.Name = "PointConfigSpawnListTB";
+            this.PointConfigSpawnListTB.Size = new System.Drawing.Size(444, 20);
+            this.PointConfigSpawnListTB.TabIndex = 273;
+            this.PointConfigSpawnListTB.TextChanged += new System.EventHandler(this.PointConfigSpawnListTB_TextChanged);
             // 
             // MPGSpawnerManager
             // 
@@ -3467,5 +3529,10 @@ namespace DayZeEditor
         private System.Windows.Forms.TextBox PointConfigtriggerFirstDelayTB;
         private System.Windows.Forms.TextBox PointConfigtriggerWidthYTB;
         private System.Windows.Forms.TextBox PointConfigtriggerWidthXTB;
+        private System.Windows.Forms.CheckBox PointConfigshowVisualisationCB;
+        private DarkUI.Controls.DarkLabel darkLabel61;
+        private System.Windows.Forms.CheckBox PointConfigisDisabledCB;
+        private DarkUI.Controls.DarkLabel darkLabel60;
+        private System.Windows.Forms.TextBox PointConfigSpawnListTB;
     }
 }

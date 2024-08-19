@@ -5,7 +5,7 @@ namespace DayZeLib
 {
     public class ExpansionPartySettings
     {
-        const int CurrentVersion = 7;
+        const int CurrentVersion = 8;
 
         public int m_Version { get; set; }
         public int EnableParties { get; set; }
@@ -32,6 +32,8 @@ namespace DayZeLib
         public int ForcePartyToHaveTags { get; set; }
         //! Added with version 7
         public int InviteCooldown { get; set; }
+        //! Added with Version 8
+        public int DisplayPartyTag { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }
@@ -71,8 +73,11 @@ namespace DayZeLib
             //! Added with version 6
             ForcePartyToHaveTags = 0;
 
-            //! Added with version 7;
+            //! Added with version 7
             InviteCooldown = 0;
+
+            //! Added with version 8
+            DisplayPartyTag = 1;
         }
         public bool checkver()
         {

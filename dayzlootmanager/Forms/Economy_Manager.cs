@@ -582,7 +582,7 @@ namespace DayZeEditor
                     needtosave = true;
                 }
             }
-            //cfggameplay
+            //cfggameplay and spawn gear
             if (currentproject.CFGGameplayConfig != null)
             {
                 if (currentproject.CFGGameplayConfig.isDirty)
@@ -627,6 +627,17 @@ namespace DayZeEditor
                 if (currentproject.mapgroupproto.isDirty)
                 {
                     needtosave = true;
+                }
+            }
+            //territories
+            if(currentproject.territoriesList != null)
+            {
+                foreach (territoriesConfig tc in currentproject.territoriesList)
+                {
+                    if(tc.isDirty == true)
+                    {
+                        needtosave |= true;
+                    }
                 }
             }
             //mapgrouppos
@@ -3750,7 +3761,6 @@ namespace DayZeEditor
             if (SpawnabletypeslistLB.SelectedIndex == -1) { return; }
             currentspawnabletypesfile = SpawnabletypeslistLB.SelectedItem as Spawnabletypesconfig;
             isUserInteraction = false;
-            SetDamange();
 
             SpawnabletpesLB.DisplayMember = "DisplayName";
             SpawnabletpesLB.ValueMember = "Value";
@@ -3759,24 +3769,24 @@ namespace DayZeEditor
         }
         private void SetDamange()
         {
-            if (currentspawnabletypesfile.spawnabletypes.damage != null)
-            {
-                label24.Visible = true;
-                label25.Visible = true;
-                HasDamageCB.Checked = true;
-                DamageMinNUD.Value = currentspawnabletypesfile.spawnabletypes.damage.min;
-                DamageMaxNUD.Value = currentspawnabletypesfile.spawnabletypes.damage.max;
-                DamageMinNUD.Visible = true;
-                DamageMaxNUD.Visible = true;
-            }
-            else
-            {
-                label25.Visible = false;
-                label24.Visible = false;
-                HasDamageCB.Checked = false;
-                DamageMinNUD.Visible = false;
-                DamageMaxNUD.Visible = false;
-            }
+            //if (CurrentspawnabletypesType != null)
+            //{
+            //    label24.Visible = true;
+            //    label25.Visible = true;
+            //    HasDamageCB.Checked = true;
+            //    DamageMinNUD.Value = currentspawnabletypesfile.spawnabletypes.damage.min;
+            //    DamageMaxNUD.Value = currentspawnabletypesfile.spawnabletypes.damage.max;
+            //    DamageMinNUD.Visible = true;
+            //    DamageMaxNUD.Visible = true;
+            //}
+            //else
+            //{
+            //    label25.Visible = false;
+            //    label24.Visible = false;
+            //    HasDamageCB.Checked = false;
+            //    DamageMinNUD.Visible = false;
+            //    DamageMaxNUD.Visible = false;
+            //}
         }
         private void SpawnabletpesLB_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -3806,6 +3816,13 @@ namespace DayZeEditor
             if (CurrentspawnabletypesTypetype is spawnabletypesTypeHoarder)
             {
 
+            }
+            else if (CurrentspawnabletypesTypetype is spawnabletypesTypeDamage)
+            {
+                spawnabletypesTypeDamage currentdamage = CurrentspawnabletypesTypetype as spawnabletypesTypeDamage;
+                groupBox78.Visible = true;
+                DamageMinNUD.Value = currentdamage.min;
+                DamageMaxNUD.Value = currentdamage.max;
             }
             else if (CurrentspawnabletypesTypetype is spawnabletypesTypeTag)
             {
@@ -3968,6 +3985,7 @@ namespace DayZeEditor
         private void ClearInfo()
         {
             textBox2.Text = null;
+            groupBox78.Visible = false;
             Spaenabletypestagbox.Visible = false;
             AttachmentGB.Visible = false;
             CargoGB.Visible = false;
@@ -4000,6 +4018,22 @@ namespace DayZeEditor
             listBox6.SelectedIndex = 0;
             currentspawnabletypesfile.isDirty = true;
 
+        }
+        private void darkButton26_Click(object sender, EventArgs e)
+        {
+            if (SpawnabletpesLB.SelectedItem == null) { return; }
+            if (CurrentspawnabletypesType.Items == null)
+            {
+                CurrentspawnabletypesType.Items = new BindingList<object>
+                {
+                    new spawnabletypesTypeDamage()
+                };
+            }
+            else
+                CurrentspawnabletypesType.Items.Insert(0, new spawnabletypesTypeDamage());
+            listBox6.SelectedIndex = -1;
+            listBox6.SelectedIndex = 0;
+            currentspawnabletypesfile.isDirty = true;
         }
         private void darkButton31_Click(object sender, EventArgs e)
         {
@@ -4302,27 +4336,41 @@ namespace DayZeEditor
         }
         private void HasDamageCB_CheckedChanged(object sender, EventArgs e)
         {
+            //if (!isUserInteraction) return;
+            //if (HasDamageCB.Checked)
+            //{
+            //    if (currentspawnabletypesfile.spawnabletypes.damage == null)
+            //    {
+            //        currentspawnabletypesfile.spawnabletypes.damage = new spawnabletypesDamage()
+            //        {
+            //            min = 0,
+            //            max = 0
+            //        };
+            //    }
+            //}
+            //else
+            //{
+            //    if (currentspawnabletypesfile.spawnabletypes.damage != null)
+            //    {
+            //        currentspawnabletypesfile.spawnabletypes.damage = null;
+            //    }
+            //}
+            //currentspawnabletypesfile.isDirty = true;
+            //SetDamange();
+        }
+        private void DamageMinNUD_ValueChanged(object sender, EventArgs e)
+        {
             if (!isUserInteraction) return;
-            if (HasDamageCB.Checked)
-            {
-                if (currentspawnabletypesfile.spawnabletypes.damage == null)
-                {
-                    currentspawnabletypesfile.spawnabletypes.damage = new spawnabletypesDamage()
-                    {
-                        min = 0,
-                        max = 0
-                    };
-                }
-            }
-            else
-            {
-                if (currentspawnabletypesfile.spawnabletypes.damage != null)
-                {
-                    currentspawnabletypesfile.spawnabletypes.damage = null;
-                }
-            }
+            spawnabletypesTypeDamage currentDamage = CurrentspawnabletypesTypetype as spawnabletypesTypeDamage;
+            currentDamage.min = DamageMinNUD.Value;
             currentspawnabletypesfile.isDirty = true;
-            SetDamange();
+        }
+        private void DamageMaxNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            spawnabletypesTypeDamage currentDamage = CurrentspawnabletypesTypetype as spawnabletypesTypeDamage;
+            currentDamage.max = DamageMaxNUD.Value;
+            currentspawnabletypesfile.isDirty = true;
         }
         #endregion spawnabletypes
         #region typesquery
@@ -8998,8 +9046,6 @@ namespace DayZeEditor
                isUserInteraction = false;
             }
         }
-
-        
 
 
     }
