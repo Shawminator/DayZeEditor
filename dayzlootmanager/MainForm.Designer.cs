@@ -85,6 +85,7 @@ namespace DayZeEditor
             this.darkStatusStrip1 = new DarkUI.Controls.DarkStatusStrip();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.WorkBenchReduxButton = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.SlidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Slidelabel)).BeginInit();
@@ -233,6 +234,7 @@ namespace DayZeEditor
             this.SpawnerBukakuManagerButton,
             this.AirdropUpgradedManagerButton,
             this.UtopiaAirdropButton,
+            this.WorkBenchReduxButton,
             this.RAGTysonBBManagerButton,
             this.PVZCZManagerButton,
             this.BBPManagerButton,
@@ -558,7 +560,7 @@ namespace DayZeEditor
             this.AbandonedVehicleRemoverManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("AbandonedVehicleRemoverManagerButton.Image")));
             this.AbandonedVehicleRemoverManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AbandonedVehicleRemoverManagerButton.Name = "AbandonedVehicleRemoverManagerButton";
-            this.AbandonedVehicleRemoverManagerButton.Size = new System.Drawing.Size(123, 19);
+            this.AbandonedVehicleRemoverManagerButton.Size = new System.Drawing.Size(98, 19);
             this.AbandonedVehicleRemoverManagerButton.Text = "Vehicle Remover";
             this.AbandonedVehicleRemoverManagerButton.Visible = false;
             this.AbandonedVehicleRemoverManagerButton.Click += new System.EventHandler(this.AbandonedVehicleRemoverManagerButton_Click);
@@ -606,8 +608,8 @@ namespace DayZeEditor
             this.AdvancedWorkbenchButton.Image = ((System.Drawing.Image)(resources.GetObject("AdvancedWorkbenchButton.Image")));
             this.AdvancedWorkbenchButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AdvancedWorkbenchButton.Name = "AdvancedWorkbenchButton";
-            this.AdvancedWorkbenchButton.Size = new System.Drawing.Size(104, 19);
-            this.AdvancedWorkbenchButton.Text = "RH Advanced WB";
+            this.AdvancedWorkbenchButton.Size = new System.Drawing.Size(89, 19);
+            this.AdvancedWorkbenchButton.Text = "BP Workbench";
             this.AdvancedWorkbenchButton.Visible = false;
             this.AdvancedWorkbenchButton.Click += new System.EventHandler(this.AdvancedWB_Click);
             // 
@@ -740,6 +742,17 @@ namespace DayZeEditor
             this.panel2.Size = new System.Drawing.Size(25, 25);
             this.panel2.TabIndex = 45;
             // 
+            // WorkBenchReduxButton
+            // 
+            this.WorkBenchReduxButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.WorkBenchReduxButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.WorkBenchReduxButton.Image = ((System.Drawing.Image)(resources.GetObject("WorkBenchReduxButton.Image")));
+            this.WorkBenchReduxButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.WorkBenchReduxButton.Name = "WorkBenchReduxButton";
+            this.WorkBenchReduxButton.Size = new System.Drawing.Size(123, 19);
+            this.WorkBenchReduxButton.Text = "WorkBench Redux";
+            this.WorkBenchReduxButton.Click += new System.EventHandler(this.WorkBenchReduxButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -828,6 +841,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton CapareWorkBenchManagerButton;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton WorkBenchReduxButton;
     }
 }
 

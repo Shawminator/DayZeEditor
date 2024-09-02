@@ -572,7 +572,7 @@ namespace DayZeEditor
                 AdvancedWorkBenchConfig AdvancedWorkBenchConfig = new AdvancedWorkBenchConfig();
                 AdvancedWorkBenchConfig = JsonSerializer.Deserialize<AdvancedWorkBenchConfig>(File.ReadAllText(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Advanced_Workbench\\AdvancedWorkBenchConfig.json"));
                 AdvancedWorkBenchConfig.isDirty = false;
-                foreach(Craftitem Craftitem in AdvancedWorkBenchConfig.CraftItems)
+                foreach(Craftitem Craftitem in AdvancedWorkBenchConfig.m_CraftClasses.CraftItems)
                 {
                     Workbenchrecipe workbenchrecipe = new Workbenchrecipe();
                     workbenchrecipe.Recipe_Name = Craftitem.RecipeName;
@@ -580,25 +580,6 @@ namespace DayZeEditor
                     workbenchrecipe.isQuantity = false;
                     workbenchrecipe.ResultCount = Craftitem.ResultCount;
                     workbenchrecipe.CraftType = Craftitem.CraftType;
-                    switch(Craftitem.RecipeCategory)
-                    {
-                        case "RHToolsManual":
-                            workbenchrecipe.RecipeCategory = "CapareToolsManual";
-                            break;
-                        case "RHSurvivalManual":
-                            workbenchrecipe.RecipeCategory = "CapareSurvivalManual";
-                            break;
-                        case "RHAmmoManual":
-                            workbenchrecipe.RecipeCategory = "CapareAmmoManual";
-                            break;
-                        case "RHWeaponsManual":
-                            workbenchrecipe.RecipeCategory = "CapareWeaponsManual";
-                            break;
-                        case "RHDeadlySkillsManual":
-                            workbenchrecipe.RecipeCategory = "CapareDeadlySkillsManual";
-                            break;
-
-                    }
                     workbenchrecipe.CraftTimeSeconds = 60;
                     workbenchrecipe.AttachmentsNeeded = new BindingList<string>();
                     foreach(string attchment in Craftitem.AttachmentsNeed)

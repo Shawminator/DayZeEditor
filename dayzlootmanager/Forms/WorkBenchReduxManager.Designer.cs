@@ -1,7 +1,7 @@
 ﻿
 namespace DayZeEditor
 {
-    partial class AdvancedWorkBenchManager
+    partial class WorkBenchReduxManager
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace DayZeEditor
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdvancedWorkBenchManager));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WorkBenchReduxManager));
             this.darkToolStrip21 = new DarkUI.Controls.DarkToolStrip2();
             this.SaveFileButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -40,9 +40,6 @@ namespace DayZeEditor
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.CIRecipetypeCB = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.BPCutting_sawCB = new System.Windows.Forms.CheckBox();
-            this.BPDrillCB = new System.Windows.Forms.CheckBox();
-            this.BPGrinderCB = new System.Windows.Forms.CheckBox();
             this.darkButton3 = new DarkUI.Controls.DarkButton();
             this.darkButton20 = new DarkUI.Controls.DarkButton();
             this.CICPDestoryCB = new System.Windows.Forms.CheckBox();
@@ -65,14 +62,15 @@ namespace DayZeEditor
             this.darkButton2 = new DarkUI.Controls.DarkButton();
             this.CICompentsLB = new System.Windows.Forms.ListBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.darkLabel4 = new DarkUI.Controls.DarkLabel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.darkLabel11 = new DarkUI.Controls.DarkLabel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.darkLabel12 = new DarkUI.Controls.DarkLabel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.darkLabel13 = new DarkUI.Controls.DarkLabel();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.darkLabel12 = new DarkUI.Controls.DarkLabel();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.darkLabel11 = new DarkUI.Controls.DarkLabel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.darkLabel4 = new DarkUI.Controls.DarkLabel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.BPDrillCB = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -225,49 +223,14 @@ namespace DayZeEditor
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.BPCutting_sawCB);
             this.groupBox3.Controls.Add(this.BPDrillCB);
-            this.groupBox3.Controls.Add(this.BPGrinderCB);
             this.groupBox3.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox3.Location = new System.Drawing.Point(7, 419);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(226, 100);
+            this.groupBox3.Size = new System.Drawing.Size(226, 48);
             this.groupBox3.TabIndex = 242;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Attachments Needed";
-            // 
-            // BPCutting_sawCB
-            // 
-            this.BPCutting_sawCB.AutoSize = true;
-            this.BPCutting_sawCB.Location = new System.Drawing.Point(12, 70);
-            this.BPCutting_sawCB.Name = "BPCutting_sawCB";
-            this.BPCutting_sawCB.Size = new System.Drawing.Size(81, 17);
-            this.BPCutting_sawCB.TabIndex = 2;
-            this.BPCutting_sawCB.Text = "Cutting saw";
-            this.BPCutting_sawCB.UseVisualStyleBackColor = true;
-            this.BPCutting_sawCB.CheckedChanged += new System.EventHandler(this.BPCutting_sawCB_CheckedChanged);
-            // 
-            // BPDrillCB
-            // 
-            this.BPDrillCB.AutoSize = true;
-            this.BPDrillCB.Location = new System.Drawing.Point(12, 47);
-            this.BPDrillCB.Name = "BPDrillCB";
-            this.BPDrillCB.Size = new System.Drawing.Size(43, 17);
-            this.BPDrillCB.TabIndex = 1;
-            this.BPDrillCB.Text = "Drill";
-            this.BPDrillCB.UseVisualStyleBackColor = true;
-            this.BPDrillCB.CheckedChanged += new System.EventHandler(this.BPDrillCB_CheckedChanged);
-            // 
-            // BPGrinderCB
-            // 
-            this.BPGrinderCB.AutoSize = true;
-            this.BPGrinderCB.Location = new System.Drawing.Point(12, 24);
-            this.BPGrinderCB.Name = "BPGrinderCB";
-            this.BPGrinderCB.Size = new System.Drawing.Size(60, 17);
-            this.BPGrinderCB.TabIndex = 0;
-            this.BPGrinderCB.Text = "Grinder";
-            this.BPGrinderCB.UseVisualStyleBackColor = true;
-            this.BPGrinderCB.CheckedChanged += new System.EventHandler(this.BPGrinderCB_CheckedChanged);
             // 
             // darkButton3
             // 
@@ -525,45 +488,25 @@ namespace DayZeEditor
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Customization Settings";
             // 
-            // darkLabel4
+            // darkLabel13
             // 
-            this.darkLabel4.AutoSize = true;
-            this.darkLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel4.Location = new System.Drawing.Point(16, 29);
-            this.darkLabel4.Name = "darkLabel4";
-            this.darkLabel4.Size = new System.Drawing.Size(157, 13);
-            this.darkLabel4.TabIndex = 107;
-            this.darkLabel4.Text = "Path to main background image";
+            this.darkLabel13.AutoSize = true;
+            this.darkLabel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel13.Location = new System.Drawing.Point(16, 151);
+            this.darkLabel13.Name = "darkLabel13";
+            this.darkLabel13.Size = new System.Drawing.Size(102, 13);
+            this.darkLabel13.TabIndex = 113;
+            this.darkLabel13.Text = "Path To Craft Image";
             // 
-            // textBox1
+            // textBox4
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.textBox1.ForeColor = System.Drawing.SystemColors.Control;
-            this.textBox1.Location = new System.Drawing.Point(19, 45);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(421, 20);
-            this.textBox1.TabIndex = 106;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // darkLabel11
-            // 
-            this.darkLabel11.AutoSize = true;
-            this.darkLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel11.Location = new System.Drawing.Point(18, 66);
-            this.darkLabel11.Name = "darkLabel11";
-            this.darkLabel11.Size = new System.Drawing.Size(111, 13);
-            this.darkLabel11.TabIndex = 109;
-            this.darkLabel11.Text = "Path To Repair Image";
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.textBox2.ForeColor = System.Drawing.SystemColors.Control;
-            this.textBox2.Location = new System.Drawing.Point(21, 82);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(421, 20);
-            this.textBox2.TabIndex = 108;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.textBox4.ForeColor = System.Drawing.SystemColors.Control;
+            this.textBox4.Location = new System.Drawing.Point(19, 167);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(421, 20);
+            this.textBox4.TabIndex = 112;
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // darkLabel12
             // 
@@ -585,27 +528,58 @@ namespace DayZeEditor
             this.textBox3.TabIndex = 110;
             this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
-            // darkLabel13
+            // darkLabel11
             // 
-            this.darkLabel13.AutoSize = true;
-            this.darkLabel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel13.Location = new System.Drawing.Point(16, 151);
-            this.darkLabel13.Name = "darkLabel13";
-            this.darkLabel13.Size = new System.Drawing.Size(102, 13);
-            this.darkLabel13.TabIndex = 113;
-            this.darkLabel13.Text = "Path To Craft Image";
+            this.darkLabel11.AutoSize = true;
+            this.darkLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel11.Location = new System.Drawing.Point(18, 66);
+            this.darkLabel11.Name = "darkLabel11";
+            this.darkLabel11.Size = new System.Drawing.Size(111, 13);
+            this.darkLabel11.TabIndex = 109;
+            this.darkLabel11.Text = "Path To Repair Image";
             // 
-            // textBox4
+            // textBox2
             // 
-            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.textBox4.ForeColor = System.Drawing.SystemColors.Control;
-            this.textBox4.Location = new System.Drawing.Point(19, 167);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(421, 20);
-            this.textBox4.TabIndex = 112;
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.textBox2.ForeColor = System.Drawing.SystemColors.Control;
+            this.textBox2.Location = new System.Drawing.Point(21, 82);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(421, 20);
+            this.textBox2.TabIndex = 108;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // AdvancedWorkBenchManager
+            // darkLabel4
+            // 
+            this.darkLabel4.AutoSize = true;
+            this.darkLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel4.Location = new System.Drawing.Point(16, 29);
+            this.darkLabel4.Name = "darkLabel4";
+            this.darkLabel4.Size = new System.Drawing.Size(157, 13);
+            this.darkLabel4.TabIndex = 107;
+            this.darkLabel4.Text = "Path to main background image";
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.textBox1.ForeColor = System.Drawing.SystemColors.Control;
+            this.textBox1.Location = new System.Drawing.Point(19, 45);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(421, 20);
+            this.textBox1.TabIndex = 106;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // BPDrillCB
+            // 
+            this.BPDrillCB.AutoSize = true;
+            this.BPDrillCB.Location = new System.Drawing.Point(19, 19);
+            this.BPDrillCB.Name = "BPDrillCB";
+            this.BPDrillCB.Size = new System.Drawing.Size(43, 17);
+            this.BPDrillCB.TabIndex = 1;
+            this.BPDrillCB.Text = "Drill";
+            this.BPDrillCB.UseVisualStyleBackColor = true;
+            this.BPDrillCB.CheckedChanged += new System.EventHandler(this.BPDrillCB_CheckedChanged);
+            // 
+            // WorkBenchReduxManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -615,7 +589,7 @@ namespace DayZeEditor
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.darkToolStrip21);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "AdvancedWorkBenchManager";
+            this.Name = "WorkBenchReduxManager";
             this.Text = "AdvancedWorkBenchManager";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AdvancedWorkBenchManager_FormClosing);
             this.Load += new System.EventHandler(this.AdvancedWorkBenchManager_Load);
@@ -667,9 +641,6 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton darkButton3;
         private DarkUI.Controls.DarkButton darkButton20;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.CheckBox BPCutting_sawCB;
-        private System.Windows.Forms.CheckBox BPDrillCB;
-        private System.Windows.Forms.CheckBox BPGrinderCB;
         private System.Windows.Forms.ComboBox CIRecipetypeCB;
         private System.Windows.Forms.GroupBox groupBox4;
         private DarkUI.Controls.DarkLabel darkLabel13;
@@ -680,5 +651,6 @@ namespace DayZeEditor
         private System.Windows.Forms.TextBox textBox2;
         private DarkUI.Controls.DarkLabel darkLabel4;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.CheckBox BPDrillCB;
     }
 }

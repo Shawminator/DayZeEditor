@@ -16,6 +16,7 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Xml;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Xml.Xsl;
 
@@ -116,11 +117,7 @@ namespace DayZeEditor
             }
             comboBox1.DataSource = newlist;
             comboBox9.DataSource = Enum.GetValues(typeof(ITEMRARITY));
-            comboBox2.DataSource = currentproject.limitfefinitions.lists.usageflags;
-            if (comboBox2.Items.Count == 0)
-                groupBox2.Visible = false;
-            else
-                groupBox2.Visible = true;
+            PopulateDefs();
             comboBox4.DataSource = currentproject.limitfefinitions.lists.tags;
 
             comboBox5.DataSource = currentproject.limitfefinitions.lists.tags;
@@ -202,9 +199,51 @@ namespace DayZeEditor
             toolStripButton2.Visible = true;
             toolStripTextBox1.Visible = true;
             toolStripButton1.Visible = true;
+
+            listBox7.DataSource = currentproject.limitfefinitions.lists.usageflags;
+            listBox8.DataSource = currentproject.limitfefinitions.lists.valueflags;
+            listBox9.DataSource = currentproject.limitfefinitionsuser.userdefs.usageflags;
+            listBox10.DataSource = currentproject.limitfefinitionsuser.userdefs.valueflags;
             isUserInteraction = true;
         }
 
+        private void PopulateDefs()
+        {
+            List<object> usagelist = new List<object>();
+            usagelist.AddRange(currentproject.limitfefinitions.lists.usageflags);
+            usagelist.AddRange(currentproject.limitfefinitionsuser.userdefs.usageflags);
+
+            comboBox2.DataSource = usagelist;
+            if (comboBox2.Items.Count == 0)
+                groupBox2.Visible = false;
+            else
+                groupBox2.Visible = true;
+        }
+
+        private void checkBox117_CheckedChanged(object sender, EventArgs e)
+        {
+           switch(checkBox117.Checked) 
+           {
+                case true:
+                    comboBox2.DataSource = currentproject.limitfefinitionsuser.userdefs.usageflags;
+                    if (comboBox2.Items.Count == 0)
+                        groupBox2.Visible = false;
+                    else
+                        groupBox2.Visible = true;
+                    break;
+                case false:
+                    List<object> usagelist = new List<object>();
+                    usagelist.AddRange(currentproject.limitfefinitions.lists.usageflags);
+                    usagelist.AddRange(currentproject.limitfefinitionsuser.userdefs.usageflags);
+
+                    comboBox2.DataSource = usagelist;
+                    if (comboBox2.Items.Count == 0)
+                        groupBox2.Visible = false;
+                    else
+                        groupBox2.Visible = true;
+                    break;
+           }  
+        }
         private void SetuprandomPresetsForSpawnabletypes()
         {
             foreach (var item in currentproject.cfgrandompresetsconfig.randompresets.Items)
@@ -427,6 +466,18 @@ namespace DayZeEditor
                         currentproject.weatherconfig.SaveWeather();
                     currentproject.weatherconfig.isDirty = false;
                     midifiedfiles.Add(Path.GetFileName(currentproject.weatherconfig.Filename));
+                }
+            }
+            if (currentproject.limitfefinitionsuser != null)
+            {
+                if (currentproject.limitfefinitionsuser.isDirty)
+                {
+                    if (currentproject.Createbackups)
+                        currentproject.limitfefinitionsuser.SaveUserDefs(SaveTime);
+                    else
+                        currentproject.limitfefinitionsuser.SaveUserDefs();
+                    currentproject.limitfefinitionsuser.isDirty = false;
+                    midifiedfiles.Add(Path.GetFileName(currentproject.limitfefinitionsuser.Filename));
                 }
             }
             if (currentproject.cfgignorelist != null)
@@ -697,6 +748,12 @@ namespace DayZeEditor
             if (EconomyTabPage.SelectedIndex == 4)
                 TypesSummaryTabButton.Checked = true;
         }
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            EconomyTabPage.SelectedIndex = 19;
+            if (EconomyTabPage.SelectedIndex == 19)
+                UserDefsButton.Checked = true;
+        }
         private void EconomyCorePreviewTabButton_Click(object sender, EventArgs e)
         {
             EconomyTabPage.SelectedIndex = 5;
@@ -809,9 +866,11 @@ namespace DayZeEditor
             InitCTabButton.Checked = false;
             SpawnGearTabButton.Checked = false;
             MapGroupPosTabButton.Checked = false;
+            UserDefsButton.Checked = false;
             toolStripButton1.Visible = false;
             toolStripButton2.Visible = false;
             toolStripTextBox1.Visible = false;
+            
         }
         #endregion formsstuff
         #region Types
@@ -842,7 +901,7 @@ namespace DayZeEditor
                 cb.Visible = false;
             }
             index = 0;
-            foreach (user_listsUser1 user in currentproject.limitfefinitionsuser.user_lists.valueflags)
+            foreach (user_listsUser1 user in currentproject.limitfefinitionsuser.userdefs.valueflags)
             {
                 CheckBox cb = checkboxesSummary[index];
                 cb.Tag = user.name;
@@ -882,7 +941,7 @@ namespace DayZeEditor
 
 
             index = 0;
-            foreach (user_listsUser1 user in currentproject.limitfefinitionsuser.user_lists.valueflags)
+            foreach (user_listsUser1 user in currentproject.limitfefinitionsuser.userdefs.valueflags)
             {
                 CheckBox cb = checkboxes[index];
                 cb.Tag = user.name;
@@ -1498,7 +1557,7 @@ namespace DayZeEditor
         private void PopulateTiers()
         {
             setNumberofTiers();
-            if (currentlootpart.value != null)
+            if (currentlootpart != null && currentlootpart.value != null)
             {
                 for (int i = 0; i < currentlootpart.value.Count; i++)
                 {
@@ -1627,7 +1686,13 @@ namespace DayZeEditor
         {
             listBox1.DisplayMember = "Name";
             listBox1.ValueMember = "Value";
-            listBox1.DataSource = currentlootpart.usage;
+            if (currentlootpart.usage != null)
+            {
+
+
+
+                listBox1.DataSource = currentlootpart.usage;
+            }
         }
         private void PopulateFlags()
         {
@@ -1659,12 +1724,26 @@ namespace DayZeEditor
         private void darkButton2_Click(object sender, EventArgs e)
         {
             listsUsage u = comboBox2.SelectedItem as listsUsage;
-            foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+            if(u != null)
             {
-                typesType looptype = tn.Tag as typesType;
-                looptype.AddnewUsage(u);
-                populateUsage();
-                currentproject.GetTypesfilebyname(tn.Parent.Parent.Tag.ToString()).isDirty = true;
+                foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+                {
+                    typesType looptype = tn.Tag as typesType;
+                    looptype.AddnewUsage(u);
+                    populateUsage();
+                    currentproject.GetTypesfilebyname(tn.Parent.Parent.Tag.ToString()).isDirty = true;
+                }
+            }
+            user_listsUser uu = comboBox2.SelectedItem as user_listsUser;
+            if (uu != null)
+            {
+                foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+                {
+                    typesType looptype = tn.Tag as typesType;
+                    looptype.AddnewUserUsage(uu);
+                    populateUsage();
+                    currentproject.GetTypesfilebyname(tn.Parent.Parent.Tag.ToString()).isDirty = true;
+                }
             }
         }
         private void darkButton1_Click(object sender, EventArgs e)
@@ -6852,7 +6931,7 @@ namespace DayZeEditor
             }
 
             index = 0;
-            foreach (user_listsUser1 user in currentproject.limitfefinitionsuser.user_lists.valueflags)
+            foreach (user_listsUser1 user in currentproject.limitfefinitionsuser.userdefs.valueflags)
             {
                 CheckBox cb = checkboxes[index];
                 cb.Tag = user.name;
@@ -9046,6 +9125,269 @@ namespace DayZeEditor
                isUserInteraction = false;
             }
         }
+
+        #region userdefs
+
+        private void listBox9_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox9.SelectedItems.Count <= 0) return;
+            user_listsUser uu = listBox9.SelectedItem as user_listsUser;
+            isUserInteraction = false;
+            textBox3.Text = uu.name;
+            listBox11.DataSource = uu.usage;
+            isUserInteraction = true;
+
+        }
+        private void listBox10_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox10.SelectedItems.Count <= 0) return;
+            user_listsUser1 uu = listBox10.SelectedItem as user_listsUser1;
+            isUserInteraction = false;
+            textBox4.Text = uu.name;
+            listBox12.DataSource = uu.value;
+            isUserInteraction = true;
+        }
+        private void darkButton27_Click(object sender, EventArgs e)
+        {
+            user_listsUser newusage = new user_listsUser();
+            newusage.name = "NewUserUsageDef";
+            newusage.usage = new BindingList<user_listsUserUsage>();
+            currentproject.limitfefinitionsuser.userdefs.usageflags.Add(newusage);
+            currentproject.limitfefinitionsuser.isDirty = true;
+            PopulateDefs();
+        }
+        private void darkButton76_Click(object sender, EventArgs e)
+        {
+            if (listBox9.SelectedItems.Count <= 0) return;
+            Cursor.Current = Cursors.WaitCursor;
+            user_listsUser uu = listBox9.SelectedItem as user_listsUser;
+            string uuname = uu.name;
+            currentproject.limitfefinitionsuser.userdefs.usageflags.Remove(uu);
+            currentproject.limitfefinitionsuser.isDirty = true;
+            PopulateDefs();
+            CheckallTypes(uuname);
+            Cursor.Current = Cursors.Default;
+        }
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            darkButton83.Visible = true;
+        }
+        private void darkButton83_Click(object sender, EventArgs e)
+        {
+            if (listBox9.SelectedItems.Count <= 0) return;
+            Cursor.Current = Cursors.WaitCursor;
+            user_listsUser uu = listBox9.SelectedItem as user_listsUser;
+            string uuname = uu.name;
+            uu.name = textBox3.Text;
+            PopulateDefs();
+            CheckallTypes(uuname, uu.name);
+            currentproject.limitfefinitionsuser.isDirty = true;
+            darkButton83.Visible = false;
+            Cursor.Current = Cursors.Default;
+        }
+        private void CheckallTypes(string uuname, string name)
+        {
+            foreach (typesType type in vanillatypes.types.type)
+            {
+                typesTypeUsage typeusage = type.usage.FirstOrDefault(x => x.user == uuname);
+                if (typeusage != null)
+                {
+                    typeusage.user = name;
+                    vanillatypes.isDirty = true;
+                }
+            }
+            if (ModTypes.Count > 0)
+            {
+                foreach (TypesFile tf in ModTypes)
+                {
+                    foreach (typesType type in tf.types.type)
+                    {
+                        typesTypeUsage typeusage = type.usage.FirstOrDefault(x => x.user == uuname);
+                        if (typeusage != null)
+                        {
+                            typeusage.user = name;
+                            tf.isDirty = true;
+                        }
+                    }
+                }
+            }
+        }
+        private void CheckallTypes(string uuname)
+        {
+            foreach (typesType type in vanillatypes.types.type)
+            {
+                typesTypeUsage typeusage = type.usage.FirstOrDefault(x => x.user == uuname);
+                if(typeusage != null) 
+                {
+                    type.usage.Remove(typeusage);
+                    vanillatypes.isDirty = true;
+                }
+            }
+            if (ModTypes.Count > 0)
+            {
+                foreach (TypesFile tf in ModTypes)
+                {
+                    foreach (typesType type in tf.types.type)
+                    {
+                        typesTypeUsage typeusage = type.usage.FirstOrDefault(x => x.user == uuname);
+                        if (typeusage != null)
+                        {
+                            type.usage.Remove(typeusage);
+                            tf.isDirty = true;
+                        }
+                    }
+                }
+            }
+        }
+        private void darkButton77_Click(object sender, EventArgs e)
+        {
+            if (listBox11.SelectedItems.Count <= 0) return;
+            if (listBox9.SelectedItems.Count <= 0) return;
+            user_listsUser uu = listBox9.SelectedItem as user_listsUser;
+            user_listsUserUsage luu = listBox11.SelectedItem as user_listsUserUsage;
+            uu.usage.Remove(luu);
+            currentproject.limitfefinitionsuser.isDirty = true;
+        }
+        private void darkButton78_Click(object sender, EventArgs e)
+        {
+            if(listBox7.SelectedItems.Count <= 0) return;
+            listsUsage lu = listBox7.SelectedItem as listsUsage; 
+            if(lu != null)
+            {
+                user_listsUserUsage newluu = new user_listsUserUsage();
+                newluu.name = lu.name;
+                user_listsUser uu = listBox9.SelectedItem as user_listsUser;
+                uu.usage.Add(newluu);
+                currentproject.limitfefinitionsuser.isDirty = true;
+                
+            }
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            if (!isUserInteraction) return;
+            darkButton84.Visible = true;
+        }
+        private void darkButton84_Click(object sender, EventArgs e)
+        {
+            if (listBox10.SelectedItems.Count <= 0) return;
+            Cursor.Current = Cursors.WaitCursor;
+            user_listsUser1 uu = listBox10.SelectedItem as user_listsUser1;
+            string uuname = uu.name;
+            uu.name = textBox4.Text;
+            CheckallTypesValues(uuname, uu.name);
+            isUserInteraction = false;
+            PopulateTiers();
+            isUserInteraction = true;
+            currentproject.limitfefinitionsuser.isDirty = true;
+            darkButton84.Visible = false;
+            Cursor.Current = Cursors.Default;
+        }
+        private void CheckallTypesValues(string uuname)
+        {
+            foreach (typesType type in vanillatypes.types.type)
+            {
+                typesTypeValue typevalue = type.value.FirstOrDefault(x => x.user == uuname);
+                if (typevalue != null)
+                {
+                    type.value.Remove(typevalue);
+                    vanillatypes.isDirty = true;
+                }
+            }
+            if (ModTypes.Count > 0)
+            {
+                foreach (TypesFile tf in ModTypes)
+                {
+                    foreach (typesType type in tf.types.type)
+                    {
+                        typesTypeValue typevalue = type.value.FirstOrDefault(x => x.user == uuname);
+                        if (typevalue != null)
+                        {
+                            type.value.Remove(typevalue);
+                            tf.isDirty = true;
+                        }
+                    }
+                }
+            }
+        }
+        private void CheckallTypesValues(string uuname, string name)
+        {
+            foreach (typesType type in vanillatypes.types.type)
+            {
+                typesTypeValue typevalue = type.value.FirstOrDefault(x => x.user == uuname);
+                if (typevalue != null)
+                {
+                    typevalue.user = name;
+                    vanillatypes.isDirty = true;
+                }
+            }
+            if (ModTypes.Count > 0)
+            {
+                foreach (TypesFile tf in ModTypes)
+                {
+                    foreach (typesType type in tf.types.type)
+                    {
+                        typesTypeValue typevalue = type.value.FirstOrDefault(x => x.user == uuname);
+                        if (typevalue != null)
+                        {
+                            typevalue.user = name;
+                            tf.isDirty = true;
+                        }
+                    }
+                }
+            }
+        }
+        private void darkButton82_Click(object sender, EventArgs e)
+        {
+            user_listsUser1 newvalue = new user_listsUser1();
+            newvalue.name = "NewUserValueDef";
+            newvalue.value = new BindingList<user_listsUserValue>();
+            currentproject.limitfefinitionsuser.userdefs.valueflags.Add(newvalue);
+            currentproject.limitfefinitionsuser.isDirty = true;
+        }
+        private void darkButton81_Click(object sender, EventArgs e)
+        {
+            if (listBox10.SelectedItems.Count <= 0) return;
+            Cursor.Current = Cursors.WaitCursor;
+            user_listsUser1 uu = listBox10.SelectedItem as user_listsUser1;
+            string uuname = uu.name;
+            currentproject.limitfefinitionsuser.userdefs.valueflags.Remove(uu);
+            currentproject.limitfefinitionsuser.isDirty = true;
+            CheckallTypesValues(uuname);
+            isUserInteraction = false;
+            PopulateTiers();
+            isUserInteraction = true;
+            currentproject.limitfefinitionsuser.isDirty = true;
+            Cursor.Current = Cursors.Default;
+        }
+        private void darkButton79_Click(object sender, EventArgs e)
+        {
+            if (listBox10.SelectedItems.Count <= 0) return;
+            if (listBox12.SelectedItems.Count <= 0) return;
+            user_listsUser1 uu = listBox10.SelectedItem as user_listsUser1;
+            user_listsUserValue luu = listBox12.SelectedItem as user_listsUserValue;
+            uu.value.Remove(luu);
+            currentproject.limitfefinitionsuser.isDirty = true;
+        }
+        private void darkButton80_Click(object sender, EventArgs e)
+        {
+            if (listBox8.SelectedItems.Count <= 0) return;
+            listsValue lu = listBox8.SelectedItem as listsValue;
+            if (lu != null)
+            {
+                user_listsUserValue newluu = new user_listsUserValue();
+                newluu.name = lu.name;
+                user_listsUser1 uu = listBox10.SelectedItem as user_listsUser1;
+                uu.value.Add(newluu);
+                currentproject.limitfefinitionsuser.isDirty = true;
+
+            }
+        }
+
+
+        #endregion
 
 
     }

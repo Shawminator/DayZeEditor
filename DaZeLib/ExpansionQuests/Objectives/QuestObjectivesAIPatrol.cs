@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.IO;
 
 namespace DayZeLib
@@ -38,5 +39,6 @@ namespace DayZeLib
                 AISpawn._waypoints.Add(new Vec3(point));
             }
         }
+
     }
 }

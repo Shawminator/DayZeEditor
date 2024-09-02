@@ -83,6 +83,10 @@ namespace DayZeLib
                 this.nameField = value;
             }
         }
+        public override string ToString()
+        {
+            return name;
+        }
     }
 
     /// <remarks/>
@@ -106,6 +110,10 @@ namespace DayZeLib
             {
                 this.nameField = value;
             }
+        }
+        public override string ToString()
+        {
+            return name;
         }
     }
 
@@ -147,6 +155,10 @@ namespace DayZeLib
                 this.nameField = value;
             }
         }
+        public override string ToString()
+        {
+            return name;
+        }
     }
 
     /// <remarks/>
@@ -171,7 +183,9 @@ namespace DayZeLib
                 this.nameField = value;
             }
         }
+        public override string ToString()
+        {
+            return name;
+        }
     }
-
-
 }

@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace DayZeEditor
 {
-    public partial class AdvancedWorkBenchManager : DarkForm
+    public partial class WorkBenchReduxManager : DarkForm
     {
         public Project currentproject { get; set; }
         public TypesFile vanillatypes;
@@ -46,7 +46,7 @@ namespace DayZeEditor
             e.DrawFocusRectangle();
         }
 
-        public AdvancedWorkBenchManager()
+        public WorkBenchReduxManager()
         {
             InitializeComponent();
         }
@@ -75,7 +75,7 @@ namespace DayZeEditor
             ModTypes = currentproject.getModList();
 
             useraction = false;
-            AdvancedWorkBenchConfigPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\BP_WorkBench.json";
+            AdvancedWorkBenchConfigPath = currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Workbench_Redux\\Workbench_Redux.json";
             AdvancedWorkBenchConfig = JsonSerializer.Deserialize<AdvancedWorkBenchConfig>(File.ReadAllText(AdvancedWorkBenchConfigPath));
             AdvancedWorkBenchConfig.isDirty = false;
             AdvancedWorkBenchConfig.Filename = AdvancedWorkBenchConfigPath;
@@ -179,9 +179,7 @@ namespace DayZeEditor
             CIresultTB.Text = CurrentCraftItem.Result;
             CIresultCountNUD.Value = CurrentCraftItem.ResultCount;
             CIRecipetypeCB.SelectedIndex = CIRecipetypeCB.FindStringExact(CurrentCraftItem.CraftType);
-            BPDrillCB.Checked = CurrentCraftItem.AttachmentsNeed.Contains("BPDrill");
-            BPCutting_sawCB.Checked = CurrentCraftItem.AttachmentsNeed.Contains("BPCutting_saw");
-            BPGrinderCB.Checked = CurrentCraftItem.AttachmentsNeed.Contains("BPGrinder");
+            BPDrillCB.Checked = CurrentCraftItem.AttachmentsNeed.Contains("Workbench_Redux_Drill");
 
             CICompentsLB.DisplayMember = "DisplayName";
             CICompentsLB.ValueMember = "Value";
@@ -337,48 +335,18 @@ namespace DayZeEditor
             }
             AdvancedWorkBenchConfig.isDirty = true;
         }
-        private void BPGrinderCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            if (BPGrinderCB.Checked)
-            {
-                if (!CurrentCraftItem.AttachmentsNeed.Contains("BPGrinder"))
-                    CurrentCraftItem.AttachmentsNeed.Add("BPGrinder");
-            }
-            else
-            {
-                if (CurrentCraftItem.AttachmentsNeed.Contains("BPGrinder"))
-                    CurrentCraftItem.AttachmentsNeed.Remove("BPGrinder");
-            }
-            AdvancedWorkBenchConfig.isDirty = true;
-        }
         private void BPDrillCB_CheckedChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
             if (BPDrillCB.Checked)
             {
-                if (!CurrentCraftItem.AttachmentsNeed.Contains("BPDrill"))
-                    CurrentCraftItem.AttachmentsNeed.Add("BPDrill");
+                if (!CurrentCraftItem.AttachmentsNeed.Contains("Workbench_Redux_Drill"))
+                    CurrentCraftItem.AttachmentsNeed.Add("Workbench_Redux_Drill");
             }
             else
             {
-                if (CurrentCraftItem.AttachmentsNeed.Contains("BPDrill"))
-                    CurrentCraftItem.AttachmentsNeed.Remove("BPDrill");
-            }
-            AdvancedWorkBenchConfig.isDirty = true;
-        }
-        private void BPCutting_sawCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            if (BPCutting_sawCB.Checked)
-            {
-                if (!CurrentCraftItem.AttachmentsNeed.Contains("BPCutting_saw"))
-                    CurrentCraftItem.AttachmentsNeed.Add("BPCutting_saw");
-            }
-            else
-            {
-                if (CurrentCraftItem.AttachmentsNeed.Contains("BPCutting_saw"))
-                    CurrentCraftItem.AttachmentsNeed.Remove("BPCutting_saw");
+                if (CurrentCraftItem.AttachmentsNeed.Contains("Workbench_Redux_Drill"))
+                    CurrentCraftItem.AttachmentsNeed.Remove("Workbench_Redux_Drill");
             }
             AdvancedWorkBenchConfig.isDirty = true;
         }
@@ -471,7 +439,7 @@ namespace DayZeEditor
         }
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath);
+            Process.Start(currentproject.projectFullName + "\\" + currentproject.ProfilePath + "\\Workbench_Redux");
         }
 
 

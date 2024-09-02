@@ -46,7 +46,7 @@ namespace DayZeEditor
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(344, 28);
+            this.panel1.Size = new System.Drawing.Size(441, 28);
             this.panel1.TabIndex = 9;
             // 
             // CloseButton
@@ -56,7 +56,7 @@ namespace DayZeEditor
             this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseButton.ForeColor = System.Drawing.Color.DarkRed;
-            this.CloseButton.Location = new System.Drawing.Point(300, -1);
+            this.CloseButton.Location = new System.Drawing.Point(397, -1);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(41, 28);
             this.CloseButton.TabIndex = 7;
@@ -90,7 +90,7 @@ namespace DayZeEditor
             this.textBox3.ForeColor = System.Drawing.SystemColors.Control;
             this.textBox3.Location = new System.Drawing.Point(12, 51);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(314, 20);
+            this.textBox3.Size = new System.Drawing.Size(417, 20);
             this.textBox3.TabIndex = 61;
             this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
@@ -100,7 +100,7 @@ namespace DayZeEditor
             this.darkButton2.Location = new System.Drawing.Point(12, 77);
             this.darkButton2.Name = "darkButton2";
             this.darkButton2.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton2.Size = new System.Drawing.Size(314, 23);
+            this.darkButton2.Size = new System.Drawing.Size(417, 23);
             this.darkButton2.TabIndex = 65;
             this.darkButton2.Text = "Add New File";
             // 
@@ -108,7 +108,7 @@ namespace DayZeEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(344, 117);
+            this.ClientSize = new System.Drawing.Size(441, 117);
             this.Controls.Add(this.darkButton2);
             this.Controls.Add(this.darkLabel7);
             this.Controls.Add(this.textBox3);

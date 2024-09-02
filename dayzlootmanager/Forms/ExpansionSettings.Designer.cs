@@ -647,13 +647,14 @@ namespace DayZeEditor
             this.darkButton32 = new DarkUI.Controls.DarkButton();
             this.listBox17 = new System.Windows.Forms.ListBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.darkLabel264 = new DarkUI.Controls.DarkLabel();
+            this.ShowPlayerPositionCB = new System.Windows.Forms.ComboBox();
             this.PlayerLocationNotifierCB = new System.Windows.Forms.CheckBox();
             this.CreateDeathMarkerCB = new System.Windows.Forms.CheckBox();
             this.CanOpenMapWithKeyBindingCB = new System.Windows.Forms.CheckBox();
             this.NeedGPSItemForKeyBindingCB = new System.Windows.Forms.CheckBox();
             this.NeedMapItemForKeyBindingCB = new System.Windows.Forms.CheckBox();
             this.ShowMapStatsCB = new System.Windows.Forms.CheckBox();
-            this.ShowPlayerPositionCB = new System.Windows.Forms.CheckBox();
             this.UseMapOnMapItemCB = new System.Windows.Forms.CheckBox();
             this.EnableMapCB = new System.Windows.Forms.CheckBox();
             this.trackBar4 = new System.Windows.Forms.TrackBar();
@@ -9018,7 +9019,7 @@ namespace DayZeEditor
             // 
             this.NeedPenItemForCreateMarkerCB.AutoSize = true;
             this.NeedPenItemForCreateMarkerCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.NeedPenItemForCreateMarkerCB.Location = new System.Drawing.Point(10, 61);
+            this.NeedPenItemForCreateMarkerCB.Location = new System.Drawing.Point(10, 58);
             this.NeedPenItemForCreateMarkerCB.Name = "NeedPenItemForCreateMarkerCB";
             this.NeedPenItemForCreateMarkerCB.Size = new System.Drawing.Size(185, 17);
             this.NeedPenItemForCreateMarkerCB.TabIndex = 19;
@@ -9031,7 +9032,7 @@ namespace DayZeEditor
             // 
             this.CanCreateMarkerCB.AutoSize = true;
             this.CanCreateMarkerCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CanCreateMarkerCB.Location = new System.Drawing.Point(10, 15);
+            this.CanCreateMarkerCB.Location = new System.Drawing.Point(10, 18);
             this.CanCreateMarkerCB.Name = "CanCreateMarkerCB";
             this.CanCreateMarkerCB.Size = new System.Drawing.Size(115, 17);
             this.CanCreateMarkerCB.TabIndex = 20;
@@ -9044,7 +9045,7 @@ namespace DayZeEditor
             // 
             this.ShowDistanceOnPersonalMarkersCB.AutoSize = true;
             this.ShowDistanceOnPersonalMarkersCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowDistanceOnPersonalMarkersCB.Location = new System.Drawing.Point(10, 103);
+            this.ShowDistanceOnPersonalMarkersCB.Location = new System.Drawing.Point(10, 99);
             this.ShowDistanceOnPersonalMarkersCB.Name = "ShowDistanceOnPersonalMarkersCB";
             this.ShowDistanceOnPersonalMarkersCB.Size = new System.Drawing.Size(200, 17);
             this.ShowDistanceOnPersonalMarkersCB.TabIndex = 24;
@@ -9070,7 +9071,7 @@ namespace DayZeEditor
             // 
             this.NeedGPSItemForCreateMarkerCB.AutoSize = true;
             this.NeedGPSItemForCreateMarkerCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.NeedGPSItemForCreateMarkerCB.Location = new System.Drawing.Point(10, 84);
+            this.NeedGPSItemForCreateMarkerCB.Location = new System.Drawing.Point(10, 79);
             this.NeedGPSItemForCreateMarkerCB.Name = "NeedGPSItemForCreateMarkerCB";
             this.NeedGPSItemForCreateMarkerCB.Size = new System.Drawing.Size(188, 17);
             this.NeedGPSItemForCreateMarkerCB.TabIndex = 21;
@@ -9096,7 +9097,7 @@ namespace DayZeEditor
             // 
             this.EnableServerMarkersCB.AutoSize = true;
             this.EnableServerMarkersCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.EnableServerMarkersCB.Location = new System.Drawing.Point(10, 13);
+            this.EnableServerMarkersCB.Location = new System.Drawing.Point(10, 16);
             this.EnableServerMarkersCB.Name = "EnableServerMarkersCB";
             this.EnableServerMarkersCB.Size = new System.Drawing.Size(134, 17);
             this.EnableServerMarkersCB.TabIndex = 28;
@@ -9109,7 +9110,7 @@ namespace DayZeEditor
             // 
             this.ShowDistanceOnServerMarkersCB.AutoSize = true;
             this.ShowDistanceOnServerMarkersCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowDistanceOnServerMarkersCB.Location = new System.Drawing.Point(10, 59);
+            this.ShowDistanceOnServerMarkersCB.Location = new System.Drawing.Point(10, 56);
             this.ShowDistanceOnServerMarkersCB.Name = "ShowDistanceOnServerMarkersCB";
             this.ShowDistanceOnServerMarkersCB.Size = new System.Drawing.Size(190, 17);
             this.ShowDistanceOnServerMarkersCB.TabIndex = 30;
@@ -9569,13 +9570,14 @@ namespace DayZeEditor
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.darkLabel264);
+            this.groupBox6.Controls.Add(this.ShowPlayerPositionCB);
             this.groupBox6.Controls.Add(this.PlayerLocationNotifierCB);
             this.groupBox6.Controls.Add(this.CreateDeathMarkerCB);
             this.groupBox6.Controls.Add(this.CanOpenMapWithKeyBindingCB);
             this.groupBox6.Controls.Add(this.NeedGPSItemForKeyBindingCB);
             this.groupBox6.Controls.Add(this.NeedMapItemForKeyBindingCB);
             this.groupBox6.Controls.Add(this.ShowMapStatsCB);
-            this.groupBox6.Controls.Add(this.ShowPlayerPositionCB);
             this.groupBox6.Controls.Add(this.UseMapOnMapItemCB);
             this.groupBox6.Controls.Add(this.EnableMapCB);
             this.groupBox6.ForeColor = System.Drawing.SystemColors.Control;
@@ -9586,11 +9588,36 @@ namespace DayZeEditor
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Map";
             // 
+            // darkLabel264
+            // 
+            this.darkLabel264.AutoSize = true;
+            this.darkLabel264.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel264.Location = new System.Drawing.Point(8, 56);
+            this.darkLabel264.Name = "darkLabel264";
+            this.darkLabel264.Size = new System.Drawing.Size(106, 13);
+            this.darkLabel264.TabIndex = 110;
+            this.darkLabel264.Text = "Show Player Position";
+            // 
+            // ShowPlayerPositionCB
+            // 
+            this.ShowPlayerPositionCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ShowPlayerPositionCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.ShowPlayerPositionCB.FormattingEnabled = true;
+            this.ShowPlayerPositionCB.Items.AddRange(new object[] {
+            "not visible",
+            "visible",
+            "visible if the player have a compass"});
+            this.ShowPlayerPositionCB.Location = new System.Drawing.Point(10, 74);
+            this.ShowPlayerPositionCB.Name = "ShowPlayerPositionCB";
+            this.ShowPlayerPositionCB.Size = new System.Drawing.Size(200, 21);
+            this.ShowPlayerPositionCB.TabIndex = 109;
+            this.ShowPlayerPositionCB.SelectedIndexChanged += new System.EventHandler(this.ShowPlayerPositionCB_SelectedIndexChanged);
+            // 
             // PlayerLocationNotifierCB
             // 
             this.PlayerLocationNotifierCB.AutoSize = true;
             this.PlayerLocationNotifierCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.PlayerLocationNotifierCB.Location = new System.Drawing.Point(10, 197);
+            this.PlayerLocationNotifierCB.Location = new System.Drawing.Point(10, 200);
             this.PlayerLocationNotifierCB.Name = "PlayerLocationNotifierCB";
             this.PlayerLocationNotifierCB.Size = new System.Drawing.Size(135, 17);
             this.PlayerLocationNotifierCB.TabIndex = 29;
@@ -9603,7 +9630,7 @@ namespace DayZeEditor
             // 
             this.CreateDeathMarkerCB.AutoSize = true;
             this.CreateDeathMarkerCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CreateDeathMarkerCB.Location = new System.Drawing.Point(10, 174);
+            this.CreateDeathMarkerCB.Location = new System.Drawing.Point(10, 180);
             this.CreateDeathMarkerCB.Name = "CreateDeathMarkerCB";
             this.CreateDeathMarkerCB.Size = new System.Drawing.Size(125, 17);
             this.CreateDeathMarkerCB.TabIndex = 28;
@@ -9616,7 +9643,7 @@ namespace DayZeEditor
             // 
             this.CanOpenMapWithKeyBindingCB.AutoSize = true;
             this.CanOpenMapWithKeyBindingCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.CanOpenMapWithKeyBindingCB.Location = new System.Drawing.Point(10, 105);
+            this.CanOpenMapWithKeyBindingCB.Location = new System.Drawing.Point(10, 120);
             this.CanOpenMapWithKeyBindingCB.Name = "CanOpenMapWithKeyBindingCB";
             this.CanOpenMapWithKeyBindingCB.Size = new System.Drawing.Size(182, 17);
             this.CanOpenMapWithKeyBindingCB.TabIndex = 23;
@@ -9629,7 +9656,7 @@ namespace DayZeEditor
             // 
             this.NeedGPSItemForKeyBindingCB.AutoSize = true;
             this.NeedGPSItemForKeyBindingCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.NeedGPSItemForKeyBindingCB.Location = new System.Drawing.Point(10, 128);
+            this.NeedGPSItemForKeyBindingCB.Location = new System.Drawing.Point(10, 140);
             this.NeedGPSItemForKeyBindingCB.Name = "NeedGPSItemForKeyBindingCB";
             this.NeedGPSItemForKeyBindingCB.Size = new System.Drawing.Size(177, 17);
             this.NeedGPSItemForKeyBindingCB.TabIndex = 25;
@@ -9642,7 +9669,7 @@ namespace DayZeEditor
             // 
             this.NeedMapItemForKeyBindingCB.AutoSize = true;
             this.NeedMapItemForKeyBindingCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.NeedMapItemForKeyBindingCB.Location = new System.Drawing.Point(10, 151);
+            this.NeedMapItemForKeyBindingCB.Location = new System.Drawing.Point(10, 160);
             this.NeedMapItemForKeyBindingCB.Name = "NeedMapItemForKeyBindingCB";
             this.NeedMapItemForKeyBindingCB.Size = new System.Drawing.Size(176, 17);
             this.NeedMapItemForKeyBindingCB.TabIndex = 27;
@@ -9655,7 +9682,7 @@ namespace DayZeEditor
             // 
             this.ShowMapStatsCB.AutoSize = true;
             this.ShowMapStatsCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowMapStatsCB.Location = new System.Drawing.Point(10, 83);
+            this.ShowMapStatsCB.Location = new System.Drawing.Point(10, 101);
             this.ShowMapStatsCB.Name = "ShowMapStatsCB";
             this.ShowMapStatsCB.Size = new System.Drawing.Size(104, 17);
             this.ShowMapStatsCB.TabIndex = 18;
@@ -9664,24 +9691,11 @@ namespace DayZeEditor
             this.ShowMapStatsCB.UseVisualStyleBackColor = true;
             this.ShowMapStatsCB.CheckedChanged += new System.EventHandler(this.ShowMapStatsCB_CheckedChanged);
             // 
-            // ShowPlayerPositionCB
-            // 
-            this.ShowPlayerPositionCB.AutoSize = true;
-            this.ShowPlayerPositionCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ShowPlayerPositionCB.Location = new System.Drawing.Point(10, 60);
-            this.ShowPlayerPositionCB.Name = "ShowPlayerPositionCB";
-            this.ShowPlayerPositionCB.Size = new System.Drawing.Size(125, 17);
-            this.ShowPlayerPositionCB.TabIndex = 17;
-            this.ShowPlayerPositionCB.Text = "Show Player Position";
-            this.ShowPlayerPositionCB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ShowPlayerPositionCB.UseVisualStyleBackColor = true;
-            this.ShowPlayerPositionCB.CheckedChanged += new System.EventHandler(this.ShowPlayerPositionCB_CheckedChanged);
-            // 
             // UseMapOnMapItemCB
             // 
             this.UseMapOnMapItemCB.AutoSize = true;
             this.UseMapOnMapItemCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.UseMapOnMapItemCB.Location = new System.Drawing.Point(10, 37);
+            this.UseMapOnMapItemCB.Location = new System.Drawing.Point(10, 36);
             this.UseMapOnMapItemCB.Name = "UseMapOnMapItemCB";
             this.UseMapOnMapItemCB.Size = new System.Drawing.Size(133, 17);
             this.UseMapOnMapItemCB.TabIndex = 16;
@@ -9694,7 +9708,7 @@ namespace DayZeEditor
             // 
             this.EnableMapCB.AutoSize = true;
             this.EnableMapCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.EnableMapCB.Location = new System.Drawing.Point(10, 14);
+            this.EnableMapCB.Location = new System.Drawing.Point(10, 18);
             this.EnableMapCB.Name = "EnableMapCB";
             this.EnableMapCB.Size = new System.Drawing.Size(83, 17);
             this.EnableMapCB.TabIndex = 15;
@@ -17476,7 +17490,7 @@ namespace DayZeEditor
             this.toolStripButton15.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton15.Image")));
             this.toolStripButton15.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton15.Name = "toolStripButton15";
-            this.toolStripButton15.Size = new System.Drawing.Size(101, 22);
+            this.toolStripButton15.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton15.Text = "Starting Clothing";
             this.toolStripButton15.Click += new System.EventHandler(this.toolStripButton15_Click);
             // 
@@ -17496,7 +17510,7 @@ namespace DayZeEditor
             this.toolStripButton16.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton16.Image")));
             this.toolStripButton16.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton16.Name = "toolStripButton16";
-            this.toolStripButton16.Size = new System.Drawing.Size(79, 22);
+            this.toolStripButton16.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton16.Text = "Starting Gear";
             this.toolStripButton16.Click += new System.EventHandler(this.toolStripButton16_Click);
             // 
@@ -17516,7 +17530,7 @@ namespace DayZeEditor
             this.toolStripButton17.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton17.Image")));
             this.toolStripButton17.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton17.Name = "toolStripButton17";
-            this.toolStripButton17.Size = new System.Drawing.Size(51, 22);
+            this.toolStripButton17.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton17.Text = "Spawns";
             this.toolStripButton17.Click += new System.EventHandler(this.toolStripButton17_Click);
             // 
@@ -17536,12 +17550,13 @@ namespace DayZeEditor
             this.toolStripButton19.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton19.Image")));
             this.toolStripButton19.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton19.Name = "toolStripButton19";
-            this.toolStripButton19.Size = new System.Drawing.Size(60, 22);
+            this.toolStripButton19.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton19.Text = "Loadouts";
             this.toolStripButton19.Click += new System.EventHandler(this.toolStripButton19_Click);
             // 
             // VehicleSettingsTabPage
             // 
+            this.VehicleSettingsTabPage.AutoScroll = true;
             this.VehicleSettingsTabPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.VehicleSettingsTabPage.Controls.Add(this.groupBox80);
             this.VehicleSettingsTabPage.Controls.Add(this.groupBox78);
@@ -19752,7 +19767,6 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox CanCreateMarkerCB;
         private System.Windows.Forms.CheckBox NeedPenItemForCreateMarkerCB;
         private System.Windows.Forms.CheckBox ShowMapStatsCB;
-        private System.Windows.Forms.CheckBox ShowPlayerPositionCB;
         private System.Windows.Forms.CheckBox UseMapOnMapItemCB;
         private System.Windows.Forms.CheckBox EnableMapCB;
         private System.Windows.Forms.TrackBar trackBar4;
@@ -20832,5 +20846,7 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox OnlyInviteGroupMemberTCB;
         private System.Windows.Forms.CheckBox EnableAIGravecrossCB;
         private System.Windows.Forms.CheckBox DisablePlayerCollisionCB;
+        private DarkUI.Controls.DarkLabel darkLabel264;
+        private System.Windows.Forms.ComboBox ShowPlayerPositionCB;
     }
 }

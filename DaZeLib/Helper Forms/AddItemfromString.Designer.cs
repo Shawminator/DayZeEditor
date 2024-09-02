@@ -46,7 +46,7 @@ namespace DayZeLib
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(244, 28);
+            this.panel1.Size = new System.Drawing.Size(427, 28);
             this.panel1.TabIndex = 8;
             // 
             // CloseButton
@@ -56,7 +56,7 @@ namespace DayZeLib
             this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CloseButton.ForeColor = System.Drawing.Color.DarkRed;
-            this.CloseButton.Location = new System.Drawing.Point(200, -1);
+            this.CloseButton.Location = new System.Drawing.Point(383, -1);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(41, 28);
             this.CloseButton.TabIndex = 7;
@@ -77,10 +77,10 @@ namespace DayZeLib
             // darkButton1
             // 
             this.darkButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.darkButton1.Location = new System.Drawing.Point(124, 408);
+            this.darkButton1.Location = new System.Drawing.Point(211, 408);
             this.darkButton1.Name = "darkButton1";
             this.darkButton1.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton1.Size = new System.Drawing.Size(106, 23);
+            this.darkButton1.Size = new System.Drawing.Size(204, 23);
             this.darkButton1.TabIndex = 10;
             this.darkButton1.Text = "OK";
             // 
@@ -90,7 +90,7 @@ namespace DayZeLib
             this.darkButton2.Location = new System.Drawing.Point(12, 408);
             this.darkButton2.Name = "darkButton2";
             this.darkButton2.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton2.Size = new System.Drawing.Size(106, 23);
+            this.darkButton2.Size = new System.Drawing.Size(193, 23);
             this.darkButton2.TabIndex = 11;
             this.darkButton2.Text = "Cancel";
             // 
@@ -100,7 +100,7 @@ namespace DayZeLib
             this.richTextBox1.ForeColor = System.Drawing.SystemColors.Control;
             this.richTextBox1.Location = new System.Drawing.Point(10, 34);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(222, 368);
+            this.richTextBox1.Size = new System.Drawing.Size(405, 368);
             this.richTextBox1.TabIndex = 12;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -109,7 +109,7 @@ namespace DayZeLib
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(244, 443);
+            this.ClientSize = new System.Drawing.Size(427, 443);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.darkButton2);
             this.Controls.Add(this.darkButton1);

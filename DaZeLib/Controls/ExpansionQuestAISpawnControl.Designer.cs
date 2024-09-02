@@ -31,6 +31,7 @@ namespace DayZeEditor
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExpansionQuestAISpawnControl));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.StaticPatrolCanBeTriggeredByAICB = new System.Windows.Forms.CheckBox();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.StaticPatrolURVehiclesCB = new System.Windows.Forms.CheckBox();
             this.StaticPatrolURPlayersCB = new System.Windows.Forms.CheckBox();
@@ -110,7 +111,6 @@ namespace DayZeEditor
             this.darkLabel53 = new DarkUI.Controls.DarkLabel();
             this.StaticPatrolWaypointInterpolationCB = new System.Windows.Forms.ComboBox();
             this.StaticPatrolDespawnTimeNUD = new System.Windows.Forms.NumericUpDown();
-            this.StaticPatrolCanBeTriggeredByAICB = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox16.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -204,6 +204,19 @@ namespace DayZeEditor
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "AI Spawn";
+            // 
+            // StaticPatrolCanBeTriggeredByAICB
+            // 
+            this.StaticPatrolCanBeTriggeredByAICB.AutoSize = true;
+            this.StaticPatrolCanBeTriggeredByAICB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.StaticPatrolCanBeTriggeredByAICB.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolCanBeTriggeredByAICB.Location = new System.Drawing.Point(309, 148);
+            this.StaticPatrolCanBeTriggeredByAICB.Name = "StaticPatrolCanBeTriggeredByAICB";
+            this.StaticPatrolCanBeTriggeredByAICB.Size = new System.Drawing.Size(137, 17);
+            this.StaticPatrolCanBeTriggeredByAICB.TabIndex = 347;
+            this.StaticPatrolCanBeTriggeredByAICB.Text = "Can Be Triggered By AI";
+            this.StaticPatrolCanBeTriggeredByAICB.UseVisualStyleBackColor = true;
+            this.StaticPatrolCanBeTriggeredByAICB.CheckedChanged += new System.EventHandler(this.StaticPatrolCanBeTriggeredByAICB_CheckedChanged);
             // 
             // groupBox16
             // 
@@ -408,6 +421,7 @@ namespace DayZeEditor
             this.darkButton22.Size = new System.Drawing.Size(20, 20);
             this.darkButton22.TabIndex = 280;
             this.darkButton22.Text = "+";
+            this.darkButton22.Click += new System.EventHandler(this.darkButton22_Click);
             // 
             // darkButton21
             // 
@@ -419,6 +433,7 @@ namespace DayZeEditor
             this.darkButton21.Size = new System.Drawing.Size(20, 20);
             this.darkButton21.TabIndex = 281;
             this.darkButton21.Text = "-";
+            this.darkButton21.Click += new System.EventHandler(this.darkButton21_Click);
             // 
             // darkButton17
             // 
@@ -1349,19 +1364,6 @@ namespace DayZeEditor
             this.StaticPatrolDespawnTimeNUD.TabIndex = 321;
             this.StaticPatrolDespawnTimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.StaticPatrolDespawnTimeNUD.ValueChanged += new System.EventHandler(this.StaticPatrolDespawnTimeNUD_ValueChanged);
-            // 
-            // StaticPatrolCanBeTriggeredByAICB
-            // 
-            this.StaticPatrolCanBeTriggeredByAICB.AutoSize = true;
-            this.StaticPatrolCanBeTriggeredByAICB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.StaticPatrolCanBeTriggeredByAICB.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolCanBeTriggeredByAICB.Location = new System.Drawing.Point(309, 148);
-            this.StaticPatrolCanBeTriggeredByAICB.Name = "StaticPatrolCanBeTriggeredByAICB";
-            this.StaticPatrolCanBeTriggeredByAICB.Size = new System.Drawing.Size(137, 17);
-            this.StaticPatrolCanBeTriggeredByAICB.TabIndex = 347;
-            this.StaticPatrolCanBeTriggeredByAICB.Text = "Can Be Triggered By AI";
-            this.StaticPatrolCanBeTriggeredByAICB.UseVisualStyleBackColor = true;
-            this.StaticPatrolCanBeTriggeredByAICB.CheckedChanged += new System.EventHandler(this.StaticPatrolCanBeTriggeredByAICB_CheckedChanged);
             // 
             // ExpansionQuestAISpawnControl
             // 

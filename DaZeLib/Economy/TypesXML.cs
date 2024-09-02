@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.IO.Ports;
 using System.Linq;
 using System.Xml.Serialization;
@@ -347,6 +348,15 @@ namespace DayZeLib
                 usage.Add(new typesTypeUsage() { name = u.name });
             }
         }
+        public void AddnewUserUsage(user_listsUser uu)
+        {
+            if (usage == null)
+                usage = new BindingList<typesTypeUsage>();
+            if (!usage.Any(x => x.user == uu.name))
+            {
+                usage.Add(new typesTypeUsage() { user = uu.name });
+            }
+        }
         public void removeusage(typesTypeUsage u)
         {
             if (usage == null) return;
@@ -436,6 +446,8 @@ namespace DayZeLib
             if (value != null)
                 value = null;
         }
+
+
     }
 
     /// <remarks/>
@@ -577,9 +589,23 @@ namespace DayZeLib
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class typesTypeUsage
     {
-
+        private string userField;
         private string nameField;
 
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string user
+        {
+            get
+            {
+                return this.userField;
+            }
+            set
+            {
+                this.userField = value;
+            }
+        }
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string name
@@ -596,7 +622,12 @@ namespace DayZeLib
 
         public override string ToString()
         {
-            return name;
+            string r = "";
+            if(name != null && user == null)
+                r = name;
+            else if (name == null && user != null)
+                r = user;
+            return r;
         }
     }
 
@@ -673,8 +704,4 @@ namespace DayZeLib
             return name;
         }
     }
-
-
-
-
 }

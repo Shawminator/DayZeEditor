@@ -4036,7 +4036,7 @@ namespace DayZeEditor
 
             EnableMapCB.Checked = MapSettings.EnableMap == 1 ? true : false;
             UseMapOnMapItemCB.Checked = MapSettings.UseMapOnMapItem == 1 ? true : false;
-            ShowPlayerPositionCB.Checked = MapSettings.ShowPlayerPosition == 1 ? true : false;
+            ShowPlayerPositionCB.SelectedIndex = MapSettings.ShowPlayerPosition;
             ShowMapStatsCB.Checked = MapSettings.ShowMapStats == 1 ? true : false;
             NeedPenItemForCreateMarkerCB.Checked = MapSettings.NeedPenItemForCreateMarker == 1 ? true : false;
             NeedGPSItemForCreateMarkerCB.Checked = MapSettings.NeedGPSItemForCreateMarker == 1 ? true : false;
@@ -4302,10 +4302,10 @@ namespace DayZeEditor
             MapSettings.UseMapOnMapItem = UseMapOnMapItemCB.Checked == true ? 1 : 0;
             MapSettings.isDirty = true;
         }
-        private void ShowPlayerPositionCB_CheckedChanged(object sender, EventArgs e)
+        private void ShowPlayerPositionCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            MapSettings.ShowPlayerPosition = ShowPlayerPositionCB.Checked == true ? 1 : 0;
+            MapSettings.ShowPlayerPosition = ShowPlayerPositionCB.SelectedIndex;
             MapSettings.isDirty = true;
         }
         private void ShowMapStatsCB_CheckedChanged(object sender, EventArgs e)
@@ -9454,6 +9454,7 @@ namespace DayZeEditor
 
 
         #endregion personalstroage
+
 
     }
     public class NullToEmptyGearConverter : JsonConverter<ExpansionStartingGearItem>

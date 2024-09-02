@@ -502,10 +502,12 @@ namespace DayZeEditor
                     case QuExpansionQuestObjectiveTypeestType.AIPATROL:
                         QuestObjectivesAIPatrol AIPatrol = obj as QuestObjectivesAIPatrol;
                         AIPatrol.SetVec3List();
+                        expansionQuestAISpawnControlAIPatrol.setdirty(false);
                         jsonString = JsonSerializer.Serialize(AIPatrol, options);
                         break;
                     case QuExpansionQuestObjectiveTypeestType.AICAMP:
                         QuestObjectivesAICamp AICamp = obj as QuestObjectivesAICamp;
+                        expansionQuestAISpawnControlAICamp.setdirty(false);
                         AICamp.SetVec3List();
                         jsonString = JsonSerializer.Serialize(AICamp, options);
                         break;

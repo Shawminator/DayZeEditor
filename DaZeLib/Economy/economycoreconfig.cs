@@ -1242,6 +1242,72 @@ namespace DayZeLib
             File.WriteAllText(Filename, sw.ToString());
         }
     }
+    public class UserDefinitions
+    {
+        public user_lists userdefs { get; set; }
+        public string Filename { get; set; }
+        public bool isDirty = false;
+
+        public UserDefinitions(string filename)
+        {
+            Filename = filename;
+            if (File.Exists(Filename))
+            {
+                var mySerializer = new XmlSerializer(typeof(user_lists));
+                // To read the file, create a FileStream.
+                using (var myFileStream = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read))
+                {
+                    Console.Write("serializing " + Path.GetFileName(Filename));
+                    try
+                    {
+                        // Call the Deserialize method and cast to the object type.
+                        userdefs = (user_lists)mySerializer.Deserialize(myFileStream);
+                        if (userdefs != null)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("  OK....");
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("  Failed....");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        var form = Application.OpenForms["SplashForm"];
+                        if (form != null)
+                        {
+                            form.Invoke(new Action(() => { form.Close(); }));
+                        }
+                        MessageBox.Show("Error in " + Path.GetFileName(Filename) + "\n" + ex.Message.ToString() + "\n" + ex.InnerException.Message.ToString());
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine(Path.GetFileName(Filename) + " File not found, Creating new....");
+                userdefs = new user_lists();
+                SaveUserDefs();
+            }
+        }
+        public void SaveUserDefs(string saveTime = null)
+        {
+            if (saveTime != null)
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime);
+                File.Copy(Filename, Path.GetDirectoryName(Filename) + "\\Backup\\" + saveTime + "\\" + Path.GetFileName(Filename), true);
+            }
+            var serializer = new XmlSerializer(typeof(user_lists));
+            var ns = new XmlSerializerNamespaces();
+            ns.Add("", "");
+            var sw = new StringWriter();
+            sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>");
+            var xmlWriter = XmlWriter.Create(sw, new XmlWriterSettings() { OmitXmlDeclaration = true, Indent = true, });
+            serializer.Serialize(xmlWriter, userdefs, ns);
+            Console.WriteLine(sw.ToString());
+            File.WriteAllText(Filename, sw.ToString());
+        }
+    }
 
 
 }

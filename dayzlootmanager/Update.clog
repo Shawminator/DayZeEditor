@@ -1,4 +1,27 @@
-﻿Version 0.8.1.5
+﻿Version 0.8.2.0
+[Fixed]
+Economy manager - Fixed Spawnabletypes attchemnts/cargo not showing.
+
+Version 0.8.1.9
+[Fixed]
+Economy manager - User defs when adding was checking for current type, would crash if one not selected.
+
+Version 0.8.1.8
+[Fixed]
+Expansion Quests - Unable to add/remove Waypoints to Ai Patrol and Ai Camp Objectives
+Expansion Map - Fixed player position from bool to int with trhee options.
+Economy Types - Added User definitions to Usage.
+Economy Manager - User def Manager, Can now create user definitions for usage and values.
+
+Version 0.8.1.7
+[Added]
+BP Workbench Manager
+WorkBench Redux Manager
+
+Version 0.8.1.6
+Forgot to add in the DLLs for the image convertor
+
+Version 0.8.1.5
 [Fixed]
 Expansion Quests - missed chance option from quest rewards.
 Economy - Ficed damage not appearing on items in the spawnabletypes.

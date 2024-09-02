@@ -110,7 +110,7 @@ namespace DayZeEditor
         [JsonIgnore]
         public Limitsdefinitions limitfefinitions { get; set; }
         [JsonIgnore]
-        public Limitsdefinitionsuser limitfefinitionsuser { get; set; }
+        public UserDefinitions limitfefinitionsuser { get; set; }
         [JsonIgnore]
         public cfgplayerspawnpoints cfgplayerspawnpoints { get; set; }
         [JsonIgnore]
@@ -403,7 +403,7 @@ namespace DayZeEditor
         }
         public void setuserdefinitions()
         {
-            limitfefinitionsuser = new Limitsdefinitionsuser(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfglimitsdefinitionuser.xml");
+            limitfefinitionsuser = new UserDefinitions(projectFullName + "\\mpmissions\\" + mpmissionpath + "\\cfglimitsdefinitionuser.xml");
         }
         public void setplayerspawns()
         {

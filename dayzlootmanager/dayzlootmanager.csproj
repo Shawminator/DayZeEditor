@@ -124,6 +124,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\GitHub.cs" />
+    <Compile Include="Forms\WorkBenchReduxManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WorkBenchReduxManager.Designer.cs">
+      <DependentUpon>WorkBenchReduxManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ImageConvertor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -422,6 +428,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\WorkBenchReduxManager.resx">
+      <DependentUpon>WorkBenchReduxManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ImageConvertor.resx">
       <DependentUpon>ImageConvertor.cs</DependentUpon>
     </EmbeddedResource>

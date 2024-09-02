@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
+using System.Web.UI.Design.WebControls;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
@@ -60,7 +61,9 @@ namespace DayZeLib
                                 int usagecount = type.usage.Count;
                                 for (int i = 0; i < usagecount; i++)
                                 {
-                                    if (type.usage[i].name == null || type.usage[i].name == "")
+                                    if (type.usage[i].name == null && type.usage[i].user == null
+                                        || type.usage[i].name == null && type.usage[i].user == ""
+                                        || type.usage[i].name == "" && type.usage[i].user == null)
                                     {
                                         type.usage.Remove(type.usage[i]);
                                         i--;

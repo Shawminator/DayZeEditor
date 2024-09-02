@@ -59,6 +59,11 @@ namespace DayZeEditor
             }
         }
 
+        public void setdirty(bool v)
+        {
+            _isdirty = v;
+        }
+
         public Vec3 CurrentWapypoint { get; private set; }
         private bool useraction { get; set; }
 
@@ -541,9 +546,51 @@ namespace DayZeEditor
         public void setAInumASReadOnly(bool v)
         {
             StaticPatrolNumberOfAINUD.ReadOnly = v;
-            StaticPatrolNumberOfAINUD.Increment = 0;
+            if (v == true)
+                StaticPatrolNumberOfAINUD.Increment = 0;
+            else
+                StaticPatrolNumberOfAINUD.Increment = 1;
         }
 
+        private void darkButton22_Click(object sender, EventArgs e)
+        {
+            if (_currentAISpawn._waypoints == null)
+                _currentAISpawn._waypoints = new BindingList<Vec3>();
+            _currentAISpawn._waypoints.Add(new Vec3(0, 0, 0));
+            isDirty = true;
+            StaticPatrolWayPointsLB.Refresh();
+            StaticPatrolWaypointPOSXNUD.Visible = true;
+            StaticPatrolWaypointPOSYNUD.Visible = true;
+            StaticPatrolWaypointPOSZNUD.Visible = true;
+            StaticPatrolWayPointsLB.SelectedIndex = -1;
+            StaticPatrolWayPointsLB.SelectedIndex = StaticPatrolWayPointsLB.Items.Count - 1;
+        }
 
+        private void darkButton21_Click(object sender, EventArgs e)
+        {
+            int index = StaticPatrolWayPointsLB.SelectedIndex;
+            _currentAISpawn._waypoints.Remove(CurrentWapypoint);
+            isDirty = true;
+            StaticPatrolWayPointsLB.Refresh();
+            StaticPatrolWayPointsLB.SelectedIndex = -1;
+            if (StaticPatrolWayPointsLB.Items.Count > 0)
+            {
+                if (StaticPatrolWayPointsLB.Items.Count == index)
+                {
+                    StaticPatrolWayPointsLB.SelectedIndex = index - 1;
+                }
+                else
+                {
+                    StaticPatrolWayPointsLB.SelectedIndex = index;
+                }
+            }
+            else
+            {
+                StaticPatrolWayPointsLB.SelectedIndex = -1;
+                StaticPatrolWaypointPOSXNUD.Visible = false;
+                StaticPatrolWaypointPOSYNUD.Visible = false;
+                StaticPatrolWaypointPOSZNUD.Visible = false;
+            }
+        }
     }
 }

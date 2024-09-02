@@ -30,7 +30,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.8.1.5";
+        public string VersionNumber = "0.8.2.0";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -469,10 +469,15 @@ namespace DayZeEditor
                 else
                     PVZCZManagerButton.Visible = false;
 
-                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\Advanced_Workbench\\AdvancedWorkBenchConfig.json"))
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\BP_WorkBench.json"))
                     AdvancedWorkbenchButton.Visible = true;
                 else
                     AdvancedWorkbenchButton.Visible = false;
+
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\Workbench_Redux\\Workbench_Redux.json"))
+                    WorkBenchReduxButton.Visible = true;
+                else
+                    WorkBenchReduxButton.Visible = false;
 
                 if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\Capare_Workbench\\CapareWorkBenchConfig.json"))
                     CapareWorkBenchManagerButton.Visible = true;
@@ -1100,8 +1105,35 @@ namespace DayZeEditor
 
                 };
                 _TM.Show();
-                Console.WriteLine("loading AdvancedWorkBenchManager manager....");
-                label1.Text = "RH Advanced Workbench manager";
+                Console.WriteLine("loading BP WorkBenchManager manager....");
+                label1.Text = "BP Workbench manager";
+            }
+            timer1.Start();
+        }
+        private void WorkBenchReduxButton_Click(object sender, EventArgs e)
+        {
+            WorkBenchReduxManager _TM = Application.OpenForms["WorkBenchReduxManager"] as WorkBenchReduxManager;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new WorkBenchReduxManager
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+
+                };
+                _TM.Show();
+                Console.WriteLine("loading WorkBenchReduxManager manager....");
+                label1.Text = "Workbench Redux manager";
             }
             timer1.Start();
         }
@@ -1373,6 +1405,8 @@ namespace DayZeEditor
                 }
             }
         }
+
+
     }
 }
 
