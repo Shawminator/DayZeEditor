@@ -201,7 +201,6 @@ namespace DayZeEditor
             this.darkButton3.Size = new System.Drawing.Size(113, 23);
             this.darkButton3.TabIndex = 108;
             this.darkButton3.Text = "Continue";
-            this.darkButton3.Click += new System.EventHandler(this.darkButton3_Click);
             // 
             // IsConsoleCB
             // 

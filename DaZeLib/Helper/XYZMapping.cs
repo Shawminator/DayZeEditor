@@ -230,7 +230,7 @@ namespace DayZeLib
         }
         public float gethieght(float v1, float v2)
         {
-            if (Mappoints.Count == 0)
+            if (Mappoints == null || Mappoints.Count == 0)
                 loadpoints();
             //CreateNewData(); only used to bin map file
             //List<Vec3> points = new List<Vec3>();

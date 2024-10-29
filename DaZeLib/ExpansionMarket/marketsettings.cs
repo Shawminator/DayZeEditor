@@ -5,7 +5,7 @@ namespace DayZeLib
 {
     public class MarketSettings
     {
-        const int CurrentVersion = 13;
+        const int CurrentVersion = 15;
 
         public int m_Version { get; set; }
         public int MarketSystemEnabled { get; set; }
@@ -35,6 +35,8 @@ namespace DayZeLib
 
         public decimal MaxSZVehicleParkingTime { get; set; }
         public int SZVehicleParkingTicketFine { get; set; }
+        public int SZVehicleParkingFineUseKey { get; set; }
+        public int DisallowUnpersisted { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }
@@ -91,13 +93,15 @@ namespace DayZeLib
             {
                 "expansionbanknotehryvnia"
             };
-            MaxSZVehicleParkingTime = 30 * 60;  //! 30 minutes
-            SZVehicleParkingTicketFine = 0;
-
             VehicleKeys = new BindingList<string>()
             {
                 "ExpansionCarKey"
             };
+            MaxSZVehicleParkingTime = 1800;  //! 30 minutes
+            SZVehicleParkingTicketFine = 0;
+            SZVehicleParkingFineUseKey = 1;
+            DisallowUnpersisted = 0;
+
 
         }
 

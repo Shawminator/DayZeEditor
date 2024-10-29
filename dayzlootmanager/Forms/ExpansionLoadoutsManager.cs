@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Windows.Forms;
+using TreeViewMS;
 
 namespace DayZeEditor
 {
@@ -28,6 +29,8 @@ namespace DayZeEditor
         public Inventoryattachment CurrentInventoryattachment { get; private set; }
         public AILoadouts CurrentAIloadouts { get; private set; }
         public Health Currenthealth { get; private set; }
+
+        public TreeNode CurrentTreenode { get; set; }
 
         private bool useraction;
 
@@ -215,6 +218,64 @@ namespace DayZeEditor
                 File.Delete(CurrentAILoadoutsFile.Filename);
                 LoadoutList.Remove(CurrentAILoadoutsFile);
             }
+        }
+        private void treeViewMS1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            useraction = false;
+            treeViewMS1.SelectedNode = e.Node;
+            CurrentTreeNodeTag = e.Node.Tag;
+            CurrentTreenode = e.Node;
+
+            AddNewAttachmentItemToolStripMenuItem.Visible = false;
+            RemoveAttachemtItemToolStripMenuItem.Visible = false;
+            AddNewCargoItemToolStripMenuItem.Visible = false;
+            RemoveCargoItemToolStripMenuItem.Visible = false;
+            AddNewSetItemToolStripMenuItem.Visible = false;
+            RemoveSetItemToolStripMenuItem.Visible = false;
+            addNewItemToolStripMenuItem.Visible = false;
+            removeItemToolStripMenuItem.Visible = false;
+
+            LoadOutGB.Visible = false;
+            InventoryattchemntGB.Visible = false;
+            //HealthGB.Visible = false;
+            LoadOutGB.Visible = false;
+
+            if (e.Node.Parent != null && e.Node.Tag is Inventoryattachment)
+            {
+                InventoryattchemntGB.Visible = true;
+                CurrentAIloadouts = e.Node.Parent.Tag as AILoadouts;
+                CurrentInventoryattachment = e.Node.Tag as Inventoryattachment;
+                useraction = false;
+                string slotname = CurrentInventoryattachment.SlotName;
+                if (CurrentInventoryattachment.SlotName == "")
+                    slotname = "Default Slot";
+                ItemAttachmentSlotNameCB.SelectedIndex = ItemAttachmentSlotNameCB.FindStringExact(slotname);
+                useraction = true;
+            }
+            else if (e.Node.Parent != null && e.Node.Tag is AILoadouts)
+            {
+                LoadOutGB.Visible = true;
+                CurrentAIloadouts = e.Node.Tag as AILoadouts;
+
+                useraction = false;
+                textBox1.Text = CurrentAIloadouts.ClassName;
+                numericUpDown1.Value = CurrentAIloadouts.Chance;
+                numericUpDown2.Value = CurrentAIloadouts.Quantity.Min;
+                numericUpDown3.Value = CurrentAIloadouts.Quantity.Max;
+
+
+                listBox1.DisplayMember = "DisplayName";
+                listBox1.ValueMember = "Value";
+                listBox1.DataSource = CurrentAIloadouts.Health;
+                if (CurrentAIloadouts.Health.Count > 0)
+                    groupBox1.Visible = true;
+                else
+                    groupBox1.Visible = false;
+                useraction = false;
+
+            }
+
+            useraction = true;
         }
         private void treeViewMS1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
@@ -531,20 +592,41 @@ namespace DayZeEditor
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            CurrentAIloadouts.Chance = numericUpDown1.Value;
-            CurrentAILoadoutsFile.isDirty = true;
+            foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+            {
+                if (tn.Tag is AILoadouts)
+                {
+                    AILoadouts looptype = tn.Tag as AILoadouts;
+                    looptype.Chance = numericUpDown1.Value;
+                    CurrentAILoadoutsFile.isDirty = true;
+                }
+            }
         }
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            CurrentAIloadouts.Quantity.Min = numericUpDown2.Value;
-            CurrentAILoadoutsFile.isDirty = true;
+            foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+            {
+                if (tn.Tag is AILoadouts)
+                {
+                    AILoadouts looptype = tn.Tag as AILoadouts;
+                    looptype.Quantity.Min = numericUpDown2.Value;
+                    CurrentAILoadoutsFile.isDirty = true;
+                }
+            }
         }
         private void numericUpDown3_ValueChanged(object sender, EventArgs e)
         {
             if (!useraction) return;
-            CurrentAIloadouts.Quantity.Max = numericUpDown2.Value;
-            CurrentAILoadoutsFile.isDirty = true;
+            foreach (TreeNode tn in treeViewMS1.SelectedNodes)
+            {
+                if (tn.Tag is AILoadouts)
+                {
+                    AILoadouts looptype = tn.Tag as AILoadouts;
+                    looptype.Quantity.Max = numericUpDown3.Value;
+                    CurrentAILoadoutsFile.isDirty = true;
+                }
+            }
         }
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -684,6 +766,17 @@ namespace DayZeEditor
                     savefiles();
                 }
             }
+        }
+
+        private void darkLabel1_Click(object sender, EventArgs e)
+        {
+            treeViewMS1.SelectedNode.ExpandAll();
+            treeViewMS1.Focus();
+        }
+
+        private void darkLabel2_Click(object sender, EventArgs e)
+        {
+            treeViewMS1.SelectedNode.Collapse();
         }
     }
 }

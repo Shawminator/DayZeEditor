@@ -1921,7 +1921,7 @@ namespace DayZeLib
                 foreach (FactionReps fr in FactionReputation)
                 {
                     bw.Write(fr.FactionID);
-                    bw.Write(fr.FactionID);
+                    bw.Write(fr.FactionRep);
                 }
                 bw.Write(FactionID);
                 bw.Write(PersonalStorageLevel);
@@ -1950,6 +1950,16 @@ namespace DayZeLib
         {
             Reputation = value;
         }
+
+        public void SetStorageLevel(int value)
+        {
+            PersonalStorageLevel = value;
+        }
+
+        public void SetMostRecentFaction(int factionID)
+        {
+            FactionID = factionID;
+        }
     }
     public class FactionReps
     {
@@ -1961,6 +1971,12 @@ namespace DayZeLib
             FactionID = br.ReadInt32();
             FactionRep = br.ReadInt32();
         }
+
+        public void SetFactionReputation(int value)
+        {
+            FactionRep = value;
+        }
+
         public override string ToString()
         {
             return FactionID.ToString();

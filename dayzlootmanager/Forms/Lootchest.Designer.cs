@@ -213,7 +213,7 @@ namespace DayZeEditor
             this.darkToolStrip21.Location = new System.Drawing.Point(0, 0);
             this.darkToolStrip21.Name = "darkToolStrip21";
             this.darkToolStrip21.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
-            this.darkToolStrip21.Size = new System.Drawing.Size(1009, 45);
+            this.darkToolStrip21.Size = new System.Drawing.Size(1121, 45);
             this.darkToolStrip21.TabIndex = 49;
             this.darkToolStrip21.Text = "darkToolStrip21";
             // 
@@ -277,7 +277,7 @@ namespace DayZeEditor
             this.LootChestsLocationsLB.FormattingEnabled = true;
             this.LootChestsLocationsLB.Location = new System.Drawing.Point(1, 98);
             this.LootChestsLocationsLB.Name = "LootChestsLocationsLB";
-            this.LootChestsLocationsLB.Size = new System.Drawing.Size(226, 394);
+            this.LootChestsLocationsLB.Size = new System.Drawing.Size(226, 433);
             this.LootChestsLocationsLB.TabIndex = 89;
             this.LootChestsLocationsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.LootChestsLocationsLB.SelectedIndexChanged += new System.EventHandler(this.LootChestsLocationsLB_SelectedIndexChanged);
@@ -323,7 +323,7 @@ namespace DayZeEditor
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(365, 438);
+            this.groupBox1.Size = new System.Drawing.Size(365, 485);
             this.groupBox1.TabIndex = 91;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Loot chests";
@@ -339,7 +339,7 @@ namespace DayZeEditor
             0,
             0,
             131072});
-            this.ItemrarityChestNUD.Location = new System.Drawing.Point(93, 371);
+            this.ItemrarityChestNUD.Location = new System.Drawing.Point(93, 418);
             this.ItemrarityChestNUD.Maximum = new decimal(new int[] {
             1,
             0,
@@ -357,7 +357,7 @@ namespace DayZeEditor
             this.ItemrarityChestCB.AutoSize = true;
             this.ItemrarityChestCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.ItemrarityChestCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.ItemrarityChestCB.Location = new System.Drawing.Point(9, 374);
+            this.ItemrarityChestCB.Location = new System.Drawing.Point(9, 421);
             this.ItemrarityChestCB.Name = "ItemrarityChestCB";
             this.ItemrarityChestCB.Size = new System.Drawing.Size(71, 17);
             this.ItemrarityChestCB.TabIndex = 135;
@@ -383,7 +383,7 @@ namespace DayZeEditor
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel1.Location = new System.Drawing.Point(328, 397);
+            this.panel1.Location = new System.Drawing.Point(328, 444);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(31, 27);
             this.panel1.TabIndex = 133;
@@ -392,7 +392,7 @@ namespace DayZeEditor
             // darkButton28
             // 
             this.darkButton28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton28.Location = new System.Drawing.Point(214, 397);
+            this.darkButton28.Location = new System.Drawing.Point(214, 444);
             this.darkButton28.Name = "darkButton28";
             this.darkButton28.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton28.Size = new System.Drawing.Size(108, 23);
@@ -403,7 +403,7 @@ namespace DayZeEditor
             // darkButton24
             // 
             this.darkButton24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton24.Location = new System.Drawing.Point(93, 397);
+            this.darkButton24.Location = new System.Drawing.Point(93, 444);
             this.darkButton24.Name = "darkButton24";
             this.darkButton24.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton24.Size = new System.Drawing.Size(115, 23);
@@ -497,7 +497,7 @@ namespace DayZeEditor
             this.lootLB.Location = new System.Drawing.Point(93, 237);
             this.lootLB.Name = "lootLB";
             this.lootLB.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lootLB.Size = new System.Drawing.Size(229, 108);
+            this.lootLB.Size = new System.Drawing.Size(229, 134);
             this.lootLB.TabIndex = 122;
             this.lootLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.lootLB.SelectedIndexChanged += new System.EventHandler(this.lootLB_SelectedIndexChanged);
@@ -601,7 +601,7 @@ namespace DayZeEditor
             this.tabControl1.Location = new System.Drawing.Point(0, 73);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1009, 573);
+            this.tabControl1.Size = new System.Drawing.Size(1121, 620);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 92;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
@@ -613,7 +613,7 @@ namespace DayZeEditor
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1001, 544);
+            this.tabPage1.Size = new System.Drawing.Size(1113, 591);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             // 
@@ -641,7 +641,7 @@ namespace DayZeEditor
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl2);
             this.splitContainer1.Panel2.Controls.Add(this.darkToolStrip25);
-            this.splitContainer1.Size = new System.Drawing.Size(995, 538);
+            this.splitContainer1.Size = new System.Drawing.Size(1107, 585);
             this.splitContainer1.SplitterDistance = 228;
             this.splitContainer1.SplitterWidth = 10;
             this.splitContainer1.TabIndex = 125;
@@ -701,7 +701,7 @@ namespace DayZeEditor
             // darkButton6
             // 
             this.darkButton6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton6.Location = new System.Drawing.Point(123, 509);
+            this.darkButton6.Location = new System.Drawing.Point(123, 556);
             this.darkButton6.Name = "darkButton6";
             this.darkButton6.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton6.Size = new System.Drawing.Size(104, 23);
@@ -725,7 +725,7 @@ namespace DayZeEditor
             // darkButton5
             // 
             this.darkButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton5.Location = new System.Drawing.Point(1, 509);
+            this.darkButton5.Location = new System.Drawing.Point(1, 556);
             this.darkButton5.Name = "darkButton5";
             this.darkButton5.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton5.Size = new System.Drawing.Size(110, 23);
@@ -742,7 +742,7 @@ namespace DayZeEditor
             this.tabControl2.Location = new System.Drawing.Point(0, 28);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(757, 510);
+            this.tabControl2.Size = new System.Drawing.Size(869, 557);
             this.tabControl2.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl2.TabIndex = 228;
             this.tabControl2.SelectedIndexChanged += new System.EventHandler(this.tabControl2_SelectedIndexChanged);
@@ -757,7 +757,7 @@ namespace DayZeEditor
             this.tabPage5.Location = new System.Drawing.Point(4, 25);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(749, 481);
+            this.tabPage5.Size = new System.Drawing.Size(861, 528);
             this.tabPage5.TabIndex = 0;
             this.tabPage5.Text = "tabPage5";
             // 
@@ -1087,7 +1087,7 @@ namespace DayZeEditor
             this.darkToolStrip25.Location = new System.Drawing.Point(0, 0);
             this.darkToolStrip25.Name = "darkToolStrip25";
             this.darkToolStrip25.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
-            this.darkToolStrip25.Size = new System.Drawing.Size(757, 28);
+            this.darkToolStrip25.Size = new System.Drawing.Size(869, 28);
             this.darkToolStrip25.TabIndex = 227;
             this.darkToolStrip25.Text = "darkToolStrip25";
             // 
@@ -1827,7 +1827,7 @@ namespace DayZeEditor
             this.darkToolStrip23.Location = new System.Drawing.Point(0, 45);
             this.darkToolStrip23.Name = "darkToolStrip23";
             this.darkToolStrip23.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
-            this.darkToolStrip23.Size = new System.Drawing.Size(1009, 28);
+            this.darkToolStrip23.Size = new System.Drawing.Size(1121, 28);
             this.darkToolStrip23.TabIndex = 93;
             this.darkToolStrip23.Text = "darkToolStrip23";
             // 
@@ -1908,7 +1908,7 @@ namespace DayZeEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1009, 646);
+            this.ClientSize = new System.Drawing.Size(1121, 693);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.darkToolStrip23);
             this.Controls.Add(this.darkToolStrip21);

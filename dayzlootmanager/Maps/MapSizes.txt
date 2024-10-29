@@ -28,3 +28,4 @@ swansisland:2048
 anastara:10240
 alteria:8192
 bitterroot:12288
+sakhal:15360

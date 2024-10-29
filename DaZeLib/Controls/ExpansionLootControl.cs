@@ -508,5 +508,10 @@ namespace DayZeLib
             }
             isDirty = true;
         }
+
+        public void setdirty(bool v)
+        {
+            _isdirty = v;
+        }
     }
 }

@@ -5389,7 +5389,7 @@ namespace DayZeEditor
             this.ObjectivesCollectionAmountNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesCollectionAmountNUD.Location = new System.Drawing.Point(103, 222);
             this.ObjectivesCollectionAmountNUD.Maximum = new decimal(new int[] {
-            10000,
+            int.MaxValue,
             0,
             0,
             0});
@@ -5594,7 +5594,7 @@ namespace DayZeEditor
             this.ObjectivesDeliveryAmountNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.ObjectivesDeliveryAmountNUD.Location = new System.Drawing.Point(100, 18);
             this.ObjectivesDeliveryAmountNUD.Maximum = new decimal(new int[] {
-            10000,
+            int.MaxValue,
             0,
             0,
             0});

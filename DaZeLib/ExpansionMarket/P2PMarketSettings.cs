@@ -5,7 +5,7 @@ namespace DayZeLib
 {
     public class P2PMarketSettings
     {
-        public const int CurrentVersion = 2;
+        public const int CurrentVersion = 3;
 
         public int m_Version { get; set; }
         public int Enabled { get; set; }
@@ -16,6 +16,7 @@ namespace DayZeLib
         public BindingList<string> ExcludedClassNames { get; set; }
         public BindingList<ExpansionMenuCategory> MenuCategories { get; set; }
         public int SalesDepositTime { get; set; }
+        public int DisallowUnpersisted { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }
@@ -57,6 +58,7 @@ namespace DayZeLib
             ListingOwnerDiscountPercent = 70;
             ListingPricePercent = 30;
             SalesDepositTime = 691200;
+            DisallowUnpersisted = 0;
             ExcludedClassNames = new BindingList<string>();
             MenuCategories = new BindingList<ExpansionMenuCategory>();
 

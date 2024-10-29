@@ -10,8 +10,6 @@ namespace DayZeLib
 
         public cfgEffectArea()
         {
-            Areas = new BindingList<Areas>();
-            SafePositions = new BindingList<float[]>();
         }
 
         [JsonIgnore]
@@ -19,27 +17,35 @@ namespace DayZeLib
 
         public void convertpositionstolist()
         {
-            if (SafePositions == null)
-                SafePositions = new BindingList<float[]>();
-
-            _positions = new BindingList<Position>();
-            for (int i = 0; i < SafePositions.Count; i++)
+            if (SafePositions != null)
             {
-                _positions.Add(new Position()
+                _positions = new BindingList<Position>();
+                for (int i = 0; i < SafePositions.Count; i++)
                 {
-                    X = SafePositions[i][0],
-                    Z = SafePositions[i][1],
-                    Name = SafePositions[i][0].ToString() + "," + SafePositions[i][1]
+                    _positions.Add(new Position()
+                    {
+                        X = SafePositions[i][0],
+                        Z = SafePositions[i][1],
+                        Name = SafePositions[i][0].ToString() + "," + SafePositions[i][1]
+                    }
+                    );
                 }
-                );
+                SafePositions = null;
             }
         }
         public void convertlisttopositions()
         {
-            SafePositions = new BindingList<float[]>();
-            foreach (Position pos in _positions)
+            if (_positions != null)
             {
-                SafePositions.Add(new float[] { pos.X, pos.Z });
+                SafePositions = new BindingList<float[]>();
+                foreach (Position pos in _positions)
+                {
+                    SafePositions.Add(new float[] { pos.X, pos.Z });
+                }
+            }
+            else
+            {
+                SafePositions = null;
             }
         }
     }
@@ -55,11 +61,11 @@ namespace DayZeLib
     }
     public class Areas
     {
-        public string AreaName { get; set; }
-        public string Type { get; set; }
-        public string TriggerType { get; set; }
-        public Data Data { get; set; }
-        public PlayerData PlayerData { get; set; }
+         public string AreaName { get; set; }
+         public string Type { get; set; }
+         public string TriggerType { get; set; }
+         public Data Data { get; set; }
+         public PlayerData PlayerData { get; set; }
 
         public override string ToString()
         {
@@ -72,13 +78,13 @@ namespace DayZeLib
         public float Radius { get; set; }
         public float PosHeight { get; set; }
         public float NegHeight { get; set; }
-        public int InnerRingCount { get; set; }
-        public int InnerPartDist { get; set; }
-        public int OuterRingToggle { get; set; }
-        public int OuterPartDist { get; set; }
-        public int OuterOffset { get; set; }
-        public int VerticalLayers { get; set; }
-        public int VerticalOffset { get; set; }
+        public int? InnerRingCount { get; set; }
+        public int? InnerPartDist { get; set; }
+        public int? OuterRingToggle { get; set; }
+        public int? OuterPartDist { get; set; }
+        public int? OuterOffset { get; set; }
+        public int? VerticalLayers { get; set; }
+        public int? VerticalOffset { get; set; }
         public string ParticleName { get; set; }
 
         public void SetIntValue(string mytype, int myvalue)

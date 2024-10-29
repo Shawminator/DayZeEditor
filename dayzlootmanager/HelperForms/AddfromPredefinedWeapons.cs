@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace DayZeEditor
@@ -115,6 +117,13 @@ namespace DayZeEditor
                 LCPredefinedWeaponsLB.DisplayMember = "DisplayName";
                 LCPredefinedWeaponsLB.ValueMember = "Value";
                 LCPredefinedWeaponsLB.DataSource = Rhlootboxconfig;
+                WeaponList = new List<string>();
+            }
+            else
+            {
+                LCPredefinedWeaponsLB.DisplayMember = "DisplayName";
+                LCPredefinedWeaponsLB.ValueMember = "Value";
+                LCPredefinedWeaponsLB.DataSource = new BindingList<string>(File.ReadAllLines(Application.StartupPath + "\\TraderNPCs\\CJLootboxContainers.txt").ToList());
                 WeaponList = new List<string>();
             }
         }

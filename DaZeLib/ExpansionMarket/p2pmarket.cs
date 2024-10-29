@@ -12,7 +12,7 @@ namespace DayZeLib
 {
     public class P2PMarketList
     {
-        public const int CurrentVersion = 7;
+        public const int CurrentVersion = 8;
         public BindingList<p2pmarket> p2pmarketList { get; set; }
         public string Expansionp2pmarketPath { get; set; }
         public List<p2pmarket> Markedfordelete { get; set; }
@@ -95,7 +95,15 @@ namespace DayZeLib
                 Roamingwaypoints = new BindingList<Vec3>(),
                 m_EmoteID = 46,
                 m_EmoteIsStatic = 0,
+                m_RequiredFaction = "",
+                m_UseReputation = 0,
+                m_MinRequiredReputation = 0,
+                m_MaxRequiredReputation = 2147483647,
+                m_RequiredCompletedQuestID = -1,
                 m_IsGlobalTrader = 0,
+                m_Currencies = new BindingList<string>(),
+                m_DisplayCurrencyValue = 1,
+                m_DisplayCurrencyName = "",
                 isDirty = true
             };
             p2pmarketList.Add(newps);
@@ -133,6 +141,11 @@ namespace DayZeLib
         public BindingList<decimal[]> m_Waypoints { get; set; }
         public int m_EmoteID { get; set; }
         public int m_EmoteIsStatic { get; set; }
+        public string m_RequiredFaction { get; set; }
+        public int m_UseReputation { get;set; }
+        public int m_MinRequiredReputation { get; set; }
+        public int m_MaxRequiredReputation { get; set; }
+        public int m_RequiredCompletedQuestID { get; set; }
         public int m_IsGlobalTrader { get; set; }
         public BindingList<string> m_Currencies { get; set; }
         public int m_DisplayCurrencyValue { get; set; }

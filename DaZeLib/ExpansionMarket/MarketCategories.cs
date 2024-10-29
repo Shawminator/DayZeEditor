@@ -33,7 +33,7 @@ namespace DayZeLib
                     Directory.CreateDirectory(Path);
             }
             DirectoryInfo dinfo = new DirectoryInfo(Path);
-            FileInfo[] Files = dinfo.GetFiles("*.json");
+            FileInfo[] Files = dinfo.GetFiles("*.json", SearchOption.AllDirectories);
             Console.WriteLine("Getting MarketCategories");
             Console.WriteLine(Files.Length.ToString() + " Found");
             foreach (FileInfo file in Files)
@@ -95,6 +95,12 @@ namespace DayZeLib
                     {
                         cat.Filename = System.IO.Path.GetFileNameWithoutExtension(file.FullName);
                     }
+                    string folder = System.IO.Path.GetDirectoryName(file.FullName).Replace(Path, "");
+                    if(folder.Count() > 0)
+                    {
+                        folder = folder.Substring(1);
+                    }
+                    cat.Folder = folder;
                     cat.Items = new BindingList<marketItem>(new BindingList<marketItem>(cat.Items.OrderBy(x => x.ClassName).ToList()));
                     CatList.Add(cat);
                     if (savefile)
@@ -153,6 +159,7 @@ namespace DayZeLib
         {
             Categories NewCat = new Categories(catName.ToUpper().Replace("_", " "));
             NewCat.Filename = catName.ToUpper().Replace(" ", "_");
+            NewCat.Folder = "";
             NewCat.SortByDisplayName = SortedbyDisplayName;
             if (CatList.Any(x => x.Filename == catName.ToUpper().Replace(" ", "_")))
             {
@@ -298,6 +305,8 @@ namespace DayZeLib
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
+        public string Folder { get; set; }
+        [JsonIgnore]
         public bool SortByDisplayName { get; set; }
         [JsonIgnore]
         public bool isDirty = false;
@@ -389,6 +398,18 @@ namespace DayZeLib
                 var sortedListInstance = new BindingList<marketItem>(Items.OrderByDescending(x => x.MaxPriceThreshold).ThenBy(x => x.ClassName).ToList());
                 Items = sortedListInstance;
             }
+        }
+
+        internal string getfullname()
+        {
+            string name = "";
+            if(Folder != "")
+            {
+                name += Folder + "\\";
+            }
+            name += Filename;
+
+            return name;
         }
     }
     public class marketItem

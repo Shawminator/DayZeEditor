@@ -24,10 +24,23 @@ namespace DayZeLib
         RANDOM,
         RANDOM_NONSTATIC
     };
+    public enum eAILootingBehavior
+    {
+        NONE = 0,
+        WEAPONS_FIREARMS = 1,
+        WEAPONS_LAUNCHERS = 2,
+        WEAPONS_MELEE = 4,
+        WEAPONS = 7,  //! WEAPONS_FIREARMS | WEAPONS_LAUNCHERS | WEAPONS_MELEE
+        BANDAGES = 8,
+        CLOTHING = 16,
+        UPGRADE = 32,
+        DEFAULT = 7,  //! WEAPONS_FIREARMS | WEAPONS_LAUNCHERS | WEAPONS_MELEE
+        ALL = 63  //! WEAPONS | BANDAGES | CLOTHING | UPGRADE
+    };
     public class ExpansionAIPatrolSettings
     {
         [JsonIgnore]
-        const int CurrentVersion = 21;
+        const int CurrentVersion = 22;
         [JsonIgnore]
         public string Filename { get; set; }
         [JsonIgnore]
@@ -91,12 +104,12 @@ namespace DayZeLib
 
         private void DefaultCrashPatrols()
         {
-            ObjectPatrols.Add(new ExpansionAIObjectPatrol(-3, "WALK", "SPRINT", "HALT_OR_ALTERNATE", "West", "", true, false, (decimal)1.0, -2, -2, "Wreck_UH1Y"));
-            ObjectPatrols.Add(new ExpansionAIObjectPatrol(-3, "WALK", "SPRINT", "HALT_OR_ALTERNATE", "East", "", true, false, (decimal)1.0, -2, -2, "Wreck_Mi8_Crashed"));
-            ObjectPatrols.Add(new ExpansionAIObjectPatrol(-3, "WALK", "SPRINT", "HALT_OR_ALTERNATE", "East", "PoliceLoadout", true, false, (decimal)1.0, -2, -2, "Land_Wreck_sed01_aban1_police"));
-            ObjectPatrols.Add(new ExpansionAIObjectPatrol(-3, "WALK", "SPRINT", "HALT_OR_ALTERNATE", "East", "PoliceLoadout", true, false, (decimal)1.0, -2, -2, "Land_Wreck_sed01_aban2_police"));
-            ObjectPatrols.Add(new ExpansionAIObjectPatrol(-3, "JOG", "SPRINT", "HALT_OR_ALTERNATE", "West", "NBCLoadout", true, false, (decimal)1.0, -2, -2, "ContaminatedArea_Static"));
-            ObjectPatrols.Add(new ExpansionAIObjectPatrol(-3, "JOG", "SPRINT", "HALT_OR_ALTERNATE", "West", "NBCLoadout", true, false, (decimal)1.0, -2, -2, "ContaminatedArea_Dynamic"));
+            ObjectPatrols.Add(new ExpansionAIObjectPatrol(-3, "WALK", "SPRINT", "HALT_OR_ALTERNATE", "West", "", true, false, (decimal)1.0, -1, -1, "Wreck_UH1Y"));
+            ObjectPatrols.Add(new ExpansionAIObjectPatrol(-3, "WALK", "SPRINT", "HALT_OR_ALTERNATE", "East", "", true, false, (decimal)1.0, -1, -1, "Wreck_Mi8_Crashed"));
+            ObjectPatrols.Add(new ExpansionAIObjectPatrol(-3, "WALK", "SPRINT", "HALT_OR_ALTERNATE", "East", "PoliceLoadout", true, false, (decimal)1.0, -1, -1, "Land_Wreck_sed01_aban1_police"));
+            ObjectPatrols.Add(new ExpansionAIObjectPatrol(-3, "WALK", "SPRINT", "HALT_OR_ALTERNATE", "East", "PoliceLoadout", true, false, (decimal)1.0, -1, -1, "Land_Wreck_sed01_aban2_police"));
+            ObjectPatrols.Add(new ExpansionAIObjectPatrol(-3, "JOG", "SPRINT", "HALT_OR_ALTERNATE", "West", "NBCLoadout", true, false, (decimal)1.0, -1, -1, "ContaminatedArea_Static"));
+            ObjectPatrols.Add(new ExpansionAIObjectPatrol(-3, "JOG", "SPRINT", "HALT_OR_ALTERNATE", "West", "NBCLoadout", true, false, (decimal)1.0, -1, -1, "ContaminatedArea_Dynamic"));
         }
 
         public bool checkver()
@@ -168,6 +181,7 @@ namespace DayZeLib
         public BindingList<string> Units { get; set; }
         public int NumberOfAI { get; set; }
         public string Behaviour { get; set; }
+        public string LootingBehaviour { get; set; }
         public string Speed { get; set; }
         public string UnderThreatSpeed { get; set; }
         public int CanBeLooted { get; set; }
@@ -194,12 +208,13 @@ namespace DayZeLib
         public string ClassName { get; set; }
 
         public ExpansionAIObjectPatrol() { }
-        public ExpansionAIObjectPatrol(int bod = 1, string spd = "JOG", string threatspd = "SPRINT", string beh = "ALTERNATE", string fac = "WEST", string loa = "", bool canbelooted = true, bool unlimitedreload = false, decimal chance = (decimal)1.0, decimal mindistradius = -1, decimal maxdistradius = -1, string classname = "Wreck_UH1Y")
+        public ExpansionAIObjectPatrol(int bod = 1, string spd = "JOG", string threatspd = "SPRINT", string beh = "ALTERNATE",  string fac = "WEST", string loa = "", bool canbelooted = true, bool unlimitedreload = false, decimal chance = (decimal)1.0, decimal mindistradius = -1, decimal maxdistradius = -1, string classname = "Wreck_UH1Y")
         {
             NumberOfAI = bod;
             Speed = spd;
             UnderThreatSpeed = threatspd;
             Behaviour = beh;
+            LootingBehaviour = "DEFAULT";
             Faction = fac;
             Loadout = loa;
             CanBeLooted = canbelooted == true ? 1 : 0; ;
@@ -264,6 +279,7 @@ namespace DayZeLib
         public BindingList<string> Units { get; set; }
         public int NumberOfAI { get; set; }
         public string Behaviour { get; set; }
+        public string LootingBehaviour { get; set; }
         public string Speed { get; set; }
         public string UnderThreatSpeed { get; set; }
         public int CanBeLooted { get; set; }
@@ -301,6 +317,7 @@ namespace DayZeLib
             Units = new BindingList<string>();
             NumberOfAI = bod;
             Behaviour = beh;
+            LootingBehaviour = "DEFAULT";
             Speed = spd;
             UnderThreatSpeed = threatspd;
             CanBeLooted = canbelooted == true ? 1 : 0;

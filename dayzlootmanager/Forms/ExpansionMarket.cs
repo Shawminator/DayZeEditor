@@ -777,6 +777,9 @@ namespace DayZeEditor
             MaxLargeVehicleDistanceToTraderNUD.Value = (decimal)marketsettings.MaxLargeVehicleDistanceToTrader;
             MaxSZVehicleParkingTimeNUD.Value = (decimal)marketsettings.MaxSZVehicleParkingTime;
             SZVehicleParkingTicketFineNUD.Value = marketsettings.SZVehicleParkingTicketFine;
+            SZVehicleParkingFineUseKeyCB.Checked = marketsettings.SZVehicleParkingFineUseKey == 1 ? true : false;
+            DisallowUnpersistedCB.Checked = marketsettings.DisallowUnpersisted == 1 ? true: false;
+
             CurrencyIconTB.Text = marketsettings.CurrencyIcon;
 
             listBox7.DisplayMember = "Name";
@@ -1469,14 +1472,24 @@ namespace DayZeEditor
             marketsettings.MaxSZVehicleParkingTime = (int)MaxSZVehicleParkingTimeNUD.Value;
             marketsettings.isDirty = true;
         }
-
         private void SZVehicleParkingTicketFineNUD_ValueChanged(object sender, EventArgs e)
         {
             if (action) return;
             marketsettings.SZVehicleParkingTicketFine = (int)SZVehicleParkingTicketFineNUD.Value;
             marketsettings.isDirty = true;
         }
-
+        private void SZVehicleParkingFineUseKeyCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (action) return;
+            marketsettings.SZVehicleParkingFineUseKey = SZVehicleParkingFineUseKeyCB.Checked == true ? 1 : 0;
+            marketsettings.isDirty = true;
+        }
+        private void DisallowUnpersistedCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (action) return;
+            marketsettings.DisallowUnpersisted = DisallowUnpersistedCB.Checked == true ? 1 : 0;
+            marketsettings.isDirty = true;
+        }
         private void CurrencyIconTB_TextChanged(object sender, EventArgs e)
         {
             if (action) return;
@@ -4352,6 +4365,8 @@ namespace DayZeEditor
             setMarketItem();
             currentCat.isDirty = true;
         }
+
+
     }
 }
 

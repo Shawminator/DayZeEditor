@@ -496,6 +496,7 @@ namespace DayZeEditor
                         break;
                     case QuExpansionQuestObjectiveTypeestType.TREASUREHUNT:
                         QuestObjectivesTreasureHunt TreasureHunt = obj as QuestObjectivesTreasureHunt;
+                        expansionLootControlTH.setdirty(false);
                         TreasureHunt.SetVec3List();
                         jsonString = JsonSerializer.Serialize(TreasureHunt, options);
                         break;

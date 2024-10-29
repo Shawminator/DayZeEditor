@@ -262,10 +262,11 @@ namespace DayZeLib
                 }
                 try
                 {
-                    List<marketItem> itemslist = marketCats.GetCatFromFileName(results[0]).Items.ToList();
+                    string catfilename = System.IO.Path.GetFileNameWithoutExtension(results[0]);
+                    List<marketItem> itemslist = marketCats.GetCatFromFileName(catfilename).Items.ToList();
                     foreach (marketItem item in itemslist)
                     {
-                        TradersItem ti = new TradersItem() { ClassName = item.ClassName.ToLower(), buysell = cbs, CatName = results[0] };
+                        TradersItem ti = new TradersItem() { ClassName = item.ClassName.ToLower(), buysell = cbs, CatName = catfilename };
                         if (item.SpawnAttachments.Count > 0)
                             ti.HasAttachemnts = true;
                         if (item.Variants.Count > 0)
@@ -326,6 +327,8 @@ namespace DayZeLib
 
             foreach (string catname in CatNames)
             {
+                Categories cat = MarketCats.GetCatFromFileName(catname);
+                string Fullcatname = cat.getfullname();
                 List<marketItem> catitemlist = MarketCats.GetCatFromFileName(catname).Items.ToList();
                 if (catitemlist.Count == 0) continue;
                 List<string> TIlist = new List<string>();
@@ -344,9 +347,9 @@ namespace DayZeLib
                     int maxRepeated = buysell.GroupBy(s => s).OrderByDescending(s => s.Count()).First().Key;
                     canBuyCansell cbs = (canBuyCansell)maxRepeated;
                     if (cbs == canBuyCansell.CanBuyAndsell)
-                        cats.Add(catname);
+                        cats.Add(Fullcatname);
                     else
-                        cats.Add(catname + ":" + ((int)cbs).ToString());
+                        cats.Add(Fullcatname + ":" + ((int)cbs).ToString());
                     foreach (string B2item in TIlist)
                     {
                         TradersItem ti = ListItems.First(x => x.ClassName == B2item);

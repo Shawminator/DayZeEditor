@@ -177,9 +177,5 @@ namespace DayZeEditor
                 darkTextBox1.Visible = true;
             }
         }
-        private void darkButton3_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

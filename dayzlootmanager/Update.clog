@@ -1,4 +1,38 @@
-﻿Version 0.8.2.0
+﻿Version 0.8.2.5
+[Fixed]
+Economy Manager - Events - Group name was not saving changes
+Economt Manager - Event Groups - Was all kinds of messed up, should be more straight forward now.
+Expansion Manrket - Updated Cartegories to be able to read from nested folders. Still to add proper display but will work for now.
+Expansion Hardline - FIxed payer datat not reading the player data file correctly.
+
+Version 0.8.2.4
+[Update]
+Economy - updated cfgweather , cfggameplay, cfgplayerspawnpoints and cfgeffectarea to match 1.26
+[Added]
+Sakhal - Added map size to list and added Mpa and XYZ to map addons
+
+Version 0.8.2.3
+[Update]
+Expansion P2P - undate config to version 8.
+Expansion - reorder alot of the controls so they are in tab order.
+Expansion Loadouts - Added Expand/collapse buttons which work off of the currently selected treeview node.
+			       - Added Multiselect to edit the chance, quantity sections of loadout items,
+				   - Added selection through keybord rather than just mouse click
+Projects - Added file progress to console when creating a project from sftp/ftp.
+Traderplus - Fixed an error when converting to Expansion market.
+CJLootchest - moved chest list from harcoded to external text file.
+
+Version 0.8.2.2
+[Updated]
+Expasnion P2P Market - Added DisallowUnpersisted bool to p2pmarketsettings.
+expansion Market - Added SZVehicleParkingFineUseKey and DisallowUnpersisted bools to marketsettings
+
+Version 0.8.2.1
+[Update]
+Expansion configs updated to match their latest release.
+Expansion Market - made add varient window bigger to accomodate longer files names.
+
+Version 0.8.2.0
 [Fixed]
 Economy manager - Fixed Spawnabletypes attchemnts/cargo not showing.
 

@@ -66,6 +66,7 @@ namespace DayZeEditor
                 questrequiredfaction.Add(rf);
             }
             m_FactionCB.DataSource = new BindingList<string>(questrequiredfaction);
+            m_RequiredFactionCB.DataSource = new BindingList<string>(questrequiredfaction);
 
             m_ClassNameCB.DataSource = new BindingList<string>(File.ReadAllLines(Application.StartupPath + "\\TraderNPCs\\P2PNPCs.txt").ToList());
 
@@ -289,6 +290,7 @@ namespace DayZeEditor
             numericUpDown4.Value = P2PMarketSettings.ListingPricePercent;
             numericUpDown5.Value = P2PMarketSettings.SalesDepositTime;
             listBox1.DataSource = P2PMarketSettings.ExcludedClassNames;
+            checkBox2.Checked = P2PMarketSettings.DisallowUnpersisted == 1 ? true : false;
             useraction = true;
         }
         private void Loadtreeview()
@@ -737,6 +739,12 @@ namespace DayZeEditor
             P2PMarketSettings.SalesDepositTime = (int)numericUpDown5.Value;
             P2PMarketSettings.isDirty = true;
         }
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            P2PMarketSettings.DisallowUnpersisted = checkBox2.Checked == true ? 1 : 0;
+            P2PMarketSettings.isDirty = true;
+        }
         #endregion p2psettings
 
         #region p2parket
@@ -785,6 +793,11 @@ namespace DayZeEditor
 
             m_LoadoutFileCB.SelectedIndex = m_LoadoutFileCB.FindStringExact(currentp2pmarket.m_LoadoutFile);
             m_FactionCB.SelectedIndex = m_FactionCB.FindStringExact(currentp2pmarket.m_Faction);
+            m_RequiredFactionCB.SelectedIndex = m_RequiredFactionCB.FindStringExact(currentp2pmarket.m_RequiredFaction);
+            m_UseReputationCB.Checked = currentp2pmarket.m_UseReputation == 1 ? true : false;
+            m_MinRequiredReputationNUD.Value = currentp2pmarket.m_MinRequiredReputation;
+            m_MaxRequiredReputationNUD.Value = currentp2pmarket.m_MaxRequiredReputation;
+            m_RequiredCompletedQuestIDNUD.Value = currentp2pmarket.m_RequiredCompletedQuestID;
 
             m_CurrenciesLB.DisplayMember = "DisplayName";
             m_CurrenciesLB.ValueMember = "Value";
@@ -1002,7 +1015,36 @@ namespace DayZeEditor
             TraderRoamingWaypointZNUD.Value = (decimal)currentwaypoint.Z;
             useraction = false;
         }
-
+        private void MinRequiredHumanityNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentp2pmarket.m_MinRequiredReputation = (int)m_MinRequiredReputationNUD.Value;
+            currentp2pmarket.isDirty = true;
+        }
+        private void MaxRequiredHumanityNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentp2pmarket.m_MaxRequiredReputation = (int)m_MaxRequiredReputationNUD.Value;
+            currentp2pmarket.isDirty = true;
+        }
+        private void RequiredCompletedQuestIDNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentp2pmarket.m_RequiredCompletedQuestID = (int)m_RequiredCompletedQuestIDNUD.Value;
+            currentp2pmarket.isDirty = true;
+        }
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentp2pmarket.m_UseReputation = m_UseReputationCB.Checked == true ? 1 : 0;
+            currentp2pmarket.isDirty = true;
+        }
+        private void m_RequiredFactionLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            currentp2pmarket.m_RequiredFaction = m_RequiredFactionCB.GetItemText(m_RequiredFactionCB.SelectedItem);
+            currentp2pmarket.isDirty = true;
+        }
         private void TraderRoamingWaypointXNUD_ValueChanged(object sender, EventArgs e)
         {
             if (useraction) return;
@@ -1139,5 +1181,7 @@ namespace DayZeEditor
                 File.WriteAllText(save.FileName + ".dze", jsonString);
             }
         }
+
+
     }
 }

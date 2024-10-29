@@ -45,7 +45,7 @@ namespace DayZeLib
     }
     public class ExpansionVehicleSettings
     {
-        const int CurrentVersion = 19;
+        const int CurrentVersion = 20;
 
         public int m_Version { get; set; }
         public int VehicleSync { get; set; }
@@ -152,52 +152,42 @@ namespace DayZeLib
             {
                 new ExpansionVehiclesConfig(){
                 ClassName = "ExpansionUAZCargoRoofless",
-                CanPlayerAttach = 1,
                 LockComplexity = (decimal)1.0
                 },
                 new ExpansionVehiclesConfig(){
                 ClassName = "ExpansionUAZ",
-                CanPlayerAttach = 0,
                 LockComplexity = (decimal)1.0
                 },
                 new ExpansionVehiclesConfig() {
                 ClassName = "ExpansionBus",
-                CanPlayerAttach = 1,
                 LockComplexity = (decimal)1.5
                 },
                 new ExpansionVehiclesConfig() {
                 ClassName = "ExpansionVodnik",
-                CanPlayerAttach = 1,
                 LockComplexity = (decimal)2.0
                 },
                 new ExpansionVehiclesConfig() {
                 ClassName = "ExpansionUtilityBoat",
-                CanPlayerAttach = 1,
                 LockComplexity = (decimal)1.25
                 },
                 new ExpansionVehiclesConfig(){
                 ClassName = "ExpansionZodiacBoat",
-                CanPlayerAttach = 1,
                 LockComplexity = (decimal)0.5
                 },
                 new ExpansionVehiclesConfig(){
                 ClassName = "ExpansionLHD",
-                CanPlayerAttach = 1,
                 LockComplexity = (decimal)100.0
                 },
                 new ExpansionVehiclesConfig(){
                 ClassName = "ExpansionMerlin",
-                CanPlayerAttach = 1,
                 LockComplexity = (decimal)4.0
                 },
                 new ExpansionVehiclesConfig(){
                 ClassName = "ExpansionMh6",
-                CanPlayerAttach = 0,
                 LockComplexity = (decimal)3.0
                 },
                 new ExpansionVehiclesConfig(){
                 ClassName = "ExpansionUh1h",
-                CanPlayerAttach = 0,
                 LockComplexity = (decimal)2.5
                 }
             };
@@ -224,7 +214,6 @@ namespace DayZeLib
     public class ExpansionVehiclesConfig
     {
         public string ClassName { get; set; }
-        public int CanPlayerAttach { get; set; }
         public decimal LockComplexity { get; set; }
 
         public override string ToString()

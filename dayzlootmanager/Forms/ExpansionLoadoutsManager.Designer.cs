@@ -75,6 +75,8 @@ namespace DayZeEditor
             this.RemoveSetItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.darkLabel1 = new DarkUI.Controls.DarkLabel();
+            this.darkLabel2 = new DarkUI.Controls.DarkLabel();
             this.darkToolStrip21.SuspendLayout();
             this.LoadOutGB.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -245,7 +247,7 @@ namespace DayZeEditor
             // numericUpDown2
             // 
             this.numericUpDown2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown2.DecimalPlaces = 1;
+            this.numericUpDown2.DecimalPlaces = 3;
             this.numericUpDown2.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown2.Location = new System.Drawing.Point(87, 19);
             this.numericUpDown2.Maximum = new decimal(new int[] {
@@ -287,7 +289,7 @@ namespace DayZeEditor
             // numericUpDown3
             // 
             this.numericUpDown3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown3.DecimalPlaces = 1;
+            this.numericUpDown3.DecimalPlaces = 3;
             this.numericUpDown3.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown3.Location = new System.Drawing.Point(87, 44);
             this.numericUpDown3.Maximum = new decimal(new int[] {
@@ -379,7 +381,7 @@ namespace DayZeEditor
             // numericUpDown5
             // 
             this.numericUpDown5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown5.DecimalPlaces = 1;
+            this.numericUpDown5.DecimalPlaces = 3;
             this.numericUpDown5.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown5.Location = new System.Drawing.Point(127, 40);
             this.numericUpDown5.Maximum = new decimal(new int[] {
@@ -401,7 +403,7 @@ namespace DayZeEditor
             // numericUpDown4
             // 
             this.numericUpDown4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.numericUpDown4.DecimalPlaces = 1;
+            this.numericUpDown4.DecimalPlaces = 3;
             this.numericUpDown4.ForeColor = System.Drawing.SystemColors.Control;
             this.numericUpDown4.Location = new System.Drawing.Point(128, 14);
             this.numericUpDown4.Maximum = new decimal(new int[] {
@@ -514,12 +516,13 @@ namespace DayZeEditor
             this.treeViewMS1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.treeViewMS1.ForeColor = System.Drawing.SystemColors.Control;
             this.treeViewMS1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.treeViewMS1.Location = new System.Drawing.Point(242, 49);
+            this.treeViewMS1.Location = new System.Drawing.Point(242, 65);
             this.treeViewMS1.Name = "treeViewMS1";
             this.treeViewMS1.SelectedNodes = ((System.Collections.ArrayList)(resources.GetObject("treeViewMS1.SelectedNodes")));
             this.treeViewMS1.SetMultiselect = true;
-            this.treeViewMS1.Size = new System.Drawing.Size(321, 453);
+            this.treeViewMS1.Size = new System.Drawing.Size(321, 437);
             this.treeViewMS1.TabIndex = 212;
+            this.treeViewMS1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewMS1_AfterSelect);
             this.treeViewMS1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewMS1_NodeMouseClick);
             // 
             // darkButton15
@@ -639,11 +642,35 @@ namespace DayZeEditor
             this.removeItemToolStripMenuItem.Text = "Remove item";
             this.removeItemToolStripMenuItem.Click += new System.EventHandler(this.removeItemToolStripMenuItem_Click);
             // 
+            // darkLabel1
+            // 
+            this.darkLabel1.AutoSize = true;
+            this.darkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel1.Location = new System.Drawing.Point(242, 49);
+            this.darkLabel1.Name = "darkLabel1";
+            this.darkLabel1.Size = new System.Drawing.Size(43, 13);
+            this.darkLabel1.TabIndex = 215;
+            this.darkLabel1.Text = "Expand";
+            this.darkLabel1.Click += new System.EventHandler(this.darkLabel1_Click);
+            // 
+            // darkLabel2
+            // 
+            this.darkLabel2.AutoSize = true;
+            this.darkLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel2.Location = new System.Drawing.Point(288, 49);
+            this.darkLabel2.Name = "darkLabel2";
+            this.darkLabel2.Size = new System.Drawing.Size(61, 13);
+            this.darkLabel2.TabIndex = 216;
+            this.darkLabel2.Text = "/   Collapse";
+            this.darkLabel2.Click += new System.EventHandler(this.darkLabel2_Click);
+            // 
             // ExpansionLoadoutsManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(856, 508);
+            this.Controls.Add(this.darkLabel2);
+            this.Controls.Add(this.darkLabel1);
             this.Controls.Add(this.treeViewMS1);
             this.Controls.Add(this.darkButton15);
             this.Controls.Add(this.darkButton16);
@@ -727,5 +754,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripMenuItem addNewItemToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeItemToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
+        private DarkUI.Controls.DarkLabel darkLabel1;
+        private DarkUI.Controls.DarkLabel darkLabel2;
     }
 }

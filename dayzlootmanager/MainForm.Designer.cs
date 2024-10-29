@@ -65,6 +65,7 @@ namespace DayZeEditor
             this.SpawnerBukakuManagerButton = new System.Windows.Forms.ToolStripButton();
             this.AirdropUpgradedManagerButton = new System.Windows.Forms.ToolStripButton();
             this.UtopiaAirdropButton = new System.Windows.Forms.ToolStripButton();
+            this.WorkBenchReduxButton = new System.Windows.Forms.ToolStripButton();
             this.RAGTysonBBManagerButton = new System.Windows.Forms.ToolStripButton();
             this.PVZCZManagerButton = new System.Windows.Forms.ToolStripButton();
             this.BBPManagerButton = new System.Windows.Forms.ToolStripButton();
@@ -85,7 +86,7 @@ namespace DayZeEditor
             this.darkStatusStrip1 = new DarkUI.Controls.DarkStatusStrip();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.WorkBenchReduxButton = new System.Windows.Forms.ToolStripButton();
+            this.CapareTreasureManagerButton = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.SlidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Slidelabel)).BeginInit();
@@ -228,6 +229,7 @@ namespace DayZeEditor
             this.LootPoolManagerButton,
             this.RHLootBoxManagerButton,
             this.CapareWorkBenchManagerButton,
+            this.CapareTreasureManagerButton,
             this.LootchestButton,
             this.MPGSpawnerButton,
             this.KOTHManagerButton,
@@ -517,6 +519,17 @@ namespace DayZeEditor
             this.UtopiaAirdropButton.Visible = false;
             this.UtopiaAirdropButton.Click += new System.EventHandler(this.UtopiaAirdropButton_Click);
             // 
+            // WorkBenchReduxButton
+            // 
+            this.WorkBenchReduxButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.WorkBenchReduxButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.WorkBenchReduxButton.Image = ((System.Drawing.Image)(resources.GetObject("WorkBenchReduxButton.Image")));
+            this.WorkBenchReduxButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.WorkBenchReduxButton.Name = "WorkBenchReduxButton";
+            this.WorkBenchReduxButton.Size = new System.Drawing.Size(123, 19);
+            this.WorkBenchReduxButton.Text = "WorkBench Redux";
+            this.WorkBenchReduxButton.Click += new System.EventHandler(this.WorkBenchReduxButton_Click);
+            // 
             // RAGTysonBBManagerButton
             // 
             this.RAGTysonBBManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -548,7 +561,7 @@ namespace DayZeEditor
             this.BBPManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("BBPManagerButton.Image")));
             this.BBPManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.BBPManagerButton.Name = "BBPManagerButton";
-            this.BBPManagerButton.Size = new System.Drawing.Size(123, 19);
+            this.BBPManagerButton.Size = new System.Drawing.Size(107, 19);
             this.BBPManagerButton.Text = "Base Building Plus";
             this.BBPManagerButton.Visible = false;
             this.BBPManagerButton.Click += new System.EventHandler(this.BBPManagerButton_Click);
@@ -742,16 +755,16 @@ namespace DayZeEditor
             this.panel2.Size = new System.Drawing.Size(25, 25);
             this.panel2.TabIndex = 45;
             // 
-            // WorkBenchReduxButton
+            // CapareTreasureManagerButton
             // 
-            this.WorkBenchReduxButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.WorkBenchReduxButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.WorkBenchReduxButton.Image = ((System.Drawing.Image)(resources.GetObject("WorkBenchReduxButton.Image")));
-            this.WorkBenchReduxButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.WorkBenchReduxButton.Name = "WorkBenchReduxButton";
-            this.WorkBenchReduxButton.Size = new System.Drawing.Size(123, 19);
-            this.WorkBenchReduxButton.Text = "WorkBench Redux";
-            this.WorkBenchReduxButton.Click += new System.EventHandler(this.WorkBenchReduxButton_Click);
+            this.CapareTreasureManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.CapareTreasureManagerButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.CapareTreasureManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("CapareTreasureManagerButton.Image")));
+            this.CapareTreasureManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.CapareTreasureManagerButton.Name = "CapareTreasureManagerButton";
+            this.CapareTreasureManagerButton.Size = new System.Drawing.Size(123, 19);
+            this.CapareTreasureManagerButton.Text = "Capare Treasure";
+            this.CapareTreasureManagerButton.Click += new System.EventHandler(this.CapareTreasureManagerButton_Click);
             // 
             // MainForm
             // 
@@ -842,6 +855,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton WorkBenchReduxButton;
+        private System.Windows.Forms.ToolStripButton CapareTreasureManagerButton;
     }
 }
 

@@ -3200,6 +3200,7 @@ namespace DayZeEditor
 
             foreach (Trader trader in TraderPlusGeneralConfig.Traders)
             {
+                if(trader.Id == -2) { continue; }
                 Traders newtrader = new Traders(trader.Role);
                 newtrader.Filename = trader.Role.Replace(" ", "_").ToUpper();
                 IDs newid = TraderPlusIDsConfig.getTraderbyID(trader.Id);
@@ -3217,8 +3218,8 @@ namespace DayZeEditor
                 Tradermap newmap = new Tradermap();
                 newmap.NPCName = "ExpansionTrader" + trader.Name.Split('_')[1];
                 newmap.NPCTrade = trader.Role.Replace(" ", "_").ToUpper();
-                newmap.position = new Vec3(new string[] { trader.Position[0].ToString(), trader.Position[2].ToString(), trader.Position[2].ToString() });
-                newmap.roattions = new Vec3(new string[] { trader.Orientation[0].ToString(), trader.Orientation[2].ToString(), trader.Orientation[2].ToString() });
+                newmap.position = new Vec3(new string[] { trader.Position[0].ToString(), trader.Position[1].ToString(), trader.Position[2].ToString() });
+                newmap.roattions = new Vec3(new string[] { trader.Orientation[0].ToString(), trader.Orientation[1].ToString(), trader.Orientation[2].ToString() });
                 newmap.Attachments = new BindingList<string>(trader.Clothes.ToList());
                 maps.maps.Add(newmap);
             }

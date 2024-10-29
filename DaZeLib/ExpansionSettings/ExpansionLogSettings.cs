@@ -4,7 +4,7 @@ namespace DayZeLib
 {
     public class ExpansionLogSettings
     {
-        const int CurrentVersion = 7;
+        const int CurrentVersion = 8;
 
         public int m_Version { get; set; }
         public int Safezone { get; set; }
@@ -38,6 +38,7 @@ namespace DayZeLib
         public int Garage { get; set; }
         public int VehicleCover { get; set; }
         public int EntityStorage { get; set; }
+        public int Quests { get; set; }
 
         [JsonIgnore]
         public string Filename { get; set; }
@@ -84,6 +85,8 @@ namespace DayZeLib
             VehicleCover = 1;
 
             EntityStorage = 1;
+
+            Quests = 1;
         }
 
         public bool checkver()

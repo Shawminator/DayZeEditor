@@ -484,7 +484,7 @@ namespace DayZeEditor
                 Console.WriteLine("serializing " + Path.GetFileName(LogsSettingsPath));
                 LogSettings = JsonSerializer.Deserialize<ExpansionLogSettings>(File.ReadAllText(LogsSettingsPath));
                 LogSettings.isDirty = false;
-                if (GeneralSettings.checkver())
+                if (LogSettings.checkver())
                     needtosave = true;
             }
             LogSettings.Filename = LogsSettingsPath;
@@ -3807,6 +3807,48 @@ namespace DayZeEditor
             currentExpansionHardlinePlayerData.SetReputation((int)HardlineReputationNUD.Value);
             currentExpansionHardlinePlayerData.isDirty = true;
         }
+        private void hardLinePersonalStorageLevelNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentExpansionHardlinePlayerData.SetStorageLevel((int)hardLinePersonalStorageLevelNUD.Value);
+            currentExpansionHardlinePlayerData.isDirty = true;
+        }
+
+        private void HardLineFactionReputationNUD_ValueChanged(object sender, EventArgs e)
+        {
+            if (!useraction) { return; }
+            currentFactionReps.SetFactionReputation((int)HardLineFactionReputationNUD.Value);
+            currentExpansionHardlinePlayerData.isDirty = true;
+        }
+        private void darkButton52_Click(object sender, EventArgs e)
+        {
+            currentExpansionHardlinePlayerData.SetMostRecentFaction(currentFactionReps.FactionID);
+            currentExpansionHardlinePlayerData.isDirty = true;
+        }
+
+        private void darkButton10_Click_1(object sender, EventArgs e)
+        {
+            bool needtosetmostrecent = false;
+            if(currentFactionReps.FactionID == currentExpansionHardlinePlayerData.FactionID)
+            {
+                needtosetmostrecent = true;
+            }
+            currentExpansionHardlinePlayerData.FactionReputation.Remove(currentFactionReps);
+            if (needtosetmostrecent == true)
+            {
+                if (currentExpansionHardlinePlayerData.FactionReputation.Count == 0)
+                {
+                    currentExpansionHardlinePlayerData.SetMostRecentFaction(-1);
+                }
+                else
+                {
+                    currentExpansionHardlinePlayerData.SetMostRecentFaction(currentExpansionHardlinePlayerData.FactionReputation[0].FactionID);
+                }
+                HardlineFactionIDNUD.Value = currentExpansionHardlinePlayerData.FactionID;
+            }
+            HardLineFactionReputationLB.SelectedIndex = -1;
+            currentExpansionHardlinePlayerData.isDirty = true;
+        }
         private void treeViewMS2_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
         }
@@ -3893,6 +3935,7 @@ namespace DayZeEditor
         }
         private void listBox35_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (HardLineFactionReputationLB.SelectedIndex == -1) { return; }
             useraction = false;
             currentFactionReps = HardLineFactionReputationLB.SelectedItem as FactionReps;
             HardLineFactionReputationNUD.Value = currentFactionReps.FactionRep;
@@ -3976,6 +4019,7 @@ namespace DayZeEditor
             HardLineSettings.ItemRarityParentSearch = ItemRarityParentSearchCB.Checked == true ? 1 : 0;
             HardLineSettings.isDirty = true;
         }
+
         #endregion
 
         #region logsettings
@@ -4015,6 +4059,7 @@ namespace DayZeEditor
             EntityStorageCB.Checked = LogSettings.EntityStorage == 1 ? true : false;
             GarageCB.Checked = LogSettings.Garage == 1 ? true : false;
             VehicleCoverCB.Checked = LogSettings.VehicleCover == 1 ? true : false;
+            QuestsCB.Checked = LogSettings.Quests == 1 ? true : false;
             useraction = true;
         }
         private void LogSettingsCB_CheckedChanged(object sender, EventArgs e)
@@ -8194,7 +8239,6 @@ namespace DayZeEditor
                 {
                     ExpansionVehiclesConfig newvcofig = new ExpansionVehiclesConfig();
                     newvcofig.ClassName = l;
-                    newvcofig.CanPlayerAttach = 0;
 
                     if (!VehicleSettings.VehiclesConfig.Contains(newvcofig))
                     {
@@ -8265,22 +8309,8 @@ namespace DayZeEditor
             CurrentCVehicleConfig = VehiclesConfigLB.SelectedItem as ExpansionVehiclesConfig;
             useraction = false;
             ClassNameTB.Text = CurrentCVehicleConfig.ClassName;
-            CanPlayerAttachCB.Checked = CurrentCVehicleConfig.CanPlayerAttach == 1 ? true : false;
             LockComplexityNUD.Value = (decimal)CurrentCVehicleConfig.LockComplexity;
             useraction = true;
-        }
-        private void CanPlayerAttachCB_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!useraction) return;
-            if (VehiclesConfigLB.SelectedItems.Count > 1)
-            {
-                foreach (var item in VehiclesConfigLB.SelectedItems)
-                {
-                    ExpansionVehiclesConfig pitem = item as ExpansionVehiclesConfig;
-                    pitem.CanPlayerAttach = CanPlayerAttachCB.Checked == true ? 1 : 0;
-                }
-                VehicleSettings.isDirty = true;
-            }
         }
         private void VehicleSettingsNUD_ValueChanged(object sender, EventArgs e)
         {
@@ -9434,6 +9464,8 @@ namespace DayZeEditor
                 currentstoragelevel.ExcludedSlots.Add(Slot);
             PersonalStorageSettingsNew.isDirty = true;
         }
+
+
 
 
 

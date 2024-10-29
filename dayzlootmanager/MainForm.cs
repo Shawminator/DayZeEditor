@@ -30,7 +30,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.8.2.0";
+        public string VersionNumber = "0.8.2.5";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -483,6 +483,11 @@ namespace DayZeEditor
                     CapareWorkBenchManagerButton.Visible = true;
                 else
                     CapareWorkBenchManagerButton.Visible = false;
+
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\CapareTreasure\\CapareTreasure.json"))
+                    CapareTreasureManagerButton.Visible = true;
+                else
+                    CapareTreasureManagerButton.Visible = false;
 
                 if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\MagicCrateManagerSettings.json"))
                     MysteryBoxButton.Visible = true;
@@ -1164,7 +1169,33 @@ namespace DayZeEditor
             }
             timer1.Start();
         }
+        private void CapareTreasureManagerButton_Click(object sender, EventArgs e)
+        {
+            CapareTreasureManager _TM = Application.OpenForms["CapareTreasureManager"] as CapareTreasureManager;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new CapareTreasureManager
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
 
+                };
+                _TM.Show();
+                Console.WriteLine("loading capare Treasure Manager....");
+                label1.Text = "Capare Treasure Manager";
+            }
+            timer1.Start();
+        }
         private void UtopiaAirdropButton_Click(object sender, EventArgs e)
         {
             UtopiaAirdropManager _TM = Application.OpenForms["UtopiaAirdropManager"] as UtopiaAirdropManager;

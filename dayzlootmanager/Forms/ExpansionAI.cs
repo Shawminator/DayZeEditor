@@ -736,6 +736,7 @@ namespace DayZeEditor
             CrashFactionCB.SelectedIndex = CrashFactionCB.FindStringExact(CurrentEventcrashpatrol.Faction);
             CrashNumberOfAINUD.Value = CurrentEventcrashpatrol.NumberOfAI;
             CrashBehaviourCB.SelectedIndex = CrashBehaviourCB.FindStringExact(CurrentEventcrashpatrol.Behaviour);
+            CrashLootingBehaviourCB.SelectedIndex = CrashLootingBehaviourCB.FindStringExact(CurrentEventcrashpatrol.LootingBehaviour);
             CrashSpeedCB.SelectedIndex = CrashSpeedCB.FindStringExact(CurrentEventcrashpatrol.Speed);
             CrashUnderThreatSpeedCB.SelectedIndex = CrashUnderThreatSpeedCB.FindStringExact(CurrentEventcrashpatrol.UnderThreatSpeed);
             CrashAccuracyMinNud.Value = CurrentEventcrashpatrol.AccuracyMin;
@@ -861,6 +862,12 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             CurrentEventcrashpatrol.Behaviour = CrashBehaviourCB.GetItemText(CrashBehaviourCB.SelectedItem);
+            AIPatrolSettings.isDirty = true;
+        }
+        private void CrashLootingBehaviourCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentEventcrashpatrol.LootingBehaviour = CrashLootingBehaviourCB.GetItemText(CrashLootingBehaviourCB.SelectedItem);
             AIPatrolSettings.isDirty = true;
         }
         private void CrashSpeedCB_SelectedIndexChanged(object sender, EventArgs e)
@@ -1044,6 +1051,7 @@ namespace DayZeEditor
             StaticPatrolFactionCB.SelectedIndex = StaticPatrolFactionCB.FindStringExact(CurrentPatrol.Faction);
             StaticPatrolNumberOfAINUD.Value = CurrentPatrol.NumberOfAI;
             StaticPatrolBehaviorCB.SelectedIndex = StaticPatrolBehaviorCB.FindStringExact(CurrentPatrol.Behaviour);
+            StaticPatrolLootingBehaviorCB.SelectedIndex = StaticPatrolLootingBehaviorCB.FindStringExact(CurrentPatrol.LootingBehaviour);
             StaticPatrolSpeedCB.SelectedIndex = StaticPatrolSpeedCB.FindStringExact(CurrentPatrol.Speed);
             StaticPatrolUnderThreatSpeedCB.SelectedIndex = StaticPatrolUnderThreatSpeedCB.FindStringExact(CurrentPatrol.UnderThreatSpeed);
             StaticPatrolRespawnTimeNUD.Value = CurrentPatrol.RespawnTime;
@@ -1205,6 +1213,13 @@ namespace DayZeEditor
             if (!useraction) return;
             CurrentPatrol.Behaviour = StaticPatrolBehaviorCB.GetItemText(StaticPatrolBehaviorCB.SelectedItem);
             AIPatrolSettings.isDirty = true;
+        }
+        private void StaticPatrolLootingBehaviorCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            CurrentPatrol.LootingBehaviour = StaticPatrolLootingBehaviorCB.GetItemText(StaticPatrolLootingBehaviorCB.SelectedItem);
+            AIPatrolSettings.isDirty = true;
+
         }
         private void StaticPatrolSpeedCB_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1986,6 +2001,40 @@ namespace DayZeEditor
             AISettings.PreventClimb.Remove(PreventClimbLB.GetItemText(PreventClimbLB.SelectedItem));
             AISettings.isDirty = true;
             PreventClimbLB.Refresh();
+        }
+        private void darkButton39_Click(object sender, EventArgs e)
+        {
+            string classname = textBox2.Text;
+            if (classname == "") return;
+            if (!AISettings.ExcludedRoamingLocations.Contains(classname))
+            {
+                AISettings.ExcludedRoamingLocations.Add(classname);
+                AIPatrolSettings.isDirty = true;
+                listBox1.Refresh();
+            }
+        }
+        private void darkButton38_Click(object sender, EventArgs e)
+        {
+            AISettings.ExcludedRoamingLocations.Remove(listBox1.GetItemText(listBox1.SelectedItem));
+            AISettings.isDirty = true;
+            listBox1.Refresh();
+        }
+        private void darkButton41_Click(object sender, EventArgs e)
+        {
+            string classname = textBox3.Text;
+            if (classname == "") return;
+            if (!AISettings.ExcludedRoamingBuildings.Contains(classname))
+            {
+                AISettings.ExcludedRoamingBuildings.Add(classname);
+                AIPatrolSettings.isDirty = true;
+                listBox2.Refresh();
+            }
+        }
+        private void darkButton40_Click(object sender, EventArgs e)
+        {
+            AISettings.ExcludedRoamingBuildings.Remove(listBox2.GetItemText(listBox2.SelectedItem));
+            AISettings.isDirty = true;
+            listBox2.Refresh();
         }
         private void NoiseInvestigationDistanceLimitNUD_ValueChanged_1(object sender, EventArgs e)
         {

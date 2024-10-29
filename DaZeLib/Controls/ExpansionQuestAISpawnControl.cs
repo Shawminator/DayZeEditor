@@ -106,6 +106,7 @@ namespace DayZeEditor
             StaticPatrolFactionCB.SelectedIndex = StaticPatrolFactionCB.FindStringExact(_currentAISpawn.Faction);
             StaticPatrolNumberOfAINUD.Value = _currentAISpawn.NumberOfAI;
             StaticPatrolBehaviorCB.SelectedIndex = StaticPatrolBehaviorCB.FindStringExact(_currentAISpawn.Behaviour);
+            StaticPatrolLootingBehaviorCB.SelectedIndex = StaticPatrolLootingBehaviorCB.FindStringExact(_currentAISpawn.LootingBehaviour);
             StaticPatrolSpeedCB.SelectedIndex = StaticPatrolSpeedCB.FindStringExact(_currentAISpawn.Speed);
             StaticPatrolUnderThreatSpeedCB.SelectedIndex = StaticPatrolUnderThreatSpeedCB.FindStringExact(_currentAISpawn.UnderThreatSpeed);
             StaticPatrolRespawnTimeNUD.Value = _currentAISpawn.RespawnTime;
@@ -215,6 +216,13 @@ namespace DayZeEditor
         {
             if (!useraction) return;
             _currentAISpawn.Behaviour = StaticPatrolBehaviorCB.GetItemText(StaticPatrolBehaviorCB.SelectedItem);
+            isDirty = true;
+        }
+       
+        private void StaticPatrolLootingBehaviorCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!useraction) return;
+            _currentAISpawn.LootingBehaviour = StaticPatrolLootingBehaviorCB.GetItemText(StaticPatrolLootingBehaviorCB.SelectedItem);
             isDirty = true;
         }
 
@@ -592,5 +600,7 @@ namespace DayZeEditor
                 StaticPatrolWaypointPOSZNUD.Visible = false;
             }
         }
+
+
     }
 }

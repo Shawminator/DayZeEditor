@@ -9,15 +9,6 @@
     [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
     public partial class weather
     {
-        public weather()
-        {
-            overcast = new weatherOvercast();
-            fog = new weatherFog();
-            rain = new weatherRain();
-            wind = new weatherWind();
-            storm = new weatherStorm();
-
-        }
 
         private weatherOvercast overcastField;
 
@@ -25,7 +16,11 @@
 
         private weatherRain rainField;
 
-        private weatherWind windField;
+        private weatherWindMagnitude windMagnitudeField;
+
+        private weatherWindDirection windDirectionField;
+
+        private weatherSnowfall snowfallField;
 
         private weatherStorm stormField;
 
@@ -73,15 +68,41 @@
         }
 
         /// <remarks/>
-        public weatherWind wind
+        public weatherWindMagnitude windMagnitude
         {
             get
             {
-                return this.windField;
+                return this.windMagnitudeField;
             }
             set
             {
-                this.windField = value;
+                this.windMagnitudeField = value;
+            }
+        }
+
+        /// <remarks/>
+        public weatherWindDirection windDirection
+        {
+            get
+            {
+                return this.windDirectionField;
+            }
+            set
+            {
+                this.windDirectionField = value;
+            }
+        }
+
+        /// <remarks/>
+        public weatherSnowfall snowfall
+        {
+            get
+            {
+                return this.snowfallField;
+            }
+            set
+            {
+                this.snowfallField = value;
             }
         }
 
@@ -133,13 +154,6 @@
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherOvercast
     {
-        public weatherOvercast()
-        {
-            current = new weatherOvercastCurrent();
-            limits = new weatherOvercastLimits();
-            timelimits = new weatherOvercastTimelimits();
-            changelimits = new weatherOvercastChangelimits();
-        }
 
         private weatherOvercastCurrent currentField;
 
@@ -208,16 +222,11 @@
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherOvercastCurrent
     {
-        public weatherOvercastCurrent()
-        {
-            actual = (decimal)0.10;
-            time = 120;
-            duration = 240;
-        }
-
 
         private decimal actualField;
+
         private int timeField;
+
         private int durationField;
 
         /// <remarks/>
@@ -269,11 +278,7 @@
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherOvercastLimits
     {
-        public weatherOvercastLimits()
-        {
-            min = (decimal)0.0;
-            max = (decimal)0.55;
-        }
+
         private decimal minField;
 
         private decimal maxField;
@@ -313,11 +318,7 @@
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherOvercastTimelimits
     {
-        public weatherOvercastTimelimits()
-        {
-            min = 900;
-            max = 1200;
-        }
+
         private int minField;
 
         private int maxField;
@@ -357,11 +358,7 @@
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherOvercastChangelimits
     {
-        public weatherOvercastChangelimits()
-        {
-            min = (decimal)0.1;
-            max = (decimal)0.5;
-        }
+
         private decimal minField;
 
         private decimal maxField;
@@ -401,13 +398,7 @@
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherFog
     {
-        public weatherFog()
-        {
-            current = new weatherFogCurrent();
-            limits = new weatherFogLimits();
-            timelimits = new weatherFogTimelimits();
-            changelimits = new weatherFogChangelimits();
-        }
+
         private weatherFogCurrent currentField;
 
         private weatherFogLimits limitsField;
@@ -475,12 +466,7 @@
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherFogCurrent
     {
-        public weatherFogCurrent()
-        {
-            actual = (decimal)0.0;
-            time = 120;
-            duration = 240;
-        }
+
         private decimal actualField;
 
         private int timeField;
@@ -536,11 +522,7 @@
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherFogLimits
     {
-        public weatherFogLimits()
-        {
-            min = (decimal)0.00;
-            max = (decimal)0.01;
-        }
+
         private decimal minField;
 
         private decimal maxField;
@@ -580,11 +562,7 @@
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherFogTimelimits
     {
-        public weatherFogTimelimits()
-        {
-            min = 900;
-            max = 1800;
-        }
+
         private int minField;
 
         private int maxField;
@@ -624,11 +602,7 @@
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherFogChangelimits
     {
-        public weatherFogChangelimits()
-        {
-            min = (decimal)0.1;
-            max = (decimal)0.5;
-        }
+
         private decimal minField;
 
         private decimal maxField;
@@ -668,18 +642,15 @@
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherRain
     {
-        public weatherRain()
-        {
-            current = new weatherRainCurrent();
-            limits = new weatherRainLimits();
-            timelimits = new weatherRainTimelimits();
-            changelimits = new weatherRainChangelimits();
-            thresholds = new weatherRainThresholds();
-        }
+
         private weatherRainCurrent currentField;
+
         private weatherRainLimits limitsField;
+
         private weatherRainTimelimits timelimitsField;
+
         private weatherRainChangelimits changelimitsField;
+
         private weatherRainThresholds thresholdsField;
 
         /// <remarks/>
@@ -754,12 +725,7 @@
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherRainCurrent
     {
-        public weatherRainCurrent()
-        {
-            actual = 0;
-            time = 120;
-            duration = 240;
-        }
+
         private decimal actualField;
 
         private int timeField;
@@ -815,11 +781,7 @@
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherRainLimits
     {
-        public weatherRainLimits()
-        {
-            min = (decimal)0.0;
-            max = (decimal)0.35;
-        }
+
         private decimal minField;
 
         private decimal maxField;
@@ -859,11 +821,7 @@
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherRainTimelimits
     {
-        public weatherRainTimelimits()
-        {
-            min = 300;
-            max = 600;
-        }
+
         private int minField;
 
         private int maxField;
@@ -903,11 +861,7 @@
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherRainChangelimits
     {
-        public weatherRainChangelimits()
-        {
-            min = 0;
-            max = (decimal)0.25;
-        }
+
         private decimal minField;
 
         private decimal maxField;
@@ -947,12 +901,7 @@
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherRainThresholds
     {
-        public weatherRainThresholds()
-        {
-            min = (decimal)0.5;
-            max = (decimal)1.0;
-            end = 120;
-        }
+
         private decimal minField;
 
         private decimal maxField;
@@ -1006,40 +955,66 @@
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class weatherWind
+    public partial class weatherWindMagnitude
     {
-        public weatherWind()
-        {
-            maxspeed = 10;
-            @params = new weatherWindParams();
-        }
-        private int maxspeedField;
 
-        private weatherWindParams paramsField;
+        private weatherWindMagnitudeCurrent currentField;
+
+        private weatherWindMagnitudeLimit limitField;
+
+        private weatherWindMagnitudeTimelimits timelimitsField;
+
+        private weatherWindMagnitudeChangelimits changelimitsField;
 
         /// <remarks/>
-        public int maxspeed
+        public weatherWindMagnitudeCurrent current
         {
             get
             {
-                return this.maxspeedField;
+                return this.currentField;
             }
             set
             {
-                this.maxspeedField = value;
+                this.currentField = value;
             }
         }
 
         /// <remarks/>
-        public weatherWindParams @params
+        public weatherWindMagnitudeLimit limit
         {
             get
             {
-                return this.paramsField;
+                return this.limitField;
             }
             set
             {
-                this.paramsField = value;
+                this.limitField = value;
+            }
+        }
+
+        /// <remarks/>
+        public weatherWindMagnitudeTimelimits timelimits
+        {
+            get
+            {
+                return this.timelimitsField;
+            }
+            set
+            {
+                this.timelimitsField = value;
+            }
+        }
+
+        /// <remarks/>
+        public weatherWindMagnitudeChangelimits changelimits
+        {
+            get
+            {
+                return this.changelimitsField;
+            }
+            set
+            {
+                this.changelimitsField = value;
             }
         }
     }
@@ -1048,19 +1023,693 @@
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class weatherWindParams
+    public partial class weatherWindMagnitudeCurrent
     {
-        public weatherWindParams()
+
+        private decimal actualField;
+
+        private int timeField;
+
+        private int durationField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal actual
         {
-            min = 0;
-            max = 1;
-            frequency = 60;
+            get
+            {
+                return this.actualField;
+            }
+            set
+            {
+                this.actualField = value;
+            }
         }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int time
+        {
+            get
+            {
+                return this.timeField;
+            }
+            set
+            {
+                this.timeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int duration
+        {
+            get
+            {
+                return this.durationField;
+            }
+            set
+            {
+                this.durationField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class weatherWindMagnitudeLimit
+    {
+
         private decimal minField;
 
         private decimal maxField;
 
-        private int frequencyField;
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal min
+        {
+            get
+            {
+                return this.minField;
+            }
+            set
+            {
+                this.minField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal max
+        {
+            get
+            {
+                return this.maxField;
+            }
+            set
+            {
+                this.maxField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class weatherWindMagnitudeTimelimits
+    {
+
+        private int minField;
+
+        private int maxField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int min
+        {
+            get
+            {
+                return this.minField;
+            }
+            set
+            {
+                this.minField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int max
+        {
+            get
+            {
+                return this.maxField;
+            }
+            set
+            {
+                this.maxField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class weatherWindMagnitudeChangelimits
+    {
+
+        private decimal minField;
+
+        private decimal maxField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal min
+        {
+            get
+            {
+                return this.minField;
+            }
+            set
+            {
+                this.minField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal max
+        {
+            get
+            {
+                return this.maxField;
+            }
+            set
+            {
+                this.maxField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class weatherWindDirection
+    {
+
+        private weatherWindDirectionCurrent currentField;
+
+        private weatherWindDirectionLimit limitField;
+
+        private weatherWindDirectionTimelimits timelimitsField;
+
+        private weatherWindDirectionChangelimits changelimitsField;
+
+        /// <remarks/>
+        public weatherWindDirectionCurrent current
+        {
+            get
+            {
+                return this.currentField;
+            }
+            set
+            {
+                this.currentField = value;
+            }
+        }
+
+        /// <remarks/>
+        public weatherWindDirectionLimit limit
+        {
+            get
+            {
+                return this.limitField;
+            }
+            set
+            {
+                this.limitField = value;
+            }
+        }
+
+        /// <remarks/>
+        public weatherWindDirectionTimelimits timelimits
+        {
+            get
+            {
+                return this.timelimitsField;
+            }
+            set
+            {
+                this.timelimitsField = value;
+            }
+        }
+
+        /// <remarks/>
+        public weatherWindDirectionChangelimits changelimits
+        {
+            get
+            {
+                return this.changelimitsField;
+            }
+            set
+            {
+                this.changelimitsField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class weatherWindDirectionCurrent
+    {
+
+        private decimal actualField;
+
+        private int timeField;
+
+        private int durationField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal actual
+        {
+            get
+            {
+                return this.actualField;
+            }
+            set
+            {
+                this.actualField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int time
+        {
+            get
+            {
+                return this.timeField;
+            }
+            set
+            {
+                this.timeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int duration
+        {
+            get
+            {
+                return this.durationField;
+            }
+            set
+            {
+                this.durationField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class weatherWindDirectionLimit
+    {
+
+        private decimal minField;
+
+        private decimal maxField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal min
+        {
+            get
+            {
+                return this.minField;
+            }
+            set
+            {
+                this.minField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal max
+        {
+            get
+            {
+                return this.maxField;
+            }
+            set
+            {
+                this.maxField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class weatherWindDirectionTimelimits
+    {
+
+        private int minField;
+
+        private int maxField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int min
+        {
+            get
+            {
+                return this.minField;
+            }
+            set
+            {
+                this.minField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int max
+        {
+            get
+            {
+                return this.maxField;
+            }
+            set
+            {
+                this.maxField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class weatherWindDirectionChangelimits
+    {
+
+        private decimal minField;
+
+        private decimal maxField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal min
+        {
+            get
+            {
+                return this.minField;
+            }
+            set
+            {
+                this.minField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal max
+        {
+            get
+            {
+                return this.maxField;
+            }
+            set
+            {
+                this.maxField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class weatherSnowfall
+    {
+
+        private weatherSnowfallCurrent currentField;
+
+        private weatherSnowfallLimit limitField;
+
+        private weatherSnowfallTimelimits timelimitsField;
+
+        private weatherSnowfallChangelimits changelimitsField;
+
+        private weatherSnowfallThresholds thresholdsField;
+
+        /// <remarks/>
+        public weatherSnowfallCurrent current
+        {
+            get
+            {
+                return this.currentField;
+            }
+            set
+            {
+                this.currentField = value;
+            }
+        }
+
+        /// <remarks/>
+        public weatherSnowfallLimit limit
+        {
+            get
+            {
+                return this.limitField;
+            }
+            set
+            {
+                this.limitField = value;
+            }
+        }
+
+        /// <remarks/>
+        public weatherSnowfallTimelimits timelimits
+        {
+            get
+            {
+                return this.timelimitsField;
+            }
+            set
+            {
+                this.timelimitsField = value;
+            }
+        }
+
+        /// <remarks/>
+        public weatherSnowfallChangelimits changelimits
+        {
+            get
+            {
+                return this.changelimitsField;
+            }
+            set
+            {
+                this.changelimitsField = value;
+            }
+        }
+
+        /// <remarks/>
+        public weatherSnowfallThresholds thresholds
+        {
+            get
+            {
+                return this.thresholdsField;
+            }
+            set
+            {
+                this.thresholdsField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class weatherSnowfallCurrent
+    {
+
+        private decimal actualField;
+
+        private int timeField;
+
+        private int durationField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal actual
+        {
+            get
+            {
+                return this.actualField;
+            }
+            set
+            {
+                this.actualField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int time
+        {
+            get
+            {
+                return this.timeField;
+            }
+            set
+            {
+                this.timeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int duration
+        {
+            get
+            {
+                return this.durationField;
+            }
+            set
+            {
+                this.durationField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class weatherSnowfallLimit
+    {
+
+        private decimal minField;
+
+        private decimal maxField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal min
+        {
+            get
+            {
+                return this.minField;
+            }
+            set
+            {
+                this.minField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal max
+        {
+            get
+            {
+                return this.maxField;
+            }
+            set
+            {
+                this.maxField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class weatherSnowfallTimelimits
+    {
+
+        private int minField;
+
+        private int maxField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int min
+        {
+            get
+            {
+                return this.minField;
+            }
+            set
+            {
+                this.minField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int max
+        {
+            get
+            {
+                return this.maxField;
+            }
+            set
+            {
+                this.maxField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class weatherSnowfallChangelimits
+    {
+
+        private decimal minField;
+
+        private decimal maxField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal min
+        {
+            get
+            {
+                return this.minField;
+            }
+            set
+            {
+                this.minField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal max
+        {
+            get
+            {
+                return this.maxField;
+            }
+            set
+            {
+                this.maxField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.SerializableAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class weatherSnowfallThresholds
+    {
+
+        private decimal minField;
+
+        private decimal maxField;
+
+        private int endField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -1092,15 +1741,15 @@
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int frequency
+        public int end
         {
             get
             {
-                return this.frequencyField;
+                return this.endField;
             }
             set
             {
-                this.frequencyField = value;
+                this.endField = value;
             }
         }
     }
@@ -1111,12 +1760,7 @@
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     public partial class weatherStorm
     {
-        public weatherStorm()
-        {
-            density = (decimal)1.0;
-            threshold = (decimal)0.75;
-            timeout = 30;
-        }
+
         private decimal densityField;
 
         private decimal thresholdField;
@@ -1165,6 +1809,7 @@
             }
         }
     }
+
 
 
 }

@@ -148,7 +148,7 @@ namespace DayZeEditor
                     radioButton1.Checked = true;
 
                 checkBox1.Checked = ActiveProject.Createbackups;
-                ((MainForm)this.MdiParent).toolStripStatusLabel1.Text = ActiveProject.ProjectName + ":" + ActiveProject.mpmissionpath.Split('.')[1] + " is the Current Active Project"; ;
+                ((MainForm)this.MdiParent).toolStripStatusLabel1.Text = ActiveProject.ProjectName + ":" + ActiveProject.mpmissionpath.Split('.')[1] + " is the Current Active Project";
             }
 
         }
@@ -228,6 +228,7 @@ namespace DayZeEditor
                             Password = FTPPasswordTB.Text,
                         };
                         session = new Session();
+                        session.FileTransferProgress += SessionFileTransferProgress;
                         session.Open(sessionOptions);
                     }
                 }
@@ -360,6 +361,20 @@ namespace DayZeEditor
                     load.Abort();
                 }
             }
+        }
+        private static string _lastFileName;
+        private static void SessionFileTransferProgress( object sender, FileTransferProgressEventArgs e)
+        {
+            // New line for every new file
+            if ((_lastFileName != null) && (_lastFileName != e.FileName))
+            {
+                Console.WriteLine();
+            }
+
+            // Print transfer progress
+            Console.Write("\r{0} ({1:P0})", e.FileName, e.FileProgress);
+            // Remember a name of the last file reported
+            _lastFileName = e.FileName;
         }
         private void showLoading()
         {
@@ -570,6 +585,7 @@ namespace DayZeEditor
                 Password = FTPPasswordTB.Text,
             };
             session = new Session();
+            session.FileTransferProgress += SessionFileTransferProgress;
             session.Open(sessionOptions);
             getrootdir();
         }
@@ -587,6 +603,7 @@ namespace DayZeEditor
                     Password = FTPPasswordTB.Text
                 };
                 session = new Session();
+                session.FileTransferProgress += SessionFileTransferProgress;
                 session.Open(sessionOptions);
                 getrootdir();
             }

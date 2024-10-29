@@ -145,6 +145,10 @@ namespace DayZeLib
         private decimal max_dist_playerField;
         private decimal min_dist_staticField;
         private decimal max_dist_staticField;
+        private bool min_dist_triggerFieldSpecified;
+        private decimal min_dist_triggerField;
+        private bool max_dist_triggerFieldSpecified;
+        private decimal max_dist_triggerField;
 
         /// <remarks/>
         public decimal min_dist_infected
@@ -221,6 +225,58 @@ namespace DayZeLib
             set
             {
                 this.max_dist_staticField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool min_dist_triggerSpecified
+        {
+            get
+            {
+                return this.min_dist_triggerFieldSpecified;
+            }
+            set
+            {
+                this.min_dist_triggerFieldSpecified = value;
+            }
+        }
+        /// <remarks/>
+        public decimal min_dist_trigger
+        {
+            get
+            {
+                return this.min_dist_triggerField;
+            }
+            set
+            {
+                this.min_dist_triggerField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool max_dist_triggerSpecified
+        {
+            get
+            {
+                return this.max_dist_triggerFieldSpecified;
+            }
+            set
+            {
+                this.max_dist_triggerFieldSpecified = value;
+            }
+        }
+        /// <remarks/>
+        public decimal max_dist_trigger
+        {
+            get
+            {
+                return this.max_dist_triggerField;
+            }
+            set
+            {
+                this.max_dist_triggerField = value;
             }
         }
     }
@@ -976,7 +1032,6 @@ namespace DayZeLib
             }
         }
     }
-
 
 
 }

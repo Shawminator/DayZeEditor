@@ -40,6 +40,7 @@ namespace DayZeEditor
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.CIRecipetypeCB = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.BPDrillCB = new System.Windows.Forms.CheckBox();
             this.darkButton3 = new DarkUI.Controls.DarkButton();
             this.darkButton20 = new DarkUI.Controls.DarkButton();
             this.CICPDestoryCB = new System.Windows.Forms.CheckBox();
@@ -70,7 +71,6 @@ namespace DayZeEditor
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.darkLabel4 = new DarkUI.Controls.DarkLabel();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.BPDrillCB = new System.Windows.Forms.CheckBox();
             this.darkToolStrip21.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -232,6 +232,17 @@ namespace DayZeEditor
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Attachments Needed";
             // 
+            // BPDrillCB
+            // 
+            this.BPDrillCB.AutoSize = true;
+            this.BPDrillCB.Location = new System.Drawing.Point(19, 19);
+            this.BPDrillCB.Name = "BPDrillCB";
+            this.BPDrillCB.Size = new System.Drawing.Size(43, 17);
+            this.BPDrillCB.TabIndex = 1;
+            this.BPDrillCB.Text = "Drill";
+            this.BPDrillCB.UseVisualStyleBackColor = true;
+            this.BPDrillCB.CheckedChanged += new System.EventHandler(this.BPDrillCB_CheckedChanged);
+            // 
             // darkButton3
             // 
             this.darkButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -276,6 +287,11 @@ namespace DayZeEditor
             0,
             0,
             0});
+            this.CICPChangeHealthNUD.Minimum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            -2147483648});
             this.CICPChangeHealthNUD.Name = "CICPChangeHealthNUD";
             this.CICPChangeHealthNUD.Size = new System.Drawing.Size(120, 20);
             this.CICPChangeHealthNUD.TabIndex = 115;
@@ -567,17 +583,6 @@ namespace DayZeEditor
             this.textBox1.Size = new System.Drawing.Size(421, 20);
             this.textBox1.TabIndex = 106;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // BPDrillCB
-            // 
-            this.BPDrillCB.AutoSize = true;
-            this.BPDrillCB.Location = new System.Drawing.Point(19, 19);
-            this.BPDrillCB.Name = "BPDrillCB";
-            this.BPDrillCB.Size = new System.Drawing.Size(43, 17);
-            this.BPDrillCB.TabIndex = 1;
-            this.BPDrillCB.Text = "Drill";
-            this.BPDrillCB.UseVisualStyleBackColor = true;
-            this.BPDrillCB.CheckedChanged += new System.EventHandler(this.BPDrillCB_CheckedChanged);
             // 
             // WorkBenchReduxManager
             // 

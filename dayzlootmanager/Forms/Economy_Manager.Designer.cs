@@ -287,18 +287,15 @@ namespace DayZeEditor
             this.eventSpawnNameTB = new System.Windows.Forms.TextBox();
             this.EventGroupSpawnTab = new System.Windows.Forms.TabPage();
             this.groupBox58 = new System.Windows.Forms.GroupBox();
+            this.eventgroupdelootCB = new System.Windows.Forms.CheckBox();
+            this.eventgroupSecondarySpawnRB = new System.Windows.Forms.RadioButton();
+            this.eventgroupLootoptionRB = new System.Windows.Forms.RadioButton();
             this.eventgroupSecondarySpawnCB = new System.Windows.Forms.CheckBox();
-            this.checkBox116 = new System.Windows.Forms.CheckBox();
-            this.checkBox115 = new System.Windows.Forms.CheckBox();
-            this.checkBox114 = new System.Windows.Forms.CheckBox();
-            this.checkBox113 = new System.Windows.Forms.CheckBox();
             this.checkBox112 = new System.Windows.Forms.CheckBox();
             this.eventgrouplootmaxNUD = new System.Windows.Forms.NumericUpDown();
             this.label129 = new System.Windows.Forms.Label();
             this.label130 = new System.Windows.Forms.Label();
             this.eventgroupLootminNUD = new System.Windows.Forms.NumericUpDown();
-            this.eventgroupdelootNUD = new System.Windows.Forms.NumericUpDown();
-            this.label131 = new System.Windows.Forms.Label();
             this.darkLabel26 = new DarkUI.Controls.DarkLabel();
             this.eventgroupnameTB = new System.Windows.Forms.TextBox();
             this.eventgroupANUD = new System.Windows.Forms.NumericUpDown();
@@ -423,30 +420,6 @@ namespace DayZeEditor
             this.darkButton38 = new DarkUI.Controls.DarkButton();
             this.SpawnabletpesLB = new System.Windows.Forms.ListBox();
             this.groupBox21 = new System.Windows.Forms.GroupBox();
-            this.groupBox78 = new System.Windows.Forms.GroupBox();
-            this.DamageMaxNUD = new System.Windows.Forms.NumericUpDown();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.DamageMinNUD = new System.Windows.Forms.NumericUpDown();
-            this.Spaenabletypestagbox = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.groupBox24 = new System.Windows.Forms.GroupBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.darkButton29 = new DarkUI.Controls.DarkButton();
-            this.CargoGB = new System.Windows.Forms.GroupBox();
-            this.checkBox49 = new System.Windows.Forms.CheckBox();
-            this.CargoItemLB = new System.Windows.Forms.ListBox();
-            this.cargoItemRemoveButton = new DarkUI.Controls.DarkButton();
-            this.CargoItemAddButton = new DarkUI.Controls.DarkButton();
-            this.CargoChangeItemButton = new DarkUI.Controls.DarkButton();
-            this.CargoPresetTB = new System.Windows.Forms.TextBox();
-            this.CargoItemchanceNUD = new System.Windows.Forms.NumericUpDown();
-            this.CarcgoChanceNUD = new System.Windows.Forms.NumericUpDown();
-            this.cargochanceLabel = new System.Windows.Forms.Label();
-            this.CargochanceCB = new System.Windows.Forms.CheckBox();
-            this.CargoPresetGB = new System.Windows.Forms.GroupBox();
-            this.CargoPresetComboBox = new System.Windows.Forms.ComboBox();
-            this.darkButton36 = new DarkUI.Controls.DarkButton();
             this.AttachmentGB = new System.Windows.Forms.GroupBox();
             this.CargoAttachmentRemoveButton = new DarkUI.Controls.DarkButton();
             this.AttachmentItemLB = new System.Windows.Forms.ListBox();
@@ -461,6 +434,30 @@ namespace DayZeEditor
             this.AttachmentPresetComboBox = new System.Windows.Forms.ComboBox();
             this.darkButton37 = new DarkUI.Controls.DarkButton();
             this.AttchmentIsPresetCB = new System.Windows.Forms.CheckBox();
+            this.CargoGB = new System.Windows.Forms.GroupBox();
+            this.checkBox49 = new System.Windows.Forms.CheckBox();
+            this.CargoItemLB = new System.Windows.Forms.ListBox();
+            this.cargoItemRemoveButton = new DarkUI.Controls.DarkButton();
+            this.CargoItemAddButton = new DarkUI.Controls.DarkButton();
+            this.CargoChangeItemButton = new DarkUI.Controls.DarkButton();
+            this.CargoPresetTB = new System.Windows.Forms.TextBox();
+            this.CargoItemchanceNUD = new System.Windows.Forms.NumericUpDown();
+            this.CarcgoChanceNUD = new System.Windows.Forms.NumericUpDown();
+            this.cargochanceLabel = new System.Windows.Forms.Label();
+            this.CargochanceCB = new System.Windows.Forms.CheckBox();
+            this.CargoPresetGB = new System.Windows.Forms.GroupBox();
+            this.CargoPresetComboBox = new System.Windows.Forms.ComboBox();
+            this.darkButton36 = new DarkUI.Controls.DarkButton();
+            this.groupBox78 = new System.Windows.Forms.GroupBox();
+            this.DamageMaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.DamageMinNUD = new System.Windows.Forms.NumericUpDown();
+            this.Spaenabletypestagbox = new System.Windows.Forms.GroupBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.groupBox24 = new System.Windows.Forms.GroupBox();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.darkButton29 = new DarkUI.Controls.DarkButton();
             this.RandomPresetsTab = new System.Windows.Forms.TabPage();
             this.tabControl20 = new System.Windows.Forms.TabControl();
             this.tabPage19 = new System.Windows.Forms.TabPage();
@@ -527,6 +524,10 @@ namespace DayZeEditor
             this.generatorparamsmin_steepnessNUD = new System.Windows.Forms.NumericUpDown();
             this.label34 = new System.Windows.Forms.Label();
             this.groupBox75 = new System.Windows.Forms.GroupBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label191 = new System.Windows.Forms.Label();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.label192 = new System.Windows.Forms.Label();
             this.SpawnParamsmax_dist_staticNUD = new System.Windows.Forms.NumericUpDown();
             this.SpawnParamsmin_dist_infectedNUD = new System.Windows.Forms.NumericUpDown();
             this.label30 = new System.Windows.Forms.Label();
@@ -768,23 +769,33 @@ namespace DayZeEditor
             this.darkLabel24 = new DarkUI.Controls.DarkLabel();
             this.AreasLB = new System.Windows.Forms.ListBox();
             this.WeatherTab = new System.Windows.Forms.TabPage();
-            this.groupBox55 = new System.Windows.Forms.GroupBox();
-            this.label94 = new System.Windows.Forms.Label();
-            this.StimeoutNUD = new System.Windows.Forms.NumericUpDown();
-            this.SdensityNUD = new System.Windows.Forms.NumericUpDown();
-            this.SthresholdNUD = new System.Windows.Forms.NumericUpDown();
-            this.label96 = new System.Windows.Forms.Label();
-            this.label95 = new System.Windows.Forms.Label();
-            this.groupBox54 = new System.Windows.Forms.GroupBox();
-            this.groupBox57 = new System.Windows.Forms.GroupBox();
-            this.label93 = new System.Windows.Forms.Label();
-            this.WPfrequencyNUD = new System.Windows.Forms.NumericUpDown();
-            this.WPmaxNUD = new System.Windows.Forms.NumericUpDown();
-            this.WPminNUD = new System.Windows.Forms.NumericUpDown();
-            this.label97 = new System.Windows.Forms.Label();
-            this.label98 = new System.Windows.Forms.Label();
-            this.label101 = new System.Windows.Forms.Label();
-            this.WMaxSpeedNUD = new System.Windows.Forms.NumericUpDown();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.groupBox37 = new System.Windows.Forms.GroupBox();
+            this.weatherrestartCB = new System.Windows.Forms.CheckBox();
+            this.weatherenabledCB = new System.Windows.Forms.CheckBox();
+            this.groupBox38 = new System.Windows.Forms.GroupBox();
+            this.groupBox42 = new System.Windows.Forms.GroupBox();
+            this.OCLmaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.OCLminNUD = new System.Windows.Forms.NumericUpDown();
+            this.label70 = new System.Windows.Forms.Label();
+            this.label71 = new System.Windows.Forms.Label();
+            this.groupBox41 = new System.Windows.Forms.GroupBox();
+            this.OTLmaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.OTLminNUD = new System.Windows.Forms.NumericUpDown();
+            this.label66 = new System.Windows.Forms.Label();
+            this.label69 = new System.Windows.Forms.Label();
+            this.groupBox40 = new System.Windows.Forms.GroupBox();
+            this.OLmaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.OLminNUD = new System.Windows.Forms.NumericUpDown();
+            this.label67 = new System.Windows.Forms.Label();
+            this.label68 = new System.Windows.Forms.Label();
+            this.groupBox39 = new System.Windows.Forms.GroupBox();
+            this.OCdurationNUD = new System.Windows.Forms.NumericUpDown();
+            this.OCtimeNUD = new System.Windows.Forms.NumericUpDown();
+            this.OCactualNUD = new System.Windows.Forms.NumericUpDown();
+            this.label65 = new System.Windows.Forms.Label();
+            this.label62 = new System.Windows.Forms.Label();
+            this.label61 = new System.Windows.Forms.Label();
             this.groupBox48 = new System.Windows.Forms.GroupBox();
             this.groupBox53 = new System.Windows.Forms.GroupBox();
             this.RTendNUD = new System.Windows.Forms.NumericUpDown();
@@ -838,32 +849,89 @@ namespace DayZeEditor
             this.label78 = new System.Windows.Forms.Label();
             this.label79 = new System.Windows.Forms.Label();
             this.label80 = new System.Windows.Forms.Label();
-            this.groupBox38 = new System.Windows.Forms.GroupBox();
-            this.groupBox42 = new System.Windows.Forms.GroupBox();
-            this.OCLmaxNUD = new System.Windows.Forms.NumericUpDown();
-            this.OCLminNUD = new System.Windows.Forms.NumericUpDown();
-            this.label70 = new System.Windows.Forms.Label();
-            this.label71 = new System.Windows.Forms.Label();
-            this.groupBox41 = new System.Windows.Forms.GroupBox();
-            this.OTLmaxNUD = new System.Windows.Forms.NumericUpDown();
-            this.OTLminNUD = new System.Windows.Forms.NumericUpDown();
-            this.label66 = new System.Windows.Forms.Label();
-            this.label69 = new System.Windows.Forms.Label();
-            this.groupBox40 = new System.Windows.Forms.GroupBox();
-            this.OLmaxNUD = new System.Windows.Forms.NumericUpDown();
-            this.OLminNUD = new System.Windows.Forms.NumericUpDown();
-            this.label67 = new System.Windows.Forms.Label();
-            this.label68 = new System.Windows.Forms.Label();
-            this.groupBox39 = new System.Windows.Forms.GroupBox();
-            this.OCdurationNUD = new System.Windows.Forms.NumericUpDown();
-            this.OCtimeNUD = new System.Windows.Forms.NumericUpDown();
-            this.OCactualNUD = new System.Windows.Forms.NumericUpDown();
-            this.label65 = new System.Windows.Forms.Label();
-            this.label62 = new System.Windows.Forms.Label();
-            this.label61 = new System.Windows.Forms.Label();
-            this.groupBox37 = new System.Windows.Forms.GroupBox();
-            this.weatherrestartCB = new System.Windows.Forms.CheckBox();
-            this.weatherenabledCB = new System.Windows.Forms.CheckBox();
+            this.groupBox54 = new System.Windows.Forms.GroupBox();
+            this.groupBox57 = new System.Windows.Forms.GroupBox();
+            this.WMCLmaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.WMCLminNUD = new System.Windows.Forms.NumericUpDown();
+            this.label93 = new System.Windows.Forms.Label();
+            this.label97 = new System.Windows.Forms.Label();
+            this.groupBox81 = new System.Windows.Forms.GroupBox();
+            this.WMTLmaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.WMTLminNUD = new System.Windows.Forms.NumericUpDown();
+            this.label98 = new System.Windows.Forms.Label();
+            this.label101 = new System.Windows.Forms.Label();
+            this.groupBox82 = new System.Windows.Forms.GroupBox();
+            this.WMLmaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.WMLminNUD = new System.Windows.Forms.NumericUpDown();
+            this.label162 = new System.Windows.Forms.Label();
+            this.label166 = new System.Windows.Forms.Label();
+            this.groupBox83 = new System.Windows.Forms.GroupBox();
+            this.WMCdurationNUD = new System.Windows.Forms.NumericUpDown();
+            this.WMCtimeNUD = new System.Windows.Forms.NumericUpDown();
+            this.WMCactualNUD = new System.Windows.Forms.NumericUpDown();
+            this.label167 = new System.Windows.Forms.Label();
+            this.label168 = new System.Windows.Forms.Label();
+            this.label169 = new System.Windows.Forms.Label();
+            this.groupBox84 = new System.Windows.Forms.GroupBox();
+            this.groupBox85 = new System.Windows.Forms.GroupBox();
+            this.WDCLmaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.WDCLminNUD = new System.Windows.Forms.NumericUpDown();
+            this.label170 = new System.Windows.Forms.Label();
+            this.label171 = new System.Windows.Forms.Label();
+            this.groupBox86 = new System.Windows.Forms.GroupBox();
+            this.WDTLmaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.WDTLminNUD = new System.Windows.Forms.NumericUpDown();
+            this.label172 = new System.Windows.Forms.Label();
+            this.label173 = new System.Windows.Forms.Label();
+            this.groupBox87 = new System.Windows.Forms.GroupBox();
+            this.WDLmaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.WDLminNUD = new System.Windows.Forms.NumericUpDown();
+            this.label174 = new System.Windows.Forms.Label();
+            this.label175 = new System.Windows.Forms.Label();
+            this.groupBox88 = new System.Windows.Forms.GroupBox();
+            this.WDCdurationNUD = new System.Windows.Forms.NumericUpDown();
+            this.WDCtimeNUD = new System.Windows.Forms.NumericUpDown();
+            this.WDCactualNUD = new System.Windows.Forms.NumericUpDown();
+            this.label176 = new System.Windows.Forms.Label();
+            this.label177 = new System.Windows.Forms.Label();
+            this.label178 = new System.Windows.Forms.Label();
+            this.groupBox89 = new System.Windows.Forms.GroupBox();
+            this.groupBox90 = new System.Windows.Forms.GroupBox();
+            this.STendNUD = new System.Windows.Forms.NumericUpDown();
+            this.STmaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.STminNUD = new System.Windows.Forms.NumericUpDown();
+            this.label179 = new System.Windows.Forms.Label();
+            this.label180 = new System.Windows.Forms.Label();
+            this.label181 = new System.Windows.Forms.Label();
+            this.groupBox91 = new System.Windows.Forms.GroupBox();
+            this.SCLmaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.SCLminNUD = new System.Windows.Forms.NumericUpDown();
+            this.label182 = new System.Windows.Forms.Label();
+            this.label183 = new System.Windows.Forms.Label();
+            this.groupBox92 = new System.Windows.Forms.GroupBox();
+            this.STLmaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.STLminNUD = new System.Windows.Forms.NumericUpDown();
+            this.label184 = new System.Windows.Forms.Label();
+            this.label185 = new System.Windows.Forms.Label();
+            this.groupBox93 = new System.Windows.Forms.GroupBox();
+            this.SLmaxNUD = new System.Windows.Forms.NumericUpDown();
+            this.SLminNUD = new System.Windows.Forms.NumericUpDown();
+            this.label186 = new System.Windows.Forms.Label();
+            this.label187 = new System.Windows.Forms.Label();
+            this.groupBox94 = new System.Windows.Forms.GroupBox();
+            this.SCdurationNUD = new System.Windows.Forms.NumericUpDown();
+            this.SCtimeNUD = new System.Windows.Forms.NumericUpDown();
+            this.SCactualNUD = new System.Windows.Forms.NumericUpDown();
+            this.label188 = new System.Windows.Forms.Label();
+            this.label189 = new System.Windows.Forms.Label();
+            this.label190 = new System.Windows.Forms.Label();
+            this.groupBox55 = new System.Windows.Forms.GroupBox();
+            this.label94 = new System.Windows.Forms.Label();
+            this.StimeoutNUD = new System.Windows.Forms.NumericUpDown();
+            this.SdensityNUD = new System.Windows.Forms.NumericUpDown();
+            this.SthresholdNUD = new System.Windows.Forms.NumericUpDown();
+            this.label96 = new System.Windows.Forms.Label();
+            this.label95 = new System.Windows.Forms.Label();
             this.cfgIgnorelistTab = new System.Windows.Forms.TabPage();
             this.tabControl19 = new System.Windows.Forms.TabControl();
             this.tabPage24 = new System.Windows.Forms.TabPage();
@@ -1219,7 +1287,6 @@ namespace DayZeEditor
             this.groupBox58.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eventgrouplootmaxNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventgroupLootminNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.eventgroupdelootNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventgroupANUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventgroupZNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventgroupYNUD)).BeginInit();
@@ -1251,19 +1318,19 @@ namespace DayZeEditor
             this.tabControl10.SuspendLayout();
             this.tabPage7.SuspendLayout();
             this.groupBox21.SuspendLayout();
+            this.AttachmentGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemAttachmentchanceNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AttachmentchanceNUD)).BeginInit();
+            this.AttachmentPresetGB.SuspendLayout();
+            this.CargoGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CargoItemchanceNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CarcgoChanceNUD)).BeginInit();
+            this.CargoPresetGB.SuspendLayout();
             this.groupBox78.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DamageMaxNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DamageMinNUD)).BeginInit();
             this.Spaenabletypestagbox.SuspendLayout();
             this.groupBox24.SuspendLayout();
-            this.CargoGB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CargoItemchanceNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CarcgoChanceNUD)).BeginInit();
-            this.CargoPresetGB.SuspendLayout();
-            this.AttachmentGB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemAttachmentchanceNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AttachmentchanceNUD)).BeginInit();
-            this.AttachmentPresetGB.SuspendLayout();
             this.RandomPresetsTab.SuspendLayout();
             this.tabControl20.SuspendLayout();
             this.tabPage19.SuspendLayout();
@@ -1292,6 +1359,8 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.generatorparamsgrid_heightNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.generatorparamsmin_steepnessNUD)).BeginInit();
             this.groupBox75.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpawnParamsmax_dist_staticNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpawnParamsmin_dist_infectedNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpawnParamsmin_dist_staticNUD)).BeginInit();
@@ -1395,16 +1464,22 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.posYNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PosXNUD)).BeginInit();
             this.WeatherTab.SuspendLayout();
-            this.groupBox55.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.StimeoutNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SdensityNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SthresholdNUD)).BeginInit();
-            this.groupBox54.SuspendLayout();
-            this.groupBox57.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.WPfrequencyNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WPmaxNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WPminNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WMaxSpeedNUD)).BeginInit();
+            this.flowLayoutPanel4.SuspendLayout();
+            this.groupBox37.SuspendLayout();
+            this.groupBox38.SuspendLayout();
+            this.groupBox42.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OCLmaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCLminNUD)).BeginInit();
+            this.groupBox41.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OTLmaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OTLminNUD)).BeginInit();
+            this.groupBox40.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OLmaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OLminNUD)).BeginInit();
+            this.groupBox39.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OCdurationNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCtimeNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCactualNUD)).BeginInit();
             this.groupBox48.SuspendLayout();
             this.groupBox53.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RTendNUD)).BeginInit();
@@ -1437,21 +1512,56 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.FCdurationNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FCtimeNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FCactualNUD)).BeginInit();
-            this.groupBox38.SuspendLayout();
-            this.groupBox42.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.OCLmaxNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OCLminNUD)).BeginInit();
-            this.groupBox41.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.OTLmaxNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OTLminNUD)).BeginInit();
-            this.groupBox40.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.OLmaxNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OLminNUD)).BeginInit();
-            this.groupBox39.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.OCdurationNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OCtimeNUD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OCactualNUD)).BeginInit();
-            this.groupBox37.SuspendLayout();
+            this.groupBox54.SuspendLayout();
+            this.groupBox57.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WMCLmaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WMCLminNUD)).BeginInit();
+            this.groupBox81.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WMTLmaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WMTLminNUD)).BeginInit();
+            this.groupBox82.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WMLmaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WMLminNUD)).BeginInit();
+            this.groupBox83.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WMCdurationNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WMCtimeNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WMCactualNUD)).BeginInit();
+            this.groupBox84.SuspendLayout();
+            this.groupBox85.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WDCLmaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WDCLminNUD)).BeginInit();
+            this.groupBox86.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WDTLmaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WDTLminNUD)).BeginInit();
+            this.groupBox87.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WDLmaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WDLminNUD)).BeginInit();
+            this.groupBox88.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WDCdurationNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WDCtimeNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WDCactualNUD)).BeginInit();
+            this.groupBox89.SuspendLayout();
+            this.groupBox90.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.STendNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.STmaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.STminNUD)).BeginInit();
+            this.groupBox91.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SCLmaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCLminNUD)).BeginInit();
+            this.groupBox92.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.STLmaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.STLminNUD)).BeginInit();
+            this.groupBox93.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SLmaxNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SLminNUD)).BeginInit();
+            this.groupBox94.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SCdurationNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCtimeNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCactualNUD)).BeginInit();
+            this.groupBox55.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StimeoutNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SdensityNUD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SthresholdNUD)).BeginInit();
             this.cfgIgnorelistTab.SuspendLayout();
             this.tabControl19.SuspendLayout();
             this.tabPage24.SuspendLayout();
@@ -1599,7 +1709,7 @@ namespace DayZeEditor
             this.tabControl1.Location = new System.Drawing.Point(3, 7);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(481, 578);
+            this.tabControl1.Size = new System.Drawing.Size(483, 578);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 6;
             // 
@@ -1615,7 +1725,7 @@ namespace DayZeEditor
             this.LootParts.Location = new System.Drawing.Point(4, 5);
             this.LootParts.Name = "LootParts";
             this.LootParts.Padding = new System.Windows.Forms.Padding(3);
-            this.LootParts.Size = new System.Drawing.Size(473, 569);
+            this.LootParts.Size = new System.Drawing.Size(475, 569);
             this.LootParts.TabIndex = 0;
             this.LootParts.Text = "tabPage1";
             // 
@@ -1643,7 +1753,7 @@ namespace DayZeEditor
             this.comboBox9.Location = new System.Drawing.Point(70, 61);
             this.comboBox9.Name = "comboBox9";
             this.comboBox9.Size = new System.Drawing.Size(161, 21);
-            this.comboBox9.TabIndex = 10;
+            this.comboBox9.TabIndex = 5;
             this.comboBox9.SelectedIndexChanged += new System.EventHandler(this.comboBox9_SelectedIndexChanged);
             // 
             // label161
@@ -1652,7 +1762,7 @@ namespace DayZeEditor
             this.label161.Location = new System.Drawing.Point(5, 64);
             this.label161.Name = "label161";
             this.label161.Size = new System.Drawing.Size(43, 13);
-            this.label161.TabIndex = 9;
+            this.label161.TabIndex = 4;
             this.label161.Text = "Rarity :-";
             // 
             // textBox1
@@ -1664,7 +1774,7 @@ namespace DayZeEditor
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(150, 13);
-            this.textBox1.TabIndex = 8;
+            this.textBox1.TabIndex = 1;
             this.textBox1.TabStop = false;
             // 
             // comboBox1
@@ -1675,7 +1785,7 @@ namespace DayZeEditor
             this.comboBox1.Location = new System.Drawing.Point(70, 35);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(161, 21);
-            this.comboBox1.TabIndex = 5;
+            this.comboBox1.TabIndex = 3;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label2
@@ -1684,7 +1794,7 @@ namespace DayZeEditor
             this.label2.Location = new System.Drawing.Point(6, 38);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 13);
-            this.label2.TabIndex = 1;
+            this.label2.TabIndex = 2;
             this.label2.Text = "Category :-";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
@@ -1718,7 +1828,7 @@ namespace DayZeEditor
             this.groupBox6.Location = new System.Drawing.Point(250, 8);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(202, 100);
-            this.groupBox6.TabIndex = 7;
+            this.groupBox6.TabIndex = 2;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Add Tag";
             // 
@@ -1730,7 +1840,7 @@ namespace DayZeEditor
             this.comboBox4.Location = new System.Drawing.Point(10, 25);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(176, 21);
-            this.comboBox4.TabIndex = 1;
+            this.comboBox4.TabIndex = 0;
             // 
             // darkButton8
             // 
@@ -1738,7 +1848,7 @@ namespace DayZeEditor
             this.darkButton8.Name = "darkButton8";
             this.darkButton8.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton8.Size = new System.Drawing.Size(178, 27);
-            this.darkButton8.TabIndex = 5;
+            this.darkButton8.TabIndex = 1;
             this.darkButton8.Text = "Add Selected";
             this.darkButton8.Click += new System.EventHandler(this.darkButton8_Click);
             // 
@@ -1751,7 +1861,7 @@ namespace DayZeEditor
             this.listBox2.Location = new System.Drawing.Point(9, 19);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(235, 56);
-            this.listBox2.TabIndex = 6;
+            this.listBox2.TabIndex = 0;
             this.listBox2.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             // 
             // darkButton7
@@ -1760,7 +1870,7 @@ namespace DayZeEditor
             this.darkButton7.Name = "darkButton7";
             this.darkButton7.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton7.Size = new System.Drawing.Size(235, 27);
-            this.darkButton7.TabIndex = 4;
+            this.darkButton7.TabIndex = 1;
             this.darkButton7.Text = "Remove tag";
             this.darkButton7.Click += new System.EventHandler(this.darkButton7_Click);
             // 
@@ -1774,7 +1884,7 @@ namespace DayZeEditor
             this.groupBox2.Location = new System.Drawing.Point(5, 327);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(462, 123);
-            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Usage";
             // 
@@ -1787,7 +1897,7 @@ namespace DayZeEditor
             this.groupBox5.Location = new System.Drawing.Point(250, 13);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(202, 103);
-            this.groupBox5.TabIndex = 4;
+            this.groupBox5.TabIndex = 2;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Add Usage";
             // 
@@ -1797,7 +1907,7 @@ namespace DayZeEditor
             this.checkBox117.Location = new System.Drawing.Point(6, 19);
             this.checkBox117.Name = "checkBox117";
             this.checkBox117.Size = new System.Drawing.Size(154, 17);
-            this.checkBox117.TabIndex = 4;
+            this.checkBox117.TabIndex = 0;
             this.checkBox117.Tag = "Tier1";
             this.checkBox117.Text = "Show User Definitions Only";
             this.checkBox117.UseVisualStyleBackColor = true;
@@ -1809,7 +1919,7 @@ namespace DayZeEditor
             this.darkButton2.Name = "darkButton2";
             this.darkButton2.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton2.Size = new System.Drawing.Size(178, 27);
-            this.darkButton2.TabIndex = 3;
+            this.darkButton2.TabIndex = 2;
             this.darkButton2.Text = "Add Selected";
             this.darkButton2.Click += new System.EventHandler(this.darkButton2_Click);
             // 
@@ -1829,7 +1939,7 @@ namespace DayZeEditor
             this.darkButton1.Name = "darkButton1";
             this.darkButton1.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton1.Size = new System.Drawing.Size(235, 23);
-            this.darkButton1.TabIndex = 2;
+            this.darkButton1.TabIndex = 1;
             this.darkButton1.Text = "Remove Selected";
             this.darkButton1.Click += new System.EventHandler(this.darkButton1_Click);
             // 
@@ -1853,7 +1963,7 @@ namespace DayZeEditor
             this.TiersGB.Location = new System.Drawing.Point(213, 113);
             this.TiersGB.Name = "TiersGB";
             this.TiersGB.Size = new System.Drawing.Size(254, 208);
-            this.TiersGB.TabIndex = 4;
+            this.TiersGB.TabIndex = 3;
             this.TiersGB.TabStop = false;
             this.TiersGB.Text = "Tiers";
             // 
@@ -2467,7 +2577,7 @@ namespace DayZeEditor
             this.groupBox3.Location = new System.Drawing.Point(250, 0);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(218, 107);
-            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Flags";
             // 
@@ -2563,7 +2673,7 @@ namespace DayZeEditor
             this.groupBox4.Location = new System.Drawing.Point(5, 113);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(202, 208);
-            this.groupBox4.TabIndex = 3;
+            this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Counts";
             // 
@@ -2573,7 +2683,7 @@ namespace DayZeEditor
             this.costCB.Location = new System.Drawing.Point(9, 176);
             this.costCB.Name = "costCB";
             this.costCB.Size = new System.Drawing.Size(15, 14);
-            this.costCB.TabIndex = 20;
+            this.costCB.TabIndex = 11;
             this.costCB.UseVisualStyleBackColor = true;
             this.costCB.CheckedChanged += new System.EventHandler(this.costCB_CheckedChanged);
             // 
@@ -2583,7 +2693,7 @@ namespace DayZeEditor
             this.QuanMaxCB.Location = new System.Drawing.Point(9, 150);
             this.QuanMaxCB.Name = "QuanMaxCB";
             this.QuanMaxCB.Size = new System.Drawing.Size(15, 14);
-            this.QuanMaxCB.TabIndex = 19;
+            this.QuanMaxCB.TabIndex = 9;
             this.QuanMaxCB.UseVisualStyleBackColor = true;
             this.QuanMaxCB.CheckedChanged += new System.EventHandler(this.QuanMaxCB_CheckedChanged);
             // 
@@ -2593,7 +2703,7 @@ namespace DayZeEditor
             this.QuanMinCB.Location = new System.Drawing.Point(9, 124);
             this.QuanMinCB.Name = "QuanMinCB";
             this.QuanMinCB.Size = new System.Drawing.Size(15, 14);
-            this.QuanMinCB.TabIndex = 18;
+            this.QuanMinCB.TabIndex = 7;
             this.QuanMinCB.UseVisualStyleBackColor = true;
             this.QuanMinCB.CheckedChanged += new System.EventHandler(this.QuanMinCB_CheckedChanged);
             // 
@@ -2603,7 +2713,7 @@ namespace DayZeEditor
             this.RestockCB.Location = new System.Drawing.Point(9, 98);
             this.RestockCB.Name = "RestockCB";
             this.RestockCB.Size = new System.Drawing.Size(15, 14);
-            this.RestockCB.TabIndex = 17;
+            this.RestockCB.TabIndex = 5;
             this.RestockCB.UseVisualStyleBackColor = true;
             this.RestockCB.CheckedChanged += new System.EventHandler(this.RestockCB_CheckedChanged);
             // 
@@ -2613,7 +2723,7 @@ namespace DayZeEditor
             this.MinCountCB.Location = new System.Drawing.Point(9, 46);
             this.MinCountCB.Name = "MinCountCB";
             this.MinCountCB.Size = new System.Drawing.Size(15, 14);
-            this.MinCountCB.TabIndex = 16;
+            this.MinCountCB.TabIndex = 2;
             this.MinCountCB.UseVisualStyleBackColor = true;
             this.MinCountCB.CheckedChanged += new System.EventHandler(this.MinCountCB_CheckedChanged);
             // 
@@ -2623,7 +2733,7 @@ namespace DayZeEditor
             this.NomCountCB.Location = new System.Drawing.Point(9, 20);
             this.NomCountCB.Name = "NomCountCB";
             this.NomCountCB.Size = new System.Drawing.Size(15, 14);
-            this.NomCountCB.TabIndex = 15;
+            this.NomCountCB.TabIndex = 0;
             this.NomCountCB.UseVisualStyleBackColor = true;
             this.NomCountCB.CheckedChanged += new System.EventHandler(this.NomCountCB_CheckedChanged);
             // 
@@ -2639,7 +2749,7 @@ namespace DayZeEditor
             0});
             this.typeCostNUD.Name = "typeCostNUD";
             this.typeCostNUD.Size = new System.Drawing.Size(68, 20);
-            this.typeCostNUD.TabIndex = 14;
+            this.typeCostNUD.TabIndex = 12;
             this.typeCostNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.typeCostNUD.ValueChanged += new System.EventHandler(this.typeCostNUD_ValueChanged);
             // 
@@ -2649,7 +2759,7 @@ namespace DayZeEditor
             this.label10.Location = new System.Drawing.Point(27, 176);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(37, 13);
-            this.label10.TabIndex = 13;
+            this.label10.TabIndex = 0;
             this.label10.Text = "Cost :-";
             // 
             // typeQuantMAXNUD
@@ -2664,7 +2774,7 @@ namespace DayZeEditor
             -2147483648});
             this.typeQuantMAXNUD.Name = "typeQuantMAXNUD";
             this.typeQuantMAXNUD.Size = new System.Drawing.Size(68, 20);
-            this.typeQuantMAXNUD.TabIndex = 12;
+            this.typeQuantMAXNUD.TabIndex = 10;
             this.typeQuantMAXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.typeQuantMAXNUD.ValueChanged += new System.EventHandler(this.typeQuantMAXNUD_ValueChanged);
             // 
@@ -2674,7 +2784,7 @@ namespace DayZeEditor
             this.label9.Location = new System.Drawing.Point(27, 150);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 13);
-            this.label9.TabIndex = 11;
+            this.label9.TabIndex = 18;
             this.label9.Text = "Quan Max :-";
             // 
             // typeQuantMINNUD
@@ -2689,7 +2799,7 @@ namespace DayZeEditor
             -2147483648});
             this.typeQuantMINNUD.Name = "typeQuantMINNUD";
             this.typeQuantMINNUD.Size = new System.Drawing.Size(68, 20);
-            this.typeQuantMINNUD.TabIndex = 10;
+            this.typeQuantMINNUD.TabIndex = 8;
             this.typeQuantMINNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.typeQuantMINNUD.ValueChanged += new System.EventHandler(this.typeQuantMINNUD_ValueChanged);
             // 
@@ -2699,7 +2809,7 @@ namespace DayZeEditor
             this.label8.Location = new System.Drawing.Point(27, 124);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 13);
-            this.label8.TabIndex = 9;
+            this.label8.TabIndex = 17;
             this.label8.Text = "Quant Min :-";
             // 
             // typeRestockNUD
@@ -2714,7 +2824,7 @@ namespace DayZeEditor
             0});
             this.typeRestockNUD.Name = "typeRestockNUD";
             this.typeRestockNUD.Size = new System.Drawing.Size(68, 20);
-            this.typeRestockNUD.TabIndex = 8;
+            this.typeRestockNUD.TabIndex = 6;
             this.typeRestockNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.typeRestockNUD.ValueChanged += new System.EventHandler(this.typeRestockNUD_ValueChanged);
             // 
@@ -2724,7 +2834,7 @@ namespace DayZeEditor
             this.label7.Location = new System.Drawing.Point(27, 98);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 13);
-            this.label7.TabIndex = 7;
+            this.label7.TabIndex = 16;
             this.label7.Text = "Restock :-";
             // 
             // typeLifetimeNUD
@@ -2739,7 +2849,7 @@ namespace DayZeEditor
             0});
             this.typeLifetimeNUD.Name = "typeLifetimeNUD";
             this.typeLifetimeNUD.Size = new System.Drawing.Size(68, 20);
-            this.typeLifetimeNUD.TabIndex = 6;
+            this.typeLifetimeNUD.TabIndex = 4;
             this.typeLifetimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.typeLifetimeNUD.ValueChanged += new System.EventHandler(this.typeLifetimeNUD_ValueChanged);
             // 
@@ -2749,7 +2859,7 @@ namespace DayZeEditor
             this.label6.Location = new System.Drawing.Point(27, 72);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 13);
-            this.label6.TabIndex = 5;
+            this.label6.TabIndex = 15;
             this.label6.Text = "Life Time :-";
             // 
             // typeMinCountNUD
@@ -2764,7 +2874,7 @@ namespace DayZeEditor
             0});
             this.typeMinCountNUD.Name = "typeMinCountNUD";
             this.typeMinCountNUD.Size = new System.Drawing.Size(68, 20);
-            this.typeMinCountNUD.TabIndex = 4;
+            this.typeMinCountNUD.TabIndex = 3;
             this.typeMinCountNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.typeMinCountNUD.ValueChanged += new System.EventHandler(this.typeMinCountNUD_ValueChanged);
             // 
@@ -2780,7 +2890,7 @@ namespace DayZeEditor
             0});
             this.typeNomCountNUD.Name = "typeNomCountNUD";
             this.typeNomCountNUD.Size = new System.Drawing.Size(68, 20);
-            this.typeNomCountNUD.TabIndex = 3;
+            this.typeNomCountNUD.TabIndex = 1;
             this.typeNomCountNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.typeNomCountNUD.ValueChanged += new System.EventHandler(this.typeNomCountNUD_ValueChanged);
             // 
@@ -2790,7 +2900,7 @@ namespace DayZeEditor
             this.label5.Location = new System.Drawing.Point(27, 46);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(64, 13);
-            this.label5.TabIndex = 2;
+            this.label5.TabIndex = 14;
             this.label5.Text = "Min Count :-";
             // 
             // label4
@@ -2799,7 +2909,7 @@ namespace DayZeEditor
             this.label4.Location = new System.Drawing.Point(26, 20);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 13);
-            this.label4.TabIndex = 1;
+            this.label4.TabIndex = 13;
             this.label4.Text = "Nom Count :-";
             // 
             // Collection
@@ -2809,7 +2919,7 @@ namespace DayZeEditor
             this.Collection.Controls.Add(this.groupBox8);
             this.Collection.Location = new System.Drawing.Point(4, 5);
             this.Collection.Name = "Collection";
-            this.Collection.Size = new System.Drawing.Size(473, 569);
+            this.Collection.Size = new System.Drawing.Size(475, 569);
             this.Collection.TabIndex = 1;
             this.Collection.Text = "tabPage2";
             // 
@@ -2831,7 +2941,7 @@ namespace DayZeEditor
             this.groupBox10.Location = new System.Drawing.Point(9, 334);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(238, 195);
-            this.groupBox10.TabIndex = 3;
+            this.groupBox10.TabIndex = 1;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Flags";
             // 
@@ -2851,7 +2961,7 @@ namespace DayZeEditor
             this.CraftedButton.Name = "CraftedButton";
             this.CraftedButton.Padding = new System.Windows.Forms.Padding(5);
             this.CraftedButton.Size = new System.Drawing.Size(109, 23);
-            this.CraftedButton.TabIndex = 10;
+            this.CraftedButton.TabIndex = 9;
             this.CraftedButton.Text = "Apply to Collection";
             this.CraftedButton.Click += new System.EventHandler(this.darkButton6_Click);
             // 
@@ -2861,7 +2971,7 @@ namespace DayZeEditor
             this.PlayerButton.Name = "PlayerButton";
             this.PlayerButton.Padding = new System.Windows.Forms.Padding(5);
             this.PlayerButton.Size = new System.Drawing.Size(109, 23);
-            this.PlayerButton.TabIndex = 9;
+            this.PlayerButton.TabIndex = 7;
             this.PlayerButton.Text = "Apply to Collection";
             this.PlayerButton.Click += new System.EventHandler(this.darkButton6_Click);
             // 
@@ -2871,7 +2981,7 @@ namespace DayZeEditor
             this.MapButton.Name = "MapButton";
             this.MapButton.Padding = new System.Windows.Forms.Padding(5);
             this.MapButton.Size = new System.Drawing.Size(109, 23);
-            this.MapButton.TabIndex = 8;
+            this.MapButton.TabIndex = 5;
             this.MapButton.Text = "Apply to Collection";
             this.MapButton.Click += new System.EventHandler(this.darkButton6_Click);
             // 
@@ -2881,7 +2991,7 @@ namespace DayZeEditor
             this.HoarderButton.Name = "HoarderButton";
             this.HoarderButton.Padding = new System.Windows.Forms.Padding(5);
             this.HoarderButton.Size = new System.Drawing.Size(109, 23);
-            this.HoarderButton.TabIndex = 7;
+            this.HoarderButton.TabIndex = 3;
             this.HoarderButton.Text = "Apply to Collection";
             this.HoarderButton.Click += new System.EventHandler(this.darkButton6_Click);
             // 
@@ -2891,7 +3001,7 @@ namespace DayZeEditor
             this.CargoButton.Name = "CargoButton";
             this.CargoButton.Padding = new System.Windows.Forms.Padding(5);
             this.CargoButton.Size = new System.Drawing.Size(109, 23);
-            this.CargoButton.TabIndex = 6;
+            this.CargoButton.TabIndex = 1;
             this.CargoButton.Text = "Apply to Collection";
             this.CargoButton.Click += new System.EventHandler(this.darkButton6_Click);
             // 
@@ -2901,7 +3011,7 @@ namespace DayZeEditor
             this.checkBox8.Location = new System.Drawing.Point(14, 164);
             this.checkBox8.Name = "checkBox8";
             this.checkBox8.Size = new System.Drawing.Size(55, 17);
-            this.checkBox8.TabIndex = 5;
+            this.checkBox8.TabIndex = 10;
             this.checkBox8.Text = "deloot";
             this.checkBox8.UseVisualStyleBackColor = true;
             // 
@@ -2911,7 +3021,7 @@ namespace DayZeEditor
             this.checkBox9.Location = new System.Drawing.Point(14, 135);
             this.checkBox9.Name = "checkBox9";
             this.checkBox9.Size = new System.Drawing.Size(59, 17);
-            this.checkBox9.TabIndex = 4;
+            this.checkBox9.TabIndex = 8;
             this.checkBox9.Text = "crafted";
             this.checkBox9.UseVisualStyleBackColor = true;
             // 
@@ -2921,7 +3031,7 @@ namespace DayZeEditor
             this.checkBox14.Location = new System.Drawing.Point(14, 106);
             this.checkBox14.Name = "checkBox14";
             this.checkBox14.Size = new System.Drawing.Size(101, 17);
-            this.checkBox14.TabIndex = 3;
+            this.checkBox14.TabIndex = 6;
             this.checkBox14.Text = "count_in_player";
             this.checkBox14.UseVisualStyleBackColor = true;
             // 
@@ -2931,7 +3041,7 @@ namespace DayZeEditor
             this.checkBox15.Location = new System.Drawing.Point(14, 77);
             this.checkBox15.Name = "checkBox15";
             this.checkBox15.Size = new System.Drawing.Size(93, 17);
-            this.checkBox15.TabIndex = 2;
+            this.checkBox15.TabIndex = 4;
             this.checkBox15.Text = "count_in_map";
             this.checkBox15.UseVisualStyleBackColor = true;
             // 
@@ -2941,7 +3051,7 @@ namespace DayZeEditor
             this.checkBox16.Location = new System.Drawing.Point(14, 48);
             this.checkBox16.Name = "checkBox16";
             this.checkBox16.Size = new System.Drawing.Size(109, 17);
-            this.checkBox16.TabIndex = 1;
+            this.checkBox16.TabIndex = 2;
             this.checkBox16.Text = "count_in_hoarder";
             this.checkBox16.UseVisualStyleBackColor = true;
             // 
@@ -2981,7 +3091,7 @@ namespace DayZeEditor
             this.if0setto1CB.Location = new System.Drawing.Point(18, 94);
             this.if0setto1CB.Name = "if0setto1CB";
             this.if0setto1CB.Size = new System.Drawing.Size(121, 17);
-            this.if0setto1CB.TabIndex = 10;
+            this.if0setto1CB.TabIndex = 5;
             this.if0setto1CB.Text = "If Result = 0 set to 1";
             this.if0setto1CB.UseVisualStyleBackColor = true;
             // 
@@ -3011,7 +3121,7 @@ namespace DayZeEditor
             this.ChangeMinCheckBox.Location = new System.Drawing.Point(18, 71);
             this.ChangeMinCheckBox.Name = "ChangeMinCheckBox";
             this.ChangeMinCheckBox.Size = new System.Drawing.Size(86, 17);
-            this.ChangeMinCheckBox.TabIndex = 7;
+            this.ChangeMinCheckBox.TabIndex = 4;
             this.ChangeMinCheckBox.Text = "Change Min ";
             this.ChangeMinCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -3021,7 +3131,7 @@ namespace DayZeEditor
             this.darkLabel4.Location = new System.Drawing.Point(15, 159);
             this.darkLabel4.Name = "darkLabel4";
             this.darkLabel4.Size = new System.Drawing.Size(197, 57);
-            this.darkLabel4.TabIndex = 6;
+            this.darkLabel4.TabIndex = 7;
             this.darkLabel4.Text = "Once a multiplier has been applied any further collection changes will be made us" +
     "uing the new value from previous  collection changes";
             // 
@@ -3054,7 +3164,7 @@ namespace DayZeEditor
             this.comboBox3.Location = new System.Drawing.Point(148, 42);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(55, 21);
-            this.comboBox3.TabIndex = 5;
+            this.comboBox3.TabIndex = 3;
             // 
             // darkButton3
             // 
@@ -3062,7 +3172,7 @@ namespace DayZeEditor
             this.darkButton3.Name = "darkButton3";
             this.darkButton3.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton3.Size = new System.Drawing.Size(185, 23);
-            this.darkButton3.TabIndex = 4;
+            this.darkButton3.TabIndex = 6;
             this.darkButton3.Text = "Apply to Collection";
             this.darkButton3.Click += new System.EventHandler(this.darkButton3_Click);
             // 
@@ -3200,7 +3310,7 @@ namespace DayZeEditor
             this.economySearchNextButton.Image = ((System.Drawing.Image)(resources.GetObject("economySearchNextButton.Image")));
             this.economySearchNextButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.economySearchNextButton.Name = "economySearchNextButton";
-            this.economySearchNextButton.Size = new System.Drawing.Size(24, 24);
+            this.economySearchNextButton.Size = new System.Drawing.Size(62, 42);
             this.economySearchNextButton.Text = "Find Next";
             this.economySearchNextButton.Visible = false;
             this.economySearchNextButton.Click += new System.EventHandler(this.toolStripButton2_Click);
@@ -3478,7 +3588,7 @@ namespace DayZeEditor
             this.EconomyTabPage.SelectedIndex = 0;
             this.EconomyTabPage.Size = new System.Drawing.Size(1226, 625);
             this.EconomyTabPage.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.EconomyTabPage.TabIndex = 50;
+            this.EconomyTabPage.TabIndex = 1;
             this.EconomyTabPage.SelectedIndexChanged += new System.EventHandler(this.EconomyTabPage_SelectedIndexChanged);
             // 
             // EventsTab
@@ -3504,7 +3614,7 @@ namespace DayZeEditor
             this.darkButton20.Name = "darkButton20";
             this.darkButton20.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton20.Size = new System.Drawing.Size(123, 23);
-            this.darkButton20.TabIndex = 111;
+            this.darkButton20.TabIndex = 2;
             this.darkButton20.Text = "Remove event file";
             this.darkButton20.Click += new System.EventHandler(this.darkButton20_Click);
             // 
@@ -3515,7 +3625,7 @@ namespace DayZeEditor
             this.darkButton17.Name = "darkButton17";
             this.darkButton17.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton17.Size = new System.Drawing.Size(151, 23);
-            this.darkButton17.TabIndex = 57;
+            this.darkButton17.TabIndex = 5;
             this.darkButton17.Text = "Remove Selected Event";
             this.darkButton17.Click += new System.EventHandler(this.darkButton17_Click);
             // 
@@ -3526,7 +3636,7 @@ namespace DayZeEditor
             this.darkButton21.Name = "darkButton21";
             this.darkButton21.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton21.Size = new System.Drawing.Size(124, 23);
-            this.darkButton21.TabIndex = 110;
+            this.darkButton21.TabIndex = 1;
             this.darkButton21.Text = "Add New event file";
             this.darkButton21.Click += new System.EventHandler(this.darkButton21_Click);
             // 
@@ -3537,7 +3647,7 @@ namespace DayZeEditor
             this.darkButton16.Name = "darkButton16";
             this.darkButton16.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton16.Size = new System.Drawing.Size(110, 23);
-            this.darkButton16.TabIndex = 56;
+            this.darkButton16.TabIndex = 4;
             this.darkButton16.Text = "Add New Event";
             this.darkButton16.Click += new System.EventHandler(this.darkButton16_Click);
             // 
@@ -3553,7 +3663,7 @@ namespace DayZeEditor
             this.tabControl7.SelectedIndex = 0;
             this.tabControl7.Size = new System.Drawing.Size(253, 469);
             this.tabControl7.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabControl7.TabIndex = 55;
+            this.tabControl7.TabIndex = 0;
             // 
             // tabPage4
             // 
@@ -3576,7 +3686,7 @@ namespace DayZeEditor
             this.EventsLIstLB.Location = new System.Drawing.Point(3, 3);
             this.EventsLIstLB.Name = "EventsLIstLB";
             this.EventsLIstLB.Size = new System.Drawing.Size(239, 454);
-            this.EventsLIstLB.TabIndex = 50;
+            this.EventsLIstLB.TabIndex = 0;
             this.EventsLIstLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.EventsLIstLB.SelectedIndexChanged += new System.EventHandler(this.EventsLIstLB_SelectedIndexChanged);
             // 
@@ -3592,7 +3702,7 @@ namespace DayZeEditor
             this.tabControl5.SelectedIndex = 0;
             this.tabControl5.Size = new System.Drawing.Size(503, 524);
             this.tabControl5.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabControl5.TabIndex = 54;
+            this.tabControl5.TabIndex = 6;
             // 
             // tabPage1
             // 
@@ -3638,7 +3748,7 @@ namespace DayZeEditor
             this.darkButton60.Name = "darkButton60";
             this.darkButton60.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton60.Size = new System.Drawing.Size(137, 23);
-            this.darkButton60.TabIndex = 109;
+            this.darkButton60.TabIndex = 24;
             this.darkButton60.Text = "Refresh Secondary List";
             this.darkButton60.Click += new System.EventHandler(this.darkButton60_Click);
             // 
@@ -3648,7 +3758,7 @@ namespace DayZeEditor
             this.SecondaryCB.Location = new System.Drawing.Point(251, 165);
             this.SecondaryCB.Name = "SecondaryCB";
             this.SecondaryCB.Size = new System.Drawing.Size(241, 21);
-            this.SecondaryCB.TabIndex = 101;
+            this.SecondaryCB.TabIndex = 26;
             this.SecondaryCB.SelectedIndexChanged += new System.EventHandler(this.SecondaryCB_SelectedIndexChanged);
             // 
             // label120
@@ -3658,7 +3768,7 @@ namespace DayZeEditor
             this.label120.Location = new System.Drawing.Point(161, 168);
             this.label120.Name = "label120";
             this.label120.Size = new System.Drawing.Size(67, 13);
-            this.label120.TabIndex = 100;
+            this.label120.TabIndex = 25;
             this.label120.Text = "Secondary :-";
             // 
             // groupBox9
@@ -3674,7 +3784,7 @@ namespace DayZeEditor
             this.groupBox9.Location = new System.Drawing.Point(6, 203);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(486, 312);
-            this.groupBox9.TabIndex = 99;
+            this.groupBox9.TabIndex = 27;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Children";
             // 
@@ -3685,7 +3795,7 @@ namespace DayZeEditor
             this.CreateeventSpawnButton.Name = "CreateeventSpawnButton";
             this.CreateeventSpawnButton.Padding = new System.Windows.Forms.Padding(5);
             this.CreateeventSpawnButton.Size = new System.Drawing.Size(143, 23);
-            this.CreateeventSpawnButton.TabIndex = 110;
+            this.CreateeventSpawnButton.TabIndex = 4;
             this.CreateeventSpawnButton.Text = "Create Event Spawn.";
             this.CreateeventSpawnButton.Click += new System.EventHandler(this.CreateeventSpawnButton_Click);
             // 
@@ -3696,7 +3806,7 @@ namespace DayZeEditor
             this.darkButton18.Name = "darkButton18";
             this.darkButton18.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton18.Size = new System.Drawing.Size(109, 23);
-            this.darkButton18.TabIndex = 109;
+            this.darkButton18.TabIndex = 2;
             this.darkButton18.Text = "Remove child";
             this.darkButton18.Click += new System.EventHandler(this.darkButton18_Click);
             // 
@@ -3707,7 +3817,7 @@ namespace DayZeEditor
             this.darkButton19.Name = "darkButton19";
             this.darkButton19.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton19.Size = new System.Drawing.Size(124, 23);
-            this.darkButton19.TabIndex = 108;
+            this.darkButton19.TabIndex = 1;
             this.darkButton19.Text = "Add Child";
             this.darkButton19.Click += new System.EventHandler(this.darkButton19_Click);
             // 
@@ -3729,7 +3839,7 @@ namespace DayZeEditor
             this.ChildGB.Location = new System.Drawing.Point(256, 19);
             this.ChildGB.Name = "ChildGB";
             this.ChildGB.Size = new System.Drawing.Size(221, 252);
-            this.ChildGB.TabIndex = 107;
+            this.ChildGB.TabIndex = 3;
             this.ChildGB.TabStop = false;
             this.ChildGB.Text = "Child";
             // 
@@ -3740,7 +3850,7 @@ namespace DayZeEditor
             this.darkLabel5.Location = new System.Drawing.Point(6, 16);
             this.darkLabel5.Name = "darkLabel5";
             this.darkLabel5.Size = new System.Drawing.Size(40, 13);
-            this.darkLabel5.TabIndex = 98;
+            this.darkLabel5.TabIndex = 0;
             this.darkLabel5.Text = "Type :-";
             // 
             // CminNUD
@@ -3755,7 +3865,7 @@ namespace DayZeEditor
             0});
             this.CminNUD.Name = "CminNUD";
             this.CminNUD.Size = new System.Drawing.Size(68, 20);
-            this.CminNUD.TabIndex = 106;
+            this.CminNUD.TabIndex = 9;
             this.CminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.CminNUD.ValueChanged += new System.EventHandler(this.EventsChildNUD_ValueChanged);
             // 
@@ -3766,7 +3876,7 @@ namespace DayZeEditor
             this.CtypeTB.Location = new System.Drawing.Point(6, 32);
             this.CtypeTB.Name = "CtypeTB";
             this.CtypeTB.Size = new System.Drawing.Size(209, 20);
-            this.CtypeTB.TabIndex = 97;
+            this.CtypeTB.TabIndex = 1;
             this.CtypeTB.TextChanged += new System.EventHandler(this.CtypeTB_TextChanged);
             // 
             // label14
@@ -3776,7 +3886,7 @@ namespace DayZeEditor
             this.label14.Location = new System.Drawing.Point(6, 143);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(33, 13);
-            this.label14.TabIndex = 105;
+            this.label14.TabIndex = 8;
             this.label14.Text = "Min :-";
             // 
             // label11
@@ -3786,7 +3896,7 @@ namespace DayZeEditor
             this.label11.Location = new System.Drawing.Point(6, 65);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(60, 13);
-            this.label11.TabIndex = 99;
+            this.label11.TabIndex = 2;
             this.label11.Text = "Loot Max :-";
             // 
             // CmaxNUD
@@ -3801,7 +3911,7 @@ namespace DayZeEditor
             0});
             this.CmaxNUD.Name = "CmaxNUD";
             this.CmaxNUD.Size = new System.Drawing.Size(68, 20);
-            this.CmaxNUD.TabIndex = 104;
+            this.CmaxNUD.TabIndex = 7;
             this.CmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.CmaxNUD.ValueChanged += new System.EventHandler(this.EventsChildNUD_ValueChanged);
             // 
@@ -3817,7 +3927,7 @@ namespace DayZeEditor
             0});
             this.ClootmaxNUD.Name = "ClootmaxNUD";
             this.ClootmaxNUD.Size = new System.Drawing.Size(68, 20);
-            this.ClootmaxNUD.TabIndex = 100;
+            this.ClootmaxNUD.TabIndex = 3;
             this.ClootmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ClootmaxNUD.ValueChanged += new System.EventHandler(this.EventsChildNUD_ValueChanged);
             // 
@@ -3828,7 +3938,7 @@ namespace DayZeEditor
             this.label13.Location = new System.Drawing.Point(6, 117);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(36, 13);
-            this.label13.TabIndex = 103;
+            this.label13.TabIndex = 6;
             this.label13.Text = "Max :-";
             // 
             // label12
@@ -3838,7 +3948,7 @@ namespace DayZeEditor
             this.label12.Location = new System.Drawing.Point(6, 91);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(57, 13);
-            this.label12.TabIndex = 101;
+            this.label12.TabIndex = 4;
             this.label12.Text = "Loot Min :-";
             // 
             // ClootminNUD
@@ -3853,7 +3963,7 @@ namespace DayZeEditor
             0});
             this.ClootminNUD.Name = "ClootminNUD";
             this.ClootminNUD.Size = new System.Drawing.Size(68, 20);
-            this.ClootminNUD.TabIndex = 102;
+            this.ClootminNUD.TabIndex = 5;
             this.ClootminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ClootminNUD.ValueChanged += new System.EventHandler(this.EventsChildNUD_ValueChanged);
             // 
@@ -3868,7 +3978,7 @@ namespace DayZeEditor
             this.ChildrenLB.Location = new System.Drawing.Point(11, 19);
             this.ChildrenLB.Name = "ChildrenLB";
             this.ChildrenLB.Size = new System.Drawing.Size(239, 251);
-            this.ChildrenLB.TabIndex = 95;
+            this.ChildrenLB.TabIndex = 0;
             this.ChildrenLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.ChildrenLB.SelectedIndexChanged += new System.EventHandler(this.ChildrenLB_SelectedIndexChanged);
             // 
@@ -3881,7 +3991,7 @@ namespace DayZeEditor
             this.groupBox11.Location = new System.Drawing.Point(371, 26);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(121, 78);
-            this.groupBox11.TabIndex = 94;
+            this.groupBox11.TabIndex = 7;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Flags";
             // 
@@ -3892,7 +4002,7 @@ namespace DayZeEditor
             this.deletableCB.Location = new System.Drawing.Point(5, 19);
             this.deletableCB.Name = "deletableCB";
             this.deletableCB.Size = new System.Drawing.Size(69, 17);
-            this.deletableCB.TabIndex = 80;
+            this.deletableCB.TabIndex = 0;
             this.deletableCB.Tag = "deletable";
             this.deletableCB.Text = "deletable";
             this.deletableCB.UseVisualStyleBackColor = true;
@@ -3905,7 +4015,7 @@ namespace DayZeEditor
             this.remove_damagedCB.Location = new System.Drawing.Point(5, 53);
             this.remove_damagedCB.Name = "remove_damagedCB";
             this.remove_damagedCB.Size = new System.Drawing.Size(111, 17);
-            this.remove_damagedCB.TabIndex = 82;
+            this.remove_damagedCB.TabIndex = 2;
             this.remove_damagedCB.Tag = "remove_damaged";
             this.remove_damagedCB.Text = "remove_damaged";
             this.remove_damagedCB.UseVisualStyleBackColor = true;
@@ -3918,7 +4028,7 @@ namespace DayZeEditor
             this.init_randomCB.Location = new System.Drawing.Point(5, 36);
             this.init_randomCB.Name = "init_randomCB";
             this.init_randomCB.Size = new System.Drawing.Size(80, 17);
-            this.init_randomCB.TabIndex = 81;
+            this.init_randomCB.TabIndex = 1;
             this.init_randomCB.Tag = "init_random";
             this.init_randomCB.Text = "init_random";
             this.init_randomCB.UseVisualStyleBackColor = true;
@@ -3931,7 +4041,7 @@ namespace DayZeEditor
             this.activeCB.Location = new System.Drawing.Point(376, 8);
             this.activeCB.Name = "activeCB";
             this.activeCB.Size = new System.Drawing.Size(67, 17);
-            this.activeCB.TabIndex = 93;
+            this.activeCB.TabIndex = 2;
             this.activeCB.Tag = "isactive";
             this.activeCB.Text = "Is Active";
             this.activeCB.UseVisualStyleBackColor = true;
@@ -3944,7 +4054,7 @@ namespace DayZeEditor
             this.label3.Location = new System.Drawing.Point(161, 141);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(33, 13);
-            this.label3.TabIndex = 92;
+            this.label3.TabIndex = 22;
             this.label3.Text = "limit :-";
             // 
             // label15
@@ -3954,7 +4064,7 @@ namespace DayZeEditor
             this.label15.Location = new System.Drawing.Point(161, 113);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(52, 13);
-            this.label15.TabIndex = 91;
+            this.label15.TabIndex = 18;
             this.label15.Text = "position :-";
             // 
             // limitComboBox
@@ -3963,7 +4073,7 @@ namespace DayZeEditor
             this.limitComboBox.Location = new System.Drawing.Point(251, 138);
             this.limitComboBox.Name = "limitComboBox";
             this.limitComboBox.Size = new System.Drawing.Size(241, 21);
-            this.limitComboBox.TabIndex = 90;
+            this.limitComboBox.TabIndex = 23;
             this.limitComboBox.SelectedIndexChanged += new System.EventHandler(this.limitComboBox_SelectedIndexChanged);
             // 
             // positionComboBox
@@ -3972,7 +4082,7 @@ namespace DayZeEditor
             this.positionComboBox.Location = new System.Drawing.Point(251, 110);
             this.positionComboBox.Name = "positionComboBox";
             this.positionComboBox.Size = new System.Drawing.Size(241, 21);
-            this.positionComboBox.TabIndex = 89;
+            this.positionComboBox.TabIndex = 19;
             this.positionComboBox.SelectedIndexChanged += new System.EventHandler(this.positionComboBox_SelectedIndexChanged);
             // 
             // cleanupradiusNUD
@@ -3987,7 +4097,7 @@ namespace DayZeEditor
             0});
             this.cleanupradiusNUD.Name = "cleanupradiusNUD";
             this.cleanupradiusNUD.Size = new System.Drawing.Size(114, 20);
-            this.cleanupradiusNUD.TabIndex = 88;
+            this.cleanupradiusNUD.TabIndex = 15;
             this.cleanupradiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.cleanupradiusNUD.ValueChanged += new System.EventHandler(this.EventsNUD_ValueChanged);
             // 
@@ -3998,7 +4108,7 @@ namespace DayZeEditor
             this.label16.Location = new System.Drawing.Point(161, 86);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(82, 13);
-            this.label16.TabIndex = 87;
+            this.label16.TabIndex = 14;
             this.label16.Text = "cleanupradius :-";
             // 
             // distanceradiusNUD
@@ -4013,7 +4123,7 @@ namespace DayZeEditor
             0});
             this.distanceradiusNUD.Name = "distanceradiusNUD";
             this.distanceradiusNUD.Size = new System.Drawing.Size(114, 20);
-            this.distanceradiusNUD.TabIndex = 86;
+            this.distanceradiusNUD.TabIndex = 11;
             this.distanceradiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.distanceradiusNUD.ValueChanged += new System.EventHandler(this.EventsNUD_ValueChanged);
             // 
@@ -4024,7 +4134,7 @@ namespace DayZeEditor
             this.label17.Location = new System.Drawing.Point(161, 60);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(84, 13);
-            this.label17.TabIndex = 85;
+            this.label17.TabIndex = 10;
             this.label17.Text = "distanceradius :-";
             // 
             // saferadiusNUD
@@ -4039,7 +4149,7 @@ namespace DayZeEditor
             0});
             this.saferadiusNUD.Name = "saferadiusNUD";
             this.saferadiusNUD.Size = new System.Drawing.Size(114, 20);
-            this.saferadiusNUD.TabIndex = 84;
+            this.saferadiusNUD.TabIndex = 6;
             this.saferadiusNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.saferadiusNUD.ValueChanged += new System.EventHandler(this.EventsNUD_ValueChanged);
             // 
@@ -4050,7 +4160,7 @@ namespace DayZeEditor
             this.label18.Location = new System.Drawing.Point(160, 34);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(64, 13);
-            this.label18.TabIndex = 83;
+            this.label18.TabIndex = 5;
             this.label18.Text = "saferadius :-";
             // 
             // darkLabel51
@@ -4060,7 +4170,7 @@ namespace DayZeEditor
             this.darkLabel51.Location = new System.Drawing.Point(12, 9);
             this.darkLabel51.Name = "darkLabel51";
             this.darkLabel51.Size = new System.Drawing.Size(44, 13);
-            this.darkLabel51.TabIndex = 79;
+            this.darkLabel51.TabIndex = 0;
             this.darkLabel51.Text = "Name :-";
             // 
             // nameTB
@@ -4070,7 +4180,7 @@ namespace DayZeEditor
             this.nameTB.Location = new System.Drawing.Point(83, 6);
             this.nameTB.Name = "nameTB";
             this.nameTB.Size = new System.Drawing.Size(282, 20);
-            this.nameTB.TabIndex = 78;
+            this.nameTB.TabIndex = 1;
             this.nameTB.TextChanged += new System.EventHandler(this.nameTB_TextChanged);
             // 
             // restockNUD
@@ -4085,7 +4195,7 @@ namespace DayZeEditor
             0});
             this.restockNUD.Name = "restockNUD";
             this.restockNUD.Size = new System.Drawing.Size(68, 20);
-            this.restockNUD.TabIndex = 13;
+            this.restockNUD.TabIndex = 21;
             this.restockNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.restockNUD.ValueChanged += new System.EventHandler(this.EventsNUD_ValueChanged);
             // 
@@ -4096,7 +4206,7 @@ namespace DayZeEditor
             this.label19.Location = new System.Drawing.Point(11, 141);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(56, 13);
-            this.label19.TabIndex = 12;
+            this.label19.TabIndex = 20;
             this.label19.Text = "Restock :-";
             // 
             // lifetimeNUD
@@ -4111,7 +4221,7 @@ namespace DayZeEditor
             0});
             this.lifetimeNUD.Name = "lifetimeNUD";
             this.lifetimeNUD.Size = new System.Drawing.Size(68, 20);
-            this.lifetimeNUD.TabIndex = 11;
+            this.lifetimeNUD.TabIndex = 17;
             this.lifetimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.lifetimeNUD.ValueChanged += new System.EventHandler(this.EventsNUD_ValueChanged);
             // 
@@ -4122,7 +4232,7 @@ namespace DayZeEditor
             this.label20.Location = new System.Drawing.Point(12, 113);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(59, 13);
-            this.label20.TabIndex = 10;
+            this.label20.TabIndex = 16;
             this.label20.Text = "Life Time :-";
             // 
             // maxNUD
@@ -4137,7 +4247,7 @@ namespace DayZeEditor
             0});
             this.maxNUD.Name = "maxNUD";
             this.maxNUD.Size = new System.Drawing.Size(68, 20);
-            this.maxNUD.TabIndex = 9;
+            this.maxNUD.TabIndex = 13;
             this.maxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.maxNUD.ValueChanged += new System.EventHandler(this.EventsNUD_ValueChanged);
             // 
@@ -4148,7 +4258,7 @@ namespace DayZeEditor
             this.label21.Location = new System.Drawing.Point(11, 86);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(67, 13);
-            this.label21.TabIndex = 8;
+            this.label21.TabIndex = 12;
             this.label21.Text = "Max Count :-";
             // 
             // minNUD
@@ -4163,7 +4273,7 @@ namespace DayZeEditor
             0});
             this.minNUD.Name = "minNUD";
             this.minNUD.Size = new System.Drawing.Size(68, 20);
-            this.minNUD.TabIndex = 7;
+            this.minNUD.TabIndex = 9;
             this.minNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.minNUD.ValueChanged += new System.EventHandler(this.EventsNUD_ValueChanged);
             // 
@@ -4174,7 +4284,7 @@ namespace DayZeEditor
             this.label22.Location = new System.Drawing.Point(11, 60);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(64, 13);
-            this.label22.TabIndex = 6;
+            this.label22.TabIndex = 8;
             this.label22.Text = "Min Count :-";
             // 
             // nominalNUD
@@ -4189,7 +4299,7 @@ namespace DayZeEditor
             0});
             this.nominalNUD.Name = "nominalNUD";
             this.nominalNUD.Size = new System.Drawing.Size(68, 20);
-            this.nominalNUD.TabIndex = 5;
+            this.nominalNUD.TabIndex = 4;
             this.nominalNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.nominalNUD.ValueChanged += new System.EventHandler(this.EventsNUD_ValueChanged);
             // 
@@ -4200,7 +4310,7 @@ namespace DayZeEditor
             this.label23.Location = new System.Drawing.Point(11, 34);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(69, 13);
-            this.label23.TabIndex = 4;
+            this.label23.TabIndex = 3;
             this.label23.Text = "Nom Count :-";
             // 
             // tabControl6
@@ -4215,7 +4325,7 @@ namespace DayZeEditor
             this.tabControl6.SelectedIndex = 0;
             this.tabControl6.Size = new System.Drawing.Size(267, 469);
             this.tabControl6.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabControl6.TabIndex = 53;
+            this.tabControl6.TabIndex = 3;
             // 
             // tabPage2
             // 
@@ -4238,7 +4348,7 @@ namespace DayZeEditor
             this.EventsLB.Location = new System.Drawing.Point(3, 3);
             this.EventsLB.Name = "EventsLB";
             this.EventsLB.Size = new System.Drawing.Size(253, 454);
-            this.EventsLB.TabIndex = 50;
+            this.EventsLB.TabIndex = 0;
             this.EventsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.EventsLB.SelectedIndexChanged += new System.EventHandler(this.EventsLB_SelectedIndexChanged);
             // 
@@ -4266,7 +4376,7 @@ namespace DayZeEditor
             this.label157.Location = new System.Drawing.Point(520, 10);
             this.label157.Name = "label157";
             this.label157.Size = new System.Drawing.Size(0, 13);
-            this.label157.TabIndex = 118;
+            this.label157.TabIndex = 6;
             // 
             // EventspawnPositionGB
             // 
@@ -4282,10 +4392,10 @@ namespace DayZeEditor
             this.EventspawnPositionGB.Controls.Add(this.label118);
             this.EventspawnPositionGB.Controls.Add(this.EventSpawnPosANUD);
             this.EventspawnPositionGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.EventspawnPositionGB.Location = new System.Drawing.Point(3, 394);
+            this.EventspawnPositionGB.Location = new System.Drawing.Point(3, 441);
             this.EventspawnPositionGB.Name = "EventspawnPositionGB";
             this.EventspawnPositionGB.Size = new System.Drawing.Size(267, 152);
-            this.EventspawnPositionGB.TabIndex = 115;
+            this.EventspawnPositionGB.TabIndex = 3;
             this.EventspawnPositionGB.TabStop = false;
             this.EventspawnPositionGB.Text = "Position";
             // 
@@ -4296,7 +4406,7 @@ namespace DayZeEditor
             this.checkBox64.Name = "checkBox64";
             this.checkBox64.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBox64.Size = new System.Drawing.Size(105, 17);
-            this.checkBox64.TabIndex = 113;
+            this.checkBox64.TabIndex = 8;
             this.checkBox64.Text = "Use GroupName";
             this.checkBox64.UseVisualStyleBackColor = true;
             this.checkBox64.CheckedChanged += new System.EventHandler(this.checkBox64_CheckedChanged);
@@ -4308,7 +4418,7 @@ namespace DayZeEditor
             this.EventSpawnGroupTB.Location = new System.Drawing.Point(10, 123);
             this.EventSpawnGroupTB.Name = "EventSpawnGroupTB";
             this.EventSpawnGroupTB.Size = new System.Drawing.Size(251, 20);
-            this.EventSpawnGroupTB.TabIndex = 112;
+            this.EventSpawnGroupTB.TabIndex = 9;
             this.EventSpawnGroupTB.TextChanged += new System.EventHandler(this.EventSpawnGroupTB_TextChanged);
             // 
             // checkBox51
@@ -4318,7 +4428,7 @@ namespace DayZeEditor
             this.checkBox51.Name = "checkBox51";
             this.checkBox51.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBox51.Size = new System.Drawing.Size(55, 17);
-            this.checkBox51.TabIndex = 104;
+            this.checkBox51.TabIndex = 6;
             this.checkBox51.Text = "Use A";
             this.checkBox51.UseVisualStyleBackColor = true;
             this.checkBox51.CheckedChanged += new System.EventHandler(this.checkBox51_CheckedChanged);
@@ -4330,7 +4440,7 @@ namespace DayZeEditor
             this.checkBox50.Name = "checkBox50";
             this.checkBox50.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBox50.Size = new System.Drawing.Size(55, 17);
-            this.checkBox50.TabIndex = 103;
+            this.checkBox50.TabIndex = 4;
             this.checkBox50.Text = "Use Y";
             this.checkBox50.UseVisualStyleBackColor = true;
             this.checkBox50.CheckedChanged += new System.EventHandler(this.checkBox50_CheckedChanged);
@@ -4353,7 +4463,7 @@ namespace DayZeEditor
             -2147483648});
             this.EventSpawnPosXNUD.Name = "EventSpawnPosXNUD";
             this.EventSpawnPosXNUD.Size = new System.Drawing.Size(99, 20);
-            this.EventSpawnPosXNUD.TabIndex = 96;
+            this.EventSpawnPosXNUD.TabIndex = 1;
             this.EventSpawnPosXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.EventSpawnPosXNUD.ValueChanged += new System.EventHandler(this.EventSpawnPosXNUD_ValueChanged);
             // 
@@ -4364,7 +4474,7 @@ namespace DayZeEditor
             this.label116.Location = new System.Drawing.Point(10, 21);
             this.label116.Name = "label116";
             this.label116.Size = new System.Drawing.Size(23, 13);
-            this.label116.TabIndex = 95;
+            this.label116.TabIndex = 0;
             this.label116.Text = "X - ";
             // 
             // EventSpawnPosYNUD
@@ -4385,7 +4495,7 @@ namespace DayZeEditor
             -2147483648});
             this.EventSpawnPosYNUD.Name = "EventSpawnPosYNUD";
             this.EventSpawnPosYNUD.Size = new System.Drawing.Size(99, 20);
-            this.EventSpawnPosYNUD.TabIndex = 98;
+            this.EventSpawnPosYNUD.TabIndex = 5;
             this.EventSpawnPosYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.EventSpawnPosYNUD.ValueChanged += new System.EventHandler(this.EventSpawnPosYNUD_ValueChanged);
             // 
@@ -4407,7 +4517,7 @@ namespace DayZeEditor
             -2147483648});
             this.EventSpawnPosZNUD.Name = "EventSpawnPosZNUD";
             this.EventSpawnPosZNUD.Size = new System.Drawing.Size(99, 20);
-            this.EventSpawnPosZNUD.TabIndex = 100;
+            this.EventSpawnPosZNUD.TabIndex = 3;
             this.EventSpawnPosZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.EventSpawnPosZNUD.ValueChanged += new System.EventHandler(this.EventSpawnPosZNUD_ValueChanged);
             // 
@@ -4418,7 +4528,7 @@ namespace DayZeEditor
             this.label118.Location = new System.Drawing.Point(136, 21);
             this.label118.Name = "label118";
             this.label118.Size = new System.Drawing.Size(23, 13);
-            this.label118.TabIndex = 99;
+            this.label118.TabIndex = 2;
             this.label118.Text = "Z - ";
             // 
             // EventSpawnPosANUD
@@ -4439,7 +4549,7 @@ namespace DayZeEditor
             -2147483648});
             this.EventSpawnPosANUD.Name = "EventSpawnPosANUD";
             this.EventSpawnPosANUD.Size = new System.Drawing.Size(99, 20);
-            this.EventSpawnPosANUD.TabIndex = 102;
+            this.EventSpawnPosANUD.TabIndex = 7;
             this.EventSpawnPosANUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.EventSpawnPosANUD.ValueChanged += new System.EventHandler(this.EventSpawnPosANUD_ValueChanged);
             // 
@@ -4457,10 +4567,10 @@ namespace DayZeEditor
             this.EventspawnZoneGB.Controls.Add(this.eventzonesmaxNUD);
             this.EventspawnZoneGB.Controls.Add(this.eventzonedminNUD);
             this.EventspawnZoneGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.EventspawnZoneGB.Location = new System.Drawing.Point(3, 394);
+            this.EventspawnZoneGB.Location = new System.Drawing.Point(3, 441);
             this.EventspawnZoneGB.Name = "EventspawnZoneGB";
             this.EventspawnZoneGB.Size = new System.Drawing.Size(267, 152);
-            this.EventspawnZoneGB.TabIndex = 114;
+            this.EventspawnZoneGB.TabIndex = 1;
             this.EventspawnZoneGB.TabStop = false;
             this.EventspawnZoneGB.Text = "Zone";
             this.EventspawnZoneGB.Visible = false;
@@ -4472,7 +4582,7 @@ namespace DayZeEditor
             this.label126.Location = new System.Drawing.Point(6, 125);
             this.label126.Name = "label126";
             this.label126.Size = new System.Drawing.Size(10, 13);
-            this.label126.TabIndex = 111;
+            this.label126.TabIndex = 8;
             this.label126.Text = "r";
             // 
             // eventzonedNUD
@@ -4492,7 +4602,7 @@ namespace DayZeEditor
             -2147483648});
             this.eventzonedNUD.Name = "eventzonedNUD";
             this.eventzonedNUD.Size = new System.Drawing.Size(99, 20);
-            this.eventzonedNUD.TabIndex = 112;
+            this.eventzonedNUD.TabIndex = 9;
             this.eventzonedNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.eventzonedNUD.ValueChanged += new System.EventHandler(this.eventzonedNUD_ValueChanged);
             // 
@@ -4503,7 +4613,7 @@ namespace DayZeEditor
             this.label122.Location = new System.Drawing.Point(6, 99);
             this.label122.Name = "label122";
             this.label122.Size = new System.Drawing.Size(32, 13);
-            this.label122.TabIndex = 109;
+            this.label122.TabIndex = 6;
             this.label122.Text = "dmax";
             // 
             // label125
@@ -4513,7 +4623,7 @@ namespace DayZeEditor
             this.label125.Location = new System.Drawing.Point(6, 21);
             this.label125.Name = "label125";
             this.label125.Size = new System.Drawing.Size(28, 13);
-            this.label125.TabIndex = 103;
+            this.label125.TabIndex = 0;
             this.label125.Text = "smin";
             // 
             // eventzonesminNUD
@@ -4533,7 +4643,7 @@ namespace DayZeEditor
             -2147483648});
             this.eventzonesminNUD.Name = "eventzonesminNUD";
             this.eventzonesminNUD.Size = new System.Drawing.Size(99, 20);
-            this.eventzonesminNUD.TabIndex = 104;
+            this.eventzonesminNUD.TabIndex = 1;
             this.eventzonesminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.eventzonesminNUD.ValueChanged += new System.EventHandler(this.eventzonesminNUD_ValueChanged);
             // 
@@ -4544,7 +4654,7 @@ namespace DayZeEditor
             this.label123.Location = new System.Drawing.Point(6, 73);
             this.label123.Name = "label123";
             this.label123.Size = new System.Drawing.Size(29, 13);
-            this.label123.TabIndex = 107;
+            this.label123.TabIndex = 4;
             this.label123.Text = "dmin";
             // 
             // label124
@@ -4554,7 +4664,7 @@ namespace DayZeEditor
             this.label124.Location = new System.Drawing.Point(6, 47);
             this.label124.Name = "label124";
             this.label124.Size = new System.Drawing.Size(31, 13);
-            this.label124.TabIndex = 105;
+            this.label124.TabIndex = 2;
             this.label124.Text = "smax";
             // 
             // eventzonedmaxNUD
@@ -4574,7 +4684,7 @@ namespace DayZeEditor
             -2147483648});
             this.eventzonedmaxNUD.Name = "eventzonedmaxNUD";
             this.eventzonedmaxNUD.Size = new System.Drawing.Size(99, 20);
-            this.eventzonedmaxNUD.TabIndex = 110;
+            this.eventzonedmaxNUD.TabIndex = 7;
             this.eventzonedmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.eventzonedmaxNUD.ValueChanged += new System.EventHandler(this.eventzonedmaxNUD_ValueChanged);
             // 
@@ -4595,7 +4705,7 @@ namespace DayZeEditor
             -2147483648});
             this.eventzonesmaxNUD.Name = "eventzonesmaxNUD";
             this.eventzonesmaxNUD.Size = new System.Drawing.Size(99, 20);
-            this.eventzonesmaxNUD.TabIndex = 106;
+            this.eventzonesmaxNUD.TabIndex = 3;
             this.eventzonesmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.eventzonesmaxNUD.ValueChanged += new System.EventHandler(this.eventzonesmaxNUD_ValueChanged);
             // 
@@ -4616,7 +4726,7 @@ namespace DayZeEditor
             -2147483648});
             this.eventzonedminNUD.Name = "eventzonedminNUD";
             this.eventzonedminNUD.Size = new System.Drawing.Size(99, 20);
-            this.eventzonedminNUD.TabIndex = 108;
+            this.eventzonedminNUD.TabIndex = 5;
             this.eventzonedminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.eventzonedminNUD.ValueChanged += new System.EventHandler(this.eventzonedminNUD_ValueChanged);
             // 
@@ -4630,9 +4740,9 @@ namespace DayZeEditor
             this.tabControl21.Location = new System.Drawing.Point(3, 10);
             this.tabControl21.Name = "tabControl21";
             this.tabControl21.SelectedIndex = 0;
-            this.tabControl21.Size = new System.Drawing.Size(267, 378);
+            this.tabControl21.Size = new System.Drawing.Size(267, 425);
             this.tabControl21.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabControl21.TabIndex = 113;
+            this.tabControl21.TabIndex = 0;
             // 
             // tabPage23
             // 
@@ -4641,7 +4751,7 @@ namespace DayZeEditor
             this.tabPage23.Location = new System.Drawing.Point(4, 5);
             this.tabPage23.Name = "tabPage23";
             this.tabPage23.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage23.Size = new System.Drawing.Size(259, 369);
+            this.tabPage23.Size = new System.Drawing.Size(259, 416);
             this.tabPage23.TabIndex = 0;
             this.tabPage23.Text = "tabPage23";
             // 
@@ -4656,7 +4766,7 @@ namespace DayZeEditor
             this.EventSpawnTV.Name = "EventSpawnTV";
             this.EventSpawnTV.SelectedNodes = ((System.Collections.ArrayList)(resources.GetObject("EventSpawnTV.SelectedNodes")));
             this.EventSpawnTV.SetMultiselect = true;
-            this.EventSpawnTV.Size = new System.Drawing.Size(253, 363);
+            this.EventSpawnTV.Size = new System.Drawing.Size(253, 410);
             this.EventSpawnTV.TabIndex = 0;
             this.EventSpawnTV.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.EventSpawnTV_NodeMouseClick);
             // 
@@ -4667,7 +4777,7 @@ namespace DayZeEditor
             this.IsYvalueusedCB.Location = new System.Drawing.Point(438, 10);
             this.IsYvalueusedCB.Name = "IsYvalueusedCB";
             this.IsYvalueusedCB.Size = new System.Drawing.Size(67, 17);
-            this.IsYvalueusedCB.TabIndex = 94;
+            this.IsYvalueusedCB.TabIndex = 5;
             this.IsYvalueusedCB.Tag = "Use Y Value";
             this.IsYvalueusedCB.Text = "Is Active";
             this.IsYvalueusedCB.UseVisualStyleBackColor = true;
@@ -4681,7 +4791,7 @@ namespace DayZeEditor
             this.trackBar1.Minimum = 1;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(156, 24);
-            this.trackBar1.TabIndex = 70;
+            this.trackBar1.TabIndex = 4;
             this.trackBar1.Value = 1;
             this.trackBar1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackBar1_MouseUp);
             // 
@@ -4695,7 +4805,7 @@ namespace DayZeEditor
             this.panel1.Location = new System.Drawing.Point(285, 28);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(925, 514);
-            this.panel1.TabIndex = 69;
+            this.panel1.TabIndex = 7;
             this.panel1.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
             // 
             // pictureBox1
@@ -4720,10 +4830,10 @@ namespace DayZeEditor
             this.EventSpawnInfoGB.Controls.Add(this.label121);
             this.EventSpawnInfoGB.Controls.Add(this.eventSpawnNameTB);
             this.EventSpawnInfoGB.ForeColor = System.Drawing.SystemColors.Control;
-            this.EventSpawnInfoGB.Location = new System.Drawing.Point(3, 394);
+            this.EventSpawnInfoGB.Location = new System.Drawing.Point(3, 441);
             this.EventSpawnInfoGB.Name = "EventSpawnInfoGB";
             this.EventSpawnInfoGB.Size = new System.Drawing.Size(267, 86);
-            this.EventSpawnInfoGB.TabIndex = 117;
+            this.EventSpawnInfoGB.TabIndex = 2;
             this.EventSpawnInfoGB.TabStop = false;
             this.EventSpawnInfoGB.Text = "EventSpawn Info";
             this.EventSpawnInfoGB.Visible = false;
@@ -4734,7 +4844,7 @@ namespace DayZeEditor
             this.EventspawnUseZoneCB.Location = new System.Drawing.Point(7, 61);
             this.EventspawnUseZoneCB.Name = "EventspawnUseZoneCB";
             this.EventspawnUseZoneCB.Size = new System.Drawing.Size(73, 17);
-            this.EventspawnUseZoneCB.TabIndex = 114;
+            this.EventspawnUseZoneCB.TabIndex = 2;
             this.EventspawnUseZoneCB.Text = "Use Zone";
             this.EventspawnUseZoneCB.UseVisualStyleBackColor = true;
             this.EventspawnUseZoneCB.CheckedChanged += new System.EventHandler(this.EventspawnUseZoneCB_CheckedChanged);
@@ -4745,7 +4855,7 @@ namespace DayZeEditor
             this.label121.Location = new System.Drawing.Point(6, 19);
             this.label121.Name = "label121";
             this.label121.Size = new System.Drawing.Size(35, 13);
-            this.label121.TabIndex = 113;
+            this.label121.TabIndex = 0;
             this.label121.Text = "Name";
             // 
             // eventSpawnNameTB
@@ -4756,7 +4866,7 @@ namespace DayZeEditor
             this.eventSpawnNameTB.Location = new System.Drawing.Point(7, 35);
             this.eventSpawnNameTB.Name = "eventSpawnNameTB";
             this.eventSpawnNameTB.Size = new System.Drawing.Size(254, 20);
-            this.eventSpawnNameTB.TabIndex = 112;
+            this.eventSpawnNameTB.TabIndex = 1;
             this.eventSpawnNameTB.TextChanged += new System.EventHandler(this.eventSpawnNameTB_TextChanged);
             // 
             // EventGroupSpawnTab
@@ -4773,18 +4883,15 @@ namespace DayZeEditor
             // 
             // groupBox58
             // 
+            this.groupBox58.Controls.Add(this.eventgroupdelootCB);
+            this.groupBox58.Controls.Add(this.eventgroupSecondarySpawnRB);
+            this.groupBox58.Controls.Add(this.eventgroupLootoptionRB);
             this.groupBox58.Controls.Add(this.eventgroupSecondarySpawnCB);
-            this.groupBox58.Controls.Add(this.checkBox116);
-            this.groupBox58.Controls.Add(this.checkBox115);
-            this.groupBox58.Controls.Add(this.checkBox114);
-            this.groupBox58.Controls.Add(this.checkBox113);
             this.groupBox58.Controls.Add(this.checkBox112);
             this.groupBox58.Controls.Add(this.eventgrouplootmaxNUD);
             this.groupBox58.Controls.Add(this.label129);
             this.groupBox58.Controls.Add(this.label130);
             this.groupBox58.Controls.Add(this.eventgroupLootminNUD);
-            this.groupBox58.Controls.Add(this.eventgroupdelootNUD);
-            this.groupBox58.Controls.Add(this.label131);
             this.groupBox58.Controls.Add(this.darkLabel26);
             this.groupBox58.Controls.Add(this.eventgroupnameTB);
             this.groupBox58.Controls.Add(this.eventgroupANUD);
@@ -4798,62 +4905,59 @@ namespace DayZeEditor
             this.groupBox58.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox58.Location = new System.Drawing.Point(348, 10);
             this.groupBox58.Name = "groupBox58";
-            this.groupBox58.Size = new System.Drawing.Size(389, 313);
-            this.groupBox58.TabIndex = 115;
+            this.groupBox58.Size = new System.Drawing.Size(389, 457);
+            this.groupBox58.TabIndex = 1;
             this.groupBox58.TabStop = false;
             this.groupBox58.Text = "Child Info";
+            // 
+            // eventgroupdelootCB
+            // 
+            this.eventgroupdelootCB.AutoSize = true;
+            this.eventgroupdelootCB.Location = new System.Drawing.Point(164, 201);
+            this.eventgroupdelootCB.Name = "eventgroupdelootCB";
+            this.eventgroupdelootCB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.eventgroupdelootCB.Size = new System.Drawing.Size(57, 17);
+            this.eventgroupdelootCB.TabIndex = 26;
+            this.eventgroupdelootCB.Text = "Deloot";
+            this.eventgroupdelootCB.UseVisualStyleBackColor = true;
+            this.eventgroupdelootCB.Visible = false;
+            // 
+            // eventgroupSecondarySpawnRB
+            // 
+            this.eventgroupSecondarySpawnRB.AutoSize = true;
+            this.eventgroupSecondarySpawnRB.Location = new System.Drawing.Point(136, 171);
+            this.eventgroupSecondarySpawnRB.Name = "eventgroupSecondarySpawnRB";
+            this.eventgroupSecondarySpawnRB.Size = new System.Drawing.Size(112, 17);
+            this.eventgroupSecondarySpawnRB.TabIndex = 25;
+            this.eventgroupSecondarySpawnRB.TabStop = true;
+            this.eventgroupSecondarySpawnRB.Text = "Secondary Spawn";
+            this.eventgroupSecondarySpawnRB.UseVisualStyleBackColor = true;
+            this.eventgroupSecondarySpawnRB.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // eventgroupLootoptionRB
+            // 
+            this.eventgroupLootoptionRB.AutoSize = true;
+            this.eventgroupLootoptionRB.Location = new System.Drawing.Point(17, 171);
+            this.eventgroupLootoptionRB.Name = "eventgroupLootoptionRB";
+            this.eventgroupLootoptionRB.Size = new System.Drawing.Size(85, 17);
+            this.eventgroupLootoptionRB.TabIndex = 24;
+            this.eventgroupLootoptionRB.TabStop = true;
+            this.eventgroupLootoptionRB.Text = "Loot Options";
+            this.eventgroupLootoptionRB.UseVisualStyleBackColor = true;
+            this.eventgroupLootoptionRB.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // eventgroupSecondarySpawnCB
             // 
             this.eventgroupSecondarySpawnCB.AutoSize = true;
-            this.eventgroupSecondarySpawnCB.Location = new System.Drawing.Point(17, 258);
+            this.eventgroupSecondarySpawnCB.Location = new System.Drawing.Point(108, 201);
             this.eventgroupSecondarySpawnCB.Name = "eventgroupSecondarySpawnCB";
             this.eventgroupSecondarySpawnCB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.eventgroupSecondarySpawnCB.Size = new System.Drawing.Size(113, 17);
-            this.eventgroupSecondarySpawnCB.TabIndex = 101;
+            this.eventgroupSecondarySpawnCB.TabIndex = 20;
             this.eventgroupSecondarySpawnCB.Text = "Spawn Secondary";
             this.eventgroupSecondarySpawnCB.UseVisualStyleBackColor = true;
+            this.eventgroupSecondarySpawnCB.Visible = false;
             this.eventgroupSecondarySpawnCB.CheckedChanged += new System.EventHandler(this.eventgroupSecondarySpawnCB_CheckedChanged);
-            // 
-            // checkBox116
-            // 
-            this.checkBox116.AutoSize = true;
-            this.checkBox116.Location = new System.Drawing.Point(227, 259);
-            this.checkBox116.Name = "checkBox116";
-            this.checkBox116.Size = new System.Drawing.Size(15, 14);
-            this.checkBox116.TabIndex = 100;
-            this.checkBox116.UseVisualStyleBackColor = true;
-            this.checkBox116.CheckedChanged += new System.EventHandler(this.checkBox116_CheckedChanged);
-            // 
-            // checkBox115
-            // 
-            this.checkBox115.AutoSize = true;
-            this.checkBox115.Location = new System.Drawing.Point(227, 224);
-            this.checkBox115.Name = "checkBox115";
-            this.checkBox115.Size = new System.Drawing.Size(15, 14);
-            this.checkBox115.TabIndex = 99;
-            this.checkBox115.UseVisualStyleBackColor = true;
-            this.checkBox115.CheckedChanged += new System.EventHandler(this.checkBox115_CheckedChanged);
-            // 
-            // checkBox114
-            // 
-            this.checkBox114.AutoSize = true;
-            this.checkBox114.Location = new System.Drawing.Point(227, 199);
-            this.checkBox114.Name = "checkBox114";
-            this.checkBox114.Size = new System.Drawing.Size(15, 14);
-            this.checkBox114.TabIndex = 98;
-            this.checkBox114.UseVisualStyleBackColor = true;
-            this.checkBox114.CheckedChanged += new System.EventHandler(this.checkBox114_CheckedChanged);
-            // 
-            // checkBox113
-            // 
-            this.checkBox113.AutoSize = true;
-            this.checkBox113.Location = new System.Drawing.Point(227, 177);
-            this.checkBox113.Name = "checkBox113";
-            this.checkBox113.Size = new System.Drawing.Size(15, 14);
-            this.checkBox113.TabIndex = 97;
-            this.checkBox113.UseVisualStyleBackColor = true;
-            this.checkBox113.CheckedChanged += new System.EventHandler(this.checkBox113_CheckedChanged);
             // 
             // checkBox112
             // 
@@ -4861,7 +4965,7 @@ namespace DayZeEditor
             this.checkBox112.Location = new System.Drawing.Point(227, 82);
             this.checkBox112.Name = "checkBox112";
             this.checkBox112.Size = new System.Drawing.Size(15, 14);
-            this.checkBox112.TabIndex = 96;
+            this.checkBox112.TabIndex = 6;
             this.checkBox112.UseVisualStyleBackColor = true;
             this.checkBox112.CheckedChanged += new System.EventHandler(this.checkBox112_CheckedChanged);
             // 
@@ -4869,7 +4973,7 @@ namespace DayZeEditor
             // 
             this.eventgrouplootmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.eventgrouplootmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.eventgrouplootmaxNUD.Location = new System.Drawing.Point(85, 223);
+            this.eventgrouplootmaxNUD.Location = new System.Drawing.Point(85, 250);
             this.eventgrouplootmaxNUD.Maximum = new decimal(new int[] {
             10000000,
             0,
@@ -4877,35 +4981,38 @@ namespace DayZeEditor
             0});
             this.eventgrouplootmaxNUD.Name = "eventgrouplootmaxNUD";
             this.eventgrouplootmaxNUD.Size = new System.Drawing.Size(136, 20);
-            this.eventgrouplootmaxNUD.TabIndex = 95;
+            this.eventgrouplootmaxNUD.TabIndex = 18;
             this.eventgrouplootmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.eventgrouplootmaxNUD.Visible = false;
             this.eventgrouplootmaxNUD.ValueChanged += new System.EventHandler(this.eventgrouplootmaxNUD_ValueChanged);
             // 
             // label129
             // 
             this.label129.AutoSize = true;
             this.label129.ForeColor = System.Drawing.SystemColors.Control;
-            this.label129.Location = new System.Drawing.Point(14, 199);
+            this.label129.Location = new System.Drawing.Point(14, 226);
             this.label129.Name = "label129";
             this.label129.Size = new System.Drawing.Size(57, 13);
-            this.label129.TabIndex = 94;
+            this.label129.TabIndex = 14;
             this.label129.Text = "Loot Min :-";
+            this.label129.Visible = false;
             // 
             // label130
             // 
             this.label130.AutoSize = true;
             this.label130.ForeColor = System.Drawing.SystemColors.Control;
-            this.label130.Location = new System.Drawing.Point(13, 225);
+            this.label130.Location = new System.Drawing.Point(13, 252);
             this.label130.Name = "label130";
             this.label130.Size = new System.Drawing.Size(60, 13);
-            this.label130.TabIndex = 92;
+            this.label130.TabIndex = 17;
             this.label130.Text = "Loot Max :-";
+            this.label130.Visible = false;
             // 
             // eventgroupLootminNUD
             // 
             this.eventgroupLootminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
             this.eventgroupLootminNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.eventgroupLootminNUD.Location = new System.Drawing.Point(85, 197);
+            this.eventgroupLootminNUD.Location = new System.Drawing.Point(85, 224);
             this.eventgroupLootminNUD.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -4913,35 +5020,10 @@ namespace DayZeEditor
             0});
             this.eventgroupLootminNUD.Name = "eventgroupLootminNUD";
             this.eventgroupLootminNUD.Size = new System.Drawing.Size(136, 20);
-            this.eventgroupLootminNUD.TabIndex = 93;
+            this.eventgroupLootminNUD.TabIndex = 15;
             this.eventgroupLootminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.eventgroupLootminNUD.Visible = false;
             this.eventgroupLootminNUD.ValueChanged += new System.EventHandler(this.eventgroupLootminNUD_ValueChanged);
-            // 
-            // eventgroupdelootNUD
-            // 
-            this.eventgroupdelootNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.eventgroupdelootNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.eventgroupdelootNUD.Location = new System.Drawing.Point(85, 171);
-            this.eventgroupdelootNUD.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.eventgroupdelootNUD.Name = "eventgroupdelootNUD";
-            this.eventgroupdelootNUD.Size = new System.Drawing.Size(136, 20);
-            this.eventgroupdelootNUD.TabIndex = 91;
-            this.eventgroupdelootNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.eventgroupdelootNUD.ValueChanged += new System.EventHandler(this.eventgroupdelootNUD_ValueChanged);
-            // 
-            // label131
-            // 
-            this.label131.AutoSize = true;
-            this.label131.ForeColor = System.Drawing.SystemColors.Control;
-            this.label131.Location = new System.Drawing.Point(13, 173);
-            this.label131.Name = "label131";
-            this.label131.Size = new System.Drawing.Size(47, 13);
-            this.label131.TabIndex = 90;
-            this.label131.Text = "Deloot :-";
             // 
             // darkLabel26
             // 
@@ -4950,7 +5032,7 @@ namespace DayZeEditor
             this.darkLabel26.Location = new System.Drawing.Point(14, 31);
             this.darkLabel26.Name = "darkLabel26";
             this.darkLabel26.Size = new System.Drawing.Size(44, 13);
-            this.darkLabel26.TabIndex = 89;
+            this.darkLabel26.TabIndex = 0;
             this.darkLabel26.Text = "Name :-";
             // 
             // eventgroupnameTB
@@ -4960,7 +5042,7 @@ namespace DayZeEditor
             this.eventgroupnameTB.Location = new System.Drawing.Point(85, 28);
             this.eventgroupnameTB.Name = "eventgroupnameTB";
             this.eventgroupnameTB.Size = new System.Drawing.Size(282, 20);
-            this.eventgroupnameTB.TabIndex = 88;
+            this.eventgroupnameTB.TabIndex = 1;
             this.eventgroupnameTB.TextChanged += new System.EventHandler(this.eventgroupnameTB_TextChanged);
             // 
             // eventgroupANUD
@@ -4981,7 +5063,7 @@ namespace DayZeEditor
             -2147483648});
             this.eventgroupANUD.Name = "eventgroupANUD";
             this.eventgroupANUD.Size = new System.Drawing.Size(136, 20);
-            this.eventgroupANUD.TabIndex = 87;
+            this.eventgroupANUD.TabIndex = 10;
             this.eventgroupANUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.eventgroupANUD.ValueChanged += new System.EventHandler(this.eventgroupANUD_ValueChanged);
             // 
@@ -4992,7 +5074,7 @@ namespace DayZeEditor
             this.label117.Location = new System.Drawing.Point(14, 135);
             this.label117.Name = "label117";
             this.label117.Size = new System.Drawing.Size(59, 13);
-            this.label117.TabIndex = 86;
+            this.label117.TabIndex = 9;
             this.label117.Text = "A (X Rot) :-";
             // 
             // eventgroupZNUD
@@ -5013,7 +5095,7 @@ namespace DayZeEditor
             -2147483648});
             this.eventgroupZNUD.Name = "eventgroupZNUD";
             this.eventgroupZNUD.Size = new System.Drawing.Size(136, 20);
-            this.eventgroupZNUD.TabIndex = 85;
+            this.eventgroupZNUD.TabIndex = 8;
             this.eventgroupZNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.eventgroupZNUD.ValueChanged += new System.EventHandler(this.eventgroupZNUD_ValueChanged);
             // 
@@ -5024,7 +5106,7 @@ namespace DayZeEditor
             this.label119.Location = new System.Drawing.Point(13, 108);
             this.label119.Name = "label119";
             this.label119.Size = new System.Drawing.Size(23, 13);
-            this.label119.TabIndex = 84;
+            this.label119.TabIndex = 7;
             this.label119.Text = "Z :-";
             // 
             // eventgroupYNUD
@@ -5045,7 +5127,7 @@ namespace DayZeEditor
             -2147483648});
             this.eventgroupYNUD.Name = "eventgroupYNUD";
             this.eventgroupYNUD.Size = new System.Drawing.Size(136, 20);
-            this.eventgroupYNUD.TabIndex = 83;
+            this.eventgroupYNUD.TabIndex = 5;
             this.eventgroupYNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.eventgroupYNUD.ValueChanged += new System.EventHandler(this.eventgroupYNUD_ValueChanged);
             // 
@@ -5056,7 +5138,7 @@ namespace DayZeEditor
             this.label127.Location = new System.Drawing.Point(13, 82);
             this.label127.Name = "label127";
             this.label127.Size = new System.Drawing.Size(23, 13);
-            this.label127.TabIndex = 82;
+            this.label127.TabIndex = 4;
             this.label127.Text = "Y :-";
             // 
             // eventgroupXNUD
@@ -5077,7 +5159,7 @@ namespace DayZeEditor
             -2147483648});
             this.eventgroupXNUD.Name = "eventgroupXNUD";
             this.eventgroupXNUD.Size = new System.Drawing.Size(136, 20);
-            this.eventgroupXNUD.TabIndex = 81;
+            this.eventgroupXNUD.TabIndex = 3;
             this.eventgroupXNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.eventgroupXNUD.ValueChanged += new System.EventHandler(this.eventgroupXNUD_ValueChanged);
             // 
@@ -5088,7 +5170,7 @@ namespace DayZeEditor
             this.label128.Location = new System.Drawing.Point(13, 56);
             this.label128.Name = "label128";
             this.label128.Size = new System.Drawing.Size(23, 13);
-            this.label128.TabIndex = 80;
+            this.label128.TabIndex = 2;
             this.label128.Text = "X :-";
             // 
             // tabControl4
@@ -5103,7 +5185,7 @@ namespace DayZeEditor
             this.tabControl4.SelectedIndex = 0;
             this.tabControl4.Size = new System.Drawing.Size(334, 532);
             this.tabControl4.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabControl4.TabIndex = 114;
+            this.tabControl4.TabIndex = 0;
             // 
             // tabPage22
             // 
@@ -6206,7 +6288,6 @@ namespace DayZeEditor
             this.fastColoredTextBox2.DefaultMarkerSize = 8;
             this.fastColoredTextBox2.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fastColoredTextBox2.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.fastColoredTextBox2.IsReplaceMode = false;
             this.fastColoredTextBox2.Location = new System.Drawing.Point(3, 3);
@@ -6489,139 +6570,181 @@ namespace DayZeEditor
             this.groupBox21.TabIndex = 60;
             this.groupBox21.TabStop = false;
             // 
-            // groupBox78
+            // AttachmentGB
             // 
-            this.groupBox78.Controls.Add(this.DamageMaxNUD);
-            this.groupBox78.Controls.Add(this.label24);
-            this.groupBox78.Controls.Add(this.label25);
-            this.groupBox78.Controls.Add(this.DamageMinNUD);
-            this.groupBox78.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox78.Location = new System.Drawing.Point(6, 8);
-            this.groupBox78.Name = "groupBox78";
-            this.groupBox78.Size = new System.Drawing.Size(242, 56);
-            this.groupBox78.TabIndex = 65;
-            this.groupBox78.TabStop = false;
-            this.groupBox78.Text = "Damage";
-            this.groupBox78.Visible = false;
+            this.AttachmentGB.Controls.Add(this.CargoAttachmentRemoveButton);
+            this.AttachmentGB.Controls.Add(this.AttachmentItemLB);
+            this.AttachmentGB.Controls.Add(this.cargoattachemntAddButton);
+            this.AttachmentGB.Controls.Add(this.AttachmentChangeItemButton);
+            this.AttachmentGB.Controls.Add(this.AttachemntTB);
+            this.AttachmentGB.Controls.Add(this.ItemAttachmentchanceNUD);
+            this.AttachmentGB.Controls.Add(this.AttachmemtItemChanceLabel);
+            this.AttachmentGB.Controls.Add(this.AttachmentchanceNUD);
+            this.AttachmentGB.Controls.Add(this.chancAttachmentselabel);
+            this.AttachmentGB.Controls.Add(this.AttachmentPresetGB);
+            this.AttachmentGB.Controls.Add(this.AttchmentIsPresetCB);
+            this.AttachmentGB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.AttachmentGB.Location = new System.Drawing.Point(6, 8);
+            this.AttachmentGB.Name = "AttachmentGB";
+            this.AttachmentGB.Size = new System.Drawing.Size(242, 340);
+            this.AttachmentGB.TabIndex = 66;
+            this.AttachmentGB.TabStop = false;
+            this.AttachmentGB.Text = "Attachments";
+            this.AttachmentGB.Visible = false;
             // 
-            // DamageMaxNUD
+            // CargoAttachmentRemoveButton
             // 
-            this.DamageMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.DamageMaxNUD.DecimalPlaces = 2;
-            this.DamageMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.DamageMaxNUD.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.DamageMaxNUD.Location = new System.Drawing.Point(159, 22);
-            this.DamageMaxNUD.Maximum = new decimal(new int[] {
-            1,
+            this.CargoAttachmentRemoveButton.Location = new System.Drawing.Point(9, 299);
+            this.CargoAttachmentRemoveButton.Name = "CargoAttachmentRemoveButton";
+            this.CargoAttachmentRemoveButton.Padding = new System.Windows.Forms.Padding(5);
+            this.CargoAttachmentRemoveButton.Size = new System.Drawing.Size(218, 27);
+            this.CargoAttachmentRemoveButton.TabIndex = 74;
+            this.CargoAttachmentRemoveButton.Text = "Remove Item";
+            this.CargoAttachmentRemoveButton.Click += new System.EventHandler(this.darkButton35_Click_2);
+            // 
+            // AttachmentItemLB
+            // 
+            this.AttachmentItemLB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AttachmentItemLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.AttachmentItemLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.AttachmentItemLB.ForeColor = System.Drawing.SystemColors.Control;
+            this.AttachmentItemLB.FormattingEnabled = true;
+            this.AttachmentItemLB.Location = new System.Drawing.Point(9, 67);
+            this.AttachmentItemLB.Name = "AttachmentItemLB";
+            this.AttachmentItemLB.Size = new System.Drawing.Size(218, 95);
+            this.AttachmentItemLB.TabIndex = 70;
+            this.AttachmentItemLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
+            this.AttachmentItemLB.SelectedIndexChanged += new System.EventHandler(this.AttachmentItemLB_SelectedIndexChanged);
+            // 
+            // cargoattachemntAddButton
+            // 
+            this.cargoattachemntAddButton.Location = new System.Drawing.Point(9, 266);
+            this.cargoattachemntAddButton.Name = "cargoattachemntAddButton";
+            this.cargoattachemntAddButton.Padding = new System.Windows.Forms.Padding(5);
+            this.cargoattachemntAddButton.Size = new System.Drawing.Size(218, 27);
+            this.cargoattachemntAddButton.TabIndex = 73;
+            this.cargoattachemntAddButton.Text = "Add New Item";
+            this.cargoattachemntAddButton.Click += new System.EventHandler(this.darkButton38_Click_1);
+            // 
+            // AttachmentChangeItemButton
+            // 
+            this.AttachmentChangeItemButton.Location = new System.Drawing.Point(9, 233);
+            this.AttachmentChangeItemButton.Name = "AttachmentChangeItemButton";
+            this.AttachmentChangeItemButton.Padding = new System.Windows.Forms.Padding(5);
+            this.AttachmentChangeItemButton.Size = new System.Drawing.Size(218, 27);
+            this.AttachmentChangeItemButton.TabIndex = 5;
+            this.AttachmentChangeItemButton.Text = "Change Item";
+            this.AttachmentChangeItemButton.Click += new System.EventHandler(this.AttachmentChangeItemButton_Click);
+            // 
+            // AttachemntTB
+            // 
+            this.AttachemntTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.AttachemntTB.ForeColor = System.Drawing.SystemColors.Control;
+            this.AttachemntTB.Location = new System.Drawing.Point(10, 39);
+            this.AttachemntTB.Name = "AttachemntTB";
+            this.AttachemntTB.ReadOnly = true;
+            this.AttachemntTB.Size = new System.Drawing.Size(218, 20);
+            this.AttachemntTB.TabIndex = 71;
+            // 
+            // ItemAttachmentchanceNUD
+            // 
+            this.ItemAttachmentchanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.ItemAttachmentchanceNUD.DecimalPlaces = 2;
+            this.ItemAttachmentchanceNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.ItemAttachmentchanceNUD.Location = new System.Drawing.Point(159, 207);
+            this.ItemAttachmentchanceNUD.Maximum = new decimal(new int[] {
+            10000,
             0,
             0,
             0});
-            this.DamageMaxNUD.Name = "DamageMaxNUD";
-            this.DamageMaxNUD.Size = new System.Drawing.Size(68, 20);
-            this.DamageMaxNUD.TabIndex = 8;
-            this.DamageMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.DamageMaxNUD.ValueChanged += new System.EventHandler(this.DamageMaxNUD_ValueChanged);
+            this.ItemAttachmentchanceNUD.Name = "ItemAttachmentchanceNUD";
+            this.ItemAttachmentchanceNUD.Size = new System.Drawing.Size(68, 20);
+            this.ItemAttachmentchanceNUD.TabIndex = 66;
+            this.ItemAttachmentchanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ItemAttachmentchanceNUD.ValueChanged += new System.EventHandler(this.ItemAttachmentchanceNUD_ValueChanged);
             // 
-            // label24
+            // AttachmemtItemChanceLabel
             // 
-            this.label24.AutoSize = true;
-            this.label24.ForeColor = System.Drawing.SystemColors.Control;
-            this.label24.Location = new System.Drawing.Point(21, 24);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(24, 13);
-            this.label24.TabIndex = 0;
-            this.label24.Text = "Min";
+            this.AttachmemtItemChanceLabel.AutoSize = true;
+            this.AttachmemtItemChanceLabel.ForeColor = System.Drawing.SystemColors.Control;
+            this.AttachmemtItemChanceLabel.Location = new System.Drawing.Point(87, 211);
+            this.AttachmemtItemChanceLabel.Name = "AttachmemtItemChanceLabel";
+            this.AttachmemtItemChanceLabel.Size = new System.Drawing.Size(67, 13);
+            this.AttachmemtItemChanceLabel.TabIndex = 65;
+            this.AttachmemtItemChanceLabel.Text = "Item Chance";
             // 
-            // label25
+            // AttachmentchanceNUD
             // 
-            this.label25.AutoSize = true;
-            this.label25.ForeColor = System.Drawing.SystemColors.Control;
-            this.label25.Location = new System.Drawing.Point(129, 24);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(27, 13);
-            this.label25.TabIndex = 7;
-            this.label25.Text = "Max";
-            // 
-            // DamageMinNUD
-            // 
-            this.DamageMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.DamageMinNUD.DecimalPlaces = 2;
-            this.DamageMinNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.DamageMinNUD.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.DamageMinNUD.Location = new System.Drawing.Point(51, 22);
-            this.DamageMinNUD.Maximum = new decimal(new int[] {
-            1,
+            this.AttachmentchanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.AttachmentchanceNUD.DecimalPlaces = 2;
+            this.AttachmentchanceNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.AttachmentchanceNUD.Location = new System.Drawing.Point(159, 39);
+            this.AttachmentchanceNUD.Maximum = new decimal(new int[] {
+            10000,
             0,
             0,
             0});
-            this.DamageMinNUD.Name = "DamageMinNUD";
-            this.DamageMinNUD.Size = new System.Drawing.Size(68, 20);
-            this.DamageMinNUD.TabIndex = 6;
-            this.DamageMinNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.DamageMinNUD.ValueChanged += new System.EventHandler(this.DamageMinNUD_ValueChanged);
+            this.AttachmentchanceNUD.Name = "AttachmentchanceNUD";
+            this.AttachmentchanceNUD.Size = new System.Drawing.Size(68, 20);
+            this.AttachmentchanceNUD.TabIndex = 64;
+            this.AttachmentchanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.AttachmentchanceNUD.ValueChanged += new System.EventHandler(this.AttachmentchanceNUD_ValueChanged);
             // 
-            // Spaenabletypestagbox
+            // chancAttachmentselabel
             // 
-            this.Spaenabletypestagbox.Controls.Add(this.textBox2);
-            this.Spaenabletypestagbox.Controls.Add(this.groupBox24);
-            this.Spaenabletypestagbox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Spaenabletypestagbox.Location = new System.Drawing.Point(6, 8);
-            this.Spaenabletypestagbox.Name = "Spaenabletypestagbox";
-            this.Spaenabletypestagbox.Size = new System.Drawing.Size(242, 154);
-            this.Spaenabletypestagbox.TabIndex = 64;
-            this.Spaenabletypestagbox.TabStop = false;
-            this.Spaenabletypestagbox.Text = "Tags";
-            this.Spaenabletypestagbox.Visible = false;
+            this.chancAttachmentselabel.AutoSize = true;
+            this.chancAttachmentselabel.ForeColor = System.Drawing.SystemColors.Control;
+            this.chancAttachmentselabel.Location = new System.Drawing.Point(109, 43);
+            this.chancAttachmentselabel.Name = "chancAttachmentselabel";
+            this.chancAttachmentselabel.Size = new System.Drawing.Size(44, 13);
+            this.chancAttachmentselabel.TabIndex = 63;
+            this.chancAttachmentselabel.Text = "Chance";
             // 
-            // textBox2
+            // AttachmentPresetGB
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.textBox2.ForeColor = System.Drawing.SystemColors.Control;
-            this.textBox2.Location = new System.Drawing.Point(9, 19);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(218, 20);
-            this.textBox2.TabIndex = 8;
+            this.AttachmentPresetGB.Controls.Add(this.AttachmentPresetComboBox);
+            this.AttachmentPresetGB.Controls.Add(this.darkButton37);
+            this.AttachmentPresetGB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.AttachmentPresetGB.Location = new System.Drawing.Point(9, 67);
+            this.AttachmentPresetGB.Name = "AttachmentPresetGB";
+            this.AttachmentPresetGB.Size = new System.Drawing.Size(218, 100);
+            this.AttachmentPresetGB.TabIndex = 8;
+            this.AttachmentPresetGB.TabStop = false;
+            this.AttachmentPresetGB.Text = "Change Attachment Preset";
             // 
-            // groupBox24
+            // AttachmentPresetComboBox
             // 
-            this.groupBox24.Controls.Add(this.comboBox5);
-            this.groupBox24.Controls.Add(this.darkButton29);
-            this.groupBox24.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox24.Location = new System.Drawing.Point(9, 45);
-            this.groupBox24.Name = "groupBox24";
-            this.groupBox24.Size = new System.Drawing.Size(218, 100);
-            this.groupBox24.TabIndex = 7;
-            this.groupBox24.TabStop = false;
-            this.groupBox24.Text = "Change Tag";
+            this.AttachmentPresetComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.AttachmentPresetComboBox.ForeColor = System.Drawing.SystemColors.Control;
+            this.AttachmentPresetComboBox.FormattingEnabled = true;
+            this.AttachmentPresetComboBox.Location = new System.Drawing.Point(10, 25);
+            this.AttachmentPresetComboBox.Name = "AttachmentPresetComboBox";
+            this.AttachmentPresetComboBox.Size = new System.Drawing.Size(202, 21);
+            this.AttachmentPresetComboBox.TabIndex = 1;
             // 
-            // comboBox5
+            // darkButton37
             // 
-            this.comboBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.comboBox5.ForeColor = System.Drawing.SystemColors.Control;
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(10, 25);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(202, 21);
-            this.comboBox5.TabIndex = 1;
+            this.darkButton37.Location = new System.Drawing.Point(8, 52);
+            this.darkButton37.Name = "darkButton37";
+            this.darkButton37.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton37.Size = new System.Drawing.Size(204, 27);
+            this.darkButton37.TabIndex = 5;
+            this.darkButton37.Text = "Change Preset";
+            this.darkButton37.Click += new System.EventHandler(this.darkButton37_Click);
             // 
-            // darkButton29
+            // AttchmentIsPresetCB
             // 
-            this.darkButton29.Location = new System.Drawing.Point(8, 52);
-            this.darkButton29.Name = "darkButton29";
-            this.darkButton29.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton29.Size = new System.Drawing.Size(204, 27);
-            this.darkButton29.TabIndex = 5;
-            this.darkButton29.Text = "Change Tag";
-            this.darkButton29.Click += new System.EventHandler(this.darkButton29_Click);
+            this.AttchmentIsPresetCB.AutoSize = true;
+            this.AttchmentIsPresetCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.AttchmentIsPresetCB.Location = new System.Drawing.Point(9, 19);
+            this.AttchmentIsPresetCB.Name = "AttchmentIsPresetCB";
+            this.AttchmentIsPresetCB.Size = new System.Drawing.Size(110, 17);
+            this.AttchmentIsPresetCB.TabIndex = 62;
+            this.AttchmentIsPresetCB.Text = "Is Random Preset";
+            this.AttchmentIsPresetCB.UseVisualStyleBackColor = true;
+            this.AttchmentIsPresetCB.CheckedChanged += new System.EventHandler(this.AttchmentIsPresetCB_CheckedChanged);
             // 
             // CargoGB
             // 
@@ -6801,181 +6924,139 @@ namespace DayZeEditor
             this.darkButton36.Text = "Change Preset";
             this.darkButton36.Click += new System.EventHandler(this.darkButton36_Click);
             // 
-            // AttachmentGB
+            // groupBox78
             // 
-            this.AttachmentGB.Controls.Add(this.CargoAttachmentRemoveButton);
-            this.AttachmentGB.Controls.Add(this.AttachmentItemLB);
-            this.AttachmentGB.Controls.Add(this.cargoattachemntAddButton);
-            this.AttachmentGB.Controls.Add(this.AttachmentChangeItemButton);
-            this.AttachmentGB.Controls.Add(this.AttachemntTB);
-            this.AttachmentGB.Controls.Add(this.ItemAttachmentchanceNUD);
-            this.AttachmentGB.Controls.Add(this.AttachmemtItemChanceLabel);
-            this.AttachmentGB.Controls.Add(this.AttachmentchanceNUD);
-            this.AttachmentGB.Controls.Add(this.chancAttachmentselabel);
-            this.AttachmentGB.Controls.Add(this.AttachmentPresetGB);
-            this.AttachmentGB.Controls.Add(this.AttchmentIsPresetCB);
-            this.AttachmentGB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.AttachmentGB.Location = new System.Drawing.Point(6, 8);
-            this.AttachmentGB.Name = "AttachmentGB";
-            this.AttachmentGB.Size = new System.Drawing.Size(242, 340);
-            this.AttachmentGB.TabIndex = 66;
-            this.AttachmentGB.TabStop = false;
-            this.AttachmentGB.Text = "Attachments";
-            this.AttachmentGB.Visible = false;
+            this.groupBox78.Controls.Add(this.DamageMaxNUD);
+            this.groupBox78.Controls.Add(this.label24);
+            this.groupBox78.Controls.Add(this.label25);
+            this.groupBox78.Controls.Add(this.DamageMinNUD);
+            this.groupBox78.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox78.Location = new System.Drawing.Point(6, 8);
+            this.groupBox78.Name = "groupBox78";
+            this.groupBox78.Size = new System.Drawing.Size(242, 56);
+            this.groupBox78.TabIndex = 65;
+            this.groupBox78.TabStop = false;
+            this.groupBox78.Text = "Damage";
+            this.groupBox78.Visible = false;
             // 
-            // CargoAttachmentRemoveButton
+            // DamageMaxNUD
             // 
-            this.CargoAttachmentRemoveButton.Location = new System.Drawing.Point(9, 299);
-            this.CargoAttachmentRemoveButton.Name = "CargoAttachmentRemoveButton";
-            this.CargoAttachmentRemoveButton.Padding = new System.Windows.Forms.Padding(5);
-            this.CargoAttachmentRemoveButton.Size = new System.Drawing.Size(218, 27);
-            this.CargoAttachmentRemoveButton.TabIndex = 74;
-            this.CargoAttachmentRemoveButton.Text = "Remove Item";
-            this.CargoAttachmentRemoveButton.Click += new System.EventHandler(this.darkButton35_Click_2);
-            // 
-            // AttachmentItemLB
-            // 
-            this.AttachmentItemLB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.AttachmentItemLB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.AttachmentItemLB.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.AttachmentItemLB.ForeColor = System.Drawing.SystemColors.Control;
-            this.AttachmentItemLB.FormattingEnabled = true;
-            this.AttachmentItemLB.Location = new System.Drawing.Point(9, 67);
-            this.AttachmentItemLB.Name = "AttachmentItemLB";
-            this.AttachmentItemLB.Size = new System.Drawing.Size(218, 95);
-            this.AttachmentItemLB.TabIndex = 70;
-            this.AttachmentItemLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
-            this.AttachmentItemLB.SelectedIndexChanged += new System.EventHandler(this.AttachmentItemLB_SelectedIndexChanged);
-            // 
-            // cargoattachemntAddButton
-            // 
-            this.cargoattachemntAddButton.Location = new System.Drawing.Point(9, 266);
-            this.cargoattachemntAddButton.Name = "cargoattachemntAddButton";
-            this.cargoattachemntAddButton.Padding = new System.Windows.Forms.Padding(5);
-            this.cargoattachemntAddButton.Size = new System.Drawing.Size(218, 27);
-            this.cargoattachemntAddButton.TabIndex = 73;
-            this.cargoattachemntAddButton.Text = "Add New Item";
-            this.cargoattachemntAddButton.Click += new System.EventHandler(this.darkButton38_Click_1);
-            // 
-            // AttachmentChangeItemButton
-            // 
-            this.AttachmentChangeItemButton.Location = new System.Drawing.Point(9, 233);
-            this.AttachmentChangeItemButton.Name = "AttachmentChangeItemButton";
-            this.AttachmentChangeItemButton.Padding = new System.Windows.Forms.Padding(5);
-            this.AttachmentChangeItemButton.Size = new System.Drawing.Size(218, 27);
-            this.AttachmentChangeItemButton.TabIndex = 5;
-            this.AttachmentChangeItemButton.Text = "Change Item";
-            this.AttachmentChangeItemButton.Click += new System.EventHandler(this.AttachmentChangeItemButton_Click);
-            // 
-            // AttachemntTB
-            // 
-            this.AttachemntTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.AttachemntTB.ForeColor = System.Drawing.SystemColors.Control;
-            this.AttachemntTB.Location = new System.Drawing.Point(10, 39);
-            this.AttachemntTB.Name = "AttachemntTB";
-            this.AttachemntTB.ReadOnly = true;
-            this.AttachemntTB.Size = new System.Drawing.Size(218, 20);
-            this.AttachemntTB.TabIndex = 71;
-            // 
-            // ItemAttachmentchanceNUD
-            // 
-            this.ItemAttachmentchanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.ItemAttachmentchanceNUD.DecimalPlaces = 2;
-            this.ItemAttachmentchanceNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.ItemAttachmentchanceNUD.Location = new System.Drawing.Point(159, 207);
-            this.ItemAttachmentchanceNUD.Maximum = new decimal(new int[] {
-            10000,
+            this.DamageMaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.DamageMaxNUD.DecimalPlaces = 2;
+            this.DamageMaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.DamageMaxNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.DamageMaxNUD.Location = new System.Drawing.Point(159, 22);
+            this.DamageMaxNUD.Maximum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
-            this.ItemAttachmentchanceNUD.Name = "ItemAttachmentchanceNUD";
-            this.ItemAttachmentchanceNUD.Size = new System.Drawing.Size(68, 20);
-            this.ItemAttachmentchanceNUD.TabIndex = 66;
-            this.ItemAttachmentchanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ItemAttachmentchanceNUD.ValueChanged += new System.EventHandler(this.ItemAttachmentchanceNUD_ValueChanged);
+            this.DamageMaxNUD.Name = "DamageMaxNUD";
+            this.DamageMaxNUD.Size = new System.Drawing.Size(68, 20);
+            this.DamageMaxNUD.TabIndex = 8;
+            this.DamageMaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DamageMaxNUD.ValueChanged += new System.EventHandler(this.DamageMaxNUD_ValueChanged);
             // 
-            // AttachmemtItemChanceLabel
+            // label24
             // 
-            this.AttachmemtItemChanceLabel.AutoSize = true;
-            this.AttachmemtItemChanceLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.AttachmemtItemChanceLabel.Location = new System.Drawing.Point(87, 211);
-            this.AttachmemtItemChanceLabel.Name = "AttachmemtItemChanceLabel";
-            this.AttachmemtItemChanceLabel.Size = new System.Drawing.Size(67, 13);
-            this.AttachmemtItemChanceLabel.TabIndex = 65;
-            this.AttachmemtItemChanceLabel.Text = "Item Chance";
+            this.label24.AutoSize = true;
+            this.label24.ForeColor = System.Drawing.SystemColors.Control;
+            this.label24.Location = new System.Drawing.Point(21, 24);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(24, 13);
+            this.label24.TabIndex = 0;
+            this.label24.Text = "Min";
             // 
-            // AttachmentchanceNUD
+            // label25
             // 
-            this.AttachmentchanceNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.AttachmentchanceNUD.DecimalPlaces = 2;
-            this.AttachmentchanceNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.AttachmentchanceNUD.Location = new System.Drawing.Point(159, 39);
-            this.AttachmentchanceNUD.Maximum = new decimal(new int[] {
-            10000,
+            this.label25.AutoSize = true;
+            this.label25.ForeColor = System.Drawing.SystemColors.Control;
+            this.label25.Location = new System.Drawing.Point(129, 24);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(27, 13);
+            this.label25.TabIndex = 7;
+            this.label25.Text = "Max";
+            // 
+            // DamageMinNUD
+            // 
+            this.DamageMinNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.DamageMinNUD.DecimalPlaces = 2;
+            this.DamageMinNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.DamageMinNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.DamageMinNUD.Location = new System.Drawing.Point(51, 22);
+            this.DamageMinNUD.Maximum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
-            this.AttachmentchanceNUD.Name = "AttachmentchanceNUD";
-            this.AttachmentchanceNUD.Size = new System.Drawing.Size(68, 20);
-            this.AttachmentchanceNUD.TabIndex = 64;
-            this.AttachmentchanceNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.AttachmentchanceNUD.ValueChanged += new System.EventHandler(this.AttachmentchanceNUD_ValueChanged);
+            this.DamageMinNUD.Name = "DamageMinNUD";
+            this.DamageMinNUD.Size = new System.Drawing.Size(68, 20);
+            this.DamageMinNUD.TabIndex = 6;
+            this.DamageMinNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DamageMinNUD.ValueChanged += new System.EventHandler(this.DamageMinNUD_ValueChanged);
             // 
-            // chancAttachmentselabel
+            // Spaenabletypestagbox
             // 
-            this.chancAttachmentselabel.AutoSize = true;
-            this.chancAttachmentselabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.chancAttachmentselabel.Location = new System.Drawing.Point(109, 43);
-            this.chancAttachmentselabel.Name = "chancAttachmentselabel";
-            this.chancAttachmentselabel.Size = new System.Drawing.Size(44, 13);
-            this.chancAttachmentselabel.TabIndex = 63;
-            this.chancAttachmentselabel.Text = "Chance";
+            this.Spaenabletypestagbox.Controls.Add(this.textBox2);
+            this.Spaenabletypestagbox.Controls.Add(this.groupBox24);
+            this.Spaenabletypestagbox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Spaenabletypestagbox.Location = new System.Drawing.Point(6, 8);
+            this.Spaenabletypestagbox.Name = "Spaenabletypestagbox";
+            this.Spaenabletypestagbox.Size = new System.Drawing.Size(242, 154);
+            this.Spaenabletypestagbox.TabIndex = 64;
+            this.Spaenabletypestagbox.TabStop = false;
+            this.Spaenabletypestagbox.Text = "Tags";
+            this.Spaenabletypestagbox.Visible = false;
             // 
-            // AttachmentPresetGB
+            // textBox2
             // 
-            this.AttachmentPresetGB.Controls.Add(this.AttachmentPresetComboBox);
-            this.AttachmentPresetGB.Controls.Add(this.darkButton37);
-            this.AttachmentPresetGB.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.AttachmentPresetGB.Location = new System.Drawing.Point(9, 67);
-            this.AttachmentPresetGB.Name = "AttachmentPresetGB";
-            this.AttachmentPresetGB.Size = new System.Drawing.Size(218, 100);
-            this.AttachmentPresetGB.TabIndex = 8;
-            this.AttachmentPresetGB.TabStop = false;
-            this.AttachmentPresetGB.Text = "Change Attachment Preset";
+            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.textBox2.ForeColor = System.Drawing.SystemColors.Control;
+            this.textBox2.Location = new System.Drawing.Point(9, 19);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(218, 20);
+            this.textBox2.TabIndex = 8;
             // 
-            // AttachmentPresetComboBox
+            // groupBox24
             // 
-            this.AttachmentPresetComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.AttachmentPresetComboBox.ForeColor = System.Drawing.SystemColors.Control;
-            this.AttachmentPresetComboBox.FormattingEnabled = true;
-            this.AttachmentPresetComboBox.Location = new System.Drawing.Point(10, 25);
-            this.AttachmentPresetComboBox.Name = "AttachmentPresetComboBox";
-            this.AttachmentPresetComboBox.Size = new System.Drawing.Size(202, 21);
-            this.AttachmentPresetComboBox.TabIndex = 1;
+            this.groupBox24.Controls.Add(this.comboBox5);
+            this.groupBox24.Controls.Add(this.darkButton29);
+            this.groupBox24.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox24.Location = new System.Drawing.Point(9, 45);
+            this.groupBox24.Name = "groupBox24";
+            this.groupBox24.Size = new System.Drawing.Size(218, 100);
+            this.groupBox24.TabIndex = 7;
+            this.groupBox24.TabStop = false;
+            this.groupBox24.Text = "Change Tag";
             // 
-            // darkButton37
+            // comboBox5
             // 
-            this.darkButton37.Location = new System.Drawing.Point(8, 52);
-            this.darkButton37.Name = "darkButton37";
-            this.darkButton37.Padding = new System.Windows.Forms.Padding(5);
-            this.darkButton37.Size = new System.Drawing.Size(204, 27);
-            this.darkButton37.TabIndex = 5;
-            this.darkButton37.Text = "Change Preset";
-            this.darkButton37.Click += new System.EventHandler(this.darkButton37_Click);
+            this.comboBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.comboBox5.ForeColor = System.Drawing.SystemColors.Control;
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Location = new System.Drawing.Point(10, 25);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(202, 21);
+            this.comboBox5.TabIndex = 1;
             // 
-            // AttchmentIsPresetCB
+            // darkButton29
             // 
-            this.AttchmentIsPresetCB.AutoSize = true;
-            this.AttchmentIsPresetCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.AttchmentIsPresetCB.Location = new System.Drawing.Point(9, 19);
-            this.AttchmentIsPresetCB.Name = "AttchmentIsPresetCB";
-            this.AttchmentIsPresetCB.Size = new System.Drawing.Size(110, 17);
-            this.AttchmentIsPresetCB.TabIndex = 62;
-            this.AttchmentIsPresetCB.Text = "Is Random Preset";
-            this.AttchmentIsPresetCB.UseVisualStyleBackColor = true;
-            this.AttchmentIsPresetCB.CheckedChanged += new System.EventHandler(this.AttchmentIsPresetCB_CheckedChanged);
+            this.darkButton29.Location = new System.Drawing.Point(8, 52);
+            this.darkButton29.Name = "darkButton29";
+            this.darkButton29.Padding = new System.Windows.Forms.Padding(5);
+            this.darkButton29.Size = new System.Drawing.Size(204, 27);
+            this.darkButton29.TabIndex = 5;
+            this.darkButton29.Text = "Change Tag";
+            this.darkButton29.Click += new System.EventHandler(this.darkButton29_Click);
             // 
             // RandomPresetsTab
             // 
@@ -7521,9 +7602,9 @@ namespace DayZeEditor
             this.groupBox77.Controls.Add(this.label163);
             this.groupBox77.Controls.Add(this.GroupParamslifetimeNUD);
             this.groupBox77.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox77.Location = new System.Drawing.Point(3, 392);
+            this.groupBox77.Location = new System.Drawing.Point(3, 436);
             this.groupBox77.Name = "groupBox77";
-            this.groupBox77.Size = new System.Drawing.Size(196, 115);
+            this.groupBox77.Size = new System.Drawing.Size(196, 107);
             this.groupBox77.TabIndex = 71;
             this.groupBox77.TabStop = false;
             this.groupBox77.Text = "Group Params";
@@ -7619,6 +7700,11 @@ namespace DayZeEditor
             0,
             0,
             0});
+            this.GroupParamslifetimeNUD.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
             this.GroupParamslifetimeNUD.Name = "GroupParamslifetimeNUD";
             this.GroupParamslifetimeNUD.Size = new System.Drawing.Size(68, 20);
             this.GroupParamslifetimeNUD.TabIndex = 8;
@@ -7642,7 +7728,7 @@ namespace DayZeEditor
             this.groupBox76.Controls.Add(this.generatorparamsmin_steepnessNUD);
             this.groupBox76.Controls.Add(this.label34);
             this.groupBox76.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox76.Location = new System.Drawing.Point(4, 181);
+            this.groupBox76.Location = new System.Drawing.Point(4, 225);
             this.groupBox76.Name = "groupBox76";
             this.groupBox76.Size = new System.Drawing.Size(195, 205);
             this.groupBox76.TabIndex = 71;
@@ -7692,7 +7778,7 @@ namespace DayZeEditor
             // 
             this.label38.AutoSize = true;
             this.label38.ForeColor = System.Drawing.SystemColors.Control;
-            this.label38.Location = new System.Drawing.Point(6, 179);
+            this.label38.Location = new System.Drawing.Point(16, 177);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(77, 13);
             this.label38.TabIndex = 17;
@@ -7739,7 +7825,7 @@ namespace DayZeEditor
             // 
             this.label32.AutoSize = true;
             this.label32.ForeColor = System.Drawing.SystemColors.Control;
-            this.label32.Location = new System.Drawing.Point(12, 153);
+            this.label32.Location = new System.Drawing.Point(12, 151);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(74, 13);
             this.label32.TabIndex = 15;
@@ -7783,7 +7869,7 @@ namespace DayZeEditor
             // 
             this.label35.AutoSize = true;
             this.label35.ForeColor = System.Drawing.SystemColors.Control;
-            this.label35.Location = new System.Drawing.Point(9, 73);
+            this.label35.Location = new System.Drawing.Point(13, 73);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(56, 13);
             this.label35.TabIndex = 9;
@@ -7842,7 +7928,7 @@ namespace DayZeEditor
             // 
             this.label34.AutoSize = true;
             this.label34.ForeColor = System.Drawing.SystemColors.Control;
-            this.label34.Location = new System.Drawing.Point(6, 127);
+            this.label34.Location = new System.Drawing.Point(12, 127);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(73, 13);
             this.label34.TabIndex = 11;
@@ -7850,6 +7936,10 @@ namespace DayZeEditor
             // 
             // groupBox75
             // 
+            this.groupBox75.Controls.Add(this.numericUpDown1);
+            this.groupBox75.Controls.Add(this.label191);
+            this.groupBox75.Controls.Add(this.numericUpDown2);
+            this.groupBox75.Controls.Add(this.label192);
             this.groupBox75.Controls.Add(this.SpawnParamsmax_dist_staticNUD);
             this.groupBox75.Controls.Add(this.SpawnParamsmin_dist_infectedNUD);
             this.groupBox75.Controls.Add(this.label30);
@@ -7865,10 +7955,64 @@ namespace DayZeEditor
             this.groupBox75.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox75.Location = new System.Drawing.Point(4, 3);
             this.groupBox75.Name = "groupBox75";
-            this.groupBox75.Size = new System.Drawing.Size(195, 172);
+            this.groupBox75.Size = new System.Drawing.Size(195, 221);
             this.groupBox75.TabIndex = 71;
             this.groupBox75.TabStop = false;
             this.groupBox75.Text = "Spawn Params";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown1.DecimalPlaces = 1;
+            this.numericUpDown1.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericUpDown1.Location = new System.Drawing.Point(105, 197);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(68, 20);
+            this.numericUpDown1.TabIndex = 20;
+            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            // 
+            // label191
+            // 
+            this.label191.AutoSize = true;
+            this.label191.ForeColor = System.Drawing.SystemColors.Control;
+            this.label191.Location = new System.Drawing.Point(16, 199);
+            this.label191.Name = "label191";
+            this.label191.Size = new System.Drawing.Size(77, 13);
+            this.label191.TabIndex = 19;
+            this.label191.Text = "max dist trigger";
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.numericUpDown2.DecimalPlaces = 1;
+            this.numericUpDown2.ForeColor = System.Drawing.SystemColors.Control;
+            this.numericUpDown2.Location = new System.Drawing.Point(105, 171);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(68, 20);
+            this.numericUpDown2.TabIndex = 18;
+            this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+            // 
+            // label192
+            // 
+            this.label192.AutoSize = true;
+            this.label192.ForeColor = System.Drawing.SystemColors.Control;
+            this.label192.Location = new System.Drawing.Point(16, 173);
+            this.label192.Name = "label192";
+            this.label192.Size = new System.Drawing.Size(74, 13);
+            this.label192.TabIndex = 17;
+            this.label192.Text = "min dist trigger";
             // 
             // SpawnParamsmax_dist_staticNUD
             // 
@@ -11166,13 +11310,9 @@ namespace DayZeEditor
             // 
             // WeatherTab
             // 
+            this.WeatherTab.AutoScroll = true;
             this.WeatherTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.WeatherTab.Controls.Add(this.groupBox55);
-            this.WeatherTab.Controls.Add(this.groupBox54);
-            this.WeatherTab.Controls.Add(this.groupBox48);
-            this.WeatherTab.Controls.Add(this.groupBox43);
-            this.WeatherTab.Controls.Add(this.groupBox38);
-            this.WeatherTab.Controls.Add(this.groupBox37);
+            this.WeatherTab.Controls.Add(this.flowLayoutPanel4);
             this.WeatherTab.ForeColor = System.Drawing.SystemColors.Control;
             this.WeatherTab.Location = new System.Drawing.Point(4, 25);
             this.WeatherTab.Name = "WeatherTab";
@@ -11180,249 +11320,425 @@ namespace DayZeEditor
             this.WeatherTab.TabIndex = 10;
             this.WeatherTab.Text = "Weather";
             // 
-            // groupBox55
+            // flowLayoutPanel4
             // 
-            this.groupBox55.Controls.Add(this.label94);
-            this.groupBox55.Controls.Add(this.StimeoutNUD);
-            this.groupBox55.Controls.Add(this.SdensityNUD);
-            this.groupBox55.Controls.Add(this.SthresholdNUD);
-            this.groupBox55.Controls.Add(this.label96);
-            this.groupBox55.Controls.Add(this.label95);
-            this.groupBox55.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox55.Location = new System.Drawing.Point(578, 324);
-            this.groupBox55.Name = "groupBox55";
-            this.groupBox55.Size = new System.Drawing.Size(279, 139);
-            this.groupBox55.TabIndex = 77;
-            this.groupBox55.TabStop = false;
-            this.groupBox55.Text = "Storm";
+            this.flowLayoutPanel4.AutoScroll = true;
+            this.flowLayoutPanel4.AutoSize = true;
+            this.flowLayoutPanel4.Controls.Add(this.groupBox37);
+            this.flowLayoutPanel4.Controls.Add(this.groupBox38);
+            this.flowLayoutPanel4.Controls.Add(this.groupBox48);
+            this.flowLayoutPanel4.Controls.Add(this.groupBox43);
+            this.flowLayoutPanel4.Controls.Add(this.groupBox54);
+            this.flowLayoutPanel4.Controls.Add(this.groupBox84);
+            this.flowLayoutPanel4.Controls.Add(this.groupBox89);
+            this.flowLayoutPanel4.Controls.Add(this.groupBox55);
+            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(1218, 596);
+            this.flowLayoutPanel4.TabIndex = 79;
             // 
-            // label94
+            // groupBox37
             // 
-            this.label94.AutoSize = true;
-            this.label94.Location = new System.Drawing.Point(14, 86);
-            this.label94.Name = "label94";
-            this.label94.Size = new System.Drawing.Size(41, 13);
-            this.label94.TabIndex = 74;
-            this.label94.Text = "timeout";
+            this.groupBox37.Controls.Add(this.weatherrestartCB);
+            this.groupBox37.Controls.Add(this.weatherenabledCB);
+            this.groupBox37.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox37.Location = new System.Drawing.Point(3, 3);
+            this.groupBox37.Name = "groupBox37";
+            this.groupBox37.Size = new System.Drawing.Size(279, 57);
+            this.groupBox37.TabIndex = 2;
+            this.groupBox37.TabStop = false;
+            this.groupBox37.Text = "General";
             // 
-            // StimeoutNUD
+            // weatherrestartCB
             // 
-            this.StimeoutNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.StimeoutNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.StimeoutNUD.Location = new System.Drawing.Point(91, 84);
-            this.StimeoutNUD.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.StimeoutNUD.Name = "StimeoutNUD";
-            this.StimeoutNUD.Size = new System.Drawing.Size(78, 20);
-            this.StimeoutNUD.TabIndex = 73;
-            this.StimeoutNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StimeoutNUD.ValueChanged += new System.EventHandler(this.StimeoutNUD_ValueChanged);
+            this.weatherrestartCB.AutoSize = true;
+            this.weatherrestartCB.Location = new System.Drawing.Point(17, 34);
+            this.weatherrestartCB.Name = "weatherrestartCB";
+            this.weatherrestartCB.Size = new System.Drawing.Size(232, 17);
+            this.weatherrestartCB.TabIndex = 0;
+            this.weatherrestartCB.Text = "Rest ( load weather from storage on restart )";
+            this.weatherrestartCB.UseVisualStyleBackColor = true;
+            this.weatherrestartCB.CheckedChanged += new System.EventHandler(this.weatherrestartCB_CheckedChanged);
             // 
-            // SdensityNUD
+            // weatherenabledCB
             // 
-            this.SdensityNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.SdensityNUD.DecimalPlaces = 2;
-            this.SdensityNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.SdensityNUD.Increment = new decimal(new int[] {
+            this.weatherenabledCB.AutoSize = true;
+            this.weatherenabledCB.Location = new System.Drawing.Point(17, 16);
+            this.weatherenabledCB.Name = "weatherenabledCB";
+            this.weatherenabledCB.Size = new System.Drawing.Size(130, 17);
+            this.weatherenabledCB.TabIndex = 1;
+            this.weatherenabledCB.Text = "Enabled weather CFG";
+            this.weatherenabledCB.UseVisualStyleBackColor = true;
+            this.weatherenabledCB.CheckedChanged += new System.EventHandler(this.weatherenabledCB_CheckedChanged);
+            // 
+            // groupBox38
+            // 
+            this.groupBox38.Controls.Add(this.groupBox42);
+            this.groupBox38.Controls.Add(this.groupBox41);
+            this.groupBox38.Controls.Add(this.groupBox40);
+            this.groupBox38.Controls.Add(this.groupBox39);
+            this.groupBox38.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox38.Location = new System.Drawing.Point(3, 66);
+            this.groupBox38.Name = "groupBox38";
+            this.groupBox38.Size = new System.Drawing.Size(279, 304);
+            this.groupBox38.TabIndex = 3;
+            this.groupBox38.TabStop = false;
+            this.groupBox38.Text = "Overcast";
+            // 
+            // groupBox42
+            // 
+            this.groupBox42.Controls.Add(this.OCLmaxNUD);
+            this.groupBox42.Controls.Add(this.OCLminNUD);
+            this.groupBox42.Controls.Add(this.label70);
+            this.groupBox42.Controls.Add(this.label71);
+            this.groupBox42.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox42.Location = new System.Drawing.Point(6, 230);
+            this.groupBox42.Name = "groupBox42";
+            this.groupBox42.Size = new System.Drawing.Size(267, 66);
+            this.groupBox42.TabIndex = 75;
+            this.groupBox42.TabStop = false;
+            this.groupBox42.Text = "Change Limits";
+            // 
+            // OCLmaxNUD
+            // 
+            this.OCLmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.OCLmaxNUD.DecimalPlaces = 2;
+            this.OCLmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.OCLmaxNUD.Increment = new decimal(new int[] {
             1,
             0,
             0,
             131072});
-            this.SdensityNUD.Location = new System.Drawing.Point(91, 24);
-            this.SdensityNUD.Maximum = new decimal(new int[] {
-            1,
+            this.OCLmaxNUD.Location = new System.Drawing.Point(95, 32);
+            this.OCLmaxNUD.Maximum = new decimal(new int[] {
+            10000000,
             0,
             0,
             0});
-            this.SdensityNUD.Name = "SdensityNUD";
-            this.SdensityNUD.Size = new System.Drawing.Size(78, 20);
-            this.SdensityNUD.TabIndex = 71;
-            this.SdensityNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.SdensityNUD.ValueChanged += new System.EventHandler(this.SdensityNUD_ValueChanged);
+            this.OCLmaxNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.OCLmaxNUD.Name = "OCLmaxNUD";
+            this.OCLmaxNUD.Size = new System.Drawing.Size(78, 20);
+            this.OCLmaxNUD.TabIndex = 72;
+            this.OCLmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.OCLmaxNUD.ValueChanged += new System.EventHandler(this.OCLmaxNUD_ValueChanged);
             // 
-            // SthresholdNUD
+            // OCLminNUD
             // 
-            this.SthresholdNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.SthresholdNUD.DecimalPlaces = 2;
-            this.SthresholdNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.SthresholdNUD.Increment = new decimal(new int[] {
+            this.OCLminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.OCLminNUD.DecimalPlaces = 2;
+            this.OCLminNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.OCLminNUD.Increment = new decimal(new int[] {
             1,
             0,
             0,
             131072});
-            this.SthresholdNUD.Location = new System.Drawing.Point(91, 54);
-            this.SthresholdNUD.Maximum = new decimal(new int[] {
-            1,
+            this.OCLminNUD.Location = new System.Drawing.Point(11, 32);
+            this.OCLminNUD.Maximum = new decimal(new int[] {
+            10000000,
             0,
             0,
             0});
-            this.SthresholdNUD.Name = "SthresholdNUD";
-            this.SthresholdNUD.Size = new System.Drawing.Size(78, 20);
-            this.SthresholdNUD.TabIndex = 72;
-            this.SthresholdNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.SthresholdNUD.ValueChanged += new System.EventHandler(this.SthresholdNUD_ValueChanged);
+            this.OCLminNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.OCLminNUD.Name = "OCLminNUD";
+            this.OCLminNUD.Size = new System.Drawing.Size(78, 20);
+            this.OCLminNUD.TabIndex = 71;
+            this.OCLminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.OCLminNUD.ValueChanged += new System.EventHandler(this.OCLminNUD_ValueChanged);
             // 
-            // label96
+            // label70
             // 
-            this.label96.AutoSize = true;
-            this.label96.Location = new System.Drawing.Point(14, 26);
-            this.label96.Name = "label96";
-            this.label96.Size = new System.Drawing.Size(40, 13);
-            this.label96.TabIndex = 0;
-            this.label96.Text = "density";
+            this.label70.AutoSize = true;
+            this.label70.Location = new System.Drawing.Point(115, 16);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(26, 13);
+            this.label70.TabIndex = 1;
+            this.label70.Text = "max";
             // 
-            // label95
+            // label71
             // 
-            this.label95.AutoSize = true;
-            this.label95.Location = new System.Drawing.Point(14, 56);
-            this.label95.Name = "label95";
-            this.label95.Size = new System.Drawing.Size(50, 13);
-            this.label95.TabIndex = 1;
-            this.label95.Text = "threshold";
+            this.label71.AutoSize = true;
+            this.label71.Location = new System.Drawing.Point(37, 16);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(23, 13);
+            this.label71.TabIndex = 0;
+            this.label71.Text = "min";
             // 
-            // groupBox54
+            // groupBox41
             // 
-            this.groupBox54.Controls.Add(this.groupBox57);
-            this.groupBox54.Controls.Add(this.label101);
-            this.groupBox54.Controls.Add(this.WMaxSpeedNUD);
-            this.groupBox54.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox54.Location = new System.Drawing.Point(293, 324);
-            this.groupBox54.Name = "groupBox54";
-            this.groupBox54.Size = new System.Drawing.Size(279, 139);
-            this.groupBox54.TabIndex = 76;
-            this.groupBox54.TabStop = false;
-            this.groupBox54.Text = "Wind";
+            this.groupBox41.Controls.Add(this.OTLmaxNUD);
+            this.groupBox41.Controls.Add(this.OTLminNUD);
+            this.groupBox41.Controls.Add(this.label66);
+            this.groupBox41.Controls.Add(this.label69);
+            this.groupBox41.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox41.Location = new System.Drawing.Point(6, 158);
+            this.groupBox41.Name = "groupBox41";
+            this.groupBox41.Size = new System.Drawing.Size(267, 66);
+            this.groupBox41.TabIndex = 75;
+            this.groupBox41.TabStop = false;
+            this.groupBox41.Text = "Time Limits";
             // 
-            // groupBox57
+            // OTLmaxNUD
             // 
-            this.groupBox57.Controls.Add(this.label93);
-            this.groupBox57.Controls.Add(this.WPfrequencyNUD);
-            this.groupBox57.Controls.Add(this.WPmaxNUD);
-            this.groupBox57.Controls.Add(this.WPminNUD);
-            this.groupBox57.Controls.Add(this.label97);
-            this.groupBox57.Controls.Add(this.label98);
-            this.groupBox57.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox57.Location = new System.Drawing.Point(6, 57);
-            this.groupBox57.Name = "groupBox57";
-            this.groupBox57.Size = new System.Drawing.Size(267, 66);
-            this.groupBox57.TabIndex = 74;
-            this.groupBox57.TabStop = false;
-            this.groupBox57.Text = "Params";
-            // 
-            // label93
-            // 
-            this.label93.AutoSize = true;
-            this.label93.Location = new System.Drawing.Point(194, 16);
-            this.label93.Name = "label93";
-            this.label93.Size = new System.Drawing.Size(54, 13);
-            this.label93.TabIndex = 74;
-            this.label93.Text = "frequency";
-            // 
-            // WPfrequencyNUD
-            // 
-            this.WPfrequencyNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.WPfrequencyNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.WPfrequencyNUD.Location = new System.Drawing.Point(183, 32);
-            this.WPfrequencyNUD.Maximum = new decimal(new int[] {
-            10000,
+            this.OTLmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.OTLmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.OTLmaxNUD.Location = new System.Drawing.Point(95, 32);
+            this.OTLmaxNUD.Maximum = new decimal(new int[] {
+            10000000,
             0,
             0,
             0});
-            this.WPfrequencyNUD.Name = "WPfrequencyNUD";
-            this.WPfrequencyNUD.Size = new System.Drawing.Size(78, 20);
-            this.WPfrequencyNUD.TabIndex = 73;
-            this.WPfrequencyNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.WPfrequencyNUD.ValueChanged += new System.EventHandler(this.WPfrequencyNUD_ValueChanged);
+            this.OTLmaxNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.OTLmaxNUD.Name = "OTLmaxNUD";
+            this.OTLmaxNUD.Size = new System.Drawing.Size(78, 20);
+            this.OTLmaxNUD.TabIndex = 72;
+            this.OTLmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.OTLmaxNUD.ValueChanged += new System.EventHandler(this.OTLmaxNUD_ValueChanged);
             // 
-            // WPmaxNUD
+            // OTLminNUD
             // 
-            this.WPmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.WPmaxNUD.DecimalPlaces = 2;
-            this.WPmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.WPmaxNUD.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.WPmaxNUD.Location = new System.Drawing.Point(95, 32);
-            this.WPmaxNUD.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.WPmaxNUD.Name = "WPmaxNUD";
-            this.WPmaxNUD.Size = new System.Drawing.Size(78, 20);
-            this.WPmaxNUD.TabIndex = 72;
-            this.WPmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.WPmaxNUD.ValueChanged += new System.EventHandler(this.WPmaxNUD_ValueChanged);
-            // 
-            // WPminNUD
-            // 
-            this.WPminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.WPminNUD.DecimalPlaces = 2;
-            this.WPminNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.WPminNUD.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.WPminNUD.Location = new System.Drawing.Point(11, 32);
-            this.WPminNUD.Maximum = new decimal(new int[] {
-            1,
+            this.OTLminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.OTLminNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.OTLminNUD.Location = new System.Drawing.Point(11, 32);
+            this.OTLminNUD.Maximum = new decimal(new int[] {
+            10000000,
             0,
             0,
             0});
-            this.WPminNUD.Name = "WPminNUD";
-            this.WPminNUD.Size = new System.Drawing.Size(78, 20);
-            this.WPminNUD.TabIndex = 71;
-            this.WPminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.WPminNUD.ValueChanged += new System.EventHandler(this.WPminNUD_ValueChanged);
+            this.OTLminNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.OTLminNUD.Name = "OTLminNUD";
+            this.OTLminNUD.Size = new System.Drawing.Size(78, 20);
+            this.OTLminNUD.TabIndex = 71;
+            this.OTLminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.OTLminNUD.ValueChanged += new System.EventHandler(this.OTLminNUD_ValueChanged);
             // 
-            // label97
+            // label66
             // 
-            this.label97.AutoSize = true;
-            this.label97.Location = new System.Drawing.Point(115, 16);
-            this.label97.Name = "label97";
-            this.label97.Size = new System.Drawing.Size(26, 13);
-            this.label97.TabIndex = 1;
-            this.label97.Text = "max";
+            this.label66.AutoSize = true;
+            this.label66.Location = new System.Drawing.Point(115, 16);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(26, 13);
+            this.label66.TabIndex = 1;
+            this.label66.Text = "max";
             // 
-            // label98
+            // label69
             // 
-            this.label98.AutoSize = true;
-            this.label98.Location = new System.Drawing.Point(36, 16);
-            this.label98.Name = "label98";
-            this.label98.Size = new System.Drawing.Size(23, 13);
-            this.label98.TabIndex = 0;
-            this.label98.Text = "min";
+            this.label69.AutoSize = true;
+            this.label69.Location = new System.Drawing.Point(37, 16);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(23, 13);
+            this.label69.TabIndex = 0;
+            this.label69.Text = "min";
             // 
-            // label101
+            // groupBox40
             // 
-            this.label101.AutoSize = true;
-            this.label101.Location = new System.Drawing.Point(14, 28);
-            this.label101.Name = "label101";
-            this.label101.Size = new System.Drawing.Size(61, 13);
-            this.label101.TabIndex = 0;
-            this.label101.Text = "Max Speed";
+            this.groupBox40.Controls.Add(this.OLmaxNUD);
+            this.groupBox40.Controls.Add(this.OLminNUD);
+            this.groupBox40.Controls.Add(this.label67);
+            this.groupBox40.Controls.Add(this.label68);
+            this.groupBox40.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox40.Location = new System.Drawing.Point(6, 86);
+            this.groupBox40.Name = "groupBox40";
+            this.groupBox40.Size = new System.Drawing.Size(267, 66);
+            this.groupBox40.TabIndex = 74;
+            this.groupBox40.TabStop = false;
+            this.groupBox40.Text = "Limits";
             // 
-            // WMaxSpeedNUD
+            // OLmaxNUD
             // 
-            this.WMaxSpeedNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.WMaxSpeedNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.WMaxSpeedNUD.Location = new System.Drawing.Point(81, 26);
-            this.WMaxSpeedNUD.Maximum = new decimal(new int[] {
-            10000,
+            this.OLmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.OLmaxNUD.DecimalPlaces = 2;
+            this.OLmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.OLmaxNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.OLmaxNUD.Location = new System.Drawing.Point(95, 32);
+            this.OLmaxNUD.Maximum = new decimal(new int[] {
+            10000000,
             0,
             0,
             0});
-            this.WMaxSpeedNUD.Name = "WMaxSpeedNUD";
-            this.WMaxSpeedNUD.Size = new System.Drawing.Size(78, 20);
-            this.WMaxSpeedNUD.TabIndex = 71;
-            this.WMaxSpeedNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.WMaxSpeedNUD.ValueChanged += new System.EventHandler(this.WMaxSpeedNUD_ValueChanged);
+            this.OLmaxNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.OLmaxNUD.Name = "OLmaxNUD";
+            this.OLmaxNUD.Size = new System.Drawing.Size(78, 20);
+            this.OLmaxNUD.TabIndex = 72;
+            this.OLmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.OLmaxNUD.ValueChanged += new System.EventHandler(this.OLmaxNUD_ValueChanged);
+            // 
+            // OLminNUD
+            // 
+            this.OLminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.OLminNUD.DecimalPlaces = 2;
+            this.OLminNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.OLminNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.OLminNUD.Location = new System.Drawing.Point(11, 32);
+            this.OLminNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.OLminNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.OLminNUD.Name = "OLminNUD";
+            this.OLminNUD.Size = new System.Drawing.Size(78, 20);
+            this.OLminNUD.TabIndex = 71;
+            this.OLminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.OLminNUD.ValueChanged += new System.EventHandler(this.OLminNUD_ValueChanged);
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Location = new System.Drawing.Point(115, 16);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(26, 13);
+            this.label67.TabIndex = 1;
+            this.label67.Text = "max";
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.Location = new System.Drawing.Point(37, 16);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(23, 13);
+            this.label68.TabIndex = 0;
+            this.label68.Text = "min";
+            // 
+            // groupBox39
+            // 
+            this.groupBox39.Controls.Add(this.OCdurationNUD);
+            this.groupBox39.Controls.Add(this.OCtimeNUD);
+            this.groupBox39.Controls.Add(this.OCactualNUD);
+            this.groupBox39.Controls.Add(this.label65);
+            this.groupBox39.Controls.Add(this.label62);
+            this.groupBox39.Controls.Add(this.label61);
+            this.groupBox39.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox39.Location = new System.Drawing.Point(6, 19);
+            this.groupBox39.Name = "groupBox39";
+            this.groupBox39.Size = new System.Drawing.Size(267, 61);
+            this.groupBox39.TabIndex = 4;
+            this.groupBox39.TabStop = false;
+            this.groupBox39.Text = "Current";
+            // 
+            // OCdurationNUD
+            // 
+            this.OCdurationNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.OCdurationNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.OCdurationNUD.Location = new System.Drawing.Point(179, 31);
+            this.OCdurationNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.OCdurationNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.OCdurationNUD.Name = "OCdurationNUD";
+            this.OCdurationNUD.Size = new System.Drawing.Size(78, 20);
+            this.OCdurationNUD.TabIndex = 73;
+            this.OCdurationNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.OCdurationNUD.ValueChanged += new System.EventHandler(this.OCdurationNUD_ValueChanged);
+            // 
+            // OCtimeNUD
+            // 
+            this.OCtimeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.OCtimeNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.OCtimeNUD.Location = new System.Drawing.Point(95, 31);
+            this.OCtimeNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.OCtimeNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.OCtimeNUD.Name = "OCtimeNUD";
+            this.OCtimeNUD.Size = new System.Drawing.Size(78, 20);
+            this.OCtimeNUD.TabIndex = 72;
+            this.OCtimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.OCtimeNUD.ValueChanged += new System.EventHandler(this.OCtimeNUD_ValueChanged);
+            // 
+            // OCactualNUD
+            // 
+            this.OCactualNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.OCactualNUD.DecimalPlaces = 2;
+            this.OCactualNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.OCactualNUD.Location = new System.Drawing.Point(11, 31);
+            this.OCactualNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.OCactualNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.OCactualNUD.Name = "OCactualNUD";
+            this.OCactualNUD.Size = new System.Drawing.Size(78, 20);
+            this.OCactualNUD.TabIndex = 71;
+            this.OCactualNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.OCactualNUD.ValueChanged += new System.EventHandler(this.OCactualNUD_ValueChanged);
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Location = new System.Drawing.Point(194, 15);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(45, 13);
+            this.label65.TabIndex = 2;
+            this.label65.Text = "duration";
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Location = new System.Drawing.Point(115, 15);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(26, 13);
+            this.label62.TabIndex = 1;
+            this.label62.Text = "time";
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Location = new System.Drawing.Point(24, 15);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(36, 13);
+            this.label61.TabIndex = 0;
+            this.label61.Text = "actual";
             // 
             // groupBox48
             // 
@@ -11432,7 +11748,7 @@ namespace DayZeEditor
             this.groupBox48.Controls.Add(this.groupBox51);
             this.groupBox48.Controls.Add(this.groupBox52);
             this.groupBox48.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox48.Location = new System.Drawing.Point(8, 94);
+            this.groupBox48.Location = new System.Drawing.Point(288, 3);
             this.groupBox48.Name = "groupBox48";
             this.groupBox48.Size = new System.Drawing.Size(279, 369);
             this.groupBox48.TabIndex = 76;
@@ -11461,10 +11777,15 @@ namespace DayZeEditor
             this.RTendNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.RTendNUD.Location = new System.Drawing.Point(179, 31);
             this.RTendNUD.Maximum = new decimal(new int[] {
-            10000,
+            10000000,
             0,
             0,
             0});
+            this.RTendNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
             this.RTendNUD.Name = "RTendNUD";
             this.RTendNUD.Size = new System.Drawing.Size(78, 20);
             this.RTendNUD.TabIndex = 73;
@@ -11478,10 +11799,15 @@ namespace DayZeEditor
             this.RTmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.RTmaxNUD.Location = new System.Drawing.Point(95, 31);
             this.RTmaxNUD.Maximum = new decimal(new int[] {
-            10000,
+            10000000,
             0,
             0,
             0});
+            this.RTmaxNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
             this.RTmaxNUD.Name = "RTmaxNUD";
             this.RTmaxNUD.Size = new System.Drawing.Size(78, 20);
             this.RTmaxNUD.TabIndex = 72;
@@ -11495,10 +11821,15 @@ namespace DayZeEditor
             this.RTminNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.RTminNUD.Location = new System.Drawing.Point(11, 31);
             this.RTminNUD.Maximum = new decimal(new int[] {
-            10000,
+            10000000,
             0,
             0,
             0});
+            this.RTminNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
             this.RTminNUD.Name = "RTminNUD";
             this.RTminNUD.Size = new System.Drawing.Size(78, 20);
             this.RTminNUD.TabIndex = 71;
@@ -11558,10 +11889,15 @@ namespace DayZeEditor
             131072});
             this.RCLmaxNUD.Location = new System.Drawing.Point(95, 32);
             this.RCLmaxNUD.Maximum = new decimal(new int[] {
-            1,
+            10000000,
             0,
             0,
             0});
+            this.RCLmaxNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
             this.RCLmaxNUD.Name = "RCLmaxNUD";
             this.RCLmaxNUD.Size = new System.Drawing.Size(78, 20);
             this.RCLmaxNUD.TabIndex = 72;
@@ -11580,10 +11916,15 @@ namespace DayZeEditor
             131072});
             this.RCLminNUD.Location = new System.Drawing.Point(11, 32);
             this.RCLminNUD.Maximum = new decimal(new int[] {
-            1,
+            10000000,
             0,
             0,
             0});
+            this.RCLminNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
             this.RCLminNUD.Name = "RCLminNUD";
             this.RCLminNUD.Size = new System.Drawing.Size(78, 20);
             this.RCLminNUD.TabIndex = 71;
@@ -11628,10 +11969,15 @@ namespace DayZeEditor
             this.RTLmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.RTLmaxNUD.Location = new System.Drawing.Point(95, 32);
             this.RTLmaxNUD.Maximum = new decimal(new int[] {
-            1000000,
+            10000000,
             0,
             0,
             0});
+            this.RTLmaxNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
             this.RTLmaxNUD.Name = "RTLmaxNUD";
             this.RTLmaxNUD.Size = new System.Drawing.Size(78, 20);
             this.RTLmaxNUD.TabIndex = 72;
@@ -11644,10 +11990,15 @@ namespace DayZeEditor
             this.RTLminNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.RTLminNUD.Location = new System.Drawing.Point(11, 32);
             this.RTLminNUD.Maximum = new decimal(new int[] {
-            1000000,
+            10000000,
             0,
             0,
             0});
+            this.RTLminNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
             this.RTLminNUD.Name = "RTLminNUD";
             this.RTLminNUD.Size = new System.Drawing.Size(78, 20);
             this.RTLminNUD.TabIndex = 71;
@@ -11698,10 +12049,15 @@ namespace DayZeEditor
             131072});
             this.RLmaxNUD.Location = new System.Drawing.Point(95, 32);
             this.RLmaxNUD.Maximum = new decimal(new int[] {
-            1,
+            10000000,
             0,
             0,
             0});
+            this.RLmaxNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
             this.RLmaxNUD.Name = "RLmaxNUD";
             this.RLmaxNUD.Size = new System.Drawing.Size(78, 20);
             this.RLmaxNUD.TabIndex = 72;
@@ -11720,10 +12076,15 @@ namespace DayZeEditor
             131072});
             this.RLminNUD.Location = new System.Drawing.Point(11, 32);
             this.RLminNUD.Maximum = new decimal(new int[] {
-            1,
+            10000000,
             0,
             0,
             0});
+            this.RLminNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
             this.RLminNUD.Name = "RLminNUD";
             this.RLminNUD.Size = new System.Drawing.Size(78, 20);
             this.RLminNUD.TabIndex = 71;
@@ -11770,10 +12131,15 @@ namespace DayZeEditor
             this.RCdurationNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.RCdurationNUD.Location = new System.Drawing.Point(179, 31);
             this.RCdurationNUD.Maximum = new decimal(new int[] {
-            10000,
+            10000000,
             0,
             0,
             0});
+            this.RCdurationNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
             this.RCdurationNUD.Name = "RCdurationNUD";
             this.RCdurationNUD.Size = new System.Drawing.Size(78, 20);
             this.RCdurationNUD.TabIndex = 73;
@@ -11786,10 +12152,15 @@ namespace DayZeEditor
             this.RCtimeNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.RCtimeNUD.Location = new System.Drawing.Point(95, 31);
             this.RCtimeNUD.Maximum = new decimal(new int[] {
-            10000,
+            10000000,
             0,
             0,
             0});
+            this.RCtimeNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
             this.RCtimeNUD.Name = "RCtimeNUD";
             this.RCtimeNUD.Size = new System.Drawing.Size(78, 20);
             this.RCtimeNUD.TabIndex = 72;
@@ -11803,10 +12174,15 @@ namespace DayZeEditor
             this.RCactualNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.RCactualNUD.Location = new System.Drawing.Point(11, 31);
             this.RCactualNUD.Maximum = new decimal(new int[] {
-            10000,
+            10000000,
             0,
             0,
             0});
+            this.RCactualNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
             this.RCactualNUD.Name = "RCactualNUD";
             this.RCactualNUD.Size = new System.Drawing.Size(78, 20);
             this.RCactualNUD.TabIndex = 71;
@@ -11847,7 +12223,7 @@ namespace DayZeEditor
             this.groupBox43.Controls.Add(this.groupBox46);
             this.groupBox43.Controls.Add(this.groupBox47);
             this.groupBox43.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox43.Location = new System.Drawing.Point(578, 13);
+            this.groupBox43.Location = new System.Drawing.Point(573, 3);
             this.groupBox43.Name = "groupBox43";
             this.groupBox43.Size = new System.Drawing.Size(279, 304);
             this.groupBox43.TabIndex = 76;
@@ -11880,10 +12256,15 @@ namespace DayZeEditor
             131072});
             this.FCLmaxNUD.Location = new System.Drawing.Point(95, 32);
             this.FCLmaxNUD.Maximum = new decimal(new int[] {
-            1,
+            10000000,
             0,
             0,
             0});
+            this.FCLmaxNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
             this.FCLmaxNUD.Name = "FCLmaxNUD";
             this.FCLmaxNUD.Size = new System.Drawing.Size(78, 20);
             this.FCLmaxNUD.TabIndex = 72;
@@ -11902,10 +12283,15 @@ namespace DayZeEditor
             131072});
             this.FCLminNUD.Location = new System.Drawing.Point(11, 32);
             this.FCLminNUD.Maximum = new decimal(new int[] {
-            1,
+            10000000,
             0,
             0,
             0});
+            this.FCLminNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
             this.FCLminNUD.Name = "FCLminNUD";
             this.FCLminNUD.Size = new System.Drawing.Size(78, 20);
             this.FCLminNUD.TabIndex = 71;
@@ -11950,10 +12336,15 @@ namespace DayZeEditor
             this.FTLmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.FTLmaxNUD.Location = new System.Drawing.Point(95, 32);
             this.FTLmaxNUD.Maximum = new decimal(new int[] {
-            1000000,
+            10000000,
             0,
             0,
             0});
+            this.FTLmaxNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
             this.FTLmaxNUD.Name = "FTLmaxNUD";
             this.FTLmaxNUD.Size = new System.Drawing.Size(78, 20);
             this.FTLmaxNUD.TabIndex = 72;
@@ -11966,10 +12357,15 @@ namespace DayZeEditor
             this.FTLminNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.FTLminNUD.Location = new System.Drawing.Point(11, 32);
             this.FTLminNUD.Maximum = new decimal(new int[] {
-            1000000,
+            10000000,
             0,
             0,
             0});
+            this.FTLminNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
             this.FTLminNUD.Name = "FTLminNUD";
             this.FTLminNUD.Size = new System.Drawing.Size(78, 20);
             this.FTLminNUD.TabIndex = 71;
@@ -12020,10 +12416,15 @@ namespace DayZeEditor
             131072});
             this.FLmaxNUD.Location = new System.Drawing.Point(95, 32);
             this.FLmaxNUD.Maximum = new decimal(new int[] {
-            1,
+            10000000,
             0,
             0,
             0});
+            this.FLmaxNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
             this.FLmaxNUD.Name = "FLmaxNUD";
             this.FLmaxNUD.Size = new System.Drawing.Size(78, 20);
             this.FLmaxNUD.TabIndex = 72;
@@ -12042,10 +12443,15 @@ namespace DayZeEditor
             131072});
             this.FLminNUD.Location = new System.Drawing.Point(11, 32);
             this.FLminNUD.Maximum = new decimal(new int[] {
-            1,
+            10000000,
             0,
             0,
             0});
+            this.FLminNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
             this.FLminNUD.Name = "FLminNUD";
             this.FLminNUD.Size = new System.Drawing.Size(78, 20);
             this.FLminNUD.TabIndex = 71;
@@ -12092,10 +12498,15 @@ namespace DayZeEditor
             this.FCdurationNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.FCdurationNUD.Location = new System.Drawing.Point(179, 31);
             this.FCdurationNUD.Maximum = new decimal(new int[] {
-            10000,
+            10000000,
             0,
             0,
             0});
+            this.FCdurationNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
             this.FCdurationNUD.Name = "FCdurationNUD";
             this.FCdurationNUD.Size = new System.Drawing.Size(78, 20);
             this.FCdurationNUD.TabIndex = 73;
@@ -12108,10 +12519,15 @@ namespace DayZeEditor
             this.FCtimeNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.FCtimeNUD.Location = new System.Drawing.Point(95, 31);
             this.FCtimeNUD.Maximum = new decimal(new int[] {
-            10000,
+            10000000,
             0,
             0,
             0});
+            this.FCtimeNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
             this.FCtimeNUD.Name = "FCtimeNUD";
             this.FCtimeNUD.Size = new System.Drawing.Size(78, 20);
             this.FCtimeNUD.TabIndex = 72;
@@ -12125,10 +12541,15 @@ namespace DayZeEditor
             this.FCactualNUD.ForeColor = System.Drawing.SystemColors.Control;
             this.FCactualNUD.Location = new System.Drawing.Point(11, 31);
             this.FCactualNUD.Maximum = new decimal(new int[] {
-            10000,
+            10000000,
             0,
             0,
             0});
+            this.FCactualNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
             this.FCactualNUD.Name = "FCactualNUD";
             this.FCactualNUD.Size = new System.Drawing.Size(78, 20);
             this.FCactualNUD.TabIndex = 71;
@@ -12162,361 +12583,1333 @@ namespace DayZeEditor
             this.label80.TabIndex = 0;
             this.label80.Text = "actual";
             // 
-            // groupBox38
+            // groupBox54
             // 
-            this.groupBox38.Controls.Add(this.groupBox42);
-            this.groupBox38.Controls.Add(this.groupBox41);
-            this.groupBox38.Controls.Add(this.groupBox40);
-            this.groupBox38.Controls.Add(this.groupBox39);
-            this.groupBox38.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox38.Location = new System.Drawing.Point(293, 13);
-            this.groupBox38.Name = "groupBox38";
-            this.groupBox38.Size = new System.Drawing.Size(279, 304);
-            this.groupBox38.TabIndex = 3;
-            this.groupBox38.TabStop = false;
-            this.groupBox38.Text = "Overcast";
+            this.groupBox54.Controls.Add(this.groupBox57);
+            this.groupBox54.Controls.Add(this.groupBox81);
+            this.groupBox54.Controls.Add(this.groupBox82);
+            this.groupBox54.Controls.Add(this.groupBox83);
+            this.groupBox54.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox54.Location = new System.Drawing.Point(858, 3);
+            this.groupBox54.Name = "groupBox54";
+            this.groupBox54.Size = new System.Drawing.Size(279, 304);
+            this.groupBox54.TabIndex = 78;
+            this.groupBox54.TabStop = false;
+            this.groupBox54.Text = "Wind Magnitude";
             // 
-            // groupBox42
+            // groupBox57
             // 
-            this.groupBox42.Controls.Add(this.OCLmaxNUD);
-            this.groupBox42.Controls.Add(this.OCLminNUD);
-            this.groupBox42.Controls.Add(this.label70);
-            this.groupBox42.Controls.Add(this.label71);
-            this.groupBox42.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox42.Location = new System.Drawing.Point(6, 230);
-            this.groupBox42.Name = "groupBox42";
-            this.groupBox42.Size = new System.Drawing.Size(267, 66);
-            this.groupBox42.TabIndex = 75;
-            this.groupBox42.TabStop = false;
-            this.groupBox42.Text = "Change Limits";
+            this.groupBox57.Controls.Add(this.WMCLmaxNUD);
+            this.groupBox57.Controls.Add(this.WMCLminNUD);
+            this.groupBox57.Controls.Add(this.label93);
+            this.groupBox57.Controls.Add(this.label97);
+            this.groupBox57.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox57.Location = new System.Drawing.Point(6, 230);
+            this.groupBox57.Name = "groupBox57";
+            this.groupBox57.Size = new System.Drawing.Size(267, 66);
+            this.groupBox57.TabIndex = 75;
+            this.groupBox57.TabStop = false;
+            this.groupBox57.Text = "Change Limits";
             // 
-            // OCLmaxNUD
+            // WMCLmaxNUD
             // 
-            this.OCLmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.OCLmaxNUD.DecimalPlaces = 2;
-            this.OCLmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.OCLmaxNUD.Increment = new decimal(new int[] {
+            this.WMCLmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.WMCLmaxNUD.DecimalPlaces = 2;
+            this.WMCLmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.WMCLmaxNUD.Increment = new decimal(new int[] {
             1,
             0,
             0,
             131072});
-            this.OCLmaxNUD.Location = new System.Drawing.Point(95, 32);
-            this.OCLmaxNUD.Maximum = new decimal(new int[] {
-            1,
+            this.WMCLmaxNUD.Location = new System.Drawing.Point(95, 32);
+            this.WMCLmaxNUD.Maximum = new decimal(new int[] {
+            10000000,
             0,
             0,
             0});
-            this.OCLmaxNUD.Name = "OCLmaxNUD";
-            this.OCLmaxNUD.Size = new System.Drawing.Size(78, 20);
-            this.OCLmaxNUD.TabIndex = 72;
-            this.OCLmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.OCLmaxNUD.ValueChanged += new System.EventHandler(this.OCLmaxNUD_ValueChanged);
+            this.WMCLmaxNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.WMCLmaxNUD.Name = "WMCLmaxNUD";
+            this.WMCLmaxNUD.Size = new System.Drawing.Size(78, 20);
+            this.WMCLmaxNUD.TabIndex = 72;
+            this.WMCLmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.WMCLmaxNUD.ValueChanged += new System.EventHandler(this.WMCLmaxNUD_ValueChanged);
             // 
-            // OCLminNUD
+            // WMCLminNUD
             // 
-            this.OCLminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.OCLminNUD.DecimalPlaces = 2;
-            this.OCLminNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.OCLminNUD.Increment = new decimal(new int[] {
+            this.WMCLminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.WMCLminNUD.DecimalPlaces = 2;
+            this.WMCLminNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.WMCLminNUD.Increment = new decimal(new int[] {
             1,
             0,
             0,
             131072});
-            this.OCLminNUD.Location = new System.Drawing.Point(11, 32);
-            this.OCLminNUD.Maximum = new decimal(new int[] {
+            this.WMCLminNUD.Location = new System.Drawing.Point(11, 32);
+            this.WMCLminNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.WMCLminNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.WMCLminNUD.Name = "WMCLminNUD";
+            this.WMCLminNUD.Size = new System.Drawing.Size(78, 20);
+            this.WMCLminNUD.TabIndex = 71;
+            this.WMCLminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.WMCLminNUD.ValueChanged += new System.EventHandler(this.WMCLminNUD_ValueChanged);
+            // 
+            // label93
+            // 
+            this.label93.AutoSize = true;
+            this.label93.Location = new System.Drawing.Point(115, 16);
+            this.label93.Name = "label93";
+            this.label93.Size = new System.Drawing.Size(26, 13);
+            this.label93.TabIndex = 1;
+            this.label93.Text = "max";
+            // 
+            // label97
+            // 
+            this.label97.AutoSize = true;
+            this.label97.Location = new System.Drawing.Point(37, 16);
+            this.label97.Name = "label97";
+            this.label97.Size = new System.Drawing.Size(23, 13);
+            this.label97.TabIndex = 0;
+            this.label97.Text = "min";
+            // 
+            // groupBox81
+            // 
+            this.groupBox81.Controls.Add(this.WMTLmaxNUD);
+            this.groupBox81.Controls.Add(this.WMTLminNUD);
+            this.groupBox81.Controls.Add(this.label98);
+            this.groupBox81.Controls.Add(this.label101);
+            this.groupBox81.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox81.Location = new System.Drawing.Point(6, 158);
+            this.groupBox81.Name = "groupBox81";
+            this.groupBox81.Size = new System.Drawing.Size(267, 66);
+            this.groupBox81.TabIndex = 75;
+            this.groupBox81.TabStop = false;
+            this.groupBox81.Text = "Time Limits";
+            // 
+            // WMTLmaxNUD
+            // 
+            this.WMTLmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.WMTLmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.WMTLmaxNUD.Location = new System.Drawing.Point(95, 32);
+            this.WMTLmaxNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.WMTLmaxNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.WMTLmaxNUD.Name = "WMTLmaxNUD";
+            this.WMTLmaxNUD.Size = new System.Drawing.Size(78, 20);
+            this.WMTLmaxNUD.TabIndex = 72;
+            this.WMTLmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.WMTLmaxNUD.ValueChanged += new System.EventHandler(this.WMTLmaxNUD_ValueChanged);
+            // 
+            // WMTLminNUD
+            // 
+            this.WMTLminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.WMTLminNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.WMTLminNUD.Location = new System.Drawing.Point(11, 32);
+            this.WMTLminNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.WMTLminNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.WMTLminNUD.Name = "WMTLminNUD";
+            this.WMTLminNUD.Size = new System.Drawing.Size(78, 20);
+            this.WMTLminNUD.TabIndex = 71;
+            this.WMTLminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.WMTLminNUD.ValueChanged += new System.EventHandler(this.WMTLminNUD_ValueChanged);
+            // 
+            // label98
+            // 
+            this.label98.AutoSize = true;
+            this.label98.Location = new System.Drawing.Point(115, 16);
+            this.label98.Name = "label98";
+            this.label98.Size = new System.Drawing.Size(26, 13);
+            this.label98.TabIndex = 1;
+            this.label98.Text = "max";
+            // 
+            // label101
+            // 
+            this.label101.AutoSize = true;
+            this.label101.Location = new System.Drawing.Point(37, 16);
+            this.label101.Name = "label101";
+            this.label101.Size = new System.Drawing.Size(23, 13);
+            this.label101.TabIndex = 0;
+            this.label101.Text = "min";
+            // 
+            // groupBox82
+            // 
+            this.groupBox82.Controls.Add(this.WMLmaxNUD);
+            this.groupBox82.Controls.Add(this.WMLminNUD);
+            this.groupBox82.Controls.Add(this.label162);
+            this.groupBox82.Controls.Add(this.label166);
+            this.groupBox82.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox82.Location = new System.Drawing.Point(6, 86);
+            this.groupBox82.Name = "groupBox82";
+            this.groupBox82.Size = new System.Drawing.Size(267, 66);
+            this.groupBox82.TabIndex = 74;
+            this.groupBox82.TabStop = false;
+            this.groupBox82.Text = "Limits";
+            // 
+            // WMLmaxNUD
+            // 
+            this.WMLmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.WMLmaxNUD.DecimalPlaces = 2;
+            this.WMLmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.WMLmaxNUD.Increment = new decimal(new int[] {
             1,
             0,
             0,
-            0});
-            this.OCLminNUD.Name = "OCLminNUD";
-            this.OCLminNUD.Size = new System.Drawing.Size(78, 20);
-            this.OCLminNUD.TabIndex = 71;
-            this.OCLminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.OCLminNUD.ValueChanged += new System.EventHandler(this.OCLminNUD_ValueChanged);
-            // 
-            // label70
-            // 
-            this.label70.AutoSize = true;
-            this.label70.Location = new System.Drawing.Point(115, 16);
-            this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(26, 13);
-            this.label70.TabIndex = 1;
-            this.label70.Text = "max";
-            // 
-            // label71
-            // 
-            this.label71.AutoSize = true;
-            this.label71.Location = new System.Drawing.Point(37, 16);
-            this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(23, 13);
-            this.label71.TabIndex = 0;
-            this.label71.Text = "min";
-            // 
-            // groupBox41
-            // 
-            this.groupBox41.Controls.Add(this.OTLmaxNUD);
-            this.groupBox41.Controls.Add(this.OTLminNUD);
-            this.groupBox41.Controls.Add(this.label66);
-            this.groupBox41.Controls.Add(this.label69);
-            this.groupBox41.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox41.Location = new System.Drawing.Point(6, 158);
-            this.groupBox41.Name = "groupBox41";
-            this.groupBox41.Size = new System.Drawing.Size(267, 66);
-            this.groupBox41.TabIndex = 75;
-            this.groupBox41.TabStop = false;
-            this.groupBox41.Text = "Time Limits";
-            // 
-            // OTLmaxNUD
-            // 
-            this.OTLmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.OTLmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.OTLmaxNUD.Location = new System.Drawing.Point(95, 32);
-            this.OTLmaxNUD.Maximum = new decimal(new int[] {
-            1000000,
+            131072});
+            this.WMLmaxNUD.Location = new System.Drawing.Point(95, 32);
+            this.WMLmaxNUD.Maximum = new decimal(new int[] {
+            10000000,
             0,
             0,
             0});
-            this.OTLmaxNUD.Name = "OTLmaxNUD";
-            this.OTLmaxNUD.Size = new System.Drawing.Size(78, 20);
-            this.OTLmaxNUD.TabIndex = 72;
-            this.OTLmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.OTLmaxNUD.ValueChanged += new System.EventHandler(this.OTLmaxNUD_ValueChanged);
-            // 
-            // OTLminNUD
-            // 
-            this.OTLminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.OTLminNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.OTLminNUD.Location = new System.Drawing.Point(11, 32);
-            this.OTLminNUD.Maximum = new decimal(new int[] {
-            1000000,
+            this.WMLmaxNUD.Minimum = new decimal(new int[] {
+            10000000,
             0,
             0,
-            0});
-            this.OTLminNUD.Name = "OTLminNUD";
-            this.OTLminNUD.Size = new System.Drawing.Size(78, 20);
-            this.OTLminNUD.TabIndex = 71;
-            this.OTLminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.OTLminNUD.ValueChanged += new System.EventHandler(this.OTLminNUD_ValueChanged);
+            -2147483648});
+            this.WMLmaxNUD.Name = "WMLmaxNUD";
+            this.WMLmaxNUD.Size = new System.Drawing.Size(78, 20);
+            this.WMLmaxNUD.TabIndex = 72;
+            this.WMLmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.WMLmaxNUD.ValueChanged += new System.EventHandler(this.WMLmaxNUD_ValueChanged);
             // 
-            // label66
+            // WMLminNUD
             // 
-            this.label66.AutoSize = true;
-            this.label66.Location = new System.Drawing.Point(115, 16);
-            this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(26, 13);
-            this.label66.TabIndex = 1;
-            this.label66.Text = "max";
-            // 
-            // label69
-            // 
-            this.label69.AutoSize = true;
-            this.label69.Location = new System.Drawing.Point(37, 16);
-            this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(23, 13);
-            this.label69.TabIndex = 0;
-            this.label69.Text = "min";
-            // 
-            // groupBox40
-            // 
-            this.groupBox40.Controls.Add(this.OLmaxNUD);
-            this.groupBox40.Controls.Add(this.OLminNUD);
-            this.groupBox40.Controls.Add(this.label67);
-            this.groupBox40.Controls.Add(this.label68);
-            this.groupBox40.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox40.Location = new System.Drawing.Point(6, 86);
-            this.groupBox40.Name = "groupBox40";
-            this.groupBox40.Size = new System.Drawing.Size(267, 66);
-            this.groupBox40.TabIndex = 74;
-            this.groupBox40.TabStop = false;
-            this.groupBox40.Text = "Limits";
-            // 
-            // OLmaxNUD
-            // 
-            this.OLmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.OLmaxNUD.DecimalPlaces = 2;
-            this.OLmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.OLmaxNUD.Increment = new decimal(new int[] {
+            this.WMLminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.WMLminNUD.DecimalPlaces = 2;
+            this.WMLminNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.WMLminNUD.Increment = new decimal(new int[] {
             1,
             0,
             0,
-            65536});
-            this.OLmaxNUD.Location = new System.Drawing.Point(95, 32);
-            this.OLmaxNUD.Maximum = new decimal(new int[] {
+            131072});
+            this.WMLminNUD.Location = new System.Drawing.Point(11, 32);
+            this.WMLminNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.WMLminNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.WMLminNUD.Name = "WMLminNUD";
+            this.WMLminNUD.Size = new System.Drawing.Size(78, 20);
+            this.WMLminNUD.TabIndex = 71;
+            this.WMLminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.WMLminNUD.ValueChanged += new System.EventHandler(this.WMLminNUD_ValueChanged);
+            // 
+            // label162
+            // 
+            this.label162.AutoSize = true;
+            this.label162.Location = new System.Drawing.Point(115, 16);
+            this.label162.Name = "label162";
+            this.label162.Size = new System.Drawing.Size(26, 13);
+            this.label162.TabIndex = 1;
+            this.label162.Text = "max";
+            // 
+            // label166
+            // 
+            this.label166.AutoSize = true;
+            this.label166.Location = new System.Drawing.Point(37, 16);
+            this.label166.Name = "label166";
+            this.label166.Size = new System.Drawing.Size(23, 13);
+            this.label166.TabIndex = 0;
+            this.label166.Text = "min";
+            // 
+            // groupBox83
+            // 
+            this.groupBox83.Controls.Add(this.WMCdurationNUD);
+            this.groupBox83.Controls.Add(this.WMCtimeNUD);
+            this.groupBox83.Controls.Add(this.WMCactualNUD);
+            this.groupBox83.Controls.Add(this.label167);
+            this.groupBox83.Controls.Add(this.label168);
+            this.groupBox83.Controls.Add(this.label169);
+            this.groupBox83.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox83.Location = new System.Drawing.Point(6, 19);
+            this.groupBox83.Name = "groupBox83";
+            this.groupBox83.Size = new System.Drawing.Size(267, 61);
+            this.groupBox83.TabIndex = 4;
+            this.groupBox83.TabStop = false;
+            this.groupBox83.Text = "Current";
+            // 
+            // WMCdurationNUD
+            // 
+            this.WMCdurationNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.WMCdurationNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.WMCdurationNUD.Location = new System.Drawing.Point(179, 31);
+            this.WMCdurationNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.WMCdurationNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.WMCdurationNUD.Name = "WMCdurationNUD";
+            this.WMCdurationNUD.Size = new System.Drawing.Size(78, 20);
+            this.WMCdurationNUD.TabIndex = 73;
+            this.WMCdurationNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.WMCdurationNUD.ValueChanged += new System.EventHandler(this.WMCdurationNUD_ValueChanged);
+            // 
+            // WMCtimeNUD
+            // 
+            this.WMCtimeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.WMCtimeNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.WMCtimeNUD.Location = new System.Drawing.Point(95, 31);
+            this.WMCtimeNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.WMCtimeNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.WMCtimeNUD.Name = "WMCtimeNUD";
+            this.WMCtimeNUD.Size = new System.Drawing.Size(78, 20);
+            this.WMCtimeNUD.TabIndex = 72;
+            this.WMCtimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.WMCtimeNUD.ValueChanged += new System.EventHandler(this.WMCtimeNUD_ValueChanged);
+            // 
+            // WMCactualNUD
+            // 
+            this.WMCactualNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.WMCactualNUD.DecimalPlaces = 2;
+            this.WMCactualNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.WMCactualNUD.Location = new System.Drawing.Point(11, 31);
+            this.WMCactualNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.WMCactualNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.WMCactualNUD.Name = "WMCactualNUD";
+            this.WMCactualNUD.Size = new System.Drawing.Size(78, 20);
+            this.WMCactualNUD.TabIndex = 71;
+            this.WMCactualNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.WMCactualNUD.ValueChanged += new System.EventHandler(this.WMCactualNUD_ValueChanged);
+            // 
+            // label167
+            // 
+            this.label167.AutoSize = true;
+            this.label167.Location = new System.Drawing.Point(194, 15);
+            this.label167.Name = "label167";
+            this.label167.Size = new System.Drawing.Size(45, 13);
+            this.label167.TabIndex = 2;
+            this.label167.Text = "duration";
+            // 
+            // label168
+            // 
+            this.label168.AutoSize = true;
+            this.label168.Location = new System.Drawing.Point(115, 15);
+            this.label168.Name = "label168";
+            this.label168.Size = new System.Drawing.Size(26, 13);
+            this.label168.TabIndex = 1;
+            this.label168.Text = "time";
+            // 
+            // label169
+            // 
+            this.label169.AutoSize = true;
+            this.label169.Location = new System.Drawing.Point(24, 15);
+            this.label169.Name = "label169";
+            this.label169.Size = new System.Drawing.Size(36, 13);
+            this.label169.TabIndex = 0;
+            this.label169.Text = "actual";
+            // 
+            // groupBox84
+            // 
+            this.groupBox84.Controls.Add(this.groupBox85);
+            this.groupBox84.Controls.Add(this.groupBox86);
+            this.groupBox84.Controls.Add(this.groupBox87);
+            this.groupBox84.Controls.Add(this.groupBox88);
+            this.groupBox84.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox84.Location = new System.Drawing.Point(1143, 3);
+            this.groupBox84.Name = "groupBox84";
+            this.groupBox84.Size = new System.Drawing.Size(279, 304);
+            this.groupBox84.TabIndex = 77;
+            this.groupBox84.TabStop = false;
+            this.groupBox84.Text = "Wind Direction";
+            // 
+            // groupBox85
+            // 
+            this.groupBox85.Controls.Add(this.WDCLmaxNUD);
+            this.groupBox85.Controls.Add(this.WDCLminNUD);
+            this.groupBox85.Controls.Add(this.label170);
+            this.groupBox85.Controls.Add(this.label171);
+            this.groupBox85.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox85.Location = new System.Drawing.Point(6, 230);
+            this.groupBox85.Name = "groupBox85";
+            this.groupBox85.Size = new System.Drawing.Size(267, 66);
+            this.groupBox85.TabIndex = 75;
+            this.groupBox85.TabStop = false;
+            this.groupBox85.Text = "Change Limits";
+            // 
+            // WDCLmaxNUD
+            // 
+            this.WDCLmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.WDCLmaxNUD.DecimalPlaces = 2;
+            this.WDCLmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.WDCLmaxNUD.Increment = new decimal(new int[] {
             1,
             0,
             0,
+            131072});
+            this.WDCLmaxNUD.Location = new System.Drawing.Point(95, 32);
+            this.WDCLmaxNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
             0});
-            this.OLmaxNUD.Name = "OLmaxNUD";
-            this.OLmaxNUD.Size = new System.Drawing.Size(78, 20);
-            this.OLmaxNUD.TabIndex = 72;
-            this.OLmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.OLmaxNUD.ValueChanged += new System.EventHandler(this.OLmaxNUD_ValueChanged);
+            this.WDCLmaxNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.WDCLmaxNUD.Name = "WDCLmaxNUD";
+            this.WDCLmaxNUD.Size = new System.Drawing.Size(78, 20);
+            this.WDCLmaxNUD.TabIndex = 72;
+            this.WDCLmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.WDCLmaxNUD.ValueChanged += new System.EventHandler(this.WDCLmaxNUD_ValueChanged);
             // 
-            // OLminNUD
+            // WDCLminNUD
             // 
-            this.OLminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.OLminNUD.DecimalPlaces = 2;
-            this.OLminNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.OLminNUD.Increment = new decimal(new int[] {
+            this.WDCLminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.WDCLminNUD.DecimalPlaces = 2;
+            this.WDCLminNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.WDCLminNUD.Increment = new decimal(new int[] {
             1,
             0,
             0,
-            65536});
-            this.OLminNUD.Location = new System.Drawing.Point(11, 32);
-            this.OLminNUD.Maximum = new decimal(new int[] {
+            131072});
+            this.WDCLminNUD.Location = new System.Drawing.Point(11, 32);
+            this.WDCLminNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.WDCLminNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.WDCLminNUD.Name = "WDCLminNUD";
+            this.WDCLminNUD.Size = new System.Drawing.Size(78, 20);
+            this.WDCLminNUD.TabIndex = 71;
+            this.WDCLminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.WDCLminNUD.ValueChanged += new System.EventHandler(this.WDCLminNUD_ValueChanged);
+            // 
+            // label170
+            // 
+            this.label170.AutoSize = true;
+            this.label170.Location = new System.Drawing.Point(115, 16);
+            this.label170.Name = "label170";
+            this.label170.Size = new System.Drawing.Size(26, 13);
+            this.label170.TabIndex = 1;
+            this.label170.Text = "max";
+            // 
+            // label171
+            // 
+            this.label171.AutoSize = true;
+            this.label171.Location = new System.Drawing.Point(37, 16);
+            this.label171.Name = "label171";
+            this.label171.Size = new System.Drawing.Size(23, 13);
+            this.label171.TabIndex = 0;
+            this.label171.Text = "min";
+            // 
+            // groupBox86
+            // 
+            this.groupBox86.Controls.Add(this.WDTLmaxNUD);
+            this.groupBox86.Controls.Add(this.WDTLminNUD);
+            this.groupBox86.Controls.Add(this.label172);
+            this.groupBox86.Controls.Add(this.label173);
+            this.groupBox86.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox86.Location = new System.Drawing.Point(6, 158);
+            this.groupBox86.Name = "groupBox86";
+            this.groupBox86.Size = new System.Drawing.Size(267, 66);
+            this.groupBox86.TabIndex = 75;
+            this.groupBox86.TabStop = false;
+            this.groupBox86.Text = "Time Limits";
+            // 
+            // WDTLmaxNUD
+            // 
+            this.WDTLmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.WDTLmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.WDTLmaxNUD.Location = new System.Drawing.Point(95, 32);
+            this.WDTLmaxNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.WDTLmaxNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.WDTLmaxNUD.Name = "WDTLmaxNUD";
+            this.WDTLmaxNUD.Size = new System.Drawing.Size(78, 20);
+            this.WDTLmaxNUD.TabIndex = 72;
+            this.WDTLmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.WDTLmaxNUD.ValueChanged += new System.EventHandler(this.WDTLmaxNUD_ValueChanged);
+            // 
+            // WDTLminNUD
+            // 
+            this.WDTLminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.WDTLminNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.WDTLminNUD.Location = new System.Drawing.Point(11, 32);
+            this.WDTLminNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.WDTLminNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.WDTLminNUD.Name = "WDTLminNUD";
+            this.WDTLminNUD.Size = new System.Drawing.Size(78, 20);
+            this.WDTLminNUD.TabIndex = 71;
+            this.WDTLminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.WDTLminNUD.ValueChanged += new System.EventHandler(this.WDTLminNUD_ValueChanged);
+            // 
+            // label172
+            // 
+            this.label172.AutoSize = true;
+            this.label172.Location = new System.Drawing.Point(115, 16);
+            this.label172.Name = "label172";
+            this.label172.Size = new System.Drawing.Size(26, 13);
+            this.label172.TabIndex = 1;
+            this.label172.Text = "max";
+            // 
+            // label173
+            // 
+            this.label173.AutoSize = true;
+            this.label173.Location = new System.Drawing.Point(37, 16);
+            this.label173.Name = "label173";
+            this.label173.Size = new System.Drawing.Size(23, 13);
+            this.label173.TabIndex = 0;
+            this.label173.Text = "min";
+            // 
+            // groupBox87
+            // 
+            this.groupBox87.Controls.Add(this.WDLmaxNUD);
+            this.groupBox87.Controls.Add(this.WDLminNUD);
+            this.groupBox87.Controls.Add(this.label174);
+            this.groupBox87.Controls.Add(this.label175);
+            this.groupBox87.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox87.Location = new System.Drawing.Point(6, 86);
+            this.groupBox87.Name = "groupBox87";
+            this.groupBox87.Size = new System.Drawing.Size(267, 66);
+            this.groupBox87.TabIndex = 74;
+            this.groupBox87.TabStop = false;
+            this.groupBox87.Text = "Limits";
+            // 
+            // WDLmaxNUD
+            // 
+            this.WDLmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.WDLmaxNUD.DecimalPlaces = 2;
+            this.WDLmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.WDLmaxNUD.Increment = new decimal(new int[] {
             1,
             0,
             0,
-            0});
-            this.OLminNUD.Name = "OLminNUD";
-            this.OLminNUD.Size = new System.Drawing.Size(78, 20);
-            this.OLminNUD.TabIndex = 71;
-            this.OLminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.OLminNUD.ValueChanged += new System.EventHandler(this.OLminNUD_ValueChanged);
-            // 
-            // label67
-            // 
-            this.label67.AutoSize = true;
-            this.label67.Location = new System.Drawing.Point(115, 16);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(26, 13);
-            this.label67.TabIndex = 1;
-            this.label67.Text = "max";
-            // 
-            // label68
-            // 
-            this.label68.AutoSize = true;
-            this.label68.Location = new System.Drawing.Point(37, 16);
-            this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(23, 13);
-            this.label68.TabIndex = 0;
-            this.label68.Text = "min";
-            // 
-            // groupBox39
-            // 
-            this.groupBox39.Controls.Add(this.OCdurationNUD);
-            this.groupBox39.Controls.Add(this.OCtimeNUD);
-            this.groupBox39.Controls.Add(this.OCactualNUD);
-            this.groupBox39.Controls.Add(this.label65);
-            this.groupBox39.Controls.Add(this.label62);
-            this.groupBox39.Controls.Add(this.label61);
-            this.groupBox39.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox39.Location = new System.Drawing.Point(6, 19);
-            this.groupBox39.Name = "groupBox39";
-            this.groupBox39.Size = new System.Drawing.Size(267, 61);
-            this.groupBox39.TabIndex = 4;
-            this.groupBox39.TabStop = false;
-            this.groupBox39.Text = "Current";
-            // 
-            // OCdurationNUD
-            // 
-            this.OCdurationNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.OCdurationNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.OCdurationNUD.Location = new System.Drawing.Point(179, 31);
-            this.OCdurationNUD.Maximum = new decimal(new int[] {
-            10000,
+            131072});
+            this.WDLmaxNUD.Location = new System.Drawing.Point(95, 32);
+            this.WDLmaxNUD.Maximum = new decimal(new int[] {
+            10000000,
             0,
             0,
             0});
-            this.OCdurationNUD.Name = "OCdurationNUD";
-            this.OCdurationNUD.Size = new System.Drawing.Size(78, 20);
-            this.OCdurationNUD.TabIndex = 73;
-            this.OCdurationNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.OCdurationNUD.ValueChanged += new System.EventHandler(this.OCdurationNUD_ValueChanged);
+            this.WDLmaxNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.WDLmaxNUD.Name = "WDLmaxNUD";
+            this.WDLmaxNUD.Size = new System.Drawing.Size(78, 20);
+            this.WDLmaxNUD.TabIndex = 72;
+            this.WDLmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.WDLmaxNUD.ValueChanged += new System.EventHandler(this.WDLmaxNUD_ValueChanged);
             // 
-            // OCtimeNUD
+            // WDLminNUD
             // 
-            this.OCtimeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.OCtimeNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.OCtimeNUD.Location = new System.Drawing.Point(95, 31);
-            this.OCtimeNUD.Maximum = new decimal(new int[] {
-            10000,
+            this.WDLminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.WDLminNUD.DecimalPlaces = 2;
+            this.WDLminNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.WDLminNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.WDLminNUD.Location = new System.Drawing.Point(11, 32);
+            this.WDLminNUD.Maximum = new decimal(new int[] {
+            10000000,
             0,
             0,
             0});
-            this.OCtimeNUD.Name = "OCtimeNUD";
-            this.OCtimeNUD.Size = new System.Drawing.Size(78, 20);
-            this.OCtimeNUD.TabIndex = 72;
-            this.OCtimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.OCtimeNUD.ValueChanged += new System.EventHandler(this.OCtimeNUD_ValueChanged);
+            this.WDLminNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.WDLminNUD.Name = "WDLminNUD";
+            this.WDLminNUD.Size = new System.Drawing.Size(78, 20);
+            this.WDLminNUD.TabIndex = 71;
+            this.WDLminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.WDLminNUD.ValueChanged += new System.EventHandler(this.WDLminNUD_ValueChanged);
             // 
-            // OCactualNUD
+            // label174
             // 
-            this.OCactualNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            this.OCactualNUD.DecimalPlaces = 2;
-            this.OCactualNUD.ForeColor = System.Drawing.SystemColors.Control;
-            this.OCactualNUD.Location = new System.Drawing.Point(11, 31);
-            this.OCactualNUD.Maximum = new decimal(new int[] {
-            10000,
+            this.label174.AutoSize = true;
+            this.label174.Location = new System.Drawing.Point(115, 16);
+            this.label174.Name = "label174";
+            this.label174.Size = new System.Drawing.Size(26, 13);
+            this.label174.TabIndex = 1;
+            this.label174.Text = "max";
+            // 
+            // label175
+            // 
+            this.label175.AutoSize = true;
+            this.label175.Location = new System.Drawing.Point(37, 16);
+            this.label175.Name = "label175";
+            this.label175.Size = new System.Drawing.Size(23, 13);
+            this.label175.TabIndex = 0;
+            this.label175.Text = "min";
+            // 
+            // groupBox88
+            // 
+            this.groupBox88.Controls.Add(this.WDCdurationNUD);
+            this.groupBox88.Controls.Add(this.WDCtimeNUD);
+            this.groupBox88.Controls.Add(this.WDCactualNUD);
+            this.groupBox88.Controls.Add(this.label176);
+            this.groupBox88.Controls.Add(this.label177);
+            this.groupBox88.Controls.Add(this.label178);
+            this.groupBox88.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox88.Location = new System.Drawing.Point(6, 19);
+            this.groupBox88.Name = "groupBox88";
+            this.groupBox88.Size = new System.Drawing.Size(267, 61);
+            this.groupBox88.TabIndex = 4;
+            this.groupBox88.TabStop = false;
+            this.groupBox88.Text = "Current";
+            // 
+            // WDCdurationNUD
+            // 
+            this.WDCdurationNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.WDCdurationNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.WDCdurationNUD.Location = new System.Drawing.Point(179, 31);
+            this.WDCdurationNUD.Maximum = new decimal(new int[] {
+            10000000,
             0,
             0,
             0});
-            this.OCactualNUD.Name = "OCactualNUD";
-            this.OCactualNUD.Size = new System.Drawing.Size(78, 20);
-            this.OCactualNUD.TabIndex = 71;
-            this.OCactualNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.OCactualNUD.ValueChanged += new System.EventHandler(this.OCactualNUD_ValueChanged);
+            this.WDCdurationNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.WDCdurationNUD.Name = "WDCdurationNUD";
+            this.WDCdurationNUD.Size = new System.Drawing.Size(78, 20);
+            this.WDCdurationNUD.TabIndex = 73;
+            this.WDCdurationNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.WDCdurationNUD.ValueChanged += new System.EventHandler(this.WDCdurationNUD_ValueChanged);
             // 
-            // label65
+            // WDCtimeNUD
             // 
-            this.label65.AutoSize = true;
-            this.label65.Location = new System.Drawing.Point(194, 15);
-            this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(45, 13);
-            this.label65.TabIndex = 2;
-            this.label65.Text = "duration";
+            this.WDCtimeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.WDCtimeNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.WDCtimeNUD.Location = new System.Drawing.Point(95, 31);
+            this.WDCtimeNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.WDCtimeNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.WDCtimeNUD.Name = "WDCtimeNUD";
+            this.WDCtimeNUD.Size = new System.Drawing.Size(78, 20);
+            this.WDCtimeNUD.TabIndex = 72;
+            this.WDCtimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.WDCtimeNUD.ValueChanged += new System.EventHandler(this.WDCtimeNUD_ValueChanged);
             // 
-            // label62
+            // WDCactualNUD
             // 
-            this.label62.AutoSize = true;
-            this.label62.Location = new System.Drawing.Point(115, 15);
-            this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(26, 13);
-            this.label62.TabIndex = 1;
-            this.label62.Text = "time";
+            this.WDCactualNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.WDCactualNUD.DecimalPlaces = 2;
+            this.WDCactualNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.WDCactualNUD.Location = new System.Drawing.Point(11, 31);
+            this.WDCactualNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.WDCactualNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.WDCactualNUD.Name = "WDCactualNUD";
+            this.WDCactualNUD.Size = new System.Drawing.Size(78, 20);
+            this.WDCactualNUD.TabIndex = 71;
+            this.WDCactualNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.WDCactualNUD.ValueChanged += new System.EventHandler(this.WDCactualNUD_ValueChanged);
             // 
-            // label61
+            // label176
             // 
-            this.label61.AutoSize = true;
-            this.label61.Location = new System.Drawing.Point(24, 15);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(36, 13);
-            this.label61.TabIndex = 0;
-            this.label61.Text = "actual";
+            this.label176.AutoSize = true;
+            this.label176.Location = new System.Drawing.Point(194, 15);
+            this.label176.Name = "label176";
+            this.label176.Size = new System.Drawing.Size(45, 13);
+            this.label176.TabIndex = 2;
+            this.label176.Text = "duration";
             // 
-            // groupBox37
+            // label177
             // 
-            this.groupBox37.Controls.Add(this.weatherrestartCB);
-            this.groupBox37.Controls.Add(this.weatherenabledCB);
-            this.groupBox37.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox37.Location = new System.Drawing.Point(8, 13);
-            this.groupBox37.Name = "groupBox37";
-            this.groupBox37.Size = new System.Drawing.Size(279, 75);
-            this.groupBox37.TabIndex = 2;
-            this.groupBox37.TabStop = false;
-            this.groupBox37.Text = "General";
+            this.label177.AutoSize = true;
+            this.label177.Location = new System.Drawing.Point(115, 15);
+            this.label177.Name = "label177";
+            this.label177.Size = new System.Drawing.Size(26, 13);
+            this.label177.TabIndex = 1;
+            this.label177.Text = "time";
             // 
-            // weatherrestartCB
+            // label178
             // 
-            this.weatherrestartCB.AutoSize = true;
-            this.weatherrestartCB.Location = new System.Drawing.Point(17, 42);
-            this.weatherrestartCB.Name = "weatherrestartCB";
-            this.weatherrestartCB.Size = new System.Drawing.Size(232, 17);
-            this.weatherrestartCB.TabIndex = 0;
-            this.weatherrestartCB.Text = "Rest ( load weather from storage on restart )";
-            this.weatherrestartCB.UseVisualStyleBackColor = true;
-            this.weatherrestartCB.CheckedChanged += new System.EventHandler(this.weatherrestartCB_CheckedChanged);
+            this.label178.AutoSize = true;
+            this.label178.Location = new System.Drawing.Point(24, 15);
+            this.label178.Name = "label178";
+            this.label178.Size = new System.Drawing.Size(36, 13);
+            this.label178.TabIndex = 0;
+            this.label178.Text = "actual";
             // 
-            // weatherenabledCB
+            // groupBox89
             // 
-            this.weatherenabledCB.AutoSize = true;
-            this.weatherenabledCB.Location = new System.Drawing.Point(17, 19);
-            this.weatherenabledCB.Name = "weatherenabledCB";
-            this.weatherenabledCB.Size = new System.Drawing.Size(130, 17);
-            this.weatherenabledCB.TabIndex = 1;
-            this.weatherenabledCB.Text = "Enabled weather CFG";
-            this.weatherenabledCB.UseVisualStyleBackColor = true;
-            this.weatherenabledCB.CheckedChanged += new System.EventHandler(this.weatherenabledCB_CheckedChanged);
+            this.groupBox89.Controls.Add(this.groupBox90);
+            this.groupBox89.Controls.Add(this.groupBox91);
+            this.groupBox89.Controls.Add(this.groupBox92);
+            this.groupBox89.Controls.Add(this.groupBox93);
+            this.groupBox89.Controls.Add(this.groupBox94);
+            this.groupBox89.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox89.Location = new System.Drawing.Point(1428, 3);
+            this.groupBox89.Name = "groupBox89";
+            this.groupBox89.Size = new System.Drawing.Size(279, 369);
+            this.groupBox89.TabIndex = 79;
+            this.groupBox89.TabStop = false;
+            this.groupBox89.Text = "Snowfall";
+            // 
+            // groupBox90
+            // 
+            this.groupBox90.Controls.Add(this.STendNUD);
+            this.groupBox90.Controls.Add(this.STmaxNUD);
+            this.groupBox90.Controls.Add(this.STminNUD);
+            this.groupBox90.Controls.Add(this.label179);
+            this.groupBox90.Controls.Add(this.label180);
+            this.groupBox90.Controls.Add(this.label181);
+            this.groupBox90.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox90.Location = new System.Drawing.Point(6, 302);
+            this.groupBox90.Name = "groupBox90";
+            this.groupBox90.Size = new System.Drawing.Size(267, 61);
+            this.groupBox90.TabIndex = 74;
+            this.groupBox90.TabStop = false;
+            this.groupBox90.Text = "Thresholds";
+            // 
+            // STendNUD
+            // 
+            this.STendNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.STendNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.STendNUD.Location = new System.Drawing.Point(179, 31);
+            this.STendNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.STendNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.STendNUD.Name = "STendNUD";
+            this.STendNUD.Size = new System.Drawing.Size(78, 20);
+            this.STendNUD.TabIndex = 73;
+            this.STendNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.STendNUD.ValueChanged += new System.EventHandler(this.STendNUD_ValueChanged);
+            // 
+            // STmaxNUD
+            // 
+            this.STmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.STmaxNUD.DecimalPlaces = 2;
+            this.STmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.STmaxNUD.Location = new System.Drawing.Point(95, 31);
+            this.STmaxNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.STmaxNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.STmaxNUD.Name = "STmaxNUD";
+            this.STmaxNUD.Size = new System.Drawing.Size(78, 20);
+            this.STmaxNUD.TabIndex = 72;
+            this.STmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.STmaxNUD.ValueChanged += new System.EventHandler(this.STmaxNUD_ValueChanged);
+            // 
+            // STminNUD
+            // 
+            this.STminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.STminNUD.DecimalPlaces = 2;
+            this.STminNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.STminNUD.Location = new System.Drawing.Point(11, 31);
+            this.STminNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.STminNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.STminNUD.Name = "STminNUD";
+            this.STminNUD.Size = new System.Drawing.Size(78, 20);
+            this.STminNUD.TabIndex = 71;
+            this.STminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.STminNUD.ValueChanged += new System.EventHandler(this.STminNUD_ValueChanged);
+            // 
+            // label179
+            // 
+            this.label179.AutoSize = true;
+            this.label179.Location = new System.Drawing.Point(194, 15);
+            this.label179.Name = "label179";
+            this.label179.Size = new System.Drawing.Size(26, 13);
+            this.label179.TabIndex = 2;
+            this.label179.Text = "End";
+            // 
+            // label180
+            // 
+            this.label180.AutoSize = true;
+            this.label180.Location = new System.Drawing.Point(115, 15);
+            this.label180.Name = "label180";
+            this.label180.Size = new System.Drawing.Size(27, 13);
+            this.label180.TabIndex = 1;
+            this.label180.Text = "Max";
+            // 
+            // label181
+            // 
+            this.label181.AutoSize = true;
+            this.label181.Location = new System.Drawing.Point(24, 15);
+            this.label181.Name = "label181";
+            this.label181.Size = new System.Drawing.Size(24, 13);
+            this.label181.TabIndex = 0;
+            this.label181.Text = "Min";
+            // 
+            // groupBox91
+            // 
+            this.groupBox91.Controls.Add(this.SCLmaxNUD);
+            this.groupBox91.Controls.Add(this.SCLminNUD);
+            this.groupBox91.Controls.Add(this.label182);
+            this.groupBox91.Controls.Add(this.label183);
+            this.groupBox91.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox91.Location = new System.Drawing.Point(6, 230);
+            this.groupBox91.Name = "groupBox91";
+            this.groupBox91.Size = new System.Drawing.Size(267, 66);
+            this.groupBox91.TabIndex = 75;
+            this.groupBox91.TabStop = false;
+            this.groupBox91.Text = "Change Limits";
+            // 
+            // SCLmaxNUD
+            // 
+            this.SCLmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCLmaxNUD.DecimalPlaces = 2;
+            this.SCLmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCLmaxNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.SCLmaxNUD.Location = new System.Drawing.Point(95, 32);
+            this.SCLmaxNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.SCLmaxNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.SCLmaxNUD.Name = "SCLmaxNUD";
+            this.SCLmaxNUD.Size = new System.Drawing.Size(78, 20);
+            this.SCLmaxNUD.TabIndex = 72;
+            this.SCLmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCLmaxNUD.ValueChanged += new System.EventHandler(this.SCLmaxNUD_ValueChanged);
+            // 
+            // SCLminNUD
+            // 
+            this.SCLminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCLminNUD.DecimalPlaces = 2;
+            this.SCLminNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCLminNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.SCLminNUD.Location = new System.Drawing.Point(11, 32);
+            this.SCLminNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.SCLminNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.SCLminNUD.Name = "SCLminNUD";
+            this.SCLminNUD.Size = new System.Drawing.Size(78, 20);
+            this.SCLminNUD.TabIndex = 71;
+            this.SCLminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCLminNUD.ValueChanged += new System.EventHandler(this.SCLminNUD_ValueChanged);
+            // 
+            // label182
+            // 
+            this.label182.AutoSize = true;
+            this.label182.Location = new System.Drawing.Point(115, 16);
+            this.label182.Name = "label182";
+            this.label182.Size = new System.Drawing.Size(26, 13);
+            this.label182.TabIndex = 1;
+            this.label182.Text = "max";
+            // 
+            // label183
+            // 
+            this.label183.AutoSize = true;
+            this.label183.Location = new System.Drawing.Point(37, 16);
+            this.label183.Name = "label183";
+            this.label183.Size = new System.Drawing.Size(23, 13);
+            this.label183.TabIndex = 0;
+            this.label183.Text = "min";
+            // 
+            // groupBox92
+            // 
+            this.groupBox92.Controls.Add(this.STLmaxNUD);
+            this.groupBox92.Controls.Add(this.STLminNUD);
+            this.groupBox92.Controls.Add(this.label184);
+            this.groupBox92.Controls.Add(this.label185);
+            this.groupBox92.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox92.Location = new System.Drawing.Point(6, 158);
+            this.groupBox92.Name = "groupBox92";
+            this.groupBox92.Size = new System.Drawing.Size(267, 66);
+            this.groupBox92.TabIndex = 75;
+            this.groupBox92.TabStop = false;
+            this.groupBox92.Text = "Time Limits";
+            // 
+            // STLmaxNUD
+            // 
+            this.STLmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.STLmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.STLmaxNUD.Location = new System.Drawing.Point(95, 32);
+            this.STLmaxNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.STLmaxNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.STLmaxNUD.Name = "STLmaxNUD";
+            this.STLmaxNUD.Size = new System.Drawing.Size(78, 20);
+            this.STLmaxNUD.TabIndex = 72;
+            this.STLmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.STLmaxNUD.ValueChanged += new System.EventHandler(this.STLmaxNUD_ValueChanged);
+            // 
+            // STLminNUD
+            // 
+            this.STLminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.STLminNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.STLminNUD.Location = new System.Drawing.Point(11, 32);
+            this.STLminNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.STLminNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.STLminNUD.Name = "STLminNUD";
+            this.STLminNUD.Size = new System.Drawing.Size(78, 20);
+            this.STLminNUD.TabIndex = 71;
+            this.STLminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.STLminNUD.ValueChanged += new System.EventHandler(this.STLminNUD_ValueChanged);
+            // 
+            // label184
+            // 
+            this.label184.AutoSize = true;
+            this.label184.Location = new System.Drawing.Point(115, 16);
+            this.label184.Name = "label184";
+            this.label184.Size = new System.Drawing.Size(26, 13);
+            this.label184.TabIndex = 1;
+            this.label184.Text = "max";
+            // 
+            // label185
+            // 
+            this.label185.AutoSize = true;
+            this.label185.Location = new System.Drawing.Point(37, 16);
+            this.label185.Name = "label185";
+            this.label185.Size = new System.Drawing.Size(23, 13);
+            this.label185.TabIndex = 0;
+            this.label185.Text = "min";
+            // 
+            // groupBox93
+            // 
+            this.groupBox93.Controls.Add(this.SLmaxNUD);
+            this.groupBox93.Controls.Add(this.SLminNUD);
+            this.groupBox93.Controls.Add(this.label186);
+            this.groupBox93.Controls.Add(this.label187);
+            this.groupBox93.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox93.Location = new System.Drawing.Point(6, 86);
+            this.groupBox93.Name = "groupBox93";
+            this.groupBox93.Size = new System.Drawing.Size(267, 66);
+            this.groupBox93.TabIndex = 74;
+            this.groupBox93.TabStop = false;
+            this.groupBox93.Text = "Limits";
+            // 
+            // SLmaxNUD
+            // 
+            this.SLmaxNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SLmaxNUD.DecimalPlaces = 2;
+            this.SLmaxNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SLmaxNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.SLmaxNUD.Location = new System.Drawing.Point(95, 32);
+            this.SLmaxNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.SLmaxNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.SLmaxNUD.Name = "SLmaxNUD";
+            this.SLmaxNUD.Size = new System.Drawing.Size(78, 20);
+            this.SLmaxNUD.TabIndex = 72;
+            this.SLmaxNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SLmaxNUD.ValueChanged += new System.EventHandler(this.SLmaxNUD_ValueChanged);
+            // 
+            // SLminNUD
+            // 
+            this.SLminNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SLminNUD.DecimalPlaces = 2;
+            this.SLminNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SLminNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.SLminNUD.Location = new System.Drawing.Point(11, 32);
+            this.SLminNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.SLminNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.SLminNUD.Name = "SLminNUD";
+            this.SLminNUD.Size = new System.Drawing.Size(78, 20);
+            this.SLminNUD.TabIndex = 71;
+            this.SLminNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SLminNUD.ValueChanged += new System.EventHandler(this.SLminNUD_ValueChanged);
+            // 
+            // label186
+            // 
+            this.label186.AutoSize = true;
+            this.label186.Location = new System.Drawing.Point(115, 16);
+            this.label186.Name = "label186";
+            this.label186.Size = new System.Drawing.Size(26, 13);
+            this.label186.TabIndex = 1;
+            this.label186.Text = "max";
+            // 
+            // label187
+            // 
+            this.label187.AutoSize = true;
+            this.label187.Location = new System.Drawing.Point(37, 16);
+            this.label187.Name = "label187";
+            this.label187.Size = new System.Drawing.Size(23, 13);
+            this.label187.TabIndex = 0;
+            this.label187.Text = "min";
+            // 
+            // groupBox94
+            // 
+            this.groupBox94.Controls.Add(this.SCdurationNUD);
+            this.groupBox94.Controls.Add(this.SCtimeNUD);
+            this.groupBox94.Controls.Add(this.SCactualNUD);
+            this.groupBox94.Controls.Add(this.label188);
+            this.groupBox94.Controls.Add(this.label189);
+            this.groupBox94.Controls.Add(this.label190);
+            this.groupBox94.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox94.Location = new System.Drawing.Point(6, 19);
+            this.groupBox94.Name = "groupBox94";
+            this.groupBox94.Size = new System.Drawing.Size(267, 61);
+            this.groupBox94.TabIndex = 4;
+            this.groupBox94.TabStop = false;
+            this.groupBox94.Text = "Current";
+            // 
+            // SCdurationNUD
+            // 
+            this.SCdurationNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCdurationNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCdurationNUD.Location = new System.Drawing.Point(179, 31);
+            this.SCdurationNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.SCdurationNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.SCdurationNUD.Name = "SCdurationNUD";
+            this.SCdurationNUD.Size = new System.Drawing.Size(78, 20);
+            this.SCdurationNUD.TabIndex = 73;
+            this.SCdurationNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCdurationNUD.ValueChanged += new System.EventHandler(this.SCdurationNUD_ValueChanged);
+            // 
+            // SCtimeNUD
+            // 
+            this.SCtimeNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCtimeNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCtimeNUD.Location = new System.Drawing.Point(95, 31);
+            this.SCtimeNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.SCtimeNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.SCtimeNUD.Name = "SCtimeNUD";
+            this.SCtimeNUD.Size = new System.Drawing.Size(78, 20);
+            this.SCtimeNUD.TabIndex = 72;
+            this.SCtimeNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCtimeNUD.ValueChanged += new System.EventHandler(this.SCtimeNUD_ValueChanged);
+            // 
+            // SCactualNUD
+            // 
+            this.SCactualNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SCactualNUD.DecimalPlaces = 2;
+            this.SCactualNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SCactualNUD.Location = new System.Drawing.Point(11, 31);
+            this.SCactualNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.SCactualNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.SCactualNUD.Name = "SCactualNUD";
+            this.SCactualNUD.Size = new System.Drawing.Size(78, 20);
+            this.SCactualNUD.TabIndex = 71;
+            this.SCactualNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SCactualNUD.ValueChanged += new System.EventHandler(this.SCactualNUD_ValueChanged);
+            // 
+            // label188
+            // 
+            this.label188.AutoSize = true;
+            this.label188.Location = new System.Drawing.Point(194, 15);
+            this.label188.Name = "label188";
+            this.label188.Size = new System.Drawing.Size(45, 13);
+            this.label188.TabIndex = 2;
+            this.label188.Text = "duration";
+            // 
+            // label189
+            // 
+            this.label189.AutoSize = true;
+            this.label189.Location = new System.Drawing.Point(115, 15);
+            this.label189.Name = "label189";
+            this.label189.Size = new System.Drawing.Size(26, 13);
+            this.label189.TabIndex = 1;
+            this.label189.Text = "time";
+            // 
+            // label190
+            // 
+            this.label190.AutoSize = true;
+            this.label190.Location = new System.Drawing.Point(24, 15);
+            this.label190.Name = "label190";
+            this.label190.Size = new System.Drawing.Size(36, 13);
+            this.label190.TabIndex = 0;
+            this.label190.Text = "actual";
+            // 
+            // groupBox55
+            // 
+            this.groupBox55.Controls.Add(this.label94);
+            this.groupBox55.Controls.Add(this.StimeoutNUD);
+            this.groupBox55.Controls.Add(this.SdensityNUD);
+            this.groupBox55.Controls.Add(this.SthresholdNUD);
+            this.groupBox55.Controls.Add(this.label96);
+            this.groupBox55.Controls.Add(this.label95);
+            this.groupBox55.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox55.Location = new System.Drawing.Point(1428, 378);
+            this.groupBox55.Name = "groupBox55";
+            this.groupBox55.Size = new System.Drawing.Size(279, 139);
+            this.groupBox55.TabIndex = 77;
+            this.groupBox55.TabStop = false;
+            this.groupBox55.Text = "Storm";
+            // 
+            // label94
+            // 
+            this.label94.AutoSize = true;
+            this.label94.Location = new System.Drawing.Point(14, 86);
+            this.label94.Name = "label94";
+            this.label94.Size = new System.Drawing.Size(41, 13);
+            this.label94.TabIndex = 74;
+            this.label94.Text = "timeout";
+            // 
+            // StimeoutNUD
+            // 
+            this.StimeoutNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StimeoutNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.StimeoutNUD.Location = new System.Drawing.Point(91, 84);
+            this.StimeoutNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.StimeoutNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.StimeoutNUD.Name = "StimeoutNUD";
+            this.StimeoutNUD.Size = new System.Drawing.Size(78, 20);
+            this.StimeoutNUD.TabIndex = 73;
+            this.StimeoutNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.StimeoutNUD.ValueChanged += new System.EventHandler(this.StimeoutNUD_ValueChanged);
+            // 
+            // SdensityNUD
+            // 
+            this.SdensityNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SdensityNUD.DecimalPlaces = 2;
+            this.SdensityNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SdensityNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.SdensityNUD.Location = new System.Drawing.Point(91, 24);
+            this.SdensityNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.SdensityNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.SdensityNUD.Name = "SdensityNUD";
+            this.SdensityNUD.Size = new System.Drawing.Size(78, 20);
+            this.SdensityNUD.TabIndex = 71;
+            this.SdensityNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SdensityNUD.ValueChanged += new System.EventHandler(this.SdensityNUD_ValueChanged);
+            // 
+            // SthresholdNUD
+            // 
+            this.SthresholdNUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.SthresholdNUD.DecimalPlaces = 2;
+            this.SthresholdNUD.ForeColor = System.Drawing.SystemColors.Control;
+            this.SthresholdNUD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.SthresholdNUD.Location = new System.Drawing.Point(91, 54);
+            this.SthresholdNUD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.SthresholdNUD.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            -2147483648});
+            this.SthresholdNUD.Name = "SthresholdNUD";
+            this.SthresholdNUD.Size = new System.Drawing.Size(78, 20);
+            this.SthresholdNUD.TabIndex = 72;
+            this.SthresholdNUD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SthresholdNUD.ValueChanged += new System.EventHandler(this.SthresholdNUD_ValueChanged);
+            // 
+            // label96
+            // 
+            this.label96.AutoSize = true;
+            this.label96.Location = new System.Drawing.Point(14, 26);
+            this.label96.Name = "label96";
+            this.label96.Size = new System.Drawing.Size(40, 13);
+            this.label96.TabIndex = 0;
+            this.label96.Text = "density";
+            // 
+            // label95
+            // 
+            this.label95.AutoSize = true;
+            this.label95.Location = new System.Drawing.Point(14, 56);
+            this.label95.Name = "label95";
+            this.label95.Size = new System.Drawing.Size(50, 13);
+            this.label95.TabIndex = 1;
+            this.label95.Text = "threshold";
             // 
             // cfgIgnorelistTab
             // 
@@ -14119,6 +15512,7 @@ namespace DayZeEditor
             this.fastColoredTextBox1.DefaultMarkerSize = 8;
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.fastColoredTextBox1.IsReplaceMode = false;
             this.fastColoredTextBox1.Location = new System.Drawing.Point(0, 24);
@@ -15468,8 +16862,8 @@ namespace DayZeEditor
             this.ContaminatoedAreaTabButton.Image = ((System.Drawing.Image)(resources.GetObject("ContaminatoedAreaTabButton.Image")));
             this.ContaminatoedAreaTabButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ContaminatoedAreaTabButton.Name = "ContaminatoedAreaTabButton";
-            this.ContaminatoedAreaTabButton.Size = new System.Drawing.Size(114, 22);
-            this.ContaminatoedAreaTabButton.Text = "Contaminated Area";
+            this.ContaminatoedAreaTabButton.Size = new System.Drawing.Size(79, 22);
+            this.ContaminatoedAreaTabButton.Text = "Trigger Areas";
             this.ContaminatoedAreaTabButton.Click += new System.EventHandler(this.ContaminatoedAreaTabButton_Click);
             // 
             // toolStripSeparator25
@@ -15949,7 +17343,6 @@ namespace DayZeEditor
             this.groupBox58.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eventgrouplootmaxNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventgroupLootminNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.eventgroupdelootNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventgroupANUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventgroupZNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventgroupYNUD)).EndInit();
@@ -15987,6 +17380,16 @@ namespace DayZeEditor
             this.tabControl10.ResumeLayout(false);
             this.tabPage7.ResumeLayout(false);
             this.groupBox21.ResumeLayout(false);
+            this.AttachmentGB.ResumeLayout(false);
+            this.AttachmentGB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemAttachmentchanceNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AttachmentchanceNUD)).EndInit();
+            this.AttachmentPresetGB.ResumeLayout(false);
+            this.CargoGB.ResumeLayout(false);
+            this.CargoGB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CargoItemchanceNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CarcgoChanceNUD)).EndInit();
+            this.CargoPresetGB.ResumeLayout(false);
             this.groupBox78.ResumeLayout(false);
             this.groupBox78.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DamageMaxNUD)).EndInit();
@@ -15994,16 +17397,6 @@ namespace DayZeEditor
             this.Spaenabletypestagbox.ResumeLayout(false);
             this.Spaenabletypestagbox.PerformLayout();
             this.groupBox24.ResumeLayout(false);
-            this.CargoGB.ResumeLayout(false);
-            this.CargoGB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CargoItemchanceNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CarcgoChanceNUD)).EndInit();
-            this.CargoPresetGB.ResumeLayout(false);
-            this.AttachmentGB.ResumeLayout(false);
-            this.AttachmentGB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemAttachmentchanceNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AttachmentchanceNUD)).EndInit();
-            this.AttachmentPresetGB.ResumeLayout(false);
             this.RandomPresetsTab.ResumeLayout(false);
             this.tabControl20.ResumeLayout(false);
             this.tabPage19.ResumeLayout(false);
@@ -16040,6 +17433,8 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.generatorparamsmin_steepnessNUD)).EndInit();
             this.groupBox75.ResumeLayout(false);
             this.groupBox75.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpawnParamsmax_dist_staticNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpawnParamsmin_dist_infectedNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpawnParamsmin_dist_staticNUD)).EndInit();
@@ -16162,19 +17557,28 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.posYNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PosXNUD)).EndInit();
             this.WeatherTab.ResumeLayout(false);
-            this.groupBox55.ResumeLayout(false);
-            this.groupBox55.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.StimeoutNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SdensityNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SthresholdNUD)).EndInit();
-            this.groupBox54.ResumeLayout(false);
-            this.groupBox54.PerformLayout();
-            this.groupBox57.ResumeLayout(false);
-            this.groupBox57.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.WPfrequencyNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WPmaxNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WPminNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WMaxSpeedNUD)).EndInit();
+            this.WeatherTab.PerformLayout();
+            this.flowLayoutPanel4.ResumeLayout(false);
+            this.groupBox37.ResumeLayout(false);
+            this.groupBox37.PerformLayout();
+            this.groupBox38.ResumeLayout(false);
+            this.groupBox42.ResumeLayout(false);
+            this.groupBox42.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OCLmaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCLminNUD)).EndInit();
+            this.groupBox41.ResumeLayout(false);
+            this.groupBox41.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OTLmaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OTLminNUD)).EndInit();
+            this.groupBox40.ResumeLayout(false);
+            this.groupBox40.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OLmaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OLminNUD)).EndInit();
+            this.groupBox39.ResumeLayout(false);
+            this.groupBox39.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.OCdurationNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCtimeNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OCactualNUD)).EndInit();
             this.groupBox48.ResumeLayout(false);
             this.groupBox53.ResumeLayout(false);
             this.groupBox53.PerformLayout();
@@ -16216,26 +17620,70 @@ namespace DayZeEditor
             ((System.ComponentModel.ISupportInitialize)(this.FCdurationNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FCtimeNUD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FCactualNUD)).EndInit();
-            this.groupBox38.ResumeLayout(false);
-            this.groupBox42.ResumeLayout(false);
-            this.groupBox42.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.OCLmaxNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OCLminNUD)).EndInit();
-            this.groupBox41.ResumeLayout(false);
-            this.groupBox41.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.OTLmaxNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OTLminNUD)).EndInit();
-            this.groupBox40.ResumeLayout(false);
-            this.groupBox40.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.OLmaxNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OLminNUD)).EndInit();
-            this.groupBox39.ResumeLayout(false);
-            this.groupBox39.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.OCdurationNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OCtimeNUD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OCactualNUD)).EndInit();
-            this.groupBox37.ResumeLayout(false);
-            this.groupBox37.PerformLayout();
+            this.groupBox54.ResumeLayout(false);
+            this.groupBox57.ResumeLayout(false);
+            this.groupBox57.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WMCLmaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WMCLminNUD)).EndInit();
+            this.groupBox81.ResumeLayout(false);
+            this.groupBox81.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WMTLmaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WMTLminNUD)).EndInit();
+            this.groupBox82.ResumeLayout(false);
+            this.groupBox82.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WMLmaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WMLminNUD)).EndInit();
+            this.groupBox83.ResumeLayout(false);
+            this.groupBox83.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WMCdurationNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WMCtimeNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WMCactualNUD)).EndInit();
+            this.groupBox84.ResumeLayout(false);
+            this.groupBox85.ResumeLayout(false);
+            this.groupBox85.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WDCLmaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WDCLminNUD)).EndInit();
+            this.groupBox86.ResumeLayout(false);
+            this.groupBox86.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WDTLmaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WDTLminNUD)).EndInit();
+            this.groupBox87.ResumeLayout(false);
+            this.groupBox87.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WDLmaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WDLminNUD)).EndInit();
+            this.groupBox88.ResumeLayout(false);
+            this.groupBox88.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WDCdurationNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WDCtimeNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WDCactualNUD)).EndInit();
+            this.groupBox89.ResumeLayout(false);
+            this.groupBox90.ResumeLayout(false);
+            this.groupBox90.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.STendNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.STmaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.STminNUD)).EndInit();
+            this.groupBox91.ResumeLayout(false);
+            this.groupBox91.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SCLmaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCLminNUD)).EndInit();
+            this.groupBox92.ResumeLayout(false);
+            this.groupBox92.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.STLmaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.STLminNUD)).EndInit();
+            this.groupBox93.ResumeLayout(false);
+            this.groupBox93.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SLmaxNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SLminNUD)).EndInit();
+            this.groupBox94.ResumeLayout(false);
+            this.groupBox94.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SCdurationNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCtimeNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SCactualNUD)).EndInit();
+            this.groupBox55.ResumeLayout(false);
+            this.groupBox55.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StimeoutNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SdensityNUD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SthresholdNUD)).EndInit();
             this.cfgIgnorelistTab.ResumeLayout(false);
             this.tabControl19.ResumeLayout(false);
             this.tabPage24.ResumeLayout(false);
@@ -16845,16 +18293,6 @@ namespace DayZeEditor
         private System.Windows.Forms.Label label87;
         private System.Windows.Forms.Label label88;
         private System.Windows.Forms.Label label89;
-        private System.Windows.Forms.GroupBox groupBox54;
-        private System.Windows.Forms.GroupBox groupBox57;
-        private System.Windows.Forms.Label label93;
-        private System.Windows.Forms.NumericUpDown WPfrequencyNUD;
-        private System.Windows.Forms.NumericUpDown WPmaxNUD;
-        private System.Windows.Forms.NumericUpDown WPminNUD;
-        private System.Windows.Forms.Label label97;
-        private System.Windows.Forms.Label label98;
-        private System.Windows.Forms.Label label101;
-        private System.Windows.Forms.NumericUpDown WMaxSpeedNUD;
         private System.Windows.Forms.GroupBox groupBox55;
         private System.Windows.Forms.Label label94;
         private System.Windows.Forms.NumericUpDown StimeoutNUD;
@@ -16962,8 +18400,6 @@ namespace DayZeEditor
         private System.Windows.Forms.Label label129;
         private System.Windows.Forms.NumericUpDown eventgroupLootminNUD;
         private System.Windows.Forms.Label label130;
-        private System.Windows.Forms.NumericUpDown eventgroupdelootNUD;
-        private System.Windows.Forms.Label label131;
         private DarkUI.Controls.DarkLabel darkLabel26;
         private System.Windows.Forms.TextBox eventgroupnameTB;
         private System.Windows.Forms.NumericUpDown eventgroupANUD;
@@ -17411,10 +18847,6 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripMenuItem updateTypesFromFileToolStripMenuItem;
         private System.Windows.Forms.CheckBox checkBox112;
         private System.Windows.Forms.CheckBox eventgroupSecondarySpawnCB;
-        private System.Windows.Forms.CheckBox checkBox116;
-        private System.Windows.Forms.CheckBox checkBox115;
-        private System.Windows.Forms.CheckBox checkBox114;
-        private System.Windows.Forms.CheckBox checkBox113;
         private FastColoredTextBox fastColoredTextBox2;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
         private System.Windows.Forms.GroupBox groupBox78;
@@ -17448,5 +18880,89 @@ namespace DayZeEditor
         private DarkUI.Controls.DarkButton darkButton82;
         private DarkUI.Controls.DarkButton darkButton83;
         private DarkUI.Controls.DarkButton darkButton84;
+        private System.Windows.Forms.GroupBox groupBox84;
+        private System.Windows.Forms.GroupBox groupBox85;
+        private System.Windows.Forms.NumericUpDown WDCLmaxNUD;
+        private System.Windows.Forms.NumericUpDown WDCLminNUD;
+        private System.Windows.Forms.Label label170;
+        private System.Windows.Forms.Label label171;
+        private System.Windows.Forms.GroupBox groupBox86;
+        private System.Windows.Forms.NumericUpDown WDTLmaxNUD;
+        private System.Windows.Forms.NumericUpDown WDTLminNUD;
+        private System.Windows.Forms.Label label172;
+        private System.Windows.Forms.Label label173;
+        private System.Windows.Forms.GroupBox groupBox87;
+        private System.Windows.Forms.NumericUpDown WDLmaxNUD;
+        private System.Windows.Forms.NumericUpDown WDLminNUD;
+        private System.Windows.Forms.Label label174;
+        private System.Windows.Forms.Label label175;
+        private System.Windows.Forms.GroupBox groupBox88;
+        private System.Windows.Forms.NumericUpDown WDCdurationNUD;
+        private System.Windows.Forms.NumericUpDown WDCtimeNUD;
+        private System.Windows.Forms.NumericUpDown WDCactualNUD;
+        private System.Windows.Forms.Label label176;
+        private System.Windows.Forms.Label label177;
+        private System.Windows.Forms.Label label178;
+        private System.Windows.Forms.GroupBox groupBox54;
+        private System.Windows.Forms.GroupBox groupBox57;
+        private System.Windows.Forms.NumericUpDown WMCLmaxNUD;
+        private System.Windows.Forms.NumericUpDown WMCLminNUD;
+        private System.Windows.Forms.Label label93;
+        private System.Windows.Forms.Label label97;
+        private System.Windows.Forms.GroupBox groupBox81;
+        private System.Windows.Forms.NumericUpDown WMTLmaxNUD;
+        private System.Windows.Forms.NumericUpDown WMTLminNUD;
+        private System.Windows.Forms.Label label98;
+        private System.Windows.Forms.Label label101;
+        private System.Windows.Forms.GroupBox groupBox82;
+        private System.Windows.Forms.NumericUpDown WMLmaxNUD;
+        private System.Windows.Forms.NumericUpDown WMLminNUD;
+        private System.Windows.Forms.Label label162;
+        private System.Windows.Forms.Label label166;
+        private System.Windows.Forms.GroupBox groupBox83;
+        private System.Windows.Forms.NumericUpDown WMCdurationNUD;
+        private System.Windows.Forms.NumericUpDown WMCtimeNUD;
+        private System.Windows.Forms.NumericUpDown WMCactualNUD;
+        private System.Windows.Forms.Label label167;
+        private System.Windows.Forms.Label label168;
+        private System.Windows.Forms.Label label169;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.GroupBox groupBox89;
+        private System.Windows.Forms.GroupBox groupBox90;
+        private System.Windows.Forms.NumericUpDown STendNUD;
+        private System.Windows.Forms.NumericUpDown STmaxNUD;
+        private System.Windows.Forms.NumericUpDown STminNUD;
+        private System.Windows.Forms.Label label179;
+        private System.Windows.Forms.Label label180;
+        private System.Windows.Forms.Label label181;
+        private System.Windows.Forms.GroupBox groupBox91;
+        private System.Windows.Forms.NumericUpDown SCLmaxNUD;
+        private System.Windows.Forms.NumericUpDown SCLminNUD;
+        private System.Windows.Forms.Label label182;
+        private System.Windows.Forms.Label label183;
+        private System.Windows.Forms.GroupBox groupBox92;
+        private System.Windows.Forms.NumericUpDown STLmaxNUD;
+        private System.Windows.Forms.NumericUpDown STLminNUD;
+        private System.Windows.Forms.Label label184;
+        private System.Windows.Forms.Label label185;
+        private System.Windows.Forms.GroupBox groupBox93;
+        private System.Windows.Forms.NumericUpDown SLmaxNUD;
+        private System.Windows.Forms.NumericUpDown SLminNUD;
+        private System.Windows.Forms.Label label186;
+        private System.Windows.Forms.Label label187;
+        private System.Windows.Forms.GroupBox groupBox94;
+        private System.Windows.Forms.NumericUpDown SCdurationNUD;
+        private System.Windows.Forms.NumericUpDown SCtimeNUD;
+        private System.Windows.Forms.NumericUpDown SCactualNUD;
+        private System.Windows.Forms.Label label188;
+        private System.Windows.Forms.Label label189;
+        private System.Windows.Forms.Label label190;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label191;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.Label label192;
+        private System.Windows.Forms.RadioButton eventgroupSecondarySpawnRB;
+        private System.Windows.Forms.RadioButton eventgroupLootoptionRB;
+        private System.Windows.Forms.CheckBox eventgroupdelootCB;
     }
 }

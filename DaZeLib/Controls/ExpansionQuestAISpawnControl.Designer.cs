@@ -31,6 +31,8 @@ namespace DayZeEditor
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExpansionQuestAISpawnControl));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.darkLabel179 = new DarkUI.Controls.DarkLabel();
+            this.StaticPatrolLootingBehaviorCB = new System.Windows.Forms.ComboBox();
             this.StaticPatrolCanBeTriggeredByAICB = new System.Windows.Forms.CheckBox();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.StaticPatrolURVehiclesCB = new System.Windows.Forms.CheckBox();
@@ -140,6 +142,8 @@ namespace DayZeEditor
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.darkLabel179);
+            this.groupBox1.Controls.Add(this.StaticPatrolLootingBehaviorCB);
             this.groupBox1.Controls.Add(this.StaticPatrolCanBeTriggeredByAICB);
             this.groupBox1.Controls.Add(this.groupBox16);
             this.groupBox1.Controls.Add(this.StaticPatrolPersistCB);
@@ -204,6 +208,38 @@ namespace DayZeEditor
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "AI Spawn";
+            // 
+            // darkLabel179
+            // 
+            this.darkLabel179.AutoSize = true;
+            this.darkLabel179.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.darkLabel179.Location = new System.Drawing.Point(6, 201);
+            this.darkLabel179.Name = "darkLabel179";
+            this.darkLabel179.Size = new System.Drawing.Size(93, 13);
+            this.darkLabel179.TabIndex = 349;
+            this.darkLabel179.Text = "Looting Behaviour";
+            // 
+            // StaticPatrolLootingBehaviorCB
+            // 
+            this.StaticPatrolLootingBehaviorCB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.StaticPatrolLootingBehaviorCB.ForeColor = System.Drawing.SystemColors.Control;
+            this.StaticPatrolLootingBehaviorCB.FormattingEnabled = true;
+            this.StaticPatrolLootingBehaviorCB.Items.AddRange(new object[] {
+            "NONE",
+            "WEAPONS_FIREARMS",
+            "WEAPONS_LAUNCHERS",
+            "WEAPONS_MELEE",
+            "WEAPONS",
+            "BANDAGES",
+            "CLOTHING",
+            "UPGRADE",
+            "DEFAULT",
+            "ALL"});
+            this.StaticPatrolLootingBehaviorCB.Location = new System.Drawing.Point(116, 198);
+            this.StaticPatrolLootingBehaviorCB.Name = "StaticPatrolLootingBehaviorCB";
+            this.StaticPatrolLootingBehaviorCB.Size = new System.Drawing.Size(330, 21);
+            this.StaticPatrolLootingBehaviorCB.TabIndex = 348;
+            this.StaticPatrolLootingBehaviorCB.SelectedIndexChanged += new System.EventHandler(this.StaticPatrolLootingBehaviorCB_SelectedIndexChanged);
             // 
             // StaticPatrolCanBeTriggeredByAICB
             // 
@@ -367,9 +403,9 @@ namespace DayZeEditor
             this.groupBox2.Controls.Add(this.StaticPatrolUseRandomWaypointAsStartPointCB);
             this.groupBox2.Controls.Add(this.darkLabel35);
             this.groupBox2.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox2.Location = new System.Drawing.Point(8, 254);
+            this.groupBox2.Location = new System.Drawing.Point(8, 279);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(438, 359);
+            this.groupBox2.Size = new System.Drawing.Size(438, 334);
             this.groupBox2.TabIndex = 341;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Waypoints";
@@ -379,7 +415,7 @@ namespace DayZeEditor
             this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox6.Controls.Add(this.darkLabel36);
             this.groupBox6.ForeColor = System.Drawing.SystemColors.Control;
-            this.groupBox6.Location = new System.Drawing.Point(238, 226);
+            this.groupBox6.Location = new System.Drawing.Point(238, 201);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(194, 127);
             this.groupBox6.TabIndex = 282;
@@ -407,7 +443,7 @@ namespace DayZeEditor
             this.StaticPatrolWayPointsLB.FormattingEnabled = true;
             this.StaticPatrolWayPointsLB.Location = new System.Drawing.Point(6, 19);
             this.StaticPatrolWayPointsLB.Name = "StaticPatrolWayPointsLB";
-            this.StaticPatrolWayPointsLB.Size = new System.Drawing.Size(196, 251);
+            this.StaticPatrolWayPointsLB.Size = new System.Drawing.Size(196, 225);
             this.StaticPatrolWayPointsLB.TabIndex = 143;
             this.StaticPatrolWayPointsLB.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox_DrawItem);
             this.StaticPatrolWayPointsLB.SelectedIndexChanged += new System.EventHandler(this.StaticPatrolWayPointsLB_SelectedIndexChanged);
@@ -427,7 +463,7 @@ namespace DayZeEditor
             // 
             this.darkButton21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.darkButton21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.darkButton21.Location = new System.Drawing.Point(208, 250);
+            this.darkButton21.Location = new System.Drawing.Point(208, 225);
             this.darkButton21.Name = "darkButton21";
             this.darkButton21.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton21.Size = new System.Drawing.Size(20, 20);
@@ -438,7 +474,7 @@ namespace DayZeEditor
             // darkButton17
             // 
             this.darkButton17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton17.Location = new System.Drawing.Point(6, 303);
+            this.darkButton17.Location = new System.Drawing.Point(6, 278);
             this.darkButton17.Name = "darkButton17";
             this.darkButton17.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton17.Size = new System.Drawing.Size(111, 23);
@@ -449,7 +485,7 @@ namespace DayZeEditor
             // StaticPatrolExporttoMapButton
             // 
             this.StaticPatrolExporttoMapButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.StaticPatrolExporttoMapButton.Location = new System.Drawing.Point(123, 332);
+            this.StaticPatrolExporttoMapButton.Location = new System.Drawing.Point(123, 307);
             this.StaticPatrolExporttoMapButton.Name = "StaticPatrolExporttoMapButton";
             this.StaticPatrolExporttoMapButton.Padding = new System.Windows.Forms.Padding(5);
             this.StaticPatrolExporttoMapButton.Size = new System.Drawing.Size(105, 23);
@@ -460,7 +496,7 @@ namespace DayZeEditor
             // darkButton5
             // 
             this.darkButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton5.Location = new System.Drawing.Point(123, 303);
+            this.darkButton5.Location = new System.Drawing.Point(123, 278);
             this.darkButton5.Name = "darkButton5";
             this.darkButton5.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton5.Size = new System.Drawing.Size(105, 23);
@@ -471,7 +507,7 @@ namespace DayZeEditor
             // darkButton14
             // 
             this.darkButton14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.darkButton14.Location = new System.Drawing.Point(6, 332);
+            this.darkButton14.Location = new System.Drawing.Point(6, 307);
             this.darkButton14.Name = "darkButton14";
             this.darkButton14.Padding = new System.Windows.Forms.Padding(5);
             this.darkButton14.Size = new System.Drawing.Size(111, 23);
@@ -581,7 +617,7 @@ namespace DayZeEditor
             this.StaticPatrolUseRandomWaypointAsStartPointCB.AutoSize = true;
             this.StaticPatrolUseRandomWaypointAsStartPointCB.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.StaticPatrolUseRandomWaypointAsStartPointCB.ForeColor = System.Drawing.SystemColors.Control;
-            this.StaticPatrolUseRandomWaypointAsStartPointCB.Location = new System.Drawing.Point(13, 280);
+            this.StaticPatrolUseRandomWaypointAsStartPointCB.Location = new System.Drawing.Point(13, 255);
             this.StaticPatrolUseRandomWaypointAsStartPointCB.Name = "StaticPatrolUseRandomWaypointAsStartPointCB";
             this.StaticPatrolUseRandomWaypointAsStartPointCB.Size = new System.Drawing.Size(203, 17);
             this.StaticPatrolUseRandomWaypointAsStartPointCB.TabIndex = 173;
@@ -866,7 +902,7 @@ namespace DayZeEditor
             "SPRINT",
             "RANDOM",
             "RANDOM_NONSTATIC "});
-            this.StaticPatrolSpeedCB.Location = new System.Drawing.Point(116, 198);
+            this.StaticPatrolSpeedCB.Location = new System.Drawing.Point(116, 225);
             this.StaticPatrolSpeedCB.Name = "StaticPatrolSpeedCB";
             this.StaticPatrolSpeedCB.Size = new System.Drawing.Size(330, 21);
             this.StaticPatrolSpeedCB.TabIndex = 297;
@@ -876,7 +912,7 @@ namespace DayZeEditor
             // 
             this.darkLabel29.AutoSize = true;
             this.darkLabel29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel29.Location = new System.Drawing.Point(6, 201);
+            this.darkLabel29.Location = new System.Drawing.Point(6, 228);
             this.darkLabel29.Name = "darkLabel29";
             this.darkLabel29.Size = new System.Drawing.Size(38, 13);
             this.darkLabel29.TabIndex = 298;
@@ -894,7 +930,7 @@ namespace DayZeEditor
             "SPRINT",
             "RANDOM",
             "RANDOM_NONSTATIC "});
-            this.StaticPatrolUnderThreatSpeedCB.Location = new System.Drawing.Point(116, 225);
+            this.StaticPatrolUnderThreatSpeedCB.Location = new System.Drawing.Point(116, 252);
             this.StaticPatrolUnderThreatSpeedCB.Name = "StaticPatrolUnderThreatSpeedCB";
             this.StaticPatrolUnderThreatSpeedCB.Size = new System.Drawing.Size(330, 21);
             this.StaticPatrolUnderThreatSpeedCB.TabIndex = 299;
@@ -904,7 +940,7 @@ namespace DayZeEditor
             // 
             this.darkLabel28.AutoSize = true;
             this.darkLabel28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel28.Location = new System.Drawing.Point(6, 228);
+            this.darkLabel28.Location = new System.Drawing.Point(6, 255);
             this.darkLabel28.Name = "darkLabel28";
             this.darkLabel28.Size = new System.Drawing.Size(104, 13);
             this.darkLabel28.TabIndex = 300;
@@ -1490,5 +1526,7 @@ namespace DayZeEditor
         private System.Windows.Forms.CheckBox StaticPatrolURInfectedCB;
         private System.Windows.Forms.CheckBox StaticPatrolURAnimalsCB;
         private System.Windows.Forms.CheckBox StaticPatrolCanBeTriggeredByAICB;
+        private DarkUI.Controls.DarkLabel darkLabel179;
+        private System.Windows.Forms.ComboBox StaticPatrolLootingBehaviorCB;
     }
 }

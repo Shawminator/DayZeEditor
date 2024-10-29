@@ -178,6 +178,7 @@ namespace DayZeLib
         public BindingList<decimal> environmentMinTemps { get; set; }
         public BindingList<decimal> environmentMaxTemps { get; set; }
         public BindingList<decimal> wetnessWeightModifiers { get; set; }
+        public BindingList<string> playerRestrictedAreaFiles { get; set; }
 
         public Worldsdata()
         {
@@ -189,6 +190,7 @@ namespace DayZeLib
             environmentMaxTemps = new BindingList<decimal>(maxtemp.ToArray());
             environmentMinTemps = new BindingList<decimal>(mintemp.ToArray());
             wetnessWeightModifiers = new BindingList<decimal>(wetness.ToArray());
+            playerRestrictedAreaFiles = new BindingList<string>();
         }
 
 
