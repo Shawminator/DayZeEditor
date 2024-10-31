@@ -59,6 +59,7 @@ namespace DayZeEditor
             this.LootPoolManagerButton = new System.Windows.Forms.ToolStripButton();
             this.RHLootBoxManagerButton = new System.Windows.Forms.ToolStripButton();
             this.CapareWorkBenchManagerButton = new System.Windows.Forms.ToolStripButton();
+            this.CapareTreasureManagerButton = new System.Windows.Forms.ToolStripButton();
             this.LootchestButton = new System.Windows.Forms.ToolStripButton();
             this.MPGSpawnerButton = new System.Windows.Forms.ToolStripButton();
             this.KOTHManagerButton = new System.Windows.Forms.ToolStripButton();
@@ -86,7 +87,7 @@ namespace DayZeEditor
             this.darkStatusStrip1 = new DarkUI.Controls.DarkStatusStrip();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.CapareTreasureManagerButton = new System.Windows.Forms.ToolStripButton();
+            this.PlayerDBButton = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.SlidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Slidelabel)).BeginInit();
@@ -246,6 +247,7 @@ namespace DayZeEditor
             this.MysteryBoxButton,
             this.AdvancedWorkbenchButton,
             this.DNAKeyCardsButton,
+            this.PlayerDBButton,
             this.MapOutputtoXYZButton,
             this.DebinDZEButton,
             this.toolStripButton1,
@@ -447,6 +449,18 @@ namespace DayZeEditor
             this.CapareWorkBenchManagerButton.Visible = false;
             this.CapareWorkBenchManagerButton.Click += new System.EventHandler(this.CapareWorkBenchManagerButton_Click);
             // 
+            // CapareTreasureManagerButton
+            // 
+            this.CapareTreasureManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.CapareTreasureManagerButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.CapareTreasureManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("CapareTreasureManagerButton.Image")));
+            this.CapareTreasureManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.CapareTreasureManagerButton.Name = "CapareTreasureManagerButton";
+            this.CapareTreasureManagerButton.Size = new System.Drawing.Size(123, 19);
+            this.CapareTreasureManagerButton.Text = "Capare Treasure";
+            this.CapareTreasureManagerButton.Visible = false;
+            this.CapareTreasureManagerButton.Click += new System.EventHandler(this.CapareTreasureManagerButton_Click);
+            // 
             // LootchestButton
             // 
             this.LootchestButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -528,6 +542,7 @@ namespace DayZeEditor
             this.WorkBenchReduxButton.Name = "WorkBenchReduxButton";
             this.WorkBenchReduxButton.Size = new System.Drawing.Size(123, 19);
             this.WorkBenchReduxButton.Text = "WorkBench Redux";
+            this.WorkBenchReduxButton.Visible = false;
             this.WorkBenchReduxButton.Click += new System.EventHandler(this.WorkBenchReduxButton_Click);
             // 
             // RAGTysonBBManagerButton
@@ -755,16 +770,16 @@ namespace DayZeEditor
             this.panel2.Size = new System.Drawing.Size(25, 25);
             this.panel2.TabIndex = 45;
             // 
-            // CapareTreasureManagerButton
+            // PlayerDBButton
             // 
-            this.CapareTreasureManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.CapareTreasureManagerButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.CapareTreasureManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("CapareTreasureManagerButton.Image")));
-            this.CapareTreasureManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.CapareTreasureManagerButton.Name = "CapareTreasureManagerButton";
-            this.CapareTreasureManagerButton.Size = new System.Drawing.Size(123, 19);
-            this.CapareTreasureManagerButton.Text = "Capare Treasure";
-            this.CapareTreasureManagerButton.Click += new System.EventHandler(this.CapareTreasureManagerButton_Click);
+            this.PlayerDBButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.PlayerDBButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.PlayerDBButton.Image = ((System.Drawing.Image)(resources.GetObject("PlayerDBButton.Image")));
+            this.PlayerDBButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.PlayerDBButton.Name = "PlayerDBButton";
+            this.PlayerDBButton.Size = new System.Drawing.Size(111, 19);
+            this.PlayerDBButton.Text = "Player DB Manager";
+            this.PlayerDBButton.Click += new System.EventHandler(this.PlayerDBButton_Click);
             // 
             // MainForm
             // 
@@ -856,6 +871,7 @@ namespace DayZeEditor
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton WorkBenchReduxButton;
         private System.Windows.Forms.ToolStripButton CapareTreasureManagerButton;
+        private System.Windows.Forms.ToolStripButton PlayerDBButton;
     }
 }
 

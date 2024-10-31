@@ -130,6 +130,12 @@
     <Compile Include="Forms\CapareTreasureManager.Designer.cs">
       <DependentUpon>CapareTreasureManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PlayerDBManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PlayerDBManager.Designer.cs">
+      <DependentUpon>PlayerDBManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\WorkBenchReduxManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -436,6 +442,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\CapareTreasureManager.resx">
       <DependentUpon>CapareTreasureManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PlayerDBManager.resx">
+      <DependentUpon>PlayerDBManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\WorkBenchReduxManager.resx">
       <DependentUpon>WorkBenchReduxManager.cs</DependentUpon>

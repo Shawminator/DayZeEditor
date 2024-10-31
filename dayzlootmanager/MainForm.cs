@@ -1359,6 +1359,32 @@ namespace DayZeEditor
             
 
         }
+        private void PlayerDBButton_Click(object sender, EventArgs e)
+        {
+            PlayerDBManager _TM = Application.OpenForms["PlayerDBManager"] as PlayerDBManager;
+            if (_TM != null)
+            {
+                _TM.WindowState = FormWindowState.Normal;
+                _TM.BringToFront();
+                _TM.Activate();
+            }
+            else
+            {
+                closemdichildren();
+                _TM = new PlayerDBManager
+                {
+                    MdiParent = this,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                    Location = new System.Drawing.Point(30, 0),
+                    Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                    currentproject = Projects.getActiveProject()
+                };
+                _TM.Show();
+                Console.WriteLine("loading Player DB Manager....");
+                label1.Text = "Player DB Manager";
+            }
+            timer1.Start();
+        }
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
