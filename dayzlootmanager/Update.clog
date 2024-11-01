@@ -1,9 +1,19 @@
-﻿Version 0.8.2.5
+﻿Version 0.8.2.6
+[Fixed]
+DayZeEditor - PlayerDB Manager - small fix to allow displaying db.
+
+Version 0.8.2.5
+[Added]
+DayZeEditor - added a check at startup for .exe location, it will stop if the path is founf to be on the desktop.
+              Been having issues with path names when exe is run from desktop folder,
+			- Added check for Map.png for current project, if not located the editor will not load the project.
+			- Started Player DB Manager, Can read players and Certain values for now, no editing available atm.
 [Fixed]
 Economy Manager - Events - Group name was not saving changes
 Economt Manager - Event Groups - Was all kinds of messed up, should be more straight forward now.
-Expansion Manrket - Updated Cartegories to be able to read from nested folders. Still to add proper display but will work for now.
-Expansion Hardline - FIxed payer datat not reading the player data file correctly.
+Expansion Market - Updated Cartegories to be able to read from nested folders.
+                  - Removed the forcing of UpperCase for filename, hopefully this wont mess things up.
+Expansion Hardline - FIxed payer data not reading the player data file correctly.
 
 Version 0.8.2.4
 [Update]

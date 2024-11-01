@@ -38,12 +38,12 @@ namespace DayZeLib
                     string[] tfilesplit = line.Split('|');
                     if (tfilesplit.Length == 1) continue;
                     Console.WriteLine("\tMap enetry:" + tfilesplit[0] + "\n\t" + tfilesplit[1] + "\n\t" + tfilesplit[2]);
-                    if (tfilesplit[0].Split('.')[1].Any(char.IsLower))
-                    {
-                        string[] tt = tfilesplit[0].Split('.');
-                        tfilesplit[0] = tt[0] + "." + tt[1].ToUpper();
-                        savefile = true;
-                    }
+                    //if (tfilesplit[0].Split('.')[1].Any(char.IsLower))
+                    //{
+                    //    string[] tt = tfilesplit[0].Split('.');
+                    //    tfilesplit[0] = tt[0] + "." + tt[1].ToUpper();
+                    //    savefile = true;
+                    //}
                     Tradermap tmap = new Tradermap(tfilesplit);
                     tmap.Filename = file.FullName;
                     if(tmap.needtosave == true)

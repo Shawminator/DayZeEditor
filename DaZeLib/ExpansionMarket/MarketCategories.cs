@@ -86,17 +86,17 @@ namespace DayZeLib
                         if (item.MaxStockThreshold < item.MinStockThreshold)
                             MessageBox.Show(cat.DisplayName + Environment.NewLine + item.ClassName + " Has a max stock lower than the min Stock." + Environment.NewLine + "Please fix......");
                     }
-                    if (System.IO.Path.GetFileNameWithoutExtension(file.FullName).Any(char.IsLower))
-                    {
-                        cat.Filename = System.IO.Path.GetFileNameWithoutExtension(file.FullName).ToUpper();
-                        savefile = true;
-                    }
-                    else
-                    {
+                    //if (System.IO.Path.GetFileNameWithoutExtension(file.FullName).Any(char.IsLower))
+                    //{
+                    //    cat.Filename = System.IO.Path.GetFileNameWithoutExtension(file.FullName).ToUpper();
+                    //    savefile = true;
+                    //}
+                    //else
+                    //{
                         cat.Filename = System.IO.Path.GetFileNameWithoutExtension(file.FullName);
-                    }
+                    //}
                     string folder = System.IO.Path.GetDirectoryName(file.FullName).Replace(Path, "");
-                    if(folder.Count() > 0)
+                    if(folder != "")
                     {
                         folder = folder.Substring(1);
                     }
@@ -157,11 +157,26 @@ namespace DayZeLib
         }
         public void CreateNewCat(string catName)
         {
-            Categories NewCat = new Categories(catName.ToUpper().Replace("_", " "));
-            NewCat.Filename = catName.ToUpper().Replace(" ", "_");
-            NewCat.Folder = "";
+            string foldername = "";
+            string filename = catName;
+            if(catName.Contains('\\'))
+            {
+                string[] strings = catName.Split('\\');
+                for (int i = 0; i < strings.Length -1; i++)
+                {
+                    foldername += strings[i];
+                    if(i < strings.Length - 2)
+                    {
+                        foldername += "\\";
+                    }
+                }
+                filename = strings.Last();
+            }
+            Categories NewCat = new Categories(filename.Replace("_", " "));
+            NewCat.Filename = filename.Replace(" ", "_");
+            NewCat.Folder = foldername;
             NewCat.SortByDisplayName = SortedbyDisplayName;
-            if (CatList.Any(x => x.Filename == catName.ToUpper().Replace(" ", "_")))
+            if (CatList.Any(x => x.Filename == NewCat.Filename))
             {
                 MessageBox.Show(NewCat.Filename + " Allready in list of catogories....");
                 return;
@@ -253,7 +268,7 @@ namespace DayZeLib
 
         public void SortbyDisplayName()
         {
-            var sortedListInstance = new BindingList<Categories>(CatList.OrderBy(x => x.DisplayName).ToList());
+            var sortedListInstance = new BindingList<Categories>(CatList.OrderBy(x => x.Folder).ThenBy(y => y.DisplayName).ToList());
             foreach (Categories t in sortedListInstance)
             {
                 t.SortByDisplayName = true;
@@ -263,7 +278,7 @@ namespace DayZeLib
         }
         public void Sortbyfilename()
         {
-            var sortedListInstance = new BindingList<Categories>(CatList.OrderBy(x => x.Filename).ToList());
+            var sortedListInstance = new BindingList<Categories>(CatList.OrderBy(x => x.Folder).ThenBy(y => y.Filename).ToList());
             foreach (Categories t in sortedListInstance)
             {
                 t.SortByDisplayName = false;
@@ -361,7 +376,12 @@ namespace DayZeLib
         public void backupandDelete(string marketpath)
         {
             string SaveTime = DateTime.Now.ToString("ddMMyy_HHmm");
-            string Fullfilename = marketpath + "\\" + Filename + ".json";
+            string Fullfilename = marketpath + "\\";
+            if(Folder != "")
+            {
+                Fullfilename += Folder + "\\";
+            }
+            Fullfilename += Filename + ".json";
             if (File.Exists(Fullfilename))
             {
                 if (!Directory.Exists(marketpath + "\\Backup\\" + SaveTime))

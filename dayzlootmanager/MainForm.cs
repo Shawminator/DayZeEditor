@@ -30,7 +30,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.8.2.5";
+        public string VersionNumber = "0.8.2.6";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -107,6 +107,19 @@ namespace DayZeEditor
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
+            string strExeFilePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            if(strExeFilePath.ToLower().Contains("desktop"))
+            {
+                var form = Application.OpenForms["SplashForm"];
+                if (form != null)
+                {
+                    form.Invoke(new Action(() => { form.Close(); }));
+                }
+                MessageBox.Show("It is best that the application is run from somewhere else outhwith the Desktop.\nit can cause some funny issues with file paths especialy if one drive is active.\nPlease move it elsewhere\nThanks");
+                Application.Exit();
+                return;
+            }
+
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Current Version : " + VersionNumber);
             var culture = CultureInfo.GetCultureInfo("en-GB");
@@ -131,6 +144,25 @@ namespace DayZeEditor
                         Projects.SaveProject();
                     }
                     Console.WriteLine(Projects.ActiveProject + " is the Current Active Project");
+                    if(!Projects.getActiveProject().checkMapExists())
+                    {
+                        Projects.SetActiveProject();
+                        Projects.SaveProject(false, false);
+                        ProjectPanel _TM = Application.OpenForms["ProjectPanel"] as ProjectPanel;
+                        _TM = new ProjectPanel
+                        {
+                            MdiParent = this,
+                            Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right,
+                            Location = new System.Drawing.Point(30, 0),
+                            Size = Form_Controls.Formsize - new System.Drawing.Size(37, 61),
+                            projects = Projects
+                        };
+                        _TM.Show();
+                        Console.WriteLine("loading Project manager....");
+                        CheckChangeLog();
+                        MessageBox.Show("Map File not found for the current active project\nPlease download the appropiate map addon from the Map Addons tab");
+                        return;
+                    }
                     Console.WriteLine("Will now serialize base economy files from Project " + Projects.ActiveProject);
                     Projects.getActiveProject().seteconomycore();
                     Projects.getActiveProject().seteconomydefinitions();

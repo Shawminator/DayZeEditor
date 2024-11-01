@@ -40,15 +40,15 @@ namespace DayZeLib
                     bool savefile = false;
                     Console.WriteLine("serializing " + file.Name);
                     Traders t = JsonSerializer.Deserialize<Traders>(File.ReadAllText(file.FullName));
-                    if (System.IO.Path.GetFileNameWithoutExtension(file.FullName).Any(char.IsLower))
-                    {
-                        t.Filename = System.IO.Path.GetFileNameWithoutExtension(file.FullName).ToUpper();
-                        savefile = true;
-                    }
-                    else
-                    {
+                    //if (System.IO.Path.GetFileNameWithoutExtension(file.FullName).Any(char.IsLower))
+                    //{
+                    //    t.Filename = System.IO.Path.GetFileNameWithoutExtension(file.FullName).ToUpper();
+                    //    savefile = true;
+                    //}
+                    //else
+                    //{
                         t.Filename = System.IO.Path.GetFileNameWithoutExtension(file.FullName);
-                    }
+                    //}
                     Console.WriteLine("Converting Stock Dictionary to list");
                     if (t.ConvertDictToList(marketCats))
                         savefile = true;
@@ -125,8 +125,8 @@ namespace DayZeLib
         }
         public void AddNewTrader(string m_fileName)
         {
-            Traders t = new Traders(m_fileName.ToUpper().Replace("_", " "));
-            t.Filename = m_fileName.ToUpper().Replace(" ", "_");
+            Traders t = new Traders(m_fileName.Replace("_", " "));
+            t.Filename = m_fileName.Replace(" ", "_");
             t.SortByDisplayName = SortedbyDisplayName;
             if (Traderlist.Any(x => x.Filename == t.Filename))
             {
@@ -235,17 +235,58 @@ namespace DayZeLib
                 if (Categories[i].Contains(":"))
                 {
                     string[] test = Categories[i].Split(':');
-                    if (System.IO.Path.GetFileNameWithoutExtension(test[0]).Any(char.IsLower))
+                    if (test[0].Contains('\\'))
                     {
-                        Categories[i] = test[0].ToUpper() + ":" + test[1];
-                        savefile = true;
+                        Categories cat = marketCats.GetCatFromFileName(test[0].Split('\\').Last());
+                        if (cat.Folder + "\\" + cat.Filename != test[0])
+                        {
+                            if (cat.Folder == "")
+                            {
+                                Categories[i] = cat.Filename;
+                                savefile = true;
+                            }
+                            else
+                            {
+                                Categories[i] = cat.Folder + "\\" + cat.Filename;
+                                savefile = true;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Categories cat = marketCats.GetCatFromFileName(test[0]);
+                        if (cat == null) continue;
+                        if (cat.Folder != "" && cat.Folder + "\\" + cat.Filename != test[0])
+                        {
+                            Categories[i] = cat.Folder + "\\" + cat.Filename;
+                            savefile = true;
+                        }
+                    }
+                }
+                else if (Categories[i].Contains('\\'))
+                {
+                    Categories cat = marketCats.GetCatFromFileName(Categories[i].Split('\\').Last());
+                    if (cat.Folder + "\\" + cat.Filename != Categories[i])
+                    {
+                        if (cat.Folder == "")
+                        {
+                            Categories[i] = cat.Filename;
+                            savefile = true;
+                        }
+                        else
+                        {
+                            Categories[i] = cat.Folder + "\\" + cat.Filename;
+                            savefile = true;
+                        }
                     }
                 }
                 else
                 {
-                    if (System.IO.Path.GetFileNameWithoutExtension(Categories[i]).Any(char.IsLower))
+                    Categories cat = marketCats.GetCatFromFileName(Categories[i]);
+                    if (cat == null) continue;
+                    if(cat.Folder != ""  && cat.Folder + "\\" + cat.Filename != Categories[i])
                     {
-                        Categories[i] = Categories[i].ToUpper();
+                        Categories[i] = cat.Folder + "\\" + cat.Filename;
                         savefile = true;
                     }
                 }

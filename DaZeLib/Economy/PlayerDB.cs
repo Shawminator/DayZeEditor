@@ -11,6 +11,7 @@ using System.Security.Cryptography;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace DayZeLib
@@ -21,6 +22,7 @@ namespace DayZeLib
 
         public PlayerDB(string dbpath)
         {
+
             PlayerList = new BindingList<DBPlayers>();
             using (var connection = new SQLiteConnection($"Data Source={dbpath}"))
             {
@@ -219,9 +221,10 @@ namespace DayZeLib
                 PersistentGuid = new Guid(br.ReadBytes(16)).ToString().ToUpper();
                 colourcount = br.ReadInt32();
                 //above count = 3, could be 3 bytes, could be colour?
-                R = br.ReadByte();
-                G = br.ReadByte();
-                B = br.ReadByte();
+                for (int i = 0; i < colourcount; i++)
+                {
+                    br.ReadByte();
+                }
                 datalengthagain = br.ReadInt32();
                 specificitemdataperhaps = br.ReadBytes(datalengthagain);
             }

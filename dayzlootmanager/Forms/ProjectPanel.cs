@@ -440,6 +440,12 @@ namespace DayZeEditor
         }
         private void SetActiveProject(Project p)
         {
+            
+            if(!p.checkMapExists())
+            {
+                MessageBox.Show("Map File not found for selected project\nPlease download the appropiate map addon from the Map Addons tab");
+                return;
+            };
             projects.SetActiveProject(p);
             darkLabel4.Text = projects.ActiveProject;
             projects.getActiveProject().seteconomycore();

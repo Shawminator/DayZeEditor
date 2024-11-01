@@ -47,7 +47,13 @@ namespace DayZeEditor
         {
             if (currentproject != null)
             {
+
                 DBPath = toolStripTextBox1.Text = currentproject.projectFullName + "\\mpmissions\\" + currentproject.mpmissionpath + "\\storage_1\\players.db";
+                if (!File.Exists(DBPath))
+                {
+                    MessageBox.Show("Playerdb file does not exist for this project.");
+                    return;
+                }
                 playerDB = new PlayerDB(DBPath);
                 //foreach(DBPlayers dbp in playerDB.PlayerList)
                 //{

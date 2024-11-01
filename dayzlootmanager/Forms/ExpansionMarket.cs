@@ -13,6 +13,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Windows.Forms;
+using TreeViewMS;
 
 namespace DayZeEditor
 {
@@ -245,14 +246,74 @@ namespace DayZeEditor
             listBox16.DataSource = Traders.Traderlist;
 
             MarketCats.SortbyDisplayName();
-
-            listBox5.DisplayMember = "Name";
-            listBox5.ValueMember = "Value";
-            listBox5.DataSource = MarketCats.CatList;
+            SetupMarketCatsTreeview();
 
             listBox18.DisplayMember = "Name";
             listBox18.ValueMember = "Value";
             listBox18.DataSource = NoZoneTraders;
+        }
+        private void SetupMarketCatsTreeview()
+        {
+            MarketCatsTV.Nodes.Clear();
+            TreeNode root = new TreeNode("Market")
+            {
+                Name = "Market",
+                Tag = "root"
+            };
+            foreach(Categories mc in MarketCats.CatList) 
+            {
+                AddMarketTreenode(mc, root);
+            }
+            MarketCatsTV.Nodes.Add(root);
+        }
+        private void AddMarketTreenode(Categories mc, TreeNode root)
+        {
+            if (mc.Folder == "")
+            {
+                if (mc.SortByDisplayName == true)
+                {
+                    TreeNode treeNode = new TreeNode(mc.DisplayName.Replace("#STR_EXPANSION_MARKET_CATEGORY_", ""));
+                    treeNode.Tag = mc;
+                    root.Nodes.Add(treeNode);
+                }
+                else
+                {
+                    TreeNode treeNode = new TreeNode(mc.Filename);
+                    treeNode.Tag = mc;
+                    root.Nodes.Add(treeNode);
+                }
+            }
+            else
+            {
+                TreeNode treeNode2 = root;
+                string[] f = mc.Folder.Split('\\');
+                for (int i = 0; i < f.Length; i++)
+                {
+                    string text2 = f[i];
+                    if (null == treeNode2.Nodes[text2])
+                    {
+                        treeNode2 = treeNode2.Nodes.Add(text2, text2);
+                    }
+                    else
+                    {
+                        treeNode2 = treeNode2.Nodes[text2];
+                    }
+                }
+                if (mc.SortByDisplayName == true)
+                {
+                    treeNode2.Nodes.Add(new TreeNode(mc.DisplayName.Replace("#STR_EXPANSION_MARKET_CATEGORY_", ""))
+                    {
+                        Tag = mc,
+                    });
+                }
+                else
+                {
+                    treeNode2.Nodes.Add(new TreeNode(mc.Filename)
+                    {
+                        Tag = mc,
+                    });
+                }
+            }
         }
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -450,26 +511,6 @@ namespace DayZeEditor
         }
         private void exportItemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (listBox5.SelectedItems.Count > 0)
-            {
-                foreach (var item in listBox5.SelectedItems)
-                {
-                    StringBuilder sb = new StringBuilder();
-                    Categories pitem = item as Categories;
-                    foreach (marketItem mitem in pitem.Items)
-                    {
-                        sb.Append(mitem.ClassName + "," + mitem.MaxPriceThreshold.ToString() + Environment.NewLine);
-                        //if(item.Variants != null && item.Variants.Count > 0)
-                        //{
-                        //    foreach(string itemv in item.Variants)
-                        //    {
-                        //        sb.Append(itemv + "," + item.MaxPriceThreshold.ToString() + Environment.NewLine);
-                        //    }
-                        //}
-                    }
-                    File.WriteAllText(pitem.DisplayName + ".txt", sb.ToString());
-                }
-            }
         }
         private void setPriceForItemsWithZeroToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -638,12 +679,20 @@ namespace DayZeEditor
                 cat.isDirty = false;
                 var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
                 string jsonString = JsonSerializer.Serialize(cat, options);
-                if (currentproject.Createbackups && File.Exists(CatPath + "\\" + cat.Filename + ".json"))
+
+                string fullfilename = "";
+                if(cat.Folder != "" )
+                {
+                    fullfilename = cat.Folder + "\\";
+                }
+                fullfilename += cat.Filename;
+                Directory.CreateDirectory(Path.GetDirectoryName(CatPath + "\\" + fullfilename + ".json"));
+                if (currentproject.Createbackups && File.Exists(CatPath + "\\" + fullfilename + ".json"))
                 {
                     Directory.CreateDirectory(CatPath + "\\Backup\\" + SaveTime);
-                    File.Copy(CatPath + "\\" + cat.Filename + ".json", CatPath + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(cat.Filename) + ".bak", true);
+                    File.Copy(CatPath + "\\" + fullfilename + ".json", CatPath + "\\Backup\\" + SaveTime + "\\" + Path.GetFileNameWithoutExtension(fullfilename) + ".bak", true);
                 }
-                File.WriteAllText(CatPath + "\\" + cat.Filename + ".json", jsonString);
+                File.WriteAllText(CatPath + "\\" + fullfilename + ".json", jsonString);
                 midifiedfiles.Add(Path.GetFileName(cat.Filename));
             }
 
@@ -2043,10 +2092,44 @@ namespace DayZeEditor
 
         #region Market Categories
         // Form Actions
-        private void listBox5_SelectedIndexChanged(object sender, EventArgs e)
+        public TreeNode CurrentMarketTreeNode { get; set; }
+        private void MarketCatsTV_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            if (listBox5.SelectedItems.Count < 1) return;
-            Categories cat = listBox5.SelectedItem as Categories;
+            if (e.Node.Tag == null) { return; }
+            Categories cat = e.Node.Tag as Categories;
+            MarketCatsTV.SelectedNode = e.Node;
+            CurrentMarketTreeNode = e.Node;
+            if (e.Node.Tag.ToString() == "root")
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    addNewMarketFileToolStripMenuItem.Visible = true;
+                    removeMarketFileToolStripMenuItem.Visible = false;
+                    contextMenuStrip1.Show(Cursor.Position);
+                }
+            }
+            else if (e.Node.Tag is Categories)
+            {
+                
+                
+                if (e.Button == MouseButtons.Right)
+                {
+                    addNewMarketFileToolStripMenuItem.Visible = false;
+                    removeMarketFileToolStripMenuItem.Visible = true;
+                    contextMenuStrip1.Show(Cursor.Position);
+                }
+            }
+        }
+        private void MarketCatsTV_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            Categories cat = e.Node.Tag as Categories;
+            CurrentMarketTreeNode = e.Node;
+            if (cat == null)
+            {
+                panel3.Visible = false;
+                return;
+            }
+            panel3.Visible = true;
             if (cat != currentCat)
             {
                 action = true;
@@ -2117,7 +2200,8 @@ namespace DayZeEditor
             {
                 currentCat.DisplayName = textBox9.Text;
                 currentCat.isDirty = true;
-                listBox5.Refresh();
+                CurrentMarketTreeNode.Text = textBox9.Text;
+                
             }
         }
         private void textBox10_TextChanged(object sender, EventArgs e)
@@ -2231,13 +2315,13 @@ namespace DayZeEditor
         private void darkButton49_Click(object sender, EventArgs e)
         {
             MarketCats.SortbyDisplayName();
-            listBox5.DataSource = MarketCats.CatList;
+            SetupMarketCatsTreeview();
         }
 
         private void darkButton48_Click(object sender, EventArgs e)
         {
             MarketCats.Sortbyfilename();
-            listBox5.DataSource = MarketCats.CatList;
+            SetupMarketCatsTreeview();
         }
         private void darkButton27_Click(object sender, EventArgs e)
         {
@@ -2466,11 +2550,29 @@ namespace DayZeEditor
             }
             return false;
         }
-        private void darkButton6_Click(object sender, EventArgs e)
+        private void addNewMarketFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Enter Name of New Category\nPlease not that this is the filename, do not use special characters\nAmmo\\Ammo_Boxes to create a sub file in a folder.  ", "Categories", "");
+            if (UserAnswer == "") return;
+            MarketCats.CreateNewCat(UserAnswer);
+            string filename = "";
+            if (UserAnswer.Contains('\\'))
+            {
+                filename = UserAnswer.Split('\\').Last().Replace(" ", "_");
+            }
+            else
+            {
+                filename = UserAnswer;
+            }
+            Categories newcat = MarketCats.GetCatFromFileName(filename);
+            AddMarketTreenode(newcat, MarketCatsTV.Nodes["Market"]);
+
+        }
+        private void removeMarketFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("This Will Remove The All reference to this category, Are you sure you want to do this?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                string removeitem = listBox5.GetItemText(listBox5.SelectedItem);
+                string removeitem = CurrentMarketTreeNode.Text;
 
                 string message = removeitem + " Category Removed....\nThe Following Items Were Removed from both Trader and Market Categories\n";
                 foreach (marketItem item in currentCat.Items)
@@ -2484,21 +2586,13 @@ namespace DayZeEditor
                 }
                 MarketCats.RemoveCat(currentCat);
                 MessageBox.Show(message, "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                if (listBox5.Items.Count == 0)
-                    listBox5.SelectedIndex = -1;
+                TreeNode Parentnode = CurrentMarketTreeNode.Parent;
+                MarketCatsTV.Nodes.Remove(CurrentMarketTreeNode);
+                if(Parentnode.Nodes.Count == 0)
+                {
+                    MarketCatsTV.Nodes.Remove(Parentnode);
+                }
             }
-
-        }
-        private void darkButton7_Click(object sender, EventArgs e)
-        {
-            string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Enter Name of New Category\nPlease not that this is the filename, do not use special characters\nYou can change the display name once its been created ", "Categories", "");
-            if (UserAnswer == "") return;
-            MarketCats.CreateNewCat(UserAnswer);
-            listBox5.SelectedIndex = -1;
-            if (listBox5.Items.Count == 0)
-                listBox5.SelectedIndex = listBox5.Items.Count - 1;
-            else
-                listBox5.SelectedIndex = 0;
         }
         private void darkButton16_Click(object sender, EventArgs e)
         {

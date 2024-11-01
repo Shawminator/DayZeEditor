@@ -38,15 +38,7 @@ namespace DayZeLib
                 Zones z = JsonSerializer.Deserialize<Zones>(File.ReadAllText(file.FullName));
                 Console.WriteLine("Converting trader Item Dictionary to list");
                 z.ConvertDicttoList();
-                if (System.IO.Path.GetFileNameWithoutExtension(file.FullName).Any(char.IsLower))
-                {
-                    z.Filename = System.IO.Path.GetFileNameWithoutExtension(file.FullName).ToUpper();
-                    savefile = true;
-                }
-                else
-                {
-                    z.Filename = System.IO.Path.GetFileNameWithoutExtension(file.FullName);
-                }
+                z.Filename = System.IO.Path.GetFileNameWithoutExtension(file.FullName);
                 ZoneList.Add(z);
                 if (savefile)
                 {
@@ -66,13 +58,12 @@ namespace DayZeLib
         }
         public void NewTraderZone(string zonename, int mapsize, bool showmessage = true)
         {
-            string newZonename = zonename.ToUpper();
-            Zones z = new Zones(newZonename);
+            Zones z = new Zones(zonename.Replace("_", " "));
             z.Position = new float[] { mapsize / 2, 0, mapsize / 2 };
             z.Radius = mapsize / 2;
             z.isDirty = true;
-            z.Filename = newZonename;
-            if (ZoneList.Any(x => x.Filename == zonename))
+            z.Filename = zonename.Replace(" ", "_");
+            if (ZoneList.Any(x => x.Filename == z.Filename))
             {
                 MessageBox.Show(zonename = " Allready in list of Zones....");
                 return;

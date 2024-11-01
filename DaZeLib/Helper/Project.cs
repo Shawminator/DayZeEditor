@@ -163,6 +163,18 @@ namespace DayZeEditor
             return ProjectName + ":" + mpmissionpath.Split('.')[1];
         }
 
+        public bool checkMapExists()
+        {
+            if(File.Exists(Application.StartupPath + MapPath))
+            {
+                return true;
+            }
+            else 
+            { 
+                return false; 
+            }
+        }
+
         public void AddNames(string _ProjectName, string fullname)
         {
             projectFullName = fullname;
@@ -615,5 +627,7 @@ namespace DayZeEditor
                 tfile.isDirty = true;
             }
         }
+
+
     }
 }
