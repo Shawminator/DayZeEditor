@@ -1,4 +1,7 @@
-﻿Version 0.8.2.9
+﻿Version 0.8.2.8
+[Fixed]
+Economy Manager -	Fixed the cfgWeather.xml to match the correct names as the default ones were wrong.
+MPG Spawner		-	Added in a triggerposition and spawn position check to commas and double spaces.will fix and save configs	
 [Uopdated]
 Economy Manager - Updated weather to latest 1.26 config.
 All	- Speed up calculation of Hight value when double clicking on any map.
@@ -6,10 +9,6 @@ All	- Speed up calculation of Hight value when double clicking on any map.
 Expansion Map Markers PVE-PVP - added support for latest version.
 Search for Loot - Added Search for loot manager, Everything is done through right clicks on the treeview....
 
-Version 0.8.2.8
-[Fixed]
-Economy Manager -	Fixed the cfgWeather.xml to match the correct names as the default ones were wrong.
-MPG Spawner		-	Added in a triggerposition and spawn position check to commas and double spaces.will fix and save configs	
 
 Version 0.8.2.7
 [Added]

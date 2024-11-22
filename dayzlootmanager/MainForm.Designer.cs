@@ -62,6 +62,7 @@ namespace DayZeEditor
             this.CapareWorkBenchManagerButton = new System.Windows.Forms.ToolStripButton();
             this.CapareTreasureManagerButton = new System.Windows.Forms.ToolStripButton();
             this.LootchestButton = new System.Windows.Forms.ToolStripButton();
+            this.SearchForLootManagerButton = new System.Windows.Forms.ToolStripButton();
             this.MPGSpawnerButton = new System.Windows.Forms.ToolStripButton();
             this.KOTHManagerButton = new System.Windows.Forms.ToolStripButton();
             this.SpawnerBukakuManagerButton = new System.Windows.Forms.ToolStripButton();
@@ -89,7 +90,6 @@ namespace DayZeEditor
             this.darkStatusStrip1 = new DarkUI.Controls.DarkStatusStrip();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.SearchForLootManagerButton = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.SlidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Slidelabel)).BeginInit();
@@ -489,6 +489,18 @@ namespace DayZeEditor
             this.LootchestButton.Visible = false;
             this.LootchestButton.Click += new System.EventHandler(this.Lootchest_Click);
             // 
+            // SearchForLootManagerButton
+            // 
+            this.SearchForLootManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.SearchForLootManagerButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.SearchForLootManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("SearchForLootManagerButton.Image")));
+            this.SearchForLootManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SearchForLootManagerButton.Name = "SearchForLootManagerButton";
+            this.SearchForLootManagerButton.Size = new System.Drawing.Size(147, 19);
+            this.SearchForLootManagerButton.Text = "Search For Loot Manager";
+            this.SearchForLootManagerButton.Visible = false;
+            this.SearchForLootManagerButton.Click += new System.EventHandler(this.SearchForLootManagerButton_Click);
+            // 
             // MPGSpawnerButton
             // 
             this.MPGSpawnerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -796,17 +808,6 @@ namespace DayZeEditor
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(25, 25);
             this.panel2.TabIndex = 45;
-            // 
-            // SearchForLootManagerButton
-            // 
-            this.SearchForLootManagerButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.SearchForLootManagerButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.SearchForLootManagerButton.Image = ((System.Drawing.Image)(resources.GetObject("SearchForLootManagerButton.Image")));
-            this.SearchForLootManagerButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.SearchForLootManagerButton.Name = "SearchForLootManagerButton";
-            this.SearchForLootManagerButton.Size = new System.Drawing.Size(147, 19);
-            this.SearchForLootManagerButton.Text = "Search For Loot Manager";
-            this.SearchForLootManagerButton.Click += new System.EventHandler(this.SearchForLootManagerButton_Click);
             // 
             // MainForm
             // 

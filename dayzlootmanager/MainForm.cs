@@ -30,7 +30,7 @@ namespace DayZeEditor
 
         const int SW_HIDE = 0;
         const int SW_SHOW = 5;
-        public string VersionNumber = "0.8.2.9";
+        public string VersionNumber = "0.8.2.8";
         private static bool hidden;
         public static String ProjectsJson = Application.StartupPath + "\\Project\\Projects.json";
         public ProjectList Projects;
@@ -545,6 +545,11 @@ namespace DayZeEditor
                     UtopiaAirdropButton.Visible = true;
                 else
                     UtopiaAirdropButton.Visible = false;
+
+                if (File.Exists(Projects.getActiveProject().projectFullName + "\\" + Projects.getActiveProject().ProfilePath + "\\SearchForLoot\\SearchForLoot.json"))
+                    SearchForLootManagerButton.Visible = true;
+                else
+                    SearchForLootManagerButton.Visible = false;
             }
         }
         private void timer1_Tick(object sender, EventArgs e)
